@@ -644,8 +644,15 @@
 /area/almayer/shipboard/weapon_room)
 "abW" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+<<<<<<< HEAD
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
+=======
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "abZ" = (
 /obj/structure/sign/safety/north{
 	pixel_x = -17;
@@ -1307,20 +1314,6 @@
 /obj/docking_port/stationary/escape_pod/south,
 /turf/open/floor/plating,
 /area/almayer/hull/upper_hull/u_m_p)
-"adJ" = (
-/obj/structure/machinery/cm_vending/clothing/medic/delta{
-	density = 0;
-	pixel_y = -30
-	},
-/obj/structure/machinery/cm_vending/gear/medic{
-	density = 0;
-	pixel_x = -32
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "blue"
-	},
-/area/almayer/squads/delta)
 "adK" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -1336,7 +1329,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "green"
+	icon_state = "red"
 	},
 /area/almayer/hallways/starboard_hallway)
 "adL" = (
@@ -1363,10 +1356,7 @@
 /obj/item/storage/toolbox/emergency{
 	pixel_x = -3
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer,
 /area/almayer/squads/alpha)
 "adO" = (
 /turf/closed/wall/almayer,
@@ -1385,10 +1375,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "adS" = (
 /obj/item/trash/uscm_mre,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/almayer,
 /area/almayer/squads/alpha)
 "adT" = (
 /obj/structure/machinery/light{
@@ -1410,10 +1397,7 @@
 	name = "\improper Oversized Security Access Tuner";
 	pixel_y = 8
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer,
 /area/almayer/squads/alpha)
 "adV" = (
 /obj/structure/bed/chair{
@@ -1432,6 +1416,7 @@
 /obj/item/prop/helmetgarb/gunoil{
 	pixel_x = -8
 	},
+<<<<<<< HEAD
 /obj/structure/machinery/light{
 	dir = 4;
 	invisibility = 101;
@@ -1442,6 +1427,9 @@
 	dir = 5;
 	icon_state = "red"
 	},
+=======
+/turf/open/floor/almayer,
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /area/almayer/squads/alpha)
 "adX" = (
 /obj/structure/flora/pottedplant{
@@ -2420,7 +2408,7 @@
 "agp" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "greencorner"
+	icon_state = "bluecorner"
 	},
 /area/almayer/hallways/starboard_hallway)
 "agq" = (
@@ -2452,10 +2440,7 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/almayer,
 /area/almayer/squads/alpha)
 "agu" = (
 /turf/open/floor/almayer,
@@ -2492,8 +2477,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo{
-	dir = 2;
-	req_one_access = s
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -3045,12 +3029,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_m_s)
-"ahO" = (
-/mob/living/simple_animal/bunny{
-	name = "Dina"
-	},
-/turf/open/floor/carpet,
-/area/almayer/command/cichallway)
 "ahP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -3070,8 +3048,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo{
-	dir = 2;
-	req_one_access = list(15,19)
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -3337,21 +3314,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/hallways/aft_hallway)
-"aiu" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	icon_state = "red"
-	},
-/area/almayer/squads/alpha)
 "aiv" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -3731,7 +3693,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "greencorner"
+	icon_state = "bluecorner"
 	},
 /area/almayer/hallways/starboard_hallway)
 "ajp" = (
@@ -3802,6 +3764,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north2)
 "ajw" = (
+<<<<<<< HEAD
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -3809,6 +3772,13 @@
 	icon_state = "bluecorner"
 	},
 /area/almayer/squads/delta)
+=======
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/almayer/hallways/starboard_hallway)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "ajx" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -3904,12 +3874,15 @@
 /turf/open/floor/plating,
 /area/almayer/living/cafeteria_officer)
 "ajK" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
 /obj/structure/sign/poster{
 	pixel_x = -32
 	},
 /turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "red"
+	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/alpha)
 "ajL" = (
@@ -3983,6 +3956,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north1)
 "ajU" = (
+<<<<<<< HEAD
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
@@ -3998,6 +3972,18 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
+=======
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo_arrow"
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 	},
 /area/almayer/squads/alpha)
 "ajV" = (
@@ -4066,13 +4052,24 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "akg" = (
+<<<<<<< HEAD
 /obj/structure/machinery/light,
 /obj/structure/foamed_metal,
+=======
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/port_hallway)
 "akh" = (
+<<<<<<< HEAD
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -4081,7 +4078,24 @@
 	icon_state = "plating"
 	},
 /area/almayer/hallways/port_hallway)
+=======
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/squads/alpha)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "aki" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
@@ -4163,10 +4177,8 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
 	},
-/obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "red"
+	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/alpha)
 "akr" = (
@@ -4265,6 +4277,9 @@
 	pixel_x = -32;
 	vend_x_offset = 1
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red"
@@ -4297,8 +4312,13 @@
 	density = 0;
 	pixel_y = 28
 	},
+/obj/structure/machinery/cm_vending/gear/medic{
+	density = 0;
+	pixel_x = -32
+	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	dir = 8;
+	icon_state = "red"
 	},
 /area/almayer/squads/alpha)
 "akG" = (
@@ -4874,7 +4894,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/hallways/starboard_hallway)
 "alN" = (
@@ -4883,7 +4903,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "green"
+	icon_state = "red"
 	},
 /area/almayer/hallways/starboard_hallway)
 "alO" = (
@@ -4910,9 +4930,18 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "alS" = (
+<<<<<<< HEAD
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+=======
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "alT" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/warning_stripes{
@@ -4927,11 +4956,11 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/navigation)
 "alV" = (
-/obj/structure/machinery/cm_vending/sorted/attachments/squad{
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;18;21";
-	vend_y_offset = 0
+	req_one_access_txt = "15;16;21";
+	vend_x_offset = 0
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -4954,6 +4983,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "alY" = (
+<<<<<<< HEAD
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
@@ -4965,17 +4995,31 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
+=======
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "15;16;21";
+	vend_x_offset = 0;
+	vend_y_offset = 0
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 	},
-/area/almayer/hallways/port_hallway)
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
 "alZ" = (
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
 /area/almayer/command/cic)
 "ama" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/machinery/cm_vending/sorted/attachments/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "15;16;21";
+	vend_y_offset = 0
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -5124,14 +5168,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "cargo_arrow"
-	},
-/area/almayer/squads/alpha)
-"amt" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/weldpack,
-/obj/item/tool/weldpack,
-/turf/open/floor/almayer{
-	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
 "amw" = (
@@ -7358,12 +7394,20 @@
 	},
 /area/almayer/hull/upper_hull/u_m_s)
 "arv" = (
+<<<<<<< HEAD
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red"
 	},
 /area/almayer/squads/alpha)
+=======
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/delta)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "arw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/junction{
@@ -7375,6 +7419,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "arx" = (
+<<<<<<< HEAD
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
 	dir = 1;
 	name = "\improper Auxiliary Combat Support Secondary Preparations";
@@ -7383,6 +7428,16 @@
 	},
 /turf/open/space/basic,
 /area/space)
+=======
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/delta)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "ary" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/wrench,
@@ -7414,9 +7469,22 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "arB" = (
+<<<<<<< HEAD
 /obj/structure/machinery/computer/ordercomp,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
+=======
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "17;18;21";
+	vend_x_offset = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/delta)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "arC" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
@@ -7432,6 +7500,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
+<<<<<<< HEAD
 	req_one_access_txt = "15;16;18;21";
 	vend_x_offset = 0;
 	vend_y_offset = 0
@@ -7440,6 +7509,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
+=======
+	req_one_access_txt = "17;18;21";
+	vend_x_offset = 0;
+	vend_y_offset = 0
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/delta)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "arE" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -7455,6 +7537,7 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cic)
+<<<<<<< HEAD
 "arG" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light{
@@ -7467,6 +7550,8 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
+=======
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "arH" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -7502,11 +7587,11 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "arL" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
+/obj/structure/machinery/cm_vending/sorted/attachments/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;18;21";
-	vend_x_offset = 0
+	req_one_access_txt = "17;18;21";
+	vend_y_offset = 0
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -7556,13 +7641,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cic)
-"arQ" = (
-/obj/structure/machinery/power/apc/almayer,
-/turf/open/floor/almayer{
-	icon_state = "blue";
-	tag = "icon-blue"
-	},
-/area/almayer/squads/delta)
 "arR" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -8099,6 +8177,7 @@
 	},
 /area/almayer/command/cic)
 "asR" = (
+<<<<<<< HEAD
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/delta{
 	dir = 1;
@@ -8106,6 +8185,15 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
+=======
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 	},
 /area/almayer/squads/delta)
 "asS" = (
@@ -8145,6 +8233,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "asX" = (
+<<<<<<< HEAD
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -8153,6 +8242,20 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/port_hallway)
+=======
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/squads/delta)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "asY" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
@@ -8378,11 +8481,26 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "atB" = (
+<<<<<<< HEAD
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red"
 	},
 /area/almayer/squads/alpha)
+=======
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/squads/delta)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "atC" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -8427,6 +8545,9 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "atH" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
 	},
@@ -8440,8 +8561,7 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "blue"
+	icon_state = "plate"
 	},
 /area/almayer/squads/delta)
 "atI" = (
@@ -8578,6 +8698,7 @@
 	pixel_x = -32;
 	vend_x_offset = 1
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue"
@@ -8775,9 +8896,7 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "auq" = (
-/obj/structure/machinery/door/airlock/almayer/marine/delta/smart{
-	req_one_access = list(14,18)
-	},
+/obj/structure/machinery/door/airlock/almayer/marine/delta/smart,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -8869,8 +8988,13 @@
 	density = 0;
 	pixel_y = -30
 	},
+/obj/structure/machinery/cm_vending/gear/medic{
+	density = 0;
+	pixel_x = -32
+	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	dir = 8;
+	icon_state = "blue"
 	},
 /area/almayer/squads/delta)
 "auA" = (
@@ -9727,9 +9851,7 @@
 	},
 /area/almayer/squads/delta)
 "aws" = (
-/obj/structure/machinery/door/airlock/almayer/marine/delta/tl{
-	req_one_access = list(18,32)
-	},
+/obj/structure/machinery/door/airlock/almayer/marine/delta/tl,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -10057,10 +10179,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = -28
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/almayer,
 /area/almayer/squads/delta)
 "axj" = (
 /obj/structure/disposalpipe/segment{
@@ -10128,20 +10247,6 @@
 	icon_state = "blue"
 	},
 /area/almayer/command/cic)
-"axq" = (
-/obj/structure/machinery/cm_vending/clothing/medic/delta{
-	density = 0;
-	pixel_y = -30
-	},
-/obj/structure/machinery/cm_vending/gear/medic{
-	pixel_x = 32;
-	density = 0
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/almayer/squads/delta)
 "axr" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -10312,12 +10417,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
-"axJ" = (
-/obj/structure/machinery/cm_vending/gear/engi,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/squads/delta)
 "axK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10387,21 +10486,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
-"axR" = (
-/obj/structure/machinery/cm_vending/clothing/smartgun/delta{
-	pixel_x = 31;
-	density = 0;
-	req_access = list(14,15)
-	},
-/obj/structure/machinery/cm_vending/gear/smartgun{
-	pixel_y = 32;
-	density = 0
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/almayer/squads/alpha)
 "axS" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -10418,11 +10502,11 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -10892,8 +10976,7 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/delta{
-	dir = 1;
-	req_one_access = list(18,19)
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -11223,10 +11306,7 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
-/turf/open/floor/almayer{
-	icon_state = "blue";
-	tag = "icon-blue"
-	},
+/turf/open/floor/almayer,
 /area/almayer/squads/delta)
 "azA" = (
 /turf/open/floor/almayer{
@@ -11293,10 +11373,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/turf/open/floor/almayer{
-	icon_state = "blue";
-	tag = "icon-blue"
-	},
+/turf/open/floor/almayer,
 /area/almayer/squads/delta)
 "azG" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -11357,6 +11434,7 @@
 	pixel_x = -6;
 	pixel_y = 11
 	},
+<<<<<<< HEAD
 /obj/structure/machinery/light{
 	dir = 4;
 	invisibility = 101;
@@ -11367,6 +11445,9 @@
 	dir = 6;
 	icon_state = "blue"
 	},
+=======
+/turf/open/floor/almayer,
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /area/almayer/squads/delta)
 "azN" = (
 /obj/structure/flora/pottedplant{
@@ -11451,8 +11532,7 @@
 	shuttleId = "dropship_normandy"
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "plate"
 	},
 /area/almayer/command/cic)
 "azW" = (
@@ -11472,8 +11552,7 @@
 	shuttleId = "dropship_alamo"
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "plate"
 	},
 /area/almayer/command/cic)
 "azY" = (
@@ -11754,8 +11833,7 @@
 	},
 /obj/structure/machinery/door/window/westright,
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "plate"
 	},
 /area/almayer/command/cic)
 "aAC" = (
@@ -11767,8 +11845,7 @@
 	dir = 6
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "plate"
 	},
 /area/almayer/command/cic)
 "aAD" = (
@@ -11809,8 +11886,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "plate"
 	},
 /area/almayer/command/cic)
 "aAE" = (
@@ -11830,11 +11906,22 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aAH" = (
+<<<<<<< HEAD
 /obj/structure/machinery/cm_vending/clothing/dress,
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/almayer,
+=======
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /area/almayer/hallways/port_hallway)
 "aAI" = (
 /obj/structure/surface/table/almayer,
@@ -11931,11 +12018,20 @@
 	},
 /area/almayer/hallways/port_hallway)
 "aAS" = (
+<<<<<<< HEAD
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "redcorner"
 	},
 /area/almayer/squads/alpha)
+=======
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/hallways/port_hallway)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "aAT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -12378,8 +12474,7 @@
 	pixel_y = 26
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "plate"
 	},
 /area/almayer/command/cic)
 "aCa" = (
@@ -12388,8 +12483,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "plate"
 	},
 /area/almayer/command/cic)
 "aCb" = (
@@ -12403,8 +12497,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "plate"
 	},
 /area/almayer/command/cic)
 "aCc" = (
@@ -13812,8 +13905,7 @@
 /area/almayer/living/numbertwobunks)
 "aGZ" = (
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/numbertwobunks)
 "aHa" = (
@@ -14318,7 +14410,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "aJq" = (
@@ -14958,9 +15050,20 @@
 	},
 /area/almayer/squads/alpha)
 "aMC" = (
+<<<<<<< HEAD
 /obj/structure/bed/sofa/vert/grey,
 /turf/open/space,
 /area/space)
+=======
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/almayer/squads/alpha)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "aMD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
@@ -14994,12 +15097,20 @@
 	},
 /area/almayer/command/lifeboat)
 "aMV" = (
+<<<<<<< HEAD
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/foamed_metal,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
+=======
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "blue"
+	},
+/area/almayer/hallways/starboard_hallway)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "aMY" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer{
@@ -15073,14 +15184,11 @@
 "aNG" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "greencorner";
-	tag = "icon-greencorner (EAST)"
+	icon_state = "redcorner"
 	},
 /area/almayer/hallways/starboard_hallway)
 "aNI" = (
-/obj/structure/machinery/door/airlock/almayer/marine/alpha/tl{
-	req_one_access = list(15,32)
-	},
+/obj/structure/machinery/door/airlock/almayer/marine/alpha/tl,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -15664,8 +15772,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/captain_mess)
 "aRy" = (
@@ -16054,8 +16161,7 @@
 	},
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/captain_mess)
 "aTE" = (
@@ -16249,8 +16355,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/captain_mess)
 "aUp" = (
@@ -16271,8 +16376,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/captain_mess)
 "aUw" = (
@@ -16322,8 +16426,7 @@
 	},
 /area/almayer/living/offices)
 "aUT" = (
-/obj/structure/surface/rack,
-/obj/item/tool/weldpack,
+/obj/structure/machinery/cm_vending/clothing/dress,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -16349,8 +16452,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/captain_mess)
 "aVk" = (
@@ -16359,8 +16461,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/captain_mess)
 "aVl" = (
@@ -16422,7 +16523,7 @@
 	pixel_y = 5
 	},
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "aVL" = (
@@ -17708,7 +17809,7 @@
 /area/almayer/hallways/hangar)
 "bco" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/item/storage/firstaid/adv,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -18332,9 +18433,16 @@
 	},
 /area/almayer/hallways/hangar)
 "bga" = (
+<<<<<<< HEAD
 /obj/structure/foamed_metal,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+=======
+/turf/open/floor/almayer{
+	icon_state = "redcorner"
+	},
+/area/almayer/hallways/starboard_hallway)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "bgc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -18635,8 +18743,7 @@
 	pixel_x = -30
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/bridgebunks)
 "bhM" = (
@@ -25864,6 +25971,9 @@
 	},
 /area/almayer/squads/delta)
 "bVo" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "blue"
@@ -27962,6 +28072,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
+"cfO" = (
+/obj/structure/machinery/power/apc/almayer,
+/turf/open/floor/almayer,
+/area/almayer/squads/delta)
 "cfT" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -28389,10 +28503,7 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "ckQ" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "ckS" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -29864,7 +29975,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "cHO" = (
@@ -30319,6 +30430,12 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"cUw" = (
+/mob/living/simple_animal/bunny{
+	name = "Dina"
+	},
+/turf/open/floor/carpet,
+/area/almayer/command/cichallway)
 "cVs" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -30624,9 +30741,7 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "dax" = (
-/obj/structure/machinery/cm_vending/sorted/medical{
-	req_access = list(10)
-	},
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -31199,7 +31314,7 @@
 "dmv" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "dmA" = (
@@ -32051,20 +32166,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/engine_core)
-"dDf" = (
-/obj/structure/machinery/cm_vending/gear/smartgun{
-	pixel_y = -31;
-	density = 0
-	},
-/obj/structure/machinery/cm_vending/clothing/smartgun/delta{
-	pixel_x = 31;
-	density = 0
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/almayer/squads/delta)
 "dDp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -32757,9 +32858,6 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -33289,8 +33387,9 @@
 	},
 /area/almayer/hallways/vehiclehangar)
 "ecV" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/cell_charger,
+/obj/structure/machinery/cryopod{
+	pixel_y = 6
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -33341,7 +33440,7 @@
 	pixel_y = 14
 	},
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "eem" = (
@@ -34765,9 +34864,6 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "eGg" = (
@@ -34878,11 +34974,9 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
-	dir = 1;
-	name = "\improper Auxiliary Combat Support Secondary Preparations";
-	req_one_access = "19;27;22";
-	welded = 1
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Cryogenics Bay";
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -34903,13 +34997,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
-"eHv" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/squads/alpha)
 "eHx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/command,
@@ -35161,12 +35248,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+<<<<<<< HEAD
 "eOB" = (
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "blue"
 	},
 /area/almayer/squads/delta)
+=======
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "eOR" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -35689,12 +35779,20 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
 "faG" = (
+<<<<<<< HEAD
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Mech Ops's Room"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
+=======
+/obj/effect/landmark/start/marine/medic/delta,
+/obj/effect/landmark/late_join/delta,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /area/almayer/hallways/port_hallway)
 "faO" = (
 /obj/item/stack/cable_coil,
@@ -36233,6 +36331,13 @@
 	icon_state = "cargo"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
+"foB" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
 "fpd" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -36281,7 +36386,7 @@
 /obj/structure/machinery/vending/cigarette,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "fqe" = (
@@ -36464,7 +36569,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "fsC" = (
-/obj/structure/machinery/door/airlock/almayer/marine{
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -37543,7 +37648,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 10;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "fRC" = (
@@ -37876,12 +37981,18 @@
 	},
 /area/almayer/hull/upper_hull/u_m_s)
 "gad" = (
+<<<<<<< HEAD
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/bottle/tequila,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
 /turf/open/floor/almayer,
+=======
+/obj/effect/landmark/start/marine/tl/delta,
+/obj/effect/landmark/late_join/delta,
+/turf/open/floor/plating/plating_catwalk,
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /area/almayer/hallways/port_hallway)
 "gai" = (
 /obj/structure/closet/firecloset,
@@ -39480,20 +39591,6 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
-"gIQ" = (
-/obj/structure/machinery/cm_vending/clothing/medic/alpha{
-	density = 0;
-	pixel_y = 28
-	},
-/obj/structure/machinery/cm_vending/gear/medic{
-	pixel_x = 32;
-	density = 0
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/almayer/squads/alpha)
 "gJd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -40889,7 +40986,7 @@
 "hmS" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer{
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "hng" = (
@@ -40959,11 +41056,8 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "hpQ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Mech Ops's Room"
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access_txt = "2;7;200"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -41975,6 +42069,37 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"hQC" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/gear/smartgun{
+	pixel_y = -31;
+	density = 0
+	},
+/obj/structure/machinery/cm_vending/clothing/smartgun/delta{
+	pixel_x = 31;
+	density = 0
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "blue"
+	},
+/area/almayer/squads/delta)
+"hQG" = (
+/obj/structure/machinery/cm_vending/clothing/medic/delta{
+	density = 0;
+	pixel_y = -30
+	},
+/obj/structure/machinery/cm_vending/gear/medic{
+	pixel_x = 32;
+	density = 0
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "blue"
+	},
+/area/almayer/squads/delta)
 "hQU" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -42299,7 +42424,7 @@
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "hYc" = (
@@ -42464,6 +42589,14 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/perma)
+"idv" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/weldpack,
+/obj/item/tool/weldpack,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
 "idx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -42701,7 +42834,7 @@
 "iiZ" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "ije" = (
@@ -43204,7 +43337,7 @@
 "itX" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "iub" = (
@@ -44182,8 +44315,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/bridgebunks)
 "iTz" = (
@@ -44930,7 +45062,7 @@
 "jgJ" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "jgM" = (
@@ -45239,7 +45371,7 @@
 /area/almayer/hull/upper_hull/u_m_p)
 "jmY" = (
 /turf/open/floor/almayer{
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "jnb" = (
@@ -45444,8 +45576,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/captain_mess)
 "jsx" = (
@@ -46726,9 +46857,14 @@
 	},
 /area/almayer/living/briefing)
 "kcf" = (
+<<<<<<< HEAD
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
 	req_one_access = list()
 	},
+=======
+/obj/effect/landmark/start/marine/engineer/delta,
+/obj/effect/landmark/late_join/delta,
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -48009,11 +48145,9 @@
 /area/almayer/hallways/starboard_hallway)
 "kHm" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
-	dir = 1;
-	name = "\improper Auxiliary Combat Support Secondary Preparations";
-	req_one_access = "19;27;22";
-	welded = 1
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Cryogenics Bay";
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -48934,8 +49068,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/bridgebunks)
 "lcV" = (
@@ -49508,6 +49641,17 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
+"lqh" = (
+/obj/structure/surface/table/almayer,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
 "lqF" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -50945,9 +51089,6 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -51376,11 +51517,17 @@
 	},
 /area/almayer/living/auxiliary_officer_office)
 "mkZ" = (
+<<<<<<< HEAD
 /obj/structure/foamed_metal,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "cargo_arrow"
 	},
+=======
+/obj/effect/landmark/start/marine/delta,
+/obj/effect/landmark/late_join/delta,
+/turf/open/floor/plating/plating_catwalk,
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /area/almayer/hallways/port_hallway)
 "mlb" = (
 /obj/effect/decal/warning_stripes{
@@ -52502,6 +52649,15 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
+"mNh" = (
+/obj/structure/machinery/cm_vending/clothing/medic/delta{
+	density = 0;
+	pixel_y = -30
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/delta)
 "mNm" = (
 /obj/structure/platform{
 	dir = 8
@@ -52837,6 +52993,12 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
+"mUi" = (
+/obj/structure/machinery/autolathe,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
 "mUn" = (
 /obj/structure/machinery/conveyor_switch{
 	id = "lower_garbage"
@@ -53087,7 +53249,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "mZr" = (
@@ -53378,7 +53540,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "nhG" = (
@@ -53561,9 +53725,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower_engineering)
 "nmg" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = 6
+	},
 /obj/structure/machinery/light,
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/cell_charger,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -53777,11 +53942,18 @@
 	},
 /area/almayer/shipboard/brig/perma)
 "nrc" = (
+<<<<<<< HEAD
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
 	},
 /area/almayer/command/cic)
+=======
+/obj/effect/landmark/start/marine/engineer/delta,
+/obj/effect/landmark/late_join/delta,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_hallway)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "nrt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -53808,10 +53980,6 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "nrL" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "nrN" = (
@@ -53998,20 +54166,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
-"nuA" = (
-/obj/structure/machinery/cm_vending/clothing/medic/alpha{
-	density = 0;
-	pixel_y = 28
-	},
-/obj/structure/machinery/cm_vending/gear/medic{
-	density = 0;
-	pixel_x = -32
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/almayer/squads/alpha)
 "nuK" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/franks{
@@ -54361,9 +54515,17 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "nDC" = (
+<<<<<<< HEAD
 /obj/structure/bed/chair/wheelchair,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
+=======
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/closed/wall/almayer,
+/area/almayer/hallways/port_hallway)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "nDL" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -54687,15 +54849,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/port_hallway)
-"nKQ" = (
-/obj/structure/machinery/autolathe,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/squads/alpha)
 "nKT" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -55811,7 +55964,7 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "omb" = (
@@ -57562,7 +57715,7 @@
 "pbW" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "pch" = (
@@ -57614,11 +57767,18 @@
 	},
 /area/almayer/living/pilotbunks)
 "pcI" = (
+<<<<<<< HEAD
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "bluecorner"
 	},
 /area/almayer/squads/delta)
+=======
+/obj/effect/landmark/start/marine/medic/delta,
+/obj/effect/landmark/late_join/delta,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_hallway)
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 "pcO" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -58144,8 +58304,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/bridgebunks)
 "psm" = (
@@ -58253,12 +58412,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/engineering_workshop)
-"puC" = (
-/mob/living/simple_animal/cow{
-	name = "Mumunya"
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/grunt_rnr)
 "puI" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -58654,6 +58807,15 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/port)
+"pDI" = (
+/obj/structure/machinery/cm_vending/clothing/medic/alpha{
+	density = 0;
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
 "pEl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -59467,6 +59629,24 @@
 	icon_state = "silver"
 	},
 /area/almayer/living/briefing)
+"pVT" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/clothing/smartgun/delta{
+	pixel_x = 31;
+	density = 0;
+	req_access = list(14,15)
+	},
+/obj/structure/machinery/cm_vending/gear/smartgun{
+	pixel_y = 32;
+	density = 0
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/almayer/squads/alpha)
 "pVZ" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -60718,7 +60898,7 @@
 "qyo" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "green"
+	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
 "qys" = (
@@ -62505,6 +62685,13 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/airoom)
+"roQ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/masks,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
 "roU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -62997,7 +63184,7 @@
 	pixel_y = 11
 	},
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "rBH" = (
@@ -63073,6 +63260,12 @@
 	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
+"rCZ" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
 "rDd" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails{
@@ -63250,6 +63443,7 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "rGd" = (
+<<<<<<< HEAD
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
@@ -63264,6 +63458,11 @@
 	dir = 5;
 	icon_state = "plating"
 	},
+=======
+/obj/effect/landmark/start/marine/smartgunner/delta,
+/obj/effect/landmark/late_join/delta,
+/turf/open/floor/plating/plating_catwalk,
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /area/almayer/hallways/port_hallway)
 "rGj" = (
 /turf/open/floor/almayer{
@@ -63471,9 +63670,6 @@
 /area/almayer/hallways/port_hallway)
 "rKF" = (
 /obj/structure/prop/mech/mech_parts/chassis/firefighter,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -65805,7 +66001,7 @@
 "sUE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "sUF" = (
@@ -65848,14 +66044,22 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
-"sWJ" = (
-/obj/structure/surface/table/almayer,
+"sVU" = (
 /obj/structure/machinery/light{
+<<<<<<< HEAD
 	dir = 4;
 	invisibility = 101
+=======
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/gear/medic{
+	pixel_x = 32;
+	density = 0
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	dir = 4;
+	icon_state = "red"
 	},
 /area/almayer/squads/alpha)
 "sWW" = (
@@ -66119,10 +66323,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/briefing)
-"tad" = (
-/obj/structure/machinery/computer/ordercomp,
-/turf/open/floor/almayer,
-/area/almayer/squads/delta)
 "tak" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -66144,7 +66344,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "green"
+	icon_state = "red"
 	},
 /area/almayer/hallways/starboard_hallway)
 "tbD" = (
@@ -66277,6 +66477,16 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
+"tfh" = (
+/obj/structure/machinery/cm_vending/clothing/medic/alpha{
+	density = 0;
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/almayer/squads/alpha)
 "tfl" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -66422,6 +66632,21 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
+"tiF" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/almayer/squads/alpha)
 "tiI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/syringes{
@@ -66906,7 +67131,7 @@
 	pixel_x = -8
 	},
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "tsC" = (
@@ -67365,13 +67590,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_s)
-"tCG" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/extinguisher,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/squads/alpha)
 "tCT" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
@@ -68087,8 +68305,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/bridgebunks)
 "tVB" = (
@@ -68451,7 +68668,7 @@
 "udx" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "udF" = (
@@ -68858,6 +69075,12 @@
 	icon_state = "sterile_green"
 	},
 /area/almayer/medical/containment)
+"uox" = (
+/obj/structure/machinery/cm_vending/gear/engi,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/delta)
 "uoA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -69794,6 +70017,24 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"uID" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/machinery/cm_vending/clothing/medic/delta{
+	density = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/delta)
 "uII" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -70702,6 +70943,13 @@
 	dir = 1
 	},
 /area/almayer/medical/containment/cell)
+"vgi" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/extinguisher,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha)
 "vgk" = (
 /obj/structure/closet/firecloset,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -71325,6 +71573,7 @@
 	},
 /area/almayer/living/offices)
 "vsw" = (
+<<<<<<< HEAD
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
@@ -71338,6 +71587,14 @@
 	dir = 5;
 	icon_state = "plating"
 	},
+=======
+/obj/item/tool/weldpack,
+/obj/structure/surface/rack,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 /area/almayer/hallways/port_hallway)
 "vsE" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -71761,6 +72018,10 @@
 	allow_construction = 0
 	},
 /area/almayer/shipboard/brig/chief_mp_office)
+"vBN" = (
+/obj/structure/machinery/computer/ordercomp,
+/turf/open/floor/almayer,
+/area/almayer/squads/delta)
 "vBU" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -71867,7 +72128,6 @@
 	icon_state = "SW-out";
 	layer = 2.5
 	},
-/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -72411,9 +72671,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
@@ -73174,6 +73431,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+"wgr" = (
+/mob/living/simple_animal/cow{
+	name = "Mumunya"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/grunt_rnr)
 "wgR" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
@@ -73356,7 +73619,7 @@
 	pixel_y = 30
 	},
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "wkM" = (
@@ -73565,6 +73828,8 @@
 /area/almayer/hull/lower_hull/l_a_p)
 "woK" = (
 /obj/structure/machinery/light,
+/obj/item/tool/weldpack,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -73923,7 +74188,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/almayer{
-	icon_state = "greenfull"
+	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
 "wyv" = (
@@ -74846,8 +75111,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	icon_state = "bluefull"
 	},
 /area/almayer/living/bridgebunks)
 "wVD" = (
@@ -75213,21 +75477,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
-"xdW" = (
-/obj/structure/surface/table/almayer,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/squads/alpha)
 "xeG" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer{
@@ -75432,19 +75681,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"xhw" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/adv,
-/obj/structure/machinery/light{
-	dir = 8;
-	invisibility = 101;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/squads/alpha)
 "xhx" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -94442,7 +94678,7 @@ rHc
 lAy
 wjq
 wjq
-ahO
+cUw
 qyo
 tsy
 qwp
@@ -96862,7 +97098,11 @@ aew
 bCO
 hvH
 hvH
+<<<<<<< HEAD
 nDC
+=======
+hvH
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 kcN
 cod
 oqA
@@ -98093,7 +98333,11 @@ awH
 aPD
 asc
 azW
+<<<<<<< HEAD
 nrc
+=======
+aqN
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAC
 aCa
 bPs
@@ -106520,7 +106764,11 @@ rlZ
 tiI
 hDR
 oZV
+<<<<<<< HEAD
 oOv
+=======
+rlZ
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 rlZ
 xMj
 biA
@@ -112633,7 +112881,7 @@ oqS
 nsY
 hxZ
 rsM
-puC
+wgr
 gzV
 bJt
 oDf
@@ -114617,8 +114865,8 @@ acw
 akX
 akX
 bBh
-akX
-akX
+aMV
+aMV
 agp
 awb
 ajo
@@ -115026,8 +115274,8 @@ adx
 adK
 taA
 aNG
-bAV
-adm
+bga
+ajw
 alN
 bBh
 aLG
@@ -115424,6 +115672,7 @@ qHl
 aLT
 adL
 aLT
+<<<<<<< HEAD
 afh
 aAS
 ajK
@@ -115432,6 +115681,16 @@ xAR
 atQ
 sDM
 pcI
+=======
+aMz
+rGj
+ajK
+abW
+aLT
+arv
+asR
+ckX
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 axi
 bSJ
 azu
@@ -115478,7 +115737,7 @@ eSD
 mIf
 ubo
 aUT
-aUT
+aAS
 bGb
 tfw
 bHa
@@ -115628,15 +115887,21 @@ aLT
 ade
 aeS
 aMz
-aMz
 rGj
+<<<<<<< HEAD
 akj
 kcf
 atQ
+=======
+ajU
+alS
+aLT
+arx
+asX
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 ckX
 bTA
-bTA
-tad
+vBN
 azv
 bSJ
 jgU
@@ -115673,7 +115938,11 @@ tut
 nOZ
 jaI
 buH
+<<<<<<< HEAD
 arB
+=======
+buH
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 qbg
 bGb
 xtc
@@ -115832,11 +116101,11 @@ adM
 bdC
 bdr
 bdr
-rGj
-bdC
-bdr
-clK
-ckX
+akg
+abW
+aLT
+arv
+atB
 clg
 clg
 clK
@@ -116034,13 +116303,13 @@ bwe
 adN
 aMz
 aMz
-aMz
 rGj
-bdC
-bdr
-clK
+ajU
+abW
+aLT
+arv
+asX
 ckX
-bTA
 bTA
 ayA
 azz
@@ -116087,7 +116356,7 @@ qXL
 siO
 oko
 jnb
-qNa
+vsw
 bGb
 mYZ
 buI
@@ -116234,19 +116503,25 @@ ewo
 aNO
 jJs
 adz
-afh
 aMz
 aMz
 aMz
 rGj
+<<<<<<< HEAD
 akj
 kcf
 atQ
+=======
+akh
+alS
+aLT
+arx
+atB
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 ckX
 bTA
 bTA
 bTA
-ayB
 aAn
 aLG
 aNO
@@ -116440,8 +116715,8 @@ adA
 adS
 aMz
 aMz
-aMz
 rGj
+<<<<<<< HEAD
 akj
 xYa
 atQ
@@ -116450,6 +116725,17 @@ bTA
 bTA
 bTA
 ajw
+=======
+ajU
+abW
+aLT
+arv
+asX
+ckX
+bTA
+bTA
+avp
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAo
 aLG
 aNO
@@ -116691,7 +116977,11 @@ bIS
 buH
 vyC
 bGb
+<<<<<<< HEAD
 ryz
+=======
+lYy
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bJz
 cbS
 bJz
@@ -116846,11 +117136,16 @@ aLT
 adV
 bdC
 bfy
-aMz
 rGj
+akj
 alV
+<<<<<<< HEAD
 arD
 arL
+=======
+aLT
+arB
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 atQ
 ckX
 cIr
@@ -117049,16 +117344,16 @@ aLT
 agt
 aMz
 bfy
-aMz
 rGj
-bdC
-bdC
-clK
+akj
+alY
+aLT
+arD
 atQ
 ckX
 cIr
 bTA
-arQ
+cfO
 bSJ
 beB
 beB
@@ -117097,9 +117392,13 @@ bIT
 buH
 buH
 bGb
+<<<<<<< HEAD
 vsw
+=======
+lYy
 bJz
-cbS
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
+bJz
 bJz
 eYp
 gOP
@@ -117250,6 +117549,7 @@ ahj
 ahj
 aLT
 adW
+<<<<<<< HEAD
 afi
 agF
 arv
@@ -117261,6 +117561,19 @@ atR
 eOB
 axC
 ayC
+=======
+aMz
+bfy
+rGj
+akq
+ama
+aLT
+arL
+atR
+ckX
+cIr
+bTA
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 azM
 bSJ
 aLG
@@ -117300,7 +117613,11 @@ bIT
 wpP
 lyU
 bGb
+<<<<<<< HEAD
 rGd
+=======
+hsZ
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bJz
 rKF
 bJz
@@ -117463,7 +117780,11 @@ bSJ
 bSJ
 bSJ
 axr
+<<<<<<< HEAD
 asR
+=======
+axh
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bSL
 bSJ
 pGM
@@ -117503,9 +117824,13 @@ ccu
 kHm
 ogZ
 bGb
+<<<<<<< HEAD
 alY
+=======
+lYy
 bJz
-cbS
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
+bJz
 nua
 eYp
 gaA
@@ -117661,7 +117986,11 @@ agC
 aLT
 akB
 amc
+<<<<<<< HEAD
 arG
+=======
+rCZ
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 arM
 atW
 bSJ
@@ -117864,7 +118193,11 @@ bfy
 aNI
 akD
 ame
+<<<<<<< HEAD
 sWJ
+=======
+rCZ
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 arN
 atX
 aws
@@ -118114,8 +118447,12 @@ tOm
 bGb
 jHO
 qNa
+<<<<<<< HEAD
 akh
+=======
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 qNa
+aAH
 bGb
 bGb
 bGb
@@ -118270,7 +118607,11 @@ agE
 bdr
 bdz
 bdr
+<<<<<<< HEAD
 arG
+=======
+rCZ
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 clg
 auq
 clg
@@ -118316,12 +118657,12 @@ buJ
 hci
 bGb
 bGb
-bGb
+nDC
 hpQ
 bGb
 bGb
-aAX
-aAX
+aAU
+aAU
 bGb
 fiq
 yhQ
@@ -118472,9 +118813,9 @@ nTl
 agF
 aiL
 aLT
-axR
-ama
-dDf
+pVT
+rCZ
+hQC
 bSJ
 awI
 axC
@@ -118519,10 +118860,17 @@ buH
 euW
 cLR
 bGb
+<<<<<<< HEAD
 hrg
 asX
 bSd
 dfe
+=======
+eKC
+eKC
+eKC
+aAN
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bHa
 bHa
 bGb
@@ -118722,12 +119070,21 @@ buH
 euW
 cLR
 bGb
+<<<<<<< HEAD
 aAH
 uCE
 iWE
 buH
 bHa
 alS
+=======
+eKC
+eKC
+eKC
+aAN
+bHa
+bHa
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bGb
 fiq
 yhQ
@@ -118877,11 +119234,19 @@ aen
 aft
 agR
 aLT
+<<<<<<< HEAD
 nuA
 atB
 xhw
 avh
 adJ
+=======
+akF
+aMB
+bco
+bVn
+auz
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bSJ
 axG
 ayJ
@@ -118925,12 +119290,21 @@ buH
 euW
 cLR
 bGb
+<<<<<<< HEAD
 abW
 qbg
 gad
 qOl
 voX
 qbg
+=======
+bHa
+bHa
+bHa
+bJz
+aAX
+aAX
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bGb
 fiq
 iFm
@@ -119080,11 +119454,11 @@ aen
 nTl
 agW
 aLT
-akF
+pDI
 bdr
-tCG
+vgi
 clg
-auz
+mNh
 bSJ
 axH
 ayN
@@ -119128,10 +119502,17 @@ buH
 euW
 cLR
 bGb
+<<<<<<< HEAD
 bGb
 faG
 bGb
 bGb
+=======
+bJz
+bJz
+bJz
+uFP
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAY
 bGb
 bGb
@@ -119331,10 +119712,17 @@ buH
 euW
 cLR
 bGb
+<<<<<<< HEAD
 bga
 bga
 bga
 qRI
+=======
+bHa
+bHa
+bHa
+bJz
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAU
 aAU
 bGb
@@ -119486,11 +119874,11 @@ aen
 nTl
 ahD
 aLT
-akF
+pDI
 bdr
-bco
+roQ
 clg
-auz
+mNh
 bSJ
 axC
 ayN
@@ -119534,10 +119922,17 @@ buH
 euW
 cLR
 bGb
+<<<<<<< HEAD
 aMV
 eKC
 eKC
 mkZ
+=======
+bGe
+buH
+buH
+aAN
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bHa
 bHa
 bGb
@@ -119689,11 +120084,11 @@ aen
 nTl
 ahA
 aLT
-gIQ
-aiN
-xdW
+tfh
+sVU
+lqh
 bVo
-axq
+hQG
 bSJ
 axG
 ayN
@@ -119737,10 +120132,17 @@ buH
 euW
 cLR
 bGb
+<<<<<<< HEAD
 eKC
 eKC
 eKC
 mkZ
+=======
+buH
+buH
+buH
+aAN
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bHa
 bHa
 bGb
@@ -119940,10 +120342,17 @@ buH
 euW
 cLR
 bGb
+<<<<<<< HEAD
 bga
 bga
 bga
 qRI
+=======
+bHa
+bHa
+bHa
+bJz
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAX
 aAX
 bGb
@@ -120093,11 +120502,11 @@ aLT
 adB
 aen
 nTl
-aiu
+tiF
 aLT
 akG
 aMB
-amt
+idv
 bVn
 auT
 bSJ
@@ -120143,10 +120552,17 @@ cLe
 euW
 cLR
 bGb
+<<<<<<< HEAD
 qRI
 qRI
 qRI
 akg
+=======
+bJz
+bJz
+bJz
+uFP
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAY
 bGb
 bGb
@@ -120300,11 +120716,15 @@ ahI
 aLT
 bcE
 bdr
-eHv
+foB
 clg
-axJ
+uox
 bSJ
+<<<<<<< HEAD
 vPK
+=======
+axH
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 ayN
 azQ
 aAp
@@ -120346,10 +120766,17 @@ bBG
 euW
 cLR
 bGb
+<<<<<<< HEAD
 bga
 bga
 bga
 qRI
+=======
+bHa
+bHa
+bHa
+bJz
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAU
 aAU
 bGb
@@ -120504,7 +120931,11 @@ beS
 bdC
 bdr
 abS
+<<<<<<< HEAD
 dVE
+=======
+clg
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 clK
 awL
 cIr
@@ -120549,10 +120980,17 @@ bBG
 euW
 cLR
 bGb
+<<<<<<< HEAD
 eKC
 eKC
 eKC
 mkZ
+=======
+buH
+buH
+buH
+aAN
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bHa
 bHa
 bGb
@@ -120705,8 +121143,8 @@ afw
 ahK
 aLT
 akG
-aiN
-nKQ
+aMC
+mUi
 bVo
 auT
 bSJ
@@ -120752,10 +121190,17 @@ bBG
 euW
 cLR
 bGb
+<<<<<<< HEAD
 eKC
 eKC
 eKC
 mkZ
+=======
+buH
+buH
+buH
+aAN
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bHa
 bHa
 bGb
@@ -120955,10 +121400,17 @@ nrL
 euW
 cLR
 bGb
+<<<<<<< HEAD
 bga
 bga
 bga
 qRI
+=======
+bHa
+bHa
+bHa
+bJz
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAX
 aAX
 bGb
@@ -121109,13 +121561,17 @@ adB
 aen
 nTl
 ahL
+<<<<<<< HEAD
 atB
+=======
+aMB
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aLT
 amf
 cvD
 arS
 bSJ
-avh
+bVn
 axH
 ayN
 azQ
@@ -121158,10 +121614,17 @@ bBG
 euW
 cLR
 bGb
+<<<<<<< HEAD
 qRI
 qRI
 qRI
 akg
+=======
+bJz
+bJz
+bJz
+uFP
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAY
 bGb
 bGb
@@ -121361,10 +121824,17 @@ bBG
 euW
 cLR
 bGb
+<<<<<<< HEAD
 bga
 bga
 bga
 qRI
+=======
+bHa
+bHa
+bHa
+bJz
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aAU
 aAU
 bGb
@@ -121564,10 +122034,17 @@ bBG
 euW
 cLR
 bGb
+<<<<<<< HEAD
 eKC
 eKC
 eKC
 mkZ
+=======
+buH
+buH
+buH
+aAN
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bHa
 bHa
 bGb
@@ -121767,10 +122244,17 @@ bBG
 euW
 cLR
 bGb
+<<<<<<< HEAD
 aMV
 eKC
 eKC
 mkZ
+=======
+bGe
+buH
+buH
+aAN
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bHa
 bHa
 bGb
@@ -123591,7 +124075,7 @@ cBY
 gIk
 nuq
 npt
-bHa
+rGd
 bGb
 bGb
 aqQ
@@ -123994,10 +124478,10 @@ xMS
 bNC
 sIC
 hJI
-bHa
-bHa
-bHa
-bHa
+nrc
+nrc
+gad
+gad
 xMS
 aAt
 qbg
@@ -124803,14 +125287,14 @@ buH
 iEb
 bIT
 aqA
-bHa
+mkZ
 iEb
 cen
-bHa
-bHa
-bJz
-bHa
-bHa
+nrc
+nrc
+kcf
+pcI
+pcI
 bZU
 bHa
 bHa
@@ -124976,7 +125460,7 @@ aqR
 aqR
 aqR
 aqR
-aqR
+uID
 amM
 aem
 mUa
@@ -125209,14 +125693,14 @@ drt
 rZF
 bJz
 bGb
-bHa
+mkZ
 bHa
 lAC
-bHa
-bHa
-bJz
-bHa
-bHa
+mkZ
+mkZ
+faG
+pcI
+pcI
 bGb
 bTN
 bTN
@@ -126021,12 +126505,12 @@ buH
 iEb
 bIT
 aqE
-bHa
+mkZ
 bHa
 lAC
-bHa
-bHa
-bHa
+mkZ
+mkZ
+mkZ
 bGb
 vuR
 cAH
@@ -126227,9 +126711,9 @@ aqE
 imA
 imA
 pAX
-bHa
-bHa
-bHa
+mkZ
+mkZ
+mkZ
 bGb
 cAH
 vuR
@@ -126427,9 +126911,9 @@ buH
 iEb
 bIT
 aqE
-bHa
-bHa
-bHa
+mkZ
+mkZ
+mkZ
 aAX
 nJD
 aAX
@@ -129052,7 +129536,11 @@ boI
 boI
 brx
 tzz
+<<<<<<< HEAD
 rxR
+=======
+jnf
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 boI
 boI
 bKO
@@ -130904,7 +131392,11 @@ bdH
 bdH
 bdH
 bdH
+<<<<<<< HEAD
 arx
+=======
+bdH
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 bdH
 bdH
 bdH
@@ -134041,7 +134533,11 @@ xVk
 xVk
 xVk
 aaa
+<<<<<<< HEAD
 aMC
+=======
+aaa
+>>>>>>> parent of cc2e556770 (Update USS_Almayer.dmm)
 aaa
 aaa
 aaa

@@ -2251,15 +2251,6 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
-"bju" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
-/area/fiorina/lz/near_lzI)
 "bjx" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -29198,7 +29189,9 @@
 /area/fiorina/station/botany)
 "saV" = (
 /obj/structure/machinery/floodlight/landing/floor,
-/obj/docking_port/stationary/marine_dropship/lz1,
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Hangar Landing Zone"
+	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "sbf" = (
@@ -86901,7 +86894,7 @@ rMP
 hKI
 hKI
 hKI
-bju
+iJf
 hlK
 hKI
 hKI

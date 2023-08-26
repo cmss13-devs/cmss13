@@ -60,6 +60,17 @@
 	icon_state = "orange"
 	},
 /area/lv624/lazarus/crashed_ship)
+"bu" = (
+/obj/structure/transmitter/clf_net{
+	phone_category = "CR-116";
+	phone_id = "Cargo Bay";
+	pixel_y = 32
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
 "by" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -158,19 +169,6 @@
 /obj/item/stool,
 /turf/open/floor{
 	icon_state = "platingdmg1"
-	},
-/area/lv624/lazarus/crashed_ship)
-"fA" = (
-/obj/structure/transmitter/colony_net{
-	network_receive = "CLF";
-	networks_transmit = list("CLF");
-	phone_category = "CR-116";
-	phone_id = "Armoury";
-	pixel_y = 32
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "bluecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
 "fX" = (
@@ -525,6 +523,17 @@
 /obj/item/tool/wet_sign,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
+"nZ" = (
+/obj/structure/transmitter/clf_net{
+	phone_category = "CR-116";
+	phone_id = "Armoury";
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "bluecorner"
+	},
+/area/lv624/lazarus/crashed_ship)
 "of" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -591,6 +600,18 @@
 "pK" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"pL" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/toolbox,
+/obj/structure/transmitter/clf_net/rotary{
+	phone_category = "CR-116";
+	phone_color = "yellow";
+	phone_id = "Engineering"
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangecorner"
+	},
 /area/lv624/lazarus/crashed_ship)
 "pS" = (
 /turf/open/floor/plating{
@@ -661,20 +682,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green"
-	},
-/area/lv624/lazarus/crashed_ship)
-"sI" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/toolbox,
-/obj/structure/transmitter/colony_net/rotary{
-	network_receive = "CLF";
-	networks_transmit = list("CLF");
-	phone_category = "CR-116";
-	phone_color = "yellow";
-	phone_id = "Engineering"
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
 "sO" = (
@@ -958,17 +965,6 @@
 	},
 /turf/open/floor{
 	icon_state = "whitebluefull"
-	},
-/area/lv624/lazarus/crashed_ship)
-"Aa" = (
-/obj/effect/vehicle_spawner/van{
-	color = "#4a9eed";
-	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides. This one seems to be used by the CLF";
-	name = "CLF Van"
-	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
 	},
 /area/lv624/lazarus/crashed_ship)
 "Ab" = (
@@ -1351,6 +1347,19 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/crashed_ship)
+"Jk" = (
+/obj/structure/machinery/body_scanconsole,
+/obj/structure/transmitter/clf_net{
+	phone_category = "CR-116";
+	phone_color = "green";
+	phone_id = "Medical Bay";
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emerald"
+	},
+/area/lv624/lazarus/crashed_ship)
 "JC" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -1390,6 +1399,17 @@
 "Kk" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_leftengine"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Kl" = (
+/obj/effect/vehicle_spawner/van{
+	color = "#4a9eed";
+	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides. This one seems to be used by the CLF";
+	name = "CLF Van"
+	},
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
 	},
 /area/lv624/lazarus/crashed_ship)
 "Kt" = (
@@ -1657,21 +1677,6 @@
 "Qf" = (
 /turf/open/floor{
 	icon_state = "platingdmg1"
-	},
-/area/lv624/lazarus/crashed_ship)
-"Qj" = (
-/obj/structure/machinery/body_scanconsole,
-/obj/structure/transmitter/colony_net{
-	network_receive = "CLF";
-	networks_transmit = list("CLF");
-	phone_category = "CR-116";
-	phone_color = "green";
-	phone_id = "Medical Bay";
-	pixel_y = 32
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald"
 	},
 /area/lv624/lazarus/crashed_ship)
 "Qp" = (
@@ -1990,19 +1995,6 @@
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/crashed_ship)
-"XM" = (
-/obj/structure/transmitter/colony_net{
-	network_receive = "CLF";
-	networks_transmit = list("CLF");
-	phone_category = "CR-116";
-	phone_id = "Cargo Bay";
-	pixel_y = 32
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
 	},
 /area/lv624/lazarus/crashed_ship)
 "XX" = (
@@ -2487,9 +2479,9 @@ xh
 wV
 lr
 gQ
-sI
+pL
 Xq
-Qj
+Jk
 lr
 lr
 Yz
@@ -2543,7 +2535,7 @@ ch
 Xq
 pS
 bP
-Aa
+Kl
 Qf
 bP
 dN
@@ -2964,7 +2956,7 @@ ag
 gD
 QQ
 Xq
-XM
+bu
 dN
 dN
 Bc
@@ -3006,7 +2998,7 @@ Ar
 Ar
 Ar
 Xq
-fA
+nZ
 OL
 fe
 jr

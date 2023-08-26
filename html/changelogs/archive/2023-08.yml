@@ -321,46 +321,92 @@
   - maptweak: Changed a couple walls around research from standard to reinforced,
       to fit with the containment breach shutters.
 2023-08-24:
-  Fray2:
-  - rscadd: Added something
   Morrow:
   - bugfix: Possible fix for binoc perma zoom
   - balance: M4RA damage buffed by 10%
   Zonespace27:
   - balance: The M41A, M41Amk1, m39, m46c (iff off), mar-30/40/60, type 71, laser
-      uzi, and every SMG now has automatic fire. To compensate for the ability to
-      re-aim (unlike burst), the guns fire 20% slower while automatic. This does not
-      apply to already-existing automatic weaponry.
+      uzi, and every SMG now has automatic fire.
   - balance: The HPR can now fire in full auto when bipodded.
   - bugfix: Adding/removing attachments now keeps the current firemode, if possible.
-  - bugfix: The dualtube and spec sniper now can switch tubes/toggle laser again
+  - bugfix: The dualtube and spec sniper now can switch tubes/toggle laser again.
   - bugfix: Fixed a long-standing exploit with bipods and scopes.
   - bugfix: Fixed guns jamming when shooting UI elements.
   - bugfix: Fixed a bunch of guns unintentionally having burst.
   - balance: You can transfer ammo between HPR ammo boxes by hitting one with another.
-  poleno1232:
-  - rscadd: "Sunken Colony - \u043C\u043E\u0449\u043D\u0430\u044F, \u0445\u043E\u0442\
-      \u044C \u0438 \u043C\u0435\u0434\u043B\u0435\u043D\u043D\u0430\u044F \u0437\u0430\
-      \u0449\u0438\u0442\u043D\u0430\u044F \u0441\u0442\u0440\u0443\u043A\u0442\u0443\
-      \u0440\u0430"
-  - rscadd: "\u041D\u043E\u0432\u044B\u0435 \u0441\u043F\u0440\u0430\u0439\u0442\u044B\
-      \ \u0431\u043E\u0442\u043E\u043A\u0441\u0435\u043D\u0430\u043C"
-  - bugfix: "\u041A\u0441\u0435\u043D\u043E\u0431\u043E\u0442\u044B \u043D\u0435 \u0430\
-      \u0442\u0430\u043A\u0443\u044E\u0442 \u043B\u044E\u0434\u0435\u0439 \u043F\u043E\
-      \u0434 \u0433\u0440\u0430\u0431\u043E\u043C, \u0435\u0441\u043B\u0438 \u0437\
-      \u0430\u0433\u0440\u0430\u043F\u043F\u043B\u0438\u043B\u0438 \u043A\u0441\u0435\
-      \u043D\u044B"
-  - bugfix: "\u041A\u0441\u0435\u043D\u043E\u0431\u043E\u0442\u044B \u043D\u0435 \u0430\
-      \u0442\u0430\u043A\u0443\u044E\u0442 \u0432\u0441\u0435\u0445, \u043A\u0442\u043E\
-      \ \u0432 \u043A\u0430\u043C\u0443\u0444\u043B\u044F\u0436\u0435"
-  - bugfix: "\u041A\u0441\u0435\u043D\u043E\u0431\u043E\u0442\u044B \u043D\u0435 \u0430\
-      \u0442\u0430\u043A\u0443\u044E\u0442 \u0441\u0438\u043D\u0442\u043E\u0432"
   realforest2001:
   - rscadd: Gave the ASO ability to modify IDs.
   - rscdel: Removed this from the QM.
-  remindme:
-  - rscadd: "\u0442\u0430\u043D\u043A\u0438"
-  - rscadd: "Added \u043C\u0430\u0448\u0438\u043D\u043A\u0438"
 2023-08-25:
-  remindme:
-  - rscadd: "\u0442\u0430\u043D\u043A\u0438"
+  Huffie56:
+  - bugfix: add a check before people start the long process of unlock the DS so that
+      people don't waste time.
+  realforest2001:
+  - rscadd: Added a new lockdown system to research.
+  - rscadd: Added an admin button to interact with above.
+2023-08-26:
+  CapCamIII:
+  - rscadd: Adds 6(8 if you're pedantic) new guns for the UPP, details for each in
+      following lines.
+  - rscadd: Type 19, Replacement for PPsh on colonies and black market.
+  - rscadd: Type 64, replacement for scorpion, full sized SMG, 2 versions, 1 for upp,
+      1 for not upp
+  - rscadd: HJRA-12, RPG for UPP.
+  - rscadd: Type 73, pistol for higher ranked UPP troops, UPP COs get a Type 74 which
+      has high-impact rounds, replaces PK9 in non-UPP use.
+  - rscadd: NP92, pistol, replaces PK9 in UPP use(mostly), integrally suppressed version
+      called NPZ92 for UPP Commandos.
+  - rscadd: QYJ-72, UPP GPMG, replaces minigun with UPP Minigunners
+  - rscadd: Technically resprites but due to changes closer to replaces N-Y revolver
+      with ZHNK-72
+  - rscadd: Adds a character custom loadout Type 73, 2 mags spare.
+  - rscadd: UPP helmets now work as ear protection, intended use with HJRA-12 RPG
+  - rscadd: UPP officers now have regular UM4 helmets instead of UH7 helmets in their
+      vendors as UH7 looked ugly with their combat gear
+  - rscdel: Removes the PK9 entirely
+  - rscdel: Removes tranqs from UPP Commando loadout
+  - rscdel: Removes HEAP ammo from UPP officers and commandos, replaced with normal
+      and AP mags when applicable
+  - balance: UPP jackets no longer have massive armor, in exchange they no longer
+      slow and in clothing vendors a light version of UPP armor is vendable
+  - balance: UPP MPs are now armed with a ZHNK-72 belt on their jacket, with an additional
+      shrapnelshot loader in their belt.
+  - balance: Rebalances Type 71 damage/firerate/AP to be a sidegrade of M41A, about
+      equal DPS, higher damage per shot and AP, lower fire rate, carbine is round-about
+      the exact same as M41A however.
+  - balance: Fixes UPP support armor, given to medics on their person and officers
+      in their vendor, lighter version of UPP armor, exchanges protection for speed.
+  - balance: Seperates SVD bullet damage from crude rifle bullet and buffs it as a
+      hard-hitting AP bullet.
+  - balance: Rebalances UPP revolver(now ZHNK-72), much harder hitting and has higher
+      AP, but rarer, shrapnelshot extremely rare and good.
+  - balance: Due to ammo changes, SVD no longer has burst.
+  - balance: Removes ceramic plates from UPP loadouts
+  - bugfix: UPP Major now has the correct UPP Commander skillset
+  - bugfix: UPP Commander skillset can BE
+  - bugfix: Fixes typepath for UPP support/light armor, actually works now.
+  - spellcheck: Renames SVD to Type 88
+  - spellcheck: Renames UPP Minigunner to UPP Machinegunner
+  - spellcheck: Renames UPP jackets to UL4 all around
+  - soundadd: Adds firing sounds for Type 73 and SVD/UPP MG
+  - imageadd: Resprites the SVD, Type 71, and Type 23, all sprites by wei/esselnek
+  - imageadd: Adds sprites for all above guns, all sprites by wei/esselnek
+  - maptweak: Changes instances of skorpion to non-upp type 64, also changes instances
+      of ppsh to type 19
+  Diegoflores31:
+  - balance: Masterkey and underbarrel extinguisher now must be wielded in order to
+      be used.
+  - bugfix: Underbarrel extinguisher no longer bypass wielding restrictions on flamers.
+  Morrow:
+  - balance: You now lose nutrition when gaining blood rather than losing a ton of
+      nutrition when you have low effective blood
+  Morrow, Frans_Feiffer (beautiful sprites):
+  - rscadd: Added in built HUDs to various helmets
+  - rscadd: Sensormates used by squads without medical skills have been converted
+      to buyable helmet optics
+  realforest2001:
+  - code_imp: Changed backend for the message of walking into an invisible wall to
+      reduce duplication.
+  - rscadd: Telephones can now receive calls from multiple networks.
+  - rscadd: Adds UPP, CLF and WY prefab phones.
+  - bugfix: UPP RTO pack is now titled UPP rather than USCM

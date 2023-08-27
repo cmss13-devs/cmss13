@@ -1,5 +1,0 @@
-author: "Morrow, Frans_Feiffer (beautiful sprites)"
-delete-after: True
-changes:
-  - rscadd: "Added in built HUDs to various helmets"
-  - rscadd: "Sensormates used by squads without medical skills have been converted to buyable helmet optics"

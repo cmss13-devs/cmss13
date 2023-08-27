@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Telephones can now receive calls from multiple networks."
-  - rscadd: "Adds UPP, CLF and WY prefab phones."
-  - bugfix: "UPP RTO pack is now titled UPP rather than USCM"

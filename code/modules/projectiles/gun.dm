@@ -1512,8 +1512,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))
 			return
-
-		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED)) //If we're not holding the weapon with both hands when we should.
+		if(active_attachable)
+			if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+				if(!(active_attachable.flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(flags_item & WIELDED))
+					to_chat(user, SPAN_WARNING("You must wield [src] to fire [active_attachable]!"))
+					return
+		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED) && !active_attachable) //If we're not holding the weapon with both hands when we should.
 			to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
 			return
 

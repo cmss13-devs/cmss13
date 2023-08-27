@@ -37639,6 +37639,15 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/navigation)
+"grO" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering/starboard)
 "grR" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -39859,6 +39868,19 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
+"hof" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering/port)
 "hon" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
@@ -47495,6 +47517,9 @@
 /area/almayer/hallways/starboard_umbilical)
 "kIo" = (
 /obj/structure/bed/stool,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -53173,6 +53198,9 @@
 	},
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = -4
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -63271,7 +63299,9 @@
 	},
 /area/almayer/hallways/port_umbilical)
 "rBn" = (
-/obj/structure/machinery/power/apc/fully_broken/no_cell,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "orange"
@@ -63739,6 +63769,15 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"rJr" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering/starboard)
 "rJu" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -66684,6 +66723,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
+"tcy" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering/port)
 "tcP" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -70739,6 +70787,18 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"uKq" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering/port)
 "uKv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/multitool{
@@ -77002,6 +77062,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/engineering_workshop)
+"xlZ" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering/port)
 "xmg" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -79233,6 +79302,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
+"yeI" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering/starboard)
 "yeN" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8
@@ -130354,7 +130429,7 @@ bdH
 bdH
 bdH
 cuC
-bNM
+grO
 vxQ
 ptK
 ptK
@@ -130394,7 +130469,7 @@ jWh
 jWh
 jWh
 ygJ
-uIv
+xlZ
 bYn
 aaa
 aaa
@@ -131372,7 +131447,7 @@ cuC
 bNM
 aMk
 tfb
-trB
+rJr
 fKr
 pVZ
 pVZ
@@ -131407,7 +131482,7 @@ qMu
 qMu
 kvS
 ylA
-xXa
+tcy
 jqu
 uIv
 bYn
@@ -132015,7 +132090,7 @@ xVk
 xVk
 aad
 bYn
-kXo
+uKq
 uWV
 syx
 bYn
@@ -132996,7 +133071,7 @@ aad
 xBE
 lMZ
 rtd
-fcP
+yeI
 cuC
 ajZ
 xVk
@@ -133032,7 +133107,7 @@ aad
 bYn
 fAi
 uWV
-mHk
+hof
 bYn
 ajZ
 bdH

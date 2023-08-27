@@ -59297,7 +59297,7 @@
 /area/almayer/hallways/port_hallway)
 "quN" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/tl{
-	req_one_access = ы18)
+	req_one_access = list(18,32)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

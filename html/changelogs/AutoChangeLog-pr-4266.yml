@@ -1,0 +1,4 @@
+author: "Xufysz"
+delete-after: True
+changes:
+  - bugfix: "Fixes the kitchen soda fountain being wrenchable."

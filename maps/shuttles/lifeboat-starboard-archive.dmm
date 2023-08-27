@@ -102,7 +102,7 @@
 /area/shuttle/lifeboat)
 "lS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D4";
+	id = "Boat2-D2";
 	throw_dir = 2
 	},
 /turf/open/shuttle/lifeboat,
@@ -159,17 +159,8 @@
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
-"uX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D2";
-	throw_dir = 1
-	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
-/area/shuttle/lifeboat)
 "vG" = (
-/obj/docking_port/mobile/lifeboat/port,
+/obj/docking_port/mobile/lifeboat/starboard,
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,0"
 	},
@@ -181,15 +172,6 @@
 "xI" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "25,3"
-	},
-/area/shuttle/lifeboat)
-"ya" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D1";
-	throw_dir = 1
-	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
 	},
 /area/shuttle/lifeboat)
 "zv" = (
@@ -254,7 +236,7 @@
 /area/shuttle/lifeboat)
 "Ep" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D3";
+	id = "Boat2-D1";
 	throw_dir = 2
 	},
 /turf/open/shuttle/lifeboat,
@@ -375,11 +357,6 @@
 	icon_state = "12,0"
 	},
 /area/shuttle/lifeboat)
-"Qj" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
-/area/shuttle/lifeboat)
 "Rk" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "25,5"
@@ -394,12 +371,6 @@
 "RR" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "23,6"
-	},
-/area/shuttle/lifeboat)
-"SA" = (
-/turf/open/shuttle/lifeboat{
-	dir = 1;
-	icon_state = "plating_striped"
 	},
 /area/shuttle/lifeboat)
 "Td" = (
@@ -548,8 +519,8 @@ GD
 ho
 "}
 (9,1,1) = {"
-ya
-SA
+Bf
+kE
 OO
 VZ
 OO
@@ -557,8 +528,8 @@ AF
 Ep
 "}
 (10,1,1) = {"
-Qj
-SA
+Bf
+kE
 OO
 VZ
 OO
@@ -566,8 +537,8 @@ AF
 OO
 "}
 (11,1,1) = {"
-Qj
-SA
+Bf
+kE
 OO
 VZ
 OO
@@ -593,8 +564,8 @@ GD
 Qa
 "}
 (14,1,1) = {"
-uX
-SA
+Bf
+kE
 OO
 VZ
 OO
@@ -602,8 +573,8 @@ AF
 lS
 "}
 (15,1,1) = {"
-Qj
-SA
+Bf
+kE
 OO
 VZ
 OO
@@ -611,8 +582,8 @@ AF
 OO
 "}
 (16,1,1) = {"
-Qj
-SA
+Bf
+kE
 OO
 VZ
 OO

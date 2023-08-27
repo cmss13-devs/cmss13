@@ -1359,7 +1359,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 /obj/structure/machinery/power/apc/antag
 	cell_type = /obj/item/cell/apc
-	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
 
 //------Almayer APCs ------//
 

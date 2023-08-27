@@ -410,3 +410,16 @@
   - rscadd: Telephones can now receive calls from multiple networks.
   - rscadd: Adds UPP, CLF and WY prefab phones.
   - bugfix: UPP RTO pack is now titled UPP rather than USCM
+2023-08-27:
+  AnuvKH:
+  - maptweak: Fixed deep ocean around NV monsoon, removed incend ammo.
+  Diegoflores31:
+  - bugfix: Glasses with flash protection can no longer be used for welding.
+  - refactor: Adds defines for negative welding protection.
+  Morrow:
+  - bugfix: fixed a bypass to allow ghost scan health when it should not be allowed
+  cuberound:
+  - rscadd: UPP SL gets proper bag with mini fire extinguisher three WP grenades ,
+      two snacks and an AP mag
+  harryob:
+  - bugfix: whispering no longer uses the old speech bubble

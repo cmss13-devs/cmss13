@@ -20,14 +20,14 @@
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
 
-	var/info //What's actually written on the paper.
-	var/info_links //A different version of the paper which includes html links at fields and EOF
-	var/stamps //The (text for the) stamps on the paper.
-	var/fields //Amount of user created fields
+	var/info		//What's actually written on the paper.
+	var/info_links	//A different version of the paper which includes html links at fields and EOF
+	var/stamps		//The (text for the) stamps on the paper.
+	var/fields		//Amount of user created fields
 	var/list/stamped
-	var/ico[0] //Icons and
-	var/offset_x[0] //offsets stored for later
-	var/offset_y[0] //usage by the photocopier
+	var/ico[0]		//Icons and
+	var/offset_x[0]	//offsets stored for later
+	var/offset_y[0]	//usage by the photocopier
 	var/rigged = 0
 	var/spam_flag = 0
 
@@ -271,13 +271,10 @@
 		t = replacetext(t, "\[row\]", "")
 		t = replacetext(t, "\[cell\]", "")
 		t = replacetext(t, "\[logo\]", "")
-
+		t = replacetext(t, "#", "") // Junk converted to nothing!
 		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
-
-// t = replacetext(t, "#", "") // Junk converted to nothing!
-
-//Count the fields
-	var/laststart = 1
+		
+	var/laststart = 1	//Count the fields
 	while(1)
 		var/i = findtext(t, "<span class=\"paper_field\">", laststart)
 		if(i==0)

@@ -12,7 +12,12 @@
 	linked_dummy = null
 	. = ..()
 
-/obj/item/device/professor_dummy_tablet/proc/is_adjacent_to_dummy(mob/user as mob)
+/**
+ * Checks if the user is adjacent to the dummy.
+ * @param user The user to check.
+ * @return TRUE if the user is adjacent to the dummy, FALSE otherwise.
+*/
+/obj/item/device/professor_dummy_tablet/proc/is_adjacent_to_dummy(mob/user)
 	if (get_dist(linked_dummy, user) > 1)
 		to_chat(user, "You are too far away to use the tablet.")
 		return FALSE
@@ -27,7 +32,7 @@
 	interact(user)
 
 /obj/item/device/professor_dummy_tablet/interact(mob/user as mob)
-	if (linked_dummy == null)
+	if (isnull(linked_dummy))
 		return
 
 	if (!is_adjacent_to_dummy(user))

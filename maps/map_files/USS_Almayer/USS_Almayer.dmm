@@ -60064,7 +60064,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
-	id_tag = "tc04";
+	id_tag = "tc02";
 	name = "\improper Treatment Center"
 	},
 /turf/open/floor/almayer{
@@ -62940,7 +62940,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
-	id_tag = "tc04";
+	id_tag = "tc01";
 	name = "\improper Treatment Center"
 	},
 /turf/open/floor/almayer{

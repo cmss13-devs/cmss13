@@ -235,6 +235,7 @@
 	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_WRENCH))
 		if(!wrenchable)
 			to_chat(user, "[src] cannot be unwrenched.")
+			return
 
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return

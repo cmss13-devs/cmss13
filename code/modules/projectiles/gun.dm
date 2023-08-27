@@ -1343,10 +1343,11 @@ and you're good to go.
 
 	//The following relating to bursts was borrowed from Fire code.
 	var/check_for_attachment_fire = FALSE
-	if(active_attachable?.flags_attach_features & ATTACH_PROJECTILE)
-		check_for_attachment_fire = TRUE
-	else
-		active_attachable.activate_attachment(src, null, TRUE)//No way.
+	if(active_attachable)
+		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+			check_for_attachment_fire = TRUE
+		else
+			active_attachable.activate_attachment(src, null, TRUE)//No way.
 
 
 	var/bullets_to_fire = 1

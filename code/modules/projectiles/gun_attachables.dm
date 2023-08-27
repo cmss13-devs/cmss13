@@ -1131,9 +1131,9 @@ Defined in conflicts.dm of the #defines folder.
 	/// How far out the player should see by default
 	var/start_scope_range = 12
 	/// The bare minimum distance the scope can be from the player
-	var/min_scope_range = 12
+	var/min_scope_range = 15
 	/// The maximum distance the scope can be from the player
-	var/max_scope_range = 22
+	var/max_scope_range = 25
 	/// How far in the perpendicular axis the scope can move in either direction
 	var/perpendicular_scope_range = 7 // Might want to redo this to be something better or more sane
 	/// How far in each direction the scope should see. Default human view size is 7

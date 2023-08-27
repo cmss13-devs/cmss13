@@ -13,10 +13,12 @@
 	. = ..()
 
 /**
- * Checks if the user is adjacent to the dummy.
- * @param user The user to check.
- * @return TRUE if the user is adjacent to the dummy, FALSE otherwise.
-*/
+ * Checks if the user is adjacent to the dummy
+ *
+ * Returns TRUE if the user is adjacent to the dummy, FALSE otherwise
+ *
+ * * arg-1: The user
+ */
 /obj/item/device/professor_dummy_tablet/proc/is_adjacent_to_dummy(mob/user)
 	if (get_dist(linked_dummy, user) > 1)
 		to_chat(user, "You are too far away to use the tablet.")

@@ -26338,6 +26338,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
+"cIw" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/bridgebunks)
 "cIC" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
@@ -28678,7 +28686,9 @@
 /area/almayer/shipboard/brig/lobby)
 "dxY" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/emails{
+	pixel_y = 4
+	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -54886,6 +54896,9 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
+/obj/structure/machinery/status_display{
+	pixel_y = -29
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -58595,7 +58608,6 @@
 /obj/structure/machinery/computer/emails{
 	dir = 1
 	},
-/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_missiles)
 "pxf" = (
@@ -66029,6 +66041,16 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
+"sqG" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/structure/machinery/status_display{
+	pixel_y = -29
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/pilotbunks)
 "sqW" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/item/seeds/tomatoseed,
@@ -77675,6 +77697,9 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "wQH" = (
 /obj/structure/closet/secure_closet/staff_officer/gear,
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -80135,6 +80160,14 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
+"xKl" = (
+/obj/structure/machinery/status_display{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/bridgebunks)
 "xMf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -102537,9 +102570,9 @@ jfL
 jmY
 mKq
 ceK
-ceK
+cIw
+xKl
 mkg
-ceK
 aES
 cWy
 brS
@@ -104542,7 +104575,7 @@ byT
 weD
 nwL
 amd
-nwL
+sqG
 aiX
 awY
 avU

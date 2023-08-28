@@ -12,7 +12,7 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	darkness_view = 12
 	invisa_view = 2
-	eye_protection = -1
+	eye_protection = EYE_PROTECTION_NEGATIVE
 	deactive_state = "goggles_off"
 	fullscreen_vision = /atom/movable/screen/fullscreen/thermal
 	var/blinds_on_emp = TRUE

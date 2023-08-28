@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return ARES_ACCESS_CO
 	if(ACCESS_MARINE_SENIOR in card.access)
 		return ARES_ACCESS_SENIOR
-	if(ACCESS_WY_CORPORATE in card.access)
+	if(ACCESS_WY_GENERAL in card.access)
 		return ARES_ACCESS_CORPORATE
 	if(ACCESS_MARINE_COMMAND in card.access)
 		return ARES_ACCESS_COMMAND
@@ -563,7 +563,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested a Distress Beacon (via ARES)! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+			SSticker.mode.request_ert(usr, TRUE)
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM High Command."))
 			COOLDOWN_START(src, ares_distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
@@ -613,7 +613,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return APOLLO_ACCESS_AUTHED
 	if(ACCESS_MARINE_AI_TEMP in card.access)
 		return APOLLO_ACCESS_TEMP
-	if((ACCESS_MARINE_SENIOR in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_CORPORATE in card.access))
+	if((ACCESS_MARINE_SENIOR in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_GENERAL in card.access))
 		return APOLLO_ACCESS_REPORTER
 	else
 		return APOLLO_ACCESS_REQUEST

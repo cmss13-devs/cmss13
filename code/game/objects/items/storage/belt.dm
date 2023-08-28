@@ -16,6 +16,26 @@
 	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
 
+/obj/item/storage/belt/gun/flaregun/dump_into(obj/item/storage/origin_storage, mob/user)
+
+	if(length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+
+		to_chat(user, SPAN_WARNING("[src] is full."))
+		return FALSE
+	return ..()
+
+/obj/item/storage/belt/gun/flaregun/handle_item_insertion(obj/item/new_item, prevent_warning = FALSE, mob/user)
+
+	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+		return FALSE
+	return ..()
+
+/obj/item/storage/belt/gun/flaregun/has_room(obj/item/new_item, W_class_override = null)
+
+	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+		return FALSE //No slot open because gun in holster.
+	return ..()
+
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE, WEAR_BACK)
@@ -371,6 +391,7 @@
 	new /obj/item/weapon/baton(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/ammo_magazine/revolver/upp/shrapnel(src)
 
 /obj/item/storage/belt/security/MP/CMB
 	name = "\improper CMB duty belt"
@@ -766,7 +787,7 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/weapon/throwing_knife(src)
 
-/obj/item/storage/belt/knifepouch/_item_insertion(obj/item/W, prevent_warning = 0)
+/obj/item/storage/belt/knifepouch/_item_insertion(obj/item/new_item, prevent_warning = FALSE)
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
@@ -913,6 +934,7 @@
 	for(var/slot in holster_slots)
 		if(AM == holster_slots[slot]["gun"])
 			holster_slots[slot]["gun"] = null
+
 			update_gun_icon(slot)
 			return
 
@@ -988,7 +1010,7 @@
 			to_chat(usr, SPAN_WARNING("[src] can't hold any more ammo."))
 		return FALSE
 
-/obj/item/storage/belt/gun/_item_insertion(obj/item/W, prevent_warning = 0)
+/obj/item/storage/belt/gun/_item_insertion(obj/item/W, prevent_warning = FALSE)
 	if(isgun(W))
 		holstered_guns += W
 		for(var/slot in holster_slots)
@@ -1384,37 +1406,50 @@
 
 /obj/item/storage/belt/gun/type47
 	name = "\improper Type 47 pistol holster rig"
-	desc = "This UPP-designed sidearm rig can very snugly and securely fit either a Nagant-Yamasaki revolver or a Korovin PK-9, and both their magazines or speedloaders. However, it lacks versatility in stored weaponry."
+	desc = "This UPP-designed sidearm rig can very snugly and securely fit a Type-73, NP92, or a ZHNK-72, and their magazines or speedloaders. However, it lacks versatility in stored weaponry."
 	icon_state = "korovin_holster"
 	item_state = "upp_belt"
 	storage_slots = 7
 	can_hold = list(
-		/obj/item/weapon/gun/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99/tranq,
-		/obj/item/weapon/gun/revolver/nagant,
+		/obj/item/weapon/gun/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73_impact,
+		/obj/item/weapon/gun/pistol/np92,
+		/obj/item/ammo_magazine/pistol/np92,
+		/obj/item/ammo_magazine/pistol/np92/tranq,
+		/obj/item/weapon/gun/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp/shrapnel,
 	)
 	holster_slots = list("1" = list("icon_x" = -1))
 
-/obj/item/storage/belt/gun/type47/PK9/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/c99/upp())
+/obj/item/storage/belt/gun/type47/np92/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/np92())
 	for(var/i = 1 to storage_slots - 1)
-		new /obj/item/ammo_magazine/pistol/c99(src)
+		new /obj/item/ammo_magazine/pistol/np92(src)
 
-/obj/item/storage/belt/gun/type47/PK9/tranq/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/c99/upp/tranq())
+/obj/item/storage/belt/gun/type47/np92/suppressed/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/np92/suppressed())
 	for(var/i = 1 to storage_slots - 1)
-		new /obj/item/ammo_magazine/pistol/c99/tranq(src)
+		new /obj/item/ammo_magazine/pistol/np92/suppressed(src)
 
-/obj/item/storage/belt/gun/type47/NY/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/revolver/nagant())
+/obj/item/storage/belt/gun/type47/t73/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/t73(src)
+
+/obj/item/storage/belt/gun/type47/t73/leader/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73/leader())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/t73_impact(src)
+
+/obj/item/storage/belt/gun/type47/revolver/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/upp())
 	for(var/total_storage_slots in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/upp(src)
 
-/obj/item/storage/belt/gun/type47/NY/shrapnel/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/revolver/nagant/shrapnel())
+/obj/item/storage/belt/gun/type47/revolver/shrapnel/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/upp/shrapnel())
 	for(var/total_storage_slots in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/upp/shrapnel(src)
 

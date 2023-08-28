@@ -1,6 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - bugfix: "spraying with the hose will no cost 5u of water while spaying 5u of water."
-  - bugfix: "fixed the verb to take out the hose."
-  - bugfix: "remove the option to change the output as it was confusing for people."

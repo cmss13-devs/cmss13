@@ -32,6 +32,7 @@
 
 #define CLIENT_HAS_RIGHTS(cli, flags) ((cli?.admin_holder?.rights & flags) == flags)
 #define CLIENT_IS_STAFF(cli) (cli?.admin_holder?.rights & (R_MOD|R_ADMIN))
+#define CLIENT_IS_MENTOR(cli) CLIENT_HAS_RIGHTS(cli, R_MENTOR)
 
 #define AHOLD_IS_MOD(ahold) (ahold && (ahold.rights & R_MOD))
 #define AHOLD_IS_ADMIN(ahold) (ahold && (ahold.rights & R_ADMIN))

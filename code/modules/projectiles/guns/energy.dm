@@ -181,6 +181,7 @@
 	fire_sound = 'sound/weapons/Laser4.ogg'
 	has_charge_meter = FALSE
 	charge_icon = "+laz_uzi_empty"
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/energy/laz_uzi/set_gun_config_values()
 	..()
@@ -194,6 +195,7 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_scatter_peak = SCATTER_AMOUNT_TIER_8
 
 //############################ Taser ##################
 // Lots of bits for it so splitting off an area

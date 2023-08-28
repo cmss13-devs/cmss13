@@ -923,32 +923,19 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
-			var/ticket_holder
-			var/priority_report = FALSE
-			var/is_self = tgui_alert(operator, "Is this request for yourself?", "Ticket Holder", list("Yes", "No"))
-			if(is_self == "No")
-				ticket_holder = tgui_input_text(operator, "Who is the ticket for? (Please use precise name, with punctuation and capitalisation.)", "Ticket Holder", encode = FALSE)
-			else if(is_self == "Yes")
-				ticket_holder = last_login
+			var/ticket_holder = last_login
 			if(!ticket_holder)
 				return FALSE
 			var/details = tgui_input_text(operator, "What is the purpose of this access ticket?", "Ticket Details", encode = FALSE)
 			if(!details)
 				return FALSE
 
-			if(authentication >= APOLLO_ACCESS_AUTHED)
-				var/is_priority = tgui_alert(operator, "Is this a priority request?", "Priority designation", list("Yes", "No"))
-				if(is_priority == "Yes")
-					priority_report = TRUE
-
-			var/confirm = alert(operator, "Please confirm the submission of your access ticket request. \n\n Priority: [priority_report ? "Yes" : "No"] \n Holder: '[ticket_holder]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
+			var/confirm = alert(operator, "Please confirm the submission of your access ticket request. \n\nHolder: '[ticket_holder]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
 			if(confirm != "Yes" || !link)
 				return FALSE
-			var/datum/ares_ticket/access/access_ticket = new(last_login, ticket_holder, details, priority_report, idcard.registered_gid)
+			var/datum/ares_ticket/access/access_ticket = new(last_login, ticket_holder, details, FALSE, idcard.registered_gid)
 			link.waiting_ids += idcard
 			link.tickets_access += access_ticket
-			if(priority_report)
-				ares_apollo_talk("Priority Access Request: [ticket_holder] - ID [access_ticket.ticket_id]. Seek and resolve.")
 			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
 			return TRUE
 

@@ -604,7 +604,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/original_state = "flashlight"
 	var/original_attach = "flashlight_a"
 
-	var/helm_mounted_light_mod = 5
+	var/helm_mounted_light_power = 2
+	var/helm_mounted_light_range = 3
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
@@ -671,8 +672,8 @@ Defined in conflicts.dm of the #defines folder.
 			attach_icon += "-on"
 			light_on = TRUE
 		attached_item.update_icon()
-		attached_item.set_light_range(helm_mounted_light_mod)
-		attached_item.set_light_power(helm_mounted_light_mod)
+		attached_item.set_light_range(helm_mounted_light_range)
+		attached_item.set_light_power(helm_mounted_light_power)
 		attached_item.set_light_on(light_on)
 		activation.update_button_icon()
 		return

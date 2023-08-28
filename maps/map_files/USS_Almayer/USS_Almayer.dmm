@@ -37163,8 +37163,7 @@
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
 	pixel_x = 17;
-	pixel_y = -6;
-	ticket_console = 1
+	pixel_y = -6
 	},
 /obj/item/storage/box/ids{
 	pixel_x = -4
@@ -54819,8 +54818,7 @@
 	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
-	pixel_x = 17;
-	ticket_console = 1
+	pixel_x = 17
 	},
 /obj/structure/sign/safety/laser{
 	pixel_y = 24
@@ -72955,8 +72953,7 @@
 	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 4;
-	pixel_x = -17;
-	ticket_console = 1
+	pixel_x = -17
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"

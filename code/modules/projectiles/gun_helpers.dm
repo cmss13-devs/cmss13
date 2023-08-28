@@ -938,8 +938,8 @@ DEFINES in setup.dm, referenced here.
 		return null
 	return params2turf(modifiers["screen-loc"], get_turf(user), user.client)
 
-/// If this gun has a relevant flashlight attachable attached, deactivate it
-/obj/item/weapon/gun/proc/force_light_off()
+/// If this gun has a relevant flashlight attachable attached, (de)activate it
+/obj/item/weapon/gun/proc/force_light(on)
 	var/obj/item/attachable/flashlight/torch
 	for(var/slot in attachments)
 		torch = attachments[slot]
@@ -947,5 +947,5 @@ DEFINES in setup.dm, referenced here.
 			break
 	if(!torch)
 		return FALSE
-	torch.turn_light(toggle_on = FALSE, forced = TRUE)
+	torch.turn_light(toggle_on = on, forced = TRUE)
 	return TRUE

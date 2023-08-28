@@ -66,7 +66,7 @@ const MainMenu = (props, context) => {
   const { logged_in, access_text, last_page, current_menu, access_level } =
     data;
   let can_request_access = 'Yes';
-  if (access_level === 3) {
+  if (access_level > 2) {
     can_request_access = 'No';
   }
 
@@ -696,6 +696,7 @@ const AccessRequests = (props, context) => {
             fontSize="1.5rem"
             mt="5rem"
             onClick={() => act('new_access')}
+            disabled={access_level > 2}
           />
         </Flex>
 

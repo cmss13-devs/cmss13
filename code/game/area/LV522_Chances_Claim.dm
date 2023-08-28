@@ -52,7 +52,6 @@
 	name = "Chance's Claim - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_shiva.dmi'
-	lighting_use_dynamic = TRUE
 
 /area/lv522/landing_zone_1/lz1_console
 	name = "Chance's Claim - Dropship Alamo Console"
@@ -75,7 +74,6 @@
 	name = "Chance's Claim - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_shiva.dmi'
-	lighting_use_dynamic = TRUE
 
 /area/lv522/landing_zone_2/lz2_console
 	name = "Chance's Claim - Dropship Normandy Console"

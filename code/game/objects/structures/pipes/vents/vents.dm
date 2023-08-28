@@ -18,8 +18,6 @@
 	. = ..()
 
 	initial_loc = get_area(loc)
-	if(initial_loc.master)
-		initial_loc = initial_loc.master
 	area_uid = initial_loc.uid
 	if(!id_tag)
 		assign_uid()

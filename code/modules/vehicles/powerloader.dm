@@ -6,7 +6,7 @@
 	layer = POWERLOADER_LAYER //so the top appears above windows and wall mounts
 	anchored = TRUE
 	density = TRUE
-	luminosity = 5
+	light_range = 5
 	move_delay = 8
 	buckling_y = 9
 	health = 200

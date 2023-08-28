@@ -38,16 +38,14 @@
 
 	var/turf/root = get_turf(user)
 	var/facing = user.dir
-	// List containing the 3 tiles in front of the user
-	var/list/in_front = list(get_step(root, facing),  get_step(root, turn(facing, 45)),  get_step(root, turn(facing, -45)))
+	var/turf/in_front = get_step(root, facing)
 
-	// We check each tile in front of us, if it has flora that can be cut we will attempt to cut it
-	for(var/turf/current_turf in in_front)
-		for(var/obj/structure/flora/target in current_turf)
-			if(target.cut_level > 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					return
-				target.attackby(src, user)
+	// We check the tile in front of us, if it has flora that can be cut we will attempt to cut it
+	for(var/obj/structure/flora/target in in_front)
+		if(target.cut_level > 1)
+			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				return
+			target.attackby(src, user)
 
 	return ..()
 

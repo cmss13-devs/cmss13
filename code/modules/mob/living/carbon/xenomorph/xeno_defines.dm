@@ -351,6 +351,8 @@
 	var/hugger_timelock = 15 MINUTES
 	/// How many huggers can the hive support
 	var/playable_hugger_limit = 0
+	/// Minimum number of huggers available at any hive size
+	var/playable_hugger_minimum = 2
 
 	/// How many lesser drones the hive can support
 	var/lesser_drone_limit = 0
@@ -1035,7 +1037,15 @@
 	return TRUE
 
 /datum/hive_status/proc/update_hugger_limit()
-	playable_hugger_limit = 2 + Ceiling(totalXenos.len / 4)
+	var/iterator = 0
+	for(var/mob/living/carbon/xenomorph/cycled_xeno in totalXenos)
+		if(cycled_xeno.counts_for_slots)
+			iterator++
+		if(iterator >= 4)
+			playable_hugger_limit++
+			iterator = 0
+
+	playable_hugger_limit = max(playable_hugger_limit, playable_hugger_minimum)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -1086,7 +1096,15 @@
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
 
 /datum/hive_status/proc/update_lesser_drone_limit()
-	lesser_drone_limit = lesser_drone_minimum + Ceiling(length(totalXenos) / 3)
+	var/iterator = 0
+	for(var/mob/living/carbon/xenomorph/cycled_xeno in totalXenos)
+		if(cycled_xeno.counts_for_slots)
+			iterator++
+		if(iterator >= 3)
+			lesser_drone_limit++
+			iterator = 0
+
+	lesser_drone_limit = max(lesser_drone_limit, lesser_drone_minimum)
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -1119,9 +1137,6 @@
 	for(var/mob/mob as anything in totalXenos)
 		if(islesserdrone(mob))
 			current_lesser_drone_count++
-
-	if(tgui_alert(user, "Are you sure you want to become a lesser drone?", "Confirmation", list("Yes", "No")) != "Yes")
-		return FALSE
 
 	if(lesser_drone_limit <= current_lesser_drone_count)
 		to_chat(user, SPAN_WARNING("[GLOB.hive_datum[hivenumber]] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))

@@ -1074,6 +1074,7 @@
 	. = ..()
 	if (.)
 		UnregisterSignal(src, COMSIG_XENO_PRE_HEAL)
+		handle_luminosity()
 
 /mob/living/carbon/xenomorph/proc/cancel_heal()
 	SIGNAL_HANDLER

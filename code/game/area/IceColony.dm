@@ -64,6 +64,7 @@
 	name = "\improper Emergency Landing Pad"
 	icon_state = "landing_pad"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 
 //Everything around the physical landing pad
@@ -78,6 +79,7 @@
 	name = "\improper Aerodrome Container Yard"
 	icon_state = "container_yard"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 //
 // Valleys

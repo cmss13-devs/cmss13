@@ -757,7 +757,7 @@
 				dat += "<b>Internal Surgery</b>"
 				dat += "<br>"
 				if(isnull((surgeryqueue["organdamage"])))
-					dat += "<a href='?src=\ref[src];organdamage=1'>LiOrgan Treatment Procedure</a><br>"
+					dat += "<a href='?src=\ref[src];organdamage=1'>Organ Treatment Procedure</a><br>"
 				if(isnull((surgeryqueue["internal"])))
 					dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
 				if(isnull((surgeryqueue["broken"])))

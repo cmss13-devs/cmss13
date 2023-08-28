@@ -53,10 +53,13 @@
 #define TICKET_REJECTED "rejected"
 /// Completed by WJs
 #define TICKET_COMPLETED "completed"
+
 /// Granted Access Ticket
 #define TICKET_GRANTED "granted"
-/// Granted Access Ticket
+/// Revoked Access Ticket
 #define TICKET_REVOKED "revoked"
+/// Self-Returned Access Ticket
+#define TICKET_RETURNED "returned"
 
 /// Checks for if buttons can be used, these may yet be removed and internalised to the UI programming
 #define TICKET_OPEN "OPEN"

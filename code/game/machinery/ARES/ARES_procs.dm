@@ -944,7 +944,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 
-				access_ticket.ticket_status = TICKET_REVOKED
+				access_ticket.ticket_status = TICKET_RETURNED
 				identification.access -= ACCESS_MARINE_AI_TEMP
 				identification.modification_log += "Temporary AI Access self-returned by [key_name(operator)]."
 

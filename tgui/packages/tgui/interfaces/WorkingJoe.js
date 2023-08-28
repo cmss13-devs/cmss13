@@ -738,6 +738,9 @@ const AccessRequests = (props, context) => {
           } else if (ticket.status === 'revoked') {
             view_status = 'Access ticket has been revoked.';
             view_icon = 'circle-minus';
+          } else if (ticket.status === 'returned') {
+            view_status = 'Access ticket has been returned.';
+            view_icon = 'circle-minus';
           }
           let can_cancel = 'Yes';
           if (ticket.submitter !== logged_in) {
@@ -886,6 +889,11 @@ const AccessTickets = (props, context) => {
             view_status = 'Access ticket has been revoked.';
             view_icon = 'circle-minus';
             update_tooltip = 'Access revoked. No further changes possible.';
+          } else if (ticket.status === 'returned') {
+            view_status = 'Access ticket has been returned.';
+            view_icon = 'circle-minus';
+            update_tooltip =
+              'Access self-returned. No further changes possible.';
           }
 
           return (

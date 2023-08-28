@@ -622,17 +622,19 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /obj/structure/machinery/computer/working_joe/ares_auth_to_text(access_level)
 	switch(access_level)
-		if(APOLLO_ACCESS_REQUEST)//0
+		if(APOLLO_ACCESS_LOGOUT)//0
+			return "Logged Out"
+		if(APOLLO_ACCESS_REQUEST)//1
 			return "Unauthorized Personnel"
-		if(APOLLO_ACCESS_REPORTER)//1
+		if(APOLLO_ACCESS_REPORTER)//2
 			return "Validated Incident Reporter"
-		if(APOLLO_ACCESS_TEMP)//2
+		if(APOLLO_ACCESS_TEMP)//3
 			return "Authorized Visitor"
-		if(APOLLO_ACCESS_AUTHED)//3
+		if(APOLLO_ACCESS_AUTHED)//4
 			return "Certified Personnel"
-		if(APOLLO_ACCESS_JOE)//4
+		if(APOLLO_ACCESS_JOE)//5
 			return "Working Joe"
-		if(APOLLO_ACCESS_DEBUG)//5
+		if(APOLLO_ACCESS_DEBUG)//6
 			return "AI Service Technician"
 
 // ------ Maintenance Controller UI ------ //

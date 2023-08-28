@@ -165,7 +165,7 @@
 			F.forceMove(Target)
 			F.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 			step_away(F,src,rand(1,5))
-			F.SetLuminosity(0)
+			F.set_light(0)
 			if(F.on && loc != user)
-				F.SetLuminosity(F.brightness_on)
+				F.set_light_on(F.on)
 		return

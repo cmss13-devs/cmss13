@@ -14,7 +14,7 @@
 	if(SSticker?.mode?.hardcore)
 		ghostize()
 
-	SetLuminosity(0)
+	set_light_range(0)
 
 	if(pulledby)
 		pulledby.stop_pulling()

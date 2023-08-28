@@ -158,6 +158,30 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/cargo)
+"agi" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
 "agl" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
@@ -1540,6 +1564,19 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/north)
+"aXn" = (
+/obj/structure/prop/rock/brown,
+/obj/effect/landmark/lv624/fog_blocker{
+	time_to_dispel = 25000
+	},
+/obj/effect/landmark/lv624/fog_blocker{
+	time_to_dispel = 25000
+	},
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/eastocean)
 "aXt" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/blood/oil,
@@ -6621,6 +6658,18 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/medical)
+"esA" = (
+/obj/effect/landmark/lv624/fog_blocker{
+	time_to_dispel = 25000
+	},
+/obj/effect/landmark/lv624/fog_blocker{
+	time_to_dispel = 25000
+	},
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/eastocean)
 "esB" = (
 /obj/structure/closet/radiation,
 /obj/effect/landmark/crap_item,
@@ -8973,6 +9022,16 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/exterior/eastbeach)
+"fPy" = (
+/obj/structure/prop/rock/brown,
+/obj/effect/landmark/lv624/fog_blocker{
+	time_to_dispel = 25000
+	},
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/eastocean)
 "fPJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
@@ -10420,13 +10479,6 @@
 	icon_state = "greenfull"
 	},
 /area/varadero/interior/hall_SE)
-"gIE" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
-/area/varadero/exterior/eastocean)
 "gJs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -12233,15 +12285,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
-"hXg" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/shiva{
-	icon_state = "green"
-	},
-/area/varadero/interior/court)
 "hXq" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -17733,6 +17776,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/comms1)
+"lxs" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/eastocean)
 "lxy" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/shiva{
@@ -20015,16 +20065,6 @@
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
-"mRk" = (
-/obj/structure/prop/rock/brown,
-/obj/effect/landmark/lv624/fog_blocker{
-	time_to_dispel = 25000
-	},
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
-/area/varadero/exterior/eastocean)
 "mRq" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -24535,19 +24575,6 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/maintenance)
-"pNZ" = (
-/obj/structure/prop/rock/brown,
-/obj/effect/landmark/lv624/fog_blocker{
-	time_to_dispel = 25000
-	},
-/obj/effect/landmark/lv624/fog_blocker{
-	time_to_dispel = 25000
-	},
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
-/area/varadero/exterior/eastocean)
 "pOa" = (
 /obj/structure/largecrate/supply,
 /turf/open/floor/plating/icefloor{
@@ -26171,15 +26198,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/research)
-"qNr" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	icon_state = "sparsegrass_2"
-	},
-/obj/effect/landmark/lv624/fog_blocker{
-	time_to_dispel = 25000
-	},
-/turf/open/gm/coast/beachcorner2/north_west,
-/area/varadero/exterior/eastocean)
 "qNu" = (
 /turf/open/gm/dirt{
 	icon_state = "desert1"
@@ -28386,15 +28404,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
-"sfo" = (
-/obj/effect/landmark/lv624/fog_blocker{
-	time_to_dispel = 25000
-	},
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
-/area/varadero/exterior/eastocean)
 "sfs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -31115,6 +31124,17 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/hall_NW)
+"tTq" = (
+/obj/effect/landmark/lv624/fog_blocker{
+	time_to_dispel = 25000
+	},
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/farocean)
 "tTN" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -32077,18 +32097,6 @@
 /obj/item/device/flashlight/lamp/green,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
-"uDr" = (
-/obj/effect/landmark/lv624/fog_blocker{
-	time_to_dispel = 25000
-	},
-/obj/effect/landmark/lv624/fog_blocker{
-	time_to_dispel = 25000
-	},
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
-/area/varadero/exterior/eastocean)
 "uDw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -32219,31 +32227,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/disposals)
-"uIj" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/structure/barricade/handrail/wire{
-	layer = 3.1
-	},
-/obj/item/ammo_magazine/handful/shotgun/incendiary,
-/turf/open/floor/wood,
-/area/varadero/interior/bunks)
 "uIl" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -34499,6 +34482,32 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
+"vYQ" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
 "vYW" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves)
@@ -34946,17 +34955,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/technical_storage)
-"wkJ" = (
-/obj/effect/landmark/lv624/fog_blocker{
-	time_to_dispel = 25000
-	},
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/river/ocean{
-	name = "deep ocean";
-	default_name = "deep ocean"
-	},
-/area/varadero/exterior/farocean)
 "wkM" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -35285,6 +35283,18 @@
 	icon_state = "asteroidfloor"
 	},
 /area/varadero/exterior/eastbeach)
+"wts" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_2"
+	},
+/obj/effect/landmark/lv624/fog_blocker{
+	time_to_dispel = 25000
+	},
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/eastocean)
 "wty" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva{
@@ -50142,7 +50152,7 @@ bZU
 qOh
 rtm
 bZU
-oXw
+bZU
 bwP
 mrC
 wMw
@@ -50860,7 +50870,7 @@ bZU
 bZU
 bZU
 bZU
-bZU
+oXw
 bZU
 bZU
 bZU
@@ -54388,7 +54398,7 @@ iLd
 iTP
 jZG
 tNE
-uIj
+vYQ
 lgb
 fEI
 wfy
@@ -54732,7 +54742,7 @@ eMi
 qRy
 moK
 hPD
-hXg
+uQH
 riJ
 aQc
 qqA
@@ -55298,7 +55308,7 @@ bAE
 kIg
 nmC
 ben
-uIj
+agi
 hDk
 aZb
 rAy
@@ -63604,7 +63614,7 @@ wlB
 nFX
 ias
 lTg
-aAX
+wlB
 lTg
 lTg
 iQr
@@ -64322,7 +64332,7 @@ wlB
 wlB
 wlB
 wlB
-wlB
+aAX
 wlB
 wlB
 wlB
@@ -67132,10 +67142,10 @@ bGU
 rqg
 gPi
 xeU
-xFb
-sfo
-sfo
-pNZ
+dRs
+spv
+spv
+aXn
 kyj
 gPi
 bko
@@ -67311,16 +67321,16 @@ bko
 gPi
 bko
 gPi
-qNr
-xFb
-sfo
-xFb
-sfo
-sfo
-sfo
-xFb
-xFb
-sfo
+wts
+dRs
+spv
+dRs
+spv
+spv
+spv
+dRs
+dRs
+spv
 ghN
 pZS
 kyD
@@ -67490,19 +67500,19 @@ qoI
 gPi
 xfQ
 spv
-xFb
-uDr
-xFb
-uDr
-xFb
-sfo
-xFb
-xFb
-sfo
-sfo
-xFb
-sfo
-sfo
+dRs
+esA
+dRs
+esA
+dRs
+spv
+dRs
+dRs
+spv
+spv
+dRs
+spv
+spv
 ghN
 gRj
 bGU
@@ -67670,21 +67680,21 @@ gPi
 gPi
 xfQ
 bUP
-jFL
-sfo
-xFb
-sfo
-tHc
-sfo
-xFb
-xFb
-uDr
-sfo
-sfo
-xFb
-xFb
-sfo
-xFb
+bUP
+spv
+dRs
+spv
+ulb
+spv
+dRs
+dRs
+esA
+spv
+spv
+dRs
+dRs
+spv
+dRs
 veV
 bko
 gPi
@@ -67850,25 +67860,25 @@ bUP
 bUP
 bUP
 bUP
-xFb
-xFb
-sfo
-xFb
-xFb
-sfo
-xFb
-xFb
-sfo
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-sfo
-xFb
-xFb
-sfo
+dRs
+dRs
+spv
+dRs
+dRs
+spv
+dRs
+dRs
+spv
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+spv
+dRs
+dRs
+spv
 hwE
 ghN
 pZS
@@ -68025,33 +68035,33 @@ xFb
 xFb
 dRs
 dRs
-xFb
-xFb
-xFb
-xFb
 dRs
 dRs
-xFb
-xFb
-xFb
-uDr
-xFb
-xFb
-sfo
-xFb
-xFb
-sfo
-xFb
-xFb
-xFb
-xFb
-xFb
-sfo
-sfo
-xFb
-sfo
-xFb
-xFb
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+esA
+dRs
+dRs
+spv
+dRs
+dRs
+spv
+dRs
+dRs
+dRs
+dRs
+dRs
+spv
+spv
+dRs
+spv
+dRs
+dRs
 aaG
 dkS
 qlw
@@ -68201,39 +68211,39 @@ xFb
 xFb
 xFb
 xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-tHc
 dRs
 xFb
 xFb
+xFb
+xFb
 dRs
-xFb
-xFb
-sfo
-uDr
-xFb
-xFb
-sfo
-xFb
-xFb
-xFb
-sfo
-sfo
-xFb
-xFb
-mRk
-sfo
-xFb
-sfo
-xFb
-xFb
-uDr
+dRs
+ulb
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+spv
+esA
+dRs
+dRs
+spv
+dRs
+dRs
+dRs
+spv
+spv
+dRs
+dRs
+fPy
+spv
+dRs
+spv
+dRs
+dRs
+esA
 ihC
 ghN
 pmM
@@ -68384,38 +68394,38 @@ xFb
 xFb
 xFb
 xFb
-xFb
+dRs
 xFb
 xFb
 dRs
 xFb
 xFb
-xFb
 dRs
-xFb
-xFb
-xFb
 dRs
-xFb
-uDr
-sfo
-xFb
-xFb
-sfo
-sfo
-xFb
-xFb
-xFb
-sfo
-uDr
-sfo
-sfo
-xFb
-xFb
-uDr
-xFb
-uDr
-xFb
+dRs
+dRs
+dRs
+dRs
+dRs
+esA
+spv
+dRs
+dRs
+spv
+spv
+dRs
+dRs
+dRs
+spv
+esA
+spv
+spv
+dRs
+dRs
+esA
+dRs
+esA
+dRs
 bUP
 ghN
 bGU
@@ -68572,31 +68582,31 @@ xFb
 xFb
 byC
 xFb
-xFb
-xFb
-xFb
-byC
-xFb
-byC
-xFb
-uDr
-xFb
-gIE
-xFb
-xFb
-uDr
-sfo
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-sfo
-sfo
-xFb
+dRs
+dRs
+dRs
+exX
+dRs
+exX
+dRs
+esA
+dRs
+lxs
+dRs
+dRs
+esA
+spv
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+spv
+spv
+dRs
 dRs
 bUP
 veV
@@ -68759,26 +68769,26 @@ xVw
 wBp
 wBp
 wBp
-rYC
+bBV
 wBp
 xBH
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-uDr
-sfo
-xFb
-xFb
-xFb
-xFb
-sfo
-uDr
-uDr
-xFb
-xFb
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+esA
+spv
+dRs
+dRs
+dRs
+dRs
+spv
+esA
+esA
+dRs
+dRs
 dRs
 bUP
 bUP
@@ -68934,7 +68944,7 @@ mPk
 mPk
 mPk
 mPk
-mPk
+pRa
 cJL
 mPk
 mPk
@@ -68943,25 +68953,25 @@ mPk
 mPk
 cJL
 mPk
-wkJ
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-sfo
-sfo
-sfo
-sfo
-sfo
-sfo
-xFb
-xFb
+tTq
 dRs
-xFb
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+spv
+spv
+spv
+spv
+spv
+spv
+dRs
+dRs
+dRs
+dRs
 bUP
 ucL
 ghN
@@ -69120,31 +69130,31 @@ mPk
 mPk
 mPk
 mPk
-mPk
+pRa
 mPk
 mPk
 mPk
 mPk
 rYC
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
 bUP
 ghN
 bGU
@@ -69306,27 +69316,27 @@ mPk
 mPk
 mPk
 mPk
-cJL
-wBp
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-tHc
+rUa
+mPW
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+ulb
 bUP
 veV
 jTR
@@ -69490,26 +69500,26 @@ mPk
 mPk
 mPk
 xVw
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
 bUP
 ghN
 bGU
@@ -69672,26 +69682,26 @@ mPk
 mPk
 mPk
 wBp
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
 dRs
-xFb
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
 bUP
 veV
 jTR
@@ -69852,28 +69862,28 @@ mPk
 mPk
 mPk
 mPk
-mPk
+pRa
 wBp
 byC
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
 dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+xFb
+xFb
 bUP
 bUP
 ghN
@@ -70038,26 +70048,26 @@ mPk
 rYC
 xFb
 xFb
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
 xFb
 xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
+dRs
+dRs
 tHc
-bUP
+jFL
 ghN
 bGU
 bGU
@@ -70222,24 +70232,24 @@ byC
 xFb
 xFb
 xFb
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+dRs
+xFb
+dRs
+dRs
+xFb
+dRs
+xFb
+dRs
+dRs
 xFb
 xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-xFb
-bUP
+jFL
 ghN
 vNB
 rvD
@@ -70402,18 +70412,18 @@ mPk
 wBp
 xFb
 xFb
+dRs
 xFb
+byC
+dRs
 xFb
+dRs
 byC
 xFb
 xFb
-xFb
+dRs
 byC
-xFb
-xFb
-xFb
-byC
-xFb
+dRs
 xFb
 byC
 xFb
@@ -70766,6 +70776,7 @@ mPk
 mPk
 mPk
 mPk
+pRa
 mPk
 mPk
 mPk
@@ -70775,14 +70786,13 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
+pRa
 cJL
 mPk
 mPk
 mPk
 cJL
-mPk
+pRa
 mPk
 mPk
 mPk
@@ -70951,10 +70961,10 @@ mPk
 mPk
 mPk
 mPk
+pRa
 mPk
-mPk
-mPk
-mPk
+pRa
+pRa
 mPk
 mPk
 mPk

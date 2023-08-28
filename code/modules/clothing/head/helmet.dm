@@ -360,6 +360,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	var/helmet_bash_cooldown = 0
 
+	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE.
 	valid_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
@@ -372,11 +373,27 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/storage_slots_reserved_for_garb = 1
 	var/storage_max_w_class = SIZE_TINY // can hold tiny items only, EXCEPT for glasses & metal flask.
 	var/storage_max_storage_space = 4
+
 	/// The dmi where the grayscale squad overlays are contained
 	var/helmet_overlay_icon = 'icons/mob/humans/onmob/head_1.dmi'
 
-/obj/item/clothing/head/helmet/marine/New(loc,
-	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
+	///Any visors built into the helmet
+	var/list/built_in_visors = list(new /obj/item/device/helmet_visor)
+
+	///Any visors that have been added into the helmet
+	var/list/inserted_visors = list()
+
+	///Max amount of inserted visors
+	var/max_inserted_visors = 1
+
+	///The current active visor that is shown
+	var/obj/item/device/helmet_visor/active_visor = null
+
+	///Designates a visor type that should start down when initialized
+	var/start_down_visor_type
+
+/obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
+	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -385,7 +402,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			name += " helmet"
 
 	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type,null,new_protection)
+		select_gamemode_skin(type, null, new_protection)
 
 	helmet_overlays = list() //To make things simple.
 
@@ -399,7 +416,24 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	camera = new /obj/structure/machinery/camera(src)
 	camera.network = list(CAMERA_NET_OVERWATCH)
 
-	..()
+	if(length(inserted_visors) || length(built_in_visors))
+		var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
+		LAZYADD(actions, new_action)
+		if(ishuman(loc))
+			var/mob/living/carbon/human/holding_human = loc
+			if(holding_human.head == src)
+				new_action.give_to(holding_human)
+
+	if(start_down_visor_type)
+		for(var/obj/item/device/helmet_visor/cycled_visor in (built_in_visors + inserted_visors))
+			if(cycled_visor.type == start_down_visor_type)
+				active_visor = cycled_visor
+				break
+
+		if(active_visor)
+			var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
+			if(cycle_action)
+				cycle_action.set_action_overlay(active_visor)
 
 /obj/item/clothing/head/helmet/marine/Destroy(force)
 	helmet_overlays = null
@@ -421,9 +455,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	if(pockets.handle_mousedrop(usr, over_object))
 		..()
 
-/obj/item/clothing/head/helmet/marine/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
-		var/obj/item/ammo_magazine/M = W
+/obj/item/clothing/head/helmet/marine/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
+		var/obj/item/ammo_magazine/M = attacking_item
 		var/ammo_level = "somewhat"
 		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
 		if(M.current_rounds > (M.max_rounds/2))
@@ -436,9 +470,48 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			ammo_level = "empty. Uh oh."
 		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
 		helmet_bash_cooldown = world.time + 20 SECONDS
-	else
-		..()
-		return pockets.attackby(W, user)
+		return
+
+	if(istype(attacking_item, /obj/item/device/helmet_visor))
+		if(length(inserted_visors) >= max_inserted_visors)
+			to_chat(user, SPAN_NOTICE("[src] has used all of its visor attachment sockets."))
+			return
+
+		var/obj/item/device/helmet_visor/new_visor = attacking_item
+		for(var/obj/item/device/helmet_visor/cycled_visor as anything in (built_in_visors + inserted_visors))
+			if(cycled_visor.type == new_visor.type)
+				to_chat(user, SPAN_NOTICE("[src] already has this type of HUD connected."))
+				return
+		if(!user.drop_held_item())
+			return
+
+		inserted_visors += new_visor
+		to_chat(user, SPAN_NOTICE("You connect [new_visor] to [src]."))
+		new_visor.forceMove(src)
+		if(!(locate(/datum/action/item_action/cycle_helmet_huds) in actions))
+			var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
+			new_action.give_to(user)
+		return
+
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && length(inserted_visors))
+		for(var/obj/item/device/visor as anything in inserted_visors)
+			visor.forceMove(get_turf(src))
+
+		inserted_visors = list()
+		to_chat(user, SPAN_NOTICE("You remove the inserted visors."))
+		turn_off_visor(user, active_visor, TRUE)
+
+		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
+		cycle_action.set_default_overlay()
+		if(!length(built_in_visors))
+			cycle_action.remove_from(user)
+
+		active_visor = null
+		recalculate_visors(user)
+		return
+
+	..()
+	return pockets.attackby(attacking_item, user)
 
 /obj/item/clothing/head/helmet/marine/on_pocket_insertion()
 	update_icon()
@@ -478,6 +551,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		else
 			helmet_overlays = above_band_layer + below_band_layer
 
+	if(active_visor)
+		helmet_overlays += active_visor.helmet_overlay
+
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_head()
@@ -485,22 +561,28 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/equipped(mob/living/carbon/human/mob, slot)
 	if(camera)
 		camera.c_tag = mob.name
+	if(active_visor)
+		recalculate_visors(mob)
 	..()
 
 /obj/item/clothing/head/helmet/marine/unequipped(mob/user, slot)
 	. = ..()
 	if(pockets)
 		for(var/obj/item/attachable/flashlight/F in pockets)
-			if(F.activated)
+			if(F.light_on)
 				F.activate_attachment(src, user, TRUE)
+	if(active_visor)
+		recalculate_visors(user)
 
 /obj/item/clothing/head/helmet/marine/dropped(mob/living/carbon/human/mob)
 	if(camera)
 		camera.c_tag = "Unknown"
 	if(pockets)
 		for(var/obj/item/attachable/flashlight/F in pockets)
-			if(F.activated)
+			if(F.light_on)
 				F.activate_attachment(src, mob, TRUE)
+	if(active_visor)
+		recalculate_visors(mob)
 	..()
 
 /obj/item/clothing/head/helmet/marine/has_garb_overlay()
@@ -518,59 +600,122 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return pockets
 	return ..()
 
+/// Recalculates and sets the proper visor effects
+/obj/item/clothing/head/helmet/marine/proc/recalculate_visors(mob/user)
+	turn_off_visors(user)
+
+	if(!active_visor)
+		return
+
+	if(user != loc)
+		return
+
+	var/mob/living/carbon/human/human_user = user
+	if(!human_user || human_user.head != src)
+		return
+
+	turn_on_visor(human_user)
+
+/// Turns on the current active visor
+/obj/item/clothing/head/helmet/marine/proc/turn_on_visor(mob/user)
+	if(!active_visor)
+		return
+
+	if(active_visor.can_toggle(user))
+		active_visor.visor_function(src, user)
+
+	playsound_client(user.client, active_visor.toggle_on_sound, null, 75)
+	update_icon()
+
+/// Turns off the specified visor
+/obj/item/clothing/head/helmet/marine/proc/turn_off_visor(mob/user, obj/item/device/helmet_visor/current_visor, sound = FALSE)
+	if(!current_visor)
+		return
+
+	if(current_visor.can_toggle(user))
+		current_visor.visor_function(src, user)
+
+	if(sound)
+		playsound_client(user.client, current_visor.toggle_off_sound, null, 75)
+	update_icon()
+
+/// Attempts to turn off all visors
+/obj/item/clothing/head/helmet/marine/proc/turn_off_visors(mob/user)
+	var/list/total_visors = built_in_visors + inserted_visors
+
+	for(var/obj/item/device/helmet_visor/cycled_helmet_visor in total_visors)
+		if(cycled_helmet_visor.can_toggle(user))
+			cycled_helmet_visor.visor_function(src, user, TRUE)
+
+	update_icon()
+
+///Cycles the active HUD to the next between built_in_visors and inserted_visors, nullifies if at end and removes all HUDs
+/obj/item/clothing/head/helmet/marine/proc/cycle_huds(mob/user)
+	var/list/total_visors = built_in_visors + inserted_visors
+
+	if(!length(total_visors))
+		return FALSE
+
+	if(active_visor)
+		var/iterator = 1
+		for(var/hud_type in total_visors)
+			if(hud_type == active_visor)
+				if(length(total_visors) > iterator)
+					turn_off_visor(user, active_visor, FALSE)
+					active_visor = total_visors[(iterator + 1)]
+					recalculate_visors(user)
+					return active_visor
+				else
+					turn_off_visor(user, active_visor, TRUE)
+					active_visor = null
+					recalculate_visors(user)
+					return FALSE
+			iterator++
+
+	if(total_visors[1])
+		active_visor = total_visors[1]
+		recalculate_visors(user)
+		return active_visor
+
+	active_visor = null
+	recalculate_visors(user)
+	return FALSE
+
+/datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
+	. = ..()
+	name = "Cycle helmet HUD"
+	button.name = name
+	set_default_overlay()
+
+/datum/action/item_action/cycle_helmet_huds/action_activate()
+	. = ..()
+	var/obj/item/clothing/head/helmet/marine/holder_helmet = holder_item
+	var/cycled_hud = holder_helmet.cycle_huds(usr)
+
+	set_action_overlay(cycled_hud)
+
+/// Sets the action overlay based on the visor type
+/datum/action/item_action/cycle_helmet_huds/proc/set_action_overlay(obj/item/device/helmet_visor/new_visor)
+	if(!new_visor)
+		set_default_overlay()
+		return
+
+	action_icon_state = new_visor.action_icon_string
+	button.overlays.Cut()
+	button.overlays += image('icons/obj/items/clothing/helmet_visors.dmi', button, action_icon_state)
+
+/// Sets the action overlay to default hud sight up
+/datum/action/item_action/cycle_helmet_huds/proc/set_default_overlay()
+	action_icon_state = "hud_sight_up"
+	button.overlays.Cut()
+	button.overlays += image('icons/obj/items/clothing/helmet_visors.dmi', button, action_icon_state)
+
 /obj/item/clothing/head/helmet/marine/tech
 	name = "\improper M10 technician helmet"
 	desc = "A modified M10 marine helmet for ComTechs. Features a toggleable welding screen for eye protection."
 	icon_state = "tech_helmet"
 	specialty = "M10 technician"
-	var/protection_on = FALSE
-	///To remember the helmet's map variant-adjusted icon state
-	var/base_icon_state
-
-	actions_types = list(/datum/action/item_action/toggle)
-	vision_impair = VISION_IMPAIR_NONE
-
-/obj/item/clothing/head/helmet/marine/tech/Initialize()
-	. = ..()
-	base_icon_state = icon_state
-
-/obj/item/clothing/head/helmet/marine/tech/attack_self(mob/user)
-	..()
-	toggle()
-
-/obj/item/clothing/head/helmet/marine/tech/verb/toggle()
-	set category = "Object"
-	set name = "Toggle Tech Helmet"
-	set src in usr
-
-	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
-		if(protection_on)
-			vision_impair = VISION_IMPAIR_NONE
-			flags_inventory &= ~(COVEREYES|COVERMOUTH)
-			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
-			icon_state = base_icon_state
-			eye_protection = EYE_PROTECTION_NONE
-			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
-		else
-			vision_impair = VISION_IMPAIR_MAX
-			flags_inventory |= COVEREYES|COVERMOUTH
-			flags_inv_hide |= HIDEEYES|HIDEFACE
-			icon_state = "[base_icon_state]_on"
-			eye_protection = EYE_PROTECTION_WELDING
-			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
-
-		protection_on = !protection_on
-
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			if(H.head == src)
-				H.update_tint()
-
-		update_clothing_icon() //so our mob-overlays update
-
-		for(var/X in actions)
-			var/datum/action/A = X
-			A.update_button_icon()
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
 
 /obj/item/clothing/head/helmet/marine/tech/tanker
 	name = "\improper M50 tanker helmet"
@@ -583,12 +728,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "M50 tanker"
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor/tanker)
 
 /obj/item/clothing/head/helmet/marine/medic
 	name = "\improper M10 corpsman helmet"
 	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Has red cross painted on its front."
 	icon_state = "med_helmet"
 	specialty = "M10 pattern medic"
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
 
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"
@@ -613,16 +761,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."
 	icon_state = "io"
 	item_state = "io"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M12 pattern"
+	max_inserted_visors = 2
 
 /obj/item/clothing/head/helmet/marine/rto/intel
 	name = "\improper XM12 pattern intelligence helmet"
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
 	specialty = "XM12 pattern intel"
 
 /obj/item/clothing/head/helmet/marine/specialist
@@ -729,6 +878,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M10 pattern captain"
 	flags_atom = NO_SNOW_TYPE
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced, new /obj/item/device/helmet_visor/security)
 
 /obj/item/clothing/head/helmet/marine/MP
 	name = "\improper M10 pattern MP helmet"
@@ -737,6 +887,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "mp_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
+	built_in_visors = list(new /obj/item/device/helmet_visor/security)
 
 /obj/item/clothing/head/helmet/marine/MP/WO
 	name = "\improper M3 pattern chief MP helmet"
@@ -751,6 +902,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "helmet"
 	item_state = "helmet"
 	specialty = "M10 pattern officer"
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Cap"
@@ -770,6 +922,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M10 pattern SOF"
 	flags_atom = NO_SNOW_TYPE
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical, new /obj/item/device/helmet_visor/security)
 
 
 //=============================//PMCS\\==================================\\
@@ -777,6 +930,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
+	built_in_visors = list()
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc
 	name = "\improper PMC tactical cap"
@@ -926,6 +1080,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	clothing_traits = list(TRAIT_EAR_PROTECTION) //the sprites clearly fully cover the ears and most of the head
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/engi
 	name = "\improper UM4-V helmet"
@@ -1137,44 +1292,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer
 	desc = "A sturdy helmet worn by an unknown mercenary group. Features a toggleable welding screen for eye protection."
-	var/protection_on = FALSE
-
-	actions_types = list(/datum/action/item_action/toggle)
-	vision_impair = VISION_IMPAIR_NONE
-
-/obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer/attack_self(mob/user)
-	..()
-	toggle()
-
-/obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer/verb/toggle()
-	set category = "Object"
-	set name = "Toggle Helmet Welding Visor"
-	set src in usr
-
-	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
-		if(protection_on)
-			vision_impair = VISION_IMPAIR_NONE
-			flags_inventory &= ~(COVEREYES|COVERMOUTH)
-			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
-			eye_protection = EYE_PROTECTION_NONE
-			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
-		else
-			vision_impair = VISION_IMPAIR_MAX
-			flags_inventory |= COVEREYES|COVERMOUTH
-			flags_inv_hide |= HIDEEYES|HIDEFACE
-			eye_protection = EYE_PROTECTION_WELDING
-			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
-
-		protection_on = !protection_on
-
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			if(H.head == src)
-				H.update_tint()
-
-		for(var/X in actions)
-			var/datum/action/A = X
-			A.update_button_icon()
+	built_in_visors = list(new /obj/item/device/helmet_visor/welding_visor/mercenary)
 
 //=============================//MEME\\==================================\\
 //=======================================================================\\
@@ -1192,6 +1310,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_GIGAHIGH
+
+	built_in_visors = list()
 
 	var/mob/activator = null
 	var/active = FALSE
@@ -1242,5 +1362,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "wc_helm"
 	contained_sprite = TRUE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+	built_in_visors = list()
 
 #undef HELMET_GARB_RELAY_ICON_STATE

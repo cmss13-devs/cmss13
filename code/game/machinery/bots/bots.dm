@@ -3,7 +3,8 @@
 /obj/structure/machinery/bot
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	layer = MOB_LAYER
-	luminosity = 3
+	light_system = MOVABLE_LIGHT
+	light_range = 3
 	use_power = USE_POWER_NONE
 	var/obj/item/card/id/botcard // the ID card that the bot "holds"
 	var/on = 1
@@ -15,6 +16,12 @@
 	var/open = 0//Maint panel
 	var/locked = 1
 
+/obj/structure/machinery/bot/Initialize(mapload, ...)
+	. = ..()
+
+	if(light_range)
+		set_light_on(TRUE)
+
 /obj/structure/machinery/bot/Destroy()
 	QDEL_NULL(botcard)
 	. = ..()
@@ -24,12 +31,12 @@
 	if(stat)
 		return 0
 	on = 1
-	SetLuminosity(initial(luminosity))
+	set_light(initial(luminosity))
 	return 1
 
 /obj/structure/machinery/bot/proc/turn_off()
 	on = 0
-	SetLuminosity(0)
+	set_light(0)
 
 /obj/structure/machinery/bot/proc/explode()
 	qdel(src)
@@ -37,10 +44,6 @@
 /obj/structure/machinery/bot/proc/healthcheck()
 	if(health <= 0)
 		explode()
-
-/obj/structure/machinery/bot/Destroy()
-	SetLuminosity(0)
-	. = ..()
 
 /obj/structure/machinery/bot/get_examine_text(mob/user)
 	. = ..()

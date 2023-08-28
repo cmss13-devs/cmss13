@@ -148,7 +148,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(building == 0)
 		init()
 	else
-		area = loc.loc:master
+		area = get_area(src)
 		opened = APC_COVER_OPEN
 		operating = 0
 		name = "\improper [area.name] APC"
@@ -1314,11 +1314,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(cell && cell.charge >= 20)
 		cell.use(20)
 		spawn(0)
-			for(var/area/A in area.related)
-				for(var/obj/structure/machinery/light/L in A)
-					L.on = 1
-					L.broken()
-					sleep(1)
+			for(var/obj/structure/machinery/light/L in area)
+				L.on = 1
+				L.broken()
+				sleep(1)
 
 /obj/structure/machinery/power/apc/Destroy()
 	area.power_light = 0
@@ -1359,7 +1358,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 /obj/structure/machinery/power/apc/antag
 	cell_type = /obj/item/cell/apc
-	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
 
 //------Almayer APCs ------//
 

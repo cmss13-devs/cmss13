@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/timeout_timer_id
 	var/timeout_duration = 30 SECONDS
 
-	var/network_receive = FACTION_MARINE
+	var/list/networks_receive = list(FACTION_MARINE)
 	var/list/networks_transmit = list(FACTION_MARINE)
 
 /obj/structure/transmitter/hidden
@@ -82,7 +82,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		var/obj/structure/transmitter/target_phone = possible_phone
 		if(TRANSMITTER_UNAVAILABLE(target_phone) || !target_phone.callable) // Phone not available
 			continue
-		if(!(target_phone.network_receive in networks_transmit))
+		var/net_link = FALSE
+		for(var/network in networks_transmit)
+			if(network in target_phone.networks_receive)
+				net_link = TRUE
+				continue
+		if(!net_link)
 			continue
 
 		var/id = target_phone.phone_id
@@ -538,16 +543,6 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 	reset_tether()
 
-
-/obj/structure/transmitter/colony_net
-	network_receive = FACTION_COLONIST
-	networks_transmit = list(FACTION_COLONIST)
-
-/obj/structure/transmitter/colony_net/rotary
-	name = "rotary telephone"
-	icon_state = "rotary_phone"
-	desc = "The finger plate is a little stiff."
-
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary
 	name = "rotary telephone"
@@ -558,3 +553,39 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "touch-tone telephone"
 	icon_state = "rotary_phone"//placeholder
 	desc = "Ancient aliens, it's all true. I'm an expert just like you!"
+
+/obj/structure/transmitter/colony_net
+	networks_receive = list(FACTION_COLONIST)
+	networks_transmit = list(FACTION_COLONIST)
+
+/obj/structure/transmitter/colony_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/upp_net
+	networks_receive = list(FACTION_UPP)
+	networks_transmit = list(FACTION_UPP)
+
+/obj/structure/transmitter/upp_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/clf_net
+	networks_receive = list(FACTION_CLF)
+	networks_transmit = list(FACTION_CLF)
+
+/obj/structure/transmitter/clf_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/wy_net
+	networks_receive = list(FACTION_WY)
+	networks_transmit = list(FACTION_WY)
+
+/obj/structure/transmitter/wy_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."

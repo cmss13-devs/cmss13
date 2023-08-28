@@ -52,6 +52,7 @@
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
 	dead_black_market_value = 50
+	light_system = MOVABLE_LIGHT
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -813,7 +814,7 @@
 	//and display them
 	add_to_all_mob_huds()
 	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
-	MH.add_hud_to(src)
+	MH.add_hud_to(src, src)
 
 
 /mob/living/carbon/xenomorph/check_improved_pointing()
@@ -1073,6 +1074,7 @@
 	. = ..()
 	if (.)
 		UnregisterSignal(src, COMSIG_XENO_PRE_HEAL)
+		handle_luminosity()
 
 /mob/living/carbon/xenomorph/proc/cancel_heal()
 	SIGNAL_HANDLER

@@ -2,6 +2,8 @@
 	name = "item"
 	icon = 'icons/obj/items/items.dmi'
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
+	light_system = MOVABLE_LIGHT
+
 	/// this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/randpixel = 6

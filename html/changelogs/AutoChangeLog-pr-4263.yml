@@ -1,0 +1,5 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "IO's and FTL's can now purchase a 'welding visor' from their vendor. This visor grants whichever helmet it is attached with the ability to flip a protective visor that prevents the user's eyes from taking damage while welding."
+  - balance: "The M12 Helmet, normally used by FTL's and USCM Officers, can mount two visors at once, instead of only one."

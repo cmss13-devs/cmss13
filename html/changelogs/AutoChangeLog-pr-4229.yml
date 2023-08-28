@@ -1,0 +1,4 @@
+author: "TiviPlus, A-lexa, SyncIt21, Azarak, harryob, MorrowWolf, Zonespace"
+delete-after: True
+changes:
+  - rscadd: "shadows are now in the game, and light follows you."

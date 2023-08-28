@@ -74,6 +74,10 @@
 	if(inoperable())
 		return UI_DISABLED
 
+//Closes UI if you move away from console.
+/obj/structure/machinery/computer/cameras/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 /obj/structure/machinery/computer/cameras/tgui_interact(mob/user, datum/tgui/ui)
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)

@@ -52,6 +52,7 @@
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
 	dead_black_market_value = 50
+	light_system = MOVABLE_LIGHT
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -1073,6 +1074,7 @@
 	. = ..()
 	if (.)
 		UnregisterSignal(src, COMSIG_XENO_PRE_HEAL)
+		handle_luminosity()
 
 /mob/living/carbon/xenomorph/proc/cancel_heal()
 	SIGNAL_HANDLER

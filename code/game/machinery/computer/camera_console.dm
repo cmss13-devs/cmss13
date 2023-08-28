@@ -17,11 +17,11 @@
 	var/atom/movable/screen/map_view/cam_screen
 	var/atom/movable/screen/background/cam_background
 
-	/// All turfs within range of the currently active camera
-	var/list/range_turfs = list()
-
 	var/colony_camera_mapload = TRUE
 	var/admin_console = FALSE
+
+	/// All the plane masters that need to be applied.
+	var/list/cam_plane_masters
 
 /obj/structure/machinery/computer/cameras/Initialize(mapload)
 	. = ..()
@@ -32,6 +32,16 @@
 
 	if(colony_camera_mapload && mapload && is_ground_level(z))
 		network = list(CAMERA_NET_COLONY)
+
+	cam_plane_masters = list()
+	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+		var/atom/movable/screen/plane_master/instance = new plane()
+		instance.assigned_map = map_name
+		instance.del_on_map_removal = FALSE
+		if(instance.blend_mode_override)
+			instance.blend_mode = instance.blend_mode_override
+		instance.screen_loc = "[map_name]:CENTER"
+		cam_plane_masters += instance
 
 	// Initialize map objects
 	cam_screen = new
@@ -51,7 +61,6 @@
 	qdel(cam_screen)
 	QDEL_NULL(cam_background)
 	qdel(cam_background)
-	range_turfs = null
 	last_camera_turf = null
 	concurrent_users = null
 	return ..()
@@ -94,6 +103,8 @@
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
 		user.client.register_map_obj(cam_background)
+		for(var/plane in cam_plane_masters)
+			user.client.register_map_obj(plane)
 		// Open UI
 		ui = new(user, src, "CameraConsole", name)
 		ui.open()
@@ -176,13 +187,8 @@
 	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
 
 	var/list/visible_turfs = list()
-	range_turfs.Cut()
-	var/area/A
 	for(var/turf/visible_turf in visible_things)
-		range_turfs += visible_turf
-		A = visible_turf.loc
-		if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
-			visible_turfs += visible_turf
+		visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
@@ -191,18 +197,6 @@
 	cam_screen.vis_contents = visible_turfs
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
-
-	START_PROCESSING(SSfastobj, src) // fastobj to somewhat keep pace with lighting updates
-
-/obj/structure/machinery/computer/cameras/process()
-	if(current)
-		var/list/visible_turfs = list()
-		var/area/A
-		for(var/turf/visible_turf as anything in range_turfs)
-			A = visible_turf.loc
-			if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
-				visible_turfs += visible_turf
-		cam_screen.vis_contents = visible_turfs
 
 /obj/structure/machinery/computer/cameras/ui_close(mob/user)
 	var/user_ref = WEAKREF(user)
@@ -215,10 +209,8 @@
 	if(length(concurrent_users) == 0 && is_living)
 		current = null
 		last_camera_turf = null
-		range_turfs = list()
 		if(use_power)
 			update_use_power(USE_POWER_IDLE)
-		STOP_PROCESSING(SSfastobj, src)
 	user.unset_interaction()
 
 /obj/structure/machinery/computer/cameras/proc/show_camera_static()

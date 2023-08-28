@@ -701,17 +701,22 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 /mob/living/carbon/human/update_fire()
 	remove_overlay(FIRE_LAYER)
 	if(!on_fire)
+		set_light_on(FALSE)
 		return
 	var/image/I
 	switch(fire_stacks)
 		if(1 to 14)
 			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_weak", "layer"= -FIRE_LAYER)
+			set_light_range(2)
 		if(15 to INFINITY)
 			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_medium", "layer"= -FIRE_LAYER)
+			set_light_range(3)
 		else
 			return
 	I.appearance_flags |= RESET_COLOR|RESET_ALPHA
 	I.color = fire_reagent.burncolor
+	set_light_color(fire_reagent.burncolor)
+	set_light_on(TRUE)
 	overlays_standing[FIRE_LAYER] = I
 	apply_overlay(FIRE_LAYER)
 

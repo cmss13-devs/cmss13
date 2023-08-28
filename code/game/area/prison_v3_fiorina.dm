@@ -8,7 +8,6 @@
 	icon_state = "fiorina"
 	can_build_special = TRUE //T-Comms structure
 	temperature = T20C
-	lighting_use_dynamic = 1
 	ceiling = CEILING_GLASS
 	minimap_color = MINIMAP_AREA_COLONY
 

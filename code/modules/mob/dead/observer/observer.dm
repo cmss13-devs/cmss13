@@ -85,6 +85,7 @@
 		life_kills_total = body.life_kills_total //kills also copy over
 
 		appearance = body.appearance
+		underlays.Cut()
 		base_transform = matrix(body.base_transform)
 		body.alter_ghost(src)
 		apply_transform(matrix())

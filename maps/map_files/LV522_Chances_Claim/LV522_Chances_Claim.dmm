@@ -1009,6 +1009,12 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"aDE" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "Southeast Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop2/lv522)
 "aDS" = (
 /turf/open/floor/corsat{
 	dir = 5;
@@ -2166,12 +2172,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"bhy" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Southwest Landing Zone"
-	},
-/turf/open/floor/plating,
-/area/shuttle/drop1/lv522)
 "bhD" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -6938,6 +6938,12 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/dorms)
+"dos" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Southwest Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop1/lv522)
 "dox" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent5";
@@ -11236,12 +11242,6 @@
 /obj/item/trash/plate,
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
-"fdt" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Southeast Landing Zone"
-	},
-/turf/open/floor/plating,
-/area/shuttle/drop2/lv522)
 "fdC" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -66151,7 +66151,7 @@ sYH
 sYH
 nFj
 nFj
-bhy
+sYH
 gnf
 ryU
 wes
@@ -67049,7 +67049,7 @@ sYH
 sYH
 sYH
 sYH
-sYH
+dos
 sYH
 sYH
 sYH
@@ -98401,7 +98401,7 @@ aIp
 aIp
 xYA
 xYA
-fdt
+aIp
 kcR
 hIf
 cDi
@@ -99299,7 +99299,7 @@ aIp
 aIp
 aIp
 aIp
-aIp
+aDE
 aIp
 aIp
 aIp

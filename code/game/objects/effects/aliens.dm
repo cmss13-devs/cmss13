@@ -332,7 +332,7 @@
 	if(!acids_area)
 		return
 
-	if(SSweather.is_weather_event && locate(acids_area.master) in SSweather.weather_areas)
+	if(SSweather.is_weather_event && locate(acids_area) in SSweather.weather_areas)
 		acid_strength = acid_strength + (SSweather.weather_event_instance.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
 		in_weather = SSweather.weather_event_instance.fire_smothering_strength
 	else

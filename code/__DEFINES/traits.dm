@@ -203,6 +203,7 @@
 
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
+#define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
 
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)

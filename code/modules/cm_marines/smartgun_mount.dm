@@ -501,7 +501,6 @@
 /obj/structure/machinery/m56d_hmg/Destroy() //Make sure we pick up our trash.
 	if(operator)
 		operator.unset_interaction()
-	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
@@ -818,9 +817,9 @@
 	if(isnull(angle))
 		return
 
-	SetLuminosity(muzzle_flash_lum)
+	set_light(muzzle_flash_lum)
 	spawn(10)
-		SetLuminosity(-muzzle_flash_lum)
+		set_light(-muzzle_flash_lum)
 
 	var/image_layer = layer + 0.1
 

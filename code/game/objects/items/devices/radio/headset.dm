@@ -238,7 +238,7 @@
 		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(update_minimap_icon))
 		if(headset_hud_on)
 			var/datum/mob_hud/H = huds[hud_type]
-			H.add_hud_to(user)
+			H.add_hud_to(user, src)
 			//squad leader locator is no longer invisible on our player HUD.
 			if(user.mind && (user.assigned_squad || misc_tracking) && user.hud_used && user.hud_used.locate_leader)
 				user.show_hud_tracker()
@@ -257,7 +257,7 @@
 	))
 	if(istype(user) && user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
 		var/datum/mob_hud/H = huds[hud_type]
-		H.remove_hud_from(user)
+		H.remove_hud_from(user, src)
 		//squad leader locator is invisible again
 		if(user.hud_used && user.hud_used.locate_leader)
 			user.hide_hud_tracker()
@@ -290,14 +290,14 @@
 		if(user.has_item_in_ears(src)) //worn
 			var/datum/mob_hud/H = huds[hud_type]
 			if(headset_hud_on)
-				H.add_hud_to(usr)
+				H.add_hud_to(usr, src)
 				if(user.mind && (misc_tracking || user.assigned_squad) && user.hud_used?.locate_leader)
 					user.show_hud_tracker()
 				if(misc_tracking)
 					SStracking.start_misc_tracking(user)
 				update_minimap_icon()
 			else
-				H.remove_hud_from(usr)
+				H.remove_hud_from(usr, src)
 				if(user.hud_used?.locate_leader)
 					user.hide_hud_tracker()
 				if(misc_tracking)

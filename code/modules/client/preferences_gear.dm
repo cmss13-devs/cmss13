@@ -515,6 +515,12 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "D18 Holdout Pistol"
 	path = /obj/item/storage/box/clf
 
+/datum/gear/weapon/upppistol //ww2 war trophy luger
+	display_name = "Type 73 Pistol"
+	path = /obj/item/storage/box/upp
+	slot = WEAR_IN_BACK
+	cost = 4
+
 /datum/gear/weapon/m4a3_custom
 	display_name = "M4A3 Custom Pistol"
 	path = /obj/item/weapon/gun/pistol/m4a3/custom

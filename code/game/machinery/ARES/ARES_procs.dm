@@ -585,7 +585,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested a Distress Beacon (via ARES)! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+			SSticker.mode.request_ert(usr, TRUE)
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM High Command."))
 			COOLDOWN_START(src, ares_distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE

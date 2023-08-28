@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - bugfix: "Fixed western medbay door buttons"

@@ -682,7 +682,6 @@
 /area/desert_dam/exterior
 	requires_power = 1
 	always_unpowered = 1
-	lighting_use_dynamic = 1
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE

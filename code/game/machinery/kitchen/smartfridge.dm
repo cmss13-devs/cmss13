@@ -520,7 +520,7 @@
 	return 0
 
 /obj/structure/machinery/smartfridge/chemistry/antag
-	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
 
 /obj/structure/machinery/smartfridge/chemistry/virology
 	name = "\improper Smart Virus Storage"

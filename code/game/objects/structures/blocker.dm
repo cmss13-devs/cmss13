@@ -25,7 +25,10 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/blocker/invisible_wall/Collided(atom/movable/AM)
-	to_chat(AM, SPAN_WARNING("You cannot go this way."))
+	var/msg = desc
+	if(!msg)
+		msg = "You cannot go this way."
+	to_chat(AM, SPAN_WARNING(msg))
 
 /obj/structure/blocker/invisible_wall/New()
 	..()
@@ -34,10 +37,6 @@
 /obj/structure/blocker/invisible_wall/water
 	desc = "You cannot wade out any further"
 	icon_state = "map_blocker"
-
-/obj/structure/blocker/invisible_wall/water/Collided(atom/movable/AM)
-	to_chat(AM, SPAN_WARNING("You cannot wade out any further."))
-
 
 /obj/structure/blocker/fog
 	name = "dense fog"

@@ -16,6 +16,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("Plastic Explosive", 10, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 		list("Medical Helmet Optic", 5, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES", 0, null, null, null),
 		list("Large Magazine Pouch", 10, /obj/item/storage/pouch/magazine/large, null, VENDOR_ITEM_REGULAR),

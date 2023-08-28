@@ -37,6 +37,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl, list(
 		list("Breaching Charge", 10, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 		list("Medical Helmet Optic", 15, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
 		list("M2 Night Vision Goggles", 30, /obj/item/prop/helmetgarb/helmet_nvg, null, VENDOR_ITEM_RECOMMENDED),
 		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),

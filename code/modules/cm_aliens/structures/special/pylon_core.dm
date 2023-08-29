@@ -110,13 +110,13 @@
 	return pylon_node
 
 /obj/effect/alien/resin/special/pylon/proc/spawn_lesser_drone(mob/xeno_candidate)
-	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate))
+	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate, src))
 		return FALSE
 
 	if(tgui_alert(xeno_candidate, "Are you sure you want to become a lesser drone?", "Confirmation", list("Yes", "No")) != "Yes")
 		return FALSE
 
-	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate))
+	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate, src))
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new(loc, null, linked_hive.hivenumber)

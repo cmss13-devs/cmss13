@@ -1106,7 +1106,7 @@
 
 	lesser_drone_limit = max(lesser_drone_limit, lesser_drone_minimum)
 
-/datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user)
+/datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user, /obj/effect/alien/resin/special/pylon/spawning_pylon)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
 		return FALSE
 
@@ -1125,6 +1125,10 @@
 
 	if(!living_xeno_queen)
 		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen!"))
+		return FALSE
+
+	if(spawning_pylon.lesser_drone_spawns < 1)
+		to_chat(xeno_candidate, SPAN_WARNING("The selected core or pylon does not have enough power for a lesser drone!"))
 		return FALSE
 
 	update_lesser_drone_limit()

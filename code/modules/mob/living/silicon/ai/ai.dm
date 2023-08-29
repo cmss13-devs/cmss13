@@ -355,13 +355,13 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/reset_view(atom/A)
 	if(camera)
-		camera.SetLuminosity(0)
+		camera.set_light(0)
 	if(istype(A,/obj/structure/machinery/camera))
 		camera = A
 	..()
 	if(istype(A,/obj/structure/machinery/camera))
-		if(camera_light_on) A.SetLuminosity(AI_CAMERA_LUMINOSITY)
-		else A.SetLuminosity(0)
+		if(camera_light_on) A.set_light(AI_CAMERA_LUMINOSITY)
+		else A.set_light(0)
 
 
 /mob/living/silicon/ai/proc/switchCamera(obj/structure/machinery/camera/C)
@@ -539,7 +539,7 @@ var/list/ai_verbs_default = list(
 	to_chat(src, "Camera lights [camera_light_on ? "activated" : "deactivated"].")
 	if(!camera_light_on)
 		if(camera)
-			camera.SetLuminosity(0)
+			camera.set_light(0)
 			camera = null
 	else
 		lightNearbyCamera()
@@ -554,20 +554,20 @@ var/list/ai_verbs_default = list(
 		if(src.camera)
 			var/obj/structure/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && src.camera != camera)
-				src.camera.SetLuminosity(0)
+				src.camera.set_light(0)
 				if(!camera.light_disabled)
 					src.camera = camera
-					src.camera.SetLuminosity(AI_CAMERA_LUMINOSITY)
+					src.camera.set_light(AI_CAMERA_LUMINOSITY)
 				else
 					src.camera = null
 			else if(isnull(camera))
-				src.camera.SetLuminosity(0)
+				src.camera.set_light(0)
 				src.camera = null
 		else
 			var/obj/structure/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && !camera.light_disabled)
 				src.camera = camera
-				src.camera.SetLuminosity(AI_CAMERA_LUMINOSITY)
+				src.camera.set_light(AI_CAMERA_LUMINOSITY)
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
 
 

@@ -529,6 +529,7 @@ var/global/list/limb_types_by_name = list(
 /mob/proc/get_paygrade()
 	return
 
+
 /proc/notify_ghosts(message, ghost_sound = null, enter_link = null, enter_text = null, atom/source = null, mutable_appearance/alert_overlay = null, action = NOTIFY_JUMP, flashwindow = TRUE, ignore_mapload = TRUE, ignore_key, header = null, notify_volume = 100, extra_large = FALSE) //Easy notification of ghosts.
 	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
 		return
@@ -586,3 +587,10 @@ var/global/list/limb_types_by_name = list(
 	alert_overlay.plane = FLOAT_PLANE
 
 	screen_alert.overlays += alert_overlay
+
+/mob/proc/reset_lighting_alpha()
+	SIGNAL_HANDLER
+
+	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	sync_lighting_plane_alpha()
+

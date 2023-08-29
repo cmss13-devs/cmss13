@@ -147,6 +147,10 @@
 		return
 
 	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+		var/remaining_time = timeleft(door_control_cooldown) / 10
+		if(remaining_time > 60)
+			to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
+			return
 		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
 		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))

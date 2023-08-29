@@ -1127,10 +1127,6 @@
 		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen!"))
 		return FALSE
 
-	if(!living_xeno_queen.ovipositor && !SSticker.mode.is_in_endgame)
-		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen on Ovipositor!"))
-		return FALSE
-
 	update_lesser_drone_limit()
 
 	var/current_lesser_drone_count = 0

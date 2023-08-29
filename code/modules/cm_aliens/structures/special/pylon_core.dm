@@ -119,7 +119,7 @@
 	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate))
 		return FALSE
 
-	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new /mob/living/carbon/xenomorph/lesser_drone(loc, null, linked_hive.hivenumber)
+	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new(loc, null, linked_hive.hivenumber)
 	xeno_candidate.mind.transfer_to(new_drone, TRUE)
 	lesser_drone_spawns -= 1
 	new_drone.visible_message(SPAN_XENODANGER("A lesser drone emerges out of [src]!"), SPAN_XENODANGER("You emerge out of [src] and awaken from your slumber. For the Hive!"))

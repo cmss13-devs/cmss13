@@ -580,11 +580,11 @@ Additional game mode variables.
 	var/list/selection_list = list()
 	var/list/selection_list_structure = list()
 
-	if(hive.hive_location && hive.hive_location.lesser_drone_spawns >= 1)
+	if(hive.hive_location?.lesser_drone_spawns >= 1)
 		selection_list += "hive core"
 		selection_list_structure += hive.hive_location
 
-	for(var/obj/effect/alien/resin/special/pylon/cycled_pylon in hive.hive_structures[XENO_STRUCTURE_PYLON])
+	for(var/obj/effect/alien/resin/special/pylon/cycled_pylon as anything in hive.hive_structures[XENO_STRUCTURE_PYLON])
 		if(cycled_pylon.lesser_drone_spawns >= 1)
 			selection_list += "[cycled_pylon.name] at [get_area(cycled_pylon)]"
 			selection_list_structure += cycled_pylon
@@ -593,7 +593,7 @@ Additional game mode variables.
 		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have enough power for a lesser drone at any hive core or pylon!"))
 		return FALSE
 
-	var/prompt = tgui_input_list(usr, "Select spawn?", "Spawnpoint Selection", selection_list)
+	var/prompt = tgui_input_list(xeno_candidate, "Select spawn?", "Spawnpoint Selection", selection_list)
 	if(!prompt)
 		return FALSE
 

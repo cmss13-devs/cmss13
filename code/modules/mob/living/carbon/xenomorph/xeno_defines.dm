@@ -1038,7 +1038,7 @@
 
 /datum/hive_status/proc/update_hugger_limit()
 	var/iterator = 0
-	for(var/mob/living/carbon/xenomorph/cycled_xeno in totalXenos)
+	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
 		if(cycled_xeno.counts_for_slots)
 			iterator++
 		if(iterator >= 4)
@@ -1097,7 +1097,7 @@
 
 /datum/hive_status/proc/update_lesser_drone_limit()
 	var/iterator = 0
-	for(var/mob/living/carbon/xenomorph/cycled_xeno in totalXenos)
+	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
 		if(cycled_xeno.counts_for_slots)
 			iterator++
 		if(iterator >= 3)

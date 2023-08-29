@@ -1038,14 +1038,15 @@
 
 /datum/hive_status/proc/update_hugger_limit()
 	var/iterator = 0
+	var/playable_hugger_limit_counter = 0
 	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
 		if(cycled_xeno.counts_for_slots)
 			iterator++
 		if(iterator >= 4)
-			playable_hugger_limit++
+			playable_hugger_limit_counter++
 			iterator = 0
 
-	playable_hugger_limit = max(playable_hugger_limit, playable_hugger_minimum)
+	playable_hugger_limit = max(playable_hugger_limit_counter, playable_hugger_minimum)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -1097,14 +1098,15 @@
 
 /datum/hive_status/proc/update_lesser_drone_limit()
 	var/iterator = 0
+	var/lesser_drone_limit_counter = 0
 	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
 		if(cycled_xeno.counts_for_slots)
 			iterator++
 		if(iterator >= 3)
-			lesser_drone_limit++
+			lesser_drone_limit_counter++
 			iterator = 0
 
-	lesser_drone_limit = max(lesser_drone_limit, lesser_drone_minimum)
+	lesser_drone_limit = max(lesser_drone_limit_counter, lesser_drone_minimum)
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user, /obj/effect/alien/resin/special/pylon/spawning_pylon)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])

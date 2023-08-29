@@ -50,7 +50,7 @@
 /obj/effect/alien/resin/special/pylon/process(delta_time)
 	if(lesser_drone_spawns < lesser_drone_spawn_limit)
 		// One every 10 seconds while on ovi, one every 120-ish seconds while off ovi
-		lesser_drone_spawns = min(lesser_drone_spawns + ((linked_hive.living_xeno_queen.ovipositor ? 0.1 : 0.008) * delta_time), lesser_drone_spawn_limit)
+		lesser_drone_spawns = min(lesser_drone_spawns + ((linked_hive.living_xeno_queen?.ovipositor ? 0.1 : 0.008) * delta_time), lesser_drone_spawn_limit)
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)

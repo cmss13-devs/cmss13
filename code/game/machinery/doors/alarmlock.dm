@@ -25,7 +25,6 @@
 	return ..()
 
 /obj/structure/machinery/door/airlock/alarmlock/receive_signal(datum/signal/signal)
-/*
 	..()
 	if(inoperable())
 		return
@@ -41,4 +40,3 @@
 			if("minor", "clear")
 				autoclose = 0
 				open()
-*/

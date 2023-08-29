@@ -1,4 +1,0 @@
-author: "MikeKuwait"
-delete-after: True
-changes:
-  - bugfix: "teleporting canister pouch to chemical dispenser"

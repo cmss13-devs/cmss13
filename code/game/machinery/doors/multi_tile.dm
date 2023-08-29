@@ -235,11 +235,11 @@
 //We have to find these again since these doors are used on shuttles a lot so the turfs changes
 /obj/structure/machinery/door/airlock/multi_tile/almayer/proc/update_filler_turfs()
 	for(var/turf/T in multi_filler)
-		T.SetOpacity(null)
+		T.set_opacity(null)
 
 	multi_filler = list()
 	for(var/turf/T in get_filler_turfs())
-		T.SetOpacity(opacity)
+		T.set_opacity(opacity)
 		multi_filler += list(T)
 
 /obj/structure/machinery/door/airlock/multi_tile/proc/get_filler_turfs()

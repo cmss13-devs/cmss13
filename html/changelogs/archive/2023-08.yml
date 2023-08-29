@@ -423,3 +423,32 @@
       two snacks and an AP mag
   harryob:
   - bugfix: whispering no longer uses the old speech bubble
+2023-08-29:
+  CapCamIII:
+  - bugfix: actually fixes m4ra custom barrel offset
+  MikeKuwait:
+  - bugfix: Plants should not grow every time it's sampled
+  - bugfix: Camera console should now close if you step away from it
+  - bugfix: teleporting canister pouch to chemical dispenser
+  Morrow:
+  - bugfix: Fixed pointblanks
+  - bugfix: Fixed western medbay door buttons
+  Steelpoint:
+  - rscadd: IO's and FTL's can now purchase a 'welding visor' from their vendor. This
+      visor grants whichever helmet it is attached with the ability to flip a protective
+      visor that prevents the user's eyes from taking damage while welding.
+  - balance: The M12 Helmet, normally used by FTL's and USCM Officers, can mount two
+      visors at once, instead of only one.
+  TiviPlus, A-lexa, SyncIt21, Azarak, harryob, MorrowWolf, Zonespace:
+  - rscadd: shadows are now in the game, and light follows you.
+  Xufysz:
+  - bugfix: Fixes admin training dummy interaction distance
+  - bugfix: Fixes the kitchen soda fountain being wrenchable.
+  realforest2001:
+  - bugfix: Fixes UPP/CLF access to antag vendors.
+  - rscadd: Adds faction specific accesses to TWE and UPP representatives.
+  - rscdel: Removes pirate access from Press and Corp. Liaison.
+  - bugfix: Areas around LZs (particularly on Sorokyne) are now unweedable as intended.
+  - code_imp: Moved the Request ERT message to a proc to reduce duplication.
+  - admin: Added a detail in ERT request to indicate if a RANDOM ERT was granted by
+      staff already or not. This will not work for manual specific chosen ERTs.

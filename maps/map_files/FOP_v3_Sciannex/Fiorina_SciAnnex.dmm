@@ -2251,10 +2251,6 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
-"bju" = (
-/obj/docking_port/stationary/marine_dropship/lz1,
-/turf/open/floor/plating/prison,
-/area/fiorina/lz/near_lzI)
 "bjx" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -6556,6 +6552,12 @@
 	icon_state = "blue_plate"
 	},
 /area/fiorina/station/botany)
+"dYp" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Hangar Landing Zone"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "dYr" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/explosive/grenade/incendiary/molotov,
@@ -16469,10 +16471,6 @@
 	icon_state = "bluefull"
 	},
 /area/fiorina/station/power_ring)
-"kfE" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
-/turf/open/floor/plating/prison,
-/area/fiorina/lz/near_lzII)
 "kfF" = (
 /obj/item/stack/sheet/metal,
 /obj/item/stack/sheet/metal,
@@ -38473,6 +38471,10 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/civres_blue)
+"xYg" = (
+/obj/docking_port/stationary/marine_dropship/lz2,
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzII)
 "xYA" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -72352,7 +72354,7 @@ wSm
 wSm
 xnU
 wSm
-kfE
+wSm
 eSF
 qnB
 fHB
@@ -73190,7 +73192,7 @@ wSm
 wSm
 wSm
 wSm
-wSm
+xYg
 wSm
 wSm
 wSm
@@ -88169,7 +88171,7 @@ xeO
 xeO
 cCx
 xeO
-bju
+xeO
 sLo
 hlK
 hKI
@@ -89007,7 +89009,7 @@ xeO
 xeO
 xeO
 xeO
-xeO
+dYp
 xeO
 xeO
 xeO

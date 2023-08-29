@@ -357,7 +357,7 @@
 	/// How many lesser drones the hive can support
 	var/lesser_drone_limit = 0
 	/// Slots available for lesser drones will never go below this number
-	var/lesser_drone_minimum = 3
+	var/lesser_drone_minimum = 2
 
 	var/datum/tacmap/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO

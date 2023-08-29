@@ -906,6 +906,9 @@
 		update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/afterattack(obj/target, mob/user, flag) //refuel at fueltanks & chem dispensers.
+	if(get_dist(user,target) > 1)
+		return ..()
+
 	if(!inner)
 		to_chat(user, SPAN_WARNING("[src] has no internal container!"))
 		return ..()
@@ -925,8 +928,7 @@
 	if(!istype(target, /obj/structure/reagent_dispensers/fueltank))
 		return ..()
 
-	if(get_dist(user,target) > 1)
-		return ..()
+
 
 	var/obj/O = target
 	if(!O.reagents || O.reagents.reagent_list.len < 1)

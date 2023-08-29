@@ -33,10 +33,10 @@
 /obj/structure/prop/dam/drill/proc/update()
 	icon_state = "thumper[on ? "-on" : ""]"
 	if(on)
-		SetLuminosity(3)
+		set_light(3)
 		playsound(src, 'sound/machines/turbine_on.ogg')
 	else
-		SetLuminosity(0)
+		set_light(0)
 		playsound(src, 'sound/machines/turbine_off.ogg')
 	return
 
@@ -114,9 +114,9 @@
 	underlays += "shadow[lit ? "-lit" : ""]"
 	icon_state = "torii[lit ? "-lit" : ""]"
 	if(lit)
-		SetLuminosity(6)
+		set_light(6)
 	else
-		SetLuminosity(0)
+		set_light(0)
 	return
 
 /obj/structure/prop/dam/torii/attack_hand(mob/user as mob)
@@ -510,10 +510,10 @@
 /obj/structure/prop/turbine/proc/Update()
 	icon_state = "biomass_turbine[on ? "-on" : ""]"
 	if (on)
-		SetLuminosity(3)
+		set_light(3)
 		playsound(src, 'sound/machines/turbine_on.ogg')
 	else
-		SetLuminosity(0)
+		set_light(0)
 		playsound(src, 'sound/machines/turbine_off.ogg')
 	return
 
@@ -650,11 +650,18 @@
 	icon_state = "brazier"
 	density = TRUE
 	health = 150
-	luminosity = 6
+	light_range = 6
+	light_on = TRUE
 	/// What obj this becomes when it gets to its next stage of construction / ignition
 	var/frame_type
 	/// What is used to progress to the next stage
 	var/state = STATE_COMPLETE
+
+/obj/structure/prop/brazier/Initialize()
+	. = ..()
+
+	if(!light_on)
+		set_light(0)
 
 /obj/structure/prop/brazier/get_examine_text(mob/user)
 	. = ..()
@@ -686,20 +693,11 @@
 	new frame_type(loc)
 	qdel(src)
 
-/obj/structure/prop/brazier/Destroy()
-	SetLuminosity(0)
-	return ..()
-
-/obj/structure/prop/brazier/Initialize()
-	. = ..()
-	if(luminosity)
-		SetLuminosity(luminosity)
-
 /obj/structure/prop/brazier/frame
 	name = "empty brazier"
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
-	luminosity = 0
+	light_on = FALSE
 	frame_type = /obj/structure/prop/brazier/frame/full
 	state = STATE_FUEL
 
@@ -715,7 +713,7 @@
 	desc = "It's a torch."
 	icon_state = "torch"
 	density = FALSE
-	luminosity = 5
+	light_range = 5
 
 /obj/structure/prop/brazier/frame/full/torch
 	name = "unlit torch"
@@ -840,7 +838,6 @@
 	addtimer(CALLBACK(src, PROC_REF(fuel_drain), TRUE), fuel_stage_time)
 
 /obj/structure/prop/brazier/campfire/Destroy()
-	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -1126,7 +1123,8 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = MOB_LAYER
-	luminosity = 3
+	light_range = 3
+	light_on = TRUE
 
 /obj/structure/prop/invuln/fusion_reactor
 	name = "\improper S-52 fusion reactor"

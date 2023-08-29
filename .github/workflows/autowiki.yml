@@ -30,6 +30,9 @@ jobs:
     - name: Install rust-g
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       run: |
+        sudo dpkg --add-architecture i386
+        sudo apt update || true
+        sudo apt install -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
         bash tools/ci/install_rust_g.sh
     - name: Compile and generate Autowiki files
       if: steps.secrets_set.outputs.SECRETS_ENABLED

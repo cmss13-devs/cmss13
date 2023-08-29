@@ -28942,10 +28942,6 @@
 /obj/structure/closet/emcloset,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
-/obj/item/storage/backpack/cultpack,
-/obj/item/clothing/under/rank/chaplain/cultist,
-/obj/item/clothing/shoes/cult,
-/obj/item/clothing/head/cultist_hood,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

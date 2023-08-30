@@ -34,7 +34,6 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
-	luminosity = 7
 	var/gunner_view_buff = 10
 
 	hardpoints_allowed = list(

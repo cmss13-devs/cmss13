@@ -35,12 +35,8 @@
 	name = "glowing goo"
 	acid_damage = 1
 	icon_state = "greenglow"
-	luminosity = 1
-
-/obj/effect/decal/cleanable/dirt/greenglow/Destroy()
-	SetLuminosity(0)
-	return ..()
-
+	light_range = 1
+	light_color = COLOUR_GREEN
 /obj/effect/decal/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"
@@ -58,7 +54,8 @@
 	density = FALSE
 	anchored = TRUE
 	layer = TURF_LAYER
-	luminosity = 1
+	light_range = 1
+	light_color = COLOUR_GREEN
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
 
@@ -67,10 +64,6 @@
 		return INITIALIZE_HINT_QDEL
 	. = ..()
 	QDEL_IN(WEAKREF(src), 2 MINUTES)
-
-/obj/effect/decal/cleanable/greenglow/Destroy()
-	SetLuminosity(0)
-	return ..()
 
 /obj/effect/decal/cleanable/cobweb
 	name = "cobweb"

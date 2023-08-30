@@ -1823,7 +1823,7 @@
 "RB" = (
 /obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
-	luminosity = 2
+	light_range = 2
 	},
 /turf/open/gm/river,
 /area/adminlevel/ert_station/clf_station)

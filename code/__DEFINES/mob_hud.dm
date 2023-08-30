@@ -65,3 +65,6 @@
 #define TRACKER_HIVE "Hive Core"
 #define TRACKER_LEADER "Leader"
 #define TRACKER_TUNNEL "Tunnel"
+
+//These are used to manage the same HUD having multiple sources
+#define HUD_SOURCE_ADMIN "admin"

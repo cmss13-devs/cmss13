@@ -148,7 +148,6 @@
 		on_fire = FALSE
 		fire_stacks = 0
 		update_fire()
-		SetLuminosity(0)
 		return TRUE
 	return FALSE
 

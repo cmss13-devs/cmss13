@@ -1,0 +1,4 @@
+author: "Tkdrg, many TG contributors"
+delete-after: True
+changes:
+  - rscadd: "dchat notifications now have a better interface"

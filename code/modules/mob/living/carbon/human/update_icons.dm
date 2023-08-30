@@ -137,16 +137,16 @@ There are several things that need to be remembered:
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body()
 	appearance_flags |= KEEP_TOGETHER // sanity
+
+	update_damage_overlays()
+
 	var/list/new_limbs = list()
-	for(var/obj/limb/part in limbs)
+	for(var/obj/limb/part as anything in limbs)
 		var/bodypart_icon = part.get_limb_icon()
 		new_limbs += bodypart_icon
 
 	remove_overlay(BODYPARTS_LAYER)
-
-	if(length(new_limbs))
-		overlays_standing[BODYPARTS_LAYER] = new_limbs
-
+	overlays_standing[BODYPARTS_LAYER] = new_limbs
 	apply_overlay(BODYPARTS_LAYER)
 
 	if(species.flags & HAS_UNDERWEAR)
@@ -165,6 +165,20 @@ There are several things that need to be remembered:
 		undershirt_icon.layer = -UNDERSHIRT_LAYER
 		overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
 		apply_overlay(UNDERSHIRT_LAYER)
+
+/mob/living/carbon/human/proc/update_damage_overlays()
+	remove_overlay(DAMAGE_LAYER)
+
+	var/list/damage_overlays = list()
+	for(var/obj/limb/part as anything in limbs)
+		if(part.status & LIMB_DESTROYED)
+			continue
+
+		damage_overlays += part.get_damage_overlays()
+
+	overlays_standing[DAMAGE_LAYER] = damage_overlays
+
+	apply_overlay(DAMAGE_LAYER)
 
 /mob/living/carbon/human/proc/remove_underwear() // :flushed: - geeves
 	remove_overlay(UNDERSHIRT_LAYER)

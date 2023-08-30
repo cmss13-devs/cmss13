@@ -757,19 +757,6 @@ This function completely restores a damaged organ to perfect condition.
 			. += image('icons/mob/humans/dam_human.dmi', "stump_[icon_name]_blood", -DAMAGE_LAYER, image_dir)
 		return
 
-	damage_state = damage_state_text()
-	var/brutestate = copytext(damage_state, 1, 2)
-	if(brutestate != "0")
-		wound_overlay.dir = image_dir
-		wound_overlay.icon_state = "grayscale_[brutestate]"
-		. += wound_overlay
-
-	var/burnstate = copytext(damage_state, 2)
-	if(burnstate != "0")
-		burn_overlay.dir = image_dir
-		burn_overlay.icon_state = "burn_[burnstate]"
-		. += burn_overlay
-
 	var/image/limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
 
 	var/race_icon = owner.species.icobase
@@ -1310,6 +1297,20 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/proc/reset_limb_surgeries()
 	owner.incision_depths[name] = SURGERY_DEPTH_SURFACE
 	owner.active_surgeries[name] = null
+
+/obj/limb/proc/get_damage_overlays()
+	. = list()
+
+	damage_state = damage_state_text()
+	var/brutestate = copytext(damage_state, 1, 2)
+	if(brutestate != "0")
+		wound_overlay.icon_state = "grayscale_[brutestate]"
+		. += wound_overlay
+
+	var/burnstate = copytext(damage_state, 2)
+	if(burnstate != "0")
+		burn_overlay.icon_state = "burn_[burnstate]"
+		. += wound_overlay
 
 /*
 			LIMB TYPES

@@ -1,0 +1,5 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "vehicles no longer have two lights"
+  - bugfix: "vehicles are now properly bright inside"

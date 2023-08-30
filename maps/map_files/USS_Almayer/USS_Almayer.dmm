@@ -36885,10 +36885,6 @@
 	pixel_x = 5;
 	pixel_y = 1
 	},
-/obj/item/reagent_container/food/drinks/bottle/whiskey{
-	pixel_x = 9;
-	pixel_y = 16
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange"

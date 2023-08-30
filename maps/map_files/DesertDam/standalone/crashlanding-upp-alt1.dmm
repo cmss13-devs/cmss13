@@ -49,6 +49,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "dN" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/mars{
 	icon_state = "mars_dirt_5"
 	},
@@ -57,6 +58,10 @@
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached18"
 	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"eb" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "eC" = (
 /turf/closed/shuttle/ert{
@@ -480,6 +485,12 @@
 	name = "Buran"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
+"ym" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
 "yU" = (
 /obj/structure/prop/invuln/fire{
 	pixel_x = -3;
@@ -610,6 +621,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "DO" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/mars{
 	icon_state = "mars_dirt_5"
 	},
@@ -617,6 +629,13 @@
 "Eh" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"EF" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "EL" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
@@ -817,8 +836,8 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "Ny" = (
 /obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/minigun,
-/obj/item/weapon/gun/minigun/upp,
+/obj/item/ammo_magazine/pkp,
+/obj/item/weapon/gun/pkp,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -888,6 +907,15 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp20";
 	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Qc" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/obj/effect/spawner/gibspawner/human,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "Qj" = (
@@ -999,6 +1027,15 @@
 	icon_state = "rightengine_1";
 	opacity = 0;
 	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"UK" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "VD" = (
@@ -1293,7 +1330,7 @@ Xq
 (7,1,1) = {"
 Yr
 fg
-bm
+OG
 oL
 jX
 la
@@ -1359,7 +1396,7 @@ nX
 nX
 nX
 Mp
-Yv
+ym
 Yv
 Yv
 PS
@@ -1404,7 +1441,7 @@ Yv
 Yv
 Yv
 Yv
-jX
+EF
 nX
 nX
 ta
@@ -1470,7 +1507,7 @@ Yv
 Yv
 Yv
 jX
-nX
+eb
 nn
 Pr
 Pr
@@ -1489,7 +1526,7 @@ bV
 xt
 Yv
 Yv
-Sb
+UK
 xz
 xE
 bm
@@ -1531,7 +1568,7 @@ xz
 Yv
 Yv
 Yv
-Yv
+ym
 jX
 nX
 vn
@@ -1550,7 +1587,7 @@ Xq
 EL
 nX
 nX
-Mp
+Qc
 nd
 nX
 mM

@@ -502,6 +502,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 								if("Pyro Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
 									specialist_assignment = "Pyro"
+								if("Stormtrooper Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ST)
+									specialist_assignment = "ST"
 								else
 									to_chat(user, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 									vend_fail()

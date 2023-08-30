@@ -21,6 +21,11 @@
 
 	var/protection_level = TURF_PROTECTION_CAS
 
+	/// How many lesser drone spawns this pylon is able to spawn currently
+	var/lesser_drone_spawns = 0
+	/// The maximum amount of lesser drone spawns this pylon can hold
+	var/lesser_drone_spawn_limit = 5
+
 	plane = FLOOR_PLANE
 
 /obj/effect/alien/resin/special/pylon/Initialize(mapload, hive_ref)
@@ -42,12 +47,31 @@
 		QDEL_NULL(node)
 	. = ..()
 
+/obj/effect/alien/resin/special/pylon/process(delta_time)
+	if(lesser_drone_spawns < lesser_drone_spawn_limit)
+		// One every 10 seconds while on ovi, one every 120-ish seconds while off ovi
+		lesser_drone_spawns = min(lesser_drone_spawns + ((linked_hive.living_xeno_queen?.ovipositor ? 0.1 : 0.008) * delta_time), lesser_drone_spawn_limit)
+
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
 		do_repair(M) //This handles the delay itself.
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()
+
+/obj/effect/alien/resin/special/pylon/get_examine_text(mob/user)
+	. = ..()
+
+	var/lesser_count = 0
+	for(var/mob/living/carbon/xenomorph/lesser_drone in linked_hive.totalXenos)
+		lesser_count++
+
+	. += "Currently holding [SPAN_NOTICE("[Floor(lesser_drone_spawns)]")]/[SPAN_NOTICE("[lesser_drone_spawn_limit]")] lesser drones."
+	. += "There are currently [SPAN_NOTICE("[lesser_count]")] lesser drones in the hive. The hive can support [SPAN_NOTICE("[linked_hive.lesser_drone_limit]")] lesser drones."
+
+/obj/effect/alien/resin/special/pylon/attack_ghost(mob/dead/observer/user)
+	. = ..()
+	spawn_lesser_drone(user)
 
 /obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/xenomorph/xeno)
 	if(!istype(xeno))
@@ -93,6 +117,25 @@
 	var/obj/effect/alien/weeds/node/pylon/pylon_node = new node_type(loc, null, null, linked_hive)
 	pylon_node.resin_parent = src
 	return pylon_node
+
+/obj/effect/alien/resin/special/pylon/proc/spawn_lesser_drone(mob/xeno_candidate)
+	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate, src))
+		return FALSE
+
+	if(tgui_alert(xeno_candidate, "Are you sure you want to become a lesser drone?", "Confirmation", list("Yes", "No")) != "Yes")
+		return FALSE
+
+	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate, src))
+		return FALSE
+
+	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new(loc, null, linked_hive.hivenumber)
+	xeno_candidate.mind.transfer_to(new_drone, TRUE)
+	lesser_drone_spawns -= 1
+	new_drone.visible_message(SPAN_XENODANGER("A lesser drone emerges out of [src]!"), SPAN_XENODANGER("You emerge out of [src] and awaken from your slumber. For the Hive!"))
+	playsound(new_drone, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
+	new_drone.generate_name()
+
+	return TRUE
 
 /obj/effect/alien/resin/special/pylon/endgame
 	cover_range = WEED_RANGE_CORE
@@ -189,6 +232,7 @@
 
 	protection_level = TURF_PROTECTION_OB
 
+	lesser_drone_spawn_limit = 10
 
 /obj/effect/alien/resin/special/pylon/core/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()
@@ -205,6 +249,7 @@
 	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "core[health < (initial(health) * 0.5) ? "_warn" : "_passive"]")
 
 /obj/effect/alien/resin/special/pylon/core/process()
+	. = ..()
 	update_minimap_icon()
 
 	// Handle spawning larva if core is connected to a hive
@@ -242,7 +287,6 @@
 			if(linked_hive.hijack_burrowed_left < 1)
 				linked_hive.hijack_burrowed_surge = FALSE
 				xeno_message(SPAN_XENOANNOUNCE("The hive's power wanes. You will no longer gain pooled larva over time."), 3, linked_hive.hivenumber)
-
 
 	// Hive core can repair itself over time
 	if(health < maxhealth && last_healed <= world.time)
@@ -399,23 +443,6 @@
 		log_admin("Hivecore cooldown reset proc aborted due to hivecore cooldown var being set to false before the cooldown has finished!")
 		// Tell admins that this condition is reached so they know what has happened if it fails somehow
 		return
-
-/obj/effect/alien/resin/special/pylon/core/proc/spawn_lesser_drone(mob/xeno_candidate)
-	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate))
-		return FALSE
-
-	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new /mob/living/carbon/xenomorph/lesser_drone(loc, null, linked_hive.hivenumber)
-	xeno_candidate.mind.transfer_to(new_drone, TRUE)
-	new_drone.visible_message(SPAN_XENODANGER("A lesser drone emerges out of [src]!"), SPAN_XENODANGER("You emerge out of [src] and awaken from your slumber. For the Hive!"))
-	playsound(new_drone, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
-	new_drone.generate_name()
-
-	return TRUE
-
-/obj/effect/alien/resin/special/pylon/core/attack_ghost(mob/dead/observer/user)
-	. = ..()
-	if(SSticker.mode.check_xeno_late_join(user))
-		SSticker.mode.attempt_to_join_as_lesser_drone(user)
 
 #undef PYLON_REPAIR_TIME
 #undef PYLON_WEEDS_REGROWTH_TIME

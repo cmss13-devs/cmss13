@@ -232,13 +232,13 @@
 		organ.take_damage(damage_on_move * count, 0, 0, no_limb_loss = TRUE)
 		embedded_mob.pain.apply_pain(damage_on_move * count)
 
-/obj/item/shard/shrapnel/nagant
+/obj/item/shard/shrapnel/upp
 	name = "small shrapnel"
 	desc = "Some shrapnel that used to be embedded underneath someone's skin."
 	icon_state = "small"
 	damage_on_move = 2
 
-/obj/item/shard/shrapnel/nagant/bits
+/obj/item/shard/shrapnel/upp/bits
 	name = "tiny shrapnel"
 	desc = "A tiny piece of shrapnel that used to be embedded underneath someone's skin."
 	icon_state = "tiny"

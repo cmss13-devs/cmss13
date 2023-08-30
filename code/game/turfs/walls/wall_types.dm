@@ -125,7 +125,7 @@
 	operating = TRUE
 	flick("containment_wall_divide_lowering", src)
 	icon_state = "containment_wall_divide_lowered"
-	SetOpacity(0)
+	set_opacity(0)
 	density = FALSE
 	operating = FALSE
 	change_weeds()
@@ -136,7 +136,7 @@
 	operating = TRUE
 	flick("containment_wall_divide_rising", src)
 	icon_state = "containment_wall_divide"
-	SetOpacity(1)
+	set_opacity(1)
 	density = TRUE
 	operating = FALSE
 
@@ -238,6 +238,8 @@
 	name = "window"
 	icon_state = "fakewindows"
 	opacity = FALSE
+
+INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"

@@ -109,7 +109,7 @@
 								<u>Access:</u><br>
 								"}
 
-					var/known_access_rights = get_all_main_access()
+					var/known_access_rights = get_access(ACCESS_LIST_MARINE_ALL)
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
 							contents += "  [get_access_desc(A)]"
@@ -197,7 +197,7 @@
 			else
 				var/list/new_access = list()
 				if(is_centcom)
-					new_access = get_all_weyland_access()
+					new_access = get_access(ACCESS_LIST_WY_ALL)
 				else
 					var/datum/job/job = RoleAuthority.roles_for_mode[target]
 
@@ -205,7 +205,7 @@
 						visible_message("[SPAN_BOLD("[src]")] states, \"DATA ERROR: Can not find next entry in database: [target]\"")
 						return
 					new_access = job.get_access()
-				target_id_card.access -= get_all_weyland_access() + get_all_main_access()
+				target_id_card.access -= get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_MARINE_MAIN)
 				target_id_card.access |= new_access
 				target_id_card.assignment = target
 				target_id_card.rank = target
@@ -227,7 +227,7 @@
 					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted [access_type] IFF. </font>")
 				return TRUE
 			access_type = text2num(params["access_target"])
-			if(access_type in (is_centcom ? get_all_weyland_access() : get_main_marine_access()))
+			if(access_type in (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN)))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
 					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked access '[access_type]'. </font>")
@@ -239,7 +239,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			target_id_card.access |= (is_centcom ? get_all_weyland_access() : get_main_marine_access())
+			target_id_card.access |= (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
 			target_id_card.faction_group |= factions
 			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted the ID all access and USCM IFF. </font>")
 			return TRUE

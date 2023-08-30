@@ -1009,6 +1009,12 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"aDE" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "Southeast Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop2/lv522)
 "aDS" = (
 /turf/open/floor/corsat{
 	dir = 5;
@@ -2166,12 +2172,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"bhy" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Southwest Landing Zone"
-	},
-/turf/open/floor/plating,
-/area/shuttle/drop1/lv522)
 "bhD" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -6938,6 +6938,12 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/dorms)
+"dos" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Southwest Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop1/lv522)
 "dox" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent5";
@@ -9673,13 +9679,12 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
 "evu" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/barricade/handrail,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "evv" = (
@@ -9814,13 +9819,10 @@
 	},
 /area/lv522/atmos/east_reactor)
 "exQ" = (
-/obj/structure/prop/maintenance_hatch{
-	pixel_y = 6
-	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/barricade/handrail,
+/obj/structure/largecrate,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -11240,12 +11242,6 @@
 /obj/item/trash/plate,
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
-"fdt" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Southeast Landing Zone"
-	},
-/turf/open/floor/plating,
-/area/shuttle/drop2/lv522)
 "fdC" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -14472,7 +14468,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "gul" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -20477,14 +20473,10 @@
 	},
 /area/lv522/landing_zone_2)
 "iGD" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/small,
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 9
-	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "iGF" = (
@@ -24208,7 +24200,7 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "jYp" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -56793,7 +56785,7 @@
 /area/lv522/indoors/a_block/executive)
 "vSV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -66159,7 +66151,7 @@ sYH
 sYH
 nFj
 nFj
-bhy
+sYH
 gnf
 ryU
 wes
@@ -67057,7 +67049,7 @@ sYH
 sYH
 sYH
 sYH
-sYH
+dos
 sYH
 sYH
 sYH
@@ -98409,7 +98401,7 @@ aIp
 aIp
 xYA
 xYA
-fdt
+aIp
 kcR
 hIf
 cDi
@@ -99307,7 +99299,7 @@ aIp
 aIp
 aIp
 aIp
-aIp
+aDE
 aIp
 aIp
 aIp

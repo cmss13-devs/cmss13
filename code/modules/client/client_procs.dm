@@ -287,11 +287,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!(connection in list("seeker", "web"))) //Invalid connection type.
 		return null
 
-	if(IsGuestKey(key))
-		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
-		qdel(src)
-		return
-
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
@@ -435,7 +430,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	for(var/line in lines)
 		if(src.ckey == line)
-			src.donator = 1
+			src.donator = TRUE
 			add_verb(src, /client/proc/set_ooc_color_self)
 
 	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)

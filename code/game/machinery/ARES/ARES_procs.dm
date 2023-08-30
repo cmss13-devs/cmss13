@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return ARES_ACCESS_CO
 	if(ACCESS_MARINE_SENIOR in card.access)
 		return ARES_ACCESS_SENIOR
-	if(ACCESS_WY_CORPORATE in card.access)
+	if(ACCESS_WY_GENERAL in card.access)
 		return ARES_ACCESS_CORPORATE
 	if(ACCESS_MARINE_COMMAND in card.access)
 		return ARES_ACCESS_COMMAND
@@ -208,6 +208,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 	data["distresstime"] = ares_distress_cooldown
 	data["distresstimelock"] = DISTRESS_TIME_LOCK
+	data["quarterstime"] = ares_quarters_cooldown
 	data["mission_failed"] = SSticker.mode.is_in_endgame
 	data["nuketimelock"] = NUCLEAR_TIME_LOCK
 	data["nuke_available"] = nuke_available
@@ -506,16 +507,18 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 		// -- Emergency Buttons -- //
 		if("general_quarters")
-			if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
-				to_chat(usr, SPAN_WARNING("Alert level is already red or above, General Quarters cannot be called."))
+			if(!COOLDOWN_FINISHED(src, ares_quarters_cooldown))
+				to_chat(usr, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			set_security_level(2, no_sound = TRUE, announce = FALSE)
+			if(security_level < SEC_LEVEL_RED)
+				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(usr)] has called for general quarters via ARES.")
 			message_admins("[key_name_admin(usr)] has called for general quarters via ARES.")
 			var/datum/ares_link/link = GLOB.ares_link
 			link.log_ares_security("General Quarters", "[last_login] has called for general quarters via ARES.")
+			COOLDOWN_START(src, ares_quarters_cooldown, 10 MINUTES)
 			. = TRUE
 
 		if("evacuation_start")
@@ -563,7 +566,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested a Distress Beacon (via ARES)! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+			SSticker.mode.request_ert(usr, TRUE)
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM High Command."))
 			COOLDOWN_START(src, ares_distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
@@ -613,7 +616,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return APOLLO_ACCESS_AUTHED
 	if(ACCESS_MARINE_AI_TEMP in card.access)
 		return APOLLO_ACCESS_TEMP
-	if((ACCESS_MARINE_SENIOR in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_CORPORATE in card.access))
+	if((ACCESS_MARINE_SENIOR in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_GENERAL in card.access))
 		return APOLLO_ACCESS_REPORTER
 	else
 		return APOLLO_ACCESS_REQUEST

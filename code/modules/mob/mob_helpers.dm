@@ -528,3 +528,9 @@ var/global/list/limb_types_by_name = list(
 
 /mob/proc/get_paygrade()
 	return
+
+/mob/proc/reset_lighting_alpha()
+	SIGNAL_HANDLER
+
+	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	sync_lighting_plane_alpha()

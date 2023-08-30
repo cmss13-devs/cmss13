@@ -823,6 +823,18 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M35 pyrotechnician"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
+/obj/item/clothing/head/helmet/marine/M40
+	name = "\improper M40 helmet"
+	icon_state = "st_helmet"
+	desc = "A helmet designed for USCM storm trooper. Contains heavy insulation, covered in nomex weave."
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
+	specialty = "M40 stormtrooper"
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+	unacidable = TRUE
+
 /obj/item/clothing/head/helmet/marine/M3T
 	name = "\improper M3-T bombardier helmet"
 	icon_state = "sadar_helmet"

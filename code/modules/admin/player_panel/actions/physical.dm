@@ -89,6 +89,8 @@
 							set_name = "Scout Set"
 						if(SKILL_SPEC_SNIPER)
 							set_name = "Sniper Set"
+						if(SKILL_SPEC_ST)
+							set_name = "Stormtrooper Set"
 
 					if(set_name && !available_specialist_sets.Find(set_name))
 						available_specialist_sets += set_name

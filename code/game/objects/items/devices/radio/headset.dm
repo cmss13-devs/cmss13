@@ -1022,3 +1022,13 @@
 	initial_keys = list(/obj/item/device/encryptionkey/vc)
 	volume = RADIO_VOLUME_RAISED
 	multibroadcast_cooldown = HIGH_MULTIBROADCAST_COOLDOWN
+
+/obj/item/device/radio/headset/distress/UPP/recon
+	name = "\improper UPP headset"
+	desc = "A special headset used by recon elements of the UPP military."
+	frequency = UPP_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/upp)
+	volume = RADIO_VOLUME_QUIET
+	ignore_z = FALSE
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_UPP

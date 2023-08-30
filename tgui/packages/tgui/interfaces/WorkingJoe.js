@@ -637,8 +637,14 @@ const MaintManagement = (props, context) => {
 };
 const AccessRequests = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, access_tickets } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    access_tickets,
+  } = data;
 
   return (
     <>

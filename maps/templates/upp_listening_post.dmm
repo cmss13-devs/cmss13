@@ -1,0 +1,26 @@
+"a" = (/turf/closed/wall/kutjevo/rock,/area/space)
+"e" = (/obj/structure/bed/chair/office/dark,/turf/open/floor/plating/almayer,/area/space)
+"p" = (/obj/structure/machinery/light/double,/turf/closed/wall/hangar,/area/space)
+"B" = (/obj/structure/surface/table/reinforced,/obj/structure/machinery/computer/cameras/almayer,/turf/open/floor/plating/almayer,/area/space)
+"I" = (/obj/structure/machinery/door/airlock/glass_mining/colony,/turf/open/floor/plating/almayer,/area/space)
+"M" = (/turf/closed/wall/hangar,/area/space)
+"P" = (/turf/open/floor/plating/almayer,/area/space)
+"T" = (/obj/structure/surface/table/reinforced,/obj/structure/machinery/computer/overwatch,/turf/open/floor/plating/almayer,/area/space)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaa
+aPPPPPPPPPPPPPa
+aPPPPPPPPPPPPPa
+aPPPPPPPPPPPPPa
+aPPPPPPPPPPPPPa
+aPPPPPPPPPPPPPa
+aPPPPPPPPPPPPPa
+aPPPPPPPPPPPPPa
+aPPPPPPPPPPPPPa
+aMMpMMMMPPPPPPa
+aPPPPPPIPPPPPPa
+aPPPPPPMPPPPPPa
+aePePePMPPPPPPa
+aTBTBTBMPPPPPPa
+aaaaaaaaaaaaaaa
+"}

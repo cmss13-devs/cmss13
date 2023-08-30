@@ -123,8 +123,6 @@
 	return TRUE
 
 /datum/effects/neurotoxin/proc/process_hallucination(mob/living/carbon/human/victim)
-	/// area of the victim for areachecks
-	var/hallu_area = get_area(victim)
 	switch(rand(0, 100))
 		if(0 to 5)
 			playsound_client(victim?.client,pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))

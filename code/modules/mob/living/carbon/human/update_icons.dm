@@ -76,11 +76,16 @@ There are several things that need to be remembered:
 
 
 /mob/living/carbon/human/apply_overlay(cache_index)
-	var/image/I = overlays_standing[cache_index]
-	if(I)
-		I.appearance_flags |= RESET_COLOR
-		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, I)
-		overlays += I
+	var/list/images = overlays_standing[cache_index]
+
+	if(!islist(images))
+		images = list(images)
+
+	if(length(images))
+		for(var/image/current_image as anything in images)
+			current_image.appearance_flags |= RESET_COLOR
+		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, images)
+		overlays += images
 
 /mob/living/carbon/human/remove_overlay(cache_index)
 	if(overlays_standing[cache_index])
@@ -132,10 +137,17 @@ There are several things that need to be remembered:
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body()
 	appearance_flags |= KEEP_TOGETHER // sanity
-	vis_contents.Cut()
+	var/list/new_limbs = list()
 	for(var/obj/limb/part in limbs)
-		vis_contents += part
-		part.update_icon(TRUE)
+		var/bodypart_icon = part.get_limb_icon()
+		new_limbs += bodypart_icon
+
+	remove_overlay(BODYPARTS_LAYER)
+
+	if(length(new_limbs))
+		overlays_standing[BODYPARTS_LAYER] = new_limbs
+
+	apply_overlay(BODYPARTS_LAYER)
 
 	if(species.flags & HAS_UNDERWEAR)
 		//Underwear
@@ -739,7 +751,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 //Human Overlays Indexes/////////
 #undef MUTANTRACE_LAYER
-#undef DAMAGE_LAYER
 #undef UNIFORM_LAYER
 #undef TAIL_LAYER
 #undef ID_LAYER

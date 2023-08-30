@@ -42,6 +42,8 @@
 #define ATOM_DECORATED (1<<16)
 /// Whether or not the object uses hearing
 #define USES_HEARING (1<<17)
+/// Should we use the initial icon for display? Mostly used by overlay only objects
+#define HTML_USE_INITAL_ICON (1<<18)
 
 //==========================================================================================
 

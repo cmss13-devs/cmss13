@@ -62,7 +62,16 @@
 /obj/effect/alien/resin/special/pylon/get_examine_text(mob/user)
 	. = ..()
 
+	var/lesser_count = 0
+	for(var/mob/living/carbon/xenomorph/lesser_drone in linked_hive.totalXenos)
+		lesser_count++
+
 	. += "Currently holding [SPAN_NOTICE("[Floor(lesser_drone_spawns)]")]/[SPAN_NOTICE("[lesser_drone_spawn_limit]")] lesser drones."
+	. += "There are currently [SPAN_NOTICE("[lesser_count]")] lesser drones in the hive. The hive can support [SPAN_NOTICE("[linked_hive.lesser_drone_limit]")] lesser drones."
+
+/obj/effect/alien/resin/special/pylon/attack_ghost(mob/dead/observer/user)
+	. = ..()
+	spawn_lesser_drone(user)
 
 /obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/xenomorph/xeno)
 	if(!istype(xeno))
@@ -434,11 +443,6 @@
 		log_admin("Hivecore cooldown reset proc aborted due to hivecore cooldown var being set to false before the cooldown has finished!")
 		// Tell admins that this condition is reached so they know what has happened if it fails somehow
 		return
-
-/obj/effect/alien/resin/special/pylon/core/attack_ghost(mob/dead/observer/user)
-	. = ..()
-	if(SSticker.mode.check_xeno_late_join(user))
-		SSticker.mode.attempt_to_join_as_lesser_drone(user)
 
 #undef PYLON_REPAIR_TIME
 #undef PYLON_WEEDS_REGROWTH_TIME

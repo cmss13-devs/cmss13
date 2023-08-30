@@ -258,6 +258,8 @@
 		JoinResponseTeam()
 	if(href_list["claim_freed"])
 		handle_joining_as_freed_mob(locate(href_list["claim_freed"]))
+	if(href_list["join_xeno"])
+		join_as_alien()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)

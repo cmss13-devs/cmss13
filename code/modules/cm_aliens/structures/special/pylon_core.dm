@@ -236,7 +236,7 @@
 			last_surge_time = world.time
 			linked_hive.stored_larva++
 			linked_hive.hijack_burrowed_left--
-			notify_ghosts(header = "Claim Xeno", message = "The Hive has gained another burrowed larva! Click to take it.", source = src, action = NOTIFY_JOIN_XENO)
+			notify_ghosts(header = "Claim Xeno", message = "The Hive has gained another burrowed larva! Click to take it.", source = src, action = NOTIFY_JOIN_XENO, enter_link = "join_xeno")
 			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 			if(linked_hive.hijack_burrowed_left < 1)

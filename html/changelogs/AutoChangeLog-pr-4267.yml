@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Moved the Request ERT message to a proc to reduce duplication."
-  - admin: "Added a detail in ERT request to indicate if a RANDOM ERT was granted by staff already or not. This will not work for manual specific chosen ERTs."

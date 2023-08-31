@@ -69,14 +69,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /datum/ares_link/proc/log_ares_bioscan(title, input)
 	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
-/datum/ares_link/proc/log_ares_bombardment(mob/user, ob_name, coordinates)
-	interface.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user.name))
+/datum/ares_link/proc/log_ares_bombardment(user, ob_name, coordinates)
+	interface.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user))
 
 /datum/ares_link/proc/log_ares_announcement(title, message)
 	interface.records_announcement.Add(new /datum/ares_record/announcement(title, message))
 
-/datum/ares_link/proc/log_ares_requisition(source, details, mob/user)
-	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user.name))
+/datum/ares_link/proc/log_ares_requisition(source, details, user)
+	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user))
 
 /datum/ares_link/proc/log_ares_security(title, details)
 	interface.records_security.Add(new /datum/ares_record/security(title, details))
@@ -84,8 +84,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /datum/ares_link/proc/log_ares_antiair(details)
 	interface.records_security.Add(new /datum/ares_record/security/antiair(details))
 
-/datum/ares_link/proc/log_ares_flight(mob/user, details)
-	interface.records_flight.Add(new /datum/ares_record/flight(details, user.name))
+/datum/ares_link/proc/log_ares_flight(user, details)
+	interface.records_flight.Add(new /datum/ares_record/flight(details, user))
 // ------ End ARES Logging Procs ------ //
 
 /proc/ares_apollo_talk(broadcast_message)
@@ -234,6 +234,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 	data["distresstime"] = ares_distress_cooldown
 	data["distresstimelock"] = DISTRESS_TIME_LOCK
+	data["quarterstime"] = ares_quarters_cooldown
 	data["mission_failed"] = SSticker.mode.is_in_endgame
 	data["nuketimelock"] = NUCLEAR_TIME_LOCK
 	data["nuke_available"] = nuke_available
@@ -530,16 +531,18 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 		// -- Emergency Buttons -- //
 		if("general_quarters")
-			if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
-				to_chat(usr, SPAN_WARNING("Alert level is already red or above, General Quarters cannot be called."))
+			if(!COOLDOWN_FINISHED(src, ares_quarters_cooldown))
+				to_chat(usr, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			set_security_level(2, no_sound = TRUE, announce = FALSE)
+			if(security_level < SEC_LEVEL_RED)
+				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(usr)] has called for general quarters via ARES.")
 			message_admins("[key_name_admin(usr)] has called for general quarters via ARES.")
 			var/datum/ares_link/link = GLOB.ares_link
 			link.log_ares_security("General Quarters", "[last_login] has called for general quarters via ARES.")
+			COOLDOWN_START(src, ares_quarters_cooldown, 10 MINUTES)
 			. = TRUE
 
 		if("evacuation_start")

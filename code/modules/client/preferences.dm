@@ -234,6 +234,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
 
+	/// if this client has tooltips enabled
+	var/tooltips = TRUE
+
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
@@ -573,6 +576,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			dat += "<b>Adaptive Zoom:</b> <a href='?_src_=prefs;preference=adaptive_zoom'>[adaptive_zoom ? "[adaptive_zoom * 2]x" : "Disabled"]</a><br>"
+			dat += "<b>Tooltips:</b> <a href='?_src_=prefs;preference=tooltips'><b>[tooltips ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
@@ -1861,6 +1865,17 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(adaptive_zoom == 3)
 						adaptive_zoom = 0
 					owner?.adaptive_zoom()
+
+				if("tooltips")
+					tooltips = !tooltips
+					save_preferences()
+
+					if(!tooltips)
+						closeToolTip()
+						return
+
+					if(!owner.tooltips)
+						owner.tooltips = new(owner)
 
 				if("inputstyle")
 					var/result = tgui_alert(user, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))

@@ -220,7 +220,7 @@
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
-		announce_dchat("[xeno] has locked \the [dropship]", src)
+		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 
 		if(almayer_orbital_cannon)
 			almayer_orbital_cannon.is_disabled = TRUE
@@ -369,7 +369,7 @@
 			update_equipment(is_optimised)
 			if(is_set_flyby)
 				to_chat(user, SPAN_NOTICE("You begin the launch sequence for a flyby."))
-				link.log_ares_flight(user, "Launched Dropship [shuttle.name] on a flyby.")
+				link.log_ares_flight(user.name, "Launched Dropship [shuttle.name] on a flyby.")
 				var/log = "[key_name(user)] launched the dropship [src.shuttleId] on flyby."
 				msg_admin_niche(log)
 				log_interact(user, msg = "[log]")
@@ -398,7 +398,7 @@
 				return TRUE
 			SSshuttle.moveShuttle(shuttle.id, dock.id, TRUE)
 			to_chat(user, SPAN_NOTICE("You begin the launch sequence to [dock]."))
-			link.log_ares_flight(user, "Launched Dropship [shuttle.name] on a flight to [dock].")
+			link.log_ares_flight(user.name, "Launched Dropship [shuttle.name] on a flight to [dock].")
 			var/log = "[key_name(user)] launched the dropship [src.shuttleId] on transport."
 			msg_admin_niche(log)
 			log_interact(user, msg = "[log]")
@@ -418,13 +418,13 @@
 				to_chat(user, SPAN_WARNING("Door controls have been overridden. Please call technical support."))
 		if("set-ferry")
 			is_set_flyby = FALSE
-			link.log_ares_flight(user, "Set Dropship [shuttle.name] to transport runs.")
+			link.log_ares_flight(user.name, "Set Dropship [shuttle.name] to transport runs.")
 			var/log = "[key_name(user)] set the dropship [src.shuttleId] into transport"
 			msg_admin_niche(log)
 			log_interact(user, msg = "[log]")
 		if("set-flyby")
 			is_set_flyby = TRUE
-			link.log_ares_flight(user, "Set Dropship [shuttle.name] to flyby runs.")
+			link.log_ares_flight(user.name, "Set Dropship [shuttle.name] to flyby runs.")
 			var/log = "[key_name(user)] set the dropship [src.shuttleId] into flyby."
 			msg_admin_niche(log)
 			log_interact(user, msg = "[log]")
@@ -447,7 +447,7 @@
 			shuttle.automated_lz_id = ground_lz
 			shuttle.automated_delay = delay
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			link.log_ares_flight(user, "Enabled autopilot for Dropship [shuttle.name].")
+			link.log_ares_flight(user.name, "Enabled autopilot for Dropship [shuttle.name].")
 			var/log = "[key_name(user)] has enabled auto pilot on '[shuttle.name]'"
 			message_admins(log)
 			log_interact(user, msg = "[log]")
@@ -464,7 +464,7 @@
 			shuttle.automated_lz_id = null
 			shuttle.automated_delay = null
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			link.log_ares_flight(user, "Disabled autopilot for Dropship [shuttle.name].")
+			link.log_ares_flight(user.name, "Disabled autopilot for Dropship [shuttle.name].")
 			var/log = "[key_name(user)] has disabled auto pilot on '[shuttle.name]'"
 			message_admins(log)
 			log_interact(user, msg = "[log]")

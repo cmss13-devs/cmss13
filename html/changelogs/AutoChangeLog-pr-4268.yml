@@ -1,4 +1,0 @@
-author: "Xufysz"
-delete-after: True
-changes:
-  - bugfix: "Fixes admin training dummy interaction distance"

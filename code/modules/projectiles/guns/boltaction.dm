@@ -119,7 +119,7 @@
 
 /obj/item/weapon/gun/boltaction/vulture
 	name = "\improper M707 \"Vulture\" anti-materiel rifle"
-	desc = "The M707 is a crude but highly powerful rifle, designed for disabling lightly armored vehicles and hitting targets inside buildings. Its unwieldy scope and caliber necessitates a spotter to be fully effective."
+	desc = "The M707 is a crude but highly powerful rifle, designed for disabling lightly armored vehicles and hitting targets inside buildings. Its unwieldy scope and caliber necessitates a spotter to be fully effective, suffering severe scope drift without one."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overriden with camos
 	icon_state = "vulture"
 	item_state = "vulture"

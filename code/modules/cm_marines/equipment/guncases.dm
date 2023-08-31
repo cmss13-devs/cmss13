@@ -341,16 +341,16 @@
 //M44 Combat Revolver
 /obj/item/storage/box/guncase/m44
 	name = "\improper M44 Combat Revolver case"
-	desc = "A gun case containing an M44 Combat Revolver."
+	desc = "A gun case containing an M44 Combat Revolver loaded with marksman ammo."
 	storage_slots = 5
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/revolver/m44, /obj/item/ammo_magazine/revolver)
 
 /obj/item/storage/box/guncase/m44/fill_preset_inventory()
 	new /obj/item/attachable/flashlight(src)
-	new /obj/item/weapon/gun/revolver/m44(src)
-	new /obj/item/ammo_magazine/revolver(src)
-	new /obj/item/ammo_magazine/revolver(src)
-	new /obj/item/ammo_magazine/revolver(src)
+	new /obj/item/weapon/gun/revolver/m44/mp(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
 
 //M4A3 Service Pistol
 /obj/item/storage/box/guncase/m4a3

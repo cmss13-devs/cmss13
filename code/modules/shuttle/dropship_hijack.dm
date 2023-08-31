@@ -1,5 +1,5 @@
-#define HIJACK_CRASH_SITE_OFFSET_X -5
-#define HIJACK_CRASH_SITE_OFFSET_Y -11
+#define HIJACK_CRASH_SITE_OFFSET_X 0
+#define HIJACK_CRASH_SITE_OFFSET_Y 0
 
 /datum/dropship_hijack
 	var/obj/docking_port/mobile/shuttle

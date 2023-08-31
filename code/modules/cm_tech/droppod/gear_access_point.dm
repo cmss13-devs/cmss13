@@ -17,7 +17,7 @@
 /obj/structure/techpod_vendor/attack_hand(mob/user)
 	var/area/a = get_area(src)
 	//no idea why it was made just a structure, so this is gonna be here for now
-	if(!a.master || a.master.requires_power && !a.master.unlimited_power && !a.master.power_equip)
+	if(!a || a.requires_power && !a.unlimited_power && !a.power_equip)
 		return
 
 	if(!ishuman(user) || !get_access_permission(user))

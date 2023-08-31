@@ -269,9 +269,9 @@
 			F.is_lit = !F.is_lit
 			if(!F.damaged)
 				if(F.is_lit) //Shut it down
-					F.SetLuminosity(F.lum_value)
+					F.set_light(F.lum_value)
 				else
-					F.SetLuminosity(0)
+					F.set_light(0)
 			F.update_icon()
 	return 0
 
@@ -315,7 +315,6 @@
 	health = 150
 
 /obj/structure/machinery/colony_floodlight/Destroy()
-	SetLuminosity(0)
 	if(fswitch)
 		fswitch.floodlist -= src
 		fswitch = null
@@ -362,7 +361,7 @@
 					user.visible_message(SPAN_NOTICE("[user] screws [src]'s maintenance hatch closed."), \
 					SPAN_NOTICE("You screw [src]'s maintenance hatch closed."))
 					if(is_lit)
-						SetLuminosity(lum_value)
+						set_light(lum_value)
 					update_icon()
 			return TRUE
 

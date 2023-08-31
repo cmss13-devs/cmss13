@@ -22495,7 +22495,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_state = "orange"
+	icon_state = "silver"
 	},
 /area/almayer/hallways/hangar)
 "bOG" = (
@@ -28973,7 +28973,6 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build{
-	dir = 2;
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/command/airoom)
@@ -29829,13 +29828,13 @@
 	},
 /area/almayer/shipboard/brig/surgery)
 "dgg" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -30488,10 +30487,10 @@
 	},
 /area/almayer/shipboard/brig/cryo)
 "dtH" = (
-/obj/structure/bed/chair/comfy{
-	dir = 8
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silver"
 	},
-/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "dtM" = (
 /turf/open/floor/almayer{
@@ -33117,6 +33116,14 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/delta)
+"ewR" = (
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
+	name = "\improper Intel Chute Room"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/hangar)
 "ewS" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -33203,7 +33210,8 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_state = "orange"
+	dir = 10;
+	icon_state = "silver"
 	},
 /area/almayer/hallways/hangar)
 "eyV" = (
@@ -37118,6 +37126,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/closet/coffin/woodencrate,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
 	},
@@ -42100,10 +42109,10 @@
 	},
 /area/almayer/living/bridgebunks)
 "ivg" = (
-/obj/structure/janitorialcart,
+/obj/structure/closet/crate,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "orange"
+	icon_state = "silver"
 	},
 /area/almayer/hallways/hangar)
 "ivs" = (
@@ -42255,6 +42264,10 @@
 	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
+	},
+/obj/structure/disposalpipe/down/almayer{
+	dir = 2;
+	id = "almayerlink_IO_hanger"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -43131,6 +43144,10 @@
 /obj/item/stool{
 	pixel_x = -15;
 	pixel_y = 6
+	},
+/obj/structure/disposalpipe/up/almayer{
+	dir = 4;
+	id = "almayerlink_IO_hanger"
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
@@ -44234,6 +44251,14 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
+"jon" = (
+/obj/structure/machinery/cm_vending/clothing/medical_crew,
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "almayerlink_IO_hanger"
+	},
+/turf/open/space/basic,
+/area/almayer/medical/lockerroom)
 "jox" = (
 /obj/structure/machinery/brig_cell/cell_3{
 	pixel_x = -32
@@ -44992,6 +45017,12 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/captain_mess)
+"jLE" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/hallways/hangar)
 "jLK" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -45452,6 +45483,17 @@
 /turf/open/floor/almayer/research/containment/corner3,
 /area/almayer/medical/containment/cell)
 "jVE" = (
+/obj/structure/disposaloutlet{
+	density = 0;
+	desc = "An outlet for the intel chute";
+	icon_state = "delivery_outlet";
+	name = "delivery outlet";
+	pixel_y = 26;
+	range = 0
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
 	},
@@ -47564,10 +47606,12 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "kSv" = (
-/obj/item/reagent_container/glass/bucket/janibucket,
+/obj/structure/surface/table/almayer,
+/obj/item/clipboard,
+/obj/item/clipboard,
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "orange"
+	icon_state = "silver"
 	},
 /area/almayer/hallways/hangar)
 "kSy" = (
@@ -50054,11 +50098,18 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
 "lRX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
+/obj/structure/machinery/disposal/delivery{
+	density = 0;
+	desc = "A pneumatic delivery unit. Sends items to the research department.";
+	icon_state = "delivery_med";
+	name = "Requisitions Delivery Unit";
+	pixel_x = -30
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
+	icon_state = "cargo"
 	},
 /area/almayer/hallways/hangar)
 "lRZ" = (
@@ -50527,10 +50578,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "orange"
+	icon_state = "silver"
 	},
 /area/almayer/hallways/hangar)
 "mhl" = (
@@ -51216,11 +51266,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "myo" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clothing/head/soft/purple,
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
+	dir = 9;
+	icon_state = "silver"
 	},
 /area/almayer/hallways/hangar)
 "myC" = (
@@ -52093,6 +52141,12 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
+"mQk" = (
+/obj/structure/janitorialcart,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_f_p)
 "mQC" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/port_atmos)
@@ -52665,6 +52719,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
+"ndU" = (
+/obj/item/clothing/head/soft/purple,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_f_p)
 "ndZ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp,
@@ -54996,6 +55056,12 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/computerlab)
+"ofh" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/closed/wall/almayer,
+/area/almayer/hallways/hangar)
 "ofs" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -55329,11 +55395,10 @@
 	},
 /area/almayer/shipboard/brig/cic_hallway)
 "omP" = (
-/obj/item/tool/mop,
-/obj/structure/surface/rack,
+/obj/structure/closet/crate,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "orange"
+	icon_state = "silver"
 	},
 /area/almayer/hallways/hangar)
 "onN" = (
@@ -56320,6 +56385,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"oJr" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/airoom)
 "oJR" = (
 /obj/effect/projector{
 	name = "Almayer_AresDown";
@@ -57759,6 +57828,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
 /obj/effect/spawner/random/tool,
+/obj/item/reagent_container/glass/bucket/janibucket,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -58053,6 +58123,14 @@
 	icon_state = "greencorner"
 	},
 /area/almayer/hallways/port_hallway)
+"pBx" = (
+/obj/structure/surface/rack,
+/obj/item/tool/mop,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_f_p)
 "pBW" = (
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
@@ -60675,15 +60753,16 @@
 	dir = 4;
 	name = "ship-grade camera"
 	},
-/obj/item/folder/white{
-	pixel_x = 6
+/obj/structure/disposaloutlet{
+	density = 0;
+	desc = "An outlet for the intel chute";
+	icon_state = "delivery_outlet";
+	name = "delivery outlet";
+	range = 0;
+	pixel_x = -26
 	},
-/obj/item/storage/fancy/vials/empty{
-	pixel_y = 10;
-	start_vials = 2
-	},
-/obj/item/tool/pen{
-	pixel_y = 8
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -62079,6 +62158,10 @@
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 32
 	},
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink_RND_hanger"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side"
@@ -62415,13 +62498,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "rux" = (
-/obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
-	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "ruz" = (
 /obj/effect/decal/warning_stripes{
@@ -63730,6 +63810,12 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/general_equipment)
+"sau" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/medical_science)
 "saB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -64529,6 +64615,10 @@
 "sti" = (
 /obj/structure/closet/crate/trashcart,
 /obj/effect/spawner/random/balaclavas,
+/obj/structure/disposalpipe/up/almayer{
+	dir = 4;
+	id = "almayerlink_RND_hanger"
+	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "str" = (
@@ -64990,11 +65080,18 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "sEt" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/spray/cleaner,
+/obj/structure/machinery/disposal/delivery{
+	density = 0;
+	desc = "A pneumatic delivery unit. Sends items to the computer lab.";
+	icon_state = "delivery_engi";
+	name = "Intel Delivery Unit";
+	pixel_x = -30
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
+	icon_state = "cargo"
 	},
 /area/almayer/hallways/hangar)
 "sEK" = (
@@ -66914,7 +67011,7 @@
 /area/almayer/shipboard/port_missiles)
 "tuN" = (
 /turf/open/floor/almayer{
-	icon_state = "orange"
+	icon_state = "silver"
 	},
 /area/almayer/hallways/hangar)
 "tuZ" = (
@@ -73478,6 +73575,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -74719,7 +74817,6 @@
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 1;
 	name = "\improper CMO's Bedroom";
-	req_access = null;
 	req_one_access_txt = "1;5";
 	access_modified = 1
 	},
@@ -99247,9 +99344,9 @@ xyw
 bHB
 btO
 bcm
+ofh
 bcm
-bcm
-bcm
+ofh
 bcm
 mzo
 sYC
@@ -99263,10 +99360,10 @@ aaf
 ajY
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -99456,7 +99553,7 @@ sEt
 bcm
 wbx
 vhq
-vhq
+ndU
 oFG
 vhq
 vRz
@@ -99466,10 +99563,10 @@ aag
 ajZ
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -99669,10 +99766,10 @@ aag
 ajZ
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -99862,7 +99959,7 @@ tuN
 fPn
 nqU
 nqU
-vhq
+mQk
 dQH
 hYc
 vRz
@@ -99872,10 +99969,10 @@ aag
 ajZ
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -100063,7 +100160,7 @@ omP
 aYt
 bOC
 bcm
-vhq
+pBx
 nqU
 vhq
 dQH
@@ -100075,10 +100172,10 @@ aag
 ajZ
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -100263,7 +100360,7 @@ bHB
 aYt
 cdA
 ivg
-llO
+jLE
 kSv
 bcm
 mzo
@@ -100278,10 +100375,10 @@ aag
 ajZ
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -100466,7 +100563,7 @@ bHB
 aqs
 bcm
 bcm
-wXT
+ewR
 cdA
 bcm
 bcm
@@ -103502,7 +103599,7 @@ tGh
 gfW
 sgj
 bDv
-bDv
+jon
 bDv
 bEP
 gfW
@@ -108470,7 +108567,7 @@ vOy
 vOy
 vOy
 vOy
-vOy
+sau
 vOy
 vOy
 vOy
@@ -117200,7 +117297,7 @@ mOi
 asF
 asG
 iyH
-aqU
+oJr
 jVE
 nTs
 pje

@@ -144,10 +144,25 @@ There are several things that need to be remembered:
 
 	update_damage_overlays()
 
+	var/list/needs_update = list()
+	for(var/obj/limb/part as anything in limbs)
+		part.update_limb()
+
+		var/old_key = icon_render_keys?[part.icon_name]
+		icon_render_keys[part.icon_name] = part.get_limb_icon_key()
+		if(icon_render_keys[part.icon_name] == old_key)
+			continue
+
+		needs_update += part
+
 	var/list/new_limbs = list()
 	for(var/obj/limb/part as anything in limbs)
-		var/bodypart_icon = part.get_limb_icon()
-		new_limbs += bodypart_icon
+		if(part in needs_update)
+			var/bodypart_icon = part.get_limb_icon()
+			new_limbs += bodypart_icon
+			icon_render_image_cache[icon_render_keys[part.icon_name]] = bodypart_icon
+		else
+			new_limbs += icon_render_image_cache[icon_render_keys[part.icon_name]]
 
 	remove_overlay(BODYPARTS_LAYER)
 	overlays_standing[BODYPARTS_LAYER] = new_limbs

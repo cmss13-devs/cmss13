@@ -162,6 +162,9 @@
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()
 
+	var/list/icon_render_keys = list()
+	var/static/list/icon_render_image_cache = list()
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

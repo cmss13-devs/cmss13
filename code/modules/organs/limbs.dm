@@ -71,10 +71,16 @@
 	var/status = LIMB_ORGANIC
 	var/processing = FALSE
 
+	/// ethnicity of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
 	var/ethnicity = "western"
+
+	/// body type of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
 	var/body_type = "mesomorphic"
 
+	/// species of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
 	var/datum/species/species
+
+	/// defines which sprite the limb should use if dimorphic, set in [/obj/limb/proc/update_limb()]
 	var/limb_gender = MALE
 
 
@@ -675,6 +681,7 @@ This function completely restores a damaged organ to perfect condition.
 
 		number_wounds += W.amount
 
+/// updates the various internal variables of the limb from the owner
 /obj/limb/proc/update_limb()
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -699,6 +706,7 @@ This function completely restores a damaged organ to perfect condition.
 	species = owner.species
 	limb_gender = owner.gender
 
+/// generates a list of overlays that should be applied to the owner
 /obj/limb/proc/get_limb_icon()
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/list)
@@ -732,7 +740,10 @@ This function completely restores a damaged organ to perfect condition.
 
 	return
 
+/// generates a key for the purpose of caching the icon to avoid duplicate generations
 /obj/limb/proc/get_limb_icon_key()
+	SHOULD_CALL_PARENT(TRUE)
+
 	return "[species.name]-[body_type]-[limb_gender]-[icon_name]-[ethnicity]"
 
 // new damage icon system

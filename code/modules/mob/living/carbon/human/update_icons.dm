@@ -76,6 +76,9 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/apply_overlay(cache_index)
 	var/image/images = overlays_standing[cache_index]
 
+	if(!images)
+		return
+
 	SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, images)
 	overlays += images
 
@@ -173,6 +176,7 @@ There are several things that need to be remembered:
 		overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
 		apply_overlay(UNDERSHIRT_LAYER)
 
+/// Recalculates and reapplies damage overlays to every limb
 /mob/living/carbon/human/proc/update_damage_overlays()
 	remove_overlay(DAMAGE_LAYER)
 

@@ -867,7 +867,7 @@
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 
 	/// Project ARES interface log.
-	GLOB.ares_link.log_ares_bombardment(user, ob_name, "X[x_bomb], Y[y_bomb] in [A.name]")
+	GLOB.ares_link.log_ares_bombardment(user.name, ob_name, "X[x_bomb], Y[y_bomb] in [A.name]")
 
 	busy = FALSE
 	var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)

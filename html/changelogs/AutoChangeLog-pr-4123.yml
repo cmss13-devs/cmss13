@@ -1,7 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - balance: "Large amount of balance changes to UPP survivors on Trijent. New spawn setup guarantee's you'll get 1 Medic and 1 Engineer."
-  - balance: "UPP survivors now have access to HUD icons for squad roles, and access to the UPP communications channel if the colony communications is repaired."
-  - balance: "UPP surv SL's and Specialists can now drive vehicles."
-  - balance: "A second, crashed, UPP dropship can be found somewhere on Trijent if the UPP survivors spawn. It contains extra supplies and stronger firearms. But requires a detour to find."

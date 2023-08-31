@@ -1,7 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscadd: "Add roller bed, mini extinguisher and multi-tool to the utility vendor in small quantity."
-  - balance: "divide by two the number of \"ME3 hand welder\" in utility vendor."
-  - bugfix: "remove a duplicate item being sell the flashlight."
-  - bugfix: "some clothing items have a minimum of one now."

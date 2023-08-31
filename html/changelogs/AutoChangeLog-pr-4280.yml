@@ -1,7 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "Allowed lesser drones to spawn at pylons and core."
-  - rscadd: "Created a pool of lesser drones at cores and pylons that regenerate over time. It takes about 10 seconds to get one more when queen is on ovi and about 120 seconds when queen is off."
-  - balance: "Lesser drones and facehuggers no longer count towards the lesser drone count but lesser drones are still capped at 1/3rd of the hive with a minimum of 3."
-  - balance: "Facehuggers have also been changed to not count lesser drones and themselves for max calculations."

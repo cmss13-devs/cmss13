@@ -89,11 +89,9 @@
 		owner = mob_owner
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
-	wound_overlay.blend_mode = BLEND_INSET_OVERLAY
 	wound_overlay.color = owner?.species.blood_color
 
 	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0", -DAMAGE_LAYER)
-	burn_overlay.blend_mode = BLEND_INSET_OVERLAY
 
 	if(owner)
 		forceMove(owner)
@@ -1252,7 +1250,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	var/burnstate = copytext(damage_state, 2)
 	if(burnstate != "0")
-		burn_overlay.icon_state = "burn_[icon_name1]_[burnstate]"
+		burn_overlay.icon_state = "burn_[icon_name]_[burnstate]"
 		. += wound_overlay
 
 /*

@@ -1247,12 +1247,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	damage_state = damage_state_text()
 	var/brutestate = copytext(damage_state, 1, 2)
 	if(brutestate != "0")
-		wound_overlay.icon_state = "grayscale_[brutestate]"
+		wound_overlay.icon_state = "grayscale_[icon_name]_[brutestate]"
 		. += wound_overlay
 
 	var/burnstate = copytext(damage_state, 2)
 	if(burnstate != "0")
-		burn_overlay.icon_state = "burn_[burnstate]"
+		burn_overlay.icon_state = "burn_[icon_name1]_[burnstate]"
 		. += wound_overlay
 
 /*

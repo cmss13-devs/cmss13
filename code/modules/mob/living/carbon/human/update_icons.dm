@@ -73,20 +73,8 @@ There are several things that need to be remembered:
 
 */
 
-
-
 /mob/living/carbon/human/apply_overlay(cache_index)
 	var/image/images = overlays_standing[cache_index]
-
-	if(!images)
-		return
-
-	if(islist(images))
-		var/list/overlays = images
-		for(var/image/current_image as anything in overlays)
-			current_image.appearance_flags |= RESET_COLOR
-	else
-		images.appearance_flags |= RESET_COLOR
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, images)
 	overlays += images

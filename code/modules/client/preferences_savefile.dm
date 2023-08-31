@@ -193,6 +193,7 @@
 	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
 	S["adaptive_zoom"] >> adaptive_zoom
+	S["tooltips"] >> tooltips
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -225,6 +226,7 @@
 	no_radial_labels_preference = sanitize_integer(no_radial_labels_preference, FALSE, TRUE, FALSE)
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
 	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
+	tooltips = sanitize_integer(tooltips, FALSE, TRUE, TRUE)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))

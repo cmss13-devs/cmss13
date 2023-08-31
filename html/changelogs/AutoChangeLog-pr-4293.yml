@@ -1,0 +1,4 @@
+author: "ClairionCM"
+delete-after: True
+changes:
+  - bugfix: "Fixes an infinite flare bug"

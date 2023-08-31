@@ -1031,7 +1031,8 @@ var/datum/controller/supply/supply_controller = new()
 					var/pack_name = supply_pack.name
 					if(supply_pack.dollar_cost)
 						pack_source = "Unknown"
-						pack_name = "Unknown"
+						if(prob(90))
+							pack_name = "Unknown"
 					link.log_ares_requisition(pack_source, pack_name, usr.name)
 				else
 					temp = "Not enough money left.<BR>"

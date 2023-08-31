@@ -180,12 +180,11 @@
 		lighting_holder.set_light_range(vehicle_light_range)
 		lighting_holder.set_light_power(vehicle_light_power)
 		lighting_holder.set_light_on(vehicle_light_range || vehicle_light_power)
+	else if(light_range)
+		set_light_on(TRUE)
 
 	light_pixel_x = -bound_x
 	light_pixel_y = -bound_y
-
-	if(light_range)
-		set_light_on(TRUE)
 
 	healthcheck()
 	update_icon()
@@ -444,6 +443,7 @@
 
 /atom/movable/vehicle_light_holder
 	light_system = MOVABLE_LIGHT
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/vehicle_light_holder/Initialize(mapload, ...)
 	. = ..()

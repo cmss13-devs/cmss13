@@ -1,4 +1,0 @@
-author: "CapCamIII"
-delete-after: True
-changes:
-  - bugfix: "actually fixes m4ra custom barrel offset"

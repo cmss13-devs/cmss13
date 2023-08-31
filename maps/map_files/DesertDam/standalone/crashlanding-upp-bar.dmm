@@ -281,7 +281,9 @@
 	},
 /obj/item/paper/bigred/upp{
 	pixel_y = 4;
-	pixel_x = 3
+	pixel_x = 3;
+	icon_state = "paper_words";
+	item_state = "paper_words"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -2002,6 +2004,7 @@
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"
 	},
@@ -2203,7 +2206,8 @@
 	},
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Lo" = (
-/obj/effect/landmark/survivor_spawner/upp_medic,
+/obj/effect/landmark/survivor_spawner/upp/soldier,
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"
 	},
@@ -2301,6 +2305,15 @@
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"Ne" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/desert_dam/building/bar/bar)
 "Nh" = (
 /obj/structure/flora/grass/desert/lightgrass_4,
 /obj/effect/decal/sand_overlay/sand1{
@@ -2560,12 +2573,22 @@
 /obj/item/ammo_box/rounds/type71/heap/empty{
 	bullet_amount = 0
 	},
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin4"
 	},
 /area/desert_dam/building/bar/bar)
 "Rl" = (
 /obj/structure/closet/crate/supply,
+/obj/item/ammo_box/magazine/misc/flares,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 /obj/item/ammo_box/magazine/misc/flares,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -3094,12 +3117,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/desert_dam/building/bar/bar_restroom)
-"Zn" = (
-/obj/effect/landmark/survivor_spawner/upp_sapper,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
-/area/desert_dam/building/bar/bar)
 "ZA" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -3527,14 +3544,14 @@ hm
 CA
 DB
 NH
-Zn
+Cn
 Cn
 tu
 IF
 IF
 IF
 sE
-RW
+Ne
 GZ
 OS
 sv

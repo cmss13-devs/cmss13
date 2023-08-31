@@ -69,14 +69,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /datum/ares_link/proc/log_ares_bioscan(title, input)
 	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
-/datum/ares_link/proc/log_ares_bombardment(user, ob_name, coordinates)
-	interface.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user))
+/datum/ares_link/proc/log_ares_bombardment(user_name, ob_name, coordinates)
+	interface.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user_name))
 
 /datum/ares_link/proc/log_ares_announcement(title, message)
 	interface.records_announcement.Add(new /datum/ares_record/announcement(title, message))
 
-/datum/ares_link/proc/log_ares_requisition(source, details, user)
-	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user))
+/datum/ares_link/proc/log_ares_requisition(source, details, user_name)
+	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user_name))
 
 /datum/ares_link/proc/log_ares_security(title, details)
 	interface.records_security.Add(new /datum/ares_record/security(title, details))
@@ -84,8 +84,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /datum/ares_link/proc/log_ares_antiair(details)
 	interface.records_security.Add(new /datum/ares_record/security/antiair(details))
 
-/datum/ares_link/proc/log_ares_flight(user, details)
-	interface.records_flight.Add(new /datum/ares_record/flight(details, user))
+/datum/ares_link/proc/log_ares_flight(user_name, details)
+	interface.records_flight.Add(new /datum/ares_record/flight(details, user_name))
 // ------ End ARES Logging Procs ------ //
 
 /proc/ares_apollo_talk(broadcast_message)

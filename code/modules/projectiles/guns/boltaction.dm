@@ -156,7 +156,9 @@
 	has_openbolt_icon = FALSE
 	bolt_delay = 1 SECONDS
 	/// How far out people can tell the direction of the shot
-	var/fire_message_range = 22
+	var/fire_message_range = 25
+	/// If the gun should bypass the trait requirement
+	var/bypass_trait = FALSE
 
 /obj/item/weapon/gun/boltaction/vulture/update_icon()
 	..()
@@ -166,7 +168,7 @@
 
 /obj/item/weapon/gun/boltaction/vulture/set_gun_config_values() //check that these work
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_2)
+	set_fire_delay(FIRE_DELAY_TIER_VULTURE)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -179,6 +181,15 @@
 
 /obj/item/weapon/gun/boltaction/vulture/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 24, "under_x" = 25, "under_y" = 14, "stock_x" = 11, "stock_y" = 15)
+
+/obj/item/weapon/gun/boltaction/vulture/able_to_fire(mob/user)
+	. = ..()
+	if(!.)
+		return
+
+	if(!bypass_trait && !HAS_TRAIT(user, TRAIT_VULTURE_USER))
+		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
+		return
 
 /obj/item/weapon/gun/boltaction/vulture/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	var/obj/item/attachable/vulture_scope/scope = attachments["rail"]

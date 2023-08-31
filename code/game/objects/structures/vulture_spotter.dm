@@ -63,6 +63,10 @@
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
+	if(!HAS_TRAIT(user, TRAIT_VULTURE_USER))
+		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
+		return
+
 	if(!scope_attached)
 		fold_up(user)
 		return

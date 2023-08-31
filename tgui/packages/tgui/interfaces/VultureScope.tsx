@@ -11,6 +11,8 @@ type ScopeData = {
   scope_cooldown: BooleanLike;
   breath_cooldown: BooleanLike;
   breath_recharge: Number;
+  current_scope_drift: Number;
+  time_to_fire_remaining: Number;
 };
 
 enum Direction {
@@ -161,11 +163,10 @@ const ScopePosition = (props, context) => {
   );
 };
 
-const BreathButton = (props, context) => {
-  const { dir } = props;
+const SecondarySection = (props, context) => {
   const { data, act } = useBackend<ScopeData>(context);
   return (
-    <Section title="Breathing" textAlign="center">
+    <Section title="Breathing & Data" textAlign="center">
       <Flex.Item grow={1} basis={0}>
         <Button
           content="Control Breathing"
@@ -193,6 +194,34 @@ const BreathButton = (props, context) => {
           Recharge
         </ProgressBar>
       </Flex.Item>
+      <Flex.Item>
+        <div style={{ 'padding-top': '8px', 'padding-bottom': '8px' }}>
+          <ProgressBar
+            minValue={0}
+            maxValue={100}
+            value={data.current_scope_drift}
+            ranges={{
+              good: [-Infinity, 0],
+              average: [1, 50],
+              bad: [51, Infinity],
+            }}>
+            Scope Drift: {data.current_scope_drift}%
+          </ProgressBar>
+        </div>
+      </Flex.Item>
+      <Flex.Item>
+        <ProgressBar
+          minValue={0}
+          maxValue={1}
+          value={data.time_to_fire_remaining}
+          ranges={{
+            good: [0.8, Infinity],
+            average: [0.5, 0.8],
+            bad: [-Infinity, 0.5],
+          }}>
+          Fire Readiness
+        </ProgressBar>
+      </Flex.Item>
     </Section>
   );
 };
@@ -200,7 +229,7 @@ const BreathButton = (props, context) => {
 export const VultureScope = (props, context) => {
   const { act, data } = useBackend<ScopeData>(context);
   return (
-    <Window title="Scope Configuration" width={325} height={350}>
+    <Window title="Scope Configuration" width={325} height={400}>
       <Window.Content>
         <Section title="Scope Adjustments">
           <div style={{ 'display': 'flex' }}>
@@ -208,7 +237,7 @@ export const VultureScope = (props, context) => {
             <PositionAdjuster />
           </div>
         </Section>
-        <BreathButton />
+        <SecondarySection />
       </Window.Content>
     </Window>
   );

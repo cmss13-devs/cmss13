@@ -1224,6 +1224,8 @@ Defined in conflicts.dm of the #defines folder.
 	data["breath_cooldown"] = !COOLDOWN_FINISHED(src, hold_breath_cd)
 	data["breath_recharge"] = get_breath_recharge()
 	data["spotter_spotting"] = spotter_spotting
+	data["current_scope_drift"] = get_scope_drift_chance()
+	data["time_to_fire_remaining"] = 1 - (get_time_to_fire() / FIRE_DELAY_TIER_VULTURE)
 	return data
 
 /obj/item/attachable/vulture_scope/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -1275,8 +1277,28 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 
 /obj/item/attachable/vulture_scope/process()
-	if(scope_drift && !holding_breath && scope_element && prob(spotter_spotting ? spotted_drift_chance : unspotted_drift_chance)) //every 6 seconds, on average
+	if(scope_element && prob(get_scope_drift_chance())) //every 6 seconds when unspotted, on average
 		scope_drift()
+
+/obj/item/attachable/vulture_scope/proc/get_scope_drift_chance()
+	if(!scope_drift || holding_breath)
+		return 0
+
+	if(spotter_spotting)
+		return spotted_drift_chance
+
+	else
+		return unspotted_drift_chance
+
+/obj/item/attachable/vulture_scope/proc/get_time_to_fire()
+	if(!istype(loc, /obj/item/weapon/gun/boltaction/vulture))
+		return 0
+
+	var/obj/item/weapon/gun/boltaction/vulture/rifle = loc
+	if(!rifle.last_fired)
+		return 0
+
+	return (rifle.last_fired + rifle.get_fire_delay()) - world.time
 
 /obj/item/attachable/vulture_scope/activate_attachment(obj/item/weapon/gun/gun, mob/living/carbon/user, turn_off)
 	if(turn_off || scoping)

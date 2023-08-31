@@ -177,6 +177,8 @@
 #define TRAIT_USING_WHEELCHAIR "t_using_wheelchair"
 /// If the mob will instantly go permadead upon death
 #define TRAIT_HARDCORE "t_hardcore"
+/// If the mob is able to use the vulture rifle or spotting scope
+#define TRAIT_VULTURE_USER "t_vulture_user"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them

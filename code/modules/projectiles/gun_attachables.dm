@@ -1152,8 +1152,10 @@ Defined in conflicts.dm of the #defines folder.
 	var/atom/movable/screen/vulture_scope/scope_element
 	/// If the gun should experience scope drift
 	var/scope_drift = TRUE
-	/// % chance for the scope to drift on process
-	var/drift_chance = 33
+	/// % chance for the scope to drift on process with a spotter using their scope
+	var/spotted_drift_chance = 33
+	/// % chance for the scope to drift on process without a spotter using their scope
+	var/unspotted_drift_chance = 100
 	/// If the scope should use do_afters for adjusting and moving the sight
 	var/slow_use = TRUE
 	/// Cooldown for interacting with the scope's adjustment or position
@@ -1170,6 +1172,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/scope_user_initial_dir
 	/// How much to increase darkness view by
 	var/darkness_view = 12
+	/// If there is currently a spotter using the linked spotting scope
+	var/spotter_spotting = FALSE
 
 /obj/item/attachable/vulture_scope/Initialize(mapload, ...)
 	. = ..()
@@ -1201,6 +1205,7 @@ Defined in conflicts.dm of the #defines folder.
 	data["valid_adjust_dirs"] = get_adjust_dirs()
 	data["breath_cooldown"] = !COOLDOWN_FINISHED(src, hold_breath_cd)
 	data["breath_recharge"] = get_breath_recharge()
+	data["spotter_spotting"] = spotter_spotting
 	return data
 
 /obj/item/attachable/vulture_scope/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -1252,7 +1257,7 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 
 /obj/item/attachable/vulture_scope/process()
-	if(scope_drift && !holding_breath && scope_element && prob(drift_chance)) //every 6 seconds, on average
+	if(scope_drift && !holding_breath && scope_element && prob(spotter_spotting ? spotted_drift_chance : unspotted_drift_chance)) //every 6 seconds, on average
 		scope_drift()
 
 /obj/item/attachable/vulture_scope/activate_attachment(obj/item/weapon/gun/gun, mob/living/carbon/user, turn_off)

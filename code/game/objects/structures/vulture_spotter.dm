@@ -71,6 +71,8 @@
 
 /obj/structure/vulture_spotter_tripod/on_set_interaction(mob/user)
 	var/obj/item/attachable/vulture_scope/scope = get_vulture_scope()
+	scope.spotter_spotting = TRUE
+	to_chat(scope.scope_user, SPAN_NOTICE("You notice that [scope] drifts less."))
 	RegisterSignal(scope, COMSIG_VULTURE_SCOPE_MOVED, PROC_REF(on_vulture_move))
 	RegisterSignal(scope, COMSIG_VULTURE_SCOPE_UNSCOPED, PROC_REF(on_vulture_unscope))
 	RegisterSignal(user.client, COMSIG_PARENT_QDELETING, PROC_REF(do_unscope))
@@ -87,7 +89,6 @@
 	user.setDir(dir)
 	scope_user = WEAKREF(user)
 	update_pixels(TRUE)
-	//var/datum/action/vulture_tripod_unscope/scope_action = new(null, src)
 	give_action(user, /datum/action/vulture_tripod_unscope, null, null, src)
 	set_scope_loc(user, scope)
 
@@ -223,6 +224,8 @@
 
 	var/obj/item/attachable/vulture_scope/scope = get_vulture_scope()
 	if(scope)
+		scope.spotter_spotting = FALSE
+		to_chat(scope.scope_user, SPAN_NOTICE("You notice that [scope] starts drifting more."))
 		UnregisterSignal(scope, list(COMSIG_VULTURE_SCOPE_MOVED, COMSIG_VULTURE_SCOPE_UNSCOPED))
 
 	QDEL_NULL(unscope_action)

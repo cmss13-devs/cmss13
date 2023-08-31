@@ -744,7 +744,7 @@ This function completely restores a damaged organ to perfect condition.
 /obj/limb/proc/get_limb_icon_key()
 	SHOULD_CALL_PARENT(TRUE)
 
-	return "[species.name]-[body_type]-[limb_gender]-[icon_name]-[ethnicity]"
+	return "[species.name]-[body_type]-[limb_gender]-[icon_name]-[ethnicity]-[status]"
 
 // new damage icon system
 // returns just the brute/burn damage code

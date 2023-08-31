@@ -554,6 +554,173 @@
 	icon_state = "floor"
 	plating_type = /turf/open/floor/plating/prison
 
+
+//so that the floor turf it's not on default. for Fiorina_SciAnnex.dmm
+/turf/open/floor/prison/floor
+
+//darkred2
+/turf/open/floor/prison/darkred2
+	icon_state = "darkred2"
+/turf/open/floor/prison/darkred2corner
+	icon_state = "darkred2corner"
+/turf/open/floor/prison/darkred2angle
+	icon_state = "darkred2angle"
+/turf/open/floor/prison/darkred2full
+	icon_state = "darkred2full"
+//darkbrown2
+/turf/open/floor/prison/darkbrown2
+	icon_state = "darkbrown2"
+/turf/open/floor/prison/darkbrown2corner
+	icon_state = "darkbrown2corner"
+/turf/open/floor/prison/darkbrown2angle
+	icon_state = "darkbrown2angle"
+/turf/open/floor/prison/darkbrown2full
+	icon_state = "darkbrown2full"
+//darkyellow2
+/turf/open/floor/prison/darkyellow2
+	icon_state = "darkyellow2"
+/turf/open/floor/prison/darkyellow2corner
+	icon_state = "darkyellow2corner"
+/turf/open/floor/prison/darkyellow2angle
+	icon_state = "darkyellow2angle"
+/turf/open/floor/prison/darkyellow2full
+	icon_state = "darkyellow2full"
+//darkpurple2
+/turf/open/floor/prison/darkpurple2
+	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2corner
+	icon_state = "darkpurple2corner"
+/turf/open/floor/prison/darkpurple2angle
+	icon_state = "darkpurple2angle"
+/turf/open/floor/prison/darkpurple2full
+	icon_state = "darkpurple2full"
+
+
+//green
+/turf/open/floor/prison/green
+	icon_state = "green"
+/turf/open/floor/prison/greencorner
+	icon_state = "greencorner"
+/turf/open/floor/prison/greenangle
+	icon_state = "greenangle"
+/turf/open/floor/prison/greenfull
+	icon_state = "greenfull"
+/turf/open/floor/prison/greenfull_2
+	icon_state = "greenfull_2"
+//random alone tiles.
+/turf/open/floor/prison/sterile_white
+	icon_state = "sterile_white"
+/turf/open/floor/prison/kitchen
+	icon_state = "kitchen"
+
+/turf/open/floor/prison/cell_stripe
+	icon_state = "cell_stripe"
+
+/turf/open/floor/prison/floor_plate
+	icon_state = "floor_plate"
+
+/turf/open/floor/prison/floor_marked
+	icon_state = "floor_marked"
+
+/turf/open/floor/prison/bright_clean_marked
+	icon_state = "bright_clean_marked"
+/turf/open/floor/prison/bright_clean2
+	icon_state = "bright_clean2"
+//whitegreen
+/turf/open/floor/prison/whitegreen
+	icon_state = "whitegreen"
+
+/turf/open/floor/prison/whitegreencorner
+	icon_state = "whitegreencorner"
+
+/turf/open/floor/prison/whitegreenangle
+	icon_state = "whitegreenangle"
+/turf/open/floor/prison/whitegreenfull
+	icon_state = "whitegreenfull"
+//there is a sprite called sterile that isn't use and look exactly the same.
+/turf/open/floor/prison/sterile
+	icon_state = "sterile"
+
+//blue
+/turf/open/floor/prison/blue
+	icon_state = "blue"
+/turf/open/floor/prison/bluecorner
+	icon_state = "bluecorner"
+/turf/open/floor/prison/blueangle
+	icon_state = "blueangle"
+/turf/open/floor/prison/bluefull
+	icon_state = "bluefull"
+/turf/open/floor/prison/bluefull_2
+	icon_state = "bluefull_2"
+
+//whitepurple
+/turf/open/floor/prison/whitepurple
+	icon_state = "whitepurple"
+/turf/open/floor/prison/whitepurplecorner
+	icon_state = "whitepurplecorner"
+/turf/open/floor/prison/whitepurpleangle
+	icon_state = "whitepurpleangle"
+/turf/open/floor/prison/whitepurplefull
+	icon_state = "whitepurplefull"
+/turf/open/floor/prison/whitepurplefull
+	icon_state = "whitepurplefull"
+//red
+/turf/open/floor/prison/red
+	icon_state = "red"
+/turf/open/floor/prison/redcorner
+	icon_state = "redcorner"
+/turf/open/floor/prison/redangle
+	icon_state = "redangle"
+/turf/open/floor/prison/redfull
+	icon_state = "redfull"
+//yellow
+/turf/open/floor/prison/yellow
+	icon_state = "yellow"
+
+/turf/open/floor/prison/yellowcorner
+	icon_state = "yellowcorner"
+/turf/open/floor/prison/yellowangle
+	icon_state = "yellowangle"
+/turf/open/floor/prison/yellowfull
+	icon_state = "yellowfull"
+//greenblue
+/turf/open/floor/prison/greenblue
+	icon_state = "greenblue"
+/turf/open/floor/prison/greenbluecorner
+	icon_state = "greenbluecorner"
+/turf/open/floor/prison/greenblueangle
+	icon_state = "greenblueangle"
+//blue plate
+/turf/open/floor/prison/blue_plate
+	icon_state = "blue_plate"
+/turf/open/floor/prison/blue_plate_2
+	icon_state = "blue_plate_2"
+/turf/open/floor/prison/blue_plate_3
+	icon_state = "blue_plate_3"
+//damage plate
+/turf/open/floor/prison/platingdmg1
+	icon_state = "platingdmg1"
+/turf/open/floor/prison/platingdmg2
+	icon_state = "platingdmg2"
+/turf/open/floor/prison/platingdmg3
+	icon_state = "platingdmg3"
+/turf/open/floor/prison/damaged1
+	icon_state = "damaged1"
+/turf/open/floor/prison/damaged2
+	icon_state = "damaged2"
+/turf/open/floor/prison/damaged3
+	icon_state = "damaged3"
+/turf/open/floor/prison/damaged4
+	icon_state = "damaged4"
+/turf/open/floor/prison/damaged5
+	icon_state = "damaged5"
+/turf/open/floor/prison/floorscorched1
+	icon_state = "floorscorched1"
+/turf/open/floor/prison/floorscorched2
+	icon_state = "floorscorched2"
+/turf/open/floor/prison/panelscorched
+	icon_state = "panelscorched"
+
 /turf/open/floor/prison/trim/red
 	icon_state = "darkred2"
 

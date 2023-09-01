@@ -185,7 +185,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	flags_atom |= USES_HEARING
 
 /obj/structure/machinery/cryopod/Destroy()
-	SetLuminosity(0)
 	QDEL_NULL(occupant)
 	QDEL_NULL(announce)
 	. = ..()
@@ -370,7 +369,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			qdel(G)
 
 	icon_state = "body_scanner_open"
-	SetLuminosity(0)
+	set_light(0)
 
 	if(occupant.key)
 		occupant.ghostize(0)
@@ -511,7 +510,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	mob.forceMove(src)
 	occupant = mob
 	icon_state = "body_scanner_closed"
-	SetLuminosity(2)
+	set_light(2)
 	time_entered = world.time
 	start_processing()
 
@@ -534,7 +533,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	occupant = null
 	stop_processing()
 	icon_state = "body_scanner_open"
-	SetLuminosity(0)
+	set_light(0)
 	playsound(src, 'sound/machines/pod_open.ogg', 30)
 
 #ifdef OBJECTS_PROXY_SPEECH

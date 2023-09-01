@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - maptweak: "Hidden floor safe in LV-624 is now positioned correctly."

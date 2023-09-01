@@ -10305,7 +10305,6 @@
 "aSQ" = (
 /obj/structure/safe/floor{
 	name = "safe";
-	pixel_x = 30;
 	spawnkey = 0
 	},
 /turf/open/floor{
@@ -28950,7 +28949,7 @@ aRg
 aRg
 aCi
 aKO
-aBo
+aRg
 aEw
 aRg
 wLz
@@ -29852,7 +29851,7 @@ aRg
 aKO
 aRg
 aRg
-aRg
+aBo
 aRg
 aRg
 aRg
@@ -55633,7 +55632,7 @@ ank
 ank
 ank
 ank
-aLz
+ank
 aSa
 aMq
 aky
@@ -56535,7 +56534,7 @@ ank
 ank
 ank
 ank
-ank
+aLz
 ank
 ank
 ank

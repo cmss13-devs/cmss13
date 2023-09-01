@@ -4,10 +4,12 @@
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_engine"
 	on = 0
-	luminosity = 5 //Pretty strong because why not
 	powered = 1
 	locked = 0
 	charge_use = 15
+
+	light_system = MOVABLE_LIGHT
+	light_range = 5
 
 	var/car_limit = 3 //how many cars an engine can pull before performance degrades
 	active_engines = 1
@@ -24,7 +26,7 @@
 	name = "cargo train trolley"
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_trailer"
-	luminosity = 0
+	light_range = 0
 	anchored = FALSE
 	locked = 0
 	can_buckle = FALSE
@@ -38,6 +40,10 @@
 	key = new()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I
+
+	if(light_range)
+		set_light_on(TRUE)
+
 	turn_off() //so engine verbs are correctly set
 
 /obj/vehicle/train/cargo/engine/Move()

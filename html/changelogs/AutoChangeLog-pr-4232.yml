@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - refactor: "clean dmi file extract sprite hidden inside other sprites direction. removing sprite change from dmm files."

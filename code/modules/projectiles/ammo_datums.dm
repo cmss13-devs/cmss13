@@ -3097,7 +3097,8 @@
 /datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
 	name = "30mm Multi-Purpose shell"
 
-	damage = 115 //More damaging, but 2x less shells and low AP
+	damage = 1 // ALL DAMAGE IS IN dropship_ammo SO WE CAN DEAL DAMAGE TO RESTING MOBS, these will still remain however so that we can get cause_data and status effects.
+	damage_type = BRUTE
 	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_MAX
 	max_range = 0
@@ -3106,7 +3107,7 @@
 /datum/ammo/bullet/shrapnel/gau/at
 	name = "30mm Anti-Tank shell"
 
-	damage = 80 //Standard AP vs standard. (more AP for less damage)
+	damage = 1 // ALL DAMAGE IS IN dropship_ammo SO WE CAN DEAL DAMAGE TO RESTING MOBS, these will still remain however so that we can get cause_data and status effects.
 	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_MAX
 /*

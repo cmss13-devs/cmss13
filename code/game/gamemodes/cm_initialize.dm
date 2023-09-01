@@ -567,21 +567,39 @@ Additional game mode variables.
 		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
 		if(!hive_picked)
 			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
-			return
+			return FALSE
 		hive = GLOB.hive_datum[active_hives[hive_picked]]
 	else
 		hive = GLOB.hive_datum[last_active_hive]
 
-	if(!hive.hive_location)
-		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have a hive core to spawn from!"))
-		return
-
 	for(var/mob_name in hive.banished_ckeys)
 		if(hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 			to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [hive], you may not rejoin unless the Queen re-admits you or dies."))
-			return
+			return FALSE
 
-	hive.hive_location.spawn_lesser_drone(xeno_candidate)
+	var/list/selection_list = list()
+	var/list/selection_list_structure = list()
+
+	if(hive.hive_location?.lesser_drone_spawns >= 1)
+		selection_list += "hive core"
+		selection_list_structure += hive.hive_location
+
+	for(var/obj/effect/alien/resin/special/pylon/cycled_pylon as anything in hive.hive_structures[XENO_STRUCTURE_PYLON])
+		if(cycled_pylon.lesser_drone_spawns >= 1)
+			selection_list += "[cycled_pylon.name] at [get_area(cycled_pylon)]"
+			selection_list_structure += cycled_pylon
+
+	if(!length(selection_list))
+		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have enough power for a lesser drone at any hive core or pylon!"))
+		return FALSE
+
+	var/prompt = tgui_input_list(xeno_candidate, "Select spawn?", "Spawnpoint Selection", selection_list)
+	if(!prompt)
+		return FALSE
+
+	var/obj/effect/alien/resin/special/pylon/selected_structure = selection_list_structure[selection_list.Find(prompt)]
+
+	selected_structure.spawn_lesser_drone(xeno_candidate)
 
 	return TRUE
 

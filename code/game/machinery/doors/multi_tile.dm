@@ -377,7 +377,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/proc/vacate_premises()
 	for(var/turf/self_turf as anything in locs)
 		var/turf/near_turf = get_step(self_turf, throw_dir)
-		var/turf/projected = get_ranged_target_turf(near_turf, throw_dir, 50)
+		var/turf/space_turf = get_step(near_turf, throw_dir)
+		var/turf/projected = get_ranged_target_turf(space_turf, EAST, 50)
 		for(var/atom/movable/atom_movable in near_turf)
 			if(ismob(atom_movable) && !isobserver(atom_movable))
 				var/mob/mob = atom_movable
@@ -389,7 +390,9 @@
 					continue
 			else
 				continue
-			INVOKE_ASYNC(atom_movable, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
+			atom_movable.forceMove(space_turf)
+			INVOKE_ASYNC(atom_movable, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE, HIGH_LAUNCH)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), atom_movable), 3 SECONDS)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/proc/bolt_explosion()
 	var/turf/turf = get_step(src, throw_dir|dir)

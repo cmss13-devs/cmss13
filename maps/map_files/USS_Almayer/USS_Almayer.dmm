@@ -22494,6 +22494,20 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 4;
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/item/trash/uscm_mre{
+	pixel_x = -8
+	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
@@ -30487,6 +30501,7 @@
 	},
 /area/almayer/shipboard/brig/cryo)
 "dtH" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver"
@@ -47606,9 +47621,9 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "kSv" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard,
-/obj/item/clipboard,
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "silver"
@@ -50102,7 +50117,7 @@
 	density = 0;
 	desc = "A pneumatic delivery unit. Sends items to the research department.";
 	icon_state = "delivery_med";
-	name = "Requisitions Delivery Unit";
+	name = "Research Delivery Unit";
 	pixel_x = -30
 	},
 /obj/structure/disposalpipe/trunk{
@@ -55058,7 +55073,7 @@
 /area/almayer/command/computerlab)
 "ofh" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8
+	dir = 4
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hallways/hangar)
@@ -57829,6 +57844,8 @@
 /obj/item/tool/weldpack,
 /obj/effect/spawner/random/tool,
 /obj/item/reagent_container/glass/bucket/janibucket,
+/obj/item/storage/bag/trash,
+/obj/item/storage/bag/trash,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -62498,9 +62515,18 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "rux" = (
-/obj/item/paper_bin/uscm,
-/obj/item/tool/pen,
 /obj/structure/surface/table/almayer,
+/obj/item/clipboard{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clipboard{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/storage/bag/trash{
+	pixel_x = -9
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "ruz" = (
@@ -70205,6 +70231,14 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/chief_mp_office)
+"uNy" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/door/window/eastright{
+	dir = 8;
+	req_access_txt = list(19)
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
 "uNB" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -98139,8 +98173,8 @@ vRz
 aag
 ajZ
 aaa
-aaa
-aaa
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -98342,8 +98376,8 @@ vRz
 aag
 ajZ
 aaa
-aaa
-aaa
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -100564,7 +100598,7 @@ aqs
 bcm
 bcm
 ewR
-cdA
+uNy
 bcm
 bcm
 mzo

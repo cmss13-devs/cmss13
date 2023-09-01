@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - code_imp: "changed camouflage from map definitions to JSON"

@@ -144,7 +144,7 @@
 	ammo_used_per_firing = 40
 	point_cost = 275
 	fire_mission_delay = 2
-	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
+	var/bullet_spread_range = 3 //how far from the real impact turf can bullets land
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
@@ -172,7 +172,9 @@
 		create_shrapnel(U,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
 		for(var/atom/movable/AM in U)
 			if(iscarbon(AM))
+				var/mob/living/M = AM
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+				M.apply_armoured_damage(shrapnel_type.damage,ARMOR_BULLET,BRUTE,null,shrapnel_type.penetration)
 			else
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
@@ -196,7 +198,7 @@
 	ammo_count = 400
 	max_ammo_count = 400
 	ammo_used_per_firing = 40
-	bullet_spread_range = 4
+	bullet_spread_range = 3
 	point_cost = 325
 	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at

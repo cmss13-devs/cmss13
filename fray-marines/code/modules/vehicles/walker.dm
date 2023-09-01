@@ -256,10 +256,10 @@
 /obj/vehicle/walker/proc/handle_lights()
 	if(!lights)
 		lights = TRUE
-		SetLuminosity(lights_power)
+		set_light(lights_power)
 	else
 		lights = FALSE
-		SetLuminosity(-lights_power)
+		set_light(-lights_power)
 	pilot << sound('sound/machines/click.ogg',volume=50)
 
 /obj/vehicle/walker/proc/deploy_magazine()

@@ -77,9 +77,9 @@
 		return
 
 	if(owner.luminosity <= muzzle_flash_lum)
-		owner.SetLuminosity(muzzle_flash_lum)
+		owner.set_light(muzzle_flash_lum)
 		spawn(10)
-			owner.SetLuminosity(-muzzle_flash_lum)
+			owner.set_light(-muzzle_flash_lum)
 
 /obj/item/walker_gun/proc/simulate_scatter(atom/target, obj/item/projectile/projectile_to_fire)
 	var/total_chance = projectile_to_fire.scatter

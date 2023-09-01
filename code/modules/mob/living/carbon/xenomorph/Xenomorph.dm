@@ -52,6 +52,7 @@
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
 	dead_black_market_value = 50
+	light_system = MOVABLE_LIGHT
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -1073,6 +1074,7 @@
 	. = ..()
 	if (.)
 		UnregisterSignal(src, COMSIG_XENO_PRE_HEAL)
+		handle_luminosity()
 
 /mob/living/carbon/xenomorph/proc/cancel_heal()
 	SIGNAL_HANDLER
@@ -1089,7 +1091,7 @@
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
-	announce_dchat("[src] ([mutation_type] [caste_type])</b> has ghosted and their body is up for grabs!", src)
+	notify_ghosts("[src] ([mutation_type] [caste_type]) has ghosted and their body is up for grabs!", source = src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
 	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))

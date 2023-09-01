@@ -528,3 +528,69 @@ var/global/list/limb_types_by_name = list(
 
 /mob/proc/get_paygrade()
 	return
+
+
+/proc/notify_ghosts(message, ghost_sound = null, enter_link = null, enter_text = null, atom/source = null, mutable_appearance/alert_overlay = null, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header = null, notify_volume = 100, extra_large = FALSE) //Easy notification of ghosts.
+	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
+		return
+	for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+		if(!ghost.client)
+			continue
+		ghost.notify_ghost(message, ghost_sound, enter_link, enter_text, source, alert_overlay, action, flashwindow, ignore_mapload, ignore_key, header, notify_volume, extra_large)
+
+/mob/dead/observer/proc/notify_ghost(message, ghost_sound, enter_link, enter_text, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header, notify_volume = 100, extra_large = FALSE) //Easy notification of a single ghosts.
+	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
+		return
+	if(!client)
+		return
+	var/track_link
+	if (source && action == NOTIFY_ORBIT)
+		track_link = " <a href='byond://?src=[REF(src)];track=[REF(source)]'>(Follow)</a>"
+	if (source && action == NOTIFY_JUMP)
+		var/turf/T = get_turf(source)
+		track_link = " <a href='byond://?src=[REF(src)];jumptocoord;x=[T.x];y=[T.y];z=[T.z]'>(Jump)</a>"
+	var/full_enter_link
+	if (enter_link)
+		full_enter_link = "<a href='byond://?src=[REF(src)];[enter_link]'>[(enter_text) ? "[enter_text]" : "(Claim)"]</a>"
+	to_chat(src, "[(extra_large) ? "<br><hr>" : ""][SPAN_DEADSAY("[message][(enter_link) ? " [full_enter_link]" : ""][track_link]")][(extra_large) ? "<hr><br>" : ""]")
+	if(ghost_sound)
+		SEND_SOUND(src, sound(ghost_sound, volume = notify_volume, channel = SOUND_CHANNEL_NOTIFY))
+	if(flashwindow)
+		window_flash(client)
+
+	if(!source)
+		return
+
+	var/atom/movable/screen/alert/notify_action/screen_alert = throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
+	if(!screen_alert)
+		return
+	if (header)
+		screen_alert.name = header
+	screen_alert.desc = message
+	screen_alert.action = action
+	screen_alert.target = source
+	if(!alert_overlay)
+		alert_overlay = new(source)
+		var/icon/source_icon = icon(source.icon)
+		var/iheight = source_icon.Height()
+		var/iwidth = source_icon.Width()
+		var/higher_power = (iheight > iwidth) ? iheight : iwidth
+		if(higher_power > 32)
+			var/diff = 32 / higher_power
+			alert_overlay.transform = alert_overlay.transform.Scale(diff, diff)
+			if(higher_power > 48)
+				alert_overlay.pixel_y = -(iheight / 2) * diff
+				alert_overlay.pixel_x = -(iwidth / 2) * diff
+
+
+	alert_overlay.layer = FLOAT_LAYER
+	alert_overlay.plane = FLOAT_PLANE
+
+	screen_alert.overlays += alert_overlay
+
+/mob/proc/reset_lighting_alpha()
+	SIGNAL_HANDLER
+
+	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	sync_lighting_plane_alpha()
+

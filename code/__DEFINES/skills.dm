@@ -51,12 +51,14 @@
 #define SKILL_SPEC_GRENADIER 5
 /// Can use heavy flamers
 #define SKILL_SPEC_PYRO 6
+/// Can use Heavy-Shield and N45
+#define SKILL_SPEC_ST 7
 /// Can use smartguns
-#define SKILL_SPEC_SMARTGUN 7
+#define SKILL_SPEC_SMARTGUN 8
 /// UPP special training
-#define SKILL_SPEC_UPP 8
+#define SKILL_SPEC_UPP 9
 /// Can use ALL specialist weapons
-#define SKILL_SPEC_ALL 9
+#define SKILL_SPEC_ALL 10
 
 //construction skill
 #define SKILL_CONSTRUCTION_DEFAULT 0

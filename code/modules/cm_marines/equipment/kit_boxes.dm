@@ -120,6 +120,24 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/device/binoculars(src)
 
+/obj/item/storage/box/spec/st
+	name = "\improper Stormtrooper equipment case"
+	desc = "M40 helmet, M40 armor, Montage, 88 mod vp78 and ammo.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	kit_overlay = "st"
+
+/obj/item/storage/box/spec/st/fill_preset_inventory()
+	new /obj/item/clothing/suit/storage/marine/M40(src)
+	new /obj/item/clothing/head/helmet/marine/M40(src)
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/weapon/gun/shotgun/combat(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/storage/belt/gun/m4a3(src)
+	new /obj/item/weapon/twohanded/st_hammer(src)
+	new /obj/item/weapon/shield/montage(src)
 
 /obj/item/storage/box/spec/heavy_grenadier
 	name = "\improper Heavy Grenadier equipment case"
@@ -256,6 +274,10 @@
 			//this is to be able to use C4s that are coming with the kit
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+		if("ST")
+			spec_box = new /obj/item/storage/box/spec/st(T)
+			specialist_assignment = "ST"
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ST)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
 		ID.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")

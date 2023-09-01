@@ -29456,7 +29456,9 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "dSh" = (
-/obj/structure/machinery/cm_vending/clothing/senior_officer,
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	req_access = list(26)
+	},
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
 	pixel_y = 32
@@ -58229,7 +58231,8 @@
 /area/almayer/living/tankerbunks)
 "pKU" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/tl{
-	req_one_access = list(32,15)
+	req_one_access = list();
+	req_access = list(32,15)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -61075,7 +61078,8 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "qWN" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/smart{
-	req_one_access = list(14,18)
+	req_access = list(14,18);
+	req_one_access = list()
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -65125,7 +65129,8 @@
 /area/almayer/living/port_emb)
 "sKx" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/tl{
-	req_one_access = list(18,32)
+	req_one_access = list();
+	req_access = list(18,32)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

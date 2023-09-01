@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - bugfix: "UPP survivors no longer have a small chance to accidently spawn with no armour or external webbing."

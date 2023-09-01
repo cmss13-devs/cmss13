@@ -28973,7 +28973,6 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build{
-	dir = 2;
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/command/airoom)
@@ -35769,9 +35768,6 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "fGu" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1
-	},
 /obj/structure/machinery/door_control{
 	dir = 1;
 	id = "researchlockdownext";
@@ -35787,6 +35783,10 @@
 	pixel_x = -26;
 	pixel_y = 1;
 	req_access_txt = "28"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -74719,7 +74719,6 @@
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 1;
 	name = "\improper CMO's Bedroom";
-	req_access = null;
 	req_one_access_txt = "1;5";
 	access_modified = 1
 	},

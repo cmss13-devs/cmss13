@@ -26,6 +26,7 @@
 #define RADIO_CHANNEL_HEADSET "headset"
 #define RADIO_CHANNEL_ENGI "Engi"
 #define RADIO_CHANNEL_HIGHCOM "HighCom"
+#define RADIO_CHANNEL_PROVOST "Provost"
 #define RADIO_CHANNEL_INTERCOM "intercom"
 #define RADIO_CHANNEL_INTEL "Intel"
 #define RADIO_CHANNEL_JTAC "JTAC"

@@ -106,6 +106,7 @@ var/const/MAX_FREQ = 1468 // ---------------------------------------------------
 //USCM High Command (USCM 1470-1499)
 var/const/HC_FREQ = 1471
 var/const/SOF_FREQ = 1472
+var/const/PVST_FREQ = 1473
 
 //Ship department channels
 var/const/SENTRY_FREQ = 1480
@@ -143,6 +144,7 @@ var/list/radiochannels = list(
 	RADIO_CHANNEL_ROYAL_MARINE = RMC_FREQ,
 
 	RADIO_CHANNEL_HIGHCOM = HC_FREQ,
+	RADIO_CHANNEL_PROVOST = PVST_FREQ,
 	RADIO_CHANNEL_ALMAYER = PUB_FREQ,
 	RADIO_CHANNEL_COMMAND = COMM_FREQ,
 	RADIO_CHANNEL_MEDSCI = MED_FREQ,
@@ -262,6 +264,7 @@ SUBSYSTEM_DEF(radio)
 		"[CRYO_FREQ]" = "cryoradio",
 		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",
+		"[PVST_FREQ]" = "pvstradio",
 		"[COLONY_FREQ]" = "deptradio",
 	)
 

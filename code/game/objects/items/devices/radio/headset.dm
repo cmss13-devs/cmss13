@@ -1002,9 +1002,17 @@
 	name = "USCM High Command headset"
 	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"
 	icon_state = "mhc_headset"
+	frequency = HC_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
 	volume = RADIO_VOLUME_CRITICAL
-	ignore_z = TRUE
+
+/obj/item/device/radio/headset/almayer/provost
+	name = "USCM Provost headset"
+	desc = "Issued to members of the USCM Provost Office and their immediate subordinates."
+	icon_state = "pvst_headset"
+	frequency = PVST_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/provost)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/sof
 	name = "USCM SOF headset"
@@ -1013,7 +1021,6 @@
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
 	volume = RADIO_VOLUME_IMPORTANT
-	ignore_z = TRUE
 
 /obj/item/device/radio/headset/almayer/sof/survivor_forecon
 	name = "USCM SOF headset"
@@ -1022,7 +1029,6 @@
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc/forecon)
 	volume = RADIO_VOLUME_QUIET
-	ignore_z = FALSE
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_USCM
 

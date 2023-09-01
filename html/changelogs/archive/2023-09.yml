@@ -1,0 +1,21 @@
+2023-09-01:
+  ClairionCM:
+  - bugfix: Fixes an infinite flare bug
+  Huffie56:
+  - refactor: clean dmi file extract sprite hidden inside other sprites direction.
+      removing sprite change from dmm files.
+  - bugfix: fix seing decimal in clothing vendor surplus.
+  - mapadd: adding an an access to the exterior side of each lifeboats.
+  JackieEstegado:
+  - qol: Added in-hand activation for machetes, which will cause one to start cutting
+      vines and grass on the tile directly in-front.
+  Morrow:
+  - bugfix: Fixed lesser drone counts on pylons/cores
+  Private Tristan:
+  - qol: Researchers now spawn with reagent scanner goggles.
+  Steelpoint:
+  - bugfix: UPP survivors no longer have a small chance to accidently spawn with no
+      armour or external webbing.
+  - maptweak: Hidden floor safe in LV-624 is now positioned correctly.
+  harryob:
+  - rscdel: removed the hallucinating ghost notification

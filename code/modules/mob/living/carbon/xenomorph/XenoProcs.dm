@@ -21,17 +21,17 @@
 			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.hivenumber == hivenumber)) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
-//Sends a maptext alert to our currently selected squad.
+//Sends a maptext alert to xenos.
 /proc/xeno_maptext(text = "", title_text = "", hivenumber = XENO_HIVE_NORMAL)
 	if(text == "" || !hivenumber)
 		return //Logic
 
 	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
-		for(var/datum/mind/L in SSticker.mode.xenomorphs)
-			var/mob/living/carbon/mob = L.current
-			if(mob && istype(mob) && !mob.stat && mob.client && mob.hivenumber == hivenumber) //Only living and connected xenos
-				playsound_client(mob.client, 'sound/voice/alien_distantroar_3.ogg', mob.loc, 25, FALSE)
-				mob.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
+		for(var/datum/mind/living in SSticker.mode.xenomorphs)
+			var/mob/living/carbon/xeno = living.current
+			if(xeno && istype(xeno) && !xeno.stat && xeno.client && xeno.hivenumber == hivenumber) //Only living and connected xenos
+				playsound_client(xeno.client, 'sound/voice/alien_distantroar_3.ogg', xeno.loc, 25, FALSE)
+				xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
 
 /proc/xeno_message_all(message = null, size = 3)
 	xeno_message(message, size)

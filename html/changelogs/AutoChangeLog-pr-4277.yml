@@ -1,4 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - qol: "Added in-hand activation for machetes, which will cause one to start cutting vines and grass on the tile directly in-front."

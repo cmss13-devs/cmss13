@@ -1,0 +1,38 @@
+2023-09-01:
+  ClairionCM:
+  - bugfix: Fixes an infinite flare bug
+  Fray2:
+  - rscadd: Added something
+  - rscdel: Removed old things
+  - qol: made something easier to use
+  - balance: rebalanced something
+  - bugfix: fixed a few things
+  - spellcheck: fixed a few typos
+  - ui: changed something relating to user interfaces
+  - code_imp: changed some code
+  - refactor: refactored some code
+  - soundadd: added a new sound thingy
+  - sounddel: removed an old sound thingy
+  - imageadd: added some icons and images
+  - imagedel: deleted some icons and images
+  - mapadd: added a new map or section to a map
+  - maptweak: tweaked a map
+  - config: changed some config setting
+  - admin: messed with admin stuff
+  - server: something server ops should know
+  Huffie56:
+  - refactor: clean dmi file extract sprite hidden inside other sprites direction.
+      removing sprite change from dmm files.
+  - bugfix: fix seing decimal in clothing vendor surplus.
+  - mapadd: adding an an access to the exterior side of each lifeboats.
+  JackieEstegado:
+  - qol: Added in-hand activation for machetes, which will cause one to start cutting
+      vines and grass on the tile directly in-front.
+  Morrow:
+  - bugfix: Fixed lesser drone counts on pylons/cores
+  Private Tristan:
+  - qol: Researchers now spawn with reagent scanner goggles.
+  Steelpoint:
+  - maptweak: Hidden floor safe in LV-624 is now positioned correctly.
+  harryob:
+  - rscdel: removed the hallucinating ghost notification

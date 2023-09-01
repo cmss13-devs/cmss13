@@ -39310,14 +39310,13 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "hOT" = (
-/obj/structure/machinery/cm_vending/clothing/smartgun/delta{
-	pixel_x = 31;
-	density = 0;
-	req_access = list(14)
-	},
 /obj/structure/machinery/cm_vending/gear/smartgun{
 	pixel_y = 32;
 	density = 0
+	},
+/obj/structure/machinery/cm_vending/clothing/smartgun/alpha{
+	density = 0;
+	pixel_x = 31
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -71561,15 +71560,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
-"vtF" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "cargo_arrow"
-	},
-/area/almayer/hallways/port_hallway)
 "vtT" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/junction{
@@ -74457,8 +74447,7 @@
 	},
 /obj/structure/machinery/cm_vending/clothing/smartgun/delta{
 	pixel_x = 31;
-	density = 0;
-	req_access = list(14)
+	density = 0
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -116434,7 +116423,7 @@ hxg
 bGb
 txw
 cci
-vtF
+glD
 lij
 gtF
 gtF

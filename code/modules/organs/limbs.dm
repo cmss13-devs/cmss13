@@ -685,14 +685,14 @@ This function completely restores a damaged organ to perfect condition.
 /obj/limb/proc/update_limb()
 	SHOULD_CALL_PARENT(TRUE)
 
-	var/datum/ethnicity/owner_ethnicity = GLOB.ethnicities_list[owner.ethnicity]
+	var/datum/ethnicity/owner_ethnicity = GLOB.ethnicities_list[owner?.ethnicity]
 
 	if(owner_ethnicity)
 		ethnicity = owner_ethnicity.icon_name
 	else
 		ethnicity = "western"
 
-	var/datum/body_type/owner_body_type = GLOB.body_types_list[owner.body_type]
+	var/datum/body_type/owner_body_type = GLOB.body_types_list[owner?.body_type]
 
 	if(owner_body_type)
 		body_type = owner_body_type.icon_name
@@ -703,8 +703,8 @@ This function completely restores a damaged organ to perfect condition.
 		ethnicity = owner.ethnicity
 		body_type = owner.body_type
 
-	species = owner.species
-	limb_gender = owner.gender
+	species = owner?.species ? owner.species : GLOB.all_species[SPECIES_HUMAN]
+	limb_gender = owner?.gender ? owner.gender : FEMALE
 
 /// generates a list of overlays that should be applied to the owner
 /obj/limb/proc/get_limb_icon()

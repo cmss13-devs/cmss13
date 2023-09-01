@@ -830,13 +830,17 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/magnetic_harness/lever_sling/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+		if("jungle")
+			attach_icon = new_attach_icon ? new_attach_icon : "j_" + attach_icon
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 
 /obj/item/attachable/scope
 	name = "S8 4x telescopic scope"
@@ -1663,14 +1667,17 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/m4ra_barrel/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
-
+		if("jungle")
+			attach_icon = new_attach_icon ? new_attach_icon : "j_" + attach_icon
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 
 /obj/item/attachable/m4ra_barrel_custom
 	name = "custom M4RA barrel"
@@ -1690,13 +1697,17 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/m4ra_barrel_custom/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+		if("jungle")
+			attach_icon = new_attach_icon ? new_attach_icon : "j_" + attach_icon
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 
 /obj/item/attachable/upp_rpg_breech
 	name = "HJRA-12 Breech"

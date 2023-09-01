@@ -351,11 +351,17 @@
 	var/hugger_timelock = 15 MINUTES
 	/// How many huggers can the hive support
 	var/playable_hugger_limit = 0
+	/// Minimum number of huggers available at any hive size
+	var/playable_hugger_minimum = 2
+	/// This number divides the total xenos counted for slots to give the max number of facehuggers
+	var/playable_hugger_max_divisor = 4
 
 	/// How many lesser drones the hive can support
 	var/lesser_drone_limit = 0
 	/// Slots available for lesser drones will never go below this number
-	var/lesser_drone_minimum = 3
+	var/lesser_drone_minimum = 2
+	/// This number divides the total xenos counted for slots to give the max number of lesser drones
+	var/playable_lesser_drones_max_divisor = 3
 
 	var/datum/tacmap/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
@@ -1035,7 +1041,12 @@
 	return TRUE
 
 /datum/hive_status/proc/update_hugger_limit()
-	playable_hugger_limit = 2 + Ceiling(totalXenos.len / 4)
+	var/countable_xeno_iterator = 0
+	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
+		if(cycled_xeno.counts_for_slots)
+			countable_xeno_iterator++
+
+	playable_hugger_limit = max(Floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -1086,9 +1097,14 @@
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
 
 /datum/hive_status/proc/update_lesser_drone_limit()
-	lesser_drone_limit = lesser_drone_minimum + Ceiling(length(totalXenos) / 3)
+	var/countable_xeno_iterator = 0
+	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
+		if(cycled_xeno.counts_for_slots)
+			countable_xeno_iterator++
 
-/datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user)
+	lesser_drone_limit = max(Floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
+
+/datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user, obj/effect/alien/resin/special/pylon/spawning_pylon)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
 		return FALSE
 
@@ -1109,8 +1125,8 @@
 		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen!"))
 		return FALSE
 
-	if(!living_xeno_queen.ovipositor && !SSticker.mode.is_in_endgame)
-		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen on Ovipositor!"))
+	if(spawning_pylon.lesser_drone_spawns < 1)
+		to_chat(user, SPAN_WARNING("The selected core or pylon does not have enough power for a lesser drone!"))
 		return FALSE
 
 	update_lesser_drone_limit()
@@ -1119,9 +1135,6 @@
 	for(var/mob/mob as anything in totalXenos)
 		if(islesserdrone(mob))
 			current_lesser_drone_count++
-
-	if(tgui_alert(user, "Are you sure you want to become a lesser drone?", "Confirmation", list("Yes", "No")) != "Yes")
-		return FALSE
 
 	if(lesser_drone_limit <= current_lesser_drone_count)
 		to_chat(user, SPAN_WARNING("[GLOB.hive_datum[hivenumber]] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))

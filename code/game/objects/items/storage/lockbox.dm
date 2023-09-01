@@ -51,6 +51,7 @@
 
 /obj/item/storage/lockbox/loyalty
 	name = "\improper Wey-Yu equipment lockbox"
+	req_access = null
 	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_SECURITY)
 
 /obj/item/storage/lockbox/loyalty/fill_preset_inventory()

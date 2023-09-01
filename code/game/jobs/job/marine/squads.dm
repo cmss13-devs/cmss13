@@ -370,7 +370,6 @@
 	var/message_colour = chat_color
 	if(only_leader)
 		if(squad_leader)
-			var/mob/living/carbon/human/squad_leader = squad_leader
 			if(!squad_leader.stat && squad_leader.client)
 				playsound_client(squad_leader.client, 'sound/effects/radiostatic.ogg', squad_leader.loc, 25, FALSE)
 				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)

@@ -711,8 +711,6 @@ This function completely restores a damaged organ to perfect condition.
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/list)
 
-	icon_state = ""
-
 	. = list()
 
 	if(parent?.status & LIMB_DESTROYED)
@@ -725,15 +723,13 @@ This function completely restores a damaged organ to perfect condition.
 
 	var/image/limb = image(layer = -BODYPARTS_LAYER)
 
-	var/race_icon = species.icobase
-
 	if ((status & LIMB_ROBOT) && !(owner.species && owner.species.flags & IS_SYNTHETIC))
 		limb.icon = 'icons/mob/robotic.dmi'
 		limb.icon_state = "[icon_name]"
 		. += limb
 		return
 
-	limb.icon = race_icon
+	limb.icon = species.icobase
 	limb.icon_state = "[get_limb_icon_name(species, body_type, limb_gender, icon_name, ethnicity)]"
 
 	. += limb

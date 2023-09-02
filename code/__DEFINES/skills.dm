@@ -135,14 +135,6 @@
 #define SKILL_POWERLOADER_MASTER 2 //Pilot, CT, Req, OT, CE
 #define SKILL_POWERLOADER_MAX 2
 
-
-//leadership skill
-#define SKILL_LEAD_NOVICE 0 //Anyone but the above. Using SL items is possible but painfully slow
-#define SKILL_LEAD_TRAINED 1 //SL
-#define SKILL_LEAD_EXPERT 2 //SOs
-#define SKILL_LEAD_MASTER 3 //XO, CO
-#define SKILL_LEAD_MAX 3
-
 //leadership skill
 #define SKILL_LEAD_NOVICE 0 //Anyone but the above. Using SL items is possible but painfully slow
 #define SKILL_LEAD_TRAINED 1 //SL

@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
 
 		list("Headgear (CHOOSE 1)", 0, null, null, null),
 		list("Quartermaster Cap", 0, /obj/item/clothing/head/cmcap/req/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
-		list("Requsitions Cap", 0, /obj/item/clothing/head/cmcap/req, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Requisitions Cap", 0, /obj/item/clothing/head/cmcap/req, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),

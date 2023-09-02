@@ -404,7 +404,7 @@
 	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_COMMANDER)
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
-	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
+	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
 	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
 

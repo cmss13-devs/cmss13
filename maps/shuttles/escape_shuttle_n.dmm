@@ -2,10 +2,11 @@
 "a" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall6";
+	
 	},
 /area/shuttle/escape_pod)
 "c" = (
-/obj/docking_port/mobile/escape_shuttle/n,
+/obj/docking_port/mobile/crashable/escape_shuttle/n,
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall9"
 	},

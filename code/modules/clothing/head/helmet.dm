@@ -829,7 +829,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "st_helmet"
 	desc = "A helmet designed for USCM storm trooper. Contains heavy insulation, covered in nomex weave."
 	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	specialty = "M40 stormtrooper"

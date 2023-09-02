@@ -140,5 +140,3 @@
 /datum/map_template/shuttle/lifeboat_starboard
 	name = "Starboard door lifeboat"
 	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_STARBOARD
-
-

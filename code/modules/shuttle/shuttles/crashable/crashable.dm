@@ -12,7 +12,7 @@
 	if(!crash_land)
 		return
 
-	for(var/area/shuttle_area in shuttle_areas)
+	for(var/area/shuttle_area as anything in shuttle_areas)
 		shuttle_area.flags_alarm_state |= ALARM_WARNING_FIRE
 		shuttle_area.updateicon()
 		for(var/mob/evac_mob in shuttle_area)
@@ -31,8 +31,7 @@
 	if(fires_on_crash)
 		handle_fires()
 
-	//cell_explosion(destination.return_center_turf(), length(destination.return_turfs()) * 15, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("evac pod crash")) - Remove this - Morrow
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), destination.return_center_turf(), length(destination.return_turfs()) * 5, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("crashing shuttle")), 1.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), destination.return_center_turf(), length(destination.return_turfs()) * 2, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("crashing shuttle")), 1.5 SECONDS)
 
 /obj/docking_port/mobile/crashable/on_prearrival()
 	. = ..()
@@ -48,15 +47,18 @@
 			if(evac_mob.client)
 				playsound_client(evac_mob.client, get_sfx("bigboom"), vol = 50)
 
+/// Called when the shuttle is launched and checks for crash and creates a crash point
 /obj/docking_port/mobile/crashable/proc/evac_launch()
 	if(!crash_check())
 		return
 
 	create_crash_point()
 
+/// Returns whether or not the shuttle will crash after being sent
 /obj/docking_port/mobile/crashable/proc/crash_check()
 	return FALSE
 
+/// Sets up a valid crash point, fails after 10 tries
 /obj/docking_port/mobile/crashable/proc/create_crash_point()
 	for(var/i = 1 to 10)
 		var/list/all_ground_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
@@ -120,10 +122,15 @@
 
 /// Sets up and handles fires/explosions on crashing shuttles
 /obj/docking_port/mobile/crashable/proc/handle_fires()
-	for(var/i = 1 to (length(destination.return_turfs()) / 25))
-		var/turf/position = pick(destination.return_turfs())
+	var/list/turf/total_turfs = list()
+	for(var/area/shuttle_area as anything in shuttle_areas)
+		for(var/turf/cycled_turf in shuttle_area)
+			total_turfs += cycled_turf
+
+	for(var/i = 1 to (length(total_turfs) / 40))
+		var/turf/position = pick(total_turfs)
 		new /obj/effect/warning/explosive(position, 3 SECONDS)
-		playsound(src, 'sound/effects/pipe_hissing.ogg', vol = 40)
+		playsound(position, 'sound/effects/pipe_hissing.ogg', vol = 40)
 		addtimer(CALLBACK(src, PROC_REF(kablooie), position), 3 SECONDS)
 
 /// Actually blows up the fire/explosion on crashing shuttles, used for effect delay
@@ -131,7 +138,7 @@
 	var/new_cause_data = create_cause_data("crashing shuttle fire")
 	var/list/exploding_types = list(/obj/item/explosive/grenade/high_explosive/bursting_pipe, /obj/item/explosive/grenade/incendiary/bursting_pipe)
 	for(var/path in exploding_types)
-		var/obj/item/explosive/grenade/exploder = new path(get_turf(src))
+		var/obj/item/explosive/grenade/exploder = new path(position)
 		exploder.cause_data = new_cause_data
 		exploder.prime()
 
@@ -154,4 +161,3 @@
 
 		shuttle_area.flags_alarm_state &= ~ALARM_WARNING_FIRE
 		shuttle_area.updateicon()
-

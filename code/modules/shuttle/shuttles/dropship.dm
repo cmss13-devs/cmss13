@@ -123,7 +123,6 @@
 		if(istype(destination, /obj/docking_port/stationary/marine_dropship))
 			dropzone.turn_on_landing_lights()
 		playsound(dropzone.return_center_turf(), landing_sound, 60, 0)
-		playsound(return_center_turf(), landing_sound, 60, 0)
 
 	automated_check()
 

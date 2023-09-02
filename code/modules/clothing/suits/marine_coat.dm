@@ -137,7 +137,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
 	name = "marine dress jacket"
-	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy, but it still gives off that unga vibe."
+	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
 	icon_state = "marine_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW

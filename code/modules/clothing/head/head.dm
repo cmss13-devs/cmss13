@@ -386,7 +386,6 @@
 	name = "\improper USCM officer cap"
 	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
 	icon_state = "cap_officer"
-	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/flap
 	name = "\improper USCM expedition cap"

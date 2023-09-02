@@ -19,3 +19,10 @@
   - maptweak: Hidden floor safe in LV-624 is now positioned correctly.
   harryob:
   - rscdel: removed the hallucinating ghost notification
+2023-09-02:
+  BeagleGaming1:
+  - code_imp: changed camouflage from map definitions to JSON
+  realforest2001:
+  - rscadd: Added a Provost radio & channel.
+  - qol: Changed High Command radio to have most channels off by default.
+  - rscdel: Removed ignore_z from High Command radios.

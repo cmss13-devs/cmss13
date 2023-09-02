@@ -13,7 +13,7 @@
 	unacidable = TRUE
 	indestructible = TRUE
 
-	var/move_delay_addition = 1.36
+	var/move_delay_addition = 1.20
 
 /obj/item/weapon/twohanded/st_hammer/attack(mob/M, mob/user)
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ST)
@@ -24,7 +24,7 @@
 		return
 	if(isxeno(M))
 		var/mob/living/carbon/xenomorph/X = M
-		if(X.tier < 1 && X.tier > 2)
+		if(X.tier < 1 || X.tier > 2)
 			return
 	M.KnockDown(3)
 		

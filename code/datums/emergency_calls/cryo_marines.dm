@@ -1,6 +1,6 @@
 
 
-//whiskey outpost extra marines
+//Foxtrot extra marines
 /datum/emergency_call/cryo_squad
 	name = "Marine Cryo Reinforcements (Squad)"
 	mob_max = 10
@@ -9,15 +9,20 @@
 	objectives = "Assist the USCM forces"
 	max_engineers = 4
 	max_medics = 2
+	max_heavies = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 	var/leaders = 0
+	var/static/times_called = 0
 	spawn_max_amount = TRUE
 
 /datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc, announce_dispatch_message)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.num_leaders
+	if(times_called > 0)
+		max_heavies = 1
 	. = ..()
+	times_called++
 	shipwide_ai_announcement("Successfully deployed [mob_max] Foxtrot marines, of which [length(members)] are ready for duty.")
 	if(mob_max > length(members))
 		announce_dchat("Some cryomarines were not taken, use the Join As Freed Mob verb to take one of them.")

@@ -136,9 +136,10 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
-	name = "marine dress jacket"
+	name = "marine formal service jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
-	icon_state = "marine_formal"
+	icon_state = "coat_formal"
+	initial_icon_state = "coat_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE

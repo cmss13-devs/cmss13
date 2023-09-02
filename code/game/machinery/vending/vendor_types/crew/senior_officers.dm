@@ -271,9 +271,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+
+		list("UNIFORM (CHOOSE ONE)", 0, null, null, null),
+		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+		list("Operations Uniform", 0, /obj/item/clothing/under/marine/officer/boiler, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+		list("Formal Uniform", 0, /obj/effect/essentials_set/xoformal, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 
 		list("PERSONAL WEAPON (CHOOSE 1)", 0, null, null, null),
 		list("VP78 Pistol", 0, /obj/item/storage/belt/gun/m4a3/vp78, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -319,7 +323,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 
 		list("HATS (CHOOSE 1)", 0, null, null, null),
 		list("Officer Beret", 0, /obj/item/clothing/head/beret/marine/chiefofficer, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Peaked cap", 0, /obj/item/clothing/head/marine/peaked, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Officer Cap", 0, /obj/item/clothing/head/cmcap/bridge, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 	))
@@ -366,4 +369,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/storage/belt/security/MP/full,
 		/obj/item/clothing/head/helmet/marine/MP/WO,
+	)
+
+/obj/effect/essentials_set/xoformal
+	spawned_gear_list = list(
+		/obj/item/clothing/suit/storage/jacket/marine/dress,
+		/obj/item/clothing/head/marine/peaked,
+		/obj/item/clothing/under/marine/dress,
 	)

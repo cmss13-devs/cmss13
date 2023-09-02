@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - bugfix: "Fixed most of the camo items being clown gear"

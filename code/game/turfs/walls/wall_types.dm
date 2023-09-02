@@ -1217,7 +1217,12 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)
 	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_ATTACKBY, W, user) & COMPONENT_CANCEL_ATTACKBY)
 		return
-
+	
+	if(istype(W, /obj/item/weapon/twohanded/st_hammer))
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && (user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ST))
+			to_chat(user, SPAN_HIGHDANGER("[W.name] is too heavy for you..."))
+			return
+	
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
 		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)

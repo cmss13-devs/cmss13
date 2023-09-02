@@ -25547,22 +25547,6 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"cte" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 2;
-	name = "Firing Range";
-	req_access = null;
-	req_one_access_txt = "2;4;7;9;21";
-	access_modified = 1
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/closed/wall/almayer,
-/area/almayer/living/cryo_cells)
 "ctn" = (
 /turf/open/floor/almayer{
 	icon_state = "redcorner"
@@ -28332,20 +28316,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "dus" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 2;
-	name = "Firing Range";
-	req_access = null;
-	req_one_access_txt = "2;4;7;9;21";
-	access_modified = 1
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
 /turf/closed/wall/almayer,
 /area/almayer/living/cryo_cells)
 "dut" = (
@@ -29456,7 +29427,9 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "dSh" = (
-/obj/structure/machinery/cm_vending/clothing/senior_officer,
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	req_access = list(26)
+	},
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
 	pixel_y = 32
@@ -37012,15 +36985,6 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/command{
-	name = "\improper Senior Enlisted Advisor's Office";
-	req_access = null;
-	req_access_txt = "19;29";
-	access_modified = 1
-	},
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "gNp" = (
@@ -38930,10 +38894,6 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"hGb" = (
-/obj/structure/bed/sofa/vert/grey,
-/turf/open/space,
-/area/space)
 "hGB" = (
 /obj/structure/machinery/light,
 /turf/open/floor/wood/ship,
@@ -44749,17 +44709,8 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/living/commandbunks)
 "kcO" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "19;29";
-	access_modified = 1
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull)
@@ -47571,15 +47522,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
-"ljH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Cryogenics Bay"
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/engineering_workshop)
 "ljO" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -58229,7 +58171,8 @@
 /area/almayer/living/tankerbunks)
 "pKU" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/tl{
-	req_one_access = list(32,15)
+	req_one_access = list();
+	req_access = list(32,15)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -61075,7 +61018,8 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "qWN" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/smart{
-	req_one_access = list(14,18)
+	req_access = list(14,18);
+	req_one_access = list()
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -63096,10 +63040,6 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "rRj" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -65125,7 +65065,8 @@
 /area/almayer/living/port_emb)
 "sKx" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/tl{
-	req_one_access = list(18,32)
+	req_one_access = list();
+	req_access = list(18,32)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -66414,12 +66355,8 @@
 	},
 /area/almayer/squads/alpha)
 "tok" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
 	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -71405,14 +71342,6 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	name = "\improper Research Reception Laboratory"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 8;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	name = "\improper Research Reception Laboratory"
 	},
@@ -75072,15 +75001,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
-"wOV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
-	dir = 1;
-	name = "\improper Auxiliary Combat Support Secondary Preparations";
-	req_one_access = "19;27;22";
-	welded = 1
-	},
-/turf/open/space/basic,
-/area/space)
 "wPf" = (
 /obj/structure/sign/safety/reception{
 	pixel_x = 32;
@@ -126355,7 +126275,7 @@ jyY
 exT
 jyY
 cRH
-cte
+bbs
 bIT
 jHe
 bIS
@@ -130000,7 +129920,7 @@ boI
 boI
 brx
 tzz
-ljH
+jnf
 boI
 boI
 bKO
@@ -131852,7 +131772,7 @@ bdH
 bdH
 bdH
 bdH
-wOV
+bdH
 bdH
 bdH
 bdH
@@ -134989,7 +134909,7 @@ xVk
 xVk
 xVk
 aaa
-hGb
+aaa
 bdH
 bdH
 bdH

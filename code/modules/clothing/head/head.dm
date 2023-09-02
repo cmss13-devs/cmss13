@@ -370,16 +370,23 @@
 	name = "\improper USCM formal Commanding Officer's black cap"
 	icon_state = "co_formalhat_black"
 
-/obj/item/clothing/head/cmcap/ro
-	name = "\improper USCM officer cap"
-	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+/obj/item/clothing/head/cmcap/req/ro
+	name = "\improper USCM quartermaster cap"
+	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "rocap"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
-	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
+	desc = "It's a not-so-fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
 	flags_atom = FPRINT|NO_SNOW_TYPE
+
+/obj/item/clothing/head/cmcap/bridge
+	name = "\improper USCM officer cap"
+	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+	icon_state = "cap_officer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/flap
 	name = "\improper USCM expedition cap"

@@ -156,8 +156,8 @@
 /obj/item/clothing/gloves/marine/dress
 	name = "dress gloves"
 	desc = "A pair of fashionable white gloves, worn by marines in dress."
-	icon_state = "white"
-	item_state = "white"
+	icon_state = "marine_formal"
+	item_state = "marine_formal"
 	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/souto

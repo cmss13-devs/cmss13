@@ -209,7 +209,7 @@
 	item_state = "uscmboiler"
 	worn_state = "uscmboiler"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
-	specialty = "marine groundside officer"
+	specialty = "marine operations"
 
 /obj/item/clothing/under/marine/officer/command
 	name = "\improper USCM officer uniform"

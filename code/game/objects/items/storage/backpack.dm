@@ -1148,4 +1148,4 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "rmc_general"
 	item_state = "rmc_general"
 	has_gamemode_skin = FALSE
-	max_storage_space = 21
+	max_storage_space = 15

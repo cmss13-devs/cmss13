@@ -15,10 +15,10 @@
 
 	prompt = tgui_alert(src, "Do you want to use a custom announcement?", "Choose.", list("Yes", "No"), 20 SECONDS)
 	if(prompt == "Yes")
+		var/customannouncement = TRUE
 		whattoannounce = tgui_input_text(src, "Please enter announcement text.", "what?")
 		log = "[key_name_admin(src)] Sent General Quarters! (Using a custom announcement)"
 
-	//set_security_level(SEC_LEVEL_RED, TRUE, FALSE)
-	//shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+	generalquarters(customannouncement, whattoannounce)
 	message_admins(log)
 	return TRUE

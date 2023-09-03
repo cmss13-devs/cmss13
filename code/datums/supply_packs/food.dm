@@ -151,7 +151,7 @@
 	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
-	containername = "\improper box of donuts (x5)"
+	containername = "box of donuts (x5)"
 	group = "Food"
 
 /datum/supply_packs/mre

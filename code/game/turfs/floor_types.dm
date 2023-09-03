@@ -560,36 +560,36 @@
 
 //darkred2
 /turf/open/floor/prison/darkred2
-	icon_state = "darkred2"
+	icon_state = "darkred2_new"
 /turf/open/floor/prison/darkred2corner
-	icon_state = "darkred2corner"
+	icon_state = "darkred2corner_new"
 /turf/open/floor/prison/darkred2angle
 	icon_state = "darkred2angle"
 /turf/open/floor/prison/darkred2full
 	icon_state = "darkred2full"
 //darkbrown2
 /turf/open/floor/prison/darkbrown2
-	icon_state = "darkbrown2"
+	icon_state = "darkbrown2_new"
 /turf/open/floor/prison/darkbrown2corner
-	icon_state = "darkbrown2corner"
+	icon_state = "darkbrown2corner_new"
 /turf/open/floor/prison/darkbrown2angle
 	icon_state = "darkbrown2angle"
 /turf/open/floor/prison/darkbrown2full
 	icon_state = "darkbrown2full"
 //darkyellow2
 /turf/open/floor/prison/darkyellow2
-	icon_state = "darkyellow2"
+	icon_state = "darkyellow2_new"
 /turf/open/floor/prison/darkyellow2corner
-	icon_state = "darkyellow2corner"
+	icon_state = "darkyellow2corner_new"
 /turf/open/floor/prison/darkyellow2angle
 	icon_state = "darkyellow2angle"
 /turf/open/floor/prison/darkyellow2full
 	icon_state = "darkyellow2full"
 //darkpurple2
 /turf/open/floor/prison/darkpurple2
-	icon_state = "darkpurple2"
+	icon_state = "darkpurple2_new"
 /turf/open/floor/prison/darkpurple2corner
-	icon_state = "darkpurple2corner"
+	icon_state = "darkpurple2corner_new"
 /turf/open/floor/prison/darkpurple2angle
 	icon_state = "darkpurple2angle"
 /turf/open/floor/prison/darkpurple2full
@@ -598,9 +598,9 @@
 
 //green
 /turf/open/floor/prison/green
-	icon_state = "green"
+	icon_state = "green_new"
 /turf/open/floor/prison/greencorner
-	icon_state = "greencorner"
+	icon_state = "greencorner_new"
 /turf/open/floor/prison/greenangle
 	icon_state = "greenangle"
 /turf/open/floor/prison/greenfull
@@ -628,10 +628,10 @@
 	icon_state = "bright_clean2"
 //whitegreen
 /turf/open/floor/prison/whitegreen
-	icon_state = "whitegreen"
+	icon_state = "whitegreen_new"
 
 /turf/open/floor/prison/whitegreencorner
-	icon_state = "whitegreencorner"
+	icon_state = "whitegreencorner_new"
 
 /turf/open/floor/prison/whitegreenangle
 	icon_state = "whitegreenangle"
@@ -643,9 +643,9 @@
 
 //blue
 /turf/open/floor/prison/blue
-	icon_state = "blue"
+	icon_state = "blue_new"
 /turf/open/floor/prison/bluecorner
-	icon_state = "bluecorner"
+	icon_state = "bluecorner_new"
 /turf/open/floor/prison/blueangle
 	icon_state = "blueangle"
 /turf/open/floor/prison/bluefull
@@ -655,9 +655,9 @@
 
 //whitepurple
 /turf/open/floor/prison/whitepurple
-	icon_state = "whitepurple"
+	icon_state = "whitepurple_new"
 /turf/open/floor/prison/whitepurplecorner
-	icon_state = "whitepurplecorner"
+	icon_state = "whitepurplecorner_new"
 /turf/open/floor/prison/whitepurpleangle
 	icon_state = "whitepurpleangle"
 /turf/open/floor/prison/whitepurplefull
@@ -666,28 +666,28 @@
 	icon_state = "whitepurplefull"
 //red
 /turf/open/floor/prison/red
-	icon_state = "red"
+	icon_state = "red_new"
 /turf/open/floor/prison/redcorner
-	icon_state = "redcorner"
+	icon_state = "redcorner_new"
 /turf/open/floor/prison/redangle
 	icon_state = "redangle"
 /turf/open/floor/prison/redfull
 	icon_state = "redfull"
 //yellow
 /turf/open/floor/prison/yellow
-	icon_state = "yellow"
+	icon_state = "yellow_new"
 
 /turf/open/floor/prison/yellowcorner
-	icon_state = "yellowcorner"
+	icon_state = "yellowcorner_new"
 /turf/open/floor/prison/yellowangle
 	icon_state = "yellowangle"
 /turf/open/floor/prison/yellowfull
 	icon_state = "yellowfull"
 //greenblue
 /turf/open/floor/prison/greenblue
-	icon_state = "greenblue"
+	icon_state = "greenblue_new"
 /turf/open/floor/prison/greenbluecorner
-	icon_state = "greenbluecorner"
+	icon_state = "greenbluecorner_new"
 /turf/open/floor/prison/greenblueangle
 	icon_state = "greenblueangle"
 //blue plate

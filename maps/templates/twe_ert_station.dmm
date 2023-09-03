@@ -86,6 +86,12 @@
 	dir = 9
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"bS" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "co" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -98,6 +104,15 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/royal_marines_station)
+"cJ" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "red"
+	},
 /area/adminlevel/ert_station/royal_marines_station)
 "cL" = (
 /obj/structure/platform{
@@ -179,6 +194,14 @@
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"ei" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "eu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
@@ -196,6 +219,12 @@
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"eV" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "eX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -206,6 +235,14 @@
 "fp" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin7"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ft" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "fx" = (
@@ -308,10 +345,6 @@
 	icon_state = "1,11"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
-"hk" = (
-/obj/structure/largecrate/random/barrel,
-/turf/open/shuttle/elevator/grating,
-/area/adminlevel/ert_station/royal_marines_station)
 "hm" = (
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "8,7"
@@ -367,6 +400,12 @@
 	icon_state = "rasputin3"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"iG" = (
+/obj/structure/bed/alien,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "iI" = (
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "7,6"
@@ -375,6 +414,13 @@
 "iK" = (
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "7,1"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"iO" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/surgical_tray,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "iR" = (
@@ -405,8 +451,13 @@
 "je" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"jk" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "jl" = (
@@ -436,6 +487,12 @@
 	},
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "2,0"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"jD" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/almayer{
+	icon_state = "redfull"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "jI" = (
@@ -509,18 +566,18 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "kL" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
+/obj/structure/machinery/photocopier,
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
+/area/adminlevel/ert_station/royal_marines_station)
+"kO" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper_bin/uscm{
+	pixel_y = 7
 	},
-/obj/structure/prop/almayer/hangar_stencil{
-	icon_state = "dropship2"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -569,6 +626,13 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"lF" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "lG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -578,6 +642,13 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"lI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/security,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -633,9 +704,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "mK" = (
@@ -714,6 +785,20 @@
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"ol" = (
+/obj/structure/machinery/door/airlock/almayer/security/colony{
+	dir = 8;
+	name = "\improper Brig Cell"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "RMC_brig_2";
+	name = "shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "oo" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -738,6 +823,13 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"oY" = (
+/obj/structure/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "oZ" = (
@@ -782,6 +874,15 @@
 	icon_state = "2,13"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"qb" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "qi" = (
 /obj/structure/platform{
 	dir = 1
@@ -802,9 +903,11 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "qj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
 /turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "red"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "qx" = (
@@ -872,6 +975,12 @@
 	icon_state = "orange"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"rv" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "rI" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 5
@@ -935,6 +1044,13 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"sP" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/roller,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "sR" = (
 /obj/structure/platform{
 	dir = 8
@@ -968,6 +1084,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"tw" = (
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "red"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "uc" = (
@@ -1005,6 +1127,15 @@
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"uQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "uU" = (
 /obj/structure/largecrate/random/barrel,
 /obj/effect/decal/cleanable/dirt,
@@ -1026,6 +1157,30 @@
 "vB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/royal_marines_station)
+"vD" = (
+/obj/structure/machinery/door/airlock/almayer/security/colony{
+	dir = 8;
+	name = "\improper Brig Cell"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "RMC_brig_1";
+	name = "shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"vR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/book/manual/marine_law{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/adminlevel/ert_station/royal_marines_station)
 "wl" = (
 /turf/closed/shuttle/twe_dropship{
@@ -1063,6 +1218,15 @@
 	icon_state = "0,7"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"xw" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	id_tag = null;
+	name = "Operating Theatre 1"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "xx" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1089,9 +1253,8 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "xN" = (
-/obj/structure/machinery/door/airlock/multi_tile/elevator/research,
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "xW" = (
@@ -1125,6 +1288,14 @@
 	icon_state = "orangefull"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"yW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "zk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -1137,6 +1308,15 @@
 "zw" = (
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "7,12"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"zL" = (
+/obj/structure/closet/secure_closet/brig{
+	name = "Spare Prison Uniforms";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "zM" = (
@@ -1160,10 +1340,11 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Aa" = (
-/obj/structure/closet/crate/trashcart,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/defibrillator,
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Ac" = (
@@ -1174,6 +1355,28 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ad" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/chem_master,
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Ai" = (
@@ -1236,6 +1439,12 @@
 	icon_state = "orange"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"Bk" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "BC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -1259,8 +1468,17 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Cm" = (
+/obj/structure/surface/table/almayer,
+/obj/item/handcuffs{
+	pixel_y = 12
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/handcuffs,
+/obj/item/weapon/baton{
+	pixel_x = -12
+	},
 /turf/open/floor/almayer{
-	icon_state = "redcorner"
+	icon_state = "redfull"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Cu" = (
@@ -1344,10 +1562,11 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/royal_marines_station)
 "Ei" = (
-/obj/structure/closet/coffin/woodencrate,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "EG" = (
@@ -1438,6 +1657,12 @@
 	icon_state = "cargo"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"GM" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "GO" = (
 /obj/structure/platform{
 	dir = 1
@@ -1480,9 +1705,9 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Hg" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "redcorner"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Hp" = (
@@ -1585,6 +1810,20 @@
 	icon_state = "rasputin15"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"IH" = (
+/obj/structure/machinery/door/airlock/almayer/security/colony{
+	dir = 8;
+	name = "\improper Brig Cell"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "RMC_Pub_brig";
+	name = "shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "IK" = (
 /obj/structure/platform{
 	dir = 1
@@ -1664,11 +1903,9 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Kl" = (
-/obj/structure/largecrate/machine,
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "red"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Ko" = (
@@ -1716,8 +1953,37 @@
 	icon_state = "redfull"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"Mb" = (
+/obj/structure/closet/secure_closet/brig{
+	name = "Spare Prison Uniforms";
+	req_one_access = null
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "Mg" = (
-/obj/structure/largecrate/random/barrel/green,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = 30
+	},
+/obj/item/toy/deck{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = -5;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -1847,6 +2113,12 @@
 "NV" = (
 /turf/closed/wall/r_wall/elevator,
 /area/adminlevel/ert_station/royal_marines_station)
+"Oi" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "Ok" = (
 /obj/structure/machinery/cryopod{
 	dir = 1;
@@ -1876,6 +2148,21 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"OB" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/syringe_case{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/syringe_case,
+/obj/item/storage/syringe_case{
+	pixel_x = -3;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "OE" = (
@@ -1918,9 +2205,28 @@
 "Pg" = (
 /turf/open/shuttle/dropship,
 /area/adminlevel/ert_station/royal_marines_station)
+"Pk" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	name = "Operating Theatre 2"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "Pl" = (
-/obj/structure/largecrate/random/barrel,
-/turf/open/shuttle/elevator,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Px" = (
 /turf/closed/shuttle/twe_dropship{
@@ -1942,6 +2248,17 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"PD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door_control/brbutton{
+	id = "RMC_Pub_brig";
+	pixel_x = -29
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "PL" = (
@@ -1975,10 +2292,17 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/royal_marines_station)
 "PS" = (
-/obj/structure/largecrate/random/barrel/green,
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
+	req_access = null
+	},
 /turf/open/floor/almayer{
-	icon_state = "red"
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"PU" = (
+/obj/structure/machinery/medical_pod/autodoc,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "PY" = (
@@ -1990,10 +2314,23 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Qi" = (
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
+/obj/structure/machinery/cm_vending/sorted/medical/no_access{
+	req_access = null
 	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Qj" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "RMC_Pub_brig";
+	name = "shutters"
+	},
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/royal_marines_station)
 "QP" = (
 /turf/closed/shuttle/twe_dropship{
@@ -2089,6 +2426,12 @@
 "ST" = (
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "0,3"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"SY" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Tf" = (
@@ -2212,6 +2555,12 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"UT" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "UV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -2261,9 +2610,11 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "VA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/brig,
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orangecorner"
+	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "VF" = (
@@ -2280,6 +2631,51 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"VG" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"VH" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/handcuffs{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/device/flash{
+	pixel_y = -8
+	},
+/turf/open/floor/almayer{
+	icon_state = "redfull"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"VL" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/handcuffs{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/obj/item/handcuffs,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "redfull"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Wa" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "We" = (
@@ -2371,22 +2767,25 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "WD" = (
-/obj/structure/largecrate/machine,
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/recharger,
 /turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
+	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "WI" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
+/obj/structure/closet/secure_closet/brig{
+	name = "Spare Prison Uniforms"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/prop/almayer/hangar_stencil{
-	icon_state = "dropship2"
-	},
+/obj/item/clothing/shoes/orange,
+/obj/item/clothing/shoes/orange,
+/obj/item/clothing/shoes/orange,
+/obj/item/clothing/shoes/orange,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/orange,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -2497,10 +2896,39 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"XT" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "RMC_brig_1";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/obj/structure/machinery/door_control/brbutton{
+	id = "RMC_brig_2";
+	pixel_x = 25;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "XV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Yk" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"YI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "YZ" = (
@@ -2535,6 +2963,17 @@
 "Zl" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Zx" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/syringes{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/storage/box/syringes,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "ZA" = (
@@ -2689,10 +3128,10 @@ WZ
 EJ
 cu
 WS
-qZ
-XF
-yK
-Uc
+qj
+Ad
+oY
+SY
 gS
 gS
 jL
@@ -2736,11 +3175,11 @@ Zf
 vm
 cu
 WS
-RH
+Hg
 je
-Qi
-uq
-nW
+Zf
+xN
+eV
 gS
 gS
 gS
@@ -2785,14 +3224,14 @@ WS
 WS
 WS
 mI
-VA
-Xz
-RH
-bO
-NV
-NV
-NV
-Sd
+Zf
+Au
+YI
+Oi
+WS
+ft
+bS
+iO
 gS
 jL
 "}
@@ -2830,16 +3269,16 @@ kT
 MX
 yK
 aK
-yK
-sb
-MJ
-dK
-qZ
-CT
-Pl
-Ks
-KF
-UH
+Kl
+Zf
+Zf
+Au
+Au
+rv
+WS
+xN
+Zf
+xN
 gS
 jL
 "}
@@ -2877,16 +3316,16 @@ xE
 RF
 yK
 mK
-yK
-sb
-MJ
-dK
-XV
+Zf
+Zf
+Zf
+Au
+Au
 xN
-hk
-Ks
-Ks
-xN
+WS
+WS
+Pk
+WS
 gS
 jL
 "}
@@ -2924,16 +3363,16 @@ jU
 RF
 yK
 aK
-yK
-Am
-MJ
-dK
-XV
-Nm
-Ks
-KF
-Ks
-Nm
+Zf
+Au
+sP
+yW
+Au
+Zf
+jk
+Zf
+Zf
+Bk
 gS
 jL
 "}
@@ -2972,15 +3411,15 @@ Xe
 WS
 WS
 WS
-mI
-MJ
-dK
-XV
+uQ
+Zx
+OB
+Zf
+Zf
 Nm
-Ks
-KF
-Ks
-Nm
+Zf
+Zf
+UT
 gS
 jL
 "}
@@ -3019,15 +3458,15 @@ RF
 qZ
 WS
 Aa
-Am
-MJ
-RF
-XV
-Nm
-Ks
-Ks
-Ks
-Nm
+je
+VG
+VG
+Au
+xN
+WS
+WS
+xw
+WS
 gS
 jL
 "}
@@ -3065,16 +3504,16 @@ Bh
 RF
 RH
 aK
-qZ
-Am
-MJ
-VA
-WD
-CT
 Pl
-hk
-KF
-nj
+je
+Zf
+Zf
+Zf
+PU
+WS
+xN
+Zf
+xN
 gS
 jL
 "}
@@ -3113,15 +3552,15 @@ dK
 XF
 aK
 Ei
-eX
-gq
-Dg
-RF
-rI
-Tm
-Tm
-Tm
-pJ
+je
+Zf
+Zf
+xN
+Yk
+WS
+ft
+bS
+iO
 gS
 jL
 "}
@@ -3159,11 +3598,11 @@ Ir
 aX
 XF
 aK
-Hz
-qN
-WI
-sb
-RF
+PS
+xN
+Zf
+Zf
+lF
 gS
 gS
 gS
@@ -3206,11 +3645,11 @@ ro
 hA
 XF
 aK
-MU
-yK
-oC
-sb
-RF
+Qi
+xN
+xN
+xN
+lF
 gS
 jL
 jL
@@ -3253,9 +3692,9 @@ yK
 XF
 XF
 WS
-ds
-zk
-Ms
+Qi
+xN
+ei
 ll
 ll
 gS
@@ -4005,8 +4444,8 @@ yK
 XF
 OE
 WS
-Hz
-qN
+VA
+kO
 kL
 ps
 ps
@@ -4052,11 +4491,11 @@ zY
 Ku
 UJ
 aK
-MU
+WD
+Lj
 yK
-oC
-BC
-ev
+yK
+yK
 gS
 jL
 jL
@@ -4099,11 +4538,11 @@ MJ
 ev
 XF
 aK
-ds
-zk
-ls
-BC
-ev
+WD
+Xh
+Xh
+Xh
+yK
 gS
 gS
 gS
@@ -4146,16 +4585,16 @@ nT
 ev
 XF
 aK
-Ei
-nn
-xX
-Hg
-PS
-bO
-NV
-NV
-NV
-Sd
+WI
+Xh
+Xh
+Xh
+yK
+Qj
+cJ
+qb
+FN
+GM
 gS
 jL
 "}
@@ -4193,16 +4632,16 @@ MJ
 ev
 XF
 aK
-qZ
-BC
-MJ
-Cm
-Kl
-CT
-KF
-Ks
-Pl
-UH
+WI
+Xh
+Xh
+Xh
+XF
+Qj
+HJ
+fD
+fD
+tw
 gS
 jL
 "}
@@ -4240,16 +4679,16 @@ nT
 kX
 UJ
 WS
-RH
-Ry
-MJ
-kX
-PB
-xN
-Ks
-Ks
-hk
-xN
+lI
+Xh
+Xh
+Xh
+XF
+WS
+WS
+WS
+WS
+IH
 gS
 jL
 "}
@@ -4288,15 +4727,15 @@ MY
 WS
 WS
 WS
-uK
-MJ
-kX
-PB
-Nm
-Ks
-KF
-Ks
-Nm
+Lj
+Xh
+Xh
+yK
+XF
+jk
+Ut
+PD
+Ku
 gS
 jL
 "}
@@ -4335,15 +4774,15 @@ kX
 yK
 aK
 yK
-Ry
-MJ
-kX
-XV
+Xh
+Xh
+Lj
+Xh
+yK
 Nm
-Ks
-KF
-Ks
-Nm
+HJ
+XT
+eh
 gS
 jL
 "}
@@ -4382,15 +4821,15 @@ ev
 yK
 mK
 yK
-Ry
-MJ
-kX
-XV
-Nm
-hk
-Ks
-Ks
-Nm
+Xh
+Lj
+Lj
+Xh
+zL
+WS
+ol
+WS
+vD
 gS
 jL
 "}
@@ -4429,15 +4868,15 @@ dj
 yK
 aK
 yK
-Ry
-MJ
-kX
-XF
-CT
-Pl
-hk
-KF
-nj
+Xh
+VH
+VL
+Xh
+Mb
+WS
+Xh
+WS
+Xh
 gS
 jL
 "}
@@ -4476,15 +4915,15 @@ ad
 WS
 WS
 WS
-uK
+Xh
 Cm
-eh
-qZ
-rI
-Tm
-Tm
-Tm
-pJ
+jD
+yK
+Mb
+WS
+iG
+WS
+iG
 gS
 jL
 "}
@@ -4522,11 +4961,11 @@ Au
 Aq
 cu
 WS
-qZ
-HJ
-qj
-nl
-Aa
+vR
+Xh
+Xh
+yK
+XF
 gS
 gS
 gS
@@ -4569,10 +5008,10 @@ JM
 XB
 cu
 WS
-Ei
+Wa
 Mg
+yK
 XF
-qZ
 gS
 gS
 jL

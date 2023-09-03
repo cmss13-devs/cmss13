@@ -1,8 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added a preference for using the old legacy yautja armor, only accessible to the people who had the special gear."
-  - bugfix: "Fixed the old Yautja Legacy armor selection code. Removed the unique titles from the legacy gear however."
-  - imageadd: "Changed the Yautja relay beacon sprite to a newer unused sprite. Changed iconstate name of health scanner for preds from tracker to scanner."
-  - imageadd: "Moved some of the used sprites out of the unused category in pred_gear.dmi."
-  - imagedel: "Deleted old relay beacon sprite, deleted duplicate plasma pistol and thwei sprites."

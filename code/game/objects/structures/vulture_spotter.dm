@@ -79,9 +79,10 @@
 	to_chat(scope.scope_user, SPAN_NOTICE("You notice that [scope] drifts less."))
 	RegisterSignal(scope, COMSIG_VULTURE_SCOPE_MOVED, PROC_REF(on_vulture_move))
 	RegisterSignal(scope, COMSIG_VULTURE_SCOPE_UNSCOPED, PROC_REF(on_vulture_unscope))
-	RegisterSignal(user.client, COMSIG_PARENT_QDELETING, PROC_REF(do_unscope))
+	if(user.client)
+		RegisterSignal(user.client, COMSIG_PARENT_QDELETING, PROC_REF(do_unscope))
+		user.client.change_view(scope_zoom, src)
 	RegisterSignal(user, list(COMSIG_MOB_PICKUP_ITEM, COMSIG_MOB_RESISTED), PROC_REF(do_unscope))
-	user.client.change_view(scope_zoom, src)
 	user.see_in_dark += darkness_view
 	user.lighting_alpha = 127
 	user.sync_lighting_plane_alpha()

@@ -52,7 +52,7 @@
 		on_scope_attach(user, thing)
 		return
 
-	else if(HAS_TRAIT(thing, TRAIT_TOOL_SCREWDRIVER))
+	if(HAS_TRAIT(thing, TRAIT_TOOL_SCREWDRIVER))
 		on_screwdriver(user)
 		return
 

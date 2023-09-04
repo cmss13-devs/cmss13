@@ -228,6 +228,7 @@
 			new_player_panel()
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
+	var/datum/job/player_rank = RoleAuthority.roles_for_mode[rank]
 	if (src != usr)
 		return
 	if(SSticker.current_state != GAME_STATE_PLAYING)
@@ -236,7 +237,7 @@
 	if(!enter_allowed)
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
-	if(!RoleAuthority.assign_role(src, RoleAuthority.roles_for_mode[rank], 1))
+	if(!RoleAuthority.assign_role(src, player_rank, 1))
 		to_chat(src, alert("[rank] is not available. Please try another."))
 		return
 
@@ -244,16 +245,16 @@
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
-	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
+	RoleAuthority.equip_role(character, player_rank, late_join = TRUE)
 	EquipCustomItems(character)
 
-	if(security_level > SEC_LEVEL_BLUE || EvacuationAuthority.evac_status)
+	if((security_level > SEC_LEVEL_BLUE || EvacuationAuthority.evac_status) && player_rank.gets_emergency_kit)
 		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[EvacuationAuthority.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
 		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc. //TODO!!!!! ~Carn
-	SSticker.mode.latejoin_tally += RoleAuthority.calculate_role_weight(RoleAuthority.roles_for_mode[rank])
+	SSticker.mode.latejoin_tally += RoleAuthority.calculate_role_weight(player_rank)
 
 	for(var/datum/squad/sq in RoleAuthority.squads)
 		if(sq)

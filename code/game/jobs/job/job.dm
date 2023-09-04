@@ -37,6 +37,8 @@
 	/// When set you will be able to choose between the different job options when selecting your role.
 	/// Associated list. Main list elements - actual options, associated values - shorthands for job preferences menu (keep those short).
 	var/job_options
+	/// If TRUE, this job will spawn w/ a cryo emergency kit during evac/red alert
+	var/gets_emergency_kit = TRUE
 
 /datum/job/New()
 	. = ..()

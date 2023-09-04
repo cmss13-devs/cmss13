@@ -237,14 +237,14 @@ cases. Override_icon_state should be a list.*/
 			new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
 		if(override_protection && override_protection.len)
 			new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
-		switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-			if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("snow")
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				item_state = new_item_state ? new_item_state : "s_" + item_state
-			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+			if("desert")
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				item_state = new_item_state ? new_item_state : "d_" + item_state
-			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+			if("classic")
 				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
 				item_state = new_item_state ? new_item_state : "c_" + item_state
 		if(new_protection)

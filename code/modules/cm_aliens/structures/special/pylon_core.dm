@@ -63,7 +63,7 @@
 	. = ..()
 
 	var/lesser_count = 0
-	for(var/mob/living/carbon/xenomorph/lesser_drone in linked_hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/lesser_drone/lesser in linked_hive.totalXenos)
 		lesser_count++
 
 	. += "Currently holding [SPAN_NOTICE("[Floor(lesser_drone_spawns)]")]/[SPAN_NOTICE("[lesser_drone_spawn_limit]")] lesser drones."

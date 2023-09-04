@@ -120,6 +120,15 @@
 /obj/item/weapon/gun/boltaction/vulture
 	name = "\improper M707 \"Vulture\" anti-materiel rifle"
 	desc = "The M707 is a crude but highly powerful rifle, designed for disabling lightly armored vehicles and hitting targets inside buildings. Its unwieldy scope and caliber necessitates a spotter to be fully effective, suffering severe scope drift without one."
+	desc_lore = {"
+		Put into production in 2175 as an economical answer to rising militancy in the Outer Rim, the M707 was derived from jury-rigged anti-materiel rifles that were captured during the Linna 349 campaign.
+
+		The rebels (colloquially known among the USCMC as bug-boys and beebops) had achieved extensive success at Neusheune using the aforementioned rifles to pick off incinerator-wielding marines by detonating their napthal fuel tank in the midst of squad formations, subsequently leading to the USCMC designating users of those rifles as high-priority targets, as well as changes in USCMC patrol tactics.
+
+		Some of the failings and quirks of the beebops' jury-rigged rifle were quickly noticed by vehicle crews early on in the campaign, as in multiple memoirs the crews mention that: "Once the rain starts, that's when you know you've got an ambush."
+
+		The 'pitter-patter' of 'rain' that the crews heard was in fact multiple rifles failing to penetrate through the vehicle's external armor. Once a number of the anti-materiel rifles were examined, it was deemed a high priority to produce a Corps version. In the process, the rifles were designed for a higher calibre then that of the rebel versions, so the M707 would be capable of penetrating the light vehicle armor of their UPP peers in the event of another Dog War or Tientsin."}
+
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overriden with camos
 	icon_state = "vulture"
 	item_state = "vulture"

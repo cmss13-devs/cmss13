@@ -1135,8 +1135,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "vulture_scope"
 	attach_icon = "vulture_scope"
-	desc = "TODO" //zonenote
-	//desc_lore = "An intermediate-power Armat scope designated as the AN/PVQ-31 4x Optic. Fairly basic, but both durable and functional... enough. 780 meters is about as far as one can push the 10x24mm cartridge, really."
+	desc = "A powerful yet obtrusive sight for the M707 anti-materiel rifle." // Can't be seen normally, anyway
 	slot = "rail"
 	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when wielded
 	wield_delay_mod = WIELD_DELAY_FAST

@@ -1010,7 +1010,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/operator = key_name(user)
 	var/datum/ares_link/link = GLOB.ares_link
 	if(logged_in == MAIN_AI_SYSTEM)
-		operator = "[user.ckey]/([MAIN_AI_SYSTEM])"
+		if(!user)
+			operator = "[MAIN_AI_SYSTEM] (Sensor Trip)"
+		else
+			operator = "[user.ckey]/([MAIN_AI_SYSTEM])"
 	if(ACCESS_MARINE_AI_TEMP in access)
 		access -= ACCESS_MARINE_AI_TEMP
 		link.active_ids -= src

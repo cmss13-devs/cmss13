@@ -1797,7 +1797,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/collapsible
 	name = "submachinegun folding stock"
-	desc = "A Kirchner brand K2 M39 folding stock, standard issue in the USCM. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl. This stock can collapse in, removing almost all positive and negative effects, however it slightly increases spread due to weapon being off-balanced by the collapsed stock."
+	desc = "A Kirchner brand K2 M39 folding stock, standard issue in the USCM. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl. This stock can collapse in, removing all positive and negative effects."
 	slot = "stock"
 	melee_mod = 10
 	size_mod = 1
@@ -1830,6 +1830,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+		recoil_mod = -RECOIL_AMOUNT_TIER_4
+		scatter_mod = -SCATTER_AMOUNT_TIER_8
 		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 		size_mod = 1
 		aim_speed_mod = CONFIG_GET(number/slowdown_low)
@@ -1842,21 +1845,19 @@ Defined in conflicts.dm of the #defines folder.
 		attach_icon = "smgstockc_a"
 
 	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
 		scatter_unwielded_mod = 0
 		size_mod = 0
 		aim_speed_mod = 0
 		wield_delay_mod = 0
 		movement_onehanded_acc_penalty_mod = 0
-		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
-		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
 		hud_offset_mod = 3
 		icon_state = "smgstockcc"
 		attach_icon = "smgstockcc_a"
-
-	//don't *= -1 on debuffs, you'd actually be making than without stock when it's collapsed.
-	accuracy_mod *= -1
-	recoil_mod *= -1
-	scatter_mod *= -1
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")

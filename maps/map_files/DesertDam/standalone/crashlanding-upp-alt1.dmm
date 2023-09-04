@@ -1,0 +1,1969 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bm" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"bz" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T7";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"bV" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"cn" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T5";
+	name = "Fulcrum"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"cp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"cG" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dv" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dz" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dN" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"dP" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"eb" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"eC" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T17";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"eF" = (
+/turf/open/desert/dirt{
+	dir = 6;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"fa" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T9";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"fg" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"fp" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"ft" = (
+/turf/closed/wall,
+/area/desert_dam/exterior/valley/valley_civilian)
+"fA" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0;
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"fL" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"gb" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ge" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"hK" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -7;
+	pixel_y = 17
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "upp4";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"hP" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ig" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ih" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/shuttle/ert{
+	icon_state = "upp21";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"im" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"jN" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached19"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"jU" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"jX" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"kd" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0;
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"kV" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"la" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"ly" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_civilian)
+"mk" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"mt" = (
+/obj/structure/machinery/light/double{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"mw" = (
+/turf/open/desert/dirt{
+	dir = 10;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"mM" = (
+/turf/open/desert/dirt{
+	dir = 9;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"mN" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"nd" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 6
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"nj" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"nn" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"nA" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp4";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"nH" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"nX" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"of" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"oj" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin4"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"os" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"oL" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"oX" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal9"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"pF" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T14";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"qD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"qM" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/rifle/type71/ap,
+/obj/item/ammo_magazine/rifle/type71/ap,
+/obj/item/ammo_magazine/rifle/type71/ap,
+/obj/item/ammo_magazine/rifle/type71/ap,
+/obj/item/ammo_magazine/rifle/type71/ap,
+/obj/item/ammo_magazine/rifle/type71/ap,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"sl" = (
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"ss" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_7"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"sJ" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ta" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"uw" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"uG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"uK" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"uQ" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"vn" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"vz" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/weapon/gun/rifle/type71,
+/obj/item/weapon/gun/rifle/type71,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"vJ" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "T3";
+	name = "Buran";
+	opacity = 0
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"wl" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"xp" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"xt" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"xz" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_civilian)
+"xE" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin7"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"xK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_civilian)
+"xM" = (
+/obj/structure/flora/bush/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"xP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"yl" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T19";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"ym" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"yU" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "upp20";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"zs" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"zE" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"zO" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"As" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"AW" = (
+/turf/open/desert/dirt{
+	dir = 1;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Bk" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T4";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"BE" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"BJ" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"BM" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"BU" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"BY" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"CB" = (
+/obj/structure/flora/grass/desert/lightgrass_11,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"CL" = (
+/obj/structure/bed/chair/dropship/passenger,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Dd" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -7;
+	pixel_y = 17
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2";
+	opacity = 0;
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"DO" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Eh" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"EF" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"EL" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"EW" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"FG" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Gh" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Gt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T4";
+	name = "Buran";
+	opacity = 0
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Hm" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T1";
+	name = "Buran";
+	opacity = 0
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ho" = (
+/turf/open/desert/dirt{
+	dir = 8;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Hs" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0;
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Hu" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"HP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"IS" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp16";
+	name = "Fulcrum"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Jb" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Jd" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Jy" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0;
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"JG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"JW" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp25";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Kr" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T10";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"KC" = (
+/turf/open/desert/dirt{
+	dir = 8;
+	icon_state = "desert_transition_corner1"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"KX" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached13"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Lc" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal9"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Lp" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "upp5";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Lt" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Lv" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached15"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"LD" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Mo" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Mp" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"MM" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T5";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Nt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T7";
+	name = "Buran";
+	opacity = 0
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ny" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/pkp,
+/obj/item/weapon/gun/pkp,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"NP" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2";
+	opacity = 0;
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ou" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"OB" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 6
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"OG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"OJ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Pc" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Pf" = (
+/obj/structure/flora/grass/desert/lightgrass_12,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Pr" = (
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"PI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"PS" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp20";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Qc" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/obj/effect/spawner/gibspawner/human,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Qj" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Rq" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin6"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ry" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin8"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"RG" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Sb" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Sf" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T14";
+	name = "Buran";
+	opacity = 0
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Sm" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"SE" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"SN" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"SV" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -7;
+	pixel_y = 24
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "T3";
+	name = "Buran";
+	opacity = 0
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Td" = (
+/obj/structure/flora/bush/desert/cactus,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Tn" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp5";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"TT" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ug" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/structure/machinery/computer/cameras{
+	desc = "The flight controls for a Mi-220 Attack Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
+	name = "\improper 'Buran' flight controls";
+	network = null;
+	pixel_y = 21
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"UB" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0;
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"UK" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"VD" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_8"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"VK" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Wb" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached2"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Wy" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"WU" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"WW" = (
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Xn" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Xq" = (
+/turf/template_noop,
+/area/template_noop)
+"XT" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Yr" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp27";
+	name = "Buran";
+	opacity = 0
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Yv" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"YD" = (
+/obj/structure/fence,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"YZ" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"Zm" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Zz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/fire{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "T2";
+	name = "Buran";
+	opacity = 0
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+
+(1,1,1) = {"
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+Mo
+Mo
+Mo
+Jd
+Mo
+Mo
+Mo
+Gh
+WW
+uK
+Pr
+Xq
+Xq
+Xq
+"}
+(2,1,1) = {"
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+ft
+YD
+YD
+YD
+ft
+YD
+YD
+YD
+ft
+jN
+uK
+PI
+Xq
+Xq
+Xq
+"}
+(3,1,1) = {"
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+Bk
+sl
+nX
+xM
+VD
+nX
+Jb
+Xn
+Hm
+SV
+vJ
+Gt
+Pr
+Xq
+Xq
+Xq
+"}
+(4,1,1) = {"
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+Nt
+cn
+eF
+Eh
+Td
+nX
+uw
+OJ
+nH
+As
+xK
+Zz
+Sf
+Pr
+Xq
+Xq
+Xq
+"}
+(5,1,1) = {"
+yU
+nA
+IS
+nA
+la
+la
+la
+la
+la
+la
+la
+la
+Nt
+fa
+Jy
+kd
+FG
+nX
+ss
+uw
+Mp
+Sb
+zO
+ge
+zE
+OB
+JG
+Xq
+Xq
+Xq
+"}
+(6,1,1) = {"
+Yr
+Ug
+ih
+Ug
+As
+la
+la
+la
+la
+la
+la
+la
+Nt
+Kr
+NP
+Hs
+cG
+nX
+RG
+Wb
+KX
+KX
+KX
+KX
+Lv
+uQ
+sJ
+Xq
+Xq
+Xq
+"}
+(7,1,1) = {"
+Yr
+fg
+OG
+oL
+jX
+la
+la
+la
+la
+la
+la
+la
+la
+CB
+nj
+nj
+SE
+nX
+WU
+dP
+oX
+gb
+gb
+gb
+gb
+Pc
+Pr
+Xq
+Xq
+Xq
+"}
+(8,1,1) = {"
+JW
+Tn
+TT
+xz
+Yv
+nj
+As
+la
+la
+la
+OJ
+nj
+nj
+YZ
+Yv
+Yv
+Yv
+Qj
+wl
+BU
+uK
+Pr
+Pr
+Pr
+dz
+Pr
+PI
+Xq
+Xq
+Xq
+"}
+(9,1,1) = {"
+nX
+nX
+nX
+Mp
+ym
+Yv
+Yv
+PS
+hK
+nA
+nA
+xz
+ig
+Yv
+Yv
+DO
+Yv
+As
+fL
+im
+mN
+Pr
+Pr
+Pr
+dz
+Pr
+Pr
+Xq
+Xq
+Xq
+"}
+(10,1,1) = {"
+nX
+nX
+Pf
+BM
+xt
+XT
+Yv
+xz
+Rq
+mt
+jU
+OG
+oj
+Yv
+Yv
+Yv
+Yv
+EF
+nX
+nX
+ta
+VK
+VK
+VK
+Sm
+Pr
+Pr
+Xq
+Xq
+Xq
+"}
+(11,1,1) = {"
+FG
+EW
+hP
+nX
+xt
+Yv
+Yv
+ly
+os
+CL
+mk
+Ny
+SN
+kV
+dN
+Yv
+Yv
+Yv
+As
+nX
+Lc
+gb
+gb
+gb
+Pc
+Pr
+PI
+Xq
+Xq
+Xq
+"}
+(12,1,1) = {"
+EW
+Zm
+LD
+BJ
+Yv
+Yv
+Yv
+Lt
+Wy
+CL
+vz
+qM
+xP
+Yv
+Yv
+Yv
+Yv
+Yv
+jX
+eb
+nn
+Pr
+Pr
+Pr
+dz
+Pr
+Pr
+Xq
+Xq
+Xq
+"}
+(13,1,1) = {"
+of
+Zm
+bV
+xt
+Yv
+Yv
+UK
+xz
+xE
+bm
+OG
+OG
+Ry
+Yv
+Yv
+Yv
+Yv
+Yv
+nd
+nX
+nn
+Pr
+Pr
+Pr
+dz
+Pr
+Pr
+Xq
+Xq
+Xq
+"}
+(14,1,1) = {"
+Hu
+bV
+cG
+xt
+Yv
+nd
+nX
+TT
+Tn
+Lp
+Tn
+Tn
+xz
+Yv
+Yv
+Yv
+ym
+jX
+nX
+vn
+BY
+VK
+VK
+VK
+Sm
+Pr
+PI
+Xq
+Xq
+Xq
+"}
+(15,1,1) = {"
+EL
+nX
+nX
+Qc
+nd
+nX
+mM
+mw
+la
+la
+la
+la
+yl
+fA
+kd
+Yv
+Yv
+nd
+nX
+fp
+oX
+gb
+gb
+gb
+Pc
+Pr
+Pr
+Xq
+Xq
+Xq
+"}
+(16,1,1) = {"
+nX
+nX
+mM
+Ho
+mw
+mM
+KC
+la
+la
+la
+la
+la
+eC
+Dd
+UB
+Yv
+nd
+nX
+BE
+zs
+uK
+Pr
+Pr
+Pr
+dz
+Pr
+Pr
+Xq
+Xq
+Xq
+"}
+(17,1,1) = {"
+nX
+nX
+AW
+la
+la
+la
+la
+la
+la
+la
+la
+la
+bz
+MM
+xt
+jX
+nX
+Ou
+HP
+cp
+uK
+Pr
+Pr
+Pr
+dz
+Pr
+Pr
+Xq
+Xq
+Xq
+"}
+(18,1,1) = {"
+dv
+mM
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+la
+pF
+xt
+nd
+nX
+uG
+qD
+cp
+xp
+VK
+VK
+VK
+VK
+VK
+VK
+Xq
+Xq
+Xq
+"}
+(19,1,1) = {"
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+"}
+(20,1,1) = {"
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+"}
+(21,1,1) = {"
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+"}
+(22,1,1) = {"
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+"}
+(23,1,1) = {"
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+"}
+(24,1,1) = {"
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+"}
+(25,1,1) = {"
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+"}
+(26,1,1) = {"
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+"}

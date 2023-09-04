@@ -1,0 +1,5 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "Working Joes no longer get cryo self defense kits"
+  - bugfix: "Cryo self defense kits now have the correct amount of slots"

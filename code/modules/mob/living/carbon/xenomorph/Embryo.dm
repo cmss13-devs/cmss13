@@ -273,14 +273,8 @@
 	// Inform observers to grab some popcorn if it isnt nested
 	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
 		var/area/burst_area = get_area(src)
-		if(burst_area)
-			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
-			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b>"))
-		else
-			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
-			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b>"))
+		var/area_text = burst_area ? " at <b>[burst_area]</b>" : ""
+		notify_ghosts(header = "Burst Imminent", message = "A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b>[area_text]!", source = affected_mob)
 
 	stage = 7 // Begin the autoburst countdown
 

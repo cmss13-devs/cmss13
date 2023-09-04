@@ -1,4 +1,4 @@
 author: "Morrow"
 delete-after: True
 changes:
-  - bugfix: "Fixed pointblanks"
+  - bugfix: "Fixed perma helmet HUDs"

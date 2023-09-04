@@ -194,7 +194,7 @@
 	for(var/datum/ares_ticket/access/access_ticket as anything in tickets_access)
 		var/lock_status = TICKET_OPEN
 		switch(access_ticket.ticket_status)
-			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_REVOKED)
 				lock_status = TICKET_CLOSED
 
 		var/list/current_ticket = list()
@@ -346,6 +346,29 @@
 			admin_interface.deleted_1to1 = conversation.conversation
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "read_deleted"
+
+		if("claim_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			var/claim = TRUE
+			var/assigned = ticket.ticket_assignee
+			if(assigned)
+				if(assigned == MAIN_AI_SYSTEM)
+					var/prompt = tgui_alert(usr, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
+					if(prompt != "Yes")
+						return FALSE
+					/// set ticket back to pending
+					ticket.ticket_assignee = null
+					ticket.ticket_status = TICKET_PENDING
+					return claim
+				var/choice = tgui_alert(usr, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
+				if(choice != "Yes")
+					claim = FALSE
+			if(claim)
+				ticket.ticket_assignee = MAIN_AI_SYSTEM
+				ticket.ticket_status = TICKET_ASSIGNED
+			return claim
 
 		if("auth_access")
 			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])

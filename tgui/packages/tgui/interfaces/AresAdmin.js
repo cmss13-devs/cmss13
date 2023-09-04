@@ -1691,13 +1691,11 @@ const AccessManagement = (props, context) => {
         )}
         {access_tickets.map((ticket, i) => {
           let can_claim = 'Yes';
-          if (ticket.assignee === logged_in) {
-            can_claim = 'No';
-          } else if (ticket.lock_status === 'CLOSED') {
+          if (ticket.lock_status === 'CLOSED') {
             can_claim = 'No';
           }
           let can_update = 'Yes';
-          if (ticket.assignee !== logged_in) {
+          if (ticket.assignee !== 'ARES v3.2') {
             can_update = 'No';
           } else if (ticket.lock_status === 'CLOSED') {
             can_update = 'No';

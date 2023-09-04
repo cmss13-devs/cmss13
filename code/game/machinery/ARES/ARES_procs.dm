@@ -917,6 +917,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			link.waiting_ids += idcard
 			link.tickets_access += access_ticket
 			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
+			message_admins(SPAN_STAFF_IC("[key_name_admin(operator)] created a new ARES Access Ticket."), 1)
 			return TRUE
 
 		if("return_access")

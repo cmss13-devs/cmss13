@@ -353,7 +353,7 @@ const MainMenu = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Access Ticket Management"
+              content="Access Tickets"
               tooltip="View and update access tickets."
               icon="user-tag"
               ml="auto"

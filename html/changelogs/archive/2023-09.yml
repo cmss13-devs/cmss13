@@ -42,3 +42,9 @@
   - imageadd: Moved some of the used sprites out of the unused category in pred_gear.dmi.
   - imagedel: Deleted old relay beacon sprite, deleted duplicate plasma pistol and
       thwei sprites.
+2023-09-04:
+  Morrow:
+  - bugfix: Peri now works for brain damage
+  - bugfix: Brain damage movement will no longer occur while buckled and unconscious
+  Steelpoint:
+  - spellcheck: Box of donuts order from req is now spelt correctly

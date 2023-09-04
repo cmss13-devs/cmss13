@@ -11,6 +11,8 @@
 /mob/living/carbon/xenomorph/defender/langchat_height = 48
 /mob/living/carbon/xenomorph/warrior/langchat_height = 48
 
+/obj/vehicle/multitile/langchat_height = 80
+
 #define LANGCHAT_LONGEST_TEXT 64
 #define LANGCHAT_WIDTH 96
 #define LANGCHAT_X_OFFSET -32

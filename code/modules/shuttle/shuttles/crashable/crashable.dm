@@ -12,7 +12,7 @@
 	if(!crash_land)
 		return
 
-	notify_ghosts(header = "Crashing shuttle!", message = "<b>[name]</b> has catastrophically failed and is crashing at <b>[get_area(destination)]</b>.", source = src, action = NOTIFY_ORBIT)
+	notify_ghosts(header = "Crashing shuttle!", message = "<b>[name]</b> has catastrophically failed and is crashing at <b>[get_area(destination)]</b>.", source = src)
 
 	for(var/area/shuttle_area as anything in shuttle_areas)
 		shuttle_area.flags_alarm_state |= ALARM_WARNING_FIRE

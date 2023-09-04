@@ -194,7 +194,7 @@
 	for(var/datum/ares_ticket/access/access_ticket as anything in tickets_access)
 		var/lock_status = TICKET_OPEN
 		switch(access_ticket.ticket_status)
-			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_REVOKED)
 				lock_status = TICKET_CLOSED
 
 		var/list/current_ticket = list()

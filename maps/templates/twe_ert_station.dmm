@@ -417,7 +417,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "iO" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/surgical_tray,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -490,7 +490,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "jD" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -572,7 +572,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "kO" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/paper_bin/uscm{
 	pixel_y = 7
@@ -1045,7 +1045,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "sP" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/roller,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -1173,7 +1173,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "vR" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/book/manual/marine_law{
 	pixel_x = -3;
 	pixel_y = 1
@@ -1290,7 +1290,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "yW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -1341,7 +1341,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Aa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/device/defibrillator,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -1468,11 +1468,10 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Cm" = (
-/obj/structure/surface/table/almayer,
 /obj/item/handcuffs{
 	pixel_y = 12
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/handcuffs,
 /obj/item/weapon/baton{
 	pixel_x = -12
@@ -1563,7 +1562,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Ei" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -1964,7 +1963,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Mg" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = 30
 	},
@@ -2151,7 +2150,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "OB" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/syringe_case{
 	pixel_x = 3;
 	pixel_y = 3
@@ -2215,7 +2214,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Pl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder{
 	pixel_y = 3
 	},
@@ -2610,7 +2609,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "VA" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/faxmachine/uscm/brig,
 /turf/open/floor/almayer{
@@ -2644,7 +2643,7 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/box/handcuffs{
 	pixel_x = 5;
 	pixel_y = 5
@@ -2657,7 +2656,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "VL" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/clothing/suit/straight_jacket,
 /obj/item/handcuffs{
 	pixel_x = -4;
@@ -2670,7 +2669,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Wa" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp/green{
 	pixel_x = 6
 	},
@@ -2767,7 +2766,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "WD" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/recharger,
 /turf/open/floor/almayer{
@@ -2966,7 +2965,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Zx" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/box/syringes{
 	pixel_x = 4;
 	pixel_y = 6

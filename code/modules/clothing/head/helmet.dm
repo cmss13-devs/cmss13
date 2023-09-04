@@ -494,19 +494,20 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && length(inserted_visors))
-		for(var/obj/item/device/visor as anything in inserted_visors)
+		for(var/obj/item/device/helmet_visor/visor as anything in inserted_visors)
 			visor.forceMove(get_turf(src))
 
 		inserted_visors = list()
 		to_chat(user, SPAN_NOTICE("You remove the inserted visors."))
-		turn_off_visor(user, active_visor, TRUE)
+		var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
+		active_visor = null
+		turn_off_visor(user, temp_visor_holder, TRUE)
 
 		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
 		cycle_action.set_default_overlay()
 		if(!length(built_in_visors))
 			cycle_action.remove_from(user)
 
-		active_visor = null
 		recalculate_visors(user)
 		return
 

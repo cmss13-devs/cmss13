@@ -126,9 +126,10 @@
 		return 0
 
 	if(target_turf && target_turf.signal_loc)
-		var/turf/TT = get_turf(target_turf.signal_loc)
-		if(TT && TT.z)
-			msg_admin_niche("[key_name(usr)] launching Fire Mission '[mission.name]' onto [target_turf.name] at ([TT.x],[TT.y],[TT.z]) [ADMIN_JMP(TT)]")
+		var/turf/actual_targeted_turf = get_turf(target_turf.signal_loc)
+		if(actual_targeted_turf && actual_targeted_turf.z)
+			notify_ghosts(header = "CAS Fire Mission", message = "[usr] is launching Fire Mission '[mission.name]' at [get_area(actual_targeted_turf)]", source = actual_targeted_turf)
+			msg_admin_niche("[key_name(usr)] launching Fire Mission '[mission.name]' onto [target_turf.name] at ([actual_targeted_turf.x],[actual_targeted_turf.y],[actual_targeted_turf.z]) [ADMIN_JMP(actual_targeted_turf)]")
 	//actual firemission code
 	execute_firemission_unsafe(target_turf, offset, dir, mission)
 	return 1

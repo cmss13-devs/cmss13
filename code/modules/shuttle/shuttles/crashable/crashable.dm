@@ -12,6 +12,8 @@
 	if(!crash_land)
 		return
 
+	notify_ghosts(header = "Crashing shuttle!", message = "<b>[name]</b> has catastrophically failed and is crashing at <b>[get_area(destination)]</b>.", source = src, action = NOTIFY_ORBIT)
+
 	for(var/area/shuttle_area as anything in shuttle_areas)
 		shuttle_area.flags_alarm_state |= ALARM_WARNING_FIRE
 		shuttle_area.updateicon()
@@ -78,24 +80,24 @@
 
 		var/turf/turf_picked = pick(potential_turfs)
 
-		var/obj/docking_port/stationary/crashable/temp_escape_pod_port = new(turf_picked)
-		temp_escape_pod_port.width = width
-		temp_escape_pod_port.height = height
-		temp_escape_pod_port.id = id
+		var/obj/docking_port/stationary/crashable/temp_crashable_port = new(turf_picked)
+		temp_crashable_port.width = width
+		temp_crashable_port.height = height
+		temp_crashable_port.id = id
 
-		if(!check_crash_point(temp_escape_pod_port))
-			qdel(temp_escape_pod_port)
+		if(!check_crash_point(temp_crashable_port))
+			qdel(temp_crashable_port)
 			continue
 
-		destination = temp_escape_pod_port
+		destination = temp_crashable_port
 		break
 
 	if(destination)
 		crash_land = TRUE
 
 /// Checks for anything that may get in the way of a crash, returns FALSE if there is something in the way or is out of bounds
-/obj/docking_port/mobile/crashable/proc/check_crash_point(obj/docking_port/stationary/crashable/checked_escape_pod_port)
-	for(var/turf/found_turf as anything in checked_escape_pod_port.return_turfs())
+/obj/docking_port/mobile/crashable/proc/check_crash_point(obj/docking_port/stationary/crashable/checked_crashable_port)
+	for(var/turf/found_turf as anything in checked_crashable_port.return_turfs())
 		var/area/found_area = get_area(found_turf)
 		if(found_area.flags_area & AREA_NOTUNNEL)
 			return FALSE
@@ -109,6 +111,20 @@
 				return FALSE
 
 		if(istype(found_turf, /turf/closed/shuttle))
+			return FALSE
+
+	for(var/obj/docking_port/stationary/stationary_dock in get_turf(checked_crashable_port))
+		if(stationary_dock != checked_crashable_port)
+			return FALSE
+
+	for(var/obj/docking_port/mobile/cycled_mobile_port as anything in SSshuttle.mobile)
+		if(cycled_mobile_port == src)
+			continue
+
+		if(!cycled_mobile_port.destination)
+			continue
+
+		if(length(checked_crashable_port.return_turfs() & cycled_mobile_port.destination.return_turfs()))
 			return FALSE
 
 	return TRUE
@@ -147,7 +163,7 @@
 	return
 
 /obj/docking_port/stationary/crashable
-	name = "Crash Escape Pod Dock"
+	name = "Crashable Dock"
 
 /obj/docking_port/stationary/crashable/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()

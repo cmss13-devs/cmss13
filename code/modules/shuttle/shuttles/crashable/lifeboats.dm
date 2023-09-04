@@ -51,7 +51,10 @@
 /obj/docking_port/mobile/crashable/lifeboat/crash_check()
 	. = ..()
 
-	if(prob(abs(((world.time - EvacuationAuthority.evac_time) / EVACUATION_AUTOMATIC_DEPARTURE) - 1)))
+	if(EvacuationAuthority.evac_status >= EVACUATION_STATUS_IN_PROGRESS)
+		return FALSE
+
+	if(prob(abs(((world.time - EvacuationAuthority.evac_time) / EVACUATION_AUTOMATIC_DEPARTURE) - 1) * 100))
 		return TRUE
 
 /obj/docking_port/mobile/crashable/lifeboat/open_doors()

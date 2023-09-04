@@ -35,6 +35,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	/// Working Joe stuff
 	var/list/tickets_maintenance = list()
 	var/list/tickets_access = list()
+	var/list/waiting_ids = list()
+	var/list/active_ids = list()
 
 /datum/ares_link/New()
 	admin_interface = new
@@ -1016,3 +1018,24 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)
+
+/obj/item/card/id/proc/handle_ares_access(logged_in, mob/user)
+	var/announce_text = "[logged_in] revoked core access from [registered_name]'s ID card."
+	var/operator = key_name(user)
+	var/datum/ares_link/link = GLOB.ares_link
+	if(logged_in == MAIN_AI_SYSTEM)
+		operator = "[user.ckey]/([MAIN_AI_SYSTEM])"
+	if(ACCESS_MARINE_AI_TEMP in access)
+		access -= ACCESS_MARINE_AI_TEMP
+		link.active_ids -= src
+		modification_log += "Temporary AI access revoked by [operator]"
+		to_chat(user, SPAN_NOTICE("Access revoked from [registered_name]."))
+	else
+		access += ACCESS_MARINE_AI_TEMP
+		modification_log += "Temporary AI access granted by [operator]"
+		announce_text = "[logged_in] granted core access to [registered_name]'s ID card."
+		to_chat(user, SPAN_NOTICE("Access granted to [registered_name]."))
+		link.waiting_ids -= src
+		link.active_ids += src
+	ares_apollo_talk(announce_text)
+	return TRUE

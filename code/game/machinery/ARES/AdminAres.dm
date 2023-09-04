@@ -190,6 +190,27 @@
 	data["active_ref"] = active_ref
 	data["conversations"] = logged_convos
 
+	var/list/logged_access = list()
+	for(var/datum/ares_ticket/access/access_ticket as anything in tickets_access)
+		var/lock_status = TICKET_OPEN
+		switch(access_ticket.ticket_status)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
+				lock_status = TICKET_CLOSED
+
+		var/list/current_ticket = list()
+		current_ticket["id"] = access_ticket.ticket_id
+		current_ticket["time"] = access_ticket.ticket_time
+		current_ticket["priority_status"] = access_ticket.ticket_priority
+		current_ticket["title"] = access_ticket.ticket_name
+		current_ticket["details"] = access_ticket.ticket_details
+		current_ticket["status"] = access_ticket.ticket_status
+		current_ticket["submitter"] = access_ticket.ticket_submitter
+		current_ticket["assignee"] = access_ticket.ticket_assignee
+		current_ticket["lock_status"] = lock_status
+		current_ticket["ref"] = "\ref[access_ticket]"
+		logged_access += list(current_ticket)
+	data["access_tickets"] = logged_access
+
 	return data
 
 
@@ -285,6 +306,9 @@
 		if("page_deleted_1to1")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "deleted_talks"
+		if("page_access_management")
+			admin_interface.last_menu = admin_interface.current_menu
+			admin_interface.current_menu = "access_management"
 
 		// -- 1:1 Conversation -- //
 		if("new_conversation")
@@ -322,3 +346,27 @@
 			admin_interface.deleted_1to1 = conversation.conversation
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "read_deleted"
+
+		if("auth_access")
+			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
+			if(!access_ticket)
+				return FALSE
+			for(var/obj/item/card/id/identification in waiting_ids)
+				if(!istype(identification))
+					continue
+				if(identification.registered_gid != access_ticket.user_id_num)
+					continue
+				identification.handle_ares_access(MAIN_AI_SYSTEM, user)
+				access_ticket.ticket_status = TICKET_GRANTED
+				playsound(src, 'sound/machines/chime.ogg', 15, 1)
+				return TRUE
+			for(var/obj/item/card/id/identification in active_ids)
+				if(!istype(identification))
+					continue
+				if(identification.registered_gid != access_ticket.user_id_num)
+					continue
+				identification.handle_ares_access(MAIN_AI_SYSTEM, user)
+				access_ticket.ticket_status = TICKET_REVOKED
+				playsound(src, 'sound/machines/chime.ogg', 15, 1)
+				return TRUE
+			return FALSE

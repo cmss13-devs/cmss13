@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Fixes UPP/CLF access to antag vendors."
-  - rscadd: "Adds faction specific accesses to TWE and UPP representatives."
-  - rscdel: "Removes pirate access from Press and Corp. Liaison."

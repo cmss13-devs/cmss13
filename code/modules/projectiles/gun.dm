@@ -1924,6 +1924,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
 	fa_firing = auto
 
-/// Returns gun_user
+/// Getter for gun_user
 /obj/item/weapon/gun/proc/get_gun_user()
 	return gun_user

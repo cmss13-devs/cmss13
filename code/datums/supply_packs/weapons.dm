@@ -120,7 +120,7 @@
 	containername = "\improper XM88 Heavy Rifle crate"
 	group = "Weapons"
 
-/*
+/* Uncomment me if it's decided to let the m707 be purchasable through req
 /datum/supply_packs/gun/m707
 	name = "M707 Anti-Materiel Rifle crate (M707 x1)"
 	contains = list()

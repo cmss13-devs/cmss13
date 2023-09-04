@@ -1201,6 +1201,7 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_GUN_VULTURE_FIRED_ONEHAND, PROC_REF(on_onehand))
 
+/// Handler for when the user one-hands the firing gun
 /obj/item/projectile/vulture/proc/on_onehand(datum/source)
 	SIGNAL_HANDLER
 

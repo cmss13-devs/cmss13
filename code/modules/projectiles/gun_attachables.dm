@@ -1210,7 +1210,6 @@ Defined in conflicts.dm of the #defines folder.
 		ui.open()
 
 /obj/item/attachable/vulture_scope/ui_state(mob/user)
-	//return GLOB.deep_inventory_state
 	return GLOB.not_incapacitated_state
 
 /obj/item/attachable/vulture_scope/ui_data(mob/user)
@@ -1279,6 +1278,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(scope_element && prob(get_scope_drift_chance())) //every 6 seconds when unspotted, on average
 		scope_drift()
 
+/// Returns a number between 0 and 100 for the chance of the scope drifting on process()
 /obj/item/attachable/vulture_scope/proc/get_scope_drift_chance()
 	if(!scope_drift || holding_breath)
 		return 0
@@ -1289,6 +1289,7 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		return unspotted_drift_chance
 
+/// Returns how many deciseconds until the gun is able to fire again
 /obj/item/attachable/vulture_scope/proc/get_time_to_fire()
 	if(!istype(loc, /obj/item/weapon/gun/boltaction/vulture))
 		return 0
@@ -1313,11 +1314,6 @@ Defined in conflicts.dm of the #defines folder.
 			to_chat(user, SPAN_WARNING("You must have a deployed bipod to use [src]."))
 			return FALSE
 
-		/*if(MODE_HAS_FLAG(MODE_FACTION_CLASH) && !ignore_clash_fog) // This gun is completely unusable without being scoped
-			if(user)
-				to_chat(user, SPAN_DANGER("You peer into [src], but it seems to have fogged up. You can't use this!"))
-			return FALSE*/
-
 		on_scope()
 	return TRUE
 
@@ -1335,13 +1331,13 @@ Defined in conflicts.dm of the #defines folder.
 
 	return possible_dirs
 
+/// Gets a list of valid directions to be able to adjust the reticle in
 /obj/item/attachable/vulture_scope/proc/get_adjust_dirs()
 	if(!scoping)
 		return list()
 	var/list/possible_dirs = alldirs.Copy()
 	var/turf/current_turf = get_turf(src)
 	var/turf/scope_tile = locate(scope_x, scope_y, current_turf.z)
-	//var/user_dir = get_dir(current_turf, scope_tile)
 	var/mob/scoper = scope_user.resolve()
 	if(!scoper)
 		return list()
@@ -1370,6 +1366,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	return possible_dirs
 
+/// Adjusts the position of the reticle by a tile in a given direction
 /obj/item/attachable/vulture_scope/proc/adjust_offset(direction = NORTH)
 	var/old_x = scope_offset_x
 	var/old_y = scope_offset_y
@@ -1385,6 +1382,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	recalculate_scope_offset(old_x, old_y)
 
+/// Adjusts the position of the scope by a tile in a given direction
 /obj/item/attachable/vulture_scope/proc/adjust_position(direction = NORTH)
 	var/perpendicular_axis = "x"
 	var/mob/user = scope_user.resolve()
@@ -1409,12 +1407,12 @@ Defined in conflicts.dm of the #defines folder.
 
 	recalculate_scope_pos()
 
+/// Figures out which direction the scope should move based on user direction and their input
 /obj/item/attachable/vulture_scope/proc/axis_math(mob/user, perpendicular_axis = "x", modifying_axis = "x", direction = NORTH)
 	var/turf/user_turf = get_turf(user)
 	var/inverse = FALSE
-	//if(get_dir(user, locate(scope_x, scope_y, user_turf.z)) == REVERSE_DIR(direction))
 	if((user.dir == SOUTH) || (user.dir == WEST))
-		inverse = TRUE //inverse is breaking shit figure it out later
+		inverse = TRUE
 	var/user_offset
 	if(modifying_axis == "x")
 		user_offset = scope_x - user_turf.x
@@ -1423,12 +1421,12 @@ Defined in conflicts.dm of the #defines folder.
 		user_offset = scope_y - user_turf.y
 
 	if(perpendicular_axis == modifying_axis)
-		return clamp(user_offset, -perpendicular_scope_range, perpendicular_scope_range) //consider inverse here
+		return clamp(user_offset, -perpendicular_scope_range, perpendicular_scope_range)
 
 	else
 		return clamp(abs(user_offset), min_scope_range, max_scope_range) * (inverse ? -1 : 1)
 
-
+/// Recalculates where the reticle should be inside the scope
 /obj/item/attachable/vulture_scope/proc/recalculate_scope_offset(old_x = 0, old_y = 0)
 	var/mob/scoper = scope_user.resolve()
 	if(!scoper.client)
@@ -1438,6 +1436,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/y_to_set = (scope_offset_y >= 0 ? "+" : "") + "[scope_offset_y]"
 	scope_element.screen_loc = "CENTER[x_to_set],CENTER[y_to_set]"
 
+/// Recalculates where the scope should be in relation to the user
 /obj/item/attachable/vulture_scope/proc/recalculate_scope_pos()
 	if(!scope_user)
 		return
@@ -1449,13 +1448,14 @@ Defined in conflicts.dm of the #defines folder.
 	if(!scoper.client)
 		return
 
-	if(scoping) //this might be really fragile
+	if(scoping)
 		scoper.client.pixel_x = x_off * pixels_per_tile
 		scoper.client.pixel_y = y_off * pixels_per_tile
 	else
 		scoper.client.pixel_x = 0
 		scoper.client.pixel_y = 0
 
+/// Handler for when the user begins scoping
 /obj/item/attachable/vulture_scope/proc/on_scope()
 	var/turf/gun_turf = get_turf(src)
 	scope_x = gun_turf.x
@@ -1500,6 +1500,7 @@ Defined in conflicts.dm of the #defines folder.
 	RegisterSignal(gun_user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(on_mob_move_look))
 	RegisterSignal(gun_user.client, COMSIG_PARENT_QDELETING, PROC_REF(on_unscope))
 
+/// Handler for when the scope is deleted, dropped, etc.
 /obj/item/attachable/vulture_scope/proc/on_unscope()
 	SIGNAL_HANDLER
 	if(!scope_user)
@@ -1528,12 +1529,14 @@ Defined in conflicts.dm of the #defines folder.
 		scoper.client.pixel_x = 0
 		scoper.client.pixel_y = 0
 
+/// Handler for if the mob moves or changes look direction
 /obj/item/attachable/vulture_scope/proc/on_mob_move_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(actually_moving || (mover.dir != scope_user_initial_dir))
 		on_unscope()
 
+/// Causes the scope to drift in a random direction by 1 tile
 /obj/item/attachable/vulture_scope/proc/scope_drift(forced_dir)
 	var/dir_picked
 	if(!forced_dir)
@@ -1543,6 +1546,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	adjust_offset(dir_picked)
 
+/// Returns the turf that the sniper scope + reticle is currently focused on
 /obj/item/attachable/vulture_scope/proc/get_viewed_turf()
 	RETURN_TYPE(/turf)
 	if(!scoping)
@@ -1550,6 +1554,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/turf/gun_turf = get_turf(src)
 	return locate(scope_x + scope_offset_x, scope_y + scope_offset_y, gun_turf.z)
 
+/// Lets the user start holding their breath, stopping gun sway for a short time
 /obj/item/attachable/vulture_scope/proc/hold_breath()
 	if(!scope_user)
 		return
@@ -1570,6 +1575,7 @@ Defined in conflicts.dm of the #defines folder.
 	sleep(breath_time * 0.25)
 	scope_element.icon_state = "vulture_steady_1"
 
+/// Stops the user from holding their breath, starting the cooldown
 /obj/item/attachable/vulture_scope/proc/stop_holding_breath()
 	if(!scope_user || !holding_breath)
 		return
@@ -1580,6 +1586,7 @@ Defined in conflicts.dm of the #defines folder.
 	scope_element.icon_state = "vulture_unsteady"
 	COOLDOWN_START(src, hold_breath_cd, breath_cooldown_time)
 
+/// Returns a % of how much time until the user can still their breath again
 /obj/item/attachable/vulture_scope/proc/get_breath_recharge()
 	return 1 - (COOLDOWN_TIMELEFT(src, hold_breath_cd) / breath_cooldown_time)
 

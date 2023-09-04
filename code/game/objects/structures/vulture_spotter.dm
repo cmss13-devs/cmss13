@@ -115,6 +115,7 @@
 		return TRUE
 	return ..()
 
+/// Rotates the tripod 90* counter-clockwise
 /obj/structure/vulture_spotter_tripod/proc/rotate(mob/user)
 	if(scope_using)
 		to_chat(user, SPAN_WARNING("You can't rotate [src] while someone is using it!"))
@@ -125,6 +126,7 @@
 	setDir(turn(dir, -90))
 	update_pixels(TRUE)
 
+/// Updates the direction the operator should be facing, and their pixel offset
 /obj/structure/vulture_spotter_tripod/proc/update_pixels(mounting = TRUE)
 	if(!scope_user)
 		return
@@ -149,6 +151,7 @@
 		user.pixel_x = 0
 		user.pixel_y = 0
 
+/// Handler for when the scope is being attached to the tripod
 /obj/structure/vulture_spotter_tripod/proc/on_scope_attach(mob/user, obj/structure/vulture_spotter_tripod/scope)
 	if(scope_attached)
 		return
@@ -161,6 +164,7 @@
 	desc = initial(desc)
 	qdel(scope)
 
+/// Handler for when the scope is being detached from the tripod by screwdriver
 /obj/structure/vulture_spotter_tripod/proc/on_screwdriver(mob/user)
 	if(!scope_attached)
 		to_chat(user, SPAN_NOTICE("You don't need a screwdriver to pick this up!"))
@@ -172,12 +176,14 @@
 	desc = initial(desc) + " Though, it doesn't seem to have one attached yet."
 	new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
 
+/// Handler for user folding up the tripod, picking it up
 /obj/structure/vulture_spotter_tripod/proc/fold_up(mob/user)
 	user.visible_message(SPAN_NOTICE("[user] folds up [src]."), SPAN_NOTICE("You fold up [src]."))
 	var/obj/item/device/vulture_spotter_tripod/tripod = new(get_turf(src))
 	user.put_in_hands(tripod, TRUE)
 	qdel(src)
 
+/// Checks if the user is able to use the scope, uses it if so
 /obj/structure/vulture_spotter_tripod/proc/try_scope(mob/living/carbon/human/user)
 	if(!user.client)
 		return
@@ -200,6 +206,7 @@
 
 	user.set_interaction(src)
 
+/// Handler for when the user should be unscoping
 /obj/structure/vulture_spotter_tripod/proc/do_unscope()
 	SIGNAL_HANDLER
 
@@ -209,6 +216,7 @@
 	var/mob/user = scope_user.resolve()
 	user.unset_interaction()
 
+/// Unscopes the user, cleaning up everything related
 /obj/structure/vulture_spotter_tripod/proc/unscope()
 	SIGNAL_HANDLER
 	if(scope_user)
@@ -234,6 +242,7 @@
 
 	QDEL_NULL(unscope_action)
 
+/// Sets the scope's sight location to the same as the sniper's
 /obj/structure/vulture_spotter_tripod/proc/set_scope_loc(mob/living/carbon/human/user, obj/item/attachable/vulture_scope/scope)
 	if(!user.client || !scope)
 		return
@@ -246,6 +255,7 @@
 	user.client.pixel_x = x_off * pixels_per_tile
 	user.client.pixel_y = y_off * pixels_per_tile
 
+/// Handler for when the vulture spotter scope moves
 /obj/structure/vulture_spotter_tripod/proc/on_vulture_move(datum/source)
 	SIGNAL_HANDLER
 	if(!scope_user)
@@ -253,6 +263,7 @@
 
 	set_scope_loc(scope_user.resolve(), get_vulture_scope())
 
+/// Handler for when the sniper unscopes
 /obj/structure/vulture_spotter_tripod/proc/on_vulture_unscope(datum/source)
 	SIGNAL_HANDLER
 	if(!scope_user)
@@ -263,6 +274,7 @@
 	to_chat(user, SPAN_WARNING("[src]'s sight disengages as the linked rifle unscopes."))
 	unscope()
 
+/// Getter for the vulture scope on the sniper
 /obj/structure/vulture_spotter_tripod/proc/get_vulture_scope()
 	RETURN_TYPE(/obj/item/attachable/vulture_scope)
 	if(!bound_rifle)

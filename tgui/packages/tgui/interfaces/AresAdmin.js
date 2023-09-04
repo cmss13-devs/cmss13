@@ -17,9 +17,9 @@ const PAGES = {
   'read_deleted': () => ReadingTalks,
   'security': () => Security,
   'requisitions': () => Requisitions,
-  'antiair': () => AntiAir,
   'emergency': () => Emergency,
   'admin_access_log': () => AdminAccessLogs,
+  'access_management': () => AccessManagement,
 };
 
 export const AresAdmin = (props, context) => {
@@ -343,12 +343,24 @@ const MainMenu = (props, context) => {
             <Button
               content="Remote Access Log"
               tooltip="View which admins have been using ARES."
-              icon="users"
+              icon="user-secret"
               ml="auto"
               px="2rem"
               width="25vw"
               bold
               onClick={() => act('page_admin_list')}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="Access Ticket Management"
+              tooltip="View and update access tickets."
+              icon="user-tag"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_access_management')}
             />
           </Stack.Item>
         </Stack>
@@ -1601,6 +1613,162 @@ const AdminAccessLogs = (props, context) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold>{login}</Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const AccessManagement = (props, context) => {
+  const { data, act } = useBackend(context);
+  const { logged_in, access_text, last_page, current_menu, access_tickets } =
+    data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Access Ticket Management</h1>
+        {!!access_tickets.length && (
+          <Flex
+            mt="2rem"
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
+              ID
+            </Flex.Item>
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="8rem" mr="1rem" bold>
+              Submitter
+            </Flex.Item>
+            <Flex.Item width="8rem" mr="1rem" bold>
+              For
+            </Flex.Item>
+            <Flex.Item width="30rem" bold>
+              Reason
+            </Flex.Item>
+          </Flex>
+        )}
+        {access_tickets.map((ticket, i) => {
+          let can_claim = 'Yes';
+          if (ticket.assignee === logged_in) {
+            can_claim = 'No';
+          } else if (ticket.lock_status === 'CLOSED') {
+            can_claim = 'No';
+          }
+          let can_update = 'Yes';
+          if (ticket.assignee !== logged_in) {
+            can_update = 'No';
+          } else if (ticket.lock_status === 'CLOSED') {
+            can_update = 'No';
+          }
+          let view_status = 'Ticket is pending assignment.';
+          let view_icon = 'circle-question';
+          let update_tooltip = 'Update Access';
+          if (ticket.status === 'assigned') {
+            view_status = 'Ticket is assigned.';
+            view_icon = 'circle-plus';
+            update_tooltip = 'Grant Access';
+          } else if (ticket.status === 'rejected') {
+            view_status = 'Ticket has been rejected.';
+            view_icon = 'circle-xmark';
+          } else if (ticket.status === 'cancelled') {
+            view_status = 'Ticket was cancelled by reporter.';
+            view_icon = 'circle-stop';
+          } else if (ticket.status === 'granted') {
+            view_status = 'Access ticket has been granted.';
+            view_icon = 'circle-check';
+            update_tooltip = 'Revoke Access';
+          } else if (ticket.status === 'revoked') {
+            view_status = 'Access ticket has been revoked.';
+            view_icon = 'circle-minus';
+            update_tooltip = 'Access revoked. No further changes possible.';
+          } else if (ticket.status === 'returned') {
+            view_status = 'Access ticket has been returned.';
+            view_icon = 'circle-minus';
+            update_tooltip =
+              'Access self-returned. No further changes possible.';
+          }
+
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              {!!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold color="red">
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              {!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold>
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              <Flex.Item italic width="6rem" shrink="0" mr="1rem">
+                {ticket.time}
+              </Flex.Item>
+              <Flex.Item width="8rem" mr="1rem">
+                {ticket.submitter}
+              </Flex.Item>
+              <Flex.Item width="8rem" mr="1rem">
+                {ticket.title}
+              </Flex.Item>
+              <Flex.Item width="30rem" shrink="0" textAlign="left">
+                {ticket.details}
+              </Flex.Item>
+              <Flex.Item ml="1rem">
+                <Button icon={view_icon} tooltip={view_status} />
+                <Button.Confirm
+                  icon="user-lock"
+                  tooltip="Claim Ticket"
+                  disabled={can_claim === 'No'}
+                  onClick={() => act('claim_ticket', { ticket: ticket.ref })}
+                />
+                <Button.Confirm
+                  icon="user-gear"
+                  tooltip={update_tooltip}
+                  disabled={can_update === 'No'}
+                  onClick={() => act('auth_access', { ticket: ticket.ref })}
+                />
+              </Flex.Item>
             </Flex>
           );
         })}

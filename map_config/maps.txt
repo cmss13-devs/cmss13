@@ -17,7 +17,6 @@ map lv624
 endmap
 
 map bigredv2
-	disabled
 endmap
 
 map prison_station_fop

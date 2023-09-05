@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Added a ghost notification for Acid Runner For the Hive! ability."

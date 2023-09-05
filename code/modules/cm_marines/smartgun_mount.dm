@@ -654,10 +654,10 @@
 	update_health(severity)
 	return
 
-/obj/structure/machinery/m56d_hmg/proc/exit_interaction(mob/user)
+/obj/structure/machinery/m56d_hmg/proc/exit_interaction()
 	SIGNAL_HANDLER
 
-	user.unset_interaction()
+	operator.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/proc/update_damage_state()
 	var/health_percent = round(health/health_max * 100)
@@ -848,8 +848,7 @@
 			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
-	RegisterSignal(user, COMSIG_MOB_RESISTED, PROC_REF(exit_interaction))
-	RegisterSignal(user, COMSIG_MOB_MG_EXIT, PROC_REF(exit_interaction))
+	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_MOB_KNOCKED_DOWN), PROC_REF(exit_interaction))
 	flags_atom |= RELAY_CLICK
 	user.status_flags |= IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))

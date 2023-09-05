@@ -1,4 +1,0 @@
-author: "RenaRenaRe"
-delete-after: True
-changes:
-  - bugfix: "Hugger and Lesser Drone ghosts now actually bypass time of death checks for the larva queue."

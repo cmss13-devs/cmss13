@@ -52,8 +52,30 @@
   Ben10083:
   - admin: New toggleable flag added to bypass restrictions for Working Joe spawns
       as observer (excluding whitelist requirement)
+  Fray2:
+  - rscadd: Added something
+  - rscdel: Removed old things
+  - qol: made something easier to use
+  - balance: rebalanced something
+  - bugfix: fixed a few things
+  - spellcheck: fixed a few typos
+  - ui: changed something relating to user interfaces
+  - code_imp: changed some code
+  - refactor: refactored some code
+  - soundadd: added a new sound thingy
+  - sounddel: removed an old sound thingy
+  - imageadd: added some icons and images
+  - imagedel: deleted some icons and images
+  - mapadd: added a new map or section to a map
+  - maptweak: tweaked a map
+  - config: changed some config setting
+  - admin: messed with admin stuff
+  - server: something server ops should know
   Morrow:
   - bugfix: Fixed perma helmet HUDs
+  RenaRenaRe:
+  - bugfix: Hugger and Lesser Drone ghosts now actually bypass time of death checks
+      for the larva queue.
   Steelpoint:
   - rscadd: Synthetic vendors now have the option to vend several helmets and a riot
       visor. Including a standard M10 helmet defaulted to non-camo grey.

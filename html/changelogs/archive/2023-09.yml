@@ -1,0 +1,64 @@
+2023-09-01:
+  ClairionCM:
+  - bugfix: Fixes an infinite flare bug
+  Huffie56:
+  - refactor: clean dmi file extract sprite hidden inside other sprites direction.
+      removing sprite change from dmm files.
+  - bugfix: fix seing decimal in clothing vendor surplus.
+  - mapadd: adding an an access to the exterior side of each lifeboats.
+  JackieEstegado:
+  - qol: Added in-hand activation for machetes, which will cause one to start cutting
+      vines and grass on the tile directly in-front.
+  Morrow:
+  - bugfix: Fixed lesser drone counts on pylons/cores
+  Private Tristan:
+  - qol: Researchers now spawn with reagent scanner goggles.
+  Steelpoint:
+  - bugfix: UPP survivors no longer have a small chance to accidently spawn with no
+      armour or external webbing.
+  - maptweak: Hidden floor safe in LV-624 is now positioned correctly.
+  harryob:
+  - rscdel: removed the hallucinating ghost notification
+2023-09-02:
+  BeagleGaming1:
+  - code_imp: changed camouflage from map definitions to JSON
+  realforest2001:
+  - rscadd: Added a Provost radio & channel.
+  - qol: Changed High Command radio to have most channels off by default.
+  - rscdel: Removed ignore_z from High Command radios.
+2023-09-03:
+  Katskan:
+  - balance: Merged vision toggle options between ship and colony synthetic types.
+  - balance: Removed 15 points from WY experimental tool vendor coin redemption
+  Morrow:
+  - bugfix: Fixed most of the camo items being clown gear
+  realforest2001:
+  - rscadd: Added a preference for using the old legacy yautja armor, only accessible
+      to the people who had the special gear.
+  - bugfix: Fixed the old Yautja Legacy armor selection code. Removed the unique titles
+      from the legacy gear however.
+  - imageadd: Changed the Yautja relay beacon sprite to a newer unused sprite. Changed
+      iconstate name of health scanner for preds from tracker to scanner.
+  - imageadd: Moved some of the used sprites out of the unused category in pred_gear.dmi.
+  - imagedel: Deleted old relay beacon sprite, deleted duplicate plasma pistol and
+      thwei sprites.
+2023-09-04:
+  Morrow:
+  - bugfix: Peri now works for brain damage
+  - bugfix: Brain damage movement will no longer occur while buckled and unconscious
+  Steelpoint:
+  - spellcheck: Box of donuts order from req is now spelt correctly
+2023-09-05:
+  Ben10083:
+  - admin: New toggleable flag added to bypass restrictions for Working Joe spawns
+      as observer (excluding whitelist requirement)
+  Morrow:
+  - bugfix: Fixed perma helmet HUDs
+  Steelpoint:
+  - rscadd: Synthetic vendors now have the option to vend several helmets and a riot
+      visor. Including a standard M10 helmet defaulted to non-camo grey.
+  VileBeggar:
+  - balance: The M39 foldable stock no longer inflicts debuffs when folded.
+  Zonespace27:
+  - bugfix: Working Joes no longer get cryo self defense kits
+  - bugfix: Cryo self defense kits now have the correct amount of slots

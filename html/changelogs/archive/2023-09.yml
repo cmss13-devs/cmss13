@@ -48,3 +48,17 @@
   - bugfix: Brain damage movement will no longer occur while buckled and unconscious
   Steelpoint:
   - spellcheck: Box of donuts order from req is now spelt correctly
+2023-09-05:
+  Ben10083:
+  - admin: New toggleable flag added to bypass restrictions for Working Joe spawns
+      as observer (excluding whitelist requirement)
+  Morrow:
+  - bugfix: Fixed perma helmet HUDs
+  Steelpoint:
+  - rscadd: Synthetic vendors now have the option to vend several helmets and a riot
+      visor. Including a standard M10 helmet defaulted to non-camo grey.
+  VileBeggar:
+  - balance: The M39 foldable stock no longer inflicts debuffs when folded.
+  Zonespace27:
+  - bugfix: Working Joes no longer get cryo self defense kits
+  - bugfix: Cryo self defense kits now have the correct amount of slots

@@ -1,4 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - admin: "New toggleable flag added to bypass restrictions for Working Joe spawns as observer (excluding whitelist requirement)"

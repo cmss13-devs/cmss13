@@ -484,8 +484,8 @@
 	var/display_ammo = TRUE
 	/// How many degrees in each direction the gun should be able to fire
 	var/shoot_degree = 80
-	/// a
-	var/semi_cooldown_time = 0.2 SECONDS
+	/// How long between semi-auto shots this should wait, to reduce possible spam
+	var/semiauto_fire_cooldown = 0.2 SECONDS
 
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user)
 	. = ..()

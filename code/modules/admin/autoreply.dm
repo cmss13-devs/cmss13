@@ -9,6 +9,10 @@ GLOBAL_REFERENCE_LIST_INDEXED(adminreplies, /datum/autoreply/admin, title)
 	var/closer = TRUE
 
 /// Admin Replies
+/datum/autoreply/admin/regurgitate
+	title = "Проглатывание За Ксеноморфа"
+	message = "Проглатывание живых существ способствует их быстрой транспортировке к яйцам. Для того, чтобы проглотить жертву, схватите ее (CTRL+Click) и затем нажмите на себя. Для того, чтобы срыгнуть жертву, нажмите кнопку 'Regurgitate' на интерфейсе слева вверху. Держать людей в себе можно в течении минуты, после которой вы их срыгнете, а жертве расплавит случайную конечность."
+
 /datum/autoreply/admin/handled
 	title = "Being Handled"
 	message = "Staff are aware of this issue and it is being handled"

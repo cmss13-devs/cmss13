@@ -1720,3 +1720,176 @@
 
 /atom/movable/marine_light
 	light_system = DIRECTIONAL_LIGHT
+
+//CBRN
+/obj/item/clothing/suit/storage/marine/m3cr
+	name = "\improper M3CR armor"
+	desc = "A chemically resistant boilersuit typically used by CBRN marines, it has a built in hood and gasmask."
+	icon_state = "cbrn"
+	item_state = "cbrn"
+	slowdown = SLOWDOWN_ARMOR_HEAVY
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	fire_intensity_resistance = BURN_LEVEL_TIER_1
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_marine_armor = ARMOR_LAMP_OVERLAY
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_inventory = BLOCKSHARPOBJ
+	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/toggle_m3cr_hood)
+	///Whether the hood and gas mask were worn through the hood toggle verb
+	var/hood_enabled = FALSE
+	///Whether enabling the hood protects you from fire
+	var/supports_fire_protection = TRUE
+	///Typepath of the attached hood
+	var/hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood
+	///Typepath of the attached mask
+	var/mask_type = /obj/item/clothing/mask/gas/cbrn
+	///The head clothing that the suit uses as a hood
+	var/obj/item/clothing/head/linked_hood = null
+	///The face clothing that the suit uses as a mask
+	var/obj/item/clothing/mask/linked_mask = null
+
+/obj/item/clothing/suit/storage/marine/m3cr/Initialize()
+	. = ..()
+	linked_hood = new hood_type(src)
+	linked_mask = new mask_type(src)
+
+/obj/item/clothing/suit/storage/marine/m3cr/verb/hood_toggle()
+	set name = "Toggle Hood"
+	set desc = "Pull your hood and gasmask up over your face and head."
+	set src in usr
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+
+	if(user.wear_suit != src)
+		to_chat(user, SPAN_WARNING("You must be wearing [src] to put on [linked_hood] and [linked_mask] attached to it!"))
+		return
+
+	if(!linked_hood)
+		to_chat(SPAN_BOLDWARNING("You are missing a linked_hood! This should not be possible."))
+		CRASH("[user] attempted to toggle hood on [src] that was missing a linked_hood.")
+	if(!linked_mask)
+		to_chat(SPAN_BOLDWARNING("You are missing a linked_mask! This should not be possible."))
+		CRASH("[user] attempted to toggle hood on [src] that was missing a linked_hood.")
+
+	playsound(user.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+	if(hood_enabled)
+		disable_hood(user)
+		return
+	enable_hood(user)
+
+/obj/item/clothing/suit/storage/marine/m3cr/proc/enable_hood(mob/living/carbon/human/user)
+	if(!istype(user))
+		user = usr
+
+	if(!linked_mask.mob_can_equip(user, WEAR_FACE))
+		to_chat(user, SPAN_WARNING("You are unable to equip [linked_mask]."))
+		return
+	if(!linked_hood.mob_can_equip(user, WEAR_HEAD))
+		to_chat(user, SPAN_WARNING("You are unable to equip [linked_hood]."))
+		return
+
+	user.equip_to_slot(linked_hood, WEAR_HEAD)
+	user.equip_to_slot(linked_mask, WEAR_FACE)
+
+	hood_enabled = TRUE
+	to_chat(user, SPAN_NOTICE("You seal yourself inside [src]. You will no longer catch fire."))
+	RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+	RegisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+	RegisterSignal(linked_mask, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+
+	if(supports_fire_protection)
+		toggle_fire_protection(user, TRUE)
+
+/obj/item/clothing/suit/storage/marine/m3cr/proc/disable_hood(mob/living/carbon/human/user)
+	if(!istype(user))
+		user = usr
+
+	var/armor = src
+	UnregisterSignal(armor, COMSIG_ITEM_UNEQUIPPED)
+	UnregisterSignal(linked_mask, COMSIG_ITEM_UNEQUIPPED)
+	UnregisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED)
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon/human, drop_inv_item_to_loc), linked_hood, armor), 1) //0.1s delay cause you can grab the mask and hood
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon/human, drop_inv_item_to_loc), linked_mask, armor), 1) //Without a delay it fails to store the item you grab
+	addtimer(CALLBACK(src, PROC_REF(check_remove_headgear)), 2) //Checks if it is still not in contents, incase it was dropped
+
+	hood_enabled = FALSE
+	to_chat(user, SPAN_NOTICE("You take off [linked_hood] and [linked_mask]."))
+
+	if(supports_fire_protection)
+		toggle_fire_protection(user, FALSE)
+
+/obj/item/clothing/suit/storage/marine/m3cr/proc/check_remove_headgear(obj/item/clothing/suit/storage/marine/m3cr/armor = src)
+	var/hood_retracted = FALSE
+	var/mask_retracted = FALSE
+	for(var/current_atom in contents)
+		if(current_atom == linked_hood)
+			hood_retracted = TRUE
+		if(current_atom == linked_mask)
+			mask_retracted = TRUE
+	if(!hood_retracted)
+		linked_hood.forceMove(armor)
+	if(!mask_retracted)
+		linked_mask.forceMove(armor)
+
+/obj/item/clothing/suit/storage/marine/m3cr/proc/toggle_fire_protection(mob/living/carbon/user, enable_fire_protection)
+	if(enable_fire_protection)
+		RegisterSignal(user, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_shield_is_on))
+		RegisterSignal(user, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_fire_callback))
+		return
+	UnregisterSignal(user, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+
+/obj/item/clothing/suit/storage/marine/m3cr/proc/fire_shield_is_on(mob/living/burning_mob) //Stealing it from the pyro spec armor
+	SIGNAL_HANDLER
+
+	if(burning_mob.fire_reagent?.fire_penetrating)
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/obj/item/clothing/suit/storage/marine/m3cr/proc/flamer_fire_callback(mob/living/burning_mob, datum/reagent/fire_reagent)
+	SIGNAL_HANDLER
+
+	if(fire_reagent.fire_penetrating)
+		return
+
+	. = COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
+
+/datum/action/item_action/specialist/toggle_m3cr_hood
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+
+/datum/action/item_action/specialist/toggle_m3cr_hood/New(mob/living/user, obj/item/holder)
+	..()
+	name = "Toggle Hood"
+	button.name = name
+	button.overlays.Cut()
+	var/image/button_overlay = image('icons/obj/items/clothing/cm_hats.dmi', button, "c_cbrn_hood")
+	button.overlays += button_overlay
+
+/datum/action/item_action/specialist/toggle_m3cr_hood/action_activate()
+	var/obj/item/clothing/suit/storage/marine/m3cr/armor = holder_item
+	if(!istype(armor))
+		return
+	armor.hood_toggle()
+
+/obj/item/clothing/suit/storage/marine/m3cr/advanced
+	name = "advanced M3CR armor"
+	desc = "A chemically resistant boilersuit typically used by CBRN marines. This variant is a prototype, further reinforced with experimental material."
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
+	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
+	mask_type = /obj/item/clothing/mask/gas/cbrn/advanced

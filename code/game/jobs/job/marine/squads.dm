@@ -188,6 +188,17 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/cbrn
+	name = SQUAD_CBRN
+	equipment_color = "#400000"
+	chat_color = "#FFFFFF"
+	radio_freq = CBRN_FREQ
+	minimap_color = MINIMAP_SQUAD_SOF
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
 //############################### UPP Squads
 /datum/squad/upp
 	name = "Root"

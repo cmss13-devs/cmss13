@@ -105,6 +105,7 @@ var/const/MAX_FREQ = 1468 // ---------------------------------------------------
 //USCM High Command (USCM 1470-1499)
 var/const/HC_FREQ = 1471
 var/const/SOF_FREQ = 1472
+var/const/CBRN_FREQ = 1473
 
 //Ship department channels
 var/const/SENTRY_FREQ = 1480
@@ -158,6 +159,7 @@ var/list/radiochannels = list(
 	SQUAD_MARINE_5 = ECHO_FREQ,
 	SQUAD_MARINE_CRYO = CRYO_FREQ,
 	SQUAD_SOF = SOF_FREQ,
+	SQUAD_CBRN = CBRN_FREQ,
 
 	RADIO_CHANNEL_ALAMO = DS1_FREQ,
 	RADIO_CHANNEL_NORMANDY = DS2_FREQ,
@@ -257,6 +259,7 @@ SUBSYSTEM_DEF(radio)
 		"[DELTA_FREQ]" = "deltaradio",
 		"[ECHO_FREQ]" = "echoradio",
 		"[CRYO_FREQ]" = "cryoradio",
+		"[CBRN_FREQ]" = "hcradio",
 		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",
 		"[COLONY_FREQ]" = "deptradio",

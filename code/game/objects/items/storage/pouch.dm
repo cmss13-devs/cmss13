@@ -813,6 +813,9 @@
 	new /obj/item/storage/firstaid/adv(src)
 
 
+/obj/item/storage/pouch/medkit/full/toxin/fill_preset_inventory()
+	new /obj/item/storage/firstaid/toxin(src)
+
 /obj/item/storage/pouch/pressurized_reagent_canister
 	name = "Pressurized Reagent Canister Pouch"
 	max_w_class = SIZE_SMALL

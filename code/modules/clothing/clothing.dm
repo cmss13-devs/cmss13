@@ -240,6 +240,13 @@
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	blood_overlay_type = "mask"
 	var/anti_hug = 0
+	var/has_camo = FALSE
+
+/obj/item/clothing/mask/Initialize(mapload)
+	. = ..()
+	if(has_camo)
+		select_gamemode_skin(type)
+	update_icon()
 
 /obj/item/clothing/mask/update_clothing_icon()
 	if (ismob(src.loc))

@@ -145,3 +145,77 @@
 	unacidable = TRUE
 // flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ
+
+/obj/item/clothing/mask/gas/cbrn
+	name = "\improper M3CR gasmask"
+	desc = "A gasmask typically used by CBRN marines, this one is sewn into a hood."
+	icon_state = "cbrn_mask"
+	var/base_item_state = "cbrn_mask"
+	item_state = "cbrn_mask"
+	has_camo = TRUE
+	vision_impair = VISION_IMPAIR_NONE
+	flags_inventory = COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEFACE
+	flags_equip_slot = SLOT_FACE
+	flags_cold_protection = BODY_FLAG_HEAD
+	flags_heat_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	///Whether the mask is covering the face
+	var/mask_raised = TRUE
+	///Override the default camo it has to not reset when changing states
+	var/camo_override
+
+/obj/item/clothing/mask/gas/cbrn/verb/mask_toggle()
+	set name = "Toggle Mask"
+	set desc = "Toggle whether your gasmask is raised or lowered."
+	set src in usr
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+
+	if(user.wear_mask != src)
+		to_chat(user, SPAN_WARNING("You must be wearing [src] to toggle the gasmask!"))
+		return
+
+	to_chat(user, SPAN_NOTICE("You [mask_raised ? "release" : "attach"] the [src]."))
+	if(mask_raised)
+		icon_state = "[base_item_state]_off" //Sets icon state to have it not get messed up by the gamemode skin
+		item_state = "[base_item_state]_off"
+		if(camo_override)
+			icon_state = "[camo_override]_[icon_state]"
+			item_state = "[camo_override]_[item_state]"
+		else
+			select_gamemode_skin(type)
+		update_icon()
+		user.regenerate_icons()
+		flags_inv_hide &= ~HIDEFACE
+		mask_raised = FALSE
+		return
+	icon_state = base_item_state
+	item_state = base_item_state
+	if(camo_override)
+		icon_state = "[camo_override]_[icon_state]"
+		item_state = "[camo_override]_[item_state]"
+	else
+		select_gamemode_skin(type)
+	update_icon()
+	user.regenerate_icons()
+	flags_inv_hide &= HIDEFACE
+	mask_raised = TRUE
+
+/obj/item/clothing/mask/gas/cbrn/advanced
+	name = "advanced M3CR gasmask"
+	desc = "A gasmask typically used by CBRN marines. This variant is a prototype, further reinforced with experimental material."
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS

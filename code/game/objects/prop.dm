@@ -11,6 +11,14 @@
 	w_class = SIZE_SMALL
 	garbage = TRUE
 
+/obj/item/prop/geiger_counter
+	name = "geiger counter"
+	desc = "Useful for measuring ionizing radiation."
+	icon = 'icons/obj/items/devices.dmi'
+	icon_state = "geiger"
+	item_state = ""
+	w_class = SIZE_SMALL
+
 /obj/item/prop/tableflag
 	name = "United Americas table flag"
 	icon = 'icons/obj/items/items.dmi'

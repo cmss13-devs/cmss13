@@ -484,8 +484,10 @@
 	var/display_ammo = TRUE
 	/// How many degrees in each direction the gun should be able to fire
 	var/shoot_degree = 80
+	/// Semi auto cooldown
+	COOLDOWN_DECLARE(semiauto_fire_cooldown)
 	/// How long between semi-auto shots this should wait, to reduce possible spam
-	var/semiauto_fire_cooldown = 0.2 SECONDS
+	var/semiauto_cooldown_time = 0.2 SECONDS
 
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user)
 	. = ..()
@@ -1055,7 +1057,7 @@
 
 	set_target(get_turf_on_clickcatcher(object, operator, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) && COOLDOWN_FINISHED(src, semiauto_fire_cooldown))
-		COOLDOWN_START(src, semiauto_fire_cooldown, semi_cooldown_time)
+		COOLDOWN_START(src, semiauto_fire_cooldown, semiauto_cooldown_time)
 		fire_shot()
 		reset_fire()
 		display_ammo()

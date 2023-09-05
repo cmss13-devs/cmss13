@@ -71,6 +71,7 @@
 #define MODE_SHIPSIDE_SD (1<<8) /// Toggles whether Predators can big SD when not on the groundmap
 #define MODE_HARDCORE_PERMA (1<<9) /// Toggles Hardcore for all marines, meaning they instantly perma upon death
 #define MODE_DISPOSABLE_MOBS (1<<10) // Toggles if mobs fit in disposals or not. Off by default.
+#define MODE_BYPASS_JOE (1<<11) // Toggles if ghosts can bypass Working Joe spawn limitations, does NOT bypass WL requirement. Off by default.
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2

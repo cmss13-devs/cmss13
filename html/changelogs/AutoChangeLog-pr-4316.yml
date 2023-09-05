@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Peri now works for brain damage"
-  - bugfix: "Brain damage movement will no longer occur while buckled and unconscious"

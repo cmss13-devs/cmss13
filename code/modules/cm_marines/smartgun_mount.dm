@@ -483,7 +483,9 @@
 	/// If the gun should display its ammo count
 	var/display_ammo = TRUE
 	/// How many degrees in each direction the gun should be able to fire
-	var/shoot_degree = 90
+	var/shoot_degree = 80
+	/// a
+	var/semi_cooldown_time = 0.2 SECONDS
 
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user)
 	. = ..()
@@ -708,7 +710,12 @@
 	if(!istype(in_chamber, /obj/item/projectile))
 		return
 
-	if(abs(get_angle(T, U) - dir2angle(dir)) > shoot_degree)
+	var/angle = get_angle(T, U)
+
+	if((dir == NORTH) && (angle > 180) && (abs(360 - angle) > shoot_degree)) // If north and shooting to the left, we do some extra math
+		return
+
+	else if((dir != NORTH) && (abs(angle - dir2angle(dir)) > shoot_degree))
 		return
 
 	in_chamber.original = target
@@ -752,8 +759,13 @@
 	if(!rounds)
 		to_chat(operator, SPAN_WARNING("<b>*click*</b>"))
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
-	else
-		return fire_shot()
+		return
+
+	if(operator.l_hand || operator.r_hand)
+		to_chat(operator, SPAN_WARNING("Your hands need to be free to fire [src]!"))
+		return
+
+	return fire_shot()
 
 /obj/structure/machinery/m56d_hmg/proc/handle_outside_cone(mob/living/carbon/human/user)
 	return FALSE
@@ -1042,7 +1054,8 @@
 		return
 
 	set_target(get_turf_on_clickcatcher(object, operator, params))
-	if((gun_firemode == GUN_FIREMODE_SEMIAUTO))
+	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) && COOLDOWN_FINISHED(src, semiauto_fire_cooldown))
+		COOLDOWN_START(src, semiauto_fire_cooldown, semi_cooldown_time)
 		fire_shot()
 		reset_fire()
 		display_ammo()

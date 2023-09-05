@@ -1873,7 +1873,7 @@
 	name = "Toggle Hood"
 	button.name = name
 	button.overlays.Cut()
-	var/image/button_overlay = image('icons/obj/items/clothing/cm_hats.dmi', button, "c_cbrn_hood")
+	var/image/button_overlay = image('icons/obj/items/clothing/cm_hats.dmi', button, "cbrn_hood")
 	button.overlays += button_overlay
 
 /datum/action/item_action/specialist/toggle_m3cr_hood/action_activate()

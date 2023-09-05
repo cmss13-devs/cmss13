@@ -541,7 +541,7 @@
 	desc = "Welding goggles made from more expensive materials."
 
 /obj/item/clothing/glasses/welding/superior/prescription
-	desc = "Welding goggles made from more expensive materials. There are barely visible prescription lenses connected to the frame, allowing vision even when the goggles are raised.."
+	desc = "Welding goggles made from more expensive materials. There are barely visible prescription lenses connected to the frame, allowing vision even when the goggles are raised."
 	prescription = TRUE
 //sunglasses
 

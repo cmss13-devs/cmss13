@@ -485,144 +485,6 @@
 	/// How many degrees in each direction the gun should be able to fire
 	var/shoot_degree = 90
 
-/// Getter for burst_firing
-/obj/structure/machinery/m56d_hmg/proc/get_burst_firing()
-	return burst_firing
-
-/// Setter for burst_firing
-/obj/structure/machinery/m56d_hmg/proc/set_burst_firing(bursting = FALSE)
-	burst_firing = bursting
-
-/// Clean up the target, shots fired, and other things related to when you stop firing
-/obj/structure/machinery/m56d_hmg/proc/reset_fire()
-	set_target(null)
-	set_auto_firing(FALSE)
-	shots_fired = 0
-
-///Set the target and take care of hard delete
-/obj/structure/machinery/m56d_hmg/proc/set_target(atom/object)
-	if(object == target || object == loc)
-		return
-	if(target)
-		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
-	target = object
-	if(target)
-		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
-
-/// Setter for auto_firing
-/obj/structure/machinery/m56d_hmg/proc/set_auto_firing(auto = FALSE)
-	auto_firing = auto
-
-/// Print how much ammo is left to chat
-/obj/structure/machinery/m56d_hmg/proc/display_ammo()
-	if(!operator)
-		return
-
-	if(display_ammo)
-		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(operator, SPAN_DANGER("[rounds][chambered ? "+1" : ""] / [rounds_max] ROUNDS REMAINING"))
-
-/// Toggles the gun's firemode one down the list
-/obj/structure/machinery/m56d_hmg/proc/do_toggle_firemode(mob/user, new_firemode)
-	if(get_burst_firing())//can't toggle mid burst
-		return
-
-	if(!length(gun_firemodes))
-		CRASH("[src] called do_toggle_firemode() with an empty gun_firemodes")
-
-	if(length(gun_firemodes) == 1)
-		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] This gun only has one firemode."))
-		return
-
-	if(new_firemode)
-		if(!(new_firemode in gun_firemodes))
-			CRASH("[src] called do_toggle_firemode() with [new_firemode] new_firemode, not on gun_firemodes")
-		gun_firemode = new_firemode
-	else
-		var/mode_index = gun_firemodes.Find(gun_firemode)
-		if(++mode_index <= length(gun_firemodes))
-			gun_firemode = gun_firemodes[mode_index]
-		else
-			gun_firemode = gun_firemodes[1]
-
-	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
-
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch to <b>[gun_firemode]</b>."))
-	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
-
-///Set the target to its turf, so we keep shooting even when it was qdeled
-/obj/structure/machinery/m56d_hmg/proc/clean_target()
-	SIGNAL_HANDLER
-	target = get_turf(target)
-
-/obj/structure/machinery/m56d_hmg/proc/stop_fire()
-	SIGNAL_HANDLER
-	if(!target)
-		return
-
-	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
-		reset_fire()
-		display_ammo()
-	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
-
-///Update the target if you draged your mouse
-/obj/structure/machinery/m56d_hmg/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
-	SIGNAL_HANDLER
-	set_target(get_turf_on_clickcatcher(over_object, operator, params))
-	operator?.face_atom(target)
-
-///Check if the gun can fire and add it to bucket auto_fire system if needed, or just fire the gun if not
-/obj/structure/machinery/m56d_hmg/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
-	SIGNAL_HANDLER
-
-	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
-		return
-
-	// Don't allow doing anything else if inside a container of some sort, like a locker.
-	if(!isturf(operator.loc))
-		return
-
-	if(istype(object, /atom/movable/screen))
-		return
-
-	if(!bypass_checks)
-		if(operator.throw_mode)
-			return
-
-		if(operator.Adjacent(object)) //Dealt with by attack code
-			return
-
-	if(QDELETED(object))
-		return
-
-	set_target(get_turf_on_clickcatcher(object, operator, params))
-	if((gun_firemode == GUN_FIREMODE_SEMIAUTO))
-		fire_shot()
-		reset_fire()
-		display_ammo()
-		return
-	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
-
-/// setter for fire_delay
-/obj/structure/machinery/m56d_hmg/proc/set_fire_delay(value)
-	fire_delay = value
-	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay)
-
-/// getter for fire_delay
-/obj/structure/machinery/m56d_hmg/proc/get_fire_delay(value)
-	return fire_delay
-
-/// setter for burst_amount
-/obj/structure/machinery/m56d_hmg/proc/set_burst_amount(value, mob/user)
-	burst_amount = value
-	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
-
-/// Setter for burst_delay
-/obj/structure/machinery/m56d_hmg/proc/set_burst_fire_delay(value, mob/user)
-	burst_fire_delay = value
-	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, burst_fire_delay)
-
 /obj/structure/machinery/m56d_hmg/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -1063,6 +925,144 @@
 		to_chat(operator, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram!"))
 		operator.unset_interaction()
 		operator.apply_effect(3, WEAKEN)
+
+/// Getter for burst_firing
+/obj/structure/machinery/m56d_hmg/proc/get_burst_firing()
+	return burst_firing
+
+/// Setter for burst_firing
+/obj/structure/machinery/m56d_hmg/proc/set_burst_firing(bursting = FALSE)
+	burst_firing = bursting
+
+/// Clean up the target, shots fired, and other things related to when you stop firing
+/obj/structure/machinery/m56d_hmg/proc/reset_fire()
+	set_target(null)
+	set_auto_firing(FALSE)
+	shots_fired = 0
+
+///Set the target and take care of hard delete
+/obj/structure/machinery/m56d_hmg/proc/set_target(atom/object)
+	if(object == target || object == loc)
+		return
+	if(target)
+		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+	target = object
+	if(target)
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
+
+/// Setter for auto_firing
+/obj/structure/machinery/m56d_hmg/proc/set_auto_firing(auto = FALSE)
+	auto_firing = auto
+
+/// Print how much ammo is left to chat
+/obj/structure/machinery/m56d_hmg/proc/display_ammo()
+	if(!operator)
+		return
+
+	if(display_ammo)
+		var/chambered = in_chamber ? TRUE : FALSE
+		to_chat(operator, SPAN_DANGER("[rounds][chambered ? "+1" : ""] / [rounds_max] ROUNDS REMAINING"))
+
+/// Toggles the gun's firemode one down the list
+/obj/structure/machinery/m56d_hmg/proc/do_toggle_firemode(mob/user, new_firemode)
+	if(get_burst_firing())//can't toggle mid burst
+		return
+
+	if(!length(gun_firemodes))
+		CRASH("[src] called do_toggle_firemode() with an empty gun_firemodes")
+
+	if(length(gun_firemodes) == 1)
+		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] This gun only has one firemode."))
+		return
+
+	if(new_firemode)
+		if(!(new_firemode in gun_firemodes))
+			CRASH("[src] called do_toggle_firemode() with [new_firemode] new_firemode, not on gun_firemodes")
+		gun_firemode = new_firemode
+	else
+		var/mode_index = gun_firemodes.Find(gun_firemode)
+		if(++mode_index <= length(gun_firemodes))
+			gun_firemode = gun_firemodes[mode_index]
+		else
+			gun_firemode = gun_firemodes[1]
+
+	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch to <b>[gun_firemode]</b>."))
+	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
+
+///Set the target to its turf, so we keep shooting even when it was qdeled
+/obj/structure/machinery/m56d_hmg/proc/clean_target()
+	SIGNAL_HANDLER
+	target = get_turf(target)
+
+/obj/structure/machinery/m56d_hmg/proc/stop_fire()
+	SIGNAL_HANDLER
+	if(!target)
+		return
+
+	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
+		reset_fire()
+		display_ammo()
+	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
+
+///Update the target if you draged your mouse
+/obj/structure/machinery/m56d_hmg/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	set_target(get_turf_on_clickcatcher(over_object, operator, params))
+	operator?.face_atom(target)
+
+///Check if the gun can fire and add it to bucket auto_fire system if needed, or just fire the gun if not
+/obj/structure/machinery/m56d_hmg/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+	SIGNAL_HANDLER
+
+	var/list/modifiers = params2list(params)
+	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
+		return
+
+	// Don't allow doing anything else if inside a container of some sort, like a locker.
+	if(!isturf(operator.loc))
+		return
+
+	if(istype(object, /atom/movable/screen))
+		return
+
+	if(!bypass_checks)
+		if(operator.throw_mode)
+			return
+
+		if(operator.Adjacent(object)) //Dealt with by attack code
+			return
+
+	if(QDELETED(object))
+		return
+
+	set_target(get_turf_on_clickcatcher(object, operator, params))
+	if((gun_firemode == GUN_FIREMODE_SEMIAUTO))
+		fire_shot()
+		reset_fire()
+		display_ammo()
+		return
+	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+
+/// setter for fire_delay
+/obj/structure/machinery/m56d_hmg/proc/set_fire_delay(value)
+	fire_delay = value
+	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay)
+
+/// getter for fire_delay
+/obj/structure/machinery/m56d_hmg/proc/get_fire_delay(value)
+	return fire_delay
+
+/// setter for burst_amount
+/obj/structure/machinery/m56d_hmg/proc/set_burst_amount(value, mob/user)
+	burst_amount = value
+	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
+
+/// Setter for burst_delay
+/obj/structure/machinery/m56d_hmg/proc/set_burst_fire_delay(value, mob/user)
+	burst_fire_delay = value
+	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, burst_fire_delay)
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"

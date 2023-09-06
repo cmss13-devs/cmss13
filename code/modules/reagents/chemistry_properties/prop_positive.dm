@@ -498,7 +498,7 @@
 					H.take_limb_damage(0,rand(20,40))
 					H.vomit()
 				else
-					A.counter = 90
+					A.counter = per_stage_hugged_time
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)

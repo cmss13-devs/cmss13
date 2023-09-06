@@ -12,7 +12,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "by" = (
-/obj/effect/attach_point/fuel/left/dropship2{
+/obj/effect/attach_point/fuel/dropship2{
 	dir = 1
 	},
 /turf/closed/shuttle/dropship2/transparent{
@@ -221,9 +221,9 @@
 	},
 /area/shuttle/drop2/sulaco)
 "to" = (
-/obj/effect/attach_point/fuel/right/dropship2{
-	pixel_x = -32;
-	dir = 1
+/obj/effect/attach_point/fuel/dropship2{
+	dir = 1;
+	pixel_x = -32
 	},
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "33"
@@ -312,11 +312,6 @@
 	req_one_access = null;
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/hatch/cockpit/two,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"

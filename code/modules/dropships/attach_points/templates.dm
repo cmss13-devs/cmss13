@@ -108,62 +108,10 @@
 	icon_state = "fuel_base"
 	base_category = DROPSHIP_FUEL_EQP
 
-/obj/effect/attach_point/fuel/Initialize(mapload, ...)
-	. = ..()
-	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
-
-/obj/effect/attach_point/fuel/Destroy()
-	. = ..()
-	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
-
-/obj/effect/attach_point/fuel/proc/on_dir_change(datum/source, old_dir, new_dir)
-	return
-
-/obj/effect/attach_point/fuel/left/on_dir_change(datum/source, old_dir, new_dir)
-	SIGNAL_HANDLER
-	switch(new_dir)
-		if(NORTH)
-			pixel_x = 0
-			pixel_y = 0
-		if(EAST)
-			pixel_x = 27
-			pixel_y = -8
-		if(WEST)
-			pixel_x = 5
-			pixel_y = -7
-		if(SOUTH)
-			pixel_x = 32
-			pixel_y = 9
-
-/obj/effect/attach_point/fuel/right
-	pixel_x = -32
-
-/obj/effect/attach_point/fuel/right/on_dir_change(datum/source, old_dir, new_dir)
-	SIGNAL_HANDLER
-	switch(new_dir)
-		if(NORTH)
-			pixel_x = 32
-			pixel_y = 0
-		if(EAST)
-			pixel_x = -27
-			pixel_y = -24
-		if(WEST)
-			pixel_x = 5
-			pixel_y = -7
-		if(SOUTH)
-			pixel_x = 0
-			pixel_y = 9
-
-/obj/effect/attach_point/fuel/left/dropship1
+/obj/effect/attach_point/fuel/dropship1
 	ship_tag = DROPSHIP_ALAMO
 
-/obj/effect/attach_point/fuel/right/dropship1
-	ship_tag = DROPSHIP_ALAMO
-
-/obj/effect/attach_point/fuel/left/dropship2
-	ship_tag = DROPSHIP_NORMANDY
-
-/obj/effect/attach_point/fuel/right/dropship2
+/obj/effect/attach_point/fuel/dropship2
 	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/computer

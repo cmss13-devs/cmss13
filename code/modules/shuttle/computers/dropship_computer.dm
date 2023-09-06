@@ -324,7 +324,7 @@
 
 	for(var/obj/docking_port/stationary/marine_dropship/dock as anything in compatible_landing_zones)
 		var/dock_reserved = FALSE
-		var/enabled = dock.enabled
+		var/enabled = TRUE
 		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
 			if(dock == other_shuttle.destination)
 				dock_reserved = TRUE

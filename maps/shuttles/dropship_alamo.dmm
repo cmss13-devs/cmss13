@@ -140,7 +140,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "ne" = (
-/obj/effect/attach_point/fuel/left/dropship1{
+/obj/effect/attach_point/fuel/dropship1{
 	dir = 1
 	},
 /turf/closed/shuttle/dropship1/transparent{
@@ -249,11 +249,6 @@
 	req_one_access = null;
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/hatch/cockpit,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -628,9 +623,9 @@
 /turf/open/space/basic,
 /area/shuttle/drop1/sulaco)
 "Ym" = (
-/obj/effect/attach_point/fuel/right/dropship1{
-	pixel_x = -32;
-	dir = 1
+/obj/effect/attach_point/fuel/dropship1{
+	dir = 1;
+	pixel_x = -32
 	},
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "33"

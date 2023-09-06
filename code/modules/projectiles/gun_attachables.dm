@@ -594,7 +594,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "flashlight"
 	attach_icon = "flashlight_a"
-	light_mod = 7
+	light_mod = 5
 	slot = "rail"
 	matter = list("metal" = 50,"glass" = 20)
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
@@ -604,8 +604,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/original_state = "flashlight"
 	var/original_attach = "flashlight_a"
 
-	var/activated = FALSE
-	var/helm_mounted_light_mod = 5
+	var/helm_mounted_light_power = 2
+	var/helm_mounted_light_range = 3
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
@@ -636,7 +636,7 @@ Defined in conflicts.dm of the #defines folder.
 	SIGNAL_HANDLER
 	if(!attached_item)
 		return
-	if(activated)
+	if(light_on)
 		icon_state = original_state
 		attach_icon = original_attach
 		activate_attachment(attached_item, attached_item.loc, TRUE)
@@ -652,33 +652,54 @@ Defined in conflicts.dm of the #defines folder.
 		activate_attachment(attached_item, owner)
 
 /obj/item/attachable/flashlight/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
-	if(istype(G, /obj/item/clothing/head/helmet/marine))
-		var/atom/movable/light_source = user
-		. = (turn_off && activated)
-		if(turn_off || activated)
-			if(activated)
+	turn_light(user, turn_off ? !turn_off : !light_on)
+
+/obj/item/attachable/flashlight/turn_light(mob/user, toggle_on, cooldown, sparks, forced, light_again)
+	. = ..()
+	if(. != CHECKS_PASSED)
+		return
+
+	if(istype(attached_item, /obj/item/clothing/head/helmet/marine))
+		if(!toggle_on || light_on)
+			if(light_on)
 				playsound(user, deactivation_sound, 15, 1)
 			icon_state = original_state
 			attach_icon = original_attach
-			activated = FALSE
+			light_on = FALSE
 		else
 			playsound(user, activation_sound, 15, 1)
 			icon_state += "-on"
 			attach_icon += "-on"
-			activated = TRUE
+			light_on = TRUE
 		attached_item.update_icon()
-		light_source.SetLuminosity(helm_mounted_light_mod * activated, FALSE, G)
-		attached_item.SetLuminosity(helm_mounted_light_mod * activated, FALSE, G)
+		attached_item.set_light_range(helm_mounted_light_range)
+		attached_item.set_light_power(helm_mounted_light_power)
+		attached_item.set_light_on(light_on)
 		activation.update_button_icon()
 		return
-	if(turn_off && !(G.flags_gun_features & GUN_FLASHLIGHT_ON))
-		return FALSE
-	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? 0 : 1
-	var/atom/movable/light_source =  ismob(G.loc) ? G.loc : G
-	light_source.SetLuminosity(light_mod * flashlight_on, FALSE, G)
-	G.flags_gun_features ^= GUN_FLASHLIGHT_ON
 
-	if(G.flags_gun_features & GUN_FLASHLIGHT_ON)
+	if(!isgun(loc))
+		return
+
+	var/obj/item/weapon/gun/attached_gun = loc
+
+	if(toggle_on && !light_on)
+		attached_gun.set_light_range(attached_gun.light_range + light_mod)
+		attached_gun.set_light_power(attached_gun.light_power + (light_mod * 0.5))
+		if(!(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON))
+			attached_gun.set_light_on(TRUE)
+			light_on = TRUE
+			attached_gun.flags_gun_features |= GUN_FLASHLIGHT_ON
+
+	if(!toggle_on && light_on)
+		attached_gun.set_light_range(attached_gun.light_range - light_mod)
+		attached_gun.set_light_power(attached_gun.light_power - (light_mod * 0.5))
+		if(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON)
+			attached_gun.set_light_on(FALSE)
+			light_on = FALSE
+			attached_gun.flags_gun_features &= ~GUN_FLASHLIGHT_ON
+
+	if(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON)
 		icon_state += "-on"
 		attach_icon += "-on"
 		playsound(user, deactivation_sound, 15, 1)
@@ -686,16 +707,13 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = original_state
 		attach_icon = original_attach
 		playsound(user, activation_sound, 15, 1)
-	G.update_attachable(slot)
+	attached_gun.update_attachable(slot)
 
-	for(var/X in G.actions)
+	for(var/X in attached_gun.actions)
 		var/datum/action/A = X
 		if(A.target == src)
 			A.update_button_icon()
 	return TRUE
-
-
-
 
 /obj/item/attachable/flashlight/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
@@ -812,12 +830,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/magnetic_harness/lever_sling/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 
 /obj/item/attachable/scope
@@ -1645,14 +1663,13 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/m4ra_barrel/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
-
 
 /obj/item/attachable/m4ra_barrel_custom
 	name = "custom M4RA barrel"
@@ -1672,12 +1689,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/m4ra_barrel_custom/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 
 /obj/item/attachable/upp_rpg_breech
@@ -1780,7 +1797,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/collapsible
 	name = "submachinegun folding stock"
-	desc = "A Kirchner brand K2 M39 folding stock, standard issue in the USCM. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl. This stock can collapse in, removing almost all positive and negative effects, however it slightly increases spread due to weapon being off-balanced by the collapsed stock."
+	desc = "A Kirchner brand K2 M39 folding stock, standard issue in the USCM. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl. This stock can collapse in, removing all positive and negative effects."
 	slot = "stock"
 	melee_mod = 10
 	size_mod = 1
@@ -1813,6 +1830,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+		recoil_mod = -RECOIL_AMOUNT_TIER_4
+		scatter_mod = -SCATTER_AMOUNT_TIER_8
 		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 		size_mod = 1
 		aim_speed_mod = CONFIG_GET(number/slowdown_low)
@@ -1825,21 +1845,19 @@ Defined in conflicts.dm of the #defines folder.
 		attach_icon = "smgstockc_a"
 
 	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
 		scatter_unwielded_mod = 0
 		size_mod = 0
 		aim_speed_mod = 0
 		wield_delay_mod = 0
 		movement_onehanded_acc_penalty_mod = 0
-		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
-		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
 		hud_offset_mod = 3
 		icon_state = "smgstockcc"
 		attach_icon = "smgstockcc_a"
-
-	//don't *= -1 on debuffs, you'd actually be making than without stock when it's collapsed.
-	accuracy_mod *= -1
-	recoil_mod *= -1
-	scatter_mod *= -1
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")

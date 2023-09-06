@@ -116,6 +116,11 @@
 	icon_state = "24,3"
 	},
 /area/shuttle/lifeboat)
+"pH" = (
+/turf/open/shuttle/lifeboat{
+	icon_state = "plating_striped"
+	},
+/area/shuttle/lifeboat)
 "qA" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "22,0"
@@ -192,6 +197,13 @@
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
+"xS" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat1-D4";
+	throw_dir = 2
+	},
+/turf/open/shuttle/lifeboat,
+/area/shuttle/lifeboat)
 "yf" = (
 /obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
 	pixel_x = -12;
@@ -254,6 +266,13 @@
 "DR" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 4
+	},
+/turf/open/shuttle/lifeboat,
+/area/shuttle/lifeboat)
+"EW" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat1-D3";
+	throw_dir = 2
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
@@ -534,8 +553,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+EW
 "}
 (10,1,1) = {"
 Nm
@@ -543,8 +562,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+Ro
 "}
 (11,1,1) = {"
 Nm
@@ -552,8 +571,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+Ro
 "}
 (12,1,1) = {"
 Rs
@@ -579,8 +598,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+xS
 "}
 (15,1,1) = {"
 Nm
@@ -588,8 +607,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+Ro
 "}
 (16,1,1) = {"
 Nm
@@ -597,8 +616,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+Ro
 "}
 (17,1,1) = {"
 Rs

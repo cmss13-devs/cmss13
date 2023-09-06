@@ -60501,6 +60501,14 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"fcu" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "uppcrash-supply"
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
 "fcE" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
@@ -70315,7 +70323,7 @@ cDY
 cDY
 cDY
 cDY
-cFa
+cDY
 cML
 cBS
 cUl
@@ -71241,7 +71249,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
+cFa
 cDY
 cDY
 cDY
@@ -73177,7 +73185,7 @@ aWh
 aWh
 aWh
 aWh
-dGU
+aWh
 bDO
 aVi
 aVh
@@ -74103,7 +74111,7 @@ aWh
 aWh
 aWh
 aWh
-aWh
+dGU
 aWh
 aWh
 aWh
@@ -103519,7 +103527,7 @@ cCH
 clZ
 clZ
 crW
-cko
+fcu
 cmc
 cpY
 cpY

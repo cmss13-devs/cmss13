@@ -136,20 +136,6 @@ DEFINES in setup.dm, referenced here.
 	else
 		..()
 
-
-/// This function disconnects the luminosity from the mob and back to the gun
-/obj/item/weapon/gun/proc/disconnect_light_from_mob(mob/bearer)
-	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
-		return FALSE
-	for (var/slot in attachments)
-		var/obj/item/attachable/attachment = attachments[slot]
-		if (!attachment || !attachment.light_mod)
-			continue
-		bearer.SetLuminosity(0, FALSE, src)
-		SetLuminosity(attachment.light_mod)
-		return TRUE
-	return FALSE
-
 /// This function actually turns the lights on the gun off
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
 	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
@@ -164,15 +150,6 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/pickup(mob/user)
 	..()
-
-	if (flags_gun_features & GUN_FLASHLIGHT_ON)
-		for (var/slot in attachments)
-			var/obj/item/attachable/attachment = attachments[slot]
-			if (!attachment || !attachment.light_mod)
-				continue
-			user.SetLuminosity(attachment.light_mod, FALSE, src)
-			SetLuminosity(0)
-			break
 
 	unwield(user)
 
@@ -716,14 +693,14 @@ DEFINES in setup.dm, referenced here.
 	var/old_firemode = gun_firemode
 	gun_firemode_list.len = 0
 
+	if(start_automatic)
+		gun_firemode_list |= GUN_FIREMODE_AUTOMATIC
+
 	if(start_semiauto)
 		gun_firemode_list |= GUN_FIREMODE_SEMIAUTO
 
 	if(burst_amount > BURST_AMOUNT_TIER_1)
 		gun_firemode_list |= GUN_FIREMODE_BURSTFIRE
-
-	if(start_automatic)
-		gun_firemode_list |= GUN_FIREMODE_AUTOMATIC
 
 	if(!length(gun_firemode_list))
 		CRASH("[src] called setup_firemodes() with an empty gun_firemode_list")
@@ -960,3 +937,15 @@ DEFINES in setup.dm, referenced here.
 	if(!istype(target, /atom/movable/screen/click_catcher))
 		return null
 	return params2turf(modifiers["screen-loc"], get_turf(user), user.client)
+
+/// If this gun has a relevant flashlight attachable attached, (de)activate it
+/obj/item/weapon/gun/proc/force_light(on)
+	var/obj/item/attachable/flashlight/torch
+	for(var/slot in attachments)
+		torch = attachments[slot]
+		if(istype(torch))
+			break
+	if(!torch)
+		return FALSE
+	torch.turn_light(toggle_on = on, forced = TRUE)
+	return TRUE

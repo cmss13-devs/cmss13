@@ -74,6 +74,25 @@
 	xgibs(src.loc)
 	qdel(src)
 
+/obj/structure/alien/attack_alien(mob/living/carbon/xenomorph/M)
+	if(islarva(M)) //Larvae can't do shit
+		return
+
+	if(M.a_intent == INTENT_HELP)
+		return XENO_NO_DELAY_ACTION
+	else
+		M.animation_attack_on(src)
+		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+		SPAN_XENONOTICE("You claw \the [src]."))
+		if(istype(src, /obj/effect/alien/resin/sticky))
+			playsound(loc, "alien_resin_move", 25)
+		else
+			playsound(loc, "alien_resin_break", 25)
+
+		health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
+		healthcheck()
+	return XENO_ATTACK_ACTION
+
 //Sunken Colony
 /obj/structure/alien/sunken
 	name = "Sunken Colony"

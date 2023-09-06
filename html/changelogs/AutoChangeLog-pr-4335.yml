@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - rscadd: "guns that have full auto now start on full auto by default"

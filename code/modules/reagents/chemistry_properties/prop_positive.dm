@@ -481,24 +481,24 @@
 	description = "Antimicrobial property specifically targeting parasitic pathogens in the body disrupting their growth and potentially killing them."
 	rarity = PROPERTY_UNCOMMON
 
-/datum/chem_property/positive/antiparasitic/process(mob/living/M, potency = 1, delta_time)
-	if(!ishuman(M))
+/datum/chem_property/positive/antiparasitic/process(mob/living/current_mob, potency = 1, delta_time)
+	if(!ishuman(current_mob))
 		return
-	var/mob/living/carbon/human/H = M
-	for(var/content in H.contents)
-		var/obj/item/alien_embryo/A = content
-		if(A && istype(A))
-			if(A.counter > 0)
-				A.counter = A.counter - potency
-				H.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
+	var/mob/living/carbon/human/current_human = current_mob
+	for(var/content in current_human.contents)
+		var/obj/item/alien_embryo/embryo = content
+		if(embryo && istype(embryo))
+			if(embryo.counter > 0)
+				embryo.counter = embryo.counter - potency
+				current_human.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
 			else
-				A.stage--
-				if(A.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
-					qdel(A)
-					H.take_limb_damage(0,rand(20,40))
-					H.vomit()
+				embryo.stage--
+				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
+					qdel(embryo)
+					current_human.take_limb_damage(0,rand(20,40))
+					current_human.vomit()
 				else
-					A.counter = per_stage_hugged_time
+					embryo.counter = embryo.per_stage_hugged_time
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)

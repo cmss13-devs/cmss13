@@ -104,9 +104,8 @@
 	callback_reset_fire.Invoke() //resets the gun
 	shots_fired = 0
 	have_to_reset_at_burst_end = FALSE
-	if(bursting)
-		bursting = FALSE
-		callback_bursting.Invoke(FALSE)
+	bursting = FALSE
+	callback_bursting.Invoke(FALSE)
 	shooting = FALSE
 
 

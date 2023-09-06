@@ -1149,7 +1149,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/storage/box/packet/rmc/he,
-		/obj/item/storage/box/packet/rmc/incin
+		/obj/item/storage/box/packet/rmc/incin,
 	)
 
 /obj/item/storage/backpack/general_belt/rmc //the breachers belt

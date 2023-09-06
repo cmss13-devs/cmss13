@@ -335,7 +335,7 @@
 /obj/item/device/cassette_tape/pop1
 	name = "blue cassette"
 	id = 2
-	desc = "A plastic cassette tape with a blue sticker."
+	desc = "A plastic cassette tape with a blue sticker.\nFrom 13th with love."
 	icon_state = "cassette_blue"
 	side1_icon = "cassette_blue"
 	songs = list("side1" = list("sound/music/walkman/pop1/1-1-1.ogg",\
@@ -348,7 +348,7 @@
 /obj/item/device/cassette_tape/pop2
 	name = "rainbow cassette"
 	id = 3
-	desc = "A plastic cassette tape with a rainbow-colored sticker."
+	desc = "A plastic cassette tape with a rainbow-colored sticker.\nFrom 13th with love."
 	icon_state = "cassette_rainbow"
 	side1_icon = "cassette_rainbow"
 	songs = list("side1" = list("sound/music/walkman/pop2/2-1-1.ogg",\
@@ -361,7 +361,7 @@
 /obj/item/device/cassette_tape/pop3
 	name = "orange cassette"
 	id = 4
-	desc = "A plastic cassette tape with an orange sticker."
+	desc = "A plastic cassette tape with an orange sticker.\nFrom shizoidov with love."
 	icon_state = "cassette_orange"
 	side1_icon = "cassette_orange"
 	songs = list("side1" = list("sound/music/walkman/pop3/3-1-1.ogg",\
@@ -374,7 +374,7 @@
 /obj/item/device/cassette_tape/pop4
 	name = "pink cassette"
 	id = 5
-	desc = "A plastic cassette tape with a pink striped sticker."
+	desc = "A plastic cassette tape with a pink striped sticker.\nSeems empty."
 	icon_state = "cassette_pink_stripe"
 	side1_icon = "cassette_pink_stripe"
 	songs = list("side1" = list("sound/music/walkman/pop4/4-1-1.ogg",\
@@ -400,7 +400,7 @@
 /obj/item/device/cassette_tape/hairmetal
 	name = "red striped cassette"
 	id = 7
-	desc = "A plastic cassette tape with a gray sticker with red stripes."
+	desc = "A plastic cassette tape with a gray sticker with red stripes.\nSeems empty."
 	icon_state = "cassette_red_stripe"
 	side1_icon = "cassette_red_stripe"
 	songs = list("side1" = list("sound/music/walkman/hairmetal/6-1-1.ogg",\
@@ -413,7 +413,7 @@
 /obj/item/device/cassette_tape/indie
 	name = "rising sun cassette"
 	id = 8
-	desc = "A plastic cassette tape with the Japanese Rising Sun."
+	desc = "A plastic cassette tape with the Japanese Rising Sun.\nSeems empty."
 	icon_state = "cassette_rising_sun"
 	side1_icon = "cassette_rising_sun"
 	songs = list("side1" = list("sound/music/walkman/indie/7-1-1.ogg",\
@@ -426,7 +426,7 @@
 /obj/item/device/cassette_tape/hiphop
 	name = "blue stripe cassette"
 	id = 9
-	desc = "An orange plastic cassette tape with a blue stripe."
+	desc = "An orange plastic cassette tape with a blue stripe.\nSeems empty."
 	icon_state = "cassette_orange_blue"
 	side1_icon = "cassette_orange_blue"
 	songs = list("side1" = list("sound/music/walkman/hiphop/8-1-1.ogg",\
@@ -439,7 +439,7 @@
 /obj/item/device/cassette_tape/nam
 	name = "green cassette"
 	id = 10
-	desc = "A green plastic cassette tape."
+	desc = "A green plastic cassette tape.\nSeems empty."
 	icon_state = "cassette_green"
 	side1_icon = "cassette_green"
 	songs = list("side1" = list("sound/music/walkman/nam/9-1-1.ogg",\
@@ -452,7 +452,7 @@
 /obj/item/device/cassette_tape/ocean
 	name = "ocean cassette"
 	id = 11
-	desc = "A blue and white plastic cassette tape."
+	desc = "A blue and white plastic cassette tape.\nSeems empty."
 	icon_state = "cassette_ocean"
 	side1_icon = "cassette_ocean"
 	songs = list("side1" = list("sound/music/walkman/surf/10-1-1.ogg",\
@@ -468,7 +468,7 @@
 /obj/item/device/cassette_tape/aesthetic
 	name = "aesthetic cassette"
 	id = 12
-	desc = "An aesthetic looking cassette tape. 'Jacket' is written on the front."
+	desc = "An aesthetic looking cassette tape. 'Jacket' is written on the front.\nSeems empty."
 	icon_state = "cassette_aesthetic"
 	side1_icon = "cassette_aesthetic"
 
@@ -476,7 +476,7 @@
 /obj/item/device/cassette_tape/cargocrate
 	name = "weyland yutani cassette"
 	id = 13
-	desc = "A blue metallic cassette with a weyland yutani logo."
+	desc = "A blue metallic cassette with a weyland yutani logo.\nSeems empty."
 	icon_state = "cassette_wy"
 	side1_icon = "cassette_wy"
 
@@ -484,7 +484,7 @@
 /obj/item/device/cassette_tape/solaris
 	name = "red UCP cassette"
 	id = 14
-	desc = "A cassette with a red UCP camo design."
+	desc = "A cassette with a red UCP camo design.\nSeems empty."
 	icon_state = "cassette_solaris"
 	side1_icon = "cassette_solaris"
 
@@ -492,27 +492,27 @@
 /obj/item/device/cassette_tape/icecolony
 	name = "frozen cassette"
 	id = 15
-	desc = "A cassette. It's covered in ice and snow."
+	desc = "A cassette. It's covered in ice and snow.\nSeems empty."
 	icon_state = "cassette_ice"
 	side1_icon = "cassette_ice"
 
 /obj/item/device/cassette_tape/lz
 	name = "nostalgic cassette"
 	id = 16
-	desc = "There's a cut up postcard taped to this cassette. You know this place."
+	desc = "There's a cut up postcard taped to this cassette. You know this place.\nSeems empty."
 	icon_state = "cassette_lz"
 	side1_icon = "cassette_lz"
 
 /obj/item/device/cassette_tape/desertdam
 	name = "dam cassette"
 	id = 17
-	desc = "Attached to this cassette is a picture of a dam."
+	desc = "Attached to this cassette is a picture of a dam.\nSeems empty."
 	icon_state = "cassette_dam"
 	side1_icon = "cassette_dam"
 
 /obj/item/device/cassette_tape/prison
 	name = "broken cassette"
 	id = 18
-	desc = "The shell on this cassette is broken, it still looks like it'll work, though!"
+	desc = "The shell on this cassette is broken, it still looks like it'll work, though!\nSeems empty."
 	icon_state = "cassette_worstmap"
 	side1_icon = "cassette_worstmap"

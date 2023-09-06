@@ -396,7 +396,7 @@
 		to_chat(user, SPAN_WARNING("You cannot use \the [src] when they are hidden."))
 		return
 
-	if(user.client.view > 7 && shape != NVG_SHAPE_COSMETIC)
+	if(user.client.view > 7 && shape != NVG_SHAPE_COSMETIC && !istype(user.buckled, /obj/structure/bed/chair/comfy/vehicle))
 		to_chat(user, SPAN_WARNING("You cannot use \the [src] while using optics."))
 		return
 

@@ -9,7 +9,7 @@
 	var/cost = max(CHAT_CPM_MINIMUM, length(text))
 	src.talked_at = world.time
 	if(src.talked_sum + cost > max_budget)
-		to_chat(src, SPAN_NOTICE("You just said something, take a breath."))
+		to_chat(src, SPAN_NOTICE("Вы слишком много болтаете."))
 		return FALSE
 	src.talked_sum += cost
 	return TRUE
@@ -95,10 +95,10 @@
 				langchat_listeners += observer
 
 		if(M.stat == DEAD)
-			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>МЕРТВЕЦ:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> сообщает, <span class='message'>\"[message]\"</span></span>")
 
 		else if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
-			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>") //Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>МЕРТВЕЦ:</span> <span class='name'>[name]</span> сообщает, <span class='message'>\"[message]\"</span></span>") //Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
 
 	if(length(langchat_listeners))
 		langchat_speech(message, langchat_listeners, GLOB.all_languages, skip_language_check = TRUE)
@@ -140,12 +140,12 @@ for it but just ignore it.
 */
 
 /mob/proc/say_quote(message, datum/language/speaking = null)
-		var/verb = "says"
+		var/verb = "говорит"
 		var/ending = copytext(message, length(message))
 		if(ending=="!")
-				verb=pick("exclaims","shouts","yells")
+				verb=pick("восклицает","кричит","вопит")
 		else if(ending=="?")
-				verb="asks"
+				verb="спрашивает"
 
 		return verb
 
@@ -169,11 +169,11 @@ for it but just ignore it.
 //returns the message mode string or null for no message mode.
 //standard mode is the mode returned for the special ';' radio code.
 /mob/proc/parse_message_mode(message, standard_mode="headset")
-	if(length(message) >= 1 && copytext(message,1,2) == ";")
+	if(length(message) >= 1 && copytext_char(message,1,2) == ";")
 		return standard_mode
 
 	if(length(message) >= 2)
-		var/channel_prefix = copytext(message, 1 ,3)
+		var/channel_prefix = copytext_char(message, 1 ,3)
 		return department_radio_keys[channel_prefix]
 
 	return null

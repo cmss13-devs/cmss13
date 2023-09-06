@@ -20,7 +20,6 @@ map bigredv2
 endmap
 
 map prison_station_fop
-	disabled
 endmap
 
 map fiorina_sciannex
@@ -44,6 +43,7 @@ map ice_colony_v2
 endmap
 
 map shivas_snowball
+	disabled
 endmap
 
 map kutjevo

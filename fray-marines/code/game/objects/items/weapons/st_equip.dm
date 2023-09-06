@@ -10,15 +10,35 @@
 	w_class = SIZE_LARGE
 	sharp = IS_SHARP_ITEM_BIG
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
+	unacidable = TRUE
+	indestructible = TRUE
+
+	var/move_delay_addition = 1.20
 
 /obj/item/weapon/twohanded/st_hammer/attack(mob/M, mob/user)
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ST)
-		to_chat(user, SPAN_HIGHDANGER("[src] is too heavy for you..."))	// Переделать потом
-	else
-		..()
-		if(flags_item & WIELDED && prob(40))
-			M.KnockDown(3)
+		to_chat(user, SPAN_HIGHDANGER("[src] is too heavy for you..."))
+		return
+	..()
+	if(flags_item ^ WIELDED && prob(70))
+		return
+	if(isxeno(M))
+		var/mob/living/carbon/xenomorph/X = M
+		if(X.tier < 1 || X.tier > 2)
+			return
+	M.KnockDown(3)
 		
+/obj/item/weapon/twohanded/st_hammer/pickup(mob/user)
+	RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
+	..()
+
+/obj/item/weapon/twohanded/st_hammer/proc/handle_movedelay(mob/living/M, list/movedata)
+	SIGNAL_HANDLER
+	movedata["move_delay"] += move_delay_addition
+
+/obj/item/weapon/twohanded/st_hammer/dropped(mob/user, silent)
+	. = ..()
+	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 /obj/item/weapon/shield/montage
 	name = "N30 montage shield"
@@ -30,15 +50,16 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi'
 	)
 	flags_equip_slot = SLOT_BACK
-	passive_block = 75
+	passive_block = 65
 	readied_block = 100
 	force = MELEE_FORCE_TIER_1
 	throwforce = MELEE_FORCE_TIER_1
-//	throw_speed = 1
 	throw_range = 4
 	w_class = SIZE_LARGE
 	attack_verb = list("shoved", "bashed", "slash")
 	var/cooldown = 0	//shield bash cooldown. based on world.time	
+	unacidable = TRUE
+	indestructible = TRUE
 
 /obj/item/weapon/shield/montage/IsShield()
 	return TRUE
@@ -59,14 +80,15 @@
 	icon_state = "marine_shield"
 	flags_equip_slot = SLOT_BACK
 	passive_block = 45
-	readied_block = 85
+	readied_block = 80
 	force = MELEE_FORCE_TIER_3
 	throwforce = MELEE_FORCE_TIER_1
-//	throw_speed = 1
 	throw_range = 4
 	w_class = SIZE_LARGE
 	attack_verb = list("shoved", "bashed", "slash")
 	cooldown = 4	//shield bash cooldown. based on world.time
+	unacidable = TRUE
+	indestructible = TRUE
 
 /obj/item/weapon/shield/montage/marine/attack(mob/M, mob/user)
 	. = ..()

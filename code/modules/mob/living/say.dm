@@ -22,6 +22,7 @@ var/list/department_radio_keys = list(
 	":o" = RADIO_CHANNEL_COLONY, ".o" = RADIO_CHANNEL_COLONY, "#o" = RADIO_CHANNEL_PMC_CCT,
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
+	":r" = RADIO_CHANNEL_PROVOST, ".r" = RADIO_CHANNEL_PROVOST, "#r" = RADIO_CHANNEL_PROVOST,
 
 	":I" = RADIO_CHANNEL_INTERCOM, ".I" = RADIO_CHANNEL_INTERCOM, "#I" = RADIO_CHANNEL_INTERCOM,
 	":H" = RADIO_CHANNEL_DEPARTMENT, ".H" = RADIO_CHANNEL_DEPARTMENT, "#H" = RADIO_CHANNEL_DEPARTMENT,
@@ -45,6 +46,55 @@ var/list/department_radio_keys = list(
 	":O" = RADIO_CHANNEL_COLONY, ".O" = RADIO_CHANNEL_COLONY, "#O" = RADIO_CHANNEL_PMC_CCT,
 	":Z" = RADIO_CHANNEL_HIGHCOM, ".Z" = RADIO_CHANNEL_HIGHCOM, "#Z" = RADIO_CHANNEL_PMC_CMD,
 	":K" = SQUAD_SOF, ".K" = SQUAD_SOF, "#K" = RADIO_CHANNEL_WY_WO,
+	":R" = RADIO_CHANNEL_PROVOST, ".R" = RADIO_CHANNEL_PROVOST, "#R" = RADIO_CHANNEL_PROVOST,
+
+//Russkie ne sdayutsa
+	":ш" = RADIO_CHANNEL_INTERCOM, ".ш" = RADIO_CHANNEL_INTERCOM, "#ш" = RADIO_CHANNEL_INTERCOM,
+	":р" = RADIO_CHANNEL_DEPARTMENT, ".р" = RADIO_CHANNEL_DEPARTMENT, "#р" = RADIO_CHANNEL_DEPARTMENT,
+	":ц" = RADIO_MODE_WHISPER, ".ц" = RADIO_MODE_WHISPER, "#ц" = RADIO_MODE_WHISPER,
+	":=" = RADIO_CHANNEL_SPECIAL, ".=" = RADIO_CHANNEL_SPECIAL, "#=" = RADIO_CHANNEL_SPECIAL, //activate radio-specific special functions
+
+	":ь" = RADIO_CHANNEL_MEDSCI, ".ь" = RADIO_CHANNEL_MEDSCI, "#ь" = RADIO_CHANNEL_UPP_MED,
+	":т" = RADIO_CHANNEL_ENGI, ".т" = RADIO_CHANNEL_ENGI, "#т" = RADIO_CHANNEL_UPP_ENGI,
+	":п" = RADIO_CHANNEL_ALMAYER, ".п" = RADIO_CHANNEL_ALMAYER, "#п" = RADIO_CHANNEL_CLF_GEN,
+	":м" = RADIO_CHANNEL_COMMAND , ".м" = RADIO_CHANNEL_COMMAND , "#м" = RADIO_CHANNEL_UPP_CMD,
+	":ф" = SQUAD_MARINE_1, ".ф" = SQUAD_MARINE_1, "#ф" = RADIO_CHANNEL_CLF_MED,
+	":и" = SQUAD_MARINE_2, ".и" = SQUAD_MARINE_2, "#и" = RADIO_CHANNEL_CLF_ENGI,
+	":с" = SQUAD_MARINE_3, ".с" = SQUAD_MARINE_3, "#с" = RADIO_CHANNEL_CLF_CMD,
+	":в" = SQUAD_MARINE_4, ".в" = SQUAD_MARINE_4, "#в" = RADIO_CHANNEL_CLF_CCT,
+	":у" = SQUAD_MARINE_5, ".у" = SQUAD_MARINE_5, "#у" = RADIO_CHANNEL_PMC_ENGI,
+	":а" = SQUAD_MARINE_CRYO, ".а" = SQUAD_MARINE_CRYO, "#а" = RADIO_CHANNEL_PMC_MED,
+	":з" = RADIO_CHANNEL_MP , ".з" = RADIO_CHANNEL_MP , "#з" = RADIO_CHANNEL_PMC_GEN,
+	":г" = RADIO_CHANNEL_REQ, ".г" = RADIO_CHANNEL_REQ, "#г" = RADIO_CHANNEL_UPP_GEN,
+	":о" = RADIO_CHANNEL_JTAC, ".о" = RADIO_CHANNEL_JTAC, "#о" = RADIO_CHANNEL_UPP_CCT,
+	":е" = RADIO_CHANNEL_INTEL, ".е" = RADIO_CHANNEL_INTEL, "#е" = RADIO_CHANNEL_UPP_KDO,
+	":н" = RADIO_CHANNEL_WY, ".н" = RADIO_CHANNEL_WY, "#н" = RADIO_CHANNEL_WY,
+	":щ" = RADIO_CHANNEL_COLONY, ".щ" = RADIO_CHANNEL_COLONY, "#щ" = RADIO_CHANNEL_PMC_CCT,
+	":я" = RADIO_CHANNEL_HIGHCOM, ".я" = RADIO_CHANNEL_HIGHCOM, "#я" = RADIO_CHANNEL_PMC_CMD,
+	":л" = SQUAD_SOF, ".л" = SQUAD_SOF, "#л" = RADIO_CHANNEL_WY_WO,
+
+	":Ш" = RADIO_CHANNEL_INTERCOM, ".Ш" = RADIO_CHANNEL_INTERCOM, "#Ш" = RADIO_CHANNEL_INTERCOM,
+	":Р" = RADIO_CHANNEL_DEPARTMENT, ".Р" = RADIO_CHANNEL_DEPARTMENT, "#Р" = RADIO_CHANNEL_DEPARTMENT,
+	":Ц" = RADIO_MODE_WHISPER, ".Ц" = RADIO_MODE_WHISPER, "#Ц" = RADIO_MODE_WHISPER,
+
+	":Ь" = RADIO_CHANNEL_MEDSCI, ".Ь" = RADIO_CHANNEL_MEDSCI, "#Ь" = RADIO_CHANNEL_UPP_MED,
+	":Т" = RADIO_CHANNEL_ENGI, ".Т" = RADIO_CHANNEL_ENGI, "#Т" = RADIO_CHANNEL_UPP_ENGI,
+	":П" = RADIO_CHANNEL_ALMAYER, ".П" = RADIO_CHANNEL_ALMAYER, "#П" = RADIO_CHANNEL_CLF_GEN,
+	":М" = RADIO_CHANNEL_COMMAND, ".М" = RADIO_CHANNEL_COMMAND, "#М" = RADIO_CHANNEL_UPP_CMD,
+	":Ф" = SQUAD_MARINE_1, ".Ф" = SQUAD_MARINE_1, "#Ф" = RADIO_CHANNEL_CLF_MED,
+	":И" = SQUAD_MARINE_2, ".И" = SQUAD_MARINE_2, "#И" = RADIO_CHANNEL_CLF_ENGI,
+	":С" = SQUAD_MARINE_3, ".С" = SQUAD_MARINE_3, "#С" = RADIO_CHANNEL_CLF_CMD,
+	":В" = SQUAD_MARINE_4, ".В" = SQUAD_MARINE_4, "#В" = RADIO_CHANNEL_CLF_CCT,
+	":У" = SQUAD_MARINE_5, ".У" = SQUAD_MARINE_5, "#У" = RADIO_CHANNEL_PMC_ENGI,
+	":А" = SQUAD_MARINE_CRYO, ".А" = SQUAD_MARINE_CRYO, "#А" = RADIO_CHANNEL_PMC_MED,
+	":З" = RADIO_CHANNEL_MP, ".З" = RADIO_CHANNEL_MP, "#З" = RADIO_CHANNEL_PMC_GEN,
+	":Г" = RADIO_CHANNEL_REQ, ".Г" = RADIO_CHANNEL_REQ, "#Г" = RADIO_CHANNEL_UPP_GEN,
+	":О" = RADIO_CHANNEL_JTAC, ".О" = RADIO_CHANNEL_JTAC, "#О" = RADIO_CHANNEL_UPP_CCT,
+	":Е" = RADIO_CHANNEL_INTEL, ".Е" = RADIO_CHANNEL_INTEL, "#Е" = RADIO_CHANNEL_UPP_KDO,
+	":Н" = RADIO_CHANNEL_WY, ".Н" = RADIO_CHANNEL_WY, "#Н" = RADIO_CHANNEL_WY,
+	":Щ" = RADIO_CHANNEL_COLONY, ".Щ" = RADIO_CHANNEL_COLONY, "#Щ" = RADIO_CHANNEL_PMC_CCT,
+	":Я" = RADIO_CHANNEL_HIGHCOM, ".Я" = RADIO_CHANNEL_HIGHCOM, "#Я" = RADIO_CHANNEL_PMC_CMD,
+	":Л" = SQUAD_SOF, ".Л" = SQUAD_SOF, "#Л" = RADIO_CHANNEL_WY_WO,
 )
 
 /proc/channel_to_prefix(channel)
@@ -72,7 +122,7 @@ var/list/department_radio_keys = list(
 /mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
 
-/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
+/mob/living/say(message, datum/language/speaking = null, verb="говорит", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
@@ -103,7 +153,7 @@ var/list/department_radio_keys = list(
 			var/old_message = message
 			message = lisp_replace(message)
 			if(old_message != message)
-				verb = "lisps"
+				verb = "шепелявит"
 
 		if(T)
 			var/list/hearturfs = list()

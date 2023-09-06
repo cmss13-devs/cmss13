@@ -494,19 +494,20 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && length(inserted_visors))
-		for(var/obj/item/device/visor as anything in inserted_visors)
+		for(var/obj/item/device/helmet_visor/visor as anything in inserted_visors)
 			visor.forceMove(get_turf(src))
 
 		inserted_visors = list()
 		to_chat(user, SPAN_NOTICE("You remove the inserted visors."))
-		turn_off_visor(user, active_visor, TRUE)
+		var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
+		active_visor = null
+		turn_off_visor(user, temp_visor_holder, TRUE)
 
 		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
 		cycle_action.set_default_overlay()
 		if(!length(built_in_visors))
 			cycle_action.remove_from(user)
 
-		active_visor = null
 		recalculate_visors(user)
 		return
 
@@ -717,6 +718,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 technician"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
 
+/obj/item/clothing/head/helmet/marine/grey
+	desc = "A standard M10 Pattern Helmet. This one has not had a camouflage pattern applied to it yet. There is a built-in camera on the right side."
+	icon_state = "c_helmet"
+	item_state = "c_helmet"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/head/helmet/marine/tech/tanker
 	name = "\improper M50 tanker helmet"
 	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle. Features a toggleable welding screen for eye protection."
@@ -829,7 +836,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "st_helmet"
 	desc = "A helmet designed for USCM storm trooper. Contains heavy insulation, covered in nomex weave."
 	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	specialty = "M40 stormtrooper"

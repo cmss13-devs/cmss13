@@ -26,7 +26,7 @@
 
 	var/atom/movable/vehicle_light_holder/lighting_holder
 
-	var/vehicle_light_range = 5
+	var/vehicle_light_range = 7
 	var/vehicle_light_power = 2
 
 	//Yay! Working cameras in the vehicles at last!!
@@ -34,6 +34,8 @@
 	var/obj/structure/machinery/camera/vehicle/camera_int = null
 
 	var/nickname //used for single-use verb to name the vehicle. Put anything here to prevent naming
+
+	var/next_shout = 0 //to prevent spamming
 
 	var/honk_sound = 'sound/vehicles/honk_4_light.ogg'
 	var/next_honk = 0 //to prevent spamming
@@ -175,17 +177,6 @@
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
 
-	if(bound_width > world.icon_size || bound_height > world.icon_size)
-		lighting_holder = new(src)
-		lighting_holder.set_light_range(vehicle_light_range)
-		lighting_holder.set_light_power(vehicle_light_power)
-		lighting_holder.set_light_on(vehicle_light_range || vehicle_light_power)
-	else if(light_range)
-		set_light_on(TRUE)
-
-	light_pixel_x = -bound_x
-	light_pixel_y = -bound_y
-
 	healthcheck()
 	update_icon()
 
@@ -200,6 +191,20 @@
 		interior = new(src)
 		INVOKE_ASYNC(src, PROC_REF(do_create_interior))
 
+/obj/vehicle/multitile/New()
+	. = ..()
+	if(bound_width > world.icon_size || bound_height > world.icon_size)
+		lighting_holder = new(src)
+		lighting_holder.set_light_flags(LIGHT_ATTACHED)
+		lighting_holder.set_light_range(vehicle_light_range)
+		lighting_holder.set_light_power(vehicle_light_power)
+		lighting_holder.set_light_on(vehicle_light_range || vehicle_light_power)
+	else if(light_range)
+		set_light_on(TRUE)
+
+	light_pixel_x = -bound_x
+	light_pixel_y = -bound_y
+
 /obj/vehicle/multitile/proc/do_create_interior()
 	interior.create_interior(interior_map)
 
@@ -213,6 +218,8 @@
 		QDEL_NULL(interior)
 
 	QDEL_NULL_LIST(hardpoints)
+
+	QDEL_NULL(lighting_holder)
 
 	GLOB.all_multi_vehicles -= src
 

@@ -1,7 +1,7 @@
 /datum/language/common
 	name = LANGUAGE_ENGLISH
 	desc = "Common Earth English. The standard language of the United Americas."
-	speech_verb = "says"
+	speech_verb = "говорит"
 	key = "1"
 	flags = RESTRICTED
 
@@ -10,7 +10,7 @@
 /datum/language/common/get_spoken_verb(msg_end)
 	switch(msg_end)
 		if("!")
-			return pick("exclaims","shouts","yells") //TODO: make the basic proc handle lists of verbs.
+			return pick("объясняет","кричит","восклицает") //TODO: make the basic proc handle lists of verbs.
 		if("?")
 			return ask_verb
 	return speech_verb
@@ -23,7 +23,7 @@
 /datum/language/generated/japanese
 	name = LANGUAGE_JAPANESE
 	desc = "A notoriously complex language boasting an extensive grammatical system, three writing systems, and a new smattering of English loanwords. It has gained popularity due to high cultural contact in the 3WE, and finds use outside due to emigration."
-	speech_verb = "vocalizes"
+	speech_verb = "выражается"
 	color = "japanese"
 	key = "2"
 
@@ -31,9 +31,9 @@
 /datum/language/generated/chinese
 	name = LANGUAGE_CHINESE
 	desc = "The secondary language of the UPP, widespread around Asia and with a notable immigrant population in other parts of the world. The most spoken language in charted space."
-	speech_verb = "shuo"
-	ask_verb = "wen"
-	exclaim_verb = "han"
+	speech_verb = "шуо"
+	ask_verb = "вен"
+	exclaim_verb = "хан"
 	color = "chinese"
 	key = "8"
 
@@ -71,9 +71,9 @@
 /datum/language/commando
 	name = LANGUAGE_TSL
 	desc = "TSL is a modern technique with a combination of modified American sign language, tactical hand signals and discreet and esoteric code names for radios only known by elite commando groups."
-	speech_verb = "discreetly communicates"
-	ask_verb = "interrogates"
-	exclaim_verb = "orders"
+	speech_verb = "намекает"
+	ask_verb = "допрашивает"
+	exclaim_verb = "приказывает"
 	color = "commando"
 	key = "l"
 
@@ -84,34 +84,34 @@
 /datum/language/sainja //Yautja tongue
 	name = LANGUAGE_YAUTJA
 	desc = "The deep, rumbling, guttural sounds of the Yautja predators. It is difficult to speak for those without facial mandibles."
-	speech_verb = "rumbles"
-	ask_verb = "rumbles"
-	exclaim_verb = "roars"
+	speech_verb = "грохочет"
+	ask_verb = "ропочет"
+	exclaim_verb = "рычит"
 	color = "tajaran"
 	key = "s"
 	flags = WHITELISTED
 
-	syllables = list("!", "?", ".", "@", "$", "%", "^", "&", "*", "-", "=", "+", "e", "b", "y", "p", "|", "z", "~", ">")
+	syllables = list("!", "?", ".", "@", "$", "%", "^", "&", "*", "-", "=", "+", "е", "б", "у", "р", "|", "з", "~", ">")
 	space_chance = 20
 
 /datum/language/hellhound
 	name = LANGUAGE_HELLHOUND
 	desc = "A growling, guttural method of communication, only Hellhounds seem to be capable of producing these sounds."
-	speech_verb = "growls"
-	ask_verb = "grumbles"
-	exclaim_verb = "snarls"
+	speech_verb = "рычит"
+	ask_verb = "ворчит"
+	exclaim_verb = "огрызается"
 	color = "monkey"
 	key = "h"
 
 /datum/language/hellhound/scramble(input)
-	return pick("Grrr...", "Grah!", "Gurrr...")
+	return pick("Гррр...", "Гра!", "Гуррр...")
 
 /datum/language/primitive
 	name = LANGUAGE_MONKEY
 	desc = "Ook ook ook."
-	speech_verb = "chimpers"
-	ask_verb = "chimpers"
-	exclaim_verb = "screeches"
+	speech_verb = "верещит"
+	ask_verb = "верещит"
+	exclaim_verb = "визжит"
 	color = "monkey"
 	key = "9"
 
@@ -119,18 +119,18 @@
 	name = LANGUAGE_XENOMORPH
 	color = "xenotalk"
 	desc = "The common tongue of the xenomorphs."
-	speech_verb = "hisses"
-	ask_verb = "hisses"
-	exclaim_verb = "hisses"
+	speech_verb = "шипит"
+	ask_verb = "шипит"
+	exclaim_verb = "шипит"
 	key = "x"
 	flags = RESTRICTED
 
 /datum/language/xenos
 	name = LANGUAGE_HIVEMIND
 	desc = "Xenomorphs have the strange ability to commune over a psychic hivemind."
-	speech_verb = "hiveminds"
-	ask_verb = "hiveminds"
-	exclaim_verb = "hiveminds"
+	speech_verb = "сообщает"
+	ask_verb = "сообщает"
+	exclaim_verb = "сообщает"
 	color = "xeno"
 	key = "q"
 	flags = RESTRICTED|HIVEMIND
@@ -205,9 +205,9 @@
 /datum/language/event_hivemind
 	name = LANGUAGE_TELEPATH
 	desc = "An event only language that provides a hivemind for its users."
-	speech_verb = "resonates"
-	ask_verb = "resonates"
-	exclaim_verb = "resonates"
+	speech_verb = "резонирует"
+	ask_verb = "резонирует"
+	exclaim_verb = "резонирует"
 	color = "tajaran"
 	key = "7"
 	flags = RESTRICTED|HIVEMIND

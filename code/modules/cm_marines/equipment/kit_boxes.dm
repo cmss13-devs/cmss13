@@ -505,7 +505,7 @@
 	name = "\improper Cryo Self Defense Kit"
 	desc = "A basic self-defense kit reserved for emergencies. As you might expect, not much care was put into keeping the stock fresh, who would be insane enough to attack a USCM ship directly?"
 	icon_state = "cryo_defense_kit"
-	storage_slots = 2
+	storage_slots = 3
 
 /obj/item/storage/box/kit/cryo_self_defense/update_icon()
 	if(LAZYLEN(contents))

@@ -48,7 +48,7 @@
 		if(speaker == src)
 			to_chat(src, SPAN_WARNING("Я не слышу себя!"))
 		else
-			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] говорит, но я ничерта не слышу."))
+			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] говорит, но я ни черта не слышу."))
 	else
 		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>"))
 		if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
@@ -175,7 +175,7 @@
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(prob(20))
-			to_chat(src, SPAN_WARNING("Мой наушник вибрирует но я ничего не слышу..."), type = MESSAGE_TYPE_RADIO)
+			to_chat(src, SPAN_WARNING("Мой наушник вибрирует, но я ничего не слышу..."), type = MESSAGE_TYPE_RADIO)
 	else if(track)
 		if(!command)
 			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)

@@ -1140,7 +1140,17 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_state = "backpack_frame"
 	max_w_class = SIZE_HUGE
 	storage_slots = 7
-	can_hold = list(/obj/item/ammo_box/magazine/misc/mre,/obj/item/storage/firstaid/regular,/obj/item/storage/firstaid/adv,/obj/item/storage/firstaid/surgical,/obj/item/device/defibrillator/compact,/obj/item/tool/surgery/surgical_line,/obj/item/tool/surgery/synthgraft,/obj/item/storage/box/packet/rmc/he,/obj/item/storage/box/packet/rmc/incin)
+	can_hold = list(
+		/obj/item/ammo_box/magazine/misc/mre,
+		/obj/item/storage/firstaid/regular,
+		/obj/item/storage/firstaid/adv,
+		/obj/item/storage/firstaid/surgical,
+		/obj/item/device/defibrillator/compact,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/storage/box/packet/rmc/he,
+		/obj/item/storage/box/packet/rmc/incin
+	)
 
 /obj/item/storage/backpack/general_belt/rmc //the breachers belt
 	name = "\improper RMC general utility belt"

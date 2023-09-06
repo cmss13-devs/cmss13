@@ -172,8 +172,9 @@
 	},
 /area/shuttle/drop1/sulaco)
 "os" = (
-/obj/effect/attach_point/fuel/dropship1{
-	pixel_x = -32
+/obj/effect/attach_point/fuel/right/dropship1{
+	pixel_x = -32;
+	dir = 1
 	},
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "33"
@@ -485,18 +486,6 @@
 	icon_state = "62"
 	},
 /area/shuttle/drop1/sulaco)
-"KC" = (
-/obj/structure/machinery/door/airlock/hatch/cockpit{
-	req_access = null;
-	req_access_txt = "22";
-	req_one_access = null;
-	dir = 1
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "KJ" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "81"
@@ -644,7 +633,9 @@
 	},
 /area/shuttle/drop1/sulaco)
 "Ua" = (
-/obj/effect/attach_point/fuel/dropship1,
+/obj/effect/attach_point/fuel/left/dropship1{
+	dir = 1
+	},
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "28"
 	},

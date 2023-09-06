@@ -104,6 +104,10 @@
   - config: changed some config setting
   - admin: messed with admin stuff
   - server: something server ops should know
+  Morrow:
+  - bugfix: Fixed a null reference when firing full auto and dropping your weapon
+  Steelpoint:
+  - bugfix: ERT UPP Soldiers will now correctly spawn with firearms.
   harryob:
   - rscadd: guns that have full auto now start on full auto by default
   poleno1232:

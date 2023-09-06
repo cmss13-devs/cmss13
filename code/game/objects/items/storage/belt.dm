@@ -1805,7 +1805,7 @@
 		/obj/item/ammo_magazine/pistol/vp78,
 	)
 	has_gamemode_skin = FALSE
-	holster_slots = list( // PLACEHOLDER PLEASE REPLACE
+	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
 			"icon_y" = -3))

@@ -6,7 +6,7 @@
 	entry_message_body = "<a href='"+URL_WIKI_CE_GUIDE+"'>Your job</a> is to maintain your department and keep your technicians in check. You are responsible for engineering, power, ordnance, and the orbital cannon. Should the commanding and executive officer be unavailable, you are next in the chain of command."
 
 AddTimelock(/datum/job/logistics/engineering, list(
-	JOB_ENGINEER_ROLES = 10 HOURS,
+	JOB_ENGINEER_ROLES = 5 HOURS,
 ))
 
 /obj/effect/landmark/start/engineering

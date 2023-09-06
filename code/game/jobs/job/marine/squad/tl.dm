@@ -12,7 +12,7 @@
 	spawning_human.important_radio_channels += JTAC_FREQ
 
 AddTimelock(/datum/job/marine/tl, list(
-	JOB_SQUAD_ROLES = 8 HOURS
+	JOB_SQUAD_ROLES = 3 HOURS
 ))
 
 /obj/effect/landmark/start/marine/tl

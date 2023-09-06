@@ -6,8 +6,8 @@
 
 /datum/equipment_preset/twe/royal_marine/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick_weight(list(MALE = 80, FEMALE = 20,))
-	var/datum/preferences/A = new()
-	A.randomize_appearance(new_human)
+	var/datum/preferences/placeholder_pref = new()
+	placeholder_pref.randomize_appearance(new_human)
 	var/random_name
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))

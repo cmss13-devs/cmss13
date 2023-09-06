@@ -3,7 +3,7 @@
 	desc = "Big and tanky living structure made to protect the hive. Fiercely territorial."
 	construction_name = "acid pillar"
 	cost = XENO_RESIN_ACID_PILLAR_COST
-	max_per_xeno = 1
+	max_per_xeno = 5
 
 	build_overlay_icon = /obj/effect/warning/alien/weak
 

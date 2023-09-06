@@ -25,6 +25,10 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
+/obj/structure/alien/flamer_fire_act()
+	health -= 50
+	healthcheck()
+
 /obj/structure/alien/process(delta_time)
 	if(dying)
 		if(locate(/obj/effect/alien/weeds) in src.loc)
@@ -106,13 +110,13 @@
 /obj/structure/alien/sunken/proc/get_target()
 	var/list/targets = list()
 
-	for(var/atom/movable/targ in orange(7, src))
+	for(var/atom/movable/targ in orange(10, src))
 		var/turf/T = get_turf(targ)
-		if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z))
+		if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z) || get_dist(src, T) <= 3)
 			continue
 		if(ishuman(targ))
 			var/mob/living/carbon/human/H = targ
-			if(locate(/obj/item/alien_embryo) in H || get_dist(src, H) < 3)
+			if(locate(/obj/item/alien_embryo) in H)
 				continue
 			if(!H.stat)
 				targets += T

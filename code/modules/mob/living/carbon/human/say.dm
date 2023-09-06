@@ -55,7 +55,7 @@
 
 /mob/living/carbon/human/say(message)
 
-	var/verb = "says"
+	var/verb = "говорит"
 	var/alt_name = ""
 	var/message_range = world_view_size
 	var/italics = 0
@@ -161,7 +161,7 @@
 
 			for(var/mob/living/M in hearers(message_range, src))
 				if(M != src)
-					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_NOTICE("[src] говорит в [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
 			if(ishumansynth_strict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 
@@ -246,7 +246,7 @@ for it but just ignore it.
 */
 
 /mob/living/carbon/human/say_quote(message, datum/language/speaking = null)
-	var/verb = "says"
+	var/verb = "говорит"
 	var/ending = copytext(message, length(message))
 
 	if(speaking)
@@ -261,7 +261,7 @@ for it but just ignore it.
 
 /mob/living/carbon/human/proc/handle_speech_problems(message)
 	var/list/returns[3]
-	var/verb = "says"
+	var/verb = "говорит"
 	var/handled = FALSE
 	if(silent)
 		message = ""

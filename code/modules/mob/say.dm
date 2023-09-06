@@ -95,10 +95,10 @@
 				langchat_listeners += observer
 
 		if(M.stat == DEAD)
-			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>МЕРТВЕЦ:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> сообщает, <span class='message'>\"[message]\"</span></span>")
 
 		else if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
-			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>") //Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>МЕРТВЕЦ:</span> <span class='name'>[name]</span> сообщает, <span class='message'>\"[message]\"</span></span>") //Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
 
 	if(length(langchat_listeners))
 		langchat_speech(message, langchat_listeners, GLOB.all_languages, skip_language_check = TRUE)
@@ -140,7 +140,7 @@ for it but just ignore it.
 */
 
 /mob/proc/say_quote(message, datum/language/speaking = null)
-		var/verb = "says"
+		var/verb = "говорит"
 		var/ending = copytext(message, length(message))
 		if(ending=="!")
 				verb=pick("восклицает","кричит","вопит")

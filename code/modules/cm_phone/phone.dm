@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	T.caller = src
 	T.update_icon()
 
-	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
+	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Звоню [calling_phone_id].."))
 	playsound(get_turf(user), "rtb_handset")
 	timeout_timer_id = addtimer(CALLBACK(src, PROC_REF(reset_call), TRUE), timeout_duration, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
 
@@ -192,12 +192,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	if(T.attached_to && ismob(T.attached_to.loc))
 		var/mob/M = T.attached_to.loc
-		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has picked up."))
+		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] отвечает."))
 		if(T.timeout_timer_id)
 			deltimer(T.timeout_timer_id)
 			T.timeout_timer_id = null
 
-	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Picked up a call from [T.phone_id]."))
+	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] ответил [T.phone_id]."))
 	playsound(get_turf(user), "rtb_handset")
 
 	user.put_in_active_hand(attached_to)
@@ -223,14 +223,14 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(T)
 		if(T.attached_to && ismob(T.attached_to.loc))
 			var/mob/M = T.attached_to.loc
-			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has hung up on you."))
+			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] бросает трубку."))
 
 		if(attached_to && ismob(attached_to.loc))
 			var/mob/M = attached_to.loc
 			if(timeout)
-				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] Your call to [T.phone_id] has reached voicemail, you immediately disconnect the line."))
+				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] Вместо [T.phone_id] я слышу автоответчик и кладу трубку."))
 			else
-				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You have hung up on [T.phone_id]."))
+				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] Я заканчиваю разговор с [T.phone_id]."))
 
 	if(calling)
 		calling.caller = null
@@ -263,7 +263,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		if(attached_to.loc == src)
 			if(next_ring < world.time)
 				playsound(loc, 'sound/machines/telephone/telephone_ring.ogg', 75)
-				visible_message(SPAN_WARNING("[src] rings vigorously!"))
+				visible_message(SPAN_WARNING("[src] настойчиво звонит!"))
 				next_ring = world.time + 3 SECONDS
 
 	else if(calling)
@@ -276,7 +276,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 		if(P && attached_to.loc == src && P.loc == T && next_ring < world.time)
 			playsound(get_turf(attached_to), 'sound/machines/telephone/telephone_ring.ogg', 20, FALSE, 14)
-			visible_message(SPAN_WARNING("[src] rings vigorously!"))
+			visible_message(SPAN_WARNING("[src] настойчиво звонит!"))
 			next_ring = world.time + 3 SECONDS
 
 	else
@@ -396,7 +396,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		vname = attached_to.phone_id
 
 	M.hear_radio(
-		message, "says", L, part_a = "<span class='purple'><span class='name'>",
+		message, "говорит", L, part_a = "<span class='purple'><span class='name'>",
 		part_b = "</span><span class='message'> ", vname = vname,
 		speaker = speaking, command = loudness, no_paygrade = TRUE)
 
@@ -463,10 +463,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	..()
 	if(raised)
 		set_raised(FALSE, user)
-		to_chat(user, SPAN_NOTICE("You lower [src]."))
+		to_chat(user, SPAN_NOTICE("Я откладываю [src]."))
 	else
 		set_raised(TRUE, user)
-		to_chat(user, SPAN_NOTICE("You raise [src] to your ear."))
+		to_chat(user, SPAN_NOTICE("Я подношу [src] к уху."))
 
 
 /obj/item/phone/proc/set_raised(to_raise, mob/living/carbon/human/H)

@@ -48,7 +48,7 @@
 		if(speaker == src)
 			to_chat(src, SPAN_WARNING("Я не слышу себя!"))
 		else
-			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] говорит, но я ничерта не слышу."))
+			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] говорит, но я ни черта не слышу."))
 	else
 		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>"))
 		if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))

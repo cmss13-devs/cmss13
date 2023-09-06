@@ -1916,6 +1916,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		target = src.target
 	if(!user)
 		user = gun_user
+	if(!target || !user)
+		return NONE
 	return Fire(target, user, params, reflex, dual_wield)
 
 /// Setter proc for fa_firing

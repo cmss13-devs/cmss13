@@ -74,24 +74,24 @@
 	xgibs(src.loc)
 	qdel(src)
 
-/obj/structure/alien/attack_alien(mob/living/carbon/xenomorph/M)
-	if(islarva(M)) //Larvae can't do shit
-		return
+// /obj/structure/alien/attack_alien(mob/living/carbon/xenomorph/M)
+// 	if(islarva(M)) //Larvae can't do shit
+// 		return
 
-	if(M.a_intent == INTENT_HELP)
-		return XENO_NO_DELAY_ACTION
-	else
-		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
-		SPAN_XENONOTICE("You claw \the [src]."))
-		if(istype(src, /obj/effect/alien/resin/sticky))
-			playsound(loc, "alien_resin_move", 25)
-		else
-			playsound(loc, "alien_resin_break", 25)
+// 	if(M.a_intent == INTENT_HELP)
+// 		return XENO_NO_DELAY_ACTION
+// 	else
+// 		M.animation_attack_on(src)
+// 		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+// 		SPAN_XENONOTICE("You claw \the [src]."))
+// 		if(istype(src, /obj/effect/alien/resin/sticky))
+// 			playsound(loc, "alien_resin_move", 25)
+// 		else
+// 			playsound(loc, "alien_resin_break", 25)
 
-		health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
-		healthcheck()
-	return XENO_ATTACK_ACTION
+// 		health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
+// 		healthcheck()
+// 	return XENO_ATTACK_ACTION
 
 //Sunken Colony
 /obj/structure/alien/sunken
@@ -99,7 +99,7 @@
 	desc = "A living stationary organism that strikes from below with its powerful claw."
 	pixel_y = -8
 
-	var/cooldown = 5 SECONDS
+	var/cooldown = 10 SECONDS
 	var/can_attack = 1
 
 	// xeno_tag = SUNKEN_COLONY
@@ -129,7 +129,7 @@
 /obj/structure/alien/sunken/proc/get_target()
 	var/list/targets = list()
 
-	for(var/atom/movable/targ in orange(10, src))
+	for(var/atom/movable/targ in orange(7, src))
 		var/turf/T = get_turf(targ)
 		if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z) || get_dist(src, T) <= 3)
 			continue
@@ -172,6 +172,7 @@
 /obj/effect/impaler/Initialize(mapload, ...)
 	. = ..()
 	visible_message(SPAN_HIGHDANGER("Ground starts to rumble!"))
+	playsound(loc, "alien_bite", 25, 1)
 
 /obj/effect/impaler/proc/strike()
 	icon_state = "strike"

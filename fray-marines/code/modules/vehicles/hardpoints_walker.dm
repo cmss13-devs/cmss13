@@ -240,7 +240,7 @@
 	name = "M56 Double-Barrel Magazine (Standart)"
 	desc = "A armament MG magazine"
 	caliber = "10x28mm" //Correlates to smartguns
-	icon_state = "big_ammo_box"
+	icon_state = "ua571c"
 	default_ammo = /datum/ammo/bullet/smartgun
 	max_rounds = 700
 	gun_type = /obj/item/walker_gun/smartgun

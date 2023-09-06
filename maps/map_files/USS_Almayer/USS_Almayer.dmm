@@ -34455,7 +34455,8 @@
 "fMi" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo{
-	dir = 2
+	dir = 2;
+	req_one_access = list(15,18)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -63578,7 +63579,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo{
 	dir = 2;
-	req_one_access = s
+	req_one_access = list(15,18)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -69492,7 +69493,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo{
 	dir = 2;
-	req_one_access = list(15,19)
+	req_one_access = list(15,18)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

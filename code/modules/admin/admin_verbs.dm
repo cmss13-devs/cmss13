@@ -454,7 +454,7 @@ var/list/roundstart_mod_verbs = list(
 		if(!msg)
 			return
 		for (var/mob/V in hearers(mob.control_object))
-			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", SHOW_MESSAGE_AUDIBLE)
+			V.show_message("<b>[mob.control_object.name]</b> говорит: \"" + msg + "\"", SHOW_MESSAGE_AUDIBLE)
 
 
 /client/proc/toggle_log_hrefs()

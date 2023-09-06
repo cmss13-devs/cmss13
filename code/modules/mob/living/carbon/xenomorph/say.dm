@@ -1,5 +1,5 @@
 /mob/living/carbon/xenomorph/say(message)
-	var/verb = "says"
+	var/verb = "говорит"
 	var/forced = 0
 	var/message_range = world_view_size
 
@@ -61,7 +61,7 @@
 		var/old_message = message
 		message = lisp_replace(message)
 		if(old_message != message)
-			verb = "lisps"
+			verb = "шепелявит"
 
 	if(copytext(message,1,2) == ";")
 		message = trim(copytext(message,2))
@@ -105,7 +105,7 @@
 		return
 
 	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions && ROUND_TIME > SSticker.mode.round_time_evolution_ovipositor)
-		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		to_chat(src, SPAN_WARNING("Королевы нет... Так одиноко..."))
 		return
 
 	log_hivemind("[key_name(src)] : [message]")
@@ -133,13 +133,13 @@
 						var/mob/hologram/queen/queen_eye = client?.eye
 						if(istype(queen_eye))
 							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
+						ghostrend = SPAN_XENOQUEEN("Коллективный разум, [src.name][track] шипит, <span class='normal'>'[message]'</span>")
 					else if(hive.leading_cult_sl == src)
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
+						ghostrend = SPAN_XENOQUEEN("Коллективный разум, [src.name][track] шипит, <span class='normal'>'[message]'</span>")
 					else if(istype(X) && IS_XENO_LEADER(X))
-						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [src.name][track] hisses, <span class='normal'>'[message]'</span>")
+						ghostrend = SPAN_XENOLEADER("Коллективный разум, Лидер [src.name][track] шипит, <span class='normal'>'[message]'</span>")
 					else
-						ghostrend = SPAN_XENO("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
+						ghostrend = SPAN_XENO("Коллективный разум, [src.name][track] шипит, <span class='normal'>'[message]'</span>")
 					S.show_message(ghostrend, SHOW_MESSAGE_AUDIBLE)
 
 			else if(hive.hivenumber == xeno_hivenumber(S) || hive.hivenumber == hear_hivemind)
@@ -147,11 +147,11 @@
 					overwatch_insert = " (<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
 				if(isqueen(src) || hive.leading_cult_sl == src)
-					rendered = SPAN_XENOQUEEN("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+					rendered = SPAN_XENOQUEEN("Коллективный разум, [src.name][overwatch_insert] шипит, <span class='normal'>'[message]'</span>")
 				else if(istype(X) && IS_XENO_LEADER(X))
-					rendered = SPAN_XENOLEADER("Hivemind, Leader [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+					rendered = SPAN_XENOLEADER("Коллективный разум, Лидер [src.name][overwatch_insert] шипит, <span class='normal'>'[message]'</span>")
 				else
-					rendered = SPAN_XENO("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+					rendered = SPAN_XENO("Коллективный разум, [src.name][overwatch_insert] шипит, <span class='normal'>'[message]'</span>")
 
 				S.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
 

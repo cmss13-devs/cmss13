@@ -517,6 +517,64 @@ var/datum/controller/supply/supply_controller = new()
 		points += points_per_crate
 		qdel(C)
 
+	//Зачем им трупы
+	var/points_per_xeno_t1 = 20
+	var/points_per_xeno_t2 = 40
+	var/points_per_xeno_t3 = 70
+	var/points_per_xeno_q = 150
+	for(var/mob/living/carbon/xenomorph/larva in area_shuttle)
+		points += 6
+		qdel(larva)
+	for(var/mob/living/carbon/xenomorph/carrier in area_shuttle)
+		points += points_per_xeno_t2
+		qdel(carrier)
+	for(var/mob/living/carbon/xenomorph/ravager in area_shuttle)
+		points += points_per_xeno_t3
+		qdel(ravager)
+	for(var/mob/living/carbon/xenomorph/praetorian in area_shuttle)
+		points += points_per_xeno_t3
+		qdel(praetorian)
+	for(var/mob/living/carbon/xenomorph/hivelord in area_shuttle)
+		points += points_per_xeno_t2
+		qdel(hivelord)
+	for(var/mob/living/carbon/xenomorph/defender in area_shuttle)
+		points += points_per_xeno_t1
+		qdel(defender)
+	for(var/mob/living/carbon/xenomorph/warrior in area_shuttle)
+		points += points_per_xeno_t2
+		qdel(warrior)
+	for(var/mob/living/carbon/xenomorph/facehugger in area_shuttle)
+		points += 5
+		qdel(facehugger)
+	for(var/mob/living/carbon/xenomorph/runner in area_shuttle)
+		points += points_per_xeno_t1
+		qdel(runner)
+	for(var/mob/living/carbon/xenomorph/boiler in area_shuttle)
+		points += points_per_xeno_t3
+		qdel(boiler)
+	for(var/mob/living/carbon/xenomorph/crusher in area_shuttle)
+		points += points_per_xeno_t3
+		qdel(crusher)
+	for(var/mob/living/carbon/xenomorph/burrower in area_shuttle)
+		points += points_per_xeno_t2
+		qdel(burrower)
+	for(var/mob/living/carbon/xenomorph/drone in area_shuttle)
+		points += points_per_xeno_t1
+		qdel(drone)
+	for(var/mob/living/carbon/xenomorph/spitter in area_shuttle)
+		points += points_per_xeno_t2
+		qdel(spitter)
+	for(var/mob/living/carbon/xenomorph/sentinel in area_shuttle)
+		points += points_per_xeno_t1
+		qdel(sentinel)
+	for(var/mob/living/carbon/xenomorph/lurker in area_shuttle)
+		points += points_per_xeno_t2
+		qdel(lurker)
+	for(var/mob/living/carbon/xenomorph/queen in area_shuttle)
+		points += points_per_xeno_q
+		qdel(queen) //Квина иди нахуй
+
+
 	// Sell manifests.
 	var/screams = FALSE
 	for(var/atom/movable/movable_atom in area_shuttle)

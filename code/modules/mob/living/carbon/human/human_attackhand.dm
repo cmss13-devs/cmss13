@@ -4,7 +4,7 @@
 	if(..())
 		return TRUE
 
-	if((attacking_mob != src) && check_shields(0, attacking_mob.name))
+	if((attacking_mob != src) && check_shields(0, attacking_mob.name, attacker_dir = get_dir(attacking_mob,src)))
 		visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to touch [src]!</B>"), null, null, 5)
 		return 0
 

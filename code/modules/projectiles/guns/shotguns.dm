@@ -391,7 +391,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	starting_attachment_types = list(/obj/item/attachable/stock/type23)
 
 /obj/item/weapon/gun/shotgun/type23/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 19,"rail_x" = 13, "rail_y" = 21, "under_x" = 24, "under_y" = 15, "stock_x" = 1, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 13, "rail_y" = 21, "under_x" = 24, "under_y" = 15, "stock_x" = -1, "stock_y" = 17)
 
 /obj/item/weapon/gun/shotgun/type23/set_gun_config_values()
 	..()
@@ -1186,7 +1186,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube
 	name = "generic dual-tube pump shotgun"
-	desc = "A twenty-round pump action shotgun with dual internal tube magazines. You can switch the active internal magazine by toggling burst fire mode."
+	desc = "A twenty-round pump action shotgun with dual internal tube magazines. You can switch the active internal magazine by toggling the shotgun tube."
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	var/obj/item/ammo_magazine/internal/shotgun/primary_tube
 	var/obj/item/ammo_magazine/internal/shotgun/secondary_tube
@@ -1220,7 +1220,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 	return TRUE
 
-/obj/item/weapon/gun/shotgun/pump/dual_tube/set_bursting()
+/obj/item/weapon/gun/shotgun/pump/dual_tube/verb/toggle_tube()
+	set category = "Weapons"
+	set name = "Toggle Shotgun Tube"
+	set desc = "Toggles which shotgun tube your gun loads from."
+	set src = usr.contents
+
 	var/obj/item/weapon/gun/shotgun/pump/dual_tube/shotgun = get_active_firearm(usr)
 	if(shotgun == src)
 		swap_tube(usr)
@@ -1229,7 +1234,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb
 	name = "\improper HG 37-12 pump shotgun"
-	desc = "A eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals. You can switch the active internal magazine by toggling burst fire mode."
+	desc = "A eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals. You can switch the active internal magazine by toggling the shotgun tube."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "hg3712"
 	item_state = "hg3712"
@@ -1269,7 +1274,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717
 	name = "\improper M37-17 pump shotgun"
-	desc = "A military version of the iconic HG 37-12, this design can fit one extra shell in each of its dual-tube internal magazines, and fires shells with increased velocity, resulting in more damage. Issued to select USCM vessels out on the rim. You can switch the active internal magazine by toggling burst fire mode."
+	desc = "A military version of the iconic HG 37-12, this design can fit one extra shell in each of its dual-tube internal magazines, and fires shells with increased velocity, resulting in more damage. Issued to select USCM vessels out on the rim. You can switch the active internal magazine by toggling the shotgun tube."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m3717"
 	item_state = "m3717"

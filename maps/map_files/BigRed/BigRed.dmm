@@ -30946,6 +30946,28 @@
 	icon_state = "floor5"
 	},
 /area/bigredv2/oob)
+"jRi" = (
+/obj/item/ammo_magazine/smg/bizon{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/weapon/gun/smg/bizon{
+	pixel_x = 1;
+	pixel_y = 11
+	},
+/obj/item/ammo_magazine/smg/bizon{
+	pixel_x = 11;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/smg/bizon,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/caves/mining)
 "jUc" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -32107,28 +32129,6 @@
 	},
 /obj/item/reagent_container/food/snacks/tofu{
 	pixel_y = 11
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
-/area/bigredv2/caves/mining)
-"mmz" = (
-/obj/item/ammo_magazine/pistol/skorpion{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/weapon/gun/pistol/skorpion{
-	pixel_x = 1;
-	pixel_y = 11
-	},
-/obj/item/ammo_magazine/pistol/skorpion{
-	pixel_x = 11;
-	pixel_y = -3
-	},
-/obj/item/ammo_magazine/pistol/skorpion,
-/obj/structure/machinery/light/small{
-	dir = 8
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -42324,7 +42324,7 @@ aao
 aao
 uHQ
 rMg
-mmz
+jRi
 uHQ
 rYD
 rtS
@@ -43253,7 +43253,7 @@ aah
 aah
 aaF
 aah
-aau
+aah
 aei
 aaf
 aaf
@@ -44111,7 +44111,7 @@ aah
 aah
 aah
 aah
-aah
+aau
 aah
 aah
 aah
@@ -44655,7 +44655,7 @@ bjo
 bie
 bje
 bie
-biI
+bie
 bsc
 eWd
 eWd
@@ -45513,7 +45513,7 @@ bie
 bie
 bie
 bie
-bie
+biI
 bie
 bie
 bie

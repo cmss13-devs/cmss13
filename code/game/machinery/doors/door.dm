@@ -49,7 +49,7 @@
 /obj/structure/machinery/door/Destroy()
 	. = ..()
 	if(filler && width > 1)
-		filler.SetOpacity(0)// Ehh... let's hope there are no walls there. Must fix this
+		filler.set_opacity(0)// Ehh... let's hope there are no walls there. Must fix this
 		filler = null
 	density = FALSE
 
@@ -64,12 +64,12 @@
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size
 			filler = get_step(src,EAST)
-			filler.SetOpacity(opacity)
+			filler.set_opacity(opacity)
 		else
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
 			filler = get_step(src,NORTH)
-			filler.SetOpacity(opacity)
+			filler.set_opacity(opacity)
 
 //process()
 	//return
@@ -222,9 +222,9 @@
 	operating = TRUE
 	do_animate("opening")
 	icon_state = "door0"
-	SetOpacity(FALSE)
+	set_opacity(FALSE)
 	if(filler)
-		filler.SetOpacity(opacity)
+		filler.set_opacity(opacity)
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
 	return TRUE
 
@@ -255,9 +255,9 @@
 /obj/structure/machinery/door/proc/finish_close()
 	update_icon()
 	if(visible && !glass)
-		SetOpacity(TRUE)
+		set_opacity(TRUE)
 		if(filler)
-			filler.SetOpacity(opacity)
+			filler.set_opacity(opacity)
 	operating = FALSE
 
 /obj/structure/machinery/door/proc/requiresID()
@@ -279,15 +279,15 @@
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size
-			filler.SetOpacity(0)
+			filler.set_opacity(0)
 			filler = (get_step(src,EAST)) //Find new turf
-			filler.SetOpacity(opacity)
+			filler.set_opacity(opacity)
 		else
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
-			filler.SetOpacity(0)
+			filler.set_opacity(0)
 			filler = (get_step(src,NORTH)) //Find new turf
-			filler.SetOpacity(opacity)
+			filler.set_opacity(opacity)
 
 
 /obj/structure/machinery/door/morgue

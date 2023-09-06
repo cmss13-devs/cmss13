@@ -526,6 +526,24 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	/// For things that might affect someone/everyone's round if hidden.
 	var/static/blocked_atoms = list(/obj/item/device/cotablet, /obj/item/card/id)
 	var/static/blacklist_typecache
+	//layer shouldn't be put on dmm unless aestetic reason....
+	layer = ABOVE_XENO_LAYER
+
+//made for fiorina.
+/obj/structure/flora/pottedplant/pottedplant_27
+	icon_state = "pottedplant_27"
+/obj/structure/flora/pottedplant/pottedplant_29
+	icon_state = "pottedplant_29"
+/obj/structure/flora/pottedplant/pottedplant_22
+	icon_state = "pottedplant_22"
+/obj/structure/flora/pottedplant/pottedplant_21
+	icon_state = "pottedplant_21"
+/obj/structure/flora/pottedplant/pottedplant_7
+	icon_state = "pottedplant_7"
+/obj/structure/flora/pottedplant/pottedplant_17
+	icon_state = "pottedplant_17";
+/obj/structure/flora/pottedplant/pottedplant_18
+	icon_state = "pottedplant_18";
 
 /obj/structure/flora/pottedplant/Initialize(mapload)
 	. = ..()
@@ -603,11 +621,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	name = "strange tree"
 	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
 	icon_state = "alienplant1"
-	luminosity = 2
-
-/obj/structure/flora/jungle/alienplant1/Destroy()
-	SetLuminosity(0)
-	return ..()
+	light_range = 2
 
 /obj/structure/flora/jungle/planttop1
 	name = "strange tree"
@@ -633,15 +647,15 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 /obj/structure/flora/jungle/vines/light_1
 	icon_state = "light_1"
-	icon_tag = "light_1"
+	icon_tag = "light"
 
 /obj/structure/flora/jungle/vines/light_2
 	icon_state = "light_2"
-	icon_tag = "light_2"
+	icon_tag = "light"
 
 /obj/structure/flora/jungle/vines/light_3
 	icon_state = "light_3"
-	icon_tag = "light_3"
+	icon_tag = "light"
 
 //heavy hide you
 /obj/structure/flora/jungle/vines/heavy

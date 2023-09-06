@@ -42,7 +42,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/warns = 0
 	var/muted = 0
 	var/last_ip
-	var/fps = 20
+	var/fps = 60
 	var/last_id
 	var/save_cooldown = 0 //5s cooldown between saving slots
 	var/reload_cooldown = 0 //5s cooldown between loading slots
@@ -87,6 +87,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_age = 100
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"
+	var/predator_use_legacy = "None"
 	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
 	var/predator_armor_type = 1
@@ -233,6 +234,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
+
+	/// if this client has tooltips enabled
+	var/tooltips = TRUE
 
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -508,6 +512,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				dat += "<div id='column2'>"
 				dat += "<h2><b><u>Equipment Setup:</u></b></h2>"
+				if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_YAUTJA_LEGACY)
+					dat += "<b>Legacy Gear:</b> <a href='?_src_=prefs;preference=pred_use_legacy;task=input'><b>[predator_use_legacy]</b></a><br>"
 				dat += "<b>Translator Type:</b> <a href='?_src_=prefs;preference=pred_trans_type;task=input'><b>[predator_translator_type]</b></a><br>"
 				dat += "<b>Mask Style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'><b>([predator_mask_type])</b></a><br>"
 				dat += "<b>Armor Style:</b> <a href='?_src_=prefs;preference=pred_armor_type;task=input'><b>([predator_armor_type])</b></a><br>"
@@ -573,6 +579,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			dat += "<b>Adaptive Zoom:</b> <a href='?_src_=prefs;preference=adaptive_zoom'>[adaptive_zoom ? "[adaptive_zoom * 2]x" : "Disabled"]</a><br>"
+			dat += "<b>Tooltips:</b> <a href='?_src_=prefs;preference=tooltips'><b>[tooltips ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
@@ -1233,6 +1240,11 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(175 to 3000):", "Character Preference", 1234, 3000, 175)
 					if(new_predator_age)
 						predator_age = max(min( round(text2num(new_predator_age)), 3000),175)
+				if("pred_use_legacy")
+					var/legacy_choice = tgui_input_list(user, "What legacy set do you wish to use?", "Legacy Set", PRED_LEGACIES)
+					if(!legacy_choice)
+						return
+					predator_use_legacy = legacy_choice
 				if("pred_trans_type")
 					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
 					if(!new_translator_type)
@@ -1861,6 +1873,17 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(adaptive_zoom == 3)
 						adaptive_zoom = 0
 					owner?.adaptive_zoom()
+
+				if("tooltips")
+					tooltips = !tooltips
+					save_preferences()
+
+					if(!tooltips)
+						closeToolTip()
+						return
+
+					if(!owner.tooltips)
+						owner.tooltips = new(owner)
 
 				if("inputstyle")
 					var/result = tgui_alert(user, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))

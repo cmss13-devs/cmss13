@@ -26,7 +26,7 @@
 			icon_state = "[base_icon_state]0"
 			sleep(15)
 			density = FALSE
-			SetOpacity(0)
+			set_opacity(0)
 			operating = 0
 			return
 	return
@@ -46,7 +46,7 @@
 /obj/structure/machinery/door/poddoor/shutters/finish_open()
 	density = FALSE
 	layer = open_layer
-	SetOpacity(0)
+	set_opacity(0)
 
 	if(operating) //emag again
 		operating = FALSE
@@ -63,7 +63,7 @@
 	layer = closed_layer
 	density = TRUE
 	if(visible)
-		SetOpacity(1)
+		set_opacity(1)
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 
 	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)

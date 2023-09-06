@@ -16,9 +16,9 @@
 /obj/structure/machinery/door/poddoor/Initialize()
 	. = ..()
 	if(density)
-		SetOpacity(1)
+		set_opacity(1)
 	else
-		SetOpacity(0)
+		set_opacity(0)
 	update_icon()
 
 /obj/structure/machinery/door/poddoor/update_icon()
@@ -42,7 +42,7 @@
 			operating = 1
 			flick("[base_icon_state]c0", src)
 			icon_state = "[base_icon_state]0"
-			SetOpacity(0)
+			set_opacity(0)
 			sleep(15)
 			density = FALSE
 			operating = 0
@@ -84,7 +84,7 @@
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 	flick("[base_icon_state]c0", src)
 	icon_state = "[base_icon_state]0"
-	SetOpacity(0)
+	set_opacity(0)
 
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
 	return TRUE
@@ -102,7 +102,7 @@
 	flick("[base_icon_state]c1", src)
 	icon_state = "[base_icon_state]1"
 	density = TRUE
-	SetOpacity(initial(opacity))
+	set_opacity(initial(opacity))
 
 	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
 	return
@@ -123,13 +123,13 @@
 /obj/structure/machinery/door/poddoor/two_tile/proc/start_opening()
 	flick("[base_icon_state]c0", src)
 	icon_state = "[base_icon_state]0"
-	SetOpacity(0)
-	f1.SetOpacity(0)
-	f2.SetOpacity(0)
+	set_opacity(0)
+	f1.set_opacity(0)
+	f2.set_opacity(0)
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/start_opening()
-	f3.SetOpacity(0)
-	f4.SetOpacity(0)
+	f3.set_opacity(0)
+	f4.set_opacity(0)
 	..()
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/open_fully()
@@ -169,14 +169,14 @@
 	..()
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/close_fully()
-	SetOpacity(initial(opacity))
-	f1.SetOpacity(initial(opacity))
-	f2.SetOpacity(initial(opacity))
+	set_opacity(initial(opacity))
+	f1.set_opacity(initial(opacity))
+	f2.set_opacity(initial(opacity))
 	operating = 0
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/close_fully()
-	f3.SetOpacity(initial(opacity))
-	f4.SetOpacity(initial(opacity))
+	f3.set_opacity(initial(opacity))
+	f4.set_opacity(initial(opacity))
 	..()
 
 /obj/structure/machinery/door/poddoor/two_tile
@@ -194,8 +194,8 @@
 	f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,dir))
 	f1.density = density
 	f2.density = density
-	f1.SetOpacity(opacity)
-	f2.SetOpacity(opacity)
+	f1.set_opacity(opacity)
+	f2.set_opacity(opacity)
 
 /obj/structure/machinery/door/poddoor/two_tile/Destroy()
 	QDEL_NULL(f1)
@@ -223,8 +223,8 @@
 	f4 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f3,dir))
 	f3.density = density
 	f4.density = density
-	f3.SetOpacity(opacity)
-	f4.SetOpacity(opacity)
+	f3.set_opacity(opacity)
+	f4.set_opacity(opacity)
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/Destroy()
 	QDEL_NULL(f3)

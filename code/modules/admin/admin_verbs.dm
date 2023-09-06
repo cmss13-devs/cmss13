@@ -133,8 +133,10 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_shipside_sd,
 	/client/proc/shakeshipverb,
 	/client/proc/adminpanelweapons,
-	/client/proc/adminpanelgq,
-	/client/proc/toggle_hardcore_perma
+	/client/proc/admin_general_quarters,
+	/client/proc/admin_biohazard_alert,
+	/client/proc/toggle_hardcore_perma,
+	/client/proc/toggle_bypass_joe_restriction,
 )
 
 var/list/admin_verbs_major_event = list(

@@ -14,20 +14,13 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"ax" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "101"
-	},
+"ar" = (
+/obj/structure/shuttle/part/dropship1/left_outer_wing_connector,
+/turf/open/space/basic,
 /area/shuttle/drop1/sulaco)
-"be" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "74"
-	},
-/area/shuttle/drop1/sulaco)
-"bj" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "102"
-	},
+"au" = (
+/obj/structure/shuttle/part/dropship1/transparent/nose_center,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "cr" = (
 /obj/structure/machinery/camera/autoname/almayer/dropship_one{
@@ -46,16 +39,6 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"cC" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "99"
-	},
-/area/shuttle/drop1/sulaco)
-"cK" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "17"
-	},
-/area/shuttle/drop1/sulaco)
 "cR" = (
 /obj/item/device/radio/intercom/alamo{
 	pixel_y = 24
@@ -64,10 +47,18 @@
 	icon_state = "rasputin6"
 	},
 /area/shuttle/drop1/sulaco)
+"cW" = (
+/obj/structure/shuttle/part/dropship1/transparent/right_inner_bottom_wing,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
 "de" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "42"
 	},
+/area/shuttle/drop1/sulaco)
+"df" = (
+/obj/structure/shuttle/part/dropship1/transparent/upper_left_wing,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "dU" = (
 /obj/structure/machinery/door_control{
@@ -82,19 +73,18 @@
 	icon_state = "floor8"
 	},
 /area/shuttle/drop1/sulaco)
-"eD" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "41"
-	},
+"ei" = (
+/obj/structure/shuttle/part/dropship1/transparent/left_inner_bottom_wing,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"fJ" = (
+/obj/effect/attach_point/weapon/dropship1/right_fore,
+/obj/structure/shuttle/part/dropship1/transparent/outer_right_weapons,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "hG" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "75"
-	},
-/area/shuttle/drop1/sulaco)
-"if" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "3"
 	},
 /area/shuttle/drop1/sulaco)
 "ig" = (
@@ -132,9 +122,10 @@
 	icon_state = "67"
 	},
 /area/shuttle/drop1/sulaco)
-"jz" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "70"
+"lP" = (
+/obj/docking_port/mobile/marine_dropship/alamo,
+/turf/closed/shuttle/dropship1{
+	icon_state = "53"
 	},
 /area/shuttle/drop1/sulaco)
 "mb" = (
@@ -146,6 +137,14 @@
 	},
 /turf/closed/shuttle/dropship1{
 	icon_state = "52"
+	},
+/area/shuttle/drop1/sulaco)
+"ne" = (
+/obj/effect/attach_point/fuel/left/dropship1{
+	dir = 1
+	},
+/turf/closed/shuttle/dropship1/transparent{
+	icon_state = "28"
 	},
 /area/shuttle/drop1/sulaco)
 "nC" = (
@@ -171,34 +170,18 @@
 	icon_state = "76"
 	},
 /area/shuttle/drop1/sulaco)
-"os" = (
-/obj/effect/attach_point/fuel/right/dropship1{
-	pixel_x = -32;
-	dir = 1
-	},
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "33"
-	},
-/area/shuttle/drop1/sulaco)
-"oW" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "66"
-	},
-/area/shuttle/drop1/sulaco)
 "po" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "25"
 	},
 /area/shuttle/drop1/sulaco)
+"pv" = (
+/obj/structure/shuttle/part/dropship1/right_inner_wing_connector,
+/turf/open/space/basic,
+/area/shuttle/drop1/sulaco)
 "qn" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "50"
-	},
-/area/shuttle/drop1/sulaco)
-"qu" = (
-/obj/effect/attach_point/weapon/dropship1/left_wing,
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "61"
 	},
 /area/shuttle/drop1/sulaco)
 "qy" = (
@@ -222,10 +205,9 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"rl" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "49"
-	},
+"qK" = (
+/obj/structure/shuttle/part/dropship1/transparent/nose_top_right,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "rr" = (
 /turf/closed/shuttle/dropship1/transparent{
@@ -240,16 +222,6 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"rV" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "2"
-	},
-/area/shuttle/drop1/sulaco)
-"sA" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "46"
-	},
-/area/shuttle/drop1/sulaco)
 "tR" = (
 /obj/item/device/radio/intercom/alamo{
 	layer = 3.5;
@@ -260,16 +232,36 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"wh" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "20"
+"uI" = (
+/obj/effect/attach_point/weapon/dropship1/left_wing,
+/obj/structure/shuttle/part/dropship1/transparent/lower_left_wing,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"uM" = (
+/obj/effect/attach_point/weapon/dropship1/right_wing,
+/obj/structure/shuttle/part/dropship1/transparent/lower_right_wing,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"uS" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit{
+	req_access = null;
+	req_access_txt = "22";
+	req_one_access = null;
+	dir = 1
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/machinery/door/airlock/hatch/cockpit,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"wk" = (
-/obj/effect/attach_point/weapon/dropship1/right_wing,
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "65"
-	},
+"vu" = (
+/obj/structure/shuttle/part/dropship1/nose_front_right,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "wr" = (
 /obj/effect/attach_point/crew_weapon/dropship1,
@@ -298,29 +290,13 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"xu" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "44"
-	},
-/area/shuttle/drop1/sulaco)
-"xM" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "15"
-	},
+"xo" = (
+/obj/structure/shuttle/part/dropship1/bottom_left_wall,
+/turf/open/space/basic,
 /area/shuttle/drop1/sulaco)
 "yQ" = (
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "89"
-	},
-/area/shuttle/drop1/sulaco)
-"yU" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "9"
-	},
-/area/shuttle/drop1/sulaco)
-"zw" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "71"
 	},
 /area/shuttle/drop1/sulaco)
 "zN" = (
@@ -338,27 +314,18 @@
 	icon_state = "69"
 	},
 /area/shuttle/drop1/sulaco)
-"AQ" = (
-/obj/structure/machinery/door/airlock/hatch/cockpit{
-	req_access = null;
-	req_access_txt = "22";
-	req_one_access = null;
-	dir = 1
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/hatch/cockpit,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+"An" = (
+/obj/structure/shuttle/part/dropship1/right_outer_wing_connector,
+/turf/open/space/basic,
 /area/shuttle/drop1/sulaco)
 "Bn" = (
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "38"
 	},
+/area/shuttle/drop1/sulaco)
+"Bt" = (
+/obj/structure/shuttle/part/dropship1/nose_front_left,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "BB" = (
 /turf/closed/shuttle/dropship1{
@@ -392,22 +359,6 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"Da" = (
-/obj/effect/attach_point/electronics/dropship1{
-	dir = 1
-	},
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "85"
-	},
-/area/shuttle/drop1/sulaco)
-"De" = (
-/obj/effect/attach_point/electronics/dropship1{
-	dir = 1
-	},
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "90"
-	},
-/area/shuttle/drop1/sulaco)
 "Et" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "72"
@@ -418,25 +369,25 @@
 	icon_state = "97"
 	},
 /area/shuttle/drop1/sulaco)
-"EN" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "16"
+"Gk" = (
+/obj/effect/attach_point/electronics/dropship1{
+	dir = 1
 	},
-/area/shuttle/drop1/sulaco)
-"FA" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "40"
-	},
-/area/shuttle/drop1/sulaco)
-"Gl" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "45"
-	},
+/obj/structure/shuttle/part/dropship1/transparent/inner_right_weapons,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "Gw" = (
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "39"
 	},
+/area/shuttle/drop1/sulaco)
+"GZ" = (
+/obj/structure/shuttle/part/dropship1/transparent/middle_left_wing,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"Hk" = (
+/obj/structure/shuttle/part/dropship1/bottom_right_wall,
+/turf/open/space/basic,
 /area/shuttle/drop1/sulaco)
 "Ho" = (
 /obj/structure/machinery/computer/dropship_weapons/dropship1,
@@ -452,12 +403,6 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"HP" = (
-/obj/effect/attach_point/weapon/dropship1/right_fore,
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "91"
-	},
-/area/shuttle/drop1/sulaco)
 "HS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1{
 	id = "aft_door"
@@ -471,14 +416,17 @@
 	icon_state = "35"
 	},
 /area/shuttle/drop1/sulaco)
+"IB" = (
+/obj/structure/shuttle/part/dropship1/transparent/right_outer_bottom_wing,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"IE" = (
+/obj/structure/shuttle/part/dropship1/transparent/upper_right_wing,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
 "Jb" = (
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "80"
-	},
-/area/shuttle/drop1/sulaco)
-"Jm" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "21"
 	},
 /area/shuttle/drop1/sulaco)
 "JP" = (
@@ -496,29 +444,44 @@
 	icon_state = "14"
 	},
 /area/shuttle/drop1/sulaco)
-"Me" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "7"
-	},
+"LU" = (
+/obj/structure/shuttle/part/dropship1/transparent/nose_top_left,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"Mh" = (
+/obj/structure/shuttle/part/dropship1/transparent/middle_right_wing,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"Ml" = (
+/obj/effect/attach_point/weapon/dropship1/left_fore,
+/obj/structure/shuttle/part/dropship1/transparent/outer_left_weapons,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "MP" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "64"
 	},
 /area/shuttle/drop1/sulaco)
-"NQ" = (
-/obj/docking_port/mobile/marine_dropship/alamo,
-/turf/closed/shuttle/dropship1/transparent,
+"NA" = (
+/obj/structure/shuttle/part/dropship1/transparent/left_outer_bottom_wing,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"NG" = (
+/obj/structure/shuttle/part/dropship1/lower_right_wall,
+/turf/open/space/basic,
 /area/shuttle/drop1/sulaco)
 "Oq" = (
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "34"
 	},
 /area/shuttle/drop1/sulaco)
-"OK" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "53"
-	},
+"Ot" = (
+/obj/structure/shuttle/part/dropship1/left_inner_wing_connector,
+/turf/open/space/basic,
+/area/shuttle/drop1/sulaco)
+"OJ" = (
+/obj/structure/shuttle/part/dropship1/lower_left_wall,
+/turf/open/space/basic,
 /area/shuttle/drop1/sulaco)
 "OL" = (
 /turf/closed/shuttle/dropship1/transparent{
@@ -559,15 +522,9 @@
 	icon_state = "32"
 	},
 /area/shuttle/drop1/sulaco)
-"QT" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "95"
-	},
-/area/shuttle/drop1/sulaco)
-"QW" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "6"
-	},
+"Qp" = (
+/obj/structure/shuttle/part/dropship1/transparent/engine_left_exhaust,
+/turf/open/space/basic,
 /area/shuttle/drop1/sulaco)
 "RI" = (
 /turf/closed/shuttle/dropship1{
@@ -577,16 +534,6 @@
 "SM" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "47"
-	},
-/area/shuttle/drop1/sulaco)
-"Ta" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "8"
-	},
-/area/shuttle/drop1/sulaco)
-"Te" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "5"
 	},
 /area/shuttle/drop1/sulaco)
 "Tt" = (
@@ -626,19 +573,16 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
-"TM" = (
-/obj/effect/attach_point/weapon/dropship1/left_fore,
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "84"
-	},
-/area/shuttle/drop1/sulaco)
-"Ua" = (
-/obj/effect/attach_point/fuel/left/dropship1{
+"Uo" = (
+/obj/effect/attach_point/electronics/dropship1{
 	dir = 1
 	},
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "28"
-	},
+/obj/structure/shuttle/part/dropship1/transparent/inner_left_weapons,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"Uv" = (
+/obj/structure/shuttle/part/dropship1/transparent/engine_left_cap,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "UG" = (
 /obj/structure/prop/ice_colony/hula_girl{
@@ -654,16 +598,6 @@
 "Vm" = (
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "78"
-	},
-/area/shuttle/drop1/sulaco)
-"VM" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "100"
-	},
-/area/shuttle/drop1/sulaco)
-"Wg" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "4"
 	},
 /area/shuttle/drop1/sulaco)
 "WQ" = (
@@ -689,6 +623,23 @@
 	icon_state = "rasputin7"
 	},
 /area/shuttle/drop1/sulaco)
+"Yf" = (
+/obj/structure/shuttle/part/dropship1/transparent/engine_right_exhaust,
+/turf/open/space/basic,
+/area/shuttle/drop1/sulaco)
+"Ym" = (
+/obj/effect/attach_point/fuel/right/dropship1{
+	pixel_x = -32;
+	dir = 1
+	},
+/turf/closed/shuttle/dropship1/transparent{
+	icon_state = "33"
+	},
+/area/shuttle/drop1/sulaco)
+"YN" = (
+/obj/structure/shuttle/part/dropship1/transparent/engine_right_cap,
+/turf/template_noop,
+/area/shuttle/drop1/sulaco)
 "Za" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "77"
@@ -711,19 +662,19 @@ mb
 mb
 mb
 mb
-zw
-oW
-qu
+df
+GZ
+uI
 mb
 mb
 mb
 mb
 mb
-FA
+Uv
 Oq
-Ua
+ne
 iz
-EN
+Qp
 mb
 mb
 mb
@@ -732,7 +683,7 @@ mb
 mb
 mb
 mb
-TM
+Ml
 hG
 Et
 iI
@@ -741,21 +692,21 @@ rS
 rS
 mW
 qn
-sA
-eD
+OJ
+YN
 Il
 iC
 rr
-cK
+Yf
 mb
 mb
-NQ
+ei
 "}
 (3,1,1) = {"
 mb
 mb
 mb
-Da
+Uo
 oo
 TK
 ws
@@ -770,13 +721,13 @@ de
 Xf
 ig
 de
-yU
+xo
 mb
-rV
+NA
 "}
 (4,1,1) = {"
-VM
-QT
+LU
+Bt
 Cg
 OL
 KJ
@@ -794,11 +745,11 @@ ws
 TK
 ws
 WQ
-Me
-if
+Ot
+ar
 "}
 (5,1,1) = {"
-ax
+au
 Xx
 UG
 wC
@@ -821,17 +772,17 @@ mb
 mb
 "}
 (6,1,1) = {"
-ax
+au
 EB
 Py
 tR
-AQ
+uS
 dU
 Ph
 BB
 BB
 BB
-OK
+lP
 OU
 il
 wr
@@ -844,7 +795,7 @@ mb
 mb
 "}
 (7,1,1) = {"
-ax
+au
 zN
 Ho
 Co
@@ -867,8 +818,8 @@ mb
 mb
 "}
 (8,1,1) = {"
-bj
-cC
+qK
+vu
 nO
 yQ
 Za
@@ -886,14 +837,14 @@ ws
 TK
 ws
 LP
-Ta
-Wg
+pv
+An
 "}
 (9,1,1) = {"
 mb
 mb
 mb
-De
+Gk
 oo
 TK
 cr
@@ -908,15 +859,15 @@ Zv
 RI
 po
 Zv
-xM
+Hk
 mb
-Te
+cW
 "}
 (10,1,1) = {"
 mb
 mb
 mb
-HP
+fJ
 zS
 iv
 zV
@@ -925,15 +876,15 @@ Pf
 Pf
 nC
 nE
-rl
-xu
+NG
+Uv
 Bn
 Qh
 TE
-wh
+Qp
 mb
 mb
-QW
+IB
 "}
 (11,1,1) = {"
 mb
@@ -941,19 +892,19 @@ mb
 mb
 mb
 mb
-be
-jz
-wk
+IE
+Mh
+uM
 mb
 mb
 mb
 mb
 mb
-Gl
+YN
 Gw
-os
+Ym
 qy
-Jm
+Yf
 mb
 mb
 mb

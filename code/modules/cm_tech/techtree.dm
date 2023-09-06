@@ -158,7 +158,12 @@
 
 	if(SEND_SIGNAL(M, COMSIG_MOB_ENTER_TREE, src, force) & COMPONENT_CANCEL_TREE_ENTRY) return
 
-	new/mob/hologram/techtree(entrance, M)
+	var/tech_hologram = new/mob/hologram/techtree(entrance, M)
+
+	M.lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	M.sync_lighting_plane_alpha()
+
+	M.RegisterSignal(tech_hologram, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_lighting_alpha))
 
 	return TRUE
 

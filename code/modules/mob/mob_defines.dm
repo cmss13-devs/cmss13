@@ -271,6 +271,9 @@
 	/// User is thinking in character. Used to revert to thinking state after stop_typing
 	var/thinking_IC = FALSE
 
+	// contains /atom/movable/screen/alert only
+	var/list/alerts = list()
+
 /mob/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")

@@ -29,7 +29,7 @@
 	. = ..()
 // STRUCTURES
 
-/obj/structure/Destroy()
+/obj/structure/Destroy(force)
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
 		cameranet.updateVisibility(src)
 	. = ..()
@@ -97,7 +97,7 @@
 	if(can_use())
 		cameranet.addCamera(src)
 	else
-		SetLuminosity(0)
+		set_light(0)
 		cameranet.removeCamera(src)
 
 /obj/structure/machinery/camera/Initialize()

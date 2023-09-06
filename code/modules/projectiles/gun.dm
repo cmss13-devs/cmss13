@@ -25,6 +25,7 @@
 		)
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
+	light_system = DIRECTIONAL_LIGHT
 
 	var/accepted_ammo = list()
 	///Determines what kind of bullet is created when the gun is unloaded - used to match rounds to magazines. Set automatically when reloading.
@@ -127,7 +128,7 @@
 	///How many full-auto shots to get to max scatter?
 	var/fa_scatter_peak = 4
 	///How bad does the scatter get on full auto?
-	var/fa_max_scatter = 8.5
+	var/fa_max_scatter = 6.5
 	///Click parameters to use when firing full-auto
 	var/fa_params = null
 
@@ -228,6 +229,8 @@
 	VAR_PROTECTED/start_semiauto = TRUE
 	/// If this gun should spawn with automatic fire. Protected due to it never needing to be edited.
 	VAR_PROTECTED/start_automatic = FALSE
+	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
+	VAR_PROTECTED/autofire_slow_mult = 1
 
 
 /**
@@ -274,7 +277,7 @@
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
 	update_icon() //for things like magazine overlays
 	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -292,9 +295,6 @@
 				var/obj/item/attachable/potential_attachment = attachments[slot]
 				if(!potential_attachment)
 					continue
-				loc.SetLuminosity(0, FALSE, src)
-		else
-			SetLuminosity(0)
 	attachments = null
 	attachable_overlays = null
 	QDEL_NULL(active_attachable)
@@ -425,6 +425,10 @@
 		else if(M.r_hand == src)
 			M.update_inv_r_hand()
 
+	setup_firemodes()
+
+	SEND_SIGNAL(src, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
+
 /obj/item/weapon/gun/proc/handle_random_attachments()
 	var/attachmentchoice
 
@@ -502,15 +506,18 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
 		set_gun_user(user)
+		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, user))
+			force_light(on = TRUE)
+			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
 	else
 		set_gun_user(null)
+		force_light(on = FALSE)
+		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
 
 	return ..()
 
 /obj/item/weapon/gun/dropped(mob/user)
 	. = ..()
-
-	disconnect_light_from_mob(user)
 
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
@@ -939,6 +946,10 @@ and you're good to go.
 
 	//Let's check on the active attachable. It loads ammo on the go, so it never chambers anything
 	if(active_attachable)
+		if(shots_fired >= 1) // This is what you'll want to remove if you want automatic underbarrel guns in the future
+			SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
+			return
+
 		if(active_attachable.current_rounds > 0) //If it's still got ammo and stuff.
 			active_attachable.current_rounds--
 			var/obj/item/projectile/bullet = create_bullet(active_attachable.ammo, initial(name))
@@ -1073,10 +1084,10 @@ and you're good to go.
 	This is where the grenade launcher and flame thrower function as attachments.
 	This is also a general check to see if the attachment can fire in the first place.
 	*/
-	var/check_for_attachment_fire = 0
+	var/check_for_attachment_fire = FALSE
 
 	if(active_attachable?.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
-		check_for_attachment_fire = 1
+		check_for_attachment_fire = TRUE
 		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
 			if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
 				click_empty(user) //If it's empty, let them know.
@@ -1202,8 +1213,7 @@ and you're good to go.
 
 		shots_fired++
 
-	else // This happens in very rare circumstances when you're moving a lot while burst firing, so I'm going to toss it up to guns jamming.
-		clear_jam(projectile_to_fire,user)
+	else
 		return TRUE
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
@@ -1503,8 +1513,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))
 			return
-
-		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED)) //If we're not holding the weapon with both hands when we should.
+		if(active_attachable)
+			if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+				if(!(active_attachable.flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(flags_item & WIELDED))
+					to_chat(user, SPAN_WARNING("You must wield [src] to fire [active_attachable]!"))
+					return
+		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED) && !active_attachable) //If we're not holding the weapon with both hands when we should.
 			to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
 			return
 
@@ -1716,9 +1730,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!istype(user) || !istype(user.loc,/turf))
 		return
 
-	if(user.luminosity <= muzzle_flash_lum)
-		user.SetLuminosity(muzzle_flash_lum, FALSE, src)
-		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom, SetLuminosity), 0, FALSE, src), 10)
+	var/prev_light = light_range
+	if(!light_on && (light_range <= muzzle_flash_lum))
+		set_light_range(muzzle_flash_lum)
+		set_light_on(TRUE)
+		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
 
 	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
 	var/offset = 5
@@ -1729,6 +1745,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	rotate.Turn(angle)
 	I.transform = rotate
 	I.flick_overlay(user, 3)
+
+/// called by a timer to remove the light range from muzzle flash
+/obj/item/weapon/gun/proc/reset_light_range(lightrange)
+	set_light_range(lightrange)
+	if(lightrange <= 0)
+		set_light_on(FALSE)
+
 
 /obj/item/weapon/gun/attack_alien(mob/living/carbon/xenomorph/xeno)
 	..()
@@ -1892,7 +1915,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!target)
 		target = src.target
 	if(!user)
-		user = src.gun_user
+		user = gun_user
+	if(!target || !user)
+		return NONE
 	return Fire(target, user, params, reflex, dual_wield)
 
 /// Setter proc for fa_firing

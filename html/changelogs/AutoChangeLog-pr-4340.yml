@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - bugfix: "Fixed a null reference when firing full auto and dropping your weapon"

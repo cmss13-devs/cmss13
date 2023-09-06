@@ -147,6 +147,10 @@
 		return
 
 	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+		var/remaining_time = timeleft(door_control_cooldown) / 10
+		if(remaining_time > 60)
+			to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
+			return
 		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
 		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))
@@ -216,7 +220,7 @@
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
-		announce_dchat("[xeno] has locked \the [dropship]", src)
+		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 
 		if(almayer_orbital_cannon)
 			almayer_orbital_cannon.is_disabled = TRUE

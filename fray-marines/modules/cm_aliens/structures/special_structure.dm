@@ -129,9 +129,9 @@
 /obj/structure/alien/sunken/proc/get_target()
 	var/list/targets = list()
 
-	for(var/atom/movable/targ in orange(7, src))
+	for(var/atom/movable/targ in orange(10, src))
 		var/turf/T = get_turf(targ)
-		if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z) || get_dist(src, T) <= 3)
+		if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z) || Adjacent(targ))
 			continue
 		if(ishuman(targ))
 			var/mob/living/carbon/human/H = targ

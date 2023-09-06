@@ -6,8 +6,8 @@
 /////////////////
 
 /obj/vehicle/walker
-	name = "CW13 \"Megalodon\" Assault Walker"
-	desc = "Relatively new combat walker of \"Megalodon\"-series. Unlike its predecessor, \"Carharodon\"-series, slower, but relays on its tough armor and rapid-firing weapons."
+	name = "CW13 \"Enforcer\" Assault Walker"
+	desc = "Relatively new combat walker of \"Enforcer\"-series. Unlike its predecessor, \"Carharodon\"-series, slower, but relays on its tough armor and rapid-firing weapons."
 	icon = 'fray-marines/icons/obj/vehicles/mech-walker.dmi'
 	icon_state = "mech"
 	layer = ABOVE_LYING_MOB_LAYER
@@ -46,12 +46,12 @@
 	var/obj/item/walker_armor/armor_module = null
 	var/selected = GUN_LEFT
 
-/obj/vehicle/walker/New()
+/obj/vehicle/walker/Initialize()
 	. = ..()
 
 	unacidable = 0
 
-/obj/vehicle/walker/prebuilt/New()
+/obj/vehicle/walker/prebuilt/Initialize()
 	. = ..()
 
 	left = new /obj/item/walker_gun/smartgun()
@@ -73,7 +73,7 @@
 		var/image/right_gun = right.get_icon_image("-r")
 		overlays += right_gun
 
-	if(pilot)
+	if(seats[VEHICLE_DRIVER])
 		var/image/occupied = image(icon, icon_state = "mech-face")
 		overlays += occupied
 
@@ -108,6 +108,9 @@
 			take_damage(10, "explosive")					// 10 * 5.0 = 50. Maxhealth is 400. Hellova damage
 
 /obj/vehicle/walker/relaymove(mob/user, direction)
+	if(user.is_mob_incapacitated()) return
+	if(seats[VEHICLE_DRIVER] != user) return
+
 	if(world.time > l_move_time + move_delay)
 		if(dir != direction)
 			l_move_time = world.time
@@ -122,7 +125,7 @@
 /obj/vehicle/walker/Bump(atom/obstacle)
 	if(istype(obstacle, /obj/structure/machinery/door))
 		var/obj/structure/machinery/door/door = obstacle
-		if(door.allowed(pilot))
+		if(door.allowed(seats[VEHICLE_DRIVER]))
 			door.open()
 		else
 			flick("door_deny", door)
@@ -175,14 +178,14 @@
 	set waitfor = FALSE
 	if(!ishuman(user))
 		return
-	if(pilot)
+	if(seats[VEHICLE_DRIVER])
 		to_chat(user, "There is someone occupying mecha right now.")
 		return
 	var/mob/living/carbon/human/H = user
 	for(var/ID in list(H.wear_id, H.belt))
 		if(operation_allowed(ID))
-			pilot = user
-			add_verb(pilot.client, list(
+			seats[VEHICLE_DRIVER] = user
+			add_verb(seats[VEHICLE_DRIVER].client, list(
 				/obj/vehicle/walker/proc/eject,
 				/obj/vehicle/walker/proc/lights,
 				/obj/vehicle/walker/proc/zoom,
@@ -191,12 +194,12 @@
 				/obj/vehicle/walker/proc/get_stats,
 			))
 			user.loc = src
-			pilot.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
-			pilot.set_interaction(src)
-			pilot << sound('sound/mecha/powerup.ogg',volume=50)
+			seats[VEHICLE_DRIVER].client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
+			seats[VEHICLE_DRIVER].set_interaction(src)
+			seats[VEHICLE_DRIVER] << sound('sound/mecha/powerup.ogg',volume=50)
 			update_icon()
 			sleep(50)
-			pilot << sound('sound/mecha/nominalsyndi.ogg',volume=50)
+			seats[VEHICLE_DRIVER] << sound('sound/mecha/nominalsyndi.ogg',volume=50)
 			return
 
 	to_chat(user, "Access denied.")
@@ -219,17 +222,17 @@
 	W.move_out()
 
 /obj/vehicle/walker/proc/move_out()
-	if(!pilot)
+	if(!seats[VEHICLE_DRIVER])
 		return FALSE
 	if(health <= 0)
-		to_chat(pilot, "<span class='danger'>PRIORITY ALERT! Chassis integrity failing. Systems shutting down.</span>")
+		to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>PRIORITY ALERT! Chassis integrity failing. Systems shutting down.</span>")
 	if(zoom)
 		zoom_activate()
-	if(pilot.client)
-		pilot.client.mouse_pointer_icon = initial(pilot.client.mouse_pointer_icon)
-	pilot.unset_interaction()
-	pilot.loc = src.loc
-	remove_verb(pilot.client, list(
+	if(seats[VEHICLE_DRIVER].client)
+		seats[VEHICLE_DRIVER].client.mouse_pointer_icon = initial(seats[VEHICLE_DRIVER].client.mouse_pointer_icon)
+	seats[VEHICLE_DRIVER].unset_interaction()
+	seats[VEHICLE_DRIVER].loc = src.loc
+	remove_verb(seats[VEHICLE_DRIVER].client, list(
 				/obj/vehicle/walker/proc/eject,
 				/obj/vehicle/walker/proc/lights,
 				/obj/vehicle/walker/proc/zoom,
@@ -237,7 +240,7 @@
 				/obj/vehicle/walker/proc/deploy_magazine,
 				/obj/vehicle/walker/proc/get_stats,
 			))
-	pilot = null
+	seats[VEHICLE_DRIVER] = null
 	update_icon()
 	return TRUE
 
@@ -260,7 +263,7 @@
 	else
 		lights = FALSE
 		set_light(-lights_power)
-	pilot << sound('sound/machines/click.ogg',volume=50)
+	seats[VEHICLE_DRIVER] << sound('sound/machines/click.ogg',volume=50)
 
 /obj/vehicle/walker/proc/deploy_magazine()
 	set name = "Deploy Magazine"
@@ -299,7 +302,7 @@
 	if(!W || !istype(W))
 		return
 
-	if(M != W.pilot)
+	if(M != W.seats[VEHICLE_DRIVER])
 		return
 	W.statistics(M)
 
@@ -395,14 +398,14 @@
 
 /obj/vehicle/walker/proc/zoom_activate()
 	if(zoom)
-		pilot.client.change_view(world.view)//world.view - default mob view size
+		seats[VEHICLE_DRIVER].client.change_view(world.view)//world.view - default mob view size
 		zoom = FALSE
 	else
-		pilot.client.change_view(world.view)//world.view - default mob view size
-		pilot.client.change_view(zoom_size)
-		pilot << sound('sound/mecha/imag_enhsyndi.ogg',volume=50)
+		seats[VEHICLE_DRIVER].client.change_view(world.view)//world.view - default mob view size
+		seats[VEHICLE_DRIVER].client.change_view(zoom_size)
+		seats[VEHICLE_DRIVER] << sound('sound/mecha/imag_enhsyndi.ogg',volume=50)
 		zoom = TRUE
-	to_chat(pilot, "Notification. Cameras zooming [zoom ? "activated" : "deactivated"].")
+	to_chat(seats[VEHICLE_DRIVER], "Notification. Cameras zooming [zoom ? "activated" : "deactivated"].")
 
 
 
@@ -556,8 +559,8 @@
 			healthcheck()
 			to_chat(user, "You repair broken part of the armor.")
 		playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
-		if(pilot)
-			to_chat(pilot, "Notification.Armor partly restored.")
+		if(seats[VEHICLE_DRIVER])
+			to_chat(seats[VEHICLE_DRIVER], "Notification.Armor partly restored.")
 		return
 	else
 		to_chat(user, "Repair has been interrupted.")
@@ -574,7 +577,7 @@
 		playsound(loc, "alien_claw_metal", 25, 1)
 		M.flick_attack_overlay(src, "slash")
 		M.visible_message("<span class='danger'>[M] slashes [src].</span>","<span class='danger'>You slash [src].</span>", null, 5)
-		take_damage(rand(M.melee_damage_lower, M.melee_damage_upper), "slash")
+		take_damage(M.melee_vehicle_damage + rand(-5,5), "slash")
 	else
 		attack_hand(M)
 
@@ -613,13 +616,13 @@
 		return
 	var/damage = dam * dmg_multipliers[damtype]
 	if(damage <= 10)
-		to_chat(pilot, "<span class='danger'>ALERT! Hostile incursion detected. Deflected.</span>")
+		to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>ALERT! Hostile incursion detected. Deflected.</span>")
 		return
 
 	health -= damage
-	to_chat(pilot, "<span class='danger'>ALERT! Hostile incursion detected. Chassis taking damage.</span>")
-	if(pilot && damage >= 50)
-		pilot << sound('sound/mecha/critdestrsyndi.ogg',volume=50)
+	to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>ALERT! Hostile incursion detected. Chassis taking damage.</span>")
+	if(seats[VEHICLE_DRIVER] && damage >= 50)
+		seats[VEHICLE_DRIVER] << sound('sound/mecha/critdestrsyndi.ogg',volume=50)
 	healthcheck()
 
 

@@ -175,7 +175,7 @@
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(prob(20))
-			to_chat(src, SPAN_WARNING("Мой наушник вибрирует но я ничего не слышу..."), type = MESSAGE_TYPE_RADIO)
+			to_chat(src, SPAN_WARNING("Мой наушник вибрирует, но я ничего не слышу..."), type = MESSAGE_TYPE_RADIO)
 	else if(track)
 		if(!command)
 			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)

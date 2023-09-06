@@ -99,7 +99,7 @@
 	desc = "A living stationary organism that strikes from below with its powerful claw."
 	pixel_y = -8
 
-	var/cooldown = 10 SECONDS
+	var/cooldown = 6 SECONDS
 	var/can_attack = 1
 
 	// xeno_tag = SUNKEN_COLONY

@@ -128,6 +128,31 @@
 		initial_loc.air_vent_names -= id_tag
 	. = ..()
 
+/obj/structure/pipes/vents/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_GAS, "Release Gas")
+
+/obj/structure/pipes/vents/vv_do_topic(list/href_list)
+	. = ..()
+	var/mob/user = usr
+	if(href_list[VV_HK_GAS] && check_rights(R_EVENT))
+		if(welded)
+			to_chat(usr, SPAN_WARNING("You cannot release gas from a welded vent."))
+			return FALSE
+		var/list/options = list(VENT_GAS_SMOKE, VENT_GAS_CN20, VENT_GAS_CN20_XENO)
+		var/gas_choice = tgui_input_list(user, "What gas do you wish to use?", "Gas Choice", options, 20 SECONDS)
+		if(!gas_choice)
+			return FALSE
+		var/radius_choice = tgui_input_number(user, "What radius do you wish to use?", "Gas Radius", 4, 10, 1, 20 SECONDS)
+		var/warn_choice = tgui_input_number(user, "How many seconds warning do you wish to give?", "Release Warning", 5, 30, 1, 20 SECONDS)
+		warn_choice = warn_choice SECONDS
+
+		var/confirm = alert(user, "Confirm gas setup. \n\nGas: '[gas_choice]'\n Radius: '[radius_choice]'\n Warn Time: '[warn_choice / 10] seconds' \n\n Is this correct?", "Confirmation", "Yes", "No")
+		if(confirm != "Yes")
+			return FALSE
+		create_gas(gas_choice, radius_choice, warn_choice)
+		return TRUE
+
 /obj/structure/pipes/vents/proc/create_gas(gas_type = VENT_GAS_SMOKE, radius = 4, warning_time = 5 SECONDS)
 	if(welded)
 		to_chat(usr, SPAN_WARNING("You cannot release gas from a welded vent."))
@@ -138,6 +163,8 @@
 			spreader = new /datum/effect_system/smoke_spread/bad
 		if(VENT_GAS_CN20)
 			spreader = new /datum/effect_system/smoke_spread/cn20
+		if(VENT_GAS_CN20_XENO)
+			spreader = new /datum/effect_system/smoke_spread/cn20/xeno
 	if(!spreader)
 		return FALSE
 	gas_holder = spreader

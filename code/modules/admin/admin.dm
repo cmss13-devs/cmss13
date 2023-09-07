@@ -2,7 +2,7 @@
 /proc/message_admins(msg, jmp_x=0, jmp_y=0, jmp_z=0) // +MOD and above, not mentors
 	log_admin(msg)
 
-	msg = "<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]"
+	msg = "<span class=\"prefix\">АДМИН ЛОГ:</span> <span class=\"message\">[msg]"
 	if(jmp_x && jmp_y && jmp_z)
 		msg += " (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
 	msg += "</span>"
@@ -15,7 +15,7 @@
 	if(GLOB.perf_flags & PERF_TOGGLE_ATTACKLOGS)
 		return
 	log_attack(text)
-	var/rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> [text] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)")
+	var/rendered = SPAN_COMBAT("<span class=\"prefix\">АТАКА:</span> [text] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)")
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
@@ -24,14 +24,14 @@
 
 /proc/msg_admin_niche(msg) //Toggleable Niche Messages
 	log_admin(msg)
-	msg = SPAN_ADMIN("<span class=\"prefix\">ADMIN NICHE LOG:</span> [msg]")
+	msg = SPAN_ADMIN("<span class=\"prefix\">ЛОГ АДМИНСКОЙ НИШИ:</span> [msg]")
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
 				to_chat(C, msg)
 
 /proc/msg_sea(msg, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
-	msg = FONT_SIZE_LARGE("<span class=\"admin\"><span class=\"prefix\">MENTOR ALERT:</span> <span class=\"message\">[msg]</span></span>")
+	msg = FONT_SIZE_LARGE("<span class=\"admin\"><span class=\"prefix\">ТРЕВОГА ДЛЯ МЕНТОРОВ:</span> <span class=\"message\">[msg]</span></span>")
 	for(var/mob/possible_sea as anything in GLOB.player_list)
 		if(!isSEA(possible_sea))
 			continue
@@ -44,9 +44,9 @@
 /proc/msg_admin_ff(text, alive = TRUE)
 	var/rendered
 	if(alive)
-		rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> <font color=#00FF00><b>[text]</b></font>") //I used <font> because I never learned html correctly, fix this if you want
+		rendered = SPAN_COMBAT("<span class=\"prefix\">АТАКА:</span> <font color=#00FF00><b>[text]</b></font>") //I used <font> because I never learned html correctly, fix this if you want
 	else
-		rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> <font color=#FFA500><b>[text]</b></font>")
+		rendered = SPAN_COMBAT("<span class=\"prefix\">АТАКА:</span> <font color=#FFA500><b>[text]</b></font>")
 		text = "///DEAD/// - " + text
 	log_attack(text) //Do everything normally BUT IN GREEN SO THEY KNOW
 	for(var/client/C as anything in GLOB.admins)
@@ -76,7 +76,7 @@
 	if (!istype(src,/datum/admins))
 		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
-		to_chat(usr, "Error: you are not an admin!")
+		to_chat(usr, "Ошибочка - вы не админ!")
 		return
 
 	var/dat = "<html>"
@@ -84,12 +84,12 @@
 	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, key))
 	for(var/datum/view_record/note_view/N in NL)
 		var/admin_ckey = N.admin_ckey
-		var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
+		var/confidential_text = N.is_confidential ? " \[КОНФИДЕНЦИАЛЬНО\]" : ""
 		var/color = "#008800"
 		if(N.is_ban)
-			var/time_d = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
+			var/time_d = N.ban_time ? "Забанен на [N.ban_time] минут | " : ""
 			color = "#880000" //Removed confidential check because we can't make confidential bans
-			dat += "<font color=[color]>[time_d][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
+			dat += "<font color=[color]>[time_d][N.text]</font> <i>[admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		else
 			if(N.is_confidential)
 				color = "#AA0055"
@@ -104,12 +104,12 @@
 
 			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Удалить</A>"
 
 		dat += "<br><br>"
 	dat += "</body></html>"
 
-	show_browser(usr, dat, "Info on [key]", "allplayerinfo", "size=480x480")
+	show_browser(usr, dat, "Информаци о [key]", "allplayerinfo", "size=480x480")
 
 
 /datum/admins/proc/Jobbans()
@@ -127,9 +127,9 @@
 			i = jobban_keylist[r][c] //These are already strings, as you're iterating through them. Anyway, establish jobban.
 			t = "[c] - [r] ## [i]"
 			u = "[c] - [r]"
-			dat += "<tr><td>[t] (<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];removejobban=[u]'>unban</A>)</td></tr>"
+			dat += "<tr><td>[t] (<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];removejobban=[u]'>разбанить</A>)</td></tr>"
 	dat += "</table>"
-	show_browser(usr, dat, "Job Bans", "ban", "size=400x400")
+	show_browser(usr, dat, "Джоб баны", "бан", "size=400x400")
 
 
 /datum/admins/proc/Game()
@@ -202,7 +202,7 @@
 	else
 		new chosen(usr.loc)
 
-	log_admin("[key_name(usr)] spawned [chosen] at ([usr.x],[usr.y],[usr.z])")
+	log_admin("[key_name(usr)] спаунит [chosen] по координатам ([usr.x],[usr.y],[usr.z])")
 
 
 /client/proc/update_mob_sprite(mob/living/carbon/human/H as mob)
@@ -211,7 +211,7 @@
 	set desc = "Should fix any mob sprite update errors."
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Ай яй яй, эта команда только для администраторов.")
 		return
 
 	if(istype(H))
@@ -241,7 +241,7 @@
 	if(SSticker)
 		var/success = SSticker.send_tip_of_the_round()
 		if(!success)
-			to_chat(usr, SPAN_ADMINNOTICE("Sending tip failed!"))
+			to_chat(usr, SPAN_ADMINNOTICE("Подсказочка не отправилась!"))
 
 /// Allow admin to add or remove traits of datum
 /datum/admins/proc/modify_traits(datum/D)

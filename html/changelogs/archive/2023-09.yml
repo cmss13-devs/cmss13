@@ -132,3 +132,14 @@
   Wyderar:
   - imageadd: Icon placeholder for mecha gun
   - maptweak: Deleted tags
+  - rscadd: Added a ghost notification for Acid Runner For the Hive! ability.
+  RenaRenaRe:
+  - bugfix: Hugger and Lesser Drone ghosts now actually bypass time of death checks
+      for the larva queue.
+2023-09-07:
+  Morrow:
+  - bugfix: Fixed a null reference when firing full auto and dropping your weapon
+  Steelpoint:
+  - bugfix: ERT UPP Soldiers will now correctly spawn with firearms.
+  harryob:
+  - rscadd: guns that have full auto now start on full auto by default

@@ -29,7 +29,7 @@
 		if(usr.client && usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 			P.rank = usr.client.admin_holder.rank
 		else
-			to_chat(usr, "NA01: Something went wrong, tell a coder.")
+			to_chat(usr, "NA01: Что-то не так, зовите кодера.")
 			return
 	else
 		P.author = "Adminbot"
@@ -40,7 +40,7 @@
 	infos += P
 	info << infos
 
-	message_admins("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
+	message_admins("[key_name_admin(usr)] поменял заметки [key]: [sanitize(note)]")
 	qdel(info)
 
 	//Updating list of keys with notes on them
@@ -63,7 +63,7 @@
 	infos.Remove(item)
 	info << infos
 
-	message_admins("[key_name_admin(usr)] deleted one of [key]'s notes.")
+	message_admins("[key_name_admin(usr)] удалил одну из заметок [key].")
 
 	qdel(info)
 
@@ -73,7 +73,7 @@
 	var/list/infos
 	info >> infos
 	if(!infos)
-		dat = "No information found on the given key."
+		dat = "Нет информации для этого сикея."
 	else
 		for(var/datum/player_info/I in infos)
 			dat += "[I.content]%0D%0Aby [I.author] ([I.rank]) on [I.timestamp]%0D%0A%0D%0A"

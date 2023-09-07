@@ -63,7 +63,7 @@
 
 	if(show_wy_logo)
 		dat += "<div id='fax-logo'>"
-		dat += "<img src='faxwylogo.png' alt='Something fucked!'/>"
+		dat += "<img src='faxwylogo.png' alt='Чет сломалось!'/>"
 		dat += "</div>"
 
 	dat += "<div class='message-header-text'>"

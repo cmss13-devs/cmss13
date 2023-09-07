@@ -18,7 +18,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 /// So usr is set to this for any proccalls that don't have any usr mob/client to refer to.
 /mob/proccall_handler
 	name = "ProcCall Handler"
-	desc = "If you are seeing this, tell a coder."
+	desc = "Если вы это видите - напишите кодеру."
 
 	var/list/callers = list()
 
@@ -57,7 +57,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 	if(GLOB.AdminProcCallHandler != src)
 		return ..()
 	if(!force)
-		stack_trace("Attempted deletion on [type] - [name], aborting.")
+		stack_trace("попытался удалить [type] - [name], отмена.")
 		return QDEL_HINT_LETMELIVE
 	return ..()
 

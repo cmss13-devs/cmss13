@@ -87,13 +87,13 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 				return TRUE
 			else
 				if(show_msg && C.prefs.show_permission_errors)
-					to_chat(C, SPAN_DANGER("Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required,"")]."))
+					to_chat(C, SPAN_DANGER("Ошибочка: У вас недостаточно прав. Требуемые флажки:[rights2text(rights_required,"")]."))
 	else
 		if(C.admin_holder)
 			return TRUE
 		else
 			if(show_msg && C.prefs.show_permission_errors)
-				to_chat(C, SPAN_DANGER("Error: You are not an admin."))
+				to_chat(C, SPAN_DANGER("Ошибочка: Ты не админ, дружище."))
 	return FALSE
 
 /proc/check_rights(rights_required, show_msg=TRUE)
@@ -108,12 +108,12 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		if(check_client_rights(usr.client, rights_required, show_msg))
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, SPAN_WARNING("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
+			to_chat(usr, SPAN_WARNING("У вас недостаточно прав для такого. Требуемые флажки:[rights2text(rights_required," ")]."))
 	else
 		if(other.admin_holder)
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, SPAN_WARNING("You are not a holder."))
+			to_chat(usr, SPAN_WARNING("Вы не владелец."))
 	return FALSE
 
 //probably a bit iffy - will hopefully figure out a better solution
@@ -125,7 +125,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 			if(usr.client.admin_holder.rights != other.admin_holder.rights)
 				if( (usr.client.admin_holder.rights & other.admin_holder.rights) == other.admin_holder.rights )
 					return 1 //we have all the rights they have and more
-		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
+		to_chat(usr, "<font color='red'>Ошибочка: Никак не продолжить. У них больше или равные права.</font>")
 	return 0
 
 /client/proc/deadmin()
@@ -177,7 +177,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	if(!forceGlobal && usr)
 		var/client/C = usr.client
 		if(!C)
-			CRASH("No client for HrefToken()!")
+			CRASH("Нет клиента для HrefToken()!")
 		var/datum/admins/holder = C.admin_holder
 		if(holder)
 			tok = holder.href_token

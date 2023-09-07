@@ -1,0 +1,5 @@
+
+author: "carrotman2013"
+delete-after: True
+changes:
+  - admin: "Перевод некоторых админ функций."

@@ -48,3 +48,34 @@
   - bugfix: Brain damage movement will no longer occur while buckled and unconscious
   Steelpoint:
   - spellcheck: Box of donuts order from req is now spelt correctly
+2023-09-05:
+  Ben10083:
+  - admin: New toggleable flag added to bypass restrictions for Working Joe spawns
+      as observer (excluding whitelist requirement)
+  Morrow:
+  - bugfix: Fixed perma helmet HUDs
+  Steelpoint:
+  - rscadd: Synthetic vendors now have the option to vend several helmets and a riot
+      visor. Including a standard M10 helmet defaulted to non-camo grey.
+  VileBeggar:
+  - balance: The M39 foldable stock no longer inflicts debuffs when folded.
+  Zonespace27:
+  - bugfix: Working Joes no longer get cryo self defense kits
+  - bugfix: Cryo self defense kits now have the correct amount of slots
+2023-09-06:
+  Birdtalon:
+  - bugfix: fixed eggsac carrier strain not updating hugger sprites.
+  Drathek:
+  - bugfix: Fixed xeno grab intent
+  Morrow:
+  - rscadd: Added a ghost notification for Acid Runner For the Hive! ability.
+  RenaRenaRe:
+  - bugfix: Hugger and Lesser Drone ghosts now actually bypass time of death checks
+      for the larva queue.
+2023-09-07:
+  Morrow:
+  - bugfix: Fixed a null reference when firing full auto and dropping your weapon
+  Steelpoint:
+  - bugfix: ERT UPP Soldiers will now correctly spawn with firearms.
+  harryob:
+  - rscadd: guns that have full auto now start on full auto by default

@@ -74677,6 +74677,10 @@
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
 	},
+/obj/structure/pipes/vents/pump/no_boom{
+	name = "Security Vent";
+	desc = "Has a valve and pump attached to it, connected to multiple gas tanks."
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "plating"
 	},

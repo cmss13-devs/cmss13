@@ -93,14 +93,14 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", combistick=0)
+/mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", combistick=0, attacker_dir = NORTH)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
 		if(combistick && istype(l_hand,/obj/item/weapon/yautja/combistick) && prob(66))
 			var/obj/item/weapon/yautja/combistick/C = l_hand
 			if(C.on)
 				return TRUE
 
-		if(l_hand.IsShield() && istype(l_hand,/obj/item/weapon/shield)) // Activable shields
+		if(l_hand.IsShield() && istype(l_hand,/obj/item/weapon/shield) && (dir in reverse_nearby_direction(attacker_dir))) // Activable shields
 			var/obj/item/weapon/shield/S = l_hand
 			var/shield_blocked_l = FALSE
 			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
@@ -125,7 +125,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			if(C.on)
 				return TRUE
 
-		if(r_hand.IsShield() && istype(r_hand,/obj/item/weapon/shield)) // Activable shields
+		if(r_hand.IsShield() && istype(r_hand,/obj/item/weapon/shield) && (dir in reverse_nearby_direction(attacker_dir))) // Activable shields
 			var/obj/item/weapon/shield/S = r_hand
 			var/shield_blocked_r = FALSE
 			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
@@ -143,10 +143,18 @@ Contains most of the procs that are called when a mob is attacked by something
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 			return TRUE
 
-	if(back && istype(back, /obj/item/weapon/shield/riot) && prob(20))
+	if(back && istype(back, /obj/item/weapon/shield/riot) && (reverse_direction(dir) in reverse_nearby_direction(attacker_dir)))
 		var/obj/item/weapon/shield/riot/shield = back
-		if(shield.blocks_on_back)
+		if(shield.blocks_on_back && prob(shield.passive_block))
 			visible_message(SPAN_DANGER("<B>The [back] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+			return TRUE
+
+	if(back && istype(back, /obj/item/weapon/shield/montage) && (reverse_direction(dir) in reverse_nearby_direction(attacker_dir)))
+		var/obj/item/weapon/shield/montage/shield = back
+		if(shield.blocks_on_back && prob(shield.passive_block))
+			visible_message(SPAN_DANGER("<B>The [back] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+			if(attack_text == "the pounce")
+				apply_effect(1, WEAKEN)
 			return TRUE
 
 	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
@@ -191,7 +199,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 	var/hit_area = affecting.display_name
 
-	if((user != src) && check_shields(I.force, "the [I.name]"))
+	if((user != src) && check_shields(I.force, "the [I.name]", attacker_dir = get_dir(user,src)))
 		return FALSE
 
 	if(I.attack_verb && I.attack_verb.len)
@@ -299,7 +307,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return
 	O.throwing = FALSE //it hit, so stop moving
 
-	if ((LM.thrower != src) && check_shields(impact_damage, "[O]"))
+	if ((LM.thrower != src) && check_shields(impact_damage, "[O]", attacker_dir = get_dir(LM.thrower,src)))
 		return
 
 	var/obj/limb/affecting = get_limb(zone)

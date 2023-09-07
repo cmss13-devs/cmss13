@@ -395,6 +395,8 @@
 	//vehicle is dead, no more lights
 	if(health <= 0 && lighting_holder.light_range)
 		lighting_holder.set_light_on(FALSE)
+	else
+		lighting_holder.set_light_on(TRUE)
 	update_icon()
 
 /obj/vehicle/multitile/get_applying_acid_time()

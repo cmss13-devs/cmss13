@@ -17,7 +17,7 @@
 		return //Unconscious? Nope.
 
 	if(dazed > 0)
-		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
+		to_chat(src, SPAN_WARNING("Мне не до разговоров."))
 		return
 
 	if(copytext(message, 1, 2) == "*")
@@ -65,7 +65,7 @@
 
 	if(copytext(message,1,2) == ";")
 		message = trim(copytext(message,2))
-	else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
+	else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q" || copytext_char(message,1,3) == ":й" || copytext_char(message,1,3) == ":Й")
 		message = trim(copytext(message,3))
 
 	message = capitalize(trim_left(message))

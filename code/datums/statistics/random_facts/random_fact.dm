@@ -57,25 +57,25 @@
 		if(living_stat_gotten > death_stat_gotten)
 			name = mob_to_report.real_name
 			stat_gotten = living_stat_gotten
-			additional_message = "и остался жив(а)! Отличная работа!"
+			additional_message = "не погибнув! Отличная работа!"
 		else
 			name = death_to_report.mob_name
 			stat_gotten = death_stat_gotten
-			additional_message = "перед смертью"
+			additional_message = "перед смертью от"
 			if(death_to_report.cause_name)
 				additional_message += " <b>[death_to_report.cause_name]</b>"
 			additional_message += ". Хорошая работа!"
 	else if(death_to_report)
 		name = death_to_report.mob_name
 		stat_gotten = death_stat_gotten
-		additional_message = "перед смертью"
+		additional_message = "перед смертью от"
 		if(death_to_report.cause_name)
 			additional_message += " <b>[death_to_report.cause_name]</b>"
 		additional_message += ". Отличная работа!"
 	else
 		name = mob_to_report.real_name
 		stat_gotten = living_stat_gotten
-		additional_message = "и остался жив(а)! Great work!"
+		additional_message = "не погибнув! Отличная работа!"
 
 	message = "<b>[name]</b> [statistic_verb] <b>[stat_gotten] [statistic_name]</b> [additional_message]"
 

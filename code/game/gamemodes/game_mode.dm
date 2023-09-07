@@ -128,8 +128,8 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	if(round_statistics)
 		round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
-	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [master_mode]!\nEnd of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
+	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Раунд завершен|"))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Так заканчивается история экипажа [MAIN_SHIP_NAME] и их борьбы на объекте [SSmapping.configs[GROUND_MAP].map_name].\nРежим игры: [master_mode]!\nГриф в конце раунда (EORG) влечет немедленный бан на 3 часа, смотрите правило #3 для деталей."))
 
 /datum/game_mode/proc/declare_completion()
 	if(round_statistics)

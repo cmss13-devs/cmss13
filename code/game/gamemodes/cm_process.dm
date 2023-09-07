@@ -42,8 +42,8 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	fallen_list += fallen_list_cross
 	if(fallen_list.len)
 		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("In Flanders fields...<br>")
-		dat += SPAN_CENTERBOLD("In memoriam of our fallen soldiers: <br>")
+		dat += SPAN_ROUNDBODY("На полях Фландрии...<br>")
+		dat += SPAN_CENTERBOLD("В память нашим падшим солдатам: <br>")
 		for(var/i = 1 to fallen_list.len)
 			if(i != fallen_list.len)
 				dat += "[fallen_list[i]], "
@@ -57,7 +57,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(2 SECONDS)
 	if(LAZYLEN(xenomorphs) || LAZYLEN(dead_queens))
 		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>The xenomorph Queen(s) were:")
+		dat += SPAN_ROUNDBODY("<br>В роли Королевы Ксеноморфов:")
 		var/mob/living/carbon/xenomorph/xeno_mob
 		for (var/msg in dead_queens)
 			dat += msg
@@ -69,7 +69,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			if(!xeno_mob || !xeno_mob.loc)
 				xeno_mob = xeno_mind.original
 			if(xeno_mob && xeno_mob.loc && isqueen(xeno_mob) && xeno_mob.stat != DEAD) // Dead queens handled separately
-				dat += "<br>[xeno_mob.full_designation] was [xeno_mob] [SPAN_BOLDNOTICE("(SURVIVED)")]"
+				dat += "<br>[xeno_mob.full_designation] был [xeno_mob] [SPAN_BOLDNOTICE("(ВЫЖИЛ)")]"
 
 		to_world("[dat]")
 
@@ -78,9 +78,9 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(2 SECONDS)
 	if(length(predators))
 		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>The Predators were:")
+		dat += SPAN_ROUNDBODY("<br>В роли Хищников:")
 		for(var/entry in predators)
-			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
+			dat += "<br>[entry] был [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
 		to_world("[dat]")
 
 
@@ -89,26 +89,26 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(2 SECONDS)
 	if(GLOB.medal_awards.len)
 		var/dat = "<br>"
-		dat +=  SPAN_ROUNDBODY("<br>Medal Awards:")
+		dat +=  SPAN_ROUNDBODY("<br>Медали получили:")
 		for(var/recipient in GLOB.medal_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.medal_awards[recipient]
 			for(var/i in 1 to recipient_award.medal_names.len)
-				dat += "<br><b>[recipient_award.recipient_rank] [recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]the <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'."
+				dat += "<br><b>[recipient_award.recipient_rank] [recipient]</b> наградили [recipient_award.posthumous[i] ? "посмертно " : ""]the <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'."
 		to_world(dat)
 	if(GLOB.jelly_awards.len)
 		var/dat = "<br>"
-		dat +=  SPAN_ROUNDBODY("<br>Royal Jelly Awards:")
+		dat +=  SPAN_ROUNDBODY("<br>Награды Королевского Желе:")
 		for(var/recipient in GLOB.jelly_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.jelly_awards[recipient]
 			for(var/i in 1 to recipient_award.medal_names.len)
-				dat += "<br><b>[recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]a <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
+				dat += "<br><b>[recipient]</b> наградили [recipient_award.posthumous[i] ? "посмертно " : ""]a <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
 		to_world(dat)
 
 /datum/game_mode/proc/declare_fun_facts()
 	set waitfor = 0
 	sleep(2 SECONDS)
 	to_chat_spaced(world, margin_bottom = 0, html = SPAN_ROLE_BODY("|______________________|"))
-	to_world(SPAN_ROLE_HEADER("FUN FACTS"))
+	to_world(SPAN_ROLE_HEADER("ИНТЕРЕСНЫЕ ФАКТЫ"))
 	var/list/fact_types = subtypesof(/datum/random_fact)
 	for(var/fact_type as anything in fact_types)
 		var/datum/random_fact/fact_human = new fact_type(set_check_human = TRUE, set_check_xeno = FALSE)

@@ -16,25 +16,25 @@
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				if(announce)
-					ai_announcement("Attention: Security level lowered to GREEN - all clear.", no_sound ? null : 'sound/AI/code_green.ogg', ARES_LOG_SECURITY)
+					ai_announcement("Внимание: Уровень безопасности понижен до ЗЕЛЕНОГО  - все чисто.", no_sound ? null : 'sound/AI/code_green.ogg', ARES_LOG_SECURITY)
 				security_level = SEC_LEVEL_GREEN
 
 			if(SEC_LEVEL_BLUE)
 				if(security_level < SEC_LEVEL_BLUE)
 					if(announce)
-						ai_announcement("Attention: Security level elevated to BLUE - potentially hostile activity on board.", no_sound ? null : 'sound/AI/code_blue_elevated.ogg', ARES_LOG_SECURITY)
+						ai_announcement("Внимание: Уровень безопасности повышен до СИНЕГО - возможна враждебная активность на борту.", no_sound ? null : 'sound/AI/code_blue_elevated.ogg', ARES_LOG_SECURITY)
 				else
 					if(announce)
-						ai_announcement("Attention: Security level lowered to BLUE - potentially hostile activity on board.", no_sound ? null : 'sound/AI/code_blue_lowered.ogg', ARES_LOG_SECURITY)
+						ai_announcement("Внимание: Уровень безопасности понижен до СИНЕГО - возможна враждебная активность на борту.", no_sound ? null : 'sound/AI/code_blue_lowered.ogg', ARES_LOG_SECURITY)
 				security_level = SEC_LEVEL_BLUE
 
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
 					if(announce)
-						ai_announcement("Attention: Security level elevated to RED - there is an immediate threat to the ship.", no_sound ? null : 'sound/AI/code_red_elevated.ogg', ARES_LOG_SECURITY)
+						ai_announcement("Внимание: Уровень безопасности повышен до КРАСНОГО - прямая угроза кораблю.", no_sound ? null : 'sound/AI/code_red_elevated.ogg', ARES_LOG_SECURITY)
 				else
 					if(announce)
-						ai_announcement("Attention: Security level lowered to RED - there is an immediate threat to the ship.", no_sound ? null : 'sound/AI/code_red_lowered.ogg', ARES_LOG_SECURITY)
+						ai_announcement("Внимание: Уровень безопасности понижен до КРАСНОГО - прямая угроза кораблю.", no_sound ? null : 'sound/AI/code_red_lowered.ogg', ARES_LOG_SECURITY)
 				security_level = SEC_LEVEL_RED
 
 			if(SEC_LEVEL_DELTA)

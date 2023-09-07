@@ -82,7 +82,7 @@
 /proc/Broadcast_Message(datum/radio_frequency/connection, mob/M,
 						vmask, vmessage, obj/item/device/radio/radio,
 						message, name, job, realname, vname,
-						data, compression, list/level, freq, verbage = "says",
+						data, compression, list/level, freq, verbage = "говорит",
 						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET)
 
 	/* ###### Prepare the radio connection ###### */
@@ -222,7 +222,7 @@
 		// --- Some more pre-message formatting ---
 		var/part_b_extra = ""
 		if(data == 3) // intercepted radio message
-			part_b_extra = " <i>(Intercepted)</i>"
+			part_b_extra = " <i>(ПЕРЕХВАЧЕНО)</i>"
 		var/part_b = "</span><b> [icon2html(radio, (heard_masked + heard_normal + heard_voice + heard_garbled + heard_gibberish))]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
 
 		if(display_freq in M.important_radio_channels)

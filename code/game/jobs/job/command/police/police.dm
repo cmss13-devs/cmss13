@@ -26,7 +26,7 @@
 	return positions
 
 AddTimelock(/datum/job/command/police, list(
-	JOB_SQUAD_ROLES = 10 HOURS
+	JOB_SQUAD_ROLES = 3 HOURS
 ))
 
 /obj/effect/landmark/start/police

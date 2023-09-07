@@ -184,17 +184,19 @@ DEFINES in setup.dm, referenced here.
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
 // Checks whether there is anything to put your harness
-/obj/item/weapon/gun/proc/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/proc/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
 	if(retrieval_slot == WEAR_J_STORE)
 		var/obj/item/suit = user.wear_suit
 		if(!istype(suit, /obj/item/clothing/suit/storage/marine))
 			return FALSE
 	return TRUE
 
-/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
 	if (!loc || !user)
 		return FALSE
 	if (!isturf(loc))
+		return FALSE
+	if (get_dist(src,user) > 1)
 		return FALSE
 	if(!retrieval_check(user, retrieval_slot))
 		return FALSE

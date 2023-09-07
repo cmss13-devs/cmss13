@@ -99,7 +99,7 @@
 	desc = "A living stationary organism that strikes from below with its powerful claw."
 	pixel_y = -8
 
-	var/cooldown = 5 SECONDS
+	var/cooldown = 6 SECONDS
 	var/can_attack = 1
 
 	// xeno_tag = SUNKEN_COLONY
@@ -172,6 +172,7 @@
 /obj/effect/impaler/Initialize(mapload, ...)
 	. = ..()
 	visible_message(SPAN_HIGHDANGER("Ground starts to rumble!"))
+	playsound(loc, "alien_bite", 25, 1)
 
 /obj/effect/impaler/proc/strike()
 	icon_state = "strike"

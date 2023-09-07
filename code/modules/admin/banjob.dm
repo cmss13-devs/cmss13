@@ -23,39 +23,39 @@ var/jobban_keylist[0] //to store the keys & ranks
 /proc/jobban_client_fullban(ckey, rank)
 	if (!ckey || !rank) return
 	rank = check_jobban_path(rank)
-	jobban_keylist[rank][ckey] = "Reason Unspecified"
+	jobban_keylist[rank][ckey] = "Причина не указана"
 
 //returns a reason if M is banned from rank, returns 0 otherwise
 /proc/jobban_isbanned(mob/M, rank, datum/entity/player/P = null)
 	if(!rank)
-		return "Non-existant job"
+		return "Несуществующая профессия"
 	rank = ckey(rank)
 	if(P)
 		// asking for a friend
 		if(!P.jobbans_loaded)
-			return "Not yet loaded"
+			return "Еще не загрузились"
 		var/datum/entity/player_job_ban/PJB = P.job_bans[rank]
 		return PJB ? PJB.text : null
 	if(M)
 		if(!M.client || !M.client.player_data || !M.client.player_data.jobbans_loaded)
-			return "Not yet loaded"
+			return "Еще не загрузились"
 		if(guest_jobbans(rank))
 			if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(M.key))
-				return "Guest Job-ban"
+				return "Гостевой джоб-банчик"
 			if(CONFIG_GET(flag/usewhitelist) && !check_whitelist(M))
-				return "Whitelisted Job"
+				return "Профессия по вайтлисту"
 		var/datum/entity/player_job_ban/PJB = M.client.player_data.job_bans[rank]
 		return PJB ? PJB.text : null
 
 /proc/jobban_loadbanfile()
 	var/savefile/S=new("data/job_new.ban")
 	S["new_bans"] >> jobban_keylist
-	log_admin("Loading jobban_rank")
+	log_admin("Загружаю jobban_rank")
 	S["runonce"] >> jobban_runonce
 
 	if (!length(jobban_keylist))
 		jobban_keylist=list()
-		log_admin("jobban_keylist was empty")
+		log_admin("jobban_keylist был пуст")
 
 /proc/jobban_savebanfile()
 	var/savefile/S=new("data/job_new.ban")
@@ -87,7 +87,7 @@ var/jobban_keylist[0] //to store the keys & ranks
 		return
 
 	if(!M.ckey) //sanity
-		to_chat(usr, "This mob has no ckey")
+		to_chat(usr, "У моба нет сикея")
 		return
 	if(!RoleAuthority)
 		to_chat(usr, "The Role Authority is not set up!")

@@ -341,28 +341,28 @@
 
 	var/stats = ""
 	stats += "[SSticker.mode.round_finished]\n"
-	stats += "Game mode: [game_mode]\n"
-	stats += "Map name: [current_map.name]\n"
-	stats += "Round time: [duration2text(round_length)]\n"
-	stats += "End round player population: [end_round_player_population]\n"
+	stats += "Режим: [game_mode]\n"
+	stats += "Карта: [current_map.name]\n"
+	stats += "Время раунда: [duration2text(round_length)]\n"
+	stats += "Игроков под конец игры: [end_round_player_population]\n"
 
-	stats += "Total xenos spawned: [total_xenos_created]\n"
-	stats += "Total Preds spawned: [total_predators_spawned]\n"
-	stats += "Total Predaliens spawned: [total_predaliens]\n"
-	stats += "Total humans spawned: [total_humans_created]\n"
+	stats += "Присутствовало ксеноморфов: [total_xenos_created]\n"
+	stats += "Присутствовало хищников: [total_predators_spawned]\n"
+	stats += "Присутствовало предалиенов: [total_predaliens]\n"
+	stats += "Присутствовало людей: [total_humans_created]\n"
 
-	stats += "Xeno count during hijack: [xeno_count_during_hijack]\n"
-	stats += "Human count during hijack: [human_count_during_hijack]\n"
+	stats += "Ксеноморфов во время угона: [xeno_count_during_hijack]\n"
+	stats += "Людей во время угона: [human_count_during_hijack]\n"
 
-	stats += "Total huggers applied: [total_huggers_applied]\n"
-	stats += "Total chestbursts: [total_larva_burst]\n"
+	stats += "Лицехватов: [total_huggers_applied]\n"
+	stats += "Грудоломов выскочило: [total_larva_burst]\n"
 
-	stats += "Total shots fired: [total_projectiles_fired]\n"
-	stats += "Total friendly fire instances: [total_friendly_fire_instances]\n"
+	stats += "Всего выстрелов: [total_projectiles_fired]\n"
+	stats += "Всего дружественных попаданий: [total_friendly_fire_instances]\n"
 
-	stats += "Marines remaining: [end_of_round_marines]\n"
-	stats += "Xenos remaining: [end_of_round_xenos]\n"
-	stats += "Hijack time: [duration2text(round_hijack_time)]\n"
+	stats += "Солдат осталось: [end_of_round_marines]\n"
+	stats += "Ксеноморфов осталось: [end_of_round_xenos]\n"
+	stats += "Время для угона: [duration2text(round_hijack_time)]\n"
 
 	stats += "[log_end]"
 

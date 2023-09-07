@@ -295,16 +295,16 @@
 	var/effect_amt = round(6 + amount*6)
 
 	if(xeno_creature)
-		xeno_creature.interference = 20
+		if(xeno_creature.interference < 4)
+			to_chat(xeno_creature, SPAN_XENOHIGHDANGER("Your awareness dims to a small area!"))
+		xeno_creature.interference = 10
+		xeno_creature.blinded = TRUE
 	else
 		creature.apply_damage(12, OXY)
 	creature.SetEarDeafness(max(creature.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
-	if(!creature.eye_blind) //Eye exposure damage
-		if(xeno_creature)
-			to_chat(xeno_creature, SPAN_XENODANGER("Your awareness dims to a small area!"))
-		else
-			to_chat(creature, SPAN_DANGER("Your eyes sting. You can't see!"))
-	creature.SetEyeBlind(round(effect_amt/3))
+	if(!xeno_creature && !creature.eye_blind) //Eye exposure damage
+		to_chat(creature, SPAN_DANGER("Your eyes sting. You can't see!"))
+		creature.SetEyeBlind(round(effect_amt/3))
 	if(!xeno_creature && creature.coughedtime != 1 && !creature.stat) //Coughing/gasping
 		creature.coughedtime = 1
 		if(prob(50))

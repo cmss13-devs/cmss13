@@ -147,7 +147,7 @@
 		var/warn_choice = tgui_input_number(user, "How many seconds warning do you wish to give?", "Release Warning", 5, 30, 1, 20 SECONDS)
 		warn_choice = warn_choice SECONDS
 
-		var/confirm = alert(user, "Confirm gas setup. \n\nGas: '[gas_choice]'\n Radius: '[radius_choice]'\n Warn Time: '[warn_choice / 10] seconds' \n\n Is this correct?", "Confirmation", "Yes", "No")
+		var/confirm = alert(user, "Confirm gas setup. \n\nGas: '[gas_choice]'\nRadius: '[radius_choice]'\nWarn Time: '[warn_choice / 10] seconds' \n\n Is this correct?", "Confirmation", "Yes", "No")
 		if(confirm != "Yes")
 			return FALSE
 		create_gas(gas_choice, radius_choice, warn_choice)

@@ -104,6 +104,13 @@
   - config: changed some config setting
   - admin: messed with admin stuff
   - server: something server ops should know
+  Morrow:
+  - bugfix: Fixed a null reference when firing full auto and dropping your weapon
+  Steelpoint:
+  - bugfix: ERT UPP Soldiers will now correctly spawn with firearms.
+  Wyderar:
+  - imageadd: Icon placeholder for mecha gun
+  - maptweak: Deleted tags
   harryob:
   - rscadd: guns that have full auto now start on full auto by default
   poleno1232:
@@ -121,3 +128,7 @@
       \u0430\u0439\u0432\u043B\u043E\u0440\u0434 \u043C\u043E\u0436\u0435\u0442 \u043F\
       \u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u043C\u0430\u043A\u0441\u0438\
       \u043C\u0443\u043C 5 \u0441\u0430\u043D\u043A\u0435\u043D\u043E\u0432"
+2023-09-07:
+  Wyderar:
+  - imageadd: Icon placeholder for mecha gun
+  - maptweak: Deleted tags

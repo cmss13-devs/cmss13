@@ -180,8 +180,6 @@
 
 /datum/squad/marine/intel
 	name = SQUAD_MARINE_INTEL
-	equipment_color = "#67d692"
-	chat_color = "#67d692"
 	minimap_color = MINIMAP_SQUAD_ECHO
 	radio_freq = null
 

@@ -108,6 +108,9 @@
 
 	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
 
+	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
+	var/prepend_squad_name_to_assignment = TRUE
+
 
 /datum/squad/marine
 	name = "Root"
@@ -183,6 +186,7 @@
 	radio_freq = null
 
 	roundstart = FALSE
+	prepend_squad_name_to_assignment = FALSE
 
 /datum/squad/marine/sof
 	name = SQUAD_SOF
@@ -504,7 +508,10 @@
 	marines_list += M
 	M.assigned_squad = src //Add them to the squad
 	C.access += (src.access + extra_access) //Add their squad access to their ID
-	C.assignment = "[name] [assignment]"
+	if(prepend_squad_name_to_assignment)
+		C.assignment = "[name] [assignment]"
+	else
+		C.assignment = assignment
 
 	SEND_SIGNAL(M, COMSIG_SET_SQUAD)
 

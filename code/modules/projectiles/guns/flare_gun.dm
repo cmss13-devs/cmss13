@@ -24,10 +24,10 @@
 
 /obj/item/weapon/gun/flare/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/mini/flaregun/S = new(src)
-	S.hidden = TRUE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
+	var/obj/item/attachable/scope/mini/flaregun/scope = new(src)
+	scope.hidden = TRUE
+	scope.flags_attach_features &= ~ATTACH_REMOVABLE
+	scope.Attach(src)
 	update_attachables()
 
 
@@ -53,24 +53,24 @@
 	to_chat(user, SPAN_WARNING("You pop out [src]'s tube!"))
 	update_icon()
 
-/obj/item/weapon/gun/flare/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/device/flashlight/flare))
-		var/obj/item/device/flashlight/flare/F = I
-		if(F.on)
+/obj/item/weapon/gun/flare/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/device/flashlight/flare))
+		var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
+		if(attacking_flare.on)
 			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
 			return
-		if(!F.fuel)
+		if(!attacking_flare.fuel)
 			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
 			return
 		if(current_mag && current_mag.current_rounds == 0)
-			ammo = GLOB.ammo_list[F.ammo_datum]
+			ammo = GLOB.ammo_list[attacking_flare.ammo_datum]
 			playsound(user, reload_sound, 25, 1)
-			to_chat(user, SPAN_NOTICE("You load \the [F] into [src]."))
+			to_chat(user, SPAN_NOTICE("You load [attacking_flare] into [src]."))
 			current_mag.current_rounds++
-			qdel(I)
+			qdel(attacking_flare)
 			update_icon()
 		else
-			to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
+			to_chat(user, SPAN_WARNING("[src] is already loaded!"))
 	else
 		to_chat(user, SPAN_WARNING("That's not a flare!"))
 
@@ -87,7 +87,7 @@
 		playsound(user, reload_sound, 25, TRUE)
 		current_mag.current_rounds--
 		if(user)
-			to_chat(user, SPAN_NOTICE("You unload \the [unloaded_flare] from \the [src]."))
+			to_chat(user, SPAN_NOTICE("You unload [unloaded_flare] from \the [src]."))
 			user.put_in_hands(unloaded_flare)
 		update_icon()
 
@@ -103,7 +103,7 @@
 		return
 
 	if(!istype(ammo, /datum/ammo/flare))
-		to_chat(user, SPAN_NOTICE("\The [src] jams as it is somehow loaded with incorrect ammo!"))
+		to_chat(user, SPAN_NOTICE("[src] jams as it is somehow loaded with incorrect ammo!"))
 		return
 
 	if(user.action_busy)
@@ -122,13 +122,13 @@
 	var/datum/ammo/flare/explicit_ammo = ammo
 
 	var/obj/item/device/flashlight/flare/fired_flare = new explicit_ammo.flare_type(get_turf(src))
-	to_chat(user, SPAN_NOTICE("You fire \the [fired_flare] into the air!"))
+	to_chat(user, SPAN_NOTICE("You fire [fired_flare] into the air!"))
 	fired_flare.visible_message(SPAN_WARNING("\A [fired_flare] bursts into brilliant light in the sky!"))
 	fired_flare.invisibility = INVISIBILITY_MAXIMUM
 	fired_flare.mouse_opacity = FALSE
 	playsound(user.loc, fire_sound, 50, 1)
 
-	var/obj/effect/flare_light/light_effect = new /obj/effect/flare_light(fired_flare, fired_flare.light_range, fired_flare.light_power, fired_flare.light_color)
+	var/obj/effect/flare_light/light_effect = new (fired_flare, fired_flare.light_range, fired_flare.light_power, fired_flare.light_color)
 	light_effect.RegisterSignal(fired_flare, COMSIG_ATOM_SET_LIGHT_ON, TYPE_PROC_REF(/obj/effect/flare_light, flare_light_change))
 
 	if(fired_flare.activate_signal(user))

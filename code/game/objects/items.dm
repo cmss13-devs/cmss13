@@ -368,6 +368,7 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/pickup(mob/user, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	SEND_SIGNAL(user, COMSIG_MOB_PICKUP_ITEM, src)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	if(pickup_sound && !silent && src.loc?.z)
 		playsound(src, pickup_sound, pickupvol, pickup_vary)
@@ -635,6 +636,8 @@ cases. Override_icon_state should be a list.*/
 					return FALSE
 				if(flags_equip_slot & SLOT_SUIT_STORE)
 					return TRUE
+				if(flags_equip_slot & SLOT_BLOCK_SUIT_STORE)
+					return FALSE
 				if(!H.wear_suit && (WEAR_JACKET in mob_equip))
 					if(!disable_warning)
 						to_chat(H, SPAN_WARNING("You need a suit before you can attach this [name]."))

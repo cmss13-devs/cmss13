@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "Synthetic vendors now have the option to vend several helmets and a riot visor. Including a standard M10 helmet defaulted to non-camo grey."

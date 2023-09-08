@@ -153,6 +153,8 @@
 #define FULLSCREEN_BLIND_LAYER 17.15
 /// pain flashes
 #define FULLSCREEN_PAIN_LAYER 17.2
+/// Vulture sniper/spotter scope
+#define FULLSCREEN_VULTURE_SCOPE_LAYER 17.21
 /// in critical
 #define FULLSCREEN_CRIT_LAYER 17.25
 

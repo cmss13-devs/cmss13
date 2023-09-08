@@ -1643,6 +1643,24 @@
 		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
+/datum/ammo/bullet/sniper/anti_materiel/vulture
+	damage = 400 // Fully intended to vaporize anything smaller than a mini cooper
+	accurate_range_min = 10
+	handful_state = "vulture_bullet"
+	sound_hit = 'sound/bullets/bullet_vulture_impact.ogg'
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER|AMMO_ANTIVEHICLE
+
+/datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/item/projectile/bullet)
+	. = ..()
+	knockback(hit_mob, bullet, 30)
+	hit_mob.apply_effect(3, SLOW)
+
+/datum/ammo/bullet/sniper/anti_materiel/vulture/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/heavy)
+	))
+
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"
 

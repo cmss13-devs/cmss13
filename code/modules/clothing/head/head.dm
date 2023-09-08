@@ -537,7 +537,7 @@
 
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\
-D
+
 /obj/item/clothing/head/ushanka
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"

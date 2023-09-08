@@ -6,7 +6,7 @@
 #define SHUTTLE_LOCK_COOLDOWN 10 MINUTES
 #define MONORAIL_LOCK_COOLDOWN 3 MINUTES
 #define SHUTTLE_LOCK_TIME_LOCK 1 MINUTES
-#define EVACUATION_AUTOMATIC_DEPARTURE 10 MINUTES //All pods automatically depart in 10 minutes, unless they are full or unable to launch for some reason.
+#define EVACUATION_AUTOMATIC_DEPARTURE (10 MINUTES) //All pods automatically depart in 10 minutes, unless they are full or unable to launch for some reason.
 #define EVACUATION_ESTIMATE_DEPARTURE ((evac_time + EVACUATION_AUTOMATIC_DEPARTURE - world.time) * 0.1)
 
 #define EVACUATION_STATUS_STANDING_BY 0
@@ -71,6 +71,7 @@
 #define MODE_SHIPSIDE_SD (1<<8) /// Toggles whether Predators can big SD when not on the groundmap
 #define MODE_HARDCORE_PERMA (1<<9) /// Toggles Hardcore for all marines, meaning they instantly perma upon death
 #define MODE_DISPOSABLE_MOBS (1<<10) // Toggles if mobs fit in disposals or not. Off by default.
+#define MODE_BYPASS_JOE (1<<11) // Toggles if ghosts can bypass Working Joe spawn limitations, does NOT bypass WL requirement. Off by default.
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2

@@ -24,7 +24,6 @@
 	var/mob/living/carbon/xenomorph/carrier/carrier = mutator_set.xeno
 	if(!istype(carrier))
 		return FALSE
-	carrier.mutation_type = CARRIER_EGGSAC
 	carrier.plasma_types = list(PLASMA_EGG)
 	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
 	carrier.plasmapool_modifier = 1.2
@@ -37,6 +36,7 @@
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
 	carrier.update_hugger_overlays()
+	carrier.mutation_type = CARRIER_EGGSAC
 	carrier.update_eggsac_overlays()
 	carrier.eggs_max = 12
 	carrier.egg_planting_range = 2

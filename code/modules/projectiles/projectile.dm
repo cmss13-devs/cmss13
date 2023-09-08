@@ -799,7 +799,8 @@
 			if(X.hivenumber == hivenumber)
 				return FALSE
 
-		if(mob_size >= MOB_SIZE_BIG) . += 10
+		if(mob_size == MOB_SIZE_SMALL) . -= 10
+		else if(mob_size >= MOB_SIZE_BIG) . += 10
 		if(evasion > 0)
 			. -= evasion
 

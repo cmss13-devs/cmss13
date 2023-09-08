@@ -2373,6 +2373,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "fray-marines\code\game\jobs\command\auxiliary\mech_crew.dm"
 #include "fray-marines\code\game\objects\items\weapons\st_equip.dm"
 #include "fray-marines\code\game\objects\items\weapons\st_hammer_stacks.dm"
+#include "fray-marines\code\modules\projectiles\ammo_datums.dm"
 #include "fray-marines\code\modules\vehicles\hardpoints_walker.dm"
 #include "fray-marines\code\modules\vehicles\walker.dm"
 #include "fray-marines\code\modules\vehicles\walker_vendor.dm"

@@ -12,7 +12,7 @@
 
 /datum/emergency_call/feral_xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... oh god, they're in the vent---... Priority Warning: Signal lost."
+	arrival_message = "[MAIN_SHIP_NAME], это USS Vriess на связ-- #&...*#&^#.. сигнал... БЛЯТЬ, они в вентиля---... Приоритетное Предупреждение: Сигнал потерян."
 	objectives = "Destroy everything!"
 
 /datum/emergency_call/feral_xenos/spawn_items()

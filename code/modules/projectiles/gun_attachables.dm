@@ -331,6 +331,17 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "co2_bayonet_a"
 	var/filled = FALSE
 
+/obj/item/attachable/bayonet/rmc
+	name = "\improper L5 bayonet"
+	desc = "The standard-issue bayonet of the RMC, the L5 is balanced to also function as an effective throwing knife."
+	icon_state = "upp_bayonet" // PLACEHOLDER PLEASE REPLACE
+	item_state = "combat_knife"
+	attach_icon = "upp_bayonet_a" // PLACEHOLDER PLEASE REPLACE
+	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
+	throw_speed = SPEED_REALLY_FAST
+	throw_range = 7
+	pry_delay = 1 SECONDS
+
 /obj/item/attachable/bayonet/co2/update_icon()
 	icon_state = "co2_knife[filled ? "-f" : ""]"
 	attach_icon = "co2_bayonet[filled ? "-f" : ""]_a"
@@ -436,6 +447,39 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
+
+/obj/item/attachable/f90_dmr_barrel
+	name = "f90 barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "aug_dmr_barrel_a"
+	attach_icon = "aug_dmr_barrel_a"
+	slot = "muzzle"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
+	size_mod = 0
+
+/obj/item/attachable/f90_shotgun_barrel
+	name = "f90 barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "aug_mkey_barrel_a"
+	attach_icon = "aug_mkey_barrel_a"
+	slot = "muzzle"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
+	size_mod = 0
+
+/obj/item/attachable/l56a2_smartgun
+	name = "l56a2 barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "magsg_barrel_a"
+	attach_icon = "magsg_barrel_a"
+	slot = "muzzle"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
+	size_mod = 0
 
 /obj/item/attachable/sniperbarrel
 	name = "sniper barrel"
@@ -1047,6 +1091,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/scope/mini/flaregun
 	wield_delay_mod = 0
 	dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
+
+/obj/item/attachable/scope/mini/f90
+	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
 /obj/item/attachable/scope/mini/flaregun/New()
 	..()

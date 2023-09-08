@@ -451,6 +451,11 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 
+/obj/item/attachable/sniperbarrel/vulture
+	name = "\improper M707 barrel"
+	icon_state = "vulture_barrel"
+	hud_offset_mod = -1
+
 /obj/item/attachable/m60barrel
 	name = "M60 barrel"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
@@ -1125,7 +1130,474 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "slavicscope"
 	desc = "Oppa! How did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
 
+/obj/item/attachable/vulture_scope // not a subtype of scope because it uses basically none of the scope's features
+	name = "\improper M707 \"Vulture\" scope"
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
+	icon_state = "vulture_scope"
+	attach_icon = "vulture_scope"
+	desc = "A powerful yet obtrusive sight for the M707 anti-materiel rifle." // Can't be seen normally, anyway
+	slot = "rail"
+	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when wielded
+	wield_delay_mod = WIELD_DELAY_FAST
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+	/// Weakref to the user of the scope
+	var/datum/weakref/scope_user
+	/// If the scope is currently in use
+	var/scoping = FALSE
+	/// How far out the player should see by default
+	var/start_scope_range = 12
+	/// The bare minimum distance the scope can be from the player
+	var/min_scope_range = 12
+	/// The maximum distance the scope can be from the player
+	var/max_scope_range = 25
+	/// How far in the perpendicular axis the scope can move in either direction
+	var/perpendicular_scope_range = 7
+	/// How far in each direction the scope should see. Default human view size is 7
+	var/scope_viewsize = 7
+	/// The current X position of the scope within the sniper's view box. 0 is center
+	var/scope_offset_x = 0
+	/// The current Y position of the scope within the sniper's view box. 0 is center
+	var/scope_offset_y = 0
+	/// How far in any given direction the scope can drift
+	var/scope_drift_max = 2
+	/// The current X coord position of the scope camera
+	var/scope_x = 0
+	/// The current Y coord position of the scope camera
+	var/scope_y = 0
+	/// Ref to the scope screen element
+	var/atom/movable/screen/vulture_scope/scope_element
+	/// If the gun should experience scope drift
+	var/scope_drift = TRUE
+	/// % chance for the scope to drift on process with a spotter using their scope
+	var/spotted_drift_chance = 33
+	/// % chance for the scope to drift on process without a spotter using their scope
+	var/unspotted_drift_chance = 100
+	/// If the scope should use do_afters for adjusting and moving the sight
+	var/slow_use = TRUE
+	/// Cooldown for interacting with the scope's adjustment or position
+	COOLDOWN_DECLARE(scope_interact_cd)
+	/// If the user is currently holding their breath
+	var/holding_breath = FALSE
+	/// Cooldown for after holding your breath
+	COOLDOWN_DECLARE(hold_breath_cd)
+	/// How long you can hold your breath for
+	var/breath_time = 4 SECONDS
+	/// How long the cooldown for holding your breath is, only starts after breath_time finishes
+	var/breath_cooldown_time = 12 SECONDS
+	/// The initial dir of the scope user when scoping in
+	var/scope_user_initial_dir
+	/// How much to increase darkness view by
+	var/darkness_view = 12
+	/// If there is currently a spotter using the linked spotting scope
+	var/spotter_spotting = FALSE
 
+/obj/item/attachable/vulture_scope/Initialize(mapload, ...)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+	select_gamemode_skin(type)
+
+/obj/item/attachable/vulture_scope/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	on_unscope()
+	QDEL_NULL(scope_element)
+	return ..()
+
+/obj/item/attachable/vulture_scope/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "VultureScope", name)
+		ui.open()
+
+/obj/item/attachable/vulture_scope/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
+
+/obj/item/attachable/vulture_scope/ui_data(mob/user)
+	var/list/data = list()
+	data["offset_x"] = scope_offset_x
+	data["offset_y"] = scope_offset_y
+	data["valid_offset_dirs"] = get_offset_dirs()
+	data["scope_cooldown"] = !COOLDOWN_FINISHED(src, scope_interact_cd)
+	data["valid_adjust_dirs"] = get_adjust_dirs()
+	data["breath_cooldown"] = !COOLDOWN_FINISHED(src, hold_breath_cd)
+	data["breath_recharge"] = get_breath_recharge()
+	data["spotter_spotting"] = spotter_spotting
+	data["current_scope_drift"] = get_scope_drift_chance()
+	data["time_to_fire_remaining"] = 1 - (get_time_to_fire() / FIRE_DELAY_TIER_VULTURE)
+	return data
+
+/obj/item/attachable/vulture_scope/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("adjust_dir")
+			var/direction = params["offset_dir"]
+			if(!(direction in alldirs) || !scoping || !scope_user)
+				return
+
+			var/mob/scoper = scope_user.resolve()
+			if(slow_use)
+				if(!COOLDOWN_FINISHED(src, scope_interact_cd))
+					return
+				to_chat(scoper, SPAN_NOTICE("You begin adjusting [src]..."))
+				COOLDOWN_START(src, scope_interact_cd, 0.5 SECONDS)
+				if(!do_after(scoper, 0.5 SECONDS))
+					return
+
+			adjust_offset(direction)
+			. = TRUE
+
+		if("adjust_position")
+			var/direction = params["position_dir"]
+			if(!(direction in alldirs) || !scoping || !scope_user)
+				return
+
+			var/mob/scoper = scope_user.resolve()
+			if(slow_use)
+				if(!COOLDOWN_FINISHED(src, scope_interact_cd))
+					return
+
+				to_chat(scoper, SPAN_NOTICE("You begin moving [src]..."))
+				COOLDOWN_START(src, scope_interact_cd, 1 SECONDS)
+				if(!do_after(scoper, 1 SECONDS))
+					return
+
+			adjust_position(direction)
+			. = TRUE
+
+		if("hold_breath")
+			if(!COOLDOWN_FINISHED(src, hold_breath_cd) || holding_breath)
+				return
+
+			hold_breath()
+			. = TRUE
+
+/obj/item/attachable/vulture_scope/process()
+	if(scope_element && prob(get_scope_drift_chance())) //every 6 seconds when unspotted, on average
+		scope_drift()
+
+/// Returns a number between 0 and 100 for the chance of the scope drifting on process()
+/obj/item/attachable/vulture_scope/proc/get_scope_drift_chance()
+	if(!scope_drift || holding_breath)
+		return 0
+
+	if(spotter_spotting)
+		return spotted_drift_chance
+
+	else
+		return unspotted_drift_chance
+
+/// Returns how many deciseconds until the gun is able to fire again
+/obj/item/attachable/vulture_scope/proc/get_time_to_fire()
+	if(!istype(loc, /obj/item/weapon/gun/boltaction/vulture))
+		return 0
+
+	var/obj/item/weapon/gun/boltaction/vulture/rifle = loc
+	if(!rifle.last_fired)
+		return 0
+
+	return (rifle.last_fired + rifle.get_fire_delay()) - world.time
+
+/obj/item/attachable/vulture_scope/activate_attachment(obj/item/weapon/gun/gun, mob/living/carbon/user, turn_off)
+	if(turn_off || scoping)
+		on_unscope()
+		return TRUE
+
+	if(!scoping)
+		if(!(gun.flags_item & WIELDED))
+			to_chat(user, SPAN_WARNING("You must hold [gun] with two hands to use [src]."))
+			return FALSE
+
+		if(!HAS_TRAIT(gun, TRAIT_GUN_BIPODDED))
+			to_chat(user, SPAN_WARNING("You must have a deployed bipod to use [src]."))
+			return FALSE
+
+		on_scope()
+	return TRUE
+
+/obj/item/attachable/vulture_scope/proc/get_offset_dirs()
+	var/list/possible_dirs = alldirs.Copy()
+	if(scope_offset_x >= scope_drift_max)
+		possible_dirs -= list(NORTHEAST, EAST, SOUTHEAST)
+	else if(scope_offset_x <= -scope_drift_max)
+		possible_dirs -= list(NORTHWEST, WEST, SOUTHWEST)
+
+	if(scope_offset_y >= scope_drift_max)
+		possible_dirs -= list(NORTHWEST, NORTH, NORTHEAST)
+	else if(scope_offset_y <= -scope_drift_max)
+		possible_dirs -= list(SOUTHWEST, SOUTH, SOUTHEAST)
+
+	return possible_dirs
+
+/// Gets a list of valid directions to be able to adjust the reticle in
+/obj/item/attachable/vulture_scope/proc/get_adjust_dirs()
+	if(!scoping)
+		return list()
+	var/list/possible_dirs = alldirs.Copy()
+	var/turf/current_turf = get_turf(src)
+	var/turf/scope_tile = locate(scope_x, scope_y, current_turf.z)
+	var/mob/scoper = scope_user.resolve()
+	if(!scoper)
+		return list()
+
+	var/user_dir = scoper.dir
+	var/distance = get_dist(current_turf, scope_tile)
+	if(distance >= max_scope_range)
+		possible_dirs -= get_related_directions(user_dir)
+
+	else if(distance <= min_scope_range)
+		possible_dirs -= get_related_directions(REVERSE_DIR(user_dir))
+
+	if((user_dir == EAST) || (user_dir == WEST))
+		if(scope_y - current_turf.y >= perpendicular_scope_range)
+			possible_dirs -= get_related_directions(NORTH)
+
+		else if(current_turf.y - scope_y >= perpendicular_scope_range)
+			possible_dirs -= get_related_directions(SOUTH)
+
+	else
+		if(scope_x - current_turf.x >= perpendicular_scope_range)
+			possible_dirs -= get_related_directions(EAST)
+
+		else if(current_turf.x - scope_x >= perpendicular_scope_range)
+			possible_dirs -= get_related_directions(WEST)
+
+	return possible_dirs
+
+/// Adjusts the position of the reticle by a tile in a given direction
+/obj/item/attachable/vulture_scope/proc/adjust_offset(direction = NORTH)
+	var/old_x = scope_offset_x
+	var/old_y = scope_offset_y
+	if((direction == NORTHEAST) || (direction == EAST) || (direction == SOUTHEAST))
+		scope_offset_x = min(scope_offset_x + 1, scope_drift_max)
+	else if((direction == NORTHWEST) || (direction == WEST) || (direction == SOUTHWEST))
+		scope_offset_x = max(scope_offset_x - 1, -scope_drift_max)
+
+	if((direction == NORTHWEST) || (direction == NORTH) || (direction == NORTHEAST))
+		scope_offset_y = min(scope_offset_y + 1, scope_drift_max)
+	else if((direction == SOUTHWEST) || (direction == SOUTH) || (direction == SOUTHEAST))
+		scope_offset_y = max(scope_offset_y - 1, -scope_drift_max)
+
+	recalculate_scope_offset(old_x, old_y)
+
+/// Adjusts the position of the scope by a tile in a given direction
+/obj/item/attachable/vulture_scope/proc/adjust_position(direction = NORTH)
+	var/perpendicular_axis = "x"
+	var/mob/user = scope_user.resolve()
+	var/turf/user_turf = get_turf(user)
+	if((user.dir == EAST) || (user.dir == WEST))
+		perpendicular_axis = "y"
+
+	if((direction == NORTHEAST) || (direction == EAST) || (direction == SOUTHEAST))
+		scope_x++
+		scope_x = user_turf.x + axis_math(user, perpendicular_axis, "x", direction)
+	else if((direction == NORTHWEST) || (direction == WEST) || (direction == SOUTHWEST))
+		scope_x--
+		scope_x = user_turf.x + axis_math(user, perpendicular_axis, "x", direction)
+	if((direction == NORTHWEST) || (direction == NORTH) || (direction == NORTHEAST))
+		scope_y++
+		scope_y = user_turf.y + axis_math(user, perpendicular_axis, "y", direction)
+	else if((direction == SOUTHWEST) || (direction == SOUTH) || (direction == SOUTHEAST))
+		scope_y--
+		scope_y = user_turf.y + axis_math(user, perpendicular_axis, "y", direction)
+
+	SEND_SIGNAL(src, COMSIG_VULTURE_SCOPE_MOVED)
+
+	recalculate_scope_pos()
+
+/// Figures out which direction the scope should move based on user direction and their input
+/obj/item/attachable/vulture_scope/proc/axis_math(mob/user, perpendicular_axis = "x", modifying_axis = "x", direction = NORTH)
+	var/turf/user_turf = get_turf(user)
+	var/inverse = FALSE
+	if((user.dir == SOUTH) || (user.dir == WEST))
+		inverse = TRUE
+	var/user_offset
+	if(modifying_axis == "x")
+		user_offset = scope_x - user_turf.x
+
+	else
+		user_offset = scope_y - user_turf.y
+
+	if(perpendicular_axis == modifying_axis)
+		return clamp(user_offset, -perpendicular_scope_range, perpendicular_scope_range)
+
+	else
+		return clamp(abs(user_offset), min_scope_range, max_scope_range) * (inverse ? -1 : 1)
+
+/// Recalculates where the reticle should be inside the scope
+/obj/item/attachable/vulture_scope/proc/recalculate_scope_offset(old_x = 0, old_y = 0)
+	var/mob/scoper = scope_user.resolve()
+	if(!scoper.client)
+		return
+
+	var/x_to_set = (scope_offset_x >= 0 ? "+" : "") + "[scope_offset_x]"
+	var/y_to_set = (scope_offset_y >= 0 ? "+" : "") + "[scope_offset_y]"
+	scope_element.screen_loc = "CENTER[x_to_set],CENTER[y_to_set]"
+
+/// Recalculates where the scope should be in relation to the user
+/obj/item/attachable/vulture_scope/proc/recalculate_scope_pos()
+	if(!scope_user)
+		return
+	var/turf/current_turf = get_turf(src)
+	var/x_off = scope_x - current_turf.x
+	var/y_off = scope_y - current_turf.y
+	var/pixels_per_tile = 32
+	var/mob/scoper = scope_user.resolve()
+	if(!scoper.client)
+		return
+
+	if(scoping)
+		scoper.client.pixel_x = x_off * pixels_per_tile
+		scoper.client.pixel_y = y_off * pixels_per_tile
+	else
+		scoper.client.pixel_x = 0
+		scoper.client.pixel_y = 0
+
+/// Handler for when the user begins scoping
+/obj/item/attachable/vulture_scope/proc/on_scope()
+	var/turf/gun_turf = get_turf(src)
+	scope_x = gun_turf.x
+	scope_y = gun_turf.y
+	scope_offset_x = 0
+	scope_offset_y = 0
+	holding_breath = FALSE
+
+	if(!isgun(loc))
+		return
+
+	var/obj/item/weapon/gun/gun = loc
+	var/mob/living/gun_user = gun.get_gun_user()
+	if(!gun_user)
+		return
+
+	switch(gun_user.dir)
+		if(NORTH)
+			scope_y += start_scope_range
+		if(EAST)
+			scope_x += start_scope_range
+		if(SOUTH)
+			scope_y -= start_scope_range
+		if(WEST)
+			scope_x -= start_scope_range
+
+	scope_user = WEAKREF(gun_user)
+	scope_user_initial_dir = gun_user.dir
+	scoping = TRUE
+	recalculate_scope_pos()
+	gun_user.overlay_fullscreen("vulture", /atom/movable/screen/fullscreen/vulture)
+	scope_element = new(src)
+	gun_user.client.screen += scope_element
+	gun_user.see_in_dark += darkness_view
+	gun_user.lighting_alpha = 127
+	gun_user.sync_lighting_plane_alpha()
+	RegisterSignal(gun, list(
+		COMSIG_ITEM_DROPPED,
+		COMSIG_ITEM_UNWIELD,
+	), PROC_REF(on_unscope))
+	RegisterSignal(gun_user, COMSIG_MOB_UNDEPLOYED_BIPOD, PROC_REF(on_unscope))
+	RegisterSignal(gun_user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(on_mob_move_look))
+	RegisterSignal(gun_user.client, COMSIG_PARENT_QDELETING, PROC_REF(on_unscope))
+
+/// Handler for when the scope is deleted, dropped, etc.
+/obj/item/attachable/vulture_scope/proc/on_unscope()
+	SIGNAL_HANDLER
+	if(!scope_user)
+		return
+
+	var/mob/scoper = scope_user.resolve()
+	if(isgun(loc))
+		UnregisterSignal(loc, list(
+			COMSIG_ITEM_DROPPED,
+			COMSIG_ITEM_UNWIELD,
+		))
+	UnregisterSignal(scoper, list(COMSIG_MOB_UNDEPLOYED_BIPOD, COMSIG_MOB_MOVE_OR_LOOK))
+	UnregisterSignal(scoper.client, COMSIG_PARENT_QDELETING)
+	stop_holding_breath()
+	scope_user_initial_dir = null
+	scoper.clear_fullscreen("vulture")
+	scoper.client.screen -= scope_element
+	scoper.see_in_dark -= darkness_view
+	scoper.lighting_alpha = 127
+	scoper.sync_lighting_plane_alpha()
+	QDEL_NULL(scope_element)
+	recalculate_scope_pos()
+	scope_user = null
+	scoping = FALSE
+	if(scoper.client)
+		scoper.client.pixel_x = 0
+		scoper.client.pixel_y = 0
+
+/// Handler for if the mob moves or changes look direction
+/obj/item/attachable/vulture_scope/proc/on_mob_move_look(mob/living/mover, actually_moving, direction, specific_direction)
+	SIGNAL_HANDLER
+
+	if(actually_moving || (mover.dir != scope_user_initial_dir))
+		on_unscope()
+
+/// Causes the scope to drift in a random direction by 1 tile
+/obj/item/attachable/vulture_scope/proc/scope_drift(forced_dir)
+	var/dir_picked
+	if(!forced_dir)
+		dir_picked = pick(get_offset_dirs())
+	else
+		dir_picked = forced_dir
+
+	adjust_offset(dir_picked)
+
+/// Returns the turf that the sniper scope + reticle is currently focused on
+/obj/item/attachable/vulture_scope/proc/get_viewed_turf()
+	RETURN_TYPE(/turf)
+	if(!scoping)
+		return null
+	var/turf/gun_turf = get_turf(src)
+	return locate(scope_x + scope_offset_x, scope_y + scope_offset_y, gun_turf.z)
+
+/// Lets the user start holding their breath, stopping gun sway for a short time
+/obj/item/attachable/vulture_scope/proc/hold_breath()
+	if(!scope_user)
+		return
+
+	var/mob/scoper = scope_user.resolve()
+	to_chat(scoper, SPAN_NOTICE("You hold your breath, steadying your scope..."))
+	holding_breath = TRUE
+	INVOKE_ASYNC(src, PROC_REF(tick_down_breath_scope))
+	addtimer(CALLBACK(src, PROC_REF(stop_holding_breath)), breath_time)
+
+/// Slowly empties out the crosshair as the user's breath runs out
+/obj/item/attachable/vulture_scope/proc/tick_down_breath_scope()
+	scope_element.icon_state = "vulture_steady_4"
+	sleep(breath_time * 0.25)
+	scope_element.icon_state = "vulture_steady_3"
+	sleep(breath_time * 0.25)
+	scope_element.icon_state = "vulture_steady_2"
+	sleep(breath_time * 0.25)
+	scope_element.icon_state = "vulture_steady_1"
+
+/// Stops the user from holding their breath, starting the cooldown
+/obj/item/attachable/vulture_scope/proc/stop_holding_breath()
+	if(!scope_user || !holding_breath)
+		return
+
+	var/mob/scoper = scope_user.resolve()
+	to_chat(scoper, SPAN_NOTICE("You breathe out, letting your scope sway."))
+	holding_breath = FALSE
+	scope_element.icon_state = "vulture_unsteady"
+	COOLDOWN_START(src, hold_breath_cd, breath_cooldown_time)
+
+/// Returns a % of how much time until the user can still their breath again
+/obj/item/attachable/vulture_scope/proc/get_breath_recharge()
+	return 1 - (COOLDOWN_TIMELEFT(src, hold_breath_cd) / breath_cooldown_time)
+
+/datum/action/item_action/vulture
+
+/datum/action/item_action/vulture/action_activate()
+	var/obj/item/weapon/gun/gun_holder = holder_item
+	var/obj/item/attachable/vulture_scope/scope = gun_holder.attachments["rail"]
+	if(!istype(scope))
+		return
+	scope.tgui_interact(owner)
 
 // ======== Stock attachments ======== //
 
@@ -1270,6 +1742,16 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
+
+/obj/item/attachable/stock/vulture
+	name = "\improper M707 heavy stock"
+	icon_state = "vulture_stock"
+	hud_offset_mod = 3
+
+/obj/item/attachable/stock/vulture/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(type)
+	// Doesn't give any stat additions due to the gun already having really good ones, and this is unremovable from the gun itself
 
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"
@@ -2762,6 +3244,7 @@ Defined in conflicts.dm of the #defines folder.
 		user.apply_effect(2, SLOW)
 
 /obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
+	REMOVE_TRAIT(G, TRAIT_GUN_BIPODDED, "attached_bipod")
 	bipod_deployed = FALSE
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
 	scatter_mod = SCATTER_AMOUNT_TIER_9
@@ -2773,6 +3256,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/mob/living/user
 	if(isliving(G.loc))
 		user = G.loc
+		SEND_SIGNAL(user, COMSIG_MOB_UNDEPLOYED_BIPOD)
 		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
@@ -2796,7 +3280,9 @@ Defined in conflicts.dm of the #defines folder.
 		bipod_deployed = !bipod_deployed
 		if(user)
 			if(bipod_deployed)
+				ADD_TRAIT(G, TRAIT_GUN_BIPODDED, "attached_bipod")
 				to_chat(user, SPAN_NOTICE("You deploy [src] [support ? "on [support]" : "on the ground"]."))
+				SEND_SIGNAL(user, COMSIG_MOB_DEPLOYED_BIPOD)
 				playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 				accuracy_mod = HIT_ACCURACY_MULT_TIER_5
 				scatter_mod = -SCATTER_AMOUNT_TIER_10
@@ -2858,6 +3344,11 @@ Defined in conflicts.dm of the #defines folder.
 
 	flags_attach_features = ATTACH_ACTIVATION
 
+/obj/item/attachable/bipod/vulture
+	name = "heavy bipod"
+	desc = "A set of rugged telescopic poles to keep a weapon stabilized during firing."
+	icon_state = "bipod_m60"
+	attach_icon = "vulture_bipod"
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"

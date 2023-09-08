@@ -73,9 +73,6 @@
 	anchored = TRUE
 	layer = ATMOS_PIPE_LAYER + 0.01
 
-//used on fiorina
-/obj/structure/monorail/launchtrack
-	name = "launch track"
 
 //ICE COLONY RESEARCH DECORATION-----------------------//
 //Most of icons made by ~Morrinn
@@ -154,18 +151,7 @@
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
 	icon_state = "np_stair"
-//for fiorina
-/obj/structure/stairs/perspective/p_stair_sn_full_cap
-	icon_state = "p_stair_sn_full_cap"
 
-/obj/structure/stairs/perspective/p_stair_full
-	icon_state = "p_stair_full"
-
-/obj/structure/stairs/perspective/p_stair_ew_full_cap
-	icon_state = "p_stair_ew_full_cap"
-
-/obj/structure/stairs/perspective/p_stair_ew_half_cap
-	icon_state = "p_stair_ew_half_cap"
 /obj/structure/stairs/perspective/kutjevo
 	icon = 'icons/obj/structures/stairs/perspective_stairs_kutjevo.dmi'
 

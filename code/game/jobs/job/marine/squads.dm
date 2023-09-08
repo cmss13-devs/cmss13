@@ -175,6 +175,15 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/intel
+	name = SQUAD_MARINE_INTEL
+	equipment_color = "#67d692"
+	chat_color = "#67d692"
+	minimap_color = MINIMAP_SQUAD_ECHO
+	radio_freq = null
+
+	roundstart = FALSE
+
 /datum/squad/marine/sof
 	name = SQUAD_SOF
 	equipment_color = "#400000"
@@ -504,7 +513,7 @@
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 
 	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(M.wear_l_ear, M.wear_r_ear)
-	if(headset)
+	if(headset && radio_freq)
 		headset.set_frequency(radio_freq)
 	M.update_inv_head()
 	M.update_inv_wear_suit()

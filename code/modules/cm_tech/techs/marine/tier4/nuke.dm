@@ -1,11 +1,11 @@
-#define NUKE_UNLOCK_TIME (120 MINUTES)
+#define NUKE_UNLOCK_TIME (115 MINUTES)
 
 /datum/tech/nuke
 	name = "Nuclear Device"
 	//desc = "Purchase a nuclear device. Only able to purchase after X minutes into the operation. It's the only way to be sure." //See New()
 	icon_state = "nuke"
 
-	required_points = 20
+	required_points = 5
 
 	tier = /datum/tier/four
 

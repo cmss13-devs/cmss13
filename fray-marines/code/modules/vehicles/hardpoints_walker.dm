@@ -10,7 +10,7 @@
 	var/obj/vehicle/walker/owner = null
 	var/magazine_type = /obj/item/ammo_magazine/walker
 	var/obj/item/ammo_magazine/walker/ammo = null
-	var/fire_sound = 'sound/weapons/gun_smartgun1.ogg'
+	var/list/fire_sound = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')
 	var/fire_delay = 0
 	var/last_fire = 0
 	var/burst = 1
@@ -48,7 +48,7 @@
 			return
 		P = new
 		P.generate_bullet(new ammo.default_ammo)
-		playsound(src, fire_sound, 60)
+		playsound(get_turf(owner), pick(fire_sound), 60)
 		target = simulate_scatter(target, P)
 		P.fire_at(target, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 		ammo.current_rounds--
@@ -76,29 +76,38 @@
 	if(!istype(owner) || !istype(owner.loc,/turf))
 		return
 
-	if(owner.luminosity <= muzzle_flash_lum)
-		owner.set_light(muzzle_flash_lum)
-		spawn(10)
-			owner.set_light(-muzzle_flash_lum)
+	var/prev_light = light_range
+	if(!light_on && (light_range <= muzzle_flash_lum))
+		set_light_range(muzzle_flash_lum)
+		set_light_on(TRUE)
+		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
+
+	var/image_layer = (owner && owner.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
+	var/offset = 5
+
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',owner,muzzle_flash,image_layer)
+	var/matrix/rotate = matrix() //Change the flash angle.
+	rotate.Translate(0, offset)
+	rotate.Turn(angle)
+	I.transform = rotate
+	I.flick_overlay(owner, 3)
+
+/// called by a timer to remove the light range from muzzle flash
+/obj/item/walker_gun/proc/reset_light_range(lightrange)
+	set_light_range(lightrange)
+	if(lightrange <= 0)
+		set_light_on(FALSE)
 
 /obj/item/walker_gun/proc/simulate_scatter(atom/target, obj/item/projectile/projectile_to_fire)
-	var/total_chance = projectile_to_fire.scatter
-	if(total_chance <= 0)
-		return target
-	var/targdist = get_dist(target, owner)
-	if(targdist <= (4 + rand(-1, 1)))
-		return target
-	if(burst > 1)
-		total_chance += burst * 2
+	var/fire_angle = Get_Angle(owner.loc, get_turf(target))
+	var/total_scatter_angle = projectile_to_fire.scatter - rand(-10,-10)
 
-	var/turf/targloc = get_turf(target)
-	if(prob(total_chance)) //Scattered!
-		var/scatter_x = rand(-1,1)
-		var/scatter_y = rand(-1,1)
-		var/turf/new_target = locate(targloc.x + round(scatter_x),targloc.y + round(scatter_y),targloc.z) //Locate an adjacent turf.
-		if(new_target)
-			target = new_target//Looks like we found a turf.
-	return target
+	//Not if the gun doesn't scatter at all, or negative scatter.
+	if(total_scatter_angle > 0)
+		fire_angle += rand(-total_scatter_angle, total_scatter_angle)
+		target = get_angle_target_turf(owner.loc, fire_angle, 30)
+
+	return get_turf(target)
 
 
 /obj/item/walker_gun/smartgun
@@ -115,7 +124,7 @@
 	desc = "High-caliber machine gun firing small bursts of AP bullets, tearing into shreds unfortunate fellas on its way."
 	icon_state = "mecha_machinegun"
 	equip_state = "mech-gatt"
-	fire_sound = 'sound/weapons/gun_minigun.ogg'
+	fire_sound = list('sound/weapons/gun_minigun.ogg')
 	magazine_type = /obj/item/ammo_magazine/walker/hmg
 	fire_delay = 20
 	burst = 3
@@ -129,7 +138,7 @@
 	magazine_type = /obj/item/ammo_magazine/walker/flamer
 	var/fuel_pressure = 1 //Pressure setting of the attached fueltank, controls how much fuel is used per tile
 	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
-	fire_delay = 30
+	fire_delay = 3 SECONDS
 
 /obj/item/walker_gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
@@ -149,6 +158,7 @@
 	if(world.time < last_fire + fire_delay)
 		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
 		return
+	last_fire = world.time
 	var/datum/reagent/R = ammo.reagents.reagent_list[1]
 
 	var/flameshape = R.flameshape

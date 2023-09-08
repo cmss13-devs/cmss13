@@ -353,8 +353,8 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override)
 	. = ..()
-	if(istype(port, /obj/docking_port/mobile/lifeboat))
-		var/obj/docking_port/mobile/lifeboat/lifeboat = port
+	if(istype(port, /obj/docking_port/mobile/crashable/lifeboat))
+		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = port
 		lifeboat.doors += src
 
 /// External airlock that is part of the lifeboat dock

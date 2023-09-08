@@ -677,13 +677,13 @@
 		var/hitchance = P.get_effective_accuracy()
 
 		switch(w_class) //smaller items are harder to hit
-			if(1)
+			if(SIZE_TINY)
 				hitchance -= 50
-			if(2)
+			if(SIZE_SMALL)
 				hitchance -= 30
-			if(3)
+			if(SIZE_MEDIUM)
 				hitchance -= 20
-			if(4)
+			if(SIZE_LARGE)
 				hitchance -= 10
 
 		#if DEBUG_HIT_CHANCE

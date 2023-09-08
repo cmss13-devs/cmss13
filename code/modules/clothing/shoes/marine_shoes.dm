@@ -217,7 +217,12 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
+	items_allowed = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/weapon/throwing_knife,
+		/obj/item/weapon/gun/pistol/holdout,
+		/obj/item/weapon/gun/pistol/clfpistol,
+	)
 	flags_atom = NO_NAME_OVERRIDE
 
 /obj/item/clothing/shoes/royal_marine/knife

@@ -242,6 +242,14 @@
       \u0438\u0441\u0442\u0438\u043A\u0438 \u0443\u043B\u0443\u0447\u0448\u0435\u043D"
   - rscadd: "\u041F\u0435\u0440\u0435\u0432\u043E\u0434 \u0415\u0420\u0422 \u0438\
       \ \u044D\u0432\u0430\u043A\u0430"
+  Morrow:
+  - rscadd: Added the ability to early launch lifeboats
+  - rscadd: Added the ability for lifeboats to crash if early launched
+  - rscdel: Removed alcohol from emergency wall cabinets
+  - bugfix: Should stop crashing shuttles from landing on each other
+  Zonepace, Thwomper:
+  - rscadd: Added the M707 "Vulture" anti-materiel rifle. Not currently player-obtainable.
+      Credit to Tophat and Kaga for the lore description.
   xDanilcusx:
   - balance: "\u041F\u0430\u0440\u0430 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u043E\
       \u0432 \u0438 \u043F\u043E\u044F\u0441 \u0434\u043B\u044F \u043F\u0438\u0441\

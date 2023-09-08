@@ -323,6 +323,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 
 		list("HATS (CHOOSE 1)", 0, null, null, null),
 		list("Officer Beret", 0, /obj/item/clothing/head/beret/marine/chiefofficer, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Service Peaked Cap", 0, /obj/item/clothing/head/marine/peaked/service, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Officer Cap", 0, /obj/item/clothing/head/cmcap/bridge, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 	))

@@ -144,7 +144,7 @@
 
 /atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
 	if (..())
-		return 1
+		return TRUE
 
 	var/icon_x = text2num(mods["icon-x"])
 	var/icon_y = text2num(mods["icon-y"])
@@ -209,7 +209,11 @@
 	icon = 'icons/mob/hud/screen1_robot.dmi'
 
 /atom/movable/screen/clicked(mob/user)
-	if(!user) return 1
+	if(!user)
+		return TRUE
+
+	if(isobserver(user))
+		return TRUE
 
 	switch(name)
 		if("equip")

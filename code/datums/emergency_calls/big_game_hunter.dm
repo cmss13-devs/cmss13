@@ -10,7 +10,7 @@
 
 /datum/emergency_call/van_bandolier/New()
 	. = ..()
-	arrival_message = "'Heard your distress call, [MAIN_SHIP_NAME]. It had best be something which will look good on my wall, eh? Tally ho!'"
+	arrival_message = "'Слышу ваш сигнал бедствия, [MAIN_SHIP_NAME]. Лучше там быть чему-то что я смогу повесить себе на стеночку, агась? Талли хо!'"
 
 /datum/emergency_call/van_bandolier/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

@@ -97,8 +97,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(force || (evac_status == EVACUATION_STATUS_STANDING_BY && !(flags_scuttle & FLAGS_EVACUATION_DENY)))
 		evac_time = world.time
 		evac_status = EVACUATION_STATUS_INITIATING
-		ai_announcement("Attention. Emergency. All personnel must evacuate immediately. You have [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] minute\s until departure.", 'sound/AI/evacuate.ogg')
-		xeno_message_all("A wave of adrenaline ripples through the hive. The fleshy creatures are trying to escape!")
+		ai_announcement("Внимание. Тревога. Всему персоналу немедленно эвакуироваться. У вас есть [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] минут перед отправлением.", 'sound/AI/evacuate.ogg')
+		xeno_message_all("Волна адреналина прокатывается по обитателям улья. Эти мясные существа пытаются сбежать!")
 
 		for(var/obj/structure/machinery/status_display/SD in machines)
 			if(is_mainship_level(SD.z))
@@ -114,7 +114,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_time = null
 		evac_status = EVACUATION_STATUS_STANDING_BY
 		deactivate_lifeboats()
-		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
+		ai_announcement("Эвакуация была отменена.", 'sound/AI/evacuate_cancelled.ogg')
 
 		if(get_security_level() == "red")
 			for(var/obj/structure/machinery/status_display/SD in machines)
@@ -129,7 +129,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(evac_status == EVACUATION_STATUS_INITIATING)
 		evac_status = EVACUATION_STATUS_IN_PROGRESS //Cannot cancel at this point. All shuttles are off.
 		spawn() //One of the few times spawn() is appropriate. No need for a new proc.
-			ai_announcement("WARNING: Evacuation order confirmed. Launching escape pods.", 'sound/AI/evacuation_confirmed.ogg')
+			ai_announcement("ПРЕДУПРЕЖДЕНИЕ: Приказ об эвакуации подтвержден. Запуск спасательных шлюпок.", 'sound/AI/evacuation_confirmed.ogg')
 			addtimer(CALLBACK(src, PROC_REF(launch_lifeboats)), 10 SECONDS) // giving some time to board lifeboats
 
 			for(var/obj/docking_port/mobile/escape_shuttle/shuttle in SSshuttle.mobile)
@@ -145,7 +145,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			var/obj/docking_port/mobile/lifeboat/lifeboat2 = SSshuttle.getShuttle(MOBILE_SHUTTLE_LIFEBOAT_STARBOARD)
 			lifeboat2.check_for_survivors()
 			lifesigns += lifeboat2.survivors
-			ai_announcement("ATTENTION: Evacuation complete. Outbound lifesigns detected: [lifesigns ? lifesigns  : "none"].", 'sound/AI/evacuation_complete.ogg')
+			ai_announcement("ВНИМАНИЕ: Процедуры эвакуации завершены. Внешних признаков жизни зафиксировано: [lifesigns ? lifesigns  : "0"].", 'sound/AI/evacuation_complete.ogg')
 			evac_status = EVACUATION_STATUS_COMPLETE
 		return TRUE
 

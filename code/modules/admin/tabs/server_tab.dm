@@ -14,7 +14,7 @@
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")
-		to_world(SPAN_DANGER("<b>Restarting world!</b> [SPAN_NOTICE("Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!")]"))
+		to_world(SPAN_DANGER("<b>ПАМ-ПАРАМ!</b> [SPAN_NOTICE("[usr.client.admin_holder.fakekey ? "Admin" : usr.key]!")]"))
 		log_admin("[key_name(usr)] initiated a reboot.")
 
 		sleep(50)

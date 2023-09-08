@@ -1,0 +1,7 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Added the ability to early launch lifeboats"
+  - rscadd: "Added the ability for lifeboats to crash if early launched"
+  - rscdel: "Removed alcohol from emergency wall cabinets"
+  - bugfix: "Should stop crashing shuttles from landing on each other"

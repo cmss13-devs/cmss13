@@ -320,8 +320,8 @@
 	locked = TRUE
 	opacity = FALSE
 	glass = TRUE
-	var/throw_dir = EAST
 	queen_pryable = FALSE
+	var/throw_dir = EAST
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/try_to_activate_door(mob/user)
 	return

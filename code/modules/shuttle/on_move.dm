@@ -132,8 +132,7 @@ All ShuttleMove procs go here
 	var/turf/target = get_edge_target_turf(src, move_dir)
 	var/range = throw_force * 10
 	range = CEILING(rand(range-(range*0.1), range+(range*0.1)), 10)/10
-	var/speed = range/5
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, safe_throw_at), target, range, speed)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, safe_throw_at), target, range, SPEED_FAST)
 
 //=====================================================================//
 

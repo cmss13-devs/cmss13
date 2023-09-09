@@ -511,8 +511,8 @@
 	else
 		return ..()
 
-/obj/structure/machinery/m56d_hmg/New()
-	..()
+/obj/structure/machinery/m56d_hmg/Initialize(mapload, ...)
+	. = ..()
 
 	ammo = GLOB.ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
@@ -870,6 +870,7 @@
 	user.unfreeze()
 	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 	user.reset_view(null)
+	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal
 	user.Move(get_step(src, reverse_direction(src.dir)))
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
 	user_old_x = 0 //reset our x
@@ -880,7 +881,9 @@
 	remove_action(user, /datum/action/human_action/mg_exit)
 	UnregisterSignal(user, list(
 		COMSIG_MOB_MG_EXIT,
-		COMSIG_MOB_RESISTED
+		COMSIG_MOB_RESISTED,
+		COMSIG_MOB_DEATH,
+		COMSIG_MOB_KNOCKED_DOWN,
 	))
 
 

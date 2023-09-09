@@ -106,8 +106,8 @@
 	firemission_effect.invisibility = INVISIBILITY_MAXIMUM
 	QDEL_IN(firemission_effect, 5 SECONDS)
 
-	notify_ghosts(header = "CAS Fire Mission", message = "[usr] is launching Fire Mission '[name]' at [get_area(initial_turf)].", source = firemission_effect)
-	msg_admin_niche("[key_name(usr)] launching Fire Mission '[name]' at ([initial_turf.x],[initial_turf.y],[initial_turf.z]) [ADMIN_JMP(initial_turf)]")
+	notify_ghosts(header = "CAS Fire Mission", message = "[usr ? usr : "Someone"] is launching Fire Mission '[name]' at [get_area(initial_turf)].", source = firemission_effect)
+	msg_admin_niche("[usr ? key_name(usr) : "Someone"] is launching Fire Mission '[name]' at ([initial_turf.x],[initial_turf.y],[initial_turf.z]) [ADMIN_JMP(initial_turf)]")
 
 	var/relative_dir
 	for(var/mob/M in range(15, initial_turf))

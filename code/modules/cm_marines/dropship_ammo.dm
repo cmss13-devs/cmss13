@@ -167,27 +167,27 @@
 	var/soundplaycooldown = 0
 	var/debriscooldown = 0
 	for(var/i = 1 to ammo_used_per_firing)
-		var/turf/U = pick(turf_list)
+		var/turf/Impact = pick(turf_list)
 		sleep(1)
 		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-		U.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
-		create_shrapnel(U,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
-		for(var/atom/movable/AM in U)
-			if(iscarbon(AM))
-				var/mob/living/M = AM
-				AM.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
-				M.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
+		Impact.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
+		create_shrapnel(Impact,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
+		for(var/atom/movable/IsExploaded in Impact)
+			if(iscarbon(IsExploaded))
+				var/mob/carbon/IsShot = IsExploaded
+				IsExploaded.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+				IsShot.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
 			else
-				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
+				IsExploaded.ex_act(EXPLOSION_THRESHOLD_VLOW)
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(U, 'sound/effects/gauimpact.ogg',40,1,20)
+			playsound(Impact, 'sound/effects/gauimpact.ogg',40,1,20)
 			soundplaycooldown = 3
 		soundplaycooldown--
 		if(!debriscooldown)
-			U.ceiling_debris_check(1)
+			Impact.ceiling_debris_check(1)
 			debriscooldown = 6
 		debriscooldown--
-		new /obj/effect/particle_effect/expl_particles(U)
+		new /obj/effect/particle_effect/expl_particles(Impact)
 	sleep(11) //speed of sound simulation
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 

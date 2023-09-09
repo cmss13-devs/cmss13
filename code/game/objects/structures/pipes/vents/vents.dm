@@ -150,6 +150,7 @@
 		var/confirm = alert(user, "Confirm gas setup. \n\nGas: '[gas_choice]'\nRadius: '[radius_choice]'\nWarn Time: '[warn_choice / 10] seconds' \n\n Is this correct?", "Confirmation", "Yes", "No")
 		if(confirm != "Yes")
 			return FALSE
+		log_admin("[key_name(user)] released gas (Gas: [gas_choice], Radius: [radius_choice], Delay: [warn_choice]) from [name] at X[x], Y[y], Z[z].")
 		create_gas(gas_choice, radius_choice, warn_choice)
 		return TRUE
 

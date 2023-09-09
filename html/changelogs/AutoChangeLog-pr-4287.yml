@@ -1,0 +1,5 @@
+author: "kylerace, lemoninthedark, harry"
+delete-after: True
+changes:
+  - refactor: "optimized icon-in-chat code"
+  - bugfix: "weird icons on the smoothed walls when examining or alt+clicking"

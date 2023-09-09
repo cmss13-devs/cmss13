@@ -70,7 +70,7 @@
 		visible_message("[owner.name]'s systems deployed used magazine.","")
 	return TRUE
 
-/obj/item/walker_gun/proc/muzzle_flash(angle, x_offset = 0, y_offset = 5)
+/obj/item/walker_gun/proc/muzzle_flash(angle, x_offset = -9, y_offset = 5)
 	if(!muzzle_flash ||  isnull(angle))
 		return //We have to check for null angle here, as 0 can also be an angle.
 	if(!istype(owner) || !istype(owner.loc,/turf))
@@ -100,7 +100,7 @@
 
 /obj/item/walker_gun/proc/simulate_scatter(atom/target, obj/item/projectile/projectile_to_fire)
 	var/fire_angle = Get_Angle(owner.loc, get_turf(target))
-	var/total_scatter_angle = projectile_to_fire.scatter - rand(-10,-10)
+	var/total_scatter_angle = projectile_to_fire.scatter - rand(-5,5)
 
 	//Not if the gun doesn't scatter at all, or negative scatter.
 	if(total_scatter_angle > 0)
@@ -242,7 +242,7 @@
 	gun_type = /obj/item/walker_gun/hmg
 
 /obj/item/ammo_magazine/walker/flamer
-	name = "F40 Canister"
+	name = "F40 UT-Napthal Canister"
 	desc = "Canister for mounted flamethower"
 	icon_state = "flametank_large"
 	max_rounds = 500
@@ -279,6 +279,39 @@
 
 	return 100 * (reagents.total_volume / max_rounds)
 
+/obj/item/ammo_magazine/walker/flamer/ex
+	name = "F40 UT-Napthal EX-type Canister"
+	desc = "Canister for mounted flamethower"
+	icon_state = "flametank_large"
+	max_rounds = 500
+	default_ammo = /datum/ammo/flamethrower
+	gun_type = /obj/item/walker_gun/flamer
+
+	flamer_chem = "napalmex"
+
+	max_intensity = 40
+	max_range = 5
+	max_duration = 30
+
+	fuel_pressure = 1 //How much fuel is used per tile fired
+	max_pressure = 10
+
+/obj/item/ammo_magazine/walker/flamer/btype
+	name = "F40 UT-Napthal B-type Canister"
+	desc = "Canister for mounted flamethower"
+	icon_state = "flametank_large"
+	max_rounds = 500
+	default_ammo = /datum/ammo/flamethrower
+	gun_type = /obj/item/walker_gun/flamer
+
+	flamer_chem = "napalmb"
+
+	max_intensity = 40
+	max_range = 5
+	max_duration = 30
+
+	fuel_pressure = 1 //How much fuel is used per tile fired
+	max_pressure = 10
 ///////////////
 // AMMO MAGS // END
 ///////////////

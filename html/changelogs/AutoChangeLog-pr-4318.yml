@@ -1,0 +1,5 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "A new skill has been added, the 'Overwatch' skill, allows the user to use the overwatch console."
+  - rscadd: "All USCM Officers can now use overwatch consoles."

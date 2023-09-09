@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - maptweak: "Fixed broken disposal piping in research resulting in items being dumped back into research."

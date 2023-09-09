@@ -82,12 +82,25 @@
 2023-09-09:
   BeagleGaming1:
   - bugfix: The APS property works correctly again
+  - rscdel: Removes emergency autoinjectors from squad medics
+  - rscdel: Removes skillless variant of the emergency autoinjector, makes default
+      variant skillless
+  - balance: Emergency autoinjectors cannot be refilled
+  - balance: Replaces skillless autoinjectors in marine pouches with standard autoinjectors
   Morrow:
   - bugfix: Clusters turning into pylons expand properly
   - rscadd: Added the ability to early launch lifeboats
   - rscadd: Added the ability for lifeboats to crash if early launched
   - rscdel: Removed alcohol from emergency wall cabinets
   - bugfix: Should stop crashing shuttles from landing on each other
+  QuickLode:
+  - bugfix: Fixes WY comms for survivor WY roles.
+  Steelpoint:
+  - maptweak: Fixed broken disposal piping in research resulting in items being dumped
+      back into research.
+  - rscadd: A new skill has been added, the 'Overwatch' skill, allows the user to
+      use the overwatch console.
+  - rscadd: All USCM Officers can now use overwatch consoles.
   Triiodine, Frans, Warfan, SpartanBobby, Twomper, Roboticpotato, Tophat Penguin,forest2001:
   - rscadd: Added Royal Marines commando ERT and faction
   - rscadd: Updates Riot shield sprite, adds metal shield as well (sprites from trio)
@@ -96,6 +109,25 @@
       rounds for royal marines commando
   - rscadd: Calico shotgun, pistol and SMG sprites to the codebase made by Triodine
   - rscadd: royal marines commando HEDP and HIDP grenades
+  Warfan1815, AmoryBlaine (Sprites):
+  - rscadd: Changes donor Biolock's medium medic armour to a light custom paintjob
+      armour and donor Tristan's reactive scientist armour to a custom marine armour
   Zonepace, Thwomper:
   - rscadd: Added the M707 "Vulture" anti-materiel rifle. Not currently player-obtainable.
       Credit to Tophat and Kaga for the lore description.
+  harryob:
+  - bugfix: fixes the JMP link in chat
+  ihatethisengine:
+  - rscadd: On-screen messages now appear with sound. Radio static for marines, distant
+      roar for xenos.
+  kylerace, lemoninthedark, harry:
+  - refactor: optimized icon-in-chat code
+  - bugfix: weird icons on the smoothed walls when examining or alt+clicking
+  xDanilcusx:
+  - bugfix: "\u0411\u043E\u043B\u0435\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\
+      \ \u043C\u0430\u0433\u043D\u0438\u0442\u0430 \u0434\u043B\u044F \u043C\u043E\
+      \u043B\u043E\u0442\u0430/\u0449\u0438\u0442\u0430 \u043D\u0435 \u043F\u0440\u0438\
+      \u043C\u0435\u043D\u044F\u044E\u0442\u0441\u044F \u043D\u0430 \u043C\u0430\u0433\
+      \u0445\u0430\u0440\u043D\u0435\u0441\u0441 \u043E\u0433\u043D\u0435\u0441\u0442\
+      \u0440\u0435\u043B\u044C\u043D\u043E\u0433\u043E \u043E\u0440\u0443\u0436\u0438\
+      \u044F."

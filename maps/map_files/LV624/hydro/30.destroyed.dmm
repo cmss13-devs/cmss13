@@ -64,7 +64,6 @@
 /area/lv624/ground/colony/south_medbay_road)
 "ft" = (
 /obj/item/clothing/gloves/marine/veteran/pmc{
-	name = "damaged WY PMC gloves";
 	armor_bio = 10;
 	armor_bomb = 10;
 	armor_bullet = 15;
@@ -72,7 +71,8 @@
 	armor_internaldamage = 15;
 	armor_laser = 15;
 	armor_melee = 15;
-	armor_rad = 10
+	armor_rad = 10;
+	name = "damaged WY PMC gloves"
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -171,10 +171,10 @@
 	},
 /obj/effect/spawner/gibspawner/robot,
 /obj/item/limb/head/synth{
-	pixel_x = 9;
-	pixel_y = 3;
+	desc = "This appears to be the head of a synthetic, though it it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality.";
 	name = "shattered synthetic head";
-	desc = "This appears to be the head of a synthetic, though it it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality."
+	pixel_x = 9;
+	pixel_y = 3
 	},
 /obj/item/robot_parts/arm/l_arm,
 /turf/open/floor{
@@ -367,10 +367,6 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/lv624/lazarus/hydroponics)
-"DN" = (
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "Ed" = (
 /obj/item/stack/sheet/metal,
@@ -571,7 +567,6 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/clothing/gloves/marine/veteran/pmc{
-	name = "damaged WY PMC gloves";
 	armor_bio = 10;
 	armor_bomb = 10;
 	armor_bullet = 15;
@@ -580,6 +575,7 @@
 	armor_laser = 15;
 	armor_melee = 15;
 	armor_rad = 10;
+	name = "damaged WY PMC gloves";
 	pixel_y = 9
 	},
 /turf/open/floor/plating,
@@ -591,8 +587,6 @@
 /area/lv624/lazarus/hydroponics)
 "RT" = (
 /obj/item/clothing/shoes/veteran/pmc{
-	slowdown = 0.5;
-	name = "scuffed shoes";
 	armor_bio = 15;
 	armor_bomb = 5;
 	armor_bullet = 15;
@@ -601,8 +595,10 @@
 	armor_laser = 5;
 	armor_melee = 15;
 	desc = "The height of fashion, but these look to be woven with protective fiber. This pair seems heavily damaged, especially around the soles...";
+	name = "scuffed shoes";
 	pixel_x = -14;
-	pixel_y = -10
+	pixel_y = -10;
+	slowdown = 0.5
 	},
 /turf/open/floor{
 	dir = 9;
@@ -874,7 +870,7 @@ bd
 aO
 QR
 mK
-DN
+Wg
 TC
 Wg
 TC

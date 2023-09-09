@@ -35,6 +35,13 @@
 			hash = md5(file)
 		else
 			hash = md5asfile(file) //icons sent to the rsc md5 incorrectly when theyre given incorrect data
+	if (!hash)
+		CRASH("invalid asset sent to asset cache")
+	src.name = name
+	var/extstart = findlasttext(name, ".")
+	if (extstart)
+		ext = ".[copytext(name, extstart+1)]"
+	resource = file
 
 /datum/asset_cache_item/vv_edit_var(var_name, var_value)
 	return FALSE

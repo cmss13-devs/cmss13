@@ -174,7 +174,7 @@
 		create_shrapnel(Impact,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
 		for(var/atom/movable/IsExploaded in Impact)
 			if(iscarbon(IsExploaded))
-				var/mob/carbon/IsShot = IsExploaded
+				var/mob/living/carbon/IsShot = IsExploaded
 				IsExploaded.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
 				IsShot.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
 			else

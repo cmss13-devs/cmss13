@@ -358,7 +358,7 @@
 	health -= damage
 
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 
 	return XENO_NONCOMBAT_ACTION
 

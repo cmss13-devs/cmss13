@@ -756,7 +756,8 @@
 
 	. = P.get_effective_accuracy()
 
-	if(lying && stat) . += 15 //Bonus hit against unconscious people.
+	if(lying && stat)
+		. += 15 //Bonus hit against unconscious people.
 
 	if(isliving(P.firer))
 		var/mob/living/shooter_living = P.firer
@@ -799,8 +800,10 @@
 			if(X.hivenumber == hivenumber)
 				return FALSE
 
-		if(mob_size == MOB_SIZE_SMALL) . -= 10
-		else if(mob_size >= MOB_SIZE_BIG) . += 10
+		if(mob_size == MOB_SIZE_SMALL)
+			. -= 10
+		else if(mob_size >= MOB_SIZE_BIG)
+			. += 10
 		if(evasion > 0)
 			. -= evasion
 

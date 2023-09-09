@@ -1650,7 +1650,7 @@
 	sound_hit = 'sound/bullets/bullet_vulture_impact.ogg'
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER|AMMO_ANTIVEHICLE
 
-/datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/item/projectile/bullet)
+/datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
 	knockback(hit_mob, bullet, 30)
 	hit_mob.apply_effect(3, SLOW)
@@ -1811,7 +1811,7 @@
 ///Stuff for the HRP holotargetting stacks
 	var/holo_stacks = 15
 
-/datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	M.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
 
@@ -2175,16 +2175,16 @@
 	var/datum/reagent/napalm/upp/R = new()
 	new /obj/flamer_fire(T, cause_data, R, 3)
 
-/datum/ammo/rocket/wp/upp/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/rocket/wp/upp/on_hit_mob(mob/M, obj/projectile/P)
 	drop_flame(get_turf(M), P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/upp/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/rocket/wp/upp/on_hit_obj(obj/O, obj/projectile/P)
 	drop_flame(get_turf(O), P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/upp/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/rocket/wp/upp/on_hit_turf(turf/T, obj/projectile/P)
 	drop_flame(T, P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/upp/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/rocket/wp/upp/do_at_max_range(obj/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad

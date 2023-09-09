@@ -1353,7 +1353,7 @@
 	Integrated.Attach(src)
 	update_attachable(Integrated.slot)
 
-/obj/item/weapon/gun/launcher/rocket/upp/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
+/obj/item/weapon/gun/launcher/rocket/upp/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		return

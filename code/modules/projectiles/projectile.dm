@@ -1194,16 +1194,16 @@
 		if(dx == -1 || dx == 1)
 			return TRUE
 
-/obj/item/projectile/vulture
+/obj/projectile/vulture
 	accuracy_range_falloff = 10
 	/// The odds of hitting a xeno in less than your gun's range. Doesn't apply to humans.
 	var/xeno_shortrange_chance = 10
 
-/obj/item/projectile/vulture/Initialize(mapload, datum/cause_data/cause_data)
+/obj/projectile/vulture/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()
 	RegisterSignal(src, COMSIG_GUN_VULTURE_FIRED_ONEHAND, PROC_REF(on_onehand))
 
-/obj/item/projectile/vulture/handle_mob(mob/living/hit_mob)
+/obj/projectile/vulture/handle_mob(mob/living/hit_mob)
 	if((ammo.accurate_range_min > distance_travelled) && isxeno(hit_mob))
 		if(prob(xeno_shortrange_chance))
 			return ..()
@@ -1214,7 +1214,7 @@
 	return ..()
 
 /// Handler for when the user one-hands the firing gun
-/obj/item/projectile/vulture/proc/on_onehand(datum/source)
+/obj/projectile/vulture/proc/on_onehand(datum/source)
 	SIGNAL_HANDLER
 
 	accuracy = HIT_ACCURACY_TIER_2 // flat 10% chance if you're desperate and try to fire this thing without a bipod

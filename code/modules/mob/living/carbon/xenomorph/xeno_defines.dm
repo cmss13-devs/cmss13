@@ -799,14 +799,18 @@
 		if(slots_used)
 			// Don't count any free slots in use
 			switch(initial(current_caste.tier))
-				if(2) used_tier_2_slots -= min(slots_used, slots_free)
-				if(3) used_tier_3_slots -= min(slots_used, slots_free)
+				if(2)
+					used_tier_2_slots -= min(slots_used, slots_free)
+				if(3)
+					used_tier_3_slots -= min(slots_used, slots_free)
 		if(slots_free <= slots_used)
 			continue
 		// Display any free slots available
 		switch(initial(current_caste.tier))
-			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
-			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
+			if(2)
+				slots[TIER_2][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
+			if(3)
+				slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
 	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
 	var/effective_total = round(burrowed_factor)

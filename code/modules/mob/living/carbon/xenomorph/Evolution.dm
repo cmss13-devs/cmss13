@@ -371,8 +371,10 @@
 			continue
 		var/datum/caste_datum/current_caste = caste_path
 		switch(initial(current_caste.tier))
-			if(2) used_tier_2_slots -= min(slots_used, slots_free)
-			if(3) used_tier_3_slots -= min(slots_used, slots_free)
+			if(2)
+				used_tier_2_slots -= min(slots_used, slots_free)
+			if(3)
+				used_tier_3_slots -= min(slots_used, slots_free)
 
 	var/burrowed_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
 	var/totalXenos = round(burrowed_factor)

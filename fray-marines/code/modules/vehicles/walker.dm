@@ -33,7 +33,7 @@
 	var/list/dmg_multipliers = list(
 		"all" = 1.0, //for when you want to make it invincible
 		"acid" = 0.9,
-		"slash" = 0.6,
+		"slash" = 0.8,
 		"bullet" = 0.2,
 		"explosive" = 5.0,
 		"blunt" = 0.1,
@@ -579,14 +579,19 @@
 /////////
 
 /obj/vehicle/walker/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.a_intent == "hurt")
-		M.animation_attack_on(src)
-		playsound(loc, "alien_claw_metal", 25, 1)
-		M.flick_attack_overlay(src, "slash")
-		M.visible_message("<span class='danger'>[M] slashes [src].</span>","<span class='danger'>You slash [src].</span>", null, 5)
-		take_damage(M.melee_vehicle_damage + rand(-5,5), "slash")
-	else
-		attack_hand(M)
+	if(M.a_intent == INTENT_HELP)
+		return XENO_NO_DELAY_ACTION
+
+	// if(M.mob_size < MOB_SIZE_XENO)
+	// 	to_chat(M, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+	// 	return XENO_NO_DELAY_ACTION
+
+	M.animation_attack_on(src)
+	playsound(loc, "alien_claw_metal", 25, 1)
+	M.visible_message(SPAN_DANGER("[M] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	take_damage(M.melee_vehicle_damage + rand(-5,5), "slash")
+
+	return XENO_NONCOMBAT_ACTION
 
 /obj/vehicle/walker/healthcheck()
 	if(health > maxHealth)

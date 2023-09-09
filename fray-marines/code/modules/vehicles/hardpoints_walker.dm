@@ -27,12 +27,14 @@
 	return image(owner.icon, equip_state + hardpoint)
 
 /obj/item/walker_gun/proc/active_effect(atom/target)
-	if(ammo.current_rounds <= 0 || !ammo)
+	if (!ammo)
 		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
-		if(ammo)
-			ammo.loc = owner.loc
-			ammo = null
-			visible_message("[owner.name]'s systems deployed used magazine.","")
+		return
+	if(ammo.current_rounds <= 0)
+		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+		ammo.loc = owner.loc
+		ammo = null
+		visible_message("[owner.name]'s systems deployed used magazine.","")
 		return
 	if(world.time < last_fire + fire_delay)
 		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
@@ -148,12 +150,14 @@
 	return pick(fire_sounds)
 
 /obj/item/walker_gun/flamer/active_effect(atom/target)
-	if(ammo.current_rounds <= 0 || !ammo)
+	if (!ammo)
 		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
-		if(ammo)
-			ammo.loc = owner.loc
-			ammo = null
-			visible_message("[owner.name]'s systems deployed used magazine.","")
+		return
+	if(ammo.current_rounds <= 0)
+		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+		ammo.loc = owner.loc
+		ammo = null
+		visible_message("[owner.name]'s systems deployed used magazine.","")
 		return
 	if(world.time < last_fire + fire_delay)
 		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
@@ -182,6 +186,7 @@
 		qdel(fire)
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
+	ammo.current_rounds--
 
 	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), owner.seats[VEHICLE_DRIVER]), R, max_range, ammo.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), owner.seats[VEHICLE_DRIVER]), fuel_pressure, fire_type)
 

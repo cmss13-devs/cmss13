@@ -73,7 +73,7 @@
 		var/image/right_gun = right.get_icon_image("-r")
 		overlays += right_gun
 
-	if(seats[VEHICLE_DRIVER])
+	if(seats[VEHICLE_DRIVER] != null)
 		var/image/occupied = image(icon, icon_state = "mech-face")
 		overlays += occupied
 
@@ -110,6 +110,7 @@
 /obj/vehicle/walker/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated()) return
 	if(seats[VEHICLE_DRIVER] != user) return
+	seats[VEHICLE_DRIVER].set_interaction(src)
 
 	if(world.time > l_move_time + move_delay)
 		if(dir != direction)
@@ -196,10 +197,9 @@
 			user.loc = src
 			seats[VEHICLE_DRIVER].client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
 			seats[VEHICLE_DRIVER].set_interaction(src)
-			seats[VEHICLE_DRIVER] << sound('sound/mecha/powerup.ogg',volume=50)
+			playsound_client(seats[VEHICLE_DRIVER].client, 'sound/mecha/powerup.ogg')
 			update_icon()
-			sleep(50)
-			seats[VEHICLE_DRIVER] << sound('sound/mecha/nominalsyndi.ogg',volume=50)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), seats[VEHICLE_DRIVER].client, 'sound/mecha/nominalsyndi.ogg'), 5 SECONDS)
 			return
 
 	to_chat(user, "Access denied.")
@@ -217,6 +217,7 @@
 		return
 
 	var/obj/vehicle/walker/W = M.interactee
+
 	if(!W || !istype(W))
 		return
 	W.move_out()
@@ -252,6 +253,8 @@
 		return
 
 	var/obj/vehicle/walker/W = M.interactee
+
+
 	if(!W || !istype(W))
 		return
 	W.handle_lights()
@@ -269,7 +272,9 @@
 	set name = "Deploy Magazine"
 	set category = "Vehicle"
 	var/mob/M = usr
+
 	var/obj/vehicle/walker/W = M.interactee
+
 	if(!W || !istype(W))
 		return
 
@@ -299,6 +304,7 @@
 		return
 
 	var/obj/vehicle/walker/W = M.interactee
+
 	if(!W || !istype(W))
 		return
 
@@ -343,6 +349,7 @@
 		return
 
 	var/obj/vehicle/walker/W = M.interactee
+
 	if(!W || !istype(W))
 		return
 

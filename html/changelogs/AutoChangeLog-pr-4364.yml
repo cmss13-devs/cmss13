@@ -1,0 +1,4 @@
+author: "TeDGamer"
+delete-after: True
+changes:
+  - balance: "Reduced M2C accuracy to be more in line with realistic accuracy intent"

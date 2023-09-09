@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - bugfix: "shuttles now throw mobs asynchronously and faster"

@@ -31,6 +31,8 @@
 	var/tracking_id = null //Used for the tracking subsystem
 	/// Maximum number allowed in a squad. Defaults to infinite
 	var/max_positions = -1
+	/// If uses the overlay
+	var/use_stripe_overlay = TRUE
 	/// Color for the squad marines gear overlays
 	var/equipment_color = "#FFFFFF"
 	/// The alpha for the armor overlay used by equipment color
@@ -180,11 +182,20 @@
 
 /datum/squad/marine/intel
 	name = SQUAD_MARINE_INTEL
-	minimap_color = MINIMAP_SQUAD_ECHO
+	use_stripe_overlay = FALSE
+	equipment_color = "#053818"
+	minimap_color = MINIMAP_SQUAD_INTEL
 	radio_freq = null
 
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE
+
+	max_engineers = 0
+	max_medics = 0
+	max_specialists = 0
+	max_tl = 0
+	max_smartgun = 0
+	max_leaders = 0
 
 /datum/squad/marine/sof
 	name = SQUAD_SOF

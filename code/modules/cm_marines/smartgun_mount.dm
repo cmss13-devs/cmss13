@@ -772,9 +772,6 @@
 /obj/structure/machinery/m56d_hmg/proc/handle_outside_cone(mob/living/carbon/human/user)
 	return FALSE
 
-/obj/structure/machinery/m56d_hmg/proc/handle_modded_clicks(mob/living/carbon/human/user, list/mods)
-	return HANDLE_CLICK_PASS_THRU
-
 /obj/structure/machinery/m56d_hmg/proc/muzzle_flash(angle) // Might as well keep this too.
 	if(isnull(angle))
 		return

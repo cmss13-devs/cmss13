@@ -374,12 +374,6 @@
 		return
 	return
 
-/obj/structure/machinery/m56d_hmg/auto/handle_modded_clicks(mob/living/carbon/human/user, list/mods)
-	if(mods["middle"])
-		handle_rotating_gun(user)
-
-	return ..()
-
 // AUTOMATIC FIRING
 
 /obj/structure/machinery/m56d_hmg/auto/try_fire()

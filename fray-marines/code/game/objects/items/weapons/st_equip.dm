@@ -61,6 +61,13 @@
 	if(H.belt == null && istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M40))
 		addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), H, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
+/obj/item/weapon/twohanded/st_hammer/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+	if (!loc || !user)
+		return FALSE
+	if (get_dist(src,user) > 1)
+		return FALSE
+	..(user, retrieval_slot)
+
 /obj/item/weapon/shield/montage
 	name = "N30 montage shield"
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
@@ -103,6 +110,13 @@
 		return
 	if(H.back == null && istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M40))
 		addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), H, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+
+/obj/item/weapon/shield/montage/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+	if (!loc || !user)
+		return FALSE
+	if (get_dist(src,user) > 1)
+		return FALSE
+	..(user, retrieval_slot)
 
 
 /obj/item/weapon/shield/montage/marine

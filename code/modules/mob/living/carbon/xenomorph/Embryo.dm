@@ -14,9 +14,12 @@
 	var/flags_embryo = FALSE // Used in /ciphering/predator property
 	/// The ckey of any player hugger that made this embryo
 	var/hugger_ckey
+	/// The total time the person is hugged divided by stages until burst
+	var/per_stage_hugged_time = 90 //Set in Initialize due to config
 
 /obj/item/alien_embryo/Initialize(mapload, ...)
 	. = ..()
+	per_stage_hugged_time = CONFIG_GET(number/embryo_burst_timer) / 5
 	if(istype(loc, /mob/living))
 		affected_mob = loc
 		affected_mob.status_flags |= XENO_HOST
@@ -76,8 +79,6 @@
 
 /obj/item/alien_embryo/proc/process_growth(delta_time)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	/// The total time the person is hugged divided by stages until burst
-	var/per_stage_hugged_time = CONFIG_GET(number/embryo_burst_timer) / 5
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
@@ -273,14 +274,8 @@
 	// Inform observers to grab some popcorn if it isnt nested
 	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
 		var/area/burst_area = get_area(src)
-		if(burst_area)
-			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
-			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b>"))
-		else
-			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
-			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b>"))
+		var/area_text = burst_area ? " at <b>[burst_area]</b>" : ""
+		notify_ghosts(header = "Burst Imminent", message = "A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b>[area_text]!", source = affected_mob)
 
 	stage = 7 // Begin the autoburst countdown
 

@@ -1,0 +1,101 @@
+2023-09-01:
+  ClairionCM:
+  - bugfix: Fixes an infinite flare bug
+  Huffie56:
+  - refactor: clean dmi file extract sprite hidden inside other sprites direction.
+      removing sprite change from dmm files.
+  - bugfix: fix seing decimal in clothing vendor surplus.
+  - mapadd: adding an an access to the exterior side of each lifeboats.
+  JackieEstegado:
+  - qol: Added in-hand activation for machetes, which will cause one to start cutting
+      vines and grass on the tile directly in-front.
+  Morrow:
+  - bugfix: Fixed lesser drone counts on pylons/cores
+  Private Tristan:
+  - qol: Researchers now spawn with reagent scanner goggles.
+  Steelpoint:
+  - bugfix: UPP survivors no longer have a small chance to accidently spawn with no
+      armour or external webbing.
+  - maptweak: Hidden floor safe in LV-624 is now positioned correctly.
+  harryob:
+  - rscdel: removed the hallucinating ghost notification
+2023-09-02:
+  BeagleGaming1:
+  - code_imp: changed camouflage from map definitions to JSON
+  realforest2001:
+  - rscadd: Added a Provost radio & channel.
+  - qol: Changed High Command radio to have most channels off by default.
+  - rscdel: Removed ignore_z from High Command radios.
+2023-09-03:
+  Katskan:
+  - balance: Merged vision toggle options between ship and colony synthetic types.
+  - balance: Removed 15 points from WY experimental tool vendor coin redemption
+  Morrow:
+  - bugfix: Fixed most of the camo items being clown gear
+  realforest2001:
+  - rscadd: Added a preference for using the old legacy yautja armor, only accessible
+      to the people who had the special gear.
+  - bugfix: Fixed the old Yautja Legacy armor selection code. Removed the unique titles
+      from the legacy gear however.
+  - imageadd: Changed the Yautja relay beacon sprite to a newer unused sprite. Changed
+      iconstate name of health scanner for preds from tracker to scanner.
+  - imageadd: Moved some of the used sprites out of the unused category in pred_gear.dmi.
+  - imagedel: Deleted old relay beacon sprite, deleted duplicate plasma pistol and
+      thwei sprites.
+2023-09-04:
+  Morrow:
+  - bugfix: Peri now works for brain damage
+  - bugfix: Brain damage movement will no longer occur while buckled and unconscious
+  Steelpoint:
+  - spellcheck: Box of donuts order from req is now spelt correctly
+2023-09-05:
+  Ben10083:
+  - admin: New toggleable flag added to bypass restrictions for Working Joe spawns
+      as observer (excluding whitelist requirement)
+  Morrow:
+  - bugfix: Fixed perma helmet HUDs
+  Steelpoint:
+  - rscadd: Synthetic vendors now have the option to vend several helmets and a riot
+      visor. Including a standard M10 helmet defaulted to non-camo grey.
+  VileBeggar:
+  - balance: The M39 foldable stock no longer inflicts debuffs when folded.
+  Zonespace27:
+  - bugfix: Working Joes no longer get cryo self defense kits
+  - bugfix: Cryo self defense kits now have the correct amount of slots
+2023-09-06:
+  Birdtalon:
+  - bugfix: fixed eggsac carrier strain not updating hugger sprites.
+  Drathek:
+  - bugfix: Fixed xeno grab intent
+  Morrow:
+  - rscadd: Added a ghost notification for Acid Runner For the Hive! ability.
+  RenaRenaRe:
+  - bugfix: Hugger and Lesser Drone ghosts now actually bypass time of death checks
+      for the larva queue.
+2023-09-07:
+  Morrow:
+  - bugfix: Fixed a null reference when firing full auto and dropping your weapon
+  Steelpoint:
+  - bugfix: ERT UPP Soldiers will now correctly spawn with firearms.
+  harryob:
+  - rscadd: guns that have full auto now start on full auto by default
+2023-09-09:
+  BeagleGaming1:
+  - bugfix: The APS property works correctly again
+  Morrow:
+  - bugfix: Clusters turning into pylons expand properly
+  - rscadd: Added the ability to early launch lifeboats
+  - rscadd: Added the ability for lifeboats to crash if early launched
+  - rscdel: Removed alcohol from emergency wall cabinets
+  - bugfix: Should stop crashing shuttles from landing on each other
+  Triiodine, Frans, Warfan, SpartanBobby, Twomper, Roboticpotato, Tophat Penguin,forest2001:
+  - rscadd: Added Royal Marines commando ERT and faction
+  - rscadd: Updates Riot shield sprite, adds metal shield as well (sprites from trio)
+  - rscadd: TWE ERT station
+  - rscadd: F903 Rifle, Royal marines commando armour sets, new smartgun with holotargetting
+      rounds for royal marines commando
+  - rscadd: Calico shotgun, pistol and SMG sprites to the codebase made by Triodine
+  - rscadd: royal marines commando HEDP and HIDP grenades
+  Zonepace, Thwomper:
+  - rscadd: Added the M707 "Vulture" anti-materiel rifle. Not currently player-obtainable.
+      Credit to Tophat and Kaga for the lore description.

@@ -436,6 +436,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
 	// set_night_skin()
 
+	if(!tooltips && prefs.tooltips)
+		tooltips = new(src)
+
 	load_player_data()
 
 	view = world_view_size

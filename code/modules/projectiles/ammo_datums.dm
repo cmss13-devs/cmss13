@@ -410,6 +410,13 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
 
+/datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+	name = "high-impact pistol bullet"
+	sound_override = 'sound/weapons/gun_DE50.ogg'
+	penetration = ARMOR_PENETRATION_TIER_6
+	debilitate = list(0,1.5,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_BALLISTIC
+
 /datum/ammo/bullet/pistol/heavy/super/highimpact/New()
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
@@ -617,42 +624,43 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
 
-/datum/ammo/bullet/revolver/nagant
-	name = "nagant revolver bullet"
-	headshot_state = HEADSHOT_OVERLAY_LIGHT //Smaller bullet.
-	damage = 40
+/datum/ammo/bullet/revolver/upp
+	name = "heavy revolver bullet"
+	headshot_state = HEADSHOT_OVERLAY_MEDIUM
+	penetration = ARMOR_PENETRATION_TIER_4
+	damage = 70
 
 
-/datum/ammo/bullet/revolver/nagant/shrapnel
+/datum/ammo/bullet/revolver/upp/shrapnel
 	name = "shrapnel shot"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY //Gol-dang shotgun blow your fething head off.
 	debilitate = list(0,0,0,0,0,0,0,0)
 	icon_state = "shrapnelshot"
 	handful_state = "shrapnel"
-	bonus_projectiles_type = /datum/ammo/bullet/revolver/nagant/shrapnel_bits
+	bonus_projectiles_type = /datum/ammo/bullet/revolver/upp/shrapnel_bits
 
 	max_range = 6
-	damage = 25 // + TIER_4 * 3
+	damage = 40 // + TIER_4 * 3
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	penetration = ARMOR_PENETRATION_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_8
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shrapnel_chance = 100
-	shrapnel_type = /obj/item/shard/shrapnel/nagant
-	//roughly 35 or so damage
+	shrapnel_type = /obj/item/shard/shrapnel/upp
+	//roughly 90 or so damage with the additional shrapnel, around 130 in total with primary round
 
-/datum/ammo/bullet/revolver/nagant/shrapnel/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/revolver/upp/shrapnel/on_hit_mob(mob/M, obj/projectile/P)
 	pushback(M, P, 1)
 
-/datum/ammo/bullet/revolver/nagant/shrapnel_bits
+/datum/ammo/bullet/revolver/upp/shrapnel_bits
 	name = "small shrapnel"
 	icon_state = "shrapnelshot_bit"
 
 	max_range = 6
-	damage = 20
-	penetration = ARMOR_PENETRATION_TIER_1
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_1
 	bonus_projectiles_amount = 0
-	shrapnel_type = /obj/item/shard/shrapnel/nagant/bits
+	shrapnel_type = /obj/item/shard/shrapnel/upp/bits
 
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
@@ -862,6 +870,15 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
 
+/datum/ammo/bullet/smg/pps43
+	name = "simple submachinegun bullet"
+	damage = 35
+	accurate_range = 7
+	effective_range_max = 10
+	penetration = ARMOR_PENETRATION_TIER_4
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+
 /*
 //======
 					Rifle Ammo
@@ -1057,21 +1074,21 @@
 /datum/ammo/bullet/rifle/type71
 	name = "heavy rifle bullet"
 
-	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_2
+	damage = 55
+	penetration = ARMOR_PENETRATION_TIER_3
 
 /datum/ammo/bullet/rifle/type71/ap
 	name = "heavy armor-piercing rifle bullet"
 
-	damage = 20
+	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/rifle/type71/heap
 	name = "heavy high-explosive armor-piercing rifle bullet"
 
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	damage = 50
-	penetration = ARMOR_PENETRATION_TIER_8
+	damage = 65
+	penetration = ARMOR_PENETRATION_TIER_10
 
 /*
 //======
@@ -1599,6 +1616,11 @@
 	. = ..()
 	pushback(M, P, 3)
 
+/datum/ammo/bullet/sniper/upp
+	name = "armor-piercing sniper bullet"
+	damage = 80
+	penetration = ARMOR_PENETRATION_TIER_10
+
 /datum/ammo/bullet/sniper/anti_materiel
 	name = "anti-materiel sniper bullet"
 
@@ -1620,6 +1642,24 @@
 		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
 		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+
+/datum/ammo/bullet/sniper/anti_materiel/vulture
+	damage = 400 // Fully intended to vaporize anything smaller than a mini cooper
+	accurate_range_min = 10
+	handful_state = "vulture_bullet"
+	sound_hit = 'sound/bullets/bullet_vulture_impact.ogg'
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER|AMMO_ANTIVEHICLE
+
+/datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/item/projectile/bullet)
+	. = ..()
+	knockback(hit_mob, bullet, 30)
+	hit_mob.apply_effect(3, SLOW)
+
+/datum/ammo/bullet/sniper/anti_materiel/vulture/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/heavy)
+	))
 
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"
@@ -1765,6 +1805,26 @@
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
 
+/datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
+	name = "holo-targeting smartgun bullet"
+	damage = 30
+///Stuff for the HRP holotargetting stacks
+	var/holo_stacks = 15
+
+/datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
+
+/datum/ammo/bullet/smartgun/holo_target/ap
+	name = "armor-piercing smartgun bullet"
+	icon_state = "bullet"
+
+	accurate_range = 12
+	accuracy = HIT_ACCURACY_TIER_2
+	damage = 20
+	penetration = ARMOR_PENETRATION_TIER_8
+	damage_armor_punch = 1
+
 /datum/ammo/bullet/smartgun/m56_fpw
 	name = "\improper M56 FPW bullet"
 	icon_state = "redbullet"
@@ -1862,6 +1922,18 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 12
 	damage = 45 //7.62x51 is scary
+	penetration= ARMOR_PENETRATION_TIER_6
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+
+/datum/ammo/bullet/pkp
+	name = "machinegun bullet"
+	headshot_state = HEADSHOT_OVERLAY_MEDIUM
+
+	accuracy = HIT_ACCURACY_TIER_1
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	accurate_range = 14
+	damage = 35
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
@@ -2077,6 +2149,42 @@
 	drop_flame(T, P.weapon_cause_data)
 
 /datum/ammo/rocket/wp/do_at_max_range(obj/projectile/P)
+	drop_flame(get_turf(P), P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp
+	name = "extreme-intensity incendiary rocket"
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
+	damage_type = BURN
+
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accurate_range = 8
+	damage = 150
+	max_range = 10
+
+/datum/ammo/rocket/wp/upp/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
+/datum/ammo/rocket/wp/upp/drop_flame(turf/T, datum/cause_data/cause_data)
+	playsound(T, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
+	if(!istype(T)) return
+	smoke.set_up(1, T)
+	smoke.start()
+	var/datum/reagent/napalm/upp/R = new()
+	new /obj/flamer_fire(T, cause_data, R, 3)
+
+/datum/ammo/rocket/wp/upp/on_hit_mob(mob/M, obj/item/projectile/P)
+	drop_flame(get_turf(M), P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp/on_hit_obj(obj/O, obj/item/projectile/P)
+	drop_flame(get_turf(O), P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp/on_hit_turf(turf/T, obj/item/projectile/P)
+	drop_flame(T, P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad

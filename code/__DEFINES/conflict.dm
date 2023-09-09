@@ -26,7 +26,7 @@
 #define AMMO_IGNORE_RESIST (1<<10)
 #define AMMO_BALLISTIC (1<<11)
 #define AMMO_IGNORE_COVER (1<<12)
-//                              (1<<13) unused, previously was AMMO_SCANS_NEARBY
+#define AMMO_ANTIVEHICLE (1<<13)
 #define AMMO_STOPPED_BY_COVER (1<<14)
 #define AMMO_SPECIAL_EMBED (1<<15)
 /// If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
@@ -90,6 +90,8 @@
 #define ATTACH_IGNORE_EMPTY (1<<5)
 /// This attachment should activate if you attack() with it attached.
 #define ATTACH_MELEE (1<<6)
+/// Override for attachies so you can fire them with a single hand . ONLY FOR PROJECTILES!!
+#define ATTACH_WIELD_OVERRIDE (1<<7)
 
 //Ammo magazine defines, for flags_magazine
 
@@ -218,6 +220,7 @@
 #define UNIFORM_HAS_SENSORS 1
 #define UNIFORM_FORCED_SENSORS 2
 
+#define EYE_PROTECTION_NEGATIVE -1
 #define EYE_PROTECTION_NONE 0
 #define EYE_PROTECTION_FLAVOR 1
 #define EYE_PROTECTION_FLASH 2

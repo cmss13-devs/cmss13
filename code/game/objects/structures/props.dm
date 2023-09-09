@@ -33,10 +33,10 @@
 /obj/structure/prop/dam/drill/proc/update()
 	icon_state = "thumper[on ? "-on" : ""]"
 	if(on)
-		SetLuminosity(3)
+		set_light(3)
 		playsound(src, 'sound/machines/turbine_on.ogg')
 	else
-		SetLuminosity(0)
+		set_light(0)
 		playsound(src, 'sound/machines/turbine_off.ogg')
 	return
 
@@ -114,9 +114,9 @@
 	underlays += "shadow[lit ? "-lit" : ""]"
 	icon_state = "torii[lit ? "-lit" : ""]"
 	if(lit)
-		SetLuminosity(6)
+		set_light(6)
 	else
-		SetLuminosity(0)
+		set_light(0)
 	return
 
 /obj/structure/prop/dam/torii/attack_hand(mob/user as mob)
@@ -510,10 +510,10 @@
 /obj/structure/prop/turbine/proc/Update()
 	icon_state = "biomass_turbine[on ? "-on" : ""]"
 	if (on)
-		SetLuminosity(3)
+		set_light(3)
 		playsound(src, 'sound/machines/turbine_on.ogg')
 	else
-		SetLuminosity(0)
+		set_light(0)
 		playsound(src, 'sound/machines/turbine_off.ogg')
 	return
 
@@ -650,11 +650,18 @@
 	icon_state = "brazier"
 	density = TRUE
 	health = 150
-	luminosity = 6
+	light_range = 6
+	light_on = TRUE
 	/// What obj this becomes when it gets to its next stage of construction / ignition
 	var/frame_type
 	/// What is used to progress to the next stage
 	var/state = STATE_COMPLETE
+
+/obj/structure/prop/brazier/Initialize()
+	. = ..()
+
+	if(!light_on)
+		set_light(0)
 
 /obj/structure/prop/brazier/get_examine_text(mob/user)
 	. = ..()
@@ -686,20 +693,11 @@
 	new frame_type(loc)
 	qdel(src)
 
-/obj/structure/prop/brazier/Destroy()
-	SetLuminosity(0)
-	return ..()
-
-/obj/structure/prop/brazier/Initialize()
-	. = ..()
-	if(luminosity)
-		SetLuminosity(luminosity)
-
 /obj/structure/prop/brazier/frame
 	name = "empty brazier"
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
-	luminosity = 0
+	light_on = FALSE
 	frame_type = /obj/structure/prop/brazier/frame/full
 	state = STATE_FUEL
 
@@ -715,7 +713,7 @@
 	desc = "It's a torch."
 	icon_state = "torch"
 	density = FALSE
-	luminosity = 5
+	light_range = 5
 
 /obj/structure/prop/brazier/frame/full/torch
 	name = "unlit torch"
@@ -840,7 +838,6 @@
 	addtimer(CALLBACK(src, PROC_REF(fuel_drain), TRUE), fuel_stage_time)
 
 /obj/structure/prop/brazier/campfire/Destroy()
-	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -977,6 +974,13 @@
 	name = "colony crawler"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
 	icon_state = "crawler"
+	density = TRUE
+
+/obj/structure/prop/vehicles/tank/twe
+	name = "\improper FV150 Shobo MKII"
+	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structual changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
+	icon = 'icons/obj/vehicles/twe_tank.dmi'
+	icon_state = "twe_tank"
 	density = TRUE
 
 //overhead prop sets
@@ -1119,7 +1123,8 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = MOB_LAYER
-	luminosity = 3
+	light_range = 3
+	light_on = TRUE
 
 /obj/structure/prop/invuln/fusion_reactor
 	name = "\improper S-52 fusion reactor"

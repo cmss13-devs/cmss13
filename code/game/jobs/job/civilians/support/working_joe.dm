@@ -12,6 +12,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_JOE
 	gear_preset = /datum/equipment_preset/synth/working_joe
+	gets_emergency_kit = FALSE
 
 	job_options = list(STANDARD_VARIANT = "JOE", HAZMAT_VARIANT = "HAZ")
 	var/standard = TRUE

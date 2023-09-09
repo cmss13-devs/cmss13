@@ -74,6 +74,19 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NO_FLAGS
 
+//LIGHT SUIT TEMPLATE (for armor/exosuit)  ONLY TAKE NAME, DESC, ICON_STATE, AND ITEM_STATE.  Make a copy of those, and put the ckey of the person at the end after fluff
+/obj/item/clothing/suit/storage/marine/light/fluff
+	name = "ITEM NAME"
+	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
+	icon_state = null
+	item_state = null
+	flags_atom = NO_NAME_OVERRIDE
+	//DON'T GRAB STUFF BETWEEN THIS LINE
+	icon = 'icons/obj/items/clothing/suits.dmi'
+	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
+	flags_inventory = BLOCKSHARPOBJ
+	flags_marine_armor = NO_FLAGS
+
 /obj/item/clothing/suit/storage/marine/fluff/verb/toggle_squad_markings()
 	set src in usr
 	if(!ishuman(usr)) return
@@ -223,11 +236,10 @@
 	item_state = "swat_suit"
 
 /obj/item/clothing/suit/storage/marine/fluff/tristan //CKEY=tristan63
-	name = "Sciency Teleport Armor"
-	desc = "Some fancy looking armor, with lots of lights and buttons.  DONOR ITEM"
-	icon_state = "reactive"
-	item_state = "reactive"
-	blood_overlay_type = "armor"
+	name = "M3X Pattern Armor"
+	desc = "A set of experimental M3 pattern armor, modernized to include form fitting ceramic plates for better protection against projectiles. Unfortunately the plates appear to be broken beyond repair, leaving only the base M3 protection.  DONOR ITEM"
+	icon_state = "tristan_armor"
+	item_state = "tristan_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "Legion Armor"
@@ -266,11 +278,11 @@
 	item_state = "hos"
 	blood_overlay_type = "coat"
 
-/obj/item/clothing/suit/storage/marine/fluff/biolock //CKEY=biolock
-	name = "Medic Armor"
-	desc = "Medical armor, designed to protect medics from things that hurt medics.  DONOR ITEM."
-	item_state = "medarmor"
-	icon_state = "medarmor"
+/obj/item/clothing/suit/storage/marine/light/fluff/biolock //CKEY=biolock
+	name = "M3-L Custom"
+	desc = "A lighter, cut down version of the standard M3 pattern armor. This armor looks to have heavy modifications and a custom paint-job.  DONOR ITEM."
+	item_state = "bio_armor"
+	icon_state = "bio_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
 	name = "Elite Combat Armor"
@@ -632,9 +644,10 @@
 	desc = "Thought I walk through the valley in the shadow of death... Donor Item"
 
 /obj/item/clothing/head/helmet/marine/fluff/biolock //CKEY=biolock
-	name = "Medic Helmet"
-	desc = "Medical Helmet designed to protect the head of a medic. DONOR ITEM"
-	icon_state = "helmetm"
+	name = "M10-Custom"
+	desc = "A custom M10 Pattern Helmet. The inside of the helmet has smaller, slicker pads. There is a built-in camera on the right side. DONOR ITEM"
+	icon_state = "bio_helmet"
+	item_state = "bio_helmet"
 
 /obj/item/clothing/head/helmet/marine/fluff/haveatya //CKEY=haveatya
 	name = "Pararescue Beret"

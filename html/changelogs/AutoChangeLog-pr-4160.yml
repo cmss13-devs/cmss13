@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added a Provost radio & channel."
-  - qol: "Changed High Command radio to have most channels off by default."
-  - rscdel: "Removed ignore_z from High Command radios."

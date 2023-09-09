@@ -237,14 +237,14 @@ cases. Override_icon_state should be a list.*/
 			new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
 		if(override_protection && override_protection.len)
 			new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
-		switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-			if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("snow")
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				item_state = new_item_state ? new_item_state : "s_" + item_state
-			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+			if("desert")
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				item_state = new_item_state ? new_item_state : "d_" + item_state
-			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+			if("classic")
 				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
 				item_state = new_item_state ? new_item_state : "c_" + item_state
 		if(new_protection)
@@ -368,6 +368,7 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/pickup(mob/user, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	SEND_SIGNAL(user, COMSIG_MOB_PICKUP_ITEM, src)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	if(pickup_sound && !silent && src.loc?.z)
 		playsound(src, pickup_sound, pickupvol, pickup_vary)
@@ -635,6 +636,8 @@ cases. Override_icon_state should be a list.*/
 					return FALSE
 				if(flags_equip_slot & SLOT_SUIT_STORE)
 					return TRUE
+				if(flags_equip_slot & SLOT_BLOCK_SUIT_STORE)
+					return FALSE
 				if(!H.wear_suit && (WEAR_JACKET in mob_equip))
 					if(!disable_warning)
 						to_chat(H, SPAN_WARNING("You need a suit before you can attach this [name]."))

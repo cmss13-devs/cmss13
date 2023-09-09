@@ -73,14 +73,14 @@ There are several things that need to be remembered:
 
 */
 
-
-
 /mob/living/carbon/human/apply_overlay(cache_index)
-	var/image/I = overlays_standing[cache_index]
-	if(I)
-		I.appearance_flags |= RESET_COLOR
-		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, I)
-		overlays += I
+	var/image/images = overlays_standing[cache_index]
+
+	if(!images)
+		return
+
+	SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, images)
+	overlays += images
 
 /mob/living/carbon/human/remove_overlay(cache_index)
 	if(overlays_standing[cache_index])
@@ -132,10 +132,32 @@ There are several things that need to be remembered:
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body()
 	appearance_flags |= KEEP_TOGETHER // sanity
-	vis_contents.Cut()
-	for(var/obj/limb/part in limbs)
-		vis_contents += part
-		part.update_icon(TRUE)
+
+	update_damage_overlays()
+
+	var/list/needs_update = list()
+	for(var/obj/limb/part as anything in limbs)
+		part.update_limb()
+
+		var/old_key = icon_render_keys?[part.icon_name]
+		icon_render_keys[part.icon_name] = part.get_limb_icon_key()
+		if(icon_render_keys[part.icon_name] == old_key)
+			continue
+
+		needs_update += part
+
+	var/list/new_limbs = list()
+	for(var/obj/limb/part as anything in limbs)
+		if(part in needs_update)
+			var/bodypart_icon = part.get_limb_icon()
+			new_limbs += bodypart_icon
+			icon_render_image_cache[icon_render_keys[part.icon_name]] = bodypart_icon
+		else
+			new_limbs += icon_render_image_cache[icon_render_keys[part.icon_name]]
+
+	remove_overlay(BODYPARTS_LAYER)
+	overlays_standing[BODYPARTS_LAYER] = new_limbs
+	apply_overlay(BODYPARTS_LAYER)
 
 	if(species.flags & HAS_UNDERWEAR)
 		//Underwear
@@ -153,6 +175,21 @@ There are several things that need to be remembered:
 		undershirt_icon.layer = -UNDERSHIRT_LAYER
 		overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
 		apply_overlay(UNDERSHIRT_LAYER)
+
+/// Recalculates and reapplies damage overlays to every limb
+/mob/living/carbon/human/proc/update_damage_overlays()
+	remove_overlay(DAMAGE_LAYER)
+
+	var/list/damage_overlays = list()
+	for(var/obj/limb/part as anything in limbs)
+		if(part.status & LIMB_DESTROYED)
+			continue
+
+		damage_overlays += part.get_damage_overlays()
+
+	overlays_standing[DAMAGE_LAYER] = damage_overlays
+
+	apply_overlay(DAMAGE_LAYER)
 
 /mob/living/carbon/human/proc/remove_underwear() // :flushed: - geeves
 	remove_overlay(UNDERSHIRT_LAYER)
@@ -739,7 +776,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 //Human Overlays Indexes/////////
 #undef MUTANTRACE_LAYER
-#undef DAMAGE_LAYER
 #undef UNIFORM_LAYER
 #undef TAIL_LAYER
 #undef ID_LAYER

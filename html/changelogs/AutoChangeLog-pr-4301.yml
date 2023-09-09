@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "On-screen messages now appear with sound. Radio static for marines, distant roar for xenos."

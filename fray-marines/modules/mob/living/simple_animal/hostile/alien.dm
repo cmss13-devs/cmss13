@@ -33,6 +33,8 @@
 
 	var/special_attack_probability = XENO_AI_SPECIAL_ATTACK_PROBABILITY
 
+/mob/living/simple_animal/hostile/alien/spawnable/movement_delay()
+
 /mob/living/simple_animal/hostile/alien/spawnable/generate_name()
 	change_real_name(src, "\improper[caste_name] (WT-[rand(1, 999)])")
 

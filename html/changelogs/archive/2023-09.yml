@@ -79,3 +79,23 @@
   - bugfix: ERT UPP Soldiers will now correctly spawn with firearms.
   harryob:
   - rscadd: guns that have full auto now start on full auto by default
+2023-09-09:
+  BeagleGaming1:
+  - bugfix: The APS property works correctly again
+  Morrow:
+  - bugfix: Clusters turning into pylons expand properly
+  - rscadd: Added the ability to early launch lifeboats
+  - rscadd: Added the ability for lifeboats to crash if early launched
+  - rscdel: Removed alcohol from emergency wall cabinets
+  - bugfix: Should stop crashing shuttles from landing on each other
+  Triiodine, Frans, Warfan, SpartanBobby, Twomper, Roboticpotato, Tophat Penguin,forest2001:
+  - rscadd: Added Royal Marines commando ERT and faction
+  - rscadd: Updates Riot shield sprite, adds metal shield as well (sprites from trio)
+  - rscadd: TWE ERT station
+  - rscadd: F903 Rifle, Royal marines commando armour sets, new smartgun with holotargetting
+      rounds for royal marines commando
+  - rscadd: Calico shotgun, pistol and SMG sprites to the codebase made by Triodine
+  - rscadd: royal marines commando HEDP and HIDP grenades
+  Zonepace, Thwomper:
+  - rscadd: Added the M707 "Vulture" anti-materiel rifle. Not currently player-obtainable.
+      Credit to Tophat and Kaga for the lore description.

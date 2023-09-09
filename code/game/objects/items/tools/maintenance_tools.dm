@@ -732,7 +732,7 @@ Welding backpack
 	else
 		. += "No punctures are seen on \the [src] upon closer inspection."
 
-/obj/item/tool/weldpack/bullet_act(obj/item/projectile/P)
+/obj/item/tool/weldpack/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()

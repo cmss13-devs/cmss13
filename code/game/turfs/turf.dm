@@ -154,7 +154,7 @@
 	if(override)
 		return override & COMPONENT_TURF_ALLOW_MOVEMENT
 
-	if(isobserver(mover) || istype(mover, /obj/item/projectile))
+	if(isobserver(mover) || istype(mover, /obj/projectile))
 		return TRUE
 
 	var/fdir = get_dir(mover, src)

@@ -448,7 +448,7 @@
 		return
 	update_health(severity)
 
-/obj/structure/machinery/defenses/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/defenses/bullet_act(obj/projectile/P)
 	bullet_ping(P)
 	visible_message(SPAN_WARNING("[src] is hit by the [P]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags

@@ -76,7 +76,7 @@
 	if(health <= 0)
 		unpack()
 
-/obj/structure/largecrate/bullet_act(obj/item/projectile/P)
+/obj/structure/largecrate/bullet_act(obj/projectile/P)
 	take_damage(P.calculate_damage(P.damage))
 	return TRUE
 

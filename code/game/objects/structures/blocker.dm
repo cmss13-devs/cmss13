@@ -78,7 +78,7 @@
 	var/list/types = list()
 	var/visible = FALSE
 
-/obj/structure/blocker/forcefield/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/blocker/forcefield/get_projectile_hit_boolean(obj/projectile/P)
 	if(!is_whitelist)
 		return FALSE
 	. = ..()

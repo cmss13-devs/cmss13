@@ -59,7 +59,7 @@
 /datum/ammo/New()
 	set_bullet_traits()
 
-/datum/ammo/proc/on_bullet_generation(obj/item/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
+/datum/ammo/proc/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
 	return
 
 /// Populate traits_to_give in this proc
@@ -69,40 +69,40 @@
 /datum/ammo/can_vv_modify()
 	return FALSE
 
-/datum/ammo/proc/do_at_half_range(obj/item/projectile/P)
+/datum/ammo/proc/do_at_half_range(obj/projectile/P)
 	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /datum/ammo/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	return
 
-/datum/ammo/proc/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/proc/do_at_max_range(obj/projectile/P)
 	SHOULD_NOT_SLEEP(TRUE)
 	return
 
-/datum/ammo/proc/on_shield_block(mob/M, obj/item/projectile/P) //Does it do something special when shield blocked? Ie. a flare or grenade that still blows up.
+/datum/ammo/proc/on_shield_block(mob/M, obj/projectile/P) //Does it do something special when shield blocked? Ie. a flare or grenade that still blows up.
 	return
 
-/datum/ammo/proc/on_hit_turf(turf/T, obj/item/projectile/P) //Special effects when hitting dense turfs.
+/datum/ammo/proc/on_hit_turf(turf/T, obj/projectile/P) //Special effects when hitting dense turfs.
 	SHOULD_NOT_SLEEP(TRUE)
 	return
 
-/datum/ammo/proc/on_hit_mob(mob/M, obj/item/projectile/P, mob/user) //Special effects when hitting mobs.
+/datum/ammo/proc/on_hit_mob(mob/M, obj/projectile/P, mob/user) //Special effects when hitting mobs.
 	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 ///Special effects when pointblanking mobs. Ultimately called from /living/attackby(). Return TRUE to end the PB attempt.
-/datum/ammo/proc/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
+/datum/ammo/proc/on_pointblank(mob/living/L, obj/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
 	return
 
-/datum/ammo/proc/on_hit_obj(obj/O, obj/item/projectile/P) //Special effects when hitting objects.
+/datum/ammo/proc/on_hit_obj(obj/O, obj/projectile/P) //Special effects when hitting objects.
 	SHOULD_NOT_SLEEP(TRUE)
 	return
 
-/datum/ammo/proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
+/datum/ammo/proc/on_near_target(turf/T, obj/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
 	return 0 //return 0 means it flies even after being near something. Return 1 means it stops
 
-/datum/ammo/proc/knockback(mob/living/living_mob, obj/item/projectile/fired_projectile, max_range = 2)
+/datum/ammo/proc/knockback(mob/living/living_mob, obj/projectile/fired_projectile, max_range = 2)
 	if(!living_mob || living_mob == fired_projectile.firer)
 		return
 	if(fired_projectile.distance_travelled > max_range || living_mob.lying)
@@ -115,7 +115,7 @@
 	knockback_effects(living_mob, fired_projectile)
 	slam_back(living_mob, fired_projectile)
 
-/datum/ammo/proc/slam_back(mob/living/living_mob, obj/item/projectile/fired_projectile)
+/datum/ammo/proc/slam_back(mob/living/living_mob, obj/projectile/fired_projectile)
 	//Either knockback or slam them into an obstacle.
 	var/direction = Get_Compass_Dir(fired_projectile.z ? fired_projectile : fired_projectile.firer, living_mob) //More precise than get_dir.
 	if(!direction) //Same tile.
@@ -128,7 +128,7 @@
 		living_mob.apply_damage(MELEE_FORCE_TIER_2)
 
 ///The applied effects for knockback(), overwrite to change slow/stun amounts for different ammo datums
-/datum/ammo/proc/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+/datum/ammo/proc/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
@@ -138,7 +138,7 @@
 	else
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
-/datum/ammo/proc/pushback(mob/target_mob, obj/item/projectile/fired_projectile, max_range = 2)
+/datum/ammo/proc/pushback(mob/target_mob, obj/projectile/fired_projectile, max_range = 2)
 	if(!target_mob || target_mob == fired_projectile.firer || fired_projectile.distance_travelled > max_range || target_mob.lying)
 		return
 
@@ -148,7 +148,7 @@
 	to_chat(target_mob, isxeno(target_mob) ? SPAN_XENODANGER("You are pushed back by the sudden impact!") : SPAN_HIGHDANGER("You are pushed back by the sudden impact!"), null, 4, CHAT_TYPE_TAKING_HIT)
 	slam_back(target_mob, fired_projectile, max_range)
 
-/datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = SHOW_MESSAGE_VISIBLE) //damage_div says how much we divide damage
+/datum/ammo/proc/burst(atom/target, obj/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = SHOW_MESSAGE_VISIBLE) //damage_div says how much we divide damage
 	if(!target || !P) return
 	for(var/mob/living/carbon/M in orange(range,target))
 		if(P.firer == M)
@@ -174,7 +174,7 @@
 		else
 			P.play_hit_effect(M)
 
-/datum/ammo/proc/fire_bonus_projectiles(obj/item/projectile/original_P)
+/datum/ammo/proc/fire_bonus_projectiles(obj/projectile/original_P)
 	set waitfor = 0
 
 	var/turf/curloc = get_turf(original_P.shot_from)
@@ -183,7 +183,7 @@
 	for(var/i in 1 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
 		var/final_angle = initial_angle
 
-		var/obj/item/projectile/P = new /obj/item/projectile(curloc, original_P.weapon_cause_data)
+		var/obj/projectile/P = new /obj/projectile(curloc, original_P.weapon_cause_data)
 		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 		original_P.give_bullet_traits(P)
@@ -227,7 +227,7 @@
 	shrapnel_type = /obj/item/shard/shrapnel
 	shell_speed = AMMO_SPEED_TIER_4
 
-/datum/ammo/bullet/proc/handle_battlefield_execution(datum/ammo/firing_ammo, mob/living/hit_mob, obj/item/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
+/datum/ammo/bullet/proc/handle_battlefield_execution(datum/ammo/firing_ammo, mob/living/hit_mob, obj/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	SIGNAL_HANDLER
 
 	if(!user || hit_mob == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !ishuman_strict(hit_mob))
@@ -247,7 +247,7 @@
 
 	return COMPONENT_CANCEL_AMMO_POINT_BLANK
 
-/datum/ammo/bullet/proc/attempt_battlefield_execution(datum/ammo/firing_ammo, mob/living/carbon/human/execution_target, obj/item/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
+/datum/ammo/bullet/proc/attempt_battlefield_execution(datum/ammo/firing_ammo, mob/living/carbon/human/execution_target, obj/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	user.affected_message(execution_target,
 		SPAN_HIGHDANGER("You aim \the [fired_from] at [execution_target]'s head!"),
 		SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
@@ -348,16 +348,16 @@
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 
-/datum/ammo/bullet/pistol/ap/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/pistol/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
 
-/datum/ammo/bullet/pistol/ap/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/pistol/ap/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
 	if(T.flags_turf & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
-/datum/ammo/bullet/pistol/ap/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/bullet/pistol/ap/toxin/on_hit_obj(obj/O, obj/projectile/P)
 	. = ..()
 	if(O.flags_obj & OBJ_ORGANIC)
 		P.damage *= organic_damage_mult
@@ -414,7 +414,7 @@
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/pistol/deagle
@@ -472,16 +472,16 @@
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 
-/datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
 
-/datum/ammo/bullet/pistol/squash/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/pistol/squash/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
 	if(T.flags_turf & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
-/datum/ammo/bullet/pistol/squash/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/bullet/pistol/squash/toxin/on_hit_obj(obj/O, obj/projectile/P)
 	. = ..()
 	if(O.flags_obj & OBJ_ORGANIC)
 		P.damage *= organic_damage_mult
@@ -530,7 +530,7 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/M,obj/projectile/P)
 	if(P && P.loc && !M.stat && !istype(M,/mob/living/carbon/human/monkey))
 		P.visible_message(SPAN_DANGER("The [src] chimpers furiously!"))
 		new /mob/living/carbon/human/monkey(P.loc)
@@ -573,7 +573,7 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 
-/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/revolver/incendiary
@@ -591,16 +591,16 @@
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 
-/datum/ammo/bullet/revolver/marksman/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/marksman/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
 
-/datum/ammo/bullet/revolver/marksman/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/marksman/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
 	if(T.flags_turf & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
-/datum/ammo/bullet/revolver/marksman/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/marksman/toxin/on_hit_obj(obj/O, obj/projectile/P)
 	. = ..()
 	if(O.flags_obj & OBJ_ORGANIC)
 		P.damage *= organic_damage_mult
@@ -640,7 +640,7 @@
 	shrapnel_type = /obj/item/shard/shrapnel/nagant
 	//roughly 35 or so damage
 
-/datum/ammo/bullet/revolver/nagant/shrapnel/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/nagant/shrapnel/on_hit_mob(mob/M, obj/projectile/P)
 	pushback(M, P, 1)
 
 /datum/ammo/bullet/revolver/nagant/shrapnel_bits
@@ -693,7 +693,7 @@
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
-/datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
@@ -704,15 +704,15 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
 
-/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/projectile/P)
 	..()
 	cell_explosion(get_turf(M), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
-/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_obj(obj/O, obj/projectile/P)
 	..()
 	cell_explosion(get_turf(O), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
-/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_turf(turf/T, obj/projectile/P)
 	..()
 	cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
@@ -770,16 +770,16 @@
 	var/acid_per_hit = 5
 	var/organic_damage_mult = 3
 
-/datum/ammo/bullet/smg/ap/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/smg/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
 
-/datum/ammo/bullet/smg/ap/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/smg/ap/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
 	if(T.flags_turf & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
-/datum/ammo/bullet/smg/ap/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/bullet/smg/ap/toxin/on_hit_obj(obj/O, obj/projectile/P)
 	. = ..()
 	if(O.flags_obj & OBJ_ORGANIC)
 		P.damage *= organic_damage_mult
@@ -887,7 +887,7 @@
 	damage = 30
 	var/holo_stacks = 10
 
-/datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	M.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
 
@@ -905,13 +905,13 @@
 	shell_speed = AMMO_SPEED_TIER_4
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
 
-/datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/projectile/P)
 	cell_explosion(get_turf(M), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
-/datum/ammo/bullet/rifle/explosive/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/bullet/rifle/explosive/on_hit_obj(obj/O, obj/projectile/P)
 	cell_explosion(get_turf(O), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
-/datum/ammo/bullet/rifle/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/rifle/explosive/on_hit_turf(turf/T, obj/projectile/P)
 	if(T.density)
 		cell_explosion(T, 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
@@ -927,16 +927,16 @@
 	var/acid_per_hit = 7
 	var/organic_damage_mult = 3
 
-/datum/ammo/bullet/rifle/ap/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/rifle/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
 
-/datum/ammo/bullet/rifle/ap/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/rifle/ap/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
 	if(T.flags_turf & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
-/datum/ammo/bullet/rifle/ap/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/bullet/rifle/ap/toxin/on_hit_obj(obj/O, obj/projectile/P)
 	. = ..()
 	if(O.flags_obj & OBJ_ORGANIC)
 		P.damage *= organic_damage_mult
@@ -1032,10 +1032,10 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
 
-/datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 32) // Can knockback basically at max range
 
-/datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+/datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
@@ -1093,10 +1093,10 @@
 	damage_armor_punch = 2
 	handful_state = "slug_shell"
 
-/datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M, P, 6)
 
-/datum/ammo/bullet/shotgun/slug/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+/datum/ammo/bullet/shotgun/slug/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
@@ -1126,7 +1126,7 @@
 	shell_speed = AMMO_SPEED_TIER_3
 	handful_state = "beanbag_slug"
 
-/datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/projectile/P)
 	if(!M || M == P.firer) return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -1151,14 +1151,14 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/bullet/shotgun/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/incendiary/on_hit_mob(mob/M,obj/projectile/P)
 	burst(get_turf(M),P,damage_type)
 	knockback(M,P)
 
-/datum/ammo/bullet/shotgun/incendiary/on_hit_obj(obj/O,obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/incendiary/on_hit_obj(obj/O,obj/projectile/P)
 	burst(get_turf(P),P,damage_type)
 
-/datum/ammo/bullet/shotgun/incendiary/on_hit_turf(turf/T,obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/incendiary/on_hit_turf(turf/T,obj/projectile/P)
 	burst(get_turf(T),P,damage_type)
 
 
@@ -1225,7 +1225,7 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/bullet/shotgun/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/buckshot/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M,P)
 
 //buckshot variant only used by the masterkey shotgun attachment.
@@ -1273,7 +1273,7 @@
 	damage_armor_punch = 0
 	pen_armor_punch = 0
 
-/datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M,P)
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/spread
@@ -1317,10 +1317,10 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	damage_armor_punch = 2
 
-/datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M, P, 7)
 
-/datum/ammo/bullet/shotgun/heavy/slug/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+/datum/ammo/bullet/shotgun/heavy/slug/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
@@ -1349,7 +1349,7 @@
 	accuracy = HIT_ACCURACY_TIER_2
 	shell_speed = AMMO_SPEED_TIER_2
 
-/datum/ammo/bullet/shotgun/heavy/beanbag/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/heavy/beanbag/on_hit_mob(mob/M, obj/projectile/P)
 	if(!M || M == P.firer)
 		return
 	if(ishuman(M))
@@ -1398,7 +1398,7 @@
 	effective_range_max = EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
 	var/hit_messages = list()
 
-/datum/ammo/bullet/shotgun/twobore/on_hit_mob(mob/living/M, obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/twobore/on_hit_mob(mob/living/M, obj/projectile/P)
 	var/mob/shooter = P.firer
 	if(shooter && ismob(shooter) && HAS_TRAIT(shooter, TRAIT_TWOBORE_TRAINING) && M.stat != DEAD && prob(40)) //Death is handled by periodic life() checks so this should have a chance to fire on a killshot.
 		if(!length(hit_messages)) //Pick and remove lines, refill on exhaustion.
@@ -1422,7 +1422,7 @@
 
 	step(M, get_dir(P.firer, M))
 
-/datum/ammo/bullet/shotgun/twobore/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+/datum/ammo/bullet/shotgun/twobore/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
@@ -1456,7 +1456,7 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	handful_state = "tracking_lever_action_bullet"
 
-/datum/ammo/bullet/lever_action/tracker/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
+/datum/ammo/bullet/lever_action/tracker/on_hit_mob(mob/M, obj/projectile/P, mob/user)
 	//SEND_SIGNAL(user, COMSIG_BULLET_TRACKING, user, M)
 	M.visible_message(SPAN_DANGER("You hear a faint beep under [M]'s [M.mob_size > MOB_SIZE_HUMAN ? "chitin" : "skin"]."))
 
@@ -1525,7 +1525,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 	damage_falloff = 0
 
-/datum/ammo/bullet/sniper/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/sniper/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		L.apply_armoured_damage(damage*2, ARMOR_BULLET, BRUTE, null, penetration)
@@ -1547,7 +1547,7 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/bullet/sniper/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/sniper/incendiary/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		var/blind_duration = 5
@@ -1570,7 +1570,7 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8 //Documenting old code: This converts to a variance of 96-109% damage. -Kaga
 	penetration = 0
 
-/datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/slow_duration = 7
 		var/mob/living/L = M
@@ -1585,7 +1585,7 @@
 		burst(get_turf(M),P,damage_type, 2 , 2)
 		burst(get_turf(M),P,damage_type, 1 , 2 , 0)
 
-/datum/ammo/bullet/sniper/flak/on_near_target(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/sniper/flak/on_near_target(turf/T, obj/projectile/P)
 	burst(T,P,damage_type, 2 , 2)
 	burst(T,P,damage_type, 1 , 2, 0)
 	return 1
@@ -1595,7 +1595,7 @@
 	damage = 42
 	penetration = ARMOR_PENETRATION_TIER_6
 
-/datum/ammo/bullet/sniper/crude/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/sniper/crude/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	pushback(M, P, 3)
 
@@ -1607,7 +1607,7 @@
 	damage = 125
 	shell_speed = AMMO_SPEED_TIER_6
 
-/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		var/size_damage_mod = 0.8
@@ -1635,7 +1635,7 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
 
-/datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		var/size_damage_mod = 0.5
@@ -1667,20 +1667,20 @@
 	max_range = 32
 	shell_speed = AMMO_SPEED_TIER_6
 
-/datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/projectile/P)
 	burst(get_turf(M),P,damage_type, 2 , 3)
 	burst(get_turf(M),P,damage_type, 1 , 3 , 0)
 
-/datum/ammo/bullet/tank/flak/on_near_target(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/tank/flak/on_near_target(turf/T, obj/projectile/P)
 	burst(get_turf(T),P,damage_type, 2 , 3)
 	burst(get_turf(T),P,damage_type, 1 , 3, 0)
 	return 1
 
-/datum/ammo/bullet/tank/flak/on_hit_obj(obj/O,obj/item/projectile/P)
+/datum/ammo/bullet/tank/flak/on_hit_obj(obj/O,obj/projectile/P)
 	burst(get_turf(P),P,damage_type, 2 , 3)
 	burst(get_turf(P),P,damage_type, 1 , 3 , 0)
 
-/datum/ammo/bullet/tank/flak/on_hit_turf(turf/T,obj/item/projectile/P)
+/datum/ammo/bullet/tank/flak/on_hit_turf(turf/T,obj/projectile/P)
 	burst(get_turf(T),P,damage_type, 2 , 3)
 	burst(get_turf(T),P,damage_type, 1 , 3 , 0)
 
@@ -1699,23 +1699,23 @@
 	max_range = 12
 	shell_speed = AMMO_SPEED_TIER_5
 
-/datum/ammo/bullet/tank/dualcannon/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/bullet/tank/dualcannon/on_hit_mob(mob/M,obj/projectile/P)
 	for(var/mob/living/carbon/L in get_turf(M))
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
 
-/datum/ammo/bullet/tank/dualcannon/on_near_target(turf/T, obj/item/projectile/P)
+/datum/ammo/bullet/tank/dualcannon/on_near_target(turf/T, obj/projectile/P)
 	for(var/mob/living/carbon/L in T)
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
 	return 1
 
-/datum/ammo/bullet/tank/dualcannon/on_hit_obj(obj/O,obj/item/projectile/P)
+/datum/ammo/bullet/tank/dualcannon/on_hit_obj(obj/O,obj/projectile/P)
 	for(var/mob/living/carbon/L in get_turf(O))
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
 
-/datum/ammo/bullet/tank/dualcannon/on_hit_turf(turf/T,obj/item/projectile/P)
+/datum/ammo/bullet/tank/dualcannon/on_hit_turf(turf/T,obj/projectile/P)
 	for(var/mob/living/carbon/L in T)
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
@@ -1895,24 +1895,24 @@
 	smoke = null
 	. = ..()
 
-/datum/ammo/rocket/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/rocket/on_hit_mob(mob/M, obj/projectile/P)
 	cell_explosion(get_turf(M), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, get_turf(M))
 	if(ishuman_strict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(350, P.dir, P.weapon_cause_data, 100)
 	smoke.start()
 
-/datum/ammo/rocket/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/rocket/on_hit_obj(obj/O, obj/projectile/P)
 	cell_explosion(get_turf(O), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, get_turf(O))
 	smoke.start()
 
-/datum/ammo/rocket/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/rocket/on_hit_turf(turf/T, obj/projectile/P)
 	cell_explosion(T, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, T)
 	smoke.start()
 
-/datum/ammo/rocket/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/rocket/do_at_max_range(obj/projectile/P)
 	cell_explosion(get_turf(P), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, get_turf(P))
 	smoke.start()
@@ -1929,7 +1929,7 @@
 	damage = 10
 	penetration= ARMOR_PENETRATION_TIER_10
 
-/datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/projectile/P)
 	var/turf/T = get_turf(M)
 	M.ex_act(150, P.dir, P.weapon_cause_data, 100)
 	M.apply_effect(2, WEAKEN)
@@ -1940,14 +1940,14 @@
 	smoke.set_up(1, T)
 	smoke.start()
 
-/datum/ammo/rocket/ap/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/rocket/ap/on_hit_obj(obj/O, obj/projectile/P)
 	var/turf/T = get_turf(O)
 	O.ex_act(150, P.dir, P.weapon_cause_data, 100)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, T)
 	smoke.start()
 
-/datum/ammo/rocket/ap/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/rocket/ap/on_hit_turf(turf/T, obj/projectile/P)
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
@@ -1968,7 +1968,7 @@
 	smoke.set_up(1, T)
 	smoke.start()
 
-/datum/ammo/rocket/ap/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/rocket/ap/do_at_max_range(obj/projectile/P)
 	var/turf/T = get_turf(P)
 	var/hit_something = 0
 	for(var/mob/M in T)
@@ -1996,7 +1996,7 @@
 	shrapnel_chance = 5
 	shrapnel_type = /obj/item/large_shrapnel/at_rocket_dud
 
-/datum/ammo/rocket/ap/anti_tank/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/rocket/ap/anti_tank/on_hit_obj(obj/O, obj/projectile/P)
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/M = O
 		M.next_move = world.time + vehicle_slowdown_time
@@ -2022,19 +2022,19 @@
 	damage = 25
 	shell_speed = AMMO_SPEED_TIER_3
 
-/datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/projectile/P)
 	cell_explosion(get_turf(M), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	cell_explosion(get_turf(M), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
-/datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/projectile/P)
 	cell_explosion(get_turf(O), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	cell_explosion(get_turf(O), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
-/datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/projectile/P)
 	cell_explosion(get_turf(T), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	cell_explosion(get_turf(T), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
-/datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/rocket/ltb/do_at_max_range(obj/projectile/P)
 	cell_explosion(get_turf(P), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	cell_explosion(get_turf(P), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
@@ -2067,16 +2067,16 @@
 	landingSmoke.start()
 	landingSmoke = null
 
-/datum/ammo/rocket/wp/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/rocket/wp/on_hit_mob(mob/M, obj/projectile/P)
 	drop_flame(get_turf(M), P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/rocket/wp/on_hit_obj(obj/O, obj/projectile/P)
 	drop_flame(get_turf(O), P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/rocket/wp/on_hit_turf(turf/T, obj/projectile/P)
 	drop_flame(T, P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/rocket/wp/do_at_max_range(obj/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad
@@ -2087,26 +2087,26 @@
 	max_range = 32
 	shell_speed = AMMO_SPEED_TIER_3
 
-/datum/ammo/rocket/wp/quad/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/rocket/wp/quad/on_hit_mob(mob/M, obj/projectile/P)
 	drop_flame(get_turf(M), P.weapon_cause_data)
 	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/quad/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/rocket/wp/quad/on_hit_obj(obj/O, obj/projectile/P)
 	drop_flame(get_turf(O), P.weapon_cause_data)
 	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/quad/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/rocket/wp/quad/on_hit_turf(turf/T, obj/projectile/P)
 	drop_flame(T, P.weapon_cause_data)
 	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/quad/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/rocket/wp/quad/do_at_max_range(obj/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_cause_data)
 
 /datum/ammo/rocket/custom
 	name = "custom rocket"
 
-/datum/ammo/rocket/custom/proc/prime(atom/A, obj/item/projectile/P)
+/datum/ammo/rocket/custom/proc/prime(atom/A, obj/projectile/P)
 	var/obj/item/weapon/gun/launcher/rocket/launcher = P.shot_from
 	var/obj/item/ammo_magazine/rocket/custom/rocket = launcher.current_mag
 	if(rocket.locked && rocket.warhead && rocket.warhead.detonator)
@@ -2118,16 +2118,16 @@
 	smoke.set_up(1, get_turf(A))
 	smoke.start()
 
-/datum/ammo/rocket/custom/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/rocket/custom/on_hit_mob(mob/M, obj/projectile/P)
 	prime(M, P)
 
-/datum/ammo/rocket/custom/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/rocket/custom/on_hit_obj(obj/O, obj/projectile/P)
 	prime(O, P)
 
-/datum/ammo/rocket/custom/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/rocket/custom/on_hit_turf(turf/T, obj/projectile/P)
 	prime(T, P)
 
-/datum/ammo/rocket/custom/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/rocket/custom/do_at_max_range(obj/projectile/P)
 	prime(null, P)
 
 /*
@@ -2166,7 +2166,7 @@
 	shell_speed = AMMO_SPEED_TIER_1 // Slightly faster
 	hit_effect_color = "#FFFF00"
 
-/datum/ammo/energy/taser/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/energy/taser/on_hit_mob(mob/M, obj/projectile/P)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.disable_special_items() // Disables scout cloak
@@ -2185,7 +2185,7 @@
 	stamina_damage = 25 //why not
 	shell_speed = AMMO_SPEED_TIER_3
 
-/datum/ammo/energy/rxfm_eva/on_hit_mob(mob/living/M, obj/item/projectile/P)
+/datum/ammo/energy/rxfm_eva/on_hit_mob(mob/living/M, obj/projectile/P)
 	..()
 	if(prob(10)) //small chance for one to ignite on hit
 		M.fire_act()
@@ -2235,7 +2235,7 @@
 	icon_state = "shrapnel_plasma"
 	damage_type = BURN
 
-/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/hit_mob, obj/item/projectile/hit_projectile)
+/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/hit_mob, obj/projectile/hit_projectile)
 	hit_mob.apply_effect(2, WEAKEN)
 
 /datum/ammo/energy/yautja/caster
@@ -2263,7 +2263,7 @@
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
 
-/datum/ammo/energy/yautja/caster/bolt/stun/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/bolt/stun/on_hit_mob(mob/M, obj/projectile/P)
 	var/mob/living/carbon/C = M
 	var/stun_time = src.stun_time
 	if(istype(C))
@@ -2296,13 +2296,13 @@
 
 	var/vehicle_slowdown_time = 5 SECONDS
 
-/datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M, obj/projectile/P)
 	cell_explosion(P, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
-/datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T, obj/projectile/P)
 	cell_explosion(P, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
-/datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O, obj/projectile/P)
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/multitile_vehicle = O
 		multitile_vehicle.next_move = world.time + vehicle_slowdown_time
@@ -2312,7 +2312,7 @@
 		multitile_vehicle.ex_act(150, P.dir, P.weapon_cause_data, 100)
 	cell_explosion(get_turf(P), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
-/datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/projectile/P)
 	cell_explosion(get_turf(P), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
 
@@ -2326,19 +2326,19 @@
 	var/stun_range = 4 // Big
 	var/stun_time = 6
 
-/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_mob(mob/M, obj/projectile/P)
 	do_area_stun(P)
 
-/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_turf(turf/T,obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_turf(turf/T,obj/projectile/P)
 	do_area_stun(P)
 
-/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_obj(obj/O,obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_obj(obj/O,obj/projectile/P)
 	do_area_stun(P)
 
-/datum/ammo/energy/yautja/caster/sphere/stun/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/sphere/stun/do_at_max_range(obj/projectile/P)
 	do_area_stun(P)
 
-/datum/ammo/energy/yautja/caster/sphere/stun/proc/do_area_stun(obj/item/projectile/P)
+/datum/ammo/energy/yautja/caster/sphere/stun/proc/do_area_stun(obj/projectile/P)
 	playsound(P, 'sound/weapons/wave.ogg', 75, 1, 25)
 	for (var/mob/living/carbon/M in view(src.stun_range, get_turf(P)))
 		var/stun_time = src.stun_time
@@ -2454,7 +2454,7 @@
 			M.apply_effect(0.7, WEAKEN)
 			M.visible_message(SPAN_DANGER("[M] falls prone."))
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.status_flags & XENO_HOST)
@@ -2478,7 +2478,7 @@
 	accuracy = HIT_ACCURACY_TIER_5*2
 	max_range = 6 - 1
 
-/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/projectile/P)
 	neuro_callback.Invoke(M, effect_power, TRUE)
 
 /datum/ammo/xeno/toxin/shotgun
@@ -2503,7 +2503,7 @@
 
 	bonus_projectiles_amount = 0
 
-/*proc/neuro_flak(turf/T, obj/item/projectile/P, datum/callback/CB, power, insta_neuro, radius)
+/*proc/neuro_flak(turf/T, obj/projectile/P, datum/callback/CB, power, insta_neuro, radius)
 	if(!T) return FALSE
 	var/firer = P.firer
 	var/hit_someone = FALSE
@@ -2527,13 +2527,13 @@
 	spit_cost = 50
 	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 
-/datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M, obj/projectile/P)
 	if(isxeno(M) && isxeno(P.firer) && M:hivenumber == P.firer:hivenumber)
 		neuro_callback.Invoke(M, effect_power*1.5, TRUE)
 
 	neuro_flak(get_turf(M), P, neuro_callback, effect_power, FALSE, 1)
 
-/datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/item/projectile/P)
+/datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/projectile/P)
 	return neuro_flak(T, P, neuro_callback, effect_power, FALSE, 1)
 
 /datum/ammo/xeno/sticky
@@ -2548,16 +2548,16 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
 	max_range = 32
 
-/datum/ammo/xeno/sticky/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/xeno/sticky/on_hit_mob(mob/M,obj/projectile/P)
 	drop_resin(get_turf(P))
 
-/datum/ammo/xeno/sticky/on_hit_obj(obj/O,obj/item/projectile/P)
+/datum/ammo/xeno/sticky/on_hit_obj(obj/O,obj/projectile/P)
 	drop_resin(get_turf(P))
 
-/datum/ammo/xeno/sticky/on_hit_turf(turf/T,obj/item/projectile/P)
+/datum/ammo/xeno/sticky/on_hit_turf(turf/T,obj/projectile/P)
 	drop_resin(T)
 
-/datum/ammo/xeno/sticky/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/xeno/sticky/do_at_max_range(obj/projectile/P)
 	drop_resin(get_turf(P))
 
 /datum/ammo/xeno/sticky/proc/drop_resin(turf/T)
@@ -2590,10 +2590,10 @@
 	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_3
 
-/datum/ammo/xeno/acid/on_shield_block(mob/M, obj/item/projectile/P)
+/datum/ammo/xeno/acid/on_shield_block(mob/M, obj/projectile/P)
 	burst(M,P,damage_type)
 
-/datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
@@ -2606,7 +2606,7 @@
 	damage = 30
 	max_range = 6
 
-/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	if(. == FALSE)
 		return
@@ -2638,7 +2638,7 @@
 
 	apply_delegate = FALSE
 
-/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/M, obj/projectile/P)
 	if (!ishuman(M))
 		return
 
@@ -2668,16 +2668,16 @@
 	shell_speed = AMMO_SPEED_TIER_1
 	scatter = SCATTER_AMOUNT_TIER_10
 
-/datum/ammo/xeno/prae_skillshot/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/xeno/prae_skillshot/on_hit_mob(mob/M, obj/projectile/P)
 	acid_stacks_aoe(get_turf(P))
 
-/datum/ammo/xeno/prae_skillshot/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/xeno/prae_skillshot/on_hit_obj(obj/O, obj/projectile/P)
 	acid_stacks_aoe(get_turf(P))
 
-/datum/ammo/xeno/prae_skillshot/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/xeno/prae_skillshot/on_hit_turf(turf/T, obj/projectile/P)
 	acid_stacks_aoe(get_turf(P))
 
-/datum/ammo/xeno/prae_skillshot/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/xeno/prae_skillshot/do_at_max_range(obj/projectile/P)
 	acid_stacks_aoe(get_turf(P))
 
 /datum/ammo/xeno/prae_skillshot/proc/acid_stacks_aoe(turf/T)
@@ -2729,7 +2729,7 @@
 	smoke_system = null
 	. = ..()
 
-/datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/item/projectile/proj)
+/datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/projectile/proj)
 	if(iscarbon(moob))
 		var/mob/living/carbon/carbon = moob
 		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
@@ -2742,22 +2742,22 @@
 	to_chat(moob, SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
 	drop_nade(get_turf(proj), proj,TRUE)
 
-/datum/ammo/xeno/boiler_gas/on_hit_obj(obj/outbacksteakhouse, obj/item/projectile/proj)
+/datum/ammo/xeno/boiler_gas/on_hit_obj(obj/outbacksteakhouse, obj/projectile/proj)
 	drop_nade(get_turf(proj), proj)
 
-/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/Turf, obj/item/projectile/proj)
+/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/Turf, obj/projectile/proj)
 	if(Turf.density && isturf(proj.loc))
 		drop_nade(proj.loc, proj) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
 	else
 		drop_nade(Turf, proj)
 
-/datum/ammo/xeno/boiler_gas/do_at_max_range(obj/item/projectile/proj)
+/datum/ammo/xeno/boiler_gas/do_at_max_range(obj/projectile/proj)
 	drop_nade(get_turf(proj), proj)
 
-/datum/ammo/xeno/boiler_gas/proc/set_xeno_smoke(obj/item/projectile/proj)
+/datum/ammo/xeno/boiler_gas/proc/set_xeno_smoke(obj/projectile/proj)
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
-/datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/item/projectile/proj)
+/datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/projectile/proj)
 	var/lifetime_mult = 1.0
 	var/datum/cause_data
 	if(isboiler(proj.firer))
@@ -2776,10 +2776,10 @@
 	smokerange = 3
 
 
-/datum/ammo/xeno/boiler_gas/acid/set_xeno_smoke(obj/item/projectile/proj)
+/datum/ammo/xeno/boiler_gas/acid/set_xeno_smoke(obj/projectile/proj)
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
 
-/datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/moob, obj/item/projectile/proj)
+/datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/moob, obj/projectile/proj)
 	if(iscarbon(moob))
 		var/mob/living/carbon/carbon = moob
 		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
@@ -2807,7 +2807,7 @@
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 
-/datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
@@ -2837,7 +2837,7 @@
 	damage = 10
 	shrapnel_chance = 0
 
-/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
@@ -2858,12 +2858,12 @@
 	max_range = 4
 	accuracy = HIT_ACCURACY_TIER_MAX
 
-/datum/ammo/xeno/oppressor_tail/on_bullet_generation(obj/item/projectile/generated_projectile, mob/bullet_generator)
+/datum/ammo/xeno/oppressor_tail/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator)
 	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
 	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
 	generated_projectile.overlays += hook_overlay
 
-/datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/item/projectile/fired_proj)
+/datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/projectile/fired_proj)
 	var/mob/living/carbon/xenomorph/xeno_firer = fired_proj.firer
 	if(xeno_firer.can_not_harm(target))
 		return
@@ -2904,7 +2904,7 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	shrapnel_chance = 5
 
-/datum/ammo/bullet/shrapnel/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/bullet/shrapnel/on_hit_obj(obj/O, obj/projectile/P)
 	if(istype(O, /obj/structure/barricade))
 		var/obj/structure/barricade/B = O
 		B.health -= rand(2, 5)
@@ -2929,7 +2929,7 @@
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
 
-/datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
 
@@ -3015,7 +3015,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 	accuracy = HIT_ACCURACY_TIER_MAX
 
-/datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/projectile/P)
 	if(isxeno(M))
 		M.apply_effect(0.4, SLOW)
 
@@ -3077,16 +3077,16 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/flamethrower/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/flamethrower/on_hit_mob(mob/M, obj/projectile/P)
 	drop_flame(get_turf(M), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/on_hit_obj(obj/O, obj/item/projectile/P)
+/datum/ammo/flamethrower/on_hit_obj(obj/O, obj/projectile/P)
 	drop_flame(get_turf(O), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/flamethrower/on_hit_turf(turf/T, obj/projectile/P)
 	drop_flame(T, P.weapon_cause_data)
 
-/datum/ammo/flamethrower/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/flamethrower/do_at_max_range(obj/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/flamethrower/tank_flamer
@@ -3157,22 +3157,22 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/flare/on_hit_mob(mob/M,obj/projectile/P)
 	drop_flare(get_turf(M), P, P.firer)
 
-/datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
+/datum/ammo/flare/on_hit_obj(obj/O,obj/projectile/P)
 	drop_flare(get_turf(P), P, P.firer)
 
-/datum/ammo/flare/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/flare/on_hit_turf(turf/T, obj/projectile/P)
 	if(T.density && isturf(P.loc))
 		drop_flare(P.loc, P, P.firer)
 	else
 		drop_flare(T, P, P.firer)
 
-/datum/ammo/flare/do_at_max_range(obj/item/projectile/P, mob/firer)
+/datum/ammo/flare/do_at_max_range(obj/projectile/P, mob/firer)
 	drop_flare(get_turf(P), P, P.firer)
 
-/datum/ammo/flare/proc/drop_flare(turf/T, obj/item/projectile/fired_projectile, mob/firer)
+/datum/ammo/flare/proc/drop_flare(turf/T, obj/projectile/fired_projectile, mob/firer)
 	var/obj/item/device/flashlight/flare/G = new flare_type(T)
 	var/matrix/rotation = matrix()
 	rotation.Turn(fired_projectile.angle - 90)
@@ -3186,7 +3186,7 @@
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
 	handful_type = /obj/item/device/flashlight/flare/signal
 
-/datum/ammo/flare/signal/drop_flare(turf/T, obj/item/projectile/fired_projectile, mob/firer)
+/datum/ammo/flare/signal/drop_flare(turf/T, obj/projectile/fired_projectile, mob/firer)
 	var/obj/item/device/flashlight/flare/signal/gun/signal_flare = ..()
 	signal_flare.activate_signal(firer)
 	if(istype(fired_projectile.shot_from, /obj/item/weapon/gun/flare))
@@ -3224,7 +3224,7 @@
 		if(istype(target_organ))
 			target_organ.embed(new can_type)
 
-/datum/ammo/souto/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/souto/on_hit_mob(mob/M, obj/projectile/P)
 	if(!M || M == P.firer) return
 	if(M.throw_mode && !M.get_active_hand()) //empty active hand and we're in throw mode. If so we catch the can.
 		if(!M.is_mob_incapacitated()) // People who are not able to catch cannot catch.
@@ -3245,25 +3245,25 @@
 		if(P.contents.len)
 			drop_can(P.loc, P) //We make a can at the location.
 
-/datum/ammo/souto/on_hit_obj(obj/O,obj/item/projectile/P)
+/datum/ammo/souto/on_hit_obj(obj/O,obj/projectile/P)
 	drop_can(P.loc, P) //We make a can at the location.
 
-/datum/ammo/souto/on_hit_turf(turf/T, obj/item/projectile/P)
+/datum/ammo/souto/on_hit_turf(turf/T, obj/projectile/P)
 	drop_can(P.loc, P) //We make a can at the location.
 
-/datum/ammo/souto/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/souto/do_at_max_range(obj/projectile/P)
 	drop_can(P.loc, P) //We make a can at the location.
 
-/datum/ammo/souto/on_shield_block(mob/M, obj/item/projectile/P)
+/datum/ammo/souto/on_shield_block(mob/M, obj/projectile/P)
 	drop_can(P.loc, P) //We make a can at the location.
 
-/datum/ammo/souto/proc/drop_can(loc, obj/item/projectile/P)
+/datum/ammo/souto/proc/drop_can(loc, obj/projectile/P)
 	if(P.contents.len)
 		for(var/obj/item/I in P.contents)
 			I.forceMove(loc)
 	randomize_projectile(P)
 
-/datum/ammo/souto/proc/randomize_projectile(obj/item/projectile/P)
+/datum/ammo/souto/proc/randomize_projectile(obj/projectile/P)
 	shrapnel_type = pick(typesof(/obj/item/reagent_container/food/drinks/cans/souto)-/obj/item/reagent_container/food/drinks/cans/souto)
 
 /datum/ammo/grenade_container
@@ -3278,19 +3278,19 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 6
 
-/datum/ammo/grenade_container/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/grenade_container/on_hit_mob(mob/M,obj/projectile/P)
 	drop_nade(P)
 
-/datum/ammo/grenade_container/on_hit_obj(obj/O,obj/item/projectile/P)
+/datum/ammo/grenade_container/on_hit_obj(obj/O,obj/projectile/P)
 	drop_nade(P)
 
-/datum/ammo/grenade_container/on_hit_turf(turf/T,obj/item/projectile/P)
+/datum/ammo/grenade_container/on_hit_turf(turf/T,obj/projectile/P)
 	drop_nade(P)
 
-/datum/ammo/grenade_container/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/grenade_container/do_at_max_range(obj/projectile/P)
 	drop_nade(P)
 
-/datum/ammo/grenade_container/proc/drop_nade(obj/item/projectile/P)
+/datum/ammo/grenade_container/proc/drop_nade(obj/projectile/P)
 	var/turf/T = get_turf(P)
 	var/obj/item/explosive/grenade/G = new nade_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] lands on [T]!"))
@@ -3317,16 +3317,16 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 6
 
-/datum/ammo/hugger_container/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/hugger_container/on_hit_mob(mob/M,obj/projectile/P)
 	spawn_hugger(get_turf(P))
 
-/datum/ammo/hugger_container/on_hit_obj(obj/O,obj/item/projectile/P)
+/datum/ammo/hugger_container/on_hit_obj(obj/O,obj/projectile/P)
 	spawn_hugger(get_turf(P))
 
-/datum/ammo/hugger_container/on_hit_turf(turf/T,obj/item/projectile/P)
+/datum/ammo/hugger_container/on_hit_turf(turf/T,obj/projectile/P)
 	spawn_hugger(get_turf(P))
 
-/datum/ammo/hugger_container/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/hugger_container/do_at_max_range(obj/projectile/P)
 	spawn_hugger(get_turf(P))
 
 /datum/ammo/hugger_container/proc/spawn_hugger(turf/T)

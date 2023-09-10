@@ -331,7 +331,7 @@
 		if(SUBTLE_MESSAGE_IN_HEAD)
 			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [input]")
 		else
-			message = SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
+			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
 
 	for(var/mob/living/carbon/human/mob in view(usr.client))
 		if(message_option == SUBTLE_MESSAGE_IN_HEAD)

@@ -193,13 +193,19 @@
 // If you're still confused, scroll aaaall the way down to the bottom of the file.
 // that's /obj/effect/alien/weeds/node/Destroy().
 /obj/effect/alien/weeds/proc/avoid_orphanage()
-	for(var/obj/effect/alien/weeds/node/N in orange(node_range, get_turf(src)))
-		// WE FOUND A NEW MOMMY
-		N.add_child(src)
-		break
+	if (weed_strength >= WEED_LEVEL_HIVE)
+		for(var/obj/effect/alien/weeds/node/pylon/N in orange(node_range, get_turf(src)))
+			// A pylon, cluster or core was nearby to support the hive weed
+			N.add_child(src)
+			break
+	else
+		for(var/obj/effect/alien/weeds/node/N in orange(node_range, get_turf(src)))
+			// WE FOUND A NEW MOMMY
+			N.add_child(src)
+			break
 
 	// NO MORE FOOD ON THE TABLE. WE DIE
-	if(!parent || weed_strength > WEED_LEVEL_STANDARD)
+	if(!parent)
 		qdel(src)
 
 /obj/effect/alien/weeds/proc/weed_expand()

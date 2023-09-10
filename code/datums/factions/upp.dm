@@ -25,9 +25,19 @@
 			hud_icon_state = "lt"
 		if(JOB_UPP_SRLT_OFFICER)
 			hud_icon_state = "slt"
-		if(JOB_UPP_MAY_OFFICER)
+		if(JOB_UPP_KPT_OFFICER)
 			hud_icon_state = "may"
+		if(JOB_UPP_MAY_OFFICER)
+			hud_icon_state = "kol"
+		if(JOB_UPP_LTKOL_OFFICER)
+			hud_icon_state = "kol"
 		if(JOB_UPP_KOL_OFFICER)
+			hud_icon_state = "kol"
+		if(JOB_UPP_MAY_GENERAL)
+			hud_icon_state = "kol"
+		if(JOB_UPP_LT_GENERAL)
+			hud_icon_state = "kol"
+		if(JOB_UPP_GENERAL)
 			hud_icon_state = "kol"
 		if(JOB_UPP_COMBAT_SYNTH)
 			hud_icon_state = "synth"

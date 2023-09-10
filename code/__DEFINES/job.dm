@@ -257,7 +257,11 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_UPP_SRLT_OFFICER "UPP Senior Leytenant"
 #define JOB_UPP_KPT_OFFICER "UPP Kapitan"
 #define JOB_UPP_MAY_OFFICER "UPP Mayjor"
+#define JOB_UPP_LTKOL_OFFICER "UPP Leytenant Kolonel"
 #define JOB_UPP_KOL_OFFICER "UPP Kolonel"
+#define JOB_UPP_MAY_GENERAL "UPP Mayjor General"
+#define JOB_UPP_LT_GENERAL "UPP Leytenant General"
+#define JOB_UPP_GENERAL "UPP Army General"
 
 #define JOB_UPP_COMBAT_SYNTH "UPP Combat Synthetic"
 

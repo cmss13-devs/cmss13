@@ -1,5 +1,0 @@
-author: "TeDGamer"
-delete-after: True
-changes:
-  - balance: "Huggers and larvas are slightly harder to hit"
-  - code_imp: "Replace some w_class magic numbers with defines"

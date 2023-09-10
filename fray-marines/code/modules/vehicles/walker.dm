@@ -77,22 +77,24 @@
 		var/image/occupied = image(icon, icon_state = "mech-face")
 		overlays += occupied
 
-/obj/vehicle/walker/examine(mob/user)
-	..()
+/obj/vehicle/walker/get_examine_text(mob/user)
+	. = ..()
 	var/integrity = round(health/maxHealth*100)
 	switch(integrity)
 		if(85 to 100)
-			to_chat(usr, "It's fully intact.")
+			. += "\nIt's fully intact."
 		if(65 to 85)
-			to_chat(usr, "It's slightly damaged.")
+			. += "\nIt's slightly damaged."
 		if(45 to 65)
-			to_chat(usr, "It's badly damaged.")
+			. += "\nIt's badly damaged."
 		if(25 to 45)
-			to_chat(usr, "It's heavily damaged.")
+			. += "\nIt's heavily damaged."
 		else
-			to_chat(usr, "It's falling apart.")
-	to_chat(usr, "[left ? left.name : "Nothing"] is placed on its left hardpoint.")
-	to_chat(usr, "[right ? right.name : "Nothing"] is placed on its right hardpoint.")
+			. += "\nIt's falling apart."
+	. += "\n[left ? left.name : "Nothing"] is placed on its left hardpoint."
+	. += "\n[right ? right.name : "Nothing"] is placed on its right hardpoint."
+
+	return .
 
 /obj/vehicle/walker/ex_act(severity)
 	switch(severity)
@@ -365,6 +367,10 @@
 
 /obj/vehicle/walker/handle_click(mob/living/user, atom/A, list/mods)
 	if(!firing_arc(A))
+		var/newDir = get_cardinal_dir(src, A)
+		l_move_time = world.time
+		dir = newDir
+		pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
 		return
 	if(selected)
 		if(!left)

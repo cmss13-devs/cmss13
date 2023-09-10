@@ -15,7 +15,7 @@
 	indestructible = TRUE
 
 	throw_range = 3
-	attack_speed = 14
+	attack_speed = 12
 
 	var/speed_penalty = 0.7
 	var/retrieval_slot = WEAR_WAIST

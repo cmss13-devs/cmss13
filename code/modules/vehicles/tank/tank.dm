@@ -39,6 +39,7 @@
 	// Rest (all the guns) is handled by the tank turret hardpoint
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/holder/tank_turret,
+		/obj/item/hardpoint/holder/tank_turret/flares,
 		/obj/item/hardpoint/support/weapons_sensor,
 		/obj/item/hardpoint/support/overdrive_enhancer,
 		/obj/item/hardpoint/support/artillery_module,

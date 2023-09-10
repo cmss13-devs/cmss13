@@ -111,6 +111,10 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/east_reactor)
+"acC" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "acD" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat,
@@ -196,6 +200,14 @@
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
 	},
+/area/lv522/indoors/c_block/mining)
+"afa" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "afn" = (
 /obj/item/reagent_container/spray/cleaner/drone{
@@ -563,6 +575,10 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"aos" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "aox" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat{
@@ -804,6 +820,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
+/obj/vehicle/train/cargo/trolley,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "awI" = (
@@ -855,6 +872,16 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/reactor_garage)
+"ayf" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/vehicle/train/cargo/trolley,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "ayn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1281,6 +1308,10 @@
 	icon_state = "darkbrownfull2"
 	},
 /area/lv522/landing_zone_2)
+"aKE" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "aKK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2109,6 +2140,10 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/east_reactor/north)
+"bgw" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "bgJ" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "Sec-Kitchen-Lockdown";
@@ -2618,6 +2653,15 @@
 	icon_state = "squares"
 	},
 /area/lv522/atmos/east_reactor)
+"byb" = (
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "bye" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -3424,6 +3468,18 @@
 	icon_state = "greenfull"
 	},
 /area/lv522/indoors/b_block/bridge)
+"bQP" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "bRN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -3637,6 +3693,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/w_rockies)
+"bWv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/mining)
 "bWA" = (
 /obj/structure/prop/ice_colony/flamingo{
 	dir = 4;
@@ -3713,7 +3773,8 @@
 /area/lv522/outdoors/colony_streets/central_streets)
 "bXU" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
+	dir = 2;
+	name = "\improper B-Block Bar"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -3903,6 +3964,11 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/atmos/sewer)
+"cbb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "cbn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -4081,7 +4147,9 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "cgG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper C-Block - Cargo Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -5259,6 +5327,11 @@
 	icon_state = "brown"
 	},
 /area/lv522/oob)
+"cJc" = (
+/obj/item/prop/colony/used_flare,
+/obj/structure/cargo_container/wy/right,
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "cJg" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt/cement{
@@ -6339,7 +6412,7 @@
 /obj/structure/surface/rack,
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/close,
-/obj/item/stack/sandbags_empty/small_stack,
+/obj/item/stack/sheet/cardboard/full_stack,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
 	},
@@ -6716,7 +6789,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/structure/largecrate/random,
+/obj/structure/closet/emcloset,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -6821,7 +6894,8 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "dlM" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper B-Block - Hydroponics Airlock"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -7222,7 +7296,7 @@
 "dtl" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Canteen";
+	name = "\improper A-Block Canteen Airlock";
 	welded = 1
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -7737,7 +7811,9 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "dFE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block - Colony Operations Centre Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -8054,7 +8130,8 @@
 /area/lv522/indoors/a_block/kitchen/damage)
 "dMo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper B-Block - Hydroponics Airlock"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "LV_522_Hydro-Lockdown";
@@ -8383,6 +8460,11 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/east_reactor/east)
+"dSJ" = (
+/obj/structure/largecrate/random/secure,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "dSW" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	dir = 1;
@@ -8440,7 +8522,7 @@
 "dUr" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Westlock";
+	name = "\improper A-Block Dorms And Office Airlock";
 	welded = 1
 	},
 /turf/open/floor/corsat{
@@ -9662,6 +9744,7 @@
 /obj/structure/platform_decoration{
 	dir = 8
 	},
+/obj/item/stack/sheet/wood,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "esB" = (
@@ -10517,6 +10600,14 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
+"eLK" = (
+/obj/structure/tunnel/maint_tunnel{
+	pixel_y = 6
+	},
+/obj/structure/machinery/light/small,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "eLN" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -10874,10 +10965,6 @@
 	},
 /obj/structure/platform{
 	dir = 8
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "UD6 East";
-	indestructible = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -11260,10 +11347,6 @@
 "fbY" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "UD6 East";
-	indestructible = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -11696,7 +11779,8 @@
 /area/lv522/indoors/a_block/security)
 "fmg" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper A-Block Corporate Office Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -11912,7 +11996,9 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "frc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Security Airlock"
+	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "Sec-Kitchen-Lockdown";
@@ -13306,7 +13392,7 @@
 "fTK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Corporation Dome";
+	name = "\improper A-Block Corporate Office Airlock";
 	req_access_txt = "100"
 	},
 /turf/open/floor/corsat{
@@ -14501,6 +14587,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
+"gsn" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/vehicle/train/cargo/engine,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "gsM" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -14702,12 +14795,28 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/fitness)
+"gvU" = (
+/obj/structure/prop/invuln/minecart_tracks,
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ore/slag,
+/obj/item/ore/slag,
+/obj/item/ore/slag,
+/obj/item/ore/slag,
+/turf/open/floor/prison,
+/area/lv522/indoors/c_block/mining)
 "gwb" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/corpo)
 "gwg" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper B-Block - Hydroponics Airlock"
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "LV_522_Hydro-Lockdown";
 	name = "\improper Storm Shutters"
@@ -15491,7 +15600,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "gLw" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Security Airlock"
+	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Sec-Corpo-Bridge-Lockdown"
@@ -15575,6 +15686,11 @@
 	icon_state = "cement9"
 	},
 /area/lv522/outdoors/colony_streets/south_west_street)
+"gMT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/alien/hugger,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "gMV" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -15791,7 +15907,7 @@
 /area/lv522/indoors/c_block/cargo)
 "gRi" = (
 /obj/structure/closet/crate,
-/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/medium_stack,
 /obj/item/ore/uranium,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -16467,6 +16583,7 @@
 /area/lv522/atmos/east_reactor/east)
 "hbO" = (
 /obj/structure/largecrate/random/case/small,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "hcv" = (
@@ -16499,6 +16616,7 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "hcO" = (
@@ -17161,7 +17279,6 @@
 /area/lv522/atmos/west_reactor)
 "hnG" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Corporation Dome";
 	req_access_txt = "100"
 	},
 /turf/open/floor/corsat{
@@ -17170,7 +17287,8 @@
 /area/lv522/atmos/way_in_command_centre)
 "hnX" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
+	dir = 2;
+	name = "\improper A-Block Dorms And Office Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -17275,7 +17393,7 @@
 "hpO" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Engineering Hut"
+	name = "\improper Emergency Engineering"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -18590,7 +18708,8 @@
 /area/lv522/atmos/way_in_command_centre)
 "hPT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
+	dir = 2;
+	name = "\improper A-Block - Colony Operations Centre Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -20139,6 +20258,7 @@
 /area/lv522/indoors/a_block/admin)
 "iuQ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper C-Block - Cargo Airlock";
 	welded = 1
 	},
 /turf/open/floor/corsat{
@@ -20463,7 +20583,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "iBd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper C-Block - Garage Airlock"
+	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -20613,6 +20735,13 @@
 	icon_state = "floor_marked"
 	},
 /area/lv522/atmos/cargo_intake)
+"iFe" = (
+/obj/structure/closet/crate,
+/obj/item/weapon/stunprod,
+/turf/open/floor/prison{
+	icon_state = "darkbrownfull2"
+	},
+/area/lv522/landing_zone_2)
 "iFk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -21898,7 +22027,9 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "jdI" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper C-Block - Radio Tower Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -22219,7 +22350,7 @@
 /area/lv522/atmos/cargo_intake)
 "jjc" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Greenhouse Storage"
+	name = "\improper Electronics Storage"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -22647,6 +22778,9 @@
 /area/lv522/indoors/a_block/fitness)
 "jpb" = (
 /obj/structure/closet/crate,
+/obj/item/storage/pouch/shotgun/large/slug,
+/obj/item/storage/pouch/general/large/m39ap,
+/obj/item/storage/pouch/flamertank,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_2)
 "jpc" = (
@@ -22712,7 +22846,7 @@
 /area/lv522/landing_zone_1)
 "jqV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Corporation Dome";
+	name = "\improper A-Block Corporate Office Airlock";
 	req_access_txt = "100"
 	},
 /turf/open/floor/corsat{
@@ -22993,6 +23127,7 @@
 /area/lv522/indoors/c_block/cargo)
 "jwO" = (
 /obj/structure/largecrate/random/barrel/blue,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "jwT" = (
@@ -23897,15 +24032,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
-"jNk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Westlock"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/dorms)
 "jNv" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata{
@@ -24006,7 +24132,9 @@
 /turf/open/floor/plating,
 /area/lv522/oob)
 "jPd" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper B-Block - Hydroponics Airlock"
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
 	id = "LV_522_Hydro-Lockdown";
@@ -24854,7 +24982,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "kfa" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Colony Marshals"
+	name = "\improper A-Block Security Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -27507,7 +27635,8 @@
 /area/lv522/indoors/a_block/admin)
 "laB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper A-Block - Colony Operations Centre Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -27825,6 +27954,10 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/cargo_intake)
+"lgR" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "lgY" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -27994,6 +28127,7 @@
 /area/lv522/atmos/cargo_intake)
 "lkr" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper C-Block - Casino Airlock";
 	welded = 1
 	},
 /turf/open/floor/corsat{
@@ -28435,14 +28569,6 @@
 	dir = 6
 	},
 /turf/open/floor/prison,
-/area/lv522/indoors/a_block/dorms)
-"ltI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Westlock"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
 /area/lv522/indoors/a_block/dorms)
 "lui" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -29055,6 +29181,16 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/filt)
+"lFM" = (
+/obj/structure/prop/invuln/pipe_water{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "lFO" = (
 /obj/item/storage/backpack/marine/satchel{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
@@ -29307,10 +29443,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "lKH" = (
-/obj/structure/machinery/colony_floodlight{
-	layer = 4.3;
-	pixel_y = 9
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -29706,7 +29839,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
 "lUy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Shared Dorms Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -30216,7 +30351,8 @@
 /area/lv522/indoors/a_block/fitness)
 "mfS" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper C-Block - Casino Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -30328,7 +30464,7 @@
 /area/lv522/outdoors/colony_streets/south_east_street)
 "mji" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Corporation Dome";
+	name = "\improper A-Block Corporate Office Airlock";
 	req_access_txt = "100"
 	},
 /turf/open/floor/corsat{
@@ -30448,7 +30584,9 @@
 	},
 /area/lv522/indoors/a_block/security)
 "mkT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Security Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -31092,6 +31230,11 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/outdoors/colony_streets/south_west_street)
+"mwn" = (
+/obj/structure/largecrate/random/barrel/white,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/mining)
 "mwp" = (
 /obj/effect/spawner/random/tool,
 /turf/open/auto_turf/sand_white/layer0,
@@ -31429,6 +31572,14 @@
 	icon_state = "darkpurplefull2"
 	},
 /area/lv522/indoors/a_block/dorms/glass)
+"mEn" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal/medium_stack,
+/turf/open/floor/prison{
+	icon_state = "darkbrownfull2"
+	},
+/area/lv522/indoors/c_block/garage)
 "mEp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -32084,6 +32235,7 @@
 /area/lv522/indoors/a_block/dorms)
 "mPQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Dorms And Office Airlock";
 	welded = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -32097,6 +32249,11 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms/glass)
+"mPV" = (
+/obj/structure/largecrate/random/barrel,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "mPY" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
@@ -33150,6 +33307,11 @@
 	icon_state = "greenfull"
 	},
 /area/lv522/indoors/a_block/fitness)
+"nkm" = (
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "nkt" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
@@ -33304,7 +33466,7 @@
 "nmL" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Kitchen"
+	name = "\improper A-Block Kitchen Airlock"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -33767,7 +33929,9 @@
 /area/lv522/indoors/a_block/security)
 "nue" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper B-Block - Hydroponics Airlock"
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "LV_522_Hydro-Lockdown";
 	name = "\improper Storm Shutters"
@@ -34211,7 +34375,9 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "nFQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper B-Block - Hydroponics Airlock"
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "LV_522_Hydro-Lockdown";
 	name = "\improper Storm Shutters"
@@ -35025,6 +35191,7 @@
 	pixel_y = 6
 	},
 /obj/structure/largecrate/random/case/small,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "nUO" = (
@@ -35232,7 +35399,8 @@
 /area/lv522/indoors/c_block/garage)
 "nXI" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper B-Block - Hydroponics Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -35371,7 +35539,7 @@
 /area/lv522/indoors/a_block/fitness)
 "nZx" = (
 /obj/structure/closet/crate,
-/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/item/stack/sheet/plasteel/small_stack,
 /obj/item/ore/uranium,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -35815,10 +35983,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "oik" = (
-/obj/structure/machinery/colony_floodlight{
-	layer = 4.3;
-	pixel_y = 9
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -36025,6 +36190,13 @@
 	icon_state = "blue_plate"
 	},
 /area/lv522/indoors/a_block/hallway)
+"omv" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "omG" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp{
@@ -36376,10 +36548,7 @@
 	},
 /area/lv522/atmos/sewer)
 "otC" = (
-/obj/structure/machinery/colony_floodlight{
-	layer = 4.3;
-	pixel_y = 9
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -36449,6 +36618,10 @@
 	},
 /turf/open/gm/river,
 /area/lv522/outdoors/colony_streets/south_street)
+"ous" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "ouv" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/machinery/camera/autoname,
@@ -36840,6 +37013,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
+/obj/structure/closet/firecloset/full,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "oDj" = (
@@ -37854,7 +38028,7 @@
 /area/lv522/indoors/a_block/admin)
 "oXV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Greenhouse Storage"
+	name = "\improper Electronics Storage"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -38961,7 +39135,9 @@
 /area/lv522/atmos/east_reactor/south)
 "pvE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper C-Block - Cargo Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -39074,6 +39250,15 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
+"pxp" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Dorms And Office Airlock"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/indoors/a_block/dorms)
 "pxN" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison{
@@ -39406,7 +39591,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper A-Block Fitness Centre Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -39830,7 +40017,7 @@
 "pLN" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
-	name = "Medical Airlock"
+	name = "\improper A-Block - Colony Medical Centre Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -39865,6 +40052,7 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
+/obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "pMd" = (
@@ -39899,7 +40087,7 @@
 "pMt" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
-	name = "Medical Airlock"
+	name = "\improper A-Block - Colony Medical Centre Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -40200,9 +40388,14 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/cargo_intake)
+"pSh" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "pSj" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper B-Block - Hydroponics Airlock"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -40735,7 +40928,8 @@
 /area/lv522/outdoors/colony_streets/central_streets)
 "qbL" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper A-Block Dorms And Office Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -42101,6 +42295,10 @@
 /obj/item/trash/plate,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
+"qBH" = (
+/obj/structure/cargo_container/wy/left,
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "qBQ" = (
 /obj/structure/prop/invuln/ice_prefab/standalone/trim{
 	icon_state = "white_trim"
@@ -42903,7 +43101,9 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "qPS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Corporate Office Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -44260,6 +44460,7 @@
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "rlE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Security Airlock";
 	welded = 1
 	},
 /turf/open/floor/corsat{
@@ -44419,6 +44620,10 @@
 	icon_state = "cement12"
 	},
 /area/lv522/landing_zone_1)
+"rnX" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "rod" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
@@ -45079,10 +45284,6 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "UD6 East";
-	indestructible = 1
-	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "rAu" = (
@@ -45264,10 +45465,7 @@
 	},
 /area/lv522/indoors/c_block/t_comm)
 "rEo" = (
-/obj/structure/machinery/colony_floodlight{
-	layer = 4.3;
-	pixel_y = 9
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -45470,7 +45668,9 @@
 	},
 /area/lv522/outdoors/colony_streets/south_west_street)
 "rJz" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper A-Block Fitness Centre Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -45890,6 +46090,7 @@
 /area/lv522/indoors/b_block/bar)
 "rRc" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper C-Block - Cargo Airlock";
 	welded = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -46122,6 +46323,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
+"rUJ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper A-Block Security Airlock"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "Sec-Kitchen-Lockdown";
+	name = "\improper Storm Shutters"
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/indoors/a_block/kitchen)
 "rUX" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4;
@@ -46967,6 +47182,7 @@
 "skn" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
+	name = "\improper A-Block Dorms And Office Airlock";
 	welded = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -46988,7 +47204,8 @@
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "skQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper A-Block Fitness Centre Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -47565,7 +47782,8 @@
 /area/lv522/atmos/east_reactor)
 "swf" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper C-Block - Cargo Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -48432,8 +48650,8 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "sLT" = (
-/obj/structure/largecrate/random/case,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "sLU" = (
@@ -49712,6 +49930,13 @@
 	icon_state = "cement1"
 	},
 /area/lv522/landing_zone_2)
+"tkC" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/vehicle/powerloader,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "tkL" = (
 /obj/structure/prop/server_equipment/yutani_server{
 	density = 0;
@@ -49785,7 +50010,9 @@
 	},
 /area/lv522/outdoors/colony_streets/north_street)
 "tlM" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper C-Block - Garage Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -49818,6 +50045,7 @@
 /area/lv522/indoors/a_block/fitness)
 "tms" = (
 /obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "tmy" = (
@@ -49831,6 +50059,7 @@
 /area/lv522/indoors/b_block/bridge)
 "tmA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper B-Block - Hydroponics Airlock";
 	welded = 1
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -50056,7 +50285,9 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "tqG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block - Colony Operations Centre Airlock"
+	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 1
 	},
@@ -50625,15 +50856,6 @@
 	icon_state = "whitegreenfull"
 	},
 /area/lv522/indoors/a_block/fitness)
-"tBT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Eastlock"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/hallway)
 "tCa" = (
 /obj/item/trash/uscm_mre{
 	pixel_x = 10;
@@ -50695,7 +50917,8 @@
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "tDq" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper A-Block Fitness Centre Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -50864,6 +51087,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv522/indoors/c_block/casino)
+"tFC" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "tFZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
@@ -50898,7 +51127,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "tGm" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Corporate Liason"
+	name = "\improper Corporate Liason Office "
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -51463,7 +51692,7 @@
 "tQE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Canteen"
+	name = "\improper A-Block Canteen Airlock"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -51487,6 +51716,10 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/bridges)
+"tRu" = (
+/obj/structure/cargo_container/wy/mid,
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "tRI" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/wooden_tv{
@@ -51810,6 +52043,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/largecrate/random/barrel,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "tXW" = (
@@ -52642,7 +52876,8 @@
 /area/lv522/indoors/c_block/cargo)
 "unE" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
+	dir = 2;
+	name = "\improper A-Block - Colony Operations Centre Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -53467,6 +53702,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/b_block/bridge)
+"uEj" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "uEl" = (
 /obj/structure/machinery/conveyor{
 	dir = 10;
@@ -53889,6 +54131,11 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/kitchen/glass)
+"uKk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "uKw" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -54396,7 +54643,7 @@
 "uSI" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Corporate Liason"
+	name = "\improper A-Block Corporate Office Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -54995,6 +55242,10 @@
 	icon_state = "darkbrownfull2"
 	},
 /area/lv522/indoors/c_block/cargo)
+"veA" = (
+/obj/structure/largecrate/random/case,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "veD" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
@@ -55176,7 +55427,7 @@
 "vil" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Marshals"
+	name = "\improper A-Block Security Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -55441,7 +55692,9 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "vmp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper C-Block - Casino Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -55522,7 +55775,8 @@
 /area/lv522/indoors/a_block/bridges/op_centre)
 "vnB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper A-Block Corporate Office Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -55937,6 +56191,12 @@
 	icon_state = "marked"
 	},
 /area/lv522/landing_zone_1/ceiling)
+"vuF" = (
+/obj/vehicle/powerloader,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
 "vuH" = (
 /obj/structure/largecrate,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -56002,6 +56262,13 @@
 	icon_state = "blue_plate"
 	},
 /area/lv522/indoors/a_block/admin)
+"vwW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "vxa" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/under/colonist,
@@ -56072,7 +56339,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "vxT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block - Colony Operations Centre Airlock"
+	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 1
 	},
@@ -56099,7 +56368,8 @@
 /area/lv522/indoors/a_block/medical)
 "vyk" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper C-Block - Cargo Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -56201,7 +56471,8 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "vzE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper B-Block Bar"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -56332,8 +56603,7 @@
 /area/lv522/indoors/c_block/garage)
 "vCv" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Dormitories";
-	welded = null
+	name = "\improper A-Block Shared Dorms Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -56532,7 +56802,9 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "vFS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Fitness Centre Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -56818,7 +57090,9 @@
 "vKm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper B-Block - Hydroponics Airlock"
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "LV_522_Hydro-Lockdown";
 	name = "\improper Storm Shutters"
@@ -56924,7 +57198,9 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "vLW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper C-Block - Cargo Airlock"
+	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -57077,7 +57353,7 @@
 "vOR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Corporation Office";
+	name = "\improper A-Block Corporate Office Airlock";
 	req_access_txt = "100"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -57152,7 +57428,7 @@
 "vPA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Corporation Office";
+	name = "\improper A-Block Corporate Office Airlock";
 	req_access_txt = "100"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -57510,6 +57786,7 @@
 "vWp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
+	name = "\improper C-Block - Casino Airlock";
 	welded = 1
 	},
 /turf/open/floor/corsat{
@@ -59342,6 +59619,16 @@
 /area/lv522/indoors/c_block/cargo)
 "wFC" = (
 /obj/structure/largecrate/random/secure,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/mining)
+"wFL" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "wFP" = (
@@ -59684,6 +59971,15 @@
 	icon_state = "darkyellowfull2"
 	},
 /area/lv522/indoors/lone_buildings/engineering)
+"wOq" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper C-Block - Garage Airlock"
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/indoors/c_block/bridge)
 "wOu" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -59716,8 +60012,7 @@
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "wPA" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Dormitories";
-	welded = null
+	name = "\improper A-Block Shared Dorms Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -59859,7 +60154,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen/glass)
 "wSz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block - Colony Operations Centre Airlock"
+	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "LV522CIC_1";
@@ -61108,7 +61405,9 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
 "xsi" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper C-Block - Garage Airlock"
+	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -61329,6 +61628,7 @@
 	pixel_y = 6
 	},
 /obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "xxJ" = (
@@ -61807,7 +62107,10 @@
 	pixel_y = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal/small_stack,
+/obj/item/ore/slag,
+/obj/item/ore/slag,
+/obj/item/ore/slag,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "xHr" = (
@@ -62095,7 +62398,8 @@
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "xNw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper A-Block - Colony Operations Centre Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -62377,7 +62681,9 @@
 	},
 /area/lv522/indoors/a_block/dorms/glass)
 "xRI" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper C-Block - Radio Tower Airlock"
+	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -63217,7 +63523,9 @@
 	},
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "ygJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block Dorms And Office Airlock"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -70745,7 +71053,7 @@ nLm
 nLm
 nLm
 eBA
-jNk
+qbL
 nLm
 nLm
 nLm
@@ -71421,7 +71729,7 @@ clY
 sjY
 sjY
 oNQ
-ltI
+ygJ
 vJT
 uOs
 tUM
@@ -71430,7 +71738,7 @@ uOs
 tUM
 uOs
 kcS
-ltI
+ygJ
 spo
 yiM
 yiM
@@ -74012,10 +74320,10 @@ kEl
 peM
 jba
 bPJ
-mJs
+ayf
+aKE
 wfP
-wfP
-jJF
+cbb
 sLT
 bPJ
 cpy
@@ -74240,10 +74548,10 @@ hTe
 jFl
 aQH
 mJs
+ous
 wfP
 wfP
-wfP
-jJF
+uKk
 bPJ
 bPJ
 cpy
@@ -74468,10 +74776,10 @@ sHd
 bPJ
 eeb
 wfP
+bgw
 wfP
 wfP
-wfP
-wfP
+pSh
 bPJ
 bPJ
 cpy
@@ -74607,7 +74915,7 @@ esa
 qvJ
 jDJ
 osU
-doq
+pxp
 enP
 dnM
 dnM
@@ -74694,7 +75002,7 @@ bPJ
 bPJ
 bPJ
 bPJ
-wfP
+veA
 wfP
 wfP
 wfP
@@ -74925,7 +75233,7 @@ qxf
 wfP
 wfP
 wfP
-wfP
+aKE
 sRM
 bPJ
 cpy
@@ -75376,10 +75684,10 @@ cpy
 cpy
 bPJ
 bPJ
+nkm
 wfP
 wfP
-wfP
-jJF
+vwW
 wfP
 bPJ
 cpy
@@ -75604,9 +75912,9 @@ cpy
 cpy
 bPJ
 bPJ
-wfP
-wfP
-wfP
+bQP
+omv
+lFM
 bPJ
 bPJ
 cpy
@@ -76060,7 +76368,7 @@ cpy
 bPJ
 bPJ
 wfP
-wfP
+bgw
 bPJ
 bPJ
 cpy
@@ -76288,7 +76596,7 @@ cpy
 bPJ
 wfP
 wfP
-wfP
+bgw
 bPJ
 cpy
 bMX
@@ -76513,7 +76821,7 @@ cpy
 cpy
 cpy
 bPJ
-jJF
+gMT
 wfP
 fvn
 bPJ
@@ -77194,7 +77502,7 @@ max
 osN
 bPJ
 oeN
-bLA
+byb
 wfP
 hiL
 bPJ
@@ -77421,7 +77729,7 @@ max
 osN
 bPJ
 awm
-wfP
+tFC
 wfP
 wfP
 bPJ
@@ -77647,8 +77955,8 @@ max
 max
 osN
 aQH
-awm
-wfP
+gsn
+tFC
 wfP
 bPJ
 bPJ
@@ -77785,7 +78093,7 @@ qDR
 dnM
 sPk
 pxS
-doq
+pxp
 fqD
 oFr
 lOi
@@ -77877,7 +78185,7 @@ bPJ
 cLB
 esx
 wfP
-iGD
+eLK
 bPJ
 cpy
 bMX
@@ -78102,7 +78410,7 @@ pAj
 fnA
 bPJ
 bPJ
-fCb
+uEj
 jJF
 bPJ
 bPJ
@@ -78784,7 +79092,7 @@ cpy
 cpy
 bPJ
 wfP
-wfP
+pSh
 sRM
 bPJ
 cpy
@@ -79236,7 +79544,7 @@ vDL
 wIr
 wIr
 bPJ
-guh
+mPV
 wfP
 wfP
 bPJ
@@ -79463,8 +79771,8 @@ hhI
 vDL
 wIr
 wIr
-guh
-wfP
+dSJ
+pSh
 wfP
 bPJ
 cpy
@@ -79691,7 +79999,7 @@ hhI
 lBd
 wIr
 guh
-wfP
+acC
 wfP
 bPJ
 cpy
@@ -79918,8 +80226,8 @@ hhI
 hLx
 wIr
 hcG
-wfP
-wfP
+lgR
+aKE
 bPJ
 cpy
 cpy
@@ -80144,9 +80452,9 @@ qzQ
 aPu
 jmv
 ueY
-awm
-wfP
-wfP
+tkC
+rnX
+acC
 bPJ
 cpy
 cpy
@@ -80372,8 +80680,8 @@ aPu
 pfq
 wIr
 tXS
-wfP
-wfP
+acC
+aos
 bPJ
 cpy
 cpy
@@ -80598,8 +80906,8 @@ aPu
 mOJ
 wIr
 wIr
-wfP
-wfP
+lgR
+acC
 jJF
 bPJ
 cpy
@@ -83549,7 +83857,7 @@ vpe
 wHz
 jas
 nQu
-nQu
+bWv
 jas
 cpy
 cpy
@@ -84456,7 +84764,7 @@ hBp
 eso
 vpe
 jas
-nQu
+bWv
 nQu
 jas
 cpy
@@ -84683,7 +84991,7 @@ cwe
 vpe
 oCs
 jas
-nQu
+bWv
 nQu
 jas
 cpy
@@ -86721,7 +87029,7 @@ bxr
 iqV
 iqV
 xHj
-xHj
+gvU
 boQ
 vpe
 tuK
@@ -89359,7 +89667,7 @@ sjy
 kqb
 kqb
 mUS
-egP
+rUJ
 kqb
 kqb
 pGl
@@ -90812,7 +91120,7 @@ phq
 phq
 qYq
 jas
-nQu
+bWv
 aEF
 jas
 cpy
@@ -91039,7 +91347,7 @@ eJd
 ptU
 jas
 jas
-nQu
+bWv
 aEF
 jas
 cpy
@@ -91486,8 +91794,8 @@ qHr
 vpe
 vxa
 ppU
-nQu
-nQu
+bWv
+bWv
 nQu
 nQu
 nQu
@@ -91714,12 +92022,12 @@ vpe
 ahZ
 jas
 jas
-dLC
+mwn
 xxz
 pYO
 pYO
-pYO
-pYO
+afa
+afa
 nUF
 jas
 jas
@@ -92623,7 +92931,7 @@ ctE
 ctE
 ctE
 jas
-aEF
+wFL
 nQu
 hbO
 jas
@@ -92850,7 +93158,7 @@ ctE
 ctE
 ctE
 jas
-aEF
+wFL
 nQu
 fZA
 jas
@@ -97380,7 +97688,7 @@ wQa
 dkX
 rBd
 nPb
-fdT
+iFe
 rVR
 hIf
 rqn
@@ -97572,7 +97880,7 @@ wrY
 xvl
 xvl
 lot
-aTR
+wOq
 xvl
 xvl
 xWO
@@ -99120,7 +99428,7 @@ gdO
 gdO
 psC
 ayn
-tBT
+xNw
 psC
 gdO
 tTK
@@ -99153,7 +99461,7 @@ nKK
 fzf
 sHY
 wao
-whs
+mEn
 tID
 uaI
 wqA
@@ -100709,7 +101017,7 @@ gdO
 gdO
 gdO
 ayn
-tBT
+xNw
 gdO
 gdO
 gdO
@@ -103420,7 +103728,7 @@ uDM
 tth
 eTw
 lVs
-qUL
+qBH
 lAn
 krH
 nTp
@@ -103644,10 +103952,10 @@ tCR
 fTm
 uKQ
 uKQ
-uKQ
+vuF
 fbY
 qUL
-qUL
+tRu
 lAn
 krH
 nTp
@@ -103874,7 +104182,7 @@ vjs
 tIF
 rAt
 gOZ
-iRl
+cJc
 lAn
 krH
 nTp

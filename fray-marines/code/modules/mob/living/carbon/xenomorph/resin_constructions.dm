@@ -18,6 +18,10 @@
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in T
 
+	if(istype(get_area(T), /area/shuttle))
+		to_chat(X, SPAN_WARNING("How do you plan to make roots here?!"))
+		return FALSE
+
 	if (alien_weeds.weed_strength < WEED_LEVEL_HIVE)
 		to_chat(X, SPAN_WARNING("You can only shape it on hive weeds. Find some resin before you start building!"))
 		return FALSE

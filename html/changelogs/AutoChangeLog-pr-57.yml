@@ -1,0 +1,5 @@
+author: "poleno1232"
+delete-after: True
+changes:
+  - balance: "Максимальная дальность санкена теперь 8"
+  - balance: "Хайвлорды теперь могут снова строить санкены"

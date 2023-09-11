@@ -34,13 +34,14 @@
 /// Logged in the security updates
 #define ARES_LOG_SECURITY 2
 
-/// Access levels specifically for Working Joe management console
-#define APOLLO_ACCESS_REQUEST 0
-#define APOLLO_ACCESS_REPORTER 1
-#define APOLLO_ACCESS_TEMP 2
-#define APOLLO_ACCESS_AUTHED 3
-#define APOLLO_ACCESS_JOE 4
-#define APOLLO_ACCESS_DEBUG 5
+// Access levels specifically for Working Joe management console
+#define APOLLO_ACCESS_LOGOUT 0
+#define APOLLO_ACCESS_REQUEST 1
+#define APOLLO_ACCESS_REPORTER 2
+#define APOLLO_ACCESS_TEMP 3
+#define APOLLO_ACCESS_AUTHED 4
+#define APOLLO_ACCESS_JOE 5
+#define APOLLO_ACCESS_DEBUG 6
 
 /// Ticket statuses, both for Access and Maintenance
 /// Pending assignment/rejection
@@ -53,6 +54,13 @@
 #define TICKET_REJECTED "rejected"
 /// Completed by WJs
 #define TICKET_COMPLETED "completed"
+
+/// Granted Access Ticket
+#define TICKET_GRANTED "granted"
+/// Revoked Access Ticket
+#define TICKET_REVOKED "revoked"
+/// Self-Returned Access Ticket
+#define TICKET_RETURNED "returned"
 
 /// Checks for if buttons can be used, these may yet be removed and internalised to the UI programming
 #define TICKET_OPEN "OPEN"

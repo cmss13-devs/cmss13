@@ -206,12 +206,6 @@
 	var/list/login_list = list()
 
 
-	/// If this is used to create AI Core access tickets
-	var/ticket_console = FALSE
-	var/obj/item/card/id/authenticator_id
-	var/ticket_authenticated = FALSE
-	var/obj/item/card/id/target_id
-
 /obj/structure/machinery/computer/working_joe/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
 		return FALSE

@@ -19,6 +19,7 @@
 
 	var/muzzle_flash 	= "muzzle_flash"
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
+	var/list/projectile_traits = list()
 
 /obj/item/walker_gun/proc/get_icon_image(hardpoint)
 	if(!owner)
@@ -50,6 +51,8 @@
 			return
 		P = new
 		P.generate_bullet(new ammo.default_ammo)
+		for (var/trait in projectile_traits)
+			GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, FACTION_MARINE)
 		playsound(get_turf(owner), pick(fire_sound), 60)
 		target = simulate_scatter(target, P)
 		P.fire_at(target, owner, src, P.ammo.max_range, P.ammo.shell_speed)
@@ -121,11 +124,13 @@
 	burst = 2
 	fire_delay = 6
 
+	projectile_traits = list("iff")
+
 /obj/item/walker_gun/hmg
 	name = "M30 Machine Gun"
 	desc = "High-caliber machine gun firing small bursts of AP bullets, tearing into shreds unfortunate fellas on its way."
 	icon_state = "mech_minigun_parts"
-	equip_state = "redy_minugun"
+	equip_state = "redy_minigun"
 	fire_sound = list('sound/weapons/gun_minigun.ogg')
 	magazine_type = /obj/item/ammo_magazine/walker/hmg
 	fire_delay = 20

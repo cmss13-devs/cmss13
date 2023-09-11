@@ -11,12 +11,12 @@
 	flags = TREE_FLAG_MARINE
 	tier = /datum/tier/three
 
-/datum/tech/cryomarine/can_unlock(mob/M)
+/datum/tech/cryomarine/can_unlock(mob/user)
 	. = ..()
 	if(!.)
 		return
 	if(!SSticker.mode)
-		to_chat(M, SPAN_WARNING("You can't do this right now!"))
+		to_chat(user, SPAN_WARNING("You can't do this right now!"))
 		return
 
 /datum/tech/cryomarine/on_unlock()

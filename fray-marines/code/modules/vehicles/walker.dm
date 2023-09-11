@@ -557,9 +557,7 @@
 		to_chat(user, "Someone already reparing this vehicle.")
 		return
 	repair = TRUE
-	var/repair_time = 1000
-	if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_DEFAULT))		//NO DIVIDING BY ZERO
-		repair_time = round(repair_time/user.skills.get_skill_level(SKILL_ENGINEER))
+	var/repair_time = 20 SECONDS
 
 	to_chat(user, "You start repairing broken part of [src.name]'s armor...")
 	if(do_after(user, repair_time, TRUE, 5, BUSY_ICON_BUILD))
@@ -574,6 +572,7 @@
 		playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
 		if(seats[VEHICLE_DRIVER])
 			to_chat(seats[VEHICLE_DRIVER], "Notification.Armor partly restored.")
+		repair = FALSE
 		return
 	else
 		to_chat(user, "Repair has been interrupted.")

@@ -575,10 +575,6 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
-"aos" = (
-/obj/structure/largecrate/random/barrel/white,
-/turf/open/floor/plating,
-/area/lv522/landing_zone_1/tunnel)
 "aox" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat{
@@ -49934,7 +49930,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
-/obj/vehicle/powerloader,
+/obj/structure/largecrate/random,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "tkL" = (
@@ -80681,7 +80677,7 @@ pfq
 wIr
 tXS
 acC
-aos
+wfP
 bPJ
 cpy
 cpy
@@ -80907,7 +80903,7 @@ mOJ
 wIr
 wIr
 lgR
-acC
+wfP
 jJF
 bPJ
 cpy

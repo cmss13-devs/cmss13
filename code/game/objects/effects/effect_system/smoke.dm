@@ -63,8 +63,8 @@
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/M)
 	..()
-	if(istype(M, /obj/item/projectile/beam))
-		var/obj/item/projectile/beam/B = M
+	if(istype(M, /obj/projectile/beam))
+		var/obj/projectile/beam/B = M
 		B.damage = (B.damage/2)
 	if(iscarbon(M))
 		affect(M)

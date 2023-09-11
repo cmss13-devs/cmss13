@@ -76,7 +76,7 @@
 	if(!on)
 		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] [ADMIN_JMP(src)]")
 
-/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/projectile/P)
 	..()
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		update_health(50)

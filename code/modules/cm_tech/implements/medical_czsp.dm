@@ -203,7 +203,7 @@
 		click_empty(user)
 		return NONE
 
-	var/obj/item/projectile/pill/P = new /obj/item/projectile/pill(src, user, src)
+	var/obj/projectile/pill/P = new /obj/projectile/pill(src, user, src)
 	P.generate_bullet(GLOB.ammo_list[/datum/ammo/pill], 0, 0)
 
 	pill_to_use.forceMove(P)
@@ -221,16 +221,16 @@
 
 	damage = 0
 
-/datum/ammo/pill/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/pill/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 
 	if(!ishuman(M))
 		return
 
-	if(!istype(P, /obj/item/projectile/pill))
+	if(!istype(P, /obj/projectile/pill))
 		return
 
-	var/obj/item/projectile/pill/pill_projectile = P
+	var/obj/projectile/pill/pill_projectile = P
 
 	if(QDELETED(pill_projectile.source_pill))
 		pill_projectile.source_pill = null
@@ -240,9 +240,9 @@
 
 	pill_reagents.trans_to(M, pill_reagents.total_volume)
 
-/obj/item/projectile/pill
+/obj/projectile/pill
 	var/obj/item/reagent_container/pill/source_pill
 
-/obj/item/projectile/pill/Destroy()
+/obj/projectile/pill/Destroy()
 	. = ..()
 	source_pill = null

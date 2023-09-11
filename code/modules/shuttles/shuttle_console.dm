@@ -335,7 +335,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	ui_interact(usr)
 
 
-/obj/structure/machinery/computer/shuttle_control/bullet_act(obj/item/projectile/Proj)
+/obj/structure/machinery/computer/shuttle_control/bullet_act(obj/projectile/Proj)
 	visible_message("[Proj] ricochets off [src]!")
 	return 0
 

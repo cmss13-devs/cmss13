@@ -489,7 +489,7 @@
 /obj/item/ammo_magazine/rifle/rmc_f90/heap
 	name = "\improper F903 HEAP magazine (10x24mm)"
 	desc = "A 10mm armor piercing high explosive assault rifle magazine used by the royal marines."
-	default_ammo = /datum/ammo/bullet/heap
+	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/rmc_f90/marksman/heap

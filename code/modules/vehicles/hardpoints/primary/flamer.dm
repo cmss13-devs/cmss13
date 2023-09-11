@@ -8,7 +8,7 @@
 	activation_sounds = list('sound/weapons/vehicles/flamethrower.ogg')
 
 	health = 400
-	cooldown = 20
+	cooldown = 25
 	accuracy = 0.75
 	firing_arc = 90
 

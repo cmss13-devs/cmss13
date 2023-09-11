@@ -139,16 +139,16 @@
 				comm_paygrade = H.get_paygrade()
 
 		else if (iscarbon(speaker)) // Nonhuman carbon mob
-			jobname = "No id"
+			jobname = "Нет ID"
 			comm_paygrade = ""
 		else if (isAI(speaker))
-			jobname = "AI"
+			jobname = "ИИ"
 			comm_paygrade = ""
 		else if (isrobot(speaker))
-			jobname = "Cyborg"
+			jobname = "Киборг"
 			comm_paygrade = ""
 		else
-			jobname = "Unknown"
+			jobname = "Неизвестно"
 			comm_paygrade = ""
 
 		if(changed_voice)
@@ -187,7 +187,7 @@
 		else
 			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
 
-/mob/proc/hear_signlang(message, verb = "gestures", datum/language/language, mob/speaker = null)
+/mob/proc/hear_signlang(message, verb = "жестикулирует", datum/language/language, mob/speaker = null)
 	var/comm_paygrade = ""
 	if(!client)
 		return
@@ -236,6 +236,6 @@
 		heard = SPAN_LOCALSAY("...Что? Кто-то говорит про...[heardword]")
 
 	else
-		heard = SPAN_LOCALSAY("...<i>Кажется я слышу разговоры.</i>...")
+		heard = SPAN_LOCALSAY("...<i>Кажется я слышу разговоры</i>...")
 
 	to_chat(src, heard)

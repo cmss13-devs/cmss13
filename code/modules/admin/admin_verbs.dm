@@ -391,7 +391,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
 	if(!admin_holder && !donator) return
-	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
+	var/new_ooccolor = input(src, "Настало время выбрать цвет.", "Цвет OOC") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences()
@@ -406,30 +406,30 @@ var/list/roundstart_mod_verbs = list(
 
 	if(!warned_ckey || !istext(warned_ckey)) return
 	if(warned_ckey in admin_datums)
-		to_chat(usr, "<font color='red'>Error: warn(): You can't warn admins.</font>")
+		to_chat(usr, "<font color='red'>Ошибочка: warn(): Зачем варнить админов?</font>")
 		return
 
 	var/datum/entity/player/P = get_player_from_key(warned_ckey) // you may not be logged in, but I will find you and I will ban you
 
 	if(!P)
-		to_chat(src, "<font color='red'>Error: warn(): No such ckey found.</font>")
+		to_chat(src, "<font color='red'>Ошибочка: warn(): Такого сикея нет.</font>")
 		return
 
 	if(++P.warning_count >= MAX_WARNS) //uh ohhhh...you'reee iiiiin trouuuubble O:)
-		ban_unban_log_save("[ckey] warned [warned_ckey], resulting in a [AUTOBANTIME] minute autoban.")
+		ban_unban_log_save("[ckey] варнит [warned_ckey], что влечет за собой [AUTOBANTIME] минутный автобан.")
 		if(P.owning_client)
-			message_admins("[key_name_admin(src)] has warned [ckey] resulting in a [AUTOBANTIME] minute ban.")
+			message_admins("[key_name_admin(src)] варнит [ckey], что влечет за собой [AUTOBANTIME] минутный бан.")
 			to_chat_forced(P.owning_client, "<font color='red'><BIG><B>You have been autobanned due to a warning by [key_name_admin(P.owning_client)].</B></BIG><br>This is a temporary ban, it will be removed in [AUTOBANTIME] minutes.")
 		else
-			message_admins("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
+			message_admins("[key_name_admin(src)] варнит [warned_ckey], что влечет за собой [AUTOBANTIME] минутный бан.")
 
 		P.add_timed_ban("Autobanning due to too many formal warnings", AUTOBANTIME)
 	else
 		if(P.owning_client)
 			to_chat(P.owning_client, "<font color='red'><BIG><B>You have been formally warned by an administrator.</B></BIG><br>Further warnings will result in an autoban.</font>")
-			message_admins("[key_name_admin(src)] has warned [key_name_admin(P.owning_client)]. They have [MAX_WARNS-P.warning_count] strikes remaining.")
+			message_admins("[key_name_admin(src)] предупреждает [key_name_admin(P.owning_client)]. У них осталось [MAX_WARNS-P.warning_count] страйков.")
 		else
-			message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
+			message_admins("[key_name_admin(src)] предувпреждает [warned_ckey] (DC). У них осталось [MAX_WARNS-P.warning_count] страйков.")
 
 /client/proc/give_disease(mob/T as mob in GLOB.mob_list) // -- Giacom
 	set category = "Admin.Fun"
@@ -438,12 +438,12 @@ var/list/roundstart_mod_verbs = list(
 	var/list/disease_names = list()
 	for(var/v in diseases)
 		disease_names.Add(copytext("[v]", 16, 0))
-	var/datum/disease/D = tgui_input_list(usr, "Choose the disease to give to that guy", "ACHOO", disease_names)
+	var/datum/disease/D = tgui_input_list(usr, "Чем заразим паренька?", "Хихи", disease_names)
 	if(!D) return
 	var/path = text2path("/datum/disease/[D]")
 	T.contract_disease(new path, 1)
 
-	message_admins("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
+	message_admins("[key_name_admin(usr)] заражает [key_name(T)] болезнью [D].")
 
 
 /client/proc/object_talk(msg as text) // -- TLE

@@ -141,7 +141,7 @@ for it but just ignore it.
 
 /mob/proc/say_quote(message, datum/language/speaking = null)
 		var/verb = "говорит"
-		var/ending = copytext(message, length(message))
+		var/ending = copytext_char(message, length(message))
 		if(ending=="!")
 				verb=pick("восклицает","кричит","вопит")
 		else if(ending=="?")

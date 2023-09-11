@@ -12,7 +12,7 @@
 
 /datum/game_mode/proc/ares_online()
 	var/name = "ARES Online"
-	var/input = "ARES. Online. Good morning, marines."
+	var/input = "ARES. Онлайн. Доброе утро, солдаты."
 	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
 
 /datum/game_mode/proc/request_ert(user, ares = FALSE)
@@ -26,7 +26,7 @@
 	var/name = "name"
 	var/mob_max = 3
 	var/mob_min = 3
-	var/dispatch_message = "An encrypted signal has been received from a nearby vessel. Stand by." //Msg to display when starting
+	var/dispatch_message = "Зашифрованный сигнал перехвачен с ближайшего судна. Ожидайте." //Msg to display when starting
 	var/arrival_message = "" //Msg to display about when the shuttle arrives
 	var/objectives //Txt of objectives to display to joined. Todo: make this into objective notes
 	var/objective_info //For additional info in the objectives txt
@@ -204,7 +204,7 @@
 	message_admins("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(announce)
-		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
+		marine_announcement("Активирован сигнал бедствия на борту [MAIN_SHIP_NAME].", "Приоритетное оповещение", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), announce, override_spawn_loc, announce_dispatch_message), 30 SECONDS)
 
@@ -220,7 +220,7 @@
 		candidates = list()
 
 		if(announce)
-			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
+			marine_announcement("Сигнал бедствия не получил ответа, перекалибровка пусковых труб.", "Сигнал бедствия", logging = ARES_LOG_SECURITY)
 		return
 
 	//We've got enough!
@@ -250,7 +250,7 @@
 					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
 	if(announce)
-		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
+		marine_announcement(dispatch_message, "Сигнал бедствия", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
 	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
 
@@ -306,7 +306,7 @@
 
 	candidates = list()
 	if(arrival_message && announce)
-		marine_announcement(arrival_message, "Intercepted Tranmission:")
+		marine_announcement(arrival_message, "Перехваченная Передача:")
 
 /datum/emergency_call/proc/add_candidate(mob/M)
 	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))

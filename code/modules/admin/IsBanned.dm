@@ -13,9 +13,9 @@
 
 	//Guest Checking
 	if(!real_bans_only && CONFIG_GET(flag/guest_ban) && IsGuestKey(key))
-		log_access("Failed Login: [key] - Guests not allowed")
-		message_admins("Failed Login: [key] - Guests not allowed")
-		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
+		log_access("Ой ой, [key] не смог зайти - Гости не нужны")
+		message_admins("Ой ой, [key] не смог зайти - Гости не нужны")
+		return list("reason"="guest", "desc"="\nПричина: Guests not allowed. Please sign in with a byond account.")
 
 	WAIT_DB_READY
 	if(admin_datums[ckey] && (admin_datums[ckey].rights & R_MOD))
@@ -28,8 +28,8 @@
 
 	//check if the IP address is a known TOR node
 	if(CONFIG_GET(flag/ToRban) && ToRban_isbanned(address))
-		log_access("Failed Login: [src] - Banned: ToR")
-		message_admins("Failed Login: [src] - Banned: ToR")
+		log_access("Агаааа, [src] не смог зайти - бан: ТоР")
+		message_admins("Агаааа, [src] не смог зайти - бан: ТоР")
 		return list("reason"="Using ToR", "desc"="\nReason: The network you are using to connect has been banned.\nIf you believe this is a mistake, please request help at [CONFIG_GET(string/banappeals)]")
 
 	// wait for database to be ready

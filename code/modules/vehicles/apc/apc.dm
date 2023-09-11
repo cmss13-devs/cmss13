@@ -40,6 +40,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		/obj/item/hardpoint/primary/dualcannon,
 		/obj/item/hardpoint/secondary/frontalcannon,
 		/obj/item/hardpoint/support/flare_launcher,
+		/obj/item/hardpoint/support/flare_launcher/smoke_launcher,
 		/obj/item/hardpoint/locomotion/apc_wheels,
 	)
 

@@ -1,6 +1,6 @@
 /datum/random_fact/damage
-	statistic_name = "damage"
-	statistic_verb = "took"
+	statistic_name = "урона"
+	statistic_verb = "получил(а)"
 
 /datum/random_fact/damage/life_grab_stat(mob/fact_mob)
 	return fact_mob.life_damage_taken_total

@@ -18,7 +18,7 @@
 	GLOB.marine_leaders -= JOB_XO
 
 AddTimelock(/datum/job/command/executive, list(
-	JOB_COMMAND_ROLES = 5 HOURS,
+	JOB_COMMAND_ROLES = 8 HOURS,
 ))
 
 /obj/effect/landmark/start/executive

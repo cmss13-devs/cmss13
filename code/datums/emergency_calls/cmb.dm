@@ -16,7 +16,7 @@
 
 /datum/emergency_call/cmb/New()
 	..()
-	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. We are receiving your distress signal and are dispatching a nearby team to board with you now. Standby."
+	arrival_message = "Входящая передача: [MAIN_SHIP_NAME], это станция Anchorpoint с Бюро Колониальных Маршалов. Мы принимаем ваш сигнал бедствия и отправляем ближайшую команду к вам. Ожидайте."
 	objectives = "Investigate the distress signal aboard the [MAIN_SHIP_NAME], and assist the crew with rescue if possible. If necessary, a contingent of our Colonial Marines may be ready to act as a QRF to reinforce you."
 
 	will_spawn_icc_liaison = prob(50)

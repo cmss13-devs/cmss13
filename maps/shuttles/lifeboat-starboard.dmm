@@ -169,7 +169,7 @@
 	},
 /area/shuttle/lifeboat)
 "vG" = (
-/obj/docking_port/mobile/lifeboat/starboard,
+/obj/docking_port/mobile/crashable/lifeboat/starboard,
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,0"
 	},

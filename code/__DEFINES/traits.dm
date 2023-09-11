@@ -177,6 +177,8 @@
 #define TRAIT_USING_WHEELCHAIR "t_using_wheelchair"
 /// If the mob will instantly go permadead upon death
 #define TRAIT_HARDCORE "t_hardcore"
+/// If the mob is able to use the vulture rifle or spotting scope
+#define TRAIT_VULTURE_USER "t_vulture_user"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -203,6 +205,9 @@
 
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
+
+#define TRAIT_GUN_BIPODDED "t_gun_bipodded"
+
 #define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
 
 // Miscellaneous item traits.
@@ -239,7 +244,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_LEADERSHIP,
 	TRAIT_DEXTROUS,
 	TRAIT_REAGENT_SCANNER,
-	TRAIT_ABILITY_BURROWED
+	TRAIT_ABILITY_BURROWED,
+	TRAIT_VULTURE_USER,
 ))
 
 /*
@@ -271,6 +277,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_EMOTE_CD_EXEMPT" = TRAIT_EMOTE_CD_EXEMPT,
 		"TRAIT_LISPING" = TRAIT_LISPING,
 		"TRAIT_CANNOT_EAT" = TRAIT_CANNOT_EAT,
+		"TRAIT_VULTURE_USER" = TRAIT_VULTURE_USER,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
@@ -299,6 +306,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	),
 	/obj/item/weapon/gun = list(
 		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
+		"TRAIT_GUN_BIPODDED" = TRAIT_GUN_BIPODDED,
 	),
 	/obj/structure/surface/table = list(
 		"TRAIT_STRUCTURE_FLIPPING" = TRAIT_TABLE_FLIPPING,

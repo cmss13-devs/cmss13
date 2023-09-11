@@ -8,7 +8,7 @@
 	var/datum/entity/player/P = get_player_from_key(ckey)
 
 	if(!P)
-		message_admins("Tried stickybanning ckey \"[ckey]\", player entity was unable to be found. Please try again later.")
+		message_admins("Попробовал застикибанить сикей \"[ckey]\", player entity не найдено. Попробуйте позже.")
 		return
 
 	var/datum/entity/player_sticky_ban/PSB = DB_ENTITY(/datum/entity/player_sticky_ban)
@@ -29,9 +29,9 @@
 	if(banning_admin)
 		PSB.admin_id = banning_admin.id
 		if(banning_admin.owning_client)
-			message_admins("[banning_admin.owning_client.ckey] has stickybanned [ckey].")
+			message_admins("[banning_admin.owning_client.ckey] застикибанил [ckey].")
 
-	message_admins("[ckey] (IP: [address], CID: [cid]) has been stickybanned for: \"[reason]\".")
+	message_admins("[ckey] (IP: [address], CID: [cid]) бы застикибанен за: \"[reason]\".")
 
 	if(P.owning_client)
 		to_chat_forced(P.owning_client, SPAN_WARNING("<BIG><B>You have been sticky banned by [banning_admin? banning_admin.ckey : "Host"].\nReason: [sanitize(reason)].</B></BIG>"))
@@ -43,7 +43,7 @@
 /datum/entity/player/proc/process_stickyban(address, computer_id, source_id, reason, datum/entity/player/banning_admin, list/PSB)
 	if(length(PSB) > 0) // sticky ban with identical data already exists, no need for another copy
 		if(banning_admin)
-			to_chat(banning_admin, SPAN_WARNING("Failed to add stickyban to [ckey]. Reason: Stickyban already exists."))
+			to_chat(banning_admin, SPAN_WARNING("Не получилось дать стикибан [ckey]. Причина: стикибан уже выдан."))
 		return
 
 	stickyban_internal(ckey, address, computer_id, reason, source_id, banning_admin)

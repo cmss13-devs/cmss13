@@ -131,7 +131,8 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),
 
 	list("INTEGRAL PARTS", 0, null, null, null),
-	list("M34A2-A Multipurpose Turret", 0, /obj/effect/essentials_set/tank/turret, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M34A2-B Multipurpose Turret \[ Flares \]", 0, /obj/effect/essentials_set/tank/turret/flares, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+	list("M34A2-A Multipurpose Turret \[ Smoke \]", 0, /obj/effect/essentials_set/tank/turret, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 	list("PRIMARY WEAPON", 0, null, null, null),
 	list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
@@ -163,9 +164,11 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank_spare, list(
 	list("SPARE PARTS SELECTION:", 0, null, null, null),
 
 	list("INTEGRAL PARTS", 0, null, null, null),
-	list("M34A2-A Multipurpose Turret", 500, /obj/item/hardpoint/holder/tank_turret, null, VENDOR_ITEM_REGULAR),
+	list("M34A2-B Multipurpose Turret \[ Flares \]", 500, /obj/item/hardpoint/holder/tank_turret/flares, null, VENDOR_ITEM_RECOMMENDED),
+	list("M34A2-A Multipurpose Turret \[ Smoke \]", 500, /obj/item/hardpoint/holder/tank_turret, null, VENDOR_ITEM_REGULAR),
 
 	list("SUPPORT AMMUNITION", 0, null, null, null),
+	list("Turret Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/flare_launcher/tank, null, VENDOR_ITEM_RECOMMENDED),
 	list("Turret Smoke Screen Magazine", 50, /obj/item/ammo_magazine/hardpoint/turret_smoke, null, VENDOR_ITEM_REGULAR),
 
 	list("PRIMARY WEAPON", 0, null, null, null),
@@ -218,7 +221,8 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc, list(
 	list("RE-RE700 Frontal Cannon", 0, /obj/effect/essentials_set/apc/frontalcannon, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("SUPPORT MODULE", 0, null, null, null),
-	list("M-97F Flare Launcher", 0, /obj/effect/essentials_set/apc/flarelauncher, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M-87F Flare Launcher", 0, /obj/effect/essentials_set/apc/flarelauncher, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M-87S Smoke Screen System", 0, /obj/effect/essentials_set/apc/flarelauncher/smokelauncher, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("WHEELS", 0, null, null, null),
 	list("APC Wheels", 0, /obj/item/hardpoint/locomotion/apc_wheels, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_MANDATORY)))
@@ -239,10 +243,12 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc_spare, list(
 	list("RE-RE700 Frontal Cannon Magazine", 150, /obj/item/ammo_magazine/hardpoint/tank_glauncher, null, VENDOR_ITEM_REGULAR),
 
 	list("SUPPORT MODULE", 0, null, null, null),
-	list("M-97F Flare Launcher", 300, /obj/item/hardpoint/support/flare_launcher, null, VENDOR_ITEM_REGULAR),
+	list("M-87F Flare Launcher", 300, /obj/item/hardpoint/support/flare_launcher, null, VENDOR_ITEM_RECOMMENDED),
+	list("M-87S Smoke Screen System", 300, /obj/item/hardpoint/support/flare_launcher/smoke_launcher, null, VENDOR_ITEM_REGULAR),
 
 	list("SUPPORT AMMUNITION", 0, null, null, null),
-	list("M-97F Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/flare_launcher, null, VENDOR_ITEM_REGULAR),
+	list("M-87F Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/flare_launcher, null, VENDOR_ITEM_RECOMMENDED),
+	list("M-87S Smoke Screen Magazine", 50, /obj/item/ammo_magazine/hardpoint/turret_smoke/apc, null, VENDOR_ITEM_REGULAR),
 
 	list("WHEELS", 0, null, null, null),
 	list("APC Wheels", 200, /obj/item/hardpoint/locomotion/apc_wheels, null, VENDOR_ITEM_REGULAR)))
@@ -470,6 +476,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 	)
 
+/obj/effect/essentials_set/tank/turret/flares
+	spawned_gear_list = list(
+		/obj/item/hardpoint/holder/tank_turret/flares,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher/tank,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher/tank,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher/tank,
+	)
+
 /obj/effect/essentials_set/apc/dualcannon
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/dualcannon,
@@ -491,4 +505,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
+	)
+
+/obj/effect/essentials_set/apc/flarelauncher/smokelauncher
+	spawned_gear_list = list(
+		/obj/item/hardpoint/support/flare_launcher/smoke_launcher,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke/apc,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke/apc,
 	)

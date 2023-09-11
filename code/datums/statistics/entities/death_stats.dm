@@ -69,15 +69,15 @@
 		stack_trace("track_mob_death called with string cause ([cause_data]) instead of datum")
 		cause_data = create_cause_data(cause_data)
 
-	var/log_message = "\[[time_stamp()]\] [key_name(src)] died to "
+	var/log_message = "\[[time_stamp()]\] [key_name(src)] умер(ла) от "
 	if(cause_data)
 		log_message += "[cause_data.cause_name]"
 	else
-		log_message += "unknown causes"
+		log_message += "неизвестных причин"
 	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob)
-		log_message += " from [key_name(cause_data.resolve_mob())]"
-		cause_mob.attack_log += "\[[time_stamp()]\] [key_name(cause_mob)] killed [key_name(src)] with [cause_data.cause_name]."
+		log_message += " от [key_name(cause_data.resolve_mob())]"
+		cause_mob.attack_log += "\[[time_stamp()]\] [key_name(cause_mob)] убил [key_name(src)] с помощью [cause_data.cause_name]."
 
 	attack_log += "[log_message]."
 
@@ -163,11 +163,11 @@
 /mob/proc/handle_observer_message(datum/cause_data/cause_data, mob/cause_mob, turf/death_loc, area/death_area)
 	var/observer_message = "<b>[real_name]</b> has died"
 	if(cause_data && cause_data.cause_name)
-		observer_message += " to <b>[cause_data.cause_name]</b>"
+		observer_message += " от <b>[cause_data.cause_name]</b>"
 	if(death_area.name)
-		observer_message += " at \the <b>[death_area.name]</b>"
+		observer_message += " в \the <b>[death_area.name]</b>"
 	if(cause_data && cause_mob)
-		observer_message += " from <b>[cause_mob]</b>"
+		observer_message += " из <b>[cause_mob]</b>"
 
 	msg_admin_attack(observer_message, death_loc.x, death_loc.y, death_loc.z)
 

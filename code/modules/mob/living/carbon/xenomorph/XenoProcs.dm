@@ -21,16 +21,17 @@
 			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.hivenumber == hivenumber)) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
-//Sends a maptext alert to our currently selected squad. Does not make sound.
+//Sends a maptext alert to xenos.
 /proc/xeno_maptext(text = "", title_text = "", hivenumber = XENO_HIVE_NORMAL)
 	if(text == "" || !hivenumber)
 		return //Logic
 
 	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
-		for(var/datum/mind/L in SSticker.mode.xenomorphs)
-			var/mob/living/carbon/M = L.current
-			if(M && istype(M) && !M.stat && M.client && M.ally_of_hivenumber(hivenumber)) //Only living and connected xenos
-				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
+		for(var/datum/mind/living in SSticker.mode.xenomorphs)
+			var/mob/living/carbon/xenomorph/xeno = living.current
+			if(istype(xeno) && !xeno.stat && xeno.client && xeno.hivenumber == hivenumber) //Only living and connected xenos
+				playsound_client(xeno.client, 'sound/voice/alien_distantroar_3.ogg', xeno.loc, 25, FALSE)
+				xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
 
 /proc/xeno_message_all(message = null, size = 3)
 	xeno_message(message, size)
@@ -278,18 +279,19 @@
 		return
 
 	if (pounceAction.can_be_shield_blocked)
-		if(ishuman(M) && (M.dir in reverse_nearby_direction(dir)))
+		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(H.check_shields(15, "the pounce")) //Human shield block.
+			if(H.check_shields(15, "the pounce", attacker_dir = get_dir(src,H))) //Human shield block.
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
 					SPAN_XENODANGER("You slam into [H]!"), null, 5)
 				apply_effect(1, WEAKEN)
 				throwing = FALSE //Reset throwing manually.
 				playsound(H, "bonk", 75, FALSE) //bonk
+				step_away(src, H, 1, 2)
 				return
 
 			if(isyautja(H))
-				if(H.check_shields(0, "the pounce", 1))
+				if(H.check_shields(0, "the pounce", 1, get_dir(src,H)))
 					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
 					apply_effect(3, WEAKEN)
 					throwing = FALSE

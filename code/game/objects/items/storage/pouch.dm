@@ -813,10 +813,22 @@
 
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
-	new /obj/item/storage/firstaid/regular(src)
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/medkit/full_advanced/fill_preset_inventory()
-	new /obj/item/storage/firstaid/adv(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
 
 
 /obj/item/storage/pouch/pressurized_reagent_canister

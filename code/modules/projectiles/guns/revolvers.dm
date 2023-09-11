@@ -182,7 +182,7 @@
 		rotate_cylinder()
 		return 1
 
-/obj/item/weapon/gun/revolver/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/revolver/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund && current_mag)
 		current_mag.current_rounds++
@@ -440,14 +440,20 @@
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
 
-/obj/item/weapon/gun/revolver/nagant
-	name = "\improper N-Y 7.62mm revolver"
-	desc = "The Nagant-Yamasaki 7.62 is an effective killing machine designed by a consortion of shady Not-Americans. It is frequently found in the hands of criminals or mercenaries."
+/obj/item/weapon/gun/revolver/upp
+	name = "\improper ZHNK-72 revolver"
+	desc = "The ZHNK-72 is a UPP designed revolver. The ZHNK-72 is used by the UPP armed forces in a policing role as well as limited numbers in the hands of SNCOs."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "ny762"
-	item_state = "ny762"
+	icon_state = "zhnk72"
+	item_state = "zhnk72"
 
-	fire_sound = 'sound/weapons/gun_pistol_medium.ogg'
+	fire_sound = "gun_pkd" //sounds stolen from bladerunner revolvers bc they arent used and sound awesome
+	fire_rattle = 'sound/weapons/gun_pkd_fire01_rattle.ogg'
+	reload_sound = 'sound/weapons/handling/pkd_speed_load.ogg'
+	cocked_sound = 'sound/weapons/handling/pkd_cock.wav'
+	unload_sound = 'sound/weapons/handling/pkd_open_chamber.ogg'
+	chamber_close_sound = 'sound/weapons/handling/pkd_close_chamber.ogg'
+	hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/upp
 	force = 8
 	attachable_allowed = list(
@@ -460,23 +466,22 @@
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight, // Underbarrel
 		)
 
-/obj/item/weapon/gun/revolver/nagant/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
+/obj/item/weapon/gun/revolver/upp/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 19, "under_y" = 17, "stock_x" = 24, "stock_y" = 19)
 
-/obj/item/weapon/gun/revolver/nagant/set_gun_config_values()
+/obj/item/weapon/gun/revolver/upp/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil = 0
 	recoil_unwielded = 0
 
-/obj/item/weapon/gun/revolver/nagant/shrapnel
+/obj/item/weapon/gun/revolver/upp/shrapnel
 	current_mag = /obj/item/ammo_magazine/internal/revolver/upp/shrapnel
 	random_spawn_chance = 100
 	random_under_chance = 100

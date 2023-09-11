@@ -149,14 +149,17 @@
 	var/list/records_talking = list()
 	/// Holds all (/datum/ares_record/requisition_log)s
 	var/list/records_asrs = list()
-	/// Holds all (/datum/ares_record/security)s and (/datum/ares_record/antiair)s
+	/// Holds all (/datum/ares_record/security)s (including AA)
 	var/list/records_security = list()
+	/// Holds all (/datum/ares_record/flight)s
+	var/list/records_flight = list()
 	/// Is nuke request usable or not?
 	var/nuke_available = TRUE
 
 
 	COOLDOWN_DECLARE(ares_distress_cooldown)
 	COOLDOWN_DECLARE(ares_nuclear_cooldown)
+	COOLDOWN_DECLARE(ares_quarters_cooldown)
 
 /obj/structure/machinery/computer/ares_console/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
@@ -204,12 +207,6 @@
 	/// A record of who logged in and when.
 	var/list/login_list = list()
 
-
-	/// If this is used to create AI Core access tickets
-	var/ticket_console = FALSE
-	var/obj/item/card/id/authenticator_id
-	var/ticket_authenticated = FALSE
-	var/obj/item/card/id/target_id
 
 /obj/structure/machinery/computer/working_joe/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)

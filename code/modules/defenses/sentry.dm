@@ -21,7 +21,7 @@
 	var/sentry_type = "sentry" //Used for the icon
 	display_additional_stats = TRUE
 	/// Light strength when turned on
-	var/luminosity_strength = 7
+	var/luminosity_strength = 5
 	/// Check if they have been upgraded or not, used for sentry post
 	var/upgraded = FALSE
 	var/omni_directional = FALSE
@@ -72,7 +72,6 @@
 	QDEL_NULL(spark_system)
 	QDEL_NULL(ammo)
 	stop_processing()
-	SetLuminosity(0)
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/process()
@@ -181,7 +180,7 @@
 
 /obj/structure/machinery/defenses/sentry/power_on_action()
 	target = null
-	SetLuminosity(luminosity_strength)
+	set_light(luminosity_strength)
 
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] hums to life and emits several beeps.")]")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
@@ -189,7 +188,7 @@
 	set_range()
 
 /obj/structure/machinery/defenses/sentry/power_off_action()
-	SetLuminosity(0)
+	set_light(0)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] powers down and goes silent.")]")
 	stop_processing()
 	unset_range()
@@ -309,7 +308,7 @@
 	low_ammo_timer = null
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(atom/target)
-	var/obj/item/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
+	var/obj/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
 	new_projectile.generate_bullet(new ammo.default_ammo)
 	new_projectile.damage *= damage_mult
 	new_projectile.accuracy *= accuracy_mult

@@ -333,6 +333,10 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
+	ability_cost = ABILITY_COST_DEFAULT
+	ability_charge_max = ABILITY_MAX_DEFAULT
+	ability_charge_rate = ABILITY_CHARGE_SMALL
+
 	var/on = TRUE
 
 	var/force_wielded = MELEE_FORCE_TIER_6
@@ -340,10 +344,6 @@
 	var/force_storage = MELEE_FORCE_TIER_1
 	/// Ref to the tether effect when thrown
 	var/datum/effects/tethering/chain
-
-	ability_cost = ABILITY_COST_DEFAULT
-	ability_charge_max = ABILITY_MAX_DEFAULT
-	ability_charge_rate = ABILITY_CHARGE_SMALL
 
 /obj/item/weapon/yautja/combistick/Destroy()
 	cleanup_chain()

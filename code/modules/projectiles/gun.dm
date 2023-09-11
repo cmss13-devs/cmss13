@@ -1249,6 +1249,9 @@ and you're good to go.
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
 
+	if(!COOLDOWN_FINISHED(user, pointblank_cooldown))
+		return ..()
+
 	if(attacked_mob == user && user.zone_selected == "mouth" && ishuman(user))
 		var/mob/living/carbon/human/HM = user
 		if(!able_to_fire(user))
@@ -1392,6 +1395,7 @@ and you're good to go.
 		if(bullets_fired == 1) //First shot gives the PB message.
 			user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [attacked_mob]!"),
 				SPAN_WARNING("You fire [src] point blank at [attacked_mob]!"), null, null, CHAT_TYPE_WEAPON_USE)
+		COOLDOWN_START(user, pointblank_cooldown, POINTBLANK_COOLDOWN_TIME)
 
 		user.track_shot(initial(name))
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired) //We add any damage effects that we need.

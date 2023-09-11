@@ -20,6 +20,7 @@
 #define DEFAULT_MESSAGE_RANGE 7
 
 #define BAYONET_DRAW_DELAY (1 SECONDS)
+#define POINTBLANK_COOLDOWN_TIME (2 SECONDS)
 
 //Predator decloak multpliers based on the standard.
 #define DECLOAK_STANDARD (10 SECONDS)

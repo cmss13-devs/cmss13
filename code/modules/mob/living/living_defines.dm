@@ -58,6 +58,7 @@
 	var/image/attack_icon = null //the image used as overlay on the things we attack.
 
 	COOLDOWN_DECLARE(zoom_cooldown) //Cooldown on using zooming items, to limit spam
+	COOLDOWN_DECLARE(pointblank_cooldown) //Cooldown on PB attacks in an effort to prevent bypassing delays.
 
 	var/do_bump_delay = 0 // Flag to tell us to delay movement because of being bumped
 

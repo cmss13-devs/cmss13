@@ -51,7 +51,8 @@
 		qdel(src)
 		return
 	else if(time_to_live == 1)
-		alpha = 180
+		if(alpha > 180)
+			alpha = 180
 		amount = 0
 		set_opacity(0)
 
@@ -254,45 +255,79 @@
 	name = "CN20 nerve gas"
 	smokeranking = SMOKE_RANK_HIGH
 	color = "#80c7e4"
+	var/xeno_affecting = FALSE
+	opacity = FALSE
+	alpha = 75
+
+/obj/effect/particle_effect/smoke/cn20/xeno
+	name = "CN20-X nerve gas"
+	color = "#2da9da"
+	xeno_affecting = TRUE
 
 /obj/effect/particle_effect/smoke/cn20/Move()
 	. = ..()
-	for(var/mob/living/carbon/human/creature in get_turf(src))
-		affect(creature)
+	if(!xeno_affecting)
+		for(var/mob/living/carbon/human/human in get_turf(src))
+			affect(human)
+	else
+		for(var/mob/living/carbon/creature in get_turf(src))
+			affect(creature)
 
-/obj/effect/particle_effect/smoke/cn20/affect(mob/living/carbon/human/creature)
+/obj/effect/particle_effect/smoke/cn20/affect(mob/living/carbon/creature)
+	var/mob/living/carbon/xenomorph/xeno_creature
+	var/mob/living/carbon/human/human_creature
+	if(isxeno(creature))
+		xeno_creature = creature
+	else if(ishuman(creature))
+		human_creature = creature
 	if(!istype(creature) || issynth(creature) || creature.stat == DEAD)
+		return FALSE
+	if(!xeno_affecting && xeno_creature)
 		return FALSE
 	if(isyautja(creature) && prob(75))
 		return FALSE
 
-	if (creature.wear_mask && (creature.wear_mask.flags_inventory & BLOCKGASEFFECT))
+	if(creature.wear_mask && (creature.wear_mask.flags_inventory & BLOCKGASEFFECT))
+		return FALSE
+	if(human_creature && (human_creature.head && (human_creature.head.flags_inventory & BLOCKGASEFFECT)))
 		return FALSE
 
 	var/effect_amt = round(6 + amount*6)
 
-	creature.apply_damage(12, OXY)
+	if(xeno_creature)
+		if(xeno_creature.interference < 4)
+			to_chat(xeno_creature, SPAN_XENOHIGHDANGER("Your awareness dims to a small area!"))
+		xeno_creature.interference = 10
+		xeno_creature.blinded = TRUE
+	else
+		creature.apply_damage(12, OXY)
 	creature.SetEarDeafness(max(creature.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
-	if(!creature.eye_blind) //Eye exposure damage
+	if(!xeno_creature && !creature.eye_blind) //Eye exposure damage
 		to_chat(creature, SPAN_DANGER("Your eyes sting. You can't see!"))
-	creature.SetEyeBlind(round(effect_amt/3))
-	if(creature.coughedtime != 1 && !creature.stat) //Coughing/gasping
+		creature.SetEyeBlind(round(effect_amt/3))
+	if(!xeno_creature && creature.coughedtime != 1 && !creature.stat) //Coughing/gasping
 		creature.coughedtime = 1
 		if(prob(50))
 			creature.emote("cough")
 		else
 			creature.emote("gasp")
 		addtimer(VARSET_CALLBACK(creature, coughedtime, 0), 1.5 SECONDS)
-	if (prob(20))
+	var/stun_chance = 20
+	if(xeno_affecting)
+		stun_chance = 35
+	if(prob(stun_chance))
 		creature.apply_effect(1, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
-	to_chat(creature, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
+	if(xeno_creature)
+		to_chat(xeno_creature, SPAN_XENODANGER("You are struggling to move, it's as if you're paralyzed!"))
+	else
+		to_chat(creature, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
 	if(prob(60 + round(amount*15))) //Highly likely to drop items due to arms/hands seizing up
 		creature.drop_held_item()
-	if(ishuman(creature))
-		creature.temporary_slowdown = max(creature.temporary_slowdown, 4) //One tick every two second
-		creature.recalculate_move_delay = TRUE
+	if(human_creature)
+		human_creature.temporary_slowdown = max(human_creature.temporary_slowdown, 4) //One tick every two second
+		human_creature.recalculate_move_delay = TRUE
 	return TRUE
 
 //////////////////////////////////////
@@ -594,6 +629,9 @@
 
 /datum/effect_system/smoke_spread/cn20
 	smoke_type = /obj/effect/particle_effect/smoke/cn20
+
+/datum/effect_system/smoke_spread/cn20/xeno
+	smoke_type = /obj/effect/particle_effect/smoke/cn20/xeno
 
 // XENO SMOKES
 

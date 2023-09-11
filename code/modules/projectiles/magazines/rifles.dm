@@ -499,9 +499,3 @@
 	item_state = "aug_dmr"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-
-/obj/item/ammo_magazine/rifle/heap
-	name = "\improper M41A HEAP magazine (10x24mm)"
-	desc = "A 10mm armor piercing high explosive magazine."
-	default_ammo = /datum/ammo/bullet/rifle/heap
-	ammo_band_color = AMMO_BAND_COLOR_HEAP

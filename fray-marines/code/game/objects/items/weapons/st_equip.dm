@@ -71,12 +71,13 @@
 /obj/item/weapon/shield/montage
 	name = "N30 montage shield"
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
+	icon = 'fray-marines/icons/mob/human/st_equip.dmi'
 	icon_state = "metal_st"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi'
-	)
+		WEAR_L_HAND = 'fray-marines/icons/mob/human/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'fray-marines/icons/mob/human/items_righthand_1.dmi',
+		WEAR_BACK = 'fray-marines/icons/mob/human/back.dmi'
+		)
 	flags_equip_slot = SLOT_BACK
 	passive_block = 70
 	readied_block = 100

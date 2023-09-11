@@ -173,5 +173,5 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 	if(tier.tier < 2)
 		return //No need to announce tier updates for tier 1
 	var/name = "ALMAYER DEFCON LEVEL INCREASED"
-	var/input = "УРОВЕНЬ ОЦЕНКИ УГРОЗЫ ПОВЫШЕН ДО [tier.tier] УРОВНЯ.\n\nАктивы [tier.tier] уровня были выделены для разрешения операции."
+	var/input = "УРОВЕНЬ ОЦЕНКИ УГРОЗЫ ПОВЫШЕН ДО [tier.tier] УРОВНЯ.\n\nАктивы [tier.tier] уровня были выделены для операции."
 	marine_announcement(input, name, 'sound/AI/commandreport.ogg')

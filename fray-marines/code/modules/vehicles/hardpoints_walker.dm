@@ -115,8 +115,8 @@
 /obj/item/walker_gun/smartgun
 	name = "M56 Double-Barrel Mounted Smartgun"
 	desc = "Modifyed version of standart USCM Smartgun System, mounted on military walkers"
-	icon_state = "mecha_smartgun"
-	equip_state = "mech-shot"
+	icon_state = "mech_smartgun_parts"
+	equip_state = "redy_smartgun"
 	magazine_type = /obj/item/ammo_magazine/walker/smartgun
 	burst = 2
 	fire_delay = 6
@@ -124,8 +124,8 @@
 /obj/item/walker_gun/hmg
 	name = "M30 Machine Gun"
 	desc = "High-caliber machine gun firing small bursts of AP bullets, tearing into shreds unfortunate fellas on its way."
-	icon_state = "mecha_machinegun"
-	equip_state = "mech-gatt"
+	icon_state = "mech_minigun_parts"
+	equip_state = "redy_minugun"
 	fire_sound = list('sound/weapons/gun_minigun.ogg')
 	magazine_type = /obj/item/ammo_magazine/walker/hmg
 	fire_delay = 20
@@ -134,8 +134,8 @@
 /obj/item/walker_gun/flamer
 	name = "F40 \"Hellfire\" Flamethower"
 	desc = "Powerful flamethower, that can send any unprotected target straight to hell."
-	icon_state = "mecha_flamer"
-	equip_state = "mech-flam"
+	icon_state = "mech_flamer_parts"
+	equip_state = "redy_flamer"
 	fire_sound = 'sound/weapons/gun_flamethrower2.ogg'
 	magazine_type = /obj/item/ammo_magazine/walker/flamer
 	var/fuel_pressure = 1 //Pressure setting of the attached fueltank, controls how much fuel is used per tile
@@ -209,12 +209,13 @@
 
 /obj/item/ammo_magazine/walker
 	w_class = 12.0
+	icon = 'fray-marines/icons/obj/vehicles/mecha_guns.dmi'
 
 /obj/item/ammo_magazine/walker/smartgun
 	name = "M56 Double-Barrel Magazine (Standard)"
 	desc = "A armament MG magazine"
 	caliber = "10x28mm" //Correlates to smartguns
-	icon_state = "ua571c"
+	icon_state = "mech_smartgun_ammo"
 	default_ammo = /datum/ammo/bullet/smartgun
 	max_rounds = 700
 	gun_type = /obj/item/walker_gun/smartgun
@@ -241,7 +242,7 @@
 /obj/item/ammo_magazine/walker/hmg
 	name = "M30 Machine Gun Magazine"
 	desc = "A armament M30 magazine"
-	icon_state = "ua571c"
+	icon_state = "mech_minigun_ammo"
 	max_rounds = 300
 	default_ammo = /datum/ammo/bullet/machinegun
 	gun_type = /obj/item/walker_gun/hmg
@@ -249,7 +250,7 @@
 /obj/item/ammo_magazine/walker/flamer
 	name = "F40 UT-Napthal Canister"
 	desc = "Canister for mounted flamethower"
-	icon_state = "flametank_large"
+	icon_state = "mech_flamer_s_ammo"
 	max_rounds = 500
 	default_ammo = /datum/ammo/flamethrower
 	gun_type = /obj/item/walker_gun/flamer
@@ -287,7 +288,7 @@
 /obj/item/ammo_magazine/walker/flamer/ex
 	name = "F40 UT-Napthal EX-type Canister"
 	desc = "Canister for mounted flamethower"
-	icon_state = "flametank_large"
+	icon_state = "mech_flamer_ex_ammo"
 	max_rounds = 500
 	default_ammo = /datum/ammo/flamethrower
 	gun_type = /obj/item/walker_gun/flamer
@@ -304,7 +305,7 @@
 /obj/item/ammo_magazine/walker/flamer/btype
 	name = "F40 UT-Napthal B-type Canister"
 	desc = "Canister for mounted flamethower"
-	icon_state = "flametank_large"
+	icon_state = "mech_flamer_b_ammo"
 	max_rounds = 500
 	default_ammo = /datum/ammo/flamethrower
 	gun_type = /obj/item/walker_gun/flamer

@@ -8,8 +8,8 @@
 /obj/vehicle/walker
 	name = "CW13 \"Enforcer\" Assault Walker"
 	desc = "Relatively new combat walker of \"Enforcer\"-series. Unlike its predecessor, \"Carharodon\"-series, slower, but relays on its tough armor and rapid-firing weapons."
-	icon = 'fray-marines/icons/obj/vehicles/mech-walker.dmi'
-	icon_state = "mech"
+	icon = 'fray-marines/icons/obj/vehicles/mech.dmi'
+	icon_state = "mech_open"
 	layer = ABOVE_LYING_MOB_LAYER
 	opacity = TRUE
 	can_buckle = FALSE
@@ -33,7 +33,7 @@
 	var/list/dmg_multipliers = list(
 		"all" = 1.0, //for when you want to make it invincible
 		"acid" = 0.9,
-		"slash" = 0.8,
+		"slash" = 0.6,
 		"bullet" = 0.2,
 		"explosive" = 5.0,
 		"blunt" = 0.1,
@@ -66,16 +66,17 @@
 /obj/vehicle/walker/update_icon()
 	overlays.Cut()
 
+	if(seats[VEHICLE_DRIVER] != null)
+		icon_state = "mech_prep"
+	else
+		icon_state = "mech_open"
+
 	if(left)
-		var/image/left_gun = left.get_icon_image("-l")
+		var/image/left_gun = left.get_icon_image("_l_hand")
 		overlays += left_gun
 	if(right)
-		var/image/right_gun = right.get_icon_image("-r")
+		var/image/right_gun = right.get_icon_image("_r_hand")
 		overlays += right_gun
-
-	if(seats[VEHICLE_DRIVER] != null)
-		var/image/occupied = image(icon, icon_state = "mech-face")
-		overlays += occupied
 
 /obj/vehicle/walker/get_examine_text(mob/user)
 	. = ..()
@@ -647,8 +648,8 @@
 /obj/structure/walker_wreckage
 	name = "CW13 wreckage"
 	desc = "Remains of some unfortunate walker. Completely unrepairable."
-	icon = 'fray-marines/icons/obj/vehicles/mech-walker.dmi'
-	icon_state = "mech-damaged"
+	icon = 'fray-marines/icons/obj/vehicles/mech.dmi'
+	icon_state = "mech-broken"
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE

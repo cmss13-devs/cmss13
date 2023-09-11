@@ -49,6 +49,7 @@
 
 // Nutrition levels
 #define NUTRITION_MAX 550
+#define NUTRITION_HIGH 540
 #define NUTRITION_NORMAL 400
 #define NUTRITION_LOW 250
 #define NUTRITION_VERYLOW 50

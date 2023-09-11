@@ -370,7 +370,7 @@
 
 /obj/item/weapon/gun/flamer/M240T/auto/set_gun_config_values()
 	. = ..()
-	set_fire_delay(FIRE_DELAY_TIER_3)
+	set_fire_delay(FIRE_DELAY_TIER_7)
 
 GLOBAL_LIST_EMPTY(flamer_particles)
 /particles/flamer_fire
@@ -403,6 +403,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER
+
+	light_system = STATIC_LIGHT
+	light_on = TRUE
+	light_range = 3
+	light_power = 3
+	light_color = "#f88818"
 
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
@@ -442,6 +448,8 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		color = R.burncolor
 	else
 		flame_icon = R.burn_sprite
+
+	set_light(l_color = R.burncolor)
 
 	if(!GLOB.flamer_particles[R.burncolor])
 		GLOB.flamer_particles[R.burncolor] = new /particles/flamer_fire(R.burncolor)
@@ -576,7 +584,6 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
 /obj/flamer_fire/Destroy()
-	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
 	to_call = null
 	tied_reagent = null
@@ -668,7 +675,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		flame_level++ //the initial flame burst is 1 level higher for a small time
 
 	icon_state = "[flame_icon]_[flame_level]"
-	SetLuminosity(flame_level * 2)
+	set_light(flame_level * 2)
 
 /obj/flamer_fire/proc/un_burst_flame()
 	initial_burst = FALSE
@@ -683,11 +690,11 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/damage = burnlevel*delta_time
 	T.flamer_fire_act(damage)
 
-	update_flame()
-
 	if(!firelevel)
 		qdel(src)
 		return
+
+	update_flame()
 
 	for(var/atom/thing in loc)
 		thing.handle_flamer_fire(src, damage, delta_time)
@@ -703,7 +710,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/area/A = get_area(src)
 	if(!A)
 		return
-	if(SSweather.is_weather_event && locate(A.master) in SSweather.weather_areas)
+	if(SSweather.is_weather_event && locate(A) in SSweather.weather_areas)
 		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
 	else
 		weather_smothering_strength = 0

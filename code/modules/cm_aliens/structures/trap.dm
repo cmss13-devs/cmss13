@@ -85,7 +85,7 @@
 			trigger_trap(TRUE)
 	..()
 
-/obj/effect/alien/resin/trap/bullet_act(obj/item/projectile/P)
+/obj/effect/alien/resin/trap/bullet_act(obj/projectile/P)
 	var/mob/living/carbon/xenomorph/X = P.firer
 	if(istype(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		return

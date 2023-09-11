@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - balance: "GAU can hit mobs that are on ground now"

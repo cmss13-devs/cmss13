@@ -89,9 +89,9 @@
 	SPAN_DANGER("You nudge your head against [src]."))
 
 // Density override
-/obj/ovipositor/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/ovipositor/get_projectile_hit_boolean(obj/projectile/P)
 	return TRUE
 
-/obj/ovipositor/bullet_act(obj/item/projectile/Proj)
+/obj/ovipositor/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	return 1

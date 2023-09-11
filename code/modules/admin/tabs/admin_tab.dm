@@ -331,7 +331,7 @@
 		if(SUBTLE_MESSAGE_IN_HEAD)
 			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [input]")
 		else
-			message = SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
+			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
 
 	for(var/mob/living/carbon/human/mob in view(usr.client))
 		if(message_option == SUBTLE_MESSAGE_IN_HEAD)
@@ -839,3 +839,16 @@
 	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	message_admins("[src] has toggled Hardcore [MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "on, causing all humans to instantly go perma on death" : "off, causing all humans to die like normal"].")
 
+/client/proc/toggle_bypass_joe_restriction()
+	set name = "Toggle Working Joe Restrictions"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_EVENT, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_BYPASS_JOE
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE) ? "allowed players to bypass (except whitelist)" : "prevented players from bypassing"] Working Joe spawn conditions.")

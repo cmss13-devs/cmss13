@@ -5,7 +5,6 @@
 	density = TRUE
 	anchored = TRUE
 	animate_movement = 1
-	luminosity = 2
 	can_buckle = TRUE
 
 	// The mobs that are in each position/seat of the vehicle
@@ -99,7 +98,7 @@
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()
 
-/obj/vehicle/bullet_act(obj/item/projectile/P)
+/obj/vehicle/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
@@ -166,13 +165,13 @@
 	if(powered && cell.charge < charge_use)
 		return 0
 	on = 1
-	SetLuminosity(initial(luminosity))
+	set_light(initial(light_range))
 	update_icon()
 	return 1
 
 /obj/vehicle/proc/turn_off()
 	on = 0
-	SetLuminosity(0)
+	set_light(0)
 	update_icon()
 
 /obj/vehicle/proc/explode()
@@ -261,10 +260,6 @@
 /obj/vehicle/unbuckle()
 	. = ..()
 	seats[VEHICLE_DRIVER] = null
-
-/obj/vehicle/Destroy()
-	SetLuminosity(0)
-	. = ..()
 
 //-------------------------------------------------------
 // Stat update procs

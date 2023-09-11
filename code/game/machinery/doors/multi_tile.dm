@@ -66,6 +66,7 @@
 	icon = 'icons/obj/structures/doors/Door2x1research.dmi'
 	opacity = FALSE
 	glass = 1
+	req_one_access = list(ACCESS_MARINE_RESEARCH, ACCESS_WY_RESEARCH, ACCESS_WY_EXEC)
 
 /obj/structure/machinery/door/airlock/multi_tile/research/colony
 	req_access = null
@@ -178,7 +179,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research
 	name = "\improper Research Airlock"
-	req_one_access = list(ACCESS_MARINE_RESEARCH)
+	req_one_access = list(ACCESS_MARINE_RESEARCH, ACCESS_WY_RESEARCH, ACCESS_WY_EXEC)
 	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research/colony

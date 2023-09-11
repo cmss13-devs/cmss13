@@ -1,9 +1,0 @@
-author: "Triiodine, Frans, Warfan, SpartanBobby, Twomper, Roboticpotato, Tophat Penguin,forest2001"
-delete-after: True
-changes:
-  - rscadd: "Added Royal Marines commando ERT and faction"
-  - rscadd: "Updates Riot shield sprite, adds metal shield as well (sprites from trio)"
-  - rscadd: "TWE ERT station"
-  - rscadd: "F903 Rifle, Royal marines commando armour sets, new smartgun with holotargetting rounds for royal marines commando"
-  - rscadd: "Calico shotgun, pistol and SMG sprites to the codebase made by Triodine"
-  - rscadd: "royal marines commando HEDP and HIDP grenades"

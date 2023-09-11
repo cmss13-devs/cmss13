@@ -90,7 +90,7 @@ update_flag
 		density = FALSE
 		update_icon()
 
-/obj/structure/machinery/portable_atmospherics/canister/bullet_act(obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/canister/bullet_act(obj/projectile/Proj)
 	if(Proj.ammo.damage)
 		update_health(round(Proj.ammo.damage / 2))
 	..()

@@ -91,7 +91,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
-/obj/structure/flora/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/flora/get_projectile_hit_boolean(obj/projectile/P)
 	. = ..()
 	return FALSE
 

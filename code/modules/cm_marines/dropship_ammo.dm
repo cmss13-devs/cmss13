@@ -146,6 +146,8 @@
 	fire_mission_delay = 2
 	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
+	var/directhit_damage = 105 //how much damage is to be inficted to a mob, this is here so that we can hit resting mobs.
+	var/penetration = 10 //AP value pretty much
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
 	. = ..()
@@ -165,25 +167,27 @@
 	var/soundplaycooldown = 0
 	var/debriscooldown = 0
 	for(var/i = 1 to ammo_used_per_firing)
-		var/turf/U = pick(turf_list)
+		var/turf/impact_tile = pick(turf_list)
 		sleep(1)
 		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-		U.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
-		create_shrapnel(U,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
-		for(var/atom/movable/AM in U)
-			if(iscarbon(AM))
-				AM.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
+		create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
+		for(var/atom/movable/explosion_effect in impact_tile)
+			if(iscarbon(explosion_effect))
+				var/mob/living/carbon/bullet_effect = explosion_effect
+				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
 			else
-				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
+				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(U, 'sound/effects/gauimpact.ogg',40,1,20)
+			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
 			soundplaycooldown = 3
 		soundplaycooldown--
 		if(!debriscooldown)
-			U.ceiling_debris_check(1)
+			impact_tile.ceiling_debris_check(1)
 			debriscooldown = 6
 		debriscooldown--
-		new /obj/effect/particle_effect/expl_particles(U)
+		new /obj/effect/particle_effect/expl_particles(impact_tile)
 	sleep(11) //speed of sound simulation
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 
@@ -200,6 +204,8 @@
 	point_cost = 325
 	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
+	directhit_damage = 80 //how much damage is to be inficted to a mob, this is here so that we can hit resting mobs.
+	penetration = 40 //AP value pretty much
 
 //laser battery
 

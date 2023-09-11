@@ -155,7 +155,6 @@
 	var/choice = tgui_input_list(src, "Choose a distress beacon to join", "", beacons)
 
 	if(!choice)
-		to_chat(src, "Something seems to have gone wrong!")
 		return
 
 	if(!beacons[choice] || !(beacons[choice] in SSticker.mode.picked_calls))

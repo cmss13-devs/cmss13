@@ -81,9 +81,9 @@
 
 	data["worldtime"] = world.time
 
-	data["evac_status"] = EvacuationAuthority.evac_status
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
-		data["evac_eta"] = EvacuationAuthority.get_status_panel_eta()
+	data["evac_status"] = SShijack.evac_status
+	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
+		data["evac_eta"] = SShijack.get_status_panel_eta()
 
 	if(!messagetitle.len)
 		data["messages"] = null
@@ -121,11 +121,11 @@
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
 
-			if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
+			if(SShijack.evac_admin_denied)
 				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 				return FALSE
 
-			if(!EvacuationAuthority.initiate_evacuation())
+			if(!SShijack.initiate_evacuation())
 				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 				return FALSE
 
@@ -136,11 +136,9 @@
 			. = TRUE
 
 		if("evacuation_cancel")
-			if(!EvacuationAuthority.cancel_evacuation())
+			if(!SShijack.cancel_evacuation())
 				to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
 				return FALSE
-
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/almayer_control, cancel_evac)), 4 SECONDS)
 
 			log_game("[key_name(usr)] has canceled the emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
@@ -280,10 +278,3 @@
 // end tgui interact \\
 
 // end tgui \\
-
-/obj/structure/machinery/computer/almayer_control/proc/cancel_evac()
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
-		//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
-		if(!EvacuationAuthority.cancel_self_destruct(1))
-			//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
-			set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.

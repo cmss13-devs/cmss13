@@ -110,6 +110,10 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	log_game("Server IP: [world.internet_address]:[world.port]")
 	return TRUE
 
+/datum/game_mode/proc/get_affected_zlevels()
+	if(is_in_endgame)
+		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP))
+		return
 
 ///process()
 ///Called by the gameticker
@@ -118,8 +122,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 
 
 /datum/game_mode/proc/check_finished() //to be called by ticker
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED )
-		return TRUE
+	return
 
 /datum/game_mode/proc/cleanup() //This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return

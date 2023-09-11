@@ -103,7 +103,7 @@
 /obj/docking_port/mobile/crashable/escape_shuttle/crash_check()
 	. = ..()
 
-	if(prob((EvacuationAuthority.evac_status >= EVACUATION_STATUS_IN_PROGRESS ? crash_land_chance : early_crash_land_chance)))
+	if(prob((SShijack.hijack_status >= HIJACK_OBJECTIVES_COMPLETE ? crash_land_chance : early_crash_land_chance)))
 		return TRUE
 
 /obj/docking_port/mobile/crashable/escape_shuttle/open_doors()

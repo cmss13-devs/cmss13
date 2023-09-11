@@ -389,15 +389,13 @@
 		dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 		if(check_rights(R_DEBUG, 0))
-			dat += "<br><A HREF='?_src_=vars;Vars=\ref[EvacuationAuthority]'>VV Evacuation Controller</A><br>"
 			dat += "<A HREF='?_src_=vars;Vars=\ref[shuttle_controller]'>VV Shuttle Controller</A><br><br>"
 
 		if(check_rights(R_MOD, 0))
 			dat += "<b>Evacuation:</b> "
-			switch(EvacuationAuthority.evac_status)
-				if(EVACUATION_STATUS_STANDING_BY) dat += "STANDING BY"
-				if(EVACUATION_STATUS_INITIATING) dat += "IN PROGRESS: [EvacuationAuthority.get_status_panel_eta()]"
-				if(EVACUATION_STATUS_COMPLETE) dat += "COMPLETE"
+			switch(SShijack.evac_status)
+				if(EVACUATION_STATUS_NOT_INITIATED) dat += "STANDING BY"
+				if(EVACUATION_STATUS_INITIATED) dat += "IN PROGRESS"
 			dat += "<br>"
 
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
@@ -405,6 +403,7 @@
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
 			if(check_rights(R_ADMIN, 0)) dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
 
+		/*
 		if(check_rights(R_ADMIN, 0))
 			dat += "<b>Self-Destruct:</b> "
 			switch(EvacuationAuthority.dest_status)
@@ -418,6 +417,8 @@
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_dest'>Lock Self-Destruct control panel for humans</A><br>"
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=use_dest'>Destruct the [MAIN_SHIP_NAME] NOW</A><br>"
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_dest'>Toggle Self-Destruct Permission (does not affect evac in progress)</A><br>"
+
+		*/ //Convert all this when self destruct is set up - Morrow
 
 		dat += "<br><A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"

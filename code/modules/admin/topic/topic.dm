@@ -131,27 +131,22 @@
 	if(href_list["evac_authority"])
 		switch(href_list["evac_authority"])
 			if("init_evac")
-				if(!EvacuationAuthority.initiate_evacuation())
+				if(!SShijack.initiate_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation right now!"))
 				else
 					message_admins("[key_name_admin(usr)] called an evacuation.")
 
 			if("cancel_evac")
-				if(!EvacuationAuthority.cancel_evacuation())
+				if(!SShijack.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel an evacuation right now!"))
 				else
 					message_admins("[key_name_admin(usr)] canceled an evacuation.")
 
 			if("toggle_evac")
-				EvacuationAuthority.flags_scuttle ^= FLAGS_EVACUATION_DENY
-				message_admins("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY ? "forbidden" : "allowed"] ship-wide evacuation.")
+				SShijack.evac_admin_denied = !SShijack.evac_admin_denied
+				message_admins("[key_name_admin(usr)] has [SShijack.evac_admin_denied ? "forbidden" : "allowed"] ship-wide evacuation.")
 
-			if("force_evac")
-				if(!EvacuationAuthority.begin_launch())
-					to_chat(usr, SPAN_WARNING("You are unable to launch the pods directly right now!"))
-				else
-					message_admins("[key_name_admin(usr)] force-launched the escape pods.")
-
+	/*
 			if("init_dest")
 				if(!EvacuationAuthority.enable_self_destruct())
 					to_chat(usr, SPAN_WARNING("You are unable to authorize the self-destruct right now!"))
@@ -175,6 +170,8 @@
 			if("toggle_dest")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_SELF_DESTRUCT_DENY
 				message_admins("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
+
+	*/ // Transfer over when self destruct is done - Morrow
 
 //======================================================
 //======================================================

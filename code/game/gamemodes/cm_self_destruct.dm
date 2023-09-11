@@ -43,6 +43,7 @@ Regardless of where it's detonated, or how, a successful detonation will end the
 All of the necessary difines are stored under mode.dm in defines.
 */
 
+/*
 var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initited elsewhere so that the world has a chance to load in.
 
 /datum/authority/branch/evacuation
@@ -474,3 +475,4 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				icon_state = "rod_3"
 				active_state = SELF_DESTRUCT_MACHINE_ACTIVE
 			else to_chat(user, SPAN_WARNING("The control rod is not ready."))
+*/

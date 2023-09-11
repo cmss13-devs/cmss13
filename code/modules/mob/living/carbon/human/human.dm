@@ -123,8 +123,8 @@
 	if(marksman_aura)
 		. += "Active Order: FOCUS"
 
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+	if(SShijack)
+		var/eta_status = SShijack.get_status_panel_eta()
 		if(eta_status)
 			. += "Evacuation: [eta_status]"
 

@@ -394,7 +394,38 @@ var/bomb_set = FALSE
 	update_icon()
 	safety = TRUE
 
-	EvacuationAuthority.trigger_self_destruct(list(z), src, FALSE, NUKE_EXPLOSION_GROUND_FINISHED, FALSE, end_round)
+	playsound(src, 'sound/machines/Alarm.ogg', 75, 0, 30)
+	world << pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+
+	var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
+	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		if(!current_mob || !current_mob.loc)
+			continue
+		if(current_mob.stat == DEAD)
+			dead_mobs |= current_mob
+			continue
+		var/turf/current_turf = get_turf(current_mob)
+		if(z == current_turf.z)
+			alive_mobs |= current_mob
+			shake_camera(current_mob, 110, 4)
+
+	for(var/mob/current_mob in alive_mobs)
+		if(current_mob && current_mob.loc)
+			var/turf/current_mob_turf = get_turf(current_mob)
+			if(z == current_mob_turf.z)
+				if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+					continue
+				current_mob.death(create_cause_data("nuclear explosion"))
+
+	for(var/mob/current_mob in (alive_mobs + dead_mobs))
+		if(current_mob && current_mob.loc)
+			var/turf/current_mob_turf = get_turf(current_mob)
+			if(z == current_mob_turf.z)
+				if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+					continue
+				for(var/obj/item/alien_embryo/embryo in current_mob)
+					qdel(embryo)
 
 	sleep(100)
 	cell_explosion(loc, 500, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)))

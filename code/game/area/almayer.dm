@@ -13,6 +13,21 @@
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 
+	///Whether this area is used for hijack evacuation progress
+	var/hijack_evacuation_area = FALSE
+
+	///The weight this area gives towards hijack evacuation progress
+	var/hijack_evacuation_weight = 0
+
+	///Whether this area is additive or multiplicative towards evacuation progress
+	var/hijack_evacuation_type = EVACUATION_TYPE_NONE
+
+/area/almayer/Initialize(mapload, ...)
+	. = ..()
+
+	if(hijack_evacuation_area)
+		SShijack.progress_areas[src] = power_equip
+
 /area/shuttle/almayer/elevator_maintenance/upperdeck
 	name = "\improper Maintenance Elevator"
 	icon_state = "shuttle"
@@ -160,6 +175,9 @@
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ENG
 	soundscape_interval = 15
+	hijack_evacuation_area = TRUE
+	hijack_evacuation_weight = 1
+	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/engineering/starboard_atmos
 	name = "\improper Atmospherics Starboard"
@@ -183,6 +201,9 @@
 	name = "\improper Astronavigational Deck"
 	icon_state = "astronavigation"
 	fake_zlevel = 2 // lowerdeck
+	hijack_evacuation_area = TRUE
+	hijack_evacuation_weight = 2
+	hijack_evacuation_type = EVACUATION_TYPE_MULTIPLICATIVE
 
 /area/almayer/shipboard/panic
 	name = "\improper Hangar Panic Room"
@@ -712,6 +733,9 @@
 	icon_state = "lifeboat_pump"
 	requires_power = 1
 	fake_zlevel = 1
+	hijack_evacuation_area = TRUE
+	hijack_evacuation_weight = 0.5
+	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/lifeboat_pumps/north1
 	name = "North West Lifeboat Fuel Pump"

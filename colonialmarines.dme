@@ -241,6 +241,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\controllers\subsystem\fast_machinery.dm"
 #include "code\controllers\subsystem\fz_transitions.dm"
 #include "code\controllers\subsystem\garbage.dm"
+#include "code\controllers\subsystem\hijack.dm"
 #include "code\controllers\subsystem\htmlui.dm"
 #include "code\controllers\subsystem\human.dm"
 #include "code\controllers\subsystem\inactivity.dm"

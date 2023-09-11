@@ -141,7 +141,7 @@
 	//all the finish snacks.
 
 /datum/supply_packs/donuts
-	name = "boxe of donut (x5)"
+	name = "box of donuts (x5)"
 	contains = list(
 		/obj/item/storage/donut_box,
 		/obj/item/storage/donut_box,
@@ -151,7 +151,7 @@
 	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
-	containername = "\improper boxe of donut (x5)"
+	containername = "box of donuts (x5)"
 	group = "Food"
 
 /datum/supply_packs/mre

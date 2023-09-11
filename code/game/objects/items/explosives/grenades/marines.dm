@@ -467,6 +467,45 @@
 
 /*
 //================================================
+			Nerve Gas Grenades
+//================================================
+*/
+/obj/item/explosive/grenade/nerve_gas
+	name = "\improper CN20 canister grenade"
+	desc = "A canister grenade of deadly nerve gas. It is set to detonate in 4 seconds."
+	icon_state = "flashbang2"//temp icon
+	det_time = 40
+	item_state = "grenade_phos_clf"//temp icon
+	underslug_launchable = FALSE
+	harmful = TRUE
+	antigrief_protection = TRUE
+	var/datum/effect_system/smoke_spread/cn20/nerve_gas
+	var/nerve_gas_radius = 2
+
+/obj/item/explosive/grenade/nerve_gas/New()
+	..()
+	nerve_gas = new /datum/effect_system/smoke_spread/cn20
+	nerve_gas.attach(src)
+
+/obj/item/explosive/grenade/nerve_gas/Destroy()
+	QDEL_NULL(nerve_gas)
+	return ..()
+
+/obj/item/explosive/grenade/nerve_gas/prime()
+	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	nerve_gas.set_up(nerve_gas_radius, 0, get_turf(src), null, 6)
+	nerve_gas.start()
+	qdel(src)
+
+/obj/item/explosive/grenade/nerve_gas/xeno
+	name = "\improper CN20-X canister grenade"
+
+/obj/item/explosive/grenade/nerve_gas/xeno/New()
+	nerve_gas = new /datum/effect_system/smoke_spread/cn20/xeno
+	nerve_gas.attach(src)
+
+/*
+//================================================
 			Airburst Smoke Grenades
 //================================================
 */
@@ -688,4 +727,24 @@
 	flame_level = BURN_TIME_TIER_3
 	burn_level = BURN_LEVEL_TIER_3
 	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT
+
+//Royal marine grenades
+
+/obj/item/explosive/grenade/high_explosive/rmc
+	name = "\improper R2175/A HEDP grenade"
+	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has recently been added to the arsenal of the RMC."
+	icon_state = "rmc_grenade"
+	item_state = "grenade_hedp"
+	explosion_power = 130
+	explosion_falloff = 30
+
+/obj/item/explosive/grenade/incendiary/rmc
+	name = "\improper R2175/B HIDP grenade"
+	desc = "The R2175/B HIDP is a small, but deceptively strong incendiary grenade designed to rapidly clear areas with fast-acting potent fire. It is set to detonate in 4 seconds."
+	icon_state = "rmc_grenade_fire"
+	item_state = "grenade_fire"
+	flame_level = BURN_TIME_TIER_1
+	burn_level = BURN_LEVEL_TIER_8
+	radius = 3
 	fire_type = FIRE_VARIANT_DEFAULT

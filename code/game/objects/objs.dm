@@ -42,7 +42,7 @@
 	if(garbage)
 		add_to_garbage(src)
 
-/obj/Destroy()
+/obj/Destroy(force)
 	if(buckled_mob)
 		unbuckle()
 	. = ..()
@@ -353,7 +353,7 @@
 
 	return ..()
 
-/obj/bullet_act(obj/item/projectile/P)
+/obj/bullet_act(obj/projectile/P)
 	//Tasers and the like should not damage objects.
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return 0

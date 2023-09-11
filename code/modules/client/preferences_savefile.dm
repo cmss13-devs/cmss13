@@ -157,6 +157,7 @@
 	S["pred_name"] >> predator_name
 	S["pred_gender"] >> predator_gender
 	S["pred_age"] >> predator_age
+	S["pred_use_legacy"] >> predator_use_legacy
 	S["pred_trans_type"] >> predator_translator_type
 	S["pred_mask_type"] >> predator_mask_type
 	S["pred_armor_type"] >> predator_armor_type
@@ -193,6 +194,7 @@
 	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
 	S["adaptive_zoom"] >> adaptive_zoom
+	S["tooltips"] >> tooltips
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -225,12 +227,14 @@
 	no_radial_labels_preference = sanitize_integer(no_radial_labels_preference, FALSE, TRUE, FALSE)
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
 	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
+	tooltips = sanitize_integer(tooltips, FALSE, TRUE, TRUE)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
+	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
@@ -337,6 +341,7 @@
 	S["pred_name"] << predator_name
 	S["pred_gender"] << predator_gender
 	S["pred_age"] << predator_age
+	S["pred_use_legacy"] << predator_use_legacy
 	S["pred_trans_type"] << predator_translator_type
 	S["pred_mask_type"] << predator_mask_type
 	S["pred_armor_type"] << predator_armor_type

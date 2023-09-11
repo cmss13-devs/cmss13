@@ -852,7 +852,7 @@
 		playsound(src, "glassbreak", 70, 1)
 		damaged = TRUE
 		if(is_lit)
-			SetLuminosity(0)
+			set_light(0)
 		update_icon()
 	else
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)

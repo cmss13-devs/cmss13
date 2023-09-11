@@ -894,7 +894,7 @@
 	if(ismob(source))
 		var/mob/M = source
 		has_nightvision = M.see_in_dark >= 12
-	if(!has_nightvision && target_turf.lighting_lumcount == 0)
+	if(!has_nightvision && target_turf.get_lumcount() == 0)
 		return FALSE
 
 	while(current != target_turf)
@@ -1227,12 +1227,11 @@ var/global/image/action_purple_power_up
 	if(A.vars.Find(lowertext(varname))) return 1
 	else return 0
 
-//Returns: all the non-lighting areas in the world, sorted.
+//Returns: all the areas in the world, sorted.
 /proc/return_sorted_areas()
 	var/list/area/AL = list()
 	for(var/area/A in GLOB.sorted_areas)
-		if(!A.lighting_subarea)
-			AL += A
+		AL += A
 	return AL
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
@@ -1252,13 +1251,8 @@ var/global/image/action_purple_power_up
 	var/area/A = GLOB.areas_by_type[areatype]
 
 	// Fix it up with /area/var/related due to lighting shenanigans
-	var/list/area/LA
-	if(!length(A.related))
-		LA = list(A)
-	else LA = A.related
-	for(var/area/Ai in LA)
-		for(var/turf/T in Ai)
-			turfs += T
+	for(var/turf/T in A)
+		turfs += T
 
 	return turfs
 
@@ -1382,7 +1376,7 @@ var/global/image/action_purple_power_up
 
 // if(AR.lighting_use_dynamic) //TODO: rewrite this code so it's not messed by lighting ~Carn
 // X.opacity = !X.opacity
-// X.SetOpacity(!X.opacity)
+// X.set_opacity(!X.opacity)
 
 					toupdate += X
 
@@ -1766,6 +1760,85 @@ var/list/WALLITEMS = list(
 		if(location == src)
 			return TRUE
 
+GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
+
+/// Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
+/proc/dview(range = world.view, center, invis_flags = 0)
+	if(!center)
+		return
+
+	GLOB.dview_mob.loc = center
+
+	GLOB.dview_mob.see_invisible = invis_flags
+
+	. = view(range, GLOB.dview_mob)
+	GLOB.dview_mob.loc = null
+
+/mob/dview
+	name = "INTERNAL DVIEW MOB"
+	invisibility = 101
+	density = FALSE
+	see_in_dark = 1e6
+	var/ready_to_die = FALSE
+
+/mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
+	SHOULD_CALL_PARENT(FALSE)
+	if(flags_atom & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags_atom |= INITIALIZED
+	return INITIALIZE_HINT_NORMAL
+
+/mob/dview/Destroy(force = FALSE)
+	if(!ready_to_die)
+		stack_trace("ALRIGHT WHICH FUCKER TRIED TO DELETE *MY* DVIEW?")
+
+		if (!force)
+			return QDEL_HINT_LETMELIVE
+
+		log_world("EVACUATE THE SHITCODE IS TRYING TO STEAL MUH JOBS")
+		GLOB.dview_mob = new
+	return ..()
+
+
+#define FOR_DVIEW(type, range, center, invis_flags) \
+	GLOB.dview_mob.loc = center;           \
+	GLOB.dview_mob.see_invisible = invis_flags; \
+	for(type in view(range, GLOB.dview_mob))
+
+#define FOR_DVIEW_END GLOB.dview_mob.loc = null
+
+/proc/get_turf_pixel(atom/AM)
+	if(!istype(AM))
+		return
+
+	//Find AM's matrix so we can use it's X/Y pixel shifts
+	var/matrix/M = matrix(AM.transform)
+
+	var/pixel_x_offset = AM.pixel_x + M.get_x_shift()
+	var/pixel_y_offset = AM.pixel_y + M.get_y_shift()
+
+	//Irregular objects
+	var/icon/AMicon = icon(AM.icon, AM.icon_state)
+	var/AMiconheight = AMicon.Height()
+	var/AMiconwidth = AMicon.Width()
+	if(AMiconheight != world.icon_size || AMiconwidth != world.icon_size)
+		pixel_x_offset += ((AMiconwidth/world.icon_size)-1)*(world.icon_size*0.5)
+		pixel_y_offset += ((AMiconheight/world.icon_size)-1)*(world.icon_size*0.5)
+
+	//DY and DX
+	var/rough_x = round(round(pixel_x_offset,world.icon_size)/world.icon_size)
+	var/rough_y = round(round(pixel_y_offset,world.icon_size)/world.icon_size)
+
+	//Find coordinates
+	var/turf/T = get_turf(AM) //use AM's turfs, as it's coords are the same as AM's AND AM's coords are lost if it is inside another atom
+	if(!T)
+		return null
+	var/final_x = T.x + rough_x
+	var/final_y = T.y + rough_y
+
+	if(final_x || final_y)
+		return locate(final_x, final_y, T.z)
+
 //used to check if a mob can examine an object
 /atom/proc/can_examine(mob/user)
 	if(!user.client)
@@ -1993,3 +2066,30 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		if(stop_type && istype(turf_to_check, stop_type))
 			break
 	return turf_to_check
+
+/// Given a direction, return the direction and the +-45 degree directions next to it
+/proc/get_related_directions(direction = NORTH)
+	switch(direction)
+		if(NORTH)
+			return list(NORTH, NORTHEAST, NORTHWEST)
+
+		if(EAST)
+			return list(EAST, NORTHEAST, SOUTHEAST)
+
+		if(SOUTH)
+			return list(SOUTH, SOUTHEAST, SOUTHWEST)
+
+		if(WEST)
+			return list(WEST, NORTHWEST, SOUTHWEST)
+
+		if(NORTHEAST)
+			return list(NORTHEAST, NORTH, EAST)
+
+		if(SOUTHEAST)
+			return list(SOUTHEAST, EAST, SOUTH)
+
+		if(SOUTHWEST)
+			return list(SOUTHWEST, SOUTH, WEST)
+
+		if(NORTHWEST)
+			return list(NORTHWEST, NORTH, WEST)

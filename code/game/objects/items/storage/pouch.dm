@@ -792,11 +792,17 @@
 
 /obj/item/storage/pouch/medkit
 	name = "medkit pouch"
-	max_w_class = SIZE_MEDIUM
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	max_w_class = SIZE_SMALL
+	storage_flags = STORAGE_FLAGS_POUCH
 	icon_state = "medkit"
-	desc = "It's specifically made to hold a medkit."
-	can_hold = list(/obj/item/storage/firstaid)
+	storage_slots = 7
+	desc = "It's specifically made to hold medical items."
+	cant_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/tool,
+		/obj/item/storage,
+	)
 
 /obj/item/storage/pouch/medkit/handle_mmb_open(mob/user)
 	var/obj/item/storage/firstaid/FA = locate() in contents

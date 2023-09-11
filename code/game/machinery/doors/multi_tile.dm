@@ -271,6 +271,7 @@
 	unacidable = TRUE
 	no_panel = 1
 	not_weldable = 1
+	var/queen_pryable = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return
@@ -283,6 +284,9 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.hive_pos != XENO_QUEEN)
+		return ..()
+
+	if(!queen_pryable)
 		return ..()
 
 	if(!locked)
@@ -316,6 +320,7 @@
 	locked = TRUE
 	opacity = FALSE
 	glass = TRUE
+	queen_pryable = FALSE
 	var/throw_dir = EAST
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/try_to_activate_door(mob/user)

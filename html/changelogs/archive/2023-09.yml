@@ -52,30 +52,8 @@
   Ben10083:
   - admin: New toggleable flag added to bypass restrictions for Working Joe spawns
       as observer (excluding whitelist requirement)
-  Fray2:
-  - rscadd: Added something
-  - rscdel: Removed old things
-  - qol: made something easier to use
-  - balance: rebalanced something
-  - bugfix: fixed a few things
-  - spellcheck: fixed a few typos
-  - ui: changed something relating to user interfaces
-  - code_imp: changed some code
-  - refactor: refactored some code
-  - soundadd: added a new sound thingy
-  - sounddel: removed an old sound thingy
-  - imageadd: added some icons and images
-  - imagedel: deleted some icons and images
-  - mapadd: added a new map or section to a map
-  - maptweak: tweaked a map
-  - config: changed some config setting
-  - admin: messed with admin stuff
-  - server: something server ops should know
   Morrow:
   - bugfix: Fixed perma helmet HUDs
-  RenaRenaRe:
-  - bugfix: Hugger and Lesser Drone ghosts now actually bypass time of death checks
-      for the larva queue.
   Steelpoint:
   - rscadd: Synthetic vendors now have the option to vend several helmets and a riot
       visor. Including a standard M10 helmet defaulted to non-camo grey.
@@ -85,154 +63,107 @@
   - bugfix: Working Joes no longer get cryo self defense kits
   - bugfix: Cryo self defense kits now have the correct amount of slots
 2023-09-06:
-  Fray2:
-  - rscadd: Added something
-  - rscdel: Removed old things
-  - qol: made something easier to use
-  - balance: rebalanced something
-  - bugfix: fixed a few things
-  - spellcheck: fixed a few typos
-  - ui: changed something relating to user interfaces
-  - code_imp: changed some code
-  - refactor: refactored some code
-  - soundadd: added a new sound thingy
-  - sounddel: removed an old sound thingy
-  - imageadd: added some icons and images
-  - imagedel: deleted some icons and images
-  - mapadd: added a new map or section to a map
-  - maptweak: tweaked a map
-  - config: changed some config setting
-  - admin: messed with admin stuff
-  - server: something server ops should know
+  Birdtalon:
+  - bugfix: fixed eggsac carrier strain not updating hugger sprites.
+  Drathek:
+  - bugfix: Fixed xeno grab intent
   Morrow:
-  - bugfix: Fixed a null reference when firing full auto and dropping your weapon
-  Steelpoint:
-  - bugfix: ERT UPP Soldiers will now correctly spawn with firearms.
-  Wyderar:
-  - imageadd: Icon placeholder for mecha gun
-  - maptweak: Deleted tags
-  harryob:
-  - rscadd: guns that have full auto now start on full auto by default
-  poleno1232:
-  - balance: "\u0421\u0430\u043D\u043A\u0435\u043D \u0442\u0435\u043F\u0435\u0440\u044C\
-      \ \u0431\u044C\u0451\u0442 \u043D\u0430 \u0440\u0430\u0441\u0441\u0442\u043E\
-      \u044F\u043D\u0438\u0435 10 \u0442\u0430\u0439\u043B\u043E\u0432, \u043C\u0438\
-      \u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435 \u0440\u0430\u0441\u0441\
-      \u0442\u043E\u044F\u043D\u0438\u0435 - 3 \u0442\u0430\u0439\u043B\u0430"
-  - balance: "\u041C\u043E\u0436\u043D\u043E \u0431\u0435\u0437 \u0441\u0442\u0440\
-      \u0430\u0445\u0430 \u043F\u043E\u0434\u0445\u043E\u0434\u0438\u0442\u044C \u043A\
-      \ \u0441\u0430\u043D\u043A\u0435\u043D\u0430\u043C \u043D\u0430 \u0440\u0430\
-      \u0441\u0441\u0442\u043E\u044F\u043D\u0438\u0435 \u0432 3 \u0442\u0430\u0439\
-      \u043B\u0430"
-  - balance: "\u0422\u0435\u043F\u0435\u0440\u044C \u043E\u0434\u0438\u043D \u0445\
-      \u0430\u0439\u0432\u043B\u043E\u0440\u0434 \u043C\u043E\u0436\u0435\u0442 \u043F\
-      \u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u043C\u0430\u043A\u0441\u0438\
-      \u043C\u0443\u043C 5 \u0441\u0430\u043D\u043A\u0435\u043D\u043E\u0432"
+  - rscadd: Added a ghost notification for Acid Runner For the Hive! ability.
+  RenaRenaRe:
+  - bugfix: Hugger and Lesser Drone ghosts now actually bypass time of death checks
+      for the larva queue.
 2023-09-07:
   Morrow:
   - bugfix: Fixed a null reference when firing full auto and dropping your weapon
   Steelpoint:
   - bugfix: ERT UPP Soldiers will now correctly spawn with firearms.
-  Wyderar:
-  - balance: Changed timelocks
-  carrotman2013:
-  - admin: "\u041F\u0435\u0440\u0435\u0432\u043E\u0434 \u043D\u0435\u043A\u043E\u0442\
-      \u043E\u0440\u044B\u0445 \u0430\u0434\u043C\u0438\u043D \u0444\u0443\u043D\u043A\
-      \u0446\u0438\u0439."
-  - qol: "\u041F\u0435\u0440\u0435\u0432\u043E\u0434\u044B \u0442\u0435\u043A\u0441\
-      \u0442\u0430"
-  - rscadd: "\u041C\u043E\u0436\u043D\u043E \u043F\u0440\u043E\u0434\u0430\u0432\u0430\
-      \u0442\u044C \u043C\u0435\u0440\u0442\u0432\u044B\u0445 \u043A\u0441\u0435\u043D\
-      \u043E\u043C\u043E\u0440\u0444\u043E\u0432 \u0432 \u043A\u0430\u0440\u0433\u043E\
-      \ (\u043F\u0440\u0438 \u0443\u0441\u043B\u043E\u0432\u0438\u0438 \u0447\u0442\
-      \u043E \u0432\u043A\u043B\u044E\u0447\u0435\u043D \u0440\u0435\u0436\u0438\u043C\
-      \ \u0447\u0435\u0440\u043D\u043E\u0433\u043E \u0440\u044B\u043D\u043A\u0430\
-      )."
-  - rscadd: "\u0427\u0430\u0441\u0442\u0438\u0447\u043D\u044B\u0439 \u043F\u0435\u0440\
-      \u0435\u0432\u043E\u0434 \u0447\u0430\u0442\u0430 \u043D\u0430 \u0440\u0443\u0441\
-      \u0441\u043A\u0438\u0439 \u044F\u0437\u044B\u043A."
-  - rscadd: "\u041F\u0435\u0440\u0435\u0432\u043E\u0434 \u0441\u0442\u0430\u0442\u0438\
-      \u0441\u0442\u0438\u043A\u0438 \u043D\u0430 \u0440\u0443\u0441\u0441\u043A\u0438\
-      \u0439 \u044F\u0437\u044B\u043A."
-  - rscadd: "\u0414\u043B\u044F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\
-      \u0430\u043D\u0438\u044F \u0440\u0430\u0434\u0438\u043E\u043A\u0430\u043D\u0430\
-      \u043B\u043E\u0432 \u0442\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u043D\
-      \u043E \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C\
-      \ \u0440\u0443\u0441\u0441\u043A\u043E\u044F\u0437\u044B\u0447\u043D\u044B\u0435\
-      \ \u0430\u043D\u0430\u043B\u043E\u0433\u0438 \u043A\u043B\u0430\u0432\u0438\u0448\
-      ."
   harryob:
   - rscadd: guns that have full auto now start on full auto by default
-  poleno1232:
-  - balance: Weaken Sunken Colony
+2023-09-09:
+  BeagleGaming1:
+  - bugfix: The APS property works correctly again
+  - rscdel: Removes emergency autoinjectors from squad medics
+  - rscdel: Removes skillless variant of the emergency autoinjector, makes default
+      variant skillless
+  - balance: Emergency autoinjectors cannot be refilled
+  - balance: Replaces skillless autoinjectors in marine pouches with standard autoinjectors
+  Morrow:
+  - bugfix: Clusters turning into pylons expand properly
+  - rscadd: Added the ability to early launch lifeboats
+  - rscadd: Added the ability for lifeboats to crash if early launched
+  - rscdel: Removed alcohol from emergency wall cabinets
+  - bugfix: Should stop crashing shuttles from landing on each other
+  QuickLode:
+  - bugfix: Fixes WY comms for survivor WY roles.
+  Steelpoint:
+  - maptweak: Fixed broken disposal piping in research resulting in items being dumped
+      back into research.
+  - rscadd: A new skill has been added, the 'Overwatch' skill, allows the user to
+      use the overwatch console.
+  - rscadd: All USCM Officers can now use overwatch consoles.
+  Triiodine, Frans, Warfan, SpartanBobby, Twomper, Roboticpotato, Tophat Penguin,forest2001:
+  - rscadd: Added Royal Marines commando ERT and faction
+  - rscadd: Updates Riot shield sprite, adds metal shield as well (sprites from trio)
+  - rscadd: TWE ERT station
+  - rscadd: F903 Rifle, Royal marines commando armour sets, new smartgun with holotargetting
+      rounds for royal marines commando
+  - rscadd: Calico shotgun, pistol and SMG sprites to the codebase made by Triodine
+  - rscadd: royal marines commando HEDP and HIDP grenades
+  Warfan1815, AmoryBlaine (Sprites):
+  - rscadd: Changes donor Biolock's medium medic armour to a light custom paintjob
+      armour and donor Tristan's reactive scientist armour to a custom marine armour
+  Zonepace, Thwomper:
+  - rscadd: Added the M707 "Vulture" anti-materiel rifle. Not currently player-obtainable.
+      Credit to Tophat and Kaga for the lore description.
+  harryob:
+  - bugfix: fixes the JMP link in chat
+  ihatethisengine:
+  - rscadd: On-screen messages now appear with sound. Radio static for marines, distant
+      roar for xenos.
+  kylerace, lemoninthedark, harry:
+  - refactor: optimized icon-in-chat code
+  - bugfix: weird icons on the smoothed walls when examining or alt+clicking
   xDanilcusx:
-  - bugfix: "\u0428\u0430\u043D\u0441 \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\
-      \u0438\u044F \u044D\u0444\u0444\u0435\u043A\u0442\u0430 \u043C\u043E\u043B\u043E\
-      \u0442\u0430 \u0442\u0435\u043F\u0435\u0440\u044C \u0440\u0430\u0431\u043E\u0442\
-      \u0430\u0435\u0442."
-  - rscadd: "\u041D\u0430 \u043C\u0435\u0441\u0442\u043E \u0431\u0430\u043D\u0430\u043B\
-      \u044C\u043D\u043E\u043C\u0443 70% \u0448\u0430\u043D\u0441\u0443 \u0443\u043B\
-      \u043E\u0436\u0438\u0442\u044C \u043A\u0441\u0435\u043D\u043E\u0441\u0430 1-2\
-      \ \u0442\u0438\u0440\u0430 \u043C\u043E\u0440\u0434\u043E\u0439 \u0432 \u043F\
-      \u043E\u043B - \u043F\u0440\u0438\u0448\u043B\u0438 \u0441\u0442\u0430\u043A\
-      \u0438 \u043A\u043E\u043D\u0442\u0440\u043E\u043B\u044F, \u043F\u043E\u0440\u0442\
-      \u044F\u0449\u0438\u0435 \u043A\u0441\u0435\u043D\u043E\u043C\u043E\u0440\u0444\
-      \u0443 \u0436\u0438\u0437\u043D\u044C. (\u041F\u043E\u0434\u0440\u043E\u0431\
-      \u043D\u0435\u0435 - \u0442\u0443\u0442 https://github.com/Fray2/RU-CMSS13/pull/41)"
-  - balance: "\u0423\u0440\u043E\u043D \u043C\u043E\u043B\u043E\u0442\u0430 **N45**\
-      \ \u043F\u043E \u043A\u0441\u0435\u043D\u043E\u043C\u043E\u0440\u0444\u0430\u043C\
-      \ \u0431\u044B\u043B \u0443\u043C\u0435\u043D\u044C\u0448\u0435\u043D \u0441\
-      \ **~85** \u0435\u0434\u0438\u043D\u0438\u0446 \u0434\u043E **~75** \u0432 \u0434\
-      \u0432\u0443\u0440\u0443\u0447\u043D\u043E\u043C \u0441\u043E\u0441\u0442\u043E\
-      \u044F\u043D\u0438\u0438."
-  - balance: "\u0414\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u044C \u0438 \u0443\
-      \u0440\u043E\u043D \u043E\u0442 \u0431\u0440\u043E\u0441\u043A\u0430 **N45**\
-      \ \u0431\u044B\u043B\u0430 \u0443\u043C\u0435\u043D\u044C\u0448\u0435\u043D\u0430\
-      \ \u0438 \u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0430 \u0441\u043E\
-      \u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043D\u043D\u043E."
-  - balance: "\u041F\u0435\u043D\u0430\u043B\u044C\u0442\u0438 \u043D\u0430 \u0441\
-      \u043A\u043E\u0440\u043E\u0441\u0442\u044C \u0434\u0432\u0438\u0436\u0435\u043D\
-      \u0438\u044F \u0441 \u043C\u043E\u043B\u043E\u0442\u043E\u043C \u0421\u0422\
-      \ \u0431\u044B\u043B\u043E \u0441\u043D\u0438\u0436\u0435\u043D\u043E."
-  - balance: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430 \u043C\u0435\u0436\u0434\
-      \u0443 \u0443\u0434\u0430\u0440\u0430\u043C\u0438 \u043C\u043E\u043B\u043E\u0442\
-      \u0430 \u0448\u0442\u0443\u0440\u043C\u043E\u0432\u0438\u043A\u0430 \u0431\u044B\
-      \u043B\u0430 \u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0430."
-  - balance: "\u0422\u0435\u043F\u0435\u0440\u044C \u043D\u0430\u0445\u043E\u0434\u044F\
-      \u0449\u0438\u0439\u0441\u044F \u0432 \u0440\u0443\u043A\u0430\u0445 \u0449\u0438\
-      \u0442 \u0437\u0430\u0449\u0438\u0449\u0430\u0435\u0442 \u043E\u0442 \u0443\u0434\
-      \u0430\u0440\u043E\u0432 / \u043F\u0443\u043D\u0441\u043E\u0432 / \u0432\u044B\
-      \u0441\u0442\u0440\u0435\u043B\u043E\u0432 \u043B\u0438\u0448\u044C \u0441 \u0444\
-      \u0440\u043E\u043D\u0442\u0430."
-  - balance: "\u0428\u0430\u043D\u0441 N30 \u043E\u0442\u0440\u0430\u0437\u0438\u0442\
-      \u044C \u0430\u0442\u0430\u043A\u0443 \u0431\u044B\u043B \u0443\u0432\u0435\u043B\
-      \u0438\u0447\u0435\u043D \u0441 65% \u0434\u043E 70%."
-  - rscadd: "\u0412\u0438\u0441\u044F\u0449\u0438\u0439 \u043D\u0430 \u0441\u043F\u0438\
-      \u043D\u0435 \u0449\u0438\u0442 \u043F\u0440\u0435\u0434\u043E\u0441\u0442\u0430\
-      \u0432\u043B\u044F\u0435\u0442 \u0437\u0430\u0449\u0438\u0442\u0443 \u043E\u0442\
-      \ \u043D\u0430\u043F\u0430\u0434\u0435\u043D\u0438\u044F \u0441\u0437\u0430\u0434\
-      \u0438, \u043D\u043E \u0438\u0437\u0431\u0435\u0436\u0430\u0442\u044C \u044D\
-      \u0444\u0444\u0435\u043A\u0442\u043E\u0432 \u043F\u0430\u0443\u043D\u0441\u0430\
-      \ \u0431\u043E\u043B\u0435\u0435 \u043D\u0435 \u043F\u043E\u0437\u0432\u043E\
-      \u043B\u044F\u0435\u0442."
-  - rscadd: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u0432\u0441\u0442\u0440\
-      \u043E\u0435\u043D\u043D\u044B\u0439 \u0432 \u0431\u0440\u043E\u043D\u044E \u0421\
-      \u0422 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u0430 \u043C\
-      \u0430\u0433\u043D\u0438\u0442 \u0441 \u043A\u0440\u0435\u043F\u0435\u0436\u043E\
-      \u043C \u0434\u043B\u044F \u0449\u0438\u0442\u0430 \u0438 \u043A\u0443\u0432\
-      \u0430\u043B\u0434\u044B."
-  - qol: "\u0423\u0434\u0430\u0440 \u043F\u043E \u0441\u0432\u043E\u0435\u043C\u0443\
-      \ \u0449\u0438\u0442\u0443 \u0441 \u0445\u0430\u0440\u0430\u043A\u0442\u0435\
-      \u0440\u043D\u044B\u043C \u0437\u0432\u0443\u043A\u043E\u043C \u0442\u0435\u043F\
-      \u0435\u0440\u044C \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0438\
-      \u0441\u043F\u043E\u043B\u043D\u0435\u043D \u043B\u044E\u0431\u044B\u043C \u0442\
-      \u0438\u043F\u043E\u043C \u043E\u0440\u0443\u0436\u0438\u044F."
-  - rscdel: "\u0429\u0438\u0442 \u0431\u043E\u043B\u0435\u0435 \u043D\u0435 \u0438\
-      \u043C\u0435\u0435\u0442 \u0448\u0430\u043D\u0441\u0430 \u043A\u043D\u043E\u043A\
-      \u043D\u0443\u0442\u044C \u04221 \u043A\u0441\u0435\u043D\u043E\u043C\u043E\u0440\
-      \u0444\u0430 \u0441 \u0443\u0434\u0430\u0440\u0430."
-  - balance: "\u041F\u0430\u0440\u0430 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u043E\
-      \u0432 \u0438 \u043F\u043E\u044F\u0441 \u0434\u043B\u044F \u043F\u0438\u0441\
-      \u0442\u043E\u043B\u0435\u0442\u0430 \u0432\u0437\u0430\u043C\u0435\u043D \u043D\
-      \u0430 \u043F\u0440\u0438\u043A\u043B\u0430\u0434 \u0438 \u043D\u0430\u043F\u043B\
-      \u0435\u0447\u043D\u044B\u0439 \u0445\u043E\u043B\u0441\u0442\u0435\u0440"
+  - bugfix: "\u0411\u043E\u043B\u0435\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\
+      \ \u043C\u0430\u0433\u043D\u0438\u0442\u0430 \u0434\u043B\u044F \u043C\u043E\
+      \u043B\u043E\u0442\u0430/\u0449\u0438\u0442\u0430 \u043D\u0435 \u043F\u0440\u0438\
+      \u043C\u0435\u043D\u044F\u044E\u0442\u0441\u044F \u043D\u0430 \u043C\u0430\u0433\
+      \u0445\u0430\u0440\u043D\u0435\u0441\u0441 \u043E\u0433\u043D\u0435\u0441\u0442\
+      \u0440\u0435\u043B\u044C\u043D\u043E\u0433\u043E \u043E\u0440\u0443\u0436\u0438\
+      \u044F."
+2023-09-10:
+  poleno1232:
+  - balance: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F\
+      \ \u0434\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u044C \u0441\u0430\u043D\u043A\
+      \u0435\u043D\u0430 \u0442\u0435\u043F\u0435\u0440\u044C 8"
+  - balance: "\u0425\u0430\u0439\u0432\u043B\u043E\u0440\u0434\u044B \u0442\u0435\u043F\
+      \u0435\u0440\u044C \u043C\u043E\u0433\u0443\u0442 \u0441\u043D\u043E\u0432\u0430\
+      \ \u0441\u0442\u0440\u043E\u0438\u0442\u044C \u0441\u0430\u043D\u043A\u0435\u043D\
+      \u044B"
+  xDanilcusx:
+  - rscadd: "\u041D\u043E\u0432\u044B\u0439 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\
+      \ \u0431\u0430\u0448\u043D\u0438 \u0442\u0430\u043D\u043A\u0430 \u0441 \u043F\
+      \u0443\u0441\u043A\u043E\u0432\u043E\u0439 \u0443\u0441\u0442\u0430\u043D\u043E\
+      \u0432\u043A\u043E\u0439 \u0444\u043B\u0430\u0435\u0440\u043E\u0432."
+  - rscadd: "\u041D\u043E\u0432\u044B\u0439 \u043C\u043E\u0434\u0443\u043B\u044C \u043F\
+      \u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0438 \u0441 \u0434\u044B\u043C\u043E\
+      \u0432\u044B\u043C\u0438 \u0433\u0440\u0430\u043D\u0430\u0442\u0430\u043C\u0438\
+      \ \u0434\u043B\u044F \u0431\u0440\u043E\u043D\u0435\u0442\u0440\u0430\u043D\u0441\
+      \u043F\u043E\u0440\u0442\u0451\u0440\u0430."
+  - balance: "\u0423\u043C\u0435\u043D\u044C\u0448\u0438\u043B \u0437\u0430\u0434\u0435\
+      \u0440\u0436\u043A\u0443 \u043C\u0435\u0436\u0434\u0443 \u0443\u0434\u0430\u0440\
+      \u0430\u043C\u0438 \u0421\u0422 \u043C\u043E\u043B\u043E\u0442\u0430 \u0441\
+      \ **14** \u0434\u043E **12** \u0435\u0434\u0438\u043D\u0438\u0446."
+  - code_imp: "\u0418\u0441\u043F\u0440\u0430\u0432\u0438\u043B \u043D\u0435\u0434\
+      \u043E\u0440\u0430\u0437\u0443\u043C\u0435\u043D\u0438\u0435 \u0441 \u0434\u0432\
+      \u0443\u043C\u044F \u043F\u0430\u043F\u043A\u0430\u043C\u0438 **fray-marines/modules**\
+      \ \u0438 **fray-marines/code/modules**"
+2023-09-11:
+  poleno1232:
+  - balance: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F\
+      \ \u0434\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u044C \u0441\u0430\u043D\u043A\
+      \u0435\u043D\u0430 \u0442\u0435\u043F\u0435\u0440\u044C 8"
+  - balance: "\u0425\u0430\u0439\u0432\u043B\u043E\u0440\u0434\u044B \u0442\u0435\u043F\
+      \u0435\u0440\u044C \u043C\u043E\u0433\u0443\u0442 \u0441\u043D\u043E\u0432\u0430\
+      \ \u0441\u0442\u0440\u043E\u0438\u0442\u044C \u0441\u0430\u043D\u043A\u0435\u043D\
+      \u044B"

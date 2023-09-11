@@ -1643,6 +1643,24 @@
 		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
+/datum/ammo/bullet/sniper/anti_materiel/vulture
+	damage = 400 // Fully intended to vaporize anything smaller than a mini cooper
+	accurate_range_min = 10
+	handful_state = "vulture_bullet"
+	sound_hit = 'sound/bullets/bullet_vulture_impact.ogg'
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER|AMMO_ANTIVEHICLE
+
+/datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/item/projectile/bullet)
+	. = ..()
+	knockback(hit_mob, bullet, 30)
+	hit_mob.apply_effect(3, SLOW)
+
+/datum/ammo/bullet/sniper/anti_materiel/vulture/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/heavy)
+	))
+
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"
 
@@ -1786,6 +1804,26 @@
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
+
+/datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
+	name = "holo-targeting smartgun bullet"
+	damage = 30
+///Stuff for the HRP holotargetting stacks
+	var/holo_stacks = 15
+
+/datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
+
+/datum/ammo/bullet/smartgun/holo_target/ap
+	name = "armor-piercing smartgun bullet"
+	icon_state = "bullet"
+
+	accurate_range = 12
+	accuracy = HIT_ACCURACY_TIER_2
+	damage = 20
+	penetration = ARMOR_PENETRATION_TIER_8
+	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/m56_fpw
 	name = "\improper M56 FPW bullet"

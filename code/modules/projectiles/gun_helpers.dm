@@ -196,8 +196,6 @@ DEFINES in setup.dm, referenced here.
 		return FALSE
 	if (!isturf(loc))
 		return FALSE
-	if (get_dist(src,user) > 1)
-		return FALSE
 	if(!retrieval_check(user, retrieval_slot))
 		return FALSE
 	if(!user.equip_to_slot_if_possible(src, retrieval_slot, disable_warning = TRUE))

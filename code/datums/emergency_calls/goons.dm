@@ -5,7 +5,7 @@
 
 /datum/emergency_call/goon/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is a Weyland-Yutani Corporate Security shuttle inbound to your distress beacon. We are coming to help."
+	arrival_message = "[MAIN_SHIP_NAME], это шаттл Корпоративной Безопасности Weyland-Yutani направляющийся на ваш сигнал бедствия. Мы летим с помощью."
 	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME]'s Commanding Officer, and eliminate any hostile threats. Do not damage Wey-Yu property."
 
 /datum/emergency_call/goon/create_member(datum/mind/M, turf/override_spawn_loc)

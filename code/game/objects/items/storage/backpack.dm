@@ -1105,3 +1105,57 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	max_storage_space = 21
 	camo_alpha = 10
+
+//----------TWE SECTION----------
+/obj/item/storage/backpack/rmc
+	has_gamemode_skin = FALSE
+
+/obj/item/storage/backpack/rmc/heavy
+	name = "heavyweight RMC backpack"
+	desc = "The heavy-carry pack of the RMC forces. Designed to lug the most amount of gear into the battlefield."
+	icon_state = "backpack_large"
+	item_state = "backpack_large"
+	max_storage_space = 27
+
+/obj/item/storage/backpack/rmc/medium
+	name = "standard RMC backpack"
+	desc = "A TWE military standard-carry RMC combat pack MK3."
+	icon_state = "backpack_medium"
+	item_state = "backpack_medium"
+	worn_accessible = TRUE
+	max_storage_space = 24
+
+/obj/item/storage/backpack/rmc/light
+	name = "lightweight RMC backpack"
+	desc = "A TWE military light-carry RMC combat pack MK3."
+	icon_state = "backpack_small"
+	item_state = "backpack_small"
+	worn_accessible = TRUE
+	max_storage_space = 21
+
+/obj/item/storage/backpack/rmc/frame //One sorry sod should have to lug this about spawns in their shuttle currently
+	name = "\improper RMC carry-frame"
+	desc = "A backpack specifically designed to hold equipment for commandos."
+	icon_state = "backpack_frame"
+	item_state = "backpack_frame"
+	max_w_class = SIZE_HUGE
+	storage_slots = 7
+	can_hold = list(
+		/obj/item/ammo_box/magazine/misc/mre,
+		/obj/item/storage/firstaid/regular,
+		/obj/item/storage/firstaid/adv,
+		/obj/item/storage/firstaid/surgical,
+		/obj/item/device/defibrillator/compact,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/storage/box/packet/rmc/he,
+		/obj/item/storage/box/packet/rmc/incin,
+	)
+
+/obj/item/storage/backpack/general_belt/rmc //the breachers belt
+	name = "\improper RMC general utility belt"
+	desc = "A small, lightweight pouch that can be clipped onto armor to provide additional storage. This new RMC model, while uncomfortable, can also be clipped around the waist."
+	icon_state = "rmc_general"
+	item_state = "rmc_general"
+	has_gamemode_skin = FALSE
+	max_storage_space = 15

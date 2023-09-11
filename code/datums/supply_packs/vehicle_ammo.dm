@@ -95,6 +95,18 @@
 	containername = "M34A2-A Multipurpose Turret smoke screen ammo crate"
 	group = "Vehicle Ammo"
 
+/datum/supply_packs/ammo_flauncher
+	name = "M34A2-B Multipurpose Turret Flare Launcher magazines (x4)"
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/flare_launcher/tank,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher/tank,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher/tank,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "M34A2-B Multipurpose Turret Flare Launcher magazines (x4)"
+	group = "Vehicle Ammo"
+
 /datum/supply_packs/ammo_towlauncher
 	name = "TOW Launcher magazines (x3)"
 	contains = list(/obj/item/hardpoint/secondary/towlauncher)
@@ -147,4 +159,17 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M-87F Flare Launcher ammo crate"
+	group = "Vehicle Ammo"
+
+/datum/supply_packs/ammo_smokelauncher
+	name = "M-87S Smoke Screen System (x4)"
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/turret_smoke/apc,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke/apc,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke/apc,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke/apc,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "M-87S Smoke Screen System ammo crate"
 	group = "Vehicle Ammo"

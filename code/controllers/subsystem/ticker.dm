@@ -255,7 +255,7 @@ SUBSYSTEM_DEF(ticker)
 	save_mode(CONFIG_GET(string/gamemode_default))
 
 	if(round_statistics)
-		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [round_statistics.round_name]</B>")))
+		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Добро пожаловать на [round_statistics.round_name]</B>")))
 
 	supply_controller.process() //Start the supply shuttle regenerating points -- TLE
 
@@ -361,10 +361,10 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, SPAN_BOLDNOTICE("An admin has delayed the round end."))
+		to_chat(world, SPAN_BOLDNOTICE("Администратор отложил конец раунда."))
 		return
 
-	to_chat(world, SPAN_BOLDNOTICE("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
+	to_chat(world, SPAN_BOLDNOTICE("Перезагрузка мира через [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time
 	sleep(delay - (world.time - start_wait))
@@ -373,7 +373,7 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, SPAN_BOLDNOTICE("Reboot was cancelled by an admin."))
 		return
 
-	log_game("Rebooting World. [reason]")
+	log_game("АГАСЬ. [reason]")
 	to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Rebooting...")]</h3>")
 
 	world.Reboot(TRUE)

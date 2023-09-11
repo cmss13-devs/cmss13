@@ -17,7 +17,7 @@
 
 /datum/emergency_call/pmc/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Royce responding to your distress call. We are boarding. Any hostile actions will be met with lethal force."
+	arrival_message = "[MAIN_SHIP_NAME], на ваш сигнал бедствия отвечает USCSS Royce. Мы садимся. Любые агрессивные действия будут встречены применением летальной силы."
 	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME]'s Commanding Officer, and eliminate any hostile threats. Do not damage Wey-Yu property."
 
 
@@ -99,7 +99,7 @@
 
 /datum/emergency_call/pmc/chem_retrieval/New()
 	..()
-	dispatch_message = "[MAIN_SHIP_NAME], this is USCSS Royce. We are sending a second squad aboard to retrieve all samples of a chemical recently scanned from your research department. If you do not cooperate, the team is authorized to use lethal force and terminate the research department."
+	dispatch_message = "[MAIN_SHIP_NAME], это USCSS Royce. Мы отправляем второй отряд на борт для сбора всех экземпляров химикатов которые были просканированы в вашем научном отделе. Если вы не будете сотрудничать, команде разрешено применить силу и устранить научный персонал."
 	objectives = "Secure all documents, samples and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department."
 
 /datum/emergency_call/pmc/chem_retrieval/proc/check_objective_info()

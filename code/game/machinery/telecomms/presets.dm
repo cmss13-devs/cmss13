@@ -340,6 +340,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
 		weed.parent = new_pylon.node
+		weed.spread_on_semiweedable = TRUE
+		weed.weed_expand()
 
 	RegisterSignal(new_pylon, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
 

@@ -2374,6 +2374,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "fray-marines\code\datums\skills.dm"
 #include "fray-marines\code\datums\supply_packs\gear.dm"
 #include "fray-marines\code\game\jobs\command\auxiliary\mech_crew.dm"
+#include "fray-marines\code\game\objects\items\storage\pouch.dm"
 #include "fray-marines\code\game\objects\items\weapons\st_equip.dm"
 #include "fray-marines\code\game\objects\items\weapons\st_hammer_stacks.dm"
 #include "fray-marines\code\modules\cm_aliens\structures\lessers_burrow.dm"

@@ -18,7 +18,7 @@
 
 	src.damage_lost_per_pen = damage_lost_per_pen
 
-/datum/element/bullet_trait_penetrating/heavy/handle_passthrough_movables(obj/item/projectile/bullet, atom/movable/hit_movable, did_hit)
+/datum/element/bullet_trait_penetrating/heavy/handle_passthrough_movables(obj/projectile/bullet, atom/movable/hit_movable, did_hit)
 	if(did_hit)
 		var/slow_mult = 1
 		if(ismob(hit_movable))
@@ -35,7 +35,7 @@
 
 	return COMPONENT_BULLET_PASS_THROUGH
 
-/datum/element/bullet_trait_penetrating/heavy/handle_passthrough_turf(obj/item/projectile/bullet, turf/closed/wall/hit_wall)
+/datum/element/bullet_trait_penetrating/heavy/handle_passthrough_turf(obj/projectile/bullet, turf/closed/wall/hit_wall)
 	bullet.distance_travelled += distance_loss_per_hit
 	bullet.damage -= damage_lost_per_pen
 

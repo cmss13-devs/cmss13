@@ -1,0 +1,13 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Tidied up the TWE presets so they're easier to read."
+  - rscdel: "Removed duplicate surgical line from all TWE presets."
+  - rscadd: "Added an MRE box to the TWE MRE carrier preset."
+  - spellcheck: "Added unique names to the RMC armors."
+  - bugfix: "Fixed iconstate names being backwards for TWE pointman and SG."
+  - code_imp: "Removed unnecessary repeated values for TWE armors."
+  - code_imp: "Tidied the RMC skillsets to be consistent in ordering of skills."
+  - rscadd: "Added an SG specific skillset for RMCs."
+  - bugfix: "Fixed duplicate entry for medical training on RMC TL skillset."
+  - spellcheck: "Renamed default RMC skillset to Royal Marines Commando rather than Royal Marines Commando Rifleman."

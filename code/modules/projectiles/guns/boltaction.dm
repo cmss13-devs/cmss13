@@ -158,7 +158,7 @@
 		/obj/item/attachable/stock/vulture,
 	)
 	civilian_usable_override = FALSE
-	projectile_type = /obj/item/projectile/vulture
+	projectile_type = /obj/projectile/vulture
 	actions_types = list(
 		/datum/action/item_action/vulture,
 	)

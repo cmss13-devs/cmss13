@@ -445,3 +445,41 @@
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/boltaction
 	w_class = SIZE_SMALL
+
+/obj/item/ammo_magazine/rifle/boltaction/vulture
+	name = "\improper M707 \"Vulture\" magazine (20x102mm)"
+	desc = "A magazine for the M707 \"Vulture\" anti-matieriel rifle. Contains up to 4 massively oversized rounds."
+	caliber = "20x102mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = "vulture"
+	handful_state = "vulture_bullet"
+	default_ammo = /datum/ammo/bullet/sniper/anti_materiel/vulture
+	max_rounds = 4
+	gun_type = /obj/item/weapon/gun/boltaction/vulture
+	w_class = SIZE_MEDIUM // maybe small? This shit's >4 inches long mind you
+
+//=ROYAL MARINES=\\
+
+/obj/item/ammo_magazine/rifle/rmc_f90
+	name = "\improper F903 magazine (10x24mm)"
+	desc = "A 10mm assault rifle magazine used by the royal marines."
+	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/twe_ammo.dmi'
+	icon_state = "aug"
+	item_state = "aug"
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 30
+	gun_type = /obj/item/weapon/gun/rifle/rmc_f90
+	ammo_band_icon = "+m41a_band"
+	ammo_band_icon_empty = "+m41a_band_e"
+
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman
+	name = "\improper F903A1 Marksman magazine (10x24mm)"
+	desc = "A 10mm armor-piercing assault rifle magazine used by the royal marines."
+	icon_state = "aug_dmr"
+	item_state = "aug_dmr"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	gun_type = /obj/item/weapon/gun/rifle/rmc_f90/scope
+	max_rounds = 20
+	ammo_band_color = AMMO_BAND_COLOR_AP

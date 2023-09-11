@@ -176,6 +176,18 @@
 	icon_locked = "secure_locked_weyland"
 	icon_unlocked = "secure_unlocked_weyland"
 
+/obj/structure/closet/crate/secure/vulture
+	name = "secure M707 crate"
+	desc = "A secure crate, containing an M707 anti-materiel rifle."
+	icon_state = "secure_locked_vulture"
+	icon_opened = "secure_open_vulture"
+	icon_locked = "secure_locked_vulture"
+	icon_unlocked = "secure_unlocked_vulture"
+
+/obj/structure/closet/crate/secure/vulture/Initialize()
+	. = ..()
+	new /obj/item/storage/box/guncase/vulture(src)
+
 //special version, able to store OB fuel and warheads only
 /obj/structure/closet/crate/secure/ob
 	name = "secure orbital bombardment ammunition crate"

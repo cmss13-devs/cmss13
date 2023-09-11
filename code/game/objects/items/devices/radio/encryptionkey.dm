@@ -322,6 +322,11 @@
 	icon_state = "sl_key"
 	channels = list("Command" = TRUE, "Engi" = TRUE, "MedSci" = TRUE, "Req" = TRUE, "JTAC" = TRUE, "Intel" = TRUE, "Almayer" = TRUE)
 
+/obj/item/device/encryptionkey/royal_marine
+	name = "\improper Royal Marine Radio Encryption Key"
+	icon_state = "sl_key"
+	channels = list("Command" = TRUE, "Almayer" = TRUE,)
+
 /obj/item/device/encryptionkey/cmb
 	name = "\improper Colonial Marshal Bureau Radio Encryption Key"
 	icon_state = "cmb_key"

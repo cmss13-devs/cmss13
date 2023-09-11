@@ -15,12 +15,12 @@ const PAGES = {
   'apollo': () => ApolloLog,
   'access_log': () => AccessLogs,
   'delete_log': () => DeletionLogs,
+  'flight_log': () => FlightLogs,
   'talking': () => ARESTalk,
   'deleted_talks': () => DeletedTalks,
   'read_deleted': () => ReadingTalks,
   'security': () => Security,
   'requisitions': () => Requisitions,
-  'antiair': () => AntiAir,
   'emergency': () => Emergency,
 };
 
@@ -167,14 +167,14 @@ const MainMenu = (props, context) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="Anti Air Targetting"
-                tooltip="Review changes to the Anti-Air targetting."
-                icon="crosshairs"
+                content="Flight Records"
+                tooltip="Read the Dropship Flight Control Records."
+                icon="jet-fighter-up"
                 ml="auto"
                 px="2rem"
                 width="25vw"
                 bold
-                onClick={() => act('page_antiair')}
+                onClick={() => act('page_flight')}
               />
             </Stack.Item>
             <Stack.Item>
@@ -1189,10 +1189,16 @@ const Requisitions = (props, context) => {
   );
 };
 
-const AntiAir = (props, context) => {
+const FlightLogs = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, aa_adjustments } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_flight,
+    access_level,
+  } = data;
 
   return (
     <>
@@ -1232,8 +1238,8 @@ const AntiAir = (props, context) => {
       </Section>
 
       <Section>
-        <h1 align="center">AntiAir Control Logs</h1>
-        {!!aa_adjustments.length && (
+        <h1 align="center">Flight Control Logs</h1>
+        {!!records_flight.length && (
           <Flex
             className="candystripe"
             p=".75rem"
@@ -1242,25 +1248,33 @@ const AntiAir = (props, context) => {
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
-            <Flex.Item grow bold>
+            <Flex.Item width="10rem" grow bold>
               User
             </Flex.Item>
-            <Flex.Item bold width="30rem" textAlign="center">
-              Adjustment
+            <Flex.Item width="40rem" textAlign="center">
+              Details
             </Flex.Item>
           </Flex>
         )}
-        {aa_adjustments.map((record, i) => {
+        {records_flight.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold width="6rem" shrink="0" mr="1rem">
                 {record.time}
               </Flex.Item>
-              <Flex.Item grow italic>
+              <Flex.Item width="10rem" grow italic>
                 {record.user}
               </Flex.Item>
-              <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
+              <Flex.Item width="40rem" ml="1rem" shrink="0" textAlign="center">
                 {record.details}
+              </Flex.Item>
+              <Flex.Item ml="1rem">
+                <Button.Confirm
+                  icon="trash"
+                  tooltip="Delete Record"
+                  disabled={access_level < 4}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                />
               </Flex.Item>
             </Flex>
           );

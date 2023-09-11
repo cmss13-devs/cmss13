@@ -1,0 +1,6 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Lowered the xeno endgame start to 55 minutes into the round"
+  - balance: "Lowered the nuke endgame start to 115 minutes into the round"
+  - balance: "Lowered the nuke cost to 5 points"

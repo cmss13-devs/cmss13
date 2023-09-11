@@ -48,3 +48,87 @@
   - bugfix: Brain damage movement will no longer occur while buckled and unconscious
   Steelpoint:
   - spellcheck: Box of donuts order from req is now spelt correctly
+2023-09-05:
+  Ben10083:
+  - admin: New toggleable flag added to bypass restrictions for Working Joe spawns
+      as observer (excluding whitelist requirement)
+  Morrow:
+  - bugfix: Fixed perma helmet HUDs
+  Steelpoint:
+  - rscadd: Synthetic vendors now have the option to vend several helmets and a riot
+      visor. Including a standard M10 helmet defaulted to non-camo grey.
+  VileBeggar:
+  - balance: The M39 foldable stock no longer inflicts debuffs when folded.
+  Zonespace27:
+  - bugfix: Working Joes no longer get cryo self defense kits
+  - bugfix: Cryo self defense kits now have the correct amount of slots
+2023-09-06:
+  Birdtalon:
+  - bugfix: fixed eggsac carrier strain not updating hugger sprites.
+  Drathek:
+  - bugfix: Fixed xeno grab intent
+  Morrow:
+  - rscadd: Added a ghost notification for Acid Runner For the Hive! ability.
+  RenaRenaRe:
+  - bugfix: Hugger and Lesser Drone ghosts now actually bypass time of death checks
+      for the larva queue.
+2023-09-07:
+  Morrow:
+  - bugfix: Fixed a null reference when firing full auto and dropping your weapon
+  Steelpoint:
+  - bugfix: ERT UPP Soldiers will now correctly spawn with firearms.
+  harryob:
+  - rscadd: guns that have full auto now start on full auto by default
+2023-09-09:
+  BeagleGaming1:
+  - bugfix: The APS property works correctly again
+  Morrow:
+  - bugfix: Clusters turning into pylons expand properly
+  - rscadd: Added the ability to early launch lifeboats
+  - rscadd: Added the ability for lifeboats to crash if early launched
+  - rscdel: Removed alcohol from emergency wall cabinets
+  - bugfix: Should stop crashing shuttles from landing on each other
+  Triiodine, Frans, Warfan, SpartanBobby, Twomper, Roboticpotato, Tophat Penguin,forest2001:
+  - rscadd: Added Royal Marines commando ERT and faction
+  - rscadd: Updates Riot shield sprite, adds metal shield as well (sprites from trio)
+  - rscadd: TWE ERT station
+  - rscadd: F903 Rifle, Royal marines commando armour sets, new smartgun with holotargetting
+      rounds for royal marines commando
+  - rscadd: Calico shotgun, pistol and SMG sprites to the codebase made by Triodine
+  - rscadd: royal marines commando HEDP and HIDP grenades
+  Zonepace, Thwomper:
+  - rscadd: Added the M707 "Vulture" anti-materiel rifle. Not currently player-obtainable.
+      Credit to Tophat and Kaga for the lore description.
+2023-09-10:
+  BeagleGaming1:
+  - rscdel: Removes emergency autoinjectors from squad medics
+  - rscdel: Removes skillless variant of the emergency autoinjector, makes default
+      variant skillless
+  - balance: Emergency autoinjectors cannot be refilled
+  - balance: Replaces skillless autoinjectors in marine pouches with standard autoinjectors
+  Morrow:
+  - rscadd: Added CAS Fire Mission ghost notification
+  QuickLode:
+  - bugfix: Fixes WY comms for survivor WY roles.
+  Steelpoint:
+  - maptweak: Fixed broken disposal piping in research resulting in items being dumped
+      back into research.
+  - rscadd: A new skill has been added, the 'Overwatch' skill, allows the user to
+      use the overwatch console.
+  - rscadd: All USCM Officers can now use overwatch consoles.
+  TeDGamer:
+  - balance: Huggers and larvas are slightly harder to hit
+  - code_imp: Replace some w_class magic numbers with defines
+  - balance: Reduced M2C accuracy to be more in line with realistic accuracy intent
+  Warfan1815, AmoryBlaine (Sprites):
+  - rscadd: Changes donor Biolock's medium medic armour to a light custom paintjob
+      armour and donor Tristan's reactive scientist armour to a custom marine armour
+  harryob:
+  - bugfix: fixes the JMP link in chat
+  ihatethisengine:
+  - rscadd: On-screen messages now appear with sound. Radio static for marines, distant
+      roar for xenos.
+  - bugfix: shuttles now throw mobs asynchronously and faster
+  kylerace, lemoninthedark, harry:
+  - refactor: optimized icon-in-chat code
+  - bugfix: weird icons on the smoothed walls when examining or alt+clicking

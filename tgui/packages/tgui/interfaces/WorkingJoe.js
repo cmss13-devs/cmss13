@@ -10,8 +10,8 @@ const PAGES = {
   'maint_reports': () => MaintReports,
   'maint_claim': () => MaintManagement,
   'access_requests': () => AccessRequests,
-  'access_returns': () => AccessReturns,
   'access_tickets': () => AccessTickets,
+  'id_access': () => AccessID,
 };
 export const WorkingJoe = (props, context) => {
   const { data } = useBackend(context);
@@ -63,16 +63,10 @@ const Login = (props, context) => {
 
 const MainMenu = (props, context) => {
   const { data, act } = useBackend(context);
-  const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    access_level,
-    ticket_console,
-  } = data;
+  const { logged_in, access_text, last_page, current_menu, access_level } =
+    data;
   let can_request_access = 'Yes';
-  if (access_level === 3) {
+  if (access_level > 2) {
     can_request_access = 'No';
   }
 
@@ -116,7 +110,6 @@ const MainMenu = (props, context) => {
 
       <Section>
         <h1 align="center">Navigation Menu</h1>
-
         <Stack>
           <Stack.Item grow>
             <h3>Request Submission</h3>
@@ -132,13 +125,12 @@ const MainMenu = (props, context) => {
                 width="33vw"
                 bold
                 onClick={() => act('page_request')}
-                disabled={logged_in}
               />
             </Stack.Item>
           )}
           {access_level === 3 && (
             <Stack.Item>
-              <Button
+              <Button.Confirm
                 content="Surrender Access Ticket"
                 tooltip="Return your temporary access."
                 icon="eye"
@@ -146,8 +138,7 @@ const MainMenu = (props, context) => {
                 px="2rem"
                 width="33vw"
                 bold
-                onClick={() => act('page_returns')}
-                disabled={logged_in}
+                onClick={() => act('return_access')}
               />
             </Stack.Item>
           )}
@@ -201,21 +192,18 @@ const MainMenu = (props, context) => {
             <Stack.Item grow>
               <h3>Task Management</h3>
             </Stack.Item>
-            {!!ticket_console && (
-              <Stack.Item>
-                <Button
-                  content="Manage Access Tickets"
-                  tooltip="Approve, or deny, temporary visitation access to personnel."
-                  icon="user-shield"
-                  ml="auto"
-                  px="2rem"
-                  width="33vw"
-                  bold
-                  onClick={() => act('page_tickets')}
-                  disabled={logged_in}
-                />
-              </Stack.Item>
-            )}
+            <Stack.Item>
+              <Button
+                content="Manage Access Tickets"
+                tooltip="Approve, or deny, temporary visitation access to personnel."
+                icon="user-shield"
+                ml="auto"
+                px="2rem"
+                width="33vw"
+                bold
+                onClick={() => act('page_tickets')}
+              />
+            </Stack.Item>
             <Stack.Item>
               <Button
                 content="Manage Maintenance Tickets"
@@ -649,8 +637,14 @@ const MaintManagement = (props, context) => {
 };
 const AccessRequests = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, access_tickets } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    access_tickets,
+  } = data;
 
   return (
     <>
@@ -701,13 +695,14 @@ const AccessRequests = (props, context) => {
           mt="-3rem"
           bold>
           <Button
-            content="New Report"
+            content="Create Ticket"
             icon="exclamation-circle"
             width="30vw"
             textAlign="center"
             fontSize="1.5rem"
             mt="5rem"
-            onClick={() => act('new_report')}
+            onClick={() => act('new_access')}
+            disabled={access_level > 2}
           />
         </Flex>
 
@@ -724,8 +719,8 @@ const AccessRequests = (props, context) => {
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
-            <Flex.Item width="12rem" bold>
-              Category
+            <Flex.Item width="8rem" mr="1rem" bold>
+              For
             </Flex.Item>
             <Flex.Item width="40rem" bold>
               Details
@@ -733,20 +728,26 @@ const AccessRequests = (props, context) => {
           </Flex>
         )}
         {access_tickets.map((ticket, i) => {
-          let view_status = 'Ticket is pending assignment.';
+          let view_status = 'Access Ticket is pending assignment.';
           let view_icon = 'circle-question';
           if (ticket.status === 'assigned') {
-            view_status = 'Ticket is assigned.';
+            view_status = 'Access Ticket is assigned.';
             view_icon = 'circle-plus';
           } else if (ticket.status === 'rejected') {
-            view_status = 'Ticket has been rejected.';
+            view_status = 'Access Ticket has been rejected.';
             view_icon = 'circle-xmark';
           } else if (ticket.status === 'cancelled') {
-            view_status = 'Ticket was cancelled by reporter.';
+            view_status = 'Access Ticket was cancelled by reporter.';
             view_icon = 'circle-stop';
-          } else if (ticket.status === 'completed') {
-            view_status = 'Ticket has been successfully resolved.';
+          } else if (ticket.status === 'granted') {
+            view_status = 'Access ticket has been granted.';
             view_icon = 'circle-check';
+          } else if (ticket.status === 'revoked') {
+            view_status = 'Access ticket has been revoked.';
+            view_icon = 'circle-minus';
+          } else if (ticket.status === 'returned') {
+            view_status = 'Access ticket has been returned.';
+            view_icon = 'circle-minus';
           }
           let can_cancel = 'Yes';
           if (ticket.submitter !== logged_in) {
@@ -770,8 +771,8 @@ const AccessRequests = (props, context) => {
               <Flex.Item italic width="6rem" shrink="0" mr="1rem">
                 {ticket.time}
               </Flex.Item>
-              <Flex.Item width="12rem" mr="1rem">
-                {ticket.category}
+              <Flex.Item width="8rem" mr="1rem">
+                {ticket.title}
               </Flex.Item>
               <Flex.Item width="40rem" shrink="0" textAlign="left">
                 {ticket.details}
@@ -788,53 +789,6 @@ const AccessRequests = (props, context) => {
             </Flex>
           );
         })}
-      </Section>
-    </>
-  );
-};
-const AccessReturns = (props, context) => {
-  const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu } = data;
-
-  return (
-    <>
-      <Section>
-        <Flex align="center">
-          <Box>
-            <Button
-              icon="arrow-left"
-              px="2rem"
-              textAlign="center"
-              tooltip="Go back"
-              onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
-            />
-            <Button
-              icon="house"
-              ml="auto"
-              mr="1rem"
-              tooltip="Navigation Menu"
-              onClick={() => act('home')}
-            />
-          </Box>
-
-          <h3>
-            {logged_in}, {access_text}
-          </h3>
-
-          <Button.Confirm
-            content="Logout"
-            icon="circle-user"
-            ml="auto"
-            px="2rem"
-            bold
-            onClick={() => act('logout')}
-          />
-        </Flex>
-      </Section>
-
-      <Section>
-        <h1 align="center">Return Access</h1>
       </Section>
     </>
   );
@@ -884,7 +838,6 @@ const AccessTickets = (props, context) => {
 
       <Section>
         <h1 align="center">Access Ticket Management</h1>
-
         {!!access_tickets.length && (
           <Flex
             mt="2rem"
@@ -898,11 +851,14 @@ const AccessTickets = (props, context) => {
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
-            <Flex.Item width="12rem" mr="1rem" bold>
-              Category
+            <Flex.Item width="8rem" mr="1rem" bold>
+              Submitter
+            </Flex.Item>
+            <Flex.Item width="8rem" mr="1rem" bold>
+              For
             </Flex.Item>
             <Flex.Item width="30rem" bold>
-              Details
+              Reason
             </Flex.Item>
           </Flex>
         )}
@@ -913,12 +869,40 @@ const AccessTickets = (props, context) => {
           } else if (ticket.lock_status === 'CLOSED') {
             can_claim = 'No';
           }
-          let can_mark = 'Yes';
+          let can_update = 'Yes';
           if (ticket.assignee !== logged_in) {
-            can_mark = 'No';
+            can_update = 'No';
           } else if (ticket.lock_status === 'CLOSED') {
-            can_mark = 'No';
+            can_update = 'No';
           }
+          let view_status = 'Ticket is pending assignment.';
+          let view_icon = 'circle-question';
+          let update_tooltip = 'Update Access';
+          if (ticket.status === 'assigned') {
+            view_status = 'Ticket is assigned.';
+            view_icon = 'circle-plus';
+            update_tooltip = 'Grant Access';
+          } else if (ticket.status === 'rejected') {
+            view_status = 'Ticket has been rejected.';
+            view_icon = 'circle-xmark';
+          } else if (ticket.status === 'cancelled') {
+            view_status = 'Ticket was cancelled by reporter.';
+            view_icon = 'circle-stop';
+          } else if (ticket.status === 'granted') {
+            view_status = 'Access ticket has been granted.';
+            view_icon = 'circle-check';
+            update_tooltip = 'Revoke Access';
+          } else if (ticket.status === 'revoked') {
+            view_status = 'Access ticket has been revoked.';
+            view_icon = 'circle-minus';
+            update_tooltip = 'Access revoked. No further changes possible.';
+          } else if (ticket.status === 'returned') {
+            view_status = 'Access ticket has been returned.';
+            view_icon = 'circle-minus';
+            update_tooltip =
+              'Access self-returned. No further changes possible.';
+          }
+
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               {!!ticket.priority_status && (
@@ -934,13 +918,17 @@ const AccessTickets = (props, context) => {
               <Flex.Item italic width="6rem" shrink="0" mr="1rem">
                 {ticket.time}
               </Flex.Item>
-              <Flex.Item width="12rem" mr="1rem">
-                {ticket.category}
+              <Flex.Item width="8rem" mr="1rem">
+                {ticket.submitter}
+              </Flex.Item>
+              <Flex.Item width="8rem" mr="1rem">
+                {ticket.title}
               </Flex.Item>
               <Flex.Item width="30rem" shrink="0" textAlign="left">
                 {ticket.details}
               </Flex.Item>
               <Flex.Item ml="1rem">
+                <Button icon={view_icon} tooltip={view_status} />
                 <Button.Confirm
                   icon="user-lock"
                   tooltip="Claim Ticket"
@@ -949,9 +937,9 @@ const AccessTickets = (props, context) => {
                 />
                 <Button.Confirm
                   icon="user-gear"
-                  tooltip="Mark Ticket"
-                  disabled={can_mark === 'No'}
-                  onClick={() => act('mark_ticket', { ticket: ticket.ref })}
+                  tooltip={update_tooltip}
+                  disabled={can_update === 'No'}
+                  onClick={() => act('auth_access', { ticket: ticket.ref })}
                 />
               </Flex.Item>
             </Flex>

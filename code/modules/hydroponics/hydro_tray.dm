@@ -148,7 +148,7 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(obj/projectile/Proj)
 
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.immutable > 0)

@@ -34473,6 +34473,10 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 1
 	},
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 29
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -54621,20 +54625,6 @@
 	icon_state = "bluefull"
 	},
 /area/almayer/living/briefing)
-"nMq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/computer/working_joe{
-	dir = 8;
-	pixel_x = 17
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/almayer/hallways/aft_hallway)
 "nMu" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -67620,6 +67610,10 @@
 	pixel_y = 5
 	},
 /obj/item/tool/pen,
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 17
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -68625,6 +68619,10 @@
 /area/almayer/command/cic)
 "tUv" = (
 /obj/structure/machinery/iv_drip,
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 17
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -77593,6 +77591,9 @@
 /obj/item/folder/white{
 	layer = 2.9;
 	pixel_x = -8
+	},
+/obj/structure/machinery/computer/working_joe{
+	pixel_y = 16
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -117082,7 +117083,7 @@ auG
 azb
 azb
 azb
-nMq
+auG
 aDp
 apK
 cbr

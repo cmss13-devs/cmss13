@@ -94,7 +94,8 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage
 	name = "\improper Electronics Vendor"
@@ -117,7 +118,8 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage
 	name = "\improper Component Storage Machine"
@@ -146,7 +148,8 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 
 //------COLONY-SPECIFIC VENDORS-------
 

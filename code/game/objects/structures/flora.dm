@@ -91,7 +91,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
-/obj/structure/flora/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/flora/get_projectile_hit_boolean(obj/projectile/P)
 	. = ..()
 	return FALSE
 
@@ -603,11 +603,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	name = "strange tree"
 	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
 	icon_state = "alienplant1"
-	luminosity = 2
-
-/obj/structure/flora/jungle/alienplant1/Destroy()
-	SetLuminosity(0)
-	return ..()
+	light_range = 2
 
 /obj/structure/flora/jungle/planttop1
 	name = "strange tree"
@@ -633,15 +629,15 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 /obj/structure/flora/jungle/vines/light_1
 	icon_state = "light_1"
-	icon_tag = "light_1"
+	icon_tag = "light"
 
 /obj/structure/flora/jungle/vines/light_2
 	icon_state = "light_2"
-	icon_tag = "light_2"
+	icon_tag = "light"
 
 /obj/structure/flora/jungle/vines/light_3
 	icon_state = "light_3"
-	icon_tag = "light_3"
+	icon_tag = "light"
 
 //heavy hide you
 /obj/structure/flora/jungle/vines/heavy

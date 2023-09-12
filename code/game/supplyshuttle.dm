@@ -18,30 +18,26 @@ var/datum/controller/supply/supply_controller = new()
 /area/supply/station //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	luminosity = 1
-	lighting_use_dynamic = 0
+	base_lighting_alpha = 255
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
 
 /area/supply/dock //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	luminosity = 1
-	lighting_use_dynamic = 0
+	base_lighting_alpha = 255
 	requires_power = 0
 
 /area/supply/station_vehicle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Vehicle ASRS"
 	icon_state = "shuttle3"
-	luminosity = 1
-	lighting_use_dynamic = 0
+	base_lighting_alpha = 255
 	requires_power = 0
 
 /area/supply/dock_vehicle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Vehicle ASRS"
 	icon_state = "shuttle3"
-	luminosity = 1
-	lighting_use_dynamic = 0
+	base_lighting_alpha = 255
 	requires_power = 0
 
 //SUPPLY PACKS MOVED TO /code/defines/obj/supplypacks.dm
@@ -1035,8 +1031,9 @@ var/datum/controller/supply/supply_controller = new()
 					var/pack_name = supply_pack.name
 					if(supply_pack.dollar_cost)
 						pack_source = "Unknown"
-						pack_name = "Unknown"
-					link.log_ares_requisition(pack_source, pack_name, usr)
+						if(prob(90))
+							pack_name = "Unknown"
+					link.log_ares_requisition(pack_source, pack_name, usr.name)
 				else
 					temp = "Not enough money left.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"

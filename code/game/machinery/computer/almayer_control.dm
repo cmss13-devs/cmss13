@@ -11,11 +11,11 @@
 	/// requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_request)
 	/// requesting evac
-	COOLDOWN_DECLARE(cooldown_destruct) 
+	COOLDOWN_DECLARE(cooldown_destruct)
 	/// messaging HC (admins)
 	COOLDOWN_DECLARE(cooldown_central)
 	/// making a ship announcement
-	COOLDOWN_DECLARE(cooldown_message) 
+	COOLDOWN_DECLARE(cooldown_message)
 
 	var/list/messagetitle = list()
 	var/list/messagetext = list()
@@ -164,11 +164,11 @@
 			if(!level_selected)
 				return
 
-			set_security_level(seclevel2num(level_selected))
+			set_security_level(seclevel2num(level_selected), log = ARES_LOG_NONE)
 			log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 			message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
 			var/datum/ares_link/link = GLOB.ares_link
-			link.log_ares_security("Security Level Update", "[usr] has changed the security level to [get_security_level()].")
+			link.log_ares_security("Manual Security Update", "[usr] has changed the security level to [get_security_level()].")
 			. = TRUE
 
 		if("messageUSCM")
@@ -230,7 +230,7 @@
 			for(var/client/admin_client as anything in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
 					admin_client << 'sound/effects/sos-morse-code.ogg'
-			message_admins("[key_name(usr)] has requested a Distress Beacon! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+			SSticker.mode.request_ert(usr)
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
 			COOLDOWN_START(src, cooldown_request, COOLDOWN_COMM_REQUEST)

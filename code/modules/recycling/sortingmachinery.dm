@@ -367,7 +367,7 @@
 	return
 
 /obj/structure/machinery/disposal/deliveryChute/Collided(atom/movable/AM) //Go straight into the chute
-	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect)) return
+	if(istype(AM, /obj/projectile) || istype(AM, /obj/effect)) return
 	switch(dir)
 		if(NORTH)
 			if(AM.loc.y != src.loc.y+1) return

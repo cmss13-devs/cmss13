@@ -296,6 +296,35 @@
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
 
+/obj/item/storage/box/guncase/vulture
+	name = "\improper M707 anti-materiel rifle case"
+	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools."
+	icon_state = "guncase_blue"
+	storage_slots = 7
+	can_hold = list(
+		/obj/item/weapon/gun/boltaction/vulture,
+		/obj/item/ammo_magazine/rifle/boltaction/vulture,
+		/obj/item/device/vulture_spotter_tripod,
+		/obj/item/device/vulture_spotter_scope,
+		/obj/item/tool/screwdriver,
+		/obj/item/pamphlet/trait/vulture,
+	)
+
+/obj/item/storage/box/guncase/vulture/update_icon()
+	if(LAZYLEN(contents))
+		icon_state = "guncase_blue"
+	else
+		icon_state = "guncase_blue_e"
+
+/obj/item/storage/box/guncase/vulture/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
+	new /obj/item/pamphlet/trait/vulture(src) //both pamphlets give use of the scope and the rifle
+	new /obj/item/pamphlet/trait/vulture(src)
+
 //Handgun case for Military police vendor three mag , a railflashligh and the handgun.
 
 //88 Mod 4 Combat Pistol
@@ -315,16 +344,16 @@
 //M44 Combat Revolver
 /obj/item/storage/box/guncase/m44
 	name = "\improper M44 Combat Revolver case"
-	desc = "A gun case containing an M44 Combat Revolver."
+	desc = "A gun case containing an M44 Combat Revolver loaded with marksman ammo."
 	storage_slots = 5
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/revolver/m44, /obj/item/ammo_magazine/revolver)
 
 /obj/item/storage/box/guncase/m44/fill_preset_inventory()
 	new /obj/item/attachable/flashlight(src)
-	new /obj/item/weapon/gun/revolver/m44(src)
-	new /obj/item/ammo_magazine/revolver(src)
-	new /obj/item/ammo_magazine/revolver(src)
-	new /obj/item/ammo_magazine/revolver(src)
+	new /obj/item/weapon/gun/revolver/m44/mp(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
 
 //M4A3 Service Pistol
 /obj/item/storage/box/guncase/m4a3

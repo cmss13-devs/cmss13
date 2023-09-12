@@ -585,15 +585,6 @@
 	icon_state = "warnplate"
 	},
 /area/corsat/gamma/hangar)
-"abW" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	dwidth = 1;
-	name = "Gamma Landing Zone"
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/corsat/gamma/hangar)
 "abX" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate"
@@ -1894,15 +1885,6 @@
 "afN" = (
 /turf/open/floor/plating{
 	dir = 10;
-	icon_state = "warnplate"
-	},
-/area/corsat/sigma/hangar)
-"afO" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	dwidth = 1;
-	name = "Sigma Landing Zone"
-	},
-/turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
 /area/corsat/sigma/hangar)
@@ -37491,6 +37473,13 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/gamma/biodome/virology)
+"drp" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	dwidth = 1;
+	name = "Gamma Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/corsat/gamma/hangar)
 "drv" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/gm/river/desert/shallow{
@@ -38260,6 +38249,13 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/omega/complex)
+"dUj" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	dwidth = 1;
+	name = "Sigma Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/corsat/sigma/hangar)
 "dUn" = (
 /obj/structure/machinery/camera/autoname{
 	network = list("gamma")
@@ -93444,7 +93440,7 @@ aaG
 aaG
 aaX
 aaG
-abW
+bBX
 aco
 aaG
 acG
@@ -94414,7 +94410,7 @@ aaG
 aaG
 aaG
 aaG
-aaG
+drp
 aaG
 aaG
 aaG
@@ -120957,7 +120953,7 @@ afi
 afi
 aeN
 afi
-afO
+eDz
 ajU
 aeB
 vkW
@@ -121927,7 +121923,7 @@ afi
 afi
 afi
 afi
-afi
+dUj
 afi
 afi
 afi

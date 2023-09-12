@@ -70,7 +70,7 @@
 	donor_key = "biolock"
 	donor_gear = list(
 		/obj/item/clothing/head/helmet/marine/fluff/biolock,
-		/obj/item/clothing/suit/storage/marine/fluff/biolock,
+		/obj/item/clothing/suit/storage/marine/light/fluff/biolock,
 	)
 
 /obj/item/storage/box/donator_kit/bunny232

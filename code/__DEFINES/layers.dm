@@ -141,8 +141,6 @@
 
 #define ABOVE_FLY_LAYER 6
 
-#define ABOVE_LIGHTING_PLANE 16
-
 /// blip from motion detector
 #define BELOW_FULLSCREEN_LAYER 16.9
 #define FULLSCREEN_LAYER 17
@@ -160,6 +158,8 @@
 #define FULLSCREEN_BLIND_LAYER 17.15
 /// pain flashes
 #define FULLSCREEN_PAIN_LAYER 17.2
+/// Vulture sniper/spotter scope
+#define FULLSCREEN_VULTURE_SCOPE_LAYER 17.21
 /// in critical
 #define FULLSCREEN_CRIT_LAYER 17.25
 
@@ -168,10 +168,43 @@
 
 #define CINEMATIC_LAYER 21
 
-#define TYPING_LAYER 500
-
 /// for areas, so they appear above everything else on map file.
 #define AREAS_LAYER 999
+
+//---------- EMISSIVES -------------
+//Layering order of these is not particularly meaningful.
+//Important part is the seperation of the planes for control via plane_master
+
+/// This plane masks out lighting to create an "emissive" effect, ie for glowing lights in otherwise dark areas.
+#define EMISSIVE_PLANE 90
+/// The render target used by the emissive layer.
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
+/// The layer you should use if you _really_ don't want an emissive overlay to be blocked.
+#define EMISSIVE_LAYER_UNBLOCKABLE 9999
+
+#define LIGHTING_BACKPLANE_LAYER 14.5
+
+#define LIGHTING_RENDER_TARGET "LIGHT_PLANE"
+
+#define SHADOW_RENDER_TARGET "SHADOW_RENDER_TARGET"
+
+/// Plane for balloon text (text that fades up)
+#define BALLOON_CHAT_PLANE 110
+/// Bubble for typing indicators
+#define TYPING_LAYER 500
+
+#define O_LIGHTING_VISUAL_PLANE 120
+#define O_LIGHTING_VISUAL_LAYER 16
+#define O_LIGHTING_VISUAL_RENDER_TARGET "O_LIGHT_VISUAL_PLANE"
+
+#define LIGHTING_PRIMARY_LAYER 15	//The layer for the main lights of the station
+#define LIGHTING_PRIMARY_DIMMER_LAYER 15.1	//The layer that dims the main lights of the station
+#define LIGHTING_SECONDARY_LAYER 16	//The colourful, usually small lights that go on top
+
+#define LIGHTING_SHADOW_LAYER 17	//Where the shadows happen
+
+#define ABOVE_LIGHTING_PLANE 150
+#define ABOVE_LIGHTING_LAYER 18
 
 /*=============================*\
 | |
@@ -194,6 +227,7 @@
 
 #define GHOST_PLANE 80
 
+///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 #define LIGHTING_PLANE 100
 #define EXTERIOR_LIGHTING_PLANE 101
 

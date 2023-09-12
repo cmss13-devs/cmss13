@@ -205,13 +205,13 @@
 	desc = "Contains a painkiller autoinjector, first-aid autoinjector, some ointment, and some bandages."
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -231,7 +231,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
 
@@ -906,6 +906,9 @@
 		update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/afterattack(obj/target, mob/user, flag) //refuel at fueltanks & chem dispensers.
+	if(get_dist(user,target) > 1)
+		return ..()
+
 	if(!inner)
 		to_chat(user, SPAN_WARNING("[src] has no internal container!"))
 		return ..()
@@ -925,8 +928,7 @@
 	if(!istype(target, /obj/structure/reagent_dispensers/fueltank))
 		return ..()
 
-	if(get_dist(user,target) > 1)
-		return ..()
+
 
 	var/obj/O = target
 	if(!O.reagents || O.reagents.reagent_list.len < 1)

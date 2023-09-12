@@ -44,16 +44,34 @@
 	var/thrall = FALSE //Used to affect icon generation.
 
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", elder_restricted = 0)
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", legacy = "None")
 	..()
 	forceMove(location)
 	if(thrall)
 		return
 
+	if(legacy != "None")
+		switch(legacy)
+			if("Dragon")
+				icon_state = "pred_mask_elder_tr"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
+				return
+			if("Swamp")
+				icon_state = "pred_mask_elder_joshuu"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
+				return
+			if("Enforcer")
+				icon_state = "pred_mask_elder_feweh"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_feweh")
+				return
+			if("Collector")
+				icon_state = "pred_mask_elder_n"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
+				return
+
 	if(mask_number > 12)
 		mask_number = 1
 	icon_state = "pred_mask[mask_number]_[armor_material]"
-
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
@@ -155,7 +173,7 @@
 	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
 		for(var/listed_hud in mask_huds)
 			var/datum/mob_hud/H = huds[listed_hud]
-			H.remove_hud_from(user)
+			H.remove_hud_from(user, src)
 		var/obj/item/visor = user.glasses
 		if(visor) //make your hud fuck off
 			if(istype(visor, /obj/item/clothing/glasses/night/yautja))
@@ -170,7 +188,7 @@
 		START_PROCESSING(SSobj, src)
 		for(var/listed_hud in mask_huds)
 			var/datum/mob_hud/H = huds[listed_hud]
-			H.add_hud_to(user)
+			H.add_hud_to(user, src)
 		if(current_goggles)
 			var/obj/item/clothing/gloves/yautja/bracer = user.gloves
 			if(!bracer || !istype(bracer))

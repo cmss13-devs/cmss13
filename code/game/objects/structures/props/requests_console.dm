@@ -4,7 +4,6 @@
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "req_comp0"
-	luminosity = 0
 
 /obj/structure/machinery/requests_console/power_change()
 	..()

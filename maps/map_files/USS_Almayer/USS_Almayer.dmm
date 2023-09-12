@@ -63206,7 +63206,7 @@
 "rBx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/stamp/ro{
-	name = "spare quatermaster's rubber stamp";
+	name = "spare quartermaster's rubber stamp";
 	pixel_x = -7;
 	pixel_y = 11
 	},

@@ -1,0 +1,4 @@
+author: "TeDGamer"
+delete-after: True
+changes:
+  - balance: "Hive weeds can be supported by other structures when original parent structure is destroyed."

@@ -23,8 +23,8 @@
 
 	pixel_x = -18
 
-	health = 700
-	var/maxHealth = 700
+	health = 1500
+	var/maxHealth = 1500
 	var/repair = FALSE
 
 	var/mob/pilot = null
@@ -605,12 +605,12 @@
 
 	to_chat(user, "You start repairing broken part of [src.name]'s armor...")
 	if(do_after(user, repair_time, TRUE, 5, BUSY_ICON_BUILD))
-		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, "You haphazardly weld together chunks of broken armor.")
-			health += 25
+			health += 100
 			healthcheck()
 		else
-			health += 100
+			health += 250
 			healthcheck()
 			to_chat(user, "You repair broken part of the armor.")
 		playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)

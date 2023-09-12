@@ -221,7 +221,7 @@
 	desc = "A armament MG magazine"
 	caliber = "10x28mm" //Correlates to smartguns
 	icon_state = "mech_smartgun_ammo"
-	default_ammo = /datum/ammo/bullet/smartgun
+	default_ammo = /datum/ammo/bullet/walker/smartgun
 	max_rounds = 700
 	gun_type = /obj/item/walker_gun/smartgun
 
@@ -249,7 +249,7 @@
 	desc = "A armament M30 magazine"
 	icon_state = "mech_minigun_ammo"
 	max_rounds = 300
-	default_ammo = /datum/ammo/bullet/machinegun
+	default_ammo = /datum/ammo/bullet/walker/machinegun
 	gun_type = /obj/item/walker_gun/hmg
 
 /obj/item/ammo_magazine/walker/flamer
@@ -326,6 +326,26 @@
 ///////////////
 // AMMO MAGS // END
 ///////////////
+
+/datum/ammo/bullet/walker/smartgun
+	name = "smartgun bullet"
+	icon_state = "redbullet"
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+	max_range = 24
+	accuracy = HIT_ACCURACY_TIER_5
+	damage = 35
+	penetration = 0
+
+/datum/ammo/bullet/walker/machinegun
+	name = "machinegun bullet"
+	icon_state = "bullet"
+
+	accurate_range = 12
+	damage = 45
+	penetration= ARMOR_PENETRATION_TIER_10
+	accuracy = HIT_ACCURACY_TIER_3
+
 ////////////////
 // MEGALODON HARDPOINTS // END
 ////////////////

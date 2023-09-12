@@ -280,6 +280,11 @@
 	desc = "A Console linked to Mortar launched cameras."
 	network = list(CAMERA_NET_MORTAR)
 
+/obj/structure/machinery/computer/cameras/wooden_tv/lp
+	name = "Listening Post Monitor"
+	desc = "A Console linked to helmet mounted cameras."
+	network = list(CAMERA_NET_OVERWATCH)
+
 /obj/structure/machinery/computer/cameras/mining
 	name = "Outpost Cameras"
 	icon = 'icons/obj/structures/machinery/computer.dmi'

@@ -229,7 +229,7 @@ item, and will change the skin to whatever you specify here. You can also
 manually override the icon with a unique skin if wanted, for the outlier
 cases. Override_icon_state should be a list.*/
 /obj/item/proc/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	if(type == expected_type && !istype(src, /obj/item/clothing/suit/storage/marine/fluff) && !istype(src, /obj/item/clothing/head/helmet/marine/fluff) && !istype(src, /obj/item/clothing/under/marine/fluff))
+	if(type == expected_type && !findtext("[type]", "fluff"))
 		var/new_icon_state
 		var/new_protection
 		var/new_item_state

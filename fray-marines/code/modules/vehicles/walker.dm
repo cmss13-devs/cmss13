@@ -10,7 +10,7 @@
 	desc = "Relatively new combat walker of \"Enforcer\"-series. Unlike its predecessor, \"Carharodon\"-series, slower, but relays on its tough armor and rapid-firing weapons."
 	icon = 'fray-marines/icons/obj/vehicles/mech.dmi'
 	icon_state = "mech_open"
-	layer = ABOVE_LYING_MOB_LAYER
+	layer = BIG_XENO_LAYER
 	opacity = TRUE
 	can_buckle = FALSE
 	move_delay = 6
@@ -116,13 +116,17 @@
 	seats[VEHICLE_DRIVER].set_interaction(src)
 
 	if(world.time > l_move_time + move_delay)
-		if(dir != direction)
+		if (zoom)
+			unzoom()
+		if(dir != direction && reverse_dir[dir] != direction)
 			l_move_time = world.time
 			dir = direction
 			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
 			. = TRUE
 		else
+			var/oldDir = dir
 			. = step(src, direction)
+			setDir(oldDir)
 			if(.)
 				pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
 
@@ -231,7 +235,7 @@
 	if(health <= 0)
 		to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>PRIORITY ALERT! Chassis integrity failing. Systems shutting down.</span>")
 	if(zoom)
-		zoom_activate()
+		unzoom()
 	if(seats[VEHICLE_DRIVER].client)
 		seats[VEHICLE_DRIVER].client.mouse_pointer_icon = initial(seats[VEHICLE_DRIVER].client.mouse_pointer_icon)
 	seats[VEHICLE_DRIVER].unset_interaction()
@@ -408,20 +412,59 @@
 	set name = "Zoom on/off"
 	set category = "Vehicle"
 
-	zoom_activate()
+	var/mob/M = usr
+	if(!M || !istype(M))
+		return
+
+	var/obj/vehicle/walker/W = M.interactee
+
+	if(!W || !istype(W))
+		return
+
+	W.zoom_activate()
 
 /obj/vehicle/walker/proc/zoom_activate()
-	if(zoom)
-		seats[VEHICLE_DRIVER].client.change_view(world.view)//world.view - default mob view size
-		zoom = FALSE
+	if (zoom)
+		unzoom()
 	else
-		seats[VEHICLE_DRIVER].client.change_view(world.view)//world.view - default mob view size
-		seats[VEHICLE_DRIVER].client.change_view(zoom_size)
-		seats[VEHICLE_DRIVER] << sound('sound/mecha/imag_enhsyndi.ogg',volume=50)
+		do_zoom()
+
+/obj/vehicle/walker/proc/do_zoom(viewsize = 12)
+	var/mob/living/carbon/user = seats[VEHICLE_DRIVER]
+	if(user.client)
 		zoom = TRUE
+		user.client.change_view(viewsize, src)
+
+		// zoom_initial_mob_dir = user.dir
+
+		var/tilesize = 32
+		var/viewoffset = tilesize * zoom_size
+
+		switch(dir)
+			if(NORTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = viewoffset
+			if(SOUTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = -viewoffset
+			if(EAST)
+				user.client.pixel_x = viewoffset
+				user.client.pixel_y = 0
+			if(WEST)
+				user.client.pixel_x = -viewoffset
+				user.client.pixel_y = 0
+
 	to_chat(seats[VEHICLE_DRIVER], "Notification. Cameras zooming [zoom ? "activated" : "deactivated"].")
 
+/obj/vehicle/walker/proc/unzoom()
+	var/mob/living/carbon/user = seats[VEHICLE_DRIVER]
 
+	zoom = !zoom
+	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
+	if(user.client)
+		user.client.change_view(world_view_size, src)
+		user.client.pixel_x = 0
+		user.client.pixel_y = 0
 
 
 /////////////////
@@ -597,7 +640,7 @@
 	M.visible_message(SPAN_DANGER("[M] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
 	take_damage(M.melee_vehicle_damage + rand(-5,5), "slash")
 
-	return XENO_NONCOMBAT_ACTION
+	return XENO_ATTACK_ACTION
 
 /obj/vehicle/walker/healthcheck()
 	if(health > maxHealth)
@@ -649,7 +692,7 @@
 	name = "CW13 wreckage"
 	desc = "Remains of some unfortunate walker. Completely unrepairable."
 	icon = 'fray-marines/icons/obj/vehicles/mech.dmi'
-	icon_state = "mech-broken"
+	icon_state = "mech_broken"
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE

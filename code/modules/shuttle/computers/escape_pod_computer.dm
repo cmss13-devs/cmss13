@@ -66,7 +66,7 @@
 	var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle = SSshuttle.getShuttle(shuttleId)
 	switch(action)
 		if("force_launch")
-			if(!pod_state == STATE_READY && !pod_state == STATE_DELAYED)
+			if(pod_state != STATE_READY && pod_state != STATE_DELAYED)
 				return
 
 			shuttle.evac_launch()

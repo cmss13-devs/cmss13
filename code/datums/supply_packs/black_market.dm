@@ -25,6 +25,7 @@ black market prices are NOT based on real or in-universe costs. they are based o
 	contraband = TRUE
 	cost = 0
 	dollar_cost = 50
+	crate_heat = 5
 
 /obj/structure/largecrate/black_market
 	/// Wipes points from objects inside to avoid infinite farming.
@@ -218,7 +219,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/rifle/m16,
 	)
 	dollar_cost = 35
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/ar10
@@ -231,7 +231,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/rifle/ar10,
 	)
 	dollar_cost = 40 // rarer
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mar30
@@ -245,7 +244,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/rifle/mar40,
 	)
 	dollar_cost = 30
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/hunting
@@ -259,7 +257,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/rifle/boltaction,
 	)
 	dollar_cost = 5
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 // Shotguns
@@ -270,7 +267,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/shotgun,
 	)
 	dollar_cost = 50
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 // SMGs
@@ -286,7 +282,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/smg/fp9000,
 	)
 	dollar_cost = 25
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mp27
@@ -300,7 +295,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/smg/mp27,
 	)
 	dollar_cost = 20
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mp5
@@ -314,7 +308,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/smg/mp5,
 	)
 	dollar_cost = 25
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/uzi
@@ -328,7 +321,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/smg/uzi,
 	)
 	dollar_cost = 10
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mac15
@@ -342,7 +334,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/smg/mac15,
 	)
 	dollar_cost = 5
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/pps43
@@ -356,7 +347,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/smg/pps43,
 	)
 	dollar_cost = 15
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 //Pistols
@@ -373,7 +363,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/pistol/b92fs,
 	)
 	dollar_cost = 10
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/heavy
@@ -386,7 +375,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/pistol/heavy,
 	)
 	dollar_cost = 45
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/t73
@@ -401,7 +389,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/pistol/t73,
 	)
 	dollar_cost = 15
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/kt42
@@ -415,7 +402,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/pistol/kt42,
 	)
 	dollar_cost = 15
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/holdout
@@ -431,7 +417,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/pistol/holdout,
 	)
 	dollar_cost = 5
-	crate_heat = 5
+	crate_heat = 2
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/bizon
@@ -444,7 +430,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/smg/bizon,
 	)
 	dollar_cost = 15
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 //Revolvers
@@ -460,7 +445,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/revolver/cmb,
 	)
 	dollar_cost = 20
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/small
@@ -475,7 +459,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/revolver/small,
 	)
 	dollar_cost = 15
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/upprevolver
@@ -490,7 +473,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/revolver/upp,
 	)
 	dollar_cost = 15
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/r4t
@@ -503,7 +485,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/lever_action/training,
 	)
 	dollar_cost = 75
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /* --- SHIPSIDE CONTRABAND --- */
@@ -726,7 +707,6 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/prop/helmetgarb/riot_shield,
 	)
 	dollar_cost = 55
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/surplus_non_lethal_ammunition
@@ -741,7 +721,6 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/ammo_magazine/shotgun/beanbag,
 	)
 	dollar_cost = 50
-	crate_heat = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/surplus_m4ra_extended
@@ -756,35 +735,30 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 /datum/supply_packs/contraband/surplus/mk45_automag
 	name = "surplus MK-45 Automagnum case"
 	dollar_cost = 35
-	crate_heat = 5
 	contains = list(/obj/item/storage/box/guncase/mk45_automag)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/nsg23_marine
 	name = "surplus NSG-23 assault rifle case"
 	dollar_cost = 45
-	crate_heat = 5
 	contains = list(/obj/item/storage/box/guncase/nsg23_marine)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/m3717
 	name = "surplus M37-17 pump shotgun case"
 	dollar_cost = 80
-	crate_heat = 5
 	contains = list(/obj/item/storage/box/guncase/m3717)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/m1911
 	name = "surplus M1911 service pistol case"
 	dollar_cost = 10
-	crate_heat = 5
 	contains = list(/obj/item/storage/box/guncase/m1911)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/m1911/socom
 	name = "surplus SOCOM M1911 service pistol case"
 	dollar_cost = 25
-	crate_heat = 5
 	contains = list(/obj/item/storage/box/guncase/m1911/socom)
 	containertype = /obj/structure/largecrate/black_market
 
@@ -800,6 +774,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage
 	group = "Deep Storage"
+	crate_heat = -5
 
 /datum/supply_packs/contraband/deep_storage/spacejam
 	name = "Tickets to Space Jam"
@@ -812,21 +787,18 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "Broken Night Vision Goggles"
 	contains = list(/obj/item/prop/helmetgarb/helmet_nvg/cosmetic)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/xm42b_pipe
 	name = "10x99mm XM42B casing"
 	contains = list(/obj/item/prop/helmetgarb/bullet_pipe)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/trimmed_wire
 	name = "Trimmed Barbed Wire"
 	contains = list(/obj/item/prop/helmetgarb/trimmed_wire)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/lucky_feather_random
@@ -839,21 +811,18 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/lucky_feather/yellow,
 	)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/rosary
 	name = "Rosary"
 	contains = list(/obj/item/prop/helmetgarb/rosary)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/rabbitsfoot
 	name = "Rabbit's Foot"
 	contains = list(/obj/item/prop/helmetgarb/rabbitsfoot)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 // Masks
@@ -868,7 +837,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan,
 	)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/skull_balaclava_random
@@ -879,7 +847,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/mask/rebreather/skull,
 	)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 
@@ -887,7 +854,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "Skull Facepaint"
 	contains = list(/obj/item/facepaint/skull)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 //Glasses
@@ -896,7 +862,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "Aviator Shades"
 	contains = list(/obj/item/clothing/glasses/sunglasses/aviator)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/ballistic_goggles_random
@@ -908,14 +873,12 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/glasses/mgoggles/black,
 	)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/bimex_shades
 	name = "BiMex Personal Shades"
 	contains = list(/obj/item/clothing/glasses/sunglasses/big)
 	dollar_cost = 15
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 // Headgear
@@ -928,7 +891,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/cmbandana/tan,
 	)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uscm_earpiece
@@ -936,7 +898,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	randomised_num_contained = 1
 	contains = list(/obj/item/clothing/head/headset)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uscm_headband
@@ -950,7 +911,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/headband/tan,
 	)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uscm_boonie_hat
@@ -961,7 +921,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/cmcap/boonie,
 	)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 //Misc
@@ -970,7 +929,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "PDT/L Kit"
 	contains = list(/obj/item/storage/box/pdt_kit)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/lucky_lime
@@ -990,14 +948,12 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/toy/handcard/uno_reverse_yellow,
 	)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/jungle_boots
 	name = "Jungle Pattern Combat Boots"
 	contains = list(/obj/item/clothing/shoes/marine/jungle)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 //Weapons
@@ -1006,21 +962,19 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "Type 80 Bayonet Replica"
 	contains = list(/obj/item/attachable/bayonet/upp_replica)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/cartridge_bayonet
 	name = "M8 Cartridge Bayonet Kit"
 	contains = list(/obj/item/storage/box/co2_knife)
 	dollar_cost = 10
-	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/clf_holdout
 	name = "D18 Holdout Pistol"
 	contains = list(/obj/item/storage/box/clf)
 	dollar_cost = 10
-	crate_heat = -5
+	crate_heat = 2
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m4a3_c
@@ -1077,7 +1031,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 /datum/supply_packs/contraband/miscellaneous/cargo_tug
 	name = "cargo tug crate"
 	dollar_cost = 50
-	crate_heat = 5
 	contains = list(/obj/vehicle/train/cargo/engine)
 	containertype = /obj/structure/largecrate/black_market
 

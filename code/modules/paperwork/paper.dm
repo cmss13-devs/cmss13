@@ -257,7 +257,7 @@
 		t = replacetext(t, "\[wy\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
 		t = replacetext(t, "\[uscm\]", "<img src = [asset.get_url_mappings()["uscmlogo.png"]]>")
 		t = replacetext(t, "\[upp\]", "<img src = [asset.get_url_mappings()["upplogo.png"]]>")
-		t = replacetext(t, "\[cmb\]", "<img src = 'cmblogo.png'width='125'height='125'>")
+		t = replacetext(t, "\[cmb\]", "<img src = [asset.get_url_mappings()["cmblogo.png"]]>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!

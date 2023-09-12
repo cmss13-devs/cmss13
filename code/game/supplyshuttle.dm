@@ -144,9 +144,11 @@ var/datum/controller/supply/supply_controller = new()
 
 	//If any computers are able to order contraband, it's enabled. Otherwise, it's disabled!
 
+/// Prevents use of black market, even if it is otherwise enabled. If any computer has black market locked out, it applies across all of the currently established ones.
 /obj/structure/machinery/computer/supplycomp/proc/lock_black_market(market_locked = FALSE)
-	if(market_locked)
-		black_market_lockout = TRUE
+	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in supply_controller.bound_supply_computer_list)
+		if(market_locked)
+			computer.black_market_lockout = TRUE
 
 /obj/structure/machinery/computer/ordercomp
 	name = "Supply ordering console"
@@ -1250,7 +1252,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /datum/controller/supply/proc/black_market_CMB_investigation()
 	black_market_heat = -1
-	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", TRUE, FALSE)
+	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", FALSE, TRUE, FALSE)
 
 /obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
 

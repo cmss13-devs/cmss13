@@ -425,7 +425,7 @@
 	icon_state = "stamp-weyyu"
 
 /obj/item/tool/stamp/ro
-	name = "quatermaster's rubber stamp"
+	name = "quartermaster's rubber stamp"
 	icon_state = "stamp-ro"
 
 /obj/item/tool/carpenters_hammer //doesn't do anything, yet

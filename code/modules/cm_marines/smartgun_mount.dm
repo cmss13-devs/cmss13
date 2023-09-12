@@ -111,6 +111,11 @@
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	var/turf/T = get_turf(usr)
+	if(istype(T, /turf/open))
+		var/turf/open/floor = T
+		if(!floor.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+			return FALSE
 	var/fail = FALSE
 	if(T.density)
 		fail = TRUE
@@ -195,6 +200,11 @@
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	var/turf/T = get_turf(user)
+	if(istype(T, /turf/open))
+		var/turf/open/floor = T
+		if(!floor.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+			return FALSE
 	var/fail = FALSE
 	if(T.density)
 		fail = TRUE
@@ -245,7 +255,7 @@
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 //Making so rockets don't hit M56D
-/obj/structure/machinery/m56d_post/calculate_cover_hit_boolean(obj/item/projectile/P, distance = 0, cade_direction_correct = FALSE)
+/obj/structure/machinery/m56d_post/calculate_cover_hit_boolean(obj/projectile/P, distance = 0, cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ROCKET)
 		return 0
@@ -370,6 +380,11 @@
 		if(fail)
 			to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
 			return
+		if(istype(T, /turf/open))
+			var/turf/open/floor = T
+			if(!floor.allow_construction)
+				to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+				return FALSE
 
 		if(gun_mounted)
 			to_chat(user, "You're securing the M56D into place...")
@@ -432,7 +447,7 @@
 	var/health_max = 200 //Why not just give it sentry-tier health for now.
 	var/atom/target = null // required for shooting at things.
 	var/datum/ammo/bullet/machinegun/ammo = /datum/ammo/bullet/machinegun
-	var/obj/item/projectile/in_chamber = null
+	var/obj/projectile/in_chamber = null
 	var/locked = 0 //1 means its locked inplace (this will be for sandbag MGs)
 	var/is_bursting = 0
 	var/muzzle_flash_lum = 4
@@ -464,7 +479,7 @@
 		PF.flags_can_pass_all = PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_THROW_MOB
 
 //Making so rockets don't hit M56D
-/obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/item/projectile/P, distance = 0, cade_direction_correct = FALSE)
+/obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/projectile/P, distance = 0, cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ROCKET)
 		return 0
@@ -486,7 +501,6 @@
 /obj/structure/machinery/m56d_hmg/Destroy() //Make sure we pick up our trash.
 	if(operator)
 		operator.unset_interaction()
-	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
@@ -631,7 +645,7 @@
 		if(50 to 75) damage_state = M56D_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = M56D_DMG_NONE
 
-/obj/structure/machinery/m56d_hmg/bullet_act(obj/item/projectile/P) //Nope.
+/obj/structure/machinery/m56d_hmg/bullet_act(obj/projectile/P) //Nope.
 	bullet_ping(P)
 	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
 	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
@@ -656,7 +670,7 @@
 		return 0 //Out of ammo.
 
 	var/datum/cause_data/cause_data = create_cause_data(initial(name))
-	in_chamber = new /obj/item/projectile(loc, cause_data) //New bullet!
+	in_chamber = new /obj/projectile(loc, cause_data) //New bullet!
 	in_chamber.generate_bullet(ammo)
 	return 1
 
@@ -704,7 +718,7 @@
 		return
 
 	if(load_into_chamber() == 1)
-		if(istype(in_chamber,/obj/item/projectile))
+		if(istype(in_chamber,/obj/projectile))
 			in_chamber.original = target
 
 			var/initial_angle = Get_Angle(T, U)
@@ -803,9 +817,9 @@
 	if(isnull(angle))
 		return
 
-	SetLuminosity(muzzle_flash_lum)
+	set_light(muzzle_flash_lum)
 	spawn(10)
-		SetLuminosity(-muzzle_flash_lum)
+		set_light(-muzzle_flash_lum)
 
 	var/image_layer = layer + 0.1
 
@@ -891,7 +905,7 @@
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
 	user.unfreeze()
 	user.reset_view(null)
-	user.forceMove(get_step(src, reverse_direction(src.dir)))
+	user.Move(get_step(src, reverse_direction(src.dir)))
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
 	user_old_x = 0 //reset our x
 	user_old_y = 0 //reset our y
@@ -1061,7 +1075,7 @@
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return FALSE
-	if(OT.density || !isturf(OT))
+	if(OT.density || !isturf(OT) || !OT.allow_construction)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return FALSE
 	if(rotate_check.density)

@@ -65,9 +65,24 @@
 
 	var/list/bleeding_effects_list = list()
 
+	var/can_bleed_internally = TRUE
+
 	var/destroyed = FALSE
 	var/status = LIMB_ORGANIC
 	var/processing = FALSE
+
+	/// ethnicity of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
+	var/ethnicity = "western"
+
+	/// body type of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
+	var/body_type = "mesomorphic"
+
+	/// species of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
+	var/datum/species/species
+
+	/// defines which sprite the limb should use if dimorphic, set in [/obj/limb/proc/update_limb()]
+	var/limb_gender = MALE
+
 
 /obj/limb/Initialize(mapload, obj/limb/P, mob/mob_owner)
 	. = ..()
@@ -79,12 +94,10 @@
 	if(mob_owner)
 		owner = mob_owner
 
-	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0")
-	wound_overlay.blend_mode = BLEND_INSET_OVERLAY
+	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
 	wound_overlay.color = owner?.species.blood_color
 
-	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0")
-	burn_overlay.blend_mode = BLEND_INSET_OVERLAY
+	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0", -DAMAGE_LAYER)
 
 	if(owner)
 		forceMove(owner)
@@ -359,7 +372,7 @@
 
 	SEND_SIGNAL(src, COMSIG_LIMB_TAKEN_DAMAGE, is_ff, previous_brute, previous_burn)
 	owner.updatehealth()
-	update_icon()
+	owner.update_damage_overlays()
 	start_processing()
 
 ///Special delimbs for different limbs
@@ -511,6 +524,9 @@ This function completely restores a damaged organ to perfect condition.
 	if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		return
 
+	if(internal && !can_bleed_internally)
+		internal = FALSE
+
 	if(length(bleeding_effects_list))
 		if(!internal)
 			for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
@@ -646,7 +662,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	// sync the organ's damage with its wounds
 	update_damages()
-	update_icon()
+	owner.update_damage_overlays()
 	if(wound_disappeared)
 		owner.update_med_icon()
 		remove_wound_bleeding()
@@ -665,74 +681,66 @@ This function completely restores a damaged organ to perfect condition.
 
 		number_wounds += W.amount
 
-/obj/limb/update_icon(forced = FALSE)
-	if(parent && parent.status & LIMB_DESTROYED)
-		overlays.Cut()
-		icon_state = ""
+/// updates the various internal variables of the limb from the owner
+/obj/limb/proc/update_limb()
+	SHOULD_CALL_PARENT(TRUE)
+
+	var/datum/ethnicity/owner_ethnicity = GLOB.ethnicities_list[owner?.ethnicity]
+
+	if(owner_ethnicity)
+		ethnicity = owner_ethnicity.icon_name
+	else
+		ethnicity = "western"
+
+	var/datum/body_type/owner_body_type = GLOB.body_types_list[owner?.body_type]
+
+	if(owner_body_type)
+		body_type = owner_body_type.icon_name
+	else
+		body_type = "mesomorphic"
+
+	if(isspeciesyautja(owner))
+		ethnicity = owner.ethnicity
+		body_type = owner.body_type
+
+	species = owner?.species ? owner.species : GLOB.all_species[SPECIES_HUMAN]
+	limb_gender = owner?.gender ? owner.gender : FEMALE
+
+/// generates a list of overlays that should be applied to the owner
+/obj/limb/proc/get_limb_icon()
+	SHOULD_CALL_PARENT(TRUE)
+	RETURN_TYPE(/list)
+
+	. = list()
+
+	if(parent?.status & LIMB_DESTROYED)
 		return
 
 	if(status & LIMB_DESTROYED)
-		if(forced)
-			overlays.Cut()
-			if(has_stump_icon && !(status & LIMB_AMPUTATED))
-				icon = 'icons/mob/humans/dam_human.dmi'
-				icon_state = "stump_[icon_name]_bone"
-				var/image/blood_overlay = new('icons/mob/humans/dam_human.dmi', "stump_[icon_name]_blood")
-				blood_overlay.color = owner.species.blood_color
-				overlays += blood_overlay
-			else
-				icon_state = ""
+		if(has_stump_icon && !(status & LIMB_AMPUTATED))
+			. += image('icons/mob/humans/dam_human.dmi', "stump_[icon_name]_blood", -DAMAGE_LAYER)
 		return
 
-	var/race_icon = owner.species.icobase
+	var/image/limb = image(layer = -BODYPARTS_LAYER)
 
 	if ((status & LIMB_ROBOT) && !(owner.species && owner.species.flags & IS_SYNTHETIC))
-		overlays.Cut()
-		icon = 'icons/mob/robotic.dmi'
-		icon_state = "[icon_name]"
+		limb.icon = 'icons/mob/robotic.dmi'
+		limb.icon_state = "[icon_name]"
+		. += limb
 		return
 
-	var/datum/ethnicity/E = GLOB.ethnicities_list[owner.ethnicity]
-	var/datum/body_type/B = GLOB.body_types_list[owner.body_type]
+	limb.icon = species.icobase
+	limb.icon_state = "[get_limb_icon_name(species, body_type, limb_gender, icon_name, ethnicity)]"
 
-	var/e_icon
-	var/b_icon
+	. += limb
 
-	if (!E)
-		e_icon = "western"
-	else
-		e_icon = E.icon_name
+	return
 
-	if (!B)
-		b_icon = "mesomorphic"
-	else
-		b_icon = B.icon_name
+/// generates a key for the purpose of caching the icon to avoid duplicate generations
+/obj/limb/proc/get_limb_icon_key()
+	SHOULD_CALL_PARENT(TRUE)
 
-	if(isspeciesyautja(owner))
-		e_icon = owner.ethnicity
-		b_icon = owner.body_type
-
-	icon = race_icon
-	icon_state = "[get_limb_icon_name(owner.species, b_icon, owner.gender, icon_name, e_icon)]"
-	wound_overlay.color = owner.species.blood_color
-
-	var/n_is = damage_state_text()
-	if (forced || n_is != damage_state)
-		overlays.Cut()
-		damage_state = n_is
-		update_overlays()
-
-
-/obj/limb/proc/update_overlays()
-	var/brutestate = copytext(damage_state, 1, 2)
-	var/burnstate = copytext(damage_state, 2)
-	if(brutestate != "0")
-		wound_overlay.icon_state = "grayscale_[brutestate]"
-		overlays += wound_overlay
-
-	if(burnstate != "0")
-		burn_overlay.icon_state = "burn_[burnstate]"
-		overlays += burn_overlay
+	return "[species.name]-[body_type]-[limb_gender]-[icon_name]-[ethnicity]-[status]"
 
 // new damage icon system
 // returns just the brute/burn damage code
@@ -769,7 +777,7 @@ This function completely restores a damaged organ to perfect condition.
 //Recursive setting of self and all child organs to amputated
 /obj/limb/proc/setAmputatedTree()
 	status |= LIMB_AMPUTATED
-	update_icon(TRUE)
+	owner.update_body()
 	for(var/obj/limb/O as anything in children)
 		O.setAmputatedTree()
 
@@ -1135,7 +1143,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	for(var/obj/limb/T as anything in children)
 		T.robotize(uncalibrated = uncalibrated, synth_skin = synth_skin)
 
-	update_icon(TRUE)
+	owner.update_body(TRUE)
 
 /obj/limb/proc/calibrate_prosthesis()
 	status &= ~LIMB_UNCALIBRATED_PROSTHETIC
@@ -1215,7 +1223,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			user.visible_message(SPAN_WARNING("[user] fumbles with [S]"), SPAN_WARNING("You fumble with [S]..."))
 			time_to_take = 15 SECONDS
 
-		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			var/possessive = "[user == target ? "your" : "\the [target]'s"]"
 			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
 			user.affected_message(target,
@@ -1237,6 +1245,20 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/proc/reset_limb_surgeries()
 	owner.incision_depths[name] = SURGERY_DEPTH_SURFACE
 	owner.active_surgeries[name] = null
+
+/obj/limb/proc/get_damage_overlays()
+	. = list()
+
+	damage_state = damage_state_text()
+	var/brutestate = copytext(damage_state, 1, 2)
+	if(brutestate != "0")
+		wound_overlay.icon_state = "grayscale_[icon_name]_[brutestate]"
+		. += wound_overlay
+
+	var/burnstate = copytext(damage_state, 2)
+	if(burnstate != "0")
+		burn_overlay.icon_state = "burn_[icon_name]_[burnstate]"
+		. += wound_overlay
 
 /*
 			LIMB TYPES
@@ -1278,6 +1300,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	display_name = "foot"
 	max_damage = 30
 	min_broken_damage = 20
+	can_bleed_internally = FALSE
 
 /obj/limb/arm
 	name = "arm"
@@ -1290,6 +1313,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	display_name = "hand"
 	max_damage = 30
 	min_broken_damage = 20
+	can_bleed_internally = FALSE
 
 /obj/limb/arm/l_arm
 	name = "l_arm"
@@ -1382,17 +1406,36 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	bandage_icon_amount = 4
 	var/disfigured = 0 //whether the head is disfigured.
 
-///Specifically, damage overlays. Severed limb gore effects are applied elsewhere.
-/obj/limb/head/update_overlays()
-	..()
+	var/eyes_r
+	var/eyes_g
+	var/eyes_b
 
-	var/image/eyes = new/image('icons/mob/humans/onmob/human_face.dmi', owner.species.eyes)
+	var/lip_style
+
+/obj/limb/head/update_limb()
+	. = ..()
+
+	eyes_r = owner.r_eyes
+	eyes_g = owner.g_eyes
+	eyes_b = owner.b_eyes
+
+	lip_style = owner.lip_style
+
+/obj/limb/head/get_limb_icon()
+	. = ..()
+
+	var/image/eyes = image('icons/mob/humans/onmob/human_face.dmi', species.eyes, layer = -BODYPARTS_LAYER)
 	eyes.color = list(null, null, null, null, rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes))
-	overlays += eyes
+	. += eyes
 
-	if(owner.lip_style && (owner.species && owner.species.flags & HAS_LIPS))
-		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "paint_[owner.lip_style]")
-		overlays += lips
+	if(lip_style && (species && species.flags & HAS_LIPS))
+		var/image/lips = image('icons/mob/humans/onmob/human_face.dmi', "paint_[lip_style]", layer = -BODYPARTS_LAYER)
+		. += lips
+
+/obj/limb/head/get_limb_icon_key()
+	. = ..()
+
+	return "[.]-[eyes_r]-[eyes_g]-[eyes_b]-[lip_style]"
 
 /obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null,\
 							list/forbidden_limbs = list(), no_limb_loss,\

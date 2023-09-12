@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	else
 		return FALSE
 
-/obj/structure/machinery/door/airlock/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/door/airlock/bullet_act(obj/projectile/P)
 	bullet_ping(P)
 	if(P.damage)
 		if(P.ammo.flags_ammo_behavior & AMMO_ROCKET)
@@ -551,6 +551,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	update_icon()
 
 /obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)
+	if(SEND_SIGNAL(C, COMSIG_ITEM_ATTACK_AIRLOCK, src, user) & COMPONENT_CANCEL_AIRLOCK_ATTACK)
+		return
+
 	if(istype(C, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
 			var/obj/item/clothing/mask/cigarette/L = C
@@ -604,32 +607,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				else
 					welded = null
 				update_icon()
-		return
-
-	if(istype(C, /obj/item/maintenance_jack) && locked)
-		var/obj/item/maintenance_jack/current_jack = C
-
-		if(current_jack.crowbar_mode)
-			return
-
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
-			user.visible_message(SPAN_DANGER("[user] begins to search for [src]'s bolts!"),\
-			SPAN_NOTICE("You search for [src]'s bolts."))
-			if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
-				to_chat(user, SPAN_WARNING("You fail to find the bolts on [src]."))
-				return
-
-		user.visible_message(SPAN_DANGER("[user] begins to disable [src]'s bolts!"),\
-		SPAN_NOTICE("You start to disable [src]'s bolts."))
-		playsound(src, "pry", 25, TRUE)
-
-		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
-			to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [src]."))
-			return
-
-		user.visible_message(SPAN_DANGER("[user] disables the bolts on [src]."),\
-		SPAN_NOTICE("You unbolt [src]."))
-		unlock(TRUE)
 		return
 
 	else if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER))

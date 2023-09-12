@@ -210,7 +210,7 @@
 	assignment = "Corporate Mercenary"
 
 /obj/item/card/id/pmc/New()
-	access = get_all_centcom_access()
+	access = get_access(ACCESS_LIST_WY_ALL)
 	..()
 
 /obj/item/card/id/pmc/ds
@@ -236,7 +236,7 @@
 	assignment = "General"
 
 /obj/item/card/id/general/New()
-	access = get_all_centcom_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /obj/item/card/id/provost
 	name = "provost holo-badge"
@@ -246,7 +246,7 @@
 	assignment = "Provost"
 
 /obj/item/card/id/provost/New()
-	access = get_all_centcom_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /obj/item/card/id/syndicate
 	name = "agent card"
@@ -331,7 +331,7 @@
 	assignment = "Captain"
 
 /obj/item/card/id/captains_spare/New()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 	..()
 
 /obj/item/card/id/centcom
@@ -342,7 +342,7 @@
 	assignment = "General"
 
 /obj/item/card/id/centcom/New()
-	access = get_all_centcom_access()
+	access = get_access(ACCESS_LIST_WY_ALL)
 	..()
 
 

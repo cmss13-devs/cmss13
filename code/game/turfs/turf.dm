@@ -55,6 +55,14 @@
 	// Fishing
 	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
 
+	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
+	var/dynamic_lumcount = 0
+	///List of light sources affecting this turf.
+	///Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources.
+	var/directional_opacity = NONE
+	///Lazylist of movable atoms providing opacity sources.
+	var/list/atom/movable/opacity_sources
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
 	if(flags_atom & INITIALIZED)
@@ -85,10 +93,21 @@
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
-	if(luminosity)
-		if(light) WARNING("[type] - Don't set lights up manually during New(), We do it automatically.")
-		trueLuminosity = luminosity * luminosity
-		light = new(src)
+	if(light_power && light_range)
+		update_light()
+
+	//Get area light
+	var/area/current_area = loc
+	if(current_area?.lighting_effect)
+		overlays += current_area.lighting_effect
+
+	if(opacity)
+		directional_opacity = ALL_CARDINALS
+
+	//Get area light
+	var/area/A = loc
+	if(A?.lighting_effect)
+		overlays += A.lighting_effect
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -117,6 +136,12 @@
 	. = ..()
 	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
 	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
+
+/turf/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, x), NAMEOF_STATIC(src, y), NAMEOF_STATIC(src, z))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
 
 /turf/ex_act(severity)
 	return 0
@@ -148,7 +173,7 @@
 	if(override)
 		return override & COMPONENT_TURF_ALLOW_MOVEMENT
 
-	if(isobserver(mover) || istype(mover, /obj/item/projectile))
+	if(isobserver(mover) || istype(mover, /obj/projectile))
 		return TRUE
 
 	var/fdir = get_dir(mover, src)
@@ -245,6 +270,7 @@
 	if(!istype(A))
 		return
 
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
 	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
@@ -349,14 +375,22 @@
 		if(/turf/baseturf_bottom)
 			path = /turf/open/floor/plating
 
-	var/old_lumcount = lighting_lumcount - initial(lighting_lumcount)
-
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src
 
 	var/pylons = linked_pylons
 
 	var/list/old_baseturfs = baseturfs
+
+	//static lighting
+	var/old_lighting_object = static_lighting_object
+	var/old_lighting_corner_NE = lighting_corner_NE
+	var/old_lighting_corner_SE = lighting_corner_SE
+	var/old_lighting_corner_SW = lighting_corner_SW
+	var/old_lighting_corner_NW = lighting_corner_NW
+	//hybrid lighting
+	var/list/old_hybrid_lights_affecting = hybrid_lights_affecting?.Copy()
+	var/old_directional_opacity = directional_opacity
 
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
@@ -373,10 +407,34 @@
 
 	W.linked_pylons = pylons
 
-	W.lighting_lumcount += old_lumcount
-	if(old_lumcount != W.lighting_lumcount)
-		W.lighting_changed = 1
-		SSlighting.changed_turfs += W
+	W.hybrid_lights_affecting = old_hybrid_lights_affecting
+	W.dynamic_lumcount = dynamic_lumcount
+
+	lighting_corner_NE = old_lighting_corner_NE
+	lighting_corner_SE = old_lighting_corner_SE
+	lighting_corner_SW = old_lighting_corner_SW
+	lighting_corner_NW = old_lighting_corner_NW
+
+	//static Update
+	if(SSlighting.initialized)
+		recalculate_directional_opacity()
+
+		W.static_lighting_object = old_lighting_object
+
+		if(static_lighting_object && !static_lighting_object.needs_update)
+			static_lighting_object.update()
+
+	//Since the old turf was removed from hybrid_lights_affecting, readd the new turf here
+	if(W.hybrid_lights_affecting)
+		for(var/atom/movable/lighting_mask/mask as anything in W.hybrid_lights_affecting)
+			LAZYADD(mask.affecting_turfs, W)
+
+	if(W.directional_opacity != old_directional_opacity)
+		W.reconsider_lights()
+
+	var/area/thisarea = get_area(W)
+	if(thisarea.lighting_effect)
+		W.overlays += thisarea.lighting_effect
 
 	W.levelupdate()
 	return W
@@ -499,7 +557,7 @@
 	var/area/A = get_area(src)
 	switch(A.ceiling)
 		if(CEILING_GLASS)
-			return "The ceiling above is glass. That's not going stop anything."
+			return "The ceiling above is glass. That's not going to stop anything."
 		if(CEILING_METAL)
 			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
 		if(CEILING_UNDERGROUND_ALLOW_CAS)
@@ -560,10 +618,10 @@
 	return NOT_WEEDABLE
 
 /turf/open/auto_turf/shale/layer1/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/open/auto_turf/shale/layer2/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/closed/wall/is_weedable()
 	return FULLY_WEEDABLE //so we can spawn weeds on the walls
@@ -753,13 +811,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/copyTurf(turf/T)
 	if(T.type != type)
-		var/obj/O
-		if(underlays.len) //we have underlays, which implies some sort of transparency, so we want to a snapshot of the previous turf as an underlay
-			O = new()
-			O.underlays.Add(T)
 		T.ChangeTurf(type)
-		if(underlays.len)
-			T.underlays = O.underlays
 	if(T.icon_state != icon_state)
 		T.icon_state = icon_state
 	if(T.icon != icon)

@@ -159,7 +159,7 @@
 		return
 	die()
 
-/obj/item/clothing/mask/facehugger/bullet_act(obj/item/projectile/P)
+/obj/item/clothing/mask/facehugger/bullet_act(obj/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO))
@@ -191,9 +191,9 @@
 	return FALSE
 
 /obj/item/clothing/mask/facehugger/launch_towards(datum/launch_metadata/LM)
-	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
+	..()
 
 /obj/item/clothing/mask/facehugger/launch_impact(atom/hit_atom)
 	. = ..()
@@ -208,6 +208,11 @@
 
 	if(stat == UNCONSCIOUS)
 		return
+
+	// Force reset throw now because [/atom/movable/proc/launch_impact] only does that later on
+	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
+	throwing = FALSE
+	rebounding = FALSE
 
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)
@@ -235,52 +240,65 @@
 	if(!target)
 		return FALSE
 
-	target.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [target]!"), \
-	SPAN_WARNING("The scuttling [src] leaps at [target]!"))
+	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"), \
+	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, silent = FALSE, knockout_mod = 1)
-	if(attached || !can_hug(M, hivenumber))
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, mob/living/carbon/xenomorph/facehugger/hugger)
+	if(attached || !can_hug(living_mob, hivenumber))
 		return FALSE
 
 	// This is always going to be valid because of the can_hug check above
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/human = living_mob
 	if(!silent)
-		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
+		human.visible_message(SPAN_DANGER("[src] leaps at [human]'s face!"))
 
 	if(isxeno(loc)) //Being carried? Drop it
 		var/mob/living/carbon/xenomorph/X = loc
 		X.drop_inv_item_on_ground(src)
 
-	if(isturf(H.loc))
-		forceMove(H.loc)//Just checkin
+	if(isturf(human.loc))
+		forceMove(human.loc)//Just checkin
 
-	if(!H.handle_hugger_attachment(src))
+	if(!human.handle_hugger_attachment(src))
 		return FALSE
 
 	attached = TRUE
 
-	forceMove(H)
+	forceMove(human)
 	icon_state = initial(icon_state)
-	H.equip_to_slot(src, WEAR_FACE)
-	H.update_inv_wear_mask()
-	H.disable_lights()
-	H.disable_special_items()
-	if(ishuman_strict(H))
-		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
-	else if(isyautja(H))
+	human.equip_to_slot(src, WEAR_FACE)
+	human.update_inv_wear_mask()
+	human.disable_lights()
+	human.disable_special_items()
+	if(ishuman_strict(human))
+		playsound(loc, human.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
+	else if(isyautja(human))
 		playsound(loc, 'sound/voice/pred_facehugged.ogg', 65, FALSE)
 	if(!sterile)
-		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
-			H.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
+		if(!human.species || !(human.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
+			human.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
 
-	addtimer(CALLBACK(src, PROC_REF(impregnate), H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+	var/area/hug_area = get_area(src)
+	var/name = hugger ? "[hugger]" : "\a [src]"
+	if(hug_area)
+		notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name] at [hug_area]!", source = human, action = NOTIFY_ORBIT)
+		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
+	else
+		notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name]!", source = human, action = NOTIFY_ORBIT)
+		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>"))
+	if(hug_area)
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host at \the [hug_area]!"), 1, hivenumber)
+	else
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host!"), 1, hivenumber)
+
+	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger?.client?.ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/impregnate(mob/living/carbon/human/target)
+/obj/item/clothing/mask/facehugger/proc/impregnate(mob/living/carbon/human/target, hugger_ckey = null)
 	if(!target || target.wear_mask != src) //Was taken off or something
 		return
 	if(SEND_SIGNAL(target, COMSIG_HUMAN_IMPREGNATE, src) & COMPONENT_NO_IMPREGNATE)
@@ -295,6 +313,8 @@
 		if(!embryos)
 			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
 			embryo.hivenumber = hivenumber
+			embryo.hugger_ckey = hugger_ckey
+			GLOB.player_embryo_list += embryo
 
 			embryo.flags_embryo = flags_embryo
 			flags_embryo = NO_FLAGS

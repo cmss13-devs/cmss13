@@ -15,6 +15,7 @@
 	vision_flags = SEE_TURFS
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	fullscreen_vision = null
+	eye_protection = EYE_PROTECTION_NEGATIVE
 
 /obj/item/clothing/glasses/night/helmet //for the integrated NVGs that are in helmetgarb code
 	name = "\improper M2 night vision goggles"
@@ -100,27 +101,25 @@
 	req_skill_level = SKILL_SPEC_SMARTGUN
 
 	var/far_sight = FALSE
-	var/powerpack = null
+	var/obj/item/weapon/gun/smartgun/linked_smartgun = null
 
 /obj/item/clothing/glasses/night/m56_goggles/Destroy()
-	powerpack = null
+	linked_smartgun = null
 	disable_far_sight()
 	return ..()
 
-/obj/item/clothing/glasses/night/m56_goggles/proc/link_powerpack(mob/user)
-	if(!QDELETED(user) && !QDELETED(user.back))
-		if(istype(user.back, /obj/item/smartgun_powerpack))
-			powerpack = user.back
+/obj/item/clothing/glasses/night/m56_goggles/proc/link_smartgun(mob/user)
+	if(!QDELETED(user))
+		linked_smartgun = locate() in user
+		if(linked_smartgun)
 			return TRUE
 	return FALSE
 
 /obj/item/clothing/glasses/night/m56_goggles/mob_can_equip(mob/user, slot)
 	if(slot == WEAR_EYES)
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(!istype(H.back, /obj/item/smartgun_powerpack))
-				to_chat(user, "You must be wearing an M56 Powerpack on your back to wear these.")
-				return FALSE
+		if(!link_smartgun(user))
+			to_chat(user, SPAN_NOTICE("You must have your smartgun equipped to wear these."))
+			return FALSE
 	return ..()
 
 /obj/item/clothing/glasses/night/m56_goggles/equipped(mob/user, slot)
@@ -129,6 +128,7 @@
 	return ..()
 
 /obj/item/clothing/glasses/night/m56_goggles/dropped(mob/living/carbon/human/user)
+	linked_smartgun = null
 	disable_far_sight(user)
 	return ..()
 
@@ -137,8 +137,8 @@
 		if(user.glasses != src)
 			to_chat(user, SPAN_WARNING("You can't activate far sight without wearing \the [src]!"))
 			return
-		if(!link_powerpack(user))
-			to_chat(user, SPAN_WARNING("You can't use this without a powerpack!"))
+		if(!link_smartgun(user))
+			to_chat(user, SPAN_WARNING("You can't use this without a smartgun!"))
 			return
 		far_sight = TRUE
 		if(user)
@@ -146,7 +146,7 @@
 				user.client.change_view(8, src)
 		START_PROCESSING(SSobj, src)
 	else
-		powerpack = null
+		linked_smartgun = null
 		far_sight = FALSE
 		if(user)
 			if(user.client)
@@ -154,8 +154,8 @@
 		STOP_PROCESSING(SSobj, src)
 
 	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions
-	FT.update_button_icon()
-
+	if(FT)
+		FT.update_button_icon()
 
 /obj/item/clothing/glasses/night/m56_goggles/proc/disable_far_sight(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -169,14 +169,11 @@
 	if(!istype(user))
 		set_far_sight(null, FALSE)
 		return PROCESS_KILL
-	if(powerpack != user.back)
+	if(!link_smartgun(user))
 		set_far_sight(user, FALSE)
 		return PROCESS_KILL
-	var/obj/item/smartgun_powerpack/pp = user.back
-	if(istype(pp))
-		var/obj/item/cell/c = pp.pcell
-		if(!pp.drain_powerpack(25 * delta_time, c))
-			set_far_sight(user, FALSE)
+	if(!linked_smartgun.drain_battery(25 * delta_time))
+		set_far_sight(user, FALSE)
 
 /datum/action/item_action/m56_goggles/far_sight/New()
 	. = ..()

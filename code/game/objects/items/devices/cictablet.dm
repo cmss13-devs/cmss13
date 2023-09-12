@@ -53,6 +53,7 @@
 
 	data["faction"] = announcement_faction
 	data["cooldown_message"] = cooldown_between_messages
+	data["distresstimelock"] = DISTRESS_TIME_LOCK
 
 	return data
 
@@ -63,7 +64,6 @@
 	data["evac_status"] = EvacuationAuthority.evac_status
 	data["endtime"] = announcement_cooldown
 	data["distresstime"] = distress_cooldown
-	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["worldtime"] = world.time
 
 	return data
@@ -145,6 +145,8 @@
 
 			log_game("[key_name(usr)] has called for an emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
+			var/datum/ares_link/link = GLOB.ares_link
+			link.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
 			. = TRUE
 
 		if("distress")
@@ -158,7 +160,7 @@
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested a Distress Beacon! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+			SSticker.mode.request_ert(usr)
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE

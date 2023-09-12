@@ -4,15 +4,10 @@
 /datum/tech/repeatable
 	name = "Repeatable Tech"
 
-	var/announce_name
-	var/announce_message
-
 	tech_flags = TECH_FLAG_MULTIUSE
 	var/purchase_cooldown = 10 SECONDS
 	var/next_purchase = 0
 	var/increase_per_purchase = 0
-
-	unlocked = TRUE
 
 /datum/tech/repeatable/ui_static_data(mob/user)
 	. = ..()
@@ -35,8 +30,6 @@
 
 /datum/tech/repeatable/on_unlock()
 	..()
-	if(!(tech_flags & TECH_FLAG_NO_ANNOUNCE) && announce_message && announce_name)
-		marine_announcement(announce_message, announce_name, 'sound/misc/notice2.ogg')
 
 	next_purchase = world.time + purchase_cooldown
 	required_points += increase_per_purchase

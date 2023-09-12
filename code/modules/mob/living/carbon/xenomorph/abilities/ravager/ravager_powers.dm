@@ -25,6 +25,7 @@
 		return ..()
 	else
 		actual_empower(xeno)
+		return TRUE
 
 /datum/action/xeno_action/onclick/empower/proc/actual_empower(mob/living/carbon/xenomorph/xeno)
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
@@ -74,7 +75,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 3.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 
@@ -220,9 +221,7 @@
 				new /datum/effects/xeno_slow/superslow/(carbon_target, ravager_user, ttl = superslow_duration)
 
 	apply_cooldown()
-	..()
-	return
-
+	return ..()
 
 
 ///////////// BERSERKER POWERS
@@ -257,7 +256,6 @@
 	X.add_filter("apprehend_on", 1, list("type" = "outline", "color" = "#522020ff", "size" = 1)) // Dark red because the berserker is scary in this state
 
 	apply_cooldown()
-
 	return ..()
 
 /datum/action/xeno_action/onclick/apprehend/proc/apprehend_off()
@@ -352,8 +350,7 @@
 		H.dazed += daze_amount
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/eviscerate/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -437,8 +434,7 @@
 	xeno.anchored = FALSE
 	xeno.update_canmove()
 
-	..()
-	return
+	return ..()
 
 
 ////////// HEDGEHOG POWERS
@@ -474,8 +470,7 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/spike_shield/action_cooldown_check()
 	if (shield_active) // If active shield, return FALSE so that this action does not get carried out
@@ -526,7 +521,7 @@
 	X.visible_message(SPAN_XENOWARNING("The [X] fires their spikes at [A]!"), SPAN_XENOWARNING("You fire your spikes at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
+	var/obj/projectile/P = new /obj/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
 
 	var/datum/ammo/ammoDatum = GLOB.ammo_list[ammo_type]
 
@@ -536,8 +531,7 @@
 	playsound(X, 'sound/effects/spike_spray.ogg', 25, 1)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/rav_spikes/action_cooldown_check()
 	if(!owner)
@@ -577,8 +571,7 @@
 	playsound(X, 'sound/effects/spike_spray.ogg', 25, 1)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/spike_shed/action_cooldown_check()
 	if (cooldown_timer_id == TIMER_ID_NULL)

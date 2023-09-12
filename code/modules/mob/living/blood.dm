@@ -12,8 +12,9 @@
 
 	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
-		if(blood_volume < max_blood)
+		if(blood_volume < max_blood && nutrition >= 1)
 			blood_volume += 0.1 // regenerate blood VERY slowly
+			nutrition -= 0.25
 		else if(blood_volume > max_blood)
 			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 			if(blood_volume > limit_blood)
@@ -29,27 +30,29 @@
 				b_volume = 0
 			else if(chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 				b_volume *= 1
-			else if(heart.damage > 1 && heart.damage < heart.min_bruised_damage)
-				b_volume *= 0.8
-			else if(heart.damage >= heart.min_bruised_damage && heart.damage < heart.min_broken_damage)
-				b_volume *= 0.6
-			else if(heart.damage >= heart.min_broken_damage && heart.damage < INFINITY)
-				b_volume *= 0.3
+			else if(heart.damage >= heart.organ_status >= ORGAN_BRUISED)
+				b_volume *= Clamp(100 - (2 * heart.damage), 30, 100) / 100
 
 	//Effects of bloodloss
+		if(b_volume <= BLOOD_VOLUME_SAFE)
+			/// The blood volume turned into a %, with BLOOD_VOLUME_NORMAL being 100%
+			var/blood_percentage = b_volume / (BLOOD_VOLUME_NORMAL / 100)
+			/// How much oxyloss will there be from the next time blood processes
+			var/additional_oxyloss = (100 - blood_percentage) / 5
+			/// The limit of the oxyloss gained, ignoring oxyloss from the switch statement
+			var/maximum_oxyloss = Clamp((100 - blood_percentage) / 2, oxyloss, 100)
+			if(oxyloss < maximum_oxyloss)
+				oxyloss += round(max(additional_oxyloss, 0))
+
 		switch(b_volume)
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(1))
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel [word]."))
-				if(oxyloss < 20)
-					oxyloss += 3
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(eye_blurry < 50)
 					AdjustEyeBlur(6)
-				if(oxyloss < 50)
-					oxyloss += 10
-				oxyloss += 2
+				oxyloss += 3
 				if(prob(15))
 					apply_effect(rand(1,3), PARALYZE)
 					var/word = pick("dizzy","woozy","faint")
@@ -57,7 +60,7 @@
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 				if(eye_blurry < 50)
 					AdjustEyeBlur(6)
-				oxyloss += 5
+				oxyloss += 8
 				toxloss += 3
 				if(prob(15))
 					apply_effect(rand(1,3), PARALYZE)
@@ -65,13 +68,6 @@
 					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
 			if(0 to BLOOD_VOLUME_SURVIVE)
 				death(create_cause_data("blood loss"))
-
-		// Without enough blood you slowly go hungry.
-		if(blood_volume < BLOOD_VOLUME_SAFE)
-			if(nutrition >= 300)
-				nutrition -= 10
-			else if(nutrition >= 200)
-				nutrition -= 3
 
 // Xeno blood regeneration
 /mob/living/carbon/xenomorph/handle_blood()

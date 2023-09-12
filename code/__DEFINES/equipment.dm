@@ -42,6 +42,8 @@
 #define ATOM_DECORATED (1<<16)
 /// Whether or not the object uses hearing
 #define USES_HEARING (1<<17)
+/// Should we use the initial icon for display? Mostly used by overlay only objects
+#define HTML_USE_INITAL_ICON (1<<18)
 
 //==========================================================================================
 
@@ -82,7 +84,6 @@
 #define NOTABLEMERGE (1<<13)
 /// Has heat source but isn't 'on fire' and thus can be stored
 #define IGNITING_ITEM (1<<14)
-
 //==========================================================================================
 
 
@@ -234,6 +235,8 @@
 #define SLOT_LEGS (1<<13)
 #define SLOT_ACCESSORY (1<<14)
 #define SLOT_SUIT_STORE (1<<15) //this allows items to be stored in the suit slot regardless of suit
+/// Anything with this flag cannot be worn in suit storage, period.
+#define SLOT_BLOCK_SUIT_STORE (1<<16)
 //=================================================
 
 //slots

@@ -28,7 +28,7 @@
 	metal = ismetal
 	playsound(src, 'sound/effects/bubbles2.ogg', 25, 1, 5)
 	addtimer(CALLBACK(src, PROC_REF(foam_react)), 3 + metal*3)
-	addtimer(CALLBACK(src, PROC_REF(foam_metal_final_react)), 120)
+	addtimer(CALLBACK(src, PROC_REF(foam_metal_final_react)), 40)
 
 /obj/effect/particle_effect/foam/proc/foam_react()
 	process()
@@ -188,7 +188,7 @@
 /obj/structure/foamed_metal/ex_act(severity)
 	take_damage(severity * FOAMED_METAL_EXPLOSION_DMG)
 
-/obj/structure/foamed_metal/bullet_act(obj/item/projectile/P)
+/obj/structure/foamed_metal/bullet_act(obj/projectile/P)
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return
 

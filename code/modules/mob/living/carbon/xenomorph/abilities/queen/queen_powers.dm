@@ -130,8 +130,7 @@
 	SSround_recording.recorder.stop_tracking(target_xeno)
 	SSround_recording.recorder.track_player(new_xeno)
 	qdel(target_xeno)
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -154,7 +153,7 @@
 	if(!X.ovipositor)
 		return
 	X.dismount_ovipositor()
-
+	return ..()
 
 /datum/action/xeno_action/onclick/grow_ovipositor/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
@@ -203,7 +202,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] has grown an ovipositor!"), \
 	SPAN_XENOWARNING("You have grown an ovipositor!"))
 	xeno.mount_ovipositor()
-
+	return ..()
 
 /datum/action/xeno_action/onclick/set_xeno_lead/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -246,7 +245,7 @@
 			X.overwatch(possible_xenos[1])
 		else
 			to_chat(X, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
-
+	return ..()
 
 /datum/action/xeno_action/activable/queen_heal/use_ability(atom/A, verbose)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -291,6 +290,7 @@
 
 	apply_cooldown()
 	to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
+	return ..()
 
 /datum/action/xeno_action/onclick/give_evo_points/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
@@ -351,6 +351,7 @@
 		target_xeno.evolution_stored += evo_points_per_larva
 
 	user_xeno.hive.stored_larva--
+	return ..()
 
 /datum/action/xeno_action/onclick/banish/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
@@ -412,6 +413,7 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
 
 	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
+	return ..()
 
 /datum/action/xeno_action/onclick/banish/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)
@@ -468,22 +470,7 @@
 		target_xeno.lock_evolve = FALSE
 
 	user_xeno.hive.banished_ckeys.Remove(banished_name)
-
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/A)
-	. = ..()
-	if(!.)
-		return
-
-	if(!boosted)
-		return
-	var/mob/living/carbon/xenomorph/X = owner
-	var/datum/hive_status/HS = X.hive
-	if(!HS || !HS.hive_location)
-		return
-	// 5 screen radius
-	if(get_dist(A, HS.hive_location) > 35)
-		// Apply the normal cooldown if not building near the hive
-		apply_cooldown_override(initial(xeno_cooldown))
+	return ..()
 
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"
@@ -525,6 +512,9 @@
 
 	var/area/AR = get_area(T)
 	if(!AR.is_resin_allowed)
+		if(AR.flags_area & AREA_UNWEEDABLE)
+			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
@@ -573,6 +563,7 @@
 
 	to_chat(X, SPAN_XENONOTICE("You plant weeds at [T]."))
 	apply_cooldown()
+	return ..()
 
 /datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(turf/T)
 	recently_built_turfs -= T
@@ -605,7 +596,7 @@
 		tunnel_xeno(src, xeno)
 
 	addtimer(CALLBACK(src, PROC_REF(transport_xenos), T), 3 SECONDS)
-	return TRUE
+	return ..()
 
 /datum/action/xeno_action/activable/place_queen_beacon/proc/tunnel_xeno(datum/source, mob/living/carbon/xenomorph/X)
 	SIGNAL_HANDLER
@@ -694,7 +685,7 @@
 	var/obj/effect/alien/resin/resin_pillar/RP = new pillar_type(new_turf)
 	RP.start_decay(brittle_time, decay_time)
 
-	return TRUE
+	return ..()
 
 /datum/action/xeno_action/activable/blockade/proc/check_turf(mob/living/carbon/xenomorph/queen/Q, turf/T)
 	if(T.density)

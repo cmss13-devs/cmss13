@@ -36,7 +36,7 @@
 		LAZYADD(debris, shardtype)
 		update_nearby_icons()
 
-/obj/structure/window/Destroy()
+/obj/structure/window/Destroy(force)
 	density = FALSE
 	if(is_full_window())
 		update_nearby_icons()
@@ -117,7 +117,7 @@
 		if(make_hit_sound)
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
-/obj/structure/window/bullet_act(obj/item/projectile/Proj)
+/obj/structure/window/bullet_act(obj/projectile/Proj)
 	//Tasers and the like should not damage windows.
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
 	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
@@ -439,10 +439,19 @@
 	desc = "An ultra-reinforced window designed to keep the briefing podium a secure area."
 	icon_state = "fwindow"
 	basestate = "fwindow"
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/window/reinforced/ultra/initialize_pass_flags(datum/pass_flags_container/PF)
+	. = ..()
+	if (PF)
+		PF.flags_can_pass_all = NONE
+		PF.flags_can_pass_front = NONE
+		PF.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY)
+	flags_can_pass_front_temp = NONE
+	flags_can_pass_behind_temp = NONE
 
 /obj/structure/window/reinforced/ultra/Initialize()
 	. = ..()
@@ -498,7 +507,7 @@
 	relativewall()
 	relativewall_neighbours()
 
-/obj/structure/window/framed/Destroy()
+/obj/structure/window/framed/Destroy(force)
 	for(var/obj/effect/alien/weeds/weedwall/window/found_weedwall in get_turf(src))
 		qdel(found_weedwall)
 	var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
@@ -566,8 +575,8 @@
 	name = "hull window"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000 //Failsafe, shouldn't matter
@@ -589,8 +598,8 @@
 /obj/structure/window/framed/almayer/white/hull
 	name = "hull window"
 	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000 //Failsafe, shouldn't matter
@@ -619,8 +628,8 @@
 	name = "hull window"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000 //Failsafe, shouldn't matter
@@ -711,6 +720,16 @@
 	reinf = 1
 	window_frame = /obj/structure/window_frame/strata/reinforced
 
+/obj/structure/window/framed/strata/hull
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
 //Kutjevo Windows
 
 /obj/structure/window/framed/kutjevo
@@ -734,8 +753,8 @@
 /obj/structure/window/framed/kutjevo/reinforced/hull
 	icon_state = "kutjevo_window_hull"
 	desc = "A glass window. Something tells you this one is somehow indestructible."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
@@ -771,8 +790,8 @@
 
 /obj/structure/window/framed/solaris/reinforced/hull
 	desc = "A glass window. Something tells you this one is somehow indestructible."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
@@ -803,8 +822,8 @@
 
 /obj/structure/window/framed/dev/reinforced/hull
 	desc = "A glass window. Something tells you this one is somehow indestructible."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
@@ -835,9 +854,11 @@
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	var/triggered = FALSE //indicates if the shutters have already been triggered
 
-/obj/structure/window/framed/prison/reinforced/hull/Destroy()
+/obj/structure/window/framed/prison/reinforced/hull/Destroy(force)
+	if(force)
+		return ..()
 	spawn_shutters()
-	.=..()
+	. = ..()
 
 /obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
@@ -845,16 +866,17 @@
 
 	triggered = TRUE
 	for(var/direction in cardinal)
-		if(direction == from_dir) continue //doesn't check backwards
+		if(direction == from_dir)
+			continue //doesn't check backwards
 		for(var/obj/structure/window/framed/prison/reinforced/hull/W in get_step(src,direction) )
 			W.spawn_shutters(turn(direction,180))
-	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/pressure_door = new(get_turf(src))
 	switch(junction)
 		if(4,5,8,9,12)
-			P.setDir(SOUTH)
+			pressure_door.setDir(SOUTH)
 		else
-			P.setDir(EAST)
-	P.close()
+			pressure_door.setDir(EAST)
+	pressure_door.close()
 
 /obj/structure/window/framed/prison/cell
 	name = "cell window"
@@ -893,8 +915,8 @@
 	icon_state = "padded_cellwindow0"
 	basestate = "padded_cellwindow"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unacidable = TRUE
 	health = 1000000 //Failsafe, shouldn't matter
 
@@ -913,14 +935,23 @@
 	var/triggered = FALSE //indicates if the shutters have already been triggered
 
 /obj/structure/window/framed/corsat/hull/research
+	icon_state = "paddedresearch_rwindow0"
+	basestate = "paddedresearch_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/research
 	health = 300
 
 /obj/structure/window/framed/corsat/hull/security
+	icon_state = "paddedsec_rwindow0"
+	basestate = "paddedsec_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/security
 	health = 400
 
-/obj/structure/window/framed/corsat/hull/Destroy()
+/obj/structure/window/framed/corsat/hull/Destroy(force)
+	if(force)
+		return ..()
+
 	spawn_shutters()
-	.=..()
+	. = ..()
 
 /obj/structure/window/framed/corsat/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
@@ -934,11 +965,30 @@
 		for(var/obj/structure/window/framed/corsat/hull/W in get_step(src,direction) )
 			W.spawn_shutters(turn(direction,180))
 
-	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/pressure_door = new(get_turf(src))
 	switch(junction)
 		if(4,5,8,9,12)
-			P.setDir(SOUTH)
+			pressure_door.setDir(SOUTH)
 		else
-			P.setDir(EAST)
+			pressure_door.setDir(EAST)
 
-	INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+	INVOKE_ASYNC(pressure_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+
+/obj/structure/window/framed/corsat/indestructible/
+	name = "hull window"
+	desc = "A glass window with a special rod matrix inside a wall frame. This one has been reinforced to take almost anything the universe can throw at it."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
+/obj/structure/window/framed/corsat/indestructible/research
+	icon_state = "paddedresearch_rwindow0"
+	basestate = "paddedresearch_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/research
+
+/obj/structure/window/framed/corsat/indestructible/security
+	icon_state = "paddedsec_rwindow0"
+	basestate = "paddedsec_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/security

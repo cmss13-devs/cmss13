@@ -1,4 +1,5 @@
 /mob/living/carbon/human
+	light_system = MOVABLE_LIGHT
 	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -64,7 +65,7 @@
 
 	var/voice
 
-	var/speech_problem_flag = 0
+	var/speech_problem_flag = FALSE
 
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 
@@ -121,7 +122,7 @@
 	//moved from IDs to prevent some exploits and to make points more flexible
 	var/marine_points = MARINE_TOTAL_BUY_POINTS
 	var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	var/marine_buy_flags = MARINE_CAN_BUY_ALL
+	var/marine_buyable_categories = MARINE_CAN_BUY_ALL
 
 	var/spawned_corpse = FALSE // For the corpse spawner
 	//taken from blood.dm
@@ -158,11 +159,14 @@
 
 	var/datum/action/human_action/activable/selected_ability
 
-	/// misc human flags
-	var/flags_human_misc = 0
-
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()
+
+	/// associated list of body part zone -> currently active limb key
+	var/list/icon_render_keys = list()
+
+	/// static associated list of limb key -> image to avoid unnecessary overlay generation
+	var/static/list/icon_render_image_cache = list()
 
 /client/var/cached_human_playtime
 

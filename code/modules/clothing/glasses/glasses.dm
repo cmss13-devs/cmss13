@@ -70,10 +70,10 @@
 			if(hud_type)
 				var/datum/mob_hud/MH = huds[hud_type]
 				if(active)
-					MH.add_hud_to(H)
+					MH.add_hud_to(H, src)
 					playsound(H, 'sound/handling/hud_on.ogg', 25, 1)
 				else
-					MH.remove_hud_from(H)
+					MH.remove_hud_from(H, src)
 					playsound(H, 'sound/handling/hud_off.ogg', 25, 1)
 			if(active) //turning it on? then add the traits
 				for(var/trait in clothing_traits)
@@ -95,7 +95,7 @@
 
 		else if(hud_type)
 			var/datum/mob_hud/MH = huds[hud_type]
-			MH.add_hud_to(user)
+			MH.add_hud_to(user, src)
 	user.update_sight()
 	..()
 
@@ -103,7 +103,7 @@
 	if(hud_type && active && istype(user))
 		if(src == user.glasses) //dropped is called before the inventory reference is updated.
 			var/datum/mob_hud/H = huds[hud_type]
-			H.remove_hud_from(user)
+			H.remove_hud_from(user, src)
 			user.glasses = null
 			user.update_inv_glasses()
 	user.update_sight()
@@ -139,6 +139,11 @@
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+
+/obj/item/clothing/glasses/science/prescription
+	name = "prescription reagent scanner HUD goggles"
+	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy. Contains prescription lenses." 
+	prescription = TRUE
 
 /obj/item/clothing/glasses/science/get_examine_text(mob/user)
 	. = ..()
@@ -541,7 +546,7 @@
 
 /obj/item/clothing/glasses/sunglasses
 	desc = "Generic off-brand eyewear, used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
-	name = "cheap sunglasses"
+	name = "sunglasses"
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = -1

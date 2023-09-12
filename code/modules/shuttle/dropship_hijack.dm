@@ -1,3 +1,5 @@
+#define HIJACK_CRASH_SITE_OFFSET_X 0
+#define HIJACK_CRASH_SITE_OFFSET_Y 0
 
 /datum/dropship_hijack
 	var/obj/docking_port/mobile/shuttle
@@ -83,18 +85,17 @@
 
 /datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
 	target_ship_section = ship_section
-	var/area/target_area = get_crashsite_area(ship_section)
-	// spawn crash location
-	var/turf/target = pick(get_area_turfs(target_area))
+	var/turf/target = get_crashsite_turf(ship_section)
 	if(!target)
 		to_chat(usr, SPAN_WARNING("No area available"))
 		return
 
 	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()
 	crash_site = target_site
-	crash_site.x = target.x - 5
-	crash_site.y = target.y - 11
-	crash_site.z = target.z
+	var/turf/offset_target = locate(target.x + HIJACK_CRASH_SITE_OFFSET_X, target.y + HIJACK_CRASH_SITE_OFFSET_Y, target.z)
+	if(!offset_target)
+		offset_target = target // Welp the offsetting failed so...
+	target_site.forceMove(offset_target)
 
 	target_site.name = "[shuttle] crash site"
 	target_site.id = "crash_site_[shuttle.id]"
@@ -117,11 +118,12 @@
 		var/list/remaining_crash_sites = almayer_ship_sections.Copy()
 		remaining_crash_sites -= target_ship_section
 		var/new_target_ship_section = pick(remaining_crash_sites)
-		var/area/target_area = get_crashsite_area(new_target_ship_section)
-		// spawn crash location
-		var/turf/target = pick(get_area_turfs(target_area))
-		crash_site.Move(target)
-		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System")
+		var/turf/target = get_crashsite_turf(new_target_ship_section)
+		var/turf/offset_target = locate(target.x + HIJACK_CRASH_SITE_OFFSET_X, target.y + HIJACK_CRASH_SITE_OFFSET_Y, target.z)
+		if(!offset_target)
+			offset_target = target // Welp the offsetting failed so...
+		crash_site.forceMove(offset_target)
+		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
 		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)
@@ -147,9 +149,9 @@
 
 	shuttle.crashing = TRUE
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
+	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
-	announce_dchat("The dropship is about to impact [get_area_name(crash_site)]", crash_site)
+	notify_ghosts(header = "Dropship Collision", message = "The dropship is about to impact [get_area_name(crash_site)]!", source = crash_site, extra_large = TRUE)
 	final_announcement = TRUE
 
 	playsound_area(get_area(crash_site), 'sound/effects/engine_landing.ogg', 100)
@@ -172,53 +174,55 @@
 /datum/dropship_hijack/almayer/proc/disable_latejoin()
 	enter_allowed = FALSE
 
-/datum/dropship_hijack/almayer/proc/get_crashsite_area(ship_section)
-	var/list/areas = list()
+/datum/dropship_hijack/almayer/proc/get_crashsite_turf(ship_section)
+	var/list/turfs = list()
 	switch(ship_section)
 		if("Upper deck Foreship")
-			areas += typesof(/area/almayer/shipboard/brig)
-			areas += list(/area/almayer/command/cichallway)
-			areas += list(/area/almayer/command/cic)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/armory)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/cells)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/cic_hallway)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/cryo)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/evidence_storage)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/execution)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/general_equipment)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/lobby)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/main_office)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/perma)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/processing)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/surgery)
+			turfs += get_area_turfs(/area/almayer/command/cichallway)
+			turfs += get_area_turfs(/area/almayer/command/cic)
 		if("Upper deck Midship")
-			areas += list(
-				/area/almayer/medical/morgue,
-				/area/almayer/medical/upper_medical,
-				/area/almayer/medical/containment,
-				/area/almayer/medical/containment/cell,
-				/area/almayer/medical/medical_science,
-				/area/almayer/medical/testlab,
-				/area/almayer/medical/hydroponics,
-			)
+			turfs += get_area_turfs(/area/almayer/medical/morgue)
+			turfs += get_area_turfs(/area/almayer/medical/upper_medical)
+			turfs += get_area_turfs(/area/almayer/medical/containment)
+			turfs += get_area_turfs(/area/almayer/medical/containment/cell)
+			turfs += get_area_turfs(/area/almayer/medical/medical_science)
+			turfs += get_area_turfs(/area/almayer/medical/testlab)
+			turfs += get_area_turfs(/area/almayer/medical/hydroponics)
 		if("Upper deck Aftship")
-			areas += list(
-				/area/almayer/engineering/upper_engineering,
-				/area/almayer/command/computerlab,
-				/area/almayer/engineering/laundry,
-			)
+			turfs += get_area_turfs(/area/almayer/engineering/upper_engineering)
+			turfs += get_area_turfs(/area/almayer/engineering/laundry)
 		if("Lower deck Foreship")
-			areas += list(
-				/area/almayer/hallways/hangar,
-				/area/almayer/hallways/vehiclehangar
-			)
+			turfs += get_area_turfs(/area/almayer/hallways/hangar)
+			turfs += get_area_turfs(/area/almayer/hallways/vehiclehangar)
 		if("Lower deck Midship")
-			areas += list(
-				/area/almayer/medical/chemistry,
-				/area/almayer/medical/lower_medical_lobby,
-				/area/almayer/medical/lockerroom,
-				/area/almayer/medical/lower_medical_medbay,
-				/area/almayer/medical/operating_room_one,
-				/area/almayer/medical/operating_room_two,
-				/area/almayer/medical/operating_room_three,
-				/area/almayer/medical/operating_room_four,
-				/area/almayer/living/briefing,
-				/area/almayer/squads/req,
-
-			)
+			turfs += get_area_turfs(/area/almayer/medical/chemistry)
+			turfs += get_area_turfs(/area/almayer/medical/lower_medical_lobby)
+			turfs += get_area_turfs(/area/almayer/medical/lockerroom)
+			turfs += get_area_turfs(/area/almayer/medical/lower_medical_medbay)
+			turfs += get_area_turfs(/area/almayer/medical/operating_room_one)
+			turfs += get_area_turfs(/area/almayer/medical/operating_room_two)
+			turfs += get_area_turfs(/area/almayer/medical/operating_room_three)
+			turfs += get_area_turfs(/area/almayer/medical/operating_room_four)
+			turfs += get_area_turfs(/area/almayer/living/briefing)
+			turfs += get_area_turfs(/area/almayer/squads/req)
 		if("Lower deck Aftship")
-			areas += list(
-				/area/almayer/living/cryo_cells,
-				/area/almayer/engineering/engineering_workshop,
-			)
+			turfs += get_area_turfs(/area/almayer/living/cryo_cells)
+			turfs += get_area_turfs(/area/almayer/engineering/engineering_workshop)
 		else
 			CRASH("Crash site [ship_section] unknown.")
-	return pick(areas)
+	return pick(turfs)
+
+#undef HIJACK_CRASH_SITE_OFFSET_X
+#undef HIJACK_CRASH_SITE_OFFSET_Y

@@ -48,7 +48,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
-		/obj/item/reagent_container/hypospray/autoinjector/emergency,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 
@@ -252,7 +251,7 @@
 		list("M44 Heavy Speed Loader (.44)", 0, /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
 		list("M44 Marksman Speed Loader (.44)", 0, /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
 		list("M4A3 HP Magazine (9mm)", 0, /obj/item/ammo_magazine/pistol/hp, VENDOR_ITEM_REGULAR),
-		list("M56 Powerpack", 0, /obj/item/smartgun_powerpack, VENDOR_ITEM_REGULAR),
+		list("M56 Battery", 0, /obj/item/smartgun_battery, VENDOR_ITEM_REGULAR),
 		list("M56 Smartgun Drum", 0, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
 		list("M56D Drum Magazine",0, /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smartpistol Magazine (.45)", round(scale * 2), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
@@ -382,3 +381,78 @@
 			updateUsrDialog()
 			return TRUE//We found our item, no reason to go on.
 
+
+/// Modified Restockable APC-based vendor for use by Req in the deployable tent
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent
+	desc = "An automated restockable storage vendor for use in organizing FOB supplies."
+	req_access = list(ACCESS_MARINE_CARGO)
+	density = TRUE
+	indestructible = TRUE // Deleted with the tent instead
+	needs_power = FALSE
+
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent/Initialize()
+	. = ..()
+	var/obj/structure/tent/located_tent = locate(/obj/structure/tent) in loc
+	if(!located_tent)
+		return INITIALIZE_HINT_QDEL
+	RegisterSignal(located_tent, COMSIG_PARENT_QDELETING, PROC_REF(begin_unloading))
+
+//combined from req guns and ammo vendors
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent/populate_product_list(scale)
+	listed_products = list(
+		list("BUILDING MATERIALS", -1, null, null),
+		list("Cardboard x10", 1, /obj/item/stack/sheet/cardboard/small_stack, VENDOR_ITEM_REGULAR),
+		list("Barbed Wire x10", 0, /obj/item/stack/barbed_wire/small_stack, VENDOR_ITEM_REGULAR),
+		list("Metal x10", 0, /obj/item/stack/sheet/metal/small_stack, VENDOR_ITEM_REGULAR),
+		list("Plasteel x10", 0, /obj/item/stack/sheet/plasteel/small_stack, VENDOR_ITEM_REGULAR),
+		list("Sandbags (empty) x10", 0, /obj/item/stack/sandbags_empty/small_stack, VENDOR_ITEM_REGULAR),
+		list("Sandbags (full) x5", 0, /obj/item/stack/sandbags/small_stack, VENDOR_ITEM_REGULAR),
+
+		list("AMMUNITION", -1, null, null),
+		list("Box Of Buckshot Shells", 0, /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box Of Flechette Shells", 0, /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
+		list("Box Of Shotgun Slugs", 0, /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
+		list("M4RA Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
+		list("M41A MK2 Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+		list("M39 HV Magazine (10x20mm)", 0, /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M44 Speed Loader (.44)", 0, /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
+		list("M4A3 Magazine (9mm)", 0, /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
+		list("M56D Drum Magazine", 0, /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
+		list("M2C Box Magazine", 0, /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
+
+		list("ARMOR", -1, null, null),
+		list("M10 Pattern Marine Helmet", 0, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Carrier Marine Armor", 0, /obj/item/clothing/suit/storage/marine/carrier, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padded Marine Armor", 0, /obj/item/clothing/suit/storage/marine/padded, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padless Marine Armor", 0, /obj/item/clothing/suit/storage/marine/padless, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Ridged Marine Armor", 0, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Skull Marine Armor", 0, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", 0, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-L Pattern Light Armor", 0, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
+
+		list("MISCELLANEOUS", -1, null, null),
+		list("Box Of MREs", 0, /obj/item/ammo_box/magazine/misc/mre, VENDOR_ITEM_REGULAR),
+		list("Box Of M94 Marking Flare Packs", 0, /obj/item/ammo_box/magazine/misc/flares, VENDOR_ITEM_REGULAR),
+		list("M89-S Signal Flare Pack", 0, /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
+		list("M94 Marking Flare Pack", 0, /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
+		list("Flashlights", 1, /obj/item/device/flashlight, VENDOR_ITEM_REGULAR),
+		list("MB-6 Folding Barricades (x3)", 0, /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
+		list("Entrenching Tool", 0, /obj/item/tool/shovel/etool, VENDOR_ITEM_REGULAR),
+		list("Roller Bed", 0, /obj/item/roller, VENDOR_ITEM_REGULAR),
+		list("Table", 3, /obj/item/frame/table, VENDOR_ITEM_REGULAR),
+		list("Rack", 3, /obj/item/frame/rack, VENDOR_ITEM_REGULAR),
+		list("Cliboard", 4, /obj/item/clipboard, VENDOR_ITEM_REGULAR),
+		list("Pen", 4, /obj/item/tool/pen, VENDOR_ITEM_REGULAR),
+		list("Chair", 2, /obj/item/weapon/twohanded/folded_metal_chair, VENDOR_ITEM_REGULAR),
+
+		list("AMMUNITION BOXES", -1, null, null),
+		list("Shotgun Shell Box (Buckshot x 100)", 0, /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Flechette x 100)", 0, /obj/item/ammo_box/magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Slugs x 100)", 0, /obj/item/ammo_box/magazine/shotgun, VENDOR_ITEM_REGULAR),
+		list("Rifle Ammunition Box (10x24mm)", 0, /obj/item/ammo_box/rounds, VENDOR_ITEM_REGULAR),
+		list("SMG Ammunition Box (10x20mm HV)", 0, /obj/item/ammo_box/rounds/smg, VENDOR_ITEM_REGULAR),
+	)
+
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent/proc/begin_unloading()
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(catastrophic_failure), TRUE, TRUE)

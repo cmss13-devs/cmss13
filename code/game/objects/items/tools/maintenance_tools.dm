@@ -175,6 +175,9 @@
 
 	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
 
+	light_range = 2
+	light_power = 2
+
 	//blowtorch specific stuff
 
 	/// Whether or not the blowtorch is off(0), on(1) or currently welding(2)
@@ -191,21 +194,14 @@
 	reagents.add_reagent("fuel", max_fuel)
 	return
 
-
 /obj/item/tool/weldingtool/Destroy()
 	if(welding)
-		if(ismob(loc))
-			loc.SetLuminosity(0, FALSE, src)
-		else
-			SetLuminosity(0)
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/tool/weldingtool/get_examine_text(mob/user)
 	. = ..()
 	. += "It contains [get_fuel()]/[max_fuel] units of fuel!"
-
-
 
 /obj/item/tool/weldingtool/process()
 	if(QDELETED(src))
@@ -218,50 +214,51 @@
 	else //should never be happening, but just in case
 		toggle(TRUE)
 
+/obj/item/tool/weldingtool/attack(mob/target, mob/user)
 
-/obj/item/tool/weldingtool/attack(mob/M, mob/user)
+	if(ishuman(target))
+		var/mob/living/carbon/human/human = target
+		var/obj/limb/limb = human.get_limb(user.zone_selected)
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/limb/S = H.get_limb(user.zone_selected)
-
-		if (!S) return
-		if(!(S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
+		if (!limb) return
+		if(!(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
 
 		if(user.action_busy)
 			return
 		var/self_fixing = FALSE
 
-		if(H.species.flags & IS_SYNTHETIC && M == user)
+		if(human.species.flags & IS_SYNTHETIC && target == user)
 			self_fixing = TRUE
 
-		if(S.brute_dam && welding)
+		if(limb.brute_dam && welding)
 			remove_fuel(1,user)
 			if(self_fixing)
-				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [S.display_name]."), \
-					SPAN_WARNING("You begin to carefully patch some dents on your [S.display_name] so as not to void your warranty."))
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [limb.display_name]."), \
+					SPAN_WARNING("You begin to carefully patch some dents on your [limb.display_name] so as not to void your warranty."))
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
-			S.heal_damage(15, 0, TRUE)
-			H.pain.recalculate_pain()
-			H.UpdateDamageIcon()
-			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src]."), \
-								SPAN_WARNING("You patch some dents on \the [H]'s [S.display_name] with \the [src]."))
+			limb.heal_damage(15, 0, TRUE)
+			human.pain.recalculate_pain()
+			human.UpdateDamageIcon()
+			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."), \
+								SPAN_WARNING("You patch some dents on \the [human]'s [limb.display_name] with \the [src]."))
 			return
 		else
 			to_chat(user, SPAN_WARNING("Nothing to fix!"))
 
 	else
+		if(ismob(target))
+			remove_fuel(1)
 		return ..()
 
-/obj/item/tool/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/tool/weldingtool/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
 		if(!welding)
-			O.reagents.trans_to(src, max_fuel)
+			target.reagents.trans_to(src, max_fuel)
 			weld_tick = 0
 			user.visible_message(SPAN_NOTICE("[user] refills [src]."), \
 			SPAN_NOTICE("You refill [src]."))
@@ -270,20 +267,25 @@
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
 			to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
-			var/obj/structure/reagent_dispensers/fueltank/tank = O
+			var/obj/structure/reagent_dispensers/fueltank/tank = target
 			tank.explode()
 		return
 	if (welding)
-		remove_fuel(1)
-
-		if(isliving(O))
-			var/mob/living/L = O
+		if(isliving(target))
+			var/mob/living/L = target
 			L.IgniteMob()
 
 
 /obj/item/tool/weldingtool/attack_self(mob/user)
 	..()
 	toggle()
+
+/obj/item/tool/weldingtool/turn_light(mob/user, toggle_on)
+	. = ..()
+	if(. == NO_LIGHT_STATE_CHANGE)
+		return
+
+	set_light_on(toggle_on)
 
 //Returns the amount of fuel in the welder
 /obj/item/tool/weldingtool/proc/get_fuel()
@@ -330,9 +332,7 @@
 			welding = 1
 			if(M)
 				to_chat(M, SPAN_NOTICE("You switch [src] on."))
-				M.SetLuminosity(2, FALSE, src)
-			else
-				SetLuminosity(2)
+			turn_light((M ? M : null), toggle_on = TRUE)
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
 			damtype = "fire"
@@ -357,13 +357,13 @@
 				to_chat(M, SPAN_NOTICE("You switch [src] off."))
 			else
 				to_chat(M, SPAN_WARNING("[src] shuts off!"))
-			M.SetLuminosity(0, FALSE, src)
 			if(M.r_hand == src)
 				M.update_inv_r_hand()
 			if(M.l_hand == src)
 				M.update_inv_l_hand()
-		else
-			SetLuminosity(0)
+
+		turn_light((M ? M : null), toggle_on = FALSE)
+
 		STOP_PROCESSING(SSobj, src)
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
@@ -380,22 +380,27 @@
 		if(E.robotic == ORGAN_ROBOT)
 			return
 		switch(safety)
-			if(1)
+			if(EYE_PROTECTION_FLASH)
+				to_chat(user, SPAN_DANGER("You see a bright light in the corner of your vision."))
+				E.take_damage(rand(0, 1), TRUE)
+				if(E.damage > 10)
+					E.take_damage(rand(3, 5), TRUE)
+			if(EYE_PROTECTION_FLAVOR)
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
 				E.take_damage(rand(1, 2), TRUE)
-				if(E.damage > 12)
-					H.AdjustEyeBlur(3,6)
-			if(0)
+				if(E.damage > 8) // dont abuse your funny flavor glasses
+					E.take_damage(2, TRUE)
+			if(EYE_PROTECTION_NONE)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))
-				E.take_damage(rand(2, 4), TRUE)
+				E.take_damage(rand(3, 4), TRUE)
 				if(E.damage > 10)
 					E.take_damage(rand(4, 10), TRUE)
-			if(-1)
+			if(EYE_PROTECTION_NEGATIVE)
 				to_chat(user, SPAN_WARNING("Your thermals intensify [src]'s glow. Your eyes itch and burn severely."))
 				H.AdjustEyeBlur(12,20)
 				E.take_damage(rand(12, 16), TRUE)
 
-		if(safety < 2)
+		if(safety < EYE_PROTECTION_WELDING)
 			if (E.damage >= E.min_broken_damage)
 				to_chat(H, SPAN_WARNING("You go blind! Maybe welding without protection wasn't such a great idea..."))
 				return FALSE
@@ -405,20 +410,6 @@
 			if(E.damage > 5)
 				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 				return FALSE
-
-/obj/item/tool/weldingtool/pickup(mob/user)
-	. = ..()
-	if(welding)
-		SetLuminosity(0)
-		user.SetLuminosity(2, FALSE, src)
-
-
-/obj/item/tool/weldingtool/dropped(mob/user)
-	if(welding && loc != user)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(2)
-	return ..()
-
 
 /obj/item/tool/weldingtool/largetank
 	name = "industrial blowtorch"
@@ -501,7 +492,23 @@
 	flags_equip_slot = SLOT_SUIT_STORE
 	pry_capable = IS_PRY_CAPABLE_FORCE //but not really
 	///Whether the Maintenance Jack is on crowbar or wrench mode
-	var/crowbar_mode = TRUE
+	var/crowbar_mode = TRUE //False for wrench mode
+	///Whether you need the "super strength" trait to pry open doors
+	var/requires_superstrength_pry = TRUE
+	///Whether you get the speed penalty from not having engi 3
+	var/requires_skills_unbolt = TRUE
+	///How long it takes (in seconds) to pry open an airlock
+	var/prying_time = 3 SECONDS
+	///How long it takes (in seconds) to pry open a resin door
+	var/resin_prying_time = 5 SECONDS
+	///How long it takes (in seconds) to unbolt an airlock
+	var/unbolt_time = 5 SECONDS
+	///How long extra will it take (in seconds) people who do not have engi 3 (if requires_skills_unbolt is true)
+	var/unskilled_unbolt_time = 15 SECONDS
+
+/obj/item/maintenance_jack/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_ITEM_ATTACK_AIRLOCK, PROC_REF(handle_airlock_attack))
 
 /obj/item/maintenance_jack/get_examine_text(mob/user)
 	. = ..()
@@ -523,7 +530,6 @@
 		animate(transform = matrix(180, MATRIX_ROTATE), time = 2, easing = EASE_OUT)
 		REMOVE_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 		ADD_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
-		pry_capable = null
 		return
 
 	//Switch to crowbar mode | Pry open doors if super strong trait
@@ -535,72 +541,113 @@
 	animate(transform = matrix(360, MATRIX_ROTATE), time = 2, easing = EASE_OUT)
 	REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
 	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
-	pry_capable = IS_PRY_CAPABLE_FORCE
 
-/obj/item/maintenance_jack/afterattack(obj/door, mob/living/user, proximity)
-	if(!crowbar_mode) //Otherwise it lets you pry open right after unbolting
+/obj/item/maintenance_jack/proc/handle_airlock_attack(source, obj/structure/machinery/door/airlock/attacked_door, mob/user)
+	. = COMPONENT_CANCEL_AIRLOCK_ATTACK
+	if(crowbar_mode)
+		if(attacked_door.locked) //Bolted
+			to_chat(user, SPAN_DANGER("You can't pry open [attacked_door] while it is bolted shut."))
+			return
+
+		if(requires_superstrength_pry)
+			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+				return
+		if(!attacked_door.density) //If its open
+			return
+		if(attacked_door.heavy) //Unopenable
+			to_chat(usr, SPAN_DANGER("You cannot force [attacked_door] open."))
+			return
+		if(user.action_busy)
+			return
+
+		user.visible_message(SPAN_DANGER("[user] jams [src] into [attacked_door] and starts to pry it open."),
+		SPAN_DANGER("You jam [src] into [attacked_door] and start to pry it open."))
+		playsound(src, "pry", 15, TRUE)
+		if(!do_after(user, prying_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+
+		if(!attacked_door.density)
+			return
+		if(attacked_door.locked)
+			user.visible_message(SPAN_DANGER("[user] fails to force [attacked_door] open with [src]."),
+			SPAN_DANGER("You fail to force [attacked_door] open with [src]."))
+			return
+
+		user.visible_message(SPAN_DANGER("[user] forces [attacked_door] open with [src]."),
+		SPAN_DANGER("You force [attacked_door] open with [src]."))
+		attacked_door.open(TRUE)
 		return
+
+	//Wrench Mode
+	if(!attacked_door.locked)
+		to_chat(user, SPAN_NOTICE("You cannot disable bolts on a door that is already unbolted."))
+		return
+
+	if(requires_skills_unbolt)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
+			user.visible_message(SPAN_DANGER("[user] begins to search for [attacked_door]'s bolts!"),\
+			SPAN_NOTICE("You search for [attacked_door]'s bolts."))
+			if(!do_after(user, unskilled_unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
+				to_chat(user, SPAN_WARNING("You fail to find the bolts on [attacked_door]."))
+				return
+
+	user.visible_message(SPAN_DANGER("[user] begins to disable [attacked_door]'s bolts!"),\
+	SPAN_NOTICE("You start to disable [attacked_door]'s bolts."))
+	playsound(attacked_door, "pry", 25, TRUE)
+
+	if(!do_after(user, unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+		to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [attacked_door]."))
+		return
+
+	user.visible_message(SPAN_DANGER("[user] disables the bolts on [attacked_door]."),\
+	SPAN_NOTICE("You unbolt [attacked_door]."))
+	attacked_door.unlock(TRUE)
+	return
+
+/obj/item/maintenance_jack/afterattack(atom/attacked_obj, mob/living/user, proximity)
 	if(!proximity)
 		return
 
-	if(istype(door, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/airlock = door
-		if(airlock.locked)
-			to_chat(user, SPAN_DANGER("You can't pry open [airlock] while it is bolted shut."))
-			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
-			if(!airlock.arePowerSystemsOn())
-				if(!airlock.operating)
-					if(airlock.density)
-						airlock.open(TRUE)
-					else
-						airlock.close(TRUE)
-				else
-					to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
-			return
-		if(!airlock.density)
-			return
-		if(airlock.heavy)
-			to_chat(usr, SPAN_DANGER("You cannot force [airlock] open."))
-			return FALSE
-		if(user.action_busy || user.a_intent == INTENT_HARM)
-			return
+	if(istype(attacked_obj, /obj/structure/mineral_door/resin))
+		var/obj/structure/mineral_door/resin/resin_door = attacked_obj
 
-		user.visible_message(SPAN_DANGER("[user] jams [src] into [airlock] and starts to pry it open."),
-		SPAN_DANGER("You jam [src] into [airlock] and start to pry it open."))
-		playsound(src, "pry", 15, TRUE)
-		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			return
+		if(resin_door)
+			if(crowbar_mode)
+				if(requires_superstrength_pry)
+					if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+						return ..()
+				if(resin_door.isSwitchingStates)
+					return
+				if(!resin_door.density || user.action_busy || user.a_intent == INTENT_HARM)
+					return
 
-		if(!airlock.density)
-			return
-		if(airlock.locked)
-			user.visible_message(SPAN_DANGER("[user] fails to force [airlock] open with [src]."),
-			SPAN_DANGER("You fail to force [airlock] open with [src]."))
-			return
+				user.visible_message(SPAN_DANGER("[user] jams [src] into [resin_door] and starts to pry it open."),
+				SPAN_DANGER("You jam [src] into [resin_door] and start to pry it open."))
+				playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 
-		user.visible_message(SPAN_DANGER("[user] forces [airlock] open with [src]."),
-		SPAN_DANGER("You force [airlock] open with [src]."))
-		airlock.open(TRUE)
+				if(!do_after(user, resin_prying_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+					to_chat(user, SPAN_NOTICE("You stop prying [resin_door] open."))
+					return
 
-	else if(istype(door, /obj/structure/mineral_door/resin))
-		var/obj/structure/mineral_door/resin/resin_door = door
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+				user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
+				SPAN_DANGER("You force [resin_door] open with [src]."))
+				resin_door.Open()
+				return
+
+	else if(istype(attacked_obj, /turf/open/floor))
+		var/turf/open/floor/flooring = attacked_obj
+
+		if(crowbar_mode && user.a_intent == INTENT_HELP) //Only pry flooring on help intent
+			if(flooring.hull_floor) //no interaction for hulls
+				return
+			if(flooring.weeds)
+				return attackby(src, user)
+
+			to_chat(user, SPAN_WARNING("You forcefully pry off [flooring], destroying it in the process."))
+			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
+			flooring.make_plating()
 			return
-		if(resin_door.isSwitchingStates)
-			return
-		if(!resin_door.density || user.action_busy || user.a_intent == INTENT_HARM)
-			return
-
-		user.visible_message(SPAN_DANGER("[user] jams [src] into [resin_door] and starts to pry it open."),
-		SPAN_DANGER("You jam [src] into [resin_door] and start to pry it open."))
-		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-
-		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && resin_door.density)
-			user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
-			SPAN_DANGER("You force [resin_door] open with [src]."))
-			resin_door.Open()
-
+	return ..()
 /*
 Welding backpack
 */
@@ -651,17 +698,22 @@ Welding backpack
 	to_chat(user, SPAN_NOTICE("You cannot figure out how to use \the [W] with [src]."))
 	return
 
-/obj/item/tool/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
+/obj/item/tool/weldpack/afterattack(obj/target as obj, mob/user as mob, proximity)
+	if(!proximity) // this replaces and improves the get_dist(src,target) <= 1 checks used previously
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
-		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
-		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		return
-	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
-		return
+	if(istype(target, /obj/structure/reagent_dispensers))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
+			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
+			return
+		if(reagents.total_volume < max_fuel)
+			target.reagents.trans_to(src, max_fuel)
+			to_chat(user, SPAN_NOTICE("You crack the cap off the top of \the [src] and fill it back up again from the tank."))
+			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+			return
+		if (reagents.total_volume >= max_fuel)
+			to_chat(user, SPAN_NOTICE("[src] is already full!"))
+			return
+	..()
 
 /obj/item/tool/weldpack/get_examine_text(mob/user)
 	. = ..()
@@ -671,7 +723,7 @@ Welding backpack
 	else
 		. += "No punctures are seen on \the [src] upon closer inspection."
 
-/obj/item/tool/weldpack/bullet_act(obj/item/projectile/P)
+/obj/item/tool/weldpack/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()

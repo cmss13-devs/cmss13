@@ -42,10 +42,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/candle/Destroy()
 	if(heat_source)
 		STOP_PROCESSING(SSobj, src)
-	if(ismob(src.loc))
-		src.loc.SetLuminosity(0, FALSE, src)
-	else
-		SetLuminosity(0)
+
 	. = ..()
 
 /obj/item/tool/candle/attackby(obj/item/W as obj, mob/user as mob)
@@ -65,7 +62,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			flavor_text = SPAN_NOTICE("[usr] lights [src].")
 		for(var/mob/O in viewers(usr, null))
 			O.show_message(flavor_text, SHOW_MESSAGE_VISIBLE)
-		SetLuminosity(CANDLE_LUM)
+		set_light(CANDLE_LUM)
 		update_icon()
 		START_PROCESSING(SSobj, src)
 
@@ -80,33 +77,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 	update_icon()
 
-
-
 /obj/item/tool/candle/attack_self(mob/user)
 	..()
 
 	if(heat_source)
 		heat_source = 0
 		update_icon()
-		SetLuminosity(0)
-		user.SetLuminosity(0, FALSE, src)
+		set_light(0)
 		STOP_PROCESSING(SSobj, src)
-
-
-/obj/item/tool/candle/pickup(mob/user)
-	. = ..()
-	if(heat_source)
-		SetLuminosity(0)
-		user.SetLuminosity(CANDLE_LUM, FALSE, src)
-
-
-/obj/item/tool/candle/dropped(mob/user)
-	..()
-	if(heat_source && src.loc != user)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(CANDLE_LUM)
-
-
 
 ///////////
 //MATCHES//
@@ -120,6 +98,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/smoketime = 10 SECONDS
 	var/burnt_name = "burnt match"
 	w_class = SIZE_TINY
+	light_range = 2
+	light_power = 1
 
 	attack_verb = list("burnt", "singed")
 
@@ -149,6 +129,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		burn_out(user)
 	return ..()
 
+/obj/item/tool/match/turn_light(mob/user, toggle_on)
+	. = ..()
+	if(. == NO_LIGHT_STATE_CHANGE)
+		return
+
+	set_light_on(toggle_on)
+
 /obj/item/tool/match/proc/light_match()
 	if(heat_source || burnt)
 		return
@@ -156,10 +143,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	playsound(src.loc,"match",15, 1, 3)
 	damtype = "burn"
 	icon_state = "[initial(icon_state)]_lit"
-	if(ismob(loc))
-		loc.SetLuminosity(2, FALSE, src)
-	else
-		SetLuminosity(2)
+	turn_light(toggle_on = TRUE)
 	START_PROCESSING(SSobj, src)
 	update_icon()
 	return TRUE
@@ -170,9 +154,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	damtype = "brute"
 	icon_state = "[initial(icon_state)]_burnt"
 	item_state = "cigoff"
-	if(user && loc != user)
-		user.SetLuminosity(0, FALSE, src)
-	SetLuminosity(0)
+	turn_light(toggle_on = FALSE)
 	name = burnt_name
 	desc = "A match. This one has seen better days."
 	STOP_PROCESSING(SSobj, src)
@@ -182,12 +164,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A simple match stick, used for lighting fine smokables."
 	icon_state = "papermatch"
 	burnt_name = "burnt paper match"
-
-/obj/item/tool/lighter/dropped(mob/user)
-	if(heat_source && src.loc != user)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(2)
-	return ..()
 
 //////////////////
 //FINE SMOKABLES//
@@ -204,6 +180,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_atom = CAN_BE_SYRINGED
 	attack_verb = list("burnt", "singed")
 	blood_overlay_type = ""
+	light_color = LIGHT_COLOUR_ORANGE
 	/// Note - these are in masks.dmi not in cigarette.dmi
 	var/icon_on = "cigon"
 	var/icon_off = "cigoff"
@@ -332,6 +309,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		reagents.handle_reactions()
 		icon_state = icon_on
 		item_state = icon_on
+		set_light_range(1)
+		set_light_power(0.5)
+		set_light_on(TRUE)
 		if(iscarbon(loc))
 			var/mob/living/carbon/C = loc
 			if(C.r_hand == src)
@@ -365,7 +345,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					return
 			var/mob/living/carbon/C = loc
 
-			if(prob(15)) // so it's not an instarape in case of acid
+			if(prob(15))
 				reagents.reaction(C, INGEST)
 			reagents.trans_to(C, REAGENTS_METABOLISM)
 		else // else just remove some of the reagents
@@ -397,6 +377,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		qdel(src)
 		. = butt
 	else
+		set_light_on(FALSE)
 		heat_source = 0
 		icon_state = icon_off
 		item_state = icon_off
@@ -672,6 +653,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "lighter_g"
 	item_state = "lighter_g"
+	light_color = LIGHT_COLOUR_LAVA
 	var/icon_on = "lighter_g_on"
 	var/icon_off = "lighter_g"
 	var/clr = "g"
@@ -725,13 +707,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_off = "lighter_[clr]"
 		icon_state = icon_off
 
-/obj/item/tool/lighter/Destroy()
-	if(ismob(src.loc))
-		src.loc.SetLuminosity(0, FALSE, src)
-	else
-		SetLuminosity(0)
-	. = ..()
-
 /obj/item/tool/lighter/attack_self(mob/living/user)
 	if(user.r_hand == src || user.l_hand == src)
 		if(!heat_source)
@@ -754,7 +729,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 						user.apply_damage(2,BURN,"r_hand")
 					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light the [src], they however burn their finger in the process."))
 
-			user.SetLuminosity(2, FALSE, src)
+			set_light_range(2)
+			set_light_on(TRUE)
 			START_PROCESSING(SSobj, src)
 		else
 			turn_off(user, 0)
@@ -774,7 +750,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				bearer.visible_message(SPAN_NOTICE("[bearer] quietly shuts off the [src]."))
 
-		bearer.SetLuminosity(0, FALSE, src)
+		set_light_on(FALSE)
 		STOP_PROCESSING(SSobj, src)
 		return 1
 	return 0
@@ -798,18 +774,3 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else
 		..()
 
-/obj/item/tool/lighter/process()
-
-
-/obj/item/tool/lighter/pickup(mob/user)
-	. = ..()
-	if(heat_source)
-		SetLuminosity(0)
-		user.SetLuminosity(2, FALSE, src)
-
-
-/obj/item/tool/lighter/dropped(mob/user)
-	if(heat_source && src.loc != user)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(2)
-	return ..()

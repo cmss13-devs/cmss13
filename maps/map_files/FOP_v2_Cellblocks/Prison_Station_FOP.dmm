@@ -9954,7 +9954,7 @@
 	},
 /area/prison/residential/north)
 "aBn" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "aBo" = (
@@ -29380,10 +29380,6 @@
 	},
 /turf/open/floor/wood,
 /area/prison/residential/south)
-"bHd" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "bHf" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -33380,7 +33376,7 @@
 	},
 /area/prison/residential/south)
 "bTF" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "bTG" = (
@@ -36181,10 +36177,6 @@
 	},
 /turf/open/floor/wood,
 /area/prison/residential/south)
-"ccz" = (
-/obj/structure/monorail,
-/turf/open/space,
-/area/space)
 "ccA" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "Engineering Hallway"
@@ -42247,6 +42239,7 @@
 	dir = 10
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cwm" = (
@@ -43520,6 +43513,7 @@
 /area/prison/storage/vip)
 "dqf" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "duu" = (
@@ -44094,6 +44088,7 @@
 /area/prison/cellblock/mediumsec/east)
 "fGf" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white"
@@ -48617,10 +48612,6 @@
 	icon_state = "bright_clean2"
 	},
 /area/prison/residential/north)
-"tVW" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/organic/grass,
-/area/prison/residential/north)
 "tWR" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/prison{
@@ -48821,6 +48812,7 @@
 	icon_state = "wood_siding2"
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
@@ -49093,10 +49085,6 @@
 	icon_state = "yellowfull"
 	},
 /area/prison/cellblock/protective)
-"vwO" = (
-/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/prison/cellblock/mediumsec/south)
 "vxy" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/prison{
@@ -57264,7 +57252,7 @@ wUz
 esR
 aBm
 aBn
-tVW
+aDE
 fkx
 avN
 aFg
@@ -62851,7 +62839,7 @@ bWH
 bXN
 bYJ
 oog
-ccz
+bDE
 btd
 bTP
 bVa
@@ -73693,7 +73681,7 @@ obV
 cxc
 cyj
 ctW
-vwO
+cwL
 cyG
 obV
 cxc
@@ -88636,7 +88624,7 @@ amu
 amu
 amu
 amu
-aoj
+amu
 axz
 jDr
 uaW
@@ -89474,7 +89462,7 @@ amu
 amu
 amu
 amu
-amu
+aoj
 amu
 amu
 amu
@@ -99283,7 +99271,7 @@ aYM
 aYM
 aYM
 aYM
-bcF
+aYM
 btu
 blH
 bkt
@@ -100121,7 +100109,7 @@ aYM
 aYM
 aYM
 aYM
-aYM
+bcF
 aYM
 aYM
 aYM

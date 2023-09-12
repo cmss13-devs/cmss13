@@ -41,20 +41,29 @@
 	if(stat == DEAD)
 		species?.handle_dead_death(src, gibbed)
 		return
+
 	GLOB.alive_human_list -= src
+
 	if(!gibbed)
 		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA))
 			if(!(species.flags & IS_SYNTHETIC)) // Synths wont perma
 				status_flags |= PERMANENTLY_DEAD
+		if(HAS_TRAIT(src, TRAIT_INTENT_EYES)) //their eyes need to be 'offline'
+			r_eyes = 0
+			g_eyes = 0
+			b_eyes = 0
 		disable_special_flags()
 		disable_lights()
 		disable_special_items()
 		disable_headsets() //Disable radios for dead people to reduce load
+
 	if(pulledby && isxeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
+
 	//Handle species-specific deaths.
 	if(species)
 		species.handle_death(src, gibbed)
+	update_body() //if species handle_death or other procs change body in some way after death, this is what will update the body.
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MARINE_DEATH, src, gibbed)
 
@@ -66,16 +75,14 @@
 	// Finding the last guy for anti-delay.
 	if(SSticker.mode && SSticker.mode.is_in_endgame && SSticker.current_state != GAME_STATE_FINISHED && is_mainship_level(z))
 		var/mob/last_living_human
-		for(var/mob/living/carbon/human/H as anything in GLOB.alive_human_list)
-			if(!is_mainship_level(H.z))
+		for(var/mob/living/carbon/human/cur_human as anything in GLOB.alive_human_list)
+			if(!is_mainship_level(cur_human.z))
 				continue
 			if(last_living_human)
 				last_living_human = null
 				break
-			last_living_human = H
-		if(last_living_human)
-			if((last_qm_callout + 2 MINUTES) > world.time)
-				return
+			last_living_human = cur_human
+		if(last_living_human && (last_qm_callout + 2 MINUTES) < world.time)
 			last_qm_callout = world.time
 			// Tell the xenos where the human is.
 			xeno_announcement("I sense the last tallhost hiding in [get_area(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
@@ -97,10 +104,19 @@
 				delayer_armour.can_camo = FALSE //fuck you
 				to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
 			//tell the ghosts
-			announce_dchat("There is only one person left: [last_living_human.real_name].", last_living_human)
+			notify_ghosts(header = "Last Human", message = "There is only one person left: [last_living_human.real_name]!", source = last_living_human, action = NOTIFY_ORBIT)
 
 	var/death_message = species.death_message
 	if(HAS_TRAIT(src, TRAIT_HARDCORE))
 		death_message = "valiantly falls to the ground, dead, unable to continue."
 
-	return ..(cause, gibbed, death_message)
+	. = ..(cause, gibbed, death_message)
+
+	// stat is now set
+	var/datum/cause_data/death_data = cause
+	if(!gibbed && death_data?.cause_name != "gibbing")
+		// Hilariously the gibbing proc causes death via droplimb which means gibbed is false...
+		AddComponent(/datum/component/weed_food)
+	else if(death_data?.cause_name == "existing")
+		// Corpses spawn as gibbed true to avoid sfx, even though they aren't actually gibbed...
+		AddComponent(/datum/component/weed_food)

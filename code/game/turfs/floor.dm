@@ -96,7 +96,7 @@
 	else if(is_light_floor())
 		icon_state = "light_broken"
 		broken = 1
-		SetLuminosity(0)
+		set_light(0)
 	else if(is_plating())
 		icon_state = "platingdmg[pick(1, 2, 3)]"
 		broken = 1
@@ -135,7 +135,7 @@
 
 //This proc auto corrects the grass tiles' siding.
 /turf/open/floor/proc/make_plating()
-	SetLuminosity(0)
+	set_light(0)
 	intact_tile = FALSE
 	broken = FALSE
 	burnt = FALSE
@@ -148,7 +148,7 @@
 	if(src.weeds)
 		return weeds.attackby(hitting_item,user)
 
-	if(istype(hitting_item, /obj/item/tool/crowbar) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
+	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_CROWBAR) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
 		if(broken || burnt)
 			to_chat(user, SPAN_WARNING("You remove the broken tiles."))
 		else

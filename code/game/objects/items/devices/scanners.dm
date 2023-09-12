@@ -145,7 +145,7 @@ FORENSIC SCANNER
 /obj/item/device/healthanalyzer/alien
 	name = "\improper YMX scanner"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "Tracker"
+	icon_state = "scanner"
 	item_state = "analyzer"
 	desc = "An alien design hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	alien = TRUE
@@ -446,6 +446,8 @@ FORENSIC SCANNER
 /obj/item/device/black_market_scanner/afterattack(atom/hit_atom, mob/user, proximity)
 	if(!proximity)
 		return
+	if(!ismovable(hit_atom))
+		return ..()
 	var/market_value = get_black_market_value(hit_atom)
 	if(isnull(market_value))
 		return ..()

@@ -150,12 +150,14 @@
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
 	S["pref_special_job_options"] >> pref_special_job_options
+	S["pref_job_slots"] >> pref_job_slots
 
 	S["synth_name"] >> synthetic_name
 	S["synth_type"] >> synthetic_type
 	S["pred_name"] >> predator_name
 	S["pred_gender"] >> predator_gender
 	S["pred_age"] >> predator_age
+	S["pred_use_legacy"] >> predator_use_legacy
 	S["pred_trans_type"] >> predator_translator_type
 	S["pred_mask_type"] >> predator_mask_type
 	S["pred_armor_type"] >> predator_armor_type
@@ -191,28 +193,30 @@
 
 	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
+	S["adaptive_zoom"] >> adaptive_zoom
+	S["tooltips"] >> tooltips
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style = sanitize_inlist(UI_style, list("white", "dark", "midnight", "orange", "old"), initial(UI_style))
 	tgui_say = sanitize_integer(tgui_say, FALSE, TRUE, TRUE)
-	be_special = sanitize_integer(be_special, 0, 65535, initial(be_special))
+	be_special = sanitize_integer(be_special, 0, SHORT_REAL_LIMIT, initial(be_special))
 	default_slot = sanitize_integer(default_slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
-	toggles_chat = sanitize_integer(toggles_chat, 0, 65535, initial(toggles_chat))
-	chat_display_preferences = sanitize_integer(chat_display_preferences, 0, 65535, initial(chat_display_preferences))
-	toggles_ghost = sanitize_integer(toggles_ghost, 0, 65535, initial(toggles_ghost))
-	toggles_langchat = sanitize_integer(toggles_langchat, 0, 65535, initial(toggles_langchat))
-	toggles_sound = sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
-	toggle_prefs = sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
-	toggles_flashing= sanitize_integer(toggles_flashing, 0, 65535, initial(toggles_flashing))
-	toggles_ert = sanitize_integer(toggles_ert, 0, 65535, initial(toggles_ert))
-	toggles_admin = sanitize_integer(toggles_admin, 0, 65535, initial(toggles_admin))
+	toggles_chat = sanitize_integer(toggles_chat, 0, SHORT_REAL_LIMIT, initial(toggles_chat))
+	chat_display_preferences = sanitize_integer(chat_display_preferences, 0, SHORT_REAL_LIMIT, initial(chat_display_preferences))
+	toggles_ghost = sanitize_integer(toggles_ghost, 0, SHORT_REAL_LIMIT, initial(toggles_ghost))
+	toggles_langchat = sanitize_integer(toggles_langchat, 0, SHORT_REAL_LIMIT, initial(toggles_langchat))
+	toggles_sound = sanitize_integer(toggles_sound, 0, SHORT_REAL_LIMIT, initial(toggles_sound))
+	toggle_prefs = sanitize_integer(toggle_prefs, 0, SHORT_REAL_LIMIT, initial(toggle_prefs))
+	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
+	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
+	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
 	UI_style_color = sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha = sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	item_animation_pref_level = sanitize_integer(item_animation_pref_level, SHOW_ITEM_ANIMATIONS_NONE, SHOW_ITEM_ANIMATIONS_ALL, SHOW_ITEM_ANIMATIONS_ALL)
 	pain_overlay_pref_level = sanitize_integer(pain_overlay_pref_level, PAIN_OVERLAY_BLURRY, PAIN_OVERLAY_LEGACY, PAIN_OVERLAY_BLURRY)
-	window_skin = sanitize_integer(window_skin, 0, 65535, initial(window_skin))
+	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
@@ -222,12 +226,15 @@
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
 	no_radial_labels_preference = sanitize_integer(no_radial_labels_preference, FALSE, TRUE, FALSE)
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
+	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
+	tooltips = sanitize_integer(tooltips, FALSE, TRUE, TRUE)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
+	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
@@ -251,6 +258,7 @@
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
+	pref_job_slots = sanitize_islist(pref_job_slots, list())
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -326,12 +334,14 @@
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
 	S["pref_special_job_options"] << pref_special_job_options
+	S["pref_job_slots"] << pref_job_slots
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type
 	S["pred_name"] << predator_name
 	S["pred_gender"] << predator_gender
 	S["pred_age"] << predator_age
+	S["pred_use_legacy"] << predator_use_legacy
 	S["pred_trans_type"] << predator_translator_type
 	S["pred_mask_type"] << predator_mask_type
 	S["pred_armor_type"] << predator_armor_type
@@ -358,6 +368,7 @@
 	S["hotkeys"] << hotkeys
 
 	S["autofit_viewport"] << auto_fit_viewport
+	S["adaptive_zoom"] << adaptive_zoom
 
 	S["hear_vox"] << hear_vox
 

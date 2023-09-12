@@ -63,6 +63,16 @@
 /obj/item/clothing/shoes/marine/upp_knife
 	knife_type = /obj/item/attachable/bayonet/upp
 
+/obj/item/clothing/shoes/marine/joe
+	name = "biohazard boots"
+	desc = "A pair of somewhat cheaply made biohazard boots. Tomorrow, Together."
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	knife_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
 	desc = "Pre-polished fancy dress shoes. You can see your reflection in them."
@@ -186,3 +196,37 @@
 /obj/item/clothing/shoes/hiking/proc/handle_weed_slowdown(mob/user, list/slowdata)
 	SIGNAL_HANDLER
 	slowdata["movement_slowdown"] *= weed_slowdown_mult
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/shoes/royal_marine
+	name = "\improper L10 pattern combat boots"
+	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
+	icon_state = "rmc_boots"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
+	flags_cold_protection = BODY_FLAG_FEET
+	flags_heat_protection = BODY_FLAG_FEET
+	flags_inventory = FPRINT|NOSLIPPING
+	siemens_coefficient = 0.6
+	items_allowed = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/weapon/throwing_knife,
+		/obj/item/weapon/gun/pistol/holdout,
+		/obj/item/weapon/gun/pistol/clfpistol,
+	)
+	flags_atom = NO_NAME_OVERRIDE
+
+/obj/item/clothing/shoes/royal_marine/knife
+/obj/item/clothing/shoes/royal_marine/knife/Initialize(mapload, ...)
+	. = ..()
+	stored_item = new /obj/item/attachable/bayonet/rmc(src)
+	update_icon()

@@ -424,6 +424,14 @@
 	name = "WY rubber stamp"
 	icon_state = "stamp-weyyu"
 
+/obj/item/tool/stamp/uscm
+	name = "USCM rubber stamp"
+	icon_state = "stamp-uscm"
+
+/obj/item/tool/stamp/cmb
+	name = "CMB rubber stamp"
+	icon_state = "stamp-cmb"
+
 /obj/item/tool/stamp/ro
 	name = "quartermaster's rubber stamp"
 	icon_state = "stamp-ro"

@@ -420,12 +420,12 @@
 	name = "internal affairs rubber stamp"
 	icon_state = "stamp-intaff"
 
-/obj/item/tool/stamp/centcomm
-	name = "centcomm rubber stamp"
-	icon_state = "stamp-cent"
+/obj/item/tool/stamp/weyyu
+	name = "WY rubber stamp"
+	icon_state = "stamp-weyyu"
 
 /obj/item/tool/stamp/ro
-	name = "requisitions officer's rubber stamp"
+	name = "quatermaster's rubber stamp"
 	icon_state = "stamp-ro"
 
 /obj/item/tool/carpenters_hammer //doesn't do anything, yet

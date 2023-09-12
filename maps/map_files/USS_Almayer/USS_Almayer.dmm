@@ -32952,8 +32952,7 @@
 	eftpos_name = "Cargo Bay EFTPOS scanner";
 	pixel_x = -10
 	},
-/obj/item/tool/stamp{
-	name = "Requisition Officer's stamp";
+/obj/item/tool/stamp/ro{
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -63207,7 +63206,7 @@
 "rBx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/stamp/ro{
-	name = "spare requisitions officer's rubber stamp";
+	name = "spare quatermaster's rubber stamp";
 	pixel_x = -7;
 	pixel_y = 11
 	},

@@ -1,0 +1,6 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - balance: "M56D now has full auto mode."
+  - qol: "M56D now has an ammo counter when firing."
+  - rscdel: "M2C can no longer rotate with MMB"

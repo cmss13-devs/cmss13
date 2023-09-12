@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Removed annoying and inaccurate to_chat from join response team menu"

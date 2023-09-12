@@ -171,6 +171,8 @@
 	S["pred_skin_color"] >> predator_skin_color
 	S["pred_flavor_text"] >> predator_flavor_text
 
+	S["agent_Name"] >> UPP_agent_name
+
 	S["commander_status"] >> commander_status
 	S["co_sidearm"] >> commander_sidearm
 	S["co_affiliation"] >> affiliation
@@ -228,6 +230,9 @@
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
+
+ 	UPP_agent_name = UPP_agent_name ? sanitize_text(UPP_agent_name, initial(UPP_agent_name)) : initial(UPP_agent_name)
+
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
@@ -331,6 +336,8 @@
 	S["observer_huds"] << observer_huds
 	S["pref_special_job_options"] << pref_special_job_options
 	S["pref_job_slots"] << pref_job_slots
+
+	S["agent_Name"] << UPP_agent_name
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type

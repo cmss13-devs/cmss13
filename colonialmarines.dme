@@ -692,6 +692,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\game\jobs\job\job.dm"
 #include "code\game\jobs\job\antag\antag.dm"
 #include "code\game\jobs\job\antag\other\pred.dm"
+#include "code\game\jobs\job\antag\other\UPP_Surveilence_Agent.dm"
 #include "code\game\jobs\job\antag\xeno\queen.dm"
 #include "code\game\jobs\job\antag\xeno\xenomorph.dm"
 #include "code\game\jobs\job\civilians\civilian.dm"

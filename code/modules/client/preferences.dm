@@ -4,6 +4,7 @@
 #define MENU_SYNTHETIC "synth"
 #define MENU_YAUTJA "yautja"
 #define MENU_MENTOR "mentor"
+#define MENU_SURVEILENCE "surveilence"
 #define MENU_SETTINGS "settings"
 #define MENU_SPECIAL "special"
 
@@ -81,6 +82,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"
 	var/synthetic_type = SYNTH_GEN_THREE
+
+	//UPP surveilence agent prefs
+	var/UPP_agent_name = "Undefined"
+
 	//Predator specific preferences.
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
@@ -298,6 +303,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<center>"
 	dat += "<a[current_menu == MENU_MARINE ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MARINE]\"><b>Human</b></a> - "
 	dat += "<a[current_menu == MENU_XENOMORPH ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_XENOMORPH]\"><b>Xenomorph</b></a> - "
+	dat += "<a[current_menu == MENU_SURVEILENCE ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SURVEILENCE]\"><b>Agent</b></a> - "
 	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_COMMANDER)
 		dat += "<a[current_menu == MENU_CO ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_CO]\"><b>Commanding Officer</b></a> - "
 	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
@@ -534,6 +540,13 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>Nothing here. For now.</b>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
+
+		if(MENU_SURVEILENCE)
+			dat += "<div id='column1'>"
+			dat += "<h2><b><u>Agent Settings:</u></b></h2>"
+			dat += "<b>UPP Agent Name:</b> <a href='?_src_=prefs;preference=agent_name;task=input'><b>[UPP_agent_name]</b></a><br>"
+			dat += "</div>"
+
 		if(MENU_SETTINGS)
 			dat += "<div id='column1'>"
 			dat += "<h2><b><u>Input Settings:</u></b></h2>"
@@ -1302,6 +1315,13 @@ var/const/MAX_SAVE_SLOTS = 10
 						predator_flavor_text = ""
 						return
 					predator_flavor_text = strip_html(pred_flv_raw, MAX_MESSAGE_LEN)
+
+				if("agent_name")
+					var/raw_name = input(user, "Choose your agent's name:", "Character Preference")  as text|null
+					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
+						var/new_name = reject_bad_name(raw_name)
+						if(new_name) UPP_agent_name = new_name
+						else to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 
 				if("commander_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
@@ -2272,5 +2292,6 @@ var/const/MAX_SAVE_SLOTS = 10
 #undef MENU_SYNTHETIC
 #undef MENU_YAUTJA
 #undef MENU_MENTOR
+#undef MENU_SURVEILENCE
 #undef MENU_SETTINGS
 #undef MENU_SPECIAL

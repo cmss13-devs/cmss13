@@ -993,10 +993,10 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	else
 		return attack_hand(user)
 
-/obj/structure/alien/movable_wall/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/alien/movable_wall/get_projectile_hit_boolean(obj/projectile/P)
 	return TRUE
 
-/obj/structure/alien/movable_wall/bullet_act(obj/item/projectile/P)
+/obj/structure/alien/movable_wall/bullet_act(obj/projectile/P)
 	. = ..()
 	take_damage(P.damage)
 
@@ -1110,7 +1110,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	var/explosive_multiplier = 0.3
 	var/reflection_multiplier = 0.5
 
-/turf/closed/wall/resin/reflective/bullet_act(obj/item/projectile/P)
+/turf/closed/wall/resin/reflective/bullet_act(obj/projectile/P)
 	if(src in P.permutated)
 		return
 
@@ -1122,7 +1122,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 		// Bullet gets absorbed if it has IFF or can't be reflected.
 		return
 
-	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
+	var/obj/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
 	new_proj.generate_bullet(P.ammo)
 	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
 	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
@@ -1138,7 +1138,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 	return TRUE
 
-/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, turf/T)
+/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/projectile/P, turf/T)
 	SIGNAL_HANDLER
 	if(T == src)
 		return COMPONENT_BULLET_PASS_THROUGH

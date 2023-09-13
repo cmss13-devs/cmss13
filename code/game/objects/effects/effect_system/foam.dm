@@ -188,7 +188,7 @@
 /obj/structure/foamed_metal/ex_act(severity)
 	take_damage(severity * FOAMED_METAL_EXPLOSION_DMG)
 
-/obj/structure/foamed_metal/bullet_act(obj/item/projectile/P)
+/obj/structure/foamed_metal/bullet_act(obj/projectile/P)
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return
 

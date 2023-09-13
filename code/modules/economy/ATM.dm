@@ -358,7 +358,7 @@ log transactions
 
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					stampoverlay.icon_state = "paper_stamp-cent"
+					stampoverlay.icon_state = "paper_stamp-weyyu"
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/tool/stamp
@@ -400,7 +400,7 @@ log transactions
 
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					stampoverlay.icon_state = "paper_stamp-cent"
+					stampoverlay.icon_state = "paper_stamp-weyyu"
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/tool/stamp

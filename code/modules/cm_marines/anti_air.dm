@@ -110,12 +110,12 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 				almayer_aa_cannon.protecting_section = ""
 				return
 			message_admins("[key_name(usr)] has set the AA to [html_encode(almayer_aa_cannon.protecting_section)].")
-			link.log_ares_antiair(usr, "Set AA to cover [html_encode(almayer_aa_cannon.protecting_section)].")
+			link.log_ares_antiair("[usr] Set AA to cover [html_encode(almayer_aa_cannon.protecting_section)].")
 			. = TRUE
 		if("deactivate")
 			almayer_aa_cannon.protecting_section = ""
 			message_admins("[key_name(usr)] has deactivated the AA cannon.")
-			link.log_ares_antiair(usr, "Deactivated Anti Air systems.")
+			link.log_ares_antiair("[usr] Deactivated Anti Air systems.")
 			. = TRUE
 
 	add_fingerprint(usr)

@@ -49,7 +49,7 @@
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/overwatch/bullet_act(obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/overwatch/bullet_act(obj/projectile/Proj) //Can't shoot it
 	return FALSE
 
 /obj/structure/machinery/computer/overwatch/attack_remote(mob/user as mob)
@@ -798,7 +798,7 @@
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 
 	/// Project ARES interface log.
-	GLOB.ares_link.log_ares_bombardment(user, ob_name, "X[x_bomb], Y[y_bomb] in [A.name]")
+	GLOB.ares_link.log_ares_bombardment(user.name, ob_name, "X[x_bomb], Y[y_bomb] in [A.name]")
 
 	busy = FALSE
 	var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)

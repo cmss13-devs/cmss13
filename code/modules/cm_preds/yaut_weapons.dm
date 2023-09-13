@@ -141,7 +141,8 @@
 	item_state = "scim"
 	attack_speed = 5
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	force = MELEE_FORCE_TIER_5
+	force = MELEE_FORCE_TIER_6
+	has_speed_bonus = FALSE
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -205,8 +206,8 @@
 	embeddable = FALSE
 	w_class = SIZE_MEDIUM
 	unacidable = TRUE
-	force = MELEE_FORCE_TIER_6
-	throwforce = MELEE_FORCE_TIER_5
+	force = MELEE_FORCE_TIER_7
+	throwforce = MELEE_FORCE_TIER_4
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
@@ -243,7 +244,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_TIER_6
+	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_5
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
@@ -327,7 +328,7 @@
 	throw_range = 4
 	unacidable = TRUE
 	force = MELEE_FORCE_TIER_6
-	throwforce = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -472,7 +473,6 @@
 		flags_item |= TWOHANDED
 		w_class = SIZE_LARGE
 		force = force_unwielded
-		throwforce = MELEE_FORCE_TIER_6
 		attack_verb = list("speared", "stabbed", "impaled")
 
 		if(blood_overlay && blood_color)
@@ -489,7 +489,6 @@
 		flags_item &= ~TWOHANDED
 		w_class = SIZE_TINY
 		force = force_storage
-		throwforce = MELEE_FORCE_TIER_6
 		attack_verb = list("thwacked", "smacked")
 		overlays.Cut()
 		on = FALSE
@@ -765,7 +764,7 @@
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
 	flags_item = NOSHIELD|TWOHANDED
-	force = MELEE_FORCE_TIER_3
+	force = MELEE_FORCE_TIER_4
 	force_wielded = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
@@ -820,7 +819,7 @@
 	icon_state = "glaive"
 	item_state = "glaive"
 	force = MELEE_FORCE_TIER_3
-	force_wielded = MELEE_FORCE_TIER_9
+	force_wielded = MELEE_FORCE_TIER_10
 	throwforce = MELEE_FORCE_TIER_3
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	sharp = IS_SHARP_ITEM_BIG

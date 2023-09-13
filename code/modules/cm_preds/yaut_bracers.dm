@@ -677,6 +677,8 @@
 	if (exploding)
 		return
 
+	notify_ghosts(header = "Yautja self destruct", message = "[victim] is self destructing to protect their honor!", source = victim, action = NOTIFY_ORBIT)
+
 	exploding = 1
 	var/turf/T = get_turf(src)
 	if(explosion_type == SD_TYPE_BIG && victim.stat == CONSCIOUS && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))

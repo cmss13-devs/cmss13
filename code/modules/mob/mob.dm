@@ -154,7 +154,6 @@
 				flags = CHAT_TYPE_BEING_HIT
 
 		else if((M != src) && HAS_TRAIT(src, TRAIT_CLOAKED))
-			debug_msg("cloaked hid message")
 			continue
 
 		M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)

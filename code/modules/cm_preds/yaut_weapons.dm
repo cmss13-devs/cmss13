@@ -963,7 +963,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmarifle/load_into_chamber()
 	ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
 	charge_time -= 7
-	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
+	var/obj/projectile/projectile = create_bullet(ammo, initial(name))
 	projectile.set_light(1)
 	in_chamber = projectile
 	return in_chamber

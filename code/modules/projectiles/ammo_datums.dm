@@ -561,8 +561,8 @@
 	name = "revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
-	damage = 55
-	penetration = ARMOR_PENETRATION_TIER_1
+	damage = 75
+	penetration = ARMOR_PENETRATION_TIER_3
 	accuracy = HIT_ACCURACY_TIER_1
 
 /datum/ammo/bullet/revolver/marksman
@@ -576,7 +576,7 @@
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
 
-	damage = 35
+	damage = 45
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 

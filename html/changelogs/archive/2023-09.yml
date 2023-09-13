@@ -82,25 +82,12 @@
 2023-09-09:
   BeagleGaming1:
   - bugfix: The APS property works correctly again
-  - rscdel: Removes emergency autoinjectors from squad medics
-  - rscdel: Removes skillless variant of the emergency autoinjector, makes default
-      variant skillless
-  - balance: Emergency autoinjectors cannot be refilled
-  - balance: Replaces skillless autoinjectors in marine pouches with standard autoinjectors
   Morrow:
   - bugfix: Clusters turning into pylons expand properly
   - rscadd: Added the ability to early launch lifeboats
   - rscadd: Added the ability for lifeboats to crash if early launched
   - rscdel: Removed alcohol from emergency wall cabinets
   - bugfix: Should stop crashing shuttles from landing on each other
-  QuickLode:
-  - bugfix: Fixes WY comms for survivor WY roles.
-  Steelpoint:
-  - maptweak: Fixed broken disposal piping in research resulting in items being dumped
-      back into research.
-  - rscadd: A new skill has been added, the 'Overwatch' skill, allows the user to
-      use the overwatch console.
-  - rscadd: All USCM Officers can now use overwatch consoles.
   Triiodine, Frans, Warfan, SpartanBobby, Twomper, Roboticpotato, Tophat Penguin,forest2001:
   - rscadd: Added Royal Marines commando ERT and faction
   - rscadd: Updates Riot shield sprite, adds metal shield as well (sprites from trio)
@@ -109,89 +96,39 @@
       rounds for royal marines commando
   - rscadd: Calico shotgun, pistol and SMG sprites to the codebase made by Triodine
   - rscadd: royal marines commando HEDP and HIDP grenades
-  Warfan1815, AmoryBlaine (Sprites):
-  - rscadd: Changes donor Biolock's medium medic armour to a light custom paintjob
-      armour and donor Tristan's reactive scientist armour to a custom marine armour
   Zonepace, Thwomper:
   - rscadd: Added the M707 "Vulture" anti-materiel rifle. Not currently player-obtainable.
       Credit to Tophat and Kaga for the lore description.
+2023-09-10:
+  BeagleGaming1:
+  - rscdel: Removes emergency autoinjectors from squad medics
+  - rscdel: Removes skillless variant of the emergency autoinjector, makes default
+      variant skillless
+  - balance: Emergency autoinjectors cannot be refilled
+  - balance: Replaces skillless autoinjectors in marine pouches with standard autoinjectors
+  Morrow:
+  - rscadd: Added CAS Fire Mission ghost notification
+  QuickLode:
+  - bugfix: Fixes WY comms for survivor WY roles.
+  Steelpoint:
+  - maptweak: Fixed broken disposal piping in research resulting in items being dumped
+      back into research.
+  - rscadd: A new skill has been added, the 'Overwatch' skill, allows the user to
+      use the overwatch console.
+  - rscadd: All USCM Officers can now use overwatch consoles.
+  TeDGamer:
+  - balance: Huggers and larvas are slightly harder to hit
+  - code_imp: Replace some w_class magic numbers with defines
+  - balance: Reduced M2C accuracy to be more in line with realistic accuracy intent
+  Warfan1815, AmoryBlaine (Sprites):
+  - rscadd: Changes donor Biolock's medium medic armour to a light custom paintjob
+      armour and donor Tristan's reactive scientist armour to a custom marine armour
   harryob:
   - bugfix: fixes the JMP link in chat
   ihatethisengine:
   - rscadd: On-screen messages now appear with sound. Radio static for marines, distant
       roar for xenos.
+  - bugfix: shuttles now throw mobs asynchronously and faster
   kylerace, lemoninthedark, harry:
   - refactor: optimized icon-in-chat code
   - bugfix: weird icons on the smoothed walls when examining or alt+clicking
-  xDanilcusx:
-  - bugfix: "\u0411\u043E\u043B\u0435\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\
-      \ \u043C\u0430\u0433\u043D\u0438\u0442\u0430 \u0434\u043B\u044F \u043C\u043E\
-      \u043B\u043E\u0442\u0430/\u0449\u0438\u0442\u0430 \u043D\u0435 \u043F\u0440\u0438\
-      \u043C\u0435\u043D\u044F\u044E\u0442\u0441\u044F \u043D\u0430 \u043C\u0430\u0433\
-      \u0445\u0430\u0440\u043D\u0435\u0441\u0441 \u043E\u0433\u043D\u0435\u0441\u0442\
-      \u0440\u0435\u043B\u044C\u043D\u043E\u0433\u043E \u043E\u0440\u0443\u0436\u0438\
-      \u044F."
-2023-09-10:
-  poleno1232:
-  - balance: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F\
-      \ \u0434\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u044C \u0441\u0430\u043D\u043A\
-      \u0435\u043D\u0430 \u0442\u0435\u043F\u0435\u0440\u044C 8"
-  - balance: "\u0425\u0430\u0439\u0432\u043B\u043E\u0440\u0434\u044B \u0442\u0435\u043F\
-      \u0435\u0440\u044C \u043C\u043E\u0433\u0443\u0442 \u0441\u043D\u043E\u0432\u0430\
-      \ \u0441\u0442\u0440\u043E\u0438\u0442\u044C \u0441\u0430\u043D\u043A\u0435\u043D\
-      \u044B"
-  xDanilcusx:
-  - rscadd: "\u041D\u043E\u0432\u044B\u0439 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\
-      \ \u0431\u0430\u0448\u043D\u0438 \u0442\u0430\u043D\u043A\u0430 \u0441 \u043F\
-      \u0443\u0441\u043A\u043E\u0432\u043E\u0439 \u0443\u0441\u0442\u0430\u043D\u043E\
-      \u0432\u043A\u043E\u0439 \u0444\u043B\u0430\u0435\u0440\u043E\u0432."
-  - rscadd: "\u041D\u043E\u0432\u044B\u0439 \u043C\u043E\u0434\u0443\u043B\u044C \u043F\
-      \u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0438 \u0441 \u0434\u044B\u043C\u043E\
-      \u0432\u044B\u043C\u0438 \u0433\u0440\u0430\u043D\u0430\u0442\u0430\u043C\u0438\
-      \ \u0434\u043B\u044F \u0431\u0440\u043E\u043D\u0435\u0442\u0440\u0430\u043D\u0441\
-      \u043F\u043E\u0440\u0442\u0451\u0440\u0430."
-  - balance: "\u0423\u043C\u0435\u043D\u044C\u0448\u0438\u043B \u0437\u0430\u0434\u0435\
-      \u0440\u0436\u043A\u0443 \u043C\u0435\u0436\u0434\u0443 \u0443\u0434\u0430\u0440\
-      \u0430\u043C\u0438 \u0421\u0422 \u043C\u043E\u043B\u043E\u0442\u0430 \u0441\
-      \ **14** \u0434\u043E **12** \u0435\u0434\u0438\u043D\u0438\u0446."
-  - code_imp: "\u0418\u0441\u043F\u0440\u0430\u0432\u0438\u043B \u043D\u0435\u0434\
-      \u043E\u0440\u0430\u0437\u0443\u043C\u0435\u043D\u0438\u0435 \u0441 \u0434\u0432\
-      \u0443\u043C\u044F \u043F\u0430\u043F\u043A\u0430\u043C\u0438 **fray-marines/modules**\
-      \ \u0438 **fray-marines/code/modules**"
-2023-09-11:
-  poleno1232:
-  - balance: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F\
-      \ \u0434\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u044C \u0441\u0430\u043D\u043A\
-      \u0435\u043D\u0430 \u0442\u0435\u043F\u0435\u0440\u044C 8"
-  - balance: "\u0425\u0430\u0439\u0432\u043B\u043E\u0440\u0434\u044B \u0442\u0435\u043F\
-      \u0435\u0440\u044C \u043C\u043E\u0433\u0443\u0442 \u0441\u043D\u043E\u0432\u0430\
-      \ \u0441\u0442\u0440\u043E\u0438\u0442\u044C \u0441\u0430\u043D\u043A\u0435\u043D\
-      \u044B"
-  xDanilcusx:
-  - balance: "\u041F\u043E\u0432\u044B\u0448\u0435\u043D \u041A\u0414 \u043D\u0430\
-      \ \u0441\u043A\u0440\u0438\u0447 \u043A\u043E\u0440\u043E\u043B\u0435\u0432\u044B\
-      ."
-  - balance: "\u041F\u043E\u043D\u0438\u0436\u0435\u043D\u0430 \u0430\u0431\u0441\u0443\
-      \u0440\u0434\u043D\u0430\u044F \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C\
-      \ \u043A\u0441\u0435\u043D\u043E\u0431\u043E\u0442\u043E\u0432 (\u0445\u0443\
-      \u043C\u0430\u043D\u044B \u0432\u0441\u0451 \u0435\u0449\u0451 \u043D\u0435\
-      \ \u0441\u043C\u043E\u0433\u0443\u0442 \u043E\u0431\u043E\u0433\u043D\u0430\u0442\
-      \u044C \u0438\u0445)."
-  - balance: "\u041A\u0430\u0440\u043C\u0430\u043D\u044B \u0441 \u0430\u0432\u0442\
-      \u043E\u0438\u043D\u044A\u0435\u043A\u0442\u043E\u0440\u0430\u043C\u0438, \u043F\
-      \u0440\u043E\u0434\u0430\u044E\u0449\u0438\u0435\u0441\u044F \u0432 \u0440\u0430\
-      \u0437\u0434\u0430\u0442\u0447\u0438\u043A\u0430\u0445 \u0418\u041E \u0438 \u0441\
-      \u043F\u0435\u043A\u0430 - \u0442\u0435\u043F\u0435\u0440\u044C \u043D\u0430\
-      \u043F\u043E\u043B\u043D\u0435\u043D\u044B EZ \u0432\u0430\u0440\u0438\u0430\
-      \u043D\u0442\u043E\u043C \u0430\u0432\u0442\u043E\u0438\u043D\u044A\u0435\u043A\
-      \u0442\u043E\u0440\u043E\u0432."
-2023-09-12:
-  xDanilcusx:
-  - balance: "\u041A\u0430\u0440\u043C\u0430\u043D\u044B \u0441 \u0430\u0432\u0442\
-      \u043E\u0438\u043D\u044A\u0435\u043A\u0442\u043E\u0440\u0430\u043C\u0438, \u043F\
-      \u0440\u043E\u0434\u0430\u044E\u0449\u0438\u0435\u0441\u044F \u0432 \u0440\u0430\
-      \u0437\u0434\u0430\u0442\u0447\u0438\u043A\u0430\u0445 \u0418\u041E \u0438 \u0441\
-      \u043F\u0435\u043A\u0430 - \u0442\u0435\u043F\u0435\u0440\u044C \u043D\u0430\
-      \u043F\u043E\u043B\u043D\u0435\u043D\u044B EZ \u0432\u0430\u0440\u0438\u0430\
-      \u043D\u0442\u043E\u043C \u0430\u0432\u0442\u043E\u0438\u043D\u044A\u0435\u043A\
-      \u0442\u043E\u0440\u043E\u0432."

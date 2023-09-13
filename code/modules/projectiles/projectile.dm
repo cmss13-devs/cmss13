@@ -677,13 +677,13 @@
 		var/hitchance = P.get_effective_accuracy()
 
 		switch(w_class) //smaller items are harder to hit
-			if(1)
+			if(SIZE_TINY)
 				hitchance -= 50
-			if(2)
+			if(SIZE_SMALL)
 				hitchance -= 30
-			if(3)
+			if(SIZE_MEDIUM)
 				hitchance -= 20
-			if(4)
+			if(SIZE_LARGE)
 				hitchance -= 10
 
 		#if DEBUG_HIT_CHANCE
@@ -756,7 +756,8 @@
 
 	. = P.get_effective_accuracy()
 
-	if(lying && stat) . += 15 //Bonus hit against unconscious people.
+	if(lying && stat)
+		. += 15 //Bonus hit against unconscious people.
 
 	if(isliving(P.firer))
 		var/mob/living/shooter_living = P.firer
@@ -799,7 +800,10 @@
 			if(X.hivenumber == hivenumber)
 				return FALSE
 
-		if(mob_size >= MOB_SIZE_BIG) . += 10
+		if(mob_size == MOB_SIZE_SMALL)
+			. -= 10
+		else if(mob_size >= MOB_SIZE_BIG)
+			. += 10
 		if(evasion > 0)
 			. -= evasion
 

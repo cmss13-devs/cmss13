@@ -571,6 +571,7 @@
 			return FALSE
 
 		cloaked = TRUE
+		ADD_TRAIT(M, TRAIT_CLOAKED, "pred_cloak")
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
@@ -617,7 +618,8 @@
 		cloak_malfunction = world.time + decloak_timer
 
 	cloaked = FALSE
-	log_game("[key_name_admin(usr)] has disabled their cloaking device.")
+	REMOVE_TRAIT(user, TRAIT_CLOAKED, "pred_cloak")
+	log_game("[key_name_admin(user)] has disabled their cloaking device.")
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
 	playsound(user.loc, 'sound/effects/pred_cloakoff.ogg', 15, 1)
 	user.alpha = initial(user.alpha)

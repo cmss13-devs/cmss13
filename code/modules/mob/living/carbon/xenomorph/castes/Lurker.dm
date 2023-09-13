@@ -120,6 +120,7 @@
 	if (LPA && istype(LPA))
 		LPA.knockdown = TRUE // pounce knocks down
 		LPA.freeze_self = TRUE
+	ADD_TRAIT(bound_xeno, TRAIT_CLOAKED, "lurker_cloak")
 	bound_xeno.stealth = TRUE
 	can_go_invisible = FALSE
 	invis_start_time = world.time
@@ -130,6 +131,7 @@
 		LPA.knockdown = FALSE // pounce no longer knocks down
 		LPA.freeze_self = FALSE
 	bound_xeno.stealth = FALSE
+	REMOVE_TRAIT(bound_xeno, TRAIT_CLOAKED, "lurker_cloak")
 
 	// SLIGHTLY hacky because we need to maintain lots of other state on the lurker
 	// whenever invisibility is on/off CD and when it's active.
@@ -166,8 +168,8 @@
 		return
 
 	var/mob/living/carbon/human/bumped_into = movable_atom
-	if(bumped_into.alpha < 100) //ignore invisible scouts and preds
+	if(HAS_TRAIT(bumped_into, TRAIT_CLOAKED)) //ignore invisible scouts and preds
 		return
-	
+
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You bumped into someone and lost your invisibility!"))
 	lurker_invisibility_action.invisibility_off()

@@ -148,10 +148,15 @@
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
 		var/msg = message
-		if(self_message && M==src)
+		if(self_message && M == src)
 			msg = self_message
 			if(flags & CHAT_TYPE_TARGETS_ME)
 				flags = CHAT_TYPE_BEING_HIT
+
+		else if((M != src) && HAS_TRAIT(src, TRAIT_CLOAKED))
+			debug_msg("cloaked hid message")
+			continue
+
 		M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)
 		CHECK_TICK
 
@@ -186,6 +191,8 @@
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
+		if(HAS_TRAIT(src, TRAIT_CLOAKED))
+			continue
 		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
 
 // Show a message to all mobs in earshot of this atom

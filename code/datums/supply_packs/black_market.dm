@@ -631,7 +631,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,
-		/obj/item/weapon/banhammer,
 		/obj/item/toy/prize/ripley,
 		/obj/item/toy/prize/fireripley,
 		/obj/item/toy/prize/deathripley,

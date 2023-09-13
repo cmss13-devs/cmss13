@@ -181,3 +181,13 @@
   - bugfix: Fixed duplicate entry for medical training on RMC TL skillset.
   - spellcheck: Renamed default RMC skillset to Royal Marines Commando rather than
       Royal Marines Commando Rifleman.
+2023-09-13:
+  Morrow:
+  - rscdel: Removed some mapped clown gear
+  TeDGamer:
+  - balance: Hive weeds can be supported by other structures when original parent
+      structure is destroyed.
+  Zonespace27:
+  - balance: M56D now has full auto mode.
+  - qol: M56D now has an ammo counter when firing.
+  - rscdel: M2C can no longer rotate with MMB

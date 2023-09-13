@@ -1,13 +1,12 @@
 
 
-//whiskey outpost extra marines
 /datum/emergency_call/cryo_squad
 	name = "Marine Cryo Reinforcements (Squad)"
 	mob_max = 10
 	mob_min = 1
 	probability = 0
 	objectives = "Assist the USCM forces"
-	max_engineers = 4
+	max_engineers = 2
 	max_medics = 2
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
@@ -95,3 +94,10 @@
 
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"
+
+/datum/emergency_call/cryo_squad/tech
+	name = "Marine Cryo Reinforcements (Tech)"
+	mob_max = 5
+	max_engineers = 1
+	max_medics = 1
+	max_heavies = 0

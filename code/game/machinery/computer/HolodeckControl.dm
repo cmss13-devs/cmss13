@@ -166,7 +166,7 @@
 /obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		if(istype(I, /obj/projectile))
 			return BLOCKED_MOVEMENT
 		if(prob(50))
 			I.forceMove(src.loc)

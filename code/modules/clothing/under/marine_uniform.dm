@@ -359,41 +359,17 @@
 
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-/obj/item/clothing/under/marine/mp/provost/enforcer
-	name = "\improper Provost Enforcer Uniform"
-	desc = "The crisp uniform of a Provost Enforcer."
-
-/obj/item/clothing/under/marine/mp/provost/tml
-	name = "\improper Provost Team Leader Uniform"
-	desc = "The crisp uniform of a Provost Team Leader."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
-
-/obj/item/clothing/under/marine/mp/provost/advisor
-	name = "\improper Provost Advisor Uniform"
-	desc = "The crisp uniform of a Provost Advisor."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
-
-/obj/item/clothing/under/marine/mp/provost/inspector
-	name = "\improper Provost Inspector Uniform"
-	desc = "The crisp uniform of a Provost Inspector."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
+/obj/item/clothing/under/marine/mp/provost/senior
+	name = "\improper Provost Senior Uniform"
+	desc = "The crisp uniform of a senior member of the Provost Office."
+	icon_state = "provost_tml"
+	worn_state = "provost_tml"
 
 /obj/item/clothing/under/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Uniform"
 	desc = "The crisp uniform of a Provost Marshal."
-	icon_state = "WO_jumpsuit"
-	worn_state = "WO_jumpsuit"
-
-/obj/item/clothing/under/marine/mp/provost/marshal/sector
-	name = "\improper Provost Sector Marshal Uniform"
-	desc = "The crisp uniform of a Provost Sector Marshal."
-
-/obj/item/clothing/under/marine/mp/provost/marshal/chief
-	name = "\improper Provost Chief Marshal Uniform"
-	desc = "The crisp uniform of the Provost Chief Marshal."
+	icon_state = "provost_marshal"
+	worn_state = "provost_marshal"
 
 //==================//UNITED AMERICAS ALLIED COMMAND\\===================\\
 //=======================================================================\\

@@ -228,31 +228,23 @@
 
 //=========================//PROVOST\\================================\\
 //=======================================================================\\
+
 /obj/item/clothing/suit/storage/jacket/marine/provost
-	name = "\improper Provost Coat"
-	desc = "The crisp coat of a Provost Officer."
+	name = "\improper Provost Jacket"
+	desc = "A crisp jacket with the Provost sigil."
+	icon_state = "provost_jacket"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
-	icon_state = "provost_coat"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/advisor
-	name = "\improper Provost Advisor Jacket"
-	desc = "The crisp jacket of a Provost Advisor."
-	icon_state = "provost_jacket"
+/obj/item/clothing/suit/storage/jacket/marine/provost/coat
+	name = "\improper Provost Coat"
+	desc = "The crisp coat of a Provost Officer."
+	icon_state = "provost_coat"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/inspector
-	name = "\improper Provost Inspector Jacket"
-	desc = "The crisp jacket of a Provost Inspector."
-	icon_state = "provost_jacket"
+/obj/item/clothing/suit/storage/jacket/marine/provost/coat/marshal
+	name = "\improper Provost Marshal Coat"
+	icon_state = "provost_coat_marshal"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshal
-	name = "\improper Provost Marshal Jacket"
-	desc = "The crisp jacket of a Provost Marshal."
-	icon_state = "provost_jacket"
-
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshal/chief
-	name = "\improper Provost Chief Marshal Jacket"
-	desc = "The crisp jacket of the Provost Chief Marshal."
 
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\

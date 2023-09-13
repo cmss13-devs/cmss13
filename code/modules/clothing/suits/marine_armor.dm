@@ -1609,46 +1609,46 @@
 
 /obj/item/clothing/suit/storage/marine/MP/provost
 	name = "\improper M3 pattern Provost armor"
+	desc = "A standard Provost M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	icon_state = "pvmedium"
+	item_state_slots = list(WEAR_JACKET = "pvmedium")
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	storage_slots = 3
+
+/obj/item/clothing/suit/storage/marine/MP/provost/tml
+	name = "\improper M3 pattern Senior Provost armor"
+	desc = "A more refined Provost M3 Pattern Chestplate for senior officers. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	icon_state = "pvleader"
+	item_state_slots = list(WEAR_JACKET = "pvleader")
+
+/obj/item/clothing/suit/storage/marine/MP/provost/marshal
+	name = "\improper M5 pattern Provost Marshal armor"
+	desc = "A custom fit luxury armor suit for Provost Marshals. Useful for letting your men know who is in charge when taking to the field."
+	icon_state = "pvmarshal"
+	item_state_slots = list(WEAR_JACKET = "pvmarshal")
+	w_class = SIZE_MEDIUM
+	storage_slots = 4
+
+/obj/item/clothing/suit/storage/marine/MP/provost/light
+	name = "\improper M3 pattern Provost light armor"
 	desc = "A lighter Provost M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "pvlight"
 	item_state_slots = list(WEAR_JACKET = "pvlight")
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/MP/provost/light/flexi
+	name = "\improper M3 pattern Provost flexi-armor"
+	desc = "A flexible and easy to store M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	w_class = SIZE_MEDIUM
-
-/obj/item/clothing/suit/storage/marine/MP/provost/enforcer
-	name = "\improper M3 pattern Provost armor"
-	desc = "A standard Provost M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
-	icon_state = "pvmedium"
-	item_state_slots = list(WEAR_JACKET = "pvmedium")
-	slowdown = SLOWDOWN_ARMOR_MEDIUM
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-
-/obj/item/clothing/suit/storage/marine/MP/provost/tml
-	name = "\improper M3 pattern Senior Provost armor"
-	icon_state = "pvleader"
-	item_state_slots = list(WEAR_JACKET = "pvleader")
-	desc = "A more refined Provost M3 Pattern Chestplate for senior officers. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
-
-	slowdown = SLOWDOWN_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-
-/obj/item/clothing/suit/storage/marine/MP/provost/marshal
-	icon_state = "pvmarshal"
-	item_state_slots = list(WEAR_JACKET = "pvmarshal")
-	name = "\improper M3 pattern Provost Marshal armor"
-	desc = "A custom fit luxury armor suit for Provost Marshals. Useful for letting your men know who is in charge when taking to the field."
-
-/obj/item/clothing/suit/storage/marine/MP/provost/marshal/chief
-	name = "\improper M3 pattern Provost Chief Marshal armor"
+	icon_state = "pvlight_2"
+	item_state_slots = list(WEAR_JACKET = "pvlight_2")
+	storage_slots = 2
 
 //================//UNITED AMERICAS ALLIED COMMAND\\=====================\\
 //=======================================================================\\

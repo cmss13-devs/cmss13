@@ -1,0 +1,9 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - imageadd: "Added a CMB stamp icon."
+  - imageadd: "Changes the icon_state name of the WY stamp from centcom to weyyu."
+  - rscadd: "Changes EFTPOS stamp icon to use RD instead of weyyu."
+  - bugfix: "Changes the pre-spawned QMs stamp to use the proper stamp."
+  - spellcheck: "Renames Requisiton Officer's stamp to Quartermaster's Stamp."
+  - maptweak: "Renamed the spare Req Officer's stamp to spare Quartermaster's stamp."

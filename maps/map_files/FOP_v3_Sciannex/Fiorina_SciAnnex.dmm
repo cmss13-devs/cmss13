@@ -12808,9 +12808,7 @@
 /area/fiorina/lz/near_lzII)
 "hTr" = (
 /obj/structure/closet,
-/obj/item/clothing/mask/gas/clown_hat,
 /obj/effect/spawner/random/gun/shotgun/midchance,
-/obj/item/clothing/under/marine/ucf_clown,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "hTs" = (
@@ -25559,8 +25557,6 @@
 /area/fiorina/tumor/aux_engi)
 "pON" = (
 /obj/structure/closet,
-/obj/item/storage/backpack/clown,
-/obj/item/toy/bikehorn,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "bluecorner"

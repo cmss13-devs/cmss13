@@ -1523,6 +1523,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\cm_marines\Donator_Kits.dm"
 #include "code\modules\cm_marines\dropship_ammo.dm"
 #include "code\modules\cm_marines\dropship_equipment.dm"
+#include "code\modules\cm_marines\m2c.dm"
 #include "code\modules\cm_marines\marines_consoles.dm"
 #include "code\modules\cm_marines\NonLethalRestraints.dm"
 #include "code\modules\cm_marines\orbital_cannon.dm"

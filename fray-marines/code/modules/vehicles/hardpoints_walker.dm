@@ -38,7 +38,7 @@
 		to_chat(owner.pilot, "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
 		return
 	last_fire = world.time
-	var/obj/item/projectile/P
+	var/obj/projectile/P
 	for(var/i = 1 to burst)
 		if(!owner.firing_arc(target))
 			if(i == 1)
@@ -81,7 +81,7 @@
 		spawn(10)
 			owner.set_light(-muzzle_flash_lum)
 
-/obj/item/walker_gun/proc/simulate_scatter(atom/target, obj/item/projectile/projectile_to_fire)
+/obj/item/walker_gun/proc/simulate_scatter(atom/target, obj/projectile/projectile_to_fire)
 	var/total_chance = projectile_to_fire.scatter
 	if(total_chance <= 0)
 		return target

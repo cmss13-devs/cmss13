@@ -293,6 +293,16 @@ CIVILIAN
 		SKILL_INTEL = SKILL_INTEL_EXPERT,
 	)
 
+/datum/skills/civilian/icc_investigation
+	name = "ICC CL - Black Market ERT"
+	skills = list(
+		SKILL_CQC = SKILL_CQC_DEFAULT,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI, //The ASRS consoles
+		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
+		SKILL_POLICE = SKILL_POLICE_SKILLED, //The CMB Tradeband Compliance Device
+	)
+
 /datum/skills/civilian/manager/director
 	name = "Weyland-Yutani Director"
 	skills = list(

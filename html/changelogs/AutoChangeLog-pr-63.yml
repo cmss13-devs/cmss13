@@ -1,0 +1,4 @@
+author: "poleno1232"
+delete-after: True
+changes:
+  - bugfix: "Починены сломанные пути после крайнего рефактора"

@@ -202,3 +202,9 @@
   - spellcheck: Renames Requisiton Officer's stamp to Quartermaster's Stamp.
   - maptweak: Renamed the spare Req Officer's stamp to spare Quartermaster's stamp.
   - rscadd: Codebooks are now faction based rather than individually unique.
+2023-09-14:
+  poleno1232:
+  - bugfix: "\u041F\u043E\u0447\u0438\u043D\u0435\u043D\u044B \u0441\u043B\u043E\u043C\
+      \u0430\u043D\u043D\u044B\u0435 \u043F\u0443\u0442\u0438 \u043F\u043E\u0441\u043B\
+      \u0435 \u043A\u0440\u0430\u0439\u043D\u0435\u0433\u043E \u0440\u0435\u0444\u0430\
+      \u043A\u0442\u043E\u0440\u0430"

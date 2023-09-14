@@ -125,15 +125,15 @@ var/global/datum/intel_system/intel_system = new()
 	if(!user || !istype(user) || !user.mind || !user.mind.objective_memory)
 		return FALSE
 	if(!powered())
-		to_chat(user, SPAN_WARNING("This computer has no power!"))
+		to_chat(user, SPAN_WARNING("Нажимаю на кнопки, но ничего не происходит."))
 		return FALSE
 	if(!intel_system)
-		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
+		to_chat(user, SPAN_WARNING("Выдает ошибку подключения..."))
 		return FALSE
 	if(user.action_busy)
 		return FALSE
 
-	to_chat(user, SPAN_NOTICE("You start typing in intel into the computer..."))
+	to_chat(user, SPAN_NOTICE("Начинаю вводить данные в компьютер..."))
 
 	var/total_transferred = 0
 	var/outcome = 0 //outcome of an individual upload - if something interrupts us, we cancel the rest
@@ -190,9 +190,9 @@ var/global/datum/intel_system/intel_system = new()
 			total_transferred++
 
 	if(total_transferred > 0)
-		to_chat(user, SPAN_NOTICE("...and done! You uploaded [total_transferred] entries!"))
+		to_chat(user, SPAN_NOTICE("...и готово! Загружено [total_transferred] записей!"))
 	else
-		to_chat(user, SPAN_NOTICE("...and you have nothing new to add..."))
+		to_chat(user, SPAN_NOTICE("...вот только мне нечего добавить..."))
 
 	return TRUE
 
@@ -211,10 +211,10 @@ var/global/datum/intel_system/intel_system = new()
 	playsound(user, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 
 	if(!do_after(user, typing_time * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_ALL, BUSY_ICON_GENERIC)) // Can't move from the spot
-		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start the typing over..."))
+		to_chat(user, SPAN_WARNING("Я отвлекаюсь и теряю нить мыслей, придется переписывать..."))
 		return -1
 
-	to_chat(user, SPAN_NOTICE("...something about \"[clue]\"..."))
+	to_chat(user, SPAN_NOTICE("...что-то про \"[clue]\"..."))
 	intel_system.store_single_objective(O)
 	return 1
 

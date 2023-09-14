@@ -126,7 +126,7 @@
 		visible_message(SPAN_DANGER("[src] suddenly collapses!"))
 		qdel(src)
 
-/obj/structure/lessers_burrow/bullet_act(obj/item/projectile/Proj)
+/obj/structure/lessers_burrow/bullet_act(obj/projectile/Proj)
 	return FALSE
 
 /obj/structure/lessers_burrow/ex_act(severity)

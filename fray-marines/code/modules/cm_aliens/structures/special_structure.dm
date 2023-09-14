@@ -57,7 +57,7 @@
 			health -= rand(200 * (4-severity))
 			healthcheck()
 
-/obj/structure/alien/bullet_act(obj/item/projectile/P)
+/obj/structure/alien/bullet_act(obj/projectile/P)
 	health -= max(0, P.damage)
 	bullet_ping(P)
 	healthcheck()

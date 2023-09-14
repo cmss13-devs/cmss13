@@ -48,7 +48,7 @@
 	var/turf/origin_turf = get_turf(src)
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
 
-	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
+	var/obj/projectile/P = generate_bullet(user, origin_turf)
 	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])
 	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, get_dist(origin_turf, A) + 1, P.ammo.shell_speed)
 	ammo.current_rounds--

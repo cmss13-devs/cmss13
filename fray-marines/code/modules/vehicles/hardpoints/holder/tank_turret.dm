@@ -35,7 +35,7 @@
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
 	origin_turf = get_step(get_step(origin_turf, dir), dir)
 
-	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
+	var/obj/projectile/P = generate_bullet(user, origin_turf)
 	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, user)
 	P.fire_at(A, user, src, get_dist(origin_turf, A) + 1, P.ammo.shell_speed)
 	ammo.current_rounds--

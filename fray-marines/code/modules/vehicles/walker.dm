@@ -588,7 +588,7 @@
 		playsound(loc, 'sound/effects/metal_crash.ogg', 75)
 		qdel(src)
 
-/obj/vehicle/walker/bullet_act(obj/item/projectile/Proj)
+/obj/vehicle/walker/bullet_act(obj/projectile/Proj)
 	if(!Proj)
 		return
 

@@ -348,10 +348,10 @@
 	name = "CMB - ICC Liaison - Black Market ERT"
 	skills = /datum/skills/civilian/icc_investigation
 
-/datum/equipment_preset/cmb/liaison/black_market/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/cmb/liaison/black_market/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST) //Tool belt to open ASRS
-	H.equip_to_slot_or_del(new /obj/item/device/cmb_black_market_tradeband, WEAR_IN_BACK) //Tradeband to disable black market
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST) //Tool belt to open ASRS
+	new_human.equip_to_slot_or_del(new /obj/item/device/cmb_black_market_tradeband, WEAR_IN_BACK) //Tradeband to disable black market
 
 //*****************************************************************************************************/
 

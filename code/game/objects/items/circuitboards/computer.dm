@@ -191,7 +191,7 @@
 					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [tool], and the red light stops blinking, turning off. It's probably good now."))
 					contraband_enabled = FALSE
 
-	if(istype(tool, /obj/item/device/cmb_black_market_tradeband))
+	if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))
 
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			to_chat(user, SPAN_NOTICE("You do not know how to use [tool]"))
@@ -216,6 +216,7 @@
 
 		playsound(tool, 'sound/machines/ping.ogg', 25)
 		black_market_lock = TRUE
+		contraband_enabled = FALSE
 		tool.icon_state = initial(tool.icon_state)
 
 	else ..()

@@ -1039,7 +1039,7 @@ var/datum/controller/supply/supply_controller = new()
 					supply_order.approvedby = usr.name
 					msg_admin_niche("[usr] confirmed supply order of [supply_pack.name].")
 					if(supply_controller.black_market_heat == 100)
-						supply_controller.black_market_CMB_investigation()
+						supply_controller.black_market_investigation()
 					var/pack_source = "Cargo Hold"
 					var/pack_name = supply_pack.name
 					if(supply_pack.dollar_cost)
@@ -1250,7 +1250,7 @@ var/datum/controller/supply/supply_controller = new()
 	/// For code readability.
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, FALSE), timer)
 
-/datum/controller/supply/proc/black_market_CMB_investigation()
+/datum/controller/supply/proc/black_market_investigation()
 	black_market_heat = -1
 	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", FALSE, TRUE, FALSE)
 	log_game("Black Market Inspection auto-triggered.")

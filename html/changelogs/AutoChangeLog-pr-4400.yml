@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix some donor items breaking on maps with camos."
+  - bugfix: "Fix donor items not having a fingerprint atom flag and donor armors not having conductive atom flag."

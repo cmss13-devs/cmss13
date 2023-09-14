@@ -1,0 +1,7 @@
+author: "BeagleGaming1, forest2001"
+delete-after: True
+changes:
+  - rscadd: "Adds a CMB ERT to investigate the Black Market"
+  - rscadd: "Adds a [cmb] logo for papers"
+  - rscadd: "Adds a quiet_launch var for distress beacons, to differentiate between ERTs who should announce their response reception, but not the beacon going out in the first place."
+  - rscdel: "Removes banhammer from normal acquisition."

@@ -379,9 +379,6 @@
 			to_chat(user, "You're securing the M56D into place...")
 
 			var/disassemble_time = 30
-			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				disassemble_time = 5
-
 			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))

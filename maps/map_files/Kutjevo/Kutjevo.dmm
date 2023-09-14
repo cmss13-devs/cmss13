@@ -16657,13 +16657,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/kutjevo/colors/red/tile,
 /area/kutjevo/interior/oob/dev_room)
-"wSN" = (
-/obj/structure/blocker/invisible_wall,
-/obj/effect/landmark/corpsespawner/clown,
-/turf/open/desert/desert_shore/desert_shore1{
-	dir = 1
-	},
-/area/kutjevo/interior/oob/dev_room)
 "wSU" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -20023,7 +20016,7 @@ rkt
 jBJ
 fOU
 ibm
-wSN
+rYs
 fAF
 fQB
 uam

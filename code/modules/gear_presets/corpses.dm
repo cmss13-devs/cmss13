@@ -213,33 +213,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/corpse/clown
-	name = "Corpse - Clown"
-	assignment = "Clown"
-	uses_special_name = TRUE
-
-/datum/equipment_preset/corpse/clown/New()
-	. = ..()
-	//As a joke, clown has all access so they can clown everywhere...
-	access = get_access(ACCESS_LIST_DELIVERY)
-
-/datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/new_human, randomise)
-	. = ..() //To load gender, randomise appearance, etc.
-	new_human.change_real_name(new_human, pick(clown_names)) //Picking a proper clown name!
-
-/datum/equipment_preset/corpse/clown/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/toy/bikehorn(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(new_human), WEAR_BACK)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-
-//*****************************************************************************************************/
-
 /datum/equipment_preset/corpse/scientist
 	name = "Corpse - Scientist"
 	assignment = "Scientist"

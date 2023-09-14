@@ -199,6 +199,8 @@ SUBSYSTEM_DEF(ticker)
 	if(CONFIG_GET(flag/autooocmute))
 		ooc_allowed = FALSE
 
+	round_start_time = world.time
+
 	CHECK_TICK
 	for(var/I in round_start_events)
 		var/datum/callback/cb = I
@@ -222,9 +224,7 @@ SUBSYSTEM_DEF(ticker)
 			equip_characters()
 
 	GLOB.data_core.manifest()
-
 	log_world("Game start took [(world.timeofday - init_start) / 10]s")
-	round_start_time = world.time
 	//SSdbcore.SetRoundStart()
 
 	current_state = GAME_STATE_PLAYING

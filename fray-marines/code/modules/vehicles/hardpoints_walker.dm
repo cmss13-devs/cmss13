@@ -103,7 +103,7 @@
 	if(lightrange <= 0)
 		set_light_on(FALSE)
 
-/obj/item/walker_gun/proc/simulate_scatter(atom/target, obj/item/projectile/projectile_to_fire)
+/obj/item/walker_gun/proc/simulate_scatter(atom/target, obj/projectile/projectile_to_fire)
 	var/fire_angle = Get_Angle(owner.loc, get_turf(target))
 	var/total_scatter_angle = projectile_to_fire.scatter - rand(-5,5)
 

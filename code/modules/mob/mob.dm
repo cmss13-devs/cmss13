@@ -187,12 +187,14 @@
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
 /atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
+	if(HAS_TRAIT(src, TRAIT_CLOAKED))
+		return FALSE
 	var/view_dist = 7
-	if(max_distance) view_dist = max_distance
+	if(max_distance)
+		view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
-		if(HAS_TRAIT(src, TRAIT_CLOAKED))
-			continue
 		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
+	return TRUE
 
 // Show a message to all mobs in earshot of this atom
 // Use for objects performing only audible actions

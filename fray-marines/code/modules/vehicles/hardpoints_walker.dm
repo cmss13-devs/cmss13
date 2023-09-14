@@ -41,7 +41,7 @@
 		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
 		return
 	last_fire = world.time
-	var/obj/item/projectile/P
+	var/obj/projectile/P
 	for(var/i = 1 to burst)
 		if(!owner.firing_arc(target))
 			if(i == 1)

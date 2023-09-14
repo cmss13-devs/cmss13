@@ -1835,6 +1835,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\mob\living\carbon\human\species\working_joe\question.dm"
 #include "code\modules\mob\living\carbon\human\species\working_joe\quip.dm"
 #include "code\modules\mob\living\carbon\human\species\working_joe\restricted_area.dm"
+#include "code\modules\mob\living\carbon\human\species\working_joe\russian.dm"
 #include "code\modules\mob\living\carbon\human\species\working_joe\task_update.dm"
 #include "code\modules\mob\living\carbon\human\species\working_joe\warning.dm"
 #include "code\modules\mob\living\carbon\human\species\yautja\_emote.dm"

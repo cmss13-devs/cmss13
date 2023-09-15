@@ -486,7 +486,7 @@
 	/// The radius the gas will reach
 	var/nerve_gas_radius = 2
 
-/obj/item/explosive/grenade/nerve_gas/New()
+/obj/item/explosive/grenade/nerve_gas/Initialize(mapload, ...)
 	. = ..()
 	nerve_gas = new nerve_gas_type
 	nerve_gas.attach(src)

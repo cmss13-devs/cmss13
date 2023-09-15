@@ -86,7 +86,7 @@
 	if(SShijack)
 		var/eta_status = SShijack.get_status_panel_eta()
 		if(eta_status)
-			stat(null, "Evacuation: [eta_status]")
+			stat(null, "Evacuation Goals: [eta_status]")
 
 
 // this function displays the stations manifest in a separate window

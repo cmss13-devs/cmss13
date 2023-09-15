@@ -176,7 +176,7 @@
 	soundscape_playlist = SCAPE_PL_ENG
 	soundscape_interval = 15
 	hijack_evacuation_area = TRUE
-	hijack_evacuation_weight = 1
+	hijack_evacuation_weight = 0.2
 	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/engineering/starboard_atmos
@@ -202,7 +202,7 @@
 	icon_state = "astronavigation"
 	fake_zlevel = 2 // lowerdeck
 	hijack_evacuation_area = TRUE
-	hijack_evacuation_weight = 2
+	hijack_evacuation_weight = 1.1
 	hijack_evacuation_type = EVACUATION_TYPE_MULTIPLICATIVE
 
 /area/almayer/shipboard/panic
@@ -734,7 +734,7 @@
 	requires_power = 1
 	fake_zlevel = 1
 	hijack_evacuation_area = TRUE
-	hijack_evacuation_weight = 0.5
+	hijack_evacuation_weight = 0.1
 	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/lifeboat_pumps/north1

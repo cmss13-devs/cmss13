@@ -126,7 +126,7 @@
 	if(SShijack)
 		var/eta_status = SShijack.get_status_panel_eta()
 		if(eta_status)
-			. += "Evacuation: [eta_status]"
+			. += "Evacuation Goals: [eta_status]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
 	if(lying)

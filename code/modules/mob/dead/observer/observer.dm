@@ -1088,7 +1088,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SShijack)
 		var/eta_status = SShijack.get_status_panel_eta()
 		if(eta_status)
-			. += "Evacuation: [eta_status]"
+			. += "Evacuation Goals: [eta_status]"
 
 
 /proc/message_ghosts(message)

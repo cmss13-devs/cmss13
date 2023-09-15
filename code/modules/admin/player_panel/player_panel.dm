@@ -392,7 +392,7 @@
 			dat += "<A HREF='?_src_=vars;Vars=\ref[shuttle_controller]'>VV Shuttle Controller</A><br><br>"
 
 		if(check_rights(R_MOD, 0))
-			dat += "<b>Evacuation:</b> "
+			dat += "<b>Evacuation Goals:</b> "
 			switch(SShijack.evac_status)
 				if(EVACUATION_STATUS_NOT_INITIATED)
 					dat += "STANDING BY"

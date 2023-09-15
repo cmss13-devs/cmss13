@@ -73,6 +73,7 @@
 		sleep(10)
 
 	SSticker.hijack_ocurred()
+	SShijack.announce_status_on_crash()
 
 /datum/dropship_hijack/almayer/proc/fire()
 	if(!shuttle || !crash_site)

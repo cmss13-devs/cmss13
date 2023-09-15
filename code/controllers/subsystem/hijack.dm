@@ -124,7 +124,7 @@ SUBSYSTEM_DEF(hijack)
 	for(var/area/cycled_area as anything in progress_areas)
 		message += "[cycled_area] - [cycled_area.power_equip ? "Online" : "Offline"]\n"
 
-	message += "\nMaintain fueling functionality for optimal lifeboat usage."
+	message += "\nDue to low orbit, extra fuel is required for non-surface evacuations.\nMaintain fueling functionality for optimal evacuation conditions."
 
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
@@ -169,7 +169,7 @@ SUBSYSTEM_DEF(hijack)
 		if(HIJACK_OBJECTIVES_STARTED)
 			if(estimated_time_left == INFINITY)
 				return "Never"
-			return "[estimated_time_left]"
+			return "[duration2text_sec(estimated_time_left)]"
 
 		if(HIJACK_OBJECTIVES_COMPLETE)
 			return "Complete"
@@ -229,17 +229,11 @@ SUBSYSTEM_DEF(hijack)
 
 To do:
 
-Calibrate numbers to make sure objectives don't finish too early or late
-
 Self destruct code
 	Thinking something like finish main objectives and then can blow fuel resevoir as a "self destruct" via engineering and a hold
 
 Testing:
-New nuclear bomb explosion
-status display change from cancel_evacuation()
-Round actually ending with get_affected_zlevel() move
-Verify crash chances are working correctly for crashable shuttles
-Check that emergency cryo kits work
+
 
 
 */

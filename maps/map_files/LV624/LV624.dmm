@@ -12811,6 +12811,12 @@
 "cag" = (
 /turf/open/gm/coast/south,
 /area/lv624/ground/caves/sand_temple)
+"cat" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "caH" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating{
@@ -13339,6 +13345,13 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"dtl" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "dvf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
@@ -13998,6 +14011,14 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/lazarus/quart)
+"eYq" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.7
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "eYD" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/effect/landmark/lv624/fog_blocker,
@@ -15601,6 +15622,16 @@
 /obj/structure/cargo_container/lockmart/mid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
+"jwL" = (
+/obj/structure/machinery/sensortower{
+	pixel_x = -10;
+	layer = 3.1
+	},
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/caves/central_caves)
 "jwW" = (
 /turf/open/floor/plating{
 	dir = 6;
@@ -15705,6 +15736,10 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
+"jHy" = (
+/obj/structure/platform_decoration,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "jHN" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
@@ -17113,6 +17148,12 @@
 	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
+"nrk" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "nrm" = (
 /turf/open/gm/dirt{
 	icon_state = "desert3"
@@ -17771,6 +17812,12 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
+"oCe" = (
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "oDY" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4
@@ -19914,6 +19961,13 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
+"tLy" = (
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.7
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "tLQ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -20296,6 +20350,10 @@
 	icon_state = "wood-broken3"
 	},
 /area/lv624/ground/caves/north_central_caves)
+"uJb" = (
+/obj/structure/platform,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "uKT" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -20562,6 +20620,12 @@
 "vqT" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
+"vsB" = (
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/caves/central_caves)
 "vsT" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
@@ -20700,6 +20764,12 @@
 "vLO" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/lazarus/quartstorage/outdoors)
+"vLZ" = (
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "vMV" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -39305,11 +39375,11 @@ abI
 abl
 abl
 dOQ
-abl
-abl
-abl
-abv
-abl
+jHy
+tLy
+tLy
+eYq
+vLZ
 abl
 abl
 abl
@@ -39533,11 +39603,11 @@ abl
 abl
 abl
 abl
-abl
-abl
-abl
-abl
-abl
+uJb
+vsB
+vsB
+vsB
+nrk
 abl
 abl
 abl
@@ -39761,11 +39831,11 @@ abI
 abl
 abl
 abl
-abl
-abl
-abl
-abl
-abl
+uJb
+vsB
+jwL
+vsB
+nrk
 abl
 abl
 abl
@@ -39989,11 +40059,11 @@ abl
 abl
 abl
 abl
-abl
-abl
-abl
-abl
-abl
+uJb
+vsB
+vsB
+vsB
+nrk
 izh
 izh
 abl
@@ -40217,11 +40287,11 @@ abl
 sJM
 abl
 abl
-abv
-abl
-abl
-abl
-abl
+dtl
+cat
+cat
+cat
+oCe
 izh
 izh
 abl

@@ -33950,6 +33950,10 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
+"veg" = (
+/obj/structure/machinery/sensortower,
+/turf/open/auto_turf/sand/layer1,
+/area/fiorina/tumor/civres)
 "vei" = (
 /turf/open/floor/prison{
 	icon_state = "yellow"
@@ -49380,7 +49384,7 @@ oVC
 hDx
 hDx
 hDx
-apw
+veg
 apw
 apw
 amF

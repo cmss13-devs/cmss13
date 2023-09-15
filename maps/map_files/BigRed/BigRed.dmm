@@ -32693,6 +32693,13 @@
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/telecomm/lz2_cave)
+"nHt" = (
+/obj/structure/machinery/sensortower,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/bigredv2/caves_lambda)
 "nHQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -36935,6 +36942,13 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
+"vZn" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/caves_lambda)
 "waJ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -77592,9 +77606,9 @@ tQw
 ahw
 tQw
 tQw
-aSn
-gXp
-gXp
+vZn
+aTv
+aMT
 tQw
 tQw
 pIN
@@ -77809,9 +77823,9 @@ tQw
 tQw
 xFZ
 xFZ
-xFZ
-tQw
-tQw
+aSm
+nHt
+aMT
 tQw
 xFZ
 ahy
@@ -78027,8 +78041,8 @@ eFh
 aao
 aao
 aao
-gmN
-xFZ
+aSm
+aMV
 sNQ
 aao
 aao

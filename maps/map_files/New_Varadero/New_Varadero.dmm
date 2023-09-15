@@ -5334,6 +5334,11 @@
 /obj/structure/prop/rock/brown,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/hall_SE)
+"dug" = (
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior_protected/caves/central)
 "duw" = (
 /obj/effect/decal/cleanable/cobweb2{
 	pixel_x = 11;
@@ -15832,6 +15837,12 @@
 "klT" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/maintenance/research)
+"klU" = (
+/obj/structure/prop/rock/brown,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior_protected/caves/central)
 "klY" = (
 /obj/item/cell/high,
 /turf/open/floor/plating/icefloor{
@@ -27916,6 +27927,12 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/north)
+"rQd" = (
+/obj/structure/machinery/sensortower,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior_protected/caves/central)
 "rQe" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -54258,8 +54275,8 @@ mCF
 mCF
 mCF
 mCF
-mCF
-hoC
+dug
+klU
 cty
 ksX
 kgC
@@ -54440,8 +54457,8 @@ mCF
 mCF
 mCF
 mCF
-aOg
-aOg
+dug
+rQd
 cty
 ksX
 kgC
@@ -54622,8 +54639,8 @@ aOg
 aOg
 mCF
 mCF
-aOg
-aOg
+dug
+dug
 cty
 ksX
 ksX
@@ -54805,8 +54822,8 @@ aOg
 mCF
 mCF
 mCF
-aOg
-aOg
+dug
+dug
 cty
 cqZ
 bxx

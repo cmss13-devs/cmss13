@@ -297,7 +297,8 @@
 
 	if(SShijack)
 		switch(SShijack.evac_status)
-			if(EVACUATION_STATUS_INITIATED) dat += "<font color='red'><b>The [MAIN_SHIP_NAME] is being evacuated.</b></font><br>"
+			if(EVACUATION_STATUS_INITIATED)
+				dat += "<font color='red'><b>The [MAIN_SHIP_NAME] is being evacuated.</b></font><br>"
 
 	dat += "Choose from the following open positions:<br>"
 	var/roles_show = FLAG_SHOW_ALL_JOBS

@@ -325,6 +325,10 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Spent slugs"
 	path = /obj/item/prop/helmetgarb/spent_slug
 
+/datum/gear/helmet_garb/cartridge
+	display_name = "Cartridge"
+	path = /obj/item/prop/helmetgarb/cartridge
+
 /datum/gear/helmet_garb/spacejam_tickets
 	display_name = "Tickets to Space Jam"
 	path = /obj/item/prop/helmetgarb/spacejam_tickets
@@ -498,6 +502,11 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/toy/crayon
 	display_name = "Crayon"
 	path = /obj/item/toy/crayon/rainbow
+
+/datum/gear/toy/plush
+	display_name = "Random plushie"
+	path = /obj/item/toy/plush/random_plushie
+	cost = 4
 
 /datum/gear/weapon
 	category = "Weapons"
@@ -769,6 +778,16 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Lighter, zippo"
 	path = /obj/item/tool/lighter/zippo
 
+/datum/gear/smoking/electronic_cigarette
+	display_name = "Electronic cigarette"
+	path = /obj/item/clothing/mask/electronic_cigarette
+	cost = 3
+
+/datum/gear/smoking/electronic_cigarette/cigar
+	display_name = "Electronic cigar"
+	path = /obj/item/clothing/mask/electronic_cigarette/cigar
+	cost = 4
+
 /datum/gear/misc
 	category = "Miscellaneous"
 
@@ -815,3 +834,16 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/misc/patch_uscm/falcon
 	display_name = "Falling Falcons shoulder patch"
 	path = /obj/item/clothing/accessory/patch/falcon
+
+/datum/gear/misc/family_photo
+	display_name = "Family photo"
+	path = /obj/item/prop/helmetgarb/family_photo
+
+/datum/gear/misc/compass
+	display_name = "Compass"
+	path = /obj/item/prop/helmetgarb/compass
+	cost = 1
+
+/datum/gear/misc/bug_spray
+	display_name = "Bug spray"
+	path = /obj/item/prop/helmetgarb/bug_spray

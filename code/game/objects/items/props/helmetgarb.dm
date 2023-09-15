@@ -37,6 +37,11 @@
 	desc = "The more you fire these, the more you're reminded that a fragmentation grenade is probably more effective at fulfilling the same purpose. Say, aren't these supposed to eject from your gun?"
 	icon_state = "spent_flech"
 
+/obj/item/prop/helmetgarb/cartridge
+	name = "cartridge"
+	desc = "This is the bullet from a Type 71 Pulse Rifle. It is deformed from impact against an armored surface. It's been reduced to a lucky keepsake now."
+	icon_state = "cartridge"
+
 /obj/item/prop/helmetgarb/prescription_bottle
 	name = "prescription medication"
 	desc = "Anti-anxiety meds? Amphetamines? The cure for Sudden Sleep Disorder? The label can't be read, leaving the now absent contents forever a mystery. The cap is screwed on tighter than any ID lock."
@@ -515,3 +520,60 @@
 	desc = "This patch is all that remains of the Chaplaincy of the USS Almayer, along with the Chaplains themselves. Both no longer exist as a result of losses suffered during Operation Tychon Tackle."
 	icon_state = "chaplain_patch"
 	flags_obj = OBJ_NO_HELMET_BAND
+
+/obj/item/prop/helmetgarb/family_photo
+	name = "family photo"
+	desc = ""
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "photo"
+	///The human who spawns with the photo
+	var/mob/living/carbon/human/owner
+	///Text written on the back
+	var/scribble
+
+/obj/item/prop/helmetgarb/family_photo/post_loadout_spawn(mob/living/carbon/human/user)
+	. = ..()
+	owner = user
+
+/obj/item/prop/helmetgarb/family_photo/get_examine_text(mob/user)
+	. = ..()
+	if(scribble)
+		. += "\"[scribble]\" is written on the back of the photo."
+	if(user == owner)
+		. += "A photo of you and your family."
+		return
+	if(user.faction == owner?.faction)
+		. += "A photo of [owner] and their family."
+		return
+	. += "A photo of a family you do not know."
+
+/obj/item/prop/helmetgarb/family_photo/attackby(obj/item/attacking_item, mob/user)
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_PEN) || istype(attacking_item, /obj/item/toy/crayon))
+		if(scribble)
+			to_chat(user, SPAN_NOTICE("[src] has already been written on."))
+			return
+		var/new_text = copytext(strip_html(tgui_input_text(user, "What would you like to write on the back of [src]?", "Photo Writing")), 1, 128)
+
+		if(!loc == user)
+			to_chat(user, SPAN_NOTICE("You need to be holding [src] to write on it."))
+			return
+		if(!user.stat == CONSCIOUS)
+			to_chat(user, SPAN_NOTICE("You cannot write on [src] in this state."))
+			return
+		scribble = new_text
+		playsound(src, "paper_writing", 15, TRUE)
+	..()
+
+/obj/item/prop/helmetgarb/compass
+	name = "compass"
+	desc = "It always faces north. Are you sure it is not broken?"
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "compass"
+	w_class = SIZE_SMALL
+
+/obj/item/prop/helmetgarb/bug_spray
+	name = "insect repellent"
+	desc = "A store-brand insect repellent, to keep any variety of pest or mosquito away from you."
+	icon = 'icons/obj/items/spray.dmi'
+	icon_state = "pestspray"
+	w_class = SIZE_SMALL

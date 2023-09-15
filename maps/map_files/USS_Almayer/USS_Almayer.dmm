@@ -18957,7 +18957,7 @@
 /area/almayer/engineering/lower_engineering)
 "byY" = (
 /obj/structure/bed,
-/obj/item/toy/farwadoll{
+/obj/item/toy/plush/farwa{
 	pixel_x = 5
 	},
 /obj/item/clothing/under/redpyjamas,
@@ -46364,7 +46364,7 @@
 	pixel_x = -16;
 	pixel_y = 8
 	},
-/obj/item/toy/plushie_cade,
+/obj/item/toy/plush/barricade,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -66994,7 +66994,7 @@
 "tjU" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/item/bedsheet/brown,
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "tkq" = (
@@ -70135,10 +70135,9 @@
 /obj/item/bedsheet/blue{
 	pixel_y = 13
 	},
-/obj/item/toy/farwadoll{
+/obj/item/toy/plush/therapy/red{
 	desc = "A USCM approved plush doll. It's not soft and hardly comforting!";
 	force = 15;
-	icon_state = "therapyred";
 	layer = 4.1;
 	name = "Sergeant Huggs";
 	pixel_y = 15;

@@ -642,7 +642,42 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_off = "cobpipeoff"
 	smoketime = 800 SECONDS
 
+/obj/item/clothing/mask/electronic_cigarette
+	name = "electronic cigarette"
+	desc = "An electronic cigarette from the company that made Lucky Strikes, that contains no nicotine after complaints about the consequences."
+	icon_state = "cigoff"
+	item_state = "cigoff"
+	w_class = SIZE_SMALL
+	flags_equip_slot = SLOT_EAR|SLOT_FACE
+	var/icon_on = "cigon"
+	var/icon_off = "cigoff"
+	var/enabled = FALSE
 
+/obj/item/clothing/mask/electronic_cigarette/Initialize(mapload, ...)
+	. = ..()
+	if(enabled)
+		icon_state = icon_on
+		item_state = icon_on
+
+/obj/item/clothing/mask/electronic_cigarette/attack_self(mob/user)
+	. = ..()
+	to_chat(user, SPAN_NOTICE("You [enabled ? "disable" : "enable"] [src]."))
+	if(enabled)
+		icon_state = icon_off
+		item_state = icon_off
+		enabled = FALSE
+		return
+	icon_state = icon_on
+	item_state = icon_on
+	enabled = TRUE
+
+/obj/item/clothing/mask/electronic_cigarette/cigar
+	name = "electronic cigar"
+	desc = "An electronic cigarette designed to look like a cigar, for those who care about health and style."
+	icon_state = "cigar_off"
+	item_state = "cigar_off"
+	icon_on = "cigar_on"
+	icon_off = "cigar_off"
 
 /////////
 //ZIPPO//

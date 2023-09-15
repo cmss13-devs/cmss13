@@ -318,56 +318,6 @@
 	desc = "Mini-Mecha action figure! Collect them all! 11/11."
 	icon_state = "phazonprize"
 
-
-/obj/item/toy/therapy_red
-	name = "red therapy doll"
-	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is red."
-	icon = 'icons/obj/items/toy.dmi'
-	icon_state = "therapyred"
-	item_state = "egg4" // It's the red egg in items_left/righthand
-	w_class = SIZE_TINY
-
-/obj/item/toy/therapy_purple
-	name = "purple therapy doll"
-	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is purple."
-	icon = 'icons/obj/items/toy.dmi'
-	icon_state = "therapypurple"
-	item_state = "egg1" // It's the magenta egg in items_left/righthand
-	w_class = SIZE_TINY
-
-/obj/item/toy/therapy_blue
-	name = "blue therapy doll"
-	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is blue."
-	icon = 'icons/obj/items/toy.dmi'
-	icon_state = "therapyblue"
-	item_state = "egg2" // It's the blue egg in items_left/righthand
-	w_class = SIZE_TINY
-
-/obj/item/toy/therapy_yellow
-	name = "yellow therapy doll"
-	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is yellow."
-	icon = 'icons/obj/items/toy.dmi'
-	icon_state = "therapyyellow"
-	item_state = "egg5" // It's the yellow egg in items_left/righthand
-	w_class = SIZE_TINY
-
-/obj/item/toy/therapy_orange
-	name = "orange therapy doll"
-	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is orange."
-	icon = 'icons/obj/items/toy.dmi'
-	icon_state = "therapyorange"
-	item_state = "egg4" // It's the red one again, lacking an orange item_state and making a new one is pointless
-	w_class = SIZE_TINY
-
-/obj/item/toy/therapy_green
-	name = "green therapy doll"
-	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is green."
-	icon = 'icons/obj/items/toy.dmi'
-	icon_state = "therapygreen"
-	item_state = "egg3" // It's the green egg in items_left/righthand
-	w_class = SIZE_TINY
-
-
 /obj/item/toy/inflatable_duck
 	name = "inflatable duck"
 	desc = "No bother to sink or swim when you can just float!"
@@ -376,7 +326,6 @@
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	flags_equip_slot = SLOT_WAIST
 	black_market_value = 20
-
 
 /obj/item/toy/beach_ball
 	name = "beach ball"
@@ -393,7 +342,6 @@
 /obj/item/toy/beach_ball/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
 	user.drop_held_item()
 	throw_atom(target, throw_range, throw_speed, user)
-
 
 /obj/item/toy/dice
 	name = "d6"
@@ -427,10 +375,6 @@
 						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
 						SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
-
-
-
-
 /obj/item/toy/bikehorn
 	name = "bike horn"
 	desc = "A horn off of a bicycle."
@@ -454,47 +398,6 @@
 		playsound(src.loc, sound_effect, 25, 1)
 		src.add_fingerprint(user)
 		addtimer(VARSET_CALLBACK(src, spam_flag, FALSE), 2 SECONDS)
-
-
-
-/obj/item/toy/farwadoll
-	name = "Farwa plush doll"
-	desc = "A Farwa plush doll. It's soft and comforting!"
-	w_class = SIZE_TINY
-	icon_state = "farwaplush"
-	black_market_value = 25
-	COOLDOWN_DECLARE(last_hug_time)
-
-/obj/item/toy/farwadoll/attack_self(mob/user)
-	..()
-
-	if(COOLDOWN_FINISHED(src, last_hug_time))
-		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
-							SPAN_NOTICE("You hug [src]. Dawwww... "))
-		COOLDOWN_START(src, last_hug_time, 5 SECONDS)
-
-/obj/item/toy/farwadoll/pred
-	name = "strange plush doll"
-	desc = "A plush doll depicting some sort of tall humanoid biped..?"
-	w_class = SIZE_TINY
-	icon_state = "predplush"
-
-/obj/item/toy/plushie_cade
-	name = "plushie barricade"
-	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
-	icon_state = "plushie_cade"
-	item_state = "plushie_cade"
-	w_class = SIZE_SMALL
-	COOLDOWN_DECLARE(last_hug_time)
-
-/obj/item/toy/plushie_cade/attack_self(mob/user)
-	..()
-
-	if(COOLDOWN_FINISHED(src, last_hug_time))
-		user.visible_message(SPAN_NOTICE("[user] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]. You feel safe."))
-		playsound(user, "plush", 25, TRUE)
-		COOLDOWN_START(src, last_hug_time, 2.5 SECONDS)
-
 
 /obj/item/computer3_part
 	name = "computer part"
@@ -567,3 +470,167 @@
 /obj/item/toy/festivizer/xeno
 	name = "strange resin-covered festivizer decorator"
 	desc = "This bizarre festivizer is covered in goopy goop and schmuck. Ew! It's so sticky, *anything* could grab onto it! Grab it and touch other things to festivize them!"
+
+/obj/item/toy/plush
+	name = "generic plushie"
+	desc = "perfectly generic"
+	icon = 'icons/obj/items/plush.dmi'
+	icon_state = "debug"
+	w_class = SIZE_SMALL
+	COOLDOWN_DECLARE(last_hug_time)
+	black_market_value = 10
+
+/obj/item/toy/plush/attack_self(mob/user)
+	..()
+	if(!COOLDOWN_FINISHED(src, last_hug_time))
+		return
+	user.visible_message(SPAN_NOTICE("[user] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]."))
+	playsound(user, "plush", 25, TRUE)
+	COOLDOWN_START(src, last_hug_time, 2.5 SECONDS)
+
+/obj/item/toy/plush/farwa
+	name = "Farwa plush doll"
+	desc = "A Farwa plush doll. It's soft and comforting!"
+	icon_state = "farwaplush"
+	black_market_value = 25
+
+/obj/item/toy/plush/yautja
+	name = "strange plush doll"
+	desc = "A plush doll depicting some sort of tall humanoid biped..?"
+	icon_state = "predplush"
+	black_market_value = 100
+
+/obj/item/toy/plush/barricade
+	name = "plushie barricade"
+	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
+	icon_state = "barricade"
+	item_state = "cade_plush"
+
+/obj/item/toy/plush/shark //A few more generic plushies to increase the size of the plushie loot pool
+	name = "shark plush doll"
+	desc = "A plushie depicting a somewhat cartoonish shark. The tag notes that it was made by an obscure furniture manufacturer in Scandinavia."
+	icon_state = "shark"
+
+/obj/item/toy/plush/bee
+	name = "bee plush doll"
+	desc = "A cute toy that resembles an even cuter bee."
+	icon_state = "bee"
+
+/obj/item/toy/plush/moth
+	name = "moth plush doll"
+	desc = "A plush doll of a bug."
+	icon_state = "moth"
+
+/obj/item/toy/plush/rock
+	name = "rock plush doll"
+	desc = "It says it is a plush on the tag, at least."
+	icon_state = "rock"
+
+/obj/item/toy/plush/runner
+	name = "\improper XX-121 therapy doll"
+	desc = "Don't be sad! Be glad (that you're alive)!"
+	icon_state = "runner"
+	/// If the runner is wearing a beret
+	var/beret = FALSE
+
+/obj/item/toy/plush/runner/Initialize(mapload, ...)
+	. = ..()
+	if(beret)
+		update_icon()
+
+/obj/item/toy/plush/runner/attackby(obj/item/attacking_object, mob/user)
+	. = ..()
+	if(beret)
+		return ..()
+	if(!istypestrict(attacking_object, /obj/item/clothing/head/beret/marine/mp))
+		return ..()
+	var/beret_attack = attacking_object
+	to_chat(user, SPAN_NOTICE("You put [beret_attack] on [src]."))
+	qdel(beret_attack)
+	beret = TRUE
+	update_icon()
+
+/obj/item/toy/plush/runner/update_icon()
+	. = ..()
+	if(beret)
+		icon_state = "runner_beret"
+		return
+	icon_state = "runner"
+
+/obj/item/toy/plush/therapy
+	name = "therapy doll"
+	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles."
+	icon_state = "therapy"
+
+/obj/item/toy/plush/therapy/red
+	name = "red therapy doll"
+	color = "#FC5274"
+
+/obj/item/toy/plush/therapy/blue
+	name = "blue therapy doll"
+	color = "#9EBAE0"
+
+/obj/item/toy/plush/therapy/green
+	name = "green therapy doll"
+	color = "#A3C940"
+
+/obj/item/toy/plush/therapy/orange
+	name = "orange therapy doll"
+	color = "#FD8535"
+
+/obj/item/toy/plush/therapy/purple
+	name = "purple therapy doll"
+	color = "#A26AC7"
+
+/obj/item/toy/plush/therapy/yellow
+	name = "yellow therapy doll"
+	color = "#FFE492"
+
+/obj/item/toy/plush/therapy/random_color
+	///Hexadecimal 0-F (0-15)
+	var/static/list/hex = list("0", "1", "2", "3" , "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
+
+/obj/item/toy/plush/therapy/random_color/New(loc, ...)
+	. = ..()
+	var/color_hex = "#[pick(hex)][pick(hex)][pick(hex)][pick(hex)][pick(hex)][pick(hex)]" //This is dumb and I hope theres a better way I'm missing
+	color = color_hex
+	desc = "A custom therapy doll, in a unique color. This one is labeled \"[color_hex]\"."
+
+/obj/item/toy/plush/random_plushie //Not using an effect so it can fit into storage from loadout
+	name = "random plushie spawner"
+	desc = "You should not be seeing this"
+	/// Standard plushies for the spawner to pick from
+	var/list/plush_list = list(
+		/obj/item/toy/plush/farwa,
+		/obj/item/toy/plush/barricade,
+		/obj/item/toy/plush/bee,
+		/obj/item/toy/plush/shark,
+		/obj/item/toy/plush/moth,
+		/obj/item/toy/plush/rock,
+	)
+	///Therapy plushies left separately to not flood the entire list
+	var/list/therapy_plush_list = list(
+		/obj/item/toy/plush/therapy,
+		/obj/item/toy/plush/therapy/red,
+		/obj/item/toy/plush/therapy/blue,
+		/obj/item/toy/plush/therapy/green,
+		/obj/item/toy/plush/therapy/orange,
+		/obj/item/toy/plush/therapy/purple,
+		/obj/item/toy/plush/therapy/yellow,
+		/obj/item/toy/plush/therapy/random_color,
+	)
+
+/obj/item/toy/plush/random_plushie/Initialize(mapload, ...)
+	. = ..()
+	if(mapload) //Can't always create in initialization due to potential loadout issues if so
+		create_plushie()
+
+/obj/item/toy/plush/random_plushie/post_loadout_spawn(mob/living/carbon/human/user)
+	. = ..()
+	create_plushie()
+
+/obj/item/toy/plush/random_plushie/proc/create_plushie()
+	var/plush_list_variety = pick(60; plush_list, 40; therapy_plush_list)
+	var/random_plushie = pick(plush_list_variety)
+	new random_plushie(loc)
+	qdel(src)

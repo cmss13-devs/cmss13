@@ -550,7 +550,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "green"

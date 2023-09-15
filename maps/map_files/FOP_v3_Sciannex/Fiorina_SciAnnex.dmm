@@ -30165,7 +30165,7 @@
 "wul" = (
 /obj/item/bedsheet/green,
 /obj/structure/bed,
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "wuA" = (

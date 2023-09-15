@@ -30591,7 +30591,7 @@
 /area/bigredv2/outside/general_store)
 "jjt" = (
 /obj/structure/bed,
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "jkn" = (

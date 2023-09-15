@@ -37938,7 +37938,7 @@
 /area/corsat/gamma/residential/showers)
 "dGy" = (
 /obj/structure/surface/rack,
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "red"

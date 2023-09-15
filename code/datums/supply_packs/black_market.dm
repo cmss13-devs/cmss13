@@ -608,7 +608,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/box/packet/hefa/toy,
 		/obj/item/toy/inflatable_duck,
 		/obj/item/toy/beach_ball,
-		/obj/item/toy/farwadoll,
+		/obj/item/toy/plush/farwa,
 		/obj/item/toy/waterflower,
 		/obj/item/toy/spinningtoy,
 		/obj/item/storage/box/snappops,

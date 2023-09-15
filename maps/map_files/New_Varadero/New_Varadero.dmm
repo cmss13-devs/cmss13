@@ -7270,7 +7270,7 @@
 "eKW" = (
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "snow_mat"
@@ -8612,7 +8612,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "fDB" = (
@@ -32357,7 +32357,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /obj/structure/machinery/light,
 /turf/open/floor/shiva{
 	icon_state = "floor3"

@@ -277,6 +277,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/spent_buckshot = "spent_buckshot",
 	/obj/item/prop/helmetgarb/spent_slug = "spent_slug",
 	/obj/item/prop/helmetgarb/spent_flech = "spent_flech",
+	/obj/item/prop/helmetgarb/cartridge = "cartridge",
 	/obj/item/prop/helmetgarb/prescription_bottle = "prescription_bottle",
 	/obj/item/prop/helmetgarb/raincover = "raincover",
 	/obj/item/prop/helmetgarb/rabbitsfoot = "rabbitsfoot",
@@ -296,6 +297,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/flair_uscm = "flair_uscm",
 	/obj/item/prop/helmetgarb/bullet_pipe = "bullet_pipe",
 	/obj/item/prop/helmetgarb/spacejam_tickets = "tickets_to_space_jam",
+	/obj/item/prop/helmetgarb/family_photo = "family_photo",
+	/obj/item/prop/helmetgarb/compass = "compass",
+	/obj/item/prop/helmetgarb/bug_spray = "bug_spray",
 
 	// MISC
 	/obj/item/tool/pen = "helmet_pen_black",

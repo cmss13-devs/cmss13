@@ -286,15 +286,9 @@
 	var/current_colour_index = 1
 	var/owner = "hard to read text"
 
-/obj/item/tool/pen/fountain/Initialize(mapload, mob/living/carbon/human/user)
+/obj/item/tool/pen/fountain/post_loadout_spawn(mob/living/carbon/human/user)
 	. = ..()
-	var/turf/current_turf = get_turf(src)
-	var/mob/living/carbon/human/new_owner = locate() in current_turf
-	if(new_owner)
-		owner = new_owner.real_name
-	var/obj/structure/machinery/cryopod/new_owners_pod = locate() in current_turf
-	if(new_owners_pod)
-		owner = new_owners_pod.occupant?.real_name
+	owner = user
 
 /obj/item/tool/pen/fountain/get_examine_text(mob/user)
 	. = ..()

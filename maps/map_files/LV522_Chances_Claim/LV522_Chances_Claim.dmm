@@ -445,7 +445,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "amy" = (
-/obj/item/toy/farwadoll{
+/obj/item/toy/plush/farwa{
 	desc = "A Farwa plush doll. Once soft and comforting now just really wet.";
 	name = "Soaked farwa plush doll"
 	},
@@ -43666,7 +43666,7 @@
 	pixel_x = -8;
 	pixel_y = 7
 	},
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -44945,11 +44945,11 @@
 /area/lv522/outdoors/colony_streets/east_central_street)
 "rIa" = (
 /obj/structure/surface/table/almayer,
-/obj/item/toy/farwadoll{
+/obj/item/toy/plush/farwa{
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"

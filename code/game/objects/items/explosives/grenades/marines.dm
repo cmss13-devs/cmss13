@@ -483,7 +483,7 @@
 	var/nerve_gas_radius = 2
 
 /obj/item/explosive/grenade/nerve_gas/New()
-	..()
+	. = ..()
 	nerve_gas = new /datum/effect_system/smoke_spread/cn20
 	nerve_gas.attach(src)
 
@@ -501,6 +501,7 @@
 	name = "\improper CN20-X canister grenade"
 
 /obj/item/explosive/grenade/nerve_gas/xeno/New()
+	. = ..()
 	nerve_gas = new /datum/effect_system/smoke_spread/cn20/xeno
 	nerve_gas.attach(src)
 

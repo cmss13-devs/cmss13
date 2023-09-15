@@ -95,7 +95,7 @@
 				possible_survivors -= new_survivor //either we drafted a survivor, or we're skipping over someone, either or - remove them
 
 /datum/game_mode/infection/check_win()
-	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
+	var/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/zed = living_player_list[2]
 

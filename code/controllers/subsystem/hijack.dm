@@ -121,7 +121,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/announce_status_on_crash()
 	var/message = ""
 
-	for(var/area/cycled_area in progress_areas)
+	for(var/area/cycled_area as anything in progress_areas)
 		message += "[cycled_area] - [cycled_area.power_equip ? "Online" : "Offline"]\n"
 
 	message += "\nMaintain fueling functionality for optimal lifeboat usage."
@@ -136,11 +136,11 @@ SUBSYSTEM_DEF(hijack)
 
 ///Called to announce to xenos the state of evacuation progression
 /datum/controller/subsystem/hijack/proc/announce_to_xenos()
-	var/xeno_percent_announce = xeno_announce_checkpoint / initial(xeno_announce_checkpoint)
+	var/xeno_announce = xeno_announce_checkpoint / initial(xeno_announce_checkpoint)
 
 	var/warning_areas = ""
 
-	for(var/area/cycled_area in progress_areas)
+	for(var/area/cycled_area as anything in progress_areas)
 		if(cycled_area.power_equip)
 			warning_areas += "[cycled_area], "
 
@@ -153,7 +153,7 @@ SUBSYSTEM_DEF(hijack)
 		if(!length(hive.totalXenos))
 			continue
 
-		switch(xeno_percent_announce)
+		switch(xeno_announce)
 			if(1)
 				xeno_announcement(SPAN_XENOANNOUNCE("The talls are a quarter of the way towards their goals. Disable the following areas: [warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 			if(2)

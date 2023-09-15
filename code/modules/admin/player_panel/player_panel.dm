@@ -394,8 +394,10 @@
 		if(check_rights(R_MOD, 0))
 			dat += "<b>Evacuation:</b> "
 			switch(SShijack.evac_status)
-				if(EVACUATION_STATUS_NOT_INITIATED) dat += "STANDING BY"
-				if(EVACUATION_STATUS_INITIATED) dat += "IN PROGRESS"
+				if(EVACUATION_STATUS_NOT_INITIATED)
+					dat += "STANDING BY"
+				if(EVACUATION_STATUS_INITIATED)
+					dat += "IN PROGRESS"
 			dat += "<br>"
 
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"

@@ -29173,7 +29173,6 @@
 /area/varadero/interior/cargo)
 "sCK" = (
 /obj/structure/closet/secure_closet/scientist,
-/obj/item/clothing/mask/gas/clown_hat,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purple"

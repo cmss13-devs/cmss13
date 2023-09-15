@@ -38,8 +38,8 @@
 "bf" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/tool/stamp/internalaffairs{
-	pixel_y = 9;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 9
 	},
 /obj/item/paper_bin/wy,
 /obj/item/tool/pen,
@@ -201,8 +201,8 @@
 	dir = 1
 	},
 /turf/open/floor/corsat{
-	icon_state = "yellowcorner";
-	dir = 4
+	dir = 4;
+	icon_state = "yellowcorner"
 	},
 /area/adminlevel/ert_station/weyland_station)
 "cZ" = (
@@ -403,9 +403,9 @@
 /area/adminlevel/ert_station/weyland_station)
 "fe" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
 	id = "WY_meeting";
-	name = "\improper Meeting Room Shutters";
-	dir = 4
+	name = "\improper Meeting Room Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -440,14 +440,14 @@
 /area/adminlevel/ert_station/weyland_station)
 "fD" = (
 /obj/structure/closet/emcloset{
-	pixel_y = 15;
+	density = 0;
 	pixel_x = 8;
-	density = 0
+	pixel_y = 15
 	},
 /obj/structure/closet/firecloset/full{
-	pixel_y = 15;
+	density = 0;
 	pixel_x = -8;
-	density = 0
+	pixel_y = 15
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -633,14 +633,14 @@
 /area/adminlevel/ert_station/weyland_station)
 "hZ" = (
 /obj/structure/closet/secure_closet/brig{
-	pixel_y = 16;
+	density = 0;
 	pixel_x = 7;
-	density = 0
+	pixel_y = 16
 	},
 /obj/structure/closet/secure_closet/brig{
-	pixel_y = 16;
+	density = 0;
 	pixel_x = -7;
-	density = 0
+	pixel_y = 16
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -684,8 +684,8 @@
 	pixel_y = 10
 	},
 /obj/item/device/flashlight/lamp/green{
-	pixel_y = 20;
-	pixel_x = 16
+	pixel_x = 16;
+	pixel_y = 20
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/weyland_station)
@@ -862,9 +862,9 @@
 "kO" = (
 /obj/structure/window/framed/corsat/research,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
 	id = "WY_center_medbay_or";
-	name = "\improper Central Medbay Operation Room Shutters";
-	dir = 4
+	name = "\improper Central Medbay Operation Room Shutters"
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/weyland_station)
@@ -1095,8 +1095,8 @@
 /area/adminlevel/ert_station/weyland_station)
 "nb" = (
 /obj/structure/filingcabinet/filingcabinet{
-	pixel_x = 8;
-	density = 0
+	density = 0;
+	pixel_x = 8
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -1183,14 +1183,14 @@
 	layer = 2.5
 	},
 /obj/structure/closet/emcloset{
-	pixel_y = 15;
+	density = 0;
 	pixel_x = 8;
-	density = 0
+	pixel_y = 15
 	},
 /obj/structure/closet/firecloset/full{
-	pixel_y = 15;
+	density = 0;
 	pixel_x = -8;
-	density = 0
+	pixel_y = 15
 	},
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -1576,9 +1576,9 @@
 "sX" = (
 /obj/structure/window/framed/corsat/research,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
 	id = "WY_center_medbay";
-	name = "\improper Central Medbay Shutters";
-	dir = 4
+	name = "\improper Central Medbay Shutters"
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/weyland_station)
@@ -1682,8 +1682,8 @@
 	pixel_y = 32
 	},
 /obj/structure/sink{
-	pixel_y = 21;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 21
 	},
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat{
@@ -1739,8 +1739,8 @@
 /area/adminlevel/ert_station/weyland_station)
 "vb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/colony{
-	name = "Barracks";
-	dir = 1
+	dir = 1;
+	name = "Barracks"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1862,8 +1862,8 @@
 "xk" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/fancy/cigarettes/wypacket{
-	pixel_y = 4;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 4
 	},
 /obj/item/tool/lighter/zippo/gold,
 /turf/open/floor/wood/ship,
@@ -1876,9 +1876,9 @@
 /area/adminlevel/ert_station/weyland_station)
 "xD" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
 	id = "WY_meeting";
-	name = "\improper Meeting Room Shutters";
-	dir = 4
+	name = "\improper Meeting Room Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "sigma"
@@ -2365,8 +2365,8 @@
 "Dk" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/firstaid/rad{
-	pixel_y = 6;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 6
 	},
 /obj/item/storage/firstaid/toxin,
 /turf/open/floor/corsat{
@@ -2410,8 +2410,8 @@
 	pixel_y = 13
 	},
 /obj/item/device/flashlight/lamp/green{
-	pixel_y = 21;
-	pixel_x = 16
+	pixel_x = 16;
+	pixel_y = 21
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/weyland_station)
@@ -2484,8 +2484,8 @@
 /area/adminlevel/ert_station/weyland_station)
 "EC" = (
 /turf/open/floor/corsat{
-	icon_state = "yellowcorner";
-	dir = 4
+	dir = 4;
+	icon_state = "yellowcorner"
 	},
 /area/adminlevel/ert_station/weyland_station)
 "ED" = (
@@ -2696,8 +2696,8 @@
 	pixel_y = 32
 	},
 /obj/structure/sink{
-	pixel_y = 23;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 23
 	},
 /turf/open/floor/corsat{
 	icon_state = "damaged1"
@@ -2795,10 +2795,10 @@
 "Js" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/transmitter/rotary{
+	callable = 0;
 	name = "Weyland-Yutani Station CiC";
 	phone_category = "W-Y";
-	phone_id = "W-Y Station CiC";
-	callable = 0
+	phone_id = "W-Y Station CiC"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -2911,9 +2911,9 @@
 	name = "\improper Meeting Room"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
 	id = "WY_meeting";
-	name = "\improper Meeting Room Shutters";
-	dir = 4
+	name = "\improper Meeting Room Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "sigma"
@@ -3497,9 +3497,9 @@
 "RL" = (
 /obj/structure/window/framed/corsat,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
 	id = "WY_meeting";
-	name = "\improper Meeting Room Shutters";
-	dir = 4
+	name = "\improper Meeting Room Shutters"
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/weyland_station)
@@ -3550,8 +3550,8 @@
 "Sr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
-	icon_state = "brown";
-	dir = 1
+	dir = 1;
+	icon_state = "brown"
 	},
 /area/adminlevel/ert_station/weyland_station)
 "Ss" = (
@@ -3588,10 +3588,10 @@
 "SE" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary{
+	callable = 0;
 	name = "Weyland-Yutani Station Meeting Room";
 	phone_category = "W-Y";
-	phone_id = "W-Y Station Meeting Room";
-	callable = 0
+	phone_id = "W-Y Station Meeting Room"
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/weyland_station)
@@ -3872,14 +3872,14 @@
 	icon_state = "SE-out"
 	},
 /obj/structure/closet/emcloset{
-	pixel_y = 15;
+	density = 0;
 	pixel_x = 8;
-	density = 0
+	pixel_y = 15
 	},
 /obj/structure/closet/firecloset/full{
-	pixel_y = 15;
+	density = 0;
 	pixel_x = -8;
-	density = 0
+	pixel_y = 15
 	},
 /obj/structure/machinery/light/double{
 	dir = 8;
@@ -3992,8 +3992,8 @@
 /area/adminlevel/ert_station/weyland_station)
 "XQ" = (
 /turf/open/floor/corsat{
-	icon_state = "brown";
-	dir = 1
+	dir = 1;
+	icon_state = "brown"
 	},
 /area/adminlevel/ert_station/weyland_station)
 "XR" = (
@@ -4047,8 +4047,8 @@
 /area/adminlevel/ert_station/weyland_station)
 "YB" = (
 /obj/structure/machinery/photocopier{
-	pixel_y = 16;
-	density = 0
+	density = 0;
+	pixel_y = 16
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/weyland_station)
@@ -4074,8 +4074,8 @@
 	pixel_y = 32
 	},
 /obj/structure/sink{
-	pixel_y = 21;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 21
 	},
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -4120,9 +4120,9 @@
 	name = "\improper Meeting Room"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
 	id = "WY_meeting";
-	name = "\improper Meeting Room Shutters";
-	dir = 4
+	name = "\improper Meeting Room Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4

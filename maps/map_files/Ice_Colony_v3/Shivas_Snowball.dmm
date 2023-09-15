@@ -895,7 +895,6 @@
 /area/shiva/interior/garage)
 "adp" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/banhammer,
 /turf/open/floor/shiva{
 	dir = 1
 	},

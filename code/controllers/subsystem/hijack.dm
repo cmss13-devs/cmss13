@@ -43,8 +43,8 @@ SUBSYSTEM_DEF(hijack)
 	///Holds the progress change from last run
 	var/last_run_progress_change = 0
 
-	///Holds the next % point it should be announced to xenos, increments on itself
-	var/xeno_announce_checkpoint = 25
+	///Holds the next % point progress should be announced, increments on itself
+	var/announce_checkpoint = 25
 
 	///What stage of evacuation we are currently on
 	var/evac_status = EVACUATION_STATUS_NOT_INITIATED
@@ -110,9 +110,9 @@ SUBSYSTEM_DEF(hijack)
 	else
 		estimated_time_left = INFINITY
 
-	if(current_progress >= xeno_announce_checkpoint)
-		announce_to_xenos()
-		xeno_announce_checkpoint += initial(xeno_announce_checkpoint)
+	if(current_progress >= announce_checkpoint)
+		announce_progress()
+		announce_checkpoint += initial(announce_checkpoint)
 
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1
@@ -123,6 +123,7 @@ SUBSYSTEM_DEF(hijack)
 
 	for(var/area/cycled_area as anything in progress_areas)
 		message += "[cycled_area] - [cycled_area.power_equip ? "Online" : "Offline"]\n"
+		progress_areas[cycled_area] = cycled_area.power_equip
 
 	message += "\nDue to low orbit, extra fuel is required for non-surface evacuations.\nMaintain fueling functionality for optimal evacuation conditions."
 
@@ -135,17 +136,23 @@ SUBSYSTEM_DEF(hijack)
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
 ///Called to announce to xenos the state of evacuation progression
-/datum/controller/subsystem/hijack/proc/announce_to_xenos()
-	var/xeno_announce = xeno_announce_checkpoint / initial(xeno_announce_checkpoint)
+/datum/controller/subsystem/hijack/proc/announce_progress()
+	var/announce = announce_checkpoint / initial(announce_checkpoint)
 
-	var/warning_areas = ""
+	var/marine_warning_areas = ""
+	var/xeno_warning_areas = ""
 
 	for(var/area/cycled_area as anything in progress_areas)
 		if(cycled_area.power_equip)
-			warning_areas += "[cycled_area], "
+			xeno_warning_areas += "[cycled_area], "
+			continue
+		marine_warning_areas += "[cycled_area], "
 
-	if(warning_areas)
-		warning_areas = copytext(warning_areas, 1, -2)
+	if(xeno_warning_areas)
+		xeno_warning_areas = copytext(xeno_warning_areas, 1, -2)
+
+	if(marine_warning_areas)
+		marine_warning_areas = copytext(marine_warning_areas, 1, -2)
 
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
@@ -153,15 +160,25 @@ SUBSYSTEM_DEF(hijack)
 		if(!length(hive.totalXenos))
 			continue
 
-		switch(xeno_announce)
+		switch(announce)
 			if(1)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls are a quarter of the way towards their goals. Disable the following areas: [warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("The talls are a quarter of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 			if(2)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls are half way towards their goals. Disable the following areas: [warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("The talls are half way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 			if(3)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls are three quarters of the way towards their goals. Disable the following areas: [warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("The talls are three quarters of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 			if(4)
 				xeno_announcement(SPAN_XENOANNOUNCE("The talls have completed their goals!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+
+	switch(announce)
+		if(1)
+			marine_announcement("Emergency fuel replenishment at 25 percent.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+		if(2)
+			marine_announcement("Emergency fuel replenishment at 50 percent.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+		if(3)
+			marine_announcement("Emergency fuel replenishment at 75 percent.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+		if(4)
+			marine_announcement("Emergency fuel replenishment at 100 percent. Safe utilization of lifeboats now possible.", HIJACK_ANNOUNCE)
 
 /// Passes the ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_status_panel_eta()

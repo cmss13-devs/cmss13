@@ -180,7 +180,7 @@
 
 	return TRUE
 
-/mob/living/simple_animal/hostile/alien/spawnable/apply_damage()
+/mob/living/simple_animal/hostile/alien/spawnable/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force)
 	. = ..()
 	if(stance == HOSTILE_STANCE_IDLE)
 		target_mob = FindTarget()

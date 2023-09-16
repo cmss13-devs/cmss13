@@ -35,6 +35,9 @@
 
 	var/moving_diagonally
 
+	/// Whether this atom should have its dir automatically changed when it moves. Setting this to FALSE allows for things such as directional windows to retain dir on moving without snowflake code all of the place.
+	var/set_dir_on_move = TRUE
+
 //===========================================================================
 /atom/movable/Destroy(force)
 	for(var/atom/movable/I in contents)

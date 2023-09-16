@@ -167,6 +167,8 @@
 			mob.next_move_slowdown = 0
 		if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
 			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
+		if(direct == NORTHEAST || direct == NORTHWEST || direct == SOUTHEAST || direct == SOUTHWEST)
+			move_delay *= sqrt(2) //Diagonal movement takes longer
 
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move

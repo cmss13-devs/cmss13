@@ -206,7 +206,7 @@
 			return FALSE
 
 	// if we are thrown, moved, dragged, or in any other way abused by code - check our diagonals
-	if(!mover.move_intentionally)
+	if(!mover.move_intentionally || fdir == NORTHEAST || fdir == NORTHWEST || fdir == SOUTHEAST || fdir == SOUTHWEST)
 		// Check objects in adjacent turf EAST/WEST
 		if(fd1 && fd1 != fdir)
 			T = get_step(mover, fd1)

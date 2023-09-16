@@ -5,7 +5,7 @@
 	var/movement_dir = NONE
 	for(var/_key in user.keys_held)
 		if(user.movement_keys[_key])
-			movement_dir = user.movement_keys[_key]
+			movement_dir += user.movement_keys[_key]
 
 	if(!movement_dir)
 		return

@@ -264,6 +264,7 @@
 	max_rounds = 300
 	default_ammo = /datum/ammo/flamethrower
 	gun_type = /obj/item/walker_gun/flamer
+	flags_magazine = AMMUNITION_HIDE_AMMO
 
 	var/flamer_chem = "utnapthal"
 

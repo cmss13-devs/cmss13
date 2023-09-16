@@ -204,7 +204,7 @@
 		else if(get_dist(src, pulling) > 1 || ((pull_dir - 1) & pull_dir)) //puller and pullee more than one tile away or in diagonal position
 			var/pulling_dir = get_dir(pulling, T)
 			pulling.Move(T, pulling_dir) //the pullee tries to reach our previous position
-			if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up
+			if(pulling && get_dist(src, pulling) > 1 && !moving_diagonally) //the pullee couldn't keep up
 				stop_pulling()
 			else
 				var/mob/living/pmob = pulling
@@ -315,6 +315,9 @@
 	if(.)
 		reset_view(destination)
 
+#define SWAPPING 1
+#define PHASING 2
+
 /mob/living/Collide(atom/movable/AM)
 	if(buckled || now_pushing)
 		return
@@ -371,13 +374,15 @@
 			return
 
 	if(!L.buckled && !L.anchored)
-		var/mob_swap
+		var/mob_swap = NONE
 		//the puller can always swap with its victim if on grab intent
 		if(L.pulledby == src && a_intent == INTENT_GRAB)
-			mob_swap = 1
+			mob_swap = SWAPPING
 		//restrained people act if they were on 'help' intent to prevent a person being pulled from being separated from their puller
 		else if((L.is_mob_restrained() || L.a_intent == INTENT_HELP) && (is_mob_restrained() || a_intent == INTENT_HELP))
-			mob_swap = 1
+			mob_swap = SWAPPING
+		if(moving_diagonally && (get_dir(src, L) in GLOB.cardinals) && get_step(src, dir).Enter(src, loc))
+			mob_swap = PHASING
 		if(mob_swap)
 			//switch our position with L
 			if(loc && !loc.Adjacent(L.loc))
@@ -389,8 +394,11 @@
 			L.add_temp_pass_flags(PASS_MOB_THRU)
 			add_temp_pass_flags(PASS_MOB_THRU)
 
-			L.Move(oldloc)
 			Move(oldLloc)
+			if(moving_diagonally)
+				moving_diagonally = FALSE
+			if(mob_swap == SWAPPING)
+				L.Move(oldloc)
 
 			remove_temp_pass_flags(PASS_MOB_THRU)
 			L.remove_temp_pass_flags(PASS_MOB_THRU)
@@ -400,10 +408,13 @@
 
 	now_pushing = FALSE
 
-	if(!(L.status_flags & CANPUSH))
+	if(!(L.status_flags & CANPUSH) || moving_diagonally)
 		return
 
 	..()
+
+#undef SWAPPING
+#undef PHASING
 
 /mob/living/launch_towards(datum/launch_metadata/LM)
 	if(src)

@@ -18272,13 +18272,6 @@
 /obj/item/tool/wrench,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/colony/central)
-"nhh" = (
-/obj/item/clothing/gloves/marine/veteran/insulated,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/shiva/interior/colony/deck)
 "nhl" = (
 /turf/open/floor/shiva{
 	dir = 5;
@@ -58881,7 +58874,7 @@ jVI
 kQF
 kzE
 acT
-nhh
+qOD
 kTZ
 iLS
 mms

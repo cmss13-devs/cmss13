@@ -15394,9 +15394,6 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "iKp" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas/pmc/leader,
-/obj/item/clothing/under/marine/veteran/pmc,
-/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},

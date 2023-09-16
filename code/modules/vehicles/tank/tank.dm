@@ -21,6 +21,8 @@
 	revivable_dead_slots = 2
 	xenos_slots = 4
 
+	wall_ram_damage = 360
+
 	entrances = list(
 		"back" = list(0, 2)
 	)

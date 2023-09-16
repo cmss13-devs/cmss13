@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(cm_vending_walker, list(
 	list("M56 Magazine", 1, /obj/item/ammo_magazine/walker/smartgun, null, VENDOR_ITEM_REGULAR),
 	list("M30 Magazine", 2, /obj/item/ammo_magazine/walker/hmg, null, VENDOR_ITEM_REGULAR),
 	list("F40 UT-Napthal Canister", 2, /obj/item/ammo_magazine/walker/flamer, null, VENDOR_ITEM_REGULAR),
-	list("F40 UT-Napthal EX-type Canister", 3, /obj/item/ammo_magazine/walker/flamer/ex, null, VENDOR_ITEM_REGULAR),
+	// list("F40 UT-Napthal EX-type Canister", 3, /obj/item/ammo_magazine/walker/flamer/ex, null, VENDOR_ITEM_REGULAR),
 	list("F40 UT-Napthal B-type Canister", 3, /obj/item/ammo_magazine/walker/flamer/btype, null, VENDOR_ITEM_REGULAR),
 	))
 

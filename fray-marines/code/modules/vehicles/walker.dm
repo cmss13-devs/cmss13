@@ -24,8 +24,8 @@
 
 	pixel_x = -18
 
-	health = 1500
-	var/maxHealth = 1500
+	health = 1000
+	var/maxHealth = 1000
 	var/repair = FALSE
 
 	var/mob/pilot = null

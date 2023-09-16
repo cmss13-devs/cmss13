@@ -127,7 +127,7 @@
 	equip_state = "redy_smartgun"
 	magazine_type = /obj/item/ammo_magazine/walker/smartgun
 	burst = 2
-	fire_delay = 6
+	fire_delay = 13
 
 	projectile_traits = list("iff")
 
@@ -150,7 +150,7 @@
 	magazine_type = /obj/item/ammo_magazine/walker/flamer
 	var/fuel_pressure = 1 //Pressure setting of the attached fueltank, controls how much fuel is used per tile
 	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
-	fire_delay = 3 SECONDS
+	fire_delay = 4 SECONDS
 
 /obj/item/walker_gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
@@ -295,22 +295,22 @@
 
 	return 100 * (reagents.total_volume / max_rounds)
 
-/obj/item/ammo_magazine/walker/flamer/ex
-	name = "F40 UT-Napthal EX-type Canister"
-	desc = "Canister for mounted flamethower"
-	icon_state = "mech_flamer_ex_ammo"
-	max_rounds = 300
-	default_ammo = /datum/ammo/flamethrower
-	gun_type = /obj/item/walker_gun/flamer
+// /obj/item/ammo_magazine/walker/flamer/ex
+// 	name = "F40 UT-Napthal EX-type Canister"
+// 	desc = "Canister for mounted flamethower"
+// 	icon_state = "mech_flamer_ex_ammo"
+// 	max_rounds = 300
+// 	default_ammo = /datum/ammo/flamethrower
+// 	gun_type = /obj/item/walker_gun/flamer
 
-	flamer_chem = "napalmex"
+// 	flamer_chem = "napalmex"
 
-	max_intensity = 40
-	max_range = 5
-	max_duration = 30
+// 	max_intensity = 40
+// 	max_range = 5
+// 	max_duration = 30
 
-	fuel_pressure = 1 //How much fuel is used per tile fired
-	max_pressure = 10
+// 	fuel_pressure = 1 //How much fuel is used per tile fired
+// 	max_pressure = 10
 
 /obj/item/ammo_magazine/walker/flamer/btype
 	name = "F40 UT-Napthal B-type Canister"

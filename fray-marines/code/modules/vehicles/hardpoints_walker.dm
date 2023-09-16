@@ -21,6 +21,11 @@
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
 	var/list/projectile_traits = list()
 
+/obj/item/walker_gun/Initialize()
+	. = ..()
+
+	ammo = new magazine_type()
+
 /obj/item/walker_gun/proc/get_icon_image(hardpoint)
 	if(!owner)
 		return
@@ -248,7 +253,7 @@
 	name = "M30 Machine Gun Magazine"
 	desc = "A armament M30 magazine"
 	icon_state = "mech_minigun_ammo"
-	max_rounds = 300
+	max_rounds = 400
 	default_ammo = /datum/ammo/bullet/walker/machinegun
 	gun_type = /obj/item/walker_gun/hmg
 
@@ -256,7 +261,7 @@
 	name = "F40 UT-Napthal Canister"
 	desc = "Canister for mounted flamethower"
 	icon_state = "mech_flamer_s_ammo"
-	max_rounds = 500
+	max_rounds = 300
 	default_ammo = /datum/ammo/flamethrower
 	gun_type = /obj/item/walker_gun/flamer
 
@@ -294,7 +299,7 @@
 	name = "F40 UT-Napthal EX-type Canister"
 	desc = "Canister for mounted flamethower"
 	icon_state = "mech_flamer_ex_ammo"
-	max_rounds = 500
+	max_rounds = 300
 	default_ammo = /datum/ammo/flamethrower
 	gun_type = /obj/item/walker_gun/flamer
 
@@ -311,7 +316,7 @@
 	name = "F40 UT-Napthal B-type Canister"
 	desc = "Canister for mounted flamethower"
 	icon_state = "mech_flamer_b_ammo"
-	max_rounds = 500
+	max_rounds = 300
 	default_ammo = /datum/ammo/flamethrower
 	gun_type = /obj/item/walker_gun/flamer
 

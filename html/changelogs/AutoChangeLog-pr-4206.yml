@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix/Rework logic regarding xeno guaranteed slots"
+  - bugfix: "Fix evolution in thunder dome affecting hive slots"

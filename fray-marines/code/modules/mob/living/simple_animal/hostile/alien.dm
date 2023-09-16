@@ -33,6 +33,10 @@
 
 	var/special_attack_probability = XENO_AI_SPECIAL_ATTACK_PROBABILITY
 
+/mob/living/simple_animal/hostile/alien/spawnable/New()
+	. = ..()
+	target_mob = FindTarget()
+
 /mob/living/simple_animal/hostile/alien/spawnable/generate_name()
 	change_real_name(src, "\improper[caste_name] (WT-[rand(1, 999)])")
 
@@ -125,6 +129,7 @@
 		return 1
 
 /mob/living/simple_animal/hostile/alien/spawnable/AttackingTarget()
+	face_atom(target_mob)
 	if(!Adjacent(target_mob))
 		return
 	if(isliving(target_mob))
@@ -134,7 +139,6 @@
 		L.attack_animal(src)
 		src.animation_attack_on(L)
 		src.flick_attack_overlay(L, "slash")
-		playsound(src.loc, "alien_claw_flesh", 25, 1)
 		return L
 
 /mob/living/simple_animal/hostile/alien/spawnable/proc/evaluate_special_attack(mob/living/L)
@@ -175,6 +179,16 @@
 	SEND_SIGNAL(P, COMSIG_BULLET_ACT_XENO, src, damage, damage_result)
 
 	return TRUE
+
+/mob/living/simple_animal/hostile/alien/spawnable/apply_damage()
+	. = ..()
+	if(stance == HOSTILE_STANCE_IDLE)
+		target_mob = FindTarget()
+
+/mob/living/simple_animal/hostile/alien/spawnable/updatehealth()
+	. = ..()
+	if(health < 1)
+		death()
 
 /mob/living/simple_animal/hostile/alien/spawnable/death(cause, gibbed, deathmessage = "lets out a waning guttural screech, green blood bubbling from its maw. The caustic acid starts melting the body away...")
 	. = ..()

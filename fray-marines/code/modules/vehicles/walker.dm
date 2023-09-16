@@ -15,6 +15,7 @@
 	can_buckle = FALSE
 	move_delay = 6
 	req_access = list(ACCESS_MARINE_WALKER)
+	unacidable = TRUE
 
 	var/lights = FALSE
 	var/lights_power = 8
@@ -46,10 +47,10 @@
 	var/obj/item/walker_armor/armor_module = null
 	var/selected = GUN_LEFT
 
+	flags_atom = FPRINT|USES_HEARING
+
 /obj/vehicle/walker/Initialize()
 	. = ..()
-
-	unacidable = 0
 
 /obj/vehicle/walker/prebuilt/Initialize()
 	. = ..()
@@ -240,6 +241,7 @@
 		seats[VEHICLE_DRIVER].client.mouse_pointer_icon = initial(seats[VEHICLE_DRIVER].client.mouse_pointer_icon)
 	seats[VEHICLE_DRIVER].unset_interaction()
 	seats[VEHICLE_DRIVER].loc = src.loc
+	seats[VEHICLE_DRIVER].reset_view(null)
 	remove_verb(seats[VEHICLE_DRIVER].client, list(
 				/obj/vehicle/walker/proc/eject,
 				/obj/vehicle/walker/proc/lights,
@@ -686,7 +688,37 @@
 		seats[VEHICLE_DRIVER] << sound('sound/mecha/critdestrsyndi.ogg',volume=50)
 	healthcheck()
 
+/obj/vehicle/walker/Collided(atom/A)
+	. = ..()
 
+	if(iscrusher(A))
+		var/mob/living/carbon/xenomorph/crusher/C = A
+		if(!C.throwing)
+			return
+
+		if(health > 0)
+			take_damage(250, "abstract")
+			visible_message(SPAN_DANGER("\The [A] ramms \the [src]!"))
+		playsound(loc, 'sound/effects/metal_crash.ogg', 35)
+
+/obj/vehicle/walker/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
+	var/mob/driver = seats[VEHICLE_DRIVER]
+	if (driver == null)
+		return
+	else if (driver != M)
+		driver.hear_say(msg, verb, speaking, "", italics, M)
+	else
+		var/list/mob/listeners = get_mobs_in_view(9,src)
+
+		var/list/mob/langchat_long_listeners = list()
+		listeners += driver
+		for(var/mob/listener in listeners)
+			if(!ishumansynth_strict(listener) && !isobserver(listener))
+				listener.show_message("[src] broadcasts something, but you can't understand it.")
+				continue
+			listener.show_message("<B>[src]</B> broadcasts, [FONT_SIZE_LARGE("\"[msg]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
+			langchat_long_listeners += listener
+		langchat_long_speech(msg, langchat_long_listeners, driver.get_default_language())
 
 /obj/structure/walker_wreckage
 	name = "CW13 wreckage"

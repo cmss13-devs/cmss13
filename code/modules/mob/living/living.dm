@@ -166,7 +166,7 @@
 
 	return
 
-/mob/living/Move(NewLoc, direct)
+/mob/living/Move(NewLoc, direct, glide_size_override)
 	if (buckled && buckled.loc != NewLoc) //not updating position
 		if (!buckled.anchored)
 			return buckled.Move(NewLoc, direct)

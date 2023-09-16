@@ -1,5 +1,7 @@
 /atom/movable
 	layer = OBJ_LAYER
+	appearance_flags = TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
+	glide_size = 8
 	var/last_move_dir = null
 	var/anchored = FALSE
 	var/drag_delay = 3 //delay (in deciseconds) added to mob's move_delay when pulling it.
@@ -235,8 +237,9 @@
  */
 /atom/movable/proc/abstract_move(atom/new_loc)
 	var/atom/old_loc = loc
+	var/direction = get_dir(old_loc, new_loc)
 	loc = new_loc
-	Moved(old_loc)
+	Moved(old_loc, direction, TRUE)
 
 //called when a mob tries to breathe while inside us.
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)
@@ -355,3 +358,19 @@
 	set_light_range(range)
 	set_light_power(power)
 	set_light_color(color)
+
+/atom/movable/proc/set_glide_size(target = 8)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, target)
+	glide_size = target
+
+/mob/set_glide_size(target)
+	. = ..()
+
+	if(pulling)
+		pulling.set_glide_size(target)
+
+/obj/set_glide_size(target)
+	. = ..()
+
+	if(buckled_mob)
+		buckled_mob.set_glide_size(target)

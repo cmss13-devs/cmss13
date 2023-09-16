@@ -154,7 +154,6 @@
 	//Taken from update_icons
 	var/list/overlays_standing[TOTAL_LAYERS]
 	var/hardcore = FALSE //If TRUE, removes the body upon unrevivable death (for WO)
-	appearance_flags = KEEP_TOGETHER | TILE_BOUND
 	throw_range = 4 // Humans can't be thrown that far
 
 	var/datum/action/human_action/activable/selected_ability

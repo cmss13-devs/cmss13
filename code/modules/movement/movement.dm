@@ -55,7 +55,7 @@
 
 	return NO_BLOCKED_MOVEMENT
 
-/atom/movable/Move(NewLoc, direct)
+/atom/movable/Move(NewLoc, direct, glide_size_override)
 	// If Move is not valid, exit
 	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
 		return FALSE
@@ -63,11 +63,16 @@
 	var/atom/oldloc = loc
 	var/old_dir = dir
 
+	if(glide_size_override)
+		set_glide_size(glide_size_override)
+
 	. = ..()
 	if (flags_atom & DIRLOCK)
 		setDir(old_dir)
 	else if(old_dir != direct)
 		setDir(direct)
+	if(glide_size_override)
+		set_glide_size(glide_size_override)
 	l_move_time = world.time
 	if ((oldloc != loc && oldloc && oldloc.z == z))
 		last_move_dir = get_dir(oldloc, loc)

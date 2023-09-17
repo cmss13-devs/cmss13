@@ -2715,7 +2715,7 @@
 "aiF" = (
 /obj/structure/bed/chair/comfy/alpha{
 	dir = 8;
-	pixel_y = 22
+	pixel_y = 0
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -4918,7 +4918,9 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/living/pilotbunks)
 "apu" = (
 /turf/open/floor/almayer{
@@ -7070,7 +7072,9 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
 /area/almayer/living/pilotbunks)
 "ava" = (
 /obj/effect/decal/warning_stripes{
@@ -7554,7 +7558,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/living/pilotbunks)
 "awt" = (
 /turf/open/floor/almayer{
@@ -7657,7 +7663,7 @@
 /obj/structure/surface/table/reinforced/black{
 	layer = 3.1;
 	pixel_y = -4;
-	plane = -5
+	plane = -5.5
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Alamo Remote Control Console";
@@ -7669,7 +7675,7 @@
 /obj/structure/barricade/handrail{
 	dir = 1;
 	pixel_y = 4;
-	plane = -5
+	plane = -5.5
 	},
 /obj/item/device/radio/intercom/alamo{
 	layer = 3.5;
@@ -8272,11 +8278,6 @@
 	plane = -4;
 	pixel_x = -15
 	},
-/obj/structure/surface/table/reinforced/black{
-	layer = 3.1;
-	pixel_y = -4;
-	plane = -5
-	},
 /obj/item/device/radio/intercom/normandy{
 	layer = 3.5;
 	pixel_x = 3;
@@ -8286,7 +8287,12 @@
 /obj/structure/barricade/handrail{
 	dir = 1;
 	pixel_y = 4;
-	plane = -5
+	plane = -5.5
+	},
+/obj/structure/surface/table/reinforced/black{
+	layer = 3.1;
+	pixel_y = -4;
+	plane = -5.5
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -9408,9 +9414,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "aBZ" = (
-/obj/structure/bed/chair/office/dark{
-	plane = -7
-	},
+/obj/structure/bed/chair/office/dark,
 /turf/open/floor/almayer/uscm/directional,
 /area/almayer/command/cic)
 "aCa" = (
@@ -18716,6 +18720,9 @@
 	pixel_y = 26;
 	pixel_x = 13
 	},
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver"
@@ -19601,15 +19608,6 @@
 /obj/structure/largecrate/random/case,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bzR" = (
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
-/area/almayer/command/cic)
 "bzS" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -29965,6 +29963,9 @@
 	pixel_y = -26;
 	pixel_x = 13
 	},
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "silver"
@@ -36419,9 +36420,6 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
 /obj/item/paper_bin/uscm{
 	pixel_x = -6;
 	pixel_y = -3
@@ -37818,8 +37816,7 @@
 	layer = 3.5
 	},
 /obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	dir = 4
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -56106,7 +56103,9 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "bluecorner"
+	},
 /area/almayer/living/pilotbunks)
 "nBW" = (
 /obj/structure/sign/safety/maint{
@@ -56743,11 +56742,9 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "nPb" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	pixel_y = 0
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
-/turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "nPf" = (
 /obj/structure/machinery/computer/cameras/almayer/containment{
@@ -57953,7 +57950,9 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/living/pilotbunks)
 "oqA" = (
 /obj/structure/machinery/power/apc/almayer{
@@ -59650,10 +59649,13 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "pbp" = (
-/obj/structure/window/reinforced/toughened,
+/obj/structure/window/reinforced/toughened{
+	plane = -5
+	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/prop/almayer/CICmap{
-	pixel_y = 5
+	pixel_y = 5;
+	plane = -5
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
@@ -59741,11 +59743,6 @@
 	},
 /area/almayer/living/gym)
 "pcG" = (
-/obj/structure/surface/table/reinforced/black{
-	layer = 3.1;
-	pixel_y = -4;
-	plane = -5
-	},
 /obj/structure/machinery/computer/cameras/hangar{
 	pixel_y = 0;
 	plane = -4
@@ -59753,7 +59750,12 @@
 /obj/structure/barricade/handrail{
 	dir = 1;
 	pixel_y = 4;
-	plane = -5
+	plane = -5.5
+	},
+/obj/structure/surface/table/reinforced/black{
+	layer = 3.1;
+	pixel_y = -4;
+	plane = -5.5
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -60201,7 +60203,9 @@
 /turf/open/floor/almayer,
 /area/almayer/living/auxiliary_officer_office)
 "pqc" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/snack{
+	pixel_y = 2
+	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 32
 	},
@@ -61332,7 +61336,9 @@
 "pOD" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "bluecorner"
+	},
 /area/almayer/living/pilotbunks)
 "pON" = (
 /obj/structure/window/framed/almayer,
@@ -61452,7 +61458,9 @@
 	},
 /area/almayer/medical/medical_science)
 "pQV" = (
-/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/vending/cola{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -64649,6 +64657,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/port_point_defense)
+"rgw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "bluecorner"
+	},
+/area/almayer/living/pilotbunks)
 "rgy" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -66151,7 +66168,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "bluefull"
+	},
 /area/almayer/living/pilotbunks)
 "rJK" = (
 /obj/structure/pipes/vents/pump,
@@ -67335,7 +67354,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair/comfy/charlie{
 	dir = 4;
-	pixel_y = -20
+	pixel_y = 0
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -67813,27 +67832,33 @@
 	},
 /obj/item/tool/kitchen/utensil/fork{
 	pixel_y = 6;
-	pixel_x = -10
+	pixel_x = -10;
+	drop_vary = 0
 	},
 /obj/item/tool/kitchen/utensil/fork{
 	pixel_y = 6;
-	pixel_x = -7
+	pixel_x = -7;
+	drop_vary = 0
 	},
 /obj/item/tool/kitchen/utensil/fork{
 	pixel_y = 6;
-	pixel_x = -4
+	pixel_x = -4;
+	drop_vary = 0
 	},
 /obj/item/tool/kitchen/utensil/spoon{
 	pixel_x = -1;
-	pixel_y = 6
+	pixel_y = 6;
+	drop_vary = 0
 	},
 /obj/item/tool/kitchen/utensil/spoon{
 	pixel_x = 2;
-	pixel_y = 6
+	pixel_y = 6;
+	drop_vary = 0
 	},
 /obj/item/tool/kitchen/utensil/spoon{
 	pixel_x = 5;
-	pixel_y = 6
+	pixel_y = 6;
+	drop_vary = 0
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -69623,7 +69648,7 @@
 	},
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -71686,6 +71711,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south2)
+"ucz" = (
+/turf/open/floor/almayer{
+	icon_state = "bluefull"
+	},
+/area/almayer/living/pilotbunks)
 "udi" = (
 /turf/open/floor/almayer{
 	icon_state = "red"
@@ -72689,6 +72719,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cic_hallway)
+"uwW" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "uwZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -73539,6 +73578,13 @@
 	icon_state = "blue"
 	},
 /area/almayer/squads/delta)
+"uNd" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "uNe" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -74939,7 +74985,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair/comfy/delta{
 	dir = 4;
-	pixel_y = 20
+	pixel_y = 0
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -75505,6 +75551,12 @@
 "vzK" = (
 /turf/open/floor/almayer,
 /area/almayer/engineering/ce_room)
+"vzL" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "bluecorner"
+	},
+/area/almayer/living/pilotbunks)
 "vzP" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/cups,
@@ -75783,7 +75835,7 @@
 "vFO" = (
 /obj/structure/bed/chair/comfy/bravo{
 	dir = 8;
-	pixel_y = -20
+	pixel_y = 0
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -82276,8 +82328,8 @@
 	pixel_x = -4
 	},
 /obj/item/reagent_container/food/snacks/tomatosoup{
-	pixel_x = -5;
-	pixel_y = 24
+	pixel_y = 9;
+	pixel_x = -4
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -100633,11 +100685,11 @@ agb
 wVW
 bvb
 aVk
-bzR
-alX
 vta
 alX
-bzR
+uwW
+alX
+vta
 aVk
 cRb
 wVW
@@ -106107,11 +106159,11 @@ amh
 eGH
 sHh
 qnD
-amd
+ucz
 xQg
 wUR
 amd
-amd
+uNd
 auZ
 aiX
 aiX
@@ -106513,7 +106565,7 @@ mfQ
 feS
 iFn
 alw
-amd
+ucz
 dXY
 rtY
 fJy
@@ -106721,8 +106773,8 @@ dXY
 fmB
 fmB
 amd
-rJD
-amd
+rgw
+vzL
 amI
 bYe
 amO
@@ -107325,7 +107377,7 @@ mfQ
 feS
 osD
 alw
-amd
+ucz
 dGr
 mJf
 amd

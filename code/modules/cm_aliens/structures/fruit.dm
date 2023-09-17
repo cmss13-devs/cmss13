@@ -438,7 +438,7 @@
 	return XENO_NONCOMBAT_ACTION
 
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/add_juice()
-	reagents.add_reagent("fruit_resin", 8)
+	reagents.add_reagent("fruit_resin", 30)
 
 /obj/effect/alien/resin/fruit/MouseDrop(atom/over_object)
 	var/mob/living/carbon/xenomorph/X = over_object
@@ -491,7 +491,7 @@
 	fruit_type = /obj/effect/alien/resin/fruit/greater
 
 /obj/item/reagent_container/food/snacks/resin_fruit/greater/add_juice()
-	reagents.add_reagent("fruit_resin", 16)
+	reagents.add_reagent("fruit_resin", 60)
 
 /obj/item/reagent_container/food/snacks/resin_fruit/unstable
 	name = XENO_FRUIT_UNSTABLE
@@ -501,8 +501,8 @@
 	fruit_type = /obj/effect/alien/resin/fruit/unstable
 
 /obj/item/reagent_container/food/snacks/resin_fruit/unstable/add_juice()
-	reagents.add_reagent("fruit_resin", 4)
-	reagents.add_reagent(PLASMA_CHITIN, 12)
+	reagents.add_reagent("fruit_resin", 30)
+	reagents.add_reagent(PLASMA_CHITIN, 30)
 
 /obj/item/reagent_container/food/snacks/resin_fruit/spore
 	name = XENO_FRUIT_SPORE
@@ -511,8 +511,8 @@
 	fruit_type = /obj/effect/alien/resin/fruit/spore
 
 /obj/item/reagent_container/food/snacks/resin_fruit/spore/add_juice()
-	reagents.add_reagent("fruit_resin", 4)
-	reagents.add_reagent(PLASMA_PHEROMONE, 12)
+	reagents.add_reagent("fruit_resin", 30)
+	reagents.add_reagent(PLASMA_PHEROMONE, 30)
 
 /obj/item/reagent_container/food/snacks/resin_fruit/speed
 	name = XENO_FRUIT_SPEED
@@ -521,8 +521,8 @@
 	fruit_type = /obj/effect/alien/resin/fruit/speed
 
 /obj/item/reagent_container/food/snacks/resin_fruit/speed/add_juice()
-	reagents.add_reagent("fruit_resin", 4)
-	reagents.add_reagent(PLASMA_PHEROMONE, 12)
+	reagents.add_reagent("fruit_resin", 30)
+	reagents.add_reagent(PLASMA_CATECHOLAMINE, 30)
 
 /obj/item/reagent_container/food/snacks/resin_fruit/plasma
 	name = XENO_FRUIT_PLASMA
@@ -530,5 +530,5 @@
 	fruit_type = /obj/effect/alien/resin/fruit/plasma
 
 /obj/item/reagent_container/food/snacks/resin_fruit/plasma/add_juice()
-	reagents.add_reagent("fruit_resin", 4)
-	reagents.add_reagent(PLASMA_PURPLE, 12)
+	reagents.add_reagent("fruit_resin", 30)
+	reagents.add_reagent(PLASMA_PURPLE, 30)

@@ -308,7 +308,7 @@
 			embedded_id.set_user_data(user)
 
 //Any projectile can decloak a predator. It does defeat one free bullet though.
-/obj/item/clothing/gloves/yautja/hunter/proc/bullet_hit(mob/living/carbon/human/H, obj/item/projectile/P)
+/obj/item/clothing/gloves/yautja/hunter/proc/bullet_hit(mob/living/carbon/human/H, obj/projectile/P)
 	SIGNAL_HANDLER
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -676,6 +676,8 @@
 
 	if (exploding)
 		return
+
+	notify_ghosts(header = "Yautja self destruct", message = "[victim] is self destructing to protect their honor!", source = victim, action = NOTIFY_ORBIT)
 
 	exploding = 1
 	var/turf/T = get_turf(src)

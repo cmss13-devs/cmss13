@@ -456,3 +456,12 @@ FORENSIC SCANNER
 	update_icon(market_value, TRUE)
 	playsound(user, 'sound/machines/twobeep.ogg', 15, TRUE)
 	to_chat(user, SPAN_NOTICE("You scan [hit_atom] and notice a reading on [src]'s pad, it says:<b> ITEM HAS [market_value] VALUE <b>"))
+
+/obj/item/device/cmb_black_market_tradeband
+	name = "\improper CMB Tradeband Compliance Device"
+	desc = "A device used to reset any tampering done to trading devices' signal range. Occasionally used to fix any signal chips damaged in an accident, but often for malpractice in trading. Use this with caution, as it will also reset any evidence of potential illicit trade. Created to fulfill a joint-organization requirement for CMB-ICC teams on the frontier, where tampered machinery was difficult to move and refurbish. Smugglers beware."
+	icon_state = "cmb_scanner"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT
+	flags_equip_slot = SLOT_WAIST

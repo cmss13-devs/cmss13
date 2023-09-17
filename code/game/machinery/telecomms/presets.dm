@@ -76,7 +76,7 @@
 	if(!on)
 		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] [ADMIN_JMP(src)]")
 
-/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/projectile/P)
 	..()
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		update_health(50)
@@ -340,6 +340,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
 		weed.parent = new_pylon.node
+		weed.spread_on_semiweedable = TRUE
+		weed.weed_expand()
 
 	RegisterSignal(new_pylon, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
 

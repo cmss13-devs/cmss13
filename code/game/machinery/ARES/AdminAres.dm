@@ -64,7 +64,7 @@
 	data["access_level"] = interface.authentication
 
 	data["alert_level"] = security_level
-	data["evac_status"] = EvacuationAuthority.evac_status
+	data["evac_status"] = SShijack.evac_status
 	data["worldtime"] = world.time
 
 	data["access_log"] = list()

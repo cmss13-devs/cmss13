@@ -2540,7 +2540,7 @@
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+			if(!H.wear_suit)
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)

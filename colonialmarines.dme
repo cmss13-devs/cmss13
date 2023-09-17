@@ -280,6 +280,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\controllers\subsystem\stamina.dm"
 #include "code\controllers\subsystem\statpanel.dm"
 #include "code\controllers\subsystem\stats_collector.dm"
+#include "code\controllers\subsystem\stickyban.dm"
 #include "code\controllers\subsystem\techtree.dm"
 #include "code\controllers\subsystem\teleporter.dm"
 #include "code\controllers\subsystem\tgui.dm"

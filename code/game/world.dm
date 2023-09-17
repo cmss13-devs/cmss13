@@ -59,13 +59,9 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	init_global_referenced_datums()
 
-	var/testing_locally = (world.params && world.params["local_test"])
-	var/running_tests = (world.params && world.params["run_tests"])
 	#if defined(AUTOWIKI) || defined(UNIT_TESTS)
 	running_tests = TRUE
 	#endif
-	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
-	sleep_offline = (!running_tests && !testing_locally)
 
 	if(!RoleAuthority)
 		RoleAuthority = new /datum/authority/branch/role()
@@ -97,19 +93,6 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	spawn(3000) //so we aren't adding to the round-start lag
 		if(CONFIG_GET(flag/ToRban))
 			ToRban_autoupdate()
-
-	// If the server's configured for local testing, get everything set up ASAP.
-	// Shamelessly stolen from the test manager's host_tests() proc
-	if(testing_locally)
-		master_mode = "Extended"
-
-		// Wait for the game ticker to initialize
-		while(!SSticker.initialized)
-			sleep(10)
-
-		// Start the game ASAP
-		SSticker.request_start()
-	return
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday

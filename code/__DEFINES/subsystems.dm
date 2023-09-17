@@ -161,8 +161,9 @@
 #define SS_INIT_DATABASE   -27
 #define SS_INIT_ENTITYMANAGER   -28
 #define SS_INIT_PLAYTIME   -29
-#define SS_INIT_PREDSHIPS  -30
-#define SS_INIT_OBJECTIVES -31
+#define SS_INIT_STICKY -30
+#define SS_INIT_PREDSHIPS  -31
+#define SS_INIT_OBJECTIVES -32
 #define SS_INIT_MINIMAP    -34
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.

@@ -1,3 +1,62 @@
+/datum/entity/stickyban
+	var/ckey
+	var/reason
+	var/message
+	var/date
+	var/sticky
+
+	var/linked_permaban
+
+/datum/entity_meta/stickyban
+	entity_type = /datum/entity/stickyban
+	table_name = "stickyban"
+	field_types = list(
+		"ckey" = DB_FIELDTYPE_STRING_LARGE,
+		"reason" = DB_FIELDTYPE_STRING_LARGE,
+		"message" = DB_FIELDTYPE_STRING_LARGE,
+		"date" = DB_FIELDTYPE_STRING_LARGE,
+		"sticky" = DB_FIELDTYPE_INT,
+		"linked_permaban" = DB_FIELDTYPE_BIGINT,
+	)
+
+/datum/entity/stickyban_matched_ckey
+	var/ckey
+	var/linked_stickyban
+	var/whitelisted = FALSE
+
+/datum/entity_meta/stickyban_matched_ckey
+	entity_type = /datum/entity/stickyban_matched_ckey
+	table_name = "stickyban_matched_ckey"
+	field_types = list(
+		"ckey" = DB_FIELDTYPE_STRING_LARGE,
+		"linked_stickyban" = DB_FIELDTYPE_BIGINT,
+		"whitelisted" = DB_FIELDTYPE_INT,
+	)
+
+/datum/entity/stickyban_matched_cid
+	var/cid
+	var/linked_stickyban
+
+/datum/entity_meta/stickyban_matched_cid
+	entity_type = /datum/entity/stickyban_matched_cid
+	table_name = "stickyban_matched_cid"
+	field_types = list(
+		"cid" = DB_FIELDTYPE_STRING_LARGE,
+		"linked_stickyban" = DB_FIELDTYPE_BIGINT,
+	)
+
+/datum/entity/stickyban_matched_ip
+	var/ip
+	var/linked_stickyban
+
+/datum/entity_meta/stickyban_matched_ip
+	entity_type = /datum/entity/stickyban_matched_ip
+	table_name = "stickyban_matched_ip"
+	field_types = list(
+		"ip" = DB_FIELDTYPE_STRING_LARGE,
+		"linked_stickyban" = DB_FIELDTYPE_BIGINT,
+	)
+
 /datum/entity/player_sticky_ban
 	var/player_id
 	var/admin_id

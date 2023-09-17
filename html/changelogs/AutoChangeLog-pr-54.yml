@@ -1,0 +1,6 @@
+author: "poleno1232"
+delete-after: True
+changes:
+  - rscadd: "Добавлен CW-13 \"Enforcer\" - боевой мех"
+  - rscadd: "Для боевого меха добавлены смартган, огнемёт и миниган"
+  - rscadd: "Обновлён вендор мехи"

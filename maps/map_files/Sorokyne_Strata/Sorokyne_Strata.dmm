@@ -402,13 +402,6 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
-"abx" = (
-/obj/effect/landmark/corpsespawner/clown,
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/outpost/gen/bball/nest)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -61048,7 +61041,7 @@ aac
 aac
 rKG
 bsS
-abx
+cjq
 bvt
 rKG
 aac

@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Firing flares into the air now produces light again"

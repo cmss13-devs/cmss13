@@ -957,11 +957,6 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
-	if((joe_candidate.ckey in joes) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
-		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("You already were a Working Joe this round!"))
-		return
-
 	// council doesn't count towards this conditional.
 	if(joe_job.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
 		var/joe_max = joe_job.total_positions
@@ -969,6 +964,13 @@ Additional game mode variables.
 			if(show_warning)
 				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
+
+	var/deathtime = world.time - joe_candidate.timeofdeath
+	if(istype(joe_candidate, /mob/new_player))
+		deathtime = JOE_DEAD_TIME //so new players don't have to wait to latejoin as Working Joe in the round's first 10 mins.
+	if(deathtime < JOE_DEAD_TIME && !check_client_rights(joe_candidate.client, R_ADMIN, FALSE) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
+		to_chat(joe_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]. You need to wait [DisplayTimeText(JOE_DEAD_TIME - deathtime)] before rejoining as a Working Joe!"))
+		return FALSE
 
 	if(!enter_allowed && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 		if(show_warning)

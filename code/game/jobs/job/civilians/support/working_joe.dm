@@ -1,6 +1,10 @@
 #define STANDARD_VARIANT "Working Joe"
 #define HAZMAT_VARIANT "Hazmat Joe"
 
+/// Time until someone can respawn as Working Joe
+
+#define JOE_DEAD_TIME = 10 MINUTES
+
 /datum/job/civilian/working_joe
 	title = JOB_WORKING_JOE
 	total_positions = 6

@@ -96,13 +96,10 @@
 	if (evaluate_embryo_existance(target))
 		return FALSE
 
-	if (issynth(target))
+	if (issynth(target) || ismonkey(target) || target.alpha < 50)
 		return FALSE
 
 	if (target.pulledby && isxeno(target.pulledby))
-		return FALSE
-
-	if (target.alpha < 50)
 		return FALSE
 
 	return target

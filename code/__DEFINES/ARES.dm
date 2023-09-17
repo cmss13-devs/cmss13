@@ -72,4 +72,4 @@
 #define COOLDOWN_ARES_ACCESS_CONTROL 20 SECONDS
 
 /// Time until someone can respawn as Working Joe
-#define JOE_JOIN_DEAD_TIME = 10 MINUTES
+#define JOE_JOIN_DEAD_TIME (10 MINUTES)

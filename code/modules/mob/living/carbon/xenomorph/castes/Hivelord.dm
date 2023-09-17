@@ -18,7 +18,7 @@
 	caste_desc = "A builder of really big hives."
 	deevolves_to = list(XENO_CASTE_DRONE)
 	can_hold_facehuggers = 1
-	can_hold_eggs = CAN_HOLD_TWO_HANDS
+	can_hold_eggs = CAN_HOLD_ONE_HAND
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	build_time_mult = BUILD_TIME_MULT_HIVELORD

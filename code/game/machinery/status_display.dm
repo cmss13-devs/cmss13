@@ -163,6 +163,15 @@
 	if(maptext)
 		maptext = ""
 
+/obj/structure/machinery/status_display/proc/set_sec_level_picture()
+	switch(security_level)
+		if(SEC_LEVEL_GREEN)
+			set_picture("default")
+		if(SEC_LEVEL_BLUE)
+			set_picture("bluealert")
+		if(SEC_LEVEL_RED, SEC_LEVEL_DELTA)
+			set_picture("redalert")
+
 /obj/structure/machinery/ai_status_display
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"

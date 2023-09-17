@@ -13,6 +13,21 @@
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 
+	///Whether this area is used for hijack evacuation progress
+	var/hijack_evacuation_area = FALSE
+
+	///The weight this area gives towards hijack evacuation progress
+	var/hijack_evacuation_weight = 0
+
+	///Whether this area is additive or multiplicative towards evacuation progress
+	var/hijack_evacuation_type = EVACUATION_TYPE_NONE
+
+/area/almayer/Initialize(mapload, ...)
+	. = ..()
+
+	if(hijack_evacuation_area)
+		SShijack.progress_areas[src] = power_equip
+
 /area/shuttle/almayer/elevator_maintenance/upperdeck
 	name = "\improper Maintenance Elevator"
 	icon_state = "shuttle"

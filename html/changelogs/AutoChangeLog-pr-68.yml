@@ -1,0 +1,4 @@
+author: "poleno1232"
+delete-after: True
+changes:
+  - balance: "Теперь надо ждать 15 минут, пока бототоннель опять будет доступен"

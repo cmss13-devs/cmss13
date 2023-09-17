@@ -1,7 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - rscdel: "Removes emergency autoinjectors from squad medics"
-  - rscdel: "Removes skillless variant of the emergency autoinjector, makes default variant skillless"
-  - balance: "Emergency autoinjectors cannot be refilled"
-  - balance: "Replaces skillless autoinjectors in marine pouches with standard autoinjectors"

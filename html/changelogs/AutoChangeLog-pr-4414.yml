@@ -1,0 +1,4 @@
+author: "Private Tristan"
+delete-after: True
+changes:
+  - spellcheck: "acid runners are now properly informed of their corrosive acid's strength."

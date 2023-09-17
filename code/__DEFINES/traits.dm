@@ -200,6 +200,10 @@
 #define TRAIT_TOOL_SIMPLE_BLOWTORCH "t_tool_simple_blowtorch"
 
 #define TRAIT_TOOL_PEN "t_tool_pen"
+
+/// Can lockout blackmarket from ASRS console circuits.
+#define TRAIT_TOOL_TRADEBAND "t_tool_tradeband"
+
 // CLOTHING TRAITS
 #define TRAIT_CLOTHING_HOOD "t_clothing_hood"
 

@@ -106,7 +106,8 @@ var/datum/controller/supply/supply_controller = new()
 	circuit = /obj/item/circuitboard/computer/supplycomp
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
-	var/can_order_contraband = 0
+	var/can_order_contraband = FALSE
+	var/black_market_lockout = FALSE
 	var/last_viewed_group = "categories"
 	var/first_time = TRUE
 
@@ -142,6 +143,12 @@ var/datum/controller/supply/supply_controller = new()
 	supply_controller.black_market_enabled = FALSE
 
 	//If any computers are able to order contraband, it's enabled. Otherwise, it's disabled!
+
+/// Prevents use of black market, even if it is otherwise enabled. If any computer has black market locked out, it applies across all of the currently established ones.
+/obj/structure/machinery/computer/supplycomp/proc/lock_black_market(market_locked = FALSE)
+	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in supply_controller.bound_supply_computer_list)
+		if(market_locked)
+			computer.black_market_lockout = TRUE
 
 /obj/structure/machinery/computer/ordercomp
 	name = "Supply ordering console"
@@ -373,6 +380,8 @@ var/datum/controller/supply/supply_controller = new()
 	var/black_market_points = 5 // 5 to start with to buy the scanner.
 	///If the black market is enabled.
 	var/black_market_enabled = FALSE
+	///How close the CMB is to investigating | 100 sends an ERT
+	var/black_market_heat = 0
 
 	/// This contains a list of all typepaths of sold items and how many times they've been recieved. Used to calculate points dropoff (Can't send down a hundred blue souto cans for infinite points)
 	var/list/black_market_sold_items
@@ -953,7 +962,7 @@ var/datum/controller/supply/supply_controller = new()
 		if(!istype(supply_pack))
 			return
 
-		if((supply_pack.contraband && !can_order_contraband) || !supply_pack.buyable)
+		if((supply_pack.contraband && !can_order_contraband) || !supply_pack.buyable || supply_pack.contraband && black_market_lockout)
 			return
 
 		var/timeout = world.time + 600
@@ -1021,18 +1030,23 @@ var/datum/controller/supply/supply_controller = new()
 					supply_controller.requestlist.Cut(i,i+1)
 					supply_controller.points -= round(supply_pack.cost)
 					supply_controller.black_market_points -= round(supply_pack.dollar_cost)
+					if(supply_controller.black_market_heat != -1) //-1 Heat means heat is disabled
+						supply_controller.black_market_heat = clamp(supply_controller.black_market_heat + supply_pack.crate_heat + (supply_pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100) // black market heat added is crate heat +- up to 25% of crate heat
 					supply_controller.shoppinglist += supply_order
 					supply_pack.cost = supply_pack.cost * SUPPLY_COST_MULTIPLIER
 					temp = "Thank you for your order.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 					supply_order.approvedby = usr.name
 					msg_admin_niche("[usr] confirmed supply order of [supply_pack.name].")
+					if(supply_controller.black_market_heat == 100)
+						supply_controller.black_market_investigation()
 					var/pack_source = "Cargo Hold"
 					var/pack_name = supply_pack.name
 					if(supply_pack.dollar_cost)
 						pack_source = "Unknown"
-						pack_name = "Unknown"
-					link.log_ares_requisition(pack_source, pack_name, usr)
+						if(prob(90))
+							pack_name = "Unknown"
+					link.log_ares_requisition(pack_source, pack_name, usr.name)
 				else
 					temp = "Not enough money left.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
@@ -1093,6 +1107,9 @@ var/datum/controller/supply/supply_controller = new()
 	temp = "<b>W-Y Dollars: $[supply_controller.black_market_points]</b><BR>"
 	temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 	temp += SPAN_DANGER("ERR0R UNK7OWN C4T2G#!$0-<HR><HR><HR>")
+	if(black_market_lockout)
+		temp += "<DIV ALIGN='center'><BR><img src='cmblogo.png'><BR><BR><BR><BR><FONT SIZE=4><B>Unauthorized Access Removed.<BR>This console is currently under CMB investigation.<BR>Thank you for your cooperation.</FONT></div></B>"
+		return
 	temp += "KHZKNHZH#0-"
 	if(!supply_controller.mendoza_status) // he's daed
 		temp += "........."
@@ -1233,6 +1250,11 @@ var/datum/controller/supply/supply_controller = new()
 	/// For code readability.
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, FALSE), timer)
 
+/datum/controller/supply/proc/black_market_investigation()
+	black_market_heat = -1
+	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", TRUE, TRUE, FALSE)
+	log_game("Black Market Inspection auto-triggered.")
+
 /obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
 
 	if(supply_pack.group != last_viewed_group)
@@ -1241,7 +1263,7 @@ var/datum/controller/supply/supply_controller = new()
 	if(!supply_pack.buyable)
 		return
 
-	if(supply_pack.contraband && !can_order_contraband)
+	if(supply_pack.contraband && !can_order_contraband || supply_pack.contraband && black_market_lockout)
 		return
 
 	if(isnull(supply_pack.contains) && isnull(supply_pack.containertype))

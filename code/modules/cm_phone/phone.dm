@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/range = 7
 
 	var/enabled = TRUE
-	var/callable = TRUE
+	var/do_not_disturb = PHONE_DND_OFF
 
 	var/base_icon_state
 
@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/list/networks_transmit = list(FACTION_MARINE)
 
 /obj/structure/transmitter/hidden
-	callable = FALSE
+	do_not_disturb = PHONE_DND_FORCED
 
 /obj/structure/transmitter/Initialize(mapload, ...)
 	. = ..()
@@ -80,7 +80,11 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	for(var/possible_phone in GLOB.transmitters)
 		var/obj/structure/transmitter/target_phone = possible_phone
-		if(TRANSMITTER_UNAVAILABLE(target_phone) || !target_phone.callable) // Phone not available
+		var/current_dnd = FALSE
+		switch(target_phone.do_not_disturb)
+			if(PHONE_DND_ON, PHONE_DND_FORCED)
+				current_dnd = TRUE
+		if(TRANSMITTER_UNAVAILABLE(target_phone) || current_dnd) // Phone not available
 			continue
 		var/net_link = FALSE
 		for(var/network in networks_transmit)
@@ -124,8 +128,17 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			call_phone(user, params["phone_id"])
 			. = TRUE
 			SStgui.close_uis(src)
+		if("toggle_dnd")
+			toggle_dnd(user)
 
 	update_icon()
+
+/obj/structure/transmitter/ui_data(mob/user)
+	var/list/data = list()
+
+	data["availability"] = do_not_disturb
+
+	return data
 
 /obj/structure/transmitter/ui_static_data(mob/user)
 	. = list()
@@ -171,6 +184,18 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	START_PROCESSING(SSobj, T)
 
 	user.put_in_hands(attached_to)
+
+/obj/structure/transmitter/proc/toggle_dnd(mob/living/carbon/human/user)
+	switch(do_not_disturb)
+		if(PHONE_DND_ON)
+			do_not_disturb = PHONE_DND_OFF
+			to_chat(user, SPAN_NOTICE("Do Not Disturb has been disabled. You can now receive calls."))
+		if(PHONE_DND_OFF)
+			do_not_disturb = PHONE_DND_ON
+			to_chat(user, SPAN_WARNING("Do Not Disturb has been enabled. No calls will be received."))
+		else
+			return FALSE
+	return TRUE
 
 /obj/structure/transmitter/attack_hand(mob/user)
 	. = ..()

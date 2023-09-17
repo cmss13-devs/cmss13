@@ -7951,6 +7951,7 @@
 /obj/structure/transmitter/rotary{
 	name = "Bravo Overwatch Telephone";
 	phone_category = "Command";
+	do_not_disturb = -1;
 	phone_id = "Bravo Overwatch"
 	},
 /obj/structure/sign/safety/terminal{
@@ -8641,6 +8642,7 @@
 	name = "Combat Information Center Telephone";
 	phone_category = "Command";
 	phone_id = "Combat Information Center";
+	do_not_disturb = -1;
 	pixel_x = 5;
 	pixel_y = 4
 	},
@@ -9091,6 +9093,7 @@
 /obj/structure/transmitter/rotary{
 	name = "Charlie Overwatch Telephone";
 	phone_category = "Command";
+	do_not_disturb = -1;
 	phone_id = "Charlie Overwatch"
 	},
 /obj/structure/sign/safety/terminal{
@@ -34219,6 +34222,7 @@
 /obj/structure/transmitter/rotary{
 	name = "Delta Overwatch Telephone";
 	phone_category = "Command";
+	do_not_disturb = -1;
 	phone_id = "Delta Overwatch"
 	},
 /obj/structure/sign/safety/terminal{
@@ -37328,7 +37332,8 @@
 	name = "Brig Cells Telephone";
 	phone_category = "Almayer";
 	phone_id = "Brig Cells";
-	pixel_x = 15
+	pixel_x = 15;
+	do_not_disturb = -1
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
@@ -38339,6 +38344,7 @@
 /obj/structure/transmitter/rotary{
 	name = "Alpha Overwatch Telephone";
 	phone_category = "Command";
+	do_not_disturb = -1;
 	phone_id = "Alpha Overwatch"
 	},
 /obj/structure/sign/safety/terminal{
@@ -64071,7 +64077,8 @@
 	name = "Requisition Telephone";
 	phone_category = "Almayer";
 	phone_id = "Requisition";
-	pixel_y = 30
+	pixel_y = 30;
+	do_not_disturb = -1
 	},
 /turf/open/floor/almayer{
 	dir = 5;

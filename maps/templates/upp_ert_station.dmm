@@ -880,7 +880,7 @@
 	name = "UPP Station";
 	phone_category = "UPP";
 	phone_id = "UPP Station";
-	callable = 0
+	do_not_disturb = 2
 	},
 /turf/open/floor/strata{
 	icon_state = "floor2"

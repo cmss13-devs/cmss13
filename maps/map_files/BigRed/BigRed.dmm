@@ -29752,7 +29752,7 @@
 /area/bigredv2/outside/filtration_plant)
 "htp" = (
 /obj/structure/transmitter/colony_net{
-	callable = 0;
+	do_not_disturb = 1;
 	dir = 4;
 	phone_category = "Lambda Labs";
 	phone_color = "red";

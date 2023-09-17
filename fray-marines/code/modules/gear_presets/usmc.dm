@@ -10,11 +10,13 @@
 		ACCESS_MARINE_BRAVO,
 		ACCESS_MARINE_CHARLIE,
 		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_ENGINEERING,
+		ACCESS_MARINE_ENGPREP
 	)
 	assignment = JOB_WALKER
 	rank = JOB_WALKER
-	paygrade = "01"
-	role_comm_title = "MO"
+	paygrade = "ME4"
+	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/mech_pilot
 

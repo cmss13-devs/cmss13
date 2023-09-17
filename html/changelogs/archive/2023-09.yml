@@ -223,3 +223,13 @@
   - bugfix: Fixed a few ways around fire group delays
   Waseemq1235:
   - admin: TWE faction reports are now possible.
+2023-09-17:
+  BeagleGaming1:
+  - bugfix: Fixed CN20-X canister grenades
+  Drathek:
+  - bugfix: Fix/Rework logic regarding xeno guaranteed slots
+  - bugfix: Fix evolution in thunder dome affecting hive slots
+  Morrow:
+  - rscdel: Disables Shivas Snowball
+  Private Tristan:
+  - spellcheck: acid runners are now properly informed of their corrosive acid's strength.

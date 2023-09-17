@@ -80,7 +80,10 @@
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
 
-	var/brightness_on = 6 //Average attachable pocket light
+	light_power = 3
+	light_range = 4
+	light_system = MOVABLE_LIGHT
+
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
 	var/armor_overlays[]
@@ -98,6 +101,8 @@
 	var/armor_variation = 0
 	/// The dmi where the grayscale squad overlays are contained
 	var/squad_overlay_icon = 'icons/mob/humans/onmob/suit_1.dmi'
+
+	var/atom/movable/marine_light/light_holder
 
 /obj/item/clothing/suit/storage/marine/Initialize(mapload)
 	. = ..()
@@ -121,6 +126,12 @@
 		/obj/item/ammo_magazine/sniper,
 	)
 	pockets.max_storage_space = 8
+
+	light_holder = new(src)
+
+/obj/item/clothing/suit/storage/marine/Destroy()
+	QDEL_NULL(light_holder)
+	return ..()
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
 	var/image/I
@@ -151,42 +162,11 @@
 	icon_state = replacetext(icon_state,"1","[new_look]")
 	update_icon(user)
 
-/obj/item/clothing/suit/storage/marine/pickup(mob/user)
-	if(flags_marine_armor & ARMOR_LAMP_ON)
-		user.SetLuminosity(brightness_on, FALSE, src)
-		SetLuminosity(0)
-	..()
-
-/obj/item/clothing/suit/storage/marine/dropped(mob/user)
-	if(loc != user)
-		turn_off_light(user)
-	..()
-
-
-/obj/item/clothing/suit/storage/marine/proc/is_light_on()
-	return flags_marine_armor & ARMOR_LAMP_ON
-
-/obj/item/clothing/suit/storage/marine/proc/turn_off_light(mob/wearer)
-	if(is_light_on())
-		if(wearer)
-			wearer.SetLuminosity(0, FALSE, src)
-		SetLuminosity(brightness_on)
-		toggle_armor_light() //turn the light off
-		return 1
-	return 0
-
-/obj/item/clothing/suit/storage/marine/Destroy()
-	if(ismob(src.loc))
-		src.loc.SetLuminosity(0, FALSE, src)
-	else
-		SetLuminosity(0)
-	return ..()
-
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
 	..()
 
 	if(!isturf(user.loc))
-		to_chat(user, SPAN_WARNING("You cannot turn the light [is_light_on() ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
+		to_chat(user, SPAN_WARNING("You cannot turn the light [light_on ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
 		return
 
 	if(flashlight_cooldown > world.time)
@@ -198,26 +178,33 @@
 	if(H.wear_suit != src)
 		return
 
-	toggle_armor_light(user)
+	turn_light(user, !light_on)
 
 /obj/item/clothing/suit/storage/marine/item_action_slot_check(mob/user, slot)
-	if(!ishuman(user)) return FALSE
-	if(slot != WEAR_JACKET) return FALSE
+	if(!ishuman(user))
+		return FALSE
+	if(slot != WEAR_JACKET)
+		return FALSE
 	return TRUE //only give action button when armor is worn.
 
-/obj/item/clothing/suit/storage/marine/proc/toggle_armor_light(mob/user)
-	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
-	if(is_light_on()) //Turn it off.
-		if(user) user.SetLuminosity(0, FALSE, src)
-		else SetLuminosity(0)
-		playsound(src,'sound/handling/click_2.ogg', 50, 1)
-	else //Turn it on.
-		if(user) user.SetLuminosity(brightness_on, FALSE, src)
-		else SetLuminosity(brightness_on)
-
+/obj/item/clothing/suit/storage/marine/turn_light(mob/user, toggle_on)
+	. = ..()
+	if(. != CHECKS_PASSED)
+		return
+	set_light_range(initial(light_range))
+	set_light_power(FLOOR(initial(light_power) * 0.5, 1))
+	set_light_on(toggle_on)
 	flags_marine_armor ^= ARMOR_LAMP_ON
 
-	playsound(src,'sound/handling/suitlight_on.ogg', 50, 1)
+	light_holder.set_light_flags(LIGHT_ATTACHED)
+	light_holder.set_light_range(initial(light_range))
+	light_holder.set_light_power(initial(light_power))
+	light_holder.set_light_on(toggle_on)
+
+	if(!toggle_on)
+		playsound(src, 'sound/handling/click_2.ogg', 50, 1)
+
+	playsound(src, 'sound/handling/suitlight_on.ogg', 50, 1)
 	update_icon(user)
 
 	for(var/X in actions)
@@ -268,7 +255,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 4
-	brightness_on = 7 //slightly higher
+	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
 
 /obj/item/clothing/suit/storage/marine/rto/intel
@@ -1199,7 +1186,7 @@
 	armor_bomb = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
-	brightness_on = 9
+	light_range = 7
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)
 
@@ -1730,3 +1717,68 @@
 	icon_state = "wc_armor"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	contained_sprite = TRUE
+
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine
+	name = "kestrel armoured vest"
+	desc = "A customizable personal armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
+	icon_state = "rmc_light"
+	item_state = "rmc_light"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/weapon/baton,
+		/obj/item/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/explosive/grenade,
+		/obj/item/storage/bible,
+		/obj/item/weapon/claymore/mercsword/machete,
+		/obj/item/attachable/bayonet,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+	)
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light //RMC Rifleman Armor
+	icon_state = "rmc_light"
+	item_state = "rmc_light"
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/team_leader //RMC TL & LT Armor
+	name = "kestrel armoured carry vest"
+	icon_state = "rmc_light_padded"
+	item_state = "rmc_light_padded"
+	storage_slots = 7
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/smartgun //Smartgun Spec Armor
+	name = "kestrel armoured smartgun harness"
+	icon_state = "rmc_smartgun"
+	item_state = "rmc_smartgun"
+	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN|SMARTGUN_HARNESS
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/pointman //Pointman Spec Armor
+	name = "kestrel pointman armour"
+	desc = "A heavier version of the armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
+	icon_state = "rmc_pointman"
+	item_state = "rmc_pointman"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	storage_slots = 7
+	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
+	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+
+/atom/movable/marine_light
+	light_system = DIRECTIONAL_LIGHT

@@ -85,6 +85,7 @@
 		life_kills_total = body.life_kills_total //kills also copy over
 
 		appearance = body.appearance
+		underlays.Cut()
 		base_transform = matrix(body.base_transform)
 		body.alter_ghost(src)
 		apply_transform(matrix())
@@ -255,6 +256,10 @@
 				A.JumpToCoord(x, y, z)
 	if(href_list["joinresponseteam"])
 		JoinResponseTeam()
+	if(href_list["claim_freed"])
+		handle_joining_as_freed_mob(locate(href_list["claim_freed"]))
+	if(href_list["join_xeno"])
+		join_as_alien()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -906,19 +911,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/mob/living/L = freed_mob_choices[choice]
-	if(!L || !(WEAKREF(L) in GLOB.freed_mob_list))
+
+	handle_joining_as_freed_mob(L)
+
+/mob/dead/proc/handle_joining_as_freed_mob(mob/living/freed_mob)
+	if(!freed_mob || !(WEAKREF(freed_mob) in GLOB.freed_mob_list))
 		return
 
-	if(!istype(L))
+	if(!istype(freed_mob))
 		return
 
-	if(QDELETED(L) || L.client)
-		GLOB.freed_mob_list -= WEAKREF(L)
+	if(QDELETED(freed_mob) || freed_mob.client)
+		GLOB.freed_mob_list -= WEAKREF(freed_mob)
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	GLOB.freed_mob_list -= WEAKREF(L)
-	M.mind.transfer_to(L, TRUE)
+	GLOB.freed_mob_list -= WEAKREF(freed_mob)
+	mind.transfer_to(freed_mob, TRUE)
 
 /mob/dead/verb/join_as_hellhound()
 	set category = "Ghost.Join"

@@ -264,8 +264,8 @@
 		/datum/caste_datum/hivelord = 1,
 		/datum/caste_datum/carrier = 1
 	)
-	/// Assoc list of free slots currently used by specific castes
-	var/list/used_free_slots
+	/// Assoc list of slots currently used by specific castes (for calculating free_slot usage)
+	var/list/used_slots = list()
 	/// list of living tier2 xenos
 	var/list/tier_2_xenos = list()
 	/// list of living tier3 xenos
@@ -351,11 +351,17 @@
 	var/hugger_timelock = 15 MINUTES
 	/// How many huggers can the hive support
 	var/playable_hugger_limit = 0
+	/// Minimum number of huggers available at any hive size
+	var/playable_hugger_minimum = 2
+	/// This number divides the total xenos counted for slots to give the max number of facehuggers
+	var/playable_hugger_max_divisor = 4
 
 	/// How many lesser drones the hive can support
 	var/lesser_drone_limit = 0
 	/// Slots available for lesser drones will never go below this number
-	var/lesser_drone_minimum = 3
+	var/lesser_drone_minimum = 2
+	/// This number divides the total xenos counted for slots to give the max number of lesser drones
+	var/playable_lesser_drones_max_divisor = 3
 
 	var/datum/tacmap/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
@@ -472,6 +478,12 @@
 		tier_2_xenos -= xeno
 	else if(xeno.tier == 3)
 		tier_3_xenos -= xeno
+
+	// Only handle free slots if the xeno is not in tdome
+	if(!is_admin_level(xeno.z))
+		var/selected_caste = GLOB.xeno_datum_list[xeno.caste_type]?.type
+		if(used_slots[selected_caste])
+			used_slots[selected_caste]--
 
 	if(!light_mode)
 		hive_ui.update_xeno_counts()
@@ -783,30 +795,31 @@
 		),
 	)
 
-	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
-	burrowed_factor = round(burrowed_factor)
-
 	var/used_tier_2_slots = length(tier_2_xenos)
 	var/used_tier_3_slots = length(tier_3_xenos)
-	for(var/caste_path in used_free_slots)
-		var/used_count = used_free_slots[caste_path]
-		if(!used_count)
-			continue
-		var/datum/caste_datum/C = caste_path
-		switch(initial(C.tier))
-			if(2) used_tier_2_slots -= used_count
-			if(3) used_tier_3_slots -= used_count
 
 	for(var/caste_path in free_slots)
-		var/slot_count = free_slots[caste_path]
-		if(!slot_count)
+		var/slots_free = free_slots[caste_path]
+		var/slots_used = used_slots[caste_path]
+		var/datum/caste_datum/current_caste = caste_path
+		if(slots_used)
+			// Don't count any free slots in use
+			switch(initial(current_caste.tier))
+				if(2)
+					used_tier_2_slots -= min(slots_used, slots_free)
+				if(3)
+					used_tier_3_slots -= min(slots_used, slots_free)
+		if(slots_free <= slots_used)
 			continue
-		var/datum/caste_datum/C = caste_path
-		switch(initial(C.tier))
-			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
-			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
+		// Display any free slots available
+		switch(initial(current_caste.tier))
+			if(2)
+				slots[TIER_2][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
+			if(3)
+				slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
-	var/effective_total = burrowed_factor
+	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
+	var/effective_total = round(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
 			effective_total++
@@ -1035,7 +1048,12 @@
 	return TRUE
 
 /datum/hive_status/proc/update_hugger_limit()
-	playable_hugger_limit = 2 + Ceiling(totalXenos.len / 4)
+	var/countable_xeno_iterator = 0
+	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
+		if(cycled_xeno.counts_for_slots)
+			countable_xeno_iterator++
+
+	playable_hugger_limit = max(Floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -1086,9 +1104,14 @@
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
 
 /datum/hive_status/proc/update_lesser_drone_limit()
-	lesser_drone_limit = lesser_drone_minimum + Ceiling(length(totalXenos) / 3)
+	var/countable_xeno_iterator = 0
+	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
+		if(cycled_xeno.counts_for_slots)
+			countable_xeno_iterator++
 
-/datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user)
+	lesser_drone_limit = max(Floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
+
+/datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user, obj/effect/alien/resin/special/pylon/spawning_pylon)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
 		return FALSE
 
@@ -1109,8 +1132,8 @@
 		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen!"))
 		return FALSE
 
-	if(!living_xeno_queen.ovipositor && !SSticker.mode.is_in_endgame)
-		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen on Ovipositor!"))
+	if(spawning_pylon.lesser_drone_spawns < 1)
+		to_chat(user, SPAN_WARNING("The selected core or pylon does not have enough power for a lesser drone!"))
 		return FALSE
 
 	update_lesser_drone_limit()
@@ -1119,9 +1142,6 @@
 	for(var/mob/mob as anything in totalXenos)
 		if(islesserdrone(mob))
 			current_lesser_drone_count++
-
-	if(tgui_alert(user, "Are you sure you want to become a lesser drone?", "Confirmation", list("Yes", "No")) != "Yes")
-		return FALSE
 
 	if(lesser_drone_limit <= current_lesser_drone_count)
 		to_chat(user, SPAN_WARNING("[GLOB.hive_datum[hivenumber]] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))

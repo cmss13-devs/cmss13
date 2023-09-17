@@ -185,7 +185,7 @@
 		FB.bang(get_turf(FB), C)
 	open()
 
-/obj/structure/closet/bullet_act(obj/item/projectile/Proj)
+/obj/structure/closet/bullet_act(obj/projectile/Proj)
 	take_damage(Proj.damage*0.3)
 	if(prob(30))
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)

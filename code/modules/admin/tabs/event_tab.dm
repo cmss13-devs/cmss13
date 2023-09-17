@@ -284,6 +284,21 @@
 	if(points_to_add >= 0)
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
+/datum/admins/proc/check_req_heat()
+	set name = "Check Requisitions Heat"
+	set desc = "Check how close the CMB is to arriving to search Requisitions."
+	set category = "Admin.Events"
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+
+	var/req_heat_change = tgui_input_real_number(usr, "Set the new requisitions black market heat. ERT is called at 100, disabled at -1. Current Heat: [supply_controller.black_market_heat]", "Modify Req Heat", 0, 100, -1)
+	if(!req_heat_change)
+		return
+
+	supply_controller.black_market_heat = req_heat_change
+	message_admins("[key_name_admin(usr)] set requisitions heat to [req_heat_change].")
+
+
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "Self-Destruct"
 	set desc = "Trigger self-destruct countdown. This should not be done if the self-destruct has already been called."
@@ -687,6 +702,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=evacuation_cancel'>Cancel Evacuation</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=add_req_points'>Add Requisitions Points</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=check_req_heat'>Modify Requisitions Heat</A><BR>
 		<BR>
 		<B>Research</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>

@@ -111,13 +111,13 @@
 	..()
 	switch(toxic)
 		if(1)
-			SetLuminosity(2)
+			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 /turf/open/desert/desert_shore/is_weedable()
@@ -196,13 +196,13 @@
 	..()
 	switch(toxic)
 		if(1)
-			SetLuminosity(2)
+			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 //Desert River Toxic
@@ -221,13 +221,13 @@
 	..()
 	switch(toxic)
 		if(1)
-			SetLuminosity(2)
+			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 	update_overlays()
 

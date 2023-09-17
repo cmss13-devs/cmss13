@@ -494,19 +494,20 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && length(inserted_visors))
-		for(var/obj/item/device/visor as anything in inserted_visors)
+		for(var/obj/item/device/helmet_visor/visor as anything in inserted_visors)
 			visor.forceMove(get_turf(src))
 
 		inserted_visors = list()
 		to_chat(user, SPAN_NOTICE("You remove the inserted visors."))
-		turn_off_visor(user, active_visor, TRUE)
+		var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
+		active_visor = null
+		turn_off_visor(user, temp_visor_holder, TRUE)
 
 		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
 		cycle_action.set_default_overlay()
 		if(!length(built_in_visors))
 			cycle_action.remove_from(user)
 
-		active_visor = null
 		recalculate_visors(user)
 		return
 
@@ -569,7 +570,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	. = ..()
 	if(pockets)
 		for(var/obj/item/attachable/flashlight/F in pockets)
-			if(F.activated)
+			if(F.light_on)
 				F.activate_attachment(src, user, TRUE)
 	if(active_visor)
 		recalculate_visors(user)
@@ -579,7 +580,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		camera.c_tag = "Unknown"
 	if(pockets)
 		for(var/obj/item/attachable/flashlight/F in pockets)
-			if(F.activated)
+			if(F.light_on)
 				F.activate_attachment(src, mob, TRUE)
 	if(active_visor)
 		recalculate_visors(mob)
@@ -717,6 +718,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 technician"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
 
+/obj/item/clothing/head/helmet/marine/grey
+	desc = "A standard M10 Pattern Helmet. This one has not had a camouflage pattern applied to it yet. There is a built-in camera on the right side."
+	icon_state = "c_helmet"
+	item_state = "c_helmet"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/head/helmet/marine/tech/tanker
 	name = "\improper M50 tanker helmet"
 	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle. Features a toggleable welding screen for eye protection."
@@ -761,16 +768,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."
 	icon_state = "io"
 	item_state = "io"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M12 pattern"
+	max_inserted_visors = 2
 
 /obj/item/clothing/head/helmet/marine/rto/intel
 	name = "\improper XM12 pattern intelligence helmet"
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
 	specialty = "XM12 pattern intel"
 
 /obj/item/clothing/head/helmet/marine/specialist
@@ -1365,3 +1373,34 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list()
 
 #undef HELMET_GARB_RELAY_ICON_STATE
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine
+	name = "\improper L5A2 ballistic helmet"
+	desc = "A High-cut ballistic helmet. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system."
+	icon_state = "rmc_helm1"
+	item_state = "rmc_helm1"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+	flags_marine_helmet = NO_FLAGS
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher
+	name = "\improper L5A3 ballistic helmet"
+	desc = "A High-cut ballistic helmet featuring an attached mandible. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system"
+	icon_state = "rmc_helm_br"
+	item_state = "rmc_helm_br"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_LOW

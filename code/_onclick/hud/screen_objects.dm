@@ -639,3 +639,7 @@
 /atom/movable/screen/rotate/alt
 	dir = WEST
 	rotate_amount = -90
+
+/atom/movable/screen/vulture_scope // The part of the vulture's scope that drifts over time
+	icon_state = "vulture_unsteady"
+	screen_loc = "CENTER,CENTER"

@@ -1502,7 +1502,7 @@
 
 						// Stamps
 						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-						stampoverlay.icon_state = "paper_stamp-cent"
+						stampoverlay.icon_state = "paper_stamp-weyyu"
 						if(!P.stamped)
 							P.stamped = new
 						P.stamped += /obj/item/tool/stamp
@@ -1584,7 +1584,7 @@
 
 						// Stamps
 						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-						stampoverlay.icon_state = "paper_stamp-cent"
+						stampoverlay.icon_state = "paper_stamp-cmb"
 						if(!P.stamped)
 							P.stamped = new
 						P.stamped += /obj/item/tool/stamp
@@ -2096,7 +2096,7 @@
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE
-	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", FALSE, FALSE)
+	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", TRUE, FALSE, FALSE)
 	log_game("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
 

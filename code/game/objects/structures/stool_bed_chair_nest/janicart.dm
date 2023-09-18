@@ -103,7 +103,7 @@
 				buckled_mob.pixel_y = 7
 
 
-/obj/structure/bed/chair/janicart/bullet_act(obj/item/projectile/Proj)
+/obj/structure/bed/chair/janicart/bullet_act(obj/projectile/Proj)
 	if(buckled_mob)
 		if(prob(85))
 			return buckled_mob.bullet_act(Proj)

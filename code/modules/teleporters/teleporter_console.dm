@@ -166,7 +166,7 @@
 		..()
 
 
-/obj/structure/machinery/computer/teleporter_console/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/computer/teleporter_console/bullet_act(obj/projectile/P)
 	visible_message("[P] doesn't even scratch [src]!")
 	return FALSE
 

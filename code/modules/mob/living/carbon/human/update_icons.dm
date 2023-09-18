@@ -73,14 +73,14 @@ There are several things that need to be remembered:
 
 */
 
-
-
 /mob/living/carbon/human/apply_overlay(cache_index)
-	var/image/I = overlays_standing[cache_index]
-	if(I)
-		I.appearance_flags |= RESET_COLOR
-		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, I)
-		overlays += I
+	var/image/images = overlays_standing[cache_index]
+
+	if(!images)
+		return
+
+	SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, images)
+	overlays += images
 
 /mob/living/carbon/human/remove_overlay(cache_index)
 	if(overlays_standing[cache_index])
@@ -132,10 +132,32 @@ There are several things that need to be remembered:
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body()
 	appearance_flags |= KEEP_TOGETHER // sanity
-	vis_contents.Cut()
-	for(var/obj/limb/part in limbs)
-		vis_contents += part
-		part.update_icon(TRUE)
+
+	update_damage_overlays()
+
+	var/list/needs_update = list()
+	for(var/obj/limb/part as anything in limbs)
+		part.update_limb()
+
+		var/old_key = icon_render_keys?[part.icon_name]
+		icon_render_keys[part.icon_name] = part.get_limb_icon_key()
+		if(icon_render_keys[part.icon_name] == old_key)
+			continue
+
+		needs_update += part
+
+	var/list/new_limbs = list()
+	for(var/obj/limb/part as anything in limbs)
+		if(part in needs_update)
+			var/bodypart_icon = part.get_limb_icon()
+			new_limbs += bodypart_icon
+			icon_render_image_cache[icon_render_keys[part.icon_name]] = bodypart_icon
+		else
+			new_limbs += icon_render_image_cache[icon_render_keys[part.icon_name]]
+
+	remove_overlay(BODYPARTS_LAYER)
+	overlays_standing[BODYPARTS_LAYER] = new_limbs
+	apply_overlay(BODYPARTS_LAYER)
 
 	if(species.flags & HAS_UNDERWEAR)
 		//Underwear
@@ -153,6 +175,21 @@ There are several things that need to be remembered:
 		undershirt_icon.layer = -UNDERSHIRT_LAYER
 		overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
 		apply_overlay(UNDERSHIRT_LAYER)
+
+/// Recalculates and reapplies damage overlays to every limb
+/mob/living/carbon/human/proc/update_damage_overlays()
+	remove_overlay(DAMAGE_LAYER)
+
+	var/list/damage_overlays = list()
+	for(var/obj/limb/part as anything in limbs)
+		if(part.status & LIMB_DESTROYED)
+			continue
+
+		damage_overlays += part.get_damage_overlays()
+
+	overlays_standing[DAMAGE_LAYER] = damage_overlays
+
+	apply_overlay(DAMAGE_LAYER)
 
 /mob/living/carbon/human/proc/remove_underwear() // :flushed: - geeves
 	remove_overlay(UNDERSHIRT_LAYER)
@@ -367,7 +404,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	overlays_standing[GLOVES_LAYER] = I
 	apply_overlay(GLOVES_LAYER)
 
-
 /mob/living/carbon/human/update_inv_glasses()
 	remove_overlay(GLASSES_LAYER)
 	if(glasses)
@@ -458,12 +494,15 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(istype(head, /obj/item/clothing/head/helmet/marine))
 			var/obj/item/clothing/head/helmet/marine/marine_helmet = head
 			if(assigned_squad && marine_helmet.flags_marine_helmet & HELMET_SQUAD_OVERLAY)
-				var/datum/squad/S = assigned_squad
-				var/leader = S.squad_leader == src
-				if(S.color <= helmetmarkings.len)
-					var/image/J = leader? helmetmarkings_sql[S.color] : helmetmarkings[S.color]
-					J.layer = -HEAD_SQUAD_LAYER
-					overlays_standing[HEAD_SQUAD_LAYER] = J
+				if(assigned_squad && assigned_squad.equipment_color)
+					var/leader = assigned_squad.squad_leader
+					var/image/helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state = "std-helmet")
+					if(leader == src)
+						helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state = "sql-helmet")
+					helmet_overlay.layer = -HEAD_SQUAD_LAYER
+					helmet_overlay.alpha = assigned_squad.armor_alpha
+					helmet_overlay.color = assigned_squad.equipment_color
+					overlays_standing[HEAD_SQUAD_LAYER] = helmet_overlay
 					apply_overlay(HEAD_SQUAD_LAYER)
 
 			var/num_helmet_overlays = 0
@@ -517,14 +556,16 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(istype(wear_suit, /obj/item/clothing/suit/storage/marine))
 			var/obj/item/clothing/suit/storage/marine/marine_armor = wear_suit
 			if(marine_armor.flags_marine_armor & ARMOR_SQUAD_OVERLAY)
-				if(assigned_squad)
-					var/datum/squad/S = assigned_squad
-					var/leader = S.squad_leader == src
-					if(S.color <= helmetmarkings.len)
-						var/image/J = leader? armormarkings_sql[S.color] : armormarkings[S.color]
-						J.layer = -SUIT_SQUAD_LAYER
-						overlays_standing[SUIT_SQUAD_LAYER] = J
-						apply_overlay(SUIT_SQUAD_LAYER)
+				if(assigned_squad && assigned_squad.equipment_color)
+					var/leader = assigned_squad.squad_leader
+					var/image/squad_overlay = image(marine_armor.squad_overlay_icon, icon_state = "std-armor")
+					if(leader == src)
+						squad_overlay = image(marine_armor.squad_overlay_icon, icon_state = "sql-armor")
+					squad_overlay.layer = -SUIT_SQUAD_LAYER
+					squad_overlay.alpha = assigned_squad.armor_alpha
+					squad_overlay.color = assigned_squad.equipment_color
+					overlays_standing[SUIT_SQUAD_LAYER] = squad_overlay
+					apply_overlay(SUIT_SQUAD_LAYER)
 
 			if(marine_armor.armor_overlays.len)
 				var/image/K
@@ -697,17 +738,22 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 /mob/living/carbon/human/update_fire()
 	remove_overlay(FIRE_LAYER)
 	if(!on_fire)
+		set_light_on(FALSE)
 		return
 	var/image/I
 	switch(fire_stacks)
 		if(1 to 14)
 			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_weak", "layer"= -FIRE_LAYER)
+			set_light_range(2)
 		if(15 to INFINITY)
 			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_medium", "layer"= -FIRE_LAYER)
+			set_light_range(3)
 		else
 			return
 	I.appearance_flags |= RESET_COLOR|RESET_ALPHA
 	I.color = fire_reagent.burncolor
+	set_light_color(fire_reagent.burncolor)
+	set_light_on(TRUE)
 	overlays_standing[FIRE_LAYER] = I
 	apply_overlay(FIRE_LAYER)
 
@@ -730,7 +776,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 //Human Overlays Indexes/////////
 #undef MUTANTRACE_LAYER
-#undef DAMAGE_LAYER
 #undef UNIFORM_LAYER
 #undef TAIL_LAYER
 #undef ID_LAYER

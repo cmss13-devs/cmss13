@@ -5,7 +5,8 @@
 #define URL_ISSUE_TRACKER "https://github.com/cmss13-devs/cmss13/issues"
 
 // ------ MISC WIKI LINKS ------ //
-#define URL_WIKI_RULES "https://cm-ss13.com/wiki/Rules"
+#define URL_RULES_PAGE "https://cm-ss13.com/rules"
+#define URL_RULES_EORG "https://cm-ss13.com/rules#rule-4-no-griefing"
 #define URL_WIKI_LANDING "https://cm-ss13.com/wiki/Main_Page"
 #define URL_WIKI_COC "https://cm-ss13.com/wiki/Rank"
 #define URL_WIKI_LAW "https://cm-ss13.com/wiki/Marine_Law"
@@ -34,7 +35,8 @@
 #define URL_WIKI_CMP_GUIDE "https://cm-ss13.com/wiki/Chief_MP" // MP Roles //
 #define URL_WIKI_MW_GUIDE "https://cm-ss13.com/wiki/Warden"
 #define URL_WIKI_MP_GUIDE "https://cm-ss13.com/wiki/Military_Police"
-#define URL_WIKI_PO_GUIDE "https://cm-ss13.com/wiki/Pilot_Officer" // Auxiliary Support
+#define URL_WIKI_ASO_GUIDE "https://cm-ss13.com/wiki/Auxiliary_Support_Officer" // Auxiliary Support
+#define URL_WIKI_PO_GUIDE "https://cm-ss13.com/wiki/Pilot_Officer"
 #define URL_WIKI_DCC_GUIDE "https://cm-ss13.com/wiki/Dropship_Crew_Chief"
 #define URL_WIKI_IO_GUIDE "https://cm-ss13.com/wiki/Intelligence_Officer"
 #define URL_WIKI_SYN_GUIDE "https://cm-ss13.com/wiki/Synthetic"

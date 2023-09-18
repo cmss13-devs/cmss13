@@ -110,3 +110,15 @@
 #define COMSIG_MOB_STAT_SET_DEAD "mob_stat_set_dead"
 
 #define COMSIG_GHOST_MOVED "ghost_moved"
+
+#define COMSIG_MOB_MOUSEDOWN "mob_mousedown"					//from /client/MouseDown(): (atom/object, turf/location, control, params)
+#define COMSIG_MOB_MOUSEUP "mob_mouseup"						//from /client/MouseUp(): (atom/object, turf/location, control, params)
+#define COMSIG_MOB_MOUSEDRAG "mob_mousedrag"				//from /client/MouseDrag(): (atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	#define COMSIG_MOB_CLICK_CANCELED (1<<0)
+	#define COMSIG_MOB_CLICK_HANDLED (1<<1)
+
+#define COMSIG_MOB_DEPLOYED_BIPOD "mob_deployed_bipod"
+#define COMSIG_MOB_UNDEPLOYED_BIPOD "mob_undeployed_bipod"
+
+/// From /obj/item/proc/pickup() : (obj/item/picked_up)
+#define COMSIG_MOB_PICKUP_ITEM "mob_pickup_item"

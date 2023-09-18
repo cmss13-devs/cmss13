@@ -155,7 +155,7 @@
 	if(!check_can_use(target, TRUE))
 		return
 
-	var/obj/item/projectile/aimed_proj = sniper_rifle.in_chamber
+	var/obj/projectile/aimed_proj = sniper_rifle.in_chamber
 	aimed_proj.projectile_flags |= PROJECTILE_BULLSEYE
 	aimed_proj.AddComponent(/datum/component/homing_projectile, target, human)
 	sniper_rifle.Fire(target, human)
@@ -183,7 +183,7 @@
 		to_chat(H, SPAN_WARNING("\The [M] is too close to get a proper shot!"))
 		return FALSE
 
-	var/obj/item/projectile/P = sniper_rifle.in_chamber
+	var/obj/projectile/P = sniper_rifle.in_chamber
 	// TODO: Make the below logic only occur in certain circumstances. Check goggles, maybe? -Kaga
 	if(check_shot_is_blocked(H, M, P))
 		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
@@ -195,7 +195,7 @@
 	COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay)
 	return TRUE
 
-/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/item/projectile/P)
+/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/projectile/P)
 	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
 	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
 		return TRUE
@@ -267,11 +267,15 @@
 	if(toggling_action)
 		toggling_action.update_button_icon()
 
-/obj/item/weapon/gun/rifle/sniper/toggle_burst(mob/user)
-	if(has_aimed_shot)
-		toggle_laser(user)
-	else
-		..()
+/obj/item/weapon/gun/rifle/sniper/verb/toggle_gun_laser()
+	set category = "Weapons"
+	set name = "Toggle Laser"
+	set desc = "Toggles your laser on or off."
+	set src = usr.contents
+
+	var/obj/item/weapon/gun/rifle/sniper/sniper = get_active_firearm(usr)
+	if((sniper == src) && has_aimed_shot)
+		toggle_laser(usr)
 
 //Pow! Headshot.
 /obj/item/weapon/gun/rifle/sniper/M42A
@@ -321,8 +325,8 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*3
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_7*3)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -365,9 +369,9 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM42B/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6 * 6 //Big boy damage, but it takes a lot of time to fire a shot.
+	set_fire_delay(FIRE_DELAY_TIER_6 * 6 )//Big boy damage, but it takes a lot of time to fire a shot.
 	//Kaga: Adjusted from 56 (Tier 4, 7*8) -> 30 (Tier 6, 5*6) ticks. 95 really wasn't big-boy damage anymore, although I updated it to 125 to remain consistent with the other 10x99mm caliber weapon (M42C). Now takes only twice as long as the M42A.
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10 //Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
 	scatter = SCATTER_AMOUNT_TIER_10
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -430,8 +434,8 @@
 
 /obj/item/weapon/gun/rifle/sniper/elite/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*5
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_6*5)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //Was previously BAM + HAMT10, similar to the XM42B, and coming out to 1.5? Changed to be consistent with M42A. -Kaga
 	scatter = SCATTER_AMOUNT_TIER_10 //Was previously 8, changed to be consistent with the XM42B.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -446,73 +450,56 @@
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.apply_effect(5, WEAKEN)
 
-//SVD //Based on the actual Dragunov DMR rifle.
+//Type 88 //Based on the actual Dragunov DMR rifle.
 
 /obj/item/weapon/gun/rifle/sniper/svd
-	name = "\improper SVD Dragunov-033 designated marksman rifle"
-	desc = "A wannabe replica of an SVD, constructed from a MAR-40 by someone probably illiterate that thought the original SVD was built from an AK pattern. Fires 7.62x54mmR rounds."
+	name = "\improper Type 88 designated marksman rifle"
+	desc = "The standard issue DMR of the UPP, the Type 88 is sought after by competitive shooters and terrorists alike for its high degree of accuracy. Typically loaded with armor-piercing 7.62x54mmR rounds in a 12 round magazine."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "svd003"
-	item_state = "svd003" //NEEDS A ONE HANDED STATE
+	icon_state = "type88"
+	item_state = "type88"
 
-	fire_sound = 'sound/weapons/gun_kt42.ogg'
+	fire_sound = 'sound/weapons/gun_mg.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
 		//Muzzle,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/heavy_barrel,
-		//Barrel,
-		/obj/item/attachable/slavicbarrel,
-		//Rail,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/scope,
-		/obj/item/attachable/scope/variable_zoom,
-		/obj/item/attachable/scope/variable_zoom/slavic,
-		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/scope/slavic,
 		//Under,
 		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/lasersight,
 		/obj/item/attachable/bipod,
-		//Stock,
-		/obj/item/attachable/stock/slavic,
+		//Integrated,
+		/obj/item/attachable/type88_barrel,
 	)
 	has_aimed_shot = FALSE
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
-	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/slavic)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
+	starting_attachment_types = list()
 	sniper_beam_type = null
 	skill_locked = FALSE
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attachie = new /obj/item/attachable/slavicbarrel(src)
+	var/obj/item/attachable/attachie = new /obj/item/attachable/type88_barrel(src)
 	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
 	attachie.Attach(src)
 	update_attachable(attachie.slot)
 
-	attachie = new /obj/item/attachable/stock/slavic(src)
-	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
-	attachie.Attach(src)
-	update_attachable(attachie.slot)
+	var/obj/item/attachable/scope/variable_zoom/integrated/type88sight = new(src)
+	type88sight.flags_attach_features &= ~ATTACH_REMOVABLE
+	type88sight.hidden = TRUE
+	type88sight.Attach(src)
+	update_attachable(type88sight.slot)
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 26, "under_y" = 14, "stock_x" = 24, "stock_y" = 13, "special_x" = 39, "special_y" = 18)
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_9
-	accuracy_mult = BASE_ACCURACY_MULT
+	set_fire_delay(FIRE_DELAY_TIER_6)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
+	accuracy_mult = BASE_ACCURACY_MULT * 3
 	scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0
@@ -584,9 +571,9 @@
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_6)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
@@ -829,26 +816,27 @@
 	muzzle_flash(angle,user)
 	simulate_recoil(0, user)
 
-	var/obj/item/explosive/grenade/F = cylinder.contents[1]
-	cylinder.remove_from_storage(F, user.loc)
+	var/obj/item/explosive/grenade/fired = cylinder.contents[1]
+	cylinder.remove_from_storage(fired, user.loc)
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
-		if(istype(F, /obj/item/explosive/grenade/slug/baton))
+		if(istype(fired, /obj/item/explosive/grenade/slug/baton))
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
-				human_user.remember_dropped_object(F)
+				human_user.remember_dropped_object(fired)
+				fired.fingerprintslast = key_name(user)
 			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
 
-	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
+	msg_admin_attack("[key_name_admin(user)] fired a grenade ([fired.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
 
-	F.throw_range = 20
-	F.det_time = min(10, F.det_time)
-	F.activate(user, FALSE)
-	F.forceMove(get_turf(src))
-	F.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
+	fired.throw_range = 20
+	fired.det_time = min(10, fired.det_time)
+	fired.activate(user, FALSE)
+	fired.forceMove(get_turf(src))
+	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
 
 
@@ -922,7 +910,7 @@
 
 /obj/item/weapon/gun/launcher/grenade/m92/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4*4
+	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/m92/able_to_fire(mob/living/user)
 	. = ..()
@@ -949,7 +937,7 @@
 
 /obj/item/weapon/gun/launcher/grenade/m81/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4 * 1.5
+	set_fire_delay(FIRE_DELAY_TIER_4 * 1.5)
 
 /obj/item/weapon/gun/launcher/grenade/m81/on_pocket_removal()
 	..()
@@ -1058,7 +1046,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*2
+	set_fire_delay(FIRE_DELAY_TIER_6*2)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -1095,7 +1083,7 @@
 /obj/item/weapon/gun/launcher/rocket/reload_into_chamber(mob/user)
 	return TRUE
 
-/obj/item/weapon/gun/launcher/rocket/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/launcher/rocket/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	if(!current_mag)
 		return
 	qdel(projectile_to_fire)
@@ -1189,7 +1177,7 @@
 			current_mag.current_rounds = 0
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
-/obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
+/obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		var/mob/living/carbon/human/huser = user
@@ -1225,9 +1213,9 @@
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
-	burst_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_4
+	set_fire_delay(FIRE_DELAY_TIER_5)
+	set_burst_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_4)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -1332,141 +1320,51 @@
 	user.put_in_active_hand(F)
 
 //-------------------------------------------------------
-//Flare gun. Close enough to a specialist gun?
+//UPP Rocket Launcher
 
-/obj/item/weapon/gun/flare
-	name = "\improper M82-F flare gun"
-	desc = "A flare gun issued to JTAC operators to use with flares. Comes with a miniscope. One shot, one... life saved?"
-	icon_state = "m82f"
-	item_state = "m82f"
-	current_mag = /obj/item/ammo_magazine/internal/flare
-	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
-	fire_sound = 'sound/weapons/gun_flare.ogg'
-	aim_slowdown = 0
-	flags_equip_slot = SLOT_WAIST
-	wield_delay = WIELD_DELAY_VERY_FAST
-	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
-	gun_category = GUN_CATEGORY_HANDGUN
-	attachable_allowed = list(/obj/item/attachable/scope/mini/flaregun)
+/obj/item/weapon/gun/launcher/rocket/upp
+	name = "\improper HJRA-12 Handheld Anti-Tank Grenade Launcher"
+	desc = "The HJRA-12 Handheld Anti-Tank Grenade Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "hjra12"
+	item_state = "hjra12"
+	skill_locked = FALSE
+	current_mag = /obj/item/ammo_magazine/rocket/upp/at
 
-	var/last_signal_flare_name
+	attachable_allowed = list(/obj/item/attachable/upp_rpg_breech)
 
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
-/obj/item/weapon/gun/flare/Initialize(mapload, spawn_empty)
-	. = ..()
-	if(spawn_empty)
-		update_icon()
+	flags_item = TWOHANDED
 
-/obj/item/weapon/gun/flare/handle_starting_attachment()
+/obj/item/weapon/gun/launcher/rocket/upp/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = -6, "stock_y" = 16, "special_x" = 37, "special_y" = 16)
+
+/obj/item/weapon/gun/launcher/rocket/upp/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/mini/flaregun/S = new(src)
-	S.hidden = TRUE
+	var/obj/item/attachable/upp_rpg_breech/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachables()
 
+	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
+	Integrated.hidden = TRUE
+	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	Integrated.Attach(src)
+	update_attachable(Integrated.slot)
 
-/obj/item/weapon/gun/flare/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
-
-/obj/item/weapon/gun/flare/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
-	scatter = 0
-	recoil = RECOIL_AMOUNT_TIER_4
-	recoil_unwielded = RECOIL_AMOUNT_TIER_4
-
-/obj/item/weapon/gun/flare/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
-	))
-
-/obj/item/weapon/gun/flare/reload_into_chamber(mob/user)
+/obj/item/weapon/gun/launcher/rocket/upp/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
 	. = ..()
-	to_chat(user, SPAN_WARNING("You pop out [src]'s tube!"))
-	update_icon()
-
-/obj/item/weapon/gun/flare/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/device/flashlight/flare))
-		var/obj/item/device/flashlight/flare/F = I
-		if(F.on)
-			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
-			return
-		if(!F.fuel)
-			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
-			return
-		if(current_mag && current_mag.current_rounds == 0)
-			ammo = GLOB.ammo_list[F.ammo_datum]
-			playsound(user, reload_sound, 25, 1)
-			to_chat(user, SPAN_NOTICE("You load \the [F] into [src]."))
-			current_mag.current_rounds++
-			qdel(I)
-			update_icon()
-		else
-			to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
-	else
-		to_chat(user, SPAN_WARNING("That's not a flare!"))
-
-/obj/item/weapon/gun/flare/unload(mob/user)
-	if(flags_gun_features & GUN_BURST_FIRING)
-		return
-	unload_flare(user)
-
-/obj/item/weapon/gun/flare/proc/unload_flare(mob/user)
-	if(!current_mag)
-		return
-	if(current_mag.current_rounds)
-		var/obj/item/device/flashlight/flare/unloaded_flare = new ammo.handful_type(get_turf(src))
-		playsound(user, reload_sound, 25, TRUE)
-		current_mag.current_rounds--
-		if(user)
-			to_chat(user, SPAN_NOTICE("You unload \the [unloaded_flare] from \the [src]."))
-			user.put_in_hands(unloaded_flare)
-		update_icon()
-
-/obj/item/weapon/gun/flare/unique_action(mob/user)
-	if(!user || !isturf(user.loc) || !current_mag || !current_mag.current_rounds)
+	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		return
 
-	var/turf/flare_turf = user.loc
-	var/area/flare_area = flare_turf.loc
-
-	if(flare_area.ceiling > CEILING_GLASS)
-		to_chat(user, SPAN_NOTICE("The roof above you is too dense."))
-		return
-
-	if(!istype(ammo, /datum/ammo/flare))
-		to_chat(user, SPAN_NOTICE("\The [src] jams as it is somehow loaded with incorrect ammo!"))
-		return
-
-	if(user.action_busy)
-		return
-
-	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		return
-
-	current_mag.current_rounds--
-
-	flare_turf.ceiling_debris()
-
-	var/datum/ammo/flare/explicit_ammo = ammo
-
-	var/obj/item/device/flashlight/flare/fired_flare = new explicit_ammo.flare_type(get_turf(src))
-	to_chat(user, SPAN_NOTICE("You fire \the [fired_flare] into the air!"))
-	fired_flare.visible_message(SPAN_WARNING("\A [fired_flare] bursts into brilliant light in the sky!"))
-	fired_flare.invisibility = INVISIBILITY_MAXIMUM
-	fired_flare.mouse_opacity = FALSE
-	playsound(user.loc, fire_sound, 50, 1)
-
-	if(fired_flare.activate_signal(user))
-		last_signal_flare_name = fired_flare.name
-
-	update_icon()
-
-/obj/item/weapon/gun/flare/get_examine_text(mob/user)
-	. = ..()
-	if(last_signal_flare_name)
-		. += SPAN_NOTICE("The last signal flare fired has the designation: [last_signal_flare_name]")
+	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
+	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
+	smoke.start()
+	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
+	for(var/mob/living/carbon/C in backblast_loc)
+		if(!C.lying && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
+			C.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
+			C.apply_effect(4, STUN) //For good measure
+			C.apply_effect(6, STUTTER)
+			C.emote("pain")

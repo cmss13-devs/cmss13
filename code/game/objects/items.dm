@@ -2,6 +2,8 @@
 	name = "item"
 	icon = 'icons/obj/items/items.dmi'
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
+	layer = ITEM_LAYER
+	light_system = MOVABLE_LIGHT
 	/// this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/randpixel = 6
@@ -227,28 +229,28 @@ item, and will change the skin to whatever you specify here. You can also
 manually override the icon with a unique skin if wanted, for the outlier
 cases. Override_icon_state should be a list.*/
 /obj/item/proc/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	if(type == expected_type && !istype(src, /obj/item/clothing/suit/storage/marine/fluff) && !istype(src, /obj/item/clothing/head/helmet/marine/fluff) && !istype(src, /obj/item/clothing/under/marine/fluff))
-		var/new_icon_state
-		var/new_protection
-		var/new_item_state
-		if(override_icon_state && override_icon_state.len)
-			new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
-		if(override_protection && override_protection.len)
-			new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
-		switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-			if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
-				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
-				item_state = new_item_state ? new_item_state : "s_" + item_state
-			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
-				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
-				item_state = new_item_state ? new_item_state : "d_" + item_state
-			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
-				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
-				item_state = new_item_state ? new_item_state : "c_" + item_state
-		if(new_protection)
-			min_cold_protection_temperature = new_protection
-	else return
+	if(type != expected_type)
+		return
 
+	var/new_icon_state
+	var/new_protection
+	var/new_item_state
+	if(override_icon_state && override_icon_state.len)
+		new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
+	if(override_protection && override_protection.len)
+		new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
+			item_state = new_item_state ? new_item_state : "s_" + item_state
+		if("desert")
+			icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+			item_state = new_item_state ? new_item_state : "d_" + item_state
+		if("classic")
+			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+			item_state = new_item_state ? new_item_state : "c_" + item_state
+	if(new_protection)
+		min_cold_protection_temperature = new_protection
 
 /obj/item/get_examine_text(mob/user)
 	. = list()
@@ -366,6 +368,7 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/pickup(mob/user, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	SEND_SIGNAL(user, COMSIG_MOB_PICKUP_ITEM, src)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	if(pickup_sound && !silent && src.loc?.z)
 		playsound(src, pickup_sound, pickupvol, pickup_vary)
@@ -633,6 +636,8 @@ cases. Override_icon_state should be a list.*/
 					return FALSE
 				if(flags_equip_slot & SLOT_SUIT_STORE)
 					return TRUE
+				if(flags_equip_slot & SLOT_BLOCK_SUIT_STORE)
+					return FALSE
 				if(!H.wear_suit && (WEAR_JACKET in mob_equip))
 					if(!disable_warning)
 						to_chat(H, SPAN_WARNING("You need a suit before you can attach this [name]."))
@@ -829,6 +834,7 @@ cases. Override_icon_state should be a list.*/
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
+		COMSIG_PARENT_QDELETING,
 	))
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
@@ -861,6 +867,7 @@ cases. Override_icon_state should be a list.*/
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
+			COMSIG_PARENT_QDELETING,
 		), PROC_REF(unzoom_dropped_callback))
 		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
 
@@ -1064,3 +1071,7 @@ cases. Override_icon_state should be a list.*/
 	animate(attack_image, alpha = 175, transform = copy_transform.Scale(0.75), pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
 	animate(time = 1)
 	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
+
+///Called by /mob/living/carbon/swap_hand() when hands are swapped
+/obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
+	return

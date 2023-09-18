@@ -56,3 +56,10 @@
 
 /// From /datum/game_mode/colonialmarines/proc/check_ground_humans()
 #define COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING "!groundside_forsaken_handling"
+
+/// From
+#define COMSIG_GLOB_YAUTJA_ARMORY_OPENED "yautja_armory_opened"
+
+/// From /proc/biohazard_lockdown()
+#define COMSIG_GLOB_RESEARCH_LOCKDOWN "research_lockdown_closed"
+#define COMSIG_GLOB_RESEARCH_LIFT "research_lockdown_opened"

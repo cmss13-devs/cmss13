@@ -895,7 +895,6 @@
 /area/shiva/interior/garage)
 "adp" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/banhammer,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -10613,10 +10612,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/research_hab)
-"fiy" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
-/turf/open/floor/plating,
-/area/shiva/exterior/lz2_fortress)
 "fiK" = (
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
@@ -13499,6 +13494,16 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
+"ipY" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/machinery/light/double,
+/obj/item/weapon/gun/smg/pps43,
+/obj/item/ammo_magazine/smg/pps43,
+/obj/item/ammo_magazine/smg/pps43,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/colony/medseceng)
 "iqh" = (
 /obj/item/device/flashlight,
 /turf/open/floor/wood,
@@ -14877,6 +14882,15 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/caves/cp_camp)
+"jOA" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/weapon/gun/smg/pps43,
+/obj/item/ammo_magazine/smg/pps43,
+/obj/item/ammo_magazine/smg/pps43,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/colony/medseceng)
 "jOP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
@@ -17359,6 +17373,12 @@
 /obj/item/device/flashlight,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
+"mlX" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "Research Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/lz2_fortress)
 "mms" = (
 /turf/open/floor/shiva{
 	dir = 1
@@ -24176,15 +24196,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
-"tJX" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/gun/smg/ppsh,
-/obj/item/ammo_magazine/smg/ppsh,
-/obj/item/ammo_magazine/smg/ppsh,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/colony/medseceng)
 "tJY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -24854,9 +24865,6 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/medseceng)
-"ukJ" = (
-/turf/open/floor/shiva,
-/area/shiva/interior/colony/research_hab)
 "ukU" = (
 /obj/structure/surface/table,
 /obj/item/clipboard,
@@ -27083,16 +27091,6 @@
 /obj/structure/window/framed/shiva,
 /turf/open/floor/plating/icefloor,
 /area/shiva/interior/telecomm/lz1_biceps)
-"wOf" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/structure/machinery/light/double,
-/obj/item/weapon/gun/smg/ppsh,
-/obj/item/ammo_magazine/smg/ppsh,
-/obj/item/ammo_magazine/smg/ppsh,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/colony/medseceng)
 "wOq" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/shiva{
@@ -31179,7 +31177,7 @@ gkY
 gkY
 mFm
 aar
-fiy
+gkY
 kiv
 mhP
 mFm
@@ -31817,7 +31815,7 @@ gkY
 gkY
 gkY
 gkY
-gkY
+mlX
 gkY
 gkY
 gkY
@@ -36780,7 +36778,7 @@ tRq
 chU
 ogu
 rZt
-ukJ
+rZt
 asz
 asz
 qNE
@@ -54988,7 +54986,7 @@ fIz
 acT
 age
 agh
-wOf
+ipY
 acT
 pCJ
 agh
@@ -55150,7 +55148,7 @@ pxi
 acT
 afv
 agh
-tJX
+jOA
 acT
 sxp
 hCX
@@ -59474,7 +59472,7 @@ cQW
 cQW
 kLM
 gGH
-boD
+cQW
 kLM
 uqb
 lNg
@@ -60112,7 +60110,7 @@ cQW
 cQW
 cQW
 cQW
-cQW
+boD
 cQW
 cQW
 cQW

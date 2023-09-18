@@ -7,7 +7,7 @@
 	desc = "A Flashlight designed to be held in the hand, or attached to a rifle"
 	icon_state = "flashlight"
 	item_state = "flashlight"
-	brightness_on = 5 //Pretty luminous, but still a flashlight that fits in a pocket
+	light_range = 5 //Pretty luminous, but still a flashlight that fits in a pocket
 
 //MARINE SNIPER TARPS
 

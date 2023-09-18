@@ -12,7 +12,7 @@
 
 /datum/equipment_preset/pmc/New()
 	. = ..()
-	access = get_weyland_pmc_access()
+	access = get_access(ACCESS_LIST_WY_PMC)
 
 
 /datum/equipment_preset/pmc/load_name(mob/living/carbon/human/new_human, randomise)
@@ -691,6 +691,10 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	skills = /datum/skills/pmc/SL
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
+/datum/equipment_preset/pmc/pmc_leader/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_PMC) + list(ACCESS_WY_LEADERSHIP, ACCESS_WY_PMC_TL)
+
 /datum/equipment_preset/pmc/pmc_leader/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -842,6 +846,10 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
+
+/datum/equipment_preset/pmc/pmc_lead_investigator/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_PMC) + list(ACCESS_WY_LEADERSHIP, ACCESS_WY_PMC_TL)
 
 /datum/equipment_preset/pmc/pmc_lead_investigator/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -1837,10 +1845,10 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		languages = ALL_SYNTH_LANGUAGES
 
 		skills = /datum/skills/synthetic
-		idtype = /obj/item/card/id/data
+		idtype = /obj/item/card/id/pmc
 		assignment = JOB_PMC_SYNTH
 		rank = JOB_PMC_SYNTH
-		role_comm_title = "Syn"
+		role_comm_title = "WY Syn"
 		headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
 
@@ -1879,7 +1887,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth, WEAR_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
-		new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
@@ -1895,8 +1903,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		new_human.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
 		new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK)
 		new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_BACK)
-		new /obj/item/clothing/suit/auto_cpr(new_human.back)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/crew_monitor, WEAR_IN_BACK)
 
 		new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch, WEAR_WAIST)
 		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun/compact, WEAR_J_STORE)

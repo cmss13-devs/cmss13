@@ -49,13 +49,16 @@
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
-	var/mob/observetarget = null //The target mob that the ghost is observing. Used as a reference in logout()
+	/// The target mob that the ghost is observing. Used as a reference in logout()
+	var/mob/observetarget = null
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
-	var/observer_actions = list(/datum/action/observer_action/join_xeno)
+	var/observer_actions = list(/datum/action/observer_action/join_xeno, /datum/action/observer_action/join_lesser_drone)
 	var/datum/action/minimap/observer/minimap
 	var/larva_queue_cached_message
+	///Used to bypass time of death checks such as when being selected for larva.
+	var/bypass_time_of_death_checks = FALSE
 
 	alpha = 127
 
@@ -82,6 +85,7 @@
 		life_kills_total = body.life_kills_total //kills also copy over
 
 		appearance = body.appearance
+		underlays.Cut()
 		base_transform = matrix(body.base_transform)
 		body.alter_ghost(src)
 		apply_transform(matrix())
@@ -252,6 +256,10 @@
 				A.JumpToCoord(x, y, z)
 	if(href_list["joinresponseteam"])
 		JoinResponseTeam()
+	if(href_list["claim_freed"])
+		handle_joining_as_freed_mob(locate(href_list["claim_freed"]))
+	if(href_list["join_xeno"])
+		join_as_alien()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -264,28 +272,28 @@
 			switch(i)
 				if("Medical HUD")
 					H = huds[MOB_HUD_MEDICAL_OBSERVER]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Security HUD")
 					H = huds[MOB_HUD_SECURITY_ADVANCED]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Squad HUD")
 					H = huds[MOB_HUD_FACTION_OBSERVER]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Xeno Status HUD")
 					H = huds[MOB_HUD_XENO_STATUS]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Faction UPP HUD")
 					H = huds[MOB_HUD_FACTION_UPP]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Faction Wey-Yu HUD")
 					H = huds[MOB_HUD_FACTION_WY]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Faction TWE HUD")
 					H = huds[MOB_HUD_FACTION_TWE]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Faction CLF HUD")
 					H = huds[MOB_HUD_FACTION_CLF]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 
 	see_invisible = INVISIBILITY_OBSERVER
 
@@ -365,10 +373,13 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
-		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
-		// We don't change facehugger timeofdeath because they are still on cooldown if they died as a hugger
-		var/new_tod = isfacehugger(src) ? 1 : ghost.timeofdeath
-		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+		var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+
+		// if they died as facehugger or lesser drone, bypass typical TOD checks
+		ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
+		ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()
 
@@ -391,7 +402,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		ghostize(TRUE)
 	else
 		var/list/options = list("Ghost", "Stay in body")
-		if(check_rights(R_MOD))
+		if(check_other_rights(client, R_MOD, FALSE))
 			options = list("Aghost") + options
 		var/text_prompt = "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)"
 		var/is_nested = (buckled && istype(buckled, /obj/structure/bed/nest)) ? TRUE : FALSE
@@ -407,14 +418,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
-			msg_admin_niche("[key_name_admin(usr)] has ghosted. [ADMIN_JMP(location)]")
-		log_game("[key_name_admin(usr)] has ghosted.")
+			msg_admin_niche("[key_name_admin(client)] has ghosted. [ADMIN_JMP(location)]")
+		log_game("[key_name_admin(client)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize((is_nested && nest && !QDELETED(nest))) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
 
-			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
-			var/new_tod = isfacehugger(src) ? 1 : world.time
+			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+			var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+
+			// if they died as facehugger or lesser drone, bypass typical TOD checks
+			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
 			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
@@ -534,6 +549,27 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!istype(target))
 		return
 
+	if(check_client_rights(client, R_MOD, FALSE))
+		view_health_scan(target)
+		return
+
+	if(!mind.original)
+		view_health_scan(target)
+		return
+
+	if(!ishuman(mind.original))
+		view_health_scan(target)
+		return
+
+	var/mob/living/carbon/human/original_human = mind.original
+
+	if((original_human.stat == DEAD && !original_human.check_tod() || !original_human.is_revivable()) || !can_reenter_corpse)
+		view_health_scan(target)
+		return
+
+	to_chat(src, SPAN_NOTICE("You must be permanently unrevivable or unable to reenter your body to use the scan health verb."))
+
+/mob/dead/observer/proc/view_health_scan(mob/living/target)
 	if (!last_health_display)
 		last_health_display = new(target)
 	else
@@ -773,6 +809,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_xeno_late_join(src))
 		SSticker.mode.attempt_to_join_as_facehugger(src)
 
+/mob/dead/verb/join_as_lesser_drone()
+	set category = "Ghost.Join"
+	set name = "Join as a Lesser Drone"
+	set desc = "Try joining as a Lesser Drone to support the hive."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_xeno_late_join(src))
+		SSticker.mode.attempt_to_join_as_lesser_drone(src)
+
 /mob/dead/verb/join_as_zombie() //Adapted from join as hellhoud
 	set category = "Ghost.Join"
 	set name = "Join as Zombie"
@@ -860,19 +911,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/mob/living/L = freed_mob_choices[choice]
-	if(!L || !(WEAKREF(L) in GLOB.freed_mob_list))
+
+	handle_joining_as_freed_mob(L)
+
+/mob/dead/proc/handle_joining_as_freed_mob(mob/living/freed_mob)
+	if(!freed_mob || !(WEAKREF(freed_mob) in GLOB.freed_mob_list))
 		return
 
-	if(!istype(L))
+	if(!istype(freed_mob))
 		return
 
-	if(QDELETED(L) || L.client)
-		GLOB.freed_mob_list -= WEAKREF(L)
+	if(QDELETED(freed_mob) || freed_mob.client)
+		GLOB.freed_mob_list -= WEAKREF(freed_mob)
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	GLOB.freed_mob_list -= WEAKREF(L)
-	M.mind.transfer_to(L, TRUE)
+	GLOB.freed_mob_list -= WEAKREF(freed_mob)
+	mind.transfer_to(freed_mob, TRUE)
 
 /mob/dead/verb/join_as_hellhound()
 	set category = "Ghost.Join"

@@ -94,7 +94,7 @@
 		COMSIG_HUMAN_BULLET_ACT
 	))
 
-/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/carbon/human/user, damage, ammo_flags, obj/item/projectile/P)
+/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/carbon/human/user, damage, ammo_flags, obj/projectile/P)
 	SIGNAL_HANDLER
 	if(damage <= 0 || (ammo_flags & AMMO_IGNORE_ARMOR))
 		return

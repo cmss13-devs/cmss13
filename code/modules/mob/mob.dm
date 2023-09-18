@@ -327,7 +327,6 @@
 		if (exterior_lighting)
 			exterior_lighting.alpha = min(GLOB.minimum_exterior_lighting_alpha, lighting_alpha)
 
-
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful
 /mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
@@ -594,8 +593,8 @@ below 100 is not dizzy
 	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
 		return
 
-	dizziness = min(1000, dizziness + amount) // store what will be new value
-													// clamped to max 1000
+	dizziness = min(500, dizziness + amount) // store what will be new value
+													// clamped to max 500
 	if(dizziness > 100 && !is_dizzy)
 		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
 
@@ -609,16 +608,22 @@ note dizziness decrements automatically in the mob's Life() proc.
 	is_dizzy = 1
 	while(dizziness > 100)
 		if(client)
-			var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
-			client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)
-			client.pixel_y = amplitude * cos(0.008 * dizziness * world.time)
-
+			if(buckled || resting)
+				client.pixel_x = 0
+				client.pixel_y = 0
+			else
+				var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
+				client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)
+				client.pixel_y = amplitude * cos(0.008 * dizziness * world.time)
+				if(prob(1))
+					to_chat(src, "The dizziness is becoming unbearable! It should pass faster if you lie down.")
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_dizzy = 0
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0
+		to_chat(src, "The dizziness has passed, you're starting to feel better.")
 
 // jitteriness - copy+paste of dizziness
 

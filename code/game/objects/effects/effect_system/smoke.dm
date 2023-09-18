@@ -36,7 +36,7 @@
 /obj/effect/particle_effect/smoke/Destroy()
 	. = ..()
 	if(opacity)
-		SetOpacity(0)
+		set_opacity(0)
 	active_smoke_effects -= src
 	cause_data = null
 
@@ -51,9 +51,10 @@
 		qdel(src)
 		return
 	else if(time_to_live == 1)
-		alpha = 180
+		if(alpha > 180)
+			alpha = 180
 		amount = 0
-		SetOpacity(0)
+		set_opacity(0)
 
 	apply_smoke_effect(get_turf(src))
 
@@ -63,8 +64,8 @@
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/M)
 	..()
-	if(istype(M, /obj/item/projectile/beam))
-		var/obj/item/projectile/beam/B = M
+	if(istype(M, /obj/projectile/beam))
+		var/obj/projectile/beam/B = M
 		B.damage = (B.damage/2)
 	if(iscarbon(M))
 		affect(M)
@@ -180,18 +181,20 @@
 
 /obj/effect/particle_effect/smoke/mustard/Move()
 	. = ..()
-	for(var/mob/living/carbon/human/R in get_turf(src))
-		affect(R)
+	for(var/mob/living/carbon/human/creature in get_turf(src))
+		affect(creature)
 
-/obj/effect/particle_effect/smoke/mustard/affect(mob/living/carbon/human/R)
-	..()
-	R.burn_skin(0.75)
-	if(R.coughedtime != 1)
-		R.coughedtime = 1
-		if(ishuman(R)) //Humans only to avoid issues
-			R.emote("gasp")
-		addtimer(VARSET_CALLBACK(R, coughedtime, 0), 2 SECONDS)
-	R.updatehealth()
+/obj/effect/particle_effect/smoke/mustard/affect(mob/living/carbon/human/creature)
+	if(!istype(creature) || issynth(creature))
+		return FALSE
+
+	creature.burn_skin(0.75)
+	if(creature.coughedtime != 1)
+		creature.coughedtime = 1
+		if(ishuman(creature)) //Humans only to avoid issues
+			creature.emote("gasp")
+		addtimer(VARSET_CALLBACK(creature, coughedtime, 0), 2 SECONDS)
+	creature.updatehealth()
 	return
 
 /////////////////////////////////////////////
@@ -243,6 +246,89 @@
 	M.IgniteMob()
 	M.updatehealth()
 
+
+/////////////////////////////////////////////
+// CN20 Nerve Gas
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/cn20
+	name = "CN20 nerve gas"
+	smokeranking = SMOKE_RANK_HIGH
+	color = "#80c7e4"
+	var/xeno_affecting = FALSE
+	opacity = FALSE
+	alpha = 75
+
+/obj/effect/particle_effect/smoke/cn20/xeno
+	name = "CN20-X nerve gas"
+	color = "#2da9da"
+	xeno_affecting = TRUE
+
+/obj/effect/particle_effect/smoke/cn20/Move()
+	. = ..()
+	if(!xeno_affecting)
+		for(var/mob/living/carbon/human/human in get_turf(src))
+			affect(human)
+	else
+		for(var/mob/living/carbon/creature in get_turf(src))
+			affect(creature)
+
+/obj/effect/particle_effect/smoke/cn20/affect(mob/living/carbon/creature)
+	var/mob/living/carbon/xenomorph/xeno_creature
+	var/mob/living/carbon/human/human_creature
+	if(isxeno(creature))
+		xeno_creature = creature
+	else if(ishuman(creature))
+		human_creature = creature
+	if(!istype(creature) || issynth(creature) || creature.stat == DEAD)
+		return FALSE
+	if(!xeno_affecting && xeno_creature)
+		return FALSE
+	if(isyautja(creature) && prob(75))
+		return FALSE
+
+	if(creature.wear_mask && (creature.wear_mask.flags_inventory & BLOCKGASEFFECT))
+		return FALSE
+	if(human_creature && (human_creature.head && (human_creature.head.flags_inventory & BLOCKGASEFFECT)))
+		return FALSE
+
+	var/effect_amt = round(6 + amount*6)
+
+	if(xeno_creature)
+		if(xeno_creature.interference < 4)
+			to_chat(xeno_creature, SPAN_XENOHIGHDANGER("Your awareness dims to a small area!"))
+		xeno_creature.interference = 10
+		xeno_creature.blinded = TRUE
+	else
+		creature.apply_damage(12, OXY)
+	creature.SetEarDeafness(max(creature.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
+	if(!xeno_creature && !creature.eye_blind) //Eye exposure damage
+		to_chat(creature, SPAN_DANGER("Your eyes sting. You can't see!"))
+		creature.SetEyeBlind(round(effect_amt/3))
+	if(!xeno_creature && creature.coughedtime != 1 && !creature.stat) //Coughing/gasping
+		creature.coughedtime = 1
+		if(prob(50))
+			creature.emote("cough")
+		else
+			creature.emote("gasp")
+		addtimer(VARSET_CALLBACK(creature, coughedtime, 0), 1.5 SECONDS)
+	var/stun_chance = 20
+	if(xeno_affecting)
+		stun_chance = 35
+	if(prob(stun_chance))
+		creature.apply_effect(1, WEAKEN)
+
+	//Topical damage (neurotoxin on exposed skin)
+	if(xeno_creature)
+		to_chat(xeno_creature, SPAN_XENODANGER("You are struggling to move, it's as if you're paralyzed!"))
+	else
+		to_chat(creature, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
+	if(prob(60 + round(amount*15))) //Highly likely to drop items due to arms/hands seizing up
+		creature.drop_held_item()
+	if(human_creature)
+		human_creature.temporary_slowdown = max(human_creature.temporary_slowdown, 4) //One tick every two second
+		human_creature.recalculate_move_delay = TRUE
+	return TRUE
 
 //////////////////////////////////////
 // FLASHBANG SMOKE
@@ -540,6 +626,12 @@
 
 /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/weak
+
+/datum/effect_system/smoke_spread/cn20
+	smoke_type = /obj/effect/particle_effect/smoke/cn20
+
+/datum/effect_system/smoke_spread/cn20/xeno
+	smoke_type = /obj/effect/particle_effect/smoke/cn20/xeno
 
 // XENO SMOKES
 

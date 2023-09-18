@@ -39,6 +39,9 @@
 
 	plane = FLOOR_PLANE
 
+	/// Tells the structure if they are being deleted because of hijack
+	var/hijack_delete = FALSE
+
 /obj/effect/alien/resin/special/Initialize(mapload, hive_ref)
 	. = ..()
 	maxhealth = health

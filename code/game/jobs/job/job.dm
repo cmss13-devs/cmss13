@@ -37,6 +37,8 @@
 	/// When set you will be able to choose between the different job options when selecting your role.
 	/// Associated list. Main list elements - actual options, associated values - shorthands for job preferences menu (keep those short).
 	var/job_options
+	/// If TRUE, this job will spawn w/ a cryo emergency kit during evac/red alert
+	var/gets_emergency_kit = TRUE
 
 /datum/job/New()
 	. = ..()
@@ -288,6 +290,8 @@
 			join_turf = get_turf(pick(GLOB.spawns_by_job[type]))
 		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
 			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else if(GLOB.latejoin_by_job[title])
+			join_turf = get_turf(pick(GLOB.latejoin_by_job[title]))
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
 		human.forceMove(join_turf)

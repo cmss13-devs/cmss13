@@ -14,6 +14,8 @@
 	var/obj/item/storage/backpack/souto/soutopack
 	current_mag = null
 	auto_retrieval_slot = WEAR_IN_BACK
+	start_automatic = TRUE
+	autofire_slow_mult = 0.8 //Fires FASTER when in Full Auto, that is the power of Souta
 
 /obj/item/weapon/gun/souto/set_gun_config_values()
 	. = ..()
@@ -27,14 +29,14 @@
 			to_chat(user, "You must equip the specialized Backpack Souto Vending Machine to use the Souto Slinger Supremo!")
 			click_empty(user)
 			unlink_soutopack()
-			return
+			return NONE
 	if(soutopack)
 		if(!current_mag)
 			current_mag = soutopack.internal_mag
 		// Check we're actually firing the right fuel tank
 		if(current_mag != soutopack.internal_mag)
 			current_mag = soutopack.internal_mag
-		..()
+		return ..()
 
 /obj/item/weapon/gun/souto/reload(mob/user, obj/item/ammo_magazine/magazine)
 	to_chat(user, SPAN_WARNING("The [src] feed system cannot be reloaded manually."))

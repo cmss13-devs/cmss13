@@ -60501,6 +60501,14 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"fcu" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "uppcrash-supply"
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
 "fcE" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
@@ -64447,6 +64455,15 @@
 	icon_state = "desert_transition_corner1"
 	},
 /area/desert_dam/interior/caves/temple)
+"sRl" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "uppcrash"
+	},
+/turf/open/desert/dirt{
+	dir = 6;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_hydro)
 "sUe" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -70306,7 +70323,7 @@ cDY
 cDY
 cDY
 cDY
-cFa
+cDY
 cML
 cBS
 cUl
@@ -71232,7 +71249,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
+cFa
 cDY
 cDY
 cDY
@@ -73168,7 +73185,7 @@ aWh
 aWh
 aWh
 aWh
-dGU
+aWh
 bDO
 aVi
 aVh
@@ -74094,7 +74111,7 @@ aWh
 aWh
 aWh
 aWh
-aWh
+dGU
 aWh
 aWh
 aWh
@@ -82412,7 +82429,7 @@ dTs
 dTs
 dTs
 dTs
-cMo
+sRl
 dNS
 cZw
 xgA
@@ -103510,7 +103527,7 @@ cCH
 clZ
 clZ
 crW
-cko
+fcu
 cmc
 cpY
 cpY

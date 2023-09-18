@@ -141,7 +141,7 @@
 			launcher.cylinder.storage_slots = launcher.internal_slots //need to adjust the internal storage as well.
 			for(var/i = 1 to launcher.internal_slots)
 				new /obj/item/explosive/grenade/high_explosive/frag(launcher.cylinder)
-			launcher.fire_delay = FIRE_DELAY_TIER_4 //More HEFA per second, per second. Strictly speaking this is probably a nerf.
+			launcher.set_fire_delay(FIRE_DELAY_TIER_4) //More HEFA per second, per second. Strictly speaking this is probably a nerf.
 
 	// Satchel
 	if(satchel_success)
@@ -246,7 +246,7 @@
 
 /datum/equipment_preset/fun/santa/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/fun/santa/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
@@ -342,7 +342,7 @@
 
 /datum/equipment_preset/fun/van_bandolier/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/fun/van_bandolier/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE

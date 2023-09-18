@@ -6974,8 +6974,8 @@
 "auQ" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
-	pixel_y = 4;
-	plane = -5
+	pixel_y = 0;
+	layer = 3.1
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -7661,9 +7661,8 @@
 /area/almayer/command/cic)
 "awH" = (
 /obj/structure/surface/table/reinforced/black{
-	layer = 3.1;
-	pixel_y = -4;
-	plane = -5.5
+	layer = 3.2;
+	pixel_y = -4
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Alamo Remote Control Console";
@@ -7672,16 +7671,16 @@
 	plane = -4;
 	pixel_x = 15
 	},
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 4;
-	plane = -5.5
-	},
 /obj/item/device/radio/intercom/alamo{
 	layer = 3.5;
 	pixel_x = -2;
 	pixel_y = 0;
 	plane = -4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 0;
+	layer = 3.125
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -8286,13 +8285,12 @@
 	},
 /obj/structure/barricade/handrail{
 	dir = 1;
-	pixel_y = 4;
-	plane = -5.5
+	pixel_y = 0;
+	layer = 3.125
 	},
 /obj/structure/surface/table/reinforced/black{
-	layer = 3.1;
-	pixel_y = -4;
-	plane = -5.5
+	layer = 3.2;
+	pixel_y = -4
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -36210,7 +36208,7 @@
 /area/almayer/command/corporateliason)
 "fqn" = (
 /obj/structure/sign/safety/south{
-	pixel_x = -17;
+	pixel_x = -19;
 	pixel_y = 9
 	},
 /turf/open/floor/almayer,
@@ -44740,15 +44738,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"iTD" = (
-/obj/structure/closet/fireaxecabinet{
-	pixel_y = 32
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silvercorner"
-	},
-/area/almayer/command/cic)
 "iTI" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -47987,11 +47976,11 @@
 /area/almayer/hull/lower_hull/l_f_s)
 "kng" = (
 /obj/structure/sign/safety/bridge{
-	pixel_x = -17;
+	pixel_x = -19;
 	pixel_y = 7
 	},
 /obj/structure/sign/safety/reception{
-	pixel_x = -17;
+	pixel_x = -19;
 	pixel_y = -8
 	},
 /turf/open/floor/almayer,
@@ -58393,10 +58382,6 @@
 	layer = 3.33;
 	pixel_y = 1
 	},
-/obj/structure/sign/safety/cryo{
-	pixel_x = -19;
-	pixel_y = -5
-	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -59650,12 +59635,13 @@
 /area/almayer/shipboard/brig/main_office)
 "pbp" = (
 /obj/structure/window/reinforced/toughened{
-	plane = -5
+	plane = -4
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/prop/almayer/CICmap{
 	pixel_y = 5;
-	plane = -5
+	layer = 3.1;
+	plane = -4
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
@@ -59749,13 +59735,12 @@
 	},
 /obj/structure/barricade/handrail{
 	dir = 1;
-	pixel_y = 4;
-	plane = -5.5
+	pixel_y = 0;
+	layer = 3.125
 	},
 /obj/structure/surface/table/reinforced/black{
-	layer = 3.1;
-	pixel_y = -4;
-	plane = -5.5
+	layer = 3.2;
+	pixel_y = -4
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -61708,6 +61693,13 @@
 	icon_state = "silver"
 	},
 /area/almayer/living/briefing)
+"pVQ" = (
+/obj/structure/sign/safety/cryo{
+	pixel_x = -19;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "pVZ" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -62461,8 +62453,8 @@
 	},
 /obj/structure/barricade/handrail{
 	dir = 1;
-	pixel_y = 4;
-	plane = -5
+	pixel_y = 0;
+	layer = 3.125
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -67832,33 +67824,27 @@
 	},
 /obj/item/tool/kitchen/utensil/fork{
 	pixel_y = 6;
-	pixel_x = -10;
-	drop_vary = 0
+	pixel_x = -10
 	},
 /obj/item/tool/kitchen/utensil/fork{
 	pixel_y = 6;
-	pixel_x = -7;
-	drop_vary = 0
+	pixel_x = -7
 	},
 /obj/item/tool/kitchen/utensil/fork{
 	pixel_y = 6;
-	pixel_x = -4;
-	drop_vary = 0
+	pixel_x = -4
 	},
 /obj/item/tool/kitchen/utensil/spoon{
 	pixel_x = -1;
-	pixel_y = 6;
-	drop_vary = 0
+	pixel_y = 6
 	},
 /obj/item/tool/kitchen/utensil/spoon{
 	pixel_x = 2;
-	pixel_y = 6;
-	drop_vary = 0
+	pixel_y = 6
 	},
 /obj/item/tool/kitchen/utensil/spoon{
 	pixel_x = 5;
-	pixel_y = 6;
-	drop_vary = 0
+	pixel_y = 6
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -80132,15 +80118,15 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "xoA" = (
 /obj/structure/sign/safety/reception{
-	pixel_x = -17;
+	pixel_x = -19;
 	pixel_y = -8
 	},
 /obj/structure/sign/safety/bridge{
-	pixel_x = -17;
+	pixel_x = -19;
 	pixel_y = 7
 	},
 /obj/structure/sign/safety/north{
-	pixel_x = -17;
+	pixel_x = -19;
 	pixel_y = 22
 	},
 /turf/open/floor/almayer,
@@ -80878,6 +80864,16 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"xBH" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 0;
+	layer = 3.125
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/command/cic)
 "xBQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -101494,7 +101490,7 @@ wVW
 arF
 avY
 fHh
-auQ
+xBH
 lZs
 gHl
 sni
@@ -101694,10 +101690,10 @@ dCx
 qyo
 aox
 pPv
-iTD
+dTx
 avY
 kDK
-auQ
+xBH
 awm
 wVW
 nwD
@@ -101900,7 +101896,7 @@ aov
 awt
 alX
 jXp
-auQ
+xBH
 oPE
 wVW
 auT
@@ -102728,7 +102724,7 @@ xMA
 aex
 aKo
 alj
-jmY
+nwn
 mKq
 bFC
 aWW
@@ -102931,7 +102927,7 @@ avY
 ays
 aov
 wWC
-nwn
+jmY
 mKq
 wdy
 tVh
@@ -104765,7 +104761,7 @@ cZb
 oxu
 baw
 baw
-baw
+pVQ
 xoA
 nYM
 pgD

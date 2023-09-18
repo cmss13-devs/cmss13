@@ -966,7 +966,7 @@ Additional game mode variables.
 			return
 
 	var/deathtime = world.time - joe_candidate.timeofdeath
-	if(deathtime < JOE_JOIN_DEAD_TIME && !check_client_rights(joe_candidate.client, R_ADMIN, FALSE) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
+	if(deathtime < JOE_JOIN_DEAD_TIME && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 		to_chat(joe_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]. You need to wait [DisplayTimeText(JOE_JOIN_DEAD_TIME - deathtime)] before rejoining as a Working Joe!"))
 		return FALSE
 

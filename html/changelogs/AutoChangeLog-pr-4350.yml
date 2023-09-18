@@ -1,7 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Adds CN20-X Nerve Gas, an alteration of base CN20 that can affect xenos."
-  - rscadd: "CN20 and CN20-X are now translucent and do not obstruct vision much."
-  - admin: "Adds a VV list dropdown to release gas from vents as the manual proc was too clunky."
-  - rscadd: "Adds nerve gas grenades for CN20 and CN20-X"

@@ -420,12 +420,20 @@
 	name = "internal affairs rubber stamp"
 	icon_state = "stamp-intaff"
 
-/obj/item/tool/stamp/centcomm
-	name = "centcomm rubber stamp"
-	icon_state = "stamp-cent"
+/obj/item/tool/stamp/weyyu
+	name = "WY rubber stamp"
+	icon_state = "stamp-weyyu"
+
+/obj/item/tool/stamp/uscm
+	name = "USCM rubber stamp"
+	icon_state = "stamp-uscm"
+
+/obj/item/tool/stamp/cmb
+	name = "CMB rubber stamp"
+	icon_state = "stamp-cmb"
 
 /obj/item/tool/stamp/ro
-	name = "requisitions officer's rubber stamp"
+	name = "quartermaster's rubber stamp"
 	icon_state = "stamp-ro"
 
 /obj/item/tool/carpenters_hammer //doesn't do anything, yet

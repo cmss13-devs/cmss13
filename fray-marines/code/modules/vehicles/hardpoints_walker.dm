@@ -355,3 +355,40 @@
 ////////////////
 // MEGALODON HARDPOINTS // END
 ////////////////
+
+/datum/supply_packs/ammo_m56_walker
+	name = "M56 Double-Barrel magazines (x2)"
+	contains = list(
+		/obj/item/ammo_magazine/walker/smartgun,
+		/obj/item/ammo_magazine/walker/smartgun,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "M56 Double-Barrel ammo crate"
+	group = "Vehicle Ammo"
+
+/datum/supply_packs/ammo_M30_walker
+	name = "M30 Machine Gun magazines (x2)"
+	contains = list(
+		/obj/item/ammo_magazine/walker/hmg,
+		/obj/item/ammo_magazine/walker/hmg,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "M30 Machine Gun ammo crate"
+	group = "Vehicle Ammo"
+
+/datum/supply_packs/ammo_F40_walker
+	name = "F40 Flamethower Mixed magazines (UT-Napthal x1, B-Type x1)"
+	contains = list(
+		/obj/item/ammo_magazine/walker/flamer,
+		/obj/item/ammo_magazine/walker/flamer/btype,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "F40 Flamethower ammo crate"
+	group = "Vehicle Ammo"
+
+////////////////
+// MEGALODON SUPPLYPACKS // END
+////////////////

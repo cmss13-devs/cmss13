@@ -1,0 +1,4 @@
+author: "xDanilcusx"
+delete-after: True
+changes:
+  - bugfix: "Исправил дальность стрельбы ракет ТОВа."

@@ -143,6 +143,14 @@
 		step_away(obstacle, src, 0)
 		return
 
+	else if(istype(obstacle, /obj/structure/barricade))
+		pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
+		var/obj/structure/barricade/cade = obstacle
+		var/new_dir = get_dir(src, cade) ? get_dir(src, cade) : cade.dir
+		var/turf/new_loc = get_step(loc, new_dir)
+		if(!new_loc.density) forceMove(new_loc)
+		return
+
 //Breaking stuff
 	else if(istype(obstacle, /obj/structure/fence))
 		var/obj/structure/fence/F = obstacle

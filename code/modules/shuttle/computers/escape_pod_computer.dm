@@ -12,6 +12,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/pod_state = STATE_IDLE
+	var/launch_without_evac = FALSE
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/ex_act(severity)
 	return FALSE
@@ -56,6 +57,7 @@
 	.["door_state"] = door.density
 	.["door_lock"] = shuttle.door_handler.is_locked
 	.["can_delay"] = TRUE//launch_status[2]
+	.["launch_without_evac"] = launch_without_evac
 
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -79,6 +81,9 @@
 			else //Open
 				shuttle.door_handler.control_doors("force-lock-launch")
 			. = TRUE
+
+/obj/structure/machinery/computer/shuttle/escape_pod_panel/liaison
+	launch_without_evac = TRUE
 
 //=========================================================================================
 //================================Evacuation Sleeper=======================================
@@ -205,10 +210,12 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/obj/docking_port/mobile/crashable/escape_shuttle/linked_shuttle
+	var/start_locked = TRUE
 
 /obj/structure/machinery/door/airlock/evacuation/Initialize()
 	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(lock))
+	if(start_locked)
+		INVOKE_ASYNC(src, PROC_REF(lock))
 
 /obj/structure/machinery/door/airlock/evacuation/Destroy()
 	if(linked_shuttle)
@@ -247,3 +254,7 @@
 	if(!density)
 		return -1
 	return ..()
+
+/obj/structure/machinery/door/airlock/evacuation/liaison
+	start_locked = FALSE
+	req_access = ACCESS_WY_GENERAL

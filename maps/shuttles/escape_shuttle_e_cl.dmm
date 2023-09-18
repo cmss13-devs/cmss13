@@ -50,7 +50,7 @@
 	},
 /area/shuttle/escape_pod)
 "y" = (
-/obj/structure/machinery/door/airlock/evacuation{
+/obj/structure/machinery/door/airlock/evacuation/liaison{
 	name = "\improper Evacuation Airlock CL-1"
 	},
 /turf/open/floor/almayer{

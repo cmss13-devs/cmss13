@@ -11,7 +11,7 @@
 	/// The % chance of the escape pod crashing into the groundmap before lifeboats leaving
 	var/early_crash_land_chance = 75
 	/// The % chance of the escape pod crashing into the groundmap
-	var/crash_land_chance = 25
+	var/crash_land_chance = 0
 	/// How many people can be in the escape pod before it crashes
 	var/max_capacity = 3
 
@@ -124,8 +124,8 @@
 	id = ESCAPE_SHUTTLE_EAST_CL
 	width = 4
 	height = 5
-	early_crash_land_chance = 25
-	crash_land_chance = 5
+	early_crash_land_chance = 0
+	crash_land_chance = 0
 
 /obj/docking_port/mobile/crashable/escape_shuttle/w
 	id = ESCAPE_SHUTTLE_WEST

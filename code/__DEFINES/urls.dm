@@ -5,7 +5,8 @@
 #define URL_ISSUE_TRACKER "https://github.com/cmss13-devs/cmss13/issues"
 
 // ------ MISC WIKI LINKS ------ //
-#define URL_WIKI_RULES "https://cm-ss13.com/wiki/Rules"
+#define URL_RULES_PAGE "https://cm-ss13.com/rules"
+#define URL_RULES_EORG "https://cm-ss13.com/rules#rule-4-no-griefing"
 #define URL_WIKI_LANDING "https://cm-ss13.com/wiki/Main_Page"
 #define URL_WIKI_COC "https://cm-ss13.com/wiki/Rank"
 #define URL_WIKI_LAW "https://cm-ss13.com/wiki/Marine_Law"

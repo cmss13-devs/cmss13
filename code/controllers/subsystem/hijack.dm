@@ -249,6 +249,9 @@ To do:
 Self destruct code
 	Thinking something like finish main objectives and then can blow fuel resevoir as a "self destruct" via engineering and a hold
 
+
+CL idea
+
 Testing:
 
 

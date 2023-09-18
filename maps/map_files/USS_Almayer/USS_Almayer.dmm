@@ -16115,6 +16115,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
+"bkn" = (
+/obj/structure/machinery/sentry_holder/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south1)
 "bks" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
@@ -57424,6 +57430,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
+"oYm" = (
+/obj/structure/machinery/sentry_holder/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "oYp" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -59289,6 +59301,12 @@
 	icon_state = "test_floor5"
 	},
 /area/almayer/medical/hydroponics)
+"pSi" = (
+/obj/structure/machinery/sentry_holder/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "pSL" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -68528,6 +68546,12 @@
 	icon_state = "bluecorner"
 	},
 /area/almayer/living/basketball)
+"tRN" = (
+/obj/structure/machinery/sentry_holder/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north1)
 "tRV" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -75218,6 +75242,7 @@
 /area/almayer/command/airoom)
 "wDl" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/machinery/sentry_holder/almayer,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -102850,7 +102875,7 @@ awW
 add
 add
 add
-add
+tRN
 add
 add
 add
@@ -104271,7 +104296,7 @@ aoC
 add
 add
 add
-add
+tRN
 add
 add
 add
@@ -104317,7 +104342,7 @@ qLj
 aJU
 aJU
 aJU
-aJU
+bkn
 aJU
 aJU
 aJU
@@ -120104,7 +120129,7 @@ aeA
 aeC
 aeC
 aeC
-aeC
+oYm
 aeC
 aeC
 aeC
@@ -120152,7 +120177,7 @@ lJY
 vcE
 vcE
 vcE
-vcE
+pSi
 vcE
 vcE
 vcE
@@ -121525,7 +121550,7 @@ amH
 aeC
 aeC
 aeC
-aeC
+oYm
 aeC
 aeC
 aeC
@@ -121573,7 +121598,7 @@ kKR
 vcE
 vcE
 vcE
-vcE
+pSi
 vcE
 vcE
 vcE

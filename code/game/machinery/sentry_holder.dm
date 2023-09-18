@@ -17,6 +17,7 @@
 	var/ox = 0
 	var/oy = 0
 	var/ind = FALSE
+	var/require_red_alert = FALSE
 
 /obj/structure/machinery/sentry_holder/Initialize()
 	. = ..()
@@ -36,21 +37,31 @@
 		. += "It's offline."
 
 /obj/structure/machinery/sentry_holder/attack_hand(mob/user)
-	if(deployed_turret)
-		if(deployment_cooldown > world.time)
-			to_chat(user, SPAN_WARNING("[src] is busy."))
-			return //prevents spamming deployment/undeployment
-		if(deployed_turret.loc == src) //not deployed
-			if(stat & NOPOWER)
-				to_chat(user, SPAN_WARNING("[src] is non-functional."))
-			else
-				to_chat(user, SPAN_NOTICE("You deploy [src]."))
-				deploy_sentry()
-		else
-			to_chat(user, SPAN_NOTICE("You retract [src]."))
-			undeploy_sentry()
-	else
+	if(!deployed_turret)
 		to_chat(user, SPAN_WARNING("[src] is unresponsive."))
+		return
+
+	if(deployment_cooldown > world.time)
+		to_chat(user, SPAN_WARNING("[src] is busy."))
+		return
+
+	if(deployed_turret.loc == src) //not deployed
+		if(stat & NOPOWER)
+			to_chat(user, SPAN_WARNING("[src] is non-functional."))
+			return
+
+		if(require_red_alert && (seclevel2num(get_security_level()) < SEC_LEVEL_RED))
+			to_chat(user, SPAN_WARNING("[src] can only be activated in emergencies."))
+			return
+
+		to_chat(user, SPAN_NOTICE("You deploy [src]."))
+		deploy_sentry()
+		return
+
+	to_chat(user, SPAN_NOTICE("You retract [src]."))
+	undeploy_sentry()
+	return
+
 
 /obj/structure/machinery/sentry_holder/process()
 	if(stat & NOPOWER)
@@ -111,3 +122,6 @@
 	desc = "A box that deploys a sentry turret for protection of the residents in the area."
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 
+/obj/structure/machinery/sentry_holder/almayer
+	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
+	require_red_alert = TRUE

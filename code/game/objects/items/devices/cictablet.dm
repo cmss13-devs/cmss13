@@ -145,8 +145,9 @@
 
 			log_game("[key_name(usr)] has called for an emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
-			var/datum/ares_link/link = GLOB.ares_link
-			link.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
+			var/datum/ares_datacore/datacore = GLOB.ares_datacore
+			if(ares_can_log())
+				datacore.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
 			. = TRUE
 
 		if("distress")

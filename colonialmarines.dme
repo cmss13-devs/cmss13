@@ -795,6 +795,8 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\game\machinery\washing_machine.dm"
 #include "code\game\machinery\weather_siren.dm"
 #include "code\game\machinery\ARES\ARES.dm"
+#include "code\game\machinery\ARES\ARES_interface.dm"
+#include "code\game\machinery\ARES\ARES_interface_apollo.dm"
 #include "code\game\machinery\ARES\ARES_procs.dm"
 #include "code\game\machinery\ARES\ARES_records.dm"
 #include "code\game\machinery\ARES\ARES_step_triggers.dm"

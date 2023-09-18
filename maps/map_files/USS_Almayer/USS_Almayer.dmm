@@ -17584,17 +17584,25 @@
 	id = "cl_shutters";
 	name = "Privacy Shutters";
 	pixel_x = -5;
-	pixel_y = 6;
+	pixel_y = 8;
 	req_access_txt = "200"
 	},
 /obj/structure/machinery/door_control{
 	id = "RoomDivider";
 	name = "Room Divider";
 	pixel_x = -5;
-	pixel_y = -3;
+	pixel_y = -4;
 	req_access_txt = "200"
 	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/door_control{
+	pixel_x = -5;
+	pixel_y = 2;
+	req_access_txt = "200";
+	name = "Evac Pod Door Control";
+	id = "cl_evac";
+	normaldoorcontrol = 1
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)
 "bse" = (

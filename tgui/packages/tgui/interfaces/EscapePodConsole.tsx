@@ -7,6 +7,7 @@ interface EscapePodProps {
   door_lock: 0 | 1;
   door_state: 0 | 1;
   can_delay: 0 | 1;
+  launch_without_evac: number;
 }
 
 export const EscapePodConsole = (_props, context) => {
@@ -21,6 +22,9 @@ export const EscapePodConsole = (_props, context) => {
     case 4:
       statusMessage = 'NO EVACUATION';
       buttonColor = 'neutral';
+      if (data.launch_without_evac) {
+        operable = 1;
+      }
       break;
     case 5:
       statusMessage = 'SYSTEMS DOWN';

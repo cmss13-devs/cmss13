@@ -42,7 +42,7 @@
 /turf/open/shuttle/escapepod,
 /area/shuttle/escape_pod)
 "v" = (
-/obj/structure/machinery/computer/shuttle/escape_pod_panel{
+/obj/structure/machinery/computer/shuttle/escape_pod_panel/liaison{
 	pixel_y = 30
 	},
 /turf/open/shuttle/escapepod{
@@ -51,7 +51,8 @@
 /area/shuttle/escape_pod)
 "y" = (
 /obj/structure/machinery/door/airlock/evacuation/liaison{
-	name = "\improper Evacuation Airlock CL-1"
+	name = "\improper Evacuation Airlock CL-1";
+	id_tag = "cl_evac"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

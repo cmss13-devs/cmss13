@@ -68,7 +68,7 @@
 	var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle = SSshuttle.getShuttle(shuttleId)
 	switch(action)
 		if("force_launch")
-			if(pod_state != STATE_READY && pod_state != STATE_DELAYED)
+			if(!launch_without_evac && pod_state != STATE_READY && pod_state != STATE_DELAYED)
 				return
 
 			shuttle.evac_launch()
@@ -260,4 +260,3 @@
 
 /obj/structure/machinery/door/airlock/evacuation/liaison
 	start_locked = FALSE
-	req_access = ACCESS_WY_GENERAL

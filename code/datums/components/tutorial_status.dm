@@ -21,4 +21,5 @@
 /datum/component/tutorial_status/proc/get_status_tab_item(datum/source, list/status_tab_items)
 	SIGNAL_HANDLER
 
-	status_tab_items += "Tutorial Objective: " + tutorial_status + "<br>"
+	if(tutorial_status)
+		status_tab_items += "Tutorial Objective: " + tutorial_status

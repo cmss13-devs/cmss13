@@ -13,12 +13,11 @@
 	if(!.)
 		return
 
-	init_map()
 	init_mob()
-	RegisterSignal(tutorial_mob, COMSIG_PARENT_QDELETING, PROC_REF(end_tutorial))
+	RegisterSignal(tutorial_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_DEATH, COMSIG_LIVING_GHOSTED), PROC_REF(end_tutorial))
 	RegisterSignal(tutorial_mob.client, COMSIG_PARENT_QDELETING, PROC_REF(end_tutorial))
 	message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>W</b> or <b>D</b> to continue.")
-	update_objective("Exit the cryopod by pressing <b>W</b> or <b>D</b>.")
+	update_objective("Exit the cryopod by pressing W or D.")
 	RegisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT, PROC_REF(on_cryopod_exit))
 
 /datum/tutorial/marine/basic/proc/on_cryopod_exit()
@@ -26,7 +25,7 @@
 
 	UnregisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT)
 	message_to_player("Good. You may notice the yellow \"food\" icon on the right side of your screen. Proceed to the outlined <b>Food Vendor</b> and vend the <b>USCM Protein Bar</b>.")
-	update_objective("Vend a <b>USCM Protein Bar</b> from the outlined <b>ColMarTech Food Vendor</b>.")
+	update_objective("Vend a USCM Protein Bar from the outlined ColMarTech Food Vendor.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial, food_vendor)
 	add_highlight(food_vendor)
 	food_vendor.req_access = list()
@@ -40,7 +39,7 @@
 	remove_highlight(food_vendor)
 	food_vendor.req_access = list(ACCESS_TUTORIAL_LOCKED)
 	message_to_player("Now click on your character with the <b>USCM Protein Bar</b> in-hand until it is fully eaten. If you accidentally switched hands, switch back with <b>X</b>.")
-	update_objective("Eat the <b>USCM Protein Bar</b> by clicking on yourself while holding it, until it is gone.")
+	update_objective("Eat the USCM Protein Bar by clicking on yourself while holding it, until it is gone.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_EATEN_SNACK, PROC_REF(on_foodbar_eaten))
 
 /datum/tutorial/marine/basic/proc/on_foodbar_eaten(datum/source, obj/item/reagent_container/food/snacks/eaten_food)
@@ -51,7 +50,7 @@
 
 	UnregisterSignal(source, COMSIG_MOB_EATEN_SNACK)
 	message_to_player("Good. Now move to the outlined vendor and vend everything inside.")
-	update_objective("Vend everything inside the <b>ColMarTech Automated Closet</b>.")
+	update_objective("Vend everything inside the ColMarTech Automated Closet.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/clothing/tutorial, clothing_vendor)
 	add_highlight(clothing_vendor)
 	clothing_vendor.req_access = list()
@@ -67,7 +66,7 @@
 		clothing_vendor.req_access = list(ACCESS_TUTORIAL_LOCKED)
 		remove_highlight(clothing_vendor)
 		message_to_player("Now, the room will be dimmed. Take a <b>flare</b> out of your <b>flare pouch</b> by clicking on it with an empty hand, and then light it by using it in-hand with <b>Z</b>.")
-		update_objective("Click on your <b>flare pouch</b> to remove a <b>flare</b> before using it in-hand.")
+		update_objective("Click on your flare pouch to remove a flare before using it in-hand.")
 		var/obj/item/storage/pouch/flare/flare_pouch = locate(/obj/item/storage/pouch/flare) in tutorial_mob.contents
 		if(flare_pouch)
 			add_highlight(flare_pouch)
@@ -86,7 +85,7 @@
 		remove_highlight(flare_pouch)
 
 	message_to_player("Now throw the <b>flare</b> by <b>clicking</b> on a nearby tile, or dropping it with <b>Q</b>.")
-	update_objective("Throw the <b>flare</b> by <b>clicking</b> on a nearby tile, or dropping it with <b>Q</b>.")
+	update_objective("Throw the flare by clicking on a nearby tile, or dropping it with <b>Q</b>.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_ITEM_DROPPED, PROC_REF(on_flare_throw))
 
 /datum/tutorial/marine/basic/proc/on_flare_throw(datum/source, obj/item/thrown)
@@ -97,7 +96,7 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_ITEM_DROPPED)
 	message_to_player("Good. Now, the room will brighten again. Proceed to the highlighted vendor and vend a <b>M41A Pulse Rifle MK2</b>, along with a <b>magazine</b>.")
-	update_objective("Vend everything from the <b>ColMarTech Automated Weapons Rack</b>.")
+	update_objective("Vend everything from the ColMarTech Automated Weapons Rack.")
 	addtimer(CALLBACK(src, PROC_REF(brighten_room)), 1.5 SECONDS)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial, gun_vendor)
 	gun_vendor.req_access = list()
@@ -114,7 +113,7 @@
 		remove_highlight(gun_vendor)
 		UnregisterSignal(gun_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)
 		message_to_player("Now insert the <b>magazine</b> into the <b>M41A Pulse Rifle</b> by having the <b>magazine</b> in your active hand and hitting the <b>Pulse Rifle</b> with it. If it is in the off-hand, switch with <b>X</b>.")
-		update_objective("Insert the <b>M41A magazine</b> by hitting the <b>M41A Pulse Rifle</b> with it.")
+		update_objective("Insert the M41A magazine</b> by hitting the <b>M41A Pulse Rifle</b> with it.")
 		RegisterSignal(tutorial_mob, COMSIG_MOB_RELOADED_GUN, PROC_REF(on_magazine_insert))
 
 /datum/tutorial/marine/basic/proc/on_magazine_insert(datum/source, atom/attacked, obj/item/attacked_with)
@@ -122,7 +121,7 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_RELOADED_GUN)
 	message_to_player("Good. Now wield your gun by using it in-hand with <b>Z</b>.")
-	update_objective("Wield your gun with two hands by pressing <b>Z</b> with the gun in your main hand.")
+	update_objective("Wield your gun with two hands by pressing Z with the gun in your main hand.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_ITEM_ATTACK_SELF, PROC_REF(on_gun_wield))
 
 /datum/tutorial/marine/basic/proc/on_gun_wield(datum/source, obj/item/used)
@@ -133,8 +132,8 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_ITEM_ATTACK_SELF)
 	message_to_player("Now, shoot at the highlighted <b>Xenomorph</b> until it dies.")
-	update_objective("Shoot at the <b>Xenomorph</b> until it dies.")
-	var/mob/living/carbon/xenomorph/drone/tutorial/xeno_dummy = new(locate(bottom_left_corner.x + 6, bottom_left_corner.y + 5, bottom_left_corner.z))
+	update_objective("Shoot at the Xenomorph until it dies.")
+	var/mob/living/carbon/xenomorph/drone/tutorial/xeno_dummy = new(locate(bottom_left_corner.x + 4, bottom_left_corner.y + 5, bottom_left_corner.z))
 	add_to_tracking_atoms(xeno_dummy)
 	add_highlight(xeno_dummy, COLOUR_VIVID_RED)
 	RegisterSignal(xeno_dummy, COMSIG_MOB_DEATH, PROC_REF(on_xeno_death))
@@ -231,7 +230,7 @@
 	return ..()
 
 
-/datum/tutorial/marine/basic/proc/init_map()
+/datum/tutorial/marine/basic/init_map()
 	var/obj/structure/machinery/cryopod/tutorial/tutorial_pod = new(bottom_left_corner)
 	add_to_tracking_atoms(tutorial_pod)
 	var/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial/food_vendor = new(locate(bottom_left_corner.x, bottom_left_corner.y + 2, bottom_left_corner.z))

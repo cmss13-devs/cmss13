@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	if(bottom_left_corner)
 		var/obj/landmark = locate(/obj/effect/landmark/tutorial_bottom_left) in bottom_left_corner.contents
 		qdel(landmark)
-		
+
 	GLOB.ongoing_tutorials -= src
 	QDEL_NULL(reservation) // Its Destroy() handles releasing reserved turfs
 
@@ -62,6 +62,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	bottom_left_corner = get_turf(locate(/obj/effect/landmark/tutorial_bottom_left) in GLOB.landmarks_list)
 	var/area/tutorial_area = get_area(bottom_left_corner)
 	tutorial_area.update_base_lighting() // this will be entirely dark otherwise
+	init_map()
 	if(!tutorial_mob)
 		end_tutorial()
 
@@ -108,9 +109,12 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 
 /// Initialize the tutorial mob.
 /datum/tutorial/proc/init_mob()
-	AddComponent(tutorial_mob, /datum/component/tutorial_status)
+	tutorial_mob.AddComponent(/datum/component/tutorial_status)
 	give_action(tutorial_mob, /datum/action/tutorial_end, null, null, src)
 
+/// Initialize any objects that need to be in the tutorial area from the beginning.
+/datum/tutorial/proc/init_map()
+	return
 
 /datum/action/tutorial_end
 	name = "Stop Tutorial"
@@ -134,7 +138,13 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 
 
 /datum/map_template/tutorial
-	name = "Tutorial Zone"
+	name = "Tutorial Zone (12x12)"
 	mappath = "maps/tutorial/tutorial_12x12.dmm"
 	width = 12
 	height = 12
+
+/datum/map_template/tutorial/marine_basic
+	name = "Tutorial Zone (8x9)"
+	mappath = "maps/tutorial/tutorial_8x9.dmm"
+	width = 8
+	height = 9

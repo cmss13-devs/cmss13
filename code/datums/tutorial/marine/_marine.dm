@@ -1,5 +1,6 @@
 /datum/tutorial/marine
 	category = TUTORIAL_CATEGORY_MARINE
+	parent_path = /datum/tutorial/marine
 
 /datum/tutorial/marine/init_mob()
 	tutorial_mob.close_spawn_windows()

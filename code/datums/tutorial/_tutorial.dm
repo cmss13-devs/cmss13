@@ -20,6 +20,8 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	var/list/tracking_atoms = list()
 	/// What map template should be used for the tutorial
 	var/datum/map_template/tutorial/tutorial_template = /datum/map_template/tutorial
+	/// What is the parent path of this, to exclude from the tutorial menu
+	var/parent_path = /datum/tutorial
 
 /datum/tutorial/Destroy(force, ...)
 	if(bottom_left_corner)

@@ -26,6 +26,8 @@ The API for tutorials is designed to be very simple, so I'll go over all the bas
     - This is what category the tutorial should be under. Use the `TUTORIAL_CATEGORY_XXXX` macros.
 - `tutorial_template</datum/map_template/tutorial>`
     - This is what type the map template of the tutorial should be. The default space is 12x12; ideally make it so it fits the given scale of the tutorial with some wiggle room for the player to move around.
+- `parent_path<path>`
+	- This is the top-most parent `/datum/tutorial` path, used to exclude abstract parents from the tutorial menu. For example, `/datum/tutorial/marine/basic` would have a `parent_path` of `/datum/tutorial/marine`, since that path is the top-most abstract path.
 
 ### Procs
 - `start_tutorial(mob/starting_mob)`

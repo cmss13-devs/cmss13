@@ -2,6 +2,7 @@
 	name = "Example Tutorial"
 	tutorial_id = "example" // This won't show up in the list, so this'll be irrelevant anyway.
 	category = TUTORIAL_CATEGORY_BASE
+	parent_path = /datum/tutorial/marine/example
 
 // START OF SCRIPTING
 

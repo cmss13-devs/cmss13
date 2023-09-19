@@ -6,7 +6,10 @@
 /datum/tutorial_menu/New()
 	if(!length(categories))
 		var/list/categories_2 = list()
-		for(var/datum/tutorial/tutorial as anything in subtypesof(/datum/tutorial) - list(/datum/tutorial/marine, /datum/tutorial/marine/example))
+		for(var/datum/tutorial/tutorial as anything in subtypesof(/datum/tutorial))
+			if(initial(tutorial.parent_path) == tutorial)
+				continue
+
 			if(!(initial(tutorial.category) in categories_2))
 				categories_2[initial(tutorial.category)] = list()
 

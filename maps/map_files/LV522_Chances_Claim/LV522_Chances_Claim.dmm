@@ -19151,12 +19151,6 @@
 	name = "Display synthetic"
 	},
 /obj/structure/window/reinforced,
-/obj/item/clothing/under/marine/veteran/pmc,
-/obj/item/clothing/mask/gas/pmc,
-/obj/item/clothing/head/helmet/marine/veteran/pmc/leader{
-	layer = 3.1;
-	pixel_y = 10
-	},
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 23;
 	pixel_y = 29

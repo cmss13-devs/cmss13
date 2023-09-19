@@ -20113,7 +20113,7 @@
 	pixel_x = 10;
 	pixel_y = 11
 	},
-/obj/item/tool/weldingtool/largetank{
+/obj/item/tool/weldingtool{
 	pixel_x = -6;
 	pixel_y = 4
 	},

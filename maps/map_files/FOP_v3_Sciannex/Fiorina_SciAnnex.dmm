@@ -26327,12 +26327,6 @@
 	icon_state = "darkyellowcorners2"
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
-"pYW" = (
-/obj/item/tool/weldingtool/hugetank,
-/turf/open/floor/prison{
-	icon_state = "darkbrownfull2"
-	},
-/area/fiorina/tumor/aux_engi)
 "pZb" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -29064,7 +29058,7 @@
 	},
 /area/fiorina/station/research_cells)
 "rEm" = (
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "rEH" = (
@@ -30807,7 +30801,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/tumor/civres)
 "sLT" = (
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -38458,7 +38452,7 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/tumor/fiberbush)
 "xwD" = (
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /turf/open/floor/prison,
 /area/fiorina/station/civres_blue)
 "xxd" = (
@@ -44347,7 +44341,7 @@ lHx
 jlk
 jlk
 sAv
-pYW
+sJT
 sAv
 jlk
 baC

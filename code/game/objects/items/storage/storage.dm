@@ -31,6 +31,12 @@
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
 	var/has_gamemode_skin = FALSE ///Whether to use map-variant skins.
 
+	///Special can_holds that require a skill to insert, it is an associated list of typepath = list(skilltype, skilllevel)
+	var/list/can_hold_skill = list()
+
+	///Dictates whether or not we only check for items in can_hold_skill rather than can_hold or free usage
+	var/can_hold_skill_only = FALSE
+
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
 		if(over_object == usr) // this must come before the screen objects only block
@@ -389,20 +395,36 @@ var/list/global/item_storage_box_cache = list()
 		if(sum_storage_cost <= max_storage_space) //Adding this item won't exceed the maximum.
 			return TRUE
 
-/obj/item/storage/proc/can_hold_type(type_to_hold)
+#define SKILL_TYPE_INDEX 1
+#define SKILL_LEVEL_INDEX 2
+
+/obj/item/storage/proc/can_hold_type(type_to_hold, mob/user)
+	if(length(can_hold_skill))
+		for(var/can_hold_skill_typepath in can_hold_skill)
+			if(ispath(type_to_hold, can_hold_skill_typepath) && user?.skills.get_skill_level(can_hold_skill[can_hold_skill_typepath][SKILL_TYPE_INDEX]) >= can_hold_skill[can_hold_skill_typepath][SKILL_LEVEL_INDEX])
+				return TRUE
+		if(can_hold_skill_only)
+			return FALSE
+
 	for(var/A in cant_hold)
 		if(ispath(type_to_hold, A))
 			return FALSE
+
 	if(length(can_hold))
 		for(var/A in can_hold)
 			if(ispath(type_to_hold, A))
 				return TRUE
+
 		return FALSE
+
 	return TRUE
+
+#undef SKILL_TYPE_INDEX
+#undef SKILL_LEVEL_INDEX
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/W as obj, stop_messages = 0)
+/obj/item/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	if(!istype(W) || (W.flags_item & NODROP)) return //Not an item
 
 	if(src.loc == W)
@@ -418,7 +440,7 @@ var/list/global/item_storage_box_cache = list()
 		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
 		return
 
-	if(!can_hold_type(W.type))
+	if(!can_hold_type(W.type, user))
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
 		return
@@ -543,7 +565,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	..()
 
 /obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, prevent_warning = FALSE, mob/user as mob)
-	if(!can_be_inserted(W))
+	if(!can_be_inserted(W, user))
 		return
 
 	W.add_fingerprint(user)

@@ -94,22 +94,26 @@
 		/obj/item/tool/weldingtool,
 		/obj/item/tool/wirecutters,
 		/obj/item/tool/wrench,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/stack/cable_coil,
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/cell,
+		/obj/item/circuitboard,
+		/obj/item/stock_parts,
+		/obj/item/device/demo_scanner,
+		/obj/item/device/reagent_scanner,
+		/obj/item/device/assembly,
 		/obj/item/device/multitool,
 		/obj/item/device/flashlight,
-		/obj/item/stack/cable_coil,
 		/obj/item/device/t_scanner,
 		/obj/item/device/analyzer,
-		/obj/item/weapon/gun/smg/nailgun/compact,
-		/obj/item/tool/shovel/etool,
-		/obj/item/tool/extinguisher/mini,
-		/obj/item/cell,
-		/obj/item/device/lightreplacer,
-
+		/obj/item/explosive/plastic,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
 		/obj/item/device/lightreplacer,
 	)
+	storage_slots = 10
 
 
 /obj/item/storage/belt/utility/full/fill_preset_inventory()
@@ -162,9 +166,6 @@
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/gloves/latex,
 		/obj/item/storage/syringe_case,
-		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/ammo_magazine/handful,
 		/obj/item/device/flashlight/flare,
 		/obj/item/reagent_container/hypospray,
 		/obj/item/bodybag,
@@ -987,7 +988,7 @@
 			user.update_inv_s_store()
 
 //There are only two types here that can be inserted, and they are mutually exclusive. We only track the gun.
-/obj/item/storage/belt/gun/can_be_inserted(obj/item/W, stop_messages) //We don't need to stop messages, but it can be left in.
+/obj/item/storage/belt/gun/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE) //We don't need to stop messages, but it can be left in.
 	. = ..()
 	if(!.)
 		return
@@ -1674,7 +1675,7 @@
 /obj/item/storage/belt/gun/utility
 	name = "\improper M276 pattern combat toolbelt rig"
 	desc = "The M276 pattern combat toolbelt rig is an alternative load-bearing equipment of the USCM for engineers conducting repairs within combat zones. It consists of a modular belt with various clips and pouches for tools along with a holster for a sidearm. Due to the bulk of the sidearm, it is unable to hold as many tools as its standard counterpart."
-	storage_slots = 6
+	storage_slots = 9
 	icon_state = "combatutility"
 	item_state= "utility"
 	can_hold = list(
@@ -1686,16 +1687,18 @@
 		/obj/item/tool/weldingtool,
 		/obj/item/tool/wirecutters,
 		/obj/item/tool/wrench,
+		/obj/item/tool/shovel/etool,
+		/obj/item/tool/extinguisher/mini,
 		/obj/item/device/multitool,
 		/obj/item/device/flashlight,
-		/obj/item/stack/cable_coil,
 		/obj/item/device/t_scanner,
 		/obj/item/device/analyzer,
 		/obj/item/weapon/gun/smg/nailgun/compact,
-		/obj/item/tool/shovel/etool,
-		/obj/item/tool/extinguisher/mini,
+		/obj/item/stack/cable_coil,
 		/obj/item/cell,
-		/obj/item/device/lightreplacer,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/handful,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,

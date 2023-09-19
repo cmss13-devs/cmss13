@@ -14,11 +14,20 @@
 	throw_range = 8
 	use_sound = "toolbox"
 	matter = list("plastic" = 2000)
-	cant_hold = list(
-		/obj/item/ammo_magazine,
-		/obj/item/explosive/grenade,
-		/obj/item/tool,
-	) //to prevent powergaming.
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/roller,
+	)
 	storage_flags = STORAGE_FLAGS_BOX
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
@@ -151,16 +160,26 @@
 /obj/item/storage/firstaid/adv/empty/fill_preset_inventory()
 	return
 
-
-
 /obj/item/storage/firstaid/synth
 	name = "synthetic repair kit"
 	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack seperately.'"
 	icon_state = "bezerk"
 	item_state = "firstaid-advanced"
-	cant_hold = list(
-		/obj/item/ammo_magazine,
-		/obj/item/explosive/grenade,
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/stack/nanopaste,
+		/obj/item/stack/cable_coil,
+		/obj/item/tool/weldingtool,
 	)
 
 /obj/item/storage/firstaid/synth/fill_preset_inventory()
@@ -170,7 +189,7 @@
 	new /obj/item/stack/nanopaste(src)
 	new /obj/item/stack/cable_coil/white(src)
 	new /obj/item/stack/cable_coil/white(src)
-	new /obj/item/tool/weldingtool/largetank(src)
+	new /obj/item/tool/weldingtool(src)
 
 /obj/item/storage/firstaid/synth/empty/fill_preset_inventory()
 	return
@@ -195,10 +214,18 @@
 	name = "basic field surgery kit"
 	desc = "Contains a surgical line, cautery, scalpel, hemostat, retractor, drapes and an oxycodone injector for tending wounds surgically."
 	icon_state = "bezerk"
-	cant_hold = list(
-		/obj/item/ammo_magazine,
-		/obj/item/explosive/grenade,
-	) // we need surgery tools buddy
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery,
+	)
 
 /obj/item/storage/firstaid/surgical/fill_preset_inventory()
 	new /obj/item/tool/surgery/surgical_line(src)
@@ -210,23 +237,6 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
 
 /obj/item/storage/firstaid/surgical/empty/fill_preset_inventory()
-	return
-
-//---------TOOLKIT---------
-
-/obj/item/storage/firstaid/toolkit
-	name = "toolkit"
-	desc = "An combat engineering toolkit intended to carry electrical and mechanical supplies into combat."
-	icon_state = "toolkit"
-	item_state = "fulton"
-
-/obj/item/storage/firstaid/toolkit/update_icon()
-	if(content_watchers || !length(contents))
-		icon_state = "toolkit_empty"
-	else
-		icon_state = icon_full
-
-/obj/item/storage/firstaid/toolkit/empty/fill_preset_inventory()
 	return
 
 //---------SYRINGE CASE---------
@@ -420,7 +430,7 @@
 		return
 	..()
 
-/obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, stop_messages = 0)
+/obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(.)
 		if(skilllock && !skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))

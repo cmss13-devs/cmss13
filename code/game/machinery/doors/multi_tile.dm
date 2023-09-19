@@ -66,6 +66,7 @@
 	icon = 'icons/obj/structures/doors/Door2x1research.dmi'
 	opacity = FALSE
 	glass = 1
+	req_one_access = list(ACCESS_MARINE_RESEARCH, ACCESS_WY_RESEARCH, ACCESS_WY_EXEC)
 
 /obj/structure/machinery/door/airlock/multi_tile/research/colony
 	req_access = null
@@ -178,7 +179,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research
 	name = "\improper Research Airlock"
-	req_one_access = list(ACCESS_MARINE_RESEARCH)
+	req_one_access = list(ACCESS_MARINE_RESEARCH, ACCESS_WY_RESEARCH, ACCESS_WY_EXEC)
 	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research/colony
@@ -271,6 +272,7 @@
 	unacidable = TRUE
 	no_panel = 1
 	not_weldable = 1
+	var/queen_pryable = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return
@@ -283,6 +285,9 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.hive_pos != XENO_QUEEN)
+		return ..()
+
+	if(!queen_pryable)
 		return ..()
 
 	if(!locked)
@@ -392,6 +397,7 @@
 	locked = TRUE
 	opacity = FALSE
 	glass = TRUE
+	queen_pryable = FALSE
 	var/throw_dir = EAST
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/try_to_activate_door(mob/user)
@@ -429,8 +435,8 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override)
 	. = ..()
-	if(istype(port, /obj/docking_port/mobile/lifeboat))
-		var/obj/docking_port/mobile/lifeboat/lifeboat = port
+	if(istype(port, /obj/docking_port/mobile/crashable/lifeboat))
+		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = port
 		lifeboat.doors += src
 
 /// External airlock that is part of the lifeboat dock

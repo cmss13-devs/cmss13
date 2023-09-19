@@ -46,10 +46,11 @@
 	if(user.is_mob_incapacitated())
 		return
 	if(world.time > l_move_time + move_delay)
-		if(dir != direction && !moving_diagonally)
+		if(dir != direction)
 			setDir(direction)
 			handle_rotation()
-			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
+			if(!(dir & (dir - 1))) // too much noise when moving diagonally, otherwise
+				pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
 			. = TRUE
 		else
 			set_glide_size(DELAY_TO_GLIDE_SIZE(move_delay + 1))
@@ -58,15 +59,15 @@
 				pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
 
 /obj/vehicle/powerloader/handle_rotation()
-	if(buckled_mob && !buckled_mob.moving_diagonally)
+	if(buckled_mob)
 		buckled_mob.setDir(dir)
-		switch(dir)
-			if(EAST)
-				buckled_mob.pixel_x = 7
-			if(WEST)
-				buckled_mob.pixel_x = -7
-			else
-				buckled_mob.pixel_x = 0
+		if(dir & EAST)
+			buckled_mob.pixel_x = 7
+			return
+		if(dir & WEST)
+			buckled_mob.pixel_x = -7
+			return
+		buckled_mob.pixel_x = 0
 
 /obj/vehicle/powerloader/explode()
 	new wreckage(loc)

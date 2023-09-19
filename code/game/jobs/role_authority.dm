@@ -652,6 +652,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
 
+	//Deal with IOs first
+	if(H.job == JOB_INTEL)
+		var/datum/squad/intel_squad = get_squad_by_name(SQUAD_MARINE_INTEL)
+		if(!intel_squad || !istype(intel_squad)) //Something went horribly wrong!
+			to_chat(H, "Something went wrong with randomize_squad()! Tell a coder!")
+			return
+		intel_squad.put_marine_in_squad(H) //Found one, finish up
+		return
+
 	//Deal with non-standards first.
 	//Non-standards are distributed regardless of squad population.
 	//If the number of available positions for the job are more than max_whatever, it will break.

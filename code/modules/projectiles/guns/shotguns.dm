@@ -266,11 +266,15 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attached_gun/grenade/G = new(src)
-	G.flags_attach_features &= ~ATTACH_REMOVABLE
-	G.hidden = TRUE
-	G.Attach(src)
-	update_attachable(G.slot)
+	var/obj/item/attachable/attached_gun/grenade/ugl = new(src)
+	var/obj/item/attachable/stock/tactical/stock = new(src)
+	ugl.flags_attach_features &= ~ATTACH_REMOVABLE
+	ugl.hidden = TRUE
+	ugl.Attach(src)
+	update_attachable(ugl.slot)
+	stock.hidden = FALSE
+	stock.Attach(src)
+	update_attachable(stock.slot)	
 
 /obj/item/weapon/gun/shotgun/combat/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 14, "stock_y" = 16)

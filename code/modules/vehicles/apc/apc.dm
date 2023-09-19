@@ -20,6 +20,8 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	passengers_slots = 15
 	xenos_slots = 8
 
+	wall_ram_damage = 120
+
 	entrances = list(
 		"left" = list(2, 0),
 		"right" = list(-2, 0),

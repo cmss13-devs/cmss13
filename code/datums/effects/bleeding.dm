@@ -97,6 +97,10 @@
 	if(affected_mob.bodytemperature < T0C && (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
 		blood_loss -= CRYO_BLOOD_REDUCTION
 
+	var/bicaridine = affected_mob.reagents?.get_reagent_amount("bicaridine")
+	if(bicaridine > REAGENTS_OVERDOSE && affected_mob.getBruteLoss() <= 0 && prob(BICARIDINE_OD_IB_TREAT_CHANCE))
+		blood_loss -= BICAOD_BLOOD_REDUCTION
+
 	if(affected_mob.reagents) // Annoying QC check
 		if(affected_mob.reagents.get_reagent_amount("thwei"))
 			blood_loss -= THWEI_BLOOD_REDUCTION

@@ -143,7 +143,7 @@
 /mob/living/simple_animal/hostile/alien/spawnable/proc/evaluate_specific_behavior(mob/living/L)
 	return FALSE
 
-/mob/living/simple_animal/hostile/alien/spawnable/bullet_act(obj/item/projectile/P)
+/mob/living/simple_animal/hostile/alien/spawnable/bullet_act(obj/projectile/P)
 	if(!P || !istype(P))
 		return
 

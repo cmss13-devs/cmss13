@@ -3142,7 +3142,7 @@ Defined in conflicts.dm of the #defines folder.
 	gun.last_fired = world.time
 	gun.current_mag.reagents.remove_reagent(flamer_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
 
-	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), user, src))
+	var/obj/projectile/P = new(src, create_cause_data(initial(name), user, src))
 	var/datum/ammo/flamethrower/ammo_datum = new projectile_type
 	ammo_datum.flamer_reagent_type = flamer_reagent.type
 	P.generate_bullet(ammo_datum)

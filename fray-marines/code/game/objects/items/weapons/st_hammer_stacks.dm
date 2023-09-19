@@ -17,7 +17,6 @@
 	last_increment_time = world.time
 	. = ..(X, from, last_dmg_source, zone)
 
-
 /datum/effects/hammer_stacks/validate_atom(mob/living/carbon/xenomorph/X)
 	if (!isxeno(X))
 		return FALSE
@@ -61,27 +60,24 @@
 
 	if (prob(25)) X.emote("roar")
 
-	if (stack_count > 0) X.apply_effect(3, SLOW)
-	if (stack_count > 1) X.apply_effect(1, SUPERSLOW)
-	if (stack_count > 2) X.apply_effect(2, SUPERSLOW)
+	if (stack_count > 1) X.AdjustSlow(3)
+	if (stack_count > 2) X.AdjustSuperslow(2)
 	if (stack_count > 3)
 		playsound(attacker, combo_sound, 85, 1)
 		playsound(X, combo_hit_sound, 45, 1)
-		if (X.stat != DEAD)
-			attacker.apply_effect(1, STUN)
 		attacker.spin_circle(1, 1.5)
 
 		shake_camera(X, 1, 4)
-		if (X.mob_size >= MOB_SIZE_IMMOBILE)
+		if (X.mob_size >= MOB_SIZE_IMMOBILE && X.stat != DEAD)
 			X.apply_effect(2, SUPERSLOW)
 			qdel(src)
 			return
+
+		if (X.stat != DEAD)
+			attacker.apply_effect(1, STUN)
 
 		X.apply_effect(2, WEAKEN)
 		if (!X.anchored)
 			var/turf/throw_to = get_step_away(X, attacker)
 			X.throw_atom(throw_to, throw_range)
 			qdel(src)
-
-
-

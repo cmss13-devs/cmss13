@@ -4,6 +4,7 @@
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "d2_breacher"
 	item_state = "d2_breacher"
+	pickup_sound = "gunequip"
 	force = MELEE_FORCE_STRONG
 	flags_item = TWOHANDED
 	force_wielded = MELEE_FORCE_TIER_8
@@ -37,9 +38,7 @@
 
 		if (HS == null)
 			HS = new /datum/effects/hammer_stacks(M)
-			HS.increment_stack_count(0, user)
-		else
-			HS.increment_stack_count(1, user)
+		HS.increment_stack_count(1, user)
 
 		if(M.stat != CONSCIOUS) // haha xeno-cricket
 			HS.increment_stack_count(4, user)
@@ -71,20 +70,22 @@
 /obj/item/weapon/shield/montage
 	name = "N30 montage shield"
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
+	icon = 'fray-marines/icons/mob/human/st_equip.dmi'
 	icon_state = "metal_st"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi'
-	)
-	flags_equip_slot = SLOT_BACK
+		WEAR_L_HAND = 'fray-marines/icons/mob/human/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'fray-marines/icons/mob/human/items_righthand_1.dmi',
+		WEAR_BACK = 'fray-marines/icons/mob/human/back.dmi'
+		)
+	attack_verb = list("shoved", "bashed")
+	pickup_sound = "gunequip"
 	passive_block = 70
 	readied_block = 100
+	throw_range = 4
+	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_1
 	throwforce = MELEE_FORCE_TIER_1
-	throw_range = 4
 	w_class = SIZE_LARGE
-	attack_verb = list("shoved", "bashed")
 	unacidable = TRUE
 	indestructible = TRUE
 	var/blocks_on_back = TRUE

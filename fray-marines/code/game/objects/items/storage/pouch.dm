@@ -1,0 +1,8 @@
+/obj/item/storage/pouch/autoinjector/full/skillless/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)

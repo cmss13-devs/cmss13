@@ -1737,7 +1737,6 @@
 	icon_state = "rmc_light"
 	item_state = "rmc_light"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
-	storage_slots = 3
 	allowed = list(
 		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
@@ -1755,7 +1754,7 @@
 		/obj/item/device/walkman,
 	)
 
-/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/ //RMC Rifleman Armor
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light //RMC Rifleman Armor
 	icon_state = "rmc_light"
 	item_state = "rmc_light"
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -1765,33 +1764,22 @@
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/team_leader //RMC TL & LT Armor
+	name = "kestrel armoured carry vest"
 	icon_state = "rmc_light_padded"
 	item_state = "rmc_light_padded"
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_MEDIUM
-	slowdown = SLOWDOWN_ARMOR_LIGHT
 	storage_slots = 7
 
-/obj/item/clothing/suit/storage/marine/veteran/royal_marine/medium //Smartgun Spec Armor
-	icon_state = "rmc_pointman"
-	item_state = "rmc_pointman"
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	movement_compensation = SLOWDOWN_ARMOR_LIGHT
-	storage_slots = 3
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/smartgun //Smartgun Spec Armor
+	name = "kestrel armoured smartgun harness"
+	icon_state = "rmc_smartgun"
+	item_state = "rmc_smartgun"
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN|SMARTGUN_HARNESS
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/pointman //Pointman Spec Armor
-	icon_state = "rmc_medium"
-	item_state = "rmc_medium"
+	name = "kestrel pointman armour"
+	desc = "A heavier version of the armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
+	icon_state = "rmc_pointman"
+	item_state = "rmc_pointman"
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS

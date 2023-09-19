@@ -6,15 +6,16 @@
 /////////////////
 
 /obj/vehicle/walker
-	name = "CW13 \"Megalodon\" Assault Walker"
-	desc = "Relatively new combat walker of \"Megalodon\"-series. Unlike its predecessor, \"Carharodon\"-series, slower, but relays on its tough armor and rapid-firing weapons."
-	icon = 'fray-marines/icons/obj/vehicles/mech-walker.dmi'
-	icon_state = "mech"
-	layer = ABOVE_LYING_MOB_LAYER
+	name = "CW13 \"Enforcer\" Assault Walker"
+	desc = "Relatively new combat walker of \"Enforcer\"-series. Unlike its predecessor, \"Carharodon\"-series, slower, but relays on its tough armor and rapid-firing weapons."
+	icon = 'fray-marines/icons/obj/vehicles/mech.dmi'
+	icon_state = "mech_open"
+	layer = BIG_XENO_LAYER
 	opacity = TRUE
 	can_buckle = FALSE
 	move_delay = 6
 	req_access = list(ACCESS_MARINE_WALKER)
+	unacidable = TRUE
 
 	var/lights = FALSE
 	var/lights_power = 8
@@ -23,8 +24,8 @@
 
 	pixel_x = -18
 
-	health = 700
-	var/maxHealth = 700
+	health = 1000
+	var/maxHealth = 1000
 	var/repair = FALSE
 
 	var/mob/pilot = null
@@ -46,12 +47,12 @@
 	var/obj/item/walker_armor/armor_module = null
 	var/selected = GUN_LEFT
 
-/obj/vehicle/walker/New()
+	flags_atom = FPRINT|USES_HEARING
+
+/obj/vehicle/walker/Initialize()
 	. = ..()
 
-	unacidable = 0
-
-/obj/vehicle/walker/prebuilt/New()
+/obj/vehicle/walker/prebuilt/Initialize()
 	. = ..()
 
 	left = new /obj/item/walker_gun/smartgun()
@@ -66,33 +67,36 @@
 /obj/vehicle/walker/update_icon()
 	overlays.Cut()
 
+	if(seats[VEHICLE_DRIVER] != null)
+		icon_state = "mech_prep"
+	else
+		icon_state = "mech_open"
+
 	if(left)
-		var/image/left_gun = left.get_icon_image("-l")
+		var/image/left_gun = left.get_icon_image("_l_hand")
 		overlays += left_gun
 	if(right)
-		var/image/right_gun = right.get_icon_image("-r")
+		var/image/right_gun = right.get_icon_image("_r_hand")
 		overlays += right_gun
 
-	if(pilot)
-		var/image/occupied = image(icon, icon_state = "mech-face")
-		overlays += occupied
-
-/obj/vehicle/walker/examine(mob/user)
-	..()
+/obj/vehicle/walker/get_examine_text(mob/user)
+	. = ..()
 	var/integrity = round(health/maxHealth*100)
 	switch(integrity)
 		if(85 to 100)
-			to_chat(usr, "It's fully intact.")
+			. += "\nIt's fully intact."
 		if(65 to 85)
-			to_chat(usr, "It's slightly damaged.")
+			. += "\nIt's slightly damaged."
 		if(45 to 65)
-			to_chat(usr, "It's badly damaged.")
+			. += "\nIt's badly damaged."
 		if(25 to 45)
-			to_chat(usr, "It's heavily damaged.")
+			. += "\nIt's heavily damaged."
 		else
-			to_chat(usr, "It's falling apart.")
-	to_chat(usr, "[left ? left.name : "Nothing"] is placed on its left hardpoint.")
-	to_chat(usr, "[right ? right.name : "Nothing"] is placed on its right hardpoint.")
+			. += "\nIt's falling apart."
+	. += "\n[left ? left.name : "Nothing"] is placed on its left hardpoint."
+	. += "\n[right ? right.name : "Nothing"] is placed on its right hardpoint."
+
+	return .
 
 /obj/vehicle/walker/ex_act(severity)
 	switch(severity)
@@ -108,27 +112,43 @@
 			take_damage(10, "explosive")					// 10 * 5.0 = 50. Maxhealth is 400. Hellova damage
 
 /obj/vehicle/walker/relaymove(mob/user, direction)
+	if(user.is_mob_incapacitated()) return
+	if(seats[VEHICLE_DRIVER] != user) return
+	seats[VEHICLE_DRIVER].set_interaction(src)
+
 	if(world.time > l_move_time + move_delay)
-		if(dir != direction)
+		if (zoom)
+			unzoom()
+		if(dir != direction && reverse_dir[dir] != direction)
 			l_move_time = world.time
 			dir = direction
 			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
 			. = TRUE
 		else
+			var/oldDir = dir
 			. = step(src, direction)
+			setDir(oldDir)
 			if(.)
 				pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
 
 /obj/vehicle/walker/Bump(atom/obstacle)
 	if(istype(obstacle, /obj/structure/machinery/door))
 		var/obj/structure/machinery/door/door = obstacle
-		if(door.allowed(pilot))
+		if(door.allowed(seats[VEHICLE_DRIVER]))
 			door.open()
 		else
 			flick("door_deny", door)
 
 	else if(ishuman(obstacle))
 		step_away(obstacle, src, 0)
+		return
+
+	else if(istype(obstacle, /obj/structure/barricade))
+		pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
+		var/obj/structure/barricade/cade = obstacle
+		var/new_dir = get_dir(src, cade) ? get_dir(src, cade) : cade.dir
+		var/turf/new_loc = get_step(loc, new_dir)
+		if(!new_loc.density) forceMove(new_loc)
 		return
 
 //Breaking stuff
@@ -175,14 +195,14 @@
 	set waitfor = FALSE
 	if(!ishuman(user))
 		return
-	if(pilot)
+	if(seats[VEHICLE_DRIVER])
 		to_chat(user, "There is someone occupying mecha right now.")
 		return
 	var/mob/living/carbon/human/H = user
 	for(var/ID in list(H.wear_id, H.belt))
 		if(operation_allowed(ID))
-			pilot = user
-			add_verb(pilot.client, list(
+			seats[VEHICLE_DRIVER] = user
+			add_verb(seats[VEHICLE_DRIVER].client, list(
 				/obj/vehicle/walker/proc/eject,
 				/obj/vehicle/walker/proc/lights,
 				/obj/vehicle/walker/proc/zoom,
@@ -191,12 +211,11 @@
 				/obj/vehicle/walker/proc/get_stats,
 			))
 			user.loc = src
-			pilot.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
-			pilot.set_interaction(src)
-			pilot << sound('sound/mecha/powerup.ogg',volume=50)
+			seats[VEHICLE_DRIVER].client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
+			seats[VEHICLE_DRIVER].set_interaction(src)
+			playsound_client(seats[VEHICLE_DRIVER].client, 'sound/mecha/powerup.ogg')
 			update_icon()
-			sleep(50)
-			pilot << sound('sound/mecha/nominalsyndi.ogg',volume=50)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), seats[VEHICLE_DRIVER].client, 'sound/mecha/nominalsyndi.ogg'), 5 SECONDS)
 			return
 
 	to_chat(user, "Access denied.")
@@ -214,22 +233,24 @@
 		return
 
 	var/obj/vehicle/walker/W = M.interactee
+
 	if(!W || !istype(W))
 		return
 	W.move_out()
 
 /obj/vehicle/walker/proc/move_out()
-	if(!pilot)
+	if(!seats[VEHICLE_DRIVER])
 		return FALSE
 	if(health <= 0)
-		to_chat(pilot, "<span class='danger'>PRIORITY ALERT! Chassis integrity failing. Systems shutting down.</span>")
+		to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>PRIORITY ALERT! Chassis integrity failing. Systems shutting down.</span>")
 	if(zoom)
-		zoom_activate()
-	if(pilot.client)
-		pilot.client.mouse_pointer_icon = initial(pilot.client.mouse_pointer_icon)
-	pilot.unset_interaction()
-	pilot.loc = src.loc
-	remove_verb(pilot.client, list(
+		unzoom()
+	if(seats[VEHICLE_DRIVER].client)
+		seats[VEHICLE_DRIVER].client.mouse_pointer_icon = initial(seats[VEHICLE_DRIVER].client.mouse_pointer_icon)
+	seats[VEHICLE_DRIVER].unset_interaction()
+	seats[VEHICLE_DRIVER].loc = src.loc
+	seats[VEHICLE_DRIVER].reset_view(null)
+	remove_verb(seats[VEHICLE_DRIVER].client, list(
 				/obj/vehicle/walker/proc/eject,
 				/obj/vehicle/walker/proc/lights,
 				/obj/vehicle/walker/proc/zoom,
@@ -237,7 +258,7 @@
 				/obj/vehicle/walker/proc/deploy_magazine,
 				/obj/vehicle/walker/proc/get_stats,
 			))
-	pilot = null
+	seats[VEHICLE_DRIVER] = null
 	update_icon()
 	return TRUE
 
@@ -249,6 +270,8 @@
 		return
 
 	var/obj/vehicle/walker/W = M.interactee
+
+
 	if(!W || !istype(W))
 		return
 	W.handle_lights()
@@ -260,13 +283,15 @@
 	else
 		lights = FALSE
 		set_light(-lights_power)
-	pilot << sound('sound/machines/click.ogg',volume=50)
+	seats[VEHICLE_DRIVER] << sound('sound/machines/click.ogg',volume=50)
 
 /obj/vehicle/walker/proc/deploy_magazine()
 	set name = "Deploy Magazine"
 	set category = "Vehicle"
 	var/mob/M = usr
+
 	var/obj/vehicle/walker/W = M.interactee
+
 	if(!W || !istype(W))
 		return
 
@@ -296,10 +321,11 @@
 		return
 
 	var/obj/vehicle/walker/W = M.interactee
+
 	if(!W || !istype(W))
 		return
 
-	if(M != W.pilot)
+	if(M != W.seats[VEHICLE_DRIVER])
 		return
 	W.statistics(M)
 
@@ -340,6 +366,7 @@
 		return
 
 	var/obj/vehicle/walker/W = M.interactee
+
 	if(!W || !istype(W))
 		return
 
@@ -355,6 +382,10 @@
 
 /obj/vehicle/walker/handle_click(mob/living/user, atom/A, list/mods)
 	if(!firing_arc(A))
+		var/newDir = get_cardinal_dir(src, A)
+		l_move_time = world.time
+		dir = newDir
+		pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
 		return
 	if(selected)
 		if(!left)
@@ -391,20 +422,59 @@
 	set name = "Zoom on/off"
 	set category = "Vehicle"
 
-	zoom_activate()
+	var/mob/M = usr
+	if(!M || !istype(M))
+		return
+
+	var/obj/vehicle/walker/W = M.interactee
+
+	if(!W || !istype(W))
+		return
+
+	W.zoom_activate()
 
 /obj/vehicle/walker/proc/zoom_activate()
-	if(zoom)
-		pilot.client.change_view(world.view)//world.view - default mob view size
-		zoom = FALSE
+	if (zoom)
+		unzoom()
 	else
-		pilot.client.change_view(world.view)//world.view - default mob view size
-		pilot.client.change_view(zoom_size)
-		pilot << sound('sound/mecha/imag_enhsyndi.ogg',volume=50)
+		do_zoom()
+
+/obj/vehicle/walker/proc/do_zoom(viewsize = 12)
+	var/mob/living/carbon/user = seats[VEHICLE_DRIVER]
+	if(user.client)
 		zoom = TRUE
-	to_chat(pilot, "Notification. Cameras zooming [zoom ? "activated" : "deactivated"].")
+		user.client.change_view(viewsize, src)
 
+		// zoom_initial_mob_dir = user.dir
 
+		var/tilesize = 32
+		var/viewoffset = tilesize * zoom_size
+
+		switch(dir)
+			if(NORTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = viewoffset
+			if(SOUTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = -viewoffset
+			if(EAST)
+				user.client.pixel_x = viewoffset
+				user.client.pixel_y = 0
+			if(WEST)
+				user.client.pixel_x = -viewoffset
+				user.client.pixel_y = 0
+
+	to_chat(seats[VEHICLE_DRIVER], "Notification. Cameras zooming [zoom ? "activated" : "deactivated"].")
+
+/obj/vehicle/walker/proc/unzoom()
+	var/mob/living/carbon/user = seats[VEHICLE_DRIVER]
+
+	zoom = !zoom
+	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
+	if(user.client)
+		user.client.change_view(world_view_size, src)
+		user.client.pixel_x = 0
+		user.client.pixel_y = 0
 
 
 /////////////////
@@ -541,23 +611,22 @@
 		to_chat(user, "Someone already reparing this vehicle.")
 		return
 	repair = TRUE
-	var/repair_time = 1000
-	if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_DEFAULT))		//NO DIVIDING BY ZERO
-		repair_time = round(repair_time/user.skills.get_skill_level(SKILL_ENGINEER))
+	var/repair_time = 20 SECONDS
 
 	to_chat(user, "You start repairing broken part of [src.name]'s armor...")
 	if(do_after(user, repair_time, TRUE, 5, BUSY_ICON_BUILD))
-		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, "You haphazardly weld together chunks of broken armor.")
-			health += 25
+			health += 100
 			healthcheck()
 		else
-			health += 100
+			health += 250
 			healthcheck()
 			to_chat(user, "You repair broken part of the armor.")
 		playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
-		if(pilot)
-			to_chat(pilot, "Notification.Armor partly restored.")
+		if(seats[VEHICLE_DRIVER])
+			to_chat(seats[VEHICLE_DRIVER], "Notification.Armor partly restored.")
+		repair = FALSE
 		return
 	else
 		to_chat(user, "Repair has been interrupted.")
@@ -569,14 +638,19 @@
 /////////
 
 /obj/vehicle/walker/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.a_intent == "hurt")
-		M.animation_attack_on(src)
-		playsound(loc, "alien_claw_metal", 25, 1)
-		M.flick_attack_overlay(src, "slash")
-		M.visible_message("<span class='danger'>[M] slashes [src].</span>","<span class='danger'>You slash [src].</span>", null, 5)
-		take_damage(rand(M.melee_damage_lower, M.melee_damage_upper), "slash")
-	else
-		attack_hand(M)
+	if(M.a_intent == INTENT_HELP)
+		return XENO_NO_DELAY_ACTION
+
+	// if(M.mob_size < MOB_SIZE_XENO)
+	// 	to_chat(M, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+	// 	return XENO_NO_DELAY_ACTION
+
+	M.animation_attack_on(src)
+	playsound(loc, "alien_claw_metal", 25, 1)
+	M.visible_message(SPAN_DANGER("[M] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	take_damage(M.melee_vehicle_damage + rand(-5,5), "slash")
+
+	return XENO_ATTACK_ACTION
 
 /obj/vehicle/walker/healthcheck()
 	if(health > maxHealth)
@@ -588,7 +662,7 @@
 		playsound(loc, 'sound/effects/metal_crash.ogg', 75)
 		qdel(src)
 
-/obj/vehicle/walker/bullet_act(obj/item/projectile/Proj)
+/obj/vehicle/walker/bullet_act(obj/projectile/Proj)
 	if(!Proj)
 		return
 
@@ -613,22 +687,52 @@
 		return
 	var/damage = dam * dmg_multipliers[damtype]
 	if(damage <= 10)
-		to_chat(pilot, "<span class='danger'>ALERT! Hostile incursion detected. Deflected.</span>")
+		to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>ALERT! Hostile incursion detected. Deflected.</span>")
 		return
 
 	health -= damage
-	to_chat(pilot, "<span class='danger'>ALERT! Hostile incursion detected. Chassis taking damage.</span>")
-	if(pilot && damage >= 50)
-		pilot << sound('sound/mecha/critdestrsyndi.ogg',volume=50)
+	to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>ALERT! Hostile incursion detected. Chassis taking damage.</span>")
+	if(seats[VEHICLE_DRIVER] && damage >= 50)
+		seats[VEHICLE_DRIVER] << sound('sound/mecha/critdestrsyndi.ogg',volume=50)
 	healthcheck()
 
+/obj/vehicle/walker/Collided(atom/A)
+	. = ..()
 
+	if(iscrusher(A))
+		var/mob/living/carbon/xenomorph/crusher/C = A
+		if(!C.throwing)
+			return
+
+		if(health > 0)
+			take_damage(250, "abstract")
+			visible_message(SPAN_DANGER("\The [A] ramms \the [src]!"))
+		playsound(loc, 'sound/effects/metal_crash.ogg', 35)
+
+/obj/vehicle/walker/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
+	var/mob/driver = seats[VEHICLE_DRIVER]
+	if (driver == null)
+		return
+	else if (driver != M)
+		driver.hear_say(msg, verb, speaking, "", italics, M)
+	else
+		var/list/mob/listeners = get_mobs_in_view(9,src)
+
+		var/list/mob/langchat_long_listeners = list()
+		listeners += driver
+		for(var/mob/listener in listeners)
+			if(!ishumansynth_strict(listener) && !isobserver(listener))
+				listener.show_message("[src] broadcasts something, but you can't understand it.")
+				continue
+			listener.show_message("<B>[src]</B> broadcasts, [FONT_SIZE_LARGE("\"[msg]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
+			langchat_long_listeners += listener
+		langchat_long_speech(msg, langchat_long_listeners, driver.get_default_language())
 
 /obj/structure/walker_wreckage
 	name = "CW13 wreckage"
 	desc = "Remains of some unfortunate walker. Completely unrepairable."
-	icon = 'fray-marines/icons/obj/vehicles/mech-walker.dmi'
-	icon_state = "mech-damaged"
+	icon = 'fray-marines/icons/obj/vehicles/mech.dmi'
+	icon_state = "mech_broken"
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE

@@ -329,7 +329,6 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/item/tool/crowbar,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -367,7 +366,6 @@
 /area/lv624/lazarus/research)
 "bm" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -438,9 +436,9 @@
 /area/lv624/lazarus/research)
 "oe" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
-	phone_id = "Research Dome"
+	phone_id = "Research Dome";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 5;
@@ -603,7 +601,7 @@ ab
 "}
 (7,1,1) = {"
 ac
-bn
+Tz
 aq
 ay
 ay
@@ -715,7 +713,7 @@ bb
 ay
 ab
 bn
-bn
+Tz
 aj
 ac
 bE

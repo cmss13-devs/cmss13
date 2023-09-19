@@ -555,6 +555,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 
 /obj/structure/machinery/cryopod/tutorial
+	silent_exit = TRUE
 
 /obj/structure/machinery/cryopod/tutorial/process()
 	return

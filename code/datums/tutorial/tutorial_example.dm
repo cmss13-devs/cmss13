@@ -13,9 +13,6 @@
 
 	// Init_mob() isn't called by default, so we call it here
 	init_mob()
-	// The below two lines are boilerplate to make sure the space is freed up if the player dies, leaves, ghosts, etc.
-	RegisterSignal(tutorial_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_DEATH, COMSIG_LIVING_GHOSTED), PROC_REF(end_tutorial))
-	RegisterSignal(tutorial_mob.client, COMSIG_PARENT_QDELETING, PROC_REF(end_tutorial))
 	// As is standard, we give a message to the player and update their status panel with what we want done.
 	message_to_player("This is an example tutorial. Perform any emote to continue.")
 	update_objective("Do any emote.")

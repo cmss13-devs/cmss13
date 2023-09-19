@@ -14,8 +14,6 @@
 		return
 
 	init_mob()
-	RegisterSignal(tutorial_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_DEATH, COMSIG_LIVING_GHOSTED), PROC_REF(end_tutorial))
-	RegisterSignal(tutorial_mob.client, COMSIG_PARENT_QDELETING, PROC_REF(end_tutorial))
 	message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>W</b> or <b>D</b> to continue.")
 	update_objective("Exit the cryopod by pressing W or D.")
 	RegisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT, PROC_REF(on_cryopod_exit))

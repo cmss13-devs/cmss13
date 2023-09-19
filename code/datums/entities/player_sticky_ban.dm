@@ -1,9 +1,9 @@
 /datum/entity/stickyban
-	var/ckey
+	var/identifier
 	var/reason
 	var/message
 	var/date
-	var/sticky
+	var/sticky = TRUE
 
 	var/linked_permaban
 
@@ -11,7 +11,7 @@
 	entity_type = /datum/entity/stickyban
 	table_name = "stickyban"
 	field_types = list(
-		"ckey" = DB_FIELDTYPE_STRING_LARGE,
+		"identifier" = DB_FIELDTYPE_STRING_LARGE,
 		"reason" = DB_FIELDTYPE_STRING_LARGE,
 		"message" = DB_FIELDTYPE_STRING_LARGE,
 		"date" = DB_FIELDTYPE_STRING_LARGE,

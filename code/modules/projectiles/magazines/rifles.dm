@@ -81,7 +81,7 @@
 	name = "\improper M41A MK1 magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds."
 	icon_state = "m41a_mk1"
-	max_rounds = 95
+	max_rounds = 99
 	gun_type = /obj/item/weapon/gun/rifle/m41aMK1
 	default_ammo = /datum/ammo/bullet/rifle
 	ammo_band_icon = "+m41a_mk1_band"

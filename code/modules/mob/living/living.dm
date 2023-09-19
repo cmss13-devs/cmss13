@@ -213,7 +213,7 @@
 				if(!(flags_atom & DIRLOCK))
 					setDir(turn(direct, 180)) //face the pullee
 
-	if(pulledby && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
+	if(pulledby && get_dist(src, pulledby) > 1 && !moving_diagonally)//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()
 
 	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src)) //check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.

@@ -465,3 +465,4 @@ FORENSIC SCANNER
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT
 	flags_equip_slot = SLOT_WAIST
+	inherent_traits = list(TRAIT_TOOL_TRADEBAND)

@@ -1,0 +1,4 @@
+author: "TheGamerdk, ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "IOs start in their own squad now"

@@ -101,7 +101,6 @@
 /area/lv624/lazarus/fitness)
 "li" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -209,7 +208,6 @@
 	},
 /obj/structure/surface/table,
 /obj/item/storage/box/cups,
-/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -354,7 +352,6 @@
 /obj/item/clothing/mask/snorkel,
 /obj/item/clothing/mask/snorkel,
 /obj/item/clothing/mask/snorkel,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"

@@ -1,0 +1,6 @@
+author: "c4xmaniac2"
+delete-after: True
+changes:
+  - balance: "Moved 1/3 of all intel into the cave systems."
+  - maptweak: "1/3 of all Intel has been redistributed into the caves."
+  - maptweak: "Nightmare inserts on the colony side and in the caves of LV now have their intel distribution standardized."

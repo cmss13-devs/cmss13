@@ -566,9 +566,10 @@
 	unacidable = TRUE
 	black_market_value = 100
 	var/is_locked = TRUE
+	var/can_change_barrel = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/mateba_key))
+	if(istype(I, /obj/item/weapon/mateba_key) && can_change_barrel)
 		if(attachments["special"])
 			var/obj/item/attachable/R = attachments["special"]
 			visible_message(SPAN_NOTICE("[user] begins stripping [R] from [src]."),
@@ -590,7 +591,7 @@
 			update_icon()
 	else if(istype(I, /obj/item/attachable))
 		var/obj/item/attachable/A = I
-		if(A.slot == "muzzle" && !attachments["special"])
+		if(A.slot == "muzzle" && !attachments["special"] && can_change_barrel)
 			to_chat(user, SPAN_WARNING("You need to attach a barrel first!"))
 			return
 	. = ..()
@@ -666,6 +667,18 @@
 	item_state = "cmateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	map_specific_decoration = TRUE
+
+/obj/item/weapon/gun/revolver/mateba/special
+	name = "\improper Mateba autorevolver special"
+	desc = "An old, heavily modified version of the Mateba Autorevolver. It sports a smooth wooden grip, and a much larger barrel to it's unmodified counterpart. It's clear that this weapon has been cared for over a long period of time."
+	icon_state = "cmateba_special"
+	item_state = "cmateba_special"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
+	can_change_barrel = FALSE
+
+/obj/item/weapon/gun/revolver/mateba/special/set_gun_config_values()
+	..()
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 
 //-------------------------------------------------------
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.

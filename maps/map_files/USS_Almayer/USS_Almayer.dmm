@@ -33133,7 +33133,8 @@
 /area/almayer/squads/delta)
 "ewR" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Intel Chute Room"
+	name = "\improper Intel Chute Room";
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -62523,9 +62524,6 @@
 /obj/item/clipboard{
 	pixel_x = 7;
 	pixel_y = 6
-	},
-/obj/item/storage/bag/trash{
-	pixel_x = -9
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)

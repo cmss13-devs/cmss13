@@ -112,6 +112,11 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	tutorial_mob.AddComponent(/datum/component/tutorial_status)
 	give_action(tutorial_mob, /datum/action/tutorial_end, null, null, src)
 
+/// Ends the tutorial after a certain amount of time.
+/datum/tutorial/proc/tutorial_end_in(time = 5 SECONDS)
+	tutorial_ending = TRUE
+	addtimer(CALLBACK(src, PROC_REF(end_tutorial)), time)
+
 /// Initialize any objects that need to be in the tutorial area from the beginning.
 /datum/tutorial/proc/init_map()
 	return

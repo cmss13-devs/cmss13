@@ -1,6 +1,6 @@
 /datum/tutorial/marine/basic
 	name = "Marine - Basic"
-	tutorial_id = "marine_1"
+	tutorial_id = "marine_basic_1"
 	/// How many items need to be vended from the clothing vendor for the script to continue, if something vends 2 items (for example), increase this number by 2.
 	var/clothing_items_to_vend = 9
 	/// How many items need to be vended from the gun vendor to continue
@@ -157,8 +157,7 @@
 	remove_highlight(xeno_dummy)
 	addtimer(CALLBACK(src, PROC_REF(disappear_xeno)), 2.5 SECONDS)
 	message_to_player("Very good. This is the end of the tutorial, proceed to the next one to learn the basics of <b>Medical</b>. You will be sent back to the lobby screen momentarily.")
-	addtimer(CALLBACK(src, PROC_REF(end_tutorial)), 7.5 SECONDS)
-	tutorial_ending = TRUE
+	tutorial_end_in(7.5 SECONDS)
 
 
 // END OF SCRIPTING
@@ -189,45 +188,11 @@
 // END OF SCRIPT HELPERS
 
 /datum/tutorial/marine/basic/init_mob()
-	tutorial_mob.close_spawn_windows()
-
-	var/mob/living/carbon/human/new_character = new(bottom_left_corner)
-	new_character.lastarea = get_area(bottom_left_corner)
-
-	tutorial_mob.client.prefs.copy_all_to(new_character)
-
-	if(tutorial_mob.client.prefs.be_random_body)
-		var/datum/preferences/rand_prefs = new()
-		rand_prefs.randomize_appearance(new_character)
-
-	new_character.job = tutorial_mob.job
-	new_character.name = tutorial_mob.real_name
-	new_character.voice = tutorial_mob.real_name
-
-	new_character.marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	new_character.marine_buyable_categories = MARINE_CAN_BUY_ALL
-
-	if(tutorial_mob.mind)
-		tutorial_mob.mind_initialize()
-		tutorial_mob.mind.transfer_to(new_character, TRUE)
-		tutorial_mob.mind.setup_human_stats()
-
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
-
-	tutorial_mob = new_character
-	arm_equipment(new_character, /datum/equipment_preset/tutorial)
-	new_character.marine_points = 15 // enough for a motion detector
+	. = ..()
+	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cryopod/tutorial, tutorial_pod)
 	tutorial_pod.go_in_cryopod(tutorial_mob, TRUE, FALSE)
-
-	new_character.sec_hud_set_ID()
-	new_character.hud_set_squad()
-
-	SSround_recording.recorder.track_player(tutorial_mob)
-	return ..()
 
 
 /datum/tutorial/marine/basic/init_map()

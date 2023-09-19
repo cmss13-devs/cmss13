@@ -29,3 +29,9 @@
 
 /// from /obj/proc/afterbuckle()
 #define COSMIG_OBJ_AFTER_BUCKLE "signal_obj_after_buckle"
+
+/// from /obj/structure/machinery/cryopod/go_out()
+#define COMSIG_CRYOPOD_GO_OUT "cryopod_go_out"
+
+/// from /proc/vendor_successful_vend() : (obj/structure/machinery/cm_vending/vendor, list/itemspec, mob/living/carbon/human/user)
+#define COMSIG_VENDOR_SUCCESSFUL_VEND "vendor_successful_vend"

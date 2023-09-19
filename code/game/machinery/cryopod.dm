@@ -533,6 +533,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon_state = "body_scanner_open"
 	set_light(0)
 	playsound(src, 'sound/machines/pod_open.ogg', 30)
+	SEND_SIGNAL(src, COMSIG_CRYOPOD_GO_OUT)
 
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
@@ -551,3 +552,42 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return
 
 	move_inside(target)
+
+
+/obj/structure/machinery/cryopod/tutorial
+
+/obj/structure/machinery/cryopod/tutorial/process()
+	return
+
+/obj/structure/machinery/cryopod/tutorial/go_in_cryopod(mob/mob, silent = FALSE, del_them = TRUE)
+	if(occupant)
+		return
+	mob.forceMove(src)
+	occupant = mob
+	icon_state = "body_scanner_closed"
+	set_light(2)
+	time_entered = world.time
+	if(del_them)
+		despawn_occupant()
+
+/obj/structure/machinery/cryopod/tutorial/despawn_occupant()
+	SSminimaps.remove_marker(occupant)
+
+	if(ishuman(occupant))
+		var/mob/living/carbon/human/man = occupant
+		man.species.handle_cryo(man)
+
+	icon_state = "body_scanner_open"
+	set_light(0)
+
+
+	var/mob/new_player/new_player = new
+
+	if(!occupant.mind)
+		occupant.mind_initialize()
+
+	occupant.mind.transfer_to(new_player)
+
+	//Delete the mob.
+
+	QDEL_NULL(occupant)

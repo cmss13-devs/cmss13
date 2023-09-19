@@ -1982,7 +1982,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(!istype(character))
 		return
 
-	find_assigned_slot(job_title, is_late_join)
+	if(job_title)
+		find_assigned_slot(job_title, is_late_join)
 	if(check_datacore && !(be_random_body && be_random_name))
 		for(var/datum/data/record/record as anything in GLOB.data_core.locked)
 			if(record.fields["name"] == real_name)

@@ -152,6 +152,8 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 /// Ancients only
 #define ACCESS_YAUTJA_ANCIENT 392
 
+/// Anything in a tutorial sequence that shouldn't be accessed
+#define ACCESS_TUTORIAL_LOCKED 998
 ///Temporary, just so I can flag places I need to change
 #define ACCESS_COME_BACK_TO_ME 999
 

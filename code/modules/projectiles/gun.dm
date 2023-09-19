@@ -845,6 +845,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 				to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 				return
 		replace_magazine(user, magazine)
+		SEND_SIGNAL(user, COMSIG_MOB_RELOADED_GUN, src)
 	else
 		current_mag = magazine
 		magazine.forceMove(src)
@@ -1050,6 +1051,7 @@ and you're good to go.
 						user.swap_hand()
 					unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
 					playsound(src, empty_sound, 25, 1)
+					SEND_SIGNAL(user, COMSIG_MOB_GUN_EMPTY, src)
 		else // Just fired a chambered bullet with no magazine in the gun
 			update_icon()
 

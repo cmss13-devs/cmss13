@@ -53,6 +53,34 @@
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
 	)
 
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial
+	name = "\improper ColMarTech Automated Weapons Rack"
+	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons."
+	icon_state = "guns"
+	req_access = list(ACCESS_TUTORIAL_LOCKED)
+	req_one_access = list()
+	hackable = FALSE
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial/populate_product_list(scale)
+	listed_products = list(
+		list("PRIMARY FIREARMS", -1, null, null),
+		list("M41A Pulse Rifle MK2", 1, /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_RECOMMENDED),
+
+		list("PRIMARY AMMUNITION", -1, null, null),
+		list("M41A Magazine (10x24mm)", 1, /obj/item/ammo_magazine/rifle, VENDOR_ITEM_RECOMMENDED),
+	)
+
+/// Called if the tutorial mob somehow uses an entire magazine without the xeno dying
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial/proc/load_ammo()
+	listed_products = list(
+		list("PRIMARY FIREARMS", -1, null, null),
+		list("M41A Pulse Rifle MK2", 0, /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_RECOMMENDED),
+
+		list("PRIMARY AMMUNITION", -1, null, null),
+		list("M41A Magazine (10x24mm)", 99, /obj/item/ammo_magazine/rifle, VENDOR_ITEM_RECOMMENDED),
+	)
+
 //------------SQUAD PREP UNIFORM VENDOR---------------
 
 

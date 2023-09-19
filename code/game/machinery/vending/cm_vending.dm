@@ -1157,6 +1157,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 	var/vend_flags = vendor.vend_flags
 	var/turf/target_turf = vendor.get_appropriate_vend_turf(user)
+
 	if(LAZYLEN(itemspec)) //making sure it's not empty
 		if(vendor.vend_delay)
 			vendor.overlays.Cut()
@@ -1169,8 +1170,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		if(islist(prod_type))
 			for(var/each_type in prod_type)
 				vendor_successful_vend_one(vendor, each_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
+				SEND_SIGNAL(vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, vendor, itemspec, user)
 		else
 			vendor_successful_vend_one(vendor, prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
+			SEND_SIGNAL(vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, vendor, itemspec, user)
 
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--

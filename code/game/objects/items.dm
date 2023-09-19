@@ -358,6 +358,7 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src)
 	if(drop_sound && (src.loc?.z))
 		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)

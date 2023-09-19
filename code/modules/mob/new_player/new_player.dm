@@ -42,6 +42,7 @@
 	var/output = "<div align='center'>Welcome,"
 	output +="<br><b>[(client.prefs && client.prefs.real_name) ? client.prefs.real_name : client.key]</b>"
 	output +="<br><b>[xeno_text]</b>"
+	output += "<p><a href='byond://?src=\ref[src];lobby_choice=tutorial'>Tutorial</A></p>"
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_preferences'>Setup Character</A></p>"
 
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_playtimes'>View Playtimes</A></p>"
@@ -224,8 +225,21 @@
 			AttemptLateSpawn(href_list["job_selected"])
 			return
 
+		if("tutorial")
+			if(SSticker.current_state <= GAME_STATE_SETTING_UP)
+				to_chat(usr, SPAN_WARNING("Please wait for the round to start before entering the tutorial."))
+				return
+
+			if(SSticker.current_state == GAME_STATE_FINISHED)
+				to_chat(usr, SPAN_WARNING("The round has ended. Please wait for the next round to enter the tutorial."))
+				return
+
+			var/datum/tutorial_menu/menu = new(usr)
+			menu.ui_interact(usr)
+
 		else
 			new_player_panel()
+
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
 	var/datum/job/player_rank = RoleAuthority.roles_for_mode[rank]

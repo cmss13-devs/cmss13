@@ -64,6 +64,12 @@
 	style_open = "<span class='langchat' style=font-size:16pt;text-align:center valign='top'>"
 	style_close = "</span>"
 
+/atom/movable/screen/text/screen_text/command_order/tutorial
+	letters_per_update = 5 // overall, pretty fast while not immediately popping in
+	play_delay = 0.1
+	fade_out_delay = 1.5 SECONDS
+	fade_out_time = 0.2 SECONDS
+
 ///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()
 	player?.screen += src

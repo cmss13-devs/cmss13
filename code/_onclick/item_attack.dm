@@ -3,6 +3,7 @@
 /obj/item/proc/attack_self(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK_SELF, src)
 
 	if(flags_item & CAN_DIG_SHRAPNEL && ishuman(user))
 		dig_out_shrapnel(user)
@@ -11,6 +12,7 @@
 /atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
 	if(SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, W, user, mods) & COMPONENT_NO_AFTERATTACK)
 		return TRUE
+	SEND_SIGNAL(user, COMSIG_MOB_PARENT_ATTACKBY, src, W)
 	return FALSE
 
 /atom/movable/attackby(obj/item/W, mob/living/user)

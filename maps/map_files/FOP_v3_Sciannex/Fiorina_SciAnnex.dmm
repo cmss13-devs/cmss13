@@ -31069,14 +31069,6 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
-"sVw" = (
-/obj/structure/barricade/handrail/type_b{
-	dir = 4;
-	layer = 3.5
-	},
-/obj/item/storage/bag/plasticbag,
-/turf/open/floor/prison,
-/area/fiorina/station/disco)
 "sVy" = (
 /obj/structure/barricade/handrail/type_b{
 	dir = 4;
@@ -76713,7 +76705,7 @@ rUY
 vGO
 tMF
 hgu
-sVw
+hgu
 hgu
 hgu
 rox

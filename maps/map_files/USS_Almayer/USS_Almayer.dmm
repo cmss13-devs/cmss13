@@ -36486,7 +36486,6 @@
 /area/almayer/medical/upper_medical)
 "fQF" = (
 /obj/structure/surface/rack,
-/obj/item/storage/bag/plasticbag,
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
@@ -61761,7 +61760,6 @@
 	},
 /area/almayer/squads/charlie_delta_shared)
 "qUH" = (
-/obj/item/storage/bag/plasticbag,
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "plate"

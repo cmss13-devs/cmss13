@@ -66,7 +66,7 @@
 			if(!path || !isnewplayer(usr))
 				return
 
-			if(HAS_TRAIT(usr, TRAIT_IN_TUTORIAL))
+			if(HAS_TRAIT(usr, TRAIT_IN_TUTORIAL) || istype(get_area(usr), /area/misc/tutorial))
 				to_chat(usr, SPAN_NOTICE("You are currently in a tutorial, or one is loading. Please be patient."))
 				return
 

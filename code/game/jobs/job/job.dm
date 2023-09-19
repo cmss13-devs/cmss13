@@ -44,7 +44,18 @@
 	. = ..()
 
 	minimum_playtimes = setup_requirements(list())
-	if(!disp_title) disp_title = title
+	if(!disp_title)
+		disp_title = title
+
+	if(entry_message_body)
+		entry_message_body = replace_placeholders()
+
+/datum/job/proc/replace_placeholders(replacement_string)
+	replacement_string = replacetextEx(replacement_string, "%WIKIURL%", generate_wiki_link())
+	replacement_string = replacetextEx(replacement_string, "%LAWURL%", "[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_LAW]")
+
+/datum/job/proc/generate_wiki_link()
+	return "[CONFIG_GET(string/wikiarticleurl)]/[replacetext(title, " ", "_")]"
 
 /datum/job/proc/get_whitelist_status(list/roles_whitelist, client/player)
 	if(!roles_whitelist)

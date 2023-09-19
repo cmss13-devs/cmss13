@@ -21,7 +21,13 @@ Basics, the most important.
 
 /datum/config_entry/string/wikiurl
 
+/datum/config_entry/string/wikiarticleurl
+
 /datum/config_entry/string/forumurl
+
+/datum/config_entry/string/staffreport
+
+/datum/config_entry/string/playerreport
 
 /datum/config_entry/string/rulesurl
 

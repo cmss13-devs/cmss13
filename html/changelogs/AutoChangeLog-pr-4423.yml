@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes the CMB tradeband scanner not being able to do it's job."

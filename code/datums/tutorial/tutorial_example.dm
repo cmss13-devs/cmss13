@@ -68,6 +68,6 @@
 
 /datum/tutorial/marine/example/init_map()
 	// Here we're initializing a new can that we want to track, so we spawn it 2 tiles to the left and up from the bottom left corner of the tutorial zone
-	var/obj/item/reagent_container/food/drinks/cans/aspen/the_can = new(locate(bottom_left_corner.x + 2, bottom_left_corner.y + 2, bottom_left_corner.z))
+	var/obj/item/reagent_container/food/drinks/cans/aspen/the_can = new(loc_from_corner(2, 2))
 	// Now we start tracking it
 	add_to_tracking_atoms(the_can)

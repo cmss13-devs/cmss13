@@ -123,6 +123,12 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 /datum/tutorial/proc/init_map()
 	return
 
+/// Returns a turf offset by offset_x (left-to-right) and offset_y (up-to-down)
+/datum/tutorial/proc/loc_from_corner(offset_x = 0, offset_y = 0)
+	RETURN_TYPE(/turf)
+	return locate(bottom_left_corner.x + offset_x, bottom_left_corner.y + offset_y, bottom_left_corner.z)
+
+
 /datum/action/tutorial_end
 	name = "Stop Tutorial"
 	action_icon_state = "hologram_exit"

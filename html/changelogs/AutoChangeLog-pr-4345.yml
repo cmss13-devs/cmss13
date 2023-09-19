@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - rscadd: "Uncommented the \"Observe\" verb for ghosts, allowing ghosts to see from a humans HUD"

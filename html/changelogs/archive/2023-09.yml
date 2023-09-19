@@ -223,3 +223,25 @@
   - bugfix: Fixed a few ways around fire group delays
   Waseemq1235:
   - admin: TWE faction reports are now possible.
+2023-09-17:
+  BeagleGaming1:
+  - bugfix: Fixed CN20-X canister grenades
+  Drathek:
+  - bugfix: Fix/Rework logic regarding xeno guaranteed slots
+  - bugfix: Fix evolution in thunder dome affecting hive slots
+  Morrow:
+  - rscdel: Disables Shivas Snowball
+  Private Tristan:
+  - spellcheck: acid runners are now properly informed of their corrosive acid's strength.
+2023-09-19:
+  Hopek:
+  - rscadd: 'New facehugger strain:  Watcher. The Watcher loses their ability to hide
+      in exchange to see further and the ability to no longer take damage outside
+      of weeds.'
+  c4xmaniac2:
+  - balance: Moved 1/3 of all intel into the cave systems.
+  - maptweak: 1/3 of all Intel has been redistributed into the caves.
+  - maptweak: Nightmare inserts on the colony side and in the caves of LV now have
+      their intel distribution standardized.
+  realforest2001:
+  - bugfix: Fixes the CMB tradeband scanner not being able to do it's job.

@@ -46,19 +46,19 @@
 	if(user.is_mob_incapacitated())
 		return
 	if(world.time > l_move_time + move_delay)
-		if(dir != direction)
-			l_move_time = world.time
+		if(dir != direction && !moving_diagonally)
 			setDir(direction)
 			handle_rotation()
 			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
 			. = TRUE
 		else
+			set_glide_size(DELAY_TO_GLIDE_SIZE(move_delay + 1))
 			. = step(src, direction)
 			if(.)
 				pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
 
 /obj/vehicle/powerloader/handle_rotation()
-	if(buckled_mob)
+	if(buckled_mob && !buckled_mob.moving_diagonally)
 		buckled_mob.setDir(dir)
 		switch(dir)
 			if(EAST)

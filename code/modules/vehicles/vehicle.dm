@@ -4,7 +4,6 @@
 	layer = ABOVE_MOB_LAYER //so it sits above objects including mobs
 	density = TRUE
 	anchored = TRUE
-	animate_movement = 1
 	can_buckle = TRUE
 
 	// The mobs that are in each position/seat of the vehicle

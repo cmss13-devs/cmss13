@@ -228,7 +228,7 @@
 				mob.update_clone()
 		mob.move_intentionally = FALSE
 		moving = FALSE
-		next_movement = world.time + move_delay
+		next_movement += move_delay
 	return
 
 ///Process_Spacemove

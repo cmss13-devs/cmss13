@@ -53,6 +53,7 @@
 /datum/job/proc/replace_placeholders(replacement_string)
 	replacement_string = replacetextEx(replacement_string, "%WIKIURL%", generate_wiki_link())
 	replacement_string = replacetextEx(replacement_string, "%LAWURL%", "[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_LAW]")
+	return replacement_string
 
 /datum/job/proc/generate_wiki_link()
 	return "[CONFIG_GET(string/wikiarticleurl)]/[replacetext(title, " ", "_")]"

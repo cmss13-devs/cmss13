@@ -674,11 +674,15 @@
 	icon_state = "cmateba_special"
 	item_state = "cmateba_special"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
+	starting_attachment_types = list()
 	can_change_barrel = FALSE
 
 /obj/item/weapon/gun/revolver/mateba/special/set_gun_config_values()
 	..()
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+
+/obj/item/weapon/gun/revolver/mateba/special/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 23,"rail_x" = 9, "rail_y" = 24, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 23, "special_y" = 22)
 
 //-------------------------------------------------------
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.

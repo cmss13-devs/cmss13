@@ -6,7 +6,7 @@
 
 	job_options = list("Gunnery Sergeant" = "GySGT", "Master Sergeant" = "MSgt", "First Sergeant" = "1Sgt", "Master Gunnery Sergeant" = "MGySgt", "Sergeant Major" = "SgtMaj")
 
-/datum/job/command/senior/New()
+/datum/job/command/senior/on_config_load()
 	entry_message_body = "<a href='%WIKIPAGE%'>You are</a> held to a higher standard and are required to obey not only the Server Rules but <a href='%LAWURL%'>Marine Law</a> and <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_SOP]'>Standard Operating Procedure</a>. Failure to do so may result in your Mentorship Removal. Your primary job is to teach others the game and its mechanics, and offer advice to all USCM Departments and Personnel on-board."
 	return ..()
 

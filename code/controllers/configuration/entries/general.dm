@@ -37,6 +37,8 @@ Basics, the most important.
 
 /datum/config_entry/string/banappeals
 
+/datum/config_entry/string/endofroundblurb
+
 /datum/config_entry/string/dburl
 
 /// Server to notify of game events

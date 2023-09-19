@@ -1,5 +1,7 @@
 # Tutorial Creation
 
+[ToC]
+
 ## Step 1: Identifying the Goal
 
 Your first objective when making a tutorial should be to have a clear and concise vision of what you want the tutorial to convey to the user. People absorb information better in smaller chunks, so you should ideally keep a tutorial to one section of information at a time.
@@ -44,6 +46,8 @@ The API for tutorials is designed to be very simple, so I'll go over all the bas
     - This proc is used to update the player's objective in their status panel. This should be only what is required and how to do it without any dialogue or extra text.
 - `init_mob()`
     - This proc is used to initialize the mob and set them up correctly. If overridden, call parent at the end of the overridden segment.
+- `init_map()`
+    - This proc does nothing by default, but can be overriden to spawn any atoms necessary for the tutorial from the very start.
 
 ## Step 2.1: Tracking Atoms
 Naturally, you will need to keep track of certain objects or mobs for signal purposes, so the tracking system exists to fill that purpose. When you add a reference to the tracking atom list with `add_to_tracking_atoms()`, it gets put into a dictionary of `{path : reference}`. Because of this limitation, you should not track more than 1 object of the same type. To get a tracked atom, use of the `TUTORIAL_ATOM_FROM_TRACKING(path, varname)` macro is recommended. `path` should be replaced with the precise typepath of the tracked atom, and `varname` should be replaced with the variable name you wish to use. If an object is going to be deleted, remove it with `remove_from_tracking_atoms()` first.
@@ -81,3 +85,4 @@ Line-by-line:
 - Restrict access from players as much as possible. As seen in the example above, restricting access to vendors and similar machines is recommended to prevent sequence breaking. Additionally, avoid adding anything that detracts from the tutorial itself.
 - Attempt to avoid softlocks when possible. If someone could reasonably do something (e.g. firing every bullet they have at a ranged target and missing, now unable to kill them and progress) that could softlock them, then there should be a fallback of some sort. However, accomodations don't need to be made for people who purposefully cause a softlock; there's a "stop tutorial" button for a reason.
 - When calling `message_to_player()` or `update_objective()`, **bold** the names of objects, items, and keybinds.
+- Attempt to bind as many scripting signals to the `tutorial_mob` as possible. The nature of SS13 means something as sequence-heavy as this will always be fragile, so keeping the fragility we can affect to a minimum is imperative.

@@ -35,7 +35,7 @@
 /area/lv624/lazarus/hydroponics)
 "bM" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/north_nexus_road)
 "ck" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -57,19 +57,13 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "eU" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/north_nexus_road)
 "fk" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/colony/south_medbay_road)
 "ft" = (
 /obj/item/clothing/gloves/marine/veteran/pmc{
-	name = "damaged WY PMC gloves";
 	armor_bio = 10;
 	armor_bomb = 10;
 	armor_bullet = 15;
@@ -77,7 +71,8 @@
 	armor_internaldamage = 15;
 	armor_laser = 15;
 	armor_melee = 15;
-	armor_rad = 10
+	armor_rad = 10;
+	name = "damaged WY PMC gloves"
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -110,7 +105,7 @@
 /area/lv624/lazarus/hydroponics)
 "jg" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "jy" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -176,10 +171,10 @@
 	},
 /obj/effect/spawner/gibspawner/robot,
 /obj/item/limb/head/synth{
-	pixel_x = 9;
-	pixel_y = 3;
+	desc = "This appears to be the head of a synthetic, though it it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality.";
 	name = "shattered synthetic head";
-	desc = "This appears to be the head of a synthetic, though it it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality."
+	pixel_x = 9;
+	pixel_y = 3
 	},
 /obj/item/robot_parts/arm/l_arm,
 /turf/open/floor{
@@ -222,7 +217,7 @@
 /area/lv624/lazarus/hydroponics)
 "se" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_medbay_road)
 "tK" = (
 /obj/structure/barricade/deployable{
@@ -343,7 +338,7 @@
 /area/lv624/lazarus/hydroponics)
 "BL" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "Cp" = (
 /obj/structure/surface/rack,
@@ -372,10 +367,6 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/lv624/lazarus/hydroponics)
-"DN" = (
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "Ed" = (
 /obj/item/stack/sheet/metal,
@@ -452,7 +443,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Km" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "Lk" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -476,7 +467,7 @@
 /area/lv624/lazarus/hydroponics)
 "Mm" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "MM" = (
 /obj/structure/barricade/deployable{
@@ -576,7 +567,6 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/clothing/gloves/marine/veteran/pmc{
-	name = "damaged WY PMC gloves";
 	armor_bio = 10;
 	armor_bomb = 10;
 	armor_bullet = 15;
@@ -585,6 +575,7 @@
 	armor_laser = 15;
 	armor_melee = 15;
 	armor_rad = 10;
+	name = "damaged WY PMC gloves";
 	pixel_y = 9
 	},
 /turf/open/floor/plating,
@@ -596,8 +587,6 @@
 /area/lv624/lazarus/hydroponics)
 "RT" = (
 /obj/item/clothing/shoes/veteran/pmc{
-	slowdown = 0.5;
-	name = "scuffed shoes";
 	armor_bio = 15;
 	armor_bomb = 5;
 	armor_bullet = 15;
@@ -606,8 +595,10 @@
 	armor_laser = 5;
 	armor_melee = 15;
 	desc = "The height of fashion, but these look to be woven with protective fiber. This pair seems heavily damaged, especially around the soles...";
+	name = "scuffed shoes";
 	pixel_x = -14;
-	pixel_y = -10
+	pixel_y = -10;
+	slowdown = 0.5
 	},
 /turf/open/floor{
 	dir = 9;
@@ -659,11 +650,11 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "XA" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "XJ" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "YJ" = (
 /obj/item/storage/firstaid,
@@ -879,7 +870,7 @@ bd
 aO
 QR
 mK
-DN
+Wg
 TC
 Wg
 TC

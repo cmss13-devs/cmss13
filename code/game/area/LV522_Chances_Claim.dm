@@ -28,6 +28,10 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 
+/area/lv522/oob/w_y_vault
+	name = "LV522 - Weyland Secure Vault"
+	icon_state = "blue"
+
 //Landing Zone 1
 
 /area/lv522/landing_zone_1
@@ -48,7 +52,6 @@
 	name = "Chance's Claim - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_shiva.dmi'
-	lighting_use_dynamic = TRUE
 
 /area/lv522/landing_zone_1/lz1_console
 	name = "Chance's Claim - Dropship Alamo Console"
@@ -71,7 +74,6 @@
 	name = "Chance's Claim - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_shiva.dmi'
-	lighting_use_dynamic = TRUE
 
 /area/lv522/landing_zone_2/lz2_console
 	name = "Chance's Claim - Dropship Normandy Console"
@@ -176,6 +178,7 @@
 	name = "North LZ1 - Spaceport"
 	icon_state = "red"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/lv522/indoors/lone_buildings/outdoor_bot
 	name = "East LZ1 - Outdoor T-Comms"
@@ -451,4 +454,19 @@
 /area/lv522/atmos/filt
 	name = "Atmospheric Processor - Filtration System"
 	icon_state = "mechbay"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv522/atmos/way_in_command_centre
+	name = "Atmospheric Processor - North Corpo Reactor Entrance"
+	icon_state = "blue"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv522/atmos/sewer
+	name = "Atmospheric Processor - Sewer"
+	icon_state = "red"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv522/atmos/reactor_garage
+	name = "Atmospheric Processor - Garage"
+	icon_state = "green"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS

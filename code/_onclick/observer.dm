@@ -10,72 +10,80 @@
 	else
 		to_chat(src, SPAN_NOTICE(" You will no longer examine things you click on."))
 
-/mob/dead/observer/click(atom/A, list/mods)
+/mob/dead/observer/click(atom/target, list/mods)
 	if(..())
-		return 1
+		return TRUE
 
 	if (mods["shift"] && mods["middle"])
-		point_to(A)
+		point_to(target)
 		return TRUE
 
 	if(mods["ctrl"])
-		if(A == src)
+		if(target == src)
 			if(!can_reenter_corpse || !mind || !mind.current)
 				return
 			if(alert(src, "Are you sure you want to re-enter your corpse?", "Confirm", "Yes", "No") == "Yes")
 				reenter_corpse()
 				return TRUE
 
-		if(ismob(A) || isVehicle(A))
-			if(isxeno(A) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
-				var/mob/living/carbon/xenomorph/X = A
-				if(X.stat == DEAD || is_admin_level(X.z) || X.aghosted)
-					to_chat(src, SPAN_WARNING("You cannot join as [X]."))
-					ManualFollow(X)
-					return
+		if(ismob(target) || isVehicle(target))
+			if(isxeno(target) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
+				var/mob/living/carbon/xenomorph/xeno = target
+				if(xeno.stat == DEAD || is_admin_level(xeno.z) || xeno.aghosted)
+					to_chat(src, SPAN_WARNING("You cannot join as [xeno]."))
+					ManualFollow(xeno)
+					return FALSE
 
 				if(!SSticker.mode.xeno_bypass_timer)
-					if((!islarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA))
-						var/to_wait = XENO_LEAVE_TIMER - X.away_timer
-						if(islarva(X))
-							to_wait = XENO_LEAVE_TIMER_LARVA - X.away_timer
+					if((!islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
+						var/to_wait = XENO_LEAVE_TIMER - xeno.away_timer
+						if(islarva(xeno))
+							to_wait = XENO_LEAVE_TIMER_LARVA - xeno.away_timer
 						if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
 							to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
-						ManualFollow(A)
+						ManualFollow(target)
 						return FALSE
 
 					var/deathtime = world.time - timeofdeath
-					if(deathtime < 2.5 MINUTES)
+					if(deathtime < XENO_JOIN_DEAD_LARVA_TIME)
 						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 						message = SPAN_WARNING("[message]")
 						to_chat(src, message)
-						to_chat(src, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
-						ManualFollow(A)
+						to_chat(src, SPAN_WARNING("You must wait atleast 2.5 minutes before rejoining the game!"))
+						ManualFollow(target)
 						return FALSE
 
-				if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") != "Yes")
+				if(xeno.hive)
+					for(var/mob_name in xeno.hive.banished_ckeys)
+						if(xeno.hive.banished_ckeys[mob_name] == ckey)
+							to_chat(src, SPAN_WARNING("You are banished from the [xeno.hive], you may not rejoin unless the Queen re-admits you or dies."))
+							ManualFollow(target)
+							return FALSE
+
+				if(alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", "Yes", "No") != "Yes")
 					return FALSE
-				if(((!islarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA)) || X.stat == DEAD) // Do it again, just in case
+				if(((!islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER_LARVA)) || xeno.stat == DEAD) // Do it again, just in case
 					to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 					return FALSE
-				SSticker.mode.transfer_xeno(src, X)
+				SSticker.mode.transfer_xeno(src, xeno)
 				return TRUE
-			ManualFollow(A)
+			ManualFollow(target)
 			return TRUE
 
-		following = null
-		abstract_move(get_turf(A))
-		return 1
+		if(!istype(target, /atom/movable/screen))
+			following = null
+			abstract_move(get_turf(target))
+			return TRUE
 
 	if(world.time <= next_move)
-		return 1
+		return TRUE
 
 	next_move = world.time + 8
 	// You are responsible for checking config.ghost_interaction when you override this function
 	// Not all of them require checking, see below
 	if(!mods["shift"])
-		A.attack_ghost(src)
-	return 1
+		target.attack_ghost(src)
+	return FALSE
 
 // Oh by the way this didn't work with old click code which is why clicking shit didn't spam you
 /atom/proc/attack_ghost(mob/dead/observer/user)

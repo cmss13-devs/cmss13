@@ -1,6 +1,6 @@
 /datum/xeno_mutator/eggsac
 	name = "STRAIN: Carrier - Eggsac"
-	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal."
+	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once, can plant eggs of non-hive weeds, and can place eggs one pace further than normal"
 	flavor_description = "An egg is always an adventure; the next one may be different."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -24,7 +24,6 @@
 	var/mob/living/carbon/xenomorph/carrier/carrier = mutator_set.xeno
 	if(!istype(carrier))
 		return FALSE
-	carrier.mutation_type = CARRIER_EGGSAC
 	carrier.plasma_types = list(PLASMA_EGG)
 	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
 	carrier.plasmapool_modifier = 1.2
@@ -36,8 +35,11 @@
 		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
+	carrier.update_hugger_overlays()
+	carrier.mutation_type = CARRIER_EGGSAC
+	carrier.update_eggsac_overlays()
 	carrier.eggs_max = 12
-	carrier.extra_build_dist = 1
+	carrier.egg_planting_range = 2
 	return TRUE
 
 /datum/action/xeno_action/active_toggle/generate_egg
@@ -73,3 +75,5 @@
 			if(egg_generation_progress >= 15)
 				egg_generation_progress = 0
 				xeno.eggs_cur++
+				to_chat(xeno, SPAN_XENONOTICE("You generate a egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
+				xeno.update_icons()

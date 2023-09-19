@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscdel: "Removed field kits"
-  - rscdel: "removed recommend tag from etool/sandbags"

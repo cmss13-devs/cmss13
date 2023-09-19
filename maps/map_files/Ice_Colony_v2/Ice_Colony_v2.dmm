@@ -2660,10 +2660,10 @@
 /area/ice_colony/surface/hydroponics/north)
 "aig" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aih" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aii" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2895,7 +2895,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aiO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3208,7 +3208,7 @@
 /area/ice_colony/surface/substation/smes)
 "ajF" = (
 /obj/item/disk/botany,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "ajG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -5617,7 +5617,7 @@
 /area/ice_colony/exterior/surface/valley/west)
 "aqt" = (
 /obj/item/storage/bag/plants,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aqu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -7066,14 +7066,14 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auk" = (
 /mob/living/simple_animal/cow,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "aul" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "aum" = (
 /obj/structure/bed/chair{
@@ -7177,13 +7177,13 @@
 /area/ice_colony/surface/clinic/lobby)
 "auA" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auB" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auC" = (
 /obj/structure/flora/pottedplant,
@@ -7360,7 +7360,7 @@
 /obj/item/stack/rods{
 	amount = 25
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auZ" = (
 /turf/open/floor{
@@ -7984,7 +7984,7 @@
 /area/ice_colony/exterior/surface/valley/southeast)
 "awA" = (
 /obj/structure/machinery/light,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "awB" = (
 /obj/structure/bed/chair{
@@ -8965,10 +8965,10 @@
 /area/ice_colony/surface/disposals)
 "azw" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "azx" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "azy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -9050,7 +9050,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "azM" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -10928,7 +10928,7 @@
 /area/ice_colony/exterior/surface/valley/southeast)
 "aED" = (
 /obj/item/tool/hatchet,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "aEE" = (
 /obj/structure/disposalpipe/segment,
@@ -13859,7 +13859,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aOC" = (
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
@@ -14261,7 +14261,7 @@
 /area/ice_colony/surface/bar/bar)
 "aPy" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -24
@@ -16685,12 +16685,6 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad)
 "aWp" = (
-/turf/open/floor/plating,
-/area/ice_colony/exterior/surface/landing_pad)
-"aWq" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
-	},
 /turf/open/floor/plating,
 /area/ice_colony/exterior/surface/landing_pad)
 "aWr" = (
@@ -19850,12 +19844,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/requesition/lobby)
-"bhs" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
-/turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
-	},
-/area/ice_colony/underground/hangar)
 "bht" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate"
@@ -34506,6 +34494,10 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/research)
+"cEG" = (
+/obj/docking_port/stationary/marine_dropship/lz2,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "cVM" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -34849,6 +34841,7 @@
 "qEB" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "qRy" = (
@@ -34876,6 +34869,7 @@
 /area/ice_colony/exterior/surface/valley/northwest)
 "rAm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "dark2"
 	},
@@ -34908,6 +34902,12 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/alpha)
+"sto" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Hangar Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/ice_colony/exterior/surface/landing_pad)
 "sKH" = (
 /obj/structure/surface/table,
 /obj/item/device/analyzer,
@@ -34958,6 +34958,7 @@
 /area/ice_colony/underground/hangar)
 "tEG" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
@@ -35021,10 +35022,12 @@
 "uUv" = (
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vcU" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vhS" = (
@@ -35093,6 +35096,7 @@
 /area/ice_colony/surface/tcomms)
 "xWm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "ygw" = (
@@ -52470,7 +52474,7 @@ aZW
 bcy
 bbc
 aZW
-bhs
+bht
 bhG
 bht
 aZW
@@ -53588,7 +53592,7 @@ aZW
 aZW
 aZW
 aZW
-aZW
+cEG
 aZW
 aZW
 aZW
@@ -89394,7 +89398,7 @@ aWp
 aWp
 aWp
 aWQ
-aWq
+aWp
 bbl
 aUP
 aUP
@@ -90512,7 +90516,7 @@ aWp
 aWp
 aWp
 aWp
-aWp
+sto
 aWp
 aWp
 aWp

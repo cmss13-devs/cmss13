@@ -40,7 +40,8 @@
 // Culls the selected turfs to a (roughly) circle shape, then calls smokeFlow() to make
 // sure the smoke can actually path to the turfs. This culls any turfs it can't reach.
 //------------------------------------------
-/datum/effect_system/smoke_spread/chem/set_up(datum/reagents/carry = null, n = 10, c = 0, loca, direct)
+/datum/effect_system/smoke_spread/chem/set_up(datum/reagents/carry = null, n = 10, c = 0, loca, direct, datum/cause_data/new_cause_data)
+	cause_data = istype(new_cause_data) ? new_cause_data : cause_data
 	range = n * 0.3
 	cardinals = c
 	carry.copy_to(chemholder, carry.total_volume)
@@ -198,10 +199,10 @@
 	smoke.pixel_x = -32 + rand(-8,8)
 	smoke.pixel_y = -32 + rand(-8,8)
 	walk_to(smoke, T)
-	smoke.SetOpacity(1) //switching opacity on after the smoke has spawned, and then
+	smoke.set_opacity(1) //switching opacity on after the smoke has spawned, and then
 	sleep(150+rand(0,20)) // turning it off before it is deleted results in cleaner
 	if(smoke.opacity)
-		smoke.SetOpacity(0)
+		smoke.set_opacity(0)
 	fadeOut(smoke)
 	qdel(smoke)
 

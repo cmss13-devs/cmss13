@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight
 	name = "dropship navigation computer"
-	desc = "flight computer for dropship"
+	desc = "A flight computer that can be used for autopilot or long-range flights."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
@@ -147,6 +147,10 @@
 		return
 
 	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+		var/remaining_time = timeleft(door_control_cooldown) / 10
+		if(remaining_time > 60)
+			to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
+			return
 		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
 		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))
@@ -216,7 +220,7 @@
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
-		announce_dchat("[xeno] has locked \the [dropship]", src)
+		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 
 		if(almayer_orbital_cannon)
 			almayer_orbital_cannon.is_disabled = TRUE
@@ -243,7 +247,7 @@
 		hijack(xeno)
 		return
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user)
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user, force = FALSE)
 
 	// select crash location
 	var/turf/source_turf = get_turf(src)
@@ -251,11 +255,11 @@
 	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections , timeout = 10 SECONDS)
 	if(!result)
 		return
-	if(result)
-		if(!user.Adjacent(source_turf))
-			return
+	if(!user.Adjacent(source_turf) && !force)
+		return
 	if(dropship.is_hijacked)
 		return
+
 	var/datum/dropship_hijack/almayer/hijack = new()
 	dropship.hijack = hijack
 	hijack.shuttle = dropship
@@ -267,12 +271,17 @@
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
 
-	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
+	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
+	var/datum/ares_link/link = GLOB.ares_link
+	link.log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, xeno.hivenumber)
-	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, xeno.hivenumber)
-	xeno.hive.abandon_on_hijack()
+	var/hivenumber = XENO_HIVE_NORMAL
+	if(istype(xeno))
+		hivenumber = xeno.hivenumber
+	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
+	GLOB.hive_datum[hivenumber].abandon_on_hijack()
 
 	// Notify the yautja too so they stop the hunt
 	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
@@ -343,6 +352,7 @@
 		to_chat(user, SPAN_WARNING("The dropship isn't responding to controls."))
 		return
 
+	var/datum/ares_link/link = GLOB.ares_link
 	switch(action)
 		if("move")
 			if(shuttle.mode != SHUTTLE_IDLE && (shuttle.mode != SHUTTLE_CALL && !shuttle.destination))
@@ -359,6 +369,10 @@
 			update_equipment(is_optimised)
 			if(is_set_flyby)
 				to_chat(user, SPAN_NOTICE("You begin the launch sequence for a flyby."))
+				link.log_ares_flight(user.name, "Launched Dropship [shuttle.name] on a flyby.")
+				var/log = "[key_name(user)] launched the dropship [src.shuttleId] on flyby."
+				msg_admin_niche(log)
+				log_interact(user, msg = "[log]")
 				shuttle.send_for_flyby()
 				return TRUE
 			var/dockId = params["target"]
@@ -384,6 +398,10 @@
 				return TRUE
 			SSshuttle.moveShuttle(shuttle.id, dock.id, TRUE)
 			to_chat(user, SPAN_NOTICE("You begin the launch sequence to [dock]."))
+			link.log_ares_flight(user.name, "Launched Dropship [shuttle.name] on a flight to [dock].")
+			var/log = "[key_name(user)] launched the dropship [src.shuttleId] on transport."
+			msg_admin_niche(log)
+			log_interact(user, msg = "[log]")
 			return TRUE
 		if("button-push")
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
@@ -400,10 +418,16 @@
 				to_chat(user, SPAN_WARNING("Door controls have been overridden. Please call technical support."))
 		if("set-ferry")
 			is_set_flyby = FALSE
-			msg_admin_niche("[key_name_admin(usr)] set the dropship [src.shuttleId] into transport")
+			link.log_ares_flight(user.name, "Set Dropship [shuttle.name] to transport runs.")
+			var/log = "[key_name(user)] set the dropship [src.shuttleId] into transport"
+			msg_admin_niche(log)
+			log_interact(user, msg = "[log]")
 		if("set-flyby")
 			is_set_flyby = TRUE
-			msg_admin_niche("[key_name_admin(usr)] set the dropship [src.shuttleId] into flyby")
+			link.log_ares_flight(user.name, "Set Dropship [shuttle.name] to flyby runs.")
+			var/log = "[key_name(user)] set the dropship [src.shuttleId] into flyby."
+			msg_admin_niche(log)
+			log_interact(user, msg = "[log]")
 		if("set-automate")
 			var/almayer_lz = params["hangar_id"]
 			var/ground_lz = params["ground_id"]
@@ -423,7 +447,10 @@
 			shuttle.automated_lz_id = ground_lz
 			shuttle.automated_delay = delay
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			message_admins("[key_name_admin(usr)] has set auto pilot on '[shuttle.name]'")
+			link.log_ares_flight(user.name, "Enabled autopilot for Dropship [shuttle.name].")
+			var/log = "[key_name(user)] has enabled auto pilot on '[shuttle.name]'"
+			message_admins(log)
+			log_interact(user, msg = "[log]")
 			return
 			/* TODO
 				if(!dropship.automated_launch) //If we're toggling it on...
@@ -437,7 +464,10 @@
 			shuttle.automated_lz_id = null
 			shuttle.automated_delay = null
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			message_admins("[key_name_admin(usr)] has removed auto pilot on '[shuttle.name]'")
+			link.log_ares_flight(user.name, "Disabled autopilot for Dropship [shuttle.name].")
+			var/log = "[key_name(user)] has disabled auto pilot on '[shuttle.name]'"
+			message_admins(log)
+			log_interact(user, msg = "[log]")
 			return
 
 		if("cancel-flyby")

@@ -8,6 +8,7 @@
 #define SKILL_ENGINEER "engineer"
 #define SKILL_CONSTRUCTION "construction"
 #define SKILL_LEADERSHIP "leadership"
+#define SKILL_OVERWATCH "overwatch"
 #define SKILL_MEDICAL "medical"
 #define SKILL_SURGERY "surgery"
 #define SKILL_RESEARCH "research"
@@ -39,14 +40,24 @@
 //spec_weapons skill
 //hidden. who can and can't use specialist weapons
 #define SKILL_SPEC_DEFAULT 0
-#define SKILL_SPEC_ROCKET 1 //can use the demolitionist specialist gear
-#define SKILL_SPEC_SCOUT 2
-#define SKILL_SPEC_SNIPER 3
-#define SKILL_SPEC_GRENADIER 4
-#define SKILL_SPEC_PYRO 5
-#define SKILL_SPEC_SMARTGUN 6 //for smartgunners
-#define SKILL_SPEC_UPP 7 //for upp
-#define SKILL_SPEC_ALL 8 //can use all specialist gear
+/// Is trained to use specialist gear, but hasn't picked a kit.
+#define SKILL_SPEC_TRAINED 1
+/// Can use RPG
+#define SKILL_SPEC_ROCKET 2
+/// Can use thermal cloaks and custom M4RA rifle
+#define SKILL_SPEC_SCOUT 3
+/// Can use sniper rifles and camo suits
+#define SKILL_SPEC_SNIPER 4
+/// Can use the rotary grenade launcher and heavy armor
+#define SKILL_SPEC_GRENADIER 5
+/// Can use heavy flamers
+#define SKILL_SPEC_PYRO 6
+/// Can use smartguns
+#define SKILL_SPEC_SMARTGUN 7
+/// UPP special training
+#define SKILL_SPEC_UPP 8
+/// Can use ALL specialist weapons
+#define SKILL_SPEC_ALL 9
 
 //construction skill
 #define SKILL_CONSTRUCTION_DEFAULT 0
@@ -124,13 +135,17 @@
 #define SKILL_POWERLOADER_MASTER 2 //Pilot, CT, Req, OT, CE
 #define SKILL_POWERLOADER_MAX 2
 
-
 //leadership skill
 #define SKILL_LEAD_NOVICE 0 //Anyone but the above. Using SL items is possible but painfully slow
 #define SKILL_LEAD_TRAINED 1 //SL
 #define SKILL_LEAD_EXPERT 2 //SOs
 #define SKILL_LEAD_MASTER 3 //XO, CO
 #define SKILL_LEAD_MAX 3
+
+//overwatch skill
+#define SKILL_OVERWATCH_DEFAULT 0
+#define SKILL_OVERWATCH_TRAINED 1 //Allows use of overwatch consoles
+#define SKILL_OVERWATCH_MAX 1
 
 
 //JTAC skill
@@ -152,8 +167,8 @@
 
 //pilot skill, hidden
 #define SKILL_PILOT_DEFAULT 0
-#define SKILL_PILOT_TRAINED 1 // DCC, Synth
-#define SKILL_PILOT_EXPERT 2 // Pilot
+#define SKILL_PILOT_TRAINED 1 // DCC
+#define SKILL_PILOT_EXPERT 2 // Pilot, Synth
 #define SKILL_PILOT_MAX 2
 
 //Navigations skill - for seting orbital alt

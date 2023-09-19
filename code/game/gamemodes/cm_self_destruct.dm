@@ -103,7 +103,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		for(var/obj/structure/machinery/status_display/SD in machines)
 			if(is_mainship_level(SD.z))
 				SD.set_picture("evac")
-		for(var/obj/docking_port/mobile/escape_shuttle/shuttle in SSshuttle.mobile)
+		for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
 			shuttle.prepare_evac()
 		activate_lifeboats()
 		process_evacuation()
@@ -121,7 +121,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				if(is_mainship_level(SD.z))
 					SD.set_picture("redalert")
 
-		for(var/obj/docking_port/mobile/escape_shuttle/shuttle in SSshuttle.mobile)
+		for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
 			shuttle.cancel_evac()
 		return TRUE
 
@@ -132,17 +132,17 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			ai_announcement("WARNING: Evacuation order confirmed. Launching escape pods.", 'sound/AI/evacuation_confirmed.ogg')
 			addtimer(CALLBACK(src, PROC_REF(launch_lifeboats)), 10 SECONDS) // giving some time to board lifeboats
 
-			for(var/obj/docking_port/mobile/escape_shuttle/shuttle in SSshuttle.mobile)
+			for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
 				shuttle.evac_launch()
 				sleep(50)
 
 			sleep(300) //Sleep 30 more seconds to make sure everyone had a chance to leave.
 			var/lifesigns = 0
 			// lifesigns += P.passengers
-			var/obj/docking_port/mobile/lifeboat/lifeboat1 = SSshuttle.getShuttle(MOBILE_SHUTTLE_LIFEBOAT_PORT)
+			var/obj/docking_port/mobile/crashable/lifeboat/lifeboat1 = SSshuttle.getShuttle(MOBILE_SHUTTLE_LIFEBOAT_PORT)
 			lifeboat1.check_for_survivors()
 			lifesigns += lifeboat1.survivors
-			var/obj/docking_port/mobile/lifeboat/lifeboat2 = SSshuttle.getShuttle(MOBILE_SHUTTLE_LIFEBOAT_STARBOARD)
+			var/obj/docking_port/mobile/crashable/lifeboat/lifeboat2 = SSshuttle.getShuttle(MOBILE_SHUTTLE_LIFEBOAT_STARBOARD)
 			lifeboat2.check_for_survivors()
 			lifesigns += lifeboat2.survivors
 			ai_announcement("ATTENTION: Evacuation complete. Outbound lifesigns detected: [lifesigns ? lifesigns  : "none"].", 'sound/AI/evacuation_complete.ogg')
@@ -166,7 +166,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 // LIFEBOATS CORNER
 /datum/authority/branch/evacuation/proc/activate_lifeboats()
 	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
-		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = lifeboat_dock.get_docked()
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_ACTIVE
 			lifeboat_dock.open_dock()
@@ -174,15 +174,15 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /datum/authority/branch/evacuation/proc/deactivate_lifeboats()
 	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
-		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = lifeboat_dock.get_docked()
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
 
 /datum/authority/branch/evacuation/proc/launch_lifeboats()
 	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
-		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = lifeboat_dock.get_docked()
 		if(lifeboat && lifeboat.available)
-			lifeboat.send_to_infinite_transit()
+			lifeboat.evac_launch()
 
 //=========================================================================================
 //=========================================================================================
@@ -256,17 +256,18 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				ship_status = 0 //Destroyed.
 			break
 
-		var/L1[] = new //Everyone who will be destroyed on the zlevel(s).
-		var/L2[] = new //Everyone who only needs to see the cinematic.
-		var/mob/M
-		var/turf/T
-		for(M in GLOB.player_list) //This only does something cool for the people about to die, but should prove pretty interesting.
-			if(!M || !M.loc) continue //In case something changes when we sleep().
-			if(M.stat == DEAD)
-				L2 |= M
-			else if(M.z in z_levels)
-				L1 |= M
-				shake_camera(M, 110, 4)
+		var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
+		var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
+		for(var/mob/current_mob as anything in GLOB.mob_list) //This only does something cool for the people about to die, but should prove pretty interesting.
+			if(!current_mob || !current_mob.loc)
+				continue //In case something changes when we sleep().
+			if(current_mob.stat == DEAD)
+				dead_mobs |= current_mob
+				continue
+			var/turf/current_turf = get_turf(current_mob)
+			if(current_turf.z in z_levels)
+				alive_mobs |= current_mob
+				shake_camera(current_mob, 110, 4)
 
 
 		sleep(100)
@@ -275,23 +276,23 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		var/atom/movable/screen/cinematic/explosion/C = new
 
 		if(play_anim)
-			for(M in L1 + L2)
-				if(M && M.loc && M.client)
-					M.client.screen |= C //They may have disconnected in the mean time.
+			for(var/mob/current_mob as anything in alive_mobs + dead_mobs)
+				if(current_mob && current_mob.loc && current_mob.client)
+					current_mob.client.screen |= C //They may have disconnected in the mean time.
 
 			sleep(15) //Extra 1.5 seconds to look at the ship.
 			flick(override ? "intro_override" : "intro_nuke", C)
 		sleep(35)
-		for(M in L1)
-			if(M && M.loc) //Who knows, maybe they escaped, or don't exist anymore.
-				T = get_turf(M)
-				if(T.z in z_levels)
-					if(istype(M.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+		for(var/mob/current_mob in alive_mobs)
+			if(current_mob && current_mob.loc) //Who knows, maybe they escaped, or don't exist anymore.
+				var/turf/current_mob_turf = get_turf(current_mob)
+				if(current_mob_turf.z in z_levels)
+					if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
 						continue
-					M.death(create_cause_data("nuclear explosion"))
+					current_mob.death(create_cause_data("nuclear explosion"))
 				else
 					if(play_anim)
-						M.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.
+						current_mob.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.
 		if(play_anim)
 			flick(ship_status ? "ship_spared" : "ship_destroyed", C)
 			C.icon_state = ship_status ? "summary_spared" : "summary_destroyed"
@@ -369,7 +370,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	name = "self-destruct control panel"
 	icon_state = "console_1"
 	base_icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_CAPTAIN, ACCESS_MARINE_SENIOR)
+	req_one_access = list(ACCESS_MARINE_CO, ACCESS_MARINE_SENIOR)
 
 /obj/structure/machinery/self_destruct/console/Destroy()
 	. = ..()

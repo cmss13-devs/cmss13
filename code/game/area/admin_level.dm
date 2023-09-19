@@ -3,14 +3,13 @@
 
 /area/adminlevel
 	ceiling = CEILING_METAL
+	base_lighting_alpha = 255
 
 /area/adminlevel/bunker01
 	icon_state = "thunder"
 	requires_power = FALSE
 	statistic_exempt = TRUE
 	flags_area = AREA_NOTUNNEL
-	luminosity = TRUE
-	lighting_use_dynamic = FALSE
 
 /area/adminlevel/bunker01/mainroom
 	name = "\improper Bunker Main Room"
@@ -78,8 +77,7 @@
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	always_unpowered = TRUE
 	requires_power = TRUE
-	lighting_use_dynamic = TRUE
-	luminosity = FALSE
+	base_lighting_alpha = 0
 
 /area/adminlevel/bunker01/caves/outpost
 	name = "\improper Bunker Outpost"
@@ -87,8 +85,6 @@
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	requires_power = TRUE
 	always_unpowered = FALSE
-	lighting_use_dynamic = TRUE
-	luminosity = FALSE
 
 /area/adminlevel/bunker01/caves/xeno
 	name = "\improper Bunker Xeno Hive"
@@ -110,8 +106,28 @@
 /area/adminlevel/ert_station
 	name = "ERT Station"
 	icon_state = "green"
-	requires_power = 0
+	requires_power = FALSE
 	flags_area = AREA_NOTUNNEL
+
+/area/adminlevel/ert_station/upp_station
+	name = "UPP Station"
+	icon_state = "green"
+
+/area/adminlevel/ert_station/clf_station
+	name = "CLF Station"
+	icon_state = "white"
+
+/area/adminlevel/ert_station/weyland_station
+	name = "Weyland-Yutani Station"
+	icon_state = "red"
+
+/area/adminlevel/ert_station/freelancer_station
+	name = "Freelancer Station"
+	icon_state = "yellow"
+
+/area/adminlevel/ert_station/royal_marines_station
+	name = "HMS Patna Hangerbay"
+	icon_state = "yellow"
 
 /area/adminlevel/ert_station/shuttle_dispatch
 	name = "Shuttle Dispatch Station"

@@ -319,7 +319,7 @@ var/list/alldepartments = list()
 
 	GLOB.fax_contents += faxcontents
 
-	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font>[key_name(user, 1)] ")
+	var/msg_admin = SPAN_STAFF_IC("<b><font color='#006100'>[target_department]: </font>[key_name(user, 1)] ")
 	msg_admin += "[CC_MARK(user)] [ADMIN_PP(user)] [ADMIN_VV(user)] [ADMIN_SM(user)] [ADMIN_JMP_USER(user)] "
 
 	switch(target_department)
@@ -342,7 +342,7 @@ var/list/alldepartments = list()
 			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 
-	msg_admin += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
+	msg_admin += SPAN_STAFF_IC("Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>")
 
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font></b>")
 	msg_ghost += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
@@ -396,7 +396,7 @@ var/list/alldepartments = list()
 							P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
 						if("NC4 UA Federal Secure Network - CMB Relay")
 							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-							stampoverlay.icon_state = "paper_stamp-uscm" // placeholder icon
+							stampoverlay.icon_state = "paper_stamp-cmb"
 							if(!P.stamped)
 								P.stamped = new
 							P.stamped += /obj/item/tool/stamp
@@ -404,7 +404,7 @@ var/list/alldepartments = list()
 							P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
 						if("Weyland-Yutani Quantum Relay")
 							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-							stampoverlay.icon_state = "paper_stamp-cent"
+							stampoverlay.icon_state = "paper_stamp-weyyu"
 							if(!P.stamped)
 								P.stamped = new
 							P.stamped += /obj/item/tool/stamp

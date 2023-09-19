@@ -291,6 +291,8 @@
 	var/ticks = 0
 	var/acid_strength = 1 //100% speed, normal
 	var/barricade_damage = 40
+	/// How much fuel the acid drains from the flare every acid tick
+	var/flare_damage = 500
 	var/barricade_damage_ticks = 10 // tick is once per 5 seconds. This tells us how many times it will try damaging barricades
 	var/in_weather = FALSE
 
@@ -299,13 +301,15 @@
 	name = "weak acid"
 	acid_strength = 2.5 //250% normal speed
 	barricade_damage = 20
+	flare_damage = 150
 	icon_state = "acid_weak"
 
 //Superacid
 /obj/effect/xenomorph/acid/strong
 	name = "strong acid"
-	acid_strength = 0.4 //20% normal speed
+	acid_strength = 0.4 //40% normal speed
 	barricade_damage = 100
+	flare_damage = 1875
 	icon_state = "acid_strong"
 
 /obj/effect/xenomorph/acid/New(loc, target)
@@ -328,7 +332,7 @@
 	if(!acids_area)
 		return
 
-	if(SSweather.is_weather_event && locate(acids_area.master) in SSweather.weather_areas)
+	if(SSweather.is_weather_event && locate(acids_area) in SSweather.weather_areas)
 		acid_strength = acid_strength + (SSweather.weather_event_instance.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
 		in_weather = SSweather.weather_event_instance.fire_smothering_strength
 	else
@@ -355,6 +359,12 @@
 		sleep(50)
 		.()
 		return
+	if(istype(acid_t, /obj/item/device/flashlight/flare))
+		var/obj/item/device/flashlight/flare/flare = acid_t
+		if(flare.fuel > 0) //Flares that have fuel in them lose fuel instead of melting
+			flare.fuel -= flare_damage
+			sleep(rand(150,250) * (acid_strength))
+			return .()
 
 	if(++ticks >= strength_t)
 		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
@@ -393,8 +403,6 @@
 
 	sleep(rand(200,300) * (acid_strength))
 	.()
-
-
 
 /obj/effect/xenomorph/boiler_bombard
 	name = "???"

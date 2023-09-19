@@ -1,6 +1,6 @@
 /obj/structure/machinery/hydro_floodlight_switch
 	name = "Biodome Floodlight Switch"
-	icon = 'icons/turf/ground_map.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
 	density = FALSE
@@ -60,9 +60,9 @@
 
 		spawn(rand(0,50))
 			if(F.is_lit) //Shut it down
-				F.SetLuminosity(0)
+				F.set_light(0)
 			else
-				F.SetLuminosity(F.lum_value)
+				F.set_light(F.lum_value)
 			F.is_lit = !(F.is_lit)
 			F.update_icon()
 	return 0
@@ -101,7 +101,6 @@
 	if(fswitch?.floodlist)
 		fswitch.floodlist -= src
 	fswitch = null
-	SetLuminosity(0)
 	return ..()
 
 /obj/structure/machinery/hydro_floodlight/update_icon()
@@ -130,7 +129,7 @@
 				user.visible_message(SPAN_NOTICE("[user] finishes welding [src]'s damage."), \
 					SPAN_NOTICE("You finish welding [src]'s damage."))
 				if(is_lit)
-					SetLuminosity(lum_value)
+					set_light(lum_value)
 				update_icon()
 				return 1
 		else
@@ -161,7 +160,7 @@
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !damaged) //Not when it's already damaged.
 				if(!src) return 0
 				damaged = 1
-				SetLuminosity(0)
+				set_light(0)
 				user.visible_message(SPAN_DANGER("[user] slashes up [src]!"),
 				SPAN_DANGER("You slash up [src]!"))
 				playsound(src, 'sound/weapons/blade1.ogg', 25, 1)

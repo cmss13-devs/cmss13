@@ -12,8 +12,13 @@
 	if(M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
+	var/intent = M.a_intent
+
+	if(M.behavior_delegate)
+		intent = M.behavior_delegate.override_intent(src)
+
 	//Reviewing the four primary intents
-	switch(M.a_intent)
+	switch(intent)
 
 		if(INTENT_HELP)
 			if(on_fire)
@@ -282,6 +287,9 @@
 	SPAN_DANGER("You nudge your head against [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 /mob/living/proc/is_xeno_grabbable()
+	if(stat == DEAD)
+		return FALSE
+
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
@@ -301,20 +309,6 @@
 //Note that this is overriden by every proc concerning a child of obj unless inherited
 /obj/item/attack_alien(mob/living/carbon/xenomorph/M)
 	return
-
-/obj/vehicle/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.a_intent == INTENT_HARM)
-		M.animation_attack_on(src)
-		M.flick_attack_overlay(src, "slash")
-		health -= 15
-		playsound(loc, "alien_claw_metal", 25, 1)
-		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]."),SPAN_DANGER("You [M.slash_verb] [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
-		healthcheck()
-		return XENO_ATTACK_ACTION
-	else
-		attack_hand(M)
-		return XENO_NONCOMBAT_ACTION
-
 
 /obj/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	return //larva can't do anything
@@ -628,12 +622,6 @@
 				SPAN_DANGER("You pry [src] open."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
 
-
-//Nerfing the damn Cargo Tug Train
-/obj/vehicle/train/attack_alien(mob/living/carbon/xenomorph/M)
-	attack_hand(M)
-	return XENO_NONCOMBAT_ACTION
-
 /obj/structure/mineral_door/resin/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	var/turf/cur_loc = M.loc
 	if(!istype(cur_loc))
@@ -863,7 +851,7 @@
 		playsound(src, "glassbreak", 70, 1)
 		damaged = TRUE
 		if(is_lit)
-			SetLuminosity(0)
+			set_light(0)
 		update_icon()
 	else
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
@@ -994,3 +982,12 @@
 	var/matrix/A = matrix()
 	apply_transform(A)
 	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS
+
+//Misc
+/obj/structure/prop/invuln/joey/attack_alien(mob/living/carbon/xenomorph/alien)
+	alien.animation_attack_on(src)
+	alien.visible_message(SPAN_DANGER("[alien] [alien.slashes_verb] [src]!"), \
+	SPAN_DANGER("You [alien.slash_verb] [src]!"), null, 5)
+	playsound(loc, "alien_claw_metal", 25, 1)
+	attacked()
+	return XENO_ATTACK_ACTION

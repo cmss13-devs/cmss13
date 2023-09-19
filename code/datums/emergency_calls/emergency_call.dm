@@ -8,6 +8,18 @@
 /datum/game_mode
 	var/list/datum/emergency_call/all_calls = list() //initialized at round start and stores the datums.
 	var/datum/emergency_call/picked_calls[] = list() //Which distress calls are currently active
+	var/ert_dispatched = FALSE
+
+/datum/game_mode/proc/ares_online()
+	var/name = "ARES Online"
+	var/input = "ARES. Online. Good morning, marines."
+	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
+
+/datum/game_mode/proc/request_ert(user, ares = FALSE)
+	if(!user)
+		return FALSE
+	message_admins("[key_name(user)] has requested a Distress Beacon! [ares ? SPAN_ORANGE("(via ARES)") : ""] ([SSticker.mode.ert_dispatched ? SPAN_RED("A random ERT was dispatched previously.") : SPAN_GREEN("No previous random ERT dispatched.")]) [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[user]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+	return TRUE
 
 //The distress call parent. Cannot be called itself due to "name" being a filtered target.
 /datum/emergency_call
@@ -79,12 +91,12 @@
 	else
 		return chosen_call
 
-/datum/game_mode/proc/get_specific_call(call_name, announce = TRUE, is_emergency = TRUE, info = "")
+/datum/game_mode/proc/get_specific_call(call_name, quiet_launch = FALSE, announce = TRUE, is_emergency = TRUE, info = "", announce_dispatch_message = TRUE)
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(E.name == call_name)
 			var/datum/emergency_call/em_call = new E.type()
 			em_call.objective_info = info
-			em_call.activate(announce, is_emergency)
+			em_call.activate(quiet_launch, announce, is_emergency, announce_dispatch_message)
 			return
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
@@ -101,6 +113,7 @@
 			give_action(M, /datum/action/join_ert, src)
 
 /datum/game_mode/proc/activate_distress()
+	ert_dispatched = TRUE
 	var/datum/emergency_call/random_call = get_random_call()
 	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
 		return
@@ -142,7 +155,6 @@
 	var/choice = tgui_input_list(src, "Choose a distress beacon to join", "", beacons)
 
 	if(!choice)
-		to_chat(src, "Something seems to have gone wrong!")
 		return
 
 	if(!beacons[choice] || !(beacons[choice] in SSticker.mode.picked_calls))
@@ -180,7 +192,7 @@
 	else
 		to_chat(src, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
-/datum/emergency_call/proc/activate(announce = TRUE, turf/override_spawn_loc)
+/datum/emergency_call/proc/activate(quiet_launch = FALSE, announce = TRUE, turf/override_spawn_loc, announce_dispatch_message = TRUE)
 	set waitfor = 0
 	if(!SSticker.mode) //Something horribly wrong with the gamemode ticker
 		return
@@ -190,12 +202,12 @@
 	show_join_message() //Show our potential candidates the message to let them join.
 	message_admins("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
-	if(announce)
-		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
+	if(!quiet_launch)
+		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
 
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), announce, override_spawn_loc), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce, override_spawn_loc, announce_dispatch_message), 30 SECONDS)
 
-/datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc)
+/datum/emergency_call/proc/spawn_candidates(quiet_launch = FALSE, announce = TRUE, override_spawn_loc, announce_dispatch_message = TRUE)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
@@ -206,8 +218,8 @@
 		members = list() //Empty the members list.
 		candidates = list()
 
-		if(announce)
-			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+		if(!quiet_launch)
+			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
 
 	//We've got enough!
@@ -237,7 +249,7 @@
 					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
 	if(announce)
-		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
+		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
 	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
 

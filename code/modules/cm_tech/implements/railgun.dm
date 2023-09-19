@@ -6,6 +6,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/effect/landmark/railgun_computer
 	name = "Railgun computer landmark"
+	desc = "A computer with an orange interface, it's idly blinking, awaiting a password."
 
 /obj/effect/landmark/railgun_computer/Initialize(mapload, ...)
 	. = ..()
@@ -62,7 +63,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 /obj/structure/machinery/computer/railgun/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/railgun/bullet_act(obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/railgun/bullet_act(obj/projectile/Proj) //Can't shoot it
 	return FALSE
 
 /obj/structure/machinery/computer/railgun/proc/set_operator(mob/living/carbon/human/H)

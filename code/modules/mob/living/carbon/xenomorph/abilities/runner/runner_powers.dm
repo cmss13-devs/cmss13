@@ -15,7 +15,7 @@
 	X.visible_message(SPAN_XENOWARNING("[X] fires a burst of bone chips at [A]!"), SPAN_XENOWARNING("You fire a burst of bone chips at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
+	var/obj/projectile/P = new /obj/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
 
 	var/datum/ammo/ammoDatum = GLOB.ammo_list[ammo_type]
 
@@ -24,8 +24,7 @@
 	P.fire_at(target, X, X, ammoDatum.max_range, ammoDatum.shell_speed)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 
 /datum/action/xeno_action/activable/acider_acid/use_ability(atom/A)
@@ -43,7 +42,7 @@
 	X.corrosive_acid(A, acid_type, 0)
 	for(var/obj/item/explosive/plastic/E in A.contents)
 		X.corrosive_acid(E,acid_type,0)
-	..()
+	return ..()
 
 /mob/living/carbon/xenomorph/runner/corrosive_acid(atom/O, acid_type, plasma_cost)
 	if (mutation_type != RUNNER_ACIDER)
@@ -147,30 +146,30 @@
 
 
 /datum/action/xeno_action/activable/acider_for_the_hive/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!istype(X))
+	if(!istype(xeno))
 		return
 
-	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("It is too cramped in here to activate this!"))
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("It is too cramped in here to activate this!"))
 		return
 
-	var/area/xeno_area = get_area(X)
+	var/area/xeno_area = get_area(xeno)
 	if(xeno_area.flags_area & AREA_CONTAINMENT)
-		to_chat(X, SPAN_XENOWARNING("You can't activate this here!"))
+		to_chat(xeno, SPAN_XENOWARNING("You can't activate this here!"))
 		return
 
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
 
 	if(!action_cooldown_check())
 		return
 
-	if(X.mutation_type != RUNNER_ACIDER)
+	if(xeno.mutation_type != RUNNER_ACIDER)
 		return
 
-	var/datum/behavior_delegate/runner_acider/BD = X.behavior_delegate
+	var/datum/behavior_delegate/runner_acider/BD = xeno.behavior_delegate
 	if(!istype(BD))
 		return
 
@@ -179,19 +178,23 @@
 		return
 
 	if(BD.acid_amount < minimal_acid)
-		to_chat(X, SPAN_XENOWARNING("Not enough acid built up for an explosion."))
+		to_chat(xeno, SPAN_XENOWARNING("Not enough acid built up for an explosion."))
 		return
 
-	to_chat(X, SPAN_XENOWARNING("Your stomach starts turning and twisting, getting ready to compress the built up acid."))
-	X.color = "#22FF22"
-	X.SetLuminosity(3)
+	notify_ghosts(header = "For the Hive!", message = "[xeno] is going to explode for the Hive!", source = xeno, action = NOTIFY_ORBIT)
+
+	to_chat(xeno, SPAN_XENOWARNING("Your stomach starts turning and twisting, getting ready to compress the built up acid."))
+	xeno.color = "#22FF22"
+	xeno.set_light_color("#22FF22")
+	xeno.set_light_range(3)
 
 	BD.caboom_trigger = TRUE
 	BD.caboom_left = BD.caboom_timer
 	BD.caboom_last_proc = 0
-	X.set_effect(BD.caboom_timer*2, SUPERSLOW)
+	xeno.set_effect(BD.caboom_timer*2, SUPERSLOW)
 
-	X.say(";FOR THE HIVE!!!")
+	xeno.say(";FOR THE HIVE!!!")
+	return ..()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/cancel_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -204,7 +207,7 @@
 
 	behavior.caboom_trigger = FALSE
 	xeno.color = null
-	xeno.SetLuminosity(0)
+	xeno.set_light_range(0)
 	behavior.modify_acid(-behavior.max_acid / 4)
 
 	// Done this way rather than setting to 0 in case something else slowed us

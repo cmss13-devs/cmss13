@@ -1,6 +1,10 @@
 /obj/docking_port/mobile/marine_dropship
 	width = 11
 	height = 21
+
+	dwidth = 5
+	dheight = 10
+
 	preferred_direction = SOUTH
 	callTime = DROPSHIP_TRANSIT_DURATION
 	rechargeTime = SHUTTLE_RECHARGE
@@ -77,9 +81,28 @@
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(direction)
 	return door_control.is_door_locked(direction)
 
+/obj/docking_port/mobile/marine_dropship/enterTransit()
+	. = ..()
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
+		SSticker.mode.ds_first_drop(src)
+
 /obj/docking_port/mobile/marine_dropship/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
+
+	if(is_hijacked)
+		return
+
+	for(var/area/checked_area in shuttle_areas)
+		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
+			if(checked_xeno.stat == DEAD)
+				continue
+
+			var/name = "Unidentified Lifesigns"
+			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+			set_security_level(SEC_LEVEL_RED)
+			return
 
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
@@ -140,7 +163,9 @@
 	dir = NORTH
 	width = 11
 	height = 21
-	dwidth = 1
+	dwidth = 5
+	dheight = 10
+
 	var/list/landing_lights = list()
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE
@@ -198,10 +223,11 @@
 		console?.update_equipment()
 	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
 		SSticker.mode.ds_first_landed(src)
+		SSticker.mode.flags_round_type |= MODE_DS_LANDED
+
 	if(xeno_announce)
 		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
 		xeno_announce = FALSE
-
 
 /obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
@@ -238,7 +264,6 @@
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
-	dwidth = 1
 
 /obj/docking_port/stationary/marine_dropship/crash_site/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
@@ -259,6 +284,8 @@
 			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
 			// shake_camera(affected_mob, 10, 1)
 			affected_mob.apply_effect(3, WEAKEN)
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /datum/map_template/shuttle/alamo
 	name = "Alamo"

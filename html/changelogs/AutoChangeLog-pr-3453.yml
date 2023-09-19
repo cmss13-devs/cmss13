@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed incorrect coordinates in Admin Niche log for signal flares."

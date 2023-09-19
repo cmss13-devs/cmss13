@@ -148,6 +148,7 @@
 					var/obj/item/item = A
 					if(item.is_objective && item.unacidable)
 						item.forceMove(get_step(loc, pick(alldirs)))
+						item.mouse_opacity = initial(item.mouse_opacity)
 
 			QDEL_NULL(captured_mob)
 			update_icon()

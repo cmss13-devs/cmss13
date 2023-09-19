@@ -15,6 +15,7 @@
 #define MESSAGE_TYPE_ADMINCHAT "adminchat"
 #define MESSAGE_TYPE_MODCHAT "modchat"
 #define MESSAGE_TYPE_MENTOR "mentor"
+#define MESSAGE_TYPE_STAFF_IC "staff_ic"
 #define MESSAGE_TYPE_EVENTCHAT "eventchat"
 #define MESSAGE_TYPE_ADMINLOG "adminlog"
 #define MESSAGE_TYPE_ATTACKLOG "attacklog"

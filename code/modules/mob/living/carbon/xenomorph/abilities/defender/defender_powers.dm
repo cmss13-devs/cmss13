@@ -31,8 +31,7 @@
 		xeno.update_icons()
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
@@ -100,8 +99,7 @@
 	carbone.throw_atom(thrown_turf, headbutt_distance, SPEED_SLOW, src)
 	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 // Defender Tail Sweep
 /datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/A)
@@ -153,8 +151,7 @@
 		playsound(human,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 // Defender Fortify
 /datum/action/xeno_action/activable/fortify/use_ability(atom/target)
@@ -190,8 +187,7 @@
 			button.icon_state = "template"
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/fortify/action_activate()
 	..()

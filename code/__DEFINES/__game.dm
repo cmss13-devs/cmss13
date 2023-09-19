@@ -39,6 +39,7 @@ block( \
 #define MAP_RUNTIME "USS Runtime"
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
+#define MAP_CHINOOK "Chinook 91 GSO" //admin level
 
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
@@ -106,6 +107,7 @@ block( \
 #define SOUND_REBOOT (1<<5)
 #define SOUND_ADMIN_MEME (1<<6)
 #define SOUND_ADMIN_ATMOSPHERIC (1<<7)
+#define SOUND_ARES_MESSAGE (1<<8)
 
 //toggles_chat
 #define CHAT_OOC (1<<0)

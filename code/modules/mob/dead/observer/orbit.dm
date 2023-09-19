@@ -1,5 +1,4 @@
 /datum/orbit_menu
-	var/auto_observe = FALSE
 	var/mob/dead/observer/owner
 
 /datum/orbit_menu/New(mob/dead/observer/new_owner)
@@ -24,6 +23,7 @@
 	switch(action)
 		if("orbit")
 			var/ref = params["ref"]
+			var/auto_observe = params["auto_observe"]
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
 			if (poi == null)
 				poi = locate(ref) in GLOB.all_multi_vehicles
@@ -38,19 +38,11 @@
 		if("refresh")
 			update_static_data(owner)
 			. = TRUE
-		if("toggle_observe")
-			auto_observe = !auto_observe
-			if(auto_observe && owner.orbit_target)
-				owner.do_observe(owner.orbit_target)
-			else
-				owner.reset_perspective(null)
-			. = TRUE
 
 
 
 /datum/orbit_menu/ui_data(mob/user)
 	var/list/data = list()
-	data["auto_observe"] = auto_observe
 	return data
 
 /datum/orbit_menu/ui_static_data(mob/user)
@@ -134,7 +126,7 @@
 				serialized["icon"] = icon ? icon : "private"
 
 				if(human.assigned_squad)
-					serialized["background_color"] = human.assigned_squad.color ? squad_colors[human.assigned_squad.color] : human.assigned_squad.minimap_color
+					serialized["background_color"] = human.assigned_squad.equipment_color ? human.assigned_squad.equipment_color : human.assigned_squad.minimap_color
 				else
 					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
 

@@ -1,12 +1,11 @@
-#define NO_IB_LIMBS list("l_foot","r_foot","l_hand","r_hand")
 // Takes care of organ & limb related updates, such as broken and missing limbs
-/mob/living/carbon/human/proc/handle_organs()
+/mob/living/carbon/human/proc/handle_organs(delta_time)
 
 	last_dam = getBruteLoss() + getFireLoss() + getToxLoss()
 
 	// Processing internal organs is pretty cheap, do that first.
 	for(var/datum/internal_organ/I as anything in internal_organs)
-		I.process()
+		I.process(delta_time)
 
 	for(var/obj/limb/E as anything in limbs_to_process)
 		if(!E)
@@ -25,7 +24,7 @@
 					var/damage = rand(3,5)
 					I.take_damage(damage)
 					pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
-				if(E.is_broken() && prob(2) && !(E.name in NO_IB_LIMBS))
+				if(E.is_broken() && prob(2))
 					var/damage = rand(3,5)
 					var/datum/wound/internal_bleeding/internal_bleed = new
 					E.add_bleeding(internal_bleed, TRUE, damage)
@@ -60,5 +59,3 @@
 				emote("pain")
 			custom_pain("You can't stand on broken legs!", 1)
 			apply_effect(5, WEAKEN)
-
-#undef NO_IB_LIMBS

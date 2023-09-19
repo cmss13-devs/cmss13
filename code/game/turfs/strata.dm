@@ -5,6 +5,13 @@
 /turf/open/gm/grass/weedable/is_weedable()
 	return FULLY_WEEDABLE
 
+//just in case
+
+/turf/open/gm/grass/grass1/weedable //inherit from general turfs
+
+/turf/open/gm/grass/grass1/weedable/is_weedable()
+	return FULLY_WEEDABLE
+
 /turf/open/gm/dirtgrassborder/weedable
 
 /turf/open/gm/dirtgrassborder/weedable/is_weedable() //Gotta have our sexy grass borders be weedable.

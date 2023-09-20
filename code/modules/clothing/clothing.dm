@@ -340,7 +340,7 @@
 	var/list/items_allowed
 	var/shoes_blood_amt = 0
 
-	obj/item/clothing/shoes/Initialize(mapload, ...)
+/obj/item/clothing/shoes/Initialize(mapload, ...)
 	. = ..()
 	if(armor_melee || armor_bullet || armor_laser || armor_energy || armor_bomb || armor_bio || armor_rad)
 		AddComponent(/datum/component/armor_link, WEAR_JACKET, TRUE)

@@ -36,3 +36,6 @@
 
 /// From /mob/living/proc/do_ghost() : (mob/dead/observer/ghost)
 #define COMSIG_LIVING_GHOSTED "living_ghosted"
+
+/// From /mob/living/carbon/human/attack_hand() : (mob/living/carbon/human/attacked_mob)
+#define COMSIG_LIVING_ATTACKHAND_HUMAN "living_attackhand_human"

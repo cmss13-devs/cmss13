@@ -227,11 +227,11 @@
 
 		if("tutorial")
 			if(SSticker.current_state <= GAME_STATE_SETTING_UP)
-				to_chat(usr, SPAN_WARNING("Please wait for the round to start before entering the tutorial."))
+				to_chat(usr, SPAN_WARNING("Please wait for the round to start before entering a tutorial."))
 				return
 
 			if(SSticker.current_state == GAME_STATE_FINISHED)
-				to_chat(usr, SPAN_WARNING("The round has ended. Please wait for the next round to enter the tutorial."))
+				to_chat(usr, SPAN_WARNING("The round has ended. Please wait for the next round to enter a tutorial."))
 				return
 
 			var/datum/tutorial_menu/menu = new(usr)

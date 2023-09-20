@@ -561,8 +561,8 @@
 	name = "revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
-	damage = 55
-	penetration = ARMOR_PENETRATION_TIER_1
+	damage = 65
+	penetration = ARMOR_PENETRATION_TIER_3
 	accuracy = HIT_ACCURACY_TIER_1
 
 /datum/ammo/bullet/revolver/marksman
@@ -576,7 +576,7 @@
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
 
-	damage = 35
+	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 
@@ -2540,7 +2540,7 @@
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+			if(!H.wear_suit)
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)

@@ -88,6 +88,12 @@
 
 		M.Collided(src)
 		. = FALSE
+	else if (istype(target, /obj/vehicle/walker))
+		var/obj/vehicle/walker/M = target
+		visible_message(SPAN_DANGER("[src] rams into [M] and skids to a halt!"), SPAN_XENOWARNING("You ram into [M] and skid to a halt!"))
+
+		M.Collided(src)
+		. = FALSE
 
 	else if (istype(target, /obj/structure/machinery/m56d_hmg))
 		var/obj/structure/machinery/m56d_hmg/HMG = target

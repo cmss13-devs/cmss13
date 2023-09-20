@@ -124,6 +124,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 /obj/structure/machinery/cm_vending/clothing/specialist
 	name = "\improper ColMarTech Squad Weapons Specialist Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Squad Weapons Specialist standard-issue equipment."
+	show_points = TRUE
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 

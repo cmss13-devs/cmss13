@@ -2375,7 +2375,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\vox\vox_sounds\vox.dm"
 #include "code\modules\vox\vox_sounds\vox_military.dm"
 #include "fray-marines\code\__DEFINES\xeno.dm"
-#include "fray-marines\code\cm_tech\techs\abstract\item_droppods.dm"
+#include "fray-marines\code\cm_tech\techs\abstract\item_droppod.dm"
 #include "fray-marines\code\cm_tech\techs\abstract\tech_droppod.dm"
 #include "fray-marines\code\cm_tech\techs\marine\tier1\engi_upgrade_mod.dm"
 #include "fray-marines\code\cm_tech\techs\marine\tier1\enhanced_antibiologicals.dm"

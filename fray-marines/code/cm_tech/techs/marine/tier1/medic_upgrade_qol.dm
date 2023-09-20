@@ -27,21 +27,14 @@
 
 /obj/item/storage/box/combat_zone_support_package
 	name = "medical czsp"
-	storage_slots = 3
+	icon_state = "guncase"
+	storage_slots = 6
 
 /obj/item/storage/box/combat_zone_support_package/Initialize()
 	. = ..()
-	new/obj/item/storage/box/medic_upgraded_kits(src)
-	new/obj/item/stack/medical/splint/nano(src)
-	new /obj/item/weapon/gun/pill(src)
-
-/obj/item/storage/box/medic_upgraded_kits
-	name = "medical upgrade kit"
-	max_w_class = SIZE_MEDIUM
-
-	storage_slots = 2
-
-/obj/item/storage/box/medic_upgraded_kits/Initialize()
-	. = ..()
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
 	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/weapon/gun/pill(src)

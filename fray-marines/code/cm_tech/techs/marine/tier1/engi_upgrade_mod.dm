@@ -1,7 +1,7 @@
 /datum/tech/droppod/item/engi_czsp
 	name = "Combat Technician Combat Zone Support Package"
 	desc = {"Gives upgraded composite (deployable) cades to regulars. \
-			Gives ComTechs a mod kit for their deployable."}
+			Gives ComTechs a single brand-new deployable."}
 	icon_state = "engi_kit"
 	droppod_name = "Engi CZSP"
 
@@ -19,10 +19,15 @@
 		"tooltip" = "Only usable by [JOB_SQUAD_ENGI]."
 	))
 
-
 /datum/tech/droppod/item/engi_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()
 	if(!H || H.job == JOB_SQUAD_ENGI)
-		.["Engineering Upgrade Kit"] = /obj/item/engi_upgrade_kit
+		.["R-1NG Bell Tower"] = /obj/item/defenses/handheld/bell_tower
+		.["21S Tesla Coil"] = /obj/item/defenses/handheld/tesla_coil
+		.["JIMA Planted Flag"] = /obj/item/defenses/handheld/planted_flag
+		.["UA 42-F Sentry Flamer"] = /obj/item/defenses/handheld/sentry/flamer
+		.["UA 571-C Sentry Gun"] = /obj/item/defenses/handheld/sentry
+	else if(H.job == JOB_SQUAD_MARINE)
+		.["Portable Composite Barricade"] = /obj/structure/barricade/deployable
 	else
 		.["Random Tool"] = pick(common_tools)

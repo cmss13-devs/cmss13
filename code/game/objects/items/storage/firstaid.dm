@@ -24,10 +24,11 @@
 		/obj/item/stack/medical,
 		/obj/item/reagent_container/hypospray,
 		/obj/item/storage/syringe_case,
+		/obj/item/storage/surgical_case,
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/roller,
-		/obj/structure/closet/bodybag,
+		/obj/item/bodybag,
 		/obj/item/reagent_container/blood,
 	)
 	storage_flags = STORAGE_FLAGS_BOX

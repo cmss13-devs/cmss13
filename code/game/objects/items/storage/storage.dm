@@ -37,6 +37,12 @@
 	///Dictates whether or not we only check for items in can_hold_skill rather than can_hold or free usage
 	var/can_hold_skill_only = FALSE
 
+	/// The required skill for opening this storage if it is inside another storage type
+	var/required_skill_for_nest_opening = null
+
+	/// The required level of a skill for opening this storage if it is inside another storage type
+	var/required_skill_level_for_nest_opening = null
+
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
 		if(over_object == usr) // this must come before the screen objects only block
@@ -75,7 +81,19 @@
 	return ..()
 
 /obj/item/storage/proc/handle_mmb_open(mob/user)
-	open(user)
+	if(!required_skill_for_nest_opening || !required_skill_level_for_nest_opening)
+		open(user)
+		return
+
+	if(!istype(loc, /obj/item/storage))
+		open(user)
+		return
+
+	if(user?.skills.get_skill_level(required_skill_for_nest_opening) >= required_skill_level_for_nest_opening)
+		open(user)
+		return
+
+	to_chat(user, SPAN_NOTICE("You can't seem to open [src] while it is in [loc]."))
 
 /obj/item/storage/proc/return_inv()
 	RETURN_TYPE(/list)

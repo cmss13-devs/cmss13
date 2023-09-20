@@ -671,7 +671,6 @@
 
 	hold = /obj/item/storage/internal/accessory/drop_pouch
 
-
 /obj/item/storage/internal/accessory/drop_pouch
 	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
@@ -680,6 +679,7 @@
 	cant_hold = list( //Prevent inventory powergame
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,
+		/obj/item/storage/toolkit,
 		)
 	storage_flags = NONE //no verb, no quick draw, no tile gathering
 

@@ -22,6 +22,8 @@
 		/obj/item/explosive/plastic,
 	)
 	storage_flags = STORAGE_FLAGS_BOX
+	required_skill_for_nest_opening = SKILL_ENGINEER
+	required_skill_level_for_nest_opening = SKILL_ENGINEER_ENGI
 
 	///icon state to use when kit is full
 	var/icon_full

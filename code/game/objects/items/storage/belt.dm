@@ -95,6 +95,7 @@
 		/obj/item/tool/wirecutters,
 		/obj/item/tool/wrench,
 		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/shovel/etool,
 		/obj/item/stack/cable_coil,
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/cell,
@@ -108,6 +109,7 @@
 		/obj/item/device/t_scanner,
 		/obj/item/device/analyzer,
 		/obj/item/explosive/plastic,
+		/obj/item/device/lightreplacer,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
@@ -1680,7 +1682,7 @@
 	item_state= "utility"
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/weapon/gun/flare,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
@@ -1693,6 +1695,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/device/t_scanner,
 		/obj/item/device/analyzer,
+		/obj/item/device/lightreplacer,
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/stack/cable_coil,
 		/obj/item/cell,

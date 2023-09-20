@@ -27,8 +27,13 @@
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/roller,
+		/obj/structure/closet/bodybag,
+		/obj/item/reagent_container/blood,
 	)
 	storage_flags = STORAGE_FLAGS_BOX
+	required_skill_for_nest_opening = SKILL_MEDICAL
+	required_skill_level_for_nest_opening = SKILL_MEDICAL_MEDIC
+
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
 

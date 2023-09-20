@@ -178,5 +178,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_walker, list(
 	req_access = list(ACCESS_MARINE_WALKER)
 	vendor_role = list(JOB_WALKER)
 
-/obj/structure/machinery/cm_vending/clothing/vehicle_crew/get_listed_products(mob/user)
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew/walker/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_walker

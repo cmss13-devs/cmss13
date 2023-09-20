@@ -103,7 +103,7 @@
 				color = "#114e11"
 
 			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
-		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
+		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || check_for_rights(R_PERMISSIONS))
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
 
 		dat += "<br><br>"

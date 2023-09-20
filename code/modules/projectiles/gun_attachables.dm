@@ -1217,9 +1217,9 @@ Defined in conflicts.dm of the #defines folder.
 	/// If the gun should experience scope drift
 	var/scope_drift = TRUE
 	/// % chance for the scope to drift on process with a spotter using their scope
-	var/spotted_drift_chance = 33
+	var/spotted_drift_chance = 25
 	/// % chance for the scope to drift on process without a spotter using their scope
-	var/unspotted_drift_chance = 100
+	var/unspotted_drift_chance = 90
 	/// If the scope should use do_afters for adjusting and moving the sight
 	var/slow_use = TRUE
 	/// Cooldown for interacting with the scope's adjustment or position
@@ -3244,6 +3244,8 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	var/initial_mob_dir = NORTH // the dir the mob faces the moment it deploys the bipod
 	var/bipod_deployed = FALSE
+	/// If this should anchor the user while in use
+	var/heavy_bipod = FALSE
 
 /obj/item/attachable/bipod/New()
 	..()
@@ -3309,6 +3311,9 @@ Defined in conflicts.dm of the #defines folder.
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 		G.remove_firemode(GUN_FIREMODE_AUTOMATIC)
 
+	if(heavy_bipod)
+		user.anchored = FALSE
+
 	if(!QDELETED(G))
 		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 		update_icon()
@@ -3347,6 +3352,9 @@ Defined in conflicts.dm of the #defines folder.
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 					G.add_firemode(GUN_FIREMODE_AUTOMATIC)
+
+				if(heavy_bipod)
+					user.anchored = TRUE
 
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))
@@ -3396,6 +3404,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A set of rugged telescopic poles to keep a weapon stabilized during firing."
 	icon_state = "bipod_m60"
 	attach_icon = "vulture_bipod"
+	heavy_bipod = TRUE
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"

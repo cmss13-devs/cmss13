@@ -158,11 +158,11 @@
 		user.pixel_y = 0
 
 /// Handler for when the scope is being attached to the tripod
-/obj/structure/vulture_spotter_tripod/proc/on_scope_attach(mob/user, obj/item/scope)
+/obj/structure/vulture_spotter_tripod/proc/on_scope_attach(mob/user, obj/item/device/vulture_spotter_scope/scope)
 	if(scope_attached)
 		return
 
-	if(istype(scope, /obj/item/vulture_spotter_scope/skillless))
+	if(istype(scope, /obj/item/device/vulture_spotter_scope/skillless))
 		skillless = TRUE
 
 	user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))

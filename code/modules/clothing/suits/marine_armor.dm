@@ -664,7 +664,7 @@
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	unacidable = TRUE
-	
+
 /obj/item/clothing/suit/storage/marine/M40
 	name = "\improper M40 armor"
 	desc = "A custom set of M40 armor designed for use by USCM stormtrooper. Contains thick kevlar shielding."
@@ -677,16 +677,6 @@
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	specialty = "M40 stormtrooper"
 	unacidable = TRUE
-
-/obj/item/clothing/suit/storage/marine/M40
-	name = "M40 armor"
-	desc = "A custom set of M40 armor designed for use by USCM stormtrooper. Contains thick kevlar shielding."
-	icon_state = "st_armor"
-	armor_melee = CLOTHING_ARMOR_HIGH
-	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 
 #define FIRE_SHIELD_CD 150
 

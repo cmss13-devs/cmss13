@@ -308,6 +308,8 @@ var/global/list/limb_types_by_name = list(
 	if(hud_used && hud_used.action_intent)
 		hud_used.action_intent.icon_state = "intent_[intent_text(a_intent)]"
 
+	SEND_SIGNAL(src, COMSIG_MOB_INTENT_CHANGE, a_intent)
+
 /mob/proc/is_mob_restrained()
 	return
 

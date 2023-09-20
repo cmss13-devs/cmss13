@@ -73,3 +73,12 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 
 /mob/living/carbon/human/dummy/add_to_all_mob_huds()
 	return
+
+
+/mob/living/carbon/human/dummy/tutorial // Effectively an even more disabled dummy
+
+/mob/living/carbon/human/dummy/tutorial/Initialize(mapload)
+	. = ..()
+	status_flags = GODMODE
+	frozen = TRUE
+	anchored = TRUE

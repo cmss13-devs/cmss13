@@ -35,4 +35,5 @@
 	tutorial_mob = new_character
 	RegisterSignal(tutorial_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_DEATH, COMSIG_LIVING_GHOSTED), PROC_REF(end_tutorial))
 	RegisterSignal(tutorial_mob.client, COMSIG_PARENT_QDELETING, PROC_REF(end_tutorial))
+	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial)
 	return ..()

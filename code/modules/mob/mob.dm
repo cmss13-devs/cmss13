@@ -455,6 +455,7 @@
 
 /mob/proc/swap_hand()
 	hand = !hand
+	SEND_SIGNAL(src, COMSIG_MOB_SWAPPED_HAND)
 
 //attempt to pull/grab something. Returns true upon success.
 /mob/proc/start_pulling(atom/movable/AM, lunge, no_msg)

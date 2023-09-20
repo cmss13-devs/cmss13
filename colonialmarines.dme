@@ -615,6 +615,8 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\datums\tutorial\tutorial_example.dm"
 #include "code\datums\tutorial\marine\_marine.dm"
 #include "code\datums\tutorial\marine\basic_marine.dm"
+#include "code\datums\tutorial\ss13\_ss13.dm"
+#include "code\datums\tutorial\ss13\basic_ss13.dm"
 #include "code\datums\weather\weather_event.dm"
 #include "code\datums\weather\weather_map_holder.dm"
 #include "code\datums\weather\weather_events\big_red.dm"

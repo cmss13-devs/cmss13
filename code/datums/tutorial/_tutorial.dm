@@ -161,3 +161,9 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	mappath = "maps/tutorial/tutorial_8x9.dmm"
 	width = 8
 	height = 9
+
+/datum/map_template/tutorial/ss13_basic
+	name = "Tutorial Zone (7x7)"
+	mappath = "maps/tutorial/tutorial_7x7.dmm"
+	width = 7
+	height = 7

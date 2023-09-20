@@ -20,35 +20,43 @@ const TutList = (props, context) => {
   const { data, act } = useBackend<BackendContext>(context);
   const { tutorial_categories } = data;
   return (
-    <div
-      style={{
-        'vertical-align': 'middle',
-      }}>
-      <Stack fill vertical>
-        <Stack.Item>
+    <Stack fill vertical>
+      <Stack.Item>
+        <div
+          style={{
+            'display': 'flex',
+            'align-content': 'center',
+            'flex-wrap': 'wrap',
+          }}>
           {tutorial_categories.map((category) => (
-            <Collapsible title={category.name} open>
-              {category.tutorials.map((tutorial) => (
-                <Button
-                  content={tutorial.name}
-                  onClick={() =>
-                    act('select_tutorial', {
-                      tutorial_path: tutorial.path,
-                    })
-                  }
-                />
-              ))}
-            </Collapsible>
+            <div style={{ 'width': '100%' }}>
+              <Collapsible title={category.name} open>
+                {category.tutorials.map((tutorial) => (
+                  <>
+                    <div style={{ 'padding': '2px' }} />
+                    <Button
+                      content={tutorial.name}
+                      onClick={() =>
+                        act('select_tutorial', {
+                          tutorial_path: tutorial.path,
+                        })
+                      }
+                    />
+                  </>
+                ))}
+              </Collapsible>
+              <div style={{ 'padding': '8px' }} />
+            </div>
           ))}
-        </Stack.Item>
-      </Stack>
-    </div>
+        </div>
+      </Stack.Item>
+    </Stack>
   );
 };
 
 export const TutorialList = (props, context) => {
   return (
-    <Window width={500} height={600} title="Tutorial List">
+    <Window width={300} height={400} title="Tutorial List">
       <Window.Content>
         <TutList />
       </Window.Content>

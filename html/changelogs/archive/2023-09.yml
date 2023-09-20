@@ -245,3 +245,19 @@
       their intel distribution standardized.
   realforest2001:
   - bugfix: Fixes the CMB tradeband scanner not being able to do it's job.
+2023-09-20:
+  BeagleGaming1:
+  - rscadd: Uncommented the "Observe" verb for ghosts, allowing ghosts to see from
+      a humans HUD
+  Huffie56:
+  - balance: made it so that req as double what a standard vendor as in ammo and guns.
+  Morrow:
+  - balance: Removed some PMC gear on maps
+  SpartanBobby, GSDPathe:
+  - maptweak: Changes to LV522 loot table surrounding metal spawns
+  - maptweak: Redectorates areas around LV522 that were underwhelming before
+  TheGamerdk, ihatethisengine:
+  - rscadd: IOs start in their own squad now
+  c4xmaniac2:
+  - mapadd: Readds yard to Science Annex
+  - maptweak: Redid the yard loot to be more in line with current surv loot standards.

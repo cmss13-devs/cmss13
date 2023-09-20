@@ -211,6 +211,11 @@
 	var/gloves_blood_amt = 0 //taken from blood.dm
 	var/hide_prints = FALSE
 
+/obj/item/clothing/gloves/Initialize(mapload, ...)
+	. = ..()
+	if(armor_melee || armor_bullet || armor_laser || armor_energy || armor_bomb || armor_bio || armor_rad)
+		AddComponent(/datum/component/armor_link, WEAR_JACKET, TRUE)
+
 /obj/item/clothing/gloves/update_clothing_icon()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
@@ -334,6 +339,11 @@
 	var/obj/item/stored_item
 	var/list/items_allowed
 	var/shoes_blood_amt = 0
+
+	obj/item/clothing/shoes/Initialize(mapload, ...)
+	. = ..()
+	if(armor_melee || armor_bullet || armor_laser || armor_energy || armor_bomb || armor_bio || armor_rad)
+		AddComponent(/datum/component/armor_link, WEAR_JACKET, TRUE)
 
 /obj/item/clothing/shoes/update_clothing_icon()
 	if (ismob(src.loc))

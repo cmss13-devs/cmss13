@@ -10,8 +10,6 @@
 	var/custom_gun_desc
 	///The probability of the prop gun spawning
 	var/spawn_prob = 100
-	///If it needs to be late initialized to spawn properly
-	var/spawn_on_roundstart = FALSE
 
 /obj/effect/spawner/prop_gun/Initialize(mapload, ...)
 	. = ..()
@@ -22,7 +20,7 @@
 	if(!spawn_prob)
 		qdel(src)
 		return
-	if(!spawn_on_roundstart)
+	if(!mapload)
 		prepare_gun_skin()
 		return
 	return INITIALIZE_HINT_ROUNDSTART

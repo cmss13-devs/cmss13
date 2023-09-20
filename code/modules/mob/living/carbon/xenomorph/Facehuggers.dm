@@ -485,8 +485,7 @@
 					return FALSE
 				can_infect = FALSE
 			else
-				visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [D.name] and rips it off!"))
-				drop_inv_item_on_ground(D)
+				visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [D.name]!"))
 				if(istype(D, /obj/item/clothing/head/helmet/marine)) //Marine helmets now get a fancy overlay.
 					var/obj/item/clothing/head/helmet/marine/m_helmet = D
 					m_helmet.add_hugger_damage()

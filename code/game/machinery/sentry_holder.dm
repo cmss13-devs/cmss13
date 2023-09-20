@@ -10,13 +10,11 @@
 	idle_power_usage = 1000
 	power_channel = 1
 	use_power = USE_POWER_IDLE
-	machine_processing = 1
 	var/deployment_cooldown
 	var/turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable // Path of the turret used
 	var/obj/structure/machinery/defenses/sentry/premade/deployable/deployed_turret
 	var/ox = 0
 	var/oy = 0
-	var/ind = FALSE
 	var/require_red_alert = FALSE
 
 /obj/structure/machinery/sentry_holder/Initialize()
@@ -62,19 +60,13 @@
 	undeploy_sentry()
 	return
 
+/obj/structure/machinery/sentry_holder/update_use_power(new_use_power)
+	..()
 
-/obj/structure/machinery/sentry_holder/process()
-	if(stat & NOPOWER)
-		if(deployed_turret)
-			undeploy_sentry()
-			ind = FALSE
-		else
-			icon_state = "sentry_system_destroyed"
-	else
-		update_use_power(USE_POWER_IDLE)
-		if(!ind)
-			deploy_sentry()
-			ind = TRUE
+	if(!(stat & NOPOWER))
+		return
+
+	undeploy_sentry()
 
 /obj/structure/machinery/sentry_holder/proc/deploy_sentry()
 	if(!deployed_turret)

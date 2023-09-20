@@ -32,7 +32,7 @@
 
 ///Spawns the items and modifies source to set skin on prop
 /obj/effect/spawner/prop_gun/proc/prepare_gun_skin()
-	///The source gun, which the skin will be copied from
+	///The source, which the skin will be copied from
 	var/obj/item/weapon/gun/source_gun = new prop_gun_type(src)
 	if(custom_gun_name)
 		source_gun.name = custom_gun_name
@@ -42,7 +42,7 @@
 	source_gun.pixel_y = pixel_y
 	source_gun.layer = layer
 
-	///The prop gun, which the skin will be copied to
+	///The prop itself, which the skin will be copied to
 	var/obj/item/prop/prop_gun/prop_gun = new /obj/item/prop/prop_gun(loc)
 	prop_gun.set_gun_skin(source_gun)
 	qdel(src)

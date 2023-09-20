@@ -300,7 +300,7 @@
 	name = "\improper M707 anti-materiel rifle case"
 	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools."
 	icon_state = "guncase_blue"
-	storage_slots = 7
+	storage_slots = 5
 	can_hold = list(
 		/obj/item/weapon/gun/boltaction/vulture,
 		/obj/item/ammo_magazine/rifle/boltaction/vulture,
@@ -324,6 +324,15 @@
 	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
 	new /obj/item/pamphlet/trait/vulture(src) //both pamphlets give use of the scope and the rifle
 	new /obj/item/pamphlet/trait/vulture(src)
+
+/obj/item/storage/box/guncase/vulture/skillless
+
+/obj/item/storage/box/guncase/vulture/skillless/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/skillless/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope/skillless(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
 
 //Handgun case for Military police vendor three mag , a railflashligh and the handgun.
 

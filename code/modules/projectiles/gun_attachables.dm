@@ -1290,7 +1290,7 @@ Defined in conflicts.dm of the #defines folder.
 					return
 				to_chat(scoper, SPAN_NOTICE("You begin adjusting [src]..."))
 				COOLDOWN_START(src, scope_interact_cd, 0.5 SECONDS)
-				if(!do_after(scoper, 0.5 SECONDS))
+				if(!do_after(scoper, 0.4 SECONDS))
 					return
 
 			adjust_offset(direction)
@@ -1308,7 +1308,7 @@ Defined in conflicts.dm of the #defines folder.
 
 				to_chat(scoper, SPAN_NOTICE("You begin moving [src]..."))
 				COOLDOWN_START(src, scope_interact_cd, 1 SECONDS)
-				if(!do_after(scoper, 1 SECONDS))
+				if(!do_after(scoper, 0.8 SECONDS))
 					return
 
 			adjust_position(direction)

@@ -1401,6 +1401,21 @@
 	chem_volume = 30
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 
+/obj/item/weapon/donatorkatana
+	name = "Kou"
+	desc = "A piece of steel with a hand-engraved name and a fine signature of the craftsman underneath. Kou was custom made as an object of encouragement with a practical application. || DONATOR ITEM"
+	icon_state = "donatorkatana"
+	flags_atom = FPRINT|CONDUCT
+	force = MELEE_FORCE_VERY_STRONG
+	throwforce = MELEE_FORCE_WEAK
+	sharp = IS_SHARP_ITEM_BIG
+	edge = 1
+	w_class = SIZE_MEDIUM
+	flags_equip_slot = SLOT_BACK
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
+
 
 //GHOST CIGAR CODE
 /obj/item/clothing/mask/cigarette/cigar/fluff/ghostdex/attackby(obj/item/W as obj, mob/user as mob)

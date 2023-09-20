@@ -34204,15 +34204,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
-"fRw" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/vehicle/walker/prebuilt,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hallways/port_hallway)
 "fRC" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -45976,6 +45967,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
+"kPp" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/walker_wreckage,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hallways/port_hallway)
 "kPx" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/mass_spectrometer,
@@ -58347,10 +58347,10 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/upper_hull/u_a_s)
 "pWa" = (
-/obj/structure/machinery/cm_vending/clothing/dress,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew/walker,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "pWb" = (
@@ -68238,18 +68238,6 @@
 	pixel_y = 5
 	},
 /obj/item/tool/pen,
-/obj/item/tool/crew_monitor,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/hand_labeler{
-	pixel_x = 7
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = 5
-	},
-/obj/item/tool/pen,
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
 	pixel_x = 17
@@ -69538,6 +69526,7 @@
 "uDv" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
+/obj/item/clothing/glasses/welding,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -69637,6 +69626,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
+/obj/structure/machinery/cm_vending/gear/walker,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "uFo" = (
@@ -73975,6 +73965,10 @@
 	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
+"woC" = (
+/obj/effect/landmark/start/mech_crew,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_hallway)
 "woG" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/plating_catwalk,
@@ -74498,7 +74492,7 @@
 	},
 /area/almayer/command/airoom)
 "wCY" = (
-/obj/structure/largecrate/supply/supplies/mre,
+/obj/structure/largecrate/guns/merc,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -117320,7 +117314,7 @@ gsu
 bGb
 vpq
 bJz
-dQJ
+kPp
 bJz
 tTX
 nKV
@@ -118132,7 +118126,7 @@ eeM
 bGb
 huA
 bJz
-fRw
+dQJ
 bJz
 tTX
 lEc
@@ -119353,8 +119347,8 @@ oHD
 muP
 bSd
 fpk
-bHa
-bHa
+woC
+woC
 bGb
 fiq
 yhQ

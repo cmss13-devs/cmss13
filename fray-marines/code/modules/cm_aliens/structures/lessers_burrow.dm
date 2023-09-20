@@ -111,7 +111,7 @@
 		M.visible_message(SPAN_WARNING("[M] made few knocks on [src]"), SPAN_XENONOTICE("You call your lesser sisters"))
 		handle_spawning()
 	else
-		to_chat(M, SPAN_XENOWARNING("It's not time yet! New lesser sisters will arrive in [((last_spawning + spawn_cooldown) - world.time) SECONDS]!"))
+		to_chat(M, SPAN_XENOWARNING("It's not time yet! New lesser sisters will arrive in [((last_spawning + spawn_cooldown) - world.time) / 600] minutes!"))
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/lessers_burrow/proc/isfriendly(mob/target)

@@ -69825,7 +69825,8 @@
 	},
 /obj/structure/largecrate/random/case,
 /obj/effect/spawner/prop_gun/m41a{
-	spawn_on_roundstart = 1pixel_y = 7
+	spawn_on_roundstart = 1;
+	pixel_y = 7
 	},
 /obj/item/prop/helmetgarb/gunoil{
 	pixel_x = -10;

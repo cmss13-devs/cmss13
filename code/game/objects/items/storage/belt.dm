@@ -1729,7 +1729,7 @@
 	max_w_class = SIZE_LARGE
 	max_storage_space = 2
 	can_hold = list(
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon, /obj/item/ammo_magazine/walker/smartgun, /obj/item/ammo_magazine/walker/hmg, /obj/item/ammo_magazine/walker/flamer,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,

@@ -69824,13 +69824,8 @@
 	pixel_y = 2
 	},
 /obj/structure/largecrate/random/case,
-/obj/item/prop{
-	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. The trigger is missing, the barrel is bent, and it no longer appropriately feeds magazines.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
-	icon_state = "m41amk1_e";
-	item_state = "m41amk1";
-	name = "\improper Broken M41A pulse rifle";
-	pixel_y = 7
+/obj/effect/spawner/prop_gun/m41a{
+	spawn_on_roundstart = 1pixel_y = 7
 	},
 /obj/item/prop/helmetgarb/gunoil{
 	pixel_x = -10;

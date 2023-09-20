@@ -85,7 +85,7 @@
 	..()
 	unwield(user)
 
-/obj/effect/spawner/prop_gun/m41a
-	prop_gun_type = /obj/item/weapon/gun/rifle/m41a
+/obj/effect/spawner/prop_gun/m41aMK1
+	prop_gun_type = /obj/item/weapon/gun/rifle/m41aMK1
 	custom_gun_name = "\improper Broken M41A pulse rifle"
 	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. The trigger is missing, the barrel is bent, and it no longer appropriately feeds magazines."

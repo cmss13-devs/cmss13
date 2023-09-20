@@ -69824,7 +69824,7 @@
 	pixel_y = 2
 	},
 /obj/structure/largecrate/random/case,
-/obj/effect/spawner/prop_gun/m41a{
+/obj/effect/spawner/prop_gun/m41aMK1{
 	pixel_y = 7
 	},
 /obj/item/prop/helmetgarb/gunoil{

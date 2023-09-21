@@ -1,5 +1,5 @@
 /datum/equipment_preset/pmc/w_y_whiteout
-	name = "Whiteout Team Operative"
+	name = "Whiteout Team Operative (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE //We always use a codename!
 	faction = FACTION_WY_DEATHSQUAD
@@ -130,7 +130,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/w_y_whiteout/terminator
-	name = "Whiteout Team Terminator"
+	name = "Whiteout Team Terminator (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Terminator"
 	role_comm_title = "WO-TT"
@@ -170,7 +170,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/w_y_whiteout/leader
-	name = "Whiteout Team Leader"
+	name = "Whiteout Team Leader (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Leader"
 	role_comm_title = "WO-TL"
@@ -220,7 +220,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/w_y_whiteout/lowthreat
-	name = "Whiteout Team Operative (Not Overpowered)"
+	name = "Whiteout Team Operative"
 
 /datum/equipment_preset/pmc/w_y_whiteout/lowthreat/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -243,10 +243,10 @@
 	//head
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/commando, WEAR_HEAD)
 	//uniform
-	var/obj/item/clothing/under/marine/veteran/pmc/commando/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
+	var/obj/item/clothing/under/marine/veteran/pmc/commando/uniform = new()
+	var/obj/item/clothing/accessory/storage/webbing/accessory = new()
+	M.attach_accessory(new_human, accessory)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	for(var/i in 1 to W.hold.storage_slots)
 		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	//jacket
@@ -270,7 +270,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/w_y_whiteout/lowthreat/medic
-	name = "Whiteout Team Medic (Not Overpowered)"
+	name = "Whiteout Team Medic"
 
 /datum/equipment_preset/pmc/w_y_whiteout/lowthreat/medic/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -290,10 +290,10 @@
 	//head
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/commando, WEAR_HEAD)
 	//uniform
-	var/obj/item/clothing/under/marine/veteran/pmc/commando/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
+	var/obj/item/clothing/under/marine/veteran/pmc/commando/uniform = new()
+	var/obj/item/clothing/accessory/storage/webbing/accessory = new()
+	M.attach_accessory(new_human, accessory)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	for(var/i in 1 to W.hold.storage_slots)
 		new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_ACCESSORY)
 	//jacket
@@ -315,7 +315,7 @@
 	implant.on_implanted(new_human)
 
 /datum/equipment_preset/pmc/w_y_whiteout/lowthreat/terminator
-	name = "Whiteout Team Terminator (Not Overpowered)"
+	name = "Whiteout Team Terminator"
 
 /datum/equipment_preset/pmc/w_y_whiteout/lowthreat/terminator/load_gear(mob/living/carbon/human/new_human)
 	//face
@@ -324,10 +324,10 @@
 	//head
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/commando, WEAR_HEAD)
 	//uniform
-	var/obj/item/clothing/under/marine/veteran/pmc/commando/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
+	var/obj/item/clothing/under/marine/veteran/pmc/commando/uniform = new()
+	var/obj/item/clothing/accessory/storage/webbing/accessory = new()
+	M.attach_accessory(new_human, accessory)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	for(var/i in 1 to W.hold.storage_slots)
 		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	//jacket
@@ -352,7 +352,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/w_y_whiteout/lowthreat/leader
-	name = "Whiteout Team Leader (Not Overpowered)"
+	name = "Whiteout Team Leader"
 
 /datum/equipment_preset/pmc/w_y_whiteout/lowthreat/leader/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -372,10 +372,10 @@
 	//head
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/commando, WEAR_HEAD)
 	//uniform
-	var/obj/item/clothing/under/marine/veteran/pmc/commando/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
+	var/obj/item/clothing/under/marine/veteran/pmc/commando/uniform = new()
+	var/obj/item/clothing/accessory/storage/webbing/accessory = new()
+	M.attach_accessory(new_human, accessory)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	for(var/i in 1 to W.hold.storage_slots)
 		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	//jacket

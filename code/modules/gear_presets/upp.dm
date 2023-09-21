@@ -2097,7 +2097,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando
-	name = "UPP Commando"
+	name = "UPP Commando (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando
@@ -2226,7 +2226,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/medic
-	name = "UPP Commando Medic"
+	name = "UPP Commando Medic (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando/medic
@@ -2395,7 +2395,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/leader
-	name = "UPP Commando Leader"
+	name = "UPP Commando Leader (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando/leader
@@ -2547,7 +2547,7 @@
 	)
 
 /datum/equipment_preset/upp/commando/lowthreat
-	name = "UPP Commando (Not Overpowered)"
+	name = "UPP Commando"
 
 /datum/equipment_preset/upp/commando/lowthreat/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo, WEAR_L_EAR)
@@ -2577,7 +2577,7 @@
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 8)
 
 /datum/equipment_preset/upp/commando/medic/lowthreat
-	name = "UPP Commando Medic (Not Overpowered)"
+	name = "UPP Commando Medic"
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -2616,7 +2616,7 @@
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 5)
 
 /datum/equipment_preset/upp/commando/leader/lowthreat
-	name = "UPP Commando Leader (Not Overpowered)"
+	name = "UPP Commando Leader"
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels

@@ -180,6 +180,12 @@
 	if(istype(add_to_screen, /atom/movable/screen/action_button))
 		return
 
+	if(istype(add_to_screen, /atom/movable/screen/fullscreen))
+		return
+
+	if(istype(add_to_screen, /atom/movable/screen/click_catcher))
+		return
+
 	client.add_to_screen(add_to_screen)
 
 /mob/dead/observer/proc/observertarget_screen_remove(observetarget_client, remove_from_screen)

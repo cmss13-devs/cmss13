@@ -1,9 +1,6 @@
 /datum/tech/droppod/item/modular_armor_upgrade
 	name = "Modular Armor Upgrade Kits"
-	desc = {"Marines get access to plates they can put in their uniforms that act as temporary\
-			HP. Ceramic plates are tougher, but only block bullets and break after use; metal plates\
-			break into scrap that can be combined to form improvised plates that are almost\
-			as good."}
+	desc = {"Marines get access to plates they can put in their uniforms that act as temporary HP."}
 	icon_state = "combat_plates"
 	droppod_name = "Armor Plates"
 

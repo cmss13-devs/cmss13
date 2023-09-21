@@ -10,6 +10,8 @@
 	required_points = 15
 	tier = /datum/tier/one
 
+	droppod_input_message = "Choose a deployable to retrieve from the droppod."
+
 /datum/tech/droppod/item/engi_czsp/pre_item_stats(mob/user)
 	. = ..()
 	. += list(list(

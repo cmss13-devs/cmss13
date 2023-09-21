@@ -794,7 +794,7 @@
 	name = "medical kit pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
 	icon_state = "medkit"
-	desc = "It's specifically made to hold medical items."
+	desc = "It's specifically made to hold medical items. Requires medical skills to use effectively."
 	storage_slots = 7
 	can_hold_skill = list(
 		/obj/item/device/healthanalyzer = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),

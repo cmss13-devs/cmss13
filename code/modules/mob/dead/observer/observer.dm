@@ -213,6 +213,28 @@
 	LAZYINITLIST(target.observers)
 	target.observers |= src
 	target.hud_used.show_hud(target.hud_used.hud_version, src)
+
+	var/mob/living/carbon/human/human_target = target
+
+	var/list/target_contents = human_target.get_contents()
+
+	//Handles any currently open storage containers the target is looking in when we observe
+	for(var/obj/item/storage/checked_storage in target_contents)
+		if(!(target in checked_storage.content_watchers))
+			continue
+
+		client.add_to_screen(checked_storage.closer)
+		client.add_to_screen(checked_storage.contents)
+
+		if(checked_storage.storage_slots)
+			client.add_to_screen(checked_storage.boxes)
+		else
+			client.add_to_screen(checked_storage.storage_start)
+			client.add_to_screen(checked_storage.storage_continue)
+			client.add_to_screen(checked_storage.storage_end)
+
+		break
+
 	observetarget = target
 	RegisterSignal(observetarget, COMSIG_PARENT_QDELETING, PROC_REF(clean_observetarget))
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))

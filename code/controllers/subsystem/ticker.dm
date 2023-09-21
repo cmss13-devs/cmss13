@@ -24,6 +24,7 @@ SUBSYSTEM_DEF(ticker)
 	var/start_at
 
 	var/roundend_check_paused = FALSE
+	var/roundend_restart_delay
 
 	var/round_start_time = 0
 	var/list/round_start_events
@@ -97,6 +98,7 @@ SUBSYSTEM_DEF(ticker)
 
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
+				roundend_restart_delay = CONFIG_GET(number/round_end_countdown)
 				ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
 				REDIS_PUBLISH("byond.round", "type" = "round-complete")

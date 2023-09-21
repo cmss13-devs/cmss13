@@ -245,9 +245,9 @@
 	//uniform
 	var/obj/item/clothing/under/marine/veteran/pmc/commando/uniform = new()
 	var/obj/item/clothing/accessory/storage/webbing/accessory = new()
-	M.attach_accessory(new_human, accessory)
+	uniform.attach_accessory(new_human, accessory)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
-	for(var/i in 1 to W.hold.storage_slots)
+	for(var/i in 1 to accessory.hold.storage_slots)
 		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	//jacket
 	var/obj/item/clothing/suit/storage/marine/veteran/pmc/commando/armor = new()
@@ -292,9 +292,9 @@
 	//uniform
 	var/obj/item/clothing/under/marine/veteran/pmc/commando/uniform = new()
 	var/obj/item/clothing/accessory/storage/webbing/accessory = new()
-	M.attach_accessory(new_human, accessory)
+	uniform.attach_accessory(new_human, accessory)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
-	for(var/i in 1 to W.hold.storage_slots)
+	for(var/i in 1 to accessory.hold.storage_slots)
 		new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_ACCESSORY)
 	//jacket
 	var/obj/item/clothing/suit/storage/marine/veteran/pmc/commando/armor = new()
@@ -326,9 +326,9 @@
 	//uniform
 	var/obj/item/clothing/under/marine/veteran/pmc/commando/uniform = new()
 	var/obj/item/clothing/accessory/storage/webbing/accessory = new()
-	M.attach_accessory(new_human, accessory)
+	uniform.attach_accessory(new_human, accessory)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
-	for(var/i in 1 to W.hold.storage_slots)
+	for(var/i in 1 to accessory.hold.storage_slots)
 		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	//jacket
 	var/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc/terminator/armor = new()
@@ -374,9 +374,9 @@
 	//uniform
 	var/obj/item/clothing/under/marine/veteran/pmc/commando/uniform = new()
 	var/obj/item/clothing/accessory/storage/webbing/accessory = new()
-	M.attach_accessory(new_human, accessory)
+	uniform.attach_accessory(new_human, accessory)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
-	for(var/i in 1 to W.hold.storage_slots)
+	for(var/i in 1 to accessory.hold.storage_slots)
 		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	//jacket
 	var/obj/item/clothing/suit/storage/marine/veteran/pmc/commando/armor = new()

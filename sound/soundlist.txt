@@ -1,3 +1,13 @@
+sound/lobby/warrior.ogg
+sound/lobby/rome.ogg
+sound/lobby/teardrop.ogg
+sound/lobby/prosvistela.ogg
+sound/lobby/primovictoria.ogg
+sound/lobby/mesa.ogg
+sound/lobby/lv426.ogg
+sound/lobby/hf2.ogg
+sound/lobby/govnovoz.ogg
+sound/lobby/darkday.ogg
 sound/misc/Game_Over_Man.ogg
 sound/misc/asses_kicked.ogg
 sound/misc/hardon.ogg

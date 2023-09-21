@@ -82,6 +82,6 @@
 	var/mob/screenmob = viewmob || mymob
 
 	if(!hud_shown)
-		screenmob.client.screen -= static_inventory
+		screenmob.client.remove_from_screen(static_inventory)
 	else
-		screenmob.client.screen += static_inventory
+		screenmob.client.add_to_screen(static_inventory)

@@ -186,7 +186,7 @@
 	if(istype(S))
 		for(var/mob/M in S.can_see_content())
 			if(M.client)
-				M.client.screen -= src
+				M.client.remove_from_screen(src)
 	if(ismob(loc))
 		dropped(loc)
 

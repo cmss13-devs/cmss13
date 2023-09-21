@@ -92,25 +92,24 @@
 				return
 	if(user.s_active)
 		user.s_active.hide_from(user)
-	user.client.screen -= boxes
-	user.client.screen -= storage_start
-	user.client.screen -= storage_continue
-	user.client.screen -= storage_end
-	user.client.screen -= closer
-	user.client.screen -= contents
-	user.client.screen += closer
-	user.client.screen += contents
+	user.client.remove_from_screen(boxes)
+	user.client.remove_from_screen(storage_start)
+	user.client.remove_from_screen(storage_continue)
+	user.client.remove_from_screen(storage_end)
+	user.client.remove_from_screen(closer)
+	user.client.remove_from_screen(contents)
+	user.client.add_to_screen(closer)
+	user.client.add_to_screen(contents)
 
 	if(storage_slots)
-		user.client.screen += boxes
+		user.client.add_to_screen(boxes)
 	else
-		user.client.screen += storage_start
-		user.client.screen += storage_continue
-		user.client.screen += storage_end
+		user.client.add_to_screen(storage_start)
+		user.client.add_to_screen(storage_continue)
+		user.client.add_to_screen(storage_end)
 
 	user.s_active = src
 	add_to_watchers(user)
-	return
 
 /obj/item/storage/proc/add_to_watchers(mob/user)
 	if(!(user in content_watchers))
@@ -125,12 +124,12 @@
 ///Used to hide the storage's inventory screen.
 /obj/item/storage/proc/hide_from(mob/user as mob)
 	if(user.client)
-		user.client.screen -= src.boxes
-		user.client.screen -= storage_start
-		user.client.screen -= storage_continue
-		user.client.screen -= storage_end
-		user.client.screen -= src.closer
-		user.client.screen -= src.contents
+		user.client.remove_from_screen(src.boxes)
+		user.client.remove_from_screen(storage_start)
+		user.client.remove_from_screen(storage_continue)
+		user.client.remove_from_screen(storage_end)
+		user.client.remove_from_screen(src.closer)
+		user.client.remove_from_screen(src.contents)
 	if(user.s_active == src)
 		user.s_active = null
 	del_from_watchers(user)
@@ -474,7 +473,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	W.on_enter_storage(src)
 	if(user)
 		if (user.client && user.s_active != src)
-			user.client.screen -= W
+			user.client.remove_from_screen(W)
 		add_fingerprint(user)
 		if(!prevent_warning)
 			var/visidist = W.w_class >= 3 ? 3 : 1
@@ -500,7 +499,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 /obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location)
 	for(var/mob/M in can_see_content())
 		if(M.client)
-			M.client.screen -= W
+			M.client.remove_from_screen(W)
 
 	if(new_location)
 		if(ismob(new_location))

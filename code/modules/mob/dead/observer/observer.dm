@@ -155,6 +155,9 @@
 /mob/dead/observer/proc/clean_observetarget()
 	SIGNAL_HANDLER
 	UnregisterSignal(observetarget, COMSIG_PARENT_QDELETING)
+	if(observetarget.client)
+		UnregisterSignal(observetarget.client, COMSIG_CLIENT_SCREEN_ADD)
+		UnregisterSignal(observetarget.client, COMSIG_CLIENT_SCREEN_REMOVE)
 	if(observetarget?.observers)
 		observetarget.observers -= src
 		UNSETEMPTY(observetarget.observers)
@@ -169,12 +172,23 @@
 		return
 	clean_observetarget()
 
+/mob/dead/observer/proc/observertarget_screen_add(observetarget_client, add_to_screen)
+	SIGNAL_HANDLER
+	if(!client)
+		return
+	client.add_to_screen(add_to_screen)
+
+/mob/dead/observer/proc/observertarget_screen_remove(observetarget_client, remove_from_screen)
+	SIGNAL_HANDLER
+	if(!client)
+		return
+	client.remove_from_screen(remove_from_screen)
+
 ///makes the ghost see the target hud and sets the eye at the target.
 /mob/dead/observer/proc/do_observe(mob/target)
 	if(!client || !target || !istype(target))
 		return
 
-	//I do not give a singular flying fuck about not being able to see xeno huds, literally only human huds are useful to see
 	if(!ishuman(target))
 		ManualFollow(target)
 		return
@@ -191,6 +205,9 @@
 	observetarget = target
 	RegisterSignal(observetarget, COMSIG_PARENT_QDELETING, PROC_REF(clean_observetarget))
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
+	if(target.client)
+		RegisterSignal(target.client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observertarget_screen_add))
+		RegisterSignal(target.client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observertarget_screen_remove))
 
 /mob/dead/observer/reset_perspective(atom/A)
 	if(observetarget)

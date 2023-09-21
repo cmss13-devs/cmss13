@@ -1535,7 +1535,7 @@ Defined in conflicts.dm of the #defines folder.
 	recalculate_scope_pos()
 	gun_user.overlay_fullscreen("vulture", /atom/movable/screen/fullscreen/vulture)
 	scope_element = new(src)
-	gun_user.client.screen += scope_element
+	gun_user.client.add_to_screen(scope_element)
 	gun_user.see_in_dark += darkness_view
 	gun_user.lighting_alpha = 127
 	gun_user.sync_lighting_plane_alpha()
@@ -1564,7 +1564,7 @@ Defined in conflicts.dm of the #defines folder.
 	stop_holding_breath()
 	scope_user_initial_dir = null
 	scoper.clear_fullscreen("vulture")
-	scoper.client.screen -= scope_element
+	scoper.client.remove_from_screen(scope_element)
 	scoper.see_in_dark -= darkness_view
 	scoper.lighting_alpha = 127
 	scoper.sync_lighting_plane_alpha()

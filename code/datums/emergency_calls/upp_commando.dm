@@ -1,7 +1,7 @@
 
 //UPP COMMANDOS
 /datum/emergency_call/upp_commando
-	name = "UPP Commandos (!WHITEOUT!)"
+	name = "UPP Commandos (!DEATHSQUAD!)"
 	mob_max = 6
 	probability = 0
 	objectives = "Stealthily assault the ship. Use your silenced weapons, tranquilizers, and night vision to get the advantage on the enemy. Take out the power systems, comms and engine. Stick together and keep a low profile."

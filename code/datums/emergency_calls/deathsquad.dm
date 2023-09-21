@@ -3,7 +3,7 @@
 
 //Weyland-Yutani Deathsquad - W-Y Deathsquad. Event only
 /datum/emergency_call/death
-	name = "Weyland Whiteout Operators (!WHITEOUT!)"
+	name = "Weyland Whiteout Operators (!DEATHSQUAD!)"
 	mob_max = 8
 	mob_min = 5
 	arrival_message = "'!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
@@ -99,7 +99,7 @@
 //################################################################################################
 // Marine commandos - USCM Deathsquad. Event only
 /datum/emergency_call/marsoc
-	name = "Marine Raider Strike Team (!WHITEOUT!)"
+	name = "Marine Raider Strike Team (!DEATHSQUAD!)"
 	mob_max = 8
 	mob_min = 5
 	probability = 0
@@ -128,7 +128,7 @@
 	return
 
 /datum/emergency_call/marsoc_covert
-	name = "Marine Raider Operatives (!WHITEOUT! Covert)"
+	name = "Marine Raider Operatives (!DEATHSQUAD! Covert)"
 	mob_max = 8
 	mob_min = 5
 	probability = 0

@@ -18,6 +18,10 @@ SUBSYSTEM_DEF(stickyban)
 		world.SetConfig("ban", existing_ban, null)
 
 /datum/controller/subsystem/stickyban/proc/import_sticky(identifier, list/ban_data)
+	if(ban_data["type"] == "sticky")
+		handle_old_perma(identifier, ban_data)
+		return
+
 	if(!ban_data["message"])
 		ban_data["message"] = "Evasion"
 
@@ -26,7 +30,6 @@ SUBSYSTEM_DEF(stickyban)
 
 	new_sticky.reason = ban_data["reason"]
 	new_sticky.message = ban_data["message"]
-	new_sticky.sticky = ban_data["type"] == "sticky" ? TRUE : FALSE
 
 	new_sticky.date = "LEGACY"
 	new_sticky.save()
@@ -82,3 +85,21 @@ SUBSYSTEM_DEF(stickyban)
 
 	world.SetConfig("ban", new_sticky.identifier, null)
 
+/proc/handle_old_perma(identifier, list/ban_data)
+	var/list/keys_to_ban = list()
+
+	keys_to_ban += splittext(ban_data["keys"], ",")
+
+	var/list/keys = splittext(ban_data["whitelist"], ",")
+	for(var/key in keys)
+		keys_to_ban -= key
+
+	for(var/key in keys_to_ban)
+		var/datum/entity/player/player_entity = get_player_from_key(key)
+		if(player_entity)
+			continue
+
+		player_entity.is_permabanned = TRUE
+		player_entity.permaban_admin = "AdminBot"
+		player_entity.permaban_date = "IMPORT"
+		player_entity.permaban_reason = ban_data["message"]

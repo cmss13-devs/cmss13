@@ -3,7 +3,6 @@
 	var/reason
 	var/message
 	var/date
-	var/sticky = TRUE
 
 	var/linked_permaban
 
@@ -15,7 +14,6 @@
 		"reason" = DB_FIELDTYPE_STRING_LARGE,
 		"message" = DB_FIELDTYPE_STRING_LARGE,
 		"date" = DB_FIELDTYPE_STRING_LARGE,
-		"sticky" = DB_FIELDTYPE_INT,
 		"linked_permaban" = DB_FIELDTYPE_BIGINT,
 	)
 

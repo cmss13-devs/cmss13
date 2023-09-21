@@ -79,7 +79,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 
 		list("PAMPHLETS", 0, null, null, null),
 		list("JTAC Pamphlet", 15, /obj/item/pamphlet/skill/jtac, null, VENDOR_ITEM_REGULAR),
-		list("Powerloader Certification", 45, /obj/item/pamphlet/skill/powerloader, null, VENDOR_ITEM_REGULAR),
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Intel Radio Encryption Key", 3, /obj/item/device/encryptionkey/intel, null, VENDOR_ITEM_REGULAR),

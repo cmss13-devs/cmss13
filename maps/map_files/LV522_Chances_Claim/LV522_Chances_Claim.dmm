@@ -17405,10 +17405,6 @@
 /area/lv522/indoors/a_block/dorm_north)
 "hqr" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/weldingtool/hugetank{
-	pixel_x = 8;
-	pixel_y = 7
-	},
 /obj/item/tool/weldpack{
 	pixel_y = 2
 	},

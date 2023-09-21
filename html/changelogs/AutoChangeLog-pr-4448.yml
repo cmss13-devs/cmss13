@@ -1,5 +1,0 @@
-author: "SubjectD9341"
-delete-after: True
-changes:
-  - imageadd: "added the icons for the new biosuits"
-  - imagedel: "removed the icons for the old biosuits"

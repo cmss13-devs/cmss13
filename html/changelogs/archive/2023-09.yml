@@ -261,3 +261,10 @@
   c4xmaniac2:
   - mapadd: Readds yard to Science Annex
   - maptweak: Redid the yard loot to be more in line with current surv loot standards.
+2023-09-21:
+  SubjectD9341:
+  - imageadd: added the icons for the new biosuits
+  - imagedel: removed the icons for the old biosuits
+  realforest2001:
+  - bugfix: Fixes the overwrite mark prompt on admin tickets not respecting closing
+      the confirmation prompt.

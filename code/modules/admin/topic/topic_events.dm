@@ -18,6 +18,8 @@
 			admin_cancel_evacuation()
 		if("add_req_points")
 			add_req_points()
+		if("check_req_heat")
+			check_req_heat()
 		if("medal")
 			owner.award_medal()
 		if("jelly")

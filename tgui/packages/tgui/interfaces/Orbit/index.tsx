@@ -1,6 +1,6 @@
 import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
-import { capitalizeFirst } from 'common/string';
+import { capitalizeFirst, multiline } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
 import { Box, Button, Collapsible, ColorBox, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
@@ -36,11 +36,18 @@ const ObservableSearch = (props, context) => {
     survivors = [],
     xenos = [],
   } = data;
+
+  const [autoObserve, setAutoObserve] = useLocalState<boolean>(
+    context,
+    'autoObserve',
+    false
+  );
   const [searchQuery, setSearchQuery] = useLocalState<string>(
     context,
     'searchQuery',
     ''
   );
+
   /** Gets a list of Observables, then filters the most relevant to orbit */
   const orbitMostRelevant = (searchQuery: string) => {
     /** Returns the most orbited observable that matches the search. */
@@ -56,6 +63,7 @@ const ObservableSearch = (props, context) => {
     if (mostRelevant !== undefined) {
       act('orbit', {
         ref: mostRelevant.ref,
+        auto_observe: autoObserve,
       });
     }
   };
@@ -77,6 +85,16 @@ const ObservableSearch = (props, context) => {
           />
         </Stack.Item>
         <Stack.Divider />
+        <Stack.Item>
+          <Button
+            color={autoObserve ? 'good' : 'transparent'}
+            icon={autoObserve ? 'toggle-on' : 'toggle-off'}
+            onClick={() => setAutoObserve(!autoObserve)}
+            tooltip={multiline`Toggle Auto-Observe. When active, you'll
+            see the UI / full inventory of whoever you're orbiting. Neat!`}
+            tooltipPosition="bottom-start"
+          />
+        </Stack.Item>
         <Stack.Item>
           <Button
             color="transparent"
@@ -199,6 +217,8 @@ const ObservableItem = (
   const { health, icon, full_name, nickname, orbiters, ref, background_color } =
     item;
 
+  const [autoObserve] = useLocalState<boolean>(context, 'autoObserve', false);
+
   return (
     <Button
       color={'transparent'}
@@ -208,7 +228,7 @@ const ObservableItem = (
         'border-width': '1px',
         'color': color ? 'white' : 'grey',
       }}
-      onClick={() => act('orbit', { ref: ref })}
+      onClick={() => act('orbit', { auto_observe: autoObserve, ref: ref })}
       tooltip={!!health && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">
       {!!health && (

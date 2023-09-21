@@ -139,6 +139,7 @@
 	S["fps"] >> fps
 	S["ghost_vision_pref"] >> ghost_vision_pref
 	S["ghost_orbit"] >> ghost_orbit
+	S["auto_observe"] >> auto_observe
 
 	S["human_name_ban"] >> human_name_ban
 
@@ -219,6 +220,7 @@
 	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
+	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
@@ -322,6 +324,7 @@
 	S["fps"] << fps
 	S["ghost_vision_pref"] << ghost_vision_pref
 	S["ghost_orbit"] << ghost_orbit
+	S["auto_observe"] << auto_observe
 
 	S["human_name_ban"] << human_name_ban
 

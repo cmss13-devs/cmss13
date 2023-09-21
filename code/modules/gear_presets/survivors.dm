@@ -1726,7 +1726,7 @@
 	assignment = JOB_UPP_LEADER
 	rank = JOB_UPP_LEADER
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
-	role_comm_title = "UPP 173RD RECON"
+	role_comm_title = "UPP 173RD RECON SL"
 	skills = /datum/skills/military/survivor/upp_sl
 
 /datum/equipment_preset/survivor/upp/squad_leader/load_gear(mob/living/carbon/human/new_human)

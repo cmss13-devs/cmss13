@@ -401,7 +401,7 @@
 
 /obj/item/storage/backpack/marine/ammo_rack
 	name = "\improper IMP ammo rack"
-	desc = "A bare IMP frame with buckles designed to hold multiple ammo cans and a sheild or two, but can fit any cumbersome box thanks to Marine ingenuity. Helps you lug around extra rounds or supplies."
+	desc = "A bare IMP frame with buckles designed to hold multiple ammo cans, but can fit any cumbersome box thanks to Marine ingenuity. Helps you lug around extra rounds or supplies."
 	has_gamemode_skin = FALSE
 	storage_slots = 3
 	icon_state = "ammo_pack_0"

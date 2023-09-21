@@ -176,12 +176,17 @@
 	SIGNAL_HANDLER
 	if(!client)
 		return
+
+	if(istype(add_to_screen, /atom/movable/screen/action_button))
+		return
+
 	client.add_to_screen(add_to_screen)
 
 /mob/dead/observer/proc/observertarget_screen_remove(observetarget_client, remove_from_screen)
 	SIGNAL_HANDLER
 	if(!client)
 		return
+
 	client.remove_from_screen(remove_from_screen)
 
 ///makes the ghost see the target hud and sets the eye at the target.

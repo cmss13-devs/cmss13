@@ -24,7 +24,10 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	var/required_players = 0
 	var/required_players_secret = 0 //Minimum number of players for that game mode to be chose in Secret
 	var/ert_disabled = 0
+	/// Time that hijack force ends at
 	var/force_end_at = 0
+	/// Time server restarts (without delays)
+	var/round_end_time = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here

@@ -362,13 +362,17 @@ SUBSYSTEM_DEF(ticker)
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
 		to_chat(world, SPAN_BOLDNOTICE("An admin has delayed the round end."))
+		SSticker.mode.round_end_time = -1
 		return
 
 	to_chat(world, SPAN_BOLDNOTICE("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
-	var/start_wait = world.time
-	sleep(delay - (world.time - start_wait))
+	SSticker.mode.round_end_time = delay + world.time
+	addtimer(CALLBACK(src, PROC_REF(standard_reboot), reason, skip_delay), delay)
 
+///Generic round-end reboot
+/datum/controller/subsystem/ticker/proc/standard_reboot(reason, skip_delay)
+	SSticker.mode.round_end_time = -1
 	if(delay_end && !skip_delay)
 		to_chat(world, SPAN_BOLDNOTICE("Reboot was cancelled by an admin."))
 		return

@@ -490,6 +490,16 @@
 	. += ""
 	. += "Game Mode: [GLOB.master_mode]"
 
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		var/static/round_end_countdown = CONFIG_GET(number/round_end_countdown)
+		if(SSticker.mode.round_end_time == 0)
+			. += "Time To Restart: Ongoing Vote [SSticker.delay_end ? "(DELAYED)" : ""]"
+			return
+		if(SSticker.mode.round_end_time < 0)
+			. += "Time To Restart: SOON [SSticker.delay_end ? "(DELAYED)" : "(RESTART NEEDED)"]"
+			return
+		. += "Time To Restart: [(round_end_countdown + (SSticker.mode.round_end_time - world.time)) / 10 ]s [SSticker.delay_end ? "(DELAYED)" : ""]"
+
 	if(SSticker.HasRoundStarted())
 		return
 

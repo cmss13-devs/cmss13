@@ -1,6 +1,6 @@
 /obj/item/storage/toolkit
 	name = "engineer kit"
-	desc = "An combat engineering toolkit intended to carry electrical and mechanical supplies into combat."
+	desc = "An combat engineering toolkit intended to carry electrical and mechanical supplies into combat. With engineering training you can fit this in a backpack."
 	icon_state = "toolkit"
 	item_state = "fulton"
 	throw_speed = SPEED_FAST

@@ -1095,7 +1095,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(SSticker.mode.round_end_time == 0)
 			round_end_timer = "Time To Restart: Ongoing Vote [SSticker.delay_end ? "(DELAYED)" : ""]"
 		if(SSticker.mode.round_end_time < 0)
-			round_end_timer = "Time To Restart: SOON [SSticker.delay_end ? "(DELAYED)" : "(RESTART NEEDED)"]"
+			round_end_timer = "Time To Restart: SOON [SSticker.delay_end ? "(DELAYED)" : "(MANUAL RESTART NEEDED)"]"
 		. += round_end_timer
 
 /proc/message_ghosts(message)

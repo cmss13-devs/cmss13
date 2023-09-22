@@ -491,13 +491,12 @@
 	. += "Game Mode: [GLOB.master_mode]"
 
 	if(SSticker.current_state == GAME_STATE_FINISHED)
+		var/round_end_timer = "Time To Restart: [(SSticker.roundend_restart_delay + (SSticker.mode.round_end_time - world.time)) / 10 ]s [SSticker.delay_end ? "(DELAYED)" : ""]"
 		if(SSticker.mode.round_end_time == 0)
-			. += "Time To Restart: Ongoing Vote [SSticker.delay_end ? "(DELAYED)" : ""]"
-			return
+			round_end_timer = "Time To Restart: Ongoing Vote [SSticker.delay_end ? "(DELAYED)" : ""]"
 		if(SSticker.mode.round_end_time < 0)
-			. += "Time To Restart: SOON [SSticker.delay_end ? "(DELAYED)" : "(MANUAL RESTART NEEDED)"]"
-			return
-		. += "Time To Restart: [(SSticker.roundend_restart_delay + (SSticker.mode.round_end_time - world.time)) / 10 ]s [SSticker.delay_end ? "(DELAYED)" : ""]"
+			round_end_timer = "Time To Restart: SOON [SSticker.delay_end ? "(DELAYED)" : "(MANUAL RESTART NEEDED)"]"
+		. += round_end_timer
 
 	if(SSticker.HasRoundStarted())
 		return

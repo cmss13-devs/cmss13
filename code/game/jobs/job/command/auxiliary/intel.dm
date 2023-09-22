@@ -6,7 +6,7 @@
 	allow_additional = 1
 	scaled = 1
 	supervisors = "the auxiliary support officer"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM Intelligence Officer (IO) (Cryo)"
 	entry_message_body = "<a href='"+URL_WIKI_IO_GUIDE+"'>Your job is to assist the marines in collecting intelligence related</a> to the current operation to better inform command of their opposition. You are in charge of gathering any data disks, folders, and notes you may find on the operational grounds and decrypt them to grant the USCM additional resources."
 

@@ -60,7 +60,6 @@ const SquadPanel = (props, context) => {
   const { act, data } = useBackend(context);
 
   const [category, setCategory] = useLocalState(context, 'selected', 'monitor');
-  let hello = 2;
 
   return (
     <>
@@ -92,9 +91,6 @@ const SquadPanel = (props, context) => {
           icon="bomb"
           onClick={() => setCategory('ob')}>
           Orbital Bombardment
-        </Tabs.Tab>
-        <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
-          Tactical Map
         </Tabs.Tab>
       </Tabs>
       {category === 'monitor' && <SquadMonitor />}

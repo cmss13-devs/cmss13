@@ -9,7 +9,9 @@ GLOBAL_LIST_EMPTY(CMBFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
 
-GLOBAL_LIST_EMPTY(canvas_drawings) //List of canvas drawings
+//flat tacmap and svg for viewing minimap drawings
+GLOBAL_LIST_EMPTY(uscm_flat_tacmap)
+GLOBAL_LIST_EMPTY(xeno_flat_tacmap)
 
 GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't collected and fell back down
 GLOBAL_LIST_EMPTY(larva_burst_by_hive)

@@ -27,9 +27,6 @@
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
 
-	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_USCM
-
 
 	///List of saved coordinates, format of ["x", "y", "comment"]
 	var/list/saved_coordinates = list()
@@ -39,11 +36,9 @@
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
-	tacmap = new(src, minimap_type)
 
 
 /obj/structure/machinery/computer/overwatch/Destroy()
-	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
@@ -88,20 +83,12 @@
 
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
-	data["mapRef"] = tacmap.map_holder.map_ref
 	return data
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
 
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		if(!level[1])
-			return
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		user.client.register_map_obj(tacmap.map_holder.map)
 		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
 
@@ -446,8 +433,6 @@
 				else
 					z_hidden = HIDE_NONE
 					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("No location is ignored anymore.")]")
-		if("tacmap_unpin")
-			tacmap.tgui_interact(user)
 		if("dropbomb")
 			if(!params["x"] || !params["y"])
 				return

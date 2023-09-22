@@ -148,16 +148,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(unansweredAhelps[receiver_client.computer_id]) unansweredAhelps.Remove(receiver_client.computer_id)
 		cmd_admin_pm(receiver_client, null)
 		return
-
-	else if(href_list["MapView"])
-
-		var/datum/canvas_map/image = locate(href_list["MapView"])
-
-		if(!istype(image))
-			return
-
-		show_browser(usr, "<img src=[image.data] height=1000 width=1000>","Tactical Map", "Tactical Map", "size=1000x1000")
-
 	else if(href_list["FaxView"])
 
 		var/datum/fax/info = locate(href_list["FaxView"])

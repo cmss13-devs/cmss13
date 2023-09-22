@@ -322,7 +322,7 @@ SUBSYSTEM_DEF(minimaps)
 			minimaps_by_z["[z_level]"].images_assoc["[flag]"] -= source
 
 /**
- * Fetches a /atom/movable/screen/minimap instance or creates on if none exists
+ * Fetches a /atom/movable/screen/minimap instance or creates one if none exists
  * Note this does not destroy them when the map is unused, might be a potential thing to do?
  * Arguments:
  * * zlevel: zlevel to fetch map for
@@ -337,6 +337,28 @@ SUBSYSTEM_DEF(minimaps)
 		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
 	return map
+
+/datum/tacmap/proc/get_current_map(mob/user)
+	var/datum/svg_overlay/selected_svg
+	var/list/map_list
+
+	if(ishuman(user))
+		map_list = GLOB.uscm_flat_tacmap
+	else
+		if(!isxeno(user))
+			return
+		map_list = GLOB.xeno_flat_tacmap
+
+	if(map_list.len == 0)
+		return
+
+	selected_svg = map_list[map_list.len]
+
+	if(!selected_svg)
+		return
+
+	svg = selected_svg.svg_data
+	drawn_map_png_asset = selected_svg.flat_tacmap
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
@@ -442,7 +464,7 @@ SUBSYSTEM_DEF(minimaps)
 	marker_flags = MINIMAP_FLAG_USCM
 
 /datum/action/minimap/observer
-	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF|MINIMAP_FLAG_UPP
+	minimap_flags = MINIMAP_FLAG_ALL
 	marker_flags = NONE
 	hidden = TRUE
 
@@ -452,25 +474,42 @@ SUBSYSTEM_DEF(minimaps)
 	var/targeted_ztrait = ZTRAIT_GROUND
 	var/atom/owner
 
-	// used in cic tactical maps for drawing on the canvas, defaults to blue.
+	// color selection for the tactical map canvas, defaults to black.
 	var/toolbar_color_selection = "black"
-
-	// hacky ass solution for tgui color display, move functionality to js, fix later.
 	var/toolbar_updated_selection = "black"
 
 	var/canvas_cooldown_time = 4 MINUTES
-
-	// prevent multiple users from updating the canvas image until the cooldown expires.
 	COOLDOWN_DECLARE(canvas_cooldown)
 
-	var/updated_canvas = FALSE
+	// empty map icon without layered blips.
+	var/base_map_png_asset
 
+	// stored state for the current menu
+	var/current_menu
+	// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
+	var/updated_canvas = FALSE
+	var/theme = DEFAULT_MINIMAP_THEME
 	var/datum/tacmap_holder/map_holder
-	var/img_ref
+
+	// shouldn't be shared, fix later
+	var/drawn_map_png_asset
+
+	// datum containing the flattend map and svg
+	var/datum/svg_overlay/svg
 
 /datum/tacmap/New(atom/source, minimap_type)
 	allowed_flags = minimap_type
 	owner = source
+
+	switch(minimap_type)
+		if(MINIMAP_FLAG_USCM)
+			theme = USCM_MINIMAP_THEME
+			return
+		if(MINIMAP_FLAG_XENO)
+			theme = XENO_MINIMAP_THEME
+			return
+	theme = DEFAULT_MINIMAP_THEME
+
 
 /datum/tacmap/Destroy()
 	map_holder = null
@@ -483,12 +522,32 @@ SUBSYSTEM_DEF(minimaps)
 		if(!level[1])
 			return
 		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
+		var/icon/map_icon = map_holder.map
+
+		//not the best way to do this, fix later
+		if(!base_map_png_asset)
+			var/list/faction_clients = list()
+			for(var/client/client in GLOB.clients)
+				var/mob/client_mob = client.mob
+				if(client_mob.faction == user.faction)
+					faction_clients += client
+			base_map_png_asset = icon2html(map_icon, faction_clients, sourceonly = TRUE)
+	// TODO: check if user has the cached asset.
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 
-		var/icon/map_icon = getFlatIcon(map_holder.map)
-		img_ref = icon2html(map_icon, user, sourceonly = TRUE)
+		get_current_map(user)
+		var/mob/living/carbon/xenomorph/xeno_user
+		if(isxeno(user))
+			xeno_user = user
+
+		if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
+			current_menu = "home"
+		else if(isxeno(user) && xeno_user.hivenumber != XENO_HIVE_NORMAL)
+			current_menu = "view"
+		else
+			current_menu = "old_canvas"
 
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
@@ -497,11 +556,21 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
-	data["imageSrc"] = img_ref
+
+	// empty map dmi image used as the background for the canvas
+	data["imageSrc"] = base_map_png_asset
+
+	//flat image of most recently announced tacmap
+	data["flatImage"] = drawn_map_png_asset
+
+	data["svgData"] = svg
+
+	data["currentMenu"] = current_menu
+	data["themeId"] = theme
+	data["mapRef"] = map_holder.map_ref
 	data["toolbarColorSelection"] = toolbar_color_selection
 	data["toolbarUpdatedSelection"] = toolbar_updated_selection
 	data["worldtime"] = world.time
-
 	data["canvasCooldown"] = canvas_cooldown
 	data["nextCanvasTime"] = canvas_cooldown_time
 	data["updatedCanvas"] = updated_canvas
@@ -521,16 +590,22 @@ SUBSYSTEM_DEF(minimaps)
 	var/user = ui.user
 
 	switch (action)
+		if ("menuSelect")
+			if(params["selection"] == "old_canvas")
+				get_current_map(user)
+				to_chat(user, SPAN_WARNING("old_canvas"))
+			current_menu = params["selection"]
+			. = TRUE
+
 		if ("clearCanvas")
 			toolbar_updated_selection = "clear"
 			. = TRUE
-
 		if ("updateCanvas")
 			if(alert(user, "Are you sure you want to update the canvas changes?", "Confirm?", "Yes", "No") == "No")
 				return
-
 			toolbar_updated_selection = "export"
 			COOLDOWN_START(src, canvas_cooldown, canvas_cooldown_time)
+
 			updated_canvas = TRUE
 			. = TRUE
 
@@ -545,32 +620,48 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("selectAnnouncement")
-			toolbar_updated_selection = "export"
-			
-			to_chat(usr, SPAN_WARNING(params["image"]))
-			var/datum/canvas_map/canvas_image = new(params["image"])
 
-			GLOB.canvas_drawings += canvas_image
+			var/icon/flat_map = getFlatIcon(map_holder.map)
+			var/datum/svg_overlay/overlay = new(params["image"], flat_map)
 
-			var/input = stripped_multiline_input(user, "Optional message to announce to the [MAIN_SHIP_NAME]'s crew with the tactical map", "Tactical Map Announcement", "")
+			toolbar_updated_selection = "clear"
+
+			var/outgoing_message = stripped_multiline_input(user, "Optional message to announce with the tactical map", "Tactical Map Announcement", "")
 			var/signed
-			if(ishuman(user))
+
+			var/user_faction
+			if(isxeno(user))
+				user_faction = FACTION_XENOMORPH
+			else
+				user_faction = FACTION_MARINE
+
+			var/list/faction_clients = list()
+			for(var/client/client in GLOB.clients)
+				var/mob/client_mob = client.mob
+				if(client_mob.faction == user_faction)
+					faction_clients += client
+			overlay.flat_tacmap = icon2html(overlay.flat_tacmap, faction_clients, sourceonly = TRUE)
+
+			// better to do it this way than icon2html on every new interface imo.
+			base_map_png_asset = icon2html(map_holder.map, faction_clients, sourceonly = TRUE)
+
+			if(user_faction == FACTION_XENOMORPH)
+				var/mob/living/carbon/xenomorph/xeno = user
+				xeno_announcement(outgoing_message, xeno.hivenumber)
+				GLOB.xeno_flat_tacmap += overlay
+			else
+				GLOB.uscm_flat_tacmap += overlay
 				var/mob/living/carbon/human/H = user
 				var/obj/item/card/id/id = H.wear_id
 				if(istype(id))
 					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
 					signed = "[paygrade] [id.registered_name]"
-
-			var/href_map = "<a href='?MapView=\ref[canvas_image]'>View Tactical Map</a><br><br>"
-			var/outgoing_message = href_map + input
+				marine_announcement(outgoing_message, "Tactical Map Announcement", signature = signed)
 
 			message_admins("[key_name(user)] has made a tactical map announcement.")
 			log_announcement("[key_name(user)] has announced the following: [outgoing_message]")
-
-			//hardcoded testing, PROGRESS!
-			marine_announcement(outgoing_message, "Tactical Map Announcement", signature = signed)
 			updated_canvas = FALSE
-			qdel(canvas_image)
+			qdel(overlay)
 			. = TRUE
 
 /datum/tacmap/ui_status(mob/user)
@@ -609,9 +700,11 @@ SUBSYSTEM_DEF(minimaps)
 	map = null
 	return ..()
 
-/datum/canvas_map
-	var/data
+/datum/svg_overlay
+	var/svg_data
+	var/flat_tacmap
 
-/datum/canvas_map/New(data)
+/datum/svg_overlay/New(svg_data, flat_tacmap)
 	. = ..()
-	src.data = data
+	src.svg_data = svg_data
+	src.flat_tacmap = flat_tacmap

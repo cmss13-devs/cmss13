@@ -16,6 +16,11 @@
 
 GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
+//Theme defines for tacmap
+#define DEFAULT_MINIMAP_THEME 0
+#define USCM_MINIMAP_THEME 1
+#define XENO_MINIMAP_THEME 2
+
 //Turf colors
 #define MINIMAP_SOLID "#ebe5e5ee"
 #define MINIMAP_DOOR "#451e5eb8"

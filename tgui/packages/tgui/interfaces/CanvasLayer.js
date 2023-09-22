@@ -77,7 +77,6 @@ export class CanvasLayer extends Component {
       return;
     }
 
-    // defaults to black sometimes, it's a bug I think maybe.
     this.ctx.strokeStyle = this.state.selection;
 
     const rect = this.canvasRef.current.getBoundingClientRect();
@@ -198,43 +197,20 @@ export class CanvasLayer extends Component {
   }
 
   convertToSVG() {
-    const svgNS = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(svgNS, 'svg');
-    svg.setAttributeNS(null, 'width', this.canvasRef.current.width);
-    svg.setAttributeNS(null, 'height', this.canvasRef.current.height);
-
     const lines = this.lineStack.flat();
-    lines.forEach(([lastX, lastY, x, y, colorSelection]) => {
-      const line = document.createElementNS(svgNS, 'line');
-      line.setAttributeNS(null, 'x1', lastX);
-      line.setAttributeNS(null, 'y1', lastY);
-      line.setAttributeNS(null, 'x2', x);
-      line.setAttributeNS(null, 'y2', y);
-      line.setAttributeNS(null, 'stroke', colorSelection);
-      line.setAttributeNS(null, 'stroke-width', '4');
-      line.setAttributeNS(null, 'stroke-linecap', 'round');
-      svg.appendChild(line);
-    });
-
-    const serializer = new XMLSerializer();
-    const serializedSvg = serializer.serializeToString(svg);
-    const base64Svg = btoa(serializedSvg);
-    const dataUrl = `data:image/svg+xml;base64,${base64Svg}`;
-
-    return dataUrl;
+    const combinedArray = lines.flatMap(
+      ([lastX, lastY, x, y, colorSelection]) => [
+        lastX,
+        lastY,
+        x,
+        y,
+        colorSelection,
+      ]
+    );
+    return combinedArray;
   }
 
   render() {
-    return (
-      <canvas
-        ref={this.canvasRef}
-        style={{
-          height: '100%', // causes discrepency between mouse and drawing line, fix later.
-          width: '100%',
-        }}
-        width={650}
-        height={590}
-      />
-    );
+    return <canvas ref={this.canvasRef} width={650} height={590} />;
   }
 }

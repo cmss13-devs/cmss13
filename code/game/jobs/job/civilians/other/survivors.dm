@@ -25,7 +25,7 @@
 		//Document syntax cannot have tabs for proper formatting.
 		var/entrydisplay = " \
 			[SPAN_ROLE_BODY("|______________________|")] \n\
-			[SPAN_ROLE_BODY("[generate_entry_message(survivor)]<br>[M ? "Your account number is: <b>[account.account_number]</b>. Your account pin is: <b>[account.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(survivor)]<br>[account ? "Your account number is: <b>[account.account_number]</b>. Your account pin is: <b>[account.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
 		"
 		to_chat_spaced(survivor, html = entrydisplay)

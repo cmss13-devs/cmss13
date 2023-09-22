@@ -52,7 +52,7 @@
 	remove_highlight(beer_can)
 	message_to_player("Very good. This is the end of the example tutorial. You will be sent back to the lobby screen momentarily.")
 	// 7.5 seconds after the above message is sent, kick the player out and end the tutorial.
-	tutorial_end_in(7.5 SECONDS)
+	tutorial_end_in(7.5 SECONDS, TRUE)
 
 
 // END OF SCRIPTING

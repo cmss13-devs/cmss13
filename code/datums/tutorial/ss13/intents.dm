@@ -95,9 +95,9 @@
 	tutorial_dummy.status_flags = GODMODE
 
 	message_to_player("Excellent. Those are the basics of the intent system. The tutorial will end shortly.")
-	update_objective("Tutorial ending.")
+	update_objective("")
 
-	tutorial_end_in(5 SECONDS)
+	tutorial_end_in(5 SECONDS, TRUE)
 
 // END OF SCRIPTING
 // START OF SCRIPT HELPERS

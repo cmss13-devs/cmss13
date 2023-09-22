@@ -67,12 +67,9 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_SPEAK)
-	message_to_player("Excellent. To finish the tutorial, enter the nearby cryopod by <b>dragging your sprite</b> to the outlined <b>cryopod</b>.")
-	update_objective("Enter the cryopod by dragging your sprite to it.")
-
-	var/obj/structure/machinery/cryopod/tutorial/end_pod = new(loc_from_corner(0, 0)) // ZONENOTE: come back to this when save files are done so I can make this end properly
-	add_to_tracking_atoms(end_pod)
-	add_highlight(end_pod)
+	message_to_player("Excellent. The next tutorial will cover <b>intents</b>. The tutorial will end shortly.")
+	update_objective("")
+	tutorial_end_in(5 SECONDS, TRUE)
 
 // END OF SCRIPTING
 // START OF SCRIPT HELPERS

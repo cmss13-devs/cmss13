@@ -1,5 +1,5 @@
 /datum/tutorial_menu
-	/// Dict of "category" : [name = "name", path = "path"]
+	/// List of ["name" = name, "tutorials" = ["name" = name, "path" = "path", "id" = tutorial_id]]
 	var/static/list/categories = list()
 
 
@@ -16,6 +16,7 @@
 			categories_2[initial(tutorial.category)] += list(list(
 				"name" = initial(tutorial.name),
 				"path" = "[tutorial]",
+				"id" = initial(tutorial.tutorial_id),
 			))
 
 		for(var/category in categories_2)
@@ -33,19 +34,20 @@
 
 
 /datum/tutorial_menu/ui_state(mob/user)
+	if(istype(get_area(user, /area/misc/tutorial)))
+		return GLOB.never_state
+
 	return GLOB.new_player_state
-
-
-/datum/tutorial_menu/ui_data(mob/user)
-	var/list/data = list()
-
-	return data
 
 
 /datum/tutorial_menu/ui_static_data(mob/user)
 	var/list/data = list()
 
 	data["tutorial_categories"] = categories
+	if(user.client?.prefs)
+		data["completed_tutorials"] = user.client.prefs.completed_tutorials
+	else
+		data["completed_tutorials"] = list()
 
 	return data
 
@@ -72,3 +74,4 @@
 
 			path = new path
 			path.start_tutorial(usr)
+			return TRUE

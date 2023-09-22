@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	return TRUE
 
 /// The proc used to end and clean up the tutorial
-/datum/tutorial/proc/end_tutorial()
+/datum/tutorial/proc/end_tutorial(completed = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(tutorial_mob)
@@ -79,6 +79,8 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 		var/datum/component/status = tutorial_mob.GetComponent(/datum/component/tutorial_status)
 		qdel(status)
 		REMOVE_TRAIT(tutorial_mob, TRAIT_IN_TUTORIAL, TRAIT_SOURCE_TUTORIAL)
+		if(tutorial_mob.client?.prefs && completed)
+			tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
 		var/mob/new_player/new_player = new
 		if(!tutorial_mob.mind)
 			tutorial_mob.mind_initialize()
@@ -115,9 +117,9 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	give_action(tutorial_mob, /datum/action/tutorial_end, null, null, src)
 
 /// Ends the tutorial after a certain amount of time.
-/datum/tutorial/proc/tutorial_end_in(time = 5 SECONDS)
+/datum/tutorial/proc/tutorial_end_in(time = 5 SECONDS, completed = TRUE)
 	tutorial_ending = TRUE
-	addtimer(CALLBACK(src, PROC_REF(end_tutorial)), time)
+	addtimer(CALLBACK(src, PROC_REF(end_tutorial), completed), time)
 
 /// Initialize any objects that need to be in the tutorial area from the beginning.
 /datum/tutorial/proc/init_map()

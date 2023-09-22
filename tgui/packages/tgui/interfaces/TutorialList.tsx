@@ -5,6 +5,7 @@ import { Window } from '../layouts';
 type Tutorial = {
   name: string;
   path: string;
+  id: string;
 };
 
 type TutorialCategory = {
@@ -14,11 +15,12 @@ type TutorialCategory = {
 
 type BackendContext = {
   tutorial_categories: TutorialCategory[];
+  completed_tutorials: string[];
 };
 
 const TutList = (props, context) => {
   const { data, act } = useBackend<BackendContext>(context);
-  const { tutorial_categories } = data;
+  const { tutorial_categories, completed_tutorials } = data;
   return (
     <Stack fill vertical>
       <Stack.Item>
@@ -36,6 +38,7 @@ const TutList = (props, context) => {
                     <div style={{ 'padding': '2px' }} />
                     <Button
                       content={tutorial.name}
+                      color={completed_tutorials.indexOf(tutorial.id) === -1 ? "green" : "default"}
                       onClick={() =>
                         act('select_tutorial', {
                           tutorial_path: tutorial.path,

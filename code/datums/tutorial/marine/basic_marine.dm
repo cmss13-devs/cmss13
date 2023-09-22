@@ -156,7 +156,8 @@
 	remove_highlight(xeno_dummy)
 	addtimer(CALLBACK(src, PROC_REF(disappear_xeno)), 2.5 SECONDS)
 	message_to_player("Very good. This is the end of the tutorial, proceed to the next one to learn the basics of <b>Medical</b>. You will be sent back to the lobby screen momentarily.")
-	tutorial_end_in(7.5 SECONDS)
+	update_objective("")
+	tutorial_end_in(7.5 SECONDS, TRUE)
 
 
 // END OF SCRIPTING

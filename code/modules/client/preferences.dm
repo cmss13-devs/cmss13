@@ -238,6 +238,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
 
+	/// A list of tutorials that the client has completed, saved across rounds
+	var/list/completed_tutorials = list()
+
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
@@ -2289,6 +2292,19 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "</body>"
 	show_browser(user, dat, "Character Traits", "character_traits")
 	update_preview_icon(TRUE)
+
+/// Converts a client's list of completed tutorials into a string for saving
+/datum/preferences/proc/tutorial_list_to_savestring()
+	var/return_string = ""
+	var/last_id = completed_tutorials[length(completed_tutorials)]
+	for(var/tutorial_id in completed_tutorials)
+		return_string += tutorial_id + (tutorial_id != last_id ? ";" : "")
+	return return_string
+
+/// Converts a saved string of completed tutorials into a list for in-game use
+/datum/preferences/proc/tutorial_savestring_to_list(savestring)
+	completed_tutorials = splittext(savestring, ";")
+	return completed_tutorials
 
 #undef MENU_MARINE
 #undef MENU_XENOMORPH

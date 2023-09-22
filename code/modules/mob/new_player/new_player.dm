@@ -495,7 +495,7 @@
 			. += "Time To Restart: Ongoing Vote [SSticker.delay_end ? "(DELAYED)" : ""]"
 			return
 		if(SSticker.mode.round_end_time < 0)
-			. += "Time To Restart: SOON [SSticker.delay_end ? "(DELAYED)" : "(RESTART NEEDED)"]"
+			. += "Time To Restart: SOON [SSticker.delay_end ? "(DELAYED)" : "(MANUAL RESTART NEEDED)"]"
 			return
 		. += "Time To Restart: [(SSticker.roundend_restart_delay + (SSticker.mode.round_end_time - world.time)) / 10 ]s [SSticker.delay_end ? "(DELAYED)" : ""]"
 

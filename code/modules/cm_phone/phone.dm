@@ -24,6 +24,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/range = 7
 
 	var/enabled = TRUE
+	/// Whether or not the phone is receiving calls or not. Varies between on/off or forcibly on/off.
 	var/do_not_disturb = PHONE_DND_OFF
 
 	var/base_icon_state

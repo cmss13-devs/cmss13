@@ -18,7 +18,7 @@
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/head/bio_hood/synth
-	desc = "A hood that protects the head and face from biological contaminants, synthetic complient. Offers no real protection."
+	desc = "A hood that protects the head and face from biological contaminants, synthetic compliant. Offers no real protection."
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
@@ -46,7 +46,7 @@
 
 /obj/item/clothing/suit/storage/synthbio
 	name = "bio suit"
-	desc = "Synthetic complient bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the interal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	desc = "Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
 	icon_state = "bio"
 	item_state = "bio_suit"
 	allowed = list(

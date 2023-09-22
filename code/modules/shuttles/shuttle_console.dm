@@ -295,7 +295,6 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					shuttle.alerts_allowed--
 					var/datum/ares_link/link = GLOB.ares_link
 					link.log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
-					link.log_ares_security("Security Alert", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)

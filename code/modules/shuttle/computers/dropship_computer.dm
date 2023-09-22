@@ -277,7 +277,6 @@
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	var/datum/ares_link/link = GLOB.ares_link
 	link.log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
-	link.log_ares_security("Security Alert", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/hivenumber = XENO_HIVE_NORMAL

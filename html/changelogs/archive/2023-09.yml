@@ -268,3 +268,40 @@
   realforest2001:
   - bugfix: Fixes the overwrite mark prompt on admin tickets not respecting closing
       the confirmation prompt.
+2023-09-22:
+  Huffie56:
+  - qol: reorganize and update all the squads vendors to add new categories(helmet
+      optics, pamphlets, clothing items).
+  - balance: remove hostler because it was available for free(for medic, squad-tl,.
+  - balance: added possibility to buy M4 Pattern Armor for rifleman.
+  - balance: added possibility to buy USCM Radio Telephone Pack for squad medic, engi
+      and specialist.
+  - balance: added possibility to buy Welding Visor for medic, SL, rifleman, smartgunner
+      and specialist.
+  Morrow:
+  - balance: Removed eggs off hive weeds for egg sac carrier
+  - balance: Backpacks can now only fit first aid kits if you have medical skill and
+      toolkits if you have engineering skill
+  - balance: G8-A can no longer fit first aid kits or toolkits
+  - balance: Toolbelt now has 10 slots and can fit more engineer related items
+  - balance: Combat toolbelt now has 9 slots and can fit small ammo and engineer related
+      items
+  - balance: M276 medical rig belt no longer holds ammo
+  - balance: Plastic bag removed from normal play
+  - balance: First aid kits can now only hold medical items
+  - balance: Toolkits have been renamed to engineer kits and can only hold engineering
+      items (not tools)
+  - balance: Welding tool buffed to 40 welder fuel
+  - balance: Larger welding tools removed from normal play
+  - rscadd: Electrical toolbox now has an APC circuitboard
+  - balance: Medical pouch removed in req and various job vendors
+  - balance: Machete pouch, large pouches, and autoinjector pouch scales reduced in
+      req
+  - balance: medkit pouch has been renamed to medical kit pouch and can hold 7 medical
+      items, only usable if you have medic skill
+  Morrow, DrLance (sprites):
+  - rscadd: Added the Mateba Special as a choice for COs
+  Waseemq1235:
+  - rscadd: Added HEAP F903 magazines. Does NOT spawn with the ERT presets. ADMIN
+      SPAWN ONLY.
+  - imageadd: Added F903 ammo band icons.

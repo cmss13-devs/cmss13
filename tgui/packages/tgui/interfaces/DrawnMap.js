@@ -25,11 +25,11 @@ export class DrawnMap extends Component {
   render() {
     const parsedSvgData = this.parseSvgData(this.svg);
 
-    if (this.imageSrc == null && this.backupImageSrc == null) {
+    if (this.imageSrc === null && this.backupImageSrc === null) {
       return;
     }
 
-    if (this.flatImgSrc == null) {
+    if (this.flatImgSrc === null) {
       this.flatImgSrc = this.backupImageSrc;
     }
 

@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Button, Dropdown, Section, Stack, ProgressBar, Box } from '../components';
 import { Window } from '../layouts';
 import { CanvasLayer } from './CanvasLayer';
@@ -96,7 +96,8 @@ const HomePanel = (props, context) => {
               act('menuSelect', {
                 selection: 'view',
               })
-            }></Button>
+            }
+          />
         </Stack.Item>
         <Stack.Item grow>
           <Button
@@ -107,7 +108,8 @@ const HomePanel = (props, context) => {
               act('menuSelect', {
                 selection: 'old_canvas',
               })
-            }></Button>
+            }
+          />
         </Stack.Item>
         <Stack.Item grow>
           <Button
@@ -118,7 +120,8 @@ const HomePanel = (props, context) => {
               act('menuSelect', {
                 selection: 'draw',
               })
-            }></Button>
+            }
+          />
         </Stack.Item>
       </Stack>
     </Section>
@@ -128,15 +131,13 @@ const HomePanel = (props, context) => {
 const ViewMapPanel = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
   return (
-    <>
-      <ByondUi
-        params={{
-          id: data.mapRef,
-          type: 'map',
-        }}
-        class="TacticalMap"
-      />
-    </>
+    <ByondUi
+      params={{
+        id: data.mapRef,
+        type: 'map',
+      }}
+      class="TacticalMap"
+    />
   );
 };
 
@@ -144,13 +145,11 @@ const OldMapPanel = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
 
   return (
-    <>
-      <DrawnMap
-        svgData={data.svgData}
-        imageSrc={data.imageSrc}
-        flatImage={data.flatImage}
-      />
-    </>
+    <DrawnMap
+      svgData={data.svgData}
+      imageSrc={data.imageSrc}
+      flatImage={data.flatImage}
+    />
   );
 };
 
@@ -187,7 +186,8 @@ const DrawMapPanel = (props, context) => {
             act('menuSelect', {
               selection: 'home',
             })
-          }></Button>
+          }
+        />
         <CanvasLayer
           selection={handleColorSelection()}
           imageSrc={data.imageSrc}

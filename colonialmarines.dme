@@ -2384,6 +2384,8 @@ s// DM Environment file for colonialmarines.dme.
 #include "fray-marines\code\cm_tech\techs\marine\tier1\mod_armor.dm"
 #include "fray-marines\code\cm_tech\techs\marine\tier2\enhanced_antibiologicals.dm"
 #include "fray-marines\code\cm_tech\techs\marine\tier2\tank.dm"
+#include "fray-marines\code\cm_tech\techs\marine\tier2\walker.dm"
+#include "fray-marines\code\cm_tech\techs\marine\tier3\combat_implants.dm"
 #include "fray-marines\code\cm_tech\trees\xeno.dm"
 #include "fray-marines\code\datums\skills.dm"
 #include "fray-marines\code\datums\supply_packs\gear.dm"

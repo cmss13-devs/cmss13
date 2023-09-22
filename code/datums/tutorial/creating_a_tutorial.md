@@ -15,6 +15,8 @@ For example, if you are making a tutorial for new CM players, it should be split
 
 ## Step 2: Coding
 
+For an example of the current code standards for tutorials, see [this](https://github.com/cmss13-devs/cmss13/pull/4442/files#diff-843b2f84360b9b932dfc960027992f2b5117667962bfa8da14f9a35f0179a926) file.
+
 The API for tutorials is designed to be very simple, so I'll go over all the base `/datum/tutorial` procs and some vars here:
 
 ### Variables
@@ -32,8 +34,8 @@ The API for tutorials is designed to be very simple, so I'll go over all the bas
 ### Procs
 - `start_tutorial(mob/starting_mob)`
     - This proc starts the tutorial, setting up the map template and player. This should be overridden with a parent call before any overridden code.
-- `end_tutorial()`
-    - This proc ends the tutorial, sending the player back to the lobby and deleting the tutorial itself. A parent call on any subtypes should be at the end of the overridden segment.
+- `end_tutorial(completed = FALSE)`
+    - This proc ends the tutorial, sending the player back to the lobby and deleting the tutorial itself. A parent call on any subtypes should be at the end of the overridden segment. If `completed` is `TRUE`, then the tutorial will save as a completed one for the user.
 - `add_highlight(atom/target, color = "#d19a02")`
     - This proc adds a highlight filter around an atom, by default <span style="color:#d19a02">this</span> color. Successive calls of highlight on the same atom will override the last.
 - `remove_highlight(atom/target)`
@@ -47,9 +49,13 @@ The API for tutorials is designed to be very simple, so I'll go over all the bas
 - `update_objective(message)`
     - This proc is used to update the player's objective in their status panel. This should be only what is required and how to do it without any dialogue or extra text.
 - `init_mob()`
-    - This proc is used to initialize the mob and set them up correctly. If overridden, call parent at the end of the overridden segment.
+    - This proc is used to initialize the mob and set them up correctly.
 - `init_map()`
     - This proc does nothing by default, but can be overriden to spawn any atoms necessary for the tutorial from the very start.
+- `tutorial_end_in(time = 5 SECONDS, completed = TRUE)`
+    - This proc will end the tutorial in the given time, defaulting to 5 seconds. Once the proc is called, the player will be booted back to the menu screen after the time is up. Will mark the tutorial as completed if `completed` is `TRUE`
+- `loc_from_corner(offset_x = 0, offset_y = 0)`
+    - This proc will return a turf offset from the bottom left corner of the tutorial zone. Keep in mind, the bottom left corner is NOT on a wall, it is on the first floor on the bottom left corner. `offset_x` and `offset_y` are used to offset what turf you want to get, and should never be negative.
 
 ## Step 2.1: Tracking Atoms
 Naturally, you will need to keep track of certain objects or mobs for signal purposes, so the tracking system exists to fill that purpose. When you add a reference to the tracking atom list with `add_to_tracking_atoms()`, it gets put into a dictionary of `{path : reference}`. Because of this limitation, you should not track more than 1 object of the same type. To get a tracked atom, use of the `TUTORIAL_ATOM_FROM_TRACKING(path, varname)` macro is recommended. `path` should be replaced with the precise typepath of the tracked atom, and `varname` should be replaced with the variable name you wish to use. If an object is going to be deleted, remove it with `remove_from_tracking_atoms()` first.

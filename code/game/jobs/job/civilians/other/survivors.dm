@@ -21,7 +21,7 @@
 	return
 
 /datum/job/civilian/survivor/announce_entry_message(mob/living/carbon/human/survivor, datum/money_account/account, whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
-	if(survivor && survivor.loc && survivor.client)
+	if(survivor?.loc && survivor?.client)
 		//Document syntax cannot have tabs for proper formatting.
 		var/entrydisplay = " \
 			[SPAN_ROLE_BODY("|______________________|")] \n\

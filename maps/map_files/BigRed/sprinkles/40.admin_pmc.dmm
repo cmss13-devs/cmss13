@@ -305,7 +305,7 @@
 /area/bigredv2/outside/admin_building)
 "aW" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /turf/open/floor{
 	icon_state = "carpet11-12";
 	dir = 8

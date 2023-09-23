@@ -109,7 +109,10 @@
 
 /datum/supply_packs/ammo_towlauncher
 	name = "TOW Launcher magazines (x3)"
-	contains = list(/obj/item/hardpoint/secondary/towlauncher)
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/towlauncher,
+		/obj/item/ammo_magazine/hardpoint/towlauncher,
+		/obj/item/ammo_magazine/hardpoint/towlauncher)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "TOW launcher ammo crate"

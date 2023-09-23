@@ -1074,9 +1074,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/tool/lighter,
 		/obj/item/explosive/grenade,
 		/obj/item/storage/bible,
+		/obj/item/storage/crowbar,
+		/obj/item/storage/large_holster/katana,
+		/obj/item/storage/large_holster/machete,
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/attachable/bayonet,
 		/obj/item/device/motiondetector,
+		/obj/item/tool/crew_monitor,
 		/obj/item/device/walkman,
 	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc)

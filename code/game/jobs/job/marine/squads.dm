@@ -185,7 +185,7 @@
 	use_stripe_overlay = FALSE
 	equipment_color = "#053818"
 	minimap_color = MINIMAP_SQUAD_INTEL
-	radio_freq = PUB_FREQ
+	radio_freq = INTEL_FREQ
 
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE

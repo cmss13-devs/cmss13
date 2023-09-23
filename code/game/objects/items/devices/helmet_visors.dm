@@ -95,9 +95,9 @@
 	user.update_tint()
 	return TRUE
 
-/obj/item/device/helmet_visor/medical/advanced/can_toggle(mob/living/carbon/human/user)
+/obj/item/device/helmet_visor/tactical_map_visor/can_toggle(mob/living/carbon/human/user)
 	if(skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
-		to_chat(user, SPAN_NOTICE("This [src] is not for you to use."))
+		to_chat(user, SPAN_WARNING("[src] is not for you to use, [src] flickers as it powers off."))
 		return FALSE
 
 	return TRUE

@@ -812,6 +812,14 @@
 		/obj/item/roller = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/bodybag = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/reagent_container/blood = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood/OMinus = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood/OPlus = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood/AMinus = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood/APlus = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood/BMinus = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood/BPlus = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood/ABMinus = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood/ABPlus = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 	)
 	can_hold_skill_only = TRUE
 

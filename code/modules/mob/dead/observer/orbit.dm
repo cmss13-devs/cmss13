@@ -23,7 +23,6 @@
 	switch(action)
 		if("orbit")
 			var/ref = params["ref"]
-			var/auto_observe = ui.user.client?.prefs?.auto_observe
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
 			if (poi == null)
 				poi = locate(ref) in GLOB.all_multi_vehicles

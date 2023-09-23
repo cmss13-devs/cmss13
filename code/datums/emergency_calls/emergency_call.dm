@@ -21,6 +21,14 @@
 	message_admins("[key_name(user)] has requested a Distress Beacon! [ares ? SPAN_ORANGE("(via ARES)") : ""] ([SSticker.mode.ert_dispatched ? SPAN_RED("A random ERT was dispatched previously.") : SPAN_GREEN("No previous random ERT dispatched.")]) [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[user]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 	return TRUE
 
+/datum/game_mode/proc/authorized_request_ert(user) // calls the first ERT winout the need of admin approval.
+	if(!user)
+		return FALSE
+	if(ert_dispatched) //safety check we dont want ert spam
+		return FALSE
+	message_admins("[key_name(user)] has launched a keycard Distress Beacon![ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+	activate_distress()
+
 //The distress call parent. Cannot be called itself due to "name" being a filtered target.
 /datum/emergency_call
 	var/name = "name"

@@ -9,6 +9,7 @@
 	var/screen = 1
 	var/confirmed = 0 //This variable is set by the device that confirms the request.
 	var/confirm_delay = 20 //(2 seconds)
+	var/cooldown_request = 0
 	var/busy = FALSE //Busy when waiting for authentication or an event request has been sent from this device.
 	var/obj/structure/machinery/keycard_auth/event_source
 	var/mob/event_triggered_by
@@ -65,8 +66,8 @@
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
 		dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
-		if(!CONFIG_GET(flag/ert_admin_call_only))
-			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
+		if(!SSticker.mode.ert_dispatched)
+			dat += "<li><A href='?src=\ref[src];triggerevent=distress_beacon'>Distress Beacon</A></li>"
 
 		dat += "<li><A href='?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
 		dat += "<li><A href='?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
@@ -144,10 +145,38 @@
 			make_maint_all_access()
 		if("enable_maint_sec")
 			revoke_maint_all_access()
+		if("distress_beacon")
+			if(is_ert_blocked())
+				call_ert()
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
-	if(CONFIG_GET(flag/ert_admin_call_only)) return 1
-	return SSticker.mode && SSticker.mode.ert_disabled
+	if(world.time < DISTRESS_TIME_LOCK)
+		to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
+		return FALSE
+
+	if(!SSticker.mode)
+		return FALSE //Not a game mode?
+
+	if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
+		to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
+		return FALSE
+
+	if(security_level == SEC_LEVEL_DELTA)
+		to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
+		return FALSE
+	if(security_level < SEC_LEVEL_RED)
+		to_chat(usr, SPAN_WARNING("The ship security level is not high enough to call a distress beacon!"))
+		return FALSE
+	return TRUE
+
+/obj/structure/machinery/keycard_auth/proc/call_ert()
+	for(var/client/C in GLOB.admins)
+		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
+			C << 'sound/effects/sos-morse-code.ogg'
+	SSticker.mode.authorized_request_ert(usr)
+	to_chat(usr, SPAN_NOTICE("An emergency distress beacon has been sent to nearby vessels."))
+	cooldown_request = world.time
+	return
 
 GLOBAL_VAR_INIT(maint_all_access, TRUE)
 

@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - bugfix: "Fixed intel squad \"Unauthorized access detected\""

@@ -112,7 +112,7 @@
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/towlauncher,
-		/obj/item/ammo_magazine/hardpoint/towlauncher
+		/obj/item/ammo_magazine/hardpoint/towlauncher,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo

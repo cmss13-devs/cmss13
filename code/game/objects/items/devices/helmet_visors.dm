@@ -72,8 +72,9 @@
 
 /obj/item/device/helmet_visor/tactical_map_visor
 	name = "map visor"
-	action_icon_string = "tac_sight_down"
-	helmet_overlay = "tac_sight_right"
+	icon_state = "meson_sight"
+	action_icon_string = "meson_sight_down"
+	helmet_overlay = "tacmap_visor"
 
 /obj/item/device/helmet_visor/welding_visor/visor_function(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE)
 	if(attached_helmet == user.head && attached_helmet.active_visor == src)

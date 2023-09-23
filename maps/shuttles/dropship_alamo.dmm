@@ -136,6 +136,19 @@
 	icon_state = "52"
 	},
 /area/shuttle/drop1/sulaco)
+"nv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "nC" = (
 /obj/item/device/radio/intercom/alamo{
 	pixel_x = 10
@@ -319,6 +332,21 @@
 "BS" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "48"
+	},
+/area/shuttle/drop1/sulaco)
+"BU" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	layer = 3.1
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
 "Ce" = (
@@ -700,8 +728,8 @@ ws
 TK
 il
 il
-TK
-ws
+BU
+nv
 SM
 de
 de

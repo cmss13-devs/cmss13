@@ -239,6 +239,19 @@
 /obj/structure/shuttle/part/dropship2/nose_front_right,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
+"rZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop2/sulaco)
 "sk" = (
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "22"
@@ -558,6 +571,21 @@
 /obj/structure/shuttle/part/dropship2/lower_right_wall,
 /turf/open/space/basic,
 /area/shuttle/drop2/sulaco)
+"QM" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	layer = 3.1
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop2/sulaco)
 "Rr" = (
 /turf/template_noop,
 /area/template_noop)
@@ -733,8 +761,8 @@ mz
 SY
 PJ
 PJ
-SY
-it
+QM
+rZ
 Eo
 Cl
 SO

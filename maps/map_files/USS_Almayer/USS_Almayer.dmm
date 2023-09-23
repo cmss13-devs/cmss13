@@ -16263,13 +16263,6 @@
 	icon_state = "plating"
 	},
 /area/almayer/engineering/engine_core)
-"brN" = (
-/obj/structure/bed/chair/comfy/bravo,
-/obj/structure/bed/chair/comfy/alpha,
-/turf/open/floor/almayer{
-	icon_state = "redfull"
-	},
-/area/almayer/living/briefing)
 "brO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -49687,25 +49680,6 @@
 /area/almayer/hull/upper_hull/u_f_s)
 "mrB" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "researchlockdownext";
-	name = "Window Shutters";
-	pixel_x = -26;
-	pixel_y = 6;
-	req_access_txt = "28"
-	},
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "researchlockdownext_door";
-	name = "Door Shutters";
-	pixel_x = -26;
-	pixel_y = 1;
-	req_access_txt = "28"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /obj/structure/machinery/door_control{
 	dir = 1;
 	id = "researchlockdownext";
@@ -114644,8 +114618,8 @@ bdd
 bdd
 bDQ
 bgO
-brN
-brN
+boq
+boq
 bgO
 bDP
 bDP
@@ -114847,8 +114821,8 @@ beB
 bdd
 bqZ
 bgO
-brN
-brN
+boq
+boq
 bgO
 bDP
 bDP

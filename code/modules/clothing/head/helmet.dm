@@ -780,11 +780,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/rto/intel
 	name = "\improper XM12 pattern intelligence helmet"
 	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/tactical_map_visor)
 	specialty = "XM12 pattern intel"
 
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
 	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/tactical_map_visor)
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
 	armor_melee = CLOTHING_ARMOR_HIGH
@@ -801,6 +803,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/grenadier
 	name = "\improper M3-G4 grenadier helmet"
 	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet. Comes with inbuilt ear blast protection."
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/tactical_map_visor)
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -818,6 +821,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/scout
 	name = "\improper M3-S light helmet"
 	icon_state = "scout_helmet"
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/tactical_map_visor)
 	desc = "A custom helmet designed for USCM Scouts."
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	specialty = "M3-S light"
@@ -825,6 +829,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/pyro
 	name = "\improper M35 pyrotechnician helmet"
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/tactical_map_visor)
 	icon_state = "pyro_helmet"
 	desc = "A helmet designed for USCM Pyrotechnicians."
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -836,6 +841,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper M3-T bombardier helmet"
 	icon_state = "sadar_helmet"
 	desc = "A custom-built helmet for explosive weaponry users. Comes with inbuilt ear blast protection, firing a rocket launcher without this is not recommended."
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/tactical_map_visor)
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	armor_bomb = CLOTHING_ARMOR_HIGH
 	specialty = "M3-T bombardier"
@@ -865,6 +871,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/ghillie
 	name = "\improper M45 ghillie helmet"
 	desc = "A lightweight M45 helmet with ghillie coif used by USCM snipers on recon missions."
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/tactical_map_visor)
 	icon_state = "ghillie_coif"
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_LOW

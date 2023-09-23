@@ -970,6 +970,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\game\objects\effects\landmarks\structure_spawners\structure_spawner.dm"
 #include "code\game\objects\effects\landmarks\structure_spawners\xvx_hive.dm"
 #include "code\game\objects\effects\spawners\gibspawner.dm"
+#include "code\game\objects\effects\spawners\prop_gun_spawner.dm"
 #include "code\game\objects\effects\spawners\random.dm"
 #include "code\game\objects\effects\spawners\spawner.dm"
 #include "code\game\objects\effects\spawners\vaultspawner.dm"

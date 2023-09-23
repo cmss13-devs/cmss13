@@ -484,15 +484,15 @@ SUBSYSTEM_DEF(minimaps)
 	// empty map icon without layered blips.
 	var/base_map_png_asset
 
+	// flattend map asset
+	var/drawn_map_png_asset
+
 	// stored state for the current menu
 	var/current_menu
 	// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
 	var/theme = DEFAULT_MINIMAP_THEME
 	var/datum/tacmap_holder/map_holder
-
-	// shouldn't be shared, fix later
-	var/drawn_map_png_asset
 
 	// datum containing the flattend map and svg
 	var/datum/svg_overlay/svg
@@ -593,7 +593,6 @@ SUBSYSTEM_DEF(minimaps)
 		if ("menuSelect")
 			if(params["selection"] == "old_canvas")
 				get_current_map(user)
-				to_chat(user, SPAN_WARNING("old_canvas"))
 			current_menu = params["selection"]
 			. = TRUE
 

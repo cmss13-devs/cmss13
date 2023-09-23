@@ -143,13 +143,12 @@ const ViewMapPanel = (props, context) => {
 
 const OldMapPanel = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
-
   return (
-    <DrawnMap
-      svgData={data.svgData}
-      imageSrc={data.imageSrc}
-      flatImage={data.flatImage}
-    />
+    <>
+      {data.flatImage && (
+        <DrawnMap svgData={data.svgData} flatImage={data.flatImage} />
+      )}
+    </>
   );
 };
 

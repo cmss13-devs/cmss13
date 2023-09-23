@@ -5,7 +5,6 @@ export class DrawnMap extends Component {
     super(props);
     this.containerRef = createRef();
     this.flatImgSrc = this.props.flatImage;
-    this.backupImageSrc = this.props.imageSrc;
     this.svg = this.props.svgData;
   }
 
@@ -24,14 +23,6 @@ export class DrawnMap extends Component {
 
   render() {
     const parsedSvgData = this.parseSvgData(this.svg);
-
-    if (this.imageSrc === null && this.backupImageSrc === null) {
-      return;
-    }
-
-    if (this.flatImgSrc === null) {
-      this.flatImgSrc = this.backupImageSrc;
-    }
 
     return (
       <div

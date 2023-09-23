@@ -363,6 +363,7 @@
 	/// This number divides the total xenos counted for slots to give the max number of lesser drones
 	var/playable_lesser_drones_max_divisor = 3
 
+	var/datum/tacmap/xeno/queen_tacmap
 	var/datum/tacmap/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
@@ -372,6 +373,7 @@
 	mark_ui = new(src)
 	faction_ui = new(src)
 	tacmap = new(src, minimap_type)
+	queen_tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
 	if(hivenumber != XENO_HIVE_NORMAL)

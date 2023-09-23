@@ -753,7 +753,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return FALSE
 
 	var/mob/dead/observer/observer = mob
-	observer.ManualFollow(target)
+	observer.do_observe(target)
 
 /client/proc/check_timelock(list/roles, hours)
 	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"

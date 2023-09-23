@@ -252,8 +252,10 @@
 	if(!client || !target || !istype(target))
 		return
 
-	if(!ishuman(target))
-		ManualFollow(target)
+	ManualFollow(target)
+	reset_perspective()
+
+	if(!ishuman(target) || !client.prefs?.auto_observe)
 		return
 
 	client.eye = target
@@ -355,11 +357,7 @@
 		var/mob/target = locate(href_list["track"]) in GLOB.mob_list
 		if(!target)
 			return
-		ManualFollow(target)
-		reset_perspective(null)
-
-		if(client.prefs.auto_observe)
-			do_observe(target)
+		do_observe(target)
 
 	if(href_list[XENO_OVERWATCH_TARGET_HREF])
 		var/mob/target = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in GLOB.living_xeno_list
@@ -703,11 +701,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Follow Local Mob"
 	set desc = "Follow on-screen mob"
 
-	ManualFollow(target)
-	reset_perspective(null)
-
-	if(client.prefs.auto_observe)
-		do_observe(target)
+	do_observe(target)
 
 /mob/dead/observer/verb/follow()
 	set category = "Ghost.Follow"

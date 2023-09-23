@@ -243,6 +243,6 @@
 			if(gotten_turf)
 				ghost_user.forceMove(gotten_turf)
 		if(NOTIFY_ORBIT)
-			ghost_user.ManualFollow(target)
+			ghost_user.do_observe(target)
 		if(NOTIFY_JOIN_XENO)
 			ghost_user.join_as_alien()

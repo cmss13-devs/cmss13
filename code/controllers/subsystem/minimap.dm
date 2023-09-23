@@ -612,7 +612,7 @@ SUBSYSTEM_DEF(minimaps)
 			var/icon/flat_map = getFlatIcon(map_holder.map)
 			var/datum/svg_overlay/overlay = new(params["image"], flat_map)
 
-			toolbar_updated_selection = "clear"
+			toolbar_updated_selection = "export"
 
 			var/outgoing_message = stripped_multiline_input(user, "Optional message to announce with the tactical map", "Tactical Map Announcement", "")
 			var/signed

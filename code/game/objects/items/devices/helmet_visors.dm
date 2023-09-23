@@ -73,6 +73,7 @@
 /obj/item/device/helmet_visor/tactical_map_visor
 	name = "map visor"
 	icon_state = "meson_sight"
+	hud_type = null
 	action_icon_string = "meson_sight_down"
 	helmet_overlay = "tacmap_visor"
 
@@ -104,16 +105,13 @@
 	return TRUE
 
 /obj/item/device/helmet_visor/tactical_map_visor/visor_function(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE)
-	var/datum/mob_hud/current_mob_hud = huds[hud_type]
 	if(attached_helmet == user.head && attached_helmet.active_visor == src)
 		GLOB.tacmap_datum.tgui_interact(user)
-		current_mob_hud.add_hud_to(user, attached_helmet)
 		if(!silent)
 			to_chat(user, SPAN_NOTICE("You activate [src] on [attached_helmet]."))
 		return TRUE
 
 	GLOB.tacmap_datum.ui_close(user)
-	current_mob_hud.remove_hud_from(user, attached_helmet)
 	if(!silent)
 		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
 	return TRUE

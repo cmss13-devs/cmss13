@@ -235,11 +235,7 @@
 	icon_state = "rasputin5"
 	},
 /area/shuttle/drop2/sulaco)
-"rw" = (
-/obj/structure/shuttle/part/dropship2/nose_front_right,
-/turf/template_noop,
-/area/shuttle/drop2/sulaco)
-"rZ" = (
+"rr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -251,6 +247,10 @@
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
+/area/shuttle/drop2/sulaco)
+"rw" = (
+/obj/structure/shuttle/part/dropship2/nose_front_right,
+/turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "sk" = (
 /turf/closed/shuttle/dropship2/transparent{
@@ -571,21 +571,6 @@
 /obj/structure/shuttle/part/dropship2/lower_right_wall,
 /turf/open/space/basic,
 /area/shuttle/drop2/sulaco)
-"QM" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8;
-	dir = 4;
-	layer = 3.1
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8;
-	dir = 4;
-	pixel_y = 13
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop2/sulaco)
 "Rr" = (
 /turf/template_noop,
 /area/template_noop)
@@ -647,6 +632,21 @@
 "TZ" = (
 /turf/closed/shuttle/dropship2{
 	icon_state = "81"
+	},
+/area/shuttle/drop2/sulaco)
+"Uc" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	layer = 3.1
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop2/sulaco)
 "Uu" = (
@@ -761,8 +761,8 @@ mz
 SY
 PJ
 PJ
-QM
-rZ
+Uc
+rr
 Eo
 Cl
 SO

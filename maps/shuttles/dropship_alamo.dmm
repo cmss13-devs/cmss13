@@ -136,19 +136,6 @@
 	icon_state = "52"
 	},
 /area/shuttle/drop1/sulaco)
-"nv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "nC" = (
 /obj/item/device/radio/intercom/alamo{
 	pixel_x = 10
@@ -334,21 +321,6 @@
 	icon_state = "48"
 	},
 /area/shuttle/drop1/sulaco)
-"BU" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8;
-	dir = 4;
-	layer = 3.1
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8;
-	dir = 4;
-	pixel_y = 13
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "Ce" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin4"
@@ -398,6 +370,19 @@
 "EN" = (
 /obj/structure/shuttle/part/dropship1/transparent/engine_left_exhaust,
 /turf/open/space/basic,
+/area/shuttle/drop1/sulaco)
+"Fy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/drop1/sulaco)
 "FA" = (
 /obj/structure/shuttle/part/dropship1/transparent/engine_left_cap,
@@ -545,6 +530,21 @@
 "RI" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "31"
+	},
+/area/shuttle/drop1/sulaco)
+"SB" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	layer = 3.1
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
 "SM" = (
@@ -728,8 +728,8 @@ ws
 TK
 il
 il
-BU
-nv
+SB
+Fy
 SM
 de
 de

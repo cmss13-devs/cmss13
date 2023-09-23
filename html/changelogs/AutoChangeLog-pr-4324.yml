@@ -1,8 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - qol: "reorganize and update all the squads vendors to add new categories(helmet optics, pamphlets, clothing items)."
-  - balance: "remove hostler because it was available for free(for medic, squad-tl,."
-  - balance: "added possibility to buy M4 Pattern Armor for rifleman."
-  - balance: "added possibility to buy USCM Radio Telephone Pack for squad medic, engi and specialist."
-  - balance: "added possibility to buy Welding Visor for medic, SL, rifleman, smartgunner and specialist."

@@ -1,5 +1,0 @@
-author: "Waseemq1235"
-delete-after: True
-changes:
-  - rscadd: "Added HEAP F903 magazines. Does NOT spawn with the ERT presets. ADMIN SPAWN ONLY."
-  - imageadd: "Added F903 ammo band icons."

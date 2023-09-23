@@ -1,4 +1,0 @@
-author: "Wyderar"
-delete-after: True
-changes:
-  - bugfix: "Заказываемый TOW Launcher magazines (x3) теперь содержит в себе не саму TOW, а 3 магазина к ней."

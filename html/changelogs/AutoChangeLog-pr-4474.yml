@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Intel Officers will now default to using the Intel radio channel when communicating."

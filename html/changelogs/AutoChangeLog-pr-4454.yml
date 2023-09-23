@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - balance: "Specialists now have separate pools of points for ammo and utility."

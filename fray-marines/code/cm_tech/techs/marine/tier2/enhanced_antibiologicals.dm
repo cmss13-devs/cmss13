@@ -6,7 +6,7 @@
 	flags = TREE_FLAG_MARINE
 
 	required_points = 20
-	tier = /datum/tier/two/two_additional
+	tier = /datum/tier/two/additional
 
 	droppod_input_message = "Choose an ammo kit to retrieve from the droppod."
 

@@ -10,7 +10,7 @@
 	increase_per_purchase = 1
 
 	flags = TREE_FLAG_MARINE
-	tier = /datum/tier/two/two_additional
+	tier = /datum/tier/two/additional
 
 	var/points_to_give = 5
 

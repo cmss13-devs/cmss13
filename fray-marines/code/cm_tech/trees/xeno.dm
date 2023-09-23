@@ -5,16 +5,10 @@
 	name = TREE_XENO
 	flags = TREE_FLAG_XENO
 
+	background_icon_locked = "xeno"
+
 	var/hivenumber = XENO_HIVE_NORMAL
 
-	background_icon_locked = "xeno_background"
-/*
-/datum/techtree/xenomorph/generate_tree()
-	. = ..()
-	for(var/i in GLOB.tech_controls_marine)
-		var/obj/structure/machinery/computer/tech_control/TC = i
-		TC.attached_tree = src
-*/
 /datum/techtree/xenomorph/has_access(mob/M, access_required)
 	if(!isxeno(M))
 		return FALSE

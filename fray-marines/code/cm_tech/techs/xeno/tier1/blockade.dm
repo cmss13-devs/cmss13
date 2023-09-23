@@ -1,6 +1,7 @@
 /datum/tech/xeno/powerup/blockade
 	name = "Blockade"
 	desc = "The queen gets the ability to place blockades."
+	icon_state = "weed_reinforcement"
 
 	flags = TREE_FLAG_XENO
 

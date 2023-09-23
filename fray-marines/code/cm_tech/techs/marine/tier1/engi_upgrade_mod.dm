@@ -8,7 +8,7 @@
 	flags = TREE_FLAG_MARINE
 
 	required_points = 15
-	tier = /datum/tier/one/one_additional
+	tier = /datum/tier/one/additional
 
 	droppod_input_message = "Choose a deployable to retrieve from the droppod."
 

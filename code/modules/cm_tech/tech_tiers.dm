@@ -30,7 +30,7 @@
 	color = "#00FF00"
 	disabled_color = "#007d00"
 
-/datum/tier/one/one_additional
+/datum/tier/one/additional
 
 /datum/tier/one_transition_two
 	name = "Tier 1 to Tier 2 transition"
@@ -45,7 +45,7 @@
 	color = "#FFAA00"
 	disabled_color = "#7d5300"
 
-/datum/tier/two/two_additional
+/datum/tier/two/additional
 
 /datum/tier/two_transition_three
 	name = "Tier 2 to Tier 3 transition"
@@ -60,7 +60,7 @@
 	color = "#FF0000"
 	disabled_color = "#7d0000"
 
-/datum/tier/three/three_additional
+/datum/tier/three/additional
 
 /datum/tier/three_transition_four
 	name = "Tier 3 to Tier 4 transition"

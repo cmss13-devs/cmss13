@@ -6,12 +6,10 @@
 	name = "Xeno Powerup Tech"
 
 	tech_flags = TECH_FLAG_MULTIUSE
+
 	var/purchase_cooldown = 10 SECONDS
 	var/next_purchase = 0
 	var/increase_per_purchase = 0
-
-	unlocked = TRUE
-
 	var/xenos_required = TRUE
 
 /datum/tech/xeno/powerup/ui_static_data(mob/user)
@@ -45,6 +43,7 @@
 		apply_powerup(i)
 
 	next_purchase = world.time + purchase_cooldown
+	required_points += increase_per_purchase
 	return FALSE
 
 /datum/tech/xeno/powerup/proc/get_applicable_xenos(mob/user)

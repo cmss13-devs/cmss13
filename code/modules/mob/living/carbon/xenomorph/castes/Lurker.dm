@@ -120,7 +120,7 @@
 	if (LPA && istype(LPA))
 		LPA.knockdown = TRUE // pounce knocks down
 		LPA.freeze_self = TRUE
-	ADD_TRAIT(bound_xeno, TRAIT_CLOAKED, "lurker_cloak")
+	ADD_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
 	bound_xeno.stealth = TRUE
 	can_go_invisible = FALSE
 	invis_start_time = world.time
@@ -131,7 +131,7 @@
 		LPA.knockdown = FALSE // pounce no longer knocks down
 		LPA.freeze_self = FALSE
 	bound_xeno.stealth = FALSE
-	REMOVE_TRAIT(bound_xeno, TRAIT_CLOAKED, "lurker_cloak")
+	REMOVE_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
 
 	// SLIGHTLY hacky because we need to maintain lots of other state on the lurker
 	// whenever invisibility is on/off CD and when it's active.

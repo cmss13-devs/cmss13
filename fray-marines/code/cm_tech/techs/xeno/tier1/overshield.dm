@@ -5,9 +5,8 @@
 	desc = "Give the hive overshields for protection!"
 	icon_state = "overshield"
 
-	flags = TREE_FLAG_XENO
+	required_points = 4
 
-	required_points = 5
 	var/shield_amount = 200
 
 /datum/tech/xeno/powerup/overshield/ui_static_data(mob/user)

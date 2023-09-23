@@ -2,15 +2,14 @@
 	name = "Revival Jelly"
 	desc = {"The queen dispenses a special type of royal jelly, which can be given to a fallen sister to rejuvenate and revive them. \
 	The amount of jelly required depends on the caste tier. \
-	Can only be used whilst the Queen is on her ovipositor. \
 	"}
 	icon_state = "jelly"
 
-	flags = TREE_FLAG_XENO
-
 	required_points = 15
-	var/amount_to_give = 6
+	increase_per_purchase = 1
 	tier = /datum/tier/three
+
+	var/amount_to_give = 6
 
 /datum/tech/xeno/powerup/revive/ui_static_data(mob/user)
 	. = ..()
@@ -19,6 +18,13 @@
 			"content" = "Amount Given: [amount_to_give]",
 			"color" = "green",
 			"icon" = "shopping-bag"
+		)
+	)
+	.["stats"] += list(
+		list(
+			"content" = "Can only be used whilst the Queen is on her ovipositor.",
+			"color" = "purple",
+			"icon" = "biohazard"
 		)
 	)
 

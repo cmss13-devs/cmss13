@@ -1,5 +1,6 @@
 /datum/tech/xeno
 	name = "Xeno Tech"
+	flags = TREE_FLAG_XENO
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/datum/hive_status/hive

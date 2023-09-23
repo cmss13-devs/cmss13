@@ -3,12 +3,11 @@
 	desc = "The Queen's releases a psychic field that temporarily disables telecommunications for a duration of time."
 	icon_state = "beacon"
 
-	flags = TREE_FLAG_XENO
-
 	required_points = 10
+	increase_per_purchase = 1
 	tier = /datum/tier/two
 
-	var/duration = 3 MINUTES
+	var/duration = 5 MINUTES
 	var/active = FALSE
 	xenos_required = FALSE
 

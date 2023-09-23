@@ -3,8 +3,6 @@
 	desc = "Distribute the ability to build to all xenomorphs"
 	icon_state = "build_distro"
 
-	flags = TREE_FLAG_XENO
-
 	required_points = 15
 	tier = /datum/tier/two
 

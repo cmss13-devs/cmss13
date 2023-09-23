@@ -3,6 +3,8 @@
 	desc = "Increases the damage of acidic blood, punishing close-ranged combatants."
 	icon_state = "acid_blood"
 
+	flags = TREE_FLAG_XENO
+
 	required_points = 15
 	tier = /datum/tier/three
 

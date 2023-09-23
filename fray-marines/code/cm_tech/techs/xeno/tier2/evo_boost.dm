@@ -3,9 +3,11 @@
 	desc = "The hive is put on an evolution frenzy! Increases evolution rate temporarily."
 	icon_state = "frenzy"
 
+	flags = TREE_FLAG_XENO
+
 	required_points = 10
 	increase_per_purchase = 1
-	tier = /datum/tier/two
+	tier = /datum/tier/two/additional
 
 	var/evo_rate = 5
 	var/duration = 5 MINUTES

@@ -5,9 +5,11 @@
 	"}
 	icon_state = "jelly"
 
+	flags = TREE_FLAG_XENO
+
 	required_points = 15
 	increase_per_purchase = 1
-	tier = /datum/tier/three
+	tier = /datum/tier/three/additional
 
 	var/amount_to_give = 6
 

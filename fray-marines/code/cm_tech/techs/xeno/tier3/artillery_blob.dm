@@ -3,9 +3,11 @@
 	desc = "The queen can fire a glob of gas to siege fortified enemies or stall attackers!"
 	icon_state = "boiler_glob"
 
+	flags = TREE_FLAG_XENO
+
 	required_points = 2
 	increase_per_purchase = 0.5
-	tier = /datum/tier/three
+	tier = /datum/tier/three/additional
 
 	var/charges_to_give = 1
 

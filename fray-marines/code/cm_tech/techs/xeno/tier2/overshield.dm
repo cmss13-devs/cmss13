@@ -5,7 +5,10 @@
 	desc = "Give the hive overshields for protection!"
 	icon_state = "overshield"
 
+	flags = TREE_FLAG_XENO
+
 	required_points = 4
+	tier = /datum/tier/two/additional
 
 	var/shield_amount = 200
 

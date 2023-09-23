@@ -3,6 +3,8 @@
 	desc = "The queen gets the ability to place blockades."
 	icon_state = "weed_reinforcement"
 
+	flags = TREE_FLAG_XENO
+
 	required_points = 2
 	increase_per_purchase = 0.5
 

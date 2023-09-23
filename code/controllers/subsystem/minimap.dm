@@ -510,7 +510,6 @@ SUBSYSTEM_DEF(minimaps)
 			return
 	theme = DEFAULT_MINIMAP_THEME
 
-
 /datum/tacmap/Destroy()
 	map_holder = null
 	owner = null
@@ -522,17 +521,6 @@ SUBSYSTEM_DEF(minimaps)
 		if(!level[1])
 			return
 		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
-		var/icon/map_icon = map_holder.map
-
-		//not the best way to do this, fix later
-		if(!base_map_png_asset)
-			var/list/faction_clients = list()
-			for(var/client/client in GLOB.clients)
-				var/mob/client_mob = client.mob
-				if(client_mob.faction == user.faction)
-					faction_clients += client
-			base_map_png_asset = icon2html(map_icon, faction_clients, sourceonly = TRUE)
-	// TODO: check if user has the cached asset.
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -543,6 +531,7 @@ SUBSYSTEM_DEF(minimaps)
 			xeno_user = user
 
 		if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
+			base_map_png_asset = icon2html(map_holder.map, user, sourceonly = TRUE)
 			current_menu = "home"
 		else if(isxeno(user) && xeno_user.hivenumber != XENO_HIVE_NORMAL)
 			current_menu = "view"
@@ -640,9 +629,6 @@ SUBSYSTEM_DEF(minimaps)
 				if(client_mob.faction == user_faction)
 					faction_clients += client
 			overlay.flat_tacmap = icon2html(overlay.flat_tacmap, faction_clients, sourceonly = TRUE)
-
-			// better to do it this way than icon2html on every new interface imo.
-			base_map_png_asset = icon2html(map_holder.map, faction_clients, sourceonly = TRUE)
 
 			if(user_faction == FACTION_XENOMORPH)
 				var/mob/living/carbon/xenomorph/xeno = user

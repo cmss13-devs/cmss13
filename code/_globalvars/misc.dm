@@ -21,6 +21,9 @@ GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)
 
 GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_box_mapping())
 
+//global tacmap for action button access
+GLOBAL_DATUM(tacmap_datum, /datum/tacmap)
+
 /// Offset for the Operation time
 GLOBAL_VAR_INIT(time_offset, setup_offset())
 

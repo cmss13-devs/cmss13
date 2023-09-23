@@ -62,8 +62,6 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/belt/marine(src)
 	new /obj/item/clothing/under/marine/officer/command(src)
 	new /obj/item/clothing/under/marine/officer/command(src)
-	new /obj/item/clothing/suit/storage/webbing(src)
-	new /obj/item/clothing/suit/storage/webbing(src)
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/clothing/gloves/combat(src)
 

@@ -161,7 +161,7 @@
 		return
 
 	if(istype(loc, /obj/item/storage) && required_skill_for_nest_opening)
-		if(!user || !user.skills || user.skills.get_skill_level(required_skill_for_nest_opening) < required_skill_level_for_nest_opening)
+		if(!user || user.skills?.get_skill_level(required_skill_for_nest_opening) < required_skill_level_for_nest_opening)
 			to_chat(user, SPAN_NOTICE("You can't seem to open [src] while it is in [loc]."))
 			return
 
@@ -413,7 +413,7 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/proc/can_hold_type(type_to_hold, mob/user)
 	if(length(can_hold_skill))
 		for(var/can_hold_skill_typepath in can_hold_skill)
-			if(ispath(type_to_hold, can_hold_skill_typepath) && user?.skills.get_skill_level(can_hold_skill[can_hold_skill_typepath][SKILL_TYPE_INDEX]) >= can_hold_skill[can_hold_skill_typepath][SKILL_LEVEL_INDEX])
+			if(ispath(type_to_hold, can_hold_skill_typepath) && user.skills?.get_skill_level(can_hold_skill[can_hold_skill_typepath][SKILL_TYPE_INDEX]) >= can_hold_skill[can_hold_skill_typepath][SKILL_LEVEL_INDEX])
 				return TRUE
 		if(can_hold_skill_only)
 			return FALSE

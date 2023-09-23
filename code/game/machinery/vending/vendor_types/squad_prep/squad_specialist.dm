@@ -36,6 +36,17 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("Large Incinerator Tank (B) (Green Flame)", 40, /obj/item/ammo_magazine/flamer_tank/large/B, null, VENDOR_ITEM_REGULAR),
 		list("Large Incinerator Tank (X) (Blue Flame)", 40, /obj/item/ammo_magazine/flamer_tank/large/X, null, VENDOR_ITEM_REGULAR),
 
+		list("EXTRA EQUIPMENT", 0, null, null, null),
+		list("M2 Night Vision Goggles", 40, /obj/item/prop/helmetgarb/helmet_nvg, null, VENDOR_ITEM_REGULAR),
+		list("Advanced Firstaid Kit", 40, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
+		list("M4RA Sniper Kit", 40, /obj/item/storage/box/kit/mini_sniper, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("M41A Standard Kit", 40, /obj/item/storage/box/kit/m41a_kit	, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("M2C Heavy Machine Gun", 40, /obj/item/storage/box/guncase/m2c, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("M56D Heavy Machine Gun", 40, /obj/item/storage/box/guncase/m56d, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("MOU-53 Shotgun", 40, /obj/item/storage/box/guncase/mou53, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("XM88 Heavy Rifle", 40, /obj/item/storage/box/guncase/xm88, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("Basic Engineering Supplies", 40, /obj/item/storage/box/kit/engineering_supply_kit, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+
 	))
 
 /obj/structure/machinery/cm_vending/gear/spec

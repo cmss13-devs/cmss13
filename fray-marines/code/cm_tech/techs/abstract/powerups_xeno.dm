@@ -8,10 +8,21 @@
 	tech_flags = TECH_FLAG_MULTIUSE
 	var/purchase_cooldown = 10 SECONDS
 	var/next_purchase = 0
+	var/increase_per_purchase = 0
 
 	unlocked = TRUE
 
 	var/xenos_required = TRUE
+
+/datum/tech/xeno/powerup/ui_static_data(mob/user)
+	. = ..()
+	if(increase_per_purchase)
+		.["stats"] += list(list(
+			"content" = "Incremental Price: +[increase_per_purchase] per purchase",
+			"color" = "orange",
+			"icon" = "dollar-sign",
+			"tooltip" = "Increases the cost of this tech whenever it is purchased by [increase_per_purchase]."
+		))
 
 /datum/tech/xeno/powerup/can_unlock(mob/M)
 	. = ..()

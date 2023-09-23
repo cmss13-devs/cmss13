@@ -1592,7 +1592,6 @@
 	role_comm_title = "173/RECON"
 	idtype = /obj/item/card/id/dogtag
 	flags = EQUIPMENT_PRESET_EXTRA
-	uses_special_name = TRUE
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 	)

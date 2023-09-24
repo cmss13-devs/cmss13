@@ -12,8 +12,8 @@ interface TacMapProps {
   imageSrc: string;
   themeId: number;
   svgData: any;
-  canViewHome: boolean;
-  canDraw: boolean;
+  canViewHome: number;
+  canDraw: number;
   flatImage: string;
   mapRef: any;
   currentMenu: string;
@@ -77,7 +77,7 @@ export const TacticalMap = (props, context) => {
       theme={themes[data.themeId]['theme']}
       title={'Tactical Map'}>
       <Window.Content>
-        {data.canViewHome == true && (
+        {data.canViewHome === 1 && (
           <Button
             color={themes[data.themeId]['button-color']}
             content={'home'}
@@ -125,7 +125,7 @@ const HomePanel = (props, context) => {
             }
           />
         </Stack.Item>
-        {data.canDraw == true && (
+        {data.canDraw === 1 && (
           <Stack.Item grow>
             <Button
               color={themes[data.themeId]['button-color']}

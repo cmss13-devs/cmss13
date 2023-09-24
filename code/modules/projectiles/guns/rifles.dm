@@ -1263,6 +1263,9 @@
 
 
 
+/obj/item/weapon/gun/rifle/lmg/tactical
+	starting_attachment_types = list(/obj/item/attachable/angledgrip, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness)
+
 //-------------------------------------------------------
 
 

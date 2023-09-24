@@ -51,6 +51,7 @@
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	toggleable = TRUE
 	fullscreen_vision = null
+	flags_item = NO_CRYO_STORE
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/clothing/glasses/night/m42_night_goggles
@@ -65,6 +66,9 @@
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+
+/obj/item/clothing/glasses/night/m42_night_goggles/no_lock //for spawning directly on someone, mob_lock_on_equip breaks spawning on mobs
+	flags_item = NO_CRYO_STORE
 
 /obj/item/clothing/glasses/night/m42_night_goggles/spotter
 	name = "\improper M42 spotter sight"
@@ -85,6 +89,12 @@
 	deactive_state = "upp_goggles_0"
 	req_skill = null
 	req_skill_level = null
+	flags_item = NO_CRYO_STORE
+
+/obj/item/clothing/glasses/night/m42_night_goggles/upp/medic
+	name = "\improper Type 10 commando medic goggles"
+	desc = "A headset and night vision goggles system used by UPP forces. Allows highlighted imaging of surroundings. This one has an integrated medhud. Click it to toggle."
+	hud_type = MOB_HUD_MEDICAL_ADVANCED
 
 /obj/item/clothing/glasses/night/m56_goggles
 	name = "\improper M56 head mounted sight"

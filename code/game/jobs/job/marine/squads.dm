@@ -190,6 +190,8 @@
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE
 
+	locked = TRUE
+
 	max_engineers = 0
 	max_medics = 0
 	max_specialists = 0

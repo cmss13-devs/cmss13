@@ -412,12 +412,14 @@ const SquadMonitor = (props, context) => {
               Show hidden
             </Button>
           )}
-          <Button
-            color="yellow"
-            icon="arrow-right"
-            onClick={() => act('transfer_marine')}>
-            Transfer Marine
-          </Button>
+          {!data.squad_locked && (
+            <Button
+              color="yellow"
+              icon="arrow-right"
+              onClick={() => act('transfer_marine')}>
+              Transfer Marine
+            </Button>
+          )}
           <Button
             color="red"
             icon="running"

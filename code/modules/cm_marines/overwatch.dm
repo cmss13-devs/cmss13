@@ -122,6 +122,8 @@
 	data["primary_objective"] = current_squad.primary_objective
 	data["secondary_objective"] = current_squad.secondary_objective
 
+	data["squad_locked"] = current_squad.locked
+
 	data["marines"] = list()
 
 	var/leader_count = 0
@@ -684,6 +686,8 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No squad selected!")]")
 		return
 	var/datum/squad/S = current_squad
+	if(current_squad.locked)
+		return
 	var/mob/living/carbon/human/transfer_marine = tgui_input_list(usr, "Choose marine to transfer", "Transfer Marine", current_squad.marines_list)
 	if(!transfer_marine || S != current_squad) //don't change overwatched squad, idiot.
 		return

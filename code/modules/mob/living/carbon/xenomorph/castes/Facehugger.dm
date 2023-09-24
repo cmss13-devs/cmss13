@@ -72,6 +72,7 @@
 
 	if(!lying && !(mutation_type == FACEHUGGER_WATCHER) && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
 		adjustBruteLoss(1)
+		return ..()
 
 	if(!client && !aghosted && away_timer > XENO_FACEHUGGER_LEAVE_TIMER)
 		// Become a npc once again

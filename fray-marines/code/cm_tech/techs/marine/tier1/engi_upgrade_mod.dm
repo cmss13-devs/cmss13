@@ -32,6 +32,6 @@
 		.["UA 42-F Sentry Flamer"] = /obj/item/defenses/handheld/sentry/flamer
 		.["UA 571-C Sentry Gun"] = /obj/item/defenses/handheld/sentry
 	else if(H.job == JOB_SQUAD_MARINE)
-		.["Portable Composite Barricade"] = /obj/structure/barricade/deployable
+		.["Portable Composite Barricade"] = /obj/item/stack/folding_barricade
 	else
 		.["Random Tool"] = pick(common_tools)

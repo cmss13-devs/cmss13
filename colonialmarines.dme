@@ -2386,6 +2386,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "fray-marines\code\cm_tech\techs\marine\tier2\tank.dm"
 #include "fray-marines\code\cm_tech\techs\marine\tier2\walker.dm"
 #include "fray-marines\code\cm_tech\techs\marine\tier3\combat_implants.dm"
+#include "fray-marines\code\cm_tech\techs\marine\tier3\experimentals.dm"
 #include "fray-marines\code\cm_tech\techs\xeno\tier1\blockade.dm"
 #include "fray-marines\code\cm_tech\techs\xeno\tier1\comms_disruption.dm"
 #include "fray-marines\code\cm_tech\techs\xeno\tier2\build_for_all.dm"

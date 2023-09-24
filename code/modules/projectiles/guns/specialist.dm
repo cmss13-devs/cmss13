@@ -766,7 +766,7 @@
 	if(length(cylinder.contents) >= internal_slots)
 		to_chat(user, SPAN_WARNING("[src] cannot hold more grenades!"))
 		return
-	if(!cylinder.can_be_inserted(I)) //Technically includes whether there's room for it, but the above gives a tailored message.
+	if(!cylinder.can_be_inserted(I, user)) //Technically includes whether there's room for it, but the above gives a tailored message.
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] loads [I] into [src]."),

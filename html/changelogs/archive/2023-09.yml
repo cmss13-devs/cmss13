@@ -132,3 +132,194 @@
   kylerace, lemoninthedark, harry:
   - refactor: optimized icon-in-chat code
   - bugfix: weird icons on the smoothed walls when examining or alt+clicking
+2023-09-12:
+  Morrow:
+  - balance: Lowered the xeno endgame start to 55 minutes into the round
+  - balance: Lowered the nuke endgame start to 115 minutes into the round
+  - balance: Lowered the nuke cost to 5 points
+  - rscdel: Removed the shipside announcement for working joes joining
+  - rscadd: Added cryo specialist tech that can be purchased once for eight points
+  - balance: Cryorines now cost 6 points. It increases by 6 each purchase.
+  - balance: Cryorines now give 5 marines. 1 SL (for the first one only), 1 medic,
+      1 engi, rest rifleman.
+  - bugfix: Fixed queens prying open lifeboat double doors
+  - rscadd: Powerloader wreckage now can be attacked by xenos
+  - bugfix: Removed annoying and inaccurate to_chat from join response team menu
+  - bugfix: Firing flares into the air now produces light again
+  - bugfix: Fixed repeatable techs not having correct overlays
+  - qol: Recalibrating limbs can now be done with the patient standing
+  Waseemq1235:
+  - admin: Subtle messages are now much larger.
+  cuberound:
+  - balance: GAU can hit mobs that are on ground now
+  realforest2001:
+  - bugfix: Fixes ARES Security Logs and stops ARES logs recording mob datums instead
+      of names.
+  - rscadd: Moves AntiAir records to Security Logs.
+  - rscadd: Adds Flight Records to ARES Interface, detailing launches and setting
+      changes. Does not include CAS details.
+  - code_imp: Changes ARES log procs from using 'user' to 'user_name' to identify
+      it should be the string rather than mob datum.
+  - maptweak: Adds a couple APOLLO consoles to upper and lower medical. Moves the
+      one outside ARES reception slightly.
+  - bugfix: Fixes WY access to Almayer Research.
+  - rscadd: Finally adds fully functional access request tickets to APOLLO console
+      for entry to AI core.
+  - rscadd: Adds CN20-X Nerve Gas, an alteration of base CN20 that can affect xenos.
+  - rscadd: CN20 and CN20-X are now translucent and do not obstruct vision much.
+  - admin: Adds a VV list dropdown to release gas from vents as the manual proc was
+      too clunky.
+  - rscadd: Adds nerve gas grenades for CN20 and CN20-X
+  - code_imp: Tidied up the TWE presets so they're easier to read.
+  - rscdel: Removed duplicate surgical line from all TWE presets.
+  - rscadd: Added an MRE box to the TWE MRE carrier preset.
+  - spellcheck: Added unique names to the RMC armors.
+  - bugfix: Fixed iconstate names being backwards for TWE pointman and SG.
+  - code_imp: Removed unnecessary repeated values for TWE armors.
+  - code_imp: Tidied the RMC skillsets to be consistent in ordering of skills.
+  - rscadd: Added an SG specific skillset for RMCs.
+  - bugfix: Fixed duplicate entry for medical training on RMC TL skillset.
+  - spellcheck: Renamed default RMC skillset to Royal Marines Commando rather than
+      Royal Marines Commando Rifleman.
+2023-09-13:
+  Morrow:
+  - rscdel: Removed some mapped clown gear
+  TeDGamer:
+  - balance: Hive weeds can be supported by other structures when original parent
+      structure is destroyed.
+  Zonespace27:
+  - balance: M56D now has full auto mode.
+  - qol: M56D now has an ammo counter when firing.
+  - rscdel: M2C can no longer rotate with MMB
+2023-09-14:
+  Morrow:
+  - rscadd: Added a ghost notification for yautja self destructs
+  - bugfix: Fixed lifepods still working after evac canceled
+  Zonespace27:
+  - balance: Coffins now layer above beds
+  realforest2001:
+  - imageadd: Added a CMB stamp icon.
+  - imageadd: Changes the icon_state name of the WY stamp from centcom to weyyu.
+  - rscadd: Changes EFTPOS stamp icon to use RD instead of weyyu.
+  - bugfix: Changes the pre-spawned QMs stamp to use the proper stamp.
+  - spellcheck: Renames Requisiton Officer's stamp to Quartermaster's Stamp.
+  - maptweak: Renamed the spare Req Officer's stamp to spare Quartermaster's stamp.
+  - rscadd: Codebooks are now faction based rather than individually unique.
+2023-09-15:
+  BeagleGaming1, forest2001:
+  - rscadd: Adds a CMB ERT to investigate the Black Market
+  - rscadd: Adds a [cmb] logo for papers
+  - rscadd: Adds a quiet_launch var for distress beacons, to differentiate between
+      ERTs who should announce their response reception, but not the beacon going
+      out in the first place.
+  - rscdel: Removes banhammer from normal acquisition.
+  Ben10083:
+  - rscadd: Working Joe arrivals announced in Apollo link
+  Drathek:
+  - bugfix: Fix some donor items breaking on maps with camos.
+  - bugfix: Fix donor items not having a fingerprint atom flag and donor armors not
+      having conductive atom flag.
+  Morrow:
+  - bugfix: Fixed a few ways around fire group delays
+  Waseemq1235:
+  - admin: TWE faction reports are now possible.
+2023-09-17:
+  BeagleGaming1:
+  - bugfix: Fixed CN20-X canister grenades
+  Drathek:
+  - bugfix: Fix/Rework logic regarding xeno guaranteed slots
+  - bugfix: Fix evolution in thunder dome affecting hive slots
+  Morrow:
+  - rscdel: Disables Shivas Snowball
+  Private Tristan:
+  - spellcheck: acid runners are now properly informed of their corrosive acid's strength.
+2023-09-19:
+  Hopek:
+  - rscadd: 'New facehugger strain:  Watcher. The Watcher loses their ability to hide
+      in exchange to see further and the ability to no longer take damage outside
+      of weeds.'
+  c4xmaniac2:
+  - balance: Moved 1/3 of all intel into the cave systems.
+  - maptweak: 1/3 of all Intel has been redistributed into the caves.
+  - maptweak: Nightmare inserts on the colony side and in the caves of LV now have
+      their intel distribution standardized.
+  realforest2001:
+  - bugfix: Fixes the CMB tradeband scanner not being able to do it's job.
+2023-09-20:
+  BeagleGaming1:
+  - rscadd: Uncommented the "Observe" verb for ghosts, allowing ghosts to see from
+      a humans HUD
+  Huffie56:
+  - balance: made it so that req as double what a standard vendor as in ammo and guns.
+  Morrow:
+  - balance: Removed some PMC gear on maps
+  SpartanBobby, GSDPathe:
+  - maptweak: Changes to LV522 loot table surrounding metal spawns
+  - maptweak: Redectorates areas around LV522 that were underwhelming before
+  TheGamerdk, ihatethisengine:
+  - rscadd: IOs start in their own squad now
+  c4xmaniac2:
+  - mapadd: Readds yard to Science Annex
+  - maptweak: Redid the yard loot to be more in line with current surv loot standards.
+2023-09-21:
+  SubjectD9341:
+  - imageadd: added the icons for the new biosuits
+  - imagedel: removed the icons for the old biosuits
+  realforest2001:
+  - bugfix: Fixes the overwrite mark prompt on admin tickets not respecting closing
+      the confirmation prompt.
+2023-09-22:
+  Huffie56:
+  - qol: reorganize and update all the squads vendors to add new categories(helmet
+      optics, pamphlets, clothing items).
+  - balance: remove hostler because it was available for free(for medic, squad-tl,.
+  - balance: added possibility to buy M4 Pattern Armor for rifleman.
+  - balance: added possibility to buy USCM Radio Telephone Pack for squad medic, engi
+      and specialist.
+  - balance: added possibility to buy Welding Visor for medic, SL, rifleman, smartgunner
+      and specialist.
+  Morrow:
+  - balance: Removed eggs off hive weeds for egg sac carrier
+  - balance: Backpacks can now only fit first aid kits if you have medical skill and
+      toolkits if you have engineering skill
+  - balance: G8-A can no longer fit first aid kits or toolkits
+  - balance: Toolbelt now has 10 slots and can fit more engineer related items
+  - balance: Combat toolbelt now has 9 slots and can fit small ammo and engineer related
+      items
+  - balance: M276 medical rig belt no longer holds ammo
+  - balance: Plastic bag removed from normal play
+  - balance: First aid kits can now only hold medical items
+  - balance: Toolkits have been renamed to engineer kits and can only hold engineering
+      items (not tools)
+  - balance: Welding tool buffed to 40 welder fuel
+  - balance: Larger welding tools removed from normal play
+  - rscadd: Electrical toolbox now has an APC circuitboard
+  - balance: Medical pouch removed in req and various job vendors
+  - balance: Machete pouch, large pouches, and autoinjector pouch scales reduced in
+      req
+  - balance: medkit pouch has been renamed to medical kit pouch and can hold 7 medical
+      items, only usable if you have medic skill
+  Morrow, DrLance (sprites):
+  - rscadd: Added the Mateba Special as a choice for COs
+  Waseemq1235:
+  - rscadd: Added HEAP F903 magazines. Does NOT spawn with the ERT presets. ADMIN
+      SPAWN ONLY.
+  - imageadd: Added F903 ammo band icons.
+2023-09-23:
+  Morrow:
+  - bugfix: Fixed intel squad "Unauthorized access detected"
+  realforest2001:
+  - rscadd: Gives survivors bank accounts.
+2023-09-24:
+  BeagleGaming1:
+  - admin: Disabling round end delay has a confirmation
+  - rscadd: Added a mapping effect for prop guns
+  Morrow:
+  - bugfix: Fixed drag-n-drop nesting opening
+  Steelpoint:
+  - rscadd: Intel Officers will now default to using the Intel radio channel when
+      communicating.
+  Sylphily:
+  - rscadd: Added the ability for the IMP Ammo Rack to hold folding barricades.
+  Zonespace27:
+  - balance: Specialists now have separate pools of points for ammo and utility.

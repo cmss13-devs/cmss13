@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Cryorines now cost 6 points. It increases by 6 each purchase."
-  - balance: "Cryorines now give 5 marines. 1 SL (for the first one only), 1 medic, 1 engi, rest rifleman."

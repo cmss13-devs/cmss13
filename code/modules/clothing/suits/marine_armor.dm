@@ -60,7 +60,8 @@
 	siemens_coefficient = 0.7
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	allowed = list(
-		/obj/item/weapon/gun/,
+		/obj/item/weapon/gun,
+		/obj/item/prop/prop_gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/storage/fancy/cigarettes,

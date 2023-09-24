@@ -210,7 +210,7 @@
 		return TRUE
 
 	if (mods["ctrl"])
-		if (Adjacent(user) && user.next_move < world.time)
+		if (Adjacent(user))
 			user.start_pulling(src)
 		return TRUE
 	return FALSE

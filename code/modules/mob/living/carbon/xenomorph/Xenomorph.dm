@@ -759,8 +759,6 @@
 		return FALSE
 	var/atom/A = AM.handle_barriers(src)
 	if(A != AM)
-		A.attack_alien(src)
-		xeno_attack_delay(src)
 		return FALSE
 	return ..()
 

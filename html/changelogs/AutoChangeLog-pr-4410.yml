@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - balance: "Cloaked mobs no longer give off visible messages"

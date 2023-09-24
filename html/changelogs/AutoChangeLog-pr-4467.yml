@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Synthetics may now vend biohazard suits for personal use. Synth compliant."

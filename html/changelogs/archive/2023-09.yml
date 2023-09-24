@@ -310,3 +310,16 @@
   - bugfix: Fixed intel squad "Unauthorized access detected"
   realforest2001:
   - rscadd: Gives survivors bank accounts.
+2023-09-24:
+  BeagleGaming1:
+  - admin: Disabling round end delay has a confirmation
+  - rscadd: Added a mapping effect for prop guns
+  Morrow:
+  - bugfix: Fixed drag-n-drop nesting opening
+  Steelpoint:
+  - rscadd: Intel Officers will now default to using the Intel radio channel when
+      communicating.
+  Sylphily:
+  - rscadd: Added the ability for the IMP Ammo Rack to hold folding barricades.
+  Zonespace27:
+  - balance: Specialists now have separate pools of points for ammo and utility.

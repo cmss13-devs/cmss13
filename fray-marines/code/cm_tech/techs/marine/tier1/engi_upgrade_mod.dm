@@ -11,7 +11,7 @@
 	tier = /datum/tier/one/additional
 
 	droppod_input_message = "Choose a deployable to retrieve from the droppod."
-
+/*
 /datum/tech/droppod/item/engi_czsp/pre_item_stats(mob/user)
 	. = ..()
 	. += list(list(
@@ -20,10 +20,12 @@
 		"icon" = "exclamation-triangle",
 		"tooltip" = "Only usable by [JOB_SQUAD_ENGI]."
 	))
-
+*/
 /datum/tech/droppod/item/engi_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()
-	if(!H || H.job == JOB_SQUAD_ENGI)
+	if(!H || !D)
+		return
+	if(H.job == JOB_SQUAD_ENGI)
 		.["R-1NG Bell Tower"] = /obj/item/defenses/handheld/bell_tower
 		.["21S Tesla Coil"] = /obj/item/defenses/handheld/tesla_coil
 		.["JIMA Planted Flag"] = /obj/item/defenses/handheld/planted_flag

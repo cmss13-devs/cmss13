@@ -17,16 +17,16 @@
 	. = ..()
 	.["stats"] += list(
 		list(
-			"content" = "Amount Given: [amount_to_give]",
-			"color" = "green",
-			"icon" = "shopping-bag"
+			"content" = "Can only be used whilst the Queen is on her ovipositor.",
+			"color" = "xeno",
+			"icon" = "biohazard"
 		)
 	)
 	.["stats"] += list(
 		list(
-			"content" = "Can only be used whilst the Queen is on her ovipositor.",
-			"color" = "purple",
-			"icon" = "biohazard"
+			"content" = "Amount Given: [amount_to_give]",
+			"color" = "green",
+			"icon" = "shopping-bag"
 		)
 	)
 

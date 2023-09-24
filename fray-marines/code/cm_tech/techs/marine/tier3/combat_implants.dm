@@ -2,13 +2,12 @@
 	name = "Combat Implants"
 	desc = "Marines get access to combat implants to improve their ability to function."
 	icon_state = "implants"
-
 	droppod_name = "Implants"
 
 	flags = TREE_FLAG_MARINE
 
 	required_points = 20
-	tier = /datum/tier/three
+	tier = /datum/tier/three/additional
 
 	droppod_input_message = "Choose a combat implant to retrieve from the droppod."
 	options_to_give = 2

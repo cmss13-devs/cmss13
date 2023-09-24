@@ -22,12 +22,16 @@
 	)
 
 /datum/tech/xeno/powerup/artillery_blob/apply_powerup(mob/living/carbon/xenomorph/target)
-	var/datum/action/xeno_action/B = get_xeno_action_by_type(target, /datum/action/xeno_action/activable/bombard/queen)
+	var/datum/action/xeno_action/B = get_xeno_action_by_type(target, /datum/action/xeno_action/activable/xeno_spit/bombard/queen)
 
 	if(!B)
-		B = give_action(target, /datum/action/xeno_action/activable/bombard/queen)
+		B = give_action(target, /datum/action/xeno_action/activable/xeno_spit/bombard/queen)
 
 	B.charges += charges_to_give
 
 /datum/tech/xeno/powerup/artillery_blob/get_applicable_xenos(mob/user)
 	return hive.living_xeno_queen
+/datum/action/xeno_action/activable/xeno_spit/bombard/queen
+	// Range and other config
+	xeno_cooldown = 4 SECONDS
+	charges = 0

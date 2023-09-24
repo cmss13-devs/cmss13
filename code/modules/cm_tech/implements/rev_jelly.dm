@@ -57,6 +57,9 @@
 
 	X.away_timer = 0
 	X.revive()
+	X.adjustBruteLoss(X.maxHealth)
+	X.plasma_stored -= X.plasma_max
+	X.updatehealth()
 	playsound(get_turf(X), 'sound/effects/xeno_newlarva.ogg', 35)
 
 	var/mob/original_mob = X.mind?.current

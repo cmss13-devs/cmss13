@@ -9,8 +9,9 @@
 	gear_preset = /datum/equipment_preset/uscm_ship/po
 	entry_message_body = "<a href='"+URL_WIKI_PO_GUIDE+"'>Your job is to fly, protect, and maintain the ship's dropship.</a> While you are an officer, your authority is limited to the dropship, where you have authority over the enlisted personnel. If you are not piloting, there is an autopilot fallback for command, but don't leave the dropship without reason."
 
+// Dropship Roles is both PO and DCC combined to not force people to backtrack
 AddTimelock(/datum/job/command/pilot, list(
-	JOB_DROPSHIP_CREW_CHIEF = 2 HOURS
+	JOB_DROPSHIP_ROLES = 2 HOURS
 ))
 
 /obj/effect/landmark/start/pilot

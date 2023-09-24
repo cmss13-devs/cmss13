@@ -73,7 +73,7 @@
 
 	var/list/whiskey_outpost_waves = list()
 
-	hardcore = TRUE
+	hardcore = FALSE
 
 	votable = TRUE
 	vote_cycle = 25 // approx. once every 5 days, if it wins the vote
@@ -87,7 +87,6 @@
 	return 1
 
 /datum/game_mode/whiskey_outpost/pre_setup()
-	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	for(var/obj/effect/landmark/whiskey_outpost/xenospawn/X)
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)

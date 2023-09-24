@@ -12,6 +12,8 @@ interface TacMapProps {
   imageSrc: string;
   themeId: number;
   svgData: any;
+  canViewHome: boolean;
+  canDraw: boolean;
   flatImage: string;
   mapRef: any;
   currentMenu: string;
@@ -75,6 +77,18 @@ export const TacticalMap = (props, context) => {
       theme={themes[data.themeId]['theme']}
       title={'Tactical Map'}>
       <Window.Content>
+        {data.canViewHome == true && (
+          <Button
+            color={themes[data.themeId]['button-color']}
+            content={'home'}
+            icon={'home'}
+            onClick={() =>
+              act('menuSelect', {
+                selection: 'home',
+              })
+            }
+          />
+        )}
         <PageComponent />
       </Window.Content>
     </Window>
@@ -111,18 +125,20 @@ const HomePanel = (props, context) => {
             }
           />
         </Stack.Item>
-        <Stack.Item grow>
-          <Button
-            color={themes[data.themeId]['button-color']}
-            content={'new canvas'}
-            icon={'paintbrush'}
-            onClick={() =>
-              act('menuSelect', {
-                selection: 'draw',
-              })
-            }
-          />
-        </Stack.Item>
+        {data.canDraw == true && (
+          <Stack.Item grow>
+            <Button
+              color={themes[data.themeId]['button-color']}
+              content={'new canvas'}
+              icon={'paintbrush'}
+              onClick={() =>
+                act('menuSelect', {
+                  selection: 'draw',
+                })
+              }
+            />
+          </Stack.Item>
+        )}
       </Stack>
     </Section>
   );
@@ -175,16 +191,6 @@ const DrawMapPanel = (props, context) => {
   return (
     <>
       <Section>
-        <Button
-          color={themes[data.themeId]['button-color']}
-          content={'home'}
-          icon={'home'}
-          onClick={() =>
-            act('menuSelect', {
-              selection: 'home',
-            })
-          }
-        />
         <CanvasLayer
           selection={handleColorSelection()}
           imageSrc={data.imageSrc}

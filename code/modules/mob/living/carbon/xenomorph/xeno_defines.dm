@@ -364,7 +364,7 @@
 	var/playable_lesser_drones_max_divisor = 3
 
 	var/datum/tacmap/xeno/queen_tacmap
-	var/datum/tacmap/xeno/tacmap
+	var/datum/tacmap/xeno/xeno_view/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
 /datum/hive_status/New()

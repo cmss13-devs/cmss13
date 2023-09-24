@@ -1,0 +1,5 @@
+author: "c4xmaniac2"
+delete-after: True
+changes:
+  - balance: "Comms areas around the east/west rivers expanded for easier sieges and weedable now."
+  - maptweak: "LV Comms now always spawn in Tcomms and one either on the east or west river"

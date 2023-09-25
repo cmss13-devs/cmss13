@@ -163,7 +163,7 @@ export class CanvasLayer extends Component {
           this.ctx.stroke();
         });
       });
-    this.setState({ selection: prevColor });
+      this.setState({ selection: prevColor });
       return;
     }
 

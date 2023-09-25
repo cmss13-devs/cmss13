@@ -625,8 +625,12 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("clearCanvas")
+			if(toolbar_updated_selection == "clear")
+				toolbar_updated_selection = toolbar_color_selection
+				return
 			toolbar_updated_selection = "clear"
 			. = TRUE
+
 		if ("updateCanvas")
 			if(alert(user, "Are you sure you want to update the canvas changes?", "Confirm?", "Yes", "No") == "No")
 				return
@@ -637,6 +641,9 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("undoChange")
+			if(toolbar_updated_selection == "undo")
+				toolbar_updated_selection = toolbar_color_selection
+				return
 			toolbar_updated_selection = "undo"
 			. = TRUE
 

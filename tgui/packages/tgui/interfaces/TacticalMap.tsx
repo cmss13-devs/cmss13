@@ -73,7 +73,7 @@ export const TacticalMap = (props, context) => {
   return (
     <Window
       width={650}
-      height={750}
+      height={800}
       theme={themes[data.themeId]['theme']}
       title={'Tactical Map'}>
       <Window.Content>
@@ -190,13 +190,6 @@ const DrawMapPanel = (props, context) => {
 
   return (
     <>
-      <Section>
-        <CanvasLayer
-          selection={handleColorSelection()}
-          imageSrc={data.imageSrc}
-          onImageExport={handleTacMapExport}
-        />
-      </Section>
       <Section title="Canvas Options" className={'canvas-options'}>
         <Stack>
           <Stack.Item grow>
@@ -277,6 +270,13 @@ const DrawMapPanel = (props, context) => {
             )}
           </Stack.Item>
         </Stack>
+      </Section>
+      <Section>
+        <CanvasLayer
+          selection={handleColorSelection()}
+          imageSrc={data.imageSrc}
+          onImageExport={handleTacMapExport}
+        />
       </Section>
     </>
   );

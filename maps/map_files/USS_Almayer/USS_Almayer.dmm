@@ -14664,6 +14664,7 @@
 "bbX" = (
 /obj/structure/prop/resource_node,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -18284,6 +18285,7 @@
 /area/almayer/command/corporateliason)
 "bvd" = (
 /obj/structure/prop/resource_node,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -33816,6 +33818,12 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
+"eGb" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "eGg" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -39283,6 +39291,7 @@
 "haM" = (
 /obj/structure/prop/resource_node,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -47700,6 +47709,12 @@
 /obj/structure/bed/chair/comfy/orange,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/main_office)
+"kJL" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north1)
 "kJV" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -48248,6 +48263,13 @@
 	icon_state = "cargo"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"kUQ" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south1)
 "kUV" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -49652,6 +49674,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/auxiliary_officer_office)
+"lxT" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "lxW" = (
 /obj/structure/sign/prop2{
 	pixel_y = 29
@@ -63564,6 +63592,7 @@
 /area/almayer/command/cichallway)
 "rBH" = (
 /obj/structure/prop/resource_node,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -103713,7 +103742,7 @@ add
 auJ
 aHU
 aTm
-adq
+abs
 aok
 jgF
 auJ
@@ -103759,7 +103788,7 @@ aJU
 lqZ
 ouQ
 iun
-pgD
+tQV
 vPm
 qys
 lqZ
@@ -104119,7 +104148,7 @@ awW
 avc
 aIv
 aTm
-add
+kJL
 cbM
 jzZ
 sLo
@@ -104165,7 +104194,7 @@ baw
 hJk
 yac
 vbB
-wDl
+kUQ
 vbB
 fDS
 iLd
@@ -104322,7 +104351,7 @@ add
 auJ
 aHU
 aTm
-adq
+abs
 aTm
 jgF
 auJ
@@ -104368,7 +104397,7 @@ aJU
 lqZ
 ouQ
 vbB
-pgD
+tQV
 tBq
 qys
 lqZ
@@ -120967,7 +120996,7 @@ aeC
 asV
 ayn
 atr
-acx
+abh
 aex
 ciw
 asV
@@ -121015,7 +121044,7 @@ vcE
 mMu
 iMx
 tGi
-rRq
+uOi
 bXe
 eyG
 mMu
@@ -121373,7 +121402,7 @@ aeA
 atp
 ayR
 atr
-aeC
+eGb
 atr
 cji
 nqV
@@ -121421,7 +121450,7 @@ lJY
 hlX
 umh
 bXe
-vcE
+lxT
 tGi
 pfH
 wlF
@@ -121576,7 +121605,7 @@ aeC
 asV
 ayn
 atr
-acx
+abh
 bXz
 ciw
 asV
@@ -121624,7 +121653,7 @@ vcE
 mMu
 iMx
 bXe
-rRq
+uOi
 mzF
 eyG
 mMu

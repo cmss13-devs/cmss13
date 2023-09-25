@@ -181,5 +181,6 @@
 /obj/structure/prop/resource_node
 	name = "\improper fuel pump"
 	desc = "Generates vast amounts of fuel. Required to be active to fuel the USS Almayers lifeboats"
+	density = TRUE
 	icon = 'icons/obj/structures/resources_64x64.dmi'
 	icon_state = "node_off"

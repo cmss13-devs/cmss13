@@ -49,7 +49,7 @@
 	name = "Trade Larva for Tech Points (100)"
 	action_icon_state = "queen_give_evo_points"
 	plasma_cost = 100
-	xeno_cooldown = 8 MINUTES
+	xeno_cooldown = 60 SECONDS
 	var/required_larva = 1
 	var/duration = 8 MINUTES
 	var/to_give = 8

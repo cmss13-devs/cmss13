@@ -311,7 +311,11 @@
 	if(tgui_alert(user_xeno, "Вы действительно хотите пожертвовать грудоломом для временной прибавки к притоку очков эволюции?", "Жертва Грудолома", list("Да", "Нет")) != "Да")
 		return
 
-	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || user_xeno.hive.stored_larva < required_larva)
+	if(user_xeno.hive.stored_larva < required_larva)
+		to_chat(usr, SPAN_XENOWARNING("Недостаточно закопавшихся грудоломов."))
+		return
+
+	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost))
 		return
 
 	xeno_message(SPAN_XENOANNOUNCE("Улей пожертвовал новорождённой сестрой во имя эволюции! Дополнительный приток остановится через [duration/600] минут."), hivenumber = user_xeno.hive.hivenumber)

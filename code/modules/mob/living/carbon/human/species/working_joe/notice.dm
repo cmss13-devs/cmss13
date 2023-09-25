@@ -13,10 +13,22 @@
 	say_message = "APOLLO will require a detailed report."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/be_careful
+	key = "careful"
+	sound = 'sound/voice/joe/be_careful_with_that.ogg'
+	say_message = "Be careful with that."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/firearm
 	key = "firearm"
 	sound = 'sound/voice/joe/firearm.ogg'
 	say_message = "Firearms can cause serious injury. Let me assist you."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/investigate_weapon
+	key = "weapon"
+	sound = 'sound/voice/joe/investigate_weapon.ogg'
+	say_message = "A weapon. I better investigate."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/species

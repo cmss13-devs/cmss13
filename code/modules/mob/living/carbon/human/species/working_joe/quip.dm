@@ -68,11 +68,3 @@
 	sound = 'sound/voice/joe/weapon_permit.ogg'
 	say_message = "I assume you have a permit for that weapon."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged
-	key = "alwaysknowdamaged"
-	key_third_person = "workingjoedamaged"
-	sound = 'sound/voice/joe/alwaysknow_damaged.ogg'
-	say_message = "You always know a Working Joe."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	override_say = "You always know a Working Joe. (Damaged)"

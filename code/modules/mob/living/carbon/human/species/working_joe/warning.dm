@@ -1,16 +1,22 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning
 	category = JOE_EMOTE_CATEGORY_WARNING
 
-/datum/emote/living/carbon/human/synthetic/working_joe/warning/damage
-	key = "damage"
-	sound = 'sound/voice/joe/damage.ogg'
-	say_message = "Do not damage Seegson property."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/not_what_i_think
 	key = "notwhatithink"
 	sound = 'sound/voice/joe/not_what_i_think.ogg'
 	say_message = "I hope that's not what I think it is."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/dont_do_that
+	key = "dontdothat"
+	sound = 'sound/voice/joe/dontdothat.ogg'
+	say_message = "Don't do that."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/dont_run
+	key = "dontrun"
+	sound = 'sound/voice/joe/dont_run.ogg'
+	say_message = "Don't run."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/running_accidents
@@ -19,16 +25,16 @@
 	say_message = "Running causes accidents."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/warning/that_stings
-	key = "thatstings"
-	sound = 'sound/voice/joe/that_stings.ogg'
-	say_message = "That stings."
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/hurt_yourself
+	key = "hurtyourself"
+	sound = 'sound/voice/joe/hurt_yourself.ogg'
+	say_message = "Your going to hurt yourself."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/warning/irresponsible
-	key = "irresponsible"
-	sound = 'sound/voice/joe/irresponsible.ogg'
-	say_message = "That was irresponsible."
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/someone_hurt
+	key = "someonehurt"
+	sound = 'sound/voice/joe/someone_hurt.ogg'
+	say_message = "Someone might get hurt."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
@@ -47,6 +53,12 @@
 	key = "safety"
 	sound = 'sound/voice/joe/safety.ogg'
 	say_message = "You and I are going to have a talk about safety."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/no_need
+	key = "noneed"
+	sound = 'sound/voice/joe/no_need.ogg'
+	say_message = "There's no need for this."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical
@@ -71,4 +83,16 @@
 	key = "patience"
 	sound = 'sound/voice/joe/patience.ogg'
 	say_message = "You are starting to test my patience."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/calm_down
+	key = "calmdown"
+	sound = 'sound/voice/joe/calm_down.ogg'
+	say_message = "Please, calm down."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/hold_still
+	key = "holdstill"
+	sound = 'sound/voice/joe/hold_still.ogg'
+	say_message = "Hold still."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

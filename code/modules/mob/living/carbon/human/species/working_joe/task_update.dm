@@ -7,10 +7,34 @@
 	say_message = "This could require my attention."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/let_me_help
+	key = "letmehelp"
+	sound = 'sound/voice/joe/let_me_help.ogg'
+	say_message = "Let me help you."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/follow_me
 	key = "followme"
 	sound = 'sound/voice/joe/follow_me.ogg'
 	say_message = "Follow me."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/follow_me_please
+	key = "followmeplease"
+	sound = 'sound/voice/joe/follow_me_please.ogg'
+	say_message = "Follow me please."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/come_with_me
+	key = "comewithme"
+	sound = 'sound/voice/joe/come_with_me.ogg'
+	say_message = "Come with me please."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/come_with_me
+	key = "ticketremoved"
+	sound = 'sound/voice/joe/support_ticket_removed.ogg'
+	say_message = "Service support ticket removed from queue."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/with_you_shortly

@@ -25,6 +25,12 @@
 	say_message = "You shouldn't be here."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/really_shouldnt_be_here
+	key = "reallyshouldntbehere"
+	sound = 'sound/voice/joe/really_shouldnt_be_here.ogg'
+	say_message = "You really shouldn't be here."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
 	key = "comeoutvent"
 	sound = 'sound/voice/joe/come_out_vent.ogg'

@@ -7,6 +7,12 @@
 	say_message = "Please call if you need further assistance."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/pity
+	key = "pity"
+	sound = 'sound/voice/joe/pity.ogg'
+	say_message = "A pity I couldn't be of service."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/required_by_apollo
 	key = "requiredbyapollo"
 	sound = 'sound/voice/joe/required_by_apollo.ogg'
@@ -31,6 +37,12 @@
 	say_message = "Back to work."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/glad_we_resolved
+	key = "gladweresolved"
+	sound = 'sound/voice/joe/glad_we_resolved.ogg'
+	say_message = "I'm glad we resolved this."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/other_concerns
 	key = "otherconcerns"
 	sound = 'sound/voice/joe/other_concerns.ogg'
@@ -41,4 +53,10 @@
 	key = "morepressingmatters"
 	sound = 'sound/voice/joe/more_pressing_matters.ogg'
 	say_message = "There are more pressing matters."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/existing_tasks
+	key = "existingtasks"
+	sound = 'sound/voice/joe/existing_tasks.ogg'
+	say_message = "Existing tasks have a higher priority."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

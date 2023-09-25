@@ -1832,6 +1832,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\mob\living\carbon\human\species\working_joe\_species.dm"
 #include "code\modules\mob\living\carbon\human\species\working_joe\farewell.dm"
 #include "code\modules\mob\living\carbon\human\species\working_joe\fire.dm"
+#include "code\modules\mob\living\carbon\human\species\working_joe\damage.dm"
 #include "code\modules\mob\living\carbon\human\species\working_joe\greeting.dm"
 #include "code\modules\mob\living\carbon\human\species\working_joe\notice.dm"
 #include "code\modules\mob\living\carbon\human\species\working_joe\question.dm"

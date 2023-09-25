@@ -5,11 +5,11 @@
 	var/time_until_return = 2 MINUTES
 
 /obj/structure/droppod/tech/Initialize(mapload, datum/tech/droppod/attached_tech)
+	. = ..()
+
 	if(!attached_tech)
 		qdel(src)
 		return
-
-	. = ..()
 
 	src.attached_tech = attached_tech
 	attached_tech.on_pod_created(src)

@@ -486,9 +486,9 @@ world
 				add.Blend(appearance.color, ICON_MULTIPLY)
 
 		if(alpha_apply && appearance.alpha < 255)
--			flat.Blend(rgb(255, 255, 255, appearance.alpha), ICON_MULTIPLY)
-+			// Blend the overlay into the flattened icon
-+			flat.Blend(add, blendMode2iconMode(curblend), layer_image.pixel_x + 2 - flatX1, layer_image.pixel_y + 2 - flatY1)
+			flat.Blend(rgb(255, 255, 255, appearance.alpha), ICON_MULTIPLY)
+			// Blend the overlay into the flattened icon
+			flat.Blend(add, blendMode2iconMode(curblend), layer_image.pixel_x + 2 - flatX1, layer_image.pixel_y + 2 - flatY1)
 
 		if(no_anim)
 			//Clean up repeated frames

@@ -14662,7 +14662,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
 "bbX" = (
-/obj/structure/resource_node,
+/obj/structure/prop/resource_node,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -18283,7 +18283,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bvd" = (
-/obj/structure/resource_node,
+/obj/structure/prop/resource_node,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -39281,7 +39281,7 @@
 	},
 /area/almayer/command/cichallway)
 "haM" = (
-/obj/structure/resource_node,
+/obj/structure/prop/resource_node,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -63563,7 +63563,7 @@
 	},
 /area/almayer/command/cichallway)
 "rBH" = (
-/obj/structure/resource_node,
+/obj/structure/prop/resource_node,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},

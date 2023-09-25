@@ -177,3 +177,9 @@
 	SPAN_XENONOTICE("You connect [src] to the hive."), max_distance = 3)
 
 	return XENO_NO_DELAY_ACTION
+
+/obj/structure/prop/resource_node
+	name = "\improper fuel pump"
+	desc = "Generates vast amounts of fuel. Required to be active to fuel the USS Almayers lifeboats"
+	icon = 'icons/obj/structures/resources_64x64.dmi'
+	icon_state = "node_off"

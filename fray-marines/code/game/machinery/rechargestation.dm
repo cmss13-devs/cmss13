@@ -66,18 +66,19 @@
 					if (!doing_stuff && (current_limb & LIMB_DESTROYED && !(current_limb.parent.status & LIMB_DESTROYED)))
 						doing_stuff = TRUE
 						if (current_limb & LIMB_AMPUTATED)
-							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb]'. Требуется подготовка к замене...")
-							sleep(SCALPEL_MAX_DURATION)
-							current_limb.setAmputatedTree()
-							to_chat(occupant, "Крепление подготовлено к новому подключению.")
-						else
 							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb]'. Печать запасной части...")
 							sleep(LIMB_PRINTING_TIME)
-							current_limb.robotize()
+							current_limb.robotize(synth_skin = TRUE)
 							humanoid_occupant.update_body()
 							humanoid_occupant.updatehealth()
 							humanoid_occupant.UpdateDamageIcon()
 							to_chat(occupant, "Новый компонент подключен: '[current_limb]'. Калибровка завершена.")
+						else
+							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb]'. Требуется подготовка к замене...")
+							sleep(SCALPEL_MAX_DURATION)
+							current_limb.setAmputatedTree()
+							to_chat(occupant, "Крепление подготовлено к новому подключению.")
+
 			// Ремонт внутренних органов
 			if(!doing_stuff)
 				for(var/datum/internal_organ/current_organ in humanoid_occupant.internal_organs)

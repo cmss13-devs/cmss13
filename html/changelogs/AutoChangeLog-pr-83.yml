@@ -1,0 +1,5 @@
+author: "XDinka"
+delete-after: True
+changes:
+  - imageadd: "новый вендор для меха."
+  - mapadd: "фикс интела на фиорине, ремап мехбэя, уголок меха на аламо и нормандии."

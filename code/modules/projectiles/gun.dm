@@ -503,8 +503,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
-		for(var/group in fire_delay_group)
-			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
+		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
 		set_gun_user(user)
@@ -523,8 +522,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
-		for(var/group in fire_delay_group)
-			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
+		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
 	unwield(user)
 	set_gun_user(null)
@@ -1111,27 +1109,24 @@ and you're good to go.
 		if(PB_burst_bullets_fired) //Has a burst been carried over from a PB?
 			PB_burst_bullets_fired = 0 //Don't need this anymore. The torch is passed.
 
-	//Dual wielding. Do we have a gun in the other hand, is it loaded, and is it the same category?
-	if(!reflex && !dual_wield && user)
-		var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
-		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
-			/*Does the offhand weapon have a loaded selected attachable gun or ammo? This doesn't necessarily mean the offhand gun can be *fired*,
-			an unpumped shotgun or opened double-barrel or a revolver with a spun cylinder would pass it, but it's less indiscrimate than it used to be.*/
-			if(akimbo.active_attachable?.current_rounds || akimbo.has_ammunition())
-				dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
-				if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-					user.swap_hand()
-				else
-					akimbo.Fire(target,user,params, 0, TRUE)
+	var/fired_by_akimbo = FALSE
+	if(dual_wield)
+		fired_by_akimbo = TRUE
 
-	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire)
+	//Dual wielding. Do we have a gun in the other hand and is it the same category?
+	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
+	if(!reflex && !dual_wield && user)
+		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
+			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
+
+	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	if(!fire_return)
 		return fire_return
 
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 	return AUTOFIRE_CONTINUE
 
-/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire)
+/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 
@@ -1210,10 +1205,19 @@ and you're good to go.
 			active_attachable.last_fired = world.time
 		else
 			last_fired = world.time
+			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+			if(fire_delay_group && delay_left > 0)
+				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 		. = TRUE
 
 		shots_fired++
+
+		if(dual_wield && !fired_by_akimbo)
+			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
+				user.swap_hand()
+			else
+				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
 
 	else
 		return TRUE
@@ -1240,7 +1244,7 @@ and you're good to go.
 		return TRUE
 
 
-/obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user)
+/obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user, dual_wield)
 	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
 		active_attachable.last_fired = world.time
 		active_attachable.fire_attachment(attacked_mob, src, user)
@@ -1352,6 +1356,15 @@ and you're good to go.
 		else
 			active_attachable.activate_attachment(src, null, TRUE)//No way.
 
+	var/fired_by_akimbo = FALSE
+	if(dual_wield)
+		fired_by_akimbo = TRUE
+
+	//Dual wielding. Do we have a gun in the other hand and is it the same category?
+	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
+	if(!dual_wield && user)
+		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
+			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/bullets_to_fire = 1
 
@@ -1394,7 +1407,7 @@ and you're good to go.
 				SPAN_WARNING("You fire [src] point blank at [attacked_mob]!"), null, null, CHAT_TYPE_WEAPON_USE)
 
 		user.track_shot(initial(name))
-		apply_bullet_effects(projectile_to_fire, user, bullets_fired) //We add any damage effects that we need.
+		apply_bullet_effects(projectile_to_fire, user, bullets_fired, dual_wield) //We add any damage effects that we need.
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
@@ -1436,8 +1449,17 @@ and you're good to go.
 			active_attachable.last_fired = world.time
 		else
 			last_fired = world.time
+			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+			if(fire_delay_group && delay_left > 0)
+				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
+
+		if(dual_wield && !fired_by_akimbo)
+			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
+				user.swap_hand()
+			else
+				INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [attacked_mob] with [src]!"), SPAN_DANGER("You have executed [attacked_mob] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
@@ -1548,9 +1570,20 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		if(fire_delay_group)
 			for(var/group in fire_delay_group)
-				var/group_next_fire = LAZYACCESS(user.fire_delay_next_fire, group)
-				if(!isnull(group_next_fire) && world.time < group_next_fire)
-					return
+				for(var/obj/item/weapon/gun/cycled_gun in user.fire_delay_next_fire)
+					if(cycled_gun == src)
+						continue
+
+					for(var/cycled_gun_group in cycled_gun.fire_delay_group)
+						if(group != cycled_gun_group)
+							continue
+
+						if(user.fire_delay_next_fire[cycled_gun] < world.time)
+							user.fire_delay_next_fire -= cycled_gun
+							continue
+
+						return
+
 	return TRUE
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)

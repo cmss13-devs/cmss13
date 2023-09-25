@@ -371,6 +371,19 @@
 /obj/structure/shuttle/part/dropship1/transparent/engine_left_exhaust,
 /turf/open/space/basic,
 /area/shuttle/drop1/sulaco)
+"Fy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "FA" = (
 /obj/structure/shuttle/part/dropship1/transparent/engine_left_cap,
 /turf/template_noop,
@@ -517,6 +530,21 @@
 "RI" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "31"
+	},
+/area/shuttle/drop1/sulaco)
+"SB" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	layer = 3.1
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8;
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
 "SM" = (
@@ -700,8 +728,8 @@ ws
 TK
 il
 il
-TK
-ws
+SB
+Fy
 SM
 de
 de

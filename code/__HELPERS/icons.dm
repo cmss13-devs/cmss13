@@ -435,11 +435,19 @@ world
 			if(layer_image.alpha == 0)
 				continue
 
+			var/apply_color = TRUE
+			var/apply_alpha = TRUE
+
 			if(layer_image == copy) // 'layer_image' is an /image based on the object being flattened.
 				curblend = BLEND_OVERLAY
 				add = icon(layer_image.icon, layer_image.icon_state, base_icon_dir)
 			else // 'I' is an appearance object.
-				add = getFlatIcon(image(layer_image), curdir, curicon, curstate, curblend, FALSE, no_anim)
+				var/image/layer_as_image = image(layer_image)
+				if(layer_as_image.appearance_flags & RESET_COLOR)
+					apply_color = FALSE
+				if(layer_as_image.appearance_flags & RESET_ALPHA)
+					apply_alpha = FALSE
+				add = getFlatIcon(layer_as_image, curdir, curicon, curstate, curblend, FALSE, no_anim)
 			if(!add)
 				continue
 

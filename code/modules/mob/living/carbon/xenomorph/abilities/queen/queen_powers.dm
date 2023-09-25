@@ -304,54 +304,33 @@
 		to_chat(usr, SPAN_XENOWARNING("You must give some time for larva to spawn before sacrificing them. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK - world.time) / 600)] minutes."))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a burrowed larva:", "Give Evolution Points", user_xeno.hive.totalXenos, theme="hive_status")
-
-	if(!choice)
+	if(active)
+		to_chat(usr, SPAN_XENOWARNING("Прошлый бонус от жертвы грудолома всё ещё активен!"))
 		return
 
-	var/mob/living/carbon/xenomorph/target_xeno
-
-	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)
-		if(html_encode(xeno.name) == html_encode(choice))
-			target_xeno = xeno
-			break
-
-	if(target_xeno == user_xeno)
-		to_chat(user_xeno, SPAN_XENOWARNING("You cannot give evolution points to yourself."))
+	if(tgui_alert(user_xeno, "Вы действительно хотите пожертвовать грудоломом для временной прибавки к притоку очков эволюции?", "Жертва Грудолома", list("Да", "Нет")) != "Да")
 		return
 
-	if(target_xeno.evolution_stored == target_xeno.evolution_threshold)
-		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph is already ready to evolve!"))
+	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || user_xeno.hive.stored_larva < required_larva)
 		return
 
-	if(target_xeno.hivenumber != user_xeno.hivenumber)
-		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph doesn't belong to your hive!"))
-		return
+	xeno_message(SPAN_XENOANNOUNCE("Улей пожертвовал новорождённой сестрой во имя эволюции! Дополнительный приток остановится через [duration/600] минут."), hivenumber = user_xeno.hive.hivenumber)
+	xeno_maptext("Улей пожертвовал новорождённой сестрой во имя эволюции!", "Эволюция Улья", user_xeno.hive.hivenumber)
+	addtimer(CALLBACK(src, PROC_REF(end_boost), user_xeno), duration)
+	active = TRUE
 
-	if(target_xeno.health < 0)
-		to_chat(user_xeno, SPAN_XENOWARNING("What's the point? They're about to die."))
-		return
-
-	if(user_xeno.hive.stored_larva < required_larva)
-		to_chat(user_xeno, SPAN_XENOWARNING("You need at least [required_larva] burrowed larva to sacrifice one for evolution points."))
-		return
-
-	if(tgui_alert(user_xeno, "Are you sure you want to sacrifice a larva to give [target_xeno] [evo_points_per_larva] evolution points?", "Give Evolution Points", list("Yes", "No")) != "Yes")
-		return
-
-	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || target_xeno.health < 0 || user_xeno.hive.stored_larva < required_larva)
-		return
-
-	to_chat(target_xeno, SPAN_XENOWARNING("\The [user_xeno] has given you evolution points! Use them well."))
-	to_chat(user_xeno, SPAN_XENOWARNING("\The [target_xeno] was given [evo_points_per_larva] evolution points."))
-
-	if(target_xeno.evolution_stored + evo_points_per_larva > target_xeno.evolution_threshold)
-		target_xeno.evolution_stored = target_xeno.evolution_threshold
-	else
-		target_xeno.evolution_stored += evo_points_per_larva
-
+	var/datum/techtree/xeno_tree = GET_TREE(TREE_XENO)
+	xeno_tree.give_points_over_time(to_give, duration)
 	user_xeno.hive.stored_larva--
+
 	return ..()
+
+/datum/action/xeno_action/onclick/give_evo_points/proc/end_boost(mob/living/carbon/xenomorph/queen/user_xeno)
+	active = FALSE
+	if(!user_xeno)
+		return
+	xeno_message(SPAN_XENOANNOUNCE("Улей прекратил получать бонус к притоку очков эволюции. Жертва сестры не будет забыта!"), hivenumber = user_xeno.hive.hivenumber)
+	xeno_maptext("Улей прекратил получать бонус к притоку очков эволюции.", "Эволюция Улья", user_xeno.hive.hivenumber)
 
 /datum/action/xeno_action/onclick/banish/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner

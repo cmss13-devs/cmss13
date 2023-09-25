@@ -32,3 +32,20 @@
 	var/title = "Новый уровень эволюции"
 	var/input = "Улей стал сильнее. Открыт [tier.tier] уровень эволюции.\n\nДА ЗДРАВСТВУЕТ КОРОЛЕВА!"
 	xeno_announcement(input, hivenumber, title)
+
+/datum/techtree/xenomorph/enter_mob(mob/M, force)
+	if(!M.mind || M.stat == DEAD)
+		return FALSE
+
+	if(!has_access(M, TREE_ACCESS_VIEW) && !force)
+		to_chat(M, SPAN_WARNING("You do not have access to this tech tree"))
+		return FALSE
+
+	if(SEND_SIGNAL(M, COMSIG_MOB_ENTER_TREE, src, force) & COMPONENT_CANCEL_TREE_ENTRY) return
+
+	new/mob/hologram/techtree(entrance, M)
+
+	if(M.lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
+		M.lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+
+	return TRUE

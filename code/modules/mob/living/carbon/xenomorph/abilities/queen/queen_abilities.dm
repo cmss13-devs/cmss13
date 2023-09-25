@@ -46,12 +46,14 @@
 	var/turf_build_cooldown = 7 SECONDS
 
 /datum/action/xeno_action/onclick/give_evo_points
-	name = "Trade Larva for Evolution Points (100)"
+	name = "Trade Larva for Tech Points (100)"
 	action_icon_state = "queen_give_evo_points"
 	plasma_cost = 100
-	xeno_cooldown = 60 SECONDS
-	var/evo_points_per_larva = 250
-	var/required_larva = 3
+	xeno_cooldown = 8 MINUTES
+	var/required_larva = 1
+	var/duration = 8 MINUTES
+	var/to_give = 8
+	var/active = FALSE
 
 /datum/action/xeno_action/onclick/banish
 	name = "Banish a Xenomorph (500)"

@@ -52,7 +52,7 @@
 	for(var/h in GLOB.alive_human_list)
 		var/mob/living/carbon/human/H = h
 		if(H.z == hive.living_xeno_queen.z && H.get_type_in_ears(/obj/item/device/radio/headset))
-			to_chat(H, SPAN_WARNING("You feel a psychic disturbance! All you can hear is static from your headset."))
+			to_chat(H, SPAN_WARNING("Ты чувствуешь, что что-то не так. Вдруг, связь резко прерывается - а из гарнитуры доносится лишь белый шум..."))
 
 
 /datum/tech/xeno/powerup/disruption/proc/override_available_zlevel(datum/source, list/target_zs)

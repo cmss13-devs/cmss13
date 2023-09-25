@@ -1063,7 +1063,8 @@
 		reset_fire()
 		display_ammo()
 		return
-	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+	else if(gun_firemode != GUN_FIREMODE_SEMIAUTO)
+		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
 /// setter for fire_delay
 /obj/structure/machinery/m56d_hmg/proc/set_fire_delay(value)

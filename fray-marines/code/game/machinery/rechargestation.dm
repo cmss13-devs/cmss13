@@ -1,4 +1,7 @@
-/obj/structure/machinery/recharge_station/proc/process_occupant()
+/obj/structure/machinery/recharge_station
+	var/hacky_override = TRUE
+
+/obj/structure/machinery/recharge_station/proc/process_occupant_localized()
 	if(src.occupant)
 		var/doing_stuff = FALSE
 		if (isrobot(occupant))
@@ -38,7 +41,7 @@
 						for(var/obj/item/current_implant in current_limb.implants)
 							if(!doing_stuff && !is_type_in_list(current_implant,known_implants))
 								doing_stuff = TRUE
-								to_chat(occupant, "Обнаружены постороние материалы в компоненте: '[current_organ]'. Начало процедуры удаления...")
+								to_chat(occupant, "Обнаружены постороние материалы в компоненте: '[current_limb]'. Начало процедуры удаления...")
 								sleep(REMOVE_OBJECT_MAX_DURATION)
 								current_limb.implants -= current_implant
 								humanoid_occupant.embedded_items -= current_implant
@@ -48,7 +51,7 @@
 			if(!doing_stuff)
 				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
 					if (!doing_stuff && current_limb & LIMB_BROKEN)
-						to_chat(occupant, "Обнаружен отказ компонента: '[current_organ]'. Начало процесса востановления...")
+						to_chat(occupant, "Обнаружен отказ компонента: '[current_limb]'. Начало процесса востановления...")
 						doing_stuff = TRUE
 						sleep(BONEGEL_REPAIR_MAX_DURATION + BONESETTER_MAX_DURATION)
 						if(current_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
@@ -56,22 +59,25 @@
 						current_limb.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 						current_limb.perma_injury = 0
 						humanoid_occupant.pain.recalculate_pain()
+						to_chat(occupant, "Востановлено фунционирование компонента: '[current_limb]'.")
 			// Печать новой конечности
 			if(!doing_stuff)
 				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
 					if (!doing_stuff && (current_limb & LIMB_DESTROYED && !(current_limb.parent.status & LIMB_DESTROYED)))
 						doing_stuff = TRUE
 						if (current_limb & LIMB_AMPUTATED)
-							to_chat(occupant, "Критический компонент отсутсвует: '[current_organ]'. Требуется подготовка к замене...")
+							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb]'. Требуется подготовка к замене...")
 							sleep(SCALPEL_MAX_DURATION)
 							current_limb.setAmputatedTree()
+							to_chat(occupant, "Крепление подготовлено к новому подключению.")
 						else
-							to_chat(occupant, "Критический компонент отсутсвует: '[current_organ]'. Печать запасной части...")
+							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb]'. Печать запасной части...")
 							sleep(LIMB_PRINTING_TIME)
 							current_limb.robotize()
 							humanoid_occupant.update_body()
 							humanoid_occupant.updatehealth()
 							humanoid_occupant.UpdateDamageIcon()
+							to_chat(occupant, "Новый компонент подключен: '[current_limb]'. Калибровка завершена.")
 			// Ремонт внутренних органов
 			if(!doing_stuff)
 				for(var/datum/internal_organ/current_organ in humanoid_occupant.internal_organs)
@@ -92,17 +98,18 @@
 					H.remove_all_bleeding(TRUE)
 					H.disfigured = FALSE
 					H.owner.name = H.owner.get_visible_name()
+					to_chat(occupant, "Товарный вид востановлен.")
 
 			// TODO убрать звук дефиба?
 			// Дефиб синта
-			if(!doing_stuff)
+			if(!doing_stuff && occupant.stat == DEAD)
 				// К этому моменту технические проблемы по типу сломанного сердца уже починены. Но если игрок не хочет, то игрок не хочет
 				if(!humanoid_occupant.is_revivable())
 					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> buzzes: Операционная система андроида не отвечает на сигнал активации. Обратитесь с проблемой к производителю.")
 				else
-					doing_stuff = TRUE
 					var/mob/dead/observer/G = humanoid_occupant.get_ghost()
 					if(istype(G) && G.client)
+						doing_stuff = TRUE
 						playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
 						to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Кто то положил твое тело в [src.name]. Вернись в него если хочешь воскреснуть! \
 						(Verbs -> Ghost -> Re-enter corpse, или <a href='?src=\ref[G];reentercorpse=1'>нажми сюда!</a>)")))
@@ -115,6 +122,7 @@
 						// Что если за 7 секунд мы передумали?
 						if(!humanoid_occupant.is_revivable())
 							doing_stuff = FALSE
+							playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
 							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> buzzes: Операционная система андроида не отвечает на сигнал активации. Обратитесь с проблемой к производителю.")
 						// Успешный дефиб
 						else
@@ -130,6 +138,9 @@
 							to_chat(occupant, SPAN_NOTICE("Ты внезапно чувствуешь вспышку и твое сознание возвращается, вытягивая тебя обратно в мир смертных."))
 							if(occupant.client?.prefs.toggles_flashing & FLASH_CORPSEREVIVE)
 								window_flash(occupant.client)
+							to_chat(occupant, "Активация операционной системы завершена.")
+					else
+						visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> buzzes: Операционная система андроида не отвечает на сигнал активации. Обратитесь с проблемой к производителю.")
 
 		if(!doing_stuff)
 			to_chat(occupant, "Цикл обслуживания завершен. Все системы исправны.")

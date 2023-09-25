@@ -263,25 +263,26 @@
 					linked_hive.hive_ui.update_burrowed_larva()
 				qdel(worm)
 
+		var/count_spawned = 0
 		var/spawning_larva = can_spawn_larva() && (last_larva_time + spawn_cooldown) < world.time
 		if(spawning_larva)
 			last_larva_time = world.time
 		if(spawning_larva || (last_larva_queue_time + spawn_cooldown * 4) < world.time)
 			last_larva_queue_time = world.time
 			var/list/players_with_xeno_pref = get_alien_candidates(linked_hive)
-			if(players_with_xeno_pref && players_with_xeno_pref.len)
+			if(length(players_with_xeno_pref))
 				if(spawning_larva && spawn_burrowed_larva(players_with_xeno_pref[1]))
 					// We were in spawning_larva mode and successfully spawned someone
-					message_alien_candidates(players_with_xeno_pref, dequeued = 1)
-				else
-					// Just time to update everyone their queue status (or the spawn failed)
-					message_alien_candidates(players_with_xeno_pref, dequeued = 0)
+					count_spawned = 1
+				// Update everyone's queue status
+				message_alien_candidates(players_with_xeno_pref, dequeued = count_spawned)
 
 		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
 			last_surge_time = world.time
 			linked_hive.stored_larva++
 			linked_hive.hijack_burrowed_left--
-			notify_ghosts(header = "Claim Xeno", message = "The Hive has gained another burrowed larva! Click to take it.", source = src, action = NOTIFY_JOIN_XENO, enter_link = "join_xeno")
+			if(GLOB.xeno_queue_candidate_count < 1 + count_spawned)
+				notify_ghosts(header = "Claim Xeno", message = "The Hive has gained another burrowed larva! Click to take it.", source = src, action = NOTIFY_JOIN_XENO, enter_link = "join_xeno")
 			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 			if(linked_hive.hijack_burrowed_left < 1)

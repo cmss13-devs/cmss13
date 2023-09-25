@@ -7,6 +7,12 @@
 	say_message = "Please call if you need further assistance."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/glad_we_resolved
+	key = "gladweresolved"
+	sound = 'sound/voice/joe/glad_we_resolved.ogg'
+	say_message = "I'm glad we resolved this."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/pity
 	key = "pity"
 	sound = 'sound/voice/joe/pity.ogg'
@@ -35,12 +41,6 @@
 	key = "backtowork"
 	sound = 'sound/voice/joe/back_to_work.ogg'
 	say_message = "Back to work."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/farewell/glad_we_resolved
-	key = "gladweresolved"
-	sound = 'sound/voice/joe/glad_we_resolved.ogg'
-	say_message = "I'm glad we resolved this."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/other_concerns

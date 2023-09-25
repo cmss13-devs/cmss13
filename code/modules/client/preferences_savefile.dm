@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 20
+#define SAVEFILE_VERSION_MAX 21
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -80,6 +80,15 @@
 		sound_toggles |= (SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
 		S["toggles_sound"] << sound_toggles
 
+	if(savefile_version < 21)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		if(pref_toggles & TOGGLE_ALTERNATING_DUAL_WIELD)
+			dual_wield_pref = DUAL_WIELD_SWAP
+		else
+			dual_wield_pref = DUAL_WIELD_FIRE
+		S["dual_wield_pref"] << dual_wield_pref
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -125,6 +134,7 @@
 	S["toggles_langchat"] >> toggles_langchat
 	S["toggles_sound"] >> toggles_sound
 	S["toggle_prefs"] >> toggle_prefs
+	S["dual_wield_pref"] >> dual_wield_pref
 	S["toggles_flashing"] >> toggles_flashing
 	S["toggles_ert"] >> toggles_ert
 	S["toggles_admin"] >> toggles_admin
@@ -209,6 +219,7 @@
 	toggles_langchat = sanitize_integer(toggles_langchat, 0, SHORT_REAL_LIMIT, initial(toggles_langchat))
 	toggles_sound = sanitize_integer(toggles_sound, 0, SHORT_REAL_LIMIT, initial(toggles_sound))
 	toggle_prefs = sanitize_integer(toggle_prefs, 0, SHORT_REAL_LIMIT, initial(toggle_prefs))
+	dual_wield_pref = sanitize_integer(dual_wield_pref, 0, 2, initial(dual_wield_pref))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
 	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
 	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
@@ -315,6 +326,7 @@
 	S["toggles_langchat"] << toggles_langchat
 	S["toggles_sound"] << toggles_sound
 	S["toggle_prefs"] << toggle_prefs
+	S["dual_wield_pref"] << dual_wield_pref
 	S["toggles_flashing"] << toggles_flashing
 	S["toggles_ert"] << toggles_ert
 	S["toggles_admin"] << toggles_admin

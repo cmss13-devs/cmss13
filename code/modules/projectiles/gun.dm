@@ -1210,11 +1210,11 @@ and you're good to go.
 		shots_fired++
 
 		if(dual_wield)
-			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-				user.swap_hand()
-			else
-				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
-
+			switch(user?.client?.prefs?.dual_wield_pref)
+				if(DUAL_WIELD_FIRE)
+					INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+				if(DUAL_WIELD_SWAP)
+					user.swap_hand()
 	else
 		return TRUE
 
@@ -1448,10 +1448,11 @@ and you're good to go.
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
 		if(dual_wield)
-			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-				user.swap_hand()
-			else
-				INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
+			switch(user?.client?.prefs?.dual_wield_pref)
+				if(DUAL_WIELD_FIRE)
+					INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
+				if(DUAL_WIELD_SWAP)
+					user.swap_hand()
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [attacked_mob] with [src]!"), SPAN_DANGER("You have executed [attacked_mob] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)

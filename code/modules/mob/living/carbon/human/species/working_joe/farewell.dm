@@ -55,12 +55,6 @@
 	say_message = "There are more pressing matters."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/farewell/existing_tasks
-	key = "existingtasks"
-	sound = 'sound/voice/joe/existing_tasks.ogg'
-	say_message = "Existing tasks have a higher priority."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/gone_inconsiderate
 	key = "gone"
 	sound = 'sound/voice/joe/how_inconsiderate.ogg'

@@ -31,12 +31,6 @@
 	say_message = "Come with me please."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/task_update/come_with_me
-	key = "ticketremoved"
-	sound = 'sound/voice/joe/support_ticket_removed.ogg'
-	say_message = "Service support ticket removed from queue."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/with_you_shortly
 	key = "withyoushortly"
 	sound = 'sound/voice/joe/with_you_shortly.ogg'
@@ -47,4 +41,16 @@
 	key = "takeaseat"
 	sound = 'sound/voice/joe/take_a_seat.ogg'
 	say_message = "Please take a seat, someone will be with you shortly."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/existing_tasks
+	key = "existingtasks"
+	sound = 'sound/voice/joe/existing_tasks.ogg'
+	say_message = "Existing tasks have a higher priority."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/come_with_me
+	key = "ticketremoved"
+	sound = 'sound/voice/joe/support_ticket_removed.ogg'
+	say_message = "Service support ticket removed from queue."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

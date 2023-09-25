@@ -43,6 +43,12 @@
 	say_message = "Protected area compromised."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/breach
+	key = "breach"
+	sound = 'sound/voice/joe/breach.ogg'
+	say_message = "Hazard Containment breach logged."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
 	key = "comeoutvent"
 	sound = 'sound/voice/joe/come_out_vent.ogg'

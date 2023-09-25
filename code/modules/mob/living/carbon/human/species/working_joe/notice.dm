@@ -43,12 +43,6 @@
 	say_message = "Unidentified species."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/notice/breach
-	key = "breach"
-	sound = 'sound/voice/joe/breach.ogg'
-	say_message = "Hazard Containment breach logged."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/beyond_repair
 	key = "beyondrepair"
 	sound = 'sound/voice/joe/beyond_repair.ogg'

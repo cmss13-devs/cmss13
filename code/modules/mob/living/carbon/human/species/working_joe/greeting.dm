@@ -13,6 +13,12 @@
 	say_message = "Good day."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_are_you
+	key = "howareyou"
+	sound = 'sound/voice/joe/how_are_you.ogg'
+	say_message = "How are you?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help
 	key = "howcanihelp"
 	sound = 'sound/voice/joe/how_can_i_help.ogg'
@@ -25,10 +31,10 @@
 	say_message = "What do you need to know today?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/greeting/been_looking_for_you
-	key = "beenlooking"
-	sound = 'sound/voice/joe/been_looking_for_you.ogg'
-	say_message = "I've been looking for you."
+/datum/emote/living/carbon/human/synthetic/working_joe/greeting/had_the_pleasure
+	key = "pleasure"
+	sound = 'sound/voice/joe/had_the_pleasure.ogg'
+	say_message = "I don't believe I've had the pleasure."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/anybody_there
@@ -43,8 +49,8 @@
 	say_message = "Ah, you're still here."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/greeting/had_the_pleasure
-	key = "pleasure"
-	sound = 'sound/voice/joe/had_the_pleasure.ogg'
-	say_message = "I don't believe I've had the pleasure."
+/datum/emote/living/carbon/human/synthetic/working_joe/greeting/been_looking_for_you
+	key = "beenlooking"
+	sound = 'sound/voice/joe/been_looking_for_you.ogg'
+	say_message = "I've been looking for you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

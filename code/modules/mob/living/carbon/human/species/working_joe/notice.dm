@@ -31,6 +31,12 @@
 	say_message = "A weapon. I better investigate."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/firearm_concerning
+	key = "firearmconcerning"
+	sound = 'sound/voice/joe/most_concerning.ogg'
+	say_message = "A firearm. Most concerning."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/species
 	key = "species"
 	sound = 'sound/voice/joe/species.ogg'

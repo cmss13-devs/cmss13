@@ -43,16 +43,16 @@
 	say_message = "This is a breach of multiple safety directives."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/warning/this_is_futile
-	key = "thisisfutile"
-	sound = 'sound/voice/joe/this_is_futile.ogg'
-	say_message = "This is futile."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/safety
 	key = "safety"
 	sound = 'sound/voice/joe/safety.ogg'
 	say_message = "You and I are going to have a talk about safety."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_tolerated
+	key = "nottolerated"
+	sound = 'sound/voice/joe/not_be_tolerated.ogg'
+	say_message = "This is a safety breach and will not be tolerated."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/no_need
@@ -95,4 +95,10 @@
 	key = "holdstill"
 	sound = 'sound/voice/joe/hold_still.ogg'
 	say_message = "Hold still."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/have_a_problem
+	key = "haveaproblem"
+	sound = 'sound/voice/joe/have_a_problem.ogg'
+	say_message = "It seems you and I have a problem."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

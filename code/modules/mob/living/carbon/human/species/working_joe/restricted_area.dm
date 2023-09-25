@@ -31,6 +31,18 @@
 	say_message = "You really shouldn't be here."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/interloper
+	key = "interloper"
+	sound = 'sound/voice/joe/interloper.ogg'
+	say_message = "On top of innumerable duties, now I have a interloper."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/protected_area_compromised
+	key = "areacompromised"
+	sound = 'sound/voice/joe/protected_area_compromised.ogg'
+	say_message = "Protected area compromised."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
 	key = "comeoutvent"
 	sound = 'sound/voice/joe/come_out_vent.ogg'

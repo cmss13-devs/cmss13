@@ -62,9 +62,3 @@
 	sound = 'sound/voice/joe/join_us.ogg'
 	say_message = "We hope you'll join us for the journey."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/weapon_permit
-	key = "weaponpermit"
-	sound = 'sound/voice/joe/weapon_permit.ogg'
-	say_message = "I assume you have a permit for that weapon."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

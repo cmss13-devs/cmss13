@@ -19,6 +19,12 @@
 	say_message = "That was irresponsible."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/this_is_futile
+	key = "thisisfutile"
+	sound = 'sound/voice/joe/this_is_futile.ogg'
+	say_message = "This is futile."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/really
 	key = "really"
 	sound = 'sound/voice/joe/really.ogg'

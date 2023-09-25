@@ -1318,7 +1318,7 @@
 		/datum/emote/living/carbon/human/synthetic/working_joe/damage/damage,
 		/datum/emote/living/carbon/human/synthetic/working_joe/damage/that_stings,
 		/datum/emote/living/carbon/human/synthetic/working_joe/damage/irresponsible,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/this_is_futile,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/this_is_futile,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
 	)

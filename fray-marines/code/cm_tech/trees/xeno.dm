@@ -49,5 +49,5 @@
 		M.lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	M.sync_lighting_plane_alpha()
 
-	// no reset_lighting_alpha comsig so leaving benos aren't trolled by disabled nightvision
+	// no reset_lighting_alpha comsig so benos aren't trolled by disabled nightvision on exit
 	return TRUE

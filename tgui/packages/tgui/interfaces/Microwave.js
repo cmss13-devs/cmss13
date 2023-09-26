@@ -37,7 +37,7 @@ export const Microwave = (props, context) => {
               textAlign="center"
               p=".5rem"
               fontSize="1.5rem">
-              Cooking..
+              Cooking...
             </NoticeBox>
           )}
 

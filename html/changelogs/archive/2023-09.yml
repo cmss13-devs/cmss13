@@ -323,3 +323,13 @@
   - rscadd: Added the ability for the IMP Ammo Rack to hold folding barricades.
   Zonespace27:
   - balance: Specialists now have separate pools of points for ammo and utility.
+2023-09-25:
+  Steelpoint:
+  - rscadd: Synthetics may now vend biohazard suits for personal use. Synth compliant.
+  Zonespace27:
+  - balance: Cloaked mobs no longer give off visible messages
+  c4xmaniac2:
+  - balance: Comms areas around the east/west rivers expanded for easier sieges and
+      weedable now.
+  - maptweak: LV Comms now always spawn in Tcomms and one either on the east or west
+      river

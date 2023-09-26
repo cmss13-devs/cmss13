@@ -238,6 +238,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
 
+	/// If this client has auto observe enabled, used by /datum/orbit_menu
+	var/auto_observe = TRUE
+
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)

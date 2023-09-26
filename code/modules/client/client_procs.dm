@@ -752,7 +752,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return FALSE
 
 	var/mob/dead/observer/observer = mob
-	observer.ManualFollow(target)
+	observer.do_observe(target)
 
 /client/proc/check_timelock(list/roles, hours)
 	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
@@ -782,7 +782,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			if (!screen_object.clear_with_screen)
 				continue
 
-		screen -= object
+		remove_from_screen(object)
 
 ///opens the particle editor UI for the in_atom object for this client
 /client/proc/open_particle_editor(atom/movable/in_atom)

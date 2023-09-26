@@ -1,0 +1,7 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - admin: "Added skillless subtype of the m707"
+  - balance: "Lowered vulture spotted/unspotted drift from 33/100 to 25/90"
+  - balance: "Lowered vulture scope adjust/move time from 0.5/1.0s to 0.4/0.8s"
+  - balance: "Vulture bipod anchors user in place"

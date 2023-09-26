@@ -339,8 +339,8 @@
 
 /obj/item/weapon/yautja/combistick/verb/fold_combistick()
 	set category = "Weapons"
-	set name = "Fold Combistick"
-	set desc = "Fold or unfold the combistick."
+	set name = "Collapse Combi-stick"
+	set desc = "Collapse or extend the combistick."
 	set src = usr.contents
 
 	unique_action(usr)

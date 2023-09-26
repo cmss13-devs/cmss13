@@ -410,6 +410,10 @@ var/global/list/limb_types_by_name = list(
 		if(SKILL_ENGINEER)
 			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				return DURATION_MULTIPLIER_TIER_2
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				return DURATION_MULTIPLIER_TIER_1
 // Construction
 		if(SKILL_CONSTRUCTION)
 			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_MASTER))

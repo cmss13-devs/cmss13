@@ -1,0 +1,7 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Added a save-able preference for auto-observe"
+  - bugfix: "Fixed numerous problems with HUD observer mode"
+  - code_imp: "Created a wrapper for client screen changes"
+  - code_imp: "Made check contents less horrendous"

@@ -1,0 +1,5 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "UPP survivor radio role identifiers now have a shorter title."
+  - rscadd: "UPP survivors now default to using a players preferred name instead of a random UPP name."

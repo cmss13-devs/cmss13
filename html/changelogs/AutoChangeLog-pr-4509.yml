@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - bugfix: "Fixes no fire delay on m56d in semi-auto and burst fire"

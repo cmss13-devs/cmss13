@@ -9362,6 +9362,13 @@
 	icon_state = "bluefull"
 	},
 /area/fiorina/station/power_ring)
+"fHy" = (
+/obj/structure/tunnel,
+/turf/open/organic/grass{
+	desc = "It'll get in your shoes no matter what you do.";
+	name = "astroturf"
+	},
+/area/fiorina/station/central_ring)
 "fHB" = (
 /obj/structure/monorail{
 	name = "launch track"
@@ -12398,6 +12405,12 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/tumor/aux_engi)
+"hwE" = (
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/prison{
+	icon_state = "darkpurplefull2"
+	},
+/area/fiorina/tumor/servers)
 "hxg" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -12759,6 +12772,13 @@
 	icon_state = "blue"
 	},
 /area/fiorina/station/power_ring)
+"hIR" = (
+/obj/structure/tunnel,
+/turf/open/organic/grass{
+	desc = "It'll get in your shoes no matter what you do.";
+	name = "astroturf"
+	},
+/area/fiorina/station/civres_blue)
 "hJc" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
@@ -13325,6 +13345,13 @@
 "idE" = (
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
+"idO" = (
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "greenblue"
+	},
+/area/fiorina/station/botany)
 "idT" = (
 /obj/structure/barricade/wooden{
 	dir = 4;
@@ -21666,6 +21693,12 @@
 	icon_state = "sterile_white"
 	},
 /area/fiorina/station/medbay)
+"mYx" = (
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/tumor/ice_lab)
 "mYN" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -23647,6 +23680,10 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
+"olB" = (
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/aux_engi)
 "olC" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -36900,6 +36937,10 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
+"wAM" = (
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/civres_blue)
 "wAR" = (
 /obj/structure/filingcabinet,
 /obj/structure/filingcabinet{
@@ -37911,6 +37952,13 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/station/transit_hub)
+"xii" = (
+/obj/structure/tunnel,
+/turf/open/organic/grass{
+	desc = "It'll get in your shoes no matter what you do.";
+	name = "astroturf"
+	},
+/area/fiorina/tumor/fiberbush)
 "xiF" = (
 /obj/structure/largecrate/random/case/double,
 /obj/structure/machinery/light/double/blue{
@@ -45767,7 +45815,7 @@ qPb
 qPb
 qPb
 qPb
-qPb
+xii
 kbT
 qPb
 qPb
@@ -47940,7 +47988,7 @@ knh
 hjP
 pWO
 tuk
-rGq
+olB
 jlk
 baC
 baC
@@ -51415,7 +51463,7 @@ njx
 njx
 njx
 njx
-lwK
+hwE
 jXz
 pPG
 jXz
@@ -59060,7 +59108,7 @@ fGb
 qdJ
 apf
 ybg
-kOB
+hIR
 gyB
 kOB
 kOB
@@ -60787,7 +60835,7 @@ rja
 apf
 esS
 apf
-apf
+wAM
 rja
 obT
 gma
@@ -60857,7 +60905,7 @@ kul
 kul
 kul
 kul
-wOR
+idO
 gEx
 bQM
 bQM
@@ -68574,7 +68622,7 @@ phz
 phz
 phz
 phz
-ruy
+mYx
 azZ
 tOr
 ezJ
@@ -69275,7 +69323,7 @@ fPZ
 jEC
 dGw
 tvI
-tvI
+fHy
 tvI
 tvI
 tvI
@@ -75588,7 +75636,7 @@ lAh
 lAh
 lAh
 lAh
-ruy
+mYx
 csp
 xjK
 xjK

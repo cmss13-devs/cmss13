@@ -1324,6 +1324,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/active = FALSE
 	var/det_time = 40
 
+/obj/item/clothing/head/helmet/marine/specialist/hefa/Initialize(mapload, list/new_protection)
+	. = ..()
+	pockets.bypass_w_limit = list(/obj/item/explosive/grenade/high_explosive/frag)
+
 /obj/item/clothing/head/helmet/marine/specialist/hefa/proc/apply_explosion_overlay()
 	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
 	O.name = "grenade"

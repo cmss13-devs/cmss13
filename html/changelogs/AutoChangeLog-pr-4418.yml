@@ -1,0 +1,5 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "HEFA Knights now spawn with their armor again"
+  - balance: "HEFA Knights now spawn with 2 HEFA in their helmets"

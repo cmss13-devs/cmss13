@@ -354,6 +354,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	new_pylon.comms_relay_connection()
 
+	START_PROCESSING(SSobj, src)
+
 /// Handles removing corruption effects from the comms relay
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/uncorrupt(datum/deleting_datum)
 	SIGNAL_HANDLER

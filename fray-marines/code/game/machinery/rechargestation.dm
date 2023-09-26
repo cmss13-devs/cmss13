@@ -50,7 +50,7 @@
 			// Сращивание кости
 			if(!doing_stuff)
 				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
-					if (!doing_stuff && current_limb & LIMB_BROKEN)
+					if (!doing_stuff && current_limb.status & LIMB_BROKEN)
 						to_chat(occupant, "Обнаружен отказ компонента: '[current_limb]'. Начало процесса востановления...")
 						doing_stuff = TRUE
 						sleep(BONEGEL_REPAIR_MAX_DURATION + BONESETTER_MAX_DURATION)
@@ -63,9 +63,9 @@
 			// Печать новой конечности
 			if(!doing_stuff)
 				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
-					if (!doing_stuff && (current_limb & LIMB_DESTROYED && !(current_limb.parent.status & LIMB_DESTROYED)))
+					if (!doing_stuff && current_limb.parent && !(current_limb.parent.status & LIMB_DESTROYED) && current_limb.status & LIMB_DESTROYED)
 						doing_stuff = TRUE
-						if (current_limb & LIMB_AMPUTATED)
+						if (current_limb.status & LIMB_AMPUTATED)
 							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb]'. Печать запасной части...")
 							sleep(LIMB_PRINTING_TIME)
 							current_limb.robotize(synth_skin = TRUE)

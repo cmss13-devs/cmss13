@@ -551,7 +551,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
-	 //todo: upon joining user should have the base map without layered icons as default. Otherwise loads failed png for a new user.
+	//todo: upon joining user should have the base map without layered icons as default. Otherwise loads failed png for a new user.
 	data["flatImage"] = null
 
 	data["svgData"] = null

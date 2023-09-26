@@ -243,8 +243,8 @@ function spell_cat_check(cat) {
 	}
 }
 
-function tab_change(tab) {
-	if (tab == current_tab) return;
+function tab_change(tab, force) {
+	if (!force && tab == current_tab) return;
 	if (document.getElementById(current_tab))
 		document.getElementById(current_tab).className = "button"; // disable active on last button
 	current_tab = tab;
@@ -1057,7 +1057,6 @@ function open_options_menu() {
 Byond.subscribeTo("change_fontsize", function (new_fontsize) {
 	current_fontsize = parseInt(new_fontsize);
 	localStorage.setItem("fontsize", current_fontsize.toString());
-	document.getElementById("statcontent").style.fontSize =
-		current_fontsize + "px";
+	statcontentdiv.style.fontSize = current_fontsize + "px";
 	tab_change(current_tab, true); // Redraw the current tab
 });

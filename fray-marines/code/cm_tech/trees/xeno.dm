@@ -29,7 +29,7 @@
 /datum/techtree/xenomorph/on_tier_change(datum/tier/oldtier)
 	if(tier.tier < 2)
 		return //No need to announce tier updates for tier 1
-	var/title = "Вы ощущаете, что..."
+	var/title = "Вы ощущаете, что . . ."
 	var/input = "Улей стал сильнее. Открыт [tier.tier] уровень эволюции.\n\nДА ЗДРАВСТВУЕТ КОРОЛЕВА!"
 	xeno_announcement(input, hivenumber, title)
 

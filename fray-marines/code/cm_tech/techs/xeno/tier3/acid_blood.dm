@@ -14,7 +14,7 @@
 	. = ..()
 	.["stats"] += list(
 		list(
-			"content" = "Acid Blood Damage Increase: [(acid_damage_mult-1)*100]%",
+			"content" = "Acid Blood Damage Increase: +[(acid_damage_mult-1)*100]%",
 			"color" = "xeno",
 			"icon" = "biohazard"
 		)

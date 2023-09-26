@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Dropdown, Section, Stack, ProgressBar, Box, Tabs, LabeledList } from '../components';
+import { Button, Dropdown, Section, Stack, ProgressBar, Box, Tabs } from '../components';
 import { Window } from '../layouts';
 import { CanvasLayer } from './CanvasLayer';
 import { DrawnMap } from './DrawnMap';

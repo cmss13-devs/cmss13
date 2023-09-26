@@ -337,11 +337,12 @@
 /obj/item/weapon/yautja/combistick/IsShield()
 	return on
 
-/obj/item/weapon/yautja/combistick/verb/use_unique_action()
+/obj/item/weapon/yautja/combistick/verb/fold_combistick()
 	set category = "Weapons"
-	set name = "Unique Action"
-	set desc = "Activate or deactivate the combistick."
-	set src in usr
+	set name = "Fold Combistick"
+	set desc = "Fold or unfold the combistick."
+	set src = usr.contents
+
 	unique_action(usr)
 
 /obj/item/weapon/yautja/combistick/attack_self(mob/user)

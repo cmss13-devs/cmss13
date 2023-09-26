@@ -1,0 +1,4 @@
+author: "Casper"
+delete-after: True
+changes:
+  - bugfix: "fixed reagent canister being deleted if ejected with your hands full"

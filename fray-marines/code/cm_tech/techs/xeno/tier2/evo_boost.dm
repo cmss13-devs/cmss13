@@ -7,7 +7,7 @@
 
 	required_points = 10
 	increase_per_purchase = 1
-	tier = /datum/tier/two/additional
+	tier = /datum/tier/two
 
 	var/evo_rate = 5
 	var/duration = 5 MINUTES

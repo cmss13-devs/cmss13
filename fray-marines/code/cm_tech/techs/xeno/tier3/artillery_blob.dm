@@ -7,7 +7,7 @@
 
 	required_points = 2
 	increase_per_purchase = 0.5
-	tier = /datum/tier/three/additional
+	tier = /datum/tier/three
 
 	var/charges_to_give = 1
 

@@ -8,7 +8,7 @@
 	flags = TREE_FLAG_XENO
 
 	required_points = 4
-	tier = /datum/tier/two/additional
+	tier = /datum/tier/two
 
 	var/shield_amount = 200
 

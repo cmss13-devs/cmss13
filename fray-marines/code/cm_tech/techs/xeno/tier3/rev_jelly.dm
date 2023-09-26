@@ -9,7 +9,7 @@
 
 	required_points = 15
 	increase_per_purchase = 1
-	tier = /datum/tier/three/additional
+	tier = /datum/tier/three
 
 	var/amount_to_give = 6
 

@@ -1032,6 +1032,9 @@
 /obj/structure/machinery/m56d_hmg/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	SIGNAL_HANDLER
 
+	if (burst_firing)
+		return
+
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
 		return
@@ -1060,7 +1063,8 @@
 		reset_fire()
 		display_ammo()
 		return
-	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+	else if(gun_firemode != GUN_FIREMODE_SEMIAUTO)
+		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
 /// setter for fire_delay
 /obj/structure/machinery/m56d_hmg/proc/set_fire_delay(value)

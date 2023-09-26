@@ -69,7 +69,7 @@
 	if(tgui_alert(src, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 		return
 
-	src << link(URL_ISSUE_TRACKER)
+	src << link(CONFIG_GET(string/githuburl))
 	return
 
 /client/verb/set_fps()

@@ -95,43 +95,26 @@
 
 
 //Recursive function to find everything a mob is holding.
-/mob/living/get_contents(obj/item/storage/Storage = null)
-	var/list/L = list()
+/mob/living/get_contents(obj/passed_object, recursion = 0)
+	var/list/total_contents = list()
 
-	if(Storage) //If it called itself
-		L += Storage.return_inv()
+	if(passed_object)
+		if(recursion > 8)
+			debug_log("Recursion went long for get_contents() for [src] ending at the object [passed_object]. Likely object_one is holding object_two which is holding object_one ad naseum.")
+			return total_contents
 
-		//Leave this commented out, it will cause storage items to exponentially add duplicate to the list
-		//for(var/obj/item/storage/S in Storage.return_inv()) //Check for storage items
-		// L += get_contents(S)
+		total_contents += passed_object.contents
 
-		for(var/obj/item/gift/G in Storage.return_inv()) //Check for gift-wrapped items
-			L += G.gift
-			if(isstorage(G.gift))
-				L += get_contents(G.gift)
+		for(var/obj/checked_object in total_contents)
+			total_contents += get_contents(checked_object, recursion + 1)
 
-		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
-			L += D.wrapped
-			if(isstorage(D.wrapped)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
+		return total_contents
 
-	else
+	total_contents += contents
+	for(var/obj/checked_object in total_contents)
+		total_contents += get_contents(checked_object, recursion + 1)
 
-		L += src.contents
-		for(var/obj/item/storage/S in src.contents) //Check for storage items
-			L += get_contents(S)
-
-		for(var/obj/item/gift/G in src.contents) //Check for gift-wrapped items
-			L += G.gift
-			if(isstorage(G.gift))
-				L += get_contents(G.gift)
-
-		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
-			L += D.wrapped
-			if(isstorage(D.wrapped)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
+	return total_contents
 
 /mob/living/proc/check_contents_for(A)
 	var/list/L = src.get_contents()

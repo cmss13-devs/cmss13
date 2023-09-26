@@ -5,7 +5,7 @@
 	name = "marine combat gloves"
 	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'."
 	icon_state = "black"
-	item_state = "bgloves"
+	item_state = "black"
 	siemens_coefficient = 0.6
 	permeability_coefficient = 0.05
 	flags_cold_protection = BODY_FLAG_HANDS
@@ -44,6 +44,13 @@
 
 /obj/item/clothing/gloves/marine/black
 	name = "marine black combat gloves"
+	adopts_squad_color = FALSE
+
+/obj/item/clothing/gloves/marine/brown
+	name = "marine brown combat gloves"
+	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These are brown instead of the classic black."
+	icon_state = "brown"
+	item_state = "brown"
 	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/officer
@@ -115,6 +122,10 @@
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/veteran/upp
+	icon_state = "brown"
+	item_state = "brown"
+
 /obj/item/clothing/gloves/marine/veteran/insulated
 	name = "insulated armored gloves"
 	desc = "Non-standard kevlon fiber gloves. These are apparently ESPECIALLY insulated."
@@ -146,7 +157,7 @@
 	name = "dress gloves"
 	desc = "A pair of fashionable white gloves, worn by marines in dress."
 	icon_state = "white"
-	item_state = "white"
+	item_state = "marine_white"
 	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/souto

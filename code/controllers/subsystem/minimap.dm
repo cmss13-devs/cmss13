@@ -551,8 +551,9 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
+	 //todo: upon joining user should have the base map without layered icons as default. Otherwise loads failed png for a new user.
+	data["flatImage"] = null
 
-	data["flatImage"] = get_current_map(user, TRUE)
 	data["svgData"] = null
 
 	data["mapRef"] = map_holder.map_ref
@@ -587,6 +588,7 @@ SUBSYSTEM_DEF(minimaps)
 		data["canDraw"] = TRUE
 		data["canViewHome"] = TRUE
 		distribute_current_map_png(user)
+		data["flatImage"] = get_current_map(user, TRUE)
 
 	return data
 
@@ -612,8 +614,6 @@ SUBSYSTEM_DEF(minimaps)
 
 		if ("updateCanvas")
 			toolbar_updated_selection = "export"
-			COOLDOWN_START(src, canvas_cooldown, canvas_cooldown_time)
-
 			updated_canvas = TRUE
 			. = TRUE
 
@@ -638,6 +638,7 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("selectAnnouncement")
+			COOLDOWN_START(src, canvas_cooldown, canvas_cooldown_time)
 
 			var/current_map_asset = get_current_map(user, TRUE)
 			var/datum/svg_overlay/svg_overlay = new(params["image"], current_map_asset)

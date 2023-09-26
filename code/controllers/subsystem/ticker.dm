@@ -101,7 +101,7 @@ SUBSYSTEM_DEF(ticker)
 				mode.declare_completion(force_ending)
 				REDIS_PUBLISH("byond.round", "type" = "round-complete")
 				flash_clients()
-				if(text2num(SSperf_logging?.round?.id) % CONFIG_GET(number/gamemode_rounds_needed) == 0)
+				if(Check_WO() || text2num(SSperf_logging?.round?.id) % CONFIG_GET(number/gamemode_rounds_needed) == 0)
 					addtimer(CALLBACK(
 						SSvote,
 						/datum/controller/subsystem/vote/proc/initiate_vote,
@@ -109,7 +109,7 @@ SUBSYSTEM_DEF(ticker)
 						"SERVER",
 						CALLBACK(src, PROC_REF(handle_map_reboot)),
 						TRUE
-					), 3 SECONDS)
+					), 3 SECONDS)	
 				else
 					handle_map_reboot()
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)

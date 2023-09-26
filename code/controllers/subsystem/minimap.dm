@@ -341,24 +341,49 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/proc/get_current_map(mob/user)
 	var/datum/svg_overlay/selected_svg
 	var/list/map_list
-
 	if(ishuman(user))
 		map_list = GLOB.uscm_flat_tacmap
 	else
 		if(!isxeno(user))
-			return
+			return selected_svg
 		map_list = GLOB.xeno_flat_tacmap
 
 	if(map_list.len == 0)
-		return
+		return selected_svg
 
 	selected_svg = map_list[map_list.len]
 
-	if(!selected_svg)
-		return
+	return selected_svg
 
-	svg = selected_svg.svg_data
-	drawn_map_png_asset = selected_svg.flat_tacmap
+/datum/tacmap/proc/distribute_current_map_png(mob/user)
+	if(!COOLDOWN_FINISHED(src, flatten_map_cooldown))
+		return
+	var/icon/flat_map = getFlatIcon(map_holder.map)
+	if(!flat_map)
+		to_chat(user, SPAN_WARNING("The tacmap filckers and then shuts off, a critical error has occured")) // uh oh spaghettio
+		return
+	overlay.flat_tacmap = flat_map
+	var/user_faction
+	var/mob/living/carbon/xenomorph/xeno
+	if(isxeno(user))
+		xeno = user
+		user_faction = xeno.hivenumber
+	else
+		user_faction = FACTION_MARINE
+
+	var/list/faction_clients = list()
+	for(var/client/client in GLOB.clients)
+		var/mob/client_mob = client.mob
+		if(isxeno(client_mob))
+			xeno = client_mob
+			if(xeno.hivenumber == user_faction)
+				faction_clients += client
+		else if(client_mob.faction == user_faction)
+			faction_clients += client
+
+	overlay.flat_tacmap = icon2html(overlay.flat_tacmap, faction_clients, sourceonly = TRUE)
+	COOLDOWN_START(src, flatten_map_cooldown, flatten_map_cooldown_time)
+
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
@@ -479,25 +504,26 @@ SUBSYSTEM_DEF(minimaps)
 	var/toolbar_updated_selection = "black"
 
 	var/canvas_cooldown_time = 4 MINUTES
+	var/flatten_map_cooldown_time = 3 MINUTES
 	COOLDOWN_DECLARE(canvas_cooldown)
+	COOLDOWN_DECLARE(flatten_map_cooldown)
+
+	// current flattened map and svg overlay for viewing
+	var/datum/svg_overlay/current_map
 
 	// empty map icon without layered blips.
 	var/base_map_png_asset
-
-	// flattend map asset
-	var/drawn_map_png_asset
-
-	// stored state for the current menu
-	var/current_menu
 	// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
+
+	// theme color for tgui
 	var/theme = DEFAULT_MINIMAP_THEME
-	var/can_draw = FALSE
-	var/can_view_home = FALSE
+
+	//tacmap holder for holding the minimap
 	var/datum/tacmap_holder/map_holder
 
-	// datum containing the flattend map and svg
-	var/datum/svg_overlay/svg
+	// datum containing the svg and flat map to be stored globally
+	var/datum/svg_overlay/overlay
 
 /datum/tacmap/New(atom/source, minimap_type)
 	allowed_flags = minimap_type
@@ -527,73 +553,26 @@ SUBSYSTEM_DEF(minimaps)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 
-		get_current_map(user)
-		var/mob/living/carbon/xenomorph/xeno_user
-		if(isxeno(user))
-			xeno_user = user
-
-		if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
-			base_map_png_asset = icon2html(map_holder.map, user, sourceonly = TRUE)
-			current_menu = "home"
-			can_draw = TRUE
-			can_view_home = TRUE
-		else
-			current_menu = "old_canvas"
-
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
-
-/datum/tacmap/xeno/xeno_view/tgui_interact(mob/user, datum/tgui/ui)
-	if(!map_holder)
-		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[1])
-			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
-
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-
-		get_current_map(user)
-		current_menu = "home"
-		can_view_home = TRUE
-
-		user.client.register_map_obj(map_holder.map)
-		ui = new(user, src, "TacticalMap")
-		ui.open()
-
-/datum/tacmap/marine_view_only/tgui_interact(mob/user, datum/tgui/ui)
-	if(!map_holder)
-		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[1])
-			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
-
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		get_current_map(user)
-		current_menu = "old_canvas"
-
-		user.client.register_map_obj(map_holder.map)
-		ui = new(user, src, "TacticalMap")
-		ui.open()
-
 
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
 
 	// empty map dmi image used as the background for the canvas
 	data["imageSrc"] = base_map_png_asset
-
-	data["canDraw"] = can_draw
-	data["canViewHome"] = can_view_home
-
+	data["canDraw"] = FALSE
+	data["canViewHome"] = FALSE
 	//flat image of most recently announced tacmap
-	data["flatImage"] = drawn_map_png_asset
+	data["flatImage"] = null
+	data["svgData"] = null
 
-	data["svgData"] = svg
+	current_map = get_current_map(user)
+	if(current_map)
+		data["flatImage"] = current_map.flat_tacmap
+		data["svgData"] = current_map.svg_data
 
-	data["currentMenu"] = current_menu
 	data["themeId"] = theme
 	data["mapRef"] = map_holder.map_ref
 	data["toolbarColorSelection"] = toolbar_color_selection
@@ -602,6 +581,19 @@ SUBSYSTEM_DEF(minimaps)
 	data["canvasCooldown"] = canvas_cooldown
 	data["nextCanvasTime"] = canvas_cooldown_time
 	data["updatedCanvas"] = updated_canvas
+
+	var/mob/living/carbon/xenomorph/xeno_user
+	if(isxeno(user))
+		xeno_user = user
+	if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
+		data["canDraw"] = TRUE
+		data["canViewHome"] = TRUE
+		if(!current_map)
+			data["flatImage"] = icon2html(map_holder.map, user, sourceonly = TRUE)
+	else if(xeno_user.hivenumber == XENO_HIVE_NORMAL && !isqueen(xeno_user))
+		data["canViewHome"] = TRUE
+		data["canDraw"] = FALSE
+
 	return data
 
 /datum/tacmap/ui_close(mob/user)
@@ -619,9 +611,8 @@ SUBSYSTEM_DEF(minimaps)
 
 	switch (action)
 		if ("menuSelect")
-			if(params["selection"] == "old_canvas")
-				get_current_map(user)
-			current_menu = params["selection"]
+			if(params["selection"] == "new canvas")
+				distribute_current_map_png(user)
 			. = TRUE
 
 		if ("clearCanvas")
@@ -632,8 +623,6 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("updateCanvas")
-			if(alert(user, "Are you sure you want to update the canvas changes?", "Confirm?", "Yes", "No") == "No")
-				return
 			toolbar_updated_selection = "export"
 			COOLDOWN_START(src, canvas_cooldown, canvas_cooldown_time)
 
@@ -655,32 +644,14 @@ SUBSYSTEM_DEF(minimaps)
 
 		if ("selectAnnouncement")
 
-			var/icon/flat_map = getFlatIcon(map_holder.map)
-			var/datum/svg_overlay/overlay = new(params["image"], flat_map)
+			overlay.svg_data = params["image"]
 
 			toolbar_updated_selection = "export"
 
 			var/outgoing_message = stripped_multiline_input(user, "Optional message to announce with the tactical map", "Tactical Map Announcement", "")
 			var/signed
 
-			var/user_faction
 			var/mob/living/carbon/xenomorph/xeno
-			if(isxeno(user))
-				xeno = user
-				user_faction = xeno.hivenumber
-			else
-				user_faction = FACTION_MARINE
-
-			var/list/faction_clients = list()
-			for(var/client/client in GLOB.clients)
-				var/mob/client_mob = client.mob
-				if(isxeno(client_mob))
-					xeno = client_mob
-					if(xeno.hivenumber == user_faction)
-						faction_clients += client
-				else if(client_mob.faction == user_faction)
-					faction_clients += client
-			overlay.flat_tacmap = icon2html(overlay.flat_tacmap, faction_clients, sourceonly = TRUE)
 
 			if(isxeno(user))
 				xeno = user
@@ -740,8 +711,3 @@ SUBSYSTEM_DEF(minimaps)
 /datum/svg_overlay
 	var/svg_data
 	var/flat_tacmap
-
-/datum/svg_overlay/New(svg_data, flat_tacmap)
-	. = ..()
-	src.svg_data = svg_data
-	src.flat_tacmap = flat_tacmap

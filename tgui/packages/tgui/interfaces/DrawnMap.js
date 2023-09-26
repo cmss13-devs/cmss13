@@ -9,6 +9,7 @@ export class DrawnMap extends Component {
   }
 
   parseSvgData(svgDataArray) {
+    if (!svgDataArray) return null;
     let lines = [];
     for (let i = 0; i < svgDataArray.length; i += 5) {
       const x1 = svgDataArray[i];

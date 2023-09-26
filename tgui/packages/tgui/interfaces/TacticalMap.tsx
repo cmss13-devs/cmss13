@@ -1,5 +1,5 @@
-import { useBackend } from '../backend';
-import { Button, Dropdown, Section, Stack, ProgressBar, Box } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Button, Dropdown, Section, Stack, ProgressBar, Box, Tabs, LabeledList } from '../components';
 import { Window } from '../layouts';
 import { CanvasLayer } from './CanvasLayer';
 import { DrawnMap } from './DrawnMap';
@@ -9,11 +9,10 @@ interface TacMapProps {
   toolbarColorSelection: string;
   toolbarUpdatedSelection: string;
   updatedCanvas: boolean;
-  imageSrc: string;
   themeId: number;
   svgData: any;
-  canViewHome: number;
-  canDraw: number;
+  canViewHome: boolean;
+  canDraw: boolean;
   flatImage: string;
   mapRef: any;
   currentMenu: string;
@@ -23,12 +22,32 @@ interface TacMapProps {
   exportedTacMapImage: any;
 }
 
-const PAGES = {
-  'view': () => ViewMapPanel,
-  'old_canvas': () => OldMapPanel,
-  'draw': () => DrawMapPanel,
-  'home': () => HomePanel,
-};
+const PAGES = [
+  {
+    title: 'tacmap',
+    component: () => ViewMapPanel,
+    icon: 'map',
+    canAccess: (data) => {
+      return data.canViewHome;
+    },
+  },
+  {
+    title: 'old canvas',
+    component: () => OldMapPanel,
+    icon: 'eye',
+    canAccess: () => {
+      return true;
+    },
+  },
+  {
+    title: 'new canvas',
+    component: () => DrawMapPanel,
+    icon: 'paintbrush',
+    canAccess: (data) => {
+      return data.canDraw || data.canViewHome;
+    },
+  },
+];
 
 const themes = [
   {
@@ -67,102 +86,77 @@ const colors: Record<string, string> = {
 
 export const TacticalMap = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
+  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
+  const PageComponent = PAGES[pageIndex].component();
 
-  const PageComponent = PAGES[data.currentMenu]();
+  const handleTacmapOnClick = (i, pageTitle) => {
+    setPageIndex(i);
+    act('menuSelect', {
+      selection: pageTitle,
+    });
+  };
 
   return (
-    <Window
-      width={650}
-      height={800}
-      theme={themes[data.themeId]['theme']}
-      title={'Tactical Map'}>
+    <Window width={650} height={800} theme={themes[data.themeId]['theme']}>
       <Window.Content>
-        {data.canViewHome === 1 && (
-          <Button
-            color={themes[data.themeId]['button-color']}
-            content={'home'}
-            icon={'home'}
-            onClick={() =>
-              act('menuSelect', {
-                selection: 'home',
-              })
-            }
-          />
-        )}
+        <Section
+          fontSize="20px"
+          textAlign="center"
+          title="Tactical Map Options"
+          justify="space-evenly">
+          <Stack justify="center" align="center" fontSize="15px">
+            <Stack.Item>
+              <Tabs>
+                {PAGES.map((page, i) => {
+                  if (page.canAccess && !page.canAccess(data)) {
+                    return;
+                  }
+                  return (
+                    <Tabs.Tab
+                      key={i}
+                      color={themes[data.themeId]['button-color']}
+                      selected={i === pageIndex}
+                      icon={page.icon}
+                      onClick={() => handleTacmapOnClick(i, page.title)}>
+                      {page.title}
+                    </Tabs.Tab>
+                  );
+                })}
+              </Tabs>
+            </Stack.Item>
+          </Stack>
+        </Section>
         <PageComponent />
       </Window.Content>
     </Window>
   );
 };
 
-const HomePanel = (props, context) => {
-  const { data, act } = useBackend<TacMapProps>(context);
-
+const ViewMapPanel = (props, context) => {
+  const { data } = useBackend<TacMapProps>(context);
   return (
-    <Section fontSize="20px" textAlign="center" title="Tactical Map Options">
-      <Stack justify="center" align="center" fontSize="15px">
-        <Stack.Item grow>
-          <Button
-            color={themes[data.themeId]['button-color']}
-            content={'tacmap'}
-            icon={'map'}
-            onClick={() =>
-              act('menuSelect', {
-                selection: 'view',
-              })
-            }
-          />
-        </Stack.Item>
-        <Stack.Item grow>
-          <Button
-            color={themes[data.themeId]['button-color']}
-            content={'old canvas'}
-            icon={'eye'}
-            onClick={() =>
-              act('menuSelect', {
-                selection: 'old_canvas',
-              })
-            }
-          />
-        </Stack.Item>
-        {data.canDraw === 1 && (
-          <Stack.Item grow>
-            <Button
-              color={themes[data.themeId]['button-color']}
-              content={'new canvas'}
-              icon={'paintbrush'}
-              onClick={() =>
-                act('menuSelect', {
-                  selection: 'draw',
-                })
-              }
-            />
-          </Stack.Item>
-        )}
-      </Stack>
+    <Section fill>
+      <ByondUi
+        params={{
+          id: data.mapRef,
+          type: 'map',
+        }}
+        class="TacticalMap"
+      />
     </Section>
   );
 };
 
-const ViewMapPanel = (props, context) => {
-  const { data, act } = useBackend<TacMapProps>(context);
-  return (
-    <ByondUi
-      params={{
-        id: data.mapRef,
-        type: 'map',
-      }}
-      class="TacticalMap"
-    />
-  );
-};
-
 const OldMapPanel = (props, context) => {
-  const { data, act } = useBackend<TacMapProps>(context);
+  const { data } = useBackend<TacMapProps>(context);
   return (
-    data.flatImage && (
-      <DrawnMap svgData={data.svgData} flatImage={data.flatImage} />
-    )
+    <Section fill justify="center" align="center" fontSize="30px">
+      {data.flatImage ? (
+        <DrawnMap svgData={data.svgData} flatImage={data.flatImage} />
+      ) : (
+        'No Tactical Map Announcement Found'
+      )}
+    </Section>
   );
 };
 
@@ -274,7 +268,7 @@ const DrawMapPanel = (props, context) => {
       <Section>
         <CanvasLayer
           selection={handleColorSelection()}
-          imageSrc={data.imageSrc}
+          imageSrc={data.flatImage}
           onImageExport={handleTacMapExport}
         />
       </Section>

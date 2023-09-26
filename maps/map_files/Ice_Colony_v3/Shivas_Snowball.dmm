@@ -14647,10 +14647,6 @@
 	icon_state = "warnplate"
 	},
 /area/shiva/interior/colony/medseceng)
-"jzd" = (
-/obj/structure/machinery/sensortower,
-/turf/open/auto_turf/snow/layer2,
-/area/shiva/interior/colony/medseceng)
 "jAg" = (
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -60481,7 +60477,7 @@ amU
 aek
 eAZ
 oYw
-jzd
+eAZ
 aSi
 eAZ
 ajT

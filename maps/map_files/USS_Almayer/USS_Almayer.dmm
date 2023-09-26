@@ -2132,7 +2132,7 @@
 	dir = 5;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "agP" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/floor/grass,
@@ -8241,7 +8241,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "ayP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -8736,7 +8736,7 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aAj" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -8748,7 +8748,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aAl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -8762,7 +8762,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aAq" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -9204,7 +9204,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aBN" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -9291,7 +9291,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aCa" = (
 /obj/structure/window/reinforced/toughened{
 	dir = 4
@@ -9382,7 +9382,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aCl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -9650,7 +9650,7 @@
 	},
 /obj/structure/machinery/computer/working_joe{
 	layer = 3.2;
-	pixel_x = -20
+	pixel_x = -17
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -9751,7 +9751,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aDO" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -9923,7 +9923,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aEI" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -11576,7 +11576,7 @@
 /turf/open/floor/almayer{
 	icon_state = "silverfull"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aLQ" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -12362,35 +12362,29 @@
 "aPB" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door_control{
-	id = "bot_armory";
-	name = "Ship's Armory Lockdown";
-	pixel_y = -4;
-	req_one_access_txt = "1;4";
-	pixel_x = 7
-	},
-/obj/structure/machinery/door_control{
 	id = "Hangar Lockdown";
 	name = "Hangar Lockdown";
 	pixel_y = -4;
 	req_access_txt = "1";
-	pixel_x = -6
-	},
-/obj/structure/machinery/door_control{
-	id = "CIC_armory";
-	name = "CIC Armory Lockdown";
-	pixel_y = 4;
-	req_one_access_txt = "1;4";
 	pixel_x = 7
 	},
 /obj/structure/machinery/door_control{
 	id = "CIC Lockdown";
 	name = "CIC Lockdown";
-	pixel_y = 4;
+	pixel_y = 5;
 	req_access_txt = "1";
-	pixel_x = -6
+	pixel_x = 7
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 8
+	},
+/obj/structure/transmitter/rotary{
+	name = "Combat Information Center Reserve Telephone";
+	phone_category = "Command";
+	phone_id = "Combat Information Center Second Line";
+	pixel_y = 2;
+	pixel_x = -5;
+	plane = -4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -13184,7 +13178,7 @@
 	dir = 1
 	},
 /obj/structure/surface/rack{
-	layer = 3.5
+	layer = 3
 	},
 /obj/item/device/megaphone{
 	layer = 3.525
@@ -13680,7 +13674,7 @@
 	dir = 6;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "aVI" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/chem_dispenser/soda{
@@ -25416,7 +25410,7 @@
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "bZa" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -31333,7 +31327,7 @@
 	icon_state = "pipe-j2"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "duo" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 8
@@ -33735,7 +33729,6 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
-/obj/structure/bed/chair,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -35411,7 +35404,7 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "fau" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/junction{
@@ -37396,6 +37389,7 @@
 /area/almayer/medical/upper_medical)
 "fQF" = (
 /obj/structure/surface/rack,
+/obj/item/storage/bag/plasticbag,
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
@@ -37427,6 +37421,16 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
+"fRG" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silvercorner"
+	},
+/area/almayer/command/cichallway)
 "fRN" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8;
@@ -39743,7 +39747,7 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "gPc" = (
 /obj/structure/machinery/power/terminal{
 	dir = 1
@@ -40571,7 +40575,7 @@
 	pixel_y = 8;
 	layer = 3.1;
 	plane = -4;
-	pixel_x = -4
+	pixel_x = -6
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
@@ -42842,12 +42846,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
-"iff" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/almayer/lifeboat_pumps/north1)
 "ifR" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -43361,7 +43359,7 @@
 /turf/open/floor/almayer{
 	icon_state = "sterile"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "irI" = (
 /obj/structure/sign/safety/maint{
 	pixel_y = 32
@@ -44579,7 +44577,7 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "iQL" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
@@ -45858,7 +45856,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "jox" = (
 /obj/structure/machinery/brig_cell/cell_3{
 	pixel_x = -32
@@ -48582,7 +48580,7 @@
 	dir = 1;
 	icon_state = "bluecorner"
 	},
-/area/almayer/lifeboat_pumps/north1)
+/area/almayer/command/cichallway)
 "kAm" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
@@ -49271,7 +49269,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "kOG" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/sign/safety/maint{
@@ -49850,7 +49848,7 @@
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "lbb" = (
 /obj/structure/surface/table/almayer,
 /obj/item/organ/heart/prosthetic{
@@ -55758,9 +55756,8 @@
 	id = "CO-Office";
 	name = "Door Control";
 	normaldoorcontrol = 1;
-	pixel_x = 28;
 	req_access_txt = "31";
-	pixel_y = 8
+	pixel_y = 3
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/transmitter/rotary{
@@ -55772,11 +55769,11 @@
 	},
 /obj/item/ashtray/bronze{
 	pixel_y = -3;
-	pixel_x = 14
+	pixel_x = 12
 	},
 /obj/item/device/flashlight/lamp/green{
-	pixel_y = 10;
-	pixel_x = 16
+	pixel_y = 7;
+	pixel_x = 22
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -55795,23 +55792,29 @@
 	plane = -4
 	},
 /obj/structure/transmitter/rotary{
-	name = "Combat Information Center Reserve Telephone";
-	phone_category = "Command";
-	phone_id = "Combat Information Center Second Line";
-	pixel_y = 12;
-	pixel_x = -6;
-	plane = -4
-	},
-/obj/structure/transmitter/rotary{
 	name = "Combat Information Center Telephone";
 	phone_category = "Command";
 	phone_id = "Combat Information Center First Line";
-	pixel_y = 7;
-	pixel_x = 7;
+	pixel_y = 12;
+	pixel_x = -5;
 	plane = -4
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 8
+	},
+/obj/structure/machinery/door_control{
+	id = "CIC_armory";
+	name = "CIC Armory Lockdown";
+	pixel_y = 4;
+	req_one_access_txt = "1;4";
+	pixel_x = 7
+	},
+/obj/structure/machinery/door_control{
+	id = "bot_armory";
+	name = "Ship's Armory Lockdown";
+	pixel_y = 12;
+	req_one_access_txt = "1;4";
+	pixel_x = 7
 	},
 /obj/item/device/cotablet{
 	pixel_x = -1;
@@ -57327,13 +57330,6 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/engineering/laundry)
-"odI" = (
-/obj/structure/bed/chair,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "red"
-	},
-/area/almayer/shipboard/port_missiles)
 "odN" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -58090,12 +58086,12 @@
 	},
 /obj/item/storage/box/ids{
 	pixel_y = 10;
-	pixel_x = -5;
+	pixel_x = -2;
 	layer = 3.2
 	},
 /obj/item/storage/box/ids{
 	pixel_y = 3;
-	pixel_x = -5;
+	pixel_x = -2;
 	layer = 3.2
 	},
 /turf/open/floor/almayer{
@@ -60182,8 +60178,8 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
-/obj/item/tool/weldingtool,
-/obj/item/tool/weldingtool,
+/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool/largetank,
 /obj/item/clothing/head/welding,
 /obj/item/clothing/head/welding,
 /obj/item/device/reagent_scanner,
@@ -61107,7 +61103,7 @@
 	dir = 8;
 	icon_state = "silvercorner"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "pJR" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
@@ -62399,7 +62395,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "qjF" = (
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer{
@@ -63829,7 +63825,7 @@
 	dir = 1;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "qNv" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/pen,
@@ -64112,6 +64108,7 @@
 	},
 /area/almayer/squads/charlie_delta_shared)
 "qUH" = (
+/obj/item/storage/bag/plasticbag,
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -65158,7 +65155,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "rqb" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -72563,7 +72560,12 @@
 	pixel_y = 2
 	},
 /obj/structure/largecrate/random/case,
-/obj/effect/spawner/prop_gun/m41aMK1{
+/obj/item/prop{
+	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. The trigger is missing, the barrel is bent, and it no longer appropriately feeds magazines.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "m41amk1_e";
+	item_state = "m41amk1";
+	name = "\improper Broken M41A pulse rifle";
 	pixel_y = 7
 	},
 /obj/item/prop/helmetgarb/gunoil{
@@ -74002,7 +74004,7 @@
 /obj/structure/machinery/computer/card{
 	pixel_y = 0;
 	layer = 3.125;
-	pixel_x = -12
+	pixel_x = -15
 	},
 /obj/structure/machinery/computer/squad_changer{
 	layer = 3.125;
@@ -74012,7 +74014,7 @@
 /obj/item/device/flashlight/lamp{
 	pixel_y = 8;
 	layer = 3.1;
-	pixel_x = 5
+	pixel_x = 3
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -74365,7 +74367,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "vdM" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -76435,26 +76437,26 @@
 /obj/structure/platform/shiva{
 	dir = 1
 	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.525
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.525
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.525
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.525
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.525
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.525
+	},
 /obj/structure/surface/rack{
-	layer = 3.5
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.525
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.525
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.525
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.525
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.525
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.525
+	layer = 3
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -77318,7 +77320,7 @@
 	layer = 3.3
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "whZ" = (
 /obj/structure/sign/safety/refridgeration{
 	pixel_x = 8;
@@ -82558,7 +82560,7 @@
 	dir = 1;
 	icon_state = "silver"
 	},
-/area/almayer/command/cic)
+/area/almayer/command/cichallway)
 "ygy" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -98087,7 +98089,7 @@ mtl
 kIV
 kIV
 kCi
-odI
+dUI
 kOv
 cRv
 sQF
@@ -102322,7 +102324,7 @@ kcN
 kcN
 agj
 nFS
-kWq
+akL
 wVW
 uTU
 lzt
@@ -102342,7 +102344,7 @@ aIf
 alb
 kqt
 wVW
-ouW
+aKy
 vYM
 mKq
 ceK
@@ -104765,13 +104767,13 @@ lIa
 eco
 vdL
 ygs
-awk
+aKz
 aqF
 akk
 xQa
 vzI
 xwH
-asc
+aic
 bYY
 whB
 gio
@@ -104960,7 +104962,7 @@ evg
 oEf
 aGV
 arR
-ajf
+rmD
 aBH
 vMI
 cqY
@@ -104968,13 +104970,13 @@ bJg
 ufY
 vdL
 ygs
-awk
+aKz
 ayK
 hvv
 aAP
 hvv
 wVW
-asc
+aic
 bYY
 whB
 cRc
@@ -105163,7 +105165,7 @@ waz
 goj
 sFZ
 atP
-iff
+jgJ
 jgJ
 dwb
 rqb
@@ -105177,7 +105179,7 @@ aAf
 aLM
 fat
 iQC
-arP
+fRG
 laV
 qjz
 tvw
@@ -105372,9 +105374,9 @@ awd
 awd
 awd
 awd
-wVW
+awz
 agO
-alX
+aKa
 ayM
 aAj
 aBI
@@ -105382,7 +105384,7 @@ aCk
 aDK
 aEG
 aVH
-wVW
+awz
 awF
 awF
 ecr
@@ -105575,17 +105577,17 @@ tAL
 tAL
 tAL
 tAL
-wVW
-wVW
+awz
+awz
 rpZ
-wVW
+awz
 aAl
 jnX
 dum
-wVW
-wVW
-wVW
-wVW
+awz
+awz
+awz
+awz
 awF
 awF
 cST
@@ -105778,10 +105780,10 @@ awY
 avU
 avU
 awY
-wVW
+awz
 kOB
 irD
-wVW
+awz
 jnw
 aBq
 pRL
@@ -105981,10 +105983,10 @@ cJu
 pXx
 pXx
 oBA
-wVW
-wVW
-wVW
-wVW
+awz
+awz
+awz
+awz
 asj
 atL
 aCl

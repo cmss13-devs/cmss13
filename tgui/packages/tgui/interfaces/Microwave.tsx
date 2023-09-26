@@ -2,8 +2,21 @@ import { useBackend } from '../backend';
 import { Button, NoticeBox, Section, Flex, Box } from '../components';
 import { Window } from '../layouts';
 
+type Ingredient = {
+  name: string;
+  count: number;
+  measure: string;
+};
+
+type BackendContext = {
+  operating: 0 | 1;
+  broken: 0 | 1;
+  dirty: 0 | 1;
+  ingredients: Ingredient[];
+};
+
 export const Microwave = (props, context) => {
-  const { data, act } = useBackend(context);
+  const { data, act } = useBackend<BackendContext>(context);
   const { operating, broken, dirty, ingredients } = data;
 
   return (

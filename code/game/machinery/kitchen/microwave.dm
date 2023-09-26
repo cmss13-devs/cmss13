@@ -176,7 +176,7 @@
 	var/list/data = list()
 
 	data["operating"] = operating
-	data["broken"] = broken
+	data["broken"] = (broken > 0)
 	data["dirty"] = (dirty == 100)
 
 	var/list/ingredients = list()

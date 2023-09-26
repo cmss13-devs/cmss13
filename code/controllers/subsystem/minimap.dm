@@ -541,6 +541,9 @@ SUBSYSTEM_DEF(minimaps)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
+		current_map = get_current_map(user)
+		if(!current_map)
+			distribute_current_map_png(user)
 
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
@@ -603,7 +606,7 @@ SUBSYSTEM_DEF(minimaps)
 		if ("menuSelect")
 			if(params["selection"] == "new canvas")
 				distribute_current_map_png(user)
-				current_map = get_current_map(user)
+
 			. = TRUE
 
 		if ("updateCanvas")

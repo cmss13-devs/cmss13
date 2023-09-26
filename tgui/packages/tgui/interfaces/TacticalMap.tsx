@@ -98,7 +98,7 @@ export const TacticalMap = (props, context) => {
   };
 
   return (
-    <Window width={650} height={850} theme={data.isXeno ? "xeno" : "crtblue"}>
+    <Window width={650} height={850} theme={data.isXeno ? 'xeno' : 'crtblue'}>
       <Window.Content>
         <Section
           fontSize="20px"
@@ -115,7 +115,7 @@ export const TacticalMap = (props, context) => {
                   return (
                     <Tabs.Tab
                       key={i}
-                      color={data.isXeno ? "purple" : "blue"}
+                      color={data.isXeno ? 'purple' : 'blue'}
                       selected={i === pageIndex}
                       icon={page.icon}
                       onClick={() => handleTacmapOnClick(i, page.title)}>
@@ -137,15 +137,15 @@ const ViewMapPanel = (props, context) => {
   const { data } = useBackend<TacMapProps>(context);
   return (
     <Section fill>
-      {data.canViewHome === 1 &&
-      <ByondUi
-        params={{
-          id: data.mapRef,
-          type: 'map',
-        }}
-        class="TacticalMap"
-      />
-      }
+      {data.canViewHome === 1 && (
+        <ByondUi
+          params={{
+            id: data.mapRef,
+            type: 'map',
+          }}
+          class="TacticalMap"
+        />
+      )}
     </Section>
   );
 };

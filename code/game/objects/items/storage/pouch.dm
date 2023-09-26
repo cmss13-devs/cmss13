@@ -1052,7 +1052,10 @@
 		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
 		return
 
-	usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
+	var/had_empty_hand = usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
+	if(!had_empty_hand)
+		usr.drop_inv_item_on_ground(inner)
+
 	inner = null
 	update_icon()
 

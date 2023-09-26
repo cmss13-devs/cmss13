@@ -1,0 +1,6 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - rscadd: "Adds upp presets for the unused officer ranks, Kapitan, Lt Kolonel, MajGen, LtGen, Gen, for use in admin events"
+  - rscadd: "Changes UPP conscript rank from weird conscript only rank to Private, moves UPP soldier to PFC, removing the rank gap between soldier and support"
+  - code_imp: "Cleans up UPP rank code by deleting redundant ranks"

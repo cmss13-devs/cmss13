@@ -595,13 +595,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	else
 		. = ..()
 
-/obj/item/storage/backpack/marine/satchel/rto/proc/new_droppod_tech_unlocked(name)
-	playsound(get_turf(loc), 'sound/machines/techpod/techpod_rto_notif.ogg', 100, FALSE, 1, 4)
-
-	if(ismob(loc))
-		var/mob/M = loc
-		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] New droppod available ([name])."))
-
 /obj/item/storage/backpack/marine/satchel/rto/upp_net
 	name = "\improper UPP Radio Telephone Pack"
 	networks_receive = list(FACTION_UPP)

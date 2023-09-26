@@ -2261,13 +2261,6 @@
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
-"bvS" = (
-/obj/structure/bedsheetbin,
-/obj/item/clothing/gloves/marine/veteran/pmc,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
-/area/varadero/interior/laundry)
 "bwz" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva{
@@ -5666,7 +5659,6 @@
 /area/varadero/interior/hall_N)
 "dKm" = (
 /obj/structure/closet/secure_closet/personal/patient,
-/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -16184,7 +16176,6 @@
 /obj/item/bedsheet/hos{
 	layer = 3.1
 	},
-/obj/item/clothing/gloves/marine/veteran/insulated,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "kyh" = (
@@ -50603,7 +50594,7 @@ tvv
 pRP
 sBX
 gmE
-bvS
+nfv
 nfv
 aFh
 uNq

@@ -173,7 +173,7 @@
 	var/list/garb_items
 	var/slots_reserved_for_garb
 
-/obj/item/storage/internal/headgear/can_be_inserted(obj/item/item, stop_messages) //We don't need to stop messages, but it can be left in.
+/obj/item/storage/internal/headgear/can_be_inserted(obj/item/item, mob/user, stop_messages = FALSE) //We don't need to stop messages, but it can be left in.
 	. = ..()
 	if(!.)
 		return

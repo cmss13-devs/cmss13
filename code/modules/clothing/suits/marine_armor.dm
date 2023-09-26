@@ -60,7 +60,8 @@
 	siemens_coefficient = 0.7
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	allowed = list(
-		/obj/item/weapon/gun/,
+		/obj/item/weapon/gun,
+		/obj/item/prop/prop_gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/storage/fancy/cigarettes,
@@ -1598,6 +1599,7 @@
 	specialty = "HEFA Knight"
 	icon_state = "hefadier"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_item = NO_CRYO_STORE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
 	armor_melee = CLOTHING_ARMOR_VERYHIGH

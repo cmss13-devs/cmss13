@@ -36486,7 +36486,6 @@
 /area/almayer/medical/upper_medical)
 "fQF" = (
 /obj/structure/surface/rack,
-/obj/item/storage/bag/plasticbag,
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
@@ -58029,8 +58028,8 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
-/obj/item/tool/weldingtool/largetank,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
+/obj/item/tool/weldingtool,
 /obj/item/clothing/head/welding,
 /obj/item/clothing/head/welding,
 /obj/item/device/reagent_scanner,
@@ -61761,7 +61760,6 @@
 	},
 /area/almayer/squads/charlie_delta_shared)
 "qUH" = (
-/obj/item/storage/bag/plasticbag,
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -69824,12 +69822,7 @@
 	pixel_y = 2
 	},
 /obj/structure/largecrate/random/case,
-/obj/item/prop{
-	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. The trigger is missing, the barrel is bent, and it no longer appropriately feeds magazines.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
-	icon_state = "m41amk1_e";
-	item_state = "m41amk1";
-	name = "\improper Broken M41A pulse rifle";
+/obj/effect/spawner/prop_gun/m41aMK1{
 	pixel_y = 7
 	},
 /obj/item/prop/helmetgarb/gunoil{

@@ -320,7 +320,7 @@ cases. Override_icon_state should be a list.*/
 				var/failure = 0
 
 				for(var/obj/item/I in src.loc)
-					if(!S.can_be_inserted(I, TRUE))
+					if(!S.can_be_inserted(I, user, stop_messages = TRUE))
 						failure = 1
 						continue
 					success = 1
@@ -332,7 +332,7 @@ cases. Override_icon_state should be a list.*/
 				else
 					to_chat(user, SPAN_NOTICE("You fail to pick anything up with [S]."))
 
-			else if(S.can_be_inserted(src))
+			else if(S.can_be_inserted(src, user))
 				S.handle_item_insertion(src, FALSE, user)
 
 	return
@@ -666,11 +666,11 @@ cases. Override_icon_state should be a list.*/
 					for(var/A in H.w_uniform.accessories)
 						if(istype(A, /obj/item/clothing/accessory/storage))
 							var/obj/item/clothing/accessory/storage/S = A
-							if(S.hold.can_be_inserted(src, TRUE))
+							if(S.hold.can_be_inserted(src, M, TRUE))
 								return TRUE
 						else if(istype(A, /obj/item/storage/internal/accessory/holster))
 							var/obj/item/storage/internal/accessory/holster/AH = A
-							if(!(AH.current_gun) && AH.can_be_inserted(src))
+							if(!(AH.current_gun) && AH.can_be_inserted(src, M))
 								return TRUE
 				return FALSE
 			if(WEAR_IN_JACKET)
@@ -678,7 +678,7 @@ cases. Override_icon_state should be a list.*/
 					var/obj/item/clothing/suit/storage/S = H.wear_suit
 					if(istype(S) && S.pockets)//not all suits have pockits
 						var/obj/item/storage/internal/I = S.pockets
-						if(I.can_be_inserted(src,1))
+						if(I.can_be_inserted(src, M, TRUE))
 							return TRUE
 				return FALSE
 			if(WEAR_IN_HELMET)
@@ -686,12 +686,12 @@ cases. Override_icon_state should be a list.*/
 					var/obj/item/clothing/head/helmet/marine/HM = H.head
 					if(istype(HM) && HM.pockets)//not all helmuts have pockits
 						var/obj/item/storage/internal/I = HM.pockets
-						if(I.can_be_inserted(src,TRUE))
+						if(I.can_be_inserted(src, M, TRUE))
 							return TRUE
 			if(WEAR_IN_BACK)
 				if (H.back && isstorage(H.back))
 					var/obj/item/storage/B = H.back
-					if(B.can_be_inserted(src, 1))
+					if(B.can_be_inserted(src, M, TRUE))
 						return TRUE
 				return FALSE
 			if(WEAR_IN_SHOES)
@@ -705,31 +705,31 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_IN_SCABBARD)
 				if(H.back && istype(H.back, /obj/item/storage/large_holster))
 					var/obj/item/storage/large_holster/B = H.back
-					if(B.can_be_inserted(src, 1))
+					if(B.can_be_inserted(src, M, TRUE))
 						return TRUE
 				return FALSE
 			if(WEAR_IN_BELT)
 				if(H.belt &&  isstorage(H.belt))
 					var/obj/item/storage/B = H.belt
-					if(B.can_be_inserted(src, 1))
+					if(B.can_be_inserted(src, M, TRUE))
 						return TRUE
 				return FALSE
 			if(WEAR_IN_J_STORE)
 				if(H.s_store && isstorage(H.s_store))
 					var/obj/item/storage/B = H.s_store
-					if(B.can_be_inserted(src, 1))
+					if(B.can_be_inserted(src, M, TRUE))
 						return TRUE
 				return FALSE
 			if(WEAR_IN_L_STORE)
 				if(H.l_store && istype(H.l_store, /obj/item/storage/pouch))
 					var/obj/item/storage/pouch/P = H.l_store
-					if(P.can_be_inserted(src, 1))
+					if(P.can_be_inserted(src, M, TRUE))
 						return TRUE
 				return FALSE
 			if(WEAR_IN_R_STORE)
 				if(H.r_store && istype(H.r_store, /obj/item/storage/pouch))
 					var/obj/item/storage/pouch/P = H.r_store
-					if(P.can_be_inserted(src, 1))
+					if(P.can_be_inserted(src, M, TRUE))
 						return TRUE
 				return FALSE
 		return FALSE //Unsupported slot

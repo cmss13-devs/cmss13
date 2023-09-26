@@ -249,7 +249,7 @@
 	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status = sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
-	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
+	commander_sidearm   = sanitize_inlist(commander_sidearm, (CO_GUNS + COUNCIL_CO_GUNS), initial(commander_sidearm))
 	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
 	yautja_status = sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))

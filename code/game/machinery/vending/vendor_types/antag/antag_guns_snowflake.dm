@@ -47,9 +47,9 @@
 
 /obj/effect/essentials_set/upp_heavy
 	spawned_gear_list = list(
-		/obj/item/weapon/gun/minigun/upp,
-		/obj/item/ammo_magazine/minigun,
-		/obj/item/ammo_magazine/minigun,
+		/obj/item/weapon/gun/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
 	)
 
 /obj/effect/essentials_set/leader/upp

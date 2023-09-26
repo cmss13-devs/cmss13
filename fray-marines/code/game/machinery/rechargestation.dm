@@ -41,7 +41,7 @@
 						for(var/obj/item/current_implant in current_limb.implants)
 							if(!doing_stuff && !is_type_in_list(current_implant,known_implants))
 								doing_stuff = TRUE
-								to_chat(occupant, "Обнаружены постороние материалы в компоненте: '[current_limb]'. Начало процедуры удаления...")
+								to_chat(occupant, "Обнаружены постороние материалы в компоненте: '[current_limb.display_name]'. Начало процедуры удаления...")
 								sleep(REMOVE_OBJECT_MAX_DURATION)
 								current_limb.implants -= current_implant
 								humanoid_occupant.embedded_items -= current_implant
@@ -51,7 +51,7 @@
 			if(!doing_stuff)
 				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
 					if (!doing_stuff && current_limb.status & LIMB_BROKEN)
-						to_chat(occupant, "Обнаружен отказ компонента: '[current_limb]'. Начало процесса востановления...")
+						to_chat(occupant, "Обнаружен отказ компонента: '[current_limb.display_name]'. Начало процесса востановления...")
 						doing_stuff = TRUE
 						sleep(BONEGEL_REPAIR_MAX_DURATION + BONESETTER_MAX_DURATION)
 						if(current_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
@@ -66,15 +66,15 @@
 					if (!doing_stuff && current_limb.parent && !(current_limb.parent.status & LIMB_DESTROYED) && current_limb.status & LIMB_DESTROYED)
 						doing_stuff = TRUE
 						if (current_limb.status & LIMB_AMPUTATED)
-							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb]'. Печать запасной части...")
+							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb.display_name]'. Печать запасной части...")
 							sleep(LIMB_PRINTING_TIME)
 							current_limb.robotize(synth_skin = TRUE)
 							humanoid_occupant.update_body()
 							humanoid_occupant.updatehealth()
 							humanoid_occupant.UpdateDamageIcon()
-							to_chat(occupant, "Новый компонент подключен: '[current_limb]'. Калибровка завершена.")
+							to_chat(occupant, "Новый компонент подключен: '[current_limb.display_name]'. Калибровка завершена.")
 						else
-							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb]'. Требуется подготовка к замене...")
+							to_chat(occupant, "Критический компонент отсутсвует: '[current_limb.display_name]'. Требуется подготовка к замене...")
 							sleep(SCALPEL_MAX_DURATION)
 							current_limb.setAmputatedTree()
 							to_chat(occupant, "Крепление подготовлено к новому подключению.")

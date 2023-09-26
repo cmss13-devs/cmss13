@@ -312,7 +312,7 @@
 		return
 
 	if(user_xeno.hive.stored_larva < required_larva)
-		to_chat(usr, SPAN_XENOWARNING("Недостаточно закопавшихся грудоломов."))
+		to_chat(usr, SPAN_XENOWARNING("Недостаточно закопанных грудоломов."))
 		return
 
 	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost))
@@ -325,7 +325,9 @@
 
 	var/datum/techtree/xeno_tree = GET_TREE(TREE_XENO)
 	xeno_tree.give_points_over_time(to_give, duration)
+
 	user_xeno.hive.stored_larva--
+	user_xeno.hive.hive_ui.update_burrowed_larva()
 
 	return ..()
 

@@ -7,7 +7,7 @@
 
 	required_points = 10
 	increase_per_purchase = 1
-	tier = /datum/tier/one
+	tier = /datum/tier/one/additional
 
 	var/duration = 5 MINUTES
 	var/active = FALSE

@@ -40,7 +40,7 @@
 /datum/cm_objective/retrieve_data/terminal
 	var/obj/structure/machinery/computer/objective/terminal
 	var/uploading = FALSE
-	value = OBJECTIVE_EXTREME_VALUE
+	value = OBJECTIVE_ABSOLUTE_VALUE
 
 /datum/cm_objective/retrieve_data/terminal/New(obj/structure/machinery/computer/objective/D)
 	. = ..()

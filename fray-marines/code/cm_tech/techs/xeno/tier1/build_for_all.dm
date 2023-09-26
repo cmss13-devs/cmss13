@@ -5,8 +5,8 @@
 
 	flags = TREE_FLAG_XENO
 
-	required_points = 15
-	tier = /datum/tier/two
+	required_points = 10
+	tier = /datum/tier/one/additional
 
 	var/list/actions_to_give = list(
 		/datum/action/xeno_action/onclick/choose_resin,

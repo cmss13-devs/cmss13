@@ -6,7 +6,6 @@
 	flags = TREE_FLAG_XENO
 
 	required_points = 2
-	increase_per_purchase = 0.5
 
 	var/charges_to_give = 1
 

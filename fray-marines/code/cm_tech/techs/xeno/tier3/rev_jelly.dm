@@ -8,7 +8,7 @@
 	flags = TREE_FLAG_XENO
 
 	required_points = 15
-	increase_per_purchase = 1
+	increase_per_purchase = 5
 	tier = /datum/tier/three
 
 	var/amount_to_give = 6

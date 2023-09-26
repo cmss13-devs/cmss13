@@ -6992,8 +6992,9 @@
 "auQ" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
-	pixel_y = 8;
-	plane = -4
+	pixel_y = 1;
+	plane = -4;
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -7637,12 +7638,14 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/living/numbertwobunks)
 "awG" = (
-/obj/structure/platform,
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	layer = 2.5
 	},
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/platform{
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -8203,13 +8206,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/aft_hallway)
 "ayI" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 8;
-	plane = -4
-	},
 /obj/structure/machinery/status_display{
 	pixel_x = 32
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 1;
+	plane = -4;
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -35149,12 +35153,14 @@
 	},
 /area/almayer/shipboard/brig/processing)
 "eVj" = (
-/obj/structure/platform,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
 /obj/structure/machinery/disposal{
 	layer = 2.8
+	},
+/obj/structure/platform{
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
@@ -40569,7 +40575,9 @@
 	},
 /area/almayer/squads/delta)
 "hge" = (
-/obj/structure/platform,
+/obj/structure/platform{
+	layer = 4
+	},
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/prop/almayer/CICmap{
 	pixel_y = 8;
@@ -47221,10 +47229,12 @@
 	},
 /area/almayer/hallways/vehiclehangar)
 "jXp" = (
-/obj/structure/platform,
 /obj/structure/surface/table/reinforced/black,
 /obj/effect/landmark/map_item,
 /obj/effect/landmark/map_item,
+/obj/structure/platform{
+	layer = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
@@ -48740,9 +48750,11 @@
 	},
 /area/almayer/shipboard/brig/processing)
 "kDK" = (
-/obj/structure/platform,
 /obj/structure/machinery/photocopier{
 	layer = 2.8
+	},
+/obj/structure/platform{
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
@@ -49871,7 +49883,6 @@
 	},
 /area/almayer/squads/charlie)
 "lbp" = (
-/obj/structure/platform,
 /obj/structure/surface/table/reinforced/black,
 /obj/item/tool/stamp{
 	pixel_x = 6;
@@ -49893,6 +49904,9 @@
 /obj/item/tool/pen{
 	pixel_y = 7;
 	pixel_x = -3
+	},
+/obj/structure/platform{
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
@@ -50560,11 +50574,13 @@
 	},
 /area/almayer/living/grunt_rnr)
 "lpa" = (
-/obj/structure/platform,
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/faxmachine/uscm/command{
 	pixel_y = 4;
 	pixel_x = 2
+	},
+/obj/structure/platform{
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
@@ -53275,13 +53291,14 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "mwo" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 8;
-	plane = -4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 1;
+	plane = -4;
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -59710,14 +59727,15 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 8;
-	plane = -4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 1;
+	plane = -4;
+	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
@@ -62439,8 +62457,9 @@
 	},
 /obj/structure/barricade/handrail{
 	dir = 1;
-	pixel_y = 8;
-	plane = -4
+	pixel_y = 1;
+	plane = -4;
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -68139,7 +68158,6 @@
 	},
 /area/almayer/living/grunt_rnr)
 "sEp" = (
-/obj/structure/platform,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -68155,6 +68173,9 @@
 	},
 /obj/item/device/toner{
 	plane = -4
+	},
+/obj/structure/platform{
+	layer = 4
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -80888,13 +80909,14 @@
 	},
 /area/almayer/command/cic)
 "xBH" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 8;
-	plane = -4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 1;
+	plane = -4;
+	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)

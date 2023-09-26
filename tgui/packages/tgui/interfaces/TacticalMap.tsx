@@ -11,8 +11,9 @@ interface TacMapProps {
   updatedCanvas: boolean;
   themeId: number;
   svgData: any;
-  canViewHome: boolean;
-  canDraw: boolean;
+  canViewHome: number;
+  canDraw: number;
+  isXeno: boolean;
   flatImage: string;
   mapRef: any;
   currentMenu: string;
@@ -36,7 +37,7 @@ const PAGES = [
     component: () => OldMapPanel,
     icon: 'eye',
     canAccess: () => {
-      return true;
+      return 1;
     },
   },
   {
@@ -44,7 +45,7 @@ const PAGES = [
     component: () => DrawMapPanel,
     icon: 'paintbrush',
     canAccess: (data) => {
-      return data.canDraw || data.canViewHome;
+      return data.canDraw;
     },
   },
 ];
@@ -97,7 +98,7 @@ export const TacticalMap = (props, context) => {
   };
 
   return (
-    <Window width={650} height={800} theme={themes[data.themeId]['theme']}>
+    <Window width={650} height={850} theme={data.isXeno ? "xeno" : "crtblue"}>
       <Window.Content>
         <Section
           fontSize="20px"
@@ -108,13 +109,13 @@ export const TacticalMap = (props, context) => {
             <Stack.Item>
               <Tabs>
                 {PAGES.map((page, i) => {
-                  if (page.canAccess && !page.canAccess(data)) {
+                  if (page.canAccess(data) === 0) {
                     return;
                   }
                   return (
                     <Tabs.Tab
                       key={i}
-                      color={themes[data.themeId]['button-color']}
+                      color={data.isXeno ? "purple" : "blue"}
                       selected={i === pageIndex}
                       icon={page.icon}
                       onClick={() => handleTacmapOnClick(i, page.title)}>
@@ -136,6 +137,7 @@ const ViewMapPanel = (props, context) => {
   const { data } = useBackend<TacMapProps>(context);
   return (
     <Section fill>
+      {data.canViewHome === 1 &&
       <ByondUi
         params={{
           id: data.mapRef,
@@ -143,6 +145,7 @@ const ViewMapPanel = (props, context) => {
         }}
         class="TacticalMap"
       />
+      }
     </Section>
   );
 };
@@ -154,7 +157,7 @@ const OldMapPanel = (props, context) => {
       {data.flatImage ? (
         <DrawnMap svgData={data.svgData} flatImage={data.flatImage} />
       ) : (
-        'No Tactical Map Announcement Found'
+        'Please wait for a new tacmap announcement'
       )}
     </Section>
   );

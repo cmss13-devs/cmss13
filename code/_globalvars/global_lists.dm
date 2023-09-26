@@ -9,7 +9,11 @@ GLOBAL_LIST_EMPTY(CMBFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
 
-//flat tacmap and svg for viewing minimap drawings
+//datum containing only the flat tacmap png asset
+GLOBAL_LIST_EMPTY(uscm_flat_tacmap_png_asset)
+GLOBAL_LIST_EMPTY(xeno_flat_tacmap_png_asset)
+
+//datum containing flat tacmap and svg (snapshot in time with svg overlay) for viewing minimap drawings
 GLOBAL_LIST_EMPTY(uscm_flat_tacmap)
 GLOBAL_LIST_EMPTY(xeno_flat_tacmap)
 

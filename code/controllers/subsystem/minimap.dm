@@ -588,7 +588,6 @@ SUBSYSTEM_DEF(minimaps)
 		data["canDraw"] = TRUE
 		data["canViewHome"] = TRUE
 		distribute_current_map_png(user)
-		data["flatImage"] = get_current_map(user, TRUE)
 
 	return data
 

@@ -185,8 +185,8 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 			protection += 80 // biosuit is VERY helpfull
 		else if(istype(victim.head, /obj/item/clothing/head/helmet/space) && istype(victim.wear_suit, /obj/item/clothing/suit/space))
 			protection += 60 // not as usefull but still very helpfull
-		protection = clamp(protection, 0, 100)
-		if(prob(protection))
+		protection = clamp(protection, 5, 100)
+		if(prob(protection)-5)
 			return FALSE
 		return TRUE
 

@@ -4669,13 +4669,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/restricted/devroom)
-"anO" = (
-/obj/structure/bedsheetbin,
-/obj/item/clothing/gloves/marine/veteran/pmc,
-/turf/open/floor/strata{
-	icon_state = "blue1"
-	},
-/area/strata/ag/interior/outpost/canteen/personal_storage)
 "anP" = (
 /obj/structure/bedsheetbin,
 /obj/item/device/binoculars/range,
@@ -74324,7 +74317,7 @@ akE
 alo
 bPZ
 alo
-anO
+bmX
 alU
 apG
 aqK

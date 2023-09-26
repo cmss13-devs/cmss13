@@ -179,6 +179,8 @@
 #define TRAIT_HARDCORE "t_hardcore"
 /// If the mob is able to use the vulture rifle or spotting scope
 #define TRAIT_VULTURE_USER "t_vulture_user"
+/// If the mob is cloaked in any form
+#define TRAIT_CLOAKED "t_cloaked"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -200,6 +202,10 @@
 #define TRAIT_TOOL_SIMPLE_BLOWTORCH "t_tool_simple_blowtorch"
 
 #define TRAIT_TOOL_PEN "t_tool_pen"
+
+/// Can lockout blackmarket from ASRS console circuits.
+#define TRAIT_TOOL_TRADEBAND "t_tool_tradeband"
+
 // CLOTHING TRAITS
 #define TRAIT_CLOTHING_HOOD "t_clothing_hood"
 
@@ -278,6 +284,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_LISPING" = TRAIT_LISPING,
 		"TRAIT_CANNOT_EAT" = TRAIT_CANNOT_EAT,
 		"TRAIT_VULTURE_USER" = TRAIT_VULTURE_USER,
+		"TRAIT_CLOAKED" = TRAIT_CLOAKED,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,

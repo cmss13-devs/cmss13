@@ -28,6 +28,7 @@ const HomePanel = (props, context) => {
     'delta': 'blue',
     'echo': 'green',
     'foxtrot': 'brown',
+    'intel': 'green',
   };
 
   return (

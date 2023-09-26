@@ -1238,6 +1238,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/darkness_view = 12
 	/// If there is currently a spotter using the linked spotting scope
 	var/spotter_spotting = FALSE
+	/// How much time it takes to adjust the position of the scope. Adjusting the offset will take half of this time
+	var/adjust_delay = 1 SECONDS
 
 /obj/item/attachable/vulture_scope/Initialize(mapload, ...)
 	. = ..()
@@ -1289,7 +1291,7 @@ Defined in conflicts.dm of the #defines folder.
 				if(!COOLDOWN_FINISHED(src, scope_interact_cd))
 					return
 				to_chat(scoper, SPAN_NOTICE("You begin adjusting [src]..."))
-				COOLDOWN_START(src, scope_interact_cd, 0.5 SECONDS)
+				COOLDOWN_START(src, scope_interact_cd, adjust_delay / 2)
 				if(!do_after(scoper, 0.4 SECONDS))
 					return
 
@@ -1307,7 +1309,7 @@ Defined in conflicts.dm of the #defines folder.
 					return
 
 				to_chat(scoper, SPAN_NOTICE("You begin moving [src]..."))
-				COOLDOWN_START(src, scope_interact_cd, 1 SECONDS)
+				COOLDOWN_START(src, scope_interact_cd, adjust_delay)
 				if(!do_after(scoper, 0.8 SECONDS))
 					return
 

@@ -326,6 +326,7 @@
 	new /obj/item/pamphlet/trait/vulture(src)
 
 /obj/item/storage/box/guncase/vulture/skillless
+	storage_slots = 5
 
 /obj/item/storage/box/guncase/vulture/skillless/fill_preset_inventory()
 	var/obj/item/weapon/gun/boltaction/vulture/skillless/rifle = new(src)

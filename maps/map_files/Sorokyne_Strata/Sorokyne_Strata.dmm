@@ -22557,11 +22557,6 @@
 /obj/structure/platform/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
-"bwy" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/radio,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/ug/interior/jungle/platform/east/scrub)
 "bwA" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 1
@@ -23891,11 +23886,10 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "bDB" = (
-/obj/item/trash/plate{
-	pixel_x = 1;
-	pixel_y = 3
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
 	},
-/turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "bDC" = (
 /obj/effect/decal/cleanable/blood{
@@ -29700,6 +29694,9 @@
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
+"cDY" = (
+/turf/open/floor/strata,
+/area/strata/ug/interior/jungle/platform/east/scrub)
 "cEu" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -40312,6 +40309,16 @@
 	},
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
+"uAQ" = (
+/obj/structure/machinery/sensortower{
+	pixel_y = 3;
+	pixel_x = -13
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/strata/ug/interior/jungle/platform/east/scrub)
 "uBz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -40592,17 +40599,6 @@
 /obj/structure/flora/grass/tallgrass/ice/corner,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
-"vbA" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
-	pixel_y = 20
-	},
-/obj/structure/machinery/sensortower,
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
-/area/strata/ug/interior/jungle/deep/east_dorms)
 "vbI" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -74560,7 +74556,7 @@ cpU
 aVJ
 aND
 cpU
-vbA
+bbI
 aHW
 rpX
 tnM
@@ -75347,9 +75343,9 @@ tnM
 wZZ
 bwE
 bqf
-csY
-bqf
-btL
+cDY
+bDB
+cDY
 btE
 wZZ
 rpX
@@ -75541,9 +75537,9 @@ rpX
 tnM
 wZZ
 wZZ
-btK
-bwy
 bqf
+bDB
+uAQ
 bDB
 wZZ
 wZZ
@@ -75736,10 +75732,10 @@ rpX
 tnM
 wZZ
 bqf
-csZ
-bwE
-bqf
 wZZ
+cDY
+bDB
+cDY
 bqf
 wZZ
 rpX

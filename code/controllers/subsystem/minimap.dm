@@ -552,13 +552,8 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
 
-	data["flatImage"] = null
+	data["flatImage"] = get_current_map(user, TRUE)
 	data["svgData"] = null
-
-	current_map = get_current_map(user)
-	if(current_map)
-		data["flatImage"] = current_map.flat_tacmap
-		data["svgData"] = current_map.svg_data
 
 	data["mapRef"] = map_holder.map_ref
 	data["toolbarColorSelection"] = toolbar_color_selection
@@ -567,6 +562,11 @@ SUBSYSTEM_DEF(minimaps)
 	data["canvasCooldown"] = canvas_cooldown
 	data["nextCanvasTime"] = canvas_cooldown_time
 	data["updatedCanvas"] = updated_canvas
+
+	current_map = get_current_map(user)
+	if(current_map)
+		data["flatImage"] = current_map.flat_tacmap
+		data["svgData"] = current_map.svg_data
 
 	return data
 
@@ -586,6 +586,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
 		data["canDraw"] = TRUE
 		data["canViewHome"] = TRUE
+		distribute_current_map_png(user)
 
 	return data
 

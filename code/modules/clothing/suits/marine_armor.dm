@@ -1599,6 +1599,7 @@
 	specialty = "HEFA Knight"
 	icon_state = "hefadier"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_item = NO_CRYO_STORE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
 	armor_melee = CLOTHING_ARMOR_VERYHIGH

@@ -176,7 +176,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 
 /datum/disease/proc/get_infection_chance(mob/living/carbon/human/victim)
 	if(ishuman(victim))
-		var/protection = 5 //Our current credit protection on how good are we protected from any sort of disease. Five acts as base protection.
+		var/protection = 0 //Our current credit protection on how good are we protected from any sort of disease.
 		if(istype(victim.wear_mask, /obj/item/clothing/mask/surgical))
 			protection += 30
 		if(istype(victim.gloves, /obj/item/clothing/gloves/latex))

@@ -55811,13 +55811,13 @@
 	pixel_x = 7;
 	plane = -4
 	},
-/obj/item/device/cotablet/pmc{
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/item/device/cotablet{
 	pixel_x = -1;
 	plane = -4;
 	layer = 3.4
-	},
-/obj/structure/window/reinforced/toughened{
-	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"

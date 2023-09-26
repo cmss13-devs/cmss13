@@ -350,7 +350,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(!isxeno(user))
 			return
 		if(png_asset_only)
-			map_list = GLOB.uscm_flat_tacmap_png_asset
+			map_list = GLOB.xeno_flat_tacmap_png_asset
 		else
 			map_list = GLOB.xeno_flat_tacmap
 
@@ -385,7 +385,7 @@ SUBSYSTEM_DEF(minimaps)
 			faction_clients += client
 	COOLDOWN_START(src, flatten_map_cooldown, flatten_map_cooldown_time)
 	var/flat_tacmap_png = icon2html(flat_map, faction_clients, sourceonly = TRUE)
-	if(user_faction == FACTION_MARINE)
+	if(!isxeno(user))
 		GLOB.uscm_flat_tacmap_png_asset += flat_tacmap_png
 	else
 		GLOB.xeno_flat_tacmap_png_asset += flat_tacmap_png

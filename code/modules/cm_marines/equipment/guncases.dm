@@ -300,7 +300,7 @@
 	name = "\improper M707 anti-materiel rifle case"
 	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools."
 	icon_state = "guncase_blue"
-	storage_slots = 5
+	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/boltaction/vulture,
 		/obj/item/ammo_magazine/rifle/boltaction/vulture,

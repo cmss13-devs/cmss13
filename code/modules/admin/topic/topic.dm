@@ -565,7 +565,7 @@
 		switch(alert("Are you sure you want to EORG ban [M.ckey]?", , "Yes", "No"))
 			if("Yes")
 				mins = 180
-				reason = "EORG"
+				reason = "EORG - Generating combat logs with, or otherwise griefing, friendly/allied players."
 			if("No")
 				return
 		var/datum/entity/player/P = get_player_from_key(M.ckey) // you may not be logged in, but I will find you and I will ban you
@@ -2096,7 +2096,7 @@
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE
-	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", FALSE, FALSE)
+	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", TRUE, FALSE, FALSE)
 	log_game("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
 

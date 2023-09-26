@@ -193,6 +193,11 @@
   - balance: M56D now has full auto mode.
   - qol: M56D now has an ammo counter when firing.
   - rscdel: M2C can no longer rotate with MMB
+2023-09-14:
+  Morrow:
+  - rscadd: Added a ghost notification for yautja self destructs
+  - bugfix: Fixed lifepods still working after evac canceled
+  Zonespace27:
   - balance: Coffins now layer above beds
   realforest2001:
   - imageadd: Added a CMB stamp icon.
@@ -202,7 +207,6 @@
   - spellcheck: Renames Requisiton Officer's stamp to Quartermaster's Stamp.
   - maptweak: Renamed the spare Req Officer's stamp to spare Quartermaster's stamp.
   - rscadd: Codebooks are now faction based rather than individually unique.
-2023-09-14:
   Carrotman2013:
   - rscadd: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u044B \u0440\u0443\u0441\
       \u0441\u043A\u043E\u044F\u0437\u044B\u0447\u043D\u044B\u0435 \u0444\u0440\u0430\
@@ -241,6 +245,23 @@
   - balance: "\u042D\u043D\u0434\u0443\u0440\u0430\u043D\u0441 \u0443 \u0418\u041E\
       \u0448\u043D\u0438\u043A\u043E\u0432 \u0443\u0432\u0435\u043B\u0438\u0447\u0435\
       \u043D."
+  BeagleGaming1, forest2001:
+  - rscadd: Adds a CMB ERT to investigate the Black Market
+  - rscadd: Adds a [cmb] logo for papers
+  - rscadd: Adds a quiet_launch var for distress beacons, to differentiate between
+      ERTs who should announce their response reception, but not the beacon going
+      out in the first place.
+  - rscdel: Removes banhammer from normal acquisition.
+  Ben10083:
+  - rscadd: Working Joe arrivals announced in Apollo link
+  Drathek:
+  - bugfix: Fix some donor items breaking on maps with camos.
+  - bugfix: Fix donor items not having a fingerprint atom flag and donor armors not
+      having conductive atom flag.
+  Morrow:
+  - bugfix: Fixed a few ways around fire group delays
+  Waseemq1235:
+  - admin: TWE faction reports are now possible.
 2023-09-16:
   xDanilcusx:
   - rscadd: "\u041F\u0435\u0440\u0435\u0434\u043E\u0437 \u0431\u0438\u043A\u0430\u0440\
@@ -316,6 +337,15 @@
       \u0444\u0430\u043A\u0442\u043E\u0440 \u043A\u043E\u0434\u0430 \u044D\u043A\u0438\
       \u043F\u0438\u0440\u043E\u0432\u043A\u0438 \u0421\u0422 \u0441\u043F\u0435\u043A\
       \u0430."
+  BeagleGaming1:
+  - bugfix: Fixed CN20-X canister grenades
+  Drathek:
+  - bugfix: Fix/Rework logic regarding xeno guaranteed slots
+  - bugfix: Fix evolution in thunder dome affecting hive slots
+  Morrow:
+  - rscdel: Disables Shivas Snowball
+  Private Tristan:
+  - spellcheck: acid runners are now properly informed of their corrosive acid's strength.
 2023-09-18:
   poleno1232:
   - balance: "\u0422\u0435\u043F\u0435\u0440\u044C \u043D\u0430\u0434\u043E \u0436\
@@ -343,10 +373,44 @@
   - bugfix: "\u0418\u0441\u043F\u0440\u0430\u0432\u0438\u043B \u0434\u0430\u043B\u044C\
       \u043D\u043E\u0441\u0442\u044C \u0441\u0442\u0440\u0435\u043B\u044C\u0431\u044B\
       \ \u0440\u0430\u043A\u0435\u0442 \u0422\u041E\u0412\u0430."
+2023-09-19:
+  Hopek:
+  - rscadd: 'New facehugger strain:  Watcher. The Watcher loses their ability to hide
+      in exchange to see further and the ability to no longer take damage outside
+      of weeds.'
+  c4xmaniac2:
+  - balance: Moved 1/3 of all intel into the cave systems.
+  - maptweak: 1/3 of all Intel has been redistributed into the caves.
+  - maptweak: Nightmare inserts on the colony side and in the caves of LV now have
+      their intel distribution standardized.
+  realforest2001:
+  - bugfix: Fixes the CMB tradeband scanner not being able to do it's job.
 2023-09-20:
   Sporticusmge:
   - balance: "\u041F\u043E\u0432\u044B\u0448\u0435\u043D \u0443\u0440\u043E\u043D\
       \ \u0440\u0435\u0432\u043E\u043B\u044C\u0432\u0435\u0440\u0430."
+  BeagleGaming1:
+  - rscadd: Uncommented the "Observe" verb for ghosts, allowing ghosts to see from
+      a humans HUD
+  Huffie56:
+  - balance: made it so that req as double what a standard vendor as in ammo and guns.
+  Morrow:
+  - balance: Removed some PMC gear on maps
+  SpartanBobby, GSDPathe:
+  - maptweak: Changes to LV522 loot table surrounding metal spawns
+  - maptweak: Redectorates areas around LV522 that were underwhelming before
+  TheGamerdk, ihatethisengine:
+  - rscadd: IOs start in their own squad now
+  c4xmaniac2:
+  - mapadd: Readds yard to Science Annex
+  - maptweak: Redid the yard loot to be more in line with current surv loot standards.
+2023-09-21:
+  SubjectD9341:
+  - imageadd: added the icons for the new biosuits
+  - imagedel: removed the icons for the old biosuits
+  realforest2001:
+  - bugfix: Fixes the overwrite mark prompt on admin tickets not respecting closing
+      the confirmation prompt.
 2023-09-22:
   Rocky0558:
   - bugfix: "\u041B\u043E\u0433\u043E\u0442\u0438\u043F \u0412\u0435\u0439\u043B\u0430\
@@ -364,6 +428,42 @@
       \u0442\u044B \u043A\u0441\u0435\u043D\u043E\u0431\u043E\u0442\u043E\u0432 (\u043A\
       \u0440\u043E\u0448\u043A\u0430 \u0440\u0430\u0432\u0430\u0433\u0435\u0440, \u043A\
       \u0440\u043E\u0448\u043A\u0430 \u043B\u044E\u0440\u043A\u0435\u0440)"
+ Huffie56:
+  - qol: reorganize and update all the squads vendors to add new categories(helmet
+      optics, pamphlets, clothing items).
+  - balance: remove hostler because it was available for free(for medic, squad-tl,.
+  - balance: added possibility to buy M4 Pattern Armor for rifleman.
+  - balance: added possibility to buy USCM Radio Telephone Pack for squad medic, engi
+      and specialist.
+  - balance: added possibility to buy Welding Visor for medic, SL, rifleman, smartgunner
+      and specialist.
+  Morrow:
+  - balance: Removed eggs off hive weeds for egg sac carrier
+  - balance: Backpacks can now only fit first aid kits if you have medical skill and
+      toolkits if you have engineering skill
+  - balance: G8-A can no longer fit first aid kits or toolkits
+  - balance: Toolbelt now has 10 slots and can fit more engineer related items
+  - balance: Combat toolbelt now has 9 slots and can fit small ammo and engineer related
+      items
+  - balance: M276 medical rig belt no longer holds ammo
+  - balance: Plastic bag removed from normal play
+  - balance: First aid kits can now only hold medical items
+  - balance: Toolkits have been renamed to engineer kits and can only hold engineering
+      items (not tools)
+  - balance: Welding tool buffed to 40 welder fuel
+  - balance: Larger welding tools removed from normal play
+  - rscadd: Electrical toolbox now has an APC circuitboard
+  - balance: Medical pouch removed in req and various job vendors
+  - balance: Machete pouch, large pouches, and autoinjector pouch scales reduced in
+      req
+  - balance: medkit pouch has been renamed to medical kit pouch and can hold 7 medical
+      items, only usable if you have medic skill
+  Morrow, DrLance (sprites):
+  - rscadd: Added the Mateba Special as a choice for COs
+  Waseemq1235:
+  - rscadd: Added HEAP F903 magazines. Does NOT spawn with the ERT presets. ADMIN
+      SPAWN ONLY.
+  - imageadd: Added F903 ammo band icons.
 2023-09-23:
   Sader1337:
   - balance: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D\u044B \u041C\u041A1 \u0432\
@@ -385,6 +485,10 @@
       \u0442\u044B \u043A\u0441\u0435\u043D\u043E\u0431\u043E\u0442\u043E\u0432 (\u043A\
       \u0440\u043E\u0448\u043A\u0430 \u0440\u0430\u0432\u0430\u0433\u0435\u0440, \u043A\
       \u0440\u043E\u0448\u043A\u0430 \u043B\u044E\u0440\u043A\u0435\u0440)"
+Morrow:
+  - bugfix: Fixed intel squad "Unauthorized access detected"
+  realforest2001:
+  - rscadd: Gives survivors bank accounts.
 2023-09-24:
   xDanilcusx:
   - bugfix: "\u0423\u0420\u0410 \u0423\u0420\u0410 \u043A\u0441\u0435\u043D\u043E\u0431\
@@ -413,6 +517,18 @@
       \u043A\u0440\u0430\u0442\u0438\u043B\u0438 \u0431\u0438\u0442\u044C \u0431\u0435\
       \u0437\u043E\u0431\u0438\u0434\u043D\u044B\u0445 \u043E\u0431\u0435\u0437\u044C\
       \u044F\u043D."
+BeagleGaming1:
+  - admin: Disabling round end delay has a confirmation
+  - rscadd: Added a mapping effect for prop guns
+  Morrow:
+  - bugfix: Fixed drag-n-drop nesting opening
+  Steelpoint:
+  - rscadd: Intel Officers will now default to using the Intel radio channel when
+      communicating.
+  Sylphily:
+  - rscadd: Added the ability for the IMP Ammo Rack to hold folding barricades.
+  Zonespace27:
+  - balance: Specialists now have separate pools of points for ammo and utility.
 2023-09-25:
   XDinka:
   - imageadd: "\u043D\u043E\u0432\u044B\u0439 \u0432\u0435\u043D\u0434\u043E\u0440\
@@ -449,3 +565,12 @@
       \u043A\u0440\u0430\u0442\u0438\u043B\u0438 \u0431\u0438\u0442\u044C \u0431\u0435\
       \u0437\u043E\u0431\u0438\u0434\u043D\u044B\u0445 \u043E\u0431\u0435\u0437\u044C\
       \u044F\u043D."
+Steelpoint:
+  - rscadd: Synthetics may now vend biohazard suits for personal use. Synth compliant.
+  Zonespace27:
+  - balance: Cloaked mobs no longer give off visible messages
+  c4xmaniac2:
+  - balance: Comms areas around the east/west rivers expanded for easier sieges and
+      weedable now.
+  - maptweak: LV Comms now always spawn in Tcomms and one either on the east or west
+      river

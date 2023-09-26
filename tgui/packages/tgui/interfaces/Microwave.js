@@ -1,0 +1,72 @@
+import { useBackend } from '../backend';
+import { Button, NoticeBox, Section, Flex, Box } from '../components';
+import { Window } from '../layouts';
+
+export const Microwave = (props, context) => {
+  const { data, act } = useBackend(context);
+  const { operating, broken, dirty, ingredients } = data;
+
+  return (
+    <Window width={350} height={350}>
+      <Window.Content scrollable>
+        <Section
+          fill
+          title="Ingredients:"
+          buttons={
+            <Flex>
+              <Button
+                height="100%"
+                icon="power-off"
+                disabled={!!operating || !!dirty || !!broken}
+                onClick={() => act('cook')}>
+                Activate
+              </Button>
+
+              <Button
+                height="100%"
+                icon="eject"
+                disabled={!ingredients.length || !!operating}
+                onClick={() => act('eject_all')}>
+                Eject all
+              </Button>
+            </Flex>
+          }>
+          {!!operating && (
+            <NoticeBox
+              width="100%"
+              textAlign="center"
+              p=".5rem"
+              fontSize="1.5rem">
+              Cooking..
+            </NoticeBox>
+          )}
+
+          {!!broken && (
+            <NoticeBox danger width="100%" textAlign="center" p="1rem">
+              Appliance broken. Please contact your local technician.
+            </NoticeBox>
+          )}
+
+          {!!dirty && (
+            <NoticeBox danger width="100%" textAlign="center" p="1rem">
+              This microwave is too dirty. Cleaning required.
+            </NoticeBox>
+          )}
+
+          {!ingredients.length && <Box>None</Box>}
+
+          <Flex direction="column">
+            {ingredients.map((ingredient) => {
+              return (
+                <Flex.Item key={ingredient.name} py=".2rem">
+                  <b>{ingredient.name}</b>: {ingredient.count}{' '}
+                  {ingredient.measure}
+                </Flex.Item>
+              );
+            })}
+          </Flex>
+        </Section>
+      </Window.Content>
+    </Window>
+  );
+};

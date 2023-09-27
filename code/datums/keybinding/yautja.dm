@@ -600,7 +600,7 @@
 	hotkey_keys = list("Space")
 	classic_keys = list("Unbound")
 	name = "fold_combi"
-	full_name = "Collapse Combi-stick"
+	full_name = "Fold Combistick"
 	keybind_signal = COMSIG_KB_YAUTJA_FOLD_COMBISTICK
 
 /datum/keybinding/yautja/fold_combi/down(client/user)

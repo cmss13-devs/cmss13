@@ -281,10 +281,10 @@ CULT
 	if(!ishuman(user))
 		return FALSE
 
-	var/mob/living/carbon/human/H = user
+//	var/mob/living/carbon/human/H = user
 
-	if(H.job != JOB_SQUAD_TEAM_LEADER)
-		return FALSE
+//	if(H.job != JOB_SQUAD_TEAM_LEADER)
+//		return FALSE
 
 	return ..()
 

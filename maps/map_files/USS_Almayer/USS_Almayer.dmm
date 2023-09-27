@@ -19724,6 +19724,14 @@
 /area/almayer/shipboard/weapon_room)
 "bDe" = (
 /obj/structure/surface/table/almayer,
+/obj/item/circuitboard{
+	pixel_x = 12;
+	pixel_y = 7
+	},
+/obj/item/tool/crowbar{
+	pixel_x = 6;
+	pixel_y = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -31625,6 +31633,16 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/shipboard/brig/surgery)
+"dQE" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/janitorialcart,
+/obj/item/tool/mop,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "dQH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -35153,15 +35171,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "foR" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/janitorialcart,
-/obj/item/tool/mop,
+/obj/structure/largecrate/random/case,
 /turf/open/floor/almayer{
-	icon_state = "cargo"
+	icon_state = "plate"
 	},
-/area/almayer/hull/upper_hull/u_f_p)
+/area/almayer/hull/upper_hull/u_m_p)
 "fpd" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -73647,6 +73661,15 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/medical/upper_medical)
+"vLv" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "vLA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -105464,7 +105487,7 @@ mQH
 amT
 ioX
 pUJ
-foR
+inC
 anX
 aht
 gvC
@@ -107310,10 +107333,10 @@ atj
 atj
 atj
 czu
-csz
-csz
+foR
+usi
 vGk
-csz
+foR
 qVM
 rQW
 yhI
@@ -107513,10 +107536,10 @@ atj
 atj
 atj
 czu
-csz
+usi
 vGk
 vGk
-csz
+vLv
 qVM
 wTy
 wTy
@@ -107716,7 +107739,7 @@ atl
 atl
 atl
 czu
-csz
+dQE
 vGk
 csz
 qVM
@@ -107871,7 +107894,7 @@ aez
 boL
 akY
 boL
-aao
+aiH
 aiv
 aap
 uoS
@@ -107919,8 +107942,8 @@ atI
 atI
 atI
 czu
-csz
-csz
+usi
+foR
 csz
 xCX
 aJU

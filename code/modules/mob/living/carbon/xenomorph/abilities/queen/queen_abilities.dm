@@ -52,7 +52,7 @@
 	xeno_cooldown = 60 SECONDS
 	var/required_larva = 1
 	var/duration = 8 MINUTES
-	var/to_give = 8
+	var/to_give = 9
 	var/active = FALSE
 
 /datum/action/xeno_action/onclick/banish

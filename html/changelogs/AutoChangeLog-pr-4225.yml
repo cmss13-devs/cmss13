@@ -1,7 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Fixes ARES Security Logs and stops ARES logs recording mob datums instead of names."
-  - rscadd: "Moves AntiAir records to Security Logs."
-  - rscadd: "Adds Flight Records to ARES Interface, detailing launches and setting changes. Does not include CAS details."
-  - code_imp: "Changes ARES log procs from using 'user' to 'user_name' to identify it should be the string rather than mob datum."

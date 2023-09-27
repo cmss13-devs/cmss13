@@ -72,7 +72,7 @@
 
 ///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()
-	player?.screen += src
+	player?.add_to_screen(src)
 	if(fade_in_time)
 		animate(src, alpha = 255)
 	var/list/lines_to_skip = list()
@@ -112,7 +112,7 @@
 		qdel(src)
 		return
 
-	player.screen -= src
+	player.remove_from_screen(src)
 	LAZYREMOVE(player.screen_texts, src)
 	qdel(src)
 
@@ -202,7 +202,7 @@
 	alerts -= category
 	if(client && hud_used)
 		hud_used.reorganize_alerts()
-		client.screen -= alert
+		client.remove_from_screen(alert)
 	qdel(alert)
 
 /atom/movable/screen/alert
@@ -249,6 +249,6 @@
 			if(gotten_turf)
 				ghost_user.forceMove(gotten_turf)
 		if(NOTIFY_ORBIT)
-			ghost_user.ManualFollow(target)
+			ghost_user.do_observe(target)
 		if(NOTIFY_JOIN_XENO)
 			ghost_user.join_as_alien()

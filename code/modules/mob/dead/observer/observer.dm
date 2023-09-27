@@ -49,8 +49,10 @@
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
-	/// The target mob that the ghost is observing. Used as a reference in logout()
-	var/mob/observetarget = null
+	/// The target mob that the ghost is observing.
+	var/mob/observe_target_mob = null
+	/// The target client that the ghost is observing.
+	var/client/observe_target_client = null
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
@@ -152,31 +154,108 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
 
-/mob/dead/observer/proc/clean_observetarget()
+/// Removes all signals and data related to the observe target and resets observer's HUD/eye
+/mob/dead/observer/proc/clean_observe_target()
 	SIGNAL_HANDLER
-	UnregisterSignal(observetarget, COMSIG_PARENT_QDELETING)
-	if(observetarget?.observers)
-		observetarget.observers -= src
-		UNSETEMPTY(observetarget.observers)
-	observetarget = null
+
+	UnregisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE)
+	UnregisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND)
+	UnregisterSignal(observe_target_mob, COMSIG_MOB_LOGIN)
+
+	if(observe_target_client)
+		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD)
+		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE)
+
+	if(observe_target_mob?.observers)
+		observe_target_mob.observers -= src
+		UNSETEMPTY(observe_target_mob.observers)
+
+	observe_target_mob = null
+	observe_target_client = null
+
 	client.eye = src
 	hud_used.show_hud(hud_used.hud_version, src)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
+/// When the observer moves we disconnect from the observe target if we aren't on the same turf
 /mob/dead/observer/proc/observer_move_react()
 	SIGNAL_HANDLER
-	if(src.loc == get_turf(observetarget))
+
+	if(loc == get_turf(observe_target_mob))
 		return
-	clean_observetarget()
+	clean_observe_target()
+
+/// When the observer target gets a screen, our observer gets a screen minus some game screens we don't want the observer to touch
+/mob/dead/observer/proc/observe_target_screen_add(observe_target_mob_client, add_to_screen)
+	SIGNAL_HANDLER
+
+	if(!client)
+		return
+
+	if(istype(add_to_screen, /atom/movable/screen/action_button))
+		return
+
+	if(istype(add_to_screen, /atom/movable/screen/fullscreen))
+		return
+
+	if(istype(add_to_screen, /atom/movable/screen/click_catcher))
+		return
+
+	if(istype(add_to_screen, /atom/movable/screen/escape_menu))
+		return
+
+	if(istype(add_to_screen, /obj/effect/detector_blip))
+		return
+
+	client.add_to_screen(add_to_screen)
+
+/// When the observer target loses a screen, our observer loses it as well
+/mob/dead/observer/proc/observe_target_screen_remove(observe_target_mob_client, remove_from_screen)
+	SIGNAL_HANDLER
+
+	if(!client)
+		return
+
+	client.remove_from_screen(remove_from_screen)
+
+/// When the observe target ghosts our observer disconnect from their screen updates
+/mob/dead/observer/proc/observe_target_ghosting(mob/observer_target_mob)
+	SIGNAL_HANDLER
+
+	if(observe_target_client) //Should never not have one if ghostizing but maaaybe?
+		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD)
+		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE)
+
+/// When the observe target gets a new mind our observer connects to the new client's screens
+/mob/dead/observer/proc/observe_target_new_mind(mob/living/new_character, client/new_client)
+	SIGNAL_HANDLER
+
+	if(observe_target_client != new_client)
+		observe_target_client = new_client
+
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
+
+/// When the observe target logs in our observer connect to the new client
+/mob/dead/observer/proc/observe_target_login(mob/living/new_character)
+	SIGNAL_HANDLER
+
+	if(observe_target_client != new_character.client)
+		observe_target_client = new_character.client
+
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
 
 ///makes the ghost see the target hud and sets the eye at the target.
 /mob/dead/observer/proc/do_observe(mob/target)
 	if(!client || !target || !istype(target))
 		return
 
-	//I do not give a singular flying fuck about not being able to see xeno huds, literally only human huds are useful to see
-	if(!ishuman(target))
-		ManualFollow(target)
+	ManualFollow(target)
+	reset_perspective()
+
+	if(!ishuman(target) || !client.prefs?.auto_observe)
 		return
 
 	client.eye = target
@@ -188,13 +267,45 @@
 	LAZYINITLIST(target.observers)
 	target.observers |= src
 	target.hud_used.show_hud(target.hud_used.hud_version, src)
-	observetarget = target
-	RegisterSignal(observetarget, COMSIG_PARENT_QDELETING, PROC_REF(clean_observetarget))
+
+	var/mob/living/carbon/human/human_target = target
+
+	var/list/target_contents = human_target.get_contents()
+
+	//Handles any currently open storage containers the target is looking in when we observe
+	for(var/obj/item/storage/checked_storage in target_contents)
+		if(!(target in checked_storage.content_watchers))
+			continue
+
+		client.add_to_screen(checked_storage.closer)
+		client.add_to_screen(checked_storage.contents)
+
+		if(checked_storage.storage_slots)
+			client.add_to_screen(checked_storage.boxes)
+		else
+			client.add_to_screen(checked_storage.storage_start)
+			client.add_to_screen(checked_storage.storage_continue)
+			client.add_to_screen(checked_storage.storage_end)
+
+		break
+
+	observe_target_mob = target
+	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_LOGIN, PROC_REF(observe_target_login))
+
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
 
+	if(target.client)
+		observe_target_client = target.client
+		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
+		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
+		return
+
 /mob/dead/observer/reset_perspective(atom/A)
-	if(observetarget)
-		clean_observetarget()
+	if(observe_target_mob)
+		clean_observe_target()
 	. = ..()
 
 	if(!.)
@@ -213,12 +324,16 @@
 
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
+	if(observe_target_mob)
+		clean_observe_target()
+
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)
 	QDEL_NULL(last_health_display)
 	GLOB.observer_list -= src
 	following = null
-	observetarget = null
+	observe_target_mob = null
+	observe_target_client = null
 	return ..()
 
 /mob/dead/observer/MouseDrop(atom/A)
@@ -240,8 +355,10 @@
 			A.reenter_corpse()
 	if(href_list["track"])
 		var/mob/target = locate(href_list["track"]) in GLOB.mob_list
-		if(target)
-			ManualFollow(target)
+		if(!target)
+			return
+		do_observe(target)
+
 	if(href_list[XENO_OVERWATCH_TARGET_HREF])
 		var/mob/target = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in GLOB.living_xeno_list
 		if(target)
@@ -326,6 +443,9 @@ Works together with spawning an observer, noted above.
 		return
 	if(aghosted)
 		src.aghosted = TRUE
+
+	SEND_SIGNAL(src, COMSIG_MOB_GHOSTIZE)
+
 	var/mob/dead/observer/ghost = new(loc, src) //Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
@@ -582,8 +702,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Follow Local Mob"
 	set desc = "Follow on-screen mob"
 
-	ManualFollow(target)
-	return
+	do_observe(target)
 
 /mob/dead/observer/verb/follow()
 	set category = "Ghost.Follow"

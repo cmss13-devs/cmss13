@@ -512,7 +512,6 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/canvas_cooldown_time = 4 MINUTES
 	var/flatten_map_cooldown_time = 3 MINUTES
-	COOLDOWN_DECLARE(canvas_cooldown)
 	COOLDOWN_DECLARE(flatten_map_cooldown)
 
 	//tacmap holder for holding the minimap
@@ -561,7 +560,10 @@ SUBSYSTEM_DEF(minimaps)
 	data["toolbarColorSelection"] = toolbar_color_selection
 	data["toolbarUpdatedSelection"] = toolbar_updated_selection
 	data["worldtime"] = world.time
-	data["canvasCooldown"] = canvas_cooldown
+	if(isxeno(user))
+		data["canvasCooldown"] = GLOB.xeno_canvas_cooldown
+	else
+		data["canvasCooldown"] = GLOB.uscm_canvas_cooldown
 	data["nextCanvasTime"] = canvas_cooldown_time
 	data["updatedCanvas"] = updated_canvas
 
@@ -638,7 +640,6 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("selectAnnouncement")
-			COOLDOWN_START(src, canvas_cooldown, canvas_cooldown_time)
 
 			var/current_map_asset = get_current_map(user, TRUE)
 			var/datum/svg_overlay/svg_overlay = new(params["image"], current_map_asset)
@@ -654,6 +655,7 @@ SUBSYSTEM_DEF(minimaps)
 				xeno = user
 				xeno_announcement(outgoing_message, xeno.hivenumber)
 				GLOB.xeno_flat_tacmap += svg_overlay
+				COOLDOWN_START(GLOB, xeno_canvas_cooldown, canvas_cooldown_time)
 			else
 				GLOB.uscm_flat_tacmap += svg_overlay
 				var/mob/living/carbon/human/H = user
@@ -662,6 +664,7 @@ SUBSYSTEM_DEF(minimaps)
 					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
 					signed = "[paygrade] [id.registered_name]"
 				marine_announcement(outgoing_message, "Tactical Map Announcement", signature = signed)
+				COOLDOWN_START(GLOB, uscm_canvas_cooldown, canvas_cooldown_time)
 
 			message_admins("[key_name(user)] has made a tactical map announcement.")
 			log_announcement("[key_name(user)] has announced the following: [outgoing_message]")

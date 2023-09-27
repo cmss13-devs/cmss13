@@ -14,6 +14,10 @@ GLOBAL_LIST_INIT(pill_icon_mappings, map_pill_icons())
 /// In-round override to default OOC color
 GLOBAL_VAR(ooc_color_override)
 
+// tacmap cooldown for xenos and marines
+GLOBAL_VAR_INIT(uscm_canvas_cooldown, 0)
+GLOBAL_VAR_INIT(xeno_canvas_cooldown, 0)
+
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_INIT(gamemode_roles, list())
 

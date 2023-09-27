@@ -98,7 +98,7 @@ export const TacticalMap = (props, context) => {
   };
 
   return (
-    <Window width={650} height={850} theme={data.isXeno ? 'xeno' : 'crtblue'}>
+    <Window width={700} height={850} theme={data.isXeno ? 'xeno' : 'crtblue'}>
       <Window.Content>
         <Section
           fontSize="20px"

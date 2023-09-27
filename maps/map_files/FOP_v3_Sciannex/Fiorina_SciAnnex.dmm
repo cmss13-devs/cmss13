@@ -26100,8 +26100,6 @@
 /area/fiorina/tumor/aux_engi)
 "pON" = (
 /obj/structure/closet,
-/obj/item/storage/backpack/clown,
-/obj/item/toy/bikehorn,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "bluecorner"

@@ -34,7 +34,7 @@
 
 
 /datum/tutorial_menu/ui_state(mob/user)
-	if(istype(get_area(user, /area/misc/tutorial)))
+	if(istype(get_area(user), /area/misc/tutorial))
 		return GLOB.never_state
 
 	return GLOB.new_player_state

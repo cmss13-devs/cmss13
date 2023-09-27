@@ -35,7 +35,6 @@
 	var/charge_rate = 30
 	/// Cooldown on draining power from APC
 	var/charge_cooldown = COOLDOWN_BRACER_CHARGE
-	var/cloaked = 0
 	var/cloak_timer = 0
 	var/cloak_malfunction = 0
 	/// Determines the alpha level of the cloaking device.
@@ -96,7 +95,7 @@
 		human_holder.update_power_display(perc_charge)
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if(!cloaked)
+	if(!HAS_TRAIT(human_holder, TRAIT_CLOAKED))
 		return
 	if(human_holder.stat == DEAD)
 		decloak(human_holder, TRUE)
@@ -293,7 +292,7 @@
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.gloves == src)
 			wearer.visible_message(SPAN_DANGER("You hear a hiss and crackle!"), SPAN_DANGER("Your bracers hiss and spark!"), SPAN_DANGER("You hear a hiss and crackle!"))
-			if(cloaked)
+			if(HAS_TRAIT(wearer, TRAIT_CLOAKED))
 				decloak(wearer, TRUE, DECLOAK_EMP)
 		else
 			var/turf/our_turf = get_turf(src)
@@ -336,7 +335,7 @@
 
 	//Non-Yautja have a chance to get stunned with each power drain
 	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(4))
-		if(cloaked)
+		if(HAS_TRAIT(human, TRAIT_CLOAKED))
 			decloak(human, TRUE, DECLOAK_SPECIES)
 		shock_user(human)
 
@@ -344,14 +343,14 @@
 
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)
 	move_chip_to_bracer()
-	if(cloaked)
+	if(HAS_TRAIT(user, TRAIT_CLOAKED))
 		decloak(user, TRUE)
 	..()
 
 /obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/human = loc
-		if(cloaked)
+		if(HAS_TRAIT(human, TRAIT_CLOAKED))
 			decloak(human, TRUE)
 	. = ..()
 
@@ -549,7 +548,7 @@
 	if(!istype(M) || M.is_mob_incapacitated())
 		return FALSE
 
-	if(cloaked) //Turn it off.
+	if(HAS_TRAIT(caller, TRAIT_CLOAKED)) //Turn it off.
 		if(cloak_timer > world.time)
 			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
@@ -570,7 +569,6 @@
 		if(!drain_power(M, 50))
 			return FALSE
 
-		cloaked = TRUE
 		ADD_TRAIT(M, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
@@ -617,7 +615,6 @@
 	if(forced)
 		cloak_malfunction = world.time + decloak_timer
 
-	cloaked = FALSE
 	REMOVE_TRAIT(user, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 	log_game("[key_name_admin(user)] has disabled their cloaking device.")
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
@@ -734,7 +731,7 @@
 
 	var/mob/living/carbon/human/M = caller
 
-	if(cloaked)
+	if(HAS_TRAIT(M, TRAIT_CLOAKED))
 		to_chat(M, SPAN_WARNING("Not while you're cloaked. It might disrupt the sequence."))
 		return
 	if(M.stat == DEAD)

@@ -262,7 +262,7 @@ CULT
 	message_admins("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
 	for(var/M in to_send_to)
 		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
-	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, .proc/handle_droppod_deleted)
+	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
 
 /datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(obj/structure/droppod/tech/T)
 	SIGNAL_HANDLER

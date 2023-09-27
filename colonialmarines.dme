@@ -2410,6 +2410,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "fray-marines\code\modules\cm_aliens\structures\special_structure.dm"
 #include "fray-marines\code\modules\gear_presets\usmc.dm"
 #include "fray-marines\code\modules\mob\living\carbon\xenomorph\Abilities.dm"
+#include "fray-marines\code\modules\mob\living\carbon\xenomorph\queen_abilities.dm"
 #include "fray-marines\code\modules\mob\living\carbon\xenomorph\resin_constructions.dm"
 #include "fray-marines\code\modules\mob\living\carbon\xenomorph\xeno_verbs.dm"
 #include "fray-marines\code\modules\mob\living\simple_animal\hostile\alien.dm"

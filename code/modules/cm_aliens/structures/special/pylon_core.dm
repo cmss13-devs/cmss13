@@ -293,14 +293,17 @@
 		health += min(heal_amount, maxhealth-health)
 		last_healed = world.time + heal_interval
 
-/obj/effect/alien/resin/special/pylon/core/proc/can_spawn_larva()
+/obj/effect/alien/resin/special/pylon/core/proc/can_spawn_larva(mob/xeno_candidate)
 	if(linked_hive.hardcore)
+		return FALSE
+	if(linked_hive.stored_larva <= linked_hive.reserved_larva)
+		to_chat(xeno_candidate, SPAN_WARNING("Королева улья зарезервировала эту лярву закопанной."))
 		return FALSE
 
 	return linked_hive.stored_larva
 
 /obj/effect/alien/resin/special/pylon/core/proc/spawn_burrowed_larva(mob/xeno_candidate)
-	if(can_spawn_larva() && xeno_candidate)
+	if(can_spawn_larva(xeno_candidate) && xeno_candidate)
 		var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
 		if(isnull(new_xeno))
 			return FALSE

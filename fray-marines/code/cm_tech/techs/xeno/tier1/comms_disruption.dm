@@ -9,7 +9,7 @@
 	increase_per_purchase = 1
 	tier = /datum/tier/one/additional
 
-	var/duration = 5 MINUTES
+	var/duration = 10 MINUTES
 	var/active = FALSE
 	xenos_required = FALSE
 

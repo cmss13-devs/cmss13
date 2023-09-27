@@ -136,7 +136,7 @@ export const TacticalMap = (props, context) => {
 const ViewMapPanel = (props, context) => {
   const { data } = useBackend<TacMapProps>(context);
 
-  //byond ui can't resist trying to render
+  // byond ui can't resist trying to render
   if (data.canViewHome !== 1) {
     return <OldMapPanel {...props} context={context} />;
   }

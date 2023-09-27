@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - mapadd: "Sensor Towers have been added to all maps."

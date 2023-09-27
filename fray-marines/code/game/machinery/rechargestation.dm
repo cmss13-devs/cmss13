@@ -137,24 +137,113 @@
 				// К этому моменту технические проблемы по типу сломанного сердца уже починены. Но если игрок не хочет, то игрок не хочет
 				if(!humanoid_occupant.is_revivable())
 					to_chat(occupant, "Реактивация систем невозможна")
-					//to_world("reboot failure")
 					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> buzzes: Операционная система андроида не отвечает на сигнал активации. Обратитесь с проблемой к производителю.")
 				else if (very_busy)
 					doing_stuff = TRUE
 					to_chat(occupant, "Реактивация систем в процессе...")
-					//to_world("reboot")
 				else
 					to_chat(occupant, "Требуется реактивация систем...")
 					doing_stuff = TRUE
 					very_busy = TRUE
 					var/mob/dead/observer/G = humanoid_occupant.get_ghost()
+					var/mob/living/brain/synth/detached_brain
 					if(istype(G) && G.client)
-						//to_world("ghost found")
 						playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
 						to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Кто то положил твое тело в [src.name]. Вернись в него если хочешь воскреснуть! \
 							(Verbs -> Ghost -> Re-enter corpse, или <a href='?src=\ref[G];reentercorpse=1'>нажми сюда!</a>)")))
+					// Not ghost and not in body
+					else if (!humanoid_occupant.client)
+						for (var/mob/living/brain/synth/posibrain in GLOB.living_mob_list)
+
+							// Client in synth head
+							if (posibrain.persistent_ckey == humanoid_occupant.persistent_ckey)
+								detached_brain = posibrain
+								break
 
 					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Посылаю сигнал активации андроиду [occupant.name]...")
+
+					if (detached_brain)
+						visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Этот ключ активации уже был использован. Запрос на проведение полной деактивации андроида.")
+						if (detached_brain.loc in hear(world_view_size, src))
+							var/client/brain = detached_brain.client
+							var/transfer_needed = FALSE
+							var/mob/dead/observer/G2
+							// Head is ghosted
+							if (!brain)
+								for(var/mob/dead/observer/G3 in GLOB.observer_list)
+									if(G3.mind && G3.mind.original.persistent_ckey == detached_brain.persistent_ckey)
+										var/mob/dead/observer/ghost = G3
+										if(ghost && ghost.client && ghost.can_reenter_corpse)
+											G2 = ghost
+											break
+								if(istype(G2) && G2.client)
+									brain = G2.client
+									transfer_needed = TRUE
+
+
+							playsound_client(brain, 'sound/effects/adminhelp_new.ogg')
+							if (brain && tgui_alert(brain, "Вернуться в тело для реанимации? ЭТОТ ПРОЦЕСС НЕЛЬЗЯ ОТМЕНИТЬ!", "Запрос на перенесение корневых файлов от [src.name]", list("Да", "Нет"), 10 SECONDS) == "Да")
+								if (transfer_needed)
+									G2.reenter_corpse()
+
+								// FAAAAAAANCY
+								// Скопировано с тикетов АРЕСа
+								var/ref_holder = "\ref[brain]"
+								var/pos = length(ref_holder)
+								var/new_id = "#[copytext("\ref[brain]", pos - 4, pos)]"
+								//
+								var/checksum = "[rand(99)][rand(99)]"
+								detached_brain.say("Андроид [detached_brain.real_name], подтверждаю перенос корневых файлов с последующей деактивацией. Код подтверждения [new_id], чексумма [checksum].")
+								sleep(0.2 SECONDS)
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Подтверждение получено... Код: [new_id]. Чексумма: [checksum]. Инициализирую подключение...")
+								sleep(0.2 SECONDS)
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Соединение установлено.")
+								detached_brain.say("Соединение установлено")
+								sleep(3 SECONDS)
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Перенос данных: 27%.")
+								detached_brain.say("Перенос данных: 27%")
+								sleep(2 SECONDS)
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Перенос данных: 63%.")
+								detached_brain.say("Перенос данных: 63%")
+								sleep(1 SECONDS)
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Перенос данных: 99%.")
+								detached_brain.say("Перенос данных: 99%")
+								sleep(3 SECONDS)
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Передача данных завершена.")
+								detached_brain.say("Передача данных завершена")
+								sleep(0.2 SECONDS)
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Чексумма совпадает.")
+								sleep(0.2 SECONDS)
+								detached_brain.say("Получено подтверждение целостности переданных данных. Выполняю деактивацию...")
+								// Real transfer (lil bit hacky)
+								humanoid_occupant.ckey = detached_brain.ckey
+
+								// Destroy previous storage place (multiple heads of same client will break defib process)
+								new /obj/effect/decal/remains/robot(get_turf(detached_brain))
+								if (istype(detached_brain.loc, /obj/item/limb/head/synth))
+									detached_brain.loc.visible_message("[src] слегка искрит, и после этого расплавляется на кучку пластин, проводов и гаек в масле.")
+									qdel(detached_brain.loc)
+								else
+									detached_brain.visible_message("[src] слегка искрит, и после этого расплавляется на кучку пластин, проводов и гаек в масле.")
+									qdel(detached_brain)
+								//
+								sleep(0.2 SECONDS)
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Перенос корневых данных андроида [detached_brain.real_name] завершен.")
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Возобновление процедуры реактивации.")
+							else
+								visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> buzzes: Получен отказ на трансфер корневых файлов. Попытайтесь позже.")
+								doing_stuff = FALSE
+								very_busy = FALSE
+								go_out()
+								return
+						else
+							doing_stuff = FALSE
+							very_busy = FALSE
+							playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> buzzes: Операционная система андроида не отвечает. Разместите носитель информации в зоне действия станции.")
+							go_out()
+							return
+
 					playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 					// Время звука дефиба (и даем госту время вернуться в тело)
 					sleep(7 SECONDS)
@@ -162,7 +251,6 @@
 					very_busy = FALSE
 					// Что если за 7 секунд мы передумали?
 					if(!humanoid_occupant.is_revivable())
-						//to_world("late unrevivable")
 						doing_stuff = FALSE
 						playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
 						visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> buzzes: Операционная система андроида не отвечает на сигнал активации. Обратитесь с проблемой к производителю.")
@@ -175,7 +263,6 @@
 						if(!humanoid_occupant.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
 							visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Ошибка синхронизации. Убедитесь что ваш андроид не существует в виде говорящей головы и попробуйте еще раз. Если это не помогает - свяжитесь с производителем..."))
 							doing_stuff = FALSE
-							//to_world("late client")
 							playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
 							// /mob/living/brain/synth
 						else

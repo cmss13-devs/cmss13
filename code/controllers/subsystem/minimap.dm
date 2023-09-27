@@ -590,7 +590,6 @@ SUBSYSTEM_DEF(minimaps)
 	if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
 		data["canDraw"] = TRUE
 		data["canViewHome"] = TRUE
-		distribute_current_map_png(user)
 
 	return data
 

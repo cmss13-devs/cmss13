@@ -164,7 +164,7 @@
 
 /// Checks if all comms towers are connected and then starts end game content on all pylons if they are
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
-	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays at [get_area(src)].", "[MAIN_AI_SYSTEM] Biological Scanner")
+	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays at [get_area(src)], biological hazard detected.\n\nDANGER: Hazard is generating new xenomorph entities, advise urgent termination of hazard by ground forces.", "[MAIN_AI_SYSTEM] Biological Scanner")
 
 	for(var/hivenumber in GLOB.hive_datum)
 		var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
@@ -172,7 +172,7 @@
 			continue
 
 		if(checked_hive == linked_hive)
-			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relay at [get_area(src)]. Hold it!"), hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relay at [get_area(src)].\n\nWe will now grow more of our number from this pylon. Hold it!"), hivenumber, XENO_GENERAL_ANNOUNCE)
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area(src)].[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
 

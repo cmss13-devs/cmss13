@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Alert message regarding Pylon construction around a communications array now properly emphasizes why it is a threat to Marines, and a benefit to Xenos."

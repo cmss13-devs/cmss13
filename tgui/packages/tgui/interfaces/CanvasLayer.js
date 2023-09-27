@@ -92,7 +92,7 @@ export class CanvasLayer extends Component {
         this.lastY,
         x,
         y,
-        this.state.selection,
+        this.ctx.strokeStyle,
       ]);
     }
 
@@ -133,11 +133,12 @@ export class CanvasLayer extends Component {
       if (this.lineStack.length === 0) {
         return;
       }
-      const line = this.lineStack[this.lineStack.length - 1];
 
-      // selects last color before line is yeeted, this is buggy sometimes.
+      const line = this.lineStack.pop();
+      if (line.length === 0) {
+        return;
+      }
       const prevColor = line[0][4];
-      this.lineStack.pop();
 
       this.ctx.clearRect(
         0,

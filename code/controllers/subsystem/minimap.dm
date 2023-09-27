@@ -381,7 +381,8 @@ SUBSYSTEM_DEF(minimaps)
 			xeno = client_mob
 			if(xeno.hivenumber == user_faction)
 				faction_clients += client
-		else if(client_mob.faction == user_faction)
+		else if(client_mob.faction == user_faction) // TODO: not distributing properly, fix.
+			to_chat(user, SPAN_WARNING(client))
 			faction_clients += client
 	COOLDOWN_START(src, flatten_map_cooldown, flatten_map_cooldown_time)
 	var/flat_tacmap_png = icon2html(flat_map, faction_clients, sourceonly = TRUE)

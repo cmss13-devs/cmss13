@@ -623,7 +623,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(active_visor.can_toggle(user))
-		active_visor.visor_function(src, user)
+		if(istype(active_visor, /obj/item/device/helmet_visor/tactical_map_visor))
+			active_visor.visor_function(src, user, FALSE, TRUE)
+		else
+			active_visor.visor_function(src, user)
 
 	playsound_client(user.client, active_visor.toggle_on_sound, null, 75)
 	update_icon()
@@ -634,7 +637,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(current_visor.can_toggle(user))
-		current_visor.visor_function(src, user)
+		if(istype(current_visor, /obj/item/device/helmet_visor/tactical_map_visor))
+			current_visor.visor_function(src, user, sound, FALSE)
+		else
+			current_visor.visor_function(src, user)
 
 	if(sound)
 		playsound_client(user.client, current_visor.toggle_off_sound, null, 75)

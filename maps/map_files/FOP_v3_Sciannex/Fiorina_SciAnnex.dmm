@@ -1797,6 +1797,13 @@
 	icon_state = "sterile_white"
 	},
 /area/fiorina/station/medbay)
+"aUM" = (
+/obj/item/clothing/head/welding,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "greenfull"
+	},
+/area/fiorina/tumor/civres)
 "aVd" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/prison,
@@ -6379,6 +6386,12 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
+"dKN" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/tumor/civres)
 "dKX" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -12625,6 +12638,11 @@
 /obj/effect/landmark/wo_supplies/storage/belts/knifebelt,
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
+"hDq" = (
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/sand/layer1,
+/area/fiorina/tumor/civres)
 "hDr" = (
 /obj/item/stool,
 /turf/open/floor/prison{
@@ -14331,6 +14349,13 @@
 	icon_state = "darkyellowfull2"
 	},
 /area/fiorina/station/telecomm/lz1_tram)
+"iKf" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "green"
+	},
+/area/fiorina/tumor/civres)
 "iKg" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/plating/prison,
@@ -16405,6 +16430,12 @@
 	},
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
+"jUy" = (
+/obj/structure/machinery/sensortower,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/tumor/civres)
 "jUz" = (
 /obj/structure/surface/table/reinforced/prison{
 	flipped = 1
@@ -28099,6 +28130,10 @@
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
+/area/fiorina/tumor/civres)
+"qWO" = (
+/obj/item/tool/weldingtool,
+/turf/open/auto_turf/sand/layer1,
 /area/fiorina/tumor/civres)
 "qXl" = (
 /obj/structure/stairs/perspective{
@@ -50047,7 +50082,7 @@ lhQ
 tzj
 lvs
 lhQ
-qty
+aUM
 lsl
 xFx
 apw
@@ -50258,10 +50293,10 @@ rMg
 hDx
 lhQ
 oVC
+dKN
 hDx
-hDx
-hDx
-apw
+jUy
+hDq
 apw
 apw
 amF
@@ -50473,7 +50508,7 @@ qty
 hDx
 whu
 hDx
-apw
+qWO
 mZo
 apw
 amF
@@ -50896,7 +50931,7 @@ qty
 muB
 nsg
 nsg
-nsg
+iKf
 apw
 hDx
 taX

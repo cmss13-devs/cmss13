@@ -148,7 +148,7 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(obj/projectile/Proj)
 
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.immutable > 0)
@@ -612,7 +612,7 @@
 
 		var/obj/item/storage/bag/plants/S = O
 		for (var/obj/item/reagent_container/food/snacks/grown/G in locate(user.x,user.y,user.z))
-			if(!S.can_be_inserted(G))
+			if(!S.can_be_inserted(G, user))
 				return
 			S.handle_item_insertion(G, TRUE, user)
 

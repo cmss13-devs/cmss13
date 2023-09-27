@@ -322,13 +322,10 @@ var/global/list/limb_types_by_name = list(
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
 
-/mob/verb/a_select_zone(input as text)
-	set name = "a-select-zone"
-	set hidden = TRUE
-
+/mob/proc/a_select_zone(input, client/user)
 	var/atom/movable/screen/zone_sel/zone
 
-	for(var/A in usr.client.screen)
+	for(var/A in user.screen)
 		if(istype(A, /atom/movable/screen/zone_sel))
 			zone = A
 
@@ -410,6 +407,10 @@ var/global/list/limb_types_by_name = list(
 		if(SKILL_ENGINEER)
 			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				return DURATION_MULTIPLIER_TIER_2
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				return DURATION_MULTIPLIER_TIER_1
 // Construction
 		if(SKILL_CONSTRUCTION)
 			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_MASTER))
@@ -548,7 +549,7 @@ var/global/list/limb_types_by_name = list(
 		track_link = " <a href='byond://?src=[REF(src)];track=[REF(source)]'>(Follow)</a>"
 	if (source && action == NOTIFY_JUMP)
 		var/turf/T = get_turf(source)
-		track_link = " <a href='byond://?src=[REF(src)];jumptocoord;x=[T.x];y=[T.y];z=[T.z]'>(Jump)</a>"
+		track_link = " <a href='byond://?src=[REF(src)];jumptocoord=1;X=[T.x];Y=[T.y];Z=[T.z]'>(Jump)</a>"
 	var/full_enter_link
 	if (enter_link)
 		full_enter_link = "<a href='byond://?src=[REF(src)];[enter_link]'>[(enter_text) ? "[enter_text]" : "(Claim)"]</a>"

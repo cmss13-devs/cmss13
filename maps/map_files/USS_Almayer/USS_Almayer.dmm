@@ -5841,7 +5841,7 @@
 	name = "ARES Core Access";
 	pixel_x = -24;
 	pixel_y = 24;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -11056,7 +11056,7 @@
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Railing";
@@ -21875,7 +21875,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 8;
@@ -29104,7 +29104,6 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build{
-	dir = 2;
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/command/airoom)
@@ -33002,8 +33001,7 @@
 	eftpos_name = "Cargo Bay EFTPOS scanner";
 	pixel_x = -10
 	},
-/obj/item/tool/stamp{
-	name = "Requisition Officer's stamp";
+/obj/item/tool/stamp/ro{
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -34536,6 +34534,10 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 1
 	},
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 29
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -36029,9 +36031,6 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "fGu" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1
-	},
 /obj/structure/machinery/door_control{
 	dir = 1;
 	id = "researchlockdownext";
@@ -36047,6 +36046,10 @@
 	pixel_x = -26;
 	pixel_y = 1;
 	req_access_txt = "28"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -36362,7 +36365,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4;
@@ -36556,7 +36559,6 @@
 /area/almayer/medical/upper_medical)
 "fQF" = (
 /obj/structure/surface/rack,
-/obj/item/storage/bag/plasticbag,
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
@@ -36949,7 +36951,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -37373,8 +37375,7 @@
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
 	pixel_x = 17;
-	pixel_y = -6;
-	ticket_console = 1
+	pixel_y = -6
 	},
 /obj/item/storage/box/ids{
 	pixel_x = -4
@@ -38139,7 +38140,7 @@
 	name = "Working Joe Cryogenics Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -38683,7 +38684,7 @@
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	closed_layer = 4.1;
@@ -38752,7 +38753,7 @@
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	closed_layer = 4;
@@ -42331,7 +42332,7 @@
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	closed_layer = 4;
@@ -45068,7 +45069,7 @@
 	id = "ARES StairsUpper";
 	name = "ARES Core Access";
 	pixel_x = 24;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -47189,7 +47190,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 8;
@@ -49000,7 +49001,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -54804,20 +54805,6 @@
 	icon_state = "bluefull"
 	},
 /area/almayer/living/briefing)
-"nMq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/computer/working_joe{
-	dir = 8;
-	pixel_x = 17
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/almayer/hallways/aft_hallway)
 "nMu" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -55472,8 +55459,7 @@
 	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
-	pixel_x = 17;
-	ticket_console = 1
+	pixel_x = 17
 	},
 /obj/structure/sign/safety/laser{
 	pixel_y = 24
@@ -57018,7 +57004,7 @@
 	id = "ARES StairsUpper";
 	name = "ARES Core Access";
 	pixel_x = -24;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -57077,7 +57063,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 4;
@@ -58235,8 +58221,8 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
-/obj/item/tool/weldingtool/largetank,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
+/obj/item/tool/weldingtool,
 /obj/item/clothing/head/welding,
 /obj/item/clothing/head/welding,
 /obj/item/device/reagent_scanner,
@@ -60934,7 +60920,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 8;
@@ -62004,10 +61990,14 @@
 	},
 /area/almayer/squads/charlie_delta_shared)
 "qUH" = (
+<<<<<<< HEAD
 /obj/structure/bed/stool,
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
+=======
+/obj/structure/surface/rack,
+>>>>>>> master
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald"
@@ -63459,7 +63449,7 @@
 "rBx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/stamp/ro{
-	name = "spare requisitions officer's rubber stamp";
+	name = "spare quartermaster's rubber stamp";
 	pixel_x = -7;
 	pixel_y = 11
 	},
@@ -67875,6 +67865,10 @@
 	pixel_y = 5
 	},
 /obj/item/tool/pen,
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 17
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -68913,6 +68907,10 @@
 /area/almayer/command/cic)
 "tUv" = (
 /obj/structure/machinery/iv_drip,
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 17
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -70122,12 +70120,7 @@
 	pixel_y = 2
 	},
 /obj/structure/largecrate/random/case,
-/obj/item/prop{
-	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. The trigger is missing, the barrel is bent, and it no longer appropriately feeds magazines.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
-	icon_state = "m41amk1_e";
-	item_state = "m41amk1";
-	name = "\improper Broken M41A pulse rifle";
+/obj/effect/spawner/prop_gun/m41aMK1{
 	pixel_y = 7
 	},
 /obj/item/prop/helmetgarb/gunoil{
@@ -74064,8 +74057,7 @@
 	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 4;
-	pixel_x = -17;
-	ticket_console = 1
+	pixel_x = -17
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -74984,6 +74976,10 @@
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
 	},
+/obj/structure/pipes/vents/pump/no_boom{
+	name = "Security Vent";
+	desc = "Has a valve and pump attached to it, connected to multiple gas tanks."
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "plating"
 	},
@@ -75378,7 +75374,7 @@
 	name = "Working Joe Cryogenics Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /obj/effect/landmark/late_join/working_joe,
 /obj/effect/landmark/start/working_joe,
@@ -75804,7 +75800,6 @@
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 1;
 	name = "\improper CMO's Bedroom";
-	req_access = null;
 	req_one_access_txt = "1;5";
 	access_modified = 1
 	},
@@ -77688,7 +77683,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
@@ -77900,6 +77895,9 @@
 /obj/item/folder/white{
 	layer = 2.9;
 	pixel_x = -8
+	},
+/obj/structure/machinery/computer/working_joe{
+	pixel_y = 16
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -79000,7 +78998,7 @@
 	name = "ARES Core Access";
 	pixel_x = 24;
 	pixel_y = 24;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -117391,7 +117389,7 @@ auG
 azb
 azb
 azb
-nMq
+auG
 aDp
 apK
 cbr

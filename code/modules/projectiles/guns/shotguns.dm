@@ -515,6 +515,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	burst_delay = 0 //So doubleshotty can doubleshot
 	has_open_icon = TRUE
 	civilian_usable_override = TRUE // Come on. It's THE survivor shotgun.
+	additional_fire_group_delay = 1.5 SECONDS
 
 /obj/item/weapon/gun/shotgun/double/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14, "stock_x" = 13, "stock_y" = 14)
@@ -590,7 +591,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	//We can't make a projectile without a mag or active attachable.
 
 
-/obj/item/weapon/gun/shotgun/double/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/shotgun/double/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(!current_mag)
 		return
@@ -761,7 +762,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	reload_sound = 'sound/weapons/handling/gun_mou_reload.ogg'//unique shell insert
 	flags_equip_slot = SLOT_BACK
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
-	additional_fire_group_delay = 1.5 SECONDS
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,

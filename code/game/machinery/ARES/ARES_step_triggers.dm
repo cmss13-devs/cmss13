@@ -25,7 +25,7 @@
 		return FALSE
 	if(!(ishuman(passer) || isxeno(passer)))
 		return FALSE
-	if(passer.alpha <= 100)//Can't be seen/detected to trigger alert.
+	if(HAS_TRAIT(passer, TRAIT_CLOAKED))
 		return FALSE
 	if(pass_jobs)
 		if(passer.job in pass_jobs)
@@ -117,7 +117,7 @@
 		return FALSE
 	if(!passer)
 		return FALSE
-	if(passer.alpha <= 100)//Can't be seen/detected to trigger alert.
+	if(HAS_TRAIT(passer, TRAIT_CLOAKED))//Can't be seen/detected to trigger alert.
 		return FALSE
 	var/area/pass_area = get_area(get_step(passer, passer.dir))
 	if(istype(pass_area, /area/almayer/command/airoom))//Don't want it to freak out over someone /entering/ the area. Only leaving.
@@ -163,7 +163,18 @@
 	to_chat(passer, SPAN_BOLDWARNING("You hear a harsh buzzing sound as you cross the threshold!"))
 	ares_apollo_talk(broadcast_message)
 	if(idcard)
-		idcard.access -= ACCESS_MARINE_AI_TEMP
+		/// Removes the access from the ID and updates the ID's modification log.
+		for(var/obj/item/card/id/identification in link.active_ids)
+			if(identification != idcard)
+				continue
+			idcard.access -= ACCESS_MARINE_AI_TEMP
+			link.active_ids -= idcard
+			idcard.modification_log += "Temporary AI access revoked by [MAIN_AI_SYSTEM]"
+		/// Updates the related access ticket.
+		for(var/datum/ares_ticket/access/access_ticket in link.tickets_access)
+			if(access_ticket.user_id_num != idcard.registered_gid)
+				continue
+			access_ticket.ticket_status = TICKET_REVOKED
 	COOLDOWN_START(src, sensor_cooldown, COOLDOWN_ARES_ACCESS_CONTROL)
 	if(alert_id && link)
 		for(var/obj/effect/step_trigger/ares_alert/sensor in link.linked_alerts)

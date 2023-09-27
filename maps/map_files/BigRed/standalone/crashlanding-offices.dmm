@@ -1453,15 +1453,6 @@
 	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/office_complex)
-"od" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/item/clothing/gloves/marine/veteran/pmc,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/bigredv2/outside/office_complex)
 "oF" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -1622,15 +1613,6 @@
 	dir = 8
 	},
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/bigredv2/outside/office_complex)
-"Ra" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -1939,7 +1921,7 @@ dP
 aV
 id
 yS
-od
+yS
 cE
 cM
 cM
@@ -2092,7 +2074,7 @@ aN
 bv
 dL
 bm
-od
+yS
 yS
 yS
 cu
@@ -2155,7 +2137,7 @@ bv
 aV
 fv
 dA
-Ra
+bp
 cF
 cN
 cN

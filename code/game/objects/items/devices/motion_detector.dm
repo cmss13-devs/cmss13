@@ -281,12 +281,12 @@
 			DB.setDir(initial(DB.dir))
 
 		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
-		user.client.screen += DB
+		user.client.add_to_screen(DB)
 		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
 
 /obj/item/device/motiondetector/proc/clear_pings(mob/user, obj/effect/detector_blip/DB)
 	if(user.client)
-		user.client.screen -= DB
+		user.client.remove_from_screen(DB)
 
 /obj/item/device/motiondetector/m717
 	name = "M717 pocket motion detector"

@@ -183,7 +183,7 @@
 	/// Whether or not the blowtorch is off(0), on(1) or currently welding(2)
 	var/welding = 0
 	/// The max amount of fuel the welder can hold
-	var/max_fuel = 20
+	var/max_fuel = 40
 	/// Used to slowly deplete the fuel when the tool is left on.
 	var/weld_tick = 0
 	var/has_welding_screen = FALSE
@@ -413,7 +413,7 @@
 
 /obj/item/tool/weldingtool/largetank
 	name = "industrial blowtorch"
-	max_fuel = 40
+	max_fuel = 60
 	matter = list("metal" = 70, "glass" = 60)
 
 
@@ -723,7 +723,7 @@ Welding backpack
 	else
 		. += "No punctures are seen on \the [src] upon closer inspection."
 
-/obj/item/tool/weldpack/bullet_act(obj/item/projectile/P)
+/obj/item/tool/weldpack/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()

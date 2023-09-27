@@ -158,7 +158,7 @@
 		/obj/item/attachable/stock/vulture,
 	)
 	civilian_usable_override = FALSE
-	projectile_type = /obj/item/projectile/vulture
+	projectile_type = /obj/projectile/vulture
 	actions_types = list(
 		/datum/action/item_action/vulture,
 	)
@@ -275,3 +275,7 @@
 			to_chat(user, SPAN_DANGER("The splint on your [limb.display_name] comes apart under the recoil!"))
 			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 			user.update_med_icon()
+
+
+/obj/item/weapon/gun/boltaction/vulture/skillless
+	bypass_trait = TRUE

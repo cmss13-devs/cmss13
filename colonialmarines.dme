@@ -1680,6 +1680,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\gear_presets\wy.dm"
 #include "code\modules\gear_presets\wy_goons.dm"
 #include "code\modules\gear_presets\yautja.dm"
+#include "code\modules\gear_presets\survivors_presets\misc.dm"
 #include "code\modules\gear_presets\survivors_presets\preset_corsat.dm"
 #include "code\modules\gear_presets\survivors_presets\preset_florina.dm"
 #include "code\modules\gear_presets\survivors_presets\preset_kutjevo.dm"

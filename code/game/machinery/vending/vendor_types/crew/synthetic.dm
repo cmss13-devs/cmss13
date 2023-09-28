@@ -243,7 +243,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Officer Cap", 12, /obj/item/clothing/head/cmcap/bridge, null, VENDOR_ITEM_REGULAR),
 	list("Bio Hood", 12, /obj/item/clothing/head/bio_hood/synth, null, VENDOR_ITEM_REGULAR),
 
-	list("HELMET", 0, null, null, null),
+	list("HEADWEAR", 0, null, null, null),
 	list("Marine Helmet (Mission-Specific Camo)", 12, /obj/item/clothing/head/helmet/marine, null, VENDOR_ITEM_REGULAR),
 	list("Marine Helmet (Grey)", 12, /obj/item/clothing/head/helmet/marine/grey, null, VENDOR_ITEM_REGULAR),
 	list("Marine Helmet (Jungle)", 12, /obj/item/clothing/head/helmet/marine/jungle, null, VENDOR_ITEM_REGULAR),

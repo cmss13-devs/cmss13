@@ -39,7 +39,7 @@
 	active = TRUE
 	update_icon()
 
- // CMB distress beacon held by CMB Marshal for signalling distress to Anchorpoint Station
+/// CMB distress beacon held by CMB Marshal for signalling distress to Anchorpoint Station
 /obj/item/handheld_distress_beacon_CMB
 	name = "CMB handheld distress beacon"
 	desc = "An emergency beacon. This one is branded with a Colonial Marshal Bureau star and 'ANCHORPOINT STATION' is etched in stencil on the side. This device is issued to CMB Marshals and features an extended relay antenna."

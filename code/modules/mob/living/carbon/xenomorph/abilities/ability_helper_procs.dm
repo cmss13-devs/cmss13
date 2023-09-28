@@ -119,7 +119,7 @@
 	if(!check_plasma(plasma_cost))
 		return
 
-	if(!O.Adjacent(src) || (I && !isturf(I.loc)))//not adjacent or inside something
+	if(!O.Adjacent(src) || (I && !isturf(I.loc) && !issurface(I.loc)))//not adjacent or inside something
 		if(istype(O,/obj/item/explosive/plastic))
 			var/obj/item/explosive/plastic/E = O
 			if(E.plant_target && !E.plant_target.Adjacent(src))

@@ -1973,15 +1973,6 @@
 "agu" = (
 /turf/open/floor/almayer,
 /area/almayer/living/officer_study)
-"agv" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/almayer/living/starboard_garden)
 "agw" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -108339,7 +108330,7 @@ aag
 aag
 acf
 aet
-agv
+agS
 aiP
 aYq
 aar

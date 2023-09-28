@@ -68,5 +68,6 @@
 		X.mind.transfer_to(X, TRUE)
 	else
 		X.away_timer = XENO_LEAVE_TIMER
+		X.free_for_ghosts()
 
 	use(required_jelly)

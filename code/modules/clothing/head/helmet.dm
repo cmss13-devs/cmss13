@@ -724,6 +724,21 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "c_helmet"
 	flags_atom = NO_SNOW_TYPE
 
+/obj/item/clothing/head/helmet/marine/jungle
+	icon_state = "helmet"
+	item_state = "helmet"
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/head/helmet/marine/snow
+	icon_state = "s_helmet"
+	item_state = "s_helmet"
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/head/helmet/marine/desert
+	icon_state = "d_helmet"
+	item_state = "d_helmet"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/head/helmet/marine/tech/tanker
 	name = "\improper M50 tanker helmet"
 	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle. Features a toggleable welding screen for eye protection."

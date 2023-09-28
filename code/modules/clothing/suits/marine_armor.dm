@@ -537,8 +537,24 @@
 	time_to_equip = 1 SECONDS
 	uniform_restricted = null
 
-/obj/item/clothing/suit/storage/marine/light/synvest/vanilla
+/obj/item/clothing/suit/storage/marine/light/synvest/grey
 	icon_state = "VL_syn"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/jungle
+	icon_state = "VL_syn_camo"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/snow
+	icon_state = "s_VL_syn_camo"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/desert
+	icon_state = "d_VL_syn_camo"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/dgrey
+	icon_state = "c_VL_syn_camo"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/heavy

@@ -338,21 +338,26 @@ SUBSYSTEM_DEF(minimaps)
 	hashed_minimaps[hash] = map
 	return map
 
-
-/datum/tacmap/proc/get_current_map(mob/user, png_asset_only = FALSE)
+/**
+ * Fetches either flattend map png asset or the svg coords datum
+ * Arguments:
+ * * user: to determine whivh faction get the map from.
+ * * asset_type: true for png, false for svg
+ */
+/datum/tacmap/proc/get_current_map(mob/user, asset_type)
 	var/list/map_list
 	if(ishuman(user))
-		if(png_asset_only)
+		if(asset_type)
 			map_list = GLOB.uscm_flat_tacmap_png_asset
 		else
-			map_list = GLOB.uscm_flat_tacmap
+			map_list = GLOB.uscm_svg_overlay
 	else
 		if(!isxeno(user))
 			return
-		if(png_asset_only)
+		if(asset_type)
 			map_list = GLOB.xeno_flat_tacmap_png_asset
 		else
-			map_list = GLOB.xeno_flat_tacmap
+			map_list = GLOB.uscm_svg_overlay
 
 	if(map_list.len == 0)
 		return
@@ -386,10 +391,12 @@ SUBSYSTEM_DEF(minimaps)
 			faction_clients += client
 	COOLDOWN_START(src, flatten_map_cooldown, flatten_map_cooldown_time)
 	var/flat_tacmap_png = icon2html(flat_map, faction_clients, sourceonly = TRUE)
+	var/datum/flattend_tacmap_png = new(flat_tacmap_png)
 	if(!isxeno(user))
-		GLOB.uscm_flat_tacmap_png_asset += flat_tacmap_png
+		GLOB.uscm_flat_tacmap_png_asset += flattend_tacmap_png
 	else
-		GLOB.xeno_flat_tacmap_png_asset += flat_tacmap_png
+		GLOB.xeno_flat_tacmap_png_asset += flattend_tacmap_png
+	qdel(flattend_tacmap_png)
 
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
@@ -541,7 +548,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		current_map = get_current_map(user)
+		current_map = get_current_map(user, TRUE)
 		if(!current_map)
 			distribute_current_map_png(user)
 
@@ -552,9 +559,10 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
 	//todo: upon joining user should have the base map without layered icons as default. Otherwise loads failed png for a new user.
-	data["flatImage"] = get_current_map(user, TRUE)
 
-	data["svgData"] = null
+	// it's getting a datum of type
+	data["flatImage"] = get_current_map(user, TRUE).flat_tacmap
+	data["svgData"] =  get_current_map(user, FALSE).svg_data
 
 	data["mapRef"] = map_holder.map_ref
 	data["toolbarColorSelection"] = toolbar_color_selection
@@ -566,11 +574,6 @@ SUBSYSTEM_DEF(minimaps)
 		data["canvasCooldown"] = GLOB.uscm_canvas_cooldown
 	data["nextCanvasTime"] = canvas_cooldown_time
 	data["updatedCanvas"] = updated_canvas
-
-	current_map = get_current_map(user)
-	if(current_map)
-		data["flatImage"] = current_map.flat_tacmap
-		data["svgData"] = current_map.svg_data
 
 	return data
 
@@ -609,7 +612,7 @@ SUBSYSTEM_DEF(minimaps)
 	switch (action)
 		if ("menuSelect")
 			if(params["selection"] == "new canvas")
-				distribute_current_map_png(user)
+				distribute_current_map_png(user) // not updating?
 
 			. = TRUE
 
@@ -639,9 +642,7 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("selectAnnouncement")
-
-			var/current_map_asset = get_current_map(user, TRUE)
-			var/datum/svg_overlay/svg_overlay = new(params["image"], current_map_asset)
+			var/datum/svg_overlay/svg_overlay = new(params["image"])
 
 			var/outgoing_message = stripped_multiline_input(user, "Optional message to announce with the tactical map", "Tactical Map Announcement", "")
 			if(!outgoing_message)
@@ -653,10 +654,10 @@ SUBSYSTEM_DEF(minimaps)
 			if(isxeno(user))
 				xeno = user
 				xeno_announcement(outgoing_message, xeno.hivenumber)
-				GLOB.xeno_flat_tacmap += svg_overlay
+				GLOB.xeno_svg_overlay += svg_overlay
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, canvas_cooldown_time)
 			else
-				GLOB.uscm_flat_tacmap += svg_overlay
+				GLOB.uscm_svg_overlay += svg_overlay
 				var/mob/living/carbon/human/H = user
 				var/obj/item/card/id/id = H.wear_id
 				if(istype(id))
@@ -707,10 +708,15 @@ SUBSYSTEM_DEF(minimaps)
 	map = null
 	return ..()
 
-/datum/svg_overlay
-	var/svg_data
+// datums for holding both the flattened png asset and overlay. It's best to keep them separate with the current implementation imo.
+/datum/flat_tacmap_png
 	var/flat_tacmap
 
-/datum/svg_overlay/New(svg_data, flat_tacmap)
-	src.svg_data = svg_data
+/datum/flat_tacmap_png/New(flat_tacmap)
 	src.flat_tacmap = flat_tacmap
+
+/datum/svg_overlay
+	var/svg_data
+
+/datum/svg_overlay/New(svg_data)
+	src.svg_data = svg_data

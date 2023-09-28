@@ -11,7 +11,7 @@
 	icon = 'fray-marines/icons/obj/vehicles/mech.dmi'
 	icon_state = "mech_open"
 	layer = BIG_XENO_LAYER
-	opacity = TRUE
+	opacity = FALSE
 	can_buckle = FALSE
 	move_delay = 6
 	req_access = list(ACCESS_MARINE_WALKER)
@@ -110,6 +110,17 @@
 			take_damage(15, "explosive")
 		if (3)
 			take_damage(10, "explosive")					// 10 * 5.0 = 50. Maxhealth is 400. Hellova damage
+
+/obj/vehicle/walker/MouseDrop_T(mob/target, mob/user)
+	. = ..()
+	var/mob/living/H = user
+	if(!istype(H) || target != user) //No making other people climb into walker.
+		return
+
+	if(usr.skills.get_skill_level(SKILL_POWERLOADER))
+		move_in(H)
+	else
+		to_chat(H, "How to operate it?")
 
 /obj/vehicle/walker/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated()) return
@@ -353,7 +364,7 @@
 
 	if(right)
 		var/munition = right.ammo ? "[right.ammo.current_rounds]/[right.ammo.max_rounds]" : "<span class='warning'>DEPLETED</span>"
-		to_chat(user, "<span class='notice'>Right hardpoint: [left.name].\n Current ammo level: [munition]</span>")
+		to_chat(user, "<span class='notice'>Right hardpoint: [right.name].\n Current ammo level: [munition]</span>")
 	else
 		to_chat(user, "<span class='warning'>RIGHT HARDPOINT IS EMPTY!</span>")
 
@@ -381,11 +392,14 @@
 	to_chat(M, "Selected [W.selected ? "[W.left]" : "[W.right]"]")
 
 /obj/vehicle/walker/handle_click(mob/living/user, atom/A, list/mods)
+	if(istype(A, /atom/movable/screen) || A.z != src.z)
+		return
 	if(!firing_arc(A))
 		var/newDir = get_cardinal_dir(src, A)
 		l_move_time = world.time
+		if(dir != newDir)
+			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
 		dir = newDir
-		pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
 		return
 	if(selected)
 		if(!left)

@@ -11,22 +11,29 @@ const PAGES = {
   'apollo': () => ApolloLog,
   'access_log': () => AccessLogs,
   'delete_log': () => DeletionLogs,
+  'flight_log': () => FlightLogs,
   'talking': () => ARESTalk,
   'deleted_talks': () => DeletedTalks,
   'read_deleted': () => ReadingTalks,
   'security': () => Security,
   'requisitions': () => Requisitions,
-  'antiair': () => AntiAir,
   'emergency': () => Emergency,
 };
 
 export const AresInterface = (props, context) => {
   const { data } = useBackend(context);
-  const { current_menu } = data;
+  const { current_menu, sudo } = data;
   const PageComponent = PAGES[current_menu]();
 
+  let themecolor = 'crtblue';
+  if (sudo >= 1) {
+    themecolor = 'crtred';
+  } else if (current_menu === 'emergency') {
+    themecolor = 'crtred';
+  }
+
   return (
-    <Window theme="crtblue" width={780} height={725}>
+    <Window theme={themecolor} width={780} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -156,14 +163,14 @@ const MainMenu = (props, context) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="Anti Air Targetting"
-                tooltip="Review changes to the Anti-Air targetting."
-                icon="crosshairs"
+                content="Flight Records"
+                tooltip="Read the Dropship Flight Control Records."
+                icon="jet-fighter-up"
                 ml="auto"
                 px="2rem"
                 width="25vw"
                 bold
-                onClick={() => act('page_antiair')}
+                onClick={() => act('page_flight')}
               />
             </Stack.Item>
             <Stack.Item>
@@ -1178,10 +1185,16 @@ const Requisitions = (props, context) => {
   );
 };
 
-const AntiAir = (props, context) => {
+const FlightLogs = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, aa_adjustments } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_flight,
+    access_level,
+  } = data;
 
   return (
     <>
@@ -1221,8 +1234,8 @@ const AntiAir = (props, context) => {
       </Section>
 
       <Section>
-        <h1 align="center">AntiAir Control Logs</h1>
-        {!!aa_adjustments.length && (
+        <h1 align="center">Flight Control Logs</h1>
+        {!!records_flight.length && (
           <Flex
             className="candystripe"
             p=".75rem"
@@ -1231,25 +1244,33 @@ const AntiAir = (props, context) => {
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
-            <Flex.Item grow bold>
+            <Flex.Item width="10rem" grow bold>
               User
             </Flex.Item>
-            <Flex.Item bold width="30rem" textAlign="center">
-              Adjustment
+            <Flex.Item width="40rem" textAlign="center">
+              Details
             </Flex.Item>
           </Flex>
         )}
-        {aa_adjustments.map((record, i) => {
+        {records_flight.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold width="6rem" shrink="0" mr="1rem">
                 {record.time}
               </Flex.Item>
-              <Flex.Item grow italic>
+              <Flex.Item width="10rem" grow italic>
                 {record.user}
               </Flex.Item>
-              <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
+              <Flex.Item width="40rem" ml="1rem" shrink="0" textAlign="center">
                 {record.details}
+              </Flex.Item>
+              <Flex.Item ml="1rem">
+                <Button.Confirm
+                  icon="trash"
+                  tooltip="Delete Record"
+                  disabled={access_level < 4}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                />
               </Flex.Item>
             </Flex>
           );
@@ -1261,8 +1282,14 @@ const AntiAir = (props, context) => {
 
 const Security = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, records_security } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_security,
+    access_level,
+  } = data;
 
   return (
     <>
@@ -1359,6 +1386,7 @@ const Emergency = (props, context) => {
     worldtime,
     distresstimelock,
     distresstime,
+    quarterstime,
     evac_status,
     mission_failed,
     nuketimelock,
@@ -1366,6 +1394,13 @@ const Emergency = (props, context) => {
   } = data;
   const minimumEvacTime = worldtime > distresstimelock;
   const distressCooldown = worldtime < distresstime;
+  const quartersCooldown = worldtime < quarterstime;
+  const canQuarters = !quartersCooldown;
+  let quarters_reason = 'Call for General Quarters.';
+  if (quartersCooldown) {
+    quarters_reason =
+      'It has not been long enough since the last General Quarters call.';
+  }
   const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;
   let distress_reason = 'Launch a Distress Beacon.';
   if (alert_level === 3) {
@@ -1396,7 +1431,8 @@ const Emergency = (props, context) => {
   let nuke_reason =
     'Request a nuclear device to be authorized by USCM High Command.';
   if (!nuke_available) {
-    nuke_reason = 'No nuclear ordnance is available during this operation.';
+    nuke_reason =
+      'No nuclear ordnance is available during this operation, or one has already been provided.';
   } else if (mission_failed) {
     nuke_reason =
       'You have already lost the objective, you cannot use a nuclear device aboard the ship!';
@@ -1445,6 +1481,20 @@ const Emergency = (props, context) => {
 
       <h1 align="center">Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
+        <Button.Confirm
+          content="Call General Quarters"
+          tooltip={quarters_reason}
+          icon="triangle-exclamation"
+          color="red"
+          width="40vw"
+          textAlign="center"
+          fontSize="1.5rem"
+          p="1rem"
+          mt="5rem"
+          bold
+          onClick={() => act('general_quarters')}
+          disabled={!canQuarters}
+        />
         <Button.Confirm
           content="Initiate Evacuation"
           tooltip={evac_reason}

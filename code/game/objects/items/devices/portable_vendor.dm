@@ -238,7 +238,7 @@
 	special_prod_time_lock = CL_BRIEFCASE_TIME_LOCK
 	special_prods = list(/obj/item/implanter/neurostim, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison)
 
-	req_access = list(ACCESS_WY_CORPORATE)
+	req_access = list(ACCESS_WY_EXEC)
 	req_role = JOB_CORPORATE_LIAISON
 	listed_products = list(
 		list("INCENTIVES", 0, null, null, null),
@@ -270,4 +270,7 @@
 
 		list("MISC", 0, null, null, null),
 		list("Hollow Cane", 15, /obj/item/weapon/pole/fancy_cane/this_is_a_knife, "white", "A hollow cane that can store any commonplace sharp weaponry. Said weapon not included."),
+
+		list("AMMO", 0, null, null, null),
+		list("ES-4 stun magazine", 10, /obj/item/ammo_magazine/pistol/es4, "white", "Holds 19 rounds of specialized Conductive 9mm."),
 	)

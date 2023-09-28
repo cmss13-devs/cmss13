@@ -159,7 +159,7 @@
 		return
 	die()
 
-/obj/item/clothing/mask/facehugger/bullet_act(obj/item/projectile/P)
+/obj/item/clothing/mask/facehugger/bullet_act(obj/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO))
@@ -246,7 +246,7 @@
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, hugger_ckey = null)
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, mob/living/carbon/xenomorph/facehugger/hugger)
 	if(attached || !can_hug(living_mob, hivenumber))
 		return FALSE
 
@@ -281,7 +281,20 @@
 		if(!human.species || !(human.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 			human.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
 
-	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger_ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+	var/area/hug_area = get_area(src)
+	var/name = hugger ? "[hugger]" : "\a [src]"
+	if(hug_area)
+		notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name] at [hug_area]!", source = human, action = NOTIFY_ORBIT)
+		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
+	else
+		notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name]!", source = human, action = NOTIFY_ORBIT)
+		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>"))
+	if(hug_area)
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host at \the [hug_area]!"), 1, hivenumber)
+	else
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host!"), 1, hivenumber)
+
+	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger?.client?.ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
 	return TRUE
 

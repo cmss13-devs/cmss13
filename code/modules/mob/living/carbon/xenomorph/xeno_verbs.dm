@@ -25,6 +25,13 @@
 	if(!hive)
 		return
 
+	if(hive.hivenumber == XENO_HIVE_RENEGADE) //Renegade's ability to attack someone depends on IFF settings, not on alliance
+		if(!iff_tag)
+			to_chat(src, SPAN_NOTICE("You are not obligated to protect anyone."))
+			return
+		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(iff_tag.faction_groups, "no one")]."))
+		return
+
 	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
@@ -76,9 +83,9 @@
 
 	var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
 	if (xeno_mobhud)
-		H.remove_hud_from(usr)
+		H.remove_hud_from(usr, usr)
 	else
-		H.add_hud_to(usr)
+		H.add_hud_to(usr, usr)
 
 	xeno_mobhud = !xeno_mobhud
 
@@ -89,9 +96,9 @@
 
 	var/datum/mob_hud/H = huds[MOB_HUD_XENO_HOSTILE]
 	if (xeno_hostile_hud)
-		H.remove_hud_from(usr)
+		H.remove_hud_from(usr, usr)
 	else
-		H.add_hud_to(usr)
+		H.add_hud_to(usr, usr)
 
 	xeno_hostile_hud = !xeno_hostile_hud
 

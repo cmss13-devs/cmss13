@@ -127,6 +127,8 @@
 #define TRAIT_INTENT_EYES "t_intent_eyes"
 /// Masked synthetic biology. Basic medHUDs will percieve the mob as human. (Infiltrator Synths)
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
+/// Makes it impossible to strip the inventory of this mob.
+#define TRAIT_UNSTRIPPABLE "t_unstrippable"
 
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
@@ -175,6 +177,10 @@
 #define TRAIT_USING_WHEELCHAIR "t_using_wheelchair"
 /// If the mob will instantly go permadead upon death
 #define TRAIT_HARDCORE "t_hardcore"
+/// If the mob is able to use the vulture rifle or spotting scope
+#define TRAIT_VULTURE_USER "t_vulture_user"
+/// If the mob is cloaked in any form
+#define TRAIT_CLOAKED "t_cloaked"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -196,11 +202,19 @@
 #define TRAIT_TOOL_SIMPLE_BLOWTORCH "t_tool_simple_blowtorch"
 
 #define TRAIT_TOOL_PEN "t_tool_pen"
+
+/// Can lockout blackmarket from ASRS console circuits.
+#define TRAIT_TOOL_TRADEBAND "t_tool_tradeband"
+
 // CLOTHING TRAITS
 #define TRAIT_CLOTHING_HOOD "t_clothing_hood"
 
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
+
+#define TRAIT_GUN_BIPODDED "t_gun_bipodded"
+
+#define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
 
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
@@ -236,7 +250,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_LEADERSHIP,
 	TRAIT_DEXTROUS,
 	TRAIT_REAGENT_SCANNER,
-	TRAIT_ABILITY_BURROWED
+	TRAIT_ABILITY_BURROWED,
+	TRAIT_VULTURE_USER,
 ))
 
 /*
@@ -251,6 +266,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_FOREIGN_BIO" = TRAIT_FOREIGN_BIO,
 		"TRAIT_INTENT_EYES" = TRAIT_INTENT_EYES,
 		"TRAIT_INFILTRATOR_SYNTH" = TRAIT_INFILTRATOR_SYNTH,
+		"TRAIT_UNSTRIPPABLE" = TRAIT_UNSTRIPPABLE,
 		"TRAIT_NESTED" = TRAIT_NESTED,
 		"TRAIT_CRAWLER" = TRAIT_CRAWLER,
 		"TRAIT_SIMPLE_DESC" = TRAIT_SIMPLE_DESC,
@@ -267,6 +283,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_EMOTE_CD_EXEMPT" = TRAIT_EMOTE_CD_EXEMPT,
 		"TRAIT_LISPING" = TRAIT_LISPING,
 		"TRAIT_CANNOT_EAT" = TRAIT_CANNOT_EAT,
+		"TRAIT_VULTURE_USER" = TRAIT_VULTURE_USER,
+		"TRAIT_CLOAKED" = TRAIT_CLOAKED,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
@@ -295,6 +313,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	),
 	/obj/item/weapon/gun = list(
 		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
+		"TRAIT_GUN_BIPODDED" = TRAIT_GUN_BIPODDED,
 	),
 	/obj/structure/surface/table = list(
 		"TRAIT_STRUCTURE_FLIPPING" = TRAIT_TABLE_FLIPPING,

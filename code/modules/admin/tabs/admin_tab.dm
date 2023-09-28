@@ -169,12 +169,12 @@
 		if(N.is_ban)
 			var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
 			color = "#880000"
-			dat += "<font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+			dat += "<font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		else
 			if(N.is_confidential)
 				color = "#AA0055"
 
-			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		dat += "<br><br>"
 
 	dat += "<br>"
@@ -255,9 +255,9 @@
 
 	log_adminpm("ADMIN: [key_name(src)] : [msg]")
 
-	var/color = "adminsay"
-	if(ishost(usr))
-		color = "headminsay"
+	var/color = "mod"
+	if(check_rights(R_PERMISSIONS, show_msg = FALSE))
+		color = "adminmod"
 
 	var/channel = "ADMIN:"
 	channel = "[admin_holder.rank]:"
@@ -331,7 +331,7 @@
 		if(SUBTLE_MESSAGE_IN_HEAD)
 			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [input]")
 		else
-			message = SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
+			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
 
 	for(var/mob/living/carbon/human/mob in view(usr.client))
 		if(message_option == SUBTLE_MESSAGE_IN_HEAD)
@@ -708,6 +708,20 @@
 	SSticker.mode.toggleable_flags ^= MODE_NO_ATTACK_DEAD
 	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) ? "prevented dead mobs from being" : "allowed dead mobs to be"] attacked.")
 
+/client/proc/toggle_disposal_mobs()
+	set name = "Toggle Disposable Mobs"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_EVENT, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_DISPOSABLE_MOBS
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) ? "allowed mobs to fit" : "prevented mobs fitting"] inside disposals.")
+
 /client/proc/toggle_strip_drag()
 	set name = "Toggle Strip/Drag Dead"
 	set category = "Admin.Flags"
@@ -825,3 +839,16 @@
 	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	message_admins("[src] has toggled Hardcore [MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "on, causing all humans to instantly go perma on death" : "off, causing all humans to die like normal"].")
 
+/client/proc/toggle_bypass_joe_restriction()
+	set name = "Toggle Working Joe Restrictions"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_EVENT, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_BYPASS_JOE
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE) ? "allowed players to bypass (except whitelist)" : "prevented players from bypassing"] Working Joe spawn conditions.")

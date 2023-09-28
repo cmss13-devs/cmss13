@@ -21,3 +21,12 @@
 
 /// Called after a client logs into a mob: (mob)
 #define COMSIG_CLIENT_MOB_LOGIN "client_mob_changed"
+
+/// Called when something is added to a client's screen : /client/proc/add_to_screen(screen_add)
+#define COMSIG_CLIENT_SCREEN_ADD "client_screen_add"
+
+/// Called when something is removed from a client's screen : /client/proc/remove_from_screen(screen_remove)
+#define COMSIG_CLIENT_SCREEN_REMOVE "client_screen_remove"
+
+/// When a mind is transfered to another mob at /datum/mind/proc/transfer_to()
+#define COMSIG_CLIENT_MIND_TRANSFER "mind_transfer"

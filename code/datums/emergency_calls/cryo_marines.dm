@@ -1,26 +1,27 @@
 
 
-//whiskey outpost extra marines
 /datum/emergency_call/cryo_squad
 	name = "Marine Cryo Reinforcements (Squad)"
 	mob_max = 10
 	mob_min = 1
 	probability = 0
 	objectives = "Assist the USCM forces"
-	max_engineers = 4
+	max_engineers = 2
 	max_medics = 2
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 	var/leaders = 0
+	spawn_max_amount = TRUE
 
 /datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc, announce_dispatch_message)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.num_leaders
 	. = ..()
-	if(length(members))
-		shipwide_ai_announcement("Successfully deployed [length(members)] Foxtrot marines.")
+	shipwide_ai_announcement("Successfully deployed [mob_max] Foxtrot marines, of which [length(members)] are ready for duty.")
+	if(mob_max > length(members))
+		announce_dchat("Some cryomarines were not taken, use the Join As Freed Mob verb to take one of them.")
 
-/datum/emergency_call/cryo_squad/create_member(datum/mind/M, turf/override_spawn_loc)
+/datum/emergency_call/cryo_squad/create_member(datum/mind/mind, turf/override_spawn_loc)
 	set waitfor = 0
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
@@ -28,44 +29,61 @@
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/H = new(spawn_loc)
-	M.transfer_to(H, TRUE)
+	var/mob/living/carbon/human/human = new(spawn_loc)
+
+	if(mind)
+		mind.transfer_to(human, TRUE)
+	else
+		human.create_hud()
+
+	if(!mind)
+		for(var/obj/structure/machinery/cryopod/pod in view(7,human))
+			if(pod && !pod.occupant)
+				pod.go_in_cryopod(human, silent = TRUE)
+				break
 
 	sleep(5)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
-	if(leaders < cryo_squad.max_leaders && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
-		leader = H
+	if(leaders < cryo_squad.max_leaders && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))))
+		leader = human
 		leaders++
-		arm_equipment(H, /datum/equipment_preset/uscm/leader/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Squad Leader in the USCM"))
-		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
-	else if (heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(H.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
+		human.client?.prefs.copy_all_to(human, JOB_SQUAD_LEADER, TRUE, TRUE)
+		arm_equipment(human, /datum/equipment_preset/uscm/leader/cryo, mind == null, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Squad Leader in the USCM"))
+		to_chat(human, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+		to_chat(human, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
+	else if (heavies < max_heavies && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(human.client, JOB_SQUAD_SPECIALIST, time_required_for_job))))
 		heavies++
-		arm_equipment(H, /datum/equipment_preset/uscm/spec/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weapons Specialist in the USCM"))
-		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
-	else if (medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
+		human.client?.prefs.copy_all_to(human, JOB_SQUAD_SPECIALIST, TRUE, TRUE)
+		arm_equipment(human, /datum/equipment_preset/uscm/spec/cryo,  mind == null, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Weapons Specialist in the USCM"))
+		to_chat(human, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+		to_chat(human, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
+	else if (medics < max_medics && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(human.client, JOB_SQUAD_MEDIC, time_required_for_job))))
 		medics++
-		arm_equipment(H, /datum/equipment_preset/uscm/medic/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Hospital Corpsman in the USCM"))
-		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
-	else if (engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
+		human.client?.prefs.copy_all_to(human, JOB_SQUAD_MEDIC, TRUE, TRUE)
+		arm_equipment(human, /datum/equipment_preset/uscm/medic/cryo,  mind == null, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Hospital Corpsman in the USCM"))
+		to_chat(human, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+		to_chat(human, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
+	else if (engineers < max_engineers && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(human.client, JOB_SQUAD_ENGI, time_required_for_job))))
 		engineers++
-		arm_equipment(H, /datum/equipment_preset/uscm/engineer/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Engineer in the USCM"))
-		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
+		human.client?.prefs.copy_all_to(human, JOB_SQUAD_ENGI, TRUE, TRUE)
+		arm_equipment(human, /datum/equipment_preset/uscm/engineer/cryo,  mind == null, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are an Engineer in the USCM"))
+		to_chat(human, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+		to_chat(human, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
 	else
-		arm_equipment(H, /datum/equipment_preset/uscm/pfc/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Rifleman in the USCM"))
-		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
+		human.client?.prefs.copy_all_to(human, JOB_SQUAD_MARINE, TRUE, TRUE)
+		arm_equipment(human, /datum/equipment_preset/uscm/pfc/cryo,  mind == null, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Rifleman in the USCM"))
+		to_chat(human, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+		to_chat(human, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
 
 	sleep(10)
-	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
+	if(!mind)
+		human.free_for_ghosts()
+	to_chat(human, SPAN_BOLD("Objectives: [objectives]"))
 
 /datum/emergency_call/cryo_squad/platoon
 	name = "Marine Cryo Reinforcements (Platoon)"
@@ -76,3 +94,10 @@
 
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"
+
+/datum/emergency_call/cryo_squad/tech
+	name = "Marine Cryo Reinforcements (Tech)"
+	mob_max = 5
+	max_engineers = 1
+	max_medics = 1
+	max_heavies = 0

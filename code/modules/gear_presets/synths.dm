@@ -9,7 +9,7 @@
 
 /datum/equipment_preset/synth/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
 	if(new_human.client?.prefs?.synthetic_type)
@@ -141,7 +141,7 @@
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()
-	access = get_all_civilian_access() + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH + ACCESS_WY_CORPORATE //Access to civillians stuff + medbay stuff + engineering stuff + research
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH //Access to civillians stuff + medbay stuff + engineering stuff + research
 
 /datum/equipment_preset/synth/survivor/load_gear(mob/living/carbon/human/new_human)
 	for(var/equipment in equipment_to_spawn)
@@ -352,7 +352,7 @@
 	role_comm_title = "CMB Syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
-		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB,
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/CM_uniform,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
@@ -372,6 +372,7 @@
 /datum/equipment_preset/synth/survivor/security_synth
 	name = "Survivor - Synthetic - Corporate Security Synth"
 	idtype = /obj/item/card/id/silver/cl
+	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
@@ -392,6 +393,7 @@
 /datum/equipment_preset/synth/survivor/protection_synth
 	name = "Survivor - Synthetic - Corporate Protection Synth"
 	idtype = /obj/item/card/id/pmc
+	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc/hvh,
@@ -414,6 +416,8 @@
 
 /datum/equipment_preset/synth/survivor/corporate_synth
 	name = "Survivor - Synthetic - Corporate Clerical Synth"
+	idtype = /obj/item/card/id/data
+	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_BODY = /obj/item/clothing/under/suit_jacket/trainee,
@@ -451,13 +455,51 @@
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
-	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND)
+/datum/equipment_preset/synth/survivor/upp
+	name = "Survivor - Synthetic - UPP Synth"
+	flags = EQUIPMENT_PRESET_EXTRA
+	languages = ALL_SYNTH_LANGUAGES_UPP
+	assignment = JOB_UPP_COMBAT_SYNTH
+	rank = JOB_UPP_COMBAT_SYNTH
+	faction = FACTION_UPP
+	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	skills = /datum/skills/colonial_synthetic
+	paygrade = "SYN"
+	idtype = /obj/item/card/id/dogtag
+	role_comm_title = "173/RECON Syn"
+
+/datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/veteran/UPP/medic/uniform = new()
+	var/random_number = rand(1,2)
+	switch(random_number)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver, WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/small_stack, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/partial, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/uppsynth, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 
 /datum/equipment_preset/synth/survivor/pmc
 	name = "Survivor - Synthetic - PMC Support Synth"
-
+	faction = FACTION_SURVIVOR
+	faction_group = list(FACTION_SURVIVOR)
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND)
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	rank = JOB_PMC_SYNTH
@@ -471,7 +513,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth, WEAR_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
-		new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
@@ -487,8 +529,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
 		new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK)
 		new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_BACK)
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/auto_cpr, WEAR_IN_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/crew_monitor, WEAR_IN_BACK)
 
 		new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch, WEAR_WAIST)
 		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun/compact, WEAR_J_STORE)
@@ -504,6 +545,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_L_STORE)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_R_STORE)
 
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/working_joe
@@ -518,7 +560,7 @@
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_WORKING_JOE)
@@ -679,7 +721,7 @@
 
 /datum/equipment_preset/synth/infiltrator/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE,FEMALE)

@@ -21,7 +21,13 @@ Basics, the most important.
 
 /datum/config_entry/string/wikiurl
 
+/datum/config_entry/string/wikiarticleurl
+
 /datum/config_entry/string/forumurl
+
+/datum/config_entry/string/staffreport
+
+/datum/config_entry/string/playerreport
 
 /datum/config_entry/string/rulesurl
 
@@ -30,6 +36,8 @@ Basics, the most important.
 /datum/config_entry/string/discordurl
 
 /datum/config_entry/string/banappeals
+
+/datum/config_entry/string/endofroundblurb
 
 /datum/config_entry/string/dburl
 
@@ -621,3 +629,5 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/instance_name
 	config_entry_value = "game"
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/guest_ban

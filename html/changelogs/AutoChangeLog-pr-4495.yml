@@ -1,4 +1,0 @@
-author: "Casper"
-delete-after: True
-changes:
-  - bugfix: "fixed S&W black market crate not working"

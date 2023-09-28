@@ -1119,8 +1119,10 @@
 	},
 /area/lv624/ground/barrens/containers)
 "afu" = (
-/obj/structure/machinery/floodlight,
 /obj/item/ammo_casing,
+/obj/structure/machinery/floodlight/landing{
+	name = "Bolted Emergency Floodlight"
+	},
 /turf/open/floor/plating{
 	dir = 9;
 	icon_state = "warnplate"
@@ -1154,7 +1156,9 @@
 	},
 /area/lv624/ground/barrens/central_barrens)
 "afy" = (
-/obj/structure/machinery/floodlight,
+/obj/structure/machinery/floodlight/landing{
+	name = "Bolted Emergency Floodlight"
+	},
 /turf/open/floor/plating{
 	dir = 5;
 	icon_state = "warnplate"
@@ -1203,11 +1207,6 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/floor/plating,
-/area/lv624/ground/barrens/central_barrens)
-"afM" = (
-/obj/structure/machinery/floodlight,
-/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "afN" = (
@@ -1389,10 +1388,6 @@
 "agA" = (
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/south_east_caves)
-"agC" = (
-/obj/structure/machinery/floodlight,
-/turf/open/floor/plating,
-/area/lv624/ground/barrens/central_barrens)
 "agD" = (
 /obj/structure/surface/table/reinforced{
 	dir = 8;
@@ -1407,8 +1402,10 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agF" = (
-/obj/structure/machinery/floodlight,
 /obj/item/ammo_casing,
+/obj/structure/machinery/floodlight/landing{
+	name = "Bolted Emergency Floodlight"
+	},
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agG" = (
@@ -1585,7 +1582,9 @@
 	},
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "ahM" = (
-/obj/structure/machinery/floodlight,
+/obj/structure/machinery/floodlight/landing{
+	name = "Bolted Emergency Floodlight"
+	},
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
@@ -1625,7 +1624,9 @@
 	},
 /area/lv624/ground/barrens/central_barrens)
 "ahT" = (
-/obj/structure/machinery/floodlight,
+/obj/structure/machinery/floodlight/landing{
+	name = "Bolted Emergency Floodlight"
+	},
 /turf/open/floor/plating{
 	dir = 6;
 	icon_state = "warnplate"
@@ -41057,7 +41058,7 @@ ajW
 afI
 ajW
 ajW
-agC
+ajW
 afN
 ajW
 ajW
@@ -42192,7 +42193,7 @@ jaa
 wVk
 wVk
 afx
-afM
+agf
 ajW
 agi
 ajW
@@ -42202,7 +42203,7 @@ agT
 ahh
 ahl
 afN
-agC
+ajW
 ahS
 afk
 wVk
@@ -43337,7 +43338,7 @@ ajW
 agl
 ajW
 ajW
-agC
+ajW
 ajW
 afN
 eah

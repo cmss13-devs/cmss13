@@ -339,12 +339,12 @@ SUBSYSTEM_DEF(minimaps)
 	return map
 
 /**
- * Fetches either flattend map png asset or the svg coords datum
+ * Fetches either a datum containing either a flattend map png reference or a set of given svg coords
  * Arguments:
- * * user: to determine whivh faction get the map from.
+ * * user: to determine which faction get the map from.
  * * asset_type: true for png, false for svg
  */
-/datum/tacmap/proc/get_current_map(mob/user, asset_type)
+/datum/proc/get_current_tacmap_data(mob/user, asset_type)
 	var/list/map_list
 	if(ishuman(user))
 		if(asset_type)
@@ -364,6 +364,11 @@ SUBSYSTEM_DEF(minimaps)
 
 	return map_list[map_list.len]
 
+/**
+ * flattens the current map and then distributes it based off user faction.
+ * Arguments:
+ * * user: to determine which faction to distribute to
+ */
 /datum/tacmap/proc/distribute_current_map_png(mob/user)
 	if(!COOLDOWN_FINISHED(src, flatten_map_cooldown))
 		return
@@ -397,6 +402,27 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		GLOB.xeno_flat_tacmap_png_asset += flattend_tacmap_png
 	qdel(flattend_tacmap_png)
+
+/**
+ * globally stores svg coords for a given faction.
+ * Arguments:
+ * * user: to determine which faction to distribute to
+ * * svg_coords: an array of coordinates corresponding to an svg.
+ */
+/datum/tacmap/proc/store_current_svg_coords(mob/user, svg_coords)
+	if(!svg_coords)
+		to_chat(user, SPAN_WARNING("The tacmap filckers and then shuts off, a critical error has occured")) // tf2heavy: "Oh, this is bad!"
+		return FALSE
+
+	var/datum/svg_overlay/svg_overlay = new(svg_coords)
+
+	if(isxeno(user))
+		GLOB.xeno_svg_overlay += svg_overlay
+	else
+		GLOB.uscm_svg_overlay += svg_overlay
+
+	return TRUE
+	qdel(svg_overlay)
 
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
@@ -527,7 +553,7 @@ SUBSYSTEM_DEF(minimaps)
 	// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
 
-	var/datum/svg_overlay/current_map
+	var/datum/flattend_tacmap_png/current_map
 
 
 /datum/tacmap/New(atom/source, minimap_type)
@@ -548,7 +574,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		current_map = get_current_map(user, TRUE)
+		current_map = get_current_tacmap_data(user, TRUE)
 		if(!current_map)
 			distribute_current_map_png(user)
 
@@ -559,10 +585,13 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
 	//todo: upon joining user should have the base map without layered icons as default. Otherwise loads failed png for a new user.
+	data["flatImage"] = null
+	data["svgData"] = null
 
-	// it's getting a datum of type
-	data["flatImage"] = get_current_map(user, TRUE).flat_tacmap
-	data["svgData"] =  get_current_map(user, FALSE).svg_data
+	// current_map = get_current_tacmap_data(user, TRUE)
+	// if(current_map)
+	// 	data["flatImage"] = current_map.flat_tacmap
+	// data["svgData"] = get_current_tacmap_data(user, FALSE).svg_data
 
 	data["mapRef"] = map_holder.map_ref
 	data["toolbarColorSelection"] = toolbar_color_selection
@@ -642,22 +671,20 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("selectAnnouncement")
-			var/datum/svg_overlay/svg_overlay = new(params["image"])
-
 			var/outgoing_message = stripped_multiline_input(user, "Optional message to announce with the tactical map", "Tactical Map Announcement", "")
 			if(!outgoing_message)
 				return
+			if(!store_current_svg_coords(params["image"]))
+				return
+
 			var/signed
 			var/mob/living/carbon/xenomorph/xeno
 			toolbar_updated_selection = "export"
-
 			if(isxeno(user))
 				xeno = user
 				xeno_announcement(outgoing_message, xeno.hivenumber)
-				GLOB.xeno_svg_overlay += svg_overlay
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, canvas_cooldown_time)
 			else
-				GLOB.uscm_svg_overlay += svg_overlay
 				var/mob/living/carbon/human/H = user
 				var/obj/item/card/id/id = H.wear_id
 				if(istype(id))
@@ -669,7 +696,6 @@ SUBSYSTEM_DEF(minimaps)
 			message_admins("[key_name(user)] has made a tactical map announcement.")
 			log_announcement("[key_name(user)] has announced the following: [outgoing_message]")
 			updated_canvas = FALSE
-			qdel(svg_overlay)
 			. = TRUE
 
 /datum/tacmap/ui_status(mob/user)
@@ -709,10 +735,10 @@ SUBSYSTEM_DEF(minimaps)
 	return ..()
 
 // datums for holding both the flattened png asset and overlay. It's best to keep them separate with the current implementation imo.
-/datum/flat_tacmap_png
+/datum/flattend_tacmap_png
 	var/flat_tacmap
 
-/datum/flat_tacmap_png/New(flat_tacmap)
+/datum/flattend_tacmap_png/New(flat_tacmap)
 	src.flat_tacmap = flat_tacmap
 
 /datum/svg_overlay

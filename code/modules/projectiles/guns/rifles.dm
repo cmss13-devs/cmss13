@@ -430,6 +430,7 @@
 
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/rubber,
 		/obj/item/ammo_magazine/rifle/extended,
 		/obj/item/ammo_magazine/rifle/ap,
 		/obj/item/ammo_magazine/rifle/incendiary,

@@ -1242,7 +1242,7 @@
 		for(var/client/X in GLOB.admins)
 			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
 				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>"))
-		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message from USCM:\" \blue <b>\"[input]\"</b>"))
+		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message:\" \blue <b>\"[input]\"</b>"))
 
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
@@ -1903,6 +1903,22 @@
 		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
+	if(href_list["distress_cmb"]) //CMB distress signal, activates Anchorpoint Marine QRF to assist/rescue Colonial Marshals in distress
+		distress_cancel = FALSE
+		message_admins("[key_name_admin(usr)] has opted to SEND The Anchorpoint Station Colonial Marine QRF to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		addtimer(CALLBACK(src, PROC_REF(accept_cmb_ert), usr, locate(href_list["distress"])), 10 SECONDS)
+
+	if(href_list["distress_cmb_alt"]) //CMB distress signal, activates a nearby CMB Patrol Team to assist/rescue Colonial Marshals in distress
+		distress_cancel = FALSE
+		message_admins("[key_name_admin(usr)] has opted to SEND a nearby CMB Patrol Team to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		addtimer(CALLBACK(src, PROC_REF(accept_cmb_alt_ert), usr, locate(href_list["distress"])), 10 SECONDS)
+
+	if(href_list["deny_cmb"]) // Anchorpoint-deny. The distress call is denied, citing unavailable forces
+		var/mob/ref_person = locate(href_list["deny_cmb"])
+		to_chat(ref_person, "A voice barely crackles through the static: CMB Team, this is Anchorpoint Station. No can do, QRF currently dispatched elsewhere, relaying distress. Sorry. Good luck, out.")
+		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
+		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
+
 	if(href_list["distress_pmc"]) //Wey-Yu specific PMC distress signal for chem retrieval ERT
 		distress_cancel = FALSE
 		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
@@ -2054,6 +2070,22 @@
 	SSticker.mode.activate_distress()
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
+
+/datum/admins/proc/accept_cmb_ert(mob/approver, mob/ref_person)
+	if(distress_cancel)
+		return
+	distress_cancel = TRUE
+	SSticker.mode.get_specific_call("CMB - Anchorpoint Station Colonial Marine QRF (Friendly)", FALSE, FALSE)
+	log_game("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
+
+/datum/admins/proc/accept_cmb_alt_ert(mob/approver, mob/ref_person)
+	if(distress_cancel)
+		return
+	distress_cancel = TRUE
+	SSticker.mode.get_specific_call("CMB - Patrol Team - Marshals in Distress (Friendly)", FALSE, FALSE)
+	log_game("[key_name_admin(approver)] has sent a CMB Patrol Team distress response, requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(approver)] has sent a CMB Patrol Team distress response, requested by [key_name_admin(ref_person)]")
 
 /datum/admins/proc/accept_pmc_ert(mob/approver, mob/ref_person)
 	if(distress_cancel)

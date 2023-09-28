@@ -1109,20 +1109,24 @@ and you're good to go.
 		if(PB_burst_bullets_fired) //Has a burst been carried over from a PB?
 			PB_burst_bullets_fired = 0 //Don't need this anymore. The torch is passed.
 
+	var/fired_by_akimbo = FALSE
+	if(dual_wield)
+		fired_by_akimbo = TRUE
+
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
 	if(!reflex && !dual_wield && user)
 		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
-	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo)
+	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	if(!fire_return)
 		return fire_return
 
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 	return AUTOFIRE_CONTINUE
 
-/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo)
+/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 
@@ -1209,7 +1213,7 @@ and you're good to go.
 
 		shots_fired++
 
-		if(dual_wield)
+		if(dual_wield && !fired_by_akimbo)
 			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
 				user.swap_hand()
 			else
@@ -1352,6 +1356,10 @@ and you're good to go.
 		else
 			active_attachable.activate_attachment(src, null, TRUE)//No way.
 
+	var/fired_by_akimbo = FALSE
+	if(dual_wield)
+		fired_by_akimbo = TRUE
+
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
 	if(!dual_wield && user)
@@ -1447,7 +1455,7 @@ and you're good to go.
 
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
-		if(dual_wield)
+		if(dual_wield && !fired_by_akimbo)
 			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
 				user.swap_hand()
 			else

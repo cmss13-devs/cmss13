@@ -97,11 +97,11 @@
 	var/datum/custom_hud/alien/ui_datum = GLOB.custom_huds_list[HUD_ALIEN]
 	if(l_store)
 		if(client && hud_used && hud_used.hud_shown)
-			client.screen += l_store
+			client.add_to_screen(l_store)
 			l_store.screen_loc = ui_datum.hud_slot_offset(l_store, ui_datum.ui_storage1)
 	if(r_store)
 		if(client && hud_used && hud_used.hud_shown)
-			client.screen += r_store
+			client.add_to_screen(r_store)
 			r_store.screen_loc = ui_datum.hud_slot_offset(r_store, ui_datum.ui_storage2)
 
 /mob/living/carbon/xenomorph/update_inv_r_hand()
@@ -109,7 +109,7 @@
 	if(r_hand)
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
 			var/datum/custom_hud/alien/ui_datum = GLOB.custom_huds_list[HUD_ALIEN]
-			client.screen += r_hand
+			client.add_to_screen(r_hand)
 			r_hand.screen_loc = ui_datum.hud_slot_offset(r_hand, ui_datum.ui_rhand)
 		var/t_state = r_hand.item_state
 		if(!t_state)
@@ -122,7 +122,7 @@
 	if(l_hand)
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
 			var/datum/custom_hud/alien/ui_datum = GLOB.custom_huds_list[HUD_ALIEN]
-			client.screen += l_hand
+			client.add_to_screen(l_hand)
 			l_hand.screen_loc = ui_datum.hud_slot_offset(l_hand, ui_datum.ui_lhand)
 		var/t_state = l_hand.item_state
 		if(!t_state)

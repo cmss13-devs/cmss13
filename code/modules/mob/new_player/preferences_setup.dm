@@ -200,19 +200,19 @@
 
 	if(isnull(preview_front))
 		preview_front = new()
-		owner.screen |= preview_front
+		owner.add_to_screen(preview_front)
 		preview_front.vis_contents += preview_dummy
 		preview_front.screen_loc = "preview:0,0"
 	preview_front.icon_state = bg_state
 
 	if(isnull(rotate_left))
 		rotate_left = new(null, preview_dummy)
-		owner.screen |= rotate_left
+		owner.add_to_screen(rotate_left)
 		rotate_left.screen_loc = "preview:-1:16,0"
 
 	if(isnull(rotate_right))
 		rotate_right = new(null, preview_dummy)
-		owner.screen |= rotate_right
+		owner.add_to_screen(rotate_right)
 		rotate_right.screen_loc = "preview:1:-16,0"
 
 /datum/preferences/proc/job_pref_to_gear_preset()

@@ -325,6 +325,16 @@
 	new /obj/item/pamphlet/trait/vulture(src) //both pamphlets give use of the scope and the rifle
 	new /obj/item/pamphlet/trait/vulture(src)
 
+/obj/item/storage/box/guncase/vulture/skillless
+	storage_slots = 5
+
+/obj/item/storage/box/guncase/vulture/skillless/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/skillless/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope/skillless(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
+
 //Handgun case for Military police vendor three mag , a railflashligh and the handgun.
 
 //88 Mod 4 Combat Pistol

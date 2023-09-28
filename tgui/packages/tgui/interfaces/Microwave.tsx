@@ -1,5 +1,6 @@
 import { useBackend } from '../backend';
 import { Button, NoticeBox, Section, Flex, Box } from '../components';
+import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 
 type Ingredient = {
@@ -9,9 +10,9 @@ type Ingredient = {
 };
 
 type BackendContext = {
-  operating: 0 | 1;
-  broken: 0 | 1;
-  dirty: 0 | 1;
+  operating: BooleanLike;
+  broken: BooleanLike;
+  dirty: BooleanLike;
   ingredients: Ingredient[];
 };
 
@@ -24,7 +25,7 @@ export const Microwave = (props, context) => {
       <Window.Content scrollable>
         <Section
           fill
-          title="Ingredients:"
+          title="Ingredients"
           buttons={
             <Flex>
               <Button

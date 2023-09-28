@@ -174,7 +174,7 @@
 	var/list/items_measures = list()
 	var/list/items_measures_p = list()
 
-	for (var/obj/contents_item in contents)
+	for (var/obj/contents_item as anything in contents)
 		var/display_name = contents_item.name
 
 		if (istype(contents_item, /obj/item/reagent_container/food/snacks/tofu))
@@ -192,7 +192,7 @@
 			items_measures_p[display_name] = "fillets of meat"
 		items_counts[display_name]++
 
-	for (var/contents_item as anything in items_counts)
+	for (var/contents_item in items_counts)
 		var/list/item = list()
 
 		item["name"] = capitalize(contents_item)
@@ -207,7 +207,7 @@
 
 		ingredients += list(item)
 
-	for (var/datum/reagent/contents_reagent in reagents.reagent_list)
+	for (var/datum/reagent/contents_reagent as anything in reagents.reagent_list)
 		var/list/reagent = list()
 
 		reagent["count"] = contents_reagent.volume

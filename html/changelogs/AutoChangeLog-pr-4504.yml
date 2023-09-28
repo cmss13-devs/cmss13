@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - qol: "\"Do nothing\" dual wield preference"

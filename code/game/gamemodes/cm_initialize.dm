@@ -446,7 +446,7 @@ Additional game mode variables.
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
 			return FALSE
 
-		if(new_xeno.stat == UNCONSCIOUS)
+		if(new_xeno.health <= 0)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is in critical condition or unconscious."))
 			return FALSE
 

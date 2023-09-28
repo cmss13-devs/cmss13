@@ -12993,7 +12993,6 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "hQH" = (
-/obj/item/reagent_container/food/snacks/clownstears,
 /obj/structure/closet/crate,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
@@ -13078,9 +13077,7 @@
 /area/fiorina/lz/near_lzII)
 "hTr" = (
 /obj/structure/closet,
-/obj/item/clothing/mask/gas/clown_hat,
 /obj/effect/spawner/random/gun/shotgun/midchance,
-/obj/item/clothing/under/marine/ucf_clown,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "hTs" = (
@@ -15318,7 +15315,6 @@
 /area/fiorina/lz/near_lzII)
 "jnr" = (
 /obj/structure/filingcabinet,
-/obj/item/card/data/clown,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 4;

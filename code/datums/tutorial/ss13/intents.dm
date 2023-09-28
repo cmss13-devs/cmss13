@@ -1,7 +1,7 @@
 /datum/tutorial/ss13/intents
 	name = "Space Station 13 - Intents"
 	tutorial_id = "ss13_intents_1"
-	tutorial_template = /datum/map_template/tutorial/ss13_basic
+	tutorial_template = /datum/map_template/tutorial/s7x7
 
 // START OF SCRIPTING
 

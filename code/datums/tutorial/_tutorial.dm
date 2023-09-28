@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	/// A dict of type:atom ref for some important junk that should be trackable
 	var/list/tracking_atoms = list()
 	/// What map template should be used for the tutorial
-	var/datum/map_template/tutorial/tutorial_template = /datum/map_template/tutorial
+	var/datum/map_template/tutorial/tutorial_template = /datum/map_template/tutorial/s12x12
 	/// What is the parent path of this, to exclude from the tutorial menu
 	var/parent_path = /datum/tutorial
 
@@ -158,13 +158,15 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	width = 12
 	height = 12
 
-/datum/map_template/tutorial/marine_basic
+/datum/map_template/tutorial/s12x12
+
+/datum/map_template/tutorial/s8x9
 	name = "Tutorial Zone (8x9)"
 	mappath = "maps/tutorial/tutorial_8x9.dmm"
 	width = 8
 	height = 9
 
-/datum/map_template/tutorial/ss13_basic
+/datum/map_template/tutorial/s7x7
 	name = "Tutorial Zone (7x7)"
 	mappath = "maps/tutorial/tutorial_7x7.dmm"
 	width = 7

@@ -139,6 +139,11 @@
 	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
+	desc = "An EZ autoinjector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
+	volume = 15
+	amount_per_transfer_from_this = 15
+
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone
 	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
 	chemname = "oxycodone"
@@ -164,6 +169,11 @@
 	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use
+	desc = "An EZ autoinjector loaded with 1 use of Kelotane, a common burn medicine. Doesn't require any training to use."
+	volume = 15
+	amount_per_transfer_from_this = 15
+
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine
 	name = "bicaridine autoinjector"
 	chemname = "bicaridine"
@@ -179,6 +189,11 @@
 	icon_state = "emptyskill"
 	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use
+	desc = "An EZ autoinjector loaded with 1 use of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
+	volume = 15
+	amount_per_transfer_from_this = 15
 
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline
 	name = "inaprovaline autoinjector"

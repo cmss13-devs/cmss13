@@ -378,7 +378,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/helmet_overlay_icon = 'icons/mob/humans/onmob/head_1.dmi'
 
 	///Any visors built into the helmet
-	var/list/built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/tactical_map_visor)
+	var/list/built_in_visors = list(new /obj/item/device/helmet_visor)
 
 	///Any visors that have been added into the helmet
 	var/list/inserted_visors = list()
@@ -623,10 +623,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(active_visor.can_toggle(user))
-		if(istype(active_visor, /obj/item/device/helmet_visor/tactical_map_visor))
-			active_visor.visor_function(src, user, FALSE, TRUE)
-		else
-			active_visor.visor_function(src, user)
+		active_visor.visor_function(src, user)
 
 	playsound_client(user.client, active_visor.toggle_on_sound, null, 75)
 	update_icon()
@@ -637,10 +634,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(current_visor.can_toggle(user))
-		if(istype(current_visor, /obj/item/device/helmet_visor/tactical_map_visor))
-			current_visor.visor_function(src, user, sound, FALSE)
-		else
-			current_visor.visor_function(src, user)
+		current_visor.visor_function(src, user)
 
 	if(sound)
 		playsound_client(user.client, current_visor.toggle_off_sound, null, 75)
@@ -722,7 +716,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A modified M10 marine helmet for ComTechs. Features a toggleable welding screen for eye protection."
 	icon_state = "tech_helmet"
 	specialty = "M10 technician"
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor,  new /obj/item/device/helmet_visor/tactical_map_visor)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
 
 /obj/item/clothing/head/helmet/marine/grey
 	desc = "A standard M10 Pattern Helmet. This one has not had a camouflage pattern applied to it yet. There is a built-in camera on the right side."
@@ -741,14 +735,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "M50 tanker"
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor/tanker, new /obj/item/device/helmet_visor/tactical_map_visor)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor/tanker)
 
 /obj/item/clothing/head/helmet/marine/medic
 	name = "\improper M10 corpsman helmet"
 	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Has red cross painted on its front."
 	icon_state = "med_helmet"
 	specialty = "M10 pattern medic"
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced, new /obj/item/device/helmet_visor/tactical_map_visor)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
 
 /obj/item/clothing/head/helmet/marine/covert
@@ -891,7 +885,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M10 pattern captain"
 	flags_atom = NO_SNOW_TYPE
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced, new /obj/item/device/helmet_visor/security,  new /obj/item/device/helmet_visor/tactical_map_visor)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced, new /obj/item/device/helmet_visor/security)
 
 /obj/item/clothing/head/helmet/marine/MP
 	name = "\improper M10 pattern MP helmet"
@@ -915,7 +909,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "helmet"
 	item_state = "helmet"
 	specialty = "M10 pattern officer"
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced,  new /obj/item/device/helmet_visor/tactical_map_visor)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Cap"

@@ -357,6 +357,7 @@ SUBSYSTEM_DEF(minimaps)
 		else
 			map_list = GLOB.uscm_svg_overlay
 
+
 	if(map_list.len == 0)
 		return
 
@@ -390,6 +391,7 @@ SUBSYSTEM_DEF(minimaps)
 			if(xeno.hivenumber == user_faction)
 				faction_clients += client
 		else if(client_mob.faction == user_faction) // TODO: not distributing properly, fix.
+			to_chat(user, SPAN_WARNING(client))
 			faction_clients += client
 	COOLDOWN_START(src, flatten_map_cooldown, flatten_map_cooldown_time)
 	var/flat_tacmap_png = icon2html(flat_map, faction_clients, sourceonly = TRUE)
@@ -407,19 +409,14 @@ SUBSYSTEM_DEF(minimaps)
  * * svg_coords: an array of coordinates corresponding to an svg.
  */
 /datum/tacmap/proc/store_current_svg_coords(mob/user, svg_coords)
-	if(!svg_coords)
-		to_chat(user, SPAN_WARNING("The tacmap filckers and then shuts off, a critical error has occured")) // tf2heavy: "Oh, this is bad!"
-		return FALSE
-
-	var/datum/svg_overlay/svg_overlay = new(svg_coords)
+	var/datum/svg_overlay/svg_store_overlay = new(svg_coords)
 
 	if(isxeno(user))
-		GLOB.xeno_svg_overlay += svg_overlay
+		GLOB.xeno_svg_overlay += svg_store_overlay
 	else
-		GLOB.uscm_svg_overlay += svg_overlay
+		GLOB.uscm_svg_overlay += svg_store_overlay
 
-	qdel(svg_overlay)
-	return TRUE
+	qdel(svg_store_overlay)
 
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
@@ -551,7 +548,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/updated_canvas = FALSE
 
 	var/datum/flattend_tacmap_png/current_map = new
-
+	var/datum/svg_overlay/current_svg = new
 
 /datum/tacmap/New(atom/source, minimap_type)
 	allowed_flags = minimap_type
@@ -574,7 +571,8 @@ SUBSYSTEM_DEF(minimaps)
 		current_map = get_current_tacmap_data(user, TRUE)
 		if(!current_map)
 			distribute_current_map_png(user)
-			current_map.flat_tacmap = get_current_tacmap_data(user, TRUE).flat_tacmap
+			current_map = get_current_tacmap_data(user, TRUE)
+
 
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
@@ -582,11 +580,13 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
-	data["svgData"] = null
 
 	data["flatImage"] = current_map.flat_tacmap
-	if(current_map)
-		data["svgData"] = get_current_tacmap_data(user, FALSE).svg_data
+
+	data["svgData"] = null
+
+	if(current_svg)
+		data["svgData"] = current_svg.svg_data
 
 	data["mapRef"] = map_holder.map_ref
 	data["toolbarColorSelection"] = toolbar_color_selection
@@ -667,11 +667,15 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("selectAnnouncement")
+
+			if(!params["image"])
+				return
 			var/outgoing_message = stripped_multiline_input(user, "Optional message to announce with the tactical map", "Tactical Map Announcement", "")
 			if(!outgoing_message)
 				return
-			if(!store_current_svg_coords(params["image"]))
-				return
+			store_current_svg_coords(user, params["image"])
+
+			current_svg = get_current_tacmap_data(user, FALSE)
 
 			var/signed
 			var/mob/living/carbon/xenomorph/xeno

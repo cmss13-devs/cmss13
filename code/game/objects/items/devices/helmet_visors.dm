@@ -70,13 +70,6 @@
 	action_icon_string = "blank_hud_sight_down"
 	helmet_overlay = "weld_visor"
 
-/obj/item/device/helmet_visor/tactical_map_visor
-	name = "map visor"
-	icon_state = "meson_sight"
-	hud_type = null
-	action_icon_string = "meson_sight_down"
-	helmet_overlay = "tacmap_visor"
-
 /obj/item/device/helmet_visor/welding_visor/visor_function(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE)
 	if(attached_helmet == user.head && attached_helmet.active_visor == src)
 		attached_helmet.vision_impair = VISION_IMPAIR_MAX
@@ -95,18 +88,6 @@
 	if(!silent)
 		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
 	user.update_tint()
-	return TRUE
-
-/obj/item/device/helmet_visor/tactical_map_visor/visor_function(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE, toggle_type)
-	if(attached_helmet == user.head && attached_helmet.active_visor == src && toggle_type)
-		GLOB.tacmap_datum.tgui_interact(user)
-		if(!silent)
-			to_chat(user, SPAN_NOTICE("You activate [src] on [attached_helmet]."))
-		return TRUE
-
-	SStgui.close_user_uis(user, GLOB.tacmap_datum)
-	if(!silent)
-		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
 	return TRUE
 
 /obj/item/device/helmet_visor/welding_visor/mercenary

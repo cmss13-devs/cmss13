@@ -402,8 +402,8 @@
 		/obj/item/storage/pouch/cassette = 15,
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
-		/obj/item/device/camera = 5,
-		/obj/item/device/camera_film = 10,
+//		/obj/item/device/camera = 5, LAG MACHINE
+//		/obj/item/device/camera_film = 10,
 		/obj/item/notepad = 5,
 	)
 
@@ -418,6 +418,6 @@
 		/obj/item/storage/pouch/cassette = 10,
 		/obj/item/toy/deck = 20,
 		/obj/item/toy/deck/uno = 15,
-		/obj/item/device/camera = 30,
+//		/obj/item/device/camera = 30,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL

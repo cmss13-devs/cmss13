@@ -341,7 +341,7 @@ SUBSYSTEM_DEF(minimaps)
 /**
  * Fetches either a datum containing either a flattend map png reference or a set of given svg coords
  * Arguments:
- * * user: to determine which faction get the map from.
+ * * user: mob, to determine which faction get the map from.
  * * asset_type: true for png, false for svg
  */
 /datum/proc/get_current_tacmap_data(mob/user, asset_type)
@@ -352,8 +352,6 @@ SUBSYSTEM_DEF(minimaps)
 		else
 			map_list = GLOB.uscm_svg_overlay
 	else
-		if(!isxeno(user))
-			return
 		if(asset_type)
 			map_list = GLOB.xeno_flat_tacmap_png_asset
 		else
@@ -392,21 +390,20 @@ SUBSYSTEM_DEF(minimaps)
 			if(xeno.hivenumber == user_faction)
 				faction_clients += client
 		else if(client_mob.faction == user_faction) // TODO: not distributing properly, fix.
-			to_chat(user, SPAN_WARNING(client))
 			faction_clients += client
 	COOLDOWN_START(src, flatten_map_cooldown, flatten_map_cooldown_time)
 	var/flat_tacmap_png = icon2html(flat_map, faction_clients, sourceonly = TRUE)
-	var/datum/flattend_tacmap_png = new(flat_tacmap_png)
+	var/datum/flattend_tacmap_png/new_flat = new(flat_tacmap_png)
 	if(!isxeno(user))
-		GLOB.uscm_flat_tacmap_png_asset += flattend_tacmap_png
+		GLOB.uscm_flat_tacmap_png_asset += new_flat
 	else
-		GLOB.xeno_flat_tacmap_png_asset += flattend_tacmap_png
-	qdel(flattend_tacmap_png)
+		GLOB.xeno_flat_tacmap_png_asset += new_flat
+	qdel(new_flat)
 
 /**
  * globally stores svg coords for a given faction.
  * Arguments:
- * * user: to determine which faction to distribute to
+ * * user: mob, to determine which faction to distribute to
  * * svg_coords: an array of coordinates corresponding to an svg.
  */
 /datum/tacmap/proc/store_current_svg_coords(mob/user, svg_coords)
@@ -553,7 +550,7 @@ SUBSYSTEM_DEF(minimaps)
 	// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
 
-	var/datum/flattend_tacmap_png/current_map
+	var/datum/flattend_tacmap_png/current_map = new
 
 
 /datum/tacmap/New(atom/source, minimap_type)
@@ -577,6 +574,7 @@ SUBSYSTEM_DEF(minimaps)
 		current_map = get_current_tacmap_data(user, TRUE)
 		if(!current_map)
 			distribute_current_map_png(user)
+			current_map.flat_tacmap = get_current_tacmap_data(user, TRUE).flat_tacmap
 
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
@@ -584,14 +582,11 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
-	//todo: upon joining user should have the base map without layered icons as default. Otherwise loads failed png for a new user.
-	data["flatImage"] = null
 	data["svgData"] = null
 
-	// current_map = get_current_tacmap_data(user, TRUE)
-	// if(current_map)
-	// 	data["flatImage"] = current_map.flat_tacmap
-	// data["svgData"] = get_current_tacmap_data(user, FALSE).svg_data
+	data["flatImage"] = current_map.flat_tacmap
+	if(current_map)
+		data["svgData"] = get_current_tacmap_data(user, FALSE).svg_data
 
 	data["mapRef"] = map_holder.map_ref
 	data["toolbarColorSelection"] = toolbar_color_selection
@@ -642,6 +637,7 @@ SUBSYSTEM_DEF(minimaps)
 		if ("menuSelect")
 			if(params["selection"] == "new canvas")
 				distribute_current_map_png(user) // not updating?
+				current_map = get_current_tacmap_data(user, TRUE)
 
 			. = TRUE
 
@@ -734,7 +730,7 @@ SUBSYSTEM_DEF(minimaps)
 	map = null
 	return ..()
 
-// datums for holding both the flattened png asset and overlay. It's best to keep them separate with the current implementation imo.
+// datums for holding both the flattend png asset reference and an svg overlay. It's best to keep them separate with the current implementation imo.
 /datum/flattend_tacmap_png
 	var/flat_tacmap
 

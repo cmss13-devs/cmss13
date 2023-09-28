@@ -128,7 +128,7 @@
 /obj/item/storage/bag/sheetsnatcher/Initialize()
 	. = ..()
 
-/obj/item/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W as obj, stop_messages = 0)
+/obj/item/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	if(!istype(W,/obj/item/stack/sheet) || istype(W,/obj/item/stack/sheet/mineral/sandstone) || istype(W,/obj/item/stack/sheet/wood))
 		if(!stop_messages)
 			to_chat(usr, "The snatcher does not accept [W].")

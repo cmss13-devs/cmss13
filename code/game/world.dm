@@ -183,8 +183,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(logging)
 			log_topic("(NON-JSON) \"[topic_decoded]\", from:[addr], master:[master], key:[key]")
 		// Fallback check for spacestation13.com requests
-		if(topic_decoded == "ping")
-			return length(GLOB.clients)
+		if(topic_decoded == "status")
+			return list2params(list("players" = length(GLOB.clients)))
 		response["statuscode"] = 400
 		response["response"] = "Bad Request - Invalid JSON format"
 		return json_encode(response)

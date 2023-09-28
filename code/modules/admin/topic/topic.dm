@@ -1126,7 +1126,7 @@
 		sleep(2)
 		if(isobserver(usr))
 			var/mob/dead/observer/G = usr
-			G.ManualFollow(M)
+			G.do_observe(M)
 
 	else if(href_list["check_antagonist"])
 		check_antagonists()

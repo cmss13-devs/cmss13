@@ -4669,13 +4669,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/restricted/devroom)
-"anO" = (
-/obj/structure/bedsheetbin,
-/obj/item/clothing/gloves/marine/veteran/pmc,
-/turf/open/floor/strata{
-	icon_state = "blue1"
-	},
-/area/strata/ag/interior/outpost/canteen/personal_storage)
 "anP" = (
 /obj/structure/bedsheetbin,
 /obj/item/device/binoculars/range,
@@ -22558,9 +22551,13 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bwy" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/radio,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/obj/structure/machinery/sensortower{
+	pixel_x = -8
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "bwA" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
@@ -32944,6 +32941,11 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
+"ioi" = (
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ug/interior/jungle/platform/east/scrub)
 "ioz" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -39143,6 +39145,9 @@
 	icon_state = "floor3"
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
+"sPF" = (
+/turf/open/floor/strata,
+/area/strata/ug/interior/jungle/platform/east/scrub)
 "sQs" = (
 /turf/open/asphalt/cement{
 	icon_state = "cement9"
@@ -74324,7 +74329,7 @@ akE
 alo
 bPZ
 alo
-anO
+bmX
 alU
 apG
 aqK
@@ -75335,9 +75340,9 @@ rpX
 tnM
 wZZ
 bwE
-bqf
-csY
-bqf
+ioi
+sPF
+ioi
 btL
 btE
 wZZ
@@ -75530,9 +75535,9 @@ rpX
 tnM
 wZZ
 wZZ
-btK
+sPF
 bwy
-bqf
+sPF
 bDB
 wZZ
 wZZ
@@ -75725,9 +75730,9 @@ rpX
 tnM
 wZZ
 bqf
-csZ
-bwE
-bqf
+ioi
+sPF
+ioi
 wZZ
 bqf
 wZZ

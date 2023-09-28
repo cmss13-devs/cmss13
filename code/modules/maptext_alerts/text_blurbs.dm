@@ -136,7 +136,7 @@ but should see their own spawn message even if the player already dropped as USC
 			if(!ignore_key && (M.key in GLOB.blurb_witnesses[blurb_key]))
 				continue
 			LAZYDISTINCTADD(GLOB.blurb_witnesses[blurb_key], M.key)
-		M.client?.screen += T
+		M.client?.add_to_screen(T)
 
 	for(var/i in 1 to length(message) + 1)
 		if(i in linebreaks)
@@ -154,5 +154,5 @@ but should see their own spawn message even if the player already dropped as USC
 	animate(T, alpha = 0, time = 0.5 SECONDS)
 	sleep(5)
 	for(var/mob/M as anything in targets)
-		M.client?.screen -= T
+		M.client?.remove_from_screen(T)
 	qdel(T)

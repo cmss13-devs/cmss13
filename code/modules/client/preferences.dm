@@ -238,6 +238,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
 
+	/// If this client has auto observe enabled, used by /datum/orbit_menu
+	var/auto_observe = TRUE
+
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
@@ -1331,12 +1334,12 @@ var/const/MAX_SAVE_SLOTS = 10
 					commander_status = options[new_commander_status]
 
 				if("co_sidearm")
-					var/list/options = list("Mateba","Desert Eagle")
+					var/list/options = CO_GUNS
 
 					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
-						options += list("Colonel's Mateba","Golden Desert Eagle")
+						options += COUNCIL_CO_GUNS
 					else
-						options -= list("Colonel's Mateba","Golden Desert Eagle") //This is weird and should not be necessary but it wouldn't remove these from the list otherwise
+						options -= COUNCIL_CO_GUNS
 
 					var/new_co_sidearm = tgui_input_list(user, "Choose your preferred sidearm.", "Commanding Officer's Sidearm", options)
 					if(!new_co_sidearm)

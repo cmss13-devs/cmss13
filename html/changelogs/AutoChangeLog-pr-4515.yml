@@ -1,0 +1,5 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Synthetic equipment vendor now can vend fuel cannisters and all colour variants of the synthetic utility vest."
+  - rscadd: "Synthetic cosmetic vendor now can vend all colour variants of the standard Marine helmet, MP and Combat Technician uniforms, the welder chestrig and security hud glasses."

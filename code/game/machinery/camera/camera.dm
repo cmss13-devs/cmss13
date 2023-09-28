@@ -79,7 +79,7 @@
 			network = list()
 			cameranet.removeCamera(src)
 			stat |= EMPED
-			SetLuminosity(0)
+			set_light(0)
 			triggerCameraAlarm()
 			spawn(900)
 				network = previous_network
@@ -187,9 +187,9 @@
 		else
 			visible_message(SPAN_WARNING("[user] has deactivated [src]!"))
 	if(status)
-		icon_state = initial(icon_state)
+		icon_state = "camera"
 	else
-		icon_state = "[initial(icon_state)]1"
+		icon_state = "camera1"
 	// now disconnect anyone using the camera
 	//Apparently, this will disconnect anyone even if the camera was re-activated.
 	//I guess that doesn't matter since they can't use it anyway?

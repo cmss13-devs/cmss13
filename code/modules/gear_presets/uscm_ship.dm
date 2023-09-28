@@ -30,8 +30,7 @@
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
-		ACCESS_WY_CORPORATE,
-		ACCESS_ILLEGAL_PIRATE,
+		ACCESS_WY_GENERAL,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY,
@@ -41,7 +40,7 @@
 		ACCESS_CIVILIAN_LOGISTICS,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_WY_CORPORATE_DS,
+		ACCESS_WY_FLIGHT,
 		ACCESS_CIVILIAN_COMMAND,
 	)
 	assignment = JOB_CORPORATE_LIAISON
@@ -69,6 +68,10 @@
 	dress_hat = list()
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/laceup)
+
+/datum/equipment_preset/uscm_ship/liaison/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_LIAISON)
 
 /datum/equipment_preset/uscm_ship/liaison/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/lockable/liaison
@@ -102,7 +105,6 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(
-		ACCESS_ILLEGAL_PIRATE,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY,
@@ -193,7 +195,6 @@
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_MARINE_SENIOR,
 		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
@@ -202,7 +203,7 @@
 	)
 	assignment = JOB_CHIEF_ENGINEER
 	rank = JOB_CHIEF_ENGINEER
-	paygrade = "MO2"
+	paygrade = "MO1"
 	role_comm_title = "CE"
 	minimum_age = 27
 	skills = /datum/skills/CE
@@ -261,6 +262,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/demo_scanner(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/bag/trash(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/welder_chestrig, (new_human), WEAR_R_HAND)
 
 /datum/equipment_preset/uscm_ship/maint/load_rank(mob/living/carbon/human/new_human)
 	if(new_human.client)
@@ -307,8 +309,8 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/uscm_ship/ro
-	name = "USCM Requisitions Officer (RO)"
+/datum/equipment_preset/uscm_ship/qm
+	name = "USCM Quartermaster (QM)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -316,8 +318,6 @@
 		ACCESS_MARINE_CARGO,
 		ACCESS_MARINE_RO,
 		ACCESS_MARINE_COMMAND,
-		ACCESS_MARINE_DATABASE,
-		ACCESS_MARINE_SENIOR,
 		ACCESS_MARINE_ALPHA,
 		ACCESS_MARINE_BRAVO,
 		ACCESS_MARINE_CHARLIE,
@@ -326,26 +326,26 @@
 	)
 	assignment = JOB_CHIEF_REQUISITION
 	rank = JOB_CHIEF_REQUISITION
-	paygrade = "MO2"
-	role_comm_title = "RO"
+	paygrade = "ME7"
+	role_comm_title = "QM"
 	minimum_age = 27
 	skills = /datum/skills/RO
 
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 	minimap_icon = list("ct" = MINIMAP_ICON_COLOR_HEAD)
 
-	utility_under = list(/obj/item/clothing/under/rank/ro_suit)
+	utility_under = list(/obj/item/clothing/under/rank/qm_suit)
 
-/datum/equipment_preset/uscm_ship/ro/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm_ship/qm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/industrial
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ro(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/ro_suit(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/qm(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/qm_suit(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/req(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/req/ro(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
@@ -377,7 +377,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beanie(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/req(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
 
@@ -404,24 +404,24 @@
 	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_COMMANDER)
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
-	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
+	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
 	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
 
 	service_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
-	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black)
+	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress, /obj/item/clothing/under/marine/officer/formal/servicedress)
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
-	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black, /obj/item/clothing/head/marine/peaked)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit, /obj/item/clothing/suit/storage/jacket/marine/dress)
 
 /datum/equipment_preset/uscm_ship/commander/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/uscm_ship/commander/load_race(mob/living/carbon/human/new_human, client/mob_client)
 	..()
@@ -436,20 +436,18 @@
 	if(new_human.client && new_human.client.prefs)
 		sidearm = new_human.client.prefs.commander_sidearm
 		switch(sidearm)
-			if("Mateba")
+			if(CO_GUN_MATEBA)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 				kit = /obj/item/storage/mateba_case/captain
-			if("Colonel's Mateba")
+			if(CO_GUN_MATEBA_SPECIAL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/special
+			if(CO_GUN_MATEBA_COUNCIL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
 				kit = /obj/item/storage/mateba_case/captain/council
-			if("Desert Eagle")
+			if(CO_GUN_DEAGLE)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
-			if("Golden Desert Eagle")
+			if(CO_GUN_DEAGLE_COUNCIL)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
-			if("M4A3 Custom")
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/commander
-			if("VP78")
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/vp78
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
@@ -475,6 +473,13 @@
 	paygrade = "MO5"
 	role_comm_title = "CO"
 	minimum_age = 35
+
+	dress_over = list(
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white,
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/black,
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit,
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
+	)
 
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
@@ -511,7 +516,7 @@
 
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
-	access = get_main_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
 
 /datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -519,10 +524,10 @@
 		back_item = /obj/item/storage/backpack/marine
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/exec(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/marine/peaked/service(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
@@ -555,7 +560,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/bridge(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
@@ -582,7 +587,7 @@
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
-	access = get_main_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
 
 /datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -605,6 +610,64 @@
 		paygrade = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[rank])
 
 	return paygrade
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/auxiliary_officer
+	name = "USCM Auxiliary Support Officer (ASO)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	assignment = JOB_AUXILIARY_OFFICER
+	rank = JOB_AUXILIARY_OFFICER
+	paygrade = "MO2"
+	role_comm_title = "ASO"
+	minimum_age = 27
+	skills = /datum/skills/auxiliary_officer
+
+	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_SILVER)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+
+/datum/equipment_preset/uscm_ship/auxiliary_officer/New()
+	. = ..()
+	access = list(
+		ACCESS_MARINE_SENIOR,
+		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_ASO,
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_ARMORY,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_CE,
+		ACCESS_MARINE_ENGINEERING,
+		ACCESS_MARINE_MAINT,
+		ACCESS_MARINE_OT,
+		ACCESS_MARINE_RO,
+		ACCESS_MARINE_CARGO,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_PILOT,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_KITCHEN,
+		ACCESS_PRESS,
+	)
+
+/datum/equipment_preset/uscm_ship/auxiliary_officer/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/alt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/aso(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_L_STORE)
 
 //*****************************************************************************************************/
 
@@ -734,7 +797,7 @@
 
 /datum/equipment_preset/uscm_ship/officer/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/uscm_ship/officer/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels

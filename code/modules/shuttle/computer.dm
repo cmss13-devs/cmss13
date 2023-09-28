@@ -284,23 +284,36 @@
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
-	var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 	if(lifeboat.status == LIFEBOAT_LOCKED)
-		to_chat(user, SPAN_WARNING("\The [src] flickers with error messages."))
+		to_chat(user, SPAN_WARNING("[src] flickers with error messages."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
-		to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting evacuation order\"."))
+		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)
-				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
+				if(!istype(user, /mob/living/carbon/human))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
+					return
+
+				var/mob/living/carbon/human/human_user = user
+				if(!(ACCESS_MARINE_SENIOR in human_user.wear_id?.access))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
+					return
+
+				if(tgui_alert(user, "Early launch the lifeboat?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
+					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Early launch accepted\"."))
+					lifeboat.evac_launch()
+					return
+
 			if(SHUTTLE_IGNITING)
-				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Engines firing\"."))
+				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
 			if(SHUTTLE_CALL)
-				to_chat(user, SPAN_NOTICE("\The [src] has flight information scrolling across the screen. The autopilot is working correctly."))
+				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.caste && xeno.caste.is_intelligent)
-		var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 		if(lifeboat.status == LIFEBOAT_LOCKED)
 			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
 			return XENO_NO_DELAY_ACTION

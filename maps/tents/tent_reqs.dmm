@@ -70,6 +70,10 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"R" = (
+/obj/structure/blocker/tent/full_tile,
+/turf/template_noop,
+/area/template_noop)
 "S" = (
 /obj/structure/blocker/tent{
 	dir = 8
@@ -83,25 +87,25 @@
 /area/template_noop)
 
 (1,1,1) = {"
-a
+R
 B
 S
 m
 "}
 (2,1,1) = {"
-a
+R
 J
 a
 c
 "}
 (3,1,1) = {"
-a
+R
 w
 U
 k
 "}
 (4,1,1) = {"
-a
+R
 n
 d
 k

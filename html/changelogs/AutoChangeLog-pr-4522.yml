@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - refactor: "divide preset into different file for each map."

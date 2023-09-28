@@ -289,7 +289,7 @@
 	density = FALSE
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
-	point_cost = 300
+	point_cost = 50
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 	combat_equipment = FALSE
@@ -449,23 +449,20 @@
 	icon_state = "spotlights"
 	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
-	point_cost = 300
+	point_cost = 50
 	var/spotlights_cooldown
 	var/brightness = 11
-
-/obj/structure/dropship_equipment/electronics/spotlights/get_light_range()
-	return min(luminosity, LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS)
 
 /obj/structure/dropship_equipment/electronics/spotlights/equipment_interact(mob/user)
 	if(spotlights_cooldown > world.time)
 		to_chat(user, SPAN_WARNING("[src] is busy."))
 		return //prevents spamming deployment/undeployment
 	if(luminosity != brightness)
-		SetLuminosity(brightness)
+		set_light(brightness)
 		icon_state = "spotlights_on"
 		to_chat(user, SPAN_NOTICE("You turn on [src]."))
 	else
-		SetLuminosity(0)
+		set_light(0)
 		icon_state = "spotlights_off"
 		to_chat(user, SPAN_NOTICE("You turn off [src]."))
 	spotlights_cooldown = world.time + 50
@@ -480,13 +477,13 @@
 	else
 		icon_state = "spotlights"
 		if(luminosity)
-			SetLuminosity(0)
+			set_light(0)
 
 /obj/structure/dropship_equipment/electronics/spotlights/on_launch()
-	SetLuminosity(0)
+	set_light(0)
 
 /obj/structure/dropship_equipment/electronics/spotlights/on_arrival()
-	SetLuminosity(brightness)
+	set_light(brightness)
 
 #undef LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS
 
@@ -513,7 +510,7 @@
 	name = "\improper LZ detector"
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
 	icon_state = "lz_detector"
-	point_cost = 400
+	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
@@ -1137,7 +1134,7 @@
 	name = "rappel deployment system"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
-	point_cost = 500
+	point_cost = 50
 	combat_equipment = FALSE
 
 	var/harness = /obj/item/rappel_harness

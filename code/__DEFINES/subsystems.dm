@@ -113,6 +113,7 @@
 #define SS_INIT_INPUT   85
 #define SS_INIT_FAIL_TO_TOPIC 84
 #define SS_INIT_TOPIC 83
+#define SS_INIT_LOBBYART 82
 #define SS_INIT_RUST    30
 #define SS_INIT_INFLUXDRIVER 28
 #define SS_INIT_SUPPLY_SHUTTLE  25
@@ -162,7 +163,6 @@
 #define SS_INIT_PLAYTIME   -29
 #define SS_INIT_PREDSHIPS  -30
 #define SS_INIT_OBJECTIVES -31
-#define SS_INIT_LOBBYART   -33
 #define SS_INIT_MINIMAP    -34
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.
@@ -173,6 +173,7 @@
 
 #define SS_PRIORITY_INPUT   1000
 #define SS_PRIORITY_TIMER   700
+#define SS_PRIORITY_AUTOFIRE 450
 #define SS_PRIORITY_SOUND   250
 #define SS_PRIORITY_TICKER  200
 #define SS_PRIORITY_NIGHTMARE   180

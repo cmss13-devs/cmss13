@@ -57,7 +57,7 @@
 			overlays += icon(src.icon,"open")
 
 //immune to bullets
-/obj/structure/closet/secure_closet/guncabinet/bullet_act(obj/item/projectile/Proj)
+/obj/structure/closet/secure_closet/guncabinet/bullet_act(obj/projectile/Proj)
 	return 1
 
 /obj/structure/closet/secure_closet/guncabinet/ex_act(severity)
@@ -130,4 +130,4 @@
 
 /obj/structure/closet/secure_closet/guncabinet/wy
 	name = "weyland yutani gun cabinet"
-	req_access = ACCESS_WY_CORPORATE
+	req_access = ACCESS_WY_SECURITY

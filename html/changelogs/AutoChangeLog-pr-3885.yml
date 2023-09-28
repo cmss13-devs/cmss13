@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Banished players will no longer be candidates for hives they are banished from."
-  - bugfix: "Cryoing will now set your larva queue time so you don't get prioritized over others that have been waiting."
-  - admin: "Shuttle intoTheSunset will set larva queue time the same as other situations."

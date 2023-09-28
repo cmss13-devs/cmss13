@@ -213,33 +213,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/corpse/clown
-	name = "Corpse - Clown"
-	assignment = "Clown"
-	uses_special_name = TRUE
-
-/datum/equipment_preset/corpse/clown/New()
-	. = ..()
-	//As a joke, clown has all access so they can clown everywhere...
-	access = get_all_main_access()
-
-/datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/new_human, randomise)
-	. = ..() //To load gender, randomise appearance, etc.
-	new_human.change_real_name(new_human, pick(clown_names)) //Picking a proper clown name!
-
-/datum/equipment_preset/corpse/clown/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/toy/bikehorn(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(new_human), WEAR_BACK)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-
-//*****************************************************************************************************/
-
 /datum/equipment_preset/corpse/scientist
 	name = "Corpse - Scientist"
 	assignment = "Scientist"
@@ -467,12 +440,12 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_WY_PMC_GREEN,
-		ACCESS_WY_PMC_ORANGE,
-		ACCESS_WY_PMC_RED,
-		ACCESS_WY_PMC_BLACK,
-		ACCESS_WY_PMC_WHITE,
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_MEDICAL,
+		ACCESS_WY_ENGINEERING,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_LEADERSHIP,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_GENERAL,
 	)
 
 /datum/equipment_preset/corpse/bridgeofficer/johnson/load_gear(mob/living/carbon/human/new_human)
@@ -527,12 +500,9 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_WY_PMC_GREEN,
-		ACCESS_WY_PMC_ORANGE,
-		ACCESS_WY_PMC_RED,
-		ACCESS_WY_PMC_BLACK,
-		ACCESS_WY_PMC_WHITE,
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_GENERAL,
 	)
 
 /datum/equipment_preset/corpse/wysec/load_gear(mob/living/carbon/human/new_human)
@@ -629,8 +599,6 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
 	)
 
 /datum/equipment_preset/corpse/ua_riot/load_gear(mob/living/carbon/human/new_human)
@@ -678,11 +646,15 @@
 	faction_group = FACTION_LIST_WY
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_LEADERSHIP,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_EXEC,
+		ACCESS_WY_RESEARCH,
+		ACCESS_WY_ENGINEERING,
+		ACCESS_WY_MEDICAL,
 		ACCESS_ILLEGAL_PIRATE,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_RESEARCH,
-		ACCESS_MARINE_MEDBAY,
 	)
 
 /datum/equipment_preset/corpse/wy/manager/load_gear(mob/living/carbon/human/new_human)
@@ -716,17 +688,10 @@
 	idtype = /obj/item/card/id/silver
 	xenovictim = FALSE
 	faction = FACTION_CLF
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
-	)
+
+/datum/equipment_preset/corpse/clf/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/corpse/clf/load_gear(mob/living/carbon/human/new_human)
 
@@ -758,17 +723,10 @@
 	idtype = /obj/item/card/id/silver
 	xenovictim = FALSE
 	faction = FACTION_UPP
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
-	)
+
+/datum/equipment_preset/corpse/upp/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/corpse/upp/load_gear(mob/living/carbon/human/new_human)
 
@@ -807,9 +765,16 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_PMC,
 	)
 
 /datum/equipment_preset/corpse/pmc/load_gear(mob/living/carbon/human/new_human)
@@ -881,17 +846,10 @@
 	assignment = "Freelancer Mercenary"
 	idtype = /obj/item/card/id/silver
 	xenovictim = FALSE
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
-	)
+
+/datum/equipment_preset/corpse/freelancer/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/corpse/freelancer/load_gear(mob/living/carbon/human/new_human)
 
@@ -921,17 +879,10 @@
 	idtype = /obj/item/card/id/silver
 	faction = FACTION_DUTCH
 	xenovictim = FALSE
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
-	)
+
+/datum/equipment_preset/corpse/dutchrifle/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/corpse/dutchrifle/load_gear(mob/living/carbon/human/new_human)
 
@@ -959,17 +910,10 @@
 	idtype = /obj/item/card/id/silver
 	faction = FACTION_PIZZA
 	xenovictim = FALSE
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
-	)
+
+/datum/equipment_preset/corpse/pizza/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_DELIVERY)
 
 /datum/equipment_preset/corpse/pizza/load_gear(mob/living/carbon/human/new_human)
 
@@ -1014,7 +958,6 @@
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
 		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
 	)
 
 /datum/equipment_preset/corpse/gladiator/load_gear(mob/living/carbon/human/new_human)
@@ -1035,3 +978,43 @@
 /datum/equipment_preset/corpse/gladiator/burst
 	name = "Corpse - Burst Gladiator"
 	xenovictim = TRUE
+
+
+//FORECON
+
+/datum/equipment_preset/corpse/forecon_spotter
+	name = "Corpse - USCM Reconnaissance Spotter"
+	assignment = "Reconnaissance Spotter"
+	xenovictim = FALSE
+	paygrade = "ME5"
+	idtype = /obj/item/card/id/dogtag
+	role_comm_title = "FORECON"
+	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
+
+/datum/equipment_preset/corpse/forecon_spotter/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
+	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
+	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
+	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
+	uniform.attach_accessory(new_human,pouch)
+	uniform.attach_accessory(new_human,patch_uscm)
+	uniform.attach_accessory(new_human,pin)
+	uniform.attach_accessory(new_human,patch_forecon)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/marine(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/facepaint/sniper(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)

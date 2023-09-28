@@ -228,7 +228,7 @@
 	if(H.species.flags & NO_SHRAPNEL)
 		return
 	var/obj/limb/organ = embedded_organ
-	if(istype(organ))
+	if(istype(organ) && damage_on_move)
 		organ.take_damage(damage_on_move * count, 0, 0, no_limb_loss = TRUE)
 		embedded_mob.pain.apply_pain(damage_on_move * count)
 
@@ -261,3 +261,15 @@
 	name = "alien bone fragments"
 	icon_state = "alienbonechips"
 	desc = "Sharp, jagged fragments of alien bone. Looks like the previous owner exploded violently..."
+
+/obj/item/shard/shrapnel/tutorial
+	damage_on_move = 0
+
+/obj/item/shard/shrapnel/tutorial/on_embed(mob/embedded_mob, obj/limb/target_organ)
+	if(!ishuman(embedded_mob))
+		return
+	var/mob/living/carbon/human/H = embedded_mob
+	if(H.species.flags & NO_SHRAPNEL)
+		return
+	if(istype(target_organ))
+		target_organ.embed(src, TRUE)

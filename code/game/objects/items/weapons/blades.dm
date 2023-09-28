@@ -223,6 +223,8 @@
 			else
 				INVOKE_ASYNC(embedded_human, TYPE_PROC_REF(/mob, emote), "me", 1, pick("winces.", "grimaces.", "flinches."))
 
+		SEND_SIGNAL(embedded_human, COMSIG_HUMAN_SHRAPNEL_REMOVED)
+
 	else
 		to_chat(user, SPAN_NOTICE("You couldn't find any shrapnel."))
 

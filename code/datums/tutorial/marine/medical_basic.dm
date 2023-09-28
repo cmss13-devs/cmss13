@@ -51,11 +51,11 @@
 	message_to_player("All medicines take time to work after injection. Next is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
 	update_objective("")
 	var/mob/living/living_mob = tutorial_mob
-	living_mob.adjustBurnLoss(10)
+	living_mob.adjustFireLoss(10)
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/burn_tutorial()
-	message_to_player("<b>Kelotane</b> is used to fix burn overtime. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
+	message_to_player("<b>Kelotane</b> is used to fix burn over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
 	update_objective("Inject yourself with the kelotane injector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use/burn_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(burn_injector)
@@ -75,9 +75,85 @@
 	message_to_player("Good. Now, when you normally take damage, you will also feel <b>pain</b>. Pain slows you down and can knock you out if left unchecked.")
 	update_objective("")
 	var/mob/living/living_mob = tutorial_mob
-	living_mob.pain.apply_pain(PAIN_BONE_BREAK)
-	addtimer(CALLBACK(src, PROC_REF(pain_tutorial)), 4 SECONDS) // add tram injecting
+	living_mob.pain.apply_pain(PAIN_CHESTBURST_STRONG)
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial)), 4 SECONDS)
 
+/datum/tutorial/marine/medical_basic/proc/pain_tutorial()
+	message_to_player("<b>Tramadol</b> is used to reduce your pain. Inject yourself with the <b>tramadol EZ autoinjector</b>.")
+	update_objective("Inject yourself with the tramadol injector.")
+	var/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use/pain_injector = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(pain_injector)
+	add_highlight(pain_injector)
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_pain_inject))
+
+/datum/tutorial/marine/medical_basic/proc/on_pain_inject(datum/source, obj/item/reagent_container/hypospray/injector)
+	SIGNAL_HANDLER
+
+	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use))
+		return
+
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use, pain_injector)
+	remove_highlight(pain_injector)
+	message_to_player("Good. Keep in mind that you can overdose on chemicals, so don't inject yourself with the same chemical too much too often. In the field, injectors have 3 uses.")
+	update_objective("Don't overdose! Generally, 3 injections of a chemical will overdose you.")
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.pain.apply_pain(-PAIN_CHESTBURST_STRONG) // just to make sure
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial)), 4 SECONDS)
+
+/datum/tutorial/marine/medical_basic/proc/bleed_tutorial()
+	message_to_player("You can sometimes start <b>bleeding</b> from things like bullets or slashes. Losing blood will accumulate <b>oxygen</b> damage, eventually causing death.")
+	update_objective("")
+	var/mob/living/carbon/human/human_mob = tutorial_mob
+	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in human_mob.limbs
+	mob_chest.add_bleeding(damage_amount = 15)
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_2)), 4 SECONDS)
+
+/datum/tutorial/marine/medical_basic/proc/bleed_tutorial_2()
+	message_to_player("Bleeding wounds can clot themselves over time, or you can fix it quickly with <b>gauze</b>. Pick up the gauze and click on yourself while targeting your <b>chest</b>.")
+	update_objective("Gauze your chest, or let it clot on its own.")
+	var/obj/item/stack/medical/bruise_pack/two/bandage = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(bandage)
+	add_highlight(bandage)
+	var/mob/living/carbon/human/human_mob = tutorial_mob
+	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in human_mob.limbs
+	RegisterSignal(mob_chest, COMSIG_LIMB_STOP_BLEEDING, PROC_REF(on_chest_bleed_stop))
+
+/datum/tutorial/marine/medical_basic/proc/on_chest_bleed_stop(datum/source, external, internal)
+	SIGNAL_HANDLER
+
+	var/mob/living/carbon/human/human_mob = tutorial_mob
+	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in human_mob.limbs
+	UnregisterSignal(mob_chest, COMSIG_LIMB_STOP_BLEEDING)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/bruise_pack/two, bandage)
+	remove_from_tracking_atoms(bandage)
+	remove_highlight(bandage)
+	qdel(bandage)
+
+	message_to_player("Good. Sometimes, a bullet or bone shard can result in you getting <b>shrapnel</b>, dealing damage over time. Pick up the <b>knife</b> and use it in-hand to remove the shrapnel.")
+	update_objective("Remove your shrapnel by using the knife in-hand.")
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.pain.feels_pain = FALSE
+
+	var/obj/item/attachable/bayonet/knife = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(knife)
+	add_highlight(knife)
+
+	var/obj/item/shard/shrapnel/tutorial/shrapnel = new
+	shrapnel.on_embed(tutorial_mob, mob_chest)
+
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(on_shrapnel_removed))
+
+/datum/tutorial/marine/medical_basic/proc/on_shrapnel_removed()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SHRAPNEL_REMOVED)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/attachable/bayonet, knife)
+	remove_highlight(knife)
+	message_to_player("Good. This is the end of the basic marine medical tutorial. The tutorial will end shortly.")
+	update_objective("Tutorial completed.")
+	tutorial_end_in(5 SECONDS)
 
 // END OF SCRIPTING
 // START OF SCRIPT HELPERS
@@ -86,7 +162,7 @@
 
 /datum/tutorial/marine/medical_basic/init_mob()
 	. = ..()
-	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial)
+	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial/fed)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cryopod/tutorial, tutorial_pod)
 	tutorial_pod.go_in_cryopod(tutorial_mob, TRUE, FALSE)

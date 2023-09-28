@@ -65,10 +65,10 @@
 	style_close = "</span>"
 
 /atom/movable/screen/text/screen_text/command_order/tutorial
-	letters_per_update = 5 // overall, pretty fast while not immediately popping in
+	letters_per_update = 4 // overall, pretty fast while not immediately popping in
 	play_delay = 0.1
-	fade_out_delay = 1.5 SECONDS
-	fade_out_time = 0.2 SECONDS
+	fade_out_delay = 2 SECONDS
+	fade_out_time = 0.4 SECONDS
 
 ///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()

@@ -8,6 +8,7 @@
 
 /datum/tutorial/marine/example/start_tutorial(mob/starting_mob)
 	// Here, we're calling parent and checking its return value. If it has a falsey one (as done by !.), then something went wrong and we should abort
+	// There isn't really a reason that you _shouldn't_ have this
 	. = ..()
 	if(!.)
 		return

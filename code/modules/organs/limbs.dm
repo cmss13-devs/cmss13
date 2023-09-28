@@ -546,6 +546,7 @@ This function completely restores a damaged organ to perfect condition.
 
 
 /obj/limb/proc/remove_all_bleeding(external = FALSE, internal = FALSE)
+	SEND_SIGNAL(src, COMSIG_LIMB_STOP_BLEEDING, external, internal)
 	if(external)
 		for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
 			qdel(B)

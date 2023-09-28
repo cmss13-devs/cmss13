@@ -95,6 +95,9 @@
 				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
 				return TRUE
 
+/obj/item/stack/medical/bruise_pack/two
+	amount = 2
+
 /obj/item/stack/medical/ointment
 	name = "ointment"
 	desc = "Used to treat burns, infected wounds, and relieve itching in unusual places."

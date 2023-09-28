@@ -145,7 +145,8 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_GUN_EMPTY)
 	message_to_player("Your gun's out of ammo. Go grab some more from the <b>Weaponry Vendor</b> and kill the <b>Xenomorph</b>.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial, gun_vendor)
-	gun_vendor.load_ammo() // 99 magazines, just to make sure that the xeno dies
+	gun_vendor.req_access = list()
+	gun_vendor.load_ammo() // 99 magazines, to make sure that the xeno dies
 
 /datum/tutorial/marine/basic/proc/on_xeno_death(datum/source)
 	SIGNAL_HANDLER

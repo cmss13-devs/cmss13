@@ -81,6 +81,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 		REMOVE_TRAIT(tutorial_mob, TRAIT_IN_TUTORIAL, TRAIT_SOURCE_TUTORIAL)
 		if(tutorial_mob.client?.prefs && completed)
 			tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
+			tutorial_mob.client.prefs.save_preferences()
 		var/mob/new_player/new_player = new
 		if(!tutorial_mob.mind)
 			tutorial_mob.mind_initialize()

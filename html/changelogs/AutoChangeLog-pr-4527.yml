@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "Using a Yautja relay beacon now properly decloaks you"

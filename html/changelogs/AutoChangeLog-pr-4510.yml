@@ -1,0 +1,7 @@
+author: "SpartanBobby"
+delete-after: True
+changes:
+  - maptweak: "CL now spawns in a hypersleep bay \"Passenger Bay\" it's right next to his office, the CC spawns with him too since his landmark was in the latejoin bay on the lowerdeck"
+  - maptweak: "re-arranged PO bunks should allow for better traffic in and out"
+  - maptweak: "fixed symmetry issue in north-south CIC hallway"
+  - maptweak: "minor warning stripe decal additions around Almayer"

@@ -1,0 +1,6 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - rscadd: "Allows ext webbing to hold firearms."
+  - bugfix: "exosuits which can hold scabbards can hold similar scabbards(ie, machete and katana)"
+  - rscdel: "Removes ext webbing from SO Locker"

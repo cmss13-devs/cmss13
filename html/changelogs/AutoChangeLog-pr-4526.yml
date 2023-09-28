@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - rscadd: "You can now fold a combi-stick using the new \"collapse combi-stick\" verb and/or keybind. Defaults to the space bar."

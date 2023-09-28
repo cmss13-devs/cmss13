@@ -421,8 +421,8 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		GLOB.uscm_svg_overlay += svg_overlay
 
-	return TRUE
 	qdel(svg_overlay)
+	return TRUE
 
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)

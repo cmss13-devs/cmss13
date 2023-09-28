@@ -395,3 +395,12 @@
       as DCC
   realforest2001:
   - balance: Adds an extra 75% damage and hive interference to plasma rifle vs xenos.
+2023-09-28:
+  Casper:
+  - bugfix: fixed S&W black market crate not working
+  - bugfix: fixed flashlights showing incorrect sprite state
+  Steelpoint:
+  - rscadd: Alert message regarding Pylon construction around a communications array
+      now properly emphasizes why it is a threat to Marines, and a benefit to Xenos.
+  TheGamerdk:
+  - qol: You can no longer doom yourself by joining as a crit xeno

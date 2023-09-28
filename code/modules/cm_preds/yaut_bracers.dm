@@ -71,6 +71,7 @@
 	flags_item = initial(flags_item)
 	UnregisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH))
 	SSminimaps.remove_marker(user)
+	unlock_bracer() // So as to prevent the bracer being stuck with nodrop if the pred gets gibbed/arm removed/etc.
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
@@ -1164,18 +1165,26 @@
 /// The actual unlock/lock function.
 /obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/wearer, force_lock)
 	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
-		flags_item &= ~NODROP
-		flags_inventory &= ~CANTSTRIP
-		if(!isyautja(wearer))
-			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing it's grip on your forearm."))
-		else
-			to_chat(wearer, SPAN_WARNING("With an angry blare the bracer releases your forearm."))
-		return TRUE
+		return unlock_bracer()
 
+	return lock_bracer()
+
+/obj/item/clothing/gloves/yautja/proc/lock_bracer(mob/wearer)
 	flags_item |= NODROP
 	flags_inventory |= CANTSTRIP
-	if(isyautja(wearer))
-		to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
-	else
-		to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	if(wearer)
+		if(isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+		else
+			to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	return TRUE
+
+/obj/item/clothing/gloves/yautja/proc/unlock_bracer(mob/wearer)
+	flags_item &= ~NODROP
+	flags_inventory &= ~CANTSTRIP
+	if(wearer)
+		if(!isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing its grip on your forearm."))
+		else
+			to_chat(wearer, SPAN_WARNING("With an angry blare, the bracer releases your forearm."))
 	return TRUE

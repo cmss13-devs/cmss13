@@ -278,7 +278,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(play_anim)
 			for(var/mob/current_mob as anything in alive_mobs + dead_mobs)
 				if(current_mob && current_mob.loc && current_mob.client)
-					current_mob.client.screen |= C //They may have disconnected in the mean time.
+					current_mob.client.add_to_screen(C)  //They may have disconnected in the mean time.
 
 			sleep(15) //Extra 1.5 seconds to look at the ship.
 			flick(override ? "intro_override" : "intro_nuke", C)
@@ -292,7 +292,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 					current_mob.death(create_cause_data("nuclear explosion"))
 				else
 					if(play_anim)
-						current_mob.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.
+						current_mob.client.remove_from_screen(C) //those who managed to escape the z level at last second shouldn't have their view obstructed.
 		if(play_anim)
 			flick(ship_status ? "ship_spared" : "ship_destroyed", C)
 			C.icon_state = ship_status ? "summary_spared" : "summary_destroyed"

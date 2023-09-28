@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "Picking up a dropped pred bracer will no longer leave it stuck to your hand."

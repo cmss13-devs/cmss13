@@ -150,7 +150,7 @@
 
 	var/list/target_list = list()
 	for(var/mob/living/carbon/target in view(7, usr.client))
-		if((ishuman_strict(target) || isxeno(target)) && target.stat != DEAD)
+		if(ishuman_strict(target) && (target.stat != DEAD))
 			target_list += target
 
 	var/mob/living/carbon/T = tgui_input_list(usr, "Target", "Choose a target.", target_list)
@@ -187,7 +187,7 @@
 
 	var/list/target_list = list()
 	for(var/mob/living/carbon/target in view(7, usr.client))
-		if((ishuman_strict(target) || isxeno(target)) && target.stat != DEAD)
+		if(ishuman_strict(target) && (target.stat != DEAD))
 			if(target.hunter_data.honored)
 				target_list += target
 

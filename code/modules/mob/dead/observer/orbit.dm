@@ -1,5 +1,4 @@
 /datum/orbit_menu
-	var/auto_observe = FALSE
 	var/mob/dead/observer/owner
 
 /datum/orbit_menu/New(mob/dead/observer/new_owner)
@@ -30,27 +29,20 @@
 				if (poi == null)
 					. = TRUE
 					return
-			owner.ManualFollow(poi)
-			owner.reset_perspective(null)
-			if(auto_observe)
-				owner.do_observe(poi)
+			owner.do_observe(poi)
 			. = TRUE
 		if("refresh")
 			update_static_data(owner)
 			. = TRUE
-		if("toggle_observe")
-			auto_observe = !auto_observe
-			if(auto_observe && owner.orbit_target)
-				owner.do_observe(owner.orbit_target)
-			else
-				owner.reset_perspective(null)
+		if("toggle_auto_observe")
+			ui.user.client?.prefs?.auto_observe = !ui.user?.client?.prefs.auto_observe
+			ui.user.client?.prefs?.save_preferences()
 			. = TRUE
-
-
 
 /datum/orbit_menu/ui_data(mob/user)
 	var/list/data = list()
-	data["auto_observe"] = auto_observe
+
+	data["auto_observe"] = user.client?.prefs?.auto_observe
 	return data
 
 /datum/orbit_menu/ui_static_data(mob/user)

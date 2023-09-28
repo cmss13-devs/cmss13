@@ -4262,10 +4262,12 @@
 /area/almayer/shipboard/navigation)
 "aok" = (
 /obj/structure/machinery/power/apc/almayer/hardened{
-	dir = 1
+	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/north1)
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "aol" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -14488,9 +14490,8 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
 "bbX" = (
-/obj/structure/prop/resource_node,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -18123,8 +18124,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bvd" = (
-/obj/structure/prop/resource_node,
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -24546,9 +24546,6 @@
 /area/almayer/command/corporateliason)
 "bXz" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/power/apc/almayer/hardened{
-	dir = 1
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north2)
 "bXH" = (
@@ -33689,7 +33686,9 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "eGb" = (
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_2"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -36669,6 +36668,14 @@
 "fUA" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/briefing)
+"fVc" = (
+/obj/structure/machinery/power/apc/almayer/hardened{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south1)
 "fVz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -39197,9 +39204,8 @@
 	},
 /area/almayer/command/cichallway)
 "haM" = (
-/obj/structure/prop/resource_node,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -47685,7 +47691,9 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/main_office)
 "kJL" = (
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_2"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -48240,7 +48248,7 @@
 /area/almayer/engineering/upper_engineering/port)
 "kUQ" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -49655,7 +49663,7 @@
 	},
 /area/almayer/living/auxiliary_officer_office)
 "lxT" = (
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -51940,10 +51948,6 @@
 /area/almayer/living/offices)
 "mzF" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/power/apc/almayer/hardened{
-	cell_type = /obj/item/cell/hyper;
-	dir = 1
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south2)
 "mzO" = (
@@ -63395,6 +63399,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
+"rxy" = (
+/obj/structure/machinery/power/apc/almayer/hardened{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south2)
 "rxG" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
@@ -63579,8 +63589,9 @@
 	},
 /area/almayer/command/cichallway)
 "rBH" = (
-/obj/structure/prop/resource_node,
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_2"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -64803,6 +64814,15 @@
 	icon_state = "ai_floors"
 	},
 /area/almayer/command/airoom)
+"sdk" = (
+/obj/structure/machinery/power/apc/almayer/hardened{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/almayer/lifeboat_pumps/north1)
 "sdl" = (
 /obj/structure/surface/rack{
 	density = 0;
@@ -103837,8 +103857,8 @@ add
 auJ
 aHU
 aTm
-abs
-aok
+awW
+aTm
 jgF
 auJ
 add
@@ -103883,7 +103903,7 @@ aJU
 lqZ
 ouQ
 iun
-tQV
+baw
 vPm
 qys
 lqZ
@@ -104446,7 +104466,7 @@ add
 auJ
 aHU
 aTm
-abs
+awW
 aTm
 jgF
 auJ
@@ -104492,7 +104512,7 @@ aJU
 lqZ
 ouQ
 vbB
-tQV
+baw
 tBq
 qys
 lqZ
@@ -105665,7 +105685,7 @@ oGC
 ryG
 aVL
 bBl
-aeZ
+sdk
 pzy
 oGC
 awW
@@ -105712,7 +105732,7 @@ aJU
 bnZ
 cIe
 jez
-aJU
+fVc
 baw
 baw
 baw
@@ -121091,7 +121111,7 @@ aeC
 asV
 ayn
 atr
-abh
+aeA
 aex
 ciw
 asV
@@ -121139,7 +121159,7 @@ vcE
 mMu
 iMx
 tGi
-uOi
+lJY
 bXe
 eyG
 mMu
@@ -121700,7 +121720,7 @@ aeC
 asV
 ayn
 atr
-abh
+aeA
 bXz
 ciw
 asV
@@ -121748,7 +121768,7 @@ vcE
 mMu
 iMx
 bXe
-uOi
+lJY
 mzF
 eyG
 mMu
@@ -122559,7 +122579,7 @@ uxC
 lJY
 lJY
 fFe
-lJY
+rxy
 lJY
 lJY
 vcE
@@ -123117,7 +123137,7 @@ aad
 aag
 aag
 abh
-aeC
+aok
 atu
 azU
 aeC

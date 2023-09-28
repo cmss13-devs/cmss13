@@ -43093,10 +43093,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/operating_room_four)
-"iGE" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_m_s)
 "iGK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -54327,12 +54323,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/powered)
-"nvI" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/lower_hull/l_m_s)
 "nvM" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -114422,8 +114412,8 @@ bdH
 bdH
 aKW
 aKW
-nvI
-iGE
+bPU
+aVt
 aLf
 aLf
 aLf
@@ -114624,7 +114614,7 @@ bdH
 bdH
 bdH
 aKW
-nvI
+aLF
 aLf
 xlD
 aSm

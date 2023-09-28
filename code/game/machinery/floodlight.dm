@@ -1,5 +1,3 @@
-//these are probably broken
-
 /obj/structure/machinery/floodlight
 	name = "Emergency Floodlight"
 	icon = 'icons/obj/structures/machinery/floodlight.dmi'

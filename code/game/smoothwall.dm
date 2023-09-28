@@ -170,6 +170,11 @@
 		setDir(NORTH)
 
 /obj/structure/window/framed/handle_icon_junction(jun_1, jun_2)
+	if(!icon_exists(icon, "[basestate][jun_2 ? jun_2 : jun_1]")) //Missing states for 5, 6, 7, 9, 19, 11, 13, 14, 15 for the vast majority of /obj/structure/window/framed
+		icon_state = "[basestate]0"
+		junction = 0
+		return
+
 	icon_state = "[basestate][jun_2 ? jun_2 : jun_1]" //Use junction 2 if possible, junction 1 otherwise.
 	if(jun_2)
 		junction = jun_2
@@ -177,6 +182,11 @@
 		junction = jun_1
 
 /obj/structure/window_frame/handle_icon_junction(jun_1, jun_2)
+	if(!icon_exists(icon, "[basestate][jun_2 ? jun_2 : jun_1]_frame")) //Missing states for 5, 6, 7, 9, 19, 11, 13, 14, 15 for the vast majority of /obj/structure/window_frame
+		icon_state = "[basestate]0_frame"
+		junction = 0
+		return
+
 	icon_state = "[basestate][jun_2 ? jun_2 : jun_1]_frame" //Use junction 2 if possible, junction 1 otherwise.
 	if(jun_2)
 		junction = jun_2

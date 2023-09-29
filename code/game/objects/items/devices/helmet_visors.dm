@@ -69,6 +69,10 @@
 	var/datum/mob_hud/current_mob_hud = huds[hud_type]
 	current_mob_hud.remove_hud_from(user, attached_helmet)
 
+/// Called by /obj/item/clothing/head/helmet/marine/get_examine_text(mob/user) to get extra examine text for this visor
+/obj/item/device/helmet_visor/proc/get_helmet_examine_text()
+	return SPAN_NOTICE("\A [name] is flipped down.")
+
 /obj/item/device/helmet_visor/medical
 	name = "basic medical optic"
 	icon_state = "med_sight"
@@ -154,6 +158,11 @@
 	power_cell = null
 	. = ..()
 
+/obj/item/device/helmet_visor/night_vision/get_examine_text(mob/user)
+	. = ..()
+
+	. += SPAN_NOTICE("It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
+
 /obj/item/device/helmet_visor/night_vision/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(on_update_sight))
 
@@ -198,6 +207,11 @@
 		return FALSE
 
 	return TRUE
+
+/obj/item/device/helmet_visor/night_vision/get_helmet_examine_text()
+	. = ..()
+
+	. += SPAN_NOTICE(" It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
 
 /obj/item/device/helmet_visor/night_vision/proc/on_update_sight(mob/user)
 	SIGNAL_HANDLER

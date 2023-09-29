@@ -29,7 +29,7 @@ type Target = {
 
 export const Radar = (props, context) => {
   return (
-    <Window width={800} height={600} theme="ntos">
+    <Window width={965} height={600} theme="ntos">
       <Window.Content scrollable>
         <RadarContent />
       </Window.Content>
@@ -40,7 +40,7 @@ export const Radar = (props, context) => {
 export const RadarContent = (props, context) => {
   return (
     <Stack fill>
-      <Stack.Item position="relative" width={20.5}>
+      <Stack.Item position="relative" width={35}>
         <ObjectDisplay />
       </Stack.Item>
       <Stack.Item

@@ -204,17 +204,20 @@
 		if(!trackable(humanoid))
 			continue
 		var/crewmember_name = "Unknown"
+		var/crewmember_rank = "Unknown"
 		if(humanoid.wear_id)
 			var/obj/item/card/id/ID = humanoid.wear_id.GetID()
 			if(ID?.registered_name)
 				crewmember_name = ID.registered_name
+			if(ID?.assignment)
+				crewmember_rank = ID.assignment
 		switch(humanoid.stat)
 			if(CONSCIOUS)
-				crewmember_name = "[crewmember_name] (Conscious)"
+				crewmember_name = "[crewmember_name] ([crewmember_rank]) (Conscious)"
 			if(UNCONSCIOUS)
-				crewmember_name = "[crewmember_name] (Unconscious)"
+				crewmember_name = "[crewmember_name] ([crewmember_rank]) (Unconscious)"
 			if(DEAD)
-				crewmember_name = "[crewmember_name] (DEAD)"
+				crewmember_name = "[crewmember_name] ([crewmember_rank]) (DEAD)"
 		var/list/crewinfo = list(
 			ref = REF(humanoid),
 			name = crewmember_name,

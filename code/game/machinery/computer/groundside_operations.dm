@@ -27,10 +27,6 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
 	tacmap = new(src, minimap_type)
 
-	// global tacmap for marines to access through an action button.
-	// dumb implementation for testing, fix later.
-	var/datum/tacmap/status_tab_view/uscm_tacmap
-	GLOB.tacmap_datum = new(uscm_tacmap, minimap_type)
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/Destroy()

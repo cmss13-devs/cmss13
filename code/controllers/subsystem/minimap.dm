@@ -556,6 +556,12 @@ SUBSYSTEM_DEF(minimaps)
 	allowed_flags = minimap_type
 	owner = source
 
+
+/datum/tacmap/status_tab_view/New()
+	var/datum/tacmap/status_tab_view/uscm_tacmap
+	allowed_flags = MINIMAP_FLAG_USCM
+	owner = uscm_tacmap
+
 /datum/tacmap/Destroy()
 	map_holder = null
 	owner = null
@@ -660,7 +666,7 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("updateCanvas")
-			// forces state change
+			// forces state change, this will export the svg.
 			toolbar_updated_selection = "export"
 			updated_canvas = TRUE
 			. = TRUE
@@ -704,6 +710,7 @@ SUBSYSTEM_DEF(minimaps)
 					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
 
 				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
+				human_leader << 'sound/effects/sos-morse-code.ogg'
 				COOLDOWN_START(GLOB, uscm_canvas_cooldown, canvas_cooldown_time)
 
 			message_admins("[key_name(user)] has updated the tactical map")

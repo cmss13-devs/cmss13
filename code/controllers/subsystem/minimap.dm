@@ -707,7 +707,7 @@ SUBSYSTEM_DEF(minimaps)
 					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
 
 				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
-				human_leader << 'sound/effects/sos-morse-code.ogg'
+				playsound(src, "sound/effects/sos-morse-code.ogg", 15)
 				COOLDOWN_START(GLOB, uscm_canvas_cooldown, canvas_cooldown_time)
 
 			message_admins("[key_name(user)] has updated the tactical map")

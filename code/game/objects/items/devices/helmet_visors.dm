@@ -87,13 +87,13 @@
 /obj/item/device/helmet_visor/medical/advanced/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
 
-	var/datum/action/item_action/view_publications/publication_action = new(attached_helmet)
+	var/datum/action/item_action/view_publications/helmet_visor/publication_action = new(attached_helmet)
 	publication_action.give_to(user)
 
 /obj/item/device/helmet_visor/medical/advanced/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
 
-	var/datum/action/item_action/view_publications/publication_action = locate() in attached_helmet.actions
+	var/datum/action/item_action/view_publications/helmet_visor/publication_action = locate() in attached_helmet.actions
 	qdel(publication_action)
 
 /obj/item/device/helmet_visor/medical/advanced/can_toggle(mob/living/carbon/human/user)
@@ -106,6 +106,52 @@
 		return FALSE
 
 	return TRUE
+
+/obj/item/device/helmet_visor/medical/advanced/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/item/device/helmet_visor/medical/advanced/ui_data(mob/user)
+	var/list/data = list(
+		"published_documents" = chemical_data.research_publications,
+		"terminal_view" = FALSE
+	)
+	return data
+
+/obj/item/device/helmet_visor/medical/advanced/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "PublishedDocsHud", name)
+		ui.open()
+
+/obj/item/device/helmet_visor/medical/advanced/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	if(!ishuman(ui.user))
+		return
+
+	var/mob/living/carbon/human/user = ui.user
+
+	if(user.stat || user.is_mob_restrained() || !in_range(src, user))
+		return
+
+	switch(action)
+		if ("read_document")
+			var/print_type = params["print_type"]
+			var/print_title = params["print_title"]
+			var/obj/item/paper/research_report/report = chemical_data.get_report(print_type, print_title)
+			if(report)
+				report.read_paper(user)
+			return
+
+/datum/action/item_action/view_publications/helmet_visor/action_activate()
+	var/obj/item/device/helmet_visor/medical/advanced/medical_visor = locate() in holder_item
+
+	if(!medical_visor)
+		return
+
+	medical_visor.tgui_interact(owner)
 
 /obj/item/device/helmet_visor/security
 	name = "security optic"

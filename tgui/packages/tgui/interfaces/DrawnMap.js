@@ -7,12 +7,6 @@ export class DrawnMap extends Component {
     this.flatImgSrc = this.props.flatImage;
     this.backupImgSrc = this.props.backupImage;
     this.svg = this.props.svgData;
-    this.backupImg = null;
-  }
-
-  componentDidMount() {
-    this.backupImg = new Image();
-    this.backupImg.src = this.backupImgSrc;
   }
 
   parseSvgData(svgDataArray) {
@@ -42,7 +36,7 @@ export class DrawnMap extends Component {
         }}>
         <img
           src={this.flatImgSrc}
-          alt={this.backupImg}
+          alt={this.backupImgSrc || "Please wait for a new tacmap announcement"}
           style={{
             position: 'absolute',
             zIndex: 0,

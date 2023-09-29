@@ -699,7 +699,6 @@ SUBSYSTEM_DEF(minimaps)
 			store_current_svg_coords(user, params["image"])
 
 			current_svg = get_current_tacmap_data(user, FALSE)
-
 			if(isxeno(user))
 				var/mob/living/carbon/xenomorph/xeno = user
 				xeno_maptext("The Queen has updated your hive mind map", "You sense something unusual...", xeno.hivenumber)

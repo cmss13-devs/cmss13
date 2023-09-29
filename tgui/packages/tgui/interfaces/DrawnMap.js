@@ -6,7 +6,24 @@ export class DrawnMap extends Component {
     this.containerRef = createRef();
     this.flatImgSrc = this.props.flatImage;
     this.backupImgSrc = this.props.backupImage;
+    this.state = {
+      mapLoad: true,
+    };
+    this.img = null;
     this.svg = this.props.svgData;
+  }
+
+  componentWillMount() {
+    this.img = new Image();
+    this.img.src = this.flatImgSrc;
+    this.img.onload = () => {
+      this.setState({ mapLoad: true });
+    };
+
+    this.img.onerror = () => {
+      this.img.src = this.backupImgSrc;
+      this.setState({ mapLoad: false });
+    };
   }
 
   parseSvgData(svgDataArray) {
@@ -35,8 +52,7 @@ export class DrawnMap extends Component {
           height: '100%',
         }}>
         <img
-          src={this.flatImgSrc}
-          alt={this.backupImgSrc || 'Please wait for a new tacmap announcement'}
+          src={this.img.src}
           style={{
             position: 'absolute',
             zIndex: 0,
@@ -44,7 +60,7 @@ export class DrawnMap extends Component {
           width={650}
           height={590}
         />
-        {parsedSvgData && (
+        {parsedSvgData && this.state.mapLoad && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width={650}

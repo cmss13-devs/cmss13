@@ -579,8 +579,7 @@ SUBSYSTEM_DEF(minimaps)
 		current_map = get_current_tacmap_data(user, TRUE)
 		current_svg = get_current_tacmap_data(user, FALSE)
 		if(!current_map)
-			var/distribute_status = distribute_current_map_png(user)
-			if(!distribute_status)
+			if(!distribute_current_map_png(user))
 				return
 			current_map = get_current_tacmap_data(user, TRUE)
 
@@ -658,8 +657,7 @@ SUBSYSTEM_DEF(minimaps)
 	switch (action)
 		if ("menuSelect")
 			if(params["selection"] == "new canvas")
-				var/distribute_status = distribute_current_map_png(user)
-				if(!distribute_status)
+				if(!distribute_current_map_png(user))
 					return
 				current_map = get_current_tacmap_data(user, TRUE)
 

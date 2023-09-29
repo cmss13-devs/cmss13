@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 20
+#define SAVEFILE_VERSION_MAX 21
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -80,6 +80,15 @@
 		sound_toggles |= (SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
 		S["toggles_sound"] << sound_toggles
 
+	if(savefile_version < 21)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		if(pref_toggles & TOGGLE_ALTERNATING_DUAL_WIELD)
+			dual_wield_pref = DUAL_WIELD_SWAP
+		else
+			dual_wield_pref = DUAL_WIELD_FIRE
+		S["dual_wield_pref"] << dual_wield_pref
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -125,6 +134,7 @@
 	S["toggles_langchat"] >> toggles_langchat
 	S["toggles_sound"] >> toggles_sound
 	S["toggle_prefs"] >> toggle_prefs
+	S["dual_wield_pref"] >> dual_wield_pref
 	S["toggles_flashing"] >> toggles_flashing
 	S["toggles_ert"] >> toggles_ert
 	S["toggles_admin"] >> toggles_admin
@@ -139,6 +149,7 @@
 	S["fps"] >> fps
 	S["ghost_vision_pref"] >> ghost_vision_pref
 	S["ghost_orbit"] >> ghost_orbit
+	S["auto_observe"] >> auto_observe
 
 	S["human_name_ban"] >> human_name_ban
 
@@ -209,6 +220,7 @@
 	toggles_langchat = sanitize_integer(toggles_langchat, 0, SHORT_REAL_LIMIT, initial(toggles_langchat))
 	toggles_sound = sanitize_integer(toggles_sound, 0, SHORT_REAL_LIMIT, initial(toggles_sound))
 	toggle_prefs = sanitize_integer(toggle_prefs, 0, SHORT_REAL_LIMIT, initial(toggle_prefs))
+	dual_wield_pref = sanitize_integer(dual_wield_pref, 0, 2, initial(dual_wield_pref))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
 	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
 	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
@@ -219,6 +231,7 @@
 	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
+	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
@@ -249,7 +262,7 @@
 	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status = sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
-	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
+	commander_sidearm   = sanitize_inlist(commander_sidearm, (CO_GUNS + COUNCIL_CO_GUNS), initial(commander_sidearm))
 	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
 	yautja_status = sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
@@ -315,6 +328,7 @@
 	S["toggles_langchat"] << toggles_langchat
 	S["toggles_sound"] << toggles_sound
 	S["toggle_prefs"] << toggle_prefs
+	S["dual_wield_pref"] << dual_wield_pref
 	S["toggles_flashing"] << toggles_flashing
 	S["toggles_ert"] << toggles_ert
 	S["toggles_admin"] << toggles_admin
@@ -322,6 +336,7 @@
 	S["fps"] << fps
 	S["ghost_vision_pref"] << ghost_vision_pref
 	S["ghost_orbit"] << ghost_orbit
+	S["auto_observe"] << auto_observe
 
 	S["human_name_ban"] << human_name_ban
 

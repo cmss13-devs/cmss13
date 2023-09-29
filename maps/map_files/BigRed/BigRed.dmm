@@ -16567,8 +16567,8 @@
 	dir = 6
 	},
 /turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+	dir = 1;
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/caves_lambda)
 "aTB" = (
@@ -16576,8 +16576,8 @@
 	dir = 8
 	},
 /turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+	dir = 1;
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/caves_lambda)
 "aTC" = (
@@ -16945,14 +16945,12 @@
 	dir = 9
 	},
 /turf/open/floor{
-	dir = 6;
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/caves_lambda)
 "aUC" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor{
-	dir = 6;
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/caves_lambda)
@@ -29578,6 +29576,13 @@
 	icon_state = "darkblue2"
 	},
 /area/bigredv2/caves/eta/research)
+"gXh" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/caves_lambda)
 "gXp" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6"
@@ -30885,6 +30890,15 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_sw)
+"jNO" = (
+/obj/structure/machinery/sensortower{
+	pixel_x = -9
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/bigredv2/caves_lambda)
 "jOc" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -77158,7 +77172,7 @@ aOn
 aOn
 aOn
 aOn
-aOn
+aTv
 aTA
 aUB
 wQC
@@ -77375,7 +77389,7 @@ gXp
 gXp
 gXp
 gXp
-aSm
+aTw
 aTB
 aUC
 wQC
@@ -77592,9 +77606,9 @@ tQw
 ahw
 tQw
 tQw
-aSn
-gXp
-gXp
+gXh
+aTv
+aMT
 tQw
 tQw
 pIN
@@ -77809,9 +77823,9 @@ tQw
 tQw
 xFZ
 xFZ
-xFZ
-tQw
-tQw
+aSm
+jNO
+aMT
 tQw
 xFZ
 ahy
@@ -78027,8 +78041,8 @@ eFh
 aao
 aao
 aao
-gmN
-xFZ
+aSm
+aMV
 sNQ
 aao
 aao

@@ -51,15 +51,17 @@ export class DrawnMap extends Component {
           width: '100%',
           height: '100%',
         }}>
-        <img
-          src={this.img.src}
-          style={{
-            position: 'absolute',
-            zIndex: 0,
-          }}
-          width={650}
-          height={590}
-        />
+        {this.img && (
+          <img
+            src={this.img.src}
+            style={{
+              position: 'absolute',
+              zIndex: 0,
+            }}
+            width={650}
+            height={590}
+          />
+        )}
         {parsedSvgData && this.state.mapLoad && (
           <svg
             xmlns="http://www.w3.org/2000/svg"

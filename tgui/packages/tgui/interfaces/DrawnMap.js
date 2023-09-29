@@ -13,7 +13,7 @@ export class DrawnMap extends Component {
     this.svg = this.props.svgData;
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.img = new Image();
     this.img.src = this.flatImgSrc;
     this.img.onload = () => {

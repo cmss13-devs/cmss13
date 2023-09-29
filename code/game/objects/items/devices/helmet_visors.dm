@@ -84,6 +84,18 @@
 	name = "advanced medical optic"
 	helmet_overlay = "med_sight_left"
 
+/obj/item/device/helmet_visor/medical/advanced/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	. = ..()
+
+	var/datum/action/item_action/view_publications/publication_action = new(attached_helmet)
+	publication_action.give_to(user)
+
+/obj/item/device/helmet_visor/medical/advanced/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	. = ..()
+
+	var/datum/action/item_action/view_publications/publication_action = locate() in attached_helmet.actions
+	qdel(publication_action)
+
 /obj/item/device/helmet_visor/medical/advanced/can_toggle(mob/living/carbon/human/user)
 	. = ..()
 	if(!.)

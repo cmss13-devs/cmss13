@@ -12,7 +12,7 @@ export class DrawnMap extends Component {
 
   componentDidMount() {
     this.backupImg = new Image();
-    this.backupImg.src = backupImgSrc;
+    this.backupImg.src = this.backupImgSrc;
   }
 
   parseSvgData(svgDataArray) {

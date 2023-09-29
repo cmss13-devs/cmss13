@@ -448,7 +448,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/small
-	name = "S&W revolver (x6 magazines included)"
+	name = "Smith and Wesson revolver (x6 magazines included)"
 	contains = list(
 		/obj/item/weapon/gun/revolver/small,
 		/obj/item/ammo_magazine/revolver/small,

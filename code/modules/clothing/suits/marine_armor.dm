@@ -537,8 +537,24 @@
 	time_to_equip = 1 SECONDS
 	uniform_restricted = null
 
-/obj/item/clothing/suit/storage/marine/light/synvest/vanilla
+/obj/item/clothing/suit/storage/marine/light/synvest/grey
 	icon_state = "VL_syn"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/jungle
+	icon_state = "VL_syn_camo"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/snow
+	icon_state = "s_VL_syn_camo"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/desert
+	icon_state = "d_VL_syn_camo"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/dgrey
+	icon_state = "c_VL_syn_camo"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/heavy
@@ -1033,9 +1049,13 @@
 		/obj/item/tool/lighter,
 		/obj/item/explosive/grenade,
 		/obj/item/storage/bible,
+		/obj/item/tool/crowbar,
+		/obj/item/storage/large_holster/katana,
+		/obj/item/storage/large_holster/machete,
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/attachable/bayonet,
 		/obj/item/device/motiondetector,
+		/obj/item/tool/crew_monitor,
 		/obj/item/device/walkman,
 	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc)
@@ -1490,7 +1510,12 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
 		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)

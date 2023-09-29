@@ -10,7 +10,7 @@ export class DrawnMap extends Component {
     this.backupImg = null;
   }
 
-  onComponentDidMout() {
+  componentDidMount() {
     this.backupImg = new Image();
     this.backupImg.src = backupImgSrc;
   }

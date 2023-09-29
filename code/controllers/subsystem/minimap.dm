@@ -658,7 +658,7 @@ SUBSYSTEM_DEF(minimaps)
 	switch (action)
 		if ("menuSelect")
 			if(params["selection"] == "new canvas")
-				var/distribute_status = distribute_current_map_png(user) // not updating?
+				var/distribute_status = distribute_current_map_png(user)
 				if(!distribute_status)
 					return
 				current_map = get_current_tacmap_data(user, TRUE)

@@ -189,7 +189,7 @@
 
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
-
+/*
 	var/list/hive_xenos = linked_hive.totalXenos
 
 	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
@@ -202,7 +202,7 @@
 	linked_hive.partial_larva += length(hive_xenos) * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
-
+*/
 #undef ENDGAME_LARVA_CAP_MULTIPLIER
 #undef LARVA_ADDITION_MULTIPLIER
 
@@ -251,7 +251,6 @@
 /obj/effect/alien/resin/special/pylon/core/process()
 	. = ..()
 	update_minimap_icon()
-
 	// Handle spawning larva if core is connected to a hive
 	if(linked_hive)
 		for(var/mob/living/carbon/xenomorph/larva/worm in range(2, src))

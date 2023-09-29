@@ -570,9 +570,6 @@ SUBSYSTEM_DEF(minimaps)
 	if(!ui)
 		current_map = get_current_tacmap_data(user, TRUE)
 		current_svg = get_current_tacmap_data(user, FALSE)
-		if(!current_map)
-			distribute_current_map_png(user)
-			current_map = get_current_tacmap_data(user, TRUE)
 
 
 		user.client.register_map_obj(map_holder.map)
@@ -619,6 +616,9 @@ SUBSYSTEM_DEF(minimaps)
 	if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
 		data["canDraw"] = TRUE
 		data["canViewHome"] = TRUE
+		if(!current_map)
+			distribute_current_map_png(user)
+			current_map = get_current_tacmap_data(user, TRUE)
 
 	return data
 
@@ -646,15 +646,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/user = ui.user
 
 	switch (action)
-		if ("menuSelect")
-			if(params["selection"] == "new canvas")
-				distribute_current_map_png(user) // not updating?
-				current_map = get_current_tacmap_data(user, TRUE)
-
-			. = TRUE
-
 		if ("updateCanvas")
 			toolbar_updated_selection = "export"
+			distribute_current_map_png(user)
+			current_map = get_current_tacmap_data(user, TRUE)
 			updated_canvas = TRUE
 			. = TRUE
 

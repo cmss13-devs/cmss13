@@ -89,11 +89,8 @@ export const TacticalMap = (props, context) => {
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
   const PageComponent = PAGES[pageIndex].component();
 
-  const handleTacmapOnClick = (i, pageTitle) => {
+  const handleTacmapOnClick = (i) => {
     setPageIndex(i);
-    act('menuSelect', {
-      selection: pageTitle,
-    });
   };
 
   return (
@@ -117,7 +114,7 @@ export const TacticalMap = (props, context) => {
                       color={data.isXeno ? 'purple' : 'blue'}
                       selected={i === pageIndex}
                       icon={page.icon}
-                      onClick={() => handleTacmapOnClick(i, page.title)}>
+                      onClick={() => handleTacmapOnClick(i)}>
                       {page.title}
                     </Tabs.Tab>
                   );

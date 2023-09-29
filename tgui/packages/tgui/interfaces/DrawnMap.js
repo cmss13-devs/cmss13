@@ -33,8 +33,7 @@ export class DrawnMap extends Component {
           position: 'relative',
           width: '100%',
           height: '100%',
-        }}
-      >
+        }}>
         <img
           src={this.flatImgSrc}
           alt={this.backupImgSrc || 'Please wait for a new tacmap announcement'}
@@ -56,8 +55,7 @@ export class DrawnMap extends Component {
               top: 0,
               left: 0,
               zIndex: 1,
-            }}
-          >
+            }}>
             {parsedSvgData.map((line, index) => (
               <line
                 key={index}

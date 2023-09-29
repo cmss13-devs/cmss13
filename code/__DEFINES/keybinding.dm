@@ -63,6 +63,8 @@
 
 #define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
 
+#define COMSIG_KB_HUMAN_CYCLE_HELMET_HUD "keybinding_human_cycle_helmet_hud"
+
 // Human Combat
 #define COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP "keybinding_human_weapon_fieldstrip"
 #define COMSIG_KB_HUMAN_WEAPON_BURSTFIRE "keybinding_human_weapon_burstfire"

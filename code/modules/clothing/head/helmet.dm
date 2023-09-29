@@ -416,9 +416,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	camera = new /obj/structure/machinery/camera(src)
 	camera.network = list(CAMERA_NET_OVERWATCH)
 
+	for(var/obj/visor as anything in built_in_visors)
+		visor.forceMove(src)
+
 	if(length(inserted_visors) || length(built_in_visors))
 		var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
-		LAZYADD(actions, new_action)
 		if(ishuman(loc))
 			var/mob/living/carbon/human/holding_human = loc
 			if(holding_human.head == src)
@@ -439,6 +441,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	helmet_overlays = null
 	QDEL_NULL(camera)
 	QDEL_NULL(pockets)
+	if(active_visor && istype(loc, /mob/living/carbon/human))
+		var/mob/living/carbon/human/potential_user = loc
+		if(potential_user.head == src)
+			var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
+			active_visor = null
+			toggle_visor(potential_user, temp_visor_holder, TRUE)
 	return ..()
 
 /obj/item/clothing/head/helmet/marine/attack_hand(mob/user)
@@ -494,21 +502,22 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && length(inserted_visors))
+		if(active_visor)
+			var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
+			active_visor = null
+			toggle_visor(user, temp_visor_holder, TRUE)
+
 		for(var/obj/item/device/helmet_visor/visor as anything in inserted_visors)
 			visor.forceMove(get_turf(src))
 
 		inserted_visors = list()
 		to_chat(user, SPAN_NOTICE("You remove the inserted visors."))
-		var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
-		active_visor = null
-		turn_off_visor(user, temp_visor_holder, TRUE)
 
 		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
 		cycle_action.set_default_overlay()
 		if(!length(built_in_visors))
 			cycle_action.remove_from(user)
 
-		recalculate_visors(user)
 		return
 
 	..()
@@ -615,29 +624,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	if(!human_user || human_user.head != src)
 		return
 
-	turn_on_visor(human_user)
+	toggle_visor(user, silent = TRUE)
 
-/// Turns on the current active visor
-/obj/item/clothing/head/helmet/marine/proc/turn_on_visor(mob/user)
-	if(!active_visor)
-		return
+/// Toggles the specified visor, if nothing specified then the active visor, if the visor is the active visor and the helmet is on the user's head it will turn on, if it is not the active visor it will turn off
+/obj/item/clothing/head/helmet/marine/proc/toggle_visor(mob/user, obj/item/device/helmet_visor/current_visor, silent = FALSE)
+	current_visor = current_visor || active_visor
 
-	if(active_visor.can_toggle(user))
-		active_visor.visor_function(src, user)
-
-	playsound_client(user.client, active_visor.toggle_on_sound, null, 75)
-	update_icon()
-
-/// Turns off the specified visor
-/obj/item/clothing/head/helmet/marine/proc/turn_off_visor(mob/user, obj/item/device/helmet_visor/current_visor, sound = FALSE)
 	if(!current_visor)
 		return
 
-	if(current_visor.can_toggle(user))
-		current_visor.visor_function(src, user)
+	current_visor.toggle_visor(src, user, silent)
 
-	if(sound)
-		playsound_client(user.client, current_visor.toggle_off_sound, null, 75)
 	update_icon()
 
 /// Attempts to turn off all visors
@@ -645,8 +642,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/list/total_visors = built_in_visors + inserted_visors
 
 	for(var/obj/item/device/helmet_visor/cycled_helmet_visor in total_visors)
-		if(cycled_helmet_visor.can_toggle(user))
-			cycled_helmet_visor.visor_function(src, user, TRUE)
+		cycled_helmet_visor.deactivate_visor(src, user)
 
 	update_icon()
 
@@ -662,20 +658,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		for(var/hud_type in total_visors)
 			if(hud_type == active_visor)
 				if(length(total_visors) > iterator)
-					turn_off_visor(user, active_visor, FALSE)
 					active_visor = total_visors[(iterator + 1)]
-					recalculate_visors(user)
+					toggle_visor(user, total_visors[iterator], TRUE)
+					toggle_visor(user)
 					return active_visor
 				else
-					turn_off_visor(user, active_visor, TRUE)
 					active_visor = null
-					recalculate_visors(user)
+					toggle_visor(user, total_visors[iterator], FALSE)
 					return FALSE
 			iterator++
 
 	if(total_visors[1])
 		active_visor = total_visors[1]
-		recalculate_visors(user)
+		toggle_visor(user)
 		return active_visor
 
 	active_visor = null
@@ -944,8 +939,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M10 pattern SOF"
 	flags_atom = NO_SNOW_TYPE
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical, new /obj/item/device/helmet_visor/security)
-
+	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider, new /obj/item/device/helmet_visor/security)
+	start_down_visor_type = /obj/item/device/helmet_visor/night_vision/marine_raider
 
 //=============================//PMCS\\==================================\\
 //=======================================================================\\

@@ -74,6 +74,11 @@
 	H.holster_verb(QUICK_EQUIP_QUATERNARY)
 	return TRUE
 
+#undef QUICK_EQUIP_PRIMARY
+#undef QUICK_EQUIP_SECONDARY
+#undef QUICK_EQUIP_TERTIARY
+#undef QUICK_EQUIP_QUATERNARY
+
 /datum/keybinding/human/quick_equip_inventory
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
@@ -209,7 +214,23 @@
 		shown_item.showoff(human_user)
 	return TRUE
 
-#undef QUICK_EQUIP_PRIMARY
-#undef QUICK_EQUIP_SECONDARY
-#undef QUICK_EQUIP_TERTIARY
-#undef QUICK_EQUIP_QUATERNARY
+/datum/keybinding/human/cycle_helmet_hud
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "cycle_helmet_hud"
+	full_name = "Cycle Helmet HUD"
+	keybind_signal = COMSIG_KB_HUMAN_CYCLE_HELMET_HUD
+
+/datum/keybinding/human/cycle_helmet_hud/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+	var/obj/item/clothing/head/helmet/marine/marine_helmet = human_user?.head
+	var/cycled_hud = marine_helmet?.cycle_huds(human_user)
+
+	var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in marine_helmet.actions
+	cycle_action.set_action_overlay(cycled_hud)
+
+	return TRUE

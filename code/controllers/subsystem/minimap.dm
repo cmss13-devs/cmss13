@@ -367,14 +367,16 @@ SUBSYSTEM_DEF(minimaps)
  * flattens the current map and then distributes it based off user faction.
  * Arguments:
  * * user: to determine which faction to distribute to
+ * Return:
+ * * returns a boolean value, true if the operation was successful, false if it was not.
  */
 /datum/tacmap/proc/distribute_current_map_png(mob/user)
 	if(!COOLDOWN_FINISHED(src, flatten_map_cooldown))
-		return
+		return FALSE
 	var/icon/flat_map = getFlatIcon(map_holder.map)
 	if(!flat_map)
 		to_chat(user, SPAN_WARNING("The tacmap filckers and then shuts off, a critical error has occured")) // tf2heavy: "Oh, this is bad!"
-		return
+		return FALSE
 	var/user_faction
 	var/mob/living/carbon/xenomorph/xeno
 	if(isxeno(user))
@@ -390,8 +392,7 @@ SUBSYSTEM_DEF(minimaps)
 			xeno = client_mob
 			if(xeno.hivenumber == user_faction)
 				faction_clients += client
-		else if(client_mob.faction == user_faction) // TODO: not distributing properly, fix.
-			to_chat(user, SPAN_WARNING(client))
+		else if(client_mob.faction == user_faction)
 			faction_clients += client
 	COOLDOWN_START(src, flatten_map_cooldown, flatten_map_cooldown_time)
 	var/flat_tacmap_png = icon2html(flat_map, faction_clients, sourceonly = TRUE)
@@ -401,6 +402,7 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		GLOB.xeno_flat_tacmap_png_asset += new_flat
 	qdel(new_flat)
+	return TRUE
 
 /**
  * globally stores svg coords for a given faction.
@@ -571,7 +573,9 @@ SUBSYSTEM_DEF(minimaps)
 		current_map = get_current_tacmap_data(user, TRUE)
 		current_svg = get_current_tacmap_data(user, FALSE)
 		if(!current_map)
-			distribute_current_map_png(user)
+			var/distribute_status = distribute_current_map_png(user)
+			if(!distribute_status)
+				return
 			current_map = get_current_tacmap_data(user, TRUE)
 
 
@@ -648,7 +652,9 @@ SUBSYSTEM_DEF(minimaps)
 	switch (action)
 		if ("menuSelect")
 			if(params["selection"] == "new canvas")
-				distribute_current_map_png(user) // not updating?
+				var/distribute_status = distribute_current_map_png(user) // not updating?
+				if(!distribute_status)
+					return
 				current_map = get_current_tacmap_data(user, TRUE)
 
 			. = TRUE
@@ -681,14 +687,13 @@ SUBSYSTEM_DEF(minimaps)
 
 		if ("selectAnnouncement")
 
-			if(!istype(params["image"], /list))
+			if(!istype(params["image"], /list)) // potentially very serious?
 				return
 
 			store_current_svg_coords(user, params["image"])
 
 			current_svg = get_current_tacmap_data(user, FALSE)
 
-			toolbar_updated_selection = "export"
 			if(isxeno(user))
 				var/mob/living/carbon/xenomorph/xeno = user
 				xeno_maptext("The Queen has updated your hive mind map", "You sense something unusual...", xeno.hivenumber)
@@ -696,9 +701,9 @@ SUBSYSTEM_DEF(minimaps)
 			else
 				var/mob/living/carbon/human/human_leader = user
 				for(var/datum/squad/current_squad in RoleAuthority.squads)
-					current_squad.send_maptext("Tactical map update in progres...", "Tactical Map:")
+					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
 
-				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progres..."))
+				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
 				COOLDOWN_START(GLOB, uscm_canvas_cooldown, canvas_cooldown_time)
 
 			message_admins("[key_name(user)] has updated the tactical map")

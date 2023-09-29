@@ -355,7 +355,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(asset_type)
 			map_list = GLOB.xeno_flat_tacmap_png_asset
 		else
-			map_list = GLOB.uscm_svg_overlay
+			map_list = GLOB.xeno_svg_overlay
 
 
 	if(map_list.len == 0)
@@ -569,6 +569,7 @@ SUBSYSTEM_DEF(minimaps)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		current_map = get_current_tacmap_data(user, TRUE)
+		current_svg = get_current_tacmap_data(user, FALSE)
 		if(!current_map)
 			distribute_current_map_png(user)
 			current_map = get_current_tacmap_data(user, TRUE)
@@ -607,6 +608,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewHome"] = FALSE
 	data["isXeno"] = FALSE
+	data["currentMapName"] = SSmapping.configs?[GROUND_MAP].map_name
 
 	var/mob/living/carbon/xenomorph/xeno_user
 	if(isxeno(user))
@@ -617,6 +619,16 @@ SUBSYSTEM_DEF(minimaps)
 	if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
 		data["canDraw"] = TRUE
 		data["canViewHome"] = TRUE
+
+	return data
+
+/datum/tacmap/status_tab_view/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["currentMapName"] = SSmapping.configs?[GROUND_MAP].map_name
+	data["canDraw"] = FALSE
+	data["canViewHome"] = FALSE
+	data["isXeno"] = FALSE
 
 	return data
 
@@ -668,33 +680,27 @@ SUBSYSTEM_DEF(minimaps)
 
 		if ("selectAnnouncement")
 
-			if(!params["image"])
+			if(!istype(params["image"], /list))
 				return
-			var/outgoing_message = stripped_multiline_input(user, "Optional message to announce with the tactical map", "Tactical Map Announcement", "")
-			if(!outgoing_message)
-				return
+
 			store_current_svg_coords(user, params["image"])
 
 			current_svg = get_current_tacmap_data(user, FALSE)
 
-			var/signed
-			var/mob/living/carbon/xenomorph/xeno
 			toolbar_updated_selection = "export"
 			if(isxeno(user))
-				xeno = user
-				xeno_announcement(outgoing_message, xeno.hivenumber)
+				var/mob/living/carbon/xenomorph/xeno = user
+				xeno_maptext("The Queen has updated your hive mind map", "You sense something unusual...", xeno.hivenumber)
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, canvas_cooldown_time)
 			else
-				var/mob/living/carbon/human/H = user
-				var/obj/item/card/id/id = H.wear_id
-				if(istype(id))
-					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
-					signed = "[paygrade] [id.registered_name]"
-				marine_announcement(outgoing_message, "Tactical Map Announcement", signature = signed)
+				var/mob/living/carbon/human/human_leader = user
+				for(var/datum/squad/current_squad in RoleAuthority.squads)
+					current_squad.send_maptext("Tactical map update in progres...", "Tactical Map:")
+
+				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progres..."))
 				COOLDOWN_START(GLOB, uscm_canvas_cooldown, canvas_cooldown_time)
 
-			message_admins("[key_name(user)] has made a tactical map announcement.")
-			log_announcement("[key_name(user)] has announced the following: [outgoing_message]")
+			message_admins("[key_name(user)] has updated the tactical map")
 			updated_canvas = FALSE
 			. = TRUE
 

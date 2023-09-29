@@ -29,7 +29,7 @@
 
 	// global tacmap for marines to access through an action button.
 	// dumb implementation for testing, fix later.
-	var/datum/tacmap/uscm_tacmap
+	var/datum/tacmap/status_tab_view/uscm_tacmap
 	GLOB.tacmap_datum = new(uscm_tacmap, minimap_type)
 	return ..()
 

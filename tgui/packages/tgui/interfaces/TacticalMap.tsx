@@ -15,6 +15,7 @@ interface TacMapProps {
   canDraw: number;
   isXeno: boolean;
   flatImage: string;
+  currentMapName: string;
   mapRef: any;
   currentMenu: string;
   worldtime: any;
@@ -50,20 +51,18 @@ const PAGES = [
   },
 ];
 
-const themes = [
-  {
-    'theme': 'default',
-    'button-color': 'black',
-  },
-  {
-    'theme': 'crtblue',
-    'button-color': 'blue',
-  },
-  {
-    'theme': 'xeno',
-    'button-color': 'purple',
-  },
-];
+const mapPngs = {
+  'LV-624': 'https://cm-ss13.com/w/images/6/6f/LV624.png',
+  'Ice Colony': 'https://cm-ss13.com/w/images/1/18/Map_icecolony.png',
+  'Whiskey Outpost': 'https://cm-ss13.com/w/images/7/78/Whiskey_outpost.png',
+  'Solaris Ridge': 'https://cm-ss13.com/w/images/9/9e/Solaris_Ridge.png',
+  'Fiorina Science Annex':
+  'https://cm-ss13.com/w/images/e/e0/Prison_Station_Science_Annex.png',
+  'Trijent Dam': 'https://cm-ss13.com/w/images/9/92/Trijent_Dam.png',
+  'Sorokyne Strata': 'https://cm-ss13.com/w/images/2/21/Sorokyne_Wiki_Map.jpg',
+  'Kutjevo Refinery': 'https://cm-ss13.com/w/images/0/0d/Kutjevo_a1.jpg',
+  "LV-522 Chance's Claim": 'https://cm-ss13.com/w/images/b/bb/C_claim.png',
+};
 
 const colorOptions = [
   'black',
@@ -159,7 +158,11 @@ const OldMapPanel = (props, context) => {
   return (
     <Section fill justify="center" align="center" fontSize="30px">
       {data.flatImage ? (
-        <DrawnMap svgData={data.svgData} flatImage={data.flatImage} />
+        <DrawnMap
+          svgData={data.svgData}
+          flatImage={data.flatImage}
+          backupImage={mapPngs[data.currentMapName]}
+        />
       ) : (
         'Please wait for a new tacmap announcement'
       )}

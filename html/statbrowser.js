@@ -358,6 +358,14 @@ function draw_status() {
 			document
 				.getElementById("statcontent")
 				.appendChild(document.createElement("br"));
+		} else if (
+			// hardcoded for testing purposes .includes() seems to be breaking things for some reason.
+			status_tab_parts[i] ==
+			"<a href='?MapView=1'>Click To View Tactical Map</a>"
+		) {
+			var maplink = document.createElement("a");
+			maplink.innerHTML = status_tab_parts[i];
+			document.getElementById("statcontent").appendChild(maplink);
 		} else {
 			var div = document.createElement("div");
 			div.textContent = status_tab_parts[i];

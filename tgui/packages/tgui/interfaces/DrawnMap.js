@@ -5,7 +5,14 @@ export class DrawnMap extends Component {
     super(props);
     this.containerRef = createRef();
     this.flatImgSrc = this.props.flatImage;
+    this.backupImgSrc = this.props.backupImage;
     this.svg = this.props.svgData;
+    this.backupImg = null;
+  }
+
+  onComponentDidMout() {
+    this.backupImg = new Image();
+    this.backupImg.src = backupImgSrc;
   }
 
   parseSvgData(svgDataArray) {
@@ -35,6 +42,7 @@ export class DrawnMap extends Component {
         }}>
         <img
           src={this.flatImgSrc}
+          alt={this.backupImg}
           style={{
             position: 'absolute',
             zIndex: 0,

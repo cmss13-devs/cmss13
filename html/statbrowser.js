@@ -348,6 +348,8 @@ function draw_debug() {
 	document.getElementById("statcontent").appendChild(table3);
 }
 function draw_status() {
+	const satus_tab_map_href_exception =
+		"<a href='?MapView=1'>Click To View Tactical Map</a>";
 	if (!document.getElementById("Status")) {
 		createStatusTab("Status");
 		current_tab = "Status";
@@ -360,8 +362,7 @@ function draw_status() {
 				.appendChild(document.createElement("br"));
 		} else if (
 			// hardcoded for testing purposes .includes() seems to be breaking things for some reason.
-			status_tab_parts[i] ==
-			"<a href='?MapView=1'>Click To View Tactical Map</a>"
+			status_tab_parts[i] == satus_tab_map_href_exception
 		) {
 			var maplink = document.createElement("a");
 			maplink.innerHTML = status_tab_parts[i];

@@ -80,9 +80,6 @@
 
 	passed = check_disease_pass_clothes(target_zone)
 
-	if(!passed && spread_type == AIRBORNE && !internal)
-		passed = (prob((50*virus.permeability_mod) - 1))
-
 	if(passed)
 		AddDisease(virus)
 
@@ -111,36 +108,39 @@
 
 /mob/living/carbon/human/check_disease_pass_clothes(target_zone)
 	var/obj/item/clothing/Cl
+	var/protection = 0
 	switch(target_zone)
 		if(1)
 			if(isobj(head) && !istype(head, /obj/item/paper))
 				Cl = head
-				. = prob((Cl.permeability_coefficient*100) - 1)
-			if(. && wear_mask)
-				. = prob((Cl.permeability_coefficient*100) - 1)
+				protection += (Cl.permeability_coefficient*100)-100
+			if(isobj(wear_mask))
+				Cl = wear_mask
+				protection += (Cl.permeability_coefficient*100)-100
 		if(2)//arms and legs included
 			if(isobj(wear_suit))
 				Cl = wear_suit
-				. = prob((Cl.permeability_coefficient*100) - 1)
-			if(. && isobj(WEAR_BODY))
+				protection += (Cl.permeability_coefficient*100)-100
+			if(isobj(WEAR_BODY))
 				Cl = WEAR_BODY
-				. = prob((Cl.permeability_coefficient*100) - 1)
+				protection += (Cl.permeability_coefficient*100)-100
 		if(3)
 			if(isobj(wear_suit) && wear_suit.flags_armor_protection & BODY_FLAG_HANDS)
 				Cl = wear_suit
-				. = prob((Cl.permeability_coefficient*100) - 1)
+				protection += (Cl.permeability_coefficient*100)-100
 
-			if(. && isobj(gloves))
+			if(isobj(gloves))
 				Cl = gloves
-				. = prob((Cl.permeability_coefficient*100) - 1)
+				protection += (Cl.permeability_coefficient*100)-100
 		if(4)
 			if(isobj(wear_suit) && wear_suit.flags_armor_protection & BODY_FLAG_FEET)
 				Cl = wear_suit
-				. = prob((Cl.permeability_coefficient*100) - 1)
+				protection += (Cl.permeability_coefficient*100)-100
 
-			if(. && isobj(shoes))
+			if(isobj(shoes))
 				Cl = shoes
-				. = prob((Cl.permeability_coefficient*100) - 1)
+				protection += (Cl.permeability_coefficient*100)-100
 		else
 			to_chat(src, "Something bad happened with disease target zone code, tell a dev or admin ")
+	return prob(clamp(protection, 5, 90))
 

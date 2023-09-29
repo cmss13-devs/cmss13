@@ -123,9 +123,8 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	if(isturf(source.loc))
 		for(var/mob/living/carbon/victim in oview(check_range, source))
 			if(isturf(victim.loc))
-				if(AStar(source.loc, victim.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range) && !locate(src) in victim.viruses)
-					if(get_infection_chance(victim))
-						victim.contract_disease(src, 0, 1, force_spread)
+				if(AStar(source.loc, victim.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range))
+					victim.contract_disease(src, 0, 1, force_spread)
 
 	return
 
@@ -173,23 +172,6 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	if(ishuman(affected_mob))
 		var/mob/living/carbon/human/H = affected_mob
 		H.med_hud_set_status()
-
-/datum/disease/proc/get_infection_chance(mob/living/carbon/human/victim)
-	if(ishuman(victim))
-		var/protection = 0 //Our current credit protection on how good are we protected from any sort of disease.
-		if(istype(victim.wear_mask, /obj/item/clothing/mask/surgical))
-			protection += 30
-		if(istype(victim.gloves, /obj/item/clothing/gloves/latex))
-			protection += 20
-		if(istype(victim.head, /obj/item/clothing/head/bio_hood) && istype(victim.wear_suit, /obj/item/clothing/suit/bio_suit))
-			protection += 80 // biosuit is VERY helpfull
-		else if(istype(victim.head, /obj/item/clothing/head/helmet/space) && istype(victim.wear_suit, /obj/item/clothing/suit/space))
-			protection += 60 // not as usefull but still very helpfull
-		protection = clamp(protection, 5, 95)
-		if(prob(protection))
-			return FALSE
-		return TRUE
-
 
 /datum/disease/New(process=TRUE)//process = 1 - adding the object to global list. List is processed by master controller.
 	cure_list = list(cure_id) // to add more cures, add more vars to this list in the actual disease's New()

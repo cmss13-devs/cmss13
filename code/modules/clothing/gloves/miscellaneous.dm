@@ -46,7 +46,7 @@
 	icon_state = "latex"
 	item_state = "lgloves"
 	siemens_coefficient = 0.30
-	permeability_coefficient = 0.01
+	permeability_coefficient = 0.35
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."

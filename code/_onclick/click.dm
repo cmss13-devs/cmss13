@@ -126,10 +126,11 @@
 	if (!isturf(loc))
 		return
 
-	if (world.time <= next_move && A.loc != src) // Attack click cooldown check
+	if (world.time <= next_move && A.loc != src && src.a_intent != INTENT_GRAB) // Attack click cooldown check
 		return
 
-	next_move = world.time
+	if (src.a_intent != INTENT_GRAB)
+		next_move = world.time
 	// If standing next to the atom clicked.
 	if(A.Adjacent(src))
 		click_adjacent(A, W, mods)
@@ -158,7 +159,8 @@
 			W.afterattack(A, src, 1, mods)
 	else
 		if(!isitem(A) && !issurface(A))
-			next_move += 4
+			if (a_intent != INTENT_GRAB)
+				next_move += 4
 		UnarmedAttack(A, 1, mods)
 
 /mob/proc/check_click_intercept(params,A)

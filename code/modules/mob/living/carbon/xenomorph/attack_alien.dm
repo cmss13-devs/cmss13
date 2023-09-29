@@ -39,6 +39,7 @@
 
 			if(Adjacent(M)) //Logic!
 				M.start_pulling(src)
+				return XENO_NO_DELAY_ACTION
 
 		if(INTENT_HARM)
 			if(M.can_not_harm(src))

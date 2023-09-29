@@ -51,8 +51,8 @@
 	plasma_cost = 100
 	xeno_cooldown = 60 SECONDS
 	var/required_larva = 1
-	var/duration = 8 MINUTES
-	var/to_give = 9
+	var/duration = 10 MINUTES
+	var/to_give = 12
 	var/active = FALSE
 
 /datum/action/xeno_action/onclick/banish

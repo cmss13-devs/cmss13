@@ -23,7 +23,7 @@
 	next_income_timer = RESOURCE_INCOME_TELECOMMS_DELAY / delta_time / 10
 
 	if(tree)
-		tree.on_process(src, delta_time)
+		tree.on_process()
 		tree.add_points(RESOURCE_INCOME_TELECOMMS)
 
 #undef RESOURCE_INCOME_TELECOMMS_DELAY

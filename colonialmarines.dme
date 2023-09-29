@@ -2383,6 +2383,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "fray-marines\code\cm_tech\techs\abstract\powerups_xeno.dm"
 #include "fray-marines\code\cm_tech\techs\abstract\tech_droppod.dm"
 #include "fray-marines\code\cm_tech\techs\abstract\tech_xeno.dm"
+#include "fray-marines\code\cm_tech\techs\abstract\transitory.dm"
 #include "fray-marines\code\cm_tech\techs\marine\tier1\engi_upgrade_mod.dm"
 #include "fray-marines\code\cm_tech\techs\marine\tier1\medic_upgrade_qol.dm"
 #include "fray-marines\code\cm_tech\techs\marine\tier1\mod_armor.dm"

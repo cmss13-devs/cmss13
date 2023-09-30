@@ -569,11 +569,17 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 	reset_tether()
 
+/obj/structure/transmitter/no_dnd
+	do_not_disturb = PHONE_DND_FORBIDDEN
+
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary
 	name = "rotary telephone"
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/rotary/no_dnd
+	do_not_disturb = PHONE_DND_FORBIDDEN
 
 /obj/structure/transmitter/touchtone
 	name = "touch-tone telephone"

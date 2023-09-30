@@ -7816,10 +7816,9 @@
 	pixel_y = 15
 	},
 /obj/structure/machinery/light,
-/obj/structure/transmitter/rotary{
+/obj/structure/transmitter/rotary/no_dnd{
 	name = "Bravo Overwatch Telephone";
 	phone_category = "Command";
-	do_not_disturb = -1;
 	phone_id = "Bravo Overwatch"
 	},
 /obj/structure/sign/safety/terminal{
@@ -8505,11 +8504,10 @@
 	pixel_y = -5;
 	req_one_access_txt = "1;4"
 	},
-/obj/structure/transmitter/rotary{
+/obj/structure/transmitter/rotary/no_dnd{
 	name = "Combat Information Center Telephone";
 	phone_category = "Command";
 	phone_id = "Combat Information Center";
-	do_not_disturb = -1;
 	pixel_x = 5;
 	pixel_y = 4
 	},
@@ -8957,10 +8955,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/transmitter/rotary{
+/obj/structure/transmitter/rotary/no_dnd{
 	name = "Charlie Overwatch Telephone";
 	phone_category = "Command";
-	do_not_disturb = -1;
 	phone_id = "Charlie Overwatch"
 	},
 /obj/structure/sign/safety/terminal{
@@ -34207,10 +34204,9 @@
 	pixel_x = -17;
 	pixel_y = -17
 	},
-/obj/structure/transmitter/rotary{
+/obj/structure/transmitter/rotary/no_dnd{
 	name = "Delta Overwatch Telephone";
 	phone_category = "Command";
-	do_not_disturb = -1;
 	phone_id = "Delta Overwatch"
 	},
 /obj/structure/sign/safety/terminal{
@@ -37369,12 +37365,11 @@
 "gjL" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/crew/alt,
-/obj/structure/transmitter/rotary{
+/obj/structure/transmitter/rotary/no_dnd{
 	name = "Brig Cells Telephone";
 	phone_category = "Almayer";
 	phone_id = "Brig Cells";
 	pixel_x = 15;
-	do_not_disturb = -1
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
@@ -38382,10 +38377,9 @@
 	pixel_x = -17;
 	pixel_y = 16
 	},
-/obj/structure/transmitter/rotary{
+/obj/structure/transmitter/rotary/no_dnd{
 	name = "Alpha Overwatch Telephone";
 	phone_category = "Command";
-	do_not_disturb = -1;
 	phone_id = "Alpha Overwatch"
 	},
 /obj/structure/sign/safety/terminal{
@@ -64480,12 +64474,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "rTY" = (
-/obj/structure/transmitter{
+/obj/structure/transmitter/no_dnd{
 	name = "Requisition Telephone";
 	phone_category = "Almayer";
 	phone_id = "Requisition";
 	pixel_y = 30;
-	do_not_disturb = -1
 	},
 /turf/open/floor/almayer{
 	dir = 5;

@@ -549,6 +549,7 @@ SUBSYSTEM_DEF(minimaps)
 	// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
 
+	// datums for holding both the flattend png asset reference and an svg overlay. It's best to keep them separate with the current implementation imo.
 	var/datum/flattend_tacmap_png/current_map = new
 	var/datum/svg_overlay/current_svg = new
 
@@ -750,7 +751,6 @@ SUBSYSTEM_DEF(minimaps)
 	map = null
 	return ..()
 
-// datums for holding both the flattend png asset reference and an svg overlay. It's best to keep them separate with the current implementation imo.
 /datum/flattend_tacmap_png
 	var/flat_tacmap
 

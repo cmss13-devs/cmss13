@@ -205,6 +205,14 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "USCM beret, tan"
 	path = /obj/item/clothing/head/beret/cm/tan
 
+/datum/gear/headwear/uscm/beret_black
+	display_name = "USCM beret, black"
+	path = /obj/item/clothing/head/beret/cm/black
+
+/datum/gear/headwear/uscm/beret_white
+	display_name = "USCM beret, white"
+	path = /obj/item/clothing/head/beret/cm/white
+
 /datum/gear/headwear/uscm/boonie_olive
 	display_name = "USCM boonie hat, olive"
 	path = /obj/item/clothing/head/cmcap/boonie

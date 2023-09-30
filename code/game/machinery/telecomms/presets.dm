@@ -316,12 +316,12 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(!istype(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/cluster))
 		return
 
-//	if(SSticker.mode.is_in_endgame)
-//		return
+	if(SSticker.mode.is_in_endgame)
+		return
 
-//	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
-//		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME))
-//		return
+	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME))
+		return
 
 	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
 

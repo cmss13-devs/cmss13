@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Join as xeno no longer offers buried larva spawns if there are larva queue candidates"

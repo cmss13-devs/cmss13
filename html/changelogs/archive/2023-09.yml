@@ -443,3 +443,12 @@
   - rscadd: You can now fold a combi-stick using the new "collapse combi-stick" verb
       and/or keybind. Defaults to the space bar.
   - bugfix: Using a Yautja relay beacon now properly decloaks you
+2023-09-30:
+  Drathek:
+  - bugfix: Join as xeno no longer offers buried larva spawns if there are larva queue
+      candidates
+  Huffie56:
+  - refactor: Cleaning specialist.dm file
+  Morrow:
+  - rscdel: Removed more clown gear from maps
+  - bugfix: Fixed taking control of crit xenos

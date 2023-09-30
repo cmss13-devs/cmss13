@@ -551,7 +551,7 @@ DEFINES in setup.dm, referenced here.
 				var/obj/item/clothing/accessory/storage/holster/holster_ammo = accessory
 				if(istype(holster_ammo))
 					var/obj/item/storage/internal/accessory/holster/storage = holster_ammo.hold
-					if(storage.can_be_inserted(active_hand, TRUE))
+					if(storage.can_be_inserted(active_hand, src, stop_messages = TRUE))
 						storage.handle_item_insertion(active_hand, user = src)
 						return
 

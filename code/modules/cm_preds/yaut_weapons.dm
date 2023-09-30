@@ -427,6 +427,14 @@
 /obj/item/weapon/yautja/combistick/IsShield()
 	return on
 
+/obj/item/weapon/yautja/combistick/verb/fold_combistick()
+	set category = "Weapons"
+	set name = "Collapse Combi-stick"
+	set desc = "Collapse or extend the combistick."
+	set src = usr.contents
+
+	unique_action(usr)
+
 /obj/item/weapon/yautja/combistick/attack_self(mob/user)
 	..()
 	if(on)

@@ -344,6 +344,14 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, WEAR_IN_BACK)
 
+/datum/equipment_preset/cmb/liaison/black_market
+	name = "CMB - ICC Liaison - Black Market ERT"
+	skills = /datum/skills/civilian/icc_investigation
+
+/datum/equipment_preset/cmb/liaison/black_market/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST) //Tool belt to open ASRS
+	new_human.equip_to_slot_or_del(new /obj/item/device/cmb_black_market_tradeband, WEAR_IN_BACK) //Tradeband to disable black market
 
 //*****************************************************************************************************/
 
@@ -417,12 +425,6 @@
 /datum/equipment_preset/uscm/cmb/load_status(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.nutrition = rand(NUTRITION_MAX, NUTRITION_NORMAL)
-
-/datum/equipment_preset/uscm/cmb/load_rank(mob/living/carbon/human/new_human)
-	if(new_human.client)
-		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
-			return "ME1"
-	return paygrade
 
 /datum/equipment_preset/uscm/cmb/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)

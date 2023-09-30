@@ -264,7 +264,7 @@
 		current_gun = null
 		update_gun_icon()
 
-/obj/item/storage/pouch/pistol/can_be_inserted(obj/item/W, stop_messages) //A little more detailed than just 'the pouch is full'.
+/obj/item/storage/pouch/pistol/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE) //A little more detailed than just 'the pouch is full'.
 	. = ..()
 	if(!.)
 		return
@@ -328,7 +328,7 @@
 	else if(AM == tablet)
 		tablet = null
 
-/obj/item/storage/pouch/pistol/command/can_be_inserted(obj/item/I, stop_messages)
+/obj/item/storage/pouch/pistol/command/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(!.)
 		return
@@ -791,27 +791,47 @@
 		new /obj/item/reagent_container/syringe(src)
 
 /obj/item/storage/pouch/medkit
-	name = "medkit pouch"
-	max_w_class = SIZE_MEDIUM
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	name = "medical kit pouch"
+	storage_flags = STORAGE_FLAGS_POUCH
 	icon_state = "medkit"
-	desc = "It's specifically made to hold a medkit."
-	can_hold = list(/obj/item/storage/firstaid)
-
-/obj/item/storage/pouch/medkit/handle_mmb_open(mob/user)
-	var/obj/item/storage/firstaid/FA = locate() in contents
-	if(FA)
-		FA.open(user)
-		return
-	return ..()
-
+	desc = "It's specifically made to hold medical items. Requires medical skills to use effectively."
+	storage_slots = 7
+	can_hold_skill = list(
+		/obj/item/device/healthanalyzer = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/dropper = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/pill = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/glass/bottle = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/syringe = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/storage/pill_bottle = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/stack/medical = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/hypospray = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/storage/syringe_case = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/storage/surgical_case = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/surgical_line = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/synthgraft = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/roller = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/bodybag = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+	)
+	can_hold_skill_only = TRUE
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
-	new /obj/item/storage/firstaid/regular(src)
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/medkit/full_advanced/fill_preset_inventory()
-	new /obj/item/storage/firstaid/adv(src)
-
+	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/pressurized_reagent_canister
 	name = "Pressurized Reagent Canister Pouch"
@@ -1032,7 +1052,10 @@
 		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
 		return
 
-	usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
+	var/had_empty_hand = usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
+	if(!had_empty_hand)
+		usr.drop_inv_item_on_ground(inner)
+
 	inner = null
 	update_icon()
 
@@ -1236,7 +1259,7 @@
 	if(slung && slung.loc != src)
 		. += "\The [slung] is attached to the sling."
 
-/obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, stop_messages = FALSE)
+/obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
 	if(slung)
 		if(slung != I)
 			if(!stop_messages)

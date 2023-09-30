@@ -59348,7 +59348,6 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "pLv" = (
-/obj/structure/device/broken_moog,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/almayer{
 	dir = 1;

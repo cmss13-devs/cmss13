@@ -183,7 +183,7 @@
 
 /datum/emergency_call/inspection_cmb/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], This is Anchorpoint Station with the Colonial Marshal Bureau. Be advised, a CMB transport vessel is preparing to board you, submitting Federal docking clearances now. Standby."
+	arrival_message = "[MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. Be advised, a CMB transport vessel is preparing to board you, submitting Federal docking clearances now. Standby."
 	objectives = "Get your instructions from the CMB Office at Anchorpoint Station, and carry out your orders. Ensure that Colonial assets are safe and in your custody. Do not enforce or override Marine Law on a Marine Ship unless requested, as it's outside of your juristiction."
 
 	will_spawn_icc_liaison = prob(90)
@@ -265,7 +265,7 @@
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
 
 /datum/emergency_call/inspection_cmb/black_market
-	name = "Inspection - Colonial Marshal Ledger Investigation Team"
+	name = "Inspection - Colonial Marshals Ledger Investigation Team"
 	mob_max = 3 //Marshal, Deputy, ICC CL
 	mob_min = 2
 	shuttle_id = "Distress_PMC"

@@ -886,10 +886,10 @@
 			return "MO4"
 	return paygrade
 
-/datum/equipment_preset/uscm/marsoc/lowthreat
+/datum/equipment_preset/uscm/marsoc/low_threat
 	name = "Marine Raider"
 
-/datum/equipment_preset/uscm/marsoc/lowthreat/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm/marsoc/low_threat/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/marsoc, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
@@ -928,7 +928,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full, WEAR_R_STORE)
 
-/datum/equipment_preset/uscm/marsoc/lowthreat/sl
+/datum/equipment_preset/uscm/marsoc/low_threat/sl
 	name = "Marine Raider Team Leader"
 	assignment = JOB_MARINE_RAIDER_SL
 	rank = JOB_MARINE_RAIDER_SL

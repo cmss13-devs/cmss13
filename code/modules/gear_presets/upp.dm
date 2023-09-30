@@ -2546,10 +2546,10 @@
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/upp/commando/lowthreat
+/datum/equipment_preset/upp/commando/low_threat
 	name = "UPP Commando"
 
-/datum/equipment_preset/upp/commando/lowthreat/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/commando/low_threat/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/commando, WEAR_JACKET)
@@ -2576,7 +2576,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 8)
 
-/datum/equipment_preset/upp/commando/medic/lowthreat
+/datum/equipment_preset/upp/commando/medic/low_threat
 	name = "UPP Commando Medic"
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/new_human)
@@ -2615,7 +2615,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 5)
 
-/datum/equipment_preset/upp/commando/leader/lowthreat
+/datum/equipment_preset/upp/commando/leader/low_threat
 	name = "UPP Commando Leader"
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/new_human)

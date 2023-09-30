@@ -219,10 +219,10 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/pmc/w_y_whiteout/lowthreat
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat
 	name = "Whiteout Team Operative"
 
-/datum/equipment_preset/pmc/w_y_whiteout/lowthreat/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat/load_gear(mob/living/carbon/human/new_human)
 	// back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/commando, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
@@ -269,10 +269,10 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/pmc/w_y_whiteout/lowthreat/medic
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic
 	name = "Whiteout Team Medic"
 
-/datum/equipment_preset/pmc/w_y_whiteout/lowthreat/medic/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic/load_gear(mob/living/carbon/human/new_human)
 	// back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/commando, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/synth, WEAR_IN_BACK)
@@ -314,10 +314,10 @@
 	var/obj/item/device/internal_implant/agility/implant = new()
 	implant.on_implanted(new_human)
 
-/datum/equipment_preset/pmc/w_y_whiteout/lowthreat/terminator
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat/terminator
 	name = "Whiteout Team Terminator"
 
-/datum/equipment_preset/pmc/w_y_whiteout/lowthreat/terminator/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat/terminator/load_gear(mob/living/carbon/human/new_human)
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
@@ -351,10 +351,10 @@
 	implant.on_implanted(new_human)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/pmc/w_y_whiteout/lowthreat/leader
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader
 	name = "Whiteout Team Leader"
 
-/datum/equipment_preset/pmc/w_y_whiteout/lowthreat/leader/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader/load_gear(mob/living/carbon/human/new_human)
 	// back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/commando, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)

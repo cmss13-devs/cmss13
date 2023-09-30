@@ -583,121 +583,149 @@
 		assigned_squad.change_squad_status(target)
 
 	if(href_list["criminal"])
-		if(hasHUD(usr,"security"))
-			var/modified = 0
-			var/perpref = null
-			if(wear_id)
-				var/obj/item/card/id/I = wear_id.GetID()
-				if(I)
-					perpref = I.registered_ref
+		if(!hasHUD(usr,"security"))
+			return
 
-			if(perpref)
-				for(var/datum/data/record/E in GLOB.data_core.general)
-					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.security)
-							if(R.fields["id"] == E.fields["id"])
+		var/perp_ref = null
+		if(wear_id)
+			var/obj/item/card/id/id = wear_id.GetID()
+			if(id)
+				perp_ref = id.registered_ref
 
-								var/setcriminal = tgui_input_list(usr, "Specify a new criminal status for this person.", "Security HUD", list("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP", "Cancel"))
+		if(!perp_ref)
+			return
 
-								if(hasHUD(usr, "security"))
-									if(setcriminal != "Cancel")
-										R.fields["criminal"] = setcriminal
-										modified = 1
-										sec_hud_set_security_status()
+		var/found = FALSE
+		for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
+			if(general_record.fields["ref"] != perp_ref)
+				continue
 
+			for(var/datum/data/record/security_record as anything in GLOB.data_core.security)
+				if(security_record.fields["id"] != general_record.fields["id"])
+					continue
 
-			if(!modified)
-				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
+				found = TRUE
+				var/setcriminal = tgui_input_list(usr, "Specify a new criminal status for this person.", "Security HUD", WANTED_STATUSES)
+
+				if(!hasHUD(usr, "security") || !setcriminal)
+					return
+
+				security_record.fields["criminal"] = setcriminal
+				sec_hud_set_security_status()
+				break
+
+			if (found)
+				break
+
+		if(!found)
+			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["secrecord"])
-		if(hasHUD(usr,"security"))
-			var/perpref = null
-			var/read = 0
+		if(!hasHUD(usr,"security"))
+			return
 
-			if(wear_id)
-				var/obj/item/card/id/ID = wear_id.GetID()
-				if(istype(ID))
-					perpref = ID.registered_ref
-			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["ref"] == perpref)
-					for(var/datum/data/record/R in GLOB.data_core.security)
-						if(R.fields["id"] == E.fields["id"])
-							if(hasHUD(usr,"security"))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
-								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
-								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
-								read = 1
-
-			if(!read)
-				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
-
-	if(href_list["secrecordComment"] && hasHUD(usr,"security"))
-		var/perpref = null
+		var/perp_ref = null
 		if(wear_id)
-			var/obj/item/card/id/ID = wear_id.GetID()
-			if(istype(ID))
-				perpref = ID.registered_ref
+			var/obj/item/card/id/id = wear_id.GetID()
+			if(id)
+				perp_ref = id.registered_ref
 
-		var/read = 0
+		if (!perp_ref)
+			return
 
-		if(perpref)
-			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["ref"] != perpref)
-					continue
-				for(var/datum/data/record/R in GLOB.data_core.security)
-					if(R.fields["id"] != E.fields["id"])
-						continue
-					read = 1
-					if(!islist(R.fields["comments"]))
-						to_chat(usr, "<br /><b>No comments</b>")
-						continue
-					var/comment_markup = ""
-					for(var/com_i in R.fields["comments"])
-						var/comment = R.fields["comments"][com_i]
-						comment_markup += text("<br /><b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+		var/found = FALSE
+		for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
+			if(general_record.fields["ref"] != perp_ref)
+				continue
+
+			for(var/datum/data/record/security_record as anything in GLOB.data_core.security)
+				if(security_record.fields["id"] != general_record.fields["id"])
+					return
+
+
+				var/text = "<br><b>Name:</b> [security_record.fields["name"]]<br><br><b>Criminal Status:</b> [security_record.fields["criminal"]]<br><br>"
+
+				// List incidents.
+				text += "<b>Incidents:</b><br>"
+				if (length(security_record.fields["incidents"]))
+					for (var/list/incident as anything in security_record.fields["incidents"])
+						for (var/charge in incident["crimes"])
+							text += text("[], ", charge)
+						text = copytext(text, 1, length(text)-1)
+
+						text += text("<br>Summary: []<br><br>", length(incident["summary"]) ? "<i>[SPAN_INFO(incident["summary"])]</i>" : "none")
+				else
+					text += "None<br><br>"
+
+				// List comments.
+				text += "<b>Comments:</b> <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br>"
+				if (length(security_record.fields["comments"]))
+					for(var/list/comment as anything in security_record.fields["comments"])
+						text += text("Author: [] ([]) at []<br>", comment["created_by_name"], comment["created_by_rank"], comment["created_at"])
 						if (isnull(comment["deleted_by"]))
-							comment_markup += text("[]<br />", comment["entry"])
-							continue
-						comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
-					to_chat(usr, comment_markup)
-					to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
+							text += text("<i>[]</i><br><br>", SPAN_INFO(comment["entry"]))
+						else
+							text += text("<i>Comment deleted by [] at []</i><br><br>", comment["deleted_by"], comment["deleted_at"])
+				else
+					text += "None<br><br>"
 
-		if(!read)
+				to_chat(usr, text)
+
+				found = TRUE
+				break
+
+			if (found)
+				break
+
+		if(!found)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["secrecordadd"] && hasHUD(usr,"security"))
-		var/perpref = null
-		if(wear_id)
-			var/obj/item/card/id/ID = wear_id.GetID()
-			if(istype(ID))
-				perpref = ID.registered_ref
+		if(!hasHUD(usr,"security"))
+			return
 
-		if(perpref)
-			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["ref"] != perpref)
+		var/perp_ref = null
+		if(wear_id)
+			var/obj/item/card/id/id = wear_id.GetID()
+			if(id)
+				perp_ref = id.registered_ref
+
+		if(!perp_ref)
+			return
+
+		var/found = FALSE
+		for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
+			if(general_record.fields["ref"] != perp_ref)
+				continue
+			for(var/datum/data/record/security_record as anything in GLOB.data_core.security)
+				if(security_record.fields["id"] != general_record.fields["id"])
 					continue
-				for(var/datum/data/record/R in GLOB.data_core.security)
-					if(R.fields["id"] != E.fields["id"])
-						continue
-					var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)), 1, MAX_MESSAGE_LEN)
-					if(!(t1) || usr.stat || usr.is_mob_restrained())
-						return
-					var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
-					var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
-					if(istype(usr,/mob/living/carbon/human))
-						var/mob/living/carbon/human/U = usr
-						new_comment["created_by"]["name"] = U.get_authentification_name()
-						new_comment["created_by"]["rank"] = U.get_assignment()
-					else if(istype(usr,/mob/living/silicon/robot))
-						var/mob/living/silicon/robot/U = usr
-						new_comment["created_by"]["name"] = U.name
-						new_comment["created_by"]["rank"] = "[U.modtype] [U.braintype]"
-					if(!islist(R.fields["comments"]))
-						R.fields["comments"] = list("1" = new_comment)
-					else
-						var/new_com_i = length(R.fields["comments"]) + 1
-						R.fields["comments"]["[new_com_i]"] = new_comment
-					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+
+				found = TRUE
+				var/input = tgui_input_text(usr, "Your name and time will be added to this new comment.", "Add Comment", multiline = TRUE)
+				if (!input|| usr.stat || usr.is_mob_restrained() || !hasHUD(usr, "security"))
+					return
+				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+				var/new_comment = list("entry" = input, "created_by_name" = "", "created_by_rank" = "", "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
+				if (istype(usr, /mob/living/carbon/human))
+					var/mob/living/carbon/human/human = usr
+					new_comment["created_by_name"] = human.get_authentification_name()
+					new_comment["created_by_rank"] = human.get_assignment()
+				else if (istype(usr, /mob/living/silicon/robot))
+					var/mob/living/silicon/robot/robot = usr
+					new_comment["created_by_name"] = robot.name
+					new_comment["created_by_rank"] = "[robot.modtype] [robot.braintype]"
+
+				security_record.fields["comments"] += list(new_comment)
+
+				to_chat(usr, "You have added a new comment to the Security Record of [security_record.fields["name"]]. <a href='?src=\ref[src];secrecord=1'>\[View Record\]</a>")
+				break
+
+			if (found)
+				break
+
+		if(!found)
+			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["medical"])
 		if(hasHUD(usr,"medical"))

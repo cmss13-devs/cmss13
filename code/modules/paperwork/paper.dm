@@ -894,7 +894,7 @@
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
 
-/obj/item/paper/fingerprint/Initialize(mapload, list/prints)
+/obj/item/paper/fingerprint/Initialize(mapload, photo_list, list/prints)
 	. = ..()
 	var/template = {"\[center\]\[logo\]\[/center\]"}
 

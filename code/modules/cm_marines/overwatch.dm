@@ -662,7 +662,7 @@
 			for(var/datum/data/record/R in GLOB.data_core.security)
 				if(R.fields["id"] == E.fields["id"])
 					if(!findtext(R.fields["ma_crim"],"Insubordination."))
-						R.fields["criminal"] = "*Arrest*"
+						R.fields["criminal"] = WANTED_ARREST
 						if(R.fields["ma_crim"] == "None")
 							R.fields["ma_crim"] = "Insubordination."
 						else

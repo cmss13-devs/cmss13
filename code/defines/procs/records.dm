@@ -4,7 +4,7 @@
 	G.fields["id"] = text("[]", add_zero(num2hex(rand(1, 1.6777215E7)), 6))
 	G.fields["rank"] = "Unassigned"
 	G.fields["real_rank"] = "Unassigned"
-	G.fields["sex"] = "Male"
+	G.fields["sex"] = "male"
 	G.fields["age"] = "Unknown"
 	G.fields["ethnicity"] = "Unknown"
 	G.fields["p_stat"] = "Active"
@@ -22,7 +22,9 @@
 	R.fields["name"] = name
 	R.fields["id"] = id
 	R.name = text("Security Record #[id]")
-	R.fields["incidents"] = "None"
+	R.fields["criminal"] = WANTED_NONE
+	R.fields["incidents"] = list()
+	R.fields["comments"] = list()
 	GLOB.data_core.security += R
 	return R
 

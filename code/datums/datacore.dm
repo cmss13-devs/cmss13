@@ -303,12 +303,13 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	S.fields["id"] = id
 	S.fields["name"] = H.real_name
 	S.fields["criminal"] = "None"
-	S.fields["incident"] = ""
 	S.fields["ref"] = WEAKREF(H)
+	S.fields["incidents"] = list()
+	S.fields["comments"] = list()
+	S.fields["notes"] = list()
 
 	if(H.sec_record && !jobban_isbanned(H, "Records"))
-		var/new_comment = list("entry" = H.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
-		S.fields["comments"] = list("1" = new_comment)
+		S.fields["comments"] += list(list("entry" = H.sec_record, "created_by_name" = "\[REDACTED\]", "created_by_rank" = "Military Police", "created_at" = "Pre-Deployment", "deleted_by" = null, "deleted_at" = null))
 		S.fields["notes"] = H.sec_record
 	security += S
 

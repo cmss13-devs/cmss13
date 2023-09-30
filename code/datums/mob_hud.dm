@@ -611,22 +611,22 @@ var/list/datum/mob_hud/huds = list(
 	for(var/datum/data/record/E in GLOB.data_core.general)
 		if(E.fields["ref"] == perpref)
 			for(var/datum/data/record/R in GLOB.data_core.security)
-				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
+				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == WANTED_ARREST))
 					holder.icon_state = "hudsec_wanted"
 					criminal = TRUE
 					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == WANTED_PRISONER))
 					holder.icon_state = "hudsec_prisoner"
 					criminal = TRUE
 					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == WANTED_RELEASED))
 					holder.icon_state = "hudsec_released"
 					criminal = FALSE
 					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Suspect"))
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == WANTED_SUSPECT))
 					holder.icon_state = "hudsec_suspect"
 					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "NJP"))
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == WANTED_NJP))
 					holder.icon_state = "hudsec_njp"
 					break
 //Squad HUD

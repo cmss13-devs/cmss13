@@ -1,46 +1,321 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/structure/machinery/computer/secure_data//TODO:SANITY
+/obj/structure/machinery/computer/secure_data
 	name = "Security Records"
 	desc = "Used to view and edit personnel's security records"
 	icon_state = "security"
 	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/secure_data
-	var/obj/item/card/id/scan = null
 	var/obj/item/device/clue_scanner/scanner = null
-	var/rank = null
-	var/screen = 1
-	var/datum/data/record/active1 = null
-	var/datum/data/record/active2 = null
-	var/a_id = null
-	var/temp = null
-	var/printing = null
-	var/can_change_id = 0
-	var/list/Perp
-	var/tempname = null
-	//Sorting Variables
-	var/sortBy = "name"
-	var/order = 1 // -1 = Descending - 1 = Ascending
 
-/obj/structure/machinery/computer/secure_data/attackby(obj/item/O as obj, user as mob)
+	// For optimisation, we keep track of the viewed record and only send detailed data for it.
+	var/active_record_ref= null
+	var/datum/data/record/active_record_general = null
+	var/datum/data/record/active_record_security = null
 
-	if(istype(O, /obj/item/device/clue_scanner) && !scanner)
-		var/obj/item/device/clue_scanner/S = O
-		if(!S.print_list)
-			to_chat(user, SPAN_WARNING("There are no prints stored in \the [S]!"))
+/obj/structure/machinery/computer/secure_data/attackby(obj/item/held_object as obj, user as mob)
+	if(istype(held_object, /obj/item/device/clue_scanner) && !scanner)
+		var/obj/item/device/clue_scanner/held_scanner = held_object
+		if(!held_scanner.print_list)
+			to_chat(user, SPAN_WARNING("There are no prints stored in \the [held_scanner]!"))
 			return
 
 		if(usr.drop_held_item())
-			O.forceMove(src)
-			scanner = O
-			to_chat(user, "You insert [O].")
+			held_scanner.forceMove(src)
+			scanner = held_scanner
+			to_chat(user, "You insert [held_scanner].")
+			update_static_data_for_all_viewers()
 
 	..()
 
 /obj/structure/machinery/computer/secure_data/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-//Someone needs to break down the dat += into chunks instead of long ass lines.
+/obj/structure/machinery/computer/secure_data/ui_data(mob/user)
+	var/list/data = list()
+
+	if(isnull(GLOB.data_core.general) || isnull(GLOB.data_core.security))
+		return
+
+	data["active_record"] = list()
+
+	// Get advanced data only for selected record.
+	if (active_record_general)
+		data["active_record"]["name"] = active_record_general.fields["name"]
+		data["active_record"]["ref"] = "\ref[active_record_general]"
+		data["active_record"]["id"] = active_record_general.fields["id"]
+		data["active_record"]["rank"] = active_record_general.fields["rank"]
+		data["active_record"]["squad"] = active_record_general.fields["squad"]
+		data["active_record"]["sex"] = active_record_general.fields["sex"]
+		data["active_record"]["age"] = active_record_general.fields["age"]
+		data["active_record"]["physical_status"] = active_record_general.fields["p_stat"]
+		data["active_record"]["mental_status"] = active_record_general.fields["m_stat"]
+
+	// Get security data, if it exists.
+	if (active_record_security)
+		data["active_record"]["criminal_status"] = active_record_security.fields["criminal"]
+		data["active_record"]["incidents"] = active_record_security.fields["incidents"]
+		data["active_record"]["comments"] = active_record_security.fields["comments"]
+
+	return data
+
+/obj/structure/machinery/computer/secure_data/ui_static_data(mob/user)
+	var/list/data = list()
+
+	if(isnull(GLOB.data_core.general) || isnull(GLOB.data_core.security))
+		return
+
+	data["wanted_statuses"] = WANTED_STATUSES
+	data["records"] = list()
+
+	// Get basic data from every record.
+	for(var/datum/data/record/record_general_data as anything in GLOB.data_core.general)
+		var/crew_member = list()
+
+		crew_member["name"] = record_general_data.fields["name"]
+		crew_member["ref"] = "\ref[record_general_data]"
+		crew_member["rank"] = record_general_data.fields["rank"]
+
+		for(var/datum/data/record/record_security_data as anything in GLOB.data_core.security)
+			if (record_security_data.fields["id"] == record_general_data.fields["id"])
+				crew_member["criminal_status"] = record_security_data.fields["criminal"]
+				break
+
+		data["records"] += list(crew_member)
+
+	// If a fingerprint scanner is inserted, load the prints.
+	data["prints"] = list()
+	if (scanner)
+		for(var/obj/effect/decal/prints/prints as anything in scanner.print_list)
+			var/list/print = list()
+
+			print["name"] = prints.criminal_name
+			print["desc"] = prints.description
+
+			if(prints.criminal_squad)
+				print["squad"] = prints.criminal_squad
+
+			if(prints.criminal_rank)
+				print["rank"] = prints.criminal_rank
+
+			data["prints"] += list(print)
+
+	return data
+
+/obj/structure/machinery/computer/secure_data/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	playsound(src, "keyboard", 15, 1)
+
+	switch(action)
+		if ("new_general_record")
+			set_active_record_general(CreateGeneralRecord())
+			set_active_record_security(null)
+			update_static_data_for_all_viewers()
+
+		if ("new_security_record")
+			if (istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
+				return
+
+			set_active_record_security(CreateSecurityRecord(active_record_general.fields["name"], active_record_general.fields["id"]))
+
+		if ("delete_security_record")
+			if (!istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
+				return
+
+			GLOB.data_core.security -= active_record_security
+			qdel(active_record_security)
+
+			var/mob_gid = hex2num(active_record_general.fields["id"])
+			for(var/mob/living/carbon/human/human as anything in GLOB.human_mob_list)
+				if (human.gid == mob_gid)
+					human.sec_hud_set_security_status()
+					break
+
+		if ("delete_all_security_records")
+			for(var/datum/data/record/record as anything in GLOB.data_core.security)
+				GLOB.data_core.security -= record
+				qdel(record)
+
+			for(var/mob/living/carbon/human/human as anything in GLOB.human_mob_list)
+				human.sec_hud_set_security_status()
+
+		if ("set_active_record")
+			var/datum/data/record/general_record = locate(params["ref"])
+			if (!istype(general_record))
+				return
+
+			set_active_record_general(general_record)
+			set_active_record_security(null)
+
+			// Get active security record, if one exists.
+			for(var/datum/data/record/security_record as anything in GLOB.data_core.security)
+				if (security_record.fields["id"] == general_record.fields["id"])
+					set_active_record_security(security_record)
+					break
+
+		if ("edit_name")
+			if (!sanity_check(params["ref"]))
+				return
+
+			var/sanitised_name = reject_bad_name(tgui_input_text(usr, "Enter a new name", "New Name", active_record_general.fields["name"]))
+			if (!sanitised_name || !sanity_check(params["ref"]))
+				return
+
+			message_admins("[key_name(usr)] has changed the record name of [active_record_general.fields["name"]] to [sanitised_name]")
+			active_record_general.fields["name"] = sanitised_name
+
+		if("toggle_sex")
+			if (!sanity_check(params["ref"]))
+				return
+
+			if (active_record_general.fields["sex"] == "male")
+				active_record_general.fields["sex"] = "female"
+			else
+				active_record_general.fields["sex"] = "male"
+
+		if("edit_age")
+			if (!sanity_check(params["ref"]))
+				return
+
+			// New records have a string in their age field which will break this input.
+			var/default_age = active_record_general.fields["age"] == "Unknown" ? 0 : active_record_general.fields["age"]
+
+			var/input = tgui_input_number(usr, "Enter a new age", "New Age", default_age, AGE_MAX, AGE_MIN)
+			if (!input || !sanity_check(params["ref"]))
+				return
+
+			active_record_general.fields["age"] = input
+
+		if ("set_criminal_status")
+			if (!istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
+				return
+
+			var/new_wanted_status = params["new_status"]
+			if(!new_wanted_status || !(new_wanted_status in WANTED_STATUSES))
+				return
+
+			active_record_security.fields["criminal"] = new_wanted_status
+
+			var/mob_gid = hex2num(active_record_general.fields["id"])
+			for(var/mob/living/carbon/human/human as anything in GLOB.human_mob_list)
+				if (human.gid == mob_gid)
+					human.sec_hud_set_security_status()
+					break
+
+		if ("add_comment")
+			if (!istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
+				return
+
+			var/input = tgui_input_text(usr, "Your name and time will be added to this new comment", "New Comment", multiline = TRUE)
+			if (!input || !istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
+				return
+
+			var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+
+			var/created_by_name = ""
+			var/created_by_rank = ""
+			if(istype(usr, /mob/living/carbon/human))
+				var/mob/living/carbon/human/human = usr
+				created_by_name = human.get_authentification_name()
+				created_by_rank = human.get_assignment()
+			else if(istype(usr, /mob/living/silicon/robot))
+				var/mob/living/silicon/robot/robot = usr
+				created_by_name = robot.name
+				created_by_rank = "[robot.modtype] [robot.braintype]"
+
+			var/new_comment = list(
+				"entry" = input,
+				"created_by_name" = created_by_name,
+				"created_by_rank" = created_by_rank,
+				"created_at" = created_at,
+				"deleted_by" = null,
+				"deleted_at" = null
+			)
+
+			active_record_security.fields["comments"] += list(new_comment)
+
+			to_chat(usr, text("You have added a new comment to the Security Record of [].", active_record_security.fields["name"]))
+
+		if("edit_comment")
+			if (!istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
+				return
+
+			var/old_content = active_record_security.fields["comments"][params["comment_id"]]["entry"]
+			var/new_comment = tgui_input_text(usr, "Edit the comment", "Edit Comment", html_decode(old_content), multiline = TRUE)
+			if (!new_comment || !istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
+				return
+
+			active_record_security.fields["comments"][params["comment_id"]]["entry"] = new_comment
+
+		if("delete_comment")
+			if (!active_record_security || !sanity_check(params["ref"]))
+				return
+
+			var/deleter = ""
+			if (istype(usr, /mob/living/carbon/human))
+				var/mob/living/carbon/human/human = usr
+				deleter = "[human.get_authentification_name()] ([human.get_assignment()])"
+			else if (istype(usr, /mob/living/silicon/robot))
+				var/mob/living/silicon/robot/robot = usr
+				deleter = "[robot.name] ([robot.modtype] [robot.braintype])"
+
+			var/deleted_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+
+			active_record_security.fields["comments"][params["comment_id"]]["deleted_by"] = deleter
+			active_record_security.fields["comments"][params["comment_id"]]["deleted_at"] = deleted_at
+
+			to_chat(usr, text("You have deleted a comment from the Security Record of [].", active_record_security.fields["name"]))
+
+		if ("print_active_record")
+			if (!istype(active_record_general, /datum/data/record))
+				return
+
+			print_active_record()
+
+		if ("eject_fingerprint_scanner")
+			if (!scanner)
+				return
+
+			scanner.forceMove(get_turf(src))
+			scanner = null
+			update_static_data_for_all_viewers()
+
+		if ("print_fingerprint_report")
+			if (!scanner || !length(scanner.print_list))
+				return
+
+			var/obj/item/paper/fingerprint/print_paper = new /obj/item/paper/fingerprint(src, null, scanner.print_list)
+			print_paper.forceMove(loc)
+			var/refkey = ""
+			for(var/obj/effect/decal/prints/print as anything in scanner.print_list)
+				refkey += print.criminal_name
+			print_paper.name = "fingerprint report ([md5(refkey)])"
+			playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
+
+		if ("wipe_fingerprint_scanner")
+			if (!scanner || !length(scanner.print_list))
+				return
+
+			QDEL_NULL_LIST(scanner.print_list)
+			scanner.update_icon()
+			scanner.forceMove(get_turf(src))
+			scanner = null
+			update_static_data_for_all_viewers()
+
+	add_fingerprint(usr)
+	updateUsrDialog()
+	. = TRUE
+
+/obj/structure/machinery/computer/secure_data/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SecurityRecords", "Security Records")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
 /obj/structure/machinery/computer/secure_data/attack_hand(mob/user as mob)
 	if(..() || inoperable())
 		to_chat(user, SPAN_INFO("It does not appear to be working."))
@@ -53,505 +328,115 @@
 	if(!is_mainship_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
 		return
-	var/dat
 
-	if (temp)
-		dat = text("<TT>[]</TT><BR><BR><A href='?src=\ref[];choice=Clear Screen'>Clear Screen</A>", temp, src)
-	else
-		switch(screen)
-			if(1.0)
-				dat += {"
-<p style='text-align:center;'>"}
-				dat += text("<A href='?src=\ref[];choice=Search Records'>Search Records</A><BR>", src)
-				dat += text("<A href='?src=\ref[];choice=New Record (General)'>New Record</A><BR>", src)
-				if(scanner)
-					dat += text("<A href='?src=\ref[];choice=read_fingerprint'>Read Fingerprint</A><BR>", src)
-				dat += {"
-</p>
-<table style="text-align:center;" cellspacing="0" width="100%">
-<tr>
-<th>Records:</th>
-</tr>
-</table>
-<table style="text-align:center;" border="1" cellspacing="0" width="100%">
-<tr>
-<th><A href='?src=\ref[src];choice=Sorting;sort=name'>Name</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=id'>ID</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=rank'>Rank</A></th>
-<th>Criminal Status</th>
-</tr>"}
-				if(!isnull(GLOB.data_core.general))
-					for(var/datum/data/record/R in sortRecord(GLOB.data_core.general, sortBy, order))
-						var/crimstat = ""
-						for(var/datum/data/record/E in GLOB.data_core.security)
-							if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
-								crimstat = E.fields["criminal"]
-						var/background
-						switch(crimstat)
-							if("*Arrest*")
-								background = "'background-color:#990c28;'"
-							if("Incarcerated")
-								background = "'background-color:#a16832;'"
-							if("Released")
-								background = "'background-color:#2981b3;'"
-							if("Suspect")
-								background = "'background-color:#008743;'"
-							if("NJP")
-								background = "'background-color:#faa20a;'"
-							if("None")
-								background = "'background-color:#008743;'"
-							if("")
-								background = "'background-color:#FFFFFF;'"
-								crimstat = "No Record."
-						dat += text("<tr style=[]><td><A href='?src=\ref[];choice=Browse Record;d_rec=\ref[]'>[]</a></td>", background, src, R, R.fields["name"])
-						dat += text("<td>[]</td>", R.fields["id"])
-						dat += text("<td>[]</td>", R.fields["rank"])
-						dat += text("<td>[]</td></tr>", crimstat)
-					dat += "</table><hr width='75%' />"
-				dat += text("<A href='?src=\ref[];choice=Record Maintenance'>Record Maintenance</A><br><br>", src)
-			if(2.0)
-				dat += "<B>Records Maintenance</B><HR>"
-				dat += "<BR><A href='?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='?src=\ref[src];choice=Return'>Back</A>"
-			if(3.0)
-				dat += "<CENTER><B>Security Record</B></CENTER><BR>"
-				if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
-					dat += text("<table><tr><td> \
-					Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
-					ID: [active1.fields["id"]]<BR>\n \
-					Sex: <A href='?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
-					Age: <A href='?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
-					Rank: <A href='?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
-					Physical Status: [active1.fields["p_stat"]]<BR>\n \
-					Mental Status: [active1.fields["m_stat"]]<BR></td> \
-					<td align = center valign = top>Photo:<br> \
-					<table><td align = center><img src=front.png height=80 width=80 border=4><BR><A href='?src=\ref[src];choice=Edit Field;field=photo front'>Update front photo</A></td> \
-					<td align = center><img src=side.png height=80 width=80 border=4><BR><A href='?src=\ref[src];choice=Edit Field;field=photo side'>Update side photo</A></td></table> \
-					</td></tr></table>")
-				else
-					dat += "<B>General Record Lost!</B><BR>"
-				if ((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
-					dat += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n \
-								Criminal Status: <A href='?src=\ref[];choice=Edit Field;field=criminal'>[]</A><BR> \n \
-								Incidents: [active2.fields["incident"]]<BR>\n \
-								\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", \
-								src, active2.fields["criminal"])
-					if(islist(active2.fields["comments"]))
-						var/counter = 1
-						for(var/com_i in active2.fields["comments"])
-							var/comment = active2.fields["comments"][com_i]
-							var/comment_markup = text("<b>[] / [] ([])</b>\n", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
-							if (isnull(comment["deleted_by"]))
-								comment_markup += text("<a href='?src=\ref[];choice=Delete Entry;del_c=[]'>Delete comment</a>", src, counter)
-								comment_markup += text("<br />[]", comment["entry"])
-							else
-								comment_markup += text("<br /><i>Comment deleted by [] at []</i>", comment["deleted_by"], comment["deleted_at"])
-							counter++
-							dat += "[comment_markup]<br /><br />"
-					else
-						dat += "No comments<br><br>"
-					dat += text("<a href='?src=\ref[];choice=Add Entry'>Add comment</a><br /><br />", src)
-				else
-					dat += "<B>Security Record Lost!</B><BR>"
-					dat += text("<A href='?src=\ref[];choice=New Record (Security)'>New Security Record</A><BR><BR>", src)
-				dat += text("\n<A href='?src=\ref[];choice=Print Record'>Print Record</A><BR>\n<A href='?src=\ref[];choice=Return'>Back</A><BR>", src, src)
-			if(4.0)
-				if(!Perp.len)
-					dat += text("ERROR.  String could not be located.<br><br><A href='?src=\ref[];choice=Return'>Back</A>", src)
-				else
-					dat += {"
-<table style="text-align:center;" cellspacing="0" width="100%">
-<tr> "}
-					dat += text("<th>Search Results for '[]':</th>", tempname)
-					dat += {"
-</tr>
-</table>
-<table style="text-align:center;" border="1" cellspacing="0" width="100%">
-<tr>
-<th>Name</th>
-<th>ID</th>
-<th>Rank</th>
-<th>Criminal Status</th>
-</tr> "}
-					for(var/i=1, i<=Perp.len, i += 2)
-						var/crimstat = ""
-						var/datum/data/record/R = Perp[i]
-						if(istype(Perp[i+1],/datum/data/record/))
-							var/datum/data/record/E = Perp[i+1]
-							crimstat = E.fields["criminal"]
-						var/background
-						switch(crimstat)
-							if("*Arrest*")
-								background = "'background-color:#BB1133;'"
-							if("Incarcerated")
-								background = "'background-color:#B6732F;'"
-							if("Released")
-								background = "'background-color:#3BB9FF;'"
-							if("Suspect")
-								background = "'background-color:#1AAFFF;'"
-							if("NJP")
-								background = "'background-color:#faa20a;'"
-							if("None")
-								background = "'background-color:#1AAFFF;'"
-							if("")
-								background = ""
-								crimstat = "No Record."
-						dat += text("<tr style=[]><td><A href='?src=\ref[];choice=Browse Record;d_rec=\ref[]'>[]</a></td>", background, src, R, R.fields["name"])
-						dat += text("<td>[]</td>", R.fields["id"])
-						dat += text("<td>[]</td>", R.fields["rank"])
-						dat += text("<td>[]</td></tr>", crimstat)
-					dat += "</table><hr width='75%' />"
-					dat += text("<br><A href='?src=\ref[];choice=Return'>Return to index.</A>", src)
-			if(5)
-				dat += generate_fingerprint_menu()
-
-	show_browser(user, dat, "Security Records", "secure_rec", "size=600x400")
-	return
-
-/*Revised /N
-I can't be bothered to look more of the actual code outside of switch but that probably needs revising too.
-What a mess.*/
-/obj/structure/machinery/computer/secure_data/Topic(href, href_list)
-	if(..())
-		return
-	if (!( GLOB.data_core.general.Find(active1) ))
-		active1 = null
-	if (!( GLOB.data_core.security.Find(active2) ))
-		active2 = null
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (ishighersilicon(usr)))
-		usr.set_interaction(src)
-		switch(href_list["choice"])
-// SORTING!
-			if("Sorting")
-				// Reverse the order if clicked twice
-				if(sortBy == href_list["sort"])
-					if(order == 1)
-						order = -1
-					else
-						order = 1
-				else
-				// New sorting order!
-					sortBy = href_list["sort"]
-					order = initial(order)
-//BASIC FUNCTIONS
-			if("Clear Screen")
-				temp = null
-
-			if ("Return")
-				screen = 1
-				active1 = null
-				active2 = null
-
-			if("read_fingerprint")
-				screen = 5
-
-			if("print_report")
-				var/obj/item/paper/fingerprint/P = new /obj/item/paper/fingerprint(src, scanner.print_list)
-				P.forceMove(loc)
-				var/refkey = ""
-				for(var/obj/effect/decal/prints/print in scanner.print_list)
-					refkey += print.criminal_name
-				P.name = "fingerprint report ([md5(refkey)])"
-				playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
-
-			if("return_menu")
-				screen = 1
-
-			if("return_clear")
-				QDEL_NULL_LIST(scanner.print_list)
-				scanner.update_icon()
-				scanner.forceMove(get_turf(src))
-				scanner = null
-				screen = 1
-
-//RECORD FUNCTIONS
-			if("Search Records")
-				var/t1 = input("Search String: (Partial Name or ID or Rank)", "Secure. records", null, null)  as text
-				if ((!t1 || usr.stat || usr.is_mob_restrained() || !in_range(src, usr)))
-					return
-				Perp = new/list()
-				t1 = lowertext(t1)
-				var/list/components = splittext(t1, " ")
-				if(components.len > 5)
-					return //Lets not let them search too greedily.
-				for(var/datum/data/record/R in GLOB.data_core.general)
-					var/temptext = R.fields["name"] + " " + R.fields["id"] + " " + R.fields["rank"]
-					for(var/i = 1, i<=components.len, i++)
-						if(findtext(temptext,components[i]))
-							var/prelist = new/list(2)
-							prelist[1] = R
-							Perp += prelist
-				for(var/i = 1, i<=Perp.len, i+=2)
-					for(var/datum/data/record/E in GLOB.data_core.security)
-						var/datum/data/record/R = Perp[i]
-						if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
-							Perp[i+1] = E
-				tempname = t1
-				screen = 4
-
-			if("Record Maintenance")
-				screen = 2
-				active1 = null
-				active2 = null
-
-			if ("Browse Record")
-				var/datum/data/record/R = locate(href_list["d_rec"])
-				var/S = locate(href_list["d_rec"])
-				if (!( GLOB.data_core.general.Find(R) ))
-					temp = "Record Not Found!"
-				else
-					for(var/datum/data/record/E in GLOB.data_core.security)
-						if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
-							S = E
-					active1 = R
-					active2 = S
-					screen = 3
-
-
-			if ("Print Record")
-				if (!( printing ))
-					printing = 1
-					var/datum/data/record/record1 = null
-					var/datum/data/record/record2 = null
-					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
-						record1 = active1
-					if ((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
-						record2 = active2
-					sleep(50)
-					var/obj/item/paper/P = new /obj/item/paper( loc )
-					P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
-					if (record1)
-						P.info += text("Name: []<br />\nID: []<br />\nSex: []<br />\nAge: []<br />\nRank: []<br />\nPhysical Status: []<br />\nMental Status: []<br />Criminal Status: []<br />", record1.fields["name"], record1.fields["id"], record1.fields["sex"], record1.fields["age"], record1.fields["rank"], record1.fields["p_stat"], record1.fields["m_stat"], record2.fields["criminal"])
-						P.name = text("Security Record ([])", record1.fields["name"])
-					else
-						P.info += "<b>General Record Lost!</b><br />"
-						P.name = "Security Record"
-					if (record2)
-						P.info += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nIncidents: [record2.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>")
-						if(islist(record2.fields["comments"]) || length(record2.fields["comments"]) > 0)
-							for(var/com_i in record2.fields["comments"])
-								var/comment = record2.fields["comments"][com_i]
-								var/comment_markup = text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
-								if (isnull(comment["deleted_by"]))
-									comment_markup += comment["entry"]
-								else
-									comment_markup += text("<i>Comment deleted by [] at []</i>", comment["deleted_by"], comment["deleted_at"])
-								P.info += "[comment_markup]<br /><br />"
-						else
-							P.info += text("<b>No comments</b><br />")
-					else
-						P.info += "<B>Security Record Lost!</B><BR>"
-					P.info += "</TT>"
-					printing = null
-					updateUsrDialog()
-//RECORD DELETE
-			if ("Delete All Records")
-				temp = ""
-				temp += "Are you sure you wish to delete all Security records?<br>"
-				temp += "<a href='?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
-				temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
-
-			if ("Purge All Records")
-				for(var/datum/data/record/R in GLOB.data_core.security)
-					GLOB.data_core.security -= R
-					qdel(R)
-				temp = "All Security records deleted."
-
-			if ("Add Entry")
-				if (!(istype(active2, /datum/data/record)))
-					return
-				var/a2 = active2
-				var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
-				if((!t1 || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!ishighersilicon(usr))) || active2 != a2))
-					return
-				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
-				var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
-				if(istype(usr,/mob/living/carbon/human))
-					var/mob/living/carbon/human/U = usr
-					new_comment["created_by"] = list("name" = U.get_authentification_name(), "rank" = U.get_assignment())
-				else if(istype(usr,/mob/living/silicon/robot))
-					var/mob/living/silicon/robot/U = usr
-					new_comment["created_by"] = list("name" = U.name, "rank" = "[U.modtype] [U.braintype]")
-				if(!islist(active2.fields["comments"]))
-					active2.fields["comments"] = list("1" = new_comment)
-				else
-					var/new_com_i = length(active2.fields["comments"]) + 1
-					active2.fields["comments"]["[new_com_i]"] = new_comment
-				to_chat(usr, text("You have added a new comment to the Security Record of [].", active2.fields["name"]))
-
-			if ("Delete Entry")
-				if(!islist(active2.fields["comments"]))
-					return
-				if(active2.fields["comments"][href_list["del_c"]])
-					var/updated_comments = active2.fields["comments"]
-					var/deleter = ""
-					if(istype(usr,/mob/living/carbon/human))
-						var/mob/living/carbon/human/U = usr
-						deleter = "[U.get_authentification_name()] ([U.get_assignment()])"
-					else if(istype(usr,/mob/living/silicon/robot))
-						var/mob/living/silicon/robot/U = usr
-						deleter = "[U.name] ([U.modtype] [U.braintype])"
-					updated_comments[href_list["del_c"]]["deleted_by"] = deleter
-					updated_comments[href_list["del_c"]]["deleted_at"] = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
-					active2.fields["comments"] = updated_comments
-					to_chat(usr, text("You have deleted a comment from the Security Record of [].", active2.fields["name"]))
-//RECORD CREATE
-			if ("New Record (Security)")
-				if ((istype(active1, /datum/data/record) && !( istype(active2, /datum/data/record) )))
-					active2 = CreateSecurityRecord(active1.fields["name"], active1.fields["id"])
-					screen = 3
-
-			if ("New Record (General)")
-				active1 = CreateGeneralRecord()
-				active2 = null
-
-//FIELD FUNCTIONS
-			if ("Edit Field")
-				if (is_not_allowed(usr))
-					return
-				var/a1 = active1
-				switch(href_list["field"])
-					if("name")
-						if (istype(active1, /datum/data/record))
-							var/t1 = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
-							if (!t1 || active1 != a1)
-								return
-							message_admins("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
-							active1.fields["name"] = t1
-					if("sex")
-						if (istype(active1, /datum/data/record))
-							if (active1.fields["sex"] == "Male")
-								active1.fields["sex"] = "Female"
-							else
-								active1.fields["sex"] = "Male"
-					if("age")
-						if (istype(active1, /datum/data/record))
-							var/t1 = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
-							if (!t1 || active1 != a1)
-								return
-							active1.fields["age"] = t1
-					if("criminal")
-						if (istype(active2, /datum/data/record))
-							temp = "<h5>Criminal Status:</h5>"
-							temp += "<ul>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=none'>None</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=arrest'>*Arrest*</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=incarcerated'>Incarcerated</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=released'>Released</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=suspect'>Suspect</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=njp'>NJP</a></li>"
-							temp += "</ul>"
-					if("rank")
-						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if (istype(active1, /datum/data/record) && GLOB.highcom_paygrades.Find(rank))
-							temp = "<h5>Occupation:</h5>"
-							temp += "<ul>"
-							for(var/rank in GLOB.joblist)
-								temp += "<li><a href='?src=\ref[src];choice=Change Occupation;rank=[rank]'>[rank]</a></li>"
-							temp += "</ul>"
-						else
-							alert(usr, "You do not have the required rank to do this!")
-					if("species")
-						if (istype(active1, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active1 != a1)
-								return
-							active1.fields["species"] = t1
-
-
-//TEMPORARY MENU FUNCTIONS
-			else//To properly clear as per clear screen.
-				temp=null
-				switch(href_list["choice"])
-					if ("Change Rank")
-						if (active1)
-							active1.fields["rank"] = href_list["rank"]
-							if(href_list["rank"] in GLOB.joblist)
-								active1.fields["real_rank"] = href_list["real_rank"]
-
-					if ("Change Criminal Status")
-						if (active2)
-							switch(href_list["criminal2"])
-								if("none")
-									active2.fields["criminal"] = "None"
-								if("arrest")
-									active2.fields["criminal"] = "*Arrest*"
-								if("incarcerated")
-									active2.fields["criminal"] = "Incarcerated"
-								if("released")
-									active2.fields["criminal"] = "Released"
-								if("suspect")
-									active2.fields["criminal"] = "Suspect"
-								if("njp")
-									active2.fields["criminal"] = "NJP"
-
-							for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-								H.sec_hud_set_security_status()
-
-	add_fingerprint(usr)
-	updateUsrDialog()
-	return
-
-/obj/structure/machinery/computer/secure_data/proc/generate_fingerprint_menu()
-	var/dat = ""
-
-	for(var/obj/effect/decal/prints/prints in scanner.print_list)
-		dat += "<table><tr><td>"
-		dat += "Name: [prints.criminal_name]<BR>"
-		if(prints.criminal_squad)
-			dat += "Squad: [prints.criminal_squad]<BR>"
-		if(prints.criminal_rank)
-			dat += "Rank: [prints.criminal_rank]<BR>"
-		dat += "Description: [prints.description]<BR><hr><BR>"
-		dat += "</td></tr></table>"
-
-	dat += "<a href='?src=\ref[src];choice=print_report'>Print Evidence</a><BR>"
-	dat += "<a href='?src=\ref[src];choice=return_menu'>Return</a><BR>"
-	dat += "<a href='?src=\ref[src];choice=return_clear'>Clear Print and Return</a>"
-
-	return dat
-
-/obj/structure/machinery/computer/secure_data/proc/is_not_allowed(mob/user)
-	return user.stat || user.is_mob_restrained() || (!in_range(src, user) && (!ishighersilicon(user)))
-
-/obj/structure/machinery/computer/secure_data/proc/get_photo(mob/user)
-	if(istype(user.get_active_hand(), /obj/item/photo))
-		var/obj/item/photo/photo = user.get_active_hand()
-		return photo.img
-	if(ishighersilicon(user))
-		var/mob/living/silicon/tempAI = usr
-		var/datum/picture/selection = tempAI.GetPicture()
-		if (selection)
-			return selection.fields["img"]
+	tgui_interact(user)
 
 /obj/structure/machinery/computer/secure_data/emp_act(severity)
 	if(inoperable())
 		..(severity)
 		return
 
-	for(var/datum/data/record/R in GLOB.data_core.security)
-		if(prob(10/severity))
-			switch(rand(1,6))
+	for(var/datum/data/record/record as anything in GLOB.data_core.security)
+		if(prob(10 / severity))
+			switch(rand(1, 6))
 				if(1)
-					R.fields["name"] = "[pick(pick(first_names_male), pick(first_names_female))] [pick(last_names)]"
+					record.fields["name"] = "[pick(pick(first_names_male), pick(first_names_female))] [pick(last_names)]"
 				if(2)
-					R.fields["sex"] = pick("Male", "Female")
+					record.fields["sex"] = pick("male", "female")
 				if(3)
-					R.fields["age"] = rand(5, 85)
+					record.fields["age"] = rand(5, 85)
 				if(4)
-					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
+					record.fields["criminal"] = pick(WANTED_STATUSES)
 				if(5)
-					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
+					record.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
 				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					record.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
 			continue
 
 		else if(prob(1))
-			GLOB.data_core.security -= R
-			qdel(R)
+			GLOB.data_core.security -= record
+			qdel(record)
 			continue
 
 	..(severity)
 
-/obj/structure/machinery/computer/secure_data/detective_computer
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "messyfiles"
+/obj/structure/machinery/computer/secure_data/proc/print_active_record()
+	var/obj/item/paper/paper = new /obj/item/paper(loc)
+	paper.name = text("Security Record ([])", active_record_general.fields["name"])
+	paper.info = "<CENTER><B>Security Record</B></CENTER><BR>"
+	paper.info += text("Name: []<br />\nID: []<br />\nSex: []<br />\nAge: []<br />\nRank: []<br />\nPhysical Status: []<br />\nMental Status: []<br />", active_record_general.fields["name"], active_record_general.fields["id"], active_record_general.fields["sex"], active_record_general.fields["age"], active_record_general.fields["rank"], active_record_general.fields["p_stat"], active_record_general.fields["m_stat"])
+
+	if (istype(active_record_security, /datum/data/record))
+		paper.info += text("Criminal Status: []<br />", active_record_security.fields["criminal"])
+
+		paper.info += text("<BR>\n<CENTER><B>Incidents</B></CENTER><BR>\n")
+
+		if (length(active_record_security.fields["incidents"]))
+			var/incident_index = 0
+			for (var/list/incident as anything in active_record_security.fields["incidents"])
+				incident_index++
+
+				paper.info += text("<b>Incident []:</b><br />", incident_index)
+
+				for (var/charge in incident["crimes"])
+					paper.info += text("[]<br />", charge)
+
+				paper.info += text("<b>Notes:</b> <i>[]</i><br /><br />", incident["summary"])
+		else
+			paper.info += text("No incidents<br />")
+
+		paper.info += text("<CENTER><B>Comments</B></CENTER><BR>\n")
+		if (length(active_record_security.fields["comments"]))
+			for (var/list/comment as anything in active_record_security.fields["comments"])
+				paper.info += text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by_name"], comment["created_by_rank"])
+				if (isnull(comment["deleted_by"]))
+					paper.info += comment["entry"]
+				else
+					paper.info += text("<i>Comment deleted by [] at []</i>", comment["deleted_by"], comment["deleted_at"])
+				paper.info += "<br /><br />"
+		else
+			paper.info += text("No comments<br />")
+
+	else
+		paper.info += "<br /><B>Security Record Lost!</B><BR>"
+	paper.info += "</TT>"
+
+	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
+	updateUsrDialog()
+
+/obj/structure/machinery/computer/secure_data/proc/set_active_record_general(datum/data/record/record)
+	if (active_record_general)
+		UnregisterSignal(active_record_general, COMSIG_PARENT_QDELETING)
+
+	active_record_general = record
+	active_record_ref = null
+
+	if (active_record_general)
+		active_record_ref = "\ref[active_record_general]"
+		RegisterSignal(active_record_general, COMSIG_PARENT_QDELETING, PROC_REF(clean_active_record_general))
+
+/obj/structure/machinery/computer/secure_data/proc/set_active_record_security(datum/data/record/record)
+	if (active_record_security)
+		UnregisterSignal(active_record_security, COMSIG_PARENT_QDELETING)
+
+	active_record_security = record
+
+	if (active_record_security)
+		RegisterSignal(active_record_security, COMSIG_PARENT_QDELETING, PROC_REF(clean_active_record_security))
+
+// Handle record deletion.
+/obj/structure/machinery/computer/secure_data/proc/clean_active_record_general()
+	SIGNAL_HANDLER
+	active_record_general = null
+	active_record_ref = null
+	update_static_data_for_all_viewers()
+
+// Handle record deletion.
+/obj/structure/machinery/computer/secure_data/proc/clean_active_record_security()
+	SIGNAL_HANDLER
+	active_record_security = null
+	update_static_data_for_all_viewers()
+
+// Check a record is still loaded, and it is the same one the player is referencing.
+/obj/structure/machinery/computer/secure_data/proc/sanity_check(ref)
+	return (active_record_ref && active_record_ref == ref)

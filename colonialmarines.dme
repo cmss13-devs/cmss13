@@ -89,6 +89,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\__DEFINES\radio.dm"
 #include "code\__DEFINES\redis.dm"
 #include "code\__DEFINES\regex.dm"
+#include "code\__DEFINES\security.dm"
 #include "code\__DEFINES\sentry_laptop_configurations.dm"
 #include "code\__DEFINES\shuttles.dm"
 #include "code\__DEFINES\skills.dm"

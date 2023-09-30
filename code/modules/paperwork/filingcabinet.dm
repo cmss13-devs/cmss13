@@ -99,30 +99,39 @@
  * Security Record Cabinets
  */
 /obj/structure/filingcabinet/security
-	var/virgin = 1
+	var/virgin = TRUE
 
 
 /obj/structure/filingcabinet/security/proc/populate()
-	if(virgin)
-		for(var/datum/data/record/G in GLOB.data_core.general)
-			var/datum/data/record/S
-			for(var/datum/data/record/R in GLOB.data_core.security)
-				if((R.fields["name"] == G.fields["name"] || R.fields["id"] == G.fields["id"]))
-					S = R
-					break
-			if(S)
-				var/obj/item/paper/P = new /obj/item/paper(src)
-				P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
-				P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
-				P.info += "<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: [S.fields["criminal"]]<BR>\n<BR>\nIncidents: [S.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
-				var/counter = 1
-				while(S.fields["com_[counter]"])
-					P.info += "[S.fields["com_[counter]"]]<BR>"
-					counter++
-				P.info += "</TT>"
-				P.name = "Security Record ([G.fields["name"]])"
-			virgin = 0 //tabbing here is correct- it's possible for people to try and use it
-						//before the records have been generated, so we do this inside the loop.
+	if(!virgin)
+		return
+	virgin = FALSE
+
+	for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
+		var/datum/data/record/security_record
+
+		// Find security record, if it exists.
+		for(var/datum/data/record/record as anything in GLOB.data_core.security)
+			if((record.fields["name"] == general_record.fields["name"] || record.fields["id"] == general_record.fields["id"]))
+				security_record = record
+				break
+
+		if(!security_record)
+			continue
+
+		var/obj/item/paper/paper = new /obj/item/paper(src)
+		paper.name = "Security Record ([general_record.fields["name"]])"
+		paper.info = "<CENTER><B>Security Record</B></CENTER><BR>"
+		paper.info += "Name: [general_record.fields["name"]] ID: [general_record.fields["id"]]<BR>\nSex: [general_record.fields["sex"]]<BR>\nAge: [general_record.fields["age"]]<BR>\nPhysical Status: [general_record.fields["p_stat"]]<BR>\nMental Status: [general_record.fields["m_stat"]]<BR>"
+		paper.info += "<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: [security_record.fields["criminal"]]<BR>\n<BR>\nIncidents: None<BR>\n<BR>\n<CENTER><B>Comments: </B></CENTER><BR>"
+
+		if (!length(security_record.fields["comments"]) || security_record.fields["comments"][1]["created_at"] != "Pre-Deployment")
+			paper.info += text("None")
+			continue
+
+		// Only get the round-start comment, if there is one.
+		var/list/comment = security_record.fields["comments"][1]
+		paper.info += text("<b>[] / [] ([])</b><br />[]<br /><br />", comment["created_at"], comment["created_by_name"], comment["created_by_rank"], comment["entry"])
 
 /obj/structure/filingcabinet/security/attack_hand()
 	populate()

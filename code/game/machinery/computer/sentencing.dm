@@ -201,9 +201,11 @@
 			if (R.fields["id"] == incident.criminal_gid)
 				var/datum/data/record/found_record = R
 
-				found_record.fields["incident"] += "<BR> \
-												Crime: [incident.charges_to_string()].<BR> \
-												Notes: [incident.notes].<BR>"
+				var/list/charge_list = list()
+				for(var/datum/law/L in incident.charges)
+					charge_list += L.name
+
+				found_record.fields["incidents"] += list(list("crimes" = charge_list, "summary" = incident.notes))
 
 				break
 

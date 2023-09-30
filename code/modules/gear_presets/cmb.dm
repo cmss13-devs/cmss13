@@ -426,12 +426,6 @@
 	. = ..()
 	new_human.nutrition = rand(NUTRITION_MAX, NUTRITION_NORMAL)
 
-/datum/equipment_preset/uscm/cmb/load_rank(mob/living/carbon/human/new_human)
-	if(new_human.client)
-		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
-			return "ME1"
-	return paygrade
-
 /datum/equipment_preset/uscm/cmb/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)

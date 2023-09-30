@@ -134,13 +134,13 @@
 	if(hud_shown)
 		if(R.module_state_1)
 			R.module_state_1.screen_loc = ui_robot_datum.ui_inv1
-			R.client.screen += R.module_state_1
+			R.client.add_to_screen(R.module_state_1)
 		if(R.module_state_2)
 			R.module_state_2.screen_loc = ui_robot_datum.ui_inv2
-			R.client.screen += R.module_state_2
+			R.client.add_to_screen(R.module_state_2)
 		if(R.module_state_3)
 			R.module_state_3.screen_loc = ui_robot_datum.ui_inv3
-			R.client.screen += R.module_state_3
+			R.client.add_to_screen(R.module_state_3)
 	else
 		if(R.module_state_1)
 			R.module_state_1.screen_loc = null

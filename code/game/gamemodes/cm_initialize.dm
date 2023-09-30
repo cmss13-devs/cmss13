@@ -356,17 +356,21 @@ Additional game mode variables.
 		else
 			available_xenos_non_ssd += cur_xeno
 
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time)))
-			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
-				available_xenos |= "any buried larva"
-				LAZYADD(available_xenos["any buried larva"], hive)
-			else
-				var/larva_option = "buried larva ([hive])"
-				available_xenos += larva_option
-				available_xenos[larva_option] = list(hive)
+	// Only offer buried larva if there is no queue:
+	// This basically means this block of code will almost never execute, because we are instead relying on the hive cores/larva pops to handle their larva
+	// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
+	if(GLOB.xeno_queue_candidate_count < 1)
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
+			if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time)))
+				if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
+					available_xenos |= "any buried larva"
+					LAZYADD(available_xenos["any buried larva"], hive)
+				else
+					var/larva_option = "buried larva ([hive])"
+					available_xenos += larva_option
+					available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
 		if(!xeno_candidate.client || !xeno_candidate.client.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
@@ -444,6 +448,10 @@ Additional game mode variables.
 
 		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
+			return FALSE
+
+		if(new_xeno.health <= 0)
+			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is in critical condition or unconscious."))
 			return FALSE
 
 		if(!xeno_bypass_timer)

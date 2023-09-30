@@ -233,3 +233,222 @@
   - rscdel: Disables Shivas Snowball
   Private Tristan:
   - spellcheck: acid runners are now properly informed of their corrosive acid's strength.
+2023-09-19:
+  Hopek:
+  - rscadd: 'New facehugger strain:  Watcher. The Watcher loses their ability to hide
+      in exchange to see further and the ability to no longer take damage outside
+      of weeds.'
+  c4xmaniac2:
+  - balance: Moved 1/3 of all intel into the cave systems.
+  - maptweak: 1/3 of all Intel has been redistributed into the caves.
+  - maptweak: Nightmare inserts on the colony side and in the caves of LV now have
+      their intel distribution standardized.
+  realforest2001:
+  - bugfix: Fixes the CMB tradeband scanner not being able to do it's job.
+2023-09-20:
+  BeagleGaming1:
+  - rscadd: Uncommented the "Observe" verb for ghosts, allowing ghosts to see from
+      a humans HUD
+  Huffie56:
+  - balance: made it so that req as double what a standard vendor as in ammo and guns.
+  Morrow:
+  - balance: Removed some PMC gear on maps
+  SpartanBobby, GSDPathe:
+  - maptweak: Changes to LV522 loot table surrounding metal spawns
+  - maptweak: Redectorates areas around LV522 that were underwhelming before
+  TheGamerdk, ihatethisengine:
+  - rscadd: IOs start in their own squad now
+  c4xmaniac2:
+  - mapadd: Readds yard to Science Annex
+  - maptweak: Redid the yard loot to be more in line with current surv loot standards.
+2023-09-21:
+  SubjectD9341:
+  - imageadd: added the icons for the new biosuits
+  - imagedel: removed the icons for the old biosuits
+  realforest2001:
+  - bugfix: Fixes the overwrite mark prompt on admin tickets not respecting closing
+      the confirmation prompt.
+2023-09-22:
+  Huffie56:
+  - qol: reorganize and update all the squads vendors to add new categories(helmet
+      optics, pamphlets, clothing items).
+  - balance: remove hostler because it was available for free(for medic, squad-tl,.
+  - balance: added possibility to buy M4 Pattern Armor for rifleman.
+  - balance: added possibility to buy USCM Radio Telephone Pack for squad medic, engi
+      and specialist.
+  - balance: added possibility to buy Welding Visor for medic, SL, rifleman, smartgunner
+      and specialist.
+  Morrow:
+  - balance: Removed eggs off hive weeds for egg sac carrier
+  - balance: Backpacks can now only fit first aid kits if you have medical skill and
+      toolkits if you have engineering skill
+  - balance: G8-A can no longer fit first aid kits or toolkits
+  - balance: Toolbelt now has 10 slots and can fit more engineer related items
+  - balance: Combat toolbelt now has 9 slots and can fit small ammo and engineer related
+      items
+  - balance: M276 medical rig belt no longer holds ammo
+  - balance: Plastic bag removed from normal play
+  - balance: First aid kits can now only hold medical items
+  - balance: Toolkits have been renamed to engineer kits and can only hold engineering
+      items (not tools)
+  - balance: Welding tool buffed to 40 welder fuel
+  - balance: Larger welding tools removed from normal play
+  - rscadd: Electrical toolbox now has an APC circuitboard
+  - balance: Medical pouch removed in req and various job vendors
+  - balance: Machete pouch, large pouches, and autoinjector pouch scales reduced in
+      req
+  - balance: medkit pouch has been renamed to medical kit pouch and can hold 7 medical
+      items, only usable if you have medic skill
+  Morrow, DrLance (sprites):
+  - rscadd: Added the Mateba Special as a choice for COs
+  Waseemq1235:
+  - rscadd: Added HEAP F903 magazines. Does NOT spawn with the ERT presets. ADMIN
+      SPAWN ONLY.
+  - imageadd: Added F903 ammo band icons.
+2023-09-23:
+  Morrow:
+  - bugfix: Fixed intel squad "Unauthorized access detected"
+  realforest2001:
+  - rscadd: Gives survivors bank accounts.
+2023-09-24:
+  BeagleGaming1:
+  - admin: Disabling round end delay has a confirmation
+  - rscadd: Added a mapping effect for prop guns
+  Morrow:
+  - bugfix: Fixed drag-n-drop nesting opening
+  Steelpoint:
+  - rscadd: Intel Officers will now default to using the Intel radio channel when
+      communicating.
+  Sylphily:
+  - rscadd: Added the ability for the IMP Ammo Rack to hold folding barricades.
+  Zonespace27:
+  - balance: Specialists now have separate pools of points for ammo and utility.
+2023-09-25:
+  Steelpoint:
+  - rscadd: Synthetics may now vend biohazard suits for personal use. Synth compliant.
+  Zonespace27:
+  - balance: Cloaked mobs no longer give off visible messages
+  c4xmaniac2:
+  - balance: Comms areas around the east/west rivers expanded for easier sieges and
+      weedable now.
+  - maptweak: LV Comms now always spawn in Tcomms and one either on the east or west
+      river
+2023-09-27:
+  CapCamIII:
+  - rscadd: Adds upp presets for the unused officer ranks, Kapitan, Lt Kolonel, MajGen,
+      LtGen, Gen, for use in admin events
+  - rscadd: Changes UPP conscript rank from weird conscript only rank to Private,
+      moves UPP soldier to PFC, removing the rank gap between soldier and support
+  - code_imp: Cleans up UPP rank code by deleting redundant ranks
+  CapCamIII, AmoryBlaine:
+  - rscadd: Adds new service uniform sprite that is standard across maps, sprites
+      by AmoryBlaine
+  - rscadd: Resprites old dress uniform, renames it, adds to XO vendor as a uniform
+      choice as it fits there now, sprites by AmoryBlaine
+  - rscadd: Adds new uniform, command boiler suit like gorman wears in the movie,
+      available in SO locker, SO vendor, XO vendor, CO vendor, sprites by AmoryBlaine
+  - rscadd: Adds new brown versions of gloves and boot to custom loadout, also lowers
+      the price of jungle boots to two, sprites by AmoryBlaine
+  - rscadd: Seperates officer cap and RO cap, officers get officer cap, QM gets RO
+      cap, CTs get req cap, sprites once again by AmoryBlaine
+  - rscadd: UPP boots and gloves use the new brown sprite, as it fits their color
+      scheme and looks cool.
+  - bugfix: Freelancer leader now spawns with a knife in their boots
+  - imageadd: Resprites patrol cap, officer cap, SEA cap, standard black boot, standard
+      black glove, and formal gloves, sprites by AmoryBlaine
+  Casper:
+  - bugfix: fixed reagent canister being deleted if ejected with your hands full
+  - bugfix: fixed cigarette punctuation error
+  Drathek:
+  - bugfix: Fix dead huggers converting to non-player huggers
+  Git-Nivrak:
+  - bugfix: Fixes no fire delay on m56d in semi-auto and burst fire
+  HeresKozmos:
+  - mapadd: added 9 new tunnels to trijent dam
+  - mapadd: added 9 new tunnels to Fiorina SciAnnex
+  Morrow:
+  - bugfix: Fixed a bug with akimbo firing
+  - rscdel: Removed alpha egg on LV522
+  - rscadd: Added a save-able preference for auto-observe
+  - bugfix: Fixed numerous problems with HUD observer mode
+  - code_imp: Created a wrapper for client screen changes
+  - code_imp: Made check contents less horrendous
+  Steelpoint:
+  - mapadd: Sensor Towers have been added to all maps.
+  - rscadd: UPP survivor radio role identifiers now have a shorter title.
+  - rscadd: UPP survivors now default to using a players preferred name instead of
+      a random UPP name.
+  TeDGamer:
+  - balance: All trained+ engineer skill levels affect duration now.
+  - balance: Removed double skill duration multiplier for m56d's.
+  TheGamerdk:
+  - bugfix: Adding marines to intel squad broke the crew manifest
+  Zonespace27:
+  - bugfix: HEFA Knights now spawn with their armor again
+  - balance: HEFA Knights now spawn with 2 HEFA in their helmets
+  - admin: Added skillless subtype of the m707
+  - balance: Lowered vulture spotted/unspotted drift from 33/100 to 25/90
+  - balance: Lowered vulture scope adjust/move time from 0.5/1.0s to 0.4/0.8s
+  - balance: Vulture bipod anchors user in place
+  bostonthebear:
+  - rscadd: Changes pilot officer timelock from 5 hours as squad marine to 2 hours
+      as DCC
+  realforest2001:
+  - balance: Adds an extra 75% damage and hive interference to plasma rifle vs xenos.
+2023-09-28:
+  Casper:
+  - bugfix: fixed S&W black market crate not working
+  - bugfix: fixed flashlights showing incorrect sprite state
+  Steelpoint:
+  - rscadd: Alert message regarding Pylon construction around a communications array
+      now properly emphasizes why it is a threat to Marines, and a benefit to Xenos.
+  TheGamerdk:
+  - qol: You can no longer doom yourself by joining as a crit xeno
+2023-09-29:
+  BeagleGaming1:
+  - bugfix: Whiskey Outpost ground map vote works correctly
+  - config: Removed unnecessary config
+  Ben10083:
+  - soundadd: Multiple new Working Joe voicelines added
+  Casper:
+  - bugfix: fixed cameras going invisible on wire cut
+  Huffie56:
+  - refactor: divide preset into different file for each map.
+  Morrow:
+  - qol: '"Do nothing" dual wield preference'
+  QuickLode:
+  - rscdel: removed Pvts from Anchorpoint QRF (rip)
+  - spellcheck: fixed a typo in CMB call-in
+  - rscadd: Allows ext webbing to hold firearms.
+  - bugfix: exosuits which can hold scabbards can hold similar scabbards(ie, machete
+      and katana)
+  - rscdel: Removes ext webbing from SO Locker
+  SpartanBobby:
+  - maptweak: CL now spawns in a hypersleep bay "Passenger Bay" it's right next to
+      his office, the CC spawns with him too since his landmark was in the latejoin
+      bay on the lowerdeck
+  - maptweak: re-arranged PO bunks should allow for better traffic in and out
+  - maptweak: fixed symmetry issue in north-south CIC hallway
+  - maptweak: minor warning stripe decal additions around Almayer
+  Steelpoint:
+  - rscadd: Synthetic equipment vendor now can vend fuel cannisters and all colour
+      variants of the synthetic utility vest.
+  - rscadd: Synthetic cosmetic vendor now can vend all colour variants of the standard
+      Marine helmet, MP and Combat Technician uniforms, the welder chestrig and security
+      hud glasses.
+  Zonespace27:
+  - bugfix: Picking up a dropped pred bracer will no longer leave it stuck to your
+      hand.
+  - bugfix: Yautja can no longer mark xenoes as honorable
+  - rscadd: You can now fold a combi-stick using the new "collapse combi-stick" verb
+      and/or keybind. Defaults to the space bar.
+  - bugfix: Using a Yautja relay beacon now properly decloaks you
+2023-09-30:
+  Drathek:
+  - bugfix: Join as xeno no longer offers buried larva spawns if there are larva queue
+      candidates
+  Huffie56:
+  - refactor: Cleaning specialist.dm file
+  Morrow:
+  - rscdel: Removed more clown gear from maps
+  - bugfix: Fixed taking control of crit xenos

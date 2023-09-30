@@ -27,6 +27,13 @@
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
 
+	var/obj/limb/surgery_limb = target.get_limb(target_zone)
+	if(surgery_limb)
+		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
+		if(blocker)
+			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+			return
+
 	if(user.action_busy) //already doing an action
 		return FALSE
 
@@ -129,6 +136,12 @@
 
 		if(surgeryinstance.lying_required && !target.lying)
 			return TRUE
+
+		if(surgery_limb)
+			var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
+			if(blocker)
+				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+				return
 
 		if(affecting)
 			if(surgeryinstance.requires_bodypart)

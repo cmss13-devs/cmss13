@@ -45,13 +45,12 @@
 			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
 				targets.Remove(H)
 
-		var/datum/ares_datacore/datacore = GLOB.ares_datacore
 		if(ares_can_log())
 			switch(logging)
 				if(ARES_LOG_MAIN)
-					datacore.log_ares_announcement(title, message)
+					log_ares_announcement(title, message)
 				if(ARES_LOG_SECURITY)
-					datacore.log_ares_security(title, message)
+					log_ares_security(title, message)
 
 	else if(faction_to_display == "Everyone (-Yautja)")
 		for(var/mob/M in targets)
@@ -98,13 +97,12 @@
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
 
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	if(ares_can_log())
 		switch(logging)
 			if(ARES_LOG_MAIN)
-				datacore.log_ares_announcement("[MAIN_AI_SYSTEM] Comms Update", message)
+				log_ares_announcement("[MAIN_AI_SYSTEM] Comms Update", message)
 			if(ARES_LOG_SECURITY)
-				datacore.log_ares_security("[MAIN_AI_SYSTEM] Security Update", message)
+				log_ares_security("[MAIN_AI_SYSTEM] Security Update", message)
 
 /proc/ai_silent_announcement(message, channel_prefix, bypass_cooldown = FALSE)
 	if(!message)
@@ -135,9 +133,8 @@
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	if(ares_can_log())
-		datacore.log_ares_announcement(title, message)
+		log_ares_announcement(title, message)
 
 	announcement_helper(message, title, targets, sound_to_play)
 
@@ -150,9 +147,8 @@
 		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
 			targets.Remove(T)
 
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	if(ares_can_log())
-		datacore.log_ares_announcement("[title] Shipwide Update", message)
+		log_ares_announcement("[title] Shipwide Update", message)
 
 	announcement_helper(message, title, targets, sound_to_play)
 

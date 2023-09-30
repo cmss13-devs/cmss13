@@ -65,7 +65,6 @@
 	if(..()) return FALSE
 
 	usr.set_interaction(src)
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	switch(href_list["operation"])
 		if("mapview")
 			tacmap.tgui_interact(usr)
@@ -150,7 +149,7 @@
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
 				if(ares_can_log())
-					datacore.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
+					log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
 				return TRUE
 
 			state = STATE_EVACUATION
@@ -171,7 +170,7 @@
 				log_game("[key_name(usr)] has canceled the emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
 				if(ares_can_log())
-					datacore.log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
+					log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
 				return TRUE
 
 			state = STATE_EVACUATION_CANCEL

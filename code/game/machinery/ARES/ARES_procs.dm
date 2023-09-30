@@ -90,26 +90,33 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return FALSE
 	datacore.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
 
-/datum/ares_datacore/proc/log_ares_bioscan(title, input)
-	records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
+/proc/log_ares_bioscan(title, input)
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
-/datum/ares_datacore/proc/log_ares_bombardment(user_name, ob_name, coordinates)
-	records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user_name))
+/proc/log_ares_bombardment(user_name, ob_name, coordinates)
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user_name))
 
-/datum/ares_datacore/proc/log_ares_announcement(title, message)
-	records_announcement.Add(new /datum/ares_record/announcement(title, message))
+/proc/log_ares_announcement(title, message)
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_announcement.Add(new /datum/ares_record/announcement(title, message))
 
-/datum/ares_datacore/proc/log_ares_requisition(source, details, user_name)
-	records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user_name))
+/proc/log_ares_requisition(source, details, user_name)
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user_name))
 
-/datum/ares_datacore/proc/log_ares_security(title, details)
-	records_security.Add(new /datum/ares_record/security(title, details))
+/proc/log_ares_security(title, details)
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_security.Add(new /datum/ares_record/security(title, details))
 
-/datum/ares_datacore/proc/log_ares_antiair(details)
-	records_security.Add(new /datum/ares_record/security/antiair(details))
+/proc/log_ares_antiair(details)
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_security.Add(new /datum/ares_record/security/antiair(details))
 
-/datum/ares_datacore/proc/log_ares_flight(user_name, details)
-	records_flight.Add(new /datum/ares_record/flight(details, user_name))
+/proc/log_ares_flight(user_name, details)
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_flight.Add(new /datum/ares_record/flight(details, user_name))
 // ------ End ARES Logging Procs ------ //
 
 /proc/ares_apollo_talk(broadcast_message)

@@ -102,9 +102,8 @@
 		automated_launch = FALSE
 	automated_launch_timer = TIMER_ID_NULL
 	ai_silent_announcement("Dropship '[name]' departing.")
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	if(ares_can_log())
-		datacore.log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
+		log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
 
 
 /*

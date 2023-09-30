@@ -124,9 +124,8 @@
 				// Tell the marines where the last one is.
 				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
-				var/datum/ares_datacore/datacore = GLOB.ares_datacore
 				if(ares_can_log())
-					datacore.log_ares_bioscan(name, input)
+					log_ares_bioscan(name, input)
 				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 				// Tell the xeno she is the last one.
 				if(X.client)

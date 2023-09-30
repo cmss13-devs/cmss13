@@ -212,9 +212,6 @@
 		visible_message(SPAN_DANGER("\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]"))
 	else
 		visible_message(SPAN_DANGER("\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]"))
-	var/damage = W.force
-	if(W.w_class < SIZE_LARGE || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
-		damage /= 4
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 

@@ -75,6 +75,12 @@
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
 
+/obj/item/clothing/head/beret/cm/white
+	icon_state = "s_beret"
+
+/obj/item/clothing/head/beret/cm/black
+	icon_state = "beret_black"
+
 /obj/item/clothing/head/beret/cm/squadberet
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."

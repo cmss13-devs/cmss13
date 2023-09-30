@@ -381,6 +381,22 @@
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
 
+/obj/item/clothing/accessory/poncho/green
+	icon_state = "poncho"
+
+/obj/item/clothing/accessory/poncho/brown
+	icon_state = "d_poncho"
+
+/obj/item/clothing/accessory/poncho/black
+	icon_state = "u_poncho"
+
+/obj/item/clothing/accessory/poncho/blue
+	icon_state = "c_poncho"
+
+/obj/item/clothing/accessory/poncho/purple
+	icon_state = "s_poncho"
+
+
 //Ties that can store stuff
 
 /obj/item/storage/internal/accessory

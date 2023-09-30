@@ -62,6 +62,14 @@
 	worn_state = "marine_engineer"
 	specialty = "USCM Combat Technician"
 
+/obj/item/clothing/under/marine/engineer/standard
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/engineer/darker
+	icon_state = "d_marine_engineer"
+	worn_state = "d_marine_engineer"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/under/marine/rto
 	name = "\improper USCM radio telephone operator uniform"
 	desc = "Standard-issue RTO fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
@@ -104,6 +112,14 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military police"
+
+/obj/item/clothing/under/marine/mp/standard
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/mp/darker
+	icon_state = "d_MP_jumpsuit"
+	worn_state = "d_MP_jumpsuit"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/warden
 	name = "military warden jumpsuit"

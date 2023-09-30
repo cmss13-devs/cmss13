@@ -5852,7 +5852,9 @@
 	},
 /area/almayer/medical/morgue)
 "asV" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -6629,7 +6631,9 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "auJ" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -49266,7 +49270,9 @@
 	},
 /area/almayer/living/port_emb)
 "lqZ" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -52574,7 +52580,9 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "mMu" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},

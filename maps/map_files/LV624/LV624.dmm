@@ -1121,7 +1121,7 @@
 "afu" = (
 /obj/item/ammo_casing,
 /obj/structure/machinery/floodlight/landing{
-	name = "Bolted Emergency Floodlight"
+	name = "bolted floodlight"
 	},
 /turf/open/floor/plating{
 	dir = 9;
@@ -1157,7 +1157,7 @@
 /area/lv624/ground/barrens/central_barrens)
 "afy" = (
 /obj/structure/machinery/floodlight/landing{
-	name = "Bolted Emergency Floodlight"
+	name = "bolted floodlight"
 	},
 /turf/open/floor/plating{
 	dir = 5;
@@ -1404,7 +1404,7 @@
 "agF" = (
 /obj/item/ammo_casing,
 /obj/structure/machinery/floodlight/landing{
-	name = "Bolted Emergency Floodlight"
+	name = "bolted floodlight"
 	},
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
@@ -1583,7 +1583,7 @@
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "ahM" = (
 /obj/structure/machinery/floodlight/landing{
-	name = "Bolted Emergency Floodlight"
+	name = "bolted floodlight"
 	},
 /turf/open/floor/plating{
 	dir = 10;
@@ -1625,7 +1625,7 @@
 /area/lv624/ground/barrens/central_barrens)
 "ahT" = (
 /obj/structure/machinery/floodlight/landing{
-	name = "Bolted Emergency Floodlight"
+	name = "bolted floodlight"
 	},
 /turf/open/floor/plating{
 	dir = 6;

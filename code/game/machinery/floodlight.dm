@@ -1,5 +1,6 @@
 /obj/structure/machinery/floodlight
-	name = "Emergency Floodlight"
+	name = "emergency floodlight"
+	desc = "A powerful light usually stationed near landing zones to provide better visibility."
 	icon = 'icons/obj/structures/machinery/floodlight.dmi'
 	icon_state = "flood00"
 	density = TRUE
@@ -7,7 +8,7 @@
 	light_power = 2
 	wrenchable = TRUE
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 10
+	idle_power_usage = 0
 	active_power_usage = 100
 
 	var/on_light_range = 6
@@ -15,10 +16,13 @@
 	///Whether or not the floodlight can be toggled on or off
 	var/toggleable = TRUE
 
+	///Whether or not the floodlight is turned on, disconnected from whether it has power or is lit
+	var/turned_on = FALSE
+
 /obj/structure/machinery/floodlight/Initialize(mapload, ...)
 	. = ..()
-	if(light_on)
-		set_light(on_light_range)
+
+	turn_light(toggle_on = (operable() && turned_on))
 
 /obj/structure/machinery/floodlight/turn_light(mob/user, toggle_on)
 	. = ..()
@@ -32,45 +36,49 @@
 
 	update_icon()
 
-/obj/structure/machinery/floodlight/attack_hand(mob/user as mob)
-	. = ..()
-	if(.)
-		return
-
+/obj/structure/machinery/floodlight/attack_hand(mob/user)
 	if(!toggleable)
+		to_chat(user, SPAN_NOTICE("[src] doesn't seem to have a switch to toggle the light."))
 		return
 
-	if(light_on)
-		to_chat(user, SPAN_NOTICE("You turn off the light."))
-		turn_light(user, toggle_on = FALSE)
-		update_use_power(USE_POWER_IDLE)
-	else
-		to_chat(user, SPAN_NOTICE("You turn on the light."))
-		turn_light(user, toggle_on = TRUE)
-		update_use_power(USE_POWER_ACTIVE)
+	if(user.lying || user.stat)
+		return
+
+	if(!is_valid_user(user))
+		to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this."))
+		return
+
+	turned_on = !turned_on
+
+	if(inoperable())
+		to_chat(user, SPAN_NOTICE("You turn [turned_on ? "on" : "off"] the floodlight. It seems to be inoperable."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You turn [turned_on ? "on" : "off"] the light."))
+	turn_light(user, toggle_on = turned_on)
+	update_use_power(turned_on ? USE_POWER_ACTIVE : USE_POWER_IDLE)
 
 /obj/structure/machinery/floodlight/update_icon()
 	. = ..()
 	icon_state = "flood0[light_on]"
 
 /obj/structure/machinery/floodlight/power_change(area/master_area = null)
-	..()
-	if(stat & NOPOWER)
-		turn_light(toggle_on = FALSE)
+	. = ..()
+
+	turn_light(toggle_on = (!(stat & NOPOWER) && turned_on))
 
 //Magical floodlight that cannot be destroyed or interacted with.
 /obj/structure/machinery/floodlight/landing
-	name = "Landing Light"
-	desc = "A powerful light stationed near landing zones to provide better visibility."
+	name = "landing light"
+	desc = "A powerful light usually stationed near landing zones to provide better visibility. This one seems to have been bolted down and is unable to be moved."
 	icon_state = "flood01"
-	light_on = TRUE
-	in_use = 1
 	use_power = USE_POWER_NONE
 	needs_power = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 	wrenchable = FALSE
 	toggleable = FALSE
+	turned_on = TRUE
 
 /obj/structure/machinery/floodlight/landing/floor
 	icon_state = "floor_flood01"

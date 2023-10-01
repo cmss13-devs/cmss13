@@ -36,40 +36,6 @@
 			else if(heart.damage >= heart.min_broken_damage && heart.damage < INFINITY)
 				b_volume *= 0.3
 
-	//Effects of bloodloss
-		switch(b_volume)
-			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-				if(prob(1))
-					low_blood_messsage(0)
-				if(oxyloss < 20)
-					oxyloss += 3
-			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-				if(eye_blurry < 50)
-					AdjustEyeBlur(6)
-				if(oxyloss < 50)
-					oxyloss += 10
-				oxyloss += 2
-				if(prob(15))
-					apply_effect(rand(1,3), PARALYZE)
-					low_blood_messsage(1)
-			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-				if(eye_blurry < 50)
-					AdjustEyeBlur(6)
-				oxyloss += 5
-				toxloss += 3
-				if(prob(15))
-					apply_effect(rand(1,3), PARALYZE)
-					low_blood_messsage(2)
-			if(0 to BLOOD_VOLUME_SURVIVE)
-				death(create_cause_data(species.flags & IS_SYNTHETIC ? "power failure" : "blood loss"))
-
-		// Without enough blood you slowly go hungry.
-		if(blood_volume < BLOOD_VOLUME_SAFE)
-			if(nutrition >= 300)
-				nutrition -= 10
-			else if(nutrition >= 200)
-				nutrition -= 3
-
 /mob/living/carbon/human/proc/low_blood_messsage(severity)
 	var/msg
 	var/severity_mod

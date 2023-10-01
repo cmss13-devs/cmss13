@@ -5525,12 +5525,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/medical/morgue)
-"asV" = (
-/obj/structure/machinery/floodlight/landing,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/north2)
 "asW" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -5554,6 +5548,9 @@
 	icon_state = "p_stair_sn_full_cap"
 	},
 /obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/almayer,
@@ -5702,6 +5699,9 @@
 	icon_state = "p_stair_sn_full_cap"
 	},
 /obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -14028,8 +14028,8 @@
 "bbX" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/turf/open/floor/plating{
+	icon_state = "platebot"
 	},
 /area/almayer/lifeboat_pumps/north2)
 "bbY" = (
@@ -31293,6 +31293,15 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"dUA" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/barricade/handrail,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "dUE" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -33305,8 +33314,8 @@
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_2"
 	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/turf/open/floor/plating{
+	icon_state = "platebot"
 	},
 /area/almayer/lifeboat_pumps/north2)
 "eGg" = (
@@ -35813,6 +35822,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/cic)
+"fHv" = (
+/obj/structure/barricade/handrail{
+	dir = 8;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "fHz" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -39085,8 +39103,8 @@
 "haM" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/turf/open/floor/plating{
+	icon_state = "platebot"
 	},
 /area/almayer/lifeboat_pumps/south2)
 "haP" = (
@@ -39682,6 +39700,9 @@
 	icon_state = "p_stair_sn_full_cap"
 	},
 /obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -42908,6 +42929,14 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"iEC" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "iFc" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -46002,6 +46031,15 @@
 	icon_state = "green"
 	},
 /area/almayer/living/offices)
+"jSW" = (
+/obj/structure/barricade/handrail,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "jSY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -50086,8 +50124,8 @@
 /area/almayer/engineering/upper_engineering)
 "lxT" = (
 /obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/turf/open/floor/plating{
+	icon_state = "platebot"
 	},
 /area/almayer/lifeboat_pumps/south2)
 "lxW" = (
@@ -53143,12 +53181,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/stern_hallway)
-"mMu" = (
-/obj/structure/machinery/floodlight/landing,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/south2)
 "mMP" = (
 /obj/effect/landmark/start/intel,
 /turf/open/floor/plating/plating_catwalk,
@@ -54017,6 +54049,9 @@
 /obj/structure/platform{
 	dir = 8
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north2)
 "ngs" = (
@@ -54514,6 +54549,9 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -58365,6 +58403,14 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/alpha)
+"oTX" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "oUG" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -61261,6 +61307,19 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
+"qiH" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "qiI" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/almayer{
@@ -65618,6 +65677,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/offices/flight)
+"rZw" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "rZB" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 9
@@ -65774,6 +65841,15 @@
 	icon_state = "ai_floors"
 	},
 /area/almayer/command/airoom)
+"scZ" = (
+/obj/structure/barricade/handrail,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "sdl" = (
 /obj/structure/surface/rack{
 	density = 0;
@@ -69020,6 +69096,9 @@
 	icon_state = "p_stair_sn_full_cap"
 	},
 /obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/almayer,
@@ -76043,6 +76122,19 @@
 "wfE" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/gym)
+"wfJ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "wfL" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -76399,6 +76491,9 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -77459,6 +77554,19 @@
 "wJH" = (
 /turf/closed/wall/almayer/research/containment/wall/east,
 /area/almayer/medical/containment/cell/cl)
+"wJX" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 0
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "wKn" = (
 /obj/structure/surface/rack,
 /obj/item/facepaint/sniper,
@@ -77523,6 +77631,9 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/almayer,
@@ -77676,6 +77787,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
+"wOE" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 0
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "wOK" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -79325,6 +79449,15 @@
 	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
+"xva" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/barricade/handrail,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "xvh" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -122179,11 +122312,11 @@ aeA
 ajk
 aeA
 aeC
-aeC
-aeC
-aeC
-aeC
-aeC
+rZw
+rZw
+rZw
+rZw
+rZw
 aeC
 vOh
 gUX
@@ -122227,11 +122360,11 @@ cBb
 xVS
 lJY
 vcE
-vcE
-vcE
-vcE
-vcE
-vcE
+iEC
+iEC
+iEC
+iEC
+iEC
 vcE
 eKH
 lVo
@@ -122381,13 +122514,13 @@ acx
 ahz
 ajs
 aeC
-aeC
+dUA
 ayc
 aOE
 aOE
 aOE
 ciu
-aeC
+qiH
 aeC
 ajs
 aeC
@@ -122429,13 +122562,13 @@ apj
 vcE
 kUV
 vcE
-vcE
+jSW
 eCo
 iry
 iry
 iry
 sYw
-vcE
+wOE
 vcE
 kUV
 cil
@@ -122584,13 +122717,13 @@ acx
 aeC
 ajs
 aeC
-asV
+acx
 ayn
 atr
 aeA
 aex
 ciw
-asV
+acx
 aeC
 ydz
 ayb
@@ -122632,13 +122765,13 @@ agJ
 sSl
 kkx
 vcE
-mMu
+rRq
 iMx
 tGi
 lJY
 bXe
 eyG
-mMu
+rRq
 vcE
 kUV
 vcE
@@ -123193,13 +123326,13 @@ acx
 umR
 ajs
 aeC
-asV
+acx
 ayn
 atr
 aeA
 bXz
 ciw
-asV
+acx
 aeC
 ajs
 qon
@@ -123241,13 +123374,13 @@ vuv
 dHe
 kUV
 vcE
-mMu
+rRq
 iMx
 bXe
 lJY
 mzF
 eyG
-mMu
+rRq
 vcE
 kUV
 pPF
@@ -123396,13 +123529,13 @@ acx
 aeB
 ajs
 aeC
-aeC
+xva
 azk
 aOU
 biL
 biL
 cmF
-aeC
+wfJ
 aeC
 ajs
 aeC
@@ -123444,13 +123577,13 @@ vuv
 vcE
 kUV
 vcE
-vcE
+scZ
 shs
 kAU
 kAU
 kAU
 aYE
-vcE
+wJX
 vcE
 kUV
 riP
@@ -123600,11 +123733,11 @@ aeA
 aju
 amH
 aeC
-aeC
-aeC
-aeC
-aeC
-aeC
+oTX
+oTX
+oTX
+oTX
+oTX
 aeC
 aeA
 ajk
@@ -123648,11 +123781,11 @@ lJY
 itR
 kKR
 vcE
-vcE
-vcE
-vcE
-vcE
-vcE
+fHv
+fHv
+fHv
+fHv
+fHv
 vcE
 lJY
 xVS

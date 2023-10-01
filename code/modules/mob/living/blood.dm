@@ -83,8 +83,10 @@
 
 	else
 		switch(severity)
-			if(1) severity_mod = "very "
-			if(2) severity_mod = "extremely "
+			if(1)
+				severity_mod = "very "
+			if(2)
+				severity_mod = "extremely "
 		msg = "You feel [severity_mod][pick("dizzy","woozy","faint")]."
 
 	to_chat(src, SPAN_DANGER(msg))

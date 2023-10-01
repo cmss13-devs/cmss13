@@ -7,7 +7,7 @@
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
-	if(NO_BLOOD in species.flags)
+	if(species.flags & NO_BLOOD && !(species.flags & IS_SYNTHETIC))
 		return
 
 	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
@@ -40,8 +40,7 @@
 		switch(b_volume)
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(1))
-					var/word = pick("dizzy","woozy","faint")
-					to_chat(src, SPAN_DANGER("You feel [word]."))
+					low_blood_messsage(0)
 				if(oxyloss < 20)
 					oxyloss += 3
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
@@ -52,8 +51,7 @@
 				oxyloss += 2
 				if(prob(15))
 					apply_effect(rand(1,3), PARALYZE)
-					var/word = pick("dizzy","woozy","faint")
-					to_chat(src, SPAN_DANGER("You feel very [word]."))
+					low_blood_messsage(1)
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 				if(eye_blurry < 50)
 					AdjustEyeBlur(6)
@@ -61,10 +59,9 @@
 				toxloss += 3
 				if(prob(15))
 					apply_effect(rand(1,3), PARALYZE)
-					var/word = pick("dizzy","woozy","faint")
-					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
+					low_blood_messsage(2)
 			if(0 to BLOOD_VOLUME_SURVIVE)
-				death(create_cause_data("blood loss"))
+				death(create_cause_data(species.flags & IS_SYNTHETIC ? "power failure" : "blood loss"))
 
 		// Without enough blood you slowly go hungry.
 		if(blood_volume < BLOOD_VOLUME_SAFE)
@@ -72,6 +69,25 @@
 				nutrition -= 10
 			else if(nutrition >= 200)
 				nutrition -= 3
+
+/mob/living/carbon/human/proc/low_blood_messsage(severity)
+	var/msg
+	var/severity_mod
+
+	if(species.flags & IS_SYNTHETIC)
+		if(!severity)
+			severity_mod = "fault"
+		else
+			severity_mod = "failure"
+		msg = "Internal power cell [severity_mod] detected.\nPlease seek the nearest recharging station."
+
+	else
+		switch(severity)
+			if(1) severity_mod = "very "
+			if(2) severity_mod = "extremely "
+		msg = "You feel [severity_mod][pick("dizzy","woozy","faint")]."
+
+	to_chat(src, SPAN_DANGER(msg))
 
 // Xeno blood regeneration
 /mob/living/carbon/xenomorph/handle_blood()
@@ -95,7 +111,7 @@
 /mob/living/carbon/human/drip(amt)
 	if(in_stasis) // stasis now stops bloodloss
 		return
-	if(NO_BLOOD in species.flags)
+	if(species.flags & NO_BLOOD && !(species.flags & IS_SYNTHETIC))
 		return
 	..()
 
@@ -276,8 +292,6 @@
 		return "xenoblood"
 
 /mob/living/carbon/human/get_blood_id()
-	if((NO_BLOOD in species.flags))
-		return
 	if(special_blood)
 		return special_blood
 	if(species.name == "Yautja")
@@ -286,6 +300,8 @@
 		return "whiteblood"
 	if(species.name == SPECIES_ZOMBIE)
 		return "greyblood"
+	if(species.flags & NO_BLOOD)
+		return
 	return "blood"
 
 /mob/living/simple_animal/mouse/get_blood_id()

@@ -32,8 +32,8 @@
 		var/atom/movable/current_atom = contents[1]
 		current_atom.forceMove(current_turf)
 		if(istype(current_atom, /obj/structure/machinery))
-			var/obj/structure/machinery/current_machine = current_atom
-			current_machine.power_change()
+			var/area/current_area = get_area(src)
+			current_area.add_machine(current_atom)
 
 	deconstruct(TRUE)
 

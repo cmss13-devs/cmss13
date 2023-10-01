@@ -69,14 +69,14 @@
 	if(tgui_alert(src, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 		return
 
-	src << link(URL_ISSUE_TRACKER)
+	src << link(CONFIG_GET(string/githuburl))
 	return
 
 /client/verb/set_fps()
 	set name = "Set FPS"
 	set desc = "Set client FPS. 20 is the default"
 	set category = "Preferences"
-	var/fps = tgui_input_number(usr,"New FPS Value. 0 is server-sync. Higher values cause more desync. Values over 30 not recommended.","Set FPS", 0, MAX_FPS, MIN_FPS)
+	var/fps = tgui_input_number(usr,"New FPS Value. 0 is server-sync. Higher values cause more desync.","Set FPS", 0, MAX_FPS, MIN_FPS)
 	if(world.byond_version >= 511 && byond_version >= 511 && fps >= MIN_FPS && fps <= MAX_FPS)
 		vars["fps"] = fps
 		prefs.fps = fps

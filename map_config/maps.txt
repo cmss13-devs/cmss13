@@ -44,6 +44,8 @@ map ice_colony_v2
 endmap
 
 map shivas_snowball
+	voteweight 0
+	disabled
 endmap
 
 map kutjevo
@@ -58,7 +60,6 @@ map lv522_chances_claim
 endmap
 
 map new_varadero
-	disabled
 endmap
 
 map whiskey_outpost_v2

@@ -1975,7 +1975,6 @@
 "afP" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	locked = 0;
 	name = "\improper Marshal Office Prison"
 	},
 /turf/open/floor{
@@ -1986,7 +1985,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	locked = 0;
 	name = "\improper Marshal Office Prison"
 	},
 /turf/open/floor{
@@ -2799,7 +2797,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	locked = 0;
 	name = "\improper Marshal Office Armory"
 	},
 /turf/open/floor{
@@ -3387,7 +3384,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	locked = 0;
 	name = "\improper Marshal Office Armory"
 	},
 /turf/open/floor{
@@ -4684,7 +4680,6 @@
 "anx" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	locked = 0;
 	name = "\improper Marshal Office Holding Cell"
 	},
 /turf/open/floor{
@@ -6923,7 +6918,6 @@
 	dir = 1;
 	icon_state = "door_locked";
 	id = "safe_room";
-	locked = 0;
 	name = "\improper Lambda Lab Secure Storage"
 	},
 /turf/open/floor{
@@ -16573,8 +16567,8 @@
 	dir = 6
 	},
 /turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+	dir = 1;
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/caves_lambda)
 "aTB" = (
@@ -16582,8 +16576,8 @@
 	dir = 8
 	},
 /turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+	dir = 1;
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/caves_lambda)
 "aTC" = (
@@ -16951,14 +16945,12 @@
 	dir = 9
 	},
 /turf/open/floor{
-	dir = 6;
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/caves_lambda)
 "aUC" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor{
-	dir = 6;
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/caves_lambda)
@@ -27115,12 +27107,6 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/outside/office_complex)
-"bFh" = (
-/obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/caves/eta/living)
 "bFw" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm/warehouse)
@@ -29590,6 +29576,13 @@
 	icon_state = "darkblue2"
 	},
 /area/bigredv2/caves/eta/research)
+"gXh" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/caves_lambda)
 "gXp" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6"
@@ -30897,6 +30890,15 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_sw)
+"jNO" = (
+/obj/structure/machinery/sensortower{
+	pixel_x = -9
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/bigredv2/caves_lambda)
 "jOc" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -30958,6 +30960,28 @@
 	icon_state = "floor5"
 	},
 /area/bigredv2/oob)
+"jRi" = (
+/obj/item/ammo_magazine/smg/bizon{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/weapon/gun/smg/bizon{
+	pixel_x = 1;
+	pixel_y = 11
+	},
+/obj/item/ammo_magazine/smg/bizon{
+	pixel_x = 11;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/smg/bizon,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/caves/mining)
 "jUc" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -32119,28 +32143,6 @@
 	},
 /obj/item/reagent_container/food/snacks/tofu{
 	pixel_y = 11
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
-/area/bigredv2/caves/mining)
-"mmz" = (
-/obj/item/ammo_magazine/pistol/skorpion{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/weapon/gun/pistol/skorpion{
-	pixel_x = 1;
-	pixel_y = 11
-	},
-/obj/item/ammo_magazine/pistol/skorpion{
-	pixel_x = 11;
-	pixel_y = -3
-	},
-/obj/item/ammo_magazine/pistol/skorpion,
-/obj/structure/machinery/light/small{
-	dir = 8
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -42336,7 +42338,7 @@ aao
 aao
 uHQ
 rMg
-mmz
+jRi
 uHQ
 rYD
 rtS
@@ -43265,7 +43267,7 @@ aah
 aah
 aaF
 aah
-aau
+aah
 aei
 aaf
 aaf
@@ -44123,7 +44125,7 @@ aah
 aah
 aah
 aah
-aah
+aau
 aah
 aah
 aah
@@ -44667,7 +44669,7 @@ bjo
 bie
 bje
 bie
-biI
+bie
 bsc
 eWd
 eWd
@@ -45525,7 +45527,7 @@ bie
 bie
 bie
 bie
-bie
+biI
 bie
 bie
 bie
@@ -62303,14 +62305,14 @@ aDX
 kqS
 bDu
 bDA
-bFh
+aRf
 aDX
 bDU
 elM
 aDX
 bDo
 aQy
-bFh
+aRf
 aRf
 aDX
 bEK
@@ -77170,7 +77172,7 @@ aOn
 aOn
 aOn
 aOn
-aOn
+aTv
 aTA
 aUB
 wQC
@@ -77387,7 +77389,7 @@ gXp
 gXp
 gXp
 gXp
-aSm
+aTw
 aTB
 aUC
 wQC
@@ -77604,9 +77606,9 @@ tQw
 ahw
 tQw
 tQw
-aSn
-gXp
-gXp
+gXh
+aTv
+aMT
 tQw
 tQw
 pIN
@@ -77821,9 +77823,9 @@ tQw
 tQw
 xFZ
 xFZ
-xFZ
-tQw
-tQw
+aSm
+jNO
+aMT
 tQw
 xFZ
 ahy
@@ -78039,8 +78041,8 @@ eFh
 aao
 aao
 aao
-gmN
-xFZ
+aSm
+aMV
 sNQ
 aao
 aao

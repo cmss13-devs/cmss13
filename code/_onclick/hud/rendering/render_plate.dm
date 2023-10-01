@@ -74,6 +74,6 @@
 		relay.blend_mode = blend_mode
 	relay.mouse_opacity = mouse_opacity
 	relay.name = render_target
-	mymob.client.screen += relay
+	mymob.client.add_to_screen(relay)
 	if(blend_mode != BLEND_MULTIPLY)
 		blend_mode = BLEND_DEFAULT

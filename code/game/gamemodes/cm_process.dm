@@ -58,18 +58,18 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	if(LAZYLEN(xenomorphs) || LAZYLEN(dead_queens))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The xenomorph Queen(s) were:")
-		var/mob/M
+		var/mob/living/carbon/xenomorph/xeno_mob
 		for (var/msg in dead_queens)
 			dat += msg
-		for(var/datum/mind/X in xenomorphs)
-			if(!istype(X))
+		for(var/datum/mind/xeno_mind in xenomorphs)
+			if(!istype(xeno_mind))
 				continue
 
-			M = X.current
-			if(!M || !M.loc)
-				M = X.original
-			if(M && M.loc && isqueen(M) && M.stat != DEAD) // Dead queens handled separately
-				dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("(SURVIVED)")]"
+			xeno_mob = xeno_mind.current
+			if(!xeno_mob || !xeno_mob.loc)
+				xeno_mob = xeno_mind.original
+			if(xeno_mob && xeno_mob.loc && isqueen(xeno_mob) && xeno_mob.stat != DEAD) // Dead queens handled separately
+				dat += "<br>[xeno_mob.full_designation] was [xeno_mob] [SPAN_BOLDNOTICE("(SURVIVED)")]"
 
 		to_world("[dat]")
 
@@ -244,6 +244,34 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 	return num_marines
 
+/datum/game_mode/proc/count_per_faction(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
+	var/num_marines = 0
+	var/num_WY = 0
+	var/num_UPP = 0
+	var/num_CLF = 0
+	var/num_headcount = 0
+
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(current_human.z && (current_human.z in z_levels) && !istype(current_human.loc, /turf/open/space)))
+			continue
+		if(current_human.faction in FACTION_LIST_WY || current_human.job == "Corporate Liaison") //The CL is assigned the USCM faction for gameplay purposes
+			num_WY++
+			num_headcount++
+			continue
+		if(current_human.faction == FACTION_UPP)
+			num_UPP++
+			num_headcount++
+			continue
+		if(current_human.faction == FACTION_CLF)
+			num_CLF++
+			num_headcount++
+			continue
+		if(current_human.faction == FACTION_MARINE)
+			num_marines++
+			num_headcount++
+			continue
+		num_headcount++
+	return list("marine_headcount" = num_marines,"WY_headcount" = num_WY,"UPP_headcount" = num_UPP,"CLF_headcount" = num_CLF,"total_headcount" = num_headcount)
 
 /*
 #undef QUEEN_DEATH_COUNTDOWN

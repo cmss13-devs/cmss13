@@ -148,10 +148,14 @@
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
 		var/msg = message
-		if(self_message && M==src)
+		if(self_message && M == src)
 			msg = self_message
 			if(flags & CHAT_TYPE_TARGETS_ME)
 				flags = CHAT_TYPE_BEING_HIT
+
+		else if((M != src) && HAS_TRAIT(src, TRAIT_CLOAKED))
+			continue
+
 		M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)
 		CHECK_TICK
 
@@ -183,10 +187,14 @@
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
 /atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
+	if(HAS_TRAIT(src, TRAIT_CLOAKED))
+		return FALSE
 	var/view_dist = 7
-	if(max_distance) view_dist = max_distance
+	if(max_distance)
+		view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
 		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
+	return TRUE
 
 // Show a message to all mobs in earshot of this atom
 // Use for objects performing only audible actions
@@ -326,7 +334,6 @@
 		var/atom/movable/screen/plane_master/lighting/exterior_lighting = hud_used.plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
 		if (exterior_lighting)
 			exterior_lighting.alpha = min(GLOB.minimum_exterior_lighting_alpha, lighting_alpha)
-
 
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful
@@ -594,8 +601,8 @@ below 100 is not dizzy
 	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
 		return
 
-	dizziness = min(1000, dizziness + amount) // store what will be new value
-													// clamped to max 1000
+	dizziness = min(500, dizziness + amount) // store what will be new value
+													// clamped to max 500
 	if(dizziness > 100 && !is_dizzy)
 		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
 
@@ -609,16 +616,22 @@ note dizziness decrements automatically in the mob's Life() proc.
 	is_dizzy = 1
 	while(dizziness > 100)
 		if(client)
-			var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
-			client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)
-			client.pixel_y = amplitude * cos(0.008 * dizziness * world.time)
-
+			if(buckled || resting)
+				client.pixel_x = 0
+				client.pixel_y = 0
+			else
+				var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
+				client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)
+				client.pixel_y = amplitude * cos(0.008 * dizziness * world.time)
+				if(prob(1))
+					to_chat(src, "The dizziness is becoming unbearable! It should pass faster if you lie down.")
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_dizzy = 0
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0
+		to_chat(src, "The dizziness has passed, you're starting to feel better.")
 
 // jitteriness - copy+paste of dizziness
 

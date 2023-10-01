@@ -72,7 +72,8 @@ GLOBAL_PROTECT(LastAdminCalledProc)
  */
 /proc/HandleUserlessProcCall(user, datum/target, procname, list/arguments)
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("HandleUserlessProcCall")
+		return PROC_BLOCKED
 	var/mob/proccall_handler/handler = GLOB.AdminProcCallHandler
 	handler.add_caller(user)
 	var/lastusr = usr
@@ -90,7 +91,8 @@ GLOBAL_PROTECT(LastAdminCalledProc)
  */
 /proc/HandleUserlessSDQL(user, query_text)
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("HandleUserlessSDQL")
+		return PROC_BLOCKED
 
 	var/mob/proccall_handler/handler = GLOB.AdminProcCallHandler
 	handler.add_caller(user)
@@ -223,6 +225,10 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 
 /proc/IsAdminAdvancedProcCall()
 	return (GLOB.AdminProcCaller && GLOB.AdminProcCaller == usr?.client?.ckey) || (GLOB.AdminProcCallHandler && usr == GLOB.AdminProcCallHandler)
+
+/proc/alert_proccall(procname = "Unknown")
+	to_chat(usr, SPAN_BOLDWARNING("Warning: Force attempt has been logged."))
+	message_admins("[key_name(usr)] has attempted to execute a restricted proc. ([procname])")
 
 /client/proc/callproc_datum(datum/called_datum as null|area|mob|obj|turf)
 	set category = "Debug"

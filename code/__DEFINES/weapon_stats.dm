@@ -136,19 +136,22 @@ As such, don't expect any values assigned to common firearms to even consider ho
 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 */
 
-#define FIRE_DELAY_TIER_1 10
-#define FIRE_DELAY_TIER_2 9
-#define FIRE_DELAY_TIER_3 8
-#define FIRE_DELAY_TIER_4 7
-#define FIRE_DELAY_TIER_5 6
-#define FIRE_DELAY_TIER_6 5
-#define FIRE_DELAY_TIER_7 4
-#define FIRE_DELAY_TIER_8 3
-#define FIRE_DELAY_TIER_9 2
-#define FIRE_DELAY_TIER_LMG 1.5
-#define FIRE_DELAY_TIER_SG 1.5
-#define FIRE_DELAY_TIER_SMG 1.3
-#define FIRE_DELAY_TIER_10 1
+#define FIRE_DELAY_TIER_VULTURE 20
+#define FIRE_DELAY_TIER_1 12
+#define FIRE_DELAY_TIER_2 10
+#define FIRE_DELAY_TIER_3 9
+#define FIRE_DELAY_TIER_4 8
+#define FIRE_DELAY_TIER_5 7
+#define FIRE_DELAY_TIER_6 6
+#define FIRE_DELAY_TIER_7 5
+#define FIRE_DELAY_TIER_8 4
+#define FIRE_DELAY_TIER_9 3.5
+#define FIRE_DELAY_TIER_10 3
+#define FIRE_DELAY_TIER_11 2.5
+#define FIRE_DELAY_TIER_LMG 2
+#define FIRE_DELAY_TIER_SG 2
+#define FIRE_DELAY_TIER_SMG 1.5
+#define FIRE_DELAY_TIER_12 1
 
 /*
 ////RANGE RELATED////

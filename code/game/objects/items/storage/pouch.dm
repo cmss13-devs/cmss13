@@ -1172,23 +1172,37 @@
 
 /obj/item/storage/pouch/tools
 	name = "tools pouch"
-	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool."
+	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool or light replacer."
 	storage_slots = 4
 	max_w_class = SIZE_MEDIUM
 	icon_state = "tools"
 	can_hold = list(
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/shovel/etool,
-		/obj/item/tool/screwdriver,
 		/obj/item/tool/crowbar,
+		/obj/item/tool/screwdriver,
 		/obj/item/tool/weldingtool,
-		/obj/item/device/multitool,
+		/obj/item/tool/wirecutters,
 		/obj/item/tool/wrench,
-		/obj/item/stack/cable_coil,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/tool/shovel/etool,
+		/obj/item/stack/cable_coil,
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/cell,
+		/obj/item/circuitboard,
+		/obj/item/stock_parts,
+		/obj/item/device/demo_scanner,
+		/obj/item/device/reagent_scanner,
+		/obj/item/device/assembly,
+		/obj/item/device/multitool,
+		/obj/item/device/flashlight,
+		/obj/item/device/t_scanner,
+		/obj/item/device/analyzer,
+		/obj/item/explosive/plastic,
+		/obj/item/device/lightreplacer,
 	)
-	bypass_w_limit = list(/obj/item/tool/shovel/etool)
+	bypass_w_limit = list(
+		/obj/item/tool/shovel/etool,
+		/obj/item/device/lightreplacer,
+	)
 
 /obj/item/storage/pouch/tools/tactical
 	name = "tactical tools pouch"

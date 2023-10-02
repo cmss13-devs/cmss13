@@ -404,3 +404,51 @@
       now properly emphasizes why it is a threat to Marines, and a benefit to Xenos.
   TheGamerdk:
   - qol: You can no longer doom yourself by joining as a crit xeno
+2023-09-29:
+  BeagleGaming1:
+  - bugfix: Whiskey Outpost ground map vote works correctly
+  - config: Removed unnecessary config
+  Ben10083:
+  - soundadd: Multiple new Working Joe voicelines added
+  Casper:
+  - bugfix: fixed cameras going invisible on wire cut
+  Huffie56:
+  - refactor: divide preset into different file for each map.
+  Morrow:
+  - qol: '"Do nothing" dual wield preference'
+  QuickLode:
+  - rscdel: removed Pvts from Anchorpoint QRF (rip)
+  - spellcheck: fixed a typo in CMB call-in
+  - rscadd: Allows ext webbing to hold firearms.
+  - bugfix: exosuits which can hold scabbards can hold similar scabbards(ie, machete
+      and katana)
+  - rscdel: Removes ext webbing from SO Locker
+  SpartanBobby:
+  - maptweak: CL now spawns in a hypersleep bay "Passenger Bay" it's right next to
+      his office, the CC spawns with him too since his landmark was in the latejoin
+      bay on the lowerdeck
+  - maptweak: re-arranged PO bunks should allow for better traffic in and out
+  - maptweak: fixed symmetry issue in north-south CIC hallway
+  - maptweak: minor warning stripe decal additions around Almayer
+  Steelpoint:
+  - rscadd: Synthetic equipment vendor now can vend fuel cannisters and all colour
+      variants of the synthetic utility vest.
+  - rscadd: Synthetic cosmetic vendor now can vend all colour variants of the standard
+      Marine helmet, MP and Combat Technician uniforms, the welder chestrig and security
+      hud glasses.
+  Zonespace27:
+  - bugfix: Picking up a dropped pred bracer will no longer leave it stuck to your
+      hand.
+  - bugfix: Yautja can no longer mark xenoes as honorable
+  - rscadd: You can now fold a combi-stick using the new "collapse combi-stick" verb
+      and/or keybind. Defaults to the space bar.
+  - bugfix: Using a Yautja relay beacon now properly decloaks you
+2023-09-30:
+  Drathek:
+  - bugfix: Join as xeno no longer offers buried larva spawns if there are larva queue
+      candidates
+  Huffie56:
+  - refactor: Cleaning specialist.dm file
+  Morrow:
+  - rscdel: Removed more clown gear from maps
+  - bugfix: Fixed taking control of crit xenos

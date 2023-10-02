@@ -294,6 +294,8 @@
 	if(sorted && length(candidates))
 		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_obs_larvaqueuetime_asc))
 
+	GLOB.xeno_queue_candidate_count = length(candidates)
+
 	return candidates
 
 /**

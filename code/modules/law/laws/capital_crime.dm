@@ -34,3 +34,7 @@
 /datum/law/capital_law/prisoner_of_war
 	name = "Prisoner of War"
 	desc = "Being a member of a currently hostile faction to the USCM."
+
+/datum/law/capital_law/discretionary_arrest
+	name = "CO's Discretionary Arrest"
+	desc = "Executive-privilege arrest ordered by the Commanding Officer. Can be revoked by them at any time."

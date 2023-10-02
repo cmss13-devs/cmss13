@@ -1,0 +1,5 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "If a mob is on top of a reflective wall the wall no longer functions"
+  - balance: "Bullets will not longer get eaten by xeno special structures unless you click directly on them"

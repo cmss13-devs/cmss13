@@ -73,8 +73,7 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
-	/datum/resin_construction/resin_obj/resin_spike,
-	/datum/resin_construction/resin_obj/sunken_colony
+	/datum/resin_construction/resin_obj/resin_spike
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_hivelord_whisperer, list(
@@ -84,8 +83,7 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord_whisperer, list(
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike,
-	/datum/resin_construction/resin_obj/resin_node,
-	/datum/resin_construction/resin_obj/sunken_colony
+	/datum/resin_construction/resin_obj/resin_node
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
@@ -96,8 +94,7 @@ GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
-	/datum/resin_construction/resin_obj/resin_spike,
-	/datum/resin_construction/resin_obj/sunken_colony
+	/datum/resin_construction/resin_obj/resin_spike
 ))
 
 //Xeno Leader Mark Meanings

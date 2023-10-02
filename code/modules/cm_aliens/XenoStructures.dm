@@ -554,8 +554,6 @@
 		return FALSE
 
 	if(current_mob.ally_of_hivenumber(hivenumber))
-		if(!isxeno(current_mob))
-			return FALSE
 		if(!current_mob.on_fire)
 			return FALSE
 		burning_friendly = TRUE
@@ -563,7 +561,7 @@
 	else if(current_mob.lying || current_mob.is_mob_incapacitated(TRUE))
 		return FALSE
 
-	if(!burning_friendly && current_mob.health < 0)
+	if(!burning_friendly)
 		return FALSE
 	if(current_mob.stat == DEAD)
 		return FALSE

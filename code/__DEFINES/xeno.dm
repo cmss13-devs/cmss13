@@ -578,6 +578,7 @@
 #define XENO_STRUCTURE_PYLON "hive pylon"
 #define XENO_STRUCTURE_POOL  "spawn pool"
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
+#define XENO_STRUCTURE_SUNKEN  "sunken colony"
 #define XENO_STRUCTURE_EVOPOD    "evolution pod"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_NEST  "thick resin nest"

@@ -306,10 +306,6 @@
 /obj/structure/window/framed/kutjevo,
 /turf/open/space/basic,
 /area/template_noop)
-"T" = (
-/obj/structure/lattice,
-/turf/closed/wall/kutjevo/colony/reinforced,
-/area/template_noop)
 "U" = (
 /turf/open/auto_turf/sand/layer0,
 /area/template_noop)
@@ -434,7 +430,7 @@ X
 t
 "}
 (8,1,1) = {"
-T
+V
 h
 t
 t

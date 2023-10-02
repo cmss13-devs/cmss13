@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Fixed manual distress signal manual call options"
-  - bugfix: "Fixed a WO distress signal over announcing"

@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - balance: "Tool Pouch can now hold the same types of items that a toolbelt can hold. It is still restricted to 4 inventory slots."

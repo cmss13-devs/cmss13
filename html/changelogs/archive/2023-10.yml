@@ -1,3 +1,20 @@
 2023-10-01:
   QuickLode:
   - bugfix: Allows M46C prototype rifle to accept standard M41A MK2 rubber munitions
+2023-10-02:
+  Ben10083:
+  - bugfix: fixed a Working Joe voiceline from not working
+  Casper:
+  - ui: added microwave TGUI
+  Morrow:
+  - bugfix: Fixed fake incomplete surgeries
+  - bugfix: Fixed manual distress signal manual call options
+  - bugfix: Fixed a WO distress signal over announcing
+  Steelpoint:
+  - balance: Tool Pouch can now hold the same types of items that a toolbelt can hold.
+      It is still restricted to 4 inventory slots.
+  - balance: Eggs no longer are resistant to certain kinds of melee attacks. Making
+      them far easier to kill in melee.
+  realforest2001:
+  - balance: Reduces power cost for plasma caster use, and creation of thwei crystals/health
+      capsules.

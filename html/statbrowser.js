@@ -1036,21 +1036,21 @@ Byond.subscribeTo("remove_mc", remove_mc);
 Byond.subscribeTo("add_verb_list", add_verb_list);
 
 function createOptionsButton() {
-	var B = document.createElement("BUTTON");
-	B.onclick = function () {
-		open_options_menu();
+	var button = document.createElement("BUTTON");
+	button.onclick = function () {
+		openOptionsMenu();
 		this.blur();
 	};
-	B.id = "options";
-	B.textContent = "Options";
-	B.className = "options";
-	B.style.order = 999; // last please
-	B.style.marginLeft = "auto";
-	B.style.marginRight = "2%";
+	button.id = "options";
+	button.textContent = "Options";
+	button.className = "options";
+	button.style.order = 999; // last please
+	button.style.marginLeft = "auto";
+	button.style.marginRight = "2%";
 	menu.appendChild(B);
 }
 
-function open_options_menu() {
+function openOptionsMenu() {
 	Byond.command("Open-Statbrowser-Options " + current_fontsize);
 }
 

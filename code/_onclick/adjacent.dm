@@ -94,6 +94,11 @@ Quick adjacency (to turf):
 /obj/item/Adjacent(atom/neighbor, recurse = 1)
 	if(neighbor == loc || (loc && neighbor == loc.loc))
 		return TRUE
+
+	// Internal storages have special relationships with the object they are connected to and we still want two depth adjacency for storages
+	if(istype(loc.loc, /obj/item/storage/internal) && recurse > 0)
+		return loc.loc.Adjacent(neighbor, recurse)
+
 	if(issurface(loc))
 		return loc.Adjacent(neighbor, recurse) //Surfaces don't count as storage depth.
 	else if(istype(loc, /obj/item))

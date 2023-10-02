@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - qol: "remove welding google from squad comtech vendor to avoid  him to waste point since tool vendor have them for free."

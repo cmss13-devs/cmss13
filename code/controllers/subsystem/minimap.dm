@@ -716,6 +716,7 @@ SUBSYSTEM_DEF(minimaps)
 				playsound_client(human_leader.client, "sound/effects/sos-morse-code.ogg")
 				COOLDOWN_START(GLOB, uscm_canvas_cooldown, canvas_cooldown_time)
 
+			toolbar_updated_selection = toolbar_color_selection
 			message_admins("[key_name(user)] has updated the tactical map")
 			updated_canvas = FALSE
 			. = TRUE

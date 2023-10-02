@@ -376,6 +376,10 @@
 /area/template_noop)
 "Pp" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -10;
+	pixel_y = 16
+	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
 "Re" = (

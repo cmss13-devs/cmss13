@@ -124,7 +124,7 @@
 /area/template_noop)
 "r" = (
 /obj/structure/fence{
-	desc = "A large metal mesh strewn between two poles. A "Keep Out! Under Csssssonstruction." sign dangles from one of the fence posts."
+	desc = "A large metal mesh strewn between two poles. A 'Keep Out! Under Construction' sign dangles from one of the fence posts."
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/template_noop)

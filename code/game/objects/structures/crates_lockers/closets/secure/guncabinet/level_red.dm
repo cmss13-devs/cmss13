@@ -41,8 +41,6 @@
 
 
 
-
-
 // CIC ARMORY
 
 // 4 shotgun cabinet are in cic armory
@@ -61,13 +59,12 @@
 	. = ..()
 	new /obj/item/storage/box/guncase/m41aMK1(src)
 
-
 // UPPER MEDBAY ARMORY
 
 //1 shotgun armory closet 2 guns and 4 mags
-/obj/structure/closet/secure_closet/guncabinet/red/medical_armory_shotgun
+/obj/structure/closet/secure_closet/guncabinet/red/armory_shotgun
 
-/obj/structure/closet/secure_closet/guncabinet/red/medical_armory_shotgun/Initialize()
+/obj/structure/closet/secure_closet/guncabinet/red/armory_shotgun/Initialize()
 	. = ..()
 	new /obj/item/weapon/gun/shotgun/combat(src)
 	new /obj/item/weapon/gun/shotgun/combat(src)
@@ -77,9 +74,9 @@
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 
 // 2 pistol amory closet maybe to replace with full pistol belt...
-/obj/structure/closet/secure_closet/guncabinet/red/medical_armory_m4a3_pistol
+/obj/structure/closet/secure_closet/guncabinet/red/armory_m4a3_pistol
 
-/obj/structure/closet/secure_closet/guncabinet/red/medical_armory_m4a3_pistol/Initialize()
+/obj/structure/closet/secure_closet/guncabinet/red/armory_m4a3_pistol/Initialize()
 	. = ..()
 	new /obj/item/weapon/gun/pistol/m4a3(src)
 	new /obj/item/weapon/gun/pistol/m4a3(src)
@@ -88,9 +85,9 @@
 	new /obj/item/ammo_box/magazine/m4a3(src)
 
 // 2 M39 cabinet are in medical armory (4 M39 and 12 mags)
-/obj/structure/closet/secure_closet/guncabinet/red/medical_armory_m39_submachinegun
+/obj/structure/closet/secure_closet/guncabinet/red/armory_m39_submachinegun
 
-/obj/structure/closet/secure_closet/guncabinet/red/medical_armory_m39/Initialize()
+/obj/structure/closet/secure_closet/guncabinet/red/armory_m39/Initialize()
 	. = ..()
 	new /obj/item/weapon/gun/smg/m39(src)
 	new /obj/item/weapon/gun/smg/m39(src)

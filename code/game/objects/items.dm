@@ -829,23 +829,15 @@ cases. Override_icon_state should be a list.*/
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 
-	// Due to how qdel calls back when the item is destroyed we lack a user, if we are still zoomed in and the item is being destroyed it should be in the direct contents of the user (hypothetically).
-	// When you read this in 10 years from now when it stops working uuuh sorry about that.
-	if(!user)
-		user = loc
-		if(!istype(user))
-			log_debug("[src] called unzoom without a user and user was not loc. Current loc: [loc ? loc : "null"]")
-			return
-
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNZOOM, user)
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
-		COMSIG_PARENT_QDELETING,
 	))
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+	user.UnregisterSignal(src, COMSIG_PARENT_QDELETING)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.change_view(world_view_size, src)
@@ -876,9 +868,9 @@ cases. Override_icon_state should be a list.*/
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-			COMSIG_PARENT_QDELETING,
 		), PROC_REF(unzoom_dropped_callback))
 		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
+		user.RegisterSignal(src, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob/living, zoomable_item_destroyed))
 
 		zoom_initial_mob_dir = user.dir
 
@@ -904,6 +896,17 @@ cases. Override_icon_state should be a list.*/
 	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
 	SPAN_NOTICE("You peer through \the [zoom_device]."))
 	zoom = !zoom
+
+/mob/living/proc/zoomable_item_destroyed(datum/destroying_zoomable)
+	SIGNAL_HANDLER
+
+	SEND_SIGNAL(src, COMSIG_LIVING_ZOOM_OUT, destroying_zoomable)
+	SEND_SIGNAL(destroying_zoomable, COMSIG_ITEM_UNZOOM, src)
+
+	if(client)
+		client.change_view(world_view_size, destroying_zoomable)
+		client.pixel_x = 0
+		client.pixel_y = 0
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
 	var/mob_state

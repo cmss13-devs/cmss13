@@ -48060,9 +48060,6 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -76498,9 +76495,6 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2

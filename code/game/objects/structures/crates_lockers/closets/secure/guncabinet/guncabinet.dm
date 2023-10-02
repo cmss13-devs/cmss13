@@ -65,21 +65,7 @@
 		contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
 		deconstruct(FALSE)
 
-/obj/structure/closet/secure_closet/guncabinet/mp_armory
-// req_access = list(ACCESS_MARINE_BRIG)
-	req_level = SEC_LEVEL_RED
-
-/obj/structure/closet/secure_closet/guncabinet/mp_armory/Initialize()
-	. = ..()
-	new /obj/item/weapon/gun/shotgun/combat(src)
-	new /obj/item/weapon/gun/shotgun/combat(src)
-	new /obj/item/ammo_magazine/shotgun/slugs(src)
-	new /obj/item/ammo_magazine/shotgun/buckshot(src)
-	new /obj/item/ammo_magazine/shotgun/buckshot(src)
-	new /obj/item/ammo_magazine/shotgun/buckshot(src)
-
-
-
+//this is used on corsat.(leaving it as a prop i guess)
 /obj/structure/closet/secure_closet/guncabinet/riot_control
 	name = "riot control equipment closet"
 // req_access = list(ACCESS_MARINE_BRIG)
@@ -110,7 +96,6 @@
 	new /obj/item/clothing/suit/armor/riot/marine(src)
 	new /obj/item/clothing/suit/armor/riot/marine(src)
 	new /obj/item/storage/box/flashbangs(src)
-
 
 /obj/structure/closet/secure_closet/guncabinet/green
 	name = "green level gun cabinet"

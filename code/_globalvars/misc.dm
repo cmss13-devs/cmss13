@@ -34,3 +34,6 @@ GLOBAL_VAR_INIT(time_offset, setup_offset())
 /// Sets the offset 2 lines above.
 /proc/setup_offset()
 	return rand(10 MINUTES, 24 HOURS)
+
+/// The last count of possible candidates in the xeno larva queue (updated via get_alien_candidates)
+GLOBAL_VAR(xeno_queue_candidate_count)

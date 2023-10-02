@@ -49,7 +49,7 @@
 	say_message = "Existing tasks have a higher priority."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/task_update/come_with_me
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/ticket_remove
 	key = "ticketremoved"
 	sound = 'sound/voice/joe/support_ticket_removed.ogg'
 	say_message = "Service support ticket removed from queue."

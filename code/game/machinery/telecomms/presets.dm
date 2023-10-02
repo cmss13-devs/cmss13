@@ -218,11 +218,19 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	/// Held image for the current overlay on the tower from xeno corruption
 	var/image/corruption_image
 
+	/// Holds the delay for when a cluster can recorrupt the comms tower after a pylon has been destroyed
+	COOLDOWN_DECLARE(corruption_delay)
+
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
 	. = ..()
 
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
 	register_with_turf()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) && !COOLDOWN_FINISHED(src, corruption_delay))
+		. += SPAN_XENO("Corruption cooldown: [(COOLDOWN_TIMELEFT(src, corruption_delay) / (1 SECONDS))] seconds.")
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attack_hand(mob/user)
 	if(user.action_busy)
@@ -323,6 +331,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME))
 		return
 
+	if(!COOLDOWN_FINISHED(src, corruption_delay))
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (COOLDOWN_TIMELEFT(src, corruption_delay)))
+		return
+
 	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
 
 	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
@@ -361,6 +373,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	corrupted = FALSE
 
 	overlays -= corruption_image
+
+	COOLDOWN_START(src, corruption_delay, XENO_PYLON_DESTRUCTION_DELAY)
 
 /// Handles moving the overlay from growing to idle
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/switch_to_idle_corruption()

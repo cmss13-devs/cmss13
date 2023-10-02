@@ -34,3 +34,4 @@
 	new /obj/item/clothing/suit/armor/riot/marine(src)
 	new /obj/item/clothing/suit/armor/riot/marine(src)
 	new /obj/item/storage/box/flashbangs(src)
+	new /obj/item/vehicle_clamp(src)

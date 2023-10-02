@@ -658,6 +658,7 @@ SUBSYSTEM_DEF(minimaps)
 	switch (action)
 		if ("menuSelect")
 			if(params["selection"] == "new canvas")
+				updated_canvas = FALSE
 				if(!distribute_current_map_png(user))
 					return
 				current_map = get_current_tacmap_data(user, TRUE)
@@ -696,8 +697,8 @@ SUBSYSTEM_DEF(minimaps)
 				return
 
 			store_current_svg_coords(user, params["image"])
-
 			current_svg = get_current_tacmap_data(user, FALSE)
+
 			if(isxeno(user))
 				var/mob/living/carbon/xenomorph/xeno = user
 				xeno_maptext("The Queen has updated your hive mind map", "You sense something unusual...", xeno.hivenumber)

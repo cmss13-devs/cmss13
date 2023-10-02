@@ -116,10 +116,6 @@
 	name = "green level gun cabinet"
 	req_level = SEC_LEVEL_GREEN
 
-/obj/structure/closet/secure_closet/guncabinet/blue
-	name = "blue level gun cabinet"
-	req_level = SEC_LEVEL_BLUE
-
 /obj/structure/closet/secure_closet/guncabinet/red
 	name = "red level gun cabinet"
 	req_level = SEC_LEVEL_RED

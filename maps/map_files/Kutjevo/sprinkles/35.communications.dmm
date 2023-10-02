@@ -119,13 +119,9 @@
 /area/template_noop)
 "rm" = (
 /obj/structure/surface/rack,
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
+/obj/item/storage/bag/trash{
 	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
+	pixel_x = -4
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
@@ -194,35 +190,23 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
+/obj/item/storage/bag/trash{
 	icon_state = "trashbag3";
-	name = "trash bag";
 	pixel_x = 5;
 	pixel_y = 6
 	},
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
+/obj/item/storage/bag/trash{
 	icon_state = "trashbag3";
-	name = "trash bag";
 	pixel_x = -9;
 	pixel_y = 6
 	},
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
+/obj/item/storage/bag/trash{
 	icon_state = "trashbag3";
-	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag"
+/obj/item/storage/bag/trash{
+	icon_state = "trashbag3"
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)

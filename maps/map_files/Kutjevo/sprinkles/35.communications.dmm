@@ -1,49 +1,88 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"aA" = (
+/obj/structure/girder/displaced,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/auto_turf/sand/layer0,
+/area/template_noop)
+"cm" = (
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 8
+	},
+/area/template_noop)
+"cL" = (
+/obj/item/clothing/suit/storage/hazardvest/yellow,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"cW" = (
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"di" = (
 /turf/open/floor/kutjevo/tan/grey_edge{
 	dir = 1
 	},
 /area/template_noop)
-"b" = (
-/obj/structure/machinery/constructable_frame,
+"dl" = (
+/obj/structure/girder/displaced,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/sand/layer0,
+/area/template_noop)
+"gD" = (
+/obj/item/stack/rods,
+/obj/item/tool/warning_cone,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"c" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
-	req_one_access = null
+"ix" = (
+/obj/item/tool/warning_cone,
+/obj/item/paper/crumpled{
+	pixel_x = 5;
+	pixel_y = -8
+	},
+/obj/item/paper/crumpled{
+	pixel_x = -4;
+	pixel_y = 14
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"lD" = (
+/obj/structure/machinery/door_display{
+	desc = "A work schedule monitor. It appears to be broken."
 	},
 /turf/closed/wall/kutjevo/colony,
 /area/template_noop)
-"d" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"e" = (
-/obj/structure/girder/displaced,
-/turf/open/auto_turf/sand/layer0,
-/area/template_noop)
-"f" = (
-/obj/structure/window/framed/kutjevo,
-/obj/structure/barricade/handrail/kutjevo{
-	layer = 3.1
+"lZ" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = 5
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"g" = (
-/turf/open/floor/kutjevo/tan,
-/area/template_noop)
-"h" = (
+"mv" = (
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
 /area/template_noop)
-"i" = (
-/obj/item/clothing/head/hardhat/orange,
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 1
-	},
+"nn" = (
+/obj/structure/machinery/constructable_frame,
+/turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"j" = (
+"oB" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	layer = 2.8
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"oK" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"oU" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"pP" = (
 /obj/structure/largecrate/random{
 	pixel_y = 19;
 	layer = 3.02
@@ -60,22 +99,25 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"k" = (
+"qp" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 4
+	dir = 1
 	},
 /area/template_noop)
-"l" = (
-/obj/structure/machinery/door_display{
-	desc = "A work schedule monitor. It appears to be broken."
-	},
-/turf/closed/wall/kutjevo/colony,
+"qI" = (
+/obj/structure/window/framed/kutjevo,
+/turf/open/space/basic,
 /area/template_noop)
-"m" = (
+"qM" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/tool/warning_cone,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"rm" = (
 /obj/structure/surface/rack,
 /obj/item/storage/backpack/marine/satchel{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
@@ -87,23 +129,27 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"n" = (
-/obj/item/stack/sheet/metal,
+"ry" = (
 /obj/item/stack/rods,
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/auto_turf/sand/layer0,
-/area/template_noop)
-"o" = (
 /obj/structure/fence,
-/turf/open/auto_turf/sand/layer0,
+/turf/open/auto_turf/sand/layer1,
 /area/template_noop)
-"p" = (
+"rG" = (
+/obj/item/stack/rods,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"rP" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"sQ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan/grey_edge{
 	dir = 1
 	},
 /area/template_noop)
-"q" = (
+"uS" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp/on{
 	pixel_x = 9;
@@ -120,30 +166,22 @@
 	pixel_x = 9;
 	pixel_y = 3
 	},
+/obj/item/paper{
+	pixel_x = -5;
+	info = "It has been three weeks since I was relocated to the 'finished' comms office. Me and Paul have been trying to work with this infernal racket going on, but by all that's holy I can't think- let alone recalibrate the new computers. Speaking of, these new computers are all fine and dandy but the sensor uplink tower still hasn't been setup properly after the accident with the apprentice, you know, the one that pilled up those debris filled trash bags by Paul's 'desk' and then left. Anyway, like you said the builders didn't lay down the protective matting for the new flooring so there's dirt everywhere. For your sake Jeff, I hope your holiday doesn't end too soon, you still don't even have a desk yet."
+	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"r" = (
-/obj/structure/fence{
-	desc = "A large metal mesh strewn between two poles. A 'Keep Out! Under Construction' sign dangles from one of the fence posts."
-	},
-/turf/open/auto_turf/sand/layer1,
+"wh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/sand/layer0,
 /area/template_noop)
-"s" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_one_access = null
-	},
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 1
-	},
-/area/template_noop)
-"t" = (
-/turf/closed/wall/kutjevo/colony,
-/area/template_noop)
-"u" = (
-/obj/effect/decal/cleanable/blood/drip,
+"wC" = (
+/obj/structure/surface/rack,
+/obj/item/notepad/blue,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"v" = (
+"wO" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	layer = 3.0;
@@ -160,12 +198,154 @@
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
 	name = "trash bag";
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/storage/backpack/marine/satchel{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/obj/item/storage/backpack/marine/satchel{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
 	},
+/obj/item/storage/backpack/marine/satchel{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag"
+	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"w" = (
+"yQ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/power/apc/weak{
+	dir = 1
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"zb" = (
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/template_noop)
+"zh" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"Af" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 4
+	},
+/area/template_noop)
+"Ca" = (
+/obj/structure/window/framed/kutjevo,
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.1
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"Ci" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 1
+	},
+/area/template_noop)
+"DY" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 4
+	},
+/area/template_noop)
+"EK" = (
+/obj/structure/window/framed/kutjevo,
+/turf/open/floor/plating/kutjevo,
+/area/template_noop)
+"GH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper/crumpled{
+	pixel_x = -4;
+	pixel_y = 14
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"IR" = (
+/obj/item/paper/crumpled,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"Jg" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 4
+	},
+/area/template_noop)
+"Jz" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 4
+	},
+/area/template_noop)
+"Ks" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"KC" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1;
+	pixel_y = 11
+	},
+/obj/item/paper/crumpled{
+	pixel_x = -12;
+	pixel_y = 14
+	},
+/obj/item/paper/crumpled{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 5;
+	pixel_y = -8
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"KD" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/closed/wall/kutjevo/colony,
+/area/template_noop)
+"LG" = (
+/obj/structure/fence,
+/turf/open/auto_turf/sand/layer0,
+/area/template_noop)
+"LO" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"LR" = (
+/obj/structure/prop/almayer/computers/sensor_computer2,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"MV" = (
 /obj/structure/largecrate/random{
 	pixel_y = 1
 	},
@@ -185,261 +365,204 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"x" = (
-/obj/structure/machinery/photocopier,
+"Nr" = (
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"y" = (
-/obj/structure/girder/displaced,
+"Or" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"Pp" = (
+/obj/structure/prop/almayer/computers/sensor_computer1,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"Re" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"Rj" = (
+/obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/item/tool/warning_cone,
 /turf/open/auto_turf/sand/layer0,
 /area/template_noop)
-"z" = (
+"RK" = (
+/turf/closed/wall/kutjevo/colony,
+/area/template_noop)
+"SZ" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/template_noop)
+"Ul" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/template_noop)
+"Um" = (
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 4
+	},
+/area/template_noop)
+"Vc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone,
+/turf/open/auto_turf/sand/layer0,
+/area/template_noop)
+"Xi" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/template_noop)
+"Xq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 8
+	},
+/area/template_noop)
+"XS" = (
+/obj/structure/fence{
+	desc = "A large metal mesh strewn between two poles. A 'Keep Out! Under Construction' sign dangles from one of the fence posts."
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/template_noop)
+"Yo" = (
+/obj/item/clothing/head/hardhat/orange,
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 1
+	},
+/area/template_noop)
+"YG" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"A" = (
+"YO" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 8
+	},
+/area/template_noop)
+"Zf" = (
 /obj/structure/window/framed/kutjevo,
 /obj/structure/barricade/handrail/kutjevo{
 	layer = 3
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
-"B" = (
-/obj/item/stack/sheet/metal,
-/obj/item/stack/rods,
-/obj/effect/spawner/random/toolbox,
-/turf/open/auto_turf/sand/layer0,
-/area/template_noop)
-"C" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"D" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/tool,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"E" = (
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 4
-	},
-/area/template_noop)
-"F" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1;
-	pixel_y = 11
-	},
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"G" = (
-/obj/structure/prop/almayer/computers/sensor_computer1,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"H" = (
-/obj/item/stack/rods,
-/obj/structure/fence,
-/turf/open/auto_turf/sand/layer1,
-/area/template_noop)
-"I" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"J" = (
-/obj/structure/surface/rack,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"K" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_one_access = null
-	},
-/turf/open/floor/kutjevo/tan/grey_edge,
-/area/template_noop)
-"L" = (
-/obj/structure/machinery/blackbox_recorder,
-/obj/structure/machinery/light,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"M" = (
-/obj/item/stack/rods,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"N" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 8
-	},
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"O" = (
-/obj/structure/prop/almayer/computers/sensor_computer2,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"P" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
-	req_one_access = null
-	},
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 8
-	},
-/area/template_noop)
-"Q" = (
-/obj/structure/bed/chair{
-	dir = 4;
-	pixel_x = 4;
-	pixel_y = 5
-	},
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"R" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/item/prop/alien/hugger,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"S" = (
-/obj/structure/window/framed/kutjevo,
-/turf/open/space/basic,
-/area/template_noop)
-"U" = (
-/turf/open/auto_turf/sand/layer0,
-/area/template_noop)
-"V" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
-/area/template_noop)
-"W" = (
-/turf/open/floor/kutjevo/tan/grey_edge{
-	dir = 8
-	},
-/area/template_noop)
-"X" = (
-/obj/structure/machinery/light,
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/spawner/random/tool,
-/turf/open/floor/kutjevo/grey/plate,
-/area/template_noop)
-"Y" = (
-/turf/open/floor/kutjevo/tan/grey_edge,
-/area/template_noop)
-"Z" = (
-/obj/structure/window/framed/kutjevo,
-/turf/open/floor/plating/kutjevo,
-/area/template_noop)
 
 (1,1,1) = {"
-V
-t
-t
-t
-s
-K
-t
-t
-t
-t
-t
-t
+SZ
+RK
+RK
+RK
+qp
+Ul
+RK
+RK
+RK
+RK
+RK
+RK
 "}
 (2,1,1) = {"
-t
-j
-z
-z
-a
-Y
-f
-G
-x
-b
-L
-t
+RK
+pP
+cW
+cW
+Ci
+zb
+Ca
+Pp
+oK
+nn
+oU
+RK
 "}
 (3,1,1) = {"
-c
-u
-u
-z
-a
-Y
-A
-q
-F
-z
-z
-t
+KD
+Nr
+Ks
+cW
+di
+Xi
+Zf
+uS
+KC
+IR
+Or
+RK
 "}
 (4,1,1) = {"
-V
-w
-z
-C
-i
-Y
-l
-O
-z
-z
-z
-Z
+SZ
+MV
+Or
+rP
+Yo
+zb
+lD
+LR
+ix
+GH
+Re
+EK
 "}
 (5,1,1) = {"
-S
-J
-z
-R
-p
-g
-W
-W
-W
-W
-W
-P
+qI
+wC
+rG
+LO
+sQ
+cL
+cm
+Xq
+Xq
+cm
+cm
+YO
 "}
 (6,1,1) = {"
-S
-m
-Q
-b
-z
-E
-E
-E
-E
-E
-U
-k
+qI
+rm
+lZ
+nn
+Or
+Af
+Um
+Jg
+Um
+Jz
+wh
+DY
 "}
 (7,1,1) = {"
-V
-I
-N
-v
-M
-D
-n
-e
-d
-B
-X
-t
+SZ
+yQ
+oB
+wO
+gD
+zh
+Rj
+dl
+YG
+Vc
+qM
+RK
 "}
 (8,1,1) = {"
-V
-h
-t
-t
-y
-t
-o
-o
-h
-H
-r
-h
+SZ
+mv
+RK
+RK
+aA
+RK
+LG
+LG
+mv
+ry
+XS
+mv
 "}

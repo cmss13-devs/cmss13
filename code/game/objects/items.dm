@@ -828,6 +828,15 @@ cases. Override_icon_state should be a list.*/
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
+
+	// Due to how qdel calls back when the item is destroyed we lack a user, if we are still zoomed in and the item is being destroyed it should be in the direct contents of the user (hypothetically).
+	// When you read this in 10 years from now when it stops working uuuh sorry about that.
+	if(!user)
+		user = loc
+		if(!istype(user))
+			log_debug("[src] called unzoom without a user and user was not loc. Current loc: [loc ? loc : "null"]")
+			return
+
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNZOOM, user)

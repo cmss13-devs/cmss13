@@ -659,6 +659,7 @@ SUBSYSTEM_DEF(minimaps)
 		if ("menuSelect")
 			if(params["selection"] == "new canvas")
 				updated_canvas = FALSE
+				toolbar_updated_selection = toolbar_color_selection
 				if(!distribute_current_map_png(user))
 					return
 				current_map = get_current_tacmap_data(user, TRUE)

@@ -657,9 +657,10 @@ SUBSYSTEM_DEF(minimaps)
 
 	switch (action)
 		if ("menuSelect")
-			if(params["selection"] == "new canvas")
+			if(params["selection"] != "new canvas") // doing this if it == canvas can cause a latency issue with the stroke.
 				updated_canvas = FALSE
 				toolbar_updated_selection = toolbar_color_selection
+			else
 				if(!distribute_current_map_png(user))
 					return
 				current_map = get_current_tacmap_data(user, TRUE)

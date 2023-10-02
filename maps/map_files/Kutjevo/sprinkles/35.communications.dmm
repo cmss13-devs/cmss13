@@ -292,8 +292,8 @@
 "Q" = (
 /obj/structure/bed/chair{
 	dir = 4;
-	step_y = 5;
-	step_x = 4
+	pixel_x = 4;
+	pixel_y = 5
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)

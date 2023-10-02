@@ -17219,7 +17219,7 @@
 /area/kutjevo/interior/complex/botany)
 "xPU" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = communications
+	insert_tag = "communications"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/construction)
@@ -40198,7 +40198,7 @@ bKH
 xWK
 xWK
 bKH
-xWK
+xPU
 xWK
 bKH
 xWK

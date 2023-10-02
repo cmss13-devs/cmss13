@@ -96,7 +96,7 @@ Quick adjacency (to turf):
 		return TRUE
 
 	// Internal storages have special relationships with the object they are connected to and we still want two depth adjacency for storages
-	if(istype(loc.loc, /obj/item/storage/internal) && recurse > 0)
+	if(istype(loc?.loc, /obj/item/storage/internal) && recurse > 0)
 		return loc.loc.Adjacent(neighbor, recurse)
 
 	if(issurface(loc))

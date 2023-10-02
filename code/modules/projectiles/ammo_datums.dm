@@ -2464,9 +2464,6 @@
 		else
 			M.apply_effect(stun_time, WEAKEN)
 
-
-
-
 /datum/ammo/energy/yautja/rifle/bolt
 	name = "plasma rifle bolt"
 	icon_state = "ion"
@@ -2475,7 +2472,13 @@
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
 	damage = 55
-	penetration = 50
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/energy/yautja/rifle/bolt/on_hit_mob(mob/hit_mob, obj/projectile/hit_projectile)
+	if(isxeno(hit_mob))
+		var/mob/living/carbon/xenomorph/xeno = hit_mob
+		xeno.apply_damage(damage * 0.75, BURN)
+		xeno.interference = 30
 
 /*
 //======

@@ -58,6 +58,8 @@
 	if(Master)
 		Master.OnConfigLoad()
 
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CONFIG_LOADED)
+
 
 /datum/controller/configuration/proc/loadmaplist(filename, maptype)
 	log_config("Loading config file [filename]...")

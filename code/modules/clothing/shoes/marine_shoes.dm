@@ -45,6 +45,13 @@
 /obj/item/clothing/shoes/marine/jungle/knife
 	knife_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/brown
+	icon_state = "marine_brown"
+	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time. These are brown."
+
+/obj/item/clothing/shoes/marine/brown/knife
+	knife_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/marine/monkey
 	name = "monkey combat boots"
 	desc = "A sturdy pair of combat boots, the reflection of the polished leather reflects your true self."
@@ -54,6 +61,7 @@
 
 /obj/item/clothing/shoes/marine/upp
 	name = "military combat boots"
+	icon_state = "marine_brown"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_MEDIUM

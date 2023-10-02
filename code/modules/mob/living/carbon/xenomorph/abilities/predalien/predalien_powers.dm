@@ -24,7 +24,7 @@
 
 			var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in human
 			if(isyautja(human) && YG)
-				if(YG.cloaked)
+				if(HAS_TRAIT(human, TRAIT_CLOAKED))
 					YG.decloak(human, TRUE, DECLOAK_PREDALIEN)
 
 				YG.cloak_timer = xeno_cooldown * 0.1

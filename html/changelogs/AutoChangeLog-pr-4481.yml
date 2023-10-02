@@ -1,0 +1,5 @@
+author: "Sulaboy, Hidgamer, Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Adds the surgical drop pouch item. It comes in green, blue and black. Only available from the synthetic vendor currently."
+  - imageadd: "Adds sprites for the surgical drop pouches."

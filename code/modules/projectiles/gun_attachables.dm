@@ -1217,9 +1217,9 @@ Defined in conflicts.dm of the #defines folder.
 	/// If the gun should experience scope drift
 	var/scope_drift = TRUE
 	/// % chance for the scope to drift on process with a spotter using their scope
-	var/spotted_drift_chance = 33
+	var/spotted_drift_chance = 25
 	/// % chance for the scope to drift on process without a spotter using their scope
-	var/unspotted_drift_chance = 100
+	var/unspotted_drift_chance = 90
 	/// If the scope should use do_afters for adjusting and moving the sight
 	var/slow_use = TRUE
 	/// Cooldown for interacting with the scope's adjustment or position
@@ -1238,6 +1238,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/darkness_view = 12
 	/// If there is currently a spotter using the linked spotting scope
 	var/spotter_spotting = FALSE
+	/// How much time it takes to adjust the position of the scope. Adjusting the offset will take half of this time
+	var/adjust_delay = 1 SECONDS
 
 /obj/item/attachable/vulture_scope/Initialize(mapload, ...)
 	. = ..()
@@ -1289,8 +1291,8 @@ Defined in conflicts.dm of the #defines folder.
 				if(!COOLDOWN_FINISHED(src, scope_interact_cd))
 					return
 				to_chat(scoper, SPAN_NOTICE("You begin adjusting [src]..."))
-				COOLDOWN_START(src, scope_interact_cd, 0.5 SECONDS)
-				if(!do_after(scoper, 0.5 SECONDS))
+				COOLDOWN_START(src, scope_interact_cd, adjust_delay / 2)
+				if(!do_after(scoper, 0.4 SECONDS))
 					return
 
 			adjust_offset(direction)
@@ -1307,8 +1309,8 @@ Defined in conflicts.dm of the #defines folder.
 					return
 
 				to_chat(scoper, SPAN_NOTICE("You begin moving [src]..."))
-				COOLDOWN_START(src, scope_interact_cd, 1 SECONDS)
-				if(!do_after(scoper, 1 SECONDS))
+				COOLDOWN_START(src, scope_interact_cd, adjust_delay)
+				if(!do_after(scoper, 0.8 SECONDS))
 					return
 
 			adjust_position(direction)
@@ -1535,7 +1537,7 @@ Defined in conflicts.dm of the #defines folder.
 	recalculate_scope_pos()
 	gun_user.overlay_fullscreen("vulture", /atom/movable/screen/fullscreen/vulture)
 	scope_element = new(src)
-	gun_user.client.screen += scope_element
+	gun_user.client.add_to_screen(scope_element)
 	gun_user.see_in_dark += darkness_view
 	gun_user.lighting_alpha = 127
 	gun_user.sync_lighting_plane_alpha()
@@ -1564,7 +1566,7 @@ Defined in conflicts.dm of the #defines folder.
 	stop_holding_breath()
 	scope_user_initial_dir = null
 	scoper.clear_fullscreen("vulture")
-	scoper.client.screen -= scope_element
+	scoper.client.remove_from_screen(scope_element)
 	scoper.see_in_dark -= darkness_view
 	scoper.lighting_alpha = 127
 	scoper.sync_lighting_plane_alpha()
@@ -3244,6 +3246,8 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	var/initial_mob_dir = NORTH // the dir the mob faces the moment it deploys the bipod
 	var/bipod_deployed = FALSE
+	/// If this should anchor the user while in use
+	var/heavy_bipod = FALSE
 
 /obj/item/attachable/bipod/New()
 	..()
@@ -3309,6 +3313,9 @@ Defined in conflicts.dm of the #defines folder.
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 		G.remove_firemode(GUN_FIREMODE_AUTOMATIC)
 
+	if(heavy_bipod)
+		user.anchored = FALSE
+
 	if(!QDELETED(G))
 		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 		update_icon()
@@ -3347,6 +3354,9 @@ Defined in conflicts.dm of the #defines folder.
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 					G.add_firemode(GUN_FIREMODE_AUTOMATIC)
+
+				if(heavy_bipod)
+					user.anchored = TRUE
 
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))
@@ -3396,6 +3406,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A set of rugged telescopic poles to keep a weapon stabilized during firing."
 	icon_state = "bipod_m60"
 	attach_icon = "vulture_bipod"
+	heavy_bipod = TRUE
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"

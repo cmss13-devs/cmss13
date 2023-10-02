@@ -208,6 +208,9 @@
 	/// The alpha of darkness we set to for the mob while the visor is on, not completely fullbright but see-able
 	var/lighting_alpha = 100
 
+	/// A slight glowing green light while the NVG is activated, is initialized as in the attached_helmet's contents
+	var/atom/movable/nvg_light/on_light
+
 /obj/item/device/helmet_visor/night_vision/Initialize(mapload, ...)
 	. = ..()
 	power_cell = new(src)
@@ -228,6 +231,8 @@
 	user.overlay_fullscreen("nvg_visor", /atom/movable/screen/fullscreen/flash/noise/nvg)
 	user.overlay_fullscreen("nvg_visor_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
 	user.update_sight()
+	on_light = new(attached_helmet)
+	on_light.set_light_on(TRUE)
 	START_PROCESSING(SSobj, src)
 
 /obj/item/device/helmet_visor/night_vision/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
@@ -235,6 +240,7 @@
 	user.clear_fullscreen("nvg_visor", 0.5 SECONDS)
 	user.clear_fullscreen("nvg_visor_blur", 0.5 SECONDS)
 
+	qdel(on_light)
 	UnregisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT)
 
 	user.update_sight()
@@ -280,6 +286,13 @@
 	user.sync_lighting_plane_alpha()
 
 #undef NVG_VISOR_USAGE
+
+/atom/movable/nvg_light
+	light_power = 0.5
+	light_range = 1
+	light_color = COLOUR_GREEN
+	light_system = MOVABLE_LIGHT
+	light_flags = LIGHT_ATTACHED
 
 /obj/item/device/helmet_visor/night_vision/marine_raider
 	name = "advanced night vision optic"

@@ -87,7 +87,7 @@
 // 2 M39 cabinet are in medical armory (4 M39 and 12 mags)
 /obj/structure/closet/secure_closet/guncabinet/red/armory_m39_submachinegun
 
-/obj/structure/closet/secure_closet/guncabinet/red/armory_m39/Initialize()
+/obj/structure/closet/secure_closet/guncabinet/red/armory_m39_submachinegun/Initialize()
 	. = ..()
 	new /obj/item/weapon/gun/smg/m39(src)
 	new /obj/item/weapon/gun/smg/m39(src)

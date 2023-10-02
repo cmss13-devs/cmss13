@@ -1047,7 +1047,7 @@ function createOptionsButton() {
 	button.style.order = 999; // last please
 	button.style.marginLeft = "auto";
 	button.style.marginRight = "2%";
-	menu.appendChild(B);
+	menu.appendChild(button);
 }
 
 function openOptionsMenu() {

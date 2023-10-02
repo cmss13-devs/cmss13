@@ -65,7 +65,8 @@
 
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
+		if(security_level < SEC_LEVEL_RED)
+			dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
 		if(!SSticker.mode.ert_dispatched)
 			dat += "<li><A href='?src=\ref[src];triggerevent=distress_beacon'>Distress Beacon</A></li>"
 
@@ -154,9 +155,6 @@
 		to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 		return FALSE
 
-	if(!SSticker.mode)
-		return FALSE //Not a game mode?
-
 	if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
 		to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 		return FALSE
@@ -164,6 +162,7 @@
 	if(security_level == SEC_LEVEL_DELTA)
 		to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 		return FALSE
+
 	if(security_level < SEC_LEVEL_RED)
 		to_chat(usr, SPAN_WARNING("The ship security level is not high enough to call a distress beacon!"))
 		return FALSE
@@ -173,7 +172,10 @@
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			C << 'sound/effects/sos-morse-code.ogg'
-	SSticker.mode.authorized_request_ert(usr)
+	if(SSticker.mode.is_in_endgame)
+		SSticker.mode.authorized_request_ert(usr)
+	else
+		SSticker.mode.request_ert(usr)
 	to_chat(usr, SPAN_NOTICE("An emergency distress beacon has been sent to nearby vessels."))
 	cooldown_request = world.time
 	return

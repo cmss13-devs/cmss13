@@ -26,7 +26,14 @@
 		return FALSE
 	if(ert_dispatched) //safety check we dont want ert spam
 		return FALSE
-	message_admins("[key_name(user)] has launched a keycard Distress Beacon![ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+	message_admins("[key_name(user)] has launched a keycard Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[user]'>DENY</A>)[ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+	addtimer(CALLBACK(src, PROC_REF(process_ert_call)), 15 SECONDS)
+	return TRUE
+
+/datum/game_mode/proc/process_ert_call(user)
+	if(distress_cancel)
+		distress_cancel = FALSE
+		return
 	activate_distress()
 
 //The distress call parent. Cannot be called itself due to "name" being a filtered target.

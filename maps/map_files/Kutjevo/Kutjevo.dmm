@@ -17217,6 +17217,12 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/kutjevo/colors/red/tile,
 /area/kutjevo/interior/complex/botany)
+"xPU" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = communications
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/construction)
 "xQz" = (
 /turf/open/floor/kutjevo/colors/cyan/inner_corner{
 	dir = 1
@@ -39694,7 +39700,7 @@ xWK
 bKH
 xWK
 xWK
-xWK
+xPU
 xWK
 jhx
 bKH

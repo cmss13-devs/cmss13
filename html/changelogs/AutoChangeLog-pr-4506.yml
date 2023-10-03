@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Add the last larva queue message to observer's status panel"

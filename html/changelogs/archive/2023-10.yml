@@ -18,3 +18,27 @@
   realforest2001:
   - balance: Reduces power cost for plasma caster use, and creation of thwei crystals/health
       capsules.
+2023-10-03:
+  Drathek:
+  - rscadd: Add the last larva queue message to observer's status panel
+  Huffie56:
+  - qol: remove welding google from squad comtech vendor to avoid  him to waste point
+      since tool vendor have them for free.
+  JackieEstegado:
+  - bugfix: Fixed runtime that could happen when melleing an egg.
+  Morrow:
+  - balance: If a mob is on top of a reflective wall the wall no longer functions
+  - balance: Bullets will not longer get eaten by xeno special structures unless you
+      click directly on them
+  - bugfix: '"Fixed" missing window frame icon states'
+  Private Tristan:
+  - balance: all resin fruits now contain 30u of fruit resin along with their secondary
+      reagents.
+  - balance: Alacrit fruits now contain catecholamine plasma instead of pheromone
+      plasma.
+  Steelpoint:
+  - rscadd: Xenomorph hives can now form an alliance with Colonial Marshals.
+  Sulaboy, Hidgamer, Steelpoint:
+  - rscadd: Adds the surgical drop pouch item. It comes in green, blue and black.
+      Only available from the synthetic vendor currently.
+  - imageadd: Adds sprites for the surgical drop pouches.

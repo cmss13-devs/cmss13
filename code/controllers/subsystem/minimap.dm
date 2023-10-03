@@ -636,6 +636,9 @@ SUBSYSTEM_DEF(minimaps)
 	if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
 		data["canDraw"] = TRUE
 		data["canViewTacmap"] = TRUE
+		if(!distribute_current_map_png(user))
+			return data
+		current_map = get_current_tacmap_data(user, TRUE)
 
 	return data
 

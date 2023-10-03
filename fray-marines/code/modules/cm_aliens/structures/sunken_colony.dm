@@ -84,6 +84,7 @@
 			playsound(loc, strike_sound, 25, 1)
 			new /obj/effect/impale(get_turf(AM), damage, strike_delay)
 
+//Underground strike effect
 /obj/effect/impale
 	name = "impaling chitin"
 	icon = 'fray-marines/icons/obj/structures/alien/effects.dmi'

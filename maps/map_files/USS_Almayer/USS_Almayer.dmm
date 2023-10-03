@@ -30276,12 +30276,9 @@
 	},
 /area/almayer/squads/req)
 "dpn" = (
-/obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/item/reagent_container/food/condiment/enzyme,
-/obj/item/reagent_container/food/condiment/enzyme,
 /obj/structure/transmitter{
 	name = "Kitchen Telephone";
 	phone_category = "Almayer";
@@ -30289,6 +30286,7 @@
 	pixel_x = -8;
 	pixel_y = 29
 	},
+/obj/structure/closet/secure_closet/freezer/dry,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -34878,9 +34876,8 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "fhQ" = (
-/obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/structure/machinery/light,
-/obj/item/reagent_container/food/condiment/sugar,
+/obj/structure/closet/secure_closet/freezer/groceries,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -46826,10 +46823,10 @@
 	},
 /area/almayer/squads/bravo)
 "ksA" = (
-/obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/freezer/plants,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -57876,7 +57873,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_p)
 "pdt" = (
-/obj/structure/closet/secure_closet/freezer/fridge/groceries,
+/obj/structure/closet/secure_closet/freezer/plants,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

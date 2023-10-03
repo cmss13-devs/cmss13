@@ -191,29 +191,13 @@
 	for(var/i = 0, i < 7, i++)
 		new /obj/item/storage/fancy/egg_box(src)
 	for(var/i = 0, i < 2, i++)
-		/obj/item/storage/box/enzyme(src)
-
-//dry storage
-
-/obj/structure/closet/secure_closet/freezer/groceries
-	name = "Groceries"
-
-/obj/structure/closet/secure_closet/freezer/groceries/Initialize()
-	. = ..()
-	for(var/i = 0, i < 2, i++)
-		new /obj/item/storage/box/milk(src)
-	for(var/i = 0, i < 2, i++)
-		new /obj/item/reagent_container/food/drinks/soymilk(src)
-	for(var/i = 0, i < 7, i++)
-		new /obj/item/storage/fancy/egg_box(src)
-	for(var/i = 0, i < 2, i++)
-		/obj/item/storage/box/enzyme(src)
+		new /obj/item/storage/box/enzyme(src)
 
 //dry storage for dry food only...
 /obj/structure/closet/secure_closet/freezer/dry
 	name = "dry"
 
-/obj/structure/closet/secure_closet/freezer/groceries/Initialize()
+/obj/structure/closet/secure_closet/freezer/dry/Initialize()
 	. = ..()
 	for(var/i = 0, i < 4, i++)
 		new /obj/item/storage/box/flour(src)

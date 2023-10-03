@@ -43,12 +43,6 @@
 #define COMSIG_KG_CLIENT_RADIO_DOWN "keybinding_client_radio_down"
 
 //Human
-#define COMSIG_KB_HUMAN_QUICKEQUIP_DOWN "keybinding_human_quickequip_down"
-#define COMSIG_KB_HUMAN_SECONDARY_DOWN "keybinding_human_secondary_down"
-#define COMSIG_KB_HUMAN_TERTIARY_DOWN "keybinding_human_tertiary_down"
-#define COMSIG_KB_HUMAN_QUATERNARY_DOWN "keybinding_human_quaternary_down"
-#define COMSIG_KB_HUMAN_QUICK_EQUIP_DOWN "keybinding_human_quick_equip_down"
-
 #define COMSIG_KB_HUMAN_ISSUE_ORDER "keybinding_human_issue_order"
 #define COMSIG_KB_HUMAN_ISSUE_ORDER_MOVE "keybinding_human_issue_order_move"
 #define COMSIG_KB_HUMAN_ISSUE_ORDER_HOLD "keybinding_human_issue_order_hold"
@@ -57,11 +51,28 @@
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE "keybinding_human_specialist_activation_one"
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO "keybinding_human_specialist_activation_two"
 
-#define COMSIG_KB_HUMAN_PICK_UP "keybinding_human_pick_up"
-
 #define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
 
 #define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
+
+// Human Inventory Navigation
+#define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"
+#define COMSIG_KB_HUMAN_INTERACT_SLOT_BACK "keybinding_human_interact_slot_back"
+#define COMSIG_KB_HUMAN_INTERACT_SLOT_BELT "keybinding_human_interact_slot_belt"
+#define COMSIG_KB_HUMAN_INTERACT_SLOT_UNIFORM "keybinding_human_interact_slot_uniform"
+#define COMSIG_KB_HUMAN_INTERACT_SLOT_SUIT "keybinding_human_interact_slot_suit"
+#define COMSIG_KB_HUMAN_INTERACT_SLOT_HELMET "keybinding_human_interact_slot_helmet"
+#define COMSIG_KB_HUMAN_INTERACT_SLOT_LEFT_POUCH "keybinding_human_interact_slot_left_pouch"
+#define COMSIG_KB_HUMAN_INTERACT_SLOT_RIGHT_POUCH "keybinding_human_interact_slot_right_pouch"
+#define COMSIG_KB_HUMAN_INTERACT_SUIT_S_STORE "keybinding_human_interact_slot_suit_storage"
+
+#define COMSIG_KB_HUMAN_INTERACT_QUICKEQUIP_DOWN "keybinding_human_interact_quickequip_down"
+#define COMSIG_KB_HUMAN_INTERACT_SECONDARY_DOWN "keybinding_human_interact_secondary_down"
+#define COMSIG_KB_HUMAN_INTERACT_TERTIARY_DOWN "keybinding_human_interact_tertiary_down"
+#define COMSIG_KB_HUMAN_INTERACT_QUATERNARY_DOWN "keybinding_human_interact_quaternary_down"
+#define COMSIG_KB_HUMAN_INTERACT_QUICK_EQUIP_DOWN "keybinding_human_interact_quick_equip_down"
+
+#define COMSIG_KB_HUMAN_INTERACT_PICK_UP "keybinding_human_interact_pick_up"
 
 // Human Combat
 #define COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP "keybinding_human_weapon_fieldstrip"
@@ -199,6 +210,7 @@
 #define CATEGORY_CARBON "CARBON"
 #define CATEGORY_HUMAN "HUMAN"
 #define CATEGORY_HUMAN_COMBAT "HUMAN COMBAT"
+#define CATEGORY_HUMAN_INVENTORY "HUMAN INVENTORY"
 #define CATEGORY_ROBOT "ROBOT"
 #define CATEGORY_YAUTJA "YAUTJA"
 #define CATEGORY_MISC "MISC"

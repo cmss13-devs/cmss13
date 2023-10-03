@@ -29,6 +29,11 @@
 	icon_state = "coin_silver"
 	black_market_value = 25
 
+//CO coin
+/obj/item/coin/silver/falcon
+	name = "falling falcons challenge coin"
+	desc = "A small coin, bearing the falling falcons insignia."
+
 /obj/item/coin/copper
 	name = "copper coin"
 	desc = "A familiar, but cheap form of currency."

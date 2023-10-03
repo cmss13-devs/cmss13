@@ -1641,15 +1641,7 @@
 	},
 /area/space)
 "afo" = (
-/obj/structure/safe,
-/obj/item/moneybag,
-/obj/item/clothing/glasses/monocle,
-/obj/item/weapon/telebaton,
-/obj/item/book/codebook,
-/obj/item/coin/silver{
-	desc = "A small coin, bearing the falling falcons insignia.";
-	name = "falling falcons challenge coin"
-	},
+/obj/structure/safe/co_office,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "afq" = (
@@ -15640,15 +15632,7 @@
 	},
 /area/almayer/living/bridgebunks)
 "bhM" = (
-/obj/structure/safe,
-/obj/item/coin/platinum,
-/obj/item/spacecash/c1000/counterfeit,
-/obj/item/spacecash/c1000/counterfeit,
-/obj/item/clothing/accessory/storage/holster,
-/obj/item/weapon/gun/pistol/es4,
-/obj/item/ammo_magazine/pistol/es4,
-/obj/item/ammo_magazine/pistol/es4,
-/obj/item/clothing/suit/armor/bulletproof,
+/obj/structure/safe/cl_office,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bhT" = (

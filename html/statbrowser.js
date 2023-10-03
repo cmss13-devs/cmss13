@@ -349,7 +349,7 @@ function draw_debug() {
 }
 function draw_status() {
 	const satus_tab_map_href_exception =
-		"<a href='?MapView=1'>Click To View Tactical Map</a>";
+		"<a href='?MapView=1'>View Tactical Map</a>";
 	if (!document.getElementById("Status")) {
 		createStatusTab("Status");
 		current_tab = "Status";

@@ -57167,7 +57167,7 @@
 	},
 /area/almayer/medical/hydroponics)
 "oMd" = (
-/obj/structure/closet/secure_closet/freezer/meat,
+/obj/structure/closet/secure_closet/freezer/fish_stock,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -72384,6 +72384,12 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
+"vmO" = (
+/obj/structure/closet/secure_closet/freezer/meat_stock,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/grunt_rnr)
 "vmW" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -113142,7 +113148,7 @@ loY
 wXI
 nUd
 lkd
-oMd
+vmO
 bDs
 gSk
 oDE

@@ -208,7 +208,7 @@
 		return
 
 	user.animation_attack_on(src)
-	if(W.attack_verb.len)
+	if(length(W.attack_verb))
 		visible_message(SPAN_DANGER("\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]"))
 	else
 		visible_message(SPAN_DANGER("\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]"))

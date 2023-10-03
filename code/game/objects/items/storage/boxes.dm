@@ -766,6 +766,7 @@
 
 //meat
 /obj/item/storage/box/meat
+	name = "\improper Meat Box"
 
 /obj/item/storage/box/meat/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
@@ -773,6 +774,7 @@
 
 //fish
 /obj/item/storage/box/fish
+	name = "\improper Fish Box"
 
 /obj/item/storage/box/fish/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
@@ -780,6 +782,7 @@
 
 //milk
 /obj/item/storage/box/milk
+	name = "\improper Milk Box"
 
 /obj/item/storage/box/milk/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
@@ -787,6 +790,7 @@
 
 //soymilk
 /obj/item/storage/box/soymilk
+	name = "\improper Soymilk Box"
 
 /obj/item/storage/box/soymilk/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
@@ -794,6 +798,7 @@
 
 //enzyme
 /obj/item/storage/box/enzyme
+	name = "\improper Enzyme Box"
 
 /obj/item/storage/box/enzyme/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
@@ -801,6 +806,7 @@
 
 //flour
 /obj/item/storage/box/flour
+	name = "\improper Flour Box"
 
 /obj/item/storage/box/flour/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
@@ -808,6 +814,7 @@
 
 //sugar
 /obj/item/storage/box/sugar
+	name = "\improper Sugar Box"
 
 /obj/item/storage/box/sugar/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
@@ -815,6 +822,7 @@
 
 //potato
 /obj/item/storage/box/potato
+	name = "\improper Potato Box"
 
 /obj/item/storage/box/potato/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)

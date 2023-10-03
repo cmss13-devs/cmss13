@@ -2385,7 +2385,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "fray-marines\code\game\objects\items\weapons\st_equip.dm"
 #include "fray-marines\code\game\objects\items\weapons\st_hammer_stacks.dm"
 #include "fray-marines\code\modules\cm_aliens\structures\lessers_burrow.dm"
-#include "fray-marines\code\modules\cm_aliens\structures\sunken_colony.dm"
+#include "fray-marines\code\modules\cm_aliens\structures\special_structure.dm"
 #include "fray-marines\code\modules\gear_presets\usmc.dm"
 #include "fray-marines\code\modules\mob\living\carbon\xenomorph\Abilities.dm"
 #include "fray-marines\code\modules\mob\living\simple_animal\hostile\alien.dm"

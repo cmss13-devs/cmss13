@@ -157,3 +157,37 @@
 			containers++
 		if(containers > 3)
 			break
+
+//almayer
+
+//meat surplus
+/obj/structure/closet/secure_closet/freezer/meat_stock
+	name = "meat"
+
+/obj/structure/closet/secure_closet/freezer/meat_stock/Initialize()
+	. = ..()
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/storage/box/meat(src)
+
+//fish surplus
+/obj/structure/closet/secure_closet/freezer/fish_stock
+	name = "fish"
+
+/obj/structure/closet/secure_closet/freezer/fish_stock/Initialize()
+	. = ..()
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/storage/box/fish(src)
+/*
+//plants
+/obj/structure/closet/secure_closet/freezer/plants
+	name = "plants"
+
+/obj/structure/closet/secure_closet/freezer/plants/Initialize()
+	. = ..()
+//groceries to hold milk etc...
+/obj/structure/closet/secure_closet/freezer/groceries
+	name = "Groceries"
+
+/obj/structure/closet/secure_closet/freezer/groceries/Initialize()
+	. = ..()
+*/

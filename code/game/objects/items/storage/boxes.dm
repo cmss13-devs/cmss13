@@ -760,3 +760,20 @@
 	else if(!isopened)
 		isopened = 1
 		icon_state = "mealpackopened"
+
+
+//food boxes for storage in bulk
+
+//meat
+/obj/item/storage/box/meat
+
+/obj/item/storage/box/meat/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/meat/monkey(src)
+
+//fish
+/obj/item/storage/box/fish
+
+/obj/item/storage/box/fish/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/carpmeat(src)

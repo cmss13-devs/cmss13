@@ -32,6 +32,8 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/securecom/Initialize()
 	. = ..()
+	new /obj/item/storage/box/kit/honorguard(src)
+	new /obj/item/storage/box/kit/honorguard(src)
 	GLOB.co_secure_boxes += src
 
 /obj/structure/closet/secure_closet/securecom/Destroy()

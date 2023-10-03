@@ -283,8 +283,8 @@
 
 //this one is air-to-air only
 /obj/structure/ship_ammo/rocket/widowmaker
-	name = "\improper AIM-224/B 'Widowmaker'"
-	desc = "The AIM-224/B missile is a retrofit of the latest in air-to-air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidance warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment but its high velocity makes it reach its target quickly. This one has been modified to be a free-fall bomb as a result of dropship ammo shortages."
+	name = "\improper AIM-224B 'Widowmaker'"
+	desc = "The AIM-224B missile is a retrofit of the latest in air-to-air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidance warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment but its high velocity makes it reach its target quickly. This one has been modified to be a free-fall bomb as a result of dropship ammo shortages."
 	icon_state = "single"
 	travelling_time = 30 //not powerful, but reaches target fast
 	ammo_id = ""
@@ -325,8 +325,8 @@
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/harpoon
-	name = "\improper AGM-84 'Harpoon'"
-	desc = "The AGM-84 Harpoon is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals."
+	name = "\improper AGM-184 'Harpoon II'"
+	desc = "The AGM-184 Harpoon II is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals."
 	icon_state = "harpoon"
 	ammo_id = "s"
 	travelling_time = 50
@@ -340,8 +340,8 @@
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/napalm
-	name = "\improper XN-99 'Napalm'"
-	desc = "The XN-99 'Napalm' is an incendiary missile used to turn specific targeted areas into giant balls of fire for a long time."
+	name = "\improper AGM-99 'Napalm'"
+	desc = "The AGM-99 'Napalm' is an incendiary missile used to turn specific targeted areas into giant balls of fire for a long time."
 	icon_state = "napalm"
 	ammo_id = "n"
 	point_cost = 500
@@ -373,8 +373,8 @@
 //minirockets
 
 /obj/structure/ship_ammo/minirocket
-	name = "mini rocket stack"
-	desc = "A pack of laser guided mini rockets."
+	name = "\improper AGR-59 'Mini-Mike'"
+	desc = "The AGR-59 'Mini-Mike' minirocket is a cheap and efficient means of putting hate down range. Though rockets lack a guidance package, it makes up for it in ammuntion count."
 	icon_state = "minirocket"
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	equipment_type = /obj/structure/dropship_equipment/weapon/minirocket_pod
@@ -410,8 +410,8 @@
 
 
 /obj/structure/ship_ammo/minirocket/incendiary
-	name = "incendiary mini rocket stack"
-	desc = "A pack of laser guided incendiary mini rockets."
+	name = "\improper AGR-59-I 'Mini-Mike'"
+	desc = "The AGR-59-I 'Mini-Mike' incindiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammuntion count."
 	icon_state = "minirocket_inc"
 	point_cost = 500
 	fire_mission_delay = 3 //high cooldown

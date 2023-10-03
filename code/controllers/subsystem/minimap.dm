@@ -577,12 +577,16 @@ SUBSYSTEM_DEF(minimaps)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		current_map = get_current_tacmap_data(user, TRUE)
-		current_svg = get_current_tacmap_data(user, FALSE)
-		if(!current_map)
-			if(!distribute_current_map_png(user))
-				return
+
+
+		var/mob/living/carbon/xenomorph/xeno = user
+		if(ishuman(user) || isxeno(user) && xeno.hivenumber == XENO_HIVE_NORMAL)
 			current_map = get_current_tacmap_data(user, TRUE)
+			current_svg = get_current_tacmap_data(user, FALSE)
+			if(!current_map)
+				if(!distribute_current_map_png(user))
+					return
+				current_map = get_current_tacmap_data(user, TRUE)
 
 
 		user.client.register_map_obj(map_holder.map)
@@ -616,7 +620,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/data = list()
 
 	data["canDraw"] = FALSE
-	data["canViewHome"] = FALSE
+	data["canViewTacmap"] = FALSE
+	data["canViewCanvas"] = TRUE
 	data["isXeno"] = FALSE
 	data["currentMapName"] = SSmapping.configs?[GROUND_MAP].map_name
 
@@ -624,11 +629,13 @@ SUBSYSTEM_DEF(minimaps)
 	if(isxeno(user))
 		xeno_user = user
 		data["isXeno"] = TRUE
-		data["canViewHome"] = TRUE
+		if(xeno_user.hivenumber != XENO_HIVE_NORMAL)
+			data["canViewCanvas"] = FALSE
+		data["canViewTacmap"] = TRUE
 
 	if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user) && xeno_user.hivenumber == XENO_HIVE_NORMAL)
 		data["canDraw"] = TRUE
-		data["canViewHome"] = TRUE
+		data["canViewTacmap"] = TRUE
 
 	return data
 
@@ -637,7 +644,8 @@ SUBSYSTEM_DEF(minimaps)
 
 	data["currentMapName"] = SSmapping.configs?[GROUND_MAP].map_name
 	data["canDraw"] = FALSE
-	data["canViewHome"] = FALSE
+	data["canViewTacmap"] = FALSE
+	data["canViewCanvas"] = TRUE
 	data["isXeno"] = FALSE
 
 	return data

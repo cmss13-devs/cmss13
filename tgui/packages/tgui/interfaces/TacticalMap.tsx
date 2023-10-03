@@ -11,9 +11,10 @@ interface TacMapProps {
   updatedCanvas: boolean;
   themeId: number;
   svgData: any;
-  canViewHome: number;
+  canViewTacmap: number;
   canDraw: number;
   isXeno: boolean;
+  canViewCanvas: number;
   flatImage: string;
   currentMapName: string;
   mapRef: any;
@@ -30,15 +31,15 @@ const PAGES = [
     component: () => ViewMapPanel,
     icon: 'map',
     canAccess: (data) => {
-      return data.canViewHome;
+      return data.canViewTacmap;
     },
   },
   {
     title: 'old canvas',
     component: () => OldMapPanel,
     icon: 'eye',
-    canAccess: () => {
-      return 1;
+    canAccess: (data) => {
+      return data.canViewCanvas;
     },
   },
   {
@@ -136,7 +137,7 @@ const ViewMapPanel = (props, context) => {
   const { data } = useBackend<TacMapProps>(context);
 
   // byond ui can't resist trying to render
-  if (data.canViewHome !== 1) {
+  if (data.canViewTacmap === 0) {
     return <OldMapPanel {...props} context={context} />;
   }
 

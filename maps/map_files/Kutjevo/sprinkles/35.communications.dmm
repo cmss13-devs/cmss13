@@ -45,7 +45,8 @@
 /area/template_noop)
 "lD" = (
 /obj/structure/machinery/door_display{
-	desc = "A work schedule monitor. It appears to be broken."
+	desc = "A work schedule monitor. It appears to be broken.";
+	name = "Schedule Monitor"
 	},
 /turf/closed/wall/kutjevo/colony,
 /area/template_noop)
@@ -78,8 +79,8 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
 "oU" = (
-/obj/structure/machinery/blackbox_recorder,
 /obj/structure/machinery/light,
+/obj/structure/machinery/message_server,
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
 "pP" = (
@@ -119,10 +120,6 @@
 /area/template_noop)
 "rm" = (
 /obj/structure/surface/rack,
-/obj/item/storage/bag/trash{
-	icon_state = "trashbag3";
-	pixel_x = -4
-	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
 "ry" = (
@@ -165,7 +162,8 @@
 /obj/item/paper{
 	info = "It has been three weeks since I was relocated to the 'finished' comms office. Me and Paul have been trying to work with this infernal racket going on, but by all that's holy I can't think- let alone recalibrate the new computers. Speaking of, these new computers are all fine and dandy but the sensor uplink tower still hasn't been setup properly after the accident with the apprentice, you know, the one that piled up those debris filled trash bags by Paul's 'desk' and then left. Anyway, like you said the builders didn't lay down the protective matting for the new flooring so there's dirt everywhere. For your sake Jeff, I hope your holiday doesn't end too soon, you still don't even have a desk yet.";
 	pixel_x = -5;
-	icon_state = "paper_words"
+	icon_state = "paper_words";
+	name = "I should have gone on holiday"
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
@@ -190,23 +188,21 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
-/obj/item/storage/bag/trash{
-	icon_state = "trashbag3";
+/obj/structure/prop/rock{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/prop/rock{
+	layer = 3.1;
+	pixel_y = 3
+	},
+/obj/structure/prop/rock{
 	pixel_x = 5;
-	pixel_y = 6
+	pixel_y = -5
 	},
-/obj/item/storage/bag/trash{
-	icon_state = "trashbag3";
-	pixel_x = -9;
-	pixel_y = 6
-	},
-/obj/item/storage/bag/trash{
-	icon_state = "trashbag3";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/storage/bag/trash{
-	icon_state = "trashbag3"
+/obj/structure/flora/pottedplant/random/unanchored{
+	pixel_y = 16;
+	layer = 3.3
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
@@ -360,10 +356,6 @@
 /area/template_noop)
 "Pp" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
-/obj/item/prop/almayer/flight_recorder/colony{
-	pixel_x = -10;
-	pixel_y = 16
-	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/template_noop)
 "Re" = (

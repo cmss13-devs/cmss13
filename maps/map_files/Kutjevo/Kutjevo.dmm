@@ -2534,6 +2534,14 @@
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/kutjevo/interior/oob)
+"dtV" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/complex/botany/east_tech)
 "duu" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "\improper South Power Shutters"
@@ -40564,7 +40572,7 @@ hws
 qwg
 vcY
 jhS
-htT
+dtV
 dkE
 tfx
 dkE

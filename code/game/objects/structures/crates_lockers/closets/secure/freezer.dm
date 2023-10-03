@@ -192,3 +192,67 @@
 		new /obj/item/storage/fancy/egg_box(src)
 	for(var/i = 0, i < 2, i++)
 		/obj/item/storage/box/enzyme(src)
+
+//dry storage
+
+/obj/structure/closet/secure_closet/freezer/groceries
+	name = "Groceries"
+
+/obj/structure/closet/secure_closet/freezer/groceries/Initialize()
+	. = ..()
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/storage/box/milk(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/drinks/soymilk(src)
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/storage/fancy/egg_box(src)
+	for(var/i = 0, i < 2, i++)
+		/obj/item/storage/box/enzyme(src)
+
+//dry storage for dry food only...
+/obj/structure/closet/secure_closet/freezer/dry
+	name = "dry"
+
+/obj/structure/closet/secure_closet/freezer/groceries/Initialize()
+	. = ..()
+	for(var/i = 0, i < 4, i++)
+		new /obj/item/storage/box/flour(src)
+	new /obj/item/storage/box/sugar(src)
+
+//plant only
+
+/obj/structure/closet/secure_closet/freezer/plants
+	name = "Plants"
+
+/obj/structure/closet/secure_closet/freezer/plants/Initialize()
+	. = ..()
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/apple(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/cabbage(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/carrot(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/chili(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/corn(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/eggplant(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/potato(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/tomato(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/whitebeet(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/cherries(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/lime(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/lemon(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/orange(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/banana(src)

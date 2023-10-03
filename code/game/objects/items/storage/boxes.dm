@@ -798,3 +798,24 @@
 /obj/item/storage/box/enzyme/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
 		new /obj/item/reagent_container/food/condiment/enzyme(src)
+
+//flour
+/obj/item/storage/box/flour
+
+/obj/item/storage/box/flour/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/flour(src)
+
+//sugar
+/obj/item/storage/box/sugar
+
+/obj/item/storage/box/sugar/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/condiment/sugar(src)
+
+//potato
+/obj/item/storage/box/potato
+
+/obj/item/storage/box/potato/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/potato(src)

@@ -1,0 +1,5 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - bugfix: "Re-added previous UPP changes that were lost in soft conflict"
+  - spellcheck: "Removed some ambiguous text about loyalties for UPP survivors"

@@ -80,7 +80,7 @@
 	next_strike = world.time + SUNKEN_COOLDOWN
 	spawn(0.2 SECONDS)
 		distance = get_dist(src, AM)
-		if(distance > SUNKEN_MIN_RANGE)
+		if(distance > SUNKEN_MIN_RANGE && AM.stat != DEAD)
 			playsound(loc, strike_sound, 25, 1)
 			new /obj/effect/impale(get_turf(AM), damage, strike_delay)
 

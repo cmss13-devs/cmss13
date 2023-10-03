@@ -777,3 +777,24 @@
 /obj/item/storage/box/fish/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
 		new /obj/item/reagent_container/food/snacks/carpmeat(src)
+
+//milk
+/obj/item/storage/box/milk
+
+/obj/item/storage/box/milk/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/drinks/milk(src)
+
+//soymilk
+/obj/item/storage/box/soymilk
+
+/obj/item/storage/box/soymilk/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/drinks/soymilk(src)
+
+//enzyme
+/obj/item/storage/box/enzyme
+
+/obj/item/storage/box/enzyme/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/condiment/enzyme(src)

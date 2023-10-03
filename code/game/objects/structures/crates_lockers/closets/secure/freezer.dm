@@ -158,7 +158,7 @@
 		if(containers > 3)
 			break
 
-//almayer
+//almayer surplus storage
 
 //meat surplus
 /obj/structure/closet/secure_closet/freezer/meat_stock
@@ -177,17 +177,18 @@
 	. = ..()
 	for(var/i = 0, i < 2, i++)
 		new /obj/item/storage/box/fish(src)
-/*
-//plants
-/obj/structure/closet/secure_closet/freezer/plants
-	name = "plants"
 
-/obj/structure/closet/secure_closet/freezer/plants/Initialize()
-	. = ..()
-//groceries to hold milk etc...
+//groceries to hold milk in bulk
 /obj/structure/closet/secure_closet/freezer/groceries
 	name = "Groceries"
 
 /obj/structure/closet/secure_closet/freezer/groceries/Initialize()
 	. = ..()
-*/
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/storage/box/milk(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/drinks/soymilk(src)
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/storage/fancy/egg_box(src)
+	for(var/i = 0, i < 2, i++)
+		/obj/item/storage/box/enzyme(src)

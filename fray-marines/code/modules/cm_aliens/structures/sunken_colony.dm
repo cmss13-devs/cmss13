@@ -31,7 +31,7 @@
 	var/datum/shape/rectangle/range_bounds
 
 	appearance_flags = KEEP_TOGETHER
-//	layer = FACEHUGGER_LAYER
+	layer = FACEHUGGER_LAYER
 
 /obj/effect/alien/resin/special/sunken_colony/Initialize(mapload, hive_ref)
 	. = ..()
@@ -66,9 +66,11 @@
 	if (distance <= SUNKEN_MIN_RANGE)
 		return
 
-	var/mob/living/carbon/C = AM
-	if (istype(C) && !ismonkey(C)) //lesser hosts arent dangerous for us
-		if (C.stat == DEAD || C.status_flags & XENO_HOST || linked_hive.is_ally(C))
+	if (iscarbon(AM))
+		var/mob/living/carbon/C = AM
+		if (ismonkey(C)) // lesser hosts arent dangerous to us
+			return
+		if (C.stat == DEAD || linked_hive.is_ally(C) || C.status_flags & XENO_HOST)
 			return
 
 	flick("s_hitting", src)

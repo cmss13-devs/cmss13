@@ -2,8 +2,8 @@
 	name = "CBRN (Squad)"
 	arrival_message = "A CBRN squad has been dispatched to your ship. Stand by."
 	objectives = "Handle the chemical, biological, radiological, or nuclear threat. Further orders may be provided."
-	mob_min = 4
-	mob_max = 7
+	mob_min = 3
+	mob_max = 5
 	max_heavies = 0
 	max_smartgunners = 0
 
@@ -19,14 +19,14 @@
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		arm_equipment(mob, /datum/equipment_preset/uscm/cbrn/leader, TRUE, TRUE)
-		to_chat(mob, SPAN_ROLE_HEADER("You are the CBRN Squad Leader!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are the CBRN Fireteam Leader!"))
 
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(mob, /datum/equipment_preset/uscm/cbrn/medic, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are the CBRN Squad Medic!"))
 
-	else if(engineers < engineers && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
+	else if(engineers < max_engineers && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(mob, /datum/equipment_preset/uscm/cbrn/engineer, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are the CBRN Squad Engineer!"))

@@ -75,6 +75,7 @@
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	role_comm_title = "ComTech"
+	minimap_icon = "engi"
 	skills = /datum/skills/pmc/engineer
 	uniform_type = /obj/item/clothing/under/marine/engineer
 
@@ -119,6 +120,7 @@
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	role_comm_title = "HM"
+	minimap_icon = "medic"
 	skills = /datum/skills/pmc/medic
 	uniform_type = /obj/item/clothing/under/marine/medic
 
@@ -157,11 +159,12 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft(new_human), WEAR_IN_ACCESSORY)
 
 /datum/equipment_preset/uscm/cbrn/leader
-	name = "CBRN Squad Leader"
+	name = "CBRN Fireteam Leader"
 	paygrade = "ME5"
-	assignment = JOB_SQUAD_LEADER
-	rank = JOB_SQUAD_LEADER
-	role_comm_title = "SL"
+	assignment = JOB_SQUAD_TEAM_LEADER
+	rank = JOB_SQUAD_TEAM_LEADER
+	role_comm_title = "TL"
+	minimap_icon = "tl"
 	skills = /datum/skills/pmc/SL
 
 /datum/equipment_preset/uscm/cbrn/leader/load_gear(mob/living/carbon/human/new_human)
@@ -196,6 +199,7 @@
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
 	role_comm_title = "Spc"
+	minimap_icon = "spec"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
 	skills = /datum/skills/commando/deathsquad
 

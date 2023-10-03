@@ -1828,7 +1828,6 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	flags_inventory = BLOCKSHARPOBJ
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/toggle_m3cr_hood)
@@ -1841,14 +1840,14 @@
 	///Typepath of the attached mask
 	var/mask_type = /obj/item/clothing/mask/gas/cbrn
 	///The head clothing that the suit uses as a hood
-	var/obj/item/clothing/head/linked_hood = null
+	var/obj/item/clothing/head/linked_hood
 	///The face clothing that the suit uses as a mask
-	var/obj/item/clothing/mask/linked_mask = null
+	var/obj/item/clothing/mask/linked_mask
 
 /obj/item/clothing/suit/storage/marine/m3cr/Initialize()
-	. = ..()
 	linked_hood = new hood_type(src)
 	linked_mask = new mask_type(src)
+	. = ..()
 
 /obj/item/clothing/suit/storage/marine/m3cr/verb/hood_toggle()
 	set name = "Toggle Hood"
@@ -1962,7 +1961,8 @@
 	name = "Toggle Hood"
 	button.name = name
 	button.overlays.Cut()
-	var/image/button_overlay = image('icons/obj/items/clothing/cm_hats.dmi', button, "cbrn_hood")
+	var/obj/item/clothing/suit/storage/marine/m3cr/armor = user //I have no idea why this works
+	var/image/button_overlay = image(armor.linked_hood.icon, user, armor.linked_hood.icon_state)
 	button.overlays += button_overlay
 
 /datum/action/item_action/specialist/toggle_m3cr_hood/action_activate()

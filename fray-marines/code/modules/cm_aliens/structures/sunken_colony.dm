@@ -20,7 +20,7 @@
 	desc = "A living stationary organism that strikes from below with its powerful claw. Fiercely territorial."
 	icon = 'fray-marines/icons/obj/structures/alien/Buildings.dmi'
 	icon_state = "sunken"
-	health = 300
+	health = 600
 
 	pixel_y = -8
 	pixel_x = -24
@@ -80,7 +80,7 @@
 	next_strike = world.time + SUNKEN_COOLDOWN
 	spawn(0.2 SECONDS)
 		distance = get_dist(src, AM)
-		if(distance > SUNKEN_MIN_RANGE && AM.stat != DEAD)
+		if(distance > SUNKEN_MIN_RANGE && !AM?:stat == DEAD)
 			playsound(loc, strike_sound, 25, 1)
 			new /obj/effect/impale(get_turf(AM), damage, strike_delay)
 

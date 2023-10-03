@@ -1,8 +1,3 @@
-#define QUICK_EQUIP_PRIMARY 1
-#define QUICK_EQUIP_SECONDARY 2
-#define QUICK_EQUIP_TERTIARY 3
-#define QUICK_EQUIP_QUATERNARY 4
-
 /datum/keybinding/human
 	category = CATEGORY_HUMAN
 	weight = WEIGHT_MOB
@@ -108,8 +103,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.issue_order(order)
+	var/mob/living/carbon/human/human_mob = user.mob
+	human_mob.issue_order(order)
 	return TRUE
 
 /datum/keybinding/human/issue_order/move
@@ -144,8 +139,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.spec_activation_one()
+	var/mob/living/carbon/human/human_mob = user.mob
+	human_mob.spec_activation_one()
 	return TRUE
 
 /datum/keybinding/human/specialist_two
@@ -159,24 +154,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.spec_activation_two()
-	return TRUE
-
-/datum/keybinding/human/pick_up
-	hotkey_keys = list("F")
-	classic_keys = list("Unbound")
-	name = "pick_up"
-	full_name = "Pick Up Dropped Items"
-	keybind_signal = COMSIG_KB_HUMAN_PICK_UP
-
-/datum/keybinding/human/pick_up/down(client/user)
-	. = ..()
-	if(.)
-		return
-
-	var/mob/living/carbon/human/human_user = user.mob
-	human_user.pickup_recent()
+	var/mob/living/carbon/human/human_mob = user.mob
+	human_mob.spec_activation_two()
 	return TRUE
 
 /datum/keybinding/human/rotate_chair

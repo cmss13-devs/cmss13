@@ -60,7 +60,7 @@
 
 /datum/game_mode/whiskey_outpost/activate_distress()
 	var/datum/emergency_call/em_call = /datum/emergency_call/wo
-	em_call.activate(FALSE)
+	em_call.activate(TRUE, FALSE)
 	return
 
 /datum/emergency_call/wo/platoon

@@ -1209,6 +1209,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(eta_status)
 			. += "Evacuation: [eta_status]"
 
+	if(client.prefs?.be_special & BE_ALIEN_AFTER_DEATH)
+		if(larva_queue_cached_message)
+			. += larva_queue_cached_message
+
 
 /proc/message_ghosts(message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)

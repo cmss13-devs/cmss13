@@ -102,7 +102,7 @@
 	var/can_hivemind_speak = TRUE
 
 	// Tackles
-	var/tackle_min = 2
+	var/tackle_min = 3
 	var/tackle_max = 7
 	var/tacklestrength_min = 2
 	var/tacklestrength_max = 3

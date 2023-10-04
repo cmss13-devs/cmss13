@@ -196,10 +196,12 @@
 		if(!xeno.counts_for_slots)
 			hive_xenos -= xeno
 
-	if(length(hive_xenos) > (length(GLOB.alive_human_list) * ENDGAME_LARVA_CAP_MULTIPLIER))
+	var/real_total_xeno_count = length(hive_xenos) + linked_hive.stored_larva
+
+	if(real_total_xeno_count > (length(GLOB.alive_human_list) * ENDGAME_LARVA_CAP_MULTIPLIER))
 		return
 
-	linked_hive.partial_larva += length(hive_xenos) * LARVA_ADDITION_MULTIPLIER
+	linked_hive.partial_larva += real_total_xeno_count * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
 

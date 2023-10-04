@@ -66,10 +66,10 @@
 
 //DRy
 
-/obj/structure/closet/secure_closet/dry
+/obj/structure/closet/secure_closet/fridge/dry
 	name = "dry"
 
-/obj/structure/closet/secure_closet/dry/Initialize()
+/obj/structure/closet/secure_closet/fridge/dry/Initialize()
 	. = ..()
 	for(var/i = 0, i < 6, i++)
 		new /obj/item/reagent_container/food/snacks/flour(src)
@@ -125,10 +125,10 @@
 	new /obj/item/storage/box/enzyme(src)
 
 //dry storage for dry food only... not a fridge
-/obj/structure/closet/secure_closet/dry/stock
+/obj/structure/closet/secure_closet/fridge/dry/stock
 	name = "dry"
 
-/obj/structure/closet/secure_closet/dry/stock/Initialize()
+/obj/structure/closet/secure_closet/fridge/dry/stock/Initialize()
 	. = ..()
 	for(var/i = 0, i < 4, i++)
 		new /obj/item/storage/box/flour(src)

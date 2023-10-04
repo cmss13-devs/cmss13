@@ -117,7 +117,7 @@
 		return
 
 	for(var/obj/effect/alien/weeds/weed in T)
-		if(weed.weed_strength >= WEED_LEVEL_HIVE)
+		if(weed.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
 			user.use_plasma(30)
 			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
 

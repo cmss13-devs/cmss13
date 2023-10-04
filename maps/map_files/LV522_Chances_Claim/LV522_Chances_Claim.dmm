@@ -11958,12 +11958,6 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/north_command_centre)
-"fpS" = (
-/obj/item/prop/helmetgarb/helmet_nvg/marsoc,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/lv522/oob)
 "fpW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -99528,7 +99522,7 @@ tiQ
 joK
 cPU
 daL
-fpS
+xcU
 dLz
 xcU
 edk

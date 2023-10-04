@@ -760,3 +760,183 @@
 	else if(!isopened)
 		isopened = 1
 		icon_state = "mealpackopened"
+
+//food boxes for storage in bulk
+
+//meat
+/obj/item/storage/box/meat
+	name = "\improper Meat Box"
+
+/obj/item/storage/box/meat/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/meat/monkey(src)
+
+//fish
+/obj/item/storage/box/fish
+	name = "\improper Fish Box"
+
+/obj/item/storage/box/fish/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/carpmeat(src)
+
+//milk
+/obj/item/storage/box/milk
+	name = "\improper Milk Box"
+
+/obj/item/storage/box/milk/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/drinks/milk(src)
+
+//soymilk
+/obj/item/storage/box/soymilk
+	name = "\improper Soymilk Box"
+
+/obj/item/storage/box/soymilk/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/drinks/soymilk(src)
+
+//enzyme
+/obj/item/storage/box/enzyme
+	name = "\improper Enzyme Box"
+
+/obj/item/storage/box/enzyme/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/condiment/enzyme(src)
+
+//flour
+/obj/item/storage/box/flour
+	name = "\improper Flour Box"
+
+/obj/item/storage/box/flour/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/flour(src)
+
+//sugar
+/obj/item/storage/box/sugar
+	name = "\improper Sugar Box"
+
+/obj/item/storage/box/sugar/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/condiment/sugar(src)
+
+// ORGANICS
+
+//potato
+/obj/item/storage/box/potato
+	name = "\improper Potato Box"
+
+/obj/item/storage/box/potato/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/potato(src)
+
+//apple
+/obj/item/storage/box/apple
+	name = "\improper Apple Box"
+
+/obj/item/storage/box/apple/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/apple(src)
+
+//carrot
+/obj/item/storage/box/carrot
+	name = "\improper Carrot Box"
+
+/obj/item/storage/box/carrot/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/carrot(src)
+
+//lemon
+/obj/item/storage/box/lemon
+	name = "\improper Lemon Box"
+
+/obj/item/storage/box/lemon/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/lemon(src)
+
+//lime
+/obj/item/storage/box/lime
+	name = "\improper Lime Box"
+
+/obj/item/storage/box/lime/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/lime(src)
+
+//tomato
+/obj/item/storage/box/tomato
+	name = "\improper Tomato Box"
+
+/obj/item/storage/box/tomato/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/tomato(src)
+
+//orange
+/obj/item/storage/box/orange
+	name = "\improper Orange Box"
+
+/obj/item/storage/box/orange/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/orange(src)
+
+//corn
+/obj/item/storage/box/corn
+	name = "\improper Corn Box"
+
+/obj/item/storage/box/corn/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/corn(src)
+
+//eggplant
+/obj/item/storage/box/eggplant
+	name = "\improper Eggplant Box"
+
+/obj/item/storage/box/eggplant/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/eggplant(src)
+
+//whitebeet
+/obj/item/storage/box/whitebeet
+	name = "\improper Whitebeet Box"
+
+/obj/item/storage/box/whitebeet/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/whitebeet(src)
+
+//cherries
+/obj/item/storage/box/cherries
+	name = "\improper Cherries Box"
+
+/obj/item/storage/box/cherries/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/cherries(src)
+
+//banana
+/obj/item/storage/box/banana
+	name = "\improper Banana Box"
+
+/obj/item/storage/box/banana/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/banana(src)
+
+//cabbage
+/obj/item/storage/box/cabbage
+	name = "\improper Cabbage Box"
+
+/obj/item/storage/box/cabbage/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/cabbage(src)
+
+//chanterelle
+/obj/item/storage/box/chanterelle
+	name = "\improper Chanterelle Box"
+
+/obj/item/storage/box/chanterelle/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle(src)
+
+//chili
+/obj/item/storage/box/chili
+	name = "\improper Chili Box"
+
+/obj/item/storage/box/chili/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/snacks/grown/chili(src)

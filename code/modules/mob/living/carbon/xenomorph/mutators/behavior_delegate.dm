@@ -108,3 +108,7 @@
 /// Used to do something when a xeno collides with a movable atom
 /datum/behavior_delegate/proc/on_collide(atom/movable/movable_atom)
 	return
+
+/// Used to pass along any extra icon state information specific to a strain or caste
+/datum/behavior_delegate/proc/get_special_icon()
+	return

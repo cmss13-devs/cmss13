@@ -84,6 +84,7 @@
 		if(!(icon_state in icon_states(icon_xeno)))
 			icon_state = "Normal [caste.caste_type] [movement_state]"
 
+	icon_state += behavior_delegate?.get_special_icon()
 
 /mob/living/carbon/xenomorph/regenerate_icons()
 	..()
@@ -287,7 +288,6 @@
 			wound_icon_carrier.icon_state = "[caste.caste_type]_walk_[health_threshold]"
 		else
 			wound_icon_carrier.icon_state = handle_special_wound_states(health_threshold)
-
 
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
 /atom/movable/vis_obj

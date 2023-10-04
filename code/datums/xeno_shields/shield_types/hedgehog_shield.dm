@@ -15,8 +15,14 @@
 	create_shrapnel(get_turf(owner), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(owner.caste_type), owner), TRUE)
 	owner.visible_message(SPAN_XENODANGER("Damaging the shield of [owner] sprays bone quills everywhere!"))
 
+/datum/xeno_shield/hedgehog_shield/on_addition()
+	. = ..()
+	if(owner)
+		owner.small_explosives_stun = FALSE
+
 /datum/xeno_shield/hedgehog_shield/on_removal()
 	. = ..()
 	if(owner)
 		// Remove the shield overlay early
 		owner.remove_suit_layer()
+		owner.small_explosives_stun = TRUE

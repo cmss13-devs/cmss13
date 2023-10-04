@@ -41,6 +41,10 @@
 	amount -= damage
 	return
 
+/// Anything we do when the xeno shield is added
+/datum/xeno_shield/proc/on_addition()
+	return
+
 // Anything special to do on removal
 /datum/xeno_shield/proc/on_removal()
 	return
@@ -81,6 +85,8 @@
 
 	new_shield.decay_amount_per_second = decay_amount_per_second
 	new_shield.linked_xeno = src
+
+	new_shield.on_addition()
 
 	if(duration > -1)
 		addtimer(CALLBACK(new_shield, TYPE_PROC_REF(/datum/xeno_shield, begin_decay)), duration)

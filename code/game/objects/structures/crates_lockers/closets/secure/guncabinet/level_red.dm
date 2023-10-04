@@ -78,10 +78,10 @@
 
 /obj/structure/closet/secure_closet/guncabinet/red/armory_m4a3_pistol/Initialize()
 	. = ..()
-	new /obj/item/weapon/gun/pistol/m4a3(src)
-	new /obj/item/weapon/gun/pistol/m4a3(src)
-	new /obj/item/weapon/gun/pistol/m4a3(src)
-	new /obj/item/weapon/gun/pistol/m4a3(src)
+	new /obj/item/storage/belt/gun/m4a3/full(src)
+	new /obj/item/storage/belt/gun/m4a3/full(src)
+	new /obj/item/storage/belt/gun/m4a3/full(src)
+	new /obj/item/storage/belt/gun/m4a3/full(src)
 	new /obj/item/ammo_box/magazine/m4a3(src)
 
 // 2 M39 cabinet are in medical armory (4 M39 and 12 mags)

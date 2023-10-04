@@ -142,6 +142,11 @@
 			overlays += image('icons/obj/objects.dmi', "statn_c100")
 
 /obj/structure/machinery/recharge_station/proc/process_occupant()
+	// FRAY-MARINES start
+	if (hacky_override)
+		process_occupant_localized()
+		return
+	// FRAY-MARINES end
 	if(src.occupant)
 		var/doing_stuff = FALSE
 		if (isrobot(occupant))

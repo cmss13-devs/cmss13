@@ -249,6 +249,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	construction_name = "fast resin"
 	cost = XENO_RESIN_FAST_COST
 	build_time = 1 SECONDS
+	max_per_xeno = 25
 
 	build_path = /obj/effect/alien/resin/sticky/fast
 

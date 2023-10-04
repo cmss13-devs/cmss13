@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Candle boxes can now only hold candles"

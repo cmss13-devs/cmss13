@@ -20971,7 +20971,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	access_modified = 1;
 	name = "Storage";
-	req_one_access = "2;21"
+	req_one_access_txt = "19;21"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -35034,7 +35034,7 @@
 	access_modified = 1;
 	dir = 2;
 	name = "\improper Requisitions Break Room";
-	req_one_access = "19;21"
+	req_one_access_txt = "19;21"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -68673,7 +68673,7 @@
 	access_modified = 1;
 	dir = 1;
 	name = "Storage";
-	req_one_access = "2;21"
+	req_one_access_txt = "19;21"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

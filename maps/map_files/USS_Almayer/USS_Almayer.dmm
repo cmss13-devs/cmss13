@@ -3958,6 +3958,10 @@
 /obj/item/clothing/suit/storage/marine/light/vest,
 /obj/item/clothing/suit/storage/marine/light/vest,
 /obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},

@@ -37,7 +37,6 @@
 	return TRUE
 
 /// Called to see if this visor is a special non-HUD visor
-
 /obj/item/device/helmet_visor/proc/toggle_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE)
 	if(attached_helmet == user.head && attached_helmet.active_visor == src)
 
@@ -45,7 +44,7 @@
 			return FALSE
 
 		activate_visor(attached_helmet, user)
-    
+
 		if(!silent)
 			to_chat(user, SPAN_NOTICE("You activate [src] on [attached_helmet]."))
 			playsound_client(user.client, toggle_on_sound, null, 75)

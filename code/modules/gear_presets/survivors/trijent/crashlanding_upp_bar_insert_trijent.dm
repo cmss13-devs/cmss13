@@ -9,17 +9,12 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
-	role_comm_title = "UPP 173RD RECON"
+	role_comm_title = "173/RECON"
 	idtype = /obj/item/card/id/dogtag
 	flags = EQUIPMENT_PRESET_EXTRA
-	uses_special_name = TRUE
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 	)
-
-/datum/equipment_preset/survivor/upp/load_name(mob/living/carbon/human/new_human, randomise)
-	var/random_name = capitalize(pick(new_human.gender == MALE ? first_names_male_upp : first_names_female_upp)) + " " + capitalize(pick(last_names_upp))
-	new_human.change_real_name(new_human, random_name)
 
 /datum/equipment_preset/survivor/upp/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
@@ -152,7 +147,7 @@
 	assignment = JOB_UPP_LEADER
 	rank = JOB_UPP_LEADER
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
-	role_comm_title = "UPP 173Rd RECON SL"
+	role_comm_title = "173/RECON SL"
 	skills = /datum/skills/military/survivor/upp_sl
 
 /datum/equipment_preset/survivor/upp/squad_leader/load_gear(mob/living/carbon/human/new_human)

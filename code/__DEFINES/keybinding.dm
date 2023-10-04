@@ -55,6 +55,8 @@
 
 #define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
 
+#define COMSIG_KB_HUMAN_CYCLE_HELMET_HUD "keybinding_human_cycle_helmet_hud"
+
 // Human Inventory Navigation
 #define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"
 #define COMSIG_KB_HUMAN_INTERACT_SLOT_BACK "keybinding_human_interact_slot_back"

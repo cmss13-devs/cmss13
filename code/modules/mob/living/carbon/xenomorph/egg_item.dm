@@ -98,7 +98,7 @@
 		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
 		return
 
-	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC)
+	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC) /// Теперь эггсак может ставить яйца везде ~Danilcus
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 

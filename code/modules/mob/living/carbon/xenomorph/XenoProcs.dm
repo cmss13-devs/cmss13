@@ -621,22 +621,22 @@
 	if(pipe)
 		handle_ventcrawl(pipe)
 
-/mob/living/carbon/xenomorph/proc/attempt_tackle(mob/M, tackle_mult = 1, tackle_min_offset = 0, tackle_max_offset = 0, tackle_bonus = 0)
-	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
+/mob/living/carbon/xenomorph/proc/attempt_tackle(mob/living/carbon/human/tackled_mob, tackle_min_offset = 0, tackle_max_offset = 0)
+	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, tackled_mob)
 	if(!TC)
-		TC = new(tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
-		LAZYSET(tackle_counter, M, TC)
-		RegisterSignal(M, COMSIG_MOB_KNOCKED_DOWN, PROC_REF(tackle_handle_lying_changed))
+		TC = new(tackled_mob, tackle_min + tackle_min_offset, tackle_max + tackle_max_offset)
+		LAZYSET(tackle_counter, tackled_mob, TC)
+		RegisterSignal(tackled_mob, COMSIG_MOB_KNOCKED_DOWN, PROC_REF(tackle_handle_lying_changed))
 
 	if (TC.tackle_reset_id)
 		deltimer(TC.tackle_reset_id)
 		TC.tackle_reset_id = null
 
-	. = TC.attempt_tackle(tackle_bonus)
-	if (!. || (M.status_flags & XENO_HOST))
-		TC.tackle_reset_id = addtimer(CALLBACK(src, PROC_REF(reset_tackle), M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+	. = TC.attempt_tackle()
+	if (!. || (tackled_mob.status_flags & XENO_HOST))
+		TC.tackle_reset_id = addtimer(CALLBACK(src, PROC_REF(reset_tackle), tackled_mob), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
-		reset_tackle(M)
+		reset_tackle(tackled_mob)
 
 /mob/living/carbon/xenomorph/proc/tackle_handle_lying_changed(mob/M)
 	SIGNAL_HANDLER

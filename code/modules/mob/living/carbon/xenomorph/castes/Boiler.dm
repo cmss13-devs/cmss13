@@ -26,9 +26,8 @@
 	// 3x fire damage
 	fire_vulnerability_mult = FIRE_MULTIPLIER_DEADLY
 
-	tackle_min = 2
+	tackle_min = 3
 	tackle_max = 6
-	tackle_chance = 25
 	tacklestrength_min = 3
 	tacklestrength_max = 4
 

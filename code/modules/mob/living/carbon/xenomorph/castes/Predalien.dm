@@ -147,7 +147,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			for(var/i in 1 to 3)
 				var/obj/item/reagent_container/food/snacks/meat/new_meat = new flesh_type(human_victim.loc)
 				new_meat.name = "[human_victim.name] [flesh]"
-				
+
 
 		else if (isxeno(victim))
 			var/mob/living/carbon/xenomorph/xeno_victim = victim

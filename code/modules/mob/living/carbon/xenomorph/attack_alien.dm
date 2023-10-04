@@ -194,15 +194,13 @@
 				return XENO_ATTACK_ACTION
 			M.flick_attack_overlay(src, "disarm")
 
-			var/tackle_mult = 1
 			var/tackle_min_offset = 0
 			var/tackle_max_offset = 0
 			if (isyautja(src))
-				tackle_mult = 0.2
-				tackle_min_offset += 2
-				tackle_max_offset += 2
+				tackle_min_offset += 3
+				tackle_max_offset += 3
 
-			if(M.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
+			if(M.attempt_tackle(src, tackle_min_offset, tackle_max_offset))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				apply_effect(rand(M.tacklestrength_min, M.tacklestrength_max), WEAKEN)
 				M.visible_message(SPAN_DANGER("[M] tackles down [src]!"), \

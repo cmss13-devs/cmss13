@@ -26,9 +26,8 @@
 	huggers_max = 16
 	eggs_max = 8
 
-	tackle_min = 2
-	tackle_max = 4
-	tackle_chance = 50
+	tackle_min = 3
+	tackle_max = 5
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 

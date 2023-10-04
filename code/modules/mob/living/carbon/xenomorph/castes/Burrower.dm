@@ -24,8 +24,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/burrower_base
 
 	tackle_min = 3
-	tackle_max = 5
-	tackle_chance = 40
+	tackle_max = 6
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 

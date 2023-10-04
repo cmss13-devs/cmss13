@@ -35,9 +35,8 @@
 
 	spit_delay = 25
 
-	tackle_min = 2
+	tackle_min = 3
 	tackle_max = 6
-	tackle_chance = 55
 
 	aura_strength = 4
 	tacklestrength_min = 5

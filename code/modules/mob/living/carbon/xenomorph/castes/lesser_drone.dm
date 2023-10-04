@@ -26,7 +26,7 @@
 	max_build_dist = 1
 
 	tackle_min = 4
-	tackle_max = 5
+	tackle_max = 6
 
 	aura_strength = 1
 

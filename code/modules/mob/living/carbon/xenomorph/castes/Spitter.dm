@@ -21,9 +21,8 @@
 
 	spit_delay = 2.5 SECONDS
 
-	tackle_min = 2
+	tackle_min = 3
 	tackle_max = 6
-	tackle_chance = 45
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 

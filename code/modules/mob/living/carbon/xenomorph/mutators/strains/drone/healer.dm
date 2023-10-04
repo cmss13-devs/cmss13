@@ -33,7 +33,6 @@
 	drone.max_placeable = 3
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit
-	drone.tackle_chance_modifier -= 5
 	mutator_update_actions(drone)
 	apply_behavior_holder(drone)
 	mutator_set.recalculate_actions(description, flavor_description)

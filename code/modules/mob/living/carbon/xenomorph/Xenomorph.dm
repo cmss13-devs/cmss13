@@ -103,8 +103,7 @@
 
 	// Tackles
 	var/tackle_min = 2
-	var/tackle_max = 6
-	var/tackle_chance = 35
+	var/tackle_max = 7
 	var/tacklestrength_min = 2
 	var/tacklestrength_max = 3
 
@@ -199,7 +198,6 @@
 	var/explosivearmor_modifier = 0
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
-	var/tackle_chance_modifier = 0
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
@@ -876,7 +874,6 @@
 /mob/living/carbon/xenomorph/proc/recalculate_tackle()
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
-	tackle_chance = caste.tackle_chance + tackle_chance_modifier
 	tacklestrength_min = caste.tacklestrength_min + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 	tacklestrength_max = caste.tacklestrength_max + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 

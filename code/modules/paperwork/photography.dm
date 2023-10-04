@@ -246,13 +246,15 @@
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
 	if(!on || !pictures_left || ismob(target.loc) || isstorage(target.loc)) return
 	if(user.contains(target) || istype(target, /atom/movable/screen)) return
-	captureimage(target, user, flag)
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
 
 	pictures_left--
 	desc = "A polaroid camera. It has [pictures_left] photos left."
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
+
+	captureimage(target, user, flag)
+
 	icon_state = icon_off
 	on = 0
 	spawn(64)

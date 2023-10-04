@@ -529,6 +529,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\datums\keybinding\emote.dm"
 #include "code\datums\keybinding\human.dm"
 #include "code\datums\keybinding\human_combat.dm"
+#include "code\datums\keybinding\human_inventory.dm"
 #include "code\datums\keybinding\living.dm"
 #include "code\datums\keybinding\mob.dm"
 #include "code\datums\keybinding\movement.dm"

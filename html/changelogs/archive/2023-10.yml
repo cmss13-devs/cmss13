@@ -42,3 +42,15 @@
   - rscadd: Adds the surgical drop pouch item. It comes in green, blue and black.
       Only available from the synthetic vendor currently.
   - imageadd: Adds sprites for the surgical drop pouches.
+2023-10-04:
+  BeagleGaming1:
+  - rscadd: Added keybinds to allow inventory manipulation
+  Morrow:
+  - admin: Operation time logging
+  - balance: Underbarrel extinguisher no longer requires wield
+  - bugfix: Re-added previous UPP changes that were lost in soft conflict
+  - spellcheck: Removed some ambiguous text about loyalties for UPP survivors
+  - bugfix: Fixed storage depth for internal storages
+  - bugfix: Candle boxes can now only hold candles
+  blackdragonTOW:
+  - sounddel: removed 300+ ancient and unused Piano and Violin notes.

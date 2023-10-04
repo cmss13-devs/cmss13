@@ -329,7 +329,8 @@ world
 /// appearance system (overlays/underlays, etc.) is not available.
 ///
 /// Only the first argument is required.
-/proc/getFlatIcon(image/appearance, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE)
+/// appearance_flags indicates whether appearance_flags should be respected (at the cost of about 10-20% perf)
+/proc/getFlatIcon(image/appearance, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE, appearance_flags = FALSE)
 	// Loop through the underlays, then overlays, sorting them into the layers list
 	#define PROCESS_OVERLAYS_OR_UNDERLAYS(flat, process, base_layer) \
 		for (var/i in 1 to process.len) { \
@@ -435,6 +436,7 @@ world
 			if(layer_image.alpha == 0)
 				continue
 
+			// variables only relevant when accounting for appearance_flags:
 			var/apply_color = TRUE
 			var/apply_alpha = TRUE
 
@@ -443,11 +445,12 @@ world
 				add = icon(layer_image.icon, layer_image.icon_state, base_icon_dir)
 			else // 'I' is an appearance object.
 				var/image/layer_as_image = image(layer_image)
-				if(layer_as_image.appearance_flags & RESET_COLOR)
-					apply_color = FALSE
-				if(layer_as_image.appearance_flags & RESET_ALPHA)
-					apply_alpha = FALSE
-				add = getFlatIcon(layer_as_image, curdir, curicon, curstate, curblend, FALSE, no_anim)
+				if(appearance_flags)
+					if(layer_as_image.appearance_flags & RESET_COLOR)
+						apply_color = FALSE
+					if(layer_as_image.appearance_flags & RESET_ALPHA)
+						apply_alpha = FALSE
+				add = getFlatIcon(layer_as_image, curdir, curicon, curstate, curblend, FALSE, no_anim, appearance_flags)
 			if(!add)
 				continue
 
@@ -476,17 +479,30 @@ world
 				flatY1 = addY1
 				flatY2 = addY2
 
-			if(apply_color && appearance.color)
-				if(islist(appearance.color))
-					add.MapColors(arglist(appearance.color))
-				else
-					add.Blend(appearance.color, ICON_MULTIPLY)
+			if(appearance_flags)
+				// apply parent's color/alpha to the added layers if the layer didn't opt
+				if(apply_color && appearance.color)
+					if(islist(appearance.color))
+						add.MapColors(arglist(appearance.color))
+					else
+						add.Blend(appearance.color, ICON_MULTIPLY)
 
-			if(apply_alpha && appearance.alpha < 255)
-				add.Blend(rgb(255, 255, 255, appearance.alpha), ICON_MULTIPLY)
+				if(apply_alpha && appearance.alpha < 255)
+					add.Blend(rgb(255, 255, 255, appearance.alpha), ICON_MULTIPLY)
 
 			// Blend the overlay into the flattened icon
 			flat.Blend(add, blendMode2iconMode(curblend), layer_image.pixel_x + 2 - flatX1, layer_image.pixel_y + 2 - flatY1)
+
+		if(!appearance_flags)
+			// If we didn't apply parent colors individually per layer respecting appearance_flags, then do it just the one time now
+			if(appearance.color)
+				if(islist(appearance.color))
+					flat.MapColors(arglist(appearance.color))
+				else
+					flat.Blend(appearance.color, ICON_MULTIPLY)
+
+			if(appearance.alpha < 255)
+				flat.Blend(rgb(255, 255, 255, appearance.alpha), ICON_MULTIPLY)
 
 		if(no_anim)
 			//Clean up repeated frames

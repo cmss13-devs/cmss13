@@ -26,51 +26,6 @@
 
 // Kitchen preparation room small quantity out of boxes...
 
-// Kitchen Reserve big quantity stored in boxes
-
-//meat surplus
-/obj/structure/closet/secure_closet/fridge/meat_stock
-	name = "meat"
-
-/obj/structure/closet/secure_closet/fridge/meat_stock/Initialize()
-	. = ..()
-	for(var/i = 0, i < 2, i++)
-		new /obj/item/storage/box/meat(src)
-
-//fish surplus
-/obj/structure/closet/secure_closet/fridge/fish_stock
-	name = "fish"
-
-/obj/structure/closet/secure_closet/fridge/fish_stock/Initialize()
-	. = ..()
-	for(var/i = 0, i < 2, i++)
-		new /obj/item/storage/box/fish(src)
-
-//groceries to hold milk in bulk
-/obj/structure/closet/secure_closet/fridge/groceries
-	name = "Groceries"
-
-/obj/structure/closet/secure_closet/fridge/groceries/Initialize()
-	. = ..()
-	for(var/i = 0, i < 2, i++)
-		new /obj/item/storage/box/milk(src)
-	for(var/i = 0, i < 2, i++)
-		new /obj/item/storage/box/soymilk(src)
-	for(var/i = 0, i < 7, i++)
-		new /obj/item/storage/fancy/egg_box(src)
-	new /obj/item/storage/box/enzyme(src)
-
-//dry storage for dry food only... not a fridge
-/obj/structure/closet/secure_closet/dry
-	name = "dry"
-
-
-/obj/structure/closet/secure_closet/dry/Initialize()
-	. = ..()
-	for(var/i = 0, i < 4, i++)
-		new /obj/item/storage/box/flour(src)
-	new /obj/item/storage/box/sugar(src)
-
 //standart organic storage.
 
 /obj/structure/closet/secure_closet/fridge/organic
@@ -108,3 +63,96 @@
 		new /obj/item/reagent_container/food/snacks/grown/orange(src)
 	for(var/i = 0, i < 2, i++)
 		new /obj/item/reagent_container/food/snacks/grown/banana(src)
+
+//DRy
+
+/obj/structure/closet/secure_closet/dry
+	name = "dry"
+
+/obj/structure/closet/secure_closet/dry/Initialize()
+	. = ..()
+	for(var/i = 0, i < 6, i++)
+		new /obj/item/reagent_container/food/snacks/flour(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/condiment/sugar(src)
+
+//grocery
+
+/obj/structure/closet/secure_closet/fridge/groceries
+	name = "Groceries"
+
+/obj/structure/closet/secure_closet/fridge/groceries/Initialize()
+	. = ..()
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/drinks/milk(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/drinks/soymilk(src)
+	new /obj/item/storage/fancy/egg_box(src)
+	new /obj/item/reagent_container/food/condiment/enzyme(src)
+
+// Kitchen Reserve big quantity stored in boxes
+
+//meat surplus
+/obj/structure/closet/secure_closet/fridge/meat/stock
+	name = "meat"
+
+/obj/structure/closet/secure_closet/fridge/meat/stock/Initialize()
+	. = ..()
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/storage/box/meat(src)
+
+//fish surplus
+/obj/structure/closet/secure_closet/fridge/fish/stock
+	name = "fish"
+
+/obj/structure/closet/secure_closet/fridge/fish/stock/Initialize()
+	. = ..()
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/storage/box/fish(src)
+
+//groceries to hold milk in bulk
+/obj/structure/closet/secure_closet/fridge/groceries/stock
+	name = "Groceries"
+
+/obj/structure/closet/secure_closet/fridge/groceries/stock/Initialize()
+	. = ..()
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/storage/box/milk(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/storage/box/soymilk(src)
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/storage/fancy/egg_box(src)
+	new /obj/item/storage/box/enzyme(src)
+
+//dry storage for dry food only... not a fridge
+/obj/structure/closet/secure_closet/dry/stock
+	name = "dry"
+
+/obj/structure/closet/secure_closet/dry/stock/Initialize()
+	. = ..()
+	for(var/i = 0, i < 4, i++)
+		new /obj/item/storage/box/flour(src)
+	new /obj/item/storage/box/sugar(src)
+
+// organic storage in bulk
+
+/obj/structure/closet/secure_closet/fridge/organic/stock
+	name = "Organic"
+
+/obj/structure/closet/secure_closet/fridge/organic/stock/Initialize()
+	. = ..()
+	new /obj/item/storage/box/apple(src)
+	new /obj/item/storage/box/banana(src)
+	new /obj/item/storage/box/chanterelle(src)
+	new /obj/item/storage/box/cherries(src)
+	new /obj/item/storage/box/chili(src)
+	new /obj/item/storage/box/cabbage(src)
+	new /obj/item/storage/box/carrot(src)
+	new /obj/item/storage/box/corn(src)
+	new /obj/item/storage/box/eggplant(src)
+	new /obj/item/storage/box/lemon(src)
+	new /obj/item/storage/box/lime(src)
+	new /obj/item/storage/box/orange(src)
+	new /obj/item/storage/box/potato(src)
+	new /obj/item/storage/box/tomato(src)
+	new /obj/item/storage/box/whitebeet(src)

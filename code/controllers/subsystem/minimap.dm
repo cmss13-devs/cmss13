@@ -375,7 +375,7 @@ SUBSYSTEM_DEF(minimaps)
 		return FALSE
 	var/icon/flat_map = getFlatIcon(map_holder.map)
 	if(!flat_map)
-		to_chat(user, SPAN_WARNING("The tacmap filckers and then shuts off, a critical error has occured")) // tf2heavy: "Oh, this is bad!"
+		to_chat(user, SPAN_WARNING("The tacmap filckers and then shuts off, a critical error has occurred! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
 		return FALSE
 	var/user_faction
 	var/mob/living/carbon/xenomorph/xeno

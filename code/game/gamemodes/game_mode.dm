@@ -105,6 +105,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 		np.new_player_panel_proc()
 	round_time_lobby = world.time
 	log_game("Round started at [time2text(world.realtime)]")
+	log_game("Operation time at round start is [worldtime2text()]")
 	if(SSticker.mode)
 		log_game("Game mode set to [SSticker.mode]")
 	log_game("Server IP: [world.internet_address]:[world.port]")
@@ -129,7 +130,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 		round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Раунд завершен|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Так заканчивается история экипажа [MAIN_SHIP_NAME] и их борьбы на объекте [SSmapping.configs[GROUND_MAP].map_name].\nРежим игры: [master_mode]!\nГриф в конце раунда (EORG) влечет немедленный бан на 3 часа, смотрите правило #3 для деталей."))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Так заканчивается история экипажа [MAIN_SHIP_NAME] и их борьбы на объекте [SSmapping.configs[GROUND_MAP].map_name].\nРежим игры: [master_mode]!\nГриф в конце раунда (EORG) запрещён. Убийство своих, спам в локальный игровой чат и прочие нарушение влекут за собой незамедлительный бан на 3 часа!"))
 
 /datum/game_mode/proc/declare_completion()
 	if(round_statistics)

@@ -12,6 +12,10 @@ Format:
 	disabled (disables the map)
 endmap
 
-map almayer
+map rumayer
 	default
+endmap
+
+map almayer
+	voteweight 0
 endmap

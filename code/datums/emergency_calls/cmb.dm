@@ -113,7 +113,7 @@
 /datum/emergency_call/cmb/anchorpoint/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME], this is Anchorpoint Station. Be advised, a QRF Team of our Colonial Marines is currently attempting to board you. Open your ports, transmitting docking codes now. Standby."
-	objectives = "QRF Team. You are here to reinforce the cmb team we deployed earlier. Make contact and work with the CMB Marshal and their deputies. Facilitate their protection and evacuation if necessary. Secondary Objective: Investigate the reason for distress aboard the [MAIN_SHIP_NAME], and assist the crew if possible."
+	objectives = "QRF Team. You are here to reinforce the CMB team we deployed earlier. Make contact and work with the CMB Marshal and their deputies. Facilitate their protection and evacuation if necessary. Secondary Objective: Investigate the reason for distress aboard the [MAIN_SHIP_NAME], and assist the crew if possible."
 
 /datum/emergency_call/cmb/anchorpoint/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

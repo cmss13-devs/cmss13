@@ -43,8 +43,25 @@
 /datum/job/New()
 	. = ..()
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_CONFIG_LOADED, PROC_REF(on_config_load))
+
 	minimum_playtimes = setup_requirements(list())
-	if(!disp_title) disp_title = title
+	if(!disp_title)
+		disp_title = title
+
+/datum/job/proc/on_config_load()
+	if(entry_message_body)
+		entry_message_body = replace_placeholders(entry_message_body)
+
+/datum/job/proc/replace_placeholders(replacement_string)
+	replacement_string = replacetextEx(replacement_string, "%WIKIURL%", generate_wiki_link())
+	replacement_string = replacetextEx(replacement_string, "%LAWURL%", "[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_LAW]")
+	return replacement_string
+
+/datum/job/proc/generate_wiki_link()
+	if(!CONFIG_GET(string/wikiarticleurl))
+		return ""
+	return "[CONFIG_GET(string/wikiarticleurl)]/[replacetext(title, " ", "_")]"
 
 /datum/job/proc/get_whitelist_status(list/roles_whitelist, client/player)
 	if(!roles_whitelist)

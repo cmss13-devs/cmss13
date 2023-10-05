@@ -285,7 +285,7 @@
 		round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Раунд Завершен|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [master_mode]!\nEnd of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Так завершилась история борьбы ульев на [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nРежим игры был: [master_mode]!\nГриф в конце раунда (EORG) запрещён. Убийство своих, спам в локальный игровой чат и т.д. наказуемо МОМЕНТАЛЬНЫМ баном на 3 часа!"))
 
 
 // for the toolbox

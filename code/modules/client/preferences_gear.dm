@@ -792,7 +792,17 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/misc/jungle_boots
 	display_name = "Jungle pattern combat boots"
 	path = /obj/item/clothing/shoes/marine/jungle
-	cost = 3
+	cost = 2
+
+/datum/gear/misc/brown_boots
+	display_name = "brown combat boots"
+	path = /obj/item/clothing/shoes/marine/brown
+	cost = 2
+
+/datum/gear/misc/brown_gloves
+	display_name = "brown combat gloves"
+	path = /obj/item/clothing/gloves/marine/brown
+	cost = 2
 
 /datum/gear/misc/pdt_kit
 	display_name = "PDT/L kit"

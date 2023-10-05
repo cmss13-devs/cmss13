@@ -373,7 +373,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/proc/distribute_current_map_png(mob/user)
 	if(!COOLDOWN_FINISHED(src, flatten_map_cooldown))
 		return FALSE
-	var/icon/flat_map = getFlatIcon(map_holder.map)
+	var/icon/flat_map = getFlatIcon(map_holder.map, appearance_flags = TRUE)
 	if(!flat_map)
 		to_chat(user, SPAN_WARNING("The tacmap filckers and then shuts off, a critical error has occurred! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
 		return FALSE

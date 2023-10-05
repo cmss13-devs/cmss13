@@ -1119,8 +1119,10 @@
 	},
 /area/lv624/ground/barrens/containers)
 "afu" = (
-/obj/structure/machinery/floodlight,
 /obj/item/ammo_casing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/plating{
 	dir = 9;
 	icon_state = "warnplate"
@@ -1154,7 +1156,9 @@
 	},
 /area/lv624/ground/barrens/central_barrens)
 "afy" = (
-/obj/structure/machinery/floodlight,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/plating{
 	dir = 5;
 	icon_state = "warnplate"
@@ -1203,11 +1207,6 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/floor/plating,
-/area/lv624/ground/barrens/central_barrens)
-"afM" = (
-/obj/structure/machinery/floodlight,
-/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "afN" = (
@@ -1389,10 +1388,6 @@
 "agA" = (
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/south_east_caves)
-"agC" = (
-/obj/structure/machinery/floodlight,
-/turf/open/floor/plating,
-/area/lv624/ground/barrens/central_barrens)
 "agD" = (
 /obj/structure/surface/table/reinforced{
 	dir = 8;
@@ -1407,8 +1402,10 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agF" = (
-/obj/structure/machinery/floodlight,
 /obj/item/ammo_casing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agG" = (
@@ -1585,7 +1582,9 @@
 	},
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "ahM" = (
-/obj/structure/machinery/floodlight,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
@@ -1625,7 +1624,9 @@
 	},
 /area/lv624/ground/barrens/central_barrens)
 "ahT" = (
-/obj/structure/machinery/floodlight,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/plating{
 	dir = 6;
 	icon_state = "warnplate"
@@ -13047,6 +13048,10 @@
 "cCr" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/east_jungle)
+"cDr" = (
+/obj/structure/girder,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/caves/north_central_caves)
 "cDQ" = (
 /obj/item/ammo_magazine/sentry{
 	current_rounds = 0;
@@ -14942,6 +14947,12 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/west_central_jungle)
+"hpG" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/lv624/ground/caves/north_central_caves)
 "hpN" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/good_item,
@@ -15608,6 +15619,9 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"jeL" = (
+/turf/closed/wall/r_wall,
+/area/lv624/ground/caves/north_central_caves)
 "jga" = (
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
@@ -15987,6 +16001,13 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
+"kbn" = (
+/obj/structure/machinery/sensortower,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/lv624/ground/caves/north_central_caves)
 "kbr" = (
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
@@ -17988,6 +18009,12 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
+"oHU" = (
+/obj/structure/girder,
+/turf/open/floor{
+	icon_state = "asteroidplating"
+	},
+/area/lv624/ground/caves/north_central_caves)
 "oJL" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
@@ -21055,6 +21082,9 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
+"wbM" = (
+/turf/open/floor,
+/area/lv624/ground/caves/north_central_caves)
 "wbP" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/floor/sandstone/runed,
@@ -21257,6 +21287,11 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
+"wwI" = (
+/turf/open/floor{
+	icon_state = "asteroidplating"
+	},
+/area/lv624/ground/caves/north_central_caves)
 "wxP" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/north_jungle)
@@ -40945,11 +40980,11 @@ aaH
 aaw
 aaw
 aaw
+oHU
 aaw
 aaw
-aaw
-aaw
-aaw
+cDr
+jeL
 aaF
 aaF
 abm
@@ -41023,7 +41058,7 @@ ajW
 afI
 ajW
 ajW
-agC
+ajW
 afN
 ajW
 ajW
@@ -41175,9 +41210,9 @@ aaw
 aaw
 aaw
 aaw
-aaw
-aaw
-aaw
+wwI
+wbM
+jeL
 aaF
 abm
 abm
@@ -41402,10 +41437,10 @@ aay
 aaw
 aaw
 aaw
-aaw
-aaw
-aaw
-aaw
+wbM
+kbn
+wbM
+jeL
 abm
 abm
 abm
@@ -41630,10 +41665,10 @@ aaz
 aay
 aaw
 aaw
-aaw
-aaw
-aaw
-aaw
+wwI
+hpG
+wbM
+jeL
 abm
 abm
 abm
@@ -41858,10 +41893,10 @@ aah
 aaH
 aaw
 aaw
-aaw
-aaw
-aaw
-aaw
+wbM
+wbM
+wwI
+jeL
 abm
 abm
 abm
@@ -42087,9 +42122,9 @@ aaH
 aaw
 aaw
 aaw
-aaw
-aaw
-aaw
+cDr
+jeL
+jeL
 abm
 abm
 abm
@@ -42158,7 +42193,7 @@ jaa
 wVk
 wVk
 afx
-afM
+agf
 ajW
 agi
 ajW
@@ -42168,7 +42203,7 @@ agT
 ahh
 ahl
 afN
-agC
+ajW
 ahS
 afk
 wVk
@@ -43303,7 +43338,7 @@ ajW
 agl
 ajW
 ajW
-agC
+ajW
 ajW
 afN
 eah

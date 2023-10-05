@@ -103,7 +103,7 @@
 /mob/proc/handle_add_action(datum/action/action)
 	LAZYADD(actions, action)
 	if(client)
-		client.screen += action.button
+		client.add_to_screen(action.button)
 	update_action_buttons()
 
 /proc/remove_action(mob/L, action_path)
@@ -122,7 +122,7 @@
 /mob/proc/handle_remove_action(datum/action/action)
 	actions?.Remove(action)
 	if(client)
-		client.screen -= action.button
+		client.remove_from_screen(action.button)
 	update_action_buttons()
 
 /mob/living/carbon/human/handle_remove_action(datum/action/action)
@@ -219,12 +219,12 @@
 		for(var/datum/action/A in actions)
 			A.button.screen_loc = null
 			if(reload_screen)
-				client.screen += A.button
+				client.add_to_screen(A.button)
 	else
 		for(var/datum/action/A in actions)
 			var/atom/movable/screen/action_button/B = A.button
 			if(reload_screen)
-				client.screen += B
+				client.add_to_screen(B)
 			if(A.hidden)
 				B.screen_loc = null
 				continue
@@ -234,11 +234,11 @@
 		if(!button_number)
 			hud_used.hide_actions_toggle.screen_loc = null
 			if(reload_screen)
-				client.screen += hud_used.hide_actions_toggle
+				client.add_to_screen(hud_used.hide_actions_toggle)
 			return
 
 	hud_used.hide_actions_toggle.screen_loc = hud_used.hide_actions_toggle.get_button_screen_loc(button_number+1)
 
 	if(reload_screen)
-		client.screen += hud_used.hide_actions_toggle
+		client.add_to_screen(hud_used.hide_actions_toggle)
 

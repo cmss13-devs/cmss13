@@ -574,3 +574,122 @@
       weedable now.
   - maptweak: LV Comms now always spawn in Tcomms and one either on the east or west
       river
+2023-09-27:
+  CapCamIII:
+  - rscadd: Adds upp presets for the unused officer ranks, Kapitan, Lt Kolonel, MajGen,
+      LtGen, Gen, for use in admin events
+  - rscadd: Changes UPP conscript rank from weird conscript only rank to Private,
+      moves UPP soldier to PFC, removing the rank gap between soldier and support
+  - code_imp: Cleans up UPP rank code by deleting redundant ranks
+  CapCamIII, AmoryBlaine:
+  - rscadd: Adds new service uniform sprite that is standard across maps, sprites
+      by AmoryBlaine
+  - rscadd: Resprites old dress uniform, renames it, adds to XO vendor as a uniform
+      choice as it fits there now, sprites by AmoryBlaine
+  - rscadd: Adds new uniform, command boiler suit like gorman wears in the movie,
+      available in SO locker, SO vendor, XO vendor, CO vendor, sprites by AmoryBlaine
+  - rscadd: Adds new brown versions of gloves and boot to custom loadout, also lowers
+      the price of jungle boots to two, sprites by AmoryBlaine
+  - rscadd: Seperates officer cap and RO cap, officers get officer cap, QM gets RO
+      cap, CTs get req cap, sprites once again by AmoryBlaine
+  - rscadd: UPP boots and gloves use the new brown sprite, as it fits their color
+      scheme and looks cool.
+  - bugfix: Freelancer leader now spawns with a knife in their boots
+  - imageadd: Resprites patrol cap, officer cap, SEA cap, standard black boot, standard
+      black glove, and formal gloves, sprites by AmoryBlaine
+  Casper:
+  - bugfix: fixed reagent canister being deleted if ejected with your hands full
+  - bugfix: fixed cigarette punctuation error
+  Drathek:
+  - bugfix: Fix dead huggers converting to non-player huggers
+  Git-Nivrak:
+  - bugfix: Fixes no fire delay on m56d in semi-auto and burst fire
+  HeresKozmos:
+  - mapadd: added 9 new tunnels to trijent dam
+  - mapadd: added 9 new tunnels to Fiorina SciAnnex
+  Morrow:
+  - bugfix: Fixed a bug with akimbo firing
+  - rscdel: Removed alpha egg on LV522
+  - rscadd: Added a save-able preference for auto-observe
+  - bugfix: Fixed numerous problems with HUD observer mode
+  - code_imp: Created a wrapper for client screen changes
+  - code_imp: Made check contents less horrendous
+  Steelpoint:
+  - mapadd: Sensor Towers have been added to all maps.
+  - rscadd: UPP survivor radio role identifiers now have a shorter title.
+  - rscadd: UPP survivors now default to using a players preferred name instead of
+      a random UPP name.
+  TeDGamer:
+  - balance: All trained+ engineer skill levels affect duration now.
+  - balance: Removed double skill duration multiplier for m56d's.
+  TheGamerdk:
+  - bugfix: Adding marines to intel squad broke the crew manifest
+  Zonespace27:
+  - bugfix: HEFA Knights now spawn with their armor again
+  - balance: HEFA Knights now spawn with 2 HEFA in their helmets
+  - admin: Added skillless subtype of the m707
+  - balance: Lowered vulture spotted/unspotted drift from 33/100 to 25/90
+  - balance: Lowered vulture scope adjust/move time from 0.5/1.0s to 0.4/0.8s
+  - balance: Vulture bipod anchors user in place
+  bostonthebear:
+  - rscadd: Changes pilot officer timelock from 5 hours as squad marine to 2 hours
+      as DCC
+  realforest2001:
+  - balance: Adds an extra 75% damage and hive interference to plasma rifle vs xenos.
+2023-09-28:
+  Casper:
+  - bugfix: fixed S&W black market crate not working
+  - bugfix: fixed flashlights showing incorrect sprite state
+  Steelpoint:
+  - rscadd: Alert message regarding Pylon construction around a communications array
+      now properly emphasizes why it is a threat to Marines, and a benefit to Xenos.
+  TheGamerdk:
+  - qol: You can no longer doom yourself by joining as a crit xeno
+2023-09-29:
+  BeagleGaming1:
+  - bugfix: Whiskey Outpost ground map vote works correctly
+  - config: Removed unnecessary config
+  Ben10083:
+  - soundadd: Multiple new Working Joe voicelines added
+  Casper:
+  - bugfix: fixed cameras going invisible on wire cut
+  Huffie56:
+  - refactor: divide preset into different file for each map.
+  Morrow:
+  - qol: '"Do nothing" dual wield preference'
+  QuickLode:
+  - rscdel: removed Pvts from Anchorpoint QRF (rip)
+  - spellcheck: fixed a typo in CMB call-in
+  - rscadd: Allows ext webbing to hold firearms.
+  - bugfix: exosuits which can hold scabbards can hold similar scabbards(ie, machete
+      and katana)
+  - rscdel: Removes ext webbing from SO Locker
+  SpartanBobby:
+  - maptweak: CL now spawns in a hypersleep bay "Passenger Bay" it's right next to
+      his office, the CC spawns with him too since his landmark was in the latejoin
+      bay on the lowerdeck
+  - maptweak: re-arranged PO bunks should allow for better traffic in and out
+  - maptweak: fixed symmetry issue in north-south CIC hallway
+  - maptweak: minor warning stripe decal additions around Almayer
+  Steelpoint:
+  - rscadd: Synthetic equipment vendor now can vend fuel cannisters and all colour
+      variants of the synthetic utility vest.
+  - rscadd: Synthetic cosmetic vendor now can vend all colour variants of the standard
+      Marine helmet, MP and Combat Technician uniforms, the welder chestrig and security
+      hud glasses.
+  Zonespace27:
+  - bugfix: Picking up a dropped pred bracer will no longer leave it stuck to your
+      hand.
+  - bugfix: Yautja can no longer mark xenoes as honorable
+  - rscadd: You can now fold a combi-stick using the new "collapse combi-stick" verb
+      and/or keybind. Defaults to the space bar.
+  - bugfix: Using a Yautja relay beacon now properly decloaks you
+2023-09-30:
+  Drathek:
+  - bugfix: Join as xeno no longer offers buried larva spawns if there are larva queue
+      candidates
+  Huffie56:
+  - refactor: Cleaning specialist.dm file
+  Morrow:
+  - rscdel: Removed more clown gear from maps
+  - bugfix: Fixed taking control of crit xenos

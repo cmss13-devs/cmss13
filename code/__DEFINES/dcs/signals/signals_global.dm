@@ -25,6 +25,8 @@
 /// called after a successful var edit somewhere in the world: (list/args)
 #define COMSIG_GLOB_VAR_EDIT "!var_edit"
 
+#define COMSIG_GLOB_CONFIG_LOADED "!config_loaded"
+
 ///from /mob/living/carbon/xenomorph/initialize
 #define COMSIG_GLOB_XENO_SPAWN "!xeno_spawn"
 

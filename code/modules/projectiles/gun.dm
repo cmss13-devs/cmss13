@@ -1213,12 +1213,6 @@ and you're good to go.
 
 		shots_fired++
 
-		if(dual_wield)
-			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-				user.swap_hand()
-			else
-				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
-
 		if(dual_wield && !fired_by_akimbo)
 			switch(user?.client?.prefs?.dual_wield_pref)
 				if(DUAL_WIELD_FIRE)

@@ -585,12 +585,11 @@
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
-		if(potency > 2) //heal more if higher levels
+		if(potency > CREATE_MAX_TIER_1) //heal more if higher levels
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, TOX)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, CLONE)
-		dead.apply_damage(-dead.getOxyLoss(), OXY)
 		if(dead.health > HEALTH_THRESHOLD_DEAD)
 			var/mob/dead/observer/ghost = dead.get_ghost()
 			if(ghost?.client)

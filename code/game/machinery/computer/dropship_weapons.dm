@@ -89,9 +89,9 @@
 
 	for(var/turf/visible_turf in guncamera_zone)
 		range_turfs += visible_turf
-		var/area/visible_area = visible_turf.loc
-		if(!visible_area.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
-			visible_turfs += visible_turf
+//		var/area/visible_area = visible_turf.loc
+//		if(!visible_area.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
+//			visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
@@ -186,7 +186,6 @@
 			to_chat(user, SPAN_WARNING("matrix is not complete!"))
 
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
-	var/data[0]
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 	if (!istype(dropship))
 		return
@@ -217,7 +216,7 @@
 		if(screen_mode != 3 || !selected_firemission || dropship.mode != SHUTTLE_CALL)
 			update_location(null)
 
-	data = ui_data(usr)
+	ui_data(usr)
 	if(!tacmap.map_holder)
 		tacmap.refresh_map()
 	user.client.register_map_obj(tacmap.map_holder.map)

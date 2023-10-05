@@ -15,10 +15,31 @@
   .MedevacRow {
   }
 
-  .MapPanel {
+  .MapContainer {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    place-items: center;
     width: 100%;
     height: 100%;
+  }
+
+  .MapPanel {
     text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .MapObj {
+    z-index: 1;
+  }
+
+  .MapOverlay {
+    z-index: 2;
+    margin-top: -10px;
+  }
+  .MapContainer > * {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
   }
 
   .CameraPanel {

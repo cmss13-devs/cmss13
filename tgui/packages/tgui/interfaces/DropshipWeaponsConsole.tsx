@@ -248,13 +248,18 @@ const MapPanel = (props, context) => {
   const { data } = useBackend<DropshipProps>(context);
   return (
     <Box className="NavigationMenu">
-      <ByondUi
-        params={{
-          id: data.tactical_map_ref,
-          type: 'map',
-        }}
-        class="MapPanel"
-      />
+      <div className="MapContainer">
+        <div className="MapObj">
+          <ByondUi
+            params={{
+              id: data.tactical_map_ref,
+              type: 'map',
+            }}
+            class="MapPanel"
+          />
+        </div>
+        <div className="MapOverlay">fsdf</div>
+      </div>
     </Box>
   );
 };

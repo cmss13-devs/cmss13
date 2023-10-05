@@ -953,3 +953,154 @@
 	desc = "The officers uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"
+
+/obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
+	name = "todo"
+	desc = "todo"
+	desc_lore = "todo"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	icon_state = "cbrn"
+	worn_state = "cbrn"
+	flags_jumpsuit = NO_FLAGS
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_VERYLOW
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	fire_intensity_resistance = BURN_LEVEL_TIER_1
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	actions_types = list(/datum/action/item_action/specialist/toggle_cbrn_hood)
+
+	///Whether the hood and gas mask were worn through the hood toggle verb
+	var/hood_enabled = FALSE
+	///Whether enabling the hood protects you from fire
+	var/supports_fire_protection = TRUE
+	///Typepath of the attached hood
+	var/hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood
+	///The head clothing that the suit uses as a hood
+	var/obj/item/clothing/head/linked_hood
+
+/obj/item/clothing/under/marine/cbrn/Initialize()
+	linked_hood = new hood_type(src)
+	. = ..()
+
+/obj/item/clothing/under/marine/cbrn/verb/hood_toggle()
+	set name = "Toggle Hood"
+	set desc = "Pull your hood and gasmask up over your face and head."
+	set src in usr
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+
+	if(user.w_uniform != src)
+		to_chat(user, SPAN_WARNING("You must be wearing [src] to put on [linked_hood] attached to it!"))
+		return
+
+	if(!linked_hood)
+		to_chat(SPAN_BOLDWARNING("You are missing a linked_hood! This should not be possible."))
+		CRASH("[user] attempted to toggle hood on [src] that was missing a linked_hood.")
+
+	playsound(user.loc, "armorequip", 25, 1)
+	if(hood_enabled)
+		disable_hood(user, FALSE)
+		return
+	enable_hood(user)
+
+/obj/item/clothing/under/marine/cbrn/proc/enable_hood(mob/living/carbon/human/user)
+	if(!istype(user))
+		user = usr
+
+	if(!linked_hood.mob_can_equip(user, WEAR_HEAD))
+		to_chat(user, SPAN_WARNING("You are unable to equip [linked_hood]."))
+		return
+
+	user.equip_to_slot(linked_hood, WEAR_HEAD)
+
+	hood_enabled = TRUE
+	RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+	RegisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+
+	if(!supports_fire_protection)
+		return
+	to_chat(user, SPAN_NOTICE("You raise [linked_hood] over your head. You will no longer catch fire."))
+	toggle_fire_protection(user, TRUE)
+
+/obj/item/clothing/under/marine/cbrn/proc/disable_hood(mob/living/carbon/human/user, forced = TRUE)
+	if(!istype(user))
+		user = usr
+
+	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED)
+	UnregisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED)
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon/human, drop_inv_item_to_loc), linked_hood, src), 1) //0.1s delay cause you can grab the hood
+	addtimer(CALLBACK(src, PROC_REF(check_remove_headgear)), 2) //Checks if it is still not in contents, incase it was dropped
+
+	hood_enabled = FALSE
+	if(!forced)
+		to_chat(user, SPAN_NOTICE("You take off [linked_hood]."))
+
+	if(supports_fire_protection)
+		toggle_fire_protection(user, FALSE)
+
+/obj/item/clothing/under/marine/cbrn/proc/check_remove_headgear(obj/item/clothing/under/marine/cbrn/uniform = src)
+	for(var/current_atom in contents)
+		if(current_atom == linked_hood)
+			return
+	linked_hood.forceMove(uniform)
+
+/obj/item/clothing/under/marine/cbrn/proc/toggle_fire_protection(mob/living/carbon/user, enable_fire_protection)
+	if(enable_fire_protection)
+		RegisterSignal(user, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_shield_is_on))
+		RegisterSignal(user, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_fire_callback))
+		return
+	UnregisterSignal(user, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+
+/obj/item/clothing/under/marine/cbrn/proc/fire_shield_is_on(mob/living/burning_mob) //Stealing it from the pyro spec armor
+	SIGNAL_HANDLER
+
+	if(burning_mob.fire_reagent?.fire_penetrating)
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/obj/item/clothing/under/marine/cbrn/proc/flamer_fire_callback(mob/living/burning_mob, datum/reagent/fire_reagent)
+	SIGNAL_HANDLER
+
+	if(fire_reagent.fire_penetrating)
+		return
+
+	. = COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
+
+/datum/action/item_action/specialist/toggle_cbrn_hood
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+
+/datum/action/item_action/specialist/toggle_cbrn_hood/New(mob/living/user, obj/item/holder)
+	..()
+	name = "Toggle Hood"
+	button.name = name
+	button.overlays.Cut()
+	var/obj/item/clothing/under/marine/cbrn/armor = user //I have no idea why this works
+	var/image/button_overlay = image(armor.linked_hood.icon, user, armor.linked_hood.icon_state)
+	button.overlays += button_overlay
+
+/datum/action/item_action/specialist/toggle_cbrn_hood/action_activate()
+	var/obj/item/clothing/under/marine/cbrn/armor = holder_item
+	if(!istype(armor))
+		return
+	armor.hood_toggle()
+
+/obj/item/clothing/under/marine/cbrn/advanced
+	name = "todo"
+	desc = "todo"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
+	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced

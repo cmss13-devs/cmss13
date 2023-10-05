@@ -1392,8 +1392,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list()
 
 /obj/item/clothing/head/helmet/marine/cbrn_hood
-	name = "\improper M3CR hood"
-	desc = "A hood woven from nomex and kevlar that comes with a built in gasmask. Typically worn by CBRN marines."
+	name = "todo"
+	desc = "todo"
 	icon_state = "cbrn_hood"
 	item_state = "cbrn_hood"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -1407,21 +1407,18 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_HIGHPLUS
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_helmet = NO_FLAGS
-	flags_atom = NO_NAME_OVERRIDE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 	built_in_visors = list()
 
 /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
-	name = "advanced M3CR hood"
-	desc = "A hood typically worn by CBRN marines. This variant is a prototype, further reinforced with experimental materials."
+	name = "todo"
+	desc = "todo"
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
 	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
-
-
-#undef HELMET_GARB_RELAY_ICON_STATE
 
 //=ROYAL MARINES=\\
 
@@ -1453,3 +1450,5 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+#undef HELMET_GARB_RELAY_ICON_STATE

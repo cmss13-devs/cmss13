@@ -207,7 +207,7 @@
 	if(seed.nutrient_consumption > 0 && nutrilevel > 0 && prob(25))
 		nutrilevel -= max(0,seed.nutrient_consumption * HYDRO_SPEED_MULTIPLIER)
 	if(seed.water_consumption > 0 && waterlevel > 0  && prob(25))
-		waterlevel -= max(0,(seed.water_consumption * HYDRO_WATER_CONSUMPTION_MULTIPLIER) * HYDRO_SPEED_MULTIPLIER)
+		waterlevel -= round(max(0,(seed.water_consumption * HYDRO_WATER_CONSUMPTION_MULTIPLIER) * HYDRO_SPEED_MULTIPLIER))
 
 	// Make sure the plant is not starving or thirsty. Adequate
 	// water and nutrients will cause a plant to become healthier.

@@ -1,6 +1,5 @@
 /datum/keybinding/human/combat
 	category = CATEGORY_HUMAN_COMBAT
-	weight = WEIGHT_MOB
 
 /datum/keybinding/human/combat/can_use(client/user)
 	. = ..()

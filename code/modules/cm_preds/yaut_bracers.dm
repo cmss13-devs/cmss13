@@ -836,7 +836,7 @@
 		to_chat(caller, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
 		return FALSE
 
-	if(!drain_power(caller, 1000))
+	if(!drain_power(caller, 400))
 		return FALSE
 
 	inject_timer = TRUE
@@ -877,7 +877,7 @@
 		to_chat(usr, SPAN_WARNING("Your bracer is still generating a new healing capsule!"))
 		return FALSE
 
-	if(!drain_power(caller, 800))
+	if(!drain_power(caller, 600))
 		return FALSE
 
 	healing_capsule_timer = TRUE

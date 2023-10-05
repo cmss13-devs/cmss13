@@ -3058,9 +3058,6 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/extinguisher/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 	if(!internal_extinguisher)
 		return
-	if(!(gun.flags_item & WIELDED))
-		to_chat(user, SPAN_WARNING("You must wield [gun] to fire [src]!"))
-		return
 	if(..())
 		return internal_extinguisher.afterattack(target, user)
 

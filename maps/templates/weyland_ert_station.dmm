@@ -2546,7 +2546,7 @@
 /area/adminlevel/ert_station/weyland_station)
 "FD" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /obj/item/clothing/glasses/welding,
 /turf/open/floor/corsat{
 	icon_state = "squares"

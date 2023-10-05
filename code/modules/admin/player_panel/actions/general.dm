@@ -187,7 +187,7 @@
 /datum/player_action/follow/act(client/user, mob/target, list/params)
 	if(istype(user.mob, /mob/dead/observer))
 		var/mob/dead/observer/O = user.mob
-		O.ManualFollow(target)
+		O.do_observe(target)
 		return TRUE
 	else
 		to_chat(user, SPAN_WARNING("You must be a ghost to do this."))

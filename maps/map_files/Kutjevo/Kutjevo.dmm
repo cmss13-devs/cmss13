@@ -14943,7 +14943,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "uBG" = (
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/botany/east_tech)
 "uBO" = (

@@ -581,16 +581,17 @@
 		playsound_client(dead.client, 'sound/effects/Heart Beat Short.ogg', 35)
 	else if (potency >= 1 && dead.check_tod() && dead.is_revivable() && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
 		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
-		if(potency >= 2)
+		var/power
+		if(potency >= 1)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BRUTE)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
-		else
-			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
-			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
-			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, TOX)
-			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, CLONE)
+			if(potency > 2) //heal more if higher levels
+				dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
+				dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
+				dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, TOX)
+				dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, CLONE)
 		dead.apply_damage(-dead.getOxyLoss(), OXY)
 		if(dead.health > HEALTH_THRESHOLD_DEAD)
 			var/mob/dead/observer/ghost = dead.get_ghost()

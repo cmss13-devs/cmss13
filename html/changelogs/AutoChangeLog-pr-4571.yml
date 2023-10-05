@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Comms relays now have a five minute cooldown to be re-pylon'd after a pylon was destroyed"
-  - bugfix: "Pylons now account for stored larva"

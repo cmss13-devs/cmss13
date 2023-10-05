@@ -142,7 +142,6 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
     'print_type': compound.category,
     'print_title': compound.id,
   };
-  const isThreeWords = compound.type.document.split(' ')[0] === 'Simulation';
   return (
     <TableRow key={compound.id}>
       <TableCell>
@@ -154,14 +153,13 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
       </TableCell>
 
       <TableCell className="chemical-td">
-        {!isThreeWords && (
-          <span className="compound_label">
-            {compound.type.document.split(' ')[2]}
-          </span>
-        )}
-        {isThreeWords && (
+        {compound.type.document.split(' ')[0] === 'Simulation' ? (
           <span className="compound_label">
             {compound.type.document.split(' ')[3]}
+          </span>
+        ) : (
+          <span className="compound_label">
+            {compound.type.document.split(' ')[2]}
           </span>
         )}
       </TableCell>

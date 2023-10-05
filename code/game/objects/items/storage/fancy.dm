@@ -71,7 +71,7 @@
 	storage_slots = 5
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
-
+	can_hold = list(/obj/item/tool/candle)
 
 /obj/item/storage/fancy/candle_box/fill_preset_inventory()
 	for(var/i=1; i <= storage_slots; i++)

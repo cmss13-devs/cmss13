@@ -5852,7 +5852,9 @@
 	},
 /area/almayer/medical/morgue)
 "asV" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -6629,7 +6631,9 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "auJ" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -20971,7 +20975,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	access_modified = 1;
 	name = "Storage";
-	req_one_access = "2;21"
+	req_one_access_txt = "19;21"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -35034,7 +35038,7 @@
 	access_modified = 1;
 	dir = 2;
 	name = "\improper Requisitions Break Room";
-	req_one_access = "19;21"
+	req_one_access_txt = "19;21"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -49285,7 +49289,9 @@
 	},
 /area/almayer/living/port_emb)
 "lqZ" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -52593,7 +52599,9 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "mMu" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing{
+	name = "bolted floodlight"
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -68673,7 +68681,7 @@
 	access_modified = 1;
 	dir = 1;
 	name = "Storage";
-	req_one_access = "2;21"
+	req_one_access_txt = "19;21"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

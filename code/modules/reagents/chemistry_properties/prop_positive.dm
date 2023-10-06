@@ -548,6 +548,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
 	value = 3
+	COOLDOWN_DECLARE(ghost_notif)
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
 	..()
@@ -590,9 +591,10 @@
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, TOX)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, CLONE)
-		if(dead.health > HEALTH_THRESHOLD_DEAD)
+		if(dead.health > HEALTH_THRESHOLD_DEAD && COOLDOWN_FINISHED(src, ghost_notif))
 			var/mob/dead/observer/ghost = dead.get_ghost()
 			if(ghost?.client)
+				COOLDOWN_START(src, ghost_notif, 30 SECONDS)
 				playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
 				to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	return TRUE

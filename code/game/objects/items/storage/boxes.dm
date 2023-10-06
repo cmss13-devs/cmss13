@@ -823,6 +823,30 @@
 	for(var/i = 0, i < 7, i++)
 		new /obj/item/reagent_container/food/condiment/sugar(src)
 
+//saltshaker
+/obj/item/storage/box/saltshaker
+	name = "\improper Saltshaker Box"
+
+/obj/item/storage/box/saltshaker/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		new /obj/item/reagent_container/food/condiment/saltshaker(src)
+
+//peppermill
+/obj/item/storage/box/peppermill
+	name = "\improper Peppermill Box"
+
+/obj/item/storage/box/peppermill/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		/obj/item/reagent_container/food/condiment/peppermill(src)
+
+//mint
+/obj/item/storage/box/mint
+	name = "\improper Mint Box"
+
+/obj/item/storage/box/mint/fill_preset_inventory()
+	for(var/i = 0, i < 7, i++)
+		/obj/item/reagent_container/food/snacks/mint(src)
+
 // ORGANICS
 
 //apple

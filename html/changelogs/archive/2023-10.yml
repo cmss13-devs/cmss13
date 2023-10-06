@@ -81,3 +81,6 @@
       to tell find out exactly what role's you are looking for. Also slightly expands
       the default monitor screen size to accommodate the entire personnel text on
       screen.
+2023-10-06:
+  blackdragonTOW:
+  - bugfix: fixed spider dead sprite to not have white space (is transparent instead)

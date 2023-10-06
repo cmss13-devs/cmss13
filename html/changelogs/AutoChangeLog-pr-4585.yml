@@ -1,4 +1,0 @@
-author: "blackdragonTOW"
-delete-after: True
-changes:
-  - bugfix: "fixed spider dead sprite to not have white space (is transparent instead)"

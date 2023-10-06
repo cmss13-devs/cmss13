@@ -440,6 +440,7 @@
 	product_slogans = "Every ingredients you need are here, and only for 1$"
 	product_ads = "Your out of ingredients Weyland-Yutani is there for you"
 	icon_state = "snack"
+	hacking_safety = TRUE
 	products = list(
 		/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature = 2,
 		/obj/item/storage/fancy/egg_box = 12,

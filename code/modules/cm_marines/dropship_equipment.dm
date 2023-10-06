@@ -1,5 +1,5 @@
 
-/// Dropship equipments, mainly weaponry but also utility implements
+/// Dropship equipment, mainly weaponry but also utility implements
 /obj/structure/dropship_equipment
 	density = TRUE
 	anchored = TRUE
@@ -284,7 +284,7 @@
 
 /// Holder for the dropship mannable machinegun system
 /obj/structure/dropship_equipment/mg_holder
-	name = "\improper MTU-4B Doorgunner Hardpoint System"
+	name = "\improper MTU-4B Door Gunner Hardpoint System"
 	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
@@ -419,13 +419,13 @@
 
 
 /obj/structure/dropship_equipment/fuel/fuel_enhancer
-	name = "fuel enhancer"
+	name = "\improper fuel enhancer"
 	desc = "A fuel enhancement system for dropships. It improves the thrust produced by the fuel combustion for faster travels. Fits inside the engine attach points. You need a powerloader to lift it."
 	icon_state = "fuel_enhancer"
 	point_cost = 800
 
 /obj/structure/dropship_equipment/fuel/cooling_system
-	name = "cooling system"
+	name = "\improper cooling system"
 	desc = "A cooling system for dropships. It produces additional cooling reducing delays between launch. Fits inside the engine attach points. You need a powerloader to lift it."
 	icon_state = "cooling_system"
 	point_cost = 800
@@ -559,7 +559,7 @@
 
 
 /obj/structure/dropship_equipment/adv_comp/docking
-	name = "/improper AN/AKW-222 Docking Computer"
+	name = "\improper AN/AKW-222 Docking Computer"
 	icon_state = "docking_comp"
 	point_cost = 0
 
@@ -703,7 +703,7 @@
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
 	name = "\improper LAU-444 Guided Missile Launcher"
-	icon_state = "rocket_pod" //I want to force whoever used rocket and missile interchangably to come back and look at this god damn mess.
+	icon_state = "rocket_pod" //I want to force whoever used rocket and missile interchangeably to come back and look at this god damn mess.
 	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter. Accepts AGM, AIM, BLU, and GBU missile systems."
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
@@ -1131,7 +1131,7 @@
 
 // Rappel deployment system
 /obj/structure/dropship_equipment/rappel_system
-	name = "/improper HPU-1 Rappel Deployment System"
+	name = "\improper HPU-1 Rappel Deployment System"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
 	point_cost = 50

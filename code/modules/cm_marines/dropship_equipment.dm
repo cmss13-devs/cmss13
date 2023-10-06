@@ -437,7 +437,7 @@
 	equip_categories = list(DROPSHIP_ELECTRONICS)
 
 /obj/structure/dropship_equipment/electronics/chaff_launcher
-	name = "chaff launcher"
+	name = "\improper AN/ALE-203 Chaff Launcher"
 	icon_state = "chaff_launcher"
 	point_cost = 0
 
@@ -445,7 +445,7 @@
 #define LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS 12
 
 /obj/structure/dropship_equipment/electronics/spotlights
-	name = "spotlight"
+	name = "\improper AN/LEN-15 Spotlight"
 	icon_state = "spotlights"
 	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
@@ -490,12 +490,12 @@
 
 
 /obj/structure/dropship_equipment/electronics/flare_launcher
-	name = "flare launcher"
+	name = "\improper AN/ALE-557 Flare Launcher"
 	icon_state = "flare_launcher"
 	point_cost = 0
 
 /obj/structure/dropship_equipment/electronics/targeting_system
-	name = "targeting system"
+	name = "\improper AN/AAQ-178 Weapon Targeting System"
 	icon_state = "targeting_system"
 	desc = "A targeting system for dropships. It improves firing accuracy on laser targets. Fits on electronics attach points. You need a powerloader to lift this."
 	point_cost = 800
@@ -507,7 +507,7 @@
 		icon_state = initial(icon_state)
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
-	name = "\improper LZ detector"
+	name = "\improper AN/AVD-60 LZ detector"
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
 	icon_state = "lz_detector"
 	point_cost = 50
@@ -559,7 +559,7 @@
 
 
 /obj/structure/dropship_equipment/adv_comp/docking
-	name = "docking computer"
+	name = "/improper AN/AKW-222 Docking Computer"
 	icon_state = "docking_comp"
 	point_cost = 0
 
@@ -702,8 +702,8 @@
 
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
-	name = "missile pod"
-	icon_state = "rocket_pod"
+	name = "\improper LAU-444 Guided Missile Launcher"
+	icon_state = "rocket_pod" //I want to take whoever used rocket and missile interchangably to come back and look at this god damn mess.
 	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter."
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
@@ -722,9 +722,9 @@
 
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod
-	name = "minirocket pod"
+	name = "\improper LAU-229 Rocket Pod"
 	icon_state = "minirocket_pod"
-	desc = "A mini rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter."
+	desc = "A rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 10 //1 seconds
@@ -743,7 +743,7 @@
 		ammo_equipped = null
 
 /obj/structure/dropship_equipment/weapon/laser_beam_gun
-	name = "laser beam gun"
+	name = "\improper LWU-6B Laser Cannon"
 	icon_state = "laser_beam"
 	desc = "State of the art technology recently acquired by the USCM, it fires a battery-fed pulsed laser beam at near lightspeed setting on fire everything it touches. Moving this will require some sort of lifter."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
@@ -761,7 +761,7 @@
 		else icon_state = "laser_beam"
 
 /obj/structure/dropship_equipment/weapon/launch_bay
-	name = "launch bay"
+	name = "\improper LAG-14 Internal Sentry Launcher"
 	icon_state = "launch_bay"
 	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
@@ -782,7 +782,7 @@
 
 
 /obj/structure/dropship_equipment/medevac_system
-	name = "medevac system"
+	name = "\improper RMU-4M Medevac System"
 	desc = "A winch system to lift injured marines on medical stretchers onto the dropship. Acquire lift target through the dropship equipment console."
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "medevac_system"
@@ -1014,7 +1014,7 @@
 // Fulton extraction system
 
 /obj/structure/dropship_equipment/fulton_system
-	name = "fulton recovery system"
+	name = "\improper RMU-19 Fulton Recovery System"
 	desc = "A winch system to collect any fulton recovery balloons in high altitude. Make sure you turn it on!"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "fulton_system"
@@ -1131,7 +1131,7 @@
 
 // Rappel deployment system
 /obj/structure/dropship_equipment/rappel_system
-	name = "rappel deployment system"
+	name = "/improper HPU-1 Rappel Deployment System"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
 	point_cost = 50

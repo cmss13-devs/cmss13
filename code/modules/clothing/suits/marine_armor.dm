@@ -1812,8 +1812,8 @@
 
 //CBRN
 /obj/item/clothing/suit/storage/marine/cbrn
-	name = "todo"
-	desc = "todo"
+	name = "\improper M3-M armor"
+	desc = "While lacking the appearance of the M3 pattern armor worn in regular service, this armor piece is still a derivative of it. It has been heavily modified to fit over the MOPP suit with additional padding and Venlar composite layers removed, so as not to restrict the wearer’s movement. However, with the reduction of composite layers, the personal protection offered is less than desired with complaints having been lodged since 2165."
 	icon_state = "cbrn"
 	item_state = "cbrn"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
@@ -1832,7 +1832,6 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/cbrn)
 
 /obj/item/clothing/suit/storage/marine/cbrn/advanced
-	name = "advanced M3-M Armor"
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH

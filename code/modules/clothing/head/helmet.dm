@@ -1392,8 +1392,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list()
 
 /obj/item/clothing/head/helmet/marine/cbrn_hood
-	name = "todo"
-	desc = "todo"
+	name = "\improper M3 MOPP mask"
+	desc = "The M3 MOPP mask includes a full covering cowl that securely attaches to the MOPP suit. The mask filters out harmful particles in the air to allow the wearer to breathe safely in the field. Depending on the hostility of the contaminated area the mask’s filter will last an average of 12 hours or less."
 	icon_state = "cbrn_hood"
 	item_state = "cbrn_hood"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -1405,6 +1405,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	force = 0 //"The M3 MOPP mask would be a normal weapon if you were to hit someone with it."
+	throwforce = 0
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_helmet = NO_FLAGS
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
@@ -1412,8 +1414,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list()
 
 /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
-	name = "todo"
-	desc = "todo"
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH

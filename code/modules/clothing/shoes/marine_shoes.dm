@@ -158,8 +158,8 @@
 	update_icon()
 
 /obj/item/clothing/shoes/veteran/pmc/commando/cbrn
-	name = "todo"
-	desc = "todo"
+	name = "\improper M3 MOPP boots"
+	desc = "M3 MOPP boots have been designed to protect the wearer from contact with any possible infection vectors or hazardous substances that may have contaminated the area of operations. This includes further enhancements in conjunction with the standard durability of M3 boots, reducing the probability of punctures or cuts as well as the effects of radiation."
 	icon_state = "cbrn"
 	item_state = "cbrn"
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS

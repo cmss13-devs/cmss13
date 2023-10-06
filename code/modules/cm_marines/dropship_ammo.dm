@@ -18,10 +18,10 @@
 	var/ammo_count
 	/// Maximal ammunition count
 	var/max_ammo_count
-	/// What to call the ammo in the ammo transfering message
+	/// What to call the ammo in the ammo transferring message
 	var/ammo_name = "round"
 	var/ammo_id
-	/// Whether the ammo inside this magazine can be transfered to another magazine.
+	/// Whether the ammo inside this magazine can be transferred to another magazine.
 	var/transferable_ammo = FALSE
 	/// How many tiles the ammo can deviate from the laser target
 	var/accuracy_range = 3
@@ -146,7 +146,7 @@
 	fire_mission_delay = 2
 	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
-	var/directhit_damage = 105 //how much damage is to be inficted to a mob, this is here so that we can hit resting mobs.
+	var/directhit_damage = 105 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	var/penetration = 10 //AP value pretty much
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
@@ -195,7 +195,7 @@
 /obj/structure/ship_ammo/heavygun/antitank
 	name = "\improper PGU-105 30mm Anti-tank ammo crate"
 	icon_state = "30mm_crate_hv"
-	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It's designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any ARMAT store. Can be loaded into the GAU-21 30mm cannon."
+	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It is designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any ARMAT store. Can be loaded into the GAU-21 30mm cannon."
 	travelling_time = 60
 	ammo_count = 400
 	max_ammo_count = 400
@@ -204,7 +204,7 @@
 	point_cost = 325
 	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
-	directhit_damage = 80 //how much damage is to be inficted to a mob, this is here so that we can hit resting mobs.
+	directhit_damage = 80 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	penetration = 40 //AP value pretty much
 
 //laser battery
@@ -411,7 +411,7 @@
 
 /obj/structure/ship_ammo/minirocket/incendiary
 	name = "\improper AGR-59-I 'Mini-Mike'"
-	desc = "The AGR-59-I 'Mini-Mike' incindiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
+	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket_inc"
 	point_cost = 500
 	fire_mission_delay = 3 //high cooldown

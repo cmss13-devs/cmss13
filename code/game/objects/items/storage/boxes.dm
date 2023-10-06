@@ -837,7 +837,7 @@
 
 /obj/item/storage/box/peppermill/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
-		/obj/item/reagent_container/food/condiment/peppermill(src)
+		new /obj/item/reagent_container/food/condiment/peppermill(src)
 
 //mint
 /obj/item/storage/box/mint
@@ -845,7 +845,7 @@
 
 /obj/item/storage/box/mint/fill_preset_inventory()
 	for(var/i = 0, i < 7, i++)
-		/obj/item/reagent_container/food/snacks/mint(src)
+		new /obj/item/reagent_container/food/snacks/mint(src)
 
 // ORGANICS
 

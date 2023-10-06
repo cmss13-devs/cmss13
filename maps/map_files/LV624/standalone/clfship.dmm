@@ -958,17 +958,6 @@
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/crashed_ship)
-"Aa" = (
-/obj/effect/vehicle_spawner/van/fixed{
-	color = "#4a9eed";
-	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides. This one seems to be used by the CLF";
-	name = "CLF Van"
-	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/crashed_ship)
 "Ab" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
@@ -2541,7 +2530,7 @@ ch
 Xq
 pS
 bP
-Aa
+pS
 Qf
 bP
 dN

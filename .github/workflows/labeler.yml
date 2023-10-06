@@ -5,6 +5,9 @@ on:
 jobs:
   label:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: "Check for ACTION_ENABLER secret and pass true to output if it exists to be checked by later steps"
         id: value_holder

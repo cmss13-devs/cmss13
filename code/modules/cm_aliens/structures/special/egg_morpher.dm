@@ -1,4 +1,4 @@
-#define EGGMORPG_RANGE 2
+#define EGGMORPG_RANGE 3
 
 //Eggmorpher - Basically a big reusable egg
 /obj/effect/alien/resin/special/eggmorph

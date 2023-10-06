@@ -91,8 +91,8 @@ GLOBAL_LIST_INIT(cm_vending_walker, list(
 GLOBAL_LIST_INIT(cm_vending_clothing_walker, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("Tanker Armor", 0, /obj/item/clothing/suit/storage/marine/tanker/walker, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("M50 Tanker Helmet", 0, /obj/item/clothing/head/helmet/marine/tech/tanker/walker, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Walker Armor", 0, /obj/item/clothing/suit/storage/marine/tanker/walker, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("M50 Walker Helmet", 0, /obj/item/clothing/head/helmet/marine/tech/tanker/walker, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Medical Helmet Optic", 0, /obj/item/device/helmet_visor/medical, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Welding Kit", 0, /obj/item/tool/weldpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
@@ -178,5 +178,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_walker, list(
 	req_access = list(ACCESS_MARINE_WALKER)
 	vendor_role = list(JOB_WALKER)
 
-/obj/structure/machinery/cm_vending/clothing/vehicle_crew/get_listed_products(mob/user)
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew/walker/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_walker

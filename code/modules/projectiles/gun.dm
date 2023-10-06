@@ -500,30 +500,30 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user.dazed)
 		pull_time += 3
 	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
-
+/*
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
-		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
-
+		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left) /// shotgun juggling return
+*/
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
 		set_gun_user(user)
-		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, user))
-			force_light(on = TRUE)
-			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+//		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, user))
+//			force_light(on = TRUE)
+//			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
 	else
 		set_gun_user(null)
-		force_light(on = FALSE)
-		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+//		force_light(on = FALSE)
+//		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
 
 	return ..()
 
 /obj/item/weapon/gun/dropped(mob/user)
 	. = ..()
-
+/*
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
-		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
-
+		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left) /// shotgun juggling return
+*/
 	unwield(user)
 	set_gun_user(null)
 
@@ -1109,20 +1109,24 @@ and you're good to go.
 		if(PB_burst_bullets_fired) //Has a burst been carried over from a PB?
 			PB_burst_bullets_fired = 0 //Don't need this anymore. The torch is passed.
 
+	var/fired_by_akimbo = FALSE
+	if(dual_wield)
+		fired_by_akimbo = TRUE
+
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
 	if(!reflex && !dual_wield && user)
 		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
-	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo)
+	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	if(!fire_return)
 		return fire_return
 
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 	return AUTOFIRE_CONTINUE
 
-/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo)
+/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 
@@ -1201,19 +1205,20 @@ and you're good to go.
 			active_attachable.last_fired = world.time
 		else
 			last_fired = world.time
-			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-			if(fire_delay_group && delay_left > 0)
-				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+//			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+//			if(fire_delay_group && delay_left > 0)
+//				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left) /// shotgun juggling return
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 		. = TRUE
 
 		shots_fired++
-		
-		if(dual_wield)
-			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-				user.swap_hand()
-			else
-				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+
+		if(dual_wield && !fired_by_akimbo)
+			switch(user?.client?.prefs?.dual_wield_pref)
+				if(DUAL_WIELD_FIRE)
+					INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+				if(DUAL_WIELD_SWAP)
+					user.swap_hand()
 
 	else
 		return TRUE
@@ -1352,6 +1357,10 @@ and you're good to go.
 		else
 			active_attachable.activate_attachment(src, null, TRUE)//No way.
 
+	var/fired_by_akimbo = FALSE
+	if(dual_wield)
+		fired_by_akimbo = TRUE
+
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
 	if(!dual_wield && user)
@@ -1441,17 +1450,18 @@ and you're good to go.
 			active_attachable.last_fired = world.time
 		else
 			last_fired = world.time
-			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-			if(fire_delay_group && delay_left > 0)
-				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+//			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+//			if(fire_delay_group && delay_left > 0) /// shotgun juggling return
+//				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left) /// shotgun juggling return
 
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
-		if(dual_wield)
-			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-				user.swap_hand()
-			else
-				INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
+		if(dual_wield && !fired_by_akimbo)
+			switch(user?.client?.prefs?.dual_wield_pref)
+				if(DUAL_WIELD_FIRE)
+					INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
+				if(DUAL_WIELD_SWAP)
+					user.swap_hand()
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [attacked_mob] with [src]!"), SPAN_DANGER("You have executed [attacked_mob] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)

@@ -146,7 +146,7 @@
  * If the object is completely solid, returns ALL
  */
 /obj/structure/barricade/BlockedExitDirs(atom/movable/mover, target_dir)
-	if(closed)
+	if(closed || istype(mover, /obj/vehicle/walker))
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()

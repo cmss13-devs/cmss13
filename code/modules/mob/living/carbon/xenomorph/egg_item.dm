@@ -98,7 +98,7 @@
 		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
 		return
 
-	if(!hive_weeds)
+	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC) /// Теперь эггсак может ставить яйца везде ~Danilcus
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 
@@ -117,7 +117,7 @@
 		return
 
 	for(var/obj/effect/alien/weeds/weed in T)
-		if(weed.weed_strength >= WEED_LEVEL_HIVE)
+		if(weed.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
 			user.use_plasma(30)
 			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
 

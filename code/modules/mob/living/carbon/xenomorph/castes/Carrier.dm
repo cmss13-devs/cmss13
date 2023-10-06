@@ -239,6 +239,28 @@
 	else
 		to_chat(src, SPAN_WARNING("You can't carry more facehuggers on you."))
 
+/mob/living/carbon/xenomorph/carrier/proc/store_eggs_in_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+		return
+
+	if(eggs_cur == 0)
+		to_chat(src, SPAN_WARNING("You are out of eggs!"))
+		return
+
+	if(eggs_cur > 0 && morpher.stored_huggers < morpher.huggers_to_grow_max)
+		var/eggs_to_transfer = min(eggs_cur, morpher.huggers_to_grow_max-morpher.stored_huggers)
+		morpher.stored_huggers += eggs_to_transfer
+		eggs_cur -= eggs_to_transfer
+		if(eggs_to_transfer == 1)
+			to_chat(src, SPAN_NOTICE("You slide one facehugger from an egg into \the [morpher]. Now sheltering: [eggs_cur] / [eggs_max]."))
+		else
+			to_chat(src, SPAN_NOTICE("You slide [eggs_to_transfer] facehuggers into \the [morpher] from your stored eggs. Now sheltering: [eggs_cur] / [eggs_max]."))
+		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
+		update_icons()
+	else
+		to_chat(src, SPAN_XENOWARNING("\The [morpher] is full of children."))
+
 
 /mob/living/carbon/xenomorph/carrier/proc/throw_hugger(atom/T)
 	if(!T)
@@ -343,6 +365,19 @@
 				for(E in egg_turf)
 					if(eggs_cur < eggs_max)
 						store_egg(E)
+			return
+
+	//target an egg morpher to fill em
+	if(istype(T, /obj/effect/alien/resin/special/eggmorph))
+		var/obj/effect/alien/resin/special/eggmorph/morpher = T
+		if(Adjacent(morpher))
+			if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+				to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+				return
+			if(on_fire)
+				to_chat(src, SPAN_WARNING("Touching \the [morpher] while you're on fire would burn the facehuggers in it!"))
+				return
+			store_eggs_in_egg_morpher(morpher)
 			return
 
 	var/obj/item/xeno_egg/E = get_active_hand()

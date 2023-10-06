@@ -379,9 +379,6 @@
 			to_chat(user, "You're securing the M56D into place...")
 
 			var/disassemble_time = 30
-			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				disassemble_time = 5
-
 			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
@@ -571,9 +568,6 @@
 			to_chat(user, "You begin disassembling [src]...")
 
 			var/disassemble_time = 30
-			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				disassemble_time = 5
-
 			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -1032,6 +1026,9 @@
 /obj/structure/machinery/m56d_hmg/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	SIGNAL_HANDLER
 
+	if (burst_firing)
+		return
+
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
 		return
@@ -1060,7 +1057,8 @@
 		reset_fire()
 		display_ammo()
 		return
-	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+	else if(gun_firemode != GUN_FIREMODE_SEMIAUTO)
+		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
 /// setter for fire_delay
 /obj/structure/machinery/m56d_hmg/proc/set_fire_delay(value)

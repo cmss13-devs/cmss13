@@ -18,16 +18,11 @@
 	paygrade = "UE2"
 	name = "Private First Class"
 	prefix = "PFC."
+	pay_multiplier = 0.2
 
-/datum/paygrade/upp/ue3m
-	paygrade = "UE3M"
-	name = "Korporal Medic"
-	prefix = "Kpl."
-	pay_multiplier = 0.3
-
-/datum/paygrade/upp/ue3s
-	paygrade = "UE3S"
-	name = "Korporal Sapper"
+/datum/paygrade/upp/ue3
+	paygrade = "UE3"
+	name = "Korporal"
 	prefix = "Kpl."
 	pay_multiplier = 0.3
 
@@ -75,56 +70,50 @@
 	prefix = "Lt."
 	pay_multiplier = 1.25
 
-/datum/paygrade/upp/uo1m
-	paygrade = "UO1M"
-	name = "Leytenant Medic"
-	prefix = "Lt. Med."
-	pay_multiplier = 1.25
-
-/datum/paygrade/upp/uo1e
-	paygrade = "UO1E"
+/datum/paygrade/upp/uo2
+	paygrade = "UO2"
 	name = "Senior Leytenant"
 	prefix = "Sr. LT."
 	pay_multiplier = 1.5
 
-
-/datum/paygrade/upp/uo2
-	paygrade = "UO2"
+/datum/paygrade/upp/uo3
+	paygrade = "UO3"
 	name = "Kapitan"
 	prefix = "Kpt."
 	pay_multiplier = 2
 
-/datum/paygrade/upp/uo3
-	paygrade = "UO3"
+/datum/paygrade/upp/uo4
+	paygrade = "UO4"
 	name = "Mayjor."
 	prefix = "May."
 	pay_multiplier = 2.5
 
-/datum/paygrade/upp/uo4
-	paygrade = "UO4"
-	name = "Leytenant Kolonel"
-	pay_multiplier = 3
-
 /datum/paygrade/upp/uo5
 	paygrade = "UO5"
+	name = "Leytenant Kolonel"
+	prefix = "Lt. Kol."
+	pay_multiplier = 3
+
+/datum/paygrade/upp/uo6
+	paygrade = "UO6"
 	name = "Kolonel"
 	prefix = "Kol."
 	pay_multiplier = 4
 
-/datum/paygrade/upp/uo6
-	paygrade = "UO6"
-	name = "Mayjor General"
-	prefix = "MayGen."
-	pay_multiplier = 5
-
 /datum/paygrade/upp/uo7
 	paygrade = "UO7"
-	name = "Leytenant General"
-	prefix = "LtGen."
-	pay_multiplier = 6
+	name = "Mayjor General"
+	prefix = "May. Gen."
+	pay_multiplier = 5
 
 /datum/paygrade/upp/uo8
 	paygrade = "UO8"
+	name = "Leytenant General"
+	prefix = "Lt. Gen."
+	pay_multiplier = 6
+
+/datum/paygrade/upp/uo9
+	paygrade = "UO9"
 	name = "Army General"
-	prefix = "ArmGen."
+	prefix = "Gen."
 	pay_multiplier = 7

@@ -173,6 +173,13 @@
 		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
 		return
 	last_fire = world.time
+	if(!ammo.reagents.reagent_list.len)
+		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+		ammo.loc = owner.loc
+		ammo = null
+		visible_message("[owner.name]'s systems deployed used magazine.")
+		return
+
 	var/datum/reagent/R = ammo.reagents.reagent_list[1]
 
 	var/flameshape = R.flameshape
@@ -196,11 +203,9 @@
 		qdel(fire)
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
-	ammo.current_rounds--
+	ammo.current_rounds = ammo.reagents.total_volume
 
 	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), owner.seats[VEHICLE_DRIVER]), R, max_range, ammo.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), owner.seats[VEHICLE_DRIVER]), fuel_pressure, fire_type)
-
-	to_chat(owner.seats[VEHICLE_DRIVER] , "<span class='warning'>[name] fired! [ammo.current_rounds]/[ammo.max_rounds] charges remaining!")
 
 	if(ammo.current_rounds <= 0 || !ammo)
 		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
@@ -218,7 +223,7 @@
 ///////////////
 
 /obj/item/ammo_magazine/walker
-	w_class = 12.0
+	w_class = SIZE_LARGE
 	icon = 'fray-marines/icons/obj/vehicles/mecha_guns.dmi'
 
 /obj/item/ammo_magazine/walker/smartgun

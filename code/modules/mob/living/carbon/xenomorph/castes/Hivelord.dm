@@ -69,7 +69,6 @@
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
 		/datum/action/xeno_action/active_toggle/toggle_speed, //fourth macro
 		/datum/action/xeno_action/onclick/tacmap,
-		/datum/action/xeno_action/onclick/build_lessers_burrow,
 		)
 
 	inherent_verbs = list(

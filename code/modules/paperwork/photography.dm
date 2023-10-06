@@ -259,9 +259,15 @@
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 	var/mobs = ""
 	var/radius = (size-1)*0.5
+	var/max_mobs_desc = 4
 	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(world_view_size + radius, user.client)
 	for(var/turf/T as anything in turfs)
-		mobs += get_mobs(T)
+		if(!max_mobs_desc)
+			break
+		var/mob = get_mobs(T)
+		if(mob)
+			mobs += mob
+			max_mobs_desc--
 	var/datum/picture/P = createpicture(target, user, turfs, mobs, flag)
 	printpicture(user, P)
 

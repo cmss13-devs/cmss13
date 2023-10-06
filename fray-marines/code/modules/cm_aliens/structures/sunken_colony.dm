@@ -1,7 +1,7 @@
 #define SUNKEN_DELAY_PER_RANGE 0.2 SECONDS
 #define SUNKEN_MAX_RANGE 24
 #define SUNKEN_MIN_RANGE 2
-#define SUNKEN_COOLDOWN 5 SECONDS
+#define SUNKEN_COOLDOWN 4 SECONDS
 
 /datum/construction_template/xenomorph/sunken_colony
 	name = XENO_STRUCTURE_SUNKEN
@@ -20,7 +20,7 @@
 	desc = "A living stationary organism that strikes from below with its powerful claw. Fiercely territorial."
 	icon = 'fray-marines/icons/obj/structures/alien/Buildings.dmi'
 	icon_state = "sunken"
-	health = 600
+	health = 750
 
 	pixel_y = -8
 	pixel_x = -24

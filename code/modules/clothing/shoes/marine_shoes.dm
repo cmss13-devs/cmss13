@@ -157,6 +157,19 @@
 	stored_item = knife
 	update_icon()
 
+/obj/item/clothing/shoes/veteran/pmc/commando/cbrn
+	name = "todo"
+	desc = "todo"
+	icon_state = "cbrn"
+	item_state = "cbrn"
+	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+
+/obj/item/clothing/shoes/veteran/pmc/commando/cbrn/Initialize(mapload, ...)
+	. = ..()
+	stored_item = new /obj/item/attachable/bayonet(src)
+	update_icon()
+
 /obj/item/clothing/shoes/marine/corporate
 	name = "rugged boots"
 	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."

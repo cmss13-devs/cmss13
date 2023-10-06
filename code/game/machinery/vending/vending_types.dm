@@ -441,6 +441,7 @@
 	product_ads = "Your out of ingredients Weyland-Yutani is there for you"
 	icon_state = "snack"
 	products = list(
+		/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature = 2,
 		/obj/item/storage/fancy/egg_box = 12,
 		/obj/item/storage/box/fish = 12,
 		/obj/item/storage/box/meat = 12,
@@ -467,6 +468,7 @@
 	)
 
 	prices = list(
+		/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature = 10,
 		/obj/item/storage/fancy/egg_box = 1,
 		/obj/item/storage/box/fish = 1,
 		/obj/item/storage/box/meat = 1,

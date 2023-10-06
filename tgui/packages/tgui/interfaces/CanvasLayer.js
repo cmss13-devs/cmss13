@@ -35,9 +35,6 @@ export class CanvasLayer extends Component {
 
     this.img = new Image();
 
-    // hardcoded value for testing pngs
-    // this.img.src = "https://cm-ss13.com/wiki/images/6/6f/LV624.png"
-
     this.img.src = this.imageSrc;
 
     this.drawCanvas();

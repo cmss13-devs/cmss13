@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - ui: "Added personnel job titles to the handheld crew monitor, to make it easier to tell find out exactly what role's you are looking for. Also slightly expands the default monitor screen size to accommodate the entire personnel text on screen."

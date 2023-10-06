@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix getFlatIcon not resizing its template nor respect appearance_flags of RESET_COLOR and RESET_ALPHA"

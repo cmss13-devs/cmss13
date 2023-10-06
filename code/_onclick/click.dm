@@ -126,7 +126,9 @@
 	if (!isturf(loc))
 		return
 
-	if(A.Adjacent(src) && src.a_intent == INTENT_GRAB && !W)
+	var/adjacent = A.Adjacent(src)
+
+	if(adjacent && src.a_intent == INTENT_GRAB && !W)
 		click_adjacent(A, W, mods)
 		return
 
@@ -135,7 +137,7 @@
 
 	next_move = world.time
 	// If standing next to the atom clicked.
-	if(A.Adjacent(src))
+	if(adjacent)
 		click_adjacent(A, W, mods)
 		return
 

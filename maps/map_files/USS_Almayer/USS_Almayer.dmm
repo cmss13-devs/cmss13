@@ -30362,6 +30362,7 @@
 	pixel_x = -8;
 	pixel_y = 29
 	},
+/obj/structure/machinery/vending/ingredients,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

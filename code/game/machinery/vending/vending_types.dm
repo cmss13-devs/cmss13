@@ -433,3 +433,62 @@
 		/obj/item/device/camera = 30,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL
+
+/obj/structure/machinery/vending/ingredients
+	name = "\improper Ingredient Machine"
+	desc = "A vending machine full of ingredients."
+	product_slogans = "Every ingredients you need are here, and only for 1$"
+	product_ads = "Your out of ingredients Weyland-Yutani is there for you"
+	icon_state = "snack"
+	products = list(
+		/obj/item/storage/fancy/egg_box = 12,
+		/obj/item/storage/box/fish = 12,
+		/obj/item/storage/box/meat = 12,
+		/obj/item/storage/box/milk =12,
+		/obj/item/storage/box/soymilk = 12,
+		/obj/item/storage/box/enzyme = 12,
+		/obj/item/storage/box/flour = 12,
+		/obj/item/storage/box/sugar = 12,
+		/obj/item/storage/box/apple = 6,
+		/obj/item/storage/box/banana = 6,
+		/obj/item/storage/box/chanterelle = 6,
+		/obj/item/storage/box/cherries = 6,
+		/obj/item/storage/box/chili = 6,
+		/obj/item/storage/box/cabbage = 6,
+		/obj/item/storage/box/carrot = 6,
+		/obj/item/storage/box/corn = 6,
+		/obj/item/storage/box/eggplant = 6,
+		/obj/item/storage/box/lemon = 6,
+		/obj/item/storage/box/lime = 6,
+		/obj/item/storage/box/orange = 6,
+		/obj/item/storage/box/potato = 6,
+		/obj/item/storage/box/tomato = 6,
+		/obj/item/storage/box/whitebeet = 6,
+	)
+
+	prices = list(
+		/obj/item/storage/fancy/egg_box = 1,
+		/obj/item/storage/box/fish = 1,
+		/obj/item/storage/box/meat = 1,
+		/obj/item/storage/box/milk =1,
+		/obj/item/storage/box/soymilk = 1,
+		/obj/item/storage/box/enzyme = 1,
+		/obj/item/storage/box/flour = 1,
+		/obj/item/storage/box/sugar = 1,
+		/obj/item/storage/box/apple = 1,
+		/obj/item/storage/box/banana = 1,
+		/obj/item/storage/box/chanterelle = 1,
+		/obj/item/storage/box/cherries = 1,
+		/obj/item/storage/box/chili = 1,
+		/obj/item/storage/box/cabbage = 1,
+		/obj/item/storage/box/carrot = 1,
+		/obj/item/storage/box/corn = 1,
+		/obj/item/storage/box/eggplant = 1,
+		/obj/item/storage/box/lemon = 1,
+		/obj/item/storage/box/lime = 1,
+		/obj/item/storage/box/orange = 1,
+		/obj/item/storage/box/potato = 1,
+		/obj/item/storage/box/tomato = 1,
+		/obj/item/storage/box/whitebeet = 1,
+	)
+	product_type = VENDOR_PRODUCT_TYPE_FOOD

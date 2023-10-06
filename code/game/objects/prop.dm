@@ -18,6 +18,25 @@
 	icon_state = "geiger"
 	item_state = ""
 	w_class = SIZE_SMALL
+	///Whether the geiger counter is on or off
+	var/toggled_on = FALSE
+	///Iconstate of geiger counter when on
+	var/enabled_state = "geiger_on"
+	///Iconstate of geiger counter when off
+	var/disabled_state = "geiger"
+
+/obj/item/prop/geiger_counter/Initialize(mapload, ...)
+	. = ..()
+	if(toggled_on)
+		icon_state = enabled_state
+
+/obj/item/prop/geiger_counter/attack_self(mob/user)
+	. = ..()
+	toggled_on = !toggled_on
+	if(toggled_on)
+		icon_state = enabled_state
+		return
+	icon_state = disabled_state
 
 /obj/item/prop/tableflag
 	name = "United Americas table flag"

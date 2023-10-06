@@ -203,3 +203,11 @@
 	desc = "Standard issue tactical gloves used by the royal marines."
 	icon_state = "rmc_gloves"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+
+/obj/item/clothing/gloves/marine/veteran/cbrn
+	name = "todo"
+	desc = "todo"
+	icon_state = "cbrn"
+	item_state = "cbrn"
+	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS

@@ -535,6 +535,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/targeted_ztrait = ZTRAIT_GROUND
 	var/atom/owner
 
+	var/static/map_reference
+
 	// color selection for the tactical map canvas, defaults to black.
 	var/toolbar_color_selection = "black"
 	var/toolbar_updated_selection = "black"
@@ -557,7 +559,6 @@ SUBSYSTEM_DEF(minimaps)
 	allowed_flags = minimap_type
 	owner = source
 
-
 /datum/tacmap/status_tab_view/New()
 	var/datum/tacmap/status_tab_view/uscm_tacmap
 	allowed_flags = MINIMAP_FLAG_USCM
@@ -578,6 +579,11 @@ SUBSYSTEM_DEF(minimaps)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 
+		if(!map_reference)
+			var/wiki_url = CONFIG_GET(string/wikiurl)
+			var/obj/item/map/current_map/new_map = new
+			map_reference ="[wiki_url]/[new_map.html_link]"
+			qdel(new_map)
 
 		var/mob/living/carbon/xenomorph/xeno = user
 		if(ishuman(user) || isxeno(user) && xeno.hivenumber == XENO_HIVE_NORMAL)
@@ -623,7 +629,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
 	data["isXeno"] = FALSE
-	data["currentMapName"] = SSmapping.configs?[GROUND_MAP].map_name
+	data["currentMapName"] = map_reference
 
 	var/mob/living/carbon/xenomorph/xeno_user
 	if(isxeno(user))
@@ -645,7 +651,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/status_tab_view/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["currentMapName"] = SSmapping.configs?[GROUND_MAP].map_name
+	data["currentMapName"] = map_reference
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE

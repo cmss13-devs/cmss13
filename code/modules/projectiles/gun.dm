@@ -500,30 +500,30 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user.dazed)
 		pull_time += 3
 	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
-
+/*
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
-		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
-
+		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left) /// shotgun juggling return
+*/
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
 		set_gun_user(user)
-		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, user))
-			force_light(on = TRUE)
-			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+//		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, user))
+//			force_light(on = TRUE)
+//			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
 	else
 		set_gun_user(null)
-		force_light(on = FALSE)
-		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+//		force_light(on = FALSE)
+//		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
 
 	return ..()
 
 /obj/item/weapon/gun/dropped(mob/user)
 	. = ..()
-
+/*
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
-		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
-
+		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left) /// shotgun juggling return
+*/
 	unwield(user)
 	set_gun_user(null)
 
@@ -1205,9 +1205,9 @@ and you're good to go.
 			active_attachable.last_fired = world.time
 		else
 			last_fired = world.time
-			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-			if(fire_delay_group && delay_left > 0)
-				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+//			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+//			if(fire_delay_group && delay_left > 0)
+//				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left) /// shotgun juggling return
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 		. = TRUE
 
@@ -1450,9 +1450,9 @@ and you're good to go.
 			active_attachable.last_fired = world.time
 		else
 			last_fired = world.time
-			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-			if(fire_delay_group && delay_left > 0)
-				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+//			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+//			if(fire_delay_group && delay_left > 0) /// shotgun juggling return
+//				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left) /// shotgun juggling return
 
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 

@@ -153,7 +153,7 @@
 /// Turret holder for dropship automated sentries
 /obj/structure/dropship_equipment/sentry_holder
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
-	name = "sentry deployment system"
+	name = "\improper A/A-32-P Sentry Defense System"
 	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
 	health = null
@@ -284,7 +284,7 @@
 
 /// Holder for the dropship mannable machinegun system
 /obj/structure/dropship_equipment/mg_holder
-	name = "machine gun deployment system"
+	name = "\improper MTU-4B Doorgunner Hardpoint System"
 	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
@@ -686,7 +686,7 @@
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run."
+	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates"
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400
@@ -703,8 +703,8 @@
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
 	name = "\improper LAU-444 Guided Missile Launcher"
-	icon_state = "rocket_pod" //I want to take whoever used rocket and missile interchangably to come back and look at this god damn mess.
-	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter."
+	icon_state = "rocket_pod" //I want to force whoever used rocket and missile interchangably to come back and look at this god damn mess.
+	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter. Accepts AGM, AIM, BLU, and GBU missile systems."
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
 	point_cost = 600
@@ -724,7 +724,7 @@
 /obj/structure/dropship_equipment/weapon/minirocket_pod
 	name = "\improper LAU-229 Rocket Pod"
 	icon_state = "minirocket_pod"
-	desc = "A rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter."
+	desc = "A rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter. Accepts the AGR-59 series of minirockets."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 10 //1 seconds
@@ -745,7 +745,7 @@
 /obj/structure/dropship_equipment/weapon/laser_beam_gun
 	name = "\improper LWU-6B Laser Cannon"
 	icon_state = "laser_beam"
-	desc = "State of the art technology recently acquired by the USCM, it fires a battery-fed pulsed laser beam at near lightspeed setting on fire everything it touches. Moving this will require some sort of lifter."
+	desc = "State of the art technology recently acquired by the USCM, it fires a battery-fed pulsed laser beam at near lightspeed setting on fire everything it touches. Moving this will require some sort of lifter. Accepts the BTU-17/LW Hi-Cap Laser Batteries."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/phasein.ogg'
 	firing_delay = 50 //5 seconds
@@ -763,7 +763,7 @@
 /obj/structure/dropship_equipment/weapon/launch_bay
 	name = "\improper LAG-14 Internal Sentry Launcher"
 	icon_state = "launch_bay"
-	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter."
+	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter. Accepts the A/C-49-P Air Deployable Sentry as ammunition."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds

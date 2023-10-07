@@ -72,3 +72,9 @@
 /obj/effect/alien/resin/special/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.can_destroy_special() || M.hivenumber != linked_hive.hivenumber)
 		return ..()
+
+/obj/effect/alien/resin/special/get_projectile_hit_boolean(obj/projectile/firing_projectile)
+	if(firing_projectile.original == src || firing_projectile.original == get_turf(src))
+		return TRUE
+
+	return FALSE

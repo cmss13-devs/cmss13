@@ -119,7 +119,7 @@
 		if(!security_record)
 			continue
 
-		var/obj/item/paper/paper = new /obj/item/paper(src)
+		var/obj/item/paper/paper = new(src)
 		paper.name = "Security Record ([general_record.fields["name"]])"
 		paper.info = "<CENTER><B>Security Record</B></CENTER><BR>"
 		paper.info += "Name: [general_record.fields["name"]] ID: [general_record.fields["id"]]<BR>\nSex: [general_record.fields["sex"]]<BR>\nAge: [general_record.fields["age"]]<BR>\nPhysical Status: [general_record.fields["p_stat"]]<BR>\nMental Status: [general_record.fields["m_stat"]]<BR>"

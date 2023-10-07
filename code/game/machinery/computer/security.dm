@@ -6,12 +6,12 @@
 	icon_state = "security"
 	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/secure_data
-	var/obj/item/device/clue_scanner/scanner = null
+	var/obj/item/device/clue_scanner/scanner
 
 	// For optimisation, we keep track of the viewed record and only send detailed data for it.
-	var/active_record_ref= null
-	var/datum/data/record/active_record_general = null
-	var/datum/data/record/active_record_security = null
+	var/active_record_ref
+	var/datum/data/record/active_record_general
+	var/datum/data/record/active_record_security
 
 /obj/structure/machinery/computer/secure_data/attackby(obj/item/held_object as obj, user as mob)
 	if(istype(held_object, /obj/item/device/clue_scanner) && !scanner)
@@ -160,11 +160,11 @@
 			if (!sanity_check(params["ref"]))
 				return
 
-			var/sanitised_name = reject_bad_name(tgui_input_text(usr, "Enter a new name", "New Name", active_record_general.fields["name"]))
+			var/sanitised_name = reject_bad_name(tgui_input_text(ui.user, "Enter a new name", "New Name", active_record_general.fields["name"]))
 			if (!sanitised_name || !sanity_check(params["ref"]))
 				return
 
-			message_admins("[key_name(usr)] has changed the record name of [active_record_general.fields["name"]] to [sanitised_name]")
+			message_admins("[key_name(ui.user)] has changed the record name of [active_record_general.fields["name"]] to [sanitised_name]")
 			active_record_general.fields["name"] = sanitised_name
 
 		if("toggle_sex")
@@ -183,7 +183,7 @@
 			// New records have a string in their age field which will break this input.
 			var/default_age = active_record_general.fields["age"] == "Unknown" ? 0 : active_record_general.fields["age"]
 
-			var/input = tgui_input_number(usr, "Enter a new age", "New Age", default_age, AGE_MAX, AGE_MIN)
+			var/input = tgui_input_number(ui.user, "Enter a new age", "New Age", default_age, AGE_MAX, AGE_MIN)
 			if (!input || !sanity_check(params["ref"]))
 				return
 
@@ -209,7 +209,7 @@
 			if (!istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
 				return
 
-			var/input = tgui_input_text(usr, "Your name and time will be added to this new comment", "New Comment", multiline = TRUE)
+			var/input = tgui_input_text(ui.user, "Your name and time will be added to this new comment", "New Comment", multiline = TRUE)
 			if (!input || !istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
 				return
 
@@ -217,12 +217,12 @@
 
 			var/created_by_name = ""
 			var/created_by_rank = ""
-			if(istype(usr, /mob/living/carbon/human))
-				var/mob/living/carbon/human/human = usr
+			if(istype(ui.user, /mob/living/carbon/human))
+				var/mob/living/carbon/human/human = ui.user
 				created_by_name = human.get_authentification_name()
 				created_by_rank = human.get_assignment()
-			else if(istype(usr, /mob/living/silicon/robot))
-				var/mob/living/silicon/robot/robot = usr
+			else if(istype(ui.user, /mob/living/silicon/robot))
+				var/mob/living/silicon/robot/robot = ui.user
 				created_by_name = robot.name
 				created_by_rank = "[robot.modtype] [robot.braintype]"
 
@@ -237,14 +237,14 @@
 
 			active_record_security.fields["comments"] += list(new_comment)
 
-			to_chat(usr, text("You have added a new comment to the Security Record of [].", active_record_security.fields["name"]))
+			to_chat(ui.user, text("You have added a new comment to the Security Record of [].", active_record_security.fields["name"]))
 
 		if("edit_comment")
 			if (!istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
 				return
 
 			var/old_content = active_record_security.fields["comments"][params["comment_id"]]["entry"]
-			var/new_comment = tgui_input_text(usr, "Edit the comment", "Edit Comment", html_decode(old_content), multiline = TRUE)
+			var/new_comment = tgui_input_text(ui.user, "Edit the comment", "Edit Comment", html_decode(old_content), multiline = TRUE)
 			if (!new_comment || !istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
 				return
 
@@ -255,11 +255,11 @@
 				return
 
 			var/deleter = ""
-			if (istype(usr, /mob/living/carbon/human))
-				var/mob/living/carbon/human/human = usr
+			if (istype(ui.user, /mob/living/carbon/human))
+				var/mob/living/carbon/human/human = ui.user
 				deleter = "[human.get_authentification_name()] ([human.get_assignment()])"
-			else if (istype(usr, /mob/living/silicon/robot))
-				var/mob/living/silicon/robot/robot = usr
+			else if (istype(ui.user, /mob/living/silicon/robot))
+				var/mob/living/silicon/robot/robot = ui.user
 				deleter = "[robot.name] ([robot.modtype] [robot.braintype])"
 
 			var/deleted_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
@@ -267,7 +267,7 @@
 			active_record_security.fields["comments"][params["comment_id"]]["deleted_by"] = deleter
 			active_record_security.fields["comments"][params["comment_id"]]["deleted_at"] = deleted_at
 
-			to_chat(usr, text("You have deleted a comment from the Security Record of [].", active_record_security.fields["name"]))
+			to_chat(ui.user, text("You have deleted a comment from the Security Record of [].", active_record_security.fields["name"]))
 
 		if ("print_active_record")
 			if (!istype(active_record_general, /datum/data/record))
@@ -287,7 +287,7 @@
 			if (!scanner || !length(scanner.print_list))
 				return
 
-			var/obj/item/paper/fingerprint/print_paper = new /obj/item/paper/fingerprint(src, null, scanner.print_list)
+			var/obj/item/paper/fingerprint/print_paper = new(src, null, scanner.print_list)
 			print_paper.forceMove(loc)
 			var/refkey = ""
 			for(var/obj/effect/decal/prints/print as anything in scanner.print_list)
@@ -305,7 +305,7 @@
 			scanner = null
 			update_static_data_for_all_viewers()
 
-	add_fingerprint(usr)
+	add_fingerprint(ui.user)
 	updateUsrDialog()
 	. = TRUE
 

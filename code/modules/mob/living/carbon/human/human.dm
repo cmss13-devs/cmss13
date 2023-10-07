@@ -640,7 +640,7 @@
 
 			for(var/datum/data/record/security_record as anything in GLOB.data_core.security)
 				if(security_record.fields["id"] != general_record.fields["id"])
-					return
+					continue
 
 
 				var/text = "<br><b>Name:</b> [security_record.fields["name"]]<br><br><b>Criminal Status:</b> [security_record.fields["criminal"]]<br><br>"

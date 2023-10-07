@@ -202,8 +202,8 @@
 				var/datum/data/record/found_record = R
 
 				var/list/charge_list = list()
-				for(var/datum/law/L in incident.charges)
-					charge_list += L.name
+				for(var/datum/law/law in incident.charges)
+					charge_list += law.name
 
 				found_record.fields["incidents"] += list(list("crimes" = charge_list, "summary" = incident.notes))
 

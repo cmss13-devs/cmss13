@@ -98,6 +98,11 @@
 	icon_state = "hair_ponytail8"
 	gender = FEMALE
 
+/datum/sprite_accessory/hair/ponytail9
+	name = "Ponytail 9"
+	icon_state = "hair_ponytail8"
+	gender = FEMALE
+
 /datum/sprite_accessory/hair/ponytail_rough
 	name = "Ponytail, Rough"
 	icon_state = "hair_ponytail_rough"

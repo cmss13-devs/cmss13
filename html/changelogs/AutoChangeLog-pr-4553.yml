@@ -1,0 +1,6 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Black and white beret's have been added as loadout options for all characters as headwear."
+  - rscadd: "More cosmetic options are on offer for Synthetics. Includes white and black berets, standard or darker engineering and mp uniforms and all camo options for the poncho."
+  - rscadd: "The Synth Councillor and Synth Utility uniforms can now roll their sleeves."

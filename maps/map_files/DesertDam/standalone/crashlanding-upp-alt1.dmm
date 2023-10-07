@@ -333,10 +333,6 @@
 /obj/structure/closet/crate/ammo,
 /obj/item/ammo_magazine/rifle/type71/ap,
 /obj/item/ammo_magazine/rifle/type71/ap,
-/obj/item/ammo_magazine/rifle/type71/ap,
-/obj/item/ammo_magazine/rifle/type71/ap,
-/obj/item/ammo_magazine/rifle/type71/ap,
-/obj/item/ammo_magazine/rifle/type71/ap,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -836,8 +832,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "Ny" = (
 /obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/pkp,
-/obj/item/weapon/gun/pkp,
+/obj/item/weapon/gun/rifle/type71/flamer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},

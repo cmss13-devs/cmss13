@@ -156,3 +156,19 @@
 	roof_state = "reqs_top"
 	x_dim = 4
 	y_dim = 4
+
+/obj/structure/tent/corp
+	icon_state = "big_interior"
+	roof_state = "big_top"
+	x_dim = 3
+	y_dim = 4
+
+/obj/structure/tent/mp
+	icon_state = "mp_interior"
+	roof_state = "mp_top"
+	x_dim = 4
+	y_dim = 4
+
+/obj/structure/tent/ot
+	icon_state = "cmd_interior"
+	roof_state = "cmd_top"

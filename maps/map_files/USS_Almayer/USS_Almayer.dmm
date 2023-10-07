@@ -5635,6 +5635,7 @@
 /area/almayer/hallways/aft_hallway)
 "ast" = (
 /obj/structure/surface/table/almayer,
+/obj/item/folded_tent/ot,
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
 "asu" = (
@@ -39864,7 +39865,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	access_modified = 1;
 	name = "\improper Flight Crew Quarters";
-	req_access_txt = null;
 	req_one_access_txt = "19;22"
 	},
 /turf/open/floor/almayer{
@@ -41757,6 +41757,7 @@
 /obj/item/weapon/pole/fancy_cane{
 	pixel_x = 5
 	},
+/obj/item/folded_tent/corp,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "igr" = (
@@ -48217,7 +48218,6 @@
 	access_modified = 1;
 	dir = 1;
 	name = "\improper Flight Crew Quarters";
-	req_access_txt = null;
 	req_one_access_txt = "19;22"
 	},
 /turf/open/floor/almayer{
@@ -70399,6 +70399,8 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/structure/surface/table/almayer,
+/obj/item/folded_tent/mp,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"

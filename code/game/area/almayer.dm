@@ -686,6 +686,16 @@
 	icon_state = "cd_shared"
 	fake_zlevel = 2 // lowerdeck
 
+/area/almayer/squads/alpha_delta_shared
+	name = "\improper Alpha Delta Equipment Preparation"
+	icon_state = "ad_shared"
+	fake_zlevel = 2 // lowerdeck
+	
+/area/almayer/squads/bravo_charlie_shared
+	name = "\improper Bravo Charlie Equipment Preparation"
+	icon_state = "bc_shared"
+	fake_zlevel = 2 // lowerdeck
+
 /area/almayer/squads/req
 	name = "\improper Requisitions"
 	icon_state = "req"

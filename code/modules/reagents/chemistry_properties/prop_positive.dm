@@ -575,7 +575,6 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/dead = M
-	dead.apply_damage(-dead.getOxyLoss(), OXY)
 	if(dead.check_tod() && dead.is_revivable() && dead.health > HEALTH_THRESHOLD_DEAD )
 		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 50, TIMER_UNIQUE)
 		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
@@ -586,6 +585,7 @@
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
+		dead.apply_damage(-dead.getOxyLoss(), OXY)
 		if(potency > CREATE_MAX_TIER_1) //heal more if higher levels
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)

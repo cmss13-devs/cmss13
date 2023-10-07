@@ -1,0 +1,7 @@
+author: "spartanbobby"
+delete-after: True
+changes:
+  - maptweak: "Fixes floating Cameras and Light in the maint tunnels north of south of brig"
+  - maptweak: "Fixes incorrect Shower tiles in maint shower north of engineering"
+  - maptweak: "Fixes incorrect area in maint south of VC bunk"
+  - maptweak: "Removes Piano from USS Almayer upper lifeboat area"

@@ -1,0 +1,86 @@
+2023-10-01:
+  QuickLode:
+  - bugfix: Allows M46C prototype rifle to accept standard M41A MK2 rubber munitions
+2023-10-02:
+  Ben10083:
+  - bugfix: fixed a Working Joe voiceline from not working
+  Casper:
+  - ui: added microwave TGUI
+  Morrow:
+  - bugfix: Fixed fake incomplete surgeries
+  - bugfix: Fixed manual distress signal manual call options
+  - bugfix: Fixed a WO distress signal over announcing
+  Steelpoint:
+  - balance: Tool Pouch can now hold the same types of items that a toolbelt can hold.
+      It is still restricted to 4 inventory slots.
+  - balance: Eggs no longer are resistant to certain kinds of melee attacks. Making
+      them far easier to kill in melee.
+  realforest2001:
+  - balance: Reduces power cost for plasma caster use, and creation of thwei crystals/health
+      capsules.
+2023-10-03:
+  Drathek:
+  - rscadd: Add the last larva queue message to observer's status panel
+  Huffie56:
+  - qol: remove welding google from squad comtech vendor to avoid  him to waste point
+      since tool vendor have them for free.
+  JackieEstegado:
+  - bugfix: Fixed runtime that could happen when melleing an egg.
+  Morrow:
+  - balance: If a mob is on top of a reflective wall the wall no longer functions
+  - balance: Bullets will not longer get eaten by xeno special structures unless you
+      click directly on them
+  - bugfix: '"Fixed" missing window frame icon states'
+  Private Tristan:
+  - balance: all resin fruits now contain 30u of fruit resin along with their secondary
+      reagents.
+  - balance: Alacrit fruits now contain catecholamine plasma instead of pheromone
+      plasma.
+  Steelpoint:
+  - rscadd: Xenomorph hives can now form an alliance with Colonial Marshals.
+  Sulaboy, Hidgamer, Steelpoint:
+  - rscadd: Adds the surgical drop pouch item. It comes in green, blue and black.
+      Only available from the synthetic vendor currently.
+  - imageadd: Adds sprites for the surgical drop pouches.
+2023-10-04:
+  BeagleGaming1:
+  - rscadd: Added keybinds to allow inventory manipulation
+  Morrow:
+  - admin: Operation time logging
+  - balance: Underbarrel extinguisher no longer requires wield
+  - bugfix: Re-added previous UPP changes that were lost in soft conflict
+  - spellcheck: Removed some ambiguous text about loyalties for UPP survivors
+  - bugfix: Fixed storage depth for internal storages
+  - bugfix: Candle boxes can now only hold candles
+  blackdragonTOW:
+  - sounddel: removed 300+ ancient and unused Piano and Violin notes.
+2023-10-05:
+  Drathek:
+  - rscadd: Restore the stat panel options menu to change the stat panel font size
+  - bugfix: Fix getFlatIcon not resizing its template nor respect appearance_flags
+      of RESET_COLOR and RESET_ALPHA
+  Morrow:
+  - bugfix: Fixed req door accesses
+  - rscadd: Added NVG optics
+  - rscadd: Added a hotkey to cycle optics
+  - rscadd: Added special marine raider optic
+  - rscadd: Added examine text for optics
+  - rscadd: Added research publication to advanced medical optic
+  - rscdel: Removed functional tube NVGs from gameplay
+  - refactor: Moved some optics code around to make it less redundant
+  - bugfix: Fixed a bug with duplicate optic actions
+  - bugfix: Fixed a reported bug where HUDs would stay on forever with destruction
+      of a helmet
+  - balance: Comms relays now have a five minute cooldown to be re-pylon'd after a
+      pylon was destroyed
+  - bugfix: Pylons now account for stored larva
+  - bugfix: Fixed floodlight stacking to make mostly invincible walls
+  - refactor: Refactored 90% of the floodlight code
+  Steelpoint:
+  - ui: Added personnel job titles to the handheld crew monitor, to make it easier
+      to tell find out exactly what role's you are looking for. Also slightly expands
+      the default monitor screen size to accommodate the entire personnel text on
+      screen.
+2023-10-06:
+  blackdragonTOW:
+  - bugfix: fixed spider dead sprite to not have white space (is transparent instead)

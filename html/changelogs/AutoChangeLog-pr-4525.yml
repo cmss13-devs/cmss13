@@ -1,5 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - bugfix: "Whiskey Outpost ground map vote works correctly"
-  - config: "Removed unnecessary config"

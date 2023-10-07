@@ -1,0 +1,6 @@
+author: "kiVts"
+delete-after: True
+changes:
+  - rscadd: "Spades can now remove botany plants."
+  - rscadd: "Plants now globally take more water to grow."
+  - code_imp: "removed all mention of lighting in botany trays."

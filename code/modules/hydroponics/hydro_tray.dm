@@ -605,7 +605,7 @@
 		user.visible_message(SPAN_DANGER("[user] starts to uproot the plant."), SPAN_DANGER("You begin removing plant from [src]"))
 		if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
 			return
-		to_chat(user, SPAN_NOTICE("You remove the plant from [src]"))
+		to_chat(user, SPAN_NOTICE("You remove the plant from [src]."))
 		seed = null
 		dead = 0
 		sampled = 0

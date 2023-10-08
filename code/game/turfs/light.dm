@@ -6,6 +6,10 @@
 	var/on = TRUE
 	var/state = 0
 
+/turf/open/floor/light/get_examine_text(mob/user)
+	. = ..()
+	. += "[src] is [broken ? "broken, and requires a replacement lightbulb":"[on ? "on" : "off"]"]."
+
 /turf/open/floor/light/is_light_floor()
 	return TRUE
 

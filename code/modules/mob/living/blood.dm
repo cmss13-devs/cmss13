@@ -2,6 +2,9 @@
 				BLOOD SYSTEM
 */
 
+#define LOW_BLOOD_SEVERITY_LIGHT "1" // very woozy
+#define LOW_BLOOD_SEVERITY_MEDIUM "2" // extremely woozy
+
 /mob/living/proc/handle_blood()
 	return
 

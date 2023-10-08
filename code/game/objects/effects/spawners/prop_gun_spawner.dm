@@ -71,6 +71,7 @@
 	pixel_x = source_gun.pixel_x
 	pixel_y = source_gun.pixel_y
 	layer = source_gun.layer
+	overlays = source_gun.overlays
 
 /obj/item/prop/prop_gun/attack_self(mob/user) //Mimic wielding of real guns
 	. = ..()

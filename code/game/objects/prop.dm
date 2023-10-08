@@ -31,11 +31,9 @@
 
 /obj/item/prop/geiger_counter/Initialize(mapload, ...)
 	. = ..()
-	if(!battery)
+	if(!starting_battery)
 		return
-	battery = new(starting_battery)
-	if(toggled_on)
-		icon_state = enabled_state
+	battery = new starting_battery(src)
 
 /obj/item/prop/geiger_counter/Destroy()
 	. = ..()
@@ -49,10 +47,7 @@
 		to_chat(user, SPAN_NOTICE("[src] is missing a battery."))
 		return
 	to_chat(user, SPAN_NOTICE("You [toggled_on ? "enable" : "disable"] [src]."))
-	if(toggled_on)
-		icon_state = enabled_state
-		return
-	icon_state = disabled_state
+	update_icon()
 
 /obj/item/prop/geiger_counter/attackby(obj/item/attacking_item, mob/user)
 	. = ..()
@@ -63,6 +58,15 @@
 		to_chat(user, SPAN_NOTICE("You jam [battery] out of [src] with [attacking_item], prying it out irreversibly."))
 		user.put_in_hands(battery)
 		battery = null
+		update_icon()
+
+/obj/item/prop/geiger_counter/update_icon()
+	. = ..()
+
+	if(battery && toggled_on)
+		icon_state = enabled_state
+		return
+	icon_state = disabled_state
 
 /obj/item/prop/tableflag
 	name = "United Americas table flag"

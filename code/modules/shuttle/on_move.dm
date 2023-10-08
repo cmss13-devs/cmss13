@@ -114,8 +114,8 @@ All ShuttleMove procs go here
 	if (newT.z != oldT.z)
 		onTransitZ(oldT.z, newT.z)
 
-	//if(light) // tg lighting
-	// update_light()
+	if(light)
+		update_light()
 	if(rotation)
 		shuttleRotate(rotation)
 
@@ -132,8 +132,7 @@ All ShuttleMove procs go here
 	var/turf/target = get_edge_target_turf(src, move_dir)
 	var/range = throw_force * 10
 	range = CEILING(rand(range-(range*0.1), range+(range*0.1)), 10)/10
-	var/speed = range/5
-	safe_throw_at(target, range, speed) //, force = MOVE_FORCE_EXTREMELY_STRONG)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, safe_throw_at), target, range, SPEED_AVERAGE)
 
 //=====================================================================//
 
@@ -151,7 +150,7 @@ All ShuttleMove procs go here
 
 	contents -= oldT
 	underlying_old_area.contents += oldT
-	//oldT.change_area(src, underlying_old_area) //lighting
+	oldT.change_area(src, underlying_old_area) //lighting
 	//The old turf has now been given back to the area that turf originaly belonged to
 
 	var/area/old_dest_area = newT.loc
@@ -159,7 +158,7 @@ All ShuttleMove procs go here
 
 	old_dest_area.contents -= newT
 	contents += newT
-	//newT.change_area(old_dest_area, src) //lighting
+	newT.change_area(old_dest_area, src) //lighting
 	return TRUE
 
 // Called on areas after everything has been moved

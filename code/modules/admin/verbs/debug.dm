@@ -92,7 +92,74 @@
 	else
 		message_admins("[key_name(src)] disabled checking for round-end.")
 
+/client/proc/cmd_debug_mass_screenshot()
+	set category = "Debug"
+	set name = "Mass Screenshot"
+	set background = TRUE
+	set waitfor = FALSE
 
+	if(!check_rights(R_MOD))
+		return
+
+	if(tgui_alert(usr, "Are you sure you want to mass screenshot this z-level? Ensure your visual settings are correct first (other ghost visibility, zoom level, etc.) and you have emptied your BYOND/screenshots folder.", "Mass Screenshot", list("Yes", "No")) != "Yes")
+		return
+
+	var/sleep_duration = tgui_input_number(usr, "Enter a delay in deciseconds between screenshots to allow the client to render changes.", "Screenshot delay", 2, 10, 1, 0, TRUE)
+	if(!sleep_duration)
+		return
+
+	if(!mob)
+		return
+
+	if(!isobserver(mob))
+		admin_ghost()
+
+	mob.alpha = 0
+	if(mob.hud_used)
+		mob.hud_used.show_hud(HUD_STYLE_NOHUD)
+	mob.animate_movement = NO_STEPS
+
+	message_admins(WRAP_STAFF_LOG(usr, "started a mass screenshot operation."))
+
+	var/half_chunk_size = view + 1
+	var/chunk_size = half_chunk_size * 2 - 1
+	var/cur_x = half_chunk_size
+	var/cur_y = half_chunk_size
+	var/cur_z = mob.z
+	var/width
+	var/height
+	if(istype(SSmapping.z_list[cur_z], /datum/space_level))
+		var/datum/space_level/cur_level = SSmapping.z_list[cur_z]
+		width = cur_level.x_bounds - half_chunk_size + 2
+		height = cur_level.y_bounds - half_chunk_size + 2
+	else
+		width = world.maxx - half_chunk_size + 2
+		height = world.maxy - half_chunk_size + 2
+	var/width_inside = width - 1
+	var/height_inside = height - 1
+
+	while(cur_y < height)
+		while(cur_x < width)
+			mob.on_mob_jump()
+			mob.forceMove(locate(cur_x, cur_y, cur_z))
+			sleep(sleep_duration)
+			winset(src, null, "command='.screenshot auto'")
+			if(cur_x == width_inside)
+				break
+			cur_x += chunk_size
+			cur_x = min(cur_x, width_inside)
+		if(cur_y == height_inside)
+			break
+		cur_x = half_chunk_size
+		cur_y += chunk_size
+		cur_y = min(cur_y, height_inside)
+
+	mob.alpha = initial(mob.alpha)
+	if(mob.hud_used)
+		mob.hud_used.show_hud(HUD_STYLE_STANDARD)
+	mob.animate_movement = SLIDE_STEPS // Initial is incorrect
+
+	to_chat(usr, "Provide these values when asked for the MapTileImageTool: [width] [height] [half_chunk_size] [world.icon_size]")
 
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all()
@@ -136,7 +203,7 @@
 
 /client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = null
-	set name = "Grant Full Access"
+	set name = "Grant Global Access"
 
 	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
@@ -149,11 +216,11 @@
 		if (H.wear_id)
 			var/obj/item/card/id/id = H.wear_id
 			id.icon_state = "gold"
-			id:access = get_global_access()
+			id:access = get_access(ACCESS_LIST_GLOBAL)
 		else
 			var/obj/item/card/id/id = new/obj/item/card/id(M);
 			id.icon_state = "gold"
-			id:access = get_all_main_access()
+			id:access = get_access(ACCESS_LIST_GLOBAL)
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
 			id.assignment = "Captain"
@@ -163,7 +230,7 @@
 	else
 		alert("Invalid mob")
 
-	message_admins("[key_name_admin(usr)] has granted [M.key] full access.")
+	message_admins("[key_name_admin(usr)] has granted [M.key] global access.")
 
 /client/proc/cmd_admin_grantallskills(mob/M in GLOB.mob_list)
 	set category = null

@@ -52,6 +52,7 @@
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
 	dead_black_market_value = 50
+	light_system = MOVABLE_LIGHT
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -243,7 +244,7 @@
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone
-	var/acid_blood_damage = 20
+	var/acid_blood_damage = 25
 	var/nocrit = FALSE
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
 	var/got_evolution_message = FALSE
@@ -271,27 +272,40 @@
 	//
 	//////////////////////////////////////////////////////////////////
 	var/tunnel = FALSE
-	var/stealth = FALSE // for check on lurker invisibility
+	/// for check on lurker invisibility
+	var/stealth = FALSE
 	var/burrow = FALSE
 	var/fortify = FALSE
 	var/crest_defense = FALSE
-	var/agility = FALSE // 0 - upright, 1 - all fours
+	/// 0/FALSE - upright, 1/TRUE - all fours
+	var/agility = FALSE
 	var/ripping_limb = FALSE
 	var/steelcrest = FALSE
-	// Related to zooming out (primarily queen and boiler)
-	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
-	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
+	/// The world.time at which we will regurgitate our currently-vored victim
+	var/devour_timer = 0
+	/// For drones/hivelords. Extends the maximum build range they have
+	var/extra_build_dist = 0
+	/// tiles from self you can plant eggs.
+	var/egg_planting_range = 1
 	var/can_stack_builds = FALSE
 	var/list/resin_build_order
-	var/selected_resin // Which resin structure to build when we secrete resin, defaults to null.
-	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
-	var/selected_mark // If leader what mark you will place when you make one
-	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
+	/// Which resin structure to build when we secrete resin, defaults to null.
+	var/selected_resin
+	/// which special structure to build when we place constructions
+	var/selected_construction = XENO_STRUCTURE_CORE
+	/// If leader what mark you will place when you make one
+	var/selected_mark
+	/// The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
+	var/datum/ammo/xeno/ammo = null
 	var/tunnel_delay = 0
-	var/list/available_fruits = list() // List of placeable the xenomorph has access to.
-	var/list/current_fruits = list() // If we have current_fruits that are limited, e.g. fruits
-	var/max_placeable = 0 // Limit to that amount
-	var/obj/effect/alien/resin/fruit/selected_fruit = null // the typepath of the placeable we wanna put down
+	/// List of placeable the xenomorph has access to.
+	var/list/available_fruits = list()
+	/// If we have current_fruits that are limited, e.g. fruits
+	var/list/current_fruits = list()
+	/// Limit to that amount
+	var/max_placeable = 0
+	/// the typepath of the placeable we wanna put down
+	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
 	var/icon_xeno
@@ -485,11 +499,7 @@
 	// Only handle free slots if the xeno is not in tdome
 	if(!is_admin_level(z))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
-		var/free_slots = LAZYACCESS(hive.free_slots, selected_caste)
-		if(free_slots)
-			hive.free_slots[selected_caste]--
-			var/new_val = LAZYACCESS(hive.used_free_slots, selected_caste) + 1
-			LAZYSET(hive.used_free_slots, selected_caste, new_val)
+		hive.used_slots[selected_caste]++
 
 	if(round_statistics && !statistic_exempt)
 		round_statistics.track_new_participant(faction, 1)
@@ -692,16 +702,7 @@
 		hive.remove_hive_leader(src, light_mode = TRUE)
 	SStracking.stop_tracking("hive_[hivenumber]", src)
 
-	// Only handle free slots if the xeno is not in tdome
-	if(!is_admin_level(z))
-		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
-		var/used_slots = LAZYACCESS(hive.used_free_slots, selected_caste)
-		if(used_slots)
-			hive.used_free_slots[selected_caste]--
-			var/new_val = LAZYACCESS(hive.free_slots, selected_caste) + 1
-			LAZYSET(hive.free_slots, selected_caste, new_val)
-
-	hive.remove_xeno(src)
+	hive?.remove_xeno(src)
 	remove_from_all_mob_huds()
 
 	observed_xeno = null
@@ -797,7 +798,7 @@
 	//and display them
 	add_to_all_mob_huds()
 	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
-	MH.add_hud_to(src)
+	MH.add_hud_to(src, src)
 
 
 /mob/living/carbon/xenomorph/check_improved_pointing()
@@ -1057,6 +1058,7 @@
 	. = ..()
 	if (.)
 		UnregisterSignal(src, COMSIG_XENO_PRE_HEAL)
+		handle_luminosity()
 
 /mob/living/carbon/xenomorph/proc/cancel_heal()
 	SIGNAL_HANDLER
@@ -1073,7 +1075,7 @@
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
-	announce_dchat("[src] ([mutation_type] [caste_type])</b> has ghosted and their body is up for grabs!", src)
+	notify_ghosts("[src] ([mutation_type] [caste_type]) has ghosted and their body is up for grabs!", source = src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
 	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))
@@ -1092,3 +1094,28 @@
 	. = ..()
 	if(behavior_delegate)
 		behavior_delegate.on_collide(movable_atom)
+
+/mob/living/carbon/xenomorph/proc/scuttle(obj/structure/current_structure)
+	if (mob_size != MOB_SIZE_SMALL)
+		return FALSE
+
+	var/move_dir = get_dir(src, loc)
+	for(var/atom/movable/atom in get_turf(current_structure))
+		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("[atom] prevents you from squeezing under [current_structure]!"))
+			return FALSE
+	// Is it an airlock?
+	if(istype(current_structure, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
+		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
+			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. You can't squeeze underneath!"))
+			return FALSE
+	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
+	SPAN_WARNING("You squeeze and scuttle underneath [current_structure]."), max_distance = 5)
+	forceMove(current_structure.loc)
+	return TRUE
+
+/mob/living/carbon/xenomorph/knocked_down_callback()
+	. = ..()
+	if(!resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
+		update_wounds()

@@ -390,9 +390,9 @@ SUBSYSTEM_DEF(minimaps)
 	if(!map)
 		return
 	if(minimap_displayed)
-		owner.client.screen -= map
+		owner.client.remove_from_screen(map)
 	else
-		owner.client.screen += map
+		owner.client.add_to_screen(map)
 	minimap_displayed = !minimap_displayed
 
 /datum/action/minimap/give_to(mob/target)
@@ -415,7 +415,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/remove_from(mob/target)
 	. = ..()
 	if(minimap_displayed)
-		owner?.client?.screen -= map
+		owner?.client?.remove_from_screen(map)
 		minimap_displayed = FALSE
 
 /**
@@ -424,7 +424,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/proc/on_owner_z_change(atom/movable/source, oldz, newz)
 	SIGNAL_HANDLER
 	if(minimap_displayed)
-		owner.client.screen -= map
+		owner.client.remove_from_screen(map)
 		minimap_displayed = FALSE
 	map = null
 	if(!SSminimaps.minimaps_by_z["[newz]"] || !SSminimaps.minimaps_by_z["[newz]"].hud_image)
@@ -492,6 +492,16 @@ SUBSYSTEM_DEF(minimaps)
 		return UI_UPDATE
 	else
 		return UI_CLOSE
+
+/datum/tacmap/xeno/ui_status(mob/user)
+	if(!isxeno(user))
+		return UI_CLOSE
+
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(!xeno.hive?.living_xeno_queen?.ovipositor)
+		return UI_CLOSE
+
+	return UI_INTERACTIVE
 
 /datum/tacmap_holder
 	var/map_ref

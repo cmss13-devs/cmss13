@@ -304,7 +304,7 @@
 		L.forceMove(src)
 		L.pixel_x += rand(-5,5)
 		L.pixel_y += rand(-5,5)
-		L.SetLuminosity(2)
+		L.set_light(2)
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 	return
 
@@ -515,9 +515,9 @@
 			if(H.gloves && rand(0,100) < 60)
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
 					var/obj/item/clothing/gloves/yautja/hunter/Y = H.gloves
-					if(Y && istype(Y) && Y.cloaked)
+					if(Y && istype(Y) && HAS_TRAIT(H, TRAIT_CLOAKED))
 						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
-						Y.decloak(H, TRUE)
+						Y.decloak(H, TRUE, DECLOAK_SUBMERGED)
 
 		else if(isxeno(C))
 			river_slowdown -= 0.7
@@ -797,7 +797,7 @@
 		L.forceMove(src)
 		L.pixel_x += rand(-5,5)
 		L.pixel_y += rand(-5,5)
-		L.SetLuminosity(2)
+		L.set_light(2)
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 	return
 

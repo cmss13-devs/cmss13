@@ -1,6 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - rscadd: "Working Joes now have a unique death message. Credit to Quickload for the message."
-  - soundadd: "Working Joes now have a death rattle. Credit to Quickload for shifting through Alien Isolation audio files."
-  - qol: "Things that die with intent eyes now lose color in their eyes on death."

@@ -226,6 +226,9 @@ var/savefile/Banlist
 		RemoveBan(A)
 
 /client/proc/cmd_admin_do_ban(mob/M)
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("cmd_admin_do_ban")
+		return PROC_BLOCKED
 	if(!check_rights(R_BAN|R_MOD))  return
 
 	if(!ismob(M)) return

@@ -370,16 +370,22 @@
 	name = "\improper USCM formal Commanding Officer's black cap"
 	icon_state = "co_formalhat_black"
 
-/obj/item/clothing/head/cmcap/ro
-	name = "\improper USCM officer cap"
-	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+/obj/item/clothing/head/cmcap/req/ro
+	name = "\improper USCM quartermaster cap"
+	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "rocap"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
-	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
+	desc = "It's a not-so-fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
 	flags_atom = FPRINT|NO_SNOW_TYPE
+
+/obj/item/clothing/head/cmcap/bridge
+	name = "\improper USCM officer cap"
+	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+	icon_state = "cap_officer"
 
 /obj/item/clothing/head/cmcap/flap
 	name = "\improper USCM expedition cap"
@@ -494,10 +500,19 @@
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
 	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
-	icon = 'icons/obj/items/clothing/hats.dmi'
-	icon_state = "officercap"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "marine_formal"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_0.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/marine/peaked/service
+	name = "marine service peaked cap"
+	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "marine_service"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
 /obj/item/clothing/head/marine/peaked/captain
@@ -537,7 +552,7 @@
 
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\
-D
+
 /obj/item/clothing/head/ushanka
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
@@ -735,9 +750,6 @@ D
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/drillhat/Initialize(mapload, ...)
-	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/drillhat)
 #undef HAT_GARB_RELAY_ICON_STATE
 
 //==========================//DRESS BLUES\\===============================\\
@@ -766,3 +778,37 @@ D
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 	item_state = "owlf_hood"
+
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/head/beanie/royal_marine
+	name = "royal marine beanie"
+	desc = "A standard military beanie."
+	icon_state = "rmc_beanie"
+	item_state = "rmc_beanie"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/beanie/royal_marine/turban
+	name = "royal marine turban"
+	desc = "A standard military turban found in the royal marines. Considered a rare item, these kind of turbans are prized by collectors in the UA."
+	icon_state = "rmc_turban"
+	item_state = "rmc_turban"
+
+/obj/item/clothing/head/beret/royal_marine
+	name = "royal marine beret"
+	desc = "A green beret belonging to the royal marines commando. This beret symbolizes a royal marines ability to fight in any environment, desert, sea, artic or space a royal marine will always be ready."
+	icon_state = "rmc_beret"
+	item_state = "rmc_beret"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/beret/royal_marine/team_leader
+	icon_state = "rmc_beret_tl"
+	item_state = "rmc_beret_tl"

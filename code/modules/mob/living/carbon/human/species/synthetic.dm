@@ -44,6 +44,7 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
+		/mob/living/carbon/human/proc/toggle_inherent_nightvison,
 	)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
@@ -88,9 +89,6 @@
 	knock_down_reduction = 3.5
 	stun_reduction = 3.5
 
-	inherent_verbs = list(
-		/mob/living/carbon/human/proc/toggle_inherent_nightvison,
-	)
 
 /datum/species/synthetic/colonial/colonial_gen_two
 	name = SYNTH_COLONY_GEN_TWO

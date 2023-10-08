@@ -25,6 +25,7 @@
 		list("Utility Tool Belt", round(scale * 2), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
 		list("Welding Goggles", round(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
 		list("Welding Helmet", round(scale * 2), /obj/item/clothing/head/welding, VENDOR_ITEM_REGULAR),
+		list("Engineer Kit", round(scale * 2), /obj/item/storage/toolkit/empty, VENDOR_ITEM_REGULAR),
 
 		list("SCANNERS", -1, null, null),
 		list("Atmos Scanner", round(scale * 2), /obj/item/device/analyzer, VENDOR_ITEM_REGULAR),
@@ -36,7 +37,6 @@
 		list("TOOLS", -1, null, null),
 		list("Blowtorch", round(scale * 4), /obj/item/tool/weldingtool, VENDOR_ITEM_REGULAR),
 		list("Crowbar", round(scale * 4), /obj/item/tool/crowbar, VENDOR_ITEM_REGULAR),
-		list("High-Capacity Industrial Blowtorch", 2, /obj/item/tool/weldingtool/hugetank, VENDOR_ITEM_REGULAR),
 		list("ME3 Hand Welder", round(scale * 2), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR),
 		list("Screwdriver", round(scale * 4), /obj/item/tool/screwdriver, VENDOR_ITEM_REGULAR),
 		list("Wirecutters", round(scale * 4), /obj/item/tool/wirecutters, VENDOR_ITEM_REGULAR),
@@ -54,6 +54,8 @@
 		list("EQUIPMENT", -1, null, null),
 		list("Utility Tool Belt", round(scale * 4), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
 		list("Cable Coil", round(scale * 4), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", round(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
+		list("Engineer Kit", round(scale * 2), /obj/item/storage/toolkit/empty, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS", -1, null, null),
 		list("Blowtorch", round(scale * 4), /obj/item/tool/weldingtool, VENDOR_ITEM_REGULAR),
@@ -91,7 +93,8 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage
 	name = "\improper Electronics Vendor"
@@ -114,7 +117,8 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage
 	name = "\improper Component Storage Machine"
@@ -143,7 +147,8 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 
 //------COLONY-SPECIFIC VENDORS-------
 

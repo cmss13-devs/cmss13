@@ -12,6 +12,7 @@
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_HELLHOUND
 	attack_delay = -2
+	behavior_delegate_type = /datum/behavior_delegate/hellhound_base
 
 	minimum_evolve_time = 0
 
@@ -125,3 +126,13 @@
 
 /mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(splatter_dir)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound(loc, splatter_dir)
+
+/datum/behavior_delegate/hellhound_base
+	name = "Base Hellhound Behavior Delegate"
+
+/datum/behavior_delegate/hellhound_base/melee_attack_additional_effects_self()
+	..()
+
+	var/datum/action/xeno_action/onclick/xenohide/hide = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
+	if(hide)
+		hide.post_attack()

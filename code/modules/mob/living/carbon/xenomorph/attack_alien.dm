@@ -851,7 +851,7 @@
 		playsound(src, "glassbreak", 70, 1)
 		damaged = TRUE
 		if(is_lit)
-			SetLuminosity(0)
+			set_light(0)
 		update_icon()
 	else
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
@@ -982,3 +982,12 @@
 	var/matrix/A = matrix()
 	apply_transform(A)
 	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS
+
+//Misc
+/obj/structure/prop/invuln/joey/attack_alien(mob/living/carbon/xenomorph/alien)
+	alien.animation_attack_on(src)
+	alien.visible_message(SPAN_DANGER("[alien] [alien.slashes_verb] [src]!"), \
+	SPAN_DANGER("You [alien.slash_verb] [src]!"), null, 5)
+	playsound(loc, "alien_claw_metal", 25, 1)
+	attacked()
+	return XENO_ATTACK_ACTION

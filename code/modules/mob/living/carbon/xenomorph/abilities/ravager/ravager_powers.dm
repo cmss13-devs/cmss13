@@ -75,7 +75,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 3.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 
@@ -521,7 +521,7 @@
 	X.visible_message(SPAN_XENOWARNING("The [X] fires their spikes at [A]!"), SPAN_XENOWARNING("You fire your spikes at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
+	var/obj/projectile/P = new /obj/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
 
 	var/datum/ammo/ammoDatum = GLOB.ammo_list[ammo_type]
 

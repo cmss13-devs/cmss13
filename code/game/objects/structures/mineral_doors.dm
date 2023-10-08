@@ -167,11 +167,7 @@
 /obj/structure/mineral_door/uranium
 	mineralType = "uranium"
 	hardness = 3
-	luminosity = 2
-
-/obj/structure/mineral_door/uranium/Destroy()
-	SetLuminosity(0)
-	. = ..()
+	light_range = 2
 
 /obj/structure/mineral_door/sandstone
 	mineralType = "sandstone"

@@ -372,12 +372,21 @@
 		to_chat(src,SPAN_BOLDNOTICE( "Click-dragging now blocks clicks from going through."))
 	prefs.save_preferences()
 
-/client/proc/toggle_dualwield() //Toggle whether dual-wielding fires both guns at once or swaps between them.
-	prefs.toggle_prefs ^= TOGGLE_ALTERNATING_DUAL_WIELD
-	if(prefs.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
+///Toggle whether dual-wielding fires both guns at once or swaps between them.
+/client/proc/toggle_dualwield()
+	if(prefs.dual_wield_pref < DUAL_WIELD_NONE)
+		prefs.dual_wield_pref++
 	else
-		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
+		prefs.dual_wield_pref = DUAL_WIELD_FIRE
+
+	switch(prefs.dual_wield_pref)
+		if(DUAL_WIELD_FIRE)
+			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
+		if(DUAL_WIELD_SWAP)
+			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
+		if(DUAL_WIELD_NONE)
+			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now has no effect on how you fire."))
+
 	prefs.save_preferences()
 
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
@@ -623,7 +632,7 @@
 
 	if(!isobserver(usr))
 		return
-	var/mob/dead/observer/O = usr
+	var/mob/dead/observer/observer_user = usr
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
@@ -643,11 +652,11 @@
 		if("Faction CLF HUD")
 			H = huds[MOB_HUD_FACTION_CLF]
 
-	O.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
-	if(O.HUD_toggled[hud_choice])
-		H.add_hud_to(O)
+	observer_user.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
+	if(observer_user.HUD_toggled[hud_choice])
+		H.add_hud_to(observer_user, observer_user)
 	else
-		H.remove_hud_from(O)
+		H.remove_hud_from(observer_user, observer_user)
 
 /client/proc/toggle_ghost_health_scan()
 	set name = "Toggle Health Scan"

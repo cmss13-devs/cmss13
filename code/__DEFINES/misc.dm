@@ -113,7 +113,7 @@
 // These behaviors are either of the person performing the action or any targets.
 
 /// You cannot move the person while this action is being performed
-#define BEHAVIOR_IMMOBILE (1<<18)
+#define BEHAVIOR_IMMOBILE (1<<19)
 
 // *************************************** //
 //    END DO_AFTER FLAGS //
@@ -284,6 +284,8 @@
 #define COOLDOWN_COMM_CENTRAL 30 SECONDS
 #define COOLDOWN_COMM_DESTRUCT 5 MINUTES
 
+///Cooldown for pred recharge
+#define COOLDOWN_BRACER_CHARGE 3 MINUTES
 
 // magic value to use for indicating a proc slept
 #define PROC_RETURN_SLEEP -1

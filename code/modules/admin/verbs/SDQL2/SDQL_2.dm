@@ -345,7 +345,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 /datum/sdql2_query/New(list/tree, SU = FALSE, admin_interact = TRUE, _options = SDQL2_OPTIONS_DEFAULT, finished_qdel = FALSE)
 	if(IsAdminAdvancedProcCall() || !LAZYLEN(tree))
 		qdel(src)
-		return
+		return PROC_BLOCKED
 	LAZYADD(GLOB.sdql2_queries, src)
 	superuser = SU
 	allow_admin_interact = admin_interact
@@ -602,7 +602,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			var/text = "[key_name(usr)] attempted to grab world with a procedure call to a SDQL datum."
 			message_admins(text)
 			log_admin(text)
-			return
+			return PROC_BLOCKED
 	if("world" in tree)
 		return world
 	return SDQL_expression(world, tree)

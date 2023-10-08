@@ -81,7 +81,7 @@
 			if(photo_list)
 				for(var/photo in photo_list)
 					user << browse_rsc(photo_list[photo], photo)
-			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
+			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name, "size=650x700")
 			onclose(user, name)
 		else
 			read_paper(user)
@@ -94,7 +94,7 @@
 	if(photo_list)
 		for(var/photo in photo_list)
 			user << browse_rsc(photo_list[photo], photo)
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
+	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name, "size=650x700")
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -256,6 +256,8 @@
 		t = replacetext(t, "\[logo\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
 		t = replacetext(t, "\[wy\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
 		t = replacetext(t, "\[uscm\]", "<img src = [asset.get_url_mappings()["uscmlogo.png"]]>")
+		t = replacetext(t, "\[upp\]", "<img src = [asset.get_url_mappings()["upplogo.png"]]>")
+		t = replacetext(t, "\[cmb\]", "<img src = [asset.get_url_mappings()["cmblogo.png"]]>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
@@ -426,7 +428,7 @@
 		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 		var/x
 		var/y
-		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/centcomm))
+		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/weyyu))
 			x = rand(-2, 0)
 			y = rand(-1, 2)
 		else
@@ -605,6 +607,15 @@
 	name = "Final entry"
 	color = "green"
 	info =  "<p> I could not do it, the fucking marshals, the minions of THEM, have gotten a whiff of my co-workers plans and started raiding us pre-emptively. We managed to get word of it and erected a few barricades to slow them down, but it is too late. Our plan, my plan to save humanity has turned to dust. </p> As I lay and write this, they are gassing the entire area with tear gas, while gunshots echo around the caves. \n  They have gotten to my mind already, their voices are... laughing, saying that, \" it's over \" and that \n “we have risen\". Their voices are mocking me as I could do nothing to prevent their rise \n Just as I am about to finish my final entry, I overhear a few panicked radio calls from a dead officer's radio, about a code red lambda breach, and \" X-RAYS OUT OF CONTAINMENT\". \n However, not a single one of their cries has been met with a response as their fellow officers are too preoccupied with beating up poor miners... \n <b> They have won.... they have PLANNED THIS all along.... </b> \n only God may save us now..."
+
+/obj/item/paper/bigred/upp
+	name = "UPP Orders"
+
+/obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center> <img src = [asset.get_url_mappings()["upplogo.png"]]> <br> <b><small>Union Of Progressive People's Fourth Fleet</b></small> <br> <b><large>Orders For 173rd Airborne Reconnaissance: 2nd Platoon</large></b> <br> <small>No.52</small></center> <hr> <b>Order of Military Officer of the UPP</b><br><b>Kolonel <redacted> Ganbaatar </b><br><b>Commander of MV-35</b> <br> Date: 2182 <br> <b><large>On Special Mission<large></b>  <hr>  The actions of the hostile Weyland-Yutani corporation on the fringes of the Neroid sector have grown increasingly intolerable. However, evidence suggesting they are researching into the creation and deployment of some form of biological weapons program represent an unacceptable risk to the security of UPP interests in this sector. The risk of these items falling into UA/USCM hands is unacceptable. <br><br> Orders for the Boris squad of the 173rd Airborne Recon are as follows. Initiate airborne reconnaissance of WY colony Oxley's Buttle, Trijent Dam, location on planet Raijin  (UA Code: LV-670). Ascertain veracity of onsight biological weapons program. If positive confirmation of the weapons program is identified, authorization for rapid assault and recovery is granted. Avoid all contact with UA/USCM military forces, abort missions if UA/USCM forces are encountered. <hr><center><b>Authorizing Officer: Gaanbatar</b><br>Name and Rank: Kolonel </center>  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
 
 /obj/item/paper/crumpled
 	name = "paper scrap"

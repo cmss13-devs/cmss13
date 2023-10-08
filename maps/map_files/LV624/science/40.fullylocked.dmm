@@ -7,7 +7,7 @@
 /area/lv624/lazarus/research)
 "ac" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "science_blast";
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
@@ -15,7 +15,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/research)
 "ad" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "science_blast";
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
@@ -41,7 +41,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "ai" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "science_blast";
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
@@ -73,7 +73,7 @@
 /area/lv624/ground/colony/south_medbay_road)
 "ao" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	dir = 4;
 	id = "science_blast";
 	layer = 3.3;
@@ -218,7 +218,7 @@
 	},
 /area/lv624/lazarus/research)
 "aI" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	dir = 4;
 	id = "science_blast";
 	layer = 3.3;
@@ -329,14 +329,13 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/item/tool/crowbar,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
 "aU" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	dir = 4;
 	id = "science_blast";
 	layer = 3.3;
@@ -367,7 +366,6 @@
 /area/lv624/lazarus/research)
 "bm" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -438,9 +436,9 @@
 /area/lv624/lazarus/research)
 "oe" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
-	phone_id = "Research Dome"
+	phone_id = "Research Dome";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 5;
@@ -603,7 +601,7 @@ ab
 "}
 (7,1,1) = {"
 ac
-bn
+Tz
 aq
 ay
 ay
@@ -715,7 +713,7 @@ bb
 ay
 ab
 bn
-bn
+Tz
 aj
 ac
 bE

@@ -218,21 +218,22 @@
 	if(!istype(chosen_ert))
 		return
 
-	var/is_announcing = TRUE
-	switch(alert(src, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No", "Cancel"))
-		if("Cancel")
-			qdel(chosen_ert)
-			return
-		if("No")
-			is_announcing = FALSE
+	var/is_announcing = tgui_alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+	if(!is_announcing)
+		qdel(chosen_ert)
+		return
+	if(is_announcing == "No")
+		is_announcing = FALSE
+	if (is_announcing == "Yes")
+		is_announcing = TRUE
 
 	var/turf/override_spawn_loc
-	switch(alert(usr, "Spawn at their assigned spawnpoints, or at your location?", "Spawnpoint Selection", "Assigned Spawnpoint", "Current Location", "Cancel"))
-		if("Cancel")
-			qdel(chosen_ert)
-			return
-		if("Current Location")
-			override_spawn_loc = get_turf(usr)
+	var/prompt = tgui_alert(usr, "Spawn at their assigned spawn, or at your location?", "Spawnpoint Selection", list("Spawn", "Current Location"), 0)
+	if(!prompt)
+		qdel(chosen_ert)
+		return
+	if(prompt == "Current Location")
+		override_spawn_loc = get_turf(usr)
 
 	chosen_ert.activate(is_announcing, override_spawn_loc)
 
@@ -282,6 +283,21 @@
 	message_admins("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
 	if(points_to_add >= 0)
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
+
+/datum/admins/proc/check_req_heat()
+	set name = "Check Requisitions Heat"
+	set desc = "Check how close the CMB is to arriving to search Requisitions."
+	set category = "Admin.Events"
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+
+	var/req_heat_change = tgui_input_real_number(usr, "Set the new requisitions black market heat. ERT is called at 100, disabled at -1. Current Heat: [supply_controller.black_market_heat]", "Modify Req Heat", 0, 100, -1)
+	if(!req_heat_change)
+		return
+
+	supply_controller.black_market_heat = req_heat_change
+	message_admins("[key_name_admin(usr)] set requisitions heat to [req_heat_change].")
+
 
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "Self-Destruct"
@@ -402,6 +418,29 @@
 
 	give_jelly_award(last_hive_checked, as_admin=TRUE)
 
+/client/proc/give_nuke()
+	if(!check_rights(R_ADMIN))
+		return
+	var/nuketype = "Decrypted Operational Nuke"
+	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
+	if(encrypt == "Encrypted")
+		nuketype = "Encrypted Operational Nuke"
+	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
+	if(prompt != "Yes")
+		return
+
+	var/datum/supply_order/new_order = new()
+	new_order.ordernum = supply_controller.ordernum
+	supply_controller.ordernum++
+	new_order.object = supply_controller.supply_packs[nuketype]
+	new_order.orderedby = MAIN_AI_SYSTEM
+	new_order.approvedby = MAIN_AI_SYSTEM
+	supply_controller.shoppinglist += new_order
+
+	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
+	message_admins("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
+	log_game("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
+
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
 	if (alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
@@ -468,10 +507,10 @@
 		for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 			if(!(C.inoperable()))
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
-				P.name = "'[command_name] Update.'"
+				P.name = "'[customname].'"
 				P.info = input
 				P.update_icon()
-				C.messagetitle.Add("[command_name] Update")
+				C.messagetitle.Add("[customname]")
 				C.messagetext.Add(P.info)
 
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
@@ -535,10 +574,11 @@
 	if(!input)
 		return FALSE
 
-	var/datum/ares_link/link = GLOB.ares_link
-	if(link.p_interface.inoperable())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
-		return
+	if(!ares_can_interface())
+		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
+			return
 
 	ai_announcement(input)
 	message_admins("[key_name_admin(src)] has created an AI comms report")
@@ -558,15 +598,12 @@
 
 	var/datum/ares_link/link = GLOB.ares_link
 	if(link.p_apollo.inoperable())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
-		return FALSE
+		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
+			return FALSE
 
-	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-		apollo.broadcast(AI, input)
-	for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+	ares_apollo_talk(input)
 	message_admins("[key_name_admin(src)] has created an AI APOLLO report")
 	log_admin("AI APOLLO report: [input]")
 
@@ -580,14 +617,15 @@
 	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
 		return FALSE
-	for(var/obj/structure/machinery/ares/processor/interface/processor in machines)
-		if(processor.inoperable())
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+	if(!ares_can_interface())
+		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
 			return
 
-		shipwide_ai_announcement(input)
-		message_admins("[key_name_admin(src)] has created an AI shipwide report")
-		log_admin("[key_name_admin(src)] AI shipwide report: [input]")
+	shipwide_ai_announcement(input)
+	message_admins("[key_name_admin(src)] has created an AI shipwide report")
+	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
 	set name = "Report: Yautja AI"
@@ -664,6 +702,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=evacuation_cancel'>Cancel Evacuation</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=add_req_points'>Add Requisitions Points</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=check_req_heat'>Modify Requisitions Heat</A><BR>
 		<BR>
 		<B>Research</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>
@@ -685,6 +724,7 @@
 		<B>Misc</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=nuke'>Spawn a nuke</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<BR>

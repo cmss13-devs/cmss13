@@ -18,7 +18,7 @@ export const NuclearBomb = (_props, context) => {
                 {data.decryption_complete
                   ? 'Decryption complete.'
                   : `Decryption time left :
-                  ${data.decryption_time} seconds`}
+                  ${data.decryption_time} minutes`}
               </NoticeBox>
             </Stack.Item>
             <Stack.Item>

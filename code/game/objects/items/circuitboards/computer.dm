@@ -158,18 +158,25 @@
 	name = "Circuit board (ASRS console)"
 	build_path = /obj/structure/machinery/computer/supplycomp
 
-	var/contraband_enabled = 0
+	var/contraband_enabled = FALSE
+	var/black_market_lock = FALSE
 
 /obj/item/circuitboard/computer/supplycomp/construct(obj/structure/machinery/computer/supplycomp/SC)
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
+		SC.lock_black_market(black_market_lock)
 
 /obj/item/circuitboard/computer/supplycomp/disassemble(obj/structure/machinery/computer/supplycomp/SC)
+	if(SC.can_order_contraband)
+		contraband_enabled = TRUE
+	if(SC.black_market_lockout)
+		black_market_lock = TRUE
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
+		SC.lock_black_market(black_market_lock)
 
-/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/multitool, mob/user)
-	if(HAS_TRAIT(multitool, TRAIT_TOOL_MULTITOOL))
+/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)
+	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
 		to_chat(user, SPAN_WARNING("You start messing around with the electronics of \the [src]..."))
 		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -178,11 +185,40 @@
 			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
 			if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				if(!contraband_enabled)
-					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [multitool], and a red light starts blinking on and off on the board. Put it back in?"))
+					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [tool], and a red light starts blinking on and off on the board. Put it back in?"))
 					contraband_enabled = TRUE
 				else
-					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [multitool], and the red light stops blinking, turning off. It's probably good now."))
+					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [tool], and the red light stops blinking, turning off. It's probably good now."))
 					contraband_enabled = FALSE
+
+	if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))
+
+		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+			to_chat(user, SPAN_NOTICE("You do not know how to use [tool]"))
+			return
+
+		if(black_market_lock)
+			to_chat(user, SPAN_NOTICE("[src] has already been reset."))
+			return
+
+		if(user.action_busy)
+			to_chat(user, "You are too busy with other actions to fix any tampering.")
+			return
+
+		playsound(tool, 'sound/machines/lockenable.ogg', 25)
+		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),\
+		SPAN_NOTICE("You begin to fix any tampering to [src]."))
+		tool.icon_state = "[tool.icon_state]_on"
+
+		if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, tool, INTERRUPT_ALL))
+			tool.icon_state = initial(tool.icon_state)
+			return
+
+		playsound(tool, 'sound/machines/ping.ogg', 25)
+		black_market_lock = TRUE
+		contraband_enabled = FALSE
+		tool.icon_state = initial(tool.icon_state)
+
 	else ..()
 
 /obj/item/circuitboard/computer/supplycomp/vehicle

@@ -59,10 +59,12 @@
 		/obj/item/attachable/flashlight,
 	)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 	auto_retrieval_slot = WEAR_J_STORE
+	start_semiauto = FALSE
+	start_automatic = TRUE
 
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
@@ -85,10 +87,7 @@
 
 /obj/item/weapon/gun/smartgun/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
-	fa_delay = FIRE_DELAY_TIER_SG
+	set_fire_delay(FIRE_DELAY_TIER_SG)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_8
 	fa_max_scatter = SCATTER_AMOUNT_TIER_9
 	if(accuracy_improvement)
@@ -101,7 +100,6 @@
 	else
 		scatter = SCATTER_AMOUNT_TIER_6
 		recoil = RECOIL_AMOUNT_TIER_3
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()
@@ -364,15 +362,13 @@
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!requires_battery)
-		..()
-		return
+		return ..()
 
 	if(battery)
 		if(!requires_power)
-			..()
-			return
+			return ..()
 		if(drain_battery())
-			..()
+			return ..()
 
 /obj/item/weapon/gun/smartgun/proc/drain_battery(override_drain)
 
@@ -672,7 +668,7 @@
 	ammo = /obj/item/ammo_magazine/smartgun/dirty
 	ammo_primary = /datum/ammo/bullet/smartgun/dirty//Toggled ammo type
 	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/Initialize(mapload, ...)
 	. = ..()
@@ -690,12 +686,12 @@
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()
-	burst_amount = BURST_AMOUNT_TIER_5
-	burst_delay = FIRE_DELAY_TIER_10
+	set_burst_amount(BURST_AMOUNT_TIER_5)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 	if(!recoil_compensation)
 		scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
-	fa_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_10
 	fa_max_scatter = SCATTER_AMOUNT_NONE
 
@@ -739,3 +735,20 @@
 	. = ..()
 
 	. += SPAN_NOTICE("The power indicator reads [power_cell.charge] charge out of [power_cell.maxcharge] total.")
+
+/obj/item/weapon/gun/smartgun/rmc
+	name = "\improper L56A2 smartgun"
+	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This Variant is used by the Three World Empires Royal Marines Commando units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
+	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
+	ammo_primary = /datum/ammo/bullet/smartgun/holo_target //Toggled ammo type
+	ammo_secondary = /datum/ammo/bullet/smartgun/holo_target/ap ///Toggled ammo type
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
+	icon_state = "magsg"
+	item_state = "magsg"
+	starting_attachment_types = list(/obj/item/attachable/l56a2_smartgun)
+
+/obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_TWE

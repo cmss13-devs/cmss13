@@ -50,7 +50,7 @@
 	. = ..()
 
 	if(z)
-		SSminimaps.add_marker(src, z, MINIMAP_FLAG_USCM, "supply")
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "supply")
 
 // doesn't need power, instead uses health
 /obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)
@@ -76,7 +76,7 @@
 	if(!on)
 		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] [ADMIN_JMP(src)]")
 
-/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/projectile/P)
 	..()
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		update_health(50)
@@ -212,11 +212,26 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	freq_listening = list(COLONY_FREQ)
 	var/toggle_cooldown = 0
 
+	/// Tower has been taken over by xenos, is not usable
+	var/corrupted = FALSE
+
+	/// Held image for the current overlay on the tower from xeno corruption
+	var/image/corruption_image
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
+	. = ..()
+
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
+	register_with_turf()
+
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attack_hand(mob/user)
 	if(user.action_busy)
 		return
 	if(toggle_cooldown > world.time) //cooldown only to prevent spam toggling
 		to_chat(user, SPAN_WARNING("\The [src]'s processors are still cooling! Wait before trying to flip the switch again."))
+		return
+	if(corrupted)
+		to_chat(user, SPAN_WARNING("[src] is entangled in resin. Impossible to interact with."))
 		return
 	var/current_state = on
 	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
@@ -282,6 +297,86 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	else
 		update_icon()
 
+/// Handles xenos corrupting the tower when weeds touch the turf it is located on
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)
+	SIGNAL_HANDLER
+
+	if(corrupted)
+		return
+
+	if(!weeded_turf.weeds)
+		return
+
+	if(weeded_turf.weeds.weed_strength < WEED_LEVEL_HIVE)
+		return
+
+	if(!weeded_turf.weeds.parent)
+		return
+
+	if(!istype(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/cluster))
+		return
+
+	if(SSticker.mode.is_in_endgame)
+		return
+
+	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME))
+		return
+
+	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
+
+	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
+
+	var/list/held_children_weeds = parent_node.children
+	var/cluster_loc = cluster_parent.loc
+	var/linked_hive = cluster_parent.linked_hive
+
+	parent_node.children = list()
+
+	qdel(cluster_parent)
+
+	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, linked_hive)
+	new_pylon.node.children = held_children_weeds
+
+	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
+		weed.parent = new_pylon.node
+		weed.spread_on_semiweedable = TRUE
+		weed.weed_expand()
+
+	RegisterSignal(new_pylon, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
+
+	corrupted = TRUE
+
+	corruption_image = image(icon, icon_state = "resin_growing")
+
+	flick_overlay(src, corruption_image, (2 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (2 SECONDS))
+
+	new_pylon.comms_relay_connection()
+
+/// Handles removing corruption effects from the comms relay
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/uncorrupt(datum/deleting_datum)
+	SIGNAL_HANDLER
+
+	corrupted = FALSE
+
+	overlays -= corruption_image
+
+/// Handles moving the overlay from growing to idle
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/switch_to_idle_corruption()
+	if(!corrupted)
+		return
+
+	corruption_image = image(icon, icon_state = "resin_idle")
+
+	overlays += corruption_image
+
+/// Handles re-registering signals on new turfs if changed
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf()
+	SIGNAL_HANDLER
+
+	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
+
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"
 	autolinkers = list("relay")
@@ -328,7 +423,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, REQ_FREQ, SENTRY_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ)
+	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, REQ_FREQ, SENTRY_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
 
 	//Common and other radio frequencies for people to freely use
 /obj/structure/machinery/telecomms/receiver/preset/Initialize(mapload, ...)
@@ -340,7 +435,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "CentComm Receiver"
 	network = "tcommsat"
 	autolinkers = list("receiverCent")
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, SOF_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
 
 
 //Buses
@@ -360,7 +455,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
 	network = "tcommsat"
-	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, SOF_FREQ)
+	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
 	autolinkers = list("processor3", "security", "command", "JTAC")
 
 /obj/structure/machinery/telecomms/bus/preset_four
@@ -376,7 +471,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_cent
 	id = "CentComm Bus"
 	network = "tcommsat"
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, SOF_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
 	autolinkers = list("processorCent", "centcomm")
 
 //Processors
@@ -441,7 +536,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/command
 	id = "Command Server"
-	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, SOF_FREQ)
+	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
 	autolinkers = list("command")
 
 /obj/structure/machinery/telecomms/server/presets/engineering
@@ -456,7 +551,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/centcomm
 	id = "CentComm Server"
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, SOF_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
 	autolinkers = list("centcomm")
 
 

@@ -101,17 +101,14 @@ SUBSYSTEM_DEF(ticker)
 				mode.declare_completion(force_ending)
 				REDIS_PUBLISH("byond.round", "type" = "round-complete")
 				flash_clients()
-				if(text2num(SSperf_logging?.round?.id) % CONFIG_GET(number/gamemode_rounds_needed) == 0)
-					addtimer(CALLBACK(
-						SSvote,
-						/datum/controller/subsystem/vote/proc/initiate_vote,
-						"gamemode",
-						"SERVER",
-						CALLBACK(src, PROC_REF(handle_map_reboot)),
-						TRUE
-					), 3 SECONDS)
-				else
-					handle_map_reboot()
+				addtimer(CALLBACK(
+					SSvote,
+					/datum/controller/subsystem/vote/proc/initiate_vote,
+					"gamemode",
+					"SERVER",
+					CALLBACK(src, PROC_REF(handle_map_reboot)),
+					TRUE
+				), 3 SECONDS)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
 /// Attempt to start game asynchronously if applicable
@@ -199,6 +196,8 @@ SUBSYSTEM_DEF(ticker)
 	if(CONFIG_GET(flag/autooocmute))
 		ooc_allowed = FALSE
 
+	round_start_time = world.time
+
 	CHECK_TICK
 	for(var/I in round_start_events)
 		var/datum/callback/cb = I
@@ -222,9 +221,7 @@ SUBSYSTEM_DEF(ticker)
 			equip_characters()
 
 	GLOB.data_core.manifest()
-
 	log_world("Game start took [(world.timeofday - init_start) / 10]s")
-	round_start_time = world.time
 	//SSdbcore.SetRoundStart()
 
 	current_state = GAME_STATE_PLAYING

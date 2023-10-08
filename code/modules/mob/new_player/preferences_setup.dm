@@ -200,19 +200,19 @@
 
 	if(isnull(preview_front))
 		preview_front = new()
-		owner.screen |= preview_front
+		owner.add_to_screen(preview_front)
 		preview_front.vis_contents += preview_dummy
 		preview_front.screen_loc = "preview:0,0"
 	preview_front.icon_state = bg_state
 
 	if(isnull(rotate_left))
 		rotate_left = new(null, preview_dummy)
-		owner.screen |= rotate_left
+		owner.add_to_screen(rotate_left)
 		rotate_left.screen_loc = "preview:-1:16,0"
 
 	if(isnull(rotate_right))
 		rotate_right = new(null, preview_dummy)
-		owner.screen |= rotate_right
+		owner.add_to_screen(rotate_right)
 		rotate_right.screen_loc = "preview:1:-16,0"
 
 /datum/preferences/proc/job_pref_to_gear_preset()
@@ -245,6 +245,8 @@
 			return /datum/equipment_preset/uscm_ship/so
 		if(JOB_XO)
 			return /datum/equipment_preset/uscm_ship/xo
+		if(JOB_AUXILIARY_OFFICER)
+			return /datum/equipment_preset/uscm_ship/auxiliary_officer
 		if(JOB_INTEL)
 			return /datum/equipment_preset/uscm/intel/full
 		if(JOB_PILOT)
@@ -277,7 +279,7 @@
 		if(JOB_MAINT_TECH)
 			return /datum/equipment_preset/uscm_ship/maint
 		if(JOB_CHIEF_REQUISITION)
-			return /datum/equipment_preset/uscm_ship/ro
+			return /datum/equipment_preset/uscm_ship/qm
 		if(JOB_CARGO_TECH)
 			return /datum/equipment_preset/uscm_ship/cargo
 		if(JOB_CMO)

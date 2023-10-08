@@ -71,3 +71,6 @@ var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "
 #define ANTIGRIEF_NEW_PLAYERS 1
 /// Enables antigrief entirely: Nobody can activate explosives on the Almayer, unless the ship crashed.
 #define ANTIGRIEF_ENABLED 2
+
+/// Proc has been blocked by IsAdminAdvancedProcCall()
+#define PROC_BLOCKED "PROCCALL BLOCKED"

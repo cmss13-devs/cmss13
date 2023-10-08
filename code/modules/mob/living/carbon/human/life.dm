@@ -41,7 +41,7 @@
 			handle_chemicals_in_body(delta_time)
 
 			//Organs and blood
-			handle_organs()
+			handle_organs(delta_time)
 			handle_blood()
 
 			//Random events (vomiting etc)

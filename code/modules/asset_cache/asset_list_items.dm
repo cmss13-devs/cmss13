@@ -143,6 +143,8 @@
 	assets = list(
 		"wylogo.png" = 'html/images/wylogo.png',
 		"uscmlogo.png" = 'html/images/uscmlogo.png',
+		"upplogo.png" = 'html/images/upplogo.png',
+		"cmblogo.png" = 'html/images/cmblogo.png',
 		"faxwylogo.png" = 'html/images/faxwylogo.png',
 		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
 	)
@@ -204,10 +206,10 @@
 
 /datum/asset/spritesheet/playtime_rank/register()
 	var/icon_file = 'icons/mob/hud/hud.dmi'
-	var/tier1_state = "hudxenoupgrade1"
-	var/tier2_state = "hudxenoupgrade2"
-	var/tier3_state = "hudxenoupgrade3"
-	var/tier4_state = "hudxenoupgrade4"
+	var/tier1_state = "hudxenoupgrade2"
+	var/tier2_state = "hudxenoupgrade3"
+	var/tier3_state = "hudxenoupgrade4"
+	var/tier4_state = "hudxenoupgrade5"
 
 	var/icon/tier1_icon = icon(icon_file, tier1_state, SOUTH)
 	var/icon/tier2_icon = icon(icon_file, tier2_state, SOUTH)
@@ -271,7 +273,6 @@
 
 /datum/asset/spritesheet/ranks/register()
 	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
-	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
 
 	var/list/icon_data = list(
 		list("Mar", null),
@@ -284,10 +285,8 @@
 		list("SL", "hudsquad_leader"),
 	)
 
-	var/i
-	for(i = 1; i < length(squads); i++)
-		var/squad = squads[i]
-		var/color = squad_colors[i]
+	for(var/datum/squad/marine/squad in RoleAuthority.squads)
+		var/color = squad.equipment_color
 		for(var/iref in icon_data)
 			var/list/iconref = iref
 			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)

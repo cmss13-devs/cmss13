@@ -161,9 +161,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "fA" = (
-/obj/structure/transmitter/colony_net{
-	network_receive = "CLF";
-	networks_transmit = list("CLF");
+/obj/structure/transmitter/clf_net{
 	phone_category = "CR-116";
 	phone_id = "Armoury";
 	pixel_y = 32
@@ -457,6 +455,7 @@
 /area/lv624/lazarus/crashed_ship)
 "lv" = (
 /obj/item/stack/rods,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -666,13 +665,12 @@
 "sI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
-/obj/structure/transmitter/colony_net/rotary{
-	network_receive = "CLF";
-	networks_transmit = list("CLF");
+/obj/structure/transmitter/clf_net/rotary{
 	phone_category = "CR-116";
 	phone_color = "yellow";
 	phone_id = "Engineering"
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
 	},
@@ -1063,6 +1061,7 @@
 /obj/item/tank/oxygen/red,
 /obj/item/storage/bag/trash,
 /obj/item/tool/screwdriver,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1254,6 +1253,7 @@
 	pixel_x = -3;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "GQ" = (
@@ -1279,6 +1279,7 @@
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/clothing/accessory/storage/webbing,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green"
@@ -1661,9 +1662,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Qj" = (
 /obj/structure/machinery/body_scanconsole,
-/obj/structure/transmitter/colony_net{
-	network_receive = "CLF";
-	networks_transmit = list("CLF");
+/obj/structure/transmitter/clf_net{
 	phone_category = "CR-116";
 	phone_color = "green";
 	phone_id = "Medical Bay";
@@ -1960,6 +1959,7 @@
 "Xa" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/regular,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald"
@@ -1993,9 +1993,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "XM" = (
-/obj/structure/transmitter/colony_net{
-	network_receive = "CLF";
-	networks_transmit = list("CLF");
+/obj/structure/transmitter/clf_net{
 	phone_category = "CR-116";
 	phone_id = "Cargo Bay";
 	pixel_y = 32

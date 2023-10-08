@@ -160,11 +160,11 @@
 
 	if(HUD_toggled[HUD_nbr])
 		HUD_toggled[HUD_nbr] = 0
-		H.remove_hud_from(src)
+		H.remove_hud_from(src, src)
 		to_chat(src, SPAN_NOTICE(" <B>[hud_choice] Disabled</B>"))
 	else
 		HUD_toggled[HUD_nbr] = 1
-		H.add_hud_to(src)
+		H.add_hud_to(src, src)
 		to_chat(src, SPAN_NOTICE(" <B>[hud_choice] Enabled</B>"))
 
 /mob/living/silicon/verb/pose()

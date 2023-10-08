@@ -81,6 +81,22 @@
 	if(SSticker.mode.check_xeno_late_join(owner))
 		SSticker.mode.attempt_to_join_as_xeno(owner)
 
+/datum/action/observer_action/join_lesser_drone
+	name = "Join as Lesser Drone"
+	action_icon_state = "join_lesser_drone"
+	listen_signal = COMSIG_KB_OBSERVER_JOIN_LESSER_DRONE
+
+/datum/action/observer_action/join_lesser_drone/action_activate()
+	if(!owner.client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		owner.balloon_alert(owner, "game must start!")
+		return
+
+	if(SSticker.mode.check_xeno_late_join(owner))
+		SSticker.mode.attempt_to_join_as_lesser_drone(owner)
+
 /datum/keybinding/observer
 	category = CATEGORY_OBSERVER
 	weight = WEIGHT_DEAD
@@ -108,3 +124,10 @@
 	name = "join_pred"
 	full_name = "Join the Hunt"
 	keybind_signal = COMSIG_KB_OBSERVER_JOIN_PREDATOR
+
+/datum/keybinding/observer/join_lesser_drone
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "join_lesser_drone"
+	full_name = "Join as Lesser Drone"
+	keybind_signal = COMSIG_KB_OBSERVER_JOIN_LESSER_DRONE

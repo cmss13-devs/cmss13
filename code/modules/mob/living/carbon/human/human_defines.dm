@@ -1,4 +1,5 @@
 /mob/living/carbon/human
+	light_system = MOVABLE_LIGHT
 	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -160,6 +161,12 @@
 
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()
+
+	/// associated list of body part zone -> currently active limb key
+	var/list/icon_render_keys = list()
+
+	/// static associated list of limb key -> image to avoid unnecessary overlay generation
+	var/static/list/icon_render_image_cache = list()
 
 /client/var/cached_human_playtime
 

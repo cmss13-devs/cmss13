@@ -63,6 +63,7 @@
 
 	var/darksight = 2
 	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	var/flags_sight = 0
 
 	var/brute_mod = null // Physical damage reduction/malus.
 	var/burn_mod = null  // Burn damage reduction/malus.
@@ -121,6 +122,10 @@
 		secondary_unarmed = new secondary_unarmed_type()
 
 /datum/species/proc/larva_impregnated(obj/item/alien_embryo/embryo)
+	return
+
+/// Override to add an emote panel to a species
+/datum/species/proc/open_emote_panel()
 	return
 
 /datum/species/proc/handle_npc(mob/living/carbon/human/H)

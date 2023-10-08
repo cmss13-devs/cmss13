@@ -356,17 +356,21 @@ Additional game mode variables.
 		else
 			available_xenos_non_ssd += cur_xeno
 
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time)))
-			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
-				available_xenos |= "any buried larva"
-				LAZYADD(available_xenos["any buried larva"], hive)
-			else
-				var/larva_option = "buried larva ([hive])"
-				available_xenos += larva_option
-				available_xenos[larva_option] = list(hive)
+	// Only offer buried larva if there is no queue:
+	// This basically means this block of code will almost never execute, because we are instead relying on the hive cores/larva pops to handle their larva
+	// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
+	if(GLOB.xeno_queue_candidate_count < 1)
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
+			if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time)))
+				if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
+					available_xenos |= "any buried larva"
+					LAZYADD(available_xenos["any buried larva"], hive)
+				else
+					var/larva_option = "buried larva ([hive])"
+					available_xenos += larva_option
+					available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
 		if(!xeno_candidate.client || !xeno_candidate.client.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
@@ -444,6 +448,10 @@ Additional game mode variables.
 
 		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
+			return FALSE
+
+		if(new_xeno.health <= 0)
+			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is in critical condition or unconscious."))
 			return FALSE
 
 		if(!xeno_bypass_timer)
@@ -545,6 +553,61 @@ Additional game mode variables.
 	else
 		var/obj/effect/alien/resin/special/eggmorph/morpher = facehugger_choice
 		morpher.join_as_facehugger_from_this(xeno_candidate)
+
+	return TRUE
+
+/datum/game_mode/proc/attempt_to_join_as_lesser_drone(mob/xeno_candidate)
+	var/list/active_hives = list()
+	var/datum/hive_status/hive
+	var/last_active_hive = 0
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(hive.totalXenos.len <= 0)
+			continue
+		active_hives[hive.name] = hive.hivenumber
+		last_active_hive = hive.hivenumber
+
+	if(active_hives.len <= 0)
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
+		return FALSE
+
+	if(active_hives.len > 1)
+		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
+		if(!hive_picked)
+			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
+			return FALSE
+		hive = GLOB.hive_datum[active_hives[hive_picked]]
+	else
+		hive = GLOB.hive_datum[last_active_hive]
+
+	for(var/mob_name in hive.banished_ckeys)
+		if(hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+			to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [hive], you may not rejoin unless the Queen re-admits you or dies."))
+			return FALSE
+
+	var/list/selection_list = list()
+	var/list/selection_list_structure = list()
+
+	if(hive.hive_location?.lesser_drone_spawns >= 1)
+		selection_list += "hive core"
+		selection_list_structure += hive.hive_location
+
+	for(var/obj/effect/alien/resin/special/pylon/cycled_pylon as anything in hive.hive_structures[XENO_STRUCTURE_PYLON])
+		if(cycled_pylon.lesser_drone_spawns >= 1)
+			selection_list += "[cycled_pylon.name] at [get_area(cycled_pylon)]"
+			selection_list_structure += cycled_pylon
+
+	if(!length(selection_list))
+		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have enough power for a lesser drone at any hive core or pylon!"))
+		return FALSE
+
+	var/prompt = tgui_input_list(xeno_candidate, "Select spawn?", "Spawnpoint Selection", selection_list)
+	if(!prompt)
+		return FALSE
+
+	var/obj/effect/alien/resin/special/pylon/selected_structure = selection_list_structure[selection_list.Find(prompt)]
+
+	selected_structure.spawn_lesser_drone(xeno_candidate)
 
 	return TRUE
 
@@ -902,7 +965,7 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
-	if(joe_candidate.ckey in joes)
+	if((joe_candidate.ckey in joes) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You already were a Working Joe this round!"))
 		return
@@ -910,12 +973,12 @@ Additional game mode variables.
 	// council doesn't count towards this conditional.
 	if(joe_job.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
 		var/joe_max = joe_job.total_positions
-		if(joe_job.current_positions >= joe_max)
+		if((joe_job.current_positions >= joe_max) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 			if(show_warning)
 				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
 
-	if(!enter_allowed)
+	if(!enter_allowed && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
 		return
@@ -932,7 +995,7 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_joe")
 		return
 
-	var/turf/spawn_point = get_turf(pick(GLOB.latejoin))
+	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_WORKING_JOE]))
 	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
 	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]

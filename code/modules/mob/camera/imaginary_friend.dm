@@ -168,10 +168,10 @@
 			hud = huds[MOB_HUD_FACTION_CLF]
 
 	if(hud_choice in current_huds)
-		hud.remove_hud_from(src)
+		hud.remove_hud_from(src, src)
 		current_huds -= hud_choice
 	else
-		hud.add_hud_to(src)
+		hud.add_hud_to(src, src)
 		current_huds += hud_choice
 
 /mob/camera/imaginary_friend/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced)
@@ -200,6 +200,7 @@
 
 	to_chat(owner, "[rendered]")
 	to_chat(src, "[rendered]")
+	log_say("Imaginary Friend: [dead_rendered]")
 	if(!hidden)
 		var/list/send_to = list()
 		if(!owner.client?.prefs.lang_chat_disabled)

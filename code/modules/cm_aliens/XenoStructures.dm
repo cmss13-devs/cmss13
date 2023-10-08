@@ -50,7 +50,7 @@
 	health -= 50
 	healthcheck()
 
-/obj/effect/alien/resin/bullet_act(obj/item/projectile/Proj)
+/obj/effect/alien/resin/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -375,7 +375,7 @@
 	health -= dam
 	healthcheck()
 
-/obj/structure/mineral_door/resin/bullet_act(obj/item/projectile/Proj)
+/obj/structure/mineral_door/resin/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -394,11 +394,13 @@
 		return attack_hand(user)
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
-	if(islarva(user))
-		var/mob/living/carbon/xenomorph/larva/L = user
-		if (L.hivenumber == hivenumber)
-			L.scuttle(src)
-		return
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno_user = user
+		if (xeno_user.hivenumber != hivenumber && !xeno_user.ally_of_hivenumber(hivenumber))
+			return
+		if(xeno_user.scuttle(src))
+			return
+		return ..()
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if (C.ally_of_hivenumber(hivenumber))
@@ -628,7 +630,7 @@
 	STOP_PROCESSING(SSprocessing, src)
 	return ..()
 
-/obj/effect/alien/resin/acid_pillar/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/effect/alien/resin/acid_pillar/get_projectile_hit_boolean(obj/projectile/P)
 	return TRUE
 
 /obj/effect/alien/resin/acid_pillar/proc/forsaken_handling()
@@ -756,7 +758,7 @@
 	SIGNAL_HANDLER
 	hitby(AM)
 
-/obj/effect/alien/resin/resin_pillar/proc/handle_bullet(turf/T, obj/item/projectile/P)
+/obj/effect/alien/resin/resin_pillar/proc/handle_bullet(turf/T, obj/projectile/P)
 	SIGNAL_HANDLER
 	bullet_act(P)
 	return COMPONENT_BULLET_ACT_OVERRIDE
@@ -895,7 +897,7 @@
 
 	var/range = 3
 
-/obj/item/explosive/grenade/alien/acid/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/item/explosive/grenade/alien/acid/get_projectile_hit_boolean(obj/projectile/P)
 	return FALSE
 
 /obj/item/explosive/grenade/alien/acid/prime(force)

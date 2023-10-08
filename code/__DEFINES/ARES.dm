@@ -26,6 +26,7 @@
 #define ARES_RECORD_SECURITY "Security Update"
 #define ARES_RECORD_MAINTENANCE "Maintenance Ticket"
 #define ARES_RECORD_ACCESS "Access Ticket"
+#define ARES_RECORD_FLIGHT "Flight Record"
 
 /// Not by ARES logged through marine_announcement()
 #define ARES_LOG_NONE 0
@@ -34,20 +35,37 @@
 /// Logged in the security updates
 #define ARES_LOG_SECURITY 2
 
-/// Access levels specifically for Working Joe management console
-#define APOLLO_ACCESS_REQUEST 0
-#define APOLLO_ACCESS_REPORTER 1
-#define APOLLO_ACCESS_TEMP 2
-#define APOLLO_ACCESS_AUTHED 3
-#define APOLLO_ACCESS_JOE 4
-#define APOLLO_ACCESS_DEBUG 5
+// Access levels specifically for Working Joe management console
+#define APOLLO_ACCESS_LOGOUT 0
+#define APOLLO_ACCESS_REQUEST 1
+#define APOLLO_ACCESS_REPORTER 2
+#define APOLLO_ACCESS_TEMP 3
+#define APOLLO_ACCESS_AUTHED 4
+#define APOLLO_ACCESS_JOE 5
+#define APOLLO_ACCESS_DEBUG 6
 
 /// Ticket statuses, both for Access and Maintenance
+/// Pending assignment/rejection
 #define TICKET_PENDING "pending"
+/// Assigned to a WJ
 #define TICKET_ASSIGNED "assigned"
-#define TICKET_REJECTED "rejected"
+/// Cancelled by reporter
 #define TICKET_CANCELLED "cancelled"
-#define TICKET_COMPLETED "complete"
+/// Rejected by WJs
+#define TICKET_REJECTED "rejected"
+/// Completed by WJs
+#define TICKET_COMPLETED "completed"
+
+/// Granted Access Ticket
+#define TICKET_GRANTED "granted"
+/// Revoked Access Ticket
+#define TICKET_REVOKED "revoked"
+/// Self-Returned Access Ticket
+#define TICKET_RETURNED "returned"
+
+/// Checks for if buttons can be used, these may yet be removed and internalised to the UI programming
+#define TICKET_OPEN "OPEN"
+#define TICKET_CLOSED "CLOSED"
 
 /// Cooldowns
 #define COOLDOWN_ARES_SENSOR 60 SECONDS

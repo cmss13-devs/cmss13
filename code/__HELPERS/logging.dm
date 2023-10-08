@@ -108,8 +108,10 @@
 	if (CONFIG_GET(flag/log_interact))
 		WRITE_LOG(GLOB.world_game_log, "INTERACT: [msg]")
 		LOG_REDIS("interact", "\[[time]\] [msg]")
-	origin.attack_log += "\[[time]\]<font color='green'> [msg] </font>"
-	target.attack_log += "\[[time]\]<font color='green'> [msg] </font>"
+	if(origin)
+		origin.attack_log += "\[[time]\]<font color='green'> [msg] </font>"
+	if(target)
+		target.attack_log += "\[[time]\]<font color='green'> [msg] </font>"
 
 	GLOB.STUI.attack.Add("\[[time]]INTERACT: [msg]")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK

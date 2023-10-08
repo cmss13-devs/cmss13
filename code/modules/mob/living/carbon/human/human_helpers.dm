@@ -268,15 +268,14 @@
 	var/goes_out = 0
 	if(armor)
 		if(istype(wear_suit, /obj/item/clothing/suit/storage/marine))
-			var/obj/item/clothing/suit/storage/marine/S = wear_suit
-			if(S.turn_off_light(src))
+			if(wear_suit.turn_light(src, toggle_on = FALSE))
 				light_off++
 		for(var/obj/item/clothing/head/helmet/marine/H in contents)
 			for(var/obj/item/attachable/flashlight/FL in H.pockets)
 				if(FL.activate_attachment(H, src, TRUE))
 					light_off++
 		for(var/obj/item/clothing/head/hardhat/headlamp in contents)
-			if(headlamp.turn_off_light(src))
+			if(headlamp.turn_light(src, toggle_on = FALSE))
 				light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)

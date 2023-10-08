@@ -109,7 +109,7 @@
 	deactive_state = "sensorhud_d"
 	flags_armor_protection = 0
 	toggleable = TRUE
-	hud_type = MOB_HUD_MEDICAL_BASIC
+	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	actions_types = list(/datum/action/item_action/toggle)
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_DEFAULT

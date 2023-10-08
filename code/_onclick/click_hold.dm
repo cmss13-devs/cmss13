@@ -30,6 +30,9 @@
 	mouse_trace_history = null
 	LAZYADD(mouse_trace_history, A)
 
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
+
 	var/list/mods = params2list(params)
 	if(mods["left"])
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DOWN, A, mods)
@@ -62,6 +65,9 @@
 		params += ";click_catcher=1"
 	holding_click = FALSE
 
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
+
 	var/list/mods = params2list(params)
 	if(mods["left"])
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_UP, A, params)
@@ -74,6 +80,9 @@
 	CONVERT_CLICK_CATCHER(over_obj, over_loc, click_catcher_click)
 	if(click_catcher_click)
 		params += ";click_catcher=1"
+
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDRAG, src_obj, over_obj, src_loc, over_loc, src_ctl, over_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
 
 	var/list/mods = params2list(params)
 	if(mods["left"])

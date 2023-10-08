@@ -21,7 +21,7 @@
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin]
-	var/obj/item/projectile/projectile = new /obj/item/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
+	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
 	projectile.generate_bullet(xeno.ammo)
 	projectile.permutated += xeno
 	projectile.def_zone = xeno.get_limbzone_target()
@@ -56,7 +56,7 @@
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin/shotgun]
-	var/obj/item/projectile/projectile = new /obj/item/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
+	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
 	projectile.generate_bullet(xeno.ammo)
 	projectile.permutated += xeno
 	projectile.def_zone = xeno.get_limbzone_target()

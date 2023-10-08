@@ -56,7 +56,7 @@
 		src.has_power = 0
 		if(lights_on) // Light is on but there is no power!
 			lights_on = 0
-			SetLuminosity(0)
+			set_light(0)
 
 /mob/living/silicon/robot/handle_regular_status_updates(regular_update = TRUE)
 
@@ -239,10 +239,10 @@
 
 /mob/living/silicon/robot/proc/update_items()
 	if (client)
-		client.screen -= contents
+		client.remove_from_screen(contents)
 		for(var/obj/I in contents)
 			if(I && !(istype(I,/obj/item/cell) || istype(I,/obj/item/device/radio)  || istype(I,/obj/structure/machinery/camera) || istype(I,/obj/item/device/mmi)))
-				client.screen += I
+				client.add_to_screen(I)
 	var/datum/custom_hud/robot/ui_datum = GLOB.custom_huds_list[HUD_ROBOT]
 	if(module_state_1)
 		module_state_1.screen_loc = ui_datum.ui_inv1

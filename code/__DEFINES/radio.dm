@@ -26,6 +26,7 @@
 #define RADIO_CHANNEL_HEADSET "headset"
 #define RADIO_CHANNEL_ENGI "Engi"
 #define RADIO_CHANNEL_HIGHCOM "HighCom"
+#define RADIO_CHANNEL_PROVOST "Provost"
 #define RADIO_CHANNEL_INTERCOM "intercom"
 #define RADIO_CHANNEL_INTEL "Intel"
 #define RADIO_CHANNEL_JTAC "JTAC"
@@ -64,5 +65,7 @@
 #define RADIO_CHANNEL_DUTCH_DOZEN "DD"
 #define RADIO_CHANNEL_VAI "VAI"
 #define RADIO_CHANNEL_CMB "CMB"
+#define RADIO_CHANNEL_ROYAL_MARINE "Royal Marine"
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"
+

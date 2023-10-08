@@ -34,11 +34,11 @@
 /obj/item/ammo_box/magazine/misc/handle_side_effects(obj/structure/magazine_box/host_box)
 	if(host_box)
 		host_box.apply_fire_overlay()
-		host_box.SetLuminosity(3)
+		host_box.set_light(3)
 		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
 	else
 		apply_fire_overlay()
-		SetLuminosity(3)
+		set_light(3)
 		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
 
 /obj/item/ammo_box/magazine/misc/apply_fire_overlay(will_explode = FALSE)
@@ -117,11 +117,11 @@
 
 	if(host_box)
 		host_box.apply_fire_overlay()
-		host_box.SetLuminosity(3)
+		host_box.set_light(3)
 		host_box.visible_message(SPAN_WARNING(shown_message))
 	else
 		apply_fire_overlay()
-		SetLuminosity(3)
+		set_light(3)
 		visible_message(SPAN_WARNING(shown_message))
 
 //for flare box, instead of actually exploding, we throw out a flare at random direction

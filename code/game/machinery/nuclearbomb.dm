@@ -12,7 +12,7 @@ var/bomb_set = FALSE
 	var/timing = FALSE
 	var/deployable = FALSE
 	var/explosion_time = null
-	var/timeleft = 4800
+	var/timeleft = 8 MINUTES
 	var/safety = TRUE
 	var/being_used = FALSE
 	var/end_round = TRUE
@@ -152,6 +152,7 @@ var/bomb_set = FALSE
 	data["command_lockout"] = command_lockout
 	data["allowed"] = allowed
 	data["being_used"] = being_used
+	data["decryption_complete"] = TRUE //this is overriden by techweb nuke UI_data later, this just makes it default to true
 
 	return data
 

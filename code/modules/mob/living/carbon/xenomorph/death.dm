@@ -14,7 +14,7 @@
 	if(SSticker?.mode?.hardcore)
 		ghostize()
 
-	SetLuminosity(0)
+	set_light_range(0)
 
 	if(pulledby)
 		pulledby.stop_pulling()
@@ -61,6 +61,7 @@
 						message_alien_candidates(players_with_xeno_pref, dequeued = count)
 
 			if(hive && hive.living_xeno_queen == src)
+				notify_ghosts(header = "Queen Death", message = "The Queen has been slain!", source = src, action = NOTIFY_ORBIT)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
 				hive.slashing_allowed = XENO_SLASH_ALLOWED
 				hive.set_living_xeno_queen(null)
@@ -69,10 +70,11 @@
 					if(!QDELETED(Q) && Q != src && Q.hivenumber == hivenumber)
 						hive.set_living_xeno_queen(Q)
 						break
+				hive.on_queen_death()
 				hive.handle_xeno_leader_pheromones()
 				if(SSticker.mode)
 					INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, check_queen_status), hivenumber)
-					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
+					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(full_designation) ? full_designation : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else if(ispredalien(src))
 			playsound(loc,'sound/voice/predalien_death.ogg', 25, TRUE)
@@ -128,7 +130,7 @@
 				// Tell the xeno she is the last one.
 				if(X.client)
 					to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
-				announce_dchat("There is only one Xenomorph left: [X.name].", X)
+				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [X.name].", source = X, action = NOTIFY_ORBIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 

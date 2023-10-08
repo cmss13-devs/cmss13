@@ -12,6 +12,8 @@
  * Crayon Box
  * Cigarette Box
  * Cigar Box
+ * Match Box
+ * Vial Box
  */
 
 /obj/item/storage/fancy
@@ -20,9 +22,10 @@
 	name = "donut box"
 	desc = "A box where round, heavenly, holey pastries reside."
 	var/icon_type = "donut"
+	var/plural = "s"
 
 /obj/item/storage/fancy/update_icon()
-	icon_state = "[icon_type]box[contents.len]"
+	icon_state = "[icon_type]box[length(contents)]"
 
 /obj/item/storage/fancy/remove_from_storage(obj/item/W, atom/new_location)
 	. = ..()
@@ -32,17 +35,14 @@
 
 /obj/item/storage/fancy/get_examine_text(mob/user)
 	. = ..()
-	if(contents.len <= 0)
-		. += "There are no [src.icon_type]s left in the box."
-	else if(contents.len == 1)
+	if(!length(contents))
+		. += "There are no [src.icon_type][plural] left in the box."
+	else if(length(contents) == 1)
 		. += "There is one [src.icon_type] left in the box."
 	else
-		. += "There are [src.contents.len] [src.icon_type]s in the box."
+		. += "There are [length(src.contents)] [src.icon_type][plural] in the box."
 
-
-/*
- * Egg Box
- */
+// EGG BOX
 
 /obj/item/storage/fancy/egg_box
 	icon = 'icons/obj/items/food.dmi'
@@ -59,9 +59,7 @@
 		new /obj/item/reagent_container/food/snacks/egg(src)
 	return
 
-/*
- * Candle Box
- */
+// CANDLE BOX
 
 /obj/item/storage/fancy/candle_box
 	name = "candle pack"
@@ -80,9 +78,7 @@
 		new /obj/item/tool/candle(src)
 	return
 
-/*
- * Crayon Box
- */
+// CRAYON BOX
 
 /obj/item/storage/fancy/crayons
 	name = "box of crayons"
@@ -120,9 +116,8 @@
 				return
 	..()
 
-////////////
-//CIG PACK//
-////////////
+// CIGARETTES BOX
+
 /obj/item/storage/fancy/cigarettes
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "cigpacket"
@@ -153,14 +148,14 @@
 	icon_state = "[initial(icon_state)]"
 
 /obj/item/storage/fancy/cigarettes/update_icon()
-	icon_state = "[initial(icon_state)][contents.len]"
+	icon_state = "[initial(icon_state)][length(contents)]"
 	return
 
 /obj/item/storage/fancy/cigarettes/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
 		return
 
-	if(M == user && user.zone_selected == "mouth" && contents.len > 0 && !user.wear_mask)
+	if(M == user && user.zone_selected == "mouth" && length(contents) > 0 && !user.wear_mask)
 		var/obj/item/clothing/mask/cigarette/C = locate() in src
 		if(C)
 			remove_from_storage(C, get_turf(user))
@@ -223,9 +218,7 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 	storage_slots = 4
 
-/////////////
-//CIGAR BOX//
-/////////////
+// CIGAR BOX
 
 /obj/item/storage/fancy/cigar
 	name = "cigar case"
@@ -253,14 +246,14 @@
 	icon_state = "[initial(icon_state)]"
 
 /obj/item/storage/fancy/cigar/update_icon()
-	icon_state = "[initial(icon_state)][contents.len]"
+	icon_state = "[initial(icon_state)][length(contents)]"
 	return
 
 /obj/item/storage/fancy/cigar/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
 		return
 
-	if(M == user && user.zone_selected == "mouth" && contents.len > 0 && !user.wear_mask)
+	if(M == user && user.zone_selected == "mouth" && length(contents) > 0 && !user.wear_mask)
 		var/obj/item/clothing/mask/cigarette/cigar/C = locate() in src
 		if(C)
 			remove_from_storage(C, get_turf(user))
@@ -286,6 +279,8 @@
 	storage_slots = 1
 	default_cigar_type = /obj/item/clothing/mask/cigarette/cigar/tarbacks
 
+// MATCH BOX
+
 /obj/item/storage/fancy/cigar/matchbook
 	name = "\improper Lucky Strikes matchbook"
 	desc = "A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Strikes, but you'll be anything but lucky when you burn your hand trying to light a match on this."
@@ -298,6 +293,7 @@
 	w_class = SIZE_TINY
 	var/light_chance = 70 //how likely you are to light the match on the book
 	var/burn_chance = 20 //how likely you are to burn yourself once you light it
+	plural = "es"
 
 /obj/item/storage/fancy/cigar/matchbook/attackby(obj/item/tool/match/W as obj, mob/living/carbon/human/user as mob)
 	if(!istype(user))
@@ -340,9 +336,7 @@
 	light_chance = 60
 	burn_chance = 40
 
-/*
- * Vial Box
- */
+// VIAL BOX
 
 /obj/item/storage/fancy/vials
 	icon = 'icons/obj/items/vialbox.dmi'
@@ -401,7 +395,7 @@
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
 /obj/item/storage/lockbox/vials/update_icon(itemremoved = 0)
-	var/total_contents = src.contents.len - itemremoved
+	var/total_contents = length(src.contents) - itemremoved
 	src.icon_state = "vialbox[total_contents]"
 	src.overlays.Cut()
 	if (!broken)

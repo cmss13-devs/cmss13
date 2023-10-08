@@ -83,10 +83,11 @@
 /obj/item/device/defibrillator/upgraded
 	name = "upgraded emergency defibrillator"
 	icon_state = "adv_defib"
-	desc = "An advanced rechargeable defibrillator using induction to deliver shocks through metallic objects, such as armor, and does so with much greater efficiency than the standard variant."
+	desc = "An advanced rechargeable defibrillator using induction to deliver shocks through metallic objects, such as armor, and does so with much greater efficiency than the standard variant, not damaging the heart."
 
 	blocked_by_suit = FALSE
-	heart_damage_to_deal = 0
+	min_heart_damage_dealt = 0
+	max_heart_damage_dealt = 0
 	damage_heal_threshold = 35
 
 /obj/item/ammo_magazine/internal/pillgun
@@ -186,23 +187,23 @@
 
 /obj/item/weapon/gun/pill/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	if(!able_to_fire(user))
-		return
+		return NONE
 
 	if(!current_mag.current_rounds)
 		click_empty(user)
-		return
+		return NONE
 
 	if(!istype(current_mag, /obj/item/ammo_magazine/internal/pillgun))
-		return
+		return NONE
 
 	var/obj/item/ammo_magazine/internal/pillgun/internal_mag = current_mag
 	var/obj/item/reagent_container/pill/pill_to_use = LAZYACCESS(internal_mag.pills, 1)
 
 	if(QDELETED(pill_to_use))
 		click_empty(user)
-		return
+		return NONE
 
-	var/obj/item/projectile/pill/P = new /obj/item/projectile/pill(src, user, src)
+	var/obj/projectile/pill/P = new /obj/projectile/pill(src, user, src)
 	P.generate_bullet(GLOB.ammo_list[/datum/ammo/pill], 0, 0)
 
 	pill_to_use.forceMove(P)
@@ -211,6 +212,7 @@
 	playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
 
 	P.fire_at(target, user, src)
+	return AUTOFIRE_CONTINUE
 
 /datum/ammo/pill
 	name = "syringe"
@@ -219,16 +221,16 @@
 
 	damage = 0
 
-/datum/ammo/pill/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/pill/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 
 	if(!ishuman(M))
 		return
 
-	if(!istype(P, /obj/item/projectile/pill))
+	if(!istype(P, /obj/projectile/pill))
 		return
 
-	var/obj/item/projectile/pill/pill_projectile = P
+	var/obj/projectile/pill/pill_projectile = P
 
 	if(QDELETED(pill_projectile.source_pill))
 		pill_projectile.source_pill = null
@@ -238,9 +240,9 @@
 
 	pill_reagents.trans_to(M, pill_reagents.total_volume)
 
-/obj/item/projectile/pill
+/obj/projectile/pill
 	var/obj/item/reagent_container/pill/source_pill
 
-/obj/item/projectile/pill/Destroy()
+/obj/projectile/pill/Destroy()
 	. = ..()
 	source_pill = null

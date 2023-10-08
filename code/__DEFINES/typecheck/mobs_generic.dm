@@ -1,4 +1,5 @@
 #define isAI(A) (istype(A, /mob/living/silicon/ai))
+#define isARES(A) (istype(A, /mob/living/silicon/decoy/ship_ai))
 #define isSilicon(A) (istype(A, /mob/living/silicon))
 #define isRemoteControlling(M) (M && M.client && M.client.remote_control)
 #define isRemoteControllingOrAI(M) ((M && M.client && M.client.remote_control) || (istype(M, /mob/living/silicon/ai)))

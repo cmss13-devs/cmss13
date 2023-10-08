@@ -4,7 +4,7 @@
 	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
 	uses_ethnicity = FALSE
 	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT, TRAIT_UNSTRIPPABLE)
 
 	slowdown = 0.45
 	hair_color = "#000000"
@@ -22,7 +22,7 @@
 	return ..()
 
 /// Open the WJ's emote panel, which allows them to use voicelines
-/datum/species/synthetic/colonial/working_joe/proc/open_emote_panel()
+/datum/species/synthetic/colonial/working_joe/open_emote_panel()
 	var/datum/joe_emote_panel/ui = new(usr)
 	ui.ui_interact(usr)
 

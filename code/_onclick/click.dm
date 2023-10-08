@@ -210,7 +210,7 @@
 		return TRUE
 
 	if (mods["ctrl"])
-		if (Adjacent(user))
+		if (Adjacent(user) && user.next_move < world.time)
 			user.start_pulling(src)
 		return TRUE
 	return FALSE
@@ -357,7 +357,7 @@
 /client/proc/create_clickcatcher()
 	if(!void)
 		void = new()
-	screen += void
+	add_to_screen(void)
 
 /client/proc/apply_clickcatcher()
 	create_clickcatcher()

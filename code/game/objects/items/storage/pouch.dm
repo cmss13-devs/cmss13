@@ -58,28 +58,11 @@
 	max_w_class = SIZE_MEDIUM
 	cant_hold = list( //Prevent inventory bloat
 		/obj/item/storage/firstaid,
-		/obj/item/storage/bible
+		/obj/item/storage/bible,
+		/obj/item/storage/box,
 	)
 	storage_slots = null
 	max_storage_space = 2
-
-/obj/item/storage/pouch/general/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M,user)
-	else if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/box/m94))
-		dump_into(W, user)
-	else
-		return ..()
-
-/obj/item/storage/pouch/general/can_be_inserted(obj/item/W, stop_messages)
-	. = ..()
-	if(. && W.w_class == SIZE_MEDIUM)
-		for(var/obj/item/I in return_inv())
-			if(I.w_class >= SIZE_MEDIUM)
-				if(!stop_messages)
-					to_chat(usr, SPAN_NOTICE("[src] is already too bulky with [I]."))
-				return FALSE
 
 /obj/item/storage/pouch/general/medium
 	name = "medium general pouch"
@@ -128,9 +111,9 @@
 	icon_state = "bayonet"
 	storage_slots = 5
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
-	var/draw_cooldown = 0
-	var/draw_cooldown_interval = 1 SECONDS
 	var/default_knife_type = /obj/item/weapon/throwing_knife
+
+	COOLDOWN_DECLARE(draw_cooldown)
 
 /obj/item/storage/pouch/bayonet/Initialize()
 	. = ..()
@@ -149,9 +132,9 @@
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/storage/pouch/bayonet/attack_hand(mob/user, mods)
-	if(draw_cooldown < world.time)
+	if(COOLDOWN_FINISHED(src, draw_cooldown))
 		..()
-		draw_cooldown = world.time + draw_cooldown_interval
+		COOLDOWN_START(src, draw_cooldown, BAYONET_DRAW_DELAY)
 		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
@@ -222,13 +205,13 @@
 	desc = "Contains a painkiller autoinjector, first-aid autoinjector, some ointment, and some bandages."
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -248,7 +231,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
 
@@ -281,7 +264,7 @@
 		current_gun = null
 		update_gun_icon()
 
-/obj/item/storage/pouch/pistol/can_be_inserted(obj/item/W, stop_messages) //A little more detailed than just 'the pouch is full'.
+/obj/item/storage/pouch/pistol/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE) //A little more detailed than just 'the pouch is full'.
 	. = ..()
 	if(!.)
 		return
@@ -345,7 +328,7 @@
 	else if(AM == tablet)
 		tablet = null
 
-/obj/item/storage/pouch/pistol/command/can_be_inserted(obj/item/I, stop_messages)
+/obj/item/storage/pouch/pistol/command/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(!.)
 		return
@@ -467,13 +450,6 @@
 /obj/item/storage/pouch/magazine/pistol/large/vp78/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
-
-/obj/item/storage/pouch/magazine/shotgun/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M, user, M.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/pouch/magazine/pulse_rifle/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -815,27 +791,47 @@
 		new /obj/item/reagent_container/syringe(src)
 
 /obj/item/storage/pouch/medkit
-	name = "medkit pouch"
-	max_w_class = SIZE_MEDIUM
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	name = "medical kit pouch"
+	storage_flags = STORAGE_FLAGS_POUCH
 	icon_state = "medkit"
-	desc = "It's specifically made to hold a medkit."
-	can_hold = list(/obj/item/storage/firstaid)
-
-/obj/item/storage/pouch/medkit/handle_mmb_open(mob/user)
-	var/obj/item/storage/firstaid/FA = locate() in contents
-	if(FA)
-		FA.open(user)
-		return
-	return ..()
-
+	desc = "It's specifically made to hold medical items. Requires medical skills to use effectively."
+	storage_slots = 7
+	can_hold_skill = list(
+		/obj/item/device/healthanalyzer = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/dropper = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/pill = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/glass/bottle = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/syringe = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/storage/pill_bottle = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/stack/medical = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/hypospray = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/storage/syringe_case = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/storage/surgical_case = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/surgical_line = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/synthgraft = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/roller = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/bodybag = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/reagent_container/blood = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+	)
+	can_hold_skill_only = TRUE
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
-	new /obj/item/storage/firstaid/regular(src)
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/medkit/full_advanced/fill_preset_inventory()
-	new /obj/item/storage/firstaid/adv(src)
-
+	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/pressurized_reagent_canister
 	name = "Pressurized Reagent Canister Pouch"
@@ -930,6 +926,9 @@
 		update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/afterattack(obj/target, mob/user, flag) //refuel at fueltanks & chem dispensers.
+	if(get_dist(user,target) > 1)
+		return ..()
+
 	if(!inner)
 		to_chat(user, SPAN_WARNING("[src] has no internal container!"))
 		return ..()
@@ -949,8 +948,7 @@
 	if(!istype(target, /obj/structure/reagent_dispensers/fueltank))
 		return ..()
 
-	if(get_dist(user,target) > 1)
-		return ..()
+
 
 	var/obj/O = target
 	if(!O.reagents || O.reagents.reagent_list.len < 1)
@@ -1054,7 +1052,10 @@
 		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
 		return
 
-	usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
+	var/had_empty_hand = usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
+	if(!had_empty_hand)
+		usr.drop_inv_item_on_ground(inner)
+
 	inner = null
 	update_icon()
 
@@ -1235,6 +1236,12 @@
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
 
+/obj/item/storage/pouch/tools/uppsynth/fill_preset_inventory()
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/wrench(src)
+
 /obj/item/storage/pouch/sling
 	name = "sling strap"
 	desc = "Keeps a single item attached to a strap."
@@ -1252,7 +1259,7 @@
 	if(slung && slung.loc != src)
 		. += "\The [slung] is attached to the sling."
 
-/obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, stop_messages = FALSE)
+/obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
 	if(slung)
 		if(slung != I)
 			if(!stop_messages)

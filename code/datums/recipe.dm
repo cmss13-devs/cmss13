@@ -769,7 +769,7 @@
 /datum/recipe/syntikabob
 	items = list(
 		/obj/item/stack/rods,
-		/obj/item/reagent_container/food/snacks/meat/syntiflesh,
+		/obj/item/reagent_container/food/snacks/meat/synthmeat,
 	)
 	result = /obj/item/reagent_container/food/snacks/monkeykabob
 

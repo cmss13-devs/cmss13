@@ -193,6 +193,8 @@
 			return FALSE
 	if(!parent_turf?.weeds)
 		return FALSE
+	if(SEND_SIGNAL(parent_mob, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
+		return FALSE
 
 	if(unmerged_time == world.time)
 		return merge_with_weeds() // Weeds upgraded, re-merge now re-using the apperance
@@ -244,6 +246,9 @@
 	if(parent_buckle)
 		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
 		parent_buckle = null
+
+	if(SEND_SIGNAL(parent_mob, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
+		return FALSE
 
 	absorbing_weeds = parent_turf?.weeds
 	if(!absorbing_weeds)

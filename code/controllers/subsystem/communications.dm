@@ -73,6 +73,7 @@ var/const/YAUT_FREQ = 1205
 var/const/DUT_FREQ = 1210
 var/const/CMB_FREQ = 1220
 var/const/VAI_FREQ = 1215
+var/const/RMC_FREQ = 1216
 
 //WY Channels (1230-1249)
 var/const/WY_FREQ = 1231
@@ -105,6 +106,7 @@ var/const/MAX_FREQ = 1468 // ---------------------------------------------------
 //USCM High Command (USCM 1470-1499)
 var/const/HC_FREQ = 1471
 var/const/SOF_FREQ = 1472
+var/const/PVST_FREQ = 1473
 
 //Ship department channels
 var/const/SENTRY_FREQ = 1480
@@ -139,8 +141,10 @@ var/list/radiochannels = list(
 	RADIO_CHANNEL_VAI = VAI_FREQ,
 	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
+	RADIO_CHANNEL_ROYAL_MARINE = RMC_FREQ,
 
 	RADIO_CHANNEL_HIGHCOM = HC_FREQ,
+	RADIO_CHANNEL_PROVOST = PVST_FREQ,
 	RADIO_CHANNEL_ALMAYER = PUB_FREQ,
 	RADIO_CHANNEL_COMMAND = COMM_FREQ,
 	RADIO_CHANNEL_MEDSCI = MED_FREQ,
@@ -188,7 +192,7 @@ var/list/radiochannels = list(
 )
 
 // Response Teams
-#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, CMB_FREQ)
+#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, CMB_FREQ, RMC_FREQ)
 
 // UPP Frequencies
 #define UPP_FREQS list(UPP_FREQ, UPP_CMD_FREQ, UPP_ENGI_FREQ, UPP_MED_FREQ, UPP_CCT_FREQ, UPP_KDO_FREQ)
@@ -249,6 +253,7 @@ SUBSYSTEM_DEF(radio)
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
 		"[VAI_FREQ]" = "vairadio",
+		"[RMC_FREQ]" = "rmcradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[CLF_FREQ]" = "clfradio",
 		"[ALPHA_FREQ]" = "alpharadio",
@@ -259,6 +264,7 @@ SUBSYSTEM_DEF(radio)
 		"[CRYO_FREQ]" = "cryoradio",
 		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",
+		"[PVST_FREQ]" = "pvstradio",
 		"[COLONY_FREQ]" = "deptradio",
 	)
 

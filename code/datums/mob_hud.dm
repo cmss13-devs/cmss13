@@ -30,10 +30,18 @@ var/list/datum/mob_hud/huds = list(
 
 // Stop displaying a HUD to a specific person
 // (took off medical glasses)
-/datum/mob_hud/proc/remove_hud_from(mob/user)
+/datum/mob_hud/proc/remove_hud_from(mob/user, source)
+	if(length(hudusers[user]) && (source in hudusers[user]))
+		hudusers[user] -= source
+
+	if(length(hudusers[user]))
+		return FALSE
+
 	for(var/mob/target in hudmobs)
 		remove_from_single_hud(user, target)
+
 	hudusers -= user
+	return TRUE
 
 // Stop rendering a HUD on a target
 // "unenroll" them so to speak
@@ -53,8 +61,24 @@ var/list/datum/mob_hud/huds = list(
 			user.client.images -= target.clone.hud_list[i]
 
 // Allow user to view a HUD (putting on medical glasses)
-/datum/mob_hud/proc/add_hud_to(mob/user)
+/datum/mob_hud/proc/add_hud_to(mob/user, source)
 	hudusers |= user
+	if(hudusers[user])
+		hudusers[user] |= list(source)
+	else
+		hudusers[user] += list(source)
+
+	for(var/mob/target in hudmobs)
+		add_to_single_hud(user, target)
+
+/// Refreshes the HUD, adding user and sources if missing and then calls to add the HUD
+/datum/mob_hud/proc/refresh_hud(mob/user, list/source)
+	hudusers |= user
+	if(hudusers[user])
+		hudusers[user] |= source
+	else
+		hudusers[user] += source
+
 	for(var/mob/target in hudmobs)
 		add_to_single_hud(user, target)
 
@@ -229,13 +253,13 @@ var/list/datum/mob_hud/huds = list(
 	for(var/datum/mob_hud/hud in huds)
 		if(istype(hud, /datum/mob_hud/xeno))
 			hud.remove_from_hud(src)
-			hud.remove_hud_from(src)
+			hud.remove_hud_from(src, src)
 		else if (istype(hud, /datum/mob_hud/xeno_infection))
-			hud.remove_hud_from(src)
+			hud.remove_hud_from(src, src)
 	if (xeno_hostile_hud)
 		xeno_hostile_hud = FALSE
 		var/datum/mob_hud/hostile_hud = huds[MOB_HUD_XENO_HOSTILE]
-		hostile_hud.remove_hud_from(src)
+		hostile_hud.remove_hud_from(src, src)
 
 
 
@@ -243,13 +267,7 @@ var/list/datum/mob_hud/huds = list(
 	var/mob/M = source_mob ? source_mob : src
 	for(var/datum/mob_hud/hud in huds)
 		if(M in hud.hudusers)
-			readd_hud(hud)
-
-/mob/proc/readd_hud(datum/mob_hud/hud)
-	hud.add_hud_to(src)
-
-
-
+			hud.refresh_hud(src, hud.hudusers[M])
 
 //Medical HUDs
 
@@ -441,9 +459,9 @@ var/list/datum/mob_hud/huds = list(
 						holder2_set = 1
 					return
 
-				holder.icon_state = "huddead"
+				holder.icon_state = HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "hudhcdead" : "huddead"
 				if(!holder2_set)
-					holder2.icon_state = "huddead"
+					holder2.icon_state = holder.icon_state
 					holder3.icon_state = "huddead"
 					holder2_set = 1
 

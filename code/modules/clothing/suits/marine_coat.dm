@@ -136,9 +136,10 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
-	name = "marine dress jacket"
-	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy, but it still gives off that unga vibe."
-	icon_state = "marine_formal"
+	name = "marine formal service jacket"
+	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
+	icon_state = "coat_formal"
+	initial_icon_state = "coat_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -148,11 +149,13 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_atom = NO_SNOW_TYPE
+	has_buttons = TRUE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
 	name = "marine officer dress jacket"
 	desc = "Dress Jacket worn by Commanding Officers of the USCM."
 	icon_state = "co_jacket"
+	has_buttons = FALSE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
@@ -178,6 +181,11 @@
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
 
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon
+	name = "commanding officer falcon jacket"
+	desc = "A refurbished jacket liner tailor made for a senior officer. This liner has become more of a proper piece of attire, with a new layer of fabric, wrist cuffs, front pockets, and a custom embroidered falcon on the back. This jacket will keep its wearer warm no matter the circumstance, from a cool Sunday drive to chilly autumn's eve."
+	icon_state = "co_falcon"
+
 /obj/item/clothing/suit/storage/jacket/marine/dress/general
 	name = "general's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a General. Has quite a few pockets."
@@ -187,6 +195,7 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
 	)
 	item_state = "general_jacket"
+	has_buttons = FALSE
 	storage_slots = 4
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -197,10 +206,12 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/general/executive
 	name = "director's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a Director. Has quite a few pockets."
+	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat
 	name = "bridge coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is a Dressy Blue for a Commanding officer."
+	has_buttons = FALSE
 	item_state = "bridge_coat"
 	icon_state = "bridge_coat"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
@@ -208,10 +219,18 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey
 	name = "bridge coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is Black."
+	has_buttons = FALSE
 	item_state = "bridge_coat_grey"
 	icon_state = "bridge_coat_grey"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
+/obj/item/clothing/suit/storage/jacket/marine/service/aso
+	name = "auxiliary support officer jacket"
+	desc = "A comfortable vest for officers who are expected to work long hours staring at rows of numbers and inspecting equipment from knives to torpedos to entire dropships."
+	icon_state = "aso_jacket"
+	blood_overlay_type = "coat"
+	flags_armor_protection = BODY_FLAG_CHEST
+	has_buttons = FALSE
 
 
 //=========================//PROVOST\\================================\\
@@ -251,6 +270,7 @@
 	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
 	icon_state = "e_jacket"
 	item_state = "e_jacket"
+	has_buttons = FALSE
 	item_state_slots = null
 	contained_sprite = TRUE
 

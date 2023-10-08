@@ -12,6 +12,8 @@
 	var/off_y = 0
 	/// Map Template to use for the tent
 	var/template
+	/// If this tent can be deployed anywhere
+	var/unrestricted_deployment = FALSE
 
 /// Check an area is clear for deployment of the tent
 /obj/item/folded_tent/proc/check_area(turf/ref_turf, mob/message_receiver, display_error = FALSE)
@@ -20,7 +22,7 @@
 	var/list/turf_block = get_deployment_area(ref_turf)
 	for(var/turf/turf as anything in turf_block)
 		var/area/area = get_area(turf)
-		if(!area.can_build_special)
+		if(!area.can_build_special && !unrestricted_deployment)
 			if(message_receiver)
 				to_chat(message_receiver, SPAN_WARNING("You cannot deploy tents on restricted areas."))
 			if(display_error)
@@ -73,7 +75,7 @@
 	if(!istype(deploy_turf) || (deploy_turf.x + dim_x > world.maxx) || (deploy_turf.y + dim_y > world.maxy)) // Map border basically
 		return
 
-	if(!is_ground_level(deploy_turf.z))
+	if(!is_ground_level(deploy_turf.z) && !unrestricted_deployment)
 		to_chat(user, SPAN_WARNING("USCM Operational Tents are intended for operations, not ship or space recreation."))
 		return
 
@@ -112,7 +114,7 @@
 	icon_state = "cmd"
 	desc = "A standard USCM Command Tent. This one comes equipped with a self-powered Overwatch Console and a Telephone. Unfold in a suitable location to maximize usefulness. Staff Officer not included. ENTRANCE TO THE SOUTH."
 	dim_x = 2
-	dim_y = 3
+	dim_y = 4
 	off_x = -1
 	template = /datum/map_template/tent/cmd
 
@@ -121,7 +123,7 @@
 	icon_state = "med"
 	desc = "A standard USCM Medical Tent. This one comes equipped with advanced field surgery facilities. Unfold in a suitable location to maximize health gains. Surgical Tray not included. ENTRANCE TO THE SOUTH."
 	dim_x = 2
-	dim_y = 3
+	dim_y = 4
 	template = /datum/map_template/tent/med
 
 /obj/item/folded_tent/reqs
@@ -129,7 +131,7 @@
 	icon_state = "req"
 	desc = "A standard USCM Requisitions Tent. Now, you can enjoy req line anywhere you go! Unfold in a suitable location to maximize resource distribution. ASRS not included. ENTRANCE TO THE SOUTH."
 	dim_x = 4
-	dim_y = 3
+	dim_y = 4
 	off_x = -2
 	template = /datum/map_template/tent/reqs
 
@@ -138,7 +140,7 @@
 	icon_state = "big"
 	desc = "A standard USCM Tent. This one is just a bigger, general purpose version. Unfold in a suitable location for maximum FOB vibes. Mess Tech not included. ENTRANCE TO THE SOUTH."
 	dim_x = 3
-	dim_y = 3
+	dim_y = 4
 	off_x = -2
 	template = /datum/map_template/tent/big
 

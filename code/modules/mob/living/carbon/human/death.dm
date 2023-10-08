@@ -104,7 +104,7 @@
 				delayer_armour.can_camo = FALSE //fuck you
 				to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
 			//tell the ghosts
-			announce_dchat("There is only one person left: [last_living_human.real_name].", last_living_human)
+			notify_ghosts(header = "Last Human", message = "There is only one person left: [last_living_human.real_name]!", source = last_living_human, action = NOTIFY_ORBIT)
 
 	var/death_message = species.death_message
 	if(HAS_TRAIT(src, TRAIT_HARDCORE))

@@ -3,7 +3,7 @@
 	var/atom/homing_target
 
 /datum/component/homing_projectile/Initialize(atom/homing_target, mob/shooter)
-	if(!istype(parent, /obj/item/projectile))
+	if(!istype(parent, /obj/projectile))
 		return COMPONENT_INCOMPATIBLE
 
 	if(isliving(homing_target))
@@ -13,7 +13,7 @@
 
 	if(shooter && ishuman(homing_target))  // Don't track friendlies
 		var/mob/living/carbon/human/human_target = homing_target
-		var/obj/item/projectile/projectile = parent
+		var/obj/projectile/projectile = parent
 		if(SEND_SIGNAL(parent, COMSIG_BULLET_CHECK_MOB_SKIPPING, human_target) & COMPONENT_SKIP_MOB\
 			|| projectile.runtime_iff_group && human_target.get_target_lock(projectile.runtime_iff_group)\
 		)
@@ -33,7 +33,7 @@
 	return ..()
 
 /datum/component/homing_projectile/proc/terminal_retarget()
-	var/obj/item/projectile/projectile = parent
+	var/obj/projectile/projectile = parent
 	var/turf/homing_turf = get_turf(homing_target)
 	projectile.speed *= 2 // Double speed to ensure hitting next tick despite eventual movement
 	projectile.retarget(homing_turf, keep_angle = FALSE)

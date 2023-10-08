@@ -41,7 +41,7 @@
 				open()
 			else
 				src.req_access = list()
-				src.req_access += pick(get_all_main_access())
+				src.req_access += pick(get_access(ACCESS_LIST_MARINE_MAIN))
 	..()
 
 /obj/structure/closet/secure_closet/proc/togglelock(mob/living/user)

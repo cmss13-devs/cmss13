@@ -2,6 +2,8 @@
  * Tunnels
  */
 
+#define TUNNEL_COLLAPSING_TIME (60 SECONDS)
+
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
@@ -74,7 +76,7 @@
 		visible_message(SPAN_DANGER("[src] suddenly collapses!"))
 		qdel(src)
 
-/obj/structure/tunnel/bullet_act(obj/item/projectile/Proj)
+/obj/structure/tunnel/bullet_act(obj/projectile/Proj)
 	return FALSE
 
 /obj/structure/tunnel/ex_act(severity)
@@ -83,6 +85,25 @@
 
 /obj/structure/tunnel/attackby(obj/item/W as obj, mob/user as mob)
 	if(!isxeno(user))
+		if(istype(W, /obj/item/tool/shovel))
+			var/obj/item/tool/shovel/destroying_shovel = W
+
+			if(destroying_shovel.folded)
+				return
+
+			playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
+
+			user.visible_message(SPAN_NOTICE("[user] starts to collapse [src]!"), SPAN_NOTICE("You start collapsing [src]!"))
+
+			if(user.action_busy || !do_after(user, TUNNEL_COLLAPSING_TIME * ((100 - destroying_shovel.shovelspeed) * 0.01), INTERRUPT_ALL, BUSY_ICON_BUILD))
+				return
+
+			playsound(loc, 'sound/effects/tunnel_collapse.ogg', 50)
+
+			visible_message(SPAN_NOTICE("[src] collapses in on itself."))
+
+			qdel(src)
+
 		return ..()
 	return attack_alien(user)
 
@@ -233,3 +254,12 @@
 	else
 		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so you return back up."))
 	return XENO_NO_DELAY_ACTION
+
+/obj/structure/tunnel/maint_tunnel
+	name = "\improper Maintenance Hatch"
+	desc = "An entrance to a maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "hatchclosed"
+
+/obj/structure/tunnel/maint_tunnel/no_xeno_desc
+	desc = "An entrance to a maintenance tunnel. Pieces of debris keep you from getting a closer look."

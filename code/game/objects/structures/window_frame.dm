@@ -148,7 +148,7 @@
 
 	. = ..()
 
-/obj/structure/window_frame/bullet_act(obj/item/projectile/P)
+/obj/structure/window_frame/bullet_act(obj/projectile/P)
 	bullet_ping(P)
 	take_damage(P.damage)
 	return TRUE

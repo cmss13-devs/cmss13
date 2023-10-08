@@ -148,7 +148,7 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(obj/projectile/Proj)
 
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.immutable > 0)
@@ -210,11 +210,14 @@
 
 	// Make sure the plant is not starving or thirsty. Adequate
 	// water and nutrients will cause a plant to become healthier.
+	// Checks if there are sufficient enough nutrients, if not the plant dies.
 	var/healthmod = rand(1,3) * HYDRO_SPEED_MULTIPLIER
 	if(seed.requires_nutrients && prob(35))
 		plant_health += (nutrilevel < 2 ? -healthmod : healthmod)
 	if(seed.requires_water && prob(35))
 		plant_health += (waterlevel < 10 ? -healthmod : healthmod)
+	if(nutrilevel < 1)
+		plant_health = 0
 
 	// Check that pressure, heat and light are all within bounds.
 	// First, handle an open system or an unconnected closed system.
@@ -222,13 +225,8 @@
 	var/turf/T = loc
 
 	// Handle light requirements.
-	var/area/A = T.loc
-	if(A)
-		var/light_available
-		if(A.lighting_use_dynamic)
-			light_available = max(0,min(10,T.lighting_lumcount)-5)
-		else
-			light_available =  5
+	if(T)
+		var/light_available = T.get_lumcount(0, 10)
 		if(abs(light_available - seed.ideal_light) > seed.light_tolerance)
 			plant_health -= healthmod
 
@@ -424,10 +422,10 @@
 	// Update bioluminescence.
 	if(seed)
 		if(seed.biolum)
-			SetLuminosity(round(seed.potency/10))
+			set_light(round(seed.potency/10))
 			return
 
-	SetLuminosity(0)
+	set_light(0)
 	return
 
 // If a weed growth is sufficient, this proc is called.
@@ -536,8 +534,7 @@
 
 		// Bookkeeping.
 		check_level_sanity()
-		force_update = 1
-		process()
+
 
 		return
 
@@ -615,7 +612,7 @@
 
 		var/obj/item/storage/bag/plants/S = O
 		for (var/obj/item/reagent_container/food/snacks/grown/G in locate(user.x,user.y,user.z))
-			if(!S.can_be_inserted(G))
+			if(!S.can_be_inserted(G, user))
 				return
 			S.handle_item_insertion(G, TRUE, user)
 
@@ -672,10 +669,7 @@
 	var/area/A = T.loc
 	var/light_available
 	if(A)
-		if(A.lighting_use_dynamic)
-			light_available = max(0,min(10,T.lighting_lumcount)-5)
-		else
-			light_available =  5
+		light_available = max(0,min(10,T.dynamic_lumcount)-5)
 
 	info += "The tray's sensor suite is reporting a light level of [light_available] lumens.\n"
 	return info

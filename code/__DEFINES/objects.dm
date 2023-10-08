@@ -168,3 +168,8 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 // For reinforced table status
 #define RTABLE_WEAKENED 1
 #define RTABLE_NORMAL 2
+
+//Lights define
+#define CHECKS_PASSED 1
+#define STILL_ON_COOLDOWN 2
+#define NO_LIGHT_STATE_CHANGE 3

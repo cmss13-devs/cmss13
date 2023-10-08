@@ -225,8 +225,7 @@
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
 	requires_power = FALSE
-	luminosity = TRUE
-	lighting_use_dynamic = FALSE
+	base_lighting_alpha = 255
 
 /mob/living/carbon/human/proc/pred_buy()
 	set category = "Yautja.Misc"

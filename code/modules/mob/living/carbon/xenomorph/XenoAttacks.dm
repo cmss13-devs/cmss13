@@ -185,7 +185,7 @@
 			var/is_shover_queen = isqueen(M)
 			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isqueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
 			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(M)
-			if(can_mega_shove && !can_resist_shove)
+			if(can_mega_shove && !can_resist_shove || (mob_size < MOB_SIZE_XENO_SMALL && M.mob_size >= MOB_SIZE_XENO_SMALL))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
 				SPAN_WARNING("You shove \the [src] out of your way!"), null, 5, CHAT_TYPE_XENO_COMBAT)

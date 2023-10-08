@@ -50,6 +50,12 @@ GLOBAL_LIST_EMPTY(mainship_pipes)
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
 
+GLOBAL_LIST_INIT(resin_build_order_lesser_drone, list(
+	/datum/resin_construction/resin_turf/wall,
+	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/door,
+))
+
 GLOBAL_LIST_INIT(resin_build_order_drone, list(
 	/datum/resin_construction/resin_turf/wall,
 	/datum/resin_construction/resin_turf/membrane,
@@ -171,7 +177,8 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_TAMED = new /datum/hive_status/corrupted/tamed(),
 	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
-	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
+	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
+	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
 ))
 
 GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())

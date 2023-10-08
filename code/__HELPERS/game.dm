@@ -268,7 +268,7 @@
 
 		// copied from join as xeno
 		var/deathtime = world.time - cur_obs.timeofdeath
-		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) )
+		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) && !cur_obs.bypass_time_of_death_checks)
 			continue
 
 		// AFK players cannot be drafted
@@ -293,6 +293,8 @@
 	// Optionally sort by larva_queue_time
 	if(sorted && length(candidates))
 		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_obs_larvaqueuetime_asc))
+
+	GLOB.xeno_queue_candidate_count = length(candidates)
 
 	return candidates
 

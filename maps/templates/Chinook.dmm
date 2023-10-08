@@ -416,7 +416,7 @@
 /area/adminlevel/chinook/offices)
 "bx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/tool/weldingtool/largetank{
+/obj/item/tool/weldingtool{
 	pixel_x = -9;
 	pixel_y = 4
 	},
@@ -427,7 +427,7 @@
 	pixel_x = 13;
 	pixel_y = 5
 	},
-/obj/item/tool/weldingtool/largetank{
+/obj/item/tool/weldingtool{
 	pixel_x = -2;
 	pixel_y = 6
 	},
@@ -700,7 +700,7 @@
 /area/adminlevel/chinook/sec)
 "cy" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange"
@@ -9148,7 +9148,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/item/tool/weldingtool/largetank{
+/obj/item/tool/weldingtool{
 	pixel_x = 14;
 	pixel_y = -14
 	},
@@ -10758,9 +10758,9 @@
 /area/adminlevel/chinook/sec)
 "Od" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/weldingtool/largetank,
-/obj/item/tool/weldingtool/largetank,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
+/obj/item/tool/weldingtool,
+/obj/item/tool/weldingtool,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
@@ -14056,7 +14056,7 @@
 /area/adminlevel/chinook/medical)
 "ZH" = (
 /obj/structure/machinery/power/port_gen/pacman,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /obj/structure/sign/safety/high_voltage{
 	pixel_y = 25
 	},

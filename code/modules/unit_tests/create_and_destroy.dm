@@ -12,10 +12,13 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 		/mob/living/carbon,
 		/obj/effect/node,
 		/obj/item/seeds/cutting,
+		//lighting singleton
+		/mob/dview,
 		// These use walkaway() after initialization, which causes false positives
 		/obj/item/explosive/grenade/flashbang/cluster/segment,
 		/obj/item/explosive/grenade/flashbang/cluster_piece,
 		/obj/effect/fake_attacker,
+		/atom/movable/lighting_mask, //leave it alone
 	)
 	//This turf existing is an error in and of itself
 	ignore += typesof(/turf/baseturf_skipover)

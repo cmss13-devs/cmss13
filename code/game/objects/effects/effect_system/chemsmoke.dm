@@ -199,10 +199,10 @@
 	smoke.pixel_x = -32 + rand(-8,8)
 	smoke.pixel_y = -32 + rand(-8,8)
 	walk_to(smoke, T)
-	smoke.SetOpacity(1) //switching opacity on after the smoke has spawned, and then
+	smoke.set_opacity(1) //switching opacity on after the smoke has spawned, and then
 	sleep(150+rand(0,20)) // turning it off before it is deleted results in cleaner
 	if(smoke.opacity)
-		smoke.SetOpacity(0)
+		smoke.set_opacity(0)
 	fadeOut(smoke)
 	qdel(smoke)
 

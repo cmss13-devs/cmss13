@@ -229,11 +229,14 @@
 		if(human_user)
 			show_blip(human_user, M)
 
-	for(var/mob/hologram/queen/Q in GLOB.hologram_list)
-		if(Q.z != cur_turf.z || !(range_bounds.contains_atom(Q))) continue
+	for(var/mob/hologram/holo as anything in GLOB.hologram_list)
+		if(!holo.motion_sensed)
+			continue
+		if(holo.z != cur_turf.z || !(range_bounds.contains_atom(holo)))
+			continue
 		ping_count++
 		if(human_user)
-			show_blip(human_user, Q, "queen_eye")
+			show_blip(human_user, holo, "queen_eye")
 
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)
@@ -278,12 +281,12 @@
 			DB.setDir(initial(DB.dir))
 
 		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
-		user.client.screen += DB
+		user.client.add_to_screen(DB)
 		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
 
 /obj/item/device/motiondetector/proc/clear_pings(mob/user, obj/effect/detector_blip/DB)
 	if(user.client)
-		user.client.screen -= DB
+		user.client.remove_from_screen(DB)
 
 /obj/item/device/motiondetector/m717
 	name = "M717 pocket motion detector"

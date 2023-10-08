@@ -32,6 +32,23 @@
 	icon_state = "machete"
 	w_class = SIZE_LARGE
 
+/obj/item/weapon/claymore/mercsword/machete/attack_self(mob/user)
+	if(user.action_busy)
+		return
+
+	var/turf/root = get_turf(user)
+	var/facing = user.dir
+	var/turf/in_front = get_step(root, facing)
+
+	// We check the tile in front of us, if it has flora that can be cut we will attempt to cut it
+	for(var/obj/structure/flora/target in in_front)
+		if(target.cut_level > 1)
+			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				return
+			target.attackby(src, user)
+
+	return ..()
+
 /obj/item/weapon/claymore/mercsword/machete/arnold
 	name = "\improper M2100 \"Ngájhe\" machete"
 	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."

@@ -15,7 +15,7 @@
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	can_block_movement = TRUE
 
-/obj/structure/Initialize()
+/obj/structure/Initialize(mapload, ...)
 	. = ..()
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on

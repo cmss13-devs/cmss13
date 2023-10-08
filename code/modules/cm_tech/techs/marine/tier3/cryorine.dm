@@ -7,8 +7,8 @@
 	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "Additional troops are being taken out of cryo."
 
-	required_points = 10
-	increase_per_purchase = 5
+	required_points = 6
+	increase_per_purchase = 6
 
 	flags = TREE_FLAG_MARINE
 	tier = /datum/tier/three
@@ -23,4 +23,4 @@
 
 /datum/tech/repeatable/cryomarine/on_unlock()
 	. = ..()
-	SSticker.mode.get_specific_call("Marine Cryo Reinforcements (Squad)", FALSE, FALSE, announce_dispatch_message = FALSE)
+	SSticker.mode.get_specific_call("Marine Cryo Reinforcements (Tech)", TRUE, FALSE, FALSE, announce_dispatch_message = FALSE)

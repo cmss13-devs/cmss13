@@ -729,7 +729,7 @@
 	},
 /area/adminlevel/ert_station/upp_station)
 "kN" = (
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /obj/item/clothing/glasses/welding,
 /obj/structure/machinery/light/double/blue{
 	dir = 8

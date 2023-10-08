@@ -17,7 +17,7 @@
 		stack_trace("[src] using incorrect typepath, \"[prop_gun_type]\".") //Can't make a prop gun of something not a gun
 		qdel(src)
 		return
-	if(!spawn_prob)
+	if(!prob(spawn_prob))
 		qdel(src)
 		return
 	if(!mapload)

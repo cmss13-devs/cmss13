@@ -1004,6 +1004,11 @@
 	linked_hood = new hood_type(src)
 	. = ..()
 
+/obj/item/clothing/under/marine/cbrn/Destroy()
+	. = ..()
+	if(linked_hood)
+		qdel(linked_hood)
+
 /obj/item/clothing/under/marine/cbrn/verb/hood_toggle()
 	set name = "Toggle Hood"
 	set desc = "Pull your hood and gasmask up over your face and head."

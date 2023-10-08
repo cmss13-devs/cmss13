@@ -317,12 +317,21 @@
 	.["primary_lz"] = SSticker.mode.active_lz?.linked_lz
 	if(shuttle.destination)
 		.["target_destination"] = shuttle.in_flyby? "Flyby" : shuttle.destination.name
-	.["destinations"] = list()
 
 	.["door_status"] = is_remote ? list() : shuttle.get_door_data()
-
 	.["flight_configuration"] = is_set_flyby ? "flyby" : "ferry"
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
+
+	.["destinations"] = list()
+	// add flight
+	.["destinations"] += list(
+		list(
+			"id" = DROPSHIP_FLYBY_ID,
+			"name" = "Flyby",
+			"available" = TRUE,
+			"error" = FALSE
+		)
+	)
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE
@@ -359,15 +368,16 @@
 				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
 
-			if(is_set_flyby && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
-				to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
-				return FALSE
 			var/is_optimised = FALSE
 			// automatically apply optimisation if user is a pilot
 			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 				is_optimised = TRUE
 			update_equipment(is_optimised)
-			if(is_set_flyby)
+			var/dockId = params["target"]
+			if(dockId == DROPSHIP_FLYBY_ID)
+				if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+					to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
+					return FALSE
 				to_chat(user, SPAN_NOTICE("You begin the launch sequence for a flyby."))
 				link.log_ares_flight(user.name, "Launched Dropship [shuttle.name] on a flyby.")
 				var/log = "[key_name(user)] launched the dropship [src.shuttleId] on flyby."
@@ -375,7 +385,7 @@
 				log_interact(user, msg = "[log]")
 				shuttle.send_for_flyby()
 				return TRUE
-			var/dockId = params["target"]
+
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)

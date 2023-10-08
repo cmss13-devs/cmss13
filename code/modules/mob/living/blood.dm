@@ -47,31 +47,6 @@
 			if(oxyloss < maximum_oxyloss)
 				oxyloss += round(max(additional_oxyloss, 0))
 
-		switch(b_volume)
-			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-				if(prob(1))
-					low_blood_messsage(0)
-				if(oxyloss < 20)
-					oxyloss += 3
-			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-				if(eye_blurry < 50)
-					AdjustEyeBlur(6)
-				oxyloss += 3
-				if(prob(15))
-					apply_effect(rand(1,3), PARALYZE)
-					low_blood_messsage(1)
-			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-				if(eye_blurry < 50)
-					AdjustEyeBlur(6)
-				oxyloss += 8
-				toxloss += 3
-				if(prob(15))
-					apply_effect(rand(1,3), PARALYZE)
-					low_blood_messsage(2)
-			if(0 to BLOOD_VOLUME_SURVIVE)
-				death(create_cause_data(species.flags & IS_SYNTHETIC ? "power failure" : "blood loss"))
-
-
 /mob/living/carbon/human/proc/low_blood_messsage(severity)
 	var/msg
 	var/severity_mod

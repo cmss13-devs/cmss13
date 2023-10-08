@@ -62,6 +62,10 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange
 
+/datum/gear/eyewear/goggles2
+	display_name = "Ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2
+
 /datum/gear/eyewear/bimex_shades
 	display_name = "BiMex personal shades"
 	path = /obj/item/clothing/glasses/sunglasses/big

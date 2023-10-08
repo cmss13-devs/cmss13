@@ -72,13 +72,6 @@
 				death(create_cause_data(species.flags & IS_SYNTHETIC ? "power failure" : "blood loss"))
 
 
-		// Without enough blood you slowly go hungry.
-		if(blood_volume < BLOOD_VOLUME_SAFE)
-			if(nutrition >= 300)
-				nutrition -= 10
-			else if(nutrition >= 200)
-				nutrition -= 3
-
 /mob/living/carbon/human/proc/low_blood_messsage(severity)
 	var/msg
 	var/severity_mod

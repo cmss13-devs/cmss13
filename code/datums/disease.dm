@@ -121,10 +121,10 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 		check_range = 1 // everything else, like infect-on-contact things, only infect things on top of it
 
 	if(isturf(source.loc))
-		for(var/mob/living/carbon/M in oview(check_range, source))
-			if(isturf(M.loc))
-				if(AStar(source.loc, M.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range))
-					M.contract_disease(src, 0, 1, force_spread)
+		for(var/mob/living/carbon/victim in oview(check_range, source))
+			if(isturf(victim.loc))
+				if(AStar(source.loc, victim.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range))
+					victim.contract_disease(src, 0, 1, force_spread)
 
 	return
 
@@ -172,8 +172,6 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	if(ishuman(affected_mob))
 		var/mob/living/carbon/human/H = affected_mob
 		H.med_hud_set_status()
-
-
 
 /datum/disease/New(process=TRUE)//process = 1 - adding the object to global list. List is processed by master controller.
 	cure_list = list(cure_id) // to add more cures, add more vars to this list in the actual disease's New()

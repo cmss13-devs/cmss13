@@ -15,6 +15,7 @@ export const PhoneMenu = (props, context) => {
 
 const GeneralPanel = (props, context) => {
   const { act, data } = useBackend(context);
+  const { availability } = data;
   const available_transmitters = Object.keys(data.available_transmitters);
   const transmitters = data.transmitters.filter((val1) =>
     available_transmitters.includes(val1.phone_id)
@@ -45,6 +46,21 @@ const GeneralPanel = (props, context) => {
     'current_category',
     categories[0]
   );
+
+  let dnd_tooltip = 'Do Not Disturb is DISABLED';
+  let dnd_locked = 'No';
+  let dnd_icon = 'volume-high';
+  if (availability === 1) {
+    dnd_tooltip = 'Do Not Disturb is ENABLED';
+    dnd_icon = 'volume-xmark';
+  } else if (availability >= 2) {
+    dnd_tooltip = 'Do Not Disturb is ENABLED (LOCKED)';
+    dnd_locked = 'Yes';
+    dnd_icon = 'volume-xmark';
+  } else if (availability < 0) {
+    dnd_tooltip = 'Do Not Disturb is DISABLED (LOCKED)';
+    dnd_locked = 'Yes';
+  }
 
   return (
     <Section fill>
@@ -115,6 +131,18 @@ const GeneralPanel = (props, context) => {
             />
           </Stack.Item>
         )}
+        <Stack.Item>
+          <Button
+            content="Do Not Disturb"
+            color="red"
+            tooltip={dnd_tooltip}
+            disabled={dnd_locked === 'Yes'}
+            icon={dnd_icon}
+            fluid
+            textAlign="center"
+            onClick={() => act('toggle_dnd')}
+          />
+        </Stack.Item>
       </Stack>
     </Section>
   );

@@ -1,6 +1,7 @@
 /turf/open/floor/light
 	name = "light floor"
 	desc = "Beware of breakdancing on these tiles, glass shards embedded in the head is not a fun time."
+	icon_state = "light_on"
 	tile_type = /obj/item/stack/tile/light
 	var/on = TRUE
 	var/state = 0
@@ -84,3 +85,61 @@
 		broken = TRUE
 		update_icon()
 		return XENO_ATTACK_ACTION
+
+/turf/open/floor/light/red
+	icon_state = "light_on-r"
+	state = 1
+
+/turf/open/floor/light/green
+	icon_state = "light_on-g"
+	state = 2
+
+/turf/open/floor/light/yellow
+	icon_state = "light_on-y"
+	state = 3
+
+/turf/open/floor/light/purple
+	icon_state = "light_on-p"
+	state = 4
+
+/turf/open/floor/light/white
+	icon_state = "light_on-w"
+	state = 5
+
+/turf/open/floor/light/off
+	icon_state = "light_off"
+	on = FALSE
+
+/turf/open/floor/light/off/red
+	state = 1
+
+/turf/open/floor/light/off/green
+	state = 2
+
+/turf/open/floor/light/off/yellow
+	state = 3
+
+/turf/open/floor/light/off/purple
+	state = 4
+
+/turf/open/floor/light/off/white
+	state = 5
+
+/turf/open/floor/light/broken
+	icon_state = "light_broken"
+	broken = TRUE
+
+/turf/open/floor/light/broken/red
+	state = 1
+
+/turf/open/floor/light/broken/green
+	state = 2
+
+/turf/open/floor/light/broken/yellow
+	state = 3
+
+/turf/open/floor/light/broken/purple
+	state = 4
+
+/turf/open/floor/light/broken/white
+	state = 5

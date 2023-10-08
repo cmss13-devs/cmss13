@@ -43,10 +43,13 @@
 #define TECH_TIER_GAMEPLAY list(\
 	/datum/tier/free,\
 	/datum/tier/one,\
+	/datum/tier/one/additional,\
 	/datum/tier/one_transition_two,\
 	/datum/tier/two,\
+	/datum/tier/two/additional,\
 	/datum/tier/two_transition_three,\
 	/datum/tier/three,\
+	/datum/tier/three/additional,\
 	/datum/tier/three_transition_four,\
 	/datum/tier/four\
 )

@@ -350,7 +350,7 @@
 
 	if(istype(attacking_item, /obj/item/weapon/twohanded/breacher))
 		var/obj/item/weapon/twohanded/breacher/current_hammer = attacking_item
-		if(user.action_busy)
+		if(user.action_busy || !(current_hammer.flags_item & WIELDED))
 			return
 		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
 			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))

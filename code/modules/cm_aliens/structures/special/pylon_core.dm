@@ -189,7 +189,7 @@
 
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
-
+/*
 	var/list/hive_xenos = linked_hive.totalXenos
 
 	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
@@ -204,7 +204,7 @@
 	linked_hive.partial_larva += real_total_xeno_count * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
-
+*/
 #undef ENDGAME_LARVA_CAP_MULTIPLIER
 #undef LARVA_ADDITION_MULTIPLIER
 
@@ -253,7 +253,6 @@
 /obj/effect/alien/resin/special/pylon/core/process()
 	. = ..()
 	update_minimap_icon()
-
 	// Handle spawning larva if core is connected to a hive
 	if(linked_hive)
 		for(var/mob/living/carbon/xenomorph/larva/worm in range(2, src))
@@ -296,14 +295,17 @@
 		health += min(heal_amount, maxhealth-health)
 		last_healed = world.time + heal_interval
 
-/obj/effect/alien/resin/special/pylon/core/proc/can_spawn_larva()
+/obj/effect/alien/resin/special/pylon/core/proc/can_spawn_larva(mob/xeno_candidate)
 	if(linked_hive.hardcore)
+		return FALSE
+	if(linked_hive.stored_larva <= linked_hive.reserved_larva)
+		to_chat(xeno_candidate, SPAN_WARNING("Королева улья зарезервировала эту лярву закопанной."))
 		return FALSE
 
 	return linked_hive.stored_larva
 
 /obj/effect/alien/resin/special/pylon/core/proc/spawn_burrowed_larva(mob/xeno_candidate)
-	if(can_spawn_larva() && xeno_candidate)
+	if(can_spawn_larva(xeno_candidate) && xeno_candidate)
 		var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
 		if(isnull(new_xeno))
 			return FALSE

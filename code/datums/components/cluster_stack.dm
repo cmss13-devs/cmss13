@@ -3,7 +3,7 @@
 /// Max alpha for the filter outline.
 #define CLUSTER_MAX_ALPHA 200
 /// Once cluster_stacks reaches this number, it triggers apply_cluster_stacks() and resets to zero.
-#define MAX_CLUSTER_STACKS 15
+#define MAX_CLUSTER_STACKS 12
 /// Loss of stack every second once it's been more than 5 seconds since last_stack.
 #define CLUSTER_STACK_LOSS_PER_SECOND AMOUNT_PER_TIME(2, 1)
 

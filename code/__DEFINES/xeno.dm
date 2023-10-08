@@ -74,7 +74,7 @@
 
 /// Multiplier for time taken for a xeno to place down a resin structure
 #define BUILD_TIME_MULT_LESSER_DRONE 2
-#define BUILD_TIME_MULT_XENO 1
+#define BUILD_TIME_MULT_XENO 2
 #define BUILD_TIME_MULT_BUILDER 1
 #define BUILD_TIME_MULT_HIVELORD 0.5
 
@@ -169,7 +169,7 @@
 #define XENO_BURIED_LARVA_TIME_LIMIT (30 MINUTES)
 
 /// The time when xenos can start taking over comm towers
-#define XENO_COMM_ACQUISITION_TIME (55 MINUTES)
+#define XENO_COMM_ACQUISITION_TIME (25 MINUTES)
 
 /// The time it takes for a pylon to give one larva while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)

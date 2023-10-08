@@ -531,6 +531,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.networks_receive = networks_receive
 	internal_transmitter.networks_transmit = networks_transmit
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
+
+	LAZYADD(actions, new /datum/action/human_action/activable/droppod())
+
 	GLOB.radio_packs += src
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/check_for_ringing()

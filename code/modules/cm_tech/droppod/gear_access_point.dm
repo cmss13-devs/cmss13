@@ -26,13 +26,11 @@
 
 	var/list/list_of_techs = list()
 
-	/*
 	for(var/i in GLOB.unlocked_droppod_techs)
 		var/datum/tech/droppod/droppod_tech = i
 		if(!droppod_tech.can_access(user))
 			continue
 		list_of_techs[droppod_tech.name] = droppod_tech
-	*/
 
 	if(!length(list_of_techs))
 		to_chat(user, SPAN_WARNING("No tech gear is available at the moment!"))
@@ -41,6 +39,13 @@
 	var/user_input = tgui_input_list(user, "Choose a tech to retrieve an item from.", name, list_of_techs)
 	if(!user_input)
 		return
+
+	var/datum/tech/droppod/chosen_tech = list_of_techs[user_input]
+	if(!chosen_tech.can_access(user))
+		to_chat(user, SPAN_WARNING("You cannot access this tech!"))
+		return
+
+	chosen_tech.on_pod_access(user)
 
 /obj/structure/techpod_vendor/proc/get_access_permission(mob/living/carbon/human/user)
 	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST) //all WO has lifted access restrictions

@@ -241,14 +241,13 @@
 
 /obj/item/device/implanter/subdermal_armor
 	name = "subdermal armor implant"
-	desc = "This implant will grant you armor under the skin, reducing incoming damage and strengthening bones."
+	desc = "This implant will grant you armor under the skin, reducing incoming damage."
 	implant_type = /obj/item/device/internal_implant/subdermal_armor
 	implant_string = "your skin becoming significantly harder... That's going to hurt in a decade."
 
 /obj/item/device/internal_implant/subdermal_armor
 	var/burn_damage_mult = 0.9
 	var/brute_damage_mult = 0.85
-	var/bone_break_mult = 0.25
 
 /obj/item/device/internal_implant/subdermal_armor/on_implanted(mob/living/M)
 	. = ..()
@@ -257,7 +256,6 @@
 		COMSIG_HUMAN_TAKE_DAMAGE,
 		COMSIG_XENO_TAKE_DAMAGE
 	), PROC_REF(handle_damage))
-	RegisterSignal(M, COMSIG_HUMAN_BONEBREAK_PROBABILITY, PROC_REF(handle_bonebreak))
 
 /obj/item/device/internal_implant/subdermal_armor/proc/handle_damage(mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER
@@ -265,7 +263,3 @@
 		damagedata["damage"] *= brute_damage_mult
 	else if(damagetype == BURN)
 		damagedata["damage"] *= burn_damage_mult
-
-/obj/item/device/internal_implant/subdermal_armor/proc/handle_bonebreak(mob/living/M, list/bonedata)
-	SIGNAL_HANDLER
-	bonedata["bonebreak_probability"] *= bone_break_mult

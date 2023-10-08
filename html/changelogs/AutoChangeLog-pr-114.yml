@@ -1,6 +1,0 @@
-author: "XDinka"
-delete-after: True
-changes:
-  - code_imp: "3 пары новых звуков [Male/Female] кашель (*coungh), смех (*laugh), болезненный вздох (*gasp) в \"emote.dm\", частичный шутка-перевод."
-  - soundadd: "3 пары новых звуков [Male/Female] кашель (*coungh), смех (*laugh), болезненный вздох (*gasp) в \"sound\\voice\""
-  - imageadd: "Обновленные спрайты прически \"hair_gentle_s\" (получила крутой хвостик), \"hair_fredding_s\" (полностью переделана на манер ТГ Modern), возвращение \"hair_ponytail4_s\" (По запросу Roer)."

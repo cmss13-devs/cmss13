@@ -37,6 +37,7 @@
 	// Used during the jump crash to announce if the AA system threw the dropship off course
 	var/true_crash_target_section = null
 
+	var/datum/dropship_hijack/almayer/Alm
 
 //Full documentation 650-700 lines down by the copy for elevators
 /datum/shuttle/ferry/marine/preflight_checks()
@@ -92,7 +93,7 @@
 			automated_launch_timer = TIMER_ID_NULL
 
 /datum/shuttle/ferry/marine/proc/prepare_automated_launch()
-	ai_silent_announcement("The [name] will automatically depart in [automated_launch_delay * 0.1] seconds")
+	ai_silent_announcement("Автоматическое отбытие [name] через [automated_launch_delay * 0.1] секунд")
 	automated_launch_timer = addtimer(CALLBACK(src, PROC_REF(automated_launch)), automated_launch_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /datum/shuttle/ferry/marine/proc/automated_launch()
@@ -101,7 +102,7 @@
 	else
 		automated_launch = FALSE
 	automated_launch_timer = TIMER_ID_NULL
-	ai_silent_announcement("Dropship '[name]' departing.")
+	ai_silent_announcement("Десантный корабль '[name]' отбывает.")
 	var/datum/ares_link/link = GLOB.ares_link
 	link.log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
 
@@ -118,7 +119,7 @@
 			if(!preflight_checks())
 				announce_preflight_failure()
 				if(automated_launch)
-					ai_silent_announcement("Automated launch of [name] failed. New launch in [DROPSHIP_AUTO_RETRY_COOLDOWN] SECONDS.")
+					ai_silent_announcement("Сбой автоматического запуска [name]. Новый запуск через [DROPSHIP_AUTO_RETRY_COOLDOWN] СЕКУНД.")
 					automated_launch_timer = addtimer(CALLBACK(src, PROC_REF(automated_launch)), automated_launch_delay)
 
 				process_state = IDLE_STATE
@@ -229,7 +230,7 @@
 			var/mob/living/carbon/xenomorph/X = locate(/mob/living/carbon/xenomorph) in T
 			if(X && X.stat != DEAD)
 				var/name = "Unidentified Lifesigns"
-				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+				var/input = "Неизвестные организмы зафиксированы на борту. Рекомендация: блокировка всех внешних шлюзов, включая воздуховоды и вентиляцию."
 				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
 				set_security_level(SEC_LEVEL_RED)
 				break
@@ -416,7 +417,7 @@
 		// At halftime, we announce whether or not the AA forced the dropship to divert
 		// The rounding is because transit time is decreased by 10 each loop. Travel time, however, might not be a multiple of 10
 		if(in_transit_time_left == round(travel_time / 2, 10) && true_crash_target_section != crash_target_section)
-			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
+			marine_announcement("Вражеское судно направляющееся к [true_crash_target_section] было успешно ликвидировано.", "Система IX-50 MGAD", 'sound/effects/gau.ogg', logging = ARES_LOG_SECURITY)
 
 			var/area/shuttle_area
 			for(var/turf/T in turfs_int)
@@ -424,8 +425,8 @@
 					shuttle_area = get_area(T)
 
 				for(var/mob/M in T)
-					to_chat(M, SPAN_DANGER("The ship jostles violently as explosions rock the ship!"))
-					to_chat(M, SPAN_DANGER("You feel the ship turning sharply as it adjusts its course!"))
+					to_chat(M, SPAN_DANGER("Корабль сильно трясет, в то время как взрывы сотрясают его!"))
+					to_chat(M, SPAN_DANGER("Я чувствую как корабль резко поворачивается и меняет направление!"))
 					shake_camera(M, 60, 2)
 
 			playsound_area(shuttle_area, 'sound/effects/antiair_explosions.ogg')
@@ -435,12 +436,15 @@
 
 	in_transit_time_left = 0
 
+	if(Alm.ferry_crashed)
+		Alm.ferry_crashed = FALSE
+		return FALSE
 	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
 		return FALSE //If a nuke is in progress, don't attempt a landing.
 
 	//This is where things change and shit gets real
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
+	marine_announcement("ДЕСАНТНЫЙ КОРАБЛЬ ПРЯМО ПО КУРСУ. АВАРИЯ НЕИЗБЕЖНА." , "ТРЕВОГА", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " [OBSERVER_JMP(observer, T_trg)]")))

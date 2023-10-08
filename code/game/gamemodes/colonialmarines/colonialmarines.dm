@@ -147,9 +147,9 @@
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 /datum/game_mode/colonialmarines/proc/ares_conclude()
-	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
-	ai_silent_announcement("Saving operational report to archive.", ".V")
-	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
+	ai_silent_announcement("Биосканирование завершено. Неизвестных форм жизни не обнаружено.", ".V")
+	ai_silent_announcement("Сохранение оперативного отчета в архив.", ".V")
+	ai_silent_announcement("Начало окончательного системного сканирования через 3 минуты.", ".V")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -195,8 +195,8 @@
 
 						round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN
 
-						var/input = "Security lockdown will be lifting in 30 seconds per automated lockdown protocol."
-						var/name = "Automated Security Authority Announcement"
+						var/input = "Режим изоляции будет отключен через 30 секунд, согласно автоматическим протоколам безопасности."
+						var/name = "Уведомление Системы Безопасности"
 						marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 						for(var/i in GLOB.living_xeno_list)
 							var/mob/M = i
@@ -300,6 +300,7 @@
 	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
+	var/datum/dropship_hijack/almayer/Alm
 
 	if(force_end_at && world.time > force_end_at)
 		round_finished = MODE_INFESTATION_X_MINOR
@@ -311,6 +312,8 @@
 		if(!num_humans && num_xenos) //No humans remain alive.
 			round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
 		else if(num_humans && !num_xenos)
+			if(almayer_aa_cannon.recharging == TRUE && Alm.ferry_crashed == TRUE)
+				return
 			if(SSticker.mode && SSticker.mode.is_in_endgame)
 				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 			else
@@ -357,12 +360,14 @@
 		if(MODE_INFESTATION_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
+			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|XENOMORPH MAJOR VICTORY|"))
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_xeno_victories++
 				round_statistics.current_map.total_xeno_majors++
 		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
+			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|MARINE MAJOR VICTORY|"))
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_marine_victories++
 				round_statistics.current_map.total_marine_majors++
@@ -381,17 +386,20 @@
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
+			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|XENOMORPH MINOR VICTORY|"))
 			end_icon = "xeno_minor"
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
+			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|MARINE MINOR VICTORY|"))
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|DRAW|"))
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)

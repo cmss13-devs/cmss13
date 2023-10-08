@@ -423,11 +423,11 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		if ("emp")
 			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset(null)
 			var/name = t.name
-			ai_silent_announcement("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
+			ai_silent_announcement("[mobname] погиб в [name]!", "Датчик здоровья [mobname]")
 			qdel(a)
 		else
 			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset(null)
-			ai_silent_announcement("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")
+			ai_silent_announcement("[mobname] пог-г-г-г-иб в-в-в-в-в...", "Датчик здоровья [mobname]")
 			qdel(a)
 			STOP_PROCESSING(SSobj, src)
 

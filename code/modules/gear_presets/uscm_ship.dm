@@ -79,10 +79,25 @@
 	//if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		//back_item = /obj/item/storage/backpack
 
+
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	if(new_human.client)
+		var/playtime = get_job_playtime(new_human.client, rank)
+		if(new_human.client.prefs.playtime_perks)
+			if(playtime > JOB_PLAYTIME_TIER_4)
+				new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000/counterfeit(new_human), WEAR_L_STORE)
+				new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000/counterfeit(new_human), WEAR_R_STORE)
+			else if(playtime > JOB_PLAYTIME_TIER_3)
+				new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000/counterfeit(new_human), WEAR_L_STORE)
+			else if(playtime > JOB_PLAYTIME_TIER_2)
+				new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000/counterfeit(new_human), WEAR_L_STORE)
+				new_human.equip_to_slot_or_del(new /obj/item/spacecash/c500/counterfeit(new_human), WEAR_R_STORE)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/spacecash/c500/counterfeit(new_human), WEAR_L_STORE)
+	return
 
 /datum/equipment_preset/uscm_ship/liaison/load_rank(mob/living/carbon/human/new_human)
 	if(new_human.client)

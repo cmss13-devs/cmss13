@@ -496,6 +496,7 @@ This function completely restores a damaged organ to perfect condition.
 					owner.visible_message(SPAN_WARNING("The wound on [owner.name]'s [display_name] widens with a nasty ripping noise."),
 					SPAN_WARNING("The wound on your [display_name] widens with a nasty ripping noise."),
 					SPAN_WARNING("You hear a nasty ripping noise, as if flesh is being torn apart."))
+					owner.heartpounce()
 				return
 
 	//Creating wound
@@ -599,6 +600,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(knitting_time > 0)
 		if(world.time > knitting_time)
 			to_chat(owner, SPAN_WARNING("The bones in your [display_name] feel fully knitted."))
+			owner.heartpounce()
 			owner.pain.apply_pain(-PAIN_BONE_BREAK)
 			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1

@@ -97,6 +97,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		"clone" = round(target_mob.getCloneLoss()),
 		"blood_type" = target_mob.blood_type,
 		"blood_amount" = target_mob.blood_volume,
+		"nutrition" = target_mob.nutrition,
 
 		"hugged" = (locate(/obj/item/alien_embryo) in target_mob),
 	)
@@ -254,6 +255,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		data["limbs_damaged"] = length(limb_data_lists)
 		data["internal_bleeding"] = internal_bleeding
 		data["body_temperature"] = "[round(human_target_mob.bodytemperature-T0C, 0.1)]℃ ([round(human_target_mob.bodytemperature*1.8-459.67, 0.1)]℉)" // METRIC RULES IMPERIAL DROOLS
+		data["nutrition"] = "[round(human_target_mob.nutrition / NUTRITION_MAX * 100)]%"
 		data["pulse"] = "[human_target_mob.get_pulse(GETPULSE_TOOL)] bpm"
 		data["implants"] = unknown_implants
 		data["core_fracture"] = core_fracture_detected
@@ -484,6 +486,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			user.show_message("\tType: [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]", 1)
 			user.show_message("\tDamage: [SET_CLASS("?", INTERFACE_BLUE)] - [SET_CLASS("?", INTERFACE_GREEN)] - [SET_CLASS("?", INTERFACE_ORANGE)] - [SET_CLASS("?", INTERFACE_RED)]")
 			user.show_message(SPAN_NOTICE("Body Temperature: [src.bodytemperature-T0C]&deg;C ([src.bodytemperature*1.8-459.67]&deg;F)"), 1)
+			user.show_message(SPAN_DANGER("<b>Warning: Nutrition Level ERROR: --%"))
 			user.show_message(SPAN_DANGER("<b>Warning: Blood Level ERROR: --% --cl.Type: ERROR"))
 			user.show_message(SPAN_NOTICE("Subject's pulse: [SET_CLASS("-- bpm", INTERFACE_RED)]"))
 			return
@@ -641,8 +644,12 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	// Show body temp
 	dat += "\n\tBody Temperature: [src.bodytemperature-T0C]&deg;C ([src.bodytemperature*1.8-459.67]&deg;F)\n"
 
+
 	if (ishuman(src))
 		var/mob/living/carbon/human/H = src
+		// Show nutrition
+		dat += "\n\tNutrition: [round(H.nutrition / NUTRITION_MAX * 100)]%\n"
+
 		// Show blood level
 		var/blood_volume = BLOOD_VOLUME_NORMAL
 		if(!(H.species && H.species.flags & NO_BLOOD))
@@ -657,6 +664,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				dat += "\t<span class='scanner'> <b>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl.</span> [SET_CLASS("Type: [blood_type]", INTERFACE_BLUE)]\n"
 			else
 				dat += "\tBlood Level normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]\n"
+
 		// Show pulse
 		dat += "\tPulse: <span class='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? INTERFACE_RED : ""]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</span>\n"
 		if((H.stat == DEAD && !H.client))

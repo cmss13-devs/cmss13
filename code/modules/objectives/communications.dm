@@ -7,7 +7,7 @@
 	controller = TREE_MARINE
 
 /datum/cm_objective/communications/complete()
-	ai_silent_announcement("SYSTEMS REPORT: Colony communications link online.", ":v")
+	ai_silent_announcement("СИСТЕМНЫЙ ОТЧЕТ: Связь с колонией активна.", ":v")
 	state = OBJECTIVE_COMPLETE
 
 /datum/cm_objective/communications/proc/score_new_points(points)

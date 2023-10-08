@@ -45,36 +45,40 @@ All of the necessary difines are stored under mode.dm in defines.
 
 var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initited elsewhere so that the world has a chance to load in.
 
+#define SOUND_CHANNEL_SD 666
+
 /datum/authority/branch/evacuation
 	var/name = "Evacuation Authority"
 	var/evac_time //Time the evacuation was initiated.
 	var/evac_status = EVACUATION_STATUS_STANDING_BY //What it's doing now? It can be standing by, getting ready to launch, or finished.
 
-	var/obj/structure/machinery/self_destruct/console/dest_master //The main console that does the brunt of the work.
+	var/obj/structure/machinery/self_destruct/console/C //The main console that does the brunt of the work.
 	var/dest_rods[] //Slave devices to make the explosion work.
 	var/dest_cooldown //How long it takes between rods, determined by the amount of total rods present.
 	var/dest_index = 1 //What rod the thing is currently on.
 	var/dest_status = NUKE_EXPLOSION_INACTIVE
 	var/dest_started_at = 0
+	var/dest_start_time
+	var/dest_already_armed = 0
 
 	var/flags_scuttle = NO_FLAGS
 
 /datum/authority/branch/evacuation/New()
 	..()
-	dest_master = locate()
-	if(!dest_master)
-		log_debug("ERROR CODE SD1: could not find master self-destruct console")
-		to_world(SPAN_DEBUG("ERROR CODE SD1: could not find master self-destruct console"))
+	C = locate()
+	if(!C)
+		log_debug("ERROR CODE SD1: could not find master self-destruct C")
+		to_world(SPAN_DEBUG("ERROR CODE SD1: could not find master self-destruct C"))
 		return FALSE
 	dest_rods = new
-	for(var/obj/structure/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
+	for(var/obj/structure/machinery/self_destruct/rod/I in C.loc.loc) dest_rods += I
 	if(!dest_rods.len)
 		log_debug("ERROR CODE SD2: could not find any self-destruct rods")
 		to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self-destruct rods"))
-		QDEL_NULL(dest_master)
+		QDEL_NULL(C)
 		return FALSE
 	dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len
-	dest_master.desc = "The main operating panel for a self-destruct system. It requires very little user input, but the final safety mechanism is manually unlocked.\nAfter the initial start-up sequence, [dest_rods.len] control rods must be armed, followed by manually flipping the detonation switch."
+	C.desc = "The main operating panel for a self-destruct system. It requires very little user input, but the final safety mechanism is manually unlocked.\nAfter the initial start-up sequence, [dest_rods.len] control rods must be armed, followed by manually flipping the detonation switch."
 
 /**
  * This proc returns the ship's z level list (or whatever specified),
@@ -97,7 +101,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(force || (evac_status == EVACUATION_STATUS_STANDING_BY && !(flags_scuttle & FLAGS_EVACUATION_DENY)))
 		evac_time = world.time
 		evac_status = EVACUATION_STATUS_INITIATING
-		ai_announcement("Внимание. Тревога. Всему персоналу немедленно эвакуироваться. У вас есть [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] минут перед отправлением.", 'sound/AI/evacuate.ogg')
+		marine_announcement("Внимание. Тревога. Всему персоналу немедленно эвакуироваться. У вас есть [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] минут перед отправлением.", "[MAIN_AI_SYSTEM]", 'sound/AI/evacuate.ogg')
 		xeno_message_all("Волна адреналина прокатывается по обитателям улья. Эти мясные существа пытаются сбежать!")
 
 		for(var/obj/structure/machinery/status_display/SD in machines)
@@ -114,7 +118,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_time = null
 		evac_status = EVACUATION_STATUS_STANDING_BY
 		deactivate_lifeboats()
-		ai_announcement("Эвакуация была отменена.", 'sound/AI/evacuate_cancelled.ogg')
+		marine_announcement("Эвакуация была отменена.", "[MAIN_AI_SYSTEM]", 'sound/AI/evacuate_cancelled.ogg')
 
 		if(get_security_level() == "red")
 			for(var/obj/structure/machinery/status_display/SD in machines)
@@ -129,7 +133,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(evac_status == EVACUATION_STATUS_INITIATING)
 		evac_status = EVACUATION_STATUS_IN_PROGRESS //Cannot cancel at this point. All shuttles are off.
 		spawn() //One of the few times spawn() is appropriate. No need for a new proc.
-			ai_announcement("ПРЕДУПРЕЖДЕНИЕ: Приказ об эвакуации подтвержден. Запуск спасательных шлюпок.", 'sound/AI/evacuation_confirmed.ogg')
+			marine_announcement("ПРЕДУПРЕЖДЕНИЕ: Указ об эвакуации подтвержден. Запуск спасательных шлюпок.", "[MAIN_AI_SYSTEM]", 'sound/AI/evacuation_confirmed.ogg')
 			addtimer(CALLBACK(src, PROC_REF(launch_lifeboats)), 10 SECONDS) // giving some time to board lifeboats
 
 			for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
@@ -145,7 +149,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			var/obj/docking_port/mobile/crashable/lifeboat/lifeboat2 = SSshuttle.getShuttle(MOBILE_SHUTTLE_LIFEBOAT_STARBOARD)
 			lifeboat2.check_for_survivors()
 			lifesigns += lifeboat2.survivors
-			ai_announcement("ВНИМАНИЕ: Процедуры эвакуации завершены. Внешних признаков жизни зафиксировано: [lifesigns ? lifesigns  : "0"].", 'sound/AI/evacuation_complete.ogg')
+			marine_announcement("ВНИМАНИЕ: Эвакуация завершена. Внешних признаков жизни: [lifesigns ? lifesigns  : "Ноль"].", "[MAIN_AI_SYSTEM]", 'sound/AI/evacuation_complete.ogg')
 			evac_status = EVACUATION_STATUS_COMPLETE
 		return TRUE
 
@@ -161,7 +165,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(EVACUATION_STATUS_INITIATING)
 			var/eta = EVACUATION_ESTIMATE_DEPARTURE
 			. = "[(eta / 60) % 60]:[add_zero(num2text(eta % 60), 2)]"
-		if(EVACUATION_STATUS_IN_PROGRESS) . = "NOW"
+		if(EVACUATION_STATUS_IN_PROGRESS) . = "СЕЙЧАС"
 
 // LIFEBOATS CORNER
 /datum/authority/branch/evacuation/proc/activate_lifeboats()
@@ -192,8 +196,14 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /datum/authority/branch/evacuation/proc/enable_self_destruct(force=0)
 	if(force || (dest_status == NUKE_EXPLOSION_INACTIVE && !(flags_scuttle & FLAGS_SELF_DESTRUCT_DENY)))
+		if(!C)
+			C = locate()
+		if(!dest_rods)
+			dest_rods = new
+			for(var/obj/structure/machinery/self_destruct/rod/I in C.loc.loc) dest_rods += I
+			dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len
 		dest_status = NUKE_EXPLOSION_ACTIVE
-		dest_master.lock_or_unlock()
+		C.lock_or_unlock()
 		dest_started_at = world.time
 		set_security_level(SEC_LEVEL_DELTA) //also activate Delta alert, to open the SD shutters.
 		spawn(0)
@@ -207,23 +217,30 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(dest_status == NUKE_EXPLOSION_ACTIVE)
 		var/obj/structure/machinery/self_destruct/rod/I
 		var/i
+		if(world.time >= dest_start_time + 3000 && dest_already_armed == 1 && !override) //Если пройден рубеж в 5 минут (но только после полноценного запуска) - пиздос
+			C.state("<span class='warning'>ОШИБКА: Невозможно отменить операцию.</span>")
+			return FALSE
 		for(i in EvacuationAuthority.dest_rods)
 			I = i
 			if(I.active_state == SELF_DESTRUCT_MACHINE_ARMED && !override)
-				dest_master.state(SPAN_WARNING("WARNING: Unable to cancel detonation. Please disarm all control rods."))
+				C.state(SPAN_WARNING("ОШИБКА: Невозможно отменить операцию. Отключите все стержни."))
 				return FALSE
 
-		dest_status = NUKE_EXPLOSION_INACTIVE
-		dest_master.in_progress = 1
-		dest_started_at = 0
+		C.in_progress = 1
+		dest_start_time = 0
+
 		for(i in dest_rods)
 			I = i
 			if(I.active_state == SELF_DESTRUCT_MACHINE_ACTIVE || (I.active_state == SELF_DESTRUCT_MACHINE_ARMED && override)) I.lock_or_unlock(1)
-		dest_master.lock_or_unlock(1)
+		C.lock_or_unlock(1)
 		dest_index = 1
-		ai_announcement("The emergency destruct system has been deactivated.", 'sound/AI/selfdestruct_deactivated.ogg')
+		marine_announcement("Система аварийного самоуничтожения отключена.", "Система Самоуничтожения", 'sound/AI/selfdestruct_deactivated.ogg')
+		xeno_message("Мне комфортнее. Устройство очищения отключили!")
+		world << sound(null, repeat=0, wait=0, channel=SOUND_CHANNEL_SD)
+		dest_already_armed = 0
 		if(evac_status == EVACUATION_STATUS_STANDING_BY) //the evac has also been cancelled or was never started.
 			set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
+		dest_status = NUKE_EXPLOSION_INACTIVE
 		return TRUE
 
 /datum/authority/branch/evacuation/proc/initiate_self_destruct(override)
@@ -232,23 +249,19 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		var/i
 		for(i in dest_rods)
 			I = i
-			if(I.active_state != SELF_DESTRUCT_MACHINE_ARMED && !override)
-				dest_master.state(SPAN_WARNING("WARNING: Unable to trigger detonation. Please arm all control rods."))
-				return FALSE
-		dest_master.in_progress = !dest_master.in_progress
+		C.in_progress = !C.in_progress
 		for(i in EvacuationAuthority.dest_rods)
 			I = i
 			I.in_progress = 1
-		ai_announcement("DANGER. DANGER. Self-destruct system activated. DANGER. DANGER. Self-destruct in progress. DANGER. DANGER.")
 		trigger_self_destruct(,,override)
 		return TRUE
 
-/datum/authority/branch/evacuation/proc/trigger_self_destruct(list/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), origin = dest_master, override = FALSE, end_type = NUKE_EXPLOSION_FINISHED, play_anim = TRUE, end_round = TRUE)
+/datum/authority/branch/evacuation/proc/trigger_self_destruct(list/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), origin = C, override = FALSE, end_type = NUKE_EXPLOSION_FINISHED, play_anim = TRUE, end_round = TRUE)
 	set waitfor = 0
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS) //One more check for good measure, in case it's triggered through a bomb instead of the destruct mechanism/admin panel.
 		dest_status = NUKE_EXPLOSION_IN_PROGRESS
-		playsound(origin, 'sound/machines/Alarm.ogg', 75, 0, 30)
-		world << pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+//		playsound(origin, 'sound/machines/Alarm.ogg', 75, 0, 30)
+//		world << pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 
 		var/ship_status = 1
 		for(var/i in z_levels)
@@ -270,7 +283,6 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				shake_camera(current_mob, 110, 4)
 
 
-		sleep(100)
 		/*Hardcoded for now, since this was never really used for anything else.
 		Would ideally use a better system for showing cutscenes.*/
 		var/atom/movable/screen/cinematic/explosion/C = new
@@ -296,7 +308,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(play_anim)
 			flick(ship_status ? "ship_spared" : "ship_destroyed", C)
 			C.icon_state = ship_status ? "summary_spared" : "summary_destroyed"
-		world << sound('sound/effects/explosionfar.ogg')
+//		world << sound('sound/effects/explosionfar.ogg')
+		dest_status = NUKE_EXPLOSION_INACTIVE
 
 		if(end_round)
 			dest_status = end_type
@@ -304,18 +317,19 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			sleep(5)
 			if(SSticker.mode)
 				SSticker.mode.check_win()
+				world << sound('sound/misc/hell_march.ogg')
 
 			if(!SSticker.mode) //Just a safety, just in case a mode isn't running, somehow.
-				to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
+				to_world(SPAN_ROUNDBODY("Перезапуск через 30 секунд!"))
 				sleep(300)
-				log_game("Rebooting due to nuclear detonation.")
+				log_game("Перезагрузка из-за ядерного взрыва.")
 				world.Reboot()
 			return TRUE
 
 /datum/authority/branch/evacuation/proc/process_self_destruct()
 	set background = 1
 
-	spawn while(dest_master && dest_master.loc && dest_master.active_state == SELF_DESTRUCT_MACHINE_ARMED && dest_status == NUKE_EXPLOSION_ACTIVE && dest_index <= dest_rods.len)
+	spawn while(C && C.loc && C.active_state == SELF_DESTRUCT_MACHINE_ARMED && dest_status == NUKE_EXPLOSION_ACTIVE && dest_index <= dest_rods.len)
 		var/obj/structure/machinery/self_destruct/rod/I = dest_rods[dest_index]
 		if(world.time >= dest_cooldown + I.activate_time)
 			I.lock_or_unlock() //Unlock it.
@@ -323,6 +337,16 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				I = dest_rods[dest_index]//Start the next sequence.
 				I.activate_time = world.time
 		sleep(10) //Checks every second. Could integrate into another controller for better tracking.
+
+/datum/authority/branch/evacuation/proc/process_sd_ticking() //Новый процесс для постоянной активации. Через 10 минут после запуска автоматом взорвет помойку алмаер
+	set background = 1
+
+	spawn while(C && C.loc && C.active_state == SELF_DESTRUCT_MACHINE_ARMED && dest_status == NUKE_EXPLOSION_ACTIVE)
+		if(world.time >= dest_start_time + 5970)
+			initiate_self_destruct()
+			return
+		sleep(10)
+
 
 //Generic parent base for the self_destruct items.
 /obj/structure/machinery/self_destruct
@@ -334,11 +358,10 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	anchored = TRUE //So it doesn't go anywhere.
 	unslashable = TRUE
 	unacidable = TRUE //Cannot C4 it either.
-	mouse_opacity = FALSE //No need to click or interact with this initially.
 	var/in_progress = 0 //Cannot interact with while it's doing something, like an animation.
 	var/active_state = SELF_DESTRUCT_MACHINE_INACTIVE //What step of the process it's on.
 
-/obj/structure/machinery/self_destruct/Initialize(mapload, ...)
+/obj/structure/machinery/self_destruct/New(mapload, ...)
 	. = ..()
 	icon_state = "[base_icon_state]_1"
 
@@ -351,8 +374,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	return FALSE
 
 /obj/structure/machinery/self_destruct/attack_hand()
-	if(..() || in_progress)
-		return FALSE //This check is backward, ugh.
+	if(..() || in_progress) return FALSE //This check is backward, ugh.
 	return TRUE
 
 //Add sounds.
@@ -361,7 +383,6 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	in_progress = 1
 	flick("[base_icon_state]" + (lock? "_5" : "_2"),src)
 	sleep(9)
-	mouse_opacity = !mouse_opacity
 	icon_state = "[base_icon_state]" + (lock? "_1" : "_3")
 	in_progress = 0
 	active_state = active_state > SELF_DESTRUCT_MACHINE_INACTIVE ? SELF_DESTRUCT_MACHINE_INACTIVE : SELF_DESTRUCT_MACHINE_ACTIVE
@@ -374,7 +395,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/console/Destroy()
 	. = ..()
-	EvacuationAuthority.dest_master = null
+	EvacuationAuthority.C = null
 	EvacuationAuthority.dest_rods = null
 
 /obj/structure/machinery/self_destruct/console/lock_or_unlock(lock)
@@ -387,6 +408,13 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		return
 
 	tgui_interact(user)
+
+/obj/structure/machinery/self_destruct/console/attack_alien(mob/living/carbon/xenomorph) //Сука.
+	if(isqueen(xenomorph))
+		if(!do_after(usr, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+		to_chat(xenomorph, "<span class='warning'>Я взаимодействую с машиной и пытаюсь отключить устройство очищения.</span>")
+		EvacuationAuthority.cancel_self_destruct()
 
 /obj/structure/machinery/self_destruct/console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -414,11 +442,12 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 	switch(action)
 		if("dest_start")
-			to_chat(usr, SPAN_NOTICE("You press a few keys on the panel."))
-			to_chat(usr, SPAN_NOTICE("The system must be booting up the self-destruct sequence now."))
+			to_chat(usr, SPAN_NOTICE("Нажимаю несколько кнопок на панели..."))
+			to_chat(usr, SPAN_NOTICE("Да, система должна запустить механизм самоуничтожения."))
 			playsound(src.loc, 'sound/items/rped.ogg', 25, TRUE)
 			sleep(2 SECONDS)
-			ai_announcement("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
+			marine_announcement("Опасность. Система аварийного самоуничтожения активирована. Обратный отсчет - 20 минут до взрыва корабля.", "Система Самоуничтожения", 'sound/AI/selfdestruct.ogg')
+			xeno_message("Очень дурное предчувствие. Эти создания пытаются запустить механизм очищения!")
 			active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
 			var/obj/structure/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
 			I.activate_time = world.time
@@ -426,12 +455,34 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			. = TRUE
 
 		if("dest_trigger")
-			EvacuationAuthority.initiate_self_destruct()
+			var/obj/structure/machinery/self_destruct/rod/I
+			var/i
+			for(i in EvacuationAuthority.dest_rods)
+				I = i
+
+			to_chat(usr, "<span class='notice'>Нажимаю несколько кнопок на панели...</span>")
+			if(EvacuationAuthority.dest_already_armed != 0)
+				to_chat(usr, "<span class='warning'>Система уже активирована.</span>")//"Неееет, ты не можешь запустить СД больше 2 раза!!!!!"
+				return
+			if(I.active_state != SELF_DESTRUCT_MACHINE_ARMED) //Все как в фильме. СД запустится только после активации всех стержней
+				to_chat(usr, "<span class='warning'>ОШИБКА: Невозможно активировать систему. Пожалуйста, активируйте все стержни.</span>")
+				EvacuationAuthority.dest_already_armed = 0
+				return
+			else
+				to_chat(usr, "<span class='notice'>Система вот-вот запустит механизм самоуничтожения.</span>")
+				marine_announcement("Тревога. Система аварийного самоуничтожения запущена. Обратный отсчет до уничтожения корабля - 10 минут. Обратный отсчет для отключения функции автоматического самоуничтожения - 5 минут.", "Система Самоуничтожения")
+				xeno_message("Улей очень сильно беспокоится. Механизм очищения работает во всю!")
+//				world << sound('sound/AI/ARES_Self_Destruct_10m_FULL.ogg', repeat = 0, wait = 0, volume = 70, channel = 666)
+				world << sound('code/modules/carrotman2013/sounds/AI/selfdestruct.ogg', repeat=0,wait=0,volume=53,channel=SOUND_CHANNEL_SD)
+				EvacuationAuthority.dest_start_time = world.time
+				EvacuationAuthority.process_sd_ticking()
+				EvacuationAuthority.dest_already_armed = 1
+				EvacuationAuthority.spawn_sd_effects()
 			. = TRUE
 
 		if("dest_cancel")
 			if(!allowed(usr))
-				to_chat(usr, SPAN_WARNING("You don't have the necessary clearance to cancel the emergency destruct system!"))
+				to_chat(usr, SPAN_WARNING("У меня нет необходимого доступа, чтобы отключить систему!"))
 				return
 			EvacuationAuthority.cancel_self_destruct()
 			. = TRUE
@@ -460,17 +511,37 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		density = TRUE
 		layer = ABOVE_OBJ_LAYER
 
+/obj/structure/machinery/self_destruct/rod/attack_alien(mob/living/carbon/xenomorph/X) //Так как отключить СД можно только вырубив все стержни - логично дать квине возможность их вырубать. Nuff said.
+	if(isqueen(X))
+		if(world.time >= EvacuationAuthority.dest_start_time + 3000 && EvacuationAuthority.dest_already_armed == 1)
+			to_chat(X, "<span class='notice'>Пытаюсь повернуть стержень, но он намертво впечатан в пол. Кажется пора сваливать.</span>")
+			return
+		else switch(active_state)
+			if(SELF_DESTRUCT_MACHINE_ARMED)
+				if(!do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+					return
+				to_chat(X, "<span class='warning'>Я поворачиваю и отпускаю стержень, деактивируя его.</span>")
+				playsound(src, 'sound/machines/switch.ogg', 25, 1)
+				icon_state = "rod_3"
+				active_state = SELF_DESTRUCT_MACHINE_ACTIVE
+			if(SELF_DESTRUCT_MACHINE_ACTIVE)
+				return
+
 /obj/structure/machinery/self_destruct/rod/attack_hand(mob/user)
 	if(..())
-		switch(active_state)
+		if(world.time >= EvacuationAuthority.dest_start_time + 3000 && EvacuationAuthority.dest_already_armed == 1)
+			to_chat(user, "<span class='notice'>Я пытаюсь повернуть стержень, но он намертво впечатан в пол. Кажется пора сваливать.</span>")
+			return
+
+		else switch(active_state)
 			if(SELF_DESTRUCT_MACHINE_ACTIVE)
-				to_chat(user, SPAN_NOTICE("You twist and release the control rod, arming it."))
+				to_chat(user, SPAN_NOTICE("Я поворачиваю и отпускаю стержень, активируя его."))
 				playsound(src, 'sound/machines/switch.ogg', 25, 1)
 				icon_state = "rod_4"
 				active_state = SELF_DESTRUCT_MACHINE_ARMED
 			if(SELF_DESTRUCT_MACHINE_ARMED)
-				to_chat(user, SPAN_NOTICE("You twist and release the control rod, disarming it."))
+				to_chat(user, SPAN_NOTICE("Я поворачиваю и отпускаю стержень, деактивируя его."))
 				playsound(src, 'sound/machines/switch.ogg', 25, 1)
 				icon_state = "rod_3"
 				active_state = SELF_DESTRUCT_MACHINE_ACTIVE
-			else to_chat(user, SPAN_WARNING("The control rod is not ready."))
+			else to_chat(user, SPAN_WARNING("Стержень не готов."))

@@ -24,6 +24,7 @@
 					var/damage = rand(3,5)
 					I.take_damage(damage)
 					pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
+					heartbeating(src)
 				if(E.is_broken() && prob(2))
 					var/damage = rand(3,5)
 					var/datum/wound/internal_bleeding/internal_bleed = new
@@ -31,6 +32,7 @@
 					E.wounds += internal_bleed
 					custom_pain("You feel broken bones cutting at you in your [E.display_name]!", 1)
 					pain.apply_pain(damage * 1.5)
+					heartbeating(src)
 
 	if(!lying && !buckled && prob(2))
 		var/left_leg_crippled = FALSE
@@ -58,4 +60,5 @@
 			if(pain.feels_pain)
 				emote("pain")
 			custom_pain("You can't stand on broken legs!", 1)
+			heartpounce(src)
 			apply_effect(5, WEAKEN)

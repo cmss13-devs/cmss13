@@ -17,6 +17,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	// Which ship section is being protected by the AA gun
 	var/protecting_section = ""
 	var/is_disabled = FALSE
+	var/recharging = FALSE
 
 /obj/structure/anti_air_cannon/New()
 	. = ..()
@@ -131,6 +132,10 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 /obj/structure/machinery/computer/aa_console/attack_hand(mob/user)
 	if(..())
 		return
+
+	if(almayer_aa_cannon.recharging)
+		to_chat(user, SPAN_WARNING("Система перезаряжается."))
+		return TRUE
 
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))

@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(objectives)
 /datum/controller/subsystem/objectives/proc/announce_stats()
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 
-	var/message = "TECH REPORT: [round(tree.points, 0.1)] points available"
+	var/message = "ТЕХНИЧЕСКИЙ ОТЧЕТ: [round(tree.points, 0.1)] очков доступно"
 	var/earned = round(tree.total_points - tree.total_points_last_sitrep, 0.1)
 	if (earned)
 		message += " (+[earned])"

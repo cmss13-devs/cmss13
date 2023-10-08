@@ -17,7 +17,7 @@
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.num_leaders
 	. = ..()
-	shipwide_ai_announcement("Successfully deployed [mob_max] Foxtrot marines, of which [length(members)] are ready for duty.")
+	shipwide_ai_announcement("Успешно пробуждено [mob_max] солдат Foxtrot, из которых [length(members)] готовы к службе.")
 	if(mob_max > length(members))
 		announce_dchat("Some cryomarines were not taken, use the Join As Freed Mob verb to take one of them.")
 

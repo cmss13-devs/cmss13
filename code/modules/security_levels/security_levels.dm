@@ -39,8 +39,8 @@
 
 			if(SEC_LEVEL_DELTA)
 				if(announce)
-					var/name = "SELF-DESTRUCT SYSTEMS ACTIVE"
-					var/input = "DANGER, THE EMERGENCY DESTRUCT SYSTEM IS NOW ACTIVATED. PROCEED TO THE SELF-DESTRUCT CHAMBER FOR CONTROL ROD INSERTION."
+					var/name = "СИСТЕМА САМОУНИЧТОЖЕНИЯ АКТИВНА"
+					var/input = "ОПАСНОСТЬ, СИСТЕМА АВАРИЙНОГО САМОУНИЧТОЖЕНИЯ АКТИВИРОВАНА. ПРОСЛЕДУЙТЕ К КОНСОЛИ ДЛЯ АКТИВАЦИИ СТЕРЖНЕЙ УПРАВЛЕНИЯ."
 					marine_announcement(input, name, 'sound/AI/selfdestruct_short.ogg', logging = log)
 				security_level = SEC_LEVEL_DELTA
 				EvacuationAuthority.enable_self_destruct()

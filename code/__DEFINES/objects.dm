@@ -113,7 +113,7 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define SELF_DESTRUCT_MACHINE_ARMED 2
 
 
-#define SELF_DESTRUCT_ROD_STARTUP_TIME 12000
+#define SELF_DESTRUCT_ROD_STARTUP_TIME 2400
 
 // Flamer fire shapes
 #define FLAMESHAPE_NONE "none"

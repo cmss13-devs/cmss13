@@ -1430,6 +1430,8 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\buildmode\submodes\outfit.dm"
 #include "code\modules\buildmode\submodes\throwing.dm"
 #include "code\modules\buildmode\submodes\variable_edit.dm"
+#include "code\modules\carrotman2013\other\almayerstuff.dm"
+#include "code\modules\carrotman2013\other\heartbeat.dm"
 #include "code\modules\character_traits\biology_traits.dm"
 #include "code\modules\character_traits\character_trait.dm"
 #include "code\modules\character_traits\hair_dye.dm"

@@ -26,6 +26,7 @@ export const HealthScan = (props, context) => {
     blood_amount,
     has_blood,
     body_temperature,
+    nutrition,
     pulse,
     implants,
     core_fracture,
@@ -191,6 +192,7 @@ export const HealthScan = (props, context) => {
             <LabeledList.Item label={'Body Temperature'}>
               {body_temperature}
             </LabeledList.Item>
+            <LabeledList.Item label={'Nutrition'}>{nutrition}</LabeledList.Item>
             <LabeledList.Item label={'Pulse'}>{pulse}</LabeledList.Item>
           </LabeledList>
           {implants ||

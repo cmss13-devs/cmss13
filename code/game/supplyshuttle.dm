@@ -507,7 +507,7 @@ var/datum/controller/supply/supply_controller = new()
 
 //To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
 /datum/controller/supply/proc/forbidden_atoms_check(atom/A)
-	if(istype(A,/mob/living) && !black_market_enabled)
+	if(istype(A,/mob/living/carbon/human) && !black_market_enabled)
 		return TRUE
 
 	for(var/i=1, i<=A.contents.len, i++)

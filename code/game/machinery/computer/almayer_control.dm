@@ -258,12 +258,7 @@
 				to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self-destruct is already activated."))
 				return FALSE
 
-			for(var/client/admin_client as anything in GLOB.admins)
-				if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
-					admin_client << 'sound/effects/sos-morse-code.ogg'
-			message_admins("[key_name(usr)] has requested Self-Destruct! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
-			to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
-			COOLDOWN_START(src, cooldown_destruct, COOLDOWN_COMM_DESTRUCT)
+			set_security_level(SEC_LEVEL_DELTA)
 			. = TRUE
 
 		if("delmessage")

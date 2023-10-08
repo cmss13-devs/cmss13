@@ -49,7 +49,7 @@
 					}
 				</script>
 				<p id='loading'>You start unfolding the map...</p>
-					<img onload="pageloaded(this)" src="[wikiurl]/[html_link]?printable=yes&remove_links=1" id="main_frame" alt=""></img>
+					<img onload="pageloaded(this)" src="[html_link]" id="main_frame" alt=""></img>
 				</body>
 
 				</html>
@@ -59,36 +59,36 @@
 /obj/item/map/lazarus_landing_map
 	name = "\improper Lazarus Landing Map"
 	desc = "A satellite printout of the Lazarus Landing colony on LV-624."
-	html_link = "images/6/6f/LV624.png"
+	html_link = "https://cm-ss13.com/w/images/6/6f/LV624.png"
 
 /obj/item/map/ice_colony_map
 	name = "\improper Ice Colony map"
 	desc = "A satellite printout of the Ice Colony."
-	html_link = "images/1/18/Map_icecolony.png"
+	html_link = "https://cm-ss13.com/w/images/1/18/Map_icecolony.png"
 	color = "cyan"
 
 /obj/item/map/ice_colony_map_v3
 	name = "\improper Shivas Snowball map"
 	desc = "A labelled print out of the anterior scan of the UA colony Shivas Snowball."
-	html_link = "images/1/18/Map_icecolony.png"
+	html_link = "https://cm-ss13.com/w/images/1/18/Map_icecolony.png"
 	color = "cyan"
 
 /obj/item/map/whiskey_outpost_map
 	name = "\improper Whiskey Outpost map"
 	desc = "A tactical printout of the Whiskey Outpost defensive positions and locations."
-	html_link = "images/7/78/Whiskey_outpost.png"
+	html_link = "https://cm-ss13.com/w/images/7/78/Whiskey_outpost.png"
 	color = "grey"
 
 /obj/item/map/big_red_map
 	name = "\improper Solaris Ridge Map"
 	desc = "A censored blueprint of the Solaris Ridge facility"
-	html_link = "images/9/9e/Solaris_Ridge.png"
+	html_link = "https://cm-ss13.com/w/images/9/9e/Solaris_Ridge.png"
 	color = "#e88a10"
 
 /obj/item/map/FOP_map
 	name = "\improper Fiorina Orbital Penitentiary Map"
 	desc = "A labelled interior scan of Fiorina Orbital Penitentiary"
-	html_link = "images/4/4c/Map_Prison.png"
+	html_link = "https://cm-ss13.com/w/images/4/4c/Map_Prison.png"
 	color = "#e88a10"
 
 /obj/item/map/FOP_map_v3
@@ -100,37 +100,37 @@
 /obj/item/map/desert_dam
 	name = "\improper Trijent Dam map"
 	desc = "An orbital scan printout of the Trijent Dam colony."
-	html_link = "images/9/92/Trijent_Dam.png"
+	html_link = "https://cm-ss13.com/w/images/9/92/Trijent_Dam.png"
 	color = "#ad8d0e"
 
 /obj/item/map/sorokyne_map
 	name = "\improper Sorokyne Strata map"
 	desc = "A map of the Weyland-Yutani colony Sorokyne Outpost, commonly known as Sorokyne Strata."
-	html_link = "images/2/21/Sorokyne_Wiki_Map.jpg" //The fact that this is just a wiki-link makes me sad and amused.
+	html_link = "https://cm-ss13.com/w/images/2/21/Sorokyne_Wiki_Map.jpg" //The fact that this is just a wiki-link makes me sad and amused.
 	color = "cyan"
 
 /obj/item/map/corsat
 	name = "\improper CORSAT map"
 	desc = "A blueprint of CORSAT station"
-	html_link = "images/8/8e/CORSAT_Satellite.png"
+	html_link = "https://cm-ss13.com/w/images/8/8e/CORSAT_Satellite.png"
 	color = "red"
 
 /obj/item/map/kutjevo_map
 	name = "\improper Kutjevo Refinery map"
 	desc = "An orbital scan of Kutjevo Refinery"
-	html_link = "images/0/0d/Kutjevo_a1.jpg"
+	html_link = "https://cm-ss13.com/w/images/0/0d/Kutjevo_a1.jpg"
 	color = "red"
 
 /obj/item/map/lv522_map
 	name = "\improper LV-522 Map"
 	desc = "An overview of LV-522 schematics."
-	html_link = "images/b/bb/C_claim.png"
+	html_link = "https://cm-ss13.com/w/images/b/bb/C_claim.png"
 	color = "cyan"
 
 /obj/item/map/new_varadero
 	name = "\improper New Varadero map"
 	desc = "A labeled blueprint of the UA outpost New Varadero"
-	html_link = "images/9/94/New_Varadero.png"
+	html_link = "https://cm-ss13.com/w/images/9/94/New_Varadero.png"
 	color = "red"
 
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())

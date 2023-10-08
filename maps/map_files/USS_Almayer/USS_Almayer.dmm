@@ -5932,10 +5932,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/telecomms)
-"atg" = (
-/obj/structure/bed/sofa/vert/grey/top,
-/turf/open/floor/almayer,
-/area/almayer/command/lifeboat)
 "ath" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -8725,16 +8721,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/basketball)
-"aBE" = (
-/obj/structure/bed/sofa/vert/grey,
-/turf/open/floor/almayer,
-/area/almayer/command/lifeboat)
 "aBG" = (
+/obj/structure/machinery/self_destruct/console,
 /turf/open/floor/almayer/uscm/directional{
 	dir = 8;
 	icon_state = "logo_c"
 	},
-/area/almayer/command/lifeboat)
+/area/almayer/command/self_destruct)
 "aBH" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -17772,7 +17765,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 1
 	},
-/area/almayer/command/lifeboat)
+/area/almayer/command/self_destruct)
 "bAf" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
@@ -30287,7 +30280,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 4
 	},
-/area/almayer/command/lifeboat)
+/area/almayer/command/self_destruct)
 "ejw" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
@@ -30741,7 +30734,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 9
 	},
-/area/almayer/command/lifeboat)
+/area/almayer/command/self_destruct)
 "etf" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -40080,6 +40073,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"iqC" = (
+/obj/structure/machinery/self_destruct/rod,
+/turf/open/floor/almayer,
+/area/almayer/command/self_destruct)
 "iqH" = (
 /obj/item/trash/chips{
 	pixel_x = 9;
@@ -50819,7 +50816,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 6
 	},
-/area/almayer/command/lifeboat)
+/area/almayer/command/self_destruct)
 "mPh" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -53694,7 +53691,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 8
 	},
-/area/almayer/command/lifeboat)
+/area/almayer/command/self_destruct)
 "nYP" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1
@@ -54584,7 +54581,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 10
 	},
-/area/almayer/command/lifeboat)
+/area/almayer/command/self_destruct)
 "orZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -54778,10 +54775,6 @@
 	icon_state = "ai_floors"
 	},
 /area/almayer/command/airoom)
-"ouB" = (
-/obj/structure/bed/sofa/vert/grey/bot,
-/turf/open/floor/almayer,
-/area/almayer/command/lifeboat)
 "ouQ" = (
 /obj/structure/platform{
 	dir = 1
@@ -64874,7 +64867,7 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "sGh" = (
 /turf/open/floor/almayer/uscm/directional,
-/area/almayer/command/lifeboat)
+/area/almayer/command/self_destruct)
 "sGK" = (
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -75480,14 +75473,14 @@
 	pixel_x = -16;
 	pixel_y = 8
 	},
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
 /obj/item/bedsheet/brown{
 	layer = 3.1
 	},
 /obj/item/bedsheet/brown{
 	pixel_y = 13
+	},
+/mob/living/simple_animal/mouse/brown{
+	name = "rat"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -75699,7 +75692,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 5
 	},
-/area/almayer/command/lifeboat)
+/area/almayer/command/self_destruct)
 "xaZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -134244,9 +134237,9 @@ aHe
 tqB
 eky
 eky
-atg
-aBE
-ouB
+eky
+eky
+eky
 eky
 eky
 gwu
@@ -134446,11 +134439,11 @@ jbq
 aNe
 avu
 eky
-eky
+iqC
 esT
 nYE
 orH
-eky
+iqC
 eky
 aMU
 aNe
@@ -134649,11 +134642,11 @@ jbq
 atY
 avu
 eky
-eky
+iqC
 bAe
 aBG
 sGh
-eky
+iqC
 eky
 aMU
 atY
@@ -134852,11 +134845,11 @@ aPw
 qpU
 aqJ
 dqj
-eky
+iqC
 xaS
 ejt
 mPf
-eky
+iqC
 gUV
 aqp
 qpU
@@ -135056,9 +135049,9 @@ jbq
 aPw
 vgD
 eky
-atg
-aBE
-ouB
+eky
+eky
+eky
 eky
 ihX
 aPw

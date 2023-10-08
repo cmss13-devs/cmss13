@@ -1906,7 +1906,7 @@
 
 	if(href_list["distress_cmb"]) //CMB distress signal, activates Anchorpoint Marine QRF to assist/rescue Colonial Marshals in distress
 		distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND The Anchorpoint Station Colonial Marine QRF to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		message_admins("[key_name_admin(usr)] has opted to SEND the Anchorpoint Station Colonial Marine QRF to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
 		addtimer(CALLBACK(src, PROC_REF(accept_cmb_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 
 	if(href_list["distress_cmb_alt"]) //CMB distress signal, activates a nearby CMB Patrol Team to assist/rescue Colonial Marshals in distress
@@ -2108,7 +2108,7 @@
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
-/datum/admins/proc/accept_cmb_ert(mob/approver, mob/ref_person)
+/datum/admins/proc/accept_cmb_ert(mob/approver, mob/ref_person) /// tells admins which admin has sent the Anchorpoint ERT in response to CMB distress
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE
@@ -2116,7 +2116,7 @@
 	log_game("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
 
-/datum/admins/proc/accept_cmb_alt_ert(mob/approver, mob/ref_person)
+/datum/admins/proc/accept_cmb_alt_ert(mob/approver, mob/ref_person) /// tells admins which admin has sent the CMB ERT in response to CMB distress
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE

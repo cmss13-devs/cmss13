@@ -123,8 +123,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 		message_admins("An ARES Bioscan has failed.")
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 		var/input = "Bioscan failed. \n\nInvestigation into Bioscan subsystem recommended."
-		if(ares_can_log())
-			log_ares_bioscan(name, input)
+		log_ares_bioscan(name, input)
 		if(ares_can_interface())
 			marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
 		return
@@ -135,8 +134,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 	log_game("BIOSCAN: ARES bioscan completed. [input]")
 
-	if(ares_can_log())
-		log_ares_bioscan(name, input) //if interface is down, bioscan still logged, just have to go read it.
+	log_ares_bioscan(name, input) //if interface is down, bioscan still logged, just have to go read it.
 	if(forced || ares_can_interface())
 		marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 	else

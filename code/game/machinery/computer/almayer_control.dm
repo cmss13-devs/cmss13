@@ -130,8 +130,7 @@
 
 			log_game("[key_name(usr)] has called for an emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
-			if(ares_can_log())
-				log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
+			log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
 			. = TRUE
 
 		if("evacuation_cancel")
@@ -143,8 +142,7 @@
 
 			log_game("[key_name(usr)] has canceled the emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
-			if(ares_can_log())
-				log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
+			log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
 			. = TRUE
 
 		// evac stuff end \\
@@ -166,8 +164,7 @@
 			set_security_level(seclevel2num(level_selected), log = ARES_LOG_NONE)
 			log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 			message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-			if(ares_can_log())
-				log_ares_security("Manual Security Update", "[usr] has changed the security level to [get_security_level()].")
+			log_ares_security("Manual Security Update", "[usr] has changed the security level to [get_security_level()].")
 			. = TRUE
 
 		if("messageUSCM")

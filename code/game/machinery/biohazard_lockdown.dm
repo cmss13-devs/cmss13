@@ -102,8 +102,7 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 
 	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/biohazard.ogg')
 	message_admins(log)
-	if(ares_can_log())
-		log_ares_security("Containment Lockdown", ares_log)
+	log_ares_security("Containment Lockdown", ares_log)
 
 #undef LOCKDOWN_READY
 #undef LOCKDOWN_ACTIVE

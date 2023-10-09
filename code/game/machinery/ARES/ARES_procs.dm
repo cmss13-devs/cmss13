@@ -77,48 +77,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 
 // ------ ARES Logging Procs ------ //
-/proc/log_ares_apollo(speaker, message)
-	if(!speaker)
-		speaker = "Unknown"
-	var/datum/ares_link/link = GLOB.ares_link
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	if(!istype(link) || !istype(datacore))
-		return FALSE
-	if(!link.processor_apollo || link.processor_apollo.inoperable())
-		return FALSE
-	if(!ares_can_log())
-		return FALSE
-	datacore.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
-
-/proc/log_ares_bioscan(title, input)
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
-
-/proc/log_ares_bombardment(user_name, ob_name, coordinates)
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user_name))
-
-/proc/log_ares_announcement(title, message)
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_announcement.Add(new /datum/ares_record/announcement(title, message))
-
-/proc/log_ares_requisition(source, details, user_name)
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user_name))
-
-/proc/log_ares_security(title, details)
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_security.Add(new /datum/ares_record/security(title, details))
-
-/proc/log_ares_antiair(details)
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_security.Add(new /datum/ares_record/security/antiair(details))
-
-/proc/log_ares_flight(user_name, details)
-	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_flight.Add(new /datum/ares_record/flight(details, user_name))
-// ------ End ARES Logging Procs ------ //
-
 /proc/ares_apollo_talk(broadcast_message)
 	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
@@ -144,6 +102,60 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	if(central_processor && !central_processor.inoperable())
 		return TRUE
 	return FALSE //CPU not found or is broken
+
+/proc/log_ares_apollo(speaker, message)
+	if(!ares_can_log())
+		return FALSE
+	var/datum/ares_link/link = GLOB.ares_link
+	if(!link.processor_apollo || link.processor_apollo.inoperable())
+		return FALSE
+	if(!speaker)
+		speaker = "Unknown"
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
+
+/proc/log_ares_bioscan(title, input)
+	if(!ares_can_log())
+		return FALSE
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
+
+/proc/log_ares_bombardment(user_name, ob_name, coordinates)
+	if(!ares_can_log())
+		return FALSE
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user_name))
+
+/proc/log_ares_announcement(title, message)
+	if(!ares_can_log())
+		return FALSE
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_announcement.Add(new /datum/ares_record/announcement(title, message))
+
+/proc/log_ares_requisition(source, details, user_name)
+	if(!ares_can_log())
+		return FALSE
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user_name))
+
+/proc/log_ares_security(title, details)
+	if(!ares_can_log())
+		return FALSE
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_security.Add(new /datum/ares_record/security(title, details))
+
+/proc/log_ares_antiair(details)
+	if(!ares_can_log())
+		return FALSE
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_security.Add(new /datum/ares_record/security/antiair(details))
+
+/proc/log_ares_flight(user_name, details)
+	if(!ares_can_log())
+		return FALSE
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_flight.Add(new /datum/ares_record/flight(details, user_name))
+// ------ End ARES Logging Procs ------ //
 
 // ------ ARES Interface Procs ------ //
 /obj/structure/machinery/computer/proc/get_ares_access(obj/item/card/id/card)

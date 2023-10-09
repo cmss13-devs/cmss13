@@ -145,8 +145,7 @@
 
 			log_game("[key_name(usr)] has called for an emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
-			if(ares_can_log())
-				log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
+			log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
 			. = TRUE
 
 		if("distress")

@@ -1045,8 +1045,7 @@ var/datum/controller/supply/supply_controller = new()
 						pack_source = "Unknown"
 						if(prob(90))
 							pack_name = "Unknown"
-					if(ares_can_log())
-						log_ares_requisition(pack_source, pack_name, usr.name)
+					log_ares_requisition(pack_source, pack_name, usr.name)
 				else
 					temp = "Not enough money left.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"

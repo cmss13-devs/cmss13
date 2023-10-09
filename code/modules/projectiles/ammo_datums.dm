@@ -2464,9 +2464,6 @@
 		else
 			M.apply_effect(stun_time, WEAKEN)
 
-
-
-
 /datum/ammo/energy/yautja/rifle/bolt
 	name = "plasma rifle bolt"
 	icon_state = "ion"

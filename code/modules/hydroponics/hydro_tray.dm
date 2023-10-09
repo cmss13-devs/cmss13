@@ -1,4 +1,5 @@
 #define HYDRO_SPEED_MULTIPLIER 1
+#define HYDRO_WATER_CONSUMPTION_MULTIPLIER 1.5
 
 /obj/structure/machinery/portable_atmospherics/hydroponics
 	name = "hydroponics tray"
@@ -206,7 +207,7 @@
 	if(seed.nutrient_consumption > 0 && nutrilevel > 0 && prob(25))
 		nutrilevel -= max(0,seed.nutrient_consumption * HYDRO_SPEED_MULTIPLIER)
 	if(seed.water_consumption > 0 && waterlevel > 0  && prob(25))
-		waterlevel -= max(0,seed.water_consumption * HYDRO_SPEED_MULTIPLIER)
+		waterlevel -= round(max(0,(seed.water_consumption * HYDRO_WATER_CONSUMPTION_MULTIPLIER) * HYDRO_SPEED_MULTIPLIER))
 
 	// Make sure the plant is not starving or thirsty. Adequate
 	// water and nutrients will cause a plant to become healthier.
@@ -219,16 +220,8 @@
 	if(nutrilevel < 1)
 		plant_health = 0
 
-	// Check that pressure, heat and light are all within bounds.
+	// Check that pressure, heat are all within bounds.
 	// First, handle an open system or an unconnected closed system.
-
-	var/turf/T = loc
-
-	// Handle light requirements.
-	if(T)
-		var/light_available = T.get_lumcount(0, 10)
-		if(abs(light_available - seed.ideal_light) > seed.light_tolerance)
-			plant_health -= healthmod
 
 	// Toxin levels beyond the plant's tolerance cause damage, but
 	// toxins are sucked up each tick and slowly reduce over time.
@@ -606,6 +599,25 @@
 		else
 			to_chat(user, SPAN_DANGER("This plot is completely devoid of weeds. It doesn't need uprooting."))
 
+	else if (istype(O, /obj/item/tool/shovel/spade))
+		if(isnull(seed))
+			return
+		user.visible_message(SPAN_DANGER("[user] starts to uproot the plant."), SPAN_DANGER("You begin removing plant from [src]..."))
+		if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
+			return
+		to_chat(user, SPAN_NOTICE("You remove the plant from [src]."))
+		seed = null
+		dead = 0
+		sampled = 0
+		age = 0
+		harvest = 0
+		toxins = 0
+		yield_mod = 0
+		mutation_mod = 0
+
+		check_level_sanity()
+		update_icon()
+
 	else if (istype(O, /obj/item/storage/bag/plants))
 
 		attack_hand(user)
@@ -663,20 +675,9 @@
 
 	return info
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/soil/show_hydro_info(mob/user as mob)
-	var/info = ..()
-	var/turf/T = loc
-	var/area/A = T.loc
-	var/light_available
-	if(A)
-		light_available = max(0,min(10,T.dynamic_lumcount)-5)
-
-	info += "The tray's sensor suite is reporting a light level of [light_available] lumens.\n"
-	return info
-
 /obj/structure/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
 
-	if(istype(usr,/mob/living/silicon))
+	if(istype(user, /mob/living/silicon))
 		return
 
 	if(harvest)
@@ -684,19 +685,7 @@
 	else if(dead)
 		remove_dead(user)
 	else
-		to_chat(usr, show_hydro_info(user))
-
-/obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid()
-	set name = "Toggle Tray Lid"
-	set category = "Object"
-	set src in view(1)
-
-	if(!usr || usr.stat || usr.is_mob_restrained())
-		return
-
-	closed_system = !closed_system
-	to_chat(usr, "You [closed_system ? "close" : "open"] the tray's lid.")
-	update_icon()
+		to_chat(user, show_hydro_info(user))
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/verb/flush() //used to reset the tray
 	set name = "Flush Tray"
@@ -716,7 +705,7 @@
 	toxins = 0
 	yield_mod = 0
 	mutation_mod = 0
-	waterlevel = 100
+	waterlevel = 0
 	nutrilevel = 0
 	pestlevel = 0
 	weedlevel = 0
@@ -743,8 +732,5 @@
 	else
 		..()
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/soil/Initialize()
-	. = ..()
-	verbs -= /obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid
-
 #undef HYDRO_SPEED_MULTIPLIER
+#undef HYDRO_WATER_CONSUMPTION_MULTIPLIER

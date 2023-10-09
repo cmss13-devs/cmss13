@@ -146,11 +146,11 @@ const OldMapPanel = (props, context) => {
   const { data } = useBackend<TacMapProps>(context);
   return (
     <Section fill justify="center" align="center" fontSize="30px">
-        <DrawnMap
-          svgData={data.svgData}
-          flatImage={data.oldCanvasFlatImage}
-          backupImage={data.currentMapName}
-        />
+      <DrawnMap
+        svgData={data.svgData}
+        flatImage={data.oldCanvasFlatImage}
+        backupImage={data.currentMapName}
+      />
     </Section>
   );
 };

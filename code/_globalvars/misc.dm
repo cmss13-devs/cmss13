@@ -25,6 +25,9 @@ GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)
 
 GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_box_mapping())
 
+GLOBAL_VAR_INIT(current_marine_tacmap_announcement_status, TRUE)
+GLOBAL_VAR_INIT(current_xeno_tacmap_announcement_status, TRUE)
+
 //global tacmap for action button access
 GLOBAL_DATUM_INIT(tacmap_datum, /datum/tacmap/status_tab_view, new)
 

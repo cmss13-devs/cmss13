@@ -339,29 +339,47 @@ SUBSYSTEM_DEF(minimaps)
 	return map
 
 /**
- * Fetches either a datum containing either a flattend map png reference or a set of given svg coords
+ * Fetches either a datum containing either a flattend map png reference or a set of given svg coords, proc is getting rather bloated. I'll probably split this up later.
+ * PLEASE READ:something to note for tha return_current_map if it's false. The perference is to return the current map if it's been announced, but if it hasn't been then it will return the old one.
+ * it's a bit confusing, so it will be refactored later.
  * Arguments:
  * * user: mob, to determine which faction get the map from.
  * * asset_type: true for png, false for svg
+ * * return_current_map: if we want to access the previous map or the current flattened one, true for current, false for previous, although if the current is available it will default to that.
  */
-/datum/proc/get_current_tacmap_data(mob/user, asset_type)
+/datum/proc/get_current_tacmap_data(mob/user, asset_type, return_last_map=FALSE)
 	var/list/map_list
+	var/faction_announcement_status
 	if(ishuman(user))
 		if(asset_type)
 			map_list = GLOB.uscm_flat_tacmap_png_asset
+			faction_announcement_status = GLOB.current_marine_tacmap_announcement_status
 		else
 			map_list = GLOB.uscm_svg_overlay
 	else
 		if(asset_type)
 			map_list = GLOB.xeno_flat_tacmap_png_asset
+			faction_announcement_status = GLOB.current_xeno_tacmap_announcement_status
 		else
 			map_list = GLOB.xeno_svg_overlay
-
 
 	if(map_list.len == 0)
 		return
 
-	return map_list[map_list.len]
+	// returning the svg
+	if(!asset_type)
+		return map_list[map_list.len]
+
+	// edge case so we don't attempt to return a non-existant old map
+	if(map_list.len == 1)
+		return map_list[map_list.len]
+
+	// if the current tacmap has been announced or the expected return type is the most up to date map then we return the CURRENT map
+	if(faction_announcement_status || return_last_map)
+		return map_list[map_list.len]
+	else
+		// otherwise we return the previous map
+		return map_list[map_list.len - 1]
 
 /**
  * flattens the current map and then distributes it based off user faction.
@@ -552,7 +570,14 @@ SUBSYSTEM_DEF(minimaps)
 	var/updated_canvas = FALSE
 
 	// datums for holding both the flattend png asset reference and an svg overlay. It's best to keep them separate with the current implementation imo.
-	var/datum/flattend_tacmap_png/current_map = new
+
+	// current flattend map
+	var/datum/flattend_tacmap_png/new_current_map = new
+
+	// previous flattened map
+	var/datum/flattend_tacmap_png/old_map = new
+
+	// current svg
 	var/datum/svg_overlay/current_svg = new
 
 /datum/tacmap/New(atom/source, minimap_type)
@@ -587,12 +612,19 @@ SUBSYSTEM_DEF(minimaps)
 
 		var/mob/living/carbon/xenomorph/xeno = user
 		if(ishuman(user) || isxeno(user) && xeno.hivenumber == XENO_HIVE_NORMAL)
-			current_map = get_current_tacmap_data(user, TRUE)
-			current_svg = get_current_tacmap_data(user, FALSE)
-			if(!current_map)
+			old_map = get_current_tacmap_data(user, asset_type=TRUE)
+			current_svg = get_current_tacmap_data(user, asset_type=FALSE)
+			new_current_map = get_current_tacmap_data(user, asset_type=TRUE, return_last_map=TRUE)
+			if(!new_current_map)
 				if(!distribute_current_map_png(user))
 					return
-				current_map = get_current_tacmap_data(user, TRUE)
+				new_current_map = get_current_tacmap_data(user, asset_type=TRUE, return_last_map=TRUE)
+				old_map = get_current_tacmap_data(user, asset_type=TRUE)
+				if(ishuman(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || isqueen(user))
+					if(ishuman(user))
+						GLOB.current_marine_tacmap_announcement_status = FALSE
+					else
+						GLOB.current_xeno_tacmap_announcement_status = FALSE
 
 
 		user.client.register_map_obj(map_holder.map)
@@ -602,7 +634,8 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
 
-	data["flatImage"] = current_map.flat_tacmap
+	data["newCanvasFlatImage"] = new_current_map.flat_tacmap
+	data["oldCanvasFlatImage"] = old_map.flat_tacmap
 
 	data["svgData"] = null
 
@@ -624,7 +657,6 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_static_data(mob/user)
 	var/list/data = list()
-
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
@@ -644,13 +676,16 @@ SUBSYSTEM_DEF(minimaps)
 		data["canViewTacmap"] = TRUE
 		if(!distribute_current_map_png(user))
 			return data
-		current_map = get_current_tacmap_data(user, TRUE)
+		new_current_map = get_current_tacmap_data(user, asset_type=TRUE, return_last_map=TRUE)
+		if(ishuman(user))
+			GLOB.current_marine_tacmap_announcement_status = FALSE
+		else
+			GLOB.current_xeno_tacmap_announcement_status = FALSE
 
 	return data
 
 /datum/tacmap/status_tab_view/ui_static_data(mob/user)
 	var/list/data = list()
-
 	data["currentMapName"] = map_reference
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
@@ -681,8 +716,12 @@ SUBSYSTEM_DEF(minimaps)
 				toolbar_updated_selection = toolbar_color_selection  // doing this if it == canvas can cause a latency issue with the stroke.
 			else
 				if(!distribute_current_map_png(user))
-					return
-				current_map = get_current_tacmap_data(user, TRUE)
+					return TRUE
+				if(ishuman(user))
+					GLOB.current_marine_tacmap_announcement_status = FALSE
+				else
+					GLOB.current_xeno_tacmap_announcement_status = FALSE
+				new_current_map = get_current_tacmap_data(user, asset_type=TRUE, return_current_map=TRUE)
 
 			. = TRUE
 
@@ -724,14 +763,17 @@ SUBSYSTEM_DEF(minimaps)
 				var/mob/living/carbon/xenomorph/xeno = user
 				xeno_maptext("The Queen has updated your hive mind map", "You sense something unusual...", xeno.hivenumber)
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, canvas_cooldown_time)
+				GLOB.current_xeno_tacmap_announcement_status = TRUE
 			else
 				var/mob/living/carbon/human/human_leader = user
 				for(var/datum/squad/current_squad in RoleAuthority.squads)
 					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
-
 				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
 				playsound_client(human_leader.client, "sound/effects/sos-morse-code.ogg")
 				COOLDOWN_START(GLOB, uscm_canvas_cooldown, canvas_cooldown_time)
+				GLOB.current_marine_tacmap_announcement_status = TRUE
+
+			old_map = get_current_tacmap_data(user, asset_type=TRUE)
 
 			toolbar_updated_selection = toolbar_color_selection
 			message_admins("[key_name(user)] has updated the tactical map")

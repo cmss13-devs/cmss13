@@ -15,7 +15,8 @@ interface TacMapProps {
   canDraw: number;
   isXeno: boolean;
   canViewCanvas: number;
-  flatImage: string;
+  newCanvasFlatImage: string;
+  oldCanvasFlatImage: string;
   currentMapName: string;
   mapRef: any;
   currentMenu: string;
@@ -145,15 +146,11 @@ const OldMapPanel = (props, context) => {
   const { data } = useBackend<TacMapProps>(context);
   return (
     <Section fill justify="center" align="center" fontSize="30px">
-      {data.flatImage ? (
         <DrawnMap
           svgData={data.svgData}
-          flatImage={data.flatImage}
+          flatImage={data.oldCanvasFlatImage}
           backupImage={data.currentMapName}
         />
-      ) : (
-        'Please wait for a new tacmap announcement'
-      )}
     </Section>
   );
 };
@@ -266,7 +263,7 @@ const DrawMapPanel = (props, context) => {
       <Section>
         <CanvasLayer
           selection={handleColorSelection()}
-          imageSrc={data.flatImage}
+          imageSrc={data.newCanvasFlatImage}
           onImageExport={handleTacMapExport}
         />
       </Section>

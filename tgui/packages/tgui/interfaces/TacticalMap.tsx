@@ -17,6 +17,8 @@ interface TacMapProps {
   canViewCanvas: number;
   newCanvasFlatImage: string;
   oldCanvasFlatImage: string;
+  actionQueueChange: number;
+  exportedColor: string;
   currentMapName: string;
   mapRef: any;
   currentMenu: string;
@@ -166,14 +168,11 @@ const DrawMapPanel = (props, context) => {
     data.exportedTacMapImage = image;
   };
 
-  const handleColorSelection = () => {
-    if (
-      colors[data.toolbarUpdatedSelection] !== null &&
-      colors[data.toolbarUpdatedSelection] !== undefined
-    ) {
-      return colors[data.toolbarUpdatedSelection];
+  const handleColorSelection = (dataSelection) => {
+    if (colors[dataSelection] !== null && colors[dataSelection] !== undefined) {
+      return colors[dataSelection];
     } else {
-      return data.toolbarUpdatedSelection;
+      return dataSelection;
     }
   };
 
@@ -262,8 +261,10 @@ const DrawMapPanel = (props, context) => {
       </Section>
       <Section>
         <CanvasLayer
-          selection={handleColorSelection()}
+          selection={handleColorSelection(data.toolbarUpdatedSelection)}
+          actionQueueChange={data.actionQueueChange}
           imageSrc={data.newCanvasFlatImage}
+          prevColor={handleColorSelection(data.toolbarColorSelection)}
           onImageExport={handleTacMapExport}
         />
       </Section>

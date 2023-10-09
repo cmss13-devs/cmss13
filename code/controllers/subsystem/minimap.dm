@@ -580,6 +580,8 @@ SUBSYSTEM_DEF(minimaps)
 	// current svg
 	var/datum/svg_overlay/current_svg = new
 
+	var/action_queue_change = 0
+
 /datum/tacmap/New(atom/source, minimap_type)
 	allowed_flags = minimap_type
 	owner = source
@@ -642,6 +644,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(current_svg)
 		data["svgData"] = current_svg.svg_data
 
+	data["actionQueueChange"] = action_queue_change
 	data["mapRef"] = map_holder.map_ref
 	data["toolbarColorSelection"] = toolbar_color_selection
 	data["toolbarUpdatedSelection"] = toolbar_updated_selection
@@ -696,6 +699,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_close(mob/user)
 	. = ..()
+	action_queue_change = 0
 	updated_canvas = FALSE
 	toolbar_color_selection = "black"
 	toolbar_updated_selection = "black"
@@ -729,26 +733,23 @@ SUBSYSTEM_DEF(minimaps)
 			// forces state change, this will export the svg.
 			toolbar_updated_selection = "export"
 			updated_canvas = TRUE
+			action_queue_change += 1
 			. = TRUE
 
 		if ("clearCanvas")
-			if(toolbar_updated_selection == "clear")
-				toolbar_updated_selection = toolbar_color_selection
-				return
 			toolbar_updated_selection = "clear"
+			action_queue_change += 1
 			. = TRUE
 
 		if ("undoChange")
-			if(toolbar_updated_selection == "undo")
-				toolbar_updated_selection = toolbar_color_selection
-				return
 			toolbar_updated_selection = "undo"
+			action_queue_change += 1
 			. = TRUE
 
 		if ("selectColor")
-
 			toolbar_color_selection = params["color"]
 			toolbar_updated_selection = toolbar_color_selection
+			action_queue_change += 1
 			. = TRUE
 
 		if ("selectAnnouncement")

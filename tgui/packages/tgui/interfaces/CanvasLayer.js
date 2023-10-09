@@ -10,6 +10,7 @@ export class CanvasLayer extends Component {
     // using this.state prevents unpredictable behavior
     this.state = {
       selection: this.props.selection,
+      action: this.props.actionQueueChange,
     };
 
     // needs to be of type png of jpg
@@ -135,7 +136,6 @@ export class CanvasLayer extends Component {
       if (line.length === 0) {
         return;
       }
-      const prevColor = line[0][4];
 
       this.ctx.clearRect(
         0,
@@ -161,7 +161,8 @@ export class CanvasLayer extends Component {
           this.ctx.stroke();
         });
       });
-      this.setState({ selection: prevColor });
+
+      this.setState({ selection: this.props.prevColor });
       return;
     }
 
@@ -175,7 +176,7 @@ export class CanvasLayer extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    if (prevProps.selection !== this.props.selection) {
+    if (prevProps.actionQueueChange !== this.props.actionQueueChange) {
       this.handleSelectionChange();
     }
   }

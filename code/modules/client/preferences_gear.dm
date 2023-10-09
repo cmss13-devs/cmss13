@@ -62,6 +62,10 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange
 
+/datum/gear/eyewear/goggles2
+	display_name = "Ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2
+
 /datum/gear/eyewear/bimex_shades
 	display_name = "BiMex personal shades"
 	path = /obj/item/clothing/glasses/sunglasses/big
@@ -204,6 +208,14 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/headwear/uscm/beret_tan
 	display_name = "USCM beret, tan"
 	path = /obj/item/clothing/head/beret/cm/tan
+
+/datum/gear/headwear/uscm/beret_black
+	display_name = "USCM beret, black"
+	path = /obj/item/clothing/head/beret/cm/black
+
+/datum/gear/headwear/uscm/beret_white
+	display_name = "USCM beret, white"
+	path = /obj/item/clothing/head/beret/cm/white
 
 /datum/gear/headwear/uscm/boonie_olive
 	display_name = "USCM boonie hat, olive"

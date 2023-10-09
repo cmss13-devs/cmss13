@@ -340,12 +340,12 @@ SUBSYSTEM_DEF(minimaps)
 
 /**
  * Fetches either a datum containing either a flattend map png reference or a set of given svg coords, proc is getting rather bloated. I'll probably split this up later.
- * PLEASE READ:something to note for tha return_current_map if it's false. The perference is to return the current map if it's been announced, but if it hasn't been then it will return the old one.
+ * PLEASE READ:something to note for tha return_last_map if it's false. The perference is to return the current map if it's been announced, but if it hasn't been then it will return the old one.
  * it's a bit confusing, so it will be refactored later.
  * Arguments:
  * * user: mob, to determine which faction get the map from.
  * * asset_type: true for png, false for svg
- * * return_current_map: if we want to access the previous map or the current flattened one, true for current, false for previous, although if the current is available it will default to that.
+ * * return_last_map: if we want to access the previous map or the current flattened one, true for current, false for previous, although if the current is available it will default to that.
  */
 /datum/proc/get_current_tacmap_data(mob/user, asset_type, return_last_map=FALSE)
 	var/list/map_list
@@ -389,8 +389,14 @@ SUBSYSTEM_DEF(minimaps)
  * * returns a boolean value, true if the operation was successful, false if it was not.
  */
 /datum/tacmap/proc/distribute_current_map_png(mob/user)
-	if(!COOLDOWN_FINISHED(src, flatten_map_cooldown))
-		return FALSE
+	if(!isqueen(user) && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
+		if(!COOLDOWN_FINISHED(GLOB, cic_flatten_map_icon_cooldown))
+			return FALSE
+		COOLDOWN_START(GLOB, cic_flatten_map_icon_cooldown, flatten_map_cooldown_time)
+	else
+		if(!COOLDOWN_FINISHED(src, flatten_map_cooldown))
+			return FALSE
+		COOLDOWN_START(src, flatten_map_cooldown, flatten_map_cooldown_time)
 	var/icon/flat_map = getFlatIcon(map_holder.map, appearance_flags = TRUE)
 	if(!flat_map)
 		to_chat(user, SPAN_WARNING("The tacmap filckers and then shuts off, a critical error has occurred! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
@@ -412,7 +418,6 @@ SUBSYSTEM_DEF(minimaps)
 				faction_clients += client
 		else if(client_mob.faction == user_faction)
 			faction_clients += client
-	COOLDOWN_START(src, flatten_map_cooldown, flatten_map_cooldown_time)
 	var/flat_tacmap_png = icon2html(flat_map, faction_clients, sourceonly = TRUE)
 	var/datum/flattend_tacmap_png/new_flat = new(flat_tacmap_png)
 	if(!isxeno(user))
@@ -561,6 +566,8 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/canvas_cooldown_time = 4 MINUTES
 	var/flatten_map_cooldown_time = 3 MINUTES
+
+	//flatten cooldown for xenos,queen,marines. Cic has their own that is globally defined.
 	COOLDOWN_DECLARE(flatten_map_cooldown)
 
 	//tacmap holder for holding the minimap
@@ -725,7 +732,7 @@ SUBSYSTEM_DEF(minimaps)
 					GLOB.current_marine_tacmap_announcement_status = FALSE
 				else
 					GLOB.current_xeno_tacmap_announcement_status = FALSE
-				new_current_map = get_current_tacmap_data(user, asset_type=TRUE, return_current_map=TRUE)
+				new_current_map = get_current_tacmap_data(user, asset_type=TRUE, return_last_map=TRUE)
 
 			. = TRUE
 

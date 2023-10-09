@@ -18,6 +18,9 @@ GLOBAL_VAR(ooc_color_override)
 GLOBAL_VAR_INIT(uscm_canvas_cooldown, 0)
 GLOBAL_VAR_INIT(xeno_canvas_cooldown, 0)
 
+// getFlatIcon cooldown for cic only
+GLOBAL_VAR_INIT(cic_flatten_map_icon_cooldown, 0)
+
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_INIT(gamemode_roles, list())
 

@@ -10,7 +10,6 @@ export class CanvasLayer extends Component {
     // using this.state prevents unpredictable behavior
     this.state = {
       selection: this.props.selection,
-      action: this.props.actionQueueChange,
     };
 
     // needs to be of type png of jpg

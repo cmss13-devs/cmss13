@@ -1,0 +1,4 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - rscdel: "XO can no longer take a sword as their personal weapon in their vendor."

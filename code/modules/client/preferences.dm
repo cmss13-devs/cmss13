@@ -1693,6 +1693,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("origin")
 					var/choice = tgui_input_list(user, "Please choose your character's origin.", "Origin Selection", GLOB.player_origins)
+					var/datum/origin/picked_choice = GLOB.origins[choice]
+					if(tgui_alert(user, "You've selected [picked_choice.name].\n\n[picked_choice.desc]", list("Confirm", "Cancel")) == "Cancel")
+						return
 					if(choice)
 						origin = choice
 

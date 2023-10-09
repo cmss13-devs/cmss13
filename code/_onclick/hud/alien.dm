@@ -64,10 +64,10 @@
 	var/mob/living/carbon/xenomorph/H = mymob
 	if(hud_version != HUD_STYLE_NOHUD)
 		if(H.r_hand)
-			H.client.screen += H.r_hand
+			H.client.add_to_screen(H.r_hand)
 			H.r_hand.screen_loc = ui_alien_datum.hud_slot_offset(H.r_hand, ui_alien_datum.ui_rhand)
 		if(H.l_hand)
-			H.client.screen += H.l_hand
+			H.client.add_to_screen(H.l_hand)
 			H.l_hand.screen_loc = ui_alien_datum.hud_slot_offset(H.l_hand, ui_alien_datum.ui_lhand)
 	else
 		if(H.r_hand)

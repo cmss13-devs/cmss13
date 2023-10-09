@@ -211,7 +211,8 @@
 		update_inv_l_hand()
 
 	if (client)
-		client.screen -= I
+		client.remove_from_screen(I)
+
 	I.layer = initial(I.layer)
 	I.plane = initial(I.plane)
 	if(newloc)

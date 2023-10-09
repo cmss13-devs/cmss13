@@ -381,6 +381,22 @@
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
 
+/obj/item/clothing/accessory/poncho/green
+	icon_state = "poncho"
+
+/obj/item/clothing/accessory/poncho/brown
+	icon_state = "d_poncho"
+
+/obj/item/clothing/accessory/poncho/black
+	icon_state = "u_poncho"
+
+/obj/item/clothing/accessory/poncho/blue
+	icon_state = "c_poncho"
+
+/obj/item/clothing/accessory/poncho/purple
+	icon_state = "s_poncho"
+
+
 //Ties that can store stuff
 
 /obj/item/storage/internal/accessory
@@ -598,6 +614,30 @@
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped
 	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
+/obj/item/clothing/accessory/storage/surg_vest/drop_blue
+	name = "blue surgical drop pouch"
+	desc = "A matte blue synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_blue"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_green
+	name = "green surgical drop pouch"
+	desc = "A greenish synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_green"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_green/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_black
+	name = "black surgical drop pouch"
+	desc = "A tactical black synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_black"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_black/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "M272 pattern knife vest"
 	desc = "An older generation M272 pattern knife vest once employed by the USCM. Can hold up to 5 knives. It is made of synthcotton."
@@ -671,7 +711,6 @@
 
 	hold = /obj/item/storage/internal/accessory/drop_pouch
 
-
 /obj/item/storage/internal/accessory/drop_pouch
 	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
@@ -680,6 +719,7 @@
 	cant_hold = list( //Prevent inventory powergame
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,
+		/obj/item/storage/toolkit,
 		)
 	storage_flags = NONE //no verb, no quick draw, no tile gathering
 
@@ -728,7 +768,7 @@
 
 	..()
 
-/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, stop_messages)
+/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
 		if(isgun(W))
 			if(current_gun)

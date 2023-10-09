@@ -174,6 +174,10 @@
 /// The time it takes for a pylon to give one larva while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)
 
+/// The time until you can re-corrupt a comms relay after the last pylon was destroyed
+#define XENO_PYLON_DESTRUCTION_DELAY (5 MINUTES)
+
+
 /// The time against away_timer when an AFK xeno larva can be replaced
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
 /// The time against away_timer when an AFK xeno (not larva) can be replaced

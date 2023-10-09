@@ -2,9 +2,6 @@
 				BLOOD SYSTEM
 */
 
-#define LOW_BLOOD_SEVERITY_LIGHT "1" // very woozy
-#define LOW_BLOOD_SEVERITY_MEDIUM "2" // extremely woozy
-
 /mob/living/proc/handle_blood()
 	return
 
@@ -47,26 +44,39 @@
 			if(oxyloss < maximum_oxyloss)
 				oxyloss += round(max(additional_oxyloss, 0))
 
-/mob/living/carbon/human/proc/low_blood_messsage(severity)
-	var/msg
-	var/severity_mod
-
-	if(species.flags & IS_SYNTHETIC)
-		if(!severity)
-			severity_mod = "fault"
-		else
-			severity_mod = "failure"
-		msg = "Internal power cell [severity_mod] detected.\nPlease seek the nearest recharging station."
-
-	else
-		switch(severity)
-			if(1)
-				severity_mod = "very "
-			if(2)
-				severity_mod = "extremely "
-		msg = "You feel [severity_mod][pick("dizzy","woozy","faint")]."
-
-	to_chat(src, SPAN_DANGER(msg))
+		switch(b_volume)
+			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+				if(prob(1))
+					var/word = pick("dizzy","woozy","faint")
+					to_chat(src, SPAN_DANGER("You feel [word]."))
+			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+				if(species.flags & IS_SYNTHETIC)
+					if(prob(10))
+						apply_effect(rand(1,2), WEAKEN)
+						to_chat(src, SPAN_DANGER("Internal power cell fault detected.\nSeek nearest recharging station."))
+				if(eye_blurry < 50)
+					AdjustEyeBlur(6)
+				oxyloss += 3
+				if(prob(15))
+					apply_effect(rand(1,3), PARALYZE)
+					var/word = pick("dizzy","woozy","faint")
+					to_chat(src, SPAN_DANGER("You feel very [word]."))
+			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
+				if(species.flags & IS_SYNTHETIC)
+					if(prob(10))
+						apply_effect(rand(2,3), PARALYZE)
+						to_chat(src, SPAN_DANGER("Critical power cell failure detected.\nSeek recharging station immediately."))
+				else
+					if(eye_blurry < 50)
+						AdjustEyeBlur(6)
+						oxyloss += 8
+						toxloss += 3
+					if(prob(15))
+						apply_effect(rand(1,3), PARALYZE)
+						var/word = pick("dizzy","woozy","faint")
+						to_chat(src, SPAN_DANGER("You feel extremely [word]."))
+			if(0 to BLOOD_VOLUME_SURVIVE)
+				death(create_cause_data(species.flags & IS_SYNTHETIC ? "power failure" : "blood loss"))
 
 
 // Xeno blood regeneration

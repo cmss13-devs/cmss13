@@ -754,8 +754,11 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("selectColor")
-			toolbar_color_selection = params["color"]
-			toolbar_updated_selection = toolbar_color_selection
+
+			var/newColor = params["color"]
+			if(newColor)
+				toolbar_color_selection = newColor
+				toolbar_updated_selection = newColor
 			action_queue_change += 1
 			. = TRUE
 

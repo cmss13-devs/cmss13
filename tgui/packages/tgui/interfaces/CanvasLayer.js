@@ -10,6 +10,7 @@ export class CanvasLayer extends Component {
     // using this.state prevents unpredictable behavior
     this.state = {
       selection: this.props.selection,
+      mapLoad: true,
     };
 
     // needs to be of type png of jpg
@@ -37,6 +38,14 @@ export class CanvasLayer extends Component {
 
     this.img.src = this.imageSrc;
 
+    this.img.onload = () => {
+      this.setState({ mapLoad: true });
+    };
+
+    this.img.onerror = () => {
+      this.setState({ mapLoad: false });
+    };
+
     this.drawCanvas();
 
     this.canvasRef.current.addEventListener('mousedown', this.handleMouseDown);
@@ -45,6 +54,8 @@ export class CanvasLayer extends Component {
   }
 
   componentWillUnmount() {
+    // otherwise we get a runtime
+    if (!this.state.mapLoad) return;
     this.canvasRef.current.removeEventListener(
       'mousedown',
       this.handleMouseDown
@@ -136,6 +147,8 @@ export class CanvasLayer extends Component {
         return;
       }
 
+      const prevColor = line[0][4];
+
       this.ctx.clearRect(
         0,
         0,
@@ -161,7 +174,8 @@ export class CanvasLayer extends Component {
         });
       });
 
-      this.setState({ selection: this.props.prevColor });
+      this.setState({ selection: prevColor });
+      this.props.onUndo(prevColor);
       return;
     }
 
@@ -208,6 +222,17 @@ export class CanvasLayer extends Component {
   }
 
   render() {
-    return <canvas ref={this.canvasRef} width={650} height={590} />;
+    // edge case where a new user joins and tries to draw on the canvas before they cached the png
+    return (
+      <div>
+        {this.state.mapLoad ? (
+          <canvas ref={this.canvasRef} width={650} height={590} />
+        ) : (
+          <h2>
+            Please wait a few minutes before attempting to access the canvas
+          </h2>
+        )}
+      </div>
+    );
   }
 }

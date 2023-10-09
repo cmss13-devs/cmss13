@@ -67,12 +67,12 @@ const colorOptions = [
 
 const colors: Record<string, string> = {
   'black': '#000000',
-  'red': '#FC0000',
-  'orange': '#F59A07',
-  'blue': '#0561F5',
-  'purple': '#C002FA',
+  'red': '#fc0000',
+  'orange': '#f59a07',
+  'blue': '#0561f5',
+  'purple': '#c002fa',
   'green': '#02c245',
-  'brown': '#5C351E',
+  'brown': '#5c351e',
 };
 
 export const TacticalMap = (props, context) => {
@@ -175,6 +175,11 @@ const DrawMapPanel = (props, context) => {
       return dataSelection;
     }
   };
+  const findColorValue = (oldValue: string) => {
+    return (Object.keys(colors) as Array<string>).find(
+      (key) => colors[key] === (oldValue as string)
+    );
+  };
 
   return (
     <>
@@ -237,6 +242,7 @@ const DrawMapPanel = (props, context) => {
               selected={data.toolbarColorSelection}
               color={data.toolbarColorSelection}
               onSelected={(value) => act('selectColor', { color: value })}
+              displayText={data.toolbarColorSelection}
             />
           </Stack.Item>
         </Stack>
@@ -264,8 +270,10 @@ const DrawMapPanel = (props, context) => {
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}
           imageSrc={data.newCanvasFlatImage}
-          prevColor={handleColorSelection(data.toolbarColorSelection)}
           onImageExport={handleTacMapExport}
+          onUndo={(value) =>
+            act('selectColor', { color: findColorValue(value) })
+          }
         />
       </Section>
     </>

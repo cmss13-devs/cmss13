@@ -1134,8 +1134,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "pmc_sniper")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth
-	name = "\improper M4 synthetic PMC armor"
+	name = "\improper M4 Synthetic PMC armor"
+	icon_state = "pmc_synth"
 	desc = "A modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, offering protection and storage while not restricting movement."
+	flags_marine_armor = SYNTH_ALLOWED
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	armor_melee = CLOTHING_ARMOR_NONE

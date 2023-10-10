@@ -118,3 +118,12 @@
   - rscadd: tactical shotguns now come standard with their stock. Yes you can remove
       it if you dont want it
   - rscadd: new tactical shotgun stock sprite done by esselnek
+2023-10-10:
+  BeagleGaming1:
+  - code_imp: prop guns will copy attachments
+  CapCamIII:
+  - rscdel: XO can no longer take a sword as their personal weapon in their vendor.
+  realforest2001:
+  - rscadd: Added missing flight record for Queen dropship summon.
+  - code_imp: Added security record option for shipwide_ai_announcement.
+  - rscadd: Added security records for unidentified lifeforms announcement.

@@ -84,3 +84,46 @@
 2023-10-06:
   blackdragonTOW:
   - bugfix: fixed spider dead sprite to not have white space (is transparent instead)
+2023-10-08:
+  Kivts:
+  - rscadd: You can partially protect yourself from flu and other disease by wearing
+      a mask and other PPE. Doesnt affect Black Goo.
+  Steelpoint:
+  - rscadd: Black and white beret's have been added as loadout options for all characters
+      as headwear.
+  - rscadd: More cosmetic options are on offer for Synthetics. Includes white and
+      black berets, standard or darker engineering and mp uniforms and all camo options
+      for the poncho.
+  - rscadd: The Synth Councillor and Synth Utility uniforms can now roll their sleeves.
+  blackdragonTOW:
+  - spellcheck: Altered inconsistent dropship ammo names
+  irRegularGuy646:
+  - rscadd: Added new "M1A1" ballistic goggle reskin
+  kiVts:
+  - rscadd: Spades can now remove botany plants.
+  - rscadd: Plants now globally take more water to grow.
+  - code_imp: removed all mention of lighting in botany trays.
+  - bugfix: Research computer no longer shows "for" for every simulation result.
+  realforest2001:
+  - rscadd: Added a Do Not Disturb feature for MOST phones. (Overwatch and a couple
+      others excluded).
+  spartanbobby:
+  - maptweak: Fixes floating Cameras and Light in the maint tunnels north of south
+      of brig
+  - maptweak: Fixes incorrect Shower tiles in maint shower north of engineering
+  - maptweak: Fixes incorrect area in maint south of VC bunk
+  - maptweak: Removes Piano from USS Almayer upper lifeboat area
+2023-10-09:
+  SpartanBobby, esselnek:
+  - rscadd: tactical shotguns now come standard with their stock. Yes you can remove
+      it if you dont want it
+  - rscadd: new tactical shotgun stock sprite done by esselnek
+2023-10-10:
+  BeagleGaming1:
+  - code_imp: prop guns will copy attachments
+  CapCamIII:
+  - rscdel: XO can no longer take a sword as their personal weapon in their vendor.
+  realforest2001:
+  - rscadd: Added missing flight record for Queen dropship summon.
+  - code_imp: Added security record option for shipwide_ai_announcement.
+  - rscadd: Added security records for unidentified lifeforms announcement.

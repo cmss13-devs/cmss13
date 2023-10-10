@@ -246,6 +246,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	// EYEWEAR
 	/obj/item/clothing/glasses/mgoggles = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/clothing/glasses/mgoggles/v2 = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/prescription = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/black = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/orange = HELMET_GARB_RELAY_ICON_STATE,

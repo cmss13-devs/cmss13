@@ -22,6 +22,7 @@
 	var/airlock_type = "generic" //the type path of the airlock once completed
 	var/glass = AIRLOCK_NOGLASS // see defines
 	var/created_name = null
+	var/width = 1
 /obj/structure/airlock_assembly/Initialize(mapload, ...)
 	. = ..()
 
@@ -207,7 +208,12 @@
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You finish the airlock!"))
 				var/path
-				if (glass == AIRLOCK_GLASSIN)
+				if (width > 1)
+					if (glass == AIRLOCK_GLASSIN)
+						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass")
+					else
+						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/generic")
+				else if (glass == AIRLOCK_GLASSIN)
 					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]/glass")
 				else
 					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]")
@@ -225,7 +231,8 @@
 					door.name = created_name
 				else
 					door.name = base_name
-
+				if (door.width > 1)
+					door.Move()
 				electronics.forceMove(door)
 				qdel(src)
 				return
@@ -317,8 +324,7 @@
 /obj/structure/airlock_assembly/multi_tile
 	icon = 'icons/obj/structures/doors/airlock_assembly2x1.dmi'
 	icon_state = "door_as_g0"
-	dir = EAST
-	var/width = 1
+	width = 2
 
 /*Temporary until we get sprites.
 	airlock_type = "/multi_tile/maint"

@@ -2,6 +2,7 @@
 /obj/structure/machinery/door/airlock/multi_tile
 	width = 2
 	damage_cap = 650 // Bigger = more endurable
+	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
 /obj/structure/machinery/door/airlock/multi_tile/close() //Nasty as hell O(n^2) code but unfortunately necessary
 	for(var/turf/T in locs)
@@ -9,6 +10,26 @@
 			if(M) return 0
 
 	return ..()
+
+//I have copy pasted this from airlock_assembly, might be a good idea to find a way to avoid duplicated code
+/obj/structure/machinery/door/airlock/multi_tile/Initialize()
+	. = ..()
+	if(dir in list(EAST, WEST))
+		bound_width = width * world.icon_size
+		bound_height = world.icon_size
+	else
+		bound_width = world.icon_size
+		bound_height = width * world.icon_size
+	update_icon()
+
+/obj/structure/machinery/door/airlock/multi_tile/Move()
+	. = ..()
+	if(dir in list(EAST, WEST))
+		bound_width = width * world.icon_size
+		bound_height = world.icon_size
+	else
+		bound_width = world.icon_size
+		bound_height = width * world.icon_size
 
 /obj/structure/machinery/door/airlock/multi_tile/glass
 	name = "Glass Airlock"

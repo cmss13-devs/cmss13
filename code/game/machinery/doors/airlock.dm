@@ -652,9 +652,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
 				return
-			if(width > 1)
-				to_chat(user, SPAN_WARNING("Large doors seem impossible to disassemble."))
-				return
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message("[user] starts removing the electronics from the airlock assembly.", "You start removing electronics from the airlock assembly.")
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -663,6 +660,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				var/obj/structure/airlock_assembly/da = new assembly_type(loc)
 				if(istype(da, /obj/structure/airlock_assembly/multi_tile))
 					da.setDir(dir)
+					da.Move() //I hope i will find a better way to update collision box
 
 				da.anchored = TRUE
 				if(mineral)

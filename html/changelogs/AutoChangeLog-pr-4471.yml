@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added missing flight record for Queen dropship summon."
+  - code_imp: "Added security record option for shipwide_ai_announcement."
+  - rscadd: "Added security records for unidentified lifeforms announcement."

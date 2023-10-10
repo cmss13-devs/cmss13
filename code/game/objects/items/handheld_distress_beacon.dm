@@ -44,10 +44,11 @@
 	name = "\improper CMB handheld distress beacon"
 	desc = "An emergency beacon. This one is branded with a Colonial Marshal Bureau star and 'ANCHORPOINT STATION' is etched in stencil on the side. This device is issued to CMB Marshals and features an extended relay antenna."
 	icon = 'icons/obj/items/handheld_distress_beacon.dmi'
-	icon_state = "beacon_inactive" /// beacon starts inactive, changes sprite when activated, cannot be turned off once turned on
+	icon_state = "beacon_inactive"
 	w_class = SIZE_SMALL
 
-	var/active = FALSE /// whether or not the beacon is turned on, when activated sends message to admins requesting Anchorpoint ERT
+/// whether or not the beacon is turned on, when activated sends message to admins requesting Anchorpoint ERT and changes sprite
+	var/active = FALSE
 
 /obj/item/handheld_distress_beacon_CMB/get_examine_text(mob/user)
 	. = ..()

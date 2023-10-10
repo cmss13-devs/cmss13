@@ -2108,7 +2108,8 @@
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
-/datum/admins/proc/accept_cmb_ert(mob/approver, mob/ref_person) /// tells admins which admin has sent the Anchorpoint ERT in response to CMB distress
+/// tells admins which admin has sent the Anchorpoint ERT in response to CMB distress
+/datum/admins/proc/accept_cmb_ert(mob/approver, mob/ref_person)
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE
@@ -2116,7 +2117,8 @@
 	log_game("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
 
-/datum/admins/proc/accept_cmb_alt_ert(mob/approver, mob/ref_person) /// tells admins which admin has sent the CMB ERT in response to CMB distress
+/// tells admins which admin has sent the CMB ERT in response to CMB distress
+/datum/admins/proc/accept_cmb_alt_ert(mob/approver, mob/ref_person)
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE

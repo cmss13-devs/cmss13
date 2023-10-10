@@ -1694,6 +1694,8 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\gear_presets\survivors\sorokyne_strata\preset_sorokyne_strata.dm"
 #include "code\modules\gear_presets\survivors\trijent\crashlanding_upp_bar_insert_trijent.dm"
 #include "code\modules\gear_presets\survivors\trijent\preset_trijent.dm"
+#include "code\modules\holidays\halloween\pumpkins\patches.dm"
+#include "code\modules\holidays\halloween\pumpkins\wearable.dm"
 #include "code\modules\hydroponics\botany_disks.dm"
 #include "code\modules\hydroponics\grown_inedible.dm"
 #include "code\modules\hydroponics\hydro_tools.dm"

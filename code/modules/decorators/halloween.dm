@@ -13,6 +13,40 @@
 	if(cur_mon == 11 && cur_day < 4)
 		return 0
 
+/// Pumpkins decorator: adds patches of carvable/wearable pumpkins around the ground level
+/datum/decorator/halloween/pumpkins
+	var/list/obj/structure/pumpkin_patch/placed_pumpkins = list() //! List of pumpkins to avoid placing in proximity
+	var/pumpkin_prob = 4 //! Chance to place a pumpkin
+	var/pumpkin_prob_corruption = 20
+	var/pumpkin_prob_decrease = 0.6 //! Chance reduction per day before halloween
+	var/exclusion_range = 8
+
+/datum/decorator/halloween/pumpkins/get_decor_types()
+	return typesof(/turf/open/gm) + typesof(/turf/open/auto_turf) + typesof(/turf/open/jungle) + typesof(/turf/open/desert) + typesof(/turf/open/mars) + typesof(/turf/open/mars_cave)
+
+/datum/decorator/halloween/pumpkins/decorate(turf/open/turf)
+	if(!is_ground_level(turf.z))
+		return
+
+	var/event_progress = get_event_progress()
+	var/placement_chance = pumpkin_prob
+	if(!prob(placement_chance))
+		return
+
+	var/corruption_chance = pumpkin_prob_corruption - (event_progress * pumpkin_prob_decrease)
+
+	for(var/pumpkin in placed_pumpkins)
+		if(get_dist(turf, pumpkin) <= exclusion_range)
+			return
+
+	var/obj/structure/pumpkin_patch/patch
+	if(prob(corruption_chance))
+		patch = new /obj/structure/pumpkin_patch/corrupted(turf)
+	else
+		patch = new /obj/structure/pumpkin_patch(turf)
+	placed_pumpkins += patch
+
+
 /// Cobweb decorator: adds more and more cobwebs as you go through the month
 /datum/decorator/halloween/cobwebs
 	/// How much prob() chance to put a cobweb during halloween proper

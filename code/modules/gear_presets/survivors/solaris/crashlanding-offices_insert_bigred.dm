@@ -11,7 +11,8 @@
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	access = list(ACCESS_CIVILIAN_PUBLIC,
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_COMMAND,
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,

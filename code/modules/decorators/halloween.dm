@@ -15,7 +15,7 @@
 
 /// Pumpkins decorator: adds patches of carvable/wearable pumpkins around the ground level
 /datum/decorator/halloween/pumpkins
-	var/list/obj/structure/pumpkin_patch/placed_pumpkins = list() //! List of pumpkins to avoid placing in proximity
+	var/list/turf/placed_locations = list() //! List of pumpkin placement locations to avoid placing in proximity
 	var/pumpkin_prob = 4 //! Chance to place a pumpkin
 	var/pumpkin_prob_corruption = 20
 	var/pumpkin_prob_decrease = 0.6 //! Chance reduction per day before halloween
@@ -35,8 +35,8 @@
 
 	var/corruption_chance = pumpkin_prob_corruption - (event_progress * pumpkin_prob_decrease)
 
-	for(var/pumpkin in placed_pumpkins)
-		if(get_dist(turf, pumpkin) <= exclusion_range)
+	for(var/placed_at in placed_locations)
+		if(get_dist(turf, placed_at) <= exclusion_range)
 			return
 
 	var/obj/structure/pumpkin_patch/patch
@@ -44,7 +44,7 @@
 		patch = new /obj/structure/pumpkin_patch/corrupted(turf)
 	else
 		patch = new /obj/structure/pumpkin_patch(turf)
-	placed_pumpkins += patch
+	placed_locations += turf
 
 
 /// Cobweb decorator: adds more and more cobwebs as you go through the month

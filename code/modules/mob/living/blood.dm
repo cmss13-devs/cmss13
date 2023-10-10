@@ -282,6 +282,8 @@
 		return "xenoblood"
 
 /mob/living/carbon/human/get_blood_id()
+	if(species.flags & NO_BLOOD)
+		return
 	if(special_blood)
 		return special_blood
 	if(species.name == "Yautja")
@@ -290,8 +292,6 @@
 		return "whiteblood"
 	if(species.name == SPECIES_ZOMBIE)
 		return "greyblood"
-	if(species.flags & NO_BLOOD)
-		return
 	return "blood"
 
 /mob/living/simple_animal/mouse/get_blood_id()

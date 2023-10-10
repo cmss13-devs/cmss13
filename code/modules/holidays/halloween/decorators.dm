@@ -1,10 +1,9 @@
-/datum/decorator/halloween
-	priority = DECORATOR_MONTH_SPECIFIC
+/datum/game_decorator/halloween
 
-/datum/decorator/halloween/is_active_decor()
+/datum/game_decorator/halloween/is_active_decor()
 	return (get_event_progress() != -1)
 
-/datum/decorator/halloween/proc/get_event_progress()
+/datum/game_decorator/halloween/proc/get_event_progress()
 	. = -1
 	var/cur_day = text2num(time2text(world.timeofday, "DD"))
 	var/cur_mon = text2num(time2text(world.timeofday, "MM"))
@@ -14,41 +13,43 @@
 		return 0
 
 /// Pumpkins decorator: adds patches of carvable/wearable pumpkins around the ground level
-/datum/decorator/halloween/pumpkins
-	var/list/turf/placed_locations = list() //! List of pumpkin placement locations to avoid placing in proximity
-	var/pumpkin_prob = 4 //! Chance to place a pumpkin
+/datum/game_decorator/halloween/pumpkins
+	var/pumpkin_count = 100 //! Amount of pumpkins to place
 	var/pumpkin_prob_corruption = 20
 	var/pumpkin_prob_decrease = 0.6 //! Chance reduction per day before halloween
 	var/exclusion_range = 8
 
-/datum/decorator/halloween/pumpkins/get_decor_types()
-	return typesof(/turf/open/gm) + typesof(/turf/open/auto_turf) + typesof(/turf/open/jungle) + typesof(/turf/open/desert) + typesof(/turf/open/mars) + typesof(/turf/open/mars_cave)
+/datum/game_decorator/halloween/pumpkins/decorate()
+	var/list/turf/valid_turfs = list()
+	var/list/ground_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+	for(var/ground_z in ground_levels)
+		var/list/turf/all_turfs = block(locate(1, 1, ground_z), locate(world.maxx, world.maxy, ground_z))
+		for(var/turf/open/turf in all_turfs)
+			if(turf.is_groundmap_turf)
+				valid_turfs += turf
 
-/datum/decorator/halloween/pumpkins/decorate(turf/open/turf)
-	if(!is_ground_level(turf.z))
-		return
+	var/list/turf/picked_turfs = list()
+	for(var/step in 1 to pumpkin_count)
+		if(!length(valid_turfs))
+			break
+		var/turf/considered_turf = pick(valid_turfs)
+		var/x_min = max(1, considered_turf.x - exclusion_range)
+		var/y_min = max(1, considered_turf.y - exclusion_range)
+		var/x_max = min(world.maxx, considered_turf.x + exclusion_range)
+		var/y_max = min(world.maxy, considered_turf.y + exclusion_range)
+		var/list/turf/denied_turfs = block(locate(x_min, y_min, considered_turf.z), locate(x_max, y_max, considered_turf.z))
+		valid_turfs -= denied_turfs
+		picked_turfs += considered_turf
 
-	var/event_progress = get_event_progress()
-	var/placement_chance = pumpkin_prob
-	if(!prob(placement_chance))
-		return
-
-	var/corruption_chance = pumpkin_prob_corruption - (event_progress * pumpkin_prob_decrease)
-
-	for(var/placed_at in placed_locations)
-		if(get_dist(turf, placed_at) <= exclusion_range)
-			return
-
-	var/obj/structure/pumpkin_patch/patch
-	if(prob(corruption_chance))
-		patch = new /obj/structure/pumpkin_patch/corrupted(turf)
-	else
-		patch = new /obj/structure/pumpkin_patch(turf)
-	placed_locations += turf
-
+	var/corruption_chance = pumpkin_prob_corruption - (get_event_progress() * pumpkin_prob_decrease)
+	for(var/turf/target in picked_turfs)
+		if(prob(corruption_chance))
+			new /obj/structure/pumpkin_patch/corrupted(target)
+		else
+			new /obj/structure/pumpkin_patch(target)
 
 /// Cobweb decorator: adds more and more cobwebs as you go through the month
-/datum/decorator/halloween/cobwebs
+/datum/game_decorator/halloween/cobwebs
 	/// How much prob() chance to put a cobweb during halloween proper
 	var/base_chance = 25
 	/// How much to remove per day before date
@@ -58,7 +59,12 @@
 	/// Extra randomness removed onto scale before full blown halloween
 	var/scale_rand = 0.3
 
-/datum/decorator/halloween/cobwebs/decorate(turf/closed/wall/almayer/T)
+/datum/game_decorator/halloween/cobwebs/decorate()
+	for(var/turf/closed/wall/almayer/turf in world)
+		if(is_mainship_level(turf.z))
+			decorate_turf(turf)
+
+/datum/game_decorator/halloween/cobwebs/proc/decorate_turf(turf/closed/wall/almayer/T)
 	var/static/list/order = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST) // Ordering of wall_connections
 	if(length(T.wall_connections) < 4)
 		return
@@ -90,8 +96,3 @@
 				scale -= scale_rand * rand()
 				new /obj/effect/decal/cleanable/cobweb2/dynamic(target, diag, scale)
 
-/// Ship specific cobweb decorator
-/datum/decorator/halloween/cobwebs/ship
-
-/datum/decorator/halloween/cobwebs/ship/get_decor_types()
-	return typesof(/turf/closed/wall/almayer)

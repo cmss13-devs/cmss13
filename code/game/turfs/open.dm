@@ -185,6 +185,7 @@
 	name = "cave"
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_cave_1"
+	is_groundmap_turf = TRUE
 
 
 /turf/open/mars_cave/Initialize(mapload, ...)
@@ -724,6 +725,7 @@
 	allow_construction = FALSE
 	var/bushes_spawn = 1
 	var/plants_spawn = 1
+	is_groundmap_turf = TRUE
 	name = "wet grass"
 	desc = "Thick, long, wet grass."
 	icon = 'icons/turf/floors/jungle.dmi'

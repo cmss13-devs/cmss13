@@ -7,7 +7,7 @@
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
-	if(species.flags & NO_BLOOD && !(species.flags & IS_SYNTHETIC))
+	if((species.flags & NO_BLOOD) && !(species.flags & IS_SYNTHETIC))
 		return
 
 	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
@@ -101,7 +101,7 @@
 /mob/living/carbon/human/drip(amt)
 	if(in_stasis) // stasis now stops bloodloss
 		return
-	if(species.flags & NO_BLOOD && !(species.flags & IS_SYNTHETIC))
+	if((species.flags & NO_BLOOD) && !(species.flags & IS_SYNTHETIC))
 		return
 	..()
 

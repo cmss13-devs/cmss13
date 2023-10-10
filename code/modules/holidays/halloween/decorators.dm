@@ -64,16 +64,16 @@
 		if(is_mainship_level(turf.z))
 			decorate_turf(turf)
 
-/datum/game_decorator/halloween/cobwebs/proc/decorate_turf(turf/closed/wall/almayer/T)
+/datum/game_decorator/halloween/cobwebs/proc/decorate_turf(turf/closed/wall/almayer/turf)
 	var/static/list/order = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST) // Ordering of wall_connections
-	if(length(T.wall_connections) < 4)
+	if(length(turf.wall_connections) < 4)
 		return
 
 	var/event_progress = get_event_progress()
 	var/placement_chance = base_chance - (event_progress * ramp_chance)
 	for(var/i = 1 to 4)
 		var/diag = order[i]
-		if(T.wall_connections[i] != "5") // CORNER_CLOCKWISE | CORNER_COUNTERCLOCKWISE as string - don't ask me
+		if(turf.wall_connections[i] != "5") // CORNER_CLOCKWISE | CORNER_COUNTERCLOCKWISE as string - don't ask me
 			continue
 		if(!prob(placement_chance))
 			continue
@@ -84,13 +84,13 @@
 			var/cardinal_dir = diag & a_cardinal
 			if(!a_cardinal) // We check cardinals contributing to that diagonal
 				continue
-			var/turf/target = get_step(T, cardinal_dir)
+			var/turf/target = get_step(turf, cardinal_dir)
 			if(locate(/obj/structure/machinery/door) in target)
 				valid = FALSE
 				break
 
 		if(valid) // Actually place cobweb
-			var/turf/target = get_step(T, diag)
+			var/turf/target = get_step(turf, diag)
 			if(istype(target, /turf/open))
 				var/scale = 1 - ramp_scale * event_progress
 				scale -= scale_rand * rand()

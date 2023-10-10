@@ -3357,12 +3357,6 @@
 	icon_state = "red"
 	},
 /area/almayer/living/starboard_garden)
-"akX" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green"
-	},
-/area/almayer/hallways/starboard_hallway)
 "akY" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -11326,13 +11320,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "aMM" = (
-/obj/structure/machinery/door_control{
-	id = "laddernortheast";
-	name = "North East Ladders Shutters";
-	pixel_x = 25;
-	req_one_access_txt = "2;3;12;19";
-	throw_range = 15
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red"
@@ -14301,7 +14288,7 @@
 "bbJ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
-	icon_state = "greencorner"
+	icon_state = "green"
 	},
 /area/almayer/hallways/starboard_hallway)
 "bbL" = (
@@ -14631,18 +14618,6 @@
 	icon_state = "plating"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
-"bdp" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "laddernortheast";
-	name = "\improper North East Ladders Shutters"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/starboard_hallway)
 "bdr" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
@@ -23727,19 +23702,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
-"bUR" = (
-/obj/structure/machinery/door_control{
-	id = "laddersoutheast";
-	name = "South East Ladders Shutters";
-	pixel_x = 25;
-	req_one_access_txt = "2;3;12;19";
-	throw_range = 15
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/almayer/hallways/port_hallway)
 "bUT" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
@@ -27103,15 +27065,9 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "clR" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "laddersoutheast";
-	name = "\improper South East Ladders Shutters"
-	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	dir = 4;
+	icon_state = "blue"
 	},
 /area/almayer/hallways/port_hallway)
 "clS" = (
@@ -27175,6 +27131,9 @@
 "cmc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = -30
 	},
 /turf/open/floor/almayer{
 	icon_state = "green"
@@ -27806,19 +27765,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "greencorner"
-	},
-/area/almayer/hallways/starboard_hallway)
-"csw" = (
-/obj/structure/machinery/door_control{
-	id = "laddernortheast";
-	name = "North East Ladders Shutters";
-	pixel_x = 25;
-	req_one_access_txt = "2;3;12;19";
-	throw_range = 15
-	},
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "green"
 	},
 /area/almayer/hallways/starboard_hallway)
 "csz" = (
@@ -31393,8 +31339,8 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "greencorner"
+	dir = 1;
+	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
 "dQv" = (
@@ -32609,6 +32555,9 @@
 /area/almayer/shipboard/brig/evidence_storage)
 "enx" = (
 /obj/structure/pipes/vents/pump,
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green"
@@ -34221,7 +34170,7 @@
 /area/almayer/living/offices)
 "eXE" = (
 /turf/open/floor/almayer{
-	dir = 8;
+	dir = 9;
 	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
@@ -34594,19 +34543,6 @@
 	icon_state = "green"
 	},
 /area/almayer/living/grunt_rnr)
-"feC" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "laddersoutheast";
-	name = "\improper South East Ladders Shutters"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/port_hallway)
 "feD" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -35194,8 +35130,8 @@
 	},
 /area/almayer/shipboard/brig/armory)
 "fsH" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/machinery/firealarm{
+	pixel_y = 28
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -36460,20 +36396,6 @@
 "fUA" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/briefing)
-"fVw" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "laddernortheast";
-	name = "\improper North East Ladders Shutters"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/starboard_hallway)
 "fVz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -37522,8 +37444,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "greencorner"
+	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
 "guC" = (
@@ -40760,18 +40681,17 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "hNL" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "laddersoutheast";
+	name = "\improper South East Ladders Shutters";
+	dir = 8
+	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
+	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/port_hallway)
 "hNM" = (
@@ -45180,11 +45100,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "jJe" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -45219,7 +45139,9 @@
 	dir = 6
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer{
+	icon_state = "green"
+	},
 /area/almayer/hallways/starboard_hallway)
 "jKn" = (
 /turf/open/floor/almayer{
@@ -45300,6 +45222,15 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/captain_mess)
+"jLv" = (
+/obj/structure/machinery/firealarm{
+	dir = 1;
+	pixel_y = -28
+	},
+/turf/open/floor/almayer{
+	icon_state = "green"
+	},
+/area/almayer/hallways/starboard_hallway)
 "jLK" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -48282,6 +48213,15 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
+"kVm" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/almayer/hallways/port_hallway)
 "kVX" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -50747,14 +50687,15 @@
 	},
 /area/almayer/hull/upper_hull/u_m_p)
 "lSO" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "laddersoutheast";
+	name = "South East Ladders Shutters";
+	req_one_access_txt = "2;3;12;19";
+	throw_range = 15;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -51612,16 +51553,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/almayer,
 /area/almayer/squads/req)
-"mqc" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/almayer/hallways/port_hallway)
 "mqg" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -53247,11 +53178,15 @@
 	},
 /area/almayer/hallways/vehiclehangar)
 "mYZ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
+	},
+/obj/structure/machinery/door_control{
+	id = "laddersoutheast";
+	name = "South East Ladders Shutters";
+	req_one_access_txt = "2;3;12;19";
+	throw_range = 15;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -54458,6 +54393,17 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/starboard_hallway)
+"nyO" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "laddernortheast";
+	name = "\improper North East Ladders Shutters";
+	dir = 8
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/starboard_hallway)
 "nyQ" = (
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
@@ -54748,15 +54694,17 @@
 	},
 /area/almayer/shipboard/starboard_point_defense)
 "nFy" = (
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -28
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "laddernortheast";
+	name = "\improper North East Ladders Shutters";
+	dir = 8
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
-	icon_state = "green"
+	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/starboard_hallway)
 "nFI" = (
@@ -54791,8 +54739,11 @@
 "nFV" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer{
-	icon_state = "green"
+	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/starboard_hallway)
 "nFX" = (
@@ -55473,11 +55424,15 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "nVU" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = -30
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "laddernortheast";
+	name = "North East Ladders Shutters";
+	req_one_access_txt = "2;3;12;19";
+	throw_range = 15;
+	pixel_y = -25
 	},
 /turf/open/floor/almayer{
 	icon_state = "green"
@@ -57276,6 +57231,20 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"oJq" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "laddersoutheast";
+	name = "\improper South East Ladders Shutters";
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/port_hallway)
 "oJR" = (
 /obj/effect/projector{
 	name = "Almayer_AresDown";
@@ -63167,15 +63136,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
-"rlG" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/almayer/hallways/starboard_hallway)
 "rlQ" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -64472,8 +64432,14 @@
 /obj/structure/machinery/status_display{
 	pixel_y = -30
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "laddersoutheast";
+	name = "\improper South East Ladders Shutters";
+	dir = 8
+	},
 /turf/open/floor/almayer{
-	icon_state = "green"
+	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/port_hallway)
 "rLU" = (
@@ -67035,7 +67001,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_state = "greencorner"
+	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
 "sVi" = (
@@ -67536,9 +67502,6 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -67781,6 +67744,13 @@
 /obj/item/toy/farwadoll,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
+"tki" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_hallway)
 "tkq" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -70443,19 +70413,6 @@
 "uqo" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
-"uqr" = (
-/obj/structure/machinery/door_control{
-	id = "laddersoutheast";
-	name = "South East Ladders Shutters";
-	pixel_x = 25;
-	req_one_access_txt = "2;3;12;19";
-	throw_range = 15
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green"
-	},
-/area/almayer/hallways/port_hallway)
 "uqA" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
@@ -79330,7 +79287,13 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
+	id = "laddernortheast";
+	name = "North East Ladders Shutters";
+	req_one_access_txt = "2;3;12;19";
+	throw_range = 15;
+	pixel_y = -25
+	},
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
@@ -80009,13 +79972,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_s)
-"ybV" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/port_hallway)
 "ybZ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/transmitter{
@@ -117160,9 +117116,9 @@ hhw
 aLB
 acF
 heb
-akX
 cqa
-bdp
+bBh
+aMV
 dRG
 aMV
 yiq
@@ -117218,8 +117174,8 @@ bUM
 mYw
 iAT
 rdY
-clR
-eXE
+bUM
+cbD
 eXE
 hOR
 kJV
@@ -117365,7 +117321,7 @@ nyG
 qvy
 jKl
 nFV
-fVw
+tBL
 tBL
 tBL
 tBL
@@ -117421,9 +117377,9 @@ buI
 buI
 buI
 buI
-feC
-bFu
-vYi
+buI
+rpd
+kVm
 bHL
 kro
 bGb
@@ -117567,8 +117523,8 @@ aLB
 csl
 iza
 bbJ
-csw
-bdp
+bBh
+aMM
 aMM
 aNG
 bga
@@ -117623,9 +117579,9 @@ ciU
 rOj
 bUd
 bUF
-bUR
 clR
-uqr
+clR
+cbD
 dQs
 oRc
 guc
@@ -117830,7 +117786,7 @@ vra
 vra
 vra
 jJe
-bHa
+bHY
 buH
 vfo
 uaa
@@ -118033,7 +117989,7 @@ mgF
 asX
 vra
 tfw
-bHa
+bHY
 sVf
 bGb
 uaa
@@ -118236,7 +118192,7 @@ qYQ
 ptj
 vra
 lSO
-bHa
+bHY
 haT
 bGb
 uaa
@@ -118376,8 +118332,8 @@ hhw
 hhw
 hhw
 aLB
-rlG
-aNO
+nyO
+nyO
 nFy
 jeb
 vlX
@@ -118439,7 +118395,7 @@ hQc
 asX
 vra
 hNL
-bHa
+oJq
 rLF
 bGb
 fiq
@@ -118642,7 +118598,7 @@ qYQ
 asX
 vra
 mYZ
-buI
+tki
 lQQ
 bGb
 uaa
@@ -118784,7 +118740,7 @@ nHF
 aLB
 ewo
 aNO
-jJs
+jLv
 jeb
 obE
 thA
@@ -118845,7 +118801,7 @@ eBV
 ptj
 vra
 fsH
-bHa
+bHY
 pBn
 bGb
 uaa
@@ -118987,7 +118943,7 @@ nHF
 cmC
 aLG
 aNO
-jJs
+uBw
 jeb
 vlX
 tdE
@@ -119047,8 +119003,8 @@ lpt
 qYQ
 asX
 vra
-mqc
-ybV
+pJJ
+bHY
 buH
 cnd
 uaa

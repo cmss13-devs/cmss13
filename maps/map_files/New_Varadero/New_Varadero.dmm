@@ -598,13 +598,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/hall_SE)
-"avy" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "multi_tiles"
-	},
-/area/varadero/interior/administration)
 "avD" = (
 /turf/closed/wall/huntership,
 /area/varadero/interior_protected/vessel)
@@ -1450,15 +1443,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/maintenance/south)
-"aTS" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/varadero/interior/cargo)
 "aTY" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river{
@@ -1894,9 +1878,7 @@
 /area/varadero/interior/hall_N)
 "bhU" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -2587,7 +2569,6 @@
 	pixel_x = 7;
 	pixel_y = -6
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -4438,7 +4419,6 @@
 /obj/structure/bed/sofa/pews/flipped{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "cOK" = (
@@ -4756,14 +4736,6 @@
 /obj/item/stack/tile/plasteel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/hall_SE)
-"daA" = (
-/obj/structure/bed/chair,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/varadero/interior/court)
 "daS" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river{
@@ -5724,6 +5696,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -10717,9 +10690,7 @@
 /area/varadero/interior/security)
 "gRU" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -10877,12 +10848,6 @@
 "gYh" = (
 /turf/closed/wall/wood,
 /area/varadero/interior/beach_bar)
-"gZq" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
-/area/varadero/interior/morgue)
 "gZI" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -11237,7 +11202,6 @@
 /area/varadero/interior/electrical)
 "hlw" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/varadero/interior/maintenance/north)
 "hlF" = (
@@ -11661,10 +11625,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
-"hAh" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "hAI" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -13252,6 +13212,13 @@
 	icon_state = "green"
 	},
 /area/varadero/interior/mess)
+"iBZ" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "multi_tiles"
+	},
+/area/varadero/interior/electrical)
 "iCy" = (
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -13862,9 +13829,7 @@
 /area/varadero/interior/administration)
 "iWX" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
@@ -15543,6 +15508,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -16012,7 +15978,6 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "ksn" = (
@@ -16375,6 +16340,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -17766,15 +17732,6 @@
 	},
 /turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/eastbeach)
-"lxr" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/comms1)
 "lxs" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river{
@@ -18709,7 +18666,6 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -18719,7 +18675,6 @@
 	dir = 10;
 	icon_state = "bshell_"
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/varadero/interior/security)
 "map" = (
@@ -19324,9 +19279,7 @@
 /area/varadero/interior/cargo)
 "mtp" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -19414,9 +19367,7 @@
 /area/varadero/interior/hall_SE)
 "mvO" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -19929,9 +19880,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0;
-	wrenchable = 1
+	name = "Floodlight"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -20008,7 +19957,6 @@
 /area/varadero/interior/maintenance)
 "mPI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -20147,7 +20095,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "mUz" = (
@@ -20285,6 +20232,7 @@
 /area/varadero/interior/hall_SE)
 "mYd" = (
 /obj/structure/bed/chair,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "multi_tiles"
@@ -20823,11 +20771,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/north)
-"npF" = (
-/obj/effect/landmark/survivor_spawner,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/varadero/interior/beach_bar)
 "npW" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -8
@@ -21628,7 +21571,6 @@
 	pixel_x = 10;
 	pixel_y = -9
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "bluefull"
@@ -21778,12 +21720,6 @@
 	dir = 1
 	},
 /area/varadero/interior/cargo)
-"nZd" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
-/area/varadero/interior/medical)
 "nZi" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -21995,6 +21931,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -27779,6 +27716,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "multi_tiles"
@@ -28740,7 +28678,6 @@
 "spP" = (
 /obj/structure/bed/chair,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "green"
@@ -32581,7 +32518,6 @@
 /obj/item/storage/bible/booze{
 	pixel_x = 6
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "uUF" = (
@@ -45060,7 +44996,7 @@ huF
 huF
 nPx
 arC
-lxr
+wBY
 lMB
 wjB
 sGY
@@ -46173,7 +46109,7 @@ gsw
 qZH
 hUU
 rrA
-aTS
+wDG
 oJB
 wIm
 xqP
@@ -47288,7 +47224,7 @@ cAX
 vsP
 cAX
 kDF
-nZd
+maN
 maN
 maN
 maN
@@ -49459,7 +49395,7 @@ sKC
 iTd
 iTd
 dCz
-gZq
+eYG
 eYG
 uuj
 sFJ
@@ -50579,7 +50515,7 @@ qvo
 xUq
 jMr
 rQY
-avy
+rzg
 rzg
 rQY
 rzM
@@ -54388,7 +54324,7 @@ khb
 qLs
 iwg
 ara
-hAh
+ara
 nZk
 hPD
 uQH
@@ -54565,7 +54501,7 @@ urA
 lss
 rHv
 pVN
-daA
+cMf
 khb
 urd
 mwd
@@ -55114,7 +55050,7 @@ pVN
 cMf
 khb
 urd
-hAh
+ara
 ara
 ara
 nZk
@@ -57790,7 +57726,7 @@ ctE
 gYh
 xuJ
 fgW
-npF
+sKF
 trB
 gYh
 eBm
@@ -59474,10 +59410,10 @@ wOO
 mNm
 kCA
 tlT
-cbq
+iBZ
 dNU
 kDd
-cbq
+iBZ
 aFK
 kCA
 jaL
@@ -60566,10 +60502,10 @@ oSX
 uwQ
 kCA
 tlT
-cbq
+iBZ
 oga
 kca
-cbq
+iBZ
 tlT
 kCA
 rsB

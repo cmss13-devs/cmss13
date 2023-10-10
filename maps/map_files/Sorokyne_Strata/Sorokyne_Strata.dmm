@@ -9631,6 +9631,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -9660,6 +9661,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -9943,6 +9945,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -10421,6 +10424,7 @@
 /area/strata/ag/exterior/paths/north_outpost)
 "aFw" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -30290,6 +30294,16 @@
 	icon_state = "orange_cover"
 	},
 /area/strata/ag/interior/outpost/engi/drome)
+"dFk" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan1"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "dFU" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -34010,6 +34024,17 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/tcomms)
+"jXK" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "jXQ" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 9
@@ -34574,6 +34599,7 @@
 /area/strata/ag/exterior/paths/cabin_area)
 "kXR" = (
 /obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -35165,6 +35191,13 @@
 	icon_state = "floor2"
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
+"lWX" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "lXd" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -35186,6 +35219,17 @@
 "lZf" = (
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/marsh/river)
+"lZN" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "mam" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/vents/pump{
@@ -36106,6 +36150,16 @@
 	icon_state = "cement3"
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
+"nzc" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan1"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "nAf" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/strata/ug/interior/jungle/deep/east_carp)
@@ -38375,6 +38429,13 @@
 	icon_state = "cement4"
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
+"rkT" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan1"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "rno" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/strata{
@@ -38621,6 +38682,14 @@
 	icon_state = "floor2"
 	},
 /area/strata/ag/interior/outpost/med)
+"rNt" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "rNI" = (
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/nearlz2)
@@ -41200,6 +41269,14 @@
 "vVK" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/minehead)
+"vVO" = (
+/obj/structure/bed/chair,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan1"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "vXt" = (
 /obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer2,
@@ -71221,9 +71298,9 @@ ccp
 ccp
 slL
 ccp
-ccp
+rkT
 aDk
-slL
+dFk
 aFu
 dDr
 ccp
@@ -71611,10 +71688,10 @@ awk
 awk
 awk
 ccp
-ccr
-ccr
+lWX
+lWX
 aEi
-ckM
+nzc
 aGI
 cgn
 aJE
@@ -71806,9 +71883,9 @@ cgW
 cgW
 bZB
 cbz
-cgo
-bZB
-bZB
+jXK
+rNt
+rNt
 aFw
 aGJ
 cgo
@@ -72001,10 +72078,10 @@ ccr
 ccr
 caL
 ccp
-ccr
-cfC
-ccr
-ckM
+lWX
+bZE
+lWX
+nzc
 cfC
 aEj
 ccr
@@ -72196,10 +72273,10 @@ bZE
 ccr
 ccr
 aAK
-ccr
+lWX
 kXR
-aEj
-ckM
+lZN
+nzc
 ccr
 ccr
 ccr
@@ -72586,10 +72663,10 @@ awm
 ccp
 azi
 ccp
-cjl
+vVO
 aDo
-ccp
-ckM
+rkT
+nzc
 awm
 awm
 awm

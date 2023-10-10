@@ -3942,13 +3942,6 @@
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/marshal_office)
-"alt" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
-/area/bigredv2/outside/marshal_office)
 "alu" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/medical)
@@ -4292,7 +4285,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "amv" = (
@@ -4350,13 +4342,6 @@
 	},
 /turf/open/floor{
 	icon_state = "wood"
-	},
-/area/bigredv2/outside/marshal_office)
-"amB" = (
-/obj/effect/landmark/survivor_spawner,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "grimy"
 	},
 /area/bigredv2/outside/marshal_office)
 "amC" = (
@@ -5160,11 +5145,6 @@
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshal_office)
-"aoW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "aoX" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -8391,13 +8371,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
-"axH" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor,
-/area/bigredv2/outside/dorms)
 "axI" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
@@ -8880,12 +8853,6 @@
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
-"aza" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
-/area/bigredv2/outside/dorms)
 "azb" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -13094,6 +13061,7 @@
 /area/bigredv2/outside/bar)
 "aKw" = (
 /obj/item/clothing/head/welding,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -14391,6 +14359,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -15116,12 +15085,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/bigredv2/outside/admin_building)
-"aPM" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -15918,11 +15881,6 @@
 	dir = 5;
 	icon_state = "whitebluefull"
 	},
-/area/bigredv2/outside/general_store)
-"aRP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aRQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18128,12 +18086,6 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/admin_building)
-"aYk" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
 "aYl" = (
 /obj/item/cell/hyper/empty,
 /turf/open/floor{
@@ -19006,10 +18958,6 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/outside/cargo)
-"bbh" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
 "bbi" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -19340,10 +19288,6 @@
 	icon_state = "grimy"
 	},
 /area/bigredv2/outside/admin_building)
-"bcd" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/plating,
-/area/bigredv2/outside/admin_building)
 "bce" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
@@ -19388,16 +19332,6 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/outside/office_complex)
-"bcl" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 8
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "chapel"
-	},
-/area/bigredv2/outside/chapel)
 "bcn" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
@@ -20171,11 +20105,6 @@
 "beL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/office_complex)
-"beM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "beN" = (
@@ -21044,13 +20973,6 @@
 "bhi" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/c)
-"bhk" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
-/area/bigredv2/outside/office_complex)
 "bhl" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -22150,7 +22072,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "blB" = (
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -22245,7 +22166,6 @@
 "bma" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -22967,10 +22887,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/filtration_plant)
-"bpe" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "bpf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -23381,11 +23297,6 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/outside/engineering)
-"bqT" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor,
-/area/bigredv2/outside/filtration_plant)
 "bqV" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -27413,6 +27324,13 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
+"coF" = (
+/obj/structure/bed/chair/wood/normal,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "coT" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -29230,6 +29148,13 @@
 	icon_state = "mars_dirt_10"
 	},
 /area/bigredv2/outside/eta)
+"fZz" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet11-12"
+	},
+/area/bigredv2/outside/bar)
 "gad" = (
 /turf/open/floor{
 	icon_state = "delivery"
@@ -29246,6 +29171,15 @@
 	icon_state = "bcircuitoff"
 	},
 /area/bigredv2/caves/lambda/research)
+"gaS" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "gcR" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
@@ -31957,6 +31891,13 @@
 	icon_state = "bcircuitoff"
 	},
 /area/bigredv2/caves/lambda/research)
+"lQm" = (
+/obj/structure/bed/stool,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "lQN" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_18"
@@ -32463,6 +32404,15 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_research)
+"nbW" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "ncv" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
 /obj/effect/decal/cleanable/blood{
@@ -33742,6 +33692,15 @@
 	icon_state = "mars_cave_14"
 	},
 /area/bigredv2/caves/mining)
+"pKL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "pLj" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/mars_cave{
@@ -33926,6 +33885,13 @@
 /obj/vehicle/powerloader/ft,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw/ceiling)
+"qbn" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "qez" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
@@ -38084,6 +38050,13 @@
 	icon_state = "mars_cave_17"
 	},
 /area/bigredv2/caves_research)
+"ybl" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet13-5"
+	},
+/area/bigredv2/outside/bar)
 "ybT" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Machine room"
@@ -50523,7 +50496,7 @@ bmf
 bnQ
 bmi
 bmi
-bpe
+bmi
 axX
 jYF
 bmi
@@ -50915,7 +50888,7 @@ aNk
 aOB
 aOB
 aOB
-aRP
+aOB
 aOy
 aOB
 aOB
@@ -52230,7 +52203,7 @@ asK
 aZu
 aZu
 aZu
-bbh
+aZu
 bbT
 bcB
 asK
@@ -55904,7 +55877,7 @@ aof
 apC
 aNB
 aOG
-aPM
+aMf
 aQZ
 aRX
 aof
@@ -56165,7 +56138,7 @@ ayZ
 ayr
 ayr
 ayr
-bpe
+bmi
 bor
 bmi
 bmi
@@ -56300,7 +56273,7 @@ afS
 afS
 aki
 aer
-alt
+agz
 ahn
 ahj
 anx
@@ -56999,7 +56972,7 @@ aRd
 aRd
 aSW
 aOM
-aYk
+aOM
 aOM
 aOM
 aZX
@@ -57824,7 +57797,7 @@ amq
 ahj
 aeJ
 adS
-aoW
+adk
 aeJ
 aqH
 aqL
@@ -59423,7 +59396,7 @@ awp
 awp
 bpQ
 blX
-bqT
+blX
 blX
 blX
 blX
@@ -60043,7 +60016,7 @@ aNL
 aUb
 aof
 bbq
-bcd
+aTa
 bcU
 bds
 aYO
@@ -60657,7 +60630,7 @@ amn
 avE
 asJ
 awY
-axH
+awY
 asJ
 asJ
 azT
@@ -61509,7 +61482,7 @@ ajS
 akv
 akT
 alC
-amB
+alC
 alC
 alC
 aon
@@ -62630,7 +62603,7 @@ aLp
 aEO
 aMH
 aEO
-aLp
+gaS
 aEO
 aEO
 anJ
@@ -62841,7 +62814,7 @@ atY
 aAE
 aHG
 aIr
-aJn
+ybl
 aEQ
 aLq
 aMh
@@ -63263,7 +63236,7 @@ awr
 axg
 axO
 ayu
-aza
+awq
 aws
 aAE
 atY
@@ -63278,11 +63251,11 @@ aIs
 aJo
 aEO
 aEO
-aEO
+aMj
 psE
-aNS
+pKL
 aEO
-aEO
+aMj
 aRj
 aqz
 aHD
@@ -63707,7 +63680,7 @@ amn
 amn
 amn
 amn
-aHI
+fZz
 aHI
 aJp
 aKv
@@ -63925,13 +63898,13 @@ aEO
 aEO
 aEO
 aEO
-aEO
+aMj
 aEO
 aKw
 aLr
 aEO
 aEO
-aNS
+pKL
 aLr
 aPY
 aEO
@@ -64147,7 +64120,7 @@ aER
 aER
 aER
 aER
-aER
+qbn
 aNU
 aEO
 aEO
@@ -64574,12 +64547,12 @@ anJ
 aNS
 aEQ
 jUM
-aGI
-aEQ
+nbW
+coF
 jUM
 aJq
-aKx
-aKx
+lQm
+lQm
 aKx
 aKx
 aNW
@@ -64800,7 +64773,7 @@ aLu
 aMi
 aMI
 aNX
-aKx
+lQm
 aNS
 aRn
 aqz
@@ -65013,9 +64986,9 @@ aHJ
 aIu
 anJ
 aEO
-aEO
 aMj
 aEO
+aMj
 aFW
 aKx
 aNS
@@ -65232,10 +65205,10 @@ aJr
 aEO
 coT
 aEO
-aEO
+aMj
 aNY
 aKx
-aNS
+pKL
 aRk
 anJ
 bhR
@@ -65690,7 +65663,7 @@ bbB
 bai
 bai
 bbB
-beM
+aXU
 bfp
 asv
 bgi
@@ -66347,7 +66320,7 @@ bfO
 bgk
 bgx
 bgR
-bhk
+bgx
 bgx
 biD
 bqa
@@ -72195,7 +72168,7 @@ nRT
 bap
 baT
 bbF
-bcl
+bap
 baT
 nRT
 atb

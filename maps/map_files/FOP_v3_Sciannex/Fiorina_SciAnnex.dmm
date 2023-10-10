@@ -2016,12 +2016,6 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/tumor/civres)
-"aZZ" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
-/area/fiorina/station/research_cells)
 "bac" = (
 /obj/item/stack/sheet/wood{
 	pixel_x = 1;
@@ -3587,6 +3581,12 @@
 /obj/structure/machinery/newscaster,
 /turf/closed/wall/prison,
 /area/fiorina/station/civres_blue)
+"ccM" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/central_ring)
 "cdD" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -4638,10 +4638,6 @@
 	name = "astroturf"
 	},
 /area/fiorina/tumor/fiberbush)
-"cJW" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/carpet,
-/area/fiorina/station/security/wardens)
 "cKa" = (
 /turf/closed/wall/prison,
 /area/fiorina/station/research_cells)
@@ -4819,13 +4815,6 @@
 	icon_state = "darkpurplefull2"
 	},
 /area/fiorina/tumor/servers)
-"cRs" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/fiorina/station/power_ring)
 "cRB" = (
 /obj/structure/machinery/door/airlock/prison/horizontal{
 	density = 0;
@@ -6122,10 +6111,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
-"dCF" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison,
-/area/fiorina/station/power_ring)
 "dCM" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
@@ -6392,10 +6377,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/civres)
-"dKX" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/maintenance)
 "dLq" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -8386,6 +8367,10 @@
 	icon_state = "sterile_white"
 	},
 /area/fiorina/station/medbay)
+"fcf" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/station/central_ring)
 "fcp" = (
 /obj/item/trash/burger,
 /obj/effect/landmark/monkey_spawn,
@@ -8730,12 +8715,6 @@
 	icon_state = "whitepurple"
 	},
 /area/fiorina/station/research_cells)
-"fmM" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/fiorina/station/power_ring)
 "fmU" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
@@ -13153,6 +13132,13 @@
 	icon_state = "doubleside"
 	},
 /area/fiorina/maintenance)
+"hUP" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/organic/grass{
+	desc = "It'll get in your shoes no matter what you do.";
+	name = "astroturf"
+	},
+/area/fiorina/station/central_ring)
 "hUV" = (
 /obj/item/clothing/head/helmet/marine/veteran/ua_riot,
 /turf/open/floor/prison{
@@ -15571,12 +15557,6 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
-"jsE" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/fiorina/station/lowsec)
 "jta" = (
 /obj/structure/bed{
 	icon_state = "psychbed"
@@ -15615,12 +15595,6 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/station/botany)
-"juS" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/fiorina/station/security)
 "juW" = (
 /obj/item/reagent_container/food/snacks/meat,
 /turf/open/floor/prison,
@@ -15760,7 +15734,6 @@
 /obj/item/ammo_casing{
 	icon_state = "cartridge_1"
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "jAW" = (
@@ -16645,6 +16618,13 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/lowsec)
+"kar" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/central_ring)
 "kau" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stool{
@@ -21528,12 +21508,6 @@
 /obj/item/tool/warning_cone,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
-"mTS" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
-/area/fiorina/station/research_cells)
 "mTX" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -26383,12 +26357,6 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/station/chapel)
-"pYO" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "darkyellowcorners2"
-	},
-/area/fiorina/station/telecomm/lz1_cargo)
 "pZb" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -27726,6 +27694,16 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/aux_engi)
+"qNs" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "lavendergrass_1"
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/organic/grass{
+	desc = "It'll get in your shoes no matter what you do.";
+	name = "astroturf"
+	},
+/area/fiorina/station/central_ring)
 "qNv" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
@@ -31622,13 +31600,6 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
-"tnr" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
-/area/fiorina/station/medbay)
 "tnA" = (
 /obj/structure/platform,
 /obj/structure/machinery/light/double/blue{
@@ -32687,12 +32658,6 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
-"tQJ" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "darkbrown2"
-	},
-/area/fiorina/station/park)
 "tQL" = (
 /obj/structure/platform{
 	dir = 1
@@ -34199,13 +34164,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/station/medbay)
-"uRe" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
-/area/fiorina/station/disco)
 "uRu" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -37502,10 +37460,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
-"wQs" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison,
-/area/fiorina/station/park)
 "wQN" = (
 /obj/structure/machinery/floodlight/landing/floor,
 /turf/open/floor/plating/prison,
@@ -38970,6 +38924,10 @@
 "xKX" = (
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
+"xKY" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison,
+/area/fiorina/station/central_ring)
 "xLa" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -54377,7 +54335,7 @@ bDN
 bDN
 bDN
 gqH
-tQJ
+ajK
 dqa
 sbf
 vhI
@@ -63072,7 +63030,7 @@ uGM
 uGM
 uGM
 uGM
-wQs
+uGM
 uGM
 eLu
 cME
@@ -64149,7 +64107,7 @@ afk
 iWq
 tPN
 cWR
-dKX
+gfo
 gfo
 aXM
 bTG
@@ -68149,7 +68107,7 @@ fnB
 xnR
 gIB
 fnB
-juS
+sRV
 fnB
 fYB
 vUv
@@ -68262,7 +68220,7 @@ trH
 kqz
 fPZ
 fPZ
-tnr
+fPZ
 fPZ
 fPZ
 kqz
@@ -69451,7 +69409,7 @@ ipa
 rJO
 rJO
 ipa
-cJW
+rJO
 rTH
 bMh
 ewx
@@ -69997,7 +69955,7 @@ qbr
 vPM
 mGe
 vPM
-tvI
+hUP
 tvI
 tvI
 tvI
@@ -70207,12 +70165,12 @@ tvI
 tvI
 tvI
 vPM
-dGw
+xKY
 vPM
 tvI
 tvI
 tvI
-tvI
+hUP
 tvI
 tvI
 tvI
@@ -70417,11 +70375,11 @@ tvI
 tvI
 tvI
 oKQ
-tvI
+hUP
 vPM
 mGe
 vPM
-tvI
+hUP
 oKQ
 tvI
 tvI
@@ -70678,7 +70636,7 @@ tHs
 fnB
 fnB
 pTj
-juS
+sRV
 gmS
 dhs
 sYP
@@ -70840,16 +70798,16 @@ vPM
 vPM
 vPM
 vPM
+ccM
 vPM
-vPM
-vPM
+ccM
 dGw
+ccM
+vPM
+ccM
 vPM
 vPM
-vPM
-vPM
-vPM
-vPM
+ccM
 vPM
 sYe
 tJT
@@ -71266,11 +71224,11 @@ vPM
 vPM
 vPM
 vPM
-jZx
+kar
 dGw
-vPM
+ccM
 dHI
-vPM
+ccM
 vPM
 vPM
 vPM
@@ -71476,13 +71434,13 @@ tvI
 tvI
 tvI
 tvI
-tvI
+hUP
 tvI
 vPM
-mGe
+fcf
 vPM
 tvI
-tvI
+hUP
 tvI
 tvI
 tvI
@@ -71690,13 +71648,13 @@ tvI
 tvI
 oKQ
 tvI
-vPM
+ccM
 mGe
 vPM
-tvI
+hUP
 oKQ
 tvI
-vYE
+qNs
 tvI
 xXw
 hVS
@@ -71904,7 +71862,7 @@ tvI
 rxu
 vPM
 dGw
-vPM
+ccM
 tvI
 tvI
 rxu
@@ -74891,7 +74849,7 @@ glW
 vei
 mcc
 mcc
-jsE
+mcc
 mcc
 mcc
 mcc
@@ -76825,7 +76783,7 @@ lAS
 lAS
 uyq
 lAS
-dCF
+lAS
 lAS
 mxQ
 nmT
@@ -77192,7 +77150,7 @@ kPz
 bQM
 jmG
 wQh
-mTS
+mIE
 jas
 uhm
 ebP
@@ -78859,7 +78817,7 @@ ikq
 dyM
 cKa
 uvh
-aZZ
+vJD
 vJD
 cKa
 ikq
@@ -79164,7 +79122,7 @@ uZX
 oYM
 kvd
 ihA
-fmM
+oYM
 oYM
 mxQ
 mxQ
@@ -83202,7 +83160,7 @@ nVq
 rev
 oYM
 pmo
-cRs
+nLl
 nLl
 lAS
 oYM
@@ -83340,7 +83298,7 @@ iSQ
 tHP
 ilv
 jLs
-pYO
+mDV
 iSQ
 fCz
 iEz
@@ -83997,7 +83955,7 @@ bzG
 lEz
 waz
 bEX
-uRe
+mQZ
 mQZ
 bhX
 aRG
@@ -84243,7 +84201,7 @@ kfA
 qos
 wAv
 beV
-fmM
+oYM
 oYM
 lXf
 uod

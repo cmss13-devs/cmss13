@@ -218,10 +218,9 @@
 				if (width > 1)
 					//Using generic instead of airlock_type because of messy airlock_type from multi_tile doors disassembly
 					if (glass == AIRLOCK_GLASSIN)
-						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass")
+						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer[airlock_type]")
 					else
-						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/generic")
-				//I'm not sure why someone puts airlock_type in here even though you can't change type in assembly
+						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer[airlock_type]/solid")
 				else if (glass == AIRLOCK_GLASSIN)
 					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]/glass")
 				else
@@ -337,15 +336,9 @@
 /obj/structure/airlock_assembly/multi_tile
 	//Temporary icon until I can get sprite for it
 	icon = 'icons/obj/structures/doors/airlock_assembly2x1.dmi'
-	icon_state = "door_as_g0"
+	icon_state = "door_as_0"
 	width = 2
-
-/*Temporary until we get sprites.
-	airlock_type = "/multi_tile/maint"
-	glass = 1*/
-	base_icon_state = "g" //Remember to delete this line when reverting "glass" var to 1.
-	airlock_type = "/multi_tile/glass"
-	glass = AIRLOCK_CANTGLASS //To prevent bugs in deconstruction process.
+	airlock_type = "/generic"
 
 /obj/structure/airlock_assembly/multi_tile/Initialize(mapload, ...)
 	. = ..()

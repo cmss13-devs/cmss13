@@ -25,7 +25,7 @@
 	for(var/turf/path_turf as anything in target_turfs)
 		if(blocked)
 			break
-		//Check for walls etc
+		//Check for walls etc and stop if we encounter one
 		if(path_turf.density)
 			break
 
@@ -33,6 +33,7 @@
 		for(var/atom/path_content in path_turf.contents)
 			if(istype(path_content, /obj))
 				var/obj/object = path_content
+				//If we shouldn't be able to pass through it then stop at this turf
 				if(object.density && !object.throwpass)
 					blocked = TRUE
 					break
@@ -42,6 +43,7 @@
 					if(!W.unslashable)
 						W.deconstruct(disassembled = FALSE)
 
+			//Check for mobs and add them to our target list for damage
 			if(istype(path_content, /mob/living/carbon))
 				var/mob/living/carbon/mob_to_act = path_content
 				if(!isxeno_human(mob_to_act) || X.can_not_harm(mob_to_act))

@@ -127,3 +127,14 @@
   - rscadd: Added missing flight record for Queen dropship summon.
   - code_imp: Added security record option for shipwide_ai_announcement.
   - rscadd: Added security records for unidentified lifeforms announcement.
+2023-10-11:
+  BeagleGaming1:
+  - rscadd: Light floor can be examined to tell if it is on, off, or broken.
+  - code_imp: Light floor subtypes for easier mapping
+  Birdtalon:
+  - bugfix: You can now pick up paper bins
+  - bugfix: Campfires stop consuming wood when full
+  Zonespace27:
+  - rscdel: Predators can no longer see their or others cross-round honor count.
+  irRegularGuy646:
+  - bugfix: fixed new goggle's on helmet sprite

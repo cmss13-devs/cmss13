@@ -390,14 +390,14 @@
 			var/found = FALSE
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
 			for(var/destination in local_data["destinations"])
-				if(destination["id"] == dockId)
+				if(destination["id"] == dock_id)
 					found = TRUE
 					break
 			if(!found)
-				log_admin("[key_name(user)] may be attempting a href dock exploit on [src] with target location \"[dockId]\"")
-				to_chat(user, SPAN_WARNING("The [dockId] dock is not available at this time."))
+				log_admin("[key_name(user)] may be attempting a href dock exploit on [src] with target location \"[dock_id]\"")
+				to_chat(user, SPAN_WARNING("The [dock_id] dock is not available at this time."))
 				return
-			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
+			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dock_id)
 			var/dock_reserved = FALSE
 			for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
 				if(dock == other_shuttle.destination)

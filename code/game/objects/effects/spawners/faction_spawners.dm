@@ -4,7 +4,6 @@
 /obj/effect/spawner/random/gun/uscm_primary
 	name = "USCM primary weapon spawner"
 	desc = "spawns USCM primary weapons"
-	spawn_nothing_percentage = 0
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -24,7 +23,7 @@
 	icon_state = "loot_rifle_50"
 
 /obj/effect/spawner/random/gun/uscm_primary/highchance
-	spawn_nothing_percentage = 80
+	spawn_nothing_percentage = 20
 	icon_state = "loot_rifle_80"
 
 /obj/effect/spawner/random/gun/uscm_secondary
@@ -57,7 +56,6 @@
 /obj/effect/spawner/random/gun/upp_primary
 	name = "UPP primary weapon spawner"
 	desc = "spawns UPP primary weapons"
-	spawn_nothing_percentage = 0
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -81,7 +79,6 @@
 /obj/effect/spawner/random/gun/upp_secondary
 	name = "UPP secondary weapon spawner"
 	desc = "spawns UPP secondary weapons"
-	spawn_nothing_percentage = 0
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -107,7 +104,6 @@
 /obj/effect/spawner/random/gun/pmc_primary
 	name = "PMC primary weapon spawner"
 	desc = "spawns PMC primary weapons"
-	spawn_nothing_percentage = 0
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -134,7 +130,6 @@
 /obj/effect/spawner/random/gun/pmc_secondary
 	name = "PMC secondary weapon spawner"
 	desc = "spawns PMC secondary weapons"
-	spawn_nothing_percentage = 0
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -160,7 +155,6 @@
 /obj/effect/spawner/random/gun/clf_primary
 	name = "CLF primary weapon spawner"
 	desc = "spawns CLF primary weapons"
-	spawn_nothing_percentage = 0
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -183,7 +177,6 @@
 /obj/effect/spawner/random/gun/clf_secondary
 	name = "CLF secondary weapon spawner"
 	desc = "spawns CLF secondary weapons"
-	spawn_nothing_percentage = 0
 	mags_max = 2
 	mags_min = 1
 	guns = list(

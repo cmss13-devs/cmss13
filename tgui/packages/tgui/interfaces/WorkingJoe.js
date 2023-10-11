@@ -870,24 +870,20 @@ const AccessTickets = (props, context) => {
             can_claim = 'No';
           }
           let can_update = 'Yes';
-          if (ticket.assignee !== logged_in) {
-            can_update = 'No';
-          } else if (ticket.lock_status === 'CLOSED') {
+          if (ticket.lock_status === 'CLOSED') {
             can_update = 'No';
           }
           let view_status = 'Ticket is pending assignment.';
           let view_icon = 'circle-question';
-          let update_tooltip = 'Update Access';
-          if (ticket.status === 'assigned') {
-            view_status = 'Ticket is assigned.';
-            view_icon = 'circle-plus';
-            update_tooltip = 'Grant Access';
-          } else if (ticket.status === 'rejected') {
+          let update_tooltip = 'Grant Access';
+          if (ticket.status === 'rejected') {
             view_status = 'Ticket has been rejected.';
             view_icon = 'circle-xmark';
+            update_tooltip = 'Ticket rejected. No further changes possible.';
           } else if (ticket.status === 'cancelled') {
             view_status = 'Ticket was cancelled by reporter.';
             view_icon = 'circle-stop';
+            update_tooltip = 'Ticket cancelled. No further changes possible.';
           } else if (ticket.status === 'granted') {
             view_status = 'Access ticket has been granted.';
             view_icon = 'circle-check';
@@ -906,10 +902,7 @@ const AccessTickets = (props, context) => {
           if (can_update === 'No') {
             can_reject = 'No';
           }
-          if (ticket.status !== 'assigned') {
-            can_reject = 'No';
-          }
-          if (ticket.assignee !== logged_in) {
+          if (ticket.status !== 'pending') {
             can_reject = 'No';
           }
 
@@ -932,12 +925,6 @@ const AccessTickets = (props, context) => {
               </Flex.Item>
               <Flex.Item ml="1rem">
                 <Button icon={view_icon} tooltip={view_status} />
-                <Button.Confirm
-                  icon="user-lock"
-                  tooltip="Claim Ticket"
-                  disabled={can_claim === 'No'}
-                  onClick={() => act('claim_ticket', { ticket: ticket.ref })}
-                />
                 <Button.Confirm
                   icon="user-gear"
                   tooltip={update_tooltip}

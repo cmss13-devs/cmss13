@@ -159,7 +159,7 @@
 // M.Login() //wat
 	return
 
-/*/mob/dead/observer/verb/observe()
+/mob/dead/observer/verb/observe()
 	set name = "Observe"
 	set category = "Ghost"
 
@@ -169,7 +169,7 @@
 	if(!target)
 		return
 
-	do_observe(target) */ //disabled thanks to le exploiterinos
+	do_observe(target)
 
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"

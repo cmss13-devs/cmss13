@@ -11,7 +11,7 @@
 	w_class = SIZE_SMALL
 	item_state = "gas_alt"
 	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.01
+	permeability_coefficient = 0.9
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE

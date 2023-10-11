@@ -31,6 +31,8 @@
 	var/tracking_id = null //Used for the tracking subsystem
 	/// Maximum number allowed in a squad. Defaults to infinite
 	var/max_positions = -1
+	/// If uses the overlay
+	var/use_stripe_overlay = TRUE
 	/// Color for the squad marines gear overlays
 	var/equipment_color = "#FFFFFF"
 	/// The alpha for the armor overlay used by equipment color
@@ -108,6 +110,9 @@
 
 	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
 
+	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
+	var/prepend_squad_name_to_assignment = TRUE
+
 
 /datum/squad/marine
 	name = "Root"
@@ -174,6 +179,23 @@
 	active = FALSE
 	roundstart = FALSE
 	locked = TRUE
+
+/datum/squad/marine/intel
+	name = SQUAD_MARINE_INTEL
+	use_stripe_overlay = FALSE
+	equipment_color = "#053818"
+	minimap_color = MINIMAP_SQUAD_INTEL
+	radio_freq = INTEL_FREQ
+
+	roundstart = FALSE
+	prepend_squad_name_to_assignment = FALSE
+
+	max_engineers = 0
+	max_medics = 0
+	max_specialists = 0
+	max_tl = 0
+	max_smartgun = 0
+	max_leaders = 0
 
 /datum/squad/marine/sof
 	name = SQUAD_SOF
@@ -496,7 +518,10 @@
 	marines_list += M
 	M.assigned_squad = src //Add them to the squad
 	C.access += (src.access + extra_access) //Add their squad access to their ID
-	C.assignment = "[name] [assignment]"
+	if(prepend_squad_name_to_assignment)
+		C.assignment = "[name] [assignment]"
+	else
+		C.assignment = assignment
 
 	SEND_SIGNAL(M, COMSIG_SET_SQUAD)
 
@@ -505,7 +530,7 @@
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 
 	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(M.wear_l_ear, M.wear_r_ear)
-	if(headset)
+	if(headset && radio_freq)
 		headset.set_frequency(radio_freq)
 	M.update_inv_head()
 	M.update_inv_wear_suit()

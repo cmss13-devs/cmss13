@@ -13348,7 +13348,7 @@
 "aLr" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /obj/item/clothing/head/welding,
 /turf/open/floor/corsat{
 	dir = 5;
@@ -31256,7 +31256,7 @@
 "bLH" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /obj/item/clothing/head/welding,
 /turf/open/floor/corsat{
 	dir = 5;
@@ -31963,7 +31963,7 @@
 "bNV" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool,
 /obj/item/clothing/head/welding,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/corsat{

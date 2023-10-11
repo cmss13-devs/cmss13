@@ -105,10 +105,10 @@
 	set desc = "This disables or enables the user interface buttons which can be used with hotkeys."
 
 	if(hud_used.hotkey_ui_hidden)
-		client.screen += hud_used.hotkeybuttons
+		client.add_to_screen(hud_used.hotkeybuttons)
 		hud_used.hotkey_ui_hidden = 0
 	else
-		client.screen -= hud_used.hotkeybuttons
+		client.remove_from_screen(hud_used.hotkeybuttons)
 		hud_used.hotkey_ui_hidden = TRUE
 
 /datum/hud/human/hidden_inventory_update(mob/viewer)
@@ -120,53 +120,57 @@
 		inventory_shown = FALSE
 		return //species without inv slots don't show items.
 
-	if(screenmob.hud_used.inventory_shown && screenmob.hud_used.hud_shown)
+	if(H.hud_used.inventory_shown && H.hud_used.hud_shown)
 		if(H.shoes)
 			H.shoes.screen_loc = ui_datum.ui_shoes
-			screenmob.client.screen += H.shoes
+			screenmob.client.add_to_screen(H.shoes)
 		if(H.gloves)
 			H.gloves.screen_loc = ui_datum.ui_gloves
-			screenmob.client.screen += H.gloves
+			screenmob.client.add_to_screen(H.gloves)
 		if(H.wear_l_ear)
 			H.wear_l_ear.screen_loc = ui_datum.ui_wear_l_ear
-			screenmob.client.screen += H.wear_l_ear
+			screenmob.client.add_to_screen(H.wear_l_ear)
 		if(H.wear_r_ear)
 			H.wear_r_ear.screen_loc = ui_datum.ui_wear_r_ear
-			screenmob.client.screen += H.wear_r_ear
+			screenmob.client.add_to_screen(H.wear_r_ear)
 		if(H.glasses)
 			H.glasses.screen_loc = ui_datum.ui_glasses
-			screenmob.client.screen += H.glasses
+			screenmob.client.add_to_screen(H.glasses)
 		if(H.w_uniform)
 			H.w_uniform.screen_loc = ui_datum.ui_iclothing
-			screenmob.client.screen += H.w_uniform
+			screenmob.client.add_to_screen(H.w_uniform)
 		if(H.wear_suit)
 			H.wear_suit.screen_loc = ui_datum.ui_oclothing
-			screenmob.client.screen += H.wear_suit
+			screenmob.client.add_to_screen(H.wear_suit)
 		if(H.wear_mask)
 			H.wear_mask.screen_loc = ui_datum.ui_mask
-			screenmob.client.screen += H.wear_mask
+			screenmob.client.add_to_screen(H.wear_mask)
 		if(H.head)
 			H.head.screen_loc = ui_datum.ui_head
-			screenmob.client.screen += H.head
+			screenmob.client.add_to_screen(H.head)
 	else
 		if(H.shoes)
-			screenmob.client.screen -= H.shoes
+			screenmob.client.remove_from_screen(H.shoes)
 		if(H.gloves)
-			screenmob.client.screen -= H.gloves
+			screenmob.client.remove_from_screen(H.gloves)
 		if(H.wear_r_ear)
-			screenmob.client.screen -= H.wear_r_ear
+			screenmob.client.remove_from_screen(H.wear_r_ear)
 		if(H.wear_l_ear)
-			screenmob.client.screen -= H.wear_l_ear
+			screenmob.client.remove_from_screen(H.wear_l_ear)
 		if(H.glasses)
-			screenmob.client.screen -= H.glasses
+			screenmob.client.remove_from_screen(H.glasses)
 		if(H.w_uniform)
-			screenmob.client.screen -= H.w_uniform
+			screenmob.client.remove_from_screen(H.w_uniform)
 		if(H.wear_suit)
-			screenmob.client.screen -= H.wear_suit
+			screenmob.client.remove_from_screen(H.wear_suit)
 		if(H.wear_mask)
-			screenmob.client.screen -= H.wear_mask
+			screenmob.client.remove_from_screen(H.wear_mask)
 		if(H.head)
-			screenmob.client.screen -= H.head
+			screenmob.client.remove_from_screen(H.head)
+
+	if(screenmob == mymob)
+		for(var/M in mymob.observers)
+			hidden_inventory_update(M)
 
 /datum/hud/human/persistent_inventory_update(mob/viewer)
 	if(!mymob)
@@ -177,52 +181,56 @@
 	var/mob/living/carbon/human/H = mymob
 	var/mob/screenmob = viewer || H
 
-	if(screenmob.hud_used)
-		if(screenmob.hud_used.hud_shown)
+	if(H.hud_used)
+		if(H.hud_used.hud_shown)
 			if(H.s_store)
 				H.s_store.screen_loc = ui_datum.hud_slot_offset(H.s_store, ui_datum.ui_sstore1)
-				screenmob.client.screen += H.s_store
+				screenmob.client.add_to_screen(H.s_store)
 			if(H.wear_id)
 				H.wear_id.screen_loc = ui_datum.hud_slot_offset(H.wear_id, ui_datum.ui_id)
-				screenmob.client.screen += H.wear_id
+				screenmob.client.add_to_screen(H.wear_id)
 			if(H.belt)
 				H.belt.screen_loc = ui_datum.hud_slot_offset(H.belt, ui_datum.ui_belt)
-				screenmob.client.screen += H.belt
+				screenmob.client.add_to_screen(H.belt)
 			if(H.back)
 				H.back.screen_loc = ui_datum.hud_slot_offset(H.back, ui_datum.ui_back)
-				screenmob.client.screen += H.back
+				screenmob.client.add_to_screen(H.back)
 			if(H.l_store)
 				H.l_store.screen_loc = ui_datum.hud_slot_offset(H.l_store, ui_datum.ui_storage1)
-				screenmob.client.screen += H.l_store
+				screenmob.client.add_to_screen(H.l_store)
 			if(H.r_store)
 				H.r_store.screen_loc = ui_datum.hud_slot_offset(H.r_store, ui_datum.ui_storage2)
-				screenmob.client.screen += H.r_store
+				screenmob.client.add_to_screen(H.r_store)
 		else
 			if(H.s_store)
-				screenmob.client.screen -= H.s_store
+				screenmob.client.remove_from_screen(H.s_store)
 			if(H.wear_id)
-				screenmob.client.screen -= H.wear_id
+				screenmob.client.remove_from_screen(H.wear_id)
 			if(H.belt)
-				screenmob.client.screen -= H.belt
+				screenmob.client.remove_from_screen(H.belt)
 			if(H.back)
-				screenmob.client.screen -= H.back
+				screenmob.client.remove_from_screen(H.back)
 			if(H.l_store)
-				screenmob.client.screen -= H.l_store
+				screenmob.client.remove_from_screen(H.l_store)
 			if(H.r_store)
-				screenmob.client.screen -= H.r_store
+				screenmob.client.remove_from_screen(H.r_store)
 
 	if(hud_version != HUD_STYLE_NOHUD)
 		if(H.r_hand)
 			H.r_hand.screen_loc = ui_datum.hud_slot_offset(H.r_hand, ui_datum.ui_rhand)
-			H.client.screen += H.r_hand
+			screenmob.client.add_to_screen(H.r_hand)
 		if(H.l_hand)
 			H.l_hand.screen_loc = ui_datum.hud_slot_offset(H.l_hand, ui_datum.ui_lhand)
-			H.client.screen += H.l_hand
+			screenmob.client.add_to_screen(H.l_hand)
 	else
 		if(H.r_hand)
 			H.r_hand.screen_loc = null
 		if(H.l_hand)
 			H.l_hand.screen_loc = null
+
+	if(screenmob == mymob)
+		for(var/M in mymob.observers)
+			persistent_inventory_update(M)
 
 /datum/hud/human/proc/draw_inventory_slots(gear, datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	for(var/gear_slot in gear)

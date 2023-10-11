@@ -267,12 +267,6 @@
 	hidden = TRUE
 	category = AUTOLATHE_CATEGORY_DEVICES_AND_COMPONENTS
 
-/datum/autolathe/recipe/welder_industrial
-	name = "industrial blowtorch"
-	path = /obj/item/tool/weldingtool/largetank
-	hidden = TRUE
-	category = AUTOLATHE_CATEGORY_TOOLS
-
 /datum/autolathe/recipe/handcuffs
 	name = "handcuffs"
 	path = /obj/item/handcuffs

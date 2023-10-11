@@ -310,6 +310,10 @@
 // Queen strain flags
 #define QUEEN_NORMAL "Normal"
 
+// Facehugger strain flags
+#define FACEHUGGER_NORMAL "Normal"
+#define FACEHUGGER_WATCHER "Watcher"
+
 // Drone strain flags
 #define DRONE_NORMAL "Normal"
 #define DRONE_HEALER "Healer"

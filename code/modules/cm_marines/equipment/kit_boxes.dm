@@ -86,6 +86,7 @@
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
+	new /obj/item/tool/crew_monitor(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
@@ -137,7 +138,6 @@
 	new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/tool/crew_monitor(src)
 	new /obj/item/device/binoculars(src)
 
 

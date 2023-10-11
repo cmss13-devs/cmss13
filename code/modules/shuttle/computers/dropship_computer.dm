@@ -373,8 +373,8 @@
 			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 				is_optimised = TRUE
 			update_equipment(is_optimised)
-			var/dockId = params["target"]
-			if(dockId == DROPSHIP_FLYBY_ID)
+			var/dock_id = params["target"]
+			if(dock_id == DROPSHIP_FLYBY_ID)
 				if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 					to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
 					return FALSE

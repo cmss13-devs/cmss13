@@ -12,50 +12,55 @@
 	if (!check_and_use_plasma_owner())
 		return
 
+/*	if (get_dist(X, A) > 3)
+		return FALSE
+		*/
+
+	//X = xeno user, A = target atom
+	var/list/turf/target_turfs = getline2(X, A, include_from_atom = FALSE)
+	var/len = LAZYLEN(target_turfs)
+	var/range = 4 ? len > 4 : len
+	target_turfs = target_turfs.Copy(1, range)
+
 	// Get list of target mobs
 	var/list/target_mobs = list()
 
-
-	var/list/target_turfs = list()
-	var/facing = Get_Compass_Dir(X, A)
-	var/turf/T = X.loc
-	var/turf/temp = X.loc
-
-	for(var/x in 0 to 2)
-		temp = get_step(T, facing)
-		if(!temp || temp.density || temp.opacity)
+	for(var/turf/path_turf as anything in target_turfs)
+		//Check for walls etc
+		if(path_turf.density)
+			//If we're adjacent to a blocker then don't activate.
+			if(X.Adjacent(path_turf))
+				to_chat(X, SPAN_WARNING("There's something blocking your strike!"))
+				return FALSE
 			break
 
-		var/blocked = FALSE
-		for(var/obj/structure/S in temp)
-			if(istype(S, /obj/structure/window/framed))
-				var/obj/structure/window/framed/W = S
+		//Check for structures such as doors
+		for(var/obj/path_content in path_turf.contents)
+			if(path_content.density && !path_content.throwpass)
+				if(X.Adjacent(path_content))
+					to_chat(X, SPAN_WARNING("There's something blocking your strike!"))
+					return FALSE
+				break
+
+			if(istype(path_content, /obj/structure/window/framed))
+				var/obj/structure/window/framed/W = path_content
 				if(!W.unslashable)
 					W.deconstruct(disassembled = FALSE)
 
-			if(S.opacity)
-				blocked = TRUE
-				break
-		if(blocked)
-			break
-
-		T = temp
-		target_turfs += T
-
-	for(var/turf/target_turf in target_turfs)
-		for(var/mob/living/carbon/H in target_turf)
-			if (!isxeno_human(H) || X.can_not_harm(H))
+		//Get all mobs on the path
+		for(var/mob/living/carbon/path_mob in path_turf.contents)
+			if(!isxeno_human(path_mob) || X.can_not_harm(path_mob))
 				continue
 
-			if(!(H in target_mobs))
-				target_mobs += H
+			if(!(path_mob in target_mobs))
+				target_mobs += path_mob
 
-	X.visible_message(SPAN_XENODANGER("[X] slashes its claws through the area in front of it!"), SPAN_XENODANGER("You slash your claws through the area in front of you!"))
+	X.visible_message(SPAN_XENODANGER("[X] slashes its tail through the area in front of it!"), SPAN_XENODANGER("You slash your tail through the area in front of you!"))
 	X.animation_attack_on(A, 15)
 
 	X.emote("roar")
 
-	// Loop through our turfs, finding any humans there and dealing damage to them
+	// Loop through our mob list, finding any humans there and dealing damage to them
 	for (var/mob/living/carbon/H in target_mobs)
 		if (!isxeno_human(H) || X.can_not_harm(H))
 			continue

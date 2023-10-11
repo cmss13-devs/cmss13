@@ -674,7 +674,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 				var/obj/item/circuitboard/airlock/airlock_electronics
 				if(!electronics)
-					airlock_electronics = new/obj/item/circuitboard/airlock( loc )
+					airlock_electronics = new/obj/item/circuitboard/airlock(loc)
 					if(!req_access || !req_one_access)
 						check_access()
 					if(req_access.len)

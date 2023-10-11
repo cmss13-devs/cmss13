@@ -36,19 +36,22 @@
 	switch(state)
 		if(STATE_STANDARD)
 			if(anchored)
-				helpmessage += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it. Insert a [SPAN_HELPFUL("airlock circuit")]."
+				var/temp = ""
+				if(width == 1)
+					temp += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it. "
+				helpmessage += "[temp]You can insert an [SPAN_HELPFUL("airlock circuit")]. "
 				if(!glass)
-					helpmessage += "Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it."
+					helpmessage += "Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it. "
 				else if(glass == AIRLOCK_GLASSIN)
-					helpmessage += "You can take out the windows with a [SPAN_HELPFUL("screwdriver")]."
+					helpmessage += "You can take out the windows with a [SPAN_HELPFUL("screwdriver")]. "
 			else
-				helpmessage += "It looks like a [SPAN_HELPFUL("wrench")] will secure it."
+				helpmessage += "It looks like a [SPAN_HELPFUL("wrench")] will secure it. "
 		if(STATE_CIRCUIT)
-			helpmessage += "Add [SPAN_HELPFUL("cable coil")] to the circuit."
+			helpmessage += "Add [SPAN_HELPFUL("cable coil")] to the circuit. "
 		if(STATE_WIRES)
-			helpmessage += "Secure the circuit with a [SPAN_HELPFUL("screwdriver")]."
+			helpmessage += "Secure the circuit with a [SPAN_HELPFUL("screwdriver")]. "
 		if(STATE_SCREWDRIVER)
-			helpmessage += "[SPAN_HELPFUL("Weld")] it all in place."
+			helpmessage += "[SPAN_HELPFUL("Weld")] it all in place. "
 	helpmessage += "You can name it with a [SPAN_HELPFUL("pen")]."
 	. += SPAN_NOTICE(helpmessage)
 
@@ -110,6 +113,10 @@
 	switch(state)
 		if(STATE_STANDARD)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
+				//Moving wide doors is wonky and doesn't work properly, if it's fixed we could make it unwrenchable again
+				if(width > 1 && anchored)
+					to_chat(user, SPAN_WARNING("\The [src] cannot be unwrenched."))
+					return
 				if(!anchored)
 					var/turf/open/checked_turf = loc
 					if(!(istype(checked_turf) && checked_turf.allow_construction))

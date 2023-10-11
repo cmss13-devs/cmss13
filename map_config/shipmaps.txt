@@ -15,3 +15,7 @@ endmap
 map rumayer
 	default
 endmap
+
+map almayer
+	voteweight 0
+endmap

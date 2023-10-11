@@ -227,7 +227,7 @@
 			CHECK_TICK
 	return res
 
-/obj/item/device/camera/proc/get_mob_descriptions(turf/the_turf as turf, existing_descripion)
+/obj/item/device/camera/proc/get_mob_descriptions(turf/the_turf, existing_descripion)
 	var/mob_detail = existing_descripion
 	for(var/mob/living/carbon/cur_carbon in the_turf)
 		if(cur_carbon.invisibility)

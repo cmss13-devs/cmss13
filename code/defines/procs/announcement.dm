@@ -131,11 +131,11 @@
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
-		switch(ares_logging)
-			if(ARES_LOG_MAIN)
-				link.log_ares_announcement(title, message)
-			if(ARES_LOG_SECURITY)
-				link.log_ares_security(title, message)
+	switch(ares_logging)
+		if(ARES_LOG_MAIN)
+			log_ares_announcement(title, message)
+		if(ARES_LOG_SECURITY)
+			log_ares_security(title, message)
 
 	announcement_helper(message, title, targets, sound_to_play)
 

@@ -216,7 +216,7 @@
 				if(is_priority == "Yes")
 					priority_report = TRUE
 
-			var/confirm = alert(operator, "Please confirm the submission of your maintenance report. \n\n Priority: [priority_report ? "Yes" : "No"] \n Category: '[maint_type]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
+			var/confirm = alert(operator, "Please confirm the submission of your maintenance report. \n\n Priority: [priority_report ? "Yes" : "No"]\n Category: '[maint_type]'\n Details: '[details]'\n\n Is this correct?", "Confirmation", "Yes", "No")
 			if(confirm == "Yes")
 				if(link)
 					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, maint_type, details, priority_report)
@@ -305,7 +305,7 @@
 			if(!details)
 				return FALSE
 
-			var/confirm = alert(operator, "Please confirm the submission of your access ticket request.\n\nHolder: '[last_login]'\n Details: '[details]'\n\n Is this correct?", "Confirmation", "Yes", "No")
+			var/confirm = alert(operator, "Please confirm the submission of your access ticket request.\n\nHolder: '[last_login]'\nDetails: '[details]'\n\nIs this correct?", "Confirmation", "Yes", "No")
 			if(confirm != "Yes" || !link)
 				return FALSE
 			var/datum/ares_ticket/access/access_ticket = new(last_login, details, FALSE, idcard.registered_gid)

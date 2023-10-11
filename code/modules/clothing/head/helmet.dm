@@ -825,7 +825,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	unacidable = TRUE
-	anti_hug = 6
 	specialty = "M3-G4 grenadier"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 

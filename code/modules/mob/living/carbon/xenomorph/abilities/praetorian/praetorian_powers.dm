@@ -12,48 +12,43 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-/*	if (get_dist(X, A) > 3)
-		return FALSE
-		*/
-
 	//X = xeno user, A = target atom
 	var/list/turf/target_turfs = getline2(X, A, include_from_atom = FALSE)
 	var/len = LAZYLEN(target_turfs)
-	var/range = 4 ? len > 4 : len
-	target_turfs = target_turfs.Copy(1, range)
+	if(len > 3)
+		target_turfs = target_turfs.Copy(1, 4)
 
 	// Get list of target mobs
 	var/list/target_mobs = list()
+	var/blocked = FALSE
 
 	for(var/turf/path_turf as anything in target_turfs)
+		if(blocked)
+			break
 		//Check for walls etc
 		if(path_turf.density)
-			//If we're adjacent to a blocker then don't activate.
-			if(X.Adjacent(path_turf))
-				to_chat(X, SPAN_WARNING("There's something blocking your strike!"))
-				return FALSE
 			break
 
 		//Check for structures such as doors
-		for(var/obj/path_content in path_turf.contents)
-			if(path_content.density && !path_content.throwpass)
-				if(X.Adjacent(path_content))
-					to_chat(X, SPAN_WARNING("There's something blocking your strike!"))
-					return FALSE
-				break
+		for(var/atom/path_content in path_turf.contents)
+			if(istype(path_content, /obj))
+				var/obj/object = path_content
+				if(object.density && !object.throwpass)
+					blocked = TRUE
+					break
 
-			if(istype(path_content, /obj/structure/window/framed))
-				var/obj/structure/window/framed/W = path_content
-				if(!W.unslashable)
-					W.deconstruct(disassembled = FALSE)
+				if(istype(object, /obj/structure/window/framed))
+					var/obj/structure/window/framed/W = object
+					if(!W.unslashable)
+						W.deconstruct(disassembled = FALSE)
 
-		//Get all mobs on the path
-		for(var/mob/living/carbon/path_mob in path_turf.contents)
-			if(!isxeno_human(path_mob) || X.can_not_harm(path_mob))
-				continue
+			if(istype(path_content, /mob/living/carbon))
+				var/mob/living/carbon/mob_to_act = path_content
+				if(!isxeno_human(mob_to_act) || X.can_not_harm(mob_to_act))
+					continue
 
-			if(!(path_mob in target_mobs))
-				target_mobs += path_mob
+				if(!(mob_to_act in target_mobs))
+					target_mobs += mob_to_act
 
 	X.visible_message(SPAN_XENODANGER("[X] slashes its tail through the area in front of it!"), SPAN_XENODANGER("You slash your tail through the area in front of you!"))
 	X.animation_attack_on(A, 15)

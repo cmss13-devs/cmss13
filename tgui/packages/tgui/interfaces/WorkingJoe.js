@@ -902,6 +902,15 @@ const AccessTickets = (props, context) => {
             update_tooltip =
               'Access self-returned. No further changes possible.';
           }
+          let can_reject = 'No';
+          if (can_claim === 'Yes') {
+            can_reject = 'Yes';
+          } else if (
+            ticket.status === 'assigned' &&
+            ticket.assignee === logged_in
+          ) {
+            can_reject = 'Yes';
+          }
 
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
@@ -941,6 +950,14 @@ const AccessTickets = (props, context) => {
                   disabled={can_update === 'No'}
                   onClick={() => act('auth_access', { ticket: ticket.ref })}
                 />
+                {!!can_reject === 'Yes' && (
+                  <Button.Confirm
+                    icon="user-minus"
+                    tooltip="Reject Ticket"
+                    disabled={can_reject === 'No'}
+                    onClick={() => act('reject_access', { ticket: ticket.ref })}
+                  />
+                )}
               </Flex.Item>
             </Flex>
           );

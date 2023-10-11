@@ -301,21 +301,19 @@
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
-			var/ticket_holder = last_login
-			if(!ticket_holder)
-				return FALSE
 			var/details = tgui_input_text(operator, "What is the purpose of this access ticket?", "Ticket Details", encode = FALSE)
 			if(!details)
 				return FALSE
 
-			var/confirm = alert(operator, "Please confirm the submission of your access ticket request. \n\nHolder: '[ticket_holder]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
+			var/confirm = alert(operator, "Please confirm the submission of your access ticket request.\n\nHolder: '[last_login]'\n Details: '[details]'\n\n Is this correct?", "Confirmation", "Yes", "No")
 			if(confirm != "Yes" || !link)
 				return FALSE
-			var/datum/ares_ticket/access/access_ticket = new(last_login, ticket_holder, details, FALSE, idcard.registered_gid)
+			var/datum/ares_ticket/access/access_ticket = new(last_login, details, FALSE, idcard.registered_gid)
 			link.waiting_ids += idcard
 			link.tickets_access += access_ticket
-			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
+			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Details of '[details]'.")
 			message_admins(SPAN_STAFF_IC("[key_name_admin(operator)] created a new ARES Access Ticket."), 1)
+			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] requesting access for '[details].")
 			return TRUE
 
 		if("return_access")
@@ -341,7 +339,7 @@
 
 				to_chat(operator, SPAN_NOTICE("Temporary Access Ticket surrendered."))
 				playsound(src, 'sound/machines/chime.ogg', 15, 1)
-				ares_apollo_talk("[last_login] surrendered their access ticket.")
+				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] surrendered their access.")
 
 				authentication = get_ares_access(identification)
 				if(authentication)
@@ -365,6 +363,7 @@
 				identification.handle_ares_access(last_login, operator)
 				access_ticket.ticket_status = TICKET_GRANTED
 				playsound(src, 'sound/machines/chime.ogg', 15, 1)
+				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was granted access by [last_login].")
 				return TRUE
 			for(var/obj/item/card/id/identification in link.active_ids)
 				if(!istype(identification))
@@ -374,14 +373,26 @@
 				identification.handle_ares_access(last_login, operator)
 				access_ticket.ticket_status = TICKET_REVOKED
 				playsound(src, 'sound/machines/chime.ogg', 15, 1)
+				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] had access revoked by [last_login].")
 				return TRUE
 			return FALSE
+
+		if("reject_access")
+			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
+			if(!istype(access_ticket))
+				return FALSE
+			if(access_ticket.ticket_assignee != last_login && access_ticket.ticket_assignee) //must be claimed by you or unclaimed.)
+				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
+				return FALSE
+			access_ticket.ticket_status = TICKET_REJECTED
+			to_chat(usr, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
+			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] rejected access by [last_login].")
+			return TRUE
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)
 
 /obj/item/card/id/proc/handle_ares_access(logged_in, mob/user)
-	var/announce_text = "[logged_in] revoked core access from [registered_name]'s ID card."
 	var/operator = key_name(user)
 	var/datum/ares_link/link = GLOB.ares_link
 	if(logged_in == MAIN_AI_SYSTEM)
@@ -397,9 +408,7 @@
 	else
 		access += ACCESS_MARINE_AI_TEMP
 		modification_log += "Temporary AI access granted by [operator]"
-		announce_text = "[logged_in] granted core access to [registered_name]'s ID card."
 		to_chat(user, SPAN_NOTICE("Access granted to [registered_name]."))
 		link.waiting_ids -= src
 		link.active_ids += src
-	ares_apollo_talk(announce_text)
 	return TRUE

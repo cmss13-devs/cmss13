@@ -35,6 +35,7 @@ To setup an elevator:
 - place the docking port where you want the elevator to sit
 - give the docking port instance a unique ID
 - give the docking port instance a unique Name
+- make sure the door direction is correct west/east
 - give the docking port shuttle_area the area name for where it sits
 - if you want to build a docking port 'network' then change the roudnstart_template to a subclass
 - if you want to assign a docking port to a 'network' then give it a value in "tag"

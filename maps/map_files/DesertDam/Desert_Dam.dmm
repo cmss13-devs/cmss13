@@ -14391,7 +14391,8 @@
 /obj/docking_port/stationary/trijent_elevator/occupied{
 	id = "trigent_lz2";
 	name = "Lz2 Elevator";
-	airlock_area = /area/shuttle/trijent_shuttle/lz2
+	airlock_area = /area/shuttle/trijent_shuttle/lz2;
+	elevator_network = "B"
 	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz2)
@@ -61547,7 +61548,8 @@
 	id = "trigent_omega";
 	name = "Omega Elevator";
 	airlock_exit = "east";
-	airlock_area = /area/shuttle/trijent_shuttle/omega
+	airlock_area = /area/shuttle/trijent_shuttle/omega;
+	elevator_network = "B"
 	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/omega)
@@ -63402,8 +63404,8 @@
 	id = "trigent_engineering";
 	name = "Engineering Elevator";
 	airlock_exit = "east";
-	tag = "A";
-	airlock_area = /area/shuttle/trijent_shuttle/engi
+	airlock_area = /area/shuttle/trijent_shuttle/engi;
+	elevator_network = "A"
 	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/engi)
@@ -64045,7 +64047,8 @@
 /obj/docking_port/stationary/trijent_elevator/occupied{
 	id = "trigent_lz1";
 	name = "Lz1 Elevator";
-	tag = "A"
+	elevator_network = "A";
+	airlock_area = /area/shuttle/trijent_shuttle/lz1
 	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz1)

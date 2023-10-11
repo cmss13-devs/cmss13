@@ -19,6 +19,7 @@
 
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
 	var/datum/door_controller/aggregate/door_control
+	var/elevator_network
 
 /obj/docking_port/mobile/trijent_elevator/Initialize(mapload, ...)
 	. = ..()
@@ -43,6 +44,7 @@
 	// shutters to clear the area
 	var/airlock_area
 	var/airlock_exit
+	var/elevator_network
 
 /obj/docking_port/stationary/trijent_elevator/proc/get_doors()
 	. = list()
@@ -57,8 +59,6 @@
 	if(istype(arriving_shuttle, /obj/docking_port/mobile/trijent_elevator))
 		var/obj/docking_port/mobile/trijent_elevator/elevator = arriving_shuttle
 		elevator.door_control.control_doors("open", airlock_exit)
-		if(elevator.tag != "")
-			elevator.tag = tag
 
 	// open dock doors
 	var/datum/door_controller/single/door_control = new()

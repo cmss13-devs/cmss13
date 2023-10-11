@@ -43,12 +43,13 @@
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/proc/get_landing_zones()
 	. = list()
-	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/trijent_elevator/shuttle = SSshuttle.getShuttle(shuttleId)
+
 	for(var/obj/docking_port/stationary/trijent_elevator/elev in SSshuttle.stationary)
-		if(shuttle.tag == "")
+		if(shuttle.elevator_network == "" || elev.elevator_network == null)
 			. += list(elev)
 			continue
-		if(shuttle.tag == elev.tag)
+		if(shuttle.elevator_network == elev.elevator_network)
 			. += list(elev)
 			continue
 

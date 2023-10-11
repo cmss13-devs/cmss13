@@ -177,10 +177,19 @@
 	res.Blend("#000", ICON_OVERLAY)
 	CHECK_TICK
 
+	var/pixel_size = world.icon_size
+	var/radius = (size - 1) * 0.5
+	var/center_offset = radius * pixel_size + 1
+	var/x_min = center.x - radius
+	var/x_max = center.x + radius
+	var/y_min = center.y - radius
+	var/y_max = center.y + radius
+
 	var/list/atoms = list()
 	for(var/turf/the_turf as anything in turfs)
-		// Add outselves to the list of stuff to draw
+		// Add ourselves to the list of stuff to draw
 		atoms.Add(the_turf);
+
 		// As well as anything that isn't invisible.
 		for(var/atom/cur_atom as anything in the_turf)
 			if(!cur_atom || cur_atom.invisibility)
@@ -189,13 +198,15 @@
 
 	// Sort the atoms into their layers
 	var/list/sorted = sort_atoms_by_layer(atoms)
-	var/center_offset = (size-1)/2 * 32 + 1
 	for(var/atom/cur_atom as anything in sorted)
-		if(!cur_atom)
+		if(QDELETED(cur_atom))
+			continue
+
+		if(cur_atom.x < x_min || cur_atom.x > x_max || cur_atom.y < y_min || cur_atom.y > y_max)
+			// they managed to move out of frame with all this CHECK_TICK...
 			continue
 
 		var/icon/cur_icon = getFlatIcon(cur_atom)//build_composite_icon(cur_atom)
-		CHECK_TICK
 
 		// If what we got back is actually a picture, draw it.
 		if(istype(cur_icon, /icon))
@@ -206,19 +217,20 @@
 					cur_icon.BecomeLying()
 
 			// Calculate where we are relative to the center of the photo
-			var/xoff = (cur_atom.x - center.x) * 32 + center_offset
-			var/yoff = (cur_atom.y - center.y) * 32 + center_offset
-			if (istype(cur_atom, /atom/movable))
+			var/xoff = (cur_atom.x - center.x) * pixel_size + center_offset
+			var/yoff = (cur_atom.y - center.y) * pixel_size + center_offset
+			if(istype(cur_atom, /atom/movable))
 				xoff += cur_atom:step_x
 				yoff += cur_atom:step_y
 			res.Blend(cur_icon, blendMode2iconMode(cur_atom.blend_mode),  cur_atom.pixel_x + xoff, cur_atom.pixel_y + yoff)
-			CHECK_TICK
+
+		CHECK_TICK
 
 	// Lastly, render any contained effects on top.
 	for(var/turf/the_turf as anything in turfs)
 		// Calculate where we are relative to the center of the photo
-		var/xoff = (the_turf.x - center.x) * 32 + center_offset
-		var/yoff = (the_turf.y - center.y) * 32 + center_offset
+		var/xoff = (the_turf.x - center.x) * pixel_size + center_offset
+		var/yoff = (the_turf.y - center.y) * pixel_size + center_offset
 		var/image/cur_icon = getFlatIcon(the_turf.loc)
 		CHECK_TICK
 
@@ -280,6 +292,10 @@
 	for(var/turf/the_turf as anything in turfs)
 		mob_descriptions = get_mob_descriptions(the_turf, mob_descriptions)
 	var/datum/picture/the_picture = createpicture(target, user, turfs, mob_descriptions, flag)
+
+	if(QDELETED(user))
+		return
+
 	printpicture(user, the_picture)
 
 /obj/item/device/camera/proc/createpicture(atom/target, mob/user, list/turfs, description, flag)

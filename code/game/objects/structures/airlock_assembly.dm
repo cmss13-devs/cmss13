@@ -52,7 +52,7 @@
 	helpmessage += "You can name it with a [SPAN_HELPFUL("pen")]."
 	. += SPAN_NOTICE(helpmessage)
 
-/obj/structure/airlock_assembly/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/airlock_assembly/attackby(obj/item/attacking_item as obj, mob/user as mob)
 	if(user.action_busy)
 		return TRUE //no afterattack
 
@@ -60,31 +60,31 @@
 		to_chat(user, SPAN_WARNING("You are not trained to configure \the [src]..."))
 		return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		var/t = copytext(stripped_input(user, "Enter the name for the airlock.", name, created_name), 1, MAX_NAME_LEN)
-		if(!t || !in_range(src, usr) && loc != usr)
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_PEN))
+		var/input_text = copytext(stripped_input(user, "Enter the name for the airlock.", name, created_name), 1, MAX_NAME_LEN)
+		if(!input_text || !in_range(src, usr) && loc != usr)
 			return
-		created_name = t
+		created_name = input_text
 		playsound(src, "paper_writing", 15, TRUE)
 		return
 
-	if(istype(W, /obj/item/stack/sheet/glass))
-		var/obj/item/stack/sheet/glass/G = W
+	if(istype(attacking_item, /obj/item/stack/sheet/glass))
+		var/obj/item/stack/sheet/glass/glass_sheet = attacking_item
 		if(!anchored)
 			to_chat(user, SPAN_NOTICE("The airlock is not secured!"))
 			return
 		if(state != STATE_STANDARD)
-			to_chat(user, SPAN_NOTICE("You can't add in the glass with the circuit already in!"))
+			to_chat(user, SPAN_NOTICE("You can'input_text add in the glass with the circuit already in!"))
 			return
 		if(glass == AIRLOCK_GLASSIN)
-			to_chat(user, SPAN_NOTICE("You can't add more glass to \the [src]!"))
+			to_chat(user, SPAN_NOTICE("You can'input_text add more glass to \the [src]!"))
 			return
 		if(glass == AIRLOCK_CANTGLASS)
 			to_chat(user, SPAN_NOTICE("\The [src] has no slots to install glass!"))
 			return
 		if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
-		if(G.use(5))
+		if(glass_sheet.use(5))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			glass = AIRLOCK_GLASSIN
 			to_chat(user, SPAN_NOTICE("You insert some glass into \the [src], adding windows to it."))
@@ -94,7 +94,7 @@
 			to_chat(user, SPAN_WARNING("You need five sheets of glass to add windows to \the [src]!"))
 			return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 		to_chat(user, SPAN_NOTICE("You start pulling \the [src] apart."))
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -109,10 +109,10 @@
 
 	switch(state)
 		if(STATE_STANDARD)
-			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
 				if(!anchored)
-					var/turf/open/T = loc
-					if(!(istype(T) && T.allow_construction))
+					var/turf/open/checked_turf = loc
+					if(!(istype(checked_turf) && checked_turf.allow_construction))
 						to_chat(user, SPAN_WARNING("\The [src] cannot be secured here!"))
 						return
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -128,10 +128,10 @@
 				to_chat(user, SPAN_NOTICE("The airlock is not secured!"))
 				return ..()
 
-			if(istype(W, /obj/item/circuitboard/airlock))
-				var/obj/item/circuitboard/airlock/C = W
-				if(C.fried) // guess what this used to check? ICON STATE!!
-					to_chat(user, SPAN_WARNING("\The [C] are totally broken!"))
+			if(istype(attacking_item, /obj/item/circuitboard/airlock))
+				var/obj/item/circuitboard/airlock/airlock_circuit = attacking_item
+				if(airlock_circuit.fried) // guess what this used to check? ICON STATE!!
+					to_chat(user, SPAN_WARNING("\The [airlock_circuit] are totally broken!"))
 					return
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You start installing the airlock electronics."))
@@ -139,14 +139,14 @@
 					return
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				user.drop_held_item()
-				W.forceMove(src)
+				attacking_item.forceMove(src)
 				to_chat(user, SPAN_NOTICE("You installed the airlock electronics!"))
 				state = STATE_CIRCUIT
-				electronics = W
+				electronics = attacking_item
 				update_icon()
 				return
 
-			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 				if(!anchored)
 					to_chat(user, SPAN_NOTICE("The airlock is not secured!"))
 					return
@@ -164,22 +164,22 @@
 
 
 		if(STATE_CIRCUIT)
-			if(istype(W, /obj/item/stack/cable_coil))
-				var/obj/item/stack/cable_coil/C = W
-				if (C.get_amount() < 1)
+			if(istype(attacking_item, /obj/item/stack/cable_coil))
+				var/obj/item/stack/cable_coil/airlock_circuit = attacking_item
+				if (airlock_circuit.get_amount() < 1)
 					to_chat(user, SPAN_WARNING("You need one length of coil to wire the airlock assembly."))
 					return
 				to_chat(user, SPAN_NOTICE("You start to wire the circuit."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
-				if(C.use(1))
+				if(airlock_circuit.use(1))
 					state = STATE_WIRES
 					to_chat(user, SPAN_NOTICE("You wire the circuit."))
 					update_icon()
 				return
 
 		if(STATE_WIRES)
-			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You start securing the circuit"))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -191,28 +191,30 @@
 				return
 
 		if(STATE_SCREWDRIVER)
-			if(iswelder(W))
-				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			if(iswelder(attacking_item))
+				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
-				var/obj/item/tool/weldingtool/WT = W
-				if(!WT.remove_fuel(5, user))
+				var/obj/item/tool/weldingtool/welder = attacking_item
+				if(!welder.remove_fuel(5, user))
 					return
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("Now finishing the airlock."))
 
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					WT.remove_fuel(-5)
+					welder.remove_fuel(-5)
 					return
 
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You finish the airlock!"))
 				var/path
 				if (width > 1)
+					//Using generic instead of airlock_type because of messy airlock_type from multi_tile doors disassembly
 					if (glass == AIRLOCK_GLASSIN)
 						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass")
 					else
 						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/generic")
+				//I'm not sure why someone puts airlock_type in here even though you can't change type in assembly
 				else if (glass == AIRLOCK_GLASSIN)
 					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]/glass")
 				else
@@ -231,8 +233,8 @@
 					door.name = created_name
 				else
 					door.name = base_name
-				if (door.width > 1)
-					door.Move()
+				if (istype(door, /obj/structure/machinery/door/airlock/multi_tile))
+					door.update_collision_box()
 				electronics.forceMove(door)
 				qdel(src)
 				return
@@ -244,6 +246,10 @@
 		icon_state = "door_as_g[state]"
 	else
 		icon_state = "door_as_[base_icon_state][state]"
+
+//Also used for overloading proc for multi_tile
+/obj/structure/airlock_assembly/proc/update_collision_box()
+	return
 
 /obj/structure/airlock_assembly/airlock_assembly_com
 	base_icon_state = "com"
@@ -322,6 +328,7 @@
 	glass = AIRLOCK_CANTGLASS
 
 /obj/structure/airlock_assembly/multi_tile
+	//Temporary icon until I can get sprite for it
 	icon = 'icons/obj/structures/doors/airlock_assembly2x1.dmi'
 	icon_state = "door_as_g0"
 	width = 2
@@ -335,22 +342,20 @@
 
 /obj/structure/airlock_assembly/multi_tile/Initialize(mapload, ...)
 	. = ..()
+	update_collision_box()
+	update_icon()
+
+/obj/structure/airlock_assembly/multi_tile/update_collision_box()
 	if(dir in list(EAST, WEST))
 		bound_width = width * world.icon_size
 		bound_height = world.icon_size
 	else
 		bound_width = world.icon_size
 		bound_height = width * world.icon_size
-	update_icon()
 
 /obj/structure/airlock_assembly/multi_tile/Move()
 	. = ..()
-	if(dir in list(EAST, WEST))
-		bound_width = width * world.icon_size
-		bound_height = world.icon_size
-	else
-		bound_width = world.icon_size
-		bound_height = width * world.icon_size
+	update_collision_box()
 
 
 #undef STATE_STANDARD

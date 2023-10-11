@@ -17,7 +17,7 @@
 		stack_trace("[src] using incorrect typepath, \"[prop_gun_type]\".") //Can't make a prop gun of something not a gun
 		qdel(src)
 		return
-	if(!spawn_prob)
+	if(!prob(spawn_prob))
 		qdel(src)
 		return
 	if(!mapload)
@@ -71,6 +71,7 @@
 	pixel_x = source_gun.pixel_x
 	pixel_y = source_gun.pixel_y
 	layer = source_gun.layer
+	overlays = source_gun.overlays
 
 /obj/item/prop/prop_gun/attack_self(mob/user) //Mimic wielding of real guns
 	. = ..()

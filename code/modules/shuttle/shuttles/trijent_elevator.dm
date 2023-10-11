@@ -57,6 +57,8 @@
 	if(istype(arriving_shuttle, /obj/docking_port/mobile/trijent_elevator))
 		var/obj/docking_port/mobile/trijent_elevator/elevator = arriving_shuttle
 		elevator.door_control.control_doors("open", airlock_exit)
+		if(elevator.tag != "")
+			elevator.tag = tag
 
 	// open dock doors
 	var/datum/door_controller/single/door_control = new()
@@ -73,6 +75,17 @@
 	door_control.doors = get_doors()
 	door_control.control_doors("force-lock-launch")
 	qdel(door_control)
+
+/obj/docking_port/stationary/trijent_elevator/occupied
+	name="occupied"
+	id=STAT_TRIJENT_OCCUPIED
+	airlock_exit="west"
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator
+
+/obj/docking_port/stationary/trijent_elevator/empty
+	name="empty"
+	id=STAT_TRIJENT_EMPTY
+	airlock_exit="west"
 
 /obj/docking_port/stationary/trijent_elevator/lz1
 	name="Lz1 Elevator"
@@ -98,7 +111,3 @@
 	id=STAT_TRIJENT_OMEGA
 	airlock_area=/area/shuttle/trijent_shuttle/omega
 	airlock_exit="east"
-
-/datum/map_template/shuttle/trijent_elevator
-	name = "Trijent Elevator"
-	shuttle_id = MOBILE_TRIJENT_ELEVATOR

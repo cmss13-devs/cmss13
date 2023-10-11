@@ -14,6 +14,8 @@
 	var/port_x_offset
 	var/port_y_offset
 
+	var/tags
+
 /datum/map_template/shuttle/proc/prerequisites_met()
 	return TRUE
 
@@ -99,7 +101,19 @@
 /datum/map_template/shuttle/proc/post_load(obj/docking_port/mobile/M)
 	if(movement_force)
 		M.movement_force = movement_force.Copy()
+	if(tags)
+		M.tag = tags
 
 /datum/map_template/shuttle/vehicle
 	shuttle_id = MOBILE_SHUTTLE_VEHICLE_ELEVATOR
 	name = "Vehicle Elevator"
+
+/datum/map_template/shuttle/trijent_elevator
+	name = "Trijent Elevator"
+	shuttle_id = MOBILE_TRIJENT_ELEVATOR
+
+/datum/map_template/shuttle/trijent_elevator/A
+	tags="A"
+
+/datum/map_template/shuttle/trijent_elevator/B
+	tags="B"

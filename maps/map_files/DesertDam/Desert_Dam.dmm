@@ -10112,7 +10112,8 @@
 	icon_state = "S"
 	},
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega{
-	pixel_y = 32
+	pixel_y = 32;
+	shuttleId = "trijentshuttle22"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -14387,7 +14388,11 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aRB" = (
-/obj/docking_port/stationary/trijent_elevator/lz2,
+/obj/docking_port/stationary/trijent_elevator/occupied{
+	id = "trigent_lz2";
+	name = "Lz2 Elevator";
+	airlock_area = /area/shuttle/trijent_shuttle/lz2
+	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz2)
 "aRC" = (
@@ -61538,7 +61543,12 @@
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/interior/caves/temple)
 "ipQ" = (
-/obj/docking_port/stationary/trijent_elevator/omega,
+/obj/docking_port/stationary/trijent_elevator/empty{
+	id = "trigent_omega";
+	name = "Omega Elevator";
+	airlock_exit = "east";
+	airlock_area = /area/shuttle/trijent_shuttle/omega
+	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/omega)
 "iqs" = (
@@ -62546,7 +62556,8 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "mej" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz2{
-	pixel_x = 32
+	pixel_x = 32;
+	shuttleId = "trijentshuttle22"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -63387,7 +63398,13 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "pif" = (
-/obj/docking_port/stationary/trijent_elevator/engineering,
+/obj/docking_port/stationary/trijent_elevator/empty{
+	id = "trigent_engineering";
+	name = "Engineering Elevator";
+	airlock_exit = "east";
+	tag = "A";
+	airlock_area = /area/shuttle/trijent_shuttle/engi
+	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/engi)
 "pij" = (
@@ -64025,7 +64042,11 @@
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
 "rxS" = (
-/obj/docking_port/stationary/trijent_elevator/lz1,
+/obj/docking_port/stationary/trijent_elevator/occupied{
+	id = "trigent_lz1";
+	name = "Lz1 Elevator";
+	tag = "A"
+	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz1)
 "ryG" = (

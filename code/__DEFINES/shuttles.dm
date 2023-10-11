@@ -100,6 +100,8 @@
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_boarding_shuttle"
 
 #define MOBILE_TRIJENT_ELEVATOR "trijentshuttle2"
+#define STAT_TRIJENT_EMPTY "trigent_empty"
+#define STAT_TRIJENT_OCCUPIED "trigent_occupied"
 #define STAT_TRIJENT_LZ1 "trigent_lz1"
 #define STAT_TRIJENT_LZ2 "trigent_lz2"
 #define STAT_TRIJENT_ENGI "trigent_engineering"

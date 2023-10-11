@@ -810,8 +810,10 @@
 	var/obj/item/stack/sheet/wood/fuel = attacking_item
 	if(remaining_fuel >= initial(remaining_fuel))
 		to_chat(user, SPAN_NOTICE("You cannot fuel [src] further."))
+		return
 	if(!fuel.use(1))
 		to_chat(SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
+		return
 	visible_message(SPAN_NOTICE("[user] fuels [src] with [fuel]."))
 	remaining_fuel++
 

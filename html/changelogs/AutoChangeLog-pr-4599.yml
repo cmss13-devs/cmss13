@@ -1,0 +1,5 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - rscadd: "Light floor can be examined to tell if it is on, off, or broken."
+  - code_imp: "Light floor subtypes for easier mapping"

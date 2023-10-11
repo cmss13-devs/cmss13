@@ -121,7 +121,7 @@
 
 //AI shipside announcement, that uses announcement mechanic instead of talking into comms
 //to ensure that all humans on ship hear it regardless of comms and power
-/proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/interference.ogg'), signature)
+/proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/interference.ogg'), signature, ares_logging = ARES_LOG_MAIN)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/T in targets)
 		if(isobserver(T))
@@ -131,7 +131,11 @@
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
-	log_ares_announcement(title, message)
+		switch(ares_logging)
+			if(ARES_LOG_MAIN)
+				link.log_ares_announcement(title, message)
+			if(ARES_LOG_SECURITY)
+				link.log_ares_security(title, message)
 
 	announcement_helper(message, title, targets, sound_to_play)
 

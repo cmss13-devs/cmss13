@@ -386,7 +386,7 @@
 				return FALSE
 			access_ticket.ticket_status = TICKET_REJECTED
 			to_chat(usr, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
-			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] rejected access by [last_login].")
+			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was rejected access by [last_login].")
 			return TRUE
 
 	if(playsound)

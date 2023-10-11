@@ -182,7 +182,7 @@
 		// Add outselves to the list of stuff to draw
 		atoms.Add(the_turf);
 		// As well as anything that isn't invisible.
-		for(var/atom/cur_atom in the_turf)
+		for(var/atom/cur_atom as anything in the_turf)
 			if(!cur_atom || cur_atom.invisibility)
 				continue
 			atoms.Add(cur_atom)

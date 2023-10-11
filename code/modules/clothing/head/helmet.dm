@@ -835,6 +835,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A custom helmet designed for USCM Scouts."
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	specialty = "M3-S light"
+	anti_hug = 6
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 /obj/item/clothing/head/helmet/marine/pyro

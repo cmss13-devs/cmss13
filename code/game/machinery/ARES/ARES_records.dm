@@ -102,6 +102,7 @@
 	var/ref_holder = "\ref[src]"
 	var/pos = length(ref_holder)
 	var/new_id = "#[copytext("\ref[src]", pos - 4, pos)]"
+	new_id = uppertext(new_id)
 
 	ticket_time = worldtime2text()
 	ticket_submitter = user
@@ -122,6 +123,7 @@
 	var/ref_holder = "\ref[src]"
 	var/pos = length(ref_holder)
 	var/new_id = "#[copytext("\ref[src]", pos - 4, pos)]"
+	new_id = uppertext(new_id)
 
 	ticket_time = worldtime2text()
 	ticket_submitter = user

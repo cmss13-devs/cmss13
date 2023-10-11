@@ -6,17 +6,25 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC"
 	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	paygrade = "PMC-OP"
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_COMMAND,
 		ACCESS_WY_GENERAL,
-		ACCESS_WY_COLONIAL,
-		ACCESS_WY_SECURITY,
+        ACCESS_WY_COLONIAL,
+        ACCESS_WY_MEDICAL,
+        ACCESS_WY_SECURITY,
+        ACCESS_WY_RESEARCH,
+        ACCESS_WY_ARMORY,
+        ACCESS_CIVILIAN_PUBLIC,
+        ACCESS_CIVILIAN_RESEARCH,
+        ACCESS_CIVILIAN_ENGINEERING,
+        ACCESS_CIVILIAN_LOGISTICS,
+        ACCESS_CIVILIAN_BRIG,
+        ACCESS_CIVILIAN_MEDBAY,
+        ACCESS_CIVILIAN_COMMAND,
 	)
 
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
@@ -113,8 +121,19 @@
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	access = list(
-		ACCESS_LIST_COLONIAL_ALL,
-		ACCESS_LIST_WY_ALL,
+		ACCESS_WY_GENERAL,
+        ACCESS_WY_COLONIAL,
+        ACCESS_WY_MEDICAL,
+        ACCESS_WY_SECURITY,
+        ACCESS_WY_RESEARCH,
+        ACCESS_WY_ARMORY,
+        ACCESS_CIVILIAN_PUBLIC,
+        ACCESS_CIVILIAN_RESEARCH,
+        ACCESS_CIVILIAN_ENGINEERING,
+        ACCESS_CIVILIAN_LOGISTICS,
+        ACCESS_CIVILIAN_BRIG,
+        ACCESS_CIVILIAN_MEDBAY,
+        ACCESS_CIVILIAN_COMMAND,
 	)
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH

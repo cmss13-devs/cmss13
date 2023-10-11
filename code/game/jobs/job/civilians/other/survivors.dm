@@ -10,6 +10,7 @@
 	job_options = SURVIVOR_VARIANT_LIST
 	var/intro_text
 	var/story_text
+	/// Whether or not the survivor is an inherently hostile to marines.
 	var/hostile = FALSE
 
 /datum/job/civilian/survivor/set_spawn_positions(count)

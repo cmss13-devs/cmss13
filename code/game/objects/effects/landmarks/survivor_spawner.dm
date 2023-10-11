@@ -8,6 +8,7 @@
 	var/roundstart_damage_min = 0
 	var/roundstart_damage_max = 0
 	var/roundstart_damage_times = 1
+	/// Whether or not the spawner is for an inherently hostile survivor subtype.
 	var/hostile = FALSE
 
 	var/spawn_priority = LOWEST_SPAWN_PRIORITY

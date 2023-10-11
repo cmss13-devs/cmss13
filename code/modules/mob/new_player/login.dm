@@ -21,7 +21,7 @@
 /mob/new_player/proc/lobby()
 	if(!client)
 		return
-
+	world.log << "[client] подключился, играю музыку"
 	client.playtitlemusic()
 
 	// To show them the full lobby art. This fixes itself on a mind transfer so no worries there.

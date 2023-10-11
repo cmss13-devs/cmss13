@@ -54,6 +54,7 @@ SUBSYSTEM_DEF(ticker)
 	var/key = SAFEPICK(all_music)
 	if(key)
 		login_music = file(all_music[key])
+	world.log << "Выбрали музыку [all_music[key]] [all_music]"
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)

@@ -508,40 +508,42 @@
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
 	name = "\improper LZ detector"
-	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
+	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone."
 	icon_state = "lz_detector"
 	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
 	if(ship_base)
-		if(!linked_cam_console)
-			for(var/obj/structure/machinery/computer/cameras/dropship/D in range(5, loc))
-				linked_cam_console = D
-				break
+		connect_cameras()
 		icon_state = "[initial(icon_state)]_installed"
 	else
-		linked_cam_console = null
+		disconnect_cameras()
 		icon_state = initial(icon_state)
 
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/Destroy()
-	linked_cam_console = null
+	disconnect_cameras()
 	return ..()
 
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/on_launch()
-	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES) //only accessible while in the air.
-	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
-		var/mob/user = ref.resolve()
-		if(user)
-			linked_cam_console.update_static_data(user)
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/connect_cameras()
+	if(linked_cam_console)
+		return
+	for(var/obj/structure/machinery/computer/cameras/dropship/D in range(5, loc))
+		linked_cam_console = D
+		break
+	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES)
 
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/on_arrival()
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/disconnect_cameras()
+	if(!linked_cam_console)
+		return
 	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
-	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
-		var/mob/user = ref.resolve()
-		if(user)
-			linked_cam_console.update_static_data(user)
+		for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
+			var/mob/user = ref.resolve()
+			if(user)
+				linked_cam_console.update_static_data(user)
+		linked_cam_console = null
+
 
 
 /////////////////////////////////// COMPUTERS //////////////////////////////////////

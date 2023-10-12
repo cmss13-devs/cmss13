@@ -118,3 +118,38 @@
   - rscadd: tactical shotguns now come standard with their stock. Yes you can remove
       it if you dont want it
   - rscadd: new tactical shotgun stock sprite done by esselnek
+2023-10-10:
+  BeagleGaming1:
+  - code_imp: prop guns will copy attachments
+  CapCamIII:
+  - rscdel: XO can no longer take a sword as their personal weapon in their vendor.
+  realforest2001:
+  - rscadd: Added missing flight record for Queen dropship summon.
+  - code_imp: Added security record option for shipwide_ai_announcement.
+  - rscadd: Added security records for unidentified lifeforms announcement.
+2023-10-11:
+  BeagleGaming1:
+  - rscadd: Light floor can be examined to tell if it is on, off, or broken.
+  - code_imp: Light floor subtypes for easier mapping
+  Birdtalon:
+  - bugfix: You can now pick up paper bins
+  - bugfix: Campfires stop consuming wood when full
+  Zonespace27:
+  - rscdel: Predators can no longer see their or others cross-round honor count.
+  irRegularGuy646:
+  - bugfix: fixed new goggle's on helmet sprite
+2023-10-12:
+  QuickLode:
+  - rscadd: Adds a handheld distress beacon for the Colonial Marshal. They can use
+      this to signal distress which in turn allows reinforcements in the form of Anchorpoint
+      Marine QRF or nearby CMB teams. Admins do the final check.
+  - rscadd: Adds a CMB Patrol Team which responds to "Marshals in Distress" call.
+  - admin: headset admin response no longer specifies USCM origin(as this is used
+      for USCM, WY, and now CMB)
+  - spellcheck: fixes a CMB typo in response message. Also a miniscule change to HG
+      37-12 desc.
+  - spellcheck: fixes 2 misc typos in CMB Inspections
+  harryob:
+  - rscadd: origin descriptions are now displayed when selecting an origin
+  mullenpaul:
+  - ui: tweaked flyby controls to make them in line with other destinations

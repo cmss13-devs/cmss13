@@ -317,14 +317,7 @@ const RenderScreen = (props, context) => {
   return (
     <>
       {data.can_set_automated === 1 && <AutopilotConfig />}
-      {data.can_fly_by === 1 &&
-        (data.shuttle_mode === 'idle' || data.shuttle_mode === 'called') && (
-          <FlybyControl />
-        )}
-      {data.shuttle_mode === 'idle' &&
-        data.flight_configuration !== 'flyby' && (
-          <DropshipDestinationSelection />
-        )}
+      {data.shuttle_mode === 'idle' && <DropshipDestinationSelection />}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'pre-arrival' && <TouchdownCooldown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}

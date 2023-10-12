@@ -444,6 +444,9 @@
 		if("set-automate")
 			var/almayer_lz = params["hangar_id"]
 			var/ground_lz = params["ground_id"]
+			if(ground_lz == DROPSHIP_FLYBY_ID)
+				to_chat(user, SPAN_WARNING("Unfortunately it is not possible to automate fly-bys."))
+				return
 			var/delay = Clamp(params["delay"] SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
 
 			// TODO verify

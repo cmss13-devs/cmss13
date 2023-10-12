@@ -245,6 +245,10 @@
 		to_chat(src, SPAN_WARNING("The round has ended. Please wait for the next round to enter a tutorial."))
 		return
 
+	if(SSticker.tutorial_disabled)
+		to_chat(src, SPAN_WARNING("Tutorials are currently disabled because something broke, sorry!"))
+		return
+
 	var/datum/tutorial_menu/menu = new(src)
 	menu.ui_interact(src)
 

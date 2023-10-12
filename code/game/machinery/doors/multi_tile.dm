@@ -11,7 +11,6 @@
 
 	return ..()
 
-//I have copy pasted this from airlock_assembly, might be a good idea to find a way to avoid duplicated code
 /obj/structure/machinery/door/airlock/multi_tile/Initialize()
 	. = ..()
 	update_collision_box()

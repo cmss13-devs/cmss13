@@ -215,12 +215,12 @@
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You finish the airlock!"))
 				var/path
+				//For some reason multi_tile doors have different paths... darn
 				if (width > 1)
-					//Using generic instead of airlock_type because of messy airlock_type from multi_tile doors disassembly
 					if (glass == AIRLOCK_GLASSIN)
-						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer[airlock_type]")
+						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type]")
 					else
-						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer[airlock_type]/solid")
+						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type]/solid")
 				else if (glass == AIRLOCK_GLASSIN)
 					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]/glass")
 				else
@@ -253,92 +253,91 @@
 	else
 		icon_state = "door_as_[base_icon_state][state]"
 
-//Also used for overloading proc for multi_tile
+//Used for overloading proc in multi_tile
 /obj/structure/airlock_assembly/proc/update_collision_box()
 	return
 
 /obj/structure/airlock_assembly/airlock_assembly_com
 	base_icon_state = "com"
 	base_name = "Command Airlock"
-	airlock_type = "/command"
+	airlock_type = "command"
 
 /obj/structure/airlock_assembly/airlock_assembly_sec
 	base_icon_state = "sec"
 	base_name = "Security Airlock"
-	airlock_type = "/security"
+	airlock_type = "security"
 
 /obj/structure/airlock_assembly/airlock_assembly_eng
 	base_icon_state = "eng"
 	base_name = "Engineering Airlock"
-	airlock_type = "/engineering"
+	airlock_type = "engineering"
 
 /obj/structure/airlock_assembly/airlock_assembly_min
 	base_icon_state = "min"
 	base_name = "Mining Airlock"
-	airlock_type = "/mining"
+	airlock_type = "mining"
 
 /obj/structure/airlock_assembly/airlock_assembly_atmo
 	base_icon_state = "atmo"
 	base_name = "Atmospherics Airlock"
-	airlock_type = "/atmos"
+	airlock_type = "atmos"
 
 /obj/structure/airlock_assembly/airlock_assembly_research
 	base_icon_state = "res"
 	base_name = "Research Airlock"
-	airlock_type = "/research"
+	airlock_type = "research"
 
 /obj/structure/airlock_assembly/airlock_assembly_science
 	base_icon_state = "sci"
 	base_name = "Science Airlock"
-	airlock_type = "/science"
+	airlock_type = "science"
 
 /obj/structure/airlock_assembly/airlock_assembly_med
 	base_icon_state = "med"
 	base_name = "Medical Airlock"
-	airlock_type = "/medical"
+	airlock_type = "medical"
 
 /obj/structure/airlock_assembly/airlock_assembly_mai
 	base_icon_state = "mai"
 	base_name = "Maintenance Airlock"
-	airlock_type = "/maintenance"
+	airlock_type = "maintenance"
 	glass = AIRLOCK_CANTGLASS
 
 /obj/structure/airlock_assembly/airlock_assembly_ext
 	base_icon_state = "ext"
 	base_name = "External Airlock"
-	airlock_type = "/external"
+	airlock_type = "external"
 	glass = AIRLOCK_CANTGLASS
 
 /obj/structure/airlock_assembly/airlock_assembly_fre
 	base_icon_state = "fre"
 	base_name = "Freezer Airlock"
-	airlock_type = "/freezer"
+	airlock_type = "freezer"
 	glass = AIRLOCK_CANTGLASS
 
 /obj/structure/airlock_assembly/airlock_assembly_hatch
 	base_icon_state = "hatch"
 	base_name = "Airtight Hatch"
-	airlock_type = "/hatch"
+	airlock_type = "hatch"
 	glass = AIRLOCK_CANTGLASS
 
 /obj/structure/airlock_assembly/airlock_assembly_mhatch
 	base_icon_state = "mhatch"
 	base_name = "Maintenance Hatch"
-	airlock_type = "/maintenance_hatch"
+	airlock_type = "maintenance_hatch"
 	glass = AIRLOCK_CANTGLASS
 
 /obj/structure/airlock_assembly/airlock_assembly_highsecurity // Borrowing this until WJohnston makes sprites for the assembly
 	base_icon_state = "highsec"
 	base_name = "High Security Airlock"
-	airlock_type = "/highsecurity"
+	airlock_type = "highsecurity"
 	glass = AIRLOCK_CANTGLASS
 
 /obj/structure/airlock_assembly/multi_tile
-	//Temporary icon until I can get sprite for it
 	icon = 'icons/obj/structures/doors/airlock_assembly2x1.dmi'
 	icon_state = "door_as_0"
 	width = 2
-	airlock_type = "/generic"
+	airlock_type = "generic"
 
 /obj/structure/airlock_assembly/multi_tile/Initialize(mapload, ...)
 	. = ..()

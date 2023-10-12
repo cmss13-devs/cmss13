@@ -126,7 +126,6 @@
 							dat += "<td>[crimstat]</td></tr>"
 						dat += "</table><hr width='75%' />"
 						dat += "<br><A href='?src=\ref[src];choice=Return'>Return to index.</A>"
-				else
 		else
 			dat += "<A href='?src=\ref[src];choice=Log In'>{Log In}</A>"
 	show_browser(user, dat, "Employment Records", "secure_rec", "size=600x400")
@@ -339,7 +338,6 @@ What a mess.*/
 								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									GLOB.data_core.medical -= R
 									qdel(R)
-								else
 							QDEL_NULL(active1)
 					else
 						temp = "This function does not appear to be working at the moment. Our apologies."

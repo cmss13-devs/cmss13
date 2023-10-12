@@ -65,7 +65,9 @@ export const TutorialMenu = (props, context) => {
                   (tutorial_category) =>
                     tutorial_category.name === categoryIndex &&
                     tutorial_category.tutorials.map((tutorial) => (
-                      <div style={{ 'padding-bottom': '12px' }}>
+                      <div
+                        style={{ 'padding-bottom': '12px' }}
+                        key={tutorial.id}>
                         <Button
                           fontSize="15px"
                           textAlign="center"

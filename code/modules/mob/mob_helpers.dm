@@ -322,13 +322,10 @@ var/global/list/limb_types_by_name = list(
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
 
-/mob/verb/a_select_zone(input as text)
-	set name = "a-select-zone"
-	set hidden = TRUE
-
+/mob/proc/a_select_zone(input, client/user)
 	var/atom/movable/screen/zone_sel/zone
 
-	for(var/A in usr.client.screen)
+	for(var/A in user.screen)
 		if(istype(A, /atom/movable/screen/zone_sel))
 			zone = A
 

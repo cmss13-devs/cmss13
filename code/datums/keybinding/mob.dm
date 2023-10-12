@@ -2,6 +2,16 @@
 	category = CATEGORY_HUMAN
 	weight = WEIGHT_MOB
 
+/datum/keybinding/mob/down(client/user)
+	. = ..()
+	if(isobserver(user.mob))
+		return TRUE
+
+/datum/keybinding/mob/up(client/user)
+	. = ..()
+	if(isobserver(user.mob))
+		return TRUE
+
 /datum/keybinding/mob/stop_pulling
 	hotkey_keys = list("H", "Delete")
 	classic_keys = list("Delete")
@@ -85,7 +95,7 @@
 	. = ..()
 	if(.)
 		return
-	user.mob.a_select_zone("head")
+	user.mob.a_select_zone("head", user)
 	return TRUE
 
 /datum/keybinding/mob/target_r_arm
@@ -100,7 +110,7 @@
 	. = ..()
 	if(.)
 		return
-	user.mob.a_select_zone("rarm")
+	user.mob.a_select_zone("rarm", user)
 	return TRUE
 
 /datum/keybinding/mob/target_body_chest
@@ -115,7 +125,7 @@
 	. = ..()
 	if(.)
 		return
-	user.mob.a_select_zone("chest")
+	user.mob.a_select_zone("chest", user)
 	return TRUE
 
 /datum/keybinding/mob/target_left_arm
@@ -130,7 +140,7 @@
 	. = ..()
 	if(.)
 		return
-	user.mob.a_select_zone("larm")
+	user.mob.a_select_zone("larm", user)
 	return TRUE
 
 /datum/keybinding/mob/target_right_leg
@@ -145,7 +155,7 @@
 	. = ..()
 	if(.)
 		return
-	user.mob.a_select_zone("rleg")
+	user.mob.a_select_zone("rleg", user)
 	return TRUE
 
 /datum/keybinding/mob/target_body_groin
@@ -160,7 +170,7 @@
 	. = ..()
 	if(.)
 		return
-	user.mob.a_select_zone("groin")
+	user.mob.a_select_zone("groin", user)
 	return TRUE
 
 /datum/keybinding/mob/target_left_leg
@@ -175,7 +185,7 @@
 	. = ..()
 	if(.)
 		return
-	user.mob.a_select_zone("lleg")
+	user.mob.a_select_zone("lleg", user)
 	return TRUE
 
 /datum/keybinding/mob/target_next
@@ -190,7 +200,7 @@
 	. = ..()
 	if(.)
 		return
-	user.mob.a_select_zone("next")
+	user.mob.a_select_zone("next", user)
 	return TRUE
 
 /datum/keybinding/mob/target_prev
@@ -205,7 +215,7 @@
 	. = ..()
 	if(.)
 		return
-	user.mob.a_select_zone("prev")
+	user.mob.a_select_zone("prev", user)
 	return TRUE
 
 /datum/keybinding/mob/prevent_movement

@@ -21,6 +21,8 @@
 	var/darkness_view = 12
 	/// The maximum distance this can be from the sniper scope
 	var/max_sniper_distance = 7
+	/// If this requires the vulture_user trait to use
+	var/skillless = FALSE
 
 /obj/structure/vulture_spotter_tripod/Initialize(mapload)
 	. = ..()
@@ -36,7 +38,10 @@
 /obj/structure/vulture_spotter_tripod/deconstruct(disassembled)
 	. = ..()
 	if(scope_attached && bound_rifle)
-		new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
+		if(skillless)
+			new /obj/item/device/vulture_spotter_scope/skillless(get_turf(src), bound_rifle)
+		else
+			new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
 	new /obj/item/device/vulture_spotter_tripod(get_turf(src))
 
 /obj/structure/vulture_spotter_tripod/get_examine_text(mob/user)
@@ -63,7 +68,7 @@
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
-	if(!HAS_TRAIT(user, TRAIT_VULTURE_USER))
+	if(!HAS_TRAIT(user, TRAIT_VULTURE_USER) && !skillless)
 		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
 		return
 
@@ -153,9 +158,12 @@
 		user.pixel_y = 0
 
 /// Handler for when the scope is being attached to the tripod
-/obj/structure/vulture_spotter_tripod/proc/on_scope_attach(mob/user, obj/structure/vulture_spotter_tripod/scope)
+/obj/structure/vulture_spotter_tripod/proc/on_scope_attach(mob/user, obj/item/device/vulture_spotter_scope/scope)
 	if(scope_attached)
 		return
+
+	if(istype(scope, /obj/item/device/vulture_spotter_scope/skillless))
+		skillless = TRUE
 
 	user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
 	icon_state = "vulture_scope"

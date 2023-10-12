@@ -153,9 +153,15 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
       </TableCell>
 
       <TableCell className="chemical-td">
-        <span className="compound_label">
-          {compound.type.document.split(' ')[2]}
-        </span>
+        {compound.type.document.split(' ')[0] === 'Simulation' ? (
+          <span className="compound_label">
+            {compound.type.document.split(' ')[3]}
+          </span>
+        ) : (
+          <span className="compound_label">
+            {compound.type.document.split(' ')[2]}
+          </span>
+        )}
       </TableCell>
 
       <TableCell>

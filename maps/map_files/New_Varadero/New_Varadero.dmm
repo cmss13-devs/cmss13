@@ -7371,6 +7371,9 @@
 /obj/item/circuitboard/airlock,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
+"eOK" = (
+/turf/open/floor/plating,
+/area/varadero/interior_protected/caves/central)
 "eOZ" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -10629,6 +10632,11 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance)
+"gPE" = (
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/varadero/interior_protected/caves/central)
 "gPG" = (
 /turf/open/gm/dirt{
 	icon_state = "desert2"
@@ -21737,6 +21745,14 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/hall_NW)
+"nYi" = (
+/obj/structure/machinery/sensortower{
+	pixel_x = -9
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior_protected/caves/central)
 "nYx" = (
 /obj/structure/machinery/storm_siren{
 	dir = 8;
@@ -26663,6 +26679,9 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"raW" = (
+/turf/closed/wall,
+/area/varadero/interior_protected/caves/central)
 "rbd" = (
 /obj/item/stack/sheet/wood/small_stack,
 /turf/open/floor/plating/icefloor{
@@ -27524,6 +27543,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/north)
+"rAt" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior_protected/caves/central)
 "rAy" = (
 /obj/structure/bedsheetbin,
 /turf/open/floor/shiva{
@@ -53317,9 +53340,9 @@ etv
 xxk
 xxk
 mCF
-aOg
-mCF
-mCF
+raW
+rAt
+rAt
 cty
 hoC
 mCF
@@ -53499,9 +53522,9 @@ toU
 cto
 xxk
 meS
-aOg
-aOg
-mCF
+eOK
+gPE
+gPE
 cty
 cty
 mCF
@@ -53681,9 +53704,9 @@ etv
 xxk
 xxk
 aOg
-mCF
-mCF
-hoC
+eOK
+gPE
+nYi
 cty
 aOg
 aOg
@@ -53862,9 +53885,9 @@ ixr
 toU
 xxk
 xxk
+eOK
 mCF
-mCF
-hoC
+gPE
 cty
 cty
 aOg
@@ -54045,7 +54068,7 @@ mMZ
 xxk
 xxk
 mCF
-mCF
+eOK
 cty
 cty
 cty

@@ -204,7 +204,7 @@
 				return //too deeply nested to access or not being carried by the user.
 
 			var/obj/item/storage/U = I.loc
-			user.client.screen -= I
+			user.client.remove_from_screen(I)
 			U.contents.Remove(I)
 		else if(user.l_hand == I) //in a hand
 			user.drop_l_hand()

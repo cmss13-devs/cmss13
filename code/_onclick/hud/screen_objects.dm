@@ -37,6 +37,8 @@
 
 
 /atom/movable/screen/close/clicked(mob/user)
+	if(isobserver(user))
+		return TRUE
 	if(master)
 		if(isstorage(master))
 			var/obj/item/storage/master_storage = master
@@ -612,10 +614,10 @@
 	if(user && user.hud_used)
 		if(user.hud_used.inventory_shown)
 			user.hud_used.inventory_shown = 0
-			user.client.screen -= user.hud_used.toggleable_inventory
+			user.client.remove_from_screen(user.hud_used.toggleable_inventory)
 		else
 			user.hud_used.inventory_shown = 1
-			user.client.screen += user.hud_used.toggleable_inventory
+			user.client.add_to_screen(user.hud_used.toggleable_inventory)
 
 		user.hud_used.hidden_inventory_update()
 	return 1

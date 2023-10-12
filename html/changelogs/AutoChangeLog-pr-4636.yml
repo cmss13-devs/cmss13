@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - refactor: "Refactored camera code to be less blocking, use typechecks less often, and provide somewhat more fluid descriptions to photos."

@@ -133,6 +133,14 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 				continue
 			dept_flags |= FLAG_SHOW_MARINES
 			squad_sublists[squad_name] = TRUE
+			///If it is a real squad in the USCM squad list to prevent the crew manifest from breaking
+			var/real_squad = FALSE
+			for(var/current_squad in ROLES_SQUAD_ALL)
+				if(squad_name == current_squad)
+					real_squad = TRUE
+					break
+			if(!real_squad)
+				continue
 			LAZYSET(marines_by_squad[squad_name][real_rank], name, rank)
 
 	//here we fill manifest

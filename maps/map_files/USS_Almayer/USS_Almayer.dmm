@@ -7615,7 +7615,8 @@
 	id = "bot_armory";
 	layer = 3;
 	closed_layer = 3;
-	open_layer = 3
+	open_layer = 3;
+	plane = -4
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -39456,18 +39457,20 @@
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced/black{
-	layer = 3.1;
+	layer = 3;
 	pixel_y = -4
 	},
 /obj/structure/machinery/computer/working_joe{
 	layer = 3.2;
-	pixel_x = -17
+	pixel_x = -17;
+	plane = -4
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	id = "bot_armory";
 	layer = 3;
 	closed_layer = 3;
-	open_layer = 3
+	open_layer = 3;
+	plane = -4
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -48133,13 +48136,15 @@
 	dir = 1
 	},
 /obj/structure/machinery/computer/crew{
-	layer = 3.1
+	layer = 3.1;
+	plane = -4
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	id = "bot_armory";
 	layer = 3;
 	closed_layer = 3;
-	open_layer = 3
+	open_layer = 3;
+	plane = -4
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -51253,30 +51258,34 @@
 /obj/structure/platform/shiva{
 	dir = 1
 	},
-/obj/structure/surface/table/reinforced/black{
-	layer = 3.1;
-	pixel_y = -4
-	},
 /obj/structure/machinery/computer/card{
 	pixel_y = 0;
 	layer = 3.125;
-	pixel_x = -15
+	pixel_x = -15;
+	plane = -4
 	},
 /obj/structure/machinery/computer/squad_changer{
 	layer = 3.125;
 	pixel_y = 0;
-	pixel_x = -32
+	pixel_x = -32;
+	plane = -4
 	},
 /obj/item/device/flashlight/lamp{
 	pixel_y = 8;
 	layer = 3.1;
-	pixel_x = 3
+	pixel_x = 3;
+	plane = -4
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	id = "bot_armory";
 	layer = 3;
 	closed_layer = 3;
-	open_layer = 3
+	open_layer = 3;
+	plane = -4
+	},
+/obj/structure/surface/table/reinforced/black{
+	layer = 3;
+	pixel_y = -4
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -54486,7 +54495,8 @@
 	id = "bot_armory";
 	layer = 3;
 	closed_layer = 3;
-	open_layer = 3
+	open_layer = 3;
+	plane = -4
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -58359,27 +58369,29 @@
 	dir = 1
 	},
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	plane = -2
+	},
+/obj/item/storage/box/ids{
+	pixel_y = 7;
+	pixel_x = -2;
+	layer = 3.2
+	},
+/obj/item/storage/box/ids{
+	pixel_y = 0;
+	pixel_x = -2;
+	layer = 3.2
 	},
 /obj/structure/surface/table/reinforced/black{
-	layer = 3.1;
+	layer = 3;
 	pixel_y = -4
-	},
-/obj/item/storage/box/ids{
-	pixel_y = 10;
-	pixel_x = -2;
-	layer = 3.2
-	},
-/obj/item/storage/box/ids{
-	pixel_y = 3;
-	pixel_x = -2;
-	layer = 3.2
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	id = "bot_armory";
 	layer = 3;
 	closed_layer = 3;
-	open_layer = 3
+	open_layer = 3;
+	plane = -4
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -63562,17 +63574,20 @@
 	dir = 1
 	},
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	plane = -2
 	},
 /obj/structure/prop/almayer/computers/sensor_computer3{
 	pixel_y = 0;
-	layer = 3.2
+	layer = 3.2;
+	plane = -4
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	id = "bot_armory";
 	layer = 3;
 	closed_layer = 3;
-	open_layer = 3
+	open_layer = 3;
+	plane = -4
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -76800,7 +76815,8 @@
 	id = "bot_armory";
 	layer = 3;
 	closed_layer = 3;
-	open_layer = 3
+	open_layer = 3;
+	plane = -4
 	},
 /turf/open/floor/almayer{
 	dir = 1;

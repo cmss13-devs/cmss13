@@ -28,10 +28,6 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	var/parent_path = /datum/tutorial
 
 /datum/tutorial/Destroy(force, ...)
-	if(bottom_left_corner)
-		var/obj/landmark = locate(/obj/effect/landmark/tutorial_bottom_left) in bottom_left_corner.contents
-		qdel(landmark)
-
 	GLOB.ongoing_tutorials -= src
 	QDEL_NULL(reservation) // Its Destroy() handles releasing reserved turfs
 
@@ -65,7 +61,9 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	template.load(bottom_left_corner_reservation, FALSE, TRUE)
 
 	GLOB.ongoing_tutorials |= src
-	bottom_left_corner = get_turf(locate(/obj/effect/landmark/tutorial_bottom_left) in GLOB.landmarks_list)
+	var/obj/landmark = locate(/obj/effect/landmark/tutorial_bottom_left) in GLOB.landmarks_list
+	bottom_left_corner = get_turf(landmark)
+	qdel(landmark)
 	var/area/tutorial_area = get_area(bottom_left_corner)
 	tutorial_area.update_base_lighting() // this will be entirely dark otherwise
 	init_map()
@@ -170,6 +168,10 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	mappath = "maps/tutorial/tutorial_8x9.dmm"
 	width = 8
 	height = 9
+
+/datum/map_template/tutorial/s8x9/no_baselight
+	name = "Tutorial Zone (8x9) (No Baselight)"
+	mappath = "maps/tutorial/tutorial_8x9_nb.dmm"
 
 /datum/map_template/tutorial/s7x7
 	name = "Tutorial Zone (7x7)"

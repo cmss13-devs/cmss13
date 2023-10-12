@@ -158,3 +158,6 @@
 /area/misc/tutorial/Initialize(mapload, ...)
 	. = ..()
 	update_base_lighting()
+
+/area/misc/tutorial/no_baselight
+	base_lighting_alpha = 0

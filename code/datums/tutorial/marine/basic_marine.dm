@@ -2,7 +2,7 @@
 	name = "Marine - Basic"
 	desc = "A tutorial to get you acquainted with the very basics of how to play a groundside marine role."
 	tutorial_id = "marine_basic_1"
-	tutorial_template = /datum/map_template/tutorial/s8x9
+	tutorial_template = /datum/map_template/tutorial/s8x9/no_baselight
 	/// How many items need to be vended from the clothing vendor for the script to continue, if something vends 2 items (for example), increase this number by 2.
 	var/clothing_items_to_vend = 9
 	/// How many items need to be vended from the gun vendor to continue
@@ -14,6 +14,14 @@
 	. = ..()
 	if(!.)
 		return
+
+	var/obj/item/device/flashlight/flashlight = new(loc_from_corner(2, 3))
+	flashlight.anchored = TRUE
+	flashlight.set_light_power(4)
+	flashlight.set_light_range(12)
+	flashlight.icon = null
+	flashlight.set_light_on(TRUE)
+	add_to_tracking_atoms(flashlight)
 
 	init_mob()
 	message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>W</b> or <b>D</b> to continue.")
@@ -65,7 +73,7 @@
 		UnregisterSignal(clothing_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)
 		clothing_vendor.req_access = list(ACCESS_TUTORIAL_LOCKED)
 		remove_highlight(clothing_vendor)
-		message_to_player("Now, the room will be dimmed. Take a <b>flare</b> out of your <b>flare pouch</b> by clicking on it with an empty hand, and then light it by using it in-hand with <b>Z</b>.")
+		message_to_player("Now, the room will darken. Take a <b>flare</b> out of your <b>flare pouch</b> by clicking on it with an empty hand, and then light it by using it in-hand with <b>Z</b>.")
 		update_objective("Click on your flare pouch to remove a flare before using it in-hand.")
 		var/obj/item/storage/pouch/flare/flare_pouch = locate(/obj/item/storage/pouch/flare) in tutorial_mob.contents
 		if(flare_pouch)
@@ -166,20 +174,12 @@
 // START OF SCRIPT HELPERS
 
 /datum/tutorial/marine/basic/proc/dim_room()
-	var/area/tutorial_area = get_area(tutorial_mob)
-	tutorial_area.set_base_lighting(new_alpha = 200)
-	sleep(0.5 SECONDS)
-	tutorial_area.set_base_lighting(new_alpha = 160)
-	sleep(0.5 SECONDS)
-	tutorial_area.set_base_lighting(new_alpha = 140)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/flashlight, flashlight)
+	flashlight.set_light_on(FALSE)
 
 /datum/tutorial/marine/basic/proc/brighten_room()
-	var/area/tutorial_area = get_area(tutorial_mob)
-	tutorial_area.set_base_lighting(new_alpha = 160)
-	sleep(0.5 SECONDS)
-	tutorial_area.set_base_lighting(new_alpha = 200)
-	sleep(0.5 SECONDS)
-	tutorial_area.set_base_lighting(new_alpha = 255)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/flashlight, flashlight)
+	flashlight.set_light_on(TRUE)
 
 /datum/tutorial/marine/basic/proc/disappear_xeno()
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/xenomorph/drone/tutorial, xeno_dummy)

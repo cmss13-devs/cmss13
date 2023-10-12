@@ -6,6 +6,6 @@
 #ifdef OPENDREAM
 // These are in their own file as you need to do it with an include as a hack to avoid
 // SpacemanDMM evaluating the #pragma lines, even if its outside a block it cares about
-#include "tools/ci/lints.dm"
+#include "../tools/ci/lints.dm"
 #endif
 #endif

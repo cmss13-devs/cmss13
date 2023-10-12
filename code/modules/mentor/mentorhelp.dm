@@ -327,7 +327,7 @@
 	var/msg = SPAN_MENTORSAY("<span class='prefix'>Autoresponse:</span> <span class='message'>[choice]</span>")
 	switch(choice)
 		if("L: Discord")
-			msg += "You can join our Discord server by using <a href='https://discordapp.com/invite/TByu8b5'>this link</a>!"
+			msg += "You can join our Discord server by using <a href='[CONFIG_GET(string/discordurl)]'>this link</a>!"
 		if("L: Xeno Quickstart Guide")
 			msg += "Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>Check it out here.</a>"
 		if("L: Marine Quickstart Guide")

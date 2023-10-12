@@ -575,22 +575,24 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/dead = M
-	if(dead.check_tod() && dead.is_revivable() && dead.health > HEALTH_THRESHOLD_DEAD )
-		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 50, TIMER_UNIQUE)
+	var/check_tod = dead.check_tod()
+	var/check_is_revivable = dead.is_revivable()
+	if(check_tod && check_is_revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
+		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS)
 		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
-		playsound_client(dead.client, 'sound/effects/Heart Beat Short.ogg', 35)
-	else if (potency >= 1 && dead.check_tod() && dead.is_revivable() && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
+		playsound_client(dead.client, 'sound/effects/heart_beat_short.ogg', 35)
+	else if (potency >= 1 && check_tod && check_is_revivable && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
 		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
-		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BRUTE)
-		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
-		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
-		dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, TOX)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, CLONE)
 		dead.apply_damage(-dead.getOxyLoss(), OXY)
 		if(potency > CREATE_MAX_TIER_1) //heal more if higher levels
-			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
-			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
-			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, TOX)
-			dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, CLONE)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BRUTE)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
 		if(dead.health < HEALTH_THRESHOLD_DEAD)
 			return
 		if(!COOLDOWN_FINISHED(src, ghost_notif))

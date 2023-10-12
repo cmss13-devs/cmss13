@@ -131,6 +131,41 @@ var/global/list/limb_types_by_name = list(
 		index++
 	return output_message
 
+// proc that parses an html input string and scrambles the non-html string contents
+/proc/stars_decode_html(message)
+	if(length(message) == 0)
+		return
+
+	// todo: sanitize string more to remove unnencessary <>.
+	// list of parsed strings that have been scrambled, used to then reinsert the scrambled strings in to the message
+	var/list/replaced_scrambled_strings = list()
+
+	// boolean value to know if the current indexed element needs to be added to the scrambled message.
+	var/parsing_message = FALSE
+
+	// the current string value that needs to be scrambled.
+	var/current_string_to_scramble = ""
+
+	for(var/character_index in 1 to length(message))
+		if(message[character_index] == ">")
+			parsing_message = TRUE
+			continue
+		else if(message[character_index] == "<")
+			parsing_message = FALSE
+			if(length(current_string_to_scramble) == 0)
+				continue
+			var/scrambled_string = stars(current_string_to_scramble)
+			replaced_scrambled_strings[current_string_to_scramble] += scrambled_string
+			current_string_to_scramble = null
+			continue
+		if(parsing_message)
+			current_string_to_scramble += message[character_index]
+
+	for(var/unscrambled_message_key in replaced_scrambled_strings)
+		message = replacetext(message, unscrambled_message_key, replaced_scrambled_strings[unscrambled_message_key])
+
+	return message
+
 /proc/slur(phrase)
 	phrase = html_decode(phrase)
 	var/leng=length(phrase)

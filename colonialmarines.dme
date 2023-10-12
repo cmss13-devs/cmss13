@@ -11,6 +11,7 @@ s// DM Environment file for colonialmarines.dme.
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\__odlint.dm"
 #include "code\_byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\_experiments.dm"

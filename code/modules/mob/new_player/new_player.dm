@@ -64,7 +64,7 @@
 	output += "</div>"
 	if (refresh)
 		close_browser(src, "playersetup")
-	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 460];can_close=0;can_minimize=0")
+	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 460 : 590];can_close=0;can_minimize=0")
 	return
 
 /mob/new_player/Topic(href, href_list[])

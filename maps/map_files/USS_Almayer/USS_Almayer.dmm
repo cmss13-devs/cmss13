@@ -11313,15 +11313,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
-"aKF" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
-/area/almayer/command/cic)
 "aKG" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer,
 /turf/open/floor/almayer{
@@ -61994,9 +61985,6 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "pWN" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_y = 8;
@@ -62005,6 +61993,9 @@
 /obj/structure/sign/safety/storage{
 	pixel_y = -7;
 	pixel_x = 32
+	},
+/obj/structure/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -103365,7 +103356,7 @@ agj
 pQV
 akL
 wVW
-aKF
+arF
 avY
 mEx
 sIG

@@ -18,7 +18,6 @@ interface DropshipNavigationProps extends NavigationProps {
   door_status: Array<DoorStatus>;
   has_flight_optimisation?: 0 | 1;
   is_flight_optimised?: 0 | 1;
-  flight_configuration: 'flyby' | 'ferry';
   can_fly_by?: 0 | 1;
   can_set_automated?: 0 | 1;
   primary_lz?: string;
@@ -179,41 +178,6 @@ const DestinationSelector = (props: DestinationProps, context) => {
           </Stack.Item>
         ))}
     </>
-  );
-};
-
-const FlybyControl = (props, context) => {
-  const { act, data } = useBackend<DropshipNavigationProps>(context);
-  return (
-    <Section
-      title="Flight Controls"
-      className="flybyControl"
-      buttons={
-        <>
-          {data.flight_configuration === 'flyby' && (
-            <Button icon="road" onClick={() => act('set-ferry')}>
-              Set ferry
-            </Button>
-          )}
-          {data.has_flyby_skill === 1 && data.flight_configuration === 'ferry' && (
-            <Button icon="jet-fighter" onClick={() => act('set-flyby')}>
-              Set flyby
-            </Button>
-          )}
-          {data.has_flyby_skill === 1 && data.shuttle_mode === 'called' && (
-            <Button onClick={() => act('cancel-flyby')}>cancel flyby</Button>
-          )}
-          {data.has_flyby_skill === 1 && data.shuttle_mode === 'idle' && (
-            <Button
-              icon="rocket"
-              disabled={data.flight_configuration === 'ferry'}
-              onClick={() => act('move')}>
-              Launch
-            </Button>
-          )}
-        </>
-      }
-    />
   );
 };
 

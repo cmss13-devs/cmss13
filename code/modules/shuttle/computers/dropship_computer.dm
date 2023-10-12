@@ -88,6 +88,7 @@
 
 	dropship.callTime = round(flight_duration)
 	dropship.rechargeTime = round(recharge_duration)
+	is_set_flyby = FALSE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -386,6 +387,7 @@
 				var/log = "[key_name(user)] launched the dropship [src.shuttleId] on flyby."
 				msg_admin_niche(log)
 				log_interact(user, msg = "[log]")
+				is_set_flyby = TRUE
 				shuttle.send_for_flyby()
 				return TRUE
 

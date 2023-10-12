@@ -18,6 +18,7 @@
 	icon_state = "geiger"
 	item_state = ""
 	w_class = SIZE_SMALL
+	flags_equip_slot = SLOT_WAIST
 	///Whether the geiger counter is on or off
 	var/toggled_on = FALSE
 	///Iconstate of geiger counter when on

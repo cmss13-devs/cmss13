@@ -20,7 +20,7 @@ A shuttle has a height, width, dheight and dwidth. The height and width is the s
 
 # Generic Elevator Shuttle
 
-The elevator used on Trident (DesertDam) can be used in any map and multiple can exist on one map.
+The elevator used on Trijent (DesertDam) can be used in any map and multiple can exist on one map.
 
 Do not modify the trident shuttle map. You can code in elevators from the following two docking ports (where the elevator can go):
 

@@ -132,7 +132,6 @@
 	for(var/message_mode in parsed["modes"])
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)
-			if(MESSAGE_MODE_LOCAL)
 			if(RADIO_MODE_WHISPER)
 				whisper_say(message, speaking, alt_name)
 				return

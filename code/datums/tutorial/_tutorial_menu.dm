@@ -17,6 +17,8 @@
 				"name" = initial(tutorial.name),
 				"path" = "[tutorial]",
 				"id" = initial(tutorial.tutorial_id),
+				"description" = initial(tutorial.desc),
+				"image" = initial(tutorial.icon_state),
 			))
 
 		for(var/category in categories_2)
@@ -29,9 +31,13 @@
 /datum/tutorial_menu/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "TutorialList")
+		ui = new(user, src, "TutorialMenu")
 		ui.open()
 
+/datum/tutorial_menu/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/tutorial),
+	)
 
 /datum/tutorial_menu/ui_state(mob/user)
 	if(istype(get_area(user), /area/misc/tutorial))

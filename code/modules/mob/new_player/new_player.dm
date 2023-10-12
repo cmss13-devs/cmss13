@@ -163,6 +163,11 @@
 				to_chat(src, SPAN_WARNING("Sorry, you cannot late join during [SSticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
 				return
 
+			if(client.player_data?.playtime_loaded && (client.get_total_human_playtime() < CONFIG_GET(number/notify_new_player_age)) && !length(client.prefs.completed_tutorials))
+				if(tgui_alert(src, "You have little playtime and haven't completed any tutorials. Would you like to go to the tutorial menu?", "Tutorial", list("Yes", "No")) == "Yes")
+					tutorial_menu()
+					return
+
 			if(client.prefs.species != "Human")
 				if(!is_alien_whitelisted(src, client.prefs.species) && CONFIG_GET(flag/usealienwhitelist))
 					to_chat(src, "You are currently not whitelisted to play [client.prefs.species].")
@@ -226,20 +231,22 @@
 			return
 
 		if("tutorial")
-			if(SSticker.current_state <= GAME_STATE_SETTING_UP)
-				to_chat(usr, SPAN_WARNING("Please wait for the round to start before entering a tutorial."))
-				return
-
-			if(SSticker.current_state == GAME_STATE_FINISHED)
-				to_chat(usr, SPAN_WARNING("The round has ended. Please wait for the next round to enter a tutorial."))
-				return
-
-			var/datum/tutorial_menu/menu = new(usr)
-			menu.ui_interact(usr)
+			tutorial_menu()
 
 		else
 			new_player_panel()
 
+/mob/new_player/proc/tutorial_menu()
+	if(SSticker.current_state <= GAME_STATE_SETTING_UP)
+		to_chat(src, SPAN_WARNING("Please wait for the round to start before entering a tutorial."))
+		return
+
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		to_chat(src, SPAN_WARNING("The round has ended. Please wait for the next round to enter a tutorial."))
+		return
+
+	var/datum/tutorial_menu/menu = new(src)
+	menu.ui_interact(src)
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
 	var/datum/job/player_rank = RoleAuthority.roles_for_mode[rank]
@@ -293,7 +300,7 @@
 			var/client/C = character.client
 			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
-			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
+			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= CONFIG_GET(number/notify_new_player_age)))
 				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_verbs()

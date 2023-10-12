@@ -1,5 +1,6 @@
 /datum/tutorial/marine/basic
 	name = "Marine - Basic"
+	desc = "A tutorial to get you acquainted with the very basics of how to play a groundside marine role."
 	tutorial_id = "marine_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s8x9
 	/// How many items need to be vended from the clothing vendor for the script to continue, if something vends 2 items (for example), increase this number by 2.

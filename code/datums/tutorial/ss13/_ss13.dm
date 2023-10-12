@@ -1,6 +1,7 @@
 /datum/tutorial/ss13
 	category = TUTORIAL_CATEGORY_SS13
 	parent_path = /datum/tutorial/ss13
+	icon_state = "ss13"
 
 /datum/tutorial/ss13/init_mob()
 	tutorial_mob.close_spawn_windows()

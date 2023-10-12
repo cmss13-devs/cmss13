@@ -6,6 +6,10 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	var/name = "Base"
 	/// Internal ID of the tutorial, kept for save files
 	var/tutorial_id = "base"
+	/// A short 1-2 sentence description of the tutorial itself
+	var/desc = ""
+	/// What the tutorial's icon in the UI should look like
+	var/icon_state = ""
 	/// What category the tutorial should be under
 	var/category = TUTORIAL_CATEGORY_BASE
 	/// Ref to the bottom-left corner tile of the tutorial room
@@ -81,7 +85,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 		REMOVE_TRAIT(tutorial_mob, TRAIT_IN_TUTORIAL, TRAIT_SOURCE_TUTORIAL)
 		if(tutorial_mob.client?.prefs && completed)
 			tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
-			tutorial_mob.client.prefs.save_preferences()
+			tutorial_mob.client.prefs.save_character()
 		var/mob/new_player/new_player = new
 		if(!tutorial_mob.mind)
 			tutorial_mob.mind_initialize()

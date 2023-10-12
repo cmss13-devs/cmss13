@@ -1,0 +1,8 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - rscadd: "Adds a handheld distress beacon for the Colonial Marshal. They can use this to signal distress which in turn allows reinforcements in the form of Anchorpoint Marine QRF or nearby CMB teams. Admins do the final check."
+  - rscadd: "Adds a CMB Patrol Team which responds to \"Marshals in Distress\" call."
+  - admin: "headset admin response no longer specifies USCM origin(as this is used for USCM, WY, and now CMB)"
+  - spellcheck: "fixes a CMB typo in response message. Also a miniscule change to HG 37-12 desc."
+  - spellcheck: "fixes 2 misc typos in CMB Inspections"

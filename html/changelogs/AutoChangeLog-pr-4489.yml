@@ -1,4 +1,0 @@
-author: "TheGamerdk"
-delete-after: True
-changes:
-  - bugfix: "Adding marines to intel squad broke the crew manifest"

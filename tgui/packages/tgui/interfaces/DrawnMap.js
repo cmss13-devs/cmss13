@@ -8,6 +8,7 @@ export class DrawnMap extends Component {
     this.backupImgSrc = this.props.backupImage;
     this.state = {
       mapLoad: true,
+      loadingBackup: true,
     };
     this.img = null;
     this.svg = this.props.svgData;
@@ -23,6 +24,12 @@ export class DrawnMap extends Component {
     this.img.onerror = () => {
       this.img.src = this.backupImgSrc;
       this.setState({ mapLoad: false });
+    };
+
+    const backupImg = new Image();
+    backupImg.src = this.backupImgSrc;
+    backupImg.onload = () => {
+      this.setState({ loadingBackup: false });
     };
   }
 
@@ -45,7 +52,10 @@ export class DrawnMap extends Component {
 
     return (
       <div ref={this.containerRef}>
-        {this.img && (
+        {this.state.loadingBackup && !this.state.mapLoad && (
+          <p>Loading map...</p>
+        )}
+        {this.img && this.state.mapLoad && (
           <img
             src={this.img.src}
             style={{

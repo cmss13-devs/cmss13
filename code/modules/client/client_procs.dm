@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	else if(href_list["MapView"])
 		if(isxeno(mob))
 			return
-		GLOB.tacmap_datum.tgui_interact(mob)
+		GLOB.uscm_tacmap_status.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])

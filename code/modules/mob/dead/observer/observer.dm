@@ -898,6 +898,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
 
+/mob/dead/observer/verb/view_uscm_tacmap()
+	set name = "View USCM Tacmap"
+	set category = "Ghost.View"
+
+	GLOB.uscm_tacmap_status.tgui_interact(src)
+
+/mob/dead/observer/verb/view_xeno_tacmap()
+	set name = "View Xeno Tacmap"
+	set category = "Ghost.View"
+
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	if(!hive || !length(hive.totalXenos))
+		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment"))
+		return
+
+	GLOB.xeno_tacmap_status.tgui_interact(src)
+
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost.Join"
 	set name = "Join as Xeno"

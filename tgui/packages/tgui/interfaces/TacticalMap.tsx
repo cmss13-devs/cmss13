@@ -19,18 +19,22 @@ interface TacMapProps {
   oldCanvasFlatImage: string;
   actionQueueChange: number;
   exportedColor: string;
-  currentMapName: string;
-  mapRef: any;
+  mapFallback: string;
+  mapRef: string;
   currentMenu: string;
-  worldtime: any;
+  lastUpdateTime: any;
   nextCanvasTime: any;
   canvasCooldown: any;
   exportedTacMapImage: any;
+  tacmapReady: number;
 }
 
 const PAGES = [
   {
     title: 'tacmap',
+    canOpen: (data) => {
+      return 1;
+    },
     component: () => ViewMapPanel,
     icon: 'map',
     canAccess: (data) => {
@@ -39,6 +43,9 @@ const PAGES = [
   },
   {
     title: 'old canvas',
+    canOpen: (data) => {
+      return 1;
+    },
     component: () => OldMapPanel,
     icon: 'eye',
     canAccess: (data) => {
@@ -47,6 +54,9 @@ const PAGES = [
   },
   {
     title: 'new canvas',
+    canOpen: (data) => {
+      return data.tacmapReady;
+    },
     component: () => DrawMapPanel,
     icon: 'paintbrush',
     canAccess: (data) => {
@@ -77,7 +87,11 @@ const colors: Record<string, string> = {
 
 export const TacticalMap = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
+  const [pageIndex, setPageIndex] = useLocalState(
+    context,
+    'pageIndex',
+    data.canViewTacmap ? 0 : 1
+  );
   const PageComponent = PAGES[pageIndex].component();
 
   const handleTacmapOnClick = (i, pageTitle) => {
@@ -88,9 +102,14 @@ export const TacticalMap = (props, context) => {
   };
 
   return (
-    <Window width={700} height={850} theme={data.isXeno ? 'xeno' : 'crtblue'}>
+    <Window
+      width={700}
+      height={850}
+      theme={data.isXeno ? 'hive_status' : 'crtblue'}>
       <Window.Content>
         <Section
+          fitted
+          width="688px"
           fontSize="20px"
           textAlign="center"
           title="Tactical Map Options"
@@ -107,9 +126,10 @@ export const TacticalMap = (props, context) => {
                       key={i}
                       color={data.isXeno ? 'purple' : 'blue'}
                       selected={i === pageIndex}
+                      disabled={page.canOpen(data) === 0}
                       icon={page.icon}
                       onClick={() => handleTacmapOnClick(i, page.title)}>
-                      {page.title}
+                      {page.canOpen(data) === 0 ? 'loading' : page.title}
                     </Tabs.Tab>
                   );
                 })}
@@ -117,7 +137,7 @@ export const TacticalMap = (props, context) => {
             </Stack.Item>
           </Stack>
         </Section>
-        <PageComponent />
+        <PageComponent fitted />
       </Window.Content>
     </Window>
   );
@@ -132,11 +152,12 @@ const ViewMapPanel = (props, context) => {
   }
 
   return (
-    <Section fill>
+    <Section fitted height="86%">
       <ByondUi
         params={{
           id: data.mapRef,
           type: 'map',
+          'background-color': 'none',
         }}
         class="TacticalMap"
       />
@@ -147,11 +168,17 @@ const ViewMapPanel = (props, context) => {
 const OldMapPanel = (props, context) => {
   const { data } = useBackend<TacMapProps>(context);
   return (
-    <Section fill justify="center" align="center" fontSize="30px">
+    <Section
+      fitted
+      height="694px"
+      width="688px"
+      justify="center"
+      align="center"
+      fontSize="30px">
       <DrawnMap
         svgData={data.svgData}
         flatImage={data.oldCanvasFlatImage}
-        backupImage={data.currentMapName}
+        backupImage={data.mapFallback}
       />
     </Section>
   );
@@ -160,9 +187,8 @@ const OldMapPanel = (props, context) => {
 const DrawMapPanel = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
 
-  const timeLeft = data.canvasCooldown - data.worldtime;
-  const timeLeftPct = timeLeft / data.nextCanvasTime;
-  const canUpdate = timeLeft < 0 && !data.updatedCanvas;
+  const timeLeftPct = data.canvasCooldown / data.nextCanvasTime;
+  const canUpdate = data.canvasCooldown < 0 && !data.updatedCanvas;
 
   const handleTacMapExport = (image: any) => {
     data.exportedTacMapImage = image;
@@ -183,11 +209,15 @@ const DrawMapPanel = (props, context) => {
 
   return (
     <>
-      <Section title="Canvas Options" className={'canvas-options'}>
-        <Stack>
+      <Section
+        title="Canvas Options"
+        className={'canvas-options'}
+        width="688px">
+        <Stack height="15px">
           <Stack.Item grow>
             {(!data.updatedCanvas && (
               <Button
+                height="20px"
                 fontSize="10px"
                 fluid={1}
                 disabled={!canUpdate}
@@ -199,6 +229,7 @@ const DrawMapPanel = (props, context) => {
               />
             )) || (
               <Button
+                height="20px"
                 fontSize="10px"
                 fluid={1}
                 color="green"
@@ -215,6 +246,7 @@ const DrawMapPanel = (props, context) => {
           </Stack.Item>
           <Stack.Item grow>
             <Button
+              height="20px"
               fontSize="10px"
               fluid={1}
               color="grey"
@@ -226,6 +258,7 @@ const DrawMapPanel = (props, context) => {
           </Stack.Item>
           <Stack.Item grow>
             <Button
+              height="20px"
               fontSize="10px"
               fluid={1}
               color="grey"
@@ -237,6 +270,8 @@ const DrawMapPanel = (props, context) => {
           </Stack.Item>
           <Stack.Item grow>
             <Dropdown
+              height="21px"
+              noscroll={1}
               fluid={1}
               options={colorOptions}
               selected={data.toolbarColorSelection}
@@ -246,10 +281,16 @@ const DrawMapPanel = (props, context) => {
             />
           </Stack.Item>
         </Stack>
-        <Stack className={'progress-stack'}>
+        <Stack
+          className={'progress-stack'}
+          position="absolute"
+          width="98%"
+          style={{ 'z-index': '1' }}
+          bottom="-40px">
           <Stack.Item grow>
-            {timeLeft > 0 && (
+            {data.canvasCooldown > 0 && (
               <ProgressBar
+                height="20px"
                 value={timeLeftPct}
                 ranges={{
                   good: [-Infinity, 0.33],
@@ -257,19 +298,20 @@ const DrawMapPanel = (props, context) => {
                   bad: [0.67, Infinity],
                 }}>
                 <Box textAlign="center" fontSize="15px">
-                  {Math.ceil(timeLeft / 10)} seconds until the canvas changes
-                  can be updated
+                  {Math.ceil(data.canvasCooldown / 10)} seconds until the canvas
+                  changes can be updated
                 </Box>
               </ProgressBar>
             )}
           </Stack.Item>
         </Stack>
       </Section>
-      <Section>
+      <Section width="688px">
         <CanvasLayer
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}
           imageSrc={data.newCanvasFlatImage}
+          key={data.lastUpdateTime}
           onImageExport={handleTacMapExport}
           onUndo={(value) =>
             act('selectColor', { color: findColorValue(value) })

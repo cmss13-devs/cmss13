@@ -44,34 +44,28 @@ export class DrawnMap extends Component {
     const parsedSvgData = this.parseSvgData(this.svg);
 
     return (
-      <div
-        ref={this.containerRef}
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '100%',
-        }}>
+      <div ref={this.containerRef}>
         {this.img && (
           <img
             src={this.img.src}
             style={{
               position: 'absolute',
               zIndex: 0,
+              left: '6px',
             }}
             width={650}
-            height={590}
+            height={600}
           />
         )}
         {parsedSvgData && this.state.mapLoad && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width={650}
-            height={590}
-            viewBox={`0 0 650 590`}
+            height={600}
+            viewBox={`0 0 650 600`}
             style={{
               position: 'absolute',
-              top: 0,
-              left: 0,
+              left: '6px',
               zIndex: 1,
             }}>
             {parsedSvgData.map((line, index) => (

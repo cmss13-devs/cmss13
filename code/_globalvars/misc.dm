@@ -18,8 +18,17 @@ GLOBAL_VAR(ooc_color_override)
 GLOBAL_VAR_INIT(uscm_canvas_cooldown, 0)
 GLOBAL_VAR_INIT(xeno_canvas_cooldown, 0)
 
-// getFlatIcon cooldown for cic only
-GLOBAL_VAR_INIT(cic_flatten_map_icon_cooldown, 0)
+// getFlatIcon cooldown for xenos and marines
+GLOBAL_VAR_INIT(uscm_flatten_map_icon_cooldown, 0)
+GLOBAL_VAR_INIT(xeno_flatten_map_icon_cooldown, 0)
+
+// latest unannounced flat tacmap for xenos and marines
+GLOBAL_VAR_INIT(uscm_unannounced_map, null)
+GLOBAL_VAR_INIT(xeno_unannounced_map, null)
+
+//global tacmaps for action button access
+GLOBAL_DATUM_INIT(uscm_tacmap_status, /datum/tacmap/status_tab_view, new)
+GLOBAL_DATUM_INIT(xeno_tacmap_status, /datum/tacmap/status_tab_view/xeno, new)
 
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_INIT(gamemode_roles, list())
@@ -27,12 +36,6 @@ GLOBAL_LIST_INIT(gamemode_roles, list())
 GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)
 
 GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_box_mapping())
-
-GLOBAL_VAR_INIT(current_marine_tacmap_announcement_status, TRUE)
-GLOBAL_VAR_INIT(current_xeno_tacmap_announcement_status, TRUE)
-
-//global tacmap for action button access
-GLOBAL_DATUM_INIT(tacmap_datum, /datum/tacmap/status_tab_view, new)
 
 /// Offset for the Operation time
 GLOBAL_VAR_INIT(time_offset, setup_offset())

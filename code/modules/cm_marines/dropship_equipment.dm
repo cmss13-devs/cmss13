@@ -515,19 +515,6 @@
 	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
-	if(ship_base)
-		connect_cameras()
-		icon_state = "[initial(icon_state)]_installed"
-	else
-		disconnect_cameras()
-		icon_state = initial(icon_state)
-
-
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/Destroy()
-	disconnect_cameras()
-	return ..()
-
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/connect_cameras()
 	if(linked_cam_console)
 		return
@@ -545,6 +532,22 @@
 		if(user)
 			linked_cam_console.update_static_data(user)
 	linked_cam_console = null
+
+
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
+	if(ship_base)
+		connect_cameras()
+		icon_state = "[initial(icon_state)]_installed"
+	else
+		disconnect_cameras()
+		icon_state = initial(icon_state)
+
+
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/Destroy()
+	disconnect_cameras()
+	return ..()
+
+
 
 
 

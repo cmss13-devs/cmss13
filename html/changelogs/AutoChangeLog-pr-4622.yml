@@ -1,0 +1,7 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - rscadd: "Colony Supervisor now has a guaranteed grant."
+  - balance: "nerfs PMC Synthetic's gear"
+  - bugfix: "PMC Synthetic has corrected access(thx forest)"
+  - bugfix: "Colony Supervisor can now have access to his own colony(LOL)."

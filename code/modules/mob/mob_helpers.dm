@@ -133,7 +133,7 @@ var/global/list/limb_types_by_name = list(
 
 // proc that parses an html input string and scrambles the non-html string contents
 /proc/stars_decode_html(message)
-	if(length(message) == 0)
+	if(!length(message))
 		return
 
 	// todo: sanitize string more to remove unnencessary <>.

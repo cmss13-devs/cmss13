@@ -214,17 +214,7 @@
 
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You finish the airlock!"))
-				var/path
-				//For some reason multi_tile doors have different paths... darn
-				if (width > 1)
-					if (glass == AIRLOCK_GLASSIN)
-						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type]")
-					else
-						path = text2path("/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type]/solid")
-				else if (glass == AIRLOCK_GLASSIN)
-					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]/glass")
-				else
-					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]")
+				var/path = get_airlock_path()
 				var/obj/structure/machinery/door/airlock/door = new path(loc)
 				door.assembly_type = type
 				door.electronics = electronics
@@ -252,6 +242,12 @@
 		icon_state = "door_as_g[state]"
 	else
 		icon_state = "door_as_[base_icon_state][state]"
+
+/obj/structure/airlock_assembly/proc/get_airlock_path()
+	//For some reason multi_tile doors have different paths... darn
+	if (width > 1)
+		return "/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type][glass ? "" : "/solid"]"
+	return "/obj/structure/machinery/door/airlock/almayer/[airlock_type][glass ? "/glass" : ""]"
 
 //Used for overloading proc in multi_tile
 /obj/structure/airlock_assembly/proc/update_collision_box()

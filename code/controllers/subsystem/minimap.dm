@@ -637,7 +637,7 @@ SUBSYSTEM_DEF(minimaps)
 		old_map = get_tacmap_data_png(faction)
 		current_svg = get_tacmap_data_svg(faction)
 
-	var/use_live_map = !new_current_map || faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || faction == XENO_HIVE_NORMAL
+	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || faction == XENO_HIVE_NORMAL
 
 	if(use_live_map && !map_holder)
 		var/level = SSmapping.levels_by_trait(targeted_ztrait)
@@ -691,7 +691,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["mapRef"] = map_holder.map_ref
+	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
 	data["mapFallback"] = wiki_map_fallback
 

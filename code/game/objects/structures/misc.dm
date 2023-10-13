@@ -189,3 +189,120 @@
 
 /obj/structure/computer3frame/laptop
 	name = "laptop frame"
+
+// Dartboard
+#define DOUBLE_BAND 2
+#define TRIPLE_BAND 3
+
+/obj/structure/dartboard
+	name = "dartboard"
+	desc = "A dartboard, loosely secured."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "dart_board"
+	density = TRUE
+	unslashable = TRUE
+
+/obj/structure/dartboard/get_examine_text()
+	. = ..()
+	if(contents.len)
+		var/is_are = "is"
+		if(contents.len != 1)
+			is_are = "are"
+
+		. += SPAN_NOTICE("There [is_are] [contents.len] item\s embedded into [src].")
+
+/obj/structure/dartboard/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+	..()
+	if(pass_flags)
+		pass_flags.flags_can_pass_all = PASS_MOB_IS
+
+/obj/structure/dartboard/get_projectile_hit_boolean(obj/projectile/P)
+	. = ..()
+	return FALSE //Projectiles should pass over.
+
+/obj/structure/dartboard/proc/flush_contents()
+	for(var/atom/movable/embedded_items in contents)
+		embedded_items.forceMove(loc)
+
+/obj/structure/dartboard/proc/collapse()
+	playsound(src, 'sound/effects/thud1.ogg', 50)
+	new /obj/item/dartboard/(loc)
+	qdel(src)
+
+/obj/structure/dartboard/attack_hand(mob/user)
+	if(contents.len)
+		user.visible_message(SPAN_NOTICE("[user] starts recovering items from [src]..."), SPAN_NOTICE("You start recovering items from [src]..."))
+		if(do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			flush_contents()
+	else
+		to_chat(user, SPAN_WARNING("[src] has nothing embedded!"))
+
+/obj/structure/dartboard/Destroy(force)
+	flush_contents()
+	..()
+
+/obj/structure/dartboard/hitby(atom/movable/thrown_item)
+	if(!is_type_in_list(thrown_item, list(/obj/item/attachable/bayonet, /obj/item/weapon/dart)))
+		visible_message(SPAN_DANGER("[thrown_item] hits [src], tearing it down!"))
+		collapse()
+		return
+
+	contents += thrown_item
+	playsound(src, 'sound/weapons/tablehit1.ogg', 50)
+	var/score = rand(1,21)
+	if(score == 21)
+		visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking the bullseye! 50 points."))
+	else
+		var/band = "single"
+		var/band_number = rand(1,3)
+		score *= band_number
+		switch(band_number)
+			if(DOUBLE_BAND)
+				band = "double"
+			if(TRIPLE_BAND)
+				band = "triple"
+		visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking [band] for [score] points."))
+
+/obj/structure/dartboard/attackby(obj/item/item, mob/user)
+	to_chat(user, "You tear down [src] with [item]!")
+	collapse()
+
+/obj/structure/dartboard/MouseDrop(over_object, src_location, over_location)
+	. = ..()
+	if(over_object == usr && Adjacent(usr))
+		if(!ishuman(usr))
+			return
+		visible_message(SPAN_NOTICE("[usr] unsecures the [name]."))
+		flush_contents()
+		var/obj/item/dartboard/unsecured_board = new(loc)
+		usr.put_in_hands(unsecured_board)
+		qdel(src)
+
+/obj/item/dartboard
+	name = "dartboard"
+	desc = "A dartboard for darts."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "dart_board"
+
+/obj/item/dartboard/attack_self(mob/user)
+	. = ..()
+
+	var/direction = tgui_input_list(user, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
+	if(direction == "Cancel")
+		return
+
+	var/obj/structure/dartboard/board = new(user.loc)
+	switch(direction)
+		if("North")
+			board.pixel_y = 32
+		if("East")
+			board.pixel_x = 32
+		if("South")
+			board.pixel_y = -32
+		if("West")
+			board.pixel_x = -32
+		else
+			return
+
+	to_chat(user, "You secure the [board].")
+	qdel(src)

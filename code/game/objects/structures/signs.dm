@@ -17,6 +17,7 @@
 		S.desc = desc
 		S.icon_state = icon_state
 		S.sign_state = icon_state
+		S.icon = icon
 		deconstruct(FALSE)
 	else ..()
 
@@ -45,6 +46,7 @@
 		S.name = name
 		S.desc = desc
 		S.icon_state = sign_state
+		S.icon = icon
 		to_chat(user, "You fasten \the [S] with your [tool].")
 		qdel(src)
 	else ..()
@@ -592,9 +594,3 @@
 	desc = "An unbelievably creepy cat clock that surveys the room with every tick and every tock."
 	icon = 'icons/obj/structures/props/catclock.dmi'
 	icon_state = "cat_clock_motion"
-
-/obj/structure/sign/dartboard
-	name = "dartboard"
-	desc = "A dartboard, secured with a nail and a string. It has bullet holes and knife stab marks over and around it."
-	icon = 'icons/obj/structures/props/props.dmi'
-	icon_state = "dart_board"

@@ -515,23 +515,23 @@
 	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
-	/proc/connect_cameras()
-		if(linked_cam_console)
-			return
-		for(var/obj/structure/machinery/computer/cameras/dropship/D in range(5, loc))
-			linked_cam_console = D
-			break
-		linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES)
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/connect_cameras()
+	if(linked_cam_console)
+		return
+	for(var/obj/structure/machinery/computer/cameras/dropship/D in range(5, loc))
+		linked_cam_console = D
+		break
+	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES)
 
-	/proc/disconnect_cameras()
-		if(!linked_cam_console)
-			return
-		linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
-		for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
-			var/mob/user = ref.resolve()
-			if(user)
-				linked_cam_console.update_static_data(user)
-		linked_cam_console = null
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/disconnect_cameras()
+	if(!linked_cam_console)
+		return
+	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
+	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
+		var/mob/user = ref.resolve()
+		if(user)
+			linked_cam_console.update_static_data(user)
+	linked_cam_console = null
 
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()

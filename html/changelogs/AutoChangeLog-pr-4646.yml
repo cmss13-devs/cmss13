@@ -1,0 +1,4 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - bugfix: "UPP Sapper/Medic survivor use their correct paygrade instead of UE3M/UE3S"

@@ -19,7 +19,7 @@ FORBID_INCLUDE = [
     r'code/__HELPERS/BSQL/**/*.dm',
 
     # Included as part of OD lints
-    r'tools/ci/lints.dm'
+    r'code/__pragmas.dm'
 ]
 
 lines = []

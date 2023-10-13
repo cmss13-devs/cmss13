@@ -153,3 +153,7 @@
   - rscadd: origin descriptions are now displayed when selecting an origin
   mullenpaul:
   - ui: tweaked flyby controls to make them in line with other destinations
+2023-10-13:
+  Drathek:
+  - refactor: Refactored camera code to be less blocking, use typechecks less often,
+      and provide somewhat more fluid descriptions to photos.

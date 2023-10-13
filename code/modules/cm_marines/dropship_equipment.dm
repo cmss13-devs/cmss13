@@ -515,15 +515,14 @@
 	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/connect_cameras()
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/connect_cameras() //searches for dropship_camera_console and connects with it
 	if(linked_cam_console)
 		return
-	for(var/obj/structure/machinery/computer/cameras/dropship/dropship_camera_console in range(5, loc))
-		linked_cam_console = dropship_camera_console
-		break
+	var/obj/structure/machinery/computer/cameras/dropship/dropship_camera_console = locate() in range(5, loc)
+	linked_cam_console = dropship_camera_console
 	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES)
 
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/disconnect_cameras()
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/disconnect_cameras() //clears up vars and updates users
 	if(!linked_cam_console)
 		return
 	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
@@ -533,7 +532,6 @@
 			linked_cam_console.update_static_data(user)
 	linked_cam_console = null
 
-
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
 	if(ship_base)
 		connect_cameras()
@@ -542,14 +540,9 @@
 		disconnect_cameras()
 		icon_state = initial(icon_state)
 
-
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/Destroy()
 	disconnect_cameras()
 	return ..()
-
-
-
-
 
 /////////////////////////////////// COMPUTERS //////////////////////////////////////
 

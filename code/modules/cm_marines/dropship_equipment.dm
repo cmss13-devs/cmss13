@@ -518,8 +518,8 @@
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/connect_cameras()
 	if(linked_cam_console)
 		return
-	for(var/obj/structure/machinery/computer/cameras/dropship/Dropship_camera_console in range(5, loc))
-		linked_cam_console = Dropship_camera_console
+	for(var/obj/structure/machinery/computer/cameras/dropship/dropship_camera_console in range(5, loc))
+		linked_cam_console = dropship_camera_console
 		break
 	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES)
 

@@ -221,6 +221,9 @@
 /// Can lockout blackmarket from ASRS console circuits.
 #define TRAIT_TOOL_TRADEBAND "t_tool_tradeband"
 
+/// Can hack ASRS consoles to access the black market
+#define TRAIT_TOOL_BLACKMARKET_HACKER "t_tool_blackmarket_hacker"
+
 // CLOTHING TRAITS
 #define TRAIT_CLOTHING_HOOD "t_clothing_hood"
 

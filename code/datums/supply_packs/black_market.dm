@@ -127,20 +127,13 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	spawn_guns() //the crate gives 2 guns
 
 /obj/structure/largecrate/black_market/confiscated_weaponry/proc/spawn_guns()
-	switch(rand(1,6))
+	switch(rand(1, 5))
 		if(1) //pmc
-			if(prob(50))
-				new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
-				new /obj/item/ammo_magazine/rifle/nsg23(src)
-				new /obj/item/ammo_magazine/rifle/nsg23(src)
-				new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
-				new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
-			else
-				new /obj/item/weapon/gun/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/weapon/gun/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
 		if(2) //pizza
 			new /obj/item/weapon/gun/pistol/holdout(src)
 			new /obj/item/ammo_magazine/pistol/holdout(src)
@@ -159,38 +152,19 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 					new /obj/item/ammo_magazine/smg/mac15(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
 		if(4) //upp
-			if(prob(50))
-				new /obj/item/weapon/gun/rifle/type71(src)
-				new /obj/item/ammo_magazine/rifle/type71/ap(src)
-				new /obj/item/ammo_magazine/rifle/type71(src)
-				new /obj/item/ammo_magazine/rifle/type71(src)
-			else
-				new /obj/item/weapon/gun/shotgun/type23/riot_control(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src) //NO buckshot!
+			new /obj/item/weapon/gun/shotgun/type23/riot_control(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src) //NO buckshot!
 		if(5) //freelancer
-			if(prob(80))
-				new /obj/item/weapon/gun/rifle/mar40(src)
-				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
-				new /obj/item/ammo_magazine/rifle/mar40(src)
-				new /obj/item/ammo_magazine/rifle/mar40(src)
-			else
-				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
-				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
-		if(6) //VAIPO
-			if(prob(50))
-				new /obj/item/weapon/gun/rifle/mar40/tactical(src)
-				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
-				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
-				new /obj/item/ammo_magazine/rifle/mar40(src)
-			else
-				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
-				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
-				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
+			new /obj/item/weapon/gun/rifle/mar40(src)
+			new /obj/item/ammo_magazine/rifle/mar40/extended(src)
+			new /obj/item/ammo_magazine/rifle/mar40(src)
+			new /obj/item/ammo_magazine/rifle/mar40(src)
+
 
 /* Misc. Individual Guns */
 
@@ -720,13 +694,6 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/ammo_magazine/shotgun/beanbag,
 	)
 	dollar_cost = 50
-	containertype = /obj/structure/largecrate/black_market
-
-/datum/supply_packs/contraband/surplus/surplus_m4ra_extended
-	name = "surplus magazine box (Ext M4RA x 12)"
-	contains = list(/obj/item/ammo_box/magazine/m4ra/ext)
-	dollar_cost = 45
-	crate_heat = 3
 	containertype = /obj/structure/largecrate/black_market
 
 /* - Misc. USCM weaponry - */

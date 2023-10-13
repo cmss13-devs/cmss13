@@ -286,7 +286,7 @@ const DrawMapPanel = (props, context) => {
           position="absolute"
           width="98%"
           style={{ 'z-index': '1' }}
-          bottom="-40px">
+          bottom="-55px">
           <Stack.Item grow>
             {data.canvasCooldown > 0 && (
               <ProgressBar
@@ -306,7 +306,7 @@ const DrawMapPanel = (props, context) => {
           </Stack.Item>
         </Stack>
       </Section>
-      <Section width="688px">
+      <Section width="688px" justify="center" align="center" textAlign="center">
         <CanvasLayer
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}

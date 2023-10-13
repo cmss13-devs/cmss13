@@ -147,7 +147,7 @@ const ViewMapPanel = (props, context) => {
   const { data } = useBackend<TacMapProps>(context);
 
   // byond ui can't resist trying to render
-  if (data.canViewTacmap === 0) {
+  if (data.canViewTacmap === 0 || data.mapRef === null) {
     return <OldMapPanel {...props} context={context} />;
   }
 

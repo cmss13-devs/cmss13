@@ -98,6 +98,10 @@
 /obj/item/storage/firstaid/regular/empty/fill_preset_inventory()
 	return
 
+/obj/item/storage/firstaid/regular/response
+	required_skill_for_nest_opening = SKILL_MEDICAL
+	required_skill_level_for_nest_opening = SKILL_MEDICAL_DEFAULT
+
 /obj/item/storage/firstaid/robust
 	icon_state = "firstaid"
 

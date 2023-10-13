@@ -229,8 +229,7 @@ export class CanvasLayer extends Component {
           <canvas ref={this.canvasRef} width={650} height={600} />
         ) : (
           <h2>
-            Please wait a few minutes before attempting to access the canvas.{' '}
-            {this.state.mapLoad}
+            Please wait a few minutes before attempting to access the canvas.
           </h2>
         )}
       </div>

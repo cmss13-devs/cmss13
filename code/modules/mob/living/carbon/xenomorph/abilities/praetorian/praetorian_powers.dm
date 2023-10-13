@@ -14,8 +14,8 @@
 
 	//X = xeno user, A = target atom
 	var/list/turf/target_turfs = getline2(source_xeno, targetted_atom, include_from_atom = FALSE)
-	var/len = LAZYLEN(target_turfs)
-	if(len > 3)
+	var/length_of_line = LAZYLEN(target_turfs)
+	if(length_of_line > 3)
 		target_turfs = target_turfs.Copy(1, 4)
 
 	// Get list of target mobs
@@ -30,8 +30,8 @@
 			break
 
 		//Check for structures such as doors
-		for(var/atom/path_content in path_turf.contents)
-			if(istype(path_content, /obj))
+		for(var/atom/path_content as anything in path_turf.contents)
+			if(isobj(path_content))
 				var/obj/object = path_content
 				//If we shouldn't be able to pass through it then stop at this turf
 				if(object.density && !object.throwpass)
@@ -44,7 +44,7 @@
 						framed_window.deconstruct(disassembled = FALSE)
 
 			//Check for mobs and add them to our target list for damage
-			if(istype(path_content, /mob/living/carbon))
+			if(iscarbon(path_content))
 				var/mob/living/carbon/mob_to_act = path_content
 				if(!isxeno_human(mob_to_act) || source_xeno.can_not_harm(mob_to_act))
 					continue

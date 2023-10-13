@@ -228,7 +228,7 @@ export class CanvasLayer extends Component {
         {this.state.mapLoad ? (
           <canvas ref={this.canvasRef} width={650} height={600} />
         ) : (
-          <div style={{ position: 'absolute', top: '200px' }}>
+          <div style={{ position: 'absolute', top: '300px' }}>
             <h1>
               Please wait a few minutes before attempting to access the canvas.
             </h1>

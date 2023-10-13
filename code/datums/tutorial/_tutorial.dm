@@ -109,6 +109,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 /datum/tutorial/proc/message_to_player(message)
 	playsound_client(tutorial_mob.client, 'sound/effects/radiostatic.ogg', tutorial_mob.loc, 25, FALSE)
 	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/command_order/tutorial, rgb(103, 214, 146))
+	to_chat(tutorial_mob, SPAN_NOTICE(message))
 
 /// Updates a player's objective in their status tab
 /datum/tutorial/proc/update_objective(message)
@@ -133,6 +134,17 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	RETURN_TYPE(/turf)
 	return locate(bottom_left_corner.x + offset_x, bottom_left_corner.y + offset_y, bottom_left_corner.z)
 
+/// Handle the player ghosting out
+/datum/tutorial/proc/on_ghost(datum/source, mob/dead/observer/ghost)
+	SIGNAL_HANDLER
+
+	var/mob/new_player/new_player = new
+	if(!ghost.mind)
+		ghost.mind_initialize()
+
+	ghost.mind.transfer_to(new_player)
+
+	end_tutorial()
 
 /datum/action/tutorial_end
 	name = "Stop Tutorial"

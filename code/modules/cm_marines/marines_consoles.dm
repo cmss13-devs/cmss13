@@ -819,7 +819,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		var/turf/pos = get_turf(H)
 		if(!pos)
 			continue
-		if(is_admin_level(pos.z))
+		if(should_block_game_interaction(H))
 			continue
 
 		// The entry for this human

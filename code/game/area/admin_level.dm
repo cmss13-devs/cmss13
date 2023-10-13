@@ -149,9 +149,10 @@
 	name = "tutorial zone"
 	icon_state = "tutorial"
 	requires_power = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
+	block_game_interaction = TRUE
 
 	base_lighting_alpha = 255
 

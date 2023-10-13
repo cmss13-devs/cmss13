@@ -1408,7 +1408,7 @@ var/datum/controller/supply/supply_controller = new()
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(!is_admin_level(SSshuttle.vehicle_elevator.z))
+	if(!should_block_game_interaction(SSshuttle.vehicle_elevator))
 		return
 
 	if(ismaintdrone(usr))

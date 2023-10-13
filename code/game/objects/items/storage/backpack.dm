@@ -1020,6 +1020,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "ERT_satchel"
 	worn_accessible = TRUE
 
+/obj/item/storage/backpack/lightpack
+	name = "USCM Tactical Satchel"
+	desc = "A sleek lightweight bag made for carrying what you need while remaing stylish."
+	icon_state = "tacsatch"
+	worn_accessible = TRUE
+
 /obj/item/storage/backpack/lightpack/five_slot
 	max_storage_space = 15
 

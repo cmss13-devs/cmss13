@@ -150,9 +150,9 @@ var/global/list/limb_types_by_name = list(
 		if(message[character_index] == ">")
 			parsing_message = TRUE
 			continue
-		else if(message[character_index] == "<")
+		if(message[character_index] == "<")
 			parsing_message = FALSE
-			if(length(current_string_to_scramble) == 0)
+			if(!length(current_string_to_scramble))
 				continue
 			var/scrambled_string = stars(current_string_to_scramble)
 			replaced_scrambled_strings[current_string_to_scramble] += scrambled_string

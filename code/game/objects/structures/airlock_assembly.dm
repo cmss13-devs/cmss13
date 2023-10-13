@@ -22,10 +22,10 @@
 	var/airlock_type = "generic" //the type path of the airlock once completed
 	var/glass = AIRLOCK_NOGLASS // see defines
 	var/created_name = null
-	var/width = 1
+	var/width = 1 //Used for multitile assemblies
+
 /obj/structure/airlock_assembly/Initialize(mapload, ...)
 	. = ..()
-
 	update_icon()
 
 /obj/structure/airlock_assembly/get_examine_text(mob/user)
@@ -244,7 +244,7 @@
 		icon_state = "door_as_[base_icon_state][state]"
 
 /obj/structure/airlock_assembly/proc/get_airlock_path()
-	//For some reason multi_tile doors have different paths... darn
+	//For some reason multi_tile doors have different paths... can't say it isn't annoying
 	if (width > 1)
 		return "/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type][glass ? "" : "/solid"]"
 	return "/obj/structure/machinery/door/airlock/almayer/[airlock_type][glass ? "/glass" : ""]"
@@ -333,7 +333,6 @@
 	icon = 'icons/obj/structures/doors/airlock_assembly2x1.dmi'
 	icon_state = "door_as_0"
 	width = 2
-	airlock_type = "generic"
 
 /obj/structure/airlock_assembly/multi_tile/Initialize(mapload, ...)
 	. = ..()

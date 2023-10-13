@@ -202,13 +202,21 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			if(check_one_per_turf(R,usr))
 				return
 
-		var/atom/O = new R.result_type(usr.loc, usr)
-		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [O]."),
-		SPAN_NOTICE("You assemble \a [O]."))
-		O.setDir(usr.dir)
+		var/atom/new_item
+		if(ispath(R.result_type, /turf))
+			var/turf/current_turf = get_turf(usr)
+			if(!current_turf)
+				return
+			new_item = current_turf.ChangeTurf(R.result_type)
+		else
+			new_item = new R.result_type(usr.loc, usr)
+
+		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [new_item]."),
+		SPAN_NOTICE("You assemble \a [new_item]."))
+		new_item.setDir(usr.dir)
 		if(R.max_res_amount > 1)
-			var/obj/item/stack/new_item = O
-			new_item.amount = R.res_amount * multiplier
+			var/obj/item/stack/new_stack = new_item
+			new_stack.amount = R.res_amount * multiplier
 		amount -= R.req_amount * multiplier
 		update_icon()
 
@@ -218,8 +226,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			usr.drop_inv_item_on_ground(oldsrc)
 			qdel(oldsrc)
 
-		if(istype(O,/obj/item/stack)) //floor stacking convenience
-			var/obj/item/stack/S = O
+		if(istype(new_item,/obj/item/stack)) //floor stacking convenience
+			var/obj/item/stack/S = new_item
 			for(var/obj/item/stack/F in usr.loc)
 				if(S.stack_id == F.stack_id && S != F)
 					var/diff = F.max_amount - F.amount
@@ -231,11 +239,11 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 						F.amount += diff
 					break
 
-		O?.add_fingerprint(usr)
+		new_item?.add_fingerprint(usr)
 
 		//BubbleWrap - so newly formed boxes are empty
-		if(isstorage(O))
-			for (var/obj/item/I in O)
+		if(isstorage(new_item))
+			for (var/obj/item/I in new_item)
 				qdel(I)
 		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window

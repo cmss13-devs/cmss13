@@ -535,10 +535,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/egg/random,
 		/obj/item/reagent_container/food/snacks/egg/random, //not a dupe
 		/obj/item/reagent_container/food/snacks/xemeatpie,
-		/obj/item/reagent_container/food/snacks/monkeycube,
-		/obj/item/reagent_container/food/snacks/monkeycube/farwacube,
-		/obj/item/reagent_container/food/snacks/monkeycube/stokcube,
-		/obj/item/reagent_container/food/snacks/monkeycube/yirencube,
 		/obj/item/reagent_container/food/snacks/upp,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas1,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas2,

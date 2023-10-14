@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - admin: "administrators without R_DEBUG can now restart the server without starting the round"

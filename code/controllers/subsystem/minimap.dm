@@ -656,7 +656,8 @@ SUBSYSTEM_DEF(minimaps)
 			qdel(new_map)
 
 		if(use_live_map)
-			tacmap_ready_time = SSminimaps.next_fire
+			tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS
+			addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire)
 			user.client.register_map_obj(map_holder.map)
 
 		ui = new(user, src, "TacticalMap")
@@ -868,6 +869,11 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/svg_overlay/New(svg_data)
 	src.svg_data = svg_data
+
+/// Callback when timer indicates the tacmap is flattenable now
+/datum/tacmap/proc/on_tacmap_fire(faction)
+	distribute_current_map_png(faction)
+	last_update_time = world.time
 
 /// Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists
 /proc/get_minimap_flag_for_faction(faction)

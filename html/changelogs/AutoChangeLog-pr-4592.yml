@@ -1,4 +1,0 @@
-author: "kiVts"
-delete-after: True
-changes:
-  - bugfix: "Research computer no longer shows \"for\" for every simulation result."

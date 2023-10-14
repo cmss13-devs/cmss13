@@ -273,7 +273,6 @@
 		if(!ishuman(usr))
 			return
 		visible_message(SPAN_NOTICE("[usr] unsecures the [name]."))
-		flush_contents()
 		var/obj/item/dartboard/unsecured_board = new(loc)
 		usr.put_in_hands(unsecured_board)
 		qdel(src)

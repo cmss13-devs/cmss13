@@ -48,8 +48,17 @@ export class DrawnMap extends Component {
     return lines;
   }
 
+  getSize() {
+    const ratio = Math.min(
+      (self.innerWidth - 50) / 650,
+      (self.innerHeight - 150) / 600
+    );
+    return { width: 650 * ratio, height: 600 * ratio };
+  }
+
   render() {
     const parsedSvgData = this.parseSvgData(this.svg);
+    const size = this.getSize();
 
     return (
       <div ref={this.containerRef}>
@@ -66,16 +75,16 @@ export class DrawnMap extends Component {
               zIndex: 0,
               left: '18px',
             }}
-            width={650}
-            height={600}
+            width={size.width}
+            height={size.height}
           />
         )}
         {parsedSvgData && this.state.mapLoad && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width={650}
-            height={600}
-            viewBox={`0 0 650 600`}
+            width={size.width}
+            height={size.height}
+            viewBox={'0 0 650 600'}
             style={{
               position: 'absolute',
               zIndex: 1,

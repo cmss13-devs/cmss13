@@ -170,8 +170,7 @@ const OldMapPanel = (props, context) => {
   return (
     <Section
       fitted
-      height="694px"
-      width="688px"
+      height="86%"
       justify="center"
       align="center"
       fontSize="30px">

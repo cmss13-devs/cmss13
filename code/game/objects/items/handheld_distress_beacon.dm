@@ -1,14 +1,14 @@
 
 ///handheld distress beacons used by goon chem retrieval team to call for PMC back up
 /obj/item/handheld_distress_beacon
-	name = "handheld distress beacon"
+	name = "\improper PMC handheld distress beacon"
 	desc = "A standard handheld distress beacon. Generally used by teams who may be out of regular communications range but must signal for assistance. This one is branded with a Weyland Yutani symbol and sold en masse to colonies across the Neroid Sector."
 	icon = 'icons/obj/items/handheld_distress_beacon.dmi'
 	icon_state = "beacon_inactive"
 	w_class = SIZE_SMALL
 
-	///Additional info about the beacon sent to message_admins
-	var/beacon_name = "PMC handheld distress beacon"
+	///The beacons faction that will be sent in message_admins
+	var/beacon_type = "PMC beacon"
 	///Tells the user who the beacon will be sent to IC
 	var/recipient = "the USCSS Royce"
 	///The name of the ERT that will be passed to get_specific_call
@@ -52,7 +52,7 @@
 	for(var/client/admin_client in GLOB.admins)
 		if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
 			playsound_client(admin_client,'sound/effects/sos-morse-code.ogg',10)
-	message_admins("[key_name(user)] has requested a [beacon_name]! [CC_MARK(user)] [beacon_call_buttons](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];deny_distress_handheld=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+	message_admins("[key_name(user)] has used a [beacon_type]! [CC_MARK(user)] [beacon_call_buttons](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];deny_distress_handheld=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 	to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to [recipient]."))
 
 /// CMB distress beacon held by CMB Marshal for signalling distress to Anchorpoint Station
@@ -60,7 +60,7 @@
 	name = "\improper CMB handheld distress beacon"
 	desc = "An emergency beacon. This one is branded with a Colonial Marshal Bureau star and 'ANCHORPOINT STATION' is etched in stencil on the side. This device is issued to CMB Marshals and features an extended relay antenna."
 
-	beacon_name = "CMB handheld distress beacon"
+	beacon_type = "CMB beacon"
 	recipient = "Anchorpoint Station"
 	ert_full_name = list("CMB - Patrol Team - Marshals in Distress (Friendly)", "CMB - Anchorpoint Station Colonial Marine QRF (Friendly)")
 	ert_short_name = list("SEND CMB", "SEND QRF")

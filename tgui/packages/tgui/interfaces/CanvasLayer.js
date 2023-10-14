@@ -1,4 +1,4 @@
-import { Box } from '../components';
+import { Box, Icon, Tooltip } from '../components';
 import { Component, createRef } from 'inferno';
 
 // this file should probably not be in interfaces, should move it later.
@@ -28,6 +28,8 @@ export class CanvasLayer extends Component {
     this.isPainting = false;
     this.lastX = null;
     this.lastY = null;
+
+    this.complexity = 0;
   }
 
   componentDidMount() {
@@ -67,6 +69,11 @@ export class CanvasLayer extends Component {
     if (!this.isPainting || !this.state.selection) {
       return;
     }
+    if (e.buttons === 0) {
+      // We probably dragged off the window - lets not get stuck drawing
+      this.handleMouseUp(e);
+      return;
+    }
 
     this.ctx.strokeStyle = this.state.selection;
 
@@ -75,6 +82,11 @@ export class CanvasLayer extends Component {
     const y = e.clientY - rect.top;
 
     if (this.lastX !== null && this.lastY !== null) {
+      // this controls how often we make new strokes
+      if (Math.abs(this.lastX - x) + Math.abs(this.lastY - y) < 25) {
+        return;
+      }
+
       this.ctx.moveTo(this.lastX, this.lastY);
       this.ctx.lineTo(x, y);
       this.ctx.stroke();
@@ -91,11 +103,40 @@ export class CanvasLayer extends Component {
     this.lastY = y;
   };
 
-  handleMouseUp = () => {
+  handleMouseUp = (e) => {
+    if (
+      this.isPainting &&
+      this.state.selection &&
+      this.lastX !== null &&
+      this.lastY !== null
+    ) {
+      const rect = this.canvasRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      this.ctx.moveTo(this.lastX, this.lastY);
+      this.ctx.lineTo(x, y);
+      this.ctx.stroke();
+      this.currentLine.push([
+        this.lastX,
+        this.lastY,
+        x,
+        y,
+        this.ctx.strokeStyle,
+      ]);
+    }
+
     this.isPainting = false;
+    this.lastX = null;
+    this.lastY = null;
+
+    if (this.currentLine.length === 0) {
+      return;
+    }
+
     this.lineStack.push([...this.currentLine]);
     this.currentLine = [];
-    this.ctx.beginPath();
+    this.complexity = this.getComplexity();
     this.props.onDraw();
   };
 
@@ -118,6 +159,7 @@ export class CanvasLayer extends Component {
       );
 
       this.lineStack = [];
+      this.complexity = 0;
       return;
     }
 
@@ -158,6 +200,7 @@ export class CanvasLayer extends Component {
         });
       });
 
+      this.complexity = this.getComplexity();
       this.setState({ selection: prevColor });
       this.props.onUndo(prevColor);
       return;
@@ -205,19 +248,46 @@ export class CanvasLayer extends Component {
     return combinedArray;
   }
 
+  getComplexity() {
+    let count = 0;
+    this.lineStack.forEach((item) => {
+      count += item.length;
+    });
+    return count;
+  }
+
   render() {
     // edge case where a new user joins and tries to draw on the canvas before they cached the png
     return (
       <div>
         {this.state.mapLoad ? (
-          <canvas
-            ref={this.canvasRef}
-            width={650}
-            height={600}
-            onMouseDown={(e) => this.handleMouseDown(e)}
-            onMouseUp={(e) => this.handleMouseUp(e)}
-            onMouseMove={(e) => this.handleMouseMove(e)}
-          />
+          <div>
+            {this.complexity > 500 && (
+              <Tooltip
+                position="bottom"
+                content={
+                  'This drawing may be too complex to submit. (' +
+                  this.complexity +
+                  ')'
+                }>
+                <Icon
+                  name="fa-solid fa-triangle-exclamation"
+                  size={2}
+                  position="absolute"
+                  mx="50%"
+                  mt="25px"
+                />
+              </Tooltip>
+            )}
+            <canvas
+              ref={this.canvasRef}
+              width={650}
+              height={600}
+              onMouseDown={(e) => this.handleMouseDown(e)}
+              onMouseUp={(e) => this.handleMouseUp(e)}
+              onMouseMove={(e) => this.handleMouseMove(e)}
+            />
+          </div>
         ) : (
           <Box my="273.5px">
             <h1>

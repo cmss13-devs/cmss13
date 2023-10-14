@@ -1,3 +1,4 @@
+import { Box } from '../components';
 import { Component, createRef } from 'inferno';
 
 // this file should probably not be in interfaces, should move it later.
@@ -228,11 +229,11 @@ export class CanvasLayer extends Component {
         {this.state.mapLoad ? (
           <canvas ref={this.canvasRef} width={650} height={600} />
         ) : (
-          <div style={{ position: 'absolute', top: '300px' }}>
+          <Box my="273.5px">
             <h1>
               Please wait a few minutes before attempting to access the canvas.
             </h1>
-          </div>
+          </Box>
         )}
       </div>
     );

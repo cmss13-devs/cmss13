@@ -574,38 +574,36 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/static/wiki_map_fallback
 
-	// color selection for the tactical map canvas, defaults to black.
+	/// color selection for the tactical map canvas, defaults to black.
 	var/toolbar_color_selection = "black"
 	var/toolbar_updated_selection = "black"
 
 	var/canvas_cooldown_time = 4 MINUTES
 	var/flatten_map_cooldown_time = 3 MINUTES
 
-	//flatten cooldown for xenos,queen,marines. Cic has their own that is globally defined.
+	/// flatten cooldown for xenos,queen,marines. Cic has their own that is globally defined.
 	COOLDOWN_DECLARE(flatten_map_cooldown)
 
-	//tacmap holder for holding the minimap
+	/// tacmap holder for holding the minimap
 	var/datum/tacmap_holder/map_holder
 
-	// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
+	/// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
 
-	// datums for holding both the flattend png asset reference and an svg overlay. It's best to keep them separate with the current implementation imo.
-
-	// current flattend map
+	/// current flattend map
 	var/datum/flattend_tacmap_png/new_current_map = new
 
-	// previous flattened map
+	/// previous flattened map
 	var/datum/flattend_tacmap_png/old_map = new
 
-	// current svg
+	/// current svg
 	var/datum/svg_overlay/current_svg = new
 
 	var/action_queue_change = 0
 
-	// a time set as key to trick react into updating the canvas
+	/// The last time the map has been flattened - used as a key to trick react into updating the canvas
 	var/last_update_time = 0
-	// a temporary lock out before we can open the new canvas tab to allow the tacmap time to fire
+	/// A temporary lock out time before we can open the new canvas tab to allow the tacmap time to fire
 	var/tacmap_ready_time = 0
 
 /datum/tacmap/New(atom/source, minimap_type)
@@ -676,9 +674,9 @@ SUBSYSTEM_DEF(minimaps)
 	data["toolbarUpdatedSelection"] = toolbar_updated_selection
 
 	if(isxeno(user))
-		data["canvasCooldown"] = GLOB.xeno_canvas_cooldown - world.time
+		data["canvasCooldown"] = max(GLOB.xeno_canvas_cooldown - world.time, 0)
 	else
-		data["canvasCooldown"] = GLOB.uscm_canvas_cooldown - world.time
+		data["canvasCooldown"] = max(GLOB.uscm_canvas_cooldown - world.time, 0)
 
 	data["nextCanvasTime"] = canvas_cooldown_time
 	data["updatedCanvas"] = updated_canvas

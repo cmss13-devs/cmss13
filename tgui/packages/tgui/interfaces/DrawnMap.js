@@ -1,3 +1,4 @@
+import { Box } from '../components';
 import { Component, createRef } from 'inferno';
 
 export class DrawnMap extends Component {
@@ -53,7 +54,9 @@ export class DrawnMap extends Component {
     return (
       <div ref={this.containerRef}>
         {this.state.loadingBackup && !this.state.mapLoad && (
-          <p>Loading map...</p>
+          <Box my="40%">
+            <h1>Loading map...</h1>
+          </Box>
         )}
         {this.img && this.state.mapLoad && (
           <img
@@ -61,7 +64,7 @@ export class DrawnMap extends Component {
             style={{
               position: 'absolute',
               zIndex: 0,
-              left: '6px',
+              left: '18px',
             }}
             width={650}
             height={600}
@@ -75,8 +78,8 @@ export class DrawnMap extends Component {
             viewBox={`0 0 650 600`}
             style={{
               position: 'absolute',
-              left: '6px',
               zIndex: 1,
+              left: '18px',
             }}>
             {parsedSvgData.map((line, index) => (
               <line

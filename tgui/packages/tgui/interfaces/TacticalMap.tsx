@@ -116,7 +116,7 @@ export const TacticalMap = (props, context) => {
           justify="space-evenly">
           <Stack justify="center" align="center" fontSize="15px">
             <Stack.Item>
-              <Tabs>
+              <Tabs height="37.5px">
                 {PAGES.map((page, i) => {
                   if (page.canAccess(data) === 0) {
                     return;
@@ -175,11 +175,17 @@ const OldMapPanel = (props, context) => {
       justify="center"
       align="center"
       fontSize="30px">
-      <DrawnMap
-        svgData={data.svgData}
-        flatImage={data.oldCanvasFlatImage}
-        backupImage={data.mapFallback}
-      />
+      {data.canViewCanvas ? (
+        <DrawnMap
+          svgData={data.svgData}
+          flatImage={data.oldCanvasFlatImage}
+          backupImage={data.mapFallback}
+        />
+      ) : (
+        <Box my="40%">
+          <h1>Unauthorized.</h1>
+        </Box>
+      )}
     </Section>
   );
 };
@@ -188,7 +194,7 @@ const DrawMapPanel = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
 
   const timeLeftPct = data.canvasCooldown / data.nextCanvasTime;
-  const canUpdate = data.canvasCooldown < 0 && !data.updatedCanvas;
+  const canUpdate = data.canvasCooldown <= 0 && !data.updatedCanvas;
 
   const handleTacMapExport = (image: any) => {
     data.exportedTacMapImage = image;
@@ -286,7 +292,7 @@ const DrawMapPanel = (props, context) => {
           position="absolute"
           width="98%"
           style={{ 'z-index': '1' }}
-          bottom="-55px">
+          bottom="-40px">
           <Stack.Item grow>
             {data.canvasCooldown > 0 && (
               <ProgressBar

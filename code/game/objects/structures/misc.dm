@@ -239,7 +239,7 @@
 
 /obj/structure/dartboard/Destroy()
 	flush_contents()
-	..()
+	.  = ..()
 
 /obj/structure/dartboard/hitby(atom/movable/thrown_item)
 	if(!is_type_in_list(thrown_item, list(/obj/item/attachable/bayonet, /obj/item/weapon/dart)))

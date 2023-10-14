@@ -157,3 +157,15 @@
   Drathek:
   - refactor: Refactored camera code to be less blocking, use typechecks less often,
       and provide somewhat more fluid descriptions to photos.
+2023-10-14:
+  BeagleGaming1:
+  - bugfix: M39 arm brace disables when dropped
+  CapCamIII:
+  - bugfix: UPP Sapper/Medic survivor use their correct paygrade instead of UE3M/UE3S
+  QuickLode:
+  - rscadd: Colony Supervisor now has a guaranteed grant.
+  - balance: nerfs PMC Synthetic's gear
+  - bugfix: PMC Synthetic has corrected access(thx forest)
+  - bugfix: Colony Supervisor can now have access to his own colony(LOL).
+  mullenpaul:
+  - rscadd: adds weapon spawners for USCM, CLF, PMC and UPP

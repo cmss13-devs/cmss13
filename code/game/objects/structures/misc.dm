@@ -303,5 +303,5 @@
 		else
 			return
 
-	to_chat(user, SPAN_NOTICE("You secure the [board]."))
+	to_chat(user, SPAN_NOTICE("You secure [board]."))
 	qdel(src)

@@ -371,6 +371,7 @@
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
+	minimap_type = get_minimap_flag_for_faction(hivenumber)
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name

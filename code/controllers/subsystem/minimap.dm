@@ -627,7 +627,8 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	var/mob/living/carbon/xenomorph/xeno = user
-	var/faction = istype(xeno) ? xeno.hivenumber : user.faction
+	var/is_xeno = istype(xeno)
+	var/faction = is_xeno ? xeno.hivenumber : user.faction
 	if(user.faction == FACTION_NEUTRAL && isobserver(user))
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 	if(faction == FACTION_MARINE || faction == XENO_HIVE_NORMAL)
@@ -635,7 +636,7 @@ SUBSYSTEM_DEF(minimaps)
 		old_map = get_tacmap_data_png(faction)
 		current_svg = get_tacmap_data_svg(faction)
 
-	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || faction == XENO_HIVE_NORMAL
+	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || is_xeno
 
 	if(use_live_map && !map_holder)
 		var/level = SSmapping.levels_by_trait(targeted_ztrait)
@@ -791,7 +792,7 @@ SUBSYSTEM_DEF(minimaps)
 
 			if(faction == FACTION_MARINE)
 				GLOB.uscm_flat_tacmap_png_asset += new_current_map
-			else //if(faction == XENO_HIVE_NORMAL)
+			else if(faction == XENO_HIVE_NORMAL)
 				GLOB.xeno_flat_tacmap_png_asset += new_current_map
 
 			store_current_svg_coords(faction, params["image"])
@@ -862,3 +863,44 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/svg_overlay/New(svg_data)
 	src.svg_data = svg_data
+
+/// Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists
+/proc/get_minimap_flag_for_faction(faction)
+	switch(faction)
+		if(XENO_HIVE_NORMAL)
+			return MINIMAP_FLAG_XENO
+		if(FACTION_MARINE)
+			return MINIMAP_FLAG_USCM
+		if(FACTION_UPP)
+			return MINIMAP_FLAG_UPP
+		if(FACTION_WY)
+			return MINIMAP_FLAG_USCM
+		if(FACTION_CLF)
+			return MINIMAP_FLAG_CLF
+		if(FACTION_PMC)
+			return MINIMAP_FLAG_PMC
+		if(FACTION_YAUTJA)
+			return MINIMAP_FLAG_YAUTJA
+		if(XENO_HIVE_CORRUPTED)
+			return MINIMAP_FLAG_XENO_CORRUPTED
+		if(XENO_HIVE_ALPHA)
+			return MINIMAP_FLAG_XENO_ALPHA
+		if(XENO_HIVE_BRAVO)
+			return MINIMAP_FLAG_XENO_BRAVO
+		if(XENO_HIVE_CHARLIE)
+			return MINIMAP_FLAG_XENO_CHARLIE
+		if(XENO_HIVE_DELTA)
+			return MINIMAP_FLAG_XENO_DELTA
+		if(XENO_HIVE_FERAL)
+			return MINIMAP_FLAG_XENO_FERAL
+		if(XENO_HIVE_TAMED)
+			return MINIMAP_FLAG_XENO_TAMED
+		if(XENO_HIVE_MUTATED)
+			return MINIMAP_FLAG_XENO_MUTATED
+		if(XENO_HIVE_FORSAKEN)
+			return MINIMAP_FLAG_XENO_FORSAKEN
+		if(XENO_HIVE_YAUTJA)
+			return MINIMAP_FLAG_YAUTJA
+		if(XENO_HIVE_RENEGADE)
+			return MINIMAP_FLAG_XENO_RENEGADE
+	return 0

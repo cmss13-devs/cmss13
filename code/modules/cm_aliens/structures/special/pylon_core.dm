@@ -248,7 +248,7 @@
 
 /obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "core[health < (initial(health) * 0.5) ? "_warn" : "_passive"]")
+	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "core[health < (initial(health) * 0.5) ? "_warn" : "_passive"]")
 
 /obj/effect/alien/resin/special/pylon/core/process()
 	. = ..()

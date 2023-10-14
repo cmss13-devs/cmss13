@@ -2121,7 +2121,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\power\smes_construction.dm"
 #include "code\modules\power\terminal.dm"
 #include "code\modules\power\turbine.dm"
-#include "code\modules\projectiles\ammo_datums.dm"
+//#include "code\modules\projectiles\ammo_datums.dm"
 #include "code\modules\projectiles\ammunition.dm"
 #include "code\modules\projectiles\gun.dm"
 #include "code\modules\projectiles\gun_attachables.dm"

@@ -145,7 +145,7 @@
 	template = /datum/map_template/tent/big
 
 /obj/item/folded_tent/corp
-	name = "folded company Tent"
+	name = "folded Company Tent"
 	icon_state = "cmd"
 	desc = "A company liaison tent, provided with all the resources for company field work, and a luxurious rug. ENTRANCE TO THE SOUTH."
 	dim_x = 3
@@ -154,7 +154,7 @@
 	template = /datum/map_template/tent/corp
 
 /obj/item/folded_tent/mp
-	name = "folded MP Tent"
+	name = "folded Detention Tent"
 	icon_state = "big"
 	desc = "Field tent for USCM Military Police personnel, provides a rest area and a holding cell for individuals to be held until they can be sent shipside. Donuts included. ENTRANCE TO THE SOUTH."
 	dim_x = 4
@@ -163,7 +163,7 @@
 	template = /datum/map_template/tent/mp
 
 /obj/item/folded_tent/ot
-	name = "folded OT Tent"
+	name = "folded Ordinance Distribution Tent"
 	icon_state = "big"
 	desc = "Field tent for ordnance technicians, allows them to store and distribute their equipment to frontline personnel. ENTRANCE TO THE SOUTH."
 	dim_x = 2

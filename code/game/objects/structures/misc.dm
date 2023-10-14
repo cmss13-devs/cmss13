@@ -218,7 +218,7 @@
 
 /obj/structure/dartboard/get_projectile_hit_boolean(obj/projectile/P)
 	. = ..()
-	return FALSE //Projectiles should pass over.
+	collapse()
 
 /obj/structure/dartboard/proc/flush_contents()
 	for(var/atom/movable/embedded_items in contents)
@@ -243,7 +243,7 @@
 
 /obj/structure/dartboard/hitby(atom/movable/thrown_item)
 	if(!is_type_in_list(thrown_item, list(/obj/item/attachable/bayonet, /obj/item/weapon/dart)))
-		visible_message(SPAN_DANGER("[thrown_item] hits [src], tearing it down!"))
+		visible_message(SPAN_DANGER("[thrown_item] hits [src], collapsing it!"))
 		collapse()
 		return
 
@@ -264,7 +264,7 @@
 		visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking [band] for [score] points."))
 
 /obj/structure/dartboard/attackby(obj/item/item, mob/user)
-	to_chat(user, "You tear down [src] with [item]!")
+	user.visible_message(SPAN_DANGER("[user] hits [src] with [item], collapsing it!"), SPAN_DANGER("You collapse [src] with [item]!"))
 	collapse()
 
 /obj/structure/dartboard/MouseDrop(over_object, src_location, over_location)
@@ -304,5 +304,5 @@
 		else
 			return
 
-	to_chat(user, "You secure the [board].")
+	to_chat(user, SPAN_NOTICE("You secure the [board]."))
 	qdel(src)

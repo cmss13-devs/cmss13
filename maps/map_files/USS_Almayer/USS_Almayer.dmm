@@ -37403,7 +37403,7 @@
 	name = "Brig Cells Telephone";
 	phone_category = "Almayer";
 	phone_id = "Brig Cells";
-	pixel_x = 15;
+	pixel_x = 15
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
@@ -60500,10 +60500,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/lower_hull)
-"qif" = (
-/obj/structure/sign/dartboard,
-/turf/closed/wall/almayer,
-/area/almayer/hallways/hangar)
 "qih" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -64530,7 +64526,7 @@
 	name = "Requisition Telephone";
 	phone_category = "Almayer";
 	phone_id = "Requisition";
-	pixel_y = 30;
+	pixel_y = 30
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -73375,6 +73371,9 @@
 /area/almayer/medical/hydroponics)
 "vDh" = (
 /obj/item/weapon/dart/green,
+/obj/structure/dartboard{
+	pixel_y = 32
+	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "vEf" = (
@@ -97365,7 +97364,7 @@ baH
 fVz
 bHB
 bBN
-qif
+bcm
 vDh
 kCT
 kCT

@@ -623,6 +623,8 @@
 						if (setcriminal == WANTED_ARREST)
 							message_admins("[key_name_admin(usr)] has set [key_name_admin(human)] to wanted.")
 
+						break
+
 				break
 
 			if (found)

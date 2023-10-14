@@ -759,24 +759,21 @@ SUBSYSTEM_DEF(minimaps)
 			old_map = get_tacmap_data_png(faction)
 			current_svg = get_tacmap_data_svg(faction)
 
-			. = TRUE
-
 		if ("updateCanvas")
 			// forces state change, this will export the svg.
 			toolbar_updated_selection = "export"
 			updated_canvas = TRUE
 			action_queue_change += 1
-			. = TRUE
 
 		if ("clearCanvas")
 			toolbar_updated_selection = "clear"
+			updated_canvas = FALSE
 			action_queue_change += 1
-			. = TRUE
 
 		if ("undoChange")
 			toolbar_updated_selection = "undo"
+			updated_canvas = FALSE
 			action_queue_change += 1
-			. = TRUE
 
 		if ("selectColor")
 			var/newColor = params["color"]
@@ -784,11 +781,13 @@ SUBSYSTEM_DEF(minimaps)
 				toolbar_color_selection = newColor
 				toolbar_updated_selection = newColor
 			action_queue_change += 1
-			. = TRUE
+
+		if ("onDraw")
+			updated_canvas = FALSE
 
 		if ("selectAnnouncement")
 			if(!istype(params["image"], /list)) // potentially very serious?
-				return
+				return FALSE
 
 			if(faction == FACTION_MARINE)
 				GLOB.uscm_flat_tacmap_png_asset += new_current_map
@@ -813,7 +812,8 @@ SUBSYSTEM_DEF(minimaps)
 			toolbar_updated_selection = toolbar_color_selection
 			message_admins("[key_name(user)] has updated the tactical map")
 			updated_canvas = FALSE
-			. = TRUE
+
+	return TRUE
 
 /datum/tacmap/ui_status(mob/user)
 	if(!(isatom(owner)))

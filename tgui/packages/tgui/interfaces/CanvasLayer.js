@@ -114,6 +114,7 @@ export class CanvasLayer extends Component {
     this.lineStack.push([...this.currentLine]);
     this.currentLine = [];
     this.ctx.beginPath();
+    this.props.onDraw();
   };
 
   handleSelectionChange = () => {

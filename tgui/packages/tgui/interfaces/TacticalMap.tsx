@@ -321,6 +321,7 @@ const DrawMapPanel = (props, context) => {
           onUndo={(value) =>
             act('selectColor', { color: findColorValue(value) })
           }
+          onDraw={() => act('onDraw')}
         />
       </Section>
     </>

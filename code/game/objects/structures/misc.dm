@@ -237,7 +237,7 @@
 	else
 		to_chat(user, SPAN_WARNING("[src] has nothing embedded!"))
 
-/obj/structure/dartboard/Destroy(force)
+/obj/structure/dartboard/Destroy()
 	flush_contents()
 	..()
 

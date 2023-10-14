@@ -39,6 +39,8 @@
 		msg_admin_niche("[key]/[ckey] has tried to transfer to deleted [new_character].")
 		return
 
+	SEND_SIGNAL(current.client, COMSIG_CLIENT_MIND_TRANSFER, new_character)
+
 	if(current)
 		current.mind = null //remove ourself from our old body's mind variable
 		nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
@@ -70,6 +72,8 @@
 						ui.close()
 						continue
 			player_entity = setup_player_entity(ckey)
+
+	SEND_SIGNAL(new_character, COMSIG_MOB_NEW_MIND, current.client)
 
 	new_character.refresh_huds(current) //inherit the HUDs from the old body
 	new_character.aghosted = FALSE //reset aghost and away timer

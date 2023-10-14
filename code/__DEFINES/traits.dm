@@ -102,6 +102,21 @@
 		}\
 	} while (0)
 
+/// Will 100% nuke a trait regardless of source. Preferably use this as little as possible
+#define REMOVE_TRAIT_ALLSOURCES(target, trait) \
+	do { \
+		var/list/_L = target.status_traits; \
+		if (_L?[trait]) { \
+			if (length(_L)) { \
+				_L -= trait; \
+				SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(trait), trait); \
+			}; \
+			else { \
+				target.status_traits = null \
+			}; \
+		} \
+	} while (0)
+
 #define HAS_TRAIT(target, trait) (target.status_traits ? (target.status_traits[trait] ? TRUE : FALSE) : FALSE)
 #define HAS_TRAIT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (source in target.status_traits[trait]) : FALSE) : FALSE)
 #define HAS_TRAIT_FROM_ONLY(target, trait, source) (\
@@ -179,6 +194,8 @@
 #define TRAIT_HARDCORE "t_hardcore"
 /// If the mob is able to use the vulture rifle or spotting scope
 #define TRAIT_VULTURE_USER "t_vulture_user"
+/// If the mob is cloaked in any form
+#define TRAIT_CLOAKED "t_cloaked"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -282,6 +299,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_LISPING" = TRAIT_LISPING,
 		"TRAIT_CANNOT_EAT" = TRAIT_CANNOT_EAT,
 		"TRAIT_VULTURE_USER" = TRAIT_VULTURE_USER,
+		"TRAIT_CLOAKED" = TRAIT_CLOAKED,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,

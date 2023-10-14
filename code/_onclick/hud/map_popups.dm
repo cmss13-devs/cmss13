@@ -108,7 +108,7 @@
 	if(!screen_map.Find(screen_obj))
 		screen_map += screen_obj
 	if(!screen.Find(screen_obj))
-		screen += screen_obj
+		add_to_screen(screen_obj)
 
 /**
  * Clears the map of registered screen objects.

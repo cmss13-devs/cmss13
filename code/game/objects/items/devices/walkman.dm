@@ -439,15 +439,13 @@
 /obj/item/device/cassette_tape/nam
 	name = "green cassette"
 	id = 10
-	desc = "A green plastic cassette tape.\nSeems empty."
+	desc = "A green plastic cassette tape.\nFrom TWE with love."
 	icon_state = "cassette_green"
 	side1_icon = "cassette_green"
-	songs = list("side1" = list("sound/music/walkman/nam/9-1-1.ogg",\
-								"sound/music/walkman/nam/9-1-2.ogg",\
-								"sound/music/walkman/nam/9-1-3.ogg"),\
-				"side2" = list("sound/music/walkman/nam/9-2-1.ogg",\
-								"sound/music/walkman/nam/9-2-2.ogg",\
-								"sound/music/walkman/nam/9-2-3.ogg"))
+	songs = list("side1" = list("sound/music/walkman/britmus/9-1-1.ogg",\
+								"sound/music/walkman/britmus/9-1-2.ogg"),\
+				"side2" = list("sound/music/walkman/britmus/9-2-1.ogg",\
+								"sound/music/walkman/britmus/9-2-2.ogg"))
 
 /obj/item/device/cassette_tape/ocean
 	name = "ocean cassette"

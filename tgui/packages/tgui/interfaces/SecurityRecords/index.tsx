@@ -212,7 +212,7 @@ const SecurityRecordView = (props, context) => {
                   <Flex.Item>{active_record.criminal_status}</Flex.Item>
                   <Flex.Item>
                     {wanted_statuses.map((status) => {
-                      let isActiveStatus =
+                      const isActiveStatus =
                         status === active_record.criminal_status;
                       return (
                         <Button
@@ -421,6 +421,7 @@ const CommentsList = (props, context) => {
         <Button
           px={4}
           py={1.5}
+          mb={2}
           textAlign="center"
           onClick={() =>
             act('add_comment', {

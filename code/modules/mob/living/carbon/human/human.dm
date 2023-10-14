@@ -586,6 +586,9 @@
 		if(!hasHUD(usr,"security"))
 			return
 
+		if(iszombie(usr))
+			return
+
 		var/perp_ref = null
 		if(wear_id)
 			var/obj/item/card/id/id = wear_id.GetID()
@@ -611,7 +614,15 @@
 					return
 
 				security_record.fields["criminal"] = setcriminal
-				sec_hud_set_security_status()
+
+				var/mob_gid = hex2num(general_record.fields["id"])
+				for(var/mob/living/carbon/human/human as anything in GLOB.human_mob_list)
+					if (human.gid == mob_gid)
+						human.sec_hud_set_security_status()
+
+						if (setcriminal == WANTED_ARREST)
+							message_admins("[key_name_admin(usr)] has set [key_name_admin(human)] to wanted.")
+
 				break
 
 			if (found)
@@ -622,6 +633,9 @@
 
 	if(href_list["secrecord"])
 		if(!hasHUD(usr,"security"))
+			return
+
+		if(iszombie(usr))
 			return
 
 		var/perp_ref = null
@@ -684,6 +698,9 @@
 		if(!hasHUD(usr,"security"))
 			return
 
+		if(iszombie(usr))
+			return
+
 		var/perp_ref = null
 		if(wear_id)
 			var/obj/item/card/id/id = wear_id.GetID()
@@ -719,6 +736,7 @@
 				security_record.fields["comments"] += list(new_comment)
 
 				to_chat(usr, "You have added a new comment to the Security Record of [security_record.fields["name"]]. <a href='?src=\ref[src];secrecord=1'>\[View Record\]</a>")
+				log_and_message_admins("[key_name_admin(usr)] has added a security record comment: [copytext(input, 1, 50)]")
 				break
 
 			if (found)

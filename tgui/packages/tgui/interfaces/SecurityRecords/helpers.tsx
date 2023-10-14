@@ -4,13 +4,15 @@ import type { GenericRecord } from './types';
 export const isRecordMatch = (record: GenericRecord, search: string) => {
   if (!search) return true;
   const { name, rank } = record;
+  const searchString = search?.toLowerCase();
 
-  switch (true) {
-    case name?.toLowerCase().includes(search?.toLowerCase()):
-    case rank?.toLowerCase().includes(search?.toLowerCase()):
-      return true;
-
-    default:
-      return false;
+  if (name?.toLowerCase().includes(searchString)) {
+    return true;
   }
+
+  if (rank?.toLowerCase().includes(searchString)) {
+    return true;
+  }
+
+  return false;
 };

@@ -99,13 +99,13 @@
  * Security Record Cabinets
  */
 /obj/structure/filingcabinet/security
-	var/virgin = TRUE
+	var/initialised = FALSE
 
 
 /obj/structure/filingcabinet/security/proc/populate()
-	if(!virgin)
+	if(initialised)
 		return
-	virgin = FALSE
+	initialised = TRUE
 
 	for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
 		var/datum/data/record/security_record

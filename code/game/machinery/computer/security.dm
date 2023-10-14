@@ -32,41 +32,39 @@
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/secure_data/ui_data(mob/user)
-	var/list/data = list()
+	. = list()
 
 	if(isnull(GLOB.data_core.general) || isnull(GLOB.data_core.security))
 		return
 
-	data["active_record"] = list()
+	.["active_record"] = list()
 
 	// Get advanced data only for selected record.
 	if (active_record_general)
-		data["active_record"]["name"] = active_record_general.fields["name"]
-		data["active_record"]["ref"] = "\ref[active_record_general]"
-		data["active_record"]["id"] = active_record_general.fields["id"]
-		data["active_record"]["rank"] = active_record_general.fields["rank"]
-		data["active_record"]["squad"] = active_record_general.fields["squad"]
-		data["active_record"]["sex"] = active_record_general.fields["sex"]
-		data["active_record"]["age"] = active_record_general.fields["age"]
-		data["active_record"]["physical_status"] = active_record_general.fields["p_stat"]
-		data["active_record"]["mental_status"] = active_record_general.fields["m_stat"]
+		.["active_record"]["name"] = active_record_general.fields["name"]
+		.["active_record"]["ref"] = "\ref[active_record_general]"
+		.["active_record"]["id"] = active_record_general.fields["id"]
+		.["active_record"]["rank"] = active_record_general.fields["rank"]
+		.["active_record"]["squad"] = active_record_general.fields["squad"]
+		.["active_record"]["sex"] = active_record_general.fields["sex"]
+		.["active_record"]["age"] = active_record_general.fields["age"]
+		.["active_record"]["physical_status"] = active_record_general.fields["p_stat"]
+		.["active_record"]["mental_status"] = active_record_general.fields["m_stat"]
 
 	// Get security data, if it exists.
 	if (active_record_security)
-		data["active_record"]["criminal_status"] = active_record_security.fields["criminal"]
-		data["active_record"]["incidents"] = active_record_security.fields["incidents"]
-		data["active_record"]["comments"] = active_record_security.fields["comments"]
-
-	return data
+		.["active_record"]["criminal_status"] = active_record_security.fields["criminal"]
+		.["active_record"]["incidents"] = active_record_security.fields["incidents"]
+		.["active_record"]["comments"] = active_record_security.fields["comments"]
 
 /obj/structure/machinery/computer/secure_data/ui_static_data(mob/user)
-	var/list/data = list()
+	. = list()
 
 	if(isnull(GLOB.data_core.general) || isnull(GLOB.data_core.security))
 		return
 
-	data["wanted_statuses"] = WANTED_STATUSES
-	data["records"] = list()
+	.["wanted_statuses"] = WANTED_STATUSES
+	.["records"] = list()
 
 	// Get basic data from every record.
 	for(var/datum/data/record/record_general_data as anything in GLOB.data_core.general)
@@ -81,10 +79,10 @@
 				crew_member["criminal_status"] = record_security_data.fields["criminal"]
 				break
 
-		data["records"] += list(crew_member)
+		.["records"] += list(crew_member)
 
 	// If a fingerprint scanner is inserted, load the prints.
-	data["prints"] = list()
+	.["prints"] = list()
 	if (scanner)
 		for(var/obj/effect/decal/prints/prints as anything in scanner.print_list)
 			var/list/print = list()
@@ -98,9 +96,7 @@
 			if(prints.criminal_rank)
 				print["rank"] = prints.criminal_rank
 
-			data["prints"] += list(print)
-
-	return data
+			.["prints"] += list(print)
 
 /obj/structure/machinery/computer/secure_data/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -164,7 +160,7 @@
 			if (!sanitised_name || !sanity_check(params["ref"]))
 				return
 
-			message_admins("[key_name(ui.user)] has changed the record name of [active_record_general.fields["name"]] to [sanitised_name]")
+			message_admins("[key_name_admin(ui.user)] has changed the record name of [active_record_general.fields["name"]] to [sanitised_name]")
 			active_record_general.fields["name"] = sanitised_name
 
 		if("toggle_sex")
@@ -203,6 +199,10 @@
 			for(var/mob/living/carbon/human/human as anything in GLOB.human_mob_list)
 				if (human.gid == mob_gid)
 					human.sec_hud_set_security_status()
+
+					if (new_wanted_status == WANTED_ARREST)
+						message_admins("[key_name_admin(ui.user)] has set [key_name_admin(human)] to wanted.")
+
 					break
 
 		if ("add_comment")
@@ -238,6 +238,7 @@
 			active_record_security.fields["comments"] += list(new_comment)
 
 			to_chat(ui.user, text("You have added a new comment to the Security Record of [].", active_record_security.fields["name"]))
+			log_and_message_admins("[key_name_admin(ui.user)] has added a security record comment: [copytext(input, 1, 50)]")
 
 		if("edit_comment")
 			if (!istype(active_record_security, /datum/data/record) || !sanity_check(params["ref"]))
@@ -249,6 +250,7 @@
 				return
 
 			active_record_security.fields["comments"][params["comment_id"]]["entry"] = new_comment
+			log_and_message_admins("[key_name_admin(ui.user)] has edited a security record comment to: [copytext(new_comment, 1, 50)]")
 
 		if("delete_comment")
 			if (!active_record_security || !sanity_check(params["ref"]))

@@ -227,24 +227,24 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			qdel(oldsrc)
 
 		if(istype(new_item,/obj/item/stack)) //floor stacking convenience
-			var/obj/item/stack/S = new_item
-			for(var/obj/item/stack/F in usr.loc)
-				if(S.stack_id == F.stack_id && S != F)
-					var/diff = F.max_amount - F.amount
-					if (S.amount < diff)
-						F.amount += S.amount
+			var/obj/item/stack/stack_item = new_item
+			for(var/obj/item/stack/found_item in usr.loc)
+				if(stack_item.stack_id == found_item.stack_id && stack_item != found_item)
+					var/diff = found_item.max_amount - found_item.amount
+					if (stack_item.amount < diff)
+						found_item.amount += stack_item.amount
 						qdel(S)
 					else
-						S.amount -= diff
-						F.amount += diff
+						stack_item.amount -= diff
+						found_item.amount += diff
 					break
 
 		new_item?.add_fingerprint(usr)
 
 		//BubbleWrap - so newly formed boxes are empty
 		if(isstorage(new_item))
-			for (var/obj/item/I in new_item)
-				qdel(I)
+			for (var/obj/item/found_item in new_item)
+				qdel(found_item)
 		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window
 		INVOKE_ASYNC(src, PROC_REF(interact), usr)

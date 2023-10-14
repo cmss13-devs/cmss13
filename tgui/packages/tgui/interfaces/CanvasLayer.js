@@ -48,24 +48,6 @@ export class CanvasLayer extends Component {
     };
 
     this.drawCanvas();
-
-    this.canvasRef.current.addEventListener('mousedown', this.handleMouseDown);
-    this.canvasRef.current.addEventListener('mousemove', this.handleMouseMove);
-    this.canvasRef.current.addEventListener('mouseup', this.handleMouseUp);
-  }
-
-  componentWillUnmount() {
-    // otherwise we get a runtime
-    if (!this.state.mapLoad) return;
-    this.canvasRef.current.removeEventListener(
-      'mousedown',
-      this.handleMouseDown
-    );
-    this.canvasRef.current.removeEventListener(
-      'mousemove',
-      this.handleMouseMove
-    );
-    this.canvasRef.current.removeEventListener('mouseup', this.handleMouseUp);
   }
 
   handleMouseDown = (e) => {
@@ -228,7 +210,14 @@ export class CanvasLayer extends Component {
     return (
       <div>
         {this.state.mapLoad ? (
-          <canvas ref={this.canvasRef} width={650} height={600} />
+          <canvas
+            ref={this.canvasRef}
+            width={650}
+            height={600}
+            onMouseDown={(e) => this.handleMouseDown(e)}
+            onMouseUp={(e) => this.handleMouseUp(e)}
+            onMouseMove={(e) => this.handleMouseMove(e)}
+          />
         ) : (
           <Box my="273.5px">
             <h1>

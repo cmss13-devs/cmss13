@@ -233,7 +233,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 					var/diff = found_item.max_amount - found_item.amount
 					if (stack_item.amount < diff)
 						found_item.amount += stack_item.amount
-						qdel(S)
+						qdel(stack_item)
 					else
 						stack_item.amount -= diff
 						found_item.amount += diff

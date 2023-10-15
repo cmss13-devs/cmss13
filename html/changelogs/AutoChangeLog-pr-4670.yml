@@ -1,0 +1,5 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - balance: "ERTs now have a variant of the standard medkit that has no storage lock."
+  - bugfix: "Lots of ERTs now correctly have a medkit spawning in their gear"

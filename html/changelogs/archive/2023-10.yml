@@ -153,3 +153,38 @@
   - rscadd: origin descriptions are now displayed when selecting an origin
   mullenpaul:
   - ui: tweaked flyby controls to make them in line with other destinations
+2023-10-13:
+  Drathek:
+  - refactor: Refactored camera code to be less blocking, use typechecks less often,
+      and provide somewhat more fluid descriptions to photos.
+2023-10-14:
+  BeagleGaming1:
+  - bugfix: M39 arm brace disables when dropped
+  CapCamIII:
+  - bugfix: UPP Sapper/Medic survivor use their correct paygrade instead of UE3M/UE3S
+  QuickLode:
+  - rscadd: Colony Supervisor now has a guaranteed grant.
+  - balance: nerfs PMC Synthetic's gear
+  - bugfix: PMC Synthetic has corrected access(thx forest)
+  - bugfix: Colony Supervisor can now have access to his own colony(LOL).
+  mullenpaul:
+  - rscadd: adds weapon spawners for USCM, CLF, PMC and UPP
+2023-10-15:
+  Birdtalon:
+  - bugfix: Limb printer can no longer double print or print without metal.
+  Drathek:
+  - ui: Fixed a duplicate Options button
+  Lalipar:
+  - qol: Readable time for when a fax was sent in fax panel
+  - qol: Adds ckey/character name for faxes in fax panel
+  - qol: Adds fax subject to fax panel
+  - bugfix: Added CMB faxes to Fax Panel
+  fira:
+  - bugfix: Fix nuke explosion getting canceled in some very rare cases.
+  - bugfix: Xeno Name preference does not require a reconnection to apply anymore.
+      It still won't change your current Xenomorph's name however.
+  - bugfix: Fixed Tape Recorder failing to record when no language information is
+      present.
+  harryob:
+  - admin: administrators without R_DEBUG can now restart the server without starting
+      the round

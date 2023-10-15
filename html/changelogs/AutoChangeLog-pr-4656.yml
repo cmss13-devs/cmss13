@@ -1,7 +1,0 @@
-author: "Lalipar"
-delete-after: True
-changes:
-  - qol: "Readable time for when a fax was sent in fax panel"
-  - qol: "Adds ckey/character name for faxes in fax panel"
-  - qol: "Adds fax subject to fax panel"
-  - bugfix: "Added CMB faxes to Fax Panel"

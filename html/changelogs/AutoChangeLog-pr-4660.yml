@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Xeno Name preference does not require a reconnection to apply anymore. It still won't change your current Xenomorph's name however."

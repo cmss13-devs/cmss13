@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed the hive surge join as xeno observer alert text link not actually doing anything."

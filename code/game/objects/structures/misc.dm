@@ -204,12 +204,12 @@
 
 /obj/structure/dartboard/get_examine_text()
 	. = ..()
-	if(contents.len)
+	if(length(contents))
 		var/is_are = "is"
-		if(contents.len != 1)
+		if(length(contents) != 1)
 			is_are = "are"
 
-		. += SPAN_NOTICE("There [is_are] [contents.len] item\s embedded into [src].")
+		. += SPAN_NOTICE("There [is_are] [length(contents)] item\s embedded into [src].")
 
 /obj/structure/dartboard/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
@@ -222,7 +222,7 @@
 	collapse()
 
 /obj/structure/dartboard/proc/flush_contents()
-	for(var/atom/movable/embedded_items in contents)
+	for(var/atom/movable/embedded_items as anything in contents)
 		embedded_items.forceMove(loc)
 
 /obj/structure/dartboard/proc/collapse()
@@ -231,7 +231,7 @@
 	qdel(src)
 
 /obj/structure/dartboard/attack_hand(mob/user)
-	if(contents.len)
+	if(length(contents))
 		user.visible_message(SPAN_NOTICE("[user] starts recovering items from [src]..."), SPAN_NOTICE("You start recovering items from [src]..."))
 		if(do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			flush_contents()
@@ -271,13 +271,16 @@
 
 /obj/structure/dartboard/MouseDrop(over_object, src_location, over_location)
 	. = ..()
-	if(over_object == usr && Adjacent(usr))
-		if(!ishuman(usr))
-			return
-		visible_message(SPAN_NOTICE("[usr] unsecures [src]."))
-		var/obj/item/dartboard/unsecured_board = new(loc)
-		usr.put_in_hands(unsecured_board)
-		qdel(src)
+	if(over_object != usr || !Adjacent(usr))
+		return
+		
+	if(!ishuman(usr))
+		return
+
+	visible_message(SPAN_NOTICE("[usr] unsecures [src]."))
+	var/obj/item/dartboard/unsecured_board = new(loc)
+	usr.put_in_hands(unsecured_board)
+	qdel(src)
 
 /obj/item/dartboard
 	name = "dartboard"

@@ -234,9 +234,9 @@
 			continue
 		target_list += possible_target
 		if(!istype(possible_target, /mob/living/carbon/xenomorph))
-			to_chat(possible_target, SPAN_XENO("You hear a strange, alien voice in your head. \"[msg]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[msg]\""))
 		else
-			to_chat(possible_target, SPAN_XENO("You hear the voice of [X] resonate in your head. \"[msg]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [X] resonate in your head. \"[msg]\""))
 	if(!length(target_list))
 		return
 	var/targetstring = english_list(target_list)

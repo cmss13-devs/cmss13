@@ -207,9 +207,9 @@
 	if(msg)
 		log_say("PsychicWhisper: [key_name(X)]->[M.key] : [msg]")
 		if(!istype(M, /mob/living/carbon/xenomorph))
-			to_chat(M, SPAN_XENO("You hear a strange, alien voice in your head. \"[msg]\""))
+			to_chat(M, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[msg]\""))
 		else
-			to_chat(M, SPAN_XENO("You hear the voice of [X] resonate in your head. \"[msg]\""))
+			to_chat(M, SPAN_XENOQUEEN("You hear the voice of [X] resonate in your head. \"[msg]\""))
 		to_chat(X, SPAN_XENONOTICE("You said: \"[msg]\" to [M]"))
 	return ..()
 

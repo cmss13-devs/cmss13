@@ -229,8 +229,7 @@
 					door.name = created_name
 				else
 					door.name = base_name
-				if (istype(door, /obj/structure/machinery/door/airlock/multi_tile))
-					door.update_collision_box()
+				door.handle_multidoor()
 				electronics.forceMove(door)
 				qdel(src)
 				return
@@ -339,6 +338,10 @@
 	update_collision_box()
 	update_icon()
 
+/obj/structure/airlock_assembly/multi_tile/Move()
+	. = ..()
+	update_collision_box()
+
 /obj/structure/airlock_assembly/multi_tile/update_collision_box()
 	if(dir in list(EAST, WEST))
 		bound_width = width * world.icon_size
@@ -346,10 +349,6 @@
 	else
 		bound_width = world.icon_size
 		bound_height = width * world.icon_size
-
-/obj/structure/airlock_assembly/multi_tile/Move()
-	. = ..()
-	update_collision_box()
 
 
 #undef STATE_STANDARD

@@ -13,20 +13,8 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/Initialize()
 	. = ..()
-	update_collision_box()
+	handle_multidoor()
 	update_icon()
-
-/obj/structure/machinery/door/airlock/multi_tile/Move()
-	. = ..()
-	update_collision_box()
-
-/obj/structure/machinery/door/airlock/multi_tile/update_collision_box()
-	if(dir in list(EAST, WEST))
-		bound_width = width * world.icon_size
-		bound_height = world.icon_size
-	else
-		bound_width = world.icon_size
-		bound_height = width * world.icon_size
 
 /obj/structure/machinery/door/airlock/multi_tile/glass
 	name = "Glass Airlock"
@@ -246,10 +234,10 @@
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor()
+	. = ..()
 	if(!(width > 1)) return //Bubblewrap
 
 	update_filler_turfs()
-	update_collision_box()
 
 //We have to find these again since these doors are used on shuttles a lot so the turfs changes
 /obj/structure/machinery/door/airlock/multi_tile/almayer/proc/update_filler_turfs()

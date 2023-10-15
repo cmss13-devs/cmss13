@@ -216,8 +216,9 @@
 	if(pass_flags)
 		pass_flags.flags_can_pass_all = PASS_MOB_IS
 
-/obj/structure/dartboard/get_projectile_hit_boolean(obj/projectile/P)
+/obj/structure/dartboard/get_projectile_hit_boolean(obj/projectile/projectile)
 	. = ..()
+	visible_message(SPAN_DANGER("[projectile] hits [src], collapsing it!"))
 	collapse()
 
 /obj/structure/dartboard/proc/flush_contents()
@@ -241,8 +242,8 @@
 	flush_contents()
 	.  = ..()
 
-/obj/structure/dartboard/hitby(atom/movable/thrown_item)
-	if(!is_type_in_list(thrown_item, list(/obj/item/attachable/bayonet, /obj/item/weapon/dart)))
+/obj/structure/dartboard/hitby(obj/item/thrown_item)
+	if(thrown_item.sharp != IS_SHARP_ITEM_ACCURATE && !istype(thrown_item, /obj/item/weapon/dart))
 		visible_message(SPAN_DANGER("[thrown_item] hits [src], collapsing it!"))
 		collapse()
 		return
@@ -252,16 +253,17 @@
 	var/score = rand(1,21)
 	if(score == 21)
 		visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking the bullseye! 50 points."))
-	else
-		var/band = "single"
-		var/band_number = rand(1,3)
-		score *= band_number
-		switch(band_number)
-			if(DOUBLE_BAND)
-				band = "double"
-			if(TRIPLE_BAND)
-				band = "triple"
-		visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking [band] for [score] points."))
+		return
+
+	var/band = "single"
+	var/band_number = rand(1,3)
+	score *= band_number
+	switch(band_number)
+		if(DOUBLE_BAND)
+			band = "double"
+		if(TRIPLE_BAND)
+			band = "triple"
+	visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking [band] for [score] points."))
 
 /obj/structure/dartboard/attackby(obj/item/item, mob/user)
 	user.visible_message(SPAN_DANGER("[user] hits [src] with [item], collapsing it!"), SPAN_DANGER("You collapse [src] with [item]!"))
@@ -272,7 +274,7 @@
 	if(over_object == usr && Adjacent(usr))
 		if(!ishuman(usr))
 			return
-		visible_message(SPAN_NOTICE("[usr] unsecures the [name]."))
+		visible_message(SPAN_NOTICE("[usr] unsecures [src]."))
 		var/obj/item/dartboard/unsecured_board = new(loc)
 		usr.put_in_hands(unsecured_board)
 		qdel(src)
@@ -286,22 +288,24 @@
 /obj/item/dartboard/attack_self(mob/user)
 	. = ..()
 
-	var/direction = tgui_input_list(user, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
-	if(direction == "Cancel")
+	var/turf_ahead = get_step(user, user.dir)
+	if(!istype(turf_ahead, /turf/closed))
+		to_chat(user, SPAN_WARNING("[src] needs a wall to be secured to!"))
 		return
 
-	var/obj/structure/dartboard/board = new(user.loc)
-	switch(direction)
-		if("North")
-			board.pixel_y = 32
-		if("East")
-			board.pixel_x = 32
-		if("South")
-			board.pixel_y = -32
-		if("West")
-			board.pixel_x = -32
-		else
-			return
+	var/obj/structure/dartboard/secured_board = new(user.loc)
+	switch(user.dir)
+		if(NORTH)
+			secured_board.pixel_y = 32
+		if(EAST)
+			secured_board.pixel_x = 32
+		if(SOUTH)
+			secured_board.pixel_y = -32
+		if(WEST)
+			secured_board.pixel_x = -32
 
-	to_chat(user, SPAN_NOTICE("You secure [board]."))
+	to_chat(user, SPAN_NOTICE("You secure [secured_board] to [turf_ahead]."))
 	qdel(src)
+
+#undef DOUBLE_BAND
+#undef TRIPLE_BAND

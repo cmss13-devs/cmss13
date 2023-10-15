@@ -129,6 +129,9 @@ export const DropshipDestinationSelection = (_, context) => {
           selected={siteselection}
           onClick={(value) => {
             setSiteSelection(value);
+            if (data.flight_configuration === 'flyby') {
+              act('set-ferry');
+            }
             act('button-push');
           }}
         />
@@ -190,26 +193,19 @@ const FlybyControl = (props, context) => {
       className="flybyControl"
       buttons={
         <>
-          {data.flight_configuration === 'flyby' && (
-            <Button icon="road" onClick={() => act('set-ferry')}>
-              Set ferry
-            </Button>
-          )}
-          {data.has_flyby_skill === 1 && data.flight_configuration === 'ferry' && (
-            <Button icon="jet-fighter" onClick={() => act('set-flyby')}>
-              Set flyby
+          {data.has_flyby_skill === 1 && data.shuttle_mode === 'idle' && (
+            <Button
+              color="red"
+              icon="jet-fighter"
+              onClick={() => {
+                act('set-flyby');
+                act('move', { target: null });
+              }}>
+              Launch Flyby
             </Button>
           )}
           {data.has_flyby_skill === 1 && data.shuttle_mode === 'called' && (
             <Button onClick={() => act('cancel-flyby')}>cancel flyby</Button>
-          )}
-          {data.has_flyby_skill === 1 && data.shuttle_mode === 'idle' && (
-            <Button
-              icon="rocket"
-              disabled={data.flight_configuration === 'ferry'}
-              onClick={() => act('move')}>
-              Launch
-            </Button>
           )}
         </>
       }
@@ -321,10 +317,7 @@ const RenderScreen = (props, context) => {
         (data.shuttle_mode === 'idle' || data.shuttle_mode === 'called') && (
           <FlybyControl />
         )}
-      {data.shuttle_mode === 'idle' &&
-        data.flight_configuration !== 'flyby' && (
-          <DropshipDestinationSelection />
-        )}
+      {data.shuttle_mode === 'idle' && <DropshipDestinationSelection />}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'pre-arrival' && <TouchdownCooldown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}

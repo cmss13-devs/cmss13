@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed xeno cultists always being created into normal hive, irrespective of the selected hive."

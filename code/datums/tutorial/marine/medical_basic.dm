@@ -165,9 +165,6 @@
 	. = ..()
 	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial/fed)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cryopod/tutorial, tutorial_pod)
-	tutorial_pod.go_in_cryopod(tutorial_mob, TRUE, FALSE)
-
 
 /datum/tutorial/marine/medical_basic/init_map()
 	new /obj/structure/surface/table/almayer(loc_from_corner(0, 4))

@@ -39,7 +39,8 @@
 		msg_admin_niche("[key]/[ckey] has tried to transfer to deleted [new_character].")
 		return
 
-	SEND_SIGNAL(current.client, COMSIG_CLIENT_MIND_TRANSFER, new_character)
+	if(current.client)
+		SEND_SIGNAL(current.client, COMSIG_CLIENT_MIND_TRANSFER, new_character)
 
 	if(current)
 		current.mind = null //remove ourself from our old body's mind variable

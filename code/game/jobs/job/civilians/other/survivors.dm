@@ -69,10 +69,6 @@
 
 /datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/survivor)
 	if(intro_text)
-		if(hostile)
-			to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM!"))
-		else
-			to_chat(survivor, SPAN_XENOHIGHDANGER("You are NON-HOSTILE to the USCM!"))
 		for(var/line in intro_text)
 			to_chat(survivor, line)
 	else
@@ -86,6 +82,11 @@
 		survivor.mind.memory += story_text
 	else
 		tell_survivor_story(survivor)
+
+	if(hostile)
+		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM!"))
+	else
+		to_chat(survivor, SPAN_XENOHIGHDANGER("You are NON-HOSTILE to the USCM!"))
 
 /datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/H)
 	var/list/survivor_story = list(

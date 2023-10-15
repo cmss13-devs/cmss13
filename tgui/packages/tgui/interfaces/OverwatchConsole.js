@@ -100,7 +100,7 @@ const SquadPanel = (props, context) => {
       </Tabs>
       {category === 'monitor' && <SquadMonitor />}
       {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
-      {category === 'ob' && <OrbitalBombardment />}
+      {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
     </>
   );
 };

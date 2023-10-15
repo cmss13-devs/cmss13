@@ -165,6 +165,7 @@
 
 	S["synth_name"] >> synthetic_name
 	S["synth_type"] >> synthetic_type
+	S["synth_manufacturer"] >> synth_manufacturer
 	S["pred_name"] >> predator_name
 	S["pred_gender"] >> predator_gender
 	S["pred_age"] >> predator_age
@@ -242,6 +243,7 @@
 	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
 	tooltips = sanitize_integer(tooltips, FALSE, TRUE, TRUE)
 
+	if(isnull(synth_manufacturer)) synth_manufacturer = initial(synth_manufacturer)
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
@@ -353,6 +355,7 @@
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type
+	S["synth_manufacturer"] << synth_manufacturer
 	S["pred_name"] << predator_name
 	S["pred_gender"] << predator_gender
 	S["pred_age"] << predator_age

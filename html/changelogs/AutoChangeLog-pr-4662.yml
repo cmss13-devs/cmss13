@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "The Turing Machine should now keep working as intended if its linked Smartfridge is blown up."

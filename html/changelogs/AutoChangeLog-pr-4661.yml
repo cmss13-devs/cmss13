@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed issues with turfs, notably lighting, arising when building it from a sheets stack."

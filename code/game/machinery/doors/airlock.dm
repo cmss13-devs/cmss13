@@ -866,7 +866,3 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
 	take_damage(damage, xeno)
 	return TAILSTAB_COOLDOWN_NORMAL
-
-//Used for overloading with multi_tile doors
-/obj/structure/machinery/door/airlock/proc/update_collision_box()
-	return

@@ -77,10 +77,10 @@
 			to_chat(user, SPAN_NOTICE("The airlock is not secured!"))
 			return
 		if(state != STATE_STANDARD)
-			to_chat(user, SPAN_NOTICE("You can'input_text add in the glass with the circuit already in!"))
+			to_chat(user, SPAN_NOTICE("You can't add in the glass with the circuit already in!"))
 			return
 		if(glass == AIRLOCK_GLASSIN)
-			to_chat(user, SPAN_NOTICE("You can'input_text add more glass to \the [src]!"))
+			to_chat(user, SPAN_NOTICE("You can't add more glass to \the [src]!"))
 			return
 		if(glass == AIRLOCK_CANTGLASS)
 			to_chat(user, SPAN_NOTICE("\The [src] has no slots to install glass!"))

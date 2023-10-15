@@ -572,6 +572,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/targeted_ztrait = ZTRAIT_GROUND
 	var/atom/owner
 
+	/// tacmap holder for holding the minimap
+	var/datum/tacmap_holder/map_holder
+
+	/// A url that will point to the wiki map for the current map as a fall back image
 	var/static/wiki_map_fallback
 
 	/// color selection for the tactical map canvas, defaults to black.
@@ -581,23 +585,14 @@ SUBSYSTEM_DEF(minimaps)
 	var/canvas_cooldown_time = 4 MINUTES
 	var/flatten_map_cooldown_time = 3 MINUTES
 
-	/// flatten cooldown for xenos,queen,marines. Cic has their own that is globally defined.
-	COOLDOWN_DECLARE(flatten_map_cooldown)
-
-	/// tacmap holder for holding the minimap
-	var/datum/tacmap_holder/map_holder
-
 	/// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
-
 	/// current flattend map
-	var/datum/flattend_tacmap_png/new_current_map = new
-
+	var/datum/flattend_tacmap_png/new_current_map
 	/// previous flattened map
-	var/datum/flattend_tacmap_png/old_map = new
-
+	var/datum/flattend_tacmap_png/old_map
 	/// current svg
-	var/datum/svg_overlay/current_svg = new
+	var/datum/svg_overlay/current_svg
 
 	var/action_queue_change = 0
 
@@ -623,18 +618,21 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/Destroy()
 	map_holder = null
 	owner = null
+	new_current_map = null
+	old_map = null
+	current_svg = null
 	return ..()
 
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
-	if(user.faction == FACTION_NEUTRAL && isobserver(user))
+	if(faction == FACTION_NEUTRAL && isobserver(user))
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
-	if(faction == FACTION_MARINE || faction == XENO_HIVE_NORMAL)
-		new_current_map = get_unannounced_tacmap_data_png(faction)
-		old_map = get_tacmap_data_png(faction)
-		current_svg = get_tacmap_data_svg(faction)
+
+	new_current_map = get_unannounced_tacmap_data_png(faction)
+	old_map = get_tacmap_data_png(faction)
+	current_svg = get_tacmap_data_svg(faction)
 
 	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || is_xeno
 
@@ -744,7 +742,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/mob/user = ui.user
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/faction = istype(xeno) ? xeno.hivenumber : user.faction
-	if(user.faction == FACTION_NEUTRAL && isobserver(user))
+	if(faction == FACTION_NEUTRAL && isobserver(user))
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 
 	switch (action)

@@ -116,6 +116,9 @@
 	var/mob/living/carbon/human/human_owner = owner
 	var/turf/wearer_turf = get_turf(owner)
 	SSminimaps.remove_marker(owner)
+	if(!wearer_turf)
+		return
+
 	if(!isyautja(owner))
 		if(owner.stat >= DEAD)
 			if(human_owner.undefibbable)

@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fix nuke explosion getting canceled in some very rare cases."

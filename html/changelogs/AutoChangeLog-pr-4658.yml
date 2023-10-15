@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - ui: "Fixed a duplicate Options button"

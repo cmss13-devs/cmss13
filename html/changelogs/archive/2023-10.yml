@@ -169,3 +169,22 @@
   - bugfix: Colony Supervisor can now have access to his own colony(LOL).
   mullenpaul:
   - rscadd: adds weapon spawners for USCM, CLF, PMC and UPP
+2023-10-15:
+  Birdtalon:
+  - bugfix: Limb printer can no longer double print or print without metal.
+  Drathek:
+  - ui: Fixed a duplicate Options button
+  Lalipar:
+  - qol: Readable time for when a fax was sent in fax panel
+  - qol: Adds ckey/character name for faxes in fax panel
+  - qol: Adds fax subject to fax panel
+  - bugfix: Added CMB faxes to Fax Panel
+  fira:
+  - bugfix: Fix nuke explosion getting canceled in some very rare cases.
+  - bugfix: Xeno Name preference does not require a reconnection to apply anymore.
+      It still won't change your current Xenomorph's name however.
+  - bugfix: Fixed Tape Recorder failing to record when no language information is
+      present.
+  harryob:
+  - admin: administrators without R_DEBUG can now restart the server without starting
+      the round

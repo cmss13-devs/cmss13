@@ -83,7 +83,7 @@ export class CanvasLayer extends Component {
 
     if (this.lastX !== null && this.lastY !== null) {
       // this controls how often we make new strokes
-      if (Math.abs(this.lastX - x) + Math.abs(this.lastY - y) < 25) {
+      if (Math.abs(this.lastX - x) + Math.abs(this.lastY - y) < 20) {
         return;
       }
 

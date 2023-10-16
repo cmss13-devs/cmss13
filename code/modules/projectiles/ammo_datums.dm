@@ -902,7 +902,7 @@
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"
 	damage = 30
-	var/holo_stacks = 10
+	var/holo_stacks = 20
 
 /datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()

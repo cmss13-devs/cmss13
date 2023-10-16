@@ -41,7 +41,7 @@ export const CancelLaunchButton = (_, context) => {
 
 export const LaunchButton = (_, context) => {
   const { act } = useBackend<NavigationProps>(context);
-  const [siteselection] = useSharedState<string | undefined>(
+  const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     context,
     'target_site',
     undefined
@@ -50,7 +50,10 @@ export const LaunchButton = (_, context) => {
     <Button
       icon="rocket"
       disabled={siteselection === undefined}
-      onClick={() => act('move', { target: siteselection })}>
+      onClick={() => {
+        act('move', { target: siteselection });
+        setSiteSelection(undefined);
+      }}>
       Launch
     </Button>
   );

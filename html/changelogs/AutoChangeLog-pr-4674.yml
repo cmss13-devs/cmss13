@@ -1,8 +1,0 @@
-author: "Zonespace, Wei (sprites)"
-delete-after: True
-changes:
-  - balance: "Removed NSG, Type71, tactical Mar-40, and Mar-50 from the black market"
-  - balance: "Removed Ext. M4ra mags from the black market"
-  - balance: "Removed monkeycubes from the black market"
-  - balance: "Removed lunge mines from the black market"
-  - balance: "You now need a modified security access tuner to access the black market, which can be found ship- and ground-side where scanners and radios can spawn."

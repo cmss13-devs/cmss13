@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed 'Join as Freed Mob' verb crashing if freed mobs had previously been deleted."

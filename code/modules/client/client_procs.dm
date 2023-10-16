@@ -164,6 +164,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
 
+	else if(href_list["tacmaps_panel"])
+		GLOB.tacmap_admin_panel.tgui_interact(mob)
+
 	else if(href_list["MapView"])
 		if(isxeno(mob))
 			return

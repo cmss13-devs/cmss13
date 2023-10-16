@@ -348,9 +348,9 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/map_list
 
 	if(faction == FACTION_MARINE)
-		map_list = GLOB.uscm_flat_tacmap_png_asset
+		map_list = GLOB.uscm_flat_tacmap_data
 	else if(faction == XENO_HIVE_NORMAL)
-		map_list = GLOB.xeno_flat_tacmap_png_asset
+		map_list = GLOB.xeno_flat_tacmap_data
 	else
 		return null
 
@@ -385,9 +385,9 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/map_list
 
 	if(faction == FACTION_MARINE)
-		map_list = GLOB.uscm_svg_overlay
+		map_list = GLOB.uscm_svg_tacmap_data
 	else if(faction == XENO_HIVE_NORMAL)
-		map_list = GLOB.xeno_svg_overlay
+		map_list = GLOB.xeno_svg_tacmap_data
 	else
 		return null
 
@@ -433,8 +433,9 @@ SUBSYSTEM_DEF(minimaps)
 		else if(client_mob.faction == faction)
 			faction_clients += client
 
-	var/flat_tacmap_png = icon2html(flat_map, faction_clients, sourceonly = TRUE)
-	var/datum/flattend_tacmap_png/new_flat = new(flat_tacmap_png)
+	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
+	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
+	var/datum/flattend_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
 
 	if(faction == FACTION_MARINE)
 		GLOB.uscm_unannounced_map = new_flat
@@ -449,14 +450,15 @@ SUBSYSTEM_DEF(minimaps)
  * Arguments:
  * * faction: which faction to save the data for: FACTION_MARINE or XENO_HIVE_NORMAL
  * * svg_coords: an array of coordinates corresponding to an svg.
+ * * ckey: the ckey of the user who submitted this
  */
-/datum/tacmap/proc/store_current_svg_coords(faction, svg_coords)
-	var/datum/svg_overlay/svg_store_overlay = new(svg_coords)
+/datum/tacmap/proc/store_current_svg_coords(faction, svg_coords, ckey)
+	var/datum/svg_overlay/svg_store_overlay = new(svg_coords, ckey)
 
 	if(faction == FACTION_MARINE)
-		GLOB.uscm_svg_overlay += svg_store_overlay
+		GLOB.uscm_svg_tacmap_data += svg_store_overlay
 	else if(faction == XENO_HIVE_NORMAL)
-		GLOB.xeno_svg_overlay += svg_store_overlay
+		GLOB.xeno_svg_tacmap_data += svg_store_overlay
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
@@ -588,9 +590,9 @@ SUBSYSTEM_DEF(minimaps)
 	/// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
 	/// current flattend map
-	var/datum/flattend_tacmap_png/new_current_map
+	var/datum/flattend_tacmap/new_current_map
 	/// previous flattened map
-	var/datum/flattend_tacmap_png/old_map
+	var/datum/flattend_tacmap/old_map
 	/// current svg
 	var/datum/svg_overlay/current_svg
 
@@ -791,11 +793,11 @@ SUBSYSTEM_DEF(minimaps)
 				return FALSE
 
 			if(faction == FACTION_MARINE)
-				GLOB.uscm_flat_tacmap_png_asset += new_current_map
+				GLOB.uscm_flat_tacmap_data += new_current_map
 			else if(faction == XENO_HIVE_NORMAL)
-				GLOB.xeno_flat_tacmap_png_asset += new_current_map
+				GLOB.xeno_flat_tacmap_data += new_current_map
 
-			store_current_svg_coords(faction, params["image"])
+			store_current_svg_coords(faction, params["image"], user)
 			current_svg = get_tacmap_data_svg(faction)
 			old_map = get_tacmap_data_png(faction)
 
@@ -815,7 +817,7 @@ SUBSYSTEM_DEF(minimaps)
 				notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_XENO_TACMAP, enter_link = "xeno_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
 
 			toolbar_updated_selection = toolbar_color_selection
-			message_admins("[key_name(user)] has updated the tactical map for [faction]")
+			message_admins("[key_name(user)] has updated the <a href='?tacmaps_panel=1'>tactical map</a> for [faction].")
 			updated_canvas = FALSE
 
 	return TRUE
@@ -856,17 +858,27 @@ SUBSYSTEM_DEF(minimaps)
 	map = null
 	return ..()
 
-/datum/flattend_tacmap_png
+/datum/flattend_tacmap
 	var/flat_tacmap
+	var/asset_key
+	var/time
 
-/datum/flattend_tacmap_png/New(flat_tacmap)
+/datum/flattend_tacmap/New(flat_tacmap, asset_key)
 	src.flat_tacmap = flat_tacmap
+	src.asset_key = asset_key
+	src.time = time_stamp()
 
 /datum/svg_overlay
 	var/svg_data
+	var/ckey
+	var/name
+	var/time
 
-/datum/svg_overlay/New(svg_data)
+/datum/svg_overlay/New(svg_data, mob/user)
 	src.svg_data = svg_data
+	src.ckey = user?.persistent_ckey
+	src.name = user?.real_name
+	src.time = time_stamp()
 
 /// Callback when timer indicates the tacmap is flattenable now
 /datum/tacmap/proc/on_tacmap_fire(faction)

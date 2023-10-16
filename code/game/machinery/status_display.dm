@@ -78,7 +78,7 @@
 			return 1
 		if(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME) //emergency shuttle timer
 			message1 = "EVAC"
-			message2 = SShijack.get_status_panel_eta()
+			message2 = SShijack.get_evac_eta()
 			if(message2)
 				if(length(message2) > CHARS_PER_LINE) message2 = "Error"
 				update_display(message1, message2)

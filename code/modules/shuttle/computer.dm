@@ -301,6 +301,10 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
 					return
 
+				if(SShijack.current_progress < SShijack.early_launch_required_progress)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
+					return
+
 				if(tgui_alert(user, "Early launch the lifeboat?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
 					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Early launch accepted\"."))
 					lifeboat.evac_launch()

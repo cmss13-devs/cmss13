@@ -83,7 +83,7 @@
 
 	data["evac_status"] = SShijack.evac_status
 	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
-		data["evac_eta"] = SShijack.get_status_panel_eta()
+		data["evac_eta"] = SShijack.get_evac_eta()
 
 	if(!messagetitle.len)
 		data["messages"] = null

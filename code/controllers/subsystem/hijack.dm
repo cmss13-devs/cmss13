@@ -16,7 +16,7 @@
 SUBSYSTEM_DEF(hijack)
 	name   = "Hijack"
 	wait   = 2 SECONDS
-	flags  = SS_NO_INIT | SS_KEEP_TIMING
+	flags  = SS_KEEP_TIMING
 	priority   = SS_PRIORITY_HIJACK
 
 	///Required progress to evacuate safely via lifeboats
@@ -24,6 +24,9 @@ SUBSYSTEM_DEF(hijack)
 
 	///Current progress towards evacuating safely via lifeboats
 	var/current_progress = 0
+
+	/// How much progress is required to early launch
+	var/early_launch_required_progress = 25
 
 	///The estimated time left to get to the safe evacuation point
 	var/estimated_time_left = 0
@@ -55,8 +58,33 @@ SUBSYSTEM_DEF(hijack)
 	///Whether or not evacuation has been disabled by admins
 	var/evac_admin_denied = FALSE
 
-	///Whether or not self destruct has been disabled by admins
-	//var/evac_self_destruct_denied = FALSE // Re-enable for SD stuff - Morrow
+	/// If TRUE, self destruct has been unlocked and is possible with a hold of reactor
+	var/sd_unlocked = FALSE
+
+	/// Admin var to manually prevent self destruct from occurring
+	var/admin_sd_blocked = FALSE
+
+	/// Maximum amount of fusion generators that can be overloaded at once for a time benefit
+	var/maximum_overload_generators = 18
+
+	/// How many generators are currently overloaded
+	var/overloaded_generators = 0
+
+	/// How long the manual self destruct will take on the high end
+	var/sd_max_time = 15 MINUTES
+
+	/// How long the manual self destruct will take on the low end
+	var/sd_min_time = 5 MINUTES
+
+	/// How much time left until SD detonates
+	var/sd_time_remaining = 0
+
+	/// If the self destruct has/is detonating
+	var/sd_detonated = FALSE
+
+/datum/controller/subsystem/hijack/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 
 /datum/controller/subsystem/hijack/stat_entry(msg)
 	if(!SSticker?.mode?.is_in_endgame)
@@ -67,7 +95,7 @@ SUBSYSTEM_DEF(hijack)
 		msg = " Complete"
 		return ..()
 
-	msg = " Progress: [current_progress] | Last run: [last_run_progress_change]"
+	msg = " Progress: [current_progress]% | SD Time: [sd_time_remaining / 10] | Last run: [last_run_progress_change]"
 	return ..()
 
 /datum/controller/subsystem/hijack/fire(resumed = FALSE)
@@ -80,6 +108,12 @@ SUBSYSTEM_DEF(hijack)
 	if(current_progress >= required_progress)
 		if(hijack_status < HIJACK_OBJECTIVES_COMPLETE)
 			hijack_status = HIJACK_OBJECTIVES_COMPLETE
+
+		if(sd_unlocked && overloaded_generators)
+			sd_time_remaining -= wait
+			if((sd_time_remaining <= 0) && !sd_detonated)
+				detonate_sd()
+
 		return
 
 	if(!resumed)
@@ -172,16 +206,18 @@ SUBSYSTEM_DEF(hijack)
 
 	switch(announce)
 		if(1)
-			marine_announcement("Emergency fuel replenishment at 25 percent.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment at 25 percent. Lifeboat emergency early launch now available.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(2)
 			marine_announcement("Emergency fuel replenishment at 50 percent.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(3)
 			marine_announcement("Emergency fuel replenishment at 75 percent.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(4)
 			marine_announcement("Emergency fuel replenishment at 100 percent. Safe utilization of lifeboats now possible.", HIJACK_ANNOUNCE)
+			if(!admin_sd_blocked)
+				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
 
 /// Passes the ETA for status panels
-/datum/controller/subsystem/hijack/proc/get_status_panel_eta()
+/datum/controller/subsystem/hijack/proc/get_evac_eta()
 	switch(hijack_status)
 		if(HIJACK_OBJECTIVES_STARTED)
 			if(estimated_time_left == INFINITY)
@@ -191,7 +227,14 @@ SUBSYSTEM_DEF(hijack)
 		if(HIJACK_OBJECTIVES_COMPLETE)
 			return "Complete"
 
+/datum/controller/subsystem/hijack/proc/get_sd_eta()
+	if(!sd_time_remaining)
+		return "Complete"
 
+	if(overloaded_generators <= 0)
+		return "Never"
+
+	return "[duration2text_sec(sd_time_remaining)]"
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ EVAC STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
@@ -240,18 +283,89 @@ SUBSYSTEM_DEF(hijack)
 			lifeboat.status = LIFEBOAT_INACTIVE
 
 
+/// Once refueling is done, marines can optionally hold SD for a time for a stalemate instead of a xeno minor
+/datum/controller/subsystem/hijack/proc/unlock_self_destruct()
+	sd_time_remaining = sd_max_time
+	sd_unlocked = TRUE
+	marine_announcement("Fuel reserves full. Manual detonation of fuel reserves by overloading the on-board fusion reactors now possible.", HIJACK_ANNOUNCE)
+
+/datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/fusion_engine/source, new_overloading)
+	SIGNAL_HANDLER
+
+	adjust_generator_overload_count(new_overloading ? 1 : -1)
+
+/datum/controller/subsystem/hijack/proc/adjust_generator_overload_count(amount = 1)
+	var/generator_overload_percent = round(overloaded_generators / maximum_overload_generators, 0.01)
+	var/old_required_time = sd_min_time + ((1 - generator_overload_percent) * (sd_max_time - sd_min_time))
+	var/percent_completion_remaining = sd_time_remaining / old_required_time
+	overloaded_generators = clamp(overloaded_generators + amount, 0, maximum_overload_generators)
+	generator_overload_percent = round(overloaded_generators / maximum_overload_generators, 0.01)
+	var/new_required_time = sd_min_time + ((1 - generator_overload_percent) * (sd_max_time - sd_min_time))
+	sd_time_remaining = percent_completion_remaining * new_required_time
 
 
-/* - Morrow
+/datum/controller/subsystem/hijack/proc/detonate_sd()
+	set waitfor = FALSE
+	sd_detonated = TRUE
+	marine_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.")
+	sleep(5 SECONDS)
 
-To do:
+	var/sound_picked = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+	for(var/client/player as anything in GLOB.clients)
+		playsound_client(player, sound_picked, 90)
 
-Self destruct code
-	Thinking something like finish main objectives and then can blow fuel resevoir as a "self destruct" via engineering and a hold
+	var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
+	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
+	for(var/mob/current_mob as anything in GLOB.mob_list) //This only does something cool for the people about to die, but should prove pretty interesting.
+		if(!current_mob?.loc)
+			continue //In case something changes when we sleep().
+
+		if(current_mob.stat == DEAD)
+			dead_mobs |= current_mob
+			continue
+
+		var/turf/current_turf = get_turf(current_mob)
+		if(is_mainship_level(current_turf.z))
+			alive_mobs |= current_mob
+			shake_camera(current_mob, 110, 4)
 
 
-Testing:
+	sleep(10 SECONDS)
+	/*Hardcoded for now, since this was never really used for anything else.
+	Would ideally use a better system for showing cutscenes.*/
+	var/atom/movable/screen/cinematic/explosion/explosive_cinematic = new()
+
+	for(var/mob/current_mob as anything in (alive_mobs + dead_mobs))
+		if(current_mob?.loc && current_mob.client)
+			current_mob.client.add_to_screen(explosive_cinematic)  //They may have disconnected in the mean time.
+
+	sleep(1.5 SECONDS) //Extra 1.5 seconds to look at the ship.
+	flick("intro_nuke", explosive_cinematic)
+
+	sleep(3.5 SECONDS)
+	for(var/mob/current_mob as anything in alive_mobs)
+		if(current_mob?.loc) //Who knows, maybe they escaped, or don't exist anymore.
+			var/turf/current_mob_turf = get_turf(current_mob)
+			if(is_mainship_level(current_mob_turf.z))
+				if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+					continue
+				current_mob.death(create_cause_data("nuclear explosion"))
+			else
+				current_mob.client.remove_from_screen(explosive_cinematic) //those who managed to escape the z level at last second shouldn't have their view obstructed.
+
+	flick("ship_destroyed", explosive_cinematic)
+	explosive_cinematic.icon_state = "summary_destroyed"
+
+	for(var/client/player as anything in GLOB.clients)
+		playsound_client(player, 'sound/effects/explosionfar.ogg', 90)
 
 
+	sleep(5)
+	if(SSticker.mode)
+		SSticker.mode.check_win()
 
-*/
+	if(!SSticker.mode) //Just a safety, just in case a mode isn't running, somehow.
+		to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
+		sleep(30 SECONDS)
+		log_game("Rebooting due to nuclear detonation.")
+		world.Reboot()

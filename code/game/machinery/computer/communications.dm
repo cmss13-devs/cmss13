@@ -322,7 +322,7 @@
 	user.set_interaction(src)
 	var/dat = "<head><title>Communications Console</title></head><body>"
 	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
-		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [SShijack.get_status_panel_eta()]<BR>"
+		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [SShijack.get_evac_eta()]<BR>"
 	switch(state)
 		if(STATE_DEFAULT)
 			if(authenticated)

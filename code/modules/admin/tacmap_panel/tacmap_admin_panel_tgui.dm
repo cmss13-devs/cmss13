@@ -133,7 +133,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 			else
 				if(xeno_selection == -1)
 					return TRUE
-				selected_svg = GLOB.uscm_svg_tacmap_data[xeno_selection + 1]
+				selected_svg = GLOB.xeno_svg_tacmap_data[xeno_selection + 1]
 			selected_svg.svg_data = null
 			last_update_time = world.time
 			message_admins("[key_name_admin(usr)] deleted the <a href='?tacmaps_panel=1'>tactical map drawing</a> by [selected_svg.ckey].")

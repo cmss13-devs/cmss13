@@ -2274,10 +2274,17 @@
 	shell_speed = AMMO_SPEED_TIER_1 // Slightly faster
 	hit_effect_color = "#FFFF00"
 
-/datum/ammo/energy/taser/on_hit_mob(mob/M, obj/projectile/P)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.disable_special_items() // Disables scout cloak
+/datum/ammo/energy/taser/on_hit_mob(mob/morbius, obj/projectile/P)
+	if(ishuman(morbius))
+		var/mob/living/carbon/human/humanus = morbius
+		humanus.disable_special_items() // Disables scout cloak
+		if(!isyautja(humanus) && !issynth(humanus))
+			humanus.make_jittery(40)
+
+	if(isxeno(morbius))
+		var/mob/living/carbon/xenomorph/xenoids = morbius
+		xenoids.apply_effect(2, SLOW)
+		xenoids.xeno_jitter(1 SECONDS)
 
 /datum/ammo/energy/taser/precise
 	name = "precise taser bolt"

@@ -297,12 +297,13 @@ const DrawMapPanel = (props, context) => {
               <ProgressBar
                 height="20px"
                 value={timeLeftPct}
+                backgroundColor="rgba(0, 0, 0, 0.5)"
                 ranges={{
                   good: [-Infinity, 0.33],
                   average: [0.33, 0.67],
                   bad: [0.67, Infinity],
                 }}>
-                <Box textAlign="center" fontSize="15px">
+                <Box textAlign="center" fontSize="15px" textColor="white">
                   {Math.ceil(data.canvasCooldown / 10)} seconds until the canvas
                   changes can be updated
                 </Box>

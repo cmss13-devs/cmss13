@@ -28,7 +28,7 @@
 	if(announcement_faction == FACTION_MARINE)
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
-		tacmap = new(src, minimap_type)
+		tacmap = new(src, minimap_type) // Non-drawing version
 
 	return ..()
 

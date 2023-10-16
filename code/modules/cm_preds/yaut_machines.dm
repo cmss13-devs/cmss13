@@ -6,11 +6,7 @@
 	breakable = FALSE
 
 	minimap_type = MINIMAP_FLAG_ALL
-
-/obj/structure/machinery/prop/almayer/CICmap/yautja/Initialize()
-	. = ..()
-	qdel(map)
-	map = new(src, minimap_type) // Non-drawing version
+	faction = FACTION_YAUTJA
 
 /obj/structure/machinery/autolathe/yautja
 	name = "yautja autolathe"

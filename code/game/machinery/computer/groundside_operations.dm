@@ -25,7 +25,10 @@
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
-	tacmap = new /datum/tacmap/drawing(src, minimap_type)
+	if(announcement_faction == FACTION_MARINE)
+		tacmap = new /datum/tacmap/drawing(src, minimap_type)
+	else
+		tacmap = new(src, minimap_type)
 
 	return ..()
 
@@ -331,11 +334,6 @@
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_UPP
 
-/obj/structure/machinery/computer/groundside_operations/upp/Initialize()
-	. = ..()
-	qdel(tacmap)
-	tacmap = new(src, minimap_type) // Non-drawing version
-
 /obj/structure/machinery/computer/groundside_operations/clf
 	announcement_title = CLF_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_CLF
@@ -344,19 +342,9 @@
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_CLF
 
-/obj/structure/machinery/computer/groundside_operations/clf/Initialize()
-	. = ..()
-	qdel(tacmap)
-	tacmap = new(src, minimap_type) // Non-drawing version
-
 /obj/structure/machinery/computer/groundside_operations/pmc
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_PMC
-
-/obj/structure/machinery/computer/groundside_operations/pmc/Initialize()
-	. = ..()
-	qdel(tacmap)
-	tacmap = new(src, minimap_type) // Non-drawing version

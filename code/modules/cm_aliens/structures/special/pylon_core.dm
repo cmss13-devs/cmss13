@@ -148,7 +148,7 @@
 		if(hijack_delete)
 			return ..()
 
-		marine_announcement("ALERT.\n\nEnergy build up around communication relay at [get_area(src)] halted.", "[MAIN_AI_SYSTEM] Biological Scanner")
+		marine_announcement("ВНИМАНИЕ.\n\nЭнергетический всплеск вблизи коммуникационного реле в [get_area(src)] ОСТАНОВЛЕН.", "[MAIN_AI_SYSTEM] Biological Scanner")
 
 		for(var/hivenumber in GLOB.hive_datum)
 			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
@@ -164,7 +164,7 @@
 
 /// Checks if all comms towers are connected and then starts end game content on all pylons if they are
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
-	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays at [get_area(src)], biological hazard detected.\n\nDANGER: Hazard is generating new xenomorph entities, advise urgent termination of hazard by ground forces.", "[MAIN_AI_SYSTEM] Biological Scanner")
+	marine_announcement("ВНИМАНИЕ.\n\nОбнаружен иррегулярный всплеск энергии вблизи коммуникационного реле в [get_area(src)], подтверждена биологическая угроза.\n\nОПАСНОСТЬ: Объект формирует новые ксено-организмы, рекомендация к немедленному устранению угрозы наземными силами.", "[MAIN_AI_SYSTEM] Biological Scanner")
 
 	for(var/hivenumber in GLOB.hive_datum)
 		var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
@@ -179,8 +179,8 @@
 	activated = TRUE
 	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
-#define ENDGAME_LARVA_CAP_MULTIPLIER 0.4
-#define LARVA_ADDITION_MULTIPLIER 0.10
+#define ENDGAME_LARVA_CAP_MULTIPLIER 0.3
+#define LARVA_ADDITION_MULTIPLIER 0.05
 
 /// Looped proc via timer to give larva after time
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
@@ -189,7 +189,7 @@
 
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
-/*
+
 	var/list/hive_xenos = linked_hive.totalXenos
 
 	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
@@ -197,14 +197,15 @@
 			hive_xenos -= xeno
 
 	var/real_total_xeno_count = length(hive_xenos) + linked_hive.stored_larva
+	var/total_human_count = length(GLOB.alive_human_list)
 
-	if(real_total_xeno_count > (length(GLOB.alive_human_list) * ENDGAME_LARVA_CAP_MULTIPLIER))
+	if(real_total_xeno_count > (total_human_count * ENDGAME_LARVA_CAP_MULTIPLIER))
 		return
 
-	linked_hive.partial_larva += real_total_xeno_count * LARVA_ADDITION_MULTIPLIER
+	linked_hive.partial_larva += total_human_count * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
-*/
+
 #undef ENDGAME_LARVA_CAP_MULTIPLIER
 #undef LARVA_ADDITION_MULTIPLIER
 

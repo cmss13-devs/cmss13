@@ -103,10 +103,12 @@
 
 /datum/techtree/proc/set_points(number)
 	points = max(number, 0)
+	points = round(points, 0.1)
 
 /datum/techtree/proc/add_points(number)
 	set_points(points + (number * points_mult))
 	total_points += number * points_mult
+	total_points = round(total_points, 0.1)
 
 /datum/techtree/proc/spend_points(number)
 	set_points(points - number)

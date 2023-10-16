@@ -93,6 +93,9 @@ const SquadPanel = (props, context) => {
           onClick={() => setCategory('ob')}>
           Orbital Bombardment
         </Tabs.Tab>
+        <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
+          Tactical Map
+        </Tabs.Tab>
       </Tabs>
       {category === 'monitor' && <SquadMonitor />}
       {category === 'supply' && data.can_launch_crates && <SupplyDrop />}

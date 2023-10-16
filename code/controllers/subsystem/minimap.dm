@@ -459,6 +459,9 @@ SUBSYSTEM_DEF(minimaps)
 		GLOB.uscm_svg_tacmap_data += svg_store_overlay
 	else if(faction == XENO_HIVE_NORMAL)
 		GLOB.xeno_svg_tacmap_data += svg_store_overlay
+	else
+		qdel(svg_store_overlay)
+		debug_log("SVG coordinates for [faction] are not implemented!")
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"

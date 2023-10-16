@@ -329,6 +329,7 @@
 	arm_sound = 'sound/items/Welder2.ogg'
 	underslug_launchable = FALSE
 	fire_type = FIRE_VARIANT_DEFAULT
+	antigrief_protection = FALSE
 
 /obj/item/explosive/grenade/incendiary/molotov/New(loc, custom_burn_level)
 	det_time = rand(10,40) //Adds some risk to using this thing.

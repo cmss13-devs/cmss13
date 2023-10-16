@@ -24,7 +24,7 @@
 	COOLDOWN_DECLARE(distress_cooldown)
 
 /obj/item/device/cotablet/Initialize()
-	tacmap = new(src, minimap_type)
+	tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
@@ -174,3 +174,8 @@
 	announcement_faction = FACTION_PMC
 
 	minimap_type = MINIMAP_FLAG_PMC
+
+/obj/item/device/cotablet/pmc/Initialize()
+	. = ..()
+	qdel(tacmap)
+	tacmap = new(src, minimap_type) // Non-drawing version

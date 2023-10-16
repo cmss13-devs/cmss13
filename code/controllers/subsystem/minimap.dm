@@ -406,7 +406,7 @@ SUBSYSTEM_DEF(minimaps)
  * Return:
  * * returns a boolean value, true if the operation was successful, false if it was not.
  */
-/datum/tacmap/proc/distribute_current_map_png(faction)
+/datum/tacmap/drawing/proc/distribute_current_map_png(faction)
 	if(faction == FACTION_MARINE)
 		if(!COOLDOWN_FINISHED(GLOB, uscm_flatten_map_icon_cooldown))
 			return FALSE
@@ -433,7 +433,11 @@ SUBSYSTEM_DEF(minimaps)
 		else if(client_mob.faction == faction)
 			faction_clients += client
 
+	// This may be unnecessary to do this way if the asset url is always the same as the lookup key
 	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
+	if(!flat_tacmap_key)
+		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder."))
+		return FALSE
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/datum/flattend_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
 
@@ -452,7 +456,7 @@ SUBSYSTEM_DEF(minimaps)
  * * svg_coords: an array of coordinates corresponding to an svg.
  * * ckey: the ckey of the user who submitted this
  */
-/datum/tacmap/proc/store_current_svg_coords(faction, svg_coords, ckey)
+/datum/tacmap/drawing/proc/store_current_svg_coords(faction, svg_coords, ckey)
 	var/datum/svg_overlay/svg_store_overlay = new(svg_coords, ckey)
 
 	if(faction == FACTION_MARINE)
@@ -580,6 +584,7 @@ SUBSYSTEM_DEF(minimaps)
 	/// tacmap holder for holding the minimap
 	var/datum/tacmap_holder/map_holder
 
+/datum/tacmap/drawing
 	/// A url that will point to the wiki map for the current map as a fall back image
 	var/static/wiki_map_fallback
 
@@ -610,25 +615,41 @@ SUBSYSTEM_DEF(minimaps)
 	allowed_flags = minimap_type
 	owner = source
 
-/datum/tacmap/status_tab_view/New()
-	var/datum/tacmap/status_tab_view/uscm_tacmap
+/datum/tacmap/drawing/status_tab_view/New()
+	var/datum/tacmap/drawing/status_tab_view/uscm_tacmap
 	allowed_flags = MINIMAP_FLAG_USCM
 	owner = uscm_tacmap
 
-/datum/tacmap/status_tab_view/xeno/New()
-	var/datum/tacmap/status_tab_view/xeno/xeno_tacmap
+/datum/tacmap/drawing/status_tab_view/xeno/New()
+	var/datum/tacmap/drawing/status_tab_view/xeno/xeno_tacmap
 	allowed_flags = MINIMAP_FLAG_XENO
 	owner = xeno_tacmap
 
 /datum/tacmap/Destroy()
 	map_holder = null
 	owner = null
+	return ..()
+
+/datum/tacmap/drawing/Destroy()
 	new_current_map = null
 	old_map = null
 	current_svg = null
 	return ..()
 
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
+	if(!map_holder)
+		var/level = SSmapping.levels_by_trait(targeted_ztrait)
+		if(!level[1])
+			return
+		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		user.client.register_map_obj(map_holder.map)
+		ui = new(user, src, "TacticalMap")
+		ui.open()
+
+/datum/tacmap/drawing/tgui_interact(mob/user, datum/tgui/ui)
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
@@ -666,7 +687,7 @@ SUBSYSTEM_DEF(minimaps)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
 
-/datum/tacmap/ui_data(mob/user)
+/datum/tacmap/drawing/ui_data(mob/user)
 	var/list/data = list()
 
 	data["newCanvasFlatImage"] = new_current_map?.flat_tacmap
@@ -693,6 +714,16 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_static_data(mob/user)
 	var/list/data = list()
+	data["mapRef"] = map_holder?.map_ref
+	data["canDraw"] = FALSE
+	data["canViewTacmap"] = TRUE
+	data["canViewCanvas"] = FALSE
+	data["isXeno"] = FALSE
+
+	return data
+
+/datum/tacmap/drawing/ui_static_data(mob/user)
+	var/list/data = list()
 
 	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
@@ -712,7 +743,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	return data
 
-/datum/tacmap/status_tab_view/ui_static_data(mob/user)
+/datum/tacmap/drawing/status_tab_view/ui_static_data(mob/user)
 	var/list/data = list()
 	data["mapFallback"] = wiki_map_fallback
 	data["canDraw"] = FALSE
@@ -722,7 +753,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	return data
 
-/datum/tacmap/status_tab_view/xeno/ui_static_data(mob/user)
+/datum/tacmap/drawing/status_tab_view/xeno/ui_static_data(mob/user)
 	var/list/data = list()
 	data["mapFallback"] = wiki_map_fallback
 	data["canDraw"] = FALSE
@@ -732,14 +763,14 @@ SUBSYSTEM_DEF(minimaps)
 
 	return data
 
-/datum/tacmap/ui_close(mob/user)
+/datum/tacmap/drawing/ui_close(mob/user)
 	. = ..()
 	action_queue_change = 0
 	updated_canvas = FALSE
 	toolbar_color_selection = "black"
 	toolbar_updated_selection = "black"
 
-/datum/tacmap/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tacmap/drawing/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -837,7 +868,7 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		return UI_CLOSE
 
-/datum/tacmap/xeno/ui_status(mob/user)
+/datum/tacmap/drawing/xeno/ui_status(mob/user)
 	if(!isxeno(user))
 		return UI_CLOSE
 
@@ -884,7 +915,7 @@ SUBSYSTEM_DEF(minimaps)
 	src.time = time_stamp()
 
 /// Callback when timer indicates the tacmap is flattenable now
-/datum/tacmap/proc/on_tacmap_fire(faction)
+/datum/tacmap/drawing/proc/on_tacmap_fire(faction)
 	distribute_current_map_png(faction)
 	last_update_time = world.time
 

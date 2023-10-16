@@ -80,13 +80,13 @@
 	use_power = USE_POWER_IDLE
 	density = TRUE
 	idle_power_usage = 2
-	///flags that we want to be shown when you interact with this table
 	var/datum/tacmap/map
+	///flags that we want to be shown when you interact with this table
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize()
 	. = ..()
-	map = new(src, minimap_type)
+	map = new /datum/tacmap/drawing(src, minimap_type)
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	QDEL_NULL(map)
@@ -100,11 +100,26 @@
 /obj/structure/machinery/prop/almayer/CICmap/upp
 	minimap_type = MINIMAP_FLAG_UPP
 
+/obj/structure/machinery/prop/almayer/CICmap/upp/Initialize()
+	. = ..()
+	qdel(map)
+	map = new(src, minimap_type) // Non-drawing version
+
 /obj/structure/machinery/prop/almayer/CICmap/clf
 	minimap_type = MINIMAP_FLAG_CLF
 
+/obj/structure/machinery/prop/almayer/CICmap/clf/Initialize()
+	. = ..()
+	qdel(map)
+	map = new(src, minimap_type) // Non-drawing version
+
 /obj/structure/machinery/prop/almayer/CICmap/pmc
 	minimap_type = MINIMAP_FLAG_PMC
+
+/obj/structure/machinery/prop/almayer/CICmap/pmc/Initialize()
+	. = ..()
+	qdel(map)
+	map = new(src, minimap_type) // Non-drawing version
 
 //Nonpower using props
 

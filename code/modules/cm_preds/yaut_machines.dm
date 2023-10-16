@@ -7,6 +7,11 @@
 
 	minimap_type = MINIMAP_FLAG_ALL
 
+/obj/structure/machinery/prop/almayer/CICmap/yautja/Initialize()
+	. = ..()
+	qdel(map)
+	map = new(src, minimap_type) // Non-drawing version
+
 /obj/structure/machinery/autolathe/yautja
 	name = "yautja autolathe"
 	desc = "It produces items using metal and glass."

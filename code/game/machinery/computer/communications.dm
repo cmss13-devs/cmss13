@@ -43,7 +43,7 @@
 	var/stat_msg1
 	var/stat_msg2
 
-	var/datum/tacmap/tacmap
+	var/datum/tacmap/drawing/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 	processing = TRUE

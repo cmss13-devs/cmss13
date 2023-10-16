@@ -27,8 +27,8 @@ GLOBAL_VAR_INIT(uscm_unannounced_map, null)
 GLOBAL_VAR_INIT(xeno_unannounced_map, null)
 
 //global tacmaps for action button access
-GLOBAL_DATUM_INIT(uscm_tacmap_status, /datum/tacmap/status_tab_view, new)
-GLOBAL_DATUM_INIT(xeno_tacmap_status, /datum/tacmap/status_tab_view/xeno, new)
+GLOBAL_DATUM_INIT(uscm_tacmap_status, /datum/tacmap/drawing/status_tab_view, new)
+GLOBAL_DATUM_INIT(xeno_tacmap_status, /datum/tacmap/drawing/status_tab_view/xeno, new)
 
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_INIT(gamemode_roles, list())

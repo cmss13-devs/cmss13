@@ -156,9 +156,15 @@ export const LaunchCountdown = (_, context) => {
 };
 
 export const InFlightCountdown = (_, context) => {
-  const { data } = useBackend<NavigationProps>(context);
+  const { data, act } = useBackend<NavigationProps>(context);
   return (
-    <Section title={`In flight: ${data.target_destination}`}>
+    <Section
+      title={`In flight: ${data.target_destination}`}
+      buttons={
+        data.target_destination === 'Flyby' && (
+          <Button onClick={() => act('cancel-flyby')}>Cancel</Button>
+        )
+      }>
       <div className="InFlightCountdown">
         <Stack vertical>
           <Stack.Item>

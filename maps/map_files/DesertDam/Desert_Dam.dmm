@@ -14389,10 +14389,11 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aRB" = (
 /obj/docking_port/stationary/trijent_elevator/occupied{
-	id = "trigent_lz2";
+	id = "trijent_lz2";
 	name = "Lz2 Elevator";
 	airlock_area = /area/shuttle/trijent_shuttle/lz2;
-	elevator_network = "B"
+	elevator_network = "B";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/B
 	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz2)
@@ -61545,7 +61546,7 @@
 /area/desert_dam/interior/caves/temple)
 "ipQ" = (
 /obj/docking_port/stationary/trijent_elevator/empty{
-	id = "trigent_omega";
+	id = "trijent_omega";
 	name = "Omega Elevator";
 	airlock_exit = "east";
 	airlock_area = /area/shuttle/trijent_shuttle/omega;
@@ -63401,7 +63402,7 @@
 /area/desert_dam/interior/caves/central_caves)
 "pif" = (
 /obj/docking_port/stationary/trijent_elevator/empty{
-	id = "trigent_engineering";
+	id = "trijent_engineering";
 	name = "Engineering Elevator";
 	airlock_exit = "east";
 	airlock_area = /area/shuttle/trijent_shuttle/engi;
@@ -64045,10 +64046,11 @@
 /area/desert_dam/interior/caves/temple)
 "rxS" = (
 /obj/docking_port/stationary/trijent_elevator/occupied{
-	id = "trigent_lz1";
+	id = "trijent_lz1";
 	name = "Lz1 Elevator";
 	elevator_network = "A";
-	airlock_area = /area/shuttle/trijent_shuttle/lz1
+	airlock_area = /area/shuttle/trijent_shuttle/lz1;
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/A
 	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz1)

@@ -115,7 +115,7 @@ export const DropshipDestinationSelection = (_, context) => {
   );
   return (
     <Section
-      title="Ferry Controls"
+      title="Flight Controls"
       buttons={
         <>
           <CancelLaunchButton />

@@ -399,6 +399,36 @@ SUBSYSTEM_DEF(minimaps)
 	return map_list[map_length]
 
 /**
+ * Sends relevant flattened tacmaps to a late joiner.
+ *
+ * Arguments:
+ * * user: The mob that is either an observer, marine, or xeno
+ */
+/datum/proc/send_tacmap_assets_latejoin(mob/user)
+	if(!user.client)
+		return
+
+	var/is_observer = user.faction == FACTION_NEUTRAL && isobserver(user)
+	if(is_observer || user.faction == FACTION_MARINE)
+		// Send marine maps
+		var/datum/flattend_tacmap/latest = get_tacmap_data_png(FACTION_MARINE)
+		if(latest)
+			SSassets.transport.send_assets(user.client, latest.asset_key)
+		var/datum/flattend_tacmap/unannounced = get_unannounced_tacmap_data_png(FACTION_MARINE)
+		if(unannounced && (!latest || latest.asset_key != unannounced.asset_key))
+			SSassets.transport.send_assets(user.client, unannounced.asset_key)
+
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(is_observer || istype(xeno) && xeno.hivenumber == XENO_HIVE_NORMAL)
+		// Send xeno maps
+		var/datum/flattend_tacmap/latest = get_tacmap_data_png(XENO_HIVE_NORMAL)
+		if(latest)
+			SSassets.transport.send_assets(user.client, latest.asset_key)
+		var/datum/flattend_tacmap/unannounced = get_unannounced_tacmap_data_png(XENO_HIVE_NORMAL)
+		if(unannounced && (!latest || latest.asset_key != unannounced.asset_key))
+			SSassets.transport.send_assets(user.client, unannounced.asset_key)
+
+/**
  * Flattens the current map and then distributes it for the specified faction as an unannounced map.
  *
  * Arguments:

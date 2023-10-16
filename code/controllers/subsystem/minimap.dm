@@ -423,15 +423,20 @@ SUBSYSTEM_DEF(minimaps)
 		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
 		return FALSE
 
+	// Send to only relevant clients
 	var/list/faction_clients = list()
-	for(var/client/client in GLOB.clients)
+	for(var/client/client as anything in GLOB.clients)
+		if(!client || !client.mob)
+			continue
 		var/mob/client_mob = client.mob
-		if(isxeno(client_mob))
+		if(client_mob.faction == faction)
+			faction_clients += client
+		else if(client_mob.faction == FACTION_NEUTRAL && isobserver(client_mob))
+			faction_clients += client
+		else if(isxeno(client_mob))
 			var/mob/living/carbon/xenomorph/xeno = client_mob
 			if(xeno.hivenumber == faction)
 				faction_clients += client
-		else if(client_mob.faction == faction)
-			faction_clients += client
 
 	// This may be unnecessary to do this way if the asset url is always the same as the lookup key
 	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)

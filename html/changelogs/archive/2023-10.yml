@@ -127,3 +127,91 @@
   - rscadd: Added missing flight record for Queen dropship summon.
   - code_imp: Added security record option for shipwide_ai_announcement.
   - rscadd: Added security records for unidentified lifeforms announcement.
+2023-10-11:
+  BeagleGaming1:
+  - rscadd: Light floor can be examined to tell if it is on, off, or broken.
+  - code_imp: Light floor subtypes for easier mapping
+  Birdtalon:
+  - bugfix: You can now pick up paper bins
+  - bugfix: Campfires stop consuming wood when full
+  Zonespace27:
+  - rscdel: Predators can no longer see their or others cross-round honor count.
+  irRegularGuy646:
+  - bugfix: fixed new goggle's on helmet sprite
+2023-10-12:
+  QuickLode:
+  - rscadd: Adds a handheld distress beacon for the Colonial Marshal. They can use
+      this to signal distress which in turn allows reinforcements in the form of Anchorpoint
+      Marine QRF or nearby CMB teams. Admins do the final check.
+  - rscadd: Adds a CMB Patrol Team which responds to "Marshals in Distress" call.
+  - admin: headset admin response no longer specifies USCM origin(as this is used
+      for USCM, WY, and now CMB)
+  - spellcheck: fixes a CMB typo in response message. Also a miniscule change to HG
+      37-12 desc.
+  - spellcheck: fixes 2 misc typos in CMB Inspections
+  harryob:
+  - rscadd: origin descriptions are now displayed when selecting an origin
+  mullenpaul:
+  - ui: tweaked flyby controls to make them in line with other destinations
+2023-10-13:
+  Drathek:
+  - refactor: Refactored camera code to be less blocking, use typechecks less often,
+      and provide somewhat more fluid descriptions to photos.
+2023-10-14:
+  BeagleGaming1:
+  - bugfix: M39 arm brace disables when dropped
+  CapCamIII:
+  - bugfix: UPP Sapper/Medic survivor use their correct paygrade instead of UE3M/UE3S
+  QuickLode:
+  - rscadd: Colony Supervisor now has a guaranteed grant.
+  - balance: nerfs PMC Synthetic's gear
+  - bugfix: PMC Synthetic has corrected access(thx forest)
+  - bugfix: Colony Supervisor can now have access to his own colony(LOL).
+  mullenpaul:
+  - rscadd: adds weapon spawners for USCM, CLF, PMC and UPP
+2023-10-15:
+  Birdtalon:
+  - bugfix: Limb printer can no longer double print or print without metal.
+  Drathek:
+  - ui: Fixed a duplicate Options button
+  Lalipar:
+  - qol: Readable time for when a fax was sent in fax panel
+  - qol: Adds ckey/character name for faxes in fax panel
+  - qol: Adds fax subject to fax panel
+  - bugfix: Added CMB faxes to Fax Panel
+  fira:
+  - bugfix: Fix nuke explosion getting canceled in some very rare cases.
+  - bugfix: Xeno Name preference does not require a reconnection to apply anymore.
+      It still won't change your current Xenomorph's name however.
+  - bugfix: Fixed Tape Recorder failing to record when no language information is
+      present.
+  harryob:
+  - admin: administrators without R_DEBUG can now restart the server without starting
+      the round
+2023-10-16:
+  CapCamIII:
+  - balance: ERTs now have a variant of the standard medkit that has no storage lock.
+  - bugfix: Lots of ERTs now correctly have a medkit spawning in their gear
+  Drathek:
+  - bugfix: Fixed the hive surge join as xeno observer alert text link not actually
+      doing anything.
+  Twomoon:
+  - rscadd: Added new haircut
+  Waseemq1235:
+  - admin: Makes subtle messages more noticeable.
+  Zonespace, Wei (sprites):
+  - balance: Removed NSG, Type71, tactical Mar-40, and Mar-50 from the black market
+  - balance: Removed Ext. M4ra mags from the black market
+  - balance: Removed monkeycubes from the black market
+  - balance: Removed lunge mines from the black market
+  - balance: You now need a modified security access tuner to access the black market,
+      which can be found ship- and ground-side where scanners and radios can spawn.
+  fira:
+  - bugfix: The Turing Machine should now keep working as intended if its linked Smartfridge
+      is blown up.
+  - bugfix: Fixed xeno cultists always being created into normal hive, irrespective
+      of the selected hive.
+  - bugfix: Fixed 'Join as Freed Mob' verb crashing if freed mobs had previously been
+      deleted.
+  - bugfix: Fixed issues with turfs, notably lighting, arising when building it from
+      a sheets stack.

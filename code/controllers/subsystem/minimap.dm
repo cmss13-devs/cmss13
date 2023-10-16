@@ -420,7 +420,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/icon/flat_map = getFlatIcon(map_holder.map, appearance_flags = TRUE)
 	if(!flat_map)
-		to_chat(usr, SPAN_WARNING("The tacmap filckers and then shuts off, a critical error has occurred! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
+		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
 		return FALSE
 
 	var/list/faction_clients = list()
@@ -660,7 +660,7 @@ SUBSYSTEM_DEF(minimaps)
 
 		if(use_live_map)
 			tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS
-			addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire)
+			addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire - world.time + 1 SECONDS)
 			user.client.register_map_obj(map_holder.map)
 
 		ui = new(user, src, "TacticalMap")

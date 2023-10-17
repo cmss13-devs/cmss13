@@ -10,7 +10,7 @@
 	var/sound_hit
 	/// When it's blocked by human armor.
 	var/sound_armor
- 	/// When it misses someone.
+	/// When it misses someone.
 	var/sound_miss
 	/// When it bounces off something.
 	var/sound_bounce

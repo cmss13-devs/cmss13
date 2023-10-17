@@ -962,7 +962,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "bsq" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_central)
 "bsw" = (
@@ -1102,7 +1102,6 @@
 /area/kutjevo/interior/complex/botany)
 "bDG" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "bDW" = (
@@ -3436,7 +3435,6 @@
 /area/kutjevo/exterior/runoff_bridge)
 "ewV" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "exj" = (
@@ -8623,9 +8621,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
 "lZT" = (
-/obj/structure/tunnel{
-	id = "hole1"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_north)
 "lZZ" = (
@@ -9535,9 +9531,7 @@
 /turf/open/desert/desert_shore/shore_corner2,
 /area/kutjevo/exterior/runoff_river)
 "niP" = (
-/obj/structure/tunnel{
-	id = "hole3"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "niT" = (
@@ -10760,7 +10754,6 @@
 /area/kutjevo/interior/oob)
 "oOv" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "oOO" = (
@@ -12187,9 +12180,7 @@
 	},
 /area/kutjevo/interior/oob)
 "qLV" = (
-/obj/structure/tunnel{
-	id = "hole2"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "qMC" = (
@@ -14830,7 +14821,6 @@
 /area/kutjevo/exterior/lz_dunes)
 "ush" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "usP" = (
@@ -15693,9 +15683,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "vzy" = (
-/obj/structure/tunnel{
-	id = "hole4"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "vzC" = (

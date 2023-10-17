@@ -10464,9 +10464,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aFC" = (
-/obj/structure/tunnel{
-	id = "hole3"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/north_outpost)
 "aFD" = (
@@ -16510,9 +16508,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/interior/disposals)
 "bad" = (
-/obj/structure/tunnel{
-	id = "hole4"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "bae" = (
@@ -18477,9 +18473,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "bgX" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/structure/tunnel{
-	id = "hole2"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "bha" = (
@@ -21979,9 +21973,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "bui" = (
-/obj/structure/tunnel{
-	id = "hole1"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "bul" = (
@@ -27421,10 +27413,6 @@
 	icon_state = "white_cyan1"
 	},
 /area/strata/ag/interior/outpost/canteen)
-"cgq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/deep/east_carp)
 "cgu" = (
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata{
@@ -31837,13 +31825,6 @@
 	},
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
-"gjP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/outpost/gen/bball/nest)
 "gkt" = (
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/interior/outpost/engi/drome)
@@ -34294,11 +34275,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_carp)
-"kyf" = (
-/obj/item/stack/rods,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/auto_turf/ice/layer1,
-/area/strata/ag/interior/outpost/gen/bball/nest)
 "kyr" = (
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_engi)
@@ -35338,10 +35314,6 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
-"miy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/deep/tearlake)
 "miL" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -37411,9 +37383,7 @@
 /area/strata/ag/interior/tcomms)
 "pMU" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/structure/tunnel{
-	id = "hole1"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "pNL" = (
@@ -37921,13 +37891,6 @@
 	icon_state = "cement1"
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
-"qHo" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "xgibdown1"
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/interior/outpost/gen/bball/nest)
 "qIt" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -38005,12 +37968,6 @@
 	icon_state = "cement3"
 	},
 /area/strata/ag/exterior/landingzone_2)
-"qOm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/floor/strata{
-	icon_state = "red1"
-	},
-/area/strata/ug/interior/jungle/deep/structures/res)
 "qOt" = (
 /obj/structure/closet/bodybag,
 /obj/effect/decal/cleanable/blood,
@@ -64152,7 +64109,7 @@ cdo
 acU
 aaw
 cdo
-qHo
+aan
 aan
 aam
 cdo
@@ -64347,7 +64304,7 @@ cdo
 aJn
 cdo
 cdo
-kyf
+baH
 cdo
 aJn
 cdo
@@ -64542,7 +64499,7 @@ cjq
 cjq
 aKw
 aLu
-gjP
+cjq
 cjq
 cjq
 gGX
@@ -77374,7 +77331,7 @@ uSR
 jLb
 eMz
 jLb
-miy
+jLb
 dKj
 dKj
 dKj
@@ -77569,7 +77526,7 @@ jLb
 jLb
 eMz
 jLb
-miy
+jLb
 dKj
 dKj
 dKj
@@ -77764,7 +77721,7 @@ jLb
 jLb
 jLb
 euZ
-miy
+jLb
 dKj
 dKj
 dKj
@@ -84898,9 +84855,9 @@ daq
 daq
 daq
 daq
-cgq
-cgq
-cgq
+daq
+daq
+daq
 daq
 daq
 daq
@@ -86613,7 +86570,7 @@ akh
 bRl
 bRl
 aEN
-qOm
+abX
 ady
 bAr
 bAr
@@ -86808,7 +86765,7 @@ ajF
 akh
 aeW
 aEC
-qOm
+abX
 ady
 bAr
 bAr
@@ -87003,7 +86960,7 @@ aki
 akO
 bRl
 aDR
-qOm
+abX
 ady
 bAr
 bAr

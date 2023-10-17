@@ -57,18 +57,6 @@
 	new /obj/structure/blocker/fog(loc, time_to_dispel)
 	qdel(src)
 
-/obj/effect/landmark/lv624/xeno_tunnel
-	name = "xeno tunnel"
-	icon_state = "xeno_tunnel"
-
-/obj/effect/landmark/lv624/xeno_tunnel/Initialize(mapload, ...)
-	. = ..()
-	GLOB.xeno_tunnels += src
-
-/obj/effect/landmark/lv624/xeno_tunnel/Destroy()
-	GLOB.xeno_tunnels -= src
-	return ..()
-
 ////////////////////////////////////////////////////////////////////////////////////////
 
 /* Pre-setup */
@@ -94,14 +82,6 @@
 		flags_round_type |= MODE_FOG_ACTIVATED
 
 	..()
-
-	var/obj/structure/tunnel/T
-	var/i = 0
-	var/turf/t
-	while(GLOB.xeno_tunnels.len && i++ < 3)
-		t = get_turf(pick_n_take(GLOB.xeno_tunnels))
-		T = new(t)
-		T.id = "hole[i]"
 	return TRUE
 
 ////////////////////////////////////////////////////////////////////////////////////////

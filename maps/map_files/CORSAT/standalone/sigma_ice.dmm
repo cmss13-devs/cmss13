@@ -620,9 +620,7 @@
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
 "lN" = (
-/obj/structure/tunnel{
-	id = "hole4"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
 "lP" = (

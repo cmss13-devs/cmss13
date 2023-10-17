@@ -74,7 +74,7 @@
 "aao" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/binoculars,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "aap" = (
@@ -153,7 +153,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/bronze,
 /obj/item/trash/cigbutt/cigarbutt,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "aaC" = (
@@ -1054,7 +1054,7 @@
 "adi" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp/green,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "adj" = (
@@ -4109,7 +4109,7 @@
 /obj/item/ashtray/glass,
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "amf" = (
@@ -4204,7 +4204,7 @@
 "ams" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/folder/blue,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "amt" = (
@@ -4579,7 +4579,7 @@
 "ans" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/camera,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "ant" = (
@@ -6315,7 +6315,7 @@
 "asS" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/trash/popcorn,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "asT" = (
@@ -15228,9 +15228,7 @@
 	},
 /area/corsat/sigma/biodome)
 "aQy" = (
-/obj/structure/tunnel{
-	id = "hole4"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -27417,7 +27415,7 @@
 "bze" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/powercell,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -27664,7 +27662,7 @@
 "bzF" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -31582,7 +31580,7 @@
 "bMT" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/plastic,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "bluegrey"
@@ -31796,7 +31794,7 @@
 /obj/item/clipboard,
 /obj/item/paper,
 /obj/item/tool/pen/blue,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "bluegrey"
@@ -36374,7 +36372,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -36943,7 +36941,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
 "cWa" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -37529,7 +37527,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -39142,7 +39140,7 @@
 /obj/structure/machinery/computer/emails{
 	dir = 1
 	},
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
 "exf" = (
@@ -39191,7 +39189,7 @@
 /obj/structure/bed{
 	icon_state = "psychbed"
 	},
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
 "eyK" = (
@@ -39893,7 +39891,7 @@
 /area/corsat/sigma/cargo)
 "feC" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "feD" = (
@@ -40229,9 +40227,7 @@
 	},
 /area/corsat/sigma/checkpoint)
 "foQ" = (
-/obj/structure/tunnel{
-	id = "hole2"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "fps" = (
@@ -43352,7 +43348,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "hzM" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "yellow"
@@ -43784,9 +43780,7 @@
 /area/corsat/theta/biodome/hydrowest)
 "hNI" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/tunnel{
-	id = "hole3"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "hOb" = (
@@ -44827,7 +44821,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/plastic,
 /obj/item/trash/cigbutt,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "iBO" = (
@@ -45318,7 +45312,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/paper,
 /obj/item/tool/pen,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
 "iWH" = (
@@ -47290,7 +47284,7 @@
 "kFo" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp/green,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "kFq" = (
@@ -48339,7 +48333,7 @@
 	},
 /area/corsat/theta/biodome/complex)
 "lsu" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat,
 /area/corsat/gamma/freezer)
 "lsB" = (
@@ -54121,7 +54115,7 @@
 	},
 /area/corsat/omega/hallways)
 "pMI" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -57273,7 +57267,7 @@
 	},
 /area/corsat/gamma/residential/researcher)
 "sap" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
 "saV" = (
@@ -61142,7 +61136,7 @@
 /obj/structure/machinery/computer/emails{
 	dir = 8
 	},
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
 "uTf" = (
@@ -62719,9 +62713,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "wfD" = (
-/obj/structure/tunnel{
-	id = "hole0"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -63295,14 +63287,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/omega/complex)
-"wAz" = (
-/obj/structure/tunnel{
-	id = "hole1"
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/omega/biodome)
 "wAF" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -71561,7 +71545,7 @@ avX
 hwe
 hwe
 avX
-wAz
+wfD
 avX
 sWP
 avX

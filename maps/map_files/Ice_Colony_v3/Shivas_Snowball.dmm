@@ -52,9 +52,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aal" = (
-/obj/structure/tunnel{
-	id = "construction_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "aam" = (
@@ -530,9 +528,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/shiva/interior/colony/research_hab)
 "abK" = (
-/obj/structure/tunnel{
-	id = "south_tcomms_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/right_spiders)
 "abL" = (
@@ -580,9 +576,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "abT" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "abU" = (
@@ -4747,9 +4741,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
 "aCF" = (
-/obj/structure/tunnel{
-	id = "west_tcomms_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/valley)
 "aCH" = (
@@ -21685,9 +21677,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "qRX" = (
-/obj/structure/tunnel{
-	id = "hydroponics_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
 "qSa" = (

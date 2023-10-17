@@ -6462,9 +6462,7 @@
 	},
 /area/varadero/exterior/monsoon)
 "emt" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "emC" = (
@@ -20091,9 +20089,7 @@
 	},
 /area/varadero/interior/administration)
 "mSa" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
 "mSf" = (
@@ -27094,9 +27090,7 @@
 	},
 /area/varadero/interior/cargo)
 "ron" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
 "roy" = (
@@ -35091,9 +35085,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "wnE" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "wnK" = (
@@ -35355,9 +35347,7 @@
 	},
 /area/varadero/interior/comms3)
 "wvI" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/hall_SE)
 "wvK" = (

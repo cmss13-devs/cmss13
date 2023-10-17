@@ -10,6 +10,7 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "hole"
 
+	health = 140
 	density = FALSE
 	opacity = FALSE
 	anchored = TRUE
@@ -23,8 +24,6 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/datum/hive_status/hive
 
-	health = 140
-	var/id = null //For mapping
 
 /obj/structure/tunnel/Initialize(mapload, h_number)
 	. = ..()

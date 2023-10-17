@@ -348,12 +348,7 @@
 	xeno_cooldown = 2 MINUTES
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	node_type = /obj/effect/alien/weeds/node/gardener
-
-/obj/effect/alien/weeds/node/gardener
-	spread_on_semiweedable = TRUE
-	fruit_growth_multiplier = 0.8
-	weed_strength = WEED_LEVEL_HARDY
+	node_type = /obj/effect/alien/weeds/node/hardy
 
 /datum/action/xeno_action/verb/verb_plant_gardening_weeds()
 	set category = "Alien"

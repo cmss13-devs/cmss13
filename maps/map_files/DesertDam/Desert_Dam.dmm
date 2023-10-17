@@ -712,7 +712,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "acq" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -2458,7 +2458,6 @@
 /area/desert_dam/exterior/river/riverside_central_north)
 "ahJ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/floor/prison{
 	dir = 10
 	},
@@ -60701,7 +60700,6 @@
 	dir = 8
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
 	},
@@ -61280,7 +61278,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
 "hyH" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "hzg" = (
@@ -61860,7 +61858,7 @@
 	},
 /area/desert_dam/exterior/telecomm/lz1_south)
 "jxN" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1"
 	},
@@ -62014,7 +62012,6 @@
 /area/desert_dam/building/dorms/restroom)
 "kge" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/desert/dirt{
 	dir = 10;
 	icon_state = "desert_transition_edge1"
@@ -62167,7 +62164,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "kQd" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/desert/rock/deep{
 	icon_state = "rock3"
 	},
@@ -64010,7 +64007,7 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ruJ" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -64116,7 +64113,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "rIY" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -64206,7 +64203,6 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "rVo" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "rXI" = (
@@ -64512,7 +64508,6 @@
 "sXh" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "sXM" = (
@@ -65161,7 +65156,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "vph" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/desert/dirt{
 	dir = 4;
 	icon_state = "desert_transition_edge1"
@@ -65309,7 +65304,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "vHx" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -65722,7 +65717,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "xec" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "xgA" = (

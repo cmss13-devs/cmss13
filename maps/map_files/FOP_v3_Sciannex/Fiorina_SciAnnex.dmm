@@ -9376,7 +9376,7 @@
 	},
 /area/fiorina/station/power_ring)
 "fHy" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/organic/grass{
 	desc = "It'll get in your shoes no matter what you do.";
 	name = "astroturf"
@@ -12419,7 +12419,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "hwE" = (
-/obj/structure/tunnel/maint_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -12791,7 +12791,7 @@
 	},
 /area/fiorina/station/power_ring)
 "hIR" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/organic/grass{
 	desc = "It'll get in your shoes no matter what you do.";
 	name = "astroturf"
@@ -13361,7 +13361,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "idO" = (
-/obj/structure/tunnel/maint_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "greenblue"
@@ -21721,7 +21721,7 @@
 	},
 /area/fiorina/station/medbay)
 "mYx" = (
-/obj/structure/tunnel/maint_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -23708,7 +23708,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
 "olB" = (
-/obj/structure/tunnel/maint_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "olC" = (
@@ -36967,7 +36967,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "wAM" = (
-/obj/structure/tunnel/maint_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "wAR" = (
@@ -37982,7 +37982,7 @@
 	},
 /area/fiorina/station/transit_hub)
 "xii" = (
-/obj/structure/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/organic/grass{
 	desc = "It'll get in your shoes no matter what you do.";
 	name = "astroturf"

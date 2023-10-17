@@ -153,7 +153,7 @@
 	},
 /area/bigredv2/outside/e)
 "aB" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"

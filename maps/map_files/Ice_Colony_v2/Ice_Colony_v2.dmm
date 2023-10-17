@@ -143,9 +143,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/north)
 "aaF" = (
-/obj/structure/tunnel{
-	id = "north_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/north)
 "aaG" = (
@@ -697,9 +695,7 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "acO" = (
-/obj/structure/tunnel{
-	id = "east_cargo_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northwest)
 "acP" = (
@@ -1183,12 +1179,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/ice_colony/surface/engineering/generator)
-"aej" = (
-/obj/structure/tunnel{
-	id = "engineering_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/surface/valley/northeast)
 "aek" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -2216,9 +2206,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/northwest)
 "agS" = (
-/obj/structure/tunnel{
-	id = "south_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/northwest)
 "agT" = (
@@ -3639,9 +3627,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northeast)
 "akR" = (
-/obj/structure/tunnel{
-	id = "construction_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northeast)
 "akS" = (
@@ -5381,9 +5367,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/clinic/storage)
 "apQ" = (
-/obj/structure/tunnel{
-	id = "west_tcomms_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southeast)
 "apR" = (
@@ -6517,12 +6501,6 @@
 	icon_state = "whitered"
 	},
 /area/ice_colony/surface/clinic/treatment)
-"asL" = (
-/obj/structure/tunnel{
-	id = "hydroponics_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/surface/valley/west)
 "asM" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor{
@@ -8541,9 +8519,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/south)
 "ayj" = (
-/obj/structure/tunnel{
-	id = "south_research_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayk" = (
@@ -9776,9 +9752,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBH" = (
-/obj/structure/tunnel{
-	id = "dig_site_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBI" = (
@@ -12542,9 +12516,7 @@
 	},
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJG" = (
-/obj/structure/tunnel{
-	id = "south_tcomms_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "aJH" = (
@@ -13270,9 +13242,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "aMu" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/west)
 "aMv" = (
@@ -21540,12 +21510,6 @@
 "bnn" = (
 /turf/closed/ice/end,
 /area/ice_colony/exterior/underground/caves)
-"bno" = (
-/obj/structure/tunnel{
-	id = "north_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bnp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -21801,12 +21765,6 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves)
-"bnV" = (
-/obj/structure/tunnel{
-	id = "east_cargo_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bnW" = (
 /turf/open/ice,
 /area/ice_colony/underground/maintenance/research)
@@ -23949,12 +23907,6 @@
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/bball)
-"buf" = (
-/obj/structure/tunnel{
-	id = "engineering_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bug" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/exterior/underground/caves)
@@ -25384,12 +25336,6 @@
 /obj/item/toy/beach_ball/holoball,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
-"byu" = (
-/obj/structure/tunnel{
-	id = "cargo_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "byv" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/underground/maintenance/research)
@@ -26468,12 +26414,6 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
-"bBA" = (
-/obj/structure/tunnel{
-	id = "construction_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bBB" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating,
@@ -26679,12 +26619,6 @@
 "bCg" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/maintenance/east)
-"bCh" = (
-/obj/structure/tunnel{
-	id = "west_tcomms_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bCi" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -28779,12 +28713,6 @@
 	icon_state = "darkred2"
 	},
 /area/ice_colony/underground/security/interrogation)
-"bIx" = (
-/obj/structure/tunnel{
-	id = "south_tcomms_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bIy" = (
 /obj/structure/machinery/alarm{
 	dir = 8;
@@ -31597,12 +31525,6 @@
 	icon_state = "white"
 	},
 /area/ice_colony/underground/security/brig)
-"bQk" = (
-/obj/structure/tunnel{
-	id = "hydroponics_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bQl" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -33621,12 +33543,6 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
-"bVP" = (
-/obj/structure/tunnel{
-	id = "dig_site_tunnel"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bVQ" = (
 /obj/structure/mineral_door/resin,
 /turf/open/ice,
@@ -33703,12 +33619,6 @@
 	height = 1;
 	icon_state = "ladderup";
 	id = "ship_ladder"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
-"bWc" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
@@ -34241,9 +34151,7 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "bXA" = (
-/obj/structure/tunnel{
-	id = "south_research_tunnel"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "bXB" = (
@@ -37003,7 +36911,7 @@ bmU
 bmU
 bmU
 bmU
-byu
+bXA
 bmU
 bmU
 bmU
@@ -37830,7 +37738,7 @@ aZF
 aZF
 bmQ
 bmU
-bnV
+bXA
 bmU
 bmU
 bmU
@@ -40417,7 +40325,7 @@ bmU
 bmU
 bmU
 bmU
-bQk
+bXA
 bmU
 bmU
 bmU
@@ -41940,7 +41848,7 @@ aaC
 aaQ
 alJ
 alJ
-asL
+aMu
 alJ
 alJ
 alJ
@@ -44315,7 +44223,7 @@ bls
 bkJ
 bmk
 bmU
-bno
+bXA
 bmU
 bmU
 bmT
@@ -54260,7 +54168,7 @@ bmU
 bmU
 bnU
 boB
-bWc
+bXA
 bmU
 bmU
 bmU
@@ -66604,7 +66512,7 @@ bnk
 aZF
 bmm
 bml
-buf
+bXA
 bmU
 bmU
 bmU
@@ -70567,7 +70475,7 @@ bmU
 bmU
 bmU
 bmU
-bBA
+bXA
 bmU
 bmQ
 bCg
@@ -71705,7 +71613,7 @@ bCg
 aZF
 bmQ
 bmT
-bIx
+bXA
 bmU
 bmU
 bmU
@@ -76490,7 +76398,7 @@ bnT
 bmi
 bmQ
 bmT
-bCh
+bXA
 bmU
 bmU
 bmU
@@ -76818,7 +76726,7 @@ aZF
 bmh
 bmi
 bmU
-bVP
+bXA
 bmU
 bmU
 bmU
@@ -85050,7 +84958,7 @@ aaQ
 adk
 adA
 adj
-aej
+akR
 adj
 adj
 aaU

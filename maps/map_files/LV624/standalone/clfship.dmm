@@ -37,9 +37,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aY" = (
-/obj/structure/tunnel{
-	id = "hole3"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "bc" = (

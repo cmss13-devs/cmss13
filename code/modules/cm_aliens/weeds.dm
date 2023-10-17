@@ -196,7 +196,7 @@
 	var/parent_type = /obj/effect/alien/weeds/node
 	if(weed_strength >= WEED_LEVEL_HIVE)
 		parent_type = /obj/effect/alien/weeds/node/pylon
-		
+
 	var/obj/effect/alien/weeds/node/found = locate(parent_type) in orange(node_range, get_turf(src))
 	if(found)
 		found.add_child(src)
@@ -585,6 +585,12 @@
 
 /obj/effect/alien/weeds/node/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
+
+/obj/effect/alien/weeds/node/hardy
+	name = "hardy resin node"
+	spread_on_semiweedable = TRUE
+	fruit_growth_multiplier = 0.8
+	weed_strength = WEED_LEVEL_HARDY
 
 /obj/effect/alien/weeds/node/pylon
 	health = WEED_HEALTH_HIVE

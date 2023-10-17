@@ -23992,7 +23992,7 @@
 	},
 /area/bigredv2/caves_sw)
 "buB" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -27187,7 +27187,6 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "bPy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_17"
@@ -27488,9 +27487,7 @@
 /area/bigredv2/outside/engineering)
 "cvi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/tunnel{
-	id = "hole2"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -28087,7 +28084,6 @@
 /area/bigredv2/caves/mining)
 "dKR" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5"
 	},
@@ -28819,7 +28815,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "fjF" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/mars{
 	icon_state = "mars_dirt_6"
 	},
@@ -31415,7 +31411,6 @@
 /area/bigredv2/caves)
 "kBB" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_23"
 	},
@@ -31622,9 +31617,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "laj" = (
-/obj/structure/tunnel{
-	id = "hole5"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -32644,7 +32637,6 @@
 /area/bigredv2/caves/mining)
 "nCp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -33078,7 +33070,7 @@
 /obj/structure/toilet{
 	pixel_y = 8
 	},
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -33531,7 +33523,6 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "pgi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
@@ -34524,9 +34515,7 @@
 	},
 /area/bigredv2/caves/mining)
 "rqa" = (
-/obj/structure/tunnel{
-	id = "hole4"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor{
 	icon_state = "whitepurplefull"
 	},
@@ -34694,7 +34683,7 @@
 /turf/open/gm/river,
 /area/bigredv2/outside/filtration_plant)
 "rHD" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -34736,7 +34725,6 @@
 /area/bigredv2/oob)
 "rLR" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11"
 	},
@@ -35495,9 +35483,7 @@
 	},
 /area/bigredv2/caves/mining)
 "tdB" = (
-/obj/structure/tunnel{
-	id = "hole1"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -35746,7 +35732,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "tAW" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning"
@@ -35878,9 +35864,7 @@
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "tJv" = (
-/obj/structure/tunnel{
-	id = "hole3"
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -35930,7 +35914,7 @@
 	},
 /area/bigredv2/caves/mining)
 "tPr" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -37136,7 +37120,7 @@
 	},
 /area/bigredv2/caves_north)
 "wpT" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/mars,
 /area/bigredv2/outside/w)
 "wry" = (
@@ -37504,7 +37488,7 @@
 	},
 /area/bigredv2/caves/mining)
 "xeN" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},

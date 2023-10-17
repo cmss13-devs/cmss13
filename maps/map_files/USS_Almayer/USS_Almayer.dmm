@@ -30956,7 +30956,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/almayer{
-	dir = 4;
+	dir = 5;
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/perma)
@@ -51358,7 +51358,10 @@
 /obj/structure/machinery/status_display{
 	pixel_x = 32
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "redcorner"
+	},
 /area/almayer/shipboard/brig/perma)
 "mdS" = (
 /obj/structure/sign/safety/ammunition{
@@ -65612,7 +65615,10 @@
 /area/almayer/hull/lower_hull/l_a_p)
 "rDl" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "redcorner"
+	},
 /area/almayer/shipboard/brig/perma)
 "rDr" = (
 /obj/structure/pipes/vents/pump,
@@ -97665,9 +97671,9 @@ ftC
 jnD
 hUW
 hiM
-rWs
-qNR
 hiM
+qNR
+rWs
 hiM
 hiM
 hiM

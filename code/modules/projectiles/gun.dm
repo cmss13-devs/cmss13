@@ -1191,6 +1191,17 @@ and you're good to go.
 		click_empty(user)
 		return NONE
 
+	var/before_fire_cancel = SEND_SIGNAL(src, COMSIG_GUN_BEFORE_FIRE, projectile_to_fire, target, user)
+
+	if(before_fire_cancel)
+		if(before_fire_cancel & COMPONENT_CANCEL_GUN_BEFORE_FIRE)
+			return TRUE
+
+		if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
+			return NONE
+
+	play_firing_sounds(projectile_to_fire, user)
+
 	if(targloc != curloc)
 		simulate_recoil(dual_wield, user, target)
 
@@ -1410,6 +1421,8 @@ and you're good to go.
 		user.track_shot(initial(name))
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, dual_wield) //We add any damage effects that we need.
 
+		play_firing_sounds(projectile_to_fire, user)
+
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
 		simulate_recoil(1, user)
@@ -1610,12 +1623,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
-	var/actual_sound = fire_sound
-	if(isnull(fire_sound))
-		actual_sound = pick(fire_sounds)
-	if(projectile_to_fire.ammo && projectile_to_fire.ammo.sound_override)
-		actual_sound = projectile_to_fire.ammo.sound_override
-
 	var/gun_accuracy_mult = accuracy_mult_unwielded
 	var/gun_scatter = scatter_unwielded
 
@@ -1666,25 +1673,38 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	projectile_to_fire.shot_from = src
 
-	if(user) //The gun only messages when fired by a user.
-		projectile_to_fire.firer = user
-		if(isliving(user)) projectile_to_fire.def_zone = user.zone_selected
-		//Guns with low ammo have their firing sound
-		var/firing_sndfreq = (current_mag && (current_mag.current_rounds / current_mag.max_rounds) > GUN_LOW_AMMO_PERCENTAGE) ? FALSE : SOUND_FREQ_HIGH
-		//firing from an attachment
-		if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
-			if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
-				playsound(user, active_attachable.fire_sound, 50)
-		else
-			if(!(flags_gun_features & GUN_SILENCED))
-				if (firing_sndfreq && fire_rattle)
-					playsound(user, fire_rattle, firesound_volume, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
-				else
-					playsound(user, actual_sound, firesound_volume, firing_sndfreq)
-			else
-				playsound(user, actual_sound, 25, firing_sndfreq)
-
 	return 1
+
+/obj/item/weapon/gun/proc/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)
+	if(!user) //The gun only messages when fired by a user.
+		return
+
+	var/actual_sound = fire_sound
+	if(isnull(fire_sound))
+		actual_sound = pick(fire_sounds)
+
+	if(projectile_to_fire.ammo && projectile_to_fire.ammo.sound_override)
+		actual_sound = projectile_to_fire.ammo.sound_override
+
+	projectile_to_fire.firer = user
+	if(isliving(user))
+		projectile_to_fire.def_zone = user.zone_selected
+
+	//Guns with low ammo have their firing sound
+	var/firing_sndfreq = (current_mag && (current_mag.current_rounds / current_mag.max_rounds) > GUN_LOW_AMMO_PERCENTAGE) ? FALSE : SOUND_FREQ_HIGH
+
+	//firing from an attachment
+	if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+		if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
+			playsound(user, active_attachable.fire_sound, 50)
+	else
+		if(!(flags_gun_features & GUN_SILENCED))
+			if (firing_sndfreq && fire_rattle)
+				playsound(user, fire_rattle, firesound_volume, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
+			else
+				playsound(user, actual_sound, firesound_volume, firing_sndfreq)
+		else
+			playsound(user, actual_sound, 25, firing_sndfreq)
 
 /obj/item/weapon/gun/proc/simulate_scatter(obj/projectile/projectile_to_fire, atom/target, turf/curloc, turf/targloc, mob/user, bullets_fired = 1)
 	var/fire_angle = Get_Angle(curloc, targloc)

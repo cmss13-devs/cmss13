@@ -10164,7 +10164,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
+	dir = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
@@ -24050,13 +24050,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/stern_hallway)
-"cgT" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/cic_hallway)
 "chf" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -81019,6 +81012,9 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
 "xuB" = (
@@ -82631,12 +82627,6 @@
 "xWp" = (
 /turf/open/floor/almayer,
 /area/almayer/living/offices/flight)
-"xWv" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/cic_hallway)
 "xWF" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -97680,7 +97670,7 @@ hiM
 rWs
 rWs
 rQt
-cgT
+hiM
 xuc
 pYX
 pZV
@@ -97883,7 +97873,7 @@ uVA
 gde
 uVA
 wIQ
-xWv
+vka
 aQb
 wbB
 kIp

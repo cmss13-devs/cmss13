@@ -109,11 +109,11 @@ SUBSYSTEM_DEF(hijack)
 
 		if(sd_unlocked && overloaded_generators)
 			sd_time_remaining -= wait
-			if((percent_completion_remaining <= 0.66) && !engine_room_heated)
+/*			if(!engine_room_heated && (sd_time_remaining <= (round(overloaded_generators / maximum_overload_generators, 0.01) * sd_max_time * 0.66)))
 				heat_engine_room()
 
-			if((percent_completion_remaining <= 0.3) && !engine_room_superheated)
-				superheat_engine_room()
+			if(!engine_room_superheated && (sd_time_remaining <= (round(overloaded_generators / maximum_overload_generators, 0.01) * sd_max_time * 0.33)))
+				superheat_engine_room()*/
 
 			if((sd_time_remaining <= 0) && !sd_detonated)
 				detonate_sd()

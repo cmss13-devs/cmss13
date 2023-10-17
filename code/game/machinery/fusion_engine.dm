@@ -42,6 +42,7 @@
 	return ..()
 
 /obj/structure/machinery/power/fusion_engine/power_change()
+	. = ..()
 	if(overloaded)
 		set_overloading(FALSE)
 		if(COOLDOWN_FINISHED(src, overload_power_change_cooldown))
@@ -270,7 +271,7 @@
 				to_chat(user, SPAN_WARNING("You consider overloading [src]'s safeties, but you decide against it."))
 				return
 
-			if(!inoperable())
+			if(inoperable())
 				to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to overload it!"))
 				return
 

@@ -1615,7 +1615,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						nanotrasen_relation = new_relation
 
 				if("synth_manufacturer")
-					var/synth_builder = input(user, "Choose your manufacturer.")  as null|anything in list("Weyland-Yutani", "Borgia Industries", "Hyperdyne Systems", "Lasalle Bionational", "Sieg and Son", "MedTech", "Grant Corporation", "AlphaTech Hardware", "Independent Manufacturer")
+					var/synth_builder = input(user, "Choose your manufacturer.")  as null|anything in list("Weyland-Yutani", "Borgia Industries", "Hyperdyne Systems", "Lasalle Bionational", "Seegson", "MedTech", "Grant Corporation", "AlphaTech Hardware", "Independent Manufacturer")
 					if(synth_builder)
 						new_manufacturer = synth_builder
 

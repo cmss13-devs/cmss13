@@ -1,0 +1,5 @@
+author: "Warfan1815"
+delete-after: True
+changes:
+  - mapadd: "New Squad Briefings south and north of normal briefing! Feel free to use them to your heart's content."
+  - maptweak: "Moved long-rest bunks further north and further south of where they were originally"

@@ -154,8 +154,7 @@
 	data["multiplier"] = multiplier
 	data["cycle_limit"] = cycle_limit
 	data["automode"] = automode
-	data["linked_storage"] = linked_storage
-	data["networked_storage"] = linked_storage.is_in_network()
+	data["networked_storage"] = linked_storage?.is_in_network()
 	data["smartlink"] = smartlink
 	data["outputmode"] = outputmode
 	data["buffervolume"] = reagents.total_volume

@@ -836,14 +836,14 @@
 
 		if(href_list["makecultist"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
-			preset.load_race(H, hive.hivenumber)
-			preset.load_status(H)
+			preset.load_race(H)
+			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
 
 		else if(href_list["makecultistleader"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
-			preset.load_race(H, hive.hivenumber)
-			preset.load_status(H)
+			preset.load_race(H)
+			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
 
 		H.faction = hive.internal_faction
@@ -1243,7 +1243,7 @@
 		for(var/client/X in GLOB.admins)
 			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
 				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>"))
-		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message from USCM:\" \blue <b>\"[input]\"</b>"))
+		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message:\" \blue <b>\"[input]\"</b>"))
 
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
@@ -1310,10 +1310,9 @@
 		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
-
-		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
-
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+
+		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>PRESS REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1393,9 +1392,9 @@
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
-		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
-
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+
+		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>USCM FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1472,11 +1471,11 @@
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
-		GLOB.WYFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
-
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 		if(!customname)
 			return
+
+		GLOB.WYFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1554,11 +1553,11 @@
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
-		GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
-
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 		if(!customname)
 			return
+
+		GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1b748c'>COLONIAL MARSHAL BUREAU FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1904,6 +1903,22 @@
 		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
+	if(href_list["distress_cmb"]) //CMB distress signal, activates Anchorpoint Marine QRF to assist/rescue Colonial Marshals in distress
+		distress_cancel = FALSE
+		message_admins("[key_name_admin(usr)] has opted to SEND the Anchorpoint Station Colonial Marine QRF to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		addtimer(CALLBACK(src, PROC_REF(accept_cmb_ert), usr, locate(href_list["distress"])), 10 SECONDS)
+
+	if(href_list["distress_cmb_alt"]) //CMB distress signal, activates a nearby CMB Patrol Team to assist/rescue Colonial Marshals in distress
+		distress_cancel = FALSE
+		message_admins("[key_name_admin(usr)] has opted to SEND a nearby CMB Patrol Team to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		addtimer(CALLBACK(src, PROC_REF(accept_cmb_alt_ert), usr, locate(href_list["distress"])), 10 SECONDS)
+
+	if(href_list["deny_cmb"]) // Anchorpoint-deny. The distress call is denied, citing unavailable forces
+		var/mob/ref_person = locate(href_list["deny_cmb"])
+		to_chat(ref_person, "A voice barely crackles through the static: CMB Team, this is Anchorpoint Station. No can do, QRF currently dispatched elsewhere, relaying distress. Sorry. Good luck, out.")
+		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
+		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
+
 	if(href_list["distress_pmc"]) //Wey-Yu specific PMC distress signal for chem retrieval ERT
 		distress_cancel = FALSE
 		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
@@ -1948,7 +1963,7 @@
 		supply_controller.shoppinglist += new_order
 
 		//Can no longer request a nuke
-		GLOB.ares_link.interface.nuke_available = FALSE
+		GLOB.ares_datacore.nuke_available = FALSE
 
 		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDNANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
@@ -2091,6 +2106,24 @@
 	SSticker.mode.activate_distress()
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
+
+/// tells admins which admin has sent the Anchorpoint ERT in response to CMB distress
+/datum/admins/proc/accept_cmb_ert(mob/approver, mob/ref_person)
+	if(distress_cancel)
+		return
+	distress_cancel = TRUE
+	SSticker.mode.get_specific_call("CMB - Anchorpoint Station Colonial Marine QRF (Friendly)", FALSE, FALSE)
+	log_game("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
+
+/// tells admins which admin has sent the CMB ERT in response to CMB distress
+/datum/admins/proc/accept_cmb_alt_ert(mob/approver, mob/ref_person)
+	if(distress_cancel)
+		return
+	distress_cancel = TRUE
+	SSticker.mode.get_specific_call("CMB - Patrol Team - Marshals in Distress (Friendly)", FALSE, FALSE)
+	log_game("[key_name_admin(approver)] has sent a CMB Patrol Team distress response, requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(approver)] has sent a CMB Patrol Team distress response, requested by [key_name_admin(ref_person)]")
 
 /datum/admins/proc/accept_pmc_ert(mob/approver, mob/ref_person)
 	if(distress_cancel)

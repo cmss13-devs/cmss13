@@ -870,24 +870,20 @@ const AccessTickets = (props, context) => {
             can_claim = 'No';
           }
           let can_update = 'Yes';
-          if (ticket.assignee !== logged_in) {
-            can_update = 'No';
-          } else if (ticket.lock_status === 'CLOSED') {
+          if (ticket.lock_status === 'CLOSED') {
             can_update = 'No';
           }
           let view_status = 'Ticket is pending assignment.';
           let view_icon = 'circle-question';
-          let update_tooltip = 'Update Access';
-          if (ticket.status === 'assigned') {
-            view_status = 'Ticket is assigned.';
-            view_icon = 'circle-plus';
-            update_tooltip = 'Grant Access';
-          } else if (ticket.status === 'rejected') {
+          let update_tooltip = 'Grant Access';
+          if (ticket.status === 'rejected') {
             view_status = 'Ticket has been rejected.';
             view_icon = 'circle-xmark';
+            update_tooltip = 'Ticket rejected. No further changes possible.';
           } else if (ticket.status === 'cancelled') {
             view_status = 'Ticket was cancelled by reporter.';
             view_icon = 'circle-stop';
+            update_tooltip = 'Ticket cancelled. No further changes possible.';
           } else if (ticket.status === 'granted') {
             view_status = 'Access ticket has been granted.';
             view_icon = 'circle-check';
@@ -902,19 +898,19 @@ const AccessTickets = (props, context) => {
             update_tooltip =
               'Access self-returned. No further changes possible.';
           }
+          let can_reject = 'Yes';
+          if (can_update === 'No') {
+            can_reject = 'No';
+          }
+          if (ticket.status !== 'pending') {
+            can_reject = 'No';
+          }
 
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              {!!ticket.priority_status && (
-                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold color="red">
-                  {ticket.id}
-                </Flex.Item>
-              )}
-              {!ticket.priority_status && (
-                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold>
-                  {ticket.id}
-                </Flex.Item>
-              )}
+              <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold>
+                {ticket.id}
+              </Flex.Item>
               <Flex.Item italic width="6rem" shrink="0" mr="1rem">
                 {ticket.time}
               </Flex.Item>
@@ -930,17 +926,19 @@ const AccessTickets = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button icon={view_icon} tooltip={view_status} />
                 <Button.Confirm
-                  icon="user-lock"
-                  tooltip="Claim Ticket"
-                  disabled={can_claim === 'No'}
-                  onClick={() => act('claim_ticket', { ticket: ticket.ref })}
-                />
-                <Button.Confirm
                   icon="user-gear"
                   tooltip={update_tooltip}
                   disabled={can_update === 'No'}
                   onClick={() => act('auth_access', { ticket: ticket.ref })}
                 />
+                {can_reject === 'Yes' && (
+                  <Button.Confirm
+                    icon="user-minus"
+                    tooltip="Reject Ticket"
+                    disabled={can_reject === 'No'}
+                    onClick={() => act('reject_access', { ticket: ticket.ref })}
+                  />
+                )}
               </Flex.Item>
             </Flex>
           );

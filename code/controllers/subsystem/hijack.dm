@@ -80,9 +80,9 @@ SUBSYSTEM_DEF(hijack)
 	/// If a generator has ever been overloaded in the past this round
 	var/generator_ever_overloaded = FALSE
 
-/datum/controller/subsystem/hijack/Initialize()
-	. = ..()
+/datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/hijack/stat_entry(msg)
 	if(!SSticker?.mode?.is_in_endgame)

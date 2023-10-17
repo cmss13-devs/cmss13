@@ -1029,6 +1029,7 @@
 	dir = 8
 	},
 /obj/structure/prop/dam/truck/damaged,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
 	},
@@ -1251,6 +1252,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "aee" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
@@ -1270,6 +1272,7 @@
 	dir = 8
 	},
 /obj/structure/largecrate/random/case/small,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
 	},
@@ -1568,6 +1571,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "aeY" = (
 /obj/structure/prop/dam/boulder/boulder1,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "aeZ" = (
@@ -1742,6 +1746,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -2057,6 +2062,7 @@
 	dir = 1
 	},
 /obj/structure/prop/dam/truck/cargo,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached18"
 	},
@@ -3569,6 +3575,7 @@
 /area/desert_dam/exterior/valley/north_valley_dam)
 "akU" = (
 /obj/structure/prop/dam/truck/cargo,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "akV" = (
@@ -4388,6 +4395,7 @@
 /area/desert_dam/exterior/valley/north_valley_dam)
 "anh" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -5022,6 +5030,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "apa" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached4"
 	},
@@ -11575,6 +11584,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aIQ" = (
@@ -13103,6 +13113,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "aNn" = (
@@ -13203,6 +13214,7 @@
 /obj/structure/machinery/conveyor_switch{
 	id = "cargo_landing"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "aNB" = (
@@ -15357,6 +15369,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached9"
 	},
@@ -15490,6 +15503,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
 	},
@@ -15604,6 +15618,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached15"
 	},
@@ -17327,6 +17342,7 @@
 	dir = 8;
 	icon_state = "stop_decal5"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "baX" = (
@@ -17815,6 +17831,7 @@
 	icon_state = "road_edge_decal4"
 	},
 /obj/structure/desertdam/decals/road_stop,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "bcD" = (
@@ -18316,6 +18333,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -18630,12 +18648,14 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "bfo" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached13"
 	},
@@ -19073,6 +19093,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "bgO" = (
@@ -19153,6 +19174,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached17"
 	},
@@ -19161,6 +19183,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached19"
 	},
@@ -19169,6 +19192,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached16"
 	},
@@ -19177,6 +19201,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached15"
 	},
@@ -34647,6 +34672,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -34745,6 +34771,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "cfC" = (
 /obj/structure/platform,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cfD" = (
@@ -35188,6 +35215,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "chw" = (
 /obj/structure/platform_decoration,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "chx" = (
@@ -35241,6 +35269,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -36994,6 +37023,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cnB" = (
@@ -39617,6 +39647,13 @@
 	icon_state = "sterile_white"
 	},
 /area/desert_dam/building/medical/surgury_observation)
+"cwa" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 4;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "cwb" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -46061,6 +46098,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cQd" = (
@@ -48449,6 +48487,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dax" = (
@@ -48546,6 +48585,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "daU" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "daX" = (
@@ -48574,6 +48614,7 @@
 /obj/structure/machinery/conveyor_switch{
 	id = "cargo_landing"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dbd" = (
@@ -49506,6 +49547,7 @@
 	icon_state = "stop_decal5"
 	},
 /obj/effect/landmark/railgun_camera_pos,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "deA" = (
@@ -60037,6 +60079,13 @@
 "eft" = (
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"efw" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 6;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "efT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -60315,6 +60364,15 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
+"eoJ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "eqo" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -60461,6 +60519,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"eYj" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "eYn" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/objective{
@@ -60580,6 +60642,13 @@
 "fmP" = (
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz1)
+"fof" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 8;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "foq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -60632,6 +60701,11 @@
 	icon_state = "wood"
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
+"fvo" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_telecoms)
 "fxs" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6"
@@ -60644,6 +60718,15 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"fyK" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "fyO" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison{
@@ -60651,6 +60734,13 @@
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/interior/dam_interior/garage)
+"fyY" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 9;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "fBF" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal7"
@@ -60844,6 +60934,12 @@
 	icon_state = "bright_clean"
 	},
 /area/desert_dam/interior/dam_interior/garage)
+"gkA" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "gls" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -60943,6 +61039,15 @@
 /obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
+"gsh" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "gsr" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -60959,6 +61064,15 @@
 	icon_state = "dirt2"
 	},
 /area/desert_dam/interior/caves/central_caves)
+"gwE" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "gxo" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/welding{
@@ -60996,6 +61110,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"gDh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "gEj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -61009,6 +61130,11 @@
 	icon_state = "cement_sunbleached18"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"gGz" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "gGC" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/desert_dam/interior/caves/temple)
@@ -61100,6 +61226,14 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
+"gRE" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "gTD" = (
 /obj/item/tool/wrench,
 /turf/open/asphalt/cement,
@@ -61215,6 +61349,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"hkN" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_telecoms)
 "hmA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
@@ -61238,6 +61376,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"hoG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "hpw" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached3"
@@ -61338,6 +61483,15 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
+"hES" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached1"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "hEU" = (
 /obj/effect/blocker/toxic_water/Group_1,
 /obj/structure/barricade/wooden{
@@ -61620,6 +61774,13 @@
 	icon_state = "rock3"
 	},
 /area/desert_dam/interior/caves/temple)
+"iwc" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "iwh" = (
 /turf/open/desert/dirt{
 	dir = 4;
@@ -61663,6 +61824,13 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
+"iCX" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "iIB" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
@@ -61686,6 +61854,11 @@
 	icon_state = "whiteyellow"
 	},
 /area/desert_dam/interior/dam_interior/garage)
+"iNh" = (
+/obj/structure/flora/grass/desert/heavygrass_9,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "iNF" = (
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/interior/caves/temple)
@@ -61744,6 +61917,12 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/hanger)
+"iYi" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "iYy" = (
 /obj/structure/surface/table,
 /obj/item/device/lightreplacer,
@@ -61946,6 +62125,12 @@
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
+"jQd" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "jSS" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -62056,6 +62241,13 @@
 	icon_state = "sterile_white"
 	},
 /area/desert_dam/building/cafeteria/loading)
+"koR" = (
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_telecoms)
 "kry" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -62294,6 +62486,17 @@
 	icon_state = "whiteyellow"
 	},
 /area/desert_dam/interior/dam_interior/break_room)
+"llS" = (
+/obj/structure/machinery/conveyor{
+	dir = 8;
+	id = "cargo_container"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_cargo)
 "lmq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/vomit,
@@ -62302,6 +62505,13 @@
 	icon_state = "bright_clean"
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
+"lnr" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 10;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "lnG" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt{
@@ -62389,10 +62599,28 @@
 	icon_state = "freezerfloor"
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
+"lAd" = (
+/obj/structure/largecrate/random/secure,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "lDT" = (
 /obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"lEf" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
+"lEG" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/closed/wall/r_wall/bunker,
+/area/desert_dam/building/substation/west)
 "lFc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -62438,6 +62666,13 @@
 	icon_state = "sterile_white"
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
+"lLd" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "lLI" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
@@ -62491,12 +62726,26 @@
 	icon_state = "carpet15-15"
 	},
 /area/desert_dam/building/administration/office)
+"lUt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "lUU" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"lVH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "lVW" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -62696,6 +62945,10 @@
 	},
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_south)
+"mBX" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "mDz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached{
@@ -62831,6 +63084,12 @@
 	icon_state = "cement_sunbleached3"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
+"mZL" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	icon_state = "rock1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "naF" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
@@ -62916,6 +63175,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_telecoms)
+"nmS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "nnl" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/science,
@@ -62982,6 +63246,11 @@
 /obj/structure/closet/coffin/predator,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"nFz" = (
+/obj/structure/fence,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "nFW" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
@@ -63053,6 +63322,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"nWe" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "nXu" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -63153,12 +63426,25 @@
 	icon_state = "cement_sunbleached13"
 	},
 /area/desert_dam/exterior/valley/valley_labs)
+"opN" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "opZ" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"oqb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached9"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "oqy" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -63325,6 +63611,12 @@
 	icon_state = "wood"
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
+"oVP" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached14"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "oXx" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt{
@@ -63404,6 +63696,13 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/telecomm/lz1_xenoflora)
+"pmG" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 9;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "poi" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/effect/decal/cleanable/dirt,
@@ -63430,6 +63729,15 @@
 	icon_state = "whitegreen"
 	},
 /area/desert_dam/building/medical/virology_isolation)
+"pua" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "puM" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -63637,6 +63945,17 @@
 	icon_state = "cement_sunbleached14"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
+"pYP" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "qbC" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/wood,
@@ -63652,6 +63971,19 @@
 /obj/structure/flora/bush/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"qgO" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached15"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
+"qij" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "qjg" = (
 /turf/open/desert/rock/deep/transition{
 	dir = 6
@@ -63735,6 +64067,15 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
+"qxZ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached1"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "qyu" = (
 /obj/structure/prop/dam/boulder/boulder1,
 /turf/open/desert/dirt{
@@ -63864,6 +64205,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
+"qNm" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached15"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "qPl" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
@@ -63881,6 +64228,22 @@
 	icon_state = "cement_sunbleached18"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"qTm" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 1;
+	icon_state = "desert_transition_corner1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
+"qTS" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached4"
+	},
+/area/desert_dam/exterior/valley/valley_cargo)
 "qVN" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal7"
@@ -64024,6 +64387,13 @@
 	},
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
+"rvT" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_telecoms)
 "rxS" = (
 /obj/docking_port/stationary/trijent_elevator/lz1,
 /turf/open/gm/empty,
@@ -64131,6 +64501,15 @@
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"rMP" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "rNg" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -64365,6 +64744,13 @@
 	icon_state = "bright_clean2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"sup" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "svy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -64377,6 +64763,16 @@
 	icon_state = "bright_clean2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
+"swI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "sye" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/asphalt/cement,
@@ -64604,6 +65000,13 @@
 /obj/structure/flora/grass/desert/heavygrass_4,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/telecomm/lz2_storage)
+"tiq" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 8;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "tjX" = (
 /obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/desert/dirt,
@@ -64670,12 +65073,30 @@
 	icon_state = "bright_clean2"
 	},
 /area/desert_dam/building/security/staffroom)
+"txI" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "tyc" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"tyD" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"tzc" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/desert_dam/exterior/valley/valley_cargo)
 "tAs" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached18"
@@ -64711,6 +65132,13 @@
 	icon_state = "wood"
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
+"tDC" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 5;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "tEn" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -64749,6 +65177,12 @@
 /obj/effect/decal/remains/human,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
+"tIx" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_cargo)
 "tKQ" = (
 /turf/open/desert/dirt{
 	icon_state = "rock1"
@@ -64795,6 +65229,13 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/telecomm/lz1_xenoflora)
+"tPD" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "tPP" = (
 /obj/structure/platform,
 /turf/open/desert/dirt,
@@ -64979,11 +65420,25 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
+"uAI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "uBP" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
+"uDf" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "uFX" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -65077,6 +65532,16 @@
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
+"uTs" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
+"uUI" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "uVm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement_sunbleached{
@@ -65153,6 +65618,15 @@
 /obj/structure/fence,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"vmN" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached13"
+	},
+/area/desert_dam/exterior/landing_pad_one)
 "vnf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -65259,6 +65733,10 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"vAo" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "vAN" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -65278,6 +65756,13 @@
 	icon_state = "cement_sunbleached4"
 	},
 /area/desert_dam/exterior/valley/valley_labs)
+"vCY" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 8;
+	icon_state = "desert_transition_corner1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "vDJ" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -65434,6 +65919,12 @@
 	icon_state = "desert_transition_corner1"
 	},
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"wgF" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
+/area/desert_dam/exterior/landing_pad_one)
 "wiF" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison{
@@ -65459,6 +65950,15 @@
 	icon_state = "floor_marked"
 	},
 /area/desert_dam/building/cafeteria/loading)
+"wlt" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_telecoms)
 "wnE" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
 /obj/effect/landmark/objective_landmark/close,
@@ -65471,6 +65971,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/garage)
+"woD" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_corner1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "wpW" = (
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/desert/dirt,
@@ -65851,6 +66357,13 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
+"xrL" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/desert/dirt{
+	dir = 4;
+	icon_state = "desert_transition_corner1"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "xss" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -65906,6 +66419,12 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/telecomm/lz1_valley)
+"xyW" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached13"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "xzc" = (
 /obj/structure/surface/table,
 /turf/open/floor{
@@ -66056,6 +66575,13 @@
 	icon_state = "squareswood"
 	},
 /area/desert_dam/interior/caves/temple)
+"xXd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "xYb" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -66127,6 +66653,12 @@
 	icon_state = "bright_clean2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
+"ykS" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached2"
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "ylf" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6"
@@ -69847,8 +70379,8 @@ dTs
 dTs
 dTs
 aIP
-chv
-cgm
+koR
+lEG
 cgm
 chb
 ciC
@@ -70080,10 +70612,10 @@ cez
 hvG
 dTs
 dTs
-bPA
-kzQ
-ceA
-cgm
+lEf
+rvT
+hkN
+lEG
 cgm
 cgm
 cgm
@@ -70198,9 +70730,9 @@ aiY
 aiZ
 apu
 apt
-ahu
-air
-apt
+mZL
+qTm
+woD
 dTs
 dTs
 dTs
@@ -70317,8 +70849,8 @@ aUm
 emt
 kzQ
 ceA
-ceA
-ceA
+hkN
+hkN
 ceA
 ceA
 ceA
@@ -70432,10 +70964,10 @@ aiZ
 aiZ
 aiZ
 bge
-amP
-aiY
-apu
-amP
+cwa
+efw
+tDC
+cwa
 bht
 bht
 bht
@@ -70551,8 +71083,8 @@ cjO
 aIT
 aKb
 ceB
-ceB
-ceB
+eoJ
+eoJ
 ceB
 ceB
 ceB
@@ -70666,9 +71198,9 @@ aQe
 aQe
 aQe
 aQe
-aQe
-aQe
-aQe
+vmN
+vmN
+vmN
 bhe
 bhu
 bhN
@@ -70785,8 +71317,8 @@ cjO
 csu
 aSK
 aSK
-cdk
-bao
+fvo
+qxZ
 bao
 bao
 bao
@@ -70900,10 +71432,10 @@ aQU
 aQU
 aQU
 aQU
-aQU
-aQU
-aQU
-aQU
+uAI
+uAI
+uAI
+uAI
 bbV
 bhO
 bil
@@ -71019,7 +71551,7 @@ cjO
 cFd
 cgb
 aSK
-chG
+tPD
 chw
 ciF
 ciF
@@ -71134,10 +71666,10 @@ aQV
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
+mBX
 bdD
 bhP
 bhP
@@ -71253,7 +71785,7 @@ bRw
 bSV
 cgj
 cey
-chG
+tPD
 cfC
 cjO
 cjO
@@ -71368,10 +71900,10 @@ aQV
 aQV
 aQV
 aQW
-aQW
-aQV
-aQV
-aQV
+hoG
+mBX
+mBX
+mBX
 bdD
 bhP
 bhP
@@ -71487,7 +72019,7 @@ dTs
 bPA
 kzQ
 aSI
-chG
+tPD
 cfC
 cjO
 ccm
@@ -71602,10 +72134,10 @@ aQV
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
+mBX
 bdD
 bhP
 bhP
@@ -71721,7 +72253,7 @@ dTs
 bPA
 kzQ
 aSI
-chG
+tPD
 cfC
 cjO
 tAs
@@ -71836,10 +72368,10 @@ aQV
 aQV
 aQV
 aQU
-aQU
-aQV
-aQV
-aQV
+uAI
+mBX
+mBX
+mBX
 bdD
 bhQ
 bhP
@@ -71955,7 +72487,7 @@ dTs
 emt
 kzQ
 aSI
-chG
+tPD
 cfC
 cjO
 tAs
@@ -72070,10 +72602,10 @@ aQV
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
+mBX
 bdD
 bhP
 bhP
@@ -72189,7 +72721,7 @@ dTs
 cjO
 kzQ
 aSI
-chG
+tPD
 cfC
 cjO
 tAs
@@ -72304,10 +72836,10 @@ aQV
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
+mBX
 bdD
 bhR
 mKW
@@ -72425,7 +72957,7 @@ cgk
 cew
 cfo
 chC
-cjO
+gkA
 tAs
 ckr
 cmj
@@ -72538,10 +73070,10 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
+mBX
 bdD
 bhP
 bhP
@@ -72658,8 +73190,8 @@ cjO
 cjO
 cex
 cfp
-cjO
-cjO
+gkA
+gkA
 tAs
 ckr
 cmj
@@ -72772,10 +73304,10 @@ aQg
 aQV
 aSY
 aQV
-aQg
-aQV
-aQV
-aQV
+lUt
+mBX
+mBX
+mBX
 bdD
 bhP
 bhP
@@ -72892,9 +73424,9 @@ dTs
 bRw
 cey
 aSK
-beO
-beO
-aSL
+iYi
+iYi
+txI
 ckr
 cmj
 cmj
@@ -73006,10 +73538,10 @@ aQg
 aQV
 aSY
 aQV
-aQg
-aQV
-aQV
-aQV
+lUt
+mBX
+mBX
+mBX
 bdD
 bhP
 bhP
@@ -73127,8 +73659,8 @@ cwl
 aSI
 cdk
 bao
-bnB
-aTU
+hES
+qgO
 ckt
 rTP
 cmk
@@ -73240,9 +73772,9 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aSY
+mBX
+mBX
+xXd
 bhf
 bhu
 bhS
@@ -73361,8 +73893,8 @@ cxk
 aSI
 chG
 ceA
-bPB
-bRw
+gsh
+wlt
 yeL
 yeL
 yeL
@@ -73474,10 +74006,10 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aSY
-aSa
+mBX
+mBX
+xXd
+wgF
 bKM
 bhT
 bhT
@@ -73595,8 +74127,8 @@ cxk
 aSI
 chG
 aUh
-baz
-ceD
+pmG
+tiq
 dTs
 dTs
 dTs
@@ -73708,10 +74240,10 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aSY
-aSa
+mBX
+mBX
+xXd
+wgF
 bhy
 bhz
 bhz
@@ -73858,24 +74390,24 @@ cuJ
 cuJ
 cuJ
 cuJ
-cuJ
+swI
 cnA
-cMJ
-cMJ
-cMJ
-cMJ
-cMJ
-cMJ
-cUk
-crx
-dvo
+lLd
+lLd
+lLd
+lLd
+lLd
+lLd
+iwc
+eYj
+nmS
 cQc
-cMJ
-cMJ
-cMJ
-cMJ
-cMJ
-cMJ
+lLd
+lLd
+lLd
+lLd
+lLd
+lLd
 cMJ
 cMJ
 cMJ
@@ -73942,10 +74474,10 @@ aQg
 aQV
 aSY
 aQV
-aQg
-aQV
-aSY
-aSa
+lUt
+mBX
+xXd
+wgF
 bhz
 bhz
 bhz
@@ -74176,10 +74708,10 @@ aQg
 aQV
 aSY
 aQV
-aQg
-aQV
-aSY
-aSa
+lUt
+mBX
+xXd
+wgF
 bKM
 bhT
 bhT
@@ -74410,9 +74942,9 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aSY
+mBX
+mBX
+xXd
 bhg
 bhu
 bhO
@@ -74644,10 +75176,10 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
+mBX
 alX
 bhP
 bhP
@@ -74783,10 +75315,10 @@ aee
 aee
 aee
 aee
-doE
-cJx
-cfd
-doE
+uUI
+qTS
+tzc
+uUI
 aee
 aee
 aee
@@ -74812,13 +75344,13 @@ cVH
 aMw
 aMI
 dbc
-aMJ
-cQm
-cQm
+llS
+tIx
+tIx
 aNm
 aNA
-cKr
-doE
+nFz
+uUI
 doE
 doE
 dTs
@@ -74878,10 +75410,10 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
+mBX
 ams
 bhP
 bhP
@@ -75013,17 +75545,17 @@ cwB
 dTs
 dTs
 aee
-doE
-doE
+uUI
+uUI
 aee
-doE
-doE
-cJx
-cfd
-doE
-doE
+uUI
+uUI
+qTS
+tzc
+uUI
+uUI
 aee
-doE
+uUI
 dTs
 aee
 dTs
@@ -75052,7 +75584,7 @@ bvA
 ddJ
 bvA
 bvA
-doE
+uUI
 doE
 dTs
 dTs
@@ -75112,10 +75644,10 @@ aQg
 aQV
 aSY
 aQV
-aQg
-aQV
-aQV
-aQV
+lUt
+mBX
+mBX
+mBX
 cck
 bhP
 mKW
@@ -75346,10 +75878,10 @@ aQg
 aQV
 aSY
 aQV
-aQg
-aQV
-aQV
-aQV
+lUt
+mBX
+mBX
+mBX
 cck
 bhQ
 bhP
@@ -75580,10 +76112,10 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
+mBX
 cck
 bhT
 bhP
@@ -75814,9 +76346,9 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
 akU
 cck
 bhR
@@ -76048,10 +76580,10 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aQV
-aQV
+mBX
+mBX
+mBX
+mBX
 cck
 bhP
 bhP
@@ -76282,10 +76814,10 @@ aQg
 aQV
 aSY
 aQV
-aQg
-aQV
-aQV
-aQV
+lUt
+mBX
+mBX
+mBX
 cck
 bhP
 bhP
@@ -76516,10 +77048,10 @@ aQg
 aQV
 aSY
 aQV
-aQg
-aQV
-aQV
-aQV
+lUt
+mBX
+mBX
+mBX
 cck
 bhP
 bhP
@@ -76750,9 +77282,9 @@ aQg
 aQV
 aQV
 aQV
-aQV
-aQV
-aSY
+mBX
+mBX
+xXd
 bhf
 buI
 bhS
@@ -76953,41 +77485,41 @@ aNp
 aNp
 aNp
 aNp
-alo
-alo
-alo
-alo
-alo
-alo
-alo
-alo
-alo
-aNp
-aNp
-alo
-alo
-aNp
-aNp
-aNp
-aNp
-aNp
-apO
-apA
+jQd
+jQd
+jQd
+jQd
+jQd
+jQd
+jQd
+jQd
+jQd
+xyW
+xyW
+jQd
+jQd
+xyW
+xyW
+xyW
+xyW
+xyW
+oVP
+pYP
 dez
-aNL
+gRE
 baW
-aky
-aNp
-aNp
-apO
+ykS
+xyW
+xyW
+oVP
 bfn
-aQW
-aQW
-aQW
-aQW
-aQW
+hoG
+hoG
+hoG
+hoG
+hoG
 bgN
-aSa
+wgF
 bhu
 bhN
 bin
@@ -77196,23 +77728,23 @@ adq
 aeg
 aVk
 aVH
-aoe
+fyK
 afy
 apa
-aoG
+opN
 anh
-aoe
-aoe
-aoe
-aoe
-bco
+fyK
+fyK
+fyK
+fyK
+gwE
 bcC
-aNL
-aNL
+gRE
+gRE
 baW
-aoE
+uTs
 anh
-aoe
+fyK
 aUH
 bfo
 bfo
@@ -77421,41 +77953,41 @@ rFz
 rFz
 bzU
 aOc
-bej
-bfp
-bej
-aiZ
-acW
-aiZ
-aiZ
-aiZ
+tyD
+iNh
+tyD
+vAo
+lAd
+vAo
+vAo
+vAo
 aeY
-aiZ
-ajS
-bvh
-avC
-aDe
-beD
-aiZ
-aiZ
-aiZ
-aIa
-apz
-aql
-ara
-asa
-aoE
-aDe
-aiZ
-aqy
-aja
-aiZ
-aqy
-ars
-aja
-aiZ
-aiZ
-aqy
+vAo
+rMP
+oqb
+qNm
+uDf
+gGz
+vAo
+vAo
+vAo
+pua
+sup
+lVH
+gDh
+iCX
+uTs
+uDf
+vAo
+fyY
+lnr
+vAo
+fyY
+fof
+lnr
+vAo
+vAo
+fyY
 dTs
 dTs
 dTs
@@ -77655,8 +78187,8 @@ rFz
 rFz
 aRc
 aau
-aja
-bej
+lnr
+tyD
 aVI
 aVI
 aVI
@@ -77672,23 +78204,23 @@ aWM
 aVI
 aVI
 aVI
-aiZ
+vAo
 agx
-apz
-aqg
-aqg
-asa
-bdV
+sup
+nWe
+nWe
+iCX
+qij
 bep
-aqy
-axY
-ait
-ars
+fyY
+vCY
+xrL
+fof
 dTs
 dTs
-ait
-ars
-ars
+xrL
+fof
+fof
 dTs
 dTs
 dTs
@@ -77889,8 +78421,8 @@ aPF
 aPF
 aRc
 aau
-ait
-aja
+xrL
+lnr
 aVI
 azf
 aYu
@@ -77921,7 +78453,7 @@ dTs
 dTs
 dTs
 dTs
-ahu
+mZL
 dTs
 dTs
 dTs
@@ -78123,8 +78655,8 @@ aRD
 aTg
 aTh
 aOc
-ahu
-ait
+mZL
+xrL
 aVI
 aNs
 aWl

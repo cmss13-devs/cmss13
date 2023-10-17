@@ -60,6 +60,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\__DEFINES\fonts.dm"
 #include "code\__DEFINES\generators.dm"
 #include "code\__DEFINES\guns.dm"
+#include "code\__DEFINES\hijack.dm"
 #include "code\__DEFINES\html.dm"
 #include "code\__DEFINES\hud.dm"
 #include "code\__DEFINES\human.dm"

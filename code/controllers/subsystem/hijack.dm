@@ -1,23 +1,9 @@
-
-#define EVACUATION_TYPE_NONE 0
-#define EVACUATION_TYPE_ADDITIVE 1
-#define EVACUATION_TYPE_MULTIPLICATIVE 2
-
-#define HIJACK_ANNOUNCE "ARES Emergency Procedures"
-#define XENO_HIJACK_ANNOUNCE "You sense something unusual..."
-
-#define EVACUATION_STATUS_NOT_INITIATED 0
-#define EVACUATION_STATUS_INITIATED 1
-
-#define HIJACK_OBJECTIVES_NOT_STARTED 0
-#define HIJACK_OBJECTIVES_STARTED 1
-#define HIJACK_OBJECTIVES_COMPLETE 2
-
 SUBSYSTEM_DEF(hijack)
 	name   = "Hijack"
 	wait   = 2 SECONDS
 	flags  = SS_KEEP_TIMING
 	priority   = SS_PRIORITY_HIJACK
+	init_order = SS_INIT_HIJACK
 
 	///Required progress to evacuate safely via lifeboats
 	var/required_progress = 100
@@ -32,10 +18,10 @@ SUBSYSTEM_DEF(hijack)
 	var/estimated_time_left = 0
 
 	///Areas that are marked as having progress, assoc list that is progress_area = boolean, the boolean indicating if it was progressing or not on the last fire()
-	var/list/progress_areas = list()
+	var/list/area/progress_areas = list()
 
 	///The areas that need cycled through currently
-	var/list/current_run = list()
+	var/list/area/current_run = list()
 
 	///The progress of the current run that needs to be added at the end of the current run
 	var/current_run_progress_additive = 0
@@ -79,8 +65,20 @@ SUBSYSTEM_DEF(hijack)
 	/// How much time left until SD detonates
 	var/sd_time_remaining = 0
 
+	/// Roughly what % of the SD countdown remains
+	var/percent_completion_remaining = 100
+
+	/// If the engine room has been heated, occurs at 33% SD completion
+	var/engine_room_heated = FALSE
+
+	/// If the engine room has been superheated, occurs at 66% SD completion
+	var/engine_room_superheated = FALSE
+
 	/// If the self destruct has/is detonating
 	var/sd_detonated = FALSE
+
+	/// If a generator has ever been overloaded in the past this round
+	var/generator_ever_overloaded = FALSE
 
 /datum/controller/subsystem/hijack/Initialize()
 	. = ..()
@@ -95,7 +93,7 @@ SUBSYSTEM_DEF(hijack)
 		msg = " Complete"
 		return ..()
 
-	msg = " Progress: [current_progress]% | SD Time: [sd_time_remaining / 10] | Last run: [last_run_progress_change]"
+	msg = " Progress: [current_progress]% | Last run: [last_run_progress_change]"
 	return ..()
 
 /datum/controller/subsystem/hijack/fire(resumed = FALSE)
@@ -111,6 +109,12 @@ SUBSYSTEM_DEF(hijack)
 
 		if(sd_unlocked && overloaded_generators)
 			sd_time_remaining -= wait
+			if((percent_completion_remaining <= 0.66) && !engine_room_heated)
+				heat_engine_room()
+
+			if((percent_completion_remaining <= 0.3) && !engine_room_superheated)
+				superheat_engine_room()
+
 			if((sd_time_remaining <= 0) && !sd_detonated)
 				detonate_sd()
 
@@ -292,21 +296,62 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/fusion_engine/source, new_overloading)
 	SIGNAL_HANDLER
 
+	if(!generator_ever_overloaded)
+		generator_ever_overloaded = TRUE
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
+			if(!length(hive.totalXenos))
+				continue
+
+			xeno_announcement(SPAN_XENOANNOUNCE("The talls may be attempting to take their ship down with them in Engineering, stop them!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+
 	adjust_generator_overload_count(new_overloading ? 1 : -1)
 
 /datum/controller/subsystem/hijack/proc/adjust_generator_overload_count(amount = 1)
 	var/generator_overload_percent = round(overloaded_generators / maximum_overload_generators, 0.01)
 	var/old_required_time = sd_min_time + ((1 - generator_overload_percent) * (sd_max_time - sd_min_time))
-	var/percent_completion_remaining = sd_time_remaining / old_required_time
+	percent_completion_remaining = sd_time_remaining / old_required_time
 	overloaded_generators = clamp(overloaded_generators + amount, 0, maximum_overload_generators)
 	generator_overload_percent = round(overloaded_generators / maximum_overload_generators, 0.01)
 	var/new_required_time = sd_min_time + ((1 - generator_overload_percent) * (sd_max_time - sd_min_time))
 	sd_time_remaining = percent_completion_remaining * new_required_time
 
+/datum/controller/subsystem/hijack/proc/heat_engine_room()
+	engine_room_heated = TRUE
+	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/engine_core]
+	engine_room.firealert()
+	engine_room.temperature = T90C
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		var/area/mob_area = get_area(current_mob)
+		if(istype(mob_area, /area/almayer/engineering/engine_core))
+			to_chat(current_mob, SPAN_WARNING("You feel the heat of the room increase as the fusion engines whirr louder."))
+
+/datum/controller/subsystem/hijack/proc/superheat_engine_room()
+	engine_room_superheated = TRUE
+	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/engine_core]
+	engine_room.firealert()
+	engine_room.temperature = T120C //slowly deals burn at this temp
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		var/area/mob_area = get_area(current_mob)
+		if(istype(mob_area, /area/almayer/engineering/engine_core))
+			to_chat(current_mob, SPAN_BOLDWARNING("The room feels incredibly hot, you can't take much more of this!"))
 
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
 	sd_detonated = TRUE
+	var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		var/turf/current_turf = get_turf(current_mob)
+		if(!current_mob?.loc || !current_mob.client || !current_turf || !is_mainship_level(current_turf.z))
+			continue
+
+		to_chat(current_mob, SPAN_WARNING("The ship's deck worryingly creaks underneath you."))
+		playsound_client(current_mob.client, creak_picked, vol = 50)
+
+	sleep(7 SECONDS)
+	shakeship(2, 10, TRUE)
+
 	marine_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.")
 	sleep(5 SECONDS)
 
@@ -317,14 +362,14 @@ SUBSYSTEM_DEF(hijack)
 	var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
 	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
 	for(var/mob/current_mob as anything in GLOB.mob_list) //This only does something cool for the people about to die, but should prove pretty interesting.
-		if(!current_mob?.loc)
-			continue //In case something changes when we sleep().
+		var/turf/current_turf = get_turf(current_mob)
+		if(!current_mob?.loc || !current_turf)
+			continue
 
 		if(current_mob.stat == DEAD)
 			dead_mobs |= current_mob
 			continue
 
-		var/turf/current_turf = get_turf(current_mob)
 		if(is_mainship_level(current_turf.z))
 			alive_mobs |= current_mob
 			shake_camera(current_mob, 110, 4)
@@ -344,14 +389,17 @@ SUBSYSTEM_DEF(hijack)
 
 	sleep(3.5 SECONDS)
 	for(var/mob/current_mob as anything in alive_mobs)
-		if(current_mob?.loc) //Who knows, maybe they escaped, or don't exist anymore.
-			var/turf/current_mob_turf = get_turf(current_mob)
-			if(is_mainship_level(current_mob_turf.z))
-				if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
-					continue
-				current_mob.death(create_cause_data("nuclear explosion"))
-			else
-				current_mob.client.remove_from_screen(explosive_cinematic) //those who managed to escape the z level at last second shouldn't have their view obstructed.
+		var/turf/current_mob_turf = get_turf(current_mob)
+		if(!current_mob?.loc || !current_mob_turf) //Who knows, maybe they escaped, or don't exist anymore.
+			continue
+
+		if(is_mainship_level(current_mob_turf.z))
+			if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+				continue
+
+			current_mob.death(create_cause_data("nuclear explosion"))
+		else
+			current_mob.client.remove_from_screen(explosive_cinematic) //those who managed to escape the z level at last second shouldn't have their view obstructed.
 
 	flick("ship_destroyed", explosive_cinematic)
 	explosive_cinematic.icon_state = "summary_destroyed"
@@ -360,7 +408,7 @@ SUBSYSTEM_DEF(hijack)
 		playsound_client(player, 'sound/effects/explosionfar.ogg', 90)
 
 
-	sleep(5)
+	sleep(0.5 SECONDS)
 	if(SSticker.mode)
 		SSticker.mode.check_win()
 

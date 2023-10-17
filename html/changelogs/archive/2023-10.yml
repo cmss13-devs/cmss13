@@ -215,3 +215,11 @@
       deleted.
   - bugfix: Fixed issues with turfs, notably lighting, arising when building it from
       a sheets stack.
+2023-10-17:
+  VileBeggar:
+  - qol: The Queen's psychic messages now use a bigger font and are harder to miss.
+  Warfan1815:
+  - mapadd: New Squad Briefings south and north of normal briefing! Feel free to use
+      them to your heart's content.
+  - maptweak: Moved long-rest bunks further north and further south of where they
+      were originally

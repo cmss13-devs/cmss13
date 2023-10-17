@@ -1117,6 +1117,7 @@
 	layer = 3.1;
 	pixel_y = 10
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -5644,6 +5645,13 @@
 	icon_state = "white"
 	},
 /area/varadero/interior/toilets)
+"dHc" = (
+/obj/structure/fence,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/exterior/lz2_near)
 "dHD" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/strata{
@@ -12244,6 +12252,7 @@
 	pixel_x = 18;
 	pixel_y = 23
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -14022,6 +14031,10 @@
 /obj/item/device/camera_film,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
+"iZi" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/exterior/lz2_near)
 "iZj" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
@@ -17056,6 +17069,7 @@
 	climb_delay = 1;
 	layer = 2.99
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/coast/east,
 /area/varadero/exterior/lz2_near)
 "kVE" = (
@@ -20542,6 +20556,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior_protected/vessel)
+"naI" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/gm/coast/west,
+/area/varadero/exterior/lz2_near)
 "nbx" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/coast/beachcorner2/south_west,
@@ -22085,6 +22103,7 @@
 	icon_state = "vent4";
 	pixel_y = 25
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -22913,6 +22932,13 @@
 	icon_state = "desert0"
 	},
 /area/varadero/exterior/lz1_near)
+"oDi" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/lz2_near)
 "oDz" = (
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
@@ -33872,6 +33898,7 @@
 /obj/structure/machinery/storm_siren{
 	pixel_y = 5
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "vzt" = (
@@ -34391,6 +34418,7 @@
 /area/varadero/exterior/lz1_near)
 "vMo" = (
 /obj/item/tool/shovel,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -37698,6 +37726,11 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/exterior/lz1_near)
+"xOY" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "xPj" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -60831,45 +60864,45 @@ mPk
 mPk
 mPk
 rYC
-qwQ
-lTR
-lTR
-qwQ
-qwQ
-urD
-urD
-urD
+lFe
+cyC
+cyC
+lFe
+lFe
+oDi
+oDi
+oDi
 kgp
-pdK
-pdK
-fpq
+gyg
+gyg
+iZi
 kVq
-aQN
+hAn
 hQV
-aQN
-geK
-wlB
-lTg
-wlB
-wlB
-wlB
-mnU
-aQN
+hAn
+xwD
+aTw
+cYf
+aTw
+aTw
+aTw
+aYQ
+hAn
 ocz
-aQN
-geK
-wlB
-wlB
-wlB
-wlB
-wlB
-mnU
-wlB
+hAn
+xwD
+aTw
+aTw
+aTw
+aTw
+aTw
+aYQ
+aTw
 aHw
-aQN
+hAn
 vMo
-qNu
-wlB
+org
+aTw
 aTw
 iUH
 cel
@@ -61051,7 +61084,7 @@ wlB
 lTg
 aQN
 wlB
-lTg
+cYf
 aTw
 cFw
 cel
@@ -61233,7 +61266,7 @@ aQN
 kYF
 kgp
 kgp
-wlB
+aTw
 noE
 cFw
 cFw
@@ -61779,7 +61812,7 @@ nCl
 nCl
 nCl
 nCl
-aQN
+hAn
 aTw
 gDr
 ihY
@@ -61961,7 +61994,7 @@ tCV
 iQr
 iQr
 tCV
-iQr
+wkK
 wkK
 sIK
 foE
@@ -62143,7 +62176,7 @@ aCX
 tCV
 iQr
 iQr
-iQr
+wkK
 jAL
 eJN
 vuA
@@ -62325,7 +62358,7 @@ bSQ
 qNu
 wlB
 wlB
-aQN
+hAn
 aTw
 aKJ
 mrR
@@ -62507,7 +62540,7 @@ wlB
 wlB
 kgp
 doH
-nCl
+dHc
 gcE
 xmL
 iUH
@@ -62689,7 +62722,7 @@ wlB
 kgp
 kgp
 kgp
-nCl
+dHc
 aTw
 cFw
 tPK
@@ -62871,7 +62904,7 @@ lTg
 wlB
 gjC
 kgp
-nCl
+dHc
 aTw
 cFw
 ihY
@@ -63053,7 +63086,7 @@ doH
 gXw
 aQN
 wlB
-lTg
+cYf
 aTw
 uAM
 ihY
@@ -63235,7 +63268,7 @@ wlB
 ghW
 wlB
 wlB
-rBq
+xOY
 aTw
 xmL
 deE
@@ -63417,7 +63450,7 @@ wlB
 wlB
 wlB
 wlB
-nCl
+dHc
 aTw
 xmL
 cFw
@@ -63599,7 +63632,7 @@ wlB
 iQr
 wlB
 lTg
-nCl
+dHc
 aTw
 iig
 jks
@@ -63781,7 +63814,7 @@ wlB
 lTg
 wlB
 hPq
-aQN
+hAn
 aTw
 xmL
 qTE
@@ -63963,7 +63996,7 @@ lTg
 iQr
 kgp
 kgp
-nCl
+dHc
 aTw
 cFw
 tPK
@@ -64145,7 +64178,7 @@ rhu
 wlB
 kgp
 kgp
-nCl
+dHc
 aTw
 cFw
 cFw
@@ -64327,7 +64360,7 @@ eqT
 iQr
 eia
 kgp
-nCl
+dHc
 aTw
 cFw
 nwq
@@ -64509,7 +64542,7 @@ lTg
 fIk
 wlB
 kgp
-nCl
+dHc
 noE
 nwq
 cFw
@@ -65601,7 +65634,7 @@ lTg
 iQr
 aQN
 kgp
-nCl
+dHc
 cYf
 cFw
 nwq
@@ -65783,7 +65816,7 @@ iQr
 iQr
 aQN
 wlB
-nCl
+dHc
 aTw
 cFw
 ykU
@@ -65965,7 +65998,7 @@ wlB
 iQr
 aQN
 wlB
-nCl
+dHc
 aTw
 cFw
 cFw
@@ -66147,7 +66180,7 @@ wlB
 wlB
 aQN
 aQN
-nCl
+dHc
 aTw
 cFw
 nwq
@@ -66329,7 +66362,7 @@ wlB
 lTg
 hPq
 kgp
-nCl
+dHc
 aTw
 nwq
 cFw
@@ -66511,7 +66544,7 @@ wlB
 lTg
 kgp
 kgp
-aQN
+hAn
 aTw
 kyp
 kyp
@@ -66693,7 +66726,7 @@ ayx
 kgp
 kgp
 kyP
-aQN
+hAn
 cYf
 iHN
 kyp
@@ -66875,7 +66908,7 @@ aQN
 tMZ
 pvQ
 lTg
-aQN
+hAn
 aTw
 kyp
 cFh
@@ -67057,7 +67090,7 @@ tMZ
 lTg
 tmZ
 tmZ
-tmZ
+naI
 buu
 kyp
 kyp
@@ -67239,7 +67272,7 @@ aQN
 tMZ
 pTI
 rnL
-pdK
+gyg
 nbx
 jek
 jek
@@ -67421,7 +67454,7 @@ tMZ
 fbw
 pdK
 pdK
-pdK
+gyg
 aVC
 xFb
 xFb
@@ -67603,7 +67636,7 @@ pvQ
 tMZ
 pdK
 pdK
-pdK
+gyg
 osb
 xFb
 xFb

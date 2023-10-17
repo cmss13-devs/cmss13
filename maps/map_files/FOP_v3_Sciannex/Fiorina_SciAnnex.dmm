@@ -316,6 +316,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "aif" = (
@@ -711,6 +712,13 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
+"asF" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/lz/near_lzI)
 "atl" = (
 /obj/structure/platform{
 	dir = 1
@@ -2679,6 +2687,12 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/tumor/fiberbush)
+"bya" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/lz/near_lzI)
 "byb" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan27"
@@ -2988,6 +3002,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -3330,6 +3345,15 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/tumor/aux_engi)
+"bTd" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/telecomm/lz1_tram)
 "bTe" = (
 /turf/open/floor/prison{
 	dir = 9;
@@ -4755,6 +4779,13 @@
 	icon_state = "sterile_white"
 	},
 /area/fiorina/tumor/ice_lab)
+"cON" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowfull2"
+	},
+/area/fiorina/station/telecomm/lz1_tram)
 "cPq" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -5487,6 +5518,10 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/station/park)
+"dkL" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison,
+/area/fiorina/lz/near_lzI)
 "dkP" = (
 /obj/structure/largecrate/random,
 /obj/structure/machinery/light/double/blue,
@@ -7854,6 +7889,7 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -8662,6 +8698,10 @@
 	dir = 9
 	},
 /area/fiorina/tumor/aux_engi)
+"fkK" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/closed/wall/r_wall/prison,
+/area/fiorina/station/telecomm/lz1_tram)
 "fkP" = (
 /obj/structure/platform{
 	dir = 1
@@ -9898,6 +9938,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -11887,6 +11928,13 @@
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
+"hgK" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/station/telecomm/lz1_tram)
 "hgS" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan5"
@@ -12514,6 +12562,12 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/civres_blue)
+"hze" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/power_ring)
 "hzq" = (
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
 /obj/structure/surface/table/reinforced/prison,
@@ -12753,6 +12807,13 @@
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
+	},
+/area/fiorina/lz/near_lzI)
+"hHn" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellow2"
 	},
 /area/fiorina/lz/near_lzI)
 "hHq" = (
@@ -13666,6 +13727,7 @@
 	},
 /area/fiorina/station/research_cells)
 "inh" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -13745,6 +13807,7 @@
 /obj/structure/platform{
 	dir = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "iqV" = (
@@ -14708,6 +14771,7 @@
 /area/fiorina/lz/near_lzI)
 "iVb" = (
 /obj/structure/largecrate/random,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -17216,6 +17280,7 @@
 	dir = 8;
 	layer = 2.5
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "kqr" = (
@@ -17986,6 +18051,12 @@
 "kMq" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/civres_blue)
+"kMM" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	icon_state = "blue"
+	},
+/area/fiorina/station/power_ring)
 "kMU" = (
 /obj/effect/spawner/gibspawner/robot,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -20785,6 +20856,13 @@
 	icon_state = "red"
 	},
 /area/fiorina/station/power_ring)
+"myM" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/station/telecomm/lz1_tram)
 "myO" = (
 /obj/structure/closet/firecloset/full,
 /obj/structure/machinery/light/double/blue{
@@ -22002,6 +22080,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "nhi" = (
@@ -22218,6 +22297,7 @@
 /obj/structure/platform_decoration{
 	dir = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -25988,6 +26068,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "pIX" = (
@@ -26101,6 +26182,12 @@
 /obj/structure/bookcase,
 /turf/open/floor/carpet,
 /area/fiorina/station/civres_blue)
+"pNm" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	icon_state = "bluefull"
+	},
+/area/fiorina/station/power_ring)
 "pNI" = (
 /obj/item/stack/tile/plasteel{
 	pixel_x = 3;
@@ -27015,6 +27102,13 @@
 	icon_state = "whitepurplecorner"
 	},
 /area/fiorina/station/research_cells)
+"qrw" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/fiorina/station/power_ring)
 "qrz" = (
 /obj/item/explosive/plastic,
 /turf/open/floor/plating/prison,
@@ -27438,6 +27532,7 @@
 	pixel_y = -3
 	},
 /obj/structure/largecrate/random/case,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "qDG" = (
@@ -34768,6 +34863,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "vgP" = (
@@ -36619,6 +36715,16 @@
 	icon_state = "kitchen"
 	},
 /area/fiorina/station/civres_blue)
+"wpc" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/power_ring)
 "wpf" = (
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/prison{
@@ -38145,6 +38251,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "xnq" = (
@@ -88892,11 +88999,11 @@ bQM
 bQM
 bQM
 bzO
-tnH
-nVq
-rev
-oYM
-kfA
+wpc
+qrw
+kMM
+hze
+pNm
 kfA
 kfA
 kfA
@@ -89317,8 +89424,8 @@ hbC
 ssD
 kqe
 eML
-lNg
-lNg
+bTd
+bTd
 npz
 ahR
 vrN
@@ -90785,7 +90892,7 @@ giX
 giX
 giX
 qHC
-qHC
+bya
 scM
 scM
 xkv
@@ -90997,9 +91104,9 @@ eps
 mYZ
 hKI
 hKI
-hKI
-lnK
-jUK
+dkL
+fkK
+cON
 qVt
 jUK
 scM
@@ -91209,9 +91316,9 @@ hjW
 hKI
 hjW
 hjW
-hKI
+dkL
 vfR
-ydX
+myM
 hDL
 qQl
 jTk
@@ -91421,7 +91528,7 @@ sEi
 sEi
 sEi
 sEi
-sEi
+asF
 fXe
 inh
 ydX
@@ -91633,7 +91740,7 @@ dlW
 dlW
 dlW
 dlW
-dlW
+hHn
 bHl
 inh
 gFq
@@ -91845,9 +91952,9 @@ hjW
 hKI
 hjW
 hjW
-hKI
+dkL
 nhd
-gFq
+hgK
 nes
 qQl
 jTk
@@ -92058,7 +92165,7 @@ lmM
 hKI
 hKI
 qDD
-lnK
+fkK
 iVb
 dIK
 iJM

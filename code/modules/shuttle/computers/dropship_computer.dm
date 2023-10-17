@@ -325,16 +325,14 @@
 
 	.["destinations"] = list()
 	// add flight
-	var/is_groundside = is_ground_level(shuttle.z)
-	if(!is_groundside)
-		.["destinations"] += list(
-			list(
-				"id" = DROPSHIP_FLYBY_ID,
-				"name" = "Flyby",
-				"available" = TRUE,
-				"error" = FALSE
-			)
+	.["destinations"] += list(
+		list(
+			"id" = DROPSHIP_FLYBY_ID,
+			"name" = "Flyby",
+			"available" = TRUE,
+			"error" = FALSE
 		)
+	)
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE
@@ -380,6 +378,17 @@
 				if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 					to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
 					return FALSE
+				var/is_groundside = is_ground_level(shuttle.z)
+				if(is_groundside)
+					if(tgui_alert(user, "This will result in the dropship landing in the same place again, are you SURE this is what you want to do?", "Flyby Confirmation", list("Yes, I want to do a flyby", "No, cancel"), 10 SECONDS) != "Yes, I want to do a flyby")
+						return TRUE
+				if(disabled || shuttle.is_hijacked)
+					return
+				if(comp.dropship_control_lost)
+					to_chat(user, SPAN_WARNING("The dropship isn't responding to controls."))
+					return
+				if(ui.status != UI_INTERACTIVE)
+					return
 				to_chat(user, SPAN_NOTICE("You begin the launch sequence for a flyby."))
 				log_ares_flight(user.name, "Launched Dropship [shuttle.name] on a flyby.")
 				var/log = "[key_name(user)] launched the dropship [src.shuttleId] on flyby."

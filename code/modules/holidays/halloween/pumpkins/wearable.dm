@@ -37,6 +37,7 @@
 	if(!carved_icon && (tool.sharp == IS_SHARP_ITEM_ACCURATE || tool.sharp == IS_SHARP_ITEM_BIG))
 		var/choice = tgui_input_list(user, "Select the pattern to carve on your pumpkin!", "Pumpkin Carving", carvable_icons)
 		if(choice)
+			playsound(loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 			carved_icon = choice
 			name = "carved pumpkin"
 			update_icon()
@@ -51,5 +52,6 @@
 	return pumpkin
 
 /obj/item/clothing/head/pumpkin/corrupted
+	name = "corrupted pumpkin"
 	prefix = "cor_"
 	carvable_icons = list("cry", "sob", "sad", "why", "spooky", "ff")

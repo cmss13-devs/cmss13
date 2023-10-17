@@ -284,6 +284,7 @@
 	name = "ground dirt"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
+	is_groundmap_turf = TRUE
 
 /turf/open/gm/attackby(obj/item/I, mob/user)
 
@@ -647,6 +648,7 @@
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
+	is_groundmap_turf = FALSE // Not real ground
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)

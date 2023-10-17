@@ -28,7 +28,13 @@
 		var/list/turf/all_turfs = block(locate(1, 1, ground_z), locate(world.maxx, world.maxy, ground_z))
 		for(var/turf/open/turf in all_turfs)
 			if(turf.is_groundmap_turf)
-				valid_turfs += turf
+				var/valid = TRUE
+				for(var/atom/movable/movable as anything in turf.contents)
+					if(movable.density && movable.can_block_movement)
+						valid = FALSE
+						break
+				if(valid)
+					valid_turfs += turf
 
 	var/list/turf/picked_turfs = list()
 	for(var/step in 1 to (pumpkin_count - pumpkin_count_decrease * get_days_remaining()))
@@ -75,7 +81,7 @@
 	var/placement_chance = base_chance - (event_progress * ramp_chance)
 	for(var/i = 1 to 4)
 		var/diag = order[i]
-		if(turf.wall_connections[i] != "[CORNER_CLOCKWISE | CORNER_COUNTERCLOCKWISE]") // wall connection code is mysterious
+		if(turf.wall_connections[i] != "5") // CORNER_CLOCKWISE | CORNER_COUNTERCLOCKWISE as string - don't ask me
 			continue
 		if(!prob(placement_chance))
 			continue

@@ -2,6 +2,7 @@
 /obj/structure/pumpkin_patch
 	icon = 'icons/misc/events/pumpkins.dmi'
 	name = "patch of pumpkins"
+	var/empty_name = "\proper vines"
 
 	can_block_movement = FALSE
 	unslashable = TRUE
@@ -24,7 +25,7 @@
 		if(3) icon_state = "[icon_prefix]pumpkins_full"
 		if(2) icon_state = "[icon_prefix]pumpkins_half"
 		if(1) icon_state = "[icon_prefix]pumpkin"
-		else  icon_state = ""
+		else  icon_state = "empty"
 	if(has_vines)
 		overlays += image(icon, loc, "[icon_prefix]vines")
 
@@ -36,15 +37,20 @@
 		pumpkin_count--
 		var/obj/item/clothing/head/pumpkin/pumpkin = new pumpkin_type(loc)
 		user.put_in_hands(pumpkin)
+		playsound(loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 		update_icon()
-		if(pumpkin_count < 1 && !has_vines)
-			qdel(src)
+		if(pumpkin_count < 1)
+			if(!has_vines)
+				qdel(src)
+			else
+				name = empty_name
 		return
 	return ..()
 
 /obj/structure/pumpkin_patch/attackby(obj/item/tool, mob/user)
 	if(has_vines && (tool.sharp == IS_SHARP_ITEM_ACCURATE || tool.sharp == IS_SHARP_ITEM_BIG))
 		to_chat(user, SPAN_NOTICE("You cut down the vines."))
+		playsound(loc, "alien_resin_break", 25)
 		has_vines = FALSE
 		update_icon()
 		if(pumpkin_count < 1 && !has_vines)
@@ -55,4 +61,5 @@
 /obj/structure/pumpkin_patch/corrupted
 	icon_prefix = "cor_"
 	name = "patch of corrupted pumpkins"
+	empty_name = "\proper corrupted vines"
 	pumpkin_type = /obj/item/clothing/head/pumpkin/corrupted

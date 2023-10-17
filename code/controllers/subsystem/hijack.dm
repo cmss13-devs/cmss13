@@ -109,11 +109,11 @@ SUBSYSTEM_DEF(hijack)
 
 		if(sd_unlocked && overloaded_generators)
 			sd_time_remaining -= wait
-/*			if(!engine_room_heated && (sd_time_remaining <= (round(overloaded_generators / maximum_overload_generators, 0.01) * sd_max_time * 0.66)))
+			if(!engine_room_heated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.66)))
 				heat_engine_room()
 
-			if(!engine_room_superheated && (sd_time_remaining <= (round(overloaded_generators / maximum_overload_generators, 0.01) * sd_max_time * 0.33)))
-				superheat_engine_room()*/
+			if(!engine_room_superheated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.33)))
+				superheat_engine_room()
 
 			if((sd_time_remaining <= 0) && !sd_detonated)
 				detonate_sd()
@@ -325,7 +325,7 @@ SUBSYSTEM_DEF(hijack)
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/area/mob_area = get_area(current_mob)
 		if(istype(mob_area, /area/almayer/engineering/engine_core))
-			to_chat(current_mob, SPAN_WARNING("You feel the heat of the room increase as the fusion engines whirr louder."))
+			to_chat(current_mob, SPAN_BOLDWARNING("You feel the heat of the room increase as the fusion engines whirr louder."))
 
 /datum/controller/subsystem/hijack/proc/superheat_engine_room()
 	engine_room_superheated = TRUE
@@ -346,7 +346,7 @@ SUBSYSTEM_DEF(hijack)
 		if(!current_mob?.loc || !current_mob.client || !current_turf || !is_mainship_level(current_turf.z))
 			continue
 
-		to_chat(current_mob, SPAN_WARNING("The ship's deck worryingly creaks underneath you."))
+		to_chat(current_mob, SPAN_BOLDWARNING("The ship's deck worryingly creaks underneath you."))
 		playsound_client(current_mob.client, creak_picked, vol = 50)
 
 	sleep(7 SECONDS)

@@ -8,13 +8,19 @@ SUBSYSTEM_DEF(inactivity)
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
-	if (CONFIG_GET(flag/kick_inactive))
-		for(var/i in GLOB.clients)
-			var/client/C = i
-			if(C.admin_holder && C.admin_holder.rights & R_ADMIN) //Skip admins.
-				continue
-			if (C.is_afk(INACTIVITY_KICK))
-				if (!istype(C.mob, /mob/dead))
-					log_access("AFK: [key_name(C)]")
-					to_chat(C, SPAN_WARNING("You have been inactive for more than 10 minutes and have been disconnected."))
-					qdel(C)
+	// Maybe we should just get a SS to bandaid all important global lists like this?
+	var/cleared_any = list_clear_nulls(GLOB.clients)
+	if(cleared_any)
+		debug_log("Removed nulls from GLOB.clients!")
+
+	if (!CONFIG_GET(flag/kick_inactive))
+		return
+
+	for(var/client/current as anything in GLOB.clients)
+		if(current.admin_holder && current.admin_holder.rights & R_ADMIN) //Skip admins.
+			continue
+		if (current.is_afk(INACTIVITY_KICK))
+			if (!istype(current.mob, /mob/dead))
+				log_access("AFK: [key_name(current)]")
+				to_chat(current, SPAN_WARNING("You have been inactive for more than 10 minutes and have been disconnected."))
+				qdel(current)

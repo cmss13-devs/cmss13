@@ -1036,6 +1036,9 @@ Byond.subscribeTo("remove_mc", remove_mc);
 Byond.subscribeTo("add_verb_list", add_verb_list);
 
 function createOptionsButton() {
+	if (document.getElementById("options")) {
+		return;
+	}
 	var button = document.createElement("BUTTON");
 	button.onclick = function () {
 		openOptionsMenu();

@@ -1,16 +1,15 @@
-#define INACTIVITY_KICK 6000 //10 minutes in ticks (approx.)
+#define INACTIVITY_KICK 10 MINUTES
 
 SUBSYSTEM_DEF(inactivity)
 	name = "Inactivity"
-	wait = INACTIVITY_KICK
+	wait = INACTIVITY_KICK * 0.5
 	flags = SS_NO_INIT | SS_BACKGROUND
 	priority = SS_PRIORITY_INACTIVITY
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
 	// Maybe we should just get a SS to bandaid all important global lists like this?
-	var/cleared_any = list_clear_nulls(GLOB.clients)
-	if(cleared_any)
+	if(list_clear_nulls(GLOB.clients))
 		debug_log("Removed nulls from GLOB.clients!")
 
 	if (!CONFIG_GET(flag/kick_inactive))

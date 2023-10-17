@@ -41,9 +41,12 @@
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node/Initialize(mapload, ...)
 	. = ..()
+	if(is_ground_level(z))
+		return
 	var/turf/node_tile = loc
-	if(!is_ground_level(z) && node_tile.is_weedable() < weed_strength_required)
-		stack_trace("[src] at [x],[y],[z] is on a turf where weeds cannot normally grow.")
+	if(node_tile.is_weedable() >= weed_strength_required)
+		return
+	stack_trace("[src] at [x],[y],[z] is on a turf where weeds cannot normally grow.")
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node/hardy
 	name = "Distress Xeno hardy node spawner"
@@ -57,9 +60,12 @@
 
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel/Initialize(mapload, ...)
 	. = ..()
+	if(is_ground_level(z))
+		return
 	var/turf/tunnel_tile = loc
-	if(!is_ground_level(z) && !tunnel_tile.can_dig_xeno_tunnel())
-		stack_trace("[src] at [x],[y],[z] is on a turf where tunnels cannot normally be built.")
+	if(tunnel_tile.can_dig_xeno_tunnel())
+		return
+	stack_trace("[src] at [x],[y],[z] is on a turf where tunnels cannot normally be built.")
 
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance
 	name = "Distress Xeno maintenance tunnel spawner"

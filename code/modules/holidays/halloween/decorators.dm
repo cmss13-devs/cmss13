@@ -35,6 +35,7 @@
 						break
 				if(valid)
 					valid_turfs += turf
+				CHECK_TICK
 
 	var/list/turf/picked_turfs = list()
 	for(var/step in 1 to (pumpkin_count - pumpkin_count_decrease * get_days_remaining()))
@@ -71,6 +72,7 @@
 	for(var/turf/closed/wall/almayer/turf in world)
 		if(is_mainship_level(turf.z))
 			decorate_turf(turf)
+			CHECK_TICK
 
 /datum/game_decorator/halloween/cobwebs/proc/decorate_turf(turf/closed/wall/almayer/turf)
 	var/static/list/order = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST) // Ordering of wall_connections

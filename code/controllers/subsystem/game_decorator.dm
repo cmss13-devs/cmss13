@@ -27,4 +27,5 @@ SUBSYSTEM_DEF(game_decorator)
 	SIGNAL_HANDLER
 	decorate()
 /datum/game_decorator/proc/decorate()
+	set waitfor = FALSE
 	return

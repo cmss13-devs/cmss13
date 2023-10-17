@@ -270,6 +270,10 @@
 				to_chat(user, SPAN_WARNING("You consider overloading [src]'s safeties, but you decide against it."))
 				return
 
+			if(!inoperable())
+				to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to overload it!"))
+				return
+
 			to_chat(user, SPAN_WARNING("You start overloading the safeties on [src]..."))
 			if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return

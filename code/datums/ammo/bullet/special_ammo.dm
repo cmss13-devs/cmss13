@@ -46,7 +46,7 @@
 /datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
 	name = "holo-targeting smartgun bullet"
 	damage = 30
-///Stuff for the HRP holotargetting stacks
+	///Stuff for the HRP holotargetting stacks
 	var/holo_stacks = 15
 
 /datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/M, obj/projectile/P)

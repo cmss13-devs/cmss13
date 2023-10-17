@@ -1,48 +1,81 @@
 /datum/ammo
 	var/name = "generic bullet"
-	var/headshot_state = null //Icon state when a human is permanently killed with it by execution/suicide.
+	//Icon state when a human is permanently killed with it by execution/suicide.
+	var/headshot_state = null
 	var/icon = 'icons/obj/items/weapons/projectiles.dmi'
 	var/icon_state = "bullet"
-	var/ping = "ping_b" //The icon that is displayed when the bullet bounces off something.
-	var/sound_hit //When it deals damage.
-	var/sound_armor //When it's blocked by human armor.
-	var/sound_miss //When it misses someone.
-	var/sound_bounce //When it bounces off something.
-	var/sound_shield_hit //When the bullet is absorbed by a xeno_shield
-
-	var/accurate_range_min = 0 // Snipers use this to simulate poor accuracy at close ranges
-	var/scatter = 0 // How much the ammo scatters when burst fired, added to gun scatter, along with other mods
+	/// The icon that is displayed when the bullet bounces off something.
+	var/ping = "ping_b"
+	/// When it deals damage.
+	var/sound_hit
+	/// When it's blocked by human armor.
+	var/sound_armor
+ 	/// When it misses someone.
+	var/sound_miss
+	/// When it bounces off something.
+	var/sound_bounce
+	/// When the bullet is absorbed by a xeno_shield
+	var/sound_shield_hit
+	/// Snipers use this to simulate poor accuracy at close ranges
+	var/accurate_range_min = 0
+	/// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
+	var/scatter = 0
 	var/stamina_damage = 0
-	var/damage = 0 // This is the base damage of the bullet as it is fired
-	var/damage_type = BRUTE // BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
-	var/penetration = 0 // How much armor it ignores before calculations take place
-	var/shrapnel_chance = 0 // The % chance it will imbed in a human
-	var/shrapnel_type = 0 // The shrapnel type the ammo will embed, if the chance rolls
-	var/bonus_projectiles_type // Type path of the extra projectiles
-	var/bonus_projectiles_amount = 0 // How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
-	var/debilitate[] = null // Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
-	var/pen_armor_punch = 0.5 // how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)
-	var/damage_armor_punch = 0.5 // how much armor breaking is done by sheer weapon force. This is for big blunt weapons
-	var/sound_override = null // if we should play a special sound when firing.
+	/// This is the base damage of the bullet as it is fired
+	var/damage = 0
+	/// BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
+	var/damage_type = BRUTE
+	/// How much armor it ignores before calculations take place
+	var/penetration = 0
+	/// The % chance it will imbed in a human
+	var/shrapnel_chance = 0
+	/// The shrapnel type the ammo will embed, if the chance rolls
+	var/shrapnel_type = 0
+	/// Type path of the extra projectiles
+	var/bonus_projectiles_type
+	/// How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
+	var/bonus_projectiles_amount = 0
+	/// Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
+	var/debilitate[] = null
+	/// how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)
+	var/pen_armor_punch = 0.5
+	/// how much armor breaking is done by sheer weapon force. This is for big blunt weapons
+	var/damage_armor_punch = 0.5
+	/// if we should play a special sound when firing.
+	var/sound_override = null
 	var/flags_ammo_behavior = NO_FLAGS
 
-	var/accuracy = HIT_ACCURACY_TIER_1 // This is added to the bullet's base accuracy.
-	var/accuracy_var_low = PROJECTILE_VARIANCE_TIER_9 // How much the accuracy varies when fired. // This REDUCES the lower bound of accuracy variance by 2%, to 96%.
-	var/accuracy_var_high = PROJECTILE_VARIANCE_TIER_9 // This INCREASES the upper bound of accuracy variance by 2%, to 107%.
-	var/accurate_range = 6 // For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though.
-	var/max_range = 22 // This will de-increment a counter on the bullet.
-	var/damage_var_low = PROJECTILE_VARIANCE_TIER_9 // Same as with accuracy variance.
-	var/damage_var_high = PROJECTILE_VARIANCE_TIER_9 // This INCREASES the upper bound of damage variance by 2%, to 107%.
-	var/damage_falloff = DAMAGE_FALLOFF_TIER_10 // How much damage the bullet loses per turf traveled after the effective range
-	var/damage_buildup = DAMAGE_BUILDUP_TIER_1 // How much damage the bullet loses per turf away before the effective range
-	var/effective_range_min = EFFECTIVE_RANGE_OFF //What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.
-	var/effective_range_max = EFFECTIVE_RANGE_OFF //What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.
-	var/shell_speed = AMMO_SPEED_TIER_1 // How fast the projectile moves.
+	/// This is added to the bullet's base accuracy.
+	var/accuracy = HIT_ACCURACY_TIER_1
+	/// How much the accuracy varies when fired. // This REDUCES the lower bound of accuracy variance by 2%, to 96%.
+	var/accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
+	/// This INCREASES the upper bound of accuracy variance by 2%, to 107%.
+	var/accuracy_var_high = PROJECTILE_VARIANCE_TIER_9
+	/// For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though.
+	var/accurate_range = 6
+	/// This will de-increment a counter on the bullet.
+	var/max_range = 22
+	/// Same as with accuracy variance.
+	var/damage_var_low = PROJECTILE_VARIANCE_TIER_9
+	/// This INCREASES the upper bound of damage variance by 2%, to 107%.
+	var/damage_var_high = PROJECTILE_VARIANCE_TIER_9
+	/// How much damage the bullet loses per turf traveled after the effective range
+	var/damage_falloff = DAMAGE_FALLOFF_TIER_10
+	/// How much damage the bullet loses per turf away before the effective range
+	var/damage_buildup = DAMAGE_BUILDUP_TIER_1
+	/// What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.
+	var/effective_range_min = EFFECTIVE_RANGE_OFF
+	/// What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.
+	var/effective_range_max = EFFECTIVE_RANGE_OFF
+	/// How fast the projectile moves.
+	var/shell_speed = AMMO_SPEED_TIER_1
 
 	var/handful_type = /obj/item/ammo_magazine/handful
 	var/handful_color
-	var/handful_state = "bullet" //custom handful sprite, for shotgun shells or etc.
-	var/multiple_handful_name //so handfuls say 'buckshot shells' not 'shell'
+	/// custom handful sprite, for shotgun shells or etc.
+	var/handful_state = "bullet"
+	/// so handfuls say 'buckshot shells' not 'shell'
+	var/multiple_handful_name
 
 	/// Does this apply xenomorph behaviour delegate?
 	var/apply_delegate = TRUE
@@ -116,7 +149,7 @@
 	slam_back(living_mob, fired_projectile)
 
 /datum/ammo/proc/slam_back(mob/living/living_mob, obj/projectile/fired_projectile)
-	//Either knockback or slam them into an obstacle.
+	/// Either knockback or slam them into an obstacle.
 	var/direction = Get_Compass_Dir(fired_projectile.z ? fired_projectile : fired_projectile.firer, living_mob) //More precise than get_dir.
 	if(!direction) //Same tile.
 		return

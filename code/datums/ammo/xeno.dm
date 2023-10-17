@@ -132,79 +132,6 @@
 
 	bonus_projectiles_amount = 0
 
-/*proc/neuro_flak(turf/T, obj/projectile/P, datum/callback/CB, power, insta_neuro, radius)
-	if(!T) return FALSE
-	var/firer = P.firer
-	var/hit_someone = FALSE
-	for(var/mob/living/carbon/M in orange(radius,T))
-		if(isxeno(M) && isxeno(firer) && M:hivenumber == firer:hivenumber)
-			continue
-
-		if(HAS_TRAIT(M, TRAIT_NESTED))
-			continue
-
-		hit_someone = TRUE
-		CB.Invoke(M, power, insta_neuro)
-
-		P.play_hit_effect(M)
-
-	return hit_someone
-
-/datum/ammo/xeno/toxin/burst //sentinel burst
-	name = "neurotoxic air splash"
-	effect_power = XENO_NEURO_TIER_1
-	spit_cost = 50
-	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
-
-/datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M, obj/projectile/P)
-	if(isxeno(M) && isxeno(P.firer) && M:hivenumber == P.firer:hivenumber)
-		neuro_callback.Invoke(M, effect_power*1.5, TRUE)
-
-	neuro_flak(get_turf(M), P, neuro_callback, effect_power, FALSE, 1)
-
-/datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/projectile/P)
-	return neuro_flak(T, P, neuro_callback, effect_power, FALSE, 1)
-
-/datum/ammo/xeno/sticky
-	name = "sticky resin spit"
-	icon_state = "sticky"
-	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE
-	added_spit_delay = 5
-	spit_cost = 40
-
-	shell_speed = AMMO_SPEED_TIER_3
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
-	max_range = 32
-
-/datum/ammo/xeno/sticky/on_hit_mob(mob/M,obj/projectile/P)
-	drop_resin(get_turf(P))
-
-/datum/ammo/xeno/sticky/on_hit_obj(obj/O,obj/projectile/P)
-	drop_resin(get_turf(P))
-
-/datum/ammo/xeno/sticky/on_hit_turf(turf/T,obj/projectile/P)
-	drop_resin(T)
-
-/datum/ammo/xeno/sticky/do_at_max_range(obj/projectile/P)
-	drop_resin(get_turf(P))
-
-/datum/ammo/xeno/sticky/proc/drop_resin(turf/T)
-	if(T.density)
-		return
-
-	for(var/obj/O in T.contents)
-		if(istype(O, /obj/item/clothing/mask/facehugger))
-			return
-		if(istype(O, /obj/effect/alien/egg))
-			return
-		if(istype(O, /obj/structure/mineral_door) || istype(O, /obj/effect/alien/resin) || istype(O, /obj/structure/bed))
-			return
-		if(O.density && !(O.flags_atom & ON_BORDER))
-			return
-
-	new /obj/effect/alien/resin/sticky/thin(T) */
-
 /datum/ammo/xeno/acid
 	name = "acid spit"
 	icon_state = "xeno_acid"
@@ -282,52 +209,6 @@
 		PAS = new /datum/effects/prae_acid_stacks(H)
 	else
 		PAS.increment_stack_count()
-
-/*datum/ammo/xeno/prae_skillshot
-	name = "blob of acid"
-	icon_state = "boiler_gas2"
-	ping = "ping_x"
-	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
-
-	accuracy = HIT_ACCURACY_TIER_5
-	accurate_range = 32
-	max_range = 8
-	damage = 20
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	shell_speed = AMMO_SPEED_TIER_1
-	scatter = SCATTER_AMOUNT_TIER_10
-
-/datum/ammo/xeno/prae_skillshot/on_hit_mob(mob/M, obj/projectile/P)
-	acid_stacks_aoe(get_turf(P))
-
-/datum/ammo/xeno/prae_skillshot/on_hit_obj(obj/O, obj/projectile/P)
-	acid_stacks_aoe(get_turf(P))
-
-/datum/ammo/xeno/prae_skillshot/on_hit_turf(turf/T, obj/projectile/P)
-	acid_stacks_aoe(get_turf(P))
-
-/datum/ammo/xeno/prae_skillshot/do_at_max_range(obj/projectile/P)
-	acid_stacks_aoe(get_turf(P))
-
-/datum/ammo/xeno/prae_skillshot/proc/acid_stacks_aoe(turf/T)
-
-	if (!istype(T))
-		return
-
-	for (var/mob/living/carbon/human/H in orange(1, T))
-		to_chat(H, SPAN_XENODANGER("You are spattered with acid!"))
-		animation_flash_color(H)
-		var/datum/effects/prae_acid_stacks/PAS = null
-		for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
-			PAS = prae_acid_stacks
-			break
-
-		if (PAS == null)
-			PAS = new /datum/effects/prae_acid_stacks(H)
-			PAS.increment_stack_count()
-		else
-			PAS.increment_stack_count()
-			PAS.increment_stack_count() */
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"

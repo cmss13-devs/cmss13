@@ -31,7 +31,6 @@
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_auto_fire,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
-		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
@@ -50,6 +49,9 @@
 	var/long_range_cooldown = 2
 	var/recycletime = 120
 	var/cover_open = FALSE
+
+	/// Cooldown used for the delay on sound and to_chat() when IFF encounters a friendly target while trying to fire
+	COOLDOWN_DECLARE(iff_halt_cooldown)
 
 	unacidable = 1
 	indestructible = 1
@@ -106,6 +108,7 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 	))
+	RegisterSignal(src, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
 
 /obj/item/weapon/gun/smartgun/get_examine_text(mob/user)
 	. = ..()
@@ -325,6 +328,47 @@
 			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
 			return FALSE
 
+#define SMARTGUN_IFF_RANGE_CHECK 7
+#define SMARTGUN_IFF_HALT_COOLDOWN (0.5 SECONDS)
+
+/obj/item/weapon/gun/smartgun/proc/check_firing_lane(obj/item/weapon/gun/smartgun/firing_weapon, obj/projectile/projectile_to_fire, atom/target, mob/living/user)
+	SIGNAL_HANDLER
+
+	var/angle = get_angle(user, target)
+
+	var/range_to_check = SMARTGUN_IFF_RANGE_CHECK
+
+	var/extended_target_turf = get_angle_target_turf(user, angle, range_to_check)
+
+	var/turf/current_turf = get_turf(user)
+
+	if(!current_turf || !extended_target_turf)
+		return COMPONENT_CANCEL_GUN_BEFORE_FIRE
+
+	var/list/checked_turfs = getline2(current_turf, extended_target_turf)
+
+	checked_turfs -= current_turf
+
+	for(var/turf/checked_turf as anything in checked_turfs)
+
+		//Wall, should block the bullet so we're good to stop checking.
+		if(istype(checked_turf, /turf/closed))
+			return
+
+		for(var/mob/living/checked_living in checked_turf)
+			if(!checked_living.lying && checked_living.get_target_lock(user.faction_group))
+				if(COOLDOWN_FINISHED(src, iff_halt_cooldown))
+					playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
+					to_chat(user, SPAN_WARNING("[src] halts firing as an IFF marked target crosses your field of fire!"))
+					COOLDOWN_START(src, iff_halt_cooldown, SMARTGUN_IFF_HALT_COOLDOWN)
+
+				return COMPONENT_CANCEL_GUN_BEFORE_FIRE
+
+			return //if we have a target we *can* hit and find it before any IFF targets we want to fire
+
+#undef SMARTGUN_IFF_RANGE_CHECK
+#undef SMARTGUN_IFF_HALT_COOLDOWN
+
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))
 		return
@@ -353,10 +397,12 @@
 	secondary_toggled = FALSE
 	if(iff_enabled)
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
+		RegisterSignal(src, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
 		drain += 10
 		MD.iff_signal = initial(MD.iff_signal)
 	if(!iff_enabled)
 		remove_bullet_trait("iff")
+		UnregisterSignal(src, COMSIG_GUN_BEFORE_FIRE)
 		drain -= 10
 		MD.iff_signal = null
 

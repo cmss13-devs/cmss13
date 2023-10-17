@@ -122,6 +122,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\__DEFINES\dcs\signals\signals_global.dm"
 #include "code\__DEFINES\dcs\signals\signals_subsystem.dm"
 #include "code\__DEFINES\dcs\signals\atom\signals_atom.dm"
+#include "code\__DEFINES\dcs\signals\atom\signals_gun.dm"
 #include "code\__DEFINES\dcs\signals\atom\signals_item.dm"
 #include "code\__DEFINES\dcs\signals\atom\signals_movable.dm"
 #include "code\__DEFINES\dcs\signals\atom\signals_obj.dm"

@@ -8,9 +8,6 @@
 	exproof = TRUE
 	needs_power = FALSE
 
-	// True if we are doing a flyby
-	var/is_set_flyby = FALSE
-
 	// Admin disabled
 	var/disabled = FALSE
 
@@ -54,15 +51,15 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/enable()
 	disabled = FALSE
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/proc/update_equipment(optimised=FALSE)
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/update_equipment(optimised=FALSE, is_flyby=FALSE)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 	if(!dropship)
 		return
 
 	// initial flight time
-	var/flight_duration =  is_set_flyby ? DROPSHIP_TRANSIT_DURATION : DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
+	var/flight_duration =  is_flyby ? DROPSHIP_TRANSIT_DURATION : DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
 	if(optimised)
-		if(is_set_flyby)
+		if(is_flyby)
 			flight_duration = DROPSHIP_TRANSIT_DURATION * 1.5
 		else
 			flight_duration = DROPSHIP_TRANSIT_DURATION * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL
@@ -76,7 +73,7 @@
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
 		// fuel enhancer
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-			if(is_set_flyby)
+			if(is_flyby)
 				flight_duration = flight_duration / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
 			else
 				flight_duration = flight_duration * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
@@ -320,7 +317,6 @@
 		.["target_destination"] = shuttle.in_flyby? "Flyby" : shuttle.destination.name
 
 	.["door_status"] = is_remote ? list() : shuttle.get_door_data()
-	.["flight_configuration"] = is_set_flyby ? "flyby" : "ferry"
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	.["destinations"] = list()
@@ -372,12 +368,13 @@
 			// automatically apply optimisation if user is a pilot
 			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 				is_optimised = TRUE
-			update_equipment(is_optimised)
+
 			var/dock_id = params["target"]
 			if(dock_id == DROPSHIP_FLYBY_ID)
 				if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 					to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
 					return FALSE
+				update_equipment(is_optimised, TRUE)
 				to_chat(user, SPAN_NOTICE("You begin the launch sequence for a flyby."))
 				log_ares_flight(user.name, "Launched Dropship [shuttle.name] on a flyby.")
 				var/log = "[key_name(user)] launched the dropship [src.shuttleId] on flyby."
@@ -386,6 +383,7 @@
 				shuttle.send_for_flyby()
 				return TRUE
 
+			update_equipment(is_optimised, FALSE)
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
@@ -426,18 +424,6 @@
 			else
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 				to_chat(user, SPAN_WARNING("Door controls have been overridden. Please call technical support."))
-		if("set-ferry")
-			is_set_flyby = FALSE
-			log_ares_flight(user.name, "Set Dropship [shuttle.name] to transport runs.")
-			var/log = "[key_name(user)] set the dropship [src.shuttleId] into transport"
-			msg_admin_niche(log)
-			log_interact(user, msg = "[log]")
-		if("set-flyby")
-			is_set_flyby = TRUE
-			log_ares_flight(user.name, "Set Dropship [shuttle.name] to flyby runs.")
-			var/log = "[key_name(user)] set the dropship [src.shuttleId] into flyby."
-			msg_admin_niche(log)
-			log_interact(user, msg = "[log]")
 		if("set-automate")
 			var/almayer_lz = params["hangar_id"]
 			var/ground_lz = params["ground_id"]

@@ -836,14 +836,14 @@
 
 		if(href_list["makecultist"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
-			preset.load_race(H, hive.hivenumber)
-			preset.load_status(H)
+			preset.load_race(H)
+			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
 
 		else if(href_list["makecultistleader"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
-			preset.load_race(H, hive.hivenumber)
-			preset.load_status(H)
+			preset.load_race(H)
+			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
 
 		H.faction = hive.internal_faction
@@ -1310,10 +1310,9 @@
 		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
-
-		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
-
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+
+		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>PRESS REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1393,9 +1392,9 @@
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
-		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
-
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+
+		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>USCM FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1472,11 +1471,11 @@
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
-		GLOB.WYFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
-
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 		if(!customname)
 			return
+
+		GLOB.WYFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1554,11 +1553,11 @@
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
-		GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
-
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 		if(!customname)
 			return
+
+		GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1b748c'>COLONIAL MARSHAL BUREAU FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1964,7 +1963,7 @@
 		supply_controller.shoppinglist += new_order
 
 		//Can no longer request a nuke
-		GLOB.ares_link.interface.nuke_available = FALSE
+		GLOB.ares_datacore.nuke_available = FALSE
 
 		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDNANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")

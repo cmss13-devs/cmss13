@@ -102,7 +102,7 @@ Verbs related to getting fucking jacked, bro
 	//humans have 100 stamina
 	//default loss per pushup = 5 stamina
 	var/stamina_loss = 5
-	if(issynth(src))
+	if(!skills || issynth(src))
 		return 0
 	switch(skills.get_skill_level(SKILL_ENDURANCE))
 		if(SKILL_ENDURANCE_NONE)

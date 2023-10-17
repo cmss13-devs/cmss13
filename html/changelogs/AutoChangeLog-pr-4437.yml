@@ -1,0 +1,9 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Moved most data storage from ARES Interface and APOLLO consoles to a new ARES datacore datum."
+  - code_imp: "Moved the two consoles to separate files for easier navigation, and moved their respective UI data to the files."
+  - code_imp: "Ares logging procs are now global procs with integrated can_log checks, rather than requiring definition of ares_link for every use."
+  - rscadd: "Added ares_can_log checks to all the places I could find missing them."
+  - bugfix: "Fixed missing rejection button for access tickets."
+  - rscdel: "Removed claim ticket button from Access Tickets."

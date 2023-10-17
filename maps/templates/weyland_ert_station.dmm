@@ -2795,7 +2795,7 @@
 "Js" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/transmitter/rotary{
-	callable = 0;
+	do_not_disturb = 2;
 	name = "Weyland-Yutani Station CiC";
 	phone_category = "W-Y";
 	phone_id = "W-Y Station CiC"
@@ -3588,7 +3588,7 @@
 "SE" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary{
-	callable = 0;
+	do_not_disturb = 2;
 	name = "Weyland-Yutani Station Meeting Room";
 	phone_category = "W-Y";
 	phone_id = "W-Y Station Meeting Room"

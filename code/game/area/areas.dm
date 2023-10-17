@@ -90,7 +90,7 @@
 	initialize_power()
 
 /area/Initialize(mapload, ...)
-	icon_state = "" //Used to reset the icon overlay, I assume.
+	icon = null
 	layer = AREAS_LAYER
 	uid = ++global_uid
 	. = ..()

@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Fixed floodlight stacking to make mostly invincible walls"
-  - refactor: "Refactored 90% of the floodlight code"

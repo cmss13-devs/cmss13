@@ -64,7 +64,7 @@
 //crashlanding-upp-bar.dmm
 /datum/equipment_preset/survivor/upp/sapper
 	name = "Survivor - UPP Sapper"
-	paygrade = "UE3S"
+	paygrade = "UE3"
 	assignment = JOB_UPP_ENGI
 	rank = JOB_UPP_ENGI
 	skills = /datum/skills/military/survivor/upp_sapper
@@ -92,7 +92,7 @@
 //crashlanding-upp-bar.dmm
 /datum/equipment_preset/survivor/upp/medic
 	name = "Survivor - UPP Medic"
-	paygrade = "UE3M"
+	paygrade = "UE3"
 	assignment = JOB_UPP_MEDIC
 	rank = JOB_UPP_MEDIC
 	skills = /datum/skills/military/survivor/upp_medic

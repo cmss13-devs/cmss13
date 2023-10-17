@@ -325,14 +325,16 @@
 
 	.["destinations"] = list()
 	// add flight
-	.["destinations"] += list(
-		list(
-			"id" = DROPSHIP_FLYBY_ID,
-			"name" = "Flyby",
-			"available" = TRUE,
-			"error" = FALSE
+	var/is_groundside = is_ground_level(shuttle.z)
+	if(!is_groundside)
+		.["destinations"] += list(
+			list(
+				"id" = DROPSHIP_FLYBY_ID,
+				"name" = "Flyby",
+				"available" = TRUE,
+				"error" = FALSE
+			)
 		)
-	)
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE

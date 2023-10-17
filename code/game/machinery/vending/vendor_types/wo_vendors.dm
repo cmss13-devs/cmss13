@@ -148,7 +148,6 @@
 		list("SPECIAL AMMUNITION", -1, null, null),
 		list("Incinerator Tank", round(scale * 2.5), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Ammo Box (10x24mm)", round(scale * 5), /obj/item/ammo_magazine/rifle/lmg, VENDOR_ITEM_REGULAR),
-		list("M44 Heavy Speed Loader (.44)", round(scale * 2), /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
 		list("M44 Marksman Speed Loader (.44)", round(scale * 2), /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
 		list("M4A3 HP Magazine (9mm)", round(scale * 5), /obj/item/ammo_magazine/pistol/hp, VENDOR_ITEM_REGULAR),
 		list("M56 Battery", round(scale * 5), /obj/item/smartgun_battery, VENDOR_ITEM_REGULAR),

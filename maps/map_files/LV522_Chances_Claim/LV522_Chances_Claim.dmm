@@ -20717,7 +20717,7 @@
 /area/lv522/atmos/cargo_intake)
 "iFe" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/stunprod,
+/obj/item/weapon/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
 	},
@@ -48141,10 +48141,7 @@
 	pixel_y = 6
 	},
 /obj/item/handcuffs,
-/obj/item/weapon/baton{
-	pixel_x = -2;
-	pixel_y = 10
-	},
+/obj/item/weapon/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},

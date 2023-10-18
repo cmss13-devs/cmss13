@@ -1,0 +1,4 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - bugfix: "Equipped marine presets spawn with full food on spawn"

@@ -1,6 +1,6 @@
 /datum/xeno_mutator/eggsac
 	name = "STRAIN: Carrier - Eggsac"
-	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal"
+	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal. You can also place a limited number of eggs on normal weeds."
 	flavor_description = "An egg is always an adventure; the next one may be different."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -15,6 +15,7 @@
 		/datum/action/xeno_action/active_toggle/generate_egg,
 		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
 	)
+	behavior_delegate_type = /datum/behavior_delegate/carrier_eggsac
 	keystone = TRUE
 
 /datum/xeno_mutator/eggsac/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
@@ -40,7 +41,39 @@
 	carrier.update_eggsac_overlays()
 	carrier.eggs_max = 12
 	carrier.egg_planting_range = 2
+	apply_behavior_holder(carrier)
 	return TRUE
+
+/datum/behavior_delegate/carrier_eggsac
+	name = "Eggsac Carrier Behavior Delegate"
+	var/list/eggs_sustained = list()
+	var/egg_sustain_cap = 4
+	var/sustain_distance = 14
+
+/datum/behavior_delegate/carrier_eggsac/append_to_stat()
+	. = "Eggs sustained: [length(eggs_sustained)] / [egg_sustain_cap]"
+
+/datum/behavior_delegate/carrier_eggsac/on_life()
+	if(length(eggs_sustained) > egg_sustain_cap)
+		var/obj/effect/alien/egg/carrier_egg/my_egg = eggs_sustained[1]
+		my_egg.remove_owner_and_decay()
+		to_chat(bound_xeno, SPAN_XENOWARNING("You can only sustain [egg_sustain_cap] eggs off hive weeds! Your last placed egg is decaying rapidly."))
+
+	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
+		//Get the distance from us to our sustained egg
+		if(get_dist(bound_xeno, my_egg) <= sustain_distance)
+			my_egg.last_refreshed = world.time
+		else
+			my_egg.check_decay()
+
+/datum/behavior_delegate/carrier_eggsac/handle_death(mob/M)
+	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
+		my_egg.remove_owner_and_decay()
+
+/datum/behavior_delegate/carrier_eggsac/Destroy(force, ...)
+	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
+		my_egg.remove_owner_and_decay()
+	return ..()
 
 /datum/action/xeno_action/active_toggle/generate_egg
 	name = "Generate Eggs (50)"

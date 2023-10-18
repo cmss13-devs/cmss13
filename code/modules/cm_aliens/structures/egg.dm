@@ -296,3 +296,46 @@
 			linked_egg.HasProximity(C)
 		if(linked_eggmorph)
 			linked_eggmorph.HasProximity(C)
+
+/*
+SPECIAL EGG USED BY EGG CARRIER
+*/
+
+#define CARRIER_EGG_UNSUSTAINED_LIFE 1 MINUTES
+#define CARRIER_EGG_MAXIMUM_LIFE 5 MINUTES
+
+/obj/effect/alien/egg/carrier_egg
+	name = "fragile egg"
+	desc = "It looks like a weird, fragile egg."
+	var/owner = null
+	var/last_refreshed = null
+	var/life_timer
+
+/obj/effect/alien/egg/carrier_egg/Initialize(mapload, hivenumber, planter = null)
+	. = ..()
+	last_refreshed = world.time
+	if(!planter)
+		//If we have no owner when created... this really shouldn't happen but start decaying the egg immediately.
+		start_unstoppable_decay()
+	else
+		//Die after maximum lifetime
+		life_timer = addtimer(CALLBACK(src, PROC_REF(remove_owner_and_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
+
+/obj/effect/alien/egg/carrier_egg/proc/remove_owner_and_decay()
+	if(owner)
+		var/mob/living/carbon/xenomorph/carrier/my_owner = owner
+		var/datum/behavior_delegate/carrier_eggsac/my_delegate = my_owner.behavior_delegate
+		my_delegate.eggs_sustained += src
+	start_unstoppable_decay()
+
+/obj/effect/alien/egg/carrier_egg/proc/check_decay()
+	//Check the last refreshed time and burst the egg if we're over the lifetime of the egg
+	if(last_refreshed + CARRIER_EGG_UNSUSTAINED_LIFE < world.time)
+		start_unstoppable_decay()
+
+/obj/effect/alien/egg/carrier_egg/proc/start_unstoppable_decay()
+	addtimer(CALLBACK(src, PROC_REF(Burst), TRUE), 10 SECONDS)
+	deltimer(life_timer)
+
+#undef CARRIER_EGG_UNSUSTAINED_LIFE
+#undef CARRIER_EGG_MAXIMUM_LIFE

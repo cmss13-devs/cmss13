@@ -2,7 +2,7 @@
 
 SUBSYSTEM_DEF(inactivity)
 	name = "Inactivity"
-	wait = INACTIVITY_KICK * 0.5
+	wait = 1 MINUTES
 	flags = SS_NO_INIT | SS_BACKGROUND
 	priority = SS_PRIORITY_INACTIVITY
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
@@ -18,8 +18,8 @@ SUBSYSTEM_DEF(inactivity)
 	for(var/client/current as anything in GLOB.clients)
 		if(current.admin_holder && current.admin_holder.rights & R_ADMIN) //Skip admins.
 			continue
-		if (current.is_afk(INACTIVITY_KICK))
-			if (!istype(current.mob, /mob/dead))
+		if(current.is_afk(INACTIVITY_KICK))
+			if(!istype(current.mob, /mob/dead))
 				log_access("AFK: [key_name(current)]")
 				to_chat(current, SPAN_WARNING("You have been inactive for more than 10 minutes and have been disconnected."))
 				qdel(current)

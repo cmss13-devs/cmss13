@@ -1993,7 +1993,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/get_gun_user()
 	return gun_user
 
-/obj/item/weapon/gun/proc/check_firing_lane(obj/item/weapon/gun/smartgun/firing_weapon, obj/projectile/projectile_to_fire, atom/target, mob/living/user)
+/obj/item/weapon/gun/proc/check_firing_lane(obj/item/weapon/gun/firing_weapon, obj/projectile/projectile_to_fire, atom/target, mob/living/user)
 	SIGNAL_HANDLER
 
 	var/angle = get_angle(user, target)

@@ -8,9 +8,10 @@ SUBSYSTEM_DEF(inactivity)
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
-	// Maybe we should just get a SS to bandaid all important global lists like this?
 	if(list_clear_nulls(GLOB.clients))
 		debug_log("Removed nulls from GLOB.clients!")
+	if(list_clear_nulls(GLOB.player_list))
+		debug_log("Removed nulls from GLOB.player_list!")
 
 	if (!CONFIG_GET(flag/kick_inactive))
 		return

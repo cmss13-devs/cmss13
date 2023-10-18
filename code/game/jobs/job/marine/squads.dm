@@ -50,7 +50,7 @@
 	/// maximum # of specs allowed in the squad
 	var/max_specialists = 1
 	/// maximum # of fireteam leaders allowed in the suqad
-	var/max_tl = 2
+	var/max_tl = 3
 	/// maximum # of smartgunners allowed in the squad
 	var/max_smartgun = 1
 	/// maximum # of squad leaders allowed in the squad
@@ -453,24 +453,53 @@
 	var/list/extra_access = list()
 
 	switch(GET_DEFAULT_ROLE(M.job))
+		if(JOB_SQUAD_MARINE)	//Marines always get a random fireteam
+			var/rng_fireteam = pick("FT1", "FT2", "FT3")
+			assign_fireteam(rng_fireteam, M)
 		if(JOB_SQUAD_ENGI)
 			assignment = JOB_SQUAD_ENGI
 			num_engineers++
 			C.claimedgear = FALSE
+			switch(num_engineers)
+				if(1)			//Every squad needs 1 engineer and one medic, but FT3 lacks spec/SG so they might get an extra.
+					assign_fireteam("FT1", M)
+				if(2)
+					assign_fireteam("FT2", M)
+				else
+					assign_fireteam("FT3", M)
 		if(JOB_SQUAD_MEDIC)
 			assignment = JOB_SQUAD_MEDIC
 			num_medics++
 			C.claimedgear = FALSE
+			switch(num_medics)
+				if(1)
+					assign_fireteam("FT1", M)
+				if(2)
+					assign_fireteam("FT2", M)
+				else
+					assign_fireteam("FT3", M)
 		if(JOB_SQUAD_SPECIALIST)
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
+			assign_fireteam("FT1", M)	//Specialists are always first Fireteam.
+		if(JOB_SQUAD_SMARTGUN)
+			assignment = JOB_SQUAD_SMARTGUN
+			num_smartgun++
+			assign_fireteam("FT2", M)	//Smartgunners are always second Fireteam.
 		if(JOB_SQUAD_TEAM_LEADER)
 			assignment = JOB_SQUAD_TEAM_LEADER
 			num_tl++
 			M.important_radio_channels += radio_freq
-		if(JOB_SQUAD_SMARTGUN)
-			assignment = JOB_SQUAD_SMARTGUN
-			num_smartgun++
+			switch(num_tl)
+				if(1)
+					assign_fireteam("FT1", M)			//Can't set FTL without adding to fireteam. I tried - Kitsunemitu
+					assign_ft_leader("FT1", M)
+				if(2)
+					assign_fireteam("FT2", M)
+					assign_ft_leader("FT2", M)
+				if(3)
+					assign_fireteam("FT3", M)		
+					assign_ft_leader("FT3", M)
 		if(JOB_SQUAD_LEADER)
 			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_SQUAD_LEADER) //field promoted SL
 				var/old_lead = squad_leader

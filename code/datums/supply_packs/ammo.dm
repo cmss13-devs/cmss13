@@ -166,6 +166,16 @@
 	containername = "\improper M44 Marksman speed loaders crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_m44_mag_box_heavy
+	name = "Speed loaders box (Heavy M44, 16x)"
+	contains = list(
+		/obj/item/ammo_box/magazine/m44/heavy,
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper M44 Heavy speed loaders crate"
+	group = "Ammo"
+
 //------------------------For  M4A3----------------
 
 /datum/supply_packs/ammo_m4a3_mag_box

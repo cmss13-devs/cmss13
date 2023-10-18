@@ -309,7 +309,7 @@ SPECIAL EGG USED BY EGG CARRIER
 	desc = "It looks like a weird, fragile egg."
 	var/owner = null
 	var/last_refreshed = null
-	var/life_timer
+	var/life_timer = null
 
 /obj/effect/alien/egg/carrier_egg/Initialize(mapload, hivenumber, planter = null)
 	. = ..()

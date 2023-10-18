@@ -483,6 +483,7 @@
 	var/shoot_degree = 80
 	/// Semi auto cooldown
 	COOLDOWN_DECLARE(semiauto_fire_cooldown)
+	COOLDOWN_DECLARE(iff_halt_cooldown)
 	/// How long between semi-auto shots this should wait, to reduce possible spam
 	var/semiauto_cooldown_time = 0.2 SECONDS
 
@@ -515,6 +516,7 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	update_icon()
 	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing)))
+
 
 /obj/structure/machinery/m56d_hmg/Destroy() //Make sure we pick up our trash.
 	if(operator)
@@ -724,6 +726,15 @@
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		target = get_angle_target_turf(T, final_angle, 30)
 
+	var/before_fire_cancel = SEND_SIGNAL(src, COMSIG_GUN_BEFORE_FIRE, target, operator)
+
+	if(before_fire_cancel)
+		if(before_fire_cancel & COMPONENT_CANCEL_GUN_BEFORE_FIRE)
+			return AUTOFIRE_CONTINUE
+
+		if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
+			return
+
 	in_chamber.weapon_cause_data = create_cause_data(initial(name), operator)
 	in_chamber.setDir(dir)
 	in_chamber.def_zone = pick("chest","chest","chest","head")
@@ -839,6 +850,7 @@
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
 	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_MOB_KNOCKED_DOWN), PROC_REF(exit_interaction))
+	RegisterSignal(src, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
 	flags_atom |= RELAY_CLICK
 	user.status_flags |= IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))
@@ -859,6 +871,7 @@
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
 	user.unfreeze()
 	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
+	UnregisterSignal(src, COMSIG_GUN_BEFORE_FIRE)
 	user.reset_view(null)
 	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal
 	user.Move(get_step(src, reverse_direction(src.dir)))
@@ -1102,3 +1115,50 @@
 		deployment_system.deployed_mg = null
 		deployment_system = null
 	return ..()
+
+/obj/structure/machinery/m56d_hmg/proc/check_firing_lane(obj/structure/machinery/m56d_hmg/m56d, atom/target, mob/living/user)
+	SIGNAL_HANDLER
+	log_debug("TEST")
+	var/angle = get_angle(src, target)
+
+	var/range_to_check = 9
+	var/cooldown = 0.5
+
+	var/extended_target_turf = get_angle_target_turf(src, angle, range_to_check)
+
+	var/turf/m56d_turf = get_turf(src)
+
+	if(!m56d_turf || !extended_target_turf)
+		log_debug("CANCEL")
+		return COMPONENT_CANCEL_GUN_BEFORE_FIRE
+
+	var/list/checked_turfs = getline2(extended_target_turf, m56d_turf)
+
+	checked_turfs -= m56d_turf
+
+	var/i = 0
+	for(var/turf/checked_turf as anything in checked_turfs)
+		i++
+		log_debug("[i]")
+		//Wall, should block the bullet so we're good to stop checking.
+		if(istype(checked_turf, /turf/closed))
+			log_debug("wall?")
+			return
+
+		for(var/mob/living/checked_living in checked_turf)
+			log_debug("[checked_living]")
+
+			if(checked_living.lying && target != checked_living)
+				log_debug("skip")
+				continue
+
+			if(checked_living.get_target_lock(user.faction_group))
+				log_debug("same faction!")
+				if(COOLDOWN_FINISHED(src, iff_halt_cooldown))
+					playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
+					to_chat(user, SPAN_WARNING("[src] halts firing as an IFF marked target crosses your field of fire!"))
+					COOLDOWN_START(src, iff_halt_cooldown, cooldown)
+				log_debug("CANCEL")
+				return COMPONENT_CANCEL_GUN_BEFORE_FIRE
+
+			return //if we have a target we *can* hit and find it before any IFF targets we want to fire

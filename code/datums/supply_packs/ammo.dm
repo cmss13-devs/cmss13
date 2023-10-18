@@ -427,7 +427,7 @@
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/marksman,
-		/obj/item/ammo_magazine/revolver/marksman,
+		/obj/item/ammo_magazine/revolver/heavy,
 		/obj/item/ammo_magazine/shotgun,
 		/obj/item/ammo_magazine/shotgun,
 		/obj/item/ammo_magazine/shotgun/buckshot,

@@ -15,23 +15,25 @@ var/datum/controller/supply/supply_controller = new()
 /area/supply
 	ceiling = CEILING_METAL
 
-/area/supply/station //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
+/area/supply/station
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	base_lighting_alpha = 255
+	base_lighting_alpha = 150
+	static_lighting = FALSE
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
 
-/area/supply/dock //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
+/area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	base_lighting_alpha = 255
+	static_lighting = FALSE
+	base_lighting_alpha = 150
 	requires_power = 0
 
 /area/supply/station_vehicle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Vehicle ASRS"
 	icon_state = "shuttle3"
-	base_lighting_alpha = 255
+	base_lighting_alpha = 150
 	requires_power = 0
 
 /area/supply/dock_vehicle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.

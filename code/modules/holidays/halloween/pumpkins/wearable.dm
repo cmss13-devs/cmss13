@@ -6,9 +6,23 @@
 		WEAR_HEAD = 'icons/misc/events/pumpkins.dmi',
 	)
 	w_class = SIZE_MEDIUM
-	flags_inventory = COVEREYES|COVERMOUTH
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_EYES
+	flags_inventory = COVEREYES|BLOCKSHARPOBJ|COVERMOUTH
+	flags_cold_protection = BODY_FLAG_HEAD
+	flags_heat_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
+	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	health = 5
+	force = 15
 	var/prefix = "" //! Icon state prefix for corrupted pumpkin variants
 	var/carved_icon = "" //! Currently carved pumpkin overlay
 	var/carvable_icons = list("smile", "cheeky", "bugeyes", "upside_down_smile", "skelly", "ff")

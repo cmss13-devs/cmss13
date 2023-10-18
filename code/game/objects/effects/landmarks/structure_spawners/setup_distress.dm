@@ -41,7 +41,7 @@
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node/Initialize(mapload, ...)
 	. = ..()
-	if(!is_admin_level(z) && !is_ground_level(z) && !is_mainship_level(z) && !is_reserved_level(z)) //Create and Destroy check
+	if(!is_admin_level(z) && !is_ground_level(z) && !is_mainship_level(z) && !is_reserved_level(z)) //Is it a real area? for the create and destroy unit tests
 		return
 	var/turf/node_tile = loc
 	if(node_tile.is_weedable() >= weed_strength_required)
@@ -60,7 +60,7 @@
 
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel/Initialize(mapload, ...)
 	. = ..()
-	if(!is_admin_level(z) && !is_ground_level(z) && !is_mainship_level(z) && !is_reserved_level(z)) //Create and Destroy check
+	if(!is_admin_level(z) && !is_ground_level(z) && !is_mainship_level(z) && !is_reserved_level(z)) //Is it a real area? for the create and destroy unit tests
 		return
 	var/turf/tunnel_tile = loc
 	if(tunnel_tile.can_dig_xeno_tunnel())

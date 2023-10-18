@@ -40226,10 +40226,6 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/checkpoint)
-"foQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
-/turf/open/ice,
-/area/corsat/gamma/biodome)
 "fps" = (
 /obj/structure/machinery/atm{
 	pixel_y = -30
@@ -43290,6 +43286,10 @@
 	icon_state = "bluegrey"
 	},
 /area/corsat/sigma/south/offices)
+"hxJ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/turf/open/snow,
+/area/corsat/gamma/biodome)
 "hxW" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -47104,6 +47104,10 @@
 	icon_state = "darkgreen"
 	},
 /area/corsat/gamma/rnr)
+"kwg" = (
+/obj/structure/ice/thin/single,
+/turf/open/snow,
+/area/corsat/gamma/biodome)
 "kwK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -48420,6 +48424,11 @@
 	icon_state = "yellowcorner"
 	},
 /area/corsat/gamma/hallwaysouth)
+"lvo" = (
+/obj/structure/bed/nest,
+/obj/effect/landmark/corpsespawner/scientist,
+/turf/open/snow,
+/area/corsat/gamma/biodome)
 "lvE" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/wood,
@@ -49668,6 +49677,9 @@
 	icon_state = "squares"
 	},
 /area/corsat/gamma/residential)
+"moN" = (
+/turf/open/snow,
+/area/corsat/gamma/biodome)
 "moU" = (
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -52327,6 +52339,10 @@
 	icon_state = "white"
 	},
 /area/corsat/gamma/residential)
+"ona" = (
+/obj/effect/alien/weeds/node,
+/turf/open/snow,
+/area/corsat/gamma/biodome)
 "ong" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -59344,6 +59360,10 @@
 	icon_state = "whitetancorner"
 	},
 /area/corsat/sigma/dorms)
+"tCJ" = (
+/obj/structure/bed/nest,
+/turf/open/snow,
+/area/corsat/gamma/biodome)
 "tDc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -63411,7 +63431,7 @@
 	dir = 5;
 	icon_state = "single_part"
 	},
-/turf/open/ice,
+/turf/open/snow,
 /area/corsat/gamma/biodome)
 "wFU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -66070,10 +66090,10 @@ bfc
 bfc
 pwp
 bfG
-bfg
+kwg
 nfz
-xCy
-ims
+tCJ
+lvo
 nfz
 aiU
 aiU
@@ -66316,12 +66336,12 @@ bfc
 bfc
 bfc
 bfc
-bfc
-aEZ
-bfc
+moN
+ona
+hxJ
 wFO
 wFO
-bfc
+moN
 bfc
 aiU
 aiU
@@ -66562,8 +66582,8 @@ nnC
 huu
 bfc
 bfc
-bfc
-bfc
+moN
+moN
 wFO
 bfc
 bfc
@@ -66806,7 +66826,7 @@ bfc
 hHy
 huu
 bfc
-foQ
+bfc
 bfc
 bfc
 bfc

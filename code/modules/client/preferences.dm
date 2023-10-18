@@ -77,6 +77,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							)
 	var/ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
+	var/dual_wield_pref = DUAL_WIELD_FIRE
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"
@@ -237,6 +238,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
+
+	/// If this client has auto observe enabled, used by /datum/orbit_menu
+	var/auto_observe = TRUE
 
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -616,13 +620,12 @@ var/const/MAX_SAVE_SLOTS = 10
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTOMATIC_PUNCTUATION]'><b>[toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Combat Click-Drag Override: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COMBAT_CLICKDRAG_OVERRIDE]'><b>[toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE ? "On" : "Off"]</b></a><br>"
-			dat += "<b>Toggle Alternate-Fire Dual Wielding: \
-					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ALTERNATING_DUAL_WIELD]'><b>[toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_SWAP_HANDS]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Vendors Vending to Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_VEND_ITEM_TO_HAND]'><b>[toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
+			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Dual Wield Functionality</a><br>"
 		if(MENU_SPECIAL) //wart
 			dat += "<div id='column1'>"
 			dat += "<h2><b><u>ERT Settings:</u></b></h2>"
@@ -1406,6 +1409,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 					if(length(new_xeno_prefix)==0)
 						xeno_prefix = "XX"
+						owner.load_xeno_name()
 					else
 						var/all_ok = TRUE
 						for(var/i=1, i<=length(new_xeno_prefix), i++)
@@ -1417,6 +1421,7 @@ var/const/MAX_SAVE_SLOTS = 10
 									all_ok = FALSE //everything else - won't
 						if(all_ok)
 							xeno_prefix = new_xeno_prefix
+							owner.load_xeno_name()
 						else
 							to_chat(user, "<font color='red'>Invalid Xeno Prefix. Your Prefix can contain either single letter or two letters.</font>")
 
@@ -1441,6 +1446,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					else if(length(new_xeno_postfix)==0)
 						xeno_postfix = ""
+						owner.load_xeno_name()
 					else
 						var/all_ok = TRUE
 						var/first_char = TRUE
@@ -1466,6 +1472,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							first_char = FALSE
 						if(all_ok)
 							xeno_postfix = new_xeno_postfix
+							owner.load_xeno_name()
 						else
 							to_chat(user, "<font color='red'>Invalid Xeno Postfix. Your Postfix can contain single letter and an optional digit after it.</font>")
 
@@ -1693,6 +1700,11 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("origin")
 					var/choice = tgui_input_list(user, "Please choose your character's origin.", "Origin Selection", GLOB.player_origins)
+					var/datum/origin/picked_choice = GLOB.origins[choice]
+					if(!picked_choice)
+						return
+					if(tgui_alert(user, "You've selected [picked_choice.name]. [picked_choice.desc]", "Selected Origin", list("Confirm", "Cancel")) == "Cancel")
+						return
 					if(choice)
 						origin = choice
 

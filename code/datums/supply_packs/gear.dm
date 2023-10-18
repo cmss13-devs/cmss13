@@ -63,15 +63,3 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "fulton recovery device crate"
 	group = "Gear"
-
-/datum/supply_packs/nvg
-	name = "M2 Night Vision Goggles Crate (x3)"
-	contains = list(
-		/obj/item/prop/helmetgarb/helmet_nvg,
-		/obj/item/prop/helmetgarb/helmet_nvg,
-		/obj/item/prop/helmetgarb/helmet_nvg,
-	)
-	cost = 60
-	containertype = /obj/structure/closet/crate/supply
-	containername = "M2 Night Vission Goggles Crate"
-	group = "Gear"

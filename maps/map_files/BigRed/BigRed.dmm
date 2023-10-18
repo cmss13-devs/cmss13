@@ -3581,7 +3581,6 @@
 /area/bigredv2/outside/marshal_office)
 "akl" = (
 /obj/structure/sign/safety/hazard,
-/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "akm" = (
@@ -3904,7 +3903,6 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "all" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor{
 	icon_state = "asteroidwarning"
 	},
@@ -27203,7 +27201,6 @@
 /area/bigredv2/oob)
 "bRm" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7"
 	},
@@ -28260,6 +28257,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "eci" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11"
 	},
@@ -28968,6 +28966,7 @@
 	},
 /area/bigredv2/oob)
 "fxK" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_10"
 	},
@@ -29627,6 +29626,7 @@
 /area/bigredv2/caves_sw)
 "hcb" = (
 /obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -32341,14 +32341,6 @@
 "mzV" = (
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
-"mAd" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/bigredv2/outside/telecomm)
 "mBo" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -7;
@@ -32678,6 +32670,12 @@
 	icon_state = "mars_cave_6"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
+"nti" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_10"
+	},
+/area/bigredv2/caves_virology)
 "ntX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -35146,6 +35144,11 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigred/ground/garage_workshop)
+"sip" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/mars,
+/area/bigredv2/outside/nw)
 "siu" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning"
@@ -35179,10 +35182,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"slK" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/telecomm)
 "smh" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
@@ -35415,11 +35414,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"sCO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/telecomm)
 "sDs" = (
 /obj/structure/closet/crate/miningcar,
 /obj/item/weapon/gun/smg/nailgun,
@@ -35529,7 +35523,6 @@
 /area/bigredv2/caves/mining)
 "sOE" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6"
 	},
@@ -36821,13 +36814,6 @@
 	icon_state = "mars_cave_11"
 	},
 /area/bigredv2/caves_research)
-"vrp" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/bigredv2/outside/telecomm)
 "vrt" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_14"
@@ -37659,6 +37645,12 @@
 	icon_state = "mars_dirt_7"
 	},
 /area/bigredv2/caves/mining)
+"xdx" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/outside/lz1_telecomm_cas)
 "xeN" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/mars_cave{
@@ -39139,7 +39131,7 @@ aao
 aao
 aao
 aao
-jCY
+nti
 fLj
 fLj
 fmn
@@ -39356,7 +39348,7 @@ aao
 aao
 aao
 fxK
-xmy
+mmz
 rDP
 rDP
 rDP
@@ -39572,8 +39564,8 @@ aao
 aao
 aao
 fxK
-xmy
-xmy
+mmz
+mmz
 rDP
 iwG
 rDP
@@ -39788,9 +39780,9 @@ aao
 aao
 aao
 aao
-rCA
-xmy
-xmy
+xdx
+mmz
+mmz
 rDP
 rDP
 rDP
@@ -40005,9 +39997,9 @@ xmy
 xmy
 xmy
 fxK
-xmy
-xmy
-xmy
+mmz
+mmz
+mmz
 rDP
 rDP
 rDP
@@ -40221,10 +40213,10 @@ xmy
 xmy
 xmy
 xmy
-rCA
-xmy
-xmy
-xmy
+xdx
+mmz
+mmz
+mmz
 rDP
 rDP
 rDP
@@ -40438,10 +40430,10 @@ xmy
 xmy
 lrH
 xmy
-rCA
-xmy
-xmy
-xmy
+xdx
+mmz
+mmz
+mmz
 rDP
 rDP
 rDP
@@ -40634,8 +40626,8 @@ acA
 acA
 acA
 acA
-sCO
-slK
+ahN
+acA
 sOE
 csE
 xmy
@@ -40655,10 +40647,10 @@ xmy
 xmy
 xmy
 csE
-xmy
-xmy
+mmz
+mmz
 hcb
-xmy
+mmz
 rDP
 rDP
 rDP
@@ -40872,10 +40864,10 @@ xmy
 xmy
 xmy
 xmy
-xmy
-xmy
-xmy
-xmy
+mmz
+mmz
+mmz
+mmz
 rDP
 rDP
 rDP
@@ -41069,7 +41061,7 @@ aas
 ahd
 ahd
 all
-slK
+acA
 bRm
 xmy
 xmy
@@ -41089,10 +41081,10 @@ xmy
 xmy
 xmy
 xmy
-xmy
-xmy
-xmy
-xmy
+mmz
+mmz
+mmz
+mmz
 rDP
 rDP
 rDP
@@ -41286,7 +41278,7 @@ aas
 aas
 aas
 all
-slK
+acA
 bRm
 xmy
 xmy
@@ -41306,10 +41298,10 @@ xmy
 xmy
 xmy
 xmy
-xmy
-xmy
-gda
-gda
+mmz
+mmz
+edv
+edv
 fOc
 rDP
 rDP
@@ -41503,7 +41495,7 @@ aas
 ahd
 aaZ
 all
-slK
+acA
 bRm
 xmy
 xmy
@@ -41523,7 +41515,7 @@ xmy
 csE
 csE
 rCA
-gda
+edv
 eci
 aao
 aao
@@ -41720,18 +41712,18 @@ aas
 ahd
 aas
 all
-slK
+acA
 aao
-mmz
-edv
-edv
-edv
-edv
-edv
-edv
-edv
-mmz
-mmz
+xmy
+gda
+gda
+gda
+gda
+gda
+gda
+gda
+xmy
+xmy
 aao
 aao
 aao
@@ -41931,11 +41923,11 @@ afL
 acQ
 aas
 ahd
-mAd
-vrp
-vrp
-mAd
-vrp
+ahd
+aas
+aas
+ahd
+aas
 all
 akl
 aao
@@ -42148,13 +42140,13 @@ acQ
 acQ
 acA
 ahN
-slK
-slK
-slK
-slK
-slK
-slK
-slK
+acA
+acA
+acA
+acA
+acA
+acA
+acA
 aao
 aao
 qsE
@@ -45416,7 +45408,7 @@ qsE
 aao
 aao
 xQJ
-aeI
+xQJ
 aeI
 aiz
 aog
@@ -45848,8 +45840,8 @@ giv
 giv
 ahT
 xQJ
+sip
 xQJ
-aeI
 aeI
 ajy
 ajx
@@ -46054,8 +46046,8 @@ aah
 xyp
 pjZ
 oxV
-aeI
-aeI
+xQJ
+xQJ
 aeI
 aeI
 aeI
@@ -46271,7 +46263,7 @@ aah
 xyp
 pjZ
 oxV
-aeI
+xQJ
 aeI
 aeI
 aeI
@@ -49959,7 +49951,7 @@ aao
 aao
 aao
 aao
-aeI
+xQJ
 aeI
 aiA
 ajy

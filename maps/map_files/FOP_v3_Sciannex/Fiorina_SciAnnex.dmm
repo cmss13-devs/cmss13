@@ -2770,6 +2770,23 @@
 	icon_state = "stan25"
 	},
 /area/fiorina/tumor/aux_engi)
+"bAo" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform,
+/obj/structure/platform_decoration{
+	dir = 6
+	},
+/obj/structure/platform_decoration{
+	dir = 10
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "bAS" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
@@ -7052,6 +7069,13 @@
 	icon_state = "bluefull"
 	},
 /area/fiorina/station/power_ring)
+"ehr" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "ehA" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -12008,6 +12032,15 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
+"hiy" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/lz/near_lzI)
 "hiG" = (
 /obj/item/storage/backpack/souto,
 /turf/open/floor/prison,
@@ -15992,6 +16025,10 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/central_ring)
+"jED" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "jEG" = (
 /obj/structure/prop/resin_prop,
 /turf/open/floor/prison{
@@ -38997,6 +39034,25 @@
 	icon_state = "bright_clean_marked"
 	},
 /area/fiorina/station/medbay)
+"xHx" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 9
+	},
+/obj/structure/platform_decoration{
+	dir = 5
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "xHV" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/tumor/civres)
@@ -89004,7 +89060,7 @@ qrw
 kMM
 hze
 pNm
-kfA
+pNm
 kfA
 kfA
 aMz
@@ -90469,7 +90525,7 @@ wRP
 xeO
 hjW
 hjW
-xeO
+jED
 vzB
 xeO
 vzB
@@ -90680,8 +90736,8 @@ lIv
 xFP
 sov
 eXr
-eXr
-yls
+hiy
+ehr
 ssD
 yls
 ssD
@@ -92163,7 +92219,7 @@ hKI
 hKI
 lmM
 hKI
-hKI
+dkL
 qDD
 fkK
 iVb
@@ -92374,8 +92430,8 @@ lRT
 atl
 aZD
 lRT
-atl
-aZD
+xHx
+bAo
 lRT
 scM
 scM

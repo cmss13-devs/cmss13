@@ -4283,6 +4283,11 @@
 	},
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/scrubland)
+"fDr" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
 "fDY" = (
 /obj/structure/platform/kutjevo/smooth/stair_plate,
 /obj/structure/platform/kutjevo/smooth{
@@ -13561,6 +13566,7 @@
 /area/kutjevo/interior/power)
 "szJ" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "sAe" = (
@@ -14986,6 +14992,11 @@
 	dir = 6
 	},
 /area/kutjevo/interior/complex/botany)
+"uwW" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
 "uwY" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -21735,9 +21746,9 @@ jqt
 jqt
 jqt
 jqt
-wGH
-wGH
-wGH
+auo
+auo
+auo
 dxF
 dxF
 dxF
@@ -21902,9 +21913,9 @@ jqt
 jqt
 jqt
 jqt
-wGH
-wGH
-wGH
+auo
+auo
+auo
 dxF
 dxF
 dxF
@@ -22228,18 +22239,18 @@ wGH
 wGH
 prJ
 prJ
-prJ
+wit
 jqt
 jqt
 ich
 ich
 ich
 fgo
-wGH
-wGH
-prJ
-prJ
-iDz
+auo
+uwW
+wit
+wit
+fDr
 dxF
 dxF
 dxF
@@ -22394,7 +22405,7 @@ wGH
 wGH
 wGH
 prJ
-prJ
+wit
 wit
 ich
 ich
@@ -22535,7 +22546,7 @@ oIV
 tlN
 dxF
 dxF
-prJ
+wit
 vei
 prJ
 wGH
@@ -22561,7 +22572,7 @@ wGH
 wGH
 wGH
 wGH
-wGH
+auo
 auo
 xxY
 ceG
@@ -22702,7 +22713,7 @@ giM
 tlN
 dfa
 eRE
-wGH
+auo
 prJ
 vei
 prJ
@@ -22728,7 +22739,7 @@ wGH
 wGH
 wGH
 wGH
-wGH
+auo
 auo
 ans
 teN
@@ -22869,7 +22880,7 @@ bHA
 vXo
 qzd
 mFc
-prJ
+wit
 prJ
 prJ
 vei
@@ -22894,7 +22905,7 @@ prJ
 wGH
 wGH
 wGH
-wGH
+auo
 vMo
 vMo
 wGH
@@ -23036,7 +23047,7 @@ kMP
 pmu
 qzd
 mFc
-wGH
+auo
 vei
 vei
 prJ
@@ -23061,7 +23072,7 @@ wGH
 prJ
 prJ
 jqt
-wGH
+auo
 vMo
 vei
 vei
@@ -23203,7 +23214,7 @@ kMP
 pmu
 qzd
 mFc
-wGH
+auo
 wGH
 prJ
 prJ
@@ -23228,7 +23239,7 @@ wGH
 prJ
 prJ
 wGH
-wGH
+auo
 auo
 wGH
 vTc
@@ -23370,7 +23381,7 @@ bHA
 pyE
 qzd
 mFc
-wGH
+auo
 prJ
 prJ
 prJ
@@ -23395,7 +23406,7 @@ wGH
 prJ
 prJ
 wGH
-wGH
+auo
 auo
 wGH
 wGH
@@ -23537,7 +23548,7 @@ giM
 tlN
 dfa
 eRE
-prJ
+wit
 prJ
 wGH
 vei
@@ -23559,9 +23570,9 @@ jqt
 vei
 prJ
 wGH
-prJ
-wGH
-prJ
+wit
+auo
+wit
 wit
 auo
 wGH
@@ -23704,8 +23715,8 @@ dux
 tlN
 iaj
 iaj
-prJ
-prJ
+wit
+wit
 vei
 vei
 vei
@@ -23725,7 +23736,7 @@ jqt
 jqt
 wGH
 szJ
-wGH
+auo
 auo
 wit
 wit
@@ -23873,10 +23884,10 @@ iaj
 iaj
 iaj
 iaj
-prJ
-vei
-vei
-prJ
+wit
+vMo
+vMo
+wit
 vei
 wGH
 wGH
@@ -23890,7 +23901,7 @@ sHu
 ovY
 prJ
 prJ
-wGH
+auo
 vMo
 auo
 auo
@@ -24044,7 +24055,7 @@ auo
 vMo
 auo
 vMo
-prJ
+wit
 prJ
 wGH
 wGH
@@ -24057,7 +24068,7 @@ wGH
 wGH
 gZj
 vei
-vei
+vMo
 auo
 prJ
 prJ
@@ -24211,20 +24222,20 @@ wGH
 vei
 wGH
 jqt
+wit
+prJ
+wGH
+wGH
+prJ
+prJ
 prJ
 prJ
 wGH
 wGH
-prJ
-prJ
-prJ
-prJ
-wGH
-wGH
 wGH
 prJ
 wGH
-prJ
+wit
 wit
 wGH
 wGH
@@ -24379,18 +24390,18 @@ prJ
 jqt
 jqt
 jqt
-prJ
-vei
-wGH
-prJ
-prJ
-prJ
-prJ
-prJ
-prJ
-wGH
-wGH
-prJ
+wit
+vMo
+auo
+wit
+wit
+wit
+wit
+wit
+wit
+auo
+auo
+wit
 wit
 auo
 wGH

@@ -93,7 +93,14 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
+/datum/emergency_call/upp/friendly
+	name = "UPP Naval Infantry (Squad) (Friendly)"
+	hostility = FALSE
 
+/datum/emergency_call/upp/friendly/New()
+	..()
+	arrival_message = "This is UPP dispatch. USS Almayer, We are responding to your distress call, we will render aid as able, do not fire."
+	objectives = "Render assistance towards the UA Forces, Listen to your superior officers."
 
 /datum/emergency_call/upp/platoon
 	name = "UPP Naval Infantry (Platoon)"
@@ -106,6 +113,15 @@
 	max_engineers = 2
 	max_synths = 1
 	heavy_pick = FALSE
+
+/datum/emergency_call/upp/platoon/friendly
+	name = "UPP Naval Infantry (Platoon) (Friendly)"
+	hostility = FALSE
+
+/datum/emergency_call/upp/platoon/friendly/New()
+	..()
+	arrival_message = "This is UPP dispatch. USS Almayer, We are responding to your distress call, we will render aid as able, do not fire."
+	objectives = "Render assistance towards the UA Forces, Listen to your superior officers."
 
 /obj/effect/landmark/ert_spawns/distress_upp
 	name = "Distress_UPP"

@@ -630,8 +630,10 @@
 	recalculate_attachment_bonuses()
 	if(iff_enabled)
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
+		RegisterSignal(src, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
 	else
 		remove_bullet_trait("iff")
+		UnregisterSignal(src, COMSIG_GUN_BEFORE_FIRE)
 
 /obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
 	. = ..()

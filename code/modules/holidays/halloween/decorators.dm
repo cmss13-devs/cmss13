@@ -15,7 +15,7 @@
 
 /// Pumpkins decorator: adds patches of carvable/wearable pumpkins around the ground level
 /datum/game_decorator/halloween/pumpkins
-	var/pumpkin_count = 40 //! Amount of pumpkins to place
+	var/pumpkin_count = 60 //! Amount of pumpkins to place
 	var/pumpkin_count_decrease = 1 //! Amount of pumpkins to remove per day to halloween
 	var/pumpkin_prob_corruption = 20
 	var/pumpkin_prob_decrease = 0.5 //! Chance reduction per day before halloween

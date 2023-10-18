@@ -12057,7 +12057,7 @@
 	pixel_x = 10;
 	pixel_y = -3
 	},
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "hmd" = (
 /obj/structure/stairs/perspective{
@@ -23709,7 +23709,7 @@
 /area/fiorina/station/telecomm/lz2_maint)
 "olB" = (
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "olC" = (
 /turf/open/floor/prison{
@@ -31857,7 +31857,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-4-8"
 	},
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "tuo" = (
 /obj/structure/prop/structure_lattice{
@@ -36200,6 +36200,13 @@
 	icon_state = "darkredfull2"
 	},
 /area/fiorina/station/disco)
+"waF" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "blue"
+	},
+/area/fiorina/station/civres_blue)
 "waN" = (
 /obj/structure/platform{
 	dir = 1
@@ -36810,7 +36817,9 @@
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison{
+	icon_state = "blue"
+	},
 /area/fiorina/station/civres_blue)
 "wwr" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -36968,7 +36977,10 @@
 /area/fiorina/station/disco)
 "wAM" = (
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "blue"
+	},
 /area/fiorina/station/civres_blue)
 "wAR" = (
 /obj/structure/filingcabinet,
@@ -37151,6 +37163,12 @@
 	icon_state = "darkyellow2"
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
+"wGv" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/aux_engi)
 "wGD" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -47804,8 +47822,8 @@ rGq
 knh
 rGq
 rGq
-bfF
-rGq
+wGv
+hjP
 jlk
 baC
 baC
@@ -48228,7 +48246,7 @@ aKW
 knh
 rGq
 hlT
-bfF
+wGv
 jlk
 jlk
 baC
@@ -60228,7 +60246,7 @@ apf
 apf
 apf
 apf
-apf
+gFG
 rja
 obT
 kMq
@@ -60651,8 +60669,8 @@ nAr
 uHX
 apf
 apf
-apf
-apf
+bfZ
+gFG
 uHX
 obT
 gma
@@ -60862,8 +60880,8 @@ qwJ
 eTn
 rja
 apf
-esS
-apf
+waF
+vky
 wAM
 rja
 obT

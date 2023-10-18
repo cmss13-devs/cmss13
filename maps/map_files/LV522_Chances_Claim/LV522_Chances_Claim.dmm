@@ -9813,7 +9813,10 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/tunnelable,
 /area/lv522/landing_zone_1/tunnel)
 "evv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -10585,7 +10588,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
 /obj/structure/machinery/light/small,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/plating,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/plating/tunnelable,
 /area/lv522/landing_zone_1/tunnel)
 "eLN" = (
 /obj/structure/machinery/light,
@@ -20776,7 +20782,10 @@
 "iGD" = (
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
 /obj/structure/machinery/light/small,
-/turf/open/floor/plating,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/plating/tunnelable,
 /area/lv522/landing_zone_1/tunnel)
 "iGF" = (
 /obj/structure/bed/chair{
@@ -38897,11 +38906,6 @@
 /obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"prT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/cargo_container/grant/rightmid,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/w_rockies)
 "prU" = (
 /obj/structure/stairs/perspective{
 	dir = 5;
@@ -69789,7 +69793,7 @@ vtc
 vtc
 vtc
 uWO
-prT
+vZY
 kWD
 tTr
 pUR

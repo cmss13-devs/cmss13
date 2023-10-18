@@ -180,8 +180,6 @@
 /turf/open/floor/plating/plating_catwalk/shiva
 	icon = 'icons/turf/floors/ice_colony/shiva_floor.dmi'
 
-
-
 /turf/open/floor/plating/ironsand
 	name = "Iron Sand"
 
@@ -189,14 +187,14 @@
 	. = ..()
 	icon_state = "ironsand[rand(1,15)]"
 
-
-
 /turf/open/floor/plating/catwalk
 	icon = 'icons/turf/floors/catwalks.dmi'
 	icon_state = "catwalk0"
 	name = "catwalk"
 	desc = "Cats really don't like these things."
 
+/turf/open/floor/plating/tunnelable //You can place a tunnel on these
+	name = "damaged plating"
 
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'

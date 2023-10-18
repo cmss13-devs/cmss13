@@ -666,6 +666,9 @@
 /turf/open/floor/corsat/can_dig_xeno_tunnel()
 	return TRUE
 
+/turf/open/floor/plating/tunnelable/can_dig_xeno_tunnel()
+	return TRUE
+
 /turf/closed/wall/almayer/research/containment/wall/divide/can_dig_xeno_tunnel()
 	return FALSE
 

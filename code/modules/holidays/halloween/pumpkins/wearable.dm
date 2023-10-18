@@ -5,6 +5,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/misc/events/pumpkins.dmi',
 	)
+	desc = "An ominous looking pumpkin. Would look pretty spooky if worn on your head..."
 	w_class = SIZE_MEDIUM
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_EYES

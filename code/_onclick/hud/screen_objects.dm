@@ -325,6 +325,21 @@
 				return 1
 	return 0
 
+/atom/movable/screen/inventory/MouseDrop_T(atom/dropping, mob/user)
+	. = ..()
+
+	if(slot_id != "l_hand" && slot_id != "r_hand")
+		return
+
+	if(!(locate(user) in get_turf(dropping)))
+		return
+
+	switch(slot_id)
+		if("l_hand")
+			user.put_in_l_hand(dropping)
+		if("r_hand")
+			user.put_in_r_hand(dropping)
+
 /atom/movable/screen/throw_catch
 	name = "throw/catch"
 	icon = 'icons/mob/hud/human_midnight.dmi'

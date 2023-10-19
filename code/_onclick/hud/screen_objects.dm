@@ -30,6 +30,10 @@
 /atom/movable/screen/inventory
 	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
 
+/atom/movable/screen/inventory/New(loc, ...)
+	. = ..()
+
+	RegisterSignal(src, COMSIG_ATOM_DROPPED_ON, PROC_REF(handle_dropped_on))
 
 /atom/movable/screen/close
 	name = "close"
@@ -130,7 +134,7 @@
 			if(10)
 				color = "#ff0000"
 			if(7 to 9)
-				color = "#ffa500"
+xq				color = "#ffa500"
 			else
 				color = null
 
@@ -325,20 +329,19 @@
 				return 1
 	return 0
 
-/atom/movable/screen/inventory/MouseDrop_T(atom/dropping, mob/user)
-	. = ..()
-
+/atom/movable/screen/inventory/proc/handle_dropped_on(atom/dropped_on, atom/dropping, client/user)
 	if(slot_id != "l_hand" && slot_id != "r_hand")
 		return
 
-	if(!(locate(user) in get_turf(dropping)))
+	if(!isstorage(dropping.loc))
 		return
 
-	switch(slot_id)
-		if("l_hand")
-			user.put_in_l_hand(dropping)
-		if("r_hand")
-			user.put_in_r_hand(dropping)
+	if(!(locate(user.mob) in get_turf(dropping)))
+		return
+
+	var/obj/item/storage/store = dropping.loc
+	store.remove_from_storage(dropping, get_turf(user.mob))
+	user.mob.put_in_active_hand(dropping)
 
 /atom/movable/screen/throw_catch
 	name = "throw/catch"

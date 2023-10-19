@@ -64701,6 +64701,13 @@
 	icon_state = "purplewhitecorner"
 	},
 /area/corsat/theta/biodome/hydroeast)
+"xGe" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2"
+	},
+/area/corsat/sigma/biodome)
 "xGI" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -105260,9 +105267,9 @@ fbe
 bhc
 bhc
 bhn
-aOC
+xGe
 aPl
-aOC
+xGe
 bhn
 bhn
 bhn

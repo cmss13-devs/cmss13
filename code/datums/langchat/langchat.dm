@@ -13,7 +13,6 @@
 
 #define LANGCHAT_LONGEST_TEXT 64
 #define LANGCHAT_WIDTH 96
-#define LANGCHAT_X_OFFSET -32
 #define LANGCHAT_MAX_ALPHA 196
 
 //pop defines
@@ -57,7 +56,7 @@
 		langchat_image.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR|RESET_TRANSFORM
 		langchat_image.maptext_y = langchat_height
 		langchat_image.maptext_height = 64
-		langchat_image.maptext_x = LANGCHAT_X_OFFSET
+		langchat_image.maptext_x = - world.icon_size - get_pixel_position_x(src, TRUE)
 		langchat_image.maptext_y -= LANGCHAT_MESSAGE_POP_Y_SINK
 
 	langchat_image.pixel_y = 0
@@ -149,6 +148,7 @@
 
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_width = LANGCHAT_WIDTH * 2
+	langchat_image.maptext_x -= LANGCHAT_WIDTH / 2
 
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)

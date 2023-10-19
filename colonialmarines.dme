@@ -368,6 +368,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\datums\components\footstep.dm"
 #include "code\datums\components\healing_reduction.dm"
 #include "code\datums\components\id_lock.dm"
+#include "code\datums\components\iff_fire_prevention.dm"
 #include "code\datums\components\label.dm"
 #include "code\datums\components\orbiter.dm"
 #include "code\datums\components\overlay_lighting.dm"

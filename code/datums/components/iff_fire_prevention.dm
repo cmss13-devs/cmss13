@@ -1,31 +1,21 @@
 #define IFF_HALT_COOLDOWN 0.5 SECONDS
 
 /datum/component/iff_fire_prevention
-	var/obj/parent_gun
 	var/iff_additional_fire_delay
 	COOLDOWN_DECLARE(iff_halt_cooldown)
 
 /datum/component/iff_fire_prevention/Initialize(additional_fire_delay = 0)
 	. = ..()
-	parent_gun = parent
 	iff_additional_fire_delay = additional_fire_delay
 
 
 /datum/component/iff_fire_prevention/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent_gun, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
+	RegisterSignal(parent, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
 
 /datum/component/iff_fire_prevention/UnregisterFromParent()
 	. = ..()
-	UnregisterSignal(parent_gun, COMSIG_GUN_BEFORE_FIRE)
-
-/datum/component/iff_fire_prevention/Destroy(force, silent)
-	handle_qdel()
-	. = ..()
-
-/datum/component/iff_fire_prevention/proc/handle_qdel()
-	SIGNAL_HANDLER
-	parent_gun = null
+	UnregisterSignal(parent, COMSIG_GUN_BEFORE_FIRE)
 
 /datum/component/iff_fire_prevention/proc/check_firing_lane(obj/firing_weapon, obj/projectile/projectile_to_fire, atom/target, mob/living/user)
 	SIGNAL_HANDLER

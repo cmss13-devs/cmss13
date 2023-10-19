@@ -848,6 +848,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/M40
 	name = "\improper M40 helmet"
+	item_icons = list(WEAR_HEAD = 'fray-marines/icons/mob/human/onmob/head_1.dmi')
 	icon_state = "st_helmet"
 	desc = "A helmet designed for USCM storm trooper. Contains heavy insulation, covered in nomex weave."
 	armor_melee = CLOTHING_ARMOR_HIGH

@@ -685,6 +685,7 @@
 /obj/item/clothing/suit/storage/marine/M40
 	name = "\improper M40 armor"
 	desc = "A custom set of M40 armor designed for use by USCM stormtrooper. Contains thick kevlar shielding."
+	item_icons = list(WEAR_JACKET = 'fray-marines/icons/mob/human/onmob/suit_1.dmi')
 	icon_state = "st_armor"
 	armor_melee = CLOTHING_ARMOR_HIGH
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT

@@ -774,14 +774,14 @@ world
 
 	/* Debugguing due to gamebreaking performance in the Blend calls made by getFlatIcon (think 200ms+ per icon) and overtimes */
 	if(istype(thing, /atom))
-		var/atom/D = thing
-		log_debug("costly_icon2html called on ref=[REF(D)], instance=[D], type=[D.type], with [length(D.overlays)] overlays, finished in [(REALTIMEOFDAY-start_time) / 10]s")
+		var/atom/dir = thing
+		log_debug("costly_icon2html called on ref=[REF(dir)], instance=[dir], type=[dir.type], with [length(dir.overlays)] overlays, finished in [(REALTIMEOFDAY-start_time) / 10]s")
 	else if(isicon(thing))
-		var/icon/D = thing
-		log_debug("costly_icon2html called on icon ref=[REF(D)], instance=[D] finished in [(REALTIMEOFDAY-start_time) / 10]s")
+		var/icon/dir = thing
+		log_debug("costly_icon2html called on icon ref=[REF(dir)], instance=[dir] finished in [(REALTIMEOFDAY-start_time) / 10]s")
 	else
-		var/datum/D = thing
-		log_debug("costly_icon2html called on unknown ref=[REF(D)], instance=[D], type=[D.type]")
+		var/datum/dir = thing
+		log_debug("costly_icon2html called on unknown ref=[REF(dir)], instance=[dir], type=[dir.type]")
 
 /// Generate a filename for this asset
 /// The same asset will always lead to the same asset name
@@ -896,10 +896,10 @@ world
 			arm_equipment(body, equipment_preset_dresscode)
 
 		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-		for(var/D in showDirs)
-			body.setDir(D)
+		for(var/dir in showDirs)
+			body.setDir(dir)
 			var/icon/partial = getFlatIcon(body)
-			out_icon.Insert(partial, dir = D)
+			out_icon.Insert(partial, dir = dir)
 
 		humanoid_icon_cache[icon_id] = out_icon
 		dummy_key ? unset_busy_human_dummy(dummy_key) : qdel(body)
@@ -957,10 +957,10 @@ world
 		arm_equipment(body, equipment_preset_dresscode)
 
 	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-	for(var/D in showDirs)
-		body.setDir(D)
+	for(var/dir in showDirs)
+		body.setDir(dir)
 		var/icon/partial = getFlatIcon(body)
-		out_icon.Insert(partial, dir = D)
+		out_icon.Insert(partial, dir = dir)
 
 	// log_debug("get_flat_human_copy_icon called on ref=[REF(original)], instance=[original], type=[original.type], with [length(original.overlays)] overlays reduced to [length(body.overlays)] overlays")
 

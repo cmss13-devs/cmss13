@@ -4,7 +4,7 @@
 /datum/emergency_call/upp
 	name = "UPP Naval Infantry (Squad)"
 	mob_max = 9
-	probability = 10
+	probability = 20
 	shuttle_id = "Distress_UPP"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_upp
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_upp/item
@@ -14,15 +14,17 @@
 	max_heavies = 1
 	max_smartgunners = 0
 	var/heavy_pick = TRUE // whether heavy should count as either a minigunner or shotgunner
-	hostility = TRUE
 	var/max_synths = 1
 	var/synths = 0
 
 /datum/emergency_call/upp/New()
-	..()
-	arrival_message = "T*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns )0r c|*$e @u*r*r$ c0m&*t."
-	objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
-
+	. = ..()
+	hostility = pick(50;FALSE,50;TRUE)
+	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
+	if(hostility)
+		objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
+	else
+		objectives = "Render assistance towards the UA Forces, do not engage UA forces. Listen to your superior officers."
 
 /datum/emergency_call/upp/print_backstory(mob/living/carbon/human/M)
 	if(ishuman_strict(M))
@@ -93,6 +95,16 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
+
+/datum/emergency_call/upp/hostile
+	name = "UPP Naval Infantry (Squad) (Hostile)"
+	hostility = TRUE
+
+/datum/emergency_call/upp/friendly/New()
+	..()
+	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
+	objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
+
 /datum/emergency_call/upp/friendly
 	name = "UPP Naval Infantry (Squad) (Friendly)"
 	hostility = FALSE
@@ -103,8 +115,7 @@
 	objectives = "Render assistance towards the UA Forces, Listen to your superior officers."
 
 /datum/emergency_call/upp/platoon
-	name = "UPP Naval Infantry (Platoon)"
-	mob_min = 4
+	name = "UPP Naval Infantry (Platoon) (Hostile)"
 	mob_max = 30
 	probability = 0
 	max_medics = 3
@@ -113,6 +124,12 @@
 	max_engineers = 2
 	max_synths = 1
 	heavy_pick = FALSE
+	hostility = TRUE
+
+/datum/emergency_call/upp/platoon/New()
+	..()
+	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
+	objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
 
 /datum/emergency_call/upp/platoon/friendly
 	name = "UPP Naval Infantry (Platoon) (Friendly)"

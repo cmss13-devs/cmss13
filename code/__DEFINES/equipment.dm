@@ -27,7 +27,7 @@
 #define ITEM_UNCATCHABLE (1<<9)
 /// Used for nonstandard marine clothing to ignore 'specialty' var.
 #define NO_NAME_OVERRIDE (1<<10)
-/// Used for armors or uniforms that don't have a snow icon state.
+/// Used for armors or uniforms that don't have a snow/desert/etc icon state set via select_gamemode_skin (not all item types currently perform this test though).
 #define NO_SNOW_TYPE (1<<11)
 
 #define INVULNERABLE (1<<12)
@@ -551,3 +551,8 @@ var/global/list/uniform_categories = list(
 #define PHONE_MARINE "Marine"
 #define PHONE_UPP_SOLDIER "Soldier"
 #define PHONE_IO "IO"
+
+#define PHONE_DND_FORCED 2
+#define PHONE_DND_ON 1
+#define PHONE_DND_OFF 0
+#define PHONE_DND_FORBIDDEN -1

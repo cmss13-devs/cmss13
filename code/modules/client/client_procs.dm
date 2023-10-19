@@ -330,13 +330,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	prefs.last_ip = address //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
-	xeno_prefix = prefs.xeno_prefix
-	xeno_postfix = prefs.xeno_postfix
-	xeno_name_ban = prefs.xeno_name_ban
-	if(!xeno_prefix || xeno_name_ban)
-		xeno_prefix = "XX"
-	if(!xeno_postfix || xeno_name_ban)
-		xeno_postfix = ""
+
+	load_xeno_name()
 
 	human_name_ban = prefs.human_name_ban
 
@@ -753,7 +748,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return FALSE
 
 	var/mob/dead/observer/observer = mob
-	observer.ManualFollow(target)
+	observer.do_observe(target)
 
 /client/proc/check_timelock(list/roles, hours)
 	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
@@ -783,10 +778,19 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			if (!screen_object.clear_with_screen)
 				continue
 
-		screen -= object
+		remove_from_screen(object)
 
 ///opens the particle editor UI for the in_atom object for this client
 /client/proc/open_particle_editor(atom/movable/in_atom)
 	if(admin_holder)
 		admin_holder.particle_test = new /datum/particle_editor(in_atom)
 		admin_holder.particle_test.tgui_interact(mob)
+
+/client/proc/load_xeno_name()
+	xeno_prefix = prefs.xeno_prefix
+	xeno_postfix = prefs.xeno_postfix
+	xeno_name_ban = prefs.xeno_name_ban
+	if(!xeno_prefix || xeno_name_ban)
+		xeno_prefix = "XX"
+	if(!xeno_postfix || xeno_name_ban)
+		xeno_postfix = ""

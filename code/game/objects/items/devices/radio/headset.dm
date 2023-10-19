@@ -514,6 +514,7 @@
 	name = "marine intel radio headset"
 	desc = "Used by Intelligence Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel."
 	initial_keys = list(/obj/item/device/encryptionkey/io)
+	frequency = INTEL_FREQ
 
 /obj/item/device/radio/headset/almayer/mcl
 	name = "corporate liaison radio headset"

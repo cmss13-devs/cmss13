@@ -810,8 +810,10 @@
 	var/obj/item/stack/sheet/wood/fuel = attacking_item
 	if(remaining_fuel >= initial(remaining_fuel))
 		to_chat(user, SPAN_NOTICE("You cannot fuel [src] further."))
+		return
 	if(!fuel.use(1))
 		to_chat(SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
+		return
 	visible_message(SPAN_NOTICE("[user] fuels [src] with [fuel]."))
 	remaining_fuel++
 
@@ -1306,19 +1308,19 @@
 	COOLDOWN_DECLARE(damage_delay)
 	/// list of quip emotes, taken from Working Joe
 	var/static/list/quips = list(
-		/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/alwaysknow_damaged,
 		/datum/emote/living/carbon/human/synthetic/working_joe/quip/not_liking,
 		/datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help,
-		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/day_never_done,
-		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/required_by_apollo,
+		/datum/emote/living/carbon/human/synthetic/working_joe/farewell/day_never_done,
+		/datum/emote/living/carbon/human/synthetic/working_joe/farewell/required_by_apollo,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
 	)
 	/// list of voicelines to use when damaged
 	var/static/list/damaged = list(
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/damage,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/that_stings,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/irresponsible,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/this_is_futile,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/damage,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/that_stings,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/irresponsible,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/this_is_futile,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
 	)

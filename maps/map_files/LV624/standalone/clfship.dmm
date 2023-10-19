@@ -455,6 +455,7 @@
 /area/lv624/lazarus/crashed_ship)
 "lv" = (
 /obj/item/stack/rods,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -669,6 +670,7 @@
 	phone_color = "yellow";
 	phone_id = "Engineering"
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
 	},
@@ -1059,6 +1061,7 @@
 /obj/item/tank/oxygen/red,
 /obj/item/storage/bag/trash,
 /obj/item/tool/screwdriver,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1250,6 +1253,7 @@
 	pixel_x = -3;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "GQ" = (
@@ -1275,6 +1279,7 @@
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/clothing/accessory/storage/webbing,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green"
@@ -1954,6 +1959,7 @@
 "Xa" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/regular,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald"

@@ -17,6 +17,17 @@ if (!String.prototype.trim) {
 // Status panel implementation ------------------------------------------------
 var status_tab_parts = ["Loading..."];
 var current_tab = null;
+var local_fontsize;
+// Per `storage.js` for tgui:
+// Localstorage can sometimes throw an error, even if DOM storage is not
+// disabled in IE11 settings.
+// See: https://superuser.com/questions/1080011
+try {
+	local_fontsize = localStorage.getItem("fontsize");
+} catch (error) {
+	local_fontsize = 12;
+}
+var current_fontsize = local_fontsize ? parseInt(local_fontsize) : 12; // in px, also determines line height and category header sizes for the verb menus
 var mc_tab_parts = [["Loading...", ""]];
 var href_token = null;
 var spells = [];
@@ -232,8 +243,8 @@ function spell_cat_check(cat) {
 	}
 }
 
-function tab_change(tab) {
-	if (tab == current_tab) return;
+function tab_change(tab, force) {
+	if (!force && tab == current_tab) return;
 	if (document.getElementById(current_tab))
 		document.getElementById(current_tab).className = "button"; // disable active on last button
 	current_tab = tab;
@@ -698,6 +709,7 @@ function draw_verbs(cat) {
 			a.href = "#";
 			a.onclick = make_verb_onclick(command.replace(/\s/g, "-"));
 			a.className = "grid-item";
+			a.style.lineHeight = current_fontsize + 2 + "px";
 			var t = document.createElement("span");
 			t.textContent = command;
 			t.className = "grid-item-text";
@@ -716,6 +728,7 @@ function draw_verbs(cat) {
 			// do addition here
 			var header = document.createElement("h3");
 			header.textContent = cat;
+			header.style.fontSize = current_fontsize + 4 + "px";
 			content.appendChild(header);
 			content.appendChild(additions[cat]);
 		}
@@ -848,6 +861,7 @@ Byond.subscribeTo("remove_verb_list", function (v) {
 // passes a 2D list of (verbcategory, verbname) creates tabs and adds verbs to respective list
 // example (IC, Say)
 Byond.subscribeTo("init_verbs", function (payload) {
+	statcontentdiv.style.fontSize = current_fontsize + "px";
 	wipe_verbs(); // remove all verb categories so we can replace them
 	checkStatusTab(); // remove all status tabs
 	verb_tabs = payload.panel_tabs;
@@ -868,6 +882,7 @@ Byond.subscribeTo("init_verbs", function (payload) {
 			draw_verbs(current_tab);
 		}
 	}
+	createOptionsButton();
 	SendTabsToByond();
 });
 
@@ -1019,3 +1034,32 @@ Byond.subscribeTo("remove_sdql2", remove_sdql2);
 Byond.subscribeTo("remove_mc", remove_mc);
 
 Byond.subscribeTo("add_verb_list", add_verb_list);
+
+function createOptionsButton() {
+	if (document.getElementById("options")) {
+		return;
+	}
+	var button = document.createElement("BUTTON");
+	button.onclick = function () {
+		openOptionsMenu();
+		this.blur();
+	};
+	button.id = "options";
+	button.textContent = "Options";
+	button.className = "options";
+	button.style.order = 999; // last please
+	button.style.marginLeft = "auto";
+	button.style.marginRight = "2%";
+	menu.appendChild(button);
+}
+
+function openOptionsMenu() {
+	Byond.command("Open-Statbrowser-Options " + current_fontsize);
+}
+
+Byond.subscribeTo("change_fontsize", function (new_fontsize) {
+	current_fontsize = parseInt(new_fontsize);
+	localStorage.setItem("fontsize", current_fontsize.toString());
+	statcontentdiv.style.fontSize = current_fontsize + "px";
+	tab_change(current_tab, true); // Redraw the current tab
+});

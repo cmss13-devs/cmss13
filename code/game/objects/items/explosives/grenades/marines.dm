@@ -479,12 +479,16 @@
 	underslug_launchable = FALSE
 	harmful = TRUE
 	antigrief_protection = TRUE
+	/// The nerve gas datum
 	var/datum/effect_system/smoke_spread/cn20/nerve_gas
+	/// The typepath of the nerve gas
+	var/nerve_gas_type = /datum/effect_system/smoke_spread/cn20
+	/// The radius the gas will reach
 	var/nerve_gas_radius = 2
 
-/obj/item/explosive/grenade/nerve_gas/New()
-	..()
-	nerve_gas = new /datum/effect_system/smoke_spread/cn20
+/obj/item/explosive/grenade/nerve_gas/Initialize(mapload, ...)
+	. = ..()
+	nerve_gas = new nerve_gas_type
 	nerve_gas.attach(src)
 
 /obj/item/explosive/grenade/nerve_gas/Destroy()
@@ -499,10 +503,7 @@
 
 /obj/item/explosive/grenade/nerve_gas/xeno
 	name = "\improper CN20-X canister grenade"
-
-/obj/item/explosive/grenade/nerve_gas/xeno/New()
-	nerve_gas = new /datum/effect_system/smoke_spread/cn20/xeno
-	nerve_gas.attach(src)
+	nerve_gas_type = /datum/effect_system/smoke_spread/cn20/xeno
 
 /*
 //================================================

@@ -1,5 +1,7 @@
 #define IFF_HALT_COOLDOWN 0.5 SECONDS
 
+/// A component that prevents gun (although you can attach it to anything else that shoot projectiles) from shooting when mob from the same faction stands in the way.
+/// You can also pass number of ticks, to make gun have an additional delay if firing prevention comes into play, but it is not neccesary.
 /datum/component/iff_fire_prevention
 	var/iff_additional_fire_delay
 	COOLDOWN_DECLARE(iff_halt_cooldown)
@@ -43,7 +45,7 @@
 
 		if(original_target_turf && !(original_target_turf in checked_turfs))
 			var/user_to_target_dist = get_dist(starting_turf, original_target_turf)
-			var/list/temp_checked_turfs = checked_turfs
+			var/list/temp_checked_turfs = checked_turfs.Copy()
 			checked_turfs = list()
 
 			for(var/turf/checked_turf as anything in temp_checked_turfs)

@@ -66,8 +66,8 @@
 	if(!client)
 		return 7
 
-	var/offset = client.pixel_x || client.pixel_y
-	return client.view + abs(offset / 32)
+	var/offset = max(abs(client.pixel_x), abs(client.pixel_y))
+	return client.view + offset / 32
 
 /atom/movable/screen/fullscreen
 	icon = 'icons/mob/hud/screen1_full.dmi'

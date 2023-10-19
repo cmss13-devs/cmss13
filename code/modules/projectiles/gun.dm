@@ -1678,6 +1678,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	return 1
 
+/// When the gun is about to shoot this is called to play the specific gun's firing sound. Requires the firing projectile and the gun's user as the first and second argument
 /obj/item/weapon/gun/proc/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)
 	if(!user) //The gun only messages when fired by a user.
 		return

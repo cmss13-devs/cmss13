@@ -79,6 +79,7 @@ jobs:
         run: |
           bash tools/ci/download_od.sh
       - name: Setup OD
+        if: steps.cache-od.outputs.cache-hit != 'true'
         run: |
           bash tools/ci/setup_od.sh
       - name: Run OD

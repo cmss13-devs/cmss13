@@ -100,7 +100,7 @@
 
 			var/name = "Unidentified Lifesigns"
 			var/input = "Неизвестные организмы зафиксированы на борту. Рекомендация: блокировка всех внешних шлюзов, включая воздуховоды и вентиляцию."
-			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 			set_security_level(SEC_LEVEL_RED)
 			return
 

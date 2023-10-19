@@ -266,14 +266,18 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attached_gun/grenade/G = new(src)
-	G.flags_attach_features &= ~ATTACH_REMOVABLE
-	G.hidden = TRUE
-	G.Attach(src)
-	update_attachable(G.slot)
+	var/obj/item/attachable/attached_gun/grenade/ugl = new(src)
+	var/obj/item/attachable/stock/tactical/stock = new(src)
+	ugl.flags_attach_features &= ~ATTACH_REMOVABLE
+	ugl.hidden = TRUE
+	ugl.Attach(src)
+	update_attachable(ugl.slot)
+	stock.hidden = FALSE
+	stock.Attach(src)
+	update_attachable(stock.slot)	
 
 /obj/item/weapon/gun/shotgun/combat/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 14, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 11, "stock_y" = 13.)
 
 
 
@@ -1274,7 +1278,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717
 	name = "\improper M37-17 pump shotgun"
-	desc = "A military version of the iconic HG 37-12, this design can fit one extra shell in each of its dual-tube internal magazines, and fires shells with increased velocity, resulting in more damage. Issued to select USCM vessels out on the rim. You can switch the active internal magazine by toggling the shotgun tube."
+	desc = "A military version of the iconic HG 37-12, this design can fit one extra shell in each of its dual-tube internal magazines, and fires shells with increased velocity, resulting in more damage. Issued to select USCM vessels and stations in the outer veil. A button on the side toggles the internal tubes."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m3717"
 	item_state = "m3717"

@@ -100,6 +100,19 @@
 		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
 
+
+// A Nearby Colonial Marshal patrol team responding to Marshals in Distress.
+/datum/emergency_call/cmb/alt
+	name = "CMB - Patrol Team - Marshals in Distress (Friendly)"
+	mob_max = 5
+	mob_min = 1
+	probability = 0
+
+/datum/emergency_call/cmb/alt/New()
+	..()
+	arrival_message = "CMB Team, this is Anchorpoint Station. We have confirmed you are in distress. Routing nearby units to assist!"
+	objectives = "Patrol Unit 5807, we have nearby Marshals in Distress! Locate and assist them immediately."
+
 // Anchorpoint Station Colonial Marines, use this primarily for reinforcing or evacuating the CMB, as the CMB themselves are not equipped to handle heavy engagements.
 /datum/emergency_call/cmb/anchorpoint
 	name = "CMB - Anchorpoint Station Colonial Marine QRF (Friendly)"

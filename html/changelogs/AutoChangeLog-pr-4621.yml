@@ -1,0 +1,4 @@
+author: "IsProbablyCatto"
+delete-after: True
+changes:
+  - qol: "Medbelts pull from pillbottles as default"

@@ -1,0 +1,5 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - rscadd: "Dartboards are now functional and can be crafted with cardboard."
+  - bugfix: "Fixed an issue with some deconstructed signs losing their icon."

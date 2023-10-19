@@ -103,8 +103,7 @@
 		automated_launch = FALSE
 	automated_launch_timer = TIMER_ID_NULL
 	ai_silent_announcement("Десантный корабль '[name]' отбывает.")
-	var/datum/ares_link/link = GLOB.ares_link
-	link.log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
+	log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
 
 
 /*
@@ -231,7 +230,7 @@
 			if(X && X.stat != DEAD)
 				var/name = "Unidentified Lifesigns"
 				var/input = "Неизвестные организмы зафиксированы на борту. Рекомендация: блокировка всех внешних шлюзов, включая воздуховоды и вентиляцию."
-				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 				set_security_level(SEC_LEVEL_RED)
 				break
 

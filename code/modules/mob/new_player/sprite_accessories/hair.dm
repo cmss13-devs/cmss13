@@ -748,3 +748,7 @@
 /datum/sprite_accessory/hair/croft
 	name = "Croft"
 	icon_state = "hair_croft"
+
+/datum/sprite_accessory/hair/aviator
+	name = "Aviator"
+	icon_state = "hair_aviator"

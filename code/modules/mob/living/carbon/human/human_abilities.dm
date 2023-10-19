@@ -424,8 +424,8 @@ CULT
 		return
 
 	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
-	preset.load_race(chosen, H.hivenumber)
-	preset.load_status(chosen)
+	preset.load_race(chosen)
+	preset.load_status(chosen, H.hivenumber)
 
 	to_chat(chosen, SPAN_ROLE_HEADER("You are now a Xeno Cultist!"))
 	to_chat(chosen, SPAN_ROLE_BODY("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself."))

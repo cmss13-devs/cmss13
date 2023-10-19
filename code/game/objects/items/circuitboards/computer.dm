@@ -177,7 +177,11 @@
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)
 	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
-		to_chat(user, SPAN_WARNING("You start messing around with the electronics of \the [src]..."))
+		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens. Maybe you need something more specialized?"))
+		return
+
+	else if(HAS_TRAIT(tool, TRAIT_TOOL_BLACKMARKET_HACKER))
+		to_chat(user, SPAN_WARNING("You start messing around with the electronics of [src]..."))
 		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
@@ -191,8 +195,7 @@
 					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [tool], and the red light stops blinking, turning off. It's probably good now."))
 					contraband_enabled = FALSE
 
-	if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))
-
+	else if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			to_chat(user, SPAN_NOTICE("You do not know how to use [tool]"))
 			return

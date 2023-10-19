@@ -109,24 +109,21 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 		to_chat(ghost, ghost_scan)
 
 
-/// This will do something after Project ARES.
 /datum/bioscan_data/proc/ares_can_bioscan()
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!istype(link))
 		return FALSE
-	if(link.p_bioscan && !link.p_bioscan.inoperable())
+	if(link.processor_bioscan && !link.processor_bioscan.inoperable())
 		return TRUE
 	return FALSE
 
 /// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
 /datum/bioscan_data/proc/ares_bioscan(forced = FALSE, variance = 2)
-	var/datum/ares_link/link = GLOB.ares_link
 	if(!forced && !ares_can_bioscan())
 		message_admins("An ARES Bioscan has failed.")
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 		var/input = "Сбой биосканирования. \n\nРекомендуется проверка системы Биосканирования."
-		if(ares_can_log())
-			link.log_ares_bioscan(name, input)
+		log_ares_bioscan(name, input)
 		if(ares_can_interface())
 			marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
 		return
@@ -137,8 +134,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 	log_game("BIOSCAN: ARES bioscan completed. [input]")
 
-	if(forced || ares_can_log())
-		link.log_ares_bioscan(name, input) //if interface is down, bioscan still logged, just have to go read it.
+	log_ares_bioscan(name, input) //if interface is down, bioscan still logged, just have to go read it.
 	if(forced || ares_can_interface())
 		marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 	else

@@ -34,8 +34,8 @@
 		return
 
 	var/tempnumber = rand(1, 999)
-	var/postfix_text = (client.prefs && client.prefs.xeno_postfix) ? ("-"+client.prefs.xeno_postfix) : ""
-	var/prefix_text = (client.prefs && client.prefs.xeno_prefix) ? client.prefs.xeno_prefix : "XX"
+	var/postfix_text = (client.xeno_postfix) ? ("-"+client.xeno_postfix) : ""
+	var/prefix_text = (client.xeno_prefix) ? client.xeno_prefix : "XX"
 	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
 	var/round_start = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME
 

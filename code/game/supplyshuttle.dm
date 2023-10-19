@@ -1079,7 +1079,6 @@ var/datum/controller/supply/supply_controller = new()
 			to_chat(usr, SPAN_DANGER("Current retrieval load has reached maximum capacity."))
 			return
 
-		var/datum/ares_link/link = GLOB.ares_link
 		for(var/i=1, i<=supply_controller.requestlist.len, i++)
 			var/datum/supply_order/SO = supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
@@ -1105,7 +1104,7 @@ var/datum/controller/supply/supply_controller = new()
 						pack_source = "Unknown"
 						if(prob(90))
 							pack_name = "Unknown"
-					link.log_ares_requisition(pack_source, pack_name, usr.name)
+					log_ares_requisition(pack_source, pack_name, usr.name)
 				else
 					temp = "Not enough money left.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"

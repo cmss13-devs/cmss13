@@ -1,0 +1,6 @@
+author: "MrDas"
+delete-after: True
+changes:
+  - bugfix: "You can now disassemble wide airlocks. (You can't unwrench them though)"
+  - spellcheck: "Fixed a few typos in airlock assembly."
+  - imageadd: "Added wide airlock assembly and generic solid wide airlock sprites."

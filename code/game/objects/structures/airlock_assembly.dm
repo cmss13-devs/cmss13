@@ -22,7 +22,8 @@
 	var/airlock_type = "generic" //the type path of the airlock once completed
 	var/glass = AIRLOCK_NOGLASS // see defines
 	var/created_name = null
-	var/width = 1 //Used for multitile assemblies
+	/// Used for multitile assemblies
+	var/width = 1
 
 /obj/structure/airlock_assembly/Initialize(mapload, ...)
 	. = ..()
@@ -115,7 +116,7 @@
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
 				//Moving wide doors is wonky and doesn't work properly, if it's fixed we could make it unwrenchable again
 				if(width > 1 && anchored)
-					to_chat(user, SPAN_WARNING("\The [src] cannot be unwrenched."))
+					to_chat(user, SPAN_WARNING("[src] cannot be unwrenched."))
 					return
 				if(!anchored)
 					var/turf/open/checked_turf = loc
@@ -248,7 +249,7 @@
 		return "/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type][glass ? "" : "/solid"]"
 	return "/obj/structure/machinery/door/airlock/almayer/[airlock_type][glass ? "/glass" : ""]"
 
-//Used for overloading proc in multi_tile
+/// Used for overloading proc in multi_tile
 /obj/structure/airlock_assembly/proc/update_collision_box()
 	return
 

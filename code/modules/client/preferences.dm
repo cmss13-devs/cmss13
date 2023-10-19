@@ -1409,6 +1409,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 					if(length(new_xeno_prefix)==0)
 						xeno_prefix = "XX"
+						owner.load_xeno_name()
 					else
 						var/all_ok = TRUE
 						for(var/i=1, i<=length(new_xeno_prefix), i++)
@@ -1420,6 +1421,7 @@ var/const/MAX_SAVE_SLOTS = 10
 									all_ok = FALSE //everything else - won't
 						if(all_ok)
 							xeno_prefix = new_xeno_prefix
+							owner.load_xeno_name()
 						else
 							to_chat(user, "<font color='red'>Invalid Xeno Prefix. Your Prefix can contain either single letter or two letters.</font>")
 
@@ -1444,6 +1446,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					else if(length(new_xeno_postfix)==0)
 						xeno_postfix = ""
+						owner.load_xeno_name()
 					else
 						var/all_ok = TRUE
 						var/first_char = TRUE
@@ -1469,6 +1472,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							first_char = FALSE
 						if(all_ok)
 							xeno_postfix = new_xeno_postfix
+							owner.load_xeno_name()
 						else
 							to_chat(user, "<font color='red'>Invalid Xeno Postfix. Your Postfix can contain single letter and an optional digit after it.</font>")
 
@@ -1696,6 +1700,11 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("origin")
 					var/choice = tgui_input_list(user, "Please choose your character's origin.", "Origin Selection", GLOB.player_origins)
+					var/datum/origin/picked_choice = GLOB.origins[choice]
+					if(!picked_choice)
+						return
+					if(tgui_alert(user, "You've selected [picked_choice.name]. [picked_choice.desc]", "Selected Origin", list("Confirm", "Cancel")) == "Cancel")
+						return
 					if(choice)
 						origin = choice
 

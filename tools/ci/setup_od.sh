@@ -1,13 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 
-if [ -z "${OPENDREAM_VERSION+x}" ]; then
-	source dependencies.sh
-fi
+cd ~/OpenDream
 
-git clone https://github.com/OpenDreamProject/OpenDream.git OpenDream
-cd OpenDream
-git checkout tags/v${OPENDREAM_VERSION}
-git submodule update --init --recursive
 dotnet restore
 dotnet build -c Release

@@ -68,21 +68,21 @@
 	data["worldtime"] = world.time
 
 	data["access_log"] = list()
-	data["access_log"] += interface.access_list
+	data["access_log"] += datacore.interface_access_list
 	data["apollo_log"] = list()
-	data["apollo_log"] += apollo_log
+	data["apollo_log"] += datacore.apollo_log
 
 	data["deleted_conversation"] = list()
 	data["deleted_conversation"] += admin_interface.deleted_1to1
 
-	data["distresstime"] = interface.ares_distress_cooldown
+	data["distresstime"] = datacore.ares_distress_cooldown
 	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["mission_failed"] = SSticker.mode.is_in_endgame
 	data["nuketimelock"] = NUCLEAR_TIME_LOCK
-	data["nuke_available"] = interface.nuke_available
+	data["nuke_available"] = datacore.nuke_available
 
 	var/list/logged_announcements = list()
-	for(var/datum/ares_record/announcement/broadcast as anything in interface.records_announcement)
+	for(var/datum/ares_record/announcement/broadcast as anything in datacore.records_announcement)
 		var/list/current_broadcast = list()
 		current_broadcast["time"] = broadcast.time
 		current_broadcast["title"] = broadcast.title
@@ -92,7 +92,7 @@
 	data["records_announcement"] = logged_announcements
 
 	var/list/logged_alerts = list()
-	for(var/datum/ares_record/security/security_alert as anything in interface.records_security)
+	for(var/datum/ares_record/security/security_alert as anything in datacore.records_security)
 		var/list/current_alert = list()
 		current_alert["time"] = security_alert.time
 		current_alert["title"] = security_alert.title
@@ -102,7 +102,7 @@
 	data["records_security"] = logged_alerts
 
 	var/list/logged_flights = list()
-	for(var/datum/ares_record/flight/flight_log as anything in interface.records_flight)
+	for(var/datum/ares_record/flight/flight_log as anything in datacore.records_flight)
 		var/list/current_flight = list()
 		current_flight["time"] = flight_log.time
 		current_flight["title"] = flight_log.title
@@ -113,7 +113,7 @@
 	data["records_flight"] = logged_flights
 
 	var/list/logged_bioscans = list()
-	for(var/datum/ares_record/bioscan/scan as anything in interface.records_bioscan)
+	for(var/datum/ares_record/bioscan/scan as anything in datacore.records_bioscan)
 		var/list/current_scan = list()
 		current_scan["time"] = scan.time
 		current_scan["title"] = scan.title
@@ -123,7 +123,7 @@
 	data["records_bioscan"] = logged_bioscans
 
 	var/list/logged_bombs = list()
-	for(var/datum/ares_record/bombardment/bomb as anything in interface.records_bombardment)
+	for(var/datum/ares_record/bombardment/bomb as anything in datacore.records_bombardment)
 		var/list/current_bomb = list()
 		current_bomb["time"] = bomb.time
 		current_bomb["title"] = bomb.title
@@ -134,7 +134,7 @@
 	data["records_bombardment"] = logged_bombs
 
 	var/list/logged_deletes = list()
-	for(var/datum/ares_record/deletion/deleted as anything in interface.records_deletion)
+	for(var/datum/ares_record/deletion/deleted as anything in datacore.records_deletion)
 		if(!istype(deleted))
 			continue
 		var/list/current_delete = list()
@@ -147,7 +147,7 @@
 	data["records_deletion"] = logged_deletes
 
 	var/list/logged_discussions = list()
-	for(var/datum/ares_record/deleted_talk/deleted_convo as anything in interface.records_deletion)
+	for(var/datum/ares_record/deleted_talk/deleted_convo as anything in datacore.records_deletion)
 		if(!istype(deleted_convo))
 			continue
 		var/list/deleted_disc = list()
@@ -158,7 +158,7 @@
 	data["deleted_discussions"] = logged_discussions
 
 	var/list/logged_orders = list()
-	for(var/datum/ares_record/requisition_log/req_order as anything in interface.records_asrs)
+	for(var/datum/ares_record/requisition_log/req_order as anything in datacore.records_asrs)
 		if(!istype(req_order))
 			continue
 		var/list/current_order = list()
@@ -173,7 +173,7 @@
 	var/list/logged_convos = list()
 	var/list/active_convo = list()
 	var/active_ref
-	for(var/datum/ares_record/talk_log/log as anything in interface.records_talking)
+	for(var/datum/ares_record/talk_log/log as anything in datacore.records_talking)
 		if(!istype(log))
 			continue
 		if(log.user == interface.last_login)
@@ -216,13 +216,6 @@
 
 /datum/ares_link/ui_state(mob/user)
 	return GLOB.admin_state
-
-/datum/ares_link/ui_static_data(mob/user)
-	var/list/data = list()
-
-	data["link_id"] = interface.link_id
-
-	return data
 
 /datum/ares_link/ui_close(mob/user)
 	. = ..()
@@ -314,7 +307,7 @@
 		if("new_conversation")
 			var/datum/ares_record/talk_log/convo = new(interface.last_login)
 			convo.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], 'New 1:1 link initiated. Greetings, [interface.last_login].'"
-			interface.records_talking += convo
+			datacore.records_talking += convo
 
 		if("clear_conversation")
 			var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
@@ -324,8 +317,8 @@
 			deleted.title = conversation.title
 			deleted.conversation = conversation.conversation
 			deleted.user = MAIN_AI_SYSTEM
-			interface.records_deletion += deleted
-			interface.records_talking -= conversation
+			datacore.records_deletion += deleted
+			datacore.records_talking -= conversation
 
 		if("fake_message_ares")
 			var/message = tgui_input_text(user, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)

@@ -26,6 +26,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/obj/structure/machinery/ares/processor/bioscan/processor_bioscan
 	var/obj/structure/machinery/computer/ares_console/interface
 	var/datum/ares_console_admin/admin_interface
+	var/datum/ares_datacore/datacore
 
 	var/list/obj/structure/machinery/computer/working_joe/ticket_computers = list()
 
@@ -34,6 +35,25 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/tickets_access = list()
 	var/list/waiting_ids = list()
 	var/list/active_ids = list()
+
+/datum/ares_link/New()
+	admin_interface = new
+	datacore = GLOB.ares_datacore
+
+/datum/ares_link/Destroy()
+	qdel(admin_interface)
+	for(var/obj/structure/machinery/ares/link in linked_systems)
+		link.delink()
+	for(var/obj/structure/machinery/computer/ares_console/interface in linked_systems)
+		interface.delink()
+	for(var/obj/effect/step_trigger/ares_alert/alert in linked_alerts)
+		alert.delink()
+	..()
+
+/* BELOW ARE IN AdminAres.dm
+/datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
+/datum/ares_link/ui_data(mob/user)
+*/
 
 /datum/ares_datacore
 	/// A record of who logged in and when.
@@ -63,27 +83,9 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	/// Is nuke request usable or not?
 	var/nuke_available = TRUE
 
-
 	COOLDOWN_DECLARE(ares_distress_cooldown)
 	COOLDOWN_DECLARE(ares_nuclear_cooldown)
 	COOLDOWN_DECLARE(ares_quarters_cooldown)
-
-/datum/ares_link/New()
-	admin_interface = new
-/datum/ares_link/Destroy()
-	qdel(admin_interface)
-	for(var/obj/structure/machinery/ares/link in linked_systems)
-		link.delink()
-	for(var/obj/structure/machinery/computer/ares_console/interface in linked_systems)
-		interface.delink()
-	for(var/obj/effect/step_trigger/ares_alert/alert in linked_alerts)
-		alert.delink()
-	..()
-
-/* BELOW ARE IN AdminAres.dm
-/datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
-/datum/ares_link/ui_data(mob/user)
-*/
 
 // ------ ARES Logging Procs ------ //
 /proc/ares_apollo_talk(broadcast_message)

@@ -72,7 +72,6 @@
 		leader = mob
 		arm_equipment(mob, /datum/equipment_preset/uscm/cbrn/specialist/lead, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are the CBRN Specialist Squad Leader!"))
-
 	else
 		arm_equipment(mob, /datum/equipment_preset/uscm/cbrn/specialist, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CBRN Specialist!"))

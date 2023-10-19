@@ -52,7 +52,7 @@
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(species.flags & IS_SYNTHETIC)
 					if(prob(10))
-						apply_effect(rand(1,2), WEAKEN)
+						apply_effect(rand(1, 2), WEAKEN)
 						to_chat(src, SPAN_DANGER("Internal power cell fault detected.\nSeek nearest recharging station."))
 				if(eye_blurry < 50)
 					AdjustEyeBlur(6)

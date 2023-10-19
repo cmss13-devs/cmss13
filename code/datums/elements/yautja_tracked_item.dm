@@ -42,3 +42,20 @@
 	if(istype(carrier, /mob/hologram/falcon))
 		return TRUE
 	return FALSE
+
+//very similar to xeno's queen_locator() but this is for locating lost equipment.
+/mob/living/carbon/human/proc/locate_lost_equipment(obj/tracker_target)
+	if(!hud_used)
+		return
+
+	hud_used.locate_leader.icon_state = "trackoff"
+
+	if(!istype(tracker_target))
+		return
+
+	var/atom/to_track = recursive_holder_check(tracker_target)
+	if(to_track.z != src.z || get_dist(src,to_track) < 1 || src == to_track)
+		hud_used.locate_leader.icon_state = "trackondirect_cl"
+	else
+		hud_used.locate_leader.setDir(get_dir(src,tracker_target))
+		hud_used.locate_leader.icon_state = "trackon_cl"

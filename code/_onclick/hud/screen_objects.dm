@@ -490,6 +490,11 @@
 	else if(mods["alt"])
 		earpiece.switch_tracker_target()
 		return
+	if(isyautja(user))
+		var/obj/item/clothing/gloves/yautja/hunter/bracers = user.gloves
+		if(istype(bracers))
+			bracers.track_gear()
+			return
 	if(user.get_active_hand())
 		return
 	if(user.assigned_squad)

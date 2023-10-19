@@ -51,6 +51,8 @@
 		/mob/living/carbon/human/proc/mark_thralled,
 		/mob/living/carbon/human/proc/unmark_thralled,
 		/mob/living/carbon/human/proc/mark_panel,
+		/mob/living/carbon/human/proc/unmark_panel,
+		/mob/living/carbon/human/proc/pred_bioscan,
 	)
 
 	knock_down_reduction = 4
@@ -212,6 +214,7 @@
 
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
 	give_action(hunter, /datum/action/yautja_emote_panel)
+	give_action(hunter, /datum/action/human_action/yautja_jump)
 	return ..()
 
 /datum/species/yautja/get_hairstyle(style)

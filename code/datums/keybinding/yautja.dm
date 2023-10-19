@@ -73,6 +73,22 @@
 		return
 	H.mark_for_hunt()
 
+/datum/keybinding/yautja/unmark_panel
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "unmark_panel"
+	full_name = "Unmark panel"
+	keybind_signal = COMSIG_KB_YAUTJA_MARK_PANEL
+
+/datum/keybinding/yautja/unmark_panel/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	if(!isyautja(H))
+		return
+	H.unmark_panel()
+
 /datum/keybinding/yautja/remove_from_hunt
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")

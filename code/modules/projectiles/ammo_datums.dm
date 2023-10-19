@@ -2427,7 +2427,7 @@
 /datum/ammo/energy/yautja/caster/sphere/stun
 	name = "plasma immobilizer"
 	damage = 0
-	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF
 	accurate_range = 20
 	max_range = 20
 

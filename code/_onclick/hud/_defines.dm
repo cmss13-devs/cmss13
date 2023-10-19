@@ -17,7 +17,7 @@
 #define ui_monkey_back "WEST+5:14,1:5" //monkey
 
 //Upper-middle right (damage indicators)
-#define ui_predator_power "EAST-1:28,9:13"
+#define ui_predator_power "EAST-1:28,8:18"
 
 #define ui_acti_alt  "EAST-1:28,1:5" //alternative intent switcher for when the interface is hidden (F12)
 

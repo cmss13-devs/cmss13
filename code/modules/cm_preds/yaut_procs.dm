@@ -337,3 +337,34 @@
 				equip_to_slot_if_possible(new /obj/item/falcon_drone(src.loc), WEAR_R_EAR, disable_warning = TRUE)
 
 	remove_verb(src, /mob/living/carbon/human/proc/pred_buy)
+
+/mob/living/carbon/human/proc/pred_bioscan()
+	set category = "Yautja.Tracker"
+	set name = "Request Bioscan Data"
+	set desc = "Позволяет запросить биосканирование у бортового ИИ."
+
+	if(is_mob_incapacitated())
+		to_chat(src, SPAN_WARNING("You're not able to do that right now."))
+		return
+
+	if(!isyautja(src))
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
+		return
+
+	var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
+	if(!istype(bracers))
+		to_chat(src, SPAN_WARNING("You need to be wearing your bracers to do this."))
+		return
+
+	GLOB.bioscan_data.yautja_bioscan_private(src)
+
+/datum/bioscan_data/proc/yautja_bioscan_private(mob/living/carbon/human/yautja)
+	var/xeno_planet_location_string = "[xenos_planet_location ? ", including one in [xenos_planet_location]" : ""]"
+	var/xeno_ship_location_string = "[xenos_ship_location ? ", including one in [xenos_ship_location]." : "."]"
+	var/marine_planet_location_string = "[marine_planet_location ? ", including one in [marine_planet_location]." : "."]"
+	var/marine_ship_location_string = "[marine_ship_location ? ", including one in [marine_ship_location]." : "."]"
+
+	var/yautja_scan = SPAN_ALERT("[xenos_on_planet] serpents present in the hunting ground[xeno_planet_location_string], with [larva] larva.\n[xenos_on_ship] serpents present on the human ship[xeno_ship_location_string]\n[marines_on_planet] humans present in the hunting ground[marine_planet_location_string]\n[marines_on_ship] humans present on the human ship[marine_ship_location_string]")
+
+	to_chat(yautja, "<h2 class='alert'>Bioscan complete</h2>")
+	to_chat(yautja, yautja_scan)

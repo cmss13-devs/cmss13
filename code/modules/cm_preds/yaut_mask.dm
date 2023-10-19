@@ -42,7 +42,7 @@
 	black_market_value = 100
 	var/list/mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
 	var/thrall = FALSE //Used to affect icon generation.
-
+	actions_types = list(/datum/action/item_action/specialist/yautja_aimed_shot)
 
 /obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", legacy = "None")
 	..()

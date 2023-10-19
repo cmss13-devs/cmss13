@@ -327,6 +327,10 @@
 	black_market_value = 100
 	flags_item = ITEM_PREDATOR
 
+	has_hud = TRUE
+	misc_tracking = TRUE
+	headset_hud_on = TRUE
+
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
@@ -336,6 +340,34 @@
 		if(!hellhound.stat)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
+
+/obj/item/device/radio/headset/yautja/handle_switching_tracker_target(mob/living/carbon/human/user)
+	var/list/options = list("Nothing (Stop Tracking)")
+	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
+		if(Y.stat != DEAD || QDELETED(Y))
+			continue
+		if(istype(get_area(Y), /area/yautja))
+			continue
+		options += Y
+	for(var/obj/item/tracked_item as anything in GLOB.loose_yautja_gear)
+		if(tracked_item.anchored || QDELETED(tracked_item))
+			continue
+		if(is_honorable_carrier(recursive_holder_check(tracked_item)))
+			continue
+		if(istype(get_area(tracked_item), /area/yautja))
+			continue
+		options += tracked_item
+
+	if(!LAZYLEN(options))
+		to_chat(user, SPAN_NOTICE("There are no signatures that require your attention."))
+		return
+
+	var/new_track = tgui_input_list(user, "Choose a new tracking target.", "Tracking Selection", options)
+	if(!new_track)
+		return
+
+	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to <b>[new_track]</b>."))
+	locate_setting = new_track
 
 /obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
 	name = "\improper Elder Communicator"

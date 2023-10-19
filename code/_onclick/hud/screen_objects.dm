@@ -30,7 +30,7 @@
 /atom/movable/screen/inventory
 	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
 
-/atom/movable/screen/inventory/New(loc, ...)
+/atom/movable/screen/inventory/Initialize(mapload, ...)
 	. = ..()
 
 	RegisterSignal(src, COMSIG_ATOM_DROPPED_ON, PROC_REF(handle_dropped_on))
@@ -330,13 +330,15 @@
 	return 0
 
 /atom/movable/screen/inventory/proc/handle_dropped_on(atom/dropped_on, atom/dropping, client/user)
-	if(slot_id != "l_hand" && slot_id != "r_hand")
+	SIGNAL_HANDLER
+
+	if(slot_id != WEAR_L_HAND && slot_id != WEAR_R_HAND)
 		return
 
 	if(!isstorage(dropping.loc))
 		return
 
-	if(!(locate(user.mob) in get_turf(dropping)))
+	if(!user.mob.Adjacent(dropping))
 		return
 
 	var/obj/item/storage/store = dropping.loc

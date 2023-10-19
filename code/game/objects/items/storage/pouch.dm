@@ -144,7 +144,7 @@
 	name = "survival pouch"
 	desc = "A pouch given to colonists in the event of an emergency."
 	icon_state = "tools"
-	storage_slots = 6
+	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,

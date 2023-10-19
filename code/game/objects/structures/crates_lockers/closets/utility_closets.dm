@@ -50,6 +50,7 @@
 			new /obj/item/tank/emergency_oxygen/engi(src)
 			new /obj/item/clothing/mask/gas(src)
 			new /obj/item/clothing/mask/gas(src)
+			new /obj/item/storage/firstaid/o2(src)
 
 		// teehee - Ah, tg coders...
 		if ("delete")

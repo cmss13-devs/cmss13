@@ -44,6 +44,9 @@ SUBSYSTEM_DEF(statpanels)
 		var/client/target = currentrun[length(currentrun)]
 		currentrun.len--
 
+		if(!target)
+			continue
+
 		if(!target.stat_panel.is_ready())
 			continue
 

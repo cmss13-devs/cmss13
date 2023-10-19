@@ -76,15 +76,15 @@ jobs:
         with:
           path: ~/OpenDream
           key: ${{ runner.os }}-opendream-${{ env.OPENDREAM_VERSION }}
-      - name: Download OD
+      - name: Download OpenDream
         if: steps.cache-od.outputs.cache-hit != 'true'
         run: |
           bash tools/ci/download_od.sh
-      - name: Setup OD
+      - name: Setup OpenDream
         if: steps.cache-od.outputs.cache-hit != 'true'
         run: |
           bash tools/ci/setup_od.sh
-      - name: Run OD
+      - name: Run OpenDream
         run: |
           bash tools/ci/run_od.sh
 

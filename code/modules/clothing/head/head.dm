@@ -75,6 +75,12 @@
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
 
+/obj/item/clothing/head/beret/cm/white
+	icon_state = "s_beret"
+
+/obj/item/clothing/head/beret/cm/black
+	icon_state = "beret_black"
+
 /obj/item/clothing/head/beret/cm/squadberet
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
@@ -236,6 +242,7 @@
 						/obj/item/clothing/glasses/mgoggles/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/black = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/orange = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/v2 = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/marsoc = HAT_GARB_RELAY_ICON_STATE,
@@ -301,8 +308,8 @@
 
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
 	var/image/return_image = ..()
-	if(!slot == WEAR_HEAD)
-		return
+	if(slot != WEAR_HEAD)
+		return return_image
 
 	if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
 		for(var/obj/garb_object in pockets.contents)
@@ -370,16 +377,22 @@
 	name = "\improper USCM formal Commanding Officer's black cap"
 	icon_state = "co_formalhat_black"
 
-/obj/item/clothing/head/cmcap/ro
-	name = "\improper USCM officer cap"
-	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+/obj/item/clothing/head/cmcap/req/ro
+	name = "\improper USCM quartermaster cap"
+	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "rocap"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
-	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
+	desc = "It's a not-so-fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
 	flags_atom = FPRINT|NO_SNOW_TYPE
+
+/obj/item/clothing/head/cmcap/bridge
+	name = "\improper USCM officer cap"
+	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+	icon_state = "cap_officer"
 
 /obj/item/clothing/head/cmcap/flap
 	name = "\improper USCM expedition cap"
@@ -494,10 +507,19 @@
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
 	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
-	icon = 'icons/obj/items/clothing/hats.dmi'
-	icon_state = "officercap"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "marine_formal"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_0.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/marine/peaked/service
+	name = "marine service peaked cap"
+	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "marine_service"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
 /obj/item/clothing/head/marine/peaked/captain
@@ -735,9 +757,6 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/drillhat/Initialize(mapload, ...)
-	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/drillhat)
 #undef HAT_GARB_RELAY_ICON_STATE
 
 //==========================//DRESS BLUES\\===============================\\

@@ -57,10 +57,13 @@
 	icon_state = "atmos"
 
 /obj/effect/spawner/random/technology_scanner/item_to_spawn()
-	return pick(prob(5);/obj/item/device/t_scanner,\
-				prob(2);/obj/item/device/radio,\
-				prob(5);/obj/item/device/analyzer)
-
+	return pick_weight(list(
+		"none" = 10,
+		/obj/item/device/t_scanner = 10,
+		/obj/item/device/radio = 8,
+		/obj/item/device/analyzer = 10,
+		/obj/item/device/black_market_hacking_device = 2,
+	))
 
 /obj/effect/spawner/random/powercell
 	name = "Random Powercell"
@@ -206,7 +209,6 @@
 				/obj/item/poster,\
 				/obj/item/toy/bikehorn,\
 				/obj/item/toy/beach_ball,\
-				/obj/item/weapon/banhammer,\
 				/obj/item/toy/balloon,\
 				/obj/item/toy/blink,\
 				/obj/item/toy/crossbow,\

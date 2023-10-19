@@ -895,7 +895,6 @@
 /area/shiva/interior/garage)
 "adp" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/banhammer,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -18273,13 +18272,6 @@
 /obj/item/tool/wrench,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/colony/central)
-"nhh" = (
-/obj/item/clothing/gloves/marine/veteran/insulated,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/shiva/interior/colony/deck)
 "nhl" = (
 /turf/open/floor/shiva{
 	dir = 5;
@@ -20114,7 +20106,7 @@
 	pixel_x = 10;
 	pixel_y = 11
 	},
-/obj/item/tool/weldingtool/largetank{
+/obj/item/tool/weldingtool{
 	pixel_x = -6;
 	pixel_y = 4
 	},
@@ -58882,7 +58874,7 @@ jVI
 kQF
 kzE
 acT
-nhh
+qOD
 kTZ
 iLS
 mms

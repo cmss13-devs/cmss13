@@ -218,14 +218,14 @@
 	if(!istype(chosen_ert))
 		return
 
-	var/is_announcing = tgui_alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
-	if(!is_announcing)
+	var/quiet_launch = tgui_alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+	if(!quiet_launch)
 		qdel(chosen_ert)
 		return
-	if(is_announcing == "No")
-		is_announcing = FALSE
-	if (is_announcing == "Yes")
-		is_announcing = TRUE
+	if(quiet_launch == "No")
+		quiet_launch = TRUE
+	if (quiet_launch == "Yes")
+		quiet_launch = FALSE
 
 	var/turf/override_spawn_loc
 	var/prompt = tgui_alert(usr, "Spawn at their assigned spawn, or at your location?", "Spawnpoint Selection", list("Spawn", "Current Location"), 0)
@@ -235,7 +235,7 @@
 	if(prompt == "Current Location")
 		override_spawn_loc = get_turf(usr)
 
-	chosen_ert.activate(is_announcing, override_spawn_loc)
+	chosen_ert.activate(quiet_launch = quiet_launch, announce = !quiet_launch, override_spawn_loc = override_spawn_loc)
 
 	message_admins("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 
@@ -284,6 +284,21 @@
 	if(points_to_add >= 0)
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
+/datum/admins/proc/check_req_heat()
+	set name = "Check Requisitions Heat"
+	set desc = "Check how close the CMB is to arriving to search Requisitions."
+	set category = "Admin.Events"
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+
+	var/req_heat_change = tgui_input_real_number(usr, "Set the new requisitions black market heat. ERT is called at 100, disabled at -1. Current Heat: [supply_controller.black_market_heat]", "Modify Req Heat", 0, 100, -1)
+	if(!req_heat_change)
+		return
+
+	supply_controller.black_market_heat = req_heat_change
+	message_admins("[key_name_admin(usr)] set requisitions heat to [req_heat_change].")
+
+
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "Self-Destruct"
 	set desc = "Trigger self-destruct countdown. This should not be done if the self-destruct has already been called."
@@ -307,7 +322,7 @@
 	if(!admin_holder)
 		return
 
-	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "Other", "Cancel")
+	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "CMB", "Other", "Cancel")
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
@@ -582,9 +597,9 @@
 		return FALSE
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.p_apollo.inoperable())
+	if(link.processor_apollo.inoperable())
 		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
-		if(prompt == "No")
+		if(prompt != "Yes")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
 			return FALSE
 
@@ -687,6 +702,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=evacuation_cancel'>Cancel Evacuation</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=add_req_points'>Add Requisitions Points</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=check_req_heat'>Modify Requisitions Heat</A><BR>
 		<BR>
 		<B>Research</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>

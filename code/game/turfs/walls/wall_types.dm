@@ -1114,6 +1114,10 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	if(src in P.permutated)
 		return
 
+	//Ineffective if someone is sitting on the wall
+	if(locate(/mob) in contents)
+		return ..()
+
 	if(!prob(chance_to_reflect))
 		if(P.ammo.damage_type == BRUTE)
 			P.damage *= brute_multiplier

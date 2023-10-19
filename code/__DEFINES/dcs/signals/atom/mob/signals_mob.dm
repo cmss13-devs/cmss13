@@ -111,6 +111,12 @@
 
 #define COMSIG_GHOST_MOVED "ghost_moved"
 
+/// When a mob is turned into a /mob/dead/observer at /mob/proc/ghostize()
+#define COMSIG_MOB_GHOSTIZE "mob_ghostize"
+
+/// When a mob gets a new mind via transfer at /datum/mind/proc/transfer_to()
+#define COMSIG_MOB_NEW_MIND "mob_new_mind"
+
 #define COMSIG_MOB_MOUSEDOWN "mob_mousedown"					//from /client/MouseDown(): (atom/object, turf/location, control, params)
 #define COMSIG_MOB_MOUSEUP "mob_mouseup"						//from /client/MouseUp(): (atom/object, turf/location, control, params)
 #define COMSIG_MOB_MOUSEDRAG "mob_mousedrag"				//from /client/MouseDrag(): (atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)

@@ -257,6 +257,7 @@
 		t = replacetext(t, "\[wy\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
 		t = replacetext(t, "\[uscm\]", "<img src = [asset.get_url_mappings()["uscmlogo.png"]]>")
 		t = replacetext(t, "\[upp\]", "<img src = [asset.get_url_mappings()["upplogo.png"]]>")
+		t = replacetext(t, "\[cmb\]", "<img src = [asset.get_url_mappings()["cmblogo.png"]]>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
@@ -427,7 +428,7 @@
 		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 		var/x
 		var/y
-		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/centcomm))
+		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/weyyu))
 			x = rand(-2, 0)
 			y = rand(-1, 2)
 		else

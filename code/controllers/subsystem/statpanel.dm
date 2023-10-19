@@ -44,6 +44,9 @@ SUBSYSTEM_DEF(statpanels)
 		var/client/target = currentrun[length(currentrun)]
 		currentrun.len--
 
+		if(!target)
+			continue
+
 		if(!target.stat_panel.is_ready())
 			continue
 
@@ -383,8 +386,10 @@ SUBSYSTEM_DEF(statpanels)
 	set name = "Open Statbrowser Options"
 	set hidden = TRUE
 
+	if (!current_fontsize)
+		current_fontsize = 12
 
-	var/datum/statbrowser_options/SM = statbrowser_options
-	if(!SM)
-		SM = statbrowser_options = new(src, current_fontsize)
-	SM.tgui_interact()
+	var/datum/statbrowser_options/options_panel = statbrowser_options
+	if(!options_panel)
+		options_panel = statbrowser_options = new(src, current_fontsize)
+	options_panel.tgui_interact()

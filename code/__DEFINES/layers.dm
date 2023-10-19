@@ -83,10 +83,15 @@
 
 #define ABOVE_SPECIAL_RESIN_STRUCTURE_LAYER 3.01
 
+/// A layer above objects (like structures) but below items
+#define BETWEEN_OBJECT_ITEM_LAYER 3.01
+
+/// The layer on which items lay
+#define ITEM_LAYER 3.02
 /// for items that should be at the top of the pile of items
-#define UPPER_ITEM_LAYER 3.01
+#define UPPER_ITEM_LAYER 3.03
 /// just above all items
-#define ABOVE_OBJ_LAYER 3.02
+#define ABOVE_OBJ_LAYER 3.04
 
 #define BUSH_LAYER 3.05
 

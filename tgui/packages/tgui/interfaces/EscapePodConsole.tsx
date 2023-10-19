@@ -19,16 +19,15 @@ export const EscapePodConsole = (_props, context) => {
 
   switch (data.docking_status) {
     case 4:
-      statusMessage = 'SYSTEMS OK';
-      buttonColor = 'good';
-      operable = 1;
+      statusMessage = 'NO EVACUATION';
+      buttonColor = 'neutral';
       break;
     case 5:
       statusMessage = 'SYSTEMS DOWN';
       break;
     case 6:
       statusMessage = 'STANDING BY';
-      buttonColor = 'neutral';
+      buttonColor = 'good';
       operable = 1;
       break;
     case 7:

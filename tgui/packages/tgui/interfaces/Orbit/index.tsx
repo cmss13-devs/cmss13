@@ -1,6 +1,6 @@
 import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
-import { capitalizeFirst } from 'common/string';
+import { capitalizeFirst, multiline } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
 import { Box, Button, Collapsible, ColorBox, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
@@ -29,18 +29,21 @@ export const Orbit = (props, context) => {
 /** Controls filtering out the list of observables via search */
 const ObservableSearch = (props, context) => {
   const { act, data } = useBackend<OrbitData>(context);
-  const {
-    auto_observe,
-    humans = [],
-    marines = [],
-    survivors = [],
-    xenos = [],
-  } = data;
+  const { humans = [], marines = [], survivors = [], xenos = [] } = data;
+
+  let auto_observe = data.auto_observe;
+
+  const [autoObserve, setAutoObserve] = useLocalState<boolean>(
+    context,
+    'autoObserve',
+    auto_observe ? true : false
+  );
   const [searchQuery, setSearchQuery] = useLocalState<string>(
     context,
     'searchQuery',
     ''
   );
+
   /** Gets a list of Observables, then filters the most relevant to orbit */
   const orbitMostRelevant = (searchQuery: string) => {
     /** Returns the most orbited observable that matches the search. */
@@ -56,6 +59,7 @@ const ObservableSearch = (props, context) => {
     if (mostRelevant !== undefined) {
       act('orbit', {
         ref: mostRelevant.ref,
+        auto_observe: autoObserve,
       });
     }
   };
@@ -77,6 +81,16 @@ const ObservableSearch = (props, context) => {
           />
         </Stack.Item>
         <Stack.Divider />
+        <Stack.Item>
+          <Button
+            color={autoObserve ? 'good' : 'transparent'}
+            icon={autoObserve ? 'toggle-on' : 'toggle-off'}
+            onClick={() => act('toggle_auto_observe')}
+            tooltip={multiline`Toggle Auto-Observe. When active, you'll
+            see the UI / full inventory of whoever you're orbiting. Neat!`}
+            tooltipPosition="bottom-start"
+          />
+        </Stack.Item>
         <Stack.Item>
           <Button
             color="transparent"
@@ -198,6 +212,8 @@ const ObservableItem = (
   const { color, item } = props;
   const { health, icon, full_name, nickname, orbiters, ref, background_color } =
     item;
+
+  const [autoObserve] = useLocalState<boolean>(context, 'autoObserve', false);
 
   return (
     <Button

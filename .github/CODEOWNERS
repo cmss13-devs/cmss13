@@ -24,9 +24,8 @@
 /tools/docker/ @Fira
 /Dockerfile @Fira
 
-# MorrowWolf
+# Zonespace
 
-/maps/map_files/LV522_Chances_Claim/LV522_Chances_Claim.dmm @morrowwolf
-/code/modules/gear_presets/survivors.dm @morrowwolf
+/code/modules/gear_presets/survivors.dm @zonespace27
 
 # MULTIPLE OWNERS

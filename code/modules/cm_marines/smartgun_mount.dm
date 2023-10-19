@@ -458,7 +458,7 @@
 	/// How much time should pass in between full auto shots, slightly higher than burst due to click delay and similar things that slow firing down
 	var/fire_delay = 0.25 SECONDS
 	/// How much time should pass in between burst fire shots
-	var/burst_fire_delay = 0.175 SECONDS
+	var/burst_fire_delay = 0.2 SECONDS
 	/// How many rounds are fired per burst
 	var/burst_amount = 3
 	/// How many rounds have been fired in the current burst/auto

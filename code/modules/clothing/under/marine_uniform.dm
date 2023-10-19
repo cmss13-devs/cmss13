@@ -1100,13 +1100,12 @@
 /datum/action/item_action/specialist/toggle_cbrn_hood
 	ability_primacy = SPEC_PRIMARY_ACTION_2
 
-/datum/action/item_action/specialist/toggle_cbrn_hood/New(mob/living/user, obj/item/holder)
+/datum/action/item_action/specialist/toggle_cbrn_hood/New(obj/item/clothing/under/marine/cbrn/armor, obj/item/holder)
 	..()
 	name = "Toggle Hood"
 	button.name = name
 	button.overlays.Cut()
-	var/obj/item/clothing/under/marine/cbrn/armor = user //I have no idea why this works
-	var/image/button_overlay = image(armor.linked_hood.icon, user, armor.linked_hood.icon_state)
+	var/image/button_overlay = image(armor.linked_hood.icon, armor, armor.linked_hood.icon_state)
 	button.overlays += button_overlay
 
 /datum/action/item_action/specialist/toggle_cbrn_hood/action_activate()

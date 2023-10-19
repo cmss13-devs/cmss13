@@ -34146,10 +34146,6 @@
 	icon_state = "floor6"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
-"bXA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bXB" = (
 /obj/structure/surface/rack,
 /turf/open/floor{
@@ -66421,9 +66417,9 @@ bqF
 bnk
 aZF
 bmQ
-bmT
-bmU
-bmU
+fpL
+his
+his
 bmU
 bmU
 bmU
@@ -66704,10 +66700,10 @@ bnk
 aZF
 bmm
 bml
-bXA
-bmU
-bmU
-bmU
+xRN
+his
+his
+his
 bmU
 buX
 bxD
@@ -66986,11 +66982,11 @@ bnk
 aZF
 aZF
 bmQ
-bnU
-boB
-bmU
-bmU
-bmU
+vfI
+pYT
+his
+his
+his
 buX
 bxD
 byc
@@ -67270,9 +67266,9 @@ bnk
 bnk
 bnT
 bml
-bmU
-bmU
-bmT
+his
+his
+fpL
 bqP
 bxE
 byc
@@ -67553,7 +67549,7 @@ bnk
 aZF
 bmm
 bml
-bmT
+fpL
 boS
 bqP
 bxF

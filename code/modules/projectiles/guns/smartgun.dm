@@ -31,6 +31,7 @@
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_auto_fire,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type

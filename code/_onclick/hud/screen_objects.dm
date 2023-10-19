@@ -134,7 +134,7 @@
 			if(10)
 				color = "#ff0000"
 			if(7 to 9)
-xq				color = "#ffa500"
+				color = "#ffa500"
 			else
 				color = null
 

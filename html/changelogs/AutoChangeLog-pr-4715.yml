@@ -1,4 +1,0 @@
-author: "Kitsunemitsu"
-delete-after: True
-changes:
-  - bugfix: "fixed FTLs being demoted from SL erroneously having the tag TL in chat."

@@ -105,7 +105,7 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 	))
-	RegisterSignal(src, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
+	AddComponent(/datum/component/iff_fire_prevention)
 
 /obj/item/weapon/gun/smartgun/get_examine_text(mob/user)
 	. = ..()
@@ -353,12 +353,12 @@
 	secondary_toggled = FALSE
 	if(iff_enabled)
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
-		RegisterSignal(src, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
+		AddComponent(/datum/component/iff_fire_prevention)
 		drain += 10
 		MD.iff_signal = initial(MD.iff_signal)
 	if(!iff_enabled)
 		remove_bullet_trait("iff")
-		UnregisterSignal(src, COMSIG_GUN_BEFORE_FIRE)
+		GetExactComponent(/datum/component/iff_fire_prevention).RemoveComponent()
 		drain -= 10
 		MD.iff_signal = null
 

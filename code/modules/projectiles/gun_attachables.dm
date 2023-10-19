@@ -1145,7 +1145,6 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/mini_iff/New()
 	..()
-	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
 	accuracy_unwielded_mod = 0
 
@@ -1159,7 +1158,7 @@ Defined in conflicts.dm of the #defines folder.
 	))
 
 /obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(do_after(user, 8, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(do_after(user, 4, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		allows_movement = 1
 		. = ..()
 
@@ -1167,21 +1166,19 @@ Defined in conflicts.dm of the #defines folder.
 	. = ..()
 	if(G.zoom)
 		G.slowdown += dynamic_aim_slowdown
-		G.iff_range = 13
 
 /obj/item/attachable/scope/mini_iff/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	G.slowdown -= dynamic_aim_slowdown
-	G.iff_range = 7
 	..()
 
 /obj/item/attachable/scope/mini_iff/Attach(obj/item/weapon/gun/gun)
 	. = ..()
-	RegisterSignal(gun, COMSIG_GUN_BEFORE_FIRE, TYPE_PROC_REF(/obj/item/weapon/gun, check_firing_lane))
+	gun.AddComponent(/datum/component/iff_fire_prevention, FIRE_DELAY_TIER_5)
 
 
 /obj/item/attachable/scope/mini_iff/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	. = ..()
-	UnregisterSignal(detaching_gun, COMSIG_GUN_BEFORE_FIRE)
+	detaching_gun.GetExactComponent(/datum/component/iff_fire_prevention).RemoveComponent()
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"

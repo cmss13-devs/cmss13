@@ -61,6 +61,13 @@
 			else
 				client.remove_from_screen(screen)
 
+//Get the distance to the farthest edge of the screen
+/mob/proc/get_maximum_view_range()
+	if(!client)
+		return 7
+
+	var/offset = client.pixel_x || client.pixel_y
+	return client.view + abs(offset / 32)
 
 /atom/movable/screen/fullscreen
 	icon = 'icons/mob/hud/screen1_full.dmi'

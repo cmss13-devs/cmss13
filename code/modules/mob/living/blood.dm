@@ -64,7 +64,7 @@
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 				if(species.flags & IS_SYNTHETIC)
 					if(prob(10))
-						apply_effect(rand(1,2), PARALYZE)
+						apply_effect(rand(1, 2), PARALYZE)
 						to_chat(src, SPAN_DANGER("Critical power cell failure detected.\nSeek recharging station immediately."))
 				else
 					if(eye_blurry < 50)

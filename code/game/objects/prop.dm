@@ -52,14 +52,16 @@
 
 /obj/item/prop/geiger_counter/attackby(obj/item/attacking_item, mob/user)
 	. = ..()
-	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) || HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
-		if(!battery)
-			to_chat(user, SPAN_NOTICE("There is no battery for you to remove."))
-			return
-		to_chat(user, SPAN_NOTICE("You jam [battery] out of [src] with [attacking_item], prying it out irreversibly."))
-		user.put_in_hands(battery)
-		battery = null
-		update_icon()
+	if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && !HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
+		return
+
+	if(!battery)
+		to_chat(user, SPAN_NOTICE("There is no battery for you to remove."))
+		return
+	to_chat(user, SPAN_NOTICE("You jam [battery] out of [src] with [attacking_item], prying it out irreversibly."))
+	user.put_in_hands(battery)
+	battery = null
+	update_icon()
 
 /obj/item/prop/geiger_counter/update_icon()
 	. = ..()

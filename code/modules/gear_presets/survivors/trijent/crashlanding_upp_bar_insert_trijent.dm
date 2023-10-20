@@ -166,8 +166,8 @@
 	name = "Survivor - Synthetic - UPP Synth"
 	flags = EQUIPMENT_PRESET_EXTRA
 	languages = ALL_SYNTH_LANGUAGES_UPP
-	assignment = JOB_UPP_COMBAT_SYNTH
-	rank = JOB_UPP_COMBAT_SYNTH
+	assignment = JOB_UPP_SUPPORT_SYNTH
+	rank = JOB_UPP_SUPPORT_SYNTH
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	skills = /datum/skills/colonial_synthetic

@@ -223,3 +223,66 @@
       them to your heart's content.
   - maptweak: Moved long-rest bunks further north and further south of where they
       were originally
+2023-10-18:
+  mullenpaul:
+  - code_imp: resolves flyby issues by refactoring update_equipment logic
+  - refactor: removes unwanted code
+  realforest2001:
+  - code_imp: Moved most data storage from ARES Interface and APOLLO consoles to a
+      new ARES datacore datum.
+  - code_imp: Moved the two consoles to separate files for easier navigation, and
+      moved their respective UI data to the files.
+  - code_imp: Ares logging procs are now global procs with integrated can_log checks,
+      rather than requiring definition of ares_link for every use.
+  - rscadd: Added ares_can_log checks to all the places I could find missing them.
+  - bugfix: Fixed missing rejection button for access tickets.
+  - rscdel: Removed claim ticket button from Access Tickets.
+2023-10-19:
+  BeagleGaming1:
+  - refactor: Refactored handheld beacons and related code
+  CapCamIII:
+  - bugfix: Equipped marine presets spawn with full food on spawn
+  Huffie56:
+  - refactor: refactor ammo_datums file.
+  SpartanBobby:
+  - maptweak: fixes lack of warning stripes under doors in squad briefing areas and
+      newly added maint doors onboard USS Almayer
+  - maptweak: fixes incorrect tiles used under window frames in new squad briefing
+      areas onboard USS Almayer
+  - maptweak: fixes pipe sections under window frames in new squad briefing areas
+      onboard USS Almayer
+  - maptweak: fixes pipes that lead nowhere in new squad briefing areas onboard USS
+      Almayer
+  - maptweak: fixes button that was being hidden by light due to recent USS Almayer
+      changes
+  - maptweak: corrects strangely laid out vent sections due to recent USS Almayer
+      changes
+  - maptweak: makes USS Almayer Bunks consistent with the rest of the ship's shower
+      and bathrooms
+  - maptweak: updates "Dusty Beret" prop item to now be the RMC Beret it was originally
+      referencing (now that the RMC are ingame)
+  VileBeggar:
+  - qol: All squad uniform vendors have had their standard apparel condensed into
+      one button.
+  fira:
+  - bugfix: Fixed caps displaying contained items on character even without being
+      worn.
+  neeshacark:
+  - qol: MT, CT, and Nurses can now take the bad leg trait.
+2023-10-20:
+  Drathek:
+  - bugfix: Fixed a cause of bad icon operations
+  - bugfix: Bandaided a problem with nulls in GLOB.clients
+  IsProbablyCatto:
+  - qol: Medbelts pull from pillbottles as default
+  Kitsunemitsu:
+  - bugfix: fixed FTLs being demoted from SL erroneously having the tag TL in chat.
+  MrDas:
+  - bugfix: You can now disassemble wide airlocks. (You can't unwrench them though)
+  - spellcheck: Fixed a few typos in airlock assembly.
+  - imageadd: Added wide airlock assembly and generic solid wide airlock sprites.
+  SpartanBobby:
+  - maptweak: Removes stunprod from LV522
+  VileBeggar:
+  - rscadd: Dartboards are now functional and can be crafted with cardboard.
+  - bugfix: Fixed an issue with some deconstructed signs losing their icon.

@@ -4,7 +4,8 @@
 	recalculate_move_delay = FALSE
 
 	if(interactee)// moving stops any kind of interaction
-		unset_interaction()
+		if(!(SEND_SIGNAL(src, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION) & COMPONENT_HUMAN_MOVEMENT_KEEP_USING))
+			unset_interaction()
 
 	if(species.slowdown)
 		. += species.slowdown

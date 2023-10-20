@@ -308,8 +308,8 @@
 
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
 	var/image/return_image = ..()
-	if(!slot == WEAR_HEAD)
-		return
+	if(slot != WEAR_HEAD)
+		return return_image
 
 	if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
 		for(var/obj/garb_object in pockets.contents)

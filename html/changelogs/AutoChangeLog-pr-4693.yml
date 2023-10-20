@@ -1,0 +1,5 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed Rangefinders/Designators preventing you from lazing if you looked up/down them without moving."
+  - bugfix: "Fixed Rangefinders/Designators forcing you to look up/down again if you had moved while using them."

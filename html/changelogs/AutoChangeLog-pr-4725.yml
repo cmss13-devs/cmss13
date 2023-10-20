@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Xeno and Megaphone abovehead chat speech should now properly be centered horizontally."

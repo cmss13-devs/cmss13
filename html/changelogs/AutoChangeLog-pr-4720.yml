@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed a cause of bad icon operations"

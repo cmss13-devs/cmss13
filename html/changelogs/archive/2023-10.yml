@@ -269,3 +269,20 @@
       worn.
   neeshacark:
   - qol: MT, CT, and Nurses can now take the bad leg trait.
+2023-10-20:
+  Drathek:
+  - bugfix: Fixed a cause of bad icon operations
+  - bugfix: Bandaided a problem with nulls in GLOB.clients
+  IsProbablyCatto:
+  - qol: Medbelts pull from pillbottles as default
+  Kitsunemitsu:
+  - bugfix: fixed FTLs being demoted from SL erroneously having the tag TL in chat.
+  MrDas:
+  - bugfix: You can now disassemble wide airlocks. (You can't unwrench them though)
+  - spellcheck: Fixed a few typos in airlock assembly.
+  - imageadd: Added wide airlock assembly and generic solid wide airlock sprites.
+  SpartanBobby:
+  - maptweak: Removes stunprod from LV522
+  VileBeggar:
+  - rscadd: Dartboards are now functional and can be crafted with cardboard.
+  - bugfix: Fixed an issue with some deconstructed signs losing their icon.

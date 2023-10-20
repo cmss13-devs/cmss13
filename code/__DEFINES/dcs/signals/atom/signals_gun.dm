@@ -29,3 +29,6 @@
 #define COMSIG_GUN_BEFORE_FIRE "gun_before_fire"
 	#define COMPONENT_CANCEL_GUN_BEFORE_FIRE (1<<0) //continue full-auto/burst attempts
 	#define COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE (1<<1) //hard stop firing
+
+/// Called when IFF is toggled on or off
+#define COMSIG_GUN_IFF_TOGGLED "gun_iff_toggled"

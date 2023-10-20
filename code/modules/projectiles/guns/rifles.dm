@@ -632,10 +632,9 @@
 	recalculate_attachment_bonuses()
 	if(iff_enabled)
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
-		AddComponent(/datum/component/iff_fire_prevention)
 	else
 		remove_bullet_trait("iff")
-		GetExactComponent(/datum/component/iff_fire_prevention).RemoveComponent()
+	SEND_SIGNAL(src, COMSIG_GUN_IFF_TOGGLED, iff_enabled)
 
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)

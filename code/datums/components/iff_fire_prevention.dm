@@ -14,10 +14,14 @@
 /datum/component/iff_fire_prevention/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
+	RegisterSignal(parent, COMSIG_GUN_IFF_TOGGLED, PROC_REF(handle_iff_toggle))
 
 /datum/component/iff_fire_prevention/UnregisterFromParent()
 	. = ..()
-	UnregisterSignal(parent, COMSIG_GUN_BEFORE_FIRE)
+	UnregisterSignal(parent, list(
+		COMSIG_GUN_BEFORE_FIRE,
+		COMSIG_GUN_IFF_TOGGLED
+	))
 
 /datum/component/iff_fire_prevention/proc/check_firing_lane(obj/firing_weapon, obj/projectile/projectile_to_fire, atom/target, mob/living/user)
 	SIGNAL_HANDLER
@@ -75,5 +79,13 @@
 				return COMPONENT_CANCEL_GUN_BEFORE_FIRE
 
 			return //if we have a target we *can* hit and find it before any IFF targets we want to fire
+
+/// Disable fire prevention when IFF is toggled off and other way around
+/datum/component/iff_fire_prevention/proc/handle_iff_toggle(obj/gun, iff_enabled)
+	SIGNAL_HANDLER
+	if(iff_enabled)
+		RegisterSignal(parent, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
+	else
+		UnregisterSignal(parent, COMSIG_GUN_BEFORE_FIRE)
 
 #undef IFF_HALT_COOLDOWN

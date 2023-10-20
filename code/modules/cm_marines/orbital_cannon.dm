@@ -472,6 +472,8 @@ var/list/ob_type_fuel_requirements
 			qdel(src)
 			return
 
+	qdel(src)
+
 /obj/structure/ob_ammo/warhead/incendiary
 	name = "\improper Incendiary orbital warhead"
 	warhead_kind = "incendiary"
@@ -541,7 +543,7 @@ var/list/ob_type_fuel_requirements
 				continue
 			fire_in_a_hole(U)
 		sleep(delay_between_clusters)
-	qdel(src)
+	QDEL_IN(src, 5 SECONDS) // Leave time for last handle_ob_shake below
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)

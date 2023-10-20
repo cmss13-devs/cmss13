@@ -214,7 +214,7 @@
 	item_state = "armor_reflec"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Armor"
+	name = "juggernaut armor"
 	desc = "Some fancy looking armor. DONOR ITEM"
 	icon_state = "skinnerarmor"
 	item_state = "skinnerarmor"
@@ -592,7 +592,7 @@
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Helmet"
+	name = "juggernaut helmet"
 	icon_state = "skinnerhelmet"
 	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
 
@@ -1363,7 +1363,7 @@
 	item_state = "securitypack"
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "Tactical Radiopack"
+	name = "tactical radiopack"
 	desc = "A Radio backpack for use with the Juggernaut armor. DONOR ITEM"
 	icon_state = "skinnerpack"
 	item_state = "skinnerpack"

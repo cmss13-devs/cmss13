@@ -1203,6 +1203,10 @@ and you're good to go.
 		if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
 			return NONE
 
+	projectile_to_fire.firer = user
+	if(isliving(user))
+		projectile_to_fire.def_zone = user.zone_selected
+
 	play_firing_sounds(projectile_to_fire, user)
 
 	if(targloc != curloc)
@@ -1423,6 +1427,10 @@ and you're good to go.
 
 		user.track_shot(initial(name))
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, dual_wield) //We add any damage effects that we need.
+
+		projectile_to_fire.firer = user
+		if(isliving(user))
+			projectile_to_fire.def_zone = user.zone_selected
 
 		play_firing_sounds(projectile_to_fire, user)
 
@@ -1689,10 +1697,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(projectile_to_fire.ammo && projectile_to_fire.ammo.sound_override)
 		actual_sound = projectile_to_fire.ammo.sound_override
-
-	projectile_to_fire.firer = user
-	if(isliving(user))
-		projectile_to_fire.def_zone = user.zone_selected
 
 	//Guns with low ammo have their firing sound
 	var/firing_sndfreq = (current_mag && (current_mag.current_rounds / current_mag.max_rounds) > GUN_LOW_AMMO_PERCENTAGE) ? FALSE : SOUND_FREQ_HIGH

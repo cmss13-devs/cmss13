@@ -169,10 +169,7 @@
 	if(sender == author)
 		message_title = "MentorHelp"
 		// If there's a mentor, let them mark it. If not, let them unmark it
-		if(mentor)
-			message_sender_options = " (<a href='?src=\ref[src];action=unmark'>Unmark</a>"
-		else
-			message_sender_options = " (<a href='?src=\ref[src];action=mark'>Mark</a>"
+		message_sender_options = " (<a href='?src=\ref[src];action=mark'>Mark/Unmark</a>"
 		message_sender_options += " | <a href='?src=\ref[src];action=close'>Close</a> | <a href='?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 
 	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")
@@ -274,9 +271,10 @@
 		if("autorespond")
 			autoresponse(C)
 		if("mark")
-			mark(C)
-		if("unmark")
-			unmark(C)
+			if(!mentor)
+				mark(C)
+			else
+				unmark(C)
 		if("close")
 			if(C == author || C == mentor || CLIENT_IS_STAFF(C))
 				close(C)

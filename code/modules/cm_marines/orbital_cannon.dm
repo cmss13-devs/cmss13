@@ -217,15 +217,16 @@ var/list/ob_type_fuel_requirements
 	if(user)
 		tray.warhead.source_mob = user
 
-	tray.warhead.warhead_impact(target)
+	var/obj/structure/ob_ammo/warhead/warhead = tray.warhead
+	tray.warhead = null
+	warhead.moveToNullspace()
+	warhead.warhead_impact(target)
 
 	sleep(OB_CRASHING_DOWN)
 
 	ob_cannon_busy = FALSE
-
 	chambered_tray = FALSE
 	tray.fuel_amt = 0
-	QDEL_NULL(tray.warhead)
 	tray.update_icon()
 
 	update_icon()
@@ -357,6 +358,9 @@ var/list/ob_type_fuel_requirements
 	var/max_shake_factor
 	var/max_knockdown_time
 
+	// Note that the warhead should be cleared of location by the firing proc,
+	// then auto-delete at the end of the warhead_impact implementation
+
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target)
 	// make damn sure everyone hears it
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
@@ -366,7 +370,7 @@ var/list/ob_type_fuel_requirements
 	message_admins(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 
 	var/relative_dir
-	for(var/mob/M in range(30, target))
+	for(var/mob/M in urange(30, target))
 		if(get_turf(M) == target)
 			relative_dir = 0
 		else
@@ -377,7 +381,7 @@ var/list/ob_type_fuel_requirements
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
-	for(var/mob/M in range(25, target))
+	for(var/mob/M in urange(25, target))
 		if(get_turf(M) == target)
 			relative_dir = 0
 		else
@@ -388,7 +392,7 @@ var/list/ob_type_fuel_requirements
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
-	for(var/mob/M in range(15, target))
+	for(var/mob/M in urange(15, target))
 		M.show_message( \
 			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), SHOW_MESSAGE_AUDIBLE \
@@ -455,6 +459,7 @@ var/list/ob_type_fuel_requirements
 		handle_ob_shake(target)
 		sleep(double_explosion_delay)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		qdel(src)
 		return
 
 	// Checks turf around the target
@@ -464,6 +469,7 @@ var/list/ob_type_fuel_requirements
 			handle_ob_shake(target)
 			sleep(double_explosion_delay)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+			qdel(src)
 			return
 
 /obj/structure/ob_ammo/warhead/incendiary
@@ -497,6 +503,7 @@ var/list/ob_type_fuel_requirements
 
 	sleep(clear_delay)
 	fire_spread(target, cause_data, distance, fire_level, burn_level, fire_color, fire_type, TURF_PROTECTION_OB)
+	qdel(src)
 
 /obj/structure/ob_ammo/warhead/cluster
 	name = "\improper Cluster orbital warhead"
@@ -533,8 +540,8 @@ var/list/ob_type_fuel_requirements
 			if(protected_by_pylon(TURF_PROTECTION_OB, U)) //If the turf somehow gained OB protection while the cluster was firing
 				continue
 			fire_in_a_hole(U)
-
 		sleep(delay_between_clusters)
+	qdel(src)
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)

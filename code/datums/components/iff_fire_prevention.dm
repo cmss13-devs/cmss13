@@ -28,7 +28,6 @@
 
 	var/extended_target_turf = get_angle_target_turf(user, angle, range_to_check)
 
-
 	var/turf/starting_turf = get_turf(user)
 
 	if(!starting_turf || !extended_target_turf)
@@ -65,7 +64,7 @@
 				continue
 
 			if(checked_living.get_target_lock(user.faction_group))
-				if(COOLDOWN_FINISHED(src, iff_halt_cooldown))
+				if(COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)
 					playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
 					to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
 					COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)

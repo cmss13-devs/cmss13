@@ -145,6 +145,7 @@
 		M.status_flags |= CANPUSH
 		M.anchored = FALSE
 		M.unfreeze()
+	..()
 
 /obj/item/storage/backpack/marine/smartpack/attack_self(mob/user)
 	..()

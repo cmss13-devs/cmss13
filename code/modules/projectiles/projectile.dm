@@ -519,7 +519,7 @@
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
-/obj/item/projectile/proc/handle_miss(var/mob/living/target)
+/obj/item/projectile/proc/handle_miss(/mob/living/target)
 	animatation_displace_reset(target)
 	if(ammo.sound_miss)
 		playsound_client(target.client, ammo.sound_miss, get_turf(target), 75, TRUE)

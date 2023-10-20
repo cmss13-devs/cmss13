@@ -1,3 +1,4 @@
+/*
 /datum/action/human_action/synth_bracer/reflex_overclock
 	name = "Reflex Overclock"
 	action_icon_state = "agility_on"
@@ -18,13 +19,13 @@
 	RegisterSignal(synth_bracer, COMSIG_ITEM_DROPPED, .proc/handle_dropped)
 	ability_timer = addtimer(CALLBACK(src, .proc/disable_reflex_overclock, synth), ability_duration, TIMER_UNIQUE|TIMER_STOPPABLE)
 
-/datum/action/human_action/synth_bracer/reflex_overclock/proc/handle_reflex_overclock(var/mob/signal_owner, var/obj/item/projectile/projectile)
+/datum/action/human_action/synth_bracer/reflex_overclock/proc/handle_reflex_overclock(mob/signal_owner, obj/item/projectile/projectile)
 	SIGNAL_HANDLER
 
 	projectile.handle_miss(synth)
 	return COMPONENT_CANCEL_BULLET_ACT
 
-/datum/action/human_action/synth_bracer/reflex_overclock/proc/handle_dropped(var/obj/item/clothing/gloves/synth/bracer, var/mob/living/carbon/human/user)
+/datum/action/human_action/synth_bracer/reflex_overclock/proc/handle_dropped(obj/item/clothing/gloves/synth/bracer, mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 
 	deltimer(ability_timer)
@@ -32,7 +33,7 @@
 
 	disable_reflex_overclock(user, bracer)
 
-/datum/action/human_action/synth_bracer/reflex_overclock/proc/disable_reflex_overclock(var/mob/living/carbon/human/synth_user, var/obj/item/clothing/gloves/synth/bracer)
+/datum/action/human_action/synth_bracer/reflex_overclock/proc/disable_reflex_overclock(mob/living/carbon/human/synth_user, obj/item/clothing/gloves/synth/bracer)
 	if(synth)
 		synth_user = synth
 	if(synth_bracer)
@@ -42,3 +43,4 @@
 	UnregisterSignal(bracer, COMSIG_ITEM_DROPPED)
 	synth_user.remove_filter("reflex_overclock_on")
 	bracer.update_icon()
+*/

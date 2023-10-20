@@ -34,7 +34,7 @@
 
 	var/list/actions_list = list(
 		/datum/action/human_action/activable/synth_bracer/rescue_hook,
-		/datum/action/human_action/synth_bracer/reflex_overclock,
+		//datum/action/human_action/synth_bracer/reflex_overclock,
 		/datum/action/human_action/synth_bracer/deploy_ocular_designator,
 		/datum/action/human_action/synth_bracer/repair_form,
 		/datum/action/human_action/synth_bracer/tactical_map
@@ -60,7 +60,7 @@
 	if(!istype(wearer) || wearer.gloves != src)
 		icon_state = "bracer"
 		return
-	if(!isSynth(wearer))
+	if(!issynth(wearer))
 		icon_state = "bracer_unauthorized"
 	else if(battery_charge <= initial(battery_charge) * 0.1)
 		icon_state = "bracer_nobattery"
@@ -70,7 +70,6 @@
 /obj/item/clothing/gloves/synth/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_HANDS)
-		RegisterSignal(user, COMSIG_MOB_APC_ATTACK_HAND, .proc/handle_apc_charge)
 		for(var/datum/action/human_action/action as anything in bracer_actions)
 			action.give_to(user)
 		flick("bracer_startup", src)
@@ -79,13 +78,10 @@
 /obj/item/clothing/gloves/synth/dropped(mob/user)
 	for(var/datum/action/human_action/action as anything in bracer_actions)
 		action.remove_from(user)
-	UnregisterSignal(user, COMSIG_MOB_APC_ATTACK_HAND)
 	update_icon()
 	return ..()
 
-/obj/item/clothing/gloves/synth/proc/handle_apc_charge(var/mob/living/carbon/human/user, var/obj/structure/machinery/power/apc/apc)
-	SIGNAL_HANDLER
-
+/obj/item/clothing/gloves/synth/proc/handle_apc_charge(mob/living/carbon/human/user, obj/structure/machinery/power/apc/apc)
 	if(!istype(user))
 		return FALSE
 
@@ -97,9 +93,7 @@
 
 	INVOKE_ASYNC(src, .proc/complete_apc_charge, user, apc)
 
-	return COMPONENT_APC_HANDLED_HAND
-
-/obj/item/clothing/gloves/synth/proc/complete_apc_charge(var/mob/living/carbon/human/user, var/obj/structure/machinery/power/apc/apc)
+/obj/item/clothing/gloves/synth/proc/complete_apc_charge(mob/living/carbon/human/user, obj/structure/machinery/power/apc/apc)
 	start_charging(user)
 
 	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -129,15 +123,15 @@
 		to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 	stop_charging(user)
 
-/obj/item/clothing/gloves/synth/proc/start_charging(var/mob/user)
+/obj/item/clothing/gloves/synth/proc/start_charging(mob/user)
 	item_state_slots[WEAR_HANDS] += "_charging"
 	user.update_inv_gloves()
 
-/obj/item/clothing/gloves/synth/proc/stop_charging(var/mob/user)
+/obj/item/clothing/gloves/synth/proc/stop_charging(mob/user)
 	item_state_slots[WEAR_HANDS] = base_item_slot_state
 	user.update_inv_gloves()
 
-/obj/item/clothing/gloves/synth/proc/drain_charge(var/mob/user, var/cost)
+/obj/item/clothing/gloves/synth/proc/drain_charge(mob/user, cost)
 	battery_charge -= cost
 	to_chat(user, SPAN_WARNING("\The [src]'s charge now reads: <b>[battery_charge]/[initial(battery_charge)]</b>."))
 	update_icon()

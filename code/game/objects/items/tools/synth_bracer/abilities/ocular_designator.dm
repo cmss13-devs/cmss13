@@ -20,7 +20,7 @@
 	QDEL_NULL(designator)
 	return ..()
 
-/obj/item/clothing/gloves/synth/proc/deploy_designator(var/mob/M)
+/obj/item/clothing/gloves/synth/proc/deploy_designator(mob/M)
 	if(!M.put_in_active_hand(designator))
 		M.put_in_inactive_hand(designator)
 

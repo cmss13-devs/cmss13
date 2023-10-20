@@ -8,7 +8,7 @@
 	var/handles_charge_cost = FALSE
 
 /datum/action/human_action/activable/synth_bracer/give_to(user)
-	if(!isSynth(user))
+	if(!issynth(user))
 		return FALSE
 	synth = user
 	synth_bracer = synth.gloves// never add a check to see if the synth has gloves on, because they shouldn't have these abilities while not wearing gloves. it should runtime to let us know
@@ -19,7 +19,7 @@
 	synth_bracer = null
 	return ..()
 
-/datum/action/human_action/activable/synth_bracer/use_ability(var/mob/M)
+/datum/action/human_action/activable/synth_bracer/use_ability(mob/M)
 	if(!can_use_action())
 		return FALSE
 	if(synth_bracer.battery_charge < charge_cost)
@@ -42,7 +42,7 @@
 	var/handles_charge_cost = FALSE
 
 /datum/action/human_action/synth_bracer/give_to(user)
-	if(!isSynth(user))
+	if(!issynth(user))
 		return FALSE
 	synth = user
 	synth_bracer = synth.gloves
@@ -56,7 +56,7 @@
 /datum/action/human_action/synth_bracer/action_cooldown_check()
 	return ability_used_time <= world.time
 
-/datum/action/human_action/synth_bracer/proc/enter_cooldown(var/amount = cooldown)
+/datum/action/human_action/synth_bracer/proc/enter_cooldown(amount = cooldown)
 	ability_used_time = world.time + amount
 	update_button_icon()
 	addtimer(CALLBACK(src, .proc/update_button_icon), amount)

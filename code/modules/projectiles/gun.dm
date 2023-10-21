@@ -1407,6 +1407,15 @@ and you're good to go.
 			click_empty(user)
 			break
 
+		//Checking if we even can PB the mob, only for the first projectile because why check the rest
+		if(bullets_fired == 1)
+			var/before_fire_cancel = SEND_SIGNAL(src, COMSIG_GUN_BEFORE_FIRE, projectile_to_fire, attacked_mob, user)
+			if(before_fire_cancel)
+				if(before_fire_cancel & COMPONENT_CANCEL_GUN_BEFORE_FIRE)
+					return TRUE
+				if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
+					return NONE
+
 		if(SEND_SIGNAL(projectile_to_fire.ammo, COMSIG_AMMO_POINT_BLANK, attacked_mob, projectile_to_fire, user, src) & COMPONENT_CANCEL_AMMO_POINT_BLANK)
 			flags_gun_features &= ~GUN_BURST_FIRING
 			return TRUE

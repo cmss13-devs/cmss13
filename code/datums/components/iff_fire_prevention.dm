@@ -39,7 +39,9 @@
 
 	var/list/checked_turfs = getline2(starting_turf, extended_target_turf)
 
-	checked_turfs -= starting_turf
+	//Don't check starting turf... Unless we are shooting ourself!!!
+	if(target != user)
+		checked_turfs -= starting_turf
 
 	//At some angles (scatter or otherwise) the original target is not in checked_turfs so we put it in there in order based on distance from user
 	//If we are literally clicking on someone with IFF then we don't want to fire, feels funny as a user otherwise

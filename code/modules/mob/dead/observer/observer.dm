@@ -327,10 +327,11 @@
 	if(observe_target_mob)
 		clean_observe_target()
 
-/mob/dead/observer/Destroy()
+/mob/dead/observer/Destroy(force)
+	GLOB.observer_list -= src
 	QDEL_NULL(orbit_menu)
 	QDEL_NULL(last_health_display)
-	GLOB.observer_list -= src
+	QDEL_NULL(minimap)
 	following = null
 	observe_target_mob = null
 	observe_target_client = null
@@ -477,6 +478,9 @@ Works together with spawning an observer, noted above.
 		ghost.mind.player_entity.update_panel_data(round_statistics)
 		ghost.mind.original = src
 
+	// If we're ghosting as part of previous mob deletion, do not keep refs
+	if(QDELETED(src) && mind?.original == src)
+		mind.original = null
 	mind = null
 
 	if(ghost.client)

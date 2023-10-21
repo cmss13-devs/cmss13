@@ -785,8 +785,7 @@
 /area/bigredv2/outside/marshal_office)
 "acu" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/spawner/random/tool,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning"
@@ -27780,6 +27779,10 @@
 	icon_state = "mars_cave_15"
 	},
 /area/bigredv2/caves/mining)
+"dhZ" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw/ceiling)
 "dij" = (
 /obj/structure/fence,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -29351,6 +29354,12 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"goC" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/tool/extinguisher,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw/ceiling)
 "gpg" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_east)
@@ -29749,6 +29758,10 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/lz2_south_cas)
+"hqF" = (
+/obj/effect/vehicle_spawner/van/decrepit,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw/ceiling)
 "hqO" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars,
@@ -30265,6 +30278,12 @@
 	icon_state = "mars_cave_19"
 	},
 /area/bigredv2/caves_north)
+"isD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw/ceiling)
 "itL" = (
 /obj/structure/closet/l3closet/virology,
 /obj/effect/landmark/objective_landmark/science,
@@ -34110,8 +34129,7 @@
 /area/bigredv2/outside/nw)
 "qiA" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/tool/extinguisher,
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning"
@@ -36490,7 +36508,6 @@
 	},
 /area/bigredv2/caves/mining)
 "uIB" = (
-/obj/effect/vehicle_spawner/van/decrepit,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
 	dir = 1;
@@ -48242,7 +48259,7 @@ avT
 axZ
 avT
 avT
-avT
+hqF
 avT
 anp
 aHD
@@ -48677,7 +48694,7 @@ ayb
 avT
 avT
 avT
-avT
+isD
 anp
 aHD
 aBR
@@ -48894,7 +48911,7 @@ axZ
 avT
 avT
 avT
-avT
+goC
 anp
 aHD
 aBR
@@ -49328,7 +49345,7 @@ axZ
 avT
 avT
 avT
-avT
+dhZ
 anp
 aHD
 aBR

@@ -292,7 +292,7 @@
 	/// Duration left to next acid stage
 	var/remaining = 0
 	/// Acid stages left to complete melting
-	var/ticks_left = 5
+	var/ticks_left = 3
 	/// Factor of duration between acid progression
 	var/acid_delay = 1
 	/// How much fuel the acid drains from the flare every acid tick
@@ -320,9 +320,9 @@
 	. = ..()
 	acid_t = target
 	if(isturf(acid_t))
-		ticks_left = 8 // Turf take twice as long to take down.
+		ticks_left = 7 // Turf take twice as long to take down.
 	else if(istype(acid_t, /obj/structure/barricade))
-		ticks_left = 10
+		ticks_left = 9
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 	RegisterSignal(acid_t, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
@@ -371,7 +371,6 @@
 	if(remaining > 0)
 		return
 	ticks_left -= 1
-	remaining = 20 SECONDS // crash placeholder
 
 	var/return_delay = NONE
 	if(istype(acid_t, /obj/structure/barricade))

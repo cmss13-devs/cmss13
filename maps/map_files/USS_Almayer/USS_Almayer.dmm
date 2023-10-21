@@ -20263,6 +20263,9 @@
 /area/almayer/squads/req)
 "bGz" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "green"
@@ -39686,7 +39689,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	access_modified = 1;
 	name = "\improper Flight Crew Quarters";
-	req_access_txt = null;
 	req_one_access_txt = "19;22"
 	},
 /turf/open/floor/almayer{
@@ -48201,7 +48203,6 @@
 	access_modified = 1;
 	dir = 1;
 	name = "\improper Flight Crew Quarters";
-	req_access_txt = null;
 	req_one_access_txt = "19;22"
 	},
 /turf/open/floor/almayer{
@@ -51463,15 +51464,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/living/briefing)
-"moU" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "plating_striped"
-	},
-/area/almayer/squads/req)
 "moY" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/almayer,
@@ -56357,6 +56349,9 @@
 	id = "req_belt"
 	},
 /obj/structure/plasticflaps,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "oqZ" = (
@@ -57242,18 +57237,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
-"oLg" = (
-/obj/structure/machinery/conveyor{
-	id = "req_belt"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/squads/req)
 "oLi" = (
 /obj/effect/landmark/start/marine/medic/bravo,
 /obj/effect/landmark/late_join/bravo,
@@ -72176,6 +72159,9 @@
 /area/almayer/squads/bravo)
 "vbR" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green"
@@ -76471,11 +76457,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "wGI" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 8
 	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/shipboard/port_missiles)
+/turf/open/floor/almayer,
+/area/almayer/hull/upper_hull/u_f_p)
 "wGX" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -79238,15 +79225,6 @@
 "xMs" = (
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/operating_room_two)
-"xMt" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "plating_striped"
-	},
-/area/almayer/squads/req)
 "xMA" = (
 /obj/structure/machinery/computer/med_data,
 /obj/structure/sign/safety/terminal{
@@ -97657,7 +97635,7 @@ vcK
 mBA
 kCi
 kCi
-wGI
+kCi
 kCi
 vmW
 nIE
@@ -97860,7 +97838,7 @@ ukU
 bfP
 fvv
 vcK
-vcK
+wGI
 tuA
 tuA
 tuA
@@ -122715,7 +122693,7 @@ bxg
 bZr
 bNQ
 bNQ
-xMt
+bNQ
 bGz
 hMs
 cbw
@@ -122918,7 +122896,7 @@ bxh
 bZr
 krN
 krN
-oLg
+krN
 oqY
 can
 buH
@@ -123121,7 +123099,7 @@ bxg
 bZr
 ibc
 uly
-moU
+bNN
 vbR
 pky
 cbv

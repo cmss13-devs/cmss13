@@ -1,4 +1,0 @@
-author: "CapCamIII"
-delete-after: True
-changes:
-  - balance: "Crawling now only takes 1 second to move and no longer has an overhead icon when doing it."

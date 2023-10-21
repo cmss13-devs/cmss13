@@ -286,3 +286,32 @@
   VileBeggar:
   - rscadd: Dartboards are now functional and can be crafted with cardboard.
   - bugfix: Fixed an issue with some deconstructed signs losing their icon.
+2023-10-21:
+  Birdtalon:
+  - rscadd: USCM Service Jacket to SEA Vendor
+  CapCamIII:
+  - balance: Crawling now only takes 1 second to move and no longer has an overhead
+      icon when doing it.
+  - balance: Timer on attempting to join ERT after death is now 30 seconds down from
+      1 minute
+  - spellcheck: UPP Synth Survivor on the Trijent Dam nightmare is now called a Support
+      Synthetic instead of a Combat Synthetic, as its not a combat synthetic
+  Drathek:
+  - bugfix: Fixed imaginary friends not initializing correctly and throwing a runtime
+  - ui: Tweaked the position of some ghost alerts
+  SpartanBobby:
+  - maptweak: Fixes incorrect DIR on fireshutters in memorial
+  - maptweak: Corrects lack of warning stripe tile under door in north brig maint
+  Steelpoint:
+  - rscadd: UPP ERT's have a chance to be neutral to the USCM.
+  fira:
+  - bugfix: Xeno and Megaphone abovehead chat speech should now properly be centered
+      horizontally.
+  - bugfix: Fixed Rangefinders/Designators preventing you from lazing if you looked
+      up/down them without moving.
+  - bugfix: Fixed Rangefinders/Designators forcing you to look up/down again if you
+      had moved while using them.
+  foxtrot1322:
+  - rscadd: Added splints to the survival pouch
+  - rscadd: Increased survival pouch storage space by 1
+  - spellcheck: Updates the survival pouch's description

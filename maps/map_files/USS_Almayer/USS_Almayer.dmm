@@ -56338,6 +56338,8 @@
 /obj/item/clothing/head/helmet/marine/reporter,
 /obj/item/clothing/head/cmcap/reporter,
 /obj/item/device/flashlight,
+/obj/item/device/toner,
+/obj/item/device/toner,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

@@ -1748,6 +1748,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\law\laws\major_crime.dm"
 #include "code\modules\law\laws\minor_crime.dm"
 #include "code\modules\law\laws\optional.dm"
+#include "code\modules\law\laws\precautionary_charge.dm"
 #include "code\modules\lighting\emissive_blocker.dm"
 #include "code\modules\lighting\lighting_area.dm"
 #include "code\modules\lighting\lighting_atom.dm"

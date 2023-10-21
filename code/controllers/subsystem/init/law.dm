@@ -8,20 +8,24 @@ SUBSYSTEM_DEF(law_init)
 	var/list/minor_law = list()
 	var/list/major_law = list()
 	var/list/capital_law = list()
+	var/list/precautionary_law = list()
 
 /datum/controller/subsystem/law_init/Initialize()
-	for(var/L in subtypesof(/datum/law/optional_law))
-		optional_law += new L
+	for(var/law in subtypesof(/datum/law/optional_law))
+		optional_law += new law
 
-	for(var/L in subtypesof(/datum/law/minor_law))
-		minor_law += new L
+	for(var/law in subtypesof(/datum/law/minor_law))
+		minor_law += new law
 
-	for(var/L in subtypesof(/datum/law/major_law))
-		major_law += new L
+	for(var/law in subtypesof(/datum/law/major_law))
+		major_law += new law
 
-	for(var/L in subtypesof(/datum/law/capital_law))
-		capital_law += new L
+	for(var/law in subtypesof(/datum/law/capital_law))
+		capital_law += new law
 
-	laws = optional_law + minor_law + major_law + capital_law
+	for(var/law in subtypesof(/datum/law/precautionary_charge))
+		precautionary_law += new law
+
+	laws = optional_law + minor_law + major_law + capital_law + precautionary_law
 
 	return SS_INIT_SUCCESS

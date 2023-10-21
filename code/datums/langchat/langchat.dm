@@ -102,6 +102,7 @@
 
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_width = LANGCHAT_WIDTH
+	langchat_image.maptext_x = - world.icon_size - get_pixel_position_x(src, TRUE)
 
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)
@@ -148,7 +149,7 @@
 
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_width = LANGCHAT_WIDTH * 2
-	langchat_image.maptext_x -= LANGCHAT_WIDTH / 2
+	langchat_image.maptext_x = - world.icon_size - get_pixel_position_x(src, TRUE) - LANGCHAT_WIDTH / 2
 
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)

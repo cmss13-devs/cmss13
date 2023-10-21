@@ -70,6 +70,8 @@
 				continue
 
 			if(checked_living.get_target_lock(user.faction_group))
+				if(HAS_TRAIT(checked_living, TRAIT_CLOAKED))
+					continue
 				if(COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)
 					playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
 					to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))

@@ -1,0 +1,5 @@
+author: "SpartanBobby"
+delete-after: True
+changes:
+  - maptweak: "Fixes incorrect DIR on fireshutters in memorial"
+  - maptweak: "Corrects lack of warning stripe tile under door in north brig maint"

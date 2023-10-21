@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed imaginary friends not initializing correctly and throwing a runtime"

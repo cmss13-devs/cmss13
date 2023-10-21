@@ -1903,32 +1903,18 @@
 		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
-	if(href_list["distress_cmb"]) //CMB distress signal, activates Anchorpoint Marine QRF to assist/rescue Colonial Marshals in distress
+	if(href_list["distress_handheld"]) //Prepares to call and logs accepted handheld distress beacons
+		var/mob/ref_person = href_list["distress_handheld"]
+		var/ert_name = href_list["ert_name"]
 		distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND the Anchorpoint Station Colonial Marine QRF to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
-		addtimer(CALLBACK(src, PROC_REF(accept_cmb_ert), usr, locate(href_list["distress"])), 10 SECONDS)
+		message_admins("[key_name_admin(usr)] has opted to SEND [ert_name]! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		addtimer(CALLBACK(src, PROC_REF(accept_handheld_ert), usr, ref_person, ert_name), 10 SECONDS)
 
-	if(href_list["distress_cmb_alt"]) //CMB distress signal, activates a nearby CMB Patrol Team to assist/rescue Colonial Marshals in distress
-		distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND a nearby CMB Patrol Team to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
-		addtimer(CALLBACK(src, PROC_REF(accept_cmb_alt_ert), usr, locate(href_list["distress"])), 10 SECONDS)
-
-	if(href_list["deny_cmb"]) // Anchorpoint-deny. The distress call is denied, citing unavailable forces
-		var/mob/ref_person = locate(href_list["deny_cmb"])
-		to_chat(ref_person, "A voice barely crackles through the static: CMB Team, this is Anchorpoint Station. No can do, QRF currently dispatched elsewhere, relaying distress. Sorry. Good luck, out.")
-		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
-		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
-
-	if(href_list["distress_pmc"]) //Wey-Yu specific PMC distress signal for chem retrieval ERT
-		distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
-		addtimer(CALLBACK(src, PROC_REF(accept_pmc_ert), usr, locate(href_list["distress"])), 10 SECONDS)
-
-	if(href_list["ccdeny_pmc"]) // CentComm-deny. The distress call is denied, without any further conditions
-		var/mob/ref_person = locate(href_list["ccdeny_pmc"])
+	if(href_list["deny_distress_handheld"]) //Logs denied handheld distress beacons
+		var/mob/ref_person = href_list["deny_distress_handheld"]
 		to_chat(ref_person, "The distress signal has not received a response.")
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
-		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
+		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
 		destroy_cancel = FALSE
@@ -1963,7 +1949,7 @@
 		supply_controller.shoppinglist += new_order
 
 		//Can no longer request a nuke
-		GLOB.ares_link.interface.nuke_available = FALSE
+		GLOB.ares_datacore.nuke_available = FALSE
 
 		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDNANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
@@ -2107,31 +2093,14 @@
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
-/// tells admins which admin has sent the Anchorpoint ERT in response to CMB distress
-/datum/admins/proc/accept_cmb_ert(mob/approver, mob/ref_person)
+///Handles calling the ERT sent by handheld distress beacons
+/datum/admins/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE
-	SSticker.mode.get_specific_call("CMB - Anchorpoint Station Colonial Marine QRF (Friendly)", FALSE, FALSE)
-	log_game("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
-	message_admins("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
-
-/// tells admins which admin has sent the CMB ERT in response to CMB distress
-/datum/admins/proc/accept_cmb_alt_ert(mob/approver, mob/ref_person)
-	if(distress_cancel)
-		return
-	distress_cancel = TRUE
-	SSticker.mode.get_specific_call("CMB - Patrol Team - Marshals in Distress (Friendly)", FALSE, FALSE)
-	log_game("[key_name_admin(approver)] has sent a CMB Patrol Team distress response, requested by [key_name_admin(ref_person)]")
-	message_admins("[key_name_admin(approver)] has sent a CMB Patrol Team distress response, requested by [key_name_admin(ref_person)]")
-
-/datum/admins/proc/accept_pmc_ert(mob/approver, mob/ref_person)
-	if(distress_cancel)
-		return
-	distress_cancel = TRUE
-	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", TRUE, FALSE, FALSE)
-	log_game("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
-	message_admins("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
+	SSticker.mode.get_specific_call("[ert_called]", TRUE, FALSE, FALSE)
+	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 
 /datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0

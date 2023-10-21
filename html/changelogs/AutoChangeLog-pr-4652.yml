@@ -1,0 +1,4 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - balance: "Timer on attempting to join ERT after death is now 30 seconds down from 1 minute"

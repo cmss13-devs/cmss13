@@ -18,8 +18,9 @@
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	flags_armor_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	flags_inventory = CANTSTRIP
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -33,39 +34,80 @@
 	var/battery_charge = SMARTPACK_MAX_POWER_STORED
 
 	var/list/actions_list = list(
-		/datum/action/human_action/activable/synth_bracer/rescue_hook,
+		///datum/action/human_action/activable/synth_bracer/rescue_hook,
 		//datum/action/human_action/synth_bracer/reflex_overclock,
-		/datum/action/human_action/synth_bracer/deploy_ocular_designator,
+		/datum/action/human_action/synth_bracer/deploy_binoculars,
 		/datum/action/human_action/synth_bracer/repair_form,
 		/datum/action/human_action/synth_bracer/tactical_map
 	)
 
 	var/list/bracer_actions = list()
+	var/obj/structure/transmitter/internal/internal_transmitter
+	var/primary_module = SIMI_NONE
+
+	var/obj/item/clothing/gloves/underglove
 
 /obj/item/clothing/gloves/synth/Initialize(mapload, ...)
 	. = ..()
 	for(var/action_type in actions_list)
 		bracer_actions += new action_type
 
+	internal_transmitter = new(src)
+	internal_transmitter.relay_obj = src
+	internal_transmitter.phone_category = "Synth"
+	internal_transmitter.enabled = FALSE
+	internal_transmitter.range = 2
+	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
+
 /obj/item/clothing/gloves/synth/Destroy()
 	. = ..()
 	QDEL_NULL_LIST(bracer_actions)
+	QDEL_NULL(internal_transmitter)
 
 /obj/item/clothing/gloves/synth/examine(mob/user)
 	..()
 	to_chat(user, SPAN_INFO("The current charge reads <b>[battery_charge]/[initial(battery_charge)]</b>."))
+	if(underglove)
+		to_chat(user, SPAN_INFO("The wrist-strap is attached to [underglove]."))
+	else
+		to_chat(user, SPAN_INFO("You see a way to attach a pair of gloves to the wrist-strap."))
 
 /obj/item/clothing/gloves/synth/update_icon()
 	var/mob/living/carbon/human/wearer = loc
 	if(!istype(wearer) || wearer.gloves != src)
 		icon_state = "bracer"
 		return
+
+	if(battery_charge <= 0)
+		icon_state = "bracer_off"
+		return
+	if(battery_charge <= initial(battery_charge) * 0.1)
+		icon_state = "bracer_nobattery"
+		return
+
 	if(!issynth(wearer))
 		icon_state = "bracer_unauthorized"
-	else if(battery_charge <= initial(battery_charge) * 0.1)
-		icon_state = "bracer_nobattery"
+
 	else
 		icon_state = "bracer_idle"
+	update_overlays()
+
+/obj/item/clothing/gloves/synth/proc/update_overlays()
+	overlays.Cut()
+
+	var/phone_status
+	if(internal_transmitter && internal_transmitter.attached_to)
+		if(internal_transmitter.do_not_disturb >= PHONE_DND_ON)
+			phone_status = "phone_dnd"
+		else if(internal_transmitter.attached_to.loc != internal_transmitter)
+			phone_status = "phone_ear"
+		else if(internal_transmitter.caller)
+			phone_status = "phone_ringing"
+
+	var/image/phone_image = image(icon, src, phone_status)
+	phone_image.appearance_flags = RESET_COLOR|KEEP_APART
+
+	overlays += phone_image
 
 /obj/item/clothing/gloves/synth/equipped(mob/user, slot)
 	. = ..()
@@ -73,12 +115,31 @@
 		for(var/datum/action/human_action/action as anything in bracer_actions)
 			action.give_to(user)
 		flick("bracer_startup", src)
+
+		if(ishuman(user))
+			var/mob/living/carbon/human/human_user = user
+			if(human_user.comm_title)
+				internal_transmitter.phone_id = "[human_user.comm_title] [human_user]"
+			else if(human_user.job)
+				internal_transmitter.phone_id = "[human_user.job] [human_user]"
+			else
+				internal_transmitter.phone_id = "[human_user]"
+			if(human_user.assigned_squad)
+				internal_transmitter.phone_id += " ([human_user.assigned_squad.name])"
+		else
+			internal_transmitter.phone_id = "[user]"
+		internal_transmitter.enabled = TRUE
+
 	update_icon()
 
 /obj/item/clothing/gloves/synth/dropped(mob/user)
 	for(var/datum/action/human_action/action as anything in bracer_actions)
 		action.remove_from(user)
 	update_icon()
+
+	if(internal_transmitter)
+		internal_transmitter.phone_id = "[src]"
+		internal_transmitter.enabled = FALSE
 	return ..()
 
 /obj/item/clothing/gloves/synth/proc/handle_apc_charge(mob/living/carbon/human/user, obj/structure/machinery/power/apc/apc)
@@ -125,10 +186,12 @@
 
 /obj/item/clothing/gloves/synth/proc/start_charging(mob/user)
 	item_state_slots[WEAR_HANDS] += "_charging"
+	icon_state = "bracer_charging"
 	user.update_inv_gloves()
 
 /obj/item/clothing/gloves/synth/proc/stop_charging(mob/user)
 	item_state_slots[WEAR_HANDS] = base_item_slot_state
+	update_icon()
 	user.update_inv_gloves()
 
 /obj/item/clothing/gloves/synth/proc/drain_charge(mob/user, cost)
@@ -138,7 +201,7 @@
 
 /obj/item/clothing/gloves/synth/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
-		if(!istype(over_object, /obj/screen))
+		if(!istype(over_object, /atom/movable/screen))
 			return ..()
 
 		if(!usr.is_mob_restrained() && !usr.stat)
@@ -163,3 +226,71 @@
 
 	to_chat(usr, SPAN_NOTICE("You shift \the [src] over to your [base_item_slot_state == "bracer" ? "right arm" : "left arm"]."))
 	usr.update_inv_gloves()
+
+/obj/item/clothing/gloves/synth/verb/remove_gloves()
+	set name = "Remove Gloves"
+	set src in usr
+
+	if(!underglove)
+		return FALSE
+
+	underglove.forceMove(get_turf(usr))
+	underglove = null
+
+	to_chat(usr, SPAN_NOTICE("You remove the gloves from beneath the bracer."))
+	usr.update_inv_gloves()
+
+
+//#########################################
+//############### PHONE ###################
+//#########################################
+
+/obj/item/clothing/gloves/synth/proc/check_for_ringing()
+	SIGNAL_HANDLER
+	update_overlays()
+
+/obj/item/clothing/gloves/synth/forceMove(atom/dest)
+	. = ..()
+	if(isturf(dest))
+		internal_transmitter.set_tether_holder(src)
+	else
+		internal_transmitter.set_tether_holder(loc)
+
+/obj/item/clothing/gloves/synth/attackby(obj/item/attacker, mob/user)
+	if((istype(attacker, /obj/item/clothing/gloves)) && !(attacker.flags_item & ITEM_PREDATOR))
+		if(underglove)
+			to_chat(user, SPAN_WARNING("[src] is already attached to [underglove], remove them first."))
+			return
+		underglove = attacker
+		user.drop_inv_item_to_loc(attacker, src)
+		to_chat(user, SPAN_NOTICE("You attach the [attacker] to the bracer's wrist-strap."))
+		user.update_inv_gloves()
+	if(internal_transmitter.attached_to == attacker)
+		internal_transmitter.attackby(attacker, user)
+		return
+	return ..()
+
+/obj/item/clothing/gloves/synth/attack_hand(mob/living/carbon/human/user)
+	if(istype(user) && user.gloves == src)
+		internal_transmitter.attack_hand(user)
+		return
+	return ..()
+
+
+/obj/item/clothing/gloves/synth/get_mob_overlay(mob/user_mob, slot)
+	var/image/overlay = ..()
+
+	if((slot != WEAR_HANDS) || !underglove)
+		return overlay
+
+	overlay = underglove.get_mob_overlay(user_mob, slot)
+
+	var/overlay_file
+	if(LAZYISIN(item_icons, slot))
+		overlay_file = item_icons[slot]
+	else
+		overlay_file = icon
+	var/image/bracer_img = overlay_image(overlay_file, get_icon_state(user_mob, slot), null, RESET_COLOR|NO_CLIENT_COLOR)
+	overlay.overlays += bracer_img
+
+	return overlay

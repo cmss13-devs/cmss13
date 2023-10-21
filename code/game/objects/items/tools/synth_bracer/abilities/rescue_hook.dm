@@ -1,3 +1,4 @@
+/*
 /datum/action/human_action/activable/synth_bracer/rescue_hook
 	name = "Rescue Hook"
 	action_icon_state = "stomp"
@@ -98,3 +99,4 @@
 		H.KnockDown(0.2)
 		shake_camera(H, 10, 1)
 		H.throw_atom(throw_target_turf, get_dist(throw_target_turf, H)-1, SPEED_VERY_FAST)
+*/

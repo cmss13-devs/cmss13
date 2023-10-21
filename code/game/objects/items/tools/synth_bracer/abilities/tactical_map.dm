@@ -2,10 +2,18 @@
 	name = "View Tactical Map"
 	action_icon_state = "resin_pit"
 
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
+
+/datum/action/human_action/synth_bracer/tactical_map/New()
+	. = ..()
+	tacmap = new(src, minimap_type)
+
+/datum/action/human_action/synth_bracer/tactical_map/Destroy()
+	QDEL_NULL(tacmap)
+	return ..()
+
 /datum/action/human_action/synth_bracer/tactical_map/action_activate()
 	..()
 
-	var/icon/O = overlay_tacmap(TACMAP_DEFAULT, TACMAP_BASE_OCCLUDED)
-	if(O)
-		synth << browse_rsc(O, "marine_minimap.png")
-		show_browser(synth, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = synth)
+	tacmap.tgui_interact(usr)

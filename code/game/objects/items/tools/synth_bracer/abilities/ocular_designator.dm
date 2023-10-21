@@ -1,56 +1,56 @@
 /obj/item/clothing/gloves/synth
-	var/obj/item/device/binoculars/range/designator/scout/designator
+	var/obj/item/device/binoculars/binos
 
 /obj/item/clothing/gloves/synth/Initialize(mapload, ...)
 	. = ..()
-	designator = new(src)
-	RegisterSignal(designator, COMSIG_ITEM_DROPPED, .proc/return_designator)
+	binos = new(src)
+	RegisterSignal(binos, COMSIG_ITEM_DROPPED, .proc/return_binos)
 
 /obj/item/clothing/gloves/synth/attackby(obj/item/I, mob/user)
-	if(I == designator)
-		return_designator()
+	if(I == binos)
+		return_binos()
 		return
 	return ..()
 
 /obj/item/clothing/gloves/synth/dropped(mob/user)
 	. = ..()
-	return_designator()
+	return_binos()
 
 /obj/item/clothing/gloves/synth/Destroy()
-	QDEL_NULL(designator)
+	QDEL_NULL(binos)
 	return ..()
 
-/obj/item/clothing/gloves/synth/proc/deploy_designator(mob/M)
-	if(!M.put_in_active_hand(designator))
-		M.put_in_inactive_hand(designator)
+/obj/item/clothing/gloves/synth/proc/deploy_binos(mob/M)
+	if(!M.put_in_active_hand(binos))
+		M.put_in_inactive_hand(binos)
 
-/obj/item/clothing/gloves/synth/proc/return_designator()
-	if(QDELETED(designator))
-		designator = null
+/obj/item/clothing/gloves/synth/proc/return_binos()
+	if(QDELETED(binos))
+		binos = null
 		return
 
-	if(ismob(designator.loc))
-		var/mob/M = designator.loc
-		M.drop_inv_item_to_loc(designator, src)
+	if(ismob(binos.loc))
+		var/mob/M = binos.loc
+		M.drop_inv_item_to_loc(binos, src)
 	else
-		designator.forceMove(src)
+		binos.forceMove(src)
 
 
-/datum/action/human_action/synth_bracer/deploy_ocular_designator
-	name = "Deploy Ocular Designator"
+/datum/action/human_action/synth_bracer/deploy_binoculars
+	name = "Deploy Binoculars"
 	action_icon_state = "toggle_queen_zoom"
 
-/datum/action/human_action/synth_bracer/deploy_ocular_designator/can_use_action()
-	if(QDELETED(synth_bracer.designator) || synth_bracer.designator.loc != synth_bracer)
-		to_chat(synth, SPAN_WARNING("The designator isn't inside the SIMI anymore."))
+/datum/action/human_action/synth_bracer/deploy_ocular_binos/can_use_action()
+	if(QDELETED(synth_bracer.binos) || synth_bracer.binos.loc != synth_bracer)
+		to_chat(synth, SPAN_WARNING("The ocular device isn't inside the SIMI anymore."))
 		return FALSE
 	if(synth.l_hand && synth.r_hand)
 		to_chat(synth, SPAN_WARNING("You need at least one free hand."))
 		return FALSE
 	return ..()
 
-/datum/action/human_action/synth_bracer/deploy_ocular_designator/action_activate()
+/datum/action/human_action/synth_bracer/deploy_binoculars/action_activate()
 	..()
 
-	to_chat(synth, SPAN_NOTICE("You deploy your ocular designator."))
-	synth_bracer.deploy_designator(synth)
+	to_chat(synth, SPAN_NOTICE("You deploy your binoculars."))
+	synth_bracer.deploy_binos(synth)

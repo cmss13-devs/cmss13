@@ -35,7 +35,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
+/obj/item/device/flashlight/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	clockwise = pick(TRUE, FALSE)
 	angular_offset = rand(360)
 	return ..()

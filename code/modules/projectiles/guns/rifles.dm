@@ -463,6 +463,7 @@
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/stock/rifle/collapsible,
 		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/grenade/mk1,
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,

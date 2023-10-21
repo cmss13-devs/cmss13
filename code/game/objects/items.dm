@@ -156,6 +156,11 @@
 
 	var/list/inherent_traits
 
+	/// How much to offset the item alongside X visually
+	var/ground_offset_x = 2
+	/// How much to offset the item alongside X visually
+	var/ground_offset_y = 2
+
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
@@ -174,6 +179,8 @@
 
 	if(flags_item & MOB_LOCK_ON_EQUIP)
 		AddComponent(/datum/component/id_lock)
+
+	scatter_item()
 
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
@@ -458,6 +465,11 @@ cases. Override_icon_state should be a list.*/
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(mob/user, slot)
 	return TRUE
+
+/obj/item/proc/scatter_item()
+	if(!pixel_x && !pixel_y)
+		pixel_x = rand(-ground_offset_x, ground_offset_x)
+		pixel_y = rand(-ground_offset_y, ground_offset_y)
 
 // The mob M is attempting to equip this item into the slot passed through as 'slot'. return TRUE if it can do this and 0 if it can't.
 // If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.

@@ -363,11 +363,8 @@
 	matter = list()
 	possible_transfer_amounts = list(5,10,15,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
-
-/obj/item/reagent_container/glass/beaker/vial/Initialize()
-	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
+	ground_offset_x = 9
+	ground_offset_y = 8
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"

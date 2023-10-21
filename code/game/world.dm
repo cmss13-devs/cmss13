@@ -16,7 +16,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 /world/New()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
-		LIBCALL(debug_server, "auxtools_init")()
+		call_ext(debug_server, "auxtools_init")()
 		enable_debugging()
 	internal_tick_usage = 0.2 * world.tick_lag
 	hub_password = "kMZy3U5jJHSiBQjr"
@@ -391,7 +391,7 @@ var/datum/BSQL_Connection/connection
 		else
 			CRASH("unsupported platform")
 
-	var/init = LIBCALL(lib, "init")()
+	var/init = call_ext(lib, "init")()
 	if("0" != init)
 		CRASH("[lib] init error: [init]")
 

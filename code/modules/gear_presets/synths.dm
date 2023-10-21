@@ -296,7 +296,7 @@
 		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
 	)
 
-/datum/equipment_preset/synth/survivor/teacher_synth
+/datum/equipment_preset/synth/survivor/freelancer_synth
 	name = "Survivor - Synthetic - Freelancer Synth"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/welding,

@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/synth
 	name = "\improper PK-130 SIMI wrist-mounted computer"
-	desc = "Developed by a joint effort between Weyland-Yutani and the USCM, the SIMI portable computer is the ultimate solution for situational awareness, personnel monitoring and communication."
+	desc = "Developed by a joint effort between Weyland-Yutani CIART and the USCM R&D Division, the SIMI portable computer is the ultimate solution for situational awareness, personnel monitoring and communication."
 
 	icon = 'icons/obj/items/synth/bracer.dmi'
 	icon_state = "bracer"
@@ -43,9 +43,14 @@
 
 	var/list/bracer_actions = list()
 	var/obj/structure/transmitter/internal/internal_transmitter
-	var/primary_module = SIMI_NONE
+	var/active_ability = SIMI_ACTIVE_NONE
+	var/active_utility = SIMI_ACTIVE_NONE
 
 	var/obj/item/clothing/gloves/underglove
+
+	var/saved_melee_allowed
+	var/saved_throw_allowed
+	var/saved_gun_allowed
 
 /obj/item/clothing/gloves/synth/Initialize(mapload, ...)
 	. = ..()
@@ -70,7 +75,7 @@
 	if(underglove)
 		to_chat(user, SPAN_INFO("The wrist-strap is attached to [underglove]."))
 	else
-		to_chat(user, SPAN_INFO("You see a way to attach a pair of gloves to the wrist-strap."))
+		to_chat(user, SPAN_NOTICE("You see a way to attach a pair of gloves to the wrist-strap."))
 
 /obj/item/clothing/gloves/synth/equipped(mob/user, slot)
 	. = ..()
@@ -184,7 +189,11 @@
 	var/image/phone_image = image(icon, src, phone_status)
 	phone_image.appearance_flags = RESET_COLOR|KEEP_APART
 
+	var/image/ability_image = image(icon, src, "ability_[active_ability]")
+	ability_image.appearance_flags = RESET_COLOR|KEEP_APART
+
 	overlays += phone_image
+	overlays += ability_image
 
 /obj/item/clothing/gloves/synth/get_mob_overlay(mob/user_mob, slot)
 	var/image/overlay = ..()

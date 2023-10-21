@@ -4,6 +4,12 @@
 	var/list/caste_stats_list = list() // list of types /datum/entity/player_stats/caste
 	var/list/datum/entity/statistic/medal/medal_list = list() // list of all royal jelly earned
 
+/datum/entity/player_stats/xeno/Destroy(force)
+	. = ..()
+	QDEL_NULL(top_caste)
+	QDEL_LIST_ASSOC_VAL(caste_stats_list)
+	QDEL_LIST(medal_list)
+
 /datum/entity/player_stats/xeno/get_playtime(type)
 	if(!type || type == FACTION_XENOMORPH)
 		return ..()

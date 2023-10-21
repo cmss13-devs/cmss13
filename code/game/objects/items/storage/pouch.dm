@@ -142,9 +142,9 @@
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
-	desc = "It can carry flashlights, a pill, a crowbar, metal sheets, and some bandages."
+	desc = "A pouch given to colonists in the event of an emergency."
 	icon_state = "tools"
-	storage_slots = 6
+	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,
@@ -153,6 +153,7 @@
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/device/radio,
 		/obj/item/attachable/bayonet,
+		/obj/item/stack/medical/splint,
 	)
 
 /obj/item/storage/pouch/survival/full/fill_preset_inventory()
@@ -162,7 +163,7 @@
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/device/radio(src)
 	new /obj/item/attachable/bayonet(src)
-
+	new /obj/item/stack/medical/splint(src)
 /obj/item/storage/pouch/survival/synth
 	name = "synth survival pouch"
 	desc = "An emergency pouch given to synthetics in the event of an emergency."

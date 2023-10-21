@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Re-fixed Megaphone above-head-chat drifting to the left."

@@ -1,5 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - code_imp: "resolves flyby issues by refactoring update_equipment logic"
-  - refactor: "removes unwanted code"

@@ -28,6 +28,7 @@
 	accuracy = HIT_ACCURACY_TIER_3
 
 /datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/entity, obj/projectile/bullet)
+	slowdown(entity, bullet, 4)
 	pushback(entity, bullet, 4)
 
 /datum/ammo/bullet/revolver/incendiary

@@ -15600,10 +15600,10 @@
 	},
 /area/almayer/living/starboard_garden)
 "biV" = (
-/obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+	dir = 8
 	},
+/obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/living/starboard_garden)
 "bja" = (
@@ -29399,20 +29399,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/shipboard/brig/surgery)
-"dav" = (
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Brig Lockdown Shutters";
-	name = "\improper Brig Lockdown Shutter"
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	access_modified = 1;
-	dir = 2;
-	req_one_access = list(2,34,30)
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_f_s)
 "daz" = (
 /turf/closed/wall/almayer/white/hull,
 /area/almayer/command/airoom)
@@ -32518,6 +32504,9 @@
 "ekY" = (
 /obj/structure/machinery/door/airlock/almayer/generic/glass{
 	name = "\improper Memorial Room"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -95399,7 +95388,7 @@ adG
 adG
 gqq
 iCz
-dav
+aFN
 rPC
 rPC
 kDb

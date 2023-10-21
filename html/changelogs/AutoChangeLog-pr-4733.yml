@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added Discretionary Arrest to JAS."
+  - rscadd: "Added a new category to JAS, Precautionary Charges. Moves Insanity and POW to this category."

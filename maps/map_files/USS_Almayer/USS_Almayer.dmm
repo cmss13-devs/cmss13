@@ -28794,12 +28794,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
-"cMP" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/telecomms)
 "cMV" = (
 /obj/structure/sign/prop1{
 	pixel_x = -32;
@@ -122878,7 +122872,7 @@ axo
 axo
 axo
 jvY
-cMP
+jvY
 aAy
 alL
 jvY

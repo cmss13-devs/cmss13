@@ -79,13 +79,18 @@
 
 	if (next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [target_carbon]!"))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
-		original_damage *= buffed_slash_damage_ratio
-		target_carbon.set_effect(get_xeno_stun_duration(target_carbon, 3), SUPERSLOW)
-		next_slash_buffed = FALSE
-		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
-		if (ability && istype(ability))
-			ability.button.icon_state = "template"
+		if(IS_SYNTHETIC)
+			to_chat(target_carbon, SPAN_XENOHIGHDANGER("[bound_xeno] targets a critical joint, damaging you!"))
+			original_damage *= buffed_slash_damage_ratio
+			next_slash_buffed = FALSE
+		else
+			to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+			original_damage *= buffed_slash_damage_ratio
+			target_carbon.set_effect(get_xeno_stun_duration(target_carbon, 3), SUPERSLOW)
+			next_slash_buffed = FALSE
+			var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
+			if (ability && istype(ability))
+				ability.button.icon_state = "template"
 
 	return original_damage
 

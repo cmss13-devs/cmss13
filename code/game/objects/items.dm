@@ -158,7 +158,7 @@
 
 	/// How much to offset the item alongside X visually
 	var/ground_offset_x = 2
-	/// How much to offset the item alongside X visually
+	/// How much to offset the item alongside Y visually
 	var/ground_offset_y = 2
 
 /obj/item/Initialize(mapload, ...)

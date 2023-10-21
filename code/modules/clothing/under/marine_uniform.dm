@@ -607,7 +607,7 @@
 	has_sensor = UNIFORM_NO_SENSORS
 	suit_restricted = list(
 		/obj/item/clothing/suit/storage/marine/faction/freelancer,
-		/obj/item/clothing/suit/storage/webbing
+		/obj/item/clothing/suit/storage/webbing,
 		)
 
 //=========================//Dutch Dozen\\================================\\

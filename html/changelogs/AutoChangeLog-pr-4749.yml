@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Removed redundant double binding for F1 to AdminHelp from default keybinds. This does not affect existing users or their settings."

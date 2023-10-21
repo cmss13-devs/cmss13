@@ -737,8 +737,6 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		var/angle = 180 - abs( abs( direction_angle - spread_direction_angle ) - 180 ) // the angle difference between the spread direction and initial direction
 
 		switch(angle) //this reduces power when the explosion is going around corners
-			if (0)
-				//no change
 			if (45)
 				spread_power *= 0.75
 			else //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards

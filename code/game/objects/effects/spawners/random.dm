@@ -360,7 +360,7 @@
 		if(scatter)
 			var/direction = pick(alldirs)
 			var/turf/turf = get_step(gun, direction)
-			if(!turf?.density)
+			if(!turf || turf.density)
 				return
 			gun.forceMove(turf)
 	if(ammopath)
@@ -370,7 +370,7 @@
 				for(i=0, i<rand(1,3), i++)
 					var/direction = pick(alldirs)
 					var/turf/turf = get_step(ammo, direction)
-					if(!turf.density)
+					if(!turf || turf.density)
 						break
 					ammo.forceMove(turf)
 

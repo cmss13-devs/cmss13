@@ -30,7 +30,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("HEFA Grenade Pack", 15, /obj/item/storage/box/packet/hefa, null, VENDOR_ITEM_REGULAR),
 		list("WP Grenade Pack", 15, /obj/item/storage/box/packet/phosphorus, null, VENDOR_ITEM_REGULAR),
 		list("Beanbag Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag, null, VENDOR_ITEM_REGULAR),
-		list("Powercell", 10, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
 
 		list("RAIL ATTACHMENTS", 0, null, null, null),
 		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
@@ -38,7 +37,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("S4 2x Telescopic Mini-Scope", 15, /obj/item/attachable/scope/mini, null, VENDOR_ITEM_REGULAR),
 
 		list("Helmet Visors", 0, null, null, null),
-		list("Night Vision Visor", 25, /obj/effect/essentials_set/CO_NVG, null, VENDOR_ITEM_RECOMMENDED),
+		list("Night Vision Visor", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("UNDERBARREL ATTACHMENTS", 0, null, null, null),
@@ -141,13 +140,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		/obj/item/device/whistle,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/device/megaphone,
-	)
-
-// This is So the CO can ensure he has a working Night optic at least for a little longer
-/obj/effect/essentials_set/CO_NVG
-	spawned_gear_list = list(
-		/obj/item/device/helmet_visor/night_vision,
-		/obj/item/cell/high,
 	)
 
 // This gets around the COs' weapon not spawning without incendiary mag.

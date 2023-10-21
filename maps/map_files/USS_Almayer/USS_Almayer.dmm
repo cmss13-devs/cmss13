@@ -4188,14 +4188,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/stern_hallway)
-"anI" = (
-/obj/structure/machinery/light{
-	pixel_x = 16
-	},
-/turf/open/floor/almayer{
-	icon_state = "emeraldcorner"
-	},
-/area/almayer/command/cic)
 "anJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -5244,14 +5236,8 @@
 	dir = 4
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 2.5
-	},
-/obj/structure/barricade/handrail{
-	plane = -4
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -5295,16 +5281,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
-"aqN" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
 "aqP" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	dir = 1;
@@ -5630,12 +5606,6 @@
 	dir = 1;
 	icon_state = "silvercorner"
 	},
-/area/almayer/command/cic)
-"arR" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "arT" = (
 /obj/structure/target{
@@ -6397,19 +6367,11 @@
 	},
 /area/almayer/command/cic)
 "atP" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/light/small{
-	dir = 8
+/obj/structure/machinery/power/terminal{
+	dir = 1;
+	pixel_y = 5
 	},
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/fire{
-	pixel_y = 4;
-	pixel_x = 7
-	},
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_s)
 "atT" = (
 /obj/structure/surface/table/almayer,
@@ -7257,17 +7219,16 @@
 /obj/structure/platform{
 	layer = 4
 	},
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/prop/almayer/CICmap{
-	pixel_y = 8;
-	layer = 3.1;
-	plane = -4;
-	pixel_x = -6
-	},
 /obj/structure/machinery/door/poddoor/railing{
 	id = "bot_armory";
 	plane = -4;
 	dir = 2
+	},
+/obj/structure/prop/almayer/computers/mission_planning_system{
+	pixel_x = 9
+	},
+/obj/structure/prop/almayer/computers/mission_planning_system{
+	pixel_x = -7
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
@@ -7973,9 +7934,6 @@
 	},
 /area/almayer/shipboard/starboard_missiles)
 "ayr" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/effect/landmark/map_item,
-/obj/effect/landmark/map_item,
 /obj/structure/platform{
 	layer = 4
 	},
@@ -7983,6 +7941,9 @@
 	id = "bot_armory";
 	plane = -4;
 	dir = 2
+	},
+/obj/structure/machinery/computer/med_data{
+	layer = 2.5
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
@@ -8025,12 +7986,6 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/navigation)
-"ayz" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "ayD" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -8504,16 +8459,16 @@
 	},
 /area/almayer/command/cic)
 "azX" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "orange"
+	icon_state = "silver"
 	},
 /area/almayer/command/cic)
 "azY" = (
@@ -9202,7 +9157,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "red"
+	icon_state = "silver"
 	},
 /area/almayer/command/cic)
 "aCd" = (
@@ -10197,18 +10152,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/stern_hallway)
-"aGb" = (
-/obj/structure/bed/chair/comfy/alpha{
-	dir = 8;
-	pixel_y = 0
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/almayer/command/cic)
 "aGc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -10692,16 +10635,6 @@
 	name = "\improper Military Police Lockdown"
 	},
 /turf/open/floor/plating,
-/area/almayer/command/cic)
-"aIl" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "aIo" = (
 /obj/structure/window/framed/almayer/white,
@@ -12331,12 +12264,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/cic)
-"aPD" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orangecorner"
-	},
-/area/almayer/command/cic)
 "aPE" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
@@ -12407,12 +12334,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
-"aQg" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "aQo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12656,12 +12577,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/synthcloset)
-"aRt" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "blue"
-	},
-/area/almayer/command/cic)
 "aRu" = (
 /obj/structure/foamed_metal,
 /turf/open/floor/plating,
@@ -13644,16 +13559,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
-"aVV" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/bridgebunks)
 "aVW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -14298,18 +14203,12 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "aZy" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
+/obj/structure/closet/toolcloset,
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+	dir = 1;
+	icon_state = "orange"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_s)
 "aZz" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -15656,6 +15555,16 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"bfU" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	pixel_x = -16
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "bfV" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8
@@ -18460,6 +18369,22 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/briefing)
+"bvv" = (
+/obj/structure/machinery/power/smes/buildable{
+	pixel_y = 5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "bvx" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -18908,6 +18833,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
+"bxZ" = (
+/turf/open/floor/almayer,
+/area/almayer/living/commandbunks)
 "byb" = (
 /obj/structure/barricade/handrail/medical,
 /turf/open/floor/almayer{
@@ -21130,6 +21058,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"bHO" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "bHP" = (
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/weapon_room)
@@ -28605,12 +28540,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
-"cvZ" = (
-/obj/structure/stairs/perspective{
-	layer = 3.5
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "cwd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -28878,6 +28807,21 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/alpha)
+"cBt" = (
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/working_joe{
+	layer = 3.2;
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "cBA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -30571,6 +30515,12 @@
 	icon_state = "redfull"
 	},
 /area/almayer/living/offices/flight)
+"dkk" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/command/cic)
 "dkq" = (
 /obj/structure/machinery/door_control{
 	id = "hangarentrancenorth";
@@ -30829,19 +30779,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/req)
-"dpd" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/sign/safety/coffee{
-	pixel_y = 32
-	},
-/obj/structure/sign/safety/east{
-	pixel_x = 15;
-	pixel_y = 32
-	},
-/turf/open/floor/almayer,
-/area/almayer/hull/upper_hull/u_f_p)
 "dpn" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/structure/machinery/light{
@@ -31421,12 +31358,11 @@
 	},
 /area/almayer/engineering/ce_room)
 "dyO" = (
-/obj/structure/window/reinforced/toughened{
-	pixel_y = -9
+/obj/structure/machinery/light{
+	pixel_x = 16
 	},
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silvercorner"
+	icon_state = "emerald"
 	},
 /area/almayer/command/cic)
 "dAb" = (
@@ -31714,6 +31650,22 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/command/lifeboat)
+"dFy" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	pixel_x = -16
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/almayer/command/cichallway)
 "dFC" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -32273,6 +32225,15 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/starboard_hallway)
+"dRJ" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/securecom,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/living/commandbunks)
 "dRT" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -33699,18 +33660,11 @@
 	},
 /area/almayer/squads/req)
 "era" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 0;
-	layer = 2.8;
-	pixel_x = -26
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "redcorner"
+	dir = 8;
+	icon_state = "silvercorner"
 	},
 /area/almayer/command/cic)
 "erd" = (
@@ -34338,6 +34292,14 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
+"eCt" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/bridgebunks)
 "eCz" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -34420,6 +34382,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
+"eEA" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silvercorner"
+	},
+/area/almayer/command/cic)
 "eFj" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -34949,9 +34919,8 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "eRu" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	dir = 1
+/obj/structure/machinery/light{
+	pixel_x = -16
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
@@ -35285,12 +35254,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
-"eYQ" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orangecorner"
-	},
-/area/almayer/hull/upper_hull/u_f_s)
 "eYR" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -35590,20 +35553,6 @@
 	icon_state = "green"
 	},
 /area/almayer/living/grunt_rnr)
-"feD" = (
-/obj/structure/window/reinforced/toughened{
-	plane = -4
-	},
-/obj/structure/machinery/computer/med_data{
-	plane = -7
-	},
-/obj/structure/window/reinforced/toughened{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/command/cic)
 "feI" = (
 /obj/item/trash/cigbutt,
 /turf/open/floor/almayer,
@@ -35866,6 +35815,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
+"fmY" = (
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "fnl" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/straight_jacket,
@@ -36933,6 +36888,12 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
+"fHW" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/almayer/command/cic)
 "fIf" = (
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = 8;
@@ -37222,6 +37183,16 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/airoom)
+"fMu" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	layer = 3.220;
+	plane = -4
+	},
+/turf/open/floor/almayer/uscm/directional{
+	dir = 6
+	},
+/area/almayer/command/cic)
 "fMA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -37817,6 +37788,15 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
+"gcr" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "gcK" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -38277,12 +38257,6 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
-"gkK" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "redcorner"
-	},
-/area/almayer/command/cic)
 "gll" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -40836,6 +40810,16 @@
 	icon_state = "sterile_green"
 	},
 /area/almayer/medical/hydroponics)
+"hnx" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	layer = 3.220;
+	plane = -4
+	},
+/turf/open/floor/almayer/uscm/directional{
+	dir = 5
+	},
+/area/almayer/command/cic)
 "hny" = (
 /obj/structure/surface/rack,
 /obj/item/roller{
@@ -40967,6 +40951,19 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/medical/lower_medical_lobby)
+"hri" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 0;
+	layer = 2.8;
+	pixel_x = -26
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/almayer/command/cic)
 "hrm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -41504,11 +41501,15 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "hDi" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "orangefull"
+	dir = 5;
+	icon_state = "orange"
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "hDv" = (
@@ -41522,6 +41523,19 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"hDx" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/station_alert{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "hDy" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -41584,6 +41598,16 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"hEI" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer{
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "hEV" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -41653,6 +41677,18 @@
 	icon_state = "silver"
 	},
 /area/almayer/living/briefing)
+"hGX" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "bluecorner"
+	},
+/area/almayer/command/cichallway)
 "hGZ" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -41743,6 +41779,26 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/corporateliason)
+"hJa" = (
+/obj/structure/platform/shiva{
+	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/railing{
+	id = "bot_armory";
+	layer = 3;
+	closed_layer = 3;
+	open_layer = 3;
+	plane = -4
+	},
+/obj/structure/machinery/computer/crew{
+	layer = 3.1;
+	plane = -4
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "hJb" = (
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
@@ -42501,6 +42557,16 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"hYz" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	layer = 3.220;
+	plane = -4
+	},
+/turf/open/floor/almayer/uscm/directional{
+	dir = 4
+	},
+/area/almayer/command/cic)
 "hYG" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -42884,6 +42950,19 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/bravo)
+"iib" = (
+/obj/structure/machinery/door/window/southleft{
+	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
+	health = 500;
+	name = "Reinforced Glass door";
+	req_one_access_txt = "2;35";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "iid" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	access_modified = 1;
@@ -44242,7 +44321,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 1;
+	dir = 4;
 	icon_state = "bluecorner"
 	},
 /area/almayer/command/cichallway)
@@ -44700,6 +44779,15 @@
 	icon_state = "mono"
 	},
 /area/almayer/medical/hydroponics)
+"iUz" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orangecorner"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "iUW" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -46480,6 +46568,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
+"jHz" = (
+/obj/structure/machinery/door/window/southleft{
+	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
+	health = 500;
+	name = "Reinforced Glass door";
+	req_one_access_txt = "2;35";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "jHC" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -47982,6 +48083,16 @@
 /obj/item/reagent_container/food/drinks/bottle/sake,
 /turf/open/floor/almayer,
 /area/almayer/living/captain_mess)
+"knF" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	pixel_x = -6
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "knH" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/sign/safety/coffee{
@@ -49237,6 +49348,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
+"kMC" = (
+/obj/structure/platform{
+	layer = 4
+	},
+/obj/structure/machinery/door/poddoor/railing{
+	id = "bot_armory";
+	plane = -4;
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "kMH" = (
 /obj/structure/machinery/door/window/brigdoor/southright{
 	id = "Cell 1";
@@ -49622,15 +49746,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
-"kTM" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/almayer/command/cic)
 "kTN" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -49743,6 +49858,19 @@
 	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
+"kWw" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/sign/safety/coffee{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_f_p)
 "kWT" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -50499,6 +50627,12 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/hangar)
+"lmc" = (
+/obj/structure/window/reinforced/toughened{
+	pixel_y = -9
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/cic)
 "lmk" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -50526,6 +50660,16 @@
 "lmz" = (
 /turf/closed/wall/almayer/white/hull,
 /area/space)
+"lmC" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "lmD" = (
 /obj/structure/platform,
 /obj/structure/pipes/vents/pump,
@@ -52252,10 +52396,6 @@
 /obj/structure/platform/shiva{
 	dir = 1
 	},
-/obj/structure/machinery/computer/crew{
-	layer = 3.1;
-	plane = -4
-	},
 /obj/structure/machinery/door/poddoor/railing{
 	id = "bot_armory";
 	layer = 3;
@@ -52835,6 +52975,16 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
+"mid" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+	dir = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/bridgebunks)
 "miE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -53049,6 +53199,12 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
+"mml" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "mmC" = (
 /obj/structure/closet/secure_closet/engineering_welding{
 	req_one_access_txt = "7;23;27"
@@ -53221,6 +53377,13 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/main_office)
+"mqA" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/effect/landmark/map_item,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/command/cic)
 "mqK" = (
 /obj/structure/machinery/cm_vending/gear/spec,
 /obj/structure/sign/safety/hazard{
@@ -53413,15 +53576,6 @@
 	icon_state = "red"
 	},
 /area/almayer/command/lifeboat)
-"mtE" = (
-/obj/structure/surface/rack{
-	pixel_y = 1
-	},
-/obj/item/device/binoculars,
-/obj/item/device/megaphone,
-/obj/item/device/radio,
-/turf/open/floor/wood/ship,
-/area/almayer/living/commandbunks)
 "mtM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -53562,15 +53716,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
-"myl" = (
-/obj/structure/machinery/light,
-/obj/structure/pipes/vents/scrubber{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/bridgebunks)
 "myn" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
@@ -53716,6 +53861,12 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/delta)
+"mAZ" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "mBb" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Hangar Lockdown";
@@ -54474,18 +54625,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cic)
-"mPU" = (
-/obj/structure/machinery/door/window/southleft{
-	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
-	health = 500;
-	name = "Reinforced Glass door";
-	req_one_access_txt = "2;35";
-	dir = 4
-	},
-/turf/open/floor/almayer/uscm/directional{
-	dir = 4
-	},
-/area/almayer/command/cic)
 "mPX" = (
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -54767,6 +54906,16 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/cryo)
+"mVn" = (
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/almayer/command/cic)
 "mVE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -55939,6 +56088,21 @@
 	icon_state = "green"
 	},
 /area/almayer/living/starboard_garden)
+"nuh" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/obj/item/stack/sheet/glass/reinforced{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass/reinforced{
+	amount = 50
+	},
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "nun" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
@@ -56586,6 +56750,12 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering)
+"nGb" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "nGc" = (
 /obj/structure/machinery/vending/hydroseeds,
 /turf/open/floor/almayer{
@@ -57010,8 +57180,16 @@
 	},
 /area/almayer/medical/containment)
 "nPs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
 /turf/open/floor/almayer{
-	dir = 1;
+	dir = 4;
 	icon_state = "orange"
 	},
 /area/almayer/hull/upper_hull/u_f_s)
@@ -58167,6 +58345,12 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/hangar)
+"onC" = (
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "onN" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/disposalpipe/segment{
@@ -58711,6 +58895,14 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/sea_office)
+"owZ" = (
+/obj/structure/window/reinforced/toughened{
+	pixel_y = -9
+	},
+/turf/open/floor/almayer{
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "oxi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -58905,6 +59097,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
+"oCb" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 0;
+	layer = 2.8;
+	pixel_x = -26
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orangecorner"
+	},
+/area/almayer/command/cic)
 "oCf" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -59109,15 +59314,18 @@
 	},
 /area/almayer/living/briefing)
 "oGx" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/station_alert{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/machinery/power/apc/almayer{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "orange"
+	icon_state = "plating"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/captain_mess)
 "oGy" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -59610,11 +59818,8 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "oPE" = (
-/obj/structure/window/reinforced/toughened{
-	pixel_y = -9
-	},
 /turf/open/floor/almayer{
-	icon_state = "silvercorner"
+	icon_state = "orange"
 	},
 /area/almayer/command/cic)
 "oPI" = (
@@ -60416,6 +60621,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/combat_correspondent)
+"pis" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
 "piO" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldingtool,
@@ -62531,6 +62742,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
+"qds" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/almayer/command/cic)
 "qdz" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -62560,18 +62777,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/pilotbunks)
-"qdT" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/structure/disposalpipe/junction{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
-/area/almayer/command/cichallway)
 "qee" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -62924,6 +63129,21 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"qkK" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	name = "\improper Commanding Officer's equipment storage";
+	req_access = null;
+	req_access_txt = "31"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Commanding Officer's equipment storage Shutters";
+	id = "C_CO";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/living/commandbunks)
 "qld" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -63740,18 +63960,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
-"qBz" = (
-/obj/structure/window/reinforced/toughened{
-	plane = -4
-	},
-/obj/structure/machinery/computer/tech_control{
-	plane = -4;
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/command/cic)
 "qBM" = (
 /obj/item/storage/fancy/crayons{
 	layer = 3.1;
@@ -64023,6 +64231,23 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
+"qHf" = (
+/obj/structure/window/reinforced/toughened{
+	plane = -4
+	},
+/obj/structure/machinery/computer/tech_control{
+	plane = -4;
+	pixel_x = -1
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	layer = 3.220;
+	plane = -4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/command/cic)
 "qHg" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -65482,25 +65707,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
-"rlf" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/barricade/handrail{
-	plane = -4
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/command/cichallway)
 "rlh" = (
 /obj/structure/closet/firecloset,
 /obj/structure/machinery/power/apc/almayer{
@@ -66213,11 +66419,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
-"rBa" = (
-/turf/open/floor/almayer{
-	icon_state = "orangefull"
-	},
-/area/almayer/hull/upper_hull/u_f_s)
 "rBb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -66882,18 +67083,11 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
 "rOC" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 0;
-	layer = 2.8;
-	pixel_x = -26
-	},
-/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orangecorner"
+	dir = 1;
+	icon_state = "silvercorner"
 	},
 /area/almayer/command/cic)
 "rOJ" = (
@@ -67868,6 +68062,14 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie_delta_shared)
+"skT" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/bridgebunks)
 "sld" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -67879,6 +68081,14 @@
 	icon_state = "sterile_green"
 	},
 /area/almayer/medical/lower_medical_lobby)
+"slo" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/command/cic)
 "slP" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -68007,20 +68217,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/brig/cells)
-"soq" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -26
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/obj/structure/closet/toolcloset,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
-	},
-/area/almayer/hull/upper_hull/u_f_s)
 "sos" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -68113,16 +68309,9 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "soX" = (
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8;
-	pixel_y = 0
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer,
 /area/almayer/command/cic)
 "spF" = (
 /obj/structure/surface/table/almayer,
@@ -68328,6 +68517,16 @@
 /obj/item/tool/weldingtool,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
+"sum" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	pixel_x = 16
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/almayer/command/cic)
 "suy" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -69081,6 +69280,17 @@
 	icon_state = "bluefull"
 	},
 /area/almayer/living/briefing)
+"sJR" = (
+/obj/structure/surface/rack{
+	pixel_y = 1
+	},
+/obj/item/device/binoculars,
+/obj/item/device/megaphone,
+/obj/item/device/radio,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/living/commandbunks)
 "sJY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -69148,6 +69358,16 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_m_s)
+"sMH" = (
+/obj/structure/machinery/door_control{
+	id = "C_CO";
+	name = "Commanding Officer's equipment storage";
+	pixel_y = 28;
+	req_one_access_txt = "31";
+	pixel_x = -24
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/commandbunks)
 "sMM" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -70021,14 +70241,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
-"teY" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/living/captain_mess)
 "tfb" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -70870,6 +71082,20 @@
 "tuA" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/port_missiles)
+"tuK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	pixel_x = -16
+	},
+/turf/open/floor/almayer{
+	icon_state = "blue"
+	},
+/area/almayer/command/cichallway)
 "tuN" = (
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -71201,10 +71427,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_s)
 "tBq" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -71810,6 +72037,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"tQs" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/fire{
+	pixel_y = 4;
+	pixel_x = 7
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "tQE" = (
 /obj/item/clothing/head/welding,
 /turf/open/floor/almayer{
@@ -71991,16 +72230,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"tVh" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	pixel_x = 16
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
-/area/almayer/command/cic)
 "tVq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -72091,6 +72320,13 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
+"tXP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/hull/upper_hull/u_f_s)
 "tXT" = (
 /obj/item/bedsheet/blue{
 	layer = 3.2
@@ -74008,6 +74244,20 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"uIx" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -26
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "uII" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -74711,6 +74961,17 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/stern_hallway)
+"uWD" = (
+/obj/structure/machinery/cm_vending/gear/commanding_officer{
+	pixel_y = 18;
+	density = 0;
+	pixel_x = -1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/living/commandbunks)
 "uWI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/plastic,
@@ -74748,6 +75009,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
+"uXe" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silvercorner"
+	},
+/area/almayer/command/cic)
 "uXf" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -75346,6 +75615,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
+"vir" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "vit" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -76157,8 +76435,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "cargo_arrow"
+	icon_state = "test_floor4"
 	},
 /area/almayer/command/cic)
 "vxb" = (
@@ -76498,11 +76775,13 @@
 	},
 /area/almayer/command/combat_correspondent)
 "vEj" = (
-/obj/structure/machinery/power/terminal{
-	dir = 4;
-	pixel_x = 2
+/obj/structure/barricade/handrail{
+	dir = 4
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
 /area/almayer/hull/upper_hull/u_f_s)
 "vEn" = (
 /obj/structure/bed/chair/comfy/bravo{
@@ -76661,13 +76940,6 @@
 	icon_state = "containment_corner_variant_2"
 	},
 /area/almayer/medical/containment/cell)
-"vHW" = (
-/obj/structure/machinery/cm_vending/gear/commanding_officer{
-	pixel_y = 18;
-	density = 0
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/living/commandbunks)
 "vIf" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -77795,18 +78067,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/briefing)
-"wbO" = (
-/obj/structure/machinery/door_control{
-	id = "C_Sub";
-	name = "Command Power Substation";
-	pixel_y = -24;
-	req_one_access_txt = "19";
-	pixel_x = 26
-	},
-/turf/open/floor/almayer{
-	icon_state = "orange"
-	},
-/area/almayer/hull/upper_hull/u_f_s)
 "wbP" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 125
@@ -77923,6 +78183,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
+"wef" = (
+/obj/structure/filingcabinet/medical,
+/turf/open/floor/wood/ship,
+/area/almayer/living/commandbunks)
 "wei" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -77958,6 +78222,16 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/pilotbunks)
+"weO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/bridgebunks)
 "weR" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer{
@@ -77981,6 +78255,20 @@
 "wfE" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/gym)
+"wfF" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/ashtray/glass{
+	pixel_y = -4;
+	pixel_x = -6
+	},
+/obj/item/storage/fancy/cigarettes/kpack{
+	pixel_y = 12;
+	pixel_x = 3
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/command/cic)
 "wfL" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -78138,6 +78426,14 @@
 	icon_state = "mono"
 	},
 /area/almayer/medical/hydroponics)
+"wiY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/bridgebunks)
 "wjq" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
@@ -78794,17 +79090,18 @@
 	},
 /area/almayer/shipboard/brig/processing)
 "wvU" = (
-/obj/structure/machinery/power/smes/buildable{
-	pixel_y = 0
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/power/apc/almayer{
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
+	dir = 5;
+	icon_state = "plating"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/bridgebunks)
 "wwr" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
@@ -78828,6 +79125,16 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
+"wwN" = (
+/obj/structure/bed/chair/comfy/alpha{
+	dir = 8;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/almayer/command/cic)
 "wwW" = (
 /obj/structure/machinery/camera/autoname/almayer/containment/hidden{
 	dir = 8;
@@ -78903,15 +79210,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
-"wyt" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
-/area/almayer/command/cic)
 "wyv" = (
 /obj/structure/machinery/door_control{
 	id = "ARES JoeCryo";
@@ -79452,6 +79750,18 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/containment)
+"wKS" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/prop/almayer/CICmap{
+	pixel_y = 4;
+	layer = 3.1;
+	plane = -4;
+	pixel_x = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/command/cic)
 "wLi" = (
 /obj/structure/machinery/door_control/airlock{
 	id = "s_engi";
@@ -79912,6 +80222,21 @@
 /obj/item/storage/fancy/candle_box,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
+"wUv" = (
+/obj/structure/window/reinforced/toughened{
+	plane = -4
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/prop/almayer/CICmap{
+	pixel_y = 4;
+	layer = 3.1;
+	plane = -4;
+	pixel_x = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/command/cic)
 "wUz" = (
 /obj/structure/sign/safety/life_support{
 	pixel_x = 8;
@@ -81012,14 +81337,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
-"xqb" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 4
-	},
-/turf/open/floor/almayer/uscm/directional{
-	dir = 6
-	},
-/area/almayer/command/cic)
 "xqp" = (
 /obj/structure/machinery/body_scanconsole{
 	dir = 8;
@@ -81744,6 +82061,15 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_m_p)
+"xDg" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/command/cic)
 "xDn" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -81877,14 +82203,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hull/lower_hull/l_f_s)
-"xFF" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 4
-	},
-/turf/open/floor/almayer/uscm/directional{
-	dir = 5
-	},
-/area/almayer/command/cic)
 "xFP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -82121,23 +82439,14 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "xKT" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
+/obj/structure/machinery/door_control{
+	id = "C_Sub";
+	name = "Command Power Substation";
+	pixel_y = -24;
+	req_one_access_txt = "19";
+	pixel_x = 26
 	},
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/powercell,
-/obj/effect/spawner/random/toolbox,
-/obj/item/stack/sheet/glass/reinforced{
-	amount = 50
-	},
-/obj/item/stack/sheet/glass/reinforced{
-	amount = 50
-	},
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_s)
 "xKW" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -82866,6 +83175,16 @@
 	icon_state = "mono"
 	},
 /area/almayer/medical/medical_science)
+"xXX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cic)
 "xYf" = (
 /obj/structure/machinery/cm_vending/clothing/sea,
 /turf/open/floor/almayer{
@@ -83407,16 +83726,18 @@
 	},
 /area/almayer/squads/charlie)
 "yiX" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/working_joe{
-	layer = 3.2;
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/machinery/power/apc/almayer{
+	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "orange"
+	dir = 5;
+	icon_state = "plating"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/command/cichallway)
 "yjb" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -89711,615 +90032,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aab
-aaa
-aaa
-aKQ
-aaa
-aaa
-aab
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aab
-aaa
-aaa
-"}
-(32,1,1) = {"
-aaa
-aaa
-aab
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aab
-aaa
-aaa
-aKQ
-aaa
-aaa
-aab
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aab
-aaa
-aaa
-"}
-(33,1,1) = {"
-aaa
-aaa
-aab
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aab
-aaa
-aaa
-aKQ
-aaa
-aaa
-aab
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aab
-aaa
-aaa
-"}
-(34,1,1) = {"
-aaa
-aaa
-aab
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 aac
 aaf
 aaf
@@ -90477,7 +90189,7 @@ aab
 aaa
 aaa
 "}
-(35,1,1) = {"
+(32,1,1) = {"
 aaa
 aaa
 aab
@@ -90680,7 +90392,7 @@ aab
 aaa
 aaa
 "}
-(36,1,1) = {"
+(33,1,1) = {"
 aaa
 aaa
 aab
@@ -90883,7 +90595,7 @@ aab
 aaa
 aaa
 "}
-(37,1,1) = {"
+(34,1,1) = {"
 aaa
 aaa
 aab
@@ -91086,7 +90798,7 @@ aab
 aaa
 aaa
 "}
-(38,1,1) = {"
+(35,1,1) = {"
 aaa
 aaa
 aab
@@ -91289,7 +91001,7 @@ aab
 aaa
 aaa
 "}
-(39,1,1) = {"
+(36,1,1) = {"
 aaa
 aaa
 aab
@@ -91492,7 +91204,7 @@ aab
 aaa
 aaa
 "}
-(40,1,1) = {"
+(37,1,1) = {"
 aaa
 aaa
 aab
@@ -91565,6 +91277,615 @@ ajY
 aaa
 aaa
 aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aab
+aaa
+aaa
+aKQ
+aaa
+aaa
+aab
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aab
+aaa
+aaa
+"}
+(38,1,1) = {"
+aaa
+aaa
+aab
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aad
+pCi
+pCi
+pCi
+pCi
+pCi
+pCi
+pCi
+pCi
+cpf
+cos
+wIC
+wIC
+wIC
+wIC
+wIC
+wIC
+cNY
+tak
+sip
+mLJ
+ntm
+hND
+kif
+hND
+mnm
+wVz
+kIV
+dDQ
+sGe
+xEF
+xEF
+xEF
+xEF
+xEF
+xEF
+xEF
+xEF
+ajZ
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aab
+aaa
+aaa
+aKQ
+aaa
+aaa
+aab
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aab
+aaa
+aaa
+"}
+(39,1,1) = {"
+aaa
+aaa
+aab
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aad
+pCi
+mUQ
+rPC
+wcn
+wcn
+xhM
+wcn
+tng
+hGD
+wzx
+vBm
+paq
+uoY
+vUL
+vez
+xys
+swo
+eRL
+eRL
+mLJ
+bua
+vBm
+xkd
+xkd
+xkd
+xkd
+kIV
+iYi
+gSs
+eyd
+kIV
+kQz
+mnm
+kIV
+kIV
+flP
+xEF
+ajZ
+bdH
+bdH
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aab
+aaa
+aaa
+aKQ
+aaa
+aaa
+aab
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aab
+aaa
+aaa
+"}
+(40,1,1) = {"
+aaa
+aaa
+aab
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+bdH
+aac
+aaf
+aag
+pCi
+rPC
+wcn
+rPC
+vWx
+age
+dPY
+rTV
+wcn
+tYB
+vBm
+qfR
+tak
+tak
+bvx
+xys
+ldu
+eRL
+eRL
+mLJ
+eiO
+xFs
+xkd
+eiH
+aTV
+xkd
+xkd
+xkd
+mnm
+mnm
+iqx
+qFl
+vUI
+mnm
+mnm
+kIV
+xEF
+aag
+aaf
+ajY
+bdH
 aaa
 aaa
 aaa
@@ -91722,53 +92043,53 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
 aad
+aag
 pCi
 pCi
-pCi
-pCi
-pCi
-pCi
-pCi
-pCi
-cpf
-cos
-wIC
-wIC
-wIC
-wIC
-wIC
-wIC
-cNY
-tak
-sip
-mLJ
-ntm
-hND
-kif
-hND
-mnm
-wVz
+rPC
+wcn
+vBm
+vBm
+vBm
+vBm
+vBm
+qmC
+vBm
+vBm
+ouV
+bTw
+sjc
+dci
+rzj
+tGg
+sjc
+sjc
+iqn
+eRL
+tmy
+xkd
+rUB
+dSn
+soa
+xzu
+xkd
+xkd
+xkd
+xkd
+xkd
+xkd
+xkd
 kIV
-dDQ
-sGe
+mnm
 xEF
 xEF
-xEF
-xEF
-xEF
-xEF
-xEF
-xEF
+aag
 ajZ
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -91925,53 +92246,53 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
 aad
+aag
 pCi
-mUQ
+ext
 rPC
-wcn
-wcn
-xhM
-wcn
-tng
-hGD
-wzx
+mUQ
 vBm
-paq
-uoY
-vUL
-vez
-xys
-swo
+rBV
+oPk
+mqo
+vBm
 eRL
-eRL
+rag
+qqN
+lzx
 mLJ
 bua
-vBm
+gcT
+dSc
+qre
+eRL
+eOR
+aJz
+dXy
+nHg
 xkd
+ghX
+rAv
 xkd
+eTo
+iHG
+dCe
+moB
+uns
+vCy
+eyV
 xkd
-xkd
-kIV
-iYi
-gSs
-eyd
-kIV
-kQz
+dAb
 mnm
 kIV
-kIV
-flP
 xEF
+aag
 ajZ
 bdH
 bdH
-aaa
-aaa
 aaa
 aaa
 aaa
@@ -92128,53 +92449,53 @@ aaa
 aaa
 aaa
 aaa
-aaa
 bdH
-aac
-aaf
+bdH
+aad
 aag
 pCi
-rPC
+oCL
 wcn
-rPC
-vWx
-age
-dPY
-rTV
-wcn
-tYB
+fuB
 vBm
-qfR
-tak
-tak
-bvx
-xys
 ldu
+wgi
+wgi
+ckS
 eRL
-eRL
-mLJ
-eiO
-xFs
+bua
+gcT
+gcT
+tJy
+fnC
+tpn
+tpn
+tpn
+ula
+tpn
+wvT
+luw
+sgi
 xkd
-eiH
-aTV
 xkd
 xkd
 xkd
-mnm
-mnm
-iqx
-qFl
-vUI
-mnm
+kmd
+tUx
+ebd
+tHS
+xGh
+jVa
+wDs
+xkd
+ukt
 mnm
 kIV
 xEF
 aag
-aaf
-ajY
+ajZ
 bdH
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -92336,43 +92657,43 @@ bdH
 aad
 aag
 pCi
-pCi
-rPC
 wcn
+rPC
 vBm
 vBm
+sFC
+sFC
+sFC
 vBm
-vBm
-vBm
-qmC
-vBm
-vBm
-ouV
-bTw
-sjc
-dci
-rzj
-tGg
-sjc
-sjc
-iqn
-eRL
-tmy
+pcQ
+xHe
+gqW
+gqW
+lCM
+ugT
+tpn
+vrM
+kta
+vWo
+xrP
+xTp
+pyj
+pwt
 xkd
-rUB
-dSn
-soa
-xzu
+uvY
+oBq
 xkd
-xkd
-xkd
-xkd
-xkd
+rPh
+iOD
+iOD
+tHS
+sqW
+tUx
+wRN
 xkd
 xkd
 kIV
 mnm
-xEF
 xEF
 aag
 ajZ
@@ -92538,47 +92859,47 @@ bdH
 bdH
 aad
 aag
-pCi
-ext
+ahE
+wcn
 rPC
-mUQ
 vBm
-rBV
-oPk
-mqo
+ykP
+xAj
+xhE
+xhE
 vBm
-eRL
-rag
-qqN
-lzx
-mLJ
-bua
-gcT
-dSc
-qre
-eRL
-eOR
-aJz
-dXy
-nHg
+hKq
+cdk
+soD
+tdv
+szy
+wdr
+tpn
+aeo
+sIw
+eni
+xrP
+xTp
+pyj
+hTt
+kMH
+tUx
+iTI
+hzJ
+cyZ
+jVa
+jVa
+tHS
+sVc
+tUx
+xJe
+qLt
 xkd
-ghX
-rAv
-xkd
-eTo
-iHG
-dCe
-moB
-uns
-vCy
-eyV
-xkd
-dAb
-mnm
 kIV
-xEF
+mnm
+ils
 aag
-ajZ
+etE
 bdH
 bdH
 aaa
@@ -92741,45 +93062,45 @@ bdH
 bdH
 aad
 aag
-pCi
-oCL
+ahE
+rPC
 wcn
-fuB
 vBm
-ldu
-wgi
-wgi
-ckS
+ykP
+xjG
+ssD
+gcT
+rmv
 eRL
+mLJ
 bua
+nNQ
 gcT
-gcT
-tJy
-fnC
+ciF
 tpn
-tpn
-tpn
-ula
-tpn
-wvT
-luw
-sgi
+vrM
+eBW
+eOh
+xrP
+xTp
+pyj
+kfN
+xkd
+qFu
 xkd
 xkd
-xkd
-xkd
-kmd
-tUx
-ebd
+qJZ
+jVa
+jVa
 tHS
 xGh
-jVa
-wDs
+ycm
+qCo
+pWr
 xkd
-ukt
+uqa
 mnm
-kIV
-xEF
+ils
 aag
 ajZ
 bdH
@@ -92944,47 +93265,47 @@ bdH
 bdH
 aad
 aag
-pCi
+ahE
+nBc
 wcn
-rPC
 vBm
 vBm
-sFC
-sFC
-sFC
 vBm
-pcQ
-xHe
-gqW
-gqW
-lCM
-ugT
+vBm
+vBm
+vBm
+hZU
+mLJ
+fkn
+gaJ
+gaJ
+gaJ
+gaJ
 tpn
-vrM
-kta
-vWo
-xrP
-xTp
+tpn
+ueo
+tpn
+wCM
 pyj
-pwt
+opN
 xkd
 uvY
-oBq
+duT
 xkd
-rPh
-iOD
-iOD
-tHS
-sqW
-tUx
-wRN
+vdM
+jVa
+wtM
+moB
+sXQ
+cyZ
+jVa
+fJT
 xkd
-xkd
+ipT
 kIV
-mnm
-xEF
+ils
 aag
-ajZ
+eSU
 bdH
 bdH
 aaa
@@ -93147,47 +93468,47 @@ bdH
 bdH
 aad
 aag
-ahE
-wcn
-rPC
+pCi
+mUQ
+aou
 vBm
-ykP
-xAj
-xhE
-xhE
-vBm
-hKq
-cdk
-soD
-tdv
-szy
-wdr
-tpn
-aeo
-sIw
-eni
-xrP
-xTp
+tJp
+ybb
+tHB
+aEk
+nSM
+ldu
+mLJ
+pYF
+gaJ
+wVV
+wVV
+wVV
+gaJ
+aOY
+wdF
+sdF
+kNi
 pyj
-hTt
-kMH
+xIw
+kVZ
 tUx
 iTI
-hzJ
-cyZ
+nXm
+eZH
 jVa
 jVa
-tHS
-sVc
-tUx
-xJe
-qLt
+moB
+moB
+dfk
+vzz
+moB
 xkd
+lmk
 kIV
-mnm
-ils
+xEF
 aag
-etE
+ajZ
 bdH
 bdH
 aaa
@@ -93350,47 +93671,47 @@ bdH
 bdH
 aad
 aag
-ahE
+pCi
+hKi
 rPC
-wcn
 vBm
-ykP
-xjG
-ssD
-gcT
-rmv
-eRL
+sQS
+xEc
+grl
+egR
+tak
+lzx
 mLJ
-bua
-nNQ
-gcT
-ciF
-tpn
-vrM
-eBW
-eOh
-xrP
-xTp
-pyj
-kfN
+ugT
+fso
+vpI
+vpI
+vpI
+cuk
+tkV
+jFR
+oRk
+kxM
+jSw
+vBm
+vBm
+qof
+vBm
+vBm
+wRm
+tUx
+vrx
+tUx
+gSV
+eZH
+tUx
+cXi
 xkd
-qFu
-xkd
-xkd
-qJZ
-jVa
-jVa
-tHS
-xGh
-ycm
-qCo
-pWr
-xkd
-uqa
-mnm
-ils
+irr
+kIV
+xEF
 aag
-ajZ
+twB
 bdH
 bdH
 aaa
@@ -93554,46 +93875,46 @@ bdH
 aad
 aag
 ahE
-nBc
-wcn
+nnF
+rPC
 vBm
-vBm
-vBm
-vBm
-vBm
-vBm
-hZU
+ikM
+pzc
+jjM
+eRL
+eRL
+eRL
 mLJ
-fkn
-gaJ
-gaJ
-gaJ
-gaJ
-tpn
-tpn
-ueo
-tpn
-wCM
-pyj
-opN
-xkd
-uvY
-duT
-xkd
-vdM
-jVa
-wtM
-moB
-sXQ
+ugT
+qvf
+vpI
+vpI
+vpI
+qvf
+wdF
+lMc
+ycr
+kge
+kDA
+rkL
+eZj
+efh
+mGn
+jkS
 cyZ
+thL
+thL
+thL
+thL
+nYd
+thL
 jVa
-fJT
-xkd
-ipT
-kIV
+fgR
+hPT
+mnm
 ils
 aag
-eSU
+ajZ
 bdH
 bdH
 aaa
@@ -93756,47 +94077,47 @@ bdH
 bdH
 aad
 aag
-pCi
-mUQ
-aou
+ahE
+hUg
+wcn
 vBm
-tJp
-ybb
-tHB
-aEk
-nSM
-ldu
+gqW
+buX
 mLJ
-pYF
+eRL
+eRL
+eRL
+mLJ
+pWG
 gaJ
-wVV
-wVV
-wVV
+eyg
+gCI
+eyg
 gaJ
-aOY
-wdF
-sdF
-kNi
-pyj
-xIw
-kVZ
-tUx
-iTI
-nXm
+heQ
+lMc
+eOW
+cMl
+lMc
+nxq
+ldu
+kJK
+bja
+jkS
 eZH
+ohJ
+thL
+thL
+tjU
+liZ
+rUk
 jVa
-jVa
-moB
-moB
-dfk
-vzz
-moB
-xkd
-lmk
-kIV
-xEF
+fgR
+evl
+uNF
+ils
 aag
-ajZ
+rEr
 bdH
 bdH
 aaa
@@ -93959,47 +94280,47 @@ bdH
 bdH
 aad
 aag
-pCi
-hKi
+ahE
 rPC
+wcn
 vBm
-sQS
-xEc
-grl
-egR
-tak
-lzx
-mLJ
-ugT
-fso
-vpI
-vpI
-vpI
-cuk
-tkV
-jFR
-oRk
-kxM
-jSw
+jCa
+cFO
+lNs
+srV
+uzU
+nJo
+inN
+wQk
+gaJ
+gaJ
+gaJ
+gaJ
+gaJ
+tRA
+lMc
+ffV
+cMl
+oeB
+rkL
+ldu
+eRL
+jZL
 vBm
-vBm
-qof
-vBm
-vBm
-wRm
-tUx
-vrx
-tUx
-gSV
-eZH
-tUx
-cXi
-xkd
-irr
+qJZ
+ohJ
+thL
+thL
+ezX
+uaU
+rUk
+xaM
+fgR
+fQk
 kIV
-xEF
+ils
 aag
-twB
+ajZ
 bdH
 bdH
 aaa
@@ -94162,47 +94483,47 @@ bdH
 bdH
 aad
 aag
-ahE
-nnF
-rPC
-vBm
-ikM
-pzc
-jjM
+pCi
+wcn
+wcn
+lrq
+lrq
+bVC
+lrq
+lrq
+lut
 eRL
 eRL
-eRL
-mLJ
-ugT
-qvf
-vpI
-vpI
-vpI
-qvf
-wdF
-lMc
-ycr
-kge
-kDA
-rkL
-eZj
-efh
-mGn
-jkS
-cyZ
-thL
-thL
-thL
-thL
-nYd
-thL
-jVa
-fgR
-hPT
+enz
+swn
+vOd
+uCl
+dls
+eGr
+gbX
+rCL
+xHM
+jxK
+hyz
+ltX
+pbh
+rRQ
+rRQ
+iyq
+inG
+omt
+omt
+omt
+omt
+uxa
+iZU
+nhG
+xkd
 mnm
-ils
+hgH
+xEF
 aag
-ajZ
+uJk
 bdH
 bdH
 aaa
@@ -94365,47 +94686,47 @@ bdH
 bdH
 aad
 aag
-ahE
-hUg
-wcn
+pCi
+rPC
+rwS
+lrq
+kTc
+uqo
+wVw
+cqn
+gTx
+eRL
+eRL
+igt
+swn
+daj
+qbt
+exr
+kHa
+luH
+lMc
+ycr
+bju
+goD
 vBm
-gqW
-buX
-mLJ
-eRL
-eRL
-eRL
-mLJ
-pWG
-gaJ
-eyg
-gCI
-eyg
-gaJ
-heQ
-lMc
-eOW
-cMl
-lMc
-nxq
-ldu
-kJK
-bja
-jkS
-eZH
-ohJ
+vBm
+qof
+vBm
+vBm
+sSm
 thL
 thL
-tjU
-liZ
-rUk
-jVa
-fgR
-evl
-uNF
-ils
+thL
+thL
+tov
+thL
+sUs
+xkd
+mnm
+kIV
+xEF
 aag
-rEr
+ajZ
 bdH
 bdH
 aaa
@@ -94570,45 +94891,45 @@ aad
 aag
 ahE
 rPC
-wcn
-vBm
-jCa
-cFO
-lNs
-srV
-uzU
-nJo
-inN
-wQk
-gaJ
-gaJ
-gaJ
-gaJ
-gaJ
-tRA
-lMc
-ffV
-cMl
-oeB
-rkL
+nfI
+lrq
+omu
+uqo
+sYB
+cqn
 ldu
 eRL
-jZL
-vBm
-qJZ
-ohJ
+eRL
+cWs
+swn
+dcP
+tvA
+dQv
+swn
+xTp
+lMc
+gSi
+bju
+wSm
+jox
+lrV
+tUx
+ntu
+nYP
+tUx
+thL
+oXp
 thL
 thL
-ezX
-uaU
-rUk
-xaM
+tov
+thL
+xhx
 fgR
-fQk
+mnm
 kIV
 ils
 aag
-ajZ
+scz
 bdH
 bdH
 aaa
@@ -94771,47 +95092,47 @@ bdH
 bdH
 aad
 aag
-pCi
-wcn
-wcn
+ahE
+rPC
+heV
 lrq
-lrq
-bVC
-lrq
-lrq
-lut
+frJ
+uqo
+ktn
+cqn
+nBb
+mdS
 eRL
-eRL
-enz
+uJs
 swn
-vOd
-uCl
-dls
-eGr
-gbX
-rCL
-xHM
-jxK
-hyz
-ltX
-pbh
-rRQ
-rRQ
-iyq
-inG
-omt
-omt
-omt
-omt
-uxa
-iZU
-nhG
+dfO
+doj
+dQv
+swn
+fYn
+qZg
+iXt
+gBi
+wSm
+opN
 xkd
-mnm
-hgH
-xEF
+nlH
+rQY
+xkd
+xMQ
+ezX
+pqF
+rUk
+thL
+iFc
+thL
+tUx
+fgR
+inC
+fQk
+ils
 aag
-uJk
+ajZ
 bdH
 bdH
 aaa
@@ -94974,47 +95295,47 @@ bdH
 bdH
 aad
 aag
-pCi
-rPC
-rwS
+ahE
+wcn
+nBc
 lrq
-kTc
+vsI
 uqo
-wVw
-cqn
-gTx
-eRL
-eRL
-igt
-swn
-daj
-qbt
-exr
+xoS
+lrq
+mAT
+lrq
+cxA
+plZ
 kHa
-luH
-lMc
-ycr
-bju
-goD
-vBm
-vBm
-qof
-vBm
-vBm
-sSm
-thL
-thL
-thL
-thL
-tov
-thL
-sUs
+qPO
+qPO
+wuc
+qPO
+oRZ
+wdF
+xCd
+bqp
+wSm
+kfN
 xkd
-mnm
+qFu
+xkd
+xkd
+jVa
+ezX
+prY
+rUk
+thL
+thL
+thL
+tUx
+fgR
 kIV
-xEF
+mKf
+ils
 aag
-ajZ
+okD
 bdH
 bdH
 aaa
@@ -95172,52 +95493,52 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 bdH
 bdH
 aad
 aag
-ahE
-rPC
-nfI
+pCi
+wcn
+wcn
 lrq
-omu
+mAr
 uqo
-sYB
-cqn
-ldu
-eRL
-eRL
-cWs
+fsT
+jnA
+fDn
+lrq
+tqV
+nBo
+maa
 swn
-dcP
-tvA
-dQv
-swn
-xTp
-lMc
-gSi
-bju
+plI
+tqe
+qPO
+wvT
+luw
+emp
+uUO
 wSm
-jox
-lrV
+jZm
+wmE
 tUx
 ntu
-nYP
+vQN
+jVa
+rjw
 tUx
-thL
-oXp
-thL
-thL
-tov
-thL
-xhx
-fgR
-mnm
+lnJ
+rjw
+tUx
+jVa
+oEE
+xkd
 kIV
-ils
+hFW
+xEF
 aag
-scz
+ajZ
 bdH
 bdH
 aaa
@@ -95375,50 +95696,50 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 bdH
 bdH
 aad
 aag
-ahE
-rPC
-heV
+pCi
+oCL
+wcn
 lrq
-frJ
+uZY
 uqo
-ktn
-cqn
-nBb
-mdS
-eRL
-uJs
+uqo
+uqo
+iOh
+lrq
+gdo
+nBo
+jJq
 swn
-dfO
-doj
-dQv
-swn
-fYn
-qZg
-iXt
-gBi
+dHv
+qQM
+qPO
+xTp
+lMc
+jcf
+qUb
 wSm
-opN
+jSw
 xkd
 nlH
-rQY
+uuq
 xkd
-xMQ
-ezX
-pqF
-rUk
-thL
-iFc
-thL
-tUx
-fgR
-inC
-fQk
-ils
+naB
+naB
+pFg
+naB
+naB
+naB
+ydU
+naB
+naB
+kIV
+mnm
+xEF
 aag
 ajZ
 bdH
@@ -95578,52 +95899,52 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 bdH
 bdH
 aad
 aag
-ahE
-wcn
-nBc
+pCi
+rPC
+aou
 lrq
-vsI
+mAr
 uqo
-xoS
+uvy
+tfO
+fsz
 lrq
-mAT
-lrq
-cxA
-plZ
-kHa
+irJ
+nBo
+pJi
+swn
+jAG
+tqe
 qPO
-qPO
-wuc
-qPO
-oRZ
-wdF
-xCd
-bqp
+xTp
+lMc
+jcf
+eUU
 wSm
-kfN
-xkd
-qFu
+cqM
 xkd
 xkd
-jVa
-ezX
-prY
-rUk
-thL
-thL
-thL
-tUx
-fgR
+xkd
+xkd
+naB
+eoP
+fgl
+xEe
+naB
+xEe
+fgl
+deb
+naB
+lmk
 kIV
-mKf
-ils
+xEF
 aag
-okD
+ajZ
 bdH
 bdH
 aaa
@@ -95779,53 +96100,53 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 bdH
+aaa
+aaa
 bdH
 bdH
 aad
-aag
+pCi
 pCi
 wcn
-wcn
+tYB
 lrq
-mAr
-uqo
-fsT
-jnA
-fDn
+noo
+noo
+noo
 lrq
-tqV
+lrq
+lrq
+fNA
 nBo
-maa
-swn
-plI
-tqe
+cQv
+qPO
+qPO
+wuc
 qPO
 wvT
 luw
 emp
-uUO
+dGD
 wSm
-jZm
-wmE
-tUx
-ntu
-vQN
-jVa
-rjw
-tUx
-lnJ
-rjw
-tUx
-jVa
-oEE
-xkd
+lfW
+emp
+vli
+rSH
+xYj
+naB
+aSS
+pHp
+poZ
+naB
+jkV
+pHp
+kOi
+naB
+xCj
 kIV
-hFW
 xEF
-aag
+xEF
 ajZ
 bdH
 bdH
@@ -95982,53 +96303,53 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 bdH
+aaa
+aaa
 bdH
 bdH
 aad
-aag
 pCi
-oCL
-wcn
-lrq
-uZY
-uqo
-uqo
-uqo
-iOh
-lrq
-gdo
+msV
+rPC
+naf
+cQv
+vcG
+lYZ
+olv
+dxm
+nMu
+uFp
+ePB
 nBo
-jJq
-swn
-dHv
-qQM
-qPO
-xTp
-lMc
-jcf
-qUb
+tsX
+xSA
+ugs
+wVY
+lEv
+iQg
+jpQ
+tsX
+jOu
 wSm
-jSw
-xkd
-nlH
-uuq
-xkd
+pyj
+vsJ
+kjN
+rvo
+oIc
 naB
+xro
+fgl
+wvI
 naB
-pFg
+wvI
+fgl
+qmX
 naB
-naB
-naB
-ydU
-naB
-naB
-kIV
+lTK
 mnm
+kIV
 xEF
-aag
 ajZ
 bdH
 bdH
@@ -96185,53 +96506,53 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 bdH
+aaa
+aaa
 bdH
 bdH
 aad
-aag
 pCi
+dSA
 rPC
-aou
-lrq
-mAr
-uqo
-uvy
-tfO
-fsz
-lrq
-irJ
+cQv
+cQv
+geX
+tFv
+pGT
+vkM
+jvc
+ajj
+ajj
 nBo
-pJi
-swn
-jAG
-tqe
-qPO
-xTp
-lMc
-jcf
-eUU
-wSm
-cqM
-xkd
-xkd
-xkd
-xkd
+xps
+jpQ
+jpQ
+wVY
+eOk
+pFa
+ctn
+wqu
+eeN
+cMl
+fHS
 naB
-eoP
-fgl
-xEe
 naB
-xEe
-fgl
-deb
 naB
-lmk
+naB
+naB
+naB
+rkh
+lvZ
+naB
+fuX
+rra
+naB
+naB
+naB
+mnm
 kIV
 xEF
-aag
 ajZ
 bdH
 bdH
@@ -96388,52 +96709,52 @@ aaa
 bdH
 bdH
 bdH
-bdH
+aaa
 aaa
 aaa
 bdH
 bdH
 aad
 pCi
-pCi
 wcn
-tYB
-lrq
-noo
-noo
-noo
-lrq
-lrq
-lrq
-fNA
-nBo
+rPC
 cQv
-qPO
-qPO
-wuc
-qPO
-wvT
-luw
-emp
-dGD
-wSm
-lfW
-emp
-vli
-rSH
-xYj
+eaf
+bEv
+tWg
+rZR
+cqJ
+isH
+vwO
+scD
+rXC
+vyE
+nwz
+nwz
+mkk
+wir
+jnT
+qNv
+wqu
+eeN
+cMW
+qEy
+ooR
+xvw
+nBu
+tcP
+lFs
+sIY
+qyd
+uDp
+tNj
+uDp
+qyd
+icX
+xQD
 naB
-aSS
-pHp
-poZ
-naB
-jkV
-pHp
-kOi
-naB
-xCj
 kIV
-xEF
+lre
 xEF
 ajZ
 bdH
@@ -96591,55 +96912,55 @@ aaa
 bdH
 bdH
 bdH
-bdH
 aaa
 aaa
+aaa
 bdH
-bdH
-aad
+aac
+aag
 pCi
-msV
-rPC
-naf
+mNR
+wcn
 cQv
-vcG
-lYZ
-olv
-dxm
-nMu
-uFp
-ePB
-nBo
+eaf
+bEv
+fLn
+rXd
+dvT
+qSl
+ajj
+ukS
+wZa
 tsX
-xSA
-ugs
-wVY
-lEv
-iQg
+ezU
+dxT
 jpQ
+iQg
+bRm
+ecq
 tsX
-jOu
-wSm
+tkV
 pyj
-vsJ
-kjN
-rvo
-oIc
+pyj
+luC
+elq
+qmE
+luC
+uVF
+uQm
+qPD
+qPD
+qPD
+qPD
+qPD
+bND
+jaP
 naB
-xro
-fgl
-wvI
-naB
-wvI
-fgl
-qmX
-naB
-lTK
-mnm
 kIV
+rQU
 xEF
-ajZ
-bdH
+aag
+ajY
 bdH
 aaa
 aaa
@@ -96794,57 +97115,57 @@ aaa
 bdH
 bdH
 bdH
-bdH
 aaa
 aaa
 bdH
 bdH
 aad
+aag
 pCi
-dSA
-rPC
+tCb
+aou
 cQv
+eaf
+bEv
+fLn
+avz
+dvT
+nHV
+ajj
+iKX
 cQv
-geX
-tFv
-pGT
-vkM
-jvc
-ajj
-ajj
-nBo
-xps
-jpQ
-jpQ
-wVY
-eOk
-pFa
-ctn
-wqu
-eeN
-cMl
-fHS
+tsX
+tsX
+tsX
+epu
+oLF
+tsX
+tsX
+tsX
+vyi
+vyi
+vyi
 naB
 naB
 naB
 naB
+dqV
+mdJ
+vXQ
+vXQ
+uNe
+uUs
+nqZ
+ekg
+usr
 naB
-naB
-rkh
-lvZ
-naB
-fuX
-rra
-naB
-naB
-naB
-mnm
-kIV
+inC
+mKf
 xEF
+aag
 ajZ
 bdH
 bdH
-aaa
 aaa
 aaa
 aaa
@@ -96999,55 +97320,55 @@ aaa
 aaa
 aaa
 aaa
-aaa
 bdH
 bdH
 aad
+aag
 pCi
+oCL
 wcn
-rPC
 cQv
 eaf
 bEv
-tWg
-rZR
-cqJ
-isH
-vwO
-scD
-rXC
-vyE
-nwz
-nwz
-mkk
-wir
-jnT
-qNv
-wqu
-eeN
-cMW
-qEy
-ooR
-xvw
-nBu
-tcP
-lFs
-sIY
-qyd
-uDp
-tNj
-uDp
-qyd
-icX
-xQD
+qRo
+rXd
+dvT
+bAM
+wZa
+cQv
+cQv
+tHr
+mqg
+eiK
+vka
+uwN
+fbv
+xuZ
+mSs
+xuZ
+xuZ
+xuZ
+rCU
+rEY
+gxU
+xsd
 naB
-kIV
-lre
+naB
+fYf
+qPD
+uQm
+pIH
+naB
+nOe
+nOe
+naB
+bIi
+fQk
 xEF
+aag
 ajZ
 bdH
 bdH
-aaa
 aaa
 aaa
 aaa
@@ -97202,55 +97523,55 @@ aaa
 aaa
 aaa
 aaa
-aaa
 bdH
-aac
+bdH
+aad
 aag
 pCi
-mNR
 wcn
+rPC
 cQv
-eaf
-bEv
-fLn
+bop
+jeK
+mWe
 rXd
 dvT
-qSl
-ajj
-ukS
-wZa
-tsX
-ezU
-dxT
-jpQ
-iQg
-bRm
-ecq
-tsX
-tkV
-pyj
-pyj
-luC
-elq
-qmE
-luC
-uVF
+ieo
+vxC
+ldD
+ceZ
+jnD
+hUW
+hiM
+hiM
+qNR
+rWs
+hiM
+hiM
+hiM
+rWs
+rWs
+rQt
+hiM
+xuc
+pYX
+pZV
+gMf
+eSJ
+ekg
 uQm
-qPD
-qPD
-qPD
-qPD
-qPD
-bND
-jaP
-naB
-kIV
-rQU
+nnz
+vrQ
+mLI
+qyd
+vrQ
+mnm
+sIk
 xEF
 aag
-ajY
+ajZ
 bdH
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -97410,45 +97731,45 @@ bdH
 aad
 aag
 pCi
-tCb
-aou
+nfI
+rPC
 cQv
-eaf
-bEv
-fLn
-avz
+cQv
+cQv
+cQv
+cQv
 dvT
-nHV
-ajj
-iKX
-cQv
-tsX
-tsX
-tsX
-epu
-oLF
-tsX
-tsX
-tsX
-vyi
-vyi
-vyi
+ieo
+vxC
+ldD
+sHM
+hUW
+dHd
+vka
+lnt
+uVA
+uVA
+uVA
+uVA
+uVA
+gde
+uVA
+wIQ
+vka
+aQb
+vHt
+njh
+mtl
+hwQ
+hwQ
+okM
+mtl
+mtl
 naB
 naB
 naB
-naB
-dqV
-mdJ
-vXQ
-vXQ
-uNe
-uUs
-nqZ
-ekg
-usr
-naB
-inC
-mKf
+mnm
+hPT
 xEF
 aag
 ajZ
@@ -97606,59 +97927,59 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-bdH
-bdH
-aad
+aac
+aaf
+aaf
+aaf
+aag
 aag
 pCi
-oCL
+edL
+fqu
+aFN
 wcn
-cQv
-eaf
-bEv
-qRo
-rXd
-dvT
-bAM
-wZa
-cQv
-cQv
-tHr
-mqg
-eiK
+cXZ
+jIV
+vxM
+gaJ
+uzx
+uue
+vxM
+iuE
+uwN
+vka
+pRO
+kqy
+awz
+awz
+cZh
+cZh
+cZh
+awz
+awz
+jfK
+wIQ
 vka
 uwN
-fbv
-xuZ
-mSs
-xuZ
-xuZ
-xuZ
-rCU
-rEY
-gxU
-xsd
-naB
-naB
-fYf
-qPD
-uQm
-pIH
-naB
-nOe
-nOe
-naB
-bIi
-fQk
+xpo
+mtl
+pGG
+qRT
+djm
+hgF
+mtl
+kIV
+kIV
+wNU
+mnm
+aIQ
 xEF
 aag
-ajZ
-bdH
-bdH
-aaa
-aaa
+aag
+aaf
+aaf
+aaf
+ajY
 aaa
 aaa
 aaa
@@ -97809,59 +98130,59 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-bdH
-bdH
 aad
-aag
-pCi
-wcn
+adG
+adG
+adG
+adG
+adG
+adG
+akC
+akC
+age
 rPC
-cQv
-bop
-jeK
-mWe
-rXd
-dvT
-ieo
-vxC
-ldD
-ceZ
-jnD
-hUW
-hiM
-hiM
-qNR
-rWs
-hiM
-hiM
-hiM
-rWs
-rWs
-rQt
-hiM
-xuc
-pYX
-pZV
-gMf
-eSJ
-ekg
-uQm
-nnz
-vrQ
-mLI
-qyd
-vrQ
-mnm
-sIk
-xEF
-aag
+rPC
+kDb
+vxM
+wVV
+qau
+mVi
+vxM
+udK
+mwA
+lnt
+cgO
+awz
+awz
+nID
+eHx
+eGH
+uKd
+oER
+awz
+awz
+mgj
+wIQ
+jHh
+jUY
+fbY
+qVF
+oog
+qaJ
+czB
+mtl
+lmk
+kIV
+qFl
+kCi
+kCi
+tuA
+tuA
+tuA
+tuA
+tuA
+tuA
 ajZ
-bdH
-bdH
-aaa
-aaa
 aaa
 aaa
 aaa
@@ -98012,59 +98333,59 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-bdH
-bdH
 aad
-aag
-pCi
-nfI
+adG
+aeK
+aeK
+bur
+oqA
+uVd
+qpN
+akC
+akC
+cVJ
 rPC
-cQv
-cQv
-cQv
-cQv
-cQv
-dvT
-ieo
-vxC
-ldD
-sHM
-hUW
-dHd
-vka
-lnt
-uVA
-uVA
-uVA
-uVA
-uVA
-gde
-uVA
-wIQ
-vka
-aQb
-vHt
-njh
+jvJ
+vxM
+sVy
+mKh
+jUb
+vxM
+bmz
+wSR
+sCQ
+awz
+awz
+aJp
+jgJ
+jgJ
+jgJ
+jgJ
+jgJ
+mZb
+awz
+awz
+woy
+laO
+nRH
+fbY
+qVF
+oog
+kHK
+wfL
 mtl
-hwQ
-hwQ
-okM
-mtl
-mtl
-naB
-naB
-naB
 mnm
-hPT
-xEF
-aag
+kIV
+kCi
+kCi
+xWv
+vTu
+dUZ
+nIE
+jKn
+pyi
+tuA
 ajZ
-bdH
-bdH
-aaa
-aaa
 aaa
 aaa
 aaa
@@ -98215,59 +98536,59 @@ aaa
 aaa
 aaa
 aaa
-aac
-aaf
-aaf
-aaf
-aag
-aag
-pCi
-edL
-fqu
-aFN
+aad
+adG
+afa
+aeK
+bur
+wdI
+sFf
+bbV
+bzz
+akC
+cRc
+rPC
 wcn
-cXZ
-jIV
 vxM
-gaJ
-uzx
-uue
+eyg
+giZ
+gTl
 vxM
-iuE
-uwN
-vka
-pRO
-kqy
-awz
-awz
-cZh
-cZh
-cZh
-awz
-awz
-jfK
-wIQ
-vka
-uwN
-xpo
-mtl
-pGG
-qRT
-djm
-hgF
+pZS
+pEB
+jUY
+qwp
+aVI
+jmY
+rHc
+xhZ
+xhZ
+xhZ
+rHc
+qyo
+udx
+qwp
+pZS
+jHh
+jUY
+fbY
+uLJ
+oog
+sBH
+vfv
 mtl
 kIV
 kIV
-wNU
-mnm
-aIQ
-xEF
-aag
-aag
-aaf
-aaf
-aaf
-ajY
+kCi
+sDD
+kOv
+cRv
+nwx
+nIE
+jKn
+vjg
+tuA
+ajZ
 aaa
 aaa
 aaa
@@ -98410,65 +98731,65 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
 adG
-adG
-adG
-adG
-adG
-adG
+aeK
+aeK
+bur
+xFP
+kBF
+cUv
+aHZ
 akC
-akC
-age
+oCL
 rPC
-rPC
-kDb
+wcn
 vxM
-wVV
-qau
-mVi
 vxM
-udK
-mwA
-lnt
-cgO
-awz
-awz
-nID
-eHx
-eGH
-uKd
-oER
-awz
-awz
-mgj
-wIQ
-jHh
+tXs
+oCX
+vxM
+vGA
+wsD
 jUY
-fbY
-qVF
-oog
-qaJ
-czB
+qwp
+eei
+jmY
+iwW
+sTm
+oSq
+sTm
+tdT
+qyo
+itX
+qwp
+vGA
+uwN
+jUY
 mtl
-lmk
+mtl
+qYH
+mtl
+mtl
+mtl
+mnm
 kIV
-qFl
 kCi
-kCi
-tuA
-tuA
-tuA
-tuA
-tuA
+uAj
+qfa
+mat
+vmW
+nIE
+jKn
+pyi
 tuA
 ajZ
 aaa
@@ -98613,65 +98934,65 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
 adG
-aeK
-aeK
-bur
-oqA
-uVd
-qpN
+adG
+amz
+amz
+aly
+nkx
+bbZ
+iKI
 akC
-akC
-cVJ
+dDC
 rPC
-jvJ
+wcn
 vxM
-sVy
-mKh
-jUb
+wVV
+erx
+dsw
 vxM
-bmz
-wSR
+kfE
+wsD
+jUY
+awz
+rBx
+hmS
+mWV
+eFT
+gwR
+aPI
+lIp
+hWO
+iVY
+awz
+cDn
+uwN
 sCQ
-awz
-awz
-aJp
-jgJ
-jgJ
-jgJ
-jgJ
-jgJ
-mZb
-awz
-awz
-woy
-laO
-nRH
-fbY
-qVF
-oog
-kHK
-wfL
 mtl
+lNF
+rkK
+cIK
+mtl
+tzj
 mnm
-kIV
+bbR
 kCi
-kCi
-xWv
-vTu
-dUZ
-nIE
-jKn
-pyi
+eqI
+vqC
+odc
+awC
+uMj
+uMj
+tuA
 tuA
 ajZ
 aaa
@@ -98816,66 +99137,66 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
-adG
-afa
-aeK
-bur
-wdI
-sFf
-bbV
-bzz
+aeE
+afb
+ayq
+cfE
+cfE
+pvP
+rOs
+iKI
 akC
-cRc
+eKM
 rPC
-wcn
+cRc
 vxM
-eyg
-giZ
-gTl
+dFC
+bRH
+rJD
 vxM
-pZS
+vkR
 pEB
 jUY
 qwp
-aVI
+wkH
 jmY
-rHc
-xhZ
-xhZ
-xhZ
-rHc
+iwW
+sTm
+oSq
+fqO
+tdT
 qyo
-udx
+pbW
 qwp
-pZS
+gGr
 jHh
-jUY
-fbY
-uLJ
-oog
-sBH
-vfv
+azL
 mtl
+pJE
+wPk
+hRy
+mtl
+evl
 kIV
 kIV
 kCi
-sDD
-kOv
-cRv
-nwx
-nIE
-jKn
-vjg
-tuA
+nRR
+boJ
+oPy
+jmS
+rVN
+vly
+ybZ
+pun
 ajZ
 aaa
 aaa
@@ -99019,66 +99340,66 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
-adG
-aeK
-aeK
-bur
-xFP
-kBF
+aeE
+aie
+aTy
+adu
 cUv
-aHZ
+adu
+bmS
+oxu
 akC
-oCL
-rPC
-wcn
+age
+uzm
+age
 vxM
+eyg
+eyg
+oWI
 vxM
-tXs
-oCX
-vxM
-vGA
-wsD
+nNv
+pEB
 jUY
 qwp
-eei
+iiZ
 jmY
-iwW
-sTm
-oSq
-sTm
-tdT
+rHc
+wjq
+wjq
+lAy
+rHc
 qyo
-itX
+tsy
 qwp
-vGA
-uwN
+ora
+jHh
 jUY
 mtl
+qHF
+fnl
 mtl
-qYH
 mtl
-mtl
-mtl
-mnm
-kIV
+qFl
+utZ
+pUJ
 kCi
-uAj
-qfa
-mat
-vmW
-nIE
-jKn
-pyi
-tuA
+pwE
+vZv
+btD
+vjK
+vjK
+tnb
+oit
+pun
 ajZ
 aaa
 aaa
@@ -99227,61 +99548,61 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aad
-adG
-adG
-amz
-amz
-aly
-nkx
-bbZ
-iKI
+aeE
+aig
+brf
+opC
+cSC
+nIt
+txL
+hxG
 akC
-dDC
-rPC
-wcn
+aRE
+avl
+msl
 vxM
-wVV
-erx
-dsw
 vxM
-kfE
-wsD
-jUY
-awz
-rBx
-hmS
-mWV
-eFT
-gwR
-aPI
-lIp
-hWO
-iVY
-awz
-cDn
-uwN
+vxM
+vxM
+vxM
+xSz
+wSR
 sCQ
+awz
+sUE
+dwa
+awD
+dCr
+glU
+cHE
+qWV
+aJc
+fSF
+awz
+mgy
+laO
+vCx
 mtl
-lNF
-rkK
-cIK
 mtl
-tzj
-mnm
-bbR
+mtl
+mtl
+qFl
+kDh
+gpe
+teo
 kCi
-eqI
-vqC
-odc
-awC
-uMj
-uMj
-tuA
-tuA
+nNt
+amI
+kZq
+pPN
+pPN
+gKF
+ndZ
+pun
 ajZ
 aaa
 aaa
@@ -99429,62 +99750,62 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+bdH
+pis
+bdH
 aaa
 aad
-aeE
-afb
-ayq
-cfE
-cfE
-pvP
-rOs
-iKI
-akC
-eKM
-rPC
-cRc
-vxM
-dFC
-bRH
-rJD
-vxM
-vkR
+adG
+adG
+amz
+amz
+aly
+wmg
+gsh
+cqQ
+afT
+agU
+dIl
+xpd
+mlp
+xZz
+mbB
+mSs
+xuZ
+jnD
 pEB
-jUY
-qwp
-wkH
-jmY
-iwW
-sTm
-oSq
-fqO
-tdT
-qyo
-pbW
-qwp
-gGr
+rSN
+awz
+awz
+awz
+awz
+mej
+awz
+pGW
+awz
+awz
+awz
+awz
+ccg
 jHh
-azL
-mtl
-pJE
-wPk
-hRy
-mtl
-evl
-kIV
-kIV
-kCi
-nRR
-boJ
-oPy
-jmS
-rVN
-vly
-ybZ
-pun
+pYX
+xuZ
+xuZ
+hXm
+fZq
+dVm
+qkb
+vnY
+vnY
+bpd
+bqT
+pcj
+nwx
+awC
+uMj
+uMj
+tuA
+tuA
 ajZ
 aaa
 aaa
@@ -99628,66 +99949,66 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
-aeE
-aie
-aTy
+adG
+aeK
+aeK
+bur
+hdd
+xWO
 adu
-cUv
-adu
-bmS
-oxu
+frF
 akC
-age
-uzm
-age
-vxM
-eyg
-eyg
-oWI
-vxM
-nNv
-pEB
-jUY
-qwp
-iiZ
-jmY
-rHc
-wjq
-wjq
-lAy
-rHc
-qyo
-tsy
-qwp
-ora
-jHh
-jUY
-mtl
-qHF
-fnl
-mtl
-mtl
-qFl
-utZ
-pUJ
+fRN
+lIh
+wcn
+ail
+lnt
+aVH
+mPj
+eEw
+eEw
+rTk
+pYx
+mbr
+hvv
+fRr
+dmv
+dRV
+amd
+cyR
+pbg
+olU
+ryR
+sfT
+aUo
+qNR
+rWs
+rWs
+ewr
+lPC
+wIQ
+wWT
+xuB
+gpe
+gpe
 kCi
-pwE
-vZv
-btD
-vjK
-vjK
-tnb
-oit
-pun
+aWt
+btM
+oPy
+dUZ
+nIE
+jKn
+pyi
+tuA
 ajZ
 aaa
 aaa
@@ -99831,66 +100152,66 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
-aeE
-aig
-brf
-opC
-cSC
-nIt
-txL
-hxG
+adG
+afa
+aeK
+bur
+dyj
+sFf
+tyK
+dUE
 akC
-aRE
-avl
-msl
-vxM
-vxM
-vxM
-vxM
-vxM
-xSz
-wSR
-sCQ
-awz
-sUE
-dwa
-awD
-dCr
-glU
-cHE
-qWV
-aJc
-fSF
-awz
-mgy
-laO
-vCx
-mtl
-mtl
-mtl
-mtl
+age
+xKZ
+lGG
+age
+age
+kzy
+wbu
+sLB
+gde
+aiF
+ciN
+sUg
+fEk
+jgJ
+fJm
+aKa
+iah
+aKa
+fJm
+jgJ
+fEk
+sUg
+ggt
+gde
+uVA
+vQm
+eFM
+ckP
 qFl
-kDh
-gpe
-teo
+qFl
+lIV
+gsH
+qFl
 kCi
-nNt
-amI
-kZq
-pPN
-pPN
-gKF
-ndZ
-pun
+cfk
+uws
+cRv
+sQF
+nIE
+jKn
+vjg
+tuA
 ajZ
 aaa
 aaa
@@ -100034,65 +100355,65 @@ bdH
 bdH
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
 adG
-adG
-amz
-amz
-aly
-wmg
-gsh
-cqQ
-afT
-agU
-dIl
-xpd
-mlp
-xZz
-mbB
-mSs
-xuZ
-jnD
-pEB
-rSN
+aeK
+aeK
+bur
+xFP
+wrr
+xsT
+akC
+akC
+fcF
+lIh
+wcn
+puK
+age
+qRj
+vSN
+wVW
+wVW
+wVW
+wVW
 awz
 awz
+jKF
+awz
+cRb
+awz
+cRb
+awz
+jKF
 awz
 awz
-mej
-awz
-pGW
-awz
-awz
-awz
-awz
-ccg
-jHh
-pYX
-xuZ
-xuZ
-hXm
-fZq
-dVm
-qkb
-vnY
-vnY
-bpd
-bqT
-pcj
-nwx
-awC
-uMj
-uMj
-tuA
+wVW
+wVW
+wVW
+wVW
+vSN
+qRj
+qFl
+aLp
+xuB
+gpe
+mBA
+kCi
+kCi
+wGI
+wbX
+kyP
+nIE
+jKn
+pyi
 tuA
 ajZ
 aaa
@@ -100237,65 +100558,65 @@ bdH
 bdH
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
 adG
-aeK
-aeK
-bur
-hdd
-xWO
-adu
-frF
+adG
+adG
+adG
+adG
+adG
 akC
-fRN
+akC
+avl
+avl
 lIh
 wcn
-ail
-lnt
-aVH
-mPj
-eEw
-eEw
-rTk
-pYx
-mbr
-hvv
-fRr
-dmv
-dRV
-amd
-cyR
-pbg
-olU
-ryR
-sfT
-aUo
-qNR
-rWs
-rWs
-ewr
-lPC
-wIQ
-wWT
+fvu
+age
+pNa
+xDn
+wVW
+wiN
+hjA
+ato
+awz
+apo
+nne
+qVS
+aic
+oUG
+aKz
+qVS
+aVR
+uKz
+awz
+fvB
+ake
+oWg
+wVW
+mJe
+xny
+qFl
+dAX
 xuB
 gpe
 gpe
+fvv
 kCi
-aWt
-btM
-oPy
-dUZ
-nIE
-jKn
-pyi
+kCi
+tuA
+tuA
+tuA
+tuA
+tuA
 tuA
 ajZ
 aaa
@@ -100440,66 +100761,66 @@ bdH
 bdH
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
-adG
-afa
-aeK
-bur
-dyj
-sFf
-tyK
-dUE
-akC
+aag
+aag
+aag
+aag
+pCi
+avl
+nMc
+iJf
+iJf
+iJf
+aHY
+sFZ
+tCb
 age
-xKZ
-lGG
-age
-age
-kzy
-wbu
-sLB
-gde
-aiF
-ciN
-sUg
-fEk
-jgJ
-fJm
-aKa
-iah
-aKa
-fJm
-jgJ
-fEk
-sUg
-ggt
-gde
-uVA
-vQm
-eFM
-ckP
+pHo
+jrm
+wVW
+ewS
+qEk
+agb
+awz
+dIm
+nne
+qVS
+aic
+aJw
+aKz
+qVS
+aVR
+ibA
+awz
+nFm
+mtX
+ceE
+wVW
+faX
+btv
 qFl
-qFl
-lIV
-gsH
-qFl
-kCi
-cfk
-uws
-cRv
-sQF
-nIE
-jKn
-vjg
-tuA
+rEn
+sDy
+ukU
+ssZ
+tJo
+tJo
+cNe
+pLZ
+xEF
+aag
+aag
+aag
+aag
 ajZ
 aaa
 aaa
@@ -100645,64 +100966,64 @@ bdH
 bdH
 bdH
 bdH
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
 aad
-adG
-aeK
-aeK
-bur
-xFP
-wrr
-xsT
-akC
-akC
-fcF
-lIh
-wcn
-puK
+aag
+aag
+aag
+aag
+pCi
+aGv
+tGf
+avl
+sFZ
+avl
 age
-qRj
-vSN
+age
+age
+age
+qyo
+kWq
 wVW
-wVW
-wVW
-wVW
+aVG
+qEk
+fvB
 awz
 awz
-jKF
+xTR
 awz
 cRb
 awz
 cRb
 awz
-jKF
+xTR
 awz
 awz
+ato
+mtX
+dFR
 wVW
-wVW
-wVW
-wVW
-vSN
-qRj
-qFl
-aLp
-xuB
+ouW
+jmY
+tpD
+dHZ
+dHZ
+aej
 gpe
-mBA
-kCi
-kCi
-wGI
-wbX
-kyP
-nIE
-jKn
-pyi
-tuA
+mYs
+gpe
+sDy
+cNe
+xEF
+aag
+aag
+aag
+aag
 ajZ
 aaa
 aaa
@@ -100855,57 +101176,57 @@ aaa
 aaa
 aaa
 aad
-adG
-adG
-adG
-adG
-adG
-adG
-akC
-akC
+aag
+pCi
+pCi
+pCi
+pCi
+lFb
 avl
-avl
-lIh
-wcn
-fvu
 age
-pNa
-xDn
+age
+age
+age
+hDx
+cBt
+age
+qyo
+pLW
 wVW
-wiN
-hjA
-ato
-awz
-apo
-nne
-qVS
-aic
-oUG
-aKz
-qVS
-aVR
-uKz
-awz
-fvB
-ake
-oWg
+ewS
+qEk
+agb
 wVW
-mJe
-xny
-qFl
-dAX
+rGE
+aom
+bzR
+alX
+mIy
+alX
+bzR
+aom
+aGj
+wVW
+nFm
+mtX
+iVy
+wVW
+nTM
+jmY
+tpD
+eDu
+tKr
+aej
+aej
+aej
+aej
+gpe
 xuB
-gpe
-gpe
-fvv
-kCi
-kCi
-tuA
-tuA
-tuA
-tuA
-tuA
-tuA
+xEF
+xEF
+xEF
+xEF
+aag
 ajZ
 aaa
 aaa
@@ -101059,57 +101380,57 @@ aaa
 aaa
 aad
 aag
-aag
-aag
-aag
 pCi
 avl
-nMc
-iJf
-iJf
-iJf
-aHY
-sFZ
-tCb
+avl
+avl
+lFb
+nUy
 age
-pHo
-jrm
-wVW
-ewS
-qEk
-agb
-awz
-dIm
-nne
-qVS
-aic
-aJw
-aKz
-qVS
-aVR
-ibA
-awz
-nFm
-mtX
-ceE
-wVW
-faX
-btv
-qFl
-rEn
-sDy
-ukU
-ssZ
-tJo
-tJo
-cNe
-pLZ
+tQs
+nuh
+uIx
+iUz
+awA
+age
+qyo
+bFA
+gtp
+haB
+xAk
+miE
+dCK
+esF
+avY
+alX
+gaQ
+gaQ
+gaQ
+alX
+avY
+dvl
+dCK
+uCW
+omb
+haB
+gtp
+qfA
+pGZ
+tpD
+xfO
+aia
+cum
+vDT
+sco
+aej
+cLN
+xuB
+gpe
+gpe
+gpe
 xEF
 aag
-aag
-aag
-aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -101262,57 +101583,57 @@ aaa
 aaa
 aad
 aag
-aag
-aag
-aag
 pCi
-aGv
-tGf
+wPF
+unJ
+iJf
+mBk
+dqb
+age
+gcr
 avl
-sFZ
+tXP
 avl
+nGb
 age
-age
-age
-age
-qyo
-kWq
+aBP
+bFA
 wVW
-aVG
-qEk
-fvB
-awz
-awz
-xTR
-awz
-cRb
-awz
-cRb
-awz
-xTR
-awz
-awz
-ato
-mtX
-dFR
 wVW
-ouW
-jmY
-tpD
-dHZ
-dHZ
-aej
+abQ
+wVW
+wVW
+iBY
+knO
+bSW
+xAq
+aHB
+lgK
+ogh
+lza
+dmg
+wVW
+wVW
+abQ
+wVW
+wVW
+qdA
+kAz
+qCy
+rpp
+evC
+fuL
+qnh
+jxB
+mrc
 gpe
-mYs
-gpe
-sDy
-cNe
+gDq
+tJo
+bGr
+hnV
 xEF
 aag
-aag
-aag
-aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -101459,63 +101780,63 @@ bdH
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
 aaa
 aad
 aag
 pCi
-pCi
-pCi
-pCi
-lFb
+nMc
+tGf
+ocs
+tYB
+naf
+age
+bHO
 avl
-age
-age
-age
-age
+bvv
 atP
 xKT
-age
-aBP
-pLW
+dNZ
+aKa
+kWq
 wVW
-ewS
-qEk
-agb
+nVd
+wgk
+sEp
+gaQ
+gaQ
+rDd
+gaQ
+ucz
+trM
+sSG
+gaQ
+dUI
+gaQ
+gaQ
+osz
+wgk
+iCu
 wVW
-rGE
-aom
-bzR
-alX
-mIy
-alX
-bzR
-aom
-aGj
-wVW
-nFm
-mtX
-iVy
-wVW
-nTM
-jmY
+ouW
+pQy
 tpD
-eDu
-tKr
+wUR
+wmT
+mWD
+mWD
+nPa
 aej
-aej
-aej
-aej
+fGN
+dtN
 gpe
 xuB
-xEF
-xEF
-xEF
+gpe
 xEF
 aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -101664,61 +101985,61 @@ bdH
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 aad
 aag
 pCi
-avl
-avl
-avl
 lFb
-nUy
-age
+avl
+agj
+agj
+agj
+agj
 aZy
-rlf
-soq
-eYQ
-wbO
-dNZ
-aKa
+avl
+bvv
+atP
+awA
+age
+dEV
 bFA
-gtp
-haB
-xAk
-miE
-dCK
-esF
+wVW
+asc
 avY
+fHh
+ucz
+lZs
+lVX
+vpV
+vir
 alX
-gaQ
-gaQ
-gaQ
-alX
-avY
-dvl
-dCK
-uCW
-omb
-haB
-gtp
-qfA
-pGZ
-tpD
-xfO
-aia
-cum
-vDT
-sco
-aej
-cLN
-xuB
-gpe
-gpe
+xDg
+vpV
+snI
+aGp
+sSG
+pgQ
+aHK
+awk
+wVW
+xQg
+jmY
+mKq
+aES
+aES
+aES
+aES
+aES
+aES
+aES
+aES
+aES
+kWw
 gpe
 xEF
 aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -101867,61 +102188,61 @@ bdH
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 aad
 aag
 pCi
-wPF
-unJ
-iJf
-mBk
-dqb
-age
+lFb
+avl
+agj
+sJR
+dRJ
+agj
 hDi
-rBa
+vEj
 nPs
 vEj
-awA
+lmC
 age
-dEV
+hyQ
 bFA
 wVW
+luZ
+jsP
+tUo
+auQ
+awm
 wVW
-abQ
+nwD
+asR
+pbs
+pbV
+aPB
 wVW
+aGq
+auQ
+lIa
+avY
+uTU
 wVW
-iBY
-knO
-bSW
-xAq
-aHB
-lgK
-ogh
-lza
-dmg
-wVW
-wVW
-abQ
-wVW
-wVW
-qdA
-kAz
-qCy
-rpp
-evC
-fuL
-qnh
-jxB
-mrc
+xQg
+jmY
+mKq
+aVU
+mor
+ddL
+ceK
+sxD
+and
+bHG
+mGe
+aES
+xuB
 gpe
-gDq
-tJo
-bGr
-hnV
 xEF
 aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -102075,56 +102396,56 @@ aaa
 aad
 aag
 pCi
-nMc
-tGf
-ocs
-tYB
-naf
-age
+lFb
+avl
+agj
+uWD
+bxZ
+agj
 wvb
 aqF
 oGx
 wvU
 yiX
 age
-hyQ
-kWq
+qyo
+akL
 wVW
-nVd
-wgk
-sEp
-gaQ
-gaQ
-rDd
-gaQ
-ucz
-trM
-sSG
-gaQ
-dUI
-gaQ
-gaQ
-osz
-wgk
-iCu
+arF
+alX
+aHk
+auQ
+owZ
+alZ
+mAZ
+aBR
+pON
+bZJ
+mml
+axp
+asc
+auQ
+hJa
+alX
+aEA
 wVW
-ouW
-pQy
-tpD
-wUR
-wmT
-mWD
-mWD
-nPa
-aej
-fGN
-dtN
-gpe
+aKy
+pGZ
+mKq
+wiY
+aGr
+aGr
+ceK
+aES
+bpe
+brS
+bVT
+aES
 xuB
 gpe
 xEF
 aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -102282,7 +102603,7 @@ lFb
 avl
 agj
 agj
-agj
+qkK
 agj
 agj
 agj
@@ -102291,39 +102612,39 @@ kcN
 kcN
 agj
 aAA
-akL
-wVW
-arF
+aox
+aov
+ayv
 avY
-fHh
-ucz
-lZs
-lVX
-vpV
-ayz
-atO
-aQg
-vpV
-snI
-aGp
-sSG
-pgQ
-aHK
-aEA
-wVW
-aKy
-jmY
-tpD
-aej
-aej
-aej
-aej
-aej
-aej
+deD
+wlE
+lmc
+tyc
+xCM
+paL
+euV
+mJu
+nUU
+wUv
+alX
+wlE
+hgf
+avY
+pMj
+aKo
+hGX
+amY
+aVg
+weO
+aWV
+vNW
+pMK
 aES
 aES
 aES
-dpd
+aES
+aES
+uEv
 gpe
 xEF
 xEF
@@ -102484,47 +102805,47 @@ qtS
 lFb
 dqb
 agj
-aiG
+wef
+sMH
 vqR
 aew
 bCO
-mtE
 uYr
 kcN
 ayu
 aRq
 qyo
-aox
-aov
-ayv
-jsP
-tUo
-auQ
-awm
-wVW
-nwD
-asR
-pbs
-pbV
-aPB
-wVW
-aGq
-auQ
-lIa
+dOz
+aKn
+awt
 avY
-pMj
-aKo
+deD
+wlE
+owZ
+sHZ
+iib
+hnx
+hYz
+fMu
+jHz
+qHf
+asc
+wlE
+aEB
+avY
+ays
+aKi
 iJB
-pGZ
+pQy
 mKq
-aVU
-mor
-ddL
 ceK
+cqY
+iTw
+skT
 sxD
 and
 bHG
-mGe
+nis
 aES
 evg
 gpe
@@ -102687,47 +103008,47 @@ avl
 lFb
 avl
 agj
-vHW
+aiG
+hvH
 agc
 vtT
 agc
-hvH
 hGB
 kcN
 cod
 aRq
 qyo
-dOz
-aKn
-awt
+bFA
+wVW
+knF
 alX
-aHk
+kMC
 auQ
-oPE
-alZ
-aRt
-aBR
-pON
-bZJ
-aRt
-axp
-awt
+dvl
+mhm
+rKd
+pWN
+alX
+nnY
+xMB
+mYu
+alX
 auQ
 lTt
 alX
-ays
-aKi
-qdT
-amY
-aVg
-aVV
-aWV
-vNW
-pMK
+hEI
+wVW
+ouW
+jmY
+mKq
+bFC
+qTO
+rnM
+uvt
 aES
 bpe
 brS
-bVT
+cpj
 aES
 kwz
 gpe
@@ -102891,42 +103212,42 @@ hJJ
 qCi
 agj
 kFe
-agc
-agc
-agc
 hvH
+agc
+agc
+agc
 ahY
 kcN
 xDp
 aRq
 qyo
-bFA
+tuK
 wVW
-luZ
-avY
-deD
-wlE
+bfU
+alX
+kMC
+auQ
 dyO
-tyc
-xCM
-paL
-euV
-mJu
-nUU
-qBz
-ayv
-wlE
-hgf
-avY
+wVW
+abk
+azV
+gaQ
+aBZ
+aRv
+wVW
+sum
+auQ
+lTt
+alX
 eRu
 wVW
-ouW
-pQy
+dFy
+jmY
 mKq
-bFC
-cqY
-iTw
-myl
+aUk
+wVB
+psa
+ceK
 aES
 aES
 aES
@@ -103103,37 +103424,37 @@ kcN
 kcN
 agj
 jTi
-akL
-wVW
-asN
-mMV
-vta
-aIl
+aox
+aoA
+ayv
+avY
+deD
+wlE
 oPE
-sHZ
-kTM
-xFF
-mPU
-xqb
-kTM
-feD
-awt
-aqN
-aEB
-uyG
-uTU
 wVW
-aKy
+azW
+khK
+gaQ
+aCa
+bPs
+wVW
+dkk
+wlE
+hgf
+avY
+pMj
+aKo
+qwg
 dGC
 mKq
 ceK
-qTO
-rnM
+aWW
+aGr
 ceK
 sxD
 and
 bHG
-nis
+brS
 aES
 nSU
 xuB
@@ -103306,37 +103627,37 @@ aVi
 akl
 agj
 qyo
-bFA
-wVW
-wyt
-arR
-deD
-tBq
-pMj
-mhm
-pWN
-rKd
+dOz
+aKn
+awt
+mMV
+vta
+xXX
+dvl
+oCb
+fHW
+mVn
 alX
-xMB
-nnY
-mYu
-ayv
+wwN
+qds
+hri
+alX
 tBq
-cvZ
-arR
-awk
-wVW
-xQg
+hgf
+uyG
+ays
+aKn
+hHl
 jmY
 mKq
-aUk
-wVB
-psa
-ceK
+bFC
+aWW
+aGr
+uvt
 aES
+tJi
+ivf
 bpe
-brS
-cpj
 aES
 fxO
 xuB
@@ -103509,33 +103830,33 @@ aAW
 akm
 agj
 ien
-aox
-aoA
-ayv
+akL
+wVW
+arF
 ayL
 eVj
 awH
-anI
-wVW
-abk
-azV
+awk
+ays
+atO
 gaQ
-aBZ
-aRv
-wVW
-tVh
+slo
+gaQ
+atO
+awt
+asc
 awH
 mPn
 xMA
-pMj
-aKo
-qwg
+aEA
+wVW
+aKy
 aKE
 mKq
-bFC
-aWW
-aGr
-uvt
+cgT
+cqY
+iTw
+ceK
 aES
 aES
 aES
@@ -103712,37 +104033,37 @@ mXj
 mXj
 agj
 qyo
-dOz
-aKn
-awt
+bFA
+wVW
+asN
 avY
 ayr
 awH
-aPD
-wVW
-azW
-khK
+ays
+fmY
 gaQ
-aCa
-bPs
-wVW
-gkK
+wfF
+wKS
+mqA
+gaQ
+onC
+awt
 awH
 vSl
 avY
-ays
-aKn
-hHl
+awk
+wVW
+xQg
 jmY
 mKq
-cgT
-cqY
-iTw
+lcy
+fxj
+oBA
 ceK
 sxD
 and
 bHG
-brS
+gCP
 aES
 rlz
 xuB
@@ -103915,36 +104236,36 @@ alj
 mQc
 agj
 aGV
-akL
+bFA
 wVW
-arF
+asc
 avY
 avS
 afo
-amb
+eEA
 rOC
 soX
 azX
 alX
 aCb
-aGb
-era
 amb
+era
+uXe
 lue
 wFn
 avY
-aEA
+awk
 wVW
-aKy
+xQg
 jmY
 mKq
-lcy
-fxj
-oBA
-ceK
+bFC
+gek
+oiI
+rrB
 aES
-tJi
-ivf
+cWy
+brS
 bpe
 aES
 lGu
@@ -104141,10 +104462,10 @@ wVW
 ouW
 alc
 mKq
-bFC
-gek
-oiI
-rrB
+ceK
+aGr
+aGr
+ceK
 aES
 aES
 aES
@@ -104351,7 +104672,7 @@ ceK
 sxD
 and
 bHG
-gCP
+eCt
 aES
 izx
 mQV
@@ -104552,9 +104873,9 @@ uTN
 aTB
 hdT
 aES
-cWy
 brS
 bpe
+mid
 aES
 bYz
 uEv
@@ -104966,7 +105287,7 @@ gpe
 hDy
 xEF
 aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -105169,7 +105490,7 @@ fgx
 xuB
 xEF
 aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -105372,7 +105693,7 @@ gaO
 kUh
 xEF
 aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -105575,7 +105896,7 @@ xuB
 gpe
 xEF
 aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -105778,7 +106099,7 @@ uEv
 gpe
 xEF
 aag
-aag
+ajZ
 aaa
 aaa
 aaa
@@ -107794,7 +108115,7 @@ aRC
 aUw
 aUw
 aUw
-teY
+aUw
 ayP
 aET
 dSp

@@ -876,22 +876,93 @@ world
 	return image_to_center
 
 //For creating consistent icons for human looking simple animals
-/proc/get_flat_human_icon(icon_id, datum/equipment_preset/preset, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
+/proc/get_flat_human_icon(icon_id, equipment_preset_dresscode, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
 	var/static/list/humanoid_icon_cache = list()
 	if(!icon_id || !humanoid_icon_cache[icon_id])
 		var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
+
 		if(prefs)
 			prefs.copy_all_to(body)
-		arm_equipment(body, preset)
+			body.update_body()
+			body.update_hair()
+
+		// Assumption: Is a list
+		if(outfit_override)
+			for(var/obj/item/cur_item as anything in outfit_override)
+				body.equip_to_appropriate_slot(cur_item)
+
+		// Assumption: Is a string or path
+		if(equipment_preset_dresscode)
+			arm_equipment(body, equipment_preset_dresscode)
 
 		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-		for(var/D in showDirs)
-			body.setDir(D)
+		for(var/dir in showDirs)
+			body.setDir(dir)
 			var/icon/partial = getFlatIcon(body)
-			out_icon.Insert(partial, dir = D)
+			out_icon.Insert(partial, dir = dir)
 
 		humanoid_icon_cache[icon_id] = out_icon
 		dummy_key ? unset_busy_human_dummy(dummy_key) : qdel(body)
 		return out_icon
 	else
 		return humanoid_icon_cache[icon_id]
+
+/proc/get_flat_human_copy_icon(mob/living/carbon/human/original, equipment_preset_dresscode, showDirs = GLOB.cardinals, outfit_override)
+	var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(null)
+
+	if(original)
+		// From /datum/preferences/proc/copy_appearance_to
+		body.age = original.age
+		body.gender = original.gender
+		body.ethnicity = original.ethnicity
+		body.body_type = original.body_type
+
+		body.r_eyes = original.r_eyes
+		body.g_eyes = original.g_eyes
+		body.b_eyes = original.b_eyes
+
+		body.r_hair = original.r_hair
+		body.g_hair = original.g_hair
+		body.b_hair = original.b_hair
+
+		body.r_gradient = original.r_gradient
+		body.g_gradient = original.g_gradient
+		body.b_gradient = original.b_gradient
+		body.grad_style = original.grad_style
+
+		body.r_facial = original.r_facial
+		body.g_facial = original.g_facial
+		body.b_facial = original.b_facial
+
+		body.r_skin = original.r_skin
+		body.g_skin = original.g_skin
+		body.b_skin = original.b_skin
+
+		body.h_style = original.h_style
+		body.f_style = original.f_style
+
+		body.underwear = original.underwear
+		body.undershirt = original.undershirt
+
+		body.update_body()
+		body.update_hair()
+
+	// Assumption: Is a list
+	if(outfit_override)
+		for(var/obj/item/cur_item as anything in outfit_override)
+			body.equip_to_appropriate_slot(cur_item)
+
+	// Assumption: Is a string or path
+	if(equipment_preset_dresscode)
+		arm_equipment(body, equipment_preset_dresscode)
+
+	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+	for(var/dir in showDirs)
+		body.setDir(dir)
+		var/icon/partial = getFlatIcon(body)
+		out_icon.Insert(partial, dir = dir)
+
+	// log_debug("get_flat_human_copy_icon called on ref=[REF(original)], instance=[original], type=[original.type], with [length(original.overlays)] overlays reduced to [length(body.overlays)] overlays")
+
+	qdel(body)
+	return out_icon

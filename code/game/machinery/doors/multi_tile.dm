@@ -363,7 +363,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/get_filler_turfs()
 	. = list()
-	for(var/i = 1, i < width, i++)
+	for(var/i in 1 to width - 1)
 		if(dir == NORTH)
 			var/turf/T = locate(x, y + i, z)
 			if(T)

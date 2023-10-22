@@ -116,7 +116,7 @@
 		elev.elevator_network = elevator_network
 
 /datum/map_template/shuttle/trijent_elevator/A
-	elevator_network="A"
+	elevator_network = "A"
 
 /datum/map_template/shuttle/trijent_elevator/B
-	elevator_network="B"
+	elevator_network = "B"

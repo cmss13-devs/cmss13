@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - admin: "no more href token errors when changing the game mode via game panel"

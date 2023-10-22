@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - admin: "view-target-records now allows you to note people properly"

@@ -377,9 +377,9 @@
 			if(T)
 				. += list(T)
 		if(dir == WEST)
-			var/turf/T = locate(x - i, y, z)
-			if(T)
-				. += list(T)
+			var/turf/found_turf = locate(x - i, y, z)
+			if(found_turf)
+				. += list(found_turf)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
 	name = "\improper Alamo cargo door"

@@ -353,8 +353,8 @@
 
 //We have to find these again since these doors are used on shuttles a lot so the turfs changes
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/update_filler_turfs()
-	for(var/turf/T in multi_filler)
-		T.set_opacity(null)
+	for(var/turf/filler_turf as anything in multi_filler)
+		filler_turf.set_opacity(null)
 
 	multi_filler = list()
 	for(var/turf/filler_turf as anything in get_filler_turfs())

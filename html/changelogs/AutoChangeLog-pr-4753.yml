@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - server: "the server now respects /string/title for late joiners"

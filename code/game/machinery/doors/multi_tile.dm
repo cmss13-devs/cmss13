@@ -357,9 +357,9 @@
 		T.set_opacity(null)
 
 	multi_filler = list()
-	for(var/turf/T in get_filler_turfs())
-		T.set_opacity(opacity)
-		multi_filler += list(T)
+	for(var/turf/filler_turf as anything in get_filler_turfs())
+		filler_turf.set_opacity(opacity)
+		multi_filler += list(filler_turf)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/get_filler_turfs()
 	. = list()

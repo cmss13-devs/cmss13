@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix incend and cluster OBs not respecting ceiling OB protections."

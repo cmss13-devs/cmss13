@@ -305,7 +305,8 @@
 		lock(TRUE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/handle_multidoor(old_dir, new_dir)
-	if(!(width > 1)) return //Bubblewrap
+	if(!(width > 1)) 
+		return //Bubblewrap
 	if(old_dir != new_dir)
 		var/adjust = width - 1
 		switch(old_dir)

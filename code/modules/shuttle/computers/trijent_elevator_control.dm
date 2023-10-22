@@ -46,7 +46,7 @@
 	var/obj/docking_port/mobile/trijent_elevator/shuttle = SSshuttle.getShuttle(shuttleId)
 
 	for(var/obj/docking_port/stationary/trijent_elevator/elev in SSshuttle.stationary)
-		if(shuttle.elevator_network == "" || elev.elevator_network == null)
+		if(!shuttle.elevator_network)
 			. += list(elev)
 			continue
 		if(shuttle.elevator_network == elev.elevator_network)

@@ -83,9 +83,9 @@
 	roundstart_template = /datum/map_template/shuttle/trijent_elevator
 
 /obj/docking_port/stationary/trijent_elevator/empty
-	name="empty"
-	id=STAT_TRIJENT_EMPTY
-	airlock_exit="west"
+	name = "empty"
+	id = STAT_TRIJENT_EMPTY
+	airlock_exit = "west"
 
 /obj/docking_port/stationary/trijent_elevator/lz1
 	name="Lz1 Elevator"

@@ -1961,23 +1961,11 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
-"ajx" = (
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
 "ajA" = (
 /obj/structure/fence,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"ajD" = (
-/turf/open/floor/plating{
-	dir = 5;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/east_river)
 "ajF" = (
 /obj/structure/disposalpipe/segment{
 	layer = 5.1;
@@ -2006,20 +1994,6 @@
 "ajI" = (
 /turf/open/gm/river{
 	base_river_slowdown = 4.0
-	},
-/area/lv624/ground/river/east_river)
-"ajJ" = (
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
-"ajL" = (
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
 	},
 /area/lv624/ground/river/east_river)
 "ajR" = (
@@ -2053,35 +2027,6 @@
 	base_river_slowdown = 4.0
 	},
 /area/lv624/ground/river/central_river)
-"aka" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/turf/open/gm/river{
-	base_river_slowdown = 4.0
-	},
-/area/lv624/ground/river/central_river)
-"akb" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
-"akc" = (
-/obj/structure/grille{
-	density = 0;
-	icon_state = "brokengrille"
-	},
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/east_river)
 "akd" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/river{
@@ -2120,33 +2065,6 @@
 	base_river_slowdown = 4.0
 	},
 /area/lv624/ground/river/central_river)
-"akt" = (
-/obj/structure/disposalpipe/junction,
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
-"aku" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/east_river)
-"akv" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/gm/river{
-	base_river_slowdown = 4.0
-	},
-/area/lv624/ground/river/east_river)
 "akw" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/river{
@@ -2156,73 +2074,10 @@
 "aky" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"akA" = (
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/west_river)
-"akC" = (
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
-"akD" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
-"akE" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/east_river)
-"akJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/gm/river{
-	base_river_slowdown = 4.0
-	},
-/area/lv624/ground/river/central_river)
 "akL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
-"akM" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/structure/grille{
-	density = 0;
-	icon_state = "brokengrille"
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/west_river)
-"akP" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/grille{
-	density = 0;
-	icon_state = "brokengrille"
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
 "akQ" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/river{
@@ -2232,33 +2087,6 @@
 "akR" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/beachcorner/north_west,
-/area/lv624/ground/river/central_river)
-"akT" = (
-/obj/structure/disposalpipe/junction,
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/west_river)
-"akU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
-"akV" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/gm/river{
-	base_river_slowdown = 4.0
-	},
 /area/lv624/ground/river/central_river)
 "akY" = (
 /turf/open/gm/coast/beachcorner2/north_west,
@@ -2270,29 +2098,6 @@
 "ala" = (
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/east_river)
-"alb" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/turf/open/gm/coast/south,
-/area/lv624/ground/river/central_river)
-"alc" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/gm/coast/beachcorner2/south_west,
-/area/lv624/ground/river/central_river)
-"ald" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/east_river)
 "ale" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
@@ -2301,14 +2106,6 @@
 /obj/structure/ore_box,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/west_barrens)
-"ali" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
 "alo" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/river/central_river)
@@ -2348,85 +2145,14 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"alE" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/grille{
-	density = 0;
-	icon_state = "brokengrille"
-	},
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
-"alK" = (
-/obj/structure/disposalpipe/broken{
-	dir = 1
-	},
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
 "alM" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/east_river)
-"alN" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/turf/open/gm/river{
-	base_river_slowdown = 4.0
-	},
-/area/lv624/ground/river/west_river)
-"alO" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/gm/river{
-	base_river_slowdown = 4.0
-	},
-/area/lv624/ground/river/west_river)
 "alP" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"alR" = (
-/obj/structure/disposalpipe/junction,
-/obj/structure/grille{
-	density = 0;
-	icon_state = "brokengrille"
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/west_river)
-"alS" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
-"alT" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/gm/coast/east,
-/area/lv624/ground/river/central_river)
-"alU" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/river/central_river)
 "alW" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -2452,16 +2178,10 @@
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/river/central_river)
 "ama" = (
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/river/central_river)
 "amf" = (
-/turf/open/floor/plating{
-	dir = 6;
-	icon_state = "warnplate"
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/river/east_river)
 "amh" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -2470,14 +2190,6 @@
 "amk" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/north_west_caves)
-"aml" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/west_river)
 "amr" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -2502,16 +2214,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"amA" = (
-/obj/structure/disposalpipe/broken{
-	dir = 1
-	},
-/obj/structure/grille,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/west_river)
 "amE" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/dirt,
@@ -2535,36 +2237,10 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/lazarus/landing_zones/lz1)
-"amR" = (
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/east_river)
-"amS" = (
-/obj/structure/machinery/constructable_frame{
-	icon_state = "box_1"
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
-"amT" = (
-/turf/open/floor/plating{
-	dir = 6;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
 "amW" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
-"amX" = (
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/west_river)
 "amZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/coast/beachcorner/south_east,
@@ -2576,15 +2252,6 @@
 "ane" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_west_caves)
-"anf" = (
-/obj/structure/machinery/constructable_frame{
-	icon_state = "box_1"
-	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
 "ank" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -2608,12 +2275,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
-"anE" = (
-/turf/open/floor/plating{
-	dir = 5;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/river/central_river)
 "anF" = (
 /turf/closed/wall,
 /area/lv624/lazarus/medbay)
@@ -14993,7 +14654,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
 "hsc" = (
-/turf/closed/wall/r_wall,
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/river{
+	base_river_slowdown = 4.0
+	},
 /area/lv624/ground/river/central_river)
 "huH" = (
 /obj/structure/flora/jungle/planttop1,
@@ -18277,6 +17941,9 @@
 "oUy" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
+"oUE" = (
+/turf/open/gm/coast/beachcorner/south_east,
+/area/lv624/ground/jungle/north_jungle)
 "oUK" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 29
@@ -37344,7 +37011,7 @@ xwr
 aZa
 aYS
 iag
-alN
+iag
 amG
 iag
 iag
@@ -37571,11 +37238,11 @@ xwr
 xwr
 yet
 iag
-alN
-alO
 iag
 iag
-alN
+iag
+iag
+iag
 iag
 amG
 amw
@@ -37799,11 +37466,11 @@ xwr
 xwr
 yet
 iag
-alO
-alO
+iag
+arV
 iag
 iag
-alO
+iag
 iag
 iag
 fQL
@@ -38025,16 +37692,16 @@ xwr
 xwr
 xwr
 xwr
-amX
-akA
-akM
-akT
-aml
-aml
-alR
-aml
-amA
-amR
+yet
+iag
+iag
+iag
+iag
+iag
+iag
+iag
+iag
+oym
 nsk
 asr
 cfN
@@ -38253,16 +37920,16 @@ xwr
 xwr
 xwr
 xwr
-anf
-hsc
-hsc
-hsc
-hsc
-hsc
-hsc
-hsc
-hsc
-amS
+eqF
+sqj
+sqj
+sTX
+sqj
+sqj
+hWZ
+sqj
+sqj
+rit
 asr
 cfN
 tyG
@@ -38481,16 +38148,16 @@ jTP
 xwr
 xwr
 xwr
-anE
-akC
-akC
-akU
-ali
-alE
-alS
-akC
-akC
-amT
+eqF
+sqj
+sqj
+sqj
+sqj
+sqj
+sqj
+sqj
+sqj
+rit
 hJW
 tyG
 tyG
@@ -38712,13 +38379,13 @@ xwr
 ajv
 sqj
 sqj
-akJ
+sqj
 hWZ
 lju
-alT
-oTt
-dVH
-asr
+hwR
+hwR
+hwR
+oUE
 cfN
 vqT
 ldZ
@@ -38940,10 +38607,10 @@ cXk
 ajT
 ogZ
 sqj
-akV
+sqj
 sqj
 rit
-alU
+dVH
 asr
 xzD
 cfN
@@ -52388,7 +52055,7 @@ xch
 xch
 eqF
 sqj
-sqj
+sTX
 sqj
 sqj
 fRX
@@ -52617,10 +52284,10 @@ xch
 eqF
 sqj
 sqj
-aka
 sqj
 sqj
-alb
+sqj
+rit
 yga
 wWm
 cUk
@@ -52844,11 +52511,11 @@ xch
 jic
 eqF
 sqj
-aka
-akJ
 sqj
 sqj
-alc
+sqj
+sqj
+dGG
 oXS
 nPd
 alZ
@@ -53070,15 +52737,15 @@ xch
 xch
 xch
 xch
-ajx
-ajJ
-akb
-akt
-akD
-akP
-akt
-akD
-alK
+eqF
+sqj
+sqj
+fRX
+sqj
+sTX
+sqj
+sqj
+rit
 ama
 cpY
 dmZ
@@ -53298,16 +52965,16 @@ xch
 xch
 xch
 xch
-anf
+eqF
+sqj
 hsc
-hsc
-hsc
-hsc
-hsc
-hsc
-hsc
-hsc
-amS
+sqj
+sqj
+sqj
+sqj
+sqj
+rit
+ama
 dmZ
 dmZ
 amW
@@ -53526,15 +53193,15 @@ xch
 xch
 xch
 xch
-ajD
-ajL
-akc
-aku
-akE
-akE
-ald
-ajL
-ajL
+toF
+pjk
+ajI
+ajI
+ajI
+ajI
+akw
+ajI
+ala
 amf
 cpY
 dmZ
@@ -53757,10 +53424,10 @@ xch
 xch
 oHu
 ajI
-akv
 ajI
 ajI
-akv
+alA
+ajI
 hYa
 ala
 wFp

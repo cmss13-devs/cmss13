@@ -268,7 +268,6 @@ cases. Override_icon_state should be a list.*/
 			size = "huge"
 		if(SIZE_MASSIVE)
 			size = "massive"
-		else
 	. += "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
 	if(desc)
 		. += desc
@@ -824,6 +823,8 @@ cases. Override_icon_state should be a list.*/
 	unzoom(user)
 
 /obj/item/proc/unzoom(mob/living/user)
+	if(user.interactee == src)
+		user.unset_interaction()
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))

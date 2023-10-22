@@ -182,8 +182,7 @@
 		return 0
 
 	var/inaccurate = 0
-	if(W.sharp == IS_SHARP_ITEM_ACCURATE)
-	else if(W.sharp == IS_SHARP_ITEM_BIG)
+	if(W.sharp == IS_SHARP_ITEM_BIG)
 		inaccurate = 1
 	else
 		return 1

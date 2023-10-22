@@ -1,0 +1,6 @@
+author: "SpypigDev"
+delete-after: True
+changes:
+  - rscadd: "CIC Armory SO vendor"
+  - balance: "Moved most combat-themed gear from SO spawn vendors, to CIC Armory vendor"
+  - balance: "Made RTO pack a point-buy item in CIC Armory vendor for SOs"

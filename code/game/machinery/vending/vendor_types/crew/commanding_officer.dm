@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("Underbarrel Shotgun", 15, /obj/item/attachable/attached_gun/shotgun, null, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Extinguisher", 15, /obj/item/attachable/attached_gun/extinguisher, null, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Flamethrower", 15, /obj/item/attachable/attached_gun/flamer, null, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Grenade Launcher", 15, /obj/item/attachable/attached_gun/grenade/mk1, null, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Grenade Launcher", 15, /obj/item/attachable/attached_gun/grenade, null, VENDOR_ITEM_REGULAR),
 
 		list("BARREL ATTACHMENTS", 0, null, null, null),
 		list("Extended Barrel", 15, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),

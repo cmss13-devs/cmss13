@@ -192,7 +192,7 @@
 				turf_to_vent_to = H.loc
 	return turf_to_vent_to
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend
 	icon_state = "req_guns_wall"
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
@@ -296,7 +296,7 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/blend
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/blend
 		icon_state = "req_ammo_wall"
 		tiles_with = list(
 			/obj/structure/window/framed/almayer,

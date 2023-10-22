@@ -54,7 +54,6 @@
 				src.health -= W.force * 0.75
 			if("brute")
 				src.health -= W.force * 0.5
-			else
 		if (src.health <= 0)
 			src.explode()
 		..()

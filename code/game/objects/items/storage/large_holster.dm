@@ -326,7 +326,7 @@
 /obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
 	. = ..()
 	if(contents.len)
-		. += "It is storing \a M240-T incinerator unit."
+		. += "It is storing a M240-T incinerator unit."
 	if (get_dist(user, src) <= 1)
 		if(fuel)
 			. += "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel."

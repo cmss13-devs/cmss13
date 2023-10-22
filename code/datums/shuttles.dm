@@ -110,11 +110,6 @@
 	shuttle_id = MOBILE_TRIJENT_ELEVATOR
 	var/elevator_network
 
-/datum/map_template/shuttle/trijent_elevator/post_load(obj/docking_port/mobile/mobile_dock)
-	if(elevator_network)
-		var/obj/docking_port/mobile/trijent_elevator/elev = mobile_dock
-		elev.elevator_network = elevator_network
-
 /datum/map_template/shuttle/trijent_elevator/A
 	elevator_network = "A"
 

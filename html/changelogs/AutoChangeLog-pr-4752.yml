@@ -1,0 +1,4 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - balance: "Nerfs synth surv pouch by removing 1 storage slot."

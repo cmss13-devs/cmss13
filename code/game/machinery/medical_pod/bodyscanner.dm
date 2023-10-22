@@ -62,8 +62,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
@@ -124,8 +122,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/machinery/body_scanconsole/power_change()
 	..()

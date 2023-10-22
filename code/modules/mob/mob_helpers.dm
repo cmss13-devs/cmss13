@@ -576,12 +576,14 @@ var/global/list/limb_types_by_name = list(
 		var/iheight = source_icon.Height()
 		var/iwidth = source_icon.Width()
 		var/higher_power = (iheight > iwidth) ? iheight : iwidth
+		alert_overlay.pixel_y = initial(source.pixel_y)
+		alert_overlay.pixel_x = initial(source.pixel_x)
 		if(higher_power > 32)
 			var/diff = 32 / higher_power
 			alert_overlay.transform = alert_overlay.transform.Scale(diff, diff)
 			if(higher_power > 48)
-				alert_overlay.pixel_y = -(iheight / 2) * diff
-				alert_overlay.pixel_x = -(iwidth / 2) * diff
+				alert_overlay.pixel_y = -(iheight * 0.5) * diff
+				alert_overlay.pixel_x = -(iwidth * 0.5) * diff
 
 
 	alert_overlay.layer = FLOAT_LAYER

@@ -29,7 +29,7 @@
 
 /datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/entity, obj/projectile/bullet)
 	slowdown(entity, bullet)
-	pushback(entity, bullet)
+	pushback(entity, bullet, 4)
 
 /datum/ammo/bullet/revolver/incendiary
 	name = "incendiary revolver bullet"

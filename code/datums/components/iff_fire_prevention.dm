@@ -39,9 +39,17 @@
 
 	var/list/checked_turfs = getline2(starting_turf, extended_target_turf)
 
-	//Don't check starting turf... Unless we are shooting ourself!!!
-	if(target != user)
-		checked_turfs -= starting_turf
+	//Don't shoot yourself, thanks
+	if(target == user)
+		if(COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)
+			playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
+			to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
+			COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)
+		if(iff_additional_fire_delay)
+			var/obj/item/weapon/gun/gun = firing_weapon
+			if(istype(gun))
+				LAZYSET(user.fire_delay_next_fire, gun, world.time + iff_additional_fire_delay)
+		return COMPONENT_CANCEL_GUN_BEFORE_FIRE
 
 	//At some angles (scatter or otherwise) the original target is not in checked_turfs so we put it in there in order based on distance from user
 	//If we are literally clicking on someone with IFF then we don't want to fire, feels funny as a user otherwise
@@ -66,6 +74,8 @@
 			return
 
 		for(var/mob/living/checked_living in checked_turf)
+			if(checked_living == user) // sometimes it still happens
+				continue
 			if(checked_living.lying && projectile_to_fire.original != checked_living)
 				continue
 

@@ -1,4 +1,4 @@
-s// DM Environment file for colonialmarines.dme.
+// DM Environment file for colonialmarines.dme.
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 // BEGIN_INTERNALS
@@ -11,6 +11,7 @@ s// DM Environment file for colonialmarines.dme.
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\__odlint.dm"
 #include "code\_byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\_experiments.dm"

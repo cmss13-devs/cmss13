@@ -321,7 +321,7 @@
 			I = icon(icon_file, icon_state, SOUTH)
 			var/c = initial(item.color)
 			if (!isnull(c) && c != "#FFFFFF")
-				I.Blend(initial(c), ICON_MULTIPLY)
+				I.Blend(c, ICON_MULTIPLY)
 		else
 			if (ispath(k, /obj/effect/essentials_set))
 				var/obj/effect/essentials_set/es_set = new k()

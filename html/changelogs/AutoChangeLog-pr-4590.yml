@@ -1,5 +1,0 @@
-author: "kiVts"
-delete-after: True
-changes:
-  - rscadd: "Ghosts get notified when they are being revived by DFB property"
-  - balance: "DFB property healing threshold lowered, You can create DFB property higher than one."

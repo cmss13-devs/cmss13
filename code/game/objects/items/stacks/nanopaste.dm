@@ -40,7 +40,7 @@
 				H.pain.recalculate_pain()
 				H.updatehealth()
 				use(1)
-				var/others_msg = "\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " \the"] [S.display_name] with \the [src]." // Needs to create vars for these messages because macro doesn't work otherwise
+				var/others_msg = "\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " the"] [S.display_name] with \the [src]." // Needs to create vars for these messages because macro doesn't work otherwise
 				var/user_msg = "You apply some nanite paste at [user == M ? "your" : "[M]'s"] [S.display_name]."
 				user.visible_message(SPAN_NOTICE("[others_msg]"),\
 					SPAN_NOTICE("[user_msg]"))

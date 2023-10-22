@@ -171,6 +171,15 @@
 	else
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
+/datum/ammo/proc/slowdown(mob/living/living_mob, obj/projectile/fired_projectile)
+	if(iscarbonsizexeno(living_mob))
+		var/mob/living/carbon/xenomorph/target = living_mob
+		target.apply_effect(1, SUPERSLOW)
+		target.apply_effect(2, SLOW)
+		to_chat(target, SPAN_XENODANGER("You are slowed by the sudden impact!"))
+	else
+		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
+
 /datum/ammo/proc/pushback(mob/target_mob, obj/projectile/fired_projectile, max_range = 2)
 	if(!target_mob || target_mob == fired_projectile.firer || fired_projectile.distance_travelled > max_range || target_mob.lying)
 		return

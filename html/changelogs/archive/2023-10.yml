@@ -315,3 +315,30 @@
   - rscadd: Added splints to the survival pouch
   - rscadd: Increased survival pouch storage space by 1
   - spellcheck: Updates the survival pouch's description
+2023-10-22:
+  Drathek:
+  - bugfix: Fix incend and cluster OBs not respecting ceiling OB protections.
+  - bugfix: Disabled code in icon2html that is causing bad icon operations
+  Morrow:
+  - server: the rustg mysql driver is now properly compatible with mariadb
+  Zonespace27:
+  - rscadd: Mentors can now unmark mhelps
+  fira:
+  - bugfix: Removed redundant double binding for F1 to AdminHelp from default keybinds.
+      This does not affect existing users or their settings.
+  - rscadd: Stamping papers now makes a noise.
+  - bugfix: Fixed incorrect Reqs vendors visuals on the Almayer. They now blend in
+      with the walls again.
+  - bugfix: Re-fixed Megaphone above-head-chat drifting to the left.
+  harryob:
+  - admin: no more href token errors when changing the game mode via game panel
+  - bugfix: mentorhelp response no longer gives a dead discord link
+  - admin: view-target-records now allows you to note people properly
+  kiVts:
+  - rscadd: Ghosts get notified when they are being revived by DFB property
+  - balance: DFB property healing threshold lowered, You can create DFB property higher
+      than one.
+  realforest2001:
+  - rscadd: Added Discretionary Arrest to JAS.
+  - rscadd: Added a new category to JAS, Precautionary Charges. Moves Insanity and
+      POW to this category.

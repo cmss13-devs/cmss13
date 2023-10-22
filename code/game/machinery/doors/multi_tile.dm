@@ -368,7 +368,7 @@
 			var/turf/T = locate(x, y + i, z)
 			if(T)
 				. += list(T)
-		else if (dir == SOUTH)
+		if(dir == SOUTH)
 			var/turf/T = locate(x, y - i, z)
 			if(T)
 				. += list(T)

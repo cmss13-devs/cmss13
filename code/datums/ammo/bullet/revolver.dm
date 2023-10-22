@@ -28,8 +28,8 @@
 	accuracy = HIT_ACCURACY_TIER_3
 
 /datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/entity, obj/projectile/bullet)
-	slowdown(entity, bullet, 4)
-	pushback(entity, bullet, 4)
+	slowdown(entity, bullet)
+	pushback(entity, bullet)
 
 /datum/ammo/bullet/revolver/incendiary
 	name = "incendiary revolver bullet"

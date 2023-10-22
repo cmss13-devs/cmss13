@@ -4057,23 +4057,23 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "alL" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
+/turf/open/floor/plating/tunnelable{
+	icon_state = "warnplate";
+	dir = 9
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "alM" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
+/turf/open/floor/plating/tunnelable{
+	icon_state = "warnplate";
+	dir = 1
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "alN" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
+/turf/open/floor/plating/tunnelable{
+	icon_state = "warnplate";
+	dir = 1
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "alO" = (
@@ -4393,19 +4393,20 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "amJ" = (
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/turf/open/floor/plating/tunnelable{
+	icon_state = "warnplate";
+	dir = 10
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "amK" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor/plating{
+/turf/open/floor/plating/tunnelable{
 	icon_state = "warnplate"
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "amL" = (
-/turf/open/floor/plating{
+/turf/open/floor/plating/tunnelable{
 	icon_state = "warnplate"
 	},
 /area/bigredv2/caves/lambda/xenobiology)
@@ -4772,9 +4773,9 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "anO" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
+/turf/open/floor/plating/tunnelable{
+	icon_state = "warnplate";
+	dir = 9
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "anP" = (
@@ -4783,16 +4784,16 @@
 	},
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
+/turf/open/floor/plating/tunnelable{
+	icon_state = "warnplate";
+	dir = 1
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "anQ" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplate"
+/turf/open/floor/plating/tunnelable{
+	icon_state = "warnplate";
+	dir = 1
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "anR" = (
@@ -5052,9 +5053,9 @@
 /area/bigredv2/outside/dorms)
 "aoG" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
+/turf/open/floor/plating/tunnelable{
+	icon_state = "warnplate";
+	dir = 10
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "aoH" = (
@@ -21233,16 +21234,12 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/c)
 "bhU" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/turf/open/mars{
+	icon_state = "mars_dirt_12"
 	},
 /area/bigredv2/outside/c)
 "bhX" = (
@@ -23991,13 +23988,6 @@
 	icon_state = "mars_cave_19"
 	},
 /area/bigredv2/caves_sw)
-"buB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/bigredv2/outside/n)
 "buJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -25936,7 +25926,6 @@
 /area/bigredv2/caves/eta/research)
 "bBC" = (
 /obj/effect/landmark/monkey_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -26304,10 +26293,6 @@
 	icon_state = "darkred2"
 	},
 /area/bigredv2/caves/eta/research)
-"bCJ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars,
-/area/bigredv2/caves/eta/research)
 "bCK" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -26499,7 +26484,6 @@
 	dir = 4
 	},
 /obj/effect/landmark/monkey_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -26827,7 +26811,6 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bEg" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars{
 	icon_state = "mars_dirt_10"
 	},
@@ -26934,13 +26917,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
 	icon_state = "darkyellowcorners2"
-	},
-/area/bigredv2/caves/eta/living)
-"bEx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/jungle{
-	bushes_spawn = 0;
-	icon_state = "grass_impenetrable"
 	},
 /area/bigredv2/caves/eta/living)
 "bEy" = (
@@ -27485,13 +27461,6 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"cvi" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/caves/eta/xenobiology)
 "cwk" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
@@ -27881,6 +27850,10 @@
 /obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"dvp" = (
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/turf/open/mars,
+/area/bigredv2/outside/ne)
 "dvB" = (
 /obj/item/ore/coal{
 	pixel_x = 9;
@@ -28135,14 +28108,6 @@
 	icon_state = "mars_cave_15"
 	},
 /area/bigredv2/caves/mining)
-"dPs" = (
-/obj/effect/landmark/monkey_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/jungle{
-	bushes_spawn = 0;
-	icon_state = "grass_impenetrable"
-	},
-/area/bigredv2/caves/eta/xenobiology)
 "dPC" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -28152,6 +28117,11 @@
 	icon_state = "mars_cave_23"
 	},
 /area/bigredv2/caves/mining)
+"dQh" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_2"
+	},
+/area/bigredv2/outside/c)
 "dQF" = (
 /obj/effect/spawner/random/tool,
 /turf/open/mars_cave{
@@ -29180,6 +29150,9 @@
 	icon_state = "mars_cave_10"
 	},
 /area/bigredv2/outside/lz2_west_cas)
+"fTf" = (
+/turf/open/floor/plating,
+/area/bigredv2/outside/c)
 "fUk" = (
 /obj/structure/surface/table,
 /obj/item/clothing/head/hardhat,
@@ -29251,10 +29224,6 @@
 "gda" = (
 /turf/open/mars_cave,
 /area/bigredv2/outside/lz1_telecomm_cas)
-"gdN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars,
-/area/bigredv2/caves/eta/xenobiology)
 "geC" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6"
@@ -31313,6 +31282,11 @@
 	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
+"koP" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/c)
 "kpf" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves_lambda)
@@ -31518,6 +31492,10 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_research)
+"kOl" = (
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/turf/open/mars,
+/area/bigredv2/outside/n)
 "kPu" = (
 /obj/structure/machinery/power/terminal{
 	dir = 1
@@ -33071,9 +33049,14 @@
 	pixel_y = 8
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel,
-/turf/open/floor{
-	icon_state = "freezerfloor"
+/obj/item/pipe{
+	pixel_x = 8;
+	pixel_y = -4;
+	layer = 2.75;
+	name = "loose pipe";
+	desc = "A pipe disconnected from the rest of the system. Seems it was abandoned during repair."
 	},
+/turf/open/floor/plating/tunnelable,
 /area/bigredv2/outside/dorms)
 "opz" = (
 /obj/effect/landmark/crap_item,
@@ -34514,12 +34497,6 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves/mining)
-"rqa" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
-/turf/open/floor{
-	icon_state = "whitepurplefull"
-	},
-/area/bigredv2/caves/lambda/xenobiology)
 "rqv" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1
@@ -34684,9 +34661,8 @@
 /area/bigredv2/outside/filtration_plant)
 "rHD" = (
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/turf/open/mars{
+	icon_state = "mars_dirt_9"
 	},
 /area/bigredv2/outside/c)
 "rIl" = (
@@ -35731,13 +35707,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/caves/eta/living)
-"tAW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/ne)
 "tBb" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1
@@ -35985,6 +35954,10 @@
 /obj/item/pizzabox,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
+"tUb" = (
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/turf/open/mars,
+/area/bigredv2/caves/eta/xenobiology)
 "tUL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hefa_cult_decals/d32,
@@ -56055,7 +56028,7 @@ aao
 aao
 aao
 alF
-buB
+ahS
 acp
 afl
 afR
@@ -56271,7 +56244,7 @@ aao
 aao
 aao
 aao
-acP
+kOl
 asc
 acp
 afm
@@ -58163,7 +58136,7 @@ bCx
 aCe
 dyv
 bDk
-dyv
+tUb
 aCe
 dyv
 bDk
@@ -58382,7 +58355,7 @@ dyv
 dyv
 dyv
 aCe
-gdN
+dyv
 dyv
 dyv
 aCe
@@ -58807,7 +58780,7 @@ aKi
 bBK
 aCH
 bCc
-cvi
+qTC
 bCy
 eHA
 bCM
@@ -60335,7 +60308,7 @@ bDe
 fWw
 fWw
 aCe
-dPs
+bDe
 fWw
 fWw
 aCe
@@ -60773,7 +60746,7 @@ fWw
 cxi
 fWw
 aCe
-dPs
+bDe
 cxi
 bDe
 aCe
@@ -61862,7 +61835,7 @@ knN
 aDv
 xfW
 pbs
-bEx
+xfW
 xfW
 aDv
 bEK
@@ -62862,7 +62835,7 @@ asv
 asv
 aHF
 aHF
-aHF
+fTf
 asv
 awf
 awf
@@ -63078,8 +63051,8 @@ bfe
 bgI
 asv
 aHF
-aHF
-aHF
+fTf
+koP
 asv
 bjJ
 bgx
@@ -63294,9 +63267,9 @@ bgd
 bgd
 aLf
 asH
-aHF
-aHF
-aHF
+fTf
+fTf
+koP
 asv
 beI
 bgx
@@ -63512,8 +63485,8 @@ bgs
 bfM
 avr
 bhT
-aHF
-aHF
+koP
+koP
 asv
 beI
 bgx
@@ -63728,9 +63701,9 @@ bgc
 bgc
 bgK
 asH
-aHF
-aHF
-aHF
+koP
+dQh
+aWJ
 asv
 bjK
 aZF
@@ -63946,7 +63919,7 @@ bgt
 bgL
 asv
 bhU
-aHF
+aKt
 rHD
 asv
 bjL
@@ -65102,7 +65075,7 @@ bBp
 aBv
 bvP
 bCE
-bCJ
+bvP
 bvP
 bvP
 aBv
@@ -69960,7 +69933,7 @@ aao
 aao
 aao
 aao
-tAW
+aqa
 aqa
 aqa
 aqa
@@ -70180,7 +70153,7 @@ aao
 aao
 aao
 aao
-arD
+dvp
 asm
 arD
 arD
@@ -77549,7 +77522,7 @@ aao
 aao
 adZ
 aeE
-rqa
+alc
 alR
 alc
 alc

@@ -35,4 +35,4 @@ Shift-clicking the Queen indicator will tell you what area you are in, on the ma
 As a ravager your abilities get greatly enhanced when you empower with three or more people around you.
 Resisting on a water tile will immediately put out fires. Make sure you're alone though - It's usually better to let a friendly Xenomorph pat you out than it is to expose yourself to open water.
 You can filter out the Xenomorphs displayed in hive status by health, allowing you to look only for wounded sisters.
-Each xeno has their own ‘tackle counter’ on a marine. The range to successfully tackle can be anywhere from two to six tackles based on caste. If a marine gets stunned or knocked over by otherm eans it will reset everyone's tackle counters and they may get up!
+Each xeno has their own ‘tackle counter’ on a marine. The range to successfully tackle can be anywhere from two to six tackles based on caste. If a marine gets stunned or knocked over by other means it will reset everyone's tackle counters and they may get up!

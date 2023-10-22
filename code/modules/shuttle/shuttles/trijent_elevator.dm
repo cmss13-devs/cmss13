@@ -77,9 +77,9 @@
 	qdel(door_control)
 
 /obj/docking_port/stationary/trijent_elevator/occupied
-	name="occupied"
-	id=STAT_TRIJENT_OCCUPIED
-	airlock_exit="west"
+	name = "occupied"
+	id = STAT_TRIJENT_OCCUPIED
+	airlock_exit = "west"
 	roundstart_template = /datum/map_template/shuttle/trijent_elevator
 
 /obj/docking_port/stationary/trijent_elevator/empty

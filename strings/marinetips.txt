@@ -77,6 +77,8 @@ CAS Fire Mission doubles the accuracy of fired weapons, which is substantial.
 Painkillers do not stack. Only the strongest has any effect.
 Don't underestimate the mortar: with ammo and proper communication it can hit surprisingly hard.
 You can shoot through tents, but they won't protect you much in return.
+Reqs doesn't have an infinite budget.
+Good Reqs can land supplies anywhere outside given coords and sometimes in a minimal amount of time.
 A ‘point blank’ or ‘pb’ is a type of attack with a firearm where you click directly on a mob next to you. These attacks are not effected by accuracy allowing you to quickly fire with weapons like a shotgun to great effect.
 Intel Officers can be put in a squad by going to CIC and requesting it.
 Any marine can perform CPR. On dead marines, this will increase the time they have until they become unrevivable.

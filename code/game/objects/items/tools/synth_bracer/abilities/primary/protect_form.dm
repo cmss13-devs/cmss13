@@ -1,11 +1,12 @@
 /datum/action/human_action/synth_bracer/protective_form
 	name = "Protective Form"
-	action_icon_state = "smartpack_protect"
+	action_icon_state = "protect"
 	cooldown = 15 SECONDS
 	charge_cost = SIMI_PROTECTIVE_COST
 
 	handles_charge_cost = TRUE
 	handles_cooldown = TRUE
+	category = SIMI_PRIMARY_ACTION
 
 /datum/action/human_action/synth_bracer/protective_form/action_activate()
 	var/mob/living/carbon/human/user = owner
@@ -31,7 +32,8 @@
 	synth_bracer.battery_charge -= SIMI_PROTECTIVE_COST
 	playsound(synth_bracer.loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
 	to_chat(user, SPAN_INFO("The current charge reads [synth_bracer.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
-	synth_bracer.update_icon(user)
+	synth_bracer.active_ability = SIMI_ABILITY_PROTECT
+	synth_bracer.update_icon()
 
 	user.add_filter("synth_protective_form", priority = 1, params = list("type" = "outline", "color" = PROTECTIVE_FORM_COLOR, "size" = 1))
 
@@ -48,5 +50,6 @@
 	LAZYREMOVE(user.burn_mod_override, src)
 	to_chat(user, SPAN_DANGER("[name] beeps, \"The protection wears off.\""))
 	playsound(synth_bracer.loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
-	synth_bracer.update_icon(user)
+	synth_bracer.active_ability = SIMI_ABILITY_PROTECT
+	synth_bracer.update_icon()
 	user.remove_filter("synth_protective_form")

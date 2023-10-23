@@ -34,15 +34,16 @@
 	var/battery_charge = SMARTPACK_MAX_POWER_STORED
 
 	var/list/actions_list_inherent = list(
-		/datum/action/human_action/synth_bracer/repair_form,
-		/datum/action/human_action/synth_bracer/protective_form,
 		/datum/action/human_action/synth_bracer/crew_monitor,
 		/datum/action/human_action/synth_bracer/deploy_binoculars,
 		/datum/action/human_action/synth_bracer/tactical_map,
-		//datum/action/human_action/activable/synth_bracer/rescue_hook,
-		//datum/action/human_action/synth_bracer/reflex_overclock,
 	)
-	var/list/actions_list_added = list()
+	var/list/actions_list_added = list(
+		/datum/action/human_action/synth_bracer/repair_form,
+		/datum/action/human_action/synth_bracer/protective_form,
+		//datum/action/human_action/synth_bracer/reflex_overclock,
+		/datum/action/human_action/activable/synth_bracer/rescue_hook,
+	)
 
 	var/list/actions_list_actions = list()
 	var/active_ability = SIMI_ACTIVE_NONE
@@ -171,40 +172,52 @@
 		icon_state = "bracer"
 		return
 
-	if(battery_charge <= 0)
-		icon_state = "bracer_off"
-		return
-	if(battery_charge <= initial(battery_charge) * 0.1)
-		icon_state = "bracer_nobattery"
-		return
+	icon_state = "bracer_off"
 
-	if(!issynth(wearer))
-		icon_state = "bracer_unauthorized"
-
-	else
-		icon_state = "bracer_idle"
 	update_overlays()
+
+/obj/item/clothing/gloves/synth/proc/get_bracer_status()
+	if(battery_charge <= 0)
+		return "bracer_off"
+	if(battery_charge <= initial(battery_charge) * 0.1)
+		return "bracer_nobattery"
+	var/mob/living/carbon/human/wearer = loc
+	if(!issynth(wearer))
+		return "bracer_unauthorized"
 
 /obj/item/clothing/gloves/synth/proc/update_overlays()
 	overlays.Cut()
 
+	var/image/idle_image = image(icon, src, "bracer_idle")
+	idle_image.appearance_flags = RESET_COLOR|KEEP_APART
+	var/image/status_image = image(icon, src, get_bracer_status())
+	status_image.appearance_flags = RESET_COLOR|KEEP_APART
+
 	var/phone_status
 	if(internal_transmitter && internal_transmitter.attached_to)
 		if(internal_transmitter.do_not_disturb >= PHONE_DND_ON)
-			phone_status = "phone_dnd"
+			phone_status = "dnd"
 		else if(internal_transmitter.attached_to.loc != internal_transmitter)
-			phone_status = "phone_ear"
+			phone_status = "listening"
 		else if(internal_transmitter.caller)
-			phone_status = "phone_ringing"
+			phone_status = "ringing"
 
-	var/image/phone_image = image(icon, src, phone_status)
+	var/image/phone_image = image(icon, src, "phone_[phone_status]")
 	phone_image.appearance_flags = RESET_COLOR|KEEP_APART
 
-	var/image/ability_image = image(icon, src, "ability_[active_ability]")
-	ability_image.appearance_flags = RESET_COLOR|KEEP_APART
+	var/image/secondary_image = image(icon, src, "secondary_[active_utility]")
+	secondary_image.appearance_flags = RESET_COLOR|KEEP_APART
 
+	var/image/primary_image = image(icon, src, "primary_[active_ability]")
+	primary_image.appearance_flags = RESET_COLOR|KEEP_APART
+
+
+	overlays += idle_image
 	overlays += phone_image
-	overlays += ability_image
+	overlays += secondary_image
+	overlays += primary_image
+	overlays += status_image
+
 
 /obj/item/clothing/gloves/synth/proc/check_for_ringing()
 	SIGNAL_HANDLER

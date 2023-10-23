@@ -1,11 +1,14 @@
 /* -- ACTIVATABLE ACTIONS -- */
 
 /datum/action/human_action/activable/synth_bracer
+	icon_file = 'icons/obj/items/synth/bracer.dmi'
 	var/mob/living/carbon/human/synth
 	var/obj/item/clothing/gloves/synth/synth_bracer
 	var/charge_cost = 0
 	var/handles_cooldown = FALSE
 	var/handles_charge_cost = FALSE
+	/// What cateogry of action it is. Can only have one active action from each type.
+	var/category = SIMI_SECONDARY_ACTION
 
 /datum/action/human_action/activable/synth_bracer/give_to(user)
 	if(!issynth(user))
@@ -31,15 +34,30 @@
 		synth_bracer.drain_charge(owner, charge_cost)
 	return TRUE
 
+/datum/action/human_action/activable/synth_bracer/can_use_action()
+	switch(category)
+		if(SIMI_PRIMARY_ACTION)
+			if(synth_bracer.active_ability != SIMI_ACTIVE_NONE)
+				to_chat(owner, SPAN_WARNING("You cannot use this action while another primary ability is active."))
+				return FALSE
+		if(SIMI_SECONDARY_ACTION)
+			if(synth_bracer.active_utility != SIMI_ACTIVE_NONE)
+				to_chat(owner, SPAN_WARNING("You cannot use this action while another secondary ability is active."))
+				return FALSE
+	..()
+
 /* -- ON-CLICK ACTIONS -- */
 
 /datum/action/human_action/synth_bracer
+	icon_file = 'icons/obj/items/synth/bracer.dmi'
 	var/mob/living/carbon/human/synth
 	var/obj/item/clothing/gloves/synth/synth_bracer
 	var/ability_used_time = 0
 	var/charge_cost = 0
 	var/handles_cooldown = FALSE // whether the cooldown gets handled by the child, or should be done automatically here
 	var/handles_charge_cost = FALSE
+	/// What cateogry of action it is. Can only have one active action from each type.
+	var/category = SIMI_SECONDARY_ACTION
 
 /datum/action/human_action/synth_bracer/give_to(user)
 	if(!issynth(user))
@@ -70,6 +88,20 @@
 		button.color = rgb(255,255,255,255)
 
 /datum/action/human_action/synth_bracer/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(!istype(H) || (H.is_mob_incapacitated() || H.dazed))
+		return FALSE
+
+	switch(category)
+		if(SIMI_PRIMARY_ACTION)
+			if(synth_bracer.active_ability != SIMI_ACTIVE_NONE)
+				to_chat(owner, SPAN_WARNING("You cannot use this action while another primary ability is active."))
+				return FALSE
+		if(SIMI_SECONDARY_ACTION)
+			if(synth_bracer.active_utility != SIMI_ACTIVE_NONE)
+				to_chat(owner, SPAN_WARNING("You cannot use this action while another secondary ability is active."))
+				return FALSE
+
 	if(synth_bracer.battery_charge < charge_cost)
 		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[charge_cost]</b>."))
 		return FALSE

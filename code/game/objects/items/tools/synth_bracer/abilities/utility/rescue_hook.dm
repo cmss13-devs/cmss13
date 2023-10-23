@@ -1,7 +1,6 @@
-/*
 /datum/action/human_action/activable/synth_bracer/rescue_hook
 	name = "Rescue Hook"
-	action_icon_state = "stomp"
+	action_icon_state = "hook"
 	cooldown = 5 SECONDS
 	charge_cost = 60
 
@@ -9,24 +8,26 @@
 	handles_charge_cost = TRUE
 
 	// Config
-	var/max_distance = 7
+	var/max_distance = 3
 	var/windup = 8
 
-/datum/action/human_action/activable/synth_bracer/rescue_hook/use_ability(atom/A)
+/datum/action/human_action/activable/synth_bracer/rescue_hook/use_ability(atom/atom_target)
 	. = ..()
 	if(!.)
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(synth.loc))
+	if(!atom_target || atom_target.layer >= FLY_LAYER || !isturf(synth.loc))
 		return
 
 	if(!action_cooldown_check() || synth.action_busy)
 		return
 
+	synth_bracer.active_utility = SIMI_SECONDARY_HOOK
+	synth_bracer.update_icon()
 	// Build our turflist
 	var/list/turf/turflist = list()
 	var/list/telegraph_atom_list = list()
-	var/facing = get_dir(synth, A)
+	var/facing = get_dir(synth, atom_target)
 	var/turf/T = synth.loc
 	var/turf/temp = synth.loc
 	for(var/x in 0 to max_distance)
@@ -54,20 +55,19 @@
 			break
 
 		turflist += T
-		facing = get_dir(T, A)
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook(T, windup)
+		facing = get_dir(T, atom_target)
+		telegraph_atom_list += new /obj/effect/simi_hook(T, windup)
 
 	if(!length(turflist))
 		to_chat(synth, SPAN_WARNING("You don't have any room to launch your hook!"))
 		return
 
-	synth.visible_message(SPAN_DANGER("[synth] prepares to launch a rescue hook [A]!"), SPAN_DANGER("You prepare to launch a rescue hook at [A]!"))
+	synth.visible_message(SPAN_DANGER("[synth] prepares to launch a rescue hook at [atom_target]!"), SPAN_DANGER("You prepare to launch a rescue hook at [atom_target]!"))
 
 	var/throw_target_turf = get_step(synth.loc, facing)
 
 	synth.frozen = TRUE
 	synth.update_canmove()
-	synth_bracer.icon_state = "bracer_fortify"
 	if(!do_after(synth, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, null, null, FALSE, 1, FALSE, 1))
 		to_chat(synth, SPAN_WARNING("You cancel your launch."))
 
@@ -77,6 +77,7 @@
 
 		synth.frozen = FALSE
 		synth.update_canmove()
+		synth_bracer.active_utility = SIMI_ACTIVE_NONE
 		synth_bracer.update_icon()
 
 		return
@@ -89,14 +90,27 @@
 
 	playsound(get_turf(synth), 'sound/effects/bang.ogg', 25, 0)
 
-	var/list/targets = list()
-	for (var/turf/target_turf in turflist)
-		for (var/mob/living/carbon/H in target_turf)
-			targets += H
+	var/mob/living/carbon/human/marine_target
+	if(ishuman(atom_target))
+		marine_target = atom_target
+	else
+		for(var/turf/target_turf in turflist)
+			for(var/mob/living/carbon/human/marine in target_turf)
+				marine_target = marine
+				continue
 
-	for (var/mob/living/carbon/H in targets)
-		to_chat(H, SPAN_DANGER("You are pulled towards [synth]!"))
-		H.KnockDown(0.2)
-		shake_camera(H, 10, 1)
-		H.throw_atom(throw_target_turf, get_dist(throw_target_turf, H)-1, SPEED_VERY_FAST)
-*/
+	if(marine_target)
+		to_chat(marine_target, SPAN_DANGER("You are pulled towards [synth]!"))
+		marine_target.KnockDown(0.2)
+		shake_camera(marine_target, 10, 1)
+		marine_target.throw_atom(throw_target_turf, get_dist(throw_target_turf, marine_target)-1, SPEED_VERY_FAST)
+	synth_bracer.active_utility = SIMI_ACTIVE_NONE
+	synth_bracer.update_icon()
+
+/obj/effect/simi_hook
+	icon = 'icons/obj/items/synth/bracer.dmi'
+	icon_state = "holo_hook_telegraph_anim"
+
+/obj/effect/simi_hook/New(loc, ttl = 10)
+	..(loc)
+	QDEL_IN(src, ttl)

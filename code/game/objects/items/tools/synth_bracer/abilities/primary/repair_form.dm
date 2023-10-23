@@ -1,11 +1,12 @@
 /datum/action/human_action/synth_bracer/repair_form
 	name = "Repair Form"
-	action_icon_state = "smartpack_repair"
+	action_icon_state = "repair"
 	cooldown = 15 SECONDS
 	charge_cost = SIMI_REPAIR_COST
 
 	handles_charge_cost = TRUE
 	handles_cooldown = TRUE
+	category = SIMI_PRIMARY_ACTION
 
 /datum/action/human_action/synth_bracer/repair_form/action_activate()
 	..()

@@ -1,6 +1,5 @@
 /datum/action/human_action/synth_bracer/crew_monitor
 	name = "View Crew Monitor"
-	icon_file = 'icons/obj/items/experimental_tools.dmi'
 	action_icon_state = "crew_monitor"
 
 	var/datum/radar/lifeline/radar

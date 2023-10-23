@@ -30,7 +30,7 @@
 	name = "hollowpoint pistol bullet"
 
 	damage = 55 //hollowpoint is strong
-	penetration = 0 //hollowpoint can't pierce armor!
+	penetration = ARMOR_PENETRATION_NONE //hollowpoint can't pierce armor!
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_3 //hollowpoint causes shrapnel
 
 // Used by M4A3 AP and mod88
@@ -94,40 +94,36 @@
 	name = "stun pistol bullet"
 	sound_override = null
 
-// Used by M1911, Deagle and KT-42
+// Used for High Calibers (.50 , pistol .44 and 7.62x25mm)
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	damage = 55
-	penetration = ARMOR_PENETRATION_TIER_3
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_7
+	damage = 50
+	penetration = ARMOR_PENETRATION_TIER_4
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
-	name = ".50 heavy pistol bullet"
-	damage = 60
-	damage_var_low = PROJECTILE_VARIANCE_TIER_8
-	damage_var_high = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_4
+	name = ".50s heavy pistol bullet"
+	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	accuracy = -HIT_ACCURACY_TIER_2
+	debilitate = list(0,0,0,0,0,1,0,0)
+	damage = 70
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact
-	name = ".50 high-impact pistol bullet"
-	penetration = ARMOR_PENETRATION_TIER_1
+	name = ".50s high-impact pistol bullet"
+	penetration = ARMOR_PENETRATION_NONE // the tip was removed to transfer more energy therefore no pen
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/ap
-	name = ".50 high-impact armor piercing pistol bullet"
+/datum/ammo/bullet/pistol/heavy/super/ap
+	name = ".50s armor piercing pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 45
+	damage = 55
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
-	name = "high-impact pistol bullet"
 	sound_override = 'sound/weapons/gun_DE50.ogg'
-	penetration = ARMOR_PENETRATION_TIER_6
-	debilitate = list(0,1.5,0,0,0,1,0,0)
-	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/New()
 	..()
@@ -135,15 +131,6 @@
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
-
-/datum/ammo/bullet/pistol/deagle
-	name = ".50 heavy pistol bullet"
-	damage = 45
-	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	accuracy = -HIT_ACCURACY_TIER_3
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_6
-	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
@@ -179,11 +166,10 @@
 	name = "squash-head pistol bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(0,0,0,0,0,0,0,2)
-
 	accuracy = HIT_ACCURACY_TIER_4
 	damage = 45
-	penetration= ARMOR_PENETRATION_TIER_6
-	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+	penetration= ARMOR_PENETRATION_TIER_4
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_6
 	damage_falloff = DAMAGE_FALLOFF_TIER_6 //"VP78 - the only pistol viable as a primary."-Vampmare, probably.
 
 /datum/ammo/bullet/pistol/squash/toxin
@@ -238,7 +224,6 @@
 	damage_type = BURN
 	debilitate = list(4,4,0,0,0,0,0,0)
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR
-
 	damage = 15
 	damage_var_high = PROJECTILE_VARIANCE_TIER_5
 	shell_speed = AMMO_SPEED_TIER_2
@@ -257,9 +242,7 @@
 /datum/ammo/bullet/pistol/smart
 	name = "smartpistol bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
-
 	accuracy = HIT_ACCURACY_TIER_8
 	damage = 30
-	penetration = 20
+	penetration = ARMOR_PENETRATION_TIER_4
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
-

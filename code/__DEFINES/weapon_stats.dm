@@ -252,6 +252,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 //See Neth's armor comments for how this works. Higher is better.
 */
 
+#define ARMOR_PENETRATION_NONE 0
 #define ARMOR_PENETRATION_TIER_1 5
 #define ARMOR_PENETRATION_TIER_2 10
 #define ARMOR_PENETRATION_TIER_3 15

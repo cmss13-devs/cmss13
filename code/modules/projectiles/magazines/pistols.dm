@@ -163,7 +163,8 @@
 
 /obj/item/ammo_magazine/pistol/heavy
 	name = "\improper Desert Eagle magazine (.50)"
-	default_ammo = /datum/ammo/bullet/pistol/deagle
+	desc = "Seven rounds of devastatingly powerful 50 destruction."
+	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".50"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "deagle"
@@ -173,22 +174,21 @@
 	ammo_band_icon_empty = "+deagle_band_e"
 
 /obj/item/ammo_magazine/pistol/heavy/super //Commander's variant
-	name = "\improper Heavy Desert Eagle magazine (.50)"
-	desc = "Seven rounds of devastatingly powerful 50-caliber destruction."
+	name = "\improper Heavy Desert Eagle magazine (.50s)"
 	gun_type = /obj/item/weapon/gun/pistol/heavy/co
 	default_ammo = /datum/ammo/bullet/pistol/heavy/super
 	ammo_band_color = AMMO_BAND_COLOR_SUPER
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact
-	name = "\improper High Impact Desert Eagle magazine (.50)"
+	name = "\improper High Impact Desert Eagle magazine (.50s)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. The bullets are tipped with a synthesized osmium and lead alloy to stagger absolutely anything they hit. Point away from anything you value."
 	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
-	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
-	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
+	name = "\improper Armor-Piercing Desert Eagle magazine (.50s)"
+	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. The bullets are tipped with an osmium-tungsten carbide alloy to shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
+	default_ammo = /datum/ammo/bullet/pistol/heavy/super/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------

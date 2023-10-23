@@ -241,7 +241,7 @@
 			var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(get_turf(O.loc)) //Aaannd wrap it up!
 			if(!istype(O.loc, /turf))
 				if(user.client)
-					user.client.screen -= O
+					user.client.remove_from_screen(O)
 			P.wrapped = O
 			O.forceMove(P)
 			P.w_class = O.w_class

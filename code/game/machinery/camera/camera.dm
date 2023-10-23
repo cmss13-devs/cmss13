@@ -187,9 +187,9 @@
 		else
 			visible_message(SPAN_WARNING("[user] has deactivated [src]!"))
 	if(status)
-		icon_state = initial(icon_state)
+		icon_state = "camera"
 	else
-		icon_state = "[initial(icon_state)]1"
+		icon_state = "camera1"
 	// now disconnect anyone using the camera
 	//Apparently, this will disconnect anyone even if the camera was re-activated.
 	//I guess that doesn't matter since they can't use it anyway?

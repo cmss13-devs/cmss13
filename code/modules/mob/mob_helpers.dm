@@ -322,13 +322,10 @@ var/global/list/limb_types_by_name = list(
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
 
-/mob/verb/a_select_zone(input as text)
-	set name = "a-select-zone"
-	set hidden = TRUE
-
+/mob/proc/a_select_zone(input, client/user)
 	var/atom/movable/screen/zone_sel/zone
 
-	for(var/A in usr.client.screen)
+	for(var/A in user.screen)
 		if(istype(A, /atom/movable/screen/zone_sel))
 			zone = A
 
@@ -410,6 +407,10 @@ var/global/list/limb_types_by_name = list(
 		if(SKILL_ENGINEER)
 			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				return DURATION_MULTIPLIER_TIER_2
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				return DURATION_MULTIPLIER_TIER_1
 // Construction
 		if(SKILL_CONSTRUCTION)
 			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_MASTER))
@@ -575,12 +576,14 @@ var/global/list/limb_types_by_name = list(
 		var/iheight = source_icon.Height()
 		var/iwidth = source_icon.Width()
 		var/higher_power = (iheight > iwidth) ? iheight : iwidth
+		alert_overlay.pixel_y = initial(source.pixel_y)
+		alert_overlay.pixel_x = initial(source.pixel_x)
 		if(higher_power > 32)
 			var/diff = 32 / higher_power
 			alert_overlay.transform = alert_overlay.transform.Scale(diff, diff)
 			if(higher_power > 48)
-				alert_overlay.pixel_y = -(iheight / 2) * diff
-				alert_overlay.pixel_x = -(iwidth / 2) * diff
+				alert_overlay.pixel_y = -(iheight * 0.5) * diff
+				alert_overlay.pixel_x = -(iwidth * 0.5) * diff
 
 
 	alert_overlay.layer = FLOAT_LAYER

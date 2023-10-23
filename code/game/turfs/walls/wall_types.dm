@@ -24,8 +24,8 @@
 		/obj/structure/girder,
 		/obj/structure/machinery/door,
 		/obj/structure/machinery/cm_vending/sorted/attachments/blend,
-		/obj/structure/machinery/cm_vending/sorted/cargo_ammo/blend,
-		/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend,
 	)
 
 /turf/closed/wall/almayer/update_icon()
@@ -1113,6 +1113,10 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /turf/closed/wall/resin/reflective/bullet_act(obj/projectile/P)
 	if(src in P.permutated)
 		return
+
+	//Ineffective if someone is sitting on the wall
+	if(locate(/mob) in contents)
+		return ..()
 
 	if(!prob(chance_to_reflect))
 		if(P.ammo.damage_type == BRUTE)

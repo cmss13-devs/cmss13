@@ -2,19 +2,25 @@
 /obj/structure/machinery/door/airlock/multi_tile
 	width = 2
 	damage_cap = 650 // Bigger = more endurable
+	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
 /obj/structure/machinery/door/airlock/multi_tile/close() //Nasty as hell O(n^2) code but unfortunately necessary
-	for(var/turf/T in locs)
-		for(var/obj/vehicle/multitile/M in T)
-			if(M) return 0
+	for(var/turf/turf_tile in locs)
+		for(var/obj/vehicle/multitile/vehicle_tile in turf_tile)
+			if(vehicle_tile) return 0
 
 	return ..()
+
+/obj/structure/machinery/door/airlock/multi_tile/Initialize()
+	. = ..()
+	handle_multidoor()
+	update_icon()
 
 /obj/structure/machinery/door/airlock/multi_tile/glass
 	name = "Glass Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1glass.dmi'
 	opacity = FALSE
-	glass = 1
+	glass = TRUE
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
 /obj/structure/machinery/door/airlock/multi_tile/glass/colony
@@ -25,7 +31,7 @@
 	name = "Security Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1security.dmi'
 	opacity = FALSE
-	glass = 1
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/security/colony
 	req_access = null
@@ -35,7 +41,7 @@
 	name = "Command Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1command.dmi'
 	opacity = FALSE
-	glass = 1
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/command/colony
 	req_access = null
@@ -45,7 +51,7 @@
 	name = "Medical Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1medbay.dmi'
 	opacity = FALSE
-	glass = 1
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/medical/colony
 	req_access = null
@@ -55,7 +61,7 @@
 	name = "Engineering Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1engine.dmi'
 	opacity = FALSE
-	glass = 1
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/engineering/colony
 	req_access = null
@@ -65,7 +71,7 @@
 	name = "Research Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1research.dmi'
 	opacity = FALSE
-	glass = 1
+	glass = TRUE
 	req_one_access = list(ACCESS_MARINE_RESEARCH, ACCESS_WY_RESEARCH, ACCESS_WY_EXEC)
 
 /obj/structure/machinery/door/airlock/multi_tile/research/colony
@@ -103,7 +109,7 @@
 	name = "Secure Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1_secure2_glass.dmi'
 	opacity = FALSE
-	glass = 1
+	glass = TRUE
 	openspeed = 31
 	req_access = null
 
@@ -141,10 +147,10 @@
 	. = ..()
 	relativewall_neighbours()
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/take_damage(dam, mob/M)
-	var/damage_check = max(0, damage + dam)
-	if(damage_check >= damage_cap && M && is_mainship_level(z))
-		SSclues.create_print(get_turf(M), M, "The fingerprint contains bits of wire and metal specks.")
+/obj/structure/machinery/door/airlock/multi_tile/almayer/take_damage(taken_damage, mob/damaging_mob)
+	var/damage_check = max(0, damage + taken_damage)
+	if(damage_check >= damage_cap && damaging_mob && is_mainship_level(z))
+		SSclues.create_print(get_turf(damaging_mob), damaging_mob, "The fingerprint contains bits of wire and metal specks.")
 	..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic
@@ -155,6 +161,11 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname
 	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid
+	icon = 'icons/obj/structures/doors/2x1generic_solid.dmi'
+	opacity = TRUE
+	glass = FALSE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor
 	name = "\improper Medical Airlock"
@@ -223,15 +234,10 @@
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor()
+	. = ..()
 	if(!(width > 1)) return //Bubblewrap
 
 	update_filler_turfs()
-	if(dir in list(NORTH, SOUTH))
-		bound_height = world.icon_size * width
-		bound_width = world.icon_size
-	else if(dir in list(EAST, WEST))
-		bound_width = world.icon_size * width
-		bound_height = world.icon_size
 
 //We have to find these again since these doors are used on shuttles a lot so the turfs changes
 /obj/structure/machinery/door/airlock/multi_tile/almayer/proc/update_filler_turfs()
@@ -427,7 +433,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access
 	icon = 'icons/obj/structures/doors/4x1_elevator_access.dmi'
 	opacity = FALSE
-	glass = 1
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access/research
 	name = "\improper Research Elevator Hatch"
@@ -547,7 +553,7 @@
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	opacity = FALSE
-	glass = 1
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo
 	name = "\improper Alpha-Bravo Squads Preparations"

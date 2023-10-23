@@ -148,7 +148,10 @@
 
 	if(!check_rights(R_SERVER))
 		return
-	if (SSticker.current_state != GAME_STATE_PREGAME)
+	if(SSticker.current_state != GAME_STATE_PREGAME)
+		if(SSticker.delay_end)
+			if(tgui_alert(usr, "Round end delay is already enabled, are you sure you want to disable it?", "Confirmation", list("Yes", "No"), 30 SECONDS) != "Yes")
+				return
 		SSticker.delay_end = !SSticker.delay_end
 		message_admins("[SPAN_NOTICE("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
 		for(var/client/C in GLOB.admins)

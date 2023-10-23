@@ -185,7 +185,7 @@
 	use_stripe_overlay = FALSE
 	equipment_color = "#053818"
 	minimap_color = MINIMAP_SQUAD_INTEL
-	radio_freq = null
+	radio_freq = INTEL_FREQ
 
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE
@@ -604,7 +604,7 @@
 		if(JOB_SQUAD_MEDIC)
 			old_lead.comm_title = "HM"
 		if(JOB_SQUAD_TEAM_LEADER)
-			old_lead.comm_title = "TL"
+			old_lead.comm_title = "FTL"
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 		if(JOB_SQUAD_LEADER)

@@ -53,8 +53,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/machinery/computer/bullet_act(obj/projectile/Proj)
 	if(exproof)

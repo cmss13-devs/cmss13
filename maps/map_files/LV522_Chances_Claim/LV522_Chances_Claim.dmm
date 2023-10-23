@@ -11958,12 +11958,6 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/north_command_centre)
-"fpS" = (
-/obj/item/prop/helmetgarb/helmet_nvg/marsoc,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/lv522/oob)
 "fpW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17405,10 +17399,6 @@
 /area/lv522/indoors/a_block/dorm_north)
 "hqr" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/weldingtool/hugetank{
-	pixel_x = 8;
-	pixel_y = 7
-	},
 /obj/item/tool/weldpack{
 	pixel_y = 2
 	},
@@ -20727,7 +20717,7 @@
 /area/lv522/atmos/cargo_intake)
 "iFe" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/stunprod,
+/obj/item/weapon/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
 	},
@@ -40714,7 +40704,6 @@
 /area/lv522/indoors/b_block/bridge)
 "pXH" = (
 /obj/effect/alien/weeds/node/alpha,
-/obj/effect/alien/egg/alpha,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/w_rockies)
 "pYf" = (
@@ -48152,10 +48141,7 @@
 	pixel_y = 6
 	},
 /obj/item/handcuffs,
-/obj/item/weapon/baton{
-	pixel_x = -2;
-	pixel_y = 10
-	},
+/obj/item/weapon/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -99533,7 +99519,7 @@ tiQ
 joK
 cPU
 daL
-fpS
+xcU
 dLz
 xcU
 edk

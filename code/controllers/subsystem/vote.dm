@@ -273,7 +273,7 @@ SUBSYSTEM_DEF(vote)
 				question = "Gamemode vote"
 				randomize_entries = TRUE
 				for(var/mode_type in config.gamemode_cache)
-					var/datum/game_mode/M = initial(mode_type)
+					var/datum/game_mode/M = mode_type
 					if(initial(M.config_tag))
 						var/vote_cycle_met = !initial(M.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(M.vote_cycle) == 0)
 						if(initial(M.votable) && vote_cycle_met)

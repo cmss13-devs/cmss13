@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Slicing food once again works as intended."

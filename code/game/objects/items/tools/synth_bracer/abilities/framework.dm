@@ -48,7 +48,7 @@
 	synth_bracer = synth.gloves
 	return ..()
 
-/datum/action/human_action/synth_bracer/remove_from(mob/living/carbon/human/H)
+/datum/action/human_action/synth_bracer/remove_from(user)
 	synth = null
 	synth_bracer = null
 	return ..()

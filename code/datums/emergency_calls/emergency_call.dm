@@ -15,13 +15,15 @@
 	var/input = "ARES. Online. Good morning, marines."
 	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
 
+///normal manual approval ERT request
 /datum/game_mode/proc/request_ert(user, ares = FALSE)
 	if(!user)
 		return FALSE
 	message_admins("[key_name(user)] has requested a Distress Beacon! [ares ? SPAN_ORANGE("(via ARES)") : ""] ([SSticker.mode.ert_dispatched ? SPAN_RED("A random ERT was dispatched previously.") : SPAN_GREEN("No previous random ERT dispatched.")]) [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[user]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 	return TRUE
 
-/datum/game_mode/proc/authorized_request_ert(user) // calls the first ERT winout the need of admin approval.
+/// Automatic Approval ERT request , Admins are given 15 seconds to DENY the ERT
+/datum/game_mode/proc/authorized_request_ert(user)
 	if(!user)
 		return FALSE
 	if(ert_dispatched) //safety check we dont want ert spam
@@ -30,6 +32,7 @@
 	addtimer(CALLBACK(src, PROC_REF(process_ert_call)), 15 SECONDS)
 	return TRUE
 
+///Process of the ERT call , checks if the request was denied, if not it will call ERT
 /datum/game_mode/proc/process_ert_call(user)
 	if(distress_cancel)
 		distress_cancel = FALSE

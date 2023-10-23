@@ -9,7 +9,6 @@
 	var/screen = 1
 	var/confirmed = 0 //This variable is set by the device that confirms the request.
 	var/confirm_delay = 20 //(2 seconds)
-	var/cooldown_request = 0
 	var/busy = FALSE //Busy when waiting for authentication or an event request has been sent from this device.
 	var/obj/structure/machinery/keycard_auth/event_source
 	var/mob/event_triggered_by
@@ -22,6 +21,7 @@
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON
+	COOLDOWN_DECLARE(distress_Cooldown)
 
 /obj/structure/machinery/keycard_auth/attack_remote(mob/user as mob)
 	to_chat(user, "The station AI is not to interact with these devices.")
@@ -147,37 +147,34 @@
 		if("enable_maint_sec")
 			revoke_maint_all_access()
 		if("distress_beacon")
-			if(is_ert_blocked())
-				call_ert()
+			call_ert()
 
-/obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
+/obj/structure/machinery/keycard_auth/proc/call_ert()
 	if(world.time < DISTRESS_TIME_LOCK)
 		to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
-		return FALSE
+		return
 
-	if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
+	if(!COOLDOWN_FINISHED(src, distress_Cooldown))
 		to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
-		return FALSE
+		return
 
 	if(security_level == SEC_LEVEL_DELTA)
 		to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
-		return FALSE
+		return
 
 	if(security_level < SEC_LEVEL_RED)
 		to_chat(usr, SPAN_WARNING("The ship security level is not high enough to call a distress beacon!"))
-		return FALSE
-	return TRUE
+		return
 
-/obj/structure/machinery/keycard_auth/proc/call_ert()
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			C << 'sound/effects/sos-morse-code.ogg'
+	for(var/client/client in GLOB.admins)
+		if((R_ADMIN|R_MOD) & client.admin_holder.rights)
+			client << 'sound/effects/sos-morse-code.ogg'
 	if(SSticker.mode.is_in_endgame)
 		SSticker.mode.authorized_request_ert(usr)
 	else
 		SSticker.mode.request_ert(usr)
 	to_chat(usr, SPAN_NOTICE("An emergency distress beacon has been sent to nearby vessels."))
-	cooldown_request = world.time
+	COOLDOWN_START(src, distress_Cooldown, COOLDOWN_COMM_REQUEST)
 	return
 
 GLOBAL_VAR_INIT(maint_all_access, TRUE)

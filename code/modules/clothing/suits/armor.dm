@@ -423,7 +423,7 @@
 			return
 		var/obj/item/weapon/gun/W = usr.get_active_hand()
 		if (W.w_class > SIZE_MEDIUM)
-			to_chat(usr, SPAN_DANGER("This gun won't fit in \the belt!"))
+			to_chat(usr, SPAN_DANGER("This gun won't fit in the belt!"))
 			return
 		holstered = usr.get_active_hand()
 		usr.drop_held_item()

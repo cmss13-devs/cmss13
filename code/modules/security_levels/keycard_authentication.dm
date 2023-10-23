@@ -168,7 +168,7 @@
 
 	for(var/client/client in GLOB.admins)
 		if((R_ADMIN|R_MOD) & client.admin_holder.rights)
-			client << 'sound/effects/sos-morse-code.ogg'
+			playsound_client(client,'sound/effects/sos-morse-code.ogg')
 	if(SSticker.mode.is_in_endgame)
 		SSticker.mode.authorized_request_ert(usr)
 	else

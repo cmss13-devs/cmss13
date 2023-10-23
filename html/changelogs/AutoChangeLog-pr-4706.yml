@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - balance: "Revolver Heavy ammo no longer stuns targets it strikes, it will instead knock them back and slow them down for a short time."

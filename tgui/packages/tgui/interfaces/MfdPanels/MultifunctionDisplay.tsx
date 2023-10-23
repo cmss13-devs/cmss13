@@ -1,7 +1,7 @@
-import { useBackend } from '../backend';
-import { Button, Flex } from '../components';
-import { CrtPanel } from './CrtPanel';
-import { Table, TableCell, TableRow } from '../components/Table';
+import { useBackend, useSharedState } from '../../backend';
+import { Button, Flex } from '../../components';
+import { CrtPanel } from '../CrtPanel';
+import { Table, TableCell, TableRow } from '../../components/Table';
 import { InfernoNode } from 'inferno';
 
 export interface ButtonProps {
@@ -15,8 +15,15 @@ export interface FullButtonProps extends ButtonProps {
   location: mfddir;
 }
 
-interface MfdProps {
-  buttons: Array<FullButtonProps>;
+export const usePanelState = (panelId?: string, context) =>
+  useSharedState<string>(context, `${panelId}_panelstate`, '');
+
+export interface MfdProps {
+  panelStateId?: string;
+  topButtons?: Array<ButtonProps>;
+  leftButtons?: Array<ButtonProps>;
+  rightButtons?: Array<ButtonProps>;
+  bottomButtons?: Array<ButtonProps>;
   children?: InfernoNode;
 }
 
@@ -78,10 +85,21 @@ export const VerticalPanel = (
 };
 
 export const MfdPanel = (props: MfdProps, context) => {
-  const topButtons = props.buttons.filter((x) => x.location === 'top');
-  const botButtons = props.buttons.filter((x) => x.location === 'bottom');
-  const leftButtons = props.buttons.filter((x) => x.location === 'left');
-  const rightButtons = props.buttons.filter((x) => x.location === 'right');
+  const topProps = props.topButtons ?? [];
+  const botProps = props.bottomButtons ?? [];
+  const leftProps = props.leftButtons ?? [];
+  const rightProps = props.rightButtons ?? [];
+
+  const topButtons = Array.from({ length: 5 }).map((_, i) => topProps[i] ?? {});
+  const bottomButtons = Array.from({ length: 5 }).map(
+    (_, i) => botProps[i] ?? {}
+  );
+  const leftButtons = Array.from({ length: 5 }).map(
+    (_, i) => leftProps[i] ?? {}
+  );
+  const rightButtons = Array.from({ length: 5 }).map(
+    (_, i) => rightProps[i] ?? {}
+  );
   return (
     <Table className="primarypanel">
       <TableRow>
@@ -107,7 +125,7 @@ export const MfdPanel = (props: MfdProps, context) => {
       <TableRow>
         <TableCell />
         <TableCell>
-          <HorizontalPanel buttons={botButtons} />
+          <HorizontalPanel buttons={bottomButtons} />
         </TableCell>
         <TableCell />
       </TableRow>

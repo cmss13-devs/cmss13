@@ -1,10 +1,12 @@
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
-import { Box, Button, Divider, Flex, Stack } from '../components';
+import { Box, Divider, Flex, Stack } from '../components';
 import { CasSim } from './CasSim';
 import { ByondUi } from '../components';
 import { range } from 'common/collections';
-import { ButtonProps, FullButtonProps, mfddir, MfdPanel } from './MultifunctionDisplay';
+import { ButtonProps, FullButtonProps, mfddir, MfdPanel, MfdProps, usePanelState } from './MfdPanels/MultifunctionDisplay';
+import { CameraMfdPanel } from './MfdPanels/CameraPanel';
+import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -55,12 +57,7 @@ const yLookup = (index: number) => [150, 20, 20, 150][index] + yOffset;
 const OutlineColor = '#00e94e';
 const OutlineWidth = '2';
 
-type PanelStates = 'weapons' | 'equipment' | 'firemissions' | 'map' | 'camera';
-
 type EquipmentPanelStates = undefined | string;
-
-const usePanelState = (context) =>
-  useSharedState<PanelStates>(context, 'panelstate', 'equipment');
 
 const useEquipmentState = (context) =>
   useSharedState<EquipmentPanelStates>(context, 'equipmentState', undefined);
@@ -264,21 +261,6 @@ const MapPanel = (props, context) => {
   );
 };
 
-const CameraPanel = (props, context) => {
-  const { act, data } = useBackend<DropshipProps>(context);
-  return (
-    <Box className="NavigationMenu">
-      <ByondUi
-        className="CameraPanel"
-        params={{
-          id: data.camera_map_ref,
-          type: 'map',
-        }}
-      />
-    </Box>
-  );
-};
-
 const getGunButtonProps: (context: any) => Array<ButtonProps> = (context) => {
   const { act, data } = useBackend<DropshipProps>(context);
   const get_gun = (mount_point) =>
@@ -328,27 +310,6 @@ const getEquipmentButtonProps: (context: any) => Array<ButtonProps> = (
     getEquipmentProps(2),
     getEquipmentProps(3),
   ];
-};
-
-const getLeftButtons: (context: any) => Array<FullButtonProps> = (context) => {
-  const [panelState] = usePanelState(context);
-  const dir: mfddir = 'left';
-  const getProps = () => {
-    switch (panelState) {
-      case 'equipment':
-        return getEquipmentButtonProps(context);
-      default:
-        return getGunButtonProps(context);
-    }
-  };
-
-  return getProps().map((x) => {
-    const value: FullButtonProps = {
-      location: dir,
-      ...x,
-    };
-    return value;
-  });
 };
 
 const getLazeButtonProps = (context) => {
@@ -413,7 +374,7 @@ const getMedevacRightProps = (context) => {
 };
 
 const getRightButtons = (context) => {
-  const [panelState] = usePanelState(context);
+  const [panelState] = usePanelState(undefined, context);
   const dir: mfddir = 'right';
   const getProps = () => {
     switch (panelState) {
@@ -514,81 +475,62 @@ const EquipmentPanel = (props, context) => {
   );
 };
 
-const RenderScreen = (props, context) => {
-  const [panelState] = usePanelState(context);
-  switch (panelState) {
-    case 'weapons':
-      return <LcdPanel />;
-    case 'equipment':
-      return <EquipmentPanel />;
-    case 'firemissions':
-      return <FiremissionSimulationPanel />;
-    case 'map':
-      return <MapPanel />;
-    case 'camera':
-      return <CameraPanel />;
-    default:
-      return <Box className="NavigationMenu" />;
-  }
-};
-
-const PrimaryPanel = (props, context) => {
-  const [panelState, setPanelState] = usePanelState(context);
+const FiremissionsMfdPanel = (props, context) => {
   return (
-    <MfdPanel
-      buttons={[
-        { location: 'top', children: 'L' },
-        { location: 'top', children: 'LC' },
-        { location: 'top', children: 'C' },
-        { location: 'top', children: 'RC' },
-        { location: 'top', children: 'R' },
-        {
-          location: 'bottom',
-          children: 'WEAP',
-          onClick: () => setPanelState('weapons'),
-        },
-        {
-          location: 'bottom',
-          children: 'FIREM',
-          onClick: () => setPanelState('firemissions'),
-        },
-        {
-          location: 'bottom',
-          children: 'EQUIP',
-          onClick: () => setPanelState('equipment'),
-        },
-        {
-          location: 'bottom',
-          children: 'MAP',
-          onClick: () => setPanelState('map'),
-        },
-        {
-          location: 'bottom',
-          children: 'CAMERA',
-          onClick: () => setPanelState('camera'),
-        },
-        ...getLeftButtons(context),
-        ...getRightButtons(context),
-      ]}>
-      <RenderScreen />
+    <MfdPanel>
+      <FiremissionSimulationPanel />
     </MfdPanel>
   );
 };
 
-const SecondaryPanel = (props, context) => {
+const WeaponsMfdPanel = (props, context) => {
   return (
-    <Stack>
-      <Stack.Item>
-        <Button>Fire</Button>
-      </Stack.Item>
-      <Stack.Item>
-        <Button>Day/night</Button>
-      </Stack.Item>
-      <Stack.Item>
-        <Button>Master/Safe</Button>
-      </Stack.Item>
-    </Stack>
+    <MfdPanel>
+      <LcdPanel />
+    </MfdPanel>
   );
+};
+
+const MapMfdPanel = (props, context) => {
+  return (
+    <MfdPanel>
+      <MapPanel />
+    </MfdPanel>
+  );
+};
+
+const BaseMfdPanel = (props: MfdProps, context) => {
+  const [panelState, setPanelState] = usePanelState(
+    props.panelStateId,
+    context
+  );
+
+  return (
+    <MfdPanel
+      topButtons={[
+        { children: 'EQUIP', onClick: () => setPanelState('equipment') },
+      ]}>
+      <Box className="NavigationMenu" />
+    </MfdPanel>
+  );
+};
+
+const PrimaryPanel = (props: MfdProps, context) => {
+  const [panelState] = usePanelState(props.panelStateId, context);
+  switch (panelState) {
+    case 'camera':
+      return <CameraMfdPanel {...props} />;
+    case 'equipment':
+      return <EquipmentMfdPanel {...props} />;
+    case 'map':
+      return <MapMfdPanel />;
+    case 'weapons':
+      return <WeaponsMfdPanel />;
+    case 'firemissions':
+      return <FiremissionsMfdPanel />;
+    default:
+      return <BaseMfdPanel {...props} />;
+  }
 };
 
 export const DropshipWeaponsConsole = (_, context) => {
@@ -596,13 +538,13 @@ export const DropshipWeaponsConsole = (_, context) => {
   return (
     <Window height={1024} width={1024}>
       <Window.Content>
-        <Stack vertical className="WeaponsConsole">
+        <Stack horizontal className="WeaponsConsole">
           <Stack.Item>
-            <PrimaryPanel />
+            <PrimaryPanel panelStateId="left-screen" />
           </Stack.Item>
-          <Stack>
-            <SecondaryPanel />
-          </Stack>
+          <Stack.Item>
+            <PrimaryPanel panelStateId="right-screen" />
+          </Stack.Item>
         </Stack>
       </Window.Content>
     </Window>

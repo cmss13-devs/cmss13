@@ -175,7 +175,6 @@
 		SSticker.mode.request_ert(usr)
 	to_chat(usr, SPAN_NOTICE("An emergency distress beacon has been sent to nearby vessels."))
 	COOLDOWN_START(src, distress_Cooldown, COOLDOWN_COMM_REQUEST)
-	return
 
 GLOBAL_VAR_INIT(maint_all_access, TRUE)
 

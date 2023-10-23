@@ -1,6 +1,6 @@
 /datum/action/human_action/synth_bracer/protective_form
 	name = "Protective Form"
-	action_icon_state = "smartpack_repair"
+	action_icon_state = "smartpack_protect"
 	cooldown = 15 SECONDS
 	charge_cost = SIMI_PROTECTIVE_COST
 

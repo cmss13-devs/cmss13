@@ -1200,6 +1200,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\game\objects\items\tools\synth_bracer\_defines.dm"
 #include "code\game\objects\items\tools\synth_bracer\synth_bracer.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\framework.dm"
+#include "code\game\objects\items\tools\synth_bracer\abilities\integrated\crew_monitor.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\integrated\ocular_designator.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\integrated\tactical_map.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\primary\protect_form.dm"

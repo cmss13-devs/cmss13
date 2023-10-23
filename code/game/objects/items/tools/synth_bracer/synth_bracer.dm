@@ -33,41 +33,53 @@
 
 	var/battery_charge = SMARTPACK_MAX_POWER_STORED
 
-	var/list/actions_list = list(
-		///datum/action/human_action/activable/synth_bracer/rescue_hook,
-		//datum/action/human_action/synth_bracer/reflex_overclock,
-		/datum/action/human_action/synth_bracer/deploy_binoculars,
+	var/list/actions_list_inherent = list(
 		/datum/action/human_action/synth_bracer/repair_form,
-		/datum/action/human_action/synth_bracer/tactical_map
+		/datum/action/human_action/synth_bracer/protective_form,
+		/datum/action/human_action/synth_bracer/crew_monitor,
+		/datum/action/human_action/synth_bracer/deploy_binoculars,
+		/datum/action/human_action/synth_bracer/tactical_map,
+		//datum/action/human_action/activable/synth_bracer/rescue_hook,
+		//datum/action/human_action/synth_bracer/reflex_overclock,
 	)
+	var/list/actions_list_added = list()
 
-	var/list/bracer_actions = list()
-	var/obj/structure/transmitter/internal/internal_transmitter
+	var/list/actions_list_actions = list()
 	var/active_ability = SIMI_ACTIVE_NONE
 	var/active_utility = SIMI_ACTIVE_NONE
 
+	/// Faction used by Internal Phone & Crew Monitor
+	var/faction = FACTION_MARINE
+
+	/// Internal Phone
+	var/obj/structure/transmitter/internal/internal_transmitter
+
+	/// Pair of gloves worn underneath the computer.
 	var/obj/item/clothing/gloves/underglove
 
+	// Capability states used in FORITIFY mode.
 	var/saved_melee_allowed
 	var/saved_throw_allowed
 	var/saved_gun_allowed
 
 /obj/item/clothing/gloves/synth/Initialize(mapload, ...)
 	. = ..()
-	for(var/action_type in actions_list)
-		bracer_actions += new action_type
+	update_actions()
 
 	internal_transmitter = new(src)
 	internal_transmitter.relay_obj = src
 	internal_transmitter.phone_category = "Synth"
 	internal_transmitter.enabled = FALSE
 	internal_transmitter.range = 2
+	internal_transmitter.networks_receive = list(faction)
+	internal_transmitter.networks_transmit = list(faction)
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
 
 /obj/item/clothing/gloves/synth/Destroy()
 	. = ..()
-	QDEL_NULL_LIST(bracer_actions)
+	QDEL_NULL_LIST(actions_list_actions)
 	QDEL_NULL(internal_transmitter)
+	QDEL_NULL(underglove)
 
 /obj/item/clothing/gloves/synth/examine(mob/user)
 	..()
@@ -80,8 +92,7 @@
 /obj/item/clothing/gloves/synth/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_HANDS)
-		for(var/datum/action/human_action/action as anything in bracer_actions)
-			action.give_to(user)
+		update_actions(SIMI_ACTIONS_ADD, user)
 		flick("bracer_startup", src)
 
 		if(ishuman(user))
@@ -101,13 +112,13 @@
 	update_icon()
 
 /obj/item/clothing/gloves/synth/dropped(mob/user)
-	for(var/datum/action/human_action/action as anything in bracer_actions)
-		action.remove_from(user)
+	update_actions(SIMI_ACTIONS_REMOVE, user)
 	update_icon()
 
 	if(internal_transmitter)
 		internal_transmitter.phone_id = "[src]"
 		internal_transmitter.enabled = FALSE
+
 	return ..()
 
 /obj/item/clothing/gloves/synth/MouseDrop(obj/over_object as obj)
@@ -194,6 +205,10 @@
 
 	overlays += phone_image
 	overlays += ability_image
+
+/obj/item/clothing/gloves/synth/proc/check_for_ringing()
+	SIGNAL_HANDLER
+	update_overlays()
 
 /obj/item/clothing/gloves/synth/get_mob_overlay(mob/user_mob, slot)
 	var/image/overlay = ..()
@@ -294,8 +309,29 @@
 	to_chat(user, SPAN_WARNING("\The [src]'s charge now reads: <b>[battery_charge]/[initial(battery_charge)]</b>."))
 	update_icon()
 
-/obj/item/clothing/gloves/synth/proc/check_for_ringing()
-	SIGNAL_HANDLER
-	update_overlays()
+//########
+/obj/item/clothing/gloves/synth/proc/update_actions(mode = SIMI_ACTIONS_LOAD, mob/user)
+	if((!user) && (mode != SIMI_ACTIONS_LOAD))
+		return FALSE
+
+	switch(mode)
+		if(SIMI_ACTIONS_LOAD)
+			for(var/action_type in actions_list_inherent)
+				actions_list_actions += new action_type
+			for(var/action_type in actions_list_added)
+				actions_list_actions += new action_type
+
+		if(SIMI_ACTIONS_ADD)
+			for(var/datum/action/human_action/action as anything in actions_list_actions)
+				action.remove_from(user)
+			for(var/datum/action/human_action/action as anything in actions_list_actions)
+				action.give_to(user)
+
+		if(SIMI_ACTIONS_REMOVE)
+			for(var/datum/action/human_action/action as anything in actions_list_actions)
+				action.remove_from(user)
+		else
+			return FALSE
+	return TRUE
 
 

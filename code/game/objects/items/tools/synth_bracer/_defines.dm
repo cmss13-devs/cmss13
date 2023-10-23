@@ -1,3 +1,11 @@
+/// Loads/Reloads the available actions.
+#define SIMI_ACTIONS_LOAD "load"
+/// Cleans and then adds actions to the user.
+#define SIMI_ACTIONS_ADD "add"
+/// Removes actions from the user.
+#define SIMI_ACTIONS_REMOVE "remove"
+
+/// No active module.
 #define SIMI_ACTIVE_NONE "none"
 
 // Primary Abilities

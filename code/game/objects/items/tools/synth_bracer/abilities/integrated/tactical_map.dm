@@ -1,6 +1,6 @@
 /datum/action/human_action/synth_bracer/tactical_map
 	name = "View Tactical Map"
-	action_icon_state = "resin_pit"
+	action_icon_state = "minimap"
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM

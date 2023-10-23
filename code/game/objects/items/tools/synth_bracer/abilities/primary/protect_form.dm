@@ -17,7 +17,6 @@
 		to_chat(user, SPAN_DANGER("There is a lack of charge for that action. Charge: [synth_bracer.battery_charge]/[SIMI_PROTECTIVE_COST]"))
 		return
 
-	synth_bracer.active_ability = SIMI_ABILITY_PROTECT
 	synth_bracer.flags_item |= NODROP
 	synth_bracer.flags_inventory |= CANTSTRIP
 	LAZYSET(user.brute_mod_override, src, 0.2)
@@ -50,6 +49,6 @@
 	LAZYREMOVE(user.burn_mod_override, src)
 	to_chat(user, SPAN_DANGER("[name] beeps, \"The protection wears off.\""))
 	playsound(synth_bracer.loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
-	synth_bracer.active_ability = SIMI_ABILITY_PROTECT
+	synth_bracer.active_ability = SIMI_ACTIVE_NONE
 	synth_bracer.update_icon()
 	user.remove_filter("synth_protective_form")

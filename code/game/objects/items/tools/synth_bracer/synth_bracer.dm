@@ -3,7 +3,7 @@
 	desc = "Developed by a joint effort between Weyland-Yutani CIART and the USCM R&D Division, the SIMI portable computer is the ultimate solution for situational awareness, personnel monitoring and communication."
 
 	icon = 'icons/obj/items/synth/bracer.dmi'
-	icon_state = "bracer"
+	icon_state = "bracer_default"
 	item_icons = list(
 		WEAR_HANDS = 'icons/mob/humans/onmob/synth/bracer.dmi'
 	)
@@ -32,6 +32,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 	var/battery_charge = SMARTPACK_MAX_POWER_STORED
+	var/bracer_charging = FALSE
 
 	var/list/actions_list_inherent = list(
 		/datum/action/human_action/synth_bracer/crew_monitor,
@@ -57,6 +58,8 @@
 
 	/// Pair of gloves worn underneath the computer.
 	var/obj/item/clothing/gloves/underglove
+	/// Base color of the bracer. (DEFAULT OR WHITE)
+	var/bracer_color = SIMI_COLOR_DEFAULT
 
 	// Capability states used in FORITIFY mode.
 	var/saved_melee_allowed
@@ -94,7 +97,7 @@
 	. = ..()
 	if(slot == WEAR_HANDS)
 		update_actions(SIMI_ACTIONS_ADD, user)
-		flick("bracer_startup", src)
+		flick("bracer_[bracer_color]_startup", src)
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/human_user = user
@@ -114,6 +117,9 @@
 
 /obj/item/clothing/gloves/synth/dropped(mob/user)
 	update_actions(SIMI_ACTIONS_REMOVE, user)
+
+	if(bracer_charging)
+		stop_charging(user)
 	update_icon()
 
 	if(internal_transmitter)
@@ -169,29 +175,34 @@
 /obj/item/clothing/gloves/synth/update_icon()
 	var/mob/living/carbon/human/wearer = loc
 	if(!istype(wearer) || wearer.gloves != src)
-		icon_state = "bracer"
+		overlays.Cut()
+		icon_state = "bracer_[bracer_color]"
 		return
 
-	icon_state = "bracer_off"
+	icon_state = "bracer_[bracer_color]_blank"
 
 	update_overlays()
 
 /obj/item/clothing/gloves/synth/proc/get_bracer_status()
 	if(battery_charge <= 0)
-		return "bracer_off"
+		return "status_nobattery"
 	if(battery_charge <= initial(battery_charge) * 0.1)
-		return "bracer_nobattery"
+		return "status_lowbattery"
 	var/mob/living/carbon/human/wearer = loc
 	if(!issynth(wearer))
-		return "bracer_unauthorized"
+		return "status_unauthorized"
+	return "status_idle"
 
 /obj/item/clothing/gloves/synth/proc/update_overlays()
 	overlays.Cut()
 
-	var/image/idle_image = image(icon, src, "bracer_idle")
+	var/image/idle_image = image(icon, src, "status_idle")
 	idle_image.appearance_flags = RESET_COLOR|KEEP_APART
-	var/image/status_image = image(icon, src, get_bracer_status())
-	status_image.appearance_flags = RESET_COLOR|KEEP_APART
+	var/current_status = get_bracer_status()
+	var/image/status_image
+	if(current_status != "status_idle")
+		status_image = image(icon, src, current_status)
+		status_image.appearance_flags = RESET_COLOR|KEEP_APART
 
 	var/phone_status
 	if(internal_transmitter && internal_transmitter.attached_to)
@@ -280,7 +291,7 @@
 /obj/item/clothing/gloves/synth/proc/complete_apc_charge(mob/living/carbon/human/user, obj/structure/machinery/power/apc/apc)
 	start_charging(user)
 
-	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		stop_charging(user)
 		return
 
@@ -300,7 +311,7 @@
 				return
 			battery_charge += charge_to_use
 			to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. \The [src] now has <b>[battery_charge]/[initial(battery_charge)]</b>."))
-			apc.charging = 1
+			apc.charging = 1 //APC_CHARGING
 		else
 			to_chat(user, SPAN_WARNING("\The [src] is already fully charged."))
 	else
@@ -308,11 +319,18 @@
 	stop_charging(user)
 
 /obj/item/clothing/gloves/synth/proc/start_charging(mob/user)
+	bracer_charging = TRUE
 	item_state_slots[WEAR_HANDS] += "_charging"
-	icon_state = "bracer_charging"
+	//icon_state = "status_charging"
+
+	var/image/charge_image = image(icon, src, "status_charging")
+	charge_image.appearance_flags = RESET_COLOR|KEEP_APART
+	overlays += charge_image
+
 	user.update_inv_gloves()
 
 /obj/item/clothing/gloves/synth/proc/stop_charging(mob/user)
+	bracer_charging = FALSE
 	item_state_slots[WEAR_HANDS] = base_item_slot_state
 	update_icon()
 	user.update_inv_gloves()

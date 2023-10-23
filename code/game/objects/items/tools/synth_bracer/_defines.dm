@@ -1,3 +1,7 @@
+// Possible Bracer Colors
+#define SIMI_COLOR_DEFAULT "default"
+#define SIMI_COLOR_WHITE "white"
+
 /// Loads/Reloads the available actions.
 #define SIMI_ACTIONS_LOAD "load"
 /// Cleans and then adds actions to the user.

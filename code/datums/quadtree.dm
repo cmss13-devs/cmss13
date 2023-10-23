@@ -10,7 +10,7 @@
 	var/z_level
 
 	/// Don't divide further when truthy
-	var/final
+	var/final = FALSE
 
 /datum/quadtree/New(datum/shape/rectangle/rect, z)
 	. = ..()

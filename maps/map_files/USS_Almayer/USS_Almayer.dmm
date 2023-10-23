@@ -21085,6 +21085,7 @@
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
+/obj/item/attachable/bayonet,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red"
@@ -29592,6 +29593,7 @@
 	},
 /obj/structure/janitorialcart,
 /obj/item/tool/mop,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -32951,6 +32953,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/pilotbunks)
+"fdV" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "fdX" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/hand_labeler,
@@ -34721,6 +34730,11 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/general_equipment)
+"fLW" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "fLX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -36929,13 +36943,18 @@
 	},
 /area/almayer/living/bridgebunks)
 "gCY" = (
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = -17
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	layer = 3.33;
 	pixel_y = 1
+	},
+/obj/structure/sign/safety/reception{
+	pixel_x = -17;
+	pixel_y = -4
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17;
+	pixel_y = 11
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -41653,6 +41672,12 @@
 	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
+"ivb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "ivf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/camera,
@@ -44088,6 +44113,7 @@
 /obj/structure/sign/safety/maint{
 	pixel_x = 32
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "jqP" = (
@@ -50646,6 +50672,13 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/stern_hallway)
+"lLy" = (
+/obj/structure/largecrate/random/case/double,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "lLC" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
@@ -51112,6 +51145,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
+"lWq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_m_p)
 "lWr" = (
 /obj/structure/largecrate/random/case,
 /turf/open/floor/almayer{
@@ -59190,6 +59227,10 @@
 "pdU" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
+	},
+/obj/structure/sign/safety/bridge{
+	pixel_x = -17;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -76515,6 +76556,13 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie)
+"vLJ" = (
+/obj/structure/largecrate/random/case,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "vMn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -109628,8 +109676,8 @@ aZz
 aZz
 aZz
 nca
-baw
-cxk
+fon
+fLW
 qVM
 iBt
 iBt
@@ -109829,10 +109877,10 @@ dCD
 aXe
 baw
 baw
-baw
+fon
 jqO
-baw
-baw
+fon
+fon
 qVM
 iBt
 iBt
@@ -110233,10 +110281,10 @@ aii
 ajC
 qVM
 gKS
-gKS
-csz
+fdV
+ivb
 xCX
-csz
+ivb
 vGk
 vGk
 qVM
@@ -110435,13 +110483,13 @@ ahr
 akU
 bYe
 xCX
-csz
-vGk
+ivb
+lWq
 vGk
 qVM
 elp
-csz
-csz
+ivb
+ivb
 qVM
 iBt
 iBt
@@ -110849,10 +110897,10 @@ atj
 atj
 atj
 czu
-foR
-usi
-vGk
-foR
+vLJ
+lLy
+lWq
+vLJ
 qVM
 rQW
 yhI
@@ -111052,8 +111100,8 @@ atj
 atj
 atj
 czu
-usi
-vGk
+lLy
+lWq
 vGk
 vLv
 qVM
@@ -111256,7 +111304,7 @@ atl
 atl
 czu
 dQE
-vGk
+lWq
 csz
 qVM
 qVM
@@ -111458,7 +111506,7 @@ atI
 atI
 atI
 czu
-usi
+lLy
 foR
 csz
 xCX

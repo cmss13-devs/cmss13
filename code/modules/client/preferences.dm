@@ -1414,11 +1414,8 @@ var/const/MAX_SAVE_SLOTS = 10
 						var/all_ok = TRUE
 						for(var/i=1, i<=length(new_xeno_prefix), i++)
 							var/ascii_char = text2ascii(new_xeno_prefix,i)
-							switch(ascii_char)
-								// A  .. Z
-								if(65 to 90) //Uppercase Letters will work
-								else
-									all_ok = FALSE //everything else - won't
+							if(ascii_char < 65 || ascii_char > 90)
+								all_ok = FALSE //everything else - won't
 						if(all_ok)
 							xeno_prefix = new_xeno_prefix
 							owner.load_xeno_name()

@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed incorrect Reqs vendors visuals on the Almayer. They now blend in with the walls again."

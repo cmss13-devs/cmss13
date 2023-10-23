@@ -538,10 +538,14 @@ var/list/ob_type_fuel_requirements
 
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)
-			var/turf/U = pick(turf_list)
-			if(protected_by_pylon(TURF_PROTECTION_OB, U)) //If the turf somehow gained OB protection while the cluster was firing
+			var/turf/selected_turf = pick(turf_list)
+			if(protected_by_pylon(TURF_PROTECTION_OB, selected_turf))
 				continue
-			fire_in_a_hole(U)
+			var/area/selected_area = get_area(selected_turf)
+			if(CEILING_IS_PROTECTED(selected_area?.ceiling, CEILING_PROTECTION_TIER_4))
+				continue
+			fire_in_a_hole(selected_turf)
+
 		sleep(delay_between_clusters)
 	QDEL_IN(src, 5 SECONDS) // Leave time for last handle_ob_shake below
 

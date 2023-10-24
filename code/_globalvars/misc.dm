@@ -23,8 +23,8 @@ GLOBAL_VAR_INIT(uscm_flatten_map_icon_cooldown, 0)
 GLOBAL_VAR_INIT(xeno_flatten_map_icon_cooldown, 0)
 
 // latest unannounced flat tacmap for xenos and marines
-GLOBAL_VAR_INIT(uscm_unannounced_map, null)
-GLOBAL_VAR_INIT(xeno_unannounced_map, null)
+GLOBAL_VAR(uscm_unannounced_map)
+GLOBAL_VAR(xeno_unannounced_map)
 
 //global tacmaps for action button access
 GLOBAL_DATUM_INIT(uscm_tacmap_status, /datum/tacmap/drawing/status_tab_view, new)

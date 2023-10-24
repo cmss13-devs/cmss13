@@ -411,20 +411,20 @@ SUBSYSTEM_DEF(minimaps)
 	var/is_observer = user.faction == FACTION_NEUTRAL && isobserver(user)
 	if(is_observer || user.faction == FACTION_MARINE)
 		// Send marine maps
-		var/datum/flattend_tacmap/latest = get_tacmap_data_png(FACTION_MARINE)
+		var/datum/flattened_tacmap/latest = get_tacmap_data_png(FACTION_MARINE)
 		if(latest)
 			SSassets.transport.send_assets(user.client, latest.asset_key)
-		var/datum/flattend_tacmap/unannounced = get_unannounced_tacmap_data_png(FACTION_MARINE)
+		var/datum/flattened_tacmap/unannounced = get_unannounced_tacmap_data_png(FACTION_MARINE)
 		if(unannounced && (!latest || latest.asset_key != unannounced.asset_key))
 			SSassets.transport.send_assets(user.client, unannounced.asset_key)
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	if(is_observer || istype(xeno) && xeno.hivenumber == XENO_HIVE_NORMAL)
 		// Send xeno maps
-		var/datum/flattend_tacmap/latest = get_tacmap_data_png(XENO_HIVE_NORMAL)
+		var/datum/flattened_tacmap/latest = get_tacmap_data_png(XENO_HIVE_NORMAL)
 		if(latest)
 			SSassets.transport.send_assets(user.client, latest.asset_key)
-		var/datum/flattend_tacmap/unannounced = get_unannounced_tacmap_data_png(XENO_HIVE_NORMAL)
+		var/datum/flattened_tacmap/unannounced = get_unannounced_tacmap_data_png(XENO_HIVE_NORMAL)
 		if(unannounced && (!latest || latest.asset_key != unannounced.asset_key))
 			SSassets.transport.send_assets(user.client, unannounced.asset_key)
 
@@ -474,7 +474,7 @@ SUBSYSTEM_DEF(minimaps)
 		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder."))
 		return FALSE
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
-	var/datum/flattend_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
+	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
 
 	if(faction == FACTION_MARINE)
 		GLOB.uscm_unannounced_map = new_flat
@@ -633,9 +633,9 @@ SUBSYSTEM_DEF(minimaps)
 	/// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
 	/// current flattend map
-	var/datum/flattend_tacmap/new_current_map
+	var/datum/flattened_tacmap/new_current_map
 	/// previous flattened map
-	var/datum/flattend_tacmap/old_map
+	var/datum/flattened_tacmap/old_map
 	/// current svg
 	var/datum/svg_overlay/current_svg
 
@@ -927,12 +927,12 @@ SUBSYSTEM_DEF(minimaps)
 	map = null
 	return ..()
 
-/datum/flattend_tacmap
+/datum/flattened_tacmap
 	var/flat_tacmap
 	var/asset_key
 	var/time
 
-/datum/flattend_tacmap/New(flat_tacmap, asset_key)
+/datum/flattened_tacmap/New(flat_tacmap, asset_key)
 	src.flat_tacmap = flat_tacmap
 	src.asset_key = asset_key
 	src.time = time_stamp()

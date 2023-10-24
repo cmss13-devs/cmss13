@@ -67,7 +67,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		data["uscm_map"] = null
 		data["uscm_svg"] = null
 	else
-		var/datum/flattend_tacmap/selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
+		var/datum/flattened_tacmap/selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
 		var/datum/svg_overlay/selected_svg = GLOB.uscm_svg_tacmap_data[uscm_selection + 1]
 		data["uscm_map"] = selected_flat.flat_tacmap
 		data["uscm_svg"] = selected_svg.svg_data
@@ -76,7 +76,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		data["xeno_map"] = null
 		data["xeno_svg"] = null
 	else
-		var/datum/flattend_tacmap/selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
+		var/datum/flattened_tacmap/selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
 		var/datum/svg_overlay/selected_svg = GLOB.xeno_svg_tacmap_data[xeno_selection + 1]
 		data["xeno_map"] = selected_flat.flat_tacmap
 		data["xeno_svg"] = selected_svg.svg_data
@@ -101,7 +101,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	switch(action)
 		if("recache")
 			var/is_uscm = params["uscm"]
-			var/datum/flattend_tacmap/selected_flat
+			var/datum/flattened_tacmap/selected_flat
 			if(is_uscm)
 				if(uscm_selection == -1)
 					return TRUE

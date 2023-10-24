@@ -982,7 +982,7 @@
 
 	if(isxeno(P.firer))
 		var/mob/living/carbon/xenomorph/X = P.firer
-		if(X.can_not_harm(src))
+		if(X.can_not_harm(src) && !(P.ammo.flags_ammo_behavior & AMMO_IGNORE_XENO_IFF))
 			bullet_ping(P)
 			return -1
 		else

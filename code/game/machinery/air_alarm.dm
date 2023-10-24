@@ -431,8 +431,6 @@
 	var/wireIndex = AAlarmWireColorToIndex[wireColor] //not used in this function
 	AAlarmwires |= wireFlag
 	switch(wireIndex)
-		if(AALARM_WIRE_IDSCAN)
-
 		if(AALARM_WIRE_POWER)
 			shorted = 0
 			shock(usr, 50)

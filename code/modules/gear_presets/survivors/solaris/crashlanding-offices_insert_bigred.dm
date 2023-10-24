@@ -6,12 +6,26 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC"
 	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	paygrade = "PMC-OP"
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND)
+	access = list(
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_MEDICAL,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_RESEARCH,
+		ACCESS_WY_ARMORY,
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
 
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/hvh, WEAR_L_EAR)
@@ -77,12 +91,17 @@
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,
-		ACCESS_WY_LEADERSHIP,
-		ACCESS_WY_SECURITY,
-		ACCESS_WY_EXEC,
-		ACCESS_WY_RESEARCH,
-		ACCESS_WY_ENGINEERING,
 		ACCESS_WY_MEDICAL,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_RESEARCH,
+		ACCESS_WY_ARMORY,
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 		ACCESS_ILLEGAL_PIRATE,
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -95,11 +114,12 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/grant, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/manager(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 	add_pmc_survivor_weapon(new_human)
@@ -110,8 +130,22 @@
 /datum/equipment_preset/synth/survivor/pmc
 	name = "Survivor - Synthetic - PMC Support Synth"
 	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND)
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	access = list(
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_MEDICAL,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_RESEARCH,
+		ACCESS_WY_ARMORY,
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	rank = JOB_PMC_SYNTH
@@ -122,15 +156,16 @@
 
 /datum/equipment_preset/synth/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch, WEAR_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/scalpel/manager, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/weylandyutani, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_ACCESSORY)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth, WEAR_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
 		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/command/hvh, WEAR_L_EAR)
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)

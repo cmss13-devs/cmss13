@@ -322,7 +322,7 @@
 	if(!admin_holder)
 		return
 
-	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "Other", "Cancel")
+	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "CMB", "Other", "Cancel")
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
@@ -597,9 +597,9 @@
 		return FALSE
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.p_apollo.inoperable())
+	if(link.processor_apollo.inoperable())
 		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
-		if(prompt == "No")
+		if(prompt != "Yes")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
 			return FALSE
 
@@ -931,13 +931,8 @@
 		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
 		warhead.warhead_impact(target)
 
-		if(istype(warhead, /obj/structure/ob_ammo/warhead/cluster))
-		// so the user's screen can shake for the duration of the cluster, otherwise we get a runtime.
-			QDEL_IN(warhead, OB_CLUSTER_DURATION)
-		else
-			QDEL_IN(warhead, OB_CRASHING_DOWN)
 	else
-		warhead.loc = target
+		warhead.forceMove(target)
 
 /client/proc/change_taskbar_icon()
 	set name = "Set Taskbar Icon"

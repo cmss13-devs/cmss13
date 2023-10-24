@@ -382,9 +382,6 @@
 
 /obj/item/paper/attackby(obj/item/P, mob/user)
 	..()
-	var/clown = 0
-	if(user.mind && (user.job == "Clown"))
-		clown = 1
 
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/photo))
 		if (istype(P, /obj/item/paper/carbon))
@@ -424,6 +421,7 @@
 			return
 
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
+		playsound(src, 'sound/effects/alien_footstep_medium3.ogg', 20, TRUE, 6)
 
 		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 		var/x
@@ -438,11 +436,6 @@
 		offset_y += y
 		stampoverlay.pixel_x = x
 		stampoverlay.pixel_y = y
-
-		if(istype(P, /obj/item/tool/stamp/clown))
-			if(!clown)
-				to_chat(user, SPAN_NOTICE("You are totally unable to use the stamp. HONK!"))
-				return
 
 		if(!ico)
 			ico = new

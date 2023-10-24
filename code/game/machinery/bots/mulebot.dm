@@ -551,7 +551,7 @@
 		var/speed = ((wires & WIRE_MOTOR1) ? 1:0) + ((wires & WIRE_MOTOR2) ? 2:0)
 		switch(speed)
 			if(0)
-				// do nothing
+				pass()
 			if(1)
 				process_bot()
 				spawn(2)

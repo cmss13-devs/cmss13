@@ -5968,9 +5968,6 @@
 /area/kutjevo/exterior/lz_dunes)
 "idX" = (
 /obj/structure/closet/firecloset/full,
-/obj/item/clothing/glasses/thermal/syndi{
-	icon_state = "kutjevo_goggles"
-	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/med/locks)
@@ -12914,20 +12911,6 @@
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
-"rRC" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/barricade/handrail/kutjevo{
-	layer = 3.1
-	},
-/obj/item/clipboard,
-/obj/item/clothing/glasses/thermal/syndi{
-	icon_state = "kutjevo_goggles";
-	pixel_y = -2
-	},
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 4
-	},
-/area/kutjevo/interior/colony_South/power2)
 "rRL" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -41206,7 +41189,7 @@ rfE
 rdm
 rdm
 rsM
-rRC
+eVO
 aoJ
 tnx
 iiG

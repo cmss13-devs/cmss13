@@ -4,7 +4,7 @@
 	name = "Fun - Big Game Hunter (solo)"
 	mob_max = 1
 	mob_min = 1
-	probability = 0
+	probability = 8
 	objectives = "Get some good trophies. The more dangerous, the better!"
 	hostility = TRUE
 

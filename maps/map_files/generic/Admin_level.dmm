@@ -440,10 +440,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station)
-"hP" = (
-/obj/docking_port/stationary/emergency_response/idle_port1,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station)
 "hZ" = (
 /obj/structure/sign/poster/art,
 /turf/closed/wall/r_wall/unmeltable,
@@ -482,14 +478,6 @@
 /obj/effect/landmark/newplayer_start,
 /turf/open/floor,
 /area/start)
-"kn" = (
-/obj/docking_port/stationary/emergency_response/idle_port3,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station)
-"ks" = (
-/obj/docking_port/stationary/emergency_response/idle_port2,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station)
 "kx" = (
 /turf/closed/wall/indestructible/splashscreen,
 /area/start)
@@ -792,10 +780,6 @@
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
-/area/adminlevel/ert_station)
-"ur" = (
-/obj/docking_port/stationary/emergency_response/idle_port6,
-/turf/open/floor/plating,
 /area/adminlevel/ert_station)
 "uI" = (
 /turf/open/floor/almayer{
@@ -3589,7 +3573,7 @@ FB
 FB
 FB
 FB
-hP
+FB
 FB
 Fo
 wW
@@ -3607,7 +3591,7 @@ FB
 FB
 FB
 FB
-ks
+FB
 FB
 Fo
 wW
@@ -7237,7 +7221,7 @@ FB
 FB
 FB
 FB
-ur
+FB
 FB
 Fo
 wW
@@ -7255,7 +7239,7 @@ FB
 FB
 FB
 FB
-kn
+FB
 FB
 Fo
 wW

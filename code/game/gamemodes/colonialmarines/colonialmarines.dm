@@ -309,11 +309,11 @@
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
 		round_finished = MODE_INFESTATION_M_MINOR //Nuke went off, ending the round.
 	if(EvacuationAuthority.dest_status < NUKE_EXPLOSION_IN_PROGRESS) //If the nuke ISN'T in progress. We do not want to end the round before it detonates.
+		if(num_humans && num_xenos && almayer_aa_cannon.recharging == TRUE && Alm.ferry_crashed == TRUE) //People alive, xenos alive, but PVO stuff is happening.
+			return
 		if(!num_humans && num_xenos) //No humans remain alive.
 			round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
 		else if(num_humans && !num_xenos)
-			if(almayer_aa_cannon.recharging == TRUE && Alm.ferry_crashed == TRUE)
-				return
 			if(SSticker.mode && SSticker.mode.is_in_endgame)
 				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 			else

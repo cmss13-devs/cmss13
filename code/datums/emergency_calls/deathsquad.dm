@@ -8,7 +8,7 @@
 	mob_min = 5
 	arrival_message = "'!`2*%еб#*зите и*h$хm в!сl%х. Н& о*vтаeв(oт^е с&*ви%лей.*v$e %#d на^'"
 	objectives = "Whiteout protocol is in effect for the target. Ensure there are no traces of the infestation or any witnesses."
-	probability = 0
+	probability = 3
 	shuttle_id = "Distress_PMC"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item

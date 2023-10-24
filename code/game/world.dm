@@ -254,6 +254,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	shutdown_logging()
 
+	send2chat("Рестарт")
 	if(TgsAvailable())
 		send_tgs_restart()
 		TgsReboot()

@@ -50,10 +50,18 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
-	var/all_music = CONFIG_GET(keyed_list/lobby_music)
-	var/key = SAFEPICK(all_music)
-	if(key)
-		login_music = file(all_music[key])
+	login_music = pick("sound/lobby/darkday.ogg",
+						"sound/lobby/govnovoz.ogg",
+						"sound/lobby/hf2.ogg",
+						"sound/lobby/lv426.ogg",
+						"sound/lobby/mesa.ogg",
+						"sound/lobby/primovictoria.ogg",
+						"sound/lobby/prosvistela.ogg",
+						"sound/lobby/rome.ogg",
+						"sound/lobby/teardrop.ogg",
+						"sound/lobby/warrior.ogg",
+						"sound/lobby/skeleti.ogg",
+												)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)
@@ -372,7 +380,18 @@ SUBSYSTEM_DEF(ticker)
 
 	log_game("АГАСЬ. [reason]")
 	to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Rebooting...")]</h3>")
-
+	var/end_sound = pick("sound/misc/Game_Over_Man.ogg",
+						"sound/misc/gone_to_plaid.ogg",
+						"sound/misc/Rerun.ogg",
+						"sound/misc/facehugged_male.ogg",
+						"sound/misc/asses_kicked.ogg",
+						"sound/misc/hardon.ogg",
+						"sound/misc/outstanding_marines.ogg",
+						"sound/misc/sadtrombone.ogg",
+						"sound/misc/distressbeacon_Sunshine.ogg",
+						"sound/misc/surrounded_by_assholes.ogg",
+						"sound/misc/good_is_dumb.ogg")
+	world << sound(end_sound)
 	world.Reboot(TRUE)
 
 /datum/controller/subsystem/ticker/proc/create_characters()

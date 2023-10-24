@@ -76,7 +76,7 @@
 	hardcore = TRUE
 
 	votable = TRUE
-	vote_cycle = 25 // approx. once every 5 days, if it wins the vote
+	vote_cycle = 2 // Почаще чем 'approx. once every 5 days, if it wins the vote', но не так часто как Дистресс сигнал
 
 	taskbar_icon = 'icons/taskbar/gml_wo.png'
 
@@ -114,12 +114,12 @@
 
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 	sleep(10)
-	to_world(SPAN_ROUND_HEADER("The current game mode is - WHISKEY OUTPOST!"))
-	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector"))
-	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector"))
-	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
-	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [SSmapping.configs[GROUND_MAP].map_name] must survive for an hour to alert the rest of their battalion in the sector"))
-	to_world(SPAN_ROUNDBODY("Hold out for as long as you can."))
+	to_world(SPAN_ROUND_HEADER("Режим игры - WHISKEY OUTPOST!"))
+	to_world(SPAN_ROUNDBODY("События происходят на планете LV-624 в 2177 году, за пять лет до прибытия военного корабля USS «Almayer» и 2-го батальона «Падающие соколы» в сектор."))
+	to_world(SPAN_ROUNDBODY("3 Батальону 'Dust Raiders' выдана задача распространять влияние USCM в Секторе Нероид."))
+	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], одна из баз 'Dust Raiders' расположившаяся в этом секторе, попала под атаку неизвестных инопланетных форм жизни."))
+	to_world(SPAN_ROUNDBODY("С ростом количества жертв и постепенно истощающимися припасами, 'Dust Raiders' на [SSmapping.configs[GROUND_MAP].map_name] должны прожить еще час, чтобы оповестить оставшуюся часть своего батальона в секторе о надвигающейся опасности."))
+	to_world(SPAN_ROUNDBODY("Продержитесь столько, сколько сможете."))
 	world << sound('sound/effects/siren.ogg')
 
 	sleep(10)

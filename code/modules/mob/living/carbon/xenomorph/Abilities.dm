@@ -145,7 +145,7 @@
 		if(hugger.stat != DEAD)
 			hugger.die()
 
-	if(prob(1))
+	if(prob(5))
 		playsound(xeno.loc, pick(screech_memes), 75, 0, status = 0)
 	else
 		playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)

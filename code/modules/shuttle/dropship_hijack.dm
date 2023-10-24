@@ -135,12 +135,10 @@
 					to_chat(M, SPAN_DANGER("Я чувствую как корабль разворачивается и меняет направление!"))
 					shake_camera(M, 60, 2)
 			playsound_area(internal_area, 'sound/effects/antiair_explosions.ogg')
-
+		ferry_crashed = TRUE
+		almayer_aa_cannon.recharging = TRUE
 	hijacked_bypass_aa = TRUE
 	almayer_aa_cannon.protecting_section = ""
-	almayer_aa_cannon.recharging = TRUE
-	ship_killed = TRUE
-	ferry_crashed = TRUE
 
 
 
@@ -155,19 +153,14 @@
 	if(final_announcement)
 		return
 
-	if(ship_killed == TRUE)
-		if(messaged == FALSE)
-			notify_ghosts(header = "Крушение", message = "Десантный корабль был сбит!", source = crash_site, extra_large = TRUE)
-			messaged = TRUE
-		ship_killed = FALSE
-		return
+	notify_ghosts(header = "Крушение", message = "Десантный корабль терпит крушение!", source = crash_site, extra_large = TRUE)
 
 	shuttle.crashing = TRUE
 
-	marine_announcement("ДЕСАНТНЫЙ КОРАБЛЬ ПРЯМО ПО КУРСУ. АВАРИЯ НЕИЗБЕЖНА." , "ТРЕВОГА", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
-
 	notify_ghosts(header = "Столкновение с десантным кораблем", message = "Десантный корабль вот-вот упадет на [get_area_name(crash_site)]!", source = crash_site, extra_large = TRUE)
-	final_announcement = TRUE
+	if(ferry_crashed == FALSE)
+		marine_announcement("ДЕСАНТНЫЙ КОРАБЛЬ ПРЯМО ПО КУРСУ. АВАРИЯ НЕИЗБЕЖНА." , "ТРЕВОГА", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
+		final_announcement = TRUE
 
 	playsound_area(get_area(crash_site), 'sound/effects/engine_landing.ogg', 100)
 	playsound_area(get_area(crash_site), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
@@ -175,6 +168,7 @@
 	addtimer(CALLBACK(src, PROC_REF(do_dropship_incoming_sound)), 13 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(disable_latejoin)), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
+
 
 /datum/dropship_hijack/almayer/proc/do_dropship_incoming_sound()
 	for(var/area/internal_area in shuttle.shuttle_areas)

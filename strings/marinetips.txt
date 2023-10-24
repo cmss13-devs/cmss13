@@ -53,7 +53,7 @@ A misloaded OB can deviate severely from the intended target area - ensure you l
 The XO and CO are trained in Power Loader use and engineering, and can load the OB.
 You can change what your SL tracker beacon is tracking by right clicking on your headset and clicking "Switch Tracker Target".
 Boilers emit light - not every glow from around the corner is friendly!
-Amount of items in Requisitions and Squad Preparations depend on how many players readied up at the start of the round.
+The amount of items in Requisitions and Squad Preparations depend on how many players readied up at the start of the round.
 You can carry a variety of items inside your helmet - from gauze and cigarettes to flares and screwdrivers.
 CIC staff can track every USCM-aligned person via the suit sensors console and overwatch console - useful for finding escaped prisoners or dead marines.
 When the M7 RPG is fired, it creates a substantial shockwave behind it that can stun and harm marines standing too close. Watch your backblast!

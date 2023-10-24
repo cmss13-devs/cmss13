@@ -5,10 +5,8 @@
 	GLOB.player_list -= src
 	GLOB.freed_mob_list -= src
 
+	var/datum/mind/old_mind = mind
 	ghostize(FALSE)
-
-	item_verbs = null
-	control_object = null
 
 	if(mind) // Means ghostize failed for some reason
 		if(mind.current == src)
@@ -16,6 +14,11 @@
 		if(mind.original == src)
 			mind.original = null
 		mind = null
+	else if(old_mind?.original == src) // If ghostize succeeded, unlink original mob
+		old_mind.original = null
+
+	item_verbs = null
+	control_object = null
 
 	QDEL_NULL(skills)
 	QDEL_NULL_LIST(actions)

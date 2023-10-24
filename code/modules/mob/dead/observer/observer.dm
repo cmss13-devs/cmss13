@@ -478,9 +478,6 @@ Works together with spawning an observer, noted above.
 		ghost.mind.player_entity.update_panel_data(round_statistics)
 		ghost.mind.original = src
 
-	// If we're ghosting as part of previous mob deletion, do not keep refs
-	if(QDELETED(src) && mind?.original == src)
-		mind.original = null
 	mind = null
 
 	if(ghost.client)

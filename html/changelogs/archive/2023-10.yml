@@ -342,3 +342,20 @@
   - rscadd: Added Discretionary Arrest to JAS.
   - rscadd: Added a new category to JAS, Precautionary Charges. Moves Insanity and
       POW to this category.
+2023-10-23:
+  QuickLode:
+  - balance: Nerfs synth surv pouch by removing 1 storage slot.
+  SpypigDev:
+  - rscadd: CIC Armory SO vendor
+  - balance: Moved most combat-themed gear from SO spawn vendors, to CIC Armory vendor
+  - balance: Made RTO pack a point-buy item in CIC Armory vendor for SOs
+  Steelpoint:
+  - balance: Revolver Heavy ammo no longer stuns targets it strikes, it will instead
+      knock them back and slow them down for a short time.
+  harryob:
+  - server: the server now respects /string/title for late joiners
+  stalkerino:
+  - balance: m39 is able to use vertigrip
+2023-10-24:
+  Segrain:
+  - bugfix: Slicing food once again works as intended.

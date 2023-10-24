@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed Ghosts and Queen Eye occasionally \"eating\" pounces in place of a mob on the same turf."

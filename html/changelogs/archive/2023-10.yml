@@ -356,3 +356,6 @@
   - server: the server now respects /string/title for late joiners
   stalkerino:
   - balance: m39 is able to use vertigrip
+2023-10-24:
+  Segrain:
+  - bugfix: Slicing food once again works as intended.

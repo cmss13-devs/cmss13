@@ -2,11 +2,12 @@ import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
 import { Box, Divider, Flex, Stack } from '../components';
 import { CasSim } from './CasSim';
-import { ByondUi } from '../components';
 import { range } from 'common/collections';
 import { ButtonProps, FullButtonProps, mfddir, MfdPanel, MfdProps, usePanelState } from './MfdPanels/MultifunctionDisplay';
 import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
+import { MapMfdPanel } from './MfdPanels/MapPanel';
+import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -14,6 +15,7 @@ interface DropshipProps {
   selected_eqp: number;
   tactical_map_ref?: string;
   camera_map_ref?: string;
+  camera_target_id?: string;
   targets_data: Array<LazeTarget>;
 }
 
@@ -37,7 +39,7 @@ type LazeTarget = {
   target_tag: number;
 };
 
-type DropshipEquipment = {
+export type DropshipEquipment = {
   name: string;
   shorthand: string;
   eqp_tag: number;
@@ -237,26 +239,6 @@ const FiremissionSimulationPanel = (props, context) => {
   return (
     <Box className="NavigationMenu">
       <CasSim />
-    </Box>
-  );
-};
-
-const MapPanel = (props, context) => {
-  const { data } = useBackend<DropshipProps>(context);
-  return (
-    <Box className="NavigationMenu">
-      <div className="MapContainer">
-        <div className="MapObj">
-          <ByondUi
-            params={{
-              id: data.tactical_map_ref,
-              type: 'map',
-            }}
-            class="MapPanel"
-          />
-        </div>
-        <div className="MapOverlay">fsdf</div>
-      </div>
     </Box>
   );
 };
@@ -475,9 +457,19 @@ const EquipmentPanel = (props, context) => {
   );
 };
 
-const FiremissionsMfdPanel = (props, context) => {
+const FiremissionsMfdPanel = (props: MfdProps, context) => {
+  const [panelState, setPanelState] = usePanelState(
+    props.panelStateId,
+    context
+  );
   return (
-    <MfdPanel>
+    <MfdPanel
+      bottomButtons={[
+        {
+          children: 'BACK',
+          onClick: () => setPanelState(''),
+        },
+      ]}>
       <FiremissionSimulationPanel />
     </MfdPanel>
   );
@@ -491,14 +483,6 @@ const WeaponsMfdPanel = (props, context) => {
   );
 };
 
-const MapMfdPanel = (props, context) => {
-  return (
-    <MfdPanel>
-      <MapPanel />
-    </MfdPanel>
-  );
-};
-
 const BaseMfdPanel = (props: MfdProps, context) => {
   const [panelState, setPanelState] = usePanelState(
     props.panelStateId,
@@ -507,10 +491,27 @@ const BaseMfdPanel = (props: MfdProps, context) => {
 
   return (
     <MfdPanel
+      panelStateId={props.panelStateId}
       topButtons={[
         { children: 'EQUIP', onClick: () => setPanelState('equipment') },
+        {},
+        {
+          children: 'F-MISS',
+          onClick: () => setPanelState('firemissions'),
+        },
+      ]}
+      bottomButtons={[
+        { children: 'MAPS', onClick: () => setPanelState('map') },
+        {},
+        { children: 'CAMS', onClick: () => setPanelState('camera') },
       ]}>
-      <Box className="NavigationMenu" />
+      <Box className="NavigationMenu">
+        <div className="welcome-page">
+          <h1>USCM Dropship Weapons Control System</h1>
+          <h3>UA Northbridge</h3>
+          <h3>V 0.1</h3>
+        </div>
+      </Box>
     </MfdPanel>
   );
 };
@@ -523,11 +524,13 @@ const PrimaryPanel = (props: MfdProps, context) => {
     case 'equipment':
       return <EquipmentMfdPanel {...props} />;
     case 'map':
-      return <MapMfdPanel />;
+      return <MapMfdPanel {...props} />;
     case 'weapons':
-      return <WeaponsMfdPanel />;
+      return <WeaponsMfdPanel {...props} />;
     case 'firemissions':
-      return <FiremissionsMfdPanel />;
+      return <FiremissionsMfdPanel {...props} />;
+    case 'weapon':
+      return <WeaponMfdPanel {...props} />;
     default:
       return <BaseMfdPanel {...props} />;
   }
@@ -536,7 +539,7 @@ const PrimaryPanel = (props: MfdProps, context) => {
 export const DropshipWeaponsConsole = (_, context) => {
   const { data } = useBackend<DropshipProps>(context);
   return (
-    <Window height={1024} width={1024}>
+    <Window height={700} width={1300}>
       <Window.Content>
         <Stack horizontal className="WeaponsConsole">
           <Stack.Item>

@@ -4,11 +4,12 @@ import { useBackend } from '../../backend';
 import { Box } from '../../components';
 
 export const CameraMfdPanel = (props: MfdProps, context) => {
+  const { act } = useBackend<CameraProps>(context);
   const [_, setPanelState] = usePanelState(props.panelStateId, context);
   return (
     <MfdPanel
-      topButtons={[{ children: 'L' }]}
-      bottomButtons={[{ children: 'BACK', onClick: () => setPanelState('') }]}>
+      panelStateId={props.panelStateId}
+      bottomButtons={[{ children: 'EXIT', onClick: () => setPanelState('') }]}>
       <CameraPanel />
     </MfdPanel>
   );

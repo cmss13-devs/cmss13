@@ -10,6 +10,7 @@
 	var/target_x
 	var/target_y
 	var/target_z
+	var/list/cam_plane_masters
 
 /datum/camera_manager/New(map_ref)
 	map_name = map_ref
@@ -22,15 +23,28 @@
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
 
+	cam_plane_masters = list()
+	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+		var/atom/movable/screen/plane_master/instance = new plane()
+		instance.assigned_map = map_name
+		instance.del_on_map_removal = FALSE
+		if(instance.blend_mode_override)
+			instance.blend_mode = instance.blend_mode_override
+		instance.screen_loc = "[map_name]:CENTER"
+		cam_plane_masters += instance
+
 /datum/camera_manager/Destroy(force, ...)
 	. = ..()
 	range_turfs = null
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
+	QDEL_NULL(cam_plane_masters)
 
 /datum/camera_manager/proc/register(mob/user)
 	user.client.register_map_obj(cam_background)
 	user.client.register_map_obj(cam_screen)
+	for(var/plane in cam_plane_masters)
+		user.client.register_map_obj(plane)
 
 /datum/camera_manager/proc/clear_camera()
 	current_area = null
@@ -46,7 +60,8 @@
 	set_camera_rect(target.x, target.y, target.z, w, h)
 
 /datum/camera_manager/proc/set_camera_rect(x, y, z, w, h)
-	current_area = new(x, y, w, h)
+	log_admin("rect [x] [y] [z] [w] [h]")
+	current_area = RECT(x, y, w, h)
 	target_x = x
 	target_y = y
 	target_z = z
@@ -64,7 +79,6 @@
 /datum/camera_manager/proc/update_active_camera()
 	// Show static if can't use the camera
 	if(!current_area || !target_z)
-		world.log << "static"
 		show_camera_static()
 		return
 
@@ -73,7 +87,6 @@
 	// Most security cameras will end here as they're not moving.
 	var/turf/new_location = get_turf(locate(target_x, target_y, target_z))
 	if(last_camera_turf == new_location)
-		world.log << "same loc"
 		return
 
 	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
@@ -85,13 +98,9 @@
 	var/list/guncamera_zone = range("[x_size]x[y_size]", target)
 
 	var/list/visible_turfs = list()
-	range_turfs.Cut()
 
 	for(var/turf/visible_turf in guncamera_zone)
-		range_turfs += visible_turf
-//		var/area/visible_area = visible_turf.loc
-//		if(!visible_area.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
-//			visible_turfs += visible_turf
+		visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
@@ -147,6 +156,7 @@
 
 	// camera setup
 	cam_manager = new("dropship_camera_[REF(src)]_map")
+	cam_manager.show_camera_static()
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
@@ -414,14 +424,12 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(target_ref)
 	var/datum/cas_signal/target = get_cas_signal(target_ref)
-
+	camera_target_id = target_ref
 	if(!target)
-		to_chat("Failed to reference [target_ref]")
 		cam_manager.show_camera_static()
 		return
 
 	cam_manager.set_camera_obj(target.linked_cam, camera_width, camera_height)
-	camera_target_id = target_ref
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
 	. = 0
@@ -481,14 +489,10 @@
 	. = list()
 	var/element_nbr = 1
 	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
-		var/shorthand = equipment.name
-		if(istype(equipment, /obj/structure/dropship_equipment/weapon))
-			var/obj/structure/dropship_equipment/weapon/W = equipment
-			shorthand = W.shorthand
 		. += list(
 			list(
 				"name"= equipment.name,
-				"shorthand" = shorthand,
+				"shorthand" = equipment.shorthand,
 				"eqp_tag" = element_nbr,
 				"is_weapon" = equipment.is_weapon,
 				"is_interactable" = equipment.is_interactable,

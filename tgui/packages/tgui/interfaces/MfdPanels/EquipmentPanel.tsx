@@ -1,10 +1,232 @@
+import { useBackend } from '../../backend';
 import { Box } from '../../components';
+import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MfdProps, MfdPanel, usePanelState } from './MultifunctionDisplay';
+import { useWeaponState } from './WeaponPanel';
+
+interface EquipmentContext {
+  equipment_data: Array<DropshipEquipment>;
+}
+
+const equipment_xs = [140, 160, 320, 340, 180, 300, 240, 240, 240, 140, 340];
+const equipment_ys = [120, 100, 100, 120, 100, 100, 260, 300, 340, 320, 320];
+
+const DrawWeapon = (props: { x: number; y: number }, context) => {
+  return (
+    <path
+      fill-opacity="1"
+      fill="#00e94e"
+      stroke="#00e94e"
+      d={`M ${props.x + 5} ${props.y} l 0 20 l 10 0 l 0 -20 l -10 0`}
+    />
+  );
+};
+
+const DrawEquipmentBox = (props: { x: number; y: number }, context) => {
+  return (
+    <path
+      fill-opacity="1"
+      fill="#00e94e"
+      stroke="#00e94e"
+      d={`M ${props.x} ${props.y} l 0 20 l 20 0 l 0 -20 l -20 0`}
+    />
+  );
+};
+
+const equipment_text_xs = [
+  100, 120, 360, 380, 180, 320, 250, 250, 250, 100, 400,
+];
+const equipment_text_ys = [120, 60, 60, 120, 20, 20, 240, 280, 320, 320, 320];
+
+const DrawWeaponText = (
+  props: { x: number; y: number; desc: string; sub_desc?: string },
+  context
+) => {
+  return (
+    <text stroke="#00e94e" x={props.x} y={props.y} text-anchor="middle">
+      {props.desc.split(' ').map((x) => (
+        <tspan x={props.x} dy="1.2em" key={x}>
+          {x}
+        </tspan>
+      ))}
+
+      {props.sub_desc && (
+        <tspan x={props.x} dy="1.2em">
+          {props.sub_desc}
+        </tspan>
+      )}
+    </text>
+  );
+};
+
+const DrawWeaponEquipment = (props: DropshipEquipment, context) => {
+  return (
+    <>
+      <DrawWeapon
+        key={props.mount_point}
+        x={equipment_xs[props.mount_point - 1]}
+        y={equipment_ys[props.mount_point - 1]}
+      />
+      <DrawWeaponText
+        x={equipment_text_xs[props.mount_point - 1]}
+        y={equipment_text_ys[props.mount_point - 1]}
+        desc={props.shorthand}
+        sub_desc={`${
+          props.shorthand === 'MSL'
+            ? props.ammo_name?.split(' ')[0] ?? 'Empty'
+            : props.ammo ?? 0
+        }`}
+      />
+    </>
+  );
+};
+
+const DrawMiscEquipment = (props: DropshipEquipment, context) => {
+  return (
+    <>
+      <DrawEquipmentBox
+        key={props.mount_point}
+        x={equipment_xs[props.mount_point - 1]}
+        y={equipment_ys[props.mount_point - 1]}
+      />
+      <DrawWeaponText
+        x={equipment_text_xs[props.mount_point - 1]}
+        y={equipment_text_ys[props.mount_point - 1]}
+        desc={props.shorthand ?? props.name}
+      />
+    </>
+  );
+};
+
+const DrawEquipment = (props, context) => {
+  const { data } = useBackend<EquipmentContext>(context);
+  return (
+    <>
+      {data.equipment_data.map((x) => {
+        if (x.is_weapon) {
+          return <DrawWeaponEquipment key={x.mount_point} {...x} />;
+        }
+        return <DrawMiscEquipment key={x.mount_point} {...x} />;
+      })}
+    </>
+  );
+};
+
+const DrawDropshipOutline = (props, context) => {
+  return (
+    <>
+      {/* cockpit */}
+      <path
+        fill-opacity="0"
+        stroke="#00e94e"
+        d="M 200 120 l 0 -80 l 100 0 l 0 80 m -40 0 l 20 0 l 0 -60 l -60 0 l 0 60 l 20 0"
+      />
+
+      {/* left body */}
+      <path
+        fill-opacity="0"
+        stroke="#00e94e"
+        d="M 200 120 L 160 120 L 160 280 L 180 280 L 180 400 L 220 400 L 220 380 L 200 380 L 200 260 L 180 260 L 180 140 L 240 140 L 240 120"
+      />
+
+      {/* left weapon */}
+      <path
+        fill-opacity="0"
+        stroke="#00e94e"
+        d="M 160 140 l -20 0 l 0 40 l 20 0"
+      />
+      {/* left engine */}
+      <path
+        fill-opacity="0"
+        stroke="#00e94e"
+        d="M 180 380 L 140 380 L 140 300 L 180 300"
+      />
+
+      {/* left tail */}
+      <path
+        fill-opacity="0"
+        stroke="#00e94e"
+        d="M 200 400 l 0 40 l -40 0 l 0 20 l 60 0 l 0 -60"
+      />
+
+      {/* right body */}
+      <path
+        fill-opacity="0"
+        stroke="#00e94e"
+        d="M 300 120 L 340 120 L 340 280 L 320 280 L 320 400 L 280 400 L 280 380 L 300 380 L 300 260 L 320 260 L 320 140 L 260 140 L 260 120"
+      />
+      {/* right weapon */}
+      <path
+        fill-opacity="0"
+        stroke="#00e94e"
+        d="M 340 140 L 360 140 L 360 180 L 340 180"
+      />
+
+      {/* right engine */}
+      <path
+        className="dropshipImage"
+        fill-opacity="0"
+        stroke="#00e94e"
+        d="M 320 380 L 360 380 L 360 300 L 320 300"
+      />
+
+      {/* right tail */}
+      <path
+        fill-opacity="0"
+        stroke="#00e94e"
+        d="M 300 400 L 300 440 L 340 440 L 340 460 L 280 460 L 280 400"
+      />
+    </>
+  );
+};
+const DrawAirlocks = (props, context) => {
+  return (
+    <>
+      {/* cockpit door */}
+      <path
+        fill-opacity="1"
+        fill="url(#diagonalHatch)"
+        stroke="#00e94e"
+        d="M 240 140 L 260 140 L 260 120 L 240 120 L 240 140"
+      />
+      {/* left airlock */}
+      <path
+        fill="url(#diagonalHatch)"
+        stroke="#00e94e"
+        d="M 160 180 l 20 0 l 0 40 l -20 0 l 0 -40 "
+      />
+      {/* right airlock */}
+      <path
+        fill="url(#diagonalHatch)"
+        stroke="#00e94e"
+        d="M 340 180 L 320 180 L 320 220 L 340 220 L 340 180 "
+      />
+      {/* rear ramp */}
+      <path
+        fill="url(#diagonalHatch)"
+        stroke="#00e94e"
+        d="M 220 400 L 280 400 L 280 380 L 220 380 L 220 400"
+      />
+    </>
+  );
+};
+
 const EquipmentPanel = (props, context) => {
   return (
     <Box className="NavigationMenu">
-      <svg height="500" width="500">
+      <svg height="501" width="501">
         <defs>
+          <pattern
+            id="diagonalHatch"
+            patternUnits="userSpaceOnUse"
+            width="4"
+            height="4">
+            <path
+              stroke="#00e94e"
+              stroke-width="1"
+              d="M-1,1 l2,-2 M 0,4 l4,-4 M3,5 l2,-2"
+            />
+          </pattern>
           <pattern
             id="smallGrid"
             width="20"
@@ -32,158 +254,97 @@ const EquipmentPanel = (props, context) => {
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
-        {/* cockpit */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 200 120 L 200 40 L 300 40 L 300 120 "
-        />
-        <path fill-opacity="0" stroke="#00e94e" d="M 220 120 L 280 120" />
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 220 120 L 220 60 L 280 60 L 280 120"
-        />
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 240 140 L 260 140 L 260 120 L 240 120 L 240 140"
-        />
-
-        {/* left body */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 200 120 L 160 120 L 160 280 L 180 280 L 180 400 L 220 400 L 220 380 L 200 380 L 200 260 L 180 260 L 180 140 L 240 140 L 240 120"
-        />
-        {/* left airlock */}
-
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 160 180 L 180 180 L 180 220 L 160 220 L 160 180 "
-        />
-
-        {/* left weapon */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 160 140 L 140 140 L 140 180 L 160 180"
-        />
-        {/* left engine */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 180 380 L 140 380 L 140 300 L 180 300"
-        />
-
-        <text x="40" y="300" stroke="#00e94e">
-          <tspan x="40" dy="1.2em">
-            Left Engine
-          </tspan>
-          <tspan x="40" dy="1.2em">
-            Fuel Enhancer
-          </tspan>
-        </text>
-
-        {/* left tail */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 200 400 L 200 440 L 160 440 L 160 460 L 220 460 L 220 400"
-        />
-
-        {/* right body */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 300 120 L 340 120 L 340 280 L 320 280 L 320 400 L 280 400 L 280 380 L 300 380 L 300 260 L 320 260 L 320 140 L 260 140 L 260 120"
-        />
-        {/* right weapon */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 340 140 L 360 140 L 360 180 L 340 180"
-        />
-        {/* right airlock */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 340 180 L 320 180 L 320 220 L 340 220 L 340 180 "
-        />
-
-        {/* right engine */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 320 380 L 360 380 L 360 300 L 320 300"
-        />
-
-        <text x="400" y="300" stroke="#00e94e">
-          <tspan x="400" dy="1.2em">
-            Right Engine
-          </tspan>
-          <tspan x="400" dy="1.2em">
-            Fuel Enhancer
-          </tspan>
-        </text>
-
-        {/* right tail */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 300 400 L 300 440 L 340 440 L 340 460 L 280 460 L 280 400"
-        />
-        {/* rear ramp */}
-        <path
-          fill-opacity="0"
-          stroke="#00e94e"
-          d="M 220 400 L 280 400 L 280 380 L 220 380 L 220 400"
-        />
-
-        <text x="230" y="280" stroke="#00e94e">
-          Empty
-        </text>
-
-        <text x="230" y="320" stroke="#00e94e">
-          Empty
-        </text>
-
-        <text x="230" y="360" stroke="#00e94e">
-          Empty
-        </text>
-
+        <DrawDropshipOutline />
+        <DrawEquipment />
         <ShipOutline />
+        <DrawAirlocks />
       </svg>
     </Box>
   );
 };
-
-/*
-
-<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="140.8544 159.358 172.8826 307.335" width="172.8826" height="307.335" xmlns="http://www.w3.org/2000/svg">
-  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 196.158 206.636 L 195.576 159.488 L 248.545 159.358 L 247.963 207.67 L 313.737 206.506 L 313.155 358.427 L 271.246 356.681 L 269.499 466.693 C 269.499 466.693 177.532 464.364 178.114 463.782 C 178.696 463.2 178.696 355.517 178.696 355.517 C 178.696 355.517 140.279 357.263 140.861 356.099 C 141.443 354.935 140.861 204.76 142.026 204.76 C 143.191 204.76 195.576 206.506 196.158 206.636 Z" transform="matrix(1, 0, 0, 1, 7.105427357601002e-15, 0)"/>
-</svg>
-
- */
 
 const ShipOutline = () => {
   return <line x1={140} y1={140} x2={280} y2={280} />;
 };
 
 export const EquipmentMfdPanel = (props: MfdProps, context) => {
+  const { data } = useBackend<EquipmentContext>(context);
   const [panelState, setPanelState] = usePanelState(
     props.panelStateId,
     context
   );
+
+  const [weaponState, setWeaponState] = useWeaponState(
+    props.panelStateId,
+    context
+  );
+
+  const weap1 = data.equipment_data.find((x) => x.mount_point === 1);
+  const weap2 = data.equipment_data.find((x) => x.mount_point === 2);
+  const weap3 = data.equipment_data.find((x) => x.mount_point === 3);
+  const weap4 = data.equipment_data.find((x) => x.mount_point === 4);
+
   return (
     <MfdPanel
+      panelStateId={props.panelStateId}
+      topButtons={[
+        {},
+        {},
+        {
+          children: 'F-MISS',
+          onClick: () => setPanelState('firemissions'),
+        },
+        {},
+        {},
+      ]}
+      leftButtons={[
+        weap2
+          ? {
+            children: weap2.shorthand,
+            onClick: () => {
+              setWeaponState(weap2.mount_point);
+              setPanelState('weapon');
+            },
+          }
+          : {},
+        weap1
+          ? {
+            children: weap1.shorthand,
+            onClick: () => {
+              setWeaponState(weap1.mount_point);
+              setPanelState('weapon');
+            },
+          }
+          : {},
+        {},
+      ]}
+      rightButtons={[
+        weap3
+          ? {
+            children: weap3.shorthand,
+            onClick: () => {
+              setWeaponState(weap3.mount_point);
+              setPanelState('weapon');
+            },
+          }
+          : {},
+        weap4
+          ? {
+            children: weap4.shorthand,
+            onClick: () => {
+              setWeaponState(weap4.mount_point);
+              setPanelState('weapon');
+            },
+          }
+          : {},
+        {},
+      ]}
       bottomButtons={[
         {
-          children: 'BACK',
+          children: 'EXIT',
           onClick: () => setPanelState(''),
         },
+        {},
       ]}>
       <EquipmentPanel />
     </MfdPanel>

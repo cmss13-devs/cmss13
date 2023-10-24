@@ -15,11 +15,11 @@ export interface FullButtonProps extends ButtonProps {
   location: mfddir;
 }
 
-export const usePanelState = (panelId?: string, context) =>
+export const usePanelState = (panelId: string, context) =>
   useSharedState<string>(context, `${panelId}_panelstate`, '');
 
 export interface MfdProps {
-  panelStateId?: string;
+  panelStateId: string;
   topButtons?: Array<ButtonProps>;
   leftButtons?: Array<ButtonProps>;
   rightButtons?: Array<ButtonProps>;

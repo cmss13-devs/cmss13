@@ -6,6 +6,8 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	climbable = TRUE
 	layer = ABOVE_OBJ_LAYER //so they always appear above attach points when installed
+	var/shorthand
+
 	var/list/equip_categories //on what kind of base this can be installed.
 	var/obj/effect/attach_point/ship_base //the ship base the equipment is currently installed on.
 	var/uses_ammo = FALSE //whether it uses ammo
@@ -160,6 +162,7 @@
 	icon_state = "sentry_system"
 	is_interactable = TRUE
 	point_cost = 500
+	shorthand = "Sentry"
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 	combat_equipment = FALSE
@@ -290,6 +293,7 @@
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
 	point_cost = 50
+	shorthand = "MG"
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 	combat_equipment = FALSE
@@ -446,6 +450,7 @@
 
 /obj/structure/dropship_equipment/electronics/spotlights
 	name = "\improper AN/LEN-15 Spotlight"
+	shorthand = "Spotlight"
 	icon_state = "spotlights"
 	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
@@ -496,6 +501,7 @@
 
 /obj/structure/dropship_equipment/electronics/targeting_system
 	name = "\improper AN/AAQ-178 Weapon Targeting System"
+	shorthand = "Targetting"
 	icon_state = "targeting_system"
 	desc = "A targeting system for dropships. It improves firing accuracy on laser targets. Fits on electronics attach points. You need a powerloader to lift this."
 	point_cost = 800
@@ -508,6 +514,7 @@
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
 	name = "\improper AN/AVD-60 LZ detector"
+	shorthand = "LZ Detector"
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
 	icon_state = "lz_detector"
 	point_cost = 50
@@ -576,7 +583,6 @@
 	screen_mode = 1
 	is_interactable = TRUE
 	skill_required = SKILL_PILOT_EXPERT
-	var/shorthand
 	/// Time last fired, for weapon firing cooldown
 	var/last_fired
 	var/firing_sound
@@ -789,6 +795,7 @@
 
 /obj/structure/dropship_equipment/medevac_system
 	name = "\improper RMU-4M Medevac System"
+	shorthand = "Medevac"
 	desc = "A winch system to lift injured marines on medical stretchers onto the dropship. Acquire lift target through the dropship equipment console."
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "medevac_system"
@@ -1052,6 +1059,7 @@
 
 /obj/structure/dropship_equipment/fulton_system
 	name = "\improper RMU-19 Fulton Recovery System"
+	shorthand = "Fulton"
 	desc = "A winch system to collect any fulton recovery balloons in high altitude. Make sure you turn it on!"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "fulton_system"
@@ -1169,6 +1177,7 @@
 // Rappel deployment system
 /obj/structure/dropship_equipment/rappel_system
 	name = "\improper HPU-1 Rappel Deployment System"
+	shorthand = "Rappel"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
 	point_cost = 50

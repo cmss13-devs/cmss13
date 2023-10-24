@@ -344,7 +344,7 @@ SUBSYSTEM_DEF(minimaps)
  * Arguments:
  * * faction: FACTION_MARINE or XENO_HIVE_NORMAL
  */
-/datum/proc/get_tacmap_data_png(faction)
+/proc/get_tacmap_data_png(faction)
 	var/list/map_list
 
 	if(faction == FACTION_MARINE)
@@ -367,7 +367,7 @@ SUBSYSTEM_DEF(minimaps)
  * Arguments:
  * * faction: FACTION_MARINE or XENO_HIVE_NORMAL
  */
-/datum/proc/get_unannounced_tacmap_data_png(faction)
+/proc/get_unannounced_tacmap_data_png(faction)
 	if(faction == FACTION_MARINE)
 		return GLOB.uscm_unannounced_map
 	else if(faction == XENO_HIVE_NORMAL)
@@ -381,7 +381,7 @@ SUBSYSTEM_DEF(minimaps)
  * Arguments:
  * * faction: which faction get the map for: FACTION_MARINE or XENO_HIVE_NORMAL
  */
-/datum/proc/get_tacmap_data_svg(faction)
+/proc/get_tacmap_data_svg(faction)
 	var/list/map_list
 
 	if(faction == FACTION_MARINE)
@@ -404,7 +404,7 @@ SUBSYSTEM_DEF(minimaps)
  * Arguments:
  * * user: The mob that is either an observer, marine, or xeno
  */
-/datum/proc/send_tacmap_assets_latejoin(mob/user)
+/proc/send_tacmap_assets_latejoin(mob/user)
 	if(!user.client)
 		return
 

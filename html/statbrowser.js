@@ -372,7 +372,7 @@ function draw_status() {
 				.getElementById("statcontent")
 				.appendChild(document.createElement("br"));
 		} else if (
-			// hardcoded for testing purposes .includes() seems to be breaking things for some reason.
+			// hardcoded because merely using .includes() to test for a href seems unreliable for some reason.
 			status_tab_parts[i] == status_tab_map_href_exception
 		) {
 			var maplink = document.createElement("a");

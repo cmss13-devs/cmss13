@@ -21,7 +21,7 @@ interface EquipmentContext {
 
 const getLazeButtonProps = (context) => {
   const { act, data } = useBackend<EquipmentContext>(context);
-  const lazes = range(0, 3).map((x) =>
+  const lazes = range(0, 5).map((x) =>
     x > data.targets_data.length ? undefined : data.targets_data[x]
   );
   const get_laze = (index: number) => {
@@ -50,32 +50,42 @@ const WeaponPanel = (props: { equipment: DropshipEquipment }, context) => {
           <text stroke="#00e94e" x={60} y={230} text-anchor="start">
             ACTIONS
           </text>
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 210 l -20 0 l -20 -180 l -40 0"
-          />
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 220 l -25 0 l -15 -90 l -40 0"
-          />
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 230 l -20 0 l -20 0 l -40 0"
-          />
+          {false && (
+            <path
+              fill-opacity="0"
+              stroke="#00e94e"
+              d="M 50 210 l -20 0 l -20 -180 l -40 0"
+            />
+          )}
+          {false && (
+            <path
+              fill-opacity="0"
+              stroke="#00e94e"
+              d="M 50 220 l -25 0 l -15 -90 l -40 0"
+            />
+          )}
+          {false && (
+            <path
+              fill-opacity="0"
+              stroke="#00e94e"
+              d="M 50 230 l -20 0 l -20 0 l -40 0"
+            />
+          )}
 
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 240 l -25 0 l -15 90 l -40 0"
-          />
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 250 l -20 0 l -20 180 l -40 0"
-          />
+          {false && (
+            <path
+              fill-opacity="0"
+              stroke="#00e94e"
+              d="M 50 240 l -25 0 l -15 90 l -40 0"
+            />
+          )}
+          {false && (
+            <path
+              fill-opacity="0"
+              stroke="#00e94e"
+              d="M 50 250 l -20 0 l -20 180 l -40 0"
+            />
+          )}
         </svg>
       </Stack.Item>
       <Stack.Item>
@@ -161,6 +171,8 @@ export const WeaponMfdPanel = (props: MfdProps, context) => {
           onClick: () => setPanelState(''),
         },
         {},
+      ]}
+      topButtons={[
         {
           children: 'EQUIP',
           onClick: () => setPanelState('equipment'),

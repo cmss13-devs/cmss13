@@ -2,6 +2,7 @@ import { useBackend } from '../../backend';
 import { Box } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MfdProps, MfdPanel, usePanelState } from './MultifunctionDisplay';
+import { useEquipmentState } from './SupportPanel';
 import { useWeaponState } from './WeaponPanel';
 
 interface EquipmentContext {
@@ -279,10 +280,16 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
     context
   );
 
+  const [equipmentState, setEquipmentState] = useEquipmentState(
+    props.panelStateId,
+    context
+  );
+
   const weap1 = data.equipment_data.find((x) => x.mount_point === 1);
   const weap2 = data.equipment_data.find((x) => x.mount_point === 2);
   const weap3 = data.equipment_data.find((x) => x.mount_point === 3);
   const weap4 = data.equipment_data.find((x) => x.mount_point === 4);
+  const support1 = data.equipment_data.find((x) => x.mount_point === 7);
 
   return (
     <MfdPanel
@@ -316,6 +323,15 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
             },
           }
           : {},
+        support1
+          ? {
+            children: support1.shorthand,
+            onClick: () => {
+              setEquipmentState(support1.mount_point);
+              setPanelState('support');
+            },
+          }
+          : {},
         {},
       ]}
       rightButtons={[
@@ -333,7 +349,7 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
             children: weap4.shorthand,
             onClick: () => {
               setWeaponState(weap4.mount_point);
-              setPanelState('weapon');
+              setPanelState('support');
             },
           }
           : {},

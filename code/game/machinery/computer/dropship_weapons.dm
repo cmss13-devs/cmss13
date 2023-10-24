@@ -390,6 +390,20 @@
 			set_camera_target(null)
 			return TRUE
 
+		if("medevac-target")
+			var/equipment_tag = params["equipment_id"]
+			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
+				var/mount_point = equipment.ship_base.attach_id
+				if(mount_point != equipment_tag)
+					continue
+				if (istype(equipment, /obj/structure/dropship_equipment/medevac_system))
+					var/obj/structure/dropship_equipment/medevac_system/medevac = equipment
+					var/target_ref = params["ref"]
+					medevac.automate_interact(user, target_ref)
+					if(medevac.linked_stretcher)
+						cam_manager.set_camera_obj(medevac.linked_stretcher, 5, 5)
+			return TRUE
+
 		if("fire-weapon")
 			var/weapon_tag = params["eqp_tag"]
 			var/obj/structure/dropship_equipment/weapon/DEW = get_weapon(weapon_tag)
@@ -401,7 +415,8 @@
 			if(!sig)
 				return FALSE
 
-			DEW.open_fire(sig.signal_loc)
+			selected_equipment = DEW
+			ui_open_fire(shuttle, camera_target_id)
 			return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)

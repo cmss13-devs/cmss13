@@ -851,36 +851,30 @@
 
 		.["[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])"] = MS
 
-/obj/structure/dropship_equipment/medevac_system/equipment_interact(mob/user)
+/obj/structure/dropship_equipment/medevac_system/proc/can_medevac(mob/user)
 	if(!linked_shuttle)
-		return
+		return FALSE
 
 	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
-		return
+		return FALSE
 
 	if(busy_winch)
 		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
-		return
+		return FALSE
 
 	if(world.time < medevac_cooldown)
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
-		return
+		return FALSE
 
 	var/list/possible_stretchers = get_targets()
 
 	if(!possible_stretchers.len)
 		to_chat(user, SPAN_WARNING("No active medevac stretcher detected."))
-		return
+		return FALSE
+	return TRUE
 
-	var/stretcher_choice = tgui_input_list(usr, "Which emitting stretcher would you like to link with?", "Available stretchers", possible_stretchers)
-	if(!stretcher_choice)
-		return
-
-	var/obj/structure/bed/medevac_stretcher/selected_stretcher = possible_stretchers[stretcher_choice]
-	if(!selected_stretcher)
-		return
-
+/obj/structure/dropship_equipment/medevac_system/proc/position_dropship(mob/user, obj/structure/bed/medevac_stretcher/selected_stretcher)
 	if(!ship_base) //system was uninstalled midway
 		return
 
@@ -930,6 +924,31 @@
 	linked_stretcher.linked_medevac = src
 	linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship overhead."))
 
+/obj/structure/dropship_equipment/medevac_system/proc/automate_interact(mob/user, var/stretcher_choice)
+	if(!can_medevac(user))
+		return
+
+	var/list/possible_stretchers = get_targets()
+
+	var/obj/structure/bed/medevac_stretcher/selected_stretcher = possible_stretchers[stretcher_choice]
+	if(!selected_stretcher)
+		return
+	position_dropship(user, selected_stretcher)
+
+/obj/structure/dropship_equipment/medevac_system/equipment_interact(mob/user)
+	if(!can_medevac(user))
+		return
+
+	var/list/possible_stretchers = get_targets()
+
+	var/stretcher_choice = tgui_input_list(usr, "Which emitting stretcher would you like to link with?", "Available stretchers", possible_stretchers)
+	if(!stretcher_choice)
+		return
+
+	var/obj/structure/bed/medevac_stretcher/selected_stretcher = possible_stretchers[stretcher_choice]
+	if(!selected_stretcher)
+		return
+	position_dropship(user, selected_stretcher)
 
 
 //on arrival we break any link

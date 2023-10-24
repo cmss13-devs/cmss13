@@ -8,6 +8,7 @@ import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
 import { MapMfdPanel } from './MfdPanels/MapPanel';
 import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
+import { SupportMfdPanel } from './MfdPanels/SupportPanel';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -356,7 +357,7 @@ const getMedevacRightProps = (context) => {
 };
 
 const getRightButtons = (context) => {
-  const [panelState] = usePanelState(undefined, context);
+  const [panelState] = usePanelState('', context);
   const dir: mfddir = 'right';
   const getProps = () => {
     switch (panelState) {
@@ -464,6 +465,7 @@ const FiremissionsMfdPanel = (props: MfdProps, context) => {
   );
   return (
     <MfdPanel
+      panelStateId={props.panelStateId}
       bottomButtons={[
         {
           children: 'BACK',
@@ -477,7 +479,7 @@ const FiremissionsMfdPanel = (props: MfdProps, context) => {
 
 const WeaponsMfdPanel = (props, context) => {
   return (
-    <MfdPanel>
+    <MfdPanel panelStateId={props.panelStateId}>
       <LcdPanel />
     </MfdPanel>
   );
@@ -501,8 +503,8 @@ const BaseMfdPanel = (props: MfdProps, context) => {
         },
       ]}
       bottomButtons={[
-        { children: 'MAPS', onClick: () => setPanelState('map') },
         {},
+        { children: 'MAPS', onClick: () => setPanelState('map') },
         { children: 'CAMS', onClick: () => setPanelState('camera') },
       ]}>
       <Box className="NavigationMenu">
@@ -531,6 +533,8 @@ const PrimaryPanel = (props: MfdProps, context) => {
       return <FiremissionsMfdPanel {...props} />;
     case 'weapon':
       return <WeaponMfdPanel {...props} />;
+    case 'support':
+      return <SupportMfdPanel {...props} />;
     default:
       return <BaseMfdPanel {...props} />;
   }

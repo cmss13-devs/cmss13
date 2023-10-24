@@ -107,12 +107,12 @@
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
 	id = DROPSHIP_ALAMO
-	preferred_direction = WEST
+	preferred_direction = SOUTH
 
 /obj/docking_port/mobile/marine_dropship/normandy
 	name = "Normandy"
 	id = DROPSHIP_NORMANDY
-	preferred_direction = EAST
+	preferred_direction = SOUTH
 
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()

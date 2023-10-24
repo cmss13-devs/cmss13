@@ -406,3 +406,9 @@
       worn.
   neeshacark:
   - qol: MT, CT, and Nurses can now take the bad leg trait.
+2023-10-24:
+  Fray2:
+  - code_imp: synced with upstream!
+  Noname995:
+  - rscadd: "\u0412\u044B\u0431\u043E\u0440 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\
+      \u0434\u0438\u0442\u0435\u043B\u044F \u0441\u0438\u043D\u0442\u0430\u043C!"

@@ -12,6 +12,10 @@
 /obj/structure/cargo_container/arious/right,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
+"aC" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/turf/open/auto_turf/snow,
+/area/corsat/sigma/biodome/ice)
 "aI" = (
 /obj/item/tool/shovel,
 /turf/open/auto_turf/snow/layer2,
@@ -492,6 +496,11 @@
 	icon_state = "asteroidfloor"
 	},
 /area/corsat/sigma/biodome/ice)
+"jr" = (
+/obj/structure/bed/nest,
+/obj/effect/landmark/corpsespawner/scientist,
+/turf/open/auto_turf/snow,
+/area/corsat/sigma/biodome/ice)
 "jv" = (
 /turf/open/floor{
 	dir = 1;
@@ -608,7 +617,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
 "lr" = (
-/turf/closed/wall/resin/membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/turf/open/auto_turf/snow,
 /area/corsat/sigma/biodome/ice)
 "lw" = (
 /turf/closed/wall/r_wall,
@@ -621,7 +631,7 @@
 /area/corsat/sigma/biodome/ice)
 "lN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/tunnel,
-/turf/open/ice,
+/turf/open/auto_turf/snow,
 /area/corsat/sigma/biodome/ice)
 "lP" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -796,6 +806,10 @@
 	icon_state = "red"
 	},
 /area/corsat/sigma/airlock/control)
+"pF" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/turf/open/ice,
+/area/corsat/sigma/biodome/ice)
 "pP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -813,6 +827,10 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/airlock/control)
+"qh" = (
+/obj/structure/bed/nest,
+/turf/open/auto_turf/snow,
+/area/corsat/sigma/biodome/ice)
 "qs" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -822,6 +840,9 @@
 "qC" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/inaccessible)
+"qL" = (
+/turf/open/auto_turf/snow,
+/area/corsat/sigma/biodome/ice)
 "qN" = (
 /obj/structure/machinery/portable_atmospherics/canister/empty,
 /turf/open/floor/corsat,
@@ -1637,6 +1658,11 @@
 	icon_state = "yellow"
 	},
 /area/corsat/sigma/airlock/control)
+"Eo" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/auto_turf/snow,
+/area/corsat/sigma/biodome/ice)
 "Ev" = (
 /obj/structure/largecrate/supply/ammo/m41a{
 	desc = "An ammunition case containing 10 M41A magazines.";
@@ -1787,6 +1813,11 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/airlock/control)
+"GT" = (
+/obj/structure/bed/nest,
+/obj/effect/landmark/corpsespawner/engineer,
+/turf/open/auto_turf/snow,
+/area/corsat/sigma/biodome/ice)
 "GW" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
@@ -2109,6 +2140,10 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/airlock/control)
+"MB" = (
+/obj/effect/alien/weeds/node,
+/turf/open/auto_turf/snow,
+/area/corsat/sigma/biodome/ice)
 "ME" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2344,6 +2379,11 @@
 /obj/structure/cargo_container/grant/left,
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
+"QM" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/ice,
+/area/corsat/sigma/biodome/ice)
 "QN" = (
 /obj/structure/target,
 /obj/item/clothing/suit/storage/militia,
@@ -5135,13 +5175,13 @@ Wk
 Wk
 Wk
 gr
-lr
+pF
 Zr
 Zr
 YN
 Zr
 Zr
-lr
+pF
 gr
 Wk
 Wk
@@ -5223,7 +5263,7 @@ YN
 Zr
 io
 fc
-gr
+qh
 Wk
 Wk
 Wk
@@ -5297,14 +5337,14 @@ Wk
 Wk
 Wk
 gx
-lr
+pF
 Zr
 io
 YN
 Zr
 Zr
-lr
-nI
+pF
+jr
 Wk
 Wk
 Wk
@@ -5377,8 +5417,8 @@ Wk
 Wk
 Wk
 gr
-lr
-lr
+pF
+pF
 Zr
 Zr
 YN
@@ -5458,7 +5498,7 @@ Wk
 Wk
 nI
 fc
-lr
+pF
 Zr
 Zr
 Zr
@@ -5466,7 +5506,7 @@ kV
 lB
 Zr
 lr
-gr
+qh
 Wk
 Wk
 Wk
@@ -5537,7 +5577,7 @@ Zr
 Wk
 Wk
 Wk
-lr
+pF
 io
 pe
 Sl
@@ -5545,9 +5585,9 @@ Sl
 Sl
 pP
 Zr
-Zr
-fc
-gx
+qL
+aC
+GT
 Wk
 Wk
 Wk
@@ -5618,17 +5658,17 @@ Zr
 Wk
 Wk
 gr
-lr
+pF
 Zr
 YN
 Zr
 io
 Zr
 Zr
-Zr
-io
+qL
+MB
 lr
-gr
+qh
 Wk
 Wk
 Wk
@@ -5704,10 +5744,10 @@ Zr
 YN
 Zr
 Zr
-Zr
-Zr
-Zr
-Zr
+qL
+qL
+qL
+qL
 Wk
 Wk
 Wk
@@ -5784,11 +5824,11 @@ fc
 Zr
 YN
 Zr
-Zr
+qL
 Wk
-dS
-fc
-dS
+Eo
+aC
+Eo
 Wk
 Wk
 Wk
@@ -5860,8 +5900,8 @@ Zr
 Zr
 Zr
 Wk
-dS
-dS
+QM
+QM
 fc
 gP
 fc

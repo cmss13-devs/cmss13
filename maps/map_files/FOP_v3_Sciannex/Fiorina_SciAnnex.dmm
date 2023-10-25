@@ -4537,11 +4537,6 @@
 	icon_state = "bluefull"
 	},
 /area/fiorina/station/power_ring)
-"cFX" = (
-/obj/structure/largecrate/supply/supplies,
-/obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/power_ring)
 "cGg" = (
 /obj/structure/machinery/gibber,
 /turf/open/floor/prison{
@@ -23497,13 +23492,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/power_ring)
-"ohs" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/fiorina/station/security)
 "ohF" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/closed/wall/mineral/bone_resin,
@@ -28706,12 +28694,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/lowsec)
-"rru" = (
-/obj/effect/spawner/random/goggles/midchance,
-/turf/open/organic/grass{
-	name = "astroturf"
-	},
-/area/fiorina/station/research_cells)
 "rrP" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison{
@@ -30529,16 +30511,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/aux_engi)
-"sAx" = (
-/obj/structure/bed{
-	icon_state = "abed"
-	},
-/obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
-/area/fiorina/station/research_cells)
 "sAK" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison{
@@ -31707,8 +31679,8 @@
 /area/fiorina/maintenance)
 "tpt" = (
 /obj/structure/closet/wardrobe/chaplain_black,
-/obj/effect/spawner/random/goggles,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clothing/glasses/thermal/syndi/bug_b_gone,
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
 "tpO" = (
@@ -35323,13 +35295,6 @@
 /obj/item/clothing/suit/storage/hazardvest,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
-"vyz" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/fiorina/station/park)
 "vyA" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -58824,7 +58789,7 @@ xub
 cdD
 ajK
 kXD
-vyz
+gbU
 itd
 uGM
 bNT
@@ -72168,7 +72133,7 @@ xBI
 xBI
 xBI
 gIB
-ohs
+lgy
 qgA
 tHs
 sRV
@@ -76958,7 +76923,7 @@ ikq
 dyM
 cKa
 ikq
-sAx
+dSw
 cKa
 xMR
 iqV
@@ -82888,7 +82853,7 @@ uTp
 uTp
 bXk
 nmm
-rru
+nmm
 nmm
 djB
 wJd
@@ -85923,7 +85888,7 @@ dGj
 mxQ
 mxQ
 tUs
-cFX
+wBX
 mxQ
 mxQ
 mxQ

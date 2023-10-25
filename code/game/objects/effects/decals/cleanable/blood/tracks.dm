@@ -14,8 +14,8 @@
 
 	var/list/overlay_images = list()
 
-	/// Amount of pixels to shift either way in an attempt to make the trakcs more organic
-	var/transverse_amplitude = 2
+	/// Amount of pixels to shift either way in an attempt to make the tracks more organic
+	var/transverse_amplitude = 3
 
 /obj/effect/decal/cleanable/blood/tracks/Crossed()
 	return

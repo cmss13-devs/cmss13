@@ -3544,6 +3544,19 @@
 /obj/structure/machinery/cryo_cell,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/med/cells)
+"eDz" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/safe{
+	spawnkey = 0
+	},
+/obj/item/clothing/glasses/thermal/syndi{
+	icon_state = "kutjevo_goggles";
+	pixel_y = -2
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction)
 "eDQ" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/desert/desert_shore/shore_edge1{
@@ -5968,9 +5981,6 @@
 /area/kutjevo/exterior/lz_dunes)
 "idX" = (
 /obj/structure/closet/firecloset/full,
-/obj/item/clothing/glasses/thermal/syndi{
-	icon_state = "kutjevo_goggles"
-	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/med/locks)
@@ -12915,19 +12925,17 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
 "rRC" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/barricade/handrail/kutjevo{
-	layer = 3.1
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
 	},
-/obj/item/clipboard,
 /obj/item/clothing/glasses/thermal/syndi{
 	icon_state = "kutjevo_goggles";
-	pixel_y = -2
+	pixel_x = -1;
+	pixel_y = 19
 	},
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 4
-	},
-/area/kutjevo/interior/colony_South/power2)
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/colony_central/mine_elevator)
 "rRL" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -41206,7 +41214,7 @@ rfE
 rdm
 rdm
 rsM
-rRC
+eVO
 aoJ
 tnx
 iiG
@@ -43692,7 +43700,7 @@ mbR
 xMm
 feg
 qaI
-wSU
+eDz
 oQL
 hrR
 qaI
@@ -51387,7 +51395,7 @@ vdv
 vdv
 vdv
 cyc
-tlq
+rRC
 cgM
 tlq
 pGc

@@ -3,7 +3,7 @@ import { MfdPanel, MfdProps, usePanelState } from './MultifunctionDisplay';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MedevacMfdPanel } from './MedevacPanel';
 import { FultonMfdPanel } from './FultonPanel';
-import { Box } from '../../components';
+import { Box, Stack } from '../../components';
 import { SentryMfdPanel } from './SentryPanel';
 import { MgMfdPanel } from './MGPanel';
 export const useEquipmentState = (panelId: string, context) =>
@@ -32,19 +32,16 @@ export const SupportMfdPanel = (props: MfdProps, context) => {
   const result = data.equipment_data.find(
     (x) => x.mount_point === equipmentState
   );
-  if (!result) {
-    return 5;
-  }
-  if (result.shorthand === 'Medevac') {
+  if (result?.shorthand === 'Medevac') {
     return <MedevacMfdPanel panelStateId={props.panelStateId} />;
   }
-  if (result.shorthand === 'Fulton') {
+  if (result?.shorthand === 'Fulton') {
     return <FultonMfdPanel panelStateId={props.panelStateId} />;
   }
-  if (result.shorthand === 'Sentry') {
+  if (result?.shorthand === 'Sentry') {
     return <SentryMfdPanel panelStateId={props.panelStateId} />;
   }
-  if (result.shorthand === 'MG') {
+  if (result?.shorthand === 'MG') {
     return <MgMfdPanel panelStateId={props.panelStateId} />;
   }
   return (
@@ -57,13 +54,19 @@ export const SupportMfdPanel = (props: MfdProps, context) => {
         },
       ]}>
       <Box className="NavigationMenu">
-        <center>
-          <h3>Component {result.shorthand} not found</h3>
-          <h3>Is this authorised equipment?</h3>
-          <h3>
-            Contact your local WY representative for further upgrade options
-          </h3>
-        </center>
+        <Stack align="center">
+          <Stack.Item>
+            <h3>Component {result?.shorthand} not found</h3>
+          </Stack.Item>
+          <Stack.Item>
+            <h3>Is this authorised equipment?</h3>
+          </Stack.Item>
+          <Stack.Item>
+            <h3>
+              Contact your local WY representative for further upgrade options
+            </h3>
+          </Stack.Item>
+        </Stack>
       </Box>
     </MfdPanel>
   );

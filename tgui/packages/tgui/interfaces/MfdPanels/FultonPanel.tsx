@@ -129,18 +129,14 @@ export const FultonMfdPanel = (props: MfdProps, context) => {
             </svg>
           </Stack.Item>
           <Stack.Item>
-            <Stack vertical width="300px">
+            <Stack vertical width="300px" align="center">
               <Stack.Item>
-                <center>
-                  <h3>Active Fultons</h3>
-                </center>
+                <h3>Active Fultons</h3>
               </Stack.Item>
               {all_targets.map((x) => {
                 return (
                   <Stack.Item key={x}>
-                    <center>
-                      <h4>{x}</h4>
-                    </center>
+                    <h4>{x}</h4>
                   </Stack.Item>
                 );
               })}

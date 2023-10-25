@@ -175,11 +175,9 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
             </svg>
           </Flex.Item>
           <Flex.Item width="400px">
-            <Stack vertical>
+            <Stack vertical align="center">
               <Stack.Item>
-                <center>
-                  <h3>Medevac Requests</h3>
-                </center>
+                <h3>Medevac Requests</h3>
               </Stack.Item>
               {all_targets.map((x) => (
                 <>

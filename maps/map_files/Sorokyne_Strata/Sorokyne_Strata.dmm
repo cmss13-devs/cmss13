@@ -29652,7 +29652,6 @@
 "czw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
-/obj/item/clothing/glasses/thermal/syndi,
 /turf/open/floor/strata{
 	icon_state = "purp1"
 	},
@@ -38350,7 +38349,6 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "rkb" = (
-/obj/item/clothing/glasses/thermal/syndi,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 8;

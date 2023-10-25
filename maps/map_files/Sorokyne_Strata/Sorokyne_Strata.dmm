@@ -35116,6 +35116,15 @@
 	icon_state = "cement3"
 	},
 /area/strata/ag/exterior/tcomms/tcomms_deck)
+"lUb" = (
+/obj/item/clothing/glasses/thermal/syndi,
+/obj/structure/safe{
+	spawnkey = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/strata/ug/interior/jungle/deep/structures/res)
 "lUg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
@@ -38350,7 +38359,6 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "rkb" = (
-/obj/item/clothing/glasses/thermal/syndi,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 8;
@@ -88748,7 +88756,7 @@ bRl
 bRl
 bRl
 aeY
-agq
+lUb
 ahm
 ahm
 air

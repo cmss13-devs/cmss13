@@ -39,7 +39,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("S4 2x Telescopic Mini-Scope", 15, /obj/item/attachable/scope/mini, null, VENDOR_ITEM_REGULAR),
 
 		list("Helmet Visors", 0, null, null, null),
-		list("Night Vision Visor", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("UNDERBARREL ATTACHMENTS", 0, null, null, null),

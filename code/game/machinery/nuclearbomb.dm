@@ -400,7 +400,7 @@ var/bomb_set = FALSE
 	var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
 	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
 	for(var/mob/current_mob as anything in GLOB.mob_list)
-		if(!current_mob || !current_mob.loc)
+		if(!current_mob?.loc)
 			continue
 		if(current_mob.stat == DEAD)
 			dead_mobs |= current_mob

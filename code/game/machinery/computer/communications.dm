@@ -403,22 +403,8 @@
 
 		if(STATE_ALERT_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
-			/*
-			if(security_level == SEC_LEVEL_DELTA)
-				if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_ACTIVE)
-					dat += SET_CLASS("<b>The self-destruct mechanism is active. [EvacuationAuthority.evac_status != EVACUATION_STATUS_INITIATING ? "You have to manually deactivate the self-destruct mechanism." : ""]</b>", INTERFACE_RED)
-					dat += "<BR>"
-				switch(EvacuationAuthority.evac_status)
-					if(EVACUATION_STATUS_INITIATING)
-						dat += SET_CLASS("<b>Evacuation initiated. Evacuate or rescind evacuation orders.</b>", INTERFACE_RED)
-					if(EVACUATION_STATUS_IN_PROGRESS)
-						dat += SET_CLASS("<b>Evacuation in progress.</b>", INTERFACE_RED)
-					if(EVACUATION_STATUS_COMPLETE)
-						dat += SET_CLASS("<b>Evacuation complete.</b>", INTERFACE_RED)
-			else
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
-			*/ // Transfer over when SD stuff is done - Morrow
+			dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
+			dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
 
 		if(STATE_CONFIRM_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"

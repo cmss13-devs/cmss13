@@ -15,6 +15,7 @@
 	unacidable = TRUE   //NOPE.jpg
 	anchored = TRUE
 	density = TRUE
+	power_machine = TRUE
 
 	var/power_gen_percent = 0 //50,000W at full capacity
 	var/buildstate = 0 //What state of building it are we on, 0-3, 1 is "broken", the default
@@ -26,9 +27,6 @@
 	var/fuel_rate = 0 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
 	/// If the generator is overloaded. Only possible during hijack once fuel is at 100%.
 	var/overloaded = FALSE
-	power_machine = TRUE
-	/// Static cooldown if the power changes while generators are overloaded
-	var/static/overload_power_change_cooldown = 0
 
 /obj/structure/machinery/power/fusion_engine/Initialize(mapload, ...)
 	. = ..()
@@ -41,13 +39,23 @@
 	QDEL_NULL(fusion_cell)
 	return ..()
 
+/obj/structure/machinery/power/fusion_engine/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!overloaded)
+		to_chat(xeno, SPAN_WARNING("You see no reason to attack [src]."))
+		return XENO_NO_DELAY_ACTION
+
+	xeno.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], stopping its overload process!"), \
+	SPAN_DANGER("You [xeno.slash_verb] [src], stopping its overload process!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	set_overloading(FALSE)
+	return XENO_ATTACK_ACTION
+
 /obj/structure/machinery/power/fusion_engine/power_change()
 	. = ..()
 	if(overloaded)
 		set_overloading(FALSE)
-		if(COOLDOWN_FINISHED(src, overload_power_change_cooldown))
-			visible_message("[icon2html(src, viewers(src))] <b>[src]</b>'s overload suddenly ceases as primary power is lost.")
-			COOLDOWN_START(src, overload_power_change_cooldown, 1 SECONDS)
+		visible_message("[icon2html(src, viewers(src))] <b>[src]</b>'s overload suddenly ceases as primary power is lost.")
 
 /obj/structure/machinery/power/fusion_engine/process()
 	if(!is_on || buildstate || !anchored || !powernet || !fusion_cell) //Default logic checking
@@ -299,7 +307,11 @@
 
 /obj/structure/machinery/power/fusion_engine/get_examine_text(mob/user)
 	. = ..()
-	if(ishuman(user))
+	if(isxeno(user))
+		if(overloaded)
+			. += SPAN_INFO("You could <b>attack</b> this to stop the overload process.")
+
+	else if(ishuman(user))
 		if(buildstate)
 			. += SPAN_INFO("It's broken.")
 			switch(buildstate)

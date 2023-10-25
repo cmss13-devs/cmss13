@@ -129,10 +129,6 @@
 	icon_state = "darkredcorners2"
 	},
 /area/bigredv2/caves/eta/xenobiology)
-"w" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars,
-/area/bigredv2/caves/eta/xenobiology)
 "x" = (
 /obj/item/toy/farwadoll,
 /turf/open/ice,
@@ -167,7 +163,6 @@
 /area/bigredv2/caves/eta/xenobiology)
 "C" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars{
 	icon_state = "mars_dirt_10"
 	},
@@ -197,12 +192,23 @@
 	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"I" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/mars,
+/area/bigredv2/caves/eta/xenobiology)
 "O" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/xenobiology)
 "P" = (
 /obj/effect/decal/cleanable/dirt,
+/turf/open/mars,
+/area/bigredv2/caves/eta/xenobiology)
+"W" = (
+/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
 "X" = (
@@ -227,8 +233,8 @@ b
 (2,1,1) = {"
 b
 g
-p
-h
+I
+W
 b
 h
 p
@@ -245,7 +251,7 @@ h
 g
 g
 b
-w
+g
 g
 g
 b

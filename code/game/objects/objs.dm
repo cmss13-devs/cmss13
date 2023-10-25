@@ -226,9 +226,14 @@
 /obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
 	handle_rotation()
 	SEND_SIGNAL(src, COSMIG_OBJ_AFTER_BUCKLE, buckled_mob)
+	if(!buckled_mob)
+		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
+	else
+		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
 	return buckled_mob
 
 /obj/proc/unbuckle()
+	SIGNAL_HANDLER
 	if(buckled_mob && buckled_mob.buckled == src)
 		buckled_mob.buckled = null
 		buckled_mob.anchored = initial(buckled_mob.anchored)

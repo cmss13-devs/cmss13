@@ -398,28 +398,25 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 /obj/structure/machinery/vending/proc/GetProductIndex(datum/data/vending_product/product)
 	var/list/plist
-	switch(product.category)
-		if(CAT_NORMAL)
-			plist=product_records
-		if(CAT_HIDDEN)
-			plist=hidden_records
-		if(CAT_COIN)
-			plist=coin_records
-		else
-			warning("UNKNOWN CATEGORY [product.category] IN TYPE [product.product_path] INSIDE [type]!")
+	if(product.category == CAT_NORMAL)
+		plist = product_records
+	else if(product.category == CAT_HIDDEN)
+		plist = hidden_records
+	else if(product.category == CAT_COIN)
+		plist = coin_records
+	else
+		warning("UNKNOWN CATEGORY [product.category] IN TYPE [product.product_path] INSIDE [type]!")
 	return plist.Find(product)
 
 /obj/structure/machinery/vending/proc/GetProductByID(pid, category)
-	switch(category)
-		if(CAT_NORMAL)
-			return product_records[pid]
-		if(CAT_HIDDEN)
-			return hidden_records[pid]
-		if(CAT_COIN)
-			return coin_records[pid]
-		else
-			warning("UNKNOWN PRODUCT: PID: [pid], CAT: [category] INSIDE [type]!")
-			return null
+	if(category == CAT_NORMAL)
+		return product_records[pid]
+	else if(category == CAT_HIDDEN)
+		return hidden_records[pid]
+	else if(category == CAT_COIN)
+		return coin_records[pid]
+	else
+		warning("UNKNOWN PRODUCT: PID: [pid], CAT: [category] INSIDE [type]!")
 
 /obj/structure/machinery/vending/attack_hand(mob/user)
 	if(is_tipped_over)

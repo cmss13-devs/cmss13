@@ -269,3 +269,101 @@
       worn.
   neeshacark:
   - qol: MT, CT, and Nurses can now take the bad leg trait.
+2023-10-20:
+  Drathek:
+  - bugfix: Fixed a cause of bad icon operations
+  - bugfix: Bandaided a problem with nulls in GLOB.clients
+  IsProbablyCatto:
+  - qol: Medbelts pull from pillbottles as default
+  Kitsunemitsu:
+  - bugfix: fixed FTLs being demoted from SL erroneously having the tag TL in chat.
+  MrDas:
+  - bugfix: You can now disassemble wide airlocks. (You can't unwrench them though)
+  - spellcheck: Fixed a few typos in airlock assembly.
+  - imageadd: Added wide airlock assembly and generic solid wide airlock sprites.
+  SpartanBobby:
+  - maptweak: Removes stunprod from LV522
+  VileBeggar:
+  - rscadd: Dartboards are now functional and can be crafted with cardboard.
+  - bugfix: Fixed an issue with some deconstructed signs losing their icon.
+2023-10-21:
+  Birdtalon:
+  - rscadd: USCM Service Jacket to SEA Vendor
+  CapCamIII:
+  - balance: Crawling now only takes 1 second to move and no longer has an overhead
+      icon when doing it.
+  - balance: Timer on attempting to join ERT after death is now 30 seconds down from
+      1 minute
+  - spellcheck: UPP Synth Survivor on the Trijent Dam nightmare is now called a Support
+      Synthetic instead of a Combat Synthetic, as its not a combat synthetic
+  Drathek:
+  - bugfix: Fixed imaginary friends not initializing correctly and throwing a runtime
+  - ui: Tweaked the position of some ghost alerts
+  SpartanBobby:
+  - maptweak: Fixes incorrect DIR on fireshutters in memorial
+  - maptweak: Corrects lack of warning stripe tile under door in north brig maint
+  Steelpoint:
+  - rscadd: UPP ERT's have a chance to be neutral to the USCM.
+  fira:
+  - bugfix: Xeno and Megaphone abovehead chat speech should now properly be centered
+      horizontally.
+  - bugfix: Fixed Rangefinders/Designators preventing you from lazing if you looked
+      up/down them without moving.
+  - bugfix: Fixed Rangefinders/Designators forcing you to look up/down again if you
+      had moved while using them.
+  foxtrot1322:
+  - rscadd: Added splints to the survival pouch
+  - rscadd: Increased survival pouch storage space by 1
+  - spellcheck: Updates the survival pouch's description
+2023-10-22:
+  Drathek:
+  - bugfix: Fix incend and cluster OBs not respecting ceiling OB protections.
+  - bugfix: Disabled code in icon2html that is causing bad icon operations
+  Morrow:
+  - server: the rustg mysql driver is now properly compatible with mariadb
+  Zonespace27:
+  - rscadd: Mentors can now unmark mhelps
+  fira:
+  - bugfix: Removed redundant double binding for F1 to AdminHelp from default keybinds.
+      This does not affect existing users or their settings.
+  - rscadd: Stamping papers now makes a noise.
+  - bugfix: Fixed incorrect Reqs vendors visuals on the Almayer. They now blend in
+      with the walls again.
+  - bugfix: Re-fixed Megaphone above-head-chat drifting to the left.
+  harryob:
+  - admin: no more href token errors when changing the game mode via game panel
+  - bugfix: mentorhelp response no longer gives a dead discord link
+  - admin: view-target-records now allows you to note people properly
+  kiVts:
+  - rscadd: Ghosts get notified when they are being revived by DFB property
+  - balance: DFB property healing threshold lowered, You can create DFB property higher
+      than one.
+  realforest2001:
+  - rscadd: Added Discretionary Arrest to JAS.
+  - rscadd: Added a new category to JAS, Precautionary Charges. Moves Insanity and
+      POW to this category.
+2023-10-23:
+  QuickLode:
+  - balance: Nerfs synth surv pouch by removing 1 storage slot.
+  SpypigDev:
+  - rscadd: CIC Armory SO vendor
+  - balance: Moved most combat-themed gear from SO spawn vendors, to CIC Armory vendor
+  - balance: Made RTO pack a point-buy item in CIC Armory vendor for SOs
+  Steelpoint:
+  - balance: Revolver Heavy ammo no longer stuns targets it strikes, it will instead
+      knock them back and slow them down for a short time.
+  harryob:
+  - server: the server now respects /string/title for late joiners
+  stalkerino:
+  - balance: m39 is able to use vertigrip
+2023-10-24:
+  Segrain:
+  - bugfix: Slicing food once again works as intended.
+2023-10-25:
+  fira:
+  - bugfix: Fixed Ghosts and Queen Eye occasionally "eating" pounces in place of a
+      mob on the same turf.
+  - bugfix: Re-Re-Fixed Xeno Above Head Chat offsets, for real this time
+  - bugfix: Fixed people talking in radios all the time. Finally some quiet.
+  - bugfix: deadchat death messages should now display immediately rather than being
+      delayed a couple seconds.

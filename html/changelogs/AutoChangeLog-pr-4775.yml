@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "deadchat death messages should now display immediately rather than being delayed a couple seconds."

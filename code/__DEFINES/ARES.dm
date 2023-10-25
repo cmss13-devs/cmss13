@@ -68,6 +68,12 @@
 #define TICKET_OPEN "OPEN"
 #define TICKET_CLOSED "CLOSED"
 
+// Priority status changes.
+/// Upgraded to Priority
+#define TICKET_PRIORITY "priority"
+/// Downgraded from Priority
+#define TICKET_NON_PRIORITY "non-priority"
+
 /// Cooldowns
 #define COOLDOWN_ARES_SENSOR 60 SECONDS
 #define COOLDOWN_ARES_ACCESS_CONTROL 20 SECONDS

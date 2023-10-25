@@ -1,5 +1,5 @@
-GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 GLOBAL_DATUM_INIT(ares_datacore, /datum/ares_datacore, new)
+GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 GLOBAL_LIST_INIT(maintenance_categories, list(
 	"Broken Light",
 	"Shattered Glass",

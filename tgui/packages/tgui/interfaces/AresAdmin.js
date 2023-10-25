@@ -20,6 +20,7 @@ const PAGES = {
   'emergency': () => Emergency,
   'admin_access_log': () => AdminAccessLogs,
   'access_management': () => AccessManagement,
+  'maintenance_management': () => MaintManagement,
 };
 
 export const AresAdmin = (props, context) => {
@@ -33,7 +34,7 @@ export const AresAdmin = (props, context) => {
   }
 
   return (
-    <Window theme={themecolor} width={800} height={725}>
+    <Window theme={themecolor} width={950} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -58,7 +59,7 @@ const Login = (props, context) => {
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
-      <Box fontFamily="monospace">Version 4.4.1</Box>
+      <Box fontFamily="monospace">Version 4.5.2</Box>
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
@@ -335,6 +336,8 @@ const MainMenu = (props, context) => {
             </Stack.Item>
           )}
         </Stack>
+      </Section>
+      <Section>
         <Stack>
           <Stack.Item grow>
             <h3>Remote Admin</h3>
@@ -351,6 +354,11 @@ const MainMenu = (props, context) => {
               onClick={() => act('page_admin_list')}
             />
           </Stack.Item>
+        </Stack>
+        <Stack>
+          <Stack.Item grow>
+            <h3>ARES Actions</h3>
+          </Stack.Item>
           <Stack.Item>
             <Button
               content="Access Tickets"
@@ -361,6 +369,18 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_access_management')}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="Maintenance Tickets"
+              tooltip="View, create and update maintenance tickets."
+              icon="user-tag"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_maint_management')}
             />
           </Stack.Item>
         </Stack>
@@ -1589,11 +1609,7 @@ const AdminAccessLogs = (props, context) => {
             />
           </Box>
 
-          <h3>
-            {logged_in}, {access_text}
-            <br />
-            Remote Admin: {admin_login}
-          </h3>
+          <h3>Remote Admin: {admin_login}</h3>
 
           <Button.Confirm
             content="Logout"
@@ -1623,8 +1639,7 @@ const AdminAccessLogs = (props, context) => {
 
 const AccessManagement = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, access_tickets } =
-    data;
+  const { last_page, current_menu, access_tickets, admin_login } = data;
 
   return (
     <>
@@ -1648,9 +1663,7 @@ const AccessManagement = (props, context) => {
             />
           </Box>
 
-          <h3>
-            {logged_in}, {access_text}
-          </h3>
+          <h3>Remote Admin: {admin_login}</h3>
 
           <Button.Confirm
             content="Logout"
@@ -1690,29 +1703,21 @@ const AccessManagement = (props, context) => {
           </Flex>
         )}
         {access_tickets.map((ticket, i) => {
-          let can_claim = 'Yes';
-          if (ticket.lock_status === 'CLOSED') {
-            can_claim = 'No';
-          }
           let can_update = 'Yes';
-          if (ticket.assignee !== 'ARES v3.2') {
-            can_update = 'No';
-          } else if (ticket.lock_status === 'CLOSED') {
+          if (ticket.lock_status === 'CLOSED') {
             can_update = 'No';
           }
           let view_status = 'Ticket is pending assignment.';
           let view_icon = 'circle-question';
-          let update_tooltip = 'Update Access';
-          if (ticket.status === 'assigned') {
-            view_status = 'Ticket is assigned.';
-            view_icon = 'circle-plus';
-            update_tooltip = 'Grant Access';
-          } else if (ticket.status === 'rejected') {
+          let update_tooltip = 'Grant Access';
+          if (ticket.status === 'rejected') {
             view_status = 'Ticket has been rejected.';
             view_icon = 'circle-xmark';
+            update_tooltip = 'Ticket rejected. No further changes possible.';
           } else if (ticket.status === 'cancelled') {
             view_status = 'Ticket was cancelled by reporter.';
             view_icon = 'circle-stop';
+            update_tooltip = 'Ticket cancelled. No further changes possible.';
           } else if (ticket.status === 'granted') {
             view_status = 'Access ticket has been granted.';
             view_icon = 'circle-check';
@@ -1727,19 +1732,19 @@ const AccessManagement = (props, context) => {
             update_tooltip =
               'Access self-returned. No further changes possible.';
           }
+          let can_reject = 'Yes';
+          if (can_update === 'No') {
+            can_reject = 'No';
+          }
+          if (ticket.status !== 'pending') {
+            can_reject = 'No';
+          }
 
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              {!!ticket.priority_status && (
-                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold color="red">
-                  {ticket.id}
-                </Flex.Item>
-              )}
-              {!ticket.priority_status && (
-                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold>
-                  {ticket.id}
-                </Flex.Item>
-              )}
+              <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold>
+                {ticket.id}
+              </Flex.Item>
               <Flex.Item italic width="6rem" shrink="0" mr="1rem">
                 {ticket.time}
               </Flex.Item>
@@ -1755,16 +1760,180 @@ const AccessManagement = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button icon={view_icon} tooltip={view_status} />
                 <Button.Confirm
+                  icon="user-gear"
+                  tooltip={update_tooltip}
+                  disabled={can_update === 'No'}
+                  onClick={() => act('auth_access', { ticket: ticket.ref })}
+                />
+                {can_reject === 'Yes' && (
+                  <Button.Confirm
+                    icon="user-minus"
+                    tooltip="Reject Ticket"
+                    disabled={can_reject === 'No'}
+                    onClick={() => act('reject_access', { ticket: ticket.ref })}
+                  />
+                )}
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const MaintManagement = (props, context) => {
+  const { data, act } = useBackend(context);
+  const { last_page, current_menu, maintenance_tickets, admin_login } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>Remote Admin: {admin_login}</h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Maintenance Reports Management</h1>
+
+        <Flex
+          direction="column"
+          justify="center"
+          align="center"
+          height="100%"
+          color="darkgrey"
+          fontSize="2rem"
+          mt="-3rem"
+          bold>
+          <Button
+            content="New Report"
+            icon="exclamation-circle"
+            width="30vw"
+            textAlign="center"
+            fontSize="1.5rem"
+            mt="5rem"
+            onClick={() => act('new_report')}
+          />
+        </Flex>
+
+        {!!maintenance_tickets.length && (
+          <Flex
+            mt="2rem"
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="5rem" shrink="0">
+              ID
+            </Flex.Item>
+            <Flex.Item bold width="6rem" shrink="0" ml="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="12rem" bold>
+              Category
+            </Flex.Item>
+            <Flex.Item width="20rem" bold>
+              Details
+            </Flex.Item>
+            <Flex.Item width="10rem" bold>
+              Submit By
+            </Flex.Item>
+            <Flex.Item width="10rem" bold ml="0.5rem">
+              Assigned To
+            </Flex.Item>
+          </Flex>
+        )}
+        {maintenance_tickets.map((ticket, i) => {
+          let view_status = 'Ticket is pending assignment.';
+          let view_icon = 'circle-question';
+          if (ticket.status === 'assigned') {
+            view_status = 'Ticket is assigned.';
+            view_icon = 'circle-plus';
+          } else if (ticket.status === 'rejected') {
+            view_status = 'Ticket has been rejected.';
+            view_icon = 'circle-xmark';
+          } else if (ticket.status === 'cancelled') {
+            view_status = 'Ticket was cancelled by reporter.';
+            view_icon = 'circle-stop';
+          } else if (ticket.status === 'completed') {
+            view_status = 'Ticket has been successfully resolved.';
+            view_icon = 'circle-check';
+          }
+          let can_claim = 'Yes';
+          if (ticket.lock_status === 'CLOSED') {
+            can_claim = 'No';
+          }
+          let can_mark = 'Yes';
+          if (ticket.lock_status === 'CLOSED') {
+            can_mark = 'No';
+          }
+
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              {!!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" bold color="red">
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              {!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" bold>
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              <Flex.Item italic width="6rem" shrink="0" ml="1rem">
+                {ticket.time}
+              </Flex.Item>
+              <Flex.Item width="12rem">{ticket.category}</Flex.Item>
+              <Flex.Item width="20rem" shrink="0" textAlign="left">
+                {ticket.details}
+              </Flex.Item>
+              <Flex.Item width="10rem" shrink="0" textAlign="left">
+                {ticket.submitter}
+              </Flex.Item>
+              <Flex.Item width="10rem" shrink="0" textAlign="left" ml="0.5rem">
+                {ticket.assignee}
+              </Flex.Item>
+              <Flex.Item width="8rem" ml="1rem" direction="column">
+                <Button icon={view_icon} tooltip={view_status} />
+                <Button.Confirm
                   icon="user-lock"
                   tooltip="Claim Ticket"
                   disabled={can_claim === 'No'}
                   onClick={() => act('claim_ticket', { ticket: ticket.ref })}
                 />
-                <Button.Confirm
+                <Button
                   icon="user-gear"
-                  tooltip={update_tooltip}
-                  disabled={can_update === 'No'}
-                  onClick={() => act('auth_access', { ticket: ticket.ref })}
+                  tooltip="Mark Ticket"
+                  disabled={can_mark === 'No'}
+                  onClick={() => act('mark_ticket', { ticket: ticket.ref })}
                 />
               </Flex.Item>
             </Flex>

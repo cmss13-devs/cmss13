@@ -190,6 +190,29 @@
 	data["active_ref"] = active_ref
 	data["conversations"] = logged_convos
 
+	var/list/logged_maintenance = list()
+	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in tickets_maintenance)
+		if(!istype(maint_ticket))
+			continue
+		var/lock_status = TICKET_OPEN
+		switch(maint_ticket.ticket_status)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
+				lock_status = TICKET_CLOSED
+
+		var/list/current_maint = list()
+		current_maint["id"] = maint_ticket.ticket_id
+		current_maint["time"] = maint_ticket.ticket_time
+		current_maint["priority_status"] = maint_ticket.ticket_priority
+		current_maint["category"] = maint_ticket.ticket_name
+		current_maint["details"] = maint_ticket.ticket_details
+		current_maint["status"] = maint_ticket.ticket_status
+		current_maint["submitter"] = maint_ticket.ticket_submitter
+		current_maint["assignee"] = maint_ticket.ticket_assignee
+		current_maint["lock_status"] = lock_status
+		current_maint["ref"] = "\ref[maint_ticket]"
+		logged_maintenance += list(current_maint)
+	data["maintenance_tickets"] = logged_maintenance
+
 	var/list/logged_access = list()
 	for(var/datum/ares_ticket/access/access_ticket as anything in tickets_access)
 		var/lock_status = TICKET_OPEN
@@ -302,6 +325,9 @@
 		if("page_access_management")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "access_management"
+		if("page_maint_management")
+			admin_interface.last_menu = admin_interface.current_menu
+			admin_interface.current_menu = "maintenance_management"
 
 		// -- 1:1 Conversation -- //
 		if("new_conversation")
@@ -348,14 +374,14 @@
 			var/assigned = ticket.ticket_assignee
 			if(assigned)
 				if(assigned == MAIN_AI_SYSTEM)
-					var/prompt = tgui_alert(usr, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
+					var/prompt = tgui_alert(user, "ARES already claimed this ticket! Do you wish to drop the claim?", "Unclaim ticket", list("Yes", "No"))
 					if(prompt != "Yes")
 						return FALSE
 					/// set ticket back to pending
 					ticket.ticket_assignee = null
 					ticket.ticket_status = TICKET_PENDING
 					return claim
-				var/choice = tgui_alert(usr, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
+				var/choice = tgui_alert(user, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
 				if(choice != "Yes")
 					claim = FALSE
 			if(claim)
@@ -374,7 +400,7 @@
 					continue
 				identification.handle_ares_access(MAIN_AI_SYSTEM, user)
 				access_ticket.ticket_status = TICKET_GRANTED
-				playsound(src, 'sound/machines/chime.ogg', 15, 1)
+				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] granted core access.")
 				return TRUE
 			for(var/obj/item/card/id/identification in active_ids)
 				if(!istype(identification))
@@ -383,6 +409,86 @@
 					continue
 				identification.handle_ares_access(MAIN_AI_SYSTEM, user)
 				access_ticket.ticket_status = TICKET_REVOKED
-				playsound(src, 'sound/machines/chime.ogg', 15, 1)
+				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: core access for [access_ticket.ticket_submitter] revoked.")
 				return TRUE
 			return FALSE
+
+		if("reject_access")
+			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
+			if(!istype(access_ticket))
+				return FALSE
+			access_ticket.ticket_status = TICKET_REJECTED
+			to_chat(user, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
+			ares_apollo_talk("Access Ticket [access_ticket.ticket_id] rejected.")
+			return TRUE
+
+		if("new_report")
+			var/priority_report = FALSE
+			var/maint_type = tgui_input_list(user, "What is the type of maintenance item you wish to report?", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
+			switch(maint_type)
+				if("Major Structural Damage", "Fire", "Communications Failure",	"Power Generation Failure")
+					priority_report = TRUE
+
+			if(!maint_type)
+				return FALSE
+			var/details = tgui_input_text(user, "What are the details for this report?", "Ticket Details", encode = FALSE)
+			if(!details)
+				return FALSE
+
+			if(!priority_report)
+				var/is_priority = tgui_alert(user, "Is this a priority report?", "Priority designation", list("Yes", "No"))
+				if(is_priority == "Yes")
+					priority_report = TRUE
+
+			var/confirm = alert(user, "Please confirm the submission of your maintenance report. \n\n Priority: [priority_report ? "Yes" : "No"]\n Category: '[maint_type]'\n Details: '[details]'\n\n Is this correct?", "Confirmation", "Yes", "No")
+			if(confirm == "Yes")
+				var/datum/ares_ticket/maintenance/maint_ticket = new(MAIN_AI_SYSTEM, maint_type, details, priority_report)
+				tickets_maintenance += maint_ticket
+				if(priority_report)
+					ares_apollo_talk("Priority Maintenance Report: [maint_type] - ID [maint_ticket.ticket_id]. Seek and resolve.")
+				log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(user)] as [MAIN_AI_SYSTEM] with Category '[maint_type]' and Details of '[details]'.")
+				return TRUE
+			return FALSE
+
+		if("cancel_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			if(ticket.ticket_submitter != MAIN_AI_SYSTEM)
+				to_chat(user, SPAN_WARNING("You cannot cancel a ticket that does not belong to [MAIN_AI_SYSTEM]!"))
+				return FALSE
+			to_chat(user, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
+			ticket.ticket_status = TICKET_CANCELLED
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
+			return TRUE
+
+		if("mark_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			var/options_list = list(TICKET_COMPLETED, TICKET_REJECTED)
+			if(ticket.ticket_priority)
+				options_list += TICKET_NON_PRIORITY
+			else
+				options_list += TICKET_PRIORITY
+			var/choice = tgui_alert(user, "What do you wish to mark the ticket as?", "Mark", options_list, 20 SECONDS)
+			switch(choice)
+				if(TICKET_PRIORITY)
+					ticket.ticket_priority = TRUE
+					ares_apollo_talk("[ticket.ticket_type] [ticket.ticket_id] upgraded to Priority.")
+					return TRUE
+				if(TICKET_NON_PRIORITY)
+					ticket.ticket_priority = FALSE
+					ares_apollo_talk("[ticket.ticket_type] [ticket.ticket_id] downgraded from Priority.")
+					return TRUE
+				if(TICKET_COMPLETED)
+					ticket.ticket_status = TICKET_COMPLETED
+				if(TICKET_REJECTED)
+					ticket.ticket_status = TICKET_REJECTED
+				else
+					return FALSE
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [MAIN_AI_SYSTEM].")
+			to_chat(user, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
+			return TRUE

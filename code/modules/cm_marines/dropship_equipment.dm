@@ -179,6 +179,28 @@
 	if(!deployed_turret)
 		. += "Its turret is missing."
 
+/obj/structure/dropship_equipment/sentry_holder/ui_data(mob/user)
+	var/obj/structure/machinery/defenses/defense = deployed_turret
+	. = list()
+	var/is_deployed = deployed_turret.loc != src
+	.["name"] = defense.name
+	.["area"] = get_area(defense)
+	.["active"] = defense.turned_on
+	.["nickname"] = defense.nickname
+	.["camera_available"] = defense.has_camera && is_deployed
+	.["selection_state"] = list()
+	.["kills"] = defense.kills
+	.["iff_status"] = defense.faction_group
+	.["health"] = defense.health
+	.["health_max"] = defense.health_max
+	.["deployed"] = is_deployed
+
+	if(istype(defense, /obj/structure/machinery/defenses/sentry))
+		var/obj/structure/machinery/defenses/sentry/sentrygun = defense
+		.["rounds"] = sentrygun.ammo.current_rounds
+		.["max_rounds"] = sentrygun.ammo.max_rounds
+		.["engaged"] = length(sentrygun.targets)
+
 /obj/structure/dropship_equipment/sentry_holder/on_launch()
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
 		undeploy_sentry()
@@ -304,6 +326,17 @@
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
 
+/obj/structure/dropship_equipment/mg_holder/ui_data(mob/user)
+	. = list()
+	var/is_deployed = deployed_mg.loc == src
+	.["name"] = name
+	.["selection_state"] = list()
+	.["health"] = health
+	.["health_max"] = 100
+	.["rounds"] = deployed_mg.rounds
+	.["max_rounds"] = deployed_mg.rounds_max
+	.["deployed"] = is_deployed
+
 /obj/structure/dropship_equipment/mg_holder/get_examine_text(mob/user)
 	. = ..()
 	if(!deployed_mg)
@@ -333,6 +366,9 @@
 		return
 
 	..()
+
+/obj/structure/dropship_equipment/mg_holder/equipment_interact(mob/user)
+	attack_hand(user)
 
 /obj/structure/dropship_equipment/mg_holder/update_equipment()
 	if(ship_base)
@@ -924,7 +960,7 @@
 	linked_stretcher.linked_medevac = src
 	linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship overhead."))
 
-/obj/structure/dropship_equipment/medevac_system/proc/automate_interact(mob/user, var/stretcher_choice)
+/obj/structure/dropship_equipment/medevac_system/proc/automate_interact(mob/user, stretcher_choice)
 	if(!can_medevac(user))
 		return
 
@@ -1095,7 +1131,26 @@
 		icon_state = "fulton_system"
 
 
-/obj/structure/dropship_equipment/fulton_system/equipment_interact(mob/user)
+/obj/structure/dropship_equipment/fulton_system/proc/automate_interact(mob/user, fulton_choice)
+	if(!can_fulton(user))
+		return
+
+	var/list/possible_fultons = get_targets()
+
+	var/obj/item/stack/fulton/fult = possible_fultons[fulton_choice]
+	if(!fulton_choice)
+		return
+
+	if(!ship_base) //system was uninstalled midway
+		return
+
+	if(is_ground_level(fult.z)) //in case the fulton popped during our input()
+		return
+
+	if(!fult.attached_atom)
+		to_chat(user, SPAN_WARNING("This balloon stretcher is empty."))
+		return
+
 	if(!linked_shuttle)
 		return
 
@@ -1111,14 +1166,50 @@
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
 		return
 
-	var/list/possible_fultons = list()
+	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected balloon's beacon."))
+
+	activate_winch(user, fult)
+
+
+/obj/structure/dropship_equipment/fulton_system/proc/can_fulton(mob/user)
+	if(!linked_shuttle)
+		return FALSE
+
+	if(linked_shuttle.mode != SHUTTLE_CALL)
+		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		return FALSE
+
+	if(busy_winch)
+		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		return FALSE
+
+	if(world.time < fulton_cooldown)
+		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		return FALSE
+	return TRUE
+
+/obj/structure/dropship_equipment/fulton_system/ui_data(mob/user)
+	var/list/targets = get_targets()
+	. = list()
+	for(var/i in targets)
+		. += list(i)
+
+
+/obj/structure/dropship_equipment/fulton_system/proc/get_targets()
+	. = list()
 	for(var/obj/item/stack/fulton/F in deployed_fultons)
 		var/recovery_object
 		if(F.attached_atom)
 			recovery_object = F.attached_atom.name
 		else
 			recovery_object = "Empty"
-		possible_fultons["[recovery_object]"] = F
+		.["[recovery_object]"] = F
+
+/obj/structure/dropship_equipment/fulton_system/equipment_interact(mob/user)
+	if(!can_fulton(user))
+		return
+
+	var/list/possible_fultons = get_targets()
 
 	if(!possible_fultons.len)
 		to_chat(user, SPAN_WARNING("No active balloons detected."))

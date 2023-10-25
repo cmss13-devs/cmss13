@@ -13,6 +13,7 @@ import { SupportMfdPanel } from './MfdPanels/SupportPanel';
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
   medevac_targets: Array<MedevacTargets>;
+  fulton_targets: Array<string>;
   selected_eqp: number;
   tactical_map_ref?: string;
   camera_map_ref?: string;
@@ -51,6 +52,7 @@ export type DropshipEquipment = {
   ammo_name: string;
   ammo?: number;
   max_ammo?: number;
+  data?: any;
 };
 
 const xOffset = 40;

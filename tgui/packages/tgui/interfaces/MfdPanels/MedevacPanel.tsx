@@ -57,7 +57,7 @@ const MedevacOccupant = (props: { data: MedevacTargets }, context) => {
 export const MedevacMfdPanel = (props: MfdProps, context) => {
   const [medevacOffset, setMedevacOffset] = useLocalState(
     context,
-    'medevacoffset',
+    `${props.panelStateId}_medevacoffset`,
     0
   );
   const [panelState, setPanelState] = usePanelState(
@@ -74,33 +74,26 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
   const result = data.equipment_data.find(
     (x) => x.mount_point === equipmentState
   );
-
   const medevacs = data.medevac_targets === null ? [] : data.medevac_targets;
-  const left_targets = range(medevacOffset, medevacOffset + 5)
-    .map((x) => (medevacs.length > x ? medevacs[x] : undefined))
-    .map((x) => {
-      return {
-        children: x ? x.occupant?.split(' ')[0] ?? 'Empty' : undefined,
-        onClick: () =>
-          act('medevac-target', {
-            equipment_id: result?.mount_point,
-            ref: x?.ref,
-          }),
-      };
-    });
-
-  const right_targets = range(medevacOffset + 5, medevacOffset + 8)
-    .map((x) => (medevacs.length > x ? medevacs[x] : undefined))
-    .map((x) => ({
-      children: x ? x.occupant?.split(' ')[0] ?? 'Empty' : '',
-      onClick: () => {
+  const medevac_mapper = (x: number) => {
+    const target = medevacs.length > x ? medevacs[x] : undefined;
+    return {
+      children: target ? target.occupant?.split(' ')[0] ?? 'Empty' : undefined,
+      onClick: () =>
         act('medevac-target', {
           equipment_id: result?.mount_point,
-          ref: x?.ref,
-        });
-        console.log(`mount point ${result?.mount_point} ref ${x?.ref}`);
-      },
-    }));
+          ref: target?.ref,
+        }),
+    };
+  };
+
+  const left_targets = range(medevacOffset, medevacOffset + 5).map(
+    medevac_mapper
+  );
+
+  const right_targets = range(medevacOffset + 5, medevacOffset + 8).map(
+    medevac_mapper
+  );
 
   const all_targets = range(medevacOffset, medevacOffset + 8)
     .map((x) => data.medevac_targets[x])

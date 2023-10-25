@@ -290,6 +290,34 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
   const weap3 = data.equipment_data.find((x) => x.mount_point === 3);
   const weap4 = data.equipment_data.find((x) => x.mount_point === 4);
   const support1 = data.equipment_data.find((x) => x.mount_point === 7);
+  const support2 = data.equipment_data.find((x) => x.mount_point === 8);
+  const support3 = data.equipment_data.find((x) => x.mount_point === 9);
+
+  const generateWeaponButton = (equip: DropshipEquipment) => {
+    return {
+      children: equip.shorthand,
+      onClick: () => {
+        setWeaponState(equip.mount_point);
+        setPanelState('weapon');
+      },
+    };
+  };
+
+  const generateEquipmentButton = (equip: DropshipEquipment) => {
+    return {
+      children: equip.shorthand,
+      onClick: () => {
+        setEquipmentState(equip.mount_point);
+        setPanelState('support');
+      },
+    };
+  };
+
+  const generateButton = (equip: DropshipEquipment) => {
+    return equip.is_weapon
+      ? generateWeaponButton(equip)
+      : generateEquipmentButton(equip);
+  };
 
   return (
     <MfdPanel
@@ -305,54 +333,15 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
         {},
       ]}
       leftButtons={[
-        weap2
-          ? {
-            children: weap2.shorthand,
-            onClick: () => {
-              setWeaponState(weap2.mount_point);
-              setPanelState('weapon');
-            },
-          }
-          : {},
-        weap1
-          ? {
-            children: weap1.shorthand,
-            onClick: () => {
-              setWeaponState(weap1.mount_point);
-              setPanelState('weapon');
-            },
-          }
-          : {},
-        support1
-          ? {
-            children: support1.shorthand,
-            onClick: () => {
-              setEquipmentState(support1.mount_point);
-              setPanelState('support');
-            },
-          }
-          : {},
-        {},
+        weap2 ? generateButton(weap2) : {},
+        weap1 ? generateButton(weap1) : {},
+        support1 ? generateButton(support1) : {},
+        support2 ? generateButton(support2) : {},
+        support3 ? generateButton(support3) : {},
       ]}
       rightButtons={[
-        weap3
-          ? {
-            children: weap3.shorthand,
-            onClick: () => {
-              setWeaponState(weap3.mount_point);
-              setPanelState('weapon');
-            },
-          }
-          : {},
-        weap4
-          ? {
-            children: weap4.shorthand,
-            onClick: () => {
-              setWeaponState(weap4.mount_point);
-              setPanelState('support');
-            },
-          }
-          : {},
+        weap3 ? generateButton(weap3) : {},
+        weap4 ? generateButton(weap4) : {},
         {},
       ]}
       bottomButtons={[

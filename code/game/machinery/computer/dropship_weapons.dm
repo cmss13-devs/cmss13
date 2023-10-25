@@ -60,7 +60,6 @@
 	set_camera_rect(target.x, target.y, target.z, w, h)
 
 /datum/camera_manager/proc/set_camera_rect(x, y, z, w, h)
-	log_admin("rect [x] [y] [z] [w] [h]")
 	current_area = RECT(x, y, w, h)
 	target_x = x
 	target_y = y
@@ -280,7 +279,7 @@
 	.["fire_mission_enabled"] = dropship.in_flyby
 
 	// equipment info
-	.["equipment_data"] = get_sanitised_equipment(dropship)
+	.["equipment_data"] = get_sanitised_equipment(user, dropship)
 
 	// medevac targets
 	.["medevac_targets"] = list()
@@ -288,6 +287,13 @@
 		if (istype(equipment, /obj/structure/dropship_equipment/medevac_system))
 			var/obj/structure/dropship_equipment/medevac_system/medevac = equipment
 			.["medevac_targets"] += medevac.ui_data(user)
+	// fultons
+
+	.["fulton_targets"] = list()
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+		if (istype(equipment, /obj/structure/dropship_equipment/fulton_system))
+			var/obj/structure/dropship_equipment/fulton_system/fult = equipment
+			.["fulton_targets"] += fult.ui_data(user)
 
 	.["targets_data"] = get_targets()
 	.["camera_target"] = camera_target_id
@@ -386,6 +392,27 @@
 			set_camera_target(target_camera)
 			return TRUE
 
+		if("set-camera-sentry")
+			var/equipment_tag = params["equipment_id"]
+			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
+				var/mount_point = equipment.ship_base.attach_id
+				if(mount_point != equipment_tag)
+					continue
+				if (istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
+					var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
+					var/obj/structure/machinery/defenses/sentry/defense = sentry.deployed_turret
+					if (defense.has_camera)
+						defense.set_range()
+						var/datum/shape/rectangle/current_bb = defense.range_bounds
+						cam_manager.set_camera_rect(
+							current_bb.center_x,
+							current_bb.center_y,
+							defense.loc.z,
+							current_bb.width,
+							current_bb.height
+						)
+				return TRUE
+
 		if("clear-camera")
 			set_camera_target(null)
 			return TRUE
@@ -402,8 +429,18 @@
 					medevac.automate_interact(user, target_ref)
 					if(medevac.linked_stretcher)
 						cam_manager.set_camera_obj(medevac.linked_stretcher, 5, 5)
-			return TRUE
-
+				return TRUE
+		if("fulton-target")
+			var/equipment_tag = params["equipment_id"]
+			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
+				var/mount_point = equipment.ship_base.attach_id
+				if(mount_point != equipment_tag)
+					continue
+				if (istype(equipment, /obj/structure/dropship_equipment/fulton_system))
+					var/obj/structure/dropship_equipment/fulton_system/fulton = equipment
+					var/target_ref = params["ref"]
+					fulton.automate_interact(user, target_ref)
+				return TRUE
 		if("fire-weapon")
 			var/weapon_tag = params["eqp_tag"]
 			var/obj/structure/dropship_equipment/weapon/DEW = get_weapon(weapon_tag)
@@ -418,6 +455,14 @@
 			selected_equipment = DEW
 			ui_open_fire(shuttle, camera_target_id)
 			return TRUE
+		if("deploy-equipment")
+			var/equipment_tag = params["equipment_id"]
+			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
+				var/mount_point = equipment.ship_base.attach_id
+				if(mount_point != equipment_tag)
+					continue
+				equipment.equipment_interact(user)
+				return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
@@ -500,24 +545,25 @@
 		fm_direction = "NOT SELECTED"
 	return fm_direction
 
-/obj/structure/machinery/computer/dropship_weapons/proc/get_sanitised_equipment(obj/docking_port/mobile/marine_dropship/dropship)
+/obj/structure/machinery/computer/dropship_weapons/proc/get_sanitised_equipment(mob/user, obj/docking_port/mobile/marine_dropship/dropship)
 	. = list()
 	var/element_nbr = 1
 	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
-		. += list(
-			list(
-				"name"= equipment.name,
-				"shorthand" = equipment.shorthand,
-				"eqp_tag" = element_nbr,
-				"is_weapon" = equipment.is_weapon,
-				"is_interactable" = equipment.is_interactable,
-				"mount_point" = equipment.ship_base.attach_id,
-				"is_missile" = istype(equipment,  /obj/structure/dropship_equipment/weapon/rocket_pod),
-				"ammo_name" = equipment.ammo_equipped?.name,
-				"ammo" = equipment.ammo_equipped?.ammo_count,
-				"max_ammo" = equipment.ammo_equipped?.max_ammo_count
-			)
+		var/list/data = list(
+			"name"= equipment.name,
+			"shorthand" = equipment.shorthand,
+			"eqp_tag" = element_nbr,
+			"is_weapon" = equipment.is_weapon,
+			"is_interactable" = equipment.is_interactable,
+			"mount_point" = equipment.ship_base.attach_id,
+			"is_missile" = istype(equipment,  /obj/structure/dropship_equipment/weapon/rocket_pod),
+			"ammo_name" = equipment.ammo_equipped?.name,
+			"ammo" = equipment.ammo_equipped?.ammo_count,
+			"max_ammo" = equipment.ammo_equipped?.max_ammo_count,
+			"data" = equipment.ui_data(user)
 		)
+
+		. += list(data)
 
 		element_nbr++
 		equipment.linked_console = src

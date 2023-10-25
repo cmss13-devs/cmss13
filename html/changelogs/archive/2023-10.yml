@@ -359,3 +359,11 @@
 2023-10-24:
   Segrain:
   - bugfix: Slicing food once again works as intended.
+2023-10-25:
+  fira:
+  - bugfix: Fixed Ghosts and Queen Eye occasionally "eating" pounces in place of a
+      mob on the same turf.
+  - bugfix: Re-Re-Fixed Xeno Above Head Chat offsets, for real this time
+  - bugfix: Fixed people talking in radios all the time. Finally some quiet.
+  - bugfix: deadchat death messages should now display immediately rather than being
+      delayed a couple seconds.

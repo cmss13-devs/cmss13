@@ -1,0 +1,6 @@
+author: "fira"
+delete-after: True
+changes:
+  - rscadd: "Bloody footprints are now slightly offset to break long visual straight lines."
+  - bugfix: "Items do not align back to the center of turfs anymore when picked from a surface (table or rack)"
+  - rscadd: "Some more items now have offsets on the map display, and they all can be slightly offset."

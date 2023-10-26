@@ -476,12 +476,10 @@
 		// At present, Xenos have no inherent effects or localized damage stemming from limb targeting
 		// Therefore we exempt the shooter from direct hit accuracy penalties as well,
 		// simply to avoid them from resetting target to chest every time they want to shoot a xeno
-		if(isxeno(L))
-			if(!direct_hit)
-				hit_chance -= MOB_OVERALL_MISS_CHANCE // Averaged miss chance across all limbs
-			// else treat this as a chest shot (0 penalty) regardless of aim for the pupose of hit rolls
-		else // For all other normal people we just apply per-limb hit penalty
+
+		if(!direct_hit || !isxeno(L)) // For normal people or direct hits we apply the limb accuracy penalty
 			hit_chance -= base_miss_chance[def_zone]
+		// else for direct hits on xenos, we skip it, pretending it's a chest shot with zero penalty
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([L]) Hit chance: [hit_chance] | Roll: [hit_roll]"))

@@ -156,9 +156,9 @@
 
 	var/list/inherent_traits
 
-	/// How much to offset the item randomly etiher way alongside X visually
+	/// How much to offset the item randomly either way alongside X visually
 	var/ground_offset_x = 0
-	/// How much to offset the item randomly etiher way alongside Y visually
+	/// How much to offset the item randomly either way alongside Y visually
 	var/ground_offset_y = 0
 
 /obj/item/Initialize(mapload, ...)

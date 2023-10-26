@@ -20,7 +20,6 @@
 		for(var/obj/structure/machinery/mass_driver/M in machines)
 			if(M.id == id)
 				connected = M
-			else
 		return
 	return
 

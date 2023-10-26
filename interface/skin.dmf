@@ -164,7 +164,6 @@ window "mainwindow"
 		anchor2 = -1,-1
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "CM-SS13 - USS Almayer"
 		is-maximized = true
 		statusbar = false
 		icon = 'icons\\taskbar\\gml_distress.png'

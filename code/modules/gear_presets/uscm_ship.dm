@@ -417,7 +417,7 @@
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black, /obj/item/clothing/head/marine/peaked)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit, /obj/item/clothing/suit/storage/jacket/marine/dress)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit, /obj/item/clothing/suit/storage/jacket/marine/dress, /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey, )
 
 /datum/equipment_preset/uscm_ship/commander/New()
 	. = ..()
@@ -458,7 +458,6 @@
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_L_HAND)
 	if(kit)
 		new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
 
@@ -479,6 +478,8 @@
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/black,
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit,
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
+		/obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey,
+		/obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat,
 	)
 
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
@@ -512,7 +513,7 @@
 	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_HEAD)
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
-	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full, /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey,)
 
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()

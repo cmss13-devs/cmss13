@@ -13,6 +13,8 @@
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/apply(atom/target_location)
 	var/atom/xeno_item = ..()
+	if(!xeno_item)
+		return
 	if(!istypestrict(xeno_item, path_to_spawn))
 		return
 	set_hive_faction(xeno_item)

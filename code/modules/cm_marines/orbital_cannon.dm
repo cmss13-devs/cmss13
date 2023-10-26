@@ -559,8 +559,8 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_fuel"
 	is_solid_fuel = 1
 
-/obj/structure/ob_ammo/ob_fuel/New()
-	..()
+/obj/structure/ob_ammo/ob_fuel/Initialize()
+	. = ..()
 	pixel_x = rand(-5,5)
 	pixel_y = rand(-5,5)
 

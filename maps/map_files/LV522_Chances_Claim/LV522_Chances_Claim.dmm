@@ -9809,7 +9809,7 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
 "evu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -10585,7 +10585,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "eLK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /obj/structure/machinery/light/small,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/warning_stripes{
@@ -14662,7 +14662,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "gul" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -20780,7 +20780,7 @@
 	},
 /area/lv522/landing_zone_2)
 "iGD" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /obj/structure/machinery/light/small,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -24526,7 +24526,7 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "jYp" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -57509,7 +57509,7 @@
 /area/lv522/indoors/a_block/executive)
 "vSV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue_plate"

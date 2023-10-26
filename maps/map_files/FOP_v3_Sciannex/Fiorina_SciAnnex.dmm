@@ -12419,7 +12419,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "hwE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -13361,7 +13361,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "idO" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "greenblue"
@@ -21721,7 +21721,7 @@
 	},
 /area/fiorina/station/medbay)
 "mYx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -23708,7 +23708,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
 "olB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "olC" = (
@@ -36976,7 +36976,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "wAM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel/maintenance,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "blue"

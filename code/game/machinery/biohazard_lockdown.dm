@@ -102,8 +102,7 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 
 	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/biohazard.ogg')
 	message_admins(log)
-	var/datum/ares_link/link = GLOB.ares_link
-	link.log_ares_security("Containment Lockdown", ares_log)
+	log_ares_security("Containment Lockdown", ares_log)
 
 #undef LOCKDOWN_READY
 #undef LOCKDOWN_ACTIVE

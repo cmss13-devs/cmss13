@@ -1,0 +1,5 @@
+author: "fira"
+delete-after: True
+changes:
+  - code_imp: "Rewrote Xeno Acid ticking code."
+  - bugfix: "Weather updates won't cause turfs to acid melt more rapidly anymore"

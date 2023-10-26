@@ -336,86 +336,6 @@
 
 	/////////////////////////////////////new ban stuff
 
-	else if(href_list["jobban2"])
-// if(!check_rights(R_BAN)) return
-		/*
-		var/mob/M = locate(href_list["jobban2"])
-		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		if(!M.ckey) //sanity
-			to_chat(usr, "This mob has no ckey")
-			return
-		if(!RoleAuthority)
-			to_chat(usr, "The Role Authority is not set up!")
-			return
-
-		var/datum/entity/player/P = get_player_from_key(M.ckey)
-
-		var/dat = ""
-		var/body
-		var/jobs = ""
-
-	/***********************************WARNING!************************************
-					  The jobban stuff looks mangled and disgusting
-							  But it looks beautiful in-game
-										-Nodrak
-	************************************WARNING!***********************************/
-//Regular jobs
-	//Command (Blue)
-		jobs += generate_job_ban_list(M, ROLES_CIC, "CIC", "ddddff")
-		jobs += "<br>"
-	// SUPPORT
-		jobs += generate_job_ban_list(M, ROLES_AUXIL_SUPPORT, "Support", "ccccff")
-		jobs += "<br>"
-	// MPs
-		jobs += generate_job_ban_list(M, ROLES_POLICE, "Police", "ffdddd")
-		jobs += "<br>"
-	//Engineering (Yellow)
-		jobs += generate_job_ban_list(M, ROLES_ENGINEERING, "Engineering", "fff5cc")
-		jobs += "<br>"
-	//Cargo (Yellow) //Copy paste, yada, yada. Hopefully Snail can rework this in the future.
-		jobs += generate_job_ban_list(M, ROLES_REQUISITION, "Requisition", "fff5cc")
-		jobs += "<br>"
-	//Medical (White)
-		jobs += generate_job_ban_list(M, ROLES_MEDICAL, "Medical", "ffeef0")
-		jobs += "<br>"
-	//Marines
-		jobs += generate_job_ban_list(M, ROLES_MARINES, "Marines", "ffeeee")
-		jobs += "<br>"
-	// MISC
-		jobs += generate_job_ban_list(M, ROLES_MISC, "Misc", "aaee55")
-		jobs += "<br>"
-	// Xenos (Orange)
-		jobs += generate_job_ban_list(M, ROLES_XENO, "Xenos", "a268b1")
-		jobs += "<br>"
-	//Extra (Orange)
-		var/isbanned_dept = jobban_isbanned(M, "Syndicate", P)
-		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Syndicate;jobban4=\ref[M]'>Extras</a></th></tr><tr align='center'>"
-
-		//ERT
-		if(jobban_isbanned(M, "Emergency Response Team", P) || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Emergency Response Team;jobban4=\ref[M]'><font color=red>Emergency Response Team</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Emergency Response Team;jobban4=\ref[M]'>Emergency Response Team</a></td>"
-
-		//Survivor
-		if(jobban_isbanned(M, "Survivor", P) || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'><font color=red>Survivor</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'>Survivor</a></td>"
-
-		if(jobban_isbanned(M, "Agent", P) || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'><font color=red>Agent</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'>Agent</a></td>"
-
-		body = "<body>[jobs]</body>"
-		dat = "<tt>[body]</tt>"
-		show_browser(usr, dat, "Job-Ban Panel: [M.name]", "jobban2", "size=800x490")
-		return*/ // DEPRECATED
 	//JOBBAN'S INNARDS
 	else if(href_list["jobban3"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return
@@ -697,7 +617,6 @@
 		to_world(SPAN_NOTICE("<b><i>The mode is now: [GLOB.master_mode]!</i></b>"))
 		Game() // updates the main game menu
 		SSticker.save_mode(GLOB.master_mode)
-		.(href, list("c_mode"=1))
 
 
 	else if(href_list["f_secret2"])
@@ -1903,32 +1822,18 @@
 		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
-	if(href_list["distress_cmb"]) //CMB distress signal, activates Anchorpoint Marine QRF to assist/rescue Colonial Marshals in distress
+	if(href_list["distress_handheld"]) //Prepares to call and logs accepted handheld distress beacons
+		var/mob/ref_person = href_list["distress_handheld"]
+		var/ert_name = href_list["ert_name"]
 		distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND the Anchorpoint Station Colonial Marine QRF to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
-		addtimer(CALLBACK(src, PROC_REF(accept_cmb_ert), usr, locate(href_list["distress"])), 10 SECONDS)
+		message_admins("[key_name_admin(usr)] has opted to SEND [ert_name]! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		addtimer(CALLBACK(src, PROC_REF(accept_handheld_ert), usr, ref_person, ert_name), 10 SECONDS)
 
-	if(href_list["distress_cmb_alt"]) //CMB distress signal, activates a nearby CMB Patrol Team to assist/rescue Colonial Marshals in distress
-		distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND a nearby CMB Patrol Team to assist the CMB! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
-		addtimer(CALLBACK(src, PROC_REF(accept_cmb_alt_ert), usr, locate(href_list["distress"])), 10 SECONDS)
-
-	if(href_list["deny_cmb"]) // Anchorpoint-deny. The distress call is denied, citing unavailable forces
-		var/mob/ref_person = locate(href_list["deny_cmb"])
-		to_chat(ref_person, "A voice barely crackles through the static: CMB Team, this is Anchorpoint Station. No can do, QRF currently dispatched elsewhere, relaying distress. Sorry. Good luck, out.")
-		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
-		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
-
-	if(href_list["distress_pmc"]) //Wey-Yu specific PMC distress signal for chem retrieval ERT
-		distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
-		addtimer(CALLBACK(src, PROC_REF(accept_pmc_ert), usr, locate(href_list["distress"])), 10 SECONDS)
-
-	if(href_list["ccdeny_pmc"]) // CentComm-deny. The distress call is denied, without any further conditions
-		var/mob/ref_person = locate(href_list["ccdeny_pmc"])
+	if(href_list["deny_distress_handheld"]) //Logs denied handheld distress beacons
+		var/mob/ref_person = href_list["deny_distress_handheld"]
 		to_chat(ref_person, "The distress signal has not received a response.")
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
-		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
+		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
 		destroy_cancel = FALSE
@@ -1963,7 +1868,7 @@
 		supply_controller.shoppinglist += new_order
 
 		//Can no longer request a nuke
-		GLOB.ares_link.interface.nuke_available = FALSE
+		GLOB.ares_datacore.nuke_available = FALSE
 
 		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDNANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
@@ -2107,31 +2012,14 @@
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
-/// tells admins which admin has sent the Anchorpoint ERT in response to CMB distress
-/datum/admins/proc/accept_cmb_ert(mob/approver, mob/ref_person)
+///Handles calling the ERT sent by handheld distress beacons
+/datum/admins/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE
-	SSticker.mode.get_specific_call("CMB - Anchorpoint Station Colonial Marine QRF (Friendly)", FALSE, FALSE)
-	log_game("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
-	message_admins("[key_name_admin(approver)] has sent an Anchorpoint Station Colonial Marine QRF response, requested by [key_name_admin(ref_person)]")
-
-/// tells admins which admin has sent the CMB ERT in response to CMB distress
-/datum/admins/proc/accept_cmb_alt_ert(mob/approver, mob/ref_person)
-	if(distress_cancel)
-		return
-	distress_cancel = TRUE
-	SSticker.mode.get_specific_call("CMB - Patrol Team - Marshals in Distress (Friendly)", FALSE, FALSE)
-	log_game("[key_name_admin(approver)] has sent a CMB Patrol Team distress response, requested by [key_name_admin(ref_person)]")
-	message_admins("[key_name_admin(approver)] has sent a CMB Patrol Team distress response, requested by [key_name_admin(ref_person)]")
-
-/datum/admins/proc/accept_pmc_ert(mob/approver, mob/ref_person)
-	if(distress_cancel)
-		return
-	distress_cancel = TRUE
-	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", TRUE, FALSE, FALSE)
-	log_game("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
-	message_admins("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
+	SSticker.mode.get_specific_call("[ert_called]", TRUE, FALSE)
+	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 
 /datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0

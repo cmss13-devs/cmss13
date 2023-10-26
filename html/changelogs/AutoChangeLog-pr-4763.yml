@@ -1,0 +1,4 @@
+author: "Backsea"
+delete-after: True
+changes:
+  - bugfix: "Fixed the incorrectly placed shutters at req and that one light near CIC"

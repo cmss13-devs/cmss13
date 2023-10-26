@@ -615,7 +615,7 @@
 		if(JOB_SQUAD_MEDIC)
 			old_lead.comm_title = "HM"
 		if(JOB_SQUAD_TEAM_LEADER)
-			old_lead.comm_title = "TL"
+			old_lead.comm_title = "FTL"
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 		if(JOB_SQUAD_LEADER)

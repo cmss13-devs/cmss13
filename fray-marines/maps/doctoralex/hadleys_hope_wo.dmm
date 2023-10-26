@@ -1,0 +1,473 @@
+"ag" = (/obj/structure/surface/table/reinforced/prison,/obj/item/storage/toolbox/mechanical{pixel_x = 4; pixel_y = 10},/obj/item/storage/box/zipcuffs/small,/turf/open/floor/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"am" = (/obj/structure/prop/invuln/overhead_pipe{dir = 8},/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{dir = 2},/turf/open/floor/strata{dir = 4; icon_state = "cyan2"},/area/space)
+"az" = (/obj/structure/platform_decoration{dir = 8},/turf/open/floor/corsat{dir = 4; icon_state = "bluecorner"},/area/space)
+"aU" = (/obj/structure/surface/rack,/turf/open/floor/strata{icon_state = "white_cyan3"},/area/space)
+"aX" = (/obj/item/prop/almayer/comp_open{pixel_x = -6; pixel_y = 15},/obj/item/prop/almayer/flight_recorder/colony{pixel_x = 12; pixel_y = 6},/turf/open/floor/prison,/area/space)
+"aZ" = (/obj/structure/machinery/light/small,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"ba" = (/obj/structure/barricade/handrail/strata{dir = 4},/obj/item/tool/weldingtool/largetank{pixel_x = -15; pixel_y = 15},/obj/item/tool/wrench,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 4; icon_state = "brown"},/area/space)
+"bd" = (/turf/open/floor/strata{dir = 6; icon_state = "multi_tiles"},/area/space)
+"bh" = (/obj/structure/machinery/light/small{dir = 4},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"bs" = (/obj/structure/filingcabinet/chestdrawer,/obj/structure/filingcabinet/chestdrawer{pixel_y = 13},/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"bv" = (/obj/structure/machinery/power/terminal{dir = 8},/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"bw" = (/obj/structure/machinery/camera/autoname{dir = 8},/turf/open/floor/corsat{dir = 4; icon_state = "brown"},/area/space)
+"bB" = (/obj/structure/surface/rack,/turf/open/floor/corsat{dir = 10; icon_state = "blue"},/area/space)
+"bL" = (/obj/structure/barricade/handrail/strata,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"bQ" = (/obj/structure/barricade/handrail/strata{dir = 4},/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"ce" = (/turf/open/floor/corsat{icon_state = "bluecorner"},/area/space)
+"ci" = (/obj/effect/spawner/gibspawner/xeno,/turf/open/floor/prison{icon_state = "floor_plate"},/area/space)
+"cr" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/window/reinforced/ultra{dir = 4},/obj/structure/window/reinforced/ultra,/turf/open/floor/prison,/area/space)
+"cz" = (/turf/open/floor/corsat{dir = 9; icon_state = "brown"},/area/space)
+"cG" = (/obj/structure/machinery/power/apc/almayer{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"cK" = (/obj/structure/platform_decoration{dir = 4},/obj/structure/closet/crate/secure/gear,/turf/open/floor/corsat{dir = 1; icon_state = "bluecorner"},/area/space)
+"cN" = (/obj/effect/decal/cleanable/dirt,/turf/closed/wall/strata_outpost/reinforced,/area/space)
+"cT" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice8"; pixel_x = -2; pixel_y = -8},/turf/closed/wall/strata_outpost/reinforced,/area/space)
+"dk" = (/obj/structure/pipes/vents/pump,/turf/open/floor/prison,/area/space)
+"dl" = (/obj/effect/decal/cleanable/generic,/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"dP" = (/obj/structure/sign/poster/propaganda{desc = "A large piece of cheap printed paper. You can see a letter left by someone on the bottom: 'FUCK YOU, ASSHOLES'"; pixel_x = 27},/obj/structure/machinery/space_heater/radiator/red{dir = 8},/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"dW" = (/obj/structure/stairs/perspective{icon_state = "p_stair_full"},/turf/open/floor/prison,/area/space)
+"ea" = (/obj/structure/machinery/cryo_cell,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"ek" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/computer/cameras/wooden_tv{pixel_y = 26},/obj/structure/machinery/computer/secure_data{density = 1},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"eB" = (/obj/structure/machinery/newscaster{pixel_x = 28},/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"eL" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/window/reinforced/ultra{dir = 4},/obj/structure/machinery/light/small{dir = 1},/obj/item/device/flashlight/lamp/on{pixel_x = -10; pixel_y = -2},/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"fp" = (/obj/structure/bed/chair/comfy/black{dir = 1},/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"fr" = (/obj/item/ammo_box/rounds/empty{pixel_x = 8; pixel_y = 11},/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"fu" = (/obj/structure/surface/table/reinforced/prison,/obj/item/trash/USCMtray{pixel_x = 12; pixel_y = 13},/obj/item/trash/wy_chips_pepper{pixel_x = 7},/obj/item/tool/candle{pixel_x = 17; pixel_y = -10},/obj/item/prop/magazine/boots/n160{pixel_x = -5; pixel_y = 5},/obj/effect/decal/cleanable/dirt,/turf/open/floor/plating/plating_catwalk/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"fw" = (/obj/structure/bed/chair/office/light,/turf/open/floor/prison,/area/space)
+"fR" = (/obj/structure/barricade/handrail/strata{dir = 4},/obj/structure/surface/rack,/obj/item/tool/weldpack{pixel_x = 6},/obj/item/tool/weldpack{pixel_x = -3},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"fU" = (/obj/structure/platform_decoration{dir = 1},/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"fW" = (/obj/structure/surface/table/reinforced/prison,/obj/item/tool/pen/fountain{pixel_x = 16; pixel_y = 3},/obj/item/storage/pill_bottle/tramadol{pixel_x = -7},/obj/item/stack/cable_coil/orange,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{icon_state = "white_cyan3"},/area/space)
+"fY" = (/obj/structure/platform{dir = 8},/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"gk" = (/obj/structure/closet/bodybag,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"gn" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/noticeboard{pixel_y = 27},/obj/item/storage/pill_bottle/happy{pixel_x = 16},/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"gq" = (/obj/structure/closet/bodybag{pixel_y = 15},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"gr" = (/turf/open/floor/prison{icon_state = "whitered"},/area/space)
+"gz" = (/obj/structure/prop/invuln/overhead_pipe{dir = 5},/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"gC" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison,/area/space)
+"gE" = (/obj/item/trash/snack_bowl{pixel_x = -8; pixel_y = -7},/turf/open/floor/prison,/area/space)
+"gF" = (/obj/structure/stairs/perspective{dir = 4; icon_state = "p_stair_sn_full_cap"},/obj/structure/platform{dir = 4},/obj/structure/closet/crate/construction,/turf/open/floor/prison,/area/space)
+"gK" = (/obj/structure/surface/rack,/obj/item/storage/pouch/chem,/turf/open/floor/strata{dir = 1; icon_state = "white_cyan3"},/area/space)
+"ha" = (/turf/open/floor/corsat{dir = 4; icon_state = "brown"},/area/space)
+"hg" = (/obj/structure/prop/invuln/overhead_pipe{dir = 4},/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"hP" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/turf/open/floor/prison,/area/space)
+"hY" = (/obj/item/stack/sheet/metal/med_large_stack{pixel_y = 16},/turf/open/floor/prison{icon_state = "whitered"},/area/space)
+"hZ" = (/obj/structure/machinery/body_scanconsole{dir = 1},/turf/open/floor/strata{icon_state = "white_cyan4"},/area/space)
+"ia" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/obj/structure/barricade/deployable{dir = 8},/obj/structure/machinery/m56d_hmg/mg_turret{dir = 8; pixel_y = 8},/obj/structure/barricade/deployable,/turf/open/floor/prison,/area/space)
+"it" = (/obj/structure/bed/chair/office/light{dir = 4},/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"iv" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/prop/almayer/CICmap,/obj/effect/decal/cleanable/dirt,/turf/open/floor/plating/plating_catwalk/prison,/area/space)
+"iy" = (/turf/open/floor/strata{dir = 1; icon_state = "white_cyan4"},/area/space)
+"jh" = (/obj/structure/machinery/cm_vending/sorted/medical/blood,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"jt" = (/obj/structure/surface/rack,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"jI" = (/obj/structure/bed/chair/office/light{dir = 1},/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"jJ" = (/turf/open/floor/corsat{dir = 8; icon_state = "bluecorner"},/area/space)
+"jO" = (/obj/structure/sign/nosmoking_2{dir = 1; pixel_y = 28},/obj/structure/machinery/cm_vending/sorted/medical/chemistry,/turf/open/floor/strata{dir = 1; icon_state = "white_cyan3"},/area/space)
+"kl" = (/obj/structure/grille{density = 0; icon_state = "brokengrille"},/obj/effect/decal{icon = 'icons/mob/xenos/effects.dmi'; icon_state = "acid_weak"; layer = 2; name = "weak acid"},/turf/open/floor/prison{icon_state = "floor_plate"},/area/space)
+"km" = (/obj/structure/platform{dir = 1},/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/obj/structure/machinery/light/small{dir = 1},/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"kH" = (/obj/structure/extinguisher_cabinet{pixel_x = 26},/obj/structure/reagent_dispensers/fueltank/custom,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"kJ" = (/obj/item/tool/crowbar/tactical{pixel_x = 10; pixel_y = 16},/obj/item/trash/uscm_mre,/turf/open/floor/plating/plating_catwalk/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"kS" = (/obj/structure/bed/chair/comfy/black{dir = 1},/turf/open/floor/prison,/area/space)
+"lj" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/window/reinforced/ultra{dir = 1; pixel_y = 5},/obj/structure/window/reinforced/ultra{dir = 4},/obj/structure/prop/invuln/overhead_pipe{dir = 4},/turf/open/floor/prison,/area/space)
+"lp" = (/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/corsat{dir = 9; icon_state = "blue"},/area/space)
+"lr" = (/obj/structure/machinery/disposal,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"lN" = (/obj/structure/bed/chair/comfy/black{dir = 8},/turf/open/floor/prison{dir = 4; icon_state = "whitered"},/area/space)
+"mc" = (/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{dir = 1},/turf/open/floor/prison{dir = 10; icon_state = "floor_marked"},/area/space)
+"mm" = (/obj/structure/surface/table/reinforced/prison,/obj/item/device/sentry_computer{pixel_y = -1},/obj/item/weapon/throwing_knife{pixel_x = 20; pixel_y = 5},/obj/item/ashtray/plastic{pixel_x = -8; pixel_y = 13},/turf/open/floor/plating/plating_catwalk/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"mv" = (/obj/structure/bed/chair/comfy/black{dir = 8},/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"mD" = (/obj/structure/machinery/iv_drip,/turf/open/floor/prison,/area/space)
+"mF" = (/obj/structure/prop/invuln/overhead_pipe{dir = 8},/obj/structure/machinery/light/small{dir = 4},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"mM" = (/obj/effect/decal/cleanable/generic,/turf/open/floor/prison,/area/space)
+"mT" = (/obj/structure/window/framed/strata,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"mX" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison{dir = 4; icon_state = "whitered"},/area/space)
+"nd" = (/obj/structure/prop/invuln/lattice_prop{dir = 1; icon_state = "lattice-simple"; pixel_y = -16},/obj/structure/prop/invuln/overhead_pipe,/obj/item/shard{icon_state = "medium"; pixel_x = 12; pixel_y = 7},/turf/open/floor/plating/plating_catwalk/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"ne" = (/obj/structure/closet/secure_closet/medical1,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"nj" = (/obj/structure/surface/table/reinforced/prison,/obj/item/clothing/head/helmet/marine{pixel_y = 10},/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison,/area/space)
+"nk" = (/turf/open/floor/corsat{dir = 1; icon_state = "browncorner"},/area/space)
+"nl" = (/turf/open/floor/strata{dir = 8; icon_state = "white_cyan4"},/area/space)
+"no" = (/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"nB" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/closet/secure_closet/cmdcabinet{pixel_y = 24},/obj/item/device/cotablet,/turf/open/floor/strata{icon_state = "multi_tiles"},/area/space)
+"nC" = (/obj/effect/decal/cleanable/blood,/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"nO" = (/obj/structure/prop/almayer/computers/sensor_computer2,/turf/open/floor/corsat{icon_state = "spiralblueoffice"},/area/space)
+"nP" = (/obj/structure/machinery/power/geothermal,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"oa" = (/obj/effect/spawner/gibspawner/xeno,/obj/effect/spawner/gibspawner/xeno,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"oi" = (/obj/structure/machinery/defenses/sentry/premade,/turf/open/floor/prison,/area/space)
+"ok" = (/obj/structure/prop/invuln/overhead_pipe{dir = 10},/obj/structure/bed/portable_surgery,/obj/item/storage/surgical_tray,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan4"},/area/space)
+"ov" = (/obj/structure/surface/rack,/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"oE" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan3"},/area/space)
+"oZ" = (/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"pf" = (/obj/structure/extinguisher_cabinet{pixel_y = -28},/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"po" = (/obj/structure/machinery/cm_vending/clothing/commanding_officer{desc = "Some stuff, that we managed to get from the crash - might be useful"; icon = 'icons/obj/structures/closet.dmi'; icon_state = "secure_locked_commander"; name = "\improper Retrieved officer supplies"; pixel_x = -4; pixel_y = 18},/obj/structure/machinery/cm_vending/gear/commanding_officer{desc = "Some stuff, that we managed to get from the crash - might be useful"; icon = 'icons/obj/structures/crates.dmi'; icon_state = "secure_unlocked_weapons"; name = "\improper Retrieved officer supplies"; pixel_x = 4; pixel_y = 3},/obj/structure/machinery/light/small{dir = 8},/obj/item/clothing/head/cmcap/co{pixel_x = 10; pixel_y = -13},/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"pD" = (/obj/structure/machinery/light/small,/turf/open/floor/prison{icon_state = "plating_catwalk"},/area/space)
+"pL" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"pM" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice4"; pixel_x = -2; pixel_y = -8},/turf/closed/wall/strata_outpost,/area/space)
+"pN" = (/obj/structure/machinery/vending/snack{density = 0; pixel_x = -25},/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"pO" = (/obj/structure/machinery/cm_vending/clothing/medic{icon = 'icons/obj/structures/closet.dmi'; icon_state = "emergency"; pixel_x = 9},/obj/structure/machinery/cm_vending/clothing/medic{icon = 'icons/obj/structures/closet.dmi'; icon_state = "emergency"; pixel_x = -9},/obj/structure/prop/invuln/overhead_pipe{dir = 8},/turf/open/floor/strata{icon_state = "white_cyan3"},/area/space)
+"qa" = (/turf/open/floor/strata{dir = 8; icon_state = "white_cyan3"},/area/space)
+"qe" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/recharger{pixel_y = 11},/obj/structure/machinery/recharger{pixel_y = -3},/obj/structure/machinery/light/small{dir = 4},/turf/open/floor/prison{dir = 6; icon_state = "whitered"},/area/space)
+"qg" = (/turf/open/floor/prison{dir = 10; icon_state = "floor_marked"},/area/space)
+"qk" = (/obj/structure/prop/invuln/lattice_prop{dir = 1; icon_state = "lattice-simple"; pixel_y = -16},/obj/structure/prop/invuln/overhead_pipe{dir = 6},/turf/open/floor/prison,/area/space)
+"qp" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/generic,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"qA" = (/obj/structure/prop/invuln/overhead_pipe{dir = 8},/obj/structure/machinery/sleep_console{dir = 8},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan4"},/area/space)
+"qB" = (/obj/structure/machinery/autolathe/full,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 8; icon_state = "brown"},/area/space)
+"qK" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"qO" = (/obj/structure/prop/invuln/lattice_prop{dir = 1; icon_state = "lattice-simple"; pixel_y = -16},/obj/structure/prop/invuln/pipe_water{pixel_x = 7; pixel_y = -6},/obj/structure/prop/invuln/overhead_pipe,/turf/open/floor/prison,/area/space)
+"rc" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/prop/ice_colony/hula_girl{pixel_x = 13; pixel_y = 16},/obj/structure/machinery/camera/autoname{dir = 4},/obj/item/ashtray/plastic{pixel_x = 4; pixel_y = 7},/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"rn" = (/obj/structure/bed/bedroll{dir = 1; pixel_y = 11},/turf/open/floor/strata{dir = 8; icon_state = "white_cyan3"},/area/space)
+"ro" = (/obj/structure/machinery/space_heater/radiator/red{dir = 8},/obj/structure/machinery/light/small{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"rE" = (/obj/structure/platform_decoration{dir = 4},/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"rT" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"rW" = (/obj/structure/machinery/medical_pod/sleeper{dir = 1},/obj/structure/prop/invuln/overhead_pipe{dir = 8},/turf/open/floor/strata{icon_state = "white_cyan3"},/area/space)
+"rZ" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/window/reinforced/ultra{dir = 1; pixel_y = 5},/obj/structure/prop/invuln/overhead_pipe{dir = 4},/turf/open/floor/prison,/area/space)
+"sb" = (/turf/open/floor/prison{icon_state = "plating_catwalk"},/area/space)
+"sm" = (/obj/effect/decal/cleanable/ash,/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"sD" = (/obj/structure/largecrate/supply/supplies/metal{layer = 2.9; pixel_x = -5},/turf/open/floor/prison,/area/space)
+"sJ" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/prop/almayer/computer/PC{desc = "A small desktop computer. Someone has switched to personal emails and disabled the inventory sort system."; dir = 4; icon_state = "alert:2"; name = "inventory computer"},/turf/open/floor/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"sO" = (/turf/open/floor/strata{dir = 1; icon_state = "white_cyan3"},/area/space)
+"td" = (/turf/open/floor/prison{icon_state = "floor_plate"},/area/space)
+"tf" = (/obj/structure/platform{dir = 8},/obj/structure/prop/invuln/lattice_prop{dir = 1; icon_state = "lattice-simple"; pixel_x = 16; pixel_y = -15},/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"tm" = (/obj/structure/platform{dir = 1; layer = 3.6; plane = -7},/obj/structure/stairs/perspective{dir = 8; icon_state = "p_stair_ew_full_cap"; layer = 3.5; plane = -6},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"ty" = (/turf/open/floor/strata{icon_state = "white_cyan3"},/area/space)
+"tF" = (/obj/structure/prop/invuln/overhead_pipe{dir = 10},/obj/item/storage/toolbox/electrical{pixel_x = 15; pixel_y = 13},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"tG" = (/obj/structure/surface/rack,/obj/item/storage/firstaid/adv{pixel_y = 15},/obj/item/storage/firstaid/fire,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 1; icon_state = "white_cyan3"},/area/space)
+"tH" = (/obj/structure/machinery/light/small,/turf/open/floor/corsat{dir = 6; icon_state = "blue"},/area/space)
+"tI" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 9; icon_state = "brown"},/area/space)
+"tT" = (/obj/structure/barricade/handrail/strata{dir = 4},/obj/structure/surface/rack,/obj/item/storage/belt/utility/full,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"tZ" = (/obj/structure/machinery/blackbox_recorder,/obj/structure/largecrate/supply/weapons/flamers{pixel_x = -4; pixel_y = 16},/turf/open/floor/prison,/area/space)
+"ua" = (/turf/open/floor/plating/plating_catwalk/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"um" = (/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced/colony{dir = 2},/turf/open/floor/prison{dir = 10; icon_state = "floor_marked"},/area/space)
+"uB" = (/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,/turf/open/floor/prison{dir = 10; icon_state = "floor_marked"},/area/space)
+"uC" = (/obj/structure/machinery/power/smes/buildable,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"uG" = (/obj/structure/window/framed/strata/hull,/obj/structure/machinery/door/poddoor/shutters/almayer{dir = 2; indestructible = 1; layer = 2.9},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"uJ" = (/obj/structure/platform_decoration{dir = 8},/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"vc" = (/obj/structure/platform{dir = 1},/obj/structure/machinery/disposal,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"vu" = (/obj/structure/closet/crate/science,/obj/structure/curtain/medical,/turf/open/floor/strata{dir = 4; icon_state = "cyan2"},/area/space)
+"vy" = (/obj/structure/prop/invuln/overhead_pipe{dir = 4},/obj/structure/largecrate/black_market/confiscated_weaponry,/turf/open/floor/prison,/area/space)
+"vA" = (/obj/structure/machinery/camera/autoname,/turf/open/floor/prison,/area/space)
+"wb" = (/turf/open/floor/corsat{icon_state = "arrow_south"},/area/space)
+"wc" = (/obj/structure/barricade/deployable{dir = 4},/turf/open/floor/strata{dir = 8; icon_state = "multi_tiles"},/area/space)
+"wh" = (/turf/closed/wall/strata_outpost/reinforced,/area/space)
+"wj" = (/obj/structure/machinery/iv_drip,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"wy" = (/obj/structure/bed/chair/comfy/black{dir = 8},/turf/open/floor/prison,/area/space)
+"wA" = (/obj/structure/machinery/camera/autoname{dir = 1; network = list("interrogation")},/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"wJ" = (/obj/structure/barricade/handrail/strata{dir = 4},/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"wQ" = (/obj/structure/surface/table/reinforced/prison,/obj/item/storage/box/bodybags{pixel_y = 8},/obj/item/reagent_container/glass/beaker/bluespace{pixel_x = -4},/obj/item/tool/weldingtool{pixel_x = 11; pixel_y = 3},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 1; icon_state = "white_cyan3"},/area/space)
+"wZ" = (/obj/structure/barricade/deployable,/turf/open/floor/prison,/area/space)
+"xc" = (/obj/structure/barricade/handrail/strata,/turf/open/floor/corsat{dir = 6; icon_state = "blue"},/area/space)
+"xd" = (/obj/effect/decal/cleanable/generic,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan3"},/area/space)
+"xf" = (/obj/structure/sink{dir = 1; pixel_y = -10},/obj/structure/mirror{pixel_y = -26},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"xh" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"xu" = (/obj/structure/stairs/perspective{icon_state = "p_stair_full"},/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison,/area/space)
+"xy" = (/obj/structure/reagent_dispensers/fueltank,/obj/structure/machinery/light/small{dir = 4},/turf/open/floor/corsat{dir = 4; icon_state = "brown"},/area/space)
+"xC" = (/obj/structure/barricade/deployable,/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/strata{icon_state = "multi_tiles"},/area/space)
+"xG" = (/obj/structure/platform{dir = 1},/obj/structure/machinery/power/port_gen/pacman,/obj/structure/machinery/light/small{dir = 1},/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"xL" = (/obj/structure/pipes/vents/pump,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"xV" = (/obj/structure/stairs/perspective{icon_state = "p_stair_full"},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"ya" = (/obj/structure/platform{dir = 1},/obj/structure/platform{dir = 4},/obj/structure/platform_decoration{dir = 9; layer = 3.51},/turf/open/floor/corsat{dir = 5; icon_state = "blue"},/area/space)
+"ye" = (/obj/structure/platform{dir = 1},/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"yq" = (/turf/open/floor/strata{icon_state = "white_cyan4"},/area/space)
+"ys" = (/obj/item/prop/colony/usedbandage{dir = 1; pixel_x = -8; pixel_y = 14},/obj/item/prop/colony/usedbandage{dir = 9; pixel_x = 5; pixel_y = 15},/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"yx" = (/obj/structure/machinery/vending/coffee{density = 0; pixel_x = -25},/turf/open/floor/corsat{dir = 10; icon_state = "blue"},/area/space)
+"yy" = (/obj/structure/machinery/power/geothermal,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"yA" = (/obj/item/device/taperecorder{pixel_x = 5; pixel_y = 3},/turf/open/floor/strata{dir = 1; icon_state = "white_cyan3"},/area/space)
+"yB" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/reagentgrinder{pixel_x = -5; pixel_y = 14},/obj/item/reagent_container/glass/beaker/large{pixel_x = -8},/obj/item/stack/sheet/mineral/phoron{amount = 25; pixel_x = 3; pixel_y = -2},/obj/item/reagent_container/dropper{pixel_x = -6; pixel_y = 16},/obj/structure/machinery/light/small{dir = 4},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"yE" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"yN" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"yY" = (/obj/structure/machinery/autolathe/medilathe/full,/turf/open/floor/strata{dir = 1; icon_state = "white_cyan3"},/area/space)
+"za" = (/obj/structure/machinery/camera/autoname{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"ze" = (/obj/structure/machinery/telecomms/relay/preset/tower,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"zf" = (/obj/structure/barricade/deployable,/turf/open/floor/strata{icon_state = "multi_tiles"},/area/space)
+"zi" = (/obj/structure/machinery/light/small{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"zk" = (/obj/structure/surface/table/reinforced/prison,/obj/item/weapon/gun/pill,/obj/item/reagent_container/hypospray,/obj/structure/noticeboard{pixel_y = 26},/obj/effect/decal/cleanable/cobweb2,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"zr" = (/obj/structure/bed/chair/comfy/black{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"zB" = (/obj/structure/machinery/door/airlock/almayer/medical/autoname,/turf/open/floor/strata{dir = 4; icon_state = "cyan2"},/area/space)
+"zD" = (/obj/structure/machinery/light/small,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"zI" = (/obj/effect/spawner/gibspawner/xeno,/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"zW" = (/obj/structure/prop/invuln/lattice_prop{dir = 1; icon_state = "lattice-simple"; pixel_y = -16},/obj/structure/prop/invuln/overhead_pipe,/obj/structure/machinery/light/small,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"Ab" = (/obj/structure/platform_decoration{dir = 4},/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"Af" = (/turf/open/floor/strata{dir = 4; icon_state = "white_cyan3"},/area/space)
+"Ak" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/window/reinforced/ultra{dir = 4},/obj/item/tool/pen{pixel_x = -11; pixel_y = 19},/obj/item/paper_bin{pixel_x = 5; pixel_y = 17},/obj/item/device/motiondetector,/turf/open/floor/prison,/area/space)
+"Al" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/prop/invuln/overhead_pipe{dir = 5},/obj/item/weapon/gun/pistol/smart{pixel_x = -33; pixel_y = 10},/obj/item/paper_bin{pixel_y = 9},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan4"},/area/space)
+"Au" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/window/reinforced/ultra{dir = 8},/obj/structure/machinery/light/small{dir = 1},/obj/structure/machinery/faxmachine/uscm/command{pixel_x = -2; pixel_y = 9},/obj/structure/prop/server_equipment/laptop/closed{pixel_x = 13; pixel_y = -3},/turf/open/floor/prison{dir = 1; icon_state = "whitered"},/area/space)
+"Aw" = (/obj/item/prop/colony/used_flare{pixel_x = 12; pixel_y = 22},/turf/open/floor/prison,/area/space)
+"Ay" = (/obj/structure/pipes/standard/simple/visible{dir = 9},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"Az" = (/obj/structure/surface/table/reinforced/prison,/obj/item/paper_bin{pixel_x = -7; pixel_y = 8},/obj/item/tool/pen{pixel_x = -1; pixel_y = -5},/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison,/area/space)
+"AC" = (/obj/structure/barricade/deployable,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"AG" = (/obj/item/device/flashlight/on{pixel_y = 8},/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"AI" = (/obj/structure/closet/secure_closet/medical3,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"AQ" = (/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"AX" = (/obj/structure/barricade/deployable,/turf/open/floor/corsat{dir = 6; icon_state = "blue"},/area/space)
+"Bf" = (/obj/structure/machinery/light/small{dir = 4},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"Bj" = (/obj/structure/machinery/light/small{dir = 4},/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"Bl" = (/obj/structure/bed/chair/office/light{dir = 1},/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison,/area/space)
+"Bw" = (/obj/structure/surface/rack,/obj/item/device/healthanalyzer,/obj/item/device/healthanalyzer,/obj/item/device/healthanalyzer,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{icon_state = "white_cyan3"},/area/space)
+"BH" = (/obj/structure/prop/structure_lattice,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"BI" = (/obj/structure/machinery/vending/cigarette/free,/obj/structure/machinery/power/apc/almayer,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"BR" = (/obj/item/weapon/broken_glass{pixel_x = 9; pixel_y = 8},/obj/item/weapon/broken_bottle{pixel_x = 4; pixel_y = -16},/obj/item/prop/helmetgarb/rosary,/obj/effect/decal/cleanable/vomit,/turf/open/floor/prison,/area/space)
+"BU" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/cm_vending/clothing/synth{desc = "Some stuff, that we managed to get from the crash - might be useful"; icon = 'icons/obj/structures/crates.dmi'; icon_state = "secure_unlocked_weyland"; name = "\improper Retrieved clothing supplies"; pixel_y = 15},/obj/item/weapon/gun/pistol/m4a3/custom{pixel_x = -6},/turf/open/floor/prison,/area/space)
+"BZ" = (/obj/structure/platform_decoration{dir = 4},/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/turf/open/floor/corsat{dir = 1; icon_state = "bluecorner"},/area/space)
+"Cb" = (/obj/structure/machinery/cm_vending/sorted/medical,/obj/item/tape/random{pixel_x = -3; pixel_y = 15},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"Cf" = (/obj/effect/decal/cleanable/dirt,/turf/closed/wall/strata_outpost/reinforced/hull,/area/space)
+"Cg" = (/obj/structure/prop/invuln/overhead_pipe,/turf/open/floor/strata{dir = 1; icon_state = "white_cyan4"},/area/space)
+"Ci" = (/obj/structure/pipes/standard/simple/visible{dir = 10},/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"CH" = (/obj/effect/spawner/gibspawner/xeno,/turf/open/floor/plating/plating_catwalk/prison,/area/space)
+"CK" = (/obj/structure/platform{dir = 8},/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/corsat{dir = 9; icon_state = "blue"},/area/space)
+"CP" = (/obj/structure/machinery/power/terminal{dir = 8},/obj/structure/machinery/camera/autoname{dir = 1; network = list("interrogation")},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"CZ" = (/obj/structure/machinery/light/small,/obj/structure/largecrate/supply/supplies/plasteel,/turf/open/floor/corsat{dir = 10; icon_state = "blue"},/area/space)
+"Db" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_x = -2; pixel_y = 24},/obj/structure/prop/invuln/overhead_pipe,/obj/structure/prop/invuln/pipe_water{pixel_x = 2},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"Dh" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/computer/overwatch/almayer{pixel_x = 15; pixel_y = 26},/obj/structure/machinery/computer/card{pixel_x = -11; pixel_y = 25},/obj/structure/machinery/computer/crew/alt{pixel_x = -11; pixel_y = 9},/obj/item/prop/helmetgarb/helmet_nvg/cosmetic,/obj/structure/transmitter/colony_net/rotary{phone_category = "LV-426 Hadley's Hope"; phone_id = "Colony Operation Center"; pixel_x = 16; pixel_y = 2},/turf/open/floor/prison{dir = 1; icon_state = "whitered"},/area/space)
+"Dj" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice6"; pixel_y = -16},/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"Dn" = (/obj/structure/surface/table/reinforced/prison,/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"Do" = (/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"Dr" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/ash,/turf/open/floor/prison,/area/space)
+"Ds" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/prop/almayer/computer/PC{dir = 1},/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"Du" = (/obj/structure/machinery/camera/autoname{dir = 8},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"Dy" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 8; icon_state = "brown"},/area/space)
+"DF" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice6"; pixel_y = -16},/obj/structure/barricade/deployable{dir = 4},/obj/structure/machinery/light/small,/turf/open/floor/strata{dir = 8; icon_state = "multi_tiles"},/area/space)
+"DM" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison{dir = 4; icon_state = "whitered"},/area/space)
+"DQ" = (/obj/structure/bed/chair/comfy/teal{dir = 8},/turf/open/floor/strata{dir = 1; icon_state = "white_cyan4"},/area/space)
+"DZ" = (/obj/structure/prop/almayer/computers/sensor_computer1{name = "radar computer"},/obj/structure/machinery/light/small{dir = 1},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"Ec" = (/obj/structure/machinery/iv_drip,/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"Ed" = (/obj/structure/barricade/handrail/strata{dir = 4},/turf/open/floor/corsat{dir = 4; icon_state = "brown"},/area/space)
+"Eh" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "arrow_south"},/area/space)
+"Ei" = (/obj/structure/window/framed/strata,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"El" = (/obj/structure/barricade/handrail/strata{dir = 4},/turf/open/floor/corsat{dir = 5; icon_state = "brown"},/area/space)
+"Eu" = (/obj/structure/bed/roller,/obj/item/storage/pouch/vials,/obj/item/storage/pouch/medkit/full,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"EB" = (/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"EC" = (/turf/open/floor/corsat{dir = 1; icon_state = "bluecorner"},/area/space)
+"ER" = (/obj/structure/bed/bedroll{dir = 10},/obj/item/prop/colony/usedbandage{dir = 1; pixel_x = -8; pixel_y = -20},/obj/item/prop/colony/usedbandage{dir = 4; pixel_x = -16; pixel_y = 11},/obj/item/prop/colony/usedbandage{dir = 5; pixel_x = 3; pixel_y = 8},/obj/effect/landmark/corpsespawner/wygoon,/turf/open/floor/strata{icon_state = "white_cyan4"},/area/space)
+"ET" = (/obj/structure/reagent_dispensers/water_cooler/stacks{density = 0; pixel_x = -10; pixel_y = 6},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"EU" = (/obj/structure/bed/chair/office/light{dir = 8},/turf/open/floor/prison,/area/space)
+"Fe" = (/obj/structure/machinery/cm_vending/sorted/medical/wall_med{pixel_x = 27},/obj/structure/machinery/iv_drip,/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"Fg" = (/obj/structure/prop/invuln/overhead_pipe,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan3"},/area/space)
+"Fh" = (/obj/effect/decal/cleanable/cobweb,/turf/open/floor/corsat{dir = 5; icon_state = "brown"},/area/space)
+"Ft" = (/obj/structure/machinery/light/small,/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"FE" = (/turf/open/floor/corsat{dir = 8; icon_state = "brown"},/area/space)
+"FL" = (/obj/structure/bed/chair/comfy/black{dir = 8},/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison,/area/space)
+"Gd" = (/obj/structure/filingcabinet{density = 0; pixel_x = 7; pixel_y = 12},/obj/structure/filingcabinet{density = 0; pixel_x = -8; pixel_y = 12},/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison,/area/space)
+"Ge" = (/obj/structure/machinery/chem_dispenser,/obj/item/storage/box/syringes{pixel_x = 6; pixel_y = 17},/obj/item/storage/pill_bottle/alkysine{pixel_y = 15},/turf/open/floor/strata{dir = 8; icon_state = "white_cyan4"},/area/space)
+"Gg" = (/obj/structure/machinery/medical_pod/bodyscanner{dir = 1},/turf/open/floor/strata{dir = 1; icon_state = "white_cyan3"},/area/space)
+"Gn" = (/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{dir = 8},/turf/open/floor/prison{dir = 10; icon_state = "floor_marked"},/area/space)
+"Gx" = (/obj/structure/stairs/perspective{icon_state = "p_stair_sn_full_cap"},/obj/structure/platform{dir = 8},/turf/open/floor/prison,/area/space)
+"GC" = (/obj/effect/spawner/gibspawner/xeno,/turf/open/floor/prison,/area/space)
+"GK" = (/turf/open/floor/strata{dir = 4; icon_state = "cyan2"},/area/space)
+"GM" = (/obj/structure/window/framed/strata/hull,/obj/structure/machinery/door/poddoor/shutters/almayer{dir = 2; indestructible = 1},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"GS" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/prop/invuln/overhead_pipe,/obj/structure/machinery/computer/crew/alt{dir = 8; pixel_x = -3; pixel_y = 5},/obj/item/prop/flower_vase/bluewhiteflowers{pixel_x = 10},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan3"},/area/space)
+"Hb" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/prop/invuln/overhead_pipe,/obj/structure/machinery/reagent_analyzer{pixel_y = 9},/obj/structure/machinery/reagentgrinder{pixel_x = 3; pixel_y = -8},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan3"},/area/space)
+"HH" = (/obj/structure/sign/banners/happybirthdaysteve{pixel_x = -15; pixel_y = 11},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 6; icon_state = "multi_tiles"},/area/space)
+"HV" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/prop/almayer/computer/PC{dir = 8; pixel_y = 7},/obj/structure/window/reinforced/ultra{dir = 4},/obj/item/ashtray/plastic{pixel_x = -7; pixel_y = 21},/turf/open/floor/prison,/area/space)
+"Ik" = (/obj/item/ammo_box/magazine/shotgun/buckshot{pixel_y = 9},/turf/open/floor/prison,/area/space)
+"In" = (/obj/structure/dartboard{pixel_x = -26},/obj/effect/decal/cleanable/dirt,/obj/item/weapon/dart/green{pixel_x = -22; pixel_y = 6},/obj/item/weapon/dart{pixel_x = -19},/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"Iu" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/flora/pottedplant{icon_state = "pottedplant_18"; pixel_x = 8; pixel_y = 7},/obj/item/cell/apc{pixel_x = -7; pixel_y = 7},/turf/open/floor/plating/plating_catwalk/prison,/area/space)
+"Ix" = (/turf/open/floor/prison{dir = 4; icon_state = "whitered"},/area/space)
+"IF" = (/obj/item/prop/colony/used_flare{pixel_y = 10},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"IO" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/window/reinforced/ultra{dir = 4},/obj/structure/machinery/light/small,/obj/item/toy/deck{pixel_x = -10; pixel_y = 7},/obj/item/prop/magazine/book/starshiptroopers{pixel_x = -8},/obj/item/paper_bin{pixel_x = 5; pixel_y = 9},/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"IP" = (/obj/structure/window/framed/strata/reinforced,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"IS" = (/turf/open/auto_turf/shale/layer1,/area/space)
+"IT" = (/obj/structure/transmitter/colony_net{phone_category = "LV-426 Hadley's Hope"; phone_id = "Colony Medbay"; pixel_y = 28},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"IX" = (/obj/structure/prop/almayer/computers/sensor_computer1,/obj/structure/machinery/light/small{dir = 1},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"IY" = (/obj/structure/stairs/perspective{dir = 4; icon_state = "p_stair_sn_full_cap"},/obj/structure/platform{dir = 4},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"Jm" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/cm_vending/gear/medic{icon = 'icons/obj/structures/crates.dmi'; icon_state = "secure_unlocked_surgery"; pixel_y = 12},/obj/item/clothing/head/cmo{pixel_x = 6; pixel_y = 8},/obj/item/reagent_container/spray/cleaner{pixel_x = -14; pixel_y = 3},/turf/open/floor/strata{dir = 1; icon_state = "white_cyan4"},/area/space)
+"Jn" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"Js" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/computer/squad_changer{pixel_x = 9; pixel_y = 25},/obj/structure/machinery/computer/groundside_operations{pixel_x = 9; pixel_y = 9},/obj/item/tool/pen{pixel_x = 19; pixel_y = -5},/obj/item/weapon/gun/rifle/m41aMK1/ap{pixel_x = 3},/obj/item/ammo_magazine/rifle/m41aMK1/ap{pixel_x = -9; pixel_y = 21},/obj/item/ammo_magazine/rifle/m41aMK1/ap{pixel_x = -4; pixel_y = 21},/turf/open/floor/prison{dir = 5; icon_state = "whitered"},/area/space)
+"JK" = (/obj/structure/surface/table/reinforced/prison,/obj/item/weapon/twohanded/folded_metal_chair{pixel_x = 5; pixel_y = 30},/obj/item/tool/candle{pixel_x = -18; pixel_y = 14},/obj/item/storage/box/matches{pixel_y = 4},/turf/open/floor/prison,/area/space)
+"JO" = (/obj/effect/spawner/gibspawner/xeno,/turf/open/floor/prison{icon_state = "plating_catwalk"},/area/space)
+"JP" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison,/area/space)
+"JU" = (/obj/structure/filingcabinet/filingcabinet{pixel_x = 9; pixel_y = 9},/obj/structure/filingcabinet/filingcabinet{pixel_x = 9},/turf/open/floor/prison,/area/space)
+"Kn" = (/obj/structure/sink{dir = 8; pixel_x = -12; pixel_y = 2},/obj/structure/mirror{pixel_x = -26; pixel_y = 6},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"Kt" = (/obj/structure/stairs/perspective{dir = 4; icon_state = "p_stair_ew_full_cap"; layer = 3.5},/obj/structure/platform,/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice10"; pixel_x = 16; pixel_y = -16},/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"KB" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/open/floor/prison,/area/space)
+"KF" = (/obj/structure/bed/roller,/obj/structure/machinery/camera/autoname{dir = 4},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"KK" = (/obj/structure/prop/invuln/overhead_pipe{dir = 4},/turf/open/floor/prison,/area/space)
+"KM" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_x = -2; pixel_y = 24},/obj/item/prop/helmetgarb/netting{pixel_x = 19; pixel_y = -6},/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"KY" = (/obj/structure/largecrate/machine/autodoc{pixel_y = 8},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"Lc" = (/obj/item/storage/beer_pack,/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"Lg" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/window/reinforced/ultra,/obj/item/tool/hand_labeler,/turf/open/floor/prison,/area/space)
+"Lk" = (/turf/closed/wall/strata_outpost,/area/space)
+"Lo" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 1; icon_state = "white_cyan3"},/area/space)
+"Lu" = (/obj/structure/platform_decoration{dir = 8},/turf/open/floor/corsat{dir = 5; icon_state = "blue"},/area/space)
+"Ly" = (/obj/effect/spawner/gibspawner/xeno,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"LH" = (/obj/structure/prop/invuln/lattice_prop{dir = 1; icon_state = "lattice-simple"; pixel_x = 16; pixel_y = -15},/turf/closed/wall/strata_outpost/reinforced,/area/space)
+"LQ" = (/obj/structure/prop/invuln/lattice_prop{dir = 1; icon_state = "lattice-simple"; pixel_y = -16},/obj/structure/prop/invuln/overhead_pipe,/obj/item/shard{icon_state = "small"; pixel_x = -20},/turf/open/floor/plating/plating_catwalk/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"Ma" = (/obj/structure/surface/table/reinforced/prison,/obj/item/prop/helmetgarb/gunoil{pixel_x = 9; pixel_y = 20},/obj/item/prop/helmetgarb/helmet_gasmask{pixel_x = 5; pixel_y = 8},/obj/item/device/megaphone,/turf/open/floor/strata{icon_state = "multi_tiles"},/area/space)
+"Mf" = (/obj/effect/decal/cleanable/cobweb2/dynamic,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"Mk" = (/obj/structure/machinery/light/small{dir = 1},/turf/open/floor/prison{icon_state = "plating_catwalk"},/area/space)
+"Mu" = (/obj/structure/bed/chair/comfy/black{dir = 4},/turf/open/floor/prison,/area/space)
+"MG" = (/obj/structure/curtain/medical,/turf/open/floor/strata{dir = 4; icon_state = "cyan2"},/area/space)
+"MN" = (/obj/structure/barricade/deployable{dir = 8},/turf/open/floor/prison,/area/space)
+"MY" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/prop/almayer/computer{icon_state = "security_cam"; pixel_x = -13; pixel_y = 22},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"Nq" = (/obj/structure/stairs/perspective{dir = 4; icon_state = "p_stair_full"},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"Ny" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/sign/catclock{pixel_x = -23; pixel_y = 35},/obj/item/prop/tableflag{pixel_x = 9; pixel_y = 17},/obj/item/paper_bin{pixel_y = 38},/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"NG" = (/obj/structure/bed/bedroll{dir = 1; pixel_y = 22},/turf/open/floor/strata{dir = 8; icon_state = "white_cyan3"},/area/space)
+"NO" = (/turf/open/floor/plating,/area/space)
+"NS" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan4"},/area/space)
+"Oe" = (/turf/open/floor/corsat{dir = 1; icon_state = "brown"},/area/space)
+"OF" = (/obj/structure/platform{dir = 1},/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/obj/structure/sign/poster/safety{pixel_y = 31},/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"OG" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_x = -2; pixel_y = 24},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"OJ" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/prop/almayer/computer/PC,/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"OX" = (/obj/structure/pipes/vents/pump,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"OZ" = (/obj/structure/pipes/standard/tank/oxygen{dir = 4},/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"PB" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_x = -2; pixel_y = 24},/obj/item/device/motiondetector/m717{pixel_x = -7; pixel_y = 5},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"PJ" = (/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"PP" = (/obj/effect/decal/cleanable/dirt,/obj/structure/largecrate/supply/supplies/metal,/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"PX" = (/obj/structure/machinery/light/small{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"PY" = (/turf/open/floor/corsat{dir = 1; icon_state = "blue"},/area/space)
+"QA" = (/obj/structure/stairs/perspective{icon_state = "p_stair_sn_full_cap"},/obj/structure/platform{dir = 8},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"QH" = (/obj/item/trash/used_stasis_bag{pixel_x = -8; pixel_y = 9},/obj/item/trash/uscm_mre{pixel_x = 3; pixel_y = -7},/obj/item/prop/colony/usedbandage{dir = 10},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"QU" = (/obj/structure/bed/bedroll{dir = 5},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/open/floor/corsat{icon_state = "blue"},/area/space)
+"QY" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/ash,/turf/open/floor/prison,/area/space)
+"QZ" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 6; icon_state = "multi_tiles"},/area/space)
+"Rc" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_y = -16},/obj/item/stack/rods{pixel_x = -16; pixel_y = 12},/turf/open/floor/prison,/area/space)
+"Rj" = (/obj/structure/machinery/light/small{dir = 8},/obj/effect/decal/cleanable/dirt,/obj/item/clothing/head/helmet/marine/pilottex{pixel_x = -7; pixel_y = -21},/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"Rp" = (/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"Ru" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 5; icon_state = "brown"},/area/space)
+"RB" = (/obj/structure/machinery/light/small{dir = 4},/turf/open/floor/corsat{icon_state = "arrow_south"},/area/space)
+"RY" = (/obj/item/prop/colony/used_flare{pixel_x = 14; pixel_y = 10},/obj/effect/spawner/gibspawner/xeno,/obj/effect/spawner/gibspawner/xeno,/obj/effect/spawner/gibspawner/xeno,/turf/open/floor/prison{icon_state = "floor_plate"},/area/space)
+"Sc" = (/obj/structure/machinery/door/airlock/almayer/engineering/reinforced/colony{dir = 8},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"Sf" = (/obj/structure/extinguisher_cabinet{pixel_x = 27},/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"Si" = (/obj/structure/bed/chair/comfy/black,/turf/open/floor/prison,/area/space)
+"Sp" = (/turf/open/floor/corsat{dir = 4; icon_state = "bluecorner"},/area/space)
+"Sw" = (/obj/structure/barricade/handrail/strata{dir = 4},/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"SF" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/prop/almayer/computer{icon_state = "engineering_terminal"; pixel_x = 12; pixel_y = 22},/obj/item/device/binoculars/civ{pixel_x = 14},/obj/item/weapon/gun/shotgun/pump{pixel_y = 9},/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"SH" = (/obj/structure/prop/almayer/computers/sensor_computer3,/turf/open/floor/corsat{icon_state = "spiralblueoffice"},/area/space)
+"SO" = (/obj/structure/stairs/perspective{icon_state = "p_stair_full"},/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"Tt" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/generic,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"TC" = (/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"TD" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_x = -2; pixel_y = 24},/obj/item/stack/rods{pixel_y = 12},/obj/item/prop/helmetgarb/prescription_bottle{pixel_x = -12},/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"TF" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice12"; pixel_x = -2; pixel_y = 24},/obj/structure/pipes/vents/pump,/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"TJ" = (/obj/structure/pipes/vents/pump,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"TK" = (/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"TL" = (/obj/effect/decal/cleanable/dirt,/obj/structure/machinery/defenses/sentry/premade,/turf/open/floor/prison{dir = 10; icon_state = "floor_marked"},/area/space)
+"TQ" = (/obj/structure/closet/bodybag{pixel_y = -6},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"TX" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison{icon_state = "sterile_white"},/area/space)
+"TZ" = (/obj/structure/machinery/light/small{dir = 4},/obj/structure/bed/bedroll{dir = 1},/obj/item/prop/colony/usedbandage{dir = 5; pixel_x = -4; pixel_y = -6},/turf/open/floor/corsat{dir = 4; icon_state = "blue"},/area/space)
+"Uj" = (/obj/structure/bed/chair/office/dark{dir = 4},/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"Um" = (/obj/structure/machinery/chem_master{pixel_x = -1; pixel_y = 5; tether_range = 4},/obj/structure/machinery/chem_master{pixel_x = -1; pixel_y = 25; tether_range = 4},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"Ux" = (/obj/structure/pipes/vents/pump,/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison,/area/space)
+"UO" = (/obj/structure/pipes/standard/manifold/visible{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"Vg" = (/obj/structure/machinery/recharge_station,/turf/open/floor/corsat{dir = 1; icon_state = "brown"},/area/space)
+"Vv" = (/obj/structure/machinery/disposal,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+"Vy" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/corsat{dir = 8; icon_state = "brown"},/area/space)
+"VF" = (/obj/structure/surface/table/reinforced/prison,/obj/structure/machinery/recharger{pixel_x = 11; pixel_y = 4},/obj/structure/machinery/recharger{pixel_x = -6; pixel_y = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{icon_state = "white_cyan3"},/area/space)
+"VS" = (/obj/structure/machinery/space_heater/radiator/red{dir = 4; pixel_y = 7},/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/corsat{dir = 8; icon_state = "blue"},/area/space)
+"Wa" = (/obj/effect/spawner/gibspawner/xeno,/turf/open/floor/strata{icon_state = "white_cyan3"},/area/space)
+"Wm" = (/obj/structure/machinery/cm_vending/sorted/medical,/obj/structure/machinery/light/small{dir = 1},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"WB" = (/obj/structure/platform{dir = 1},/turf/open/floor/corsat{dir = 9; icon_state = "blue"},/area/space)
+"WN" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 8; icon_state = "white_cyan2"},/area/space)
+"WW" = (/turf/closed/wall/strata_outpost/reinforced/hull,/area/space)
+"Xf" = (/obj/structure/surface/table/reinforced/prison,/obj/item/tool/hand_labeler{pixel_x = 8; pixel_y = 16},/obj/item/storage/box/gloves{pixel_x = -4; pixel_y = 14},/obj/item/storage/box/pillbottles{pixel_x = -10; pixel_y = 5},/obj/item/storage/box/beakers{pixel_x = -11; pixel_y = -4},/obj/item/device/mass_spectrometer{pixel_x = 6; pixel_y = -1},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"Xi" = (/turf/open/floor/corsat{dir = 4; icon_state = "browncorner"},/area/space)
+"Xk" = (/turf/open/floor/plating/plating_catwalk/prison,/area/space)
+"XL" = (/obj/structure/platform{dir = 1},/obj/structure/platform{dir = 8},/obj/structure/platform_decoration{dir = 5; layer = 3.51},/obj/structure/prop/invuln/lattice_prop{dir = 1; icon_state = "lattice-simple"; pixel_x = 16; pixel_y = -15},/obj/structure/prop/invuln/pipe_water{pixel_x = 8; pixel_y = -6},/turf/open/floor/corsat{dir = 9; icon_state = "blue"},/area/space)
+"XP" = (/obj/structure/flora/pottedplant{icon_state = "pottedplant_10"},/turf/open/floor/prison,/area/space)
+"XS" = (/obj/structure/pipes/unary/freezer{dir = 4},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"XT" = (/obj/structure/prop/invuln/overhead_pipe{dir = 8},/turf/open/floor/prison,/area/space)
+"XY" = (/obj/structure/machinery/camera/autoname{dir = 1; network = list("interrogation")},/obj/effect/decal/cleanable/dirt,/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"Ya" = (/obj/structure/machinery/door/airlock/almayer/engineering/reinforced/colony{dir = 1},/turf/open/floor/prison{dir = 10; icon_state = "floor_marked"},/area/space)
+"Yf" = (/turf/open/floor/prison,/area/space)
+"Yq" = (/obj/structure/machinery/photocopier,/turf/open/floor/prison{icon_state = "plating_catwalk_alt"},/area/space)
+"Yt" = (/obj/structure/pipes/vents/pump,/turf/open/floor/strata{icon_state = "white_cyan2"},/area/space)
+"Zs" = (/turf/open/floor/prison{dir = 1; icon_state = "whitered"},/area/space)
+"Zx" = (/obj/item/weapon/gun/smg/nailgun{pixel_x = -2; pixel_y = -8},/turf/open/floor/strata{dir = 4; icon_state = "white_cyan1"},/area/space)
+"ZB" = (/obj/structure/prop/invuln/lattice_prop{icon_state = "lattice13"; pixel_x = 16; pixel_y = 16},/obj/structure/prop/invuln/overhead_pipe{dir = 4},/turf/open/floor/prison,/area/space)
+"ZZ" = (/obj/structure/window/framed/strata/hull,/obj/structure/machinery/door/poddoor/shutters/almayer{dir = 4; indestructible = 1},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat{icon_state = "marked"},/area/space)
+
+(1,1,1) = {"
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISGMWWGMGMWWGMuGuGuGGMWWGMGMWWGMISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISGMGMFhzeRpIXnOSFekMYSHDZDoVvtIGMGMISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISGMuGBUXiRuSpPYfpPYfpPYmvLcECcznkYfGMGMISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISWWWWWWWWWWWWpoYfYfhaYfYfYfgCdkYfYfgCYfFEGCgCBjWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISYfYfYfYfYfwhbBAQpLAQaZpLAQzDAQwAAQAQbLAQAQAQxcZZISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISYfYfYfYfYfwhwhIPwhIPwhHHbdwhwhwhwhwhGxdWxuxugFZZISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISYfYfYfYfYfwhgnOJeLIxIPZsZsAuDhJsnBcNCKPYPYPYLuZZISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhwhYfYfYfwhNyjIEBIxCHEBnCEBfrlNwctmrESiAzwyroWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhEimTETIxXkdlqKqKqKmXwcNqDoMuivkSDuWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhrcitqKIxXkEBqKqKTXDMDFKtfUwyagYfSfWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhDnDsIOIxIPgrgrgrhYqewhLHfYYfzrDrFeCfISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhwhIPwhIPwhxCQZQZzfMaIPXLcKwZXkYfTZWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhvcWByeyawhQAxVSOIYwhwhtfwhgCMNKBRpWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhlpECwhazxGAbPYDjuJkmOFBZhPRciaJPJnWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfqgyNAwvAgEfwYfYfqkKKrZljZBKKKKvyKKhgWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfumDoYfuafunjEUuandYffwHVsDYfuakJYfziWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhVSUxuammJKIkuaLQYfYfAktZYfuauaYfeBWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhpNQYgCBlYfmDYfqOJULgcraXYfYfYfmMdPWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhyxpfpLFtAQpLQUzWjJYfXkYfceBHACpLAXWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhwhwhwhwhwhmcwhwhRjBRYqYfRpSwwbEhRBWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhwhwhTKIFwhtdMfwhInYfsJFLRpfRFETLhaWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfGnciMktdtdklpDjtwhzaYfIugCRptTVygCbwWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfwhwhwhwhwhwhwhwhwhPPgCGdGCRpwJDyUxhaWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfLklrWmCbwhXfUmzkwhCZAQBIAQtHbQqBYfxyWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfLkKnsmyqjOLoDQyEwhwhwhwhwhwhcNcNYawhWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfLkjhnoNSWatyGeyBLknegKtGgkwhVgOeElyyWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfLkLkKFoZEcYtrTnovunoxhKYgqwhuCbvEdyyWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfXPLkTChZGgwQJmnoMGqpTQTJyEScTKTKEdnPWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfYfGKZxoEysQHAfPXLkAIaUBwAIwhuCCPbayyWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhXTXTXTXTamtFxdAGLyAfkHwhwhwhwhwhwhwhwhmcWWWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfXPpMgzqArWpOokcGcToZnonononoAfwhklWWISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfoiYfLkLkPBKMTDTFDbOGwhoZPJPJPJPJAfwhsbWWWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfLkITnoERyYyACgoazBtytytytytynlwhRYbhWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISwhYfYfYfLkOZCirnwjWNFgBfwhnoOXnowhwhwhwhtdTKWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkeaUONGPJWNHbyEIPsOsOsOsOsOiywhJOWWWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkXSAyqabsUjGSnoIPoZPJPJPJPJAfwhtdWWISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkovzINSVFfWAlmFwhoZnonononoAfwhtdWWISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLklrnoxfXYEuTtnowhwhGKwhwhwhwhwhsbWWISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkLkLkwhwhIPIPIPwhPJPJPJwhwhwhwhtdWWISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkNONOwhPJPJPJPJxLPJPJPJPJwhwhTKtdWWISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkNONOwhPJPJPJPJPJPJPJPJPJuBtdtdsbWWWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkNONOwhPJPJPJPJPJPJPJPJPJwhwhTKtdTKWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkNONOwhPJPJPJPJPJPJPJPJPJwhwhwhtdbhWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkNONOwhwhPJPJPJPJPJPJPJwhwhNOwhsbWWWWISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISLkLkLkwhwhwhwhwhwhwhwhwhwhwhwhwhtdWWISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+ISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISISIS
+"}

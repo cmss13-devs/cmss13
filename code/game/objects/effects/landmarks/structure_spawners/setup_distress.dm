@@ -8,8 +8,8 @@
 	var/hive_faction = XENO_HIVE_NORMAL
 
 ///Sets the new item to the correct xeno faction
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/proc/set_hive_faction(xeno_item)
-	return
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/proc/set_hive_faction(atom/xeno_item)
+	set_hive_data(xeno_item, hive_faction)
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/apply(atom/target_location)
 	var/atom/xeno_item = ..()
@@ -24,6 +24,7 @@
 	is_turf = TRUE
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/wall/set_hive_faction(turf/closed/wall/resin/resin_wall)
+	. = ..()
 	resin_wall.hivenumber = hive_faction
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/wall/thick
@@ -37,6 +38,7 @@
 	is_turf = TRUE
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane/set_hive_faction(turf/closed/wall/resin/membrane/resin_membrane)
+	. = ..()
 	resin_membrane.hivenumber = hive_faction
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane/thick
@@ -49,6 +51,7 @@
 	path_to_spawn = /obj/structure/mineral_door/resin
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/door/set_hive_faction(obj/structure/mineral_door/resin/resin_door)
+	. = ..()
 	resin_door.hivenumber = hive_faction
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/door/thick
@@ -63,7 +66,9 @@
 	var/weed_strength_required = FULLY_WEEDABLE
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node/set_hive_faction(obj/effect/alien/weeds/node/weed_node)
+	. = ..()
 	weed_node.hivenumber = hive_faction
+	weed_node.linked_hive = GLOB.hive_datum[hive_faction]
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node/Initialize(mapload, ...)
 	. = ..()
@@ -72,7 +77,7 @@
 	var/turf/node_tile = loc
 	if(node_tile.is_weedable() >= weed_strength_required)
 		return
-	stack_trace("[src] at [x],[y],[z] is on a turf where weeds cannot normally grow.")
+	CRASH("[src] at [x],[y],[z] is on a turf where weeds cannot normally grow.")
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node/hardy
 	name = "Distress Xeno hardy node spawner"
@@ -85,6 +90,7 @@
 	path_to_spawn = /obj/structure/tunnel
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/set_hive_faction(obj/structure/tunnel/tunnel)
+	. = ..()
 	tunnel.hivenumber = hive_faction
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/Initialize(mapload, ...)
@@ -94,7 +100,7 @@
 	var/turf/tunnel_tile = loc
 	if(tunnel_tile.can_dig_xeno_tunnel())
 		return
-	stack_trace("[src] at [x],[y],[z] is on a turf where tunnels cannot normally be built.")
+	CRASH("[src] at [x],[y],[z] is on a turf where tunnels cannot normally be built.")
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel/maintenance
 	name = "Distress Xeno maintenance tunnel spawner"

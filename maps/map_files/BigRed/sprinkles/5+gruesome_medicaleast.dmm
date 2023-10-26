@@ -18,7 +18,7 @@
 /turf/template_noop,
 /area/template_noop)
 "A" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/template_noop,
 /area/template_noop)
 "K" = (

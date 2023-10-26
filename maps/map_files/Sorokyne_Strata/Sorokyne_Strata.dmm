@@ -78,7 +78,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aas" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aat" = (
@@ -243,7 +243,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/cabin_area)
 "aaR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata{
 	dir = 10;
@@ -566,7 +566,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "abS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -581,7 +581,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "abU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -752,7 +752,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "acp" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -961,7 +961,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "acQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
@@ -1036,7 +1036,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "adc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -1353,7 +1353,7 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "adX" = (
 /obj/structure/barricade/handrail/strata,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -1660,7 +1660,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "aeW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aeX" = (
@@ -1710,7 +1710,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "afd" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -1900,7 +1900,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "afB" = (
 /obj/item/fuelCell,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -1912,7 +1912,7 @@
 /area/strata/ag/interior/dorms/hive)
 "afC" = (
 /obj/item/fuelCell,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -1935,7 +1935,7 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "afF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -1972,7 +1972,7 @@
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/dorms/maintenance)
 "afJ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -2265,7 +2265,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "agB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -2297,7 +2297,7 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "agE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -2316,7 +2316,7 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "agG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
@@ -2405,7 +2405,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "agT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "agU" = (
@@ -2472,7 +2472,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ahi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -2857,7 +2857,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "air" = (
 /obj/item/stool,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -2870,7 +2870,7 @@
 "ait" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -2945,7 +2945,7 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "aiC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/item/ammo_magazine/revolver/cmb{
 	pixel_x = 6;
 	pixel_y = -4
@@ -3097,7 +3097,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "aja" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
 "ajb" = (
@@ -3342,7 +3342,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms/flight_control)
 "ajM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib4"
 	},
@@ -3363,7 +3363,7 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "ajP" = (
 /obj/item/fuelCell,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -4291,7 +4291,7 @@
 	},
 /area/strata/ag/exterior/research_decks)
 "amA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
@@ -5317,7 +5317,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -5335,7 +5335,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "aqc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -5908,7 +5908,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "arM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/minehead)
 "arN" = (
@@ -6450,7 +6450,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -6743,7 +6743,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aue" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -8079,7 +8079,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "axZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_res)
 "aya" = (
@@ -9424,7 +9424,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aCw" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -10464,7 +10464,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aFC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/north_outpost)
 "aFD" = (
@@ -12232,7 +12232,7 @@
 	},
 /area/strata/ag/interior/dorms/south)
 "aLu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aLv" = (
@@ -15437,7 +15437,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aVR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aVS" = (
@@ -16508,7 +16508,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/interior/disposals)
 "bad" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "bae" = (
@@ -17048,7 +17048,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/outpost/engi/drome)
 "bbU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "bbW" = (
@@ -18473,7 +18473,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "bgX" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "bha" = (
@@ -21166,7 +21166,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/disposals)
 "brg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -21973,7 +21973,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "bui" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "bul" = (
@@ -22587,7 +22587,7 @@
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "bwH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "bwI" = (
@@ -23284,7 +23284,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "bzH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -26404,7 +26404,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "bZh" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -26871,7 +26871,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "ccK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ccV" = (
@@ -27171,7 +27171,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "ceS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_res)
 "ceV" = (
@@ -27532,7 +27532,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
 "chj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "chp" = (
@@ -28572,7 +28572,7 @@
 /area/strata/ag/interior/dorms/flight_control)
 "coc" = (
 /obj/item/fuelCell,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -28916,7 +28916,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "cry" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -30696,7 +30696,7 @@
 	},
 /area/strata/ag/exterior/research_decks)
 "euZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "ewk" = (
@@ -31060,7 +31060,7 @@
 	},
 /area/strata/ag/interior/landingzone_checkpoint)
 "eVI" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "eXK" = (
@@ -31460,7 +31460,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "fIF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "fIG" = (
@@ -33031,7 +33031,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "iuf" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
@@ -33349,7 +33349,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "iRk" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/west_engi)
 "iRY" = (
@@ -33529,7 +33529,7 @@
 	},
 /area/strata/ag/exterior/landingzone_2)
 "jiQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "purp2"
 	},
@@ -34009,7 +34009,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "kaP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -34272,7 +34272,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "kxN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "kyr" = (
@@ -34680,7 +34680,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
 "liK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "ljg" = (
@@ -34876,7 +34876,7 @@
 /area/strata/ug/interior/jungle/deep/east_engi)
 "lzt" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "lzT" = (
@@ -34943,7 +34943,7 @@
 	},
 /area/strata/ag/interior/landingzone_checkpoint)
 "lHO" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "lIG" = (
@@ -35066,7 +35066,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/landingzone_checkpoint)
 "lRa" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -35163,7 +35163,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/marsh/river)
 "mam" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
@@ -35918,7 +35918,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "nfK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/closed/wall/resin/membrane/strata/on_tiles,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "nhv" = (
@@ -36217,7 +36217,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "nQE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "nRN" = (
@@ -36275,7 +36275,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "nUX" = (
@@ -36341,7 +36341,7 @@
 /area/strata/ag/exterior/marsh/crash)
 "odi" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "odr" = (
@@ -36456,7 +36456,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "onq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "onr" = (
@@ -36508,7 +36508,7 @@
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/outpost/engi/drome)
 "orW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/tearlake)
@@ -36575,7 +36575,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "oDw" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "oDL" = (
@@ -36870,14 +36870,14 @@
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
 "pdv" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "pex" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "fullgrass_1"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "pfz" = (
@@ -37037,7 +37037,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "pqG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ug/interior/jungle/deep/structures/engi)
@@ -37371,7 +37371,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "pLA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "pLE" = (
@@ -37383,7 +37383,7 @@
 /area/strata/ag/interior/tcomms)
 "pMU" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "pNL" = (
@@ -37426,7 +37426,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "pPi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "pPk" = (
@@ -37566,7 +37566,7 @@
 	},
 /area/strata/ag/exterior/landingzone_2)
 "qcB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "qcO" = (
@@ -37848,7 +37848,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "qBd" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "qBg" = (
@@ -38340,7 +38340,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "rok" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
@@ -38614,7 +38614,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "rRl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "rRx" = (
@@ -38725,7 +38725,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "seb" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "sen" = (
@@ -38935,7 +38935,7 @@
 /area/strata/ag/exterior/paths/cabin_area)
 "sxT" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "sya" = (
@@ -39480,7 +39480,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/restricted)
 "tuj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "tuu" = (
@@ -41257,8 +41257,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "wgB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "wgI" = (
@@ -41551,7 +41551,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "wNq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "wPp" = (
@@ -41718,7 +41718,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/exterior/shed_five_caves)
 "xio" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/west_engi)
 "xje" = (
@@ -41929,7 +41929,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "xzL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -42019,7 +42019,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "xFC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "xFH" = (
@@ -42330,7 +42330,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "yah" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -42344,7 +42344,7 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "yca" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},

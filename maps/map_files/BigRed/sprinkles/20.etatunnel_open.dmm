@@ -13,7 +13,7 @@
 	},
 /area/bigredv2/caves/mining)
 "az" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -151,7 +151,7 @@
 	},
 /area/bigredv2/caves_sw)
 "lQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -165,7 +165,7 @@
 	},
 /area/bigredv2/caves/mining)
 "nx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7"
 	},
@@ -425,7 +425,7 @@
 	},
 /area/bigredv2/caves/mining)
 "Nu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -518,14 +518,14 @@
 	},
 /area/bigredv2/caves/mining)
 "Uh" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_15"
 	},
 /area/bigredv2/caves_sw)
 "UG" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},

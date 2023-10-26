@@ -65,7 +65,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "aal" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/east_caves)
 "aam" = (
@@ -711,7 +711,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "acq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -888,7 +888,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "acT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -1094,7 +1094,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "adD" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/east_caves)
 "adE" = (
@@ -2632,7 +2632,7 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "ain" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -2649,7 +2649,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aiq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -2710,7 +2710,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "aiz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -2789,12 +2789,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aiK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -2806,13 +2806,13 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "aiM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "aiN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/east_caves)
 "aiO" = (
@@ -2993,7 +2993,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ajn" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -3732,7 +3732,7 @@
 	},
 /area/desert_dam/exterior/valley/north_valley_dam)
 "als" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -4181,7 +4181,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "amF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -4478,7 +4478,7 @@
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "ant" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -4598,7 +4598,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "anL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkpurple2"
@@ -4767,7 +4767,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aoq" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -4776,7 +4776,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -5013,7 +5013,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "aoZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitepurplecorner"
@@ -7696,7 +7696,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "awS" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -8465,7 +8465,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "azk" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -8835,7 +8835,7 @@
 /obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_8"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aAx" = (
@@ -9008,7 +9008,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aAV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 10
 	},
@@ -10349,7 +10349,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached2"
 	},
@@ -10519,7 +10519,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aFA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -10562,7 +10562,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "aFF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "whitepurple"
 	},
@@ -10671,7 +10671,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFY" = (
@@ -11183,7 +11183,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "aHE" = (
@@ -11193,7 +11193,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -11237,7 +11237,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -11517,7 +11517,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aIH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/desert/dirt{
 	dir = 1;
@@ -11925,7 +11925,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aKc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -12527,7 +12527,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aLH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 10
 	},
@@ -14791,7 +14791,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aSP" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "darkyellow2"
@@ -14885,7 +14885,7 @@
 /area/desert_dam/building/water_treatment_two)
 "aTe" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -15143,7 +15143,7 @@
 /area/desert_dam/building/water_treatment_two/purification)
 "aTX" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -15417,7 +15417,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "aUW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -23529,7 +23529,7 @@
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bvu" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellowcorners2"
@@ -28195,7 +28195,7 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bLn" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkyellow2"
@@ -28885,7 +28885,7 @@
 /area/desert_dam/exterior/river/riverside_central_north)
 "bNu" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/east_caves)
 "bNv" = (
@@ -35119,7 +35119,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "chl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock/deep/transition{
 	dir = 5
 	},
@@ -35603,7 +35603,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/break_room)
 "cjc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/east_caves)
 "cjf" = (
@@ -40022,7 +40022,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cxm" = (
@@ -46897,7 +46897,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached4"
 	},
@@ -47037,7 +47037,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cTE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "cTF" = (
@@ -47534,7 +47534,7 @@
 /area/desert_dam/building/warehouse/warehouse)
 "cVL" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowcorners2"
@@ -47661,14 +47661,14 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "cWq" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "cWr" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached3"
 	},
@@ -48000,7 +48000,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "cYv" = (
@@ -48068,7 +48068,7 @@
 	start_charge = 0
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greencorner"
@@ -49518,7 +49518,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -49762,7 +49762,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dfr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	dir = 1;
 	icon_state = "desert_transition_edge1"
@@ -50509,7 +50509,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "djV" = (
@@ -50840,7 +50840,7 @@
 "dlN" = (
 /obj/structure/machinery/light,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -51087,7 +51087,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
 "dps" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
 	},
@@ -52561,7 +52561,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "dzO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/desert/dirt{
 	dir = 9;
 	icon_state = "desert_transition_edge1"
@@ -53808,7 +53808,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "dGG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -55415,7 +55415,7 @@
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dNC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -57033,7 +57033,7 @@
 	icon_state = "gib6"
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -57589,7 +57589,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	dir = 6;
 	icon_state = "desert_transition_edge1"
@@ -58344,7 +58344,7 @@
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -58827,7 +58827,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "dZl" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "dZm" = (
@@ -58853,7 +58853,7 @@
 /area/desert_dam/building/dorms/hallway_westwing)
 "dZz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "green"
 	},
@@ -58883,7 +58883,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -58940,7 +58940,7 @@
 /area/desert_dam/building/dorms/hallway_westwing)
 "dZX" = (
 /obj/item/stool,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -59041,7 +59041,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cheesie,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaL" = (
@@ -59355,7 +59355,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "ebT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -60315,7 +60315,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "eqo" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "erB" = (
@@ -60401,7 +60401,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "eNU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "whitepurple"
 	},
@@ -60449,7 +60449,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "eWn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "green"
 	},
@@ -60467,7 +60467,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "eYK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -60497,7 +60497,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "fbK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "fcu" = (
@@ -60570,7 +60570,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "flu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
 	},
@@ -60604,7 +60604,7 @@
 /area/desert_dam/exterior/telecomm/lz2_storage)
 "fqy" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -60618,14 +60618,14 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "fsK" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "fsP" = (
 /obj/structure/surface/table/gamblingtable,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -60669,7 +60669,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "fEQ" = (
@@ -60843,7 +60843,7 @@
 /area/desert_dam/interior/dam_interior/garage)
 "gls" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -60899,7 +60899,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -60913,7 +60913,7 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "goY" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_5"
 	},
@@ -60951,7 +60951,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	icon_state = "dirt2"
 	},
@@ -61033,7 +61033,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "gKn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock/deep/transition{
 	dir = 1
 	},
@@ -61057,7 +61057,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "gMN" = (
@@ -61102,7 +61102,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/exterior/telecomm/lz1_south)
 "gTW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	dir = 1;
 	icon_state = "desert_transition_corner1"
@@ -61151,7 +61151,7 @@
 "gYP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "gYT" = (
@@ -61277,19 +61277,19 @@
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
 "hxD" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "hyH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "hzg" = (
 /obj/effect/decal/sand_overlay/sand2,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -61352,7 +61352,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "hMc" = (
@@ -61362,7 +61362,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "hOv" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "green"
 	},
@@ -61582,7 +61582,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "iuk" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	dir = 8;
 	icon_state = "desert_transition_edge1"
@@ -61716,7 +61716,7 @@
 "iTi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -61863,7 +61863,7 @@
 	},
 /area/desert_dam/exterior/telecomm/lz1_south)
 "jxN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1"
 	},
@@ -61877,7 +61877,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "jAS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached4"
 	},
@@ -61909,7 +61909,7 @@
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "jJa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "jJn" = (
@@ -61980,7 +61980,7 @@
 /area/desert_dam/building/medical/morgue)
 "jVv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "jXv" = (
@@ -61991,7 +61991,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "jXy" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -62010,7 +62010,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "kee" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -62044,11 +62044,11 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "kmU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "knm" = (
@@ -62126,7 +62126,7 @@
 	},
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "kIP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "kJP" = (
@@ -62169,7 +62169,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "kQd" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/desert/rock/deep{
 	icon_state = "rock3"
 	},
@@ -62222,7 +62222,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "lei" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked"
@@ -62240,7 +62240,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "lfM" = (
@@ -62340,7 +62340,7 @@
 /area/desert_dam/building/medical/break_room)
 "ltE" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "ltH" = (
@@ -62404,7 +62404,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "lHW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -62449,7 +62449,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "lMc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "lNu" = (
@@ -62461,11 +62461,11 @@
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "lOY" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "lPn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached14"
 	},
@@ -62506,7 +62506,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "lYv" = (
 /obj/structure/flora/grass/desert/lightgrass_4,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "mar" = (
@@ -62552,7 +62552,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "mfK" = (
@@ -62568,7 +62568,7 @@
 	icon_state = "stop_decal5"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "mhR" = (
@@ -62656,7 +62656,7 @@
 	},
 /area/desert_dam/interior/caves/temple)
 "myx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -62702,7 +62702,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "mEC" = (
@@ -62760,7 +62760,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "mNn" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -62821,7 +62821,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached3"
 	},
@@ -62881,18 +62881,18 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "njF" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	icon_state = "dirt2"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "nlH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "nlU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "green"
@@ -62949,7 +62949,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "nyR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock/deep{
 	icon_state = "rock4"
 	},
@@ -62985,7 +62985,7 @@
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "nIz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -63058,7 +63058,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "nYf" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "nYh" = (
@@ -63067,7 +63067,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "nYz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -63116,11 +63116,11 @@
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "oit" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	dir = 10;
 	icon_state = "desert_transition_edge1"
@@ -63134,13 +63134,13 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "onA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "ooQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "ooW" = (
@@ -63327,7 +63327,7 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "oXK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "oYa" = (
@@ -63430,7 +63430,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "pva" = (
@@ -63448,7 +63448,7 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "pvy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitepurple"
@@ -63456,7 +63456,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "pwc" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
@@ -63514,7 +63514,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "pFj" = (
@@ -63542,7 +63542,7 @@
 /area/desert_dam/interior/dam_interior/garage)
 "pHU" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -63583,7 +63583,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached3"
 	},
@@ -63690,7 +63690,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached4"
 	},
@@ -63760,13 +63760,13 @@
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached3"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "qCR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	dir = 4;
 	icon_state = "desert_transition_edge1"
@@ -63860,7 +63860,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "qOt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -63942,7 +63942,7 @@
 "rfm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
 "rfU" = (
@@ -64012,7 +64012,7 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ruJ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -64055,7 +64055,7 @@
 "rBr" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -64082,7 +64082,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "rEa" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "rEH" = (
@@ -64118,7 +64118,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "rIY" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -64346,7 +64346,7 @@
 "srf" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -64373,7 +64373,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "swg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -64522,7 +64522,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "sXR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "sYp" = (
@@ -64542,7 +64542,7 @@
 /area/desert_dam/building/cafeteria/loading)
 "sYU" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -64693,7 +64693,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tAG" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -64758,7 +64758,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -64858,7 +64858,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ufP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	dir = 5;
 	icon_state = "desert_transition_edge1"
@@ -64993,7 +64993,7 @@
 /area/desert_dam/interior/caves/temple)
 "uGO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "uGU" = (
@@ -65021,7 +65021,7 @@
 "uMk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -65051,7 +65051,7 @@
 "uNF" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "uPS" = (
@@ -65078,7 +65078,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "uVm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached18"
 	},
@@ -65096,7 +65096,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "uXk" = (
 /obj/effect/decal/sand_overlay/sand2,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -65161,7 +65161,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "vph" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/desert/dirt{
 	dir = 4;
 	icon_state = "desert_transition_edge1"
@@ -65202,14 +65202,14 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "vqS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
 	},
 /area/desert_dam/building/mining/workshop_foyer)
 "vte" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "vud" = (
@@ -65261,7 +65261,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "vAN" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "green"
 	},
@@ -65309,7 +65309,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "vHx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -65348,7 +65348,7 @@
 "vOv" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "vRc" = (
@@ -65619,7 +65619,7 @@
 "wQM" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -65678,7 +65678,7 @@
 "wYO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "wZM" = (
@@ -65722,7 +65722,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "xec" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "xgA" = (
@@ -65776,7 +65776,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -65866,7 +65866,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached4"
 	},
@@ -65930,7 +65930,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "xEz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "xEP" = (
@@ -66058,7 +66058,7 @@
 /area/desert_dam/interior/caves/temple)
 "xYb" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	icon_state = "darkyellowcorners2"
 	},

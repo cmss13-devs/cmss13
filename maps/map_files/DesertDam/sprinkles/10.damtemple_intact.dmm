@@ -267,7 +267,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "qV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/dirt{
 	dir = 8;
 	icon_state = "desert_transition_edge1"
@@ -445,7 +445,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "Dc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "DL" = (
@@ -635,7 +635,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "NL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "NV" = (

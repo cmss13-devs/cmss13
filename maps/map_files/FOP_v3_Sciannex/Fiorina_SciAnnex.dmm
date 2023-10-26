@@ -9376,7 +9376,7 @@
 	},
 /area/fiorina/station/power_ring)
 "fHy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/organic/grass{
 	desc = "It'll get in your shoes no matter what you do.";
 	name = "astroturf"
@@ -12791,7 +12791,7 @@
 	},
 /area/fiorina/station/power_ring)
 "hIR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/organic/grass{
 	desc = "It'll get in your shoes no matter what you do.";
 	name = "astroturf"
@@ -38000,7 +38000,7 @@
 	},
 /area/fiorina/station/transit_hub)
 "xii" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/organic/grass{
 	desc = "It'll get in your shoes no matter what you do.";
 	name = "astroturf"

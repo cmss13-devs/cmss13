@@ -52,7 +52,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aal" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "aam" = (
@@ -528,7 +528,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/shiva/interior/colony/research_hab)
 "abK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/right_spiders)
 "abL" = (
@@ -576,7 +576,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "abT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "abU" = (
@@ -1070,7 +1070,7 @@
 	},
 /area/shiva/interior/colony/central)
 "aeo" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	icon_state = "wredfull"
 	},
@@ -1259,7 +1259,7 @@
 	},
 /area/shiva/interior/aerodrome)
 "aff" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -4741,7 +4741,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
 "aCF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/valley)
 "aCH" = (
@@ -7793,7 +7793,7 @@
 	},
 /area/shiva/interior/aerodrome)
 "bMW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "bNu" = (
@@ -9321,7 +9321,7 @@
 	},
 /area/shiva/exterior/cp_lz2)
 "dAt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "dBB" = (
@@ -10825,7 +10825,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "fww" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -13434,7 +13434,7 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "ilh" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "wred"
@@ -15719,7 +15719,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "kEB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "yellow"
@@ -16375,7 +16375,7 @@
 /area/shiva/interior/colony/s_admin)
 "lkX" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -21677,7 +21677,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "qRX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
 "qSa" = (
@@ -23377,7 +23377,7 @@
 	},
 /area/shiva/interior/colony/central)
 "sQU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -23573,7 +23573,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/n_admin)
 "tef" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -24789,7 +24789,7 @@
 /turf/closed/wall/shiva/ice,
 /area/shiva/exterior/research_alley)
 "uim" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -26956,7 +26956,7 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "wFB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "multi_tiles"
@@ -27455,7 +27455,7 @@
 	},
 /area/shiva/interior/colony/central)
 "xnM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellow"

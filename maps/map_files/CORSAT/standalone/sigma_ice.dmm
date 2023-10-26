@@ -236,7 +236,7 @@
 /area/corsat/sigma/biodome/ice)
 "dS" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/corsat/sigma/biodome/ice)
 "dT" = (
@@ -617,7 +617,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/sigma/biodome/ice)
 "lr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/auto_turf/snow,
 /area/corsat/sigma/biodome/ice)
 "lw" = (
@@ -630,7 +630,7 @@
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
 "lN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/snow,
 /area/corsat/sigma/biodome/ice)
 "lP" = (
@@ -807,7 +807,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "pF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
 "pP" = (
@@ -1660,7 +1660,7 @@
 /area/corsat/sigma/airlock/control)
 "Eo" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/snow,
 /area/corsat/sigma/biodome/ice)
 "Ev" = (
@@ -2381,7 +2381,7 @@
 /area/corsat/sigma/biodome/scrapyard)
 "QM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
 "QN" = (

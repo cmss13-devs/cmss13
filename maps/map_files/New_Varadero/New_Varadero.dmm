@@ -293,7 +293,7 @@
 /area/varadero/interior/library)
 "akn" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/up,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
 "akO" = (
@@ -1293,7 +1293,7 @@
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/maintenance/north)
 "aMN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -2039,7 +2039,7 @@
 "bmI" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "bmV" = (
@@ -2290,7 +2290,7 @@
 	},
 /area/varadero/interior/research)
 "bxx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -2475,7 +2475,7 @@
 	},
 /area/varadero/exterior/farocean)
 "bCi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -4793,7 +4793,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "dda" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
 "ddc" = (
@@ -4832,7 +4832,7 @@
 	},
 /area/varadero/interior/morgue)
 "deg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/plating,
 /area/varadero/interior/research)
 "deq" = (
@@ -5218,8 +5218,8 @@
 /area/varadero/interior_protected/caves/digsite)
 "doW" = (
 /obj/item/stack/sheet/wood,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating,
 /area/varadero/interior/research)
 "dpz" = (
@@ -5499,7 +5499,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "dDG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "dEo" = (
@@ -6462,7 +6462,7 @@
 	},
 /area/varadero/exterior/monsoon)
 "emt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "emC" = (
@@ -7161,7 +7161,7 @@
 	},
 /area/varadero/interior/security)
 "eHZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "eIr" = (
@@ -8780,7 +8780,7 @@
 	},
 /area/varadero/exterior/pontoon_beach)
 "fHg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/research)
 "fHk" = (
@@ -8891,7 +8891,7 @@
 	},
 /area/varadero/interior/security)
 "fLu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -9303,7 +9303,7 @@
 	},
 /area/varadero/interior/cargo)
 "fYs" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -9503,8 +9503,8 @@
 /turf/open/gm/dirt,
 /area/varadero/interior_protected/caves/swcaves)
 "gey" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security)
 "geK" = (
@@ -9829,8 +9829,8 @@
 	},
 /area/varadero/interior/electrical)
 "glp" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "gms" = (
@@ -10306,7 +10306,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "gCh" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "gCi" = (
@@ -10455,7 +10455,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "gHJ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves)
 "gHT" = (
@@ -11673,7 +11673,7 @@
 	},
 /area/varadero/exterior/pontoon_beach)
 "hBA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
 "hBX" = (
@@ -11799,7 +11799,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "hGl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "hGz" = (
@@ -13058,11 +13058,11 @@
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "iwT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "iwV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -13136,7 +13136,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "izi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
@@ -13260,7 +13260,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
 "iDn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "iDE" = (
@@ -13594,7 +13594,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "iOv" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves)
 "iOQ" = (
@@ -17753,7 +17753,7 @@
 /area/varadero/exterior/farocean)
 "lxe" = (
 /obj/item/stack/sheet/wood,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/plating,
 /area/varadero/interior/research)
 "lxi" = (
@@ -18666,7 +18666,7 @@
 /turf/open/shuttle/elevator,
 /area/varadero/interior/hall_N)
 "lYQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -18878,7 +18878,7 @@
 	},
 /area/varadero/exterior/comms4)
 "mdL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -19740,7 +19740,7 @@
 	},
 /area/varadero/interior/electrical)
 "mED" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "mFY" = (
@@ -19887,7 +19887,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "mMu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "mMz" = (
@@ -20089,7 +20089,7 @@
 	},
 /area/varadero/interior/administration)
 "mSa" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
 "mSf" = (
@@ -20444,7 +20444,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "ncL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "ncX" = (
@@ -21163,7 +21163,7 @@
 	},
 /area/varadero/exterior/comms4)
 "nFK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
 "nFX" = (
@@ -21813,7 +21813,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "nZP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -23207,7 +23207,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/bunks)
 "oWx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "oWO" = (
@@ -23241,7 +23241,7 @@
 	},
 /area/varadero/interior/maintenance)
 "oXo" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/varadero/interior_protected/caves/digsite)
 "oXp" = (
@@ -23716,8 +23716,8 @@
 	},
 /area/varadero/interior/cargo)
 "plT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "pmh" = (
@@ -24290,7 +24290,7 @@
 	},
 /area/varadero/interior/comms2)
 "pDX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "pEE" = (
@@ -24438,7 +24438,7 @@
 	},
 /area/varadero/interior/maintenance/research)
 "pJF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/varadero/interior_protected/caves)
 "pJQ" = (
@@ -25744,7 +25744,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
 "qzZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/swcaves)
 "qAd" = (
@@ -26664,7 +26664,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "qZR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "qZV" = (
@@ -26957,7 +26957,7 @@
 	},
 /area/varadero/exterior/lz1_near)
 "rkC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "rkH" = (
@@ -27090,7 +27090,7 @@
 	},
 /area/varadero/interior/cargo)
 "ron" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
 "roy" = (
@@ -27619,7 +27619,7 @@
 	},
 /area/varadero/interior/maintenance/security)
 "rDK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -27862,7 +27862,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "rMP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/varadero/interior/caves/east)
 "rNf" = (
@@ -27876,7 +27876,7 @@
 /area/varadero/exterior/comms4)
 "rNm" = (
 /obj/item/stack/sheet/wood,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/research)
 "rNo" = (
@@ -27908,7 +27908,7 @@
 /area/varadero/interior/laundry)
 "rPB" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "rPD" = (
@@ -30397,7 +30397,7 @@
 	},
 /area/varadero/interior/court)
 "tpO" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
 "tpV" = (
@@ -30503,7 +30503,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "trQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -30747,8 +30747,8 @@
 	},
 /area/varadero/exterior/comms4)
 "tFQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security)
 "tFX" = (
@@ -30883,8 +30883,8 @@
 	},
 /area/varadero/interior/research)
 "tMJ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "tMY" = (
@@ -31112,7 +31112,7 @@
 /area/varadero/interior/beach_bar)
 "tSQ" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "tSR" = (
@@ -31214,7 +31214,7 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "tWA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security)
 "tWT" = (
@@ -31556,7 +31556,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "uhV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/varadero/interior_protected/caves/swcaves)
 "uiq" = (
@@ -31926,7 +31926,7 @@
 	},
 /area/varadero/interior_protected/vessel)
 "uvr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -32865,7 +32865,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "vct" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -33034,7 +33034,7 @@
 	},
 /area/varadero/exterior/farocean)
 "vhI" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -35085,7 +35085,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "wnE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "wnK" = (
@@ -35186,8 +35186,8 @@
 /area/varadero/interior/medical)
 "wpG" = (
 /obj/effect/landmark/monkey_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "wpM" = (
@@ -35347,7 +35347,7 @@
 	},
 /area/varadero/interior/comms3)
 "wvI" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/hall_SE)
 "wvK" = (
@@ -35435,7 +35435,7 @@
 	},
 /area/varadero/interior/research)
 "wBc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
 "wBp" = (
@@ -35890,7 +35890,7 @@
 	},
 /area/varadero/interior/medical)
 "wQh" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -36029,8 +36029,8 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/security)
 "wVp" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "wVA" = (
@@ -36373,7 +36373,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/research)
 "xhA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
@@ -37061,8 +37061,8 @@
 	},
 /area/varadero/interior_protected/caves)
 "xEG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "xFb" = (

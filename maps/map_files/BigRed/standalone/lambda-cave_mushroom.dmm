@@ -14,7 +14,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "g" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},

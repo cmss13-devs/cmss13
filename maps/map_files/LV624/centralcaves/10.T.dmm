@@ -3,7 +3,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/central_caves)
 "e" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "f" = (
@@ -11,7 +11,7 @@
 /area/lv624/ground/caves/central_caves)
 "g" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "h" = (
@@ -21,7 +21,7 @@
 "i" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "k" = (
@@ -31,12 +31,12 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_central_caves)
 "m" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "n" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "o" = (
@@ -59,13 +59,13 @@
 /area/lv624/ground/barrens/west_barrens)
 "z" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "A" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "C" = (
@@ -73,12 +73,12 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "G" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "Q" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "V" = (

@@ -4,7 +4,7 @@
 /area/space)
 "aab" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "aac" = (
@@ -20,7 +20,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "aai" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "aaj" = (
@@ -37,12 +37,12 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/caves/north_central_caves)
 "aar" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "aas" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "aat" = (
@@ -74,9 +74,9 @@
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/caves/north_central_caves)
 "aaD" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "aaE" = (
@@ -102,11 +102,11 @@
 "aaM" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "aaN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "aaO" = (
@@ -152,7 +152,7 @@
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/north_central_caves)
 "aba" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -186,7 +186,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/caves/north_central_caves)
 "abj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "abk" = (
@@ -228,13 +228,13 @@
 	},
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "abv" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "abw" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "aby" = (
@@ -253,7 +253,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "abB" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
 "abE" = (
@@ -263,7 +263,7 @@
 /area/lv624/ground/caves/east_caves)
 "abF" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "abG" = (
@@ -272,7 +272,7 @@
 	name = "alien mask";
 	unacidable = 1
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -296,7 +296,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "abQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
 "abS" = (
@@ -330,7 +330,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "aca" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "acb" = (
@@ -358,7 +358,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aci" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "ack" = (
@@ -393,14 +393,14 @@
 /area/lv624/lazarus/canteen)
 "aco" = (
 /obj/effect/landmark/crap_item,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "acp" = (
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/west_caves)
 "acq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "acr" = (
@@ -499,7 +499,7 @@
 	},
 /area/lv624/ground/barrens/north_east_barrens)
 "acK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "acL" = (
@@ -525,7 +525,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "acO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "acQ" = (
@@ -605,7 +605,7 @@
 	},
 /area/lv624/lazarus/crashed_ship_containers)
 "ade" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -658,9 +658,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "adt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "adu" = (
@@ -780,7 +780,7 @@
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adP" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "adQ" = (
@@ -823,7 +823,7 @@
 	},
 /area/lv624/ground/barrens/north_east_barrens)
 "adX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "adY" = (
@@ -865,7 +865,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "aed" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "aeg" = (
@@ -1189,7 +1189,7 @@
 /area/lv624/ground/barrens/central_barrens)
 "afJ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "afK" = (
@@ -1317,7 +1317,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "ago" = (
@@ -1547,14 +1547,14 @@
 	},
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "ahB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ahF" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ahH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ahJ" = (
@@ -1636,7 +1636,7 @@
 	},
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "aie" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
@@ -1897,7 +1897,7 @@
 "ajc" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "ajd" = (
@@ -2238,7 +2238,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "akL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "akM" = (
@@ -2539,7 +2539,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "amy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "amA" = (
@@ -2672,9 +2672,9 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "any" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "anE" = (
@@ -4055,7 +4055,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/jungle/west_jungle/ceiling)
 "avp" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/stairs/perspective{
 	color = "#b29082";
 	dir = 4;
@@ -4826,7 +4826,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "axY" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/quartstorage/outdoors)
 "axZ" = (
@@ -8315,7 +8315,7 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aKn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
@@ -8765,7 +8765,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "aMr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/east_jungle)
 "aMt" = (
@@ -9880,7 +9880,7 @@
 "aRo" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/jungle/vines/heavy,
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aRq" = (
@@ -11047,7 +11047,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aVJ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "aVK" = (
@@ -11790,7 +11790,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aYj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -11845,14 +11845,14 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "aYx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "aYC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "aYD" = (
@@ -12359,9 +12359,9 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/north_east_jungle)
 "bfY" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "bgL" = (
@@ -12651,8 +12651,8 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "bLs" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "bLE" = (
@@ -12955,7 +12955,7 @@
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "csM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "cvk" = (
@@ -13078,7 +13078,7 @@
 "cIU" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "cJw" = (
@@ -13261,12 +13261,12 @@
 /area/lv624/lazarus/corporate_dome)
 "dhD" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
 "diW" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "diZ" = (
@@ -13463,7 +13463,7 @@
 /area/lv624/ground/caves/sand_temple)
 "dFz" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "dGc" = (
@@ -13474,7 +13474,7 @@
 /area/lv624/ground/river/central_river)
 "dGQ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "dHo" = (
@@ -13573,7 +13573,7 @@
 	},
 /area/lv624/ground/caves/north_central_caves)
 "dOQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/queen_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
@@ -13808,7 +13808,7 @@
 "esp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -13921,9 +13921,9 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "eFS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "eGg" = (
@@ -14023,7 +14023,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_east_jungle)
 "eVH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -14043,7 +14043,7 @@
 /area/lv624/ground/river/east_river)
 "eZC" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
@@ -14278,9 +14278,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "fAM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "fDq" = (
@@ -14306,7 +14306,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "fEU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "fFA" = (
@@ -14429,8 +14429,8 @@
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
 "fYl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "fZO" = (
@@ -14455,7 +14455,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "gbz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/west_river)
 "gcn" = (
@@ -14540,7 +14540,7 @@
 /area/lv624/ground/colony/west_tcomms_road)
 "gkC" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "glp" = (
@@ -15000,7 +15000,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "hzR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "hBt" = (
@@ -15014,7 +15014,7 @@
 /area/lv624/lazarus/corporate_dome)
 "hBL" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "hDX" = (
@@ -15294,7 +15294,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_jungle)
 "iiK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/queen_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
@@ -15386,7 +15386,7 @@
 /area/lv624/ground/caves/east_caves)
 "izh" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "izv" = (
@@ -15568,7 +15568,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "iZZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -15857,7 +15857,7 @@
 /area/lv624/ground/caves/sand_temple)
 "jMS" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "jNR" = (
@@ -15948,7 +15948,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "jTP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/west_barrens)
 "jWM" = (
@@ -17358,7 +17358,7 @@
 /area/lv624/lazarus/corporate_dome)
 "nzw" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "nAR" = (
@@ -17440,7 +17440,7 @@
 /area/lv624/lazarus/hydroponics)
 "nHq" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/corpsespawner/miner,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
@@ -17645,7 +17645,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "nWe" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "nWw" = (
@@ -18006,7 +18006,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/west_nexus_road)
 "oMZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "oNJ" = (
@@ -18639,7 +18639,7 @@
 "qaE" = (
 /obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "qcz" = (
@@ -18950,7 +18950,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "qRj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "qSn" = (
@@ -19250,7 +19250,7 @@
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/east_jungle)
 "rGZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "rHp" = (
@@ -19280,7 +19280,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "rKR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -19308,7 +19308,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "rPK" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "rQf" = (
@@ -19680,7 +19680,7 @@
 /area/lv624/ground/caves/sand_temple)
 "sMx" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "sMK" = (
@@ -19808,7 +19808,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "tdX" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "tem" = (
@@ -19896,7 +19896,7 @@
 "tiw" = (
 /mob/living/simple_animal/bat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
 "tka" = (
@@ -20159,7 +20159,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "tMB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "tMF" = (
@@ -20175,7 +20175,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "tOS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "tRu" = (
@@ -20195,7 +20195,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "tTh" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -20286,7 +20286,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "ufG" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "ufW" = (
@@ -20391,7 +20391,7 @@
 /area/lv624/lazarus/secure_storage)
 "umb" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "unp" = (
@@ -20565,7 +20565,7 @@
 "uMz" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "uMD" = (
@@ -20601,7 +20601,7 @@
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/barrens/east_barrens)
 "uSF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "uST" = (
@@ -20646,7 +20646,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "uVU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
@@ -20802,7 +20802,7 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "vly" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "vmv" = (
@@ -20902,7 +20902,7 @@
 "vCG" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "vDy" = (
@@ -20975,7 +20975,7 @@
 "vMV" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "vNP" = (
@@ -21135,7 +21135,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_east_caves)
 "wib" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "wjT" = (
@@ -21161,7 +21161,7 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "wlh" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "wlo" = (
@@ -21297,7 +21297,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "wEO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "wEQ" = (
@@ -21336,7 +21336,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "wJT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "wKv" = (
@@ -21822,9 +21822,9 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "xSA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "xTa" = (
@@ -21867,7 +21867,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "xZE" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "ybu" = (
@@ -21947,7 +21947,7 @@
 /area/lv624/lazarus/corporate_dome)
 "yiE" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "yiT" = (

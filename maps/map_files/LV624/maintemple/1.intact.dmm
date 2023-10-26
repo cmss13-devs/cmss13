@@ -154,7 +154,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "dL" = (
@@ -1064,7 +1064,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "zG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/stairs/perspective{
 	color = "#b29082";
 	dir = 4;

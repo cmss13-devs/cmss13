@@ -7,11 +7,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "g" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "h" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "k" = (
@@ -23,16 +23,16 @@
 "m" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "n" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "o" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "q" = (
@@ -51,7 +51,7 @@
 /area/lv624/ground/barrens/containers)
 "w" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "x" = (
@@ -70,7 +70,7 @@
 /area/lv624/ground/caves/south_central_caves)
 "P" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "Y" = (

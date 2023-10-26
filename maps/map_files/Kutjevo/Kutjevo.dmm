@@ -79,7 +79,7 @@
 /area/kutjevo/interior/foremans_office)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "ahz" = (
@@ -962,7 +962,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "bsq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_central)
 "bsw" = (
@@ -1288,7 +1288,7 @@
 	},
 /area/kutjevo/interior/power/comms)
 "bOc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "bPf" = (
@@ -2046,7 +2046,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/locks)
 "cPZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
@@ -2103,9 +2103,9 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "cTj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "cTz" = (
@@ -2132,7 +2132,7 @@
 /area/kutjevo/interior/complex/botany)
 "cTY" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "cUh" = (
@@ -2271,7 +2271,7 @@
 /area/kutjevo/interior/colony_central/mine_elevator)
 "dcb" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "dck" = (
@@ -2855,7 +2855,7 @@
 /area/kutjevo/exterior/scrubland)
 "dNI" = (
 /obj/structure/platform/kutjevo/rock,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "dOJ" = (
@@ -3111,9 +3111,9 @@
 	},
 /area/kutjevo/interior/construction)
 "efS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "efW" = (
@@ -3570,7 +3570,7 @@
 /area/kutjevo/exterior/Northwest_Colony)
 "eFX" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "eFZ" = (
@@ -3836,7 +3836,7 @@
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "eVy" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "eVO" = (
@@ -4380,9 +4380,9 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "fKN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "fLE" = (
@@ -4731,9 +4731,9 @@
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/interior/complex/med/cells)
 "gma" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "gmA" = (
@@ -4819,7 +4819,7 @@
 /area/kutjevo/interior/complex/med)
 "gtr" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_N_East)
 "gtE" = (
@@ -4957,7 +4957,7 @@
 "gBR" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "gBV" = (
@@ -5150,7 +5150,7 @@
 /area/kutjevo/interior/complex/botany/east_tech)
 "gQC" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "gQF" = (
@@ -5727,7 +5727,7 @@
 "hGB" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "hGM" = (
@@ -5854,7 +5854,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/scrubland)
 "hSU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "hTn" = (
@@ -6148,7 +6148,7 @@
 /area/kutjevo/interior/colony_central)
 "iwF" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "iwV" = (
@@ -6430,7 +6430,7 @@
 /area/kutjevo/exterior/complex_border/med_rec)
 "iTX" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_S_East)
 "iUr" = (
@@ -6967,7 +6967,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob/dev_room)
 "jBX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "jCL" = (
@@ -7123,7 +7123,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "jQo" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "jRd" = (
@@ -7489,7 +7489,7 @@
 /area/kutjevo/interior/construction)
 "kuM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "kvf" = (
@@ -7680,9 +7680,9 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "kGl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "kGM" = (
@@ -8206,7 +8206,7 @@
 	},
 /area/kutjevo/interior/power/comms)
 "ltv" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_South/power2)
 "ltU" = (
@@ -8377,7 +8377,7 @@
 /turf/open/floor/carpet,
 /area/kutjevo/interior/oob)
 "lGj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
 "lHs" = (
@@ -8600,7 +8600,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/exterior/telecomm/lz1_south)
 "lXQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_N_East)
 "lYI" = (
@@ -8621,7 +8621,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
 "lZT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_north)
 "lZZ" = (
@@ -9098,7 +9098,7 @@
 /area/kutjevo/interior/construction)
 "mDA" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "mDH" = (
@@ -9531,7 +9531,7 @@
 /turf/open/desert/desert_shore/shore_corner2,
 /area/kutjevo/exterior/runoff_river)
 "niP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "niT" = (
@@ -9687,7 +9687,7 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "ntF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_central)
 "ntM" = (
@@ -10548,7 +10548,7 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "oxT" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "ozl" = (
@@ -10880,7 +10880,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 "oXH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "oYQ" = (
@@ -10961,7 +10961,7 @@
 /area/kutjevo/exterior/runoff_bridge)
 "pfq" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "pfz" = (
@@ -12084,7 +12084,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
 "qED" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_S_East)
 "qFU" = (
@@ -12180,7 +12180,7 @@
 	},
 /area/kutjevo/interior/oob)
 "qLV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "qMC" = (
@@ -12222,7 +12222,7 @@
 	},
 /area/kutjevo/interior/construction)
 "qOP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "qPa" = (
@@ -12442,7 +12442,7 @@
 "rid" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "rih" = (
@@ -13108,7 +13108,7 @@
 /area/kutjevo/interior/power/comms)
 "scK" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
 "scY" = (
@@ -13407,7 +13407,7 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/med/operating)
 "syM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
 "szC" = (
@@ -13898,7 +13898,7 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "tgO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
 "tgZ" = (
@@ -14144,7 +14144,7 @@
 /turf/open/gm/dirt2,
 /area/kutjevo/exterior/complex_border/med_park)
 "tyq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_north)
 "tyJ" = (
@@ -14190,7 +14190,7 @@
 /turf/open/floor/carpet,
 /area/kutjevo/interior/oob)
 "tCm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_South)
 "tCK" = (
@@ -14441,12 +14441,12 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/cells)
 "tSi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South)
 "tSZ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South)
 "tTi" = (
@@ -14792,7 +14792,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "urv" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
 "ury" = (
@@ -15184,7 +15184,7 @@
 /area/kutjevo/interior/colony_central/mine_elevator)
 "uPV" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "uQa" = (
@@ -15683,7 +15683,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "vzy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "vzC" = (
@@ -15867,7 +15867,7 @@
 /area/kutjevo/interior/complex/botany/east)
 "vIi" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_S_East)
 "vKp" = (
@@ -16218,7 +16218,7 @@
 /area/kutjevo/exterior/scrubland)
 "wjW" = (
 /obj/structure/blocker/invisible_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/carpet,
 /area/kutjevo/interior/oob)
 "wkw" = (
@@ -16731,7 +16731,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "wYE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
 "wZo" = (
@@ -16866,9 +16866,9 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_S_East)
 "xlt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/closed/wall/resin/thick,
 /area/kutjevo/interior/colony_South)
 "xlD" = (

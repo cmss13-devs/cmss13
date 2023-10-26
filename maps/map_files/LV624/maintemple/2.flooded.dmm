@@ -136,7 +136,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "dL" = (
@@ -434,7 +434,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "mI" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "mN" = (

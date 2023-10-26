@@ -14,7 +14,7 @@
 /area/bigredv2/caves_lambda)
 "d" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg2"
@@ -53,7 +53,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "k" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkgreencorners2"
@@ -61,13 +61,13 @@
 /area/bigredv2/caves/lambda/virology)
 "l" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11"
 	},
 /area/bigredv2/caves_lambda)
 "m" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11"
 	},
@@ -107,7 +107,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "w" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_10"
 	},
@@ -143,7 +143,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "X" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_8"
 	},

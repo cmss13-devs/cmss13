@@ -412,7 +412,7 @@
 	},
 /area/lv522/atmos/way_in_command_centre)
 "akp" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/prison,
 /area/lv522/atmos/outdoor)
 "akM" = (
@@ -451,7 +451,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "ame" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -576,7 +576,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "aox" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -626,7 +626,7 @@
 /area/lv522/outdoors/colony_streets/south_east_street)
 "aqo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -1063,7 +1063,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "aEL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -1157,7 +1157,7 @@
 /area/lv522/outdoors/colony_streets/east_central_street)
 "aGI" = (
 /obj/structure/largecrate/random/case/double,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -1280,8 +1280,8 @@
 	},
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "aJT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -1309,7 +1309,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "aKK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -1327,7 +1327,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "aKQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "browncorner"
@@ -1359,7 +1359,7 @@
 	},
 /area/lv522/oob/w_y_vault)
 "aLJ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "aMI" = (
@@ -1776,7 +1776,7 @@
 /area/lv522/indoors/c_block/mining)
 "aWX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2030,7 +2030,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "bdv" = (
 /obj/structure/largecrate/random/case,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2102,7 +2102,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/corpo)
 "bet" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2659,8 +2659,8 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "bye" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -3101,7 +3101,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "bIY" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "brown"
@@ -3121,7 +3121,7 @@
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
@@ -3336,7 +3336,7 @@
 	pixel_x = -12;
 	pixel_y = 24
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "bNJ" = (
@@ -3362,7 +3362,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "bOv" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -3528,7 +3528,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/op_centre)
 "bSM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -3745,7 +3745,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "bXq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -3835,7 +3835,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "bZe" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "browncorner"
 	},
@@ -4012,7 +4012,7 @@
 	dir = 8;
 	icon_state = "flammable_pipe_3"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -4061,14 +4061,14 @@
 /area/lv522/atmos/east_reactor)
 "cdj" = (
 /obj/structure/largecrate/random,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "cdP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -4151,7 +4151,7 @@
 	},
 /area/lv522/indoors/c_block/bridge)
 "chm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/west_reactor)
 "cho" = (
@@ -4172,7 +4172,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib3"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "brown"
@@ -4326,7 +4326,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "cmF" = (
@@ -4494,7 +4494,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "cqr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -4696,8 +4696,8 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "cwq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -4803,7 +4803,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -4825,7 +4825,7 @@
 /area/lv522/indoors/c_block/garage)
 "cyO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -4985,7 +4985,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
 "cCQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -5198,7 +5198,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "cHL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -5407,12 +5407,12 @@
 /area/lv522/atmos/east_reactor/west)
 "cKy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/west)
 "cKC" = (
 /obj/structure/girder/displaced,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/west)
 "cKF" = (
@@ -5488,8 +5488,8 @@
 /area/lv522/landing_zone_1/tunnel)
 "cLH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -5603,7 +5603,7 @@
 /area/lv522/atmos/cargo_intake)
 "cOZ" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -5831,7 +5831,7 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "cUg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
@@ -5974,7 +5974,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "cWH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -6033,7 +6033,7 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "cXi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
@@ -6078,7 +6078,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "cYn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "cYE" = (
@@ -6128,7 +6128,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "cZu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_x = -9;
@@ -6351,7 +6351,7 @@
 	},
 /area/lv522/atmos/east_reactor/west)
 "dcD" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "brown"
@@ -6474,7 +6474,7 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
 "ddN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -6610,7 +6610,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -6624,7 +6624,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "dgO" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -6757,7 +6757,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "djq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -6862,7 +6862,7 @@
 /area/lv522/landing_zone_2)
 "dli" = (
 /obj/structure/blocker/forcefield/vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -7102,7 +7102,7 @@
 	},
 /area/lv522/atmos/west_reactor)
 "dpg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -7210,7 +7210,7 @@
 	},
 /area/lv522/landing_zone_2/ceiling)
 "dsc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -7302,7 +7302,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen/glass)
 "dtr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -7372,7 +7372,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "dwG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "browncorner"
@@ -7401,7 +7401,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/t_comm)
 "dwP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -7439,7 +7439,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "dxU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -7456,7 +7456,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "dya" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -7505,7 +7505,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -7601,7 +7601,7 @@
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "dBe" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -7689,7 +7689,7 @@
 	},
 /area/lv522/atmos/east_reactor/west)
 "dDF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -7705,7 +7705,7 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/cargo_intake)
 "dEk" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -7826,8 +7826,8 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "dFT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "dFY" = (
@@ -7993,7 +7993,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "dIX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
@@ -8150,7 +8150,7 @@
 	},
 /area/lv522/indoors/a_block/executive)
 "dMu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -8207,7 +8207,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "dNn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
@@ -8347,7 +8347,7 @@
 	},
 /area/lv522/indoors/a_block/medical/glass)
 "dQg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -8363,7 +8363,7 @@
 	},
 /area/lv522/indoors/a_block/medical)
 "dQm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -8442,7 +8442,7 @@
 	},
 /area/lv522/atmos/east_reactor/east)
 "dSy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -8534,7 +8534,7 @@
 	},
 /area/lv522/oob)
 "dUS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	dir = 1;
 	icon_state = "flammable_pipe_3";
@@ -8599,7 +8599,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "dWE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -8616,7 +8616,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "dWT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -8660,7 +8660,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "dXB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat{
@@ -8725,7 +8725,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -8745,7 +8745,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "dZs" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/west)
 "dZw" = (
@@ -8828,7 +8828,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "ear" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -8912,7 +8912,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "ecU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "brown"
@@ -9043,7 +9043,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -9203,7 +9203,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/hallway)
 "ehM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -9248,7 +9248,7 @@
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "ejo" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -9298,7 +9298,7 @@
 	},
 /area/lv522/indoors/a_block/medical)
 "ekt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -9378,7 +9378,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/nw_rockies)
 "emr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/monkey_spawn,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -9440,7 +9440,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "enr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -9453,7 +9453,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "enG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "browncorner"
 	},
@@ -9527,7 +9527,7 @@
 	},
 /area/lv522/oob)
 "eow" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -9548,7 +9548,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -9655,7 +9655,7 @@
 /area/lv522/atmos/east_reactor)
 "eqD" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -9697,7 +9697,7 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "erZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -9966,7 +9966,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "exZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -10081,7 +10081,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_west_street)
 "ezU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/north_command_centre)
 "ezW" = (
@@ -10157,7 +10157,7 @@
 /turf/open/floor/plating,
 /area/lv522/atmos/east_reactor)
 "eBm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "browncorner"
 	},
@@ -10182,7 +10182,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "eBH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
@@ -10335,7 +10335,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/n_rockies)
 "eGs" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -10358,7 +10358,7 @@
 	},
 /area/lv522/indoors/a_block/corpo/glass)
 "eHp" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -10572,7 +10572,7 @@
 	},
 /area/lv522/landing_zone_2)
 "eLx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -10606,7 +10606,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/reactor_garage)
 "eLV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/oob)
 "eLZ" = (
@@ -10991,7 +10991,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -11038,7 +11038,7 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "eVi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -11054,7 +11054,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -11122,7 +11122,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "eXe" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/west)
 "eXG" = (
@@ -11268,7 +11268,7 @@
 	},
 /area/lv522/outdoors/colony_streets/south_east_street)
 "faK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -11281,7 +11281,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "faZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -11413,7 +11413,7 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "fdS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/item/stack/rods,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
@@ -11444,7 +11444,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -11489,14 +11489,14 @@
 	},
 /area/lv522/outdoors/colony_streets/south_street)
 "ffr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
 /area/lv522/atmos/east_reactor/west)
 "ffG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/girder,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
@@ -11596,7 +11596,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "fib" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "fiu" = (
@@ -11718,7 +11718,7 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "fkW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -11861,7 +11861,7 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/west_reactor)
 "foO" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/east)
 "foR" = (
@@ -11969,7 +11969,7 @@
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -11996,7 +11996,7 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "frL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -12024,7 +12024,7 @@
 /obj/structure/machinery/power/apc/weak{
 	dir = 1
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -12049,7 +12049,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "fsC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -12060,7 +12060,7 @@
 /area/lv522/atmos/cargo_intake)
 "fsV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -12232,7 +12232,7 @@
 	},
 /area/lv522/atmos/west_reactor)
 "fwo" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/west_reactor)
 "fwy" = (
@@ -12280,7 +12280,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "fwX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -12298,7 +12298,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "fxq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -12668,7 +12668,7 @@
 	dir = 5;
 	id = "cargo_container"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -12708,11 +12708,11 @@
 /area/lv522/outdoors/colony_streets/south_east_street)
 "fFp" = (
 /obj/item/clothing/gloves/yellow,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "fFw" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "fFA" = (
@@ -12875,7 +12875,7 @@
 /area/lv522/indoors/a_block/kitchen/glass)
 "fIQ" = (
 /obj/structure/blocker/forcefield/vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -12906,7 +12906,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "fKt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -12940,7 +12940,7 @@
 	pixel_x = -10;
 	pixel_y = 11
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -13000,7 +13000,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "fLP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -13505,7 +13505,7 @@
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "fXs" = (
 /obj/structure/blocker/forcefield/vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -13557,7 +13557,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "fXZ" = (
@@ -13604,7 +13604,7 @@
 /turf/open/gm/river,
 /area/lv522/landing_zone_1/tunnel)
 "fYP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -13766,7 +13766,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "gbR" = (
@@ -13854,7 +13854,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "gdJ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -13875,7 +13875,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "gdX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -14139,7 +14139,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
 "giF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -14256,7 +14256,7 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "glj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -14353,7 +14353,7 @@
 /area/lv522/indoors/c_block/mining)
 "gnx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -14485,7 +14485,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security/glass)
 "gqg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -14529,7 +14529,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "grz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	pixel_y = 6
 	},
@@ -14609,7 +14609,7 @@
 	},
 /area/lv522/indoors/c_block/t_comm)
 "gts" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "gtt" = (
@@ -14943,7 +14943,7 @@
 /area/lv522/atmos/command_centre)
 "gyB" = (
 /obj/item/prop/colony/used_flare,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -14961,7 +14961,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -15053,7 +15053,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "gAS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -15152,7 +15152,7 @@
 	dir = 10;
 	id = "cargo_container"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -15282,7 +15282,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "gFG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -15530,7 +15530,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "gKM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -15848,7 +15848,7 @@
 	dir = 5;
 	id = "cargo_container"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "brown"
@@ -16018,7 +16018,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_street)
 "gUm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -16460,7 +16460,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib3"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -16479,7 +16479,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "hbj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -16527,7 +16527,7 @@
 	},
 /area/lv522/landing_zone_2)
 "hbF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
@@ -16600,7 +16600,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "hcV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -16616,7 +16616,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_street)
 "hcZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -16677,7 +16677,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "hdQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -16754,7 +16754,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/op_centre)
 "hfi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/prop/server_equipment/laptop/on{
 	layer = 3.1;
 	pixel_y = 10
@@ -16777,7 +16777,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "hfE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/prop/server_equipment/yutani_server/off,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -16871,7 +16871,7 @@
 	dir = 8;
 	id = "cargo_container"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -16913,7 +16913,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "hig" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -17190,7 +17190,7 @@
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "hmD" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -17219,7 +17219,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "hmV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "brown"
@@ -17448,7 +17448,7 @@
 	dir = 10;
 	id = "cargo_container"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "browncorner"
@@ -17532,7 +17532,7 @@
 	},
 /area/lv522/indoors/a_block/corpo)
 "htX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -17940,7 +17940,7 @@
 /area/lv522/atmos/command_centre)
 "hBg" = (
 /obj/structure/cryofeed,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/bluegrid,
 /area/lv522/atmos/east_reactor)
 "hBp" = (
@@ -18000,7 +18000,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/way_in_command_centre)
 "hCU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -18417,7 +18417,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen/glass)
 "hLT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -18575,22 +18575,22 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "hOG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
 	},
 /area/lv522/atmos/filt)
 "hOH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
 /area/lv522/atmos/filt)
 "hOI" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/blocker/forcefield/vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -18715,7 +18715,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/outdoors/nw_rockies)
 "hRd" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "brown"
@@ -19023,7 +19023,7 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
 "hXA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	dir = 9;
@@ -19076,7 +19076,7 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "hYg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/corsat{
 	icon_state = "browncorner"
@@ -19206,7 +19206,7 @@
 	},
 /area/lv522/oob)
 "iam" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
@@ -19519,7 +19519,7 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/fitness/glass)
 "igA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
 	pixel_y = 24
@@ -19562,7 +19562,7 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "ihf" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "brown"
@@ -19680,7 +19680,7 @@
 	},
 /area/lv522/indoors/a_block/corpo/glass)
 "ijO" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -19983,7 +19983,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -20393,7 +20393,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "iyl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -20438,7 +20438,7 @@
 /area/lv522/atmos/reactor_garage)
 "iyQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -20748,7 +20748,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "iGc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -20951,7 +20951,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "iJA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -21198,7 +21198,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -21364,7 +21364,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "iRY" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -22020,7 +22020,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_street)
 "jey" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -22192,7 +22192,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "jhS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -22751,7 +22751,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security/glass)
 "jpm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -22821,7 +22821,7 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/central_streets)
 "jri" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -23568,7 +23568,7 @@
 	phone_id = "Reactor Meeting Room";
 	pixel_y = 26
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -24147,7 +24147,7 @@
 /turf/open/floor/plating,
 /area/lv522/oob)
 "jPz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -24156,7 +24156,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "jPC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/atmos/outdoor)
@@ -24402,7 +24402,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/reactor_garage)
 "jVa" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -24522,7 +24522,7 @@
 /area/lv522/outdoors/nw_rockies)
 "jYj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "jYp" = (
@@ -24770,7 +24770,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "kck" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -24835,7 +24835,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "kda" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "brown"
@@ -24982,7 +24982,7 @@
 	dir = 8;
 	id = "cargo_container"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -25008,7 +25008,7 @@
 /area/lv522/indoors/a_block/kitchen)
 "kfA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -25021,7 +25021,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "kfF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -25059,7 +25059,7 @@
 	dir = 5;
 	id = "cargo_container"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -25280,13 +25280,13 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "kkc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
 /area/lv522/atmos/west_reactor)
 "kkq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -25342,7 +25342,7 @@
 	},
 /area/lv522/indoors/lone_buildings/chunk)
 "kkZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "browncorner"
@@ -25430,7 +25430,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "kmz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -25633,7 +25633,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "kpG" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "browncorner"
@@ -25715,7 +25715,7 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/cargo_intake)
 "kry" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/east_reactor/south)
 "krH" = (
@@ -25772,7 +25772,7 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "kss" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
@@ -26039,7 +26039,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "kzc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -26491,7 +26491,7 @@
 	},
 /area/lv522/indoors/b_block/hydro)
 "kGX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_street)
 "kHd" = (
@@ -27716,7 +27716,7 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "lcP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -27841,7 +27841,7 @@
 	dir = 8
 	},
 /obj/item/clothing/suit/storage/marine/rto,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	dir = 4;
@@ -27987,8 +27987,8 @@
 	},
 /area/lv522/indoors/a_block/security)
 "lit" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -28353,7 +28353,7 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "lpy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/filt)
 "lpH" = (
@@ -28395,13 +28395,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "browncorner"
 	},
 /area/lv522/atmos/east_reactor/south)
 "lrh" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -28600,7 +28600,7 @@
 	},
 /area/lv522/atmos/reactor_garage)
 "lwm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "browncorner"
@@ -28703,7 +28703,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "lyu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -28843,7 +28843,7 @@
 "lAA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -29109,8 +29109,8 @@
 	},
 /area/lv522/atmos/reactor_garage)
 "lFd" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -29374,7 +29374,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
 "lKC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -30027,7 +30027,7 @@
 /area/lv522/indoors/b_block/bar)
 "mad" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -30248,7 +30248,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "mee" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/filt)
 "men" = (
@@ -30420,7 +30420,7 @@
 	},
 /area/lv522/indoors/a_block/corpo/glass)
 "mjq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "browncorner"
@@ -30662,7 +30662,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -30775,7 +30775,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -30819,7 +30819,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/fitness/glass)
 "moZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -30963,7 +30963,7 @@
 	},
 /area/lv522/indoors/a_block/corpo/glass)
 "mrL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -31466,7 +31466,7 @@
 /area/lv522/indoors/b_block/hydro)
 "mCQ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -32568,7 +32568,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "mXn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "brown"
@@ -32664,7 +32664,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/w_rockies)
 "mZN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -32685,7 +32685,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "mZW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/gm/river,
 /area/lv522/atmos/filt)
 "mZX" = (
@@ -33106,7 +33106,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
 "nhb" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/plating,
 /area/lv522/atmos/filt)
 "nhi" = (
@@ -33423,7 +33423,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "nmX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/corsat{
 	icon_state = "brown"
@@ -33441,7 +33441,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "nno" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -33515,7 +33515,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "noV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -33525,7 +33525,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib3"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -33695,7 +33695,7 @@
 /area/lv522/indoors/a_block/dorms)
 "nrh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked"
@@ -34990,7 +34990,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/plating,
 /area/lv522/atmos/filt)
 "nRQ" = (
@@ -35060,7 +35060,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "nTa" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/nw_rockies)
 "nTg" = (
@@ -35218,7 +35218,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "nWl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -35743,7 +35743,7 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/way_in_command_centre)
 "oeX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/n_rockies)
 "ofd" = (
@@ -37555,7 +37555,7 @@
 	},
 /area/lv522/indoors/c_block/bridge)
 "oQs" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -37664,7 +37664,7 @@
 /area/lv522/indoors/a_block/bridges)
 "oSX" = (
 /obj/structure/blocker/forcefield/vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -37790,7 +37790,7 @@
 	},
 /area/lv522/atmos/way_in_command_centre)
 "oUZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -37810,7 +37810,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "oVt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
@@ -38445,8 +38445,8 @@
 	},
 /area/lv522/indoors/a_block/security)
 "pgy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -38467,7 +38467,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "pgJ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -38528,7 +38528,7 @@
 	},
 /area/lv522/landing_zone_1/ceiling)
 "pit" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/nw_rockies)
 "piD" = (
@@ -39124,7 +39124,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "pwA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 1
@@ -39175,7 +39175,7 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "pwX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "pxb" = (
@@ -39576,7 +39576,7 @@
 	},
 /area/lv522/indoors/c_block/garage)
 "pEm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -39615,7 +39615,7 @@
 /area/lv522/atmos/filt)
 "pEw" = (
 /obj/structure/blocker/forcefield/vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -39997,7 +39997,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "pMg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -40084,7 +40084,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "pNv" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -41066,7 +41066,7 @@
 /turf/open/floor/plating,
 /area/lv522/oob)
 "qgx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "qhk" = (
@@ -41124,7 +41124,7 @@
 /area/lv522/indoors/c_block/t_comm)
 "qix" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -41543,7 +41543,7 @@
 	},
 /area/lv522/indoors/a_block/medical)
 "qqq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -41661,7 +41661,7 @@
 	},
 /area/lv522/outdoors/w_rockies)
 "qro" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -41890,7 +41890,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -42656,7 +42656,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "qJE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -43333,7 +43333,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "qTH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -43700,7 +43700,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "qZB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -43889,7 +43889,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -43899,7 +43899,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "rbZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -44287,7 +44287,7 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "rjl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/transmitter/colony_net{
 	phone_category = "LV522 Chances Claim";
@@ -44295,7 +44295,7 @@
 	phone_id = "Reactor Entrance Office";
 	pixel_y = 26
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -44374,7 +44374,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/op_centre)
 "rla" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -44580,7 +44580,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -44698,7 +44698,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -45404,7 +45404,7 @@
 	},
 /area/lv522/outdoors/colony_streets/east_central_street)
 "rEV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -45446,7 +45446,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "rGi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/w_rockies)
 "rGm" = (
@@ -47256,7 +47256,7 @@
 	},
 /area/lv522/indoors/a_block/medical/glass)
 "smK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -47310,7 +47310,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "snP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -47778,13 +47778,13 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security/glass)
 "sxU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
 /area/lv522/atmos/east_reactor/west)
 "syg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -48278,8 +48278,8 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "sHy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -48673,7 +48673,7 @@
 	},
 /area/lv522/indoors/a_block/corpo/glass)
 "sNQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/plating,
 /area/lv522/atmos/filt)
 "sNR" = (
@@ -49901,7 +49901,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "tlv" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -51128,7 +51128,7 @@
 /area/lv522/indoors/c_block/mining)
 "tHC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -51233,7 +51233,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "tKb" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -51610,7 +51610,7 @@
 	},
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "tQw" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -51664,7 +51664,7 @@
 	},
 /area/lv522/landing_zone_1/ceiling)
 "tRS" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -51947,7 +51947,7 @@
 /area/lv522/indoors/a_block/dorms)
 "tXp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "browncorner"
@@ -52454,7 +52454,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -52539,7 +52539,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "uhx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -52992,7 +52992,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/admin)
 "uqt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -53132,7 +53132,7 @@
 	},
 /area/lv522/landing_zone_1/ceiling)
 "utq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
@@ -53204,7 +53204,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "uul" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "browncorner"
 	},
@@ -53372,14 +53372,14 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/nw_rockies)
 "uxf" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
 /area/lv522/atmos/cargo_intake)
 "uxi" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -54621,7 +54621,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/corpo)
 "uTy" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -54707,7 +54707,7 @@
 /area/lv522/indoors/a_block/dorms/glass)
 "uVa" = (
 /obj/effect/landmark/monkey_spawn,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -54885,7 +54885,7 @@
 	},
 /area/lv522/landing_zone_1)
 "uZf" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "brown"
@@ -55315,8 +55315,8 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "vhr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -55570,7 +55570,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "vlq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "vlv" = (
@@ -56329,7 +56329,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -56442,7 +56442,7 @@
 "vAX" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -57193,7 +57193,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/c_block/casino)
 "vNr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -57373,7 +57373,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "vQn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -57477,13 +57477,13 @@
 /area/lv522/indoors/c_block/mining)
 "vSJ" = (
 /obj/structure/blocker/forcefield/vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
 /area/lv522/atmos/north_command_centre)
 "vSM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/tunnel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "vSN" = (
@@ -57864,7 +57864,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "vZP" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/prison,
 /area/lv522/atmos/outdoor)
 "vZS" = (
@@ -58108,7 +58108,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "wea" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -58359,7 +58359,7 @@
 	},
 /area/lv522/landing_zone_2)
 "whK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -58432,7 +58432,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -58995,7 +58995,7 @@
 /area/lv522/indoors/a_block/dorms)
 "wwi" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -60061,7 +60061,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -60154,7 +60154,7 @@
 	},
 /area/lv522/indoors/a_block/corpo)
 "wTv" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/west_reactor)
 "wTx" = (
@@ -60732,7 +60732,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "xgl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -60892,7 +60892,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "xiY" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/wall,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -61111,7 +61111,7 @@
 	},
 /area/lv522/indoors/a_block/corpo)
 "xmT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat,
 /area/lv522/atmos/west_reactor)
 "xni" = (
@@ -61305,7 +61305,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "xrF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -61508,7 +61508,7 @@
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "xwZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -61578,7 +61578,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_west_street)
 "xxW" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -61901,7 +61901,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "xEk" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -62017,7 +62017,7 @@
 /area/lv522/atmos/way_in_command_centre)
 "xGX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -62302,7 +62302,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
 "xNt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -62855,7 +62855,7 @@
 	},
 /area/lv522/indoors/toilet)
 "xWz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -63076,7 +63076,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "yai" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -63427,7 +63427,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
 "ygu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"

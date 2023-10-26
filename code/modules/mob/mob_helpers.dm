@@ -28,7 +28,7 @@
 
 //TODO: Integrate defence zones and targeting body parts with the actual organ system, move these into organ definitions.
 
-//The base miss chance for the different defence zones
+/// The base miss chance for the different defence zones (see also MOB_OVERALL_MISS_CHANCE)
 var/list/global/base_miss_chance = list(
 	"head" = 10,
 	"chest" = 0,

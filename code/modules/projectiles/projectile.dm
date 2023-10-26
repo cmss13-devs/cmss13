@@ -455,12 +455,33 @@
 	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
 
 		var/hit_roll = rand(1,100)
+		var/direct_hit = FALSE
 
-		if(original != L || hit_roll > hit_chance-base_miss_chance[def_zone]-20) // If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
+		// Wasn't the clicked target
+		if(original != L)
 			def_zone = rand_zone()
+
+		// Xenos get a RNG limb miss chance regardless of being clicked target or not, see below
+		else if(isxeno(L) && hit_roll > hit_chance - 20)
+			def_zone = rand_zone()
+
+		// Other targets do the same roll with penalty - a near hit will hit but redirected to another limb
+		else if(!isxeno(L) && hit_roll > hit_chance - 20 - base_miss_chance[def_zone])
+			def_zone = rand_zone()
+
 		else
+			direct_hit = TRUE
 			SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, L)
-		hit_chance -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
+
+		// At present, Xenos have no inherent effects or localized damage stemming from limb targeting
+		// Therefore we exempt the shooter from direct hit accuracy penalties as well,
+		// simply to avoid them from resetting target to chest every time they want to shoot a xeno
+		if(isxeno(L))
+			if(!direct_hit)
+				hit_chance -= MOB_OVERALL_MISS_CHANCE // Averaged miss chance across all limbs
+			// else treat this as a chest shot (0 penalty) regardless of aim for the pupose of hit rolls
+		else // For all other normal people we just apply per-limb hit penalty
+			hit_chance -= base_miss_chance[def_zone]
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([L]) Hit chance: [hit_chance] | Roll: [hit_roll]"))

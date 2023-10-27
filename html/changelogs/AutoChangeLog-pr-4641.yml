@@ -1,5 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - refactor: "Refactored praetorian pierce ability"
-  - bugfix: "Praetorian vanguard can no longer pierce through windowed doors"

@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed various issues in the Networking between Turing machine and Smartfridges."

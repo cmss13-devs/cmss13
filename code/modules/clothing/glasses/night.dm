@@ -187,7 +187,7 @@
 	if(target)
 		var/obj/item/clothing/glasses/night/m56_goggles/G = target
 		G.set_far_sight(owner, !G.far_sight)
-		to_chat(owner, SPAN_NOTICE("You [G.far_sight ? "enable" : "disable"] \the [src]'s far sight system."))
+		to_chat(owner, SPAN_NOTICE("You [G.far_sight ? "enable" : "disable"] \the [G]'s far sight system."))
 
 /datum/action/item_action/m56_goggles/far_sight/update_button_icon()
 	if(!target)

@@ -1,0 +1,7 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes custom ERT calling broadcasting when it should not."
+  - code_imp: "Removes unused vars from ERT procs."
+  - code_imp: "Renames the announce var in ERT procs to be more indicative of what it does."
+  - rscadd: "Added a setting on custom ERTs for announcing beacon was received."

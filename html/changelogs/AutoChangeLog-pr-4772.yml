@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - rscadd: "Added about 50 new tips."

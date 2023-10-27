@@ -55,21 +55,10 @@
   blackdragonTOW:
   - sounddel: removed 300+ ancient and unused Piano and Violin notes.
 2023-10-05:
-  Archemagus:
-  - rscadd: "\u0411\u0430\u0444\u043D\u0443\u043B \u0441\u0442\u0430\u043D\u0446\u0438\
-      \u044E \u043E\u0431\u0441\u043B\u0443\u0436\u0438\u0432\u0430\u043D\u0438\u044F\
-      \ \u0441\u0438\u043D\u0442\u0435\u0442\u0438\u043A\u043E\u0432. \u0415\u0441\
-      \u043B\u0438 \u0433\u043E\u043B\u043E\u0432\u0430 \u043E\u0442\u0434\u0435\u043B\
-      \u044C\u043D\u0430 \u043E\u0442 \u0442\u0435\u043B\u0430 - \u043F\u043E\u043B\
-      \u043E\u0436\u0438\u0442\u0435 \u0435\u0435 \u0440\u044F\u0434\u043E\u043C \u0441\
-      \u043E \u0441\u0442\u0430\u043D\u0446\u0438\u0435\u0439 \u043E\u0431\u0441\u043B\
-      \u0443\u0436\u0438\u0432\u0430\u043D\u0438\u044F."
   Drathek:
   - rscadd: Restore the stat panel options menu to change the stat panel font size
   - bugfix: Fix getFlatIcon not resizing its template nor respect appearance_flags
       of RESET_COLOR and RESET_ALPHA
-  Fray2:
-  - rscadd: synced to newer version of CMSS13
   Morrow:
   - bugfix: Fixed req door accesses
   - rscadd: Added NVG optics
@@ -87,121 +76,14 @@
   - bugfix: Pylons now account for stored larva
   - bugfix: Fixed floodlight stacking to make mostly invincible walls
   - refactor: Refactored 90% of the floodlight code
-  Sporticusmge:
-  - code_imp: i need more push ups
   Steelpoint:
   - ui: Added personnel job titles to the handheld crew monitor, to make it easier
       to tell find out exactly what role's you are looking for. Also slightly expands
       the default monitor screen size to accommodate the entire personnel text on
       screen.
-  XDinka:
-  - imageadd: "\u043D\u043E\u0432\u044B\u0439 \u0432\u0435\u043D\u0434\u043E\u0440\
-      \ \u0434\u043B\u044F \u043C\u0435\u0445\u0430."
-  - mapadd: "\u0444\u0438\u043A\u0441 \u0438\u043D\u0442\u0435\u043B\u0430 \u043D\u0430\
-      \ \u0444\u0438\u043E\u0440\u0438\u043D\u0435, \u0440\u0435\u043C\u0430\u043F\
-      \ \u043C\u0435\u0445\u0431\u044D\u044F, \u0443\u0433\u043E\u043B\u043E\u043A\
-      \ \u043C\u0435\u0445\u0430 \u043D\u0430 \u0430\u043B\u0430\u043C\u043E \u0438\
-      \ \u043D\u043E\u0440\u043C\u0430\u043D\u0434\u0438\u0438."
 2023-10-06:
   blackdragonTOW:
   - bugfix: fixed spider dead sprite to not have white space (is transparent instead)
-2023-10-07:
-  XDinka:
-  - code_imp: "\u0432 \\code\\game\\area\\almayer.dmi \u0434\u043E\u0431\u0430\u0432\
-      \u043B\u0435\u043D\u044B 2 \u043D\u043E\u0432\u044B\u0435 \u0437\u043E\u043D\
-      \u044B [\u0430\u043B\u044C\u0444\u0430-\u0434\u0435\u043B\u044C\u0442\u0430\
-      \ \u043F\u0440\u0435\u043F\u0430\u0440\u0430\u0446\u0438\u0438, \u0431\u0440\
-      \u0430\u0432\u043E-\u0447\u0430\u0440\u043B\u0438 \u043F\u0440\u0435\u043F\u0430\
-      \u0440\u0430\u0446\u0438\u0438] \u0440\u044F\u0434\u043E\u043C \u0441 \u0441\
-      \u0432\u043E\u0438\u043C\u0438 \u0430\u043D\u0430\u043B\u043E\u0433\u0430\u043C\
-      \u0438 \u0441 \u043E\u0444\u0438\u0446\u0438\u0430\u043B\u044C\u043D\u043E\u0439\
-      \ \u043A\u0430\u0440\u0442\u044B."
-  - imageadd: "\u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u044B \u0438\u043A\
-      \u043E\u043D\u043A\u0438 \u0434\u043B\u044F \u0441\u043F\u0430\u0440\u0435\u043D\
-      \u043D\u044B\u0445 \u043F\u0440\u0435\u043F\u043E\u0432 \u0430\u043B\u044C\u0444\
-      \u0430-\u0434\u0435\u043B\u044C\u0442\u0430, \u0431\u0440\u0430\u0432\u043E\
-      -\u0447\u0430\u0440\u043B\u0438."
-  - mapadd: "\u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u043A\u0430\u0440\
-      \u0442\u0430 \u0430\u043B\u043C\u0430\u0439\u0435\u0440 \u0440\u0443 \u0438\
-      \ \u0432\u044B\u043D\u0435\u0441\u0435\u043D\u0430 \u0432 \u043E\u0442\u0434\
-      \u0435\u043B\u044C\u043D\u0443\u044E \u043F\u0430\u043F\u043A\u0443 \u0432 \u043F\
-      \u0430\u043F\u043A\u0435 map_files."
-  - maptweak: "\u0434\u0435\u0442\u0441\u043A\u0438\u0435 \u0431\u043E\u043B\u044F\
-      \u0447\u043A\u0438, \u043C\u0438\u043D\u043E\u0440\u043D\u044B\u0435 \u0431\u0430\
-      \u0433\u0438, \u0443\u0431\u0440\u0430\u043D\u044B \u043F\u043E\u0440\u0435\u0431\
-      \u0440\u0438\u043A\u0438 \u043A\u043E\u0440\u0430\u0431\u043B\u044F, \u0438\u0437\
-      \u043C\u0435\u043D\u0435\u043D\u043E \u043C\u0435\u0441\u0442\u043E \u0440\u0430\
-      \u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u043C\u0435\u0445\
-      \ \u043E\u043F\u0435\u0440\u0430\u0442\u0430\u0440\u0430, \u043F\u0435\u0440\
-      \u0435\u0435\u0445\u0430\u043B\u0430 \u043A\u043E\u043C\u043D\u0430\u0442\u043A\
-      \u0430 \u043F\u0440\u0435\u043F\u043E\u0432 \u043C\u0435\u0445\u0432\u043E\u0434\
-      \u0430, \u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u044B \u043F\u0440\u0435\
-      \u043F\u044B \u0431\u0440\u0430\u0432\u043E-\u0447\u0430\u0440\u043B\u0438,\
-      \ \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u044B \u043E\u0431\u0449\u0438\u0435\
-      \ \u043F\u0440\u0435\u043F\u044B \u0432 \u0443\u0433\u043E\u0434\u0443 \u0443\
-      \u0434\u043E\u0431\u0441\u0442\u0432\u0430 \u0438 \u043C\u0438\u043D\u0438\u043C\
-      \u0430\u043B\u0438\u0437\u043C\u0430, \u0434\u043E\u0431\u0430\u0432\u043B\u0435\
-      \u043D\u044B \u043C\u0435\u043B\u043A\u0438\u0435 \u043F\u0440\u0435\u0434\u043C\
-      \u0435\u0442\u044B \u043D\u0430 \u043C\u043E\u0441\u0442\u0438\u043A \u043F\u043E\
-      \ \u0437\u0430\u043F\u0440\u043E\u0441\u0443 \u043D\u0430\u0447\u0430\u043B\u044C\
-      \u0441\u0442\u0432\u0430, \u0443\u0431\u0440\u0430\u043D\u044B \u043B\u0438\u0448\
-      \u043D\u0438\u0435 \u0432\u0438\u043B\u043A\u0438 \u0445\u0443\u0438\u043B\u043A\
-      \u0438, \u043F\u043E\u0434\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u044B \u0434\
-      \u043E\u0441\u0442\u0443\u043F\u044B \u043A \u043F\u0440\u0435\u043F\u0430\u043C\
-      \ \u0434\u043B\u044F \u043A\u043E\u043C\u0430\u043D\u0434\u043D\u044B\u0445\
-      \ \u0440\u043E\u043B\u0435\u0439, \u0432 \u0431\u0440\u0438\u0444\u0438\u043D\
-      \u0433 \u0440\u0443\u043C \u0432\u0435\u0440\u043D\u0443\u043B\u0438\u0441\u044C\
-      \ \u0446\u0432\u0435\u0442\u0430 \u043E\u0442\u0440\u044F\u0434\u043E\u0432."
-  - code_imp: "3 \u043F\u0430\u0440\u044B \u043D\u043E\u0432\u044B\u0445 \u0437\u0432\
-      \u0443\u043A\u043E\u0432 [Male/Female] \u043A\u0430\u0448\u0435\u043B\u044C\
-      \ (*coungh), \u0441\u043C\u0435\u0445 (*laugh), \u0431\u043E\u043B\u0435\u0437\
-      \u043D\u0435\u043D\u043D\u044B\u0439 \u0432\u0437\u0434\u043E\u0445 (*gasp)\
-      \ \u0432 \"emote.dm\", \u0447\u0430\u0441\u0442\u0438\u0447\u043D\u044B\u0439\
-      \ \u0448\u0443\u0442\u043A\u0430-\u043F\u0435\u0440\u0435\u0432\u043E\u0434."
-  - soundadd: "3 \u043F\u0430\u0440\u044B \u043D\u043E\u0432\u044B\u0445 \u0437\u0432\
-      \u0443\u043A\u043E\u0432 [Male/Female] \u043A\u0430\u0448\u0435\u043B\u044C\
-      \ (*coungh), \u0441\u043C\u0435\u0445 (*laugh), \u0431\u043E\u043B\u0435\u0437\
-      \u043D\u0435\u043D\u043D\u044B\u0439 \u0432\u0437\u0434\u043E\u0445 (*gasp)\
-      \ \u0432 \"sound\\voice\""
-  - sounddel: removed an old sound thingy
-  - imageadd: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u043D\u044B\u0435\
-      \ \u0441\u043F\u0440\u0430\u0439\u0442\u044B \u043F\u0440\u0438\u0447\u0435\u0441\
-      \u043A\u0438 \"hair_gentle_s\" (\u043F\u043E\u043B\u0443\u0447\u0438\u043B\u0430\
-      \ \u043A\u0440\u0443\u0442\u043E\u0439 \u0445\u0432\u043E\u0441\u0442\u0438\u043A\
-      ), \"hair_fredding_s\" (\u043F\u043E\u043B\u043D\u043E\u0441\u0442\u044C\u044E\
-      \ \u043F\u0435\u0440\u0435\u0434\u0435\u043B\u0430\u043D\u0430 \u043D\u0430\
-      \ \u043C\u0430\u043D\u0435\u0440 \u0422\u0413 Modern), \u0432\u043E\u0437\u0432\
-      \u0440\u0430\u0449\u0435\u043D\u0438\u0435 \"hair_ponytail4_s\" (\u041F\u043E\
-      \ \u0437\u0430\u043F\u0440\u043E\u0441\u0443 Roer)."
-  xDanilcusx:
-  - balance: "\u0421\u0442\u0440\u0435\u0439\u043D \u043A\u0435\u0440\u0440\u0438\u0435\
-      \u0440\u0430 \"Eggsac\" \u043F\u043E\u043B\u0443\u0447\u0438\u043B \u0432\u043E\
-      \u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C \u0441\u0442\u0430\u0432\
-      \u0438\u0442\u044C \u044F\u0439\u0446\u0430 \u043D\u0430 \u043B\u044E\u0431\u043E\
-      \u043C \u0432\u0438\u0434\u0435 \u0442\u0440\u0430\u0432\u044B, \u0430 \u043D\
-      \u0435 \u0442\u043E\u043B\u044C\u043A\u043E \u043D\u0430 '\u0442\u0440\u0430\
-      \u0432\u0435 \u0443\u043B\u044C\u044F'."
-  - rscdel: "\u0412\u043E\u0437\u0440\u043E\u0434\u0438\u043B \u0436\u043E\u043D\u0433\
-      \u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u0434\u0440\u043E\u0431\
-      \u043E\u0432\u0438\u043A\u0430\u043C\u0438, \u043E\u0441\u0442\u0430\u0432\u0438\
-      \u043B \u043B\u0438\u0448\u044C \u043D\u0451\u0440\u0444 \u043E\u0442\u0434\u0430\
-      \u0447\u0438 \u0434\u0440\u043E\u0431\u043E\u0432\u0438\u043A\u043E\u0432 \u043F\
-      \u0440\u0438 \u0441\u0442\u0440\u0435\u043B\u044C\u0431\u0435 \u0441 \u043E\u0434\
-      \u043D\u043E\u0439 \u0440\u0443\u043A\u0438."
-  - bugfix: "\u0422\u0435\u043F\u0435\u0440\u044C \u0410\u041F\u0426 \u043D\u0430\u0440\
-      \u0430\u0432\u043D\u0435 \u0441 \u0442\u0430\u043D\u043A\u043E\u043C \u043C\u043E\
-      \u0436\u0435\u0442 \u043F\u043E\u0441\u0435\u0449\u0430\u0442\u044C \u043F\u0435\
-      \u0449\u0435\u0440\u044B \u0432\u0441\u0435\u0445 \u043A\u0430\u0440\u0442."
-  - balance: "\u0424\u043E\u043D\u0430\u0440\u0438 \u043D\u0430 \u043E\u0440\u0443\
-      \u0436\u0438\u0438 \u0431\u043E\u043B\u0435\u0435 \u043D\u0435 \u0432\u044B\u043A\
-      \u043B\u044E\u0447\u0430\u044E\u0442\u0441\u044F \u0432\u043E \u0432\u0440\u0435\
-      \u043C\u044F \u043D\u043E\u0448\u0435\u043D\u0438\u044F \u0432\u043D\u0435 \u0441\
-      \u043B\u043E\u0442\u0430 \u0440\u0443\u043A."
-  - balance: "\u0411\u0440\u043E\u043D\u044F \u0441 \u043A\u043E\u0432\u0448\u043E\
-      \u043C \u0434\u043B\u044F \u0442\u0430\u043D\u043A\u0430 \u043F\u043E\u043B\u0443\
-      \u0447\u0438\u043B\u0430 \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\
-      \u0442\u044C \u0441\u0440\u0435\u0437\u0430\u0442\u044C \u043A\u0441\u0435\u043D\
-      \u043E-\u0442\u0440\u0430\u0432\u0443 \u043D\u0430 \u043F\u0443\u0442\u0438."
 2023-10-08:
   Kivts:
   - rscadd: You can partially protect yourself from flu and other disease by wearing
@@ -360,19 +242,8 @@
   - refactor: Refactored handheld beacons and related code
   CapCamIII:
   - bugfix: Equipped marine presets spawn with full food on spawn
-  Drathek:
-  - bugfix: Fixed a cause of bad icon operations
-  - bugfix: Bandaided a problem with nulls in GLOB.clients
   Huffie56:
   - refactor: refactor ammo_datums file.
-  IsProbablyCatto:
-  - qol: Medbelts pull from pillbottles as default
-  Kitsunemitsu:
-  - bugfix: fixed FTLs being demoted from SL erroneously having the tag TL in chat.
-  MrDas:
-  - bugfix: You can now disassemble wide airlocks. (You can't unwrench them though)
-  - spellcheck: Fixed a few typos in airlock assembly.
-  - imageadd: Added wide airlock assembly and generic solid wide airlock sprites.
   SpartanBobby:
   - maptweak: fixes lack of warning stripes under doors in squad briefing areas and
       newly added maint doors onboard USS Almayer
@@ -390,86 +261,149 @@
       and bathrooms
   - maptweak: updates "Dusty Beret" prop item to now be the RMC Beret it was originally
       referencing (now that the RMC are ingame)
-  - maptweak: Removes stunprod from LV522
   VileBeggar:
   - qol: All squad uniform vendors have had their standard apparel condensed into
       one button.
-  - rscadd: Dartboards are now functional and can be crafted with cardboard.
-  - bugfix: Fixed an issue with some deconstructed signs losing their icon.
-  carrotman2013:
-  - qol: "\u0418\u043A\u043E\u043D\u043A\u0438 \u0431\u0440\u043E\u043D\u0438 \u0438\
-      \ \u0448\u043B\u0435\u043C\u0430 \u0449\u0438\u0442\u043E\u0432\u0438\u043A\u0430\
-      \ \u043F\u0435\u0440\u0435\u043D\u0435\u0441\u0435\u043D\u044B \u0432 \u043F\
-      \u0430\u043F\u043A\u0443 fray-marines"
   fira:
   - bugfix: Fixed caps displaying contained items on character even without being
       worn.
   neeshacark:
   - qol: MT, CT, and Nurses can now take the bad leg trait.
+2023-10-20:
+  Drathek:
+  - bugfix: Fixed a cause of bad icon operations
+  - bugfix: Bandaided a problem with nulls in GLOB.clients
+  IsProbablyCatto:
+  - qol: Medbelts pull from pillbottles as default
+  Kitsunemitsu:
+  - bugfix: fixed FTLs being demoted from SL erroneously having the tag TL in chat.
+  MrDas:
+  - bugfix: You can now disassemble wide airlocks. (You can't unwrench them though)
+  - spellcheck: Fixed a few typos in airlock assembly.
+  - imageadd: Added wide airlock assembly and generic solid wide airlock sprites.
+  SpartanBobby:
+  - maptweak: Removes stunprod from LV522
+  VileBeggar:
+  - rscadd: Dartboards are now functional and can be crafted with cardboard.
+  - bugfix: Fixed an issue with some deconstructed signs losing their icon.
+2023-10-21:
+  Birdtalon:
+  - rscadd: USCM Service Jacket to SEA Vendor
+  CapCamIII:
+  - balance: Crawling now only takes 1 second to move and no longer has an overhead
+      icon when doing it.
+  - balance: Timer on attempting to join ERT after death is now 30 seconds down from
+      1 minute
+  - spellcheck: UPP Synth Survivor on the Trijent Dam nightmare is now called a Support
+      Synthetic instead of a Combat Synthetic, as its not a combat synthetic
+  Drathek:
+  - bugfix: Fixed imaginary friends not initializing correctly and throwing a runtime
+  - ui: Tweaked the position of some ghost alerts
+  SpartanBobby:
+  - maptweak: Fixes incorrect DIR on fireshutters in memorial
+  - maptweak: Corrects lack of warning stripe tile under door in north brig maint
+  Steelpoint:
+  - rscadd: UPP ERT's have a chance to be neutral to the USCM.
+  fira:
+  - bugfix: Xeno and Megaphone abovehead chat speech should now properly be centered
+      horizontally.
+  - bugfix: Fixed Rangefinders/Designators preventing you from lazing if you looked
+      up/down them without moving.
+  - bugfix: Fixed Rangefinders/Designators forcing you to look up/down again if you
+      had moved while using them.
+  foxtrot1322:
+  - rscadd: Added splints to the survival pouch
+  - rscadd: Increased survival pouch storage space by 1
+  - spellcheck: Updates the survival pouch's description
+2023-10-22:
+  Drathek:
+  - bugfix: Fix incend and cluster OBs not respecting ceiling OB protections.
+  - bugfix: Disabled code in icon2html that is causing bad icon operations
+  Morrow:
+  - server: the rustg mysql driver is now properly compatible with mariadb
+  Zonespace27:
+  - rscadd: Mentors can now unmark mhelps
+  fira:
+  - bugfix: Removed redundant double binding for F1 to AdminHelp from default keybinds.
+      This does not affect existing users or their settings.
+  - rscadd: Stamping papers now makes a noise.
+  - bugfix: Fixed incorrect Reqs vendors visuals on the Almayer. They now blend in
+      with the walls again.
+  - bugfix: Re-fixed Megaphone above-head-chat drifting to the left.
+  harryob:
+  - admin: no more href token errors when changing the game mode via game panel
+  - bugfix: mentorhelp response no longer gives a dead discord link
+  - admin: view-target-records now allows you to note people properly
+  kiVts:
+  - rscadd: Ghosts get notified when they are being revived by DFB property
+  - balance: DFB property healing threshold lowered, You can create DFB property higher
+      than one.
+  realforest2001:
+  - rscadd: Added Discretionary Arrest to JAS.
+  - rscadd: Added a new category to JAS, Precautionary Charges. Moves Insanity and
+      POW to this category.
+2023-10-23:
+  QuickLode:
+  - balance: Nerfs synth surv pouch by removing 1 storage slot.
+  SpypigDev:
+  - rscadd: CIC Armory SO vendor
+  - balance: Moved most combat-themed gear from SO spawn vendors, to CIC Armory vendor
+  - balance: Made RTO pack a point-buy item in CIC Armory vendor for SOs
+  Steelpoint:
+  - balance: Revolver Heavy ammo no longer stuns targets it strikes, it will instead
+      knock them back and slow them down for a short time.
+  harryob:
+  - server: the server now respects /string/title for late joiners
+  stalkerino:
+  - balance: m39 is able to use vertigrip
 2023-10-24:
-  Fray2:
-  - code_imp: synced with upstream!
-  Noname995:
-  - rscadd: "\u0412\u044B\u0431\u043E\u0440 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\
-      \u0434\u0438\u0442\u0435\u043B\u044F \u0441\u0438\u043D\u0442\u0430\u043C!"
-  carrotman2013:
-  - rscadd: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u0441\u0442\
-      \u0430\u0440\u044B\u0445/\u043D\u043E\u0432\u044B\u0445 \u0415\u0420\u0422 \u043E\
-      \u0442\u0440\u044F\u0434\u043E\u0432 \u0432 \u0440\u043E\u0442\u0430\u0446\u0438\
-      \u044E."
-  - rscadd: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u043A\u0435\u0439\u0441\
-      \ \u0441 \u044D\u043A\u0438\u043F\u0438\u0440\u043E\u0432\u043A\u043E\u0439\
-      \ \u043A\u043E\u0440\u043F\u043E\u0440\u0430\u0442\u0438\u0432\u043D\u043E\u0439\
-      \ \u043E\u0445\u0440\u0430\u043D\u044B."
-  - rscadd: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u043A\u043D\u043E\
-      \u043F\u043A\u0430 \u0432\u044B\u0437\u043E\u0432\u0430 \u043A\u043E\u0440\u043F\
-      \u043E\u0440\u0430\u0442\u0438\u0432\u043D\u043E\u0439 \u043E\u0445\u0440\u0430\
-      \u043D\u044B \u043D\u0430 \u0431\u043E\u0440\u0442 \u0410\u043B\u043C\u0430\u0435\
-      \u0440\u0430."
-  - imageadd: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u044B \u0441\u043F\
-      \u0440\u0430\u0439\u0442\u044B \u0432\u044B\u0448\u0435\u043D\u0430\u0437\u0432\
-      \u0430\u043D\u043D\u044B\u0445 \u043A\u0435\u0439\u0441\u0430 \u0438 \u043A\u043D\
-      \u043E\u043F\u043A\u0438."
-  - maptweak: "\u041A\u0435\u0439\u0441\u044B \u0441 \u044D\u043A\u0438\u043F\u0438\
-      \u0440\u043E\u0432\u043A\u043E\u0439 \u043A\u043E\u0440\u043F. \u043E\u0445\u0440\
-      \u0430\u043D\u044B \u043D\u0430\u0445\u043E\u0434\u044F\u0442\u0441\u044F \u0432\
-      \ \u043E\u0444\u0438\u0441\u0435 \u041B\u0430\u0439\u0441\u043E\u043D\u0430\
-      , \u043A\u043D\u043E\u043F\u043A\u0430 \u0442\u0430\u043C \u0436\u0435."
-  - mapadd: "\u0411\u0430\u0437\u0430 UPP"
-  - mapadd: "\u0411\u0430\u0437\u0430 TWE"
-  - mapadd: "\u0411\u0430\u0437\u0430 CLF"
-  - mapadd: "\u0411\u0430\u0437\u0430 WY"
-  - rscadd: "\u0412\u044B\u0448\u0435\u0443\u043A\u0430\u0437\u0430\u043D\u043D\u044B\
-      \u0435 \u0415\u0420\u0422 \u0441\u043F\u0430\u0432\u043D\u044F\u0442\u0441\u044F\
-      \ \u043D\u0430 \u0441\u0432\u043E\u0438\u0445 \u0441\u043E\u0431\u0441\u0442\
-      \u0432\u0435\u043D\u043D\u044B\u0445 \u0431\u0430\u0437\u0430\u0445."
-  - rscadd: "\u0412\u0438\u0441\u043A\u0438 \u0410\u0443\u0442\u043F\u043E\u0441\u0442\
-      \ \u0432 \u0432\u043E\u0443\u0442\u0435 \u043F\u043E\u044F\u0432\u043B\u044F\
-      \u0435\u0442\u0441\u044F \u0447\u0430\u0449\u0435."
-  xDanilcusx:
-  - rscadd: "\u041D\u043E\u0432\u044B\u0439 \u0441\u0442\u0440\u0435\u0439\u043D \u0421\
-      \u043F\u0438\u0442\u0442\u0435\u0440\u0430 \u2013 \u041F\u043E\u0434\u0430\u0432\
-      \u0438\u0442\u0435\u043B\u044C (Suppressor), \u043A\u043E\u0442\u043E\u0440\u044B\
-      \u0439 \u043F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u043E\u0431\u043C\
-      \u0435\u043D\u044F\u0442\u044C \u043A\u0438\u0441\u043B\u043E\u0442\u0443 \u043D\
-      \u0430 \u0437\u0430\u043C\u0435\u0434\u043B\u044F\u044E\u0449\u0438\u0435 \u0432\
-      \u0440\u0430\u0433\u043E\u0432 \u0438 \u043B\u0435\u0447\u0430\u0449\u0438\u0435\
-      \ \u0441\u043E\u044E\u0437\u043D\u0438\u043A\u043E\u0432 \u043F\u043B\u0435\u0432\
-      \u043A\u0438."
-  - bugfix: "\u041F\u0435\u0440\u0435\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\
-      \ \u0432\u0438\u0434\u043E\u0432 \u043F\u043B\u0435\u0432\u043A\u0430 \u0411\
-      \u043E\u0439\u043B\u0435\u0440\u0430 \u0431\u043E\u043B\u0435\u0435 \u043D\u0435\
-      \ \u0438\u0433\u043D\u043E\u0440\u0438\u0440\u0443\u0435\u0442 \u043F\u0440\u043E\
-      \u043F\u0438\u0441\u0430\u043D\u043D\u044B\u0439 \u043A\u0443\u043B\u0434\u0430\
-      \u0443\u043D."
-  - rscadd: "\u041D\u043E\u0432\u044B\u0439 \u0441\u0442\u0440\u0435\u0439\u043D \u041B\
-      \u044E\u0440\u043A\u0435\u0440\u0430 \u2013 \u0421\u0442\u0430\u043B\u043A\u0435\
-      \u0440 (Stalker), \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u043F\u043E-\u0444\
-      \u0430\u043A\u0442\u0443 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0440\
-      \u0435\u0438\u043C\u043F\u043B\u0435\u043C\u0435\u043D\u0442\u0430\u0446\u0438\
-      \u0435\u0439 \u0433\u0435\u0439\u043C\u043F\u043B\u0435\u044F \u0441\u0442\u0430\
-      \u0440\u043E\u0433\u043E \u041B\u044E\u0440\u043A\u0435\u0440\u0430 \u043E\u0431\
-      \u0440\u0430\u0437\u0446\u0430 2018 \u0433\u043E\u0434\u0430."
-  - balance: "\u041A\u0414 \u0441\u043A\u0440\u0438\u0447\u0430 \u043A\u043E\u0440\
-      \u043E\u043B\u0435\u0432\u044B \u0431\u044B\u043B \u043F\u043E\u043D\u0438\u0436\
-      \u0435\u043D \u043D\u0430 20 \u0441\u0435\u043A\u0443\u043D\u0434."
+  Segrain:
+  - bugfix: Slicing food once again works as intended.
+2023-10-25:
+  fira:
+  - bugfix: Fixed Ghosts and Queen Eye occasionally "eating" pounces in place of a
+      mob on the same turf.
+  - bugfix: Re-Re-Fixed Xeno Above Head Chat offsets, for real this time
+  - bugfix: Fixed people talking in radios all the time. Finally some quiet.
+  - bugfix: deadchat death messages should now display immediately rather than being
+      delayed a couple seconds.
+2023-10-26:
+  4hands44:
+  - rscadd: Added more attachments, and belts to the CO arsenal.
+  - rscadd: CO now has an Essentials Kit like other roles, containing his Designator,
+      and other useful tools.
+  - rscadd: Re-Adds Bridgecoat to some Officer Dress vendors. (Limited to CO(+) and
+      XO currently.)
+  - rscdel: Removed Laser Designator from CO spawn Preset.
+  - balance: CO can now vend welding Helmet visors.
+  - balance: Adds grenade packets to CO Vendor.
+  XDinka:
+  - rscadd: 'Added four new haircuts: gentle ponytail, edgar haircut, emo bun, taper
+      haircut.'
+2023-10-27:
+  Backsea:
+  - bugfix: Fixed the incorrectly placed shutters at req and that one light near CIC
+  Birdtalon:
+  - refactor: Refactored praetorian pierce ability
+  - bugfix: Praetorian vanguard can no longer pierce through windowed doors
+  SASoperative:
+  - rscadd: Added donator item and sprites
+  Zonespace27:
+  - rscdel: Re-removed CO/XO bridge coat
+  fira:
+  - rscadd: Added about 50 new tips.
+  - rscadd: Bloody footprints are now slightly offset to break long visual straight
+      lines.
+  - bugfix: Items do not align back to the center of turfs anymore when picked from
+      a surface (table or rack)
+  - rscadd: Some more items now have offsets on the map display, and they all can
+      be slightly offset.
+  - code_imp: Rewrote Xeno Acid ticking code.
+  - bugfix: Weather updates won't cause turfs to acid melt more rapidly anymore
+  - bugfix: Fixed various issues in the Networking between Turing machine and Smartfridges.
+  realforest2001:
+  - bugfix: Fixes custom ERT calling broadcasting when it should not.
+  - code_imp: Removes unused vars from ERT procs.
+  - code_imp: Renames the announce var in ERT procs to be more indicative of what
+      it does.
+  - rscadd: Added a setting on custom ERTs for announcing beacon was received.

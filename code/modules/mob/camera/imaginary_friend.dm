@@ -261,7 +261,7 @@
 	icon = friend_image
 	mouse_opacity = MOUSE_OPACITY_ICON
 	var/mob/ghost = ..()
-	if(ghost.mind)
+	if(ghost?.mind)
 		ghost.mind.original = aghosted_original_mob
 	return ghost
 

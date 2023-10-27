@@ -1,4 +1,4 @@
-s// DM Environment file for colonialmarines.dme.
+// DM Environment file for colonialmarines.dme.
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 // BEGIN_INTERNALS
@@ -11,6 +11,7 @@ s// DM Environment file for colonialmarines.dme.
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\__odlint.dm"
 #include "code\_byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\_experiments.dm"
@@ -942,6 +943,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\game\machinery\vending\vendor_types\crew\sea.dm"
 #include "code\game\machinery\vending\vendor_types\crew\senior_officers.dm"
 #include "code\game\machinery\vending\vendor_types\crew\staff_officer.dm"
+#include "code\game\machinery\vending\vendor_types\crew\staff_officer_armory.dm"
 #include "code\game\machinery\vending\vendor_types\crew\synthetic.dm"
 #include "code\game\machinery\vending\vendor_types\crew\vehicle_crew.dm"
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_engineer.dm"
@@ -1757,6 +1759,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\law\laws\major_crime.dm"
 #include "code\modules\law\laws\minor_crime.dm"
 #include "code\modules\law\laws\optional.dm"
+#include "code\modules\law\laws\precautionary_charge.dm"
 #include "code\modules\lighting\emissive_blocker.dm"
 #include "code\modules\lighting\lighting_area.dm"
 #include "code\modules\lighting\lighting_atom.dm"

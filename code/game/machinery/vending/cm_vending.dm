@@ -777,8 +777,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 	desc = "An automated closet hooked up to a colossal storage of standard-issue uniform and armor."
 	icon_state = "clothing"
 	use_points = TRUE
+	show_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
-	show_points = FALSE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)

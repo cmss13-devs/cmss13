@@ -13,7 +13,7 @@
 	var/leaders = 0
 	spawn_max_amount = TRUE
 
-/datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc, announce_dispatch_message)
+/datum/emergency_call/cryo_squad/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.num_leaders
 	. = ..()

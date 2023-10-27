@@ -507,10 +507,8 @@
 		icon_state = initial(icon_state)
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
-
 	name = "\improper AN/AVD-60 LZ detector"
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone."
-
 	icon_state = "lz_detector"
 	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console

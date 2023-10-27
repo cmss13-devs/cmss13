@@ -544,3 +544,16 @@
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/clothing/glasses/welding(src)
+
+/obj/item/storage/box/kit/tactical_kit
+	name = "\improper Tactical Engineering Kit"
+
+/obj/item/storage/box/kit/tactical_kit/fill_preset_inventory()
+	new /obj/item/tool/screwdriver/tactical(src)
+	new /obj/item/tool/wirecutters/tactical(src)
+	new /obj/item/tool/crowbar/tactical(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)

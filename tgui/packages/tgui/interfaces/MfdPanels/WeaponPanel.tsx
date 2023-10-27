@@ -3,6 +3,7 @@ import { useBackend, useSharedState } from '../../backend';
 import { Box, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MfdProps, MfdPanel, usePanelState } from './MultifunctionDisplay';
+import { LazeTarget } from './types';
 
 export const useWeaponState = (panelId: string, context) =>
   useSharedState<number | undefined>(

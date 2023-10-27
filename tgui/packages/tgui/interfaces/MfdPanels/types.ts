@@ -1,9 +1,9 @@
-type LazeTarget = {
+export type LazeTarget = {
   target_name: string;
   target_tag: number;
 };
 
-type MedevacTargets = {
+export type MedevacTargets = {
   area: string;
   occupant: string;
   ref: string;
@@ -18,7 +18,7 @@ type MedevacTargets = {
   };
 };
 
-type SentrySpec = {
+export type SentrySpec = {
   rounds?: number;
   max_rounds?: number;
   name: string;
@@ -35,11 +35,23 @@ type SentrySpec = {
   deployed: number;
 };
 
-type MGSpec = {
+export type MGSpec = {
   name: string;
   health: number;
   health_max: number;
   rounds: number;
   max_rounds: number;
   deployed: 0 | 1;
+};
+
+export type CasFiremissionStage = {
+  weapon: number;
+  offsets: Array<string>;
+};
+
+export type CasFiremission = {
+  name: string;
+  mission_length: number;
+  records: Array<CasFiremissionStage>;
+  mission_tag: number;
 };

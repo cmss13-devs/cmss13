@@ -2,15 +2,16 @@ import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
 import { Box, Divider, Flex, Stack } from '../components';
 import { CasSim } from './CasSim';
-import { range } from 'common/collections';
-import { ButtonProps, FullButtonProps, mfddir, MfdPanel, MfdProps, usePanelState } from './MfdPanels/MultifunctionDisplay';
+import { MfdPanel, MfdProps, usePanelState } from './MfdPanels/MultifunctionDisplay';
 import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
 import { MapMfdPanel } from './MfdPanels/MapPanel';
 import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
 import { SupportMfdPanel } from './MfdPanels/SupportPanel';
+import { FiremissionMfdPanel } from './MfdPanels/FiremissionPanel';
+import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
 
-interface DropshipProps {
+export interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
   medevac_targets: Array<MedevacTargets>;
   fulton_targets: Array<string>;
@@ -246,221 +247,7 @@ const FiremissionSimulationPanel = (props, context) => {
   );
 };
 
-const getGunButtonProps: (context: any) => Array<ButtonProps> = (context) => {
-  const { act, data } = useBackend<DropshipProps>(context);
-  const get_gun = (mount_point) =>
-    data.equipment_data.find((x) => x.mount_point === mount_point);
-
-  const guns = range(1, 5).map((x) => get_gun(x));
-  const getGunProps = (index: number) => {
-    const value: ButtonProps = {
-      children: guns[index]?.shorthand ?? '',
-      onClick: () => {
-        act('fire-weapon', { 'eqp_tag': guns[0]?.eqp_tag });
-      },
-    };
-    return value;
-  };
-  return [
-    { children: 'WEAPON' },
-    getGunProps(0),
-    getGunProps(1),
-    getGunProps(2),
-    getGunProps(3),
-  ];
-};
-
-const getEquipmentButtonProps: (context: any) => Array<ButtonProps> = (
-  context
-) => {
-  const { data } = useBackend<DropshipProps>(context);
-  const [equipmentPanel, setEquipmentPanel] = useEquipmentState(context);
-  const equips = data.equipment_data.filter((x) => x.eqp_tag === 1);
-
-  const equipment = range(1, 5).map((x) => equips.pop());
-  const getEquipmentProps = (index: number) => {
-    const value: ButtonProps = {
-      children: equipment[index]?.shorthand ?? '',
-      onClick: () => {
-        const target = equipment[index];
-        target && setEquipmentPanel(target.name);
-      },
-    };
-    return value;
-  };
-  return [
-    { children: 'EQUIP', onClick: () => setEquipmentPanel(undefined) },
-    getEquipmentProps(0),
-    getEquipmentProps(1),
-    getEquipmentProps(2),
-    getEquipmentProps(3),
-  ];
-};
-
-const getLazeButtonProps = (context) => {
-  const { act, data } = useBackend<DropshipProps>(context);
-  const lazes = range(0, 3).map((x) =>
-    x > data.targets_data.length ? undefined : data.targets_data[x]
-  );
-  const get_laze = (index: number) => {
-    const laze = lazes.find((_, i) => i === index);
-    if (laze === undefined) {
-      return { children: 'NONE' };
-    }
-    return {
-      children: laze?.target_name.split(' ')[0] ?? 'NONE',
-      onClick: laze
-        ? () => act('set-camera', { 'equipment_id': laze.target_tag })
-        : undefined,
-    };
-  };
-  return [
-    { children: 'SIGNALS' },
-    get_laze(0),
-    get_laze(1),
-    get_laze(2),
-    get_laze(3),
-  ];
-};
-
-const getEquipmentRightProps = (context) => {
-  const [equipmentPanel] = useEquipmentState(context);
-  switch (equipmentPanel) {
-    default:
-      return getMedevacRightProps(context);
-  }
-};
-
-const getMedevacRightProps = (context) => {
-  const { act, data } = useBackend<DropshipProps>(context);
-  const get_medevac = (index: number) => {
-    const target = data.medevac_targets.find((_, i) => i === index);
-    if (!target) {
-      return undefined;
-    }
-
-    const names = target.occupant.split(' ');
-    return {
-      children: `${names[names.length - 1]} ${names[0][0]}.`,
-      onClick: () =>
-        act('equipment_interact', {
-          'equipment': 'medevac',
-          'ref': target.ref,
-        }),
-    };
-  };
-  return [
-    { children: 'WOUNDED' },
-    get_medevac(0),
-    get_medevac(1),
-    get_medevac(2),
-    get_medevac(3),
-  ];
-};
-
-const getRightButtons = (context) => {
-  const [panelState] = usePanelState('', context);
-  const dir: mfddir = 'right';
-  const getProps = () => {
-    switch (panelState) {
-      case 'equipment':
-        return getEquipmentRightProps(context);
-      default:
-        return getLazeButtonProps(context);
-    }
-  };
-
-  return getProps().map((x) => {
-    const value: FullButtonProps = {
-      location: dir,
-      ...x,
-    };
-    return value;
-  });
-};
-
-const EquipmentOverview = (_, context) => {
-  return <div>hi</div>;
-};
-
-const MedevacOverview = (_, context) => {
-  const { data } = useBackend<DropshipProps>(context);
-  return (
-    <Stack vertical>
-      {data.medevac_targets.map((x) => (
-        <Stack.Item key={x.occupant}>
-          <MedevacOccupant data={x} />
-        </Stack.Item>
-      ))}
-    </Stack>
-  );
-};
-
-const MedevacOccupant = (props: { data: MedevacTargets }, context) => {
-  return (
-    <Box className="Test">
-      <Flex justify="space-between">
-        <Flex.Item grow>
-          <Box>ECG mockup to show if the patient is alive or not</Box>
-        </Flex.Item>
-        <Flex.Item grow className="Test">
-          <Stack vertical>
-            <Stack.Item>{props.data.occupant}</Stack.Item>
-            <Stack.Item>{props.data.area}</Stack.Item>
-            <Stack.Item>a pin on a minimap</Stack.Item>
-          </Stack>
-        </Flex.Item>
-        <Flex.Item grow>
-          <Flex fill justify="space-around">
-            <Flex.Item>
-              HP
-              <br />
-              {props.data.damage?.hp}
-            </Flex.Item>
-            <Flex.Item>
-              Brute
-              <br />
-              {props.data.damage?.brute}
-            </Flex.Item>
-            <Flex.Item>
-              Fire
-              <br />
-              {props.data.damage?.fire}
-            </Flex.Item>
-            <Flex.Item>
-              Tox
-              <br />
-              {props.data.damage?.tox}
-            </Flex.Item>
-            <Flex.Item>
-              Oxy
-              <br /> {props.data.damage?.oxy}
-            </Flex.Item>
-          </Flex>
-        </Flex.Item>
-      </Flex>
-    </Box>
-  );
-};
-
-const EquipmentPanel = (props, context) => {
-  const [equipmentPanel] = useEquipmentState(context);
-  const Selector = () => {
-    switch (equipmentPanel) {
-      case 'medevac system':
-        return <MedevacOverview />;
-      default:
-        return <EquipmentOverview />;
-    }
-  };
-  return (
-    <Box className="NavigationMenu">
-      <Selector />
-    </Box>
-  );
-};
-
-const FiremissionsMfdPanel = (props: MfdProps, context) => {
+const FiremissionsSimMfdPanel = (props: MfdProps, context) => {
   const [panelState, setPanelState] = usePanelState(
     props.panelStateId,
     context
@@ -498,10 +285,17 @@ const BaseMfdPanel = (props: MfdProps, context) => {
       panelStateId={props.panelStateId}
       topButtons={[
         { children: 'EQUIP', onClick: () => setPanelState('equipment') },
-        {},
         {
           children: 'F-MISS',
-          onClick: () => setPanelState('firemissions'),
+          onClick: () => setPanelState('firemission'),
+        },
+        {
+          children: 'F-SIM',
+          onClick: () => setPanelState('firemission-sim'),
+        },
+        {
+          children: 'TARGETS',
+          onClick: () => setPanelState('target-aquisition'),
         },
       ]}
       bottomButtons={[
@@ -531,8 +325,12 @@ const PrimaryPanel = (props: MfdProps, context) => {
       return <MapMfdPanel {...props} />;
     case 'weapons':
       return <WeaponsMfdPanel {...props} />;
-    case 'firemissions':
-      return <FiremissionsMfdPanel {...props} />;
+    case 'firemission':
+      return <FiremissionMfdPanel {...props} />;
+    case 'firemission-sim':
+      return <FiremissionsSimMfdPanel {...props} />;
+    case 'target-aquisition':
+      return <TargetAquisitionMfdPanel {...props} />;
     case 'weapon':
       return <WeaponMfdPanel {...props} />;
     case 'support':

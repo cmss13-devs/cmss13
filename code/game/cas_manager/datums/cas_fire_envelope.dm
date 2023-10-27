@@ -30,15 +30,25 @@
 	linked_console = null
 	return ..()
 
+/datum/cas_fire_envelope/ui_data(mob/user)
+	. = list()
+	.["missions"] = list()
+	for(var/datum/cas_fire_mission/mission in missions)
+		.["missions"] += list(mission.ui_data(user))
+
+
 /datum/cas_fire_envelope/proc/get_total_duration()
 	return grace_period+flyto_period+flyoff_period
 
 /datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
 	if(!missions || !linked_console || missions.len>max_mission_len || !fire_length)
+		log_debug("bad 1")
 		return null
 
 	var/list/obj/structure/dropship_equipment/weapons = list()
-	for(var/X in linked_console.shuttle_equipments)
+	var/shuttle_tag = linked_console.shuttle_tag
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	for(var/X in dropship.equipments)
 		var/obj/structure/dropship_equipment/E = X
 		if(E.is_weapon)
 			weapons += E
@@ -46,6 +56,7 @@
 	var/datum/cas_fire_mission/fm = new()
 
 	if(weapons.len==0)
+		log_debug("no weapon")
 		return null //why bother?
 
 	for(var/obj/structure/dropship_equipment/weapon/wp in weapons)
@@ -55,6 +66,8 @@
 		for(var/idx = 1; idx<=fire_length; idx++)
 			record.offsets[idx] = "-"
 		fm.records += record
+
+	log_debug("made fm")
 
 	fm.name = firemission_name
 	fm.mission_length = length

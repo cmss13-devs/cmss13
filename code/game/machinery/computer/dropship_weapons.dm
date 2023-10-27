@@ -318,7 +318,7 @@
 
 	if(firemission_envelope)
 		.["can_launch_firemission"] = !!selected_firemission && dropship.mode == SHUTTLE_CALL && firemission_envelope.stat != FIRE_MISSION_STATE_IDLE
-		.["firemission_data"] = get_firemission_data()
+		.["firemission_data"] = get_firemission_data(user)
 		.["firemission_direction"] = get_firemission_dir()
 		.["firemission_offset"] = firemission_envelope.recorded_offset
 		.["firemission_message"] = firemission_envelope.firemission_status_message()
@@ -464,6 +464,40 @@
 				equipment.equipment_interact(user)
 				return TRUE
 
+		if("firemission-create")
+			var/name = params["firemission_name"]
+			var/length = params["firemission_length"]
+			var/length_n = text2num(length)
+			if(!length_n)
+				to_chat(user, SPAN_WARNING("Incorrect input format."))
+				return FALSE
+			tgui_create_firemission(user, name, length_n)
+			return TRUE
+
+		if("firemission-delete")
+			var/name = params["firemission_name"]
+			tgui_delete_firemission(user, name)
+			return TRUE
+
+		if("firemission-edit")
+			var/fm_tag = params["tag"]
+			var/weapon_id = params["weapon_id"]
+			var/offset_id = params["offset_id"]
+			var/offset_value = text2num(params["offset_value"])
+			return tgui_change_offset(user, fm_tag, weapon_id, offset_id, offset_value)
+
+		if("firemission-execute")
+			var/fm_tag = params["tag"]
+			var/direction = params["direction"]
+			var/target_id = params["target_id"]
+			if(!ui_select_firemission(fm_tag))
+				return FALSE
+			update_direction(text2num(direction))
+			ui_select_laser_firemission(shuttle, target_id)
+			ui_firemission_camera(shuttle)
+			initiate_firemission()
+			return TRUE
+
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
@@ -499,7 +533,7 @@
 		. = 2
 	if(selected_firemission && in_firemission_mode)
 		. = 3
-/obj/structure/machinery/computer/dropship_weapons/proc/get_firemission_data()
+/obj/structure/machinery/computer/dropship_weapons/proc/get_firemission_data(mob/user)
 	. = list()
 	var/firemission_id = 1
 	for(var/datum/cas_fire_mission/firemission in firemission_envelope.missions)
@@ -511,15 +545,13 @@
 		var/can_edit = error_code != FIRE_MISSION_CODE_ERROR && !selected
 
 		var/can_interact = firemission_envelope.stat == FIRE_MISSION_STATE_IDLE && error_code == FIRE_MISSION_ALL_GOOD
-		. += list(
-			list(
-				"name"= sanitize(copytext(firemission.name, 1, MAX_MESSAGE_LEN)),
-				"mission_tag" = firemission_id,
-				"can_edit" = can_edit,
-				"can_interact" = can_interact,
-				"selected" = selected
-			)
-		)
+		var/list/fm_data = firemission.ui_data(user)
+		fm_data["mission_tag"] = firemission_id
+		fm_data["can_edit"] = can_edit
+		fm_data["can_interact"] = can_interact
+		fm_data["selected"] = selected
+		. += list(fm_data)
+
 		firemission_id++
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_edit_firemission_data()
@@ -768,6 +800,31 @@
 			break
 	return TRUE
 
+/obj/structure/machinery/computer/dropship_weapons/proc/tgui_create_firemission(mob/weapon_operator, firemission_name, firemission_length)
+	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
+		to_chat(weapon_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
+		return FALSE
+	if(firemission_envelope.max_mission_len <= firemission_envelope.missions.len)
+		to_chat(weapon_operator, SPAN_WARNING("Cannot store more than [firemission_envelope.max_mission_len] Fire Missions."))
+		return FALSE
+	// Check name
+	if(!firemission_name || length(firemission_name) < 5)
+		to_chat(weapon_operator, SPAN_WARNING("Name too short (at least 5 symbols)."))
+		return FALSE
+	// Check length
+	if(!firemission_length)
+		to_chat(weapon_operator, SPAN_WARNING("Incorrect input format."))
+		return FALSE
+	if(firemission_length > firemission_envelope.fire_length)
+		to_chat(weapon_operator, SPAN_WARNING("Fire Mission is longer than allowed by this vehicle."))
+		return FALSE
+	if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
+		to_chat(weapon_operator, SPAN_WARNING("Vehicle has to be idle to allow Fire Mission editing and creation."))
+		return FALSE
+	//everything seems to be fine now
+	firemission_envelope.generate_mission(firemission_name, firemission_length)
+	return TRUE
+
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_create_firemission()
 	var/mob/weapon_operator = usr
 	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
@@ -780,6 +837,7 @@
 	if(!fm_name || length(fm_name) < 5)
 		to_chat(weapon_operator, SPAN_WARNING("Name too short (at least 5 symbols)."))
 		return FALSE
+
 	var/fm_length = stripped_input(weapon_operator, "Enter length of the Fire Mission. Has to be less than [firemission_envelope.fire_length]. Use something that divides [firemission_envelope.fire_length] for optimal performance.", "Fire Mission Length (in tiles)", "[firemission_envelope.fire_length]", 5)
 	var/fm_length_n = text2num(fm_length)
 	if(!fm_length_n)
@@ -794,20 +852,36 @@
 	//everything seems to be fine now
 	firemission_envelope.generate_mission(fm_name, fm_length_n)
 
-/obj/structure/machinery/computer/dropship_weapons/proc/ui_delete_firemission(firemission_tag)
-	var/mob/weapon_operator = usr
+/obj/structure/machinery/computer/dropship_weapons/proc/tgui_delete_firemission(mob/weapon_operator, firemission_tag)
 	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
-		to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
+		to_chat(weapon_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
 	if(firemission_tag > firemission_envelope.missions.len)
-		to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or already deleted."))
+		to_chat(weapon_operator, SPAN_WARNING("Fire Mission ID corrupted or already deleted."))
 		return FALSE
 	if(selected_firemission == firemission_envelope.missions[firemission_tag])
-		to_chat(usr, SPAN_WARNING("Can't delete selected Fire Mission."))
+		to_chat(weapon_operator, SPAN_WARNING("Can't delete selected Fire Mission."))
 		return FALSE
 	var/result = firemission_envelope.delete_firemission(firemission_tag)
 	if(result != 1)
-		to_chat(usr, SPAN_WARNING("Unable to delete Fire Mission while in combat."))
+		to_chat(weapon_operator, SPAN_WARNING("Unable to delete Fire Mission while in combat."))
+		return FALSE
+	return TRUE
+
+/obj/structure/machinery/computer/dropship_weapons/proc/ui_delete_firemission(firemission_tag)
+	var/mob/weapon_operator = usr
+	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
+		to_chat(weapon_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
+		return FALSE
+	if(firemission_tag > firemission_envelope.missions.len)
+		to_chat(weapon_operator, SPAN_WARNING("Fire Mission ID corrupted or already deleted."))
+		return FALSE
+	if(selected_firemission == firemission_envelope.missions[firemission_tag])
+		to_chat(weapon_operator, SPAN_WARNING("Can't delete selected Fire Mission."))
+		return FALSE
+	var/result = firemission_envelope.delete_firemission(firemission_tag)
+	if(result != 1)
+		to_chat(weapon_operator, SPAN_WARNING("Unable to delete Fire Mission while in combat."))
 		return FALSE
 
 	return TRUE
@@ -905,6 +979,18 @@
 		return FALSE
 
 	update_offset(chosen_offset)
+	return TRUE
+
+/obj/structure/machinery/computer/dropship_weapons/proc/tgui_change_offset(mob/weapons_operator, fm_tag, weapon_id, offset_id, offset_value)
+	if(!skillcheck(weapons_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
+		to_chat(weapons_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
+		return FALSE
+
+	if(offset_value == null)
+		to_chat(weapons_operator, SPAN_WARNING("Error with offset detected."))
+		return FALSE
+
+	update_offset(offset_value)
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_select_laser_firemission(obj/docking_port/mobile/marine_dropship/dropship, laser)

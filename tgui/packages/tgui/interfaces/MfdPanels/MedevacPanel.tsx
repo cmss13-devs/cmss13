@@ -5,6 +5,7 @@ import { range } from 'common/collections';
 import { Icon } from '../../components';
 import { useEquipmentState } from './SupportPanel';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MedevacTargets } from './types';
 
 interface MedevacContext {
   medevac_targets: Array<MedevacTargets>;
@@ -14,7 +15,7 @@ interface MedevacContext {
 const MedevacOccupant = (props: { data: MedevacTargets }, context) => {
   return (
     <Box>
-      <Flex justify="space-between">
+      <Flex justify="space-between" direction="horizontal">
         <Flex.Item grow>
           <Stack vertical>
             <Stack.Item>{props.data.occupant ?? 'Empty'}</Stack.Item>
@@ -181,7 +182,7 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
               </Stack.Item>
               {all_targets.map((x) => (
                 <>
-                  <Stack.Item key={x.occupant}>
+                  <Stack.Item key={x.occupant} width="100%">
                     <MedevacOccupant data={x} />
                   </Stack.Item>
                   <Divider />

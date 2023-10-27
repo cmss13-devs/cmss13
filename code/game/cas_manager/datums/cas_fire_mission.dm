@@ -12,6 +12,13 @@
 	var/obj/structure/dropship_equipment/weapon/error_weapon
 	var/name = "Unnamed Firemission"
 
+/datum/cas_fire_mission/ui_data(mob/user)
+	. = list()
+	.["name"] = sanitize(copytext(name, 1, MAX_MESSAGE_LEN))
+	.["records"] = list()
+	for(var/datum/cas_fire_mission_record/record in records)
+		.["records"] += list(record.ui_data(user))
+
 /datum/cas_fire_mission/proc/check(obj/structure/machinery/computer/dropship_weapons/linked_console)
 	error_weapon = null
 	if(records.len == 0)

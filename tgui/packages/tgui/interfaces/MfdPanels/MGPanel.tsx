@@ -3,6 +3,7 @@ import { Box, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { useBackend } from '../../backend';
 import { useEquipmentState } from './SupportPanel';
+import { MGSpec } from './types';
 
 interface EquipmentContext {
   equipment_data: Array<DropshipEquipment>;

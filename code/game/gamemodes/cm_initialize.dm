@@ -965,10 +965,10 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
-	if((joe_candidate.ckey in joes) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
-		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("You already were a Working Joe this round!"))
-		return
+	var/deathtime = world.time - joe_candidate.timeofdeath
+	if(deathtime < JOE_JOIN_DEAD_TIME && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
+		to_chat(joe_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]. You need to wait [DisplayTimeText(JOE_JOIN_DEAD_TIME - deathtime)] before rejoining as a Working Joe!"))
+		return FALSE
 
 	// council doesn't count towards this conditional.
 	if(joe_job.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)

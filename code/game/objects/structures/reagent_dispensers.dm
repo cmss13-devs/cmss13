@@ -119,8 +119,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/reagent_dispensers/attack_hand()
 	if(!reagents || reagents.locked)

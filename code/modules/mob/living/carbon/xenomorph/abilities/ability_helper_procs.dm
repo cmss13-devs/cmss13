@@ -135,7 +135,7 @@
 
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
-		R.take_damage_type((1 / A.acid_strength) * 40, "acid", src)
+		R.take_damage_type(40 / A.acid_delay, "acid", src)
 		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
 			SPAN_XENOWARNING("You vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)

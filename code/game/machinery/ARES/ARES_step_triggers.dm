@@ -3,7 +3,6 @@
 	layer = 5
 	/// Link alerts to ARES Link
 	var/datum/ares_link/link
-	var/link_id = MAIN_SHIP_DEFAULT_NAME
 	/// Alert message to report unless area based.
 	var/alert_message = "ALERT: Unauthorized movement detected in ARES Core!"
 	/// Connect alerts to use same cooldowns
@@ -53,7 +52,7 @@
 /obj/effect/step_trigger/ares_alert/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
 		return FALSE
-	if(new_link.link_id == link_id)
+	if(new_link)
 		link = new_link
 		new_link.linked_alerts += src
 		return TRUE
@@ -70,7 +69,7 @@
 		broadcast_message = "ALERT: Unauthorized movement detected in [area_name]!"
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.p_apollo.inoperable())
+	if(link.processor_apollo.inoperable())
 		return FALSE
 
 	to_chat(passer, SPAN_BOLDWARNING("You hear a soft beeping sound as you cross the threshold."))
@@ -112,8 +111,6 @@
 
 /obj/effect/step_trigger/ares_alert/access_control/Crossed(atom/passer as mob|obj)
 	if(isobserver(passer) || isxeno(passer))
-		return FALSE
-	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
 		return FALSE
 	if(!passer)
 		return FALSE
@@ -157,11 +154,12 @@
 	var/broadcast_message = get_broadcast(passer, idcard, failure)
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.p_apollo.inoperable())
+	if(link.processor_apollo.inoperable())
 		return FALSE
 
 	to_chat(passer, SPAN_BOLDWARNING("You hear a harsh buzzing sound as you cross the threshold!"))
-	ares_apollo_talk(broadcast_message)
+	if(COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
+		ares_apollo_talk(broadcast_message)
 	if(idcard)
 		/// Removes the access from the ID and updates the ID's modification log.
 		for(var/obj/item/card/id/identification in link.active_ids)

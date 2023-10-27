@@ -385,7 +385,6 @@
 				t1 = "Unconscious"
 			if(2)
 				t1 = "*dead*"
-			else
 		to_chat(user, "[]\t Health %: [] ([])", (occupant.health > 50 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.health, t1)
 		to_chat(user, "[]\t -Core Temperature: []&deg;C ([]&deg;F)</FONT><BR>", (occupant.bodytemperature > 50 ? "<font color='blue'>" : "<font color='red'>"), occupant.bodytemperature-T0C, occupant.bodytemperature*1.8-459.67)
 		to_chat(user, "[]\t -Brute Damage %: []", (occupant.getBruteLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getBruteLoss())

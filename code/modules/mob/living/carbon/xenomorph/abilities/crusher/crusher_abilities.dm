@@ -8,13 +8,13 @@
 	xeno_cooldown = 140
 	plasma_cost = 20
 	// Config options
-	distance = 9
+	distance = 4
 	knockdown = TRUE
 	knockdown_duration = 2
 	slash = FALSE
 	freeze_self = FALSE
 	windup = TRUE
-	windup_duration = 12
+	windup_duration = 0
 	windup_interruptable = FALSE
 	should_destroy_objects = TRUE
 	throw_speed = SPEED_FAST

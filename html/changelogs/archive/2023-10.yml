@@ -356,3 +356,54 @@
   - server: the server now respects /string/title for late joiners
   stalkerino:
   - balance: m39 is able to use vertigrip
+2023-10-24:
+  Segrain:
+  - bugfix: Slicing food once again works as intended.
+2023-10-25:
+  fira:
+  - bugfix: Fixed Ghosts and Queen Eye occasionally "eating" pounces in place of a
+      mob on the same turf.
+  - bugfix: Re-Re-Fixed Xeno Above Head Chat offsets, for real this time
+  - bugfix: Fixed people talking in radios all the time. Finally some quiet.
+  - bugfix: deadchat death messages should now display immediately rather than being
+      delayed a couple seconds.
+2023-10-26:
+  4hands44:
+  - rscadd: Added more attachments, and belts to the CO arsenal.
+  - rscadd: CO now has an Essentials Kit like other roles, containing his Designator,
+      and other useful tools.
+  - rscadd: Re-Adds Bridgecoat to some Officer Dress vendors. (Limited to CO(+) and
+      XO currently.)
+  - rscdel: Removed Laser Designator from CO spawn Preset.
+  - balance: CO can now vend welding Helmet visors.
+  - balance: Adds grenade packets to CO Vendor.
+  XDinka:
+  - rscadd: 'Added four new haircuts: gentle ponytail, edgar haircut, emo bun, taper
+      haircut.'
+2023-10-27:
+  Backsea:
+  - bugfix: Fixed the incorrectly placed shutters at req and that one light near CIC
+  Birdtalon:
+  - refactor: Refactored praetorian pierce ability
+  - bugfix: Praetorian vanguard can no longer pierce through windowed doors
+  SASoperative:
+  - rscadd: Added donator item and sprites
+  Zonespace27:
+  - rscdel: Re-removed CO/XO bridge coat
+  fira:
+  - rscadd: Added about 50 new tips.
+  - rscadd: Bloody footprints are now slightly offset to break long visual straight
+      lines.
+  - bugfix: Items do not align back to the center of turfs anymore when picked from
+      a surface (table or rack)
+  - rscadd: Some more items now have offsets on the map display, and they all can
+      be slightly offset.
+  - code_imp: Rewrote Xeno Acid ticking code.
+  - bugfix: Weather updates won't cause turfs to acid melt more rapidly anymore
+  - bugfix: Fixed various issues in the Networking between Turing machine and Smartfridges.
+  realforest2001:
+  - bugfix: Fixes custom ERT calling broadcasting when it should not.
+  - code_imp: Removes unused vars from ERT procs.
+  - code_imp: Renames the announce var in ERT procs to be more indicative of what
+      it does.
+  - rscadd: Added a setting on custom ERTs for announcing beacon was received.

@@ -524,7 +524,7 @@
 	if(!linked_cam_console)
 		return
 	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
-	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
+	for(var/datum/weakref/ref as anything in linked_cam_console.concurrent_users)
 		var/mob/user = ref.resolve()
 		if(user)
 			linked_cam_console.update_static_data(user)

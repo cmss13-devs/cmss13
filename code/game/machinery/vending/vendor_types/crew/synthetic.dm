@@ -356,7 +356,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 		list("Maintenance Jack", 15, /obj/item/maintenance_jack, null, VENDOR_ITEM_REGULAR),
 		list("Portable Dialysis Machine", 15, /obj/item/tool/portadialysis, null, VENDOR_ITEM_REGULAR),
 		list("Telescopic Baton", 15, /obj/item/weapon/telebaton, null, VENDOR_ITEM_REGULAR),
-		list("Tactical Tools and C4", 15, /obj/item/storage/box/kit/tactical_kit, null, VENDOR_ITEM_REGULAR),
+		list("Tactical Equipment and C4", 15, /obj/item/storage/box/kit/tactical_kit, null, VENDOR_ITEM_REGULAR),
 	)
 
 //------------EXPERIMENTAL TOOL KITS---------------

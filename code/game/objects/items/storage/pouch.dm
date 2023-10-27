@@ -683,6 +683,10 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant(src)
 
+/obj/item/storage/pouch/medical/socmed/synth
+	desc = "A heavy pouch that can carry a full suite of medical supplies, this one is a limited issue version sometimes given to USCM synthetic units."
+	storage_slots = 7
+
 /obj/item/storage/pouch/medical/socmed/dutch
 	name = "\improper Dutch's Medical Pouch"
 	desc = "A pouch bought from a black market trader by Dutch quite a few years ago. Rumoured to be stolen from secret USCM assets. Its contents have been slowly used up and replaced over the years."
@@ -1255,6 +1259,11 @@
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/tool/wrench(src)
+
+/obj/item/storage/pouch/tools/tactical/synth
+	desc = "This particular toolkit full of sharp, heavy objects was designed for breaking into things rather than fixing them. Still does the latter pretty well, though. Special issue version given to some USCM synthetic units."
+	icon_state = "soctools"
+	storage_slots = 4
 
 /obj/item/storage/pouch/sling
 	name = "sling strap"

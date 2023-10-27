@@ -546,9 +546,11 @@
 	new /obj/item/clothing/glasses/welding(src)
 
 /obj/item/storage/box/kit/tactical_kit
-	name = "\improper Tactical Engineering Kit"
+	name = "\improper Tactical Equipment Kit"
 
 /obj/item/storage/box/kit/tactical_kit/fill_preset_inventory()
+	new /obj/item/storage/pouch/medical/socmed/synth(src)
+	new /obj/item/storage/pouch/tools/tactical/synth(src)
 	new /obj/item/tool/screwdriver/tactical(src)
 	new /obj/item/tool/wirecutters/tactical(src)
 	new /obj/item/tool/crowbar/tactical(src)

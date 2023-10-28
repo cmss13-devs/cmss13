@@ -11,7 +11,7 @@
 	cooldown = 15
 	accuracy = 0.9
 	firing_arc = 120
-	var/burst_amount = 3
+	//var/burst_amount = 3
 
 	origins = list(0, -2)
 

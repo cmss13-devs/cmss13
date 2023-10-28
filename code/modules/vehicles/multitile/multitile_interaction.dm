@@ -330,6 +330,65 @@
 
 	healthcheck()
 
+/obj/vehicle/multitile/on_set_interaction(mob/user)
+	to_chat(user, "multitile on_set_interaction")
+	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(crew_mousedown))
+	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(crew_mousedrag))
+	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(crew_mouseup))
+
+/obj/vehicle/multitile/on_unset_interaction(mob/user)
+	to_chat(user, "multitile on_unset_interaction")
+	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
+
+/obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
+	//to_chat(source, "multitile crew_mouseup  [source]  [object]  [location]  [control]  [params]")
+	var/seat = get_mob_seat(source)
+	if(!seat)
+		return
+
+	var/obj/item/hardpoint/HP = active_hp[seat]
+	if(!HP)
+		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+		return
+
+	HP.crew_mouseup(source, object, location, control, params)
+
+/obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	//to_chat(source, "multitile crew_mousedrag  [source]  [src_object]  [over_object]  [src_location]  [over_location]  [src_control]  [over_control]  [params]")
+
+	var/seat = get_mob_seat(source)
+	if(!seat)
+		return
+
+	var/obj/item/hardpoint/HP = active_hp[seat]
+	if(!HP)
+		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+		return
+
+	HP.crew_mousedrag(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
+
+/obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
+	//to_chat(source, "multitile crew_mousedown  [source]  [object]  [location]  [control]  [params]")
+
+	var/seat = get_mob_seat(source)
+	if(!seat)
+		return
+
+	var/obj/item/hardpoint/HP = active_hp[seat]
+	if(!HP)
+		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+		return
+
+	if(!HP.can_activate(source, object))
+		return
+
+	//HP.activate(source, object)
+	HP.crew_mousedown(source, object, location, control, params)
+
+/*
 /obj/vehicle/multitile/handle_click(mob/living/user, atom/A, list/mods)
 
 	var/seat
@@ -404,6 +463,7 @@
 			return
 
 		HP.activate(user, A)
+*/
 
 /obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
 	if(!M || M.client == null) return

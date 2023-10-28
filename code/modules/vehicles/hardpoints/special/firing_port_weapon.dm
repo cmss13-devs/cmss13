@@ -13,7 +13,7 @@
 	cooldown = 10
 	accuracy = 0.9
 	firing_arc = 120
-	var/burst_amount = 3
+	//var/burst_amount = 3
 	//FPWs reload automatically
 	var/reloading = FALSE
 	var/reload_time = 10 SECONDS

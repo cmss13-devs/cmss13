@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Incendiary OB once again spreads to intended size."

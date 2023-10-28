@@ -24,7 +24,8 @@
 	var/openspeed = 10 //How many seconds does it take to open it? Default 1 second. Use only if you have long door opening animations
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
-	var/turf/filler //Fixes double door opacity issue
+	var/turf/filler_turfs = list() //Fixes double door opacity issue
+	//And of course, no one had forseen someone creating doors longer than 2, because that would NEVER happen, NEVER
 	/// Stops it being forced open through normal means (Hunters/Zombies/Aliens).
 	var/heavy = FALSE
 	/// Resistance to masterkey
@@ -48,9 +49,9 @@
 
 /obj/structure/machinery/door/Destroy()
 	. = ..()
-	if(filler && width > 1)
-		filler.set_opacity(0)// Ehh... let's hope there are no walls there. Must fix this
-		filler = null
+	if(filler_turfs && width > 1)
+		change_filler_opacity(0)
+		filler_turfs = null
 	density = FALSE
 
 /obj/structure/machinery/door/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -58,21 +59,35 @@
 	if (PF)
 		PF.flags_can_pass_all = NONE
 
+/obj/structure/machinery/door/proc/change_filler_opacity(new_opacity)
+	for(var/turf/filler_turf in filler_turfs)
+		filler_turf.set_opacity(null)
+
+	filler_turfs = list()
+	for(var/turf/filler in locate_filler_turfs())
+		filler.set_opacity(new_opacity)
+		filler_turfs += filler
+
 /obj/structure/machinery/door/proc/handle_multidoor()
 	if(width > 1)
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size
-			filler = get_step(src,EAST)
-			filler.set_opacity(opacity)
 		else
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
-			filler = get_step(src,NORTH)
-			filler.set_opacity(opacity)
+		change_filler_opacity(opacity)
 
-//process()
-	//return
+/obj/structure/machinery/door/proc/locate_filler_turfs()
+	var/turf/filler_temp
+	. = list()
+	for(var/i = 1, i < width, i++)
+		if (dir in list(NORTH, SOUTH))
+			filler_temp = locate(x, y + i, z)
+		else
+			filler_temp = locate(x + i, y, z)
+		if (filler_temp)
+			. += filler_temp
 
 /obj/structure/machinery/door/proc/borders_space()
 	for(var/turf/target in range(1, src))
@@ -223,8 +238,8 @@
 	do_animate("opening")
 	icon_state = "door0"
 	set_opacity(FALSE)
-	if(filler)
-		filler.set_opacity(opacity)
+	if(filler_turfs)
+		change_filler_opacity(opacity)
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
 	return TRUE
 
@@ -256,8 +271,8 @@
 	update_icon()
 	if(visible && !glass)
 		set_opacity(TRUE)
-		if(filler)
-			filler.set_opacity(opacity)
+		if(filler_turfs)
+			change_filler_opacity(opacity)
 	operating = FALSE
 
 /obj/structure/machinery/door/proc/requiresID()
@@ -273,22 +288,17 @@
 		close()
 	return
 
+/// It WONT WORK with airlocks bigger than 2 tiles, also is wonky as hell
 /obj/structure/machinery/door/Move(new_loc, new_dir)
 	. = ..()
 	if(width > 1)
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size
-			filler.set_opacity(0)
-			filler = (get_step(src,EAST)) //Find new turf
-			filler.set_opacity(opacity)
 		else
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
-			filler.set_opacity(0)
-			filler = (get_step(src,NORTH)) //Find new turf
-			filler.set_opacity(opacity)
-
+		change_filler_opacity(opacity)
 
 /obj/structure/machinery/door/morgue
 	icon = 'icons/obj/structures/doors/doormorgue.dmi'

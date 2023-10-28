@@ -110,8 +110,8 @@
 	density = FALSE
 	update_icon()
 	set_opacity(0)
-	if(filler)
-		filler.set_opacity(opacity)
+	if(filler_turfs)
+		change_filler_opacity(opacity)
 
 	if(operating)
 		operating = FALSE

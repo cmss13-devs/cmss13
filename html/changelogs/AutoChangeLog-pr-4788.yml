@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Sprite-click shots onto Xenos are no longer affected by limb-targeting penalty, because it was an accuracy debuff when there is no inherent benefit to targeting Xeno limbs."

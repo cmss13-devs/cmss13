@@ -74,19 +74,21 @@
 
 /obj/item/folded_tent/attack_self(mob/living/user)
 	. = ..()
+	var/off_x = -(tgui_input_number(user, "If facing North or South", "Set X Offset", 0, dim_x, 0, 30 SECONDS, TRUE))
+	var/off_y = -(tgui_input_number(user, "If facing East or West", "Set Y Offset", 0, dim_y, 0, 30 SECONDS, TRUE))
 	var/turf/deploy_turf = user.loc
 	if(!istype(deploy_turf))
 		return // In a locker or something. Get lost you already have a home.
 
-	switch(user.dir) // Fix up offset deploy location so tent is better centered + can be deployed under all angles
+	switch(user.dir) //Handles offsets when deploying
 		if(NORTH)
-			deploy_turf = locate(deploy_turf.x, deploy_turf.y + 1, deploy_turf.z)
+			deploy_turf = locate(deploy_turf.x + off_x, deploy_turf.y + 1, deploy_turf.z)
 		if(SOUTH)
-			deploy_turf = locate(deploy_turf.x, deploy_turf.y - dim_y, deploy_turf.z)
+			deploy_turf = locate(deploy_turf.x + off_x, deploy_turf.y - dim_y, deploy_turf.z)
 		if(EAST)
-			deploy_turf = locate(deploy_turf.x + 1, deploy_turf.y, deploy_turf.z)
+			deploy_turf = locate(deploy_turf.x + 1, deploy_turf.y + off_y, deploy_turf.z)
 		if(WEST)
-			deploy_turf = locate(deploy_turf.x - dim_x, deploy_turf.y, deploy_turf.z)
+			deploy_turf = locate(deploy_turf.x - dim_x, deploy_turf.y + off_y, deploy_turf.z)
 
 	if(!istype(deploy_turf) || (deploy_turf.x + dim_x > world.maxx) || (deploy_turf.y + dim_y > world.maxy)) // Map border basically
 		return

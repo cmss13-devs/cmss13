@@ -1042,7 +1042,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "WOlineshutters1";
-	name = "\improper Supply Depo Line 1"
+	name = "\improper Supply Depot Line 1"
 	},
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/supply)
@@ -3065,7 +3065,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "WOlineshutters2";
-	name = "\improper Supply Depo Line 2"
+	name = "\improper Supply Depot Line 2"
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -5026,7 +5026,7 @@
 "rM" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	dir = 2;
-	name = "\improper Supply Depo";
+	name = "\improper Supply Depot";
 	no_panel = 1;
 	not_weldable = 1
 	},
@@ -6501,7 +6501,7 @@
 "wV" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	dir = 8;
-	name = "\improper Supply Depo";
+	name = "\improper Supply Depot";
 	no_panel = 1;
 	not_weldable = 1
 	},
@@ -10754,7 +10754,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "WOlineshutters1";
-	name = "\improper Supply Depo Line 1"
+	name = "\improper Supply Depot Line 1"
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -12390,7 +12390,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "WOlineshutters2";
-	name = "\improper Supply Depo Line 2"
+	name = "\improper Supply Depot Line 2"
 	},
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/supply)

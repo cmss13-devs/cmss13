@@ -39561,10 +39561,11 @@
 /obj/item/ammo_magazine/rifle/m41aMK1/ap,
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/weapon/gun/rifle/m41aMK1/ap,
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/item/ammo_magazine/rifle/m41aMK1/ap,
+/obj/item/weapon/gun/rifle/m41aMK1/ap,
 /obj/item/attachable/bayonet,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -44531,10 +44532,11 @@
 /obj/item/ammo_magazine/rifle/m41aMK1/ap,
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/weapon/gun/rifle/m41aMK1/ap,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/item/ammo_magazine/rifle/m41aMK1/ap,
+/obj/item/weapon/gun/rifle/m41aMK1/ap,
 /obj/item/attachable/bayonet,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -44787,6 +44789,7 @@
 /obj/item/ammo_magazine/rifle/m41aMK1/ap,
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1/ap,
 /obj/item/weapon/gun/rifle/m41aMK1/ap,
 /obj/item/attachable/bayonet,
 /turf/open/floor/almayer{

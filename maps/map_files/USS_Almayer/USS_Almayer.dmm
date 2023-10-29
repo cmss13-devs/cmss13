@@ -10496,6 +10496,10 @@
 	layer = 3.2;
 	dir = 8
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "orange"
@@ -14510,8 +14514,13 @@
 	layer = 2.8;
 	pixel_x = -26
 	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "redcorner"
@@ -22584,13 +22593,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/pilotbunks)
-"bZb" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silvercorner"
-	},
-/area/almayer/command/cic)
 "bZc" = (
 /obj/structure/sign/safety/nonpress_0g{
 	pixel_x = -16
@@ -29242,14 +29244,13 @@
 /area/almayer/living/briefing)
 "dEZ" = (
 /obj/structure/machinery/power/smes/buildable{
-	pixel_y = 0
+	pixel_y = 3
 	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
+	icon_state = "tcomms"
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "dFh" = (
@@ -31195,12 +31196,13 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/overwatch/almayer{
 	dir = 8;
-	layer = 3.2;
+	layer = 2.95;
 	pixel_y = -6
 	},
 /obj/structure/machinery/computer/crew/alt{
 	dir = 4;
-	pixel_y = 10
+	pixel_y = 10;
+	layer = 2.90
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 8
@@ -32369,12 +32371,6 @@
 /obj/structure/machinery/computer/sentencing,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
-"ePb" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "ePk" = (
 /obj/structure/airlock_assembly,
 /turf/open/floor/plating,
@@ -37113,6 +37109,20 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cic)
+"gJG" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "gJP" = (
@@ -38548,6 +38558,9 @@
 /obj/structure/machinery/status_display{
 	pixel_x = 32
 	},
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -38603,19 +38616,20 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/overwatch/almayer{
 	dir = 8;
-	layer = 3.2;
+	layer = 2.95;
 	pixel_y = 13
 	},
 /obj/structure/machinery/computer/crew/alt{
 	dir = 4;
-	pixel_y = 30
+	pixel_y = 30;
+	layer = 2.90
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 8
 	},
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 4;
-	layer = 3.3;
+	layer = 3;
 	pixel_y = -1
 	},
 /turf/open/floor/almayer{
@@ -40557,12 +40571,6 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"hXW" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
 "hXY" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -43012,7 +43020,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 8;
-	layer = 3.3;
+	layer = 3;
 	pixel_y = 11
 	},
 /obj/structure/transmitter/rotary{
@@ -44262,6 +44270,14 @@
 	icon_state = "ai_floors"
 	},
 /area/almayer/command/airoom)
+"jtw" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/command/cic)
 "jtJ" = (
 /obj/structure/machinery/door_control{
 	id = "laddernorthwest";
@@ -45872,6 +45888,14 @@
 	allow_construction = 0
 	},
 /area/almayer/hallways/starboard_hallway)
+"kaH" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/command/cic)
 "kaI" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -46549,6 +46573,13 @@
 	pixel_x = 32
 	},
 /turf/closed/wall/almayer/reinforced,
+/area/almayer/command/cic)
+"kpM" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/almayer,
 /area/almayer/command/cic)
 "kpQ" = (
 /obj/structure/machinery/door_control{
@@ -47397,6 +47428,11 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "kFE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 2;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange"
@@ -50012,8 +50048,6 @@
 	},
 /area/almayer/hull/lower_hull/l_a_p)
 "lAG" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange"
@@ -50229,13 +50263,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
-"lEb" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/almayer/command/cic)
 "lEf" = (
 /turf/closed/wall/almayer/research/containment/wall/corner{
 	dir = 1
@@ -50608,8 +50635,13 @@
 	layer = 2.8;
 	pixel_x = -26
 	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orangecorner"
@@ -53730,12 +53762,13 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/overwatch/almayer{
 	dir = 4;
-	layer = 3.2;
+	layer = 2.95;
 	pixel_y = -6
 	},
 /obj/structure/machinery/computer/crew/alt{
 	dir = 8;
-	pixel_y = 10
+	pixel_y = 10;
+	layer = 2.90
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4
@@ -60453,6 +60486,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/general_equipment)
+"pHi" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/command/cic)
 "pHp" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/perma)
@@ -60842,8 +60881,8 @@
 	},
 /area/almayer/living/pilotbunks)
 "pQd" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "silvercorner"
@@ -61586,20 +61625,21 @@
 "qeE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/overwatch/almayer{
-	layer = 3.2;
+	layer = 2.95;
 	pixel_y = 13;
 	dir = 4
 	},
 /obj/structure/machinery/computer/crew/alt{
 	dir = 8;
-	pixel_y = 30
+	pixel_y = 30;
+	layer = 2.90
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4
 	},
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 8;
-	layer = 3.3;
+	layer = 3;
 	pixel_y = -1
 	},
 /turf/open/floor/almayer{
@@ -66270,8 +66310,6 @@
 	},
 /area/almayer/command/cichallway)
 "rQM" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red"
@@ -67257,6 +67295,11 @@
 	},
 /area/almayer/command/cichallway)
 "slE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
@@ -67490,13 +67533,6 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "spr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
 /obj/structure/bed/chair/comfy/alpha{
 	dir = 8;
 	pixel_y = 0
@@ -69611,6 +69647,10 @@
 	dir = 4;
 	pixel_x = 2
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_s)
 "tiW" = (
@@ -70900,6 +70940,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/main_office)
+"tHP" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silvercorner"
+	},
+/area/almayer/command/cic)
 "tHS" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
@@ -70936,12 +70985,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
-"tIO" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 8
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
 "tIQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -71374,13 +71417,6 @@
 	},
 /area/almayer/living/briefing)
 "tSR" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
 /obj/structure/bed/chair/comfy/bravo{
 	dir = 8;
 	pixel_y = 0
@@ -71798,7 +71834,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 4;
-	layer = 3.3;
+	layer = 3;
 	pixel_y = 11
 	},
 /obj/structure/transmitter/rotary{
@@ -81823,6 +81859,11 @@
 /obj/structure/machinery/computer/station_alert{
 	dir = 8
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "orange"
@@ -82097,12 +82138,6 @@
 	icon_state = "blue"
 	},
 /area/almayer/command/cichallway)
-"xJQ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "xJR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -82314,8 +82349,7 @@
 "xNJ" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/door/window/brigdoor{
-	req_access = null;
-	req_one_access_txt = "3;1"
+	req_access = null
 	},
 /obj/structure/machinery/door/window/brigdoor{
 	dir = 8;
@@ -82390,6 +82424,14 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/perma)
+"xQN" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/command/cic)
 "xQV" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
@@ -82519,6 +82561,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+"xSv" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/command/cic)
 "xSw" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -102115,15 +102166,15 @@ jWD
 fdr
 kno
 kno
-hXW
-kno
 xHz
+pHi
 ssl
+ssl
+ssl
+pHi
 jnv
-kno
-tIO
-kno
-kno
+kaH
+jtw
 uey
 jWD
 ewh
@@ -102318,14 +102369,14 @@ avY
 gFT
 xHz
 lgl
-yga
-lEb
-xJQ
+tHP
 atO
-ePb
-lEb
+alX
+atO
+alX
+atO
 pQd
-bZb
+yga
 jnv
 hGF
 aQh
@@ -103941,7 +103992,7 @@ arF
 avY
 dgX
 paT
-qEf
+kpM
 lKR
 lAG
 tSR
@@ -104144,13 +104195,13 @@ sYY
 fYR
 dgm
 hjP
-kno
-avY
-kno
+xQN
 mJO
+xSv
+gJG
 nXH
-ujW
-kno
+gJG
+xSv
 gJD
 cJW
 xso

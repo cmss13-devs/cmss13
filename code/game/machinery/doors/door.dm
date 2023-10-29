@@ -24,8 +24,8 @@
 	var/openspeed = 10 //How many seconds does it take to open it? Default 1 second. Use only if you have long door opening animations
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
-	var/turf/filler_turfs = list() //Fixes double door opacity issue
-	//And of course, no one had forseen someone creating doors longer than 2, because that would NEVER happen, NEVER
+	/// Fixes double door opacity issue
+	var/turf/filler_turfs = list() //And of course, no one had forseen someone creating doors longer than 2, because that would NEVER happen, NEVER
 	/// Stops it being forced open through normal means (Hunters/Zombies/Aliens).
 	var/heavy = FALSE
 	/// Resistance to masterkey
@@ -50,7 +50,7 @@
 /obj/structure/machinery/door/Destroy()
 	. = ..()
 	if(filler_turfs && width > 1)
-		change_filler_opacity(0)
+		change_filler_opacity(0) // It still doesn't check for walls, might want to add checking that in the future
 		filler_turfs = null
 	density = FALSE
 
@@ -60,6 +60,7 @@
 		PF.flags_can_pass_all = NONE
 
 /obj/structure/machinery/door/proc/change_filler_opacity(new_opacity)
+	// I have no idea why do we null opacity first before... changing it
 	for(var/turf/filler_turf in filler_turfs)
 		filler_turf.set_opacity(null)
 

@@ -1072,3 +1072,7 @@ cases. Override_icon_state should be a list.*/
 ///Called by /mob/living/carbon/swap_hand() when hands are swapped
 /obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
 	return
+
+///Any additional effects to when an item is stored in a shoe in /obj/item/clothing/shoes/attackby(). Also cancels storing in shoe if returning FALSE
+/obj/item/proc/additional_shoe_store_behavior(mob/user, obj/item/clothing/shoes/shoes, obj/item/stored_item)
+	return

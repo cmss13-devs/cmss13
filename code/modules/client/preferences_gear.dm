@@ -503,10 +503,71 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Crayon"
 	path = /obj/item/toy/crayon/rainbow
 
-/datum/gear/toy/plush
-	display_name = "Random plushie"
-	path = /obj/item/toy/plush/random_plushie
+/datum/gear/plush
+	category = "Plushies"
 	cost = 4
+
+/datum/gear/plush/random
+	display_name = "Random plush"
+	path = /obj/item/toy/plush/random_plushie
+	cost = 2
+
+/datum/gear/plush/farwa
+	display_name = "Farwa plush"
+	path = /obj/item/toy/plush/farwa
+
+/datum/gear/plush/barricade
+	display_name = "Barricade plush"
+	path = /obj/item/toy/plush/barricade
+
+/datum/gear/plush/bee
+	display_name = "Bee plush"
+	path = /obj/item/toy/plush/bee
+
+/datum/gear/plush/shark
+	display_name = "Shark plush"
+	path = /obj/item/toy/plush/shark
+
+/datum/gear/plush/moth
+	display_name = "Moth plush"
+	path = /obj/item/toy/plush/moth
+
+/datum/gear/plush/rock
+	display_name = "Rock plush"
+	path = /obj/item/toy/plush/rock
+
+/datum/gear/plush/therapy
+	display_name = "Therapy plush"
+	path = /obj/item/toy/plush/therapy
+
+/datum/gear/plush/therapy/red
+	display_name = "Therapy plush (Red)"
+	path = /obj/item/toy/plush/therapy/red
+
+/datum/gear/plush/therapy/blue
+	display_name = "Therapy plush (Blue)"
+	path = /obj/item/toy/plush/therapy/blue
+
+/datum/gear/plush/therapy/green
+	display_name = "Therapy plush (Green)"
+	path = /obj/item/toy/plush/therapy/green
+
+/datum/gear/plush/therapy/orange
+	display_name = "Therapy plush (Orange)"
+	path = /obj/item/toy/plush/therapy/orange
+
+/datum/gear/plush/therapy/purple
+	display_name = "Therapy plush (Purple)"
+	path = /obj/item/toy/plush/therapy/purple
+
+/datum/gear/plush/therapy/yellow
+	display_name = "Therapy plush (Yellow)"
+	path = /obj/item/toy/plush/therapy/yellow
+
+/datum/gear/plush/therapy/random
+	display_name = "Therapy plush (???)"
+	path = /obj/item/toy/plush/therapy/random_color
+	cost = 7
 
 /datum/gear/weapon
 	category = "Weapons"
@@ -847,3 +908,8 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/misc/bug_spray
 	display_name = "Bug spray"
 	path = /obj/item/prop/helmetgarb/bug_spray
+
+/datum/gear/misc/straight_razor
+	display_name = "Cut-throat razor"
+	path = /obj/item/weapon/straight_razor
+	cost = 3

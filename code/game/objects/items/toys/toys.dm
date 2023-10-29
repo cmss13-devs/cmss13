@@ -489,16 +489,10 @@
 	COOLDOWN_START(src, last_hug_time, 2.5 SECONDS)
 
 /obj/item/toy/plush/farwa
-	name = "Farwa plush doll"
+	name = "Farwa plush"
 	desc = "A Farwa plush doll. It's soft and comforting!"
-	icon_state = "farwaplush"
+	icon_state = "farwa"
 	black_market_value = 25
-
-/obj/item/toy/plush/yautja
-	name = "strange plush doll"
-	desc = "A plush doll depicting some sort of tall humanoid biped..?"
-	icon_state = "predplush"
-	black_market_value = 100
 
 /obj/item/toy/plush/barricade
 	name = "plushie barricade"
@@ -507,94 +501,63 @@
 	item_state = "cade_plush"
 
 /obj/item/toy/plush/shark //A few more generic plushies to increase the size of the plushie loot pool
-	name = "shark plush doll"
+	name = "shark plush"
 	desc = "A plushie depicting a somewhat cartoonish shark. The tag notes that it was made by an obscure furniture manufacturer in Scandinavia."
 	icon_state = "shark"
 
 /obj/item/toy/plush/bee
-	name = "bee plush doll"
-	desc = "A cute toy that resembles an even cuter bee."
+	name = "bee plush"
+	desc = "A cute toy that awakens the warrior spirit in the most reserved marine."
 	icon_state = "bee"
 
 /obj/item/toy/plush/moth
-	name = "moth plush doll"
+	name = "moth plush"
 	desc = "A plush doll of a bug."
 	icon_state = "moth"
 
 /obj/item/toy/plush/rock
-	name = "rock plush doll"
+	name = "rock plush"
 	desc = "It says it is a plush on the tag, at least."
 	icon_state = "rock"
 
-/obj/item/toy/plush/runner
-	name = "\improper XX-121 therapy doll"
-	desc = "Don't be sad! Be glad (that you're alive)!"
-	icon_state = "runner"
-	/// If the runner is wearing a beret
-	var/beret = FALSE
-
-/obj/item/toy/plush/runner/Initialize(mapload, ...)
-	. = ..()
-	if(beret)
-		update_icon()
-
-/obj/item/toy/plush/runner/attackby(obj/item/attacking_object, mob/user)
-	. = ..()
-	if(beret)
-		return ..()
-	if(!istypestrict(attacking_object, /obj/item/clothing/head/beret/marine/mp))
-		return ..()
-	var/beret_attack = attacking_object
-	to_chat(user, SPAN_NOTICE("You put [beret_attack] on [src]."))
-	qdel(beret_attack)
-	beret = TRUE
-	update_icon()
-
-/obj/item/toy/plush/runner/update_icon()
-	. = ..()
-	if(beret)
-		icon_state = "runner_beret"
-		return
-	icon_state = "runner"
-
 /obj/item/toy/plush/therapy
-	name = "therapy doll"
+	name = "therapy plush"
 	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles."
 	icon_state = "therapy"
 
 /obj/item/toy/plush/therapy/red
-	name = "red therapy doll"
+	name = "red therapy plush"
 	color = "#FC5274"
 
 /obj/item/toy/plush/therapy/blue
-	name = "blue therapy doll"
+	name = "blue therapy plush"
 	color = "#9EBAE0"
 
 /obj/item/toy/plush/therapy/green
-	name = "green therapy doll"
+	name = "green therapy plush"
 	color = "#A3C940"
 
 /obj/item/toy/plush/therapy/orange
-	name = "orange therapy doll"
+	name = "orange therapy plush"
 	color = "#FD8535"
 
 /obj/item/toy/plush/therapy/purple
-	name = "purple therapy doll"
+	name = "purple therapy plush"
 	color = "#A26AC7"
 
 /obj/item/toy/plush/therapy/yellow
-	name = "yellow therapy doll"
+	name = "yellow therapy plush"
 	color = "#FFE492"
 
 /obj/item/toy/plush/therapy/random_color
 	///Hexadecimal 0-F (0-15)
-	var/static/list/hex = list("0", "1", "2", "3" , "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
+	var/static/list/hexadecimal = list("0", "1", "2", "3" , "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 
 /obj/item/toy/plush/therapy/random_color/New(loc, ...)
 	. = ..()
-	var/color_hex = "#[pick(hex)][pick(hex)][pick(hex)][pick(hex)][pick(hex)][pick(hex)]" //This is dumb and I hope theres a better way I'm missing
-	color = color_hex
-	desc = "A custom therapy doll, in a unique color. This one is labeled \"[color_hex]\"."
+	var/color_code = "#[pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)]" //This is dumb and I hope theres a better way I'm missing
+	color = color_code
+	desc = "A custom therapy plush, in a unique color. This one is labeled with \"#[color_code]\"."
 
 /obj/item/toy/plush/random_plushie //Not using an effect so it can fit into storage from loadout
 	name = "random plushie spawner"
@@ -634,3 +597,44 @@
 	var/random_plushie = pick(plush_list_variety)
 	new random_plushie(loc)
 	qdel(src)
+
+//Admin plushies
+/obj/item/toy/plush/yautja
+	name = "strange plush"
+	desc = "A plush doll depicting some sort of tall humanoid biped..?"
+	icon_state = "yautja"
+	black_market_value = 100
+
+/obj/item/toy/plush/runner
+	name = "\improper XX-121 therapy plush"
+	desc = "Don't be sad! Be glad (that you're alive)!"
+	icon_state = "runner"
+	/// If the runner is wearing a beret
+	var/beret = FALSE
+
+/obj/item/toy/plush/runner/Initialize(mapload, ...)
+	. = ..()
+	if(beret)
+		update_icon()
+
+/obj/item/toy/plush/runner/attackby(obj/item/attacking_object, mob/user)
+	. = ..()
+	if(beret)
+		return ..()
+	if(!istypestrict(attacking_object, /obj/item/clothing/head/beret/marine/mp))
+		return ..()
+	var/beret_attack = attacking_object
+	to_chat(user, SPAN_NOTICE("You put [beret_attack] on [src]."))
+	qdel(beret_attack)
+	beret = TRUE
+	update_icon()
+
+/obj/item/toy/plush/runner/update_icon()
+	. = ..()
+	if(beret)
+		icon_state = "runner_beret"
+		return
+	icon_state = "runner"
+
+/obj/item/toy/plush/shark/alt
+	icon_state = "shark_alt"

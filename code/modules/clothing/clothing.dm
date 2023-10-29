@@ -357,15 +357,18 @@
 		return
 	..()
 
-/obj/item/clothing/shoes/attackby(obj/item/I, mob/living/M)
+/obj/item/clothing/shoes/attackby(obj/item/attacking_item, mob/living/user)
 	if(items_allowed && items_allowed.len)
-		for (var/i in items_allowed)
-			if(istype(I, i))
-				if(stored_item) return
-				stored_item = I
-				M.drop_inv_item_to_loc(I, src)
-				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
-				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+		for(var/allowed_item in items_allowed)
+			if(istype(attacking_item, allowed_item))
+				if(stored_item)
+					return
+				if(!attacking_item.additional_shoe_store_behavior(user, src, attacking_item))
+					return
+				stored_item = attacking_item
+				user.drop_inv_item_to_loc(attacking_item, src)
+				to_chat(user, "<div class='notice'>You slide the [attacking_item] into [src].</div>")
+				playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 				update_icon()
 				desc = initial(desc) + "\nIt is storing \a [stored_item]."
 				break

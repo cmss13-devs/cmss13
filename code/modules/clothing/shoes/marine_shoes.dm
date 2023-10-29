@@ -19,7 +19,7 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	siemens_coefficient = 0.7
 	var/armor_stage = 0
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver, /obj/item/tool/surgery/scalpel)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver, /obj/item/tool/surgery/scalpel, /obj/item/weapon/straight_razor)
 	var/knife_type
 
 /obj/item/clothing/shoes/marine/Initialize(mapload, ...)
@@ -111,7 +111,7 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/weapon/straight_razor)
 
 /obj/item/clothing/shoes/veteran/pmc/update_icon()
 	if(stored_item)
@@ -179,7 +179,7 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/weapon/straight_razor)
 	var/weed_slowdown_mult = 0.5
 
 /obj/item/clothing/shoes/hiking/equipped(mob/user, slot, silent)

@@ -98,31 +98,23 @@
 	//maximum amount of spare mags
 	var/max_clips = 0
 
+	/** An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
+	that will be given to a projectile with the current ammo datum**/
+	var/list/list/traits_to_give
 
-	/**How the bullet will behave once it leaves the gun, also used for basic bullet damage and effects, etc.
-	Ammo will be replaced on New() for things that do not use mags.**/
-	//var/datum/ammo/ammo = null
-	///What is currently in the chamber. Most guns will want something in the chamber upon creation.
-	//var/obj/projectile/in_chamber = null
-	/*Ammo mags may or may not be internal, though the difference is a few additional variables. If they are not internal, don't call
-	on those unique vars. This is done for quicker pathing. Just keep in mind most mags aren't internal, though some are.
-	This is also the default magazine path loaded into a projectile weapon for reverse lookups on New(). Leave this null to do your own thing.*/
-	//var/obj/item/ammo_magazine/internal/current_mag = null
+	//Firemodes.
+	///Current selected firemode of the gun.
+	var/gun_firemode = GUN_FIREMODE_SEMIAUTO
+	///List of allowed firemodes.
+	var/list/gun_firemode_list = list()
 
-	///How much the bullet scatters when fired.
-	var/scatter = 0
-	///Multiplier. Increases or decreases how much bonus scatter is added with each bullet during burst fire (wielded only).
-	var/burst_scatter_mult = 4
-
-	///What minimum range the weapon deals full damage, builds up the closer you get. 0 for no minimum.
-	var/effective_range_min = 0
-	///What maximum range the weapon deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum.
-	var/effective_range_max = 0
-
+	//Semi-auto and full-auto.
 	///For regular shots, how long to wait before firing again. Use modify_fire_delay and set_fire_delay instead of modifying this on the fly
 	VAR_PROTECTED/fire_delay = 0
-	///When it was last fired, related to world.time.
-	var/last_fired = 0
+	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
+	VAR_PROTECTED/autofire_slow_mult = 1
+	///If the gun is currently auto firing.
+	VAR_PROTECTED/auto_firing = FALSE
 
 	//Burst fire.
 	///How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst. Use modify_burst_amount and set_burst_amount instead of modifying this
@@ -131,44 +123,20 @@
 	VAR_PROTECTED/burst_delay = 1
 	///When burst-firing, this number is extra time before the weapon can fire again. Depends on number of rounds fired.
 	var/extra_delay = 0
+	///If the gun is currently burst firing.
+	VAR_PROTECTED/burst_firing = FALSE
 
-	// Full auto
-	///Whether or not the gun is firing full-auto
-	var/fa_firing = FALSE
-	///How many full-auto shots to get to max scatter?
-	var/fa_scatter_peak = 4
-	///How bad does the scatter get on full auto?
-	var/fa_max_scatter = 6.5
+	//Firing cooldown.
+	///When it was last fired, related to world.time.
+	var/last_fired = 0
+	///Fire delay of last firemode used.
+	var/last_delay = 0
 
-	var/flags_gun_features = GUN_AMMO_COUNTER
-
-	/** An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
-	that will be given to a projectile with the current ammo datum**/
-	var/list/list/traits_to_give
-
-	///Current selected firemode of the gun.
-	var/gun_firemode = GUN_FIREMODE_SEMIAUTO
-	///List of allowed firemodes.
-	var/list/gun_firemode_list = list()
-	///How many bullets the gun fired while bursting/auto firing
-	var/shots_fired = 0
 	/// Currently selected target to fire at. Set with set_target()
 	VAR_PRIVATE/atom/target
 	/// Current operator (crew) of the hardpoint.
 	VAR_PRIVATE/mob/hp_operator
-	/// If this gun should spawn with semi-automatic fire. Protected due to it never needing to be edited.
-	VAR_PROTECTED/start_semiauto = TRUE
-	/// If this gun should spawn with automatic fire. Protected due to it never needing to be edited.
-	VAR_PROTECTED/start_automatic = FALSE
-	/// The type of projectile that this gun should shoot
-	var/projectile_type = /obj/projectile
-	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
-	VAR_PROTECTED/autofire_slow_mult = 1
 
-	/// Semi auto cooldown
-	COOLDOWN_DECLARE(semiauto_fire_cooldown)
-	/// How long between semi-auto shots this should wait, to reduce possible spam
-	var/semiauto_cooldown_time = 0.2 SECONDS
 	var/empty_alarm = 'sound/weapons/hmg_eject_mag.ogg'
 
 //-----------------------------
@@ -177,12 +145,8 @@
 
 /obj/item/hardpoint/Initialize()
 	. = ..()
-
-	//set_gun_config_values()
 	set_bullet_traits()
-	//setup_firemodes()
-	//gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(continue_fire)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
 
 /obj/item/hardpoint/Destroy()
 	if(owner)
@@ -638,42 +602,14 @@
 
 	ammo.current_rounds--
 
-/*
-/obj/item/hardpoint/proc/setup_firemodes()
-	var/old_firemode = gun_firemode
-	gun_firemode_list.len = 0
-
-	if(start_automatic)
-		gun_firemode_list |= GUN_FIREMODE_AUTOMATIC
-
-	if(start_semiauto)
-		gun_firemode_list |= GUN_FIREMODE_SEMIAUTO
-
-	if(burst_amount > BURST_AMOUNT_TIER_1)
-		gun_firemode_list |= GUN_FIREMODE_BURSTFIRE
-
-	if(!length(gun_firemode_list))
-		CRASH("[src] called setup_firemodes() with an empty gun_firemode_list")
-
-	else if(old_firemode in gun_firemode_list)
-		gun_firemode = old_firemode
-
-	else
-		gun_firemode = gun_firemode_list[1]
-*/
-
 /// Setter proc to toggle burst firing
-/obj/item/hardpoint/proc/set_bursting(bursting = FALSE)
-	if(bursting)
-		ENABLE_BITFIELD(flags_gun_features, GUN_BURST_FIRING)
-	else
-		DISABLE_BITFIELD(flags_gun_features, GUN_BURST_FIRING)
+/obj/item/hardpoint/proc/set_burst_firing(burst = FALSE)
+	burst_firing = burst
 
 ///Clean all references
 /obj/item/hardpoint/proc/reset_fire()
-	shots_fired = 0//Let's clean everything
-	set_target(null)
 	set_auto_firing(FALSE)
+	set_target(null)
 
 ///Set the target and take care of hard delete
 /obj/item/hardpoint/proc/set_target(atom/object)
@@ -690,79 +626,53 @@
 	SIGNAL_HANDLER
 	target = get_turf(target)
 
-/// Setter proc for fa_firing
+/// Setter proc for auto_firing
 /obj/item/hardpoint/proc/set_auto_firing(auto = FALSE)
-	fa_firing = auto
+	auto_firing = auto
 
 /obj/item/hardpoint/proc/display_ammo(mob/user)
 	if(!user)
 		user = hp_operator
 
-	if(CHECK_BITFIELD(flags_gun_features, GUN_AMMO_COUNTER) && ammo)
-		//var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(user, SPAN_DANGER("[ammo.current_rounds] / [ammo.max_rounds] ROUNDS REMAINING"))
-
-/*
-/obj/item/hardpoint/proc/try_fire()
-	if(!ammo?.current_rounds)
-		to_chat(hp_operator, SPAN_WARNING("<b>*click*</b>"))
-		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
-		return
-
-	return fire_shot()
-
-/obj/item/hardpoint/proc/fire_shot() //Bang Bang
-	var/atom/T = target
-
-	var/turf/origin_turf = get_turf(src)
-	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-
-	var/obj/projectile/P = generate_bullet(hp_operator, origin_turf)
-	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, hp_operator)
-	P.fire_at(T, hp_operator, src, P.ammo.max_range, P.ammo.shell_speed)
-
-	if(LAZYLEN(activation_sounds))
-		playsound(get_turf(src), pick(activation_sounds), 60, 1)
-
-	if(use_muzzle_flash)
-		muzzle_flash(Get_Angle(origin_turf, T))
-
-	ammo.current_rounds--
-	if(!ammo.current_rounds)
-		handle_ammo_out()
-
-	return AUTOFIRE_CONTINUE
-*/
+	if( ammo)
+		//to_chat(user, SPAN_DANGER("[ammo.current_rounds] / [ammo.max_rounds] ROUNDS REMAINING"))
+		to_chat(user, SPAN_WARNING("[name] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 
 /obj/item/hardpoint/proc/handle_ammo_out(mob/user)
 	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src] beeps steadily and its ammo light blinks red."))
 	playsound(loc, empty_alarm, 25, 1)
 
 /obj/item/hardpoint/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
-	if(!target)
-		return
-
-	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
-		reset_fire()
-		display_ammo()
-	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
+	if(auto_firing || burst_firing)
+		SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
+		//autofire component resets on burst completion, have to do it ourselves for automatic
+		if(auto_firing)
+			reset_fire()
+			display_ammo()
 
 ///Update the target if you draged your mouse
-/obj/item/hardpoint/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
-	set_target(get_turf_on_clickcatcher(over_object, hp_operator, params))
+/obj/item/hardpoint/proc/crew_mousedrag(mob/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	set_target(get_turf_on_clickcatcher(over_object, hp_operator, params)) //stops when dragging over UI
+	/*
+	if(istype(over_object, /atom/movable/screen)) //doesn't stop when dragging over UI, no side effects?
+		var/list/modifiers = params2list(params)
+		var/turf/turf = params2turf(modifiers["screen-loc"], get_turf(source.client.eye), source.client)
+		if (turf)
+			set_target(turf)
+	else
+		set_target(over_object)
+	*/
+
 
 ///Check if the gun can fire and add it to bucket auto_fire system if needed, or just fire the gun if not
 /obj/item/hardpoint/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
-	//hp_operator = owner.get_seat_mob(allowed_seat)
 	hp_operator = source
-
-	if (CHECK_BITFIELD(flags_gun_features, GUN_BURST_FIRING))
-		return
 
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
 		return
 
+	//don't click on UI
 	if(istype(object, /atom/movable/screen))
 		return
 
@@ -770,18 +680,24 @@
 		return
 
 	set_target(get_turf_on_clickcatcher(object, hp_operator, params))
-	if(gun_firemode == GUN_FIREMODE_SEMIAUTO && COOLDOWN_FINISHED(src, semiauto_fire_cooldown))
-		COOLDOWN_START(src, semiauto_fire_cooldown, semiauto_cooldown_time)
-		//try_fire(object, hp_operator, modifiers)
-		fire_wrapper(object, hp_operator, modifiers)
-		reset_fire()
-		display_ammo()
-		return
-	else
-		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+
+	initiate_fire(object, hp_operator, modifiers)
+
+/obj/item/hardpoint/proc/initiate_fire(atom/target, mob/living/user, params)
+	//still actively firing
+	if(auto_firing || burst_firing || world.time < last_fired + last_delay)
+		return NONE
+
+	switch(gun_firemode)
+		if(GUN_FIREMODE_SEMIAUTO)
+			try_fire(target, user, params)
+		if(GUN_FIREMODE_BURSTFIRE)
+			SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+		if(GUN_FIREMODE_AUTOMATIC)
+			SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
 /// Wrapper proc for the autofire subsystem to ensure the important args aren't null
-/obj/item/hardpoint/proc/fire_wrapper(atom/target, mob/living/user, params)
+/obj/item/hardpoint/proc/continue_fire(atom/target, mob/living/user, params)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!target)
 		target = src.target
@@ -789,129 +705,88 @@
 		user = hp_operator
 	if(!target || !user)
 		return NONE
-	return Fire(target, user, params)
 
-/obj/item/hardpoint/proc/Fire(atom/target, mob/living/user, params)
-	set waitfor = FALSE
+	return try_fire(target, user, params)
 
-	if(!able_to_fire(user) || !target || !get_turf(user) || !get_turf(target))
+/obj/item/hardpoint/proc/try_fire(atom/target, mob/living/user, params)
+	if(health <= 0)
+		to_chat(user, SPAN_WARNING("<b>\The [name] is broken!</b>"))
 		return NONE
 
-	/*
-	This is where burst is established for the proceeding section. Which just means the proc loops around that many times.
-	If burst = 1, you must null it if you ever RETURN during the for() cycle. If for whatever reason burst is left on while
-	the gun is not firing, it will break a lot of stuff. BREAK is fine, as it will null it.
-	*/
-	if((gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > BURST_AMOUNT_TIER_1)
-		ENABLE_BITFIELD(flags_gun_features, GUN_BURST_FIRING)
-
-	var/fire_return = handle_fire(target, user, params)
-	if(!fire_return)
-		return fire_return
-
-	DISABLE_BITFIELD(flags_gun_features, GUN_BURST_FIRING) // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
-	return AUTOFIRE_CONTINUE
-
-/obj/item/hardpoint/proc/able_to_fire(mob/user)
-	if(CHECK_BITFIELD(flags_gun_features, GUN_BURST_FIRING))
-		return TRUE
-
-	// The rest is delay-related. If we're firing full-auto it doesn't matter
-	if(fa_firing)
-		return TRUE
-
-	var/next_shot = last_fired + fire_delay
-
-	if(world.time >= next_shot + extra_delay) //check the last time it was fired.
-		extra_delay = 0
-
-	return TRUE
-
-/obj/item/hardpoint/proc/handle_fire(atom/target, mob/living/user, params)
-	var/turf/curloc = get_turf(src) //In case the target or we are expired.
-	var/turf/targloc = get_turf(target)
-
-	var/atom/original_target = target //This is for burst mode, in case the target changes per scatter chance in between fired bullets.
-
-	//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
-	//var/obj/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
-	var/obj/projectile/projectile_to_fire = generate_bullet(user, curloc)
-	if(!projectile_to_fire) //If there is nothing to fire, click.
+	if(!ammo || ammo.current_rounds <= 0)
 		click_empty(user)
-		DISABLE_BITFIELD(flags_gun_features, GUN_BURST_FIRING)
 		return NONE
 
-	/*
-	apply_bullet_effects(projectile_to_fire, user) //User can be passed as null.
+	if(!in_firing_arc(target))
+		to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
+		return NONE
+
+	return fire_shot(target, user, params)
+
+/obj/item/hardpoint/proc/fire_shot(atom/target, mob/living/user, params)
+	//offset fire origin from lower-left corner
+	var/turf/origin_turf = get_turf(src)
+	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
+
+	var/obj/projectile/projectile_to_fire = generate_bullet(user, origin_turf)
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
-	*/
-
-	if(QDELETED(original_target)) //If the target's destroyed, shoot at where it was last.
-		target = targloc
-	else
-		target = original_target
-		targloc = get_turf(target)
-
-	projectile_to_fire.original = target
-
-	/*
-	// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
-	var/ammo_flags = projectile_to_fire.ammo.flags_ammo_behavior | projectile_to_fire.projectile_override_flags
-	if(!CHECK_BITFIELD(ammo_flags, AMMO_HITS_TARGET_TURF))
-		target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user)
-
-	var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
-	*/
-
-	/*
-	if(params) // Apply relative clicked position from the mouse info to offset projectile
-		if(!params["click_catcher"])
-			if(params["vis-x"])
-				projectile_to_fire.p_x = text2num(params["vis-x"])
-			else if(params["icon-x"])
-				projectile_to_fire.p_x = text2num(params["icon-x"])
-			if(params["vis-y"])
-				projectile_to_fire.p_y = text2num(params["vis-y"])
-			else if(params["icon-y"])
-				projectile_to_fire.p_y = text2num(params["icon-y"])
-			var/atom/movable/clicked_target = original_target
-			if(istype(clicked_target))
-				projectile_to_fire.p_x -= clicked_target.bound_width / 2
-				projectile_to_fire.p_y -= clicked_target.bound_height / 2
-			else
-				projectile_to_fire.p_x -= world.icon_size / 2
-				projectile_to_fire.p_y -= world.icon_size / 2
-		else
-			projectile_to_fire.p_x -= world.icon_size / 2
-			projectile_to_fire.p_y -= world.icon_size / 2
-	*/
 
 	play_firing_sounds(projectile_to_fire, user)
 
-	if(targloc != curloc)
-		//This is where the projectile leaves the barrel and deals with projectile code only.
-		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-		//in_chamber = null // It's not in the gun anymore
-		INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, projectile_to_fire?.ammo?.shell_speed, original_target)
-		projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
-		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire.ammo.max_range, projectile_to_fire.ammo.shell_speed)
+	projectile_to_fire = null
 
-		. = TRUE
+	if(use_muzzle_flash)
+		muzzle_flash(Get_Angle(origin_turf, target))
 
-		shots_fired++
+	ammo.current_rounds--
+	//just ran out
+	if(ammo.current_rounds <= 0)
+		playsound(get_turf(src), empty_alarm, 70, 1)
+
+	//cooldown to respect intended ROF
+	last_fired = world.time
+	switch(gun_firemode)
+		if(GUN_FIREMODE_SEMIAUTO)
+			last_delay = fire_delay
+			reset_fire()
+			display_ammo()
+		if(GUN_FIREMODE_BURSTFIRE)
+			last_delay = burst_delay + extra_delay
+		if(GUN_FIREMODE_AUTOMATIC)
+			last_delay = fire_delay
+
+	return AUTOFIRE_CONTINUE
+
+/// Toggles the gun's firemode one down the list
+/obj/item/hardpoint/proc/do_toggle_firemode(mob/user, new_firemode)
+	/*
+	if(get_burst_firing())//can't toggle mid burst
+		return
+	*/
+
+	if(!length(gun_firemode_list))
+		CRASH("[src] called do_toggle_firemode() with an empty gun_firemodes")
+
+	if(length(gun_firemode_list) == 1)
+		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] This gun only has one firemode."))
+		return
+
+	if(new_firemode)
+		if(!(new_firemode in gun_firemode_list))
+			CRASH("[src] called do_toggle_firemode() with [new_firemode] new_firemode, not on gun_firemodes")
+		gun_firemode = new_firemode
 	else
-		return TRUE
+		var/mode_index = gun_firemode_list.Find(gun_firemode)
+		if(++mode_index <= length(gun_firemode_list))
+			gun_firemode = gun_firemode_list[mode_index]
+		else
+			gun_firemode = gun_firemode_list[1]
 
-	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
-	var/angle = round(Get_Angle(user, target)) //Let's do a muzzle flash.
-	muzzle_flash(angle,user)
+	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
-	//This is where we load the next bullet in the chamber.
-	//if(!reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty.
-	if(!ammo.current_rounds)
-		click_empty(user)
-		return TRUE //Nothing else to do here, time to cancel out.
-	return TRUE
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch to <b>[gun_firemode]</b>."))
+	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
 /obj/item/hardpoint/proc/click_empty(mob/user)
 	if(user)
@@ -923,7 +798,6 @@
 /obj/item/hardpoint/proc/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)
 	if(LAZYLEN(activation_sounds))
 		playsound(get_turf(src), pick(activation_sounds), 60, 1)
-
 
 //-----------------------------
 //------ICON PROCS----------

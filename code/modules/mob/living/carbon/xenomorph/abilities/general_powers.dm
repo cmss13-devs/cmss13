@@ -778,7 +778,7 @@
 	SPAN_XENOWARNING("You spit a [xeno.ammo.name] at [atom]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
-	var/obj/item/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
+	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
 	proj.generate_bullet(xeno.ammo)
 	proj.permutated += xeno
 	proj.def_zone = xeno.get_limbzone_target()

@@ -95,6 +95,7 @@
 #define MOBILE_SHUTTLE_ID_ERT1 "ert_response_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT2 "ert_pmc_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT4 "ert_twe_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_rescue_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_boarding_shuttle"
 
@@ -114,6 +115,7 @@
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
 #define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
 
+#define DROPSHIP_FLYBY_ID "special_flight"
 #define DROPSHIP_LZ1 "dropship-lz1"
 #define DROPSHIP_LZ2 "dropship-lz2"
 

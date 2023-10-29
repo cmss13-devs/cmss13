@@ -241,7 +241,7 @@
 			var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(get_turf(O.loc)) //Aaannd wrap it up!
 			if(!istype(O.loc, /turf))
 				if(user.client)
-					user.client.screen -= O
+					user.client.remove_from_screen(O)
 			P.wrapped = O
 			O.forceMove(P)
 			P.w_class = O.w_class
@@ -367,7 +367,7 @@
 	return
 
 /obj/structure/machinery/disposal/deliveryChute/Collided(atom/movable/AM) //Go straight into the chute
-	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect)) return
+	if(istype(AM, /obj/projectile) || istype(AM, /obj/effect)) return
 	switch(dir)
 		if(NORTH)
 			if(AM.loc.y != src.loc.y+1) return

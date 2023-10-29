@@ -266,14 +266,18 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attached_gun/grenade/G = new(src)
-	G.flags_attach_features &= ~ATTACH_REMOVABLE
-	G.hidden = TRUE
-	G.Attach(src)
-	update_attachable(G.slot)
+	var/obj/item/attachable/attached_gun/grenade/ugl = new(src)
+	var/obj/item/attachable/stock/tactical/stock = new(src)
+	ugl.flags_attach_features &= ~ATTACH_REMOVABLE
+	ugl.hidden = TRUE
+	ugl.Attach(src)
+	update_attachable(ugl.slot)
+	stock.hidden = FALSE
+	stock.Attach(src)
+	update_attachable(stock.slot)	
 
 /obj/item/weapon/gun/shotgun/combat/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 14, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 11, "stock_y" = 13.)
 
 
 
@@ -515,6 +519,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	burst_delay = 0 //So doubleshotty can doubleshot
 	has_open_icon = TRUE
 	civilian_usable_override = TRUE // Come on. It's THE survivor shotgun.
+	additional_fire_group_delay = 1.5 SECONDS
 
 /obj/item/weapon/gun/shotgun/double/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14, "stock_x" = 13, "stock_y" = 14)
@@ -590,7 +595,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	//We can't make a projectile without a mag or active attachable.
 
 
-/obj/item/weapon/gun/shotgun/double/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/shotgun/double/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(!current_mag)
 		return
@@ -761,7 +766,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	reload_sound = 'sound/weapons/handling/gun_mou_reload.ogg'//unique shell insert
 	flags_equip_slot = SLOT_BACK
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
-	additional_fire_group_delay = 1.5 SECONDS
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
@@ -1274,7 +1278,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717
 	name = "\improper M37-17 pump shotgun"
-	desc = "A military version of the iconic HG 37-12, this design can fit one extra shell in each of its dual-tube internal magazines, and fires shells with increased velocity, resulting in more damage. Issued to select USCM vessels out on the rim. You can switch the active internal magazine by toggling the shotgun tube."
+	desc = "A military version of the iconic HG 37-12, this design can fit one extra shell in each of its dual-tube internal magazines, and fires shells with increased velocity, resulting in more damage. Issued to select USCM vessels and stations in the outer veil. A button on the side toggles the internal tubes."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m3717"
 	item_state = "m3717"

@@ -76,7 +76,7 @@
 		visible_message(SPAN_DANGER("[src] suddenly collapses!"))
 		qdel(src)
 
-/obj/structure/tunnel/bullet_act(obj/item/projectile/Proj)
+/obj/structure/tunnel/bullet_act(obj/projectile/Proj)
 	return FALSE
 
 /obj/structure/tunnel/ex_act(severity)

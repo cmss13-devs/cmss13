@@ -1,20 +1,19 @@
 
 
-//whiskey outpost extra marines
 /datum/emergency_call/cryo_squad
 	name = "Marine Cryo Reinforcements (Squad)"
 	mob_max = 10
 	mob_min = 1
 	probability = 0
 	objectives = "Assist the USCM forces"
-	max_engineers = 4
+	max_engineers = 2
 	max_medics = 2
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 	var/leaders = 0
 	spawn_max_amount = TRUE
 
-/datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc, announce_dispatch_message)
+/datum/emergency_call/cryo_squad/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.num_leaders
 	. = ..()
@@ -95,3 +94,10 @@
 
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"
+
+/datum/emergency_call/cryo_squad/tech
+	name = "Marine Cryo Reinforcements (Tech)"
+	mob_max = 5
+	max_engineers = 1
+	max_medics = 1
+	max_heavies = 0

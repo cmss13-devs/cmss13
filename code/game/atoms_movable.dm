@@ -271,7 +271,7 @@
 /atom/movable/clone/get_examine_text(mob/user)
 	return src.mstr.get_examine_text(user)
 
-/atom/movable/clone/bullet_act(obj/item/projectile/P)
+/atom/movable/clone/bullet_act(obj/projectile/P)
 	return src.mstr.bullet_act(P)
 /////////////////////
 

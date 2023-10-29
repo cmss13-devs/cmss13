@@ -9,6 +9,7 @@
 #define SQUAD_MARINE_4 "Delta"
 #define SQUAD_MARINE_5 "Echo"
 #define SQUAD_MARINE_CRYO "Foxtrot"
+#define SQUAD_MARINE_INTEL "Intel"
 #define SQUAD_SOF "SOF"
 
 // Job name defines
@@ -77,6 +78,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_DROPSHIP_CREW_CHIEF "Dropship Crew Chief"
 #define JOB_CREWMAN "Vehicle Crewman"
 #define JOB_INTEL "Intelligence Officer"
+#define JOB_DROPSHIP_ROLES   /datum/timelock/dropship
+#define JOB_DROPSHIP_ROLES_LIST   list(JOB_DROPSHIP_CREW_CHIEF, JOB_PILOT)
 #define JOB_AUXILIARY_ROLES    /datum/timelock/auxiliary
 #define JOB_AUXILIARY_ROLES_LIST   list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL)
 
@@ -257,9 +260,14 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_UPP_SRLT_OFFICER "UPP Senior Leytenant"
 #define JOB_UPP_KPT_OFFICER "UPP Kapitan"
 #define JOB_UPP_MAY_OFFICER "UPP Mayjor"
+#define JOB_UPP_LTKOL_OFFICER "UPP Leytenant Kolonel"
 #define JOB_UPP_KOL_OFFICER "UPP Kolonel"
+#define JOB_UPP_MAY_GENERAL "UPP Mayjor General"
+#define JOB_UPP_LT_GENERAL "UPP Leytenant General"
+#define JOB_UPP_GENERAL "UPP Army General"
 
 #define JOB_UPP_COMBAT_SYNTH "UPP Combat Synthetic"
+#define JOB_UPP_SUPPORT_SYNTH "UPP Support Synthetic"
 
 #define UPP_JOB_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER, JOB_UPP_COMBAT_SYNTH)
 #define UPP_JOB_GRUNT_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_CREWMAN)
@@ -288,12 +296,16 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 //-------- TWE --------//
 #define JOB_TWE_REPRESENTATIVE "TWE Representative"
 
-#define JOB_TWE_YONTO "RMC Yonto"
-#define JOB_TWE_SANTO "RMC Santo"
-#define JOB_TWE_NITO "RMC Nito"
-#define JOB_TWE_ITTO "RMC Itto"
+//RMC
+#define JOB_TWE_RMC_RIFLEMAN "RMC Rifleman"
+#define JOB_TWE_RMC_MARKSMAN "RMC Marksman"
+#define JOB_TWE_RMC_SMARTGUNNER "RMC Smartgunner"
+#define JOB_TWE_RMC_BREACHER "RMC Breacher"
+#define JOB_TWE_RMC_TEAMLEADER "RMC Team Leader"
+#define JOB_TWE_RMC_LIEUTENANT "RMC Lieutenant"
+#define JOB_TWE_RMC_COMMANDER "RMC Commander"
 
-#define TWE_COMMANDO_JOB_LIST list(JOB_TWE_YONTO, JOB_TWE_SANTO, JOB_TWE_NITO, JOB_TWE_ITTO)
+#define TWE_COMMANDO_JOB_LIST list(JOB_TWE_RMC_RIFLEMAN, JOB_TWE_RMC_BREACHER, JOB_TWE_RMC_SMARTGUNNER,JOB_TWE_RMC_MARKSMAN ,JOB_TWE_RMC_TEAMLEADER, JOB_TWE_RMC_LIEUTENANT, JOB_TWE_RMC_COMMANDER)
 
 #define JOB_TWE_SEAMAN "TWE Seaman"
 #define JOB_TWE_LSEAMAN "TWE Leading Seaman"
@@ -326,7 +338,6 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_TIS_SA "UAAC-TIS Special Agent"
 
 #define TIS_JOB_LIST list(JOB_TIS_SA, JOB_TIS_IO)
-
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
 #define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"

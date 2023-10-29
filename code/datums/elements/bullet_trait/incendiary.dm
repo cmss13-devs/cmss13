@@ -8,7 +8,7 @@
 
 /datum/element/bullet_trait_incendiary/Attach(datum/target, reagent = /datum/reagent/napalm/ut, stacks = 20)
 	. = ..()
-	if(!istype(target, /obj/item/projectile))
+	if(!istype(target, /obj/projectile))
 		return ELEMENT_INCOMPATIBLE
 
 	if(ispath(reagent))

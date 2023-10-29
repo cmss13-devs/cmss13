@@ -366,7 +366,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			if(user == M)
 				user.visible_message(SPAN_NOTICE(type_butt ? "[user] calmly drops and treads on the lit [src], putting it out instantly." : "[user] puts out \the [src]."))
 			else
-				to_chat(M, SPAN_NOTICE("Your [src] goes out."))
+				to_chat(M, SPAN_NOTICE("Your [src.name] goes out."))
 	STOP_PROCESSING(SSobj, src)
 	if(type_butt)
 		var/turf/T = get_turf(src)

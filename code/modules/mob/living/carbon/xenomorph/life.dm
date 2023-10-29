@@ -201,7 +201,8 @@
 			blinded = TRUE
 			set_stat(UNCONSCIOUS)
 		else
-			blinded = FALSE
+			if(!interference)//If their connection to hivemind is affected, their vision should be too.
+				blinded = FALSE
 			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
 				if(resting)

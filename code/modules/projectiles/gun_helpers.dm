@@ -551,7 +551,7 @@ DEFINES in setup.dm, referenced here.
 				var/obj/item/clothing/accessory/storage/holster/holster_ammo = accessory
 				if(istype(holster_ammo))
 					var/obj/item/storage/internal/accessory/holster/storage = holster_ammo.hold
-					if(storage.can_be_inserted(active_hand, TRUE))
+					if(storage.can_be_inserted(active_hand, src, stop_messages = TRUE))
 						storage.handle_item_insertion(active_hand, user = src)
 						return
 
@@ -693,14 +693,14 @@ DEFINES in setup.dm, referenced here.
 	var/old_firemode = gun_firemode
 	gun_firemode_list.len = 0
 
+	if(start_automatic)
+		gun_firemode_list |= GUN_FIREMODE_AUTOMATIC
+
 	if(start_semiauto)
 		gun_firemode_list |= GUN_FIREMODE_SEMIAUTO
 
 	if(burst_amount > BURST_AMOUNT_TIER_1)
 		gun_firemode_list |= GUN_FIREMODE_BURSTFIRE
-
-	if(start_automatic)
-		gun_firemode_list |= GUN_FIREMODE_AUTOMATIC
 
 	if(!length(gun_firemode_list))
 		CRASH("[src] called setup_firemodes() with an empty gun_firemode_list")

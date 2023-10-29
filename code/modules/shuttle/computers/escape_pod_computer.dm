@@ -39,7 +39,7 @@
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/ui_data(mob/user)
 	. = list()
-	var/obj/docking_port/mobile/escape_shuttle/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle = SSshuttle.getShuttle(shuttleId)
 
 	if(pod_state == STATE_IDLE && shuttle.evac_set)
 		pod_state = STATE_READY
@@ -63,9 +63,12 @@
 	if(.)
 		return
 
-	var/obj/docking_port/mobile/escape_shuttle/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle = SSshuttle.getShuttle(shuttleId)
 	switch(action)
 		if("force_launch")
+			if(pod_state != STATE_READY && pod_state != STATE_DELAYED)
+				return
+
 			shuttle.evac_launch()
 			pod_state = STATE_LAUNCHING
 			. = TRUE
@@ -204,7 +207,7 @@
 	heat_proof = 1
 	unslashable = TRUE
 	unacidable = TRUE
-	var/obj/docking_port/mobile/escape_shuttle/linked_shuttle
+	var/obj/docking_port/mobile/crashable/escape_shuttle/linked_shuttle
 
 /obj/structure/machinery/door/airlock/evacuation/Initialize()
 	. = ..()
@@ -229,16 +232,16 @@
 /obj/structure/machinery/door/airlock/evacuation/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(!density || unslashable) //doors become slashable after evac is called
 		return FALSE
-	
+
 	if(xeno.claw_type < CLAW_TYPE_SHARP)
 		to_chat(xeno, SPAN_WARNING("[src] is bolted down tight."))
 		return XENO_NO_DELAY_ACTION
-	
+
 	xeno.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	take_damage(HEALTH_DOOR / XENO_HITS_TO_DESTROY_BOLTED_DOOR)
 	return XENO_ATTACK_ACTION
-			
+
 
 /obj/structure/machinery/door/airlock/evacuation/attack_remote()
 	return FALSE

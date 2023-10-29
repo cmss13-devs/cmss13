@@ -298,7 +298,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("The [xeno] fires a blast of acid at [target]!"), SPAN_XENOWARNING("You fire a blast of acid at [target]!"))
 
 	var/turf/target_turf = locate(target.x, target.y, target.z)
-	var/obj/item/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))
+	var/obj/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))
 	var/datum/ammo/ammoDatum = new ammo_type()
 
 	proj.generate_bullet(ammoDatum)

@@ -219,15 +219,6 @@
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
-"FG" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/item/clothing/gloves/marine/veteran/pmc,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
-/area/lv624/lazarus/crashed_ship_containers)
 "Gs" = (
 /obj/structure/girder,
 /turf/closed/shuttle{
@@ -503,7 +494,7 @@ xg
 zH
 cv
 uw
-FG
+cv
 Xk
 Gs
 Xk

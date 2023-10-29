@@ -9,8 +9,6 @@
 	var/next_purchase = 0
 	var/increase_per_purchase = 0
 
-	unlocked = TRUE
-
 /datum/tech/repeatable/ui_static_data(mob/user)
 	. = ..()
 	if(increase_per_purchase)

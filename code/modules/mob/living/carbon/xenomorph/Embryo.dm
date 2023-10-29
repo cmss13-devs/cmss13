@@ -14,9 +14,12 @@
 	var/flags_embryo = FALSE // Used in /ciphering/predator property
 	/// The ckey of any player hugger that made this embryo
 	var/hugger_ckey
+	/// The total time the person is hugged divided by stages until burst
+	var/per_stage_hugged_time = 90 //Set in Initialize due to config
 
 /obj/item/alien_embryo/Initialize(mapload, ...)
 	. = ..()
+	per_stage_hugged_time = CONFIG_GET(number/embryo_burst_timer) / 5
 	if(istype(loc, /mob/living))
 		affected_mob = loc
 		affected_mob.status_flags |= XENO_HOST
@@ -76,8 +79,6 @@
 
 /obj/item/alien_embryo/proc/process_growth(delta_time)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	/// The total time the person is hugged divided by stages until burst
-	var/per_stage_hugged_time = CONFIG_GET(number/embryo_burst_timer) / 5
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)

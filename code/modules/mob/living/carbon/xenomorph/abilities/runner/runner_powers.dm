@@ -15,7 +15,7 @@
 	X.visible_message(SPAN_XENOWARNING("[X] fires a burst of bone chips at [A]!"), SPAN_XENOWARNING("You fire a burst of bone chips at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
+	var/obj/projectile/P = new /obj/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
 
 	var/datum/ammo/ammoDatum = GLOB.ammo_list[ammo_type]
 
@@ -130,7 +130,7 @@
 
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
-		R.take_damage_type((1 / A.acid_strength) * 20, "acid", src)
+		R.take_damage_type(20 / A.acid_delay, "acid", src)
 		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
 			SPAN_XENOWARNING("You vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)

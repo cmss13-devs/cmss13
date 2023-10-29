@@ -495,7 +495,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(!able_to_fire(user) || !target) //checks here since we don't want to fuck up applying the increase
 		return NONE
 	if(floating_penetration && in_chamber) //has to go before actual firing
-		var/obj/item/projectile/P = in_chamber
+		var/obj/projectile/P = in_chamber
 		switch(floating_penetration)
 			if(FLOATING_PENETRATION_TIER_1)
 				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
@@ -525,7 +525,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	wield_delay = initial(wield_delay)
 	cur_onehand_chance = initial(cur_onehand_chance)
 	if(in_chamber)
-		var/obj/item/projectile/P = in_chamber
+		var/obj/projectile/P = in_chamber
 		P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88]
 	floating_penetration = FLOATING_PENETRATION_TIER_0
 	//these are init configs and so cannot be initial()

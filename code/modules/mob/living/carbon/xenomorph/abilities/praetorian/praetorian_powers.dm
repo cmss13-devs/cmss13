@@ -1,74 +1,76 @@
-/datum/action/xeno_action/activable/pierce/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
+/datum/action/xeno_action/activable/pierce/use_ability(atom/targetted_atom)
+	var/mob/living/carbon/xenomorph/source_xeno = owner
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!source_xeno.check_state())
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
+	if(!targetted_atom || targetted_atom.layer >= FLY_LAYER || !isturf(source_xeno.loc))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
+	//X = xeno user, A = target atom
+	var/list/turf/target_turfs = getline2(source_xeno, targetted_atom, include_from_atom = FALSE)
+	var/length_of_line = LAZYLEN(target_turfs)
+	if(length_of_line > 3)
+		target_turfs = target_turfs.Copy(1, 4)
+
 	// Get list of target mobs
 	var/list/target_mobs = list()
+	var/blocked = FALSE
 
-
-	var/list/target_turfs = list()
-	var/facing = Get_Compass_Dir(X, A)
-	var/turf/T = X.loc
-	var/turf/temp = X.loc
-
-	for(var/x in 0 to 2)
-		temp = get_step(T, facing)
-		if(!temp || temp.density || temp.opacity)
-			break
-
-		var/blocked = FALSE
-		for(var/obj/structure/S in temp)
-			if(istype(S, /obj/structure/window/framed))
-				var/obj/structure/window/framed/W = S
-				if(!W.unslashable)
-					W.deconstruct(disassembled = FALSE)
-
-			if(S.opacity)
-				blocked = TRUE
-				break
+	for(var/turf/path_turf as anything in target_turfs)
 		if(blocked)
 			break
+		//Check for walls etc and stop if we encounter one
+		if(path_turf.density)
+			break
 
-		T = temp
-		target_turfs += T
+		//Check for structures such as doors
+		for(var/atom/path_content as anything in path_turf.contents)
+			if(isobj(path_content))
+				var/obj/object = path_content
+				//If we shouldn't be able to pass through it then stop at this turf
+				if(object.density && !object.throwpass)
+					blocked = TRUE
+					break
 
-	for(var/turf/target_turf in target_turfs)
-		for(var/mob/living/carbon/H in target_turf)
-			if (!isxeno_human(H) || X.can_not_harm(H))
-				continue
+				if(istype(object, /obj/structure/window/framed))
+					var/obj/structure/window/framed/framed_window = object
+					if(!framed_window.unslashable)
+						framed_window.deconstruct(disassembled = FALSE)
 
-			if(!(H in target_mobs))
-				target_mobs += H
+			//Check for mobs and add them to our target list for damage
+			if(iscarbon(path_content))
+				var/mob/living/carbon/mob_to_act = path_content
+				if(!isxeno_human(mob_to_act) || source_xeno.can_not_harm(mob_to_act))
+					continue
 
-	X.visible_message(SPAN_XENODANGER("[X] slashes its claws through the area in front of it!"), SPAN_XENODANGER("You slash your claws through the area in front of you!"))
-	X.animation_attack_on(A, 15)
+				if(!(mob_to_act in target_mobs))
+					target_mobs += mob_to_act
 
-	X.emote("roar")
+	source_xeno.visible_message(SPAN_XENODANGER("[source_xeno] slashes its tail through the area in front of it!"), SPAN_XENODANGER("You slash your tail through the area in front of you!"))
+	source_xeno.animation_attack_on(targetted_atom, 15)
 
-	// Loop through our turfs, finding any humans there and dealing damage to them
-	for (var/mob/living/carbon/H in target_mobs)
-		if (!isxeno_human(H) || X.can_not_harm(H))
+	source_xeno.emote("roar")
+
+	// Loop through our mob list, finding any humans there and dealing damage to them
+	for (var/mob/living/carbon/current_mob in target_mobs)
+		if (!isxeno_human(current_mob) || source_xeno.can_not_harm(current_mob))
 			continue
 
-		if (H.stat == DEAD)
+		if (current_mob.stat == DEAD)
 			continue
 
-		X.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
+		current_mob.flick_attack_overlay(current_mob, "slash")
+		current_mob.apply_armoured_damage(get_xeno_damage_slash(current_mob, damage), ARMOR_MELEE, BRUTE, null, 20)
 
 	if (target_mobs.len >= shield_regen_threshold)
-		if (X.mutation_type == PRAETORIAN_VANGUARD)
-			var/datum/behavior_delegate/praetorian_vanguard/BD = X.behavior_delegate
+		if (source_xeno.mutation_type == PRAETORIAN_VANGUARD)
+			var/datum/behavior_delegate/praetorian_vanguard/BD = source_xeno.behavior_delegate
 			if (istype(BD))
 				BD.regen_shield()
 
@@ -218,7 +220,7 @@
 
 	stabbing_xeno.visible_message(SPAN_XENODANGER("\The [stabbing_xeno] uncoils and wildly throws out its tail!"), SPAN_XENODANGER("You uncoil your tail wildly in front of you!"))
 
-	var/obj/item/projectile/hook_projectile = new /obj/item/projectile(stabbing_xeno.loc, create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno))
+	var/obj/projectile/hook_projectile = new /obj/projectile(stabbing_xeno.loc, create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno))
 
 	var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/xeno/oppressor_tail]
 

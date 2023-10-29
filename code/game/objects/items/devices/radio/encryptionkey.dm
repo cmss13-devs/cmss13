@@ -158,7 +158,7 @@
 /obj/item/device/encryptionkey/io
 	name = "\improper Marine Intelligence Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_INTEL = TRUE)
+	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 
 /obj/item/device/encryptionkey/vc
 	name = "\improper Marine Vehicle Crewman Radio Encryption Key"
@@ -321,6 +321,11 @@
 	name = "\improper Vanguard's Arrow Incorporated Radio Encryption Key"
 	icon_state = "sl_key"
 	channels = list("Command" = TRUE, "Engi" = TRUE, "MedSci" = TRUE, "Req" = TRUE, "JTAC" = TRUE, "Intel" = TRUE, "Almayer" = TRUE)
+
+/obj/item/device/encryptionkey/royal_marine
+	name = "\improper Royal Marine Radio Encryption Key"
+	icon_state = "sl_key"
+	channels = list("Command" = TRUE, "Almayer" = TRUE,)
 
 /obj/item/device/encryptionkey/cmb
 	name = "\improper Colonial Marshal Bureau Radio Encryption Key"

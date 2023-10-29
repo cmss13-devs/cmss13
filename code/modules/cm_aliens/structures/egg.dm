@@ -151,7 +151,7 @@
 	else
 		child.go_idle()
 
-/obj/effect/alien/egg/bullet_act(obj/item/projectile/P)
+/obj/effect/alien/egg/bullet_act(obj/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO))
@@ -208,16 +208,13 @@
 		return
 
 	user.animation_attack_on(src)
-	if(W.attack_verb.len)
+	if(length(W.attack_verb))
 		visible_message(SPAN_DANGER("\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]"))
 	else
 		visible_message(SPAN_DANGER("\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]"))
 	var/damage = W.force
-	if(W.w_class < SIZE_LARGE || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
-		damage /= 4
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
-
 		if(WT.remove_fuel(0, user))
 			damage = 15
 			playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)

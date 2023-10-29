@@ -1,11 +1,11 @@
-#define NUKE_UNLOCK_TIME (120 MINUTES)
+#define NUKE_UNLOCK_TIME (115 MINUTES)
 
 /datum/tech/nuke
 	name = "Nuclear Device"
-	//desc = "Purchase a nuclear device. Only able to purchase after X minutes into the operation. It's the only way to be sure." //See New()
+	desc = "Purchase a nuclear device. It's the only way to be sure."
 	icon_state = "nuke"
 
-	required_points = 20
+	required_points = 5
 
 	tier = /datum/tier/four
 
@@ -15,7 +15,7 @@
 	flags = TREE_FLAG_MARINE
 
 /datum/tech/nuke/New()
-	desc = "Purchase a nuclear device. Only able to purchase [NUKE_UNLOCK_TIME / (1 MINUTES)] minutes into the operation. It's the only way to be sure."
+	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_description)))
 
 /datum/tech/nuke/on_unlock()
 	. = ..()
@@ -41,4 +41,5 @@
 
 	return TRUE
 
-#undef NUKE_UNLOCK_TIME
+/datum/tech/nuke/proc/handle_description()
+	desc = "Purchase a nuclear device. Only purchasable [Ceiling((NUKE_UNLOCK_TIME + SSticker.round_start_time) / (1 MINUTES))] minutes into the operation. It's the only way to be sure."

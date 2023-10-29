@@ -48,10 +48,6 @@
 	name = "Engineer"
 	equip_path = /datum/equipment_preset/corpse/engineer
 
-/obj/effect/landmark/corpsespawner/clown
-	name = "Clown"
-	equip_path = /datum/equipment_preset/corpse/clown
-
 /obj/effect/landmark/corpsespawner/scientist
 	name = "Scientist"
 	equip_path = /datum/equipment_preset/corpse/scientist

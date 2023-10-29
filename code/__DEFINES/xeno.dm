@@ -169,10 +169,14 @@
 #define XENO_BURIED_LARVA_TIME_LIMIT (30 MINUTES)
 
 /// The time when xenos can start taking over comm towers
-#define XENO_COMM_ACQUISITION_TIME (90 MINUTES)
+#define XENO_COMM_ACQUISITION_TIME (55 MINUTES)
 
 /// The time it takes for a pylon to give one larva while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)
+
+/// The time until you can re-corrupt a comms relay after the last pylon was destroyed
+#define XENO_PYLON_DESTRUCTION_DELAY (5 MINUTES)
+
 
 /// The time against away_timer when an AFK xeno larva can be replaced
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds

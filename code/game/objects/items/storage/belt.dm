@@ -94,22 +94,28 @@
 		/obj/item/tool/weldingtool,
 		/obj/item/tool/wirecutters,
 		/obj/item/tool/wrench,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/shovel/etool,
+		/obj/item/stack/cable_coil,
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/cell,
+		/obj/item/circuitboard,
+		/obj/item/stock_parts,
+		/obj/item/device/demo_scanner,
+		/obj/item/device/reagent_scanner,
+		/obj/item/device/assembly,
 		/obj/item/device/multitool,
 		/obj/item/device/flashlight,
-		/obj/item/stack/cable_coil,
 		/obj/item/device/t_scanner,
 		/obj/item/device/analyzer,
-		/obj/item/weapon/gun/smg/nailgun/compact,
-		/obj/item/tool/shovel/etool,
-		/obj/item/tool/extinguisher/mini,
-		/obj/item/cell,
+		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
-
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
 		/obj/item/device/lightreplacer,
 	)
+	storage_slots = 10
 
 
 /obj/item/storage/belt/utility/full/fill_preset_inventory()
@@ -145,7 +151,7 @@
 	storage_slots = 14
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 28
-	var/mode = 0 //Pill picking mode
+	var/mode = 1 //Picking from pill bottle mode
 
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
@@ -162,9 +168,6 @@
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/gloves/latex,
 		/obj/item/storage/syringe_case,
-		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/ammo_magazine/handful,
 		/obj/item/device/flashlight/flare,
 		/obj/item/reagent_container/hypospray,
 		/obj/item/bodybag,
@@ -529,7 +532,6 @@
 /obj/item/storage/belt/marine/shotgun_ammo/fill_preset_inventory() // shotgun ammo for survs, cursed but we want non-optimal storage on purpose
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
-
 
 /obj/item/storage/belt/marine/smartgunner
 	name = "\improper M280 pattern smartgunner drum belt"
@@ -988,7 +990,7 @@
 			user.update_inv_s_store()
 
 //There are only two types here that can be inserted, and they are mutually exclusive. We only track the gun.
-/obj/item/storage/belt/gun/can_be_inserted(obj/item/W, stop_messages) //We don't need to stop messages, but it can be left in.
+/obj/item/storage/belt/gun/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE) //We don't need to stop messages, but it can be left in.
 	. = ..()
 	if(!.)
 		return
@@ -1337,6 +1339,16 @@
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
+/obj/item/storage/belt/gun/mateba/cmateba/special
+
+/obj/item/storage/belt/gun/mateba/cmateba/special/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/special())
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
+
 /obj/item/storage/belt/gun/mateba/council
 	name = "colonel's M276 pattern Mateba holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
@@ -1675,28 +1687,31 @@
 /obj/item/storage/belt/gun/utility
 	name = "\improper M276 pattern combat toolbelt rig"
 	desc = "The M276 pattern combat toolbelt rig is an alternative load-bearing equipment of the USCM for engineers conducting repairs within combat zones. It consists of a modular belt with various clips and pouches for tools along with a holster for a sidearm. Due to the bulk of the sidearm, it is unable to hold as many tools as its standard counterpart."
-	storage_slots = 6
+	storage_slots = 9
 	icon_state = "combatutility"
 	item_state= "utility"
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
-		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/weapon/gun/flare,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/weldingtool,
 		/obj/item/tool/wirecutters,
 		/obj/item/tool/wrench,
-		/obj/item/device/multitool,
-		/obj/item/device/flashlight,
-		/obj/item/stack/cable_coil,
-		/obj/item/device/t_scanner,
-		/obj/item/device/analyzer,
-		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/tool/shovel/etool,
 		/obj/item/tool/extinguisher/mini,
-		/obj/item/cell,
+		/obj/item/device/multitool,
+		/obj/item/device/flashlight,
+		/obj/item/device/t_scanner,
+		/obj/item/device/analyzer,
 		/obj/item/device/lightreplacer,
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/stack/cable_coil,
+		/obj/item/cell,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/handful,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
@@ -1766,3 +1781,52 @@
 	item_state = "souto_man[length(contents)]"
 	if(istype(user))
 		user.update_inv_belt() //Makes sure the onmob updates.
+
+
+
+//ROYAL MARINES COMMNADO
+
+/obj/item/storage/belt/marine/rmc
+	name = "\improper L70 pattern ammo load rig"
+	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
+	icon_state = "rmc_ammo"
+	item_state = "rmc_ammo"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	has_gamemode_skin = FALSE
+
+/obj/item/storage/belt/marine/rmc/rmc_f90_ammo/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/rmc_f90(src)
+
+/obj/item/storage/belt/marine/rmc/rmc_f90_ammo/marksman/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/rmc_f90/marksman(src)
+
+/obj/item/storage/belt/medical/rmc
+	name = "\improper L75 pattern medical storage rig"
+	desc = "The L75 is the standard load-bearing equipment of the RMC. It consists of a modular belt with various clips. This version is designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	icon_state = "rmc_medical"
+	item_state = "rmc_medical"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+
+/obj/item/storage/belt/gun/l905
+	name = "\improper L905 gunbelt"
+	desc = "Finely-tooled leather, a L905, and six magazines. More than enough for the standard RMC commando."
+	icon_state = "rmc_pistol"
+	item_state = "rmc_pistol"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	storage_slots = 7
+	can_hold = list(
+		/obj/item/weapon/gun/pistol/vp78,
+		/obj/item/ammo_magazine/pistol/vp78,
+	)
+	has_gamemode_skin = FALSE
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -1,
+			"icon_y" = -3))
+
+/obj/item/storage/belt/gun/l905/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
+	for(var/i in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/vp78(src)

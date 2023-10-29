@@ -735,3 +735,20 @@
 	. = ..()
 
 	. += SPAN_NOTICE("The power indicator reads [power_cell.charge] charge out of [power_cell.maxcharge] total.")
+
+/obj/item/weapon/gun/smartgun/rmc
+	name = "\improper L56A2 smartgun"
+	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This Variant is used by the Three World Empires Royal Marines Commando units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
+	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
+	ammo_primary = /datum/ammo/bullet/smartgun/holo_target //Toggled ammo type
+	ammo_secondary = /datum/ammo/bullet/smartgun/holo_target/ap ///Toggled ammo type
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
+	icon_state = "magsg"
+	item_state = "magsg"
+	starting_attachment_types = list(/obj/item/attachable/l56a2_smartgun)
+
+/obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_TWE

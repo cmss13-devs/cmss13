@@ -91,7 +91,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
-/obj/structure/flora/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/flora/get_projectile_hit_boolean(obj/projectile/P)
 	. = ..()
 	return FALSE
 
@@ -526,24 +526,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	/// For things that might affect someone/everyone's round if hidden.
 	var/static/blocked_atoms = list(/obj/item/device/cotablet, /obj/item/card/id)
 	var/static/blacklist_typecache
-	//layer shouldn't be put on dmm unless aestetic reason....
-	layer = ABOVE_XENO_LAYER
-
-//made for fiorina.
-/obj/structure/flora/pottedplant/pottedplant_27
-	icon_state = "pottedplant_27"
-/obj/structure/flora/pottedplant/pottedplant_29
-	icon_state = "pottedplant_29"
-/obj/structure/flora/pottedplant/pottedplant_22
-	icon_state = "pottedplant_22"
-/obj/structure/flora/pottedplant/pottedplant_21
-	icon_state = "pottedplant_21"
-/obj/structure/flora/pottedplant/pottedplant_7
-	icon_state = "pottedplant_7"
-/obj/structure/flora/pottedplant/pottedplant_17
-	icon_state = "pottedplant_17";
-/obj/structure/flora/pottedplant/pottedplant_18
-	icon_state = "pottedplant_18";
 
 /obj/structure/flora/pottedplant/Initialize(mapload)
 	. = ..()

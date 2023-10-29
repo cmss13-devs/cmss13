@@ -337,11 +337,12 @@
 /obj/item/weapon/yautja/combistick/IsShield()
 	return on
 
-/obj/item/weapon/yautja/combistick/verb/use_unique_action()
+/obj/item/weapon/yautja/combistick/verb/fold_combistick()
 	set category = "Weapons"
-	set name = "Unique Action"
-	set desc = "Activate or deactivate the combistick."
-	set src in usr
+	set name = "Collapse Combi-stick"
+	set desc = "Collapse or extend the combistick."
+	set src = usr.contents
+
 	unique_action(usr)
 
 /obj/item/weapon/yautja/combistick/attack_self(mob/user)
@@ -874,7 +875,7 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/launcher/spike/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/launcher/spike/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) spikes++
 	return TRUE
@@ -954,13 +955,16 @@
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
+	if(charge_time < 7)
+		to_chat(user, SPAN_WARNING("The rifle does not have enough power remaining!"))
+		return
 
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/load_into_chamber()
 	ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
-	charge_time -= 10
-	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
+	charge_time -= 7
+	var/obj/projectile/projectile = create_bullet(ammo, initial(name))
 	projectile.set_light(1)
 	in_chamber = projectile
 	return in_chamber
@@ -972,9 +976,10 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) charge_time *= 2
+	if(refund)
+		charge_time += 7
 	return TRUE
 
 #define FIRE_MODE_STANDARD "Standard"
@@ -1057,7 +1062,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/load_into_chamber()
 	if(charge_time < 1)
 		return
-	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
+	var/obj/projectile/projectile = create_bullet(ammo, initial(name))
 	projectile.set_light(1)
 	in_chamber = projectile
 	charge_time -= shot_cost
@@ -1070,7 +1075,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/reload_into_chamber()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund)
 		charge_time += shot_cost
@@ -1164,15 +1169,15 @@
 			switch(strength)
 				if("low power stun bolts")
 					strength = "high power stun bolts"
-					charge_cost = 100
-					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
+					charge_cost = 50
+					set_fire_delay(FIRE_DELAY_TIER_1)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/stun]
 				if("high power stun bolts")
 					strength = "plasma immobilizers"
-					charge_cost = 300
-					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
+					charge_cost = 200
+					set_fire_delay(FIRE_DELAY_TIER_2 * 8)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/stun]
@@ -1187,8 +1192,8 @@
 			switch(strength)
 				if("plasma bolts")
 					strength = "plasma spheres"
-					charge_cost = 1200
-					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
+					charge_cost = 1000
+					set_fire_delay(FIRE_DELAY_TIER_2 * 12)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
@@ -1259,7 +1264,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/reload_into_chamber()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund)
 		source.charge += charge_cost

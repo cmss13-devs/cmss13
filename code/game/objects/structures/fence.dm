@@ -34,7 +34,7 @@
 	if(make_hit_sound)
 		playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 
-/obj/structure/fence/bullet_act(obj/item/projectile/Proj)
+/obj/structure/fence/bullet_act(obj/projectile/Proj)
 	//Tasers and the like should not damage windows.
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
 	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)

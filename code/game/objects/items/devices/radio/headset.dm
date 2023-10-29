@@ -514,6 +514,7 @@
 	name = "marine intel radio headset"
 	desc = "Used by Intelligence Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel."
 	initial_keys = list(/obj/item/device/encryptionkey/io)
+	frequency = INTEL_FREQ
 
 /obj/item/device/radio/headset/almayer/mcl
 	name = "corporate liaison radio headset"
@@ -966,6 +967,16 @@
 	icon_state = "vai_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/contractor)
 	has_hud = TRUE
+
+/obj/item/device/radio/headset/distress/royal_marine
+	name = "Royal Marine Headset"
+	desc = "A sleek headset used by the Royal Marines Commando. Low profile enough to fit under their unique helmets."
+	frequency = RMC_FREQ
+	icon_state = "vai_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_TWE
+	volume = RADIO_VOLUME_IMPORTANT
 
 //CMB Headsets
 /obj/item/device/radio/headset/distress/CMB

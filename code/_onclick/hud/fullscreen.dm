@@ -17,7 +17,7 @@
 	screen.severity = severity
 	if (client && screen.should_show_to(src))
 		screen.update_for_view(client.view)
-		client.screen += screen
+		client.add_to_screen(screen)
 
 	return screen
 
@@ -33,12 +33,12 @@
 		addtimer(CALLBACK(src, PROC_REF(clear_fullscreen_after_animate), screen), animated, TIMER_CLIENT_TIME)
 	else
 		if(client)
-			client.screen -= screen
+			client.remove_from_screen(screen)
 		qdel(screen)
 
 /mob/proc/clear_fullscreen_after_animate(atom/movable/screen/fullscreen/screen)
 	if(client)
-		client.screen -= screen
+		client.remove_from_screen(screen)
 	qdel(screen)
 
 /mob/proc/clear_fullscreens()
@@ -48,7 +48,7 @@
 /mob/proc/hide_fullscreens()
 	if(client)
 		for(var/category in fullscreens)
-			client.screen -= fullscreens[category]
+			client.remove_from_screen(fullscreens[category])
 
 /mob/proc/reload_fullscreens()
 	if(client)
@@ -57,9 +57,9 @@
 			screen = fullscreens[category]
 			if(screen.should_show_to(src))
 				screen.update_for_view(client.view)
-				client.screen |= screen
+				client.add_to_screen(screen)
 			else
-				client.screen -= screen
+				client.remove_from_screen(screen)
 
 
 /atom/movable/screen/fullscreen
@@ -72,9 +72,11 @@
 	var/severity = 0
 	var/fs_view = 7
 	var/show_when_dead = FALSE
+	/// If this should try and resize if the user's view is bigger than the default
+	var/should_resize = TRUE
 
 /atom/movable/screen/fullscreen/proc/update_for_view(client_view)
-	if (screen_loc == "CENTER-7,CENTER-7" && fs_view != client_view)
+	if (screen_loc == "CENTER-7,CENTER-7" && fs_view != client_view && should_resize)
 		var/list/actualview = getviewsize(client_view)
 		fs_view = client_view
 		transform = matrix(actualview[1]/FULLSCREEN_OVERLAY_RESOLUTION_X, 0, 0, 0, actualview[2]/FULLSCREEN_OVERLAY_RESOLUTION_Y, 0)
@@ -168,6 +170,14 @@
 
 /atom/movable/screen/fullscreen/laser_blind
 	icon_state = "impairedoverlay1"
+
+/atom/movable/screen/fullscreen/vulture
+	icon_state = "vulture_scope_overlay_sniper"
+	layer = FULLSCREEN_VULTURE_SCOPE_LAYER
+
+/atom/movable/screen/fullscreen/vulture/spotter
+	icon_state = "vulture_scope_overlay_spotter"
+	should_resize = FALSE
 
 //Weather overlays//
 

@@ -191,7 +191,7 @@
 	},
 /area/shuttle/lifeboat)
 "xG" = (
-/obj/docking_port/mobile/lifeboat/port,
+/obj/docking_port/mobile/crashable/lifeboat/port,
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,0"
 	},

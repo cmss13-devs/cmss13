@@ -193,13 +193,16 @@
 // If you're still confused, scroll aaaall the way down to the bottom of the file.
 // that's /obj/effect/alien/weeds/node/Destroy().
 /obj/effect/alien/weeds/proc/avoid_orphanage()
-	for(var/obj/effect/alien/weeds/node/N in orange(node_range, get_turf(src)))
-		// WE FOUND A NEW MOMMY
-		N.add_child(src)
-		break
+	var/parent_type = /obj/effect/alien/weeds/node
+	if(weed_strength >= WEED_LEVEL_HIVE)
+		parent_type = /obj/effect/alien/weeds/node/pylon
+		
+	var/obj/effect/alien/weeds/node/found = locate(parent_type) in orange(node_range, get_turf(src))
+	if(found)
+		found.add_child(src)
 
 	// NO MORE FOOD ON THE TABLE. WE DIE
-	if(!parent || weed_strength > WEED_LEVEL_STANDARD)
+	if(!parent)
 		qdel(src)
 
 /obj/effect/alien/weeds/proc/weed_expand()

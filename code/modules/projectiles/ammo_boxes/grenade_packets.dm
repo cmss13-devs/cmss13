@@ -126,3 +126,15 @@ var/list/grenade_packets = list(
 	desc = "It contains three M74 airburst smoke grenades. This end towards the enemy."
 	icon_state = "agms_packet"
 	content_type = /obj/item/explosive/grenade/smokebomb/airburst
+
+/obj/item/storage/box/packet/rmc/he
+	name = "\improper R2175/A HEDP grenade packet"
+	desc = "It contains three R2175/A HEDP grenades. Handle with care."
+	icon_state = "hedp_packet"
+	content_type = /obj/item/explosive/grenade/high_explosive/rmc
+
+/obj/item/storage/box/packet/rmc/incin
+	name = "\improper R2175/B HIDP grenade packet"
+	desc = "It contains three R2175/B HIDP grenades. Handle with care."
+	icon_state = "hidp_packet"
+	content_type = /obj/item/explosive/grenade/incendiary/rmc

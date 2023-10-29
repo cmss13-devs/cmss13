@@ -122,7 +122,7 @@
 		else
 			wound_icon_carrier.icon_state = "[caste_name]_walk_[health_threshold]"
 
-/mob/living/simple_animal/hostile/alien/bullet_act(obj/item/projectile/P)
+/mob/living/simple_animal/hostile/alien/bullet_act(obj/projectile/P)
 	. = ..()
 	if(P.damage)
 		var/splatter_dir = get_dir(P.starting, loc)//loc is the xeno getting hit, P.starting is the turf of where the projectile got spawned
@@ -187,8 +187,8 @@
 // melee_damage_lower = 15
 // melee_damage_upper = 15
 // ranged = 1
-// projectiletype = /obj/item/projectile/neurotox
+// projectiletype = /obj/projectile/neurotox
 // projectilesound = 'sound/weapons/pierce.ogg'
-/obj/item/projectile/neurotox
+/obj/projectile/neurotox
 	damage = 30
 	icon_state = "toxin"

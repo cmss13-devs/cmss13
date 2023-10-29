@@ -13,7 +13,7 @@
 	var/isGlass = TRUE
 	black_market_value = 25
 
-/obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/item/projectile/P)
+/obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/projectile/P)
 	. = ..()
 	if(isGlass)
 		smash()

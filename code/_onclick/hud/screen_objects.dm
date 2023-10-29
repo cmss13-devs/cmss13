@@ -37,6 +37,8 @@
 
 
 /atom/movable/screen/close/clicked(mob/user)
+	if(isobserver(user))
+		return TRUE
 	if(master)
 		if(isstorage(master))
 			var/obj/item/storage/master_storage = master
@@ -144,7 +146,7 @@
 
 /atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
 	if (..())
-		return 1
+		return TRUE
 
 	var/icon_x = text2num(mods["icon-x"])
 	var/icon_y = text2num(mods["icon-y"])
@@ -209,7 +211,11 @@
 	icon = 'icons/mob/hud/screen1_robot.dmi'
 
 /atom/movable/screen/clicked(mob/user)
-	if(!user) return 1
+	if(!user)
+		return TRUE
+
+	if(isobserver(user))
+		return TRUE
 
 	switch(name)
 		if("equip")
@@ -608,10 +614,10 @@
 	if(user && user.hud_used)
 		if(user.hud_used.inventory_shown)
 			user.hud_used.inventory_shown = 0
-			user.client.screen -= user.hud_used.toggleable_inventory
+			user.client.remove_from_screen(user.hud_used.toggleable_inventory)
 		else
 			user.hud_used.inventory_shown = 1
-			user.client.screen += user.hud_used.toggleable_inventory
+			user.client.add_to_screen(user.hud_used.toggleable_inventory)
 
 		user.hud_used.hidden_inventory_update()
 	return 1
@@ -639,3 +645,7 @@
 /atom/movable/screen/rotate/alt
 	dir = WEST
 	rotate_amount = -90
+
+/atom/movable/screen/vulture_scope // The part of the vulture's scope that drifts over time
+	icon_state = "vulture_unsteady"
+	screen_loc = "CENTER,CENTER"

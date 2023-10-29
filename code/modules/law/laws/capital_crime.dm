@@ -10,10 +10,6 @@
 	name = "Desertion"
 	desc = "Refusing to carry out the duties essential to one’s post or abandoning post unauthorized, without intent to return. (Retreating from the planet when the FOB is breached is not Desertion, refusing to return when ordered is)."
 
-/datum/law/capital_law/insanity
-	name = "Insanity"
-	desc = "Acting in such a manner which makes the offender not sound clear of mind. The CMO or Synthetic can declare insanity on a Marine if the Marine is believed to not be of sound mind. The Marine once cleared to be of sound mind may be released from this particular charge."
-
 /datum/law/capital_law/jailbreak_escape
 	name = "Jailbreak/Escape"
 	desc = "To escape, assist in an escape, attempt escape, or be willfully and knowingly broken out."
@@ -30,7 +26,3 @@
 /datum/law/capital_law/crimes_against_humanity
 	name = "Crimes against Humanity"
 	desc = "To engage in actions that violate human rights or otherwise are heinous acts against humans. Examples are torture, cannibalism and forced infection with Xenomorph larva."
-
-/datum/law/capital_law/prisoner_of_war
-	name = "Prisoner of War"
-	desc = "Being a member of a currently hostile faction to the USCM."

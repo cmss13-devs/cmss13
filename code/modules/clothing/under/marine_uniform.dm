@@ -62,6 +62,14 @@
 	worn_state = "marine_engineer"
 	specialty = "USCM Combat Technician"
 
+/obj/item/clothing/under/marine/engineer/standard
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/engineer/darker
+	icon_state = "d_marine_engineer"
+	worn_state = "d_marine_engineer"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/under/marine/rto
 	name = "\improper USCM radio telephone operator uniform"
 	desc = "Standard-issue RTO fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
@@ -104,6 +112,14 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military police"
+
+/obj/item/clothing/under/marine/mp/standard
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/mp/darker
+	icon_state = "d_MP_jumpsuit"
+	worn_state = "d_MP_jumpsuit"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/warden
 	name = "military warden jumpsuit"
@@ -196,17 +212,20 @@
 	name = "marine service uniform"
 	desc = "A service uniform worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "BO_jumpsuit"
+	item_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "marine service"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/under/marine/officer/exec
-	name = "executive officer uniform"
-	desc = "A uniform typically worn by an Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	icon_state = "BO_jumpsuit"
-	worn_state = "BO_jumpsuit"
-	specialty = "executive officer"
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+/obj/item/clothing/under/marine/officer/boiler
+	name = "marine operations uniform"
+	desc = "An operations uniform worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "uscmboiler"
+	item_state = "uscmboiler"
+	worn_state = "uscmboiler"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+	specialty = "marine operations"
 
 /obj/item/clothing/under/marine/officer/command
 	name = "\improper USCM officer uniform"
@@ -289,25 +308,21 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/dress
-	name = "old marine dress uniform"
-	desc = "A dress uniform typically worn by marines of the USCM. The Sergeant Major would kill you if you got this dirty."
-	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-	icon_state = "marine_formal"
-	worn_state = "marine_formal"
-	specialty = "marine dress"
+	name = "marine formal service uniform"
+	desc = "A formal service uniform typically worn by marines of the USCM. Still practicable while still being more formal than the standard service uniform."
+	icon_state = "formal_jumpsuit"
+	worn_state = "formal_jumpsuit"
+	specialty = "marine formal"
 	flags_atom = NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
 	black_market_value = 15
 
 /obj/item/clothing/under/marine/dress/command
-	name = "old marine command dress uniform"
-	desc = "A dress uniform typically worn by the most battle-hardened marines of the USCM. Shame on you if you get this dirty."
-	icon_state = "command_formal"
-	worn_state = "command_formal"
-	specialty = "command dress"
+	name = "marine officer formal service uniform"
+	desc = "A formal service uniform typically worn by marines of the USCM. Still practicable while still being more formal than the standard service uniform. This one belongs to an officer."
+	icon_state = "formal_jumpsuit"
+	worn_state = "formal_jumpsuit"
+	specialty = "command formal"
 	black_market_value = 20
 
 //=========================//DRESS BLUES\\================================\\
@@ -359,41 +374,17 @@
 
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-/obj/item/clothing/under/marine/mp/provost/enforcer
-	name = "\improper Provost Enforcer Uniform"
-	desc = "The crisp uniform of a Provost Enforcer."
-
-/obj/item/clothing/under/marine/mp/provost/tml
-	name = "\improper Provost Team Leader Uniform"
-	desc = "The crisp uniform of a Provost Team Leader."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
-
-/obj/item/clothing/under/marine/mp/provost/advisor
-	name = "\improper Provost Advisor Uniform"
-	desc = "The crisp uniform of a Provost Advisor."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
-
-/obj/item/clothing/under/marine/mp/provost/inspector
-	name = "\improper Provost Inspector Uniform"
-	desc = "The crisp uniform of a Provost Inspector."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
+/obj/item/clothing/under/marine/mp/provost/senior
+	name = "\improper Provost Senior Uniform"
+	desc = "The crisp uniform of a senior member of the Provost Office."
+	icon_state = "provost_tml"
+	worn_state = "provost_tml"
 
 /obj/item/clothing/under/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Uniform"
 	desc = "The crisp uniform of a Provost Marshal."
-	icon_state = "WO_jumpsuit"
-	worn_state = "WO_jumpsuit"
-
-/obj/item/clothing/under/marine/mp/provost/marshal/sector
-	name = "\improper Provost Sector Marshal Uniform"
-	desc = "The crisp uniform of a Provost Sector Marshal."
-
-/obj/item/clothing/under/marine/mp/provost/marshal/chief
-	name = "\improper Provost Chief Marshal Uniform"
-	desc = "The crisp uniform of the Provost Chief Marshal."
+	icon_state = "provost_marshal"
+	worn_state = "provost_marshal"
 
 //==================//UNITED AMERICAS ALLIED COMMAND\\===================\\
 //=======================================================================\\
@@ -933,3 +924,24 @@
 	worn_state = "working_joe_overalls"
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	unacidable = TRUE
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/under/marine/veteran/royal_marine
+	name = "royal marines commando uniform"
+	desc = "The field uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
+	icon_state = "rmc_uniform"
+	worn_state = "rmc_uniform"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	contained_sprite = TRUE
+	icon = 'icons/mob/humans/onmob/contained/royal_marines_commando.dmi'
+
+/obj/item/clothing/under/marine/veteran/royal_marine/tl
+	icon_state = "rmc_uniform_teaml"
+	worn_state = "rmc_uniform_teaml"
+
+/obj/item/clothing/under/marine/veteran/royal_marine/lt
+	name = "royal marines commando officers uniform"
+	desc = "The officers uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
+	icon_state = "rmc_uniform_lt"
+	worn_state = "rmc_uniform_lt"

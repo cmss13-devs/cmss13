@@ -810,8 +810,10 @@
 	var/obj/item/stack/sheet/wood/fuel = attacking_item
 	if(remaining_fuel >= initial(remaining_fuel))
 		to_chat(user, SPAN_NOTICE("You cannot fuel [src] further."))
+		return
 	if(!fuel.use(1))
 		to_chat(SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
+		return
 	visible_message(SPAN_NOTICE("[user] fuels [src] with [fuel]."))
 	remaining_fuel++
 
@@ -974,6 +976,13 @@
 	name = "colony crawler"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
 	icon_state = "crawler"
+	density = TRUE
+
+/obj/structure/prop/vehicles/tank/twe
+	name = "\improper FV150 Shobo MKII"
+	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structual changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
+	icon = 'icons/obj/vehicles/twe_tank.dmi'
+	icon_state = "twe_tank"
 	density = TRUE
 
 //overhead prop sets
@@ -1299,19 +1308,19 @@
 	COOLDOWN_DECLARE(damage_delay)
 	/// list of quip emotes, taken from Working Joe
 	var/static/list/quips = list(
-		/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/alwaysknow_damaged,
 		/datum/emote/living/carbon/human/synthetic/working_joe/quip/not_liking,
 		/datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help,
-		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/day_never_done,
-		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/required_by_apollo,
+		/datum/emote/living/carbon/human/synthetic/working_joe/farewell/day_never_done,
+		/datum/emote/living/carbon/human/synthetic/working_joe/farewell/required_by_apollo,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
 	)
 	/// list of voicelines to use when damaged
 	var/static/list/damaged = list(
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/damage,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/that_stings,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/irresponsible,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/this_is_futile,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/damage,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/that_stings,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/irresponsible,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/this_is_futile,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
 	)
@@ -1336,7 +1345,7 @@
 	attacked()
 	return ..()
 
-/obj/structure/prop/invuln/joey/bullet_act(obj/item/projectile/P)
+/obj/structure/prop/invuln/joey/bullet_act(obj/projectile/P)
 	attacked()
 	return ..()
 

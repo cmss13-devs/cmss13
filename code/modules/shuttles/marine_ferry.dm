@@ -102,6 +102,7 @@
 		automated_launch = FALSE
 	automated_launch_timer = TIMER_ID_NULL
 	ai_silent_announcement("Dropship '[name]' departing.")
+	log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
 
 
 /*
@@ -228,7 +229,7 @@
 			if(X && X.stat != DEAD)
 				var/name = "Unidentified Lifesigns"
 				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 				set_security_level(SEC_LEVEL_RED)
 				break
 

@@ -112,7 +112,7 @@
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 	qdel(src)
 
-/obj/structure/tent/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/tent/get_projectile_hit_boolean(obj/projectile/P)
 	. = ..()
 	return FALSE // Always fly through the tent
 

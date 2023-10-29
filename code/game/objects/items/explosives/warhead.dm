@@ -2,11 +2,8 @@
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	customizable = TRUE
 	allowed_sensors = list() //We only need a detonator
-
-/obj/item/explosive/warhead/Initialize(mapload, ...)
-	. = ..()
-	pixel_y = rand(-6, 6)
-	pixel_x = rand(-7, 7)
+	ground_offset_x = 7
+	ground_offset_y = 6
 
 /obj/item/explosive/warhead/rocket
 	name = "84mm rocket warhead"

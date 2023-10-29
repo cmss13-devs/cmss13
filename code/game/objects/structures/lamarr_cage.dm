@@ -26,7 +26,7 @@
 			deconstruct(FALSE)
 
 
-/obj/structure/lamarr/bullet_act(obj/item/projectile/Proj)
+/obj/structure/lamarr/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	src.healthcheck()

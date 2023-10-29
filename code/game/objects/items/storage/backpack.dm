@@ -12,6 +12,11 @@
 	max_w_class = SIZE_MEDIUM
 	storage_slots = null
 	max_storage_space = 21
+	cant_hold = list(/obj/item/storage/firstaid, /obj/item/storage/toolkit)
+	can_hold_skill = list(
+		/obj/item/storage/firstaid = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_ENGI),
+		)
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
@@ -405,7 +410,7 @@
 	has_gamemode_skin = FALSE
 	storage_slots = 3
 	icon_state = "ammo_pack_0"
-	can_hold = list(/obj/item/ammo_box)
+	can_hold = list(/obj/item/ammo_box, /obj/item/stack/folding_barricade)
 	max_w_class = SIZE_MASSIVE
 	throw_range = 0
 	xeno_types = null
@@ -675,6 +680,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "g8pouch"
 	item_state = "g8pouch"
 	has_gamemode_skin = TRUE
+	can_hold_skill = list()
 
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
 	switch(slot)
@@ -741,6 +747,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 
 	camo_active = TRUE
+	ADD_TRAIT(H, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
 	H.visible_message(SPAN_DANGER("[H] vanishes into thin air!"), SPAN_NOTICE("You activate your cloak's camouflage."), max_distance = 4)
 	playsound(H.loc, 'sound/effects/cloak_scout_on.ogg', 15, TRUE)
 	H.unset_interaction()
@@ -779,6 +786,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		cloak_cooldown = world.time + 10 SECONDS
 
 	camo_active = FALSE
+	REMOVE_TRAIT(H, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
 	H.visible_message(SPAN_DANGER("[H] shimmers into existence!"), SPAN_WARNING("Your cloak's camouflage has deactivated!"), max_distance = 4)
 	playsound(H.loc, 'sound/effects/cloak_scout_off.ogg', 15, TRUE)
 
@@ -1105,3 +1113,57 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	max_storage_space = 21
 	camo_alpha = 10
+
+//----------TWE SECTION----------
+/obj/item/storage/backpack/rmc
+	has_gamemode_skin = FALSE
+
+/obj/item/storage/backpack/rmc/heavy
+	name = "heavyweight RMC backpack"
+	desc = "The heavy-carry pack of the RMC forces. Designed to lug the most amount of gear into the battlefield."
+	icon_state = "backpack_large"
+	item_state = "backpack_large"
+	max_storage_space = 27
+
+/obj/item/storage/backpack/rmc/medium
+	name = "standard RMC backpack"
+	desc = "A TWE military standard-carry RMC combat pack MK3."
+	icon_state = "backpack_medium"
+	item_state = "backpack_medium"
+	worn_accessible = TRUE
+	max_storage_space = 24
+
+/obj/item/storage/backpack/rmc/light
+	name = "lightweight RMC backpack"
+	desc = "A TWE military light-carry RMC combat pack MK3."
+	icon_state = "backpack_small"
+	item_state = "backpack_small"
+	worn_accessible = TRUE
+	max_storage_space = 21
+
+/obj/item/storage/backpack/rmc/frame //One sorry sod should have to lug this about spawns in their shuttle currently
+	name = "\improper RMC carry-frame"
+	desc = "A backpack specifically designed to hold equipment for commandos."
+	icon_state = "backpack_frame"
+	item_state = "backpack_frame"
+	max_w_class = SIZE_HUGE
+	storage_slots = 7
+	can_hold = list(
+		/obj/item/ammo_box/magazine/misc/mre,
+		/obj/item/storage/firstaid/regular,
+		/obj/item/storage/firstaid/adv,
+		/obj/item/storage/firstaid/surgical,
+		/obj/item/device/defibrillator/compact,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/storage/box/packet/rmc/he,
+		/obj/item/storage/box/packet/rmc/incin,
+	)
+
+/obj/item/storage/backpack/general_belt/rmc //the breachers belt
+	name = "\improper RMC general utility belt"
+	desc = "A small, lightweight pouch that can be clipped onto armor to provide additional storage. This new RMC model, while uncomfortable, can also be clipped around the waist."
+	icon_state = "rmc_general"
+	item_state = "rmc_general"
+	has_gamemode_skin = FALSE
+	max_storage_space = 15

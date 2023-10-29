@@ -1,0 +1,4223 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ag" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"aj" = (
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/complex/med/operating)
+"am" = (
+/obj/structure/platform/kutjevo/rock,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"at" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/roller,
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 4
+	},
+/area/kutjevo/interior/complex/med/operating)
+"aM" = (
+/obj/structure/window_frame/kutjevo,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"aP" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin13"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"aR" = (
+/obj/structure/machinery/disposal,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/complex/med/operating)
+"aV" = (
+/turf/open/floor/coagulation{
+	icon_state = "0,5"
+	},
+/area/kutjevo/exterior/scrubland)
+"ba" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo/rock,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"bd" = (
+/obj/structure/window_frame/kutjevo,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/pano)
+"bq" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"bx" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/largecrate/random/case/small{
+	pixel_y = 7
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"by" = (
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/complex/med/auto_doc)
+"bH" = (
+/obj/item/ammo_magazine/rifle/rmc_f90/heap{
+	current_rounds = 0
+	},
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"bX" = (
+/obj/item/ammo_magazine/rifle/rmc_f90/heap{
+	current_rounds = 0
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"bY" = (
+/obj/structure/bed/chair,
+/turf/open/gm/dirtgrassborder2{
+	dir = 4
+	},
+/area/kutjevo/exterior/complex_border/med_park)
+"cq" = (
+/turf/open/floor/coagulation{
+	icon_state = "7,0"
+	},
+/area/kutjevo/exterior/scrubland)
+"cy" = (
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/kutjevo/interior/complex/med/cells)
+"cA" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 10
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"cC" = (
+/obj/item/reagent_container/food/drinks/flask/weylandyutani{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"cK" = (
+/obj/structure/reagent_dispensers/watertank{
+	desc = "A watertank. The label has been written over with the sequence 2---"
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/exterior/Northwest_Colony)
+"cQ" = (
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"cS" = (
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 4
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"cX" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med)
+"cZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"dj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"dp" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_sn_full_cap";
+	pixel_y = 16
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/auto_doc)
+"dv" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"dy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"dA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"dH" = (
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 8
+	},
+/area/kutjevo/interior/complex/med/operating)
+"dI" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"dY" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/cells)
+"ef" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"ej" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"ez" = (
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/complex/med)
+"eB" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0;
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"eF" = (
+/obj/item/ammo_box/rounds/le/empty,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"eL" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/interior/complex/med/operating)
+"eR" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/kutjevo/interior/complex/med)
+"eS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"fc" = (
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 8
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"fd" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/item/prop/almayer/comp_closed,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"fe" = (
+/obj/structure/prop/dam/truck/cargo,
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/exterior/Northwest_Colony)
+"fk" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft"
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/operating)
+"fq" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap_butt"
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/cells)
+"fs" = (
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "wall2"
+	},
+/area/kutjevo/exterior/complex_border/med_park)
+"fu" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/Northwest_Colony)
+"fA" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/pano)
+"fB" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"fD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"gm" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_10"
+	},
+/area/kutjevo/exterior/scrubland)
+"go" = (
+/turf/closed/wall/kutjevo/rock/border,
+/area/kutjevo/interior/oob)
+"gs" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"gx" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -24;
+	start_charge = 0
+	},
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 8
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"gD" = (
+/obj/item/ammo_box/magazine/misc/flares{
+	pixel_x = -7;
+	pixel_y = 16
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"gJ" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"hg" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe4";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"hl" = (
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/oob)
+"hm" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/exterior/Northwest_Colony)
+"hD" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"hP" = (
+/turf/open/gm/dirtgrassborder2{
+	dir = 8
+	},
+/area/kutjevo/exterior/complex_border/med_park)
+"hS" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/cells)
+"hY" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
+"if" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/fire{
+	pixel_x = 10;
+	pixel_y = 32
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0;
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"iv" = (
+/obj/effect/decal/cleanable/generic,
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"iA" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/structure/bed/roller,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"iD" = (
+/obj/structure/prop/dam/truck/mining,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/Northwest_Colony)
+"iS" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/complex/med/operating)
+"iT" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib6"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"iX" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"jd" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"jf" = (
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"jn" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_full";
+	pixel_y = 16
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/auto_doc)
+"jt" = (
+/obj/structure/window_frame/kutjevo,
+/obj/item/shard{
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/pano)
+"jv" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib4"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"jy" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/complex/med/pano)
+"jB" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 1
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_23"
+	},
+/area/kutjevo/exterior/scrubland)
+"jF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "twe1";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"jG" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/gm/dirtgrassborder2{
+	dir = 8
+	},
+/area/kutjevo/exterior/complex_border/med_park)
+"jM" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/complex_border/med_park)
+"jO" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/complex_border/med_park)
+"ke" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgibarm"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/cells)
+"kj" = (
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/cells)
+"kq" = (
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/complex/med/operating)
+"kA" = (
+/obj/structure/bed/sofa/vert/white/bot,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/med/auto_doc)
+"kC" = (
+/obj/structure/surface/table/reinforced/prison{
+	indestructible = 1
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_medlock_we";
+	idle_power_usage = 0;
+	name = "Medical West Lock Override";
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/med/pano)
+"kF" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/exterior/Northwest_Colony)
+"kM" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe_leftengine";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"kS" = (
+/turf/open/gm/dirtgrassborder2{
+	dir = 1
+	},
+/area/kutjevo/exterior/complex_border/med_park)
+"lj" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/operating)
+"ll" = (
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/exterior/Northwest_Colony)
+"lp" = (
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"lw" = (
+/obj/structure/bed/sofa/vert/white/bot,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/med)
+"lB" = (
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"lF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/exterior/Northwest_Colony)
+"lH" = (
+/obj/item/trash/used_stasis_bag,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"mg" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/auto_doc)
+"ml" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"ms" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
+"my" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 50;
+	icon_state = "folding_3"
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"mJ" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/exterior/Northwest_Colony)
+"mK" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/gm/dirt2,
+/area/kutjevo/exterior/complex_border/med_park)
+"mL" = (
+/obj/structure/fence,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/Northwest_Colony)
+"na" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/operating)
+"ni" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"nk" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/item/attachable/flashlight,
+/obj/item/tool/screwdriver{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"no" = (
+/obj/item/device/walkman{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"nr" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -7;
+	pixel_y = 24
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_3";
+	opacity = 0;
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"nS" = (
+/obj/effect/spawner/random/toolbox{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge,
+/area/kutjevo/interior/complex/med)
+"nZ" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
+"ob" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"oj" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe21";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"on" = (
+/obj/structure/bed/sofa/vert/white/top{
+	pixel_y = 17
+	},
+/obj/structure/bed/sofa/vert/white,
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"op" = (
+/obj/structure/largecrate/random,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"ox" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/structure/window_frame/kutjevo,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
+"oA" = (
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"oG" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 12
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"oO" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = 10;
+	pixel_y = 32
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0;
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"oR" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman/heap{
+	current_rounds = 0
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"oW" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap"
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/largecrate/supply/medicine/blood,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/cells)
+"oZ" = (
+/obj/structure/bed/stool{
+	pixel_y = 8
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/complex/med/operating)
+"pk" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"pq" = (
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"py" = (
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
+"pM" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge,
+/area/kutjevo/interior/complex/med/auto_doc)
+"pR" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/interior/complex/med)
+"qh" = (
+/obj/structure/prop/dam/truck/damaged,
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
+"qi" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/med/auto_doc)
+"qm" = (
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"qp" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"qC" = (
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/complex_border/med_park)
+"qE" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"qG" = (
+/obj/structure/surface/table/almayer,
+/obj/item/book/manual/surgery,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner{
+	dir = 8
+	},
+/area/kutjevo/interior/complex/med/operating)
+"qT" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"qU" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"qV" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopleft"
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"qY" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/pano)
+"rc" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"rj" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"rA" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/gm/river/desert/deep/covered,
+/area/kutjevo/interior/complex/med/operating)
+"rF" = (
+/obj/item/shard/shrapnel,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"rH" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"rM" = (
+/obj/structure/machinery/medical_pod/autodoc,
+/turf/open/floor/kutjevo/colors/cyan/edge,
+/area/kutjevo/interior/complex/med/auto_doc)
+"rP" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"rQ" = (
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/structure/closet/crate/secure/ammo,
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
+"sg" = (
+/obj/item/frame/table/almayer{
+	pixel_y = 16
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/operating)
+"sj" = (
+/obj/structure/closet/secure_closet/medical3{
+	req_access = null
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/storage/pill_bottle/tramadol/skillless,
+/obj/structure/platform/kutjevo/smooth,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/kutjevo/interior/complex/med/operating)
+"sq" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/operating)
+"sv" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = 30
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"sx" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"sy" = (
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 4
+	},
+/area/kutjevo/interior/complex/med)
+"sC" = (
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/complex/med/operating)
+"sD" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/item/storage/secure/briefcase,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"sG" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/operating)
+"sI" = (
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/complex/med/pano)
+"sU" = (
+/obj/structure/bed/sofa/vert/white,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"tk" = (
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/Northwest_Colony)
+"tm" = (
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"tz" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_sn_full_cap";
+	pixel_y = 16
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/auto_doc)
+"tY" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe3";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/pano)
+"uc" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"uj" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -6;
+	pixel_y = 32
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0;
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"uo" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner,
+/area/kutjevo/interior/complex/med/auto_doc)
+"uA" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib1"
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"uB" = (
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_x = -8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light,
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/kutjevo/interior/complex/med/operating)
+"uM" = (
+/obj/effect/decal/kutjevo_decals/catwalk,
+/turf/open/floor/greengrid,
+/area/kutjevo/interior/complex/med/operating)
+"uO" = (
+/obj/structure/largecrate/random,
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
+"vg" = (
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman{
+	current_rounds = 0
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/cells)
+"vs" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/complex/med/operating)
+"vu" = (
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"vw" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"vx" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 8;
+	id = "kutjevo_medlock_we";
+	name = "\improper Medical West Shutters"
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/kutjevo/interior/complex/med/auto_doc)
+"vD" = (
+/obj/item/device/flashlight/flare/on,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"vI" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"vN" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/platform_decoration/kutjevo,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/complex/med/operating)
+"vQ" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"wb" = (
+/obj/structure/window/framed/kutjevo,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/operating)
+"wc" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"wg" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"wi" = (
+/obj/structure/barricade/sandbags{
+	dir = 8
+	},
+/obj/item/prop/helmetgarb/trimmed_wire,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"wj" = (
+/obj/item/shard{
+	pixel_x = -11;
+	pixel_y = 13
+	},
+/obj/structure/window_frame/kutjevo,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/pano)
+"wl" = (
+/obj/structure/barricade/plasteel/metal,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"wn" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"wA" = (
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med)
+"wD" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/cells)
+"wE" = (
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/Northwest_Colony)
+"wH" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"wP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"xa" = (
+/obj/item/ammo_box/magazine/misc/flares{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"xf" = (
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/kutjevo/interior/oob)
+"xo" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"xr" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/auto_doc)
+"xF" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 15
+	},
+/turf/open/shuttle/dropship,
+/area/kutjevo/interior/complex/med/auto_doc)
+"ye" = (
+/turf/open/floor/coagulation{
+	icon_state = "8,0"
+	},
+/area/kutjevo/exterior/scrubland)
+"yw" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/structure/machinery/photocopier,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"yx" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 1
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_7"
+	},
+/area/kutjevo/exterior/scrubland)
+"yC" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/exterior/Northwest_Colony)
+"yE" = (
+/obj/structure/platform_decoration/kutjevo/rock,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgibhead"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"yI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"yK" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"yN" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"yS" = (
+/obj/structure/window_frame/kutjevo,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
+"yT" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"yZ" = (
+/turf/open/floor/coagulation{
+	icon_state = "8,8"
+	},
+/area/kutjevo/exterior/scrubland)
+"zc" = (
+/obj/structure/flora/bush/ausbushes/ppflowers{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"zz" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"zB" = (
+/obj/item/device/defibrillator,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"zD" = (
+/obj/structure/window_frame/kutjevo,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
+"zE" = (
+/obj/effect/spawner/random/toolbox{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"zJ" = (
+/obj/structure/bed/stool,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"zK" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"zL" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/operating)
+"zP" = (
+/obj/structure/prop/dam/truck/mining,
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
+"Ac" = (
+/obj/structure/machinery/light,
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Ad" = (
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"Ag" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/machinery/optable,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/kutjevo/burst,
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 8
+	},
+/area/kutjevo/interior/complex/med/operating)
+"Ai" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 1
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Ak" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Ao" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
+"Ar" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe27";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"AI" = (
+/obj/structure/window/framed/kutjevo,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
+"AJ" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/operating)
+"Bf" = (
+/obj/structure/machinery/body_scanconsole,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
+"BC" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomleft"
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/operating)
+"BD" = (
+/turf/open/floor/coagulation{
+	icon_state = "0,8"
+	},
+/area/kutjevo/exterior/scrubland)
+"BG" = (
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"BI" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/cells)
+"BJ" = (
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"BM" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"BV" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/exterior/Northwest_Colony)
+"Cc" = (
+/turf/open/floor/kutjevo/colors/cyan/inner_corner{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/operating)
+"Ck" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/overwatch/almayer/broken{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 1
+	},
+/obj/item/clothing/head/headset{
+	pixel_x = 3;
+	name = "\improper headset"
+	},
+/obj/item/clothing/head/beret/royal_marine/team_leader{
+	pixel_x = 10;
+	pixel_y = 7
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin6"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Cn" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner,
+/area/kutjevo/interior/complex/med/operating)
+"Cr" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Cz" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 50;
+	icon_state = "folding_3"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"CH" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/exterior/scrubland)
+"CM" = (
+/obj/structure/machinery/autodoc_console,
+/obj/structure/machinery/light,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_3"
+	},
+/turf/open/floor/kutjevo/colors/cyan/inner_corner{
+	dir = 8
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"CQ" = (
+/obj/item/explosive/grenade/incendiary/rmc,
+/obj/item/explosive/grenade/incendiary/rmc,
+/obj/structure/closet/crate/ammo/alt/flame,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"CU" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/complex/med/pano)
+"CZ" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Db" = (
+/obj/item/stack/sandbags/large_stack,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Dj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman/heap{
+	current_rounds = 0
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Do" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Dt" = (
+/turf/open/gm/dirt2,
+/area/kutjevo/exterior/complex_border/med_park)
+"Du" = (
+/obj/structure/closet/secure_closet/medical3{
+	req_access = null
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/storage/pill_bottle/kelotane/skillless,
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo/smooth,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/complex/med/operating)
+"Dw" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/operating)
+"DD" = (
+/obj/item/stack/barbed_wire/small_stack,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"DG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder/displaced,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"DJ" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"DL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/rmc_f90/heap{
+	current_rounds = 0
+	},
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	layer = 2;
+	name = "weak acid"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"DT" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/gm/river/desert/deep/covered,
+/area/kutjevo/interior/complex/med/operating)
+"DW" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Er" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"Ev" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0;
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Ew" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"EA" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe2";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"EC" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"EO" = (
+/obj/structure/surface/table/reinforced/prison{
+	indestructible = 1
+	},
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	indestructible = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/med/pano)
+"Fe" = (
+/obj/structure/bed/sofa/vert/white/top{
+	pixel_y = 17
+	},
+/obj/structure/bed/sofa/vert/white,
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med)
+"Fn" = (
+/obj/structure/platform_decoration/kutjevo/rock,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Fp" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/complex/med/operating)
+"Ft" = (
+/turf/open/floor/coagulation{
+	icon_state = "8,3"
+	},
+/area/kutjevo/exterior/scrubland)
+"FB" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"FF" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Skylon Airlock"
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"FT" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med)
+"FV" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_5"
+	},
+/area/kutjevo/exterior/scrubland)
+"FX" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/computer/guestpass{
+	dir = 4;
+	pixel_y = 7
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = -7
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
+"FZ" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Ge" = (
+/obj/structure/flora/bush/ausbushes/ppflowers{
+	icon_state = "fullgrass_3"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"Gg" = (
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Gw" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/pano)
+"GC" = (
+/obj/item/ammo_box/rounds/incen/empty,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"GD" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"GG" = (
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/structure/closet/crate/ammo/alt,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"GP" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge{
+	dir = 4
+	},
+/area/kutjevo/interior/complex/med)
+"GT" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/door/window/eastright{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/phone{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/obj/structure/machinery/computer/objective{
+	dir = 4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
+"Hb" = (
+/turf/open/floor/kutjevo/tan/grey_inner_edge{
+	dir = 4
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Hh" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Hp" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_11"
+	},
+/area/kutjevo/exterior/scrubland)
+"Hu" = (
+/turf/open/floor/coagulation{
+	icon_state = "7,8-2"
+	},
+/area/kutjevo/exterior/scrubland)
+"HK" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/auto_doc)
+"HO" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"HP" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Ih" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/pano)
+"Iq" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"It" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"ID" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe20";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"IE" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/kutjevo/interior/complex/med)
+"IN" = (
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/scrubland)
+"IZ" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_23"
+	},
+/area/kutjevo/exterior/scrubland)
+"Ja" = (
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/exterior/Northwest_Colony)
+"Jc" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Jh" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/operating)
+"Jk" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Jv" = (
+/obj/effect/landmark/corpsespawner/wygoon,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/operating)
+"JI" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgibmid1"
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"JM" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"JX" = (
+/obj/structure/platform/kutjevo,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"JY" = (
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/exterior/Northwest_Colony)
+"Kc" = (
+/obj/structure/platform/kutjevo,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/complex_border/med_park)
+"Kg" = (
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Kw" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/cells)
+"KA" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir"
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/operating)
+"KC" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"KH" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"KV" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/machinery/smartfridge/chemistry,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft"
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/operating)
+"Ld" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/kutjevo_decals/catwalk,
+/turf/open/floor/greengrid,
+/area/kutjevo/interior/complex/med/operating)
+"Lg" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_3"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/cells)
+"Lk" = (
+/turf/open/gm/dirtgrassborder2{
+	dir = 4
+	},
+/area/kutjevo/exterior/complex_border/med_park)
+"Lp" = (
+/turf/open/floor/kutjevo/colors/cyan/edge,
+/area/kutjevo/interior/complex/med/operating)
+"Ly" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner{
+	dir = 8
+	},
+/area/kutjevo/interior/complex/med/operating)
+"Lz" = (
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/pano)
+"LF" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"LI" = (
+/obj/structure/bed/chair,
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"LS" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_y = 13
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"LW" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Mc" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Me" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
+"Mf" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/cells)
+"Mh" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe1";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Mm" = (
+/obj/structure/window/framed/kutjevo,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/operating)
+"Mz" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib2"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"MA" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"MB" = (
+/obj/item/stack/rods,
+/obj/structure/girder/displaced,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"MK" = (
+/obj/item/ammo_box/rounds/heap/empty,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"MO" = (
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Ni" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"No" = (
+/turf/open/floor/coagulation{
+	icon_state = "0,0"
+	},
+/area/kutjevo/exterior/scrubland)
+"Nr" = (
+/obj/item/stack/sandbags/small_stack,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"NW" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/exterior/scrubland)
+"Of" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Oh" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/complex_border/med_park)
+"Oj" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/item/storage/belt/utility,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin7"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Ok" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib5"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/cells)
+"Ou" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"OB" = (
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"OY" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/exterior/Northwest_Colony)
+"Pe" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_10"
+	},
+/area/kutjevo/exterior/scrubland)
+"Pg" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Po" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Pt" = (
+/obj/effect/acid_hole,
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/complex/med)
+"Px" = (
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo,
+/obj/structure/filtration/machine_96x96/indestructible{
+	icon_state = "disinfection";
+	layer = 3.5
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/complex_border/med_park)
+"PB" = (
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/exterior/Northwest_Colony)
+"PC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"PF" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"PM" = (
+/obj/structure/window/framed/kutjevo,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
+"PT" = (
+/obj/structure/platform_decoration/kutjevo/rock,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"PZ" = (
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "wall3"
+	},
+/area/kutjevo/exterior/complex_border/med_park)
+"Qa" = (
+/obj/structure/surface/table/reinforced/prison{
+	indestructible = 1
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_medlock_south2";
+	idle_power_usage = 0;
+	name = "Medical Secondary South Lock Override";
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/med/pano)
+"Qj" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Qr" = (
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/operating)
+"Qw" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
+"Qy" = (
+/turf/open/gm/dirtgrassborder2,
+/area/kutjevo/exterior/complex_border/med_park)
+"QB" = (
+/turf/open/gm/river/desert/deep/covered,
+/area/kutjevo/exterior/scrubland)
+"QE" = (
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/structure/closet/crate/secure/ammo,
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
+"QN" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"QO" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/pano)
+"RB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"RF" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"RS" = (
+/obj/structure/largecrate/random{
+	layer = 2.9
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Sg" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"So" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/operating)
+"Sr" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/map/kutjevo_map,
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = 3;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin4"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Sv" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_7"
+	},
+/area/kutjevo/exterior/scrubland)
+"Sy" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
+"SA" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/pano)
+"SE" = (
+/obj/structure/flora/bush/ausbushes/ppflowers{
+	icon_state = "brflowers_1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"SO" = (
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/med)
+"SQ" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
+"SY" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_ew_full_cap_butt"
+	},
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/scrubland)
+"Tc" = (
+/obj/item/clothing/suit/armor/vest/security,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/cells)
+"Th" = (
+/obj/structure/girder,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Ti" = (
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Tm" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"Tn" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"Ts" = (
+/obj/structure/window/framed/kutjevo,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/pano)
+"Tt" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"TB" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"TI" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/scrubland)
+"TJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe25";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"TS" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/effect/spawner/gibspawner/human,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Ud" = (
+/obj/structure/surface/table/reinforced/prison{
+	indestructible = 1
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_medlock_ne";
+	idle_power_usage = 0;
+	name = "Medical North East Lock Override";
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/med/pano)
+"Ue" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
+"UD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/shuttle/ert{
+	icon_state = "twe5";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"UL" = (
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/kutjevo/interior/complex/med/pano)
+"UW" = (
+/obj/structure/surface/table/reinforced/prison{
+	indestructible = 1
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_medlock_mid";
+	idle_power_usage = 0;
+	name = "Medical Central Lock Override";
+	pixel_y = 4
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc{
+	dir = 4;
+	pixel_x = 29;
+	start_charge = 0
+	},
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/complex/med/pano)
+"Vf" = (
+/obj/structure/bed/sofa/vert/white,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"Vj" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/pano)
+"Vr" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib3"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"Vv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Vx" = (
+/obj/structure/largecrate/random/secure{
+	pixel_x = -7
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Vz" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/auto_doc)
+"VA" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/computerframe,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"VB" = (
+/obj/structure/flora/bush/ausbushes/ppflowers{
+	icon_state = "sparsegrass_2"
+	},
+/turf/open/gm/dirt2,
+/area/kutjevo/exterior/complex_border/med_park)
+"VF" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe5";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"VK" = (
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/exterior/Northwest_Colony)
+"VN" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomleft"
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"VO" = (
+/obj/structure/girder,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Wk" = (
+/obj/structure/machinery/light/double{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin6"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Wr" = (
+/turf/open/floor/kutjevo/colors/cyan/edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/operating)
+"WL" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2";
+	opacity = 0;
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"WQ" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/interior/complex/med/auto_doc)
+"WW" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"WY" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Xo" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/surgical_tray,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/operating)
+"Xq" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/cells)
+"XA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"XD" = (
+/turf/closed/shuttle/ert{
+	icon_state = "twe3";
+	name = "Skylon"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"XF" = (
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/exterior/scrubland)
+"XP" = (
+/obj/structure/largecrate/supply/medicine,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"XR" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"XS" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"XY" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/kutjevo/tan/grey_inner_edge{
+	dir = 8
+	},
+/area/kutjevo/interior/complex/med)
+"Yg" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"Yi" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/kutjevo/grey,
+/area/kutjevo/interior/complex/med)
+"Yr" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/kutjevo/tan/grey_edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med)
+"YA" = (
+/turf/open/shuttle/dropship,
+/area/kutjevo/interior/complex/med/auto_doc)
+"YC" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"YS" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"YW" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med)
+"Zi" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/gm/river/desert/deep/covered,
+/area/kutjevo/interior/complex/med/operating)
+"Zt" = (
+/obj/structure/machinery/light,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Zu" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin7"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"Zw" = (
+/obj/structure/flora/bush/ausbushes/ppflowers{
+	icon_state = "lavendergrass_1"
+	},
+/mob/living/simple_animal/cat/Runtime{
+	name = "Garry"
+	},
+/turf/open/gm/dirtgrassborder2{
+	dir = 8
+	},
+/area/kutjevo/exterior/complex_border/med_park)
+"ZB" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"ZD" = (
+/obj/structure/closet/secure_closet/medical2,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/operating)
+"ZI" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner,
+/area/kutjevo/interior/complex/med/operating)
+"ZL" = (
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman{
+	current_rounds = 0
+	},
+/turf/open/floor/plating,
+/area/kutjevo/interior/complex/med/auto_doc)
+"ZM" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/cells)
+"ZT" = (
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/cells)
+"ZW" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/kutjevo_decals/catwalk,
+/turf/open/floor/greengrid,
+/area/kutjevo/interior/complex/med/operating)
+"ZX" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner{
+	dir = 4
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"ZZ" = (
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/complex/med/auto_doc)
+
+(1,1,1) = {"
+tk
+tk
+jf
+Ao
+Ao
+Ao
+Ao
+Ti
+lp
+lp
+Ad
+Ad
+Ad
+Ti
+Ad
+Ad
+Ad
+Ad
+Me
+Me
+ni
+Ad
+Ad
+Ti
+Ti
+lp
+Ad
+Ti
+Fn
+ZB
+ZB
+ZB
+WW
+Do
+ef
+DJ
+"}
+(2,1,1) = {"
+tk
+tk
+Ao
+Ao
+Ao
+Ao
+Ao
+Ti
+lp
+lp
+Ad
+Ad
+Ti
+lp
+Ti
+Ti
+Ad
+Me
+Me
+Me
+Ad
+Ad
+Ti
+Ti
+Ti
+Ti
+Ad
+Ad
+am
+Pe
+IZ
+jB
+KH
+lp
+Ti
+Ti
+"}
+(3,1,1) = {"
+jf
+jf
+Ao
+Ao
+Ao
+Ao
+Ao
+Ti
+Ad
+Ad
+Ad
+ni
+CH
+CH
+CH
+Ad
+Ad
+Me
+Me
+Me
+lp
+lp
+pk
+Ti
+lp
+Vr
+Ad
+ni
+am
+Sv
+Hp
+sx
+Er
+Ti
+Ti
+Ti
+"}
+(4,1,1) = {"
+jf
+jf
+Ao
+Ao
+Ao
+Ao
+Ao
+lp
+Ti
+JM
+Ad
+CH
+CH
+lp
+lp
+lp
+Ad
+Ad
+zP
+Me
+Ad
+Ti
+Ti
+Ti
+Ti
+Ti
+Ti
+Ti
+am
+Hp
+sx
+Er
+lp
+Ad
+Ad
+Ad
+"}
+(5,1,1) = {"
+jf
+jf
+jf
+Ao
+Ao
+Ao
+Ao
+lp
+Ti
+Ad
+Ad
+CH
+lp
+lp
+Ad
+Ad
+Ad
+Me
+Me
+Me
+Ad
+Ti
+Ad
+Ad
+lp
+Ti
+yK
+Ad
+Do
+wg
+Ak
+lp
+Mz
+Ad
+Ad
+Ti
+"}
+(6,1,1) = {"
+jf
+jf
+jf
+Ao
+Ao
+Ao
+Ao
+Ti
+Ad
+Ad
+Ti
+Ad
+lp
+Ad
+Ad
+Ti
+Ad
+uO
+rQ
+Ad
+Ad
+Ad
+lp
+lp
+Ti
+lp
+lp
+lp
+rP
+Ad
+Ti
+Ti
+Tt
+Ti
+Ti
+Ti
+"}
+(7,1,1) = {"
+jf
+jf
+jf
+Ao
+Ao
+Ao
+Ao
+Ti
+Ti
+Ti
+Ti
+Gg
+pq
+pq
+pq
+Pg
+Ad
+Me
+Me
+Me
+Ad
+qU
+Ti
+CH
+CH
+CH
+Ti
+hD
+wi
+Ti
+Tn
+qp
+Ti
+Ad
+Ad
+Ad
+"}
+(8,1,1) = {"
+jf
+jf
+jf
+Ao
+Ao
+Ao
+Ao
+lp
+Ti
+Ti
+Ad
+JX
+BD
+aV
+No
+QN
+Ad
+QE
+Me
+Me
+lp
+Ti
+Ad
+CH
+CH
+CH
+CH
+bH
+lp
+Yg
+Tt
+Ti
+Ti
+Ti
+Ad
+Ad
+"}
+(9,1,1) = {"
+tk
+tk
+jf
+Ao
+Ao
+Ao
+Ao
+lp
+Ad
+Ad
+Ad
+JX
+Hu
+QB
+cq
+QN
+Ad
+Me
+Me
+Me
+Ad
+Ad
+CH
+CH
+CH
+CH
+CH
+Ti
+lp
+lp
+Ad
+Ti
+wc
+Ad
+yE
+ZB
+"}
+(10,1,1) = {"
+wE
+jf
+jf
+jf
+wE
+Ao
+Ao
+Ti
+Ad
+Ad
+Ad
+JX
+yZ
+Ft
+ye
+QN
+Ad
+Me
+Me
+Me
+Ad
+op
+CH
+CH
+CH
+CH
+CH
+CH
+oR
+XS
+MA
+EC
+PT
+ZB
+ba
+gm
+"}
+(11,1,1) = {"
+jf
+jf
+jf
+jf
+wE
+Ao
+Ao
+Ti
+Ad
+Ad
+Ad
+Jc
+MO
+IN
+MO
+jd
+Ad
+Me
+Me
+Me
+Ad
+Ti
+CH
+CH
+CH
+CH
+CH
+CH
+Tt
+dA
+Ad
+Ad
+am
+Pe
+FV
+yx
+"}
+(12,1,1) = {"
+jf
+wE
+tk
+jf
+wE
+Ao
+Ao
+Ao
+Ti
+Ti
+Ad
+Ti
+Ti
+IN
+Ti
+Ad
+Ad
+Me
+Me
+Ad
+Ad
+Ti
+CH
+CH
+CH
+CH
+CH
+CH
+Ti
+Ad
+Ad
+ej
+am
+Sv
+CH
+CH
+"}
+(13,1,1) = {"
+jf
+wE
+tk
+jf
+tk
+Ao
+Ao
+Ao
+Ao
+Ad
+Ti
+Ti
+Ti
+IN
+Ti
+lp
+Ad
+Me
+qh
+Ad
+Ad
+CH
+CH
+CH
+NW
+NW
+NW
+Iq
+Ti
+iX
+Ti
+Of
+CH
+CH
+CH
+CH
+"}
+(14,1,1) = {"
+jf
+jf
+jf
+jf
+jf
+jf
+Ao
+hl
+Ao
+lp
+Ti
+Gg
+pq
+IN
+pq
+zz
+Ad
+Me
+Me
+Me
+Ad
+CH
+CH
+CH
+NW
+NW
+NW
+SY
+TI
+TI
+TI
+TI
+NW
+CH
+CH
+CH
+"}
+(15,1,1) = {"
+Ao
+jf
+jf
+jf
+jf
+tk
+Ja
+hl
+XF
+lp
+Ad
+JX
+BD
+aV
+No
+QN
+Ad
+Me
+Me
+Me
+lp
+CH
+CH
+CH
+NW
+NW
+WQ
+vx
+vx
+vx
+vx
+vx
+WQ
+CH
+CH
+CH
+"}
+(16,1,1) = {"
+Ao
+Ao
+iD
+tk
+jf
+tk
+Ja
+mL
+XF
+Ti
+Ad
+JX
+Hu
+QB
+cq
+QN
+yN
+Me
+xo
+XA
+It
+CH
+CH
+CH
+NW
+NW
+WQ
+BM
+Kg
+qi
+Kg
+Zt
+WQ
+CH
+CH
+CH
+"}
+(17,1,1) = {"
+xf
+xf
+tk
+fu
+jf
+tk
+cK
+mL
+XF
+Ti
+Ad
+JX
+yZ
+Ft
+ye
+QN
+vu
+BJ
+XA
+BJ
+HP
+ob
+qE
+dj
+LW
+Po
+WQ
+vx
+vx
+vx
+vx
+vx
+WQ
+WQ
+WQ
+WQ
+"}
+(18,1,1) = {"
+VK
+VK
+OY
+tk
+jf
+tk
+Ja
+mL
+XF
+Ad
+Ad
+RF
+MO
+MO
+MO
+jd
+kM
+nr
+if
+Ev
+HP
+Qj
+FZ
+fB
+XR
+ml
+Po
+dI
+PF
+OB
+zK
+Kg
+uo
+gx
+ZX
+WQ
+"}
+(19,1,1) = {"
+lF
+ll
+yC
+tk
+jf
+tk
+Ja
+PB
+XF
+Ad
+Ad
+tm
+Vv
+tm
+Vv
+BJ
+BJ
+BJ
+BJ
+HP
+ml
+Mc
+iv
+ZL
+DW
+zB
+PC
+gD
+OB
+WY
+YS
+Db
+uc
+by
+rM
+WQ
+"}
+(20,1,1) = {"
+JY
+hm
+BV
+tk
+jf
+tk
+kF
+mL
+XF
+Ad
+BJ
+BJ
+ml
+vw
+ID
+hg
+hg
+hg
+hg
+hg
+hg
+hg
+hg
+jF
+RB
+iA
+ml
+ml
+qE
+OB
+OB
+vI
+qT
+cS
+CM
+WQ
+"}
+(21,1,1) = {"
+mJ
+OY
+VK
+jf
+jf
+jf
+fe
+mL
+XF
+tm
+BJ
+ID
+hg
+hg
+oj
+Ck
+Sr
+GG
+CZ
+CZ
+CZ
+CZ
+Wk
+Dj
+tm
+XA
+Vv
+tm
+OB
+tm
+OB
+Kg
+xr
+ZZ
+HK
+WQ
+"}
+(22,1,1) = {"
+xf
+xf
+jf
+jf
+jf
+jf
+Ja
+mL
+XF
+tm
+ml
+Ar
+VA
+TS
+oj
+Zu
+aP
+nk
+Ni
+cC
+Ni
+GC
+xF
+cZ
+HO
+tm
+oG
+BJ
+tm
+OB
+OB
+Kg
+mg
+tz
+Kg
+Sg
+"}
+(23,1,1) = {"
+Ao
+Ao
+wE
+tk
+tk
+jf
+Ja
+PB
+XF
+tm
+BJ
+Ar
+fd
+TB
+FF
+Ai
+Ni
+eF
+xa
+Ni
+TB
+no
+YA
+cZ
+tm
+XA
+tm
+tm
+vD
+WY
+OB
+DD
+mg
+jn
+OB
+jv
+"}
+(24,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+tk
+wE
+Ao
+aj
+yN
+BJ
+tm
+TJ
+VF
+VF
+oj
+sD
+CQ
+wH
+sv
+gs
+gs
+gs
+Oj
+Ew
+lH
+tm
+MK
+Kg
+BJ
+tm
+WY
+bX
+Jk
+jn
+Hh
+OB
+"}
+(25,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+wE
+Ao
+Ao
+eL
+Cn
+dH
+wP
+dy
+tm
+ml
+TJ
+VF
+LF
+LF
+VF
+VF
+VF
+UD
+VF
+XD
+tm
+Mh
+tm
+OB
+YS
+OB
+OB
+Kg
+Vz
+dp
+Kg
+Kg
+"}
+(26,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+Ao
+Ao
+Ao
+eL
+Wr
+kq
+fD
+BJ
+HP
+vw
+tm
+yI
+ml
+DG
+yT
+Qj
+MB
+VO
+oO
+eB
+XD
+tm
+tm
+OB
+rH
+OB
+OB
+Cr
+ZZ
+pM
+fc
+Hb
+"}
+(27,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+Ao
+Ao
+Ao
+eL
+zL
+Fp
+BJ
+tm
+vw
+tm
+tm
+dy
+yI
+DG
+dj
+dv
+WL
+uj
+tm
+ag
+vQ
+rH
+Vv
+cA
+OB
+BJ
+Vx
+Ac
+ZZ
+on
+sU
+kA
+"}
+(28,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+Ao
+Ao
+eL
+eL
+AI
+Mm
+aM
+ml
+Vv
+dy
+KC
+BJ
+XA
+ml
+yI
+FB
+EA
+BJ
+XA
+yT
+Vv
+rF
+DL
+WY
+wn
+RS
+bx
+XP
+ZZ
+FT
+oA
+SO
+"}
+(29,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+Ao
+Ao
+eL
+nZ
+ZI
+Ag
+ml
+XA
+zJ
+ml
+ml
+ml
+wP
+eS
+Th
+Qj
+tY
+Vj
+QO
+SA
+Lz
+Lg
+BI
+Ok
+Nr
+ez
+ez
+ez
+ez
+Fe
+Vf
+lw
+"}
+(30,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+Ao
+Ao
+eL
+Bf
+Wr
+vs
+Lp
+na
+AJ
+sG
+py
+Dw
+XA
+ml
+ml
+ml
+Gw
+Qa
+kC
+qY
+jt
+VN
+Kw
+Kw
+qV
+ox
+IE
+eR
+ez
+FT
+oA
+SO
+"}
+(31,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+Ao
+go
+eL
+ms
+Xo
+at
+qG
+eL
+ZD
+Jv
+py
+Wr
+Lp
+KA
+oZ
+sg
+bd
+EO
+jy
+sI
+Ts
+uA
+ZM
+kj
+my
+PM
+zE
+oA
+ez
+Fe
+Vf
+lw
+"}
+(32,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+go
+go
+eL
+eL
+sq
+sq
+sq
+aj
+aj
+aj
+SQ
+lj
+Lp
+KA
+sC
+vN
+wj
+Ud
+UW
+CU
+Ts
+Tm
+kj
+dY
+qm
+PM
+oA
+bq
+ez
+FT
+oA
+SO
+"}
+(33,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+go
+go
+BG
+Qy
+kS
+rc
+LS
+GD
+PZ
+wb
+Zi
+Cc
+Ly
+BC
+fk
+KV
+UL
+Ih
+UL
+fA
+UL
+rj
+kj
+ke
+lB
+ez
+YC
+Cz
+yS
+Yr
+oA
+SO
+"}
+(34,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+go
+LI
+zc
+Qy
+kS
+fs
+Ge
+SE
+gJ
+wb
+DT
+py
+py
+py
+py
+Qw
+hY
+Du
+cy
+fq
+oW
+Xq
+kj
+kj
+wl
+Ue
+iT
+cQ
+Pt
+YW
+sy
+XY
+"}
+(35,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+go
+bY
+Lk
+jM
+Px
+bY
+Lk
+Lk
+Lk
+wb
+DT
+py
+Qr
+Jh
+Qr
+Qr
+py
+uB
+cy
+wD
+Tc
+qm
+kj
+kj
+Ou
+ez
+yw
+bq
+zD
+wA
+wA
+cX
+"}
+(36,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+go
+Dt
+Dt
+Oh
+Kc
+Dt
+Dt
+VB
+mK
+wb
+rA
+py
+Qr
+ZW
+uM
+So
+py
+aR
+cy
+hS
+vg
+JI
+kj
+kj
+my
+PM
+oA
+pR
+pR
+FX
+GT
+pR
+"}
+(37,1,1) = {"
+Ao
+Ao
+Ao
+Ao
+go
+Zw
+hP
+jO
+qC
+hP
+hP
+hP
+jG
+aj
+iS
+py
+Qr
+Ld
+uM
+Qr
+py
+sj
+cy
+Mf
+ZT
+qm
+kj
+ZM
+qm
+PM
+oA
+pR
+Yi
+nS
+GP
+Sy
+"}

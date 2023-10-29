@@ -2,5 +2,14 @@
     {
         "type": "map_sprinkle",
         "path": "sprinkles/"
-    }
+    },
+
+    {
+		"type": "map_insert",
+		"landmark": "rmccrash",
+		"chance": 0.5,
+		"path": "standalone/crashlanding-rmc-medical-bay.dmm",
+		"when": { "lvevent": "rmccrash" }
+	}
+
 ]

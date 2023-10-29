@@ -14558,6 +14558,15 @@
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
+"ueh" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 4
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "rmccrash"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "ueJ" = (
 /obj/structure/platform/kutjevo/rock,
 /turf/open/auto_turf/sand/layer0,
@@ -28657,7 +28666,7 @@ wix
 ciD
 pWe
 rZd
-laf
+ueh
 sYd
 sYd
 bXl

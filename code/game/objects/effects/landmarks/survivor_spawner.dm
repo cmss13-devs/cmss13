@@ -183,3 +183,30 @@
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
 	story_text = "Your orders were simple, Recon the site, ascertain if there is a biological weapons program in the area, and if so to secure the colony and retrieve a sample. However your team failed to account for an active anti-air battery near the area. Both your craft and your sister ship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of four of your own, but more are coming and ammo is low. You believe an American rescue force is en route."
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/rmc
+	equipment = /datum/equipment_preset/survivor/rmc
+	synth_equipment = /datum/equipment_preset/synth/survivor/rmc
+	intro_text = list("<h2>You are a member of a RMC response team!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive.</span>")
+	story_text = "Your orders were simple, Respond to the distress signal activated by the colony known as Kutjevo Refinery on the planet of LV-686, find out what the threat on the colony was, and assist the colonists. However your dropship suffered an engine malfunction and failed to land in an LZ in time and your dropship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of two of your own, but more are coming and ammo is low. You believe an USCM rescue force is en route."
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/rmc/specialist
+	equipment = /datum/equipment_preset/survivor/rmc/specialist
+	synth_equipment = /datum/equipment_preset/synth/survivor/rmc
+	intro_text = list("<h2>You are a member of a RMC response team!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive.</span>")
+	story_text = "Your orders were simple, Respond to the distress signal activated by the colony known as Kutjevo Refinery on the planet of LV-686, find out what the threat on the colony was, and assist the colonists. However your dropship suffered an engine malfunction and failed to land in an LZ in time and your dropship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of two of your own, but more are coming and ammo is low. You believe an USCM rescue force is en route."
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/rmc/team_leader
+	equipment = /datum/equipment_preset/survivor/rmc/team_leader
+	synth_equipment = /datum/equipment_preset/synth/survivor/rmc
+	intro_text = list("<h2>You are a member of a RMC response team!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive.</span>")
+	story_text = "Your orders were simple, Respond to the distress signal activated by the colony known as Kutjevo Refinery on the planet of LV-686, find out what the threat on the colony was, and assist the colonists. However your dropship suffered an engine malfunction and failed to land in an LZ in time and your dropship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of two of your own, but more are coming and ammo is low. You believe an USCM rescue force is en route."
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH

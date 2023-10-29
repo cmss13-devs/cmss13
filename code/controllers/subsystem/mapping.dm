@@ -247,7 +247,7 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/preload_tent_templates()
 	for(var/template in subtypesof(/datum/map_template/tent))
 		var/datum/map_template/tent/new_tent = new template()
-		tent_type_templates[new_tent] = new_tent.map_id
+		tent_type_templates[new_tent.map_id] = new_tent
 
 /datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override)
 	UNTIL(initialized && !clearing_reserved_turfs)

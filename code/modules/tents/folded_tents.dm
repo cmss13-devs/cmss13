@@ -16,13 +16,9 @@
 
 /obj/item/folded_tent/Initialize(mapload, ...)
 	. = ..()
-	if(template_preset == "abstract")
+	if(template_preset == "abstract") //So spawning an abstract tent wont fail create and destroy
 		return
-	var/all_tent_templates = SSmapping.tent_type_templates
-	for(var/datum/map_template/tent/tent in all_tent_templates)
-		if(tent.map_id == template_preset)
-			set_template(tent)
-			break
+	set_template(SSmapping.tent_type_templates[template_preset])
 	if(!template)
 		CRASH("[src] initialized with template preset, \"[template_preset]\", that does not exist.")
 

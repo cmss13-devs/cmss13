@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/map_templates = list()
 	///Name of all shuttles
 	var/list/shuttle_templates = list()
-	///typepath of all tents
+	///map_id of all tents
 	var/list/tent_type_templates = list()
 
 	var/list/areas_in_z = list()

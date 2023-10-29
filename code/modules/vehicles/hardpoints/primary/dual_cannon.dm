@@ -12,10 +12,9 @@
 	damage_multiplier = 0.2
 
 	health = 500
-	//cooldown = 7
-	//accuracy = 0.98
+	cooldown = 7
+	accuracy = 0.98
 	firing_arc = 60
-	//var/burst_amount = 2
 
 	origins = list(0, -2)
 

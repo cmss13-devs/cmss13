@@ -13,7 +13,6 @@
 	cooldown = 10
 	accuracy = 0.9
 	firing_arc = 120
-	//var/burst_amount = 3
 	//FPWs reload automatically
 	var/reloading = FALSE
 	var/reload_time = 10 SECONDS
@@ -36,7 +35,6 @@
 	extra_delay = -0.2 SECONDS
 	gun_firemode = GUN_FIREMODE_BURSTFIRE
 	gun_firemode_list = list(
-		GUN_FIREMODE_SEMIAUTO,
 		GUN_FIREMODE_BURSTFIRE,
 		GUN_FIREMODE_AUTOMATIC,
 	)

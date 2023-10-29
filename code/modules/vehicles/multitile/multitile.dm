@@ -323,7 +323,6 @@
 	return
 
 /obj/vehicle/multitile/set_seated_mob(seat, mob/living/M)
-	to_chat(M, "multitile set_seated_mob")
 	// Give/remove verbs
 	if(QDELETED(M))
 		var/mob/living/L = seats[seat]

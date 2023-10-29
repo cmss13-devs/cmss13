@@ -342,7 +342,6 @@
 
 /obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
-	//to_chat(source, "multitile crew_mouseup  [source]  [object]  [location]  [control]  [params]")
 	var/seat = get_mob_seat(source)
 	if(!seat)
 		return
@@ -356,8 +355,6 @@
 
 /obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
-	//to_chat(source, "multitile crew_mousedrag  [source]  [src_object]  [over_object]  [src_location]  [over_location]  [src_control]  [over_control]  [params]")
-
 	var/seat = get_mob_seat(source)
 	if(!seat)
 		return
@@ -371,8 +368,6 @@
 
 /obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
-	//to_chat(source, "multitile crew_mousedown  [source]  [object]  [location]  [control]  [params]")
-
 	var/seat = get_mob_seat(source)
 	if(!seat)
 		return

@@ -98,8 +98,8 @@
 	//maximum amount of spare mags
 	var/max_clips = 0
 
-	/** An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
-	that will be given to a projectile with the current ammo datum**/
+	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
+	/// that will be given to a projectile fired from the hardpoint
 	var/list/list/traits_to_give
 
 	//Firemodes.
@@ -146,7 +146,7 @@
 /obj/item/hardpoint/Initialize()
 	. = ..()
 	set_bullet_traits()
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(continue_fire)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(continue_fire)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing)))
 
 /obj/item/hardpoint/Destroy()
 	if(owner)
@@ -319,14 +319,14 @@
 				continue
 
 			// Make sure we can pass object from all directions
-			if(!CHECK_BITFIELD(O.pass_flags.flags_can_pass_all, PASS_OVER_THROW_ITEM))
-				if(!CHECK_BITFIELD(O.flags_atom, ON_BORDER))
+			if(!(O.pass_flags.flags_can_pass_all & PASS_OVER_THROW_ITEM))
+				if(!(O.flags_atom & ON_BORDER))
 					return FALSE
 				//If we're behind the object, check the behind pass flags
-				else if(dir == O.dir && !CHECK_BITFIELD(O.pass_flags.flags_can_pass_behind, PASS_OVER_THROW_ITEM))
+				else if(dir == O.dir && !(O.pass_flags.flags_can_pass_behind & PASS_OVER_THROW_ITEM))
 					return FALSE
 				//If we're in front, check front pass flags
-				else if(dir == turn(O.dir, 180) && !CHECK_BITFIELD(O.pass_flags.flags_can_pass_front, PASS_OVER_THROW_ITEM))
+				else if(dir == turn(O.dir, 180) && !(O.pass_flags.flags_can_pass_front & PASS_OVER_THROW_ITEM))
 					return FALSE
 
 		// Trace back towards the vehicle

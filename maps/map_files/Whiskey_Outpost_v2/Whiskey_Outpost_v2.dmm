@@ -166,6 +166,11 @@
 	},
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
+"aC" = (
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/whiskey_outpost/inside/cic)
 "aE" = (
 /obj/structure/bed,
 /obj/item/bedsheet/hop,
@@ -1042,7 +1047,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "WOlineshutters1";
-	name = "\improper Supply Depot Line 1"
+	name = "\improper Supply Depo Line 1"
 	},
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/supply)
@@ -3065,7 +3070,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "WOlineshutters2";
-	name = "\improper Supply Depot Line 2"
+	name = "\improper Supply Depo Line 2"
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -5026,7 +5031,7 @@
 "rM" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	dir = 2;
-	name = "\improper Supply Depot";
+	name = "\improper Supply Depo";
 	no_panel = 1;
 	not_weldable = 1
 	},
@@ -6501,7 +6506,7 @@
 "wV" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	dir = 8;
-	name = "\improper Supply Depot";
+	name = "\improper Supply Depo";
 	no_panel = 1;
 	not_weldable = 1
 	},
@@ -8629,6 +8634,10 @@
 	icon_state = "grass_impenetrable"
 	},
 /area/whiskey_outpost/outside/north/northwest)
+"EL" = (
+/obj/structure/machinery/cm_vending/gear/synth,
+/turf/open/floor/plating/plating_catwalk,
+/area/whiskey_outpost/inside/cic)
 "EN" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor{
@@ -10754,7 +10763,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "WOlineshutters1";
-	name = "\improper Supply Depot Line 1"
+	name = "\improper Supply Depo Line 1"
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -12390,7 +12399,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "WOlineshutters2";
-	name = "\improper Supply Depot Line 2"
+	name = "\improper Supply Depo Line 2"
 	},
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/supply)
@@ -12654,6 +12663,10 @@
 	icon_state = "asteroidwarning"
 	},
 /area/whiskey_outpost/outside/north)
+"WK" = (
+/obj/structure/machinery/cm_vending/own_points/experimental_tools,
+/turf/open/floor/plating/plating_catwalk,
+/area/whiskey_outpost/inside/cic)
 "WL" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /obj/structure/disposalpipe/segment{
@@ -19348,9 +19361,9 @@ mT
 mT
 mT
 mT
-mT
-mT
-mT
+ak
+ak
+ak
 mT
 mT
 mT
@@ -19551,7 +19564,7 @@ mT
 mT
 mT
 ak
-ak
+WK
 ak
 ak
 ak
@@ -19751,9 +19764,9 @@ mT
 mT
 mT
 mT
-mT
 ak
 ai
+aC
 qe
 ih
 Nr
@@ -19953,9 +19966,9 @@ mT
 mT
 mT
 mT
-mT
 ak
 Vy
+aC
 PB
 PM
 Ed
@@ -20157,7 +20170,7 @@ ak
 ak
 ak
 ak
-ak
+EL
 Mo
 Gx
 PM

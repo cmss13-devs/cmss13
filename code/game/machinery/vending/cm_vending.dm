@@ -37,8 +37,14 @@
 	var/vend_delay = 0 //delaying vending of an item (for drinks machines animation, for example). Make sure to synchronize this with animation duration
 	var/vend_sound //use with caution. Potential spam
 
+	/// X Offset to vend to
 	var/vend_x_offset = 0
+	/// Y Offset to vend to
 	var/vend_y_offset = 0
+	/// Vending direction from adjacent users, if not using vend_x_offset or vend_y_offset
+	var/vend_dir
+	/// Direction to adjacent user from which we're allowed to do offset vending
+	var/list/vend_dir_whitelist
 
 	var/list/listed_products = list()
 
@@ -125,11 +131,20 @@ GLOBAL_LIST_EMPTY(vending_products)
 			GLOB.vending_products[typepath] = 1
 
 //get which turf the vendor will dispense its products on.
-/obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf()
-	var/turf/T = loc
+/obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf(mob/living/carbon/human/user)
+	var/turf/turf = loc
 	if(vend_x_offset != 0 || vend_y_offset != 0) //this check should be more less expensive than using locate to locate your own tile every vending.
-		T = locate(x + vend_x_offset, y + vend_y_offset, z)
-	return T
+		turf = locate(x + vend_x_offset, y + vend_y_offset, z)
+		return turf
+	if(vend_dir)
+		if(vend_dir_whitelist)
+			var/user_dir = get_dir(loc, user)
+			if(!(user_dir in vend_dir_whitelist))
+				return turf
+		var/turf/relative_turf = get_step(user, vend_dir)
+		if(relative_turf.Adjacent(src))
+			return relative_turf
+	return turf
 
 /obj/structure/machinery/cm_vending/get_examine_text(mob/living/carbon/human/user)
 	. = ..()

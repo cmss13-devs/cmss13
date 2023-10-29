@@ -868,6 +868,13 @@
 "dl" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/whiskey_outpost/inside/hospital)
+"dp" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/supply)
 "dr" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -2021,6 +2028,13 @@
 /obj/structure/surface/rack,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/two_south)
+"hr" = (
+/obj/structure/disposalpipe/trunk,
+/obj/structure/machinery/disposal/deliveryChute{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/supply)
 "hs" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/whiskey_outpost/outside/lane/four_north)
@@ -3058,8 +3072,10 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "kE" = (
-/obj/structure/surface/rack,
-/turf/open/floor/plating/plating_catwalk/prison,
+/obj/structure/machinery/computer/cryopod,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
 /area/whiskey_outpost/inside/supply)
 "kG" = (
 /obj/structure/bed/chair{
@@ -4260,6 +4276,10 @@
 /obj/effect/landmark/start/whiskey/pilot,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/mortar_pit)
+"pg" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/supply)
 "pj" = (
 /obj/effect/landmark/start/whiskey/engineer,
 /turf/open/gm/dirtgrassborder/north,
@@ -5151,7 +5171,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/engineering)
 "sh" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/wo,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/wo,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -5223,6 +5243,10 @@
 /obj/structure/sign/ROsign,
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost)
+"sw" = (
+/obj/effect/decal/warning_stripes,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/supply)
 "sx" = (
 /obj/structure/machinery/cm_vending/clothing/dress,
 /turf/open/floor/prison{
@@ -5251,7 +5275,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "sJ" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/wo,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/wo,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
 "sK" = (
@@ -5356,9 +5380,8 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
 "th" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/junction{
+	dir = 8
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
@@ -5729,11 +5752,12 @@
 	dir = 4;
 	id = "trash"
 	},
-/obj/structure/machinery/recycler{
-	recycle_dir = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/machinery/light/small,
+/obj/structure/machinery/recycler/whiskey{
+	recycle_dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -6274,6 +6298,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -6337,7 +6362,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -6403,6 +6427,14 @@
 "wK" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/lane/two_south)
+"wL" = (
+/obj/structure/surface/rack,
+/obj/item/device/destTagger,
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/supply)
 "wM" = (
 /obj/structure/machinery/line_nexter{
 	dir = 1;
@@ -6533,10 +6565,17 @@
 	},
 /area/whiskey_outpost/inside/cic)
 "xk" = (
-/obj/structure/machinery/light,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/obj/structure/surface/rack,
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1;
+	dir = 1
 	},
+/obj/item/device/destTagger,
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
 "xl" = (
 /obj/item/ammo_casing{
@@ -6788,6 +6827,7 @@
 /area/whiskey_outpost/inside/hospital)
 "yj" = (
 /obj/effect/landmark/start/whiskey/cargo,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellowcorners2"
@@ -6867,10 +6907,6 @@
 	dir = 4;
 	health = 80
 	},
-/obj/structure/machinery/light{
-	unacidable = 1;
-	unslashable = 1
-	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -6926,6 +6962,9 @@
 	health = 80
 	},
 /obj/item/tool/hand_labeler,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -7860,6 +7899,13 @@
 	icon_state = "floor_plate"
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
+"Cd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/whiskey_outpost/inside/supply)
 "Ce" = (
 /turf/open/gm/grass/grassbeach/west,
 /area/whiskey_outpost/outside/lane/one_north)
@@ -8361,6 +8407,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
+"DW" = (
+/obj/structure/machinery/door/window/northleft,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowfull2"
+	},
+/area/whiskey_outpost/inside/engineering)
 "DX" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river,
@@ -9834,7 +9887,7 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Kc" = (
-/obj/structure/machinery/cm_vending/sorted/attachments,
+/obj/structure/machinery/cm_vending/sorted/attachments/wo,
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/supply)
 "Kd" = (
@@ -9880,6 +9933,18 @@
 /obj/structure/sign/poster,
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/engineering)
+"Ks" = (
+/obj/structure/closet/secure_closet/cargotech,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowfull2"
+	},
+/area/whiskey_outpost/inside/supply)
 "Kt" = (
 /obj/structure/fence,
 /turf/open/gm/dirt,
@@ -10779,6 +10844,20 @@
 	icon_state = "white"
 	},
 /area/whiskey_outpost/inside/hospital/triage)
+"OI" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/whiskey_outpost)
 "OK" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/whiskey_outpost/outside/south/far)
@@ -12234,6 +12313,16 @@
 	icon_state = "blue"
 	},
 /area/whiskey_outpost/inside/cic)
+"Vr" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/item/device/destTagger,
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/supply)
 "Vt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -12805,6 +12894,13 @@
 /obj/effect/spawner/random/tool,
 /turf/open/gm/dirtgrassborder/east,
 /area/whiskey_outpost/outside/lane/two_south)
+"XO" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/whiskey_outpost/inside/supply)
 "XP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -21086,7 +21182,7 @@ vn
 tv
 wl
 nK
-ya
+JN
 ya
 ya
 nr
@@ -21287,8 +21383,8 @@ nK
 vv
 tv
 wz
-nK
-JN
+DW
+ya
 ya
 Jd
 nr
@@ -21692,7 +21788,7 @@ vw
 tv
 wA
 nK
-ya
+JN
 ya
 ya
 nr
@@ -22502,7 +22598,7 @@ uB
 uB
 yf
 xg
-vC
+xg
 nr
 fy
 fy
@@ -22704,7 +22800,7 @@ kS
 pK
 vL
 yz
-nr
+vC
 nr
 fy
 fy
@@ -23304,12 +23400,12 @@ cx
 rm
 uf
 wQ
-kS
-pK
-kS
-pK
+dp
+XO
+pg
+XO
 yj
-yF
+Ks
 nr
 nr
 UN
@@ -23706,14 +23802,14 @@ oW
 OX
 qT
 lw
-rZ
+xk
 kS
 kS
+pK
 kS
-kS
-kS
-kS
-nr
+sw
+hr
+Cd
 nr
 mT
 BT
@@ -23908,13 +24004,13 @@ oW
 OX
 qT
 lw
-rZ
+wL
 kS
 kS
 kS
 kS
 Dk
-vN
+Vr
 nr
 mT
 mT
@@ -24713,7 +24809,7 @@ la
 nn
 oI
 rg
-oP
+OI
 su
 Kc
 sh
@@ -24924,7 +25020,7 @@ kS
 tS
 tS
 wQ
-wQ
+kS
 nr
 zg
 yk
@@ -25123,11 +25219,11 @@ VF
 TP
 wQ
 kS
-kE
-kE
-xk
+tS
+tS
+wQ
+vN
 yv
-nr
 Av
 zG
 Av
@@ -25327,9 +25423,9 @@ kS
 kS
 tS
 tS
-wQ
+kE
 nr
-lw
+nr
 fj
 fj
 fj

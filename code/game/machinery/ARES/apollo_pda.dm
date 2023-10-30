@@ -1,9 +1,8 @@
 /obj/item/device/working_joe_pda
 	icon = 'icons/obj/items/synth/wj_pda.dmi'
-	name = "karnak pda"
-	desc = "A portable interface used by Working Joes, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
+	name = "KN5500 PDA"
+	desc = "A portable interface used by Working-Joes, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
 	icon_state = "karnak_off"
-	item_state = "Cotablet"
 	unacidable = TRUE
 	indestructible = TRUE
 	req_one_access = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
@@ -14,7 +13,7 @@
 	var/datum/ares_datacore/datacore
 
 	var/current_menu = "login"
-	var/last_menu = ""
+	var/last_menu = "off"
 
 	var/authentication = ARES_ACCESS_BASIC
 	/// The last person to login.
@@ -47,10 +46,23 @@
 	delink()
 	return ..()
 
+/obj/item/device/working_joe_pda/update_icon()
+	. = ..()
+	if(last_menu == "off")
+		icon_state = "karnak_off"
+	else if(current_menu == "login")
+		icon_state = "karnak_login_anim"
+	else
+		icon_state = "karnak_on_anim"
+
 // ------ Maintenance Controller UI ------ //
 /obj/item/device/working_joe_pda/attack_self(mob/user)
 	if(..() || !allowed(usr))
 		return FALSE
+
+	if((last_menu == "off") && (current_menu == "login"))
+		last_menu = "main"
+		update_icon()
 
 	tgui_interact(user)
 	return TRUE
@@ -60,6 +72,16 @@
 	if(!ui)
 		ui = new(user, src, "WorkingJoe", name)
 		ui.open()
+
+/obj/item/device/working_joe_pda/ui_close(mob/user)
+	. = ..()
+
+	current_menu = "login"
+	last_menu = "off"
+	if(last_login)
+		datacore.apollo_login_list += "[last_login] logged out at [worldtime2text()]."
+	last_login = null
+	update_icon()
 
 /obj/item/device/working_joe_pda/ui_data(mob/user)
 	var/list/data = list()
@@ -170,11 +192,14 @@
 			if(authentication)
 				datacore.apollo_login_list += "[last_login] at [worldtime2text()], Access Level [authentication] - [ares_auth_to_text(authentication)]."
 			current_menu = "main"
+			last_menu = "main"
+			update_icon()
 
 		if("logout")
 			last_menu = current_menu
 			current_menu = "login"
 			datacore.apollo_login_list += "[last_login] logged out at [worldtime2text()]."
+			update_icon()
 
 		if("home")
 			last_menu = current_menu

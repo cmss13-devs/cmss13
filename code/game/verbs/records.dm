@@ -143,7 +143,7 @@
 	dat += "<body>"
 
 	var/color = "#008800"
-	var/add_dat = "<A href='?src=\ref[admin_holder];add_player_info=[target]'>Add Admin Note</A><br><A href='?src=\ref[admin_holder];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
+	var/add_dat = "<A href='?src=\ref[admin_holder];[HrefToken()];add_player_info=[target]'>Add Admin Note</A><br><A href='?src=\ref[admin_holder];[HrefToken()];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
 	switch(note_category)
 		if(NOTE_MERIT)
 			color = "#9e3dff"

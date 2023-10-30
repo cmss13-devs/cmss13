@@ -9,6 +9,7 @@
 	can_hold = list()//define on a per case basis for the original firearm.
 	foldable = TRUE
 	foldable = /obj/item/stack/sheet/mineral/plastic//it makes sense
+	ground_offset_y = 5
 
 /obj/item/storage/box/guncase/update_icon()
 	if(LAZYLEN(contents))

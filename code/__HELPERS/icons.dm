@@ -732,11 +732,12 @@ world
 		if (isnull(dir))
 			dir = thing.dir
 
-		if (ishuman(thing)) // Shitty workaround for a BYOND issue.
+		// Commented out because this is seemingly our source of bad icon operations
+		/* if (ishuman(thing)) // Shitty workaround for a BYOND issue.
 			var/icon/temp = icon2collapse
 			icon2collapse = icon()
 			icon2collapse.Insert(temp, dir = SOUTH)
-			dir = SOUTH
+			dir = SOUTH*/
 	else
 		if (isnull(dir))
 			dir = SOUTH

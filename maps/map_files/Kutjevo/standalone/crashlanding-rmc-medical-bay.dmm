@@ -170,6 +170,7 @@
 	icon_state = "p_stair_sn_full_cap";
 	pixel_y = 16
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/auto_doc)
 "dv" = (
@@ -367,6 +368,14 @@
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
+"hb" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/sentry_computer,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
 "hg" = (
 /turf/closed/shuttle/ert{
 	icon_state = "twe4";
@@ -622,12 +631,12 @@
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/exterior/Northwest_Colony)
 "lH" = (
-/obj/item/trash/used_stasis_bag,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
+/obj/effect/decal/cleanable/blood/gibs/robot,
+/obj/item/ammo_magazine/sentry{
+	current_rounds = 0
 	},
-/area/kutjevo/interior/complex/med/auto_doc)
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
 "mg" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 1;
@@ -936,6 +945,7 @@
 /area/kutjevo/interior/complex/med/auto_doc)
 "rM" = (
 /obj/structure/machinery/medical_pod/autodoc,
+/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/kutjevo/colors/cyan/edge,
 /area/kutjevo/interior/complex/med/auto_doc)
 "rP" = (
@@ -994,6 +1004,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 30
 	},
+/obj/effect/landmark/survivor_spawner/rmc,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -1432,6 +1443,15 @@
 	name = "Skylon"
 	},
 /area/kutjevo/interior/complex/med/auto_doc)
+"Ay" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/rmc,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
 "AI" = (
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan,
@@ -1481,6 +1501,15 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
+"BN" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/rmc,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/kutjevo/interior/complex/med/auto_doc)
 "BV" = (
@@ -1618,6 +1647,9 @@
 /area/kutjevo/interior/complex/med/operating)
 "DD" = (
 /obj/item/stack/barbed_wire/small_stack,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/auto_doc)
 "DG" = (
@@ -2116,6 +2148,7 @@
 "MB" = (
 /obj/item/stack/rods,
 /obj/structure/girder/displaced,
+/obj/effect/decal/remains/human,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -2334,6 +2367,11 @@
 	layer = 2.9
 	},
 /turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"Sd" = (
+/obj/item/trash/used_stasis_bag,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/med/auto_doc)
 "Sg" = (
 /obj/structure/machinery/light{
@@ -2652,6 +2690,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/kutjevo/interior/complex/med/auto_doc)
+"XB" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/rmc/specialist,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/kutjevo/interior/complex/med/auto_doc)
 "XD" = (
 /turf/closed/shuttle/ert{
 	icon_state = "twe3";
@@ -2749,6 +2796,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/survivor_spawner/rmc/team_leader,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin7"
 	},
@@ -3110,7 +3158,7 @@ CH
 CH
 CH
 bH
-lp
+lH
 Yg
 Tt
 Ti
@@ -3594,9 +3642,9 @@ oj
 Ck
 Sr
 GG
-CZ
-CZ
-CZ
+BN
+BN
+XB
 CZ
 Wk
 Dj
@@ -3645,7 +3693,7 @@ BJ
 tm
 OB
 OB
-Kg
+vI
 mg
 tz
 Kg
@@ -3709,13 +3757,13 @@ sD
 CQ
 wH
 sv
-gs
+Ay
 gs
 gs
 Oj
 Ew
-lH
 tm
+hb
 MK
 Kg
 BJ
@@ -3758,8 +3806,8 @@ tm
 OB
 YS
 OB
-OB
-Kg
+Sd
+vI
 Vz
 dp
 Kg

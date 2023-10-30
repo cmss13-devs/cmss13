@@ -56,7 +56,6 @@
 	var/datum/cas_fire_mission/fm = new()
 
 	if(weapons.len==0)
-		log_debug("no weapon")
 		return null //why bother?
 
 	for(var/obj/structure/dropship_equipment/weapon/wp in weapons)
@@ -66,8 +65,6 @@
 		for(var/idx = 1; idx<=fire_length; idx++)
 			record.offsets[idx] = "-"
 		fm.records += record
-
-	log_debug("made fm")
 
 	fm.name = firemission_name
 	fm.mission_length = length
@@ -86,12 +83,15 @@
 	var/datum/cas_fire_mission/mission = missions[mission_id]
 	if(!mission)
 		return -1
-	if(!mission.records[weapon_id])
+
+	var/datum/cas_fire_mission_record/fmr = mission.record_for_weapon(weapon_id)
+	if(!fmr)
 		return -1
-	var/datum/cas_fire_mission_record/fmr = mission.records[weapon_id]
 	if(!fmr.offsets || isnull(fmr.offsets[offset_step]))
 		return -1
 	var/old_offset = fmr.offsets[offset_step]
+	if(offset == null)
+		offset = "-"
 	fmr.offsets[offset_step] = offset
 	var/check_result = mission.check(linked_console)
 	if(check_result == FIRE_MISSION_CODE_ERROR)
@@ -107,6 +107,7 @@
 
 	//we have mission error. Fill the thing and restore previous state
 	fmr.offsets[offset_step] = old_offset
+	log_debug("still error")
 
 	return 0
 

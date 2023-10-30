@@ -19,6 +19,12 @@
 	for(var/datum/cas_fire_mission_record/record in records)
 		.["records"] += list(record.ui_data(user))
 
+/datum/cas_fire_mission/proc/record_for_weapon(weapon_id)
+	for(var/datum/cas_fire_mission_record/record in records)
+		if(record.weapon.ship_base.attach_id == weapon_id)
+			return record
+	return null
+
 /datum/cas_fire_mission/proc/check(obj/structure/machinery/computer/dropship_weapons/linked_console)
 	error_weapon = null
 	if(records.len == 0)

@@ -14,6 +14,12 @@ interface FiremissionContext {
   firemission_data: Array<CasFiremission>;
 }
 
+const directionLookup = new Map<string, number>();
+directionLookup['N-S'] = 1;
+directionLookup['S-N'] = 2;
+directionLookup['E-W'] = 8;
+directionLookup['W-E'] = 4;
+
 export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
   const [_, setPanelState] = usePanelState(props.panelStateId, context);
   const [selectedTarget, setSelectedTarget] = useSharedState<
@@ -111,6 +117,12 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
       topButtons={[
         {
           children: 'FIRE',
+          onClick: () =>
+            act('firemission-execute', {
+              tag: firemissionSelected,
+              direction: strikeDirection ? directionLookup[strikeDirection] : 1,
+              target_id: selectedTarget,
+            }),
         },
         { children: 'N-S', onClick: () => setStrikeDirection('N-S') },
         { children: 'S-N', onClick: () => setStrikeDirection('S-N') },

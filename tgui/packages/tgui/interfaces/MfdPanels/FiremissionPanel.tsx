@@ -150,6 +150,11 @@ const ViewFiremissionMfdPanel = (
     `${props.panelStateId}_selected_fm`,
     undefined
   );
+  const [editFm, setEditFm] = useLocalState<boolean>(
+    context,
+    `${props.panelStateId}_edit_fm`,
+    false
+  );
 
   const gimbals: GimbalInfo[] = [
     { min: 0, max: 6 },
@@ -173,6 +178,9 @@ const ViewFiremissionMfdPanel = (
           },
         },
         { children: 'F-MISS', onClick: () => setSelectedFm(undefined) },
+        editFm
+          ? { children: 'VIEW', onClick: () => setEditFm(false) }
+          : { children: 'EDIT', onClick: () => setEditFm(true) },
       ]}
       bottomButtons={[
         {
@@ -184,37 +192,15 @@ const ViewFiremissionMfdPanel = (
         <Stack>
           <Stack.Item width="10px" />
           <Stack.Item width="480px">
-            <Stack vertical align="center">
+            <Stack align="center">
               <Stack.Item>
                 <h3>{firemission.name}</h3>
               </Stack.Item>
               <Stack.Item>
-                <Table>
-                  <TableRow>
-                    <TableCell>Weapon</TableCell>
-                    <TableCell>Ammo</TableCell>
-                    <TableCell>Gimbal</TableCell>
-                    <TableCell>1</TableCell>
-                    <TableCell>2</TableCell>
-                    <TableCell>3</TableCell>
-                    <TableCell>4</TableCell>
-                    <TableCell>5</TableCell>
-                    <TableCell>6</TableCell>
-                    <TableCell>7</TableCell>
-                    <TableCell>8</TableCell>
-                    <TableCell>9</TableCell>
-                    <TableCell>10</TableCell>
-                    <TableCell>11</TableCell>
-                    <TableCell>12</TableCell>
-                  </TableRow>
-                  {firemission.records
-                    .sort((a, b) => (a.weapon < b.weapon ? -1 : 1))
-                    .map((x, i) => (
-                      <TableRow key={x.weapon}>
-                        <FiremissionRecord {...x} gimbal={gimbals[i]} />
-                      </TableRow>
-                    ))}
-                </Table>
+                <AltFiremissionTable
+                  panelStateId={props.panelStateId}
+                  fm={firemission}
+                />
               </Stack.Item>
             </Stack>
           </Stack.Item>
@@ -222,6 +208,190 @@ const ViewFiremissionMfdPanel = (
         </Stack>
       </Box>
     </MfdPanel>
+  );
+};
+
+const AltFiremissionTable = (props: MfdProps & { fm: CasFiremission }) => {
+  return (
+    <Table>
+      <FMWeaponData fm={props.fm} />
+      <FMOffsetData panelStateId={props.panelStateId} fm={props.fm} />
+    </Table>
+  );
+};
+
+const OffsetControl = (
+  props: MfdProps & {
+    fm: CasFiremission;
+    weaponId?: number;
+    currentValue: string | number;
+    available: boolean;
+    offsetIndex: number;
+  },
+  context
+) => {
+  const { data, act } = useBackend<DropshipProps & FiremissionContext>(context);
+
+  const { fm, weaponId, currentValue, offsetIndex } = props;
+
+  const OffsetController = (props: { value: string | number }) => {
+    return (
+      <Box
+        onClick={() => {
+          act('firemission-edit', {
+            tag: `${fm.mission_tag}`,
+            weapon_id: `${weaponId}`,
+            offset_id: `${offsetIndex}`,
+            offset_value: `${props.value}`,
+          });
+        }}>
+        {currentValue === props.value && '['}
+        {props.value}
+        {currentValue === props.value && ']'}
+      </Box>
+    );
+  };
+  const [editFm] = useLocalState<boolean>(
+    context,
+    `${props.panelStateId}_edit_fm`,
+    false
+  );
+
+  const gimbals: GimbalInfo[] = [
+    { min: -6, max: 0 },
+    { min: -6, max: 0 },
+    { min: 0, max: 6 },
+    { min: 0, max: 6 },
+  ];
+
+  const gimbalHigh = range(
+    gimbals[(props.weaponId ?? 1) - 1].min,
+    gimbals[(props.weaponId ?? 1) - 1].max + 1
+  );
+
+  if (!props.available) {
+    return <TableCell>-</TableCell>;
+  }
+
+  return (
+    <TableCell>
+      {!editFm && currentValue}
+      {editFm && (
+        <Table>
+          <TableRow>
+            {[6, 5, 4, 3].map((x) => (
+              <TableCell key={x}>
+                <OffsetController value={gimbalHigh[x]} />
+              </TableCell>
+            ))}
+          </TableRow>
+          <TableRow>
+            {[2, 1, 0].map((x) => (
+              <TableCell key={x}>
+                <OffsetController value={gimbalHigh[x]} />
+              </TableCell>
+            ))}
+            <TableCell>
+              <OffsetController value="-" />
+            </TableCell>
+          </TableRow>
+        </Table>
+      )}
+    </TableCell>
+  );
+};
+
+const FMOffsetData = (props: MfdProps & { fm: CasFiremission }, context) => {
+  const { data } = useBackend<DropshipProps & FiremissionContext>(context);
+  const weaponData = props.fm.records.map((x) =>
+    data.equipment_data.find((y) => y.mount_point === x.weapon)
+  );
+  const offsetMap = new Array<Array<string>>();
+  const availableMap = new Array<Array<boolean>>();
+  offsetMap.fill([], 0, 12);
+  props.fm.records
+    .sort((a, b) => (a.weapon < b.weapon ? -1 : 1))
+    .forEach((x, offsetIndex) => {
+      const fm_delay = weaponData.find(
+        (y) => y?.mount_point === x.weapon
+      )?.firemission_delay;
+      x.offsets.forEach((y, i) => {
+        if (!offsetMap[i]) {
+          offsetMap[i] = [];
+          availableMap[i] = [];
+        }
+        offsetMap[i].push(y);
+        if (!fm_delay) {
+          availableMap[i].push(true);
+          return;
+        }
+        const backCounter = range(Math.max(i - fm_delay, 0), i);
+        if (backCounter.length === 0) {
+          availableMap[i].push(true);
+          return;
+        }
+        const canFire = backCounter.reduce((prev, curr, currentIndex, arr) => {
+          if (!prev) {
+            return -1;
+          }
+          const indexer = arr[currentIndex];
+          if (offsetMap[indexer][offsetIndex] !== '-') {
+            return -1;
+          }
+          return 1;
+        });
+        availableMap[i].push(canFire === 1);
+      });
+    });
+  const weapMap = props.fm.records
+    .map((x) => x.weapon)
+    .sort((a, b) => (a < b ? -1 : 1));
+  return (
+    <>
+      {offsetMap.map((x, i) => (
+        <TableRow key={i}>
+          <TableCell>{i + 1}</TableCell>
+          {weapMap.map((y, j) => {
+            return (
+              <OffsetControl
+                key={y}
+                panelStateId={props.panelStateId}
+                fm={props.fm}
+                weaponId={y}
+                currentValue={x[j]}
+                offsetIndex={i}
+                available={availableMap[i][j]}
+              />
+            );
+          })}
+        </TableRow>
+      ))}
+    </>
+  );
+};
+
+const FMWeaponData = (props: { fm: CasFiremission }, context) => {
+  const { data } = useBackend<DropshipProps>(context);
+
+  const weaponData = props.fm.records.map((x) =>
+    data.equipment_data.find((y) => y.mount_point === x.weapon)
+  );
+
+  return (
+    <TableRow>
+      <TableCell>Weapon</TableCell>
+      {weaponData
+        .sort((a, b) =>
+          (a?.mount_point ?? 0) < (b?.mount_point ?? 0) ? -1 : 1
+        )
+        .map((x) => {
+          return (
+            <TableCell key={x?.mount_point}>
+              {x?.shorthand} {x?.mount_point}
+            </TableCell>
+          );
+        })}
+    </TableRow>
   );
 };
 

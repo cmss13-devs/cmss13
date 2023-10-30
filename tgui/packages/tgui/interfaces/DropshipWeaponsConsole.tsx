@@ -53,6 +53,7 @@ export type DropshipEquipment = {
   ammo_name: string;
   ammo?: number;
   max_ammo?: number;
+  firemission_delay?: number;
   data?: any;
 };
 

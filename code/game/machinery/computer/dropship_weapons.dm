@@ -480,11 +480,11 @@
 			return TRUE
 
 		if("firemission-edit")
-			var/fm_tag = params["tag"]
-			var/weapon_id = params["weapon_id"]
-			var/offset_id = params["offset_id"]
+			var/fm_tag = text2num(params["tag"])
+			var/weapon_id = text2num(params["weapon_id"])
+			var/offset_id = text2num(params["offset_id"])
 			var/offset_value = text2num(params["offset_value"])
-			return tgui_change_offset(user, fm_tag, weapon_id, offset_id, offset_value)
+			return tgui_change_offset(user, fm_tag, weapon_id, offset_id + 1, offset_value)
 
 		if("firemission-execute")
 			var/fm_tag = params["tag"]
@@ -592,6 +592,7 @@
 			"ammo_name" = equipment.ammo_equipped?.name,
 			"ammo" = equipment.ammo_equipped?.ammo_count,
 			"max_ammo" = equipment.ammo_equipped?.max_ammo_count,
+			"firemission_delay" = equipment.ammo_equipped?.fire_mission_delay,
 			"data" = equipment.ui_data(user)
 		)
 
@@ -986,11 +987,7 @@
 		to_chat(weapons_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
 
-	if(offset_value == null)
-		to_chat(weapons_operator, SPAN_WARNING("Error with offset detected."))
-		return FALSE
-
-	update_offset(offset_value)
+	firemission_envelope.update_mission(fm_tag, weapon_id, offset_id, offset_value)
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_select_laser_firemission(obj/docking_port/mobile/marine_dropship/dropship, laser)

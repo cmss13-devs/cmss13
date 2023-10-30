@@ -146,33 +146,6 @@
 				SShijack.evac_admin_denied = !SShijack.evac_admin_denied
 				message_admins("[key_name_admin(usr)] has [SShijack.evac_admin_denied ? "forbidden" : "allowed"] ship-wide evacuation.")
 
-	/*
-			if("init_dest")
-				if(!EvacuationAuthority.enable_self_destruct())
-					to_chat(usr, SPAN_WARNING("You are unable to authorize the self-destruct right now!"))
-				else
-					message_admins("[key_name_admin(usr)] force-enabled the self-destruct system.")
-
-			if("cancel_dest")
-				if(!EvacuationAuthority.cancel_self_destruct(1))
-					to_chat(usr, SPAN_WARNING("You are unable to cancel the self-destruct right now!"))
-				else
-					message_admins("[key_name_admin(usr)] canceled the self-destruct system.")
-
-			if("use_dest")
-
-				var/confirm = alert("Are you sure you want to self-destruct the Almayer?", "Self-Destruct", "Yes", "Cancel")
-				if(confirm != "Yes")
-					return
-				message_admins("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME].")
-				EvacuationAuthority.trigger_self_destruct()
-
-			if("toggle_dest")
-				EvacuationAuthority.flags_scuttle ^= FLAGS_SELF_DESTRUCT_DENY
-				message_admins("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
-
-	*/ // Transfer over when self destruct is done - Morrow
-
 //======================================================
 //======================================================
 

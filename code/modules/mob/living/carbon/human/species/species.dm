@@ -133,10 +133,10 @@
 	return
 
 /datum/species/proc/create_organs(mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
-	for(var/L in H.limbs) //In case of pre-existing limbs/organs, we remove the old ones.
-		qdel(L)
-	H.internal_organs = list()
-	H.internal_organs_by_name = list()
+	//In case of pre-existing limbs/organs, we remove the old ones.
+	QDEL_LIST(H.limbs)
+	QDEL_LIST(H.internal_organs)
+	H.internal_organs_by_name.Cut()
 
 	//This is a basic humanoid limb setup.
 	var/obj/limb/chest/C = new(H, null, H)

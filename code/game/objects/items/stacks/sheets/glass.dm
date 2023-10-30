@@ -192,6 +192,10 @@
 /obj/item/stack/sheet/glass/reinforced/medium_stack
 	amount = 25
 
+/obj/item/stack/sheet/glass/reinforced/large_stack
+	amount = 50
+
+
 /obj/item/stack/sheet/glass/reinforced/cyborg
 	matter = null
 

@@ -9,7 +9,7 @@
 
 	// Config
 	var/max_distance = 3
-	var/windup = 8
+	var/windup = 10
 
 /datum/action/human_action/activable/synth_bracer/rescue_hook/use_ability(atom/atom_target)
 	. = ..()

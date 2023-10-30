@@ -1065,7 +1065,7 @@
 		to_chat(camera_operator, SPAN_WARNING("Guidance is not selected or lost."))
 		return FALSE
 
-	firemission_envelope.add_user_to_tracking(usr)
+	firemission_envelope.add_camera_manager_to_tracking(cam_manager)
 
 	to_chat(camera_operator, "You peek through the guidance camera.")
 	return TRUE

@@ -1,10 +1,23 @@
 /obj/effect/firemission_guidance
 	invisibility = 101
 	var/list/users
+	var/list/datum/camera_manager/camera_managers
+	var/camera_width = 11
+	var/camera_height = 11
 
 /obj/effect/firemission_guidance/New()
 	..()
 	users = list()
+	camera_managers = list()
+
+/obj/effect/firemission_guidance/proc/updateCameras()
+	for(var/datum/camera_manager/manager in camera_managers)
+		manager.set_camera_obj(src, camera_width, camera_height)
+
+/obj/effect/firemission_guidance/proc/clearCameras()
+	for(var/datum/camera_manager/manager in camera_managers)
+		manager.show_camera_static()
+	camera_managers = list()
 
 /datum/cas_fire_mission
 	var/mission_length = 3 //can be 3,4,6 or 12

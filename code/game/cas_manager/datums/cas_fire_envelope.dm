@@ -181,6 +181,7 @@
 	if(!guidance)
 		guidance = new /obj/effect/firemission_guidance()
 	guidance.forceMove(location)
+	guidance.updateCameras()
 
 /datum/cas_fire_envelope/proc/user_is_guided(user)
 	return guidance && (user in guidance.users)
@@ -197,6 +198,10 @@
 			guidance.users += user
 			RegisterSignal(user, COMSIG_MOB_RESISTED, PROC_REF(exit_cam_resist))
 
+/datum/cas_fire_envelope/proc/add_camera_manager_to_tracking(datum/camera_manager/manager)
+	if(!manager)
+		return
+	guidance.camera_managers += manager
 
 /datum/cas_fire_envelope/proc/apply_upgrade(user)
 	var/mob/M = user
@@ -235,6 +240,7 @@
 			remove_upgrades(user)
 		guidance.users -= user
 		UnregisterSignal(user, COMSIG_MOB_RESISTED)
+	guidance.clearCameras()
 
 /datum/cas_fire_envelope/proc/exit_cam_resist(mob/user)
 	SIGNAL_HANDLER

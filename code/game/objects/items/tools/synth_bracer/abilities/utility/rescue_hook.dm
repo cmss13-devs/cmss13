@@ -14,13 +14,13 @@
 /datum/action/human_action/activable/synth_bracer/rescue_hook/use_ability(atom/atom_target)
 	. = ..()
 	if(!.)
-		return
+		return FALSE
 
 	if(!atom_target || atom_target.layer >= FLY_LAYER || !isturf(synth.loc))
-		return
+		return FALSE
 
 	if(!action_cooldown_check() || synth.action_busy)
-		return
+		return FALSE
 
 	synth_bracer.active_utility = SIMI_SECONDARY_HOOK
 	synth_bracer.update_icon()
@@ -60,7 +60,7 @@
 
 	if(!length(turflist))
 		to_chat(synth, SPAN_WARNING("You don't have any room to launch your hook!"))
-		return
+		return FALSE
 
 	synth.visible_message(SPAN_DANGER("[synth] prepares to launch a rescue hook at [atom_target]!"), SPAN_DANGER("You prepare to launch a rescue hook at [atom_target]!"))
 
@@ -80,7 +80,7 @@
 		synth_bracer.active_utility = SIMI_ACTIVE_NONE
 		synth_bracer.update_icon()
 
-		return
+		return FALSE
 
 	enter_cooldown()
 	synth_bracer.drain_charge(synth, charge_cost)

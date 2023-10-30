@@ -34,15 +34,17 @@
 	var/battery_charge = SMARTPACK_MAX_POWER_STORED
 	var/bracer_charging = FALSE
 
+	var/list/ability_chips = list()
+	var/ability_chips_max = 2
+
 	var/list/actions_list_inherent = list(
 		/datum/action/human_action/synth_bracer/crew_monitor,
 		/datum/action/human_action/synth_bracer/deploy_binoculars,
 		/datum/action/human_action/synth_bracer/tactical_map,
 	)
 	var/list/actions_list_added = list(
-		/datum/action/human_action/synth_bracer/repair_form,
+		/datum/action/human_action/synth_bracer/repair_form,//pre-populated list for testing purposes.
 		/datum/action/human_action/synth_bracer/protective_form,
-		//datum/action/human_action/synth_bracer/reflex_overclock,
 		/datum/action/human_action/activable/synth_bracer/rescue_hook,
 	)
 
@@ -143,7 +145,7 @@
 						usr.put_in_l_hand(src)
 			add_fingerprint(usr)
 
-/obj/item/clothing/gloves/synth/attackby(obj/item/attacker, mob/user)
+/obj/item/clothing/gloves/synth/attackby(obj/item/attacker, mob/living/carbon/human/user)
 	if((istype(attacker, /obj/item/clothing/gloves)) && !(attacker.flags_item & ITEM_PREDATOR))
 		if(underglove)
 			to_chat(user, SPAN_WARNING("[src] is already attached to [underglove], remove them first."))
@@ -154,6 +156,45 @@
 		user.update_inv_gloves()
 	if(internal_transmitter.attached_to == attacker)
 		internal_transmitter.attackby(attacker, user)
+		return
+
+	if(istype(attacker, /obj/item/device/simi_chip))
+		var/chips_num = 0
+		for(var/obj/item/device/simi_chip/chip in ability_chips)
+			if(!chip.secret)
+				chips_num++
+		if(chips_num >= ability_chips_max)
+			to_chat(user, SPAN_WARNING("\The [src] can't hold another circuit chip!"))
+			return
+		if(user.drop_held_item())
+			attacker.forceMove(src)
+			ability_chips += attacker
+			to_chat(user, SPAN_NOTICE("You slot \the [attacker] into \the [src]!"))
+			if(user.gloves && (user.gloves == src))
+				update_actions(SIMI_ACTIONS_RELOAD, user)
+			else
+				update_actions(SIMI_ACTIONS_RELOAD)
+		return
+
+	if(HAS_TRAIT(attacker, TRAIT_TOOL_SCREWDRIVER))
+		//Remove ability chip - give option or remove all?
+		var/turf/T = get_turf(user)
+		if(!T)
+			to_chat(user, "You cannot do that here.")
+			return
+
+		var/removed_chips = FALSE
+		for (var/obj/item/device/simi_chip/chip in ability_chips)
+			if(chip.secret)
+				continue
+			chip.forceMove(T)
+			ability_chips -= chip
+			removed_chips = TRUE
+		if(removed_chips)
+			update_actions(SIMI_ACTIONS_RELOAD, user)
+			to_chat(user, SPAN_NOTICE("You pop out the circuit chips from [src]!"))
+		else
+			to_chat(user, SPAN_NOTICE("There are no removable circuit chips in [src]!"))
 		return
 	return ..()
 
@@ -342,7 +383,7 @@
 
 //########
 /obj/item/clothing/gloves/synth/proc/update_actions(mode = SIMI_ACTIONS_LOAD, mob/user)
-	if((!user) && (mode != SIMI_ACTIONS_LOAD))
+	if((!user) && ((mode != SIMI_ACTIONS_LOAD) && (mode != SIMI_ACTIONS_RELOAD)))
 		return FALSE
 
 	switch(mode)
@@ -351,6 +392,21 @@
 				actions_list_actions += new action_type
 			for(var/action_type in actions_list_added)
 				actions_list_actions += new action_type
+
+		if(SIMI_ACTIONS_RELOAD)
+			actions_list_added.Cut()
+			for(var/obj/item/device/simi_chip/chip in ability_chips)
+				actions_list_added += chip.chip_action
+			if(user)
+				for(var/datum/action/human_action/action as anything in actions_list_actions)
+					action.remove_from(user)
+			for(var/datum/action/human_action/action in actions_list_actions)
+				actions_list_actions -= action
+				qdel(action)
+			update_actions(SIMI_ACTIONS_LOAD)
+			if(user)
+				for(var/datum/action/human_action/action as anything in actions_list_actions)
+					action.give_to(user)
 
 		if(SIMI_ACTIONS_ADD)
 			for(var/datum/action/human_action/action as anything in actions_list_actions)

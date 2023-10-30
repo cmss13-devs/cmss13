@@ -35,6 +35,12 @@
 	return TRUE
 
 /datum/action/human_action/activable/synth_bracer/can_use_action()
+	if(!issynth(owner))
+		to_chat(owner, SPAN_WARNING("You have no idea how to use this!"))
+	if(owner.is_mob_incapacitated() || owner.dazed)
+		to_chat(owner, SPAN_WARNING("You cannot use this action while incapacitated!"))
+		return FALSE
+
 	switch(category)
 		if(SIMI_PRIMARY_ACTION)
 			if(synth_bracer.active_ability != SIMI_ACTIVE_NONE)
@@ -44,7 +50,13 @@
 			if(synth_bracer.active_utility != SIMI_ACTIVE_NONE)
 				to_chat(owner, SPAN_WARNING("You cannot use this action while another secondary ability is active."))
 				return FALSE
-	..()
+
+	if(synth_bracer.battery_charge < charge_cost)
+		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[charge_cost]</b>."))
+		return FALSE
+	if(!action_cooldown_check())
+		return FALSE
+	return ..()
 
 /* -- ON-CLICK ACTIONS -- */
 
@@ -88,8 +100,10 @@
 		button.color = rgb(255,255,255,255)
 
 /datum/action/human_action/synth_bracer/can_use_action()
-	var/mob/living/carbon/human/H = owner
-	if(!istype(H) || (H.is_mob_incapacitated() || H.dazed))
+	if(!issynth(owner))
+		to_chat(owner, SPAN_WARNING("You have no idea how to use this!"))
+	if(owner.is_mob_incapacitated() || owner.dazed)
+		to_chat(owner, SPAN_WARNING("You cannot use this action while incapacitated!"))
 		return FALSE
 
 	switch(category)

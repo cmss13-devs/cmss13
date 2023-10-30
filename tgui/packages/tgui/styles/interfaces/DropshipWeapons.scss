@@ -17,6 +17,33 @@
     padding: 2px;
   }
 
+  .FireMissionOffsetLabel {
+    height: 20px;
+    text-align: center;
+  }
+
+  .FireMissionStack {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+  }
+
+  .FireMissionOffset {
+    width: 40px;
+    height: 20px;
+    text-align: center;
+    .Button {
+      font-size: smaller;
+      background-color: transparent;
+      color: #00e94e;
+    }
+    .SelectedButton {
+      background: #00e94e;
+      color: #000000;
+      font-weight: bold;
+    }
+  }
+
   .welcome-page {
     text-align: center;
     vertical-align: middle;

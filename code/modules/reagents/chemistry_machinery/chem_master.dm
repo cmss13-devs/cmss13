@@ -237,8 +237,6 @@
 			while (count--)
 				var/obj/item/reagent_container/pill/P = new/obj/item/reagent_container/pill(loc)
 				P.pill_desc = "A custom pill."
-				P.pixel_x = rand(-7, 7) //random position
-				P.pixel_y = rand(-7, 7)
 				P.icon_state = "pill"+pillsprite
 				reagents.trans_to(P,amount_per_pill)
 				if(loaded_pill_bottle)
@@ -271,8 +269,6 @@
 					P.name = "[name] vial"
 					reagents.trans_to(P, 30)
 
-				P.pixel_x = rand(-7, 7) //random position
-				P.pixel_y = rand(-7, 7)
 				P.update_icon()
 
 				if(href_list["store"])

@@ -20,14 +20,14 @@
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stack_id = "cable coil"
 	attack_speed = 3
+	ground_offset_x = 2
+	ground_offset_y = 2
 
 /obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, param_color = null)
 	. = ..()
 	src.amount = length
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
 		color = param_color
-	pixel_x = rand(-2,2)
-	pixel_y = rand(-2,2)
 	updateicon()
 	update_wclass()
 
@@ -276,8 +276,6 @@
 /obj/item/stack/cable_coil/cut/Initialize()
 	. = ..()
 	src.amount = rand(1,2)
-	pixel_x = rand(-2,2)
-	pixel_y = rand(-2,2)
 	updateicon()
 	update_wclass()
 

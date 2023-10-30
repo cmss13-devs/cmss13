@@ -96,7 +96,7 @@
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "RMC Syn"
 
-/datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/rmc/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/royal_marine = new()
 	var/random_number = rand(1,2)
 	switch(random_number)

@@ -80,6 +80,9 @@ SUBSYSTEM_DEF(hijack)
 	/// If a generator has ever been overloaded in the past this round
 	var/generator_ever_overloaded = FALSE
 
+	/// If ARES has announced the 50% point yet for SD
+	var/ares_sd_announced = FALSE
+
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 	return SS_INIT_SUCCESS
@@ -111,6 +114,9 @@ SUBSYSTEM_DEF(hijack)
 			sd_time_remaining -= wait
 			if(!engine_room_heated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.66)))
 				heat_engine_room()
+
+			if(!ares_sd_announced && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.5)))
+				announce_sd_halfway()
 
 			if(!engine_room_superheated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.33)))
 				superheat_engine_room()
@@ -337,6 +343,10 @@ SUBSYSTEM_DEF(hijack)
 		if(istype(mob_area, /area/almayer/engineering/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("The room feels incredibly hot, you can't take much more of this!"))
 
+/datum/controller/subsystem/hijack/proc/announce_sd_halfway()
+	ares_sd_announced = TRUE
+	marine_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE)
+
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
 	sd_detonated = TRUE
@@ -352,7 +362,7 @@ SUBSYSTEM_DEF(hijack)
 	sleep(7 SECONDS)
 	shakeship(2, 10, TRUE)
 
-	marine_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.")
+	marine_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE)
 	sleep(5 SECONDS)
 
 	var/sound_picked = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')

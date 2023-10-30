@@ -32,6 +32,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 	var/battery_charge = SMARTPACK_MAX_POWER_STORED
+	var/battery_charge_max = SMARTPACK_MAX_POWER_STORED
 	var/bracer_charging = FALSE
 
 	var/list/ability_chips = list()
@@ -46,6 +47,7 @@
 		/datum/action/human_action/synth_bracer/repair_form,//pre-populated list for testing purposes.
 		/datum/action/human_action/synth_bracer/protective_form,
 		/datum/action/human_action/activable/synth_bracer/rescue_hook,
+		/datum/action/human_action/synth_bracer/motion_detector,
 	)
 
 	var/list/actions_list_actions = list()
@@ -89,7 +91,7 @@
 
 /obj/item/clothing/gloves/synth/examine(mob/user)
 	..()
-	to_chat(user, SPAN_INFO("The current charge reads <b>[battery_charge]/[initial(battery_charge)]</b>."))
+	to_chat(user, SPAN_INFO("The current charge reads <b>[battery_charge]/[battery_charge_max]</b>."))
 	if(underglove)
 		to_chat(user, SPAN_INFO("The wrist-strap is attached to [underglove]."))
 	else
@@ -227,7 +229,7 @@
 /obj/item/clothing/gloves/synth/proc/get_bracer_status()
 	if(battery_charge <= 0)
 		return "status_nobattery"
-	if(battery_charge <= initial(battery_charge) * 0.1)
+	if(battery_charge <= battery_charge_max * 0.1)
 		return "status_lowbattery"
 	var/mob/living/carbon/human/wearer = loc
 	if(!issynth(wearer))
@@ -345,13 +347,13 @@
 		to_chat(user, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
 		user.apply_damage(10, 0, BURN)
 	else if(apc.cell?.charge > 0)
-		if(battery_charge < initial(battery_charge))
-			var/charge_to_use = min(apc.cell.charge, initial(battery_charge) - battery_charge)
+		if(battery_charge < battery_charge_max)
+			var/charge_to_use = min(apc.cell.charge, battery_charge_max - battery_charge)
 			if(!(apc.cell.use(charge_to_use)))
 				stop_charging(user)
 				return
 			battery_charge += charge_to_use
-			to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. \The [src] now has <b>[battery_charge]/[initial(battery_charge)]</b>."))
+			to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. \The [src] now has <b>[battery_charge]/[battery_charge_max]</b>."))
 			apc.charging = 1 //APC_CHARGING
 		else
 			to_chat(user, SPAN_WARNING("\The [src] is already fully charged."))
@@ -378,7 +380,7 @@
 
 /obj/item/clothing/gloves/synth/proc/drain_charge(mob/user, cost)
 	battery_charge -= cost
-	to_chat(user, SPAN_WARNING("\The [src]'s charge now reads: <b>[battery_charge]/[initial(battery_charge)]</b>."))
+	to_chat(user, SPAN_WARNING("\The [src]'s charge now reads: <b>[battery_charge]/[battery_charge_max]</b>."))
 	update_icon()
 
 //########

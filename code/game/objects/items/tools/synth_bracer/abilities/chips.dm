@@ -12,6 +12,7 @@
 /obj/item/device/simi_chip/repair
 	name = "PK-130 SIMI programmable circuit (Self-Repair)"
 	chip_action = /datum/action/human_action/synth_bracer/repair_form
+	icon_state = "simi_chip_red"
 
 /obj/item/device/simi_chip/protect
 	name = "PK-130 SIMI programmable circuit (Damage Bracing)"
@@ -27,3 +28,7 @@
 /obj/item/device/simi_chip/rescue_hook
 	name = "PK-130 SIMI programmable circuit (Rescue Hook)"
 	chip_action = /datum/action/human_action/activable/synth_bracer/rescue_hook
+
+/obj/item/device/simi_chip/motion_detector
+	name = "PK-130 SIMI programmable circuit (Motion Detector)"
+	chip_action = /datum/action/human_action/synth_bracer/motion_detector

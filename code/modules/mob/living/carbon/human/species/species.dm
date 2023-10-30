@@ -135,10 +135,7 @@
 /datum/species/proc/create_organs(mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
 	//In case of pre-existing limbs/organs, we remove the old ones.
 	QDEL_LIST(H.limbs)
-	H.limbs.Cut()
-
 	QDEL_LIST(H.internal_organs)
-	H.internal_organs.Cut()
 	H.internal_organs_by_name.Cut()
 
 	//This is a basic humanoid limb setup.

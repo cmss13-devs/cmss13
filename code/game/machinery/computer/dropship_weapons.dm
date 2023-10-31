@@ -605,8 +605,7 @@
 /obj/structure/machinery/computer/dropship_weapons/proc/get_targets()
 	. = list()
 	var/datum/cas_iff_group/cas_group = cas_groups[faction]
-	for(var/X in cas_group.cas_signals)
-		var/datum/cas_signal/LT = X
+	for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
 		if(!istype(LT) || !LT.valid_signal())
 			continue
 		var/area/laser_area = get_area(LT.signal_loc)

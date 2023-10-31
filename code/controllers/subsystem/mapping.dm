@@ -10,6 +10,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/map_templates = list()
 	///Name of all shuttles
 	var/list/shuttle_templates = list()
+	var/list/all_shuttle_templates = list()
 	///map_id of all tents
 	var/list/tent_type_templates = list()
 
@@ -242,6 +243,7 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_template/shuttle/S = new shuttle_type()
 
 		shuttle_templates[S.shuttle_id] = S
+		all_shuttle_templates[item] = S
 		map_templates[S.shuttle_id] = S
 
 /datum/controller/subsystem/mapping/proc/preload_tent_templates()

@@ -417,3 +417,4 @@ var/list/default_xeno_onmob_icons = list(
 #define HANDLING_LIMBS list("l_arm","l_hand", "r_arm", "r_hand")
 #define EXTREMITY_LIMBS list("l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 #define CORE_LIMBS list("chest","head","groin")
+

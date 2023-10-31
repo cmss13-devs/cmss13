@@ -1,6 +1,6 @@
 /obj/effect/firemission_guidance
 	invisibility = 101
-	var/list/users
+	var/list/mob/users
 	var/list/datum/camera_manager/camera_managers
 	var/camera_width = 11
 	var/camera_height = 11

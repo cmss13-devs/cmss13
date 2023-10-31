@@ -1207,6 +1207,7 @@
 #include "code\game\objects\items\tools\synth_bracer\abilities\integrated\crew_monitor.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\integrated\ocular_designator.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\integrated\tactical_map.dm"
+#include "code\game\objects\items\tools\synth_bracer\abilities\primary\anchor_form.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\primary\protect_form.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\primary\repair_form.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\utility\motion_detector.dm"

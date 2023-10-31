@@ -28,7 +28,7 @@
 	user.allow_gun_usage = FALSE
 	user.throw_allowed = FALSE
 	to_chat(user, SPAN_DANGER("[name] beeps, \"You are now protected, but unable to attack.\""))
-	synth_bracer.battery_charge -= SIMI_PROTECTIVE_COST
+	synth_bracer.drain_charge(synth, charge_cost)
 	playsound(synth_bracer.loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
 	to_chat(user, SPAN_INFO("The current charge reads [synth_bracer.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	synth_bracer.active_ability = SIMI_ABILITY_PROTECT

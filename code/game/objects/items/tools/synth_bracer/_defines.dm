@@ -21,7 +21,7 @@
 #define SIMI_REPAIR_COST 100
 
 /// Synth fortify, enforced stationary
-#define SIMI_ABILITY_FORTIFY "fortifiy"
+#define SIMI_ABILITY_ANCHOR "anchor"
 #define SIMI_IMMOBILE_COST 20
 #define IMMOBILE_FORM_COLOR "#2B719E"
 

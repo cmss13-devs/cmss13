@@ -1,5 +1,5 @@
 /obj/item/clothing/gloves/synth
-	name = "\improper PK-130 SIMI wrist-mounted computer"
+	name = "PK-130 SIMI wrist-mounted computer"
 	desc = "Developed by a joint effort between Weyland-Yutani CIART and the USCM R&D Division, the SIMI portable computer is the ultimate solution for situational awareness, personnel monitoring and communication."
 
 	icon = 'icons/obj/items/synth/bracer.dmi'
@@ -43,12 +43,7 @@
 		/datum/action/human_action/synth_bracer/deploy_binoculars,
 		/datum/action/human_action/synth_bracer/tactical_map,
 	)
-	var/list/actions_list_added = list(
-		/datum/action/human_action/synth_bracer/repair_form,//pre-populated list for testing purposes.
-		/datum/action/human_action/synth_bracer/protective_form,
-		/datum/action/human_action/activable/synth_bracer/rescue_hook,
-		/datum/action/human_action/synth_bracer/motion_detector,
-	)
+	var/list/actions_list_added = list()
 
 	var/list/actions_list_actions = list()
 	var/active_ability = SIMI_ACTIVE_NONE
@@ -161,17 +156,21 @@
 		return
 
 	if(istype(attacker, /obj/item/device/simi_chip))
+		var/obj/item/device/simi_chip/new_chip = attacker
 		var/chips_num = 0
 		for(var/obj/item/device/simi_chip/chip in ability_chips)
+			if(chip.chip_action == new_chip.chip_action)
+				to_chat(user, SPAN_WARNING("[src] already has this circuit chip!"))
+				return
 			if(!chip.secret)
 				chips_num++
 		if(chips_num >= ability_chips_max)
-			to_chat(user, SPAN_WARNING("\The [src] can't hold another circuit chip!"))
+			to_chat(user, SPAN_WARNING("[src] can't hold another circuit chip!"))
 			return
 		if(user.drop_held_item())
-			attacker.forceMove(src)
-			ability_chips += attacker
-			to_chat(user, SPAN_NOTICE("You slot \the [attacker] into \the [src]!"))
+			new_chip.forceMove(src)
+			ability_chips += new_chip
+			to_chat(user, SPAN_NOTICE("You slot [new_chip] into [src]!"))
 			if(user.gloves && (user.gloves == src))
 				update_actions(SIMI_ACTIONS_RELOAD, user)
 			else
@@ -383,7 +382,9 @@
 	to_chat(user, SPAN_WARNING("\The [src]'s charge now reads: <b>[battery_charge]/[battery_charge_max]</b>."))
 	update_icon()
 
-//########
+//#############################
+//##### ACTION HANDLING #######
+//#############################
 /obj/item/clothing/gloves/synth/proc/update_actions(mode = SIMI_ACTIONS_LOAD, mob/user)
 	if((!user) && ((mode != SIMI_ACTIONS_LOAD) && (mode != SIMI_ACTIONS_RELOAD)))
 		return FALSE

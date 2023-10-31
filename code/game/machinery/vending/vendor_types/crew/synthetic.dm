@@ -338,10 +338,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 /obj/structure/machinery/cm_vending/own_points/experimental_tools/get_listed_products(mob/user)
 	return list(
 		list("PK-130 CIRCUIT CHIPS", 0, null, null, null),
-		list("PK-130 Repair Mode", 5, /obj/item/device/simi_chip/repair, null, VENDOR_ITEM_RECOMMENDED),
-		list("PK-130 Protection Mode", 5, /obj/item/device/simi_chip/protect, null, VENDOR_ITEM_REGULAR),
-		list("PK-130 Rescue Hook", 5, /obj/item/device/simi_chip/rescue_hook, null, VENDOR_ITEM_REGULAR),
-		list("PK-130 Motion Detector", 5, /obj/item/device/simi_chip/motion_detector, null, VENDOR_ITEM_REGULAR),
+		list("PK-130 Repair Mode", 15, /obj/item/device/simi_chip/repair, null, VENDOR_ITEM_RECOMMENDED),
+		list("PK-130 Protection Mode", 15, /obj/item/device/simi_chip/protect, null, VENDOR_ITEM_REGULAR),
+		list("PK-130 Anchor Mode", 15, /obj/item/device/simi_chip/anchor, null, VENDOR_ITEM_REGULAR),
+		list("PK-130 Rescue Hook", 15, /obj/item/device/simi_chip/rescue_hook, null, VENDOR_ITEM_REGULAR),
+		list("PK-130 Motion Detector", 15, /obj/item/device/simi_chip/motion_detector, null, VENDOR_ITEM_REGULAR),
 		list("UTILITY & SELF DEFENSE TOOLS", 0, null, null, null),
 		list("Telescopic Baton", 15, /obj/item/weapon/telebaton, null, VENDOR_ITEM_REGULAR),
 		list("Experimental Meson Goggles", 15, /obj/item/clothing/glasses/night/experimental_mesons, null, VENDOR_ITEM_REGULAR),

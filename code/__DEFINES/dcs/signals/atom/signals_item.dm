@@ -36,8 +36,6 @@
 	#define COMPONENT_ATOM_STORAGE_RETRIEVED (1<<1)
 #define COMSIG_ATOM_STORAGE_UPDATED "atom_storage_updated"
 
-#define COMSIG_ITEM_CRYOSTORED "item_cryostored"
-
 ///from /obj/item/reagent_container/food/snacks/proc/On_Consume
 #define COMSIG_SNACK_EATEN "snack_eaten"
 

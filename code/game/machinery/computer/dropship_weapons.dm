@@ -38,7 +38,7 @@
 	range_turfs = null
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
-	QDEL_NULL(cam_plane_masters)
+	QDEL_LIST(cam_plane_masters)
 
 /datum/camera_manager/proc/register(mob/user)
 	user.client.register_map_obj(cam_background)

@@ -967,6 +967,10 @@
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	actions_types = list(/datum/action/item_action/specialist/toggle_cbrn_hood)
 
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+
 	///Whether the hood and gas mask were worn through the hood toggle verb
 	var/hood_enabled = FALSE
 	///Whether enabling the hood protects you from fire

@@ -560,7 +560,7 @@
 	desc = "A custom therapy plush, in a unique color. This one is labeled with \"#[color_code]\"."
 
 /obj/item/toy/plush/random_plushie //Not using an effect so it can fit into storage from loadout
-	name = "random plushie spawner"
+	name = "random plush"
 	desc = "You should not be seeing this"
 	/// Standard plushies for the spawner to pick from
 	var/list/plush_list = list(
@@ -585,17 +585,24 @@
 
 /obj/item/toy/plush/random_plushie/Initialize(mapload, ...)
 	. = ..()
-	if(mapload) //Can't always create in initialization due to potential loadout issues if so
+	if(mapload) //Placed in mapping, will be randomized instantly on spawn
 		create_plushie()
+		return
+	RegisterSignal(src, COMSIG_POST_SPAWN_UPDATE, PROC_REF(create_plushie))
 
-/obj/item/toy/plush/random_plushie/post_loadout_spawn(mob/living/carbon/human/user)
-	. = ..()
-	create_plushie()
-
-/obj/item/toy/plush/random_plushie/proc/create_plushie()
+///The randomizer picking and spawning a plushie on either the ground or in the humans backpack. Needs var/source due to signals
+/obj/item/toy/plush/random_plushie/proc/create_plushie(source = src, mob/living/user)
+	UnregisterSignal(src, COMSIG_POST_SPAWN_UPDATE)
 	var/plush_list_variety = pick(60; plush_list, 40; therapy_plush_list)
 	var/random_plushie = pick(plush_list_variety)
-	new random_plushie(loc)
+	var/obj/item/toy/plush/plush = new random_plushie(get_turf(src)) //Starts on floor by default
+
+	if(!user) //If it didn't spawn on a humanoid
+		qdel(src)
+		return
+	var/obj/item/storage/backpack/storage = locate() in user //If the user has a backpack, put it there
+	if(storage?.can_be_inserted(plush, user, stop_messages = TRUE))
+		storage.attempt_item_insertion(plush, TRUE, user)
 	qdel(src)
 
 //Admin plushies
@@ -620,9 +627,9 @@
 /obj/item/toy/plush/runner/attackby(obj/item/attacking_object, mob/user)
 	. = ..()
 	if(beret)
-		return ..()
+		return
 	if(!istypestrict(attacking_object, /obj/item/clothing/head/beret/marine/mp))
-		return ..()
+		return
 	var/beret_attack = attacking_object
 	to_chat(user, SPAN_NOTICE("You put [beret_attack] on [src]."))
 	qdel(beret_attack)

@@ -531,8 +531,14 @@
 	///Text written on the back
 	var/scribble
 
-/obj/item/prop/helmetgarb/family_photo/post_loadout_spawn(mob/living/carbon/human/user)
+/obj/item/prop/helmetgarb/family_photo/Initialize(mapload, ...)
 	. = ..()
+	if(!mapload)
+		RegisterSignal(src, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+
+///Sets the owner of the family photo to the human it spawns with, needs var/source for signals
+/obj/item/prop/helmetgarb/family_photo/proc/set_owner(source = src, mob/living/carbon/human/user)
+	UnregisterSignal(src, COMSIG_POST_SPAWN_UPDATE)
 	owner = user
 
 /obj/item/prop/helmetgarb/family_photo/get_examine_text(mob/user)
@@ -548,6 +554,7 @@
 	. += "A photo of a family you do not know."
 
 /obj/item/prop/helmetgarb/family_photo/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_PEN) || istype(attacking_item, /obj/item/toy/crayon))
 		if(scribble)
 			to_chat(user, SPAN_NOTICE("[src] has already been written on."))
@@ -562,7 +569,7 @@
 			return
 		scribble = new_text
 		playsound(src, "paper_writing", 15, TRUE)
-	..()
+	return TRUE
 
 /obj/item/prop/helmetgarb/compass
 	name = "compass"

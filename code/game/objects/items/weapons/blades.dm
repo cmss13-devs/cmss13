@@ -267,6 +267,7 @@
 
 /obj/item/weapon/straight_razor/Initialize(mapload, ...)
 	. = ..()
+	RegisterSignal(src, COMSIG_ITEM_ATTEMPTING_EQUIP, PROC_REF(can_fit_in_shoe))
 	change_razor_state(razor_opened)
 	if(prob(1))
 		desc += " There is phrase etched into it, \"<i>It can guarantee the closest shave you'll ever know.</i>\"..."
@@ -288,10 +289,13 @@
 	change_razor_state(!razor_opened)
 	to_chat(user, SPAN_NOTICE("You [razor_opened ? "reveal" : "hide"] [src]'s blade."))
 
-/obj/item/weapon/straight_razor/additional_shoe_store_behavior(mob/user, obj/item/clothing/shoes/shoes, obj/item/stored_item)
-	if(!razor_opened)
-		return TRUE
-	to_chat(user, SPAN_NOTICE("You cannot store [src] in [shoes] until the blade is hidden."))
+///Check if the item can fit as a boot knife, var/source for signals
+/obj/item/weapon/straight_razor/proc/can_fit_in_shoe(source = src, mob/user, slot)
+	if(slot != WEAR_IN_SHOES) //Only check if you try putting it in a shoe
+		return
+	if(razor_opened)
+		to_chat(user, SPAN_NOTICE("You cannot store [src] in your shoes until the blade is hidden."))
+		return COMPONENT_CANCEL_EQUIP
 
 ///Changes all the vars for the straight razor
 /obj/item/weapon/straight_razor/proc/change_razor_state(opening = FALSE)
@@ -356,8 +360,8 @@
 	var/new_beard_style
 	var/new_hair_style
 	if(human_user.gender == MALE)
-		new_beard_style = input(human_user, "Select a facial hair style", "Grooming")  as null|anything in species_facial_hair
-	new_hair_style = input(human_user, "Select a hair style", "Grooming")  as null|anything in species_hair
+		new_beard_style = tgui_input_list(human_user, "Select a facial hair style", "Grooming", species_facial_hair)
+	new_hair_style = tgui_input_list(human_user, "Select a hair style", "Grooming", species_hair)
 
 	if(loc != human_user)
 		to_chat(human_user, SPAN_NOTICE("You are too far from [src] to change your hair styles."))

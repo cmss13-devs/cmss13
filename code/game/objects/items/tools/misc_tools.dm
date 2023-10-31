@@ -173,7 +173,7 @@
 		playsound(user.loc, "sound/items/pen_click_[on? "on": "off"].ogg", 100, 1, 5)
 	update_pen_state()
 
-/obj/item/tool/pen/Initialize()
+/obj/item/tool/pen/Initialize(mapload, ...)
 	. = ..()
 	update_pen_state()
 
@@ -286,8 +286,14 @@
 	var/current_colour_index = 1
 	var/owner = "hard to read text"
 
-/obj/item/tool/pen/fountain/post_loadout_spawn(mob/living/carbon/human/user)
+/obj/item/tool/pen/fountain/Initialize(mapload, ...)
 	. = ..()
+	if(!mapload)
+		RegisterSignal(src, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+
+///Sets the owner of the pen to who it spawns with, requires var/source for signals
+/obj/item/tool/pen/fountain/proc/set_owner(source = src, mob/living/carbon/human/user)
+	UnregisterSignal(src, COMSIG_POST_SPAWN_UPDATE)
 	owner = user
 
 /obj/item/tool/pen/fountain/get_examine_text(mob/user)

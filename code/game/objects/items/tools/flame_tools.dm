@@ -653,7 +653,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/icon_off = "cigoff"
 	var/enabled = FALSE
 
-/obj/item/clothing/mask/electronic_cigarette/Initialize(mapload, ...)
+/obj/item/clothing/mask/electronic_cigarette/update_icon()
 	. = ..()
 	if(enabled)
 		icon_state = icon_on
@@ -662,13 +662,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/electronic_cigarette/attack_self(mob/user)
 	. = ..()
 	to_chat(user, SPAN_NOTICE("You [enabled ? "disable" : "enable"] [src]."))
-	if(enabled)
-		icon_state = icon_off
-		item_state = icon_off
-		enabled = FALSE
-		return
-	icon_state = icon_on
-	item_state = icon_on
+	update_icon()
 	enabled = TRUE
 
 /obj/item/clothing/mask/electronic_cigarette/cigar

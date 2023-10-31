@@ -658,12 +658,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(enabled)
 		icon_state = icon_on
 		item_state = icon_on
+		return
+	icon_state = icon_off
+	item_state = icon_off
 
 /obj/item/clothing/mask/electronic_cigarette/attack_self(mob/user)
 	. = ..()
 	to_chat(user, SPAN_NOTICE("You [enabled ? "disable" : "enable"] [src]."))
+	enabled = !enabled
 	update_icon()
-	enabled = TRUE
 
 /obj/item/clothing/mask/electronic_cigarette/cigar
 	name = "electronic cigar"

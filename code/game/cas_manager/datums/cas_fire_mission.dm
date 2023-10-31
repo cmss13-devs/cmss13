@@ -37,7 +37,7 @@
 		.["records"] += list(record.ui_data(user))
 
 /datum/cas_fire_mission/proc/record_for_weapon(weapon_id)
-	for(var/datum/cas_fire_mission_record/record in records)
+	for(var/datum/cas_fire_mission_record/record as anything in records)
 		if(record.weapon.ship_base.attach_id == weapon_id)
 			return record
 	return null

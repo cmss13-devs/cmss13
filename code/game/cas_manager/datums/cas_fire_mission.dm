@@ -15,7 +15,7 @@
 		manager.set_camera_obj(src, camera_width, camera_height)
 
 /obj/effect/firemission_guidance/proc/clearCameras()
-	for(var/datum/camera_manager/manager in camera_managers)
+	for(var/datum/camera_manager/manager as anything in camera_managers)
 		manager.show_camera_static()
 	camera_managers = list()
 

@@ -33,7 +33,7 @@
 	. = list()
 	.["name"] = sanitize(copytext(name, 1, MAX_MESSAGE_LEN))
 	.["records"] = list()
-	for(var/datum/cas_fire_mission_record/record in records)
+	for(var/datum/cas_fire_mission_record/record as anything in records)
 		.["records"] += list(record.ui_data(user))
 
 /datum/cas_fire_mission/proc/record_for_weapon(weapon_id)

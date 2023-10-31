@@ -42,10 +42,13 @@
 	QDEL_LIST(cam_plane_masters)
 
 /datum/camera_manager/proc/register(mob/user)
-	user.client.register_map_obj(cam_background)
-	user.client.register_map_obj(cam_screen)
+	var/client/user_client = user.client
+	if(!user_client)
+		return
+	user_client.register_map_obj(cam_background)
+	user_client.register_map_obj(cam_screen)
 	for(var/plane in cam_plane_masters)
-		user.client.register_map_obj(plane)
+		user_client.register_map_obj(plane)
 
 /datum/camera_manager/proc/clear_camera()
 	current_area = null

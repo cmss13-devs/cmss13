@@ -10,6 +10,10 @@
 	users = list()
 	camera_managers = list()
 
+/obj/effect/firemission_guidance/Destroy(force)
+	users = null
+	camera_managers = null
+
 /obj/effect/firemission_guidance/proc/updateCameras()
 	for(var/datum/camera_manager/manager as anything in camera_managers)
 		manager.set_camera_obj(src, camera_width, camera_height)

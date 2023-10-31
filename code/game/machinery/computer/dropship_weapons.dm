@@ -36,6 +36,7 @@
 /datum/camera_manager/Destroy(force, ...)
 	. = ..()
 	range_turfs = null
+	current_area = null
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
 	QDEL_LIST(cam_plane_masters)

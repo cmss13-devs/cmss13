@@ -48,10 +48,9 @@
 	var/list/obj/structure/dropship_equipment/weapons = list()
 	var/shuttle_tag = linked_console.shuttle_tag
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	for(var/X in dropship.equipments)
-		var/obj/structure/dropship_equipment/E = X
-		if(E.is_weapon)
-			weapons += E
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+		if(equipment.is_weapon)
+			weapons += equipment
 
 	var/datum/cas_fire_mission/fm = new()
 

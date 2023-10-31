@@ -537,7 +537,7 @@
 
 /obj/structure/dropship_equipment/electronics/targeting_system
 	name = "\improper AN/AAQ-178 Weapon Targeting System"
-	shorthand = "Targetting"
+	shorthand = "Targeting"
 	icon_state = "targeting_system"
 	desc = "A targeting system for dropships. It improves firing accuracy on laser targets. Fits on electronics attach points. You need a powerloader to lift this."
 	point_cost = 800

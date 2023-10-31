@@ -496,7 +496,7 @@ DEFINES in setup.dm, referenced here.
 	if(isnull(slot))
 		return FALSE
 	if(slot == shoes)//Snowflakey check for shoes and uniform
-		if(shoes.stored_item && isweapon(shoes.stored_item))
+		if(SEND_SIGNAL(shoes, COMSIG_ATOM_CAN_RETRIEVE) & COMPONENT_ATOM_CAN_RETRIEVE)
 			return shoes
 		return FALSE
 

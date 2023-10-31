@@ -386,6 +386,7 @@
 #include "code\datums\components\orbiter.dm"
 #include "code\datums\components\overlay_lighting.dm"
 #include "code\datums\components\rename.dm"
+#include "code\datums\components\simple_atom_storage.dm"
 #include "code\datums\components\speed_modifier.dm"
 #include "code\datums\components\toxin_buildup.dm"
 #include "code\datums\components\weed_damage_reduction.dm"

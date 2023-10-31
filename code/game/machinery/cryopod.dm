@@ -287,15 +287,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 					strippeditems += I
 					I.moveToNullspace()
 
-			if(istype(W, /obj/item/clothing/shoes/marine))
-				var/obj/item/clothing/shoes/marine/MS = W
-				if(MS.stored_item)
-					strippeditems += MS.stored_item
-					MS.stored_item.moveToNullspace()
-					MS.stored_item = null
-
-
-
 			for(var/TT in deleteempty)
 				if(istype(W, TT))
 					if(length(W.contents) == 0)

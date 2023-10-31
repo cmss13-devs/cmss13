@@ -259,10 +259,9 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
-/obj/item/clothing/shoes/yautja/hunter/knife/New()
-	..()
-	stored_item = new /obj/item/weapon/yautja/knife(src)
-	update_icon()
+/obj/item/clothing/shoes/yautja/hunter/knife
+	starter_item_type = /obj/item/weapon/yautja/knife
+
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
 	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight."

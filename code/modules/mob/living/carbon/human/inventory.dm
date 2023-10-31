@@ -351,8 +351,8 @@
 			S.attempt_item_insertion(W, disable_warning, src)
 			back.update_icon()
 		if(WEAR_IN_SHOES)
-			shoes.attackby(W,src)
-			shoes.update_icon()
+			if(shoes)
+				SEND_SIGNAL(shoes, COMSIG_ATOM_ATTEMPT_STORE, src, W)
 		if(WEAR_IN_SCABBARD)
 			var/obj/item/storage/S = back
 			S.attempt_item_insertion(W, disable_warning, src)

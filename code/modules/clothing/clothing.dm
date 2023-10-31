@@ -331,8 +331,8 @@
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
 	blood_overlay_type = "feet"
-	var/obj/item/stored_item
 	var/list/items_allowed
+	var/starter_item_type
 	var/shoes_blood_amt = 0
 
 /obj/item/clothing/shoes/update_clothing_icon()
@@ -340,35 +340,21 @@
 		var/mob/M = src.loc
 		M.update_inv_shoes()
 
-/obj/item/clothing/shoes/Destroy()
-	if(stored_item)
-		qdel(stored_item)
-		stored_item = null
+/obj/item/clothing/shoes/Initialize(mapload, ...)
 	. = ..()
+	AddComponent(/datum/component/simple_atom_storage, items_allowed, 1, 'sound/weapons/gun_shotgun_shell_insert.ogg')
+	if(starter_item_type)
+		var/obj/item/starter_item = new starter_item_type
+		SEND_SIGNAL(src, COMSIG_ATOM_ATTEMPT_STORE, null, starter_item)
 
-/obj/item/clothing/shoes/attack_hand(mob/living/M)
-	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
-		if(M.put_in_active_hand(stored_item))
-			to_chat(M, SPAN_NOTICE("You slide [stored_item] out of [src]."))
-			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-			stored_item = 0
-			update_icon()
-			desc = initial(desc)
-		return
-	..()
+/obj/item/clothing/shoes/attack_hand(mob/living/user)
+	if(!user.is_mob_incapacitated())
+		if(SEND_SIGNAL(src, COMSIG_ATOM_ATTEMPT_RETRIEVE, user) & COMPONENT_ATOM_STORAGE_RETRIEVED)
+			return
+	return ..()
 
-/obj/item/clothing/shoes/attackby(obj/item/I, mob/living/M)
-	if(items_allowed && items_allowed.len)
-		for (var/i in items_allowed)
-			if(istype(I, i))
-				if(stored_item) return
-				stored_item = I
-				M.drop_inv_item_to_loc(I, src)
-				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
-				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-				update_icon()
-				desc = initial(desc) + "\nIt is storing \a [stored_item]."
-				break
+/obj/item/clothing/shoes/attackby(obj/item/item, mob/living/user)
+	SEND_SIGNAL(src, COMSIG_ATOM_ATTEMPT_STORE, user, item)
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
 	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?

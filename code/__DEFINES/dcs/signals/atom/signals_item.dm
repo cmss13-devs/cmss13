@@ -24,6 +24,20 @@
 /// From base of /obj/item/proc/attack_self(): (mob/user)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
 
+#define COMSIG_ATOM_CAN_STORE "atom_can_store"
+#define COMSIG_ATOM_CAN_RETRIEVE "atom_can_retrieve"
+	#define COMPONENT_ATOM_NOTHING_TO_RETRIEVE (1<<0)
+	#define COMPONENT_ATOM_CAN_RETRIEVE (1<<1)
+#define COMSIG_ATOM_ATTEMPT_STORE "atom_attempt_store"
+	#define COMPONENT_ATOM_CAN_STORE (1<<0)
+	#define COMPONENT_ATOM_STORAGE_STORED (1<<1)
+#define COMSIG_ATOM_ATTEMPT_RETRIEVE "atom_attempt_retrieve"
+	//#define COMPONENT_ATOM_NOTHING_TO_RETRIEVE (1<<0)
+	#define COMPONENT_ATOM_STORAGE_RETRIEVED (1<<1)
+#define COMSIG_ATOM_STORAGE_UPDATED "atom_storage_updated"
+
+#define COMSIG_ITEM_CRYOSTORED "item_cryostored"
+
 ///from /obj/item/reagent_container/food/snacks/proc/On_Consume
 #define COMSIG_SNACK_EATEN "snack_eaten"
 

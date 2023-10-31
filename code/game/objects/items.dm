@@ -706,12 +706,8 @@ cases. Override_icon_state should be a list.*/
 						return TRUE
 				return FALSE
 			if(WEAR_IN_SHOES)
-				if(H.shoes && istype(H.shoes, /obj/item/clothing/shoes))
-					var/obj/item/clothing/shoes/S = H.shoes
-					if(!S.stored_item && S.items_allowed && S.items_allowed.len)
-						for (var/i in S.items_allowed)
-							if(istype(src, i))
-								return TRUE
+				if(H.shoes && (SEND_SIGNAL(H.shoes, COMSIG_ATOM_CAN_STORE, src)) & COMPONENT_ATOM_CAN_STORE)
+					return TRUE
 				return FALSE
 			if(WEAR_IN_SCABBARD)
 				if(H.back && istype(H.back, /obj/item/storage/large_holster))

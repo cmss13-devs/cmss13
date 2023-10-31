@@ -85,7 +85,7 @@
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.
 	// Most security cameras will end here as they're not moving.
-	var/turf/new_location = get_turf(locate(target_x, target_y, target_z))
+	var/turf/new_location = locate(target_x, target_y, target_z)
 	if(last_camera_turf == new_location)
 		return
 

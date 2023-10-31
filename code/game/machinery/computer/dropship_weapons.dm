@@ -558,7 +558,7 @@
 	. = list()
 	if(!editing_firemission)
 		return
-	for(var/datum/cas_fire_mission_record/firerec in editing_firemission.records)
+	for(var/datum/cas_fire_mission_record/firerec as anything in editing_firemission.records)
 		var/gimbal = firerec.get_offsets()
 		var/ammo = firerec.get_ammo()
 		var/offsets = new /list(firerec.offsets.len)

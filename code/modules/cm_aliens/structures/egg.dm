@@ -320,12 +320,28 @@ SPECIAL EGG USED BY EGG CARRIER
 	else
 		//Die after maximum lifetime
 		life_timer = addtimer(CALLBACK(src, PROC_REF(remove_owner_and_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
+		set_owner(planter)
 
-/obj/effect/alien/egg/carrier_egg/proc/remove_owner_and_decay()
+/obj/effect/alien/egg/carrier_egg/Destroy()
+	. = ..()
+	remove_owner()
+	if(life_timer)
+		deltimer(life_timer)
+
+/obj/effect/alien/egg/carrier_egg/proc/set_owner(mob/living/carbon/xenomorph/carrier/planter)
+	var/datum/behavior_delegate/carrier_eggsac/my_delegate = planter.behavior_delegate
+	my_delegate.eggs_sustained += src
+	owner = planter
+
+/obj/effect/alien/egg/carrier_egg/proc/remove_owner()
 	if(owner)
 		var/mob/living/carbon/xenomorph/carrier/my_owner = owner
 		var/datum/behavior_delegate/carrier_eggsac/my_delegate = my_owner.behavior_delegate
-		my_delegate.eggs_sustained += src
+		my_delegate.eggs_sustained -= src
+		owner = null
+
+/obj/effect/alien/egg/carrier_egg/proc/remove_owner_and_decay()
+	remove_owner()
 	start_unstoppable_decay()
 
 /obj/effect/alien/egg/carrier_egg/proc/check_decay()
@@ -335,7 +351,13 @@ SPECIAL EGG USED BY EGG CARRIER
 
 /obj/effect/alien/egg/carrier_egg/proc/start_unstoppable_decay()
 	addtimer(CALLBACK(src, PROC_REF(Burst), TRUE), 10 SECONDS)
-	deltimer(life_timer)
+	if(life_timer)
+		deltimer(life_timer)
+
+/obj/effect/alien/egg/carrier_egg/Burst(kill, instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled)
+	. = ..()
+	remove_owner()
+
 
 #undef CARRIER_EGG_UNSUSTAINED_LIFE
 #undef CARRIER_EGG_MAXIMUM_LIFE

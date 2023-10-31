@@ -94,7 +94,7 @@
 
 	var/x_size = current_area.width
 	var/y_size = current_area.height
-	var/target = locate(current_area.center_x, current_area.center_y, target_z)
+	var/turf/target = locate(current_area.center_x, current_area.center_y, target_z)
 	var/list/guncamera_zone = range("[x_size]x[y_size]", target)
 
 	var/list/visible_turfs = list()

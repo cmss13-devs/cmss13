@@ -136,7 +136,7 @@ var/global/east_riverstart = 0
 	else
 		return
 
-	if(ismob(A))
+	if(isliving(A))
 		var/mob/living/M = A
 
 		// Inside a xeno for example

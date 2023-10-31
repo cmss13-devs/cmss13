@@ -8,9 +8,9 @@
 		WEAR_HANDS = 'icons/mob/humans/onmob/synth/bracer.dmi'
 	)
 
-	var/base_item_slot_state = "bracer"
+	var/base_item_slot_state = "bracer_default"
 	item_state_slots = list(
-		WEAR_HANDS = "bracer"
+		WEAR_HANDS = "bracer_default"
 	)
 
 	siemens_coefficient = 0
@@ -293,13 +293,13 @@
 	set name = "Swap Hands"
 	set src in usr
 
-	if(base_item_slot_state == "bracer")
-		base_item_slot_state = "bracer_r"
+	if(base_item_slot_state == "bracer_[bracer_color]")
+		base_item_slot_state = "bracer_[bracer_color]_r"
 	else
-		base_item_slot_state = "bracer"
+		base_item_slot_state = "bracer_[bracer_color]"
 	item_state_slots[WEAR_HANDS] = base_item_slot_state
 
-	to_chat(usr, SPAN_NOTICE("You shift \the [src] over to your [base_item_slot_state == "bracer" ? "right arm" : "left arm"]."))
+	to_chat(usr, SPAN_NOTICE("You shift \the [src] over to your [base_item_slot_state == "bracer_[bracer_color]" ? "left arm" : "right arm"]."))
 	usr.update_inv_gloves()
 
 /obj/item/clothing/gloves/synth/verb/remove_gloves()

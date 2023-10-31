@@ -14,6 +14,25 @@
 /obj/item/clothing/gloves/synth/wy/pmc
 	faction = FACTION_PMC
 
+/obj/item/clothing/gloves/synth/wy/pmc/preset
+	faction = FACTION_PMC
+	actions_list_added = list(
+		/datum/action/human_action/synth_bracer/repair_form,
+		/datum/action/human_action/synth_bracer/motion_detector,
+		)
+
+/obj/item/clothing/gloves/synth/wy/pmc/preset/New()
+	underglove = new /obj/item/clothing/gloves/marine/veteran/pmc
+	underglove.forceMove(src)
+
+	var/obj/item/device/simi_chip/motion_detector/new_md = new
+	var/obj/item/device/simi_chip/repair/new_repair = new
+	new_md.forceMove(src)
+	ability_chips += new_md
+	new_repair.forceMove(src)
+	ability_chips += new_repair
+	..()
+
 /obj/item/clothing/gloves/synth/testing
 	name = "XPK-140 SIMI wrist-mounted computer"
 	desc = "Developed by a joint effort between Weyland-Yutani CIART and the USCM R&D Division, the SIMI portable computer is the ultimate solution for situational awareness, personnel monitoring and communication. This one is highly experimental and seems to be overclocked."

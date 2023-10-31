@@ -227,12 +227,15 @@
 
 /obj/item/clothing/gloves/synth/proc/get_bracer_status()
 	if(battery_charge <= 0)
+		internal_transmitter.enabled = FALSE
 		return "status_nobattery"
 	if(battery_charge <= battery_charge_max * 0.1)
 		return "status_lowbattery"
 	var/mob/living/carbon/human/wearer = loc
 	if(!issynth(wearer))
+		internal_transmitter.enabled = FALSE
 		return "status_unauthorized"
+	internal_transmitter.enabled = TRUE
 	return "status_idle"
 
 /obj/item/clothing/gloves/synth/proc/update_overlays()

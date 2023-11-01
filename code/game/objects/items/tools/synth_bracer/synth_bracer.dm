@@ -45,7 +45,7 @@
 	)
 	var/list/actions_list_added = list()
 
-	var/list/actions_list_actions = list()
+	var/list/datum/action/human_action/synth_bracer/actions_list_actions = list()
 	var/active_ability = SIMI_ACTIVE_NONE
 	var/active_utility = SIMI_ACTIVE_NONE
 

@@ -111,6 +111,6 @@
 	icon = 'icons/obj/items/synth/bracer.dmi'
 	icon_state = "holo_hook_telegraph_anim"
 
-/obj/effect/simi_hook/New(loc, ttl = 10)
-	..(loc)
+/obj/effect/simi_hook/Initialize(mapload, ttl = 1 SECONDS)
+	. = ..()
 	QDEL_IN(src, ttl)

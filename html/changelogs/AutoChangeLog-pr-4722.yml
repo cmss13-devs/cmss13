@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - qol: "you can now click drag from items in your storage to your hands"

@@ -429,21 +429,44 @@
 
 			if(58 to 65) // Sandbags kit
 				crate = new /obj/structure/closet/crate(T)
-				choosemax = rand(3,6)
 				spawnitems = list(/obj/item/tool/shovel/etool,
 								/obj/item/stack/sandbags_empty/half,
 								/obj/item/stack/sandbags_empty/half,
 								/obj/item/stack/sandbags_empty/half)
 
-			if(66 to 75) // Mortar shells. Pew Pew!
+			if(66 to 70) // Mortar shells. Pew Pew!
 				crate = new /obj/structure/closet/crate/secure/mortar_ammo(T)
 				choosemax = rand(6,10)
-				spawnitems = list(/obj/item/mortar_shell/he,
+				randomitems = list(/obj/item/mortar_shell/he,
 								/obj/item/mortar_shell/incendiary,
 								/obj/item/mortar_shell/flare,
 								/obj/item/mortar_shell/frag)
 
-			if(76 to 80)
+			if(71 to 79)
+				crate = new /obj/structure/closet/crate/ammo(T)
+				choosemax = rand(2, 3)
+				randomitems = list(/obj/item/ammo_box/rounds,
+								/obj/item/ammo_box/rounds/ap,
+								/obj/item/ammo_box/rounds/smg,
+								/obj/item/ammo_box/rounds/smg/ap,
+								/obj/item/ammo_box/magazine/ap,
+								/obj/item/ammo_box/magazine/ext,
+								/obj/item/ammo_box/magazine/m4ra/ap,
+								/obj/item/ammo_box/magazine/m4ra/ap,
+								/obj/item/ammo_box/magazine/m39/ap,
+								/obj/item/ammo_box/magazine/m39/ext,
+				)
+
+			if(80 to 82)
+				crate = new /obj/structure/closet/crate/ammo(T)
+				choosemax = rand(2, 3)
+				randomitems = list(/obj/item/ammo_magazine/rifle/lmg/holo_target,
+								/obj/item/ammo_magazine/rifle/lmg/holo_target,
+								/obj/item/ammo_magazine/rifle/lmg,
+								/obj/item/ammo_magazine/rifle/lmg,
+				)
+
+			if(83 to 86)
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(
 									/obj/item/attachable/magnetic_harness,
@@ -451,7 +474,7 @@
 									/obj/item/attachable/magnetic_harness,
 									/obj/item/attachable/magnetic_harness)
 
-			if(81 to 84)
+			if(86 to 90)
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				spawnitems = list(
 									/obj/item/device/binoculars/range,

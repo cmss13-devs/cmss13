@@ -6,7 +6,7 @@
 	caste_type = XENO_CASTE_QUEEN
 	tier = 0
 
-	melee_damage_lower = XENO_DAMAGE_TIER_4
+	melee_damage_lower = XENO_DAMAGE_TIER_5
 	melee_damage_upper = XENO_DAMAGE_TIER_6
 	melee_vehicle_damage = XENO_DAMAGE_TIER_9 //Queen and Ravs have extra multiplier when dealing damage in multitile_interaction.dm
 	max_health = XENO_HEALTH_QUEEN
@@ -20,14 +20,14 @@
 
 	build_time_mult = BUILD_TIME_MULT_BUILDER
 
-	is_intelligent = 1
+	is_intelligent = TRUE
 	evolution_allowed = FALSE
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
-	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
-	can_hold_facehuggers = 0
+	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/praetorian)
+	can_hold_facehuggers = FALSE
 	can_hold_eggs = CAN_HOLD_ONE_HAND
-	acid_level = 2
+	acid_level = 3
 	weed_level = WEED_LEVEL_STANDARD
 	can_be_revived = FALSE
 

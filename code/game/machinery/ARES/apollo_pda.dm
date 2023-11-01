@@ -415,4 +415,5 @@
 			return TRUE
 
 	if(playsound)
-		playsound(src, "keyboard_alt", 15, 1)
+		var/sound = pick('sound/machines/pda_button1.ogg', 'sound/machines/pda_button2.ogg')
+		playsound(src, sound, 15, TRUE)

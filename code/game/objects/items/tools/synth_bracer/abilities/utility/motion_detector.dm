@@ -48,10 +48,13 @@
 		to_chat(user, SPAN_WARNING("No motion detector located!"))
 		return FALSE
 	to_chat(user, SPAN_NOTICE("You [motion_detector_active? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector."))
-	playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 35, TRUE)
+	if(COOLDOWN_FINISHED(src, sound_cooldown))
+		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 35, TRUE)
+		COOLDOWN_START(src, sound_cooldown, 5 SECONDS)
 	motion_detector_active = !motion_detector_active
 	var/datum/action/human_action/synth_bracer/motion_detector/TMD = locate(/datum/action/human_action/synth_bracer/motion_detector) in actions_list_actions
 	TMD.update_icon()
+	update_icon()
 
 	if(!motion_detector_active)
 		STOP_PROCESSING(SSobj, src)

@@ -52,7 +52,9 @@
 
 /datum/action/human_action/synth_bracer/deploy_binoculars/action_activate()
 	..()
-	playsound(synth_bracer.loc,'sound/machines/click.ogg', 25, TRUE)
+	if(COOLDOWN_FINISHED(synth_bracer, sound_cooldown))
+		COOLDOWN_START(synth_bracer, sound_cooldown, 5 SECONDS)
+		playsound(synth_bracer.loc,'sound/machines/click.ogg', 25, TRUE)
 	if(synth_bracer.binos.loc == synth_bracer)
 		to_chat(synth, SPAN_NOTICE("You deploy your binoculars."))
 		synth_bracer.deploy_binos(synth)

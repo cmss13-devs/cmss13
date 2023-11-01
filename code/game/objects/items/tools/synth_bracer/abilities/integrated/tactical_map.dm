@@ -16,5 +16,7 @@
 
 /datum/action/human_action/synth_bracer/tactical_map/action_activate()
 	..()
-	playsound(synth_bracer, 'sound/machines/terminal_processing.ogg', 35, TRUE)
+	if(COOLDOWN_FINISHED(synth_bracer, sound_cooldown))
+		COOLDOWN_START(synth_bracer, sound_cooldown, 5 SECONDS)
+		playsound(synth_bracer, 'sound/machines/terminal_processing.ogg', 35, TRUE)
 	tacmap.tgui_interact(usr)

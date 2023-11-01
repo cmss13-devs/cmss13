@@ -68,6 +68,9 @@
 	var/saved_throw_allowed
 	var/saved_gun_allowed
 
+	/// Cooldown on abilities that play sounds (and don't internally handle it)
+	COOLDOWN_DECLARE(sound_cooldown)
+
 /obj/item/clothing/gloves/synth/Initialize(mapload, ...)
 	. = ..()
 	update_actions()
@@ -274,6 +277,10 @@
 	var/image/primary_image = image(icon, src, "primary_[active_ability]")
 	primary_image.appearance_flags = RESET_COLOR|KEEP_APART
 
+	if(motion_detector_active)
+		var/image/motion_image = image(icon, src, "motion_active")
+		motion_image.appearance_flags = RESET_COLOR|KEEP_APART
+		overlays += motion_image
 
 	overlays += idle_image
 	overlays += phone_image

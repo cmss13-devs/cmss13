@@ -69,6 +69,21 @@
 	if(human_adaptable && synth_bracer.human_adapted)
 		return TRUE
 	return FALSE
+
+/datum/action/human_action/activable/synth_bracer/proc/set_active(category = SIMI_SECONDARY_ACTION, set_ability = SIMI_ACTIVE_NONE)
+	switch(category)
+		if(SIMI_PRIMARY_ACTION)
+			synth_bracer.active_ability = set_ability
+		if(SIMI_SECONDARY_ACTION)
+			synth_bracer.active_utility = set_ability
+	if((synth_bracer.active_ability == SIMI_ACTIVE_NONE) && (synth_bracer.active_utility == SIMI_ACTIVE_NONE))
+		synth_bracer.flags_item &= ~NODROP
+	else
+		synth_bracer.flags_item |= NODROP
+	synth_bracer.update_icon(synth)
+
+/datum/action/human_action/activable/synth_bracer/proc/set_inactive(category = SIMI_SECONDARY_ACTION)
+	set_active(category, SIMI_ACTIVE_NONE)
 /* -- ON-CLICK ACTIONS -- */
 
 /datum/action/human_action/synth_bracer
@@ -150,3 +165,18 @@
 	if(human_adaptable && synth_bracer.human_adapted)
 		return TRUE
 	return FALSE
+
+/datum/action/human_action/synth_bracer/proc/set_active(category = SIMI_SECONDARY_ACTION, set_ability = SIMI_ACTIVE_NONE)
+	switch(category)
+		if(SIMI_PRIMARY_ACTION)
+			synth_bracer.active_ability = set_ability
+		if(SIMI_SECONDARY_ACTION)
+			synth_bracer.active_utility = set_ability
+	if((synth_bracer.active_ability == SIMI_ACTIVE_NONE) && (synth_bracer.active_utility == SIMI_ACTIVE_NONE))
+		synth_bracer.flags_item &= ~NODROP
+	else
+		synth_bracer.flags_item |= NODROP
+	synth_bracer.update_icon(synth)
+
+/datum/action/human_action/synth_bracer/proc/set_inactive(category = SIMI_SECONDARY_ACTION)
+	set_active(category, SIMI_ACTIVE_NONE)

@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - balance: "predators are no longer immune to molecular acid injected from spitter and boiler tailstabs"

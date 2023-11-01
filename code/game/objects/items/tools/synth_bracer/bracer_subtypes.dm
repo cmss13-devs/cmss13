@@ -36,6 +36,7 @@
 /obj/item/clothing/gloves/synth/testing
 	name = "XPK-140 SIMI wrist-mounted computer"
 	desc = "Developed by a joint effort between Weyland-Yutani CIART and the USCM R&D Division, the SIMI portable computer is the ultimate solution for situational awareness, personnel monitoring and communication. This one is highly experimental and seems to be overclocked."
+	ability_chips_max = 0
 
 	actions_list_inherent = list(
 		/datum/action/human_action/synth_bracer/crew_monitor,

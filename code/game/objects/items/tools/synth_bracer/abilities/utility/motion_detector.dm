@@ -48,7 +48,7 @@
 		to_chat(user, SPAN_WARNING("No motion detector located!"))
 		return FALSE
 	to_chat(user, SPAN_NOTICE("You [motion_detector_active? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector."))
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 35, TRUE)
 	motion_detector_active = !motion_detector_active
 	var/datum/action/human_action/synth_bracer/motion_detector/TMD = locate(/datum/action/human_action/synth_bracer/motion_detector) in actions_list_actions
 	TMD.update_icon()
@@ -65,6 +65,7 @@
 	handles_charge_cost = TRUE
 	handles_cooldown = TRUE
 	charge_cost = 2
+	human_adaptable = TRUE
 
 /datum/action/human_action/synth_bracer/motion_detector/action_activate()
 	..()

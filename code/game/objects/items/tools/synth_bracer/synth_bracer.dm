@@ -52,6 +52,9 @@
 	/// Faction used by Internal Phone & Crew Monitor
 	var/faction = FACTION_MARINE
 
+	/// If the bracer is adapted for human use. (No using repair mode etc.)
+	var/human_adapted = FALSE
+
 	/// Internal Phone
 	var/obj/structure/transmitter/internal/internal_transmitter
 
@@ -235,7 +238,7 @@
 	if(battery_charge <= battery_charge_max * 0.1)
 		return "status_lowbattery"
 	var/mob/living/carbon/human/wearer = loc
-	if(!issynth(wearer))
+	if(!issynth(wearer) && !human_adapted)
 		internal_transmitter.enabled = FALSE
 		return "status_unauthorized"
 	internal_transmitter.enabled = TRUE
@@ -369,7 +372,6 @@
 /obj/item/clothing/gloves/synth/proc/start_charging(mob/user)
 	bracer_charging = TRUE
 	item_state_slots[WEAR_HANDS] += "_charging"
-	//icon_state = "status_charging"
 
 	var/image/charge_image = image(icon, src, "status_charging")
 	charge_image.appearance_flags = RESET_COLOR|KEEP_APART

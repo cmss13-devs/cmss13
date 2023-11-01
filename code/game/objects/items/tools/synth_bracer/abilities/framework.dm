@@ -9,12 +9,16 @@
 	var/handles_charge_cost = FALSE
 	/// What cateogry of action it is. Can only have one active action from each type.
 	var/category = SIMI_SECONDARY_ACTION
+	var/human_adaptable = FALSE
 
 /datum/action/human_action/activable/synth_bracer/give_to(user)
-	if(!issynth(user))
-		return FALSE
+	/// never add a check to see if the synth has gloves on, because they shouldn't have these abilities while not wearing gloves. it should runtime to let us know
 	synth = user
-	synth_bracer = synth.gloves// never add a check to see if the synth has gloves on, because they shouldn't have these abilities while not wearing gloves. it should runtime to let us know
+	synth_bracer = synth.gloves
+	if(!issynth(user) && !is_human_usable())
+		synth = null
+		synth_bracer = null
+		return FALSE
 	return ..()
 
 /datum/action/human_action/activable/synth_bracer/remove_from(mob/living/carbon/human/H)
@@ -35,7 +39,7 @@
 	return TRUE
 
 /datum/action/human_action/activable/synth_bracer/can_use_action()
-	if(!issynth(owner))
+	if(!issynth(owner) && !is_human_usable())
 		to_chat(owner, SPAN_WARNING("You have no idea how to use this!"))
 	if(owner.is_mob_incapacitated() || owner.dazed)
 		to_chat(owner, SPAN_WARNING("You cannot use this action while incapacitated!"))
@@ -61,6 +65,10 @@
 		return FALSE
 	return ..()
 
+/datum/action/human_action/activable/synth_bracer/proc/is_human_usable()
+	if(human_adaptable && synth_bracer.human_adapted)
+		return TRUE
+	return FALSE
 /* -- ON-CLICK ACTIONS -- */
 
 /datum/action/human_action/synth_bracer
@@ -73,12 +81,15 @@
 	var/handles_charge_cost = FALSE
 	/// What cateogry of action it is. Can only have one active action from each type.
 	var/category = SIMI_SECONDARY_ACTION
+	var/human_adaptable = FALSE
 
 /datum/action/human_action/synth_bracer/give_to(user)
-	if(!issynth(user))
-		return FALSE
 	synth = user
 	synth_bracer = synth.gloves
+	if(!issynth(user) && !is_human_usable())
+		synth = null
+		synth_bracer = null
+		return FALSE
 	return ..()
 
 /datum/action/human_action/synth_bracer/remove_from(user)
@@ -103,7 +114,7 @@
 		button.color = rgb(255,255,255,255)
 
 /datum/action/human_action/synth_bracer/can_use_action()
-	if(!issynth(owner))
+	if(!issynth(owner) && !is_human_usable())
 		to_chat(owner, SPAN_WARNING("You have no idea how to use this!"))
 	if(owner.is_mob_incapacitated() || owner.dazed)
 		to_chat(owner, SPAN_WARNING("You cannot use this action while incapacitated!"))
@@ -134,3 +145,8 @@
 		enter_cooldown()
 	if(!handles_charge_cost && charge_cost)
 		synth_bracer.drain_charge(owner, charge_cost)
+
+/datum/action/human_action/synth_bracer/proc/is_human_usable()
+	if(human_adaptable && synth_bracer.human_adapted)
+		return TRUE
+	return FALSE

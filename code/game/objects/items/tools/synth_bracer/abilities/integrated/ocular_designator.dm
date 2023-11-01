@@ -39,6 +39,7 @@
 /datum/action/human_action/synth_bracer/deploy_binoculars
 	name = "Deploy Binoculars"
 	action_icon_state = "far_sight"
+	human_adaptable = TRUE
 
 /datum/action/human_action/synth_bracer/deploy_ocular_binos/can_use_action()
 	if(QDELETED(synth_bracer.binos) || synth_bracer.binos.loc != synth_bracer)

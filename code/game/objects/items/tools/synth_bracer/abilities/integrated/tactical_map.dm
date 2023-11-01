@@ -4,6 +4,7 @@
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
+	human_adaptable = TRUE
 
 /datum/action/human_action/synth_bracer/tactical_map/New()
 	. = ..()
@@ -15,5 +16,5 @@
 
 /datum/action/human_action/synth_bracer/tactical_map/action_activate()
 	..()
-
+	playsound(synth_bracer, 'sound/machines/terminal_processing.ogg', 35, TRUE)
 	tacmap.tgui_interact(usr)

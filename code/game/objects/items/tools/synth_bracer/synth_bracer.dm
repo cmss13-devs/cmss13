@@ -177,7 +177,7 @@
 			new_chip.forceMove(src)
 			ability_chips += new_chip
 			to_chat(user, SPAN_NOTICE("You slot [new_chip] into [src]!"))
-			playsound(src, 'sound/machines/terminal_processing.ogg', 35, TRUE)
+			playsound(src, 'sound/machines/terminal_processing.ogg', 15, TRUE)
 			if(user.gloves && (user.gloves == src))
 				update_actions(SIMI_ACTIONS_RELOAD, user)
 			else

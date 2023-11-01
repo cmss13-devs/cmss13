@@ -61,6 +61,8 @@
 
 	if(!length(turflist))
 		to_chat(synth, SPAN_WARNING("You don't have any room to launch your hook!"))
+		synth_bracer.active_utility = SIMI_ACTIVE_NONE
+		synth_bracer.update_icon()
 		return FALSE
 
 	synth.visible_message(SPAN_DANGER("[synth] prepares to launch a rescue hook at [atom_target]!"), SPAN_DANGER("You prepare to launch a rescue hook at [atom_target]!"))
@@ -92,13 +94,10 @@
 	playsound(get_turf(synth), 'sound/effects/bang.ogg', 25, 0)
 
 	var/mob/living/carbon/human/marine_target
-	if(ishuman(atom_target))
-		marine_target = atom_target
-	else
-		for(var/turf/target_turf in turflist)
-			for(var/mob/living/carbon/human/marine in target_turf)
-				marine_target = marine
-				continue
+	for(var/turf/target_turf in turflist)
+		for(var/mob/living/carbon/human/marine in target_turf)
+			marine_target = marine
+			continue
 
 	if(marine_target)
 		to_chat(marine_target, SPAN_DANGER("You are pulled towards [synth]!"))

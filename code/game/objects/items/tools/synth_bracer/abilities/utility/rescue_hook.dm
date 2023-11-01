@@ -91,7 +91,7 @@
 	synth.frozen = FALSE
 	synth.update_canmove()
 
-	playsound(get_turf(synth), 'sound/effects/bang.ogg', 25, 0)
+	playsound(get_turf(synth), 'sound/items/rappel.ogg', 75, FALSE)
 
 	var/mob/living/carbon/human/marine_target
 	for(var/turf/target_turf in turflist)

@@ -4,7 +4,7 @@
 /obj/item/clothing/gloves/synth/Initialize(mapload, ...)
 	. = ..()
 	binos = new(src)
-	RegisterSignal(binos, COMSIG_ITEM_DROPPED, .proc/return_binos)
+	RegisterSignal(binos, COMSIG_ITEM_DROPPED, PROC_REF(return_binos))
 
 /obj/item/clothing/gloves/synth/attackby(obj/item/I, mob/user)
 	if(I == binos)

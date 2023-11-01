@@ -92,7 +92,7 @@
 /datum/action/human_action/synth_bracer/proc/enter_cooldown(amount = cooldown)
 	ability_used_time = world.time + amount
 	update_button_icon()
-	addtimer(CALLBACK(src, .proc/update_button_icon), amount)
+	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), amount)
 
 /datum/action/human_action/synth_bracer/update_button_icon()
 	if(!button)

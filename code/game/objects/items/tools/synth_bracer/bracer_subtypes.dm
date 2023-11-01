@@ -19,7 +19,7 @@
 	actions_list_added = list(
 		/datum/action/human_action/synth_bracer/repair_form,
 		/datum/action/human_action/synth_bracer/motion_detector,
-		)
+	)
 
 /obj/item/clothing/gloves/synth/wy/pmc/preset/New()
 	underglove = new /obj/item/clothing/gloves/marine/veteran/pmc

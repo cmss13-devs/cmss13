@@ -76,7 +76,7 @@
 	internal_transmitter.range = 2
 	internal_transmitter.networks_receive = list(faction)
 	internal_transmitter.networks_transmit = list(faction)
-	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
+	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
 
 /obj/item/clothing/gloves/synth/Destroy()
 	. = ..()
@@ -334,7 +334,7 @@
 	if(user.action_busy)
 		return FALSE
 
-	INVOKE_ASYNC(src, .proc/complete_apc_charge, user, apc)
+	INVOKE_ASYNC(src, PROC_REF(complete_apc_charge), user, apc)
 
 /obj/item/clothing/gloves/synth/proc/complete_apc_charge(mob/living/carbon/human/user, obj/structure/machinery/power/apc/apc)
 	start_charging(user)

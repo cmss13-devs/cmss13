@@ -158,6 +158,10 @@
 		to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 		return
 
+if(ert_dispatched)
+		to_chat(usr, SPAN_WARNING("A distress beacon has already launched successfully!"))
+		return
+		
 	if(security_level == SEC_LEVEL_DELTA)
 		to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 		return

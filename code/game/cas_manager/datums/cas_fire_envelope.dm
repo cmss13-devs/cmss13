@@ -42,7 +42,6 @@
 
 /datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
 	if(!missions || !linked_console || missions.len>max_mission_len || !fire_length)
-		log_debug("bad 1")
 		return null
 
 	var/list/obj/structure/dropship_equipment/weapons = list()
@@ -106,7 +105,6 @@
 
 	//we have mission error. Fill the thing and restore previous state
 	fmr.offsets[offset_step] = old_offset
-	log_debug("still error")
 
 	return 0
 

@@ -51,6 +51,10 @@
 
 /datum/action/human_action/synth_bracer/deploy_binoculars/action_activate()
 	..()
-
-	to_chat(synth, SPAN_NOTICE("You deploy your binoculars."))
-	synth_bracer.deploy_binos(synth)
+	playsound(synth_bracer.loc,'sound/machines/click.ogg', 25, TRUE)
+	if(synth_bracer.binos.loc == synth_bracer)
+		to_chat(synth, SPAN_NOTICE("You deploy your binoculars."))
+		synth_bracer.deploy_binos(synth)
+	else
+		to_chat(synth, SPAN_NOTICE("You return your binoculars."))
+		synth_bracer.return_binos(synth)

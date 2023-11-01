@@ -51,6 +51,9 @@
 				to_chat(owner, SPAN_WARNING("You cannot use this action while another secondary ability is active."))
 				return FALSE
 
+	if(synth_bracer.battery_charge <= 0)
+		to_chat(synth, SPAN_WARNING("You cannot do this without power!"))
+		return FALSE
 	if(synth_bracer.battery_charge < charge_cost)
 		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[charge_cost]</b>."))
 		return FALSE
@@ -116,6 +119,9 @@
 				to_chat(owner, SPAN_WARNING("You cannot use this action while another secondary ability is active."))
 				return FALSE
 
+	if(synth_bracer.battery_charge <= 0)
+		to_chat(synth, SPAN_WARNING("You cannot do this without power!"))
+		return FALSE
 	if(synth_bracer.battery_charge < charge_cost)
 		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[charge_cost]</b>."))
 		return FALSE

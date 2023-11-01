@@ -192,7 +192,10 @@
 			ability_chips -= chip
 			removed_chips = TRUE
 		if(removed_chips)
-			update_actions(SIMI_ACTIONS_RELOAD, user)
+			if(user.gloves && (user.gloves == src))
+				update_actions(SIMI_ACTIONS_RELOAD, user)
+			else
+				update_actions(SIMI_ACTIONS_RELOAD)
 			to_chat(user, SPAN_NOTICE("You pop out the circuit chips from [src]!"))
 		else
 			to_chat(user, SPAN_NOTICE("There are no removable circuit chips in [src]!"))
@@ -381,7 +384,7 @@
 	user.update_inv_gloves()
 
 /obj/item/clothing/gloves/synth/proc/drain_charge(mob/user, cost)
-	battery_charge -= cost
+	battery_charge = max(0, battery_charge -= cost)
 	to_chat(user, SPAN_WARNING("\The [src]'s charge now reads: <b>[battery_charge]/[battery_charge_max]</b>."))
 	update_icon()
 

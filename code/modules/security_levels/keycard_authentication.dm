@@ -154,7 +154,7 @@
 		to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 		return
 
-	if(!COOLDOWN_FINISHED(src, distress_Cooldown))
+	if(!COOLDOWN_FINISHED(src, distress_cooldown))
 		to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 		return
 

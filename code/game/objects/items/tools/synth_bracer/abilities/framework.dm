@@ -26,11 +26,16 @@
 	synth_bracer = null
 	return ..()
 
+/datum/action/human_action/activable/synth_bracer/Destroy()
+	synth = null
+	synth_bracer = null
+	return ..()
+
 /datum/action/human_action/activable/synth_bracer/use_ability(mob/M)
 	if(!can_use_action())
 		return FALSE
 	if(synth_bracer.battery_charge < charge_cost)
-		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[charge_cost]</b>."))
+		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[synth_bracer.battery_charge_max]</b> you need [SPAN_RED(charge_cost)]."))
 		return FALSE
 	if(!handles_cooldown && cooldown)
 		enter_cooldown()
@@ -59,7 +64,7 @@
 		to_chat(synth, SPAN_WARNING("You cannot do this without power!"))
 		return FALSE
 	if(synth_bracer.battery_charge < charge_cost)
-		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[charge_cost]</b>."))
+		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[synth_bracer.battery_charge_max]</b> you need [SPAN_RED(charge_cost)]."))
 		return FALSE
 	if(!action_cooldown_check())
 		return FALSE
@@ -112,6 +117,11 @@
 	synth_bracer = null
 	return ..()
 
+/datum/action/human_action/synth_bracer/Destroy()
+	synth = null
+	synth_bracer = null
+	return ..()
+
 /datum/action/human_action/synth_bracer/action_cooldown_check()
 	return ability_used_time <= world.time
 
@@ -149,7 +159,7 @@
 		to_chat(synth, SPAN_WARNING("You cannot do this without power!"))
 		return FALSE
 	if(synth_bracer.battery_charge < charge_cost)
-		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[charge_cost]</b>."))
+		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[synth_bracer.battery_charge_max]</b> you need [SPAN_RED(charge_cost)]."))
 		return FALSE
 	if(!action_cooldown_check())
 		return FALSE

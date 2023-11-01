@@ -16,7 +16,7 @@
 		to_chat(synth, SPAN_WARNING("You cannot use this action while incapacitated!"))
 		return FALSE
 	if((synth_bracer.battery_charge < charge_cost) && (synth_bracer.active_ability != SIMI_ABILITY_ANCHOR))
-		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[charge_cost]</b>."))
+		to_chat(synth, SPAN_WARNING("You don't have enough charge to to do this! Charge: <b>[synth_bracer.battery_charge]/[synth_bracer.battery_charge_max]</b> you need [SPAN_RED(charge_cost)]."))
 		return FALSE
 	if(!action_cooldown_check())
 		return FALSE
@@ -36,7 +36,7 @@
 			synth.anchored = TRUE
 			synth.freeze()
 			to_chat(synth, SPAN_DANGER("[name] beeps, \"You are anchored in place and cannot be moved.\""))
-			synth.add_filter("synth_immobile_form", priority = 1, params = list("type" = "outline", "color" = IMMOBILE_FORM_COLOR, "size" = 1))
+			synth.add_filter("synth_immobile_form", priority = 1, params = list("type" = "outline", "color" = "#2B719E", "size" = 1))
 		if(SIMI_ABILITY_ANCHOR)
 			synth.status_flags |= CANPUSH
 			synth.anchored = FALSE

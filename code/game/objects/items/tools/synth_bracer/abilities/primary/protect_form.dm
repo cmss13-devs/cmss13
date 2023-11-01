@@ -33,7 +33,7 @@
 	to_chat(user, SPAN_INFO("The current charge reads [synth_bracer.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	set_active(category, SIMI_ABILITY_PROTECT)
 
-	user.add_filter("synth_protective_form", priority = 1, params = list("type" = "outline", "color" = PROTECTIVE_FORM_COLOR, "size" = 1))
+	user.add_filter("synth_protective_form", priority = 1, params = list("type" = "outline", "color" = "#369E2B", "size" = 1))
 
 	addtimer(CALLBACK(src, PROC_REF(protective_form_cooldown), user), 120)
 

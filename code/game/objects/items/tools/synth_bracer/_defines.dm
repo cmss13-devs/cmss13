@@ -23,12 +23,10 @@
 /// Synth fortify, enforced stationary
 #define SIMI_ABILITY_ANCHOR "anchor"
 #define SIMI_IMMOBILE_COST 20
-#define IMMOBILE_FORM_COLOR "#2B719E"
 
 /// Damage reduced but incapable of self defense.
 #define SIMI_ABILITY_PROTECT "protect"
 #define SIMI_PROTECTIVE_COST 50
-#define PROTECTIVE_FORM_COLOR "#369E2B"
 
 // Secondary Abilities
 #define SIMI_SECONDARY_ACTION "secondary"
@@ -37,3 +35,10 @@
 #define SIMI_SECONDARY_HOOK "hook"
 /// Motion Detector
 #define SIMI_SECONDARY_MD "motion"
+
+// Statuses
+#define SIMI_STATUS_IDLE "status_idle"
+#define SIMI_STATUS_NOACCESS "status_unauthorized"
+#define SIMI_STATUS_LOWPOWER "status_lowbattery"
+#define SIMI_STATUS_NOPOWER "status_nobattery"
+#define SIMI_STATUS_CHARGING "status_charging"

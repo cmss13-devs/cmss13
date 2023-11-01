@@ -21,9 +21,8 @@
 		/datum/action/human_action/synth_bracer/motion_detector,
 	)
 
-/obj/item/clothing/gloves/synth/wy/pmc/preset/New()
-	underglove = new /obj/item/clothing/gloves/marine/veteran/pmc
-	underglove.forceMove(src)
+/obj/item/clothing/gloves/synth/wy/pmc/preset/Initialize()
+	underglove = new /obj/item/clothing/gloves/marine/veteran/pmc(src)
 
 	var/obj/item/device/simi_chip/motion_detector/new_md = new
 	var/obj/item/device/simi_chip/repair/new_repair = new

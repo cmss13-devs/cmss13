@@ -238,24 +238,24 @@
 /obj/item/clothing/gloves/synth/proc/get_bracer_status()
 	if(battery_charge <= 0)
 		internal_transmitter.enabled = FALSE
-		return "status_nobattery"
+		return SIMI_STATUS_NOPOWER
 	if(battery_charge <= battery_charge_max * 0.1)
-		return "status_lowbattery"
+		return SIMI_STATUS_LOWPOWER
 	var/mob/living/carbon/human/wearer = loc
 	if(!issynth(wearer) && !human_adapted)
 		internal_transmitter.enabled = FALSE
-		return "status_unauthorized"
+		return SIMI_STATUS_NOACCESS
 	internal_transmitter.enabled = TRUE
-	return "status_idle"
+	return SIMI_STATUS_IDLE
 
 /obj/item/clothing/gloves/synth/proc/update_overlays()
 	overlays.Cut()
 
-	var/image/idle_image = image(icon, src, "status_idle")
+	var/image/idle_image = image(icon, src, SIMI_STATUS_IDLE)
 	idle_image.appearance_flags = RESET_COLOR|KEEP_APART
 	var/current_status = get_bracer_status()
 	var/image/status_image
-	if(current_status != "status_idle")
+	if(current_status != SIMI_STATUS_IDLE)
 		status_image = image(icon, src, current_status)
 		status_image.appearance_flags = RESET_COLOR|KEEP_APART
 
@@ -381,7 +381,7 @@
 	bracer_charging = TRUE
 	item_state_slots[WEAR_HANDS] += "_charging"
 
-	var/image/charge_image = image(icon, src, "status_charging")
+	var/image/charge_image = image(icon, src, SIMI_STATUS_CHARGING)
 	charge_image.appearance_flags = RESET_COLOR|KEEP_APART
 	overlays += charge_image
 

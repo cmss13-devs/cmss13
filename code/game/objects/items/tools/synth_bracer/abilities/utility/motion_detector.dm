@@ -32,7 +32,7 @@
 			return
 		motion_detector_cooldown = initial(motion_detector_cooldown)
 		motion_detector.scan()
-		drain_charge(loc, 2)
+		drain_charge(loc, 2, FALSE)
 
 /obj/item/clothing/gloves/synth/dropped(mob/user)
 	. = ..()

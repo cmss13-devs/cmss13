@@ -517,7 +517,7 @@
 						X.behavior_delegate.on_hitby_projectile(ammo)
 
 			. = TRUE
-		else if(!L.lying)
+		else if(L.body_position != LYING_DOWN)
 			animatation_displace_reset(L)
 			if(ammo.sound_miss) playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
@@ -766,7 +766,7 @@
 //mobs use get_projectile_hit_chance instead of get_projectile_hit_boolean
 
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
-	if(lying && src != P.original)
+	if(body_position == LYING_DOWN && src != P.original)
 		return FALSE
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)
@@ -775,7 +775,7 @@
 
 	. = P.get_effective_accuracy()
 
-	if(lying && stat)
+	if(body_position == LYING_DOWN && stat)
 		. += 15 //Bonus hit against unconscious people.
 
 	if(isliving(P.firer))

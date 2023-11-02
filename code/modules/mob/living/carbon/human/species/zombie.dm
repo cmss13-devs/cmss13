@@ -53,8 +53,8 @@
 	if(zombie.glasses) zombie.drop_inv_item_on_ground(zombie.glasses, FALSE, TRUE)
 	if(zombie.wear_mask) zombie.drop_inv_item_on_ground(zombie.wear_mask, FALSE, TRUE)
 
-	if(zombie.lying)
-		zombie.lying = FALSE
+//	if(zombie.lying)
+//		zombie.lying = FALSE
 
 	var/obj/item/weapon/zombie_claws/ZC = new(zombie)
 	ZC.icon_state = "claw_r"
@@ -116,7 +116,7 @@
 /datum/species/zombie/proc/revive_from_death(mob/living/carbon/human/zombie)
 	if(zombie && zombie.loc && zombie.stat == DEAD)
 		zombie.revive(TRUE)
-		zombie.stunned = 4
+		zombie.apply_effect(4, STUN)
 
 		zombie.make_jittery(500)
 		zombie.visible_message(SPAN_WARNING("[zombie] rises from the ground!"))

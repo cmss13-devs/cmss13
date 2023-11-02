@@ -89,25 +89,6 @@ There are several things that need to be remembered:
 		overlays -= I
 		overlays_standing[cache_index] = null
 
-
-/mob/living/carbon/human/update_transform(force = FALSE)
-	if(lying == lying_prev && !force)
-		return
-	lying_prev = lying
-	var/matrix/new_matrix = matrix()
-	if(lying)
-		if(pulledby && pulledby.grab_level >= GRAB_CARRY)
-			new_matrix.Turn(90)
-		else
-			if(prob(50))
-				new_matrix.Turn(90)
-			else
-				new_matrix.Turn(270)
-			new_matrix.Translate(rand(-10,10), rand(-10,10))
-		apply_transform(new_matrix)
-	else
-		apply_transform(new_matrix)
-
 /mob/living/carbon/human/UpdateDamageIcon()
 	for(var/obj/limb/O in limbs)
 		if(!(O.status & LIMB_DESTROYED))
@@ -131,6 +112,13 @@ There are several things that need to be remembered:
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body()
+	if((has_limb("r_foot") && has_limb("r_leg")) || (has_limb("l_foot") && has_limb("l_leg")))
+		// temporary crutch. i know this is in effect an icons proc, but this is literally "update_body" material.
+		// remove this when we can migrate it to signal based limb handling.
+		REMOVE_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)
+	else
+		ADD_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)
+
 	appearance_flags |= KEEP_TOGETHER // sanity
 
 	update_damage_overlays()
@@ -799,3 +787,11 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 #undef FIRE_LAYER
 #undef BURST_LAYER
 
+// Crutch so that immobilized Xeno HUD Icon shows properly. Try to find a better way if possible...
+/mob/living/carbon/human/on_immobilized_trait_gain(datum/source)
+	. = ..()
+	update_xeno_hostile_hud()
+
+/mob/living/carbon/human/on_immobilized_trait_loss(datum/source)
+	. = ..()
+	update_xeno_hostile_hud()

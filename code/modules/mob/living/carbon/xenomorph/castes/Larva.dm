@@ -130,8 +130,8 @@
 	else if(handcuffed || legcuffed)
 		icon_state = "[state_override || state]Larva Cuff"
 
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(body_position == LYING_DOWN)
+		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
 			icon_state = "[state_override || state]Larva Sleeping"
 		else
 			icon_state = "[state_override || state]Larva Stunned"
@@ -155,7 +155,7 @@
 	if(!caste)
 		return FALSE
 
-	if(lying) //No attacks while laying down
+	if(body_position) //No attacks while laying down
 		return FALSE
 
 	A.attack_larva(src)

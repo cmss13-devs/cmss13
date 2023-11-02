@@ -62,3 +62,6 @@
 
 /// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"
+
+/// Cancels all running cloaking effects on target
+#define COMSIG_MOB_EFFECT_CLOAK_CANCEL "mob_effect_cloak_cancel"

@@ -745,6 +745,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, PROC_REF(cloak_grenade_callback))
 	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
+	RegisterSignal(H, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(deactivate_camouflage))
 
 	camo_active = TRUE
 	ADD_TRAIT(H, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
@@ -774,12 +775,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	deactivate_camouflage(wearer, TRUE, TRUE)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(mob/living/carbon/human/H, anim = TRUE, forced)
+	SIGNAL_HANDLER
 	if(!istype(H))
 		return FALSE
 
 	UnregisterSignal(H, list(
 	COMSIG_GRENADE_PRE_PRIME,
-	COMSIG_HUMAN_EXTINGUISH
+	COMSIG_HUMAN_EXTINGUISH,
+	COMSIG_MOB_EFFECT_CLOAK_CANCEL,
 	))
 
 	if(forced)
@@ -829,7 +832,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /datum/action/item_action/specialist/toggle_cloak/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.back)
+	if(istype(H) && !H.is_mob_incapacitated() && holder_item == H.back)
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_cloak/action_activate()

@@ -45,7 +45,7 @@
 	set name = "Adjust welding mask"
 	set src in usr
 
-	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
+	if(usr.is_mob_incapacitated())
 		if(up)
 			vision_impair = VISION_IMPAIR_MAX
 			flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ

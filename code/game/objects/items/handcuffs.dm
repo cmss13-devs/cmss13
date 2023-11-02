@@ -33,7 +33,7 @@
 	var/mob/living/carbon/human/user = usr
 	if (!istype(user))
 		return
-	if (user.stat || get_dist(user, src) > 1 || get_dist(user, H) > 1 || H.lying)
+	if (user.stat || get_dist(user, src) > 1 || get_dist(user, H) > 1 || H.body_position)
 		return
 	if (!istype(H))
 		return

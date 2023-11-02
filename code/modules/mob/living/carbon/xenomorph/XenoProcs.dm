@@ -150,7 +150,7 @@
 //A simple handler for checking your state. Used in pretty much all the procs.
 /mob/living/carbon/xenomorph/proc/check_state(permissive = FALSE)
 	if(!permissive)
-		if(is_mob_incapacitated() || lying || buckled || evolving || !isturf(loc))
+		if(is_mob_incapacitated() || body_position == LYING_DOWN || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
@@ -319,9 +319,8 @@
 	if (pounceAction.freeze_self)
 		if(pounceAction.freeze_play_sound)
 			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
-		canmove = FALSE
-		frozen = TRUE
-		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze)), pounceAction.freeze_time, TIMER_STOPPABLE)
+		ADD_TRAIT(src, TRAIT_IMMOBILIZED, POUNCED_TRAIT)
+		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze_pounce)), pounceAction.freeze_time, TIMER_STOPPABLE)
 
 	pounceAction.additional_effects(M)
 
@@ -329,6 +328,9 @@
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
 
 	throwing = FALSE //Reset throwing since something was hit.
+
+/mob/living/carbon/xenomorph/proc/unfreeze_pounce()
+	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, POUNCED_TRAIT)
 
 /mob/living/carbon/xenomorph/proc/pounced_mob_wrapper(mob/living/L)
 	pounced_mob(L)
@@ -626,7 +628,7 @@
 	if(!TC)
 		TC = new(tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
 		LAZYSET(tackle_counter, M, TC)
-		RegisterSignal(M, COMSIG_MOB_KNOCKED_DOWN, PROC_REF(tackle_handle_lying_changed))
+		RegisterSignal(M, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(tackle_handle_lying_changed))
 
 	if (TC.tackle_reset_id)
 		deltimer(TC.tackle_reset_id)
@@ -638,8 +640,11 @@
 	else
 		reset_tackle(M)
 
-/mob/living/carbon/xenomorph/proc/tackle_handle_lying_changed(mob/M)
+/mob/living/carbon/xenomorph/proc/tackle_handle_lying_changed(mob/living/M, body_position)
 	SIGNAL_HANDLER
+	if(body_position != LYING_DOWN)
+		return
+
 	// Infected mobs do not have their tackle counter reset if
 	// they get knocked down or get up from a knockdown
 	if(M.status_flags & XENO_HOST)
@@ -652,7 +657,7 @@
 	if (TC)
 		qdel(TC)
 		LAZYREMOVE(tackle_counter, M)
-		UnregisterSignal(M, COMSIG_MOB_KNOCKED_DOWN)
+		UnregisterSignal(M, COMSIG_LIVING_SET_BODY_POSITION)
 
 
 /mob/living/carbon/xenomorph/burn_skin(burn_amount)
@@ -771,3 +776,6 @@
 
 	SSminimaps.remove_marker(src)
 	add_minimap_marker()
+
+/mob/living/carbon/xenomorph/lying_angle_on_lying_down(new_lying_angle)
+	return // Do not rotate xenos around on the floor, their sprite is already top-down'ish

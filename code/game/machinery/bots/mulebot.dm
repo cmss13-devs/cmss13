@@ -763,7 +763,6 @@
 				M.stop_pulling()
 				M.apply_effect(8, STUN)
 				M.apply_effect(5, WEAKEN)
-				M.lying = 1
 	..()
 
 /obj/structure/machinery/bot/mulebot/alter_health()

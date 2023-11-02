@@ -13,7 +13,7 @@
 	icon_state = "bed"
 	icon = 'icons/obj/objects.dmi'
 	can_buckle = TRUE
-	buckle_lying = TRUE
+	buckle_lying = 90
 	throwpass = TRUE
 	debris = list(/obj/item/stack/sheet/metal)
 	var/buildstacktype = /obj/item/stack/sheet/metal

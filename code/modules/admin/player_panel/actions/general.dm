@@ -109,9 +109,13 @@
 	name = "Toggle Frozen"
 
 /datum/player_action/toggle_frozen/act(client/user, mob/target, list/params)
-	target.frozen = text2num(params["freeze"])
+	var/frozen = text2num(params["freeze"])
+	if(frozen)
+		ADD_TRAIT(target, TRAIT_IMMOBILIZED, ADMIN_ACTION_TRAIT)
+	else
+		REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, ADMIN_ACTION_TRAIT)
 
-	message_admins("[key_name_admin(user)] [target.frozen? "froze" : "unfroze"] [key_name_admin(target)]")
+	message_admins("[key_name_admin(user)] [frozen? "froze" : "unfroze"] [key_name_admin(target)]")
 	return TRUE
 
 // MESSAGE

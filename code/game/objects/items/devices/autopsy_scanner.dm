@@ -174,7 +174,7 @@
 		M.update_inv_r_hand()
 
 /obj/item/device/autopsy_scanner/attack(mob/living/carbon/human/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M) || !M.lying)
+	if(!istype(M) || !M.is_mob_incapacitated())
 		return
 
 	var/table

@@ -65,10 +65,6 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
-	var/knocked_out = 0
-	var/stunned = 0
-	var/frozen = 0
-	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
 	var/dazed = 0
 	var/slowed = 0 // X_SLOW_AMOUNT
@@ -95,9 +91,6 @@
 	var/exploit_record = ""
 
 	var/gibbing = FALSE
-	var/lying = FALSE
-	var/lying_prev = 0
-	var/canmove = 1
 	var/lastpuke = 0
 	unacidable = FALSE
 	var/mob_size = MOB_SIZE_HUMAN

@@ -69,8 +69,8 @@
 		icon_state = "[mutation_caste_state] Dead"
 		if(!(icon_state in icon_states(icon_xeno)))
 			icon_state = "Normal [caste.caste_type] Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(body_position == LYING_DOWN)
+		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
 			icon_state = "[mutation_caste_state] Sleeping"
 			if(!(icon_state in icon_states(icon_xeno)))
 				icon_state = "Normal [caste.caste_type] Sleeping"
@@ -142,8 +142,8 @@
 	var/state_modifier = ""
 	if(stat == DEAD)
 		state_modifier = " Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(body_position)
+		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
 			state_modifier = " Sleeping"
 		else
 			state_modifier = " Knocked Down"
@@ -237,7 +237,7 @@
 	if(on_fire && fire_reagent)
 		var/image/I
 		if(mob_size >= MOB_SIZE_BIG)
-			if((!initial(pixel_y) || lying) && !resting && !sleeping)
+			if((!initial(pixel_y) || body_position) && !resting && !sleeping)
 				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 			else
 				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
@@ -278,8 +278,8 @@
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
 			wound_icon_carrier.icon_state = "none"
-		else if(lying)
-			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+		else if(body_position == LYING_DOWN)
+			if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
 				wound_icon_carrier.icon_state = "[caste.caste_type]_rest_[health_threshold]"
 			else
 				wound_icon_carrier.icon_state = "[caste.caste_type]_downed_[health_threshold]"

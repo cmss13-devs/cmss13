@@ -213,7 +213,7 @@
 			// Check if we're looking at a mob that's lying down
 			if(istype(cur_atom, /mob/living))
 				var/mob/living/cur_mob = cur_atom
-				if(!isxeno(cur_mob) && cur_mob.lying) //xenos don't use icon rotatin for lying.
+				if(!isxeno(cur_mob) && cur_mob.body_position == LYING_DOWN) //xenos don't use icon rotatin for lying.
 					cur_icon.BecomeLying()
 
 			// Calculate where we are relative to the center of the photo

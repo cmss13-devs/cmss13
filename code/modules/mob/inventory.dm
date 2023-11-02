@@ -29,8 +29,6 @@
 
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(obj/item/W)
-	if(lying)
-		return FALSE
 	if(!istype(W))
 		return FALSE
 	if(!l_hand)
@@ -48,8 +46,6 @@
 
 //Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_r_hand(obj/item/W)
-	if(lying)
-		return FALSE
 	if(!istype(W))
 		return FALSE
 	if(!r_hand)

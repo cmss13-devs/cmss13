@@ -422,7 +422,7 @@
 	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in human.traits))
 		to_chat(human, SPAN_WARNING("You have no idea how to use this!"))
 		return FALSE
-	if(istype(human) && !human.is_mob_incapacitated() && !human.lying && (holder_item == human.r_hand || holder_item || human.l_hand))
+	if(istype(human) && !human.is_mob_incapacitated() && (holder_item == human.r_hand || holder_item || human.l_hand))
 		return TRUE
 
 /datum/action/item_action/specialist/spotter_target/proc/use_ability(atom/targeted_atom)

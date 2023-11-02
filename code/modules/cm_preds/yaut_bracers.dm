@@ -106,6 +106,7 @@
 
 /// handles decloaking only on HUNTER gloves
 /obj/item/clothing/gloves/yautja/proc/decloak()
+	SIGNAL_HANDLER
 	return
 
 /// Called to update the minimap icon of the predator
@@ -407,7 +408,7 @@
 	. = wristblades_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(mob/living/carbon/human/caller, forced = FALSE)
-	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
+	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
 		return
 
 	. = check_random_function(caller, forced)
@@ -577,6 +578,7 @@
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
+		RegisterSignal(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak))
 
 		cloak_timer = world.time + 1.5 SECONDS
 		if(true_cloak)
@@ -614,6 +616,7 @@
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
+	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
 	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
 	if(forced)
@@ -645,7 +648,7 @@
 	. = caster_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(mob/living/carbon/human/caller, forced = FALSE)
-	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
+	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
 		return
 
 	. = check_random_function(caller, forced)

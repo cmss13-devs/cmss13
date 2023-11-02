@@ -129,7 +129,7 @@
 			. += "Evacuation: [eta_status]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
-	if(lying)
+	if(body_position == LYING_DOWN)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 
@@ -1047,7 +1047,7 @@
 
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
-	if((stat == DEAD) || lying || buckled) // Shouldnt be needed, but better safe than sorry
+	if((stat == DEAD) || body_position || buckled) // Shouldnt be needed, but better safe than sorry
 		return
 
 	for(var/obj/item/W in embedded_items)

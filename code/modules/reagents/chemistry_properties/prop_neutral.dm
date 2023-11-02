@@ -199,8 +199,9 @@
 	M.druggy = min(M.druggy + 0.5 * potency * delta_time, potency * 10)
 
 /datum/chem_property/neutral/hallucinogenic/process_overdose(mob/living/M, potency = 1, delta_time)
-	if(isturf(M.loc) && !istype(M.loc, /turf/open/space) && M.canmove && !M.is_mob_restrained())
-		step(M, pick(cardinal))
+	// Disabled automove because it's antiquated and won't work properly. Use Move() for this probably
+	//if(isturf(M.loc) && !istype(M.loc, /turf/open/space) && M.canmove && !M.is_mob_restrained())
+	//	step(M, pick(cardinal))
 	M.hallucination += 10
 	M.make_jittery(5)
 

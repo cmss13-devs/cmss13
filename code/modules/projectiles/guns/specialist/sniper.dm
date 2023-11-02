@@ -75,7 +75,7 @@
 
 /datum/action/item_action/specialist/aimed_shot/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && (holder_item == H.r_hand || holder_item || H.l_hand))
+	if(istype(H) && !H.is_mob_incapacitated() && (holder_item == H.r_hand || holder_item || H.l_hand))
 		return TRUE
 
 /datum/action/item_action/specialist/aimed_shot/proc/use_ability(atom/A)
@@ -450,7 +450,7 @@
 	. = ..()
 	if(.)
 		var/mob/living/carbon/human/PMC_sniper = user
-		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
+		if(PMC_sniper.body_position == STANDING_UP && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
 			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.apply_effect(5, WEAKEN)

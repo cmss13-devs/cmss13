@@ -3,7 +3,7 @@
 */
 
 /mob/living/carbon/xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
-	if(lying || burrow) //No attacks while laying down
+	if(body_position == LYING_DOWN || burrow) //No attacks while laying down
 		return FALSE
 	var/mob/alt
 
@@ -21,7 +21,7 @@
 
 			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
 				continue
-			if (L.lying)
+			if (L.body_position)
 				alt = L
 				continue
 			target = L

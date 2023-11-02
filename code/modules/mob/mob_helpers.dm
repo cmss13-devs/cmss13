@@ -311,13 +311,12 @@ var/global/list/limb_types_by_name = list(
 /mob/proc/is_mob_restrained()
 	return
 
+/// Returns if the mob is incapacitated and unable to perform general actions
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
-
-
-//returns how many non-destroyed legs the mob has (currently only useful for humans)
-/mob/proc/has_legs()
-	return 2
+	// TODO: Replace this by signal/traits entirely eventually
+	// TRAIT_FLOORED being considered incapacitated is a legacy CM Feature that should be removed at some point
+	// note that stat includes knockout via unconscious
+	return (stat || (!ignore_restrained && is_mob_restrained()) || (status_flags & FAKEDEATH) || HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_INCAPACITATED))
 
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
@@ -480,7 +479,7 @@ var/global/list/limb_types_by_name = list(
 	set name = "Pick Up"
 	set category = "Object"
 
-	if(!canmove || stat || is_mob_restrained() || !Adjacent(pickupify))
+	if(is_mob_incapacitated() || !Adjacent(pickupify))
 		return
 
 	if(world.time <= next_move)

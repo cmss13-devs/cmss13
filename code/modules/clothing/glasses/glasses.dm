@@ -507,7 +507,7 @@
 	set name = "Adjust welding goggles"
 	set src in usr
 
-	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
+	if(usr.is_mob_incapacitated())
 		if(active)
 			active = 0
 			vision_impair = vision_impair_off

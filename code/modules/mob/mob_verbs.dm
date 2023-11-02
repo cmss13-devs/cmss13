@@ -222,6 +222,7 @@
 	set category = "IC"
 
 	if(pulling)
+		REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 		var/mob/M = pulling
 		pulling.pulledby = null
 		pulling = null
@@ -244,4 +245,3 @@
 				//so we must undo it here so the victim can move right away
 				M.client.next_movement = world.time
 			M.update_transform(TRUE)
-			M.update_canmove()

@@ -411,24 +411,21 @@
 	if (windup)
 		X.set_face_dir(get_cardinal_dir(X, A))
 		if (!windup_interruptable)
-			X.frozen = TRUE
+			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			X.anchored = TRUE
-			X.update_canmove()
 		pre_windup_effects()
 
 		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENODANGER("You cancel your [ability_name]!"))
 			if (!windup_interruptable)
-				X.frozen = FALSE
+				REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 				X.anchored = FALSE
-				X.update_canmove()
 			post_windup_effects(interrupted = TRUE)
 			return
 
 		if (!windup_interruptable)
-			X.frozen = FALSE
+			REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			X.anchored = FALSE
-			X.update_canmove()
 		post_windup_effects()
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))

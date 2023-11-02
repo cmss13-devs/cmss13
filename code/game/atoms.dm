@@ -116,7 +116,14 @@ directive is properly returned.
 
 //===========================================================================
 
-
+// TODO make all atoms use set_density, do not rely on it at present
+///Setter for the `density` variable to append behavior related to its changing.
+/atom/proc/set_density(new_value)
+	SHOULD_CALL_PARENT(TRUE)
+	if(density == new_value)
+		return
+	. = density
+	density = new_value
 
 //atmos procs
 
@@ -142,14 +149,20 @@ directive is properly returned.
 		return loc.return_gas()
 
 // Updates the atom's transform
-/atom/proc/apply_transform(matrix/M)
+/atom/proc/apply_transform(matrix/M, time = 0)
 	if(!base_transform)
 		transform = M
 		return
 
 	var/matrix/base_copy = matrix(base_transform)
 	// Compose the base and applied transform in that order
-	transform = base_copy.Multiply(M)
+	var/matrix/complete = base_copy.Multiply(M)
+
+	if(!time)
+		transform = complete
+		return
+
+	animate(src, transform = complete, time = time, easing = (EASE_IN|EASE_OUT))
 
 /atom/proc/on_reagent_change()
 	return

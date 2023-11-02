@@ -424,7 +424,7 @@ var/list/ob_type_fuel_requirements
 		shake_camera(user, 3, total_shake_factor, shake_frequency)
 		user.KnockDown(rand(max_knockdown_time * distance_percent, (max_knockdown_time * distance_percent + 1)))
 
-		if(!user.knocked_down)
+		if(HAS_TRAIT(user, TRAIT_FLOORED))
 			continue
 		to_chat(user, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
 

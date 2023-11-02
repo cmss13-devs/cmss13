@@ -49,8 +49,7 @@
 
 	if(!isxeno(M))
 		if(insta_neuro)
-			if(M.knocked_down < 3)
-				M.adjust_effect(1 * power, WEAKEN)
+			M.adjust_effect(1 * power, WEAKEN)
 			return
 
 		if(ishuman(M))
@@ -65,9 +64,8 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.knocked_down < 5)
-				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
-				M.visible_message(SPAN_DANGER("[M] falls prone."))
+			M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
+			M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/M)
 	if(ishuman(M))
@@ -79,9 +77,8 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		if(M.knocked_down < 0.7) // apply knockdown only if current knockdown is less than 0.7 second
-			M.apply_effect(0.7, WEAKEN)
-			M.visible_message(SPAN_DANGER("[M] falls prone."))
+		M.apply_effect(0.5, WEAKEN)
+		M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))

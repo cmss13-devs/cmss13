@@ -830,7 +830,7 @@
 						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 						return
 					else
-						user.freeze()
+						ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 						user.set_interaction(src)
 						give_action(user, /datum/action/human_action/mg_exit)
 
@@ -838,7 +838,7 @@
 			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
-	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_MOB_KNOCKED_DOWN), PROC_REF(exit_interaction))
+	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))
 	flags_atom |= RELAY_CLICK
 	user.status_flags |= IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))
@@ -853,11 +853,11 @@
 	update_pixels(user)
 	operator = user
 
-/obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
+/obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/living/user)
 	flags_atom &= ~RELAY_CLICK
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
-	user.unfreeze()
+	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 	user.reset_view(null)
 	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal
@@ -873,7 +873,7 @@
 		COMSIG_MOB_MG_EXIT,
 		COMSIG_MOB_RESISTED,
 		COMSIG_MOB_DEATH,
-		COMSIG_MOB_KNOCKED_DOWN,
+		COMSIG_LIVING_SET_BODY_POSITION,
 	))
 
 
@@ -913,8 +913,8 @@
 			user.client.pixel_y = 0
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
 
-/obj/structure/machinery/m56d_hmg/check_eye(mob/user)
-	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
+/obj/structure/machinery/m56d_hmg/check_eye(mob/living/user)
+	if(user.body_position != STANDING_UP || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/clicked(mob/user, list/mods)

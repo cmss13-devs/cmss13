@@ -124,7 +124,6 @@
 			if(V && (V.stat != DEAD) && (V.buckled != src)) // If mob exists and is not dead or captured.
 				V.buckled = src
 				V.forceMove(src.loc)
-				V.update_canmove()
 				src.buckled_mob = V
 				to_chat(V, SPAN_DANGER("The vines [pick("wind", "tangle", "tighten")] around you!"))
 

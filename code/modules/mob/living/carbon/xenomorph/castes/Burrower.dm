@@ -84,13 +84,6 @@
 	. = ..()
 	sight |= SEE_TURFS
 
-/mob/living/carbon/xenomorph/burrower/update_canmove()
-	. = ..()
-	if(burrow)
-		density = FALSE
-		canmove = FALSE
-		return canmove
-
 /mob/living/carbon/xenomorph/burrower/ex_act(severity)
 	if(burrow)
 		return

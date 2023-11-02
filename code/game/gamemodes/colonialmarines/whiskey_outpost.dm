@@ -459,10 +459,10 @@
 	unacidable = TRUE
 	var/working = 0
 
-/obj/structure/machinery/wo_recycler/attack_hand(mob/user)
+/obj/structure/machinery/wo_recycler/attack_hand(mob/living/user)
 	if(inoperable(MAINT))
 		return
-	if(user.lying || user.stat)
+	if(user.body_position || user.stat)
 		return
 	if(ismaintdrone(usr) || \
 		istype(usr, /mob/living/carbon/xenomorph))

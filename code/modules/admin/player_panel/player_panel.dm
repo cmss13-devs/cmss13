@@ -489,7 +489,7 @@
 	.["mob_name"] = targetMob.name
 
 	.["mob_sleeping"] = targetMob.sleeping
-	.["mob_frozen"] = targetMob.frozen
+	.["mob_frozen"] = HAS_TRAIT_FROM(targetMob, TRAIT_IMMOBILIZED, ADMIN_ACTION_TRAIT)
 
 	.["mob_speed"] = targetMob.speed
 	.["mob_status_flags"] = targetMob.status_flags

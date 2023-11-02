@@ -156,10 +156,10 @@
 			O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), SHOW_MESSAGE_VISIBLE)
 
 
-/obj/item/toy/crossbow/attack(mob/M as mob, mob/user as mob)
+/obj/item/toy/crossbow/attack(mob/living/M as mob, mob/user as mob)
 	src.add_fingerprint(user)
 
-	if (src.bullets > 0 && M.lying)
+	if (src.bullets > 0 && M.body_position == LYING_DOWN)
 
 		for(var/mob/O in viewers(M, null))
 			if(O.client)
@@ -169,7 +169,7 @@
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 		new /obj/item/toy/crossbow_ammo(M.loc)
 		src.bullets--
-	else if (M.lying && src.bullets == 0)
+	else if (M.body_position == LYING_DOWN && src.bullets == 0)
 		for(var/mob/O in viewers(M, null))
 			if (O.client)
 				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall"), SHOW_MESSAGE_AUDIBLE)

@@ -215,10 +215,9 @@
 		else
 			X.armor_deflection_buff += 30
 			X.armor_explosive_buff += 60
-			X.frozen = TRUE
+			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 			X.anchored = TRUE
 			X.small_explosives_stun = FALSE
-			X.update_canmove()
 		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 		X.mob_size = MOB_SIZE_IMMOBILE //knockback immune
 		X.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
@@ -226,7 +225,7 @@
 		X.fortify = TRUE
 	else
 		to_chat(X, SPAN_XENOWARNING("You resume your normal stance."))
-		X.frozen = FALSE
+		REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 		X.anchored = FALSE
 		if(X.steelcrest)
 			X.armor_deflection_buff -= 10
@@ -240,7 +239,6 @@
 		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
 		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		X.mob_flags |= SQUEEZE_UNDER_VEHICLES
-		X.update_canmove()
 		X.update_icons()
 		X.fortify = FALSE
 

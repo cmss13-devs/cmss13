@@ -66,7 +66,7 @@
 		if(target_human.superslowed)
 			target_human.apply_effect(2, DAZE)
 			target_human.make_jittery(50)
-			target_human.visible_message(SPAN_DANGER("[target_human] has trouble walking straigh."))
+			target_human.visible_message(SPAN_DANGER("[target_human] has trouble walking straight."))
 			return
 		if(target_human.slowed)
 			target_human.apply_effect(2.5, SUPERSLOW)

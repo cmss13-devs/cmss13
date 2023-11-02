@@ -9,6 +9,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/map_templates = list()
 
 	var/list/shuttle_templates = list()
+	var/list/all_shuttle_templates = list()
 
 	var/list/areas_in_z = list()
 
@@ -238,6 +239,7 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_template/shuttle/S = new shuttle_type()
 
 		shuttle_templates[S.shuttle_id] = S
+		all_shuttle_templates[item] = S
 		map_templates[S.shuttle_id] = S
 
 /datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override)

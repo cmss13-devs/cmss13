@@ -76,10 +76,21 @@ function createStatusTab(name) {
 	B.textContent = name;
 	B.className = "button";
 	//ORDERING ALPHABETICALLY
-	B.style.order = name.charCodeAt(0);
-	if (name == "Status" || name == "MC") {
-		B.style.order = name == "Status" ? 1 : 2;
+
+	switch (name) {
+		case "Status":
+			B.style.order = 1;
+			break;
+		case "MC":
+			B.style.order = 2;
+			break;
+		case "Panel Options":
+			B.style.order = 999;
+			break;
+		default:
+			B.style.order = name.charCodeAt(0);
 	}
+
 	//END ORDERING
 	menu.appendChild(B);
 	SendTabToByond(name);
@@ -247,6 +258,7 @@ function tab_change(tab, force) {
 	if (!force && tab == current_tab) return;
 	if (document.getElementById(current_tab))
 		document.getElementById(current_tab).className = "button"; // disable active on last button
+	var oldTab = current_tab;
 	current_tab = tab;
 	set_byond_tab(tab);
 	if (document.getElementById(tab))
@@ -270,6 +282,9 @@ function tab_change(tab, force) {
 		draw_sdql2();
 	} else if (tab == turfname) {
 		draw_listedturf();
+	} else if (tab == "Panel Options") {
+		openOptionsMenu();
+		tab_change(oldTab);
 	} else {
 		statcontentdiv.textContext = "Loading...";
 	}
@@ -1036,21 +1051,7 @@ Byond.subscribeTo("remove_mc", remove_mc);
 Byond.subscribeTo("add_verb_list", add_verb_list);
 
 function createOptionsButton() {
-	if (document.getElementById("options")) {
-		return;
-	}
-	var button = document.createElement("BUTTON");
-	button.onclick = function () {
-		openOptionsMenu();
-		this.blur();
-	};
-	button.id = "options";
-	button.textContent = "Options";
-	button.className = "options";
-	button.style.order = 999; // last please
-	button.style.marginLeft = "auto";
-	button.style.marginRight = "2%";
-	menu.appendChild(button);
+	addPermanentTab("Panel Options");
 }
 
 function openOptionsMenu() {

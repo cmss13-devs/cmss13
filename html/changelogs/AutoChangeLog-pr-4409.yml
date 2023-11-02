@@ -1,8 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - imageadd: "Added sprites for provost senior and marshal uniforms."
-  - spellcheck: "Gave unique names to the provost armour subtypes."
-  - balance: "Prevented most provost armour from being able to fit inside bags."
-  - balance: "Returned provost armour to the same slowdowns as MP armour."
-  - code_imp: "Removed a lot of duplicate code in Provost presets and uniform/suits."

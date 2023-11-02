@@ -271,8 +271,7 @@
 	else
 		active_fuel = fuelB
 
-	for(var/action in actions)
-		var/datum/action/action_added = action
+	for(var/datum/action/action_added as anything in actions)
 		action_added.update_button_icon()
 
 	to_chat(user, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")

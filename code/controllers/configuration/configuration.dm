@@ -22,6 +22,8 @@
 	var/static/regex/ic_filter_regex
 	var/list/fail_to_topic_whitelisted_ips
 
+	var/is_loaded = FALSE
+
 /datum/controller/configuration/proc/admin_reload()
 	if(IsAdminAdvancedProcCall())
 		alert_proccall("configuration admin_reload")
@@ -54,6 +56,8 @@
 	loadmaplist(CONFIG_SHIP_MAPS_FILE, SHIP_MAP)
 	LoadChatFilter()
 	LoadTopicRateWhitelist()
+
+	is_loaded = TRUE
 
 	if(Master)
 		Master.OnConfigLoad()

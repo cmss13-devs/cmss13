@@ -49,6 +49,9 @@
 	if(!disp_title)
 		disp_title = title
 
+	if(global.config.is_loaded)
+		on_config_load()
+
 /datum/job/proc/on_config_load()
 	if(entry_message_body)
 		entry_message_body = replace_placeholders(entry_message_body)

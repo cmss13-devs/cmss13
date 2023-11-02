@@ -255,7 +255,7 @@
 
 	var/obj/item/weapon/gun/flamer/M240T/F = user.get_active_hand()
 	if(!istype(F))
-		to_chat(usr, "You must be holding the M240-T incinerator unit to use [src]")
+		to_chat(user, "You must be holding the M240-T incinerator unit to use [src]")
 		return
 
 	if(!active_fuel)

@@ -51385,17 +51385,7 @@
 	},
 /area/almayer/medical/containment)
 "mog" = (
-/obj/structure/safe,
-/obj/item/book/codebook,
-/obj/item/weapon/telebaton,
-/obj/item/clothing/glasses/monocle,
-/obj/item/moneybag,
-/obj/item/coin/silver{
-	desc = "A small coin, bearing the falling falcons insignia.";
-	name = "falling falcons challenge coin";
-	pixel_y = -2;
-	pixel_x = -5
-	},
+/obj/structure/safe/co_office,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "moh" = (

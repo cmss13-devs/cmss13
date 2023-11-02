@@ -93,6 +93,11 @@
 	update_inv_resource()
 	update_icons()
 
+/mob/living/carbon/xenomorph/set_body_position(new_value)
+	. = ..()
+	if(. != new_value)
+		update_icons() // Snowflake handler for xeno resting icons
+
 /mob/living/carbon/xenomorph/update_inv_pockets()
 	var/datum/custom_hud/alien/ui_datum = GLOB.custom_huds_list[HUD_ALIEN]
 	if(l_store)

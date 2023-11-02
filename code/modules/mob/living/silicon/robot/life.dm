@@ -78,7 +78,7 @@
 		death()
 
 	if (stat != DEAD) //Alive.
-		if (HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || HAS_TRAIT(src, TRAIT_INCAPACITATED)|| HAS_TRAIT(src, TRAIT_FLOORED) || !has_power) //Stunned etc.
+		if (HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || HAS_TRAIT(src, TRAIT_INCAPACITATED) || !has_power) //Stunned etc.
 			set_stat(UNCONSCIOUS)
 			if(regular_update)
 				if (HAS_TRAIT(src, TRAIT_INCAPACITATED))

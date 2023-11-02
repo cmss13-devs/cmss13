@@ -313,10 +313,8 @@ var/global/list/limb_types_by_name = list(
 
 /// Returns if the mob is incapacitated and unable to perform general actions
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	// TODO: Replace this by signal/traits entirely eventually
-	// TRAIT_FLOORED being considered incapacitated is a legacy CM Feature that should be removed at some point
 	// note that stat includes knockout via unconscious
-	return (stat || (!ignore_restrained && is_mob_restrained()) || (status_flags & FAKEDEATH) || HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_INCAPACITATED))
+	return (stat || (!ignore_restrained && is_mob_restrained()) || (status_flags & FAKEDEATH) || HAS_TRAIT(src, TRAIT_INCAPACITATED))
 
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE

@@ -4,7 +4,3 @@
 
 /mob/living/carbon/proc/remove_overlay(cache_index)
 	return
-
-/mob/living/carbon/update_transform()
-	. = ..()
-	update_icons()

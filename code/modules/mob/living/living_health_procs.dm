@@ -175,14 +175,14 @@
 	VAR_PRIVATE/knocked_down_timer
 
 /mob/living/proc/knocked_down_callback()
-	REMOVE_TRAIT(src, TRAIT_FLOORED, KNOCKEDDOWN_TRAIT)
+	remove_traits(list(TRAIT_FLOORED, TRAIT_INCAPACITATED), KNOCKEDDOWN_TRAIT)
 	knocked_down = 0
 	handle_regular_status_updates(FALSE)
 	knocked_down_timer = null
 
 /mob/living/proc/knocked_down_callback_check()
 	if(knocked_down)
-		ADD_TRAIT(src, TRAIT_FLOORED, KNOCKEDDOWN_TRAIT)
+		add_traits(list(TRAIT_FLOORED, TRAIT_INCAPACITATED), KNOCKEDDOWN_TRAIT)
 
 	if(knocked_down && knocked_down < recovery_constant)
 		knocked_down_timer = addtimer(CALLBACK(src, PROC_REF(knocked_down_callback)), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick

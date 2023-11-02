@@ -249,6 +249,10 @@
 	if(!ishuman(user) || user.is_mob_incapacitated())
 		return FALSE
 
+	if(user.back != src)
+		to_chat(usr, "The [src] must be equipped before you can switch types")
+		return
+
 	var/obj/item/weapon/gun/flamer/M240T/F = user.get_active_hand()
 	if(!istype(F))
 		to_chat(usr, "You must be holding the M240-T incinerator unit to use [src]")

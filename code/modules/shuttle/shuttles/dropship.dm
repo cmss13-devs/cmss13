@@ -57,6 +57,7 @@
 
 /// Is called on_departure and on_arrival to prevent transparent solid multitile airlocks
 /obj/docking_port/mobile/marine_dropship/proc/refresh_multitile_airlock_filler_turfs()
+// Yes, there is 1 tick where you can see through solid airlocks, but it's the simplest solution I could've think of
 	for(var/place in shuttle_areas)
 		for(var/obj/structure/machinery/door/doors in place)
 			if(doors.width > 1)

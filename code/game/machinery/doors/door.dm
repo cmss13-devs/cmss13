@@ -7,7 +7,7 @@
 	anchored = TRUE
 	opacity = TRUE
 	density = TRUE
-	throwpass = 0
+	throwpass = FALSE
 	layer = DOOR_OPEN_LAYER
 	minimap_color = MINIMAP_DOOR
 	var/open_layer = DOOR_OPEN_LAYER
@@ -15,16 +15,17 @@
 	var/id = ""
 
 	var/secondsElectrified = 0
-	var/visible = 1
+	var/visible = TRUE
 	var/panel_open = FALSE
-	var/operating = 0
-	var/autoclose = 0
-	var/glass = 0
-	var/normalspeed = 1
-	var/openspeed = 10 //How many seconds does it take to open it? Default 1 second. Use only if you have long door opening animations
-	var/heat_proof = 0 // For glass airlocks/opacity firedoors
+	var/operating = FALSE
+	var/autoclose = FALSE
+	var/glass = FALSE
+	/// If FALSE it speeds up the autoclosing timing
+	var/normalspeed = TRUE
+	var/openspeed = 1 SECONDS //How many seconds does it take to open it? Default 1 second. Use only if you have long door opening animations
+	var/heat_proof = FALSE // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
-	/// Fixes double door opacity issue
+	/// Fixes multi_tile doors opacity issues
 	var/list/filler_turfs = list() //Previously this was just a single turf, because no one had forseen someone creating doors longer than 2,
 	// because that would NEVER happen, NEVER
 	/// Stops it being forced open through normal means (Hunters/Zombies/Aliens).
@@ -45,7 +46,6 @@
 		update_flags_heat_protection(get_turf(src))
 	else
 		layer = open_layer
-
 	handle_multidoor()
 
 /obj/structure/machinery/door/Destroy()

@@ -13,7 +13,6 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/Initialize()
 	. = ..()
-	handle_multidoor()
 	update_icon()
 
 /obj/structure/machinery/door/airlock/multi_tile/glass

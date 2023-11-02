@@ -271,14 +271,14 @@
 	else
 		active_fuel = fuelB
 
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
+	for(var/action in actions)
+		var/datum/action/action_added = action
+		action_added.update_button_icon()
 
 	to_chat(user, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
-	F.current_mag = active_fuel
-	F.update_icon()
+	flamer.current_mag = active_fuel
+	flamer.update_icon()
 
 	return TRUE
 

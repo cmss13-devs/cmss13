@@ -253,8 +253,8 @@
 		to_chat(usr, "The [src] must be equipped before you can switch types")
 		return
 
-	var/obj/item/weapon/gun/flamer/M240T/F = user.get_active_hand()
-	if(!istype(F))
+	var/obj/item/weapon/gun/flamer/M240T/flamer = user.get_active_hand()
+	if(!istype(flamer))
 		to_chat(user, "You must be holding the M240-T incinerator unit to use [src]")
 		return
 

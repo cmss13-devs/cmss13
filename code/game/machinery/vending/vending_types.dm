@@ -434,11 +434,11 @@
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL
 
+//vendor of ingredients for kitchen
 /obj/structure/machinery/vending/ingredients
-	name = "\improper Ingredient Machine"
-	desc = "A vending machine full of ingredients."
-	product_slogans = "Every ingredients you need are here, and only for 1$"
-	product_ads = "Your out of ingredients Weyland-Yutani is there for you"
+	name = "\improper Ingredient shop machine"
+	desc = "A vending machine meant to be use for cooks."
+	product_ads = "If your out of ingredients i am here for you;all my organic produce are fresh;don't let my potatoes go stale time for you to cook some fries"
 	icon_state = "snack"
 	hacking_safety = TRUE
 	products = list(

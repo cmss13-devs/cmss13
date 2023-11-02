@@ -25,7 +25,8 @@
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
 	/// Fixes double door opacity issue
-	var/filler_turfs = list() //And of course, no one had forseen someone creating doors longer than 2, because that would NEVER happen, NEVER
+	var/list/filler_turfs = list() //Previously this was just a single turf, because no one had forseen someone creating doors longer than 2,
+	// because that would NEVER happen, NEVER
 	/// Stops it being forced open through normal means (Hunters/Zombies/Aliens).
 	var/heavy = FALSE
 	/// Resistance to masterkey
@@ -69,7 +70,7 @@
 	for(var/turf/filler in locate_filler_turfs())
 		filler.set_opacity(new_opacity)
 		filler_turfs += filler
-
+/// Updates collision box and opacity of multi_tile airlocks
 /obj/structure/machinery/door/proc/handle_multidoor()
 	if(width > 1)
 		if(dir in list(EAST, WEST))
@@ -82,14 +83,16 @@
 
 /obj/structure/machinery/door/proc/locate_filler_turfs()
 	var/turf/filler_temp
-	. = list()
+	var/list/located_turfs = list()
+
 	for(var/i = 1, i < width, i++)
-		if (dir in list(NORTH, SOUTH))
-			filler_temp = locate(x, y + i, z)
-		else
+		if (dir in list(EAST, WEST))
 			filler_temp = locate(x + i, y, z)
+		else
+			filler_temp = locate(x, y + i, z)
 		if (filler_temp)
-			. += filler_temp
+			located_turfs += filler_temp
+	return located_turfs
 
 /obj/structure/machinery/door/proc/borders_space()
 	for(var/turf/target in range(1, src))

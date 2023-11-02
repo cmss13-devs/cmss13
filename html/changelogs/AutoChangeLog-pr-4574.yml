@@ -1,5 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - refactor: "Refactor gun cabinet code adding subtype for all the secure guncabinet."
-  - refactor: "Refactor safe code adding subtype for cl and co safes also add a subtype for armory honor guard closet ."

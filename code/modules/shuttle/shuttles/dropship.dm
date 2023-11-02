@@ -55,6 +55,13 @@
 /obj/docking_port/mobile/marine_dropship/proc/get_door_data()
 	return door_control.get_data()
 
+/// Is called on_departure and on_arrival to prevent transparent solid multitile airlocks
+/obj/docking_port/mobile/marine_dropship/proc/refresh_multitile_airlock_filler_turfs()
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/doors in place)
+			if(doors.width > 1)
+				doors.handle_multidoor()
+
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
 	door_control = new()
@@ -217,6 +224,7 @@
 		var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
 		dropship.in_flyby = FALSE
 		dropship.control_doors("unlock", "all", force=FALSE)
+		dropship.refresh_multitile_airlock_filler_turfs()
 		var/obj/structure/machinery/computer/shuttle/dropship/flight/console = dropship.getControlConsole()
 		console?.update_equipment()
 	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
@@ -234,8 +242,9 @@
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
 	turn_off_landing_lights()
-	var/obj/docking_port/mobile/marine_dropship/shuttle = departing_shuttle
-	for(var/obj/structure/dropship_equipment/eq as anything in shuttle.equipments)
+	var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
+	dropship.refresh_multitile_airlock_filler_turfs()
+	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_launch()
 
 /obj/docking_port/stationary/marine_dropship/lz1
@@ -271,6 +280,8 @@
 
 /obj/docking_port/stationary/marine_dropship/crash_site/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
+	var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
+	dropship.refresh_multitile_airlock_filler_turfs()
 	arriving_shuttle.mode = SHUTTLE_CRASHED
 	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
 		if(affected_mob.z != z)

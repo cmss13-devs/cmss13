@@ -25,7 +25,7 @@
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
 	/// Fixes double door opacity issue
-	var/turf/filler_turfs = list() //And of course, no one had forseen someone creating doors longer than 2, because that would NEVER happen, NEVER
+	var/filler_turfs = list() //And of course, no one had forseen someone creating doors longer than 2, because that would NEVER happen, NEVER
 	/// Stops it being forced open through normal means (Hunters/Zombies/Aliens).
 	var/heavy = FALSE
 	/// Resistance to masterkey
@@ -49,7 +49,7 @@
 
 /obj/structure/machinery/door/Destroy()
 	. = ..()
-	if(filler_turfs && width > 1)
+	if(length(filler_turfs) && width > 1)
 		change_filler_opacity(0) // It still doesn't check for walls, might want to add checking that in the future
 		filler_turfs = null
 	density = FALSE
@@ -59,6 +59,7 @@
 	if (PF)
 		PF.flags_can_pass_all = NONE
 
+/// Also refreshes filler_turfs list
 /obj/structure/machinery/door/proc/change_filler_opacity(new_opacity)
 	// I have no idea why do we null opacity first before... changing it
 	for(var/turf/filler_turf in filler_turfs)
@@ -239,7 +240,7 @@
 	do_animate("opening")
 	icon_state = "door0"
 	set_opacity(FALSE)
-	if(filler_turfs)
+	if(length(filler_turfs))
 		change_filler_opacity(opacity)
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
 	return TRUE
@@ -272,7 +273,7 @@
 	update_icon()
 	if(visible && !glass)
 		set_opacity(TRUE)
-		if(filler_turfs)
+		if(length(filler_turfs))
 			change_filler_opacity(opacity)
 	operating = FALSE
 

@@ -24288,7 +24288,9 @@
 /area/almayer/hallways/aft_hallway)
 "bYd" = (
 /obj/structure/bookcase{
-	icon_state = "book-5"
+	icon_state = "book-5";
+	name = "law manuals bookcase";
+	opacity = 0
 	},
 /obj/item/book/manual/marine_law,
 /obj/item/book/manual/detective,
@@ -27845,12 +27847,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/req)
-"cvi" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/living/commandbunks)
 "cvj" = (
 /obj/structure/machinery/power/apc/almayer/hardened{
 	dir = 1
@@ -28167,7 +28163,9 @@
 /obj/item/book/manual/engineering_construction,
 /obj/item/book/manual/engineering_guide,
 /obj/structure/bookcase{
-	icon_state = "book-5"
+	icon_state = "book-5";
+	name = "engineering manuals bookcase";
+	opacity = 0
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -36770,10 +36768,14 @@
 /area/almayer/hallways/stern_hallway)
 "geW" = (
 /obj/structure/bookcase{
-	icon_state = "book-5"
+	icon_state = "book-5";
+	name = "medical manuals bookcase";
+	opacity = 0
 	},
 /obj/item/book/manual/surgery,
-/obj/item/book/manual/chef_recipes,
+/obj/item/book/manual/research_and_development,
+/obj/item/book/manual/medical_diagnostics_manual,
+/obj/item/book/manual/medical_cloning,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "geX" = (
@@ -44547,7 +44549,8 @@
 "juN" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/card{
-	dir = 4
+	dir = 4;
+	pixel_x = 2
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet,
@@ -63973,7 +63976,8 @@
 "rDd" = (
 /obj/structure/bed/bedroll{
 	name = "cat bed";
-	desc = "cat bed"
+	desc = "It is a bed, for cats.";
+	pixel_y = 0
 	},
 /mob/living/simple_animal/cat/Jones{
 	dir = 8
@@ -66824,6 +66828,9 @@
 /obj/structure/coatrack{
 	pixel_y = 1;
 	pixel_x = -6
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -70792,6 +70799,9 @@
 /obj/structure/machinery/photocopier{
 	anchored = 0
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "uws" = (
@@ -73700,6 +73710,9 @@
 /obj/item/tool/pen/blue/clicky{
 	pixel_x = -6;
 	pixel_y = -3
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -79203,7 +79216,8 @@
 /area/almayer/squads/charlie_delta_shared)
 "xJP" = (
 /obj/structure/machinery/status_display{
-	pixel_x = 32
+	pixel_x = 32;
+	pixel_y = 16
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -100921,7 +100935,7 @@ ies
 fNb
 hvH
 hvH
-cvi
+hvH
 sRd
 alo
 agj
@@ -102139,8 +102153,8 @@ afo
 hvH
 hvH
 xJP
-gGy
 hvH
+gGy
 alu
 agj
 aic

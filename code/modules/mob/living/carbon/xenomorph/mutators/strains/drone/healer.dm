@@ -161,7 +161,7 @@
 	if(bound_xeno.stat == DEAD)
 		salve_applied_icon.icon_state = "Healer Drone Dead"
 	else if(bound_xeno.body_position == LYING_DOWN)
-		if((bound_xeno.resting || bound_xeno.sleeping) && (!HAS_TRAIT(src, TRAIT_INCAPACITATED) && bound_xeno.health > 0))
+		if(!HAS_TRAIT(bound_xeno, TRAIT_INCAPACITATED) && !HAS_TRAIT(bound_xeno, TRAIT_FLOORED))
 			salve_applied_icon.icon_state = "Healer Drone Sleeping"
 		else
 			salve_applied_icon.icon_state = "Healer Drone Knocked Down"

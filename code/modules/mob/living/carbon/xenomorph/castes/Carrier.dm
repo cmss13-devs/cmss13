@@ -110,7 +110,7 @@
 		if(stat == DEAD)
 			hugger_overlays_icon.overlays += icon(icon, "clinger_[i] Knocked Down")
 		else if(body_position == LYING_DOWN)
-			if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 				hugger_overlays_icon.overlays += icon(icon, "clinger_[i] Sleeping")
 			else
 				hugger_overlays_icon.overlays +=icon(icon, "clinger_[i] Knocked Down")
@@ -155,7 +155,7 @@
 
 	if(stat != DEAD)
 		if(body_position == LYING_DOWN)
-			if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_INCAPACITATED) && health > 0))
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 				eggsac_overlays_icon.overlays += icon(icon, "eggsac_[i] Sleeping")
 			else
 				eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i] Knocked Down")

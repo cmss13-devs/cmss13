@@ -131,7 +131,7 @@
 		icon_state = "[state_override || state]Larva Cuff"
 
 	else if(body_position == LYING_DOWN)
-		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_INCAPACITATED) && health > 0))
+		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 			icon_state = "[state_override || state]Larva Sleeping"
 		else
 			icon_state = "[state_override || state]Larva Stunned"

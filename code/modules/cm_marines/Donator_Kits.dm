@@ -427,7 +427,7 @@
 	donor_key = "sasoperative"
 	kit_variant = "Juggernaut"
 	donor_gear = list(
-		/obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut_alt,
+		/obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut,
 		/obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut,
 		/obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut,
 	)

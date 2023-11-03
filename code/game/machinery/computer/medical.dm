@@ -123,7 +123,6 @@
 					else
 						dat += "<br>[bdat]"
 
-				else
 		else
 			dat += text("<A href='?src=\ref[];login=1'>{Log In}</A>", src)
 	show_browser(user, dat, "Medical Records", "med_rec")
@@ -365,8 +364,6 @@
 				for(var/datum/data/record/E in GLOB.data_core.medical)
 					if ((E.fields["ref"] == R.fields["ref"] || E.fields["id"] == R.fields["id"]))
 						M = E
-					else
-						//Foreach continue //goto(2540)
 				src.active1 = R
 				src.active2 = M
 				src.screen = 4
@@ -417,16 +414,12 @@
 				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if ((lowertext(R.fields["name"]) == t1 || t1 == lowertext(R.fields["id"])))
 						src.active2 = R
-					else
-						//Foreach continue //goto(3229)
 				if (!active2)
 					temp = "Could not locate record [t1]."
 				else
 					for(var/datum/data/record/E in GLOB.data_core.general)
 						if ((E.fields["name"] == src.active2.fields["name"] || E.fields["id"] == src.active2.fields["id"]))
 							src.active1 = E
-						else
-							//Foreach continue //goto(3334)
 					src.screen = 4
 
 			if (href_list["print_p"])

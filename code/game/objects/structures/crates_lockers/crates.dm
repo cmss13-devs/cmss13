@@ -130,8 +130,6 @@
 			contents_explosion(severity)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/closet/crate/alpha
 	name = "alpha squad crate"

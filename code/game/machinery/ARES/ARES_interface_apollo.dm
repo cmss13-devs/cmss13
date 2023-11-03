@@ -14,7 +14,7 @@
 	var/current_menu = "login"
 	var/last_menu = ""
 
-	var/authentication = ARES_ACCESS_BASIC
+	var/authentication = APOLLO_ACCESS_LOGOUT
 	/// The last person to login.
 	var/last_login
 

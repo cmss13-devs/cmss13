@@ -475,8 +475,6 @@
 	var/autofire_slow_mult = 1
 	/// If the gun is currently burst firing
 	VAR_PROTECTED/burst_firing = FALSE
-	/// If the gun is currently auto firing
-	VAR_PROTECTED/auto_firing = FALSE
 	/// If the gun should display its ammo count
 	var/display_ammo = TRUE
 	/// How many degrees in each direction the gun should be able to fire
@@ -514,13 +512,14 @@
 	ammo = GLOB.ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	update_icon()
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing)))
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)), CALLBACK(src, PROC_REF(display_ammo)))
 
-/obj/structure/machinery/m56d_hmg/Destroy() //Make sure we pick up our trash.
-	if(operator)
-		operator.unset_interaction()
+/obj/structure/machinery/m56d_hmg/Destroy(force) //Make sure we pick up our trash.
+	operator?.unset_interaction()
+	operator = null
+	QDEL_NULL(in_chamber)
 	STOP_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
 	. = ..()
@@ -751,6 +750,8 @@
 	update_icon() //final safeguard.
 
 /obj/structure/machinery/m56d_hmg/proc/try_fire()
+	if(!operator)
+		return
 	if(!rounds)
 		to_chat(operator, SPAN_WARNING("<b>*click*</b>"))
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
@@ -855,6 +856,7 @@
 
 /obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
+	SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
 	user.unfreeze()
@@ -947,7 +949,6 @@
 /// Clean up the target, shots fired, and other things related to when you stop firing
 /obj/structure/machinery/m56d_hmg/proc/reset_fire()
 	set_target(null)
-	set_auto_firing(FALSE)
 	shots_fired = 0
 
 ///Set the target and take care of hard delete
@@ -959,10 +960,6 @@
 	target = object
 	if(target)
 		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
-
-/// Setter for auto_firing
-/obj/structure/machinery/m56d_hmg/proc/set_auto_firing(auto = FALSE)
-	auto_firing = auto
 
 /// Print how much ammo is left to chat
 /obj/structure/machinery/m56d_hmg/proc/display_ammo()

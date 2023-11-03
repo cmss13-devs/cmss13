@@ -35733,7 +35733,7 @@
 /area/fiorina/station/security)
 "vKP" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/katana,
+/obj/item/weapon/sword/katana,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "vLH" = (

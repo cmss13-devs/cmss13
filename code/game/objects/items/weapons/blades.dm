@@ -1,38 +1,36 @@
-/obj/item/weapon/claymore
-	name = "claymore"
-	desc = "What are you standing around staring at this for? Get to killing!"
-	icon_state = "claymore"
-	item_state = "claymore"
+/obj/item/weapon/sword
+	name = "combat sword"
+	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
+	icon_state = "mercsword"
+	item_state = "machete"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_STRONG
 	throwforce = MELEE_FORCE_WEAK
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 
-/obj/item/weapon/claymore/mercsword
-	name = "combat sword"
-	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
-	icon_state = "mercsword"
-	item_state = "machete"
+/obj/item/weapon/sword/claymore
+	name = "claymore"
+	desc = "What are you standing around staring at this for? Get to killing!"
+	icon_state = "claymore"
+	item_state = "claymore"
 
-/obj/item/weapon/claymore/mercsword/ceremonial
+/obj/item/weapon/sword/ceremonial
 	name = "Ceremonial Sword"
 	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
 	icon_state = "ceremonial"
-	item_state = "machete"
 
-/obj/item/weapon/claymore/mercsword/machete
+/obj/item/weapon/sword/machete
 	name = "\improper M2132 machete"
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
-	w_class = SIZE_LARGE
 
-/obj/item/weapon/claymore/mercsword/machete/attack_self(mob/user)
+/obj/item/weapon/sword/machete/attack_self(mob/user)
 	if(user.action_busy)
 		return
 
@@ -49,14 +47,13 @@
 
 	return ..()
 
-/obj/item/weapon/claymore/mercsword/machete/arnold
+/obj/item/weapon/sword/machete/arnold
 	name = "\improper M2100 \"Ngájhe\" machete"
 	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."
 	icon_state = "arnold-machete"
-	w_class = SIZE_LARGE
 	force = MELEE_FORCE_TIER_11
 
-/obj/item/weapon/claymore/hefa
+/obj/item/weapon/sword/hefa
 	name = "HEFA sword"
 	icon_state = "hefasword"
 	item_state = "hefasword"
@@ -65,7 +62,7 @@
 
 	var/primed = FALSE
 
-/obj/item/weapon/claymore/hefa/proc/apply_explosion_overlay()
+/obj/item/weapon/sword/hefa/proc/apply_explosion_overlay()
 	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
 	O.name = "grenade"
 	O.icon = 'icons/effects/explosion.dmi'
@@ -73,7 +70,7 @@
 	QDEL_IN(O, 7)
 	return
 
-/obj/item/weapon/claymore/hefa/attack_self(mob/user)
+/obj/item/weapon/sword/hefa/attack_self(mob/user)
 	..()
 
 	primed = !primed
@@ -82,7 +79,7 @@
 		msg = "You de-activate \the [src]!"
 	to_chat(user, SPAN_NOTICE(msg))
 
-/obj/item/weapon/claymore/hefa/attack(mob/target, mob/user)
+/obj/item/weapon/sword/hefa/attack(mob/target, mob/user)
 	. = ..()
 	if(!primed)
 		return
@@ -97,22 +94,15 @@
 	cell_explosion(epicenter, 40, 18, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, cause_data)
 	qdel(src)
 
-/obj/item/weapon/katana
+/obj/item/weapon/sword/katana
 	name = "katana"
 	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
 	icon_state = "katana"
-	flags_atom = FPRINT|CONDUCT
+	item_state = "katana"
 	force = MELEE_FORCE_VERY_STRONG
-	throwforce = MELEE_FORCE_WEAK
-	sharp = IS_SHARP_ITEM_BIG
-	edge = 1
-	w_class = SIZE_MEDIUM
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	attack_speed = 9
 
 //To do: replace the toys.
-/obj/item/weapon/katana/replica
+/obj/item/weapon/sword/katana/replica
 	name = "replica katana"
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
 	force = MELEE_FORCE_WEAK

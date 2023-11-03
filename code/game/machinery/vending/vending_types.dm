@@ -436,7 +436,7 @@
 
 //vendor of ingredients for kitchen
 /obj/structure/machinery/vending/ingredients
-	name = "\improper Ingredient shop machine"
+	name = "\improper Galley Auxiliary Storage Requisition System"
 	desc = "A vending machine meant to be use for cooks."
 	product_ads = "If your out of ingredients i am here for you;all my organic produce are fresh;don't let my potatoes go stale time for you to cook some fries"
 	icon_state = "snack"

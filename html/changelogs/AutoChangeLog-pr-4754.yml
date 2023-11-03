@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - ui: "the options button is now part of the statbrowser tabs proper"

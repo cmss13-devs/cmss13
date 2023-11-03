@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added the KN5500 PDA for Working Joes. Sprites by Frans_Feiffer."
+  - rscadd: "Changed the plain glass in Working Joe presets to Reinforced Glass."

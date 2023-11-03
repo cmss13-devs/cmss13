@@ -93,8 +93,7 @@
 	update_inv_resource()
 	update_icons()
 
-/* CRUTCH ZONE - Update icons when relevant status happen
-   Ideally do this properly and for everything, then kill update_icons() someday */
+/* CRUTCH ZONE - Update icons when relevant status happen - Ideally do this properly and for everything, then kill update_icons() someday */
 // set_body_position is needed on addition of floored start/stop because we can be switching between resting and knockeddown
 /mob/living/carbon/xenomorph/set_body_position(new_value)
 	. = ..()

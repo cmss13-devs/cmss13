@@ -4928,7 +4928,7 @@
 "dhQ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/colonist,
-/obj/item/weapon/katana,
+/obj/item/weapon/sword/katana,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "dhV" = (

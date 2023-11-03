@@ -14,3 +14,6 @@
   private-tristan:
   - balance: predators are no longer immune to molecular acid injected from spitter
       and boiler tailstabs
+2023-11-03:
+  harryob:
+  - ui: the options button is now part of the statbrowser tabs proper

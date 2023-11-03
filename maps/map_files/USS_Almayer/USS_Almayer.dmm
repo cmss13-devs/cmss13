@@ -6577,7 +6577,7 @@
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "auR" = (
-/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -51671,7 +51671,7 @@
 /area/almayer/command/cichallway)
 "mtX" = (
 /obj/structure/machinery/light,
-/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},

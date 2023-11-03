@@ -26844,7 +26844,7 @@
 /area/ice_colony/underground/storage/highsec)
 "bCS" = (
 /obj/structure/safe,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/sword/katana/replica,
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /turf/open/floor{
 	dir = 1;

@@ -174,10 +174,10 @@
 		if(STATE_DISPLACED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				var/turf/open/floor = loc
-				var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in loc
 				if(!floor.allow_construction)
 					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
 					return
+				var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in loc
 				if(tunnel)
 					to_chat(user, SPAN_WARNING("The girder cannot be secured on a tunnel!"))
 					return

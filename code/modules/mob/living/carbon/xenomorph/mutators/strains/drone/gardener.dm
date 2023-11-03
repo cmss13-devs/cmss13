@@ -380,7 +380,7 @@
 	if(bound_xeno.stat == DEAD)
 		fruit_sac_overlay_icon.icon_state = "Gardener Drone Dead"
 	else if(bound_xeno.body_position == LYING_DOWN)
-		if((bound_xeno.resting || bound_xeno.sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && bound_xeno.health > 0))
+		if((bound_xeno.resting || bound_xeno.sleeping) && (!HAS_TRAIT(src, TRAIT_INCAPACITATED) && bound_xeno.health > 0))
 			fruit_sac_overlay_icon.icon_state = "Gardener Drone Sleeping"
 		else
 			fruit_sac_overlay_icon.icon_state = "Gardener Drone Knocked Down"

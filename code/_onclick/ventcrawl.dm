@@ -45,7 +45,7 @@
 		to_chat(src, SPAN_WARNING("You must be conscious to do this!"))
 		return
 
-	if(body_position)
+	if(is_mob_incapacitated())
 		to_chat(src, SPAN_WARNING("You can't vent crawl while you're stunned!"))
 		return
 

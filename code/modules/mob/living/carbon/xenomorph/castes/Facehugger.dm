@@ -86,8 +86,8 @@
 
 	if(stat == DEAD)
 		icon_state = "[mutation_type] [caste.caste_type] Dead"
-	else if(body_position)
-		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
+	else if(body_position == LYING_DOWN)
+		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_INCAPACITATED) && health > 0))
 			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
 		else
 			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"

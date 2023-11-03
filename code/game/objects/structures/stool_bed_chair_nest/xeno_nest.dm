@@ -147,7 +147,7 @@
 	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))
 		return
 
-	if(user.stat || user.body_position == LYING_DOWN || user.is_mob_restrained())
+	if(user.body_position == LYING_DOWN || user.is_mob_incapacitated())
 		return
 
 	if(isxeno(user))

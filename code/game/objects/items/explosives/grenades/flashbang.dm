@@ -256,7 +256,7 @@
 
 	//decide how banged mob is
 	var/bang_effect = 0
-	var/lying = H.body_position
+	var/lying = H.body_position == LYING_DOWN
 
 	//flashbang effect depends on eye protection only, so we will process this case first
 	//A bit dumb, but headsets don't have ear protection and even earmuffs are a fluff now

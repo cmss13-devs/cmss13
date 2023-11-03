@@ -555,7 +555,7 @@
 	if(M.action_busy)
 		return XENO_NO_DELAY_ACTION
 
-	if(M.body_position)
+	if(M.is_mob_incapacitated() || M.body_position != STANDING_UP)
 		return XENO_NO_DELAY_ACTION
 
 	var/delay
@@ -574,7 +574,7 @@
 	if(do_after(M, delay, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return XENO_NO_DELAY_ACTION //Make sure we're still there
-		if(M.body_position)
+		if(M.is_mob_incapacitated() || M.body_position != STANDING_UP)
 			return XENO_NO_DELAY_ACTION
 		if(locked)
 			to_chat(M, SPAN_WARNING("[src] is bolted down tight."))

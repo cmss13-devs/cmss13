@@ -61,7 +61,7 @@
 
 /obj/effect/acid_hole/proc/use_wall_hole(mob/living/user)
 
-	if(user.mob_size >= MOB_SIZE_BIG || user.is_mob_incapacitated() || user.body_position || user.buckled || user.anchored)
+	if(user.mob_size >= MOB_SIZE_BIG || user.is_mob_incapacitated() || user.buckled || user.anchored)
 		return FALSE
 
 	var/mob_dir = get_dir(user, src)

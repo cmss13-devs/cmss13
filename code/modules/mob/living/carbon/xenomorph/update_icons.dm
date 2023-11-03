@@ -70,7 +70,7 @@
 		if(!(icon_state in icon_states(icon_xeno)))
 			icon_state = "Normal [caste.caste_type] Dead"
 	else if(body_position == LYING_DOWN)
-		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
+		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_INCAPACITATED) && health > 0))
 			icon_state = "[mutation_caste_state] Sleeping"
 			if(!(icon_state in icon_states(icon_xeno)))
 				icon_state = "Normal [caste.caste_type] Sleeping"
@@ -147,8 +147,8 @@
 	var/state_modifier = ""
 	if(stat == DEAD)
 		state_modifier = " Dead"
-	else if(body_position)
-		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
+	else if(body_position == LYING_DOWN)
+		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_INCAPACITATED) && health > 0))
 			state_modifier = " Sleeping"
 		else
 			state_modifier = " Knocked Down"
@@ -242,7 +242,7 @@
 	if(on_fire && fire_reagent)
 		var/image/I
 		if(mob_size >= MOB_SIZE_BIG)
-			if((!initial(pixel_y) || body_position) && !resting && !sleeping)
+			if((!initial(pixel_y) || body_position != LYING_DOWN)) // what's that pixel_y doing here???
 				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 			else
 				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)

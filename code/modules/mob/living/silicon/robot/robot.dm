@@ -840,7 +840,7 @@ var/list/robot_verbs_default = list(
 						cleaned_item.clean_blood()
 					else if(istype(A, /mob/living/carbon/human))
 						var/mob/living/carbon/human/cleaned_human = A
-						if(cleaned_human.body_position)
+						if(cleaned_human.body_position == LYING_DOWN)
 							if(cleaned_human.head)
 								cleaned_human.head.clean_blood()
 								cleaned_human.update_inv_head(0)

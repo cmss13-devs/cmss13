@@ -258,7 +258,7 @@ Class Procs:
 /obj/structure/machinery/attack_hand(mob/living/user as mob)
 	if(inoperable(MAINT))
 		return TRUE
-	if(user.body_position == LYING_DOWN || user.stat)
+	if(user.is_mob_incapacitated())
 		return TRUE
 	if(!is_valid_user(user))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))

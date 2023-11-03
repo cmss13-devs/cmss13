@@ -154,8 +154,8 @@
 		i = 1
 
 	if(stat != DEAD)
-		if(body_position)
-			if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
+		if(body_position == LYING_DOWN)
+			if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_INCAPACITATED) && health > 0))
 				eggsac_overlays_icon.overlays += icon(icon, "eggsac_[i] Sleeping")
 			else
 				eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i] Knocked Down")

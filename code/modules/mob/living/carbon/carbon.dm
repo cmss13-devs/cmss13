@@ -260,18 +260,28 @@
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src == M)
 		return
-	var/t_him = "it"
+	var/t_him = "them"
 	if(gender == MALE)
 		t_him = "him"
 	else if(gender == FEMALE)
 		t_him = "her"
-	if(body_position || sleeping)
+
+	var/shake_action
+	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || sleeping) // incap implies also unconscious or knockedout
+		shake_action = "wake [t_him] up!"
+	else if(HAS_TRAIT(src, TRAIT_FLOORED))
+		shake_action = "get [t_him] up!"
+
+	if(shake_action) // We are incapacitated in some fashion
 		if(client)
 			sleeping = max(0,sleeping-5)
-		if(sleeping == 0)
-			resting = 0
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
-			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to [shake_action]"), \
+			SPAN_NOTICE("You shake [src] trying to [shake_action]"), null, 4)
+
+	else if(body_position == LYING_DOWN) // We're just chilling on the ground, let us be
+		M.visible_message(SPAN_NOTICE("[M] stares and waves impatiently at [src] lying on the ground."), \
+			SPAN_NOTICE("You stare and wave at [src] just lying on the ground."), null, 4)
+
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
@@ -458,12 +468,12 @@
 	apply_effect(stun_level, STUN)
 	apply_effect(weaken_level, WEAKEN)
 	. = TRUE
-	if(slide_steps && body_position)//lying check to make sure we downed the mob
+	if(slide_steps && HAS_TRAIT(src, TRAIT_FLOORED))//lying check to make sure we downed the mob
 		var/slide_dir = dir
 		for(var/i=1, i<=slide_steps, i++)
 			step(src, slide_dir)
 			sleep(2)
-			if(!body_position)
+			if(!HAS_TRAIT(src, TRAIT_FLOORED)) // just watch this break in the most horrible way possible
 				break
 
 

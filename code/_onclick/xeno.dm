@@ -21,7 +21,7 @@
 
 			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
 				continue
-			if (L.body_position)
+			if (L.body_position == LYING_DOWN)
 				alt = L
 				continue
 			target = L

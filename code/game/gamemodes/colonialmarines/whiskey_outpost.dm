@@ -462,7 +462,7 @@
 /obj/structure/machinery/wo_recycler/attack_hand(mob/living/user)
 	if(inoperable(MAINT))
 		return
-	if(user.body_position || user.stat)
+	if(user.is_mob_incapacitated())
 		return
 	if(ismaintdrone(usr) || \
 		istype(usr, /mob/living/carbon/xenomorph))

@@ -68,7 +68,7 @@
 	if(stat == DEAD)
 		icon_state = "Normal [caste_name] Dead"
 	else if(body_position == LYING_DOWN)
-		if((resting || sleeping) && (!is_mob_incapacitated(src) && health > 0))
+		if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_INCAPACITATED) && health > 0))
 			icon_state = "Normal [caste_name] Sleeping"
 		else
 			icon_state = "Normal [caste_name] Knocked Down"

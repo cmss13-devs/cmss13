@@ -74,7 +74,7 @@
 	if(last_special > world.time)
 		return
 
-	if(is_mob_incapacitated() || body_position || buckled)
+	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
 		to_chat(src, "You cannot leap in your current state.")
 		return
 
@@ -110,7 +110,7 @@
 	if(last_special > world.time)
 		return
 
-	if(is_mob_incapacitated() || body_position)
+	if(is_mob_incapacitated() || body_position != STANDING_UP)
 		to_chat(src, SPAN_DANGER("You cannot do that in your current state."))
 		return
 

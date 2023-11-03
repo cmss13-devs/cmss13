@@ -21,7 +21,7 @@
 				stage--
 				return
 */
-			if(affected_mob.body_position && prob(20))  //added until sleeping is fixed --Blaank
+			if(affected_mob.body_position == LYING_DOWN && prob(20))  //added until sleeping is fixed --Blaank
 				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
 				stage--
 				return

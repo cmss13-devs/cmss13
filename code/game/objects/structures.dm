@@ -150,7 +150,8 @@
 
 	for(var/mob/living/M in get_turf(src))
 
-		if(M.body_position == LYING_DOWN) return //No spamming this on people.
+		if(HAS_TRAIT(M, TRAIT_FLOORED))
+			return //No spamming this on people.
 
 		M.apply_effect(5, WEAKEN)
 		to_chat(M, SPAN_WARNING("You topple as \the [src] moves under you!"))

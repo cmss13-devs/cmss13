@@ -185,6 +185,8 @@
 			t_him = "him"
 		if(FEMALE)
 			t_him = "her"
+		else
+			t_him = "them"
 
 	if(target_zone == "head")
 		attempt_rock_paper_scissors(H, target)
@@ -195,6 +197,9 @@
 	else if(target_zone in list("l_hand", "r_hand"))
 		attempt_fist_bump(H, target)
 		return
+	else if(H.body_position == LYING_DOWN) // Keep other interactions above lying check for maximum awkwardness potential
+		H.visible_message(SPAN_NOTICE("[H] waves at [target] to make [t_him] feel better!"), \
+			SPAN_NOTICE("You wave at [target] to make [t_him] feel better!"), null, 4)
 	else if(target_zone == "groin")
 		H.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"), \
 			SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)

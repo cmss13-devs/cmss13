@@ -4415,7 +4415,7 @@
 "pO" = (
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
-/obj/item/toy/farwadoll{
+/obj/item/toy/plush/farwa{
 	pixel_x = 5
 	},
 /obj/item/clothing/under/redpyjamas,

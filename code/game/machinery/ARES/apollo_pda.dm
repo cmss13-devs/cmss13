@@ -1,10 +1,11 @@
-// #################### Working Joe Ticket Console #####################
-/obj/structure/machinery/computer/working_joe
-	name = "APOLLO Maintenance Controller"
-	desc = "A console built to facilitate Working Joes and their operation, allowing for simple allocation of resources."
-	icon = 'icons/obj/structures/machinery/ares.dmi'
-	icon_state = "console"
-	exproof = TRUE
+/obj/item/device/working_joe_pda
+	icon = 'icons/obj/items/synth/wj_pda.dmi'
+	name = "KN5500 PDA"
+	desc = "A portable interface used by Working-Joes, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
+	icon_state = "karnak_off"
+	unacidable = TRUE
+	indestructible = TRUE
+	req_one_access = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
 
 	/// The ID used to link all devices.
 	var/datum/ares_link/link
@@ -12,14 +13,14 @@
 	var/datum/ares_datacore/datacore
 
 	var/current_menu = "login"
-	var/last_menu = ""
+	var/last_menu = "off"
 
 	var/authentication = APOLLO_ACCESS_LOGOUT
 	/// The last person to login.
 	var/last_login
 
 
-/obj/structure/machinery/computer/working_joe/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
+/obj/item/device/working_joe_pda/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
 		return FALSE
 	if(new_link)
@@ -30,36 +31,59 @@
 		datacore = GLOB.ares_datacore
 	return TRUE
 
-/obj/structure/machinery/computer/working_joe/Initialize(mapload, ...)
+/obj/item/device/working_joe_pda/Initialize(mapload, ...)
 	link_systems(override = FALSE)
 	. = ..()
 
-/obj/structure/machinery/computer/working_joe/proc/delink()
+/obj/item/device/working_joe_pda/proc/delink()
 	if(link)
 		link.ticket_computers -= src
 		link.linked_systems -= src
 		link = null
 	datacore = null
 
-/obj/structure/machinery/computer/working_joe/Destroy()
+/obj/item/device/working_joe_pda/Destroy()
 	delink()
 	return ..()
 
+/obj/item/device/working_joe_pda/update_icon()
+	. = ..()
+	if(last_menu == "off")
+		icon_state = "karnak_off"
+	else if(current_menu == "login")
+		icon_state = "karnak_login_anim"
+	else
+		icon_state = "karnak_on_anim"
+
 // ------ Maintenance Controller UI ------ //
-/obj/structure/machinery/computer/working_joe/attack_hand(mob/user as mob)
-	if(..() || !allowed(usr) || inoperable())
+/obj/item/device/working_joe_pda/attack_self(mob/user)
+	if(..() || !allowed(usr))
 		return FALSE
+
+	if((last_menu == "off") && (current_menu == "login"))
+		last_menu = "main"
+		update_icon()
 
 	tgui_interact(user)
 	return TRUE
 
-/obj/structure/machinery/computer/working_joe/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/device/working_joe_pda/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "WorkingJoe", name)
 		ui.open()
 
-/obj/structure/machinery/computer/working_joe/ui_data(mob/user)
+/obj/item/device/working_joe_pda/ui_close(mob/user)
+	. = ..()
+
+	current_menu = "login"
+	last_menu = "off"
+	if(last_login)
+		datacore.apollo_login_list += "[last_login] logged out at [worldtime2text()]."
+	last_login = null
+	update_icon()
+
+/obj/item/device/working_joe_pda/ui_data(mob/user)
 	var/list/data = list()
 
 	data["current_menu"] = current_menu
@@ -129,14 +153,12 @@
 
 	return data
 
-/obj/structure/machinery/computer/working_joe/ui_status(mob/user, datum/ui_state/state)
+/obj/item/device/working_joe_pda/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(!allowed(user))
 		return UI_UPDATE
-	if(inoperable())
-		return UI_DISABLED
 
-/obj/structure/machinery/computer/working_joe/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/device/working_joe_pda/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -170,11 +192,14 @@
 			if(authentication)
 				datacore.apollo_login_list += "[last_login] at [worldtime2text()], Access Level [authentication] - [ares_auth_to_text(authentication)]."
 			current_menu = "main"
+			last_menu = "main"
+			update_icon()
 
 		if("logout")
 			last_menu = current_menu
 			current_menu = "login"
 			datacore.apollo_login_list += "[last_login] logged out at [worldtime2text()]."
+			update_icon()
 
 		if("home")
 			last_menu = current_menu
@@ -390,25 +415,5 @@
 			return TRUE
 
 	if(playsound)
-		playsound(src, "keyboard_alt", 15, 1)
-
-/obj/item/card/id/proc/handle_ares_access(logged_in, mob/user)
-	var/operator = key_name(user)
-	var/datum/ares_link/link = GLOB.ares_link
-	if(logged_in == MAIN_AI_SYSTEM)
-		if(!user)
-			operator = "[MAIN_AI_SYSTEM] (Sensor Trip)"
-		else
-			operator = "[user.ckey]/([MAIN_AI_SYSTEM])"
-	if(ACCESS_MARINE_AI_TEMP in access)
-		access -= ACCESS_MARINE_AI_TEMP
-		link.active_ids -= src
-		modification_log += "Temporary AI access revoked by [operator]"
-		to_chat(user, SPAN_NOTICE("Access revoked from [registered_name]."))
-	else
-		access += ACCESS_MARINE_AI_TEMP
-		modification_log += "Temporary AI access granted by [operator]"
-		to_chat(user, SPAN_NOTICE("Access granted to [registered_name]."))
-		link.waiting_ids -= src
-		link.active_ids += src
-	return TRUE
+		var/sound = pick('sound/machines/pda_button1.ogg', 'sound/machines/pda_button2.ogg')
+		playsound(src, sound, 15, TRUE)

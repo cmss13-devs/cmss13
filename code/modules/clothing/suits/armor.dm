@@ -215,7 +215,7 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 	allowed = list(
-		/obj/item/weapon/claymore/mercsword,
+		/obj/item/weapon/sword,
 		/obj/item/weapon/shield/riot,
 		/obj/item/device/flashlight,
 	)

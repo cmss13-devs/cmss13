@@ -1,0 +1,19 @@
+2023-11-01:
+  HeresKozmos:
+  - rscadd: added flashlight, donk pocket box, interview table, folder, taperecorder,
+      ink toner, extra lights and expanded the size of the CC's room.
+2023-11-02:
+  Huffie56:
+  - refactor: Refactor gun cabinet code adding subtype for all the secure guncabinet.
+  - refactor: Refactor safe code adding subtype for cl and co safes also add a subtype
+      for armory honor guard closet .
+  cuberound:
+  - balance: LZ detector now works even when the DS is stationary
+  harryob:
+  - qol: you can now click drag from items in your storage to your hands
+  private-tristan:
+  - balance: predators are no longer immune to molecular acid injected from spitter
+      and boiler tailstabs
+2023-11-03:
+  harryob:
+  - ui: the options button is now part of the statbrowser tabs proper

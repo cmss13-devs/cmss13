@@ -174,7 +174,6 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(R.on_floor && istype(usr.loc, /turf/open))
 			var/turf/open/OT = usr.loc
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
-			var/obj/structure/tunnel/TUNNELBLOCK = locate(/obj/structure/tunnel) in usr.loc
 			if(!OT.allow_construction)
 				to_chat(usr, SPAN_WARNING("The [R.title] must be constructed on a proper surface!"))
 				return
@@ -183,7 +182,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				to_chat(usr, SPAN_WARNING("The [R.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
 				return
 
-			if(TUNNELBLOCK)
+			var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in usr.loc
+			if(tunnel)
 				to_chat(usr, SPAN_WARNING("The [R.title] cannot be constructed on a tunnel!"))
 				return
 

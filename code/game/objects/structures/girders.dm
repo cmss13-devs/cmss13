@@ -173,12 +173,12 @@
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-				var/turf/open/CONBLOCK = loc
-				var/obj/structure/tunnel/TUNNELBLOCK = locate(/obj/structure/tunnel) in loc
-				if(!(istype(CONBLOCK) && CONBLOCK.allow_construction))
+				var/turf/open/floor = loc
+				var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in loc
+				if(!floor.allow_construction)
 					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
 					return
-				if(TUNNELBLOCK)
+				if(tunnel)
 					to_chat(user, SPAN_WARNING("The girder cannot be secured on a tunnel!"))
 					return
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)

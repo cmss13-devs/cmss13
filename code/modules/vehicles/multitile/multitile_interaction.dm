@@ -331,13 +331,11 @@
 	healthcheck()
 
 /obj/vehicle/multitile/on_set_interaction(mob/user)
-	to_chat(user, "multitile on_set_interaction")
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(crew_mousedown))
 	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(crew_mousedrag))
 	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(crew_mouseup))
 
 /obj/vehicle/multitile/on_unset_interaction(mob/user)
-	to_chat(user, "multitile on_unset_interaction")
 	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 
 /obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)

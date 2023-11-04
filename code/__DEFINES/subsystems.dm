@@ -111,7 +111,6 @@
 
 #define SS_INIT_TICKER_SPAWN    999
 #define SS_INIT_INPUT   85
-#define SS_INIT_FAIL_TO_TOPIC 84
 #define SS_INIT_TOPIC 83
 #define SS_INIT_LOBBYART 82
 #define SS_INIT_RUST    30

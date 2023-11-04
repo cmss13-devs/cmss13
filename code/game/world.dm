@@ -174,11 +174,6 @@ var/world_topic_spam_protect_time = world.timeofday
 		response["response"] = "Payload too large"
 		return json_encode(response)
 
-	if(SSfail_to_topic?.IsRateLimited(addr))
-		response["statuscode"] = 429
-		response["response"] = "Rate limited"
-		return json_encode(response)
-
 	var/logging = CONFIG_GET(flag/log_world_topic)
 	var/topic_decoded = rustg_url_decode(T)
 	if(!rustg_json_is_valid(topic_decoded))

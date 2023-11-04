@@ -1,5 +1,5 @@
 #define HIJACK_EXPLOSION_COUNT 5
-#define MARINE_MAJOR_ROUND_END_DELAY 3 MINUTES
+#define MARINE_MAJOR_ROUND_END_DELAY 1 MINUTES
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -149,7 +149,7 @@
 /datum/game_mode/colonialmarines/proc/ares_conclude()
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
 	ai_silent_announcement("Saving operational report to archive.", ".V")
-	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
+	ai_silent_announcement("Commencing final systems scan in 1 minute.", ".V")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

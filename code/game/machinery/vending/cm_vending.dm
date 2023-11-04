@@ -245,7 +245,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				return
 	//Machete holsters handling
 	else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
-		var/obj/item/weapon/claymore/mercsword/machete/mac = locate(/obj/item/weapon/claymore/mercsword/machete) in item_to_stock
+		var/obj/item/weapon/sword/machete/mac = locate(/obj/item/weapon/sword/machete) in item_to_stock
 		if(!mac)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
@@ -774,8 +774,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 	desc = "An automated closet hooked up to a colossal storage of standard-issue uniform and armor."
 	icon_state = "clothing"
 	use_points = TRUE
+	show_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
-	show_points = FALSE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)

@@ -1,4 +1,4 @@
-s// DM Environment file for colonialmarines.dme.
+// DM Environment file for colonialmarines.dme.
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 // BEGIN_INTERNALS
@@ -11,6 +11,7 @@ s// DM Environment file for colonialmarines.dme.
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\__odlint.dm"
 #include "code\_byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\_experiments.dm"
@@ -826,6 +827,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\game\machinery\teleporter.dm"
 #include "code\game\machinery\washing_machine.dm"
 #include "code\game\machinery\weather_siren.dm"
+#include "code\game\machinery\ARES\apollo_pda.dm"
 #include "code\game\machinery\ARES\ARES.dm"
 #include "code\game\machinery\ARES\ARES_interface.dm"
 #include "code\game\machinery\ARES\ARES_interface_apollo.dm"
@@ -938,6 +940,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\game\machinery\vending\vendor_types\crew\sea.dm"
 #include "code\game\machinery\vending\vendor_types\crew\senior_officers.dm"
 #include "code\game\machinery\vending\vendor_types\crew\staff_officer.dm"
+#include "code\game\machinery\vending\vendor_types\crew\staff_officer_armory.dm"
 #include "code\game\machinery\vending\vendor_types\crew\synthetic.dm"
 #include "code\game\machinery\vending\vendor_types\crew\vehicle_crew.dm"
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_engineer.dm"
@@ -1283,13 +1286,15 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\game\objects\structures\crates_lockers\closets\secure\cm_closets.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\engineering.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\freezer.dm"
-#include "code\game\objects\structures\crates_lockers\closets\secure\guncabinet.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\hydroponics.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\medical.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\personal.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\scientist.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\secure_closets.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\security.dm"
+#include "code\game\objects\structures\crates_lockers\closets\secure\guncabinet\guncabinet.dm"
+#include "code\game\objects\structures\crates_lockers\closets\secure\guncabinet\level_blue.dm"
+#include "code\game\objects\structures\crates_lockers\closets\secure\guncabinet\level_red.dm"
 #include "code\game\objects\structures\pipes\binary_misc.dm"
 #include "code\game\objects\structures\pipes\pipes.dm"
 #include "code\game\objects\structures\pipes\trinary_misc.dm"

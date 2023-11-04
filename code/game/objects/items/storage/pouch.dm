@@ -168,7 +168,7 @@
 	name = "synth survival pouch"
 	desc = "An emergency pouch given to synthetics in the event of an emergency."
 	icon_state = "tools"
-	storage_slots = 7
+	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,
@@ -181,7 +181,6 @@
 	)
 
 /obj/item/storage/pouch/survival/synth/full/fill_preset_inventory()
-	new /obj/item/device/flashlight(src)
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/stack/cable_coil(src)
@@ -1373,7 +1372,7 @@
 	item_state = "machete_holster"
 	max_w_class = SIZE_LARGE
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
-	can_hold = list(/obj/item/weapon/claymore/mercsword/machete)
+	can_hold = list(/obj/item/weapon/sword/machete)
 
 	var/sheathe_sound = 'sound/weapons/gun_rifle_draw.ogg'
 	var/draw_sound = 'sound/weapons/gun_rifle_draw.ogg'
@@ -1393,4 +1392,4 @@
 	playsound(src, draw_sound, vol = 15, vary = TRUE)
 
 /obj/item/storage/pouch/machete/full/fill_preset_inventory()
-	new /obj/item/weapon/claymore/mercsword/machete(src)
+	new /obj/item/weapon/sword/machete(src)

@@ -1719,7 +1719,7 @@
 #include "code\modules\gear_presets\survivors\survivors.dm"
 #include "code\modules\gear_presets\survivors\corsat\preset_corsat.dm"
 #include "code\modules\gear_presets\survivors\fiorina_sciannex\preset_fiorina_sciannex.dm"
-#include "code\modules\gear_presets\survivors\kutjevo\crashlanding_rmc_medical_insert_kutjevo.dm"
+#include "code\modules\gear_presets\survivors\kutjevo\crashlanding_rmc_stony_fields_insert_kutjevo.dm"
 #include "code\modules\gear_presets\survivors\kutjevo\preset_kutjevo.dm"
 #include "code\modules\gear_presets\survivors\lv_522\forcon_survivors.dm"
 #include "code\modules\gear_presets\survivors\lv_624\clfship_insert_lv624.dm"

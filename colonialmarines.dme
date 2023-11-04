@@ -289,7 +289,6 @@
 #include "code\controllers\subsystem\weather.dm"
 #include "code\controllers\subsystem\x_evolution.dm"
 #include "code\controllers\subsystem\xeno.dm"
-#include "code\controllers\subsystem\xenocon.dm"
 #include "code\controllers\subsystem\init\landmarks.dm"
 #include "code\controllers\subsystem\init\law.dm"
 #include "code\controllers\subsystem\init\lobby_art.dm"

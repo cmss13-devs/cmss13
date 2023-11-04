@@ -1,4 +1,3 @@
-
 /obj/structure/machinery/door
 	name = "\improper Door"
 	desc = "It opens and closes."
@@ -13,6 +12,7 @@
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 	var/id = ""
+	var/width = 1
 
 	var/secondsElectrified = 0
 	var/visible = TRUE
@@ -20,32 +20,22 @@
 	var/operating = FALSE
 	var/autoclose = FALSE
 	var/glass = FALSE
-	/// If FALSE it speeds up the autoclosing timing
+	/// If FALSE it speeds up the autoclosing timing.
 	var/normalspeed = TRUE
-	var/openspeed = 1 SECONDS //How many seconds does it take to open it? Default 1 second. Use only if you have long door opening animations
-	var/heat_proof = FALSE // For glass airlocks/opacity firedoors
-	var/air_properties_vary_with_direction = 0
-	/// Fixes multi_tile doors opacity issues
-	var/list/filler_turfs = list() //Previously this was just a single turf, because no one had forseen someone creating doors longer than 2,
-	// because that would NEVER happen, NEVER
+	/// Time to open/close airlock, default is 1 second.
+	var/openspeed = 1 SECONDS
+	/// Fixes multi_tile doors opacity issues.
+	var/list/filler_turfs = list() //Previously this was just var, because no one had forseen someone creating doors more than 2 tiles wide
 	/// Stops it being forced open through normal means (Hunters/Zombies/Aliens).
 	var/heavy = FALSE
 	/// Resistance to masterkey
 	var/masterkey_resist = FALSE
 	var/masterkey_mod = 0.1
-
-
-	//Multi-tile doors
-	dir = EAST
-	var/width = 1
+	dir = EAST //So multitile doors are directioned properly
 
 /obj/structure/machinery/door/Initialize(mapload, ...)
 	. = ..()
-	if(density)
-		layer = closed_layer
-		update_flags_heat_protection(get_turf(src))
-	else
-		layer = open_layer
+	layer = density ? closed_layer : open_layer
 	handle_multidoor()
 
 /obj/structure/machinery/door/Destroy()
@@ -60,7 +50,7 @@
 	if (PF)
 		PF.flags_can_pass_all = NONE
 
-/// Also refreshes filler_turfs list
+/// Also refreshes filler_turfs list.
 /obj/structure/machinery/door/proc/change_filler_opacity(new_opacity)
 	// I have no idea why do we null opacity first before... changing it
 	for(var/turf/filler_turf in filler_turfs)
@@ -70,7 +60,8 @@
 	for(var/turf/filler in locate_filler_turfs())
 		filler.set_opacity(new_opacity)
 		filler_turfs += filler
-/// Updates collision box and opacity of multi_tile airlocks
+
+/// Updates collision box and opacity of multi_tile airlocks.
 /obj/structure/machinery/door/proc/handle_multidoor()
 	if(width > 1)
 		if(dir in list(EAST, WEST))
@@ -81,6 +72,7 @@
 			bound_height = width * world.icon_size
 		change_filler_opacity(opacity)
 
+/// Finds turfs which should be filler ones.
 /obj/structure/machinery/door/proc/locate_filler_turfs()
 	var/turf/filler_temp
 	var/list/located_turfs = list()
@@ -101,7 +93,8 @@
 	return FALSE
 
 /obj/structure/machinery/door/Collided(atom/movable/AM)
-	if(panel_open || operating) return
+	if(panel_open || operating)
+		return
 	if(ismob(AM))
 		var/mob/M = AM
 		if(world.time - M.last_bumped <= openspeed) return //Can bump-open one airlock per second. This is to prevent shock spam.
@@ -109,12 +102,10 @@
 		if(!M.is_mob_restrained() && M.mob_size > MOB_SIZE_SMALL)
 			bumpopen(M)
 		return
-
 	if(istype(AM, /obj))
 		var/obj/O = AM
 		if(O.buckled_mob)
 			Collided(O.buckled_mob)
-
 	if(istype(AM, /obj/structure/machinery/bot))
 		var/obj/structure/machinery/bot/bot = AM
 		if(src.check_access(bot.botcard))
@@ -122,16 +113,17 @@
 				open()
 		return
 
-
 /obj/structure/machinery/door/proc/bumpopen(mob/user as mob)
-	if(operating) return
+	if(operating)
+		return
 	src.add_fingerprint(user)
 	if(!src.requiresID())
 		user = null
-
 	if(density)
-		if(allowed(user)) open()
-		else flick("door_deny", src)
+		if(allowed(user))
+			open()
+		else
+			flick("door_deny", src)
 	return
 
 /obj/structure/machinery/door/attack_remote(mob/user)
@@ -144,9 +136,7 @@
 	add_fingerprint(user)
 	if(operating)
 		return
-	if(!Adjacent(user))
-		user = null //so allowed(user) always succeeds
-	if(!requiresID())
+	if(!Adjacent(user) || !requiresID())
 		user = null //so allowed(user) always succeeds
 	if(allowed(user))
 		if(density)
@@ -157,15 +147,15 @@
 	if(density)
 		flick("door_deny", src)
 
-
 /obj/structure/machinery/door/attackby(obj/item/I, mob/user)
 	if(!(I.flags_item & NOBLUDGEON))
 		try_to_activate_door(user)
-		return 1
+		return TRUE
 
 /obj/structure/machinery/door/emp_act(severity)
-	if(prob(20/severity) && (istype(src,/obj/structure/machinery/door/airlock) || istype(src,/obj/structure/machinery/door/window)) )
-		open()
+	if(prob(20/severity))
+		if((istype(src, /obj/structure/machinery/door/airlock) || istype(src, /obj/structure/machinery/door/window)))
+			open()
 	if(prob(40/severity))
 		if(secondsElectrified == 0)
 			secondsElectrified = -1
@@ -173,48 +163,41 @@
 				secondsElectrified = 0
 	..()
 
-
 /obj/structure/machinery/door/ex_act(severity)
-	if(unacidable) return
+	if(unacidable)
+		return
 
 	if(density)
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_LOW)
 				if(prob(80))
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(2, 1, src)
-					s.start()
+					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					spark.set_up(2, 1, src)
+					spark.start()
 			if(EXPLOSION_THRESHOLD_LOW to INFINITY)
 				qdel(src)
 	else
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_MEDIUM)
 				if(prob(80))
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(2, 1, src)
-					s.start()
+					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					spark.set_up(2, 1, src)
+					spark.start()
 			else
 				qdel(src)
 	return
 
-
 /obj/structure/machinery/door/get_explosion_resistance()
 	if(density)
 		if(unacidable)
-			return 1000000
+			return 1000000 //I have no idea why do we use magic number here...
 		else
 			return EXPLOSION_THRESHOLD_LOW //this should exactly match the amount of damage needed to destroy the door
 	else
 		return 0
 
-
 /obj/structure/machinery/door/update_icon()
-	if(density)
-		icon_state = "door1"
-	else
-		icon_state = "door0"
-	return
-
+	icon_state = density ? "door1" : "door0"
 
 /obj/structure/machinery/door/proc/do_animate(animation)
 	switch(animation)
@@ -231,7 +214,6 @@
 		if("deny")
 			flick("door_deny", src)
 	return
-
 
 /obj/structure/machinery/door/proc/open(forced=0)
 	if(!density)
@@ -255,10 +237,8 @@
 
 	if(operating)
 		operating = FALSE
-
 	if(autoclose)
 		addtimer(CALLBACK(src, PROC_REF(autoclose)), normalspeed ? 150 + openspeed : 5)
-
 
 /obj/structure/machinery/door/proc/close()
 	if(density)
@@ -283,17 +263,12 @@
 /obj/structure/machinery/door/proc/requiresID()
 	return TRUE
 
-
-/obj/structure/machinery/door/proc/update_flags_heat_protection(turf/source)
-
-
 /obj/structure/machinery/door/proc/autoclose()
-	var/obj/structure/machinery/door/airlock/A = src
-	if(!A.density && !A.operating && !A.locked && !A.welded && A.autoclose)
+	var/obj/structure/machinery/door/airlock/airlock = src
+	if(!airlock.density && !airlock.operating && !airlock.locked && !airlock.welded && airlock.autoclose)
 		close()
 	return
 
-/// It WONT WORK with airlocks bigger than 2 tiles, also is wonky as hell
 /obj/structure/machinery/door/Move(new_loc, new_dir)
 	. = ..()
 	if(width > 1)

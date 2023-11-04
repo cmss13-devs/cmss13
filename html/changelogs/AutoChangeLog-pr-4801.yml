@@ -1,6 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - rscadd: "Added many new loadout items"
-  - code_imp: "Added a signal to items that triggers right after the mob finishes spawning"
-  - code_imp: "Added a signal to add additional behavior to storing items in shoes"

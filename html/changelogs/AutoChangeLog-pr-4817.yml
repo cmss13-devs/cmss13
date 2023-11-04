@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "M56D/M2C should now properly stop firing when they stop being used."

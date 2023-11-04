@@ -392,7 +392,7 @@
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
 		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
-		list("M3-VL Pattern Ballistics Vest", round(scale*1.5), /obj/item/clothing/suit/storage/marine/light/vest, VENDOR_ITEM_REGULAR),
+		list("M3-VL Pattern Ballistics Vest", 5, /obj/item/clothing/suit/storage/marine/light/vest, VENDOR_ITEM_REGULAR),
 
 		list("GLOVES", -1, null, null),
 		list("Marine Combat Gloves", 40, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),

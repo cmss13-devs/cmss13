@@ -18022,6 +18022,9 @@
 	density = 0;
 	req_one_access_txt = "200"
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkblue2"
@@ -18168,10 +18171,14 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aYq" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/sink{
+	pixel_x = 1;
+	pixel_y = 20
+	},
+/obj/structure/mirror{
+	pixel_y = 29
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -18181,6 +18188,9 @@
 	dir = 8
 	},
 /obj/item/prop/alien/hugger,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -58151,7 +58161,7 @@ aWD
 aWD
 aXN
 kRK
-aYU
+aWH
 aOM
 aZY
 aof

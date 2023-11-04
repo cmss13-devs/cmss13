@@ -20761,7 +20761,7 @@
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bmo" = (
 /obj/structure/safe,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/sword/katana/replica,
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /obj/structure/machinery/light{
 	dir = 1

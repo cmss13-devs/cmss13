@@ -4415,7 +4415,7 @@
 "pO" = (
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
-/obj/item/toy/farwadoll{
+/obj/item/toy/plush/farwa{
 	pixel_x = 5
 	},
 /obj/item/clothing/under/redpyjamas,
@@ -11823,7 +11823,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "TD" = (
-/obj/item/weapon/claymore/mercsword/machete,
+/obj/item/weapon/sword/machete,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"

@@ -1963,6 +1963,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /// Setter proc for fa_firing
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
+	SIGNAL_HANDLER
 	fa_firing = auto
 
 /// Getter for gun_user

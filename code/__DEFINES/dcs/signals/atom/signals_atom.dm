@@ -45,3 +45,9 @@
 
 ///When the transform or an atom is varedited through vv topic.
 #define COMSIG_ATOM_VV_MODIFY_TRANSFORM "atom_vv_modify_transform"
+
+/// Called when an atom has something mouse dropped on it, from /client/MouseDrop: (atom/dropped_on)
+#define COMSIG_ATOM_DROPPED_ON "atom_dropped_on"
+
+/// Called when an atom is mouse dropped on another atom, from /client/MouseDrop: (atom/dropped_onto)
+#define COMSIG_ATOM_DROP_ON "atom_drop_on"

@@ -206,7 +206,19 @@
 			em_call.players_to_offer = humans
 			em_call.owner = owner
 
-			em_call.activate(announce = FALSE)
+			var/launch_broadcast = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+			if(launch_broadcast == "Yes")
+				launch_broadcast = TRUE
+			else
+				launch_broadcast = FALSE
+
+			var/announce_receipt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+			if(announce_receipt == "Yes")
+				announce_receipt = TRUE
+			else
+				announce_receipt = FALSE
+
+			em_call.activate(launch_broadcast, announce_receipt)
 
 		message_admins("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
 
@@ -284,7 +296,19 @@
 			em_call.players_to_offer = xenos
 			em_call.owner = owner
 
-			em_call.activate(announce = FALSE)
+			var/launch_broadcast = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+			if(launch_broadcast == "Yes")
+				launch_broadcast = TRUE
+			else
+				launch_broadcast = FALSE
+
+			var/announce_receipt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+			if(announce_receipt == "Yes")
+				announce_receipt = TRUE
+			else
+				announce_receipt = FALSE
+
+			em_call.activate(launch_broadcast, announce_receipt)
 
 		message_admins("[key_name_admin(usr)] created [xenos_to_spawn] xenos as [xeno_caste] at [get_area(initial_spot)]")
 

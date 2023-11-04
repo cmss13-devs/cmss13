@@ -89,6 +89,17 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"gd" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/turf/open/desert/dirt{
+	dir = 8;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_crashsite)
+"gh" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
 "gX" = (
 /obj/item/hunting_trap{
 	desc = "A bizarre alien device used for trapping and killing prey.";
@@ -256,30 +267,7 @@
 	icon_state = "multi_tiles"
 	},
 /area/desert_dam/interior/caves/temple)
-"qv" = (
-/obj/effect/decal/remains/xeno{
-	pixel_x = 31
-	},
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
-"qE" = (
-/obj/item/device/flashlight/lantern,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/central_caves)
-"qV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
-/turf/open/desert/dirt{
-	dir = 8;
-	icon_state = "desert_transition_edge1"
-	},
-/area/desert_dam/exterior/valley/valley_crashsite)
-"re" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
-"rh" = (
+"qi" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
@@ -298,7 +286,7 @@
 	dir = 1;
 	icon_state = "phoronrwindow"
 	},
-/obj/item/weapon/katana{
+/obj/item/weapon/sword/katana{
 	color = "#b2ffff";
 	desc = "A finely made Japanese sword, with a well sharpened blade. It appears to have cobalt infused within the blade. There are Japanese engravings on the blade which say 'He who wields this sword becomes the next Titan.'.";
 	name = "ancient katana";
@@ -308,6 +296,22 @@
 	dir = 1;
 	icon_state = "squareswood"
 	},
+/area/desert_dam/interior/caves/temple)
+"qv" = (
+/obj/effect/decal/remains/xeno{
+	pixel_x = 31
+	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"qE" = (
+/obj/item/device/flashlight/lantern,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
+"re" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "rI" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -398,6 +402,18 @@
 "zg" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/desert_dam/interior/caves/temple)
+"Al" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/weapon/sword{
+	pixel_x = 7
+	},
+/obj/item/weapon/sword{
+	pixel_x = -7
+	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "An" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed,
 /turf/open/gm/river/desert/deep,
@@ -444,10 +460,6 @@
 	icon_state = "dirt2"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
-"Dc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/central_caves)
 "DL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -544,18 +556,6 @@
 	icon_state = "squareswood"
 	},
 /area/desert_dam/interior/caves/temple)
-"Jh" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/claymore/mercsword{
-	pixel_x = 7
-	},
-/obj/item/weapon/claymore/mercsword{
-	pixel_x = -7
-	},
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "JC" = (
 /obj/item/clothing/head/hardhat,
 /turf/open/desert/rock,
@@ -634,10 +634,6 @@
 /obj/item/tool/kitchen/utensil/spoon,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"NL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
-/turf/open/desert/rock,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "NV" = (
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -735,6 +731,10 @@
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"XD" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "XQ" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/tool/kitchen/tray{
@@ -761,7 +761,7 @@ ZI
 mA
 mA
 mA
-qV
+gd
 mA
 mA
 mA
@@ -778,7 +778,7 @@ MH
 (2,1,1) = {"
 NV
 NV
-NL
+XD
 Co
 Co
 Co
@@ -880,7 +880,7 @@ tn
 MH
 "}
 (6,1,1) = {"
-Dc
+gh
 jl
 EB
 EB
@@ -1012,7 +1012,7 @@ EB
 (11,1,1) = {"
 td
 td
-Dc
+gh
 td
 td
 td
@@ -1150,7 +1150,7 @@ NB
 Ps
 mB
 WV
-Jh
+Al
 mB
 mB
 mB
@@ -1408,7 +1408,7 @@ MH
 ik
 MH
 MH
-rh
+qi
 MH
 MH
 MH

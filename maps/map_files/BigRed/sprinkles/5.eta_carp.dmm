@@ -1,11 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/caves/eta/xenobiology)
 "b" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/xenobiology)
@@ -119,30 +112,6 @@
 	},
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
-"v" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkredcorners2"
-	},
-/area/bigredv2/caves/eta/xenobiology)
-"x" = (
-/obj/item/toy/farwadoll,
-/turf/open/ice,
-/area/bigredv2/caves/eta/xenobiology)
-"y" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
-/turf/open/floor{
-	icon_state = "darkredcorners2"
-	},
-/area/bigredv2/caves/eta/xenobiology)
 "z" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_12"
@@ -159,12 +128,6 @@
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7"
-	},
-/area/bigredv2/caves/eta/xenobiology)
-"C" = (
-/obj/effect/landmark/xeno_spawn,
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "D" = (
@@ -192,7 +155,17 @@
 	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/caves/eta/xenobiology)
-"I" = (
+"K" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkredcorners2"
+	},
+/area/bigredv2/caves/eta/xenobiology)
+"N" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -207,12 +180,39 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
-"W" = (
+"R" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/mars{
+	icon_state = "mars_dirt_10"
+	},
+/area/bigredv2/caves/eta/xenobiology)
+"S" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
+"U" = (
+/obj/item/toy/plush/farwa,
+/turf/open/ice,
+/area/bigredv2/caves/eta/xenobiology)
+"W" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/turf/open/floor{
+	icon_state = "darkredcorners2"
+	},
+/area/bigredv2/caves/eta/xenobiology)
 "X" = (
 /turf/open/floor/plating,
+/area/bigredv2/caves/eta/xenobiology)
+"Z" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/weed_node,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/caves/eta/xenobiology)
 
 (1,1,1) = {"
@@ -233,8 +233,8 @@ b
 (2,1,1) = {"
 b
 g
-I
-W
+N
+S
 b
 h
 p
@@ -256,7 +256,7 @@ g
 g
 b
 g
-C
+R
 E
 G
 "}
@@ -310,7 +310,7 @@ d
 d
 s
 d
-v
+K
 d
 s
 d
@@ -338,13 +338,13 @@ O
 (9,1,1) = {"
 f
 l
-a
+Z
 l
 l
 l
 k
 l
-y
+W
 A
 r
 l
@@ -418,7 +418,7 @@ o
 b
 t
 u
-x
+U
 b
 o
 u

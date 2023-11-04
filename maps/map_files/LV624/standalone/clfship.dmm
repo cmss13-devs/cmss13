@@ -31,15 +31,6 @@
 	icon_state = "damaged3"
 	},
 /area/lv624/lazarus/crashed_ship)
-"aO" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"aY" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "bc" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
@@ -320,6 +311,10 @@
 	icon_state = "bluecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
+"jt" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/tunnel,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "jx" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating{
@@ -542,19 +537,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
-"ox" = (
-/obj/structure/bed,
-/obj/item/bedsheet/green,
-/obj/structure/machinery/light/small{
-	dir = 1;
-	pixel_y = 20
-	},
-/obj/item/toy/farwadoll,
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/crashed_ship)
 "oI" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/clf,
@@ -673,12 +655,6 @@
 	icon_state = "orangecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
-"sO" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "sT" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
@@ -901,6 +877,12 @@
 	icon_state = "damaged3"
 	},
 /area/lv624/lazarus/crashed_ship)
+"yL" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "yT" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -1268,6 +1250,11 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
+"GX" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno/door,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "GY" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
@@ -1771,6 +1758,19 @@
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"TJ" = (
+/obj/structure/bed,
+/obj/item/bedsheet/green,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/item/toy/plush/farwa,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green"
 	},
 /area/lv624/lazarus/crashed_ship)
 "TK" = (
@@ -3185,7 +3185,7 @@ vo
 lr
 RS
 Xq
-ox
+TJ
 Dv
 sH
 IG
@@ -4065,7 +4065,7 @@ Yj
 Yj
 "}
 (43,1,1) = {"
-sO
+yL
 Ab
 Ab
 Hj
@@ -4112,7 +4112,7 @@ Yj
 Yj
 "}
 (44,1,1) = {"
-sO
+yL
 Ab
 Ab
 Ab
@@ -4159,14 +4159,14 @@ Yj
 Yj
 "}
 (45,1,1) = {"
-sO
+yL
 Ab
 Ab
 Ab
 Ab
 Ab
 Hj
-aO
+GX
 Ab
 Ab
 Ab
@@ -4206,14 +4206,14 @@ Yj
 Yj
 "}
 (46,1,1) = {"
-sO
-aY
+yL
+jt
 Ab
 Ab
 Ab
 Ab
 Ab
-aO
+GX
 Ab
 Ab
 Ab

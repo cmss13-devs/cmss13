@@ -37,7 +37,18 @@
 	var/last_shot_time = 0 //when was last shot fired, after 3 seconds we stop barrel
 	var/list/chain_bursts = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4) //how many shots per click we do
 
+	fire_delay = 0.2 SECONDS
+	gun_firemode = GUN_FIREMODE_AUTOMATIC
+	gun_firemode_list = list(
+		GUN_FIREMODE_AUTOMATIC,
+	)
 
+	var/start_sound = 'sound/weapons/vehicles/minigun_start.ogg'
+	var/loop_sound = 'sound/weapons/vehicles/minigun_loop.ogg'
+	var/stop_sound = 'sound/weapons/vehicles/minigun_stop.ogg'
+	activation_sounds = list('sound/weapons/gun_minigun.ogg')
+
+/*
 /obj/item/hardpoint/primary/minigun/fire(mob/user, atom/A)
 
 	var/S = 'sound/weapons/vehicles/minigun_stop.ogg'
@@ -73,3 +84,4 @@
 
 	playsound(get_turf(src), S, 40, 1)
 	last_shot_time = world.time
+*/

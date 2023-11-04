@@ -231,6 +231,7 @@
 
 	update_icon()
 
+/*
 //proc that fires non selected weaponry
 /obj/vehicle/multitile/proc/shoot_other_weapon(mob/living/carbon/human/M, seat, atom/A)
 
@@ -252,7 +253,9 @@
 		HP.activate(M, A)
 		break
 	return
+*/
 
+/*
 //proc that activates support module if it can be activated and you meet requirements
 /obj/vehicle/multitile/proc/activate_support_module(mob/living/carbon/human/M, seat, atom/A)
 
@@ -274,3 +277,4 @@
 		HP.activate(M, A)
 		break
 	return
+*/

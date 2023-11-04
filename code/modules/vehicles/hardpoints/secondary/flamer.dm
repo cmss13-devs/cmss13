@@ -28,31 +28,20 @@
 		"8" = list(-3, 18)
 	)
 
-/obj/item/hardpoint/secondary/small_flamer/fire_projectile(mob/user, atom/A)
-	set waitfor = 0
+	fire_delay = 3.0 SECONDS
 
+/obj/item/hardpoint/secondary/small_flamer/fire_shot(atom/target, mob/living/user, params)
+	//offset fire origin from lower-left corner
 	var/turf/origin_turf = get_turf(src)
-	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-	var/list/turf/turfs = getline2(origin_turf, A)
-	var/distance = 0
-	var/turf/prev_T
+	origin_turf = get_offset_target_turf(origin_turf, origins[1], origins[2])
 
-	for(var/turf/T in turfs)
-		if(T == loc)
-			prev_T = T
-			continue
-		if(!ammo.current_rounds) break
-		if(distance >= max_range) break
-		if(prev_T && LinkBlocked(prev_T, T))
-			break
-		ammo.current_rounds--
-		flame_turf(T, user)
-		distance++
-		prev_T = T
-		sleep(1)
+	var/distance = get_dist(origin_turf, get_turf(target))
+	var/fire_amount = min(ammo.current_rounds, distance+1, max_range)
 
-/obj/item/hardpoint/secondary/small_flamer/proc/flame_turf(turf/T, mob/user)
-	if(!istype(T)) return
+	new /obj/flamer_fire(origin_turf, create_cause_data(initial(name), user), null, fire_amount, null, FLAMESHAPE_LINE, target, CALLBACK(src, PROC_REF(display_ammo), user))
 
-	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T, create_cause_data(initial(name), user))
+	ammo.current_rounds -= fire_amount
+	play_firing_sounds()
+
+	COOLDOWN_START(src, fire_cooldown, fire_delay)
+	return AUTOFIRE_CONTINUE

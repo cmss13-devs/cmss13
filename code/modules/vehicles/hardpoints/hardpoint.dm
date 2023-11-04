@@ -106,7 +106,9 @@
 	///Current selected firemode of the gun.
 	var/gun_firemode = GUN_FIREMODE_SEMIAUTO
 	///List of allowed firemodes.
-	var/list/gun_firemode_list = list()
+	var/list/gun_firemode_list = list(
+		GUN_FIREMODE_SEMIAUTO,
+	)
 
 	//Semi-auto and full-auto.
 	///For regular shots, how long to wait before firing again. Use modify_fire_delay and set_fire_delay instead of modifying this on the fly
@@ -128,9 +130,10 @@
 
 	//Firing cooldown.
 	///When it was last fired, related to world.time.
-	var/last_fired = 0
+	//var/last_fired = 0
 	///Fire delay of last firemode used.
-	var/last_delay = 0
+	//var/last_delay = 0
+	COOLDOWN_DECLARE(fire_cooldown)
 
 	/// Currently selected target to fire at. Set with set_target()
 	VAR_PRIVATE/atom/target
@@ -138,6 +141,7 @@
 	VAR_PRIVATE/mob/hp_operator
 
 	var/empty_alarm = 'sound/weapons/hmg_eject_mag.ogg'
+	var/shots_fired = 0
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -355,10 +359,12 @@
 		to_chat(user, SPAN_WARNING("<b>\The [name] is broken!</b>"))
 		return FALSE
 
+	/* done in initiate_fire instead, as don't want to block continue_fire
 	if(world.time < next_use)
 		if(cooldown >= 20) //filter out guns with high firerate to prevent message spam.
 			to_chat(user, SPAN_WARNING("You need to wait [SPAN_HELPFUL((next_use - world.time) / 10)] seconds before [name] can be used again."))
 		return FALSE
+	*/
 
 	if(ammo && ammo.current_rounds <= 0)
 		to_chat(user, SPAN_WARNING("<b>\The [name] is out of ammo!</b> Magazines: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
@@ -374,10 +380,12 @@
 
 	return TRUE
 
+/*
 //Called when you want to activate the hardpoint, by default firing a gun
 //This can also be used for some type of temporary buff or toggling mode, up to you
 /obj/item/hardpoint/proc/activate(mob/user, atom/A)
 	fire(user, A)
+*/
 
 /obj/item/hardpoint/proc/deactivate()
 	return
@@ -531,6 +539,7 @@
 	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
 	return
 
+/* allowed northwest firing when facing east, undesirable
 //determines whether something is in firing arc of a hardpoint
 /obj/item/hardpoint/proc/in_firing_arc(atom/A)
 	if(!owner)
@@ -567,7 +576,9 @@
 		angle += 180
 
 	return abs(angle) <= (firing_arc/2)
+*/
 
+/*
 //doing last preparation before actually firing gun
 /obj/item/hardpoint/proc/fire(mob/user, atom/A)
 	if(!ammo) //Prevents a runtime
@@ -585,7 +596,9 @@
 	fire_projectile(user, A)
 
 	to_chat(user, SPAN_WARNING("[name] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
+*/
 
+/*
 //finally firing the gun
 /obj/item/hardpoint/proc/fire_projectile(mob/user, atom/A)
 	set waitfor = 0
@@ -601,6 +614,7 @@
 		muzzle_flash(Get_Angle(origin_turf, A))
 
 	ammo.current_rounds--
+*/
 
 /// Setter proc to toggle burst firing
 /obj/item/hardpoint/proc/set_burst_firing(burst = FALSE)
@@ -608,6 +622,7 @@
 
 ///Clean all references
 /obj/item/hardpoint/proc/reset_fire()
+	shots_fired = 0
 	set_auto_firing(FALSE)
 	set_target(null)
 
@@ -637,10 +652,6 @@
 	if( ammo)
 		//to_chat(user, SPAN_DANGER("[ammo.current_rounds] / [ammo.max_rounds] ROUNDS REMAINING"))
 		to_chat(user, SPAN_WARNING("[name] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
-
-/obj/item/hardpoint/proc/handle_ammo_out(mob/user)
-	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src] beeps steadily and its ammo light blinks red."))
-	playsound(loc, empty_alarm, 25, 1)
 
 /obj/item/hardpoint/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
 	if(auto_firing || burst_firing)
@@ -685,7 +696,12 @@
 
 /obj/item/hardpoint/proc/initiate_fire(atom/target, mob/living/user, params)
 	//still actively firing
-	if(auto_firing || burst_firing || world.time < last_fired + last_delay)
+	if(auto_firing || burst_firing)
+		return NONE
+
+	if(!COOLDOWN_FINISHED(src, fire_cooldown))
+		if(max(fire_delay, burst_delay + extra_delay) >= 2.0 SECONDS) //filter out guns with high firerate to prevent message spam.
+			to_chat(user, SPAN_WARNING("You need to wait [SPAN_HELPFUL(COOLDOWN_SECONDSLEFT(src, fire_cooldown))] seconds before [name] can be used again."))
 		return NONE
 
 	switch(gun_firemode)
@@ -706,9 +722,13 @@
 	if(!target || !user)
 		return NONE
 
+	if(!can_activate(user, target)) //since it doesn't follow the multitile_interaction -> can_activate() pathway have to do it here
+		return NONE
+
 	return try_fire(target, user, params)
 
 /obj/item/hardpoint/proc/try_fire(atom/target, mob/living/user, params)
+	/* currently checked by multitile_interaction doing can_activate() first
 	if(health <= 0)
 		to_chat(user, SPAN_WARNING("<b>\The [name] is broken!</b>"))
 		return NONE
@@ -720,43 +740,43 @@
 	if(!in_firing_arc(target))
 		to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
 		return NONE
+	*/
 
 	return fire_shot(target, user, params)
 
 /obj/item/hardpoint/proc/fire_shot(atom/target, mob/living/user, params)
-	//offset fire origin from lower-left corner
-	var/turf/origin_turf = get_turf(src)
-	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
+	var/turf/origin_turf = get_origin_turf()
 
 	var/obj/projectile/projectile_to_fire = generate_bullet(user, origin_turf)
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
-	play_firing_sounds(projectile_to_fire, user)
-
 	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire.ammo.max_range, projectile_to_fire.ammo.shell_speed)
 	projectile_to_fire = null
 
+	ammo.current_rounds--
+	shots_fired++
+	play_firing_sounds()
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(origin_turf, target))
 
-	ammo.current_rounds--
-	//just ran out
-	if(ammo.current_rounds <= 0)
-		playsound(get_turf(src), empty_alarm, 70, 1)
-
 	//cooldown to respect intended ROF
-	last_fired = world.time
+	var/cooldown_time = 0
 	switch(gun_firemode)
 		if(GUN_FIREMODE_SEMIAUTO)
-			last_delay = fire_delay
+			cooldown_time = fire_delay
 			reset_fire()
 			display_ammo()
 		if(GUN_FIREMODE_BURSTFIRE)
-			last_delay = burst_delay + extra_delay
+			cooldown_time = burst_delay + extra_delay
 		if(GUN_FIREMODE_AUTOMATIC)
-			last_delay = fire_delay
+			cooldown_time = fire_delay
+	COOLDOWN_START(src, fire_cooldown, cooldown_time)
 
 	return AUTOFIRE_CONTINUE
+
+/// Get turf at hardpoint origin position, used as the muzzle.
+/obj/item/hardpoint/proc/get_origin_turf()
+	return get_offset_target_turf(get_turf(src), origins[1], origins[2])
 
 /// Toggles the gun's firemode one down the list
 /obj/item/hardpoint/proc/do_toggle_firemode(mob/user, new_firemode)
@@ -795,9 +815,26 @@
 	else
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 
-/obj/item/hardpoint/proc/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)
+/obj/item/hardpoint/proc/play_firing_sounds()
 	if(LAZYLEN(activation_sounds))
 		playsound(get_turf(src), pick(activation_sounds), 60, 1)
+
+/// Determines whether something is in firing arc of a hardpoint.
+/obj/item/hardpoint/proc/in_firing_arc(atom/target)
+	if(!firing_arc || !ISINRANGE_EX(firing_arc, 0, 360))
+		return TRUE
+
+	var/turf/muzzle_turf = get_origin_turf()
+	var/turf/target_turf = get_turf(target)
+
+	var/angle_diff = SIMPLIFY_DEGREES(dir2angle(dir) - get_angle(muzzle_turf, target_turf))
+	if(angle_diff < -180)
+		angle_diff += 360
+	else if(angle_diff > 180)
+		angle_diff -= 360
+	//debug_msg("Get_Angle: [Get_Angle(muzzle_turf, target_turf)]    get_angle: [get_angle(muzzle_turf, target_turf)]    dir2angle: [dir2angle(dir)]    angle_diff: [angle_diff]")
+
+	return abs(angle_diff) <= (firing_arc * 0.5)
 
 //-----------------------------
 //------ICON PROCS----------

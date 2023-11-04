@@ -35,7 +35,7 @@
 	fire_delay = 0.5 SECONDS
 	burst_amount = 2
 	burst_delay = 0.3 SECONDS
-	extra_delay = 0.4 SECONDS
+	extra_delay = 0.1 SECONDS
 	gun_firemode = GUN_FIREMODE_BURSTFIRE
 	gun_firemode_list = list(
 		GUN_FIREMODE_SEMIAUTO,

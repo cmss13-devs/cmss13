@@ -60,6 +60,14 @@
 	// Used during the windup
 	var/rotating = FALSE
 
+	burst_amount = 2
+	burst_delay = 1.0 SECONDS
+	extra_delay = 13.0 SECONDS
+	gun_firemode = GUN_FIREMODE_BURSTFIRE
+	gun_firemode_list = list(
+		GUN_FIREMODE_BURSTFIRE,
+	)
+
 /obj/item/hardpoint/holder/tank_turret/update_icon()
 	var/broken = (health <= 0)
 	icon_state = "tank_turret_[broken]"
@@ -182,6 +190,34 @@
 					user.client.pixel_x = -1 * AM.view_tile_offset * 32
 					user.client.pixel_y = 0
 
+/obj/item/hardpoint/holder/tank_turret/try_fire(atom/target, mob/living/user, params)
+	var/turf/L
+	var/turf/R
+	switch(owner.dir)
+		if(NORTH)
+			L = locate(owner.x - 2, owner.y + 4, owner.z)
+			R = locate(owner.x + 2, owner.y + 4, owner.z)
+		if(SOUTH)
+			L = locate(owner.x + 2, owner.y - 4, owner.z)
+			R = locate(owner.x - 2, owner.y - 4, owner.z)
+		if(EAST)
+			L = locate(owner.x + 4, owner.y + 2, owner.z)
+			R = locate(owner.x + 4, owner.y - 2, owner.z)
+		else
+			L = locate(owner.x - 4, owner.y + 2, owner.z)
+			R = locate(owner.x - 4, owner.y - 2, owner.z)
+
+	if(shots_fired)
+		L = R
+
+	return fire_shot(L, user, params)
+
+/obj/item/hardpoint/holder/tank_turret/get_origin_turf()
+	var/origin_turf =  get_offset_target_turf(get_turf(src), origins[1], origins[2])
+	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir) //this should get us tile in front of tank to prevent grenade being stuck under us.
+	return origin_turf
+
+/*
 /obj/item/hardpoint/holder/tank_turret/fire(mob/user, atom/A)
 	if(ammo.current_rounds <= 0)
 		return
@@ -215,7 +251,9 @@
 	fire_projectile(user, R)
 
 	to_chat(user, SPAN_WARNING("Smoke Screen uses left: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds / 2 : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds / 2 : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
+*/
 
+/*
 /obj/item/hardpoint/holder/tank_turret/fire_projectile(mob/user, atom/A)
 	set waitfor = 0
 
@@ -227,3 +265,4 @@
 	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])
 	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, get_dist(origin_turf, A) + 1, P.ammo.shell_speed)
 	ammo.current_rounds--
+*/

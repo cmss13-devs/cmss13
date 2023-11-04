@@ -30,3 +30,9 @@
 		"4" = list(89, -4),
 		"8" = list(-89, -4)
 	)
+
+	fire_delay = 20.0 SECONDS
+	gun_firemode = GUN_FIREMODE_SEMIAUTO
+	gun_firemode_list = list(
+		GUN_FIREMODE_SEMIAUTO,
+	)

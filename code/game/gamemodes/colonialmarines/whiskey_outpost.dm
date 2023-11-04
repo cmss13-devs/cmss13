@@ -322,7 +322,7 @@
 		OT = "sup" //no breaking anything.
 
 	else if (OT == "sup")
-		randpick = rand(0,84)
+		randpick = rand(0,90)
 		switch(randpick)
 			if(0 to 3)//Marine Gear 3% Chance.
 				crate = new /obj/structure/closet/crate/secure/gear(T)

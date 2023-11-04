@@ -438,8 +438,8 @@ GLOBAL_LIST(trait_name_map)
 #define POUNCED_TRAIT "pounced"
 /// traits added by manual intervention
 #define ADMIN_ACTION_TRAIT "admin_action"
-/// traits from cloroform usage
-#define CLOROFORM_TRAIT "cloroform"
+/// traits from chloroform usage
+#define CHLOROFORM_TRAIT "chloroform"
 /// traits from step_triggers on the map
 #define STEP_TRIGGER_TRAIT "step_trigger"
 /// traits from hacked machine interactions

@@ -717,7 +717,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	//hatchets and shiet can clear away undergrowth
 	if(I && (I.sharp >= IS_SHARP_ITEM_ACCURATE) && !stump)
 		var/damage = rand(2,5)
-		if(istype(I,/obj/item/weapon/claymore/mercsword))
+		if(istype(I,/obj/item/weapon/sword))
 			damage = rand(8,18)
 		if(indestructable)
 			//this bush marks the edge of the map, you can't destroy it

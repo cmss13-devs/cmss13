@@ -26844,7 +26844,7 @@
 /area/ice_colony/underground/storage/highsec)
 "bCS" = (
 /obj/structure/safe,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/sword/katana/replica,
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /turf/open/floor{
 	dir = 1;
@@ -27958,7 +27958,7 @@
 /area/ice_colony/surface/bar/canteen)
 "bFZ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},

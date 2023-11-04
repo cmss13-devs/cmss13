@@ -407,3 +407,24 @@
   - code_imp: Renames the announce var in ERT procs to be more indicative of what
       it does.
   - rscadd: Added a setting on custom ERTs for announcing beacon was received.
+2023-10-29:
+  Segrain:
+  - bugfix: Incendiary OB once again spreads to intended size.
+  fira:
+  - bugfix: Sprite-click shots onto Xenos are no longer affected by limb-targeting
+      penalty, because it was an accuracy debuff when there is no inherent benefit
+      to targeting Xeno limbs.
+  realforest2001:
+  - imageadd: Added sprites for provost senior and marshal uniforms.
+  - spellcheck: Gave unique names to the provost armour subtypes.
+  - balance: Prevented most provost armour from being able to fit inside bags.
+  - balance: Returned provost armour to the same slowdowns as MP armour.
+  - code_imp: Removed a lot of duplicate code in Provost presets and uniform/suits.
+2023-10-31:
+  SASoperative:
+  - bugfix: Fixed sprite issue by disabling camo variant for donator item
+  fira:
+  - bugfix: Fixed Limbs and Organs deleting incorrectly on species change.
+  mullenpaul:
+  - refactor: reworked trijent elevators to be reusable on new maps
+  - maptweak: Trijent map now has two elevators, lz1 to engineering and lz2 to omega

@@ -268,9 +268,7 @@
 		if(!roundstart_template)
 			CRASH("json_key:[json_key] value \[[sid]\] resulted in a null shuttle template for [src]")
 	else if(roundstart_template) // passed a PATH
-		var/sid = "[initial(roundstart_template.shuttle_id)]"
-
-		roundstart_template = SSmapping.shuttle_templates[sid]
+		roundstart_template = SSmapping.all_shuttle_templates[roundstart_template]
 		if(!roundstart_template)
 			CRASH("Invalid path ([roundstart_template]) passed to docking port.")
 
@@ -433,7 +431,7 @@
 // Called after the shuttle is loaded from template
 /obj/docking_port/mobile/proc/linkup(datum/map_template/shuttle/template, obj/docking_port/stationary/dock)
 	var/list/static/shuttle_id = list()
-	var/idnum = ++shuttle_id[template]
+	var/idnum = ++shuttle_id[id]
 	if(idnum > 1)
 		if(id == initial(id))
 			id = "[id][idnum]"

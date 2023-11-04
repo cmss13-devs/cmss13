@@ -405,9 +405,9 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/wield(mob/user)
 	. = ..()
-
-	RegisterSignal(src, COMSIG_ITEM_ZOOM, PROC_REF(scope_on))
-	RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(scope_off))
+	if(.)
+		RegisterSignal(src, COMSIG_ITEM_ZOOM, PROC_REF(scope_on))
+		RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(scope_off))
 
 /obj/item/weapon/gun/lever_action/xm88/proc/scope_on(atom/source, mob/current_user)
 	SIGNAL_HANDLER

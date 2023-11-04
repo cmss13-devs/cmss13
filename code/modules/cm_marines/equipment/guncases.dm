@@ -81,6 +81,18 @@
 	new /obj/item/ammo_magazine/rifle/m41aMK1(src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1(src)
 
+
+/obj/item/storage/box/guncase/m41aMK1AP
+	name = "\improper M41A pulse rifle MK1 AP case"
+	desc = "A gun case containing the M41A pulse rifle MK1 loaded with AP rounds. It can only use proprietary MK1 magazines."
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/rifle/m41aMK1, /obj/item/ammo_magazine/rifle/m41aMK1)
+
+/obj/item/storage/box/guncase/m41aMK1AP/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41aMK1/ap(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+
 //------------
 //M79 grenade launcher
 /obj/item/storage/box/guncase/m79

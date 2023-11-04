@@ -420,3 +420,11 @@
   - balance: Prevented most provost armour from being able to fit inside bags.
   - balance: Returned provost armour to the same slowdowns as MP armour.
   - code_imp: Removed a lot of duplicate code in Provost presets and uniform/suits.
+2023-10-31:
+  SASoperative:
+  - bugfix: Fixed sprite issue by disabling camo variant for donator item
+  fira:
+  - bugfix: Fixed Limbs and Organs deleting incorrectly on species change.
+  mullenpaul:
+  - refactor: reworked trijent elevators to be reusable on new maps
+  - maptweak: Trijent map now has two elevators, lz1 to engineering and lz2 to omega

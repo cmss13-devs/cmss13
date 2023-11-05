@@ -468,6 +468,7 @@ const FMOffsetStack = (
             {x}
           </Stack.Item>
         ))}
+
       {editFm === true &&
         offsets &&
         offsets.map((x, i) => {
@@ -475,6 +476,15 @@ const FMOffsetStack = (
             return (
               <Stack.Item key={i}>
                 <Box className="FiremissionBadStep">WEAPON BUSY</Box>
+              </Stack.Item>
+            );
+          }
+          if (props.equipment.firemission_delay === 0) {
+            return (
+              <Stack.Item key={i}>
+                <Box className="FiremissionBadStep">
+                  Ammo unusable for firemissions
+                </Box>
               </Stack.Item>
             );
           }

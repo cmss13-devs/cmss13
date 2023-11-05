@@ -236,8 +236,8 @@
 			update_location(user, null)
 
 	ui_data(user)
-	if(!tacmap.map_holder)
-		tacmap.refresh_map()
+	// if(!tacmap.map_holder)
+//		tacmap.refresh_map()
 	user.client.register_map_obj(tacmap.map_holder.map)
 	tgui_interact(user)
 

@@ -250,14 +250,25 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
       topButtons={[
         {
           children: 'FIRE',
-          onClick: () =>
-            act('firemission-execute', {
-              tag: firemissionSelected,
-              direction: strikeDirection ? directionLookup[strikeDirection] : 1,
-              target_id: selectedTarget,
-              offset_direction: dirMap(fmOffsetDir),
-              offset_value: fmOffsetValue,
-            }),
+          onClick: () => {
+            if (strikeMode === undefined) {
+              return;
+            }
+            if (strikeMode === 'firemission') {
+              act('firemission-execute', {
+                tag: firemissionSelected,
+                direction: strikeDirection
+                  ? directionLookup[strikeDirection]
+                  : 1,
+                target_id: selectedTarget,
+                offset_direction: dirMap(fmOffsetDir),
+                offset_value: fmOffsetValue,
+              });
+            }
+            if (strikeMode === 'weapon') {
+              act('fire-weapon', { eqp_tag: weaponSelected });
+            }
+          },
         },
         {},
         {},

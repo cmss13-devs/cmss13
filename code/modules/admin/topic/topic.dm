@@ -2017,7 +2017,7 @@
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE
-	SSticker.mode.get_specific_call("[ert_called]", TRUE, FALSE, FALSE)
+	SSticker.mode.get_specific_call("[ert_called]", TRUE, FALSE)
 	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 

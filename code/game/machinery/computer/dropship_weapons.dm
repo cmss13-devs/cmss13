@@ -236,8 +236,9 @@
 			update_location(user, null)
 
 	ui_data(user)
-	// if(!tacmap.map_holder)
-//		tacmap.refresh_map()
+	if(!tacmap.map_holder)
+		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
+		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
 	user.client.register_map_obj(tacmap.map_holder.map)
 	tgui_interact(user)
 

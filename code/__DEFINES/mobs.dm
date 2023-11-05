@@ -1,3 +1,6 @@
+/// Multiplier for Stun/KD/KO/etc durations in new backend, due to old being based on life ticks
+#define GLOBAL_STATUS_MULTIPLIER 20 // 2 Seconds life tick to ds
+
 #define HEALTH_THRESHOLD_DEAD -100
 #define HEALTH_THRESHOLD_CRIT -50
 

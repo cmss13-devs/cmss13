@@ -93,10 +93,6 @@
 	if(health > maxHealth)
 		health = maxHealth
 
-	handle_stunned()
-	handle_knocked_down(TRUE)
-	handle_knocked_out(TRUE)
-
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
 		if(isturf(src.loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE)) //This is so it only moves if it's not inside a closet, gentics machine, etc.

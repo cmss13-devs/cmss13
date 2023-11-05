@@ -19,6 +19,9 @@
 	VAR_PROTECTED/knocked_down = 0
 	VAR_PROTECTED/stunned = 0
 
+	///a list of all status effects the mob has
+	var/list/status_effects
+
 	var/hallucination = 0 //Directly affects how long a mob will hallucinate for
 	var/list/atom/hallucinations = list() //A list of hallucinated people that try to attack the mob. See /obj/effect/fake_attacker in hallucinations.dm
 

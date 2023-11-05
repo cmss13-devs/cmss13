@@ -24,6 +24,7 @@
 
 /mob/living/Destroy()
 	GLOB.living_mob_list -= src
+	cleanup_status_effects()
 	pipes_shown = null
 
 	. = ..()
@@ -33,6 +34,17 @@
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
 	QDEL_NULL(hallucinations)
+	status_effects = null
+
+/// Clear all running status effects assuming deletion
+/mob/living/proc/cleanup_status_effects()
+	PROTECTED_PROC(TRUE)
+	if(length(status_effects))
+		for(var/datum/status_effect/S as anything in status_effects)
+			if(S?.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
+				qdel(S)
+			else
+				S?.be_replaced()
 
 /mob/living/proc/initialize_pain()
 	pain = new /datum/pain(src)

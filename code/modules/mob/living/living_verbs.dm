@@ -1,3 +1,10 @@
+/mob/living/can_resist()
+	if(next_move > world.time)
+		return FALSE
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
+		return FALSE
+	return TRUE
+
 /mob/living/verb/resist()
 	set name = "Resist"
 	set category = "IC"

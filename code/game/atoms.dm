@@ -149,7 +149,7 @@ directive is properly returned.
 		return loc.return_gas()
 
 // Updates the atom's transform
-/atom/proc/apply_transform(matrix/M, time = 0)
+/atom/proc/apply_transform(matrix/M, time = 0, easing = (EASE_IN|EASE_OUT))
 	if(!base_transform)
 		transform = M
 		return
@@ -162,7 +162,7 @@ directive is properly returned.
 		transform = complete
 		return
 
-	animate(src, transform = complete, time = time, easing = (EASE_IN|EASE_OUT))
+	animate(src, transform = complete, time = time, easing = easing)
 
 /atom/proc/on_reagent_change()
 	return

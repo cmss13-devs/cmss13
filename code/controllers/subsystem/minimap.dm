@@ -463,15 +463,12 @@ SUBSYSTEM_DEF(minimaps)
 	owner = null
 	return ..()
 
-/datum/tacmap/proc/refresh_map()
-	var/level = SSmapping.levels_by_trait(targeted_ztrait)
-	if(!level[1])
-		return
-	map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
-
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	if(!map_holder)
-		refresh_map()
+		var/level = SSmapping.levels_by_trait(targeted_ztrait)
+		if(!level[1])
+			return
+		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

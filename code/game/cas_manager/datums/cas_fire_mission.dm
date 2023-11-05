@@ -37,6 +37,40 @@
 	for(var/datum/cas_fire_mission_record/record as anything in records)
 		.["records"] += list(record.ui_data(user))
 
+/datum/cas_fire_mission/proc/build_new_record(obj/structure/dropship_equipment/weapon/weap, fire_length)
+	var/datum/cas_fire_mission_record/record = new()
+	record.weapon = weap
+	record.offsets = new /list(fire_length)
+	for(var/idx = 1; idx<=fire_length; idx++)
+		record.offsets[idx] = "-"
+	records += record
+
+/datum/cas_fire_mission/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons, fire_length)
+	var/list/datum/cas_fire_mission_record/bad_records = list()
+	var/list/obj/structure/dropship_equipment/weapon/missing_weapons = list()
+	for(var/datum/cas_fire_mission_record/record in records)
+		// if weapon appears in weapons list but not in record
+		// > add empty record for new weapon
+		var/found = FALSE
+		for(var/obj/structure/dropship_equipment/weapon/weap in weapons)
+			if(record.weapon == weap)
+				found=TRUE
+				break
+		if(!found)
+			bad_records.Add(record)
+	for(var/obj/structure/dropship_equipment/weapon/weap in weapons)
+		var/found = FALSE
+		for(var/datum/cas_fire_mission_record/record in records)
+			if(record.weapon == weap)
+				found=TRUE
+				break
+		if(!found)
+			missing_weapons.Add(weap)
+	for(var/datum/cas_fire_mission_record/record in bad_records)
+		records -= record
+	for(var/obj/structure/dropship_equipment/weapon/weap in missing_weapons)
+		build_new_record(weap, fire_length)
+
 /datum/cas_fire_mission/proc/record_for_weapon(weapon_id)
 	for(var/datum/cas_fire_mission_record/record as anything in records)
 		if(record.weapon.ship_base.attach_id == weapon_id)

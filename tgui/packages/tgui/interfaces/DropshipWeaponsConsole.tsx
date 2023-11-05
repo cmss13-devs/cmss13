@@ -52,6 +52,7 @@ export type DropshipEquipment = {
   mount_point: number;
   ammo_name: string;
   ammo?: number;
+  burst?: number;
   max_ammo?: number;
   firemission_delay?: number;
   data?: any;
@@ -290,10 +291,7 @@ const BaseMfdPanel = (props: MfdProps, context) => {
           children: 'F-MISS',
           onClick: () => setPanelState('firemission'),
         },
-        {
-          children: 'F-SIM',
-          onClick: () => setPanelState('firemission-sim'),
-        },
+        {},
         {
           children: 'TARGETS',
           onClick: () => setPanelState('target-aquisition'),

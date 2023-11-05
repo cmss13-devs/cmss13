@@ -24,7 +24,7 @@
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
 	if(linked_shuttle)
-		linked_shuttle.equipments -= src
+		SEND_SIGNAL(linked_shuttle, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, src)
 		linked_shuttle = null
 	if(ship_base)
 		ship_base.installed_equipment = null
@@ -124,7 +124,7 @@
 		ship_base.installed_equipment = null
 		ship_base = null
 		if(linked_shuttle)
-			linked_shuttle.equipments -= src
+			SEND_SIGNAL(linked_shuttle, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, src)
 			linked_shuttle = null
 			if(linked_console && linked_console.selected_equipment == src)
 				linked_console.selected_equipment = null

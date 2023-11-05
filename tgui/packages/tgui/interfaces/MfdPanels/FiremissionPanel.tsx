@@ -15,7 +15,17 @@ const CreateFiremissionPanel = (props, context) => {
         <h3>Create Fire Mission</h3>
       </Stack.Item>
       <Stack.Item>
-        <Input value={fmName} onInput={(e, value) => setFmName(value)} />
+        <Input
+          value={fmName}
+          onInput={(e, value) => setFmName(value)}
+          onEnter={() => {
+            act('firemission-create', {
+              firemission_name: fmName,
+              firemission_length: 12,
+            });
+            setFmName('');
+          }}
+        />
       </Stack.Item>
     </Stack>
   );
@@ -73,11 +83,13 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
         fmName
           ? {
             children: 'SAVE',
-            onClick: () =>
+            onClick: () => {
               act('firemission-create', {
                 firemission_name: fmName,
                 firemission_length: 12,
-              }),
+              });
+              setFmName('');
+            },
           }
           : {},
       ]}
@@ -249,19 +261,32 @@ const FiremissionView = (props: MfdProps & { fm: CasFiremission }, context) => {
     .filter((x) => x !== undefined) as Array<DropshipEquipment>;
 
   const selectedWeapon = weaponData.find((x) => x.mount_point === editFmWeapon);
+  const displayDetail = editFm;
   return (
     <Stack>
       <Stack.Item>
         <Stack vertical>
-          <Stack.Item>Weapon</Stack.Item>
-          <Stack.Item>Ammo</Stack.Item>
-          <Stack.Item>Gimbals</Stack.Item>
-          <Stack.Item className="FireMissionOffsetLabel">Offset</Stack.Item>
+          <Stack.Item className="FireMissionTitle">Weapon</Stack.Item>
+          <Stack.Item className="FireMissionTitle">Ammunition</Stack.Item>
+          {!displayDetail && (
+            <>
+              <Stack.Item className="FireMissionTitle">Consumption</Stack.Item>
+              <Stack.Item className="FireMissionTitle" />
+            </>
+          )}
+          {displayDetail && (
+            <>
+              <Stack.Item className="FireMissionTitle">Gimbals</Stack.Item>
+              <Stack.Item className="FireMissionTitle">Fire Delay</Stack.Item>
+              <Stack.Item className="FireMissionTitle">Offset</Stack.Item>
+            </>
+          )}
+
           <Stack.Item>
             <Divider />
           </Stack.Item>
           {range(1, 13).map((x) => (
-            <Stack.Item className="FireMissionOffsetLabel" key={x}>
+            <Stack.Item className="FireMissionTitle" key={x}>
               {x}
             </Stack.Item>
           ))}
@@ -275,6 +300,7 @@ const FiremissionView = (props: MfdProps & { fm: CasFiremission }, context) => {
         weaponData.map((x) => (
           <Stack.Item key={x.mount_point}>
             <FMOffsetStack
+              displayDetail={displayDetail}
               fm={props.fm}
               panelStateId={props.panelStateId}
               equipment={x}
@@ -287,6 +313,7 @@ const FiremissionView = (props: MfdProps & { fm: CasFiremission }, context) => {
       {editFm && selectedWeapon && (
         <Stack.Item key={selectedWeapon.mount_point}>
           <FMOffsetStack
+            displayDetail={displayDetail}
             fm={props.fm}
             panelStateId={props.panelStateId}
             equipment={selectedWeapon}
@@ -305,8 +332,77 @@ const gimbals: GimbalInfo[] = [
   { min: 0, max: 6, values: ['-', '0', '1', '2', '3', '4', '5', '6'] },
 ];
 
+const OffsetOverview = (
+  props: MfdProps & { fm: CasFiremission; equipment: DropshipEquipment }
+) => {
+  const weaponFm = props.fm.records.find(
+    (x) => x.weapon === props.equipment.mount_point
+  );
+  if (weaponFm === undefined) {
+    return <>error</>;
+  }
+  const ammoConsumption = weaponFm.offsets
+    .map((x) => (x !== '-' ? props.equipment.burst ?? 0 : 0))
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const availableGimbals = gimbals[props.equipment.mount_point];
+  return (
+    <>
+      <Stack.Item className="FireMissionOffsetLabel">
+        {props.equipment.shorthand} {props.equipment.mount_point}
+      </Stack.Item>
+      <Stack.Item className="FireMissionOffsetLabel">
+        {props.equipment.ammo} / {props.equipment.max_ammo}
+      </Stack.Item>
+      <Stack.Item className="FireMissionOffsetLabel">
+        {ammoConsumption}
+      </Stack.Item>
+    </>
+  );
+};
+
+const OffsetDetailed = (
+  props: MfdProps & {
+    fm: CasFiremission;
+    equipment: DropshipEquipment;
+  }
+) => {
+  const availableGimbals = gimbals[props.equipment.mount_point];
+  const weaponFm = props.fm.records.find(
+    (x) => x.weapon === props.equipment.mount_point
+  );
+  if (weaponFm === undefined) {
+    return <>error</>;
+  }
+  const ammoConsumption = weaponFm.offsets
+    .map((x) => (x === '-' ? props.equipment.burst : 0))
+    .reduce(
+      (accumulator, currentValue) => (accumulator ?? 0) + (currentValue ?? 0),
+      0
+    );
+  return (
+    <>
+      <Stack.Item className="FireMissionOffsetLabel">
+        {props.equipment.shorthand} {props.equipment.mount_point}
+      </Stack.Item>
+      <Stack.Item className="FireMissionOffsetLabel">
+        {props.equipment.ammo} / {props.equipment.max_ammo}
+      </Stack.Item>
+      <Stack.Item className="FireMissionOffsetLabel">
+        {availableGimbals.min} to {availableGimbals.max}
+      </Stack.Item>
+      <Stack.Item className="FireMissionOffsetLabel">
+        {(props.equipment.firemission_delay ?? 0) - 1}
+      </Stack.Item>
+    </>
+  );
+};
+
 const FMOffsetStack = (
-  props: MfdProps & { fm: CasFiremission; equipment: DropshipEquipment },
+  props: MfdProps & {
+    fm: CasFiremission;
+    equipment: DropshipEquipment;
+    displayDetail?: boolean;
+  },
   context
 ) => {
   const { fm } = props;
@@ -314,23 +410,44 @@ const FMOffsetStack = (
   const offsets = props.fm.records.find(
     (x) => x.weapon === props.equipment.mount_point
   )?.offsets;
+
   const [editFm, setEditFm] = useLocalState<boolean>(
     context,
     `${props.panelStateId}_edit_fm`,
     false
   );
   const availableGimbals = gimbals[props.equipment.mount_point];
+
+  const firemissionOffsets = props.equipment.firemission_delay ?? 0;
+
+  const availableMap = range(0, 12).map((_) => true);
+  offsets?.forEach((x, index) => {
+    if (x === undefined || x === '-') {
+      return;
+    }
+    const indexMin = Math.max(index - firemissionOffsets + 1, 0);
+    const indexMax = Math.min(
+      index + firemissionOffsets,
+      availableMap.length - 1
+    );
+    range(indexMin, indexMax).forEach((value) => (availableMap[value] = false));
+  });
+
   return (
     <Stack vertical className="FireMissionStack">
-      <Stack.Item>
-        {props.equipment.shorthand} {props.equipment.mount_point}
-      </Stack.Item>
-      <Stack.Item>
-        {props.equipment.ammo} / {props.equipment.max_ammo}
-      </Stack.Item>
-      <Stack.Item>
-        {availableGimbals.min} to {availableGimbals.max}
-      </Stack.Item>
+      {props.displayDetail ? (
+        <OffsetDetailed
+          fm={props.fm}
+          panelStateId={props.panelStateId}
+          equipment={props.equipment}
+        />
+      ) : (
+        <OffsetOverview
+          fm={props.fm}
+          panelStateId={props.panelStateId}
+          equipment={props.equipment}
+        />
+      )}
       <Stack.Item>
         <Stack height="20px">
           {editFm &&
@@ -353,37 +470,46 @@ const FMOffsetStack = (
         ))}
       {editFm === true &&
         offsets &&
-        offsets.map((x, i) => (
-          <Stack.Item key={i}>
-            <Stack>
-              {availableGimbals.values.map((y) => {
-                const is_selected = x.toString() === y;
-                return (
-                  <Stack.Item
-                    key={y}
-                    className="FireMissionOffset"
-                    textAlign="center">
-                    <Button
-                      className={is_selected ? 'SelectedButton' : undefined}
-                      onClick={() => {
-                        act('button_push');
-                        act('firemission-edit', {
-                          tag: `${fm.mission_tag}`,
-                          weapon_id: `${props.equipment.mount_point}`,
-                          offset_id: `${i}`,
-                          offset_value: `${y}`,
-                        });
-                      }}>
-                      {is_selected && '['}
-                      {y}
-                      {is_selected && ']'}
-                    </Button>
-                  </Stack.Item>
-                );
-              })}
-            </Stack>
-          </Stack.Item>
-        ))}
+        offsets.map((x, i) => {
+          if (availableMap[i] === false && x === '-') {
+            return (
+              <Stack.Item key={i}>
+                <Box className="FiremissionBadStep">WEAPON BUSY</Box>
+              </Stack.Item>
+            );
+          }
+          return (
+            <Stack.Item key={i}>
+              <Stack>
+                {availableGimbals.values.map((y) => {
+                  const is_selected = x.toString() === y;
+                  return (
+                    <Stack.Item
+                      key={y}
+                      className="FireMissionOffset"
+                      textAlign="center">
+                      <Button
+                        className={is_selected ? 'SelectedButton' : undefined}
+                        onClick={(e) => {
+                          act('button_push');
+                          act('firemission-edit', {
+                            tag: `${fm.mission_tag}`,
+                            weapon_id: `${props.equipment.mount_point}`,
+                            offset_id: `${i}`,
+                            offset_value: `${y}`,
+                          });
+                        }}>
+                        {is_selected && '['}
+                        {y}
+                        {is_selected && ']'}
+                      </Button>
+                    </Stack.Item>
+                  );
+                })}
+              </Stack>
+            </Stack.Item>
+          );
+        })}
     </Stack>
   );
 };

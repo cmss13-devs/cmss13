@@ -125,7 +125,6 @@
 	exproof = TRUE
 	var/shuttle_tag  // Used to know which shuttle we're linked to.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
-	var/list/shuttle_equipments = list() //list of the equipments on the shuttle this console controls
 	var/cavebreaker = FALSE //ignore caves and other restrictions?
 	var/datum/cas_fire_envelope/firemission_envelope
 	var/datum/cas_fire_mission/selected_firemission
@@ -148,6 +147,8 @@
 	var/camera_target_id
 	var/camera_width = 11
 	var/camera_height = 11
+
+	var/registered = FALSE
 
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
@@ -172,7 +173,7 @@
 		to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
 
 		if(!selected_firemission)
-			to_chat(usr, SPAN_WARNING("Firemission must be selected before attempting to run the simulation"))
+			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation"))
 			return
 
 		tgui_interact(user)
@@ -194,6 +195,14 @@
 
 		else
 			to_chat(user, SPAN_WARNING("matrix is not complete!"))
+
+/obj/structure/machinery/computer/dropship_weapons/proc/equipment_update(obj/docking_port/mobile/marine_dropship/dropship)
+	SIGNAL_HANDLER
+	log_debug("equipment update dropship_weapons")
+	var/list/obj/structure/dropship_equipment/weapons = list()
+	for(var/obj/structure/dropship_equipment/weapon/weap as anything in dropship.equipments)
+		weapons.Add(weap)
+	firemission_envelope.update_weapons(weapons)
 
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
@@ -224,7 +233,7 @@
 				firemission_envelope.recorded_loc = null
 
 		if(screen_mode != 3 || !selected_firemission || dropship.mode != SHUTTLE_CALL)
-			update_location(null)
+			update_location(user, null)
 
 	ui_data(user)
 	if(!tacmap.map_holder)
@@ -233,6 +242,12 @@
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/dropship_weapons/tgui_interact(mob/user, datum/tgui/ui)
+	if(!registered)
+		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+		RegisterSignal(dropship, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(equipment_update))
+		RegisterSignal(dropship, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(equipment_update))
+		registered=TRUE
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		cam_manager.register(user)
@@ -454,7 +469,7 @@
 				return FALSE
 
 			selected_equipment = DEW
-			ui_open_fire(shuttle, camera_target_id)
+			ui_open_fire(user, shuttle, camera_target_id)
 			return TRUE
 		if("deploy-equipment")
 			var/equipment_tag = params["equipment_id"]
@@ -493,8 +508,8 @@
 			var/target_id = params["target_id"]
 			if(!ui_select_firemission(user, fm_tag))
 				return FALSE
-			update_direction(text2num(direction))
-			ui_select_laser_firemission(shuttle, target_id)
+			update_direction(user, text2num(direction))
+			ui_select_laser_firemission(user, shuttle, target_id)
 			ui_firemission_camera(user, shuttle)
 			initiate_firemission(user)
 			return TRUE
@@ -592,6 +607,7 @@
 			"ammo" = equipment.ammo_equipped?.ammo_count,
 			"max_ammo" = equipment.ammo_equipped?.max_ammo_count,
 			"firemission_delay" = equipment.ammo_equipped?.fire_mission_delay,
+			"burst" = equipment.ammo_equipped?.ammo_used_per_firing,
 			"data" = equipment.ui_data(user)
 		)
 
@@ -619,10 +635,9 @@
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
 	var/obj/structure/dropship_equipment/E = shuttle.equipments[base_tag]
 	E.linked_console = src
-	E.equipment_interact(usr)
+	E.equipment_interact(user)
 
-/obj/structure/machinery/computer/dropship_weapons/proc/ui_open_fire(obj/docking_port/mobile/marine_dropship/dropship, targ_id)
-	var/mob/weapon_operator = usr
+/obj/structure/machinery/computer/dropship_weapons/proc/ui_open_fire(mob/weapon_operator, obj/docking_port/mobile/marine_dropship/dropship, targ_id)
 	if(ishuman(weapon_operator))
 		var/mob/living/carbon/human/human_operator = weapon_operator
 		if(!human_operator.allow_gun_usage)
@@ -712,6 +727,11 @@
 	if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
 		to_chat(weapon_operator, SPAN_WARNING("Vehicle has to be idle to allow Fire Mission editing and creation."))
 		return FALSE
+
+	for(var/datum/cas_fire_mission/mission in firemission_envelope.missions)
+		if(firemission_name == mission.name)
+			to_chat(weapon_operator, SPAN_WARNING("Fire Mission name must be unique."))
+			return FALSE
 	//everything seems to be fine now
 	firemission_envelope.generate_mission(firemission_name, firemission_length)
 	return TRUE
@@ -753,22 +773,23 @@
 		to_chat(weapons_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
 
-	firemission_envelope.update_mission(fm_tag, weapon_id, offset_id, offset_value)
+	var/result = firemission_envelope.update_mission(fm_tag, weapon_id, offset_id, offset_value)
+	if(result != null && result != "OK")
+		playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
 	return TRUE
 
-/obj/structure/machinery/computer/dropship_weapons/proc/ui_select_laser_firemission(obj/docking_port/mobile/marine_dropship/dropship, laser)
-	var/mob/weapons_operator = usr
+/obj/structure/machinery/computer/dropship_weapons/proc/ui_select_laser_firemission(mob/weapons_operator, obj/docking_port/mobile/marine_dropship/dropship, laser)
 	if(!laser)
-		to_chat(usr, SPAN_WARNING("Bad Target."))
+		to_chat(weapons_operator, SPAN_WARNING("Bad Target."))
 		return FALSE
 	if(!skillcheck(weapons_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
-		to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
+		to_chat(weapons_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
 	if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
-		to_chat(usr, SPAN_WARNING("Fire Mission already underway."))
+		to_chat(weapons_operator, SPAN_WARNING("Fire Mission already underway."))
 		return FALSE
 	if(dropship.mode != SHUTTLE_CALL)
-		to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
+		to_chat(weapons_operator, SPAN_WARNING("Shuttle has to be in orbit."))
 		return FALSE
 	var/datum/cas_iff_group/cas_group = cas_groups[faction]
 	var/datum/cas_signal/cas_sig
@@ -777,10 +798,10 @@
 		if(LT.target_id == laser  && LT.valid_signal())
 			cas_sig = LT
 	if(!cas_sig)
-		to_chat(usr, SPAN_WARNING("Target lost or obstructed."))
+		to_chat(weapons_operator, SPAN_WARNING("Target lost or obstructed."))
 		return FALSE
 
-	update_location(cas_sig)
+	update_location(weapons_operator, cas_sig)
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_firemission_camera(mob/camera_operator, obj/docking_port/mobile/marine_dropship/dropship)
@@ -820,29 +841,29 @@
 	else
 		update_trace_loc()
 
-/obj/structure/machinery/computer/dropship_weapons/proc/update_location(new_location)
+/obj/structure/machinery/computer/dropship_weapons/proc/update_location(mob/user, new_location)
 	var/result = firemission_envelope.change_target_loc(new_location)
 	if(result<1)
-		to_chat(usr, "Screen beeps with an error: "+ firemission_envelope.mission_error)
+		to_chat(user, "Screen beeps with an error: "+ firemission_envelope.mission_error)
 	else
 		update_trace_loc()
 
 
-/obj/structure/machinery/computer/dropship_weapons/proc/update_direction(new_direction)
+/obj/structure/machinery/computer/dropship_weapons/proc/update_direction(mob/user, new_direction)
 	var/result = firemission_envelope.change_direction(new_direction)
 	if(result<1)
-		to_chat(usr, "Screen beeps with an error: " + firemission_envelope.mission_error)
+		to_chat(user, "Screen beeps with an error: " + firemission_envelope.mission_error)
 	else
 		update_trace_loc()
 
-/obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc()
+/obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc(mob/user)
 	if(!firemission_envelope)
 		return
 	if(firemission_envelope.recorded_loc == null || firemission_envelope.recorded_dir == null || firemission_envelope.recorded_offset == null)
 		return
 	if(firemission_envelope.recorded_loc.obstructed_signal())
-		if(firemission_envelope.user_is_guided(usr))
-			to_chat(usr, SPAN_WARNING("Signal Obstructed. You have to go in blind."))
+		if(firemission_envelope.user_is_guided(user))
+			to_chat(user, SPAN_WARNING("Signal Obstructed. You have to go in blind."))
 		return
 	var/sx = 0
 	var/sy = 0

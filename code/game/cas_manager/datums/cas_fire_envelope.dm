@@ -40,10 +40,13 @@
 /datum/cas_fire_envelope/proc/get_total_duration()
 	return grace_period+flyto_period+flyoff_period
 
+/datum/cas_fire_envelope/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons)
+	for(var/datum/cas_fire_mission/mission in missions)
+		mission.update_weapons(weapons, fire_length)
+
 /datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
 	if(!missions || !linked_console || missions.len>max_mission_len || !fire_length)
 		return null
-
 	var/list/obj/structure/dropship_equipment/weapons = list()
 	var/shuttle_tag = linked_console.shuttle_tag
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
@@ -52,21 +55,11 @@
 			weapons += equipment
 
 	var/datum/cas_fire_mission/fm = new()
-
-	if(weapons.len==0)
-		return null //why bother?
-
 	for(var/obj/structure/dropship_equipment/weapon/wp in weapons)
-		var/datum/cas_fire_mission_record/record = new()
-		record.weapon = wp
-		record.offsets = new /list(fire_length)
-		for(var/idx = 1; idx<=fire_length; idx++)
-			record.offsets[idx] = "-"
-		fm.records += record
+		fm.build_new_record(wp, fire_length)
 
 	fm.name = firemission_name
 	fm.mission_length = length
-
 	missions += fm
 	return fm
 

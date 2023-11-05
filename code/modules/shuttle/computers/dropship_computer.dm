@@ -386,7 +386,7 @@
 			update_equipment(is_optimised, FALSE)
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, get_sfx("terminal_button"), 5, 1)
 			for(var/destination in local_data["destinations"])
 				if(destination["id"] == dock_id)
 					found = TRUE

@@ -327,7 +327,7 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
         {},
         {
           children: 'F-MISS',
-          onClick: () => setPanelState('firemissions'),
+          onClick: () => setPanelState('firemission'),
         },
         {},
         {},

@@ -15,8 +15,8 @@ interface FiremissionContext {
 }
 
 const directionLookup = new Map<string, number>();
-directionLookup['N-S'] = 1;
-directionLookup['S-N'] = 2;
+directionLookup['N-S'] = 2;
+directionLookup['S-N'] = 1;
 directionLookup['E-W'] = 8;
 directionLookup['W-E'] = 4;
 

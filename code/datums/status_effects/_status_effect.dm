@@ -104,7 +104,6 @@
 // instead of extending / overriding the process() proc.
 /datum/status_effect/process(seconds_per_tick)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
 	if(QDELETED(owner))
 		qdel(src)
 		return
@@ -116,7 +115,7 @@
 			// tick deleted us, no need to continue
 			return
 
-	if(!timerid && duration != -1 && duration < world.time) // !timerid for TESTING they work properly, TODO remove it, FIXME
+	if(!timerid && duration != -1 && duration < world.time)
 		qdel(src)
 	else
 		update_timer() // Attempt to start up end timer
@@ -142,7 +141,6 @@
 /// Called whenever the effect is applied in on_created
 /// Returning FALSE will cause it to delete itself during creation instead.
 /datum/status_effect/proc/on_apply()
-	log_debug("[world.time] [id] (\ref[src]) applying")
 	return TRUE
 
 /// Gets and formats examine text associated with our status effect.
@@ -167,7 +165,6 @@
 /// Note that at the point this is called, it is out of the
 /// owner's status_effects list, but owner is not yet null
 /datum/status_effect/proc/on_remove()
-	log_debug("[world.time] [id] (\ref[src]) removed")
 	return
 
 /// Called instead of on_remove when a status effect

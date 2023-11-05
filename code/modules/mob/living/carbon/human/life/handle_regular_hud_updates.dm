@@ -60,7 +60,7 @@
 		else
 			clear_fullscreen("blind")
 
-		if(dazed)
+		if(HAS_TRAIT(src, TRAIT_DAZED))
 			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
 		else
 			clear_fullscreen("eye_blurry")

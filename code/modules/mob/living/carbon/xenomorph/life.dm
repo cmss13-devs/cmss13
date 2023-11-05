@@ -267,11 +267,6 @@
 	else if(client && !client.adminobs)
 		reset_view(null)
 
-	if(dazed)
-		overlay_fullscreen("dazed", /atom/movable/screen/fullscreen/impaired, 5)
-	else
-		clear_fullscreen("dazed")
-
 	if(!hud_used)
 		return TRUE
 
@@ -299,6 +294,13 @@
 		hud_used.alien_armor_display.icon_state = "armor_[Floor(armor_stacks)]0"
 
 	return TRUE
+
+/mob/living/carbon/xenomorph/on_dazed_trait_gain(datum/source)
+	. = ..()
+	overlay_fullscreen("dazed", /atom/movable/screen/fullscreen/impaired, 5)
+/mob/living/carbon/xenomorph/on_dazed_trait_loss(datum/source)
+	. = ..()
+	clear_fullscreen("dazed")
 
 /*Heal 1/70th of your max health in brute per tick. 1 as a bonus, to help smaller pools.
 Additionally, recovery pheromones mutiply this base healing, up to 2.5 times faster at level 5
@@ -557,6 +559,9 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/GetKnockOutDuration(amount)
 	amount *= 2 / 3
 	return ..()
+/mob/living/carbon/xenomorph/GetDazeDuration(amount)
+	amount *= 2 / 3
+	return ..()
 
 /mob/living/carbon/xenomorph/proc/handle_interference()
 	if(interference)
@@ -566,11 +571,6 @@ Make sure their actual health updates immediately.*/
 		overwatch(observed_xeno,TRUE)
 
 	return interference
-
-/mob/living/carbon/xenomorph/handle_dazed()
-	if(dazed)
-		adjust_effect(life_daze_reduction, DAZE, EFFECT_FLAG_LIFE)
-	return dazed
 
 /mob/living/carbon/xenomorph/handle_slowed()
 	if(slowed)

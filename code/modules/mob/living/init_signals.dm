@@ -14,6 +14,9 @@
 
 	RegisterSignal(src, list(SIGNAL_ADDTRAIT(TRAIT_UNDENSE), SIGNAL_REMOVETRAIT(TRAIT_UNDENSE)), PROC_REF(undense_changed))
 
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_DAZED), PROC_REF(on_dazed_trait_gain))
+	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_DAZED), PROC_REF(on_dazed_trait_loss))
+
 /// Called when [TRAIT_KNOCKEDOUT] is added to the mob.
 /mob/living/proc/on_knockedout_trait_gain(datum/source)
 	SIGNAL_HANDLER
@@ -70,6 +73,14 @@
 	//remove_traits(list(TRAIT_UI_BLOCKED, TRAIT_PULL_BLOCKED), TRAIT_INCAPACITATED)
 	//update_appearance()
 	return
+
+/// Called when [TRAIT_DAZED] is added to the mob.
+/mob/living/proc/on_dazed_trait_gain(datum/source)
+	SIGNAL_HANDLER
+
+/// Called when [TRAIT_DAZED] is removed from the mob.
+/mob/living/proc/on_dazed_trait_loss(datum/source)
+	SIGNAL_HANDLER
 
 /// Called when [TRAIT_UNDENSE] is gained or lost
 /mob/living/proc/undense_changed(datum/source)

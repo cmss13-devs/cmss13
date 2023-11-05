@@ -347,7 +347,7 @@
 
 	// Negative stat effects
 	if (debilitate)
-		H.dazed += daze_amount
+		H.AdjustDaze(daze_amount)
 
 	apply_cooldown()
 	return ..()

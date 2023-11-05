@@ -10,8 +10,7 @@
 	activation_sounds = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
 
 	health = 100
-	cooldown = 10
-	accuracy = 0.9
+	//accuracy = 0.9
 	firing_arc = 120
 	//FPWs reload automatically
 	var/reloading = FALSE
@@ -29,15 +28,12 @@
 
 	underlayer_north_muzzleflash = TRUE
 
-	fire_delay = 0.4 SECONDS
-	burst_amount = 3
-	burst_delay = 0.3 SECONDS
-	extra_delay = -0.2 SECONDS
-	gun_firemode = GUN_FIREMODE_BURSTFIRE
+	fire_delay = 0.3 SECONDS
+	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
-		GUN_FIREMODE_BURSTFIRE,
 		GUN_FIREMODE_AUTOMATIC,
 	)
+	scatter = 3
 
 /obj/item/hardpoint/special/firing_port_weapon/set_bullet_traits()
 	..()
@@ -57,46 +53,6 @@
 	data["fpw"] = TRUE
 
 	return data
-
-
-/obj/item/hardpoint/special/firing_port_weapon/can_activate(mob/user, atom/A)
-	if(!owner)
-		return FALSE
-
-	var/seat = owner.get_mob_seat(user)
-	if(!seat)
-		return FALSE
-
-	if(seat != allowed_seat)
-		to_chat(user, SPAN_WARNING("<b>Only [allowed_seat] can use [name].</b>"))
-		return FALSE
-
-	//FPW stop working at 50% hull
-	if(owner.health < initial(owner.health) * 0.5)
-		to_chat(user, SPAN_WARNING("<b>\The [owner]'s hull is too damaged!</b>"))
-		return FALSE
-
-	if(world.time < next_use)
-		if(cooldown >= 20) //filter out guns with high firerate to prevent message spam.
-			to_chat(user, SPAN_WARNING("You need to wait [SPAN_HELPFUL((next_use - world.time) / 10)] seconds before [name] can be used again."))
-		return FALSE
-
-	if(reloading)
-		to_chat(user, SPAN_NOTICE("\The [name] is reloading. Wait [SPAN_HELPFUL("[((reload_time_started + reload_time - world.time) / 10)]")] seconds."))
-		return FALSE
-
-	if(ammo && ammo.current_rounds <= 0)
-		if(reloading)
-			to_chat(user, SPAN_WARNING("<b>\The [name] is out of ammo! You have to wait [(reload_time_started + reload_time - world.time) / 10] seconds before it reloads!"))
-		else
-			start_auto_reload(user)
-		return FALSE
-
-	if(!in_firing_arc(A))
-		to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
-		return FALSE
-
-	return TRUE
 
 /obj/item/hardpoint/special/firing_port_weapon/reload(mob/user)
 	if(!ammo)
@@ -126,6 +82,9 @@
 	return FALSE
 
 /obj/item/hardpoint/special/firing_port_weapon/try_fire(atom/target, mob/living/user, params)
+	if(!owner)
+		return NONE
+
 	//FPW stop working at 50% hull
 	if(owner.health < initial(owner.health) * 0.5)
 		to_chat(user, SPAN_WARNING("<b>\The [owner]'s hull is too damaged!</b>"))
@@ -135,12 +94,19 @@
 		to_chat(user, SPAN_WARNING("You need a free hand to use \the [name]."))
 		return
 
-	if(ammo.current_rounds <= 0)
-		start_auto_reload(user)
-		return
-
 	if(reloading)
 		to_chat(user, SPAN_NOTICE("\The [name] is reloading. Wait [SPAN_HELPFUL("[((reload_time_started + reload_time - world.time) / 10)]")] seconds."))
-		return FALSE
+		return NONE
 
-	return ..()
+	if(ammo && ammo.current_rounds <= 0)
+		if(reloading)
+			to_chat(user, SPAN_WARNING("<b>\The [name] is out of ammo! You have to wait [(reload_time_started + reload_time - world.time) / 10] seconds before it reloads!"))
+		else
+			start_auto_reload(user)
+		return NONE
+
+	if(!in_firing_arc(target))
+		to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
+		return NONE
+
+	return handle_fire(target, user, params)

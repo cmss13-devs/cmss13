@@ -377,6 +377,7 @@
 
 	to_chat(user, SPAN_WARNING("Warning. No FPW for [seat] found, tell a dev!"))
 
+/*
 /obj/vehicle/multitile/proc/cycle_firemode()
 	set name = "Cycle Firemode"
 	set desc = "Cycles through your gun's firemodes."
@@ -403,3 +404,4 @@
 		return
 
 	hardpoint.do_toggle_firemode(usr)
+*/

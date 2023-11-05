@@ -8,8 +8,7 @@
 	activation_sounds = list('sound/weapons/vehicles/flamethrower.ogg')
 
 	health = 400
-	cooldown = 20
-	accuracy = 0.75
+	//accuracy = 0.75
 	firing_arc = 90
 
 	origins = list(0, -3)
@@ -27,6 +26,7 @@
 	use_muzzle_flash = FALSE
 
 	fire_delay = 2.0 SECONDS
+	scatter = 5
 
 /obj/item/hardpoint/primary/flamer/set_bullet_traits()
 	..()
@@ -34,13 +34,10 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/primary/flamer/can_activate(mob/user, atom/A)
-	if(!..())
-		return FALSE
-
+/obj/item/hardpoint/primary/flamer/try_fire(target, user, params)
 	var/turf/origin_turf = get_origin_turf()
-	if(origin_turf == get_turf(A))
+	if(origin_turf == get_turf(target))
 		to_chat(user, SPAN_WARNING("The target is too close."))
-		return FALSE
+		return NONE
 
-	return TRUE
+	return ..()

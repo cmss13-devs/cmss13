@@ -344,12 +344,11 @@
 	if(!seat)
 		return
 
-	var/obj/item/hardpoint/HP = active_hp[seat]
-	if(!HP)
-		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+	var/obj/item/hardpoint/hardpoint = active_hp[seat]
+	if(!hardpoint)
 		return
 
-	HP.crew_mouseup(source, object, location, control, params)
+	hardpoint.stop_fire(source, object, location, control, params)
 
 /obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
@@ -357,12 +356,11 @@
 	if(!seat)
 		return
 
-	var/obj/item/hardpoint/HP = active_hp[seat]
-	if(!HP)
-		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+	var/obj/item/hardpoint/hardpoint = active_hp[seat]
+	if(!hardpoint)
 		return
 
-	HP.crew_mousedrag(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
+	hardpoint.change_target(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
 
 /obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
@@ -370,16 +368,12 @@
 	if(!seat)
 		return
 
-	var/obj/item/hardpoint/HP = active_hp[seat]
-	if(!HP)
+	var/obj/item/hardpoint/hardpoint = active_hp[seat]
+	if(!hardpoint)
 		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
 		return
 
-	if(!HP.can_activate(source, object))
-		return
-
-	//HP.activate(source, object)
-	HP.crew_mousedown(source, object, location, control, params)
+	hardpoint.start_fire(source, object, location, control, params)
 
 /*
 /obj/vehicle/multitile/handle_click(mob/living/user, atom/A, list/mods)

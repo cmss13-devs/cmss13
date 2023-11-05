@@ -12,8 +12,7 @@
 	damage_multiplier = 0.2
 
 	health = 500
-	cooldown = 7
-	accuracy = 0.98
+	//accuracy = 0.98
 	firing_arc = 60
 
 	origins = list(0, -2)
@@ -32,16 +31,12 @@
 		"8" = list(14, 9)
 	)
 
-	fire_delay = 0.5 SECONDS
-	burst_amount = 2
-	burst_delay = 0.3 SECONDS
-	extra_delay = 0.1 SECONDS
-	gun_firemode = GUN_FIREMODE_BURSTFIRE
+	fire_delay = 0.3 SECONDS
+	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
-		GUN_FIREMODE_SEMIAUTO,
-		GUN_FIREMODE_BURSTFIRE,
 		GUN_FIREMODE_AUTOMATIC,
 	)
+	scatter = 1
 
 /obj/item/hardpoint/primary/dualcannon/set_bullet_traits()
 	..()

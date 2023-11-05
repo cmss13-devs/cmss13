@@ -7,8 +7,7 @@
 	disp_icon_state = "ltaaap_minigun"
 
 	health = 350
-	cooldown = 8
-	accuracy = 0.6
+	//accuracy = 0.6
 	firing_arc = 90
 
 	origins = list(0, -3)
@@ -30,58 +29,53 @@
 		"8" = list(-77, 0)
 	)
 
-	//changed minigun mechanic so instead of having lowered cooldown with each shot it now has increased burst size.
-	//While it's still spammy, user doesn't have to click as fast as possible anymore and has margin of 2 seconds before minigun will start slowing down
-
-	var/chained_shots = 1 //how many quick succession shots we've fired, 1 by default
-	var/last_shot_time = 0 //when was last shot fired, after 3 seconds we stop barrel
-	var/list/chain_bursts = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4) //how many shots per click we do
-
-	fire_delay = 0.2 SECONDS
+	fire_delay = 0.8 SECONDS
 	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
 	)
+	scatter = 7
 
 	var/start_sound = 'sound/weapons/vehicles/minigun_start.ogg'
 	var/loop_sound = 'sound/weapons/vehicles/minigun_loop.ogg'
 	var/stop_sound = 'sound/weapons/vehicles/minigun_stop.ogg'
 	activation_sounds = list('sound/weapons/gun_minigun.ogg')
+	/// Active firing time to reach max spin_stage
+	var/spinup_time = 8 SECONDS
+	/// Cooldown time to reach min spin_stage
+	var/spindown_time = 3 SECONDS
+	/// Index of stage_rate
+	var/spin_stage = 1
+	/// Shots fired per fire_delay at a particular spin_stage
+	var/list/stage_rate = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5)
+	/// Fire delay for current spin_stage
+	var/stage_delay = 0.8 SECONDS
 
-/*
-/obj/item/hardpoint/primary/minigun/fire(mob/user, atom/A)
+/obj/item/hardpoint/primary/minigun/process(delta_time)
+	var/stage_rate_len = stage_rate.len
+	var/delta_stage = (delta_time SECONDS) * (stage_rate_len - 1)
 
-	var/S = 'sound/weapons/vehicles/minigun_stop.ogg'
-	//check how much time since last shot. 2 seconds are grace period before minigun starts to lose rotation momentum
-	var/t = world.time - last_shot_time - 2 SECONDS
-	t = round(t / 10)
-	if(t > 0)
-		chained_shots = max(chained_shots - t * 3, 1) //we lose 3 chained_shots per second
-	else
-		if(chained_shots < 11)
-			chained_shots++
-		S = 'sound/weapons/vehicles/minigun_loop.ogg'
+	var/old_spin_stage = spin_stage
+	if(auto_firing || burst_firing) //spinup if firing
+		spin_stage += delta_stage / spinup_time
+	else //spindown if not firing
+		spin_stage -= delta_stage / spindown_time
+	spin_stage = Clamp(spin_stage, 1, stage_rate_len)
 
-	if(chained_shots == 1)
-		playsound(get_turf(src), 'sound/weapons/vehicles/minigun_start.ogg', 40, 1)
+	var/old_stage_rate = stage_rate[Floor(old_spin_stage)]
+	var/new_stage_rate = stage_rate[Floor(spin_stage)]
 
-	next_use = world.time + cooldown * owner.misc_multipliers["cooldown"]
+	if(old_stage_rate != new_stage_rate)
+		stage_delay = fire_delay / new_stage_rate
+		SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, stage_delay)
 
-	//how many rounds we will shoot in this burst
-	if(chained_shots > LAZYLEN(chain_bursts)) //5 shots at maximum rotation
-		t = 5
-	else
-		t = LAZYACCESS(chain_bursts, chained_shots)
-	for(var/i = 1; i <= t; i++)
-		var/atom/T = A
-		if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
-			T = get_step(get_turf(T), pick(cardinal))
-		fire_projectile(user, T)
-		if(ammo.current_rounds <= 0)
-			break
-		sleep(2)
-	to_chat(user, SPAN_WARNING("[src] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
+	if(spin_stage <= 1)
+		spin_stage = 1
+		STOP_PROCESSING(SSobj, src)
 
-	playsound(get_turf(src), S, 40, 1)
-	last_shot_time = world.time
-*/
+/obj/item/hardpoint/primary/minigun/handle_fire()
+	. = ..()
+
+	if((. & AUTOFIRE_CONTINUE))
+		COOLDOWN_START(src, fire_cooldown, stage_delay)
+		START_PROCESSING(SSobj, src)

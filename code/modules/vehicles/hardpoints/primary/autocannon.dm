@@ -8,8 +8,7 @@
 	activation_sounds = list('sound/weapons/vehicles/autocannon_fire.ogg')
 
 	health = 500
-	cooldown = 7
-	accuracy = 0.98
+	//accuracy = 0.98
 	firing_arc = 60
 
 	origins = list(0, -3)
@@ -29,3 +28,4 @@
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
 	)
+	scatter = 1

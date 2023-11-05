@@ -8,8 +8,7 @@
 	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
 
 	health = 500
-	cooldown = 30
-	accuracy = 0.4
+	//accuracy = 0.4
 	firing_arc = 90
 	var/max_range = 7
 
@@ -26,6 +25,7 @@
 		"4" = list(6, 0),
 		"8" = list(-6, 17)
 	)
+	scatter = 10
 
 	fire_delay = 3.0 SECONDS
 
@@ -35,13 +35,10 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/secondary/grenade_launcher/can_activate(mob/user, atom/A)
-	if(!..())
-		return FALSE
-
+/obj/item/hardpoint/secondary/grenade_launcher/try_fire(mob/user, atom/A)
 	var/turf/origin_turf = get_origin_turf()
 	if(origin_turf == get_turf(A))
 		to_chat(user, SPAN_WARNING("The target is too close."))
-		return FALSE
+		return NONE
 
-	return TRUE
+	return ..()

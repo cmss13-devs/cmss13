@@ -13,8 +13,7 @@
 	density = TRUE //come on, it's huge
 
 	activatable = TRUE
-	cooldown = 150
-	accuracy = 0.8
+	//accuracy = 0.8
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/turret_smoke
 	max_clips = 2
@@ -67,6 +66,7 @@
 	gun_firemode_list = list(
 		GUN_FIREMODE_BURSTFIRE,
 	)
+	scatter = 4
 
 /obj/item/hardpoint/holder/tank_turret/update_icon()
 	var/broken = (health <= 0)
@@ -210,7 +210,7 @@
 	if(shots_fired)
 		L = R
 
-	return fire_shot(L, user, params)
+	return handle_fire(L, user, params)
 
 /obj/item/hardpoint/holder/tank_turret/get_origin_turf()
 	var/origin_turf =  get_offset_target_turf(get_turf(src), origins[1], origins[2])

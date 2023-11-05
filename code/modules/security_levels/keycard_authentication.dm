@@ -158,10 +158,10 @@
 		to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 		return
 
-if(ert_dispatched)
+	if(SSticker.mode.ert_dispatched)
 		to_chat(usr, SPAN_WARNING("A distress beacon has already launched successfully!"))
 		return
-		
+
 	if(security_level == SEC_LEVEL_DELTA)
 		to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 		return
@@ -178,7 +178,7 @@ if(ert_dispatched)
 	else
 		SSticker.mode.request_ert(usr)
 	to_chat(usr, SPAN_NOTICE("An emergency distress beacon has been sent to nearby vessels."))
-	COOLDOWN_START(src, distress_Cooldown, COOLDOWN_COMM_REQUEST)
+	COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 
 GLOBAL_VAR_INIT(maint_all_access, TRUE)
 

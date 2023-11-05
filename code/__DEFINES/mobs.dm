@@ -47,9 +47,7 @@
 
 //disabilities
 #define NEARSIGHTED (1<<0)
-#define EPILEPSY (1<<1)
-#define COUGHING (1<<2)
-#define TOURETTES (1<<3)
+
 #define NERVOUS (1<<4)
 #define OPIATE_RECEPTOR_DEFICIENCY (1<<5)
 //=================================================

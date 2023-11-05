@@ -187,21 +187,6 @@
 	if(G.lighting_alpha < lighting_alpha)
 		lighting_alpha = G.lighting_alpha
 
-/mob/living/carbon/human/handle_silent()
-	if(..())
-		speech_problem_flag = TRUE
-	return silent
-
-/mob/living/carbon/human/handle_slurring()
-	if(..())
-		speech_problem_flag = TRUE
-	return slurring
-
-/mob/living/carbon/human/handle_stuttering()
-	if(..())
-		speech_problem_flag = TRUE
-	return stuttering
-
 #define HUMAN_TIMER_TO_EFFECT_CONVERSION (0.05) //(1/20) //once per 2 seconds, with effect equal to endurance, which is used later
 
 /mob/living/carbon/human/GetStunDuration(amount)

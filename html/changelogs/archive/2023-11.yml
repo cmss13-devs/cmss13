@@ -36,3 +36,15 @@
   - rscadd: Changed the plain glass in Working Joe presets to Reinforced Glass.
   sleepynecrons:
   - imagedel: shrinks the type-19 SMG stick magazine to a more reasonable size
+2023-11-05:
+  fira:
+  - bugfix: Fixed recyclers (including Whiskey Outposts') and added the possibility
+      to recycle crates with them.
+  - bugfix: Standardized "vend to table" functionality of vendors, enabling it to
+      work for Whiskey Outpost's Reqs.
+  - rscadd: Whiskey Outpost vendors now contain the same items as Almayer's. WO still
+      has spare specialist ammo on top of that.
+  - rscadd: Readded delivery chute, wrap and tagger to Whiskey Outpost Reqs, letting
+      you pack and send crates and items via disposals again.
+  - balance: Whiskey Outpost supply drops should now be more interesting and impactful.
+  - rscadd: Added missing Synth vendors on WO.

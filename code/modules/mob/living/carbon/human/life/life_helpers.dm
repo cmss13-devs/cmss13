@@ -216,20 +216,20 @@
 
 /mob/living/carbon/human/GetStunDuration(amount)
 	. = ..()
-	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
-	var/final_reduction = (1 - skill_resistance * 0.02) / species.stun_reduction
+	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.08 : 0
+	var/final_reduction = (1 - skill_resistance) / species.stun_reduction
 	return . * final_reduction
 
 /mob/living/carbon/human/GetKnockDownDuration(amount)
 	. = ..()
-	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
-	var/final_reduction = (1 - skill_resistance * 0.02) / species.knock_down_reduction
+	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.08 : 0
+	var/final_reduction = (1 - skill_resistance) / species.knock_down_reduction
 	return . * final_reduction
 
 /mob/living/carbon/human/GetKnockOutDuration(amount)
 	. = ..()
-	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
-	var/final_reduction = (1 - skill_resistance * 0.02) / species.knock_out_reduction
+	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.08 : 0
+	var/final_reduction = (1 - skill_resistance) / species.knock_out_reduction
 	return . * final_reduction
 
 /mob/living/carbon/human/proc/handle_revive()

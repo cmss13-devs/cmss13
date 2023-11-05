@@ -190,7 +190,7 @@
 /obj/structure/machinery/door/get_explosion_resistance()
 	if(density)
 		if(unacidable)
-			return 1000000 //I have no idea why do we use magic number here...
+			return 1000000 //Used for negation of explosions, should probably be made into define in the future
 		else
 			return EXPLOSION_THRESHOLD_LOW //this should exactly match the amount of damage needed to destroy the door
 	else

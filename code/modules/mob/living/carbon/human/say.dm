@@ -259,7 +259,6 @@ for it but just ignore it.
 /mob/living/carbon/human/proc/handle_speech_problems(message)
 	var/list/returns[2]
 	var/verb = "says"
-	var/handled = FALSE
 	if(silent)
 		message = ""
 	if(sdisabilities & DISABILITY_MUTE)

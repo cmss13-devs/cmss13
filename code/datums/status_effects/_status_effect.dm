@@ -115,6 +115,7 @@
 			// tick deleted us, no need to continue
 			return
 
+	// Timer and update procs should basically always handle this, it's a safety net
 	if(!timerid && duration != -1 && duration < world.time)
 		qdel(src)
 	else

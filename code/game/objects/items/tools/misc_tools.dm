@@ -300,7 +300,8 @@
 
 /obj/item/tool/pen/fountain/get_examine_text(mob/user)
 	. = ..()
-	. += "There's a laser engraving of [owner_name] on it."
+	if(owner_name)
+		. += "There's a laser engraving of [owner_name] on it."
 
 /obj/item/tool/pen/fountain/attack_self(mob/living/carbon/human/user)
 	if(on)

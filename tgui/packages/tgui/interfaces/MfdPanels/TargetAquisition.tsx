@@ -1,6 +1,6 @@
 import { range } from 'common/collections';
-import { useBackend, useSharedState } from '../../backend';
-import { Box, Stack } from '../../components';
+import { useBackend, useLocalState, useSharedState } from '../../backend';
+import { Box, Icon, NumberInput, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MfdProps, MfdPanel, usePanelState } from './MultifunctionDisplay';
 import { CasFiremission, LazeTarget } from './types';
@@ -19,6 +19,19 @@ directionLookup['N-S'] = 2;
 directionLookup['S-N'] = 1;
 directionLookup['E-W'] = 8;
 directionLookup['W-E'] = 4;
+
+const dirMap = (dir) => {
+  switch (dir) {
+    case 'NORTH':
+      return 1;
+    case 'SOUTH':
+      return 2;
+    case 'EAST':
+      return 4;
+    case 'WEST':
+      return 8;
+  }
+};
 
 export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
   const [_, setPanelState] = usePanelState(props.panelStateId, context);
@@ -42,6 +55,20 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
     number | undefined
   >(context, 'target-firemission-select', undefined);
 
+  const [fmOffsetDir, setFmOffsetDir] = useSharedState<
+    'NORTH' | 'SOUTH' | 'EAST' | 'WEST'
+  >(context, 'firemission-offset-dir', 'NORTH');
+
+  const [fmOffsetValue, setFmOffsetValue] = useSharedState<number>(
+    context,
+    'firemission-offset-value',
+    0
+  );
+
+  const [leftButtonMode, setLeftButtonMode] = useSharedState<
+    string | undefined
+  >(context, 'target_left', undefined);
+
   const { act, data } = useBackend<EquipmentContext & FiremissionContext>(
     context
   );
@@ -51,57 +78,154 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
   );
   const lazeMapper = (index: number) => {
     const target = lazes.length > index ? lazes[index] : undefined;
+    const label = target?.target_name.split(' ')[0] ?? '';
+    const squad = label[0] ?? '';
+    const number = label.split('-')[1] ?? '';
     return {
-      children: target?.target_name.split(' ')[0],
+      children: `${squad}-${number}`,
       onClick: target
         ? () => {
           act('set-camera', { 'equipment_id': target.target_tag });
           setSelectedTarget(target.target_tag);
         }
-        : undefined,
+        : () => {
+          act('set-camera', { 'equipment_id': null });
+          setSelectedTarget(undefined);
+        },
     };
   };
 
   const weapons = data.equipment_data.filter((x) => x.is_weapon);
 
   const leftButtonGenerator = () => {
-    if (strikeMode === 'weapon' && weaponSelected === undefined) {
-      return weapons.map((x) => {
-        return {
-          children: x.shorthand,
-          onClick: () => setWeaponSelected(x.mount_point),
-        };
-      });
-    }
-    if (strikeMode === 'firemission' && firemissionSelected === undefined) {
-      return data.firemission_data.map((x) => {
-        return {
-          children: x.name,
-          onClick: () => setFiremissionSelected(x.mission_tag),
-        };
-      });
-    }
-    return [
-      {},
-      {
-        children: 'WEAPON',
-        onClick: () => {
-          setWeaponSelected(undefined);
-          setStrikeMode('weapon');
+    if (leftButtonMode === undefined) {
+      return [
+        {
+          children: 'STRIKE',
+          onClick: () => setLeftButtonMode('STRIKE'),
         },
-      },
-      {
-        children: 'F-MISS',
-        onClick: () => {
-          setFiremissionSelected(undefined);
-          setStrikeMode('firemission');
+        {
+          children: 'VECTOR',
+          onClick: () => setLeftButtonMode('VECTOR'),
         },
-      },
-    ];
+        {
+          children: 'OFFSET',
+          onClick: () => setLeftButtonMode('OFFSET'),
+        },
+      ];
+    }
+    if (leftButtonMode === 'STRIKE') {
+      if (strikeMode === 'weapon' && weaponSelected === undefined) {
+        return weapons.map((x) => {
+          return {
+            children: x.shorthand,
+            onClick: () => {
+              setWeaponSelected(x.mount_point);
+              setLeftButtonMode(undefined);
+            },
+          };
+        });
+      }
+      if (strikeMode === 'firemission' && firemissionSelected === undefined) {
+        return data.firemission_data.map((x) => {
+          return {
+            children: x.name,
+            onClick: () => {
+              setFiremissionSelected(x.mission_tag);
+              setLeftButtonMode(undefined);
+            },
+          };
+        });
+      }
+      return [
+        { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
+        {
+          children: 'WEAPON',
+          onClick: () => {
+            setWeaponSelected(undefined);
+            setStrikeMode('weapon');
+          },
+        },
+        {
+          children: 'F-MISS',
+          onClick: () => {
+            setFiremissionSelected(undefined);
+            setStrikeMode('firemission');
+          },
+        },
+      ];
+    }
+    if (leftButtonMode === 'VECTOR') {
+      return [
+        { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
+        {
+          children: 'N-S',
+          onClick: () => {
+            setStrikeDirection('N-S');
+            setLeftButtonMode(undefined);
+          },
+        },
+        {
+          children: 'S-N',
+          onClick: () => {
+            setStrikeDirection('S-N');
+            setLeftButtonMode(undefined);
+          },
+        },
+        {
+          children: 'W-E',
+          onClick: () => {
+            setStrikeDirection('W-E');
+            setLeftButtonMode(undefined);
+          },
+        },
+        {
+          children: 'E-W',
+          onClick: () => {
+            setStrikeDirection('E-W');
+            setLeftButtonMode(undefined);
+          },
+        },
+      ];
+    }
+    if (leftButtonMode === 'OFFSET') {
+      return [
+        { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
+        {
+          children: 'NORTH',
+          onClick: () => {
+            setFmOffsetDir('NORTH');
+            setLeftButtonMode(undefined);
+          },
+        },
+        {
+          children: 'SOUTH',
+          onClick: () => {
+            setFmOffsetDir('SOUTH');
+            setLeftButtonMode(undefined);
+          },
+        },
+        {
+          children: 'EAST',
+          onClick: () => {
+            setFmOffsetDir('EAST');
+            setLeftButtonMode(undefined);
+          },
+        },
+        {
+          children: 'WEST',
+          onClick: () => {
+            setFmOffsetDir('WEST');
+            setLeftButtonMode(undefined);
+          },
+        },
+      ];
+    }
+    return [];
   };
 
   const strikeConfigLabel =
-    weaponSelected !== undefined
+    strikeMode === 'weapon'
       ? data.equipment_data.find((x) => x.mount_point === weaponSelected)?.name
       : firemissionSelected !== undefined
         ? data.firemission_data.find(
@@ -111,6 +235,15 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
 
   const lazeIndex = lazes.findIndex((x) => x?.target_tag === selectedTarget);
   const strikeReady = strikeMode !== undefined && lazeIndex !== -1;
+
+  const [targetOffset, setTargetOffset] = useLocalState(
+    context,
+    `${props.panelStateId}_targetOffset`,
+    0
+  );
+
+  const targets = range(targetOffset, targetOffset + 5).map(lazeMapper);
+  // lazes.map((x, i) => lazeMapper(i))
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -122,12 +255,21 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
               tag: firemissionSelected,
               direction: strikeDirection ? directionLookup[strikeDirection] : 1,
               target_id: selectedTarget,
+              offset_direction: dirMap(fmOffsetDir),
+              offset_value: fmOffsetValue,
             }),
         },
-        { children: 'N-S', onClick: () => setStrikeDirection('N-S') },
-        { children: 'S-N', onClick: () => setStrikeDirection('S-N') },
-        { children: 'W-E', onClick: () => setStrikeDirection('W-E') },
-        { children: 'E-W', onClick: () => setStrikeDirection('E-W') },
+        {},
+        {},
+        {},
+        {
+          children: <Icon name="arrow-up" />,
+          onClick: () => {
+            if (targetOffset > 0) {
+              setTargetOffset(targetOffset - 1);
+            }
+          },
+        },
       ]}
       bottomButtons={[
         {
@@ -135,9 +277,19 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
           onClick: () => setPanelState(''),
         },
         {},
+        {},
+        {},
+        {
+          children: <Icon name="arrow-down" />,
+          onClick: () => {
+            if (targetOffset < lazes.length - 1) {
+              setTargetOffset(targetOffset + 1);
+            }
+          },
+        },
       ]}
       leftButtons={leftButtonGenerator()}
-      rightButtons={lazes.map((x, i) => lazeMapper(i))}>
+      rightButtons={targets}>
       <Box className="NavigationMenu">
         <Stack>
           <Stack.Item width="50px">
@@ -160,13 +312,6 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
                 fillOpacity="0"
                 d="M 0 0 l 50 50 l 0 400 l -50 50"
               />
-              {lazeIndex === -1 && (
-                <text stroke="#00e94e" text-anchor="middle" x={0} y={0}>
-                  SELECT TARGET
-                </text>
-              )}
-              {strikeMode === 'weapon' && <StrikeArrow yoffset={130} />}
-              {strikeMode === 'firemission' && <StrikeArrow yoffset={230} />}
             </svg>
           </Stack.Item>
           <Stack.Item width="400px">
@@ -179,12 +324,6 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
                     fillOpacity="0"
                     d="M -1 0 l 50 50 l 395 0 l 50 -50"
                   />
-                  {strikeReady && <DirArrow xoffset={40} />}
-                  {strikeReady && <DirArrow xoffset={60} />}
-                  {strikeDirection === 'N-S' && <DirArrow xoffset={150} />}
-                  {strikeDirection === 'S-N' && <DirArrow xoffset={250} />}
-                  {strikeDirection === 'W-E' && <DirArrow xoffset={350} />}
-                  {strikeDirection === 'E-W' && <DirArrow xoffset={450} />}
                 </svg>
               </Stack.Item>
               <Stack.Item>
@@ -208,6 +347,26 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
               </Stack.Item>
               <Stack.Item>
                 <h3>
+                  Offset {fmOffsetDir}{' '}
+                  <NumberInput
+                    value={fmOffsetValue}
+                    onChange={(e, value) => {
+                      if (value < 0) {
+                        setFmOffsetValue(0);
+                        return;
+                      }
+                      if (value > 12) {
+                        setFmOffsetValue(12);
+                        return;
+                      }
+                      setFmOffsetValue(value);
+                    }}
+                    width="40px"
+                  />
+                </h3>
+              </Stack.Item>
+              <Stack.Item>
+                <h3>
                   Guidance computer {strikeReady ? 'READY' : 'INCOMPLETE'}
                 </h3>
               </Stack.Item>
@@ -215,34 +374,12 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
           </Stack.Item>
           <Stack.Item>
             <svg width="50px" height="500px">
-              <defs>
-                <marker
-                  id="arrowhead"
-                  markerWidth="10"
-                  markerHeight="7"
-                  refX="0"
-                  refY="3.5"
-                  fill="#00e94e"
-                  orient="auto">
-                  <polygon points="0 0, 10 3.5, 0 7" />
-                </marker>
-              </defs>
               <path
                 stroke="#00e94e"
                 stroke-width="1"
                 fillOpacity="0"
                 d="M 40 0 l -50 50 l 0 400 l 50 50"
               />
-              {lazeIndex === -1 && (
-                <text stroke="#00e94e" text-anchor="middle" x={0} y={0}>
-                  SELECT TARGET
-                </text>
-              )}
-              {lazeIndex === 0 && <LazeArrow yoffset={30} />}
-              {lazeIndex === 1 && <LazeArrow yoffset={30} />}
-              {lazeIndex === 2 && <LazeArrow yoffset={30} />}
-              {lazeIndex === 3 && <LazeArrow yoffset={30} />}
-              {lazeIndex === 4 && <LazeArrow yoffset={30} />}
             </svg>
           </Stack.Item>
         </Stack>

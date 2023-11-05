@@ -241,17 +241,17 @@
 /datum/cas_fire_envelope/proc/check_firemission_loc(datum/cas_signal/target_turf)
 	return TRUE //redefined in child class
 
+/**
+ * Execute firemission.
+ */
 /datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/target_turf, offset, dir, datum/cas_fire_mission/mission)
 	var/sx = 0
 	var/sy = 0
 
-	recorded_dir = dir
-	recorded_offset = offset
-
 	stat = FIRE_MISSION_STATE_IN_TRANSIT
 	sleep(grace_period)
 	stat = FIRE_MISSION_STATE_ON_TARGET
-	switch(recorded_dir)
+	switch(dir)
 		if(NORTH) //default direction
 			sx = 0
 			sy = 1
@@ -273,7 +273,7 @@
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
 		return
-	var/turf/shootloc = locate(tt_turf.x + sx*recorded_offset, tt_turf.y + sy*recorded_offset,tt_turf.z)
+	var/turf/shootloc = locate(tt_turf.x + sx*offset, tt_turf.y + sy*offset,tt_turf.z)
 	if(!shootloc || !istype(shootloc))
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds."
@@ -289,6 +289,9 @@
 	sleep(cooldown_period)
 	stat = FIRE_MISSION_STATE_IDLE
 
+/**
+ * Change attack vector for firemission
+ */
 /datum/cas_fire_envelope/proc/change_direction(new_dir)
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT)
 		mission_error = "Fire Mission is under way already."

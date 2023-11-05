@@ -501,18 +501,22 @@
 			var/weapon_id = text2num(params["weapon_id"])
 			var/offset_id = text2num(params["offset_id"])
 			var/offset_value = text2num(params["offset_value"])
-			return ui_change_offset(user, fm_tag, weapon_id, offset_id + 1, offset_value)
+			return ui_firemission_change_offset(user, fm_tag, weapon_id, offset_id + 1, offset_value)
 
 		if("firemission-execute")
-			var/fm_tag = params["tag"]
+			var/fm_tag = text2num(params["tag"])
 			var/direction = params["direction"]
 			var/target_id = params["target_id"]
+			var/offset_direction = params["offset_direction"]
+			var/offset_value = params["offset_value"]
+
+
 			if(!ui_select_firemission(user, fm_tag))
 				return FALSE
 			update_direction(user, text2num(direction))
 			ui_select_laser_firemission(user, shuttle, target_id)
 			ui_firemission_camera(user, shuttle)
-			initiate_firemission(user)
+			initiate_firemission(user, fm_tag, text2num(offset_direction), text2num(offset_value))
 			return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
@@ -769,7 +773,7 @@
 		selected_firemission = firemission_envelope.missions[firemission_tag]
 	return TRUE
 
-/obj/structure/machinery/computer/dropship_weapons/proc/ui_change_offset(mob/weapons_operator, fm_tag, weapon_id, offset_id, offset_value)
+/obj/structure/machinery/computer/dropship_weapons/proc/ui_firemission_change_offset(mob/weapons_operator, fm_tag, weapon_id, offset_id, offset_value)
 	if(!skillcheck(weapons_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 		to_chat(weapons_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
@@ -819,7 +823,7 @@
 	to_chat(camera_operator, "You peek through the guidance camera.")
 	return TRUE
 
-/obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission(mob/user)
+/obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission(mob/user, fmId, direction, offset)
 	set waitfor = 0
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 	if (!istype(dropship))
@@ -831,12 +835,7 @@
 		to_chat(user, "Has to be in Fly By mode")
 		return
 
-	var/fmid = firemission_envelope.missions.Find(selected_firemission)
-	if(!fmid)
-		to_chat(user, "No Firemission selected")
-		return
-
-	var/result = firemission_envelope.execute_firemission(firemission_envelope.recorded_loc, firemission_envelope.recorded_offset, firemission_envelope.recorded_dir, fmid)
+	var/result = firemission_envelope.execute_firemission(firemission_envelope.recorded_loc, offset, direction, fmId)
 	if(result<1)
 		to_chat(user, "Screen beeps with an error: "+ firemission_envelope.mission_error)
 	else

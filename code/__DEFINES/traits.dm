@@ -153,6 +153,9 @@
 /// Prevents voluntary standing or staying up on its own.
 #define TRAIT_FLOORED "floored"
 #define TRAIT_INCAPACITATED "incapacitated"
+/// Disoriented. Unable to talk, and unable to use skills as Xeno
+#define TRAIT_DAZED "dazed"
+
 
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
@@ -291,6 +294,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_KNOCKEDOUT" = TRAIT_KNOCKEDOUT,
 		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
 		"TRAIT_FLOORED" = TRAIT_FLOORED,
+		"TRAIT_DAZED" = TRAIT_DAZED,
 		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,

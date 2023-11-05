@@ -127,20 +127,51 @@
 		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
 	return S
 
+/* DAZE (Light incapacitation) */
+/// Overridable handler to adjust the numerical value of status effects. Expand as needed
+/mob/living/proc/GetDazeDuration(amount)
+	return amount * GLOBAL_STATUS_MULTIPLIER
+/mob/living/proc/IsDaze() //If we're stunned
+	return has_status_effect(/datum/status_effect/incapacitating/daze)
+/mob/living/proc/AmountDAze() //How many deciseconds remains
+	var/datum/status_effect/incapacitating/daze/S = IsDaze()
+	if(S)
+		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
+	return 0
 /mob/living/proc/Daze(amount)
-	if(status_flags & CANDAZE)
-		dazed = max(max(dazed,amount),0)
-	return
-
-/mob/living/proc/SetDaze(amount)
-	if(status_flags & CANDAZE)
-		dazed = max(amount,0)
-	return
-
-/mob/living/proc/AdjustDaze(amount)
-	if(status_flags & CANDAZE)
-		dazed = max(dazed + amount,0)
-	return
+	if(!(status_flags & CANDAZE))
+		return
+	amount = GetDazeDuration(amount)
+	var/datum/status_effect/incapacitating/daze/S = IsDaze()
+	if(S)
+		S.update_duration(amount, increment = TRUE)
+	else if(amount > 0)
+		S = apply_status_effect(/datum/status_effect/incapacitating/daze, amount)
+	return S
+/mob/living/proc/SetDaze(amount, ignore_canstun = FALSE) //Sets remaining duration
+	if(!(status_flags & CANDAZE))
+		return
+	amount = GetDazeDuration(amount)
+	var/datum/status_effect/incapacitating/daze/S = IsDaze()
+	if(amount <= 0)
+		if(S)
+			qdel(S)
+	else
+		if(S)
+			S.update_duration(amount)
+		else
+			S = apply_status_effect(/datum/status_effect/incapacitating/daze, amount)
+	return S
+/mob/living/proc/AdjustDaze(amount, ignore_canstun = FALSE) //Adds to remaining duration
+	if(!(status_flags & CANDAZE))
+		return
+	amount = GetStunDuration(amount)
+	var/datum/status_effect/incapacitating/daze/S = IsDaze()
+	if(S)
+		S.adjust_duration(amount)
+	else if(amount > 0)
+		S = apply_status_effect(/datum/status_effect/incapacitating/daze, amount)
+	return S
 
 /mob/living/proc/Slow(amount)
 	if(status_flags & CANSLOW)

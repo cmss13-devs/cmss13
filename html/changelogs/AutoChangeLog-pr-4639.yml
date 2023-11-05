@@ -1,5 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - refactor: "reworked trijent elevators to be reusable on new maps"
-  - maptweak: "Trijent map now has two elevators, lz1 to engineering and lz2 to omega"

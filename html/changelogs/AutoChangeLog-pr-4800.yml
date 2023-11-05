@@ -1,4 +1,0 @@
-author: "SASoperative"
-delete-after: True
-changes:
-  - bugfix: "Fixed sprite issue by disabling camo variant for donator item"

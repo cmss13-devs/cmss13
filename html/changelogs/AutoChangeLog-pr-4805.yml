@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed Limbs and Organs deleting incorrectly on species change."

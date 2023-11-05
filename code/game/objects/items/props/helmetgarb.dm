@@ -527,29 +527,38 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "photo"
 	///The human who spawns with the photo
-	var/mob/living/carbon/human/owner
+	var/datum/weakref/owner
+	///The belonging human name
+	var/owner_name
+	///The belonging human faction
+	var/owner_faction
 	///Text written on the back
 	var/scribble
 
-/obj/item/prop/helmetgarb/family_photo/Initialize(mapload, ...)
+/obj/item/prop/helmetgarb/family_photo/pickup(mob/user, silent)
 	. = ..()
-	if(!mapload)
-		RegisterSignal(src, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+	if(!owner)
+		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+
 
 ///Sets the owner of the family photo to the human it spawns with, needs var/source for signals
-/obj/item/prop/helmetgarb/family_photo/proc/set_owner(source = src, mob/living/carbon/human/user)
-	UnregisterSignal(src, COMSIG_POST_SPAWN_UPDATE)
-	owner = user
+/obj/item/prop/helmetgarb/family_photo/proc/set_owner(datum/source)
+	SIGNAL_HANDLER
+	UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+	var/mob/living/carbon/human/user = source
+	owner = WEAKREF(user)
+	owner_name = user.name
+	owner_faction = user.faction
 
 /obj/item/prop/helmetgarb/family_photo/get_examine_text(mob/user)
 	. = ..()
 	if(scribble)
 		. += "\"[scribble]\" is written on the back of the photo."
-	if(user == owner)
+	if(user.weak_reference == owner)
 		. += "A photo of you and your family."
 		return
-	if(user.faction == owner?.faction)
-		. += "A photo of [owner] and their family."
+	if(user.faction == owner_faction)
+		. += "A photo of [owner_name] and their family."
 		return
 	. += "A photo of a family you do not know."
 

@@ -142,7 +142,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(!(user_dir in vend_dir_whitelist))
 				return turf
 		var/turf/relative_turf = get_step(user, vend_dir)
-		if(relative_turf.Adjacent(src))
+		if(relative_turf)
 			return relative_turf
 	return turf
 

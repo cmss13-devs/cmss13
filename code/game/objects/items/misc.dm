@@ -141,13 +141,13 @@
 	. = ..()
 
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/machete
-	stored_item = new /obj/item/weapon/claymore/mercsword/machete
+	stored_item = new /obj/item/weapon/sword/machete
 
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/ceremonial_sword
-	stored_item = new /obj/item/weapon/claymore/mercsword/ceremonial
+	stored_item = new /obj/item/weapon/sword/ceremonial
 
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/katana
-	stored_item = new /obj/item/weapon/katana
+	stored_item = new /obj/item/weapon/sword/katana
 
 // IN SHOTGUNS.DM!!
 

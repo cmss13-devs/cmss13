@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Corpsman can chose to optionally vend a set of armoured sterile gloves as a alternative to regular gloves. They provide full glove protection, but are otherwise an aesthetic choice."

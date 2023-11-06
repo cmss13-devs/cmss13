@@ -40,6 +40,7 @@
 		/obj/item/weapon/throwing_knife,
 		/obj/item/weapon/gun/pistol/holdout,
 		/obj/item/weapon/gun/pistol/clfpistol,
+		/obj/item/weapon/straight_razor,
 	)
 
 /obj/item/clothing/shoes/yautja/thrall/New(mapload, greaves_number = 1, armor_material = pick("cloth", "bare"))

@@ -54,13 +54,14 @@
 					if(prob(10))
 						apply_effect(rand(1, 2), WEAKEN)
 						to_chat(src, SPAN_DANGER("Internal power cell fault detected.\nSeek nearest recharging station."))
-				if(eye_blurry < 50)
-					AdjustEyeBlur(6)
-				oxyloss += 3
-				if(prob(15))
-					apply_effect(rand(1,3), PARALYZE)
-					var/word = pick("dizzy","woozy","faint")
-					to_chat(src, SPAN_DANGER("You feel very [word]."))
+				else
+					if(eye_blurry < 50)
+						AdjustEyeBlur(6)
+						oxyloss += 3
+					if(prob(15))
+						apply_effect(rand(1,3), PARALYZE)
+						var/word = pick("dizzy","woozy","faint")
+						to_chat(src, SPAN_DANGER("You feel very [word]."))
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 				if(species.flags & IS_SYNTHETIC)
 					if(prob(10))

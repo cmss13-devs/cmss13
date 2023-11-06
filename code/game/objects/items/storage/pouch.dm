@@ -142,9 +142,9 @@
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
-	desc = "It can carry flashlights, a pill, a crowbar, metal sheets, and some bandages."
+	desc = "A pouch given to colonists in the event of an emergency."
 	icon_state = "tools"
-	storage_slots = 6
+	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,
@@ -153,6 +153,7 @@
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/device/radio,
 		/obj/item/attachable/bayonet,
+		/obj/item/stack/medical/splint,
 	)
 
 /obj/item/storage/pouch/survival/full/fill_preset_inventory()
@@ -162,12 +163,12 @@
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/device/radio(src)
 	new /obj/item/attachable/bayonet(src)
-
+	new /obj/item/stack/medical/splint(src)
 /obj/item/storage/pouch/survival/synth
 	name = "synth survival pouch"
 	desc = "An emergency pouch given to synthetics in the event of an emergency."
 	icon_state = "tools"
-	storage_slots = 7
+	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,
@@ -180,7 +181,6 @@
 	)
 
 /obj/item/storage/pouch/survival/synth/full/fill_preset_inventory()
-	new /obj/item/device/flashlight(src)
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/stack/cable_coil(src)
@@ -1372,7 +1372,7 @@
 	item_state = "machete_holster"
 	max_w_class = SIZE_LARGE
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
-	can_hold = list(/obj/item/weapon/claymore/mercsword/machete)
+	can_hold = list(/obj/item/weapon/sword/machete)
 
 	var/sheathe_sound = 'sound/weapons/gun_rifle_draw.ogg'
 	var/draw_sound = 'sound/weapons/gun_rifle_draw.ogg'
@@ -1392,4 +1392,4 @@
 	playsound(src, draw_sound, vol = 15, vary = TRUE)
 
 /obj/item/storage/pouch/machete/full/fill_preset_inventory()
-	new /obj/item/weapon/claymore/mercsword/machete(src)
+	new /obj/item/weapon/sword/machete(src)

@@ -182,10 +182,9 @@
 		return 0
 
 	var/inaccurate = 0
-	if(W.sharp == IS_SHARP_ITEM_ACCURATE)
-	else if(W.sharp == IS_SHARP_ITEM_BIG)
+	if(W.sharp == IS_SHARP_ITEM_BIG)
 		inaccurate = 1
-	else
+	else if(W.sharp != IS_SHARP_ITEM_ACCURATE)
 		return 1
 	if ( !istype(loc, /obj/structure/surface/table) && \
 			(!isturf(src.loc) || \
@@ -206,7 +205,7 @@
 			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"), \
 			SPAN_NOTICE("You crudely slice \the [src] with your [W]!") \
 		)
-		slices_lost = rand(1,min(1,round(slices_num/2)))
+		slices_lost = rand(1,max(1,round(slices_num/2)))
 	var/reagents_per_slice = reagents.total_volume/slices_num
 	for(var/i=1 to (slices_num-slices_lost))
 		var/obj/slice = new slice_path (src.loc)

@@ -38,10 +38,14 @@
 
 /obj/item/device/binoculars/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
-
+	RegisterSignal(user, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION, PROC_REF(interaction_handler))
 
 /obj/item/device/binoculars/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
+	UnregisterSignal(user, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION)
+
+/obj/item/device/binoculars/proc/interaction_handler()
+	return COMPONENT_HUMAN_MOVEMENT_KEEP_USING
 
 /obj/item/device/binoculars/civ
 	desc = "A pair of binoculars."

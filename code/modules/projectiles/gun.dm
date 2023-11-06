@@ -524,6 +524,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(fire_delay_group && delay_left > 0)
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
+	for(var/obj/item/attachable/stock/smg/collapsible/brace/current_stock in contents) //SMG armbrace folds to stop it getting stuck on people
+		if(current_stock.stock_activated)
+			current_stock.activate_attachment(src, user, turn_off = TRUE)
+
 	unwield(user)
 	set_gun_user(null)
 
@@ -1959,6 +1963,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /// Setter proc for fa_firing
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
+	SIGNAL_HANDLER
 	fa_firing = auto
 
 /// Getter for gun_user

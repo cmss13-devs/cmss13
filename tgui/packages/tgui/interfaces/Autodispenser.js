@@ -11,7 +11,6 @@ export const Autodispenser = (_props, context) => {
     multiplier,
     cycle_limit,
     automode,
-    linked_storage,
     networked_storage,
     smartlink,
     outputmode,

@@ -1,0 +1,5 @@
+author: "AndroBetel"
+delete-after: True
+changes:
+  - spellcheck: "Fixed a typo in RO rules sign."
+  - spellcheck: "RO mention is no more, replaced with QM."

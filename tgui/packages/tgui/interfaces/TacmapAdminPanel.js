@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Button, Fragment, Stack, Flex } from '../components';
+import { Tabs, Section, Button, Stack, Flex } from '../components';
 import { DrawnMap } from './DrawnMap';
 import { Window } from '../layouts';
 
@@ -116,53 +116,49 @@ const FactionPage = (props, context) => {
           }
         />
       }>
-      <Fragment>
-        {Object(ckeys).map((ckey, ckey_index) => (
-          <Flex
-            direction="row"
-            key={ckey_index}
-            backgroundColor={
-              ckey_index % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''
-            }>
-            <Flex.Item grow={0} basis="content" mx={0.5} mt={0.8}>
-              <Button.Checkbox
-                content="View"
-                textAlign="center"
-                verticalAlignContent="bottom"
-                checked={selected_map === ckey_index}
-                disabled={selected_map === ckey_index}
-                onClick={() =>
-                  act('change_selection', {
-                    uscm: is_uscm,
-                    index: ckey_index,
-                  })
-                }
-              />
-            </Flex.Item>
-            <Flex.Item grow={1} align="center" m={1} p={0.2}>
-              {names[ckey_index]} ({ckey}) - {times[ckey_index]}
-            </Flex.Item>
-            <Flex.Item grow={0} basis="content" mr={0.5} mt={0.8}>
-              <Button.Confirm
-                icon="trash"
-                color="white"
-                confirmColor="bad"
-                content="Delete"
-                textAlign="center"
-                verticalAlignContent="bottom"
-                width={6.5}
-                disabled={selected_map !== ckey_index || svg === null}
-                onClick={() =>
-                  act('delete', {
-                    uscm: is_uscm,
-                    index: ckey_index,
-                  })
-                }
-              />
-            </Flex.Item>
-          </Flex>
-        ))}
-      </Fragment>
+      {Object(ckeys).map((ckey, ckey_index) => (
+        <Flex
+          direction="row"
+          key={ckey_index}
+          backgroundColor={ckey_index % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''}>
+          <Flex.Item grow={0} basis="content" mx={0.5} mt={0.8}>
+            <Button.Checkbox
+              content="View"
+              textAlign="center"
+              verticalAlignContent="bottom"
+              checked={selected_map === ckey_index}
+              disabled={selected_map === ckey_index}
+              onClick={() =>
+                act('change_selection', {
+                  uscm: is_uscm,
+                  index: ckey_index,
+                })
+              }
+            />
+          </Flex.Item>
+          <Flex.Item grow={1} align="center" m={1} p={0.2}>
+            {names[ckey_index]} ({ckey}) - {times[ckey_index]}
+          </Flex.Item>
+          <Flex.Item grow={0} basis="content" mr={0.5} mt={0.8}>
+            <Button.Confirm
+              icon="trash"
+              color="white"
+              confirmColor="bad"
+              content="Delete"
+              textAlign="center"
+              verticalAlignContent="bottom"
+              width={6.5}
+              disabled={selected_map !== ckey_index || svg === null}
+              onClick={() =>
+                act('delete', {
+                  uscm: is_uscm,
+                  index: ckey_index,
+                })
+              }
+            />
+          </Flex.Item>
+        </Flex>
+      ))}
     </Section>
   );
 };

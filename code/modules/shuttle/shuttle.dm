@@ -343,7 +343,7 @@
 	var/rechargeTime = 0 //time spent after arrival before being able to launch again
 	var/prearrivalTime = 0 //delay after call time finishes for sound effects, explosions, etc.
 
-	var/playing_Launch_Announcement_Alarm = 0 // 0 = off ; 1 = on
+	var/playing_launch_announcement_alarm = FALSE // FALSE = off ; TRUE = on
 	var/datum/looping_sound/looping_launch_announcement_alarm/alarm_sound_loop
 
 	var/landing_sound = 'sound/effects/engine_landing.ogg'
@@ -386,6 +386,7 @@
 
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
+		alarm_sound_loop = null
 		SSshuttle.mobile -= src
 		destination = null
 		previous = null

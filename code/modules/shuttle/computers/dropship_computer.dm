@@ -320,7 +320,7 @@
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	// Launch Alarm Variables
-	.["playing_Launch_Announcement_Alarm"] = shuttle.playing_Launch_Announcement_Alarm
+	.["playing_launch_announcement_alarm"] = shuttle.playing_launch_announcement_alarm
 
 	.["destinations"] = list()
 	// add flight
@@ -472,14 +472,14 @@
 		if("cancel-flyby")
 			if(shuttle.in_flyby && shuttle.timer && shuttle.timeLeft(1) >= DROPSHIP_WARMUP_TIME)
 				shuttle.setTimer(DROPSHIP_WARMUP_TIME)
-		if("playlaunchannouncementalarm")
+		if("play_launch_announcement_alarm")
 			shuttle.alarm_sound_loop.start()
-			shuttle.playing_Launch_Announcement_Alarm = 1
-			return TRUE
-		if ("stopplaylaunchannouncementalarm")
+			shuttle.playing_launch_announcement_alarm = TRUE
+			return
+		if ("stop_play_launch_announcement_alarm")
 			shuttle.alarm_sound_loop.stop()
-			shuttle.playing_Launch_Announcement_Alarm = 0
-			return TRUE
+			shuttle.playing_launch_announcement_alarm = FALSE
+			return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1
 	icon = 'icons/obj/structures/machinery/computer.dmi'

@@ -24,9 +24,7 @@ interface DropshipNavigationProps extends NavigationProps {
   automated_control: AutomatedControl;
   has_flyby_skill: 0 | 1;
 
-  playing_Launch_Announcement_Alarm: 0 | 1;
-  launchAnnouncementAlarmTimer: number /* the timer that counts */;
-  launchAnnouncementAlarmExpireTime: number /* When the timer expires. How long the alarm can play. */;
+  playing_launch_announcement_alarm: boolean;
 }
 
 const DropshipDoorControl = (_, context) => {
@@ -280,33 +278,33 @@ const AutopilotConfig = (props, context) => {
   );
 };
 
-export const StopPlayLaunchAnnouncementAlarm = (_, context) => {
+const StopPlayLaunchAnnouncementAlarm = (_, context) => {
   const { act } = useBackend<NavigationProps>(context);
   return (
     <Button
       icon="ban"
       onClick={() => {
-        act('stopplaylaunchannouncementalarm');
+        act('stop_play_launch_announcement_alarm');
       }}>
       Stop Alarm
     </Button>
   );
 };
 
-export const PlayLaunchAnnouncementAlarm = (_, context) => {
+const PlayLaunchAnnouncementAlarm = (_, context) => {
   const { act } = useBackend<NavigationProps>(context);
   return (
     <Button
       icon="rocket"
       onClick={() => {
-        act('playlaunchannouncementalarm');
+        act('play_launch_announcement_alarm');
       }}>
       Start Alarm
     </Button>
   );
 };
 
-export const LaunchAnnouncementAlarm = (_, context) => {
+const LaunchAnnouncementAlarm = (_, context) => {
   const { data, act } = useBackend<DropshipNavigationProps>(context);
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     context,
@@ -318,13 +316,13 @@ export const LaunchAnnouncementAlarm = (_, context) => {
       title="Launch Announcement Alarm"
       buttons={
         <>
-          {data.playing_Launch_Announcement_Alarm === 0 && (
+          {data.playing_launch_announcement_alarm === false && (
             <PlayLaunchAnnouncementAlarm />
           )}
 
-          {data.playing_Launch_Announcement_Alarm === 1 && (
+          {data.playing_launch_announcement_alarm === true && (
             <Button
-              onClick={() => act('stopplaylaunchannouncementalarm')}
+              onClick={() => act('stop_play_launch_announcement_alarm')}
               icon="triangle-exclamation">
               Stop Launch Alarm
             </Button>

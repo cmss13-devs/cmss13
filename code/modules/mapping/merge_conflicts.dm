@@ -13,4 +13,4 @@
 	. = ..()
 	var/msg = "HEY, LISTEN!!! Merge Conflict Marker detected at [AREACOORD(src)]! Please manually address all potential merge conflicts!!!"
 	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
-	warning(msg)
+	CRASH(msg)

@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(vend_dir_whitelist)
 			var/user_dir = get_dir(loc, user)
 			if(!(user_dir in vend_dir_whitelist))
-				return turf
+				return get_turf(user)
 		var/turf/relative_turf = get_step(user, vend_dir)
 		if(relative_turf)
 			return relative_turf

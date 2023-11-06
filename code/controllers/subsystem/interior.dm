@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(interior)
 			continue
 		if(x >= bounds[1].x && x <= bounds[2].x && y >= bounds[1].y && y <= bounds[2].y)
 			return current_interior
-	return null
+	return
 
 /// Checks if an atom is in an interior
 /datum/controller/subsystem/interior/proc/in_interior(loc)

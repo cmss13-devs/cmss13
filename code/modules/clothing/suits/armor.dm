@@ -215,7 +215,7 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 	allowed = list(
-		/obj/item/weapon/claymore/mercsword,
+		/obj/item/weapon/sword,
 		/obj/item/weapon/shield/riot,
 		/obj/item/device/flashlight,
 	)
@@ -423,7 +423,7 @@
 			return
 		var/obj/item/weapon/gun/W = usr.get_active_hand()
 		if (W.w_class > SIZE_MEDIUM)
-			to_chat(usr, SPAN_DANGER("This gun won't fit in \the belt!"))
+			to_chat(usr, SPAN_DANGER("This gun won't fit in the belt!"))
 			return
 		holstered = usr.get_active_hand()
 		usr.drop_held_item()

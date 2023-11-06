@@ -258,3 +258,37 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			return "Working Joe"
 		if(APOLLO_ACCESS_DEBUG)//6
 			return "AI Service Technician"
+
+/obj/item/device/working_joe_pda/proc/get_ares_access(obj/item/card/id/card)
+	if(ACCESS_ARES_DEBUG in card.access)
+		return APOLLO_ACCESS_DEBUG
+	switch(card.assignment)
+		if(JOB_WORKING_JOE)
+			return APOLLO_ACCESS_JOE
+		if(JOB_CHIEF_ENGINEER, JOB_SYNTH, JOB_CO)
+			return APOLLO_ACCESS_AUTHED
+	if(ACCESS_MARINE_AI in card.access)
+		return APOLLO_ACCESS_AUTHED
+	if(ACCESS_MARINE_AI_TEMP in card.access)
+		return APOLLO_ACCESS_TEMP
+	if((ACCESS_MARINE_SENIOR in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_GENERAL in card.access))
+		return APOLLO_ACCESS_REPORTER
+	else
+		return APOLLO_ACCESS_REQUEST
+
+/obj/item/device/working_joe_pda/proc/ares_auth_to_text(access_level)
+	switch(access_level)
+		if(APOLLO_ACCESS_LOGOUT)//0
+			return "Logged Out"
+		if(APOLLO_ACCESS_REQUEST)//1
+			return "Unauthorized Personnel"
+		if(APOLLO_ACCESS_REPORTER)//2
+			return "Validated Incident Reporter"
+		if(APOLLO_ACCESS_TEMP)//3
+			return "Authorized Visitor"
+		if(APOLLO_ACCESS_AUTHED)//4
+			return "Certified Personnel"
+		if(APOLLO_ACCESS_JOE)//5
+			return "Working Joe"
+		if(APOLLO_ACCESS_DEBUG)//6
+			return "AI Service Technician"

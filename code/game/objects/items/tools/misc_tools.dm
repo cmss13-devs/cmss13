@@ -173,7 +173,7 @@
 		playsound(user.loc, "sound/items/pen_click_[on? "on": "off"].ogg", 100, 1, 5)
 	update_pen_state()
 
-/obj/item/tool/pen/Initialize()
+/obj/item/tool/pen/Initialize(mapload, ...)
 	. = ..()
 	update_pen_state()
 
@@ -286,15 +286,15 @@
 	var/current_colour_index = 1
 	var/owner = "hard to read text"
 
-/obj/item/tool/pen/fountain/Initialize(mapload, mob/living/carbon/human/user)
+/obj/item/tool/pen/fountain/Initialize(mapload, ...)
 	. = ..()
-	var/turf/current_turf = get_turf(src)
-	var/mob/living/carbon/human/new_owner = locate() in current_turf
-	if(new_owner)
-		owner = new_owner.real_name
-	var/obj/structure/machinery/cryopod/new_owners_pod = locate() in current_turf
-	if(new_owners_pod)
-		owner = new_owners_pod.occupant?.real_name
+	if(!mapload)
+		RegisterSignal(src, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+
+///Sets the owner of the pen to who it spawns with, requires var/source for signals
+/obj/item/tool/pen/fountain/proc/set_owner(source = src, mob/living/carbon/human/user)
+	UnregisterSignal(src, COMSIG_POST_SPAWN_UPDATE)
+	owner = user
 
 /obj/item/tool/pen/fountain/get_examine_text(mob/user)
 	. = ..()

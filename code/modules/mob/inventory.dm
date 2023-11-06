@@ -351,12 +351,13 @@
 					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_SHOES)
-			if(src.shoes && istype(src.shoes, /obj/item/clothing/shoes))
-				var/obj/item/clothing/shoes/S = src.shoes
-				if(!S.stored_item)
-					S.stored_item = W
-					W.forceMove(S)
-					equipped = 1
+			if(!shoes)
+				return
+			if(!istype(shoes, /obj/item/clothing/shoes))
+				return
+			if(shoes.stored_item)
+				return
+			shoes.attempt_insert_item(src, shoes, TRUE)
 		if(WEAR_IN_SCABBARD)
 			if(src.back && istype(src.back, /obj/item/storage/large_holster))
 				var/obj/item/storage/large_holster/B = src.back

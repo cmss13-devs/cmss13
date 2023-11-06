@@ -11,11 +11,8 @@
 	black_market_value = 10
 	var/string_attached
 	var/sides = 2
-
-/obj/item/coin/Initialize()
-	. = ..()
-	pixel_x = rand(0,16)-8
-	pixel_y = rand(0,8)-8
+	ground_offset_x = 8
+	ground_offset_y = 4
 
 /obj/item/coin/gold
 	name = "gold coin"
@@ -28,6 +25,11 @@
 	desc = "A coin of the purest silver."
 	icon_state = "coin_silver"
 	black_market_value = 25
+
+//CO coin
+/obj/item/coin/silver/falcon
+	name = "falling falcons challenge coin"
+	desc = "A small coin, bearing the falling falcons insignia."
 
 /obj/item/coin/copper
 	name = "copper coin"

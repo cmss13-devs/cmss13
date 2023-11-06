@@ -1,6 +1,0 @@
-author: "foxtrot1322"
-delete-after: True
-changes:
-  - rscadd: "Added splints to the survival pouch"
-  - rscadd: "Increased survival pouch storage space by 1"
-  - spellcheck: "Updates the survival pouch's description"

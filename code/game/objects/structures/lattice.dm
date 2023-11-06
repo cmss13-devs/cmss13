@@ -43,8 +43,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/lattice/attackby(obj/item/C as obj, mob/user as mob)
 

@@ -287,6 +287,9 @@
 			if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
+			if(inoperable())
+				return
+
 			to_chat(user, SPAN_WARNING("You finish overloading the safeties on [src]."))
 			set_overloading(TRUE)
 			log_game("[key_name(user)] has overloaded a generator.")
@@ -294,6 +297,9 @@
 		else
 			to_chat(user, SPAN_WARNING("You start restoring the safeties on [src]..."))
 			if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				return
+
+			if(inoperable())
 				return
 
 			to_chat(user, SPAN_WARNING("You finish restoring the safeties on [src]."))

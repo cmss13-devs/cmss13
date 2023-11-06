@@ -1,0 +1,5 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - code_imp: "Tents now hold the datum directly, instead of the typepath"
+  - admin: "Added a proc for staff to change tent dmm's"

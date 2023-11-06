@@ -59,6 +59,13 @@
 	. = ..()
 	new /obj/item/storage/box/guncase/m41aMK1(src)
 
+//4 MK1 (with AP) cabinet(using guncase because it fit well here it seem)
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap
+
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap/Initialize()
+	. = ..()
+	new /obj/item/storage/box/guncase/m41aMK1AP(src)
+
 // UPPER MEDBAY ARMORY
 
 //1 shotgun armory closet 2 guns and 4 mags

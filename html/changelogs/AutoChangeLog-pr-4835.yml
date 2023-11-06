@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - rscdel: "Removed unused magnet and mass driver legacy SS13 machinery."

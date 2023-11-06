@@ -11,11 +11,11 @@
 
 #define HUNTER_GOOD_ITEM  pick(\
 								50; /obj/item/weapon/shield/riot, \
-								100; /obj/item/weapon/claymore, \
-								100; /obj/item/weapon/katana, \
+								100; /obj/item/weapon/sword, \
+								100; /obj/item/weapon/sword/katana, \
 								100; /obj/item/weapon/harpoon/yautja, \
-								150; /obj/item/weapon/claymore/mercsword, \
-								200; /obj/item/weapon/claymore/mercsword/machete, \
+								150; /obj/item/weapon/sword, \
+								200; /obj/item/weapon/sword/machete, \
 								125; /obj/item/weapon/twohanded/fireaxe, \
 \
 								100; /obj/item/device/binoculars, \
@@ -51,7 +51,7 @@
 								300; /obj/item/tool/hatchet, \
 								100; /obj/item/tool/scythe, \
 								100; /obj/item/tool/kitchen/knife/butcher, \
-								50; /obj/item/weapon/katana/replica, \
+								50; /obj/item/weapon/sword/katana/replica, \
 								100; /obj/item/weapon/harpoon, \
 								75; /obj/item/attachable/bayonet, \
 								200; /obj/item/weapon/throwing_knife, \

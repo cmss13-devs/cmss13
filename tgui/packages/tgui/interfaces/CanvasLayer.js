@@ -256,46 +256,56 @@ export class CanvasLayer extends Component {
     return count;
   }
 
-  render() {
-    // edge case where a new user joins and tries to draw on the canvas before they cached the png
+  displayCanvas() {
     return (
       <div>
-        {this.state.mapLoad ? (
-          <div>
-            {this.complexity > 500 && (
-              <Tooltip
-                position="bottom"
-                content={
-                  'This drawing may be too complex to submit. (' +
-                  this.complexity +
-                  ')'
-                }>
-                <Icon
-                  name="fa-solid fa-triangle-exclamation"
-                  size={2}
-                  position="absolute"
-                  mx="50%"
-                  mt="25px"
-                />
-              </Tooltip>
-            )}
-            <canvas
-              ref={this.canvasRef}
-              width={650}
-              height={600}
-              onMouseDown={(e) => this.handleMouseDown(e)}
-              onMouseUp={(e) => this.handleMouseUp(e)}
-              onMouseMove={(e) => this.handleMouseMove(e)}
+        {this.complexity > 500 && (
+          <Tooltip
+            position="bottom"
+            content={
+              'This drawing may be too complex to submit. (' +
+              this.complexity +
+              ')'
+            }>
+            <Icon
+              name="fa-solid fa-triangle-exclamation"
+              size={2}
+              position="absolute"
+              mx="50%"
+              mt="25px"
             />
-          </div>
-        ) : (
-          <Box my="273.5px">
-            <h1>
-              Please wait a few minutes before attempting to access the canvas.
-            </h1>
-          </Box>
+          </Tooltip>
         )}
+        <canvas
+          ref={this.canvasRef}
+          width={650}
+          height={600}
+          onMouseDown={(e) => this.handleMouseDown(e)}
+          onMouseUp={(e) => this.handleMouseUp(e)}
+          onMouseMove={(e) => this.handleMouseMove(e)}
+        />
       </div>
     );
+  }
+
+  displayLoading() {
+    return (
+      <div>
+        <Box my="273.5px">
+          <h1>
+            Please wait a few minutes before attempting to access the canvas.
+          </h1>
+        </Box>
+      </div>
+    );
+  }
+
+  render() {
+    if (this.state.mapLoad) {
+      return this.displayCanvas();
+    } else {
+      // edge case where a new user joins and tries to draw on the canvas before they cached the png
+      return this.displayLoading();
+    }
   }
 }

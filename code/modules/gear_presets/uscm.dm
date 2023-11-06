@@ -138,7 +138,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(new_human), WEAR_EYES)
 
-/datum/equipment_preset/uscm/sg/full/load_status()
+/datum/equipment_preset/uscm/sg/full/load_status(mob/living/carbon/human/new_human)
 	return //No cryo munchies
 
 //*****************************************************************************************************/
@@ -175,7 +175,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
 
-/datum/equipment_preset/uscm/tank/load_status()
+/datum/equipment_preset/uscm/tank/load_status(mob/living/carbon/human/new_human)
 	return
 
 //*****************************************************************************************************/
@@ -235,7 +235,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
-/datum/equipment_preset/uscm/intel/load_status()
+/datum/equipment_preset/uscm/intel/load_status(mob/living/carbon/human/new_human)
 	return //No cryo munchies
 
 //*****************************************************************************************************/
@@ -319,7 +319,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human.back), WEAR_IN_BACK)
 
-/datum/equipment_preset/uscm/spec/full_armor/load_status()
+/datum/equipment_preset/uscm/spec/full_armor/load_status(mob/living/carbon/human/new_human)
 	return //No cryo munchies
 
 //*****************************************************************************************************/

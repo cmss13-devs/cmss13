@@ -7,9 +7,8 @@
     {
 		"type": "map_insert",
 		"landmark": "rmccrash",
-		"chance": 0.5,
-		"path": "standalone/crashlanding-rmc-stony-fields.dmm",
-		"when": { "lvevent": "rmccrash" }
+		"chance": 0.3,
+		"path": "standalone/crashlanding-rmc-stony-fields.dmm"
 	}
 
 ]

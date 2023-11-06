@@ -110,22 +110,22 @@
 /datum/equipment_preset/proc/load_id(mob/living/carbon/human/new_human, client/mob_client)
 	if(!idtype)
 		return
-	var/obj/item/card/id/W = new idtype()
-	W.name = "[new_human.real_name]'s ID Card"
+	var/obj/item/card/id/ID = new idtype()
+	ID.name = "[new_human.real_name]'s ID Card"
 	if(assignment)
-		W.name += " ([assignment])"
-	W.access = access.Copy(1, 0)
-	W.faction = faction
-	W.faction_group = faction_group.Copy()
-	W.assignment = assignment
-	W.rank = rank
-	W.registered_name = new_human.real_name
-	W.registered_ref = WEAKREF(new_human)
-	W.registered_gid = new_human.gid
-	W.blood_type = new_human.blood_type
-	W.paygrade = load_rank(new_human) || W.paygrade
-	W.uniform_sets = uniform_sets
-	new_human.equip_to_slot_or_del(W, WEAR_ID)
+		ID.name += " ([assignment])"
+	ID.access = access.Copy(1, 0)
+	ID.faction = faction
+	ID.faction_group = faction_group.Copy()
+	ID.assignment = assignment
+	ID.rank = rank
+	ID.registered_name = new_human.real_name
+	ID.registered_ref = WEAKREF(new_human)
+	ID.registered_gid = new_human.gid
+	ID.blood_type = new_human.blood_type
+	ID.paygrade = load_rank(new_human) || ID.paygrade
+	ID.uniform_sets = uniform_sets
+	new_human.equip_to_slot_or_del(ID, WEAR_ID)
 	new_human.faction = faction
 	new_human.faction_group = faction_group.Copy()
 	if(new_human.mind)

@@ -1,0 +1,5 @@
+author: "TopHatPenguin"
+delete-after: True
+changes:
+  - rscadd: "Adds a mostly built communications office nightmare insert to Kutjevo which attaches onto the sensor tower."
+  - rscadd: "Re-adds the Kutjevo blackbox."

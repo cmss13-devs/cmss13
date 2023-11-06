@@ -77,7 +77,7 @@
 	var/turf/filler_temp
 	var/list/located_turfs = list()
 
-	for(var/i = 1 in 1 to width - 1)
+	for(var/i in 1 to width - 1)
 		if (dir in list(EAST, WEST))
 			filler_temp = locate(x + i, y, z)
 		else

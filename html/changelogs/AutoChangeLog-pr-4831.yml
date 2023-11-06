@@ -1,0 +1,5 @@
+author: "IowaPotatoFarmer"
+delete-after: True
+changes:
+  - rscdel: "Removed the ability to build ground structures or anchor wall girders on top of xeno tunnels."
+  - bugfix: "Fixed wall girders being anchorable on shuttle tiles."

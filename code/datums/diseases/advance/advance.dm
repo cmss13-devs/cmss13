@@ -391,7 +391,7 @@ var/list/advance_cures = list(
 		D.AssignName(new_name)
 		D.Refresh()
 
-		for(var/datum/disease/advance/AD in active_diseases)
+		for(var/datum/disease/advance/AD in SSdisease.all_diseases)
 			AD.Refresh()
 
 		for(var/mob/living/carbon/human/H in shuffle(GLOB.alive_mob_list.Copy()))
@@ -409,7 +409,7 @@ var/list/advance_cures = list(
 /*
 /mob/verb/test()
 
-	for(var/datum/disease/D in active_diseases)
+	for(var/datum/disease/D in SSdisease.all_diseases)
 		to_chat(src, "<a href='?_src_=vars;Vars=\ref[D]'>[D.name] - [D.holder]</a>")
 */
 

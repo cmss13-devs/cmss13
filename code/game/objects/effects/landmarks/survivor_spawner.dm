@@ -8,6 +8,8 @@
 	var/roundstart_damage_min = 0
 	var/roundstart_damage_max = 0
 	var/roundstart_damage_times = 1
+	/// Whether or not the spawner is for an inherently hostile survivor subtype.
+	var/hostile = FALSE
 
 	var/spawn_priority = LOWEST_SPAWN_PRIORITY
 
@@ -27,6 +29,7 @@
 	return TRUE
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf
+	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf
 	synth_equipment = /datum/equipment_preset/clf/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
@@ -40,6 +43,7 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_engineer
+	hostile = TRUE
 	equipment = /datum/equipment_preset/clf/engineer
 	synth_equipment = /datum/equipment_preset/clf/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
@@ -53,6 +57,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_medic
+	hostile = TRUE
 	equipment = /datum/equipment_preset/clf/medic
 	synth_equipment = /datum/equipment_preset/clf/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\

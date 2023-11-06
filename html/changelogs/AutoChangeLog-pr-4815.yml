@@ -1,0 +1,4 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - bugfix: "vehicle interiors can hear exterior noises"

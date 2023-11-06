@@ -148,6 +148,9 @@
 			to_chat(user, SPAN_WARNING("You were interrupted."))
 			return
 
+		if(power_cell.charge <= 0)
+			return
+
 		var/to_transfer = min(max_recharge_tick, power_cell.charge, (max_charge - charge))
 		if(power_cell.use(to_transfer))
 			add_charge(null, to_transfer)

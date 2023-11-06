@@ -6676,7 +6676,7 @@
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "auR" = (
-/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -17406,17 +17406,25 @@
 	id = "cl_shutters";
 	name = "Privacy Shutters";
 	pixel_x = -5;
-	pixel_y = 6;
+	pixel_y = 8;
 	req_access_txt = "200"
 	},
 /obj/structure/machinery/door_control{
 	id = "RoomDivider";
 	name = "Room Divider";
 	pixel_x = -5;
-	pixel_y = -3;
+	pixel_y = -4;
 	req_access_txt = "200"
 	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/door_control{
+	pixel_x = -5;
+	pixel_y = 2;
+	req_access_txt = "200";
+	name = "Evac Pod Door Control";
+	id = "cl_evac";
+	normaldoorcontrol = 1
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)
 "bse" = (
@@ -18750,7 +18758,7 @@
 /area/almayer/engineering/lower_engineering)
 "byY" = (
 /obj/structure/bed,
-/obj/item/toy/farwadoll{
+/obj/item/toy/plush/farwa{
 	pixel_x = 5
 	},
 /obj/item/clothing/under/redpyjamas,
@@ -31539,6 +31547,12 @@
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
+"dPk" = (
+/obj/structure/machinery/sentry_holder/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "dPm" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -34624,6 +34638,52 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/upper_medical)
+"fbF" = (
+/obj/item/bedsheet/blue{
+	layer = 3.2
+	},
+/obj/item/bedsheet/blue{
+	pixel_y = 13
+	},
+/obj/item/toy/plush/therapy/red{
+	desc = "A USCM approved plush doll. It's not soft and hardly comforting!";
+	force = 15;
+	layer = 4.1;
+	name = "Sergeant Huggs";
+	pixel_y = 15;
+	throwforce = 15
+	},
+/obj/item/clothing/head/cmcap{
+	layer = 4.1;
+	pixel_x = -1;
+	pixel_y = 22
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/bed/chair/comfy/charlie,
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull"
+	},
+/area/almayer/living/briefing)
 "fbY" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -39831,6 +39891,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"hoT" = (
+/obj/structure/machinery/sentry_holder/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south1)
 "hoX" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
@@ -46573,7 +46639,7 @@
 	pixel_x = -16;
 	pixel_y = 8
 	},
-/obj/item/toy/plushie_cade,
+/obj/item/toy/plush/barricade,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -47058,6 +47124,42 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
+"kvy" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/yellow{
+	layer = 3.2
+	},
+/obj/item/bedsheet/yellow{
+	pixel_y = 13
+	},
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = -16;
+	pixel_y = 8
+	},
+/obj/item/toy/plush/barricade,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "kvz" = (
 /obj/structure/machinery/power/terminal{
 	dir = 4
@@ -47157,6 +47259,12 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/processing)
+"kyk" = (
+/obj/structure/machinery/sentry_holder/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north1)
 "kyI" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -51248,10 +51356,9 @@
 /obj/effect/landmark/map_item{
 	pixel_x = -8
 	},
-/obj/item/toy/farwadoll{
+/obj/item/toy/plush/therapy/red{
 	desc = "A USCM approved plush doll. It's not soft and hardly comforting!";
 	force = 15;
-	icon_state = "therapyred";
 	layer = 4.1;
 	name = "Sergeant Huggs";
 	pixel_x = 7;
@@ -51797,7 +51904,7 @@
 /area/almayer/living/briefing)
 "mtX" = (
 /obj/structure/machinery/light,
-/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -67608,7 +67715,7 @@
 "tjU" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/item/bedsheet/brown,
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "tkq" = (
@@ -70840,10 +70947,9 @@
 /obj/item/bedsheet/blue{
 	pixel_y = 13
 	},
-/obj/item/toy/farwadoll{
+/obj/item/toy/plush/therapy/red{
 	desc = "A USCM approved plush doll. It's not soft and hardly comforting!";
 	force = 15;
-	icon_state = "therapyred";
 	layer = 4.1;
 	name = "Sergeant Huggs";
 	pixel_y = 15;
@@ -76098,6 +76204,7 @@
 /area/almayer/command/airoom)
 "wDl" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/machinery/sentry_holder/almayer,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -76251,6 +76358,12 @@
 	icon_state = "redfull"
 	},
 /area/almayer/command/cic)
+"wFt" = (
+/obj/structure/machinery/sentry_holder/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "wFz" = (
 /obj/item/prop{
 	desc = "Predecessor to the M56 the M38 was known for its extreme reliability in the field. This particular M38D is fondly remembered for its stalwart defence of the hangar bay during the Arcturian commando raid of the USS Almayer on Io.";
@@ -103730,7 +103843,7 @@ awW
 add
 add
 add
-add
+kyk
 add
 add
 add
@@ -105151,7 +105264,7 @@ aoC
 add
 add
 add
-add
+kyk
 add
 add
 add
@@ -105197,7 +105310,7 @@ baw
 aJU
 aJU
 aJU
-aJU
+hoT
 aJU
 aJU
 aJU
@@ -115816,7 +115929,7 @@ aLJ
 eBg
 tSu
 sgO
-eBg
+kvy
 nmP
 tBF
 iqP
@@ -116457,7 +116570,7 @@ bJz
 bdg
 nsl
 nsl
-nsl
+fbF
 nsl
 nsl
 wNT
@@ -120984,7 +121097,7 @@ aeA
 aeC
 aeC
 aeC
-aeC
+wFt
 aeC
 aeC
 aeC
@@ -121032,7 +121145,7 @@ lJY
 vcE
 vcE
 vcE
-vcE
+dPk
 vcE
 vcE
 vcE
@@ -122405,7 +122518,7 @@ amH
 aeC
 aeC
 aeC
-aeC
+wFt
 aeC
 aeC
 aeC
@@ -122453,7 +122566,7 @@ kKR
 vcE
 vcE
 vcE
-vcE
+dPk
 vcE
 vcE
 vcE

@@ -18,14 +18,18 @@ SUBSYSTEM_DEF(game_decorator)
 
 /datum/game_decorator
 	var/defer_decoration = TRUE //! So map decoration is done post-setup after nightmare and spawners
+
 /datum/game_decorator/New()
 	if(defer_decoration)
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(defered_decoration))
+
 /datum/game_decorator/proc/is_active_decor()
 	return FALSE
+
 /datum/game_decorator/proc/defered_decoration(dcs)
 	SIGNAL_HANDLER
 	decorate()
+
 /datum/game_decorator/proc/decorate()
 	set waitfor = FALSE
 	return

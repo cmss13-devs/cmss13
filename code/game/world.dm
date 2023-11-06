@@ -71,8 +71,6 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 		RoleAuthority = new /datum/authority/branch/role()
 		to_world(SPAN_DANGER("\b Job setup complete"))
 
-	if(!EvacuationAuthority) EvacuationAuthority = new
-
 	initiate_minimap_icons()
 
 	change_tick_lag(CONFIG_GET(number/ticklag))

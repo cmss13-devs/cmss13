@@ -123,7 +123,7 @@
 	W.registered_ref = WEAKREF(new_human)
 	W.registered_gid = new_human.gid
 	W.blood_type = new_human.blood_type
-	W.paygrade = load_rank(new_human)
+	W.paygrade = load_rank(new_human) || W.paygrade
 	W.uniform_sets = uniform_sets
 	new_human.equip_to_slot_or_del(W, WEAR_ID)
 	new_human.faction = faction

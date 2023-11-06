@@ -55,7 +55,7 @@
 
 /datum/component/cell/RegisterWithParent()
 	..()
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(on_object_hit))
+	RegisterSignal(parent, list(COMSIG_PARENT_ATTACKBY, COMSIG_ITEM_ATTACKED), PROC_REF(on_object_hit))
 	RegisterSignal(parent, COMSIG_CELL_ADD_CHARGE, PROC_REF(add_charge))
 	RegisterSignal(parent, COMSIG_CELL_USE_CHARGE, PROC_REF(use_charge))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_CHARGE, PROC_REF(has_charge))
@@ -101,12 +101,12 @@
 		return
 
 	if(!cell_insert)
-		INVOKE_ASYNC(src, PROC_REF(charge_from_cell))
+		INVOKE_ASYNC(src, PROC_REF(charge_from_cell), attack_obj, attacker)
 
 	else
 		insert_cell(attack_obj, attacker)
 
-	return COMPONENT_NO_AFTERATTACK
+	return COMPONENT_NO_AFTERATTACK|COMPONENT_CANCEL_ITEM_ATTACK
 
 /datum/component/cell/proc/insert_cell(obj/item/cell/power_cell, mob/living/user)
 	if(inserted_cell)

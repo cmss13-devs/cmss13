@@ -503,9 +503,6 @@
 	name = "USCM Squad Leader (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/uscm/leader_equipped/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
-
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
@@ -515,6 +512,9 @@
 	skills = /datum/skills/SL
 
 	minimap_icon = "leader"
+
+/datum/equipment_preset/uscm/leader_equipped/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/leader_equipped/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -545,9 +545,6 @@
 	name = "USCM Squad Smartgunner (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/uscm/smartgunner_equipped/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
-
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
@@ -556,6 +553,9 @@
 	skills = /datum/skills/smartgunner
 
 	minimap_icon = "smartgunner"
+
+/datum/equipment_preset/uscm/smartgunner_equipped/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/smartgunner_equipped/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -582,9 +582,6 @@
 	name = "USCM Squad Combat Technician (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/uscm/engineer_equipped/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
-
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
@@ -595,6 +592,9 @@
 	minimap_icon = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
+
+/datum/equipment_preset/uscm/engineer_equipped/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/engineer_equipped/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -628,9 +628,6 @@
 	name = "USCM Squad Hospital Corpsman (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/uscm/medic_equipped/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
-
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
@@ -641,6 +638,9 @@
 	minimap_icon = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
+
+/datum/equipment_preset/uscm/medic_equipped/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/medic_equipped/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(new_human), WEAR_BODY)
@@ -682,9 +682,6 @@
 	name = "USCM Squad Weapons Specialist (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/uscm/specialist_equipped/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
-
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
@@ -693,6 +690,9 @@
 	skills = /datum/skills/specialist
 
 	minimap_icon = "spec"
+
+/datum/equipment_preset/uscm/specialist_equipped/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/specialist_equipped/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -752,9 +752,6 @@
 	name = "USCM Fireteam Leader (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/uscm/tl_equipped/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
-
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
 	assignment = JOB_SQUAD_TEAM_LEADER
 	rank = JOB_SQUAD_TEAM_LEADER
@@ -763,6 +760,9 @@
 	skills = /datum/skills/tl
 
 	minimap_icon = "tl"
+
+/datum/equipment_preset/uscm/tl_equipped/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/tl_equipped/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels

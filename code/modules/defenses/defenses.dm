@@ -431,6 +431,7 @@
 		turned_on = FALSE
 
 /obj/structure/machinery/defenses/emp_act(severity)
+	. = ..()
 	if(turned_on)
 		if(prob(50))
 			visible_message("[icon2html(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")

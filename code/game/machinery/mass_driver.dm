@@ -34,7 +34,7 @@
 	return
 
 /obj/structure/machinery/mass_driver/emp_act(severity)
+	. = ..()
 	if(inoperable())
 		return
 	drive()
-	..(severity)

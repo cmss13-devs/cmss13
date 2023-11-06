@@ -175,10 +175,10 @@ Class Procs:
 		. += SPAN_WARNING("[msg]")
 
 /obj/structure/machinery/emp_act(severity)
+	. = ..()
 	if(use_power && stat == 0)
 		use_power(7500/severity)
 	new /obj/effect/overlay/temp/emp_sparks (loc)
-	..()
 
 
 /obj/structure/machinery/ex_act(severity)

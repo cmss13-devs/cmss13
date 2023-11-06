@@ -179,11 +179,10 @@
 	var/emotion = "Neutral"
 
 /obj/structure/machinery/ai_status_display/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	set_picture("ai_bsod")
-	..(severity)
 
 /obj/structure/machinery/ai_status_display/proc/update()
 	if(mode==0) //Blank

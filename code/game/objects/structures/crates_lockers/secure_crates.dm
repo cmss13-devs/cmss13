@@ -86,6 +86,7 @@
 	..()
 
 /obj/structure/closet/crate/secure/emp_act(severity)
+	. = ..()
 	for(var/obj/O in src)
 		O.emp_act(severity)
 	if(!broken && !opened  && prob(50/severity))
@@ -105,7 +106,6 @@
 		else
 			src.req_access = list()
 			src.req_access += pick(get_access(ACCESS_LIST_MARINE_MAIN))
-	..()
 
 
 //------------------------------------

@@ -183,7 +183,9 @@ directive is properly returned.
 	return
 
 /atom/proc/emp_act(severity)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+
+	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))
@@ -223,8 +225,8 @@ directive is properly returned.
 	if(!examine_strings)
 		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
 		return
-	to_chat(user, examine_block(examine_strings.Join("\n")))
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
+	to_chat(user, examine_block(examine_strings.Join("\n")))
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()

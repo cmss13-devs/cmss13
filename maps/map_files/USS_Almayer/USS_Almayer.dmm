@@ -26618,6 +26618,12 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"cjX" = (
+/obj/structure/closet/secure_closet/fridge/meat/stock,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/grunt_rnr)
 "ckd" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/kitchen/tray{
@@ -30039,12 +30045,9 @@
 	},
 /area/almayer/squads/req)
 "dpn" = (
-/obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/item/reagent_container/food/condiment/enzyme,
-/obj/item/reagent_container/food/condiment/enzyme,
 /obj/structure/transmitter{
 	name = "Kitchen Telephone";
 	phone_category = "Almayer";
@@ -30052,6 +30055,7 @@
 	pixel_x = -8;
 	pixel_y = 29
 	},
+/obj/structure/machinery/vending/ingredients,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -34748,9 +34752,8 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "fhQ" = (
-/obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/structure/machinery/light,
-/obj/item/reagent_container/food/condiment/sugar,
+/obj/structure/closet/secure_closet/fridge/groceries/stock,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -46403,17 +46406,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"kfD" = (
-/obj/item/storage/fancy/crayons{
-	layer = 3.1;
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green"
-	},
-/area/almayer/living/grunt_rnr)
 "kfE" = (
 /obj/structure/bed/sofa/south/grey/right,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
@@ -47025,10 +47017,10 @@
 	},
 /area/almayer/squads/bravo)
 "ksA" = (
-/obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/fridge/organic,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -47095,6 +47087,13 @@
 	dir = 4;
 	icon_state = "greencorner"
 	},
+/area/almayer/living/grunt_rnr)
+"kub" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "kuk" = (
 /obj/structure/pipes/vents/pump{
@@ -47688,13 +47687,10 @@
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/brig/surgery)
 "kHd" = (
-/obj/structure/machinery/computer/arcade,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	pixel_x = 4;
-	pixel_y = 12
+/obj/structure/bed/chair{
+	dir = 8
 	},
 /turf/open/floor/almayer{
-	dir = 6;
 	icon_state = "green"
 	},
 /area/almayer/living/grunt_rnr)
@@ -49827,6 +49823,17 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/aft_hallway)
+"lAi" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
+/obj/structure/machinery/recharger,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/almayer/living/grunt_rnr)
 "lAl" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -51160,12 +51167,9 @@
 /area/almayer/living/pilotbunks)
 "mgg" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/wood/ship,
 /area/almayer/living/grunt_rnr)
 "mgj" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
@@ -53328,7 +53332,7 @@
 	},
 /area/almayer/living/gym)
 "nbB" = (
-/obj/structure/closet/secure_closet/freezer/fridge/full,
+/obj/structure/closet/secure_closet/fridge/groceries,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -55699,20 +55703,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/medical/lower_medical_lobby)
-"ocm" = (
-/obj/structure/machinery/status_display{
-	pixel_x = 32
-	},
-/obj/structure/machinery/space_heater,
-/obj/item/ashtray/glass{
-	pixel_x = 3;
-	pixel_y = 6
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green"
-	},
-/area/almayer/living/grunt_rnr)
 "ocs" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -55907,6 +55897,9 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
+"ofR" = (
+/turf/open/floor/wood/ship,
+/area/almayer/living/grunt_rnr)
 "ofZ" = (
 /obj/structure/bed/sofa/south/grey,
 /turf/open/floor/almayer{
@@ -57460,7 +57453,7 @@
 	},
 /area/almayer/medical/hydroponics)
 "oMd" = (
-/obj/structure/closet/secure_closet/freezer/meat,
+/obj/structure/closet/secure_closet/fridge/organic/stock,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -58203,7 +58196,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_p)
 "pdt" = (
-/obj/structure/closet/secure_closet/freezer/fridge/groceries,
+/obj/structure/closet/secure_closet/fridge/dry/stock,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -60202,6 +60195,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
+"pXu" = (
+/obj/structure/closet/secure_closet/fridge/fish/stock,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/grunt_rnr)
 "pXx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -62243,6 +62242,12 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"qPr" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/grunt_rnr)
 "qPD" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/perma)
@@ -65241,6 +65246,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
+"sfK" = (
+/obj/structure/closet/secure_closet/fridge/dry,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/grunt_rnr)
 "sfU" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -65640,6 +65651,17 @@
 /obj/structure/closet/secure_closet/guncabinet/red/mp_armory_shotgun,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
+"son" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/obj/item/storage/fancy/crayons{
+	layer = 3.1;
+	pixel_x = -11;
+	pixel_y = 16
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/grunt_rnr)
 "soq" = (
 /obj/structure/machinery/computer/working_joe{
 	dir = 4;
@@ -66028,11 +66050,8 @@
 /area/almayer/living/grunt_rnr)
 "swE" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
 /turf/open/floor/almayer{
-	dir = 5;
+	dir = 1;
 	icon_state = "green"
 	},
 /area/almayer/living/grunt_rnr)
@@ -66239,6 +66258,14 @@
 "sBL" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "green"
+	},
+/area/almayer/living/grunt_rnr)
+"sBR" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin/uscm,
+/obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
@@ -67109,6 +67136,17 @@
 "sVj" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/spacecash/c10{
+	pixel_x = 6
+	},
+/obj/item/spacecash/c10{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/toy/deck{
+	pixel_x = -9
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
@@ -75549,18 +75587,6 @@
 	icon_state = "blue"
 	},
 /area/almayer/living/port_emb)
-"wnL" = (
-/obj/item/stack/tile/carpet{
-	amount = 12
-	},
-/obj/structure/surface/rack,
-/obj/item/tool/crowbar/red,
-/obj/item/tool/screwdriver,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green"
-	},
-/area/almayer/living/grunt_rnr)
 "wnY" = (
 /obj/item/tool/crowbar/red,
 /obj/structure/disposalpipe/segment{
@@ -111493,7 +111519,7 @@ buH
 bHL
 buH
 lhB
-nbB
+sfK
 bDs
 bIJ
 bDs
@@ -113128,7 +113154,7 @@ bJt
 oKb
 gSk
 bDs
-pdt
+pXu
 bJt
 sIx
 bxX
@@ -113729,11 +113755,11 @@ bJt
 wbC
 lHu
 oiL
-kfD
+loY
 wXI
 nUd
 lkd
-oMd
+cjX
 bDs
 gSk
 oDE
@@ -113932,7 +113958,7 @@ rde
 vjC
 iMm
 sVj
-iMm
+kub
 iMm
 mkc
 bJt
@@ -114131,14 +114157,14 @@ bCh
 bCi
 bCo
 bCi
-ejw
-xML
-iMm
-mgg
-wGb
-iMm
-rjn
 bJt
+lAi
+ofR
+mgg
+ofR
+ofR
+sBR
+lkd
 wUX
 bDs
 gSk
@@ -114334,14 +114360,14 @@ bCf
 buH
 bHL
 buH
-bJt
+ejw
 swE
-wpI
-ocm
-wpI
-wnL
+ofR
+mgg
+ofR
+ofR
 kHd
-bJt
+lkd
 hSw
 qxE
 rui
@@ -114537,15 +114563,15 @@ bdd
 bSj
 bHL
 bIR
-bdd
-bdd
-bdd
-bdd
-bdd
-bdd
-bdd
-bdd
-bdd
+ejw
+xML
+ofR
+qPr
+son
+ofR
+rjn
+bJt
+bJt
 bJt
 cDC
 oWX

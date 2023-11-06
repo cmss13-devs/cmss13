@@ -32113,6 +32113,17 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"egg" = (
+/obj/item/storage/fancy/crayons{
+	layer = 3.1;
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green"
+	},
+/area/almayer/living/grunt_rnr)
 "egp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/platform_decoration,
@@ -47088,13 +47099,6 @@
 	icon_state = "greencorner"
 	},
 /area/almayer/living/grunt_rnr)
-"kub" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/grunt_rnr)
 "kuk" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -47687,10 +47691,13 @@
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/brig/surgery)
 "kHd" = (
-/obj/structure/bed/chair{
-	dir = 8
+/obj/structure/machinery/computer/arcade,
+/obj/item/prop/helmetgarb/spacejam_tickets{
+	pixel_x = 4;
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
+	dir = 6;
 	icon_state = "green"
 	},
 /area/almayer/living/grunt_rnr)
@@ -49823,17 +49830,6 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/aft_hallway)
-"lAi" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/obj/structure/machinery/recharger,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/almayer/living/grunt_rnr)
 "lAl" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -51167,9 +51163,12 @@
 /area/almayer/living/pilotbunks)
 "mgg" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor/wood/ship,
+/turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "mgj" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
@@ -55898,7 +55897,16 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "ofR" = (
-/turf/open/floor/wood/ship,
+/obj/item/stack/tile/carpet{
+	amount = 12
+	},
+/obj/structure/surface/rack,
+/obj/item/tool/crowbar/red,
+/obj/item/tool/screwdriver,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green"
+	},
 /area/almayer/living/grunt_rnr)
 "ofZ" = (
 /obj/structure/bed/sofa/south/grey,
@@ -62242,12 +62250,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
-"qPr" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/living/grunt_rnr)
 "qPD" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/perma)
@@ -65651,17 +65653,6 @@
 /obj/structure/closet/secure_closet/guncabinet/red/mp_armory_shotgun,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
-"son" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 1
-	},
-/obj/item/storage/fancy/crayons{
-	layer = 3.1;
-	pixel_x = -11;
-	pixel_y = 16
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/living/grunt_rnr)
 "soq" = (
 /obj/structure/machinery/computer/working_joe{
 	dir = 4;
@@ -66050,8 +66041,11 @@
 /area/almayer/living/grunt_rnr)
 "swE" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/alarm/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
-	dir = 1;
+	dir = 5;
 	icon_state = "green"
 	},
 /area/almayer/living/grunt_rnr)
@@ -66258,14 +66252,6 @@
 "sBL" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/machinery/light,
-/turf/open/floor/almayer{
-	icon_state = "green"
-	},
-/area/almayer/living/grunt_rnr)
-"sBR" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm,
-/obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
@@ -67136,17 +67122,6 @@
 "sVj" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/spacecash/c10{
-	pixel_x = 6
-	},
-/obj/item/spacecash/c10{
-	pixel_x = 5;
-	pixel_y = 7
-	},
-/obj/item/toy/deck{
-	pixel_x = -9
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
@@ -76411,6 +76386,20 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
+"wGp" = (
+/obj/structure/machinery/status_display{
+	pixel_x = 32
+	},
+/obj/structure/machinery/space_heater,
+/obj/item/ashtray/glass{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/almayer/living/grunt_rnr)
 "wGA" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/effect/decal/warning_stripes{
@@ -113755,7 +113744,7 @@ bJt
 wbC
 lHu
 oiL
-loY
+egg
 wXI
 nUd
 lkd
@@ -113958,7 +113947,7 @@ rde
 vjC
 iMm
 sVj
-kub
+iMm
 iMm
 mkc
 bJt
@@ -114157,14 +114146,14 @@ bCh
 bCi
 bCo
 bCi
-bJt
-lAi
-ofR
+ejw
+xML
+iMm
 mgg
-ofR
-ofR
-sBR
-lkd
+wGb
+iMm
+rjn
+bJt
 wUX
 bDs
 gSk
@@ -114360,14 +114349,14 @@ bCf
 buH
 bHL
 buH
-ejw
+bJt
 swE
-ofR
-mgg
-ofR
+wpI
+wGp
+wpI
 ofR
 kHd
-lkd
+bJt
 hSw
 qxE
 rui
@@ -114563,15 +114552,15 @@ bdd
 bSj
 bHL
 bIR
-ejw
-xML
-ofR
-qPr
-son
-ofR
-rjn
-bJt
-bJt
+bdd
+bdd
+bdd
+bdd
+bdd
+bdd
+bdd
+bdd
+bdd
 bJt
 cDC
 oWX

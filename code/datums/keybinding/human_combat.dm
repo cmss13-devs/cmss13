@@ -204,6 +204,6 @@
 		return
 	var/mob/living/carbon/human/human = user.mob
 	var/obj/item/weapon/gun/shotgun/pump/dual_tube/held_item = human.get_held_item()
-	if(istype(held_item, /obj/item/weapon/gun/shotgun/pump/dual_tube))
+	if(istype(held_item))
 		held_item.toggle_tube()
 		return TRUE

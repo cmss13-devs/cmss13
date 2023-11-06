@@ -23,6 +23,10 @@ interface DropshipNavigationProps extends NavigationProps {
   primary_lz?: string;
   automated_control: AutomatedControl;
   has_flyby_skill: 0 | 1;
+
+  playing_Launch_Announcement_Alarm: 0 | 1;
+  launchAnnouncementAlarmTimer: number /* the timer that counts */;
+  launchAnnouncementAlarmExpireTime: number /* When the timer expires. How long the alarm can play. */;
 }
 
 const DropshipDoorControl = (_, context) => {
@@ -276,6 +280,61 @@ const AutopilotConfig = (props, context) => {
   );
 };
 
+export const StopPlayLaunchAnnouncementAlarm = (_, context) => {
+  const { act } = useBackend<NavigationProps>(context);
+  return (
+    <Button
+      icon="ban"
+      onClick={() => {
+        act('stopplaylaunchannouncementalarm');
+      }}>
+      Stop Alarm
+    </Button>
+  );
+};
+
+export const PlayLaunchAnnouncementAlarm = (_, context) => {
+  const { act } = useBackend<NavigationProps>(context);
+  return (
+    <Button
+      icon="rocket"
+      onClick={() => {
+        act('playlaunchannouncementalarm');
+      }}>
+      Start Alarm
+    </Button>
+  );
+};
+
+export const LaunchAnnouncementAlarm = (_, context) => {
+  const { data, act } = useBackend<DropshipNavigationProps>(context);
+  const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
+    context,
+    'target_site',
+    undefined
+  );
+  return (
+    <Section
+      title="Launch Announcement Alarm"
+      buttons={
+        <>
+          {data.playing_Launch_Announcement_Alarm === 0 && (
+            <PlayLaunchAnnouncementAlarm />
+          )}
+
+          {data.playing_Launch_Announcement_Alarm === 1 && (
+            <Button
+              onClick={() => act('stopplaylaunchannouncementalarm')}
+              icon="triangle-exclamation">
+              Stop Launch Alarm
+            </Button>
+          )}
+        </>
+      }
+    />
+  );
+};
+
 const RenderScreen = (props, context) => {
   const { data } = useBackend<DropshipNavigationProps>(context);
   return (
@@ -292,6 +351,7 @@ const RenderScreen = (props, context) => {
         <DropshipDestinationSelection />
       )}
       {data.door_status.length > 0 && <DropshipDoorControl />}
+      {<LaunchAnnouncementAlarm />}
     </>
   );
 };

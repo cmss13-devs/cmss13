@@ -53,11 +53,11 @@
 /// Also refreshes filler_turfs list.
 /obj/structure/machinery/door/proc/change_filler_opacity(new_opacity)
 	// I have no idea why do we null opacity first before... changing it
-	for(var/turf/filler_turf in filler_turfs)
+	for(var/turf/filler_turf as anything in filler_turfs)
 		filler_turf.set_opacity(null)
 
 	filler_turfs = list()
-	for(var/turf/filler in locate_filler_turfs())
+	for(var/turf/filler as anything in locate_filler_turfs())
 		filler.set_opacity(new_opacity)
 		filler_turfs += filler
 
@@ -77,7 +77,7 @@
 	var/turf/filler_temp
 	var/list/located_turfs = list()
 
-	for(var/i = 1, i < width, i++)
+	for(var/i = 1 in 1 to width-1)
 		if (dir in list(EAST, WEST))
 			filler_temp = locate(x + i, y, z)
 		else
@@ -116,8 +116,8 @@
 /obj/structure/machinery/door/proc/bumpopen(mob/user as mob)
 	if(operating)
 		return
-	src.add_fingerprint(user)
-	if(!src.requiresID())
+	add_fingerprint(user)
+	if(!requiresID())
 		user = null
 	if(density)
 		if(allowed(user))
@@ -154,7 +154,7 @@
 
 /obj/structure/machinery/door/emp_act(severity)
 	if(prob(20/severity))
-		if((istype(src, /obj/structure/machinery/door/airlock) || istype(src, /obj/structure/machinery/door/window)))
+		if(use_power)
 			open()
 	if(prob(40/severity))
 		if(secondsElectrified == 0)
@@ -263,11 +263,12 @@
 /obj/structure/machinery/door/proc/requiresID()
 	return TRUE
 
+/// Used for overriding in airlocks
 /obj/structure/machinery/door/proc/autoclose()
-	var/obj/structure/machinery/door/airlock/airlock = src
-	if(!airlock.density && !airlock.operating && !airlock.locked && !airlock.welded && airlock.autoclose)
+	if(!autoclose)
+		return
+	if(!density && !operating)
 		close()
-	return
 
 /obj/structure/machinery/door/Move(new_loc, new_dir)
 	. = ..()
@@ -279,6 +280,11 @@
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
 		change_filler_opacity(opacity)
+
+/obj/structure/machinery/door/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	// Yes, for a split second after departure you can see through rear dropship airlocks, but it's the simplest solution I could've think of
+	handle_multidoor()
 
 /obj/structure/machinery/door/morgue
 	icon = 'icons/obj/structures/doors/doormorgue.dmi'

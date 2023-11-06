@@ -297,8 +297,12 @@
 					return
 
 				var/mob/living/carbon/human/human_user = user
-				if(!(ACCESS_MARINE_SENIOR in human_user.wear_id?.access))
+				if(!(ACCESS_MARINE_COMMAND in human_user.wear_id?.access))
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
+					return
+
+				if(SShijack.current_progress < SShijack.early_launch_required_progress)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
 					return
 
 				if(tgui_alert(user, "Early launch the lifeboat?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")

@@ -17,3 +17,34 @@
 2023-11-03:
   harryob:
   - ui: the options button is now part of the statbrowser tabs proper
+2023-11-04:
+  BeagleGaming1:
+  - rscadd: Added many new loadout items
+  - code_imp: Added a signal to items that triggers right after the mob finishes spawning
+  - code_imp: Added a signal to add additional behavior to storing items in shoes
+  Blundir:
+  - rscadd: added intel and foxtrot squad berets and headband
+  TheGamerdk:
+  - bugfix: Restores the MK1 AP mags in the CIC armory
+  fira:
+  - bugfix: M56D/M2C should now properly stop firing when they stop being used.
+  realforest2001:
+  - code_imp: Repathed sword weapons to a uniform /obj/item/weapon/sword
+  - balance: All sword-type weapons are now Large items instead of Normal sized, to
+      match machetes.
+  - rscadd: Added the KN5500 PDA for Working Joes. Sprites by Frans_Feiffer.
+  - rscadd: Changed the plain glass in Working Joe presets to Reinforced Glass.
+  sleepynecrons:
+  - imagedel: shrinks the type-19 SMG stick magazine to a more reasonable size
+2023-11-05:
+  fira:
+  - bugfix: Fixed recyclers (including Whiskey Outposts') and added the possibility
+      to recycle crates with them.
+  - bugfix: Standardized "vend to table" functionality of vendors, enabling it to
+      work for Whiskey Outpost's Reqs.
+  - rscadd: Whiskey Outpost vendors now contain the same items as Almayer's. WO still
+      has spare specialist ammo on top of that.
+  - rscadd: Readded delivery chute, wrap and tagger to Whiskey Outpost Reqs, letting
+      you pack and send crates and items via disposals again.
+  - balance: Whiskey Outpost supply drops should now be more interesting and impactful.
+  - rscadd: Added missing Synth vendors on WO.

@@ -236,3 +236,142 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
 		)
+
+/obj/item/weapon/straight_razor
+	name = "straight razor"
+	desc = "The commandant's favorite weapon against marines who dare break the grooming standards."
+	icon_state = "razor"
+	hitsound = 'sound/weapons/genhit3.ogg'
+	force = MELEE_FORCE_TIER_1
+	throwforce = MELEE_FORCE_TIER_1
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 6
+	///Icon state for opened razor
+	var/enabled_icon = "razor"
+	///Icon state for closed razor
+	var/disabled_icon = "razor_off"
+	///If the razor is able to be used
+	var/razor_opened = FALSE
+	///Time taken to open/close the razor
+	var/interaction_time = 3 SECONDS
+
+/obj/item/weapon/straight_razor/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(src, COMSIG_ITEM_ATTEMPTING_EQUIP, PROC_REF(can_fit_in_shoe))
+	change_razor_state(razor_opened)
+	if(prob(1))
+		desc += " There is phrase etched into it, \"<i>It can guarantee the closest shave you'll ever know.</i>\"..."
+
+/obj/item/weapon/straight_razor/update_icon()
+	. = ..()
+	if(razor_opened)
+		icon_state = enabled_icon
+		return
+	icon_state = disabled_icon
+
+/obj/item/weapon/straight_razor/attack_hand(mob/user)
+	if(loc != user) //Only do unique stuff if you are holding it
+		return ..()
+
+	if(!do_after(user, interaction_time, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE))
+		return
+	playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
+	change_razor_state(!razor_opened)
+	to_chat(user, SPAN_NOTICE("You [razor_opened ? "reveal" : "hide"] [src]'s blade."))
+
+///Check if the item can fit as a boot knife, var/source for signals
+/obj/item/weapon/straight_razor/proc/can_fit_in_shoe(source = src, mob/user, slot)
+	if(slot != WEAR_IN_SHOES) //Only check if you try putting it in a shoe
+		return
+	if(razor_opened)
+		to_chat(user, SPAN_NOTICE("You cannot store [src] in your shoes until the blade is hidden."))
+		return COMPONENT_CANCEL_EQUIP
+
+///Changes all the vars for the straight razor
+/obj/item/weapon/straight_razor/proc/change_razor_state(opening = FALSE)
+	razor_opened = opening
+	update_icon()
+	if(opening)
+		force = MELEE_FORCE_NORMAL
+		throwforce = MELEE_FORCE_NORMAL
+		sharp = IS_SHARP_ITEM_ACCURATE
+		edge = TRUE
+		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+		hitsound = 'sound/weapons/slash.ogg'
+		if(!(flags_item & CAN_DIG_SHRAPNEL))
+			flags_item |= CAN_DIG_SHRAPNEL
+		return
+	force = MELEE_FORCE_TIER_1
+	throwforce = MELEE_FORCE_TIER_1
+	sharp = FALSE
+	edge = FALSE
+	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
+	hitsound = 'sound/weapons/genhit3.ogg'
+	if(flags_item & CAN_DIG_SHRAPNEL)
+		flags_item &= ~CAN_DIG_SHRAPNEL
+
+/obj/item/weapon/straight_razor/verb/change_hair_style()
+	set name = "Change Hair Style"
+	set desc = "Change your hair style"
+	set category = "Object"
+	set src in usr
+
+	var/mob/living/carbon/human/human_user = usr
+	if(!istype(human_user))
+		return
+
+	if(!razor_opened)
+		to_chat(human_user, SPAN_NOTICE("You need to reveal [src]'s blade to change your hairstyle."))
+		return
+
+	var/list/species_facial_hair = GLOB.facial_hair_styles_list
+	var/list/species_hair = GLOB.hair_styles_list
+
+	if(human_user.species) //Facial hair
+		species_facial_hair = list()
+		for(var/current_style in GLOB.facial_hair_styles_list)
+			var/datum/sprite_accessory/facial_hair/temp_beard_style = GLOB.facial_hair_styles_list[current_style]
+			if(!(human_user.species.name in temp_beard_style.species_allowed))
+				continue
+			if(!temp_beard_style.selectable)
+				continue
+			species_facial_hair += current_style
+
+	if(human_user.species) //Hair
+		species_hair = list()
+		for(var/current_style in GLOB.hair_styles_list)
+			var/datum/sprite_accessory/hair/temp_hair_style = GLOB.hair_styles_list[current_style]
+			if(!(human_user.species.name in temp_hair_style.species_allowed))
+				continue
+			if(!temp_hair_style.selectable)
+				continue
+			species_hair += current_style
+
+	var/new_beard_style
+	var/new_hair_style
+	if(human_user.gender == MALE)
+		new_beard_style = tgui_input_list(human_user, "Select a facial hair style", "Grooming", species_facial_hair)
+	new_hair_style = tgui_input_list(human_user, "Select a hair style", "Grooming", species_hair)
+
+	if(loc != human_user)
+		to_chat(human_user, SPAN_NOTICE("You are too far from [src] to change your hair styles."))
+		return
+
+	if(!new_beard_style && !new_hair_style)
+		return
+
+	if(!do_after(human_user, interaction_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		return
+
+	if(!razor_opened)
+		to_chat(human_user, SPAN_NOTICE("You need to reveal [src]'s blade to change your hairstyle."))
+		return
+
+	if(new_beard_style)
+		human_user.f_style = new_beard_style
+	if(new_hair_style)
+		human_user.h_style = new_hair_style
+
+	human_user.apply_damage(rand(1,5), BRUTE, "head", src)
+	human_user.update_hair()
+

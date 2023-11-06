@@ -83,10 +83,10 @@
 
 // this function displays the shuttles ETA in the status panel if the shuttle has been called
 /mob/living/silicon/proc/show_emergency_shuttle_eta()
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+	if(SShijack)
+		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
-			stat(null, "Evacuation: [eta_status]")
+			stat(null, "Evacuation Goal: [eta_status]")
 
 
 // this function displays the stations manifest in a separate window

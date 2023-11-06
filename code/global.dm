@@ -153,14 +153,6 @@ var/list/nato_phonetic_alphabet = list("Alpha", "Bravo", "Charlie", "Delta", "Ec
 var/distress_cancel = 0
 var/destroy_cancel = 0
 
-//Coordinate obsfucator
-//Used by the rangefinders and linked systems to prevent coords collection/prefiring
-
-/// A number between -500 and 500.
-var/global/obfs_x = 0
-/// A number between -500 and 500.
-var/global/obfs_y = 0
-
 // Which lobby art is on display
 // This is updated by the lobby art turf when it initializes
 var/displayed_lobby_art = -1

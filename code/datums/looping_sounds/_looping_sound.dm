@@ -37,7 +37,11 @@
 	/// Has the looping started yet?
 	var/loop_started = FALSE
 
-	///Let's you make a "loud" sound that "projects." IE you can hear this sound from a further distance away. /n Think of like an air raid siren. They're loud if you're close yeah... but you can hear them from mad far away, bruv /n with a longer "falloff distance." Fixes the extra_range stuff
+	/*
+	* Let's you make a "loud" sound that "projects." IE you can hear this sound from a further distance away.
+	* Think of like an air raid siren. They're loud if you're close yeah... but you can hear them from mad far away, bruv
+	* with a longer "falloff distance." Fixes the extra_range stuff
+	*/
 	var/is_sound_projecting = FALSE
 	var/falloff_distance = 50
 

@@ -553,15 +553,15 @@
 	///Hexadecimal 0-F (0-15)
 	var/static/list/hexadecimal = list("0", "1", "2", "3" , "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 
-/obj/item/toy/plush/therapy/random_color/New(loc, ...)
+/obj/item/toy/plush/therapy/random_color/Initialize(mapload, ...)
 	. = ..()
 	var/color_code = "#[pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)]" //This is dumb and I hope theres a better way I'm missing
 	color = color_code
-	desc = "A custom therapy plush, in a unique color. This one is labeled with \"#[color_code]\"."
+	desc = "A custom therapy plush, in a unique color."
 
 /obj/item/toy/plush/random_plushie //Not using an effect so it can fit into storage from loadout
 	name = "random plush"
-	desc = "You should not be seeing this"
+	desc = "This plush looks awfully standard and bland. Is it actually yours?"
 	/// Standard plushies for the spawner to pick from
 	var/list/plush_list = list(
 		/obj/item/toy/plush/farwa,

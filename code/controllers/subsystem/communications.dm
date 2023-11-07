@@ -71,9 +71,9 @@ var/const/MIN_FREE_FREQ = 1201 // ----------------------------------------------
 //Misc channels
 var/const/YAUT_FREQ = 1205
 var/const/DUT_FREQ = 1210
-var/const/CMB_FREQ = 1220
 var/const/VAI_FREQ = 1215
 var/const/RMC_FREQ = 1216
+var/const/CMB_FREQ = 1220
 
 //WY Channels (1230-1249)
 var/const/WY_FREQ = 1231
@@ -283,11 +283,11 @@ SUBSYSTEM_DEF(radio)
 		"[HC_FREQ]" = "hcradio",
 		"[PVST_FREQ]" = "pvstradio",
 		"[COLONY_FREQ]" = "deptradio",
-		"[BUG_A_FREQ]" = "airadio",
-		"[BUG_B_FREQ]" = "hcradio",
-		"[BUG_C_FREQ]" = "clfradio",
-		"[BUG_D_FREQ]" = "cryoradio",
-		"[BUG_E_FREQ]" = "syndradio",
+		"[BUG_A_FREQ]" = "aiprivradio",
+		"[BUG_B_FREQ]" = "aiprivradio",
+		"[BUG_C_FREQ]" = "aiprivradio",
+		"[BUG_D_FREQ]" = "aiprivradio",
+		"[BUG_E_FREQ]" = "aiprivradio",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)

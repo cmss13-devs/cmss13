@@ -39632,6 +39632,19 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
+/obj/structure/closet/secure_closet/cmdcabinet{
+	pixel_y = 24;
+	desc = "A bulletproof cabinet containing communications equipment.";
+	name = "communications cabinet";
+	req_access = null;
+	req_one_access_txt = ACCESS_WY_EXEC, ACCESS_WY_SECURITY
+	},
+/obj/item/device/radio,
+/obj/item/device/radio/listening_bug/radio_linked/wy,
+/obj/item/device/radio/listening_bug/radio_linked/wy{
+	pixel_x = 4;
+	pixel_y = -3
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "hpk" = (
@@ -60113,6 +60126,16 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
+"qan" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/radio/listening_bug/radio_linked/mp{
+	pixel_y = 8
+	},
+/obj/item/device/radio/listening_bug/radio_linked/mp,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/shipboard/brig/main_office)
 "qau" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -91265,7 +91288,7 @@ ahE
 hUg
 wcn
 vBm
-gqW
+qan
 buX
 mLJ
 eRL

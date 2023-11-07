@@ -171,6 +171,9 @@ var/list/ob_type_fuel_requirements
 
 	flick("OBC_chambering",src)
 
+
+
+
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 
 	ob_cannon_busy = TRUE
@@ -178,14 +181,29 @@ var/list/ob_type_fuel_requirements
 	sleep(6)
 
 	ob_cannon_busy = FALSE
-
 	chambered_tray = TRUE
+	var/misfuel = get_misfuel_amount()
+	var/message = "[key_name(user)] chambered the Orbital Bombardment cannon."
+	if(misfuel)
+		message += " It is misfueled by [misfuel] units!"
+	message_admins(message, x, y, z)
 
 	update_icon()
 
 /var/global/list/orbital_cannon_cancellation = new
 
-/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user)
+
+/obj/structure/orbital_cannon/proc/get_misfuel_amount()
+	switch(tray.warhead.warhead_kind)
+		if("explosive")
+			return abs(ob_type_fuel_requirements[1] - tray.fuel_amt)
+		if("incendiary")
+			return abs(ob_type_fuel_requirements[2] - tray.fuel_amt)
+		if("cluster")
+			return abs(ob_type_fuel_requirements[3] - tray.fuel_amt)
+	return 0
+
+/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, squad_behalf)
 	set waitfor = 0
 
 	if(!chambered_tray || !loaded_tray || !tray || !tray.warhead || ob_cannon_busy)
@@ -203,17 +221,22 @@ var/list/ob_type_fuel_requirements
 	playsound(loc, 'sound/weapons/vehicles/smokelauncher_fire.ogg', 70, 1)
 	playsound(loc, 'sound/weapons/pred_plasma_shot.ogg', 70, 1)
 
-	var/inaccurate_fuel = 0
+	var/inaccurate_fuel = get_misfuel_amount()
+	var/area/area = get_area(T)
+	var/off_x = (inaccurate_fuel + 1) * round(rand(-3,3), 1)
+	var/off_y = (inaccurate_fuel + 1) * round(rand(-3,3), 1)
+	var/target_x = Clamp(T.x + off_x, 1, world.maxx)
+	var/target_y = Clamp(T.y + off_y, 1, world.maxy)
+	var/turf/target = locate(target_x, target_y, T.z)
+	var/area/target_area = get_area(target)
 
-	switch(tray.warhead.warhead_kind)
-		if("explosive")
-			inaccurate_fuel = abs(ob_type_fuel_requirements[1] - tray.fuel_amt)
-		if("incendiary")
-			inaccurate_fuel = abs(ob_type_fuel_requirements[2] - tray.fuel_amt)
-		if("cluster")
-			inaccurate_fuel = abs(ob_type_fuel_requirements[3] - tray.fuel_amt)
+	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in '[target_area]' for squad '[squad_behalf]' landing at ([target.x],[target.y],[target.z])"), target.x, target.y, target.z)
+	var/message = "Orbital bombardment original target was ([T.x],[T.y],[T.z]) - offset by [abs(off_x)+abs(off_y)]"
+	if(inaccurate_fuel)
+		message += " - It was misfueled by [inaccurate_fuel] units!"
+	message_admins(message, T.x, T.y, T.z)
+	log_attack("[key_name(user)] fired an orbital bombardment in [area.name] for squad '[squad_behalf]'")
 
-	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-3,3), 1), T.y + inaccurate_fuel * round(rand(-3,3), 1), T.z)
 	if(user)
 		tray.warhead.source_mob = user
 

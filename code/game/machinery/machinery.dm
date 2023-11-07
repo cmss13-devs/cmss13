@@ -105,7 +105,7 @@ Class Procs:
 	var/list/component_parts //list of all the parts used to build it, if made from certain kinds of frames.
 	var/manual = 0
 	layer = OBJ_LAYER
-	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler.
+	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler. // Please replace this by DF_ISPROCESSING in another refactor --fira
 	throwpass = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	var/power_machine = FALSE //Whether the machine should process on power, or normal processor

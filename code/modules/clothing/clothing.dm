@@ -336,9 +336,9 @@
 	var/shoes_blood_amt = 0
 
 /obj/item/clothing/shoes/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_shoes()
+	if(ismob(loc))
+		var/mob/user = loc
+		user.update_inv_shoes()
 
 /obj/item/clothing/shoes/Initialize(mapload, ...)
 	. = ..()

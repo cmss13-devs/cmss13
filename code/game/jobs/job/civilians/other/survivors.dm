@@ -10,6 +10,8 @@
 	job_options = SURVIVOR_VARIANT_LIST
 	var/intro_text
 	var/story_text
+	/// Whether or not the survivor is an inherently hostile to marines.
+	var/hostile = FALSE
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = Clamp((round(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
@@ -59,23 +61,32 @@
 
 	if(picked_spawner.story_text)
 		story_text = picked_spawner.story_text
+
+	if(picked_spawner.hostile)
+		hostile = TRUE
+
 	new /datum/cm_objective/move_mob/almayer/survivor(H)
 
-/datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/H)
+/datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/survivor)
 	if(intro_text)
 		for(var/line in intro_text)
-			to_chat(H, line)
+			to_chat(survivor, line)
 	else
-		to_chat(H, "<h2>You are a survivor!</h2>")
-		to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-		to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-		to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+		to_chat(survivor, "<h2>You are a survivor!</h2>")
+		to_chat(survivor, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
+		to_chat(survivor, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
+		to_chat(survivor, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
 
 	if(story_text)
-		to_chat(H, story_text)
-		H.mind.memory += story_text
+		to_chat(survivor, story_text)
+		survivor.mind.memory += story_text
 	else
-		tell_survivor_story(H)
+		tell_survivor_story(survivor)
+
+	if(hostile)
+		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM!"))
+	else
+		to_chat(survivor, SPAN_XENOHIGHDANGER("You are NON-HOSTILE to the USCM!"))
 
 /datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/H)
 	var/list/survivor_story = list(

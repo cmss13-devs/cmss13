@@ -329,7 +329,7 @@
 	set desc = "For scheduler debugging"
 
 	var/list/individual_counts = list()
-	for(var/datum/disease/M in active_diseases)
+	for(var/datum/disease/M in SSdisease.all_diseases)
 		individual_counts["[M.type]"]++
 	for(var/mob/M in SShuman.processable_human_list)
 		individual_counts["[M.type]"]++

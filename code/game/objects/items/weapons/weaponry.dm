@@ -167,7 +167,7 @@
 	update_icon(user)
 
 
-/obj/item/weapon/katana/sharp
+/obj/item/weapon/sword/katana/sharp
 	name = "absurdly sharp katana"
 	desc = "<p>That's it. I'm sick of all this \"Masterwork Bastard Sword\" bullshit that's going on in CM-SS13 right now. Katanas deserve much better than that. Much, much better than that.</p>\
 <p>I should know what I'm talking about. I myself commissioned a genuine katana in Japan for 2,400,000 Yen (that's about $20,000) and have been practicing with it for almost 2 years now. I can even cut slabs of solid steel with my katana.</p>\
@@ -190,7 +190,7 @@
 
 	attack_verb = list("sliced", "diced", "cut")
 
-/obj/item/weapon/katana/sharp/attack(mob/living/M, mob/living/user)
+/obj/item/weapon/sword/katana/sharp/attack(mob/living/M, mob/living/user)
 
 	if(flags_item & NOBLUDGEON)
 		return
@@ -223,7 +223,7 @@
 
 
 	//if the target also has a katana (and we aren't attacking ourselves), we add some suspense
-	if( ( istype(M.get_active_hand(), /obj/item/weapon/katana) || istype(M.get_inactive_hand(), /obj/item/weapon/katana) ) && M != user )
+	if( ( istype(M.get_active_hand(), /obj/item/weapon/sword/katana) || istype(M.get_inactive_hand(), /obj/item/weapon/sword/katana) ) && M != user )
 
 		if(prob(50))
 			user.visible_message(SPAN_DANGER("[M] and [user] cross blades!"))

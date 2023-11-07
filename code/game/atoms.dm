@@ -33,8 +33,11 @@
 
 	var/list/filter_data //For handling persistent filters
 
-	// Base transform matrix
-	var/matrix/base_transform = null
+	/// Base transform matrix, edited by admin tooling and such
+	var/matrix/base_transform
+	/// Last transform used before being compound with base_transform
+	/// This allows us to re-create transform if only base_transform changes
+	var/matrix/raw_transform
 
 	///Chemistry.
 	var/datum/reagents/reagents = null
@@ -149,20 +152,27 @@ directive is properly returned.
 		return loc.return_gas()
 
 // Updates the atom's transform
-/atom/proc/apply_transform(matrix/M, time = 0, easing = (EASE_IN|EASE_OUT))
-	if(!base_transform)
-		transform = M
-		return
+/atom/proc/apply_transform(matrix/new_transform, time = 0, easing = (EASE_IN|EASE_OUT))
+	var/matrix/base_copy
+	if(base_transform)
+		base_copy = matrix(base_transform)
+	else
+		base_copy = matrix()
+	raw_transform = matrix(new_transform) // Keep a copy to replay if needed
 
-	var/matrix/base_copy = matrix(base_transform)
 	// Compose the base and applied transform in that order
-	var/matrix/complete = base_copy.Multiply(M)
+	var/matrix/complete = base_copy.Multiply(raw_transform)
 
 	if(!time)
 		transform = complete
 		return
 
 	animate(src, transform = complete, time = time, easing = easing)
+
+/// Upates the base_transform which will be compounded with other transforms
+/atom/proc/update_base_transform(matrix/new_transform, time = 0)
+	base_transform = matrix(new_transform)
+	apply_transform(raw_transform, time)
 
 /atom/proc/on_reagent_change()
 	return
@@ -715,7 +725,7 @@ Parameters are passed from New.
 		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate"))
 		if(!result)
 			return
-		var/matrix/M = transform
+		var/matrix/M = base_transform
 		if(!result)
 			return
 		switch(result)
@@ -724,18 +734,21 @@ Parameters are passed from New.
 				var/y = tgui_input_real_number(usr, "Choose y mod","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
-				transform = M.Scale(x,y)
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Scale(x,y))
 			if("Translate")
 				var/x = tgui_input_real_number(usr, "Choose x mod (negative = left, positive = right)","Transform Mod")
 				var/y = tgui_input_real_number(usr, "Choose y mod (negative = down, positive = up)","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
-				transform = M.Translate(x,y)
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Translate(x,y))
 			if("Rotate")
 				var/angle = tgui_input_real_number(usr, "Choose angle to rotate","Transform Mod")
 				if(isnull(angle))
 					return
-				transform = M.Turn(angle)
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Turn(angle))
 
 		SEND_SIGNAL(src, COMSIG_ATOM_VV_MODIFY_TRANSFORM)
 

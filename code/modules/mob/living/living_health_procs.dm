@@ -274,18 +274,6 @@
 	sleeping = max(sleeping + amount,0)
 	return
 
-/mob/living/proc/Resting(amount)
-	resting = max(max(resting,amount),0)
-	return
-
-/mob/living/proc/SetResting(amount)
-	resting = max(amount,0)
-	return
-
-/mob/living/proc/AdjustResting(amount)
-	resting = max(resting + amount,0)
-	return
-
 /mob/living/proc/EyeBlur(amount)
 	eye_blurry = max(max(eye_blurry, amount), 0)
 	update_eye_blur()

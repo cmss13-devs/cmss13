@@ -465,7 +465,7 @@
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)
 
-/// Uses presence [TRAIT_UNDENSE] to figure out what is the correct density state for the mob. Triggered by trait signal.
+/// Uses presence of [TRAIT_UNDENSE] to figure out what is the correct density state for the mob. Triggered by trait signal.
 /mob/living/proc/update_density()
 	if(HAS_TRAIT(src, TRAIT_UNDENSE))
 		set_density(FALSE)

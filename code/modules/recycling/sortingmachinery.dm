@@ -282,36 +282,36 @@
 			if(!chosen_type || !ispath(crate.crate_customizing_types[chosen_type]) || !user.Adjacent(target) || !target.z)
 				return
 			target.AddComponent(/datum/component/crate_tag, label, crate.crate_customizing_types[chosen_type])
-			src.amount -= 3
+			amount -= 3
 		else
-			if (src.amount > 3 && !crate.opened)
-				var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(crate.loc))
-				P.icon_state = "deliverycrate"
-				P.wrapped = crate
-				crate.forceMove(P)
-				src.amount -= 3
+			if (amount > 3 && !crate.opened)
+				var/obj/structure/bigDelivery/package = new /obj/structure/bigDelivery(get_turf(crate.loc))
+				package.icon_state = "deliverycrate"
+				package.wrapped = crate
+				crate.forceMove(package)
+				amount -= 3
 				user.visible_message("\The [user] wraps \a [target] with \a [src].",\
 				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
 				"You hear someone taping paper around a large object.")
-			else if(src.amount < 3)
+			else if(amount < 3)
 				to_chat(user, SPAN_WARNING("You need more paper."))
 	else if (istype (target, /obj/structure/closet))
-		var/obj/structure/closet/O = target
-		if (src.amount > 3 && !O.opened)
-			var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
-			P.wrapped = O
-			O.welded = 1
-			O.forceMove(P)
-			src.amount -= 3
+		var/obj/structure/closet/object = target
+		if (amount > 3 && !object.opened)
+			var/obj/structure/bigDelivery/package = new /obj/structure/bigDelivery(get_turf(object.loc))
+			package.wrapped = object
+			object.welded = 1
+			object.forceMove(package)
+			amount -= 3
 			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
 			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
 			"You hear someone taping paper around a large object.")
-		else if(src.amount < 3)
+		else if(amount < 3)
 			to_chat(user, SPAN_WARNING("You need more paper."))
 	else
 		to_chat(user, SPAN_NOTICE(" The object you are trying to wrap is unsuitable for the sorting machinery!"))
-	if (src.amount <= 0)
-		new /obj/item/trash/c_tube( src.loc )
+	if (amount <= 0)
+		new /obj/item/trash/c_tube( loc )
 		qdel(src)
 		return
 	return

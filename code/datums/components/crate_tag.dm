@@ -29,6 +29,7 @@
 		parent.AddComponent(/datum/component/label, name)
 		src.name = name // Keep it around additionally for notifications
 
+/// Handler to notify an overwatched squad that this crate has been dropped for them
 /datum/component/crate_tag/proc/notify_squad(datum/source, datum/squad/squad)
 	SIGNAL_HANDLER
 	squad.send_message("'[name]' supply drop incoming. Heads up!")

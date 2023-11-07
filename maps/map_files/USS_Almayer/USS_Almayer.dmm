@@ -39637,7 +39637,7 @@
 	desc = "A bulletproof cabinet containing communications equipment.";
 	name = "communications cabinet";
 	req_access = null;
-	req_one_access_txt = ACCESS_WY_EXEC, ACCESS_WY_SECURITY
+	req_one_access_txt = 207, 203
 	},
 /obj/item/device/radio,
 /obj/item/device/radio/listening_bug/radio_linked/wy,

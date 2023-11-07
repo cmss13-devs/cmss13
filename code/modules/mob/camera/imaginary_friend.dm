@@ -290,3 +290,7 @@
 		name = "Show"
 		action_icon_state = "unhidemob"
 		update_button_icon()
+
+/datum/action/innate/imaginary_hide/update_button_icon()
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)

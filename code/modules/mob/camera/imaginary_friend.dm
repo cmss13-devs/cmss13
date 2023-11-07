@@ -29,7 +29,7 @@
 /mob/camera/imaginary_friend/Login()
 	. = ..()
 	setup_friend()
-	show()
+	update_image()
 
 /mob/camera/imaginary_friend/Logout()
 	. = ..()
@@ -81,7 +81,7 @@
 	return out_icon
 
 /// makes the friend update their icon and appear to themselves and, if not hidden, the owner
-/mob/camera/imaginary_friend/proc/show()
+/mob/camera/imaginary_friend/proc/update_image()
 	if(!client)
 		return
 
@@ -99,7 +99,6 @@
 		owner.client.images |= current_image
 
 	client.images |= current_image
-
 
 /mob/camera/imaginary_friend/Destroy()
 	if(owner)
@@ -141,7 +140,7 @@
 		return
 	name = client.prefs.real_name
 	friend_image = get_flat_human_icon(null, outfit_choice, client.prefs)
-	show()
+	update_image()
 
 /mob/camera/imaginary_friend/verb/toggle_hud()
 	set category = "Imaginary Friend"
@@ -236,7 +235,7 @@
 /mob/camera/imaginary_friend/forceMove(atom/destination)
 	dir = get_dir(get_turf(src), destination)
 	loc = destination
-	show()
+	update_image()
 
 /// returns the friend to the owner
 /mob/camera/imaginary_friend/proc/recall()
@@ -272,6 +271,7 @@
 /datum/action/innate/imaginary_join/action_activate()
 	var/mob/camera/imaginary_friend/friend = owner
 	friend.recall()
+
 /datum/action/innate/imaginary_hide
 	name = "Hide"
 	action_icon_state = "hidemob"
@@ -280,13 +280,13 @@
 	var/mob/camera/imaginary_friend/friend = owner
 	if(friend.hidden)
 		friend.hidden = FALSE
-		friend.show()
+		friend.update_image()
 		name = "Hide"
 		action_icon_state = "hidemob"
 		update_button_icon()
 	else
 		friend.hidden = TRUE
-		friend.show()
+		friend.update_image()
 		name = "Show"
 		action_icon_state = "unhidemob"
 		update_button_icon()

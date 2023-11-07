@@ -173,6 +173,7 @@
 	var/knockout_value = damage * 0.1
 	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
 	apply_effect(round(knockout_minus_armor), PARALYZE)
+	apply_effect(round(knockout_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
 	apply_effect(round(knockout_minus_armor) * 2, DAZE)
 	explosion_throw(severity, direction)
 

@@ -341,9 +341,13 @@
 		return
 	if(stored_item)
 		return
+	var/allowed = FALSE
 	for(var/allowed_item in items_allowed)
-		if(!istype(attacking_item, allowed_item))
-			continue
+		if(istype(attacking_item, allowed_item))
+			allowed = TRUE
+			break
+	if(!allowed)
+		return
 	if(!insert_after)
 		return TRUE
 	insert_item(user, attacking_item)

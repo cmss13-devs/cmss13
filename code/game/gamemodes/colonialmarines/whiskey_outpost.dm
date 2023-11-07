@@ -152,9 +152,6 @@
 		spawn(0)
 			//Deleting Almayer, for performance!
 			SSitem_cleanup.delete_almayer()
-	if(SSxenocon)
-		//Don't need XENOCON
-		SSxenocon.wait = 30 MINUTES
 
 
 //PROCCESS
@@ -322,9 +319,9 @@
 		OT = "sup" //no breaking anything.
 
 	else if (OT == "sup")
-		randpick = rand(0,50)
+		randpick = rand(0,90)
 		switch(randpick)
-			if(0 to 5)//Marine Gear 10% Chance.
+			if(0 to 3)//Marine Gear 3% Chance.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				choosemax = rand(5,10)
 				randomitems = list(/obj/item/clothing/head/helmet/marine,
@@ -340,19 +337,19 @@
 								/obj/effect/landmark/wo_supplies/storage/webbing,
 								/obj/item/device/binoculars)
 
-			if(6 to 10)//Lights and shiet 10%
+			if(4 to 6)//Lights and shiet 2%
 				new /obj/structure/largecrate/supply/floodlights(T)
 				new /obj/structure/largecrate/supply/supplies/flares(T)
 
 
-			if(11 to 13) //6% Chance to drop this !FUN! junk.
+			if(7 to 10) //3% Chance to drop this !FUN! junk.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				spawnitems = list(/obj/item/storage/belt/utility/full,
 									/obj/item/storage/belt/utility/full,
 									/obj/item/storage/belt/utility/full,
 									/obj/item/storage/belt/utility/full)
 
-			if(14 to 18)//Materials 10% Chance.
+			if(11 to 22)//Materials 12% Chance.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				choosemax = rand(3,8)
 				randomitems = list(/obj/item/stack/sheet/metal,
@@ -363,7 +360,7 @@
 								/obj/item/stack/sandbags_empty/half,
 								/obj/item/stack/sandbags_empty/half)
 
-			if(19 to 20)//Blood Crate 4% chance
+			if(23 to 25)//Blood Crate 2% chance
 				crate = new /obj/structure/closet/crate/medical(T)
 				spawnitems = list(/obj/item/reagent_container/blood/OMinus,
 								/obj/item/reagent_container/blood/OMinus,
@@ -371,7 +368,7 @@
 								/obj/item/reagent_container/blood/OMinus,
 								/obj/item/reagent_container/blood/OMinus)
 
-			if(21 to 25)//Advanced meds Crate 10%
+			if(26 to 30)//Advanced meds Crate 5%
 				crate = new /obj/structure/closet/crate/medical(T)
 				spawnitems = list(/obj/item/storage/firstaid/fire,
 								/obj/item/storage/firstaid/regular,
@@ -386,7 +383,7 @@
 								/obj/item/clothing/glasses/hud/health,
 								/obj/item/device/defibrillator)
 
-			if(26 to 30)//Random Medical Items 10% as well. Made the list have less small junk
+			if(31 to 34)//Random Medical Items 4%. Made the list have less small junk
 				crate = new /obj/structure/closet/crate/medical(T)
 				spawnitems = list(/obj/item/storage/belt/medical/lifesaver/full,
 								/obj/item/storage/belt/medical/lifesaver/full,
@@ -394,7 +391,7 @@
 								/obj/item/storage/belt/medical/lifesaver/full,
 								/obj/item/storage/belt/medical/lifesaver/full)
 
-			if(31 to 35)//Random explosives Crate 10% because the lord commeth and said let there be explosives.
+			if(35 to 40)//Random explosives Crate 5% because the lord commeth and said let there be explosives.
 				crate = new /obj/structure/closet/crate/ammo(T)
 				choosemax = rand(1,5)
 				randomitems = list(/obj/item/storage/box/explosive_mines,
@@ -404,7 +401,7 @@
 								/obj/item/explosive/grenade/high_explosive,
 								/obj/item/storage/box/nade_box
 								)
-			if(36 to 40) // Junk
+			if(41 to 44)
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(
 									/obj/item/attachable/heavy_barrel,
@@ -412,20 +409,75 @@
 									/obj/item/attachable/heavy_barrel,
 									/obj/item/attachable/heavy_barrel)
 
-			if(40 to 48)//Weapon + supply beacon drop. 6%
+			if(45 to 50)//Weapon + supply beacon drop. 5%
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon)
 
-			if(49 to 50)//Rare weapons. Around 4%
+			if(51 to 57)//Rare weapons. Around 6%
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aap,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aapmag,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/smgap,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/smgextend)
+
+			if(58 to 65) // Sandbags kit
+				crate = new /obj/structure/closet/crate(T)
+				spawnitems = list(/obj/item/tool/shovel/etool,
+								/obj/item/stack/sandbags_empty/half,
+								/obj/item/stack/sandbags_empty/half,
+								/obj/item/stack/sandbags_empty/half)
+
+			if(66 to 70) // Mortar shells. Pew Pew!
+				crate = new /obj/structure/closet/crate/secure/mortar_ammo(T)
+				choosemax = rand(6,10)
+				randomitems = list(/obj/item/mortar_shell/he,
+								/obj/item/mortar_shell/incendiary,
+								/obj/item/mortar_shell/flare,
+								/obj/item/mortar_shell/frag)
+
+			if(71 to 79)
+				crate = new /obj/structure/closet/crate/ammo(T)
+				choosemax = rand(2, 3)
+				randomitems = list(/obj/item/ammo_box/rounds,
+								/obj/item/ammo_box/rounds/ap,
+								/obj/item/ammo_box/rounds/smg,
+								/obj/item/ammo_box/rounds/smg/ap,
+								/obj/item/ammo_box/magazine/ap,
+								/obj/item/ammo_box/magazine/ext,
+								/obj/item/ammo_box/magazine/m4ra/ap,
+								/obj/item/ammo_box/magazine/m4ra/ap,
+								/obj/item/ammo_box/magazine/m39/ap,
+								/obj/item/ammo_box/magazine/m39/ext,
+				)
+
+			if(80 to 82)
+				crate = new /obj/structure/closet/crate/ammo(T)
+				choosemax = rand(2, 3)
+				randomitems = list(/obj/item/ammo_magazine/rifle/lmg/holo_target,
+								/obj/item/ammo_magazine/rifle/lmg/holo_target,
+								/obj/item/ammo_magazine/rifle/lmg,
+								/obj/item/ammo_magazine/rifle/lmg,
+				)
+
+			if(83 to 86)
+				crate = new /obj/structure/closet/crate/ammo(T)
+				spawnitems = list(
+									/obj/item/attachable/magnetic_harness,
+									/obj/item/attachable/magnetic_harness,
+									/obj/item/attachable/magnetic_harness,
+									/obj/item/attachable/magnetic_harness)
+
+			if(86 to 90)
+				crate = new /obj/structure/closet/crate/secure/gear(T)
+				spawnitems = list(
+									/obj/item/device/binoculars/range,
+									/obj/item/device/binoculars/range,
+				)
+
 	if(crate)
 		crate.storage_capacity = 60
 

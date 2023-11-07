@@ -21,16 +21,16 @@
 #define between(low, middle, high) (max(min(middle, high), low))
 
 //Offuscate x for coord system
-#define obfuscate_x(x) (x + obfs_x)
+#define obfuscate_x(x) (x + GLOB.obfs_x)
 
 //Offuscate y for coord system
-#define obfuscate_y(y) (y + obfs_y)
+#define obfuscate_y(y) (y + GLOB.obfs_y)
 
 //Deoffuscate x for coord system
-#define deobfuscate_x(x) (x - obfs_x)
+#define deobfuscate_x(x) (x - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
-#define deobfuscate_y(y) (y - obfs_y)
+#define deobfuscate_y(y) (y - GLOB.obfs_y)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 

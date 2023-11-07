@@ -1,15 +1,3 @@
-/obj/structure/machinery/driver_button
-	name = "mass driver button"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "launcherbtt"
-	desc = "A remote control switch for a mass driver."
-	var/id = null
-	var/active = 0
-	anchored = TRUE
-	use_power = USE_POWER_IDLE
-	idle_power_usage = 2
-	active_power_usage = 4
-
 /obj/structure/machinery/ignition_switch
 	name = "ignition switch"
 	icon = 'icons/obj/objects.dmi'

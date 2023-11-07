@@ -23,6 +23,8 @@
 
 #define T0C 273.15 // 0degC
 #define T20C 293.15 // 20degC
+#define T90C 363.15 // 90degC
+#define T120C 393.15 // 120degC
 #define TCMB 2.7 // -270.3degC
 #define ICE_COLONY_TEMPERATURE 223 //-50degC
 #define SOROKYNE_TEMPERATURE 223 // Same as Ice for now

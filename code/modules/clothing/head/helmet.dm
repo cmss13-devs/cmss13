@@ -337,7 +337,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/stack/medical/bruise_pack ="brutepack (bandages)",
 	/obj/item/stack/medical/ointment = "ointment",
 	/obj/item/tool/surgery/scalpel = "scalpel",
-	/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector"
+	/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector",
+	/obj/item/storage/pill_bottle/packet = "brutepack (bandages)",
 ))
 
 /obj/item/clothing/head/helmet/marine

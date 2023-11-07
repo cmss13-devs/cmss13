@@ -6135,6 +6135,9 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "atW" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -39123,6 +39126,9 @@
 /area/almayer/lifeboat_pumps/south1)
 "heH" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -68056,6 +68062,9 @@
 "tsv" = (
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 32
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

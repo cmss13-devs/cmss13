@@ -316,11 +316,11 @@ const LaunchAnnouncementAlarm = (_, context) => {
       title="Launch Announcement Alarm"
       buttons={
         <>
-          {data.playing_launch_announcement_alarm === false && (
+          {!data.playing_launch_announcement_alarm && (
             <PlayLaunchAnnouncementAlarm />
           )}
 
-          {data.playing_launch_announcement_alarm === true && (
+          {data.playing_launch_announcement_alarm && (
             <Button
               onClick={() => act('stop_play_launch_announcement_alarm')}
               icon="triangle-exclamation">

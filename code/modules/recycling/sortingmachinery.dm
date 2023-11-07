@@ -263,8 +263,8 @@
 			O.add_fingerprint(usr)
 			src.add_fingerprint(usr)
 			src.amount--
-			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
+			user.visible_message("[user] wraps [target] with [src].",\
+			SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),\
 			"You hear someone taping paper around a small object.")
 	else if (istype(target, /obj/structure/closet/crate))
 		var/obj/structure/closet/crate/crate = target
@@ -290,8 +290,8 @@
 				package.wrapped = crate
 				crate.forceMove(package)
 				amount -= 3
-				user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
+				user.visible_message("[user] wraps [target] with [src].",\
+				SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),\
 				"You hear someone taping paper around a large object.")
 			else if(amount < 3)
 				to_chat(user, SPAN_WARNING("You need more paper."))
@@ -303,8 +303,8 @@
 			object.welded = 1
 			object.forceMove(package)
 			amount -= 3
-			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
+			user.visible_message("[user] wraps [target] with [src].",\
+			SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),\
 			"You hear someone taping paper around a large object.")
 		else if(amount < 3)
 			to_chat(user, SPAN_WARNING("You need more paper."))

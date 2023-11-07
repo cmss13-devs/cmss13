@@ -338,13 +338,13 @@
 /obj/vehicle/multitile/on_unset_interaction(mob/user)
 	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(user)
+	if(hardpoint)
+		SEND_SIGNAL(hardpoint, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when crew leaves
+
 /obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
-	var/seat = get_mob_seat(source)
-	if(!seat)
-		return
-
-	var/obj/item/hardpoint/hardpoint = active_hp[seat]
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
 	if(!hardpoint)
 		return
 
@@ -352,11 +352,7 @@
 
 /obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
-	var/seat = get_mob_seat(source)
-	if(!seat)
-		return
-
-	var/obj/item/hardpoint/hardpoint = active_hp[seat]
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
 	if(!hardpoint)
 		return
 
@@ -364,11 +360,50 @@
 
 /obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
+
+	var/list/modifiers = params2list(params)
+
 	var/seat = get_mob_seat(source)
-	if(!seat)
+	switch(seat)
+		if(VEHICLE_DRIVER)
+			if(modifiers["shift"] && !modifiers["alt"])
+				//object.examine(source)
+				return
+			if(modifiers["ctrl"] && !modifiers["alt"])
+				activate_horn()
+				return
+		if(VEHICLE_GUNNER)
+			if(modifiers["shift"] && !modifiers["middle"])
+				/*
+				if(HAS_FLAG(vehicle_flags, VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
+					shoot_other_weapon(source, seat, object)
+				else
+					object.examine(source)
+				*/
+				return
+			if(modifiers["middle"] && !modifiers["shift"])
+				/*
+				if(!HAS_FLAG(vehicle_flags, VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
+					shoot_other_weapon(source, seat, object)
+				*/
+				return
+			if(modifiers["alt"])
+				//toggle_gyrostabilizer()
+				return
+			if(modifiers["ctrl"])
+				//activate_support_module(source, seat, object)
+				return
+		if(VEHICLE_SUPPORT_GUNNER_ONE, VEHICLE_SUPPORT_GUNNER_TWO)
+			if(modifiers["shift"])
+				//object.examine(source)
+				return
+			if(modifiers["middle"] || modifiers["alt"] || modifiers["ctrl"])
+				return
+
+	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
 		return
 
-	var/obj/item/hardpoint/hardpoint = active_hp[seat]
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
 	if(!hardpoint)
 		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
 		return

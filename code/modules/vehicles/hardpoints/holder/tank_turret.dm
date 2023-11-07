@@ -208,12 +208,14 @@
 			R = locate(owner.x - 4, owner.y - 2, owner.z)
 
 	if(shots_fired)
-		L = R
+		target = R
+	else
+		target = L
 
-	return handle_fire(L, user, params)
+	return ..()
 
 /obj/item/hardpoint/holder/tank_turret/get_origin_turf()
-	var/origin_turf =  get_offset_target_turf(get_turf(src), origins[1], origins[2])
+	var/origin_turf = ..()
 	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir) //this should get us tile in front of tank to prevent grenade being stuck under us.
 	return origin_turf
 

@@ -64,9 +64,11 @@
 	//which seat can use this module
 	var/allowed_seat = VEHICLE_GUNNER
 
+	/*
 	//Cooldown on use of the hardpoint
 	var/cooldown = 100
 	var/next_use = 0
+	*/
 
 	//whether hardpoint has activatable ability like shooting or zooming
 	var/activatable = 0
@@ -74,11 +76,13 @@
 	//used to prevent welder click spam
 	var/being_repaired = FALSE
 
+	/*
 	//current user. We can have only one user at a time. Better never change that
 	var/user
 
 	//Accuracy of the hardpoint. (which is, in fact, a scatter. Need to change this system)
 	var/accuracy = 1
+	*/
 
 	// The firing arc of this hardpoint
 	var/firing_arc = 0 //in degrees. 0 skips whole arc of fire check
@@ -117,29 +121,29 @@
 
 	//Semi-auto and full-auto.
 	///For regular shots, how long to wait before firing again. Use modify_fire_delay and set_fire_delay instead of modifying this on the fly
-	VAR_PROTECTED/fire_delay = 0
+	var/fire_delay = 0
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
-	VAR_PROTECTED/autofire_slow_mult = 1
+	var/autofire_slow_mult = 1
 	///If the gun is currently auto firing.
-	VAR_PROTECTED/auto_firing = FALSE
+	var/auto_firing = FALSE
 
 	//Burst fire.
 	///How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst. Use modify_burst_amount and set_burst_amount instead of modifying this
-	VAR_PROTECTED/burst_amount = 1
+	var/burst_amount = 1
 	///The delay in between shots. Lower = less delay = faster. Use modify_burst_delay and set_burst_delay instead of modifying this
-	VAR_PROTECTED/burst_delay = 1
+	var/burst_delay = 1
 	///When burst-firing, this number is extra time before the weapon can fire again.
 	var/extra_delay = 0
 	///If the gun is currently burst firing.
-	VAR_PROTECTED/burst_firing = FALSE
+	var/burst_firing = FALSE
 
 	///Delay before fire can resume.
 	COOLDOWN_DECLARE(fire_cooldown)
 
 	/// Currently selected target to fire at. Set with set_target()
-	VAR_PRIVATE/atom/target
+	var/atom/target
 	/// Current operator (crew) of the hardpoint.
-	VAR_PRIVATE/mob/hp_operator
+	var/mob/hp_operator
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -148,7 +152,7 @@
 /obj/item/hardpoint/Initialize()
 	. = ..()
 	set_bullet_traits()
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing)))
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), null, CALLBACK(src, PROC_REF(set_auto_firing)))
 
 /obj/item/hardpoint/Destroy()
 	if(owner)
@@ -158,7 +162,7 @@
 	QDEL_NULL_LIST(backup_clips)
 	QDEL_NULL(ammo)
 	ammo = null
-	target = null
+	set_target(null)
 	hp_operator = null
 
 	return ..()
@@ -494,15 +498,27 @@
 	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
 	return
 
+/// Setter proc for the automatic firing flag.
+/obj/item/hardpoint/proc/set_auto_firing(auto = FALSE)
+	if(auto_firing != auto)
+		auto_firing = auto
+		if(!auto_firing) //just stopped auto firing
+			display_ammo()
+			hp_operator = null
+
 /// Setter proc for the burst firing flag.
 /obj/item/hardpoint/proc/set_burst_firing(burst = FALSE)
-	burst_firing = burst
+	if(burst_firing != burst)
+		burst_firing = burst
+		if(!burst_firing) //just stopped burst firing
+			display_ammo()
+			hp_operator = null
 
 /// Clean all firing references.
-/obj/item/hardpoint/proc/reset_fire()
+/obj/item/hardpoint/proc/reset_fire() //automatic reset
 	shots_fired = 0
 	set_target(null)
-	set_auto_firing(FALSE) //autofire automatic exit
+	set_auto_firing(FALSE)
 
 /// Set the target and take care of hard delete.
 /obj/item/hardpoint/proc/set_target(atom/object)
@@ -519,10 +535,6 @@
 	SIGNAL_HANDLER
 	target = get_turf(target)
 
-/// Setter proc for the automatic firing flag.
-/obj/item/hardpoint/proc/set_auto_firing(auto = FALSE)
-	auto_firing = auto
-
 /// Print how much ammo is left to chat.
 /obj/item/hardpoint/proc/display_ammo(mob/user)
 	if(!user)
@@ -537,9 +549,7 @@
 	if(auto_firing || burst_firing)
 		SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 		if(auto_firing)
-			//manual automatic exit
-			reset_fire()
-			display_ammo()
+			reset_fire() //automatic end-of-fire
 
 /// Update the target if you dragged your mouse.
 /obj/item/hardpoint/proc/change_target(mob/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
@@ -547,26 +557,32 @@
 
 /// Check if the gun can fire and add it to bucket autofire system if needed, or just fire the gun if not.
 /obj/item/hardpoint/proc/start_fire(datum/source, atom/object, turf/location, control, params)
+	/*
 	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
+	if(modifiers["shift"] || modifiers["ctrl"] || modifiers["alt"] || modifiers["middle"] || modifiers["right"])
 		return
+	*/
 
-	if(istype(object, /atom/movable/screen)) //don't click on UI
+	if(istype(object, /atom/movable/screen))
 		return
 
 	if(QDELETED(object))
 		return
 
-	if(!COOLDOWN_FINISHED(src, fire_cooldown))
+	if(!auto_firing && !burst_firing && !COOLDOWN_FINISHED(src, fire_cooldown))
 		if(max(fire_delay, burst_delay + extra_delay) >= 2.0 SECONDS) //filter out guns with high firerate to prevent message spam.
-			to_chat(user, SPAN_WARNING("You need to wait [SPAN_HELPFUL(COOLDOWN_SECONDSLEFT(src, fire_cooldown))] seconds before [name] can be used again."))
+			to_chat(source, SPAN_WARNING("You need to wait [SPAN_HELPFUL(COOLDOWN_SECONDSLEFT(src, fire_cooldown))] seconds before [name] can be used again."))
 		return
 
 	hp_operator = source
-	set_target(get_turf_on_clickcatcher(object, hp_operator, params))
+	set_target(get_turf_on_clickcatcher(object, source, params))
 
 	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
-		try_fire(object, source, params)
+		var/fire_return = try_fire(object, source, params)
+		if(fire_return == AUTOFIRE_CONTINUE)
+			reset_fire() //semiauto end-of-fire
+			display_ammo()
+			hp_operator = null
 	else
 		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
@@ -620,25 +636,23 @@
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(origin_turf, target))
 
-	if(ammo && ammo.current_rounds <= 0)
-		click_empty()
+	set_fire_cooldown(gun_firemode)
 
-	//cooldown to respect intended ROF
+	return AUTOFIRE_CONTINUE
+
+/// Start cooldown to respect delay of firemode.
+/obj/item/hardpoint/proc/set_fire_cooldown(firemode)
 	var/cooldown_time = 0
-	switch(gun_firemode)
+	switch(firemode)
 		if(GUN_FIREMODE_SEMIAUTO)
 			cooldown_time = fire_delay
-			//manual semiauto exit
-			reset_fire()
-			display_ammo()
 		if(GUN_FIREMODE_BURSTFIRE)
 			cooldown_time = burst_delay + extra_delay
 		if(GUN_FIREMODE_AUTOMATIC)
 			cooldown_time = fire_delay
 	COOLDOWN_START(src, fire_cooldown, cooldown_time)
 
-	return AUTOFIRE_CONTINUE
-
+/// Adjust target based on random scatter angle.
 /obj/item/hardpoint/proc/simulate_scatter(obj/projectile/projectile_to_fire, atom/target, turf/curloc, turf/targloc)
 	var/fire_angle = Get_Angle(curloc, targloc)
 	var/total_scatter_angle = projectile_to_fire.scatter
@@ -654,6 +668,7 @@
 /obj/item/hardpoint/proc/get_origin_turf()
 	return get_offset_target_turf(get_turf(src), origins[1], origins[2])
 
+/*
 /// Toggles the gun's firemode one down the list.
 /obj/item/hardpoint/proc/do_toggle_firemode(mob/user, new_firemode)
 	if(burst_firing) //can't toggle mid burst
@@ -681,7 +696,9 @@
 
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch the hardpoint to <b>[gun_firemode]</b>."))
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
+*/
 
+/// Plays 'click' noise and announced to chat. Usually called when weapon empty.
 /obj/item/hardpoint/proc/click_empty(mob/user)
 	if(user)
 		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
@@ -689,6 +706,7 @@
 	else
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 
+/// Selects and plays a firing sound from the list.
 /obj/item/hardpoint/proc/play_firing_sounds()
 	if(LAZYLEN(activation_sounds))
 		playsound(get_turf(src), pick(activation_sounds), 60, 1)

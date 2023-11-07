@@ -36,20 +36,28 @@
 	)
 	scatter = 7
 
-	var/start_sound = 'sound/weapons/vehicles/minigun_start.ogg'
-	var/loop_sound = 'sound/weapons/vehicles/minigun_loop.ogg'
-	var/stop_sound = 'sound/weapons/vehicles/minigun_stop.ogg'
+	//var/start_sound = 'sound/weapons/vehicles/minigun_start.ogg'
+	//var/loop_sound = 'sound/weapons/vehicles/minigun_loop.ogg'
+	//var/stop_sound = 'sound/weapons/vehicles/minigun_stop.ogg'
 	activation_sounds = list('sound/weapons/gun_minigun.ogg')
-	/// Active firing time to reach max spin_stage
+	/// Active firing time to reach max spin_stage.
 	var/spinup_time = 8 SECONDS
-	/// Cooldown time to reach min spin_stage
+	/// Grace period before losing spin_stage.
+	var/spindown_grace_time = 2 SECONDS
+	COOLDOWN_DECLARE(spindown_grace_cooldown)
+	/// Cooldown time to reach min spin_stage.
 	var/spindown_time = 3 SECONDS
-	/// Index of stage_rate
+	/// Index of stage_rate.
 	var/spin_stage = 1
-	/// Shots fired per fire_delay at a particular spin_stage
+	/// Shots fired per fire_delay at a particular spin_stage.
 	var/list/stage_rate = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5)
-	/// Fire delay for current spin_stage
+	/// Fire delay for current spin_stage.
 	var/stage_delay = 0.8 SECONDS
+
+/obj/item/hardpoint/primary/minigun/Destroy()
+	STOP_PROCESSING(SSobj, src)
+
+	return ..()
 
 /obj/item/hardpoint/primary/minigun/process(delta_time)
 	var/stage_rate_len = stage_rate.len
@@ -58,7 +66,7 @@
 	var/old_spin_stage = spin_stage
 	if(auto_firing || burst_firing) //spinup if firing
 		spin_stage += delta_stage / spinup_time
-	else //spindown if not firing
+	else if(COOLDOWN_FINISHED(src, spindown_grace_cooldown)) //spindown if not firing and after grace
 		spin_stage -= delta_stage / spindown_time
 	spin_stage = Clamp(spin_stage, 1, stage_rate_len)
 
@@ -77,5 +85,8 @@
 	. = ..()
 
 	if((. & AUTOFIRE_CONTINUE))
-		COOLDOWN_START(src, fire_cooldown, stage_delay)
 		START_PROCESSING(SSobj, src)
+
+/obj/item/hardpoint/primary/minigun/set_fire_cooldown()
+	COOLDOWN_START(src, fire_cooldown, stage_delay)
+	COOLDOWN_START(src, spindown_grace_cooldown, spindown_grace_time)

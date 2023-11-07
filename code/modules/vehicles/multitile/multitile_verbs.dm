@@ -30,6 +30,10 @@
 	if(!HP)
 		return
 
+	var/obj/item/hardpoint/old_HP = V.active_hp[seat]
+	if(old_HP)
+		SEND_SIGNAL(old_HP, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when switching away from HP
+
 	V.active_hp[seat] = HP
 	var/msg = "You select \the [HP]."
 	if(HP.ammo)
@@ -65,6 +69,10 @@
 	var/obj/item/hardpoint/HP = usable_hps[new_hp]
 	if(!HP)
 		return
+
+	var/obj/item/hardpoint/old_HP = V.active_hp[seat]
+	if(old_HP)
+		SEND_SIGNAL(old_HP, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when switching away from HP
 
 	V.active_hp[seat] = HP
 	var/msg = "You select \the [HP]."

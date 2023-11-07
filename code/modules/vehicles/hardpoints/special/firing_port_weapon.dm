@@ -88,11 +88,11 @@
 	//FPW stop working at 50% hull
 	if(owner.health < initial(owner.health) * 0.5)
 		to_chat(user, SPAN_WARNING("<b>\The [owner]'s hull is too damaged!</b>"))
-		return FALSE
+		return NONE
 
 	if(user.get_active_hand())
 		to_chat(user, SPAN_WARNING("You need a free hand to use \the [name]."))
-		return
+		return NONE
 
 	if(reloading)
 		to_chat(user, SPAN_NOTICE("\The [name] is reloading. Wait [SPAN_HELPFUL("[((reload_time_started + reload_time - world.time) / 10)]")] seconds."))

@@ -17,3 +17,94 @@
 2023-11-03:
   harryob:
   - ui: the options button is now part of the statbrowser tabs proper
+2023-11-04:
+  BeagleGaming1:
+  - rscadd: Added many new loadout items
+  - code_imp: Added a signal to items that triggers right after the mob finishes spawning
+  - code_imp: Added a signal to add additional behavior to storing items in shoes
+  Blundir:
+  - rscadd: added intel and foxtrot squad berets and headband
+  TheGamerdk:
+  - bugfix: Restores the MK1 AP mags in the CIC armory
+  fira:
+  - bugfix: M56D/M2C should now properly stop firing when they stop being used.
+  realforest2001:
+  - code_imp: Repathed sword weapons to a uniform /obj/item/weapon/sword
+  - balance: All sword-type weapons are now Large items instead of Normal sized, to
+      match machetes.
+  - rscadd: Added the KN5500 PDA for Working Joes. Sprites by Frans_Feiffer.
+  - rscadd: Changed the plain glass in Working Joe presets to Reinforced Glass.
+  sleepynecrons:
+  - imagedel: shrinks the type-19 SMG stick magazine to a more reasonable size
+2023-11-05:
+  fira:
+  - bugfix: Fixed recyclers (including Whiskey Outposts') and added the possibility
+      to recycle crates with them.
+  - bugfix: Standardized "vend to table" functionality of vendors, enabling it to
+      work for Whiskey Outpost's Reqs.
+  - rscadd: Whiskey Outpost vendors now contain the same items as Almayer's. WO still
+      has spare specialist ammo on top of that.
+  - rscadd: Readded delivery chute, wrap and tagger to Whiskey Outpost Reqs, letting
+      you pack and send crates and items via disposals again.
+  - balance: Whiskey Outpost supply drops should now be more interesting and impactful.
+  - rscadd: Added missing Synth vendors on WO.
+2023-11-07:
+  567Turtle:
+  - soundadd: New whistle sound effect
+  Alexguinea:
+  - rscadd: Added toners to the rec vendor
+  AndroBetel:
+  - spellcheck: Fixed a typo in RO rules sign.
+  - spellcheck: RO mention is no more, replaced with QM.
+  BeagleGaming1:
+  - code_imp: Tents now hold the datum directly, instead of the typepath
+  - admin: Added a proc for staff to change tent dmm's
+  Blundir:
+  - rscadd: added shotgun tube toggle hotkey
+  Doubleumc:
+  - bugfix: vehicle interiors can hear exterior noises
+  Drathek:
+  - bugfix: Fixed various job's entry messages having broken links to the wiki
+  Firartix and Frans_Feiffer:
+  - rscadd: Readded Halloween pumpkin helmets.
+  IowaPotatoFarmer:
+  - rscadd: Added new survivor presets for New Varadero to make them more visually
+      distinct and unique to the map.
+  - rscdel: Removed the ability to build ground structures or anchor wall girders
+      on top of xeno tunnels.
+  - bugfix: Fixed wall girders being anchorable on shuttle tiles.
+  Morrow, Zonespace:
+  - rscadd: Added objectives to hijack. You now must hold different sections of the
+      ship to successfully launch lifeboats or pods
+  - rscadd: The areas that contribute to hijack objectives are the lifeboat pumps,
+      astronav, and engineering
+  - rscadd: Fuel pumps now have red alert sentries
+  - rscadd: Corporate liaison evac shuttle now can be launched at any time even if
+      evac has not been called
+  - rscadd: You can now self-destruct the ship by overloading the fusion generators
+      in engineering once lifeboat fuel is at 100%.
+  - rscdel: Removed auto launch of lifeboats and pods
+  - code_imp: Refactored EvacuationAuthority into SShijack
+  Releasethesea:
+  - balance: Makes it so that Pill packets fit in helmets
+  SpartanBobby:
+  - maptweak: Alot of changes to big reds admin area, including new windows, prop
+      placement, room detailing, new doors
+  Steelpoint:
+  - rscadd: Corpsman can chose to optionally vend a set of armoured sterile gloves
+      as a alternative to regular gloves. They provide full glove protection, but
+      are otherwise an aesthetic choice.
+  TopHatPenguin:
+  - rscadd: Adds a mostly built communications office nightmare insert to Kutjevo
+      which attaches onto the sensor tower.
+  - rscadd: Re-adds the Kutjevo blackbox.
+  Xander3359:
+  - bugfix: Fixes being able to create ghost tanks from a Broiler-T unit.
+  blackdragonTOW:
+  - imageadd: Changed nanotrasen cashcard icon to W-Y
+  fira:
+  - rscdel: Removed unused magnet and mass driver legacy SS13 machinery.
+  - bugfix: Fixed being able to put anything in your boots. You're not wizards!
+  - admin: Added better logging for orbital bombardment.
+  realforest2001:
+  - rscadd: Added a big line to Nightmare survivor spawns that indicates hostility.

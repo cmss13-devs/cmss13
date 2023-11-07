@@ -249,9 +249,13 @@
 	if(!ishuman(user) || user.is_mob_incapacitated())
 		return FALSE
 
-	var/obj/item/weapon/gun/flamer/M240T/F = user.get_active_hand()
-	if(!istype(F))
-		to_chat(usr, "You must be holding the M240-T incinerator unit to use [src]")
+	if(user.back != src)
+		to_chat(user, "The [src] must be equipped before you can switch types")
+		return
+
+	var/obj/item/weapon/gun/flamer/M240T/flamer = user.get_active_hand()
+	if(!istype(flamer))
+		to_chat(user, "You must be holding the M240-T incinerator unit to use [src]")
 		return
 
 	if(!active_fuel)
@@ -267,14 +271,13 @@
 	else
 		active_fuel = fuelB
 
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
+	for(var/datum/action/action_added as anything in actions)
+		action_added.update_button_icon()
 
 	to_chat(user, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
-	F.current_mag = active_fuel
-	F.update_icon()
+	flamer.current_mag = active_fuel
+	flamer.update_icon()
 
 	return TRUE
 

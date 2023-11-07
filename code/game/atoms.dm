@@ -725,7 +725,6 @@ Parameters are passed from New.
 		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate"))
 		if(!result)
 			return
-		var/matrix/M = base_transform
 		if(!result)
 			return
 		switch(result)

@@ -386,7 +386,7 @@
 
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
-		alarm_sound_loop = null
+		QDEL_NULL(alarm_sound_loop)
 		SSshuttle.mobile -= src
 		destination = null
 		previous = null

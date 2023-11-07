@@ -145,7 +145,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(!receiver_client)
 			to_chat(src, SPAN_WARNING("The person you were attempting to PM has gone offline!"))
 			return
-		if(unansweredAhelps[receiver_client.computer_id]) unansweredAhelps.Remove(receiver_client.computer_id)
 		cmd_admin_pm(receiver_client, null)
 		return
 	else if(href_list["FaxView"])
@@ -337,13 +336,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	prefs.last_ip = address //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
-	xeno_prefix = prefs.xeno_prefix
-	xeno_postfix = prefs.xeno_postfix
-	xeno_name_ban = prefs.xeno_name_ban
-	if(!xeno_prefix || xeno_name_ban)
-		xeno_prefix = "XX"
-	if(!xeno_postfix || xeno_name_ban)
-		xeno_postfix = ""
+
+	load_xeno_name()
 
 	human_name_ban = prefs.human_name_ban
 
@@ -479,7 +473,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.clients -= src
 	SSping.currentrun -= src
 
-	unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")
 	if(CLIENT_IS_STAFF(src))
 		message_admins("Admin logout: [key_name(src)]")
@@ -797,3 +790,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(admin_holder)
 		admin_holder.particle_test = new /datum/particle_editor(in_atom)
 		admin_holder.particle_test.tgui_interact(mob)
+
+/client/proc/load_xeno_name()
+	xeno_prefix = prefs.xeno_prefix
+	xeno_postfix = prefs.xeno_postfix
+	xeno_name_ban = prefs.xeno_name_ban
+	if(!xeno_prefix || xeno_name_ban)
+		xeno_prefix = "XX"
+	if(!xeno_postfix || xeno_name_ban)
+		xeno_postfix = ""

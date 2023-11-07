@@ -248,7 +248,7 @@
 
 /obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "core[health < (initial(health) * 0.5) ? "_warn" : "_passive"]")
+	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "core")
 
 /obj/effect/alien/resin/special/pylon/core/process()
 	. = ..()
@@ -284,7 +284,7 @@
 			linked_hive.stored_larva++
 			linked_hive.hijack_burrowed_left--
 			if(GLOB.xeno_queue_candidate_count < 1 + count_spawned)
-				notify_ghosts(header = "Claim Xeno", message = "The Hive has gained another burrowed larva! Click to take it.", source = src, action = NOTIFY_JOIN_XENO, enter_link = "join_xeno")
+				notify_ghosts(header = "Claim Xeno", message = "The Hive has gained another burrowed larva! Click to take it.", source = src, action = NOTIFY_JOIN_XENO, enter_link = "join_xeno=1")
 			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 			if(linked_hive.hijack_burrowed_left < 1)

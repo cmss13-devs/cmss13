@@ -8,7 +8,7 @@
 		update_panel_data(round_statistics)
 	ui_interact(user)
 
-/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", datum/nanoui/ui = null, force_open = 1)
+/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", datum/nanoui/ui, force_open = 1)
 	data["menu"] = menu
 	data["subMenu"] = subMenu
 	data["dataMenu"] = dataMenu

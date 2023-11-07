@@ -566,6 +566,18 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/rto/pickup(mob/user)
 	. = ..()
+	autoset_phone_id(user)
+
+/obj/item/storage/backpack/marine/satchel/rto/equipped(mob/user, slot)
+	. = ..()
+	autoset_phone_id(user)
+
+/// Automatically sets the phone_id based on the current or updated user
+/obj/item/storage/backpack/marine/satchel/rto/proc/autoset_phone_id(mob/user)
+	if(!user)
+		internal_transmitter.phone_id = "[src]"
+		internal_transmitter.enabled = FALSE
+		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.comm_title)
@@ -579,13 +591,11 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 			internal_transmitter.phone_id += " ([H.assigned_squad.name])"
 	else
 		internal_transmitter.phone_id = "[user]"
-
 	internal_transmitter.enabled = TRUE
 
 /obj/item/storage/backpack/marine/satchel/rto/dropped(mob/user)
 	. = ..()
-	internal_transmitter.phone_id = "[src]"
-	internal_transmitter.enabled = FALSE
+	autoset_phone_id(null) // Disable phone when dropped
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/use_phone(mob/user)
 	internal_transmitter.attack_hand(user)

@@ -61,8 +61,7 @@
 		draw_item_overlays()
 
 /obj/structure/surface/proc/detach_item(obj/item/O)
-	O.pixel_x = initial(O.pixel_x)
-	O.pixel_y = initial(O.pixel_y)
+	O.scatter_item()
 	UnregisterSignal(O, COMSIG_ATOM_DECORATED)
 	draw_item_overlays()
 	return

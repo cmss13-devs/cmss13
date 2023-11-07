@@ -217,6 +217,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/storage/fancy/cigarettes/arcturian_ace = "helmet_cig_aapack",
 	/obj/item/storage/fancy/cigarettes/lucky_strikes_4 = "hat_cig_ls_mre",
 	/obj/item/storage/fancy/cigar/matchbook = "helmet_matches_mre",
+	/obj/item/clothing/mask/cigarette/cigar = "helmet_cig_cig",
+	/obj/item/clothing/mask/electronic_cigarette = "helmet_cig_cig",
 
 	// CARDS
 	/obj/item/toy/deck = "helmet_card_deck",
@@ -278,6 +280,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/spent_buckshot = "spent_buckshot",
 	/obj/item/prop/helmetgarb/spent_slug = "spent_slug",
 	/obj/item/prop/helmetgarb/spent_flech = "spent_flech",
+	/obj/item/prop/helmetgarb/cartridge = "cartridge",
 	/obj/item/prop/helmetgarb/prescription_bottle = "prescription_bottle",
 	/obj/item/prop/helmetgarb/raincover = "raincover",
 	/obj/item/prop/helmetgarb/rabbitsfoot = "rabbitsfoot",
@@ -297,6 +300,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/flair_uscm = "flair_uscm",
 	/obj/item/prop/helmetgarb/bullet_pipe = "bullet_pipe",
 	/obj/item/prop/helmetgarb/spacejam_tickets = "tickets_to_space_jam",
+	/obj/item/prop/helmetgarb/family_photo = "family_photo",
+	/obj/item/prop/helmetgarb/compass = "compass",
+	/obj/item/prop/helmetgarb/bug_spray = "bug_spray",
 
 	// MISC
 	/obj/item/tool/pen = "helmet_pen_black",
@@ -333,7 +339,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/stack/medical/bruise_pack ="brutepack (bandages)",
 	/obj/item/stack/medical/ointment = "ointment",
 	/obj/item/tool/surgery/scalpel = "scalpel",
-	/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector"
+	/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector",
+	/obj/item/storage/pill_bottle/packet = "brutepack (bandages)",
 ))
 
 /obj/item/clothing/head/helmet/marine

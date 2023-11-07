@@ -327,10 +327,11 @@
 	if(observe_target_mob)
 		clean_observe_target()
 
-/mob/dead/observer/Destroy()
+/mob/dead/observer/Destroy(force)
+	GLOB.observer_list -= src
 	QDEL_NULL(orbit_menu)
 	QDEL_NULL(last_health_display)
-	GLOB.observer_list -= src
+	QDEL_NULL(minimap)
 	following = null
 	observe_target_mob = null
 	observe_target_client = null
@@ -1033,13 +1034,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/mobs_by_role = list() // the list the mobs are assigned to first, for sorting purposes
-	for(var/datum/weakref/ref as anything in GLOB.freed_mob_list)
-		var/mob/living/resolved_mob = ref.resolve()
-		var/role_name = resolved_mob.get_role_name()
+	for(var/mob/freed_mob as anything in GLOB.freed_mob_list)
+		var/role_name = freed_mob.get_role_name()
 		if(!role_name)
 			role_name = "No Role"
 		LAZYINITLIST(mobs_by_role[role_name])
-		mobs_by_role[role_name] += resolved_mob
+		mobs_by_role[role_name] += freed_mob
 
 	var/list/freed_mob_choices = list() // the list we'll be choosing from
 	for(var/role in mobs_by_role)
@@ -1055,18 +1055,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	handle_joining_as_freed_mob(L)
 
 /mob/dead/proc/handle_joining_as_freed_mob(mob/living/freed_mob)
-	if(!freed_mob || !(WEAKREF(freed_mob) in GLOB.freed_mob_list))
-		return
-
-	if(!istype(freed_mob))
+	if(!istype(freed_mob) || !(freed_mob in GLOB.freed_mob_list))
 		return
 
 	if(QDELETED(freed_mob) || freed_mob.client)
-		GLOB.freed_mob_list -= WEAKREF(freed_mob)
+		GLOB.freed_mob_list -= freed_mob
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	GLOB.freed_mob_list -= WEAKREF(freed_mob)
+	GLOB.freed_mob_list -= freed_mob
 	mind.transfer_to(freed_mob, TRUE)
 
 /mob/dead/verb/join_as_hellhound()
@@ -1225,10 +1222,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		else
 			. += "Hijack Over"
 
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+	if(SShijack)
+		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
-			. += "Evacuation: [eta_status]"
+			. += "Evacuation Goal: [eta_status]"
+
+		if(SShijack.sd_unlocked)
+			. += "Self Destruct Goal: [SShijack.get_sd_eta()]"
 
 	if(client.prefs?.be_special & BE_ALIEN_AFTER_DEATH)
 		if(larva_queue_cached_message)

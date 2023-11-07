@@ -1073,7 +1073,7 @@
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]
 
-/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE)
+/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	. = ..()
 	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !is_admin_level(z))
 		handle_ghost_message()

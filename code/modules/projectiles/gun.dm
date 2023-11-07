@@ -287,16 +287,11 @@
 /obj/item/weapon/gun/Destroy()
 	in_chamber = null
 	ammo = null
-	current_mag = null
+	QDEL_NULL(current_mag)
 	target = null
 	last_moved_mob = null
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
 		flags_gun_features &= ~GUN_FLASHLIGHT_ON
-		if(ismob(loc))
-			for(var/slot in attachments)
-				var/obj/item/attachable/potential_attachment = attachments[slot]
-				if(!potential_attachment)
-					continue
 	attachments = null
 	attachable_overlays = null
 	QDEL_NULL(active_attachable)
@@ -523,6 +518,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+
+	for(var/obj/item/attachable/stock/smg/collapsible/brace/current_stock in contents) //SMG armbrace folds to stop it getting stuck on people
+		if(current_stock.stock_activated)
+			current_stock.activate_attachment(src, user, turn_off = TRUE)
 
 	unwield(user)
 	set_gun_user(null)
@@ -1959,6 +1958,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /// Setter proc for fa_firing
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
+	SIGNAL_HANDLER
 	fa_firing = auto
 
 /// Getter for gun_user

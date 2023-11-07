@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - admin: "Added better logging for orbital bombardment."

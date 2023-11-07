@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Spawned bottles now use all 4 of their sprites as intended rather than always the same."

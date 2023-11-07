@@ -23,16 +23,19 @@
 	broadcasting = FALSE
 	listening = FALSE
 	frequency = BUG_A_FREQ
-	canhear_range = 7
+	canhear_range = 2
 	freqlock = TRUE
+	/// What the bug is currently pretending to be.
 	var/current_disguise = DISGUISE_REMOVE
+	/// Whether or not the bug can be used to listen to its own channel.
+	var/prevent_snooping = FALSE
 
 /obj/item/device/radio/listening_bug/ui_data(mob/user)
 	var/list/data = list()
 
-	data["broadcasting"] = src.broadcasting
-	data["listening"] = src.listening
-	data["frequency"] = src.frequency
+	data["broadcasting"] = broadcasting
+	data["listening"] = listening
+	data["frequency"] = frequency
 	data["freqlock"] = freqlock
 
 	var/list/radio_channels = list()
@@ -54,20 +57,33 @@
 
 	return data
 
-/obj/item/device/radio/listening_bug/freq_a
-	frequency = BUG_A_FREQ
+/obj/item/device/radio/listening_bug/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+	switch(action)
+		if("listen")
+			if(prevent_snooping)
+				to_chat(usr, SPAN_WARNING("This device cannot receive transmissions!"))
+				return
+			listening = !listening
+			return
+		if("subspace")
+			if(!ishuman(usr))
+				return
+			var/mob/living/carbon/human/user = usr
+			if(!check_access(user.wear_id) && !check_access(user.get_active_hand()))
+				to_chat(user, SPAN_WARNING("You need an authenticated ID card to change this function!"))
+				return
+			if(subspace_switchable)
+				subspace_transmission = !subspace_transmission
+				if(!subspace_transmission)
+					channels = list()
+				return
+	..()
 
-/obj/item/device/radio/listening_bug/freq_b
-	frequency = BUG_B_FREQ
-
-/obj/item/device/radio/listening_bug/freq_c
-	frequency = BUG_C_FREQ
-
-/obj/item/device/radio/listening_bug/freq_d
-	frequency = BUG_D_FREQ
-
-/obj/item/device/radio/listening_bug/freq_e
-	frequency = BUG_E_FREQ
+/obj/item/device/radio/listening_bug/hear_talk(mob/M as mob, msg, verb = "says", datum/language/speaking = null)
+	var/processed_verb = "[SPAN_RED("\[LSTN Device\]")] [verb]"
+	if(broadcasting)
+		if(get_dist(src, M) <= 7)
+			talk_into(M, msg,null,processed_verb,speaking)
 
 /obj/item/device/radio/listening_bug/verb/change_disguise()
 	set name = "Change Disguise"
@@ -105,8 +121,10 @@
 	var/new_equip_slots
 	switch(new_disguise)
 		if(DISGUISE_REMOVE)
-			new_name = "listening device"
-			new_desc = "A small, and disguisable, listening device."
+			new_name = "listening device ([get_bug_letter()])"
+			new_desc = "A small, and disguisable, listening device. This one is assigned to network [get_bug_letter()]."
+			if(subspace_switchable)
+				new_desc += " It seems to be able to switch between subspace communications broadcasts, and shortwave-radio bursts."
 			new_icon = 'icons/obj/items/devices.dmi'
 			new_icon_state = "voice0"
 			new_item_state = "analyzer"
@@ -127,7 +145,7 @@
 			new_equip_slots = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 			if(new_disguise == DISGUISE_FOUNTAIN_PEN)
 				new_icon_state = "fountain_pen"
-				new_desc = "A lavish testament to the ingenuity of ARMAT's craftsmanship, this fountain pen is a paragon of design and functionality. Detailed with golden accents and intricate mechanics, the pen allows for a swift change between a myriad of ink colors with a simple twist. A product of precision engineering, each mechanism inside the pen is designed to provide a seamless, effortless transition from one color to the next, creating an instrument of luxurious versatility"
+				new_desc = "A lavish testament to the ingenuity of ARMAT's craftsmanship, this fountain pen is a paragon of design and functionality. Detailed with golden accents and intricate mechanics, the pen allows for a swift change between a myriad of ink colors with a simple twist. A product of precision engineering, each mechanism inside the pen is designed to provide a seamless, effortless transition from one color to the next, creating an instrument of luxurious versatility."
 		if(DISGUISE_ACCESS_TUNER)
 			new_name = "Security Access Tuner"
 			new_desc = "A small handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well."
@@ -137,7 +155,7 @@
 			new_equip_slots = 0
 		if(DISGUISE_WHISTLE)
 			new_name = "whistle"
-			new_desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth"
+			new_desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth."
 			new_icon = 'icons/obj/items/devices.dmi'
 			new_icon_state = "whistle"
 			new_item_state = "whistle"
@@ -191,3 +209,90 @@
 #undef DISGUISE_CAMERA
 #undef DISGUISE_ZIPPO
 #undef DISGUISE_TAPE_RECORDER
+
+/obj/item/device/radio/listening_bug/proc/get_bug_letter()
+	if(!frequency)
+		return "X"
+	switch(frequency)
+		if(BUG_A_FREQ)
+			return "A"
+		if(BUG_B_FREQ)
+			return "B"
+		if(BUG_C_FREQ)
+			return "C"
+		if(BUG_D_FREQ)
+			return "D"
+		if(BUG_E_FREQ)
+			return "E"
+		if(SEC_FREQ)
+			return "MP"
+		if(PVST_FREQ)
+			return "PVST"
+		if(HC_FREQ)
+			return "HC"
+		if(WY_FREQ, PMC_FREQ)
+			return "WY"
+		if(UPP_FREQ, UPP_KDO_FREQ)
+			return "UPP"
+		else
+			return "X"
+
+
+/obj/item/device/radio/listening_bug/freq_a
+	frequency = BUG_A_FREQ
+
+/obj/item/device/radio/listening_bug/freq_b
+	frequency = BUG_B_FREQ
+
+/obj/item/device/radio/listening_bug/freq_c
+	frequency = BUG_C_FREQ
+
+/obj/item/device/radio/listening_bug/freq_d
+	frequency = BUG_D_FREQ
+
+/obj/item/device/radio/listening_bug/freq_e
+	frequency = BUG_E_FREQ
+
+/obj/item/device/radio/listening_bug/radio_linked
+	prevent_snooping = TRUE
+	subspace_transmission = TRUE
+	subspace_switchable = TRUE
+
+/obj/item/device/radio/listening_bug/radio_linked/mp
+	frequency = SEC_FREQ
+	req_one_access = list(ACCESS_MARINE_BRIG)
+
+/obj/item/device/radio/listening_bug/radio_linked/wy
+	frequency = WY_FREQ
+	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_SECURITY)
+
+/obj/item/device/radio/listening_bug/radio_linked/upp
+	frequency = UPP_FREQ
+	req_one_access = list(ACCESS_UPP_COMMANDO, ACCESS_UPP_SECURITY)
+
+/obj/item/device/radio/listening_bug/radio_linked/upp/commando
+	frequency = UPP_KDO_FREQ
+	req_one_access = list(ACCESS_UPP_COMMANDO)
+
+
+// ENCRYPTION KEYS FOR LISTENING IN!
+//REQURIES SUBSPACE ACTIVATION ON THE BUGS FIRST!
+
+/obj/item/device/encryptionkey/listening_bug
+	desc = "A small encryption key for listening to a secret broadcasting device! Unlikely to work if the device is not using subspace communications!"
+	icon_state = "stripped_key"
+/obj/item/device/encryptionkey/listening_bug/freq_a
+	name = "Listening Bug Encryption Key (A)"
+	channels = list(RADIO_CHANNEL_BUG_A = TRUE)
+/obj/item/device/encryptionkey/listening_bug/freq_b
+	name = "Listening Bug Encryption Key (B)"
+	channels = list(RADIO_CHANNEL_BUG_B = TRUE)
+/obj/item/device/encryptionkey/listening_bug/freq_c
+	name = "Listening Bug Encryption Key (C)"
+	channels = list(RADIO_CHANNEL_BUG_C = TRUE)
+/obj/item/device/encryptionkey/listening_bug/freq_d
+	name = "Listening Bug Encryption Key (D)"
+	channels = list(RADIO_CHANNEL_BUG_D = TRUE)
+/obj/item/device/encryptionkey/listening_bug/freq_e
+	name = "Listening Bug Encryption Key (E)"
+	channels = list(RADIO_CHANNEL_BUG_E = TRUE)

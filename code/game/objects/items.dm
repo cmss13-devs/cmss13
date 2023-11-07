@@ -706,7 +706,7 @@ cases. Override_icon_state should be a list.*/
 						return TRUE
 				return FALSE
 			if(WEAR_IN_SHOES)
-				if(H.shoes && (SEND_SIGNAL(H.shoes, COMSIG_ATOM_CAN_STORE, src)) & COMPONENT_ATOM_CAN_STORE)
+				if(human.shoes && (SEND_SIGNAL(human.shoes, COMSIG_ATOM_CAN_STORE, src)) & COMPONENT_ATOM_CAN_STORE)
 					return TRUE
 				return FALSE
 			if(WEAR_IN_SCABBARD)

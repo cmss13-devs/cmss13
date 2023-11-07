@@ -6135,6 +6135,9 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "atW" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -39133,6 +39136,9 @@
 /area/almayer/lifeboat_pumps/south1)
 "heH" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -42205,16 +42211,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
-"iuy" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/almayer/living/briefing)
 "iuz" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/warhead,
@@ -68094,6 +68090,9 @@
 "tsv" = (
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 32
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -115934,7 +115933,7 @@ dYX
 tBF
 lBz
 aLG
-iuy
+bdg
 bqZ
 beH
 bgO

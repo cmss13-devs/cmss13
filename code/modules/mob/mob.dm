@@ -729,13 +729,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	if(lying_prev != lying)
 		if(lying)
-			density = FALSE
+			ADD_TRAIT(src, TRAIT_UNDENSE, LYING_TRAIT)
 			add_temp_pass_flags(PASS_MOB_THRU)
 			drop_l_hand()
 			drop_r_hand()
 			SEND_SIGNAL(src, COMSIG_MOB_KNOCKED_DOWN)
 		else
-			density = TRUE
+			REMOVE_TRAIT(src, TRAIT_UNDENSE, LYING_TRAIT)
 			SEND_SIGNAL(src, COMSIG_MOB_GETTING_UP)
 			remove_temp_pass_flags(PASS_MOB_THRU)
 		update_transform()

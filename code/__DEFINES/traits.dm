@@ -131,6 +131,9 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 //-- mob traits --
+/// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
+#define TRAIT_UNDENSE "undense"
+
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
 #define TRAIT_YAUTJA_TECH "t_yautja_tech"
@@ -279,6 +282,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob = list(
+		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
 		"TRAIT_FOREIGN_BIO" = TRAIT_FOREIGN_BIO,
@@ -355,6 +359,8 @@ GLOBAL_LIST(trait_name_map)
 // #define TRAIT_SOURCE_Y "t_s_y"
 #define TRAIT_SOURCE_INHERENT "t_s_inherent"
 //-- mob traits --
+///Status trait coming from lying down through update_canmove()
+#define LYING_TRAIT "lying"
 ///Status trait coming from species. .human/species_gain()
 #define TRAIT_SOURCE_SPECIES "t_s_species"
 ///Status trait coming from the hive.
@@ -379,6 +385,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
+///Status trait coming from a xeno nest
+#define XENO_NEST_TRAIT "xeno_nest"
 //-- structure traits --
 ///Status trait coming from being flipped or unflipped.
 #define TRAIT_SOURCE_FLIP_TABLE "t_s_flip_table"
@@ -390,3 +398,12 @@ GLOBAL_LIST(trait_name_map)
 
 //Status trait coming from clothing.
 #define TRAIT_SOURCE_CLOTHING "t_s_clothing"
+
+/// trait effect related to active specialist gear
+#define SPECIALIST_GEAR_TRAIT "specialist_gear"
+/// traits associated with usage of snowflake dropship double seats
+#define DOUBLE_SEATS_TRAIT "double_seats"
+/// traits associated with xeno on-ground weeds
+#define XENO_WEED_TRAIT "xeno_weed"
+/// traits from chloroform usage
+#define CHLOROFORM_TRAIT "chloroform"

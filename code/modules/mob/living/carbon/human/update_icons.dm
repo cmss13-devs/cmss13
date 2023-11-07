@@ -795,3 +795,11 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 /mob/living/carbon/human/on_immobilized_trait_loss(datum/source)
 	. = ..()
 	update_xeno_hostile_hud()
+
+/mob/living/carbon/human/on_floored_trait_gain(datum/source)
+	. = ..()
+	update_xeno_hostile_hud()
+
+/mob/living/carbon/human/on_floored_trait_loss(datum/source)
+	. = ..()
+	update_xeno_hostile_hud()

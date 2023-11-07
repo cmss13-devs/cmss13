@@ -67,7 +67,6 @@
 
 	current_mob.pixel_y = initial(buckled_mob.pixel_y)
 	current_mob.pixel_x = initial(buckled_mob.pixel_x)
-	//current_mob.density = !(current_mob.lying || current_mob.stat == DEAD)
 	REMOVE_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 
 	if(dir == SOUTH)

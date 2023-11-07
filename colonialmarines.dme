@@ -373,6 +373,7 @@
 #include "code\datums\components\bonus_damage_stack.dm"
 #include "code\datums\components\cluster_stack.dm"
 #include "code\datums\components\connect_mob_behalf.dm"
+#include "code\datums\components\crate_tag.dm"
 #include "code\datums\components\footstep.dm"
 #include "code\datums\components\healing_reduction.dm"
 #include "code\datums\components\id_lock.dm"

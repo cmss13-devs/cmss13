@@ -215,7 +215,7 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "deliveryPaper"
 	w_class = SIZE_MEDIUM
-	var/amount = 25
+	var/amount = 50
 
 
 /obj/item/packageWrap/afterattack(obj/target as obj, mob/user as mob, proximity)
@@ -267,18 +267,34 @@
 			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
 			"You hear someone taping paper around a small object.")
 	else if (istype(target, /obj/structure/closet/crate))
-		var/obj/structure/closet/crate/O = target
-		if (src.amount > 3 && !O.opened)
-			var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
-			P.icon_state = "deliverycrate"
-			P.wrapped = O
-			O.forceMove(P)
+		var/obj/structure/closet/crate/crate = target
+		var/answer = tgui_alert(user, "Wrap the crate for delivery or customize it?", "Crate wrapping", list("Customize", "Wrap"))
+		if(!answer || !user.Adjacent(target) || !target.z)
+			return
+		if(answer == "Customize")
+			if(!length(crate.crate_customizing_types))
+				to_chat(user, SPAN_WARNING("You cannot customize this kind of crate."))
+				return
+			var/label = tgui_input_text(user, "Give the crate a new logistic tag:", "Customizing")
+			if(!label || !user.Adjacent(target) || !target.z)
+				return
+			var/chosen_type = tgui_input_list(user, "Select the kind of crate to make this into:", "Customizing", crate.crate_customizing_types)
+			if(!chosen_type || !ispath(crate.crate_customizing_types[chosen_type]) || !user.Adjacent(target) || !target.z)
+				return
+			target.AddComponent(/datum/component/crate_tag, label, crate.crate_customizing_types[chosen_type])
 			src.amount -= 3
-			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
-			"You hear someone taping paper around a large object.")
-		else if(src.amount < 3)
-			to_chat(user, SPAN_WARNING("You need more paper."))
+		else
+			if (src.amount > 3 && !crate.opened)
+				var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(crate.loc))
+				P.icon_state = "deliverycrate"
+				P.wrapped = crate
+				crate.forceMove(P)
+				src.amount -= 3
+				user.visible_message("\The [user] wraps \a [target] with \a [src].",\
+				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
+				"You hear someone taping paper around a large object.")
+			else if(src.amount < 3)
+				to_chat(user, SPAN_WARNING("You need more paper."))
 	else if (istype (target, /obj/structure/closet))
 		var/obj/structure/closet/O = target
 		if (src.amount > 3 && !O.opened)

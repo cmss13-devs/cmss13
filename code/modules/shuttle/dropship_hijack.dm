@@ -243,6 +243,8 @@
 			turfs += get_area_turfs(/area/desert_dam/exterior/valley/valley_northwest)
 		if(MAP_BIG_RED)
 			turfs += get_area_turfs(/area/bigredv2/outside/medical)
+		if(MAP_DOCK_RED)
+			turfs += get_area_turfs(/area/dockred/outside/port_outside)
 		if(MAP_PRISON_STATION)
 			turfs += get_area_turfs(/area/prison/canteen)
 		if(MAP_SOROKYNE_STRATA)

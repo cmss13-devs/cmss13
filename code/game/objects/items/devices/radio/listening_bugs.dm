@@ -74,7 +74,11 @@
 				return
 			if(subspace_switchable)
 				subspace_transmission = !subspace_transmission
+				var/initial_prevent = initial(prevent_snooping)
+				if(initial_prevent)
+					prevent_snooping = TRUE
 				if(!subspace_transmission)
+					prevent_snooping = FALSE
 					channels = list()
 				return
 	..()

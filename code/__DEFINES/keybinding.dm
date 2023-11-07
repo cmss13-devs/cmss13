@@ -87,6 +87,7 @@
 #define COMSIG_KB_HUMAN_WEAPON_UNLOAD "keybinding_human_weapon_unload"
 #define COMSIG_KB_HUMAN_WEAPON_ATTACHMENT "keybinding_human_weapon_attachment"
 #define COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL "keybinding_human_weapon_attachment_rail"
+#define COMSIG_KB_HUMAN_WEAPON_SHOTGUN_TUBE "keybinding_human_weapon_shotgun_tube"
 
 #define COMSIG_KB_HUMAN_WEAPON_TOGGLE_IFF "keybinding_human_weapon_toggle_iff"
 

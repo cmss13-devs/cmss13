@@ -19,7 +19,7 @@
 	var/hidden = FALSE
 	var/mob/living/owner
 
-	var/datum/action/innate/imaginary_join/join
+	var/datum/action/innate/imaginary_orbit/orbit
 	var/datum/action/innate/imaginary_hide/hide
 
 	var/list/outfit_choices = list(/datum/equipment_preset/uscm_ship/sea)
@@ -47,8 +47,8 @@
 
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	join = new
-	join.give_to(src)
+	orbit = new
+	orbit.give_to(src)
 	hide = new
 	hide.give_to(src)
 
@@ -236,15 +236,26 @@
 	dir = get_dir(get_turf(src), destination)
 	loc = destination
 	update_image()
+	orbiting?.end_orbit(src)
+
+/mob/camera/imaginary_friend/stop_orbit(datum/component/orbiter/orbits)
+	. = ..()
+	// pixel_y = -2
+	animate(src, pixel_y = 0, time = 10, loop = -1)
 
 /// returns the friend to the owner
 /mob/camera/imaginary_friend/proc/recall()
 	if(QDELETED(owner))
 		deactivate()
 		return FALSE
-	if(loc == owner)
+	if(orbit_target == owner)
+		orbiting?.end_orbit(src)
 		return FALSE
-	forceMove(owner)
+	if(!hidden)
+		hide.action_activate()
+	dir = SOUTH
+	update_image()
+	orbit(owner)
 
 /// logs the imaginary friend's removal, ghosts them and cleans up the friend
 /mob/camera/imaginary_friend/proc/deactivate()
@@ -264,11 +275,11 @@
 		ghost.mind.original = aghosted_original_mob
 	return ghost
 
-/datum/action/innate/imaginary_join
-	name = "Join"
+/datum/action/innate/imaginary_orbit
+	name = "Orbit"
 	action_icon_state = "joinmob"
 
-/datum/action/innate/imaginary_join/action_activate()
+/datum/action/innate/imaginary_orbit/action_activate()
 	var/mob/camera/imaginary_friend/friend = owner
 	friend.recall()
 

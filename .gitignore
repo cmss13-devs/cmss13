@@ -33,3 +33,6 @@ prof.dll
 libprof.so
 
 code\__DEFINES\__rust_g.dm
+
+# OpenDream compatibility stuff
+colonialmarines.json

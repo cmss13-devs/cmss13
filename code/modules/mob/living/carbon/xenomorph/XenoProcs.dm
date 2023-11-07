@@ -358,8 +358,8 @@
 
 /mob/living/carbon/xenomorph/proc/pounced_turf(turf/T)
 	if(!T.density)
-		for(var/mob/M in T)
-			pounced_mob(M)
+		for(var/mob/living/mob in T)
+			pounced_mob(mob)
 			break
 	else
 		turf_launch_collision(T)

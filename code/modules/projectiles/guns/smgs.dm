@@ -11,7 +11,7 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
 	attachable_allowed = list(
-		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor,			
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -50,7 +50,8 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/angledgrip,	
+		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/stock/smg,
 		/obj/item/attachable/stock/smg/collapsible,

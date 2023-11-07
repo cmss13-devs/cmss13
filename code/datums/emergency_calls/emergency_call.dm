@@ -91,12 +91,12 @@
 	else
 		return chosen_call
 
-/datum/game_mode/proc/get_specific_call(call_name, quiet_launch = FALSE, announce = TRUE, is_emergency = TRUE, info = "", announce_dispatch_message = TRUE)
+/datum/game_mode/proc/get_specific_call(call_name, quiet_launch = FALSE, announce_incoming = TRUE, info = "")
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(E.name == call_name)
 			var/datum/emergency_call/em_call = new E.type()
 			em_call.objective_info = info
-			em_call.activate(quiet_launch, announce, is_emergency, announce_dispatch_message)
+			em_call.activate(quiet_launch, announce_incoming)
 			return
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
@@ -168,7 +168,7 @@
 		return
 	var/deathtime = world.time - usr.timeofdeath
 
-	if(deathtime < 1 MINUTES) //Nice try, ghosting right after the announcement
+	if(deathtime < 30 SECONDS) //Nice try, ghosting right after the announcement
 		if(SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST) // people ghost so often on whiskey outpost.
 			to_chat(src, SPAN_WARNING("You ghosted too recently."))
 			return
@@ -192,7 +192,7 @@
 	else
 		to_chat(src, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
-/datum/emergency_call/proc/activate(quiet_launch = FALSE, announce = TRUE, turf/override_spawn_loc, announce_dispatch_message = TRUE)
+/datum/emergency_call/proc/activate(quiet_launch = FALSE, announce_incoming = TRUE, turf/override_spawn_loc)
 	set waitfor = 0
 	if(!SSticker.mode) //Something horribly wrong with the gamemode ticker
 		return
@@ -205,9 +205,9 @@
 	if(!quiet_launch)
 		marine_announcement("Активирован сигнал бедствия на борту [MAIN_SHIP_NAME].", "Приоритетное оповещение", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
 		
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce, override_spawn_loc, announce_dispatch_message), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce_incoming, override_spawn_loc), 30 SECONDS)
 
-/datum/emergency_call/proc/spawn_candidates(quiet_launch = FALSE, announce = TRUE, override_spawn_loc, announce_dispatch_message = TRUE)
+/datum/emergency_call/proc/spawn_candidates(quiet_launch = FALSE, announce_incoming = TRUE, override_spawn_loc)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
@@ -248,7 +248,7 @@
 				if(I.current)
 					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
-	if(announce)
+	if(announce_incoming)
 		marine_announcement(dispatch_message, "Сигнал бедствия", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
 	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
@@ -304,7 +304,7 @@
 			create_member(null, override_spawn_loc)
 
 	candidates = list()
-	if(arrival_message && announce)
+	if(arrival_message && announce_incoming)
 		marine_announcement(arrival_message, "Перехваченная Передача:")
 
 /datum/emergency_call/proc/add_candidate(mob/M)

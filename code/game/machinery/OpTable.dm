@@ -59,8 +59,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/machinery/optable/get_examine_text(mob/user)
 	. = ..()

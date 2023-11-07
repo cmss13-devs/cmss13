@@ -132,7 +132,6 @@
 	for(var/message_mode in parsed["modes"])
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)
-			if(MESSAGE_MODE_LOCAL)
 			if(RADIO_MODE_WHISPER)
 				whisper_say(message, speaking, alt_name)
 				return
@@ -142,9 +141,10 @@
 					used_radios += I
 					break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
 			else
-				var/earpiece = get_type_in_ears(/obj/item/device/radio)
-				if(earpiece)
-					used_radios += earpiece
+				if(message_mode != MESSAGE_MODE_LOCAL)
+					var/earpiece = get_type_in_ears(/obj/item/device/radio)
+					if(earpiece)
+						used_radios += earpiece
 
 		var/sound/speech_sound
 		var/sound_vol

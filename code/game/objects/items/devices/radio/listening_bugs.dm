@@ -222,12 +222,6 @@
 			return "A"
 		if(BUG_B_FREQ)
 			return "B"
-		if(BUG_C_FREQ)
-			return "C"
-		if(BUG_D_FREQ)
-			return "D"
-		if(BUG_E_FREQ)
-			return "E"
 		if(SEC_FREQ)
 			return "MP"
 		if(PVST_FREQ)
@@ -247,15 +241,6 @@
 
 /obj/item/device/radio/listening_bug/freq_b
 	frequency = BUG_B_FREQ
-
-/obj/item/device/radio/listening_bug/freq_c
-	frequency = BUG_C_FREQ
-
-/obj/item/device/radio/listening_bug/freq_d
-	frequency = BUG_D_FREQ
-
-/obj/item/device/radio/listening_bug/freq_e
-	frequency = BUG_E_FREQ
 
 /obj/item/device/radio/listening_bug/radio_linked
 	prevent_snooping = TRUE
@@ -281,22 +266,14 @@
 
 // ENCRYPTION KEYS FOR LISTENING IN!
 //REQURIES SUBSPACE ACTIVATION ON THE BUGS FIRST!
-
 /obj/item/device/encryptionkey/listening_bug
 	desc = "A small encryption key for listening to a secret broadcasting device! Unlikely to work if the device is not using subspace communications!"
 	icon_state = "stripped_key"
+
 /obj/item/device/encryptionkey/listening_bug/freq_a
 	name = "Listening Bug Encryption Key (A)"
 	channels = list(RADIO_CHANNEL_BUG_A = TRUE)
+
 /obj/item/device/encryptionkey/listening_bug/freq_b
 	name = "Listening Bug Encryption Key (B)"
 	channels = list(RADIO_CHANNEL_BUG_B = TRUE)
-/obj/item/device/encryptionkey/listening_bug/freq_c
-	name = "Listening Bug Encryption Key (C)"
-	channels = list(RADIO_CHANNEL_BUG_C = TRUE)
-/obj/item/device/encryptionkey/listening_bug/freq_d
-	name = "Listening Bug Encryption Key (D)"
-	channels = list(RADIO_CHANNEL_BUG_D = TRUE)
-/obj/item/device/encryptionkey/listening_bug/freq_e
-	name = "Listening Bug Encryption Key (E)"
-	channels = list(RADIO_CHANNEL_BUG_E = TRUE)

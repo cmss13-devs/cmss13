@@ -99,12 +99,9 @@ var/const/CLF_ENGI_FREQ = 1273
 var/const/CLF_MED_FREQ = 1274
 var/const/CLF_CCT_FREQ = 1275
 
-//Listening Bugs (1290-1294)
+//Listening Bugs (1290-1291)
 var/const/BUG_A_FREQ = 1290
 var/const/BUG_B_FREQ = 1291
-var/const/BUG_C_FREQ = 1292
-var/const/BUG_D_FREQ = 1293
-var/const/BUG_E_FREQ = 1294
 
 //General Radio
 var/const/MIN_FREQ = 1460 // ------------------------------------------------------
@@ -200,9 +197,6 @@ var/list/radiochannels = list(
 
 	RADIO_CHANNEL_BUG_A = BUG_A_FREQ,
 	RADIO_CHANNEL_BUG_B = BUG_B_FREQ,
-	RADIO_CHANNEL_BUG_C = BUG_C_FREQ,
-	RADIO_CHANNEL_BUG_D = BUG_D_FREQ,
-	RADIO_CHANNEL_BUG_E = BUG_E_FREQ,
 )
 
 // Response Teams
@@ -218,7 +212,7 @@ var/list/radiochannels = list(
 #define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ)
 
 //Listening Device Frequencies
-#define BUG_FREQS list(BUG_A_FREQ, BUG_B_FREQ, BUG_C_FREQ, BUG_D_FREQ, BUG_E_FREQ)
+#define BUG_FREQS list(BUG_A_FREQ, BUG_B_FREQ)
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
@@ -283,11 +277,8 @@ SUBSYSTEM_DEF(radio)
 		"[HC_FREQ]" = "hcradio",
 		"[PVST_FREQ]" = "pvstradio",
 		"[COLONY_FREQ]" = "deptradio",
-		"[BUG_A_FREQ]" = "aiprivradio",
+		"[BUG_A_FREQ]" = "airadio",
 		"[BUG_B_FREQ]" = "aiprivradio",
-		"[BUG_C_FREQ]" = "aiprivradio",
-		"[BUG_D_FREQ]" = "aiprivradio",
-		"[BUG_E_FREQ]" = "aiprivradio",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)

@@ -199,21 +199,6 @@ export const RADIO_CHANNELS = [
     color: '#d65d95',
   },
   {
-    name: 'LSTN BUG C',
-    freq: 1292,
-    color: '#d65d95',
-  },
-  {
-    name: 'LSTN BUG D',
-    freq: 1293,
-    color: '#d65d95',
-  },
-  {
-    name: 'LSTN BUG E',
-    freq: 1294,
-    color: '#d65d95',
-  },
-  {
     name: 'Common',
     freq: 1461,
     color: '#1ecc43',

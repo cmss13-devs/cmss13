@@ -404,7 +404,7 @@ var/global/list/activated_medevac_stretchers = list()
 
 //bedroll
 /obj/structure/bed/bedroll
-name = "unfolded bedroll"
+	name = "unfolded bedroll"
 	desc = "A rolled up bedroll, not too comfortable rolled up, you should probably unroll it before you sleep on it."
 	icon = 'icons/monkey_icos.dmi'
 	icon_state = "bedroll_o"

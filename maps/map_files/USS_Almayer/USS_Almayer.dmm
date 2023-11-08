@@ -42111,6 +42111,7 @@
 	amount = 50
 	},
 /obj/structure/surface/rack,
+/obj/item/packageWrap,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green"
@@ -56264,6 +56265,7 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/tool,
+/obj/item/packageWrap,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green"
@@ -77582,6 +77584,7 @@
 "xfw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
+/obj/item/packageWrap,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "green"

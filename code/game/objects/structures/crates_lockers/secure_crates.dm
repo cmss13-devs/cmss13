@@ -4,6 +4,7 @@
 	icon_state = "secure_locked_basic"
 	icon_opened = "secure_open_basic"
 	icon_closed = "secure_locked_basic"
+	crate_customizing_types = null
 	var/icon_locked = "secure_locked_basic"
 	var/icon_unlocked = "secure_unlocked_basic"
 	var/sparks = "securecratesparks"

@@ -196,7 +196,7 @@
 	var/parent_type = /obj/effect/alien/weeds/node
 	if(weed_strength >= WEED_LEVEL_HIVE)
 		parent_type = /obj/effect/alien/weeds/node/pylon
-		
+
 	var/obj/effect/alien/weeds/node/found = locate(parent_type) in orange(node_range, get_turf(src))
 	if(found)
 		found.add_child(src)

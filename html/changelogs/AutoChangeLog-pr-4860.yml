@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed incorrect signals causing malfunctions in tgui_say for ASAY and MentorSay channel hotkeys."

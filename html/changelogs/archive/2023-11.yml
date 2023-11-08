@@ -48,3 +48,96 @@
       you pack and send crates and items via disposals again.
   - balance: Whiskey Outpost supply drops should now be more interesting and impactful.
   - rscadd: Added missing Synth vendors on WO.
+2023-11-07:
+  567Turtle:
+  - soundadd: New whistle sound effect
+  Alexguinea:
+  - rscadd: Added toners to the rec vendor
+  AndroBetel:
+  - spellcheck: Fixed a typo in RO rules sign.
+  - spellcheck: RO mention is no more, replaced with QM.
+  BeagleGaming1:
+  - code_imp: Tents now hold the datum directly, instead of the typepath
+  - admin: Added a proc for staff to change tent dmm's
+  Blundir:
+  - rscadd: added shotgun tube toggle hotkey
+  Doubleumc:
+  - bugfix: vehicle interiors can hear exterior noises
+  Drathek:
+  - bugfix: Fixed various job's entry messages having broken links to the wiki
+  Firartix and Frans_Feiffer:
+  - rscadd: Readded Halloween pumpkin helmets.
+  IowaPotatoFarmer:
+  - rscadd: Added new survivor presets for New Varadero to make them more visually
+      distinct and unique to the map.
+  - rscdel: Removed the ability to build ground structures or anchor wall girders
+      on top of xeno tunnels.
+  - bugfix: Fixed wall girders being anchorable on shuttle tiles.
+  Morrow, Zonespace:
+  - rscadd: Added objectives to hijack. You now must hold different sections of the
+      ship to successfully launch lifeboats or pods
+  - rscadd: The areas that contribute to hijack objectives are the lifeboat pumps,
+      astronav, and engineering
+  - rscadd: Fuel pumps now have red alert sentries
+  - rscadd: Corporate liaison evac shuttle now can be launched at any time even if
+      evac has not been called
+  - rscadd: You can now self-destruct the ship by overloading the fusion generators
+      in engineering once lifeboat fuel is at 100%.
+  - rscdel: Removed auto launch of lifeboats and pods
+  - code_imp: Refactored EvacuationAuthority into SShijack
+  Releasethesea:
+  - balance: Makes it so that Pill packets fit in helmets
+  SpartanBobby:
+  - maptweak: Alot of changes to big reds admin area, including new windows, prop
+      placement, room detailing, new doors
+  Steelpoint:
+  - rscadd: Corpsman can chose to optionally vend a set of armoured sterile gloves
+      as a alternative to regular gloves. They provide full glove protection, but
+      are otherwise an aesthetic choice.
+  TopHatPenguin:
+  - rscadd: Adds a mostly built communications office nightmare insert to Kutjevo
+      which attaches onto the sensor tower.
+  - rscadd: Re-adds the Kutjevo blackbox.
+  Xander3359:
+  - bugfix: Fixes being able to create ghost tanks from a Broiler-T unit.
+  blackdragonTOW:
+  - imageadd: Changed nanotrasen cashcard icon to W-Y
+  fira:
+  - rscdel: Removed unused magnet and mass driver legacy SS13 machinery.
+  - bugfix: Fixed being able to put anything in your boots. You're not wizards!
+  - admin: Added better logging for orbital bombardment.
+  realforest2001:
+  - rscadd: Added a big line to Nightmare survivor spawns that indicates hostility.
+2023-11-08:
+  BeagleGaming1:
+  - rscadd: Added CBRN ERT with new CBRN MOPP equipment. (Sprites by DrMacCool and
+      Esselnek, names and descriptions by TopHatPenguin and Kaga)
+  - rscadd: ERT Squads (Marine Raider and new CBRN) get assigned to their squad even
+      if spawned as an ERT, and do not automatically unlock it for overwatch
+  - balance: Tool Webbing can now only hold tools, instead of just being a better
+      webbing
+  - spellcheck: Corrected spelling of "Intercepted Transmission" for ERTs
+  - bugfix: USCM faction squads that are not default marine squads should no longer
+      cause a crew manifest runtime
+  Birdtalon:
+  - rscadd: Xeno tacmap icons for hive core and clusters.
+  Drathek:
+  - bugfix: Fix the ColMarTechAutomated Munition Vendor in req not vending to the
+      table.
+  - bugfix: Fix the first use of a USCM equipment preset (such as cryo marines) not
+      properly loading rank and other values
+  QuickLode:
+  - rscadd: adds another Colony Synthetic variant, changes up some existing ones(trucker,CMB)
+  - bugfix: fixes a small problem with WY-Colony Synthetic access(thx forest), adds
+      WY subtype of Synthetics for admin building/faxes
+  - bugfix: fixes problems with organic spawning ferret industries Trucker Synthetic
+  Releasethesea:
+  - rscadd: Makes it so cigars fit in helmets.
+  Skye.:
+  - maptweak: Tweaks a Cabinet in the SW mines of Solaris Ridge
+  - bugfix: On account of it being propped up on the floor like a cardboard cutout.
+  fira:
+  - bugfix: Spawned bottles now use all 4 of their sprites as intended rather than
+      always the same.
+  zzzmike:
+  - spellcheck: fixed a typo

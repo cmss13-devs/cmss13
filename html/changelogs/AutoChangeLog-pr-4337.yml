@@ -1,0 +1,8 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - rscadd: "Added CBRN ERT with new CBRN MOPP equipment. (Sprites by DrMacCool and Esselnek, names and descriptions by TopHatPenguin and Kaga)"
+  - rscadd: "ERT Squads (Marine Raider and new CBRN) get assigned to their squad even if spawned as an ERT, and do not automatically unlock it for overwatch"
+  - balance: "Tool Webbing can now only hold tools, instead of just being a better webbing"
+  - spellcheck: "Corrected spelling of \"Intercepted Transmission\" for ERTs"
+  - bugfix: "USCM faction squads that are not default marine squads should no longer cause a crew manifest runtime"

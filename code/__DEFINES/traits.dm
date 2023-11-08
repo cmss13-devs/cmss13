@@ -142,9 +142,6 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 
-/// cannot be removed without admin intervention
-#define ROUNDSTART_TRAIT "roundstart"
-
 //-- mob traits --
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"

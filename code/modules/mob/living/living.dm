@@ -19,6 +19,7 @@
 	initialize_incision_depths()
 	initialize_pain()
 	initialize_stamina()
+	register_init_signals()
 	GLOB.living_mob_list += src
 
 /mob/living/Destroy()

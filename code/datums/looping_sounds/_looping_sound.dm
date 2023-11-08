@@ -43,6 +43,7 @@
 	* with a longer "falloff distance." Fixes the extra_range stuff
 	*/
 	var/is_sound_projecting = FALSE
+	///only applicable to is_sound_projecting: max range till sound volume starts dropping as distance increases
 	var/falloff_distance = 50
 
 /*	// as of yet unused varen \\

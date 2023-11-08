@@ -131,6 +131,8 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 //-- mob traits --
+/// Prevents voluntary movement.
+#define TRAIT_IMMOBILIZED "immobilized"
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
 #define TRAIT_YAUTJA_TECH "t_yautja_tech"
@@ -279,6 +281,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob = list(
+		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
 		"TRAIT_FOREIGN_BIO" = TRAIT_FOREIGN_BIO,
@@ -390,3 +393,8 @@ GLOBAL_LIST(trait_name_map)
 
 //Status trait coming from clothing.
 #define TRAIT_SOURCE_CLOTHING "t_s_clothing"
+
+/// traits associated with actively interacted machinery
+#define INTERACTION_TRAIT "interaction"
+/// traits from chloroform usage
+#define CHLOROFORM_TRAIT "chloroform"

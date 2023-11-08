@@ -67,7 +67,6 @@
 	var/floatiness = 0
 	var/knocked_out = 0
 	var/stunned = 0
-	var/frozen = 0
 	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
 	var/dazed = 0

@@ -723,7 +723,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		else
 			lying = FALSE
 
-	canmove = !(stunned || frozen)
+	canmove = !(stunned || HAS_TRAIT(src, TRAIT_IMMOBILIZED))
 	if(!can_crawl && lying)
 		canmove = FALSE
 
@@ -788,22 +788,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/get_species()
 	return ""
-
-/// Sets freeze if possible and wasn't already set, returning success
-/mob/proc/freeze()
-	if(frozen)
-		return FALSE
-	frozen = TRUE
-	update_canmove()
-	return TRUE
-
-/// Attempts to unfreeze mob, returning success
-/mob/proc/unfreeze()
-	if(!frozen)
-		return FALSE
-	frozen = FALSE
-	update_canmove()
-	return TRUE
 
 /mob/proc/flash_weak_pain()
 	overlay_fullscreen("pain", /atom/movable/screen/fullscreen/pain, 1)

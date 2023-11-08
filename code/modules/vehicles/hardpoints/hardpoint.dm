@@ -519,6 +519,7 @@
 	shots_fired = 0
 	set_target(null)
 	set_auto_firing(FALSE)
+	hp_operator = null
 
 /// Set the target and take care of hard delete.
 /obj/item/hardpoint/proc/set_target(atom/object)
@@ -582,7 +583,7 @@
 		if(fire_return == AUTOFIRE_CONTINUE)
 			reset_fire() //semiauto end-of-fire
 			display_ammo()
-			hp_operator = null
+		hp_operator = null
 	else
 		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 

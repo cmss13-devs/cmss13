@@ -1,22 +1,20 @@
-/*
-	Hardpoints are any items that attach to a base vehicle, such as wheels/treads, support systems and guns
-*/
-
+/**
+ * Hardpoints are any items that attach to a base vehicle, such as wheels/treads, support systems and guns
+ */
 /obj/item/hardpoint
 	//------MAIN VARS----------
-	// Which slot is this hardpoint in
-	// Purely to check for conflicting hardpoints
+	/// Which slot is this hardpoint in. Purely to check for conflicting hardpoints.
 	var/slot
-	// The vehicle this hardpoint is installed on
+	/// The vehicle this hardpoint is installed on.
 	var/obj/vehicle/multitile/owner
 
 	health = 100
 	w_class = SIZE_LARGE
 
-	// Determines how much of any incoming damage is actually taken
+	/// Determines how much of any incoming damage is actually taken.
 	var/damage_multiplier = 1
 
-	// Origin coords of the hardpoint relative to the vehicle
+	/// Origin coords of the hardpoint relative to the vehicle.
 	var/list/origins = list(0, 0)
 
 	var/list/buff_multipliers
@@ -32,13 +30,13 @@
 	var/disp_icon //This also differentiates tank vs apc vs other
 	var/disp_icon_state
 
-	// List of pixel offsets for each direction
+	/// List of pixel offsets for each direction.
 	var/list/px_offsets
 
-	//visual layer of hardpoint when on vehicle
+	/// Visual layer of hardpoint when on vehicle.
 	var/hdpt_layer = HDPT_LAYER_WHEELS
 
-	// List of offsets for where to place the muzzle flash for each direction
+	/// List of offsets for where to place the muzzle flash for each direction.
 	var/list/muzzle_flash_pos = list(
 		"1" = list(0, 0),
 		"2" = list(0, 0),
@@ -54,37 +52,23 @@
 	var/const_mz_offset_y = 0
 
 	//------SOUNDS VARS----------
-	// Sounds to play when the module activated/fired
+	/// Sounds to play when the module activated/fired.
 	var/list/activation_sounds
 
 
 
 	//------INTERACTION VARS----------
 
-	//which seat can use this module
+	/// Which seat can use this module.
 	var/allowed_seat = VEHICLE_GUNNER
 
-	/*
-	//Cooldown on use of the hardpoint
-	var/cooldown = 100
-	var/next_use = 0
-	*/
-
-	//whether hardpoint has activatable ability like shooting or zooming
+	/// Whether hardpoint has activatable ability like shooting or zooming.
 	var/activatable = 0
 
-	//used to prevent welder click spam
+	/// Used to prevent welder click spam.
 	var/being_repaired = FALSE
 
-	/*
-	//current user. We can have only one user at a time. Better never change that
-	var/user
-
-	//Accuracy of the hardpoint. (which is, in fact, a scatter. Need to change this system)
-	var/accuracy = 1
-	*/
-
-	// The firing arc of this hardpoint
+	/// The firing arc of this hardpoint.
 	var/firing_arc = 0 //in degrees. 0 skips whole arc of fire check
 
 	// Muzzleflash
@@ -95,52 +79,51 @@
 
 	//------AMMUNITION VARS----------
 
-	//Currently loaded ammo that we shoot from
+	/// Currently loaded ammo that we shoot from.
 	var/obj/item/ammo_magazine/hardpoint/ammo
-	//spare magazines that we can reload from
+	/// Spare magazines that we can reload from.
 	var/list/backup_clips
-	//maximum amount of spare mags
+	/// Maximum amount of spare mags.
 	var/max_clips = 0
 
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
-	/// that will be given to a projectile fired from the hardpoint
+	/// that will be given to a projectile fired from the hardpoint.
 	var/list/list/traits_to_give
 
-	///How much the bullet scatters when fired.
+	/// How much the bullet scatters when fired, in degrees.
 	var/scatter = 0
-	///How many bullets the gun fired while burst firing/auto firing.
+	/// How many bullets the gun fired while burst firing/auto firing.
 	var/shots_fired = 0
+	/// Delay before a new firing sequence can start.
+	COOLDOWN_DECLARE(fire_cooldown)
 
-	//Firemodes.
-	///Current selected firemode of the gun.
+	// Firemodes.
+	/// Current selected firemode of the gun.
 	var/gun_firemode = GUN_FIREMODE_SEMIAUTO
-	///List of allowed firemodes.
+	/// List of allowed firemodes.
 	var/list/gun_firemode_list = list(
 		GUN_FIREMODE_SEMIAUTO,
 	)
 
-	//Semi-auto and full-auto.
-	///For regular shots, how long to wait before firing again. Use modify_fire_delay and set_fire_delay instead of modifying this on the fly
+	// Semi-auto and full-auto.
+	/// For regular shots, how long to wait before firing again. Use modify_fire_delay and set_fire_delay instead of modifying this on the fly
 	var/fire_delay = 0
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
 	var/autofire_slow_mult = 1
-	///If the gun is currently auto firing.
+	/// If the gun is currently auto firing.
 	var/auto_firing = FALSE
 
-	//Burst fire.
-	///How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst. Use modify_burst_amount and set_burst_amount instead of modifying this
+	// Burst fire.
+	/// How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst. Use modify_burst_amount and set_burst_amount instead of modifying this
 	var/burst_amount = 1
-	///The delay in between shots. Lower = less delay = faster. Use modify_burst_delay and set_burst_delay instead of modifying this
+	/// The delay in between shots. Lower = less delay = faster. Use modify_burst_delay and set_burst_delay instead of modifying this
 	var/burst_delay = 1
-	///When burst-firing, this number is extra time before the weapon can fire again.
+	/// When burst-firing, this number is extra time before the weapon can fire again.
 	var/extra_delay = 0
-	///If the gun is currently burst firing.
+	/// If the gun is currently burst firing.
 	var/burst_firing = FALSE
 
-	///Delay before fire can resume.
-	COOLDOWN_DECLARE(fire_cooldown)
-
-	/// Currently selected target to fire at. Set with set_target()
+	/// Currently selected target to fire at. Set with set_target().
 	var/atom/target
 	/// Current operator (crew) of the hardpoint.
 	var/mob/hp_operator
@@ -161,10 +144,8 @@
 		owner = null
 	QDEL_NULL_LIST(backup_clips)
 	QDEL_NULL(ammo)
-	ammo = null
 	set_target(null)
 	hp_operator = null
-
 	return ..()
 
 /obj/item/hardpoint/ex_act(severity)
@@ -499,7 +480,7 @@
 /obj/item/hardpoint/proc/set_auto_firing(auto = FALSE)
 	if(auto_firing != auto)
 		auto_firing = auto
-		if(!auto_firing) //just stopped auto firing
+		if(!auto_firing) //end-of-fire, show changed ammo and clear firer
 			display_ammo()
 			hp_operator = null
 
@@ -507,16 +488,16 @@
 /obj/item/hardpoint/proc/set_burst_firing(burst = FALSE)
 	if(burst_firing != burst)
 		burst_firing = burst
-		if(!burst_firing) //just stopped burst firing
+		if(!burst_firing) //end-of-fire, show changed ammo and clear firer
 			display_ammo()
 			hp_operator = null
 
 /// Clean all firing references.
-/obj/item/hardpoint/proc/reset_fire() //automatic reset
+/obj/item/hardpoint/proc/reset_fire()
 	shots_fired = 0
 	set_target(null)
-	set_auto_firing(FALSE)
-	hp_operator = null
+	set_auto_firing(FALSE) //on abnormal exits automatic fire doesn't call set_auto_firing()
+	hp_operator = null //clear 'firer' when autofire exits before first shot
 
 /// Set the target and take care of hard delete.
 /obj/item/hardpoint/proc/set_target(atom/object)
@@ -547,7 +528,7 @@
 	if(auto_firing || burst_firing)
 		SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 		if(auto_firing)
-			reset_fire() //automatic end-of-fire
+			reset_fire() //automatic fire doesn't reset itself from COMSIG_GUN_STOP_FIRE
 
 /// Update the target if you dragged your mouse.
 /obj/item/hardpoint/proc/change_target(mob/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
@@ -577,8 +558,9 @@
 
 	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
 		var/fire_return = try_fire(object, source, params)
+		//end-of-fire, show ammo (if changed) and clear firer
 		if(fire_return == AUTOFIRE_CONTINUE)
-			reset_fire() //semiauto end-of-fire
+			reset_fire()
 			display_ammo()
 		hp_operator = null
 	else
@@ -626,7 +608,7 @@
 
 	// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
 	var/ammo_flags = projectile_to_fire.ammo.flags_ammo_behavior | projectile_to_fire.projectile_override_flags
-	if(!HAS_FLAG(ammo_flags, AMMO_HITS_TARGET_TURF) && !HAS_FLAG(ammo_flags, AMMO_EXPLOSIVE))
+	if(!HAS_FLAG(ammo_flags, AMMO_HITS_TARGET_TURF) && !HAS_FLAG(ammo_flags, AMMO_EXPLOSIVE)) //AMMO_EXPLOSIVE is also a turf-targeted projectile
 		projectile_to_fire.scatter = scatter
 		target = simulate_scatter(projectile_to_fire, target, origin_turf, get_turf(target), user)
 

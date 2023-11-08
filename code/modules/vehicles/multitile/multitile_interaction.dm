@@ -340,8 +340,9 @@
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(user)
 	if(hardpoint)
-		SEND_SIGNAL(hardpoint, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when crew leaves
+		SEND_SIGNAL(hardpoint, COMSIG_GUN_INTERRUPT_FIRE) //abort fire when crew leaves
 
+/// Relays crew mouse release to active hardpoint.
 /obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
@@ -350,6 +351,7 @@
 
 	hardpoint.stop_fire(source, object, location, control, params)
 
+/// Relays crew mouse movement to active hardpoint.
 /obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
@@ -358,6 +360,7 @@
 
 	hardpoint.change_target(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
 
+/// Checks for special control keybinds, else relays crew mouse press to active hardpoint.
 /obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
 

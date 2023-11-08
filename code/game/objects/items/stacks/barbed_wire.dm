@@ -14,6 +14,9 @@
 	max_amount = 20
 	stack_id = "barbed wire"
 
+/obj/item/stack/barbed_wire/smallest_stack
+	amount = STACK_5
+
 /obj/item/stack/barbed_wire/small_stack
 	amount = STACK_10
 

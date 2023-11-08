@@ -96,6 +96,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
+		list("ENGINEERING SUPPLIES", 0, null, null, null),
+		list("E-Tool", 5, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
+		list("Sandbags(x25)", 15, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
+		list("Barbed wire(x5)", 5, /obj/item/stack/barbed_wire/smallest_stack, null, VENDOR_ITEM_REGULAR),		
+		list("ME3 hand welder", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
+		list("ES-11 Mobile Fuel Canister", 5, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
+
 		list("CLOTHING ITEMS", 0, null, null, null),
 		list("Machete Scabbard (Full)", 6, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Machete Pouch (Full)", 15, /obj/item/storage/pouch/machete/full, null, VENDOR_ITEM_REGULAR),

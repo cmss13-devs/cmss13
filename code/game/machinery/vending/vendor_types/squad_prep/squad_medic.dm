@@ -47,6 +47,13 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("G8-A General Utility Pouch", 15, /obj/item/storage/backpack/general_belt, null, VENDOR_ITEM_REGULAR),
 		list("MS-11 Smart Refill Tank", 6, /obj/item/reagent_container/glass/minitank, null, VENDOR_ITEM_REGULAR),
 
+		list("ENGINEERING SUPPLIES", 0, null, null, null),
+		list("E-Tool", 5, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
+		list("Sandbags(x25)", 15, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
+		list("Barbed wire(x5)", 5, /obj/item/stack/barbed_wire/smallest_stack, null, VENDOR_ITEM_REGULAR),
+		list("ME3 hand welder", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
+		list("ES-11 Mobile Fuel Canister", 5, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
+
 		list("EXPLOSIVES", 0, null, null, null),
 		list("M40 HEDP High Explosive Packet (x3 grenades)", 18, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Incendiary Packet (x3 grenades)", 18, /obj/item/storage/box/packet/incendiary, null, VENDOR_ITEM_REGULAR),

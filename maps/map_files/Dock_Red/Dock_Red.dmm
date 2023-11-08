@@ -6969,6 +6969,15 @@
 	icon_state = "darkpurple2"
 	},
 /area/dockred/caves/lambda/research)
+"wX" = (
+/obj/structure/machinery/power/apc{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/dockred/outside/checkpoint_west)
 "wZ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
@@ -37753,7 +37762,7 @@ HU
 Je
 tu
 Tx
-vb
+wX
 aL
 Uq
 ky

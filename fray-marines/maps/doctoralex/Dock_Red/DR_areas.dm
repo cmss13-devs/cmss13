@@ -24,16 +24,15 @@
 /area/dockred/outside/telecomm
 	name = "\improper Port Communications Relay"
 	icon_state = "ass_line"
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
-	is_resin_allowed = FALSE
-	ceiling_muffle = FALSE
-	base_muffle = MUFFLE_LOW
+	ceiling = CEILING_METAL
 
 /area/dockred/outside/telecomm/depot
 	name = "\improper Depot Communications Relay"
+	ceiling = CEILING_NONE
 
 /area/dockred/outside/telecomm/junkyard
 	name = "\improper Junkyard Communications Relay"
+	ceiling = CEILING_NONE
 
 /area/dockred/outside/port_outside
 	name = "\improper Dock Red - Space Port(Open)"

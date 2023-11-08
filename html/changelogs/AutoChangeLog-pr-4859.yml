@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix the first use of a USCM equipment preset (such as cryo marines) not properly loading rank and other values"

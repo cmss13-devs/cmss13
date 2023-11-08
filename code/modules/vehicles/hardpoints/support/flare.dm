@@ -13,7 +13,6 @@
 	activatable = TRUE
 
 	health = 500
-	//accuracy = 0.7
 	firing_arc = 120
 
 	origins = list(0, -2)
@@ -32,12 +31,8 @@
 		"8" = list(14, -6)
 	)
 
-	fire_delay = 3.0 SECONDS
-	gun_firemode = GUN_FIREMODE_SEMIAUTO
-	gun_firemode_list = list(
-		GUN_FIREMODE_SEMIAUTO,
-	)
 	scatter = 6
+	fire_delay = 3.0 SECONDS
 
 /obj/item/hardpoint/support/flare_launcher/set_bullet_traits()
 	..()

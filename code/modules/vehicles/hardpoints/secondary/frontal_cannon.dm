@@ -11,7 +11,6 @@
 	damage_multiplier = 0.11
 
 	health = 350
-	//accuracy = 0.8
 	firing_arc = 120
 
 	origins = list(0, -2)
@@ -30,12 +29,12 @@
 		"8" = list(-62, -26)
 	)
 
-	fire_delay = 0.3 SECONDS
+	scatter = 4
 	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
 	)
-	scatter = 4
+	fire_delay = 0.3 SECONDS
 
 /obj/item/hardpoint/secondary/frontalcannon/set_bullet_traits()
 	..()

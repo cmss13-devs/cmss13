@@ -8,7 +8,6 @@
 	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
 
 	health = 500
-	//accuracy = 0.4
 	firing_arc = 90
 	var/max_range = 7
 
@@ -25,8 +24,8 @@
 		"4" = list(6, 0),
 		"8" = list(-6, 17)
 	)
-	scatter = 10
 
+	scatter = 10
 	fire_delay = 3.0 SECONDS
 
 /obj/item/hardpoint/secondary/grenade_launcher/set_bullet_traits()

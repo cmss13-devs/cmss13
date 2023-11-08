@@ -8,7 +8,6 @@
 	activation_sounds = list('sound/weapons/vehicles/flamethrower.ogg')
 
 	health = 400
-	//accuracy = 0.75
 	firing_arc = 90
 
 	origins = list(0, -3)
@@ -25,8 +24,8 @@
 
 	use_muzzle_flash = FALSE
 
-	fire_delay = 2.0 SECONDS
 	scatter = 5
+	fire_delay = 2.0 SECONDS
 
 /obj/item/hardpoint/primary/flamer/set_bullet_traits()
 	..()

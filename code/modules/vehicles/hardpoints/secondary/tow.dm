@@ -7,7 +7,6 @@
 	disp_icon_state = "towlauncher"
 
 	health = 500
-	//accuracy = 0.8
 	firing_arc = 60
 
 	origins = list(0, -2)
@@ -29,10 +28,6 @@
 		"8" = list(-5, 10)
 	)
 
-	fire_delay = 15.0 SECONDS
-	gun_firemode = GUN_FIREMODE_SEMIAUTO
-	gun_firemode_list = list(
-		GUN_FIREMODE_SEMIAUTO,
-	)
 	scatter = 4
+	fire_delay = 15.0 SECONDS
 

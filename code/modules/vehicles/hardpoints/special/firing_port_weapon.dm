@@ -10,7 +10,6 @@
 	activation_sounds = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
 
 	health = 100
-	//accuracy = 0.9
 	firing_arc = 120
 	//FPWs reload automatically
 	var/reloading = FALSE
@@ -28,12 +27,12 @@
 
 	underlayer_north_muzzleflash = TRUE
 
-	fire_delay = 0.3 SECONDS
+	scatter = 3
 	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
 	)
-	scatter = 3
+	fire_delay = 0.3 SECONDS
 
 /obj/item/hardpoint/special/firing_port_weapon/set_bullet_traits()
 	..()

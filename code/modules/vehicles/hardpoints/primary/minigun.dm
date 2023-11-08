@@ -7,7 +7,6 @@
 	disp_icon_state = "ltaaap_minigun"
 
 	health = 350
-	//accuracy = 0.6
 	firing_arc = 90
 
 	origins = list(0, -3)
@@ -29,12 +28,12 @@
 		"8" = list(-77, 0)
 	)
 
-	fire_delay = 0.8 SECONDS
+	scatter = 7
 	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
 	)
-	scatter = 7
+	fire_delay = 0.8 SECONDS
 
 	//var/start_sound = 'sound/weapons/vehicles/minigun_start.ogg'
 	//var/loop_sound = 'sound/weapons/vehicles/minigun_loop.ogg'

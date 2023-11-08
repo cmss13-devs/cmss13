@@ -16,6 +16,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl, list(
 		list("E-Tool", 5, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
 		list("Sandbags(x25)", 15, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
 		list("Barbed wire(x5)", 5, /obj/item/stack/barbed_wire/smallest_stack, null, VENDOR_ITEM_REGULAR),
+		list("Plastic Explosive", 10, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
+		list("Breaching Charge", 10, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_REGULAR),
 		list("ME3 hand welder", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
 		list("ES-11 Mobile Fuel Canister", 5, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
 
@@ -50,8 +52,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl, list(
 
 		list("UTILITIES", 0, null, null, null),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
-		list("Plastic Explosive", 10, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
-		list("Breaching Charge", 10, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_REGULAR),
 		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),

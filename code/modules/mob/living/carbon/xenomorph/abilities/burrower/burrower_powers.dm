@@ -47,6 +47,7 @@
 				COMSIG_LIVING_FLAMER_FLAMED,
 		), PROC_REF(flamer_crossed_immune))
 	ADD_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
+	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_canmove()
 	update_icons()
@@ -76,6 +77,7 @@
 				COMSIG_LIVING_FLAMER_FLAMED,
 		))
 	REMOVE_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
+	REMOVE_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_ABILITY("Burrow"))
 	frozen = FALSE
 	invisibility = FALSE
 	anchored = FALSE

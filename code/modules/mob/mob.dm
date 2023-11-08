@@ -513,6 +513,7 @@
 
 	return do_pull(AM, lunge, no_msg)
 
+
 /mob/living/vv_get_header()
 	. = ..()
 	var/refid = REF(src)
@@ -1138,3 +1139,4 @@ note dizziness decrements automatically in the mob's Life() proc.
 		return
 	. = stat //old stat
 	stat = new_stat
+	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, new_stat, .)

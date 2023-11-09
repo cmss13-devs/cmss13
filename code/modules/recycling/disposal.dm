@@ -304,7 +304,7 @@
 		if(isliving(AM))
 			var/mob/living/living = AM
 			living.Stun(2)
-			if(!living.lying)
+			if(living.body_position == STANDING_UP)
 				living.visible_message(SPAN_WARNING("[living] is suddenly pushed out of [src]!"),
 				SPAN_WARNING("You get pushed out of [src] and get your bearings!"))
 	update()

@@ -128,10 +128,18 @@
 #define ROUNDSTART_TRAIT "roundstart"
 
 //-- mob traits --
-/// Prevents voluntary movement.
-#define TRAIT_IMMOBILIZED "immobilized"
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
+/// Forces the user to stay unconscious.
+#define TRAIT_KNOCKEDOUT "knockedout"
+/// Prevents voluntary movement.
+#define TRAIT_IMMOBILIZED "immobilized"
+/// Prevents voluntary standing or staying up on its own.
+#define TRAIT_FLOORED "floored"
+/// Forces user to stay standing
+#define TRAIT_FORCED_STANDING "forcedstanding"
+/// Stuns preventing movement and using objects but without further impairement
+#define TRAIT_INCAPACITATED "incapacitated"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -146,14 +154,6 @@
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 /// Makes it impossible to strip the inventory of this mob.
 #define TRAIT_UNSTRIPPABLE "t_unstrippable"
-
-/// Forces the user to stay unconscious.
-#define TRAIT_KNOCKEDOUT "knockedout"
-/// Prevents voluntary movement.
-#define TRAIT_IMMOBILIZED "immobilized"
-/// Prevents voluntary standing or staying up on its own.
-#define TRAIT_FLOORED "floored"
-#define TRAIT_INCAPACITATED "incapacitated"
 
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive

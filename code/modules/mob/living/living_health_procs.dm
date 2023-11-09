@@ -371,60 +371,6 @@
 	to_chat(src, SPAN_WARNING("You start hearing things again!"))
 	SEND_SIGNAL(src, COMSIG_MOB_REGAINED_HEARING)
 
-
-
-
-/mob/living/proc/TalkStutter(amount)
-	stuttering = max(max(stuttering, amount), 0)
-	return
-
-/mob/living/proc/SetTalkStutter(amount)
-	stuttering = max(amount, 0)
-	return
-
-/mob/living/proc/AdjustTalkStutter(amount)
-	stuttering = max(stuttering + amount,0)
-	return
-
-/mob/living/proc/SetEyeBlind(amount)
-	eye_blind = max(amount, 0)
-	return
-
-/mob/living/proc/AdjustEyeBlind(amount)
-	eye_blind = max(eye_blind + amount, 0)
-	return
-
-/mob/living/proc/ReduceEyeBlind(amount)
-	eye_blind = max(eye_blind - amount, 0)
-	return
-
-/mob/living/proc/AdjustEarDeafness(amount)
-	var/prev_deaf = ear_deaf
-	ear_deaf = max(ear_deaf + amount, 0)
-	if(prev_deaf)
-		if(ear_deaf == 0)
-			on_deafness_loss()
-	else if(ear_deaf)
-		on_deafness_gain()
-
-
-/mob/living/proc/SetEarDeafness(amount)
-	var/prev_deaf = ear_deaf
-	ear_deaf = max(amount, 0)
-	if(prev_deaf)
-		if(ear_deaf == 0)
-			on_deafness_loss()
-	else if(ear_deaf)
-		on_deafness_gain()
-
-/mob/living/proc/on_deafness_gain()
-	to_chat(src, SPAN_WARNING("You notice you can't hear anything... you're deaf!"))
-	SEND_SIGNAL(src, COMSIG_MOB_DEAFENED)
-
-/mob/living/proc/on_deafness_loss()
-	to_chat(src, SPAN_WARNING("You start hearing things again!"))
-	SEND_SIGNAL(src, COMSIG_MOB_REGAINED_HEARING)
-
 // heal ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_limb_damage(brute, burn)
 	apply_damage(-brute, BRUTE)

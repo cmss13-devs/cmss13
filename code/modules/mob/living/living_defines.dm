@@ -18,6 +18,10 @@
 	VAR_PROTECTED/knocked_out = 0
 	VAR_PROTECTED/knocked_down = 0
 	VAR_PROTECTED/stunned = 0
+	var/dazed = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
+	var/sleeping = 0
 
 	var/hallucination = 0 //Directly affects how long a mob will hallucinate for
 	var/list/atom/hallucinations = list() //A list of hallucinated people that try to attack the mob. See /obj/effect/fake_attacker in hallucinations.dm
@@ -103,14 +107,6 @@
 	var/list/incision_depths = DEFENSE_ZONES_LIVING
 
 	var/current_weather_effect_type
-
-	var/dazed = 0
-	var/knocked_out = 0
-	var/stunned = 0
-	var/knocked_down = 0
-	var/slowed = 0 // X_SLOW_AMOUNT
-	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
-	var/sleeping = 0
 
 	var/slash_verb = "attack"
 	var/slashes_verb = "attacks"

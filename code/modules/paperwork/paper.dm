@@ -906,3 +906,8 @@
 
 	info = parsepencode(template, null, null, FALSE)
 #undef MAX_FIELDS
+
+/obj/item/paper/Almayer/CSG
+	name = "Colonial Space Grunts"
+	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
+	info = "<div> <img style='align:middle' src='ColonialSpaceGruntsEZ.png'>"

@@ -47,6 +47,7 @@
 		), PROC_REF(flamer_crossed_immune))
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Burrow"))
 	ADD_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
+	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_canmove()
 	update_icons()
@@ -77,6 +78,7 @@
 		))
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Burrow"))
 	REMOVE_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
+	REMOVE_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_ABILITY("Burrow"))
 	invisibility = FALSE
 	anchored = FALSE
 	density = TRUE

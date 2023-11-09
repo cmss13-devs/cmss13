@@ -823,7 +823,7 @@
 	if(!new_hive)
 		return
 
-	for(var/T in status_traits)
+	for(var/T in _status_traits) // They can't keep getting away with this!!!
 		REMOVE_TRAIT(src, T, TRAIT_SOURCE_HIVE)
 
 	new_hive.add_xeno(src)

@@ -338,6 +338,7 @@ SPECIAL EGG USED BY EGG CARRIER
 	if(last_refreshed + CARRIER_EGG_UNSUSTAINED_LIFE < world.time)
 		start_unstoppable_decay()
 
+///Burst the egg without hugger release after a 10 second timer & remove the life timer.
 /obj/effect/alien/egg/carrier_egg/proc/start_unstoppable_decay()
 	addtimer(CALLBACK(src, PROC_REF(Burst), TRUE), 10 SECONDS)
 	if(life_timer)
@@ -345,8 +346,8 @@ SPECIAL EGG USED BY EGG CARRIER
 
 /obj/effect/alien/egg/carrier_egg/Burst(kill, instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled)
 	. = ..()
+	UnregisterSignal(owner, COMSIG_PARENT_QDELETING)
 	owner = null
-
 
 /obj/effect/alien/egg/carrier_egg/proc/cleanup_owner()
 	SIGNAL_HANDLER

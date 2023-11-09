@@ -63,7 +63,7 @@
 	icon_living = "Normal [caste_name] Running"
 	icon_dead = "Normal [caste_name] Dead"
 
-/mob/living/simple_animal/hostile/alien/update_transform()
+/mob/living/simple_animal/hostile/alien/update_transform(instant_update = FALSE)
 	// TODO: Move all this mess outside of update_transform
 	if(stat == DEAD)
 		icon_state = "Normal [caste_name] Dead"

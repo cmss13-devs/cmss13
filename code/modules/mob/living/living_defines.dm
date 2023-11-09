@@ -18,6 +18,10 @@
 	VAR_PROTECTED/knocked_out = 0
 	VAR_PROTECTED/knocked_down = 0
 	VAR_PROTECTED/stunned = 0
+	var/dazed = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
+	var/sleeping = 0
 
 	///a list of all status effects the mob has
 	var/list/status_effects
@@ -107,7 +111,6 @@
 
 	var/current_weather_effect_type
 
-
 	var/slash_verb = "attack"
 	var/slashes_verb = "attacks"
 
@@ -130,3 +133,4 @@
 
 	/// Flags that determine the potential of a mob to perform certain actions. Do not change this directly.
 	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+

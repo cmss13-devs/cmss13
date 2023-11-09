@@ -208,9 +208,9 @@
 		if(body_position == LYING_DOWN)
 			if(!silent)
 				to_chat(src, SPAN_NOTICE("You will now try to stay lying down on the floor."))
-//		else if(HAS_TRAIT(src, TRAIT_FORCED_STANDING) || (buckled && buckled.buckle_lying != NO_BUCKLE_LYING))
-//			if(!silent)
-//				to_chat(src, SPAN_NOTICE("You will now lay down as soon as you are able to."))
+		else if(HAS_TRAIT(src, TRAIT_FORCED_STANDING) || (buckled && buckled.buckle_lying != NO_BUCKLE_LYING))
+			if(!silent)
+				to_chat(src, SPAN_NOTICE("You will now lay down as soon as you are able to."))
 		else
 			if(!silent)
 				to_chat(src, SPAN_NOTICE("You lay down."))

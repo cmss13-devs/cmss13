@@ -37444,11 +37444,10 @@
 	},
 /area/space)
 "weO" = (
-/obj/structure/closet/secure_closet/medical_wall,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
+/obj/structure/closet/secure_closet/medical_wall{
+	pixel_y = -5
 	},
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "wfd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44776,8 +44775,8 @@ aao
 aao
 aao
 aao
-uHQ
 weO
+pSa
 wtj
 rKs
 wJd

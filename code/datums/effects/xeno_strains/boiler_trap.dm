@@ -8,13 +8,13 @@
 /datum/effects/boiler_trap/New(atom/A, mob/living/from, last_dmg_source, zone)
 	. = ..()
 	if(!QDELETED(src))
-		var/mob/living/M = affected_atom
-		ADD_TRAIT(M, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY(effect_name))
+		var/mob/living/affected_living = affected_atom
+		ADD_TRAIT(affected_living, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY(effect_name))
 
 /datum/effects/boiler_trap/Destroy(force)
 	if(ismob(affected_atom))
-		var/mob/living/M = affected_atom
-		REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY(effect_name))
+		var/mob/living/affected_living = affected_atom
+		REMOVE_TRAIT(affected_living, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY(effect_name))
 	return ..()
 
 /datum/effects/boiler_trap/validate_atom(atom/A)
@@ -26,6 +26,6 @@
 /datum/effects/boiler_trap/process_mob()
 	. = ..()
 	if(!.) return FALSE
-	var/mob/living/M = affected_atom
-	ADD_TRAIT(M, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY(effect_name))
+	var/mob/living/affected_living = affected_atom
+	ADD_TRAIT(affected_living, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY(effect_name))
 	return TRUE

@@ -98,8 +98,8 @@
 		if(length(mind.memory) < 4000)
 			mind.store_memory(msg)
 		else
-			src.sleeping = 9999999
-			message_admins("[key_name(usr)] auto-slept for attempting to exceed mob memory limit. [ADMIN_JMP(src.loc)]")
+			message_admins("[key_name(usr)] warned for attempting to exceed mob memory limit.]", loc.x, loc.y, loc.z)
+			to_chat(src, "You have exceeded the maximum memory limit. Sorry!")
 	else
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
@@ -216,9 +216,32 @@
 
 
 
-/mob/verb/stop_pulling_verb()
+/mob/verb/stop_pulling()
 
 	set name = "Stop Pulling"
 	set category = "IC"
 
-	stop_pulling()
+	if(pulling)
+		REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
+		var/mob/M = pulling
+		pulling.pulledby = null
+		pulling = null
+
+		grab_level = 0
+		if(client)
+			client.recalculate_move_delay()
+			// When you stop pulling a mob after you move a tile with it your next movement will still include
+			// the grab delay so we have to fix it here (we love code)
+			client.next_movement = world.time + client.move_delay
+		if(hud_used && hud_used.pull_icon)
+			hud_used.pull_icon.icon_state = "pull0"
+		if(istype(r_hand, /obj/item/grab))
+			temp_drop_inv_item(r_hand)
+		else if(istype(l_hand, /obj/item/grab))
+			temp_drop_inv_item(l_hand)
+		if(istype(M))
+			if(M.client)
+				//resist_grab uses long movement cooldown durations to prevent message spam
+				//so we must undo it here so the victim can move right away
+				M.client.next_movement = world.time
+			M.update_transform(TRUE)

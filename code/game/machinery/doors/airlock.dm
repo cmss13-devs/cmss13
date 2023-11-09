@@ -787,7 +787,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/proc/lock(forced = FALSE)
 	if((operating && !forced) || locked)
 		return
-
+	close()
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
 	locked = TRUE
 	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))

@@ -104,6 +104,13 @@
 
 	var/current_weather_effect_type
 
+	var/dazed = 0
+	var/knocked_out = 0
+	var/stunned = 0
+	var/knocked_down = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
+	var/sleeping = 0
 
 	var/slash_verb = "attack"
 	var/slashes_verb = "attacks"
@@ -127,3 +134,4 @@
 
 	/// Flags that determine the potential of a mob to perform certain actions. Do not change this directly.
 	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+

@@ -597,6 +597,10 @@
 	else if(layer == initial(layer)) //to avoid things like hiding larvas.
 		layer = LYING_LIVING_MOB_LAYER
 
+/// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
+/mob/living/proc/on_fall()
+	return
+
 /// Changes the value of the [living/body_position] variable. Call this before set_lying_angle()
 /mob/living/proc/set_body_position(new_value)
 	if(body_position == new_value)

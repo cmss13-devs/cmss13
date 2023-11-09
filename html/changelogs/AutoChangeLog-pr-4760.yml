@@ -1,6 +1,0 @@
-author: "QuickLode"
-delete-after: True
-changes:
-  - rscadd: "adds another Colony Synthetic variant, changes up some existing ones(trucker,CMB)"
-  - bugfix: "fixes a small problem with WY-Colony Synthetic access(thx forest), adds WY subtype of Synthetics for admin building/faxes"
-  - bugfix: "fixes problems with organic spawning ferret industries Trucker Synthetic"

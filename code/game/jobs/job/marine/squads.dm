@@ -210,6 +210,17 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/cbrn
+	name = SQUAD_CBRN
+	equipment_color = "#3B2A7B" //Chemical Corps Purple
+	chat_color = "#553EB2"
+	radio_freq = CBRN_FREQ
+	minimap_color = "#3B2A7B"
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
 //############################### UPP Squads
 /datum/squad/upp
 	name = "Root"

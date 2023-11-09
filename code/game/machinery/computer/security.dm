@@ -524,8 +524,8 @@ What a mess.*/
 			return selection.fields["img"]
 
 /obj/structure/machinery/computer/secure_data/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 
 	for(var/datum/data/record/R in GLOB.data_core.security)
@@ -549,8 +549,6 @@ What a mess.*/
 			GLOB.data_core.security -= R
 			qdel(R)
 			continue
-
-	..(severity)
 
 /obj/structure/machinery/computer/secure_data/detective_computer
 	icon = 'icons/obj/structures/machinery/computer.dmi'

@@ -97,7 +97,6 @@
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
-	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage = 55
@@ -167,8 +166,6 @@
 
 /datum/ammo/bullet/pistol/highpower
 	name = "high-powered pistol bullet"
-	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = 36
 	penetration = ARMOR_PENETRATION_TIER_5
@@ -177,7 +174,6 @@
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
 	name = "squash-head pistol bullet"
-	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(0,0,0,0,0,0,0,2)
 
 	accuracy = HIT_ACCURACY_TIER_4

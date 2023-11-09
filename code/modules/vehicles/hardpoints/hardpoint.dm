@@ -538,7 +538,7 @@
 /obj/item/hardpoint/proc/start_fire(datum/source, atom/object, turf/location, control, params)
 	/*
 	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] || modifiers["ctrl"] || modifiers["alt"] || modifiers["middle"] || modifiers["right"])
+	if(modifiers[SHIFT_CLICK] || modifiers[CTRL_CLICK] || modifiers[ALT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK])
 		return
 	*/
 

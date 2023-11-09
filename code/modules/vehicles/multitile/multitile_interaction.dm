@@ -369,14 +369,14 @@
 	var/seat = get_mob_seat(source)
 	switch(seat)
 		if(VEHICLE_DRIVER)
-			if(modifiers["shift"] && !modifiers["alt"])
+			if(modifiers[SHIFT_CLICK] && !modifiers[ALT_CLICK])
 				//object.examine(source)
 				return
-			if(modifiers["ctrl"] && !modifiers["alt"])
+			if(modifiers[CTRL_CLICK] && !modifiers[ALT_CLICK])
 				activate_horn()
 				return
 		if(VEHICLE_GUNNER)
-			if(modifiers["shift"] && !modifiers["middle"])
+			if(modifiers[SHIFT_CLICK] && !modifiers[MIDDLE_CLICK])
 				/*
 				if(HAS_FLAG(vehicle_flags, VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
 					shoot_other_weapon(source, seat, object)
@@ -384,26 +384,26 @@
 					object.examine(source)
 				*/
 				return
-			if(modifiers["middle"] && !modifiers["shift"])
+			if(modifiers[MIDDLE_CLICK] && !modifiers[SHIFT_CLICK])
 				/*
 				if(!HAS_FLAG(vehicle_flags, VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
 					shoot_other_weapon(source, seat, object)
 				*/
 				return
-			if(modifiers["alt"])
+			if(modifiers[ALT_CLICK])
 				//toggle_gyrostabilizer()
 				return
-			if(modifiers["ctrl"])
+			if(modifiers[CTRL_CLICK])
 				//activate_support_module(source, seat, object)
 				return
 		if(VEHICLE_SUPPORT_GUNNER_ONE, VEHICLE_SUPPORT_GUNNER_TWO)
-			if(modifiers["shift"])
+			if(modifiers[SHIFT_CLICK])
 				//object.examine(source)
 				return
-			if(modifiers["middle"] || modifiers["alt"] || modifiers["ctrl"])
+			if(modifiers[MIDDLE_CLICK] || modifiers[ALT_CLICK] || modifiers[CTRL_CLICK])
 				return
 
-	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK])
 		return
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)

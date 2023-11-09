@@ -50,10 +50,7 @@
 
 	// status effects that decrease over time \\
 
-	/// timer for blinding
-	var/eye_blind = 0 //Carbon
-	/// Does the mob have blurry sight
-	var/eye_blurry = 0 //Carbon
+
 	var/ear_deaf = 0 //Carbon
 	var/ear_damage = 0 //Carbon
 	var/stuttering = 0 //Carbon
@@ -65,25 +62,20 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
-	var/knocked_out = 0
-	var/stunned = 0
 	var/frozen = 0
-	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
-	var/dazed = 0
-	var/slowed = 0 // X_SLOW_AMOUNT
-	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 
 	// bool status effects \\
 
 	/// bool that tracks if blind
 	var/blinded = FALSE
-	var/sleeping = 0 //Carbon
-	var/resting = 0 //Carbon
+	var/resting = 0
 	var/is_floating = 0
 	var/is_dizzy = 0
 	var/is_jittery = 0
+	var/eye_blind = 0
+	var/eye_blurry = 0
 
 	// strings \\
 

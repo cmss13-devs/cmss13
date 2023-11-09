@@ -437,11 +437,11 @@
 	set name = "Sleep"
 	set category = "IC"
 
-	if(usr.sleeping)
+	if(src.sleeping)
 		to_chat(usr, SPAN_DANGER("You are already sleeping"))
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
-		usr.sleeping = 20 //Short nap
+		src.sleeping = 20 //Short nap
 
 
 /mob/living/carbon/Collide(atom/movable/AM)

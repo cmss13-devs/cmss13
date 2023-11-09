@@ -1,5 +1,0 @@
-author: "carrotman2013"
-delete-after: True
-changes:
-  - balance: "Увеличена скорость раскопки снега в полтора раза. Уменьшено замедление при ходьбе через него в 2 раза."
-  - mapadd: "'Включение Shivas's Snowball' в ротацию."

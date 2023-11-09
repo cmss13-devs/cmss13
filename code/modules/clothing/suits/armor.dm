@@ -335,10 +335,10 @@
 		add_fingerprint(user)
 
 /obj/item/clothing/suit/armor/reactive/emp_act(severity)
+	. = ..()
 	active = 0
 	src.icon_state = "reactiveoff"
 	src.item_state = "reactiveoff"
-	..()
 
 
 

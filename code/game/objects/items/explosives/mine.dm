@@ -42,6 +42,7 @@
 	prime() //We don't care about how strong the explosion was.
 
 /obj/item/explosive/mine/emp_act()
+	. = ..()
 	prime() //Same here. Don't care about the effect strength.
 
 

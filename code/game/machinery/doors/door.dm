@@ -153,15 +153,14 @@
 		return TRUE
 
 /obj/structure/machinery/door/emp_act(severity)
-	if(prob(20/severity))
-		if(use_power)
-			open()
+	. = ..()
+	if(prob(20/severity) && use_power)
+		open()
 	if(prob(40/severity))
 		if(secondsElectrified == 0)
 			secondsElectrified = -1
 			spawn(30 SECONDS)
 				secondsElectrified = 0
-	..()
 
 /obj/structure/machinery/door/ex_act(severity)
 	if(unacidable)

@@ -287,16 +287,11 @@
 /obj/item/weapon/gun/Destroy()
 	in_chamber = null
 	ammo = null
-	current_mag = null
+	QDEL_NULL(current_mag)
 	target = null
 	last_moved_mob = null
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
 		flags_gun_features &= ~GUN_FLASHLIGHT_ON
-		if(ismob(loc))
-			for(var/slot in attachments)
-				var/obj/item/attachable/potential_attachment = attachments[slot]
-				if(!potential_attachment)
-					continue
 	attachments = null
 	attachable_overlays = null
 	QDEL_NULL(active_attachable)
@@ -485,6 +480,7 @@
 
 
 /obj/item/weapon/gun/emp_act(severity)
+	. = ..()
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 

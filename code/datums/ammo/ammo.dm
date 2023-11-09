@@ -1,6 +1,6 @@
 /datum/ammo
 	var/name = "generic bullet"
-	//Icon state when a human is permanently killed with it by execution/suicide.
+	/// Icon state when a human is permanently killed with it by execution/suicide.
 	var/headshot_state = null
 	var/icon = 'icons/obj/items/weapons/projectiles.dmi'
 	var/icon_state = "bullet"

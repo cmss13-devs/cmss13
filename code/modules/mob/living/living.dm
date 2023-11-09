@@ -549,6 +549,7 @@
 			var/obj/old_buckled = . // /tg/ code has buckling defined on /atom/movable - consider refactoring this sometime
 			if(old_buckled.buckle_lying == 0 && (resting || HAS_TRAIT(src, TRAIT_FLOORED))) // The buckle forced us to stay up (like a chair)
 				set_lying_down() // We want to rest or are otherwise floored, so let's drop on the ground.
+				set_lying_angle(pick(90, 270)) // As above. /tg/ doesnt have this line, but without we get issues in buckling-resting-unbuckling. How come?
 
 /mob/living/proc/get_up(instant = FALSE) // arg ignored
 //	set waitfor = FALSE

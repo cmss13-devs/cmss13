@@ -642,8 +642,10 @@
 		visual_angle = 90 // CM code - for fireman carry
 	else if(lying_angle)
 		base.Translate(rand(-10,10), rand(-10,10))
-	var/update_time = instant_update && UPDATE_TRANSFORM_ANIMATION_TIME
-	apply_transform(base.Turn(visual_angle), update_time)
+	if(instant_update)
+		apply_transform(base.Turn(visual_angle))
+	else
+		apply_transform(base.Turn(visual_angle), UPDATE_TRANSFORM_ANIMATION_TIME)
 
 
 // legacy procs

@@ -121,7 +121,6 @@
 /// A simple helper for checking traits in a mob's mind
 #define HAS_MIND_TRAIT(target, trait) (HAS_TRAIT(target, trait) || (target.mind ? HAS_TRAIT(target.mind, trait) : FALSE))
 
-
 /// Example trait
 // #define TRAIT_X "t_x"
 
@@ -131,6 +130,16 @@
 //-- mob traits --
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
+/// Forces the user to stay unconscious.
+#define TRAIT_KNOCKEDOUT "knockedout"
+/// Prevents voluntary movement.
+#define TRAIT_IMMOBILIZED "immobilized"
+/// Prevents voluntary standing or staying up on its own.
+#define TRAIT_FLOORED "floored"
+/// Forces user to stay standing
+#define TRAIT_FORCED_STANDING "forcedstanding"
+/// Stuns preventing movement and using objects but without further impairement
+#define TRAIT_INCAPACITATED "incapacitated"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -145,14 +154,6 @@
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 /// Makes it impossible to strip the inventory of this mob.
 #define TRAIT_UNSTRIPPABLE "t_unstrippable"
-
-/// Forces the user to stay unconscious.
-#define TRAIT_KNOCKEDOUT "knockedout"
-/// Prevents voluntary movement.
-#define TRAIT_IMMOBILIZED "immobilized"
-/// Prevents voluntary standing or staying up on its own.
-#define TRAIT_FLOORED "floored"
-#define TRAIT_INCAPACITATED "incapacitated"
 
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
@@ -368,6 +369,8 @@ GLOBAL_LIST(trait_name_map)
 // #define TRAIT_SOURCE_Y "t_s_y"
 #define TRAIT_SOURCE_INHERENT "t_s_inherent"
 //-- mob traits --
+///Status trait coming from lying down through update_canmove()
+#define LYING_TRAIT "lying"
 ///Status trait coming from species. .human/species_gain()
 #define TRAIT_SOURCE_SPECIES "t_s_species"
 ///Status trait coming from the hive.
@@ -418,10 +421,10 @@ GLOBAL_LIST(trait_name_map)
 #define STAT_TRAIT "stat"
 /// trait effect related to the queen ovipositor
 #define OVIPOSITOR_TRAIT "ovipositor"
-/// trait effect related to active specialist gear
-#define SPECIALIST_GEAR_TRAIT "specialist_gear"
 /// trait associated to being held in a chokehold
 #define CHOKEHOLD_TRAIT "chokehold"
+/// trait effect related to active specialist gear
+#define SPECIALIST_GEAR_TRAIT "specialist_gear"
 /// traits associated with usage of snowflake dropship double seats
 #define DOUBLE_SEATS_TRAIT "double_seats"
 /// traits associated with xeno on-ground weeds
@@ -436,11 +439,9 @@ GLOBAL_LIST(trait_name_map)
 #define KNOCKEDOUT_TRAIT "knockedout"
 /// traits from being pounced
 #define POUNCED_TRAIT "pounced"
-/// traits added by manual intervention
-#define ADMIN_ACTION_TRAIT "admin_action"
-/// traits from chloroform usage
-#define CHLOROFORM_TRAIT "chloroform"
 /// traits from step_triggers on the map
 #define STEP_TRIGGER_TRAIT "step_trigger"
 /// traits from hacked machine interactions
 #define HACKED_TRAIT "hacked"
+/// traits from chloroform usage
+#define CHLOROFORM_TRAIT "chloroform"

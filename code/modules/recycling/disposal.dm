@@ -302,10 +302,11 @@
 		AM.forceMove(loc)
 		AM.pipe_eject(0)
 		if(isliving(AM))
-			var/mob/living/M = AM
-			M.apply_effect(2, STUN)
-			M.visible_message(SPAN_WARNING("[M] is suddenly pushed out of [src]!"),
-			SPAN_WARNING("You get pushed out of [src] and get your bearings!"))
+			var/mob/living/living = AM
+			living.Stun(2)
+			if(living.body_position == STANDING_UP)
+				living.visible_message(SPAN_WARNING("[living] is suddenly pushed out of [src]!"),
+				SPAN_WARNING("You get pushed out of [src] and get your bearings!"))
 	update()
 
 ///Pipe affected by explosion

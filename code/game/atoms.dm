@@ -151,7 +151,7 @@ directive is properly returned.
 	if(loc)
 		return loc.return_gas()
 
-// Updates the atom's transform
+/// Updates the atom's transform compounding it with [/atom/var/base_transform]
 /atom/proc/apply_transform(matrix/new_transform, time = 0, easing = (EASE_IN|EASE_OUT))
 	var/matrix/base_copy
 	if(base_transform)
@@ -166,7 +166,6 @@ directive is properly returned.
 	if(!time)
 		transform = complete
 		return
-
 	animate(src, transform = complete, time = time, easing = easing)
 
 /// Upates the base_transform which will be compounded with other transforms

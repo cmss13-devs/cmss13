@@ -516,21 +516,21 @@
  * Mobs that do now follow these conventions due to unusual sprites should require a special handling or redefinition of this proc, due to the density and layer changes.
  * The return of this proc is the previous value of the modified lying_angle if a change was successful (might include zero), or null if no change was made.
  */
-/mob/living/proc/set_lying_angle(new_lying)
+/mob/living/proc/set_lying_angle(new_lying, on_movement = FALSE)
 	if(new_lying == lying_angle)
 		return
 	. = lying_angle
 	lying_angle = new_lying
 	if(lying_angle != lying_prev)
-		update_transform()
+		update_transform(instant_update = on_movement) // Don't use transition for eg. crawling movement, because we already have the movement glide
 		lying_prev = lying_angle
 
 ///Called by mob Move() when the lying_angle is different than zero, to better visually simulate crawling.
 /mob/living/proc/lying_angle_on_movement(direct)
 	if(direct & EAST)
-		set_lying_angle(90)
+		set_lying_angle(90, on_movement = TRUE)
 	else if(direct & WEST)
-		set_lying_angle(270)
+		set_lying_angle(270, on_movement = TRUE)
 
 ///Reports the event of the change in value of the buckled variable.
 /mob/living/proc/set_buckled(new_buckled)
@@ -623,6 +623,8 @@
 	if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
 		layer = initial(layer)
 
+
+/// Uses presence of [TRAIT_UNDENSE] to figure out what is the correct density state for the mob. Triggered by trait signal.
 /mob/living/proc/update_density()
 	if(HAS_TRAIT(src, TRAIT_UNDENSE))
 		set_density(FALSE)
@@ -633,7 +635,7 @@
 /mob/living/proc/on_floored_start()
 	if(body_position == STANDING_UP) //force them on the ground
 		set_body_position(LYING_DOWN)
-		set_lying_angle(pick(90, 270))
+		set_lying_angle(pick(90, 270), on_movement = TRUE)
 //		on_fall()
 
 
@@ -643,7 +645,7 @@
 		get_up()
 
 
-/mob/living/update_transform()
+/mob/living/update_transform(instant_update = FALSE)
 	var/visual_angle = lying_angle
 	if(!rotate_on_lying)
 		return
@@ -652,7 +654,10 @@
 		visual_angle = 90 // CM code - for fireman carry
 	else if(lying_angle)
 		base.Translate(rand(-10,10), rand(-10,10))
-	apply_transform(base.Turn(visual_angle), UPDATE_TRANSFORM_ANIMATION_TIME)
+	if(instant_update)
+		apply_transform(base.Turn(visual_angle))
+	else
+		apply_transform(base.Turn(visual_angle), UPDATE_TRANSFORM_ANIMATION_TIME)
 
 
 // legacy procs

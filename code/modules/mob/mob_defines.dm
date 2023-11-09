@@ -50,7 +50,10 @@
 
 	// status effects that decrease over time \\
 
-
+	/// timer for blinding
+	var/eye_blind = 0 //Carbon
+	/// Does the mob have blurry sight
+	var/eye_blurry = 0 //Carbon
 	var/ear_deaf = 0 //Carbon
 	var/ear_damage = 0 //Carbon
 	var/stuttering = 0 //Carbon
@@ -74,8 +77,6 @@
 	var/is_floating = 0
 	var/is_dizzy = 0
 	var/is_jittery = 0
-	var/eye_blind = 0
-	var/eye_blurry = 0
 
 	// strings \\
 

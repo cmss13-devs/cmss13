@@ -504,13 +504,13 @@
  * Mobs that do now follow these conventions due to unusual sprites should require a special handling or redefinition of this proc, due to the density and layer changes.
  * The return of this proc is the previous value of the modified lying_angle if a change was successful (might include zero), or null if no change was made.
  */
-/mob/living/proc/set_lying_angle(new_lying)
+/mob/living/proc/set_lying_angle(new_lying, on_movement = FALSE)
 	if(new_lying == lying_angle)
 		return
 	. = lying_angle
 	lying_angle = new_lying
 	if(lying_angle != lying_prev)
-		update_transform()
+		update_transform(instant_update = on_movement) // Don't use transition for eg. crawling movement, because we already have the movement glide
 		lying_prev = lying_angle
 
 ///Called by mob Move() when the lying_angle is different than zero, to better visually simulate crawling.
@@ -623,7 +623,7 @@
 /mob/living/proc/on_floored_start()
 	if(body_position == STANDING_UP) //force them on the ground
 		set_body_position(LYING_DOWN)
-		set_lying_angle(pick(90, 270))
+		set_lying_angle(pick(90, 270), on_movement = TRUE)
 //		on_fall()
 
 
@@ -633,7 +633,7 @@
 		get_up()
 
 
-/mob/living/update_transform()
+/mob/living/update_transform(instant_update = FALSE)
 	var/visual_angle = lying_angle
 	if(!rotate_on_lying)
 		return
@@ -642,7 +642,8 @@
 		visual_angle = 90 // CM code - for fireman carry
 	else if(lying_angle)
 		base.Translate(rand(-10,10), rand(-10,10))
-	apply_transform(base.Turn(visual_angle), UPDATE_TRANSFORM_ANIMATION_TIME)
+	var/update_time = instant_update && UPDATE_TRANSFORM_ANIMATION_TIME
+	apply_transform(base.Turn(visual_angle), update_time)
 
 
 // legacy procs

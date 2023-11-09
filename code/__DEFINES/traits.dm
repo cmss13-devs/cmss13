@@ -128,6 +128,8 @@
 #define ROUNDSTART_TRAIT "roundstart"
 
 //-- mob traits --
+/// Prevents voluntary movement.
+#define TRAIT_IMMOBILIZED "immobilized"
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
 
@@ -437,8 +439,6 @@ GLOBAL_LIST(trait_name_map)
 #define KNOCKEDOUT_TRAIT "knockedout"
 /// traits from being pounced
 #define POUNCED_TRAIT "pounced"
-/// traits added by manual intervention
-#define ADMIN_ACTION_TRAIT "admin_action"
 /// traits from step_triggers on the map
 #define STEP_TRIGGER_TRAIT "step_trigger"
 /// traits from hacked machine interactions

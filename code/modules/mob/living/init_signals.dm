@@ -30,8 +30,6 @@
 /mob/living/proc/on_immobilized_trait_gain(datum/source)
 	SIGNAL_HANDLER
 	mobility_flags &= ~MOBILITY_MOVE
-//	if(living_flags & MOVES_ON_ITS_OWN)
-//		SSmove_manager.stop_looping(src) //stop mid walk //This is also really dumb
 
 /// Called when [TRAIT_IMMOBILIZED] is removed from the mob.
 /mob/living/proc/on_immobilized_trait_loss(datum/source)

@@ -797,8 +797,6 @@ var/global/image/hud_icon_hudfocus
 	if (tag_found)
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
-	// Hacky, but works. Currently effects are hard to make with precise timings // Dont worry i'm working on it --fira
-	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && !HAS_TRAIT(src, TRAIT_FLOORED) // If they're floored we already have a visual cue for immobilization (they can crawl but..)
-
+	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && body_position == STANDING_UP // Don't display roots on targets down due to eg. Knockdowns, Knockouts, SSD, resting, and so on
 	if (freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")

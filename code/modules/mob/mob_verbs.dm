@@ -98,7 +98,8 @@
 		if(length(mind.memory) < 4000)
 			mind.store_memory(msg)
 		else
-			message_admins("[key_name(usr)] auto-slept for attempting to exceed mob memory limit.]", loc.x, loc.y, loc.z)
+			message_admins("[key_name(usr)] warned for attempting to exceed mob memory limit.]", loc.x, loc.y, loc.z)
+			to_chat(src, "You have exceeded the maximum memory limit. Sorry!")
 	else
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 

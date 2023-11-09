@@ -307,7 +307,7 @@ SPECIAL EGG USED BY EGG CARRIER
 /obj/effect/alien/egg/carrier_egg
 	name = "fragile egg"
 	desc = "It looks like a weird, fragile egg."
-	var/owner = null
+	var/mob/living/carbon/xenomorph/carrier/owner = null
 	var/last_refreshed = null
 	var/life_timer = null
 
@@ -319,12 +319,11 @@ SPECIAL EGG USED BY EGG CARRIER
 		start_unstoppable_decay()
 	else
 		//Die after maximum lifetime
-		life_timer = addtimer(CALLBACK(src, PROC_REF(remove_owner_and_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
+		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
 		set_owner(planter)
 
 /obj/effect/alien/egg/carrier_egg/Destroy()
 	. = ..()
-	remove_owner()
 	if(life_timer)
 		deltimer(life_timer)
 
@@ -332,20 +331,10 @@ SPECIAL EGG USED BY EGG CARRIER
 	var/datum/behavior_delegate/carrier_eggsac/my_delegate = planter.behavior_delegate
 	my_delegate.eggs_sustained += src
 	owner = planter
+	RegisterSignal(owner, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_owner))
 
-/obj/effect/alien/egg/carrier_egg/proc/remove_owner()
-	if(owner)
-		var/mob/living/carbon/xenomorph/carrier/my_owner = owner
-		var/datum/behavior_delegate/carrier_eggsac/my_delegate = my_owner.behavior_delegate
-		my_delegate.eggs_sustained -= src
-		owner = null
-
-/obj/effect/alien/egg/carrier_egg/proc/remove_owner_and_decay()
-	remove_owner()
-	start_unstoppable_decay()
-
+///Check the last refreshed time and burst the egg if we're over the lifetime of the egg
 /obj/effect/alien/egg/carrier_egg/proc/check_decay()
-	//Check the last refreshed time and burst the egg if we're over the lifetime of the egg
 	if(last_refreshed + CARRIER_EGG_UNSUSTAINED_LIFE < world.time)
 		start_unstoppable_decay()
 
@@ -356,8 +345,10 @@ SPECIAL EGG USED BY EGG CARRIER
 
 /obj/effect/alien/egg/carrier_egg/Burst(kill, instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled)
 	. = ..()
-	remove_owner()
+	owner = null
 
 
-#undef CARRIER_EGG_UNSUSTAINED_LIFE
-#undef CARRIER_EGG_MAXIMUM_LIFE
+/obj/effect/alien/egg/carrier_egg/proc/cleanup_owner()
+	SIGNAL_HANDLER
+	owner = null
+

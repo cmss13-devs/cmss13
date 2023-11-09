@@ -124,3 +124,6 @@
 
 /// From /obj/item/proc/pickup() : (obj/item/picked_up)
 #define COMSIG_MOB_PICKUP_ITEM "mob_pickup_item"
+
+/// Cancels all running cloaking effects on target
+#define COMSIG_MOB_EFFECT_CLOAK_CANCEL "mob_effect_cloak_cancel"

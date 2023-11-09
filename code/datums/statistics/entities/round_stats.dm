@@ -23,7 +23,7 @@
 	var/total_slashes = 0
 
 	// untracked data
-	var/datum/entity/statistic/map/current_map = null // reference to current map
+	var/datum/entity/statistic/map/current_map // reference to current map
 	var/list/datum/entity/statistic/death/death_stats_list = list()
 
 	var/list/abilities_used = list() // types of /datum/entity/statistic, "tail sweep" = 10, "screech" = 2
@@ -37,8 +37,20 @@
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
 
 	// nanoui data
-	var/round_data[0]
-	var/death_data[0]
+	var/list/round_data = list()
+	var/list/death_data = list()
+
+/datum/entity/statistic/round/Destroy(force)
+	. = ..()
+	QDEL_NULL(current_map)
+	QDEL_LIST(death_stats_list)
+	QDEL_LIST_ASSOC_VAL(abilities_used)
+	QDEL_LIST_ASSOC_VAL(final_participants)
+	QDEL_LIST_ASSOC_VAL(hijack_participants)
+	QDEL_LIST_ASSOC_VAL(total_deaths)
+	QDEL_LIST_ASSOC_VAL(caste_stats_list)
+	QDEL_LIST_ASSOC_VAL(weapon_stats_list)
+	QDEL_LIST_ASSOC_VAL(job_stats_list)
 
 /datum/entity_meta/statistic_round
 	entity_type = /datum/entity/statistic/round

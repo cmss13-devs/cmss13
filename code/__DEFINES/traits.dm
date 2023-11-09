@@ -121,7 +121,6 @@
 /// A simple helper for checking traits in a mob's mind
 #define HAS_MIND_TRAIT(target, trait) (HAS_TRAIT(target, trait) || (target.mind ? HAS_TRAIT(target.mind, trait) : FALSE))
 
-
 /// Example trait
 // #define TRAIT_X "t_x"
 
@@ -368,6 +367,8 @@ GLOBAL_LIST(trait_name_map)
 // #define TRAIT_SOURCE_Y "t_s_y"
 #define TRAIT_SOURCE_INHERENT "t_s_inherent"
 //-- mob traits --
+///Status trait coming from lying down through update_canmove()
+#define LYING_TRAIT "lying"
 ///Status trait coming from species. .human/species_gain()
 #define TRAIT_SOURCE_SPECIES "t_s_species"
 ///Status trait coming from the hive.
@@ -418,10 +419,10 @@ GLOBAL_LIST(trait_name_map)
 #define STAT_TRAIT "stat"
 /// trait effect related to the queen ovipositor
 #define OVIPOSITOR_TRAIT "ovipositor"
-/// trait effect related to active specialist gear
-#define SPECIALIST_GEAR_TRAIT "specialist_gear"
 /// trait associated to being held in a chokehold
 #define CHOKEHOLD_TRAIT "chokehold"
+/// trait effect related to active specialist gear
+#define SPECIALIST_GEAR_TRAIT "specialist_gear"
 /// traits associated with usage of snowflake dropship double seats
 #define DOUBLE_SEATS_TRAIT "double_seats"
 /// traits associated with xeno on-ground weeds
@@ -438,9 +439,9 @@ GLOBAL_LIST(trait_name_map)
 #define POUNCED_TRAIT "pounced"
 /// traits added by manual intervention
 #define ADMIN_ACTION_TRAIT "admin_action"
-/// traits from chloroform usage
-#define CHLOROFORM_TRAIT "chloroform"
 /// traits from step_triggers on the map
 #define STEP_TRIGGER_TRAIT "step_trigger"
 /// traits from hacked machine interactions
 #define HACKED_TRAIT "hacked"
+/// traits from chloroform usage
+#define CHLOROFORM_TRAIT "chloroform"

@@ -823,7 +823,7 @@
 	if(!new_hive)
 		return
 
-	for(var/T in _status_traits) // Seriously you see this here? Don't do that. Please don't do it.
+	for(var/T in _status_traits) // They can't keep getting away with this!!!
 		REMOVE_TRAIT(src, T, TRAIT_SOURCE_HIVE)
 
 	new_hive.add_xeno(src)
@@ -1069,7 +1069,7 @@
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]
 
-/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE)
+/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	. = ..()
 	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !is_admin_level(z))
 		handle_ghost_message()

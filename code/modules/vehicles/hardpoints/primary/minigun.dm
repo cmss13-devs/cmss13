@@ -33,7 +33,7 @@
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
 	)
-	fire_delay = 0.8 SECONDS
+	fire_delay = 0.8 SECONDS //base fire rate, modified by stage_delay_mult
 
 	//var/start_sound = 'sound/weapons/vehicles/minigun_start.ogg'
 	//var/loop_sound = 'sound/weapons/vehicles/minigun_loop.ogg'
@@ -50,8 +50,8 @@
 	var/spin_stage = 1
 	/// Shots fired per fire_delay at a particular spin_stage.
 	var/list/stage_rate = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5)
-	/// Fire delay for current spin_stage.
-	var/stage_delay = 0.8 SECONDS
+	/// Fire delay multiplier for current spin_stage.
+	var/stage_delay_mult = 1
 
 /obj/item/hardpoint/primary/minigun/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -73,12 +73,16 @@
 	var/new_stage_rate = stage_rate[Floor(spin_stage)]
 
 	if(old_stage_rate != new_stage_rate)
-		stage_delay = fire_delay / new_stage_rate
-		SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, stage_delay)
+		stage_delay_mult = 1 / new_stage_rate
+		SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
 
 	if(spin_stage <= 1)
 		spin_stage = 1
 		STOP_PROCESSING(SSobj, src)
+
+/obj/item/hardpoint/primary/minigun/set_fire_delay(value)
+	fire_delay = value
+	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
 
 /obj/item/hardpoint/primary/minigun/handle_fire()
 	. = ..()
@@ -87,5 +91,5 @@
 		START_PROCESSING(SSobj, src)
 
 /obj/item/hardpoint/primary/minigun/set_fire_cooldown()
-	COOLDOWN_START(src, fire_cooldown, stage_delay)
+	COOLDOWN_START(src, fire_cooldown, fire_delay * stage_delay_mult)
 	COOLDOWN_START(src, spindown_grace_cooldown, spindown_grace_time)

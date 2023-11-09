@@ -231,6 +231,12 @@
 
 	update_icon()
 
+/// Trigger vehicle hardpoints to update values based on new modifiers.
+/obj/vehicle/multitile/proc/on_modifiers_change() //should this be a signal?
+	var/list/hardpoints = get_hardpoints_copy() //could be more selective with get_hardpoints_with_ammo(), as only autofire weapons need it
+	for(var/obj/item/hardpoint/hardpoint in hardpoints)
+		hardpoint.recalculate_hardpoint_bonuses()
+
 /*
 //proc that fires non selected weaponry
 /obj/vehicle/multitile/proc/shoot_other_weapon(mob/living/carbon/human/M, seat, atom/A)

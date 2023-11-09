@@ -194,37 +194,61 @@
 /obj/item/hardpoint/proc/get_integrity_percent()
 	return 100.0*health/initial(health)
 
-/obj/item/hardpoint/proc/on_install(obj/vehicle/multitile/V)
-	apply_buff(V)
+/// Apply hardpoint effects to vehicle and self.
+/obj/item/hardpoint/proc/on_install(obj/vehicle/multitile/vehicle)
+	apply_buff(vehicle)
+	recalculate_hardpoint_bonuses()
 	return
 
-/obj/item/hardpoint/proc/on_uninstall(obj/vehicle/multitile/V)
-	remove_buff(V)
+/// Remove hardpoint effects from vehicle and self.
+/obj/item/hardpoint/proc/on_uninstall(obj/vehicle/multitile/vehicle)
+	remove_buff(vehicle)
+	recalculate_hardpoint_bonuses()
 	return
 
-//applying passive buffs like damage type resistance, speed, accuracy, cooldowns
-/obj/item/hardpoint/proc/apply_buff(obj/vehicle/multitile/V)
+/// Applying passive buffs like damage type resistance, speed, accuracy, cooldowns.
+/obj/item/hardpoint/proc/apply_buff(obj/vehicle/multitile/vehicle)
 	if(buff_applied)
 		return
 	if(LAZYLEN(type_multipliers))
 		for(var/type in type_multipliers)
-			V.dmg_multipliers[type] *= LAZYACCESS(type_multipliers, type)
+			vehicle.dmg_multipliers[type] *= LAZYACCESS(type_multipliers, type)
 	if(LAZYLEN(buff_multipliers))
 		for(var/type in buff_multipliers)
-			V.misc_multipliers[type] *= LAZYACCESS(buff_multipliers, type)
+			vehicle.misc_multipliers[type] *= LAZYACCESS(buff_multipliers, type)
 	buff_applied = TRUE
+	vehicle.on_modifiers_change() //check if I need to do this? currently only "accuracy" and "cooldown" need it
 
-//removing buffs
-/obj/item/hardpoint/proc/remove_buff(obj/vehicle/multitile/V)
+/// Removing passive buffs like damage type resistance, speed, accuracy, cooldowns.
+/obj/item/hardpoint/proc/remove_buff(obj/vehicle/multitile/vehicle)
 	if(!buff_applied)
 		return
 	if(LAZYLEN(type_multipliers))
 		for(var/type in type_multipliers)
-			V.dmg_multipliers[type] *= 1 / LAZYACCESS(type_multipliers, type)
+			vehicle.dmg_multipliers[type] *= 1 / LAZYACCESS(type_multipliers, type)
 	if(LAZYLEN(buff_multipliers))
 		for(var/type in buff_multipliers)
-			V.misc_multipliers[type] *= 1 / LAZYACCESS(buff_multipliers, type)
+			vehicle.misc_multipliers[type] *= 1 / LAZYACCESS(buff_multipliers, type)
 	buff_applied = FALSE
+	vehicle.on_modifiers_change() //check if I need to do this? currently only "accuracy" and "cooldown" need it
+
+/// Recalculates hardpoint values based on vehicle modifiers.
+/obj/item/hardpoint/proc/recalculate_hardpoint_bonuses()
+	scatter = initial(scatter) / owner.misc_multipliers["accuracy"]
+	var/cooldown_mult = owner.misc_multipliers["cooldown"]
+	set_fire_delay(initial(fire_delay) * cooldown_mult)
+	set_burst_delay(initial(burst_delay) * cooldown_mult)
+	extra_delay = initial(extra_delay) * cooldown_mult
+
+/// Setter for fire_delay.
+/obj/item/hardpoint/proc/set_fire_delay(value)
+	fire_delay = value
+	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay)
+
+/// Setter for burst_delay.
+/obj/item/hardpoint/proc/set_burst_delay(value)
+	burst_delay = value
+	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, burst_delay)
 
 //this proc called on each move of vehicle
 /obj/item/hardpoint/proc/on_move(turf/old, turf/new_turf, move_dir)

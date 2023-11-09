@@ -121,16 +121,17 @@
 	H.forceMove(src)
 	LAZYADD(hardpoints, H)
 
+	H.on_install(owner)
 	H.rotate(turning_angle(H.dir, dir))
 
 /obj/item/hardpoint/holder/proc/remove_hardpoint(obj/item/hardpoint/H, turf/uninstall_to)
 	if(!hardpoints)
 		return
-	hardpoints -= H
 	H.forceMove(uninstall_to ? uninstall_to : get_turf(src))
 
+	H.on_uninstall(owner)
 	H.reset_rotation()
-
+	hardpoints -= H
 	H.owner = null
 
 	if(H.health <= 0)

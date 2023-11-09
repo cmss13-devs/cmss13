@@ -477,6 +477,8 @@
 	if(istype(targetMob, /mob/living))
 		var/mob/living/livingTarget = targetMob
 		.["mob_sleeping"] = livingTarget.sleeping
+	else
+		.["mob_sleeping"] = 0
 
 	.["mob_frozen"] = targetMob.frozen
 

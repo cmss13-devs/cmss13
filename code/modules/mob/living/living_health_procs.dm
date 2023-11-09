@@ -393,11 +393,16 @@
 
 /mob/living/proc/on_deafness_gain()
 	to_chat(src, SPAN_WARNING("You notice you can't hear anything... you're deaf!"))
+	// We should apply deafness here instead of in handle_regular_status_updates
 	SEND_SIGNAL(src, COMSIG_MOB_DEAFENED)
 
 /mob/living/proc/on_deafness_loss()
 	to_chat(src, SPAN_WARNING("You start hearing things again!"))
 	SEND_SIGNAL(src, COMSIG_MOB_REGAINED_HEARING)
+	// Consider moving this to a signal on soundOutput. This is a fallback as handle_regular_status_updates SHOULD do the job.
+	if(!ear_deaf && (client?.soundOutput?.status_flags & EAR_DEAF_MUTE))
+		client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+		client.soundOutput.apply_status()
 
 // heal ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_limb_damage(brute, burn)

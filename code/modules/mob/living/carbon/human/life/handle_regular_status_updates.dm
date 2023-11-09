@@ -99,12 +99,13 @@
 
 			AdjustEarDeafness(-1)
 
-			if(!ear_deaf && client && client.soundOutput)
-				client.soundOutput.status_flags ^= EAR_DEAF_MUTE
-				client.soundOutput.apply_status()
-
 		else if(ear_damage)
 			ear_damage = max(ear_damage - 0.05, 0)
+
+		// This should be done only on updates abvoe, or even better in the AdjsutEarDeafnes handlers
+		if(!ear_deaf && (client?.soundOutput?.status_flags & EAR_DEAF_MUTE))
+			client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+			client.soundOutput.apply_status()
 
 		//Resting
 		if(resting)

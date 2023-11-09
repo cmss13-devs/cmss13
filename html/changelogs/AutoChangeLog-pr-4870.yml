@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - admin: "VV \"Update Transform\" will now properly compound with other sources of transform (eg. lying down)"

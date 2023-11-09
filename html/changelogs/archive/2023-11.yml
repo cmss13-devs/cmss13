@@ -141,3 +141,14 @@
       always the same.
   zzzmike:
   - spellcheck: fixed a typo
+2023-11-09:
+  fira:
+  - bugfix: Fixed incorrect signals causing malfunctions in tgui_say for ASAY and
+      MentorSay channel hotkeys.
+  - admin: VV "Update Transform" will now properly compound with other sources of
+      transform (eg. lying down)
+  - bugfix: Density effects should now properly update when stacked and unstacked.
+  - rscadd: You can now use package wrap to change standard crates visuals.
+  - rscadd: You can now label crate with package wrap, which will also be shown during
+      overwatch supply drop alert.
+  - mapadd: Added more packaging wrap to Requisitions.

@@ -414,7 +414,7 @@ var/global/list/activated_medevac_stretchers = list()
 
 /obj/item/roller/bedroll
 	name = "folded bedroll"
-	desc = "A standard issue USCMC bedroll, They've been in service for as long as you can remember. the tag on it states to unfold it before rest, but who needs rules anyway, right?"
+	desc = "A standard issue USCMC bedroll, They've been in service for as long as you can remember. The tag on it states to unfold it before rest, but who needs rules anyway, right?"
 	icon = 'icons/monkey_icos.dmi'
 	icon_state = "bedroll"
 	rollertype = /obj/structure/bed/bedroll

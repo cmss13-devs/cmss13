@@ -217,7 +217,7 @@
 		for(var/type in buff_multipliers)
 			vehicle.misc_multipliers[type] *= LAZYACCESS(buff_multipliers, type)
 	buff_applied = TRUE
-	vehicle.on_modifiers_change() //check if I need to do this? currently only "accuracy" and "cooldown" need it
+	vehicle.on_modifiers_change()
 
 /// Removing passive buffs like damage type resistance, speed, accuracy, cooldowns.
 /obj/item/hardpoint/proc/remove_buff(obj/vehicle/multitile/vehicle)
@@ -230,7 +230,7 @@
 		for(var/type in buff_multipliers)
 			vehicle.misc_multipliers[type] *= 1 / LAZYACCESS(buff_multipliers, type)
 	buff_applied = FALSE
-	vehicle.on_modifiers_change() //check if I need to do this? currently only "accuracy" and "cooldown" need it
+	vehicle.on_modifiers_change()
 
 /// Recalculates hardpoint values based on vehicle modifiers.
 /obj/item/hardpoint/proc/recalculate_hardpoint_bonuses()
@@ -601,7 +601,7 @@
 		return NONE
 
 	if(ammo && ammo.current_rounds <= 0)
-		click_empty()
+		click_empty(user)
 		return NONE
 
 	if(!in_firing_arc(target))
@@ -670,11 +670,9 @@
 
 /// Plays 'click' noise and announced to chat. Usually called when weapon empty.
 /obj/item/hardpoint/proc/click_empty(mob/user)
+	playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 	if(user)
 		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
-		playsound(user, 'sound/weapons/gun_empty.ogg', 25, 1, 5) //5 tile range
-	else
-		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 
 /// Selects and plays a firing sound from the list.
 /obj/item/hardpoint/proc/play_firing_sounds()

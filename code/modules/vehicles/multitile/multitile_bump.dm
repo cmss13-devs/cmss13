@@ -740,7 +740,7 @@
 
 //BURROWER
 /mob/living/carbon/xenomorph/burrower/handle_vehicle_bump(obj/vehicle/multitile/V)
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return TRUE
 	else
 		return . = ..()

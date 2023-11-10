@@ -274,7 +274,6 @@
 	var/tunnel = FALSE
 	/// for check on lurker invisibility
 	var/stealth = FALSE
-	var/burrow = FALSE
 	var/fortify = FALSE
 	var/crest_defense = FALSE
 	/// 0/FALSE - upright, 1/TRUE - all fours
@@ -541,7 +540,7 @@
 /mob/living/carbon/xenomorph/proc/fire_immune(mob/living/L)
 	SIGNAL_HANDLER
 
-	if(L.fire_reagent?.fire_penetrating && !burrow)
+	if(L.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 
 	return COMPONENT_CANCEL_IGNITION
@@ -554,7 +553,7 @@
 
 	. = COMPONENT_NO_BURN
 	// Burrowed xenos also cannot be ignited
-	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || burrow)
+	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		. |= COMPONENT_NO_IGNITE
 	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
@@ -746,7 +745,7 @@
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
 		return do_pull(AM, lunge, no_msg)
 
-	if(burrow)
+	if(HAS_TRAIT(src,TRAIT_ABILITY_BURROWED))
 		return
 	if(!isliving(AM))
 		return FALSE

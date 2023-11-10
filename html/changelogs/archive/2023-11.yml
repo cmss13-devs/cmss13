@@ -152,3 +152,17 @@
   - rscadd: You can now label crate with package wrap, which will also be shown during
       overwatch supply drop alert.
   - mapadd: Added more packaging wrap to Requisitions.
+2023-11-10:
+  Drathek:
+  - bugfix: Fixed fax template images in CDN mode
+  - bugfix: Fixed imaginary friend merge ability preventing hearing if ghost ears
+      are set to only nearby.
+  - bugfix: Fixed imaginary friend hide ability not updating its icons.
+  MorrowWolf:
+  - bugfix: Fixed Pumpkins appearing past season.
+  MrDas:
+  - bugfix: You can no longer see through solid rear drop ship doors.
+  - code_imp: Moved filler turf logic from almayer airlocks to its parent door.
+  SpartanBobby:
+  - maptweak: fixes conflicting tiles on USS Almayer squad bunks
+  - maptweak: updates multiple bedrooms and closet area detailing

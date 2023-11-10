@@ -145,6 +145,8 @@
 	user.forceMove(TT)
 	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
 		thing.forceMove(TT)
+	if(user.client) // Reset movement cooldown so we don't instantly move a second time after climbing
+		user.client.next_movement = max(user.client.next_movement, world.time + user.client.move_delay)
 
 /obj/structure/proc/structure_shaken()
 

@@ -2,7 +2,6 @@
     "map_name": "Dock Red",
     "map_path": "map_files/Dock_Red",
     "map_file": "Dock_Red.dmm",
-    "webmap_url": "Dock Red",
     "weather_holder": "/datum/weather_ss_map_holder/big_red",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/solaris",
@@ -23,23 +22,14 @@
         1000,
         0.0
     ],
-    "map_item_type": "/obj/item/map/big_red_map",
     "announce_text": "Мы потеряли связь с подземной исследовательской базой Вейланд-Ютани в секторе 'Ред'. ###SHIPNAME### отправлен для оказания поддержки.",
     "monkey_types": [
         "neaera"
     ],
     "traits": [{ "Ground": true }],
-    "nightmare_path": "maps/Nightmare/maps/Dock_Red/",
-    "xvx_hives": {
-        "xeno_hive_alpha": 0,
-        "xeno_hive_bravo": 0,
-        "xeno_hive_charlie": 0,
-        "xeno_hive_delta": 100
-    },
     "camouflage": "desert",
     "gamemodes": [
         "Distress Signal",
-        "Hive Wars",
         "Infection"
     ]
 }

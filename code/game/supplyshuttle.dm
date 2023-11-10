@@ -1373,21 +1373,11 @@ var/datum/controller/supply/supply_controller = new()
 	name = "M577 Armored Personnel Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit
 
-/datum/vehicle_order/apc/med
-	name = "M577-MED Armored Personnel Carrier"
-	ordered_vehicle = /obj/effect/vehicle_spawner/apc/med/decrepit
-
-/datum/vehicle_order/apc/cmd
-	name = "M577-CMD Armored Personnel Carrier"
-	ordered_vehicle = /obj/effect/vehicle_spawner/apc/cmd/decrepit
-
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
 	. = ..()
 
 	vehicles = list(
 		/datum/vehicle_order/apc,
-		/datum/vehicle_order/apc/med,
-		/datum/vehicle_order/apc/cmd,
 		/datum/vehicle_order/tank,
 	)
 

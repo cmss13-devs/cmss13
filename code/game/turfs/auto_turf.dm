@@ -198,7 +198,7 @@
 
 	while(bleed_layer > 0)
 		xeno_attack_delay(M)
-		if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		if(!do_after(M, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			return XENO_NO_DELAY_ACTION
 
 		if(!bleed_layer)
@@ -214,17 +214,17 @@
 	if(bleed_layer > 0)
 		if(iscarbon(AM))
 			var/mob/living/carbon/C = AM
-			var/slow_amount = 0.35
+			var/slow_amount = 0.2
 			var/can_stuck = 1
 			if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
-				slow_amount = 0.15
+				slow_amount = 0.1
 				can_stuck = 0
 			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)
 			if(prob(2))
 				to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
 			else if(can_stuck && bleed_layer == 4 && prob(2))
 				to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
-				new_slowdown += 10
+				new_slowdown += 5
 			C.next_move_slowdown = new_slowdown
 	..()
 

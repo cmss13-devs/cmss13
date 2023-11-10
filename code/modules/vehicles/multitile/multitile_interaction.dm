@@ -365,42 +365,18 @@
 	SIGNAL_HANDLER
 
 	var/list/modifiers = params2list(params)
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK]) //don't step on examine, point, etc
+		return
 
 	var/seat = get_mob_seat(source)
 	switch(seat)
 		if(VEHICLE_DRIVER)
-			if(modifiers[SHIFT_CLICK] && !modifiers[ALT_CLICK])
-				//object.examine(source)
-				return
-			if(modifiers[CTRL_CLICK] && !modifiers[ALT_CLICK])
+			if(modifiers[LEFT_CLICK] && modifiers[CTRL_CLICK])
 				activate_horn()
 				return
 		if(VEHICLE_GUNNER)
-			if(modifiers[SHIFT_CLICK] && !modifiers[MIDDLE_CLICK])
-				/*
-				if(HAS_FLAG(vehicle_flags, VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
-					shoot_other_weapon(source, seat, object)
-				else
-					object.examine(source)
-				*/
-				return
-			if(modifiers[MIDDLE_CLICK] && !modifiers[SHIFT_CLICK])
-				/*
-				if(!HAS_FLAG(vehicle_flags, VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
-					shoot_other_weapon(source, seat, object)
-				*/
-				return
-			if(modifiers[ALT_CLICK])
+			if(modifiers[LEFT_CLICK] && modifiers[ALT_CLICK])
 				toggle_gyrostabilizer()
-				return
-			if(modifiers[CTRL_CLICK])
-				//activate_support_module(source, seat, object)
-				return
-		if(VEHICLE_SUPPORT_GUNNER_ONE, VEHICLE_SUPPORT_GUNNER_TWO)
-			if(modifiers[SHIFT_CLICK])
-				//object.examine(source)
-				return
-			if(modifiers[MIDDLE_CLICK] || modifiers[ALT_CLICK] || modifiers[CTRL_CLICK])
 				return
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)

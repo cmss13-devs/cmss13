@@ -117,7 +117,7 @@
 	var/list/door_turfs = list(get_turf(air))
 	if(istype(air, /obj/structure/machinery/door/airlock/multi_tile))
 		var/obj/structure/machinery/door/airlock/multi_tile/multi_door = air
-		door_turfs = multi_door.get_filler_turfs()
+		door_turfs = multi_door.locate_filler_turfs()
 	for(var/turf/door_turf in door_turfs)
 		bump_at_turf(door_turf)
 

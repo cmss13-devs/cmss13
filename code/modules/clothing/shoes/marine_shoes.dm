@@ -157,6 +157,19 @@
 	stored_item = knife
 	update_icon()
 
+/obj/item/clothing/shoes/veteran/pmc/commando/cbrn
+	name = "\improper M3 MOPP boots"
+	desc = "M3 MOPP boots have been designed to protect the wearer from contact with any possible infection vectors or hazardous substances that may have contaminated the area of operations. This includes further enhancements in conjunction with the standard durability of M3 boots, reducing the probability of punctures or cuts as well as the effects of radiation."
+	icon_state = "cbrn"
+	item_state = "cbrn"
+	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+
+/obj/item/clothing/shoes/veteran/pmc/commando/cbrn/Initialize(mapload, ...)
+	. = ..()
+	stored_item = new /obj/item/attachable/bayonet(src)
+	update_icon()
+
 /obj/item/clothing/shoes/marine/corporate
 	name = "rugged boots"
 	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."

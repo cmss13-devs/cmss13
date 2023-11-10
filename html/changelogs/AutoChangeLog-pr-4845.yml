@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed being able to put anything in your boots. You're not wizards!"

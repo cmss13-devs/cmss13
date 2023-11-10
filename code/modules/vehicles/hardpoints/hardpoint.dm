@@ -544,28 +544,20 @@
 		user = hp_operator
 
 	if(ammo)
-		//to_chat(user, SPAN_DANGER("[ammo.current_rounds] / [ammo.max_rounds] ROUNDS REMAINING"))
 		to_chat(user, SPAN_WARNING("[name] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 
 /// Reset variables used in firing and remove the gun from the autofire system.
 /obj/item/hardpoint/proc/stop_fire(datum/source, atom/object, turf/location, control, params)
-	if(auto_firing || burst_firing)
-		SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
-		if(auto_firing)
-			reset_fire() //automatic fire doesn't reset itself from COMSIG_GUN_STOP_FIRE
+	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
+	if(auto_firing)
+		reset_fire() //automatic fire doesn't reset itself from COMSIG_GUN_STOP_FIRE
 
 /// Update the target if you dragged your mouse.
-/obj/item/hardpoint/proc/change_target(mob/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+/obj/item/hardpoint/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	set_target(get_turf_on_clickcatcher(over_object, hp_operator, params))
 
 /// Check if the gun can fire and add it to bucket autofire system if needed, or just fire the gun if not.
 /obj/item/hardpoint/proc/start_fire(datum/source, atom/object, turf/location, control, params)
-	/*
-	var/list/modifiers = params2list(params)
-	if(modifiers[SHIFT_CLICK] || modifiers[CTRL_CLICK] || modifiers[ALT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK])
-		return
-	*/
-
 	if(istype(object, /atom/movable/screen))
 		return
 
@@ -676,36 +668,6 @@
 /obj/item/hardpoint/proc/get_origin_turf()
 	return get_offset_target_turf(get_turf(src), origins[1], origins[2])
 
-/*
-/// Toggles the gun's firemode one down the list.
-/obj/item/hardpoint/proc/do_toggle_firemode(mob/user, new_firemode)
-	if(burst_firing) //can't toggle mid burst
-		return
-
-	if(!length(gun_firemode_list))
-		CRASH("[src] called do_toggle_firemode() with an empty gun_firemodes")
-
-	if(length(gun_firemode_list) == 1)
-		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] This hardpoint only has one firemode."))
-		return
-
-	if(new_firemode)
-		if(!(new_firemode in gun_firemode_list))
-			CRASH("[src] called do_toggle_firemode() with [new_firemode] new_firemode, not on gun_firemodes")
-		gun_firemode = new_firemode
-	else
-		var/mode_index = gun_firemode_list.Find(gun_firemode)
-		if(++mode_index <= length(gun_firemode_list))
-			gun_firemode = gun_firemode_list[mode_index]
-		else
-			gun_firemode = gun_firemode_list[1]
-
-	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
-
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch the hardpoint to <b>[gun_firemode]</b>."))
-	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
-*/
-
 /// Plays 'click' noise and announced to chat. Usually called when weapon empty.
 /obj/item/hardpoint/proc/click_empty(mob/user)
 	if(user)
@@ -736,7 +698,6 @@
 		angle_diff += 360
 	else if(angle_diff > 180)
 		angle_diff -= 360
-	//debug_msg("Get_Angle: [Get_Angle(muzzle_turf, target_turf)]    get_angle: [get_angle(muzzle_turf, target_turf)]    dir2angle: [dir2angle(dir)]    angle_diff: [angle_diff]")
 
 	return abs(angle_diff) <= (firing_arc * 0.5)
 

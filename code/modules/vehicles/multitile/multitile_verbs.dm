@@ -381,32 +381,3 @@
 			return
 
 	to_chat(user, SPAN_WARNING("Warning. No FPW for [seat] found, tell a dev!"))
-
-/*
-/obj/vehicle/multitile/proc/cycle_firemode()
-	set name = "Cycle Firemode"
-	set desc = "Cycles through your gun's firemodes."
-	set category = "Vehicle"
-
-	var/mob/user = usr
-	if(!user || !istype(user))
-		return
-
-	var/obj/vehicle/multitile/vehicle = user.interactee
-	if(!istype(vehicle))
-		return
-
-	var/seat
-	for(var/vehicle_seat in vehicle.seats)
-		if(vehicle.seats[vehicle_seat] == user)
-			seat = vehicle_seat
-			break
-	if(!seat)
-		return
-
-	var/obj/item/hardpoint/hardpoint = vehicle.active_hp[seat]
-	if(!hardpoint)
-		return
-
-	hardpoint.do_toggle_firemode(usr)
-*/

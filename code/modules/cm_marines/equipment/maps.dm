@@ -85,7 +85,7 @@
 	html_link = "https://cm-ss13.com/w/images/9/9e/Solaris_Ridge.png"
 	color = "#e88a10"
 
-/obj/item/map/big_red_map
+/obj/item/map/dock_red_map
 	name = "\improper Dock Red Map"
 	desc = "A censored blueprint of the Dock Red spaceport"
 	html_link = "https://user-images.githubusercontent.com/43476573/281118799-0e6e4ec5-e082-4b3e-a6af-7051eb8a7bd8.png"

@@ -1,0 +1,6 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - rscadd: "SUPERLIGHT armor category."
+  - balance: "M4 Synthetic Armor slows by 10% to justify having 1 extra storage slot."
+  - spellcheck: "Clarifies M4 Synthetic Armor description that it does not have any armor whatsoever."

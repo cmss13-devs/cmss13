@@ -391,7 +391,7 @@
 				*/
 				return
 			if(modifiers[ALT_CLICK])
-				//toggle_gyrostabilizer()
+				toggle_gyrostabilizer()
 				return
 			if(modifiers[CTRL_CLICK])
 				//activate_support_module(source, seat, object)
@@ -402,9 +402,6 @@
 				return
 			if(modifiers[MIDDLE_CLICK] || modifiers[ALT_CLICK] || modifiers[CTRL_CLICK])
 				return
-
-	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK])
-		return
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
 	if(!hardpoint)

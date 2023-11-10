@@ -5,7 +5,7 @@
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
-	var/mob/dead/observer/observer = null
+	var/mob/dead/observer/observer
 	if(isobserver(user))
 		observer = user
 

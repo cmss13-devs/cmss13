@@ -46,8 +46,7 @@
 
 /mob/living/carbon/xenomorph/runner/corrosive_acid(atom/affected_atom, acid_type, plasma_cost)
 	if (mutation_type != RUNNER_ACIDER)
-		..(affected_atom, acid_type, plasma_cost)
-		return
+		return ..()
 	if(!affected_atom.Adjacent(src))
 		if(istype(affected_atom,/obj/item/explosive/plastic))
 			var/obj/item/explosive/plastic/plastic_explosive = affected_atom

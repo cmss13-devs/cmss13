@@ -68,7 +68,7 @@
 	ability_name = "Acid Shroud"
 	action_icon_state = "acid_shroud"
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 	plasma_cost = 10
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shroud
 	/// Allows the sound to play. Flipped to false when sound is triggered and true after a timer. This prevents soundspam

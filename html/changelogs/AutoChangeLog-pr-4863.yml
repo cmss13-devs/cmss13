@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed imaginary friend merge ability preventing hearing if ghost ears are set to only nearby."
-  - bugfix: "Fixed imaginary friend hide ability not updating its icons."

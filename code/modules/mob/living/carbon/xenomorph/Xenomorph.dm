@@ -345,14 +345,6 @@
 	var/used_burrow = 0
 	var/used_tunnel = 0
 
-	//Carrier vars
-	var/threw_a_hugger = 0
-	var/huggers_cur = 0
-	var/eggs_cur = 0
-	var/huggers_max = 0
-	var/eggs_max = 0
-	var/laid_egg = 0
-
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
@@ -946,8 +938,9 @@
 		if(is_zoomed)
 			zoom_out()
 	if(iscarrier(src))
-		huggers_max = caste.huggers_max
-		eggs_max = caste.eggs_max
+		var/mob/living/carbon/xenomorph/carrier/carrier
+		carrier.huggers_max = caste.huggers_max
+		carrier.eggs_max = caste.eggs_max
 	need_weeds = mutators.need_weeds
 
 

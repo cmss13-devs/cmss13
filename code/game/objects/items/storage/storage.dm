@@ -852,6 +852,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	return ..()
 
 /obj/item/storage/emp_act(severity)
+	. = ..()
 	if(!istype(src.loc, /mob/living))
 		for(var/obj/O in contents)
 			O.emp_act(severity)

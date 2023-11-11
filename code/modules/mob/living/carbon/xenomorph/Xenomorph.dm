@@ -21,7 +21,8 @@
 	if(mind in SSticker.mode.xenomorphs)
 		to_chat(src, SPAN_DEBUG("[src] mind is in the xenomorph list. Mind key is [mind.key]."))
 		to_chat(src, SPAN_DEBUG("Current mob is: [mind.current]. Original mob is: [mind.original]."))
-	else to_chat(src, SPAN_DEBUG("This xenomorph is not in the xenomorph list."))
+	else
+		to_chat(src, SPAN_DEBUG("This xenomorph is not in the xenomorph list."))
 #endif
 
 #undef DEBUG_XENO

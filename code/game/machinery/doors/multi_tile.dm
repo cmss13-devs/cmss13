@@ -13,7 +13,6 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/Initialize()
 	. = ..()
-	handle_multidoor()
 	update_icon()
 
 /obj/structure/machinery/door/airlock/multi_tile/glass
@@ -137,7 +136,6 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 	)
-	var/multi_filler = list()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/Initialize()
 	. = ..()
@@ -232,42 +230,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor()
-	. = ..()
-	if(!(width > 1)) return //Bubblewrap
-
-	update_filler_turfs()
-
-//We have to find these again since these doors are used on shuttles a lot so the turfs changes
-/obj/structure/machinery/door/airlock/multi_tile/almayer/proc/update_filler_turfs()
-	for(var/turf/T in multi_filler)
-		T.set_opacity(null)
-
-	multi_filler = list()
-	for(var/turf/T in get_filler_turfs())
-		T.set_opacity(opacity)
-		multi_filler += list(T)
-
-/obj/structure/machinery/door/airlock/multi_tile/proc/get_filler_turfs()
-	. = list()
-	for(var/i = 1, i < width, i++)
-		if(dir in list(NORTH, SOUTH))
-			var/turf/T = locate(x, y + i, z)
-			if(T)
-				. += list(T)
-		else if(dir in list(EAST, WEST))
-			var/turf/T = locate(x + i, y, z)
-			if(T)
-				. += list(T)
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/open()
-	. = ..()
-	update_filler_turfs()
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/close()
-	. = ..()
-	update_filler_turfs()
 
 //------Dropship Cargo Doors -----//
 

@@ -49,13 +49,16 @@
 	if(!disp_title)
 		disp_title = title
 
+	if(global.config.is_loaded)
+		on_config_load()
+
 /datum/job/proc/on_config_load()
 	if(entry_message_body)
 		entry_message_body = replace_placeholders(entry_message_body)
 
 /datum/job/proc/replace_placeholders(replacement_string)
-	replacement_string = replacetextEx(replacement_string, "%WIKIURL%", generate_wiki_link())
-	replacement_string = replacetextEx(replacement_string, "%LAWURL%", "[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_LAW]")
+	replacement_string = replacetextEx(replacement_string, WIKI_PLACEHOLDER, generate_wiki_link())
+	replacement_string = replacetextEx(replacement_string, LAW_PLACEHOLDER, "[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_LAW]")
 	return replacement_string
 
 /datum/job/proc/generate_wiki_link()

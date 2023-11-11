@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Repathed sword weapons to a uniform /obj/item/weapon/sword"
-  - balance: "All sword-type weapons are now Large items instead of Normal sized, to match machetes."

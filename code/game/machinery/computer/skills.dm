@@ -347,8 +347,8 @@ What a mess.*/
 	return
 
 /obj/structure/machinery/computer/skills/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 
 	for(var/datum/data/record/R in GLOB.data_core.security)
@@ -373,4 +373,3 @@ What a mess.*/
 			qdel(R)
 			continue
 
-	..(severity)

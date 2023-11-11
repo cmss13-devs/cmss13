@@ -338,9 +338,6 @@
 
 	//Burrower Vars
 	var/used_tremor = 0
-	// Defender vars
-	var/used_headbutt = 0
-	var/used_fortify = 0
 	// Burrowers
 	var/used_burrow = 0
 	var/used_tunnel = 0

@@ -81,7 +81,7 @@
 /// whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 #define ANIMATED_SURGICAL_TOOL (1<<12)
 /// Has heat source but isn't 'on fire' and thus can be stored
-#define IGNITING_ITEM (1<<14)
+#define IGNITING_ITEM (1<<13)
 //==========================================================================================
 
 

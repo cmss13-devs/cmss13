@@ -53151,7 +53151,7 @@
 "mSc" = (
 /obj/structure/bed/bedroll{
 	name = "cat bed";
-	desc = "A bed of cotton-fabric, purposely made to be a good place for a cat to sleep on.";
+	desc = "A bed of cotton fabric, purposely made for a cat to comfortably sleep on.";
 	pixel_y = 0
 	},
 /mob/living/simple_animal/cat/Jones{

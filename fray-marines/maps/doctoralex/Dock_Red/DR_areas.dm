@@ -53,6 +53,7 @@
 	icon_state = "storage"
 	ceiling = CEILING_METAL
 	minimap_color = MINIMAP_AREA_COMMAND
+	is_landing_zone = TRUE
 
 /area/dockred/outside/cargo
 	name = "\improper Dock Red - Cargo Depot"
@@ -117,6 +118,7 @@
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_ALMAYER
 	sound_environment = SOUND_ENVIRONMENT_ROOM
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	soundscape_playlist = list()
 
 /area/dockred/caves/eta/living
@@ -140,6 +142,7 @@
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_ALMAYER
 	sound_environment = SOUND_ENVIRONMENT_ROOM
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	soundscape_playlist = list()
 
 /area/dockred/caves/lambda/virology

@@ -42,10 +42,8 @@
 	},
 /area/dockred/caves/eta/research)
 "ag" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 31;
-	start_charge = 0
+/obj/structure/machinery/power/apc/wires_cut{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/dockred/outside/telecomm/depot)
@@ -272,9 +270,8 @@
 	},
 /area/dockred/caves/lambda/breakroom)
 "aN" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
+/obj/structure/machinery/power/apc/wires_cut{
+	dir = 1
 	},
 /turf/open/floor/plating{
 	dir = 4;
@@ -352,9 +349,8 @@
 	},
 /area/dockred/caves/lambda/xenobiology)
 "aY" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
+/obj/structure/machinery/power/apc/wires_cut{
+	dir = 1
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
@@ -786,6 +782,12 @@
 	icon_state = "whitegreen"
 	},
 /area/dockred/caves/lambda/virology)
+"co" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/area/dockred/outside/port_inside)
 "cp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/flashlight/lantern,
@@ -1287,15 +1289,6 @@
 	icon_state = "bright_clean2"
 	},
 /area/dockred/outside/dorms)
-"eb" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4
-	},
-/turf/open/floor/plating{
-	dir = 5;
-	icon_state = "warnplate"
-	},
-/area/dockred/caves/lambda/xenobiology)
 "ec" = (
 /obj/structure/machinery/floodlight,
 /turf/open/mars_cave{
@@ -1665,7 +1658,8 @@
 "fm" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Bar Backroom"
+	name = "\improper Bar Backroom";
+	welded = 1
 	},
 /turf/open/floor/interior/wood,
 /area/dockred/outside/bar)
@@ -2654,6 +2648,23 @@
 	},
 /turf/open/floor/interior/tatami,
 /area/dockred/outside/bar)
+"ir" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice15";
+	pixel_x = 16;
+	pixel_y = 17
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "is" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
@@ -2990,6 +3001,23 @@
 	icon_state = "darkish"
 	},
 /area/dockred/caves/eta/storage)
+"js" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/dockred/outside/port_inside)
+"ju" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/dockred/outside/port_inside)
 "jv" = (
 /obj/structure/surface/table/gamblingtable,
 /turf/open/floor{
@@ -3161,6 +3189,11 @@
 	icon_state = "wood"
 	},
 /area/dockred/outside/dorms)
+"ka" = (
+/turf/open/shuttle/dropship{
+	icon_state = "floor8"
+	},
+/area/dockred/outside/port_inside)
 "kb" = (
 /turf/open/floor{
 	icon_state = "wood"
@@ -3199,10 +3232,23 @@
 	icon_state = "whitepurplecorner"
 	},
 /area/dockred/caves/lambda/research)
+"kg" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan21"
+	},
+/area/dockred/outside/port_inside)
 "kh" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/dockred/caves/eta/xenobiology)
+"ki" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/closed/wall/solaris/reinforced/hull,
+/area/dockred/outside/port_inside)
 "kj" = (
 /obj/structure/cargo_container/wy/right,
 /turf/open/floor/plating,
@@ -3397,6 +3443,17 @@
 	icon_state = "delivery"
 	},
 /area/dockred/caves/eta/living)
+"kS" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin8"
+	},
+/area/dockred/outside/port_inside)
+"kT" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "kU" = (
 /turf/closed/wall/solaris/rock,
 /area/dockred/outside/cargo)
@@ -3432,6 +3489,14 @@
 	icon_state = "mars_cave_6"
 	},
 /area/dockred/caves/north)
+"lf" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "lg" = (
 /turf/open/floor{
 	dir = 6;
@@ -3598,6 +3663,20 @@
 	icon_state = "wood"
 	},
 /area/dockred/caves/eta/living)
+"lL" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/dockred/outside/port_inside)
 "lM" = (
 /turf/closed/wall/solaris/reinforced,
 /area/dockred/outside/checkpoint_west)
@@ -3657,6 +3736,11 @@
 	icon_state = "mars_cave_8"
 	},
 /area/dockred/outside/port_outside)
+"lX" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/dockred/outside/port_inside)
 "lY" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_4"
@@ -3766,6 +3850,13 @@
 	icon_state = "darkgreen2"
 	},
 /area/dockred/caves/lambda/virology)
+"mp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "mq" = (
 /obj/effect/spawner/random/tool,
 /obj/effect/decal/cleanable/dirt,
@@ -3897,6 +3988,15 @@
 	icon_state = "wood"
 	},
 /area/dockred/caves/eta/living)
+"mJ" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	layer = 2.9
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/dockred/outside/port_inside)
 "mK" = (
 /turf/open/floor{
 	dir = 8;
@@ -4213,6 +4313,11 @@
 	icon_state = "freezerfloor"
 	},
 /area/dockred/caves/lambda/xenobiology)
+"nJ" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin7"
+	},
+/area/dockred/outside/port_inside)
 "nK" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -4267,6 +4372,13 @@
 	icon_state = "mars_cave_17"
 	},
 /area/dockred/outside/port_outside)
+"nW" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/syndicate,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "nX" = (
 /obj/structure/powerloader_wreckage,
 /turf/open/floor{
@@ -4383,6 +4495,12 @@
 	icon_state = "asteroidfloor"
 	},
 /area/dockred/outside/checkpoint_south)
+"or" = (
+/obj/item/stack/rods/plasteel,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "os" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -4462,10 +4580,10 @@
 	},
 /area/dockred/caves/eta/living)
 "oC" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Dock 2"
+/obj/structure/bed/chair/dropship/passenger,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
-/turf/open/floor/plating,
 /area/dockred/outside/port_inside)
 "oD" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -4499,7 +4617,7 @@
 	dir = 4;
 	pixel_y = 9
 	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
+/obj/structure/machinery/computer/secure_data{
 	dir = 4;
 	pixel_y = -4
 	},
@@ -4514,6 +4632,17 @@
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
+/area/dockred/outside/port_inside)
+"oI" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice5";
+	pixel_x = 16;
+	pixel_y = 17
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/floor/plating,
 /area/dockred/outside/port_inside)
 "oJ" = (
 /turf/open/floor/plating,
@@ -4605,6 +4734,11 @@
 	icon_state = "asteroidfloor"
 	},
 /area/dockred/caves/north)
+"oY" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan9"
+	},
+/area/dockred/outside/port_inside)
 "oZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -4735,6 +4869,15 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning"
+	},
+/area/dockred/outside/port_inside)
+"px" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	locked = 1
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/dockred/outside/port_inside)
 "py" = (
@@ -4908,6 +5051,37 @@
 	icon_state = "darkblue2"
 	},
 /area/dockred/caves/eta/storage)
+"qb" = (
+/obj/item/stack/rods/plasteel,
+/obj/item/stack/rods/plasteel{
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = 5;
+	pixel_y = -16
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = -20;
+	pixel_y = 18
+	},
+/obj/structure/prop/invuln/pipe_water{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/structure/prop/invuln/pipe_water{
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/obj/structure/prop/invuln/pipe_water,
+/obj/structure/prop/invuln/lattice_prop{
+	alpha = 50;
+	pixel_y = 10
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin4"
+	},
+/area/dockred/outside/port_inside)
 "qc" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -5023,6 +5197,12 @@
 	icon_state = "asteroidfloor"
 	},
 /area/dockred/caves/south)
+"qu" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_3";
+	opacity = 0
+	},
+/area/dockred/outside/port_inside)
 "qv" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -5088,6 +5268,10 @@
 	icon_state = "bcircuitoff"
 	},
 /area/dockred/caves/lambda/research)
+"qC" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "qD" = (
 /obj/item/hardpoint/locomotion/van_wheels,
 /turf/open/floor/plating,
@@ -5107,6 +5291,14 @@
 	icon_state = "darkredcorners2"
 	},
 /area/dockred/caves/eta/xenobiology)
+"qG" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/dockred/outside/port_inside)
 "qI" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
@@ -5338,6 +5530,11 @@
 	icon_state = "asteroidwarning"
 	},
 /area/dockred/outside/port_inside)
+"rv" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan1"
+	},
+/area/dockred/outside/port_inside)
 "rw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -5362,6 +5559,11 @@
 	icon_state = "mars_cave_2"
 	},
 /area/dockred/outside/port_outside)
+"rz" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan25"
+	},
+/area/dockred/outside/port_inside)
 "rA" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
@@ -5555,6 +5757,11 @@
 	icon_state = "dark"
 	},
 /area/dockred/caves/eta/storage)
+"sh" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan8"
+	},
+/area/dockred/outside/port_inside)
 "si" = (
 /obj/effect/glowshroom,
 /turf/open/mars_cave,
@@ -5624,6 +5831,19 @@
 	icon_state = "greencorner"
 	},
 /area/dockred/outside/dorms)
+"ss" = (
+/obj/item/weapon/gun/pistol/m1911/socom{
+	pixel_x = 15;
+	pixel_y = 15
+	},
+/obj/item/storage/secure/briefcase{
+	pixel_x = -9;
+	pixel_y = -15
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/dockred/outside/port_inside)
 "st" = (
 /turf/open/floor{
 	dir = 8;
@@ -5663,6 +5883,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
 	},
 /turf/open/floor{
 	dir = 8;
@@ -5862,6 +6087,11 @@
 	dir = 8;
 	icon_state = "darkblue2"
 	},
+/area/dockred/outside/port_inside)
+"tq" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
 /area/dockred/outside/port_inside)
 "tr" = (
 /obj/structure/machinery/biogenerator,
@@ -6274,6 +6504,14 @@
 	icon_state = "whitepurple"
 	},
 /area/dockred/caves/lambda/xenobiology)
+"uD" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "uE" = (
 /obj/structure/machinery/vending/sovietsoda{
 	icon_state = "sovietsoda-broken";
@@ -6300,6 +6538,14 @@
 	icon_state = "whitegreen"
 	},
 /area/dockred/caves/lambda/xenobiology)
+"uI" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice5";
+	pixel_x = 16;
+	pixel_y = 17
+	},
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "uK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -6367,6 +6613,11 @@
 	icon_state = "whitepurple"
 	},
 /area/dockred/caves/lambda/research)
+"uZ" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin6"
+	},
+/area/dockred/outside/port_inside)
 "vb" = (
 /turf/open/floor/plating{
 	dir = 8;
@@ -6668,6 +6919,24 @@
 	icon_state = "mars_dirt_6"
 	},
 /area/dockred/outside/port_outside)
+"vU" = (
+/obj/structure/ice/thin/indestructible,
+/obj/structure/prop/ice_colony/dense/planter_box,
+/obj/structure/prop/invuln{
+	desc = "He knows something that you don't.";
+	dir = 4;
+	icon = 'icons/mob/xenos/larva.dmi';
+	icon_state = "Larva Sleeping";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/dockred/outside/port_inside)
 "vV" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -6745,6 +7014,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/dockred/outside/cargo)
+"wi" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = 16;
+	pixel_y = 17
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/structure/prop/structure_lattice,
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "wj" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -6921,6 +7203,12 @@
 	icon_state = "darkpurplecorners2"
 	},
 /area/dockred/caves/lambda/breakroom)
+"wN" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "wO" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
@@ -6970,7 +7258,7 @@
 	},
 /area/dockred/caves/lambda/research)
 "wX" = (
-/obj/structure/machinery/power/apc{
+/obj/structure/machinery/power/apc/wires_cut{
 	dir = 4
 	},
 /turf/open/floor/plating{
@@ -7088,6 +7376,12 @@
 	icon_state = "platingdmg3"
 	},
 /area/dockred/outside/checkpoint_south)
+"xr" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0
+	},
+/area/dockred/outside/port_inside)
 "xs" = (
 /obj/structure/machinery/computer/cameras,
 /turf/open/floor{
@@ -7150,6 +7444,21 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/wood,
 /area/dockred/caves/lambda/breakroom)
+"xC" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/sentencing{
+	dir = 4;
+	pixel_y = 15
+	},
+/obj/structure/machinery/computer/station_alert{
+	dir = 4;
+	pixel_y = -3
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/dockred/outside/port_inside)
 "xF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -7482,6 +7791,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/dockred/outside/dorms)
+"yy" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_leftengine"
+	},
+/area/dockred/outside/port_inside)
 "yz" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -7637,6 +7951,11 @@
 	icon_state = "darkgreencorners2"
 	},
 /area/dockred/caves/eta/research)
+"za" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan27"
+	},
+/area/dockred/outside/port_inside)
 "zb" = (
 /turf/open/floor{
 	icon_state = "purplecorner"
@@ -7751,6 +8070,17 @@
 	},
 /turf/open/floor/plating,
 /area/dockred/caves/eta/storage)
+"zu" = (
+/obj/effect/landmark/corpsespawner/wy/manager,
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_4_1";
+	pixel_x = -12;
+	pixel_y = -16
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/dockred/outside/port_inside)
 "zv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -7759,6 +8089,11 @@
 	icon_state = "darkblue2"
 	},
 /area/dockred/caves/eta/storage)
+"zw" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan2"
+	},
+/area/dockred/outside/port_inside)
 "zx" = (
 /obj/item/stool,
 /turf/open/floor{
@@ -7824,6 +8159,11 @@
 	dir = 8
 	},
 /obj/item/stack/rods,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning"
@@ -8020,6 +8360,14 @@
 	icon_state = "asteroidwarning"
 	},
 /area/dockred/outside/checkpoint_south)
+"Ai" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "Aj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/greengrid,
@@ -8263,6 +8611,11 @@
 	icon_state = "green"
 	},
 /area/dockred/outside/dorms)
+"AX" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan22"
+	},
+/area/dockred/outside/port_inside)
 "AZ" = (
 /obj/structure/machinery/photocopier,
 /turf/open/floor{
@@ -8668,6 +9021,14 @@
 "Cp" = (
 /turf/closed/wall/solaris/reinforced,
 /area/dockred/caves/eta/storage)
+"Cr" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "Cs" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	dir = 1;
@@ -8893,6 +9254,17 @@
 	icon_state = "darkgreencorners2"
 	},
 /area/dockred/caves/lambda/virology)
+"Dg" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/dockred/outside/port_inside)
 "Dh" = (
 /obj/structure/machinery/light,
 /obj/item/storage/fancy/vials/random,
@@ -9004,7 +9376,7 @@
 /area/dockred/outside/bar)
 "DA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/bible/hefa,
+/obj/item/storage/bible,
 /turf/open/floor/plating,
 /area/dockred/outside/port_inside)
 "DB" = (
@@ -9056,6 +9428,18 @@
 	icon_state = "asteroidwarning"
 	},
 /area/dockred/outside/port_outside)
+"DK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice7";
+	pixel_x = 16;
+	pixel_y = 17
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "DL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor{
@@ -9380,6 +9764,14 @@
 	icon_state = "wood"
 	},
 /area/dockred/caves/eta/living)
+"EO" = (
+/obj/structure/prop/invuln/rope{
+	pixel_y = 7
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_3"
+	},
+/area/dockred/outside/port_inside)
 "EP" = (
 /obj/structure/bed/chair{
 	buckling_y = 5;
@@ -9691,6 +10083,12 @@
 /obj/structure/prop/server_equipment/broken,
 /turf/open/floor/greengrid,
 /area/dockred/caves/lambda/research)
+"FV" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "FW" = (
 /obj/structure/barricade/deployable{
 	dir = 1
@@ -9973,7 +10371,7 @@
 	},
 /area/dockred/outside/port_outside)
 "GL" = (
-/obj/structure/machinery/power/apc{
+/obj/structure/machinery/power/apc/fully_broken{
 	dir = 8
 	},
 /turf/open/floor{
@@ -10167,6 +10565,12 @@
 	icon_state = "darkyellow2"
 	},
 /area/dockred/caves/eta/research)
+"Hr" = (
+/obj/effect/landmark/corpsespawner/pmc/burst,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/dockred/outside/port_inside)
 "Hs" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -10212,6 +10616,14 @@
 	icon_state = "mars_cave_2"
 	},
 /area/dockred/caves)
+"Hz" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "green"
+	},
+/area/dockred/outside/dorms)
 "HB" = (
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor{
@@ -11181,6 +11593,17 @@
 	icon_state = "white"
 	},
 /area/dockred/caves/lambda/xenobiology)
+"KD" = (
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	dir = 1;
+	name = "\improper Flight Control";
+	welded = 1
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/dockred/outside/port_inside)
 "KF" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
@@ -11199,6 +11622,13 @@
 "KL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = 16;
+	pixel_y = -15
+	},
+/obj/structure/prop/structure_lattice,
+/obj/structure/prop/ice_colony/ground_wire,
 /turf/open/floor{
 	icon_state = "asteroidwarning"
 	},
@@ -11294,13 +11724,17 @@
 	},
 /area/dockred/outside/port_inside)
 "KZ" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = 16;
+	pixel_y = 17
 	},
-/turf/open/floor/prison{
-	icon_state = "green"
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
 	},
-/area/dockred/outside/dorms)
+/area/dockred/outside/port_inside)
 "Lc" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -11311,6 +11745,11 @@
 	icon_state = "green"
 	},
 /area/dockred/outside/dorms)
+"Ld" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan3"
+	},
+/area/dockred/outside/port_inside)
 "Le" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -11355,6 +11794,17 @@
 	icon_state = "podhatchfloor"
 	},
 /area/dockred/caves/eta/storage)
+"Lm" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice9";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "Ln" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -11416,6 +11866,9 @@
 	icon_state = "darkred2"
 	},
 /area/dockred/caves/eta/research)
+"Lx" = (
+/turf/closed/shuttle/ert,
+/area/dockred/outside/port_inside)
 "Ly" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light{
@@ -11746,8 +12199,9 @@
 	},
 /area/dockred/caves/lambda/breakroom)
 "Mt" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	icon_state = "pdoor0"
 	},
 /turf/open/floor/plating{
 	dir = 6;
@@ -11819,9 +12273,16 @@
 	},
 /area/dockred/caves/eta/research)
 "MG" = (
-/obj/structure/machinery/camera/autoname/lz_camera,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/obj/structure/machinery/landinglight/ds2,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = 16;
+	pixel_y = 17
+	},
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
 /area/dockred/outside/port_inside)
 "MH" = (
 /obj/structure/bed/chair/wood/normal{
@@ -11900,6 +12361,14 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
+	},
+/area/dockred/outside/port_inside)
+"MV" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/dockred/outside/port_inside)
 "MW" = (
@@ -12201,6 +12670,12 @@
 	icon_state = "mars_cave_7"
 	},
 /area/dockred/caves/north)
+"NV" = (
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/dockred/outside/port_inside)
 "NW" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -12319,6 +12794,11 @@
 	icon_state = "wood"
 	},
 /area/dockred/outside/dorms)
+"On" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "Op" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -12466,6 +12946,10 @@
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
+/area/dockred/outside/port_inside)
+"OP" = (
+/obj/effect/landmark/corpsespawner/wygoon,
+/turf/open/floor/plating,
 /area/dockred/outside/port_inside)
 "OQ" = (
 /obj/structure/cargo_container/hd/right,
@@ -12675,7 +13159,8 @@
 /area/dockred/caves/south)
 "PB" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Bar Backroom"
+	name = "\improper Bar Backroom";
+	welded = 1
 	},
 /turf/open/floor/interior/wood,
 /area/dockred/outside/bar)
@@ -13132,6 +13617,16 @@
 	icon_state = "purple"
 	},
 /area/dockred/caves/lambda/research)
+"QS" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "QT" = (
 /turf/open/floor{
 	icon_state = "grimy"
@@ -13238,6 +13733,11 @@
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/dockred/outside/bar)
+"Rj" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/dockred/outside/port_inside)
 "Rk" = (
 /obj/structure/largecrate/supply/supplies/metal,
 /obj/structure/largecrate/supply/supplies/mre{
@@ -13776,6 +14276,10 @@
 	icon_state = "freezerfloor"
 	},
 /area/dockred/caves/eta/research)
+"Te" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "Tf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -13784,6 +14288,10 @@
 	},
 /area/dockred/outside/dorms)
 "Tg" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	icon_state = "pdoor0"
+	},
 /turf/open/floor/plating{
 	dir = 5;
 	icon_state = "warnplate"
@@ -14143,6 +14651,10 @@
 	name = "Gates";
 	pixel_y = 12
 	},
+/obj/structure/prop/ice_colony/hula_girl{
+	pixel_x = 10;
+	pixel_y = 11
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkblue2"
@@ -14257,6 +14769,14 @@
 /obj/structure/machinery/smartfridge/chemistry,
 /turf/open/floor/plating,
 /area/dockred/caves/lambda/xenobiology)
+"Uz" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	locked = 1
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/dockred/outside/port_inside)
 "UA" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Lab Maintenance"
@@ -14278,6 +14798,14 @@
 	icon_state = "warnplate"
 	},
 /area/dockred/outside/port_outside)
+"UD" = (
+/obj/structure/prop/invuln/rope{
+	pixel_y = -1
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2"
+	},
+/area/dockred/outside/port_inside)
 "UE" = (
 /turf/open/floor{
 	icon_state = "dark"
@@ -14402,6 +14930,15 @@
 	},
 /turf/open/floor/wood,
 /area/dockred/caves/lambda/breakroom)
+"Vc" = (
+/obj/structure/machinery/computer/shuttle{
+	icon_state = "overwatchb";
+	pixel_y = 21
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/dockred/outside/port_inside)
 "Vd" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -14616,6 +15153,12 @@
 	icon_state = "mars_cave_18"
 	},
 /area/dockred/caves/lambda/xenobiology)
+"VD" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/shuttle/dropship{
+	icon_state = "floor8"
+	},
+/area/dockred/outside/port_inside)
 "VE" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -4;
@@ -14872,11 +15415,11 @@
 /turf/closed/wall/solaris/reinforced,
 /area/dockred/caves/eta/living)
 "Ws" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/structure/machinery/power/apc/wires_cut{
+	dir = 1
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -15188,6 +15731,11 @@
 /obj/item/stack/sheet/metal{
 	pixel_y = 13
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning"
@@ -15198,6 +15746,10 @@
 	icon_state = "mars_dirt_3"
 	},
 /area/dockred/outside/cargo)
+"Xl" = (
+/obj/structure/prop/dam/crane/damaged,
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "Xm" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/pistol/m1911,
@@ -15247,6 +15799,11 @@
 	icon_state = "whitegreen"
 	},
 /area/dockred/caves/lambda/virology)
+"Xt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan23"
+	},
+/area/dockred/outside/port_inside)
 "Xu" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
@@ -15379,6 +15936,9 @@
 	pixel_x = -1;
 	pixel_y = 5
 	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/dockred/outside/checkpoint_west)
 "XQ" = (
@@ -15506,6 +16066,16 @@
 	icon_state = "carpet6-2"
 	},
 /area/dockred/outside/bar)
+"Yj" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = 16;
+	pixel_y = 17
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1"
+	},
+/area/dockred/outside/port_inside)
 "Yl" = (
 /obj/structure/machinery/power/geothermal,
 /turf/open/floor/plating,
@@ -15708,6 +16278,16 @@
 	icon_state = "darkblue2"
 	},
 /area/dockred/outside/port_inside)
+"YT" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning"
+	},
+/area/dockred/outside/port_inside)
 "YU" = (
 /turf/open/floor{
 	dir = 1;
@@ -15829,6 +16409,20 @@
 	icon_state = "bot"
 	},
 /area/dockred/caves/eta/storage)
+"Zn" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/dockred/outside/port_inside)
 "Zo" = (
 /obj/structure/cargo_container/arious/mid,
 /turf/open/floor/plating,
@@ -25835,7 +26429,7 @@ FG
 al
 RP
 yx
-Fr
+Hz
 al
 mf
 Ap
@@ -26381,7 +26975,7 @@ zx
 SU
 mw
 mm
-KZ
+Fr
 al
 al
 al
@@ -27775,7 +28369,7 @@ Bv
 Fs
 Fs
 Fs
-bW
+lL
 Fs
 tN
 Fs
@@ -27957,7 +28551,7 @@ Bv
 Fs
 rJ
 Fs
-YJ
+Zn
 rM
 tE
 hn
@@ -28139,7 +28733,7 @@ Bv
 Fs
 Fs
 VZ
-wV
+Cr
 wV
 wV
 kA
@@ -28321,7 +28915,7 @@ Bv
 hY
 Fs
 Uc
-wV
+Cr
 wV
 CD
 kA
@@ -28503,7 +29097,7 @@ Bv
 Fs
 Fs
 by
-wV
+Cr
 wV
 wV
 wV
@@ -28685,7 +29279,7 @@ Bv
 GH
 Fs
 TT
-wV
+Cr
 wV
 wV
 wV
@@ -28867,7 +29461,7 @@ Bv
 Fs
 Ue
 vW
-wV
+Cr
 wV
 wV
 wV
@@ -29049,7 +29643,7 @@ Bv
 Iz
 zY
 Uc
-wV
+Cr
 wV
 wV
 wV
@@ -29231,7 +29825,7 @@ Bv
 Fs
 tN
 by
-wV
+Cr
 wV
 wV
 wV
@@ -29413,7 +30007,7 @@ Bv
 xN
 Fs
 sC
-wV
+Cr
 wV
 wV
 wV
@@ -29595,7 +30189,7 @@ Bv
 Rf
 Fs
 vW
-wV
+Cr
 wV
 wV
 wV
@@ -29777,7 +30371,7 @@ Mb
 sH
 IK
 WY
-wV
+Cr
 wV
 CD
 wV
@@ -29959,7 +30553,7 @@ Mb
 Fs
 Uh
 QY
-wV
+Cr
 wV
 wV
 wV
@@ -30323,7 +30917,7 @@ zn
 KP
 LL
 nl
-LL
+js
 LL
 LL
 LL
@@ -30335,7 +30929,7 @@ LL
 lE
 WG
 LL
-LL
+qG
 LL
 Op
 LL
@@ -30687,6 +31281,7 @@ Mb
 xe
 Fs
 uT
+Cr
 wV
 wV
 wV
@@ -30697,8 +31292,7 @@ wV
 wV
 wV
 wV
-wV
-CD
+Te
 wV
 wV
 wV
@@ -30869,16 +31463,18 @@ Mb
 xe
 Fs
 bZ
-wV
-wV
-CD
-wV
+Cr
 wV
 wV
 wV
 wV
 wV
 wV
+tq
+wV
+wV
+wV
+qC
 wV
 wV
 wV
@@ -30886,8 +31482,6 @@ wV
 wV
 wV
 wV
-wV
-CD
 wV
 wV
 EG
@@ -31051,23 +31645,23 @@ yu
 Ad
 jb
 Qv
+Cr
 wV
 wV
 wV
 wV
-kA
-kA
-kA
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
+lX
+Lx
+Uz
+Lx
+Lx
+Lx
+Uz
+Lx
+yy
+qu
+xr
+co
 wV
 wV
 wV
@@ -31233,23 +31827,23 @@ Bv
 hY
 Fs
 es
+Cr
 wV
 wV
+OP
 wV
-wV
-kA
-kA
-kA
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
+kg
+nW
+kT
+MV
+MV
+MV
+or
+On
+sh
+Lx
+Lx
+rv
 wV
 wV
 wV
@@ -31260,7 +31854,7 @@ Kk
 Bv
 NO
 YR
-oG
+xC
 iF
 Bv
 MQ
@@ -31415,23 +32009,23 @@ Bv
 Fs
 Fs
 uT
+Cr
 wV
 wV
 wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
+lX
+AX
+uZ
+ju
+zu
+ss
+ju
+NV
+qb
+uD
+On
+On
+px
 wV
 wV
 kA
@@ -31597,23 +32191,23 @@ Og
 oS
 Fs
 Wt
+Cr
 wV
 wV
 wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
+za
+Vc
+ka
 oC
-wV
-wV
-wV
-wV
-wV
-wV
+oC
+oC
+oC
+oC
+VD
+vU
+mJ
+ju
+zw
 wV
 wV
 wV
@@ -31621,7 +32215,7 @@ wV
 EG
 Fs
 Fs
-Og
+KD
 ua
 hb
 UM
@@ -31776,26 +32370,26 @@ LS
 Wl
 Xp
 Bv
-Fs
-Fs
-Qv
-kA
-kA
+KZ
+KZ
+MG
+ir
+DK
+oI
 wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
+rz
+Xt
+nJ
+Hr
+ju
+ju
+ju
+ju
+kS
+lf
+On
+kT
+px
 kA
 kA
 wV
@@ -31961,23 +32555,23 @@ Bv
 rt
 Fs
 KL
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
+EO
+UD
+Yj
+wi
+uI
+kg
+QS
+On
+Ai
+Ai
+Ai
+On
+FV
+oY
+Rj
+Rj
+Ld
 wV
 wV
 wV
@@ -32143,21 +32737,21 @@ Bv
 fl
 Fs
 gm
-wV
-wV
-kA
-kA
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
+wN
+Lm
+mp
 kA
 wV
-wV
+rz
+Rj
+Uz
+Rj
+Rj
+Rj
+Uz
+Rj
+Ld
+qC
 wV
 wV
 wV
@@ -32325,25 +32919,25 @@ Bv
 It
 Fs
 fV
+Xl
 wV
-wV
-MG
 kA
+kA
+Cr
+wV
+wV
+OP
+wV
+tq
+wV
+wV
+Te
 wV
 wV
 wV
 wV
 wV
 wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-wV
-CD
 wV
 wV
 EG
@@ -32511,6 +33105,7 @@ wV
 wV
 wV
 wV
+Cr
 wV
 wV
 wV
@@ -32518,7 +33113,6 @@ wV
 wV
 wV
 wV
-CD
 wV
 wV
 wV
@@ -32696,7 +33290,7 @@ LY
 sB
 ov
 LG
-BE
+YT
 ww
 ov
 LG
@@ -32875,7 +33469,7 @@ dQ
 Fs
 Fs
 Fs
-Fs
+Dg
 Fs
 Fs
 oS
@@ -33057,7 +33651,7 @@ mW
 mW
 mW
 mW
-mW
+ki
 mW
 mW
 mW
@@ -40276,7 +40870,7 @@ BA
 Tg
 Mt
 BA
-eb
+Tg
 Mt
 BA
 BA

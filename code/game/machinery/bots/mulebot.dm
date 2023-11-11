@@ -916,11 +916,11 @@
 	post_signal_multiple(control_freq, kv)
 
 /obj/structure/machinery/bot/mulebot/emp_act(severity)
+	. = ..()
 	if (cell)
 		cell.emp_act(severity)
 	if(load)
 		load.emp_act(severity)
-	..()
 
 
 /obj/structure/machinery/bot/mulebot/explode()

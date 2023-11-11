@@ -108,3 +108,67 @@
   - admin: Added better logging for orbital bombardment.
   realforest2001:
   - rscadd: Added a big line to Nightmare survivor spawns that indicates hostility.
+2023-11-08:
+  BeagleGaming1:
+  - rscadd: Added CBRN ERT with new CBRN MOPP equipment. (Sprites by DrMacCool and
+      Esselnek, names and descriptions by TopHatPenguin and Kaga)
+  - rscadd: ERT Squads (Marine Raider and new CBRN) get assigned to their squad even
+      if spawned as an ERT, and do not automatically unlock it for overwatch
+  - balance: Tool Webbing can now only hold tools, instead of just being a better
+      webbing
+  - spellcheck: Corrected spelling of "Intercepted Transmission" for ERTs
+  - bugfix: USCM faction squads that are not default marine squads should no longer
+      cause a crew manifest runtime
+  Birdtalon:
+  - rscadd: Xeno tacmap icons for hive core and clusters.
+  Drathek:
+  - bugfix: Fix the ColMarTechAutomated Munition Vendor in req not vending to the
+      table.
+  - bugfix: Fix the first use of a USCM equipment preset (such as cryo marines) not
+      properly loading rank and other values
+  QuickLode:
+  - rscadd: adds another Colony Synthetic variant, changes up some existing ones(trucker,CMB)
+  - bugfix: fixes a small problem with WY-Colony Synthetic access(thx forest), adds
+      WY subtype of Synthetics for admin building/faxes
+  - bugfix: fixes problems with organic spawning ferret industries Trucker Synthetic
+  Releasethesea:
+  - rscadd: Makes it so cigars fit in helmets.
+  Skye.:
+  - maptweak: Tweaks a Cabinet in the SW mines of Solaris Ridge
+  - bugfix: On account of it being propped up on the floor like a cardboard cutout.
+  fira:
+  - bugfix: Spawned bottles now use all 4 of their sprites as intended rather than
+      always the same.
+  zzzmike:
+  - spellcheck: fixed a typo
+2023-11-09:
+  fira:
+  - bugfix: Fixed incorrect signals causing malfunctions in tgui_say for ASAY and
+      MentorSay channel hotkeys.
+  - admin: VV "Update Transform" will now properly compound with other sources of
+      transform (eg. lying down)
+  - bugfix: Density effects should now properly update when stacked and unstacked.
+  - rscadd: You can now use package wrap to change standard crates visuals.
+  - rscadd: You can now label crate with package wrap, which will also be shown during
+      overwatch supply drop alert.
+  - mapadd: Added more packaging wrap to Requisitions.
+2023-11-10:
+  Drathek:
+  - bugfix: Fixed fax template images in CDN mode
+  - bugfix: Fixed imaginary friend merge ability preventing hearing if ghost ears
+      are set to only nearby.
+  - bugfix: Fixed imaginary friend hide ability not updating its icons.
+  MorrowWolf:
+  - bugfix: Fixed Pumpkins appearing past season.
+  MrDas:
+  - bugfix: You can no longer see through solid rear drop ship doors.
+  - code_imp: Moved filler turf logic from almayer airlocks to its parent door.
+  SpartanBobby:
+  - maptweak: fixes conflicting tiles on USS Almayer squad bunks
+  - maptweak: updates multiple bedrooms and closet area detailing
+2023-11-11:
+  QuickLode:
+  - rscadd: SUPERLIGHT armor category.
+  - balance: M4 Synthetic Armor slows by 10% to justify having 1 extra storage slot.
+  - spellcheck: Clarifies M4 Synthetic Armor description that it does not have any
+      armor whatsoever.

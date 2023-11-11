@@ -114,6 +114,12 @@
 	if (LIA && istype(LIA))
 		LIA.invisibility_off()
 
+/datum/behavior_delegate/lurker_base/proc/decloak_handler(mob/source)
+	SIGNAL_HANDLER
+	var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	if(istype(LIA))
+		LIA.invisibility_off()
+
 // What to do when we go invisible
 /datum/behavior_delegate/lurker_base/proc/on_invisibility()
 	var/datum/action/xeno_action/activable/pounce/lurker/LPA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/lurker)
@@ -121,6 +127,7 @@
 		LPA.knockdown = TRUE // pounce knocks down
 		LPA.freeze_self = TRUE
 	ADD_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
+	RegisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak_handler))
 	bound_xeno.stealth = TRUE
 	can_go_invisible = FALSE
 	invis_start_time = world.time
@@ -132,6 +139,7 @@
 		LPA.freeze_self = FALSE
 	bound_xeno.stealth = FALSE
 	REMOVE_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
+	UnregisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
 	// SLIGHTLY hacky because we need to maintain lots of other state on the lurker
 	// whenever invisibility is on/off CD and when it's active.

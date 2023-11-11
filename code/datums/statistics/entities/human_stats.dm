@@ -5,10 +5,17 @@
 	var/total_shots = 0
 	var/total_shots_hit = 0
 	var/total_screams = 0
-	var/datum/entity/weapon_stats/top_weapon = null // reference to /datum/entity/weapon_stats (like tac-shotty)
-	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
-	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
-	var/list/datum/entity/statistic/medal/medal_list = list() // list of all medals earned
+	var/list/weapon_stats_list = list() //! indexed list of types /datum/entity/weapon_stats
+	var/list/job_stats_list = list() //! indexed list of types /datum/entity/job_stats
+	var/datum/entity/weapon_stats/top_weapon //! reference to /datum/entity/weapon_stats (like tac-shotty)
+	var/list/datum/entity/statistic/medal/medal_list = list() //! list of all medals earned
+
+/datum/entity/player_stats/human/Destroy(force)
+	. = ..()
+	QDEL_LIST_ASSOC_VAL(weapon_stats_list)
+	QDEL_LIST_ASSOC_VAL(job_stats_list)
+	QDEL_NULL(top_weapon)
+	QDEL_LIST(medal_list)
 
 /datum/entity/player_stats/human/get_playtime(type)
 	if(!type)

@@ -38,3 +38,5 @@
 #define COMSIG_ITEM_ZOOM "item_zoom"
 /// from /obj/item/proc/unzoom() : (mob/user)
 #define COMSIG_ITEM_UNZOOM "item_unzoom"
+//from /datum/authority/branch/role/proc/equip_role()
+#define COMSIG_POST_SPAWN_UPDATE "post_spawn_update"

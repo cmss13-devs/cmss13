@@ -51,9 +51,8 @@
 	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
 	var/has_mount = FALSE // Indicates whether the M56D will come with its folding mount already attached
 
-/obj/item/device/m56d_gun/New()
-	..()
-
+/obj/item/device/m56d_gun/Initialize(mapload, ...)
+	. = ..()
 	update_icon()
 
 /obj/item/device/m56d_gun/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
@@ -520,6 +519,7 @@
 	operator = null
 	QDEL_NULL(in_chamber)
 	STOP_PROCESSING(SSobj, src)
+	ammo = null
 	return ..()
 
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.

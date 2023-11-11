@@ -143,7 +143,6 @@
 		spicy_gas = new /datum/effect_system/smoke_spread/xeno_weaken
 	else
 		CRASH("Globber has unknown ammo [xeno.ammo]! Oh no!")
-
 	var/datum/cause_data/cause_data = create_cause_data("acid shroud gas", owner)
 	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6, new_cause_data = cause_data)
 	spicy_gas.start()
@@ -159,7 +158,7 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/onclick/shift_spits/boiler/use_ability(atom/A)
+/datum/action/xeno_action/onclick/shift_spits/boiler/use_ability(atom/affected_atom)
 	. = ..()
 	apply_cooldown()
 

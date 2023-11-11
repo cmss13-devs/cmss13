@@ -411,6 +411,7 @@
 		/obj/item/device/camera = 5,
 		/obj/item/device/camera_film = 10,
 		/obj/item/notepad = 5,
+		/obj/item/device/toner = 5,
 	)
 
 	contraband = list(/obj/item/toy/sword = 2)
@@ -431,5 +432,6 @@
 		/obj/item/toy/deck = 20,
 		/obj/item/toy/deck/uno = 15,
 		/obj/item/device/camera = 30,
+		/obj/item/device/toner = 15,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL

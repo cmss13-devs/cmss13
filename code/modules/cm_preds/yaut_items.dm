@@ -430,12 +430,12 @@
 
 	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Display fancy animation for you and the person you might be pulling (Legacy)
-		REMOVE_TRAIT_ALLSOURCES(user, TRAIT_CLOAKED)
+		SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
 		var/mob/living/M = user.pulling
 		if(istype(M)) // Pulled person
-			REMOVE_TRAIT_ALLSOURCES(M, TRAIT_CLOAKED)
+			SEND_SIGNAL(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 			M.visible_message(SPAN_WARNING("[icon2html(M, viewers(src))][M] disappears!"))
 			animation_teleport_quick_out(M)
 

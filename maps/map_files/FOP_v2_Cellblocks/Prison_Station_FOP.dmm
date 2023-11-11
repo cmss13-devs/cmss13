@@ -15559,7 +15559,7 @@
 /area/prison/command/secretary_office)
 "aRX" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/sword/katana/replica,
 /turf/open/floor/wood,
 /area/prison/command/office)
 "aRY" = (

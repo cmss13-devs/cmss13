@@ -425,11 +425,11 @@
 	else return
 
 /obj/item/device/radio/emp_act(severity)
+	. = ..()
 	broadcasting = FALSE
 	listening = FALSE
 	for (var/ch_name in channels)
 		channels[ch_name] = 0
-	..()
 
 ///////////////////////////////
 //////////Borg Radios//////////

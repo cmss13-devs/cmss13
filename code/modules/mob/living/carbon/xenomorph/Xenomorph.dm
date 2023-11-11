@@ -280,7 +280,6 @@
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
 	var/ripping_limb = FALSE
-	var/steelcrest = FALSE
 	/// The world.time at which we will regurgitate our currently-vored victim
 	var/devour_timer = 0
 	/// For drones/hivelords. Extends the maximum build range they have

@@ -1,11 +1,13 @@
 GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 
+#define LATEST_SELECTION -1
+
 /datum/tacmap_admin_panel
 	var/name = "Tacmap Panel"
 	/// The index picked last for USCM (zero indexed), -1 will try to select latest if it exists
-	var/uscm_selection = -1
+	var/uscm_selection = LATEST_SELECTION
 	/// The index picked last for Xenos (zero indexed), -1 will try to select latest if it exists
-	var/xeno_selection = -1
+	var/xeno_selection = LATEST_SELECTION
 	/// A url that will point to the wiki map for the current map as a fall back image
 	var/static/wiki_map_fallback
 	/// The last time the map selection was changed - used as a key to trick react into updating the map
@@ -63,7 +65,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	data["xeno_names"] = xeno_names
 	data["xeno_times"] = xeno_times
 
-	if(uscm_selection == -1)
+	if(uscm_selection == LATEST_SELECTION)
 		data["uscm_map"] = null
 		data["uscm_svg"] = null
 	else
@@ -72,7 +74,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		data["uscm_map"] = selected_flat.flat_tacmap
 		data["uscm_svg"] = selected_svg.svg_data
 
-	if(xeno_selection == -1)
+	if(xeno_selection == LATEST_SELECTION)
 		data["xeno_map"] = null
 		data["xeno_svg"] = null
 	else
@@ -103,11 +105,11 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 			var/is_uscm = params["uscm"]
 			var/datum/flattened_tacmap/selected_flat
 			if(is_uscm)
-				if(uscm_selection == -1)
+				if(uscm_selection == LATEST_SELECTION)
 					return TRUE
 				selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
 			else
-				if(xeno_selection == -1)
+				if(xeno_selection == LATEST_SELECTION)
 					return TRUE
 				selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
 			SSassets.transport.send_assets(client_user, selected_flat.asset_key)
@@ -127,11 +129,11 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 			var/is_uscm = params["uscm"]
 			var/datum/svg_overlay/selected_svg
 			if(is_uscm)
-				if(uscm_selection == -1)
+				if(uscm_selection == LATEST_SELECTION)
 					return TRUE
 				selected_svg = GLOB.uscm_svg_tacmap_data[uscm_selection + 1]
 			else
-				if(xeno_selection == -1)
+				if(xeno_selection == LATEST_SELECTION)
 					return TRUE
 				selected_svg = GLOB.xeno_svg_tacmap_data[xeno_selection + 1]
 			selected_svg.svg_data = null
@@ -141,5 +143,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 
 /datum/tacmap_admin_panel/ui_close(mob/user)
 	. = ..()
-	uscm_selection = -1
-	xeno_selection = -1
+	uscm_selection = LATEST_SELECTION
+	xeno_selection = LATEST_SELECTION
+
+#undef LATEST_SELECTION

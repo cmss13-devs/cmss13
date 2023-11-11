@@ -198,7 +198,6 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/equipment_update(obj/docking_port/mobile/marine_dropship/dropship)
 	SIGNAL_HANDLER
-	log_debug("equipment update dropship_weapons")
 	var/list/obj/structure/dropship_equipment/weapons = list()
 	for(var/obj/structure/dropship_equipment/weapon/weap as anything in dropship.equipments)
 		weapons.Add(weap)
@@ -700,7 +699,7 @@
 					is_outside = TRUE
 		if(!is_outside && !cavebreaker) //cavebreaker doesn't care
 			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
-			return
+			return FALSE
 		if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
 			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
 			return FALSE
@@ -829,22 +828,22 @@
 	if (!istype(dropship))
 		return
 	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.get_total_duration())
-		to_chat(user, "Not enough time to complete the Fire Mission")
+		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
 		return
 	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
-		to_chat(user, "Has to be in Fly By mode")
+		to_chat(user, SPAN_WARNING("Has to be in Fly By mode"))
 		return
 
 	var/result = firemission_envelope.execute_firemission(firemission_envelope.recorded_loc, offset, direction, fmId)
 	if(result<1)
-		to_chat(user, "Screen beeps with an error: "+ firemission_envelope.mission_error)
+		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 	else
 		update_trace_loc()
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_location(mob/user, new_location)
 	var/result = firemission_envelope.change_target_loc(new_location)
 	if(result<1)
-		to_chat(user, "Screen beeps with an error: "+ firemission_envelope.mission_error)
+		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 	else
 		update_trace_loc()
 
@@ -852,7 +851,7 @@
 /obj/structure/machinery/computer/dropship_weapons/proc/update_direction(mob/user, new_direction)
 	var/result = firemission_envelope.change_direction(new_direction)
 	if(result<1)
-		to_chat(user, "Screen beeps with an error: " + firemission_envelope.mission_error)
+		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 	else
 		update_trace_loc()
 

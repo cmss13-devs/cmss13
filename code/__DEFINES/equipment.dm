@@ -80,8 +80,6 @@
 #define CAN_DIG_SHRAPNEL (1<<11)
 /// whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 #define ANIMATED_SURGICAL_TOOL (1<<12)
-/// The item goes on top of tables, instead of into them with the overlay system
-#define NOTABLEMERGE (1<<13)
 /// Has heat source but isn't 'on fire' and thus can be stored
 #define IGNITING_ITEM (1<<14)
 //==========================================================================================

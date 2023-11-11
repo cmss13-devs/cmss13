@@ -935,7 +935,7 @@
 		if(is_zoomed)
 			zoom_out()
 	if(iscarrier(src))
-		var/mob/living/carbon/xenomorph/carrier/carrier
+		var/mob/living/carbon/xenomorph/carrier/carrier = src
 		carrier.huggers_max = caste.huggers_max
 		carrier.eggs_max = caste.eggs_max
 	need_weeds = mutators.need_weeds

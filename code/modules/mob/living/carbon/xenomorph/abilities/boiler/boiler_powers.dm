@@ -143,6 +143,7 @@
 		spicy_gas = new /datum/effect_system/smoke_spread/xeno_weaken
 	else
 		CRASH("Globber has unknown ammo [xeno.ammo]! Oh no!")
+
 	var/datum/cause_data/cause_data = create_cause_data("acid shroud gas", owner)
 	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6, new_cause_data = cause_data)
 	spicy_gas.start()
@@ -157,30 +158,6 @@
 
 	apply_cooldown()
 	return ..()
-
-/datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()
-	if (!movespeed_buff_applied && !isxeno(owner))
-		return
-
-	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.speed_modifier += speed_buff_amount
-	xeno.recalculate_speed()
-	movespeed_buff_applied = FALSE
-	UnregisterSignal(owner, COMSIG_MOB_MOVE_OR_LOOK)
-
-/datum/action/xeno_action/onclick/dump_acid/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
-	SIGNAL_HANDLER
-
-	if(!actually_moving)
-		return
-
-	var/obj/effect/particle_effect/smoke/xeno_burn/smoke_effect = new(get_turf(mover), 1, create_cause_data("dumped acid gas", mover))
-	smoke_effect.time_to_live = 3
-	smoke_effect.spread_speed = 1000000
-
-/datum/action/xeno_action/onclick/dump_acid/remove_from()
-	remove_speed_buff()
-	..()
 
 /datum/action/xeno_action/onclick/shift_spits/boiler/use_ability(atom/A)
 	. = ..()

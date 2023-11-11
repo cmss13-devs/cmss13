@@ -323,15 +323,16 @@ SPECIAL EGG USED BY EGG CARRIER
 		set_owner(planter)
 
 /obj/effect/alien/egg/carrier_egg/Destroy()
-	. = ..()
 	if(life_timer)
 		deltimer(life_timer)
+	owner = null
+	. = ..()
 
+/// Set the owner of the egg to the planter.
 /obj/effect/alien/egg/carrier_egg/proc/set_owner(mob/living/carbon/xenomorph/carrier/planter)
 	var/datum/behavior_delegate/carrier_eggsac/my_delegate = planter.behavior_delegate
 	my_delegate.eggs_sustained += src
 	owner = planter
-	RegisterSignal(owner, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_owner))
 
 ///Check the last refreshed time and burst the egg if we're over the lifetime of the egg
 /obj/effect/alien/egg/carrier_egg/proc/check_decay()
@@ -346,10 +347,4 @@ SPECIAL EGG USED BY EGG CARRIER
 
 /obj/effect/alien/egg/carrier_egg/Burst(kill, instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled)
 	. = ..()
-	UnregisterSignal(owner, COMSIG_PARENT_QDELETING)
 	owner = null
-
-/obj/effect/alien/egg/carrier_egg/proc/cleanup_owner()
-	SIGNAL_HANDLER
-	owner = null
-

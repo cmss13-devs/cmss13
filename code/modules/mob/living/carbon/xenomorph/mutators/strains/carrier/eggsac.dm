@@ -53,7 +53,8 @@
 	var/sustain_distance = 14
 
 /datum/behavior_delegate/carrier_eggsac/append_to_stat()
-	. = "Eggs sustained: [length(eggs_sustained)] / [egg_sustain_cap]"
+	. = list()
+	. += "Eggs sustained: [length(eggs_sustained)] / [egg_sustain_cap]"
 
 /datum/behavior_delegate/carrier_eggsac/on_life()
 	if(length(eggs_sustained) > egg_sustain_cap)

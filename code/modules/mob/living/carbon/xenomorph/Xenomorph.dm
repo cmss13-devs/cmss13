@@ -345,16 +345,16 @@
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
-	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
-	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
+	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
+	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
 
-	wound_icon_carrier = new(null, src)
-	vis_contents += wound_icon_carrier
+	wound_icon_holder = new(null, src)
+	vis_contents += wound_icon_holder
 
 	if(oldXeno)
 		set_movement_intent(oldXeno.m_intent)
@@ -708,11 +708,11 @@
 
 	built_structures = null
 
-	vis_contents -= wound_icon_carrier
-	QDEL_NULL(wound_icon_carrier)
-	if(backpack_icon_carrier)
-		vis_contents -= backpack_icon_carrier
-		QDEL_NULL(backpack_icon_carrier)
+	vis_contents -= wound_icon_holder
+	QDEL_NULL(wound_icon_holder)
+	if(backpack_icon_holder)
+		vis_contents -= backpack_icon_holder
+		QDEL_NULL(backpack_icon_holder)
 
 	QDEL_NULL(iff_tag)
 

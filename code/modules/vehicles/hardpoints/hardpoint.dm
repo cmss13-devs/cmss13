@@ -125,8 +125,6 @@
 
 	/// Currently selected target to fire at. Set with set_target().
 	var/atom/target
-	/// Current operator (crew) of the hardpoint.
-	var/mob/hp_operator
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -145,7 +143,6 @@
 	QDEL_NULL_LIST(backup_clips)
 	QDEL_NULL(ammo)
 	set_target(null)
-	hp_operator = null
 	return ..()
 
 /obj/item/hardpoint/ex_act(severity)
@@ -504,24 +501,21 @@
 /obj/item/hardpoint/proc/set_auto_firing(auto = FALSE)
 	if(auto_firing != auto)
 		auto_firing = auto
-		if(!auto_firing) //end-of-fire, show changed ammo and clear firer
+		if(!auto_firing) //end-of-fire, show changed ammo
 			display_ammo()
-			hp_operator = null
 
 /// Setter proc for the burst firing flag.
 /obj/item/hardpoint/proc/set_burst_firing(burst = FALSE)
 	if(burst_firing != burst)
 		burst_firing = burst
-		if(!burst_firing) //end-of-fire, show changed ammo and clear firer
+		if(!burst_firing) //end-of-fire, show changed ammo
 			display_ammo()
-			hp_operator = null
 
 /// Clean all firing references.
 /obj/item/hardpoint/proc/reset_fire()
 	shots_fired = 0
 	set_target(null)
 	set_auto_firing(FALSE) //on abnormal exits automatic fire doesn't call set_auto_firing()
-	hp_operator = null //clear 'firer' when autofire exits before first shot
 
 /// Set the target and take care of hard delete.
 /obj/item/hardpoint/proc/set_target(atom/object)
@@ -541,7 +535,9 @@
 /// Print how much ammo is left to chat.
 /obj/item/hardpoint/proc/display_ammo(mob/user)
 	if(!user)
-		user = hp_operator
+		user = owner.get_seat_mob(allowed_seat)
+	if(!user)
+		return
 
 	if(ammo)
 		to_chat(user, SPAN_WARNING("[name] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
@@ -554,7 +550,7 @@
 
 /// Update the target if you dragged your mouse.
 /obj/item/hardpoint/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
-	set_target(get_turf_on_clickcatcher(over_object, hp_operator, params))
+	set_target(get_turf_on_clickcatcher(over_object, source, params))
 
 /// Check if the gun can fire and add it to bucket autofire system if needed, or just fire the gun if not.
 /obj/item/hardpoint/proc/start_fire(datum/source, atom/object, turf/location, control, params)
@@ -569,16 +565,14 @@
 			to_chat(source, SPAN_WARNING("You need to wait [SPAN_HELPFUL(COOLDOWN_SECONDSLEFT(src, fire_cooldown))] seconds before [name] can be used again."))
 		return
 
-	hp_operator = source
 	set_target(get_turf_on_clickcatcher(object, source, params))
 
 	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
 		var/fire_return = try_fire(object, source, params)
-		//end-of-fire, show ammo (if changed) and clear firer
+		//end-of-fire, show ammo (if changed)
 		if(fire_return == AUTOFIRE_CONTINUE)
 			reset_fire()
-			display_ammo()
-		hp_operator = null
+			display_ammo(source)
 	else
 		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
@@ -588,7 +582,7 @@
 	if(!target)
 		target = src.target
 	if(!user)
-		user = hp_operator
+		user = owner.get_seat_mob(allowed_seat)
 	if(!target || !user)
 		return NONE
 

@@ -2,7 +2,7 @@ import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
 import { Box, Divider, Flex, Stack } from '../components';
 import { CasSim } from './CasSim';
-import { MfdPanel, MfdProps, usePanelState } from './MfdPanels/MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MfdPanels/MultifunctionDisplay';
 import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
 import { MapMfdPanel } from './MfdPanels/MapPanel';
@@ -10,6 +10,7 @@ import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
 import { SupportMfdPanel } from './MfdPanels/SupportPanel';
 import { FiremissionMfdPanel } from './MfdPanels/FiremissionPanel';
 import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
+import { mfdState } from './MfdPanels/stateManagers';
 
 export interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -250,10 +251,7 @@ const FiremissionSimulationPanel = (props, context) => {
 };
 
 const FiremissionsSimMfdPanel = (props: MfdProps, context) => {
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -277,10 +275,7 @@ const WeaponsMfdPanel = (props, context) => {
 };
 
 const BaseMfdPanel = (props: MfdProps, context) => {
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
 
   return (
     <MfdPanel
@@ -314,7 +309,7 @@ const BaseMfdPanel = (props: MfdProps, context) => {
 };
 
 const PrimaryPanel = (props: MfdProps, context) => {
-  const [panelState] = usePanelState(props.panelStateId, context);
+  const { panelState } = mfdState(context, props.panelStateId);
   switch (panelState) {
     case 'camera':
       return <CameraMfdPanel {...props} />;

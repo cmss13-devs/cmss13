@@ -1,11 +1,12 @@
-import { MfdProps, MfdPanel, usePanelState } from './MultifunctionDisplay';
+import { MfdProps, MfdPanel } from './MultifunctionDisplay';
 import { ByondUi } from '../../components';
 import { useBackend } from '../../backend';
 import { Box } from '../../components';
+import { mfdState } from './stateManagers';
+import { CameraProps } from './types';
 
 export const CameraMfdPanel = (props: MfdProps, context) => {
-  const { act } = useBackend<CameraProps>(context);
-  const [_, setPanelState] = usePanelState(props.panelStateId, context);
+  const { setPanelState } = mfdState(context, props.panelStateId);
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -15,11 +16,7 @@ export const CameraMfdPanel = (props: MfdProps, context) => {
   );
 };
 
-interface CameraProps {
-  camera_map_ref?: string;
-}
-
-const CameraPanel = (props, context) => {
+const CameraPanel = (_, context) => {
   const { data } = useBackend<CameraProps>(context);
   return (
     <Box className="NavigationMenu">

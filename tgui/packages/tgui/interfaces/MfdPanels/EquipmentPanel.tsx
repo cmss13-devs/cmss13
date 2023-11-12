@@ -1,13 +1,9 @@
 import { useBackend } from '../../backend';
 import { Box } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdProps, MfdPanel, usePanelState } from './MultifunctionDisplay';
-import { useEquipmentState } from './SupportPanel';
-import { useWeaponState } from './WeaponPanel';
-
-interface EquipmentContext {
-  equipment_data: Array<DropshipEquipment>;
-}
+import { MfdProps, MfdPanel } from './MultifunctionDisplay';
+import { mfdState, useEquipmentState, useWeaponState } from './stateManagers';
+import { EquipmentContext } from './types';
 
 const equipment_xs = [140, 160, 320, 340, 180, 300, 240, 240, 240, 140, 340];
 const equipment_ys = [120, 100, 100, 120, 100, 100, 260, 300, 340, 320, 320];
@@ -270,20 +266,11 @@ const ShipOutline = () => {
 
 export const EquipmentMfdPanel = (props: MfdProps, context) => {
   const { data } = useBackend<EquipmentContext>(context);
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
 
-  const [weaponState, setWeaponState] = useWeaponState(
-    props.panelStateId,
-    context
-  );
+  const { setWeaponState } = useWeaponState(context, props.panelStateId);
 
-  const [equipmentState, setEquipmentState] = useEquipmentState(
-    props.panelStateId,
-    context
-  );
+  const { setEquipmentState } = useEquipmentState(context, props.panelStateId);
 
   const weap1 = data.equipment_data.find((x) => x.mount_point === 1);
   const weap2 = data.equipment_data.find((x) => x.mount_point === 2);
@@ -349,7 +336,6 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-        {},
       ]}>
       <EquipmentPanel />
     </MfdPanel>

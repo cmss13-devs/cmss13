@@ -1,22 +1,9 @@
-import { useBackend, useSharedState } from '../../backend';
+import { useBackend } from '../../backend';
 import { Button, Flex } from '../../components';
 import { CrtPanel } from '../CrtPanel';
 import { Table, TableCell, TableRow } from '../../components/Table';
 import { InfernoNode } from 'inferno';
-
-export interface ButtonProps {
-  children?: InfernoNode;
-  onClick?: () => void;
-}
-
-export type mfddir = 'top' | 'bottom' | 'left' | 'right';
-
-export interface FullButtonProps extends ButtonProps {
-  location: mfddir;
-}
-
-export const usePanelState = (panelId: string, context) =>
-  useSharedState<string>(context, `${panelId}_panelstate`, '');
+import { ButtonProps } from './types';
 
 export interface MfdProps {
   panelStateId: string;
@@ -84,7 +71,7 @@ export const VerticalPanel = (
   );
 };
 
-export const MfdPanel = (props: MfdProps, context) => {
+export const MfdPanel = (props: MfdProps) => {
   const topProps = props.topButtons ?? [];
   const botProps = props.bottomButtons ?? [];
   const leftProps = props.leftButtons ?? [];

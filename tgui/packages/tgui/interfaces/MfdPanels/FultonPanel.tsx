@@ -1,15 +1,10 @@
-import { MfdPanel, MfdProps, usePanelState } from './MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { Box, Stack } from '../../components';
 import { useBackend, useLocalState } from '../../backend';
-import { useEquipmentState } from './SupportPanel';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { mfdState, useEquipmentState } from './stateManagers';
 import { range } from 'common/collections';
 import { Icon } from '../../components';
-
-interface FultonProps {
-  fulton_targets: Array<string>;
-  equipment_data: Array<DropshipEquipment>;
-}
+import { FultonProps } from './types';
 
 export const FultonMfdPanel = (props: MfdProps, context) => {
   const { data, act } = useBackend<FultonProps>(context);
@@ -18,14 +13,8 @@ export const FultonMfdPanel = (props: MfdProps, context) => {
     `${props.panelStateId}_fultonoffset`,
     0
   );
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
-  const [equipmentState, setEquipmentState] = useEquipmentState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
+  const { equipmentState } = useEquipmentState(context, props.panelStateId);
 
   const fultons = [...data.fulton_targets];
   const regex = /(\d+)/;

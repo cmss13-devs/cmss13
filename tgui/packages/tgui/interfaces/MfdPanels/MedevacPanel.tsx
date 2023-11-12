@@ -1,18 +1,12 @@
-import { MfdProps, MfdPanel, usePanelState } from './MultifunctionDisplay';
+import { MfdProps, MfdPanel } from './MultifunctionDisplay';
 import { Box, Divider, Flex, Stack } from '../../components';
 import { useBackend, useLocalState } from '../../backend';
 import { range } from 'common/collections';
 import { Icon } from '../../components';
-import { useEquipmentState } from './SupportPanel';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MedevacTargets } from './types';
+import { mfdState, useEquipmentState } from './stateManagers';
+import { MedevacContext, MedevacTargets } from './types';
 
-interface MedevacContext {
-  medevac_targets: Array<MedevacTargets>;
-  equipment_data: Array<DropshipEquipment>;
-}
-
-const MedevacOccupant = (props: { data: MedevacTargets }, context) => {
+const MedevacOccupant = (props: { data: MedevacTargets }) => {
   return (
     <Box>
       <Flex justify="space-between" direction="horizontal">
@@ -61,14 +55,8 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
     `${props.panelStateId}_medevacoffset`,
     0
   );
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
-  const [equipmentState, setEquipmentState] = useEquipmentState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
+  const { equipmentState } = useEquipmentState(context, props.panelStateId);
 
   const { data, act } = useBackend<MedevacContext>(context);
 

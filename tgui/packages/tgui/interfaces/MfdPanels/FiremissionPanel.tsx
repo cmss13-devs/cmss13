@@ -1,10 +1,11 @@
-import { MfdPanel, MfdProps, usePanelState } from './MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { Box, Button, Divider, Input, Stack } from '../../components';
 import { useBackend, useLocalState } from '../../backend';
-import { CasFiremission, CasFiremissionStage } from './types';
+import { CasFiremission, CasFiremissionStage, FiremissionContext } from './types';
 import { range } from 'common/collections';
 import { TableCell } from '../../components/Table';
 import { DropshipEquipment, DropshipProps } from '../DropshipWeaponsConsole';
+import { fmState, mfdState } from './stateManagers';
 
 const CreateFiremissionPanel = (props, context) => {
   const { act } = useBackend(context);
@@ -31,10 +32,6 @@ const CreateFiremissionPanel = (props, context) => {
   );
 };
 
-interface FiremissionContext {
-  firemission_data: Array<CasFiremission>;
-}
-
 const FiremissionList = (props, context) => {
   const { data } = useBackend<FiremissionContext>(context);
   return (
@@ -52,17 +49,10 @@ const FiremissionList = (props, context) => {
 };
 
 const FiremissionMfdHomePage = (props: MfdProps, context) => {
-  const [selectedFm, setSelectedFm] = useLocalState<string | undefined>(
-    context,
-    `${props.panelStateId}_selected_fm`,
-    undefined
-  );
+  const { setSelectedFm } = fmState(context, props.panelStateId);
   const [fmName, setFmName] = useLocalState<string>(context, 'fmname', '');
   const { data, act } = useBackend<FiremissionContext>(context);
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
 
   const firemission_mapper = (x: number) => {
     const firemission =
@@ -154,15 +144,8 @@ const ViewFiremissionMfdPanel = (
   context
 ) => {
   const { data, act } = useBackend<DropshipProps>(context);
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
-  const [selectedFm, setSelectedFm] = useLocalState<string | undefined>(
-    context,
-    `${props.panelStateId}_selected_fm`,
-    undefined
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
+  const { setSelectedFm } = fmState(context, props.panelStateId);
   const [editFm, setEditFm] = useLocalState<boolean>(
     context,
     `${props.panelStateId}_edit_fm`,
@@ -526,11 +509,7 @@ const FMOffsetStack = (
 
 export const FiremissionMfdPanel = (props: MfdProps, context) => {
   const { data, act } = useBackend<FiremissionContext>(context);
-  const [selectedFm, setSelectedFm] = useLocalState<string | undefined>(
-    context,
-    `${props.panelStateId}_selected_fm`,
-    undefined
-  );
+  const { selectedFm } = fmState(context, props.panelStateId);
   const firemission = data.firemission_data.find((x) => x.name === selectedFm);
   if (firemission === undefined) {
     return <FiremissionMfdHomePage panelStateId={props.panelStateId} />;

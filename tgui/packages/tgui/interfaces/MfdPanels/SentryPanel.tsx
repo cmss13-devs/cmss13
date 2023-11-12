@@ -1,13 +1,9 @@
-import { MfdPanel, MfdProps, usePanelState } from './MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { Box, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { useBackend } from '../../backend';
-import { useEquipmentState } from './SupportPanel';
-import { SentrySpec } from './types';
-
-interface EquipmentContext {
-  equipment_data: Array<DropshipEquipment>;
-}
+import { mfdState, useEquipmentState } from './stateManagers';
+import { EquipmentContext, SentrySpec } from './types';
 
 const SentryPanel = (props: DropshipEquipment, context) => {
   const sentryData = props.data as SentrySpec;
@@ -54,14 +50,8 @@ const SentryPanel = (props: DropshipEquipment, context) => {
 
 export const SentryMfdPanel = (props: MfdProps, context) => {
   const { act, data } = useBackend<EquipmentContext>(context);
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
-  const [equipmentState, setEquipmentState] = useEquipmentState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
+  const { equipmentState } = useEquipmentState(context, props.panelStateId);
   const sentry = data.equipment_data.find(
     (x) => x.mount_point === equipmentState
   );
@@ -92,7 +82,7 @@ export const SentryMfdPanel = (props: MfdProps, context) => {
         },
       ]}>
       <Box className="NavigationMenu">
-        {sentry ? <SentryPanel {...sentry} /> : undefined}
+        {sentry && <SentryPanel {...sentry} />}
       </Box>
     </MfdPanel>
   );

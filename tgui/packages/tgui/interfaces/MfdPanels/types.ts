@@ -1,6 +1,19 @@
+import { InfernoNode } from 'inferno';
+import { DropshipEquipment } from '../DropshipWeaponsConsole';
+
+export interface ButtonProps {
+  children?: InfernoNode;
+  onClick?: () => void;
+}
+
 export type LazeTarget = {
   target_name: string;
   target_tag: number;
+};
+
+export type FultonProps = {
+  fulton_targets: Array<string>;
+  equipment_data: Array<DropshipEquipment>;
 };
 
 export type MedevacTargets = {
@@ -16,6 +29,23 @@ export type MedevacTargets = {
     fire: number;
     undefib: number;
   };
+};
+
+export type CameraProps = {
+  camera_map_ref?: string;
+};
+
+export type EquipmentContext = {
+  equipment_data: Array<DropshipEquipment>;
+};
+
+export type MedevacContext = {
+  medevac_targets: Array<MedevacTargets>;
+  equipment_data: Array<DropshipEquipment>;
+};
+
+export type FiremissionContext = {
+  firemission_data: Array<CasFiremission>;
 };
 
 export type SentrySpec = {
@@ -54,4 +84,8 @@ export type CasFiremission = {
   mission_length: number;
   records: Array<CasFiremissionStage>;
   mission_tag: number;
+};
+
+export type MapProps = {
+  tactical_map_ref: string;
 };

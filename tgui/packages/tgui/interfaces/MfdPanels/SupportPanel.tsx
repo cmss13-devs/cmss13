@@ -1,32 +1,17 @@
-import { useBackend, useSharedState } from '../../backend';
-import { MfdPanel, MfdProps, usePanelState } from './MultifunctionDisplay';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { useBackend } from '../../backend';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { MedevacMfdPanel } from './MedevacPanel';
 import { FultonMfdPanel } from './FultonPanel';
 import { Box, Stack } from '../../components';
 import { SentryMfdPanel } from './SentryPanel';
 import { MgMfdPanel } from './MGPanel';
-export const useEquipmentState = (panelId: string, context) =>
-  useSharedState<number | undefined>(
-    context,
-    `${panelId}_equipmentstate`,
-    undefined
-  );
-
-interface EquipmentContext {
-  equipment_data: Array<DropshipEquipment>;
-}
+import { EquipmentContext } from './types';
+import { mfdState, useEquipmentState } from './stateManagers';
 
 export const SupportMfdPanel = (props: MfdProps, context) => {
-  const [equipmentState, setEquipmentState] = useEquipmentState(
-    props.panelStateId,
-    context
-  );
+  const { equipmentState } = useEquipmentState(props.panelStateId, context);
 
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
 
   const { data } = useBackend<EquipmentContext>(context);
   const result = data.equipment_data.find(

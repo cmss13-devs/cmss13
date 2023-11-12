@@ -1,15 +1,11 @@
-import { MfdPanel, MfdProps, usePanelState } from './MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { Box, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { useBackend } from '../../backend';
-import { useEquipmentState } from './SupportPanel';
-import { MGSpec } from './types';
+import { mfdState, useEquipmentState } from './stateManagers';
+import { EquipmentContext, MGSpec } from './types';
 
-interface EquipmentContext {
-  equipment_data: Array<DropshipEquipment>;
-}
-
-const MgPanel = (props: DropshipEquipment, context) => {
+const MgPanel = (props: DropshipEquipment) => {
   const mgData = props.data as MGSpec;
   return (
     <Stack>
@@ -45,14 +41,8 @@ const MgPanel = (props: DropshipEquipment, context) => {
 
 export const MgMfdPanel = (props: MfdProps, context) => {
   const { act, data } = useBackend<EquipmentContext>(context);
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
-  const [equipmentState, setEquipmentState] = useEquipmentState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
+  const { equipmentState } = useEquipmentState(context, props.panelStateId);
   const mg = data.equipment_data.find((x) => x.mount_point === equipmentState);
   return (
     <MfdPanel
@@ -73,9 +63,7 @@ export const MgMfdPanel = (props: MfdProps, context) => {
           onClick: () => setPanelState(''),
         },
       ]}>
-      <Box className="NavigationMenu">
-        {mg ? <MgPanel {...mg} /> : undefined}
-      </Box>
+      <Box className="NavigationMenu">{mg && <MgPanel {...mg} />}</Box>
     </MfdPanel>
   );
 };

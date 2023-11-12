@@ -1,16 +1,10 @@
 import { range } from 'common/collections';
-import { useBackend, useSharedState } from '../../backend';
+import { useBackend } from '../../backend';
 import { Box, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdProps, MfdPanel, usePanelState } from './MultifunctionDisplay';
+import { MfdProps, MfdPanel } from './MultifunctionDisplay';
+import { mfdState, useWeaponState } from './stateManagers';
 import { LazeTarget } from './types';
-
-export const useWeaponState = (panelId: string, context) =>
-  useSharedState<number | undefined>(
-    context,
-    `${panelId}_weaponstate`,
-    undefined
-  );
 
 const EmptyWeaponPanel = (props, context) => {
   return <div>Nothing Listed</div>;
@@ -149,11 +143,8 @@ const WeaponPanel = (props: { equipment: DropshipEquipment }, context) => {
 };
 
 export const WeaponMfdPanel = (props: MfdProps, context) => {
-  const [_, setPanelState] = usePanelState(props.panelStateId, context);
-  const [weaponState, setWeaponState] = useWeaponState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
+  const { weaponState } = useWeaponState(context, props.panelStateId);
   const { data, act } = useBackend<EquipmentContext>(context);
   const weap = data.equipment_data.find((x) => x.mount_point === weaponState);
 

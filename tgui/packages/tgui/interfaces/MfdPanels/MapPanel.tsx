@@ -1,17 +1,12 @@
 import { useBackend } from '../../backend';
 import { Box } from '../../components';
-import { MfdPanel, MfdProps, usePanelState } from './MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { ByondUi } from '../../components';
-
-interface MapProps {
-  tactical_map_ref: string;
-}
+import { MapProps } from './types';
+import { mfdState } from './stateManagers';
 
 export const MapMfdPanel = (props: MfdProps, context) => {
-  const [panelState, setPanelState] = usePanelState(
-    props.panelStateId,
-    context
-  );
+  const { setPanelState } = mfdState(context, props.panelStateId);
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -26,7 +21,7 @@ export const MapMfdPanel = (props: MfdProps, context) => {
   );
 };
 
-const MapPanel = (props, context) => {
+const MapPanel = (_, context) => {
   const { data } = useBackend<MapProps>(context);
   return (
     <Box className="NavigationMenu">

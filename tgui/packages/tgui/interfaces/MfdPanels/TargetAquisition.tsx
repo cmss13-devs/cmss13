@@ -2,16 +2,13 @@ import { range } from 'common/collections';
 import { useBackend, useLocalState, useSharedState } from '../../backend';
 import { Box, Icon, NumberInput, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdProps, MfdPanel, usePanelState } from './MultifunctionDisplay';
-import { CasFiremission, LazeTarget } from './types';
+import { MfdProps, MfdPanel } from './MultifunctionDisplay';
+import { mfdState } from './stateManagers';
+import { FiremissionContext, LazeTarget } from './types';
 
 interface EquipmentContext {
   equipment_data: Array<DropshipEquipment>;
   targets_data: Array<LazeTarget>;
-}
-
-interface FiremissionContext {
-  firemission_data: Array<CasFiremission>;
 }
 
 const directionLookup = new Map<string, number>();
@@ -34,7 +31,7 @@ const dirMap = (dir) => {
 };
 
 export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
-  const [_, setPanelState] = usePanelState(props.panelStateId, context);
+  const { setPanelState } = mfdState(context, props.panelStateId);
   const [selectedTarget, setSelectedTarget] = useSharedState<
     number | undefined
   >(context, 'laze-target', undefined);

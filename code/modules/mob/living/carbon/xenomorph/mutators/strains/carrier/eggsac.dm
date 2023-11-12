@@ -1,5 +1,3 @@
-#define EGGSAC_OFF_WEED_EGGCAP 4
-
 /datum/xeno_mutator/eggsac
 	name = "STRAIN: Carrier - Eggsac"
 	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nYou can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while you remain within 14 tiles. Or one minute if you leave this range."
@@ -46,11 +44,17 @@
 	apply_behavior_holder(carrier)
 	return TRUE
 
+#define EGGSAC_OFF_WEED_EGGCAP 4
+#define EGGSAC_EGG_SUSTAIN_DISTANCE 14
+
 /datum/behavior_delegate/carrier_eggsac
 	name = "Eggsac Carrier Behavior Delegate"
+	///List of /obj/effect/alien/egg/carrier_egg sustained by the carrier on normal weeds
 	var/list/eggs_sustained = list()
+	///Total number of eggs which can be sustained defined as EGGSAC_OFF_WEED_EGGCAP
 	var/egg_sustain_cap = EGGSAC_OFF_WEED_EGGCAP
-	var/sustain_distance = 14
+	///Distance from the egg that the carrier can go before it stops sustaining it
+	var/sustain_distance = EGGSAC_EGG_SUSTAIN_DISTANCE
 
 /datum/behavior_delegate/carrier_eggsac/append_to_stat()
 	. = list()
@@ -119,3 +123,4 @@
 				xeno.update_icons()
 
 #undef EGGSAC_OFF_WEED_EGGCAP
+#undef EGGSAC_EGG_SUSTAIN_DISTANCE

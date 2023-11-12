@@ -307,8 +307,11 @@ SPECIAL EGG USED BY EGG CARRIER
 /obj/effect/alien/egg/carrier_egg
 	name = "fragile egg"
 	desc = "It looks like a weird, fragile egg."
+	///Owner of the fragile egg, must be a mob/living/carbon/xenomorph/carrier
 	var/mob/living/carbon/xenomorph/carrier/owner = null
+	///Time that the carrier was last within refresh range of the egg (14 tiles)
 	var/last_refreshed = null
+	/// Timer holder for the maximum lifetime of the egg as defined CARRIER_EGG_MAXIMUM_LIFE
 	var/life_timer = null
 
 /obj/effect/alien/egg/carrier_egg/Initialize(mapload, hivenumber, planter = null)
@@ -326,7 +329,7 @@ SPECIAL EGG USED BY EGG CARRIER
 	if(life_timer)
 		deltimer(life_timer)
 	owner = null
-	. = ..()
+	return ..()
 
 /// Set the owner of the egg to the planter.
 /obj/effect/alien/egg/carrier_egg/proc/set_owner(mob/living/carbon/xenomorph/carrier/planter)

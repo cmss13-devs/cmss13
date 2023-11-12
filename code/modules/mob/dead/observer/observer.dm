@@ -249,7 +249,7 @@
 
 ///makes the ghost see the target hud and sets the eye at the target.
 /mob/dead/observer/proc/do_observe(mob/target)
-	if(!client || !target || !istype(target))
+	if(!client || !target || !ismovableatom(target))
 		return
 
 	ManualFollow(target)

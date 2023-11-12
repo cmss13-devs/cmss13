@@ -35,9 +35,6 @@
 	)
 	fire_delay = 0.8 SECONDS //base fire rate, modified by stage_delay_mult
 
-	//var/start_sound = 'sound/weapons/vehicles/minigun_start.ogg'
-	//var/loop_sound = 'sound/weapons/vehicles/minigun_loop.ogg'
-	//var/stop_sound = 'sound/weapons/vehicles/minigun_stop.ogg'
 	activation_sounds = list('sound/weapons/gun_minigun.ogg')
 	/// Active firing time to reach max spin_stage.
 	var/spinup_time = 8 SECONDS
@@ -52,21 +49,32 @@
 	var/list/stage_rate = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5)
 	/// Fire delay multiplier for current spin_stage.
 	var/stage_delay_mult = 1
+	/// When it was last fired, related to world.time.
+	var/last_fired = 0
 
-/obj/item/hardpoint/primary/minigun/Destroy()
-	STOP_PROCESSING(SSobj, src)
+/obj/item/hardpoint/primary/minigun/set_fire_delay(value)
+	fire_delay = value
+	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
 
-	return ..()
+/obj/item/hardpoint/primary/minigun/set_fire_cooldown()
+	calculate_stage_delay_mult() //needs to check grace_cooldown before refreshed
+	last_fired = world.time
+	COOLDOWN_START(src, spindown_grace_cooldown, spindown_grace_time)
+	COOLDOWN_START(src, fire_cooldown, fire_delay * stage_delay_mult)
 
-/obj/item/hardpoint/primary/minigun/process(delta_time)
+/obj/item/hardpoint/primary/minigun/proc/calculate_stage_delay_mult()
 	var/stage_rate_len = stage_rate.len
-	var/delta_stage = (delta_time SECONDS) * (stage_rate_len - 1)
+	var/delta_time = world.time - last_fired
 
 	var/old_spin_stage = spin_stage
-	if(auto_firing || burst_firing) //spinup if firing
+	if(auto_firing || burst_firing) //spinup if continuing fire
+		var/delta_stage = delta_time * (stage_rate_len - 1)
 		spin_stage += delta_stage / spinup_time
-	else if(COOLDOWN_FINISHED(src, spindown_grace_cooldown)) //spindown if not firing and after grace
+	else if(COOLDOWN_FINISHED(src, spindown_grace_cooldown)) //spindown if initiating fire after grace
+		var/delta_stage = (delta_time - spindown_grace_time) * (stage_rate_len - 1)
 		spin_stage -= delta_stage / spindown_time
+	else
+		return
 	spin_stage = Clamp(spin_stage, 1, stage_rate_len)
 
 	var/old_stage_rate = stage_rate[Floor(old_spin_stage)]
@@ -75,21 +83,3 @@
 	if(old_stage_rate != new_stage_rate)
 		stage_delay_mult = 1 / new_stage_rate
 		SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
-
-	if(spin_stage <= 1)
-		spin_stage = 1
-		STOP_PROCESSING(SSobj, src)
-
-/obj/item/hardpoint/primary/minigun/set_fire_delay(value)
-	fire_delay = value
-	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
-
-/obj/item/hardpoint/primary/minigun/handle_fire()
-	. = ..()
-
-	if((. & AUTOFIRE_CONTINUE))
-		START_PROCESSING(SSobj, src)
-
-/obj/item/hardpoint/primary/minigun/set_fire_cooldown()
-	COOLDOWN_START(src, fire_cooldown, fire_delay * stage_delay_mult)
-	COOLDOWN_START(src, spindown_grace_cooldown, spindown_grace_time)

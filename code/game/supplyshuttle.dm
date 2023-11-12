@@ -1315,6 +1315,10 @@ var/datum/controller/supply/supply_controller = new()
 /datum/vehicle_order/tank/has_vehicle_lock()
 	return
 
+/datum/vehicle_order/tank/empty
+	name = "Barebones M34A2 Longstreet Light Tank"
+	ordered_vehicle = /obj/effect/vehicle_spawner/tank
+
 /datum/vehicle_order/apc
 	name = "M577 Armored Personnel Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit
@@ -1327,17 +1331,18 @@ var/datum/controller/supply/supply_controller = new()
 	name = "M577-CMD Armored Personnel Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc_cmd/decrepit
 
+/datum/vehicle_order/apc/empty
+	name = "Barebones M577 Armored Personal Carrier"
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc
+
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
 	. = ..()
 
 	vehicles = list(
-		/datum/vehicle_order/apc,
-		/datum/vehicle_order/apc/med,
-		/datum/vehicle_order/apc/cmd,
+		new /datum/vehicle_order/apc(),
+		new /datum/vehicle_order/apc/med(),
+		new /datum/vehicle_order/apc/cmd(),
 	)
-
-	for(var/order as anything in vehicles)
-		new order
 
 	if(!VehicleElevatorConsole)
 		VehicleElevatorConsole = src
@@ -1408,6 +1413,7 @@ var/datum/controller/supply/supply_controller = new()
 		return
 
 	if(!is_admin_level(SSshuttle.vehicle_elevator.z))
+		to_chat(usr, SPAN_WARNING("The elevator needs to be in the crago bay dock to call a vehicle up. Ask someone to send it away."))
 		return
 
 	if(ismaintdrone(usr))

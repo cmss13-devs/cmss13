@@ -11,6 +11,10 @@ export type LazeTarget = {
   target_tag: number;
 };
 
+export type TargetContext = {
+  targets_data: Array<LazeTarget>;
+};
+
 export type FultonProps = {
   fulton_targets: Array<string>;
   equipment_data: Array<DropshipEquipment>;
@@ -88,4 +92,17 @@ export type CasFiremission = {
 
 export type MapProps = {
   tactical_map_ref: string;
+};
+
+export const dirMap = (dir) => {
+  switch (dir) {
+    case 'NORTH':
+      return 1;
+    case 'SOUTH':
+      return 2;
+    case 'EAST':
+      return 4;
+    case 'WEST':
+      return 8;
+  }
 };

@@ -1,15 +1,9 @@
 import { range } from 'common/collections';
 import { useBackend, useLocalState, useSharedState } from '../../backend';
 import { Box, Icon, NumberInput, Stack } from '../../components';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MfdProps, MfdPanel } from './MultifunctionDisplay';
 import { mfdState } from './stateManagers';
-import { FiremissionContext, LazeTarget } from './types';
-
-interface EquipmentContext {
-  equipment_data: Array<DropshipEquipment>;
-  targets_data: Array<LazeTarget>;
-}
+import { dirMap, EquipmentContext, FiremissionContext, TargetContext } from './types';
 
 const directionLookup = new Map<string, number>();
 directionLookup['N-S'] = 2;
@@ -17,63 +11,258 @@ directionLookup['S-N'] = 1;
 directionLookup['E-W'] = 8;
 directionLookup['W-E'] = 4;
 
-const dirMap = (dir) => {
-  switch (dir) {
-    case 'NORTH':
-      return 1;
-    case 'SOUTH':
-      return 2;
-    case 'EAST':
-      return 4;
-    case 'WEST':
-      return 8;
-  }
-};
-
-export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const [selectedTarget, setSelectedTarget] = useSharedState<
-    number | undefined
-  >(context, 'laze-target', undefined);
-  const [strikeMode, setStrikeMode] = useSharedState<string | undefined>(
+const useStrikeMode = (context) => {
+  const [data, set] = useSharedState<string | undefined>(
     context,
     'strike-mode',
     undefined
   );
-  const [strikeDirection, setStrikeDirection] = useSharedState<
-    string | undefined
-  >(context, 'strike-direction', undefined);
+  return {
+    strikeMode: data,
+    setStrikeMode: set,
+  };
+};
 
-  const [weaponSelected, setWeaponSelected] = useSharedState<
-    number | undefined
-  >(context, 'target-weapon-select', undefined);
+const useLazeTarget = (context) => {
+  const [data, set] = useSharedState<number | undefined>(
+    context,
+    'laze-target',
+    undefined
+  );
+  return {
+    selectedTarget: data,
+    setSelectedTarget: set,
+  };
+};
 
-  const [firemissionSelected, setFiremissionSelected] = useSharedState<
-    number | undefined
-  >(context, 'target-firemission-select', undefined);
+const useStrikeDirection = (context) => {
+  const [data, set] = useSharedState<string | undefined>(
+    context,
+    'strike-direction',
+    undefined
+  );
+  return {
+    strikeDirection: data,
+    setStrikeDirection: set,
+  };
+};
 
-  const [fmOffsetDir, setFmOffsetDir] = useSharedState<
-    'NORTH' | 'SOUTH' | 'EAST' | 'WEST'
-  >(context, 'firemission-offset-dir', 'NORTH');
+const useWeaponSelectedState = (context) => {
+  const [data, set] = useSharedState<number | undefined>(
+    context,
+    'target-weapon-select',
+    undefined
+  );
+  return {
+    weaponSelected: data,
+    setWeaponSelected: set,
+  };
+};
 
-  const [fmOffsetValue, setFmOffsetValue] = useSharedState<number>(
+const useTargetFiremissionSelect = (context) => {
+  const [data, set] = useSharedState<number | undefined>(
+    context,
+    'target-firemission-select',
+    undefined
+  );
+  return {
+    firemissionSelected: data,
+    setFiremissionSelected: set,
+  };
+};
+
+const useTargetOffset = (context, panelId: string) => {
+  const [data, set] = useLocalState(context, `${panelId}_targetOffset`, 0);
+  return {
+    targetOffset: data,
+    setTargetOffset: set,
+  };
+};
+
+const useTargetSubmenu = (context, panelId: string) => {
+  const [data, set] = useSharedState<string | undefined>(
+    context,
+    `${panelId}_target_left`,
+    undefined
+  );
+  return {
+    leftButtonMode: data,
+    setLeftButtonMode: set,
+  };
+};
+const useFiremissionOffset = (context) => {
+  const [data, set] = useSharedState<'NORTH' | 'SOUTH' | 'EAST' | 'WEST'>(
+    context,
+    'firemission-offset-dir',
+    'NORTH'
+  );
+  return {
+    fmOffsetDir: data,
+    setFmOffsetDir: set,
+  };
+};
+
+const useFiremissionOffsetValue = (context) => {
+  const [data, set] = useSharedState<number>(
     context,
     'firemission-offset-value',
     0
   );
+  return {
+    fmOffsetValue: data,
+    setFmOffsetValue: set,
+  };
+};
 
-  const [leftButtonMode, setLeftButtonMode] = useSharedState<
-    string | undefined
-  >(context, 'target_left', undefined);
-
-  const { act, data } = useBackend<EquipmentContext & FiremissionContext>(
-    context
+const leftButtonGenerator = (context, panelId: string) => {
+  const { data } = useBackend<
+    EquipmentContext & FiremissionContext & TargetContext
+  >(context);
+  const { leftButtonMode, setLeftButtonMode } = useTargetSubmenu(
+    context,
+    panelId
   );
+  const { strikeMode, setStrikeMode } = useStrikeMode(context);
+  const { setStrikeDirection } = useStrikeDirection(context);
+  const { firemissionSelected, setFiremissionSelected } =
+    useTargetFiremissionSelect(context);
+  const { setFmOffsetDir } = useFiremissionOffset(context);
 
+  const { weaponSelected, setWeaponSelected } = useWeaponSelectedState(context);
+  const weapons = data.equipment_data.filter((x) => x.is_weapon);
+  if (leftButtonMode === undefined) {
+    return [
+      {
+        children: 'STRIKE',
+        onClick: () => setLeftButtonMode('STRIKE'),
+      },
+      {
+        children: 'VECTOR',
+        onClick: () => setLeftButtonMode('VECTOR'),
+      },
+      {
+        children: 'OFFSET',
+        onClick: () => setLeftButtonMode('OFFSET'),
+      },
+    ];
+  }
+  if (leftButtonMode === 'STRIKE') {
+    if (strikeMode === 'weapon' && weaponSelected === undefined) {
+      return weapons.map((x) => {
+        return {
+          children: x.shorthand,
+          onClick: () => {
+            setWeaponSelected(x.mount_point);
+            setLeftButtonMode(undefined);
+          },
+        };
+      });
+    }
+    if (strikeMode === 'firemission' && firemissionSelected === undefined) {
+      return data.firemission_data.map((x) => {
+        return {
+          children: x.name,
+          onClick: () => {
+            setFiremissionSelected(x.mission_tag);
+            setLeftButtonMode(undefined);
+          },
+        };
+      });
+    }
+    return [
+      { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
+      {
+        children: 'WEAPON',
+        onClick: () => {
+          setWeaponSelected(undefined);
+          setStrikeMode('weapon');
+        },
+      },
+      {
+        children: 'F-MISS',
+        onClick: () => {
+          setFiremissionSelected(undefined);
+          setStrikeMode('firemission');
+        },
+      },
+    ];
+  }
+  if (leftButtonMode === 'VECTOR') {
+    return [
+      { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
+      {
+        children: 'N-S',
+        onClick: () => {
+          setStrikeDirection('N-S');
+          setLeftButtonMode(undefined);
+        },
+      },
+      {
+        children: 'S-N',
+        onClick: () => {
+          setStrikeDirection('S-N');
+          setLeftButtonMode(undefined);
+        },
+      },
+      {
+        children: 'W-E',
+        onClick: () => {
+          setStrikeDirection('W-E');
+          setLeftButtonMode(undefined);
+        },
+      },
+      {
+        children: 'E-W',
+        onClick: () => {
+          setStrikeDirection('E-W');
+          setLeftButtonMode(undefined);
+        },
+      },
+    ];
+  }
+  if (leftButtonMode === 'OFFSET') {
+    return [
+      { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
+      {
+        children: 'NORTH',
+        onClick: () => {
+          setFmOffsetDir('NORTH');
+          setLeftButtonMode(undefined);
+        },
+      },
+      {
+        children: 'SOUTH',
+        onClick: () => {
+          setFmOffsetDir('SOUTH');
+          setLeftButtonMode(undefined);
+        },
+      },
+      {
+        children: 'EAST',
+        onClick: () => {
+          setFmOffsetDir('EAST');
+          setLeftButtonMode(undefined);
+        },
+      },
+      {
+        children: 'WEST',
+        onClick: () => {
+          setFmOffsetDir('WEST');
+          setLeftButtonMode(undefined);
+        },
+      },
+    ];
+  }
+  return [];
+};
+
+const lazeMapper = (context) => {
+  const { act, data } = useBackend<TargetContext>(context);
+  const { setSelectedTarget } = useLazeTarget(context);
   const lazes = range(0, 5).map((x) =>
     x > data.targets_data.length ? undefined : data.targets_data[x]
   );
-  const lazeMapper = (index: number) => {
+  return (index: number) => {
     const target = lazes.length > index ? lazes[index] : undefined;
     const label = target?.target_name.split(' ')[0] ?? '';
     const squad = label[0] ?? '';
@@ -91,135 +280,34 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
         },
     };
   };
+};
 
-  const weapons = data.equipment_data.filter((x) => x.is_weapon);
+export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
+  const { panelStateId } = props;
 
-  const leftButtonGenerator = () => {
-    if (leftButtonMode === undefined) {
-      return [
-        {
-          children: 'STRIKE',
-          onClick: () => setLeftButtonMode('STRIKE'),
-        },
-        {
-          children: 'VECTOR',
-          onClick: () => setLeftButtonMode('VECTOR'),
-        },
-        {
-          children: 'OFFSET',
-          onClick: () => setLeftButtonMode('OFFSET'),
-        },
-      ];
-    }
-    if (leftButtonMode === 'STRIKE') {
-      if (strikeMode === 'weapon' && weaponSelected === undefined) {
-        return weapons.map((x) => {
-          return {
-            children: x.shorthand,
-            onClick: () => {
-              setWeaponSelected(x.mount_point);
-              setLeftButtonMode(undefined);
-            },
-          };
-        });
-      }
-      if (strikeMode === 'firemission' && firemissionSelected === undefined) {
-        return data.firemission_data.map((x) => {
-          return {
-            children: x.name,
-            onClick: () => {
-              setFiremissionSelected(x.mission_tag);
-              setLeftButtonMode(undefined);
-            },
-          };
-        });
-      }
-      return [
-        { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
-        {
-          children: 'WEAPON',
-          onClick: () => {
-            setWeaponSelected(undefined);
-            setStrikeMode('weapon');
-          },
-        },
-        {
-          children: 'F-MISS',
-          onClick: () => {
-            setFiremissionSelected(undefined);
-            setStrikeMode('firemission');
-          },
-        },
-      ];
-    }
-    if (leftButtonMode === 'VECTOR') {
-      return [
-        { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
-        {
-          children: 'N-S',
-          onClick: () => {
-            setStrikeDirection('N-S');
-            setLeftButtonMode(undefined);
-          },
-        },
-        {
-          children: 'S-N',
-          onClick: () => {
-            setStrikeDirection('S-N');
-            setLeftButtonMode(undefined);
-          },
-        },
-        {
-          children: 'W-E',
-          onClick: () => {
-            setStrikeDirection('W-E');
-            setLeftButtonMode(undefined);
-          },
-        },
-        {
-          children: 'E-W',
-          onClick: () => {
-            setStrikeDirection('E-W');
-            setLeftButtonMode(undefined);
-          },
-        },
-      ];
-    }
-    if (leftButtonMode === 'OFFSET') {
-      return [
-        { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
-        {
-          children: 'NORTH',
-          onClick: () => {
-            setFmOffsetDir('NORTH');
-            setLeftButtonMode(undefined);
-          },
-        },
-        {
-          children: 'SOUTH',
-          onClick: () => {
-            setFmOffsetDir('SOUTH');
-            setLeftButtonMode(undefined);
-          },
-        },
-        {
-          children: 'EAST',
-          onClick: () => {
-            setFmOffsetDir('EAST');
-            setLeftButtonMode(undefined);
-          },
-        },
-        {
-          children: 'WEST',
-          onClick: () => {
-            setFmOffsetDir('WEST');
-            setLeftButtonMode(undefined);
-          },
-        },
-      ];
-    }
-    return [];
-  };
+  const { act, data } = useBackend<
+    EquipmentContext & FiremissionContext & TargetContext
+  >(context);
+
+  const { setPanelState } = mfdState(context, panelStateId);
+  const { selectedTarget } = useLazeTarget(context);
+  const { strikeMode } = useStrikeMode(context);
+  const { strikeDirection } = useStrikeDirection(context);
+  const { weaponSelected } = useWeaponSelectedState(context);
+  const { firemissionSelected } = useTargetFiremissionSelect(context);
+  const { targetOffset, setTargetOffset } = useTargetOffset(
+    context,
+    panelStateId
+  );
+
+  const { fmOffsetDir } = useFiremissionOffset(context);
+
+  const { fmOffsetValue, setFmOffsetValue } =
+    useFiremissionOffsetValue(context);
+
+  const lazes = range(0, 5).map((x) =>
+    x > data.targets_data.length ? undefined : data.targets_data[x]
+  );
 
   const strikeConfigLabel =
     strikeMode === 'weapon'
@@ -233,17 +321,12 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
   const lazeIndex = lazes.findIndex((x) => x?.target_tag === selectedTarget);
   const strikeReady = strikeMode !== undefined && lazeIndex !== -1;
 
-  const [targetOffset, setTargetOffset] = useLocalState(
-    context,
-    `${props.panelStateId}_targetOffset`,
-    0
+  const targets = range(targetOffset, targetOffset + 5).map(
+    lazeMapper(context)
   );
-
-  const targets = range(targetOffset, targetOffset + 5).map(lazeMapper);
-  // lazes.map((x, i) => lazeMapper(i))
   return (
     <MfdPanel
-      panelStateId={props.panelStateId}
+      panelStateId={panelStateId}
       topButtons={[
         {
           children: 'FIRE',
@@ -296,7 +379,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
           },
         },
       ]}
-      leftButtons={leftButtonGenerator()}
+      leftButtons={leftButtonGenerator(context, panelStateId)}
       rightButtons={targets}>
       <Box className="NavigationMenu">
         <Stack>
@@ -393,47 +476,5 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
         </Stack>
       </Box>
     </MfdPanel>
-  );
-};
-
-const StrikeArrow = (props: { yoffset: number }, context) => {
-  return (
-    <line
-      x1="35"
-      y1={props.yoffset}
-      x2="10"
-      y2={props.yoffset}
-      stroke="#00e94e"
-      stroke-width="2"
-      marker-end="url(#arrowhead)"
-    />
-  );
-};
-
-const LazeArrow = (props: { yoffset: number }, context) => {
-  return (
-    <line
-      x1="10"
-      y1={props.yoffset}
-      x2="40"
-      y2={props.yoffset}
-      stroke="#00e94e"
-      stroke-width="2"
-      marker-end="url(#arrowhead)"
-    />
-  );
-};
-
-const DirArrow = (props: { xoffset: number }, context) => {
-  return (
-    <line
-      x1={props.xoffset}
-      y1="40"
-      x2={props.xoffset}
-      y2="10"
-      stroke="#00e94e"
-      stroke-width="2"
-      marker-end="url(#arrowhead)"
-    />
   );
 };

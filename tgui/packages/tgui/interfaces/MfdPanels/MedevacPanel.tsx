@@ -6,48 +6,46 @@ import { Icon } from '../../components';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { MedevacContext, MedevacTargets } from './types';
 
-const MedevacOccupant = (props: { data: MedevacTargets }) => {
-  return (
-    <Box>
-      <Flex justify="space-between" direction="horizontal">
-        <Flex.Item grow>
-          <Stack vertical>
-            <Stack.Item>{props.data.occupant ?? 'Empty'}</Stack.Item>
-            <Stack.Item>{props.data.area ?? 'Unknown'}</Stack.Item>
-          </Stack>
-        </Flex.Item>
-        <Flex.Item grow>
-          <Flex fill justify="space-around">
-            <Flex.Item>
-              HP
-              <br />
-              {props.data.damage?.hp}
-            </Flex.Item>
-            <Flex.Item>
-              Brute
-              <br />
-              {props.data.damage?.brute}
-            </Flex.Item>
-            <Flex.Item>
-              Fire
-              <br />
-              {props.data.damage?.fire}
-            </Flex.Item>
-            <Flex.Item>
-              Tox
-              <br />
-              {props.data.damage?.tox}
-            </Flex.Item>
-            <Flex.Item>
-              Oxy
-              <br /> {props.data.damage?.oxy}
-            </Flex.Item>
-          </Flex>
-        </Flex.Item>
-      </Flex>
-    </Box>
-  );
-};
+const MedevacOccupant = (props: { data: MedevacTargets }) => (
+  <Box>
+    <Flex justify="space-between" direction="horizontal">
+      <Flex.Item grow>
+        <Stack vertical>
+          <Stack.Item>{props.data.occupant ?? 'Empty'}</Stack.Item>
+          <Stack.Item>{props.data.area ?? 'Unknown'}</Stack.Item>
+        </Stack>
+      </Flex.Item>
+      <Flex.Item grow>
+        <Flex fill justify="space-around">
+          <Flex.Item>
+            HP
+            <br />
+            {props.data.damage?.hp}
+          </Flex.Item>
+          <Flex.Item>
+            Brute
+            <br />
+            {props.data.damage?.brute}
+          </Flex.Item>
+          <Flex.Item>
+            Fire
+            <br />
+            {props.data.damage?.fire}
+          </Flex.Item>
+          <Flex.Item>
+            Tox
+            <br />
+            {props.data.damage?.tox}
+          </Flex.Item>
+          <Flex.Item>
+            Oxy
+            <br /> {props.data.damage?.oxy}
+          </Flex.Item>
+        </Flex>
+      </Flex.Item>
+    </Flex>
+  </Box>
+);
 
 export const MedevacMfdPanel = (props: MfdProps, context) => {
   const [medevacOffset, setMedevacOffset] = useLocalState(

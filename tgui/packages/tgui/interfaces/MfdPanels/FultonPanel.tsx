@@ -122,13 +122,11 @@ export const FultonMfdPanel = (props: MfdProps, context) => {
               <Stack.Item>
                 <h3>Active Fultons</h3>
               </Stack.Item>
-              {all_targets.map((x) => {
-                return (
-                  <Stack.Item key={x}>
-                    <h4>{x}</h4>
-                  </Stack.Item>
-                );
-              })}
+              {all_targets.map((x) => (
+                <Stack.Item key={x}>
+                  <h4>{x}</h4>
+                </Stack.Item>
+              ))}
             </Stack>
           </Stack.Item>
           <Stack.Item width="100px">

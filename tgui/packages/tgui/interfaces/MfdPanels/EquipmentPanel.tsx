@@ -35,10 +35,12 @@ const equipment_text_xs = [
 ];
 const equipment_text_ys = [120, 60, 60, 120, 20, 20, 240, 280, 320, 320, 320];
 
-const DrawWeaponText = (
-  props: { x: number; y: number; desc: string; sub_desc?: string },
-  context
-) => {
+const DrawWeaponText = (props: {
+  x: number;
+  y: number;
+  desc: string;
+  sub_desc?: string;
+}) => {
   return (
     <text stroke="#00e94e" x={props.x} y={props.y} text-anchor="middle">
       {props.desc.split(' ').map((x) => (
@@ -56,7 +58,7 @@ const DrawWeaponText = (
   );
 };
 
-const DrawWeaponEquipment = (props: DropshipEquipment, context) => {
+const DrawWeaponEquipment = (props: DropshipEquipment) => {
   return (
     <>
       <DrawWeapon
@@ -109,7 +111,7 @@ const DrawEquipment = (props, context) => {
   );
 };
 
-const DrawDropshipOutline = (props, context) => {
+const DrawDropshipOutline = () => {
   return (
     <>
       {/* cockpit */}
@@ -176,7 +178,7 @@ const DrawDropshipOutline = (props, context) => {
     </>
   );
 };
-const DrawAirlocks = (props, context) => {
+const DrawAirlocks = () => {
   return (
     <>
       {/* cockpit door */}
@@ -208,7 +210,7 @@ const DrawAirlocks = (props, context) => {
   );
 };
 
-const EquipmentPanel = (props, context) => {
+const EquipmentPanel = () => {
   return (
     <Box className="NavigationMenu">
       <svg height="501" width="501">

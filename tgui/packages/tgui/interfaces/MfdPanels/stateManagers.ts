@@ -24,6 +24,30 @@ export const fmState = (context, panelId: string) => {
   };
 };
 
+export const fmEditState = (context, panelId: string) => {
+  const [data, set] = useLocalState<boolean>(
+    context,
+    `${panelId}_edit_fm`,
+    false
+  );
+  return {
+    editFm: data,
+    setEditFm: set,
+  };
+};
+
+export const fmWeaponEditState = (context, panelId: string) => {
+  const [data, set] = useLocalState<number | undefined>(
+    context,
+    `${panelId}_edit_fm_weapon`,
+    undefined
+  );
+  return {
+    editFmWeapon: data,
+    setEditFmWeapon: set,
+  };
+};
+
 export const mfdState = (context, panelId: string) => {
   const [data, set] = useSharedState<string>(
     context,

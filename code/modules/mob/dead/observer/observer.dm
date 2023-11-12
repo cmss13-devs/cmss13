@@ -248,8 +248,8 @@
 	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
 
 ///makes the ghost see the target hud and sets the eye at the target.
-/mob/dead/observer/proc/do_observe(mob/target)
-	if(!client || !target || !ismovableatom(target))
+/mob/dead/observer/proc/do_observe(atom/movable/target)
+	if(!client || !target || !istype(target))
 		return
 
 	ManualFollow(target)
@@ -257,24 +257,23 @@
 
 	if(!ishuman(target) || !client.prefs?.auto_observe)
 		return
+	var/mob/living/carbon/human/human_target = target
 
-	client.eye = target
+	client.eye = human_target
 
-	if(!target.hud_used)
+	if(!human_target.hud_used)
 		return
 
 	client.clear_screen()
-	LAZYINITLIST(target.observers)
-	target.observers |= src
-	target.hud_used.show_hud(target.hud_used.hud_version, src)
-
-	var/mob/living/carbon/human/human_target = target
+	LAZYINITLIST(human_target.observers)
+	human_target.observers |= src
+	human_target.hud_used.show_hud(human_target.hud_used.hud_version, src)
 
 	var/list/target_contents = human_target.get_contents()
 
 	//Handles any currently open storage containers the target is looking in when we observe
 	for(var/obj/item/storage/checked_storage in target_contents)
-		if(!(target in checked_storage.content_watchers))
+		if(!(human_target in checked_storage.content_watchers))
 			continue
 
 		client.add_to_screen(checked_storage.closer)
@@ -289,7 +288,7 @@
 
 		break
 
-	observe_target_mob = target
+	observe_target_mob = human_target
 	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
@@ -297,8 +296,8 @@
 
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
 
-	if(target.client)
-		observe_target_client = target.client
+	if(human_target.client)
+		observe_target_client = human_target.client
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
 		return

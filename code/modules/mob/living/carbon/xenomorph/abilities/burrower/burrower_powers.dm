@@ -189,6 +189,7 @@
 		return
 
 	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
+	new_name = replace_non_alphanumeric_plus(new_name)
 	if(new_name)
 		new_name = "[new_name] ([get_area_name(T)])"
 		log_admin("[key_name(src)] has renamed the tunnel \"[T.tunnel_desc]\" as \"[new_name]\".")

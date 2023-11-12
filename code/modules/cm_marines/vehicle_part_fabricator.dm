@@ -12,6 +12,9 @@
 	var/generate_points = TRUE
 	var/valid_parts = null
 	var/valid_ammo = null
+	var/omnisentry_counter = 0
+	var/omnisentry_price_scale = 100
+	var/omnisentry_price = 300
 
 /obj/structure/machinery/part_fabricator/New()
 	..()
@@ -29,6 +32,7 @@
 /obj/structure/machinery/part_fabricator/dropship/ui_data(mob/user)
 	return list(
 		"points" = get_point_store()
+		"sentrygun_price" = omnisentry_price
 	)
 
 /obj/structure/machinery/part_fabricator/power_change()
@@ -53,20 +57,20 @@
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
 	set waitfor = 0
 	if(stat & NOPOWER) return
+	if(part_type==/obj/structure/ship_ammo/sentry)
+		cost = cost + omnisentry_counter * omnisentry_price_scale
 	if(get_point_store() < cost)
 		to_chat(user, SPAN_WARNING("You don't have enough points to build that."))
 		return
 	visible_message(SPAN_NOTICE("[src] starts printing something."))
 	spend_point_store(cost)
+	if(part_type==/obj/structure/ship_ammo/sentry)
+		/obj/structure/ship_ammo/sentry.point_cost +=omnisentry_price_scale
+		omnisentry_counter = omnisentry_counter +1
 	icon_state = "drone_fab_active"
 	busy = TRUE
 	addtimer(CALLBACK(src, PROC_REF(do_build_part), part_type), 10 SECONDS)
 
-/obj/structure/machinery/part_fabricator/proc/do_build_part(part_type)
-	busy = FALSE
-	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	new part_type(get_step(src, SOUTHEAST))
-	icon_state = "drone_fab_idle"
 
 /obj/structure/machinery/part_fabricator/ui_act(action, params)
 	. = ..()

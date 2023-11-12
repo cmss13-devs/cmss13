@@ -256,8 +256,6 @@ SUBSYSTEM_DEF(minimaps)
 	removal_cbs[target] = CALLBACK(src, PROC_REF(removeimage), blip, target)
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_marker))
 
-
-
 /**
  * removes an image from raw tracked lists, invoked by callback
  */
@@ -399,12 +397,12 @@ SUBSYSTEM_DEF(minimaps)
 	return map_list[map_length]
 
 /**
- * Sends relevant flattened tacmaps to a late joiner.
+ * Re-sends relevant flattened tacmaps to a single client.
  *
  * Arguments:
  * * user: The mob that is either an observer, marine, or xeno
  */
-/proc/send_tacmap_assets_latejoin(mob/user)
+/proc/resend_current_map_png(mob/user)
 	if(!user.client)
 		return
 
@@ -432,9 +430,9 @@ SUBSYSTEM_DEF(minimaps)
  * Flattens the current map and then distributes it for the specified faction as an unannounced map.
  *
  * Arguments:
- * * faction: which faction to distribute the map to: FACTION_MARINE or XENO_HIVE_NORMAL
+ * * faction: Which faction to distribute the map to: FACTION_MARINE or XENO_HIVE_NORMAL
  * Return:
- * * returns a boolean value, true if the operation was successful, false if it was not.
+ * * Returns a boolean value, TRUE if the operation was successful, FALSE if it was not (on cooldown generally).
  */
 /datum/tacmap/drawing/proc/distribute_current_map_png(faction)
 	if(faction == FACTION_MARINE)
@@ -713,6 +711,9 @@ SUBSYSTEM_DEF(minimaps)
 			else
 				debug_log("Failed to determine fallback wiki map! Attempted '[wiki_url]/[new_map.html_link]'")
 			qdel(new_map)
+
+		// Ensure we actually have the map image sent
+		resend_current_map_png(user)
 
 		if(use_live_map)
 			tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS

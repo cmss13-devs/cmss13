@@ -146,7 +146,6 @@
 
 				if(observer.client)
 					observer.client.change_view(world_view_size)
-					send_tacmap_assets_latejoin(observer)
 
 				observer.set_huds_from_prefs()
 
@@ -282,7 +281,6 @@
 				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 			if(client.player_data && client.player_data.playtime_loaded && ((round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
 				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
-			send_tacmap_assets_latejoin(character)
 
 	character.client.init_verbs()
 	qdel(src)

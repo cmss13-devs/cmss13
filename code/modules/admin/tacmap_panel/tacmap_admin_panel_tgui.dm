@@ -25,6 +25,9 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 				debug_log("Failed to determine fallback wiki map! Attempted '[wiki_url]/[new_map.html_link]'")
 			qdel(new_map)
 
+		// Ensure we actually have the latest map images sent (recache can handle older/different faction maps)
+		resend_current_map_png(user)
+
 		ui = new(user, src, "TacmapAdminPanel", "Tacmap Panel")
 		ui.open()
 

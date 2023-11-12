@@ -159,7 +159,7 @@
 	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
-	point_cost = 500
+	point_cost = 200
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 	combat_equipment = FALSE
@@ -767,7 +767,7 @@
 	firing_delay = 10 //1 seconds
 	bound_height = 32
 	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
-	point_cost = 400
+	point_cost = 200
 
 /obj/structure/dropship_equipment/weapon/launch_bay/update_equipment()
 	if(ship_base)

@@ -1315,8 +1315,12 @@ var/datum/controller/supply/supply_controller = new()
 /datum/vehicle_order/tank/has_vehicle_lock()
 	return
 
-/datum/vehicle_order/tank/empty
-	name = "Barebones M34A2 Longstreet Light Tank"
+/datum/vehicle_order/tank/broken
+	name = "Smashed M34A2 Longstreet Light Tank"
+	ordered_vehicle = /obj/effect/vehicle_spawner/tank/hull
+
+/datum/vehicle_order/tank/plain
+	name = "M34A2 Longstreet Light Tank"
 	ordered_vehicle = /obj/effect/vehicle_spawner/tank
 
 /datum/vehicle_order/apc

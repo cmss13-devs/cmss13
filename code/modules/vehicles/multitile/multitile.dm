@@ -240,31 +240,15 @@
 
 	var/amt_hardpoints = LAZYLEN(hardpoints)
 	if(amt_hardpoints)
-		var/list/image/hardpoint_images = list()
-		for(var/obj/item/hardpoint/hardpoint as anything in hardpoints)
+		for(var/obj/item/hardpoint/hardpoint in hardpoints)
 			var/image/hardpoint_image = hardpoint.get_hardpoint_image()
-			var/index = 1
-			while(index <= hardpoint_images.len)
-				var/primaryval = hardpoint_images
-
-
-			hardpoint_images_to_layer[hardpoint_image] = hardpoint.hdpt_layer
-
-
-			hardpoint_images[hardpoint_image] = hardpoint.hdpt_layer
 			if(istype(hardpoint_image))
-				log_debug("BEFORE - HARDPOINT IMAGE - ICON=[hardpoint_image.icon_state] LAYER=[hardpoint_image.layer] HDPT_LAYER=[hardpoint.hdpt_layer]")
-			else
-				log_debug("BEFORE - HARDPOINT LIST - LENGTH=[length(hardpoint_image)] HDPT_LAYER=[hardpoint.hdpt_layer]")
-		hardpoint_images = sortAssocEx(hardpoint_images, use_associated_value = TRUE, use_numeric_sort = TRUE)
-		log_debug("=======================")
-		for(var/image/hardpoint_image as anything in hardpoint_images)
-			if(istype(hardpoint_image)) // get_hardpoint_image() can return a list of images
-				log_debug("AFTER - HARDPOINT IMAGE - ICON=[hardpoint_image.icon_state] LAYER=[hardpoint_image.layer] HDPT_LAYER=[hardpoint_images[hardpoint_image]]")
-				hardpoint_image.layer = layer + hardpoint_images[hardpoint_image] * 0.1 // This is AWFUL
-			else
-				log_debug("AFTER - HARDPOINT LIST - LENGTH=[length(hardpoint_image)] HDPT_LAYER=[hardpoint_images[hardpoint_image]]")
-			overlays += hardpoint_image // No layering offset like above for hardpoint sub images ?? Huh?
+				hardpoint_image.layer = layer + hardpoint.hdpt_layer * 0.1
+			else if(islist(hardpoint_image))
+				var/list/image/hardpoint_image_list = hardpoint_image // Linter will complain about iterating on "an image" otherwise
+				for(var/image/subimage in hardpoint_image_list)
+					subimage.layer = layer + hardpoint.hdpt_layer * 0.1
+			overlays += hardpoint_image
 
 	if(clamped)
 		var/image/J = image(icon, icon_state = "vehicle_clamp", layer = layer+0.1)

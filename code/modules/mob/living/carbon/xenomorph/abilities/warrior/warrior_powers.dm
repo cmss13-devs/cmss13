@@ -90,7 +90,7 @@
 	var/turf/throw_turf = xeno.loc
 	var/turf/temp = xeno.loc
 
-	for (var/x in 0 to fling_distance-1)
+	for (var/step in 0 to fling_distance-1)
 		temp = get_step(throw_turf, facing)
 		if (!temp)
 			break

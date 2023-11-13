@@ -1417,7 +1417,7 @@ var/datum/controller/supply/supply_controller = new()
 		return
 
 	if(!is_admin_level(SSshuttle.vehicle_elevator.z))
-		to_chat(usr, SPAN_WARNING("The elevator needs to be in the crago bay dock to call a vehicle up. Ask someone to send it away."))
+		to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up. Ask someone to send it away."))
 		return
 
 	if(ismaintdrone(usr))

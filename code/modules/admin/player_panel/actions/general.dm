@@ -34,12 +34,16 @@
 	name = "Toggle Sleeping"
 
 /datum/player_action/mob_sleep/act(client/user, mob/target, list/params)
+	if(!istype(target, /mob/living))
+		return TRUE
+	var/mob/living/living = target
+
 	if (!params["sleep"]) //if they're already slept, set their sleep to zero and remove the icon
-		target.sleeping = 0
-		target.RemoveSleepingIcon()
+		living.sleeping = 0
+		living.RemoveSleepingIcon()
 	else
-		target.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
-		target.AddSleepingIcon()
+		living.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
+		living.AddSleepingIcon()
 
 	message_admins("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")
 

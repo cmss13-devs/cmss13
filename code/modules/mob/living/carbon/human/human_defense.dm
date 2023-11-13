@@ -155,6 +155,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	return FALSE
 
 /mob/living/carbon/human/emp_act(severity)
+	. = ..()
 	for(var/obj/O in src)
 		if(!O)
 			continue
@@ -167,7 +168,6 @@ Contains most of the procs that are called when a mob is attacked by something
 			if(I.robotic == FALSE)
 				continue
 			I.emp_act(severity)
-	..()
 
 
 //Returns 1 if the attack hit, 0 if it missed.

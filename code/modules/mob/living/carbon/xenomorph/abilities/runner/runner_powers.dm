@@ -58,7 +58,7 @@
 			to_chat(src, SPAN_WARNING("[O] is too far away."))
 			return
 
-	if(!isturf(loc) || burrow)
+	if(!isturf(loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_WARNING("You can't melt [O] from here!"))
 		return
 

@@ -480,6 +480,7 @@
 
 
 /obj/item/weapon/gun/emp_act(severity)
+	. = ..()
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
@@ -487,7 +488,7 @@
 Note: pickup and dropped on weapons must have both the ..() to update zoom AND twohanded,
 As sniper rifles have both and weapon mods can change them as well. ..() deals with zoom only.
 */
-/obj/item/weapon/gun/equipped(mob/user, slot)
+/obj/item/weapon/gun/equipped(mob/living/user, slot)
 	if(flags_item & NODROP) return
 
 	unwield(user)
@@ -731,7 +732,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 // END TGUI \\
 
-/obj/item/weapon/gun/wield(mob/user)
+/obj/item/weapon/gun/wield(mob/living/user)
 
 	if(!(flags_item & TWOHANDED) || flags_item & WIELDED)
 		return

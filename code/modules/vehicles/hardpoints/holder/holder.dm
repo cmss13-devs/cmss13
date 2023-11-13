@@ -43,10 +43,21 @@
 	for(var/obj/item/hardpoint/H in hardpoints)
 		H.take_damage(damage)
 
-/obj/item/hardpoint/holder/on_install(obj/vehicle/multitile/V)
-	for(var/obj/item/hardpoint/HP in hardpoints)
-		HP.owner = V
-	return
+/obj/item/hardpoint/holder/on_install(obj/vehicle/multitile/vehicle)
+	..()
+	if(!vehicle) //in loose holder
+		return
+	for(var/obj/item/hardpoint/hardpoint in hardpoints)
+		hardpoint.owner = vehicle
+		hardpoint.on_install(vehicle)
+
+/obj/item/hardpoint/holder/on_uninstall(obj/vehicle/multitile/vehicle)
+	if(!vehicle) //in loose holder
+		return
+	for(var/obj/item/hardpoint/hardpoint in hardpoints)
+		hardpoint.on_uninstall(vehicle)
+		hardpoint.owner = null
+	..()
 
 /obj/item/hardpoint/holder/proc/can_install(obj/item/hardpoint/H)
 	// Can only have 1 hardpoint of each slot type

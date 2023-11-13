@@ -193,15 +193,18 @@
 
 /// Apply hardpoint effects to vehicle and self.
 /obj/item/hardpoint/proc/on_install(obj/vehicle/multitile/vehicle)
+	if(!vehicle) //in loose holder
+		return
+	RegisterSignal(vehicle, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(recalculate_hardpoint_bonuses))
 	apply_buff(vehicle)
-	recalculate_hardpoint_bonuses()
-	return
 
 /// Remove hardpoint effects from vehicle and self.
 /obj/item/hardpoint/proc/on_uninstall(obj/vehicle/multitile/vehicle)
+	if(!vehicle) //in loose holder
+		return
+	UnregisterSignal(vehicle, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 	remove_buff(vehicle)
-	recalculate_hardpoint_bonuses()
-	return
+	//resetting values like set_gun_config_values() would be tidy, but unnecessary as it gets recalc'd on install anyway
 
 /// Applying passive buffs like damage type resistance, speed, accuracy, cooldowns.
 /obj/item/hardpoint/proc/apply_buff(obj/vehicle/multitile/vehicle)
@@ -214,7 +217,7 @@
 		for(var/type in buff_multipliers)
 			vehicle.misc_multipliers[type] *= LAZYACCESS(buff_multipliers, type)
 	buff_applied = TRUE
-	vehicle.on_modifiers_change()
+	SEND_SIGNAL(vehicle, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 
 /// Removing passive buffs like damage type resistance, speed, accuracy, cooldowns.
 /obj/item/hardpoint/proc/remove_buff(obj/vehicle/multitile/vehicle)
@@ -227,7 +230,7 @@
 		for(var/type in buff_multipliers)
 			vehicle.misc_multipliers[type] *= 1 / LAZYACCESS(buff_multipliers, type)
 	buff_applied = FALSE
-	vehicle.on_modifiers_change()
+	SEND_SIGNAL(vehicle, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 
 /// Recalculates hardpoint values based on vehicle modifiers.
 /obj/item/hardpoint/proc/recalculate_hardpoint_bonuses()

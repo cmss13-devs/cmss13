@@ -496,3 +496,11 @@
 		return
 	face_dir(direction)
 	return ..()
+
+// Transition handlers. do NOT use this. I mean seriously don't. It's broken. Players love their broken behaviors.
+/mob/living/proc/GetStunValueNotADurationDoNotUse()
+	return stunned
+/mob/living/proc/GetKnockDownValueNotADurationDoNotUse()
+	return knocked_down
+/mob/living/proc/GetKnockOutValueNotADurationDoNotUse()
+	return knocked_out

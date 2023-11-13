@@ -489,11 +489,6 @@
 		var/mob/living/carbon/human/H = src
 		H.update_body()
 
-/mob/living/canface()
-	if(!(mobility_flags & MOBILITY_MOVE))
-		return FALSE // Choice by default, feel free to change
-	return ..()
-
 /mob/living/keybind_face_direction(direction)
 	if(!canface())
 		return

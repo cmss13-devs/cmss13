@@ -460,7 +460,7 @@
 			else
 				msg += "\[[criminal]\]\n"
 
-			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>"
+			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]\n</a>"
 			if(!observer)
 				msg += " <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
 

@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed an issue in traits backend update causing among others leadership action buttons to be missing."

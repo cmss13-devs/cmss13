@@ -299,10 +299,10 @@
 	health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
-			wound_icon_carrier.icon_state = "none"
+			wound_icon_holder.icon_state = "none"
 		else if(body_position == LYING_DOWN)
 			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-				wound_icon_carrier.icon_state = "[caste.caste_type]_rest_[health_threshold]"
+				wound_icon_holder.icon_state = "[caste.caste_type]_rest_[health_threshold]"
 			else
 				wound_icon_holder.icon_state = "[caste.caste_type]_downed_[health_threshold]"
 		else if(!handle_special_state())

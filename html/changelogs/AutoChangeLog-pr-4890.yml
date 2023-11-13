@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - rscadd: "Observer with Security HUD enabled can examine and read security records."

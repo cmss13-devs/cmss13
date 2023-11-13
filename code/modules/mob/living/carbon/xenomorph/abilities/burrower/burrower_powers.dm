@@ -35,7 +35,6 @@
 		return
 	// TODO Make immune to all damage here.
 	to_chat(src, SPAN_XENOWARNING("You burrow yourself into the ground."))
-	burrow = TRUE
 	frozen = TRUE
 	invisibility = 101
 	anchored = TRUE
@@ -56,20 +55,19 @@
 	process_burrow()
 
 /mob/living/carbon/xenomorph/proc/process_burrow()
-	if(!burrow)
+	if(!HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	if(world.time > burrow_timer && !tunnel)
 		burrow_off()
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		addtimer(CALLBACK(src, PROC_REF(process_burrow)), 1 SECONDS)
 
 /mob/living/carbon/xenomorph/proc/burrow_off()
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
-	burrow = FALSE
 	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
 		UnregisterSignal(src, list(
 				COMSIG_LIVING_PREIGNITION,
@@ -93,7 +91,7 @@
 
 /mob/living/carbon/xenomorph/proc/do_burrow_cooldown()
 	used_burrow = FALSE
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_NOTICE("You can now surface."))
 	for(var/X in actions)
 		var/datum/action/act = X
@@ -104,7 +102,7 @@
 	if(!check_state())
 		return
 
-	if(!burrow)
+	if(!HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_NOTICE("You must be burrowed to do this."))
 		return
 
@@ -201,7 +199,7 @@
 	return !xeno.used_tremor
 
 /mob/living/carbon/xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
-	if(burrow || is_ventcrawling)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED) || is_ventcrawling)
 		to_chat(src, SPAN_XENOWARNING("You must be above ground to do this."))
 		return
 

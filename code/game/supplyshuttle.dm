@@ -1317,7 +1317,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /datum/vehicle_order/tank/broken
 	name = "Smashed M34A2 Longstreet Light Tank"
-	ordered_vehicle = /obj/effect/vehicle_spawner/tank/hull
+	ordered_vehicle = /obj/effect/vehicle_spawner/tank/hull/broken
 
 /datum/vehicle_order/tank/plain
 	name = "M34A2 Longstreet Light Tank"
@@ -1337,7 +1337,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /datum/vehicle_order/apc/empty
 	name = "Barebones M577 Armored Personal Carrier"
-	ordered_vehicle = /obj/effect/vehicle_spawner/apc
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc/unarmed/broken
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
 	. = ..()

@@ -88,6 +88,7 @@
 /mob/living/proc/stun_callback()
 	stunned = 0
 	handle_regular_status_updates(FALSE)
+	update_canmove()
 	if(stun_timer != TIMER_ID_NULL)
 		deltimer(stun_timer)
 		stun_timer = TIMER_ID_NULL
@@ -110,6 +111,7 @@
 		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
 		stun_clock_adjustment()
 		stun_callback_check()
+		update_canmove()
 	return
 
 /mob/living/proc/SetStun(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
@@ -117,12 +119,14 @@
 		stunned = max(amount,0)
 		stun_clock_adjustment()
 		stun_callback_check()
+		update_canmove()
 	return
 
 /mob/living/proc/AdjustStun(amount)
 	if(status_flags & CANSTUN)
 		stunned = max(stunned + amount,0)
 		stun_callback_check()
+		update_canmove()
 	return
 
 /mob/living/proc/Daze(amount)
@@ -174,6 +178,7 @@
 /mob/living/proc/knocked_down_callback()
 	knocked_down = 0
 	handle_regular_status_updates(FALSE)
+	update_canmove()
 	knocked_down_timer = null
 
 /mob/living/proc/knocked_down_callback_check()
@@ -194,6 +199,7 @@
 /mob/living/proc/knocked_out_callback()
 	knocked_out = 0
 	handle_regular_status_updates(FALSE)
+	update_canmove()
 	knocked_out_timer = null
 
 /mob/living/proc/knocked_out_callback_check()
@@ -217,6 +223,7 @@
 		knocked_down = max(max(knocked_down,amount),0)
 		knockdown_clock_adjustment()
 		knocked_down_callback_check()
+		update_canmove()
 	return
 
 
@@ -225,12 +232,14 @@
 		knocked_down = max(amount,0)
 		knockdown_clock_adjustment()
 		knocked_down_callback_check()
+		update_canmove()
 	return
 
 /mob/living/proc/AdjustKnockDown(amount)
 	if(status_flags & CANKNOCKDOWN)
 		knocked_down = max(knocked_down + amount,0)
 		knocked_down_callback_check()
+		update_canmove()
 	return
 
 /mob/living/proc/knockout_clock_adjustment()
@@ -241,6 +250,7 @@
 		knocked_out = max(max(knocked_out,amount),0)
 		knockout_clock_adjustment()
 		knocked_out_callback_check()
+		update_canmove()
 	return
 
 /mob/living/proc/SetKnockOut(amount)
@@ -248,12 +258,14 @@
 		knocked_out = max(amount,0)
 		knockout_clock_adjustment()
 		knocked_out_callback_check()
+		update_canmove()
 	return
 
 /mob/living/proc/AdjustKnockOut(amount)
 	if(status_flags & CANKNOCKOUT)
 		knocked_out = max(knocked_out + amount,0)
 		knocked_out_callback_check()
+		update_canmove()
 	return
 
 /mob/living/proc/Sleeping(amount)

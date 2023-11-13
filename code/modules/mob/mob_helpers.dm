@@ -315,7 +315,6 @@ var/global/list/limb_types_by_name = list(
 /mob/proc/is_mob_incapacitated(ignore_restrained)
 	// note that stat includes knockout via unconscious
 	return (stat || (!ignore_restrained && is_mob_restrained()) || (status_flags & FAKEDEATH) || HAS_TRAIT(src, TRAIT_INCAPACITATED))
-
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
 

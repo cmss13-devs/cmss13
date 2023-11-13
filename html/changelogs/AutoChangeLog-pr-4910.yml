@@ -1,0 +1,4 @@
+author: "Ediblebomb"
+delete-after: True
+changes:
+  - qol: "Changed \"Subject is brain-dead.\" to \"Subject has taken extreme amounts of brain damage.\" when scanning somebody with 100 brain damage."

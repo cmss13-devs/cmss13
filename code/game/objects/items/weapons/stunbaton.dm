@@ -197,9 +197,9 @@
 	return TRUE
 
 /obj/item/weapon/baton/emp_act(severity)
+	. = ..()
 	if(bcell)
 		bcell.emp_act(severity) //let's not duplicate code everywhere if we don't have to please.
-	..()
 
 //secborg stun baton module
 /obj/item/weapon/baton/robot/attack_self(mob/user)

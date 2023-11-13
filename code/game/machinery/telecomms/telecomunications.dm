@@ -93,13 +93,13 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	update_state()
 
 /obj/structure/machinery/telecomms/emp_act(severity)
+	. = ..()
 	if(prob(100/severity))
 		if(!(stat & EMPED))
 			stat |= EMPED
 			var/duration = (300 * 10)/severity
 			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the machines to reboot.
 				stat &= ~EMPED
-	..()
 
 /*
 	The receiver idles and receives messages from subspace-compatible radio equipment;

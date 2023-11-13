@@ -500,3 +500,4 @@
 	if(stat >= UNCONSCIOUS)
 		return
 	face_dir(direction)
+	return ..()

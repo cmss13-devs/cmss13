@@ -292,6 +292,7 @@
 	right_wristblades = new(src)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
+	. = ..()
 	charge = max(charge - (severity * 500), 0)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc

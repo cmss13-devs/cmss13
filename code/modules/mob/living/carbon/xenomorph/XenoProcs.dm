@@ -660,7 +660,7 @@
 
 
 /mob/living/carbon/xenomorph/burn_skin(burn_amount)
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return FALSE
 
 	if(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE)

@@ -84,6 +84,14 @@
 	var/mutable_appearance/hugger_overlays_icon
 	var/mutable_appearance/eggsac_overlays_icon
 
+	//Carrier specific vars
+	var/threw_a_hugger = 0
+	var/huggers_cur = 0
+	var/eggs_cur = 0
+	var/huggers_max = 0
+	var/eggs_max = 0
+	var/laid_egg = 0
+
 /mob/living/carbon/xenomorph/carrier/update_icons()
 	. = ..()
 	if (mutation_type == CARRIER_NORMAL)

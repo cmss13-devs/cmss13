@@ -1,0 +1,4 @@
+author: "BraveMole, Zonespace"
+delete-after: True
+changes:
+  - bugfix: "Guns should no longer very rarely jam mid-burst."

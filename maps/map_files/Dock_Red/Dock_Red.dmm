@@ -42,7 +42,7 @@
 	},
 /area/dockred/caves/eta/research)
 "ag" = (
-/obj/structure/machinery/power/apc/wires_cut{
+/obj/structure/machinery/power/apc/fully_broken{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -349,7 +349,7 @@
 	},
 /area/dockred/caves/lambda/xenobiology)
 "aY" = (
-/obj/structure/machinery/power/apc/wires_cut{
+/obj/structure/machinery/power/apc/fully_broken/no_cell{
 	dir = 1
 	},
 /turf/open/mars_cave{
@@ -542,6 +542,11 @@
 /area/dockred/caves/lambda/breakroom)
 "by" = (
 /obj/structure/machinery/landinglight/ds1,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice7";
+	pixel_x = 16;
+	pixel_y = 17
+	},
 /turf/open/floor{
 	icon_state = "asteroidwarning"
 	},
@@ -2778,6 +2783,17 @@
 	icon_state = "carpet9-4"
 	},
 /area/dockred/outside/bar)
+"iH" = (
+/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
+/area/dockred/outside/port_inside)
 "iI" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
@@ -4625,7 +4641,7 @@
 	dir = 8;
 	icon_state = "darkblue2"
 	},
-/area/dockred/outside/port_inside)
+/area/dockred/outside/port_inside/console)
 "oH" = (
 /obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/floor{
@@ -5896,6 +5912,11 @@
 /area/dockred/outside/port_inside)
 "sC" = (
 /obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
 /turf/open/floor{
 	icon_state = "asteroidwarning"
 	},
@@ -7050,7 +7071,6 @@
 "wo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cheesie,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
 	},
@@ -7258,7 +7278,7 @@
 	},
 /area/dockred/caves/lambda/research)
 "wX" = (
-/obj/structure/machinery/power/apc/wires_cut{
+/obj/structure/machinery/power/apc/fully_broken/no_cell{
 	dir = 4
 	},
 /turf/open/floor/plating{
@@ -9648,11 +9668,16 @@
 	},
 /area/dockred/outside/dorms)
 "Ew" = (
-/obj/effect/landmark/survivor_spawner,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/interior/wood/alt,
-/area/dockred/outside/bar)
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = 16;
+	pixel_y = -15
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/dockred/outside/port_inside)
 "Ey" = (
 /obj/structure/barricade/metal{
 	dir = 4
@@ -10371,7 +10396,7 @@
 	},
 /area/dockred/outside/port_outside)
 "GL" = (
-/obj/structure/machinery/power/apc/fully_broken{
+/obj/structure/machinery/power/apc/fully_broken/no_cell{
 	dir = 8
 	},
 /turf/open/floor{
@@ -11036,6 +11061,17 @@
 /obj/structure/surface/table/woodentable/poor,
 /turf/open/floor{
 	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/dockred/outside/port_inside)
+"IP" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor{
 	icon_state = "asteroidwarning"
 	},
 /area/dockred/outside/port_inside)
@@ -13945,6 +13981,14 @@
 	icon_state = "darkgreencorners2"
 	},
 /area/dockred/caves/eta/research)
+"RV" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice9";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor/plating,
+/area/dockred/outside/port_inside)
 "RW" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/interior/wood,
@@ -14053,6 +14097,17 @@
 	icon_state = "grimy"
 	},
 /area/dockred/outside/bar)
+"Sp" = (
+/obj/structure/machinery/landinglight/ds1,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
+/area/dockred/outside/port_inside)
 "Sq" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -14931,9 +14986,10 @@
 /turf/open/floor/wood,
 /area/dockred/caves/lambda/breakroom)
 "Vc" = (
-/obj/structure/machinery/computer/shuttle{
+/obj/structure/machinery/prop/almayer/computer/PC{
 	icon_state = "overwatchb";
-	pixel_y = 21
+	name = "shuttle control";
+	pixel_y = 18
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -25270,7 +25326,7 @@ pD
 pD
 Sr
 Sh
-Ew
+CV
 IW
 Ju
 LQ
@@ -29094,8 +29150,8 @@ oU
 MQ
 MQ
 Bv
-Fs
-Fs
+KZ
+KZ
 by
 Cr
 wV
@@ -29279,7 +29335,7 @@ Bv
 GH
 Fs
 TT
-Cr
+RV
 wV
 wV
 wV
@@ -29460,8 +29516,8 @@ MQ
 Bv
 Fs
 Ue
-vW
-Cr
+IP
+wV
 wV
 wV
 wV
@@ -29642,8 +29698,8 @@ MQ
 Bv
 Iz
 zY
-Uc
-Cr
+iH
+wV
 wV
 wV
 wV
@@ -29824,8 +29880,8 @@ MQ
 Bv
 Fs
 tN
-by
-Cr
+Sp
+wV
 wV
 wV
 wV
@@ -30005,9 +30061,9 @@ MQ
 MQ
 Bv
 xN
-Fs
+Ew
 sC
-Cr
+uI
 wV
 wV
 wV
@@ -30189,7 +30245,7 @@ Bv
 Rf
 Fs
 vW
-Cr
+wV
 wV
 wV
 wV

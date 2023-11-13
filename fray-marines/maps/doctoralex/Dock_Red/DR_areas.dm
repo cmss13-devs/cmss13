@@ -54,6 +54,10 @@
 	ceiling = CEILING_METAL
 	minimap_color = MINIMAP_AREA_COMMAND
 	is_landing_zone = TRUE
+	is_resin_allowed = FALSE
+
+/area/dockred/outside/port_inside/console
+	requires_power = FALSE
 
 /area/dockred/outside/cargo
 	name = "\improper Dock Red - Cargo Depot"

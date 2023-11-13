@@ -314,3 +314,44 @@ GLOBAL_PROTECT(config_error_log)
 /proc/shutdown_logging()
 	rustg_log_close_all()
 	GLOB.logger.shutdown_logging()
+
+/// Primitive json logging handler for proper log intake to OpenSearch until we figure out how exactly we want to structure this
+/// example usage: log_json_event(list(damage = 4), logtype = "ATTACK", module = "combat", eventtype = "hit", actor = attacking_mob, interactee = attacked_mob, location = get_turf(attacked_mob), "[attacking_mob] hit [attacked_mob] in [get_area(attacked_mob)]")
+/// This should only be used for high profile logs currently because of likely performance overhead
+/proc/log_json_event(message, logtype = "ADMIN", module = "unspecified", eventtype = "unspecified", actor, interactee, atom/location, list/data)
+	var/list/event
+	if(data)
+		event = data.Copy()
+	else
+		event = list()
+	event["logtype"] = logtype
+	event["module"] = module
+	event["eventtype"] = eventtype
+	if(actor)
+		if(istype(actor, /client))
+			var/client/client_actor = actor
+			event["actor_key"] = client_actor.ckey
+			event["actor_mob"] = client_actor.mob?.name
+		else if(istype(actor, /mob))
+			var/mob/mob_actor = actor
+			event["actor_key"] = mob_actor.logging_ckey || "*null*"
+			event["actor_mob"] = mob_actor.name
+	if(interactee)
+		if(istype(interactee, /client))
+			var/client/client_interactee = interactee
+			event["interactee_key"] = client_interactee.ckey
+			event["interactee_mob"] = client_interactee.mob?.name
+		else if(istype(interactee, /mob))
+			var/mob/mob_interactee = interactee
+			event["interactee_key"] = mob_interactee.logging_ckey || "*null*"
+			event["interactee_mob"] = mob_interactee.name
+	if(isatom(location))
+		var/turf/turf = get_turf(location)
+		if(turf)
+			event["x"] = turf.x
+			event["y"] = turf.y
+			event["z"] = turf.z
+	if(message)
+		event["message"] = message
+	event["timestamp"] = iso_time_stamp()
+	WRITE_LOG_NO_FORMAT(GLOB.json_event_log, "[json_encode(event)]\n")

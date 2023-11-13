@@ -132,6 +132,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	if(round_statistics)
 		round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
+	log_json_event("Round completed: [round_finished]", logtype = "STATS", module = "game_mode", eventtype = "round_end", data = list("duration" = ROUND_TIME, "result" = round_finished))
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 

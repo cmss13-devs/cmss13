@@ -138,6 +138,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.round_stats = "[GLOB.log_directory]/round_stats.log"
 	GLOB.scheduler_stats = "[GLOB.log_directory]/round_scheduler_stats.log"
 	GLOB.mutator_logs = "[GLOB.log_directory]/mutator_logs.log"
+	GLOB.json_event_log = "[GLOB.log_directory]/json_event_log.log"
 
 	start_log(GLOB.tgui_log)
 	start_log(GLOB.world_href_log)
@@ -147,6 +148,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	start_log(GLOB.round_stats)
 	start_log(GLOB.scheduler_stats)
 	start_log(GLOB.mutator_logs)
+	log_json_event(logtype = "WORLD", module = "logging", eventtype = "logstart", data = list("round_id" = GLOB.round_id))
 
 	if(fexists(GLOB.config_error_log))
 		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")

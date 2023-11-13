@@ -38,6 +38,10 @@ var/rollovercheck_last_timeofday = 0
 		wtime = world.time
 	return time2text(wtime - GLOB.timezoneOffset, format)
 
+/// Show the current date and time in ISO 8601 format
+/proc/iso_time_stamp()
+	return "[time2text(world.realtime, "YYYY-MM-DD")]T[time2text(world.realtime, "hh:mm:ss")]Z"
+
 /proc/time_stamp() // Shows current GMT time
 	return time2text(world.timeofday, "hh:mm:ss")
 

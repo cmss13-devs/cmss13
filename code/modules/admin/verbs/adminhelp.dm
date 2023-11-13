@@ -302,6 +302,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/list/activemins = adm["present"]
 	var/admin_number_present = activemins.len
 
+	log_json_event("New ahelp ticket", logtype = "ADMIN", module = "adminhelp", eventtype = "new_ticket", actor = initiator, data = list("ticket_id" = id, "ahelp_message" = message, "admins_present" = admin_number_present))
 	log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 	if(admin_number_present <= 0)
 		to_chat(initiator, SPAN_NOTICE("No active admins are online, your adminhelp was sent to admins who are available through IRC or Discord."), confidential = TRUE)

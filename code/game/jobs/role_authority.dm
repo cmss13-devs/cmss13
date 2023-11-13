@@ -218,6 +218,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	unassigned_players = shuffle(unassigned_players, 1) //Shuffle the players.
 
+	var/ready_players = length(unassigned_players)
+	var/list/json_data = list("ready_players" = ready_players)
 
 	// How many positions do we open based on total pop
 	for(var/i in roles_by_name)
@@ -274,6 +276,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
 
 	var/alternate_option_assigned = 0;
+	var/lobbied = 0
 	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB)
@@ -287,7 +290,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				assign_role(M, temp_roles_for_mode[JOB_XENOMORPH])
 			if(RETURN_TO_LOBBY)
 				M.ready = 0
+				lobbied++
 		unassigned_players -= M
+
+	json_data["lobbied"] = lobbied
 
 	if(length(unassigned_players))
 		to_world(SPAN_DEBUG("Error setting up jobs, unassigned_players still has players left. Length of: [length(unassigned_players)]."))
@@ -300,6 +306,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(hive) && istype(XJ))
 		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
 		+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
+		json_data["xenos"] = XJ.current_positions
+		json_data["larvas"] = hive.stored_larva
+
+	log_json_event("Assigning roundstart jobs with [ready_players] players readied up.", logtype = "STATS", module = "roles", eventtype = "job_assignments", data = json_data)
 
 	/*===============================================================*/
 

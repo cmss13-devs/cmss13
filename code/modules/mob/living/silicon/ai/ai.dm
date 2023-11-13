@@ -301,8 +301,8 @@ var/list/ai_verbs_default = list(
 	return 0
 
 /mob/living/silicon/ai/emp_act(severity)
+	. = ..()
 	if (prob(30)) view_core()
-	..()
 
 /mob/living/silicon/ai/Topic(href, href_list)
 	if(usr != src)

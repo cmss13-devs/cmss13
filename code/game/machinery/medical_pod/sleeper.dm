@@ -332,14 +332,13 @@
 
 
 /obj/structure/machinery/medical_pod/sleeper/emp_act(severity)
+	. = ..()
 	if(filtering)
 		toggle_filter()
 	if(inoperable())
-		..(severity)
 		return
 	if(occupant)
 		go_out()
-	..()
 
 /obj/structure/machinery/medical_pod/sleeper/proc/toggle_filter()
 	if(!occupant)

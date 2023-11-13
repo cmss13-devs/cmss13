@@ -10,6 +10,9 @@
 			_L = target._status_traits; \
 			_L[trait] = list(source); \
 			SEND_SIGNAL(target, SIGNAL_ADDTRAIT(trait), trait); \
+			if(trait in GLOB.traits_with_elements){ \
+				target.AddElement(GLOB.traits_with_elements[trait]); \
+			} \
 		} else { \
 			_L = target._status_traits; \
 			if (_L[trait]) { \
@@ -17,6 +20,9 @@
 			} else { \
 				_L[trait] = list(source); \
 				SEND_SIGNAL(target, SIGNAL_ADDTRAIT(trait), trait); \
+				if(trait in GLOB.traits_with_elements){ \
+					target.AddElement(GLOB.traits_with_elements[trait]); \
+				} \
 			} \
 		} \
 	} while (0)
@@ -38,6 +44,9 @@
 			if (!length(_L[trait])) { \
 				_L -= trait; \
 				SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(trait), trait); \
+				if(trait in GLOB.traits_with_elements) { \
+					target.RemoveElement(GLOB.traits_with_elements[trait]); \
+				} \
 			}; \
 			if (!length(_L)) { \
 				target._status_traits = null \
@@ -62,6 +71,9 @@
 			if (!length(_traits_list[trait])) { \
 				_traits_list -= trait; \
 				SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(trait), trait); \
+				if(trait in GLOB.traits_with_elements) { \
+					target.RemoveElement(GLOB.traits_with_elements[trait]); \
+				} \
 			}; \
 			if (!length(_traits_list)) { \
 				target._status_traits = null \
@@ -78,8 +90,11 @@
 				if (!length(_L[_T])) { \
 					_L -= _T; \
 					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T), _T); \
+					if(trait in GLOB.traits_with_elements) { \
+						target.RemoveElement(GLOB.traits_with_elements[trait]); \
 					}; \
 				};\
+			};\
 			if (!length(_L)) { \
 				target._status_traits = null\
 			};\
@@ -101,8 +116,11 @@
 				if (!length(_L[_T])) { \
 					_L -= _T; \
 					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T)); \
+					if(_T in GLOB.traits_with_elements) { \
+						target.RemoveElement(GLOB.traits_with_elements[_T]); \
 					}; \
 				};\
+			};\
 			if (!length(_L)) { \
 				target._status_traits = null\
 			};\
@@ -123,9 +141,6 @@
 
 /// Example trait
 // #define TRAIT_X "t_x"
-
-/// cannot be removed without admin intervention
-#define ROUNDSTART_TRAIT "roundstart"
 
 //-- mob traits --
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
@@ -291,6 +306,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob = list(
 		"TRAIT_KNOCKEDOUT" = TRAIT_KNOCKEDOUT,
 		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
+		"TRAIT_INCAPACITATED" = TRAIT_INCAPACITATED,
 		"TRAIT_FLOORED" = TRAIT_FLOORED,
 		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
@@ -368,6 +384,8 @@ GLOBAL_LIST(trait_name_map)
 /// Example trait source
 // #define TRAIT_SOURCE_Y "t_s_y"
 #define TRAIT_SOURCE_INHERENT "t_s_inherent"
+/// cannot be removed without admin intervention
+#define ROUNDSTART_TRAIT "roundstart"
 //-- mob traits --
 ///Status trait coming from lying down through update_canmove()
 #define LYING_TRAIT "lying"
@@ -377,8 +395,6 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_HIVE "t_s_hive"
 ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
-///Status trait coming from roundstart quirks (that don't exist yet). Unremovable by REMOVE_TRAIT
-#define TRAIT_SOURCE_QUIRK "t_s_quirk"
 ///Status trait coming from being assigned as [acting] squad leader.
 #define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
 ///Status trait coming from their job

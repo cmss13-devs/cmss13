@@ -221,7 +221,7 @@
 	update()
 
 ///Attempt to move while inside
-/obj/structure/machinery/disposal/relaymove(mob/user)
+/obj/structure/machinery/disposal/relaymove(mob/living/user)
 	if(user.is_mob_incapacitated(TRUE) || flushing)
 		return FALSE
 	if(user.loc == src)

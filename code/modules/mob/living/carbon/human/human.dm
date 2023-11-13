@@ -613,7 +613,7 @@
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["secrecord"])
-		if(hasHUD(usr,"security"))
+		if(hasHUD(usr,"security") || isobserver(usr))
 			var/perpref = null
 			var/read = 0
 
@@ -625,7 +625,7 @@
 				if(E.fields["ref"] == perpref)
 					for(var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
-							if(hasHUD(usr,"security"))
+							if(hasHUD(usr,"security") || isobserver(usr))
 								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
 								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
@@ -634,7 +634,7 @@
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-	if(href_list["secrecordComment"] && hasHUD(usr,"security"))
+	if(href_list["secrecordComment"] && (hasHUD(usr,"security") || isobserver(usr)))
 		var/perpref = null
 		if(wear_id)
 			var/obj/item/card/id/ID = wear_id.GetID()
@@ -663,7 +663,8 @@
 							continue
 						comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
 					to_chat(usr, comment_markup)
-					to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
+					if(!isobserver(usr))
+						to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
 
 		if(!read)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))

@@ -705,6 +705,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(anchored) return 0
 	if(monkeyizing) return 0
 	if(is_mob_restrained()) return 0
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED)) // We allow rotation if simply floored
+		return FALSE
 	return 1
 
 /mob/proc/face_dir(ndir, specific_dir)

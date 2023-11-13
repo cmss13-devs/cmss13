@@ -49,8 +49,9 @@
 
 	if(!isxeno(M))
 		if(insta_neuro)
-			M.adjust_effect(1 * power, WEAKEN)
-			return
+			if(M.GetKnockDownValueNotADurationDoNotUse() < 3) // If they have less than somewhere random between 4 and 6 seconds KD left and assuming it doesnt get refreshed itnernally
+				M.adjust_effect(1 * power, WEAKEN)
+				return
 
 		if(ishuman(M))
 			M.apply_effect(2.5, SUPERSLOW)
@@ -64,8 +65,9 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
-			M.visible_message(SPAN_DANGER("[M] falls prone."))
+			if(M.GetKnockDownValueNotADurationDoNotUse() < 5) // If they have less than somewhere random between 8 and 10 seconds KD left and assuming it doesnt get refreshed itnernally
+				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
+				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/living/M)
 	if(ishuman(M))
@@ -77,8 +79,9 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		M.apply_effect(0.5, WEAKEN)
-		M.visible_message(SPAN_DANGER("[M] falls prone."))
+		if(M.GetKnockDownValueNotADurationDoNotUse() < 0.7) // basically (knocked_down && prob(90))
+			M.apply_effect(0.7, WEAKEN)
+			M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))

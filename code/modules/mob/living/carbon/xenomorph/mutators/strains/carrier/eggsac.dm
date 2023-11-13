@@ -58,7 +58,7 @@
 
 /datum/action/xeno_action/active_toggle/generate_egg/should_use_plasma()
 	. = FALSE
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/carrier/xeno = owner
 	if(!xeno)
 		return
 	if(xeno.eggs_cur < xeno.eggs_max)
@@ -67,7 +67,7 @@
 /datum/action/xeno_action/active_toggle/generate_egg/life_tick()
 	. = ..()
 	if(.)
-		var/mob/living/carbon/xenomorph/xeno = owner
+		var/mob/living/carbon/xenomorph/carrier/xeno = owner
 		if(!xeno)
 			return
 		if(xeno.eggs_cur < xeno.eggs_max)

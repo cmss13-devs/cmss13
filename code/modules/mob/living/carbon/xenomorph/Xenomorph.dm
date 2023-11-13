@@ -21,7 +21,8 @@
 	if(mind in SSticker.mode.xenomorphs)
 		to_chat(src, SPAN_DEBUG("[src] mind is in the xenomorph list. Mind key is [mind.key]."))
 		to_chat(src, SPAN_DEBUG("Current mob is: [mind.current]. Original mob is: [mind.original]."))
-	else to_chat(src, SPAN_DEBUG("This xenomorph is not in the xenomorph list."))
+	else
+		to_chat(src, SPAN_DEBUG("This xenomorph is not in the xenomorph list."))
 #endif
 
 #undef DEBUG_XENO
@@ -279,7 +280,6 @@
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
 	var/ripping_limb = FALSE
-	var/steelcrest = FALSE
 	/// The world.time at which we will regurgitate our currently-vored victim
 	var/devour_timer = 0
 	/// For drones/hivelords. Extends the maximum build range they have
@@ -337,34 +337,23 @@
 
 	//Burrower Vars
 	var/used_tremor = 0
-	// Defender vars
-	var/used_headbutt = 0
-	var/used_fortify = 0
 	// Burrowers
 	var/used_burrow = 0
 	var/used_tunnel = 0
 
-	//Carrier vars
-	var/threw_a_hugger = 0
-	var/huggers_cur = 0
-	var/eggs_cur = 0
-	var/huggers_max = 0
-	var/eggs_max = 0
-	var/laid_egg = 0
-
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
-	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
-	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
+	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
+	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
 
-	wound_icon_carrier = new(null, src)
-	vis_contents += wound_icon_carrier
+	wound_icon_holder = new(null, src)
+	vis_contents += wound_icon_holder
 
 	if(oldXeno)
 		set_movement_intent(oldXeno.m_intent)
@@ -718,11 +707,11 @@
 
 	built_structures = null
 
-	vis_contents -= wound_icon_carrier
-	QDEL_NULL(wound_icon_carrier)
-	if(backpack_icon_carrier)
-		vis_contents -= backpack_icon_carrier
-		QDEL_NULL(backpack_icon_carrier)
+	vis_contents -= wound_icon_holder
+	QDEL_NULL(wound_icon_holder)
+	if(backpack_icon_holder)
+		vis_contents -= backpack_icon_holder
+		QDEL_NULL(backpack_icon_holder)
 
 	QDEL_NULL(iff_tag)
 
@@ -945,8 +934,9 @@
 		if(is_zoomed)
 			zoom_out()
 	if(iscarrier(src))
-		huggers_max = caste.huggers_max
-		eggs_max = caste.eggs_max
+		var/mob/living/carbon/xenomorph/carrier/carrier = src
+		carrier.huggers_max = caste.huggers_max
+		carrier.eggs_max = caste.eggs_max
 	need_weeds = mutators.need_weeds
 
 

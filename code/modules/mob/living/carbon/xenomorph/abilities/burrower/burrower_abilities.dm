@@ -11,7 +11,7 @@
 
 /datum/action/xeno_action/activable/burrow/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
-	if(X.burrow)
+	if(HAS_TRAIT(X, TRAIT_ABILITY_BURROWED))
 		X.tunnel(get_turf(A))
 	else
 		X.burrow()

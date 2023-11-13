@@ -166,3 +166,13 @@
   SpartanBobby:
   - maptweak: fixes conflicting tiles on USS Almayer squad bunks
   - maptweak: updates multiple bedrooms and closet area detailing
+2023-11-11:
+  QuickLode:
+  - rscadd: SUPERLIGHT armor category.
+  - balance: M4 Synthetic Armor slows by 10% to justify having 1 extra storage slot.
+  - spellcheck: Clarifies M4 Synthetic Armor description that it does not have any
+      armor whatsoever.
+2023-11-12:
+  SpartanBobby Tophatpenguin:
+  - maptweak: redetails a room on the upper deck of the USS Almayer, places a few
+      L42As in this room

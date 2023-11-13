@@ -1,0 +1,5 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Less powerful variants of the Commando ERTs (Marsoc, WY Whiteout, UPP Commandos) have been added for admin use."
+  - admin: "The powerful versions of commando ERTs are denoted with (!DEATHSQUAD!) in the distress call and equipment preset menus."

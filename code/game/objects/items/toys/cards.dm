@@ -21,7 +21,6 @@
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
 	w_class = SIZE_TINY
-	flags_item = NOTABLEMERGE
 
 	var/base_icon = "deck"
 	var/max_cards = 52
@@ -262,7 +261,6 @@
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "empty"
 	w_class = SIZE_TINY
-	flags_item = NOTABLEMERGE
 
 	var/concealed = FALSE
 	var/pile_state = FALSE

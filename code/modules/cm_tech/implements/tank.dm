@@ -11,7 +11,7 @@
 	icon = 'icons/obj/items/pamphlets.dmi'
 	icon_state = "pamphlet_written"
 	item_state = "pamphlet_written"
-	var/vehicle_type = /datum/vehicle_order/apc
+	var/vehicle_type = /datum/vehicle_order/apc/empty
 	var/vehicle_category = "APC"
 
 /obj/item/vehicle_coupon/tank

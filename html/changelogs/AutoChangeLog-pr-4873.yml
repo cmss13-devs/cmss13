@@ -1,0 +1,4 @@
+author: "Releasethesea"
+delete-after: True
+changes:
+  - bugfix: "Fixxed the improperly area'd hull south of construction site, adds fire shutters to north fueling pod to make it mirror the south one"

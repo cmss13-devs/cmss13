@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-/// Admin music volume, from 0 to 1.
-/client/var/admin_music_volume = 1
+/// Admin music volume, from 0 to 0.25. YEAH WE DON'T GO TO 100% IT'S JUST THAT LOUD.
+/client/var/admin_music_volume = 0.2
 
 /**
  * public

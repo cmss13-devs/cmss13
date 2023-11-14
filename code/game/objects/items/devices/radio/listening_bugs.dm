@@ -25,10 +25,13 @@
 	frequency = BUG_A_FREQ
 	canhear_range = 2
 	freqlock = TRUE
-	/// What the bug is currently pretending to be.
-	var/current_disguise = DISGUISE_REMOVE
+	/// If the bug is disguised or not.
+	var/ready_to_disguise = FALSE
+	var/disguised = FALSE
 	/// Whether or not the bug can be used to listen to its own channel.
 	var/prevent_snooping = FALSE
+	/// The ID tag of the device, for identification.
+	var/nametag = "Device"
 
 /obj/item/device/radio/listening_bug/ui_data(mob/user)
 	var/list/data = list()
@@ -84,10 +87,55 @@
 	..()
 
 /obj/item/device/radio/listening_bug/hear_talk(mob/M as mob, msg, verb = "says", datum/language/speaking = null)
-	var/processed_verb = "[SPAN_RED("\[LSTN Device\]")] [verb]"
+	var/processed_verb = "[SPAN_RED("\[LSTN [nametag]\]")] [verb]"
 	if(broadcasting)
 		if(get_dist(src, M) <= 7)
 			talk_into(M, msg,null,processed_verb,speaking)
+
+/obj/item/device/radio/listening_bug/afterattack(atom/target_atom, mob/user as mob, proximity)
+	if(!ready_to_disguise)
+		return ..()
+
+	var/obj/item/target_item = target_atom
+	if(!istype(target_item) || target_item.anchored || target_item.w_class >= SIZE_LARGE)
+		to_chat(user, SPAN_WARNING("You cannot disguise the listening device as this object."))
+		return FALSE
+
+	var/confirm = tgui_alert(user, "Are you sure you wish to disguise the listening device as '[target_item]'?", "Confirm Choice", list("Yes","No"), 20 SECONDS)
+	if(confirm != "Yes")
+		return FALSE
+
+	icon = target_item.icon
+	name = target_item.name
+	desc = target_item.desc
+	icon_state = target_item.icon_state
+	item_state = target_item.item_state
+	flags_equip_slot = target_item.flags_equip_slot
+	w_class = target_item.w_class
+	ready_to_disguise = FALSE
+	disguised = TRUE
+
+/obj/item/device/radio/listening_bug/get_examine_text(mob/user)
+	if(disguised)
+		. = list()
+		var/size
+		switch(w_class)
+			if(SIZE_TINY)
+				size = "tiny"
+			if(SIZE_SMALL)
+				size = "small"
+			if(SIZE_MEDIUM)
+				size = "normal-sized"
+		. += "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
+		if(desc)
+			. += desc
+		if(desc_lore)
+			. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
+	else
+		. = ..()
+		. += SPAN_INFO("[src] is set to frequency [get_bug_letter()].")
+		if(nametag != initial(nametag))
+			. += SPAN_INFO("[src]'s nametag is set to '[nametag]'")
 
 /obj/item/device/radio/listening_bug/verb/change_disguise()
 	set name = "Change Disguise"
@@ -101,122 +149,24 @@
 	var/check = tgui_alert(usr, "Do you wish to change the disguise of this listening bug?", "Change Disguise?", list("Yes", "No"))
 	if(check != "Yes")
 		return FALSE
+	if(disguised)
+		var/remove_check = tgui_alert(usr, "Do you wish to remove the current disguise?", "Remove Disguise?", list("Yes","No"))
+		if(remove_check == "Yes")
+			icon = initial(icon)
+			name = initial(name)
+			desc = initial(desc)
+			icon_state = initial(icon_state)
+			item_state = initial(item_state)
+			flags_equip_slot = initial(flags_equip_slot)
+			w_class = initial(w_class)
+			disguised = FALSE
+			return TRUE
 
-	var/list/camo_options = list(
-		DISGUISE_REMOVE,DISGUISE_RADIO,DISGUISE_PEN,DISGUISE_FOUNTAIN_PEN,DISGUISE_ACCESS_TUNER,DISGUISE_WHISTLE,DISGUISE_MASS_SPEC,DISGUISE_CAMERA,DISGUISE_ZIPPO,DISGUISE_TAPE_RECORDER
-	)
-	camo_options -= current_disguise
-	var/new_disguise = tgui_input_list(usr, "What new disguise do you wish to use?", "New Disguise", camo_options)
-
-	if(!new_disguise || (new_disguise == current_disguise))
-		return FALSE
-
-	handle_new_disguise(new_disguise)
+	to_chat(usr, SPAN_HELPFUL("You can now change the disguise of the device by selecting a normal, or smaller, sized object."))
+	ready_to_disguise = TRUE
 	return TRUE
-
-/obj/item/device/radio/listening_bug/proc/handle_new_disguise(new_disguise)
-	if(!new_disguise)
-		return FALSE
-	var/new_icon
-	var/new_name
-	var/new_desc
-	var/new_icon_state
-	var/new_item_state
-	var/new_equip_slots
-	switch(new_disguise)
-		if(DISGUISE_REMOVE)
-			new_name = "listening device ([get_bug_letter()])"
-			new_desc = "A small, and disguisable, listening device. This one is assigned to network [get_bug_letter()]."
-			if(subspace_switchable)
-				new_desc += " It seems to be able to switch between subspace communications broadcasts, and shortwave-radio bursts."
-			new_icon = 'icons/obj/items/devices.dmi'
-			new_icon_state = "voice0"
-			new_item_state = "analyzer"
-			new_equip_slots = SLOT_WAIST
-		if(DISGUISE_RADIO)
-			new_name = "shortwave radio"
-			new_desc = "A handheld radio."
-			new_icon = 'icons/obj/items/radio.dmi'
-			new_icon_state = "walkietalkie"
-			new_item_state = "walkietalkie"
-			new_equip_slots = SLOT_WAIST
-		if(DISGUISE_PEN, DISGUISE_FOUNTAIN_PEN)
-			new_name = new_disguise
-			new_desc = "It's a normal black ink pen."
-			new_icon = 'icons/obj/items/paper.dmi'
-			new_icon_state = "pen"
-			new_item_state = "pen"
-			new_equip_slots = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
-			if(new_disguise == DISGUISE_FOUNTAIN_PEN)
-				new_icon_state = "fountain_pen"
-				new_desc = "A lavish testament to the ingenuity of ARMAT's craftsmanship, this fountain pen is a paragon of design and functionality. Detailed with golden accents and intricate mechanics, the pen allows for a swift change between a myriad of ink colors with a simple twist. A product of precision engineering, each mechanism inside the pen is designed to provide a seamless, effortless transition from one color to the next, creating an instrument of luxurious versatility."
-		if(DISGUISE_ACCESS_TUNER)
-			new_name = "Security Access Tuner"
-			new_desc = "A small handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well."
-			new_icon = 'icons/obj/items/devices.dmi'
-			new_icon_state = "multitool"
-			new_item_state = "multitool"
-			new_equip_slots = 0
-		if(DISGUISE_WHISTLE)
-			new_name = "whistle"
-			new_desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth."
-			new_icon = 'icons/obj/items/devices.dmi'
-			new_icon_state = "whistle"
-			new_item_state = "whistle"
-			new_equip_slots = SLOT_FACE
-		if(DISGUISE_MASS_SPEC)
-			new_name = "mass-spectrometer"
-			new_desc = "A hand-held mass spectrometer which identifies trace chemicals in a blood sample."
-			new_icon = 'icons/obj/items/devices.dmi'
-			new_icon_state = "spectrometer"
-			new_item_state = "analyzer"
-			new_equip_slots = SLOT_WAIST
-		if(DISGUISE_CAMERA)
-			new_name = "camera"
-			new_desc = "A polaroid camera."
-			new_icon = 'icons/obj/items/items.dmi'
-			new_icon_state = "camera"
-			new_item_state = "electropack"
-			new_equip_slots = SLOT_WAIST
-		if(DISGUISE_ZIPPO)
-			new_name = "Zippo lighter"
-			new_desc = "A fancy steel Zippo lighter. Ignite in style."
-			new_icon = 'icons/obj/items/items.dmi'
-			new_icon_state = "zippo"
-			new_item_state = "zippo"
-			new_equip_slots = SLOT_WAIST
-		if(DISGUISE_TAPE_RECORDER)
-			new_name = "tape recorder"
-			new_desc = "A device that can record dialogue using magnetic tapes. It automatically translates the content in playback."
-			new_icon = 'icons/obj/items/walkman.dmi'
-			new_icon_state = "taperecorder_idle"
-			new_item_state = "analyzer"
-			new_equip_slots = 0
-
-	current_disguise = new_disguise
-	name = new_name
-	desc = new_desc
-	if(new_disguise != DISGUISE_REMOVE)
-		desc += " Something seems wrong with it."
-	icon = new_icon
-	icon_state = new_icon_state
-	item_state = new_item_state
-	flags_equip_slot = new_equip_slots
-	return TRUE
-
-#undef DISGUISE_RADIO
-#undef DISGUISE_PEN
-#undef DISGUISE_FOUNTAIN_PEN
-#undef DISGUISE_ACCESS_TUNER
-#undef DISGUISE_WHISTLE
-#undef DISGUISE_MASS_SPEC
-#undef DISGUISE_CAMERA
-#undef DISGUISE_ZIPPO
-#undef DISGUISE_TAPE_RECORDER
 
 /obj/item/device/radio/listening_bug/proc/get_bug_letter()
-	if(!frequency)
-		return "X"
 	switch(frequency)
 		if(BUG_A_FREQ)
 			return "A"
@@ -230,11 +180,48 @@
 			return "HC"
 		if(WY_FREQ, PMC_FREQ)
 			return "WY"
+		if(PMC_CMD_FREQ)
+			return "WYC"
 		if(UPP_FREQ, UPP_KDO_FREQ)
 			return "UPP"
 		else
 			return "X"
 
+#define OPTION_REMOVE "Remove Tag"
+#define OPTION_NEW "New Tag"
+
+/obj/item/device/radio/listening_bug/verb/set_nametag()
+	set name = "Set Nametag"
+	set category = "Object"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		to_chat(usr, SPAN_WARNING("You cannot do this while incapacitated!"))
+		return FALSE
+
+	var/check = tgui_alert(usr, "Do you wish to change the name tag of this listening bug?", "Change Name tag?", list("Yes", "No"))
+	if(check != "Yes")
+		return FALSE
+
+
+	var/new_nametag
+	var/remove
+	if(nametag != initial(nametag))
+		remove = tgui_alert(usr, "Do you wish to remove the current nametag?", "Remove Nametag", list("Yes", "No"))
+	if(remove == "Yes")
+		new_nametag = initial(nametag)
+	else
+		new_nametag = tgui_input_text(usr, "What new name tag do you wish to use?", "New Name", initial(nametag), 6)
+
+	if(!new_nametag || (new_nametag == nametag))
+		return FALSE
+
+	nametag = new_nametag
+	log_game("[key_name(usr)] set a listening device nametag to [new_nametag].")
+	return TRUE
+
+#undef OPTION_REMOVE
+#undef OPTION_NEW
 
 /obj/item/device/radio/listening_bug/freq_a
 	frequency = BUG_A_FREQ

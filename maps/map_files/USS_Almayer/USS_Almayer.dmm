@@ -65897,6 +65897,10 @@
 	phone_id = "Brig Warden's Office";
 	pixel_y = 32
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "red"
@@ -67206,7 +67210,7 @@
 	req_one_access_txt = "3;19"
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "plate"
 	},
 /area/almayer/living/briefing)
 "tdc" = (

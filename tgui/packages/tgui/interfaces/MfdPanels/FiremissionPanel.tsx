@@ -19,7 +19,7 @@ const CreateFiremissionPanel = (props, context) => {
         <h3>Create Fire Mission</h3>
       </Stack.Item>
       <Stack.Item>
-        Firemission Name
+        Firemission Name{' '}
         <Input
           value={fmName}
           onInput={(e, value) => setFmName(value)}

@@ -4,6 +4,7 @@ import { CrtPanel } from '../CrtPanel';
 import { Table, TableCell, TableRow } from '../../components/Table';
 import { InfernoNode } from 'inferno';
 import { ButtonProps } from './types';
+import { classes } from 'common/react';
 
 export interface MfdProps {
   panelStateId: string;
@@ -24,7 +25,10 @@ export const MfdButton = (props: ButtonProps, context) => {
           props.onClick();
         }
       }}
-      className="mfd_button">
+      className={classes([
+        props.children && 'mfd_button_active',
+        !props.children && 'mfd_button',
+      ])}>
       {props.children}
     </Button>
   );

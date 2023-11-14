@@ -824,11 +824,11 @@
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 	if (!istype(dropship))
 		return
-	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.get_total_duration())
-		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
-		return
 	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("Has to be in Fly By mode"))
+		return
+	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.get_total_duration())
+		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
 		return
 
 	var/result = firemission_envelope.execute_firemission(firemission_envelope.recorded_loc, offset, direction, fmId)
@@ -884,8 +884,8 @@
 		return
 	var/area/laser_area = get_area(shootloc)
 	if(!istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_1))
-		if(firemission_envelope.user_is_guided(usr))
-			to_chat(usr, SPAN_WARNING("Vision Obstructed. You have to go in blind."))
+		if(firemission_envelope.user_is_guided(user))
+			to_chat(user, SPAN_WARNING("Vision Obstructed. You have to go in blind."))
 		firemission_envelope.change_current_loc()
 	else
 		firemission_envelope.change_current_loc(shootloc)

@@ -1,3 +1,5 @@
+///from base of mob/set_stat(): (new_stat, old_stat)
+#define COMSIG_MOB_STATCHANGE "mob_statchange"
 /// From /obj/structure/machinery/door/airlock/proc/take_damage
 #define COMSIG_MOB_DESTROY_AIRLOCK "mob_destroy_airlock"
 
@@ -128,3 +130,6 @@
 
 /// From /obj/item/proc/pickup() : (obj/item/picked_up)
 #define COMSIG_MOB_PICKUP_ITEM "mob_pickup_item"
+
+/// Cancels all running cloaking effects on target
+#define COMSIG_MOB_EFFECT_CLOAK_CANCEL "mob_effect_cloak_cancel"

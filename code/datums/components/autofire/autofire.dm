@@ -82,6 +82,8 @@
 /datum/component/automatedfire/autofire/proc/initiate_shot()
 	SIGNAL_HANDLER
 	if(shooting)//if we are already shooting, it means the shooter is still on cooldown
+		if(bursting && (world.time > (next_fire + (burstfire_shot_delay * burst_shots_to_fire))))
+			hard_reset()
 		return
 	shooting = TRUE
 	process_shot()

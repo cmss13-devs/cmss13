@@ -436,10 +436,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
-"bR" = (
-/obj/item/shard,
-/turf/template_noop,
-/area/template_noop)
 "bS" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -828,9 +824,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
-"cX" = (
-/turf/template_noop,
-/area/template_noop)
 "da" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/solaris,
@@ -1101,10 +1094,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/office_complex)
-"dX" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/template_noop,
-/area/template_noop)
 "dY" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
@@ -1164,10 +1153,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/office_complex)
-"eg" = (
-/obj/item/stack/rods,
-/turf/template_noop,
-/area/template_noop)
 "eh" = (
 /obj/item/device/multitool,
 /turf/open/floor{
@@ -1257,6 +1242,10 @@
 	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/office_complex)
+"nF" = (
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/template_noop)
 "oF" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -1309,6 +1298,9 @@
 	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/office_complex)
+"uh" = (
+/turf/template_noop,
+/area/template_noop)
 "uC" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock{
@@ -1363,9 +1355,10 @@
 	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/office_complex)
-"DN" = (
+"Dv" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/template_noop,
-/area/bigredv2/outside/office_complex)
+/area/template_noop)
 "EE" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -1411,6 +1404,10 @@
 	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
+"UM" = (
+/obj/item/shard,
+/turf/template_noop,
+/area/template_noop)
 "Vg" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/shuttle/dropship{
@@ -1428,36 +1425,36 @@
 /area/bigredv2/outside/office_complex)
 
 (1,1,1) = {"
-cX
-cX
-cX
-cX
-cX
-cX
-cX
-bR
-cX
-cX
-cX
-cX
-cX
-cX
-cX
-bR
-cX
-eg
-cX
-cX
-cX
-cX
-cX
-cX
-cX
+uh
+uh
+uh
+uh
+uh
+uh
+uh
+UM
+uh
+uh
+uh
+uh
+uh
+uh
+uh
+UM
+uh
+nF
+uh
+uh
+uh
+uh
+uh
+uh
+uh
 "}
 (2,1,1) = {"
-cX
-cX
-cX
+uh
+uh
+uh
 ap
 ap
 ap
@@ -1476,15 +1473,15 @@ ax
 aY
 ap
 ap
-cX
-cX
-cX
-DN
+uh
+uh
+uh
+uh
 "}
 (3,1,1) = {"
-cX
-cX
-cX
+uh
+uh
+uh
 ap
 aI
 aR
@@ -1503,15 +1500,15 @@ cq
 ca
 cH
 ap
-cX
-cX
-cX
-DN
+uh
+uh
+uh
+uh
 "}
 (4,1,1) = {"
-cX
-cX
-cX
+uh
+uh
+uh
 as
 aJ
 aR
@@ -1530,15 +1527,15 @@ ck
 ej
 cI
 as
-cX
-cX
-cX
-DN
+uh
+uh
+uh
+uh
 "}
 (5,1,1) = {"
-cX
-cX
-cX
+uh
+uh
+uh
 as
 aK
 bB
@@ -1557,15 +1554,15 @@ cs
 ek
 cm
 cR
-cX
-cX
-cX
-DN
+uh
+uh
+uh
+uh
 "}
 (6,1,1) = {"
-cX
-cX
-cX
+uh
+uh
+uh
 as
 aL
 aR
@@ -1584,15 +1581,15 @@ eh
 aS
 ed
 as
-cX
-cX
-cX
-DN
+uh
+uh
+uh
+uh
 "}
 (7,1,1) = {"
-cX
-cX
-cX
+uh
+uh
+uh
 ap
 aJ
 aR
@@ -1611,15 +1608,15 @@ aS
 cr
 cr
 ap
-cX
-cX
-cX
-DN
+uh
+uh
+uh
+uh
 "}
 (8,1,1) = {"
-cX
-cX
-cX
+uh
+uh
+uh
 ap
 aM
 aS
@@ -1644,9 +1641,9 @@ ap
 ap
 "}
 (9,1,1) = {"
-cX
-cX
-cX
+uh
+uh
+uh
 ap
 ap
 ap
@@ -1671,11 +1668,11 @@ dl
 dr
 "}
 (10,1,1) = {"
-cX
-cX
-cX
-cX
-cX
+uh
+uh
+uh
+uh
+uh
 ap
 aC
 bj
@@ -1698,11 +1695,11 @@ bu
 ar
 "}
 (11,1,1) = {"
-cX
-cX
-cX
-cX
-cX
+uh
+uh
+uh
+uh
+uh
 by
 aN
 XH
@@ -1725,7 +1722,7 @@ bI
 bI
 "}
 (12,1,1) = {"
-cX
+uh
 ap
 ap
 ap
@@ -1749,10 +1746,10 @@ id
 yS
 cE
 dm
-cX
+uh
 "}
 (13,1,1) = {"
-cX
+uh
 ap
 av
 ar
@@ -1776,10 +1773,10 @@ bc
 dz
 bc
 dn
-cX
+uh
 "}
 (14,1,1) = {"
-cX
+uh
 aq
 aw
 aC
@@ -1803,10 +1800,10 @@ bv
 dT
 cF
 do
-cX
+uh
 "}
 (15,1,1) = {"
-cX
+uh
 ar
 bt
 aD
@@ -1829,11 +1826,11 @@ bc
 bc
 bc
 dh
-cX
-cX
+uh
+uh
 "}
 (16,1,1) = {"
-cX
+uh
 ba
 bb
 aE
@@ -1857,10 +1854,10 @@ dS
 NK
 cE
 dm
-cX
+uh
 "}
 (17,1,1) = {"
-cX
+uh
 ap
 az
 bu
@@ -1884,10 +1881,10 @@ dJ
 dJ
 dJ
 dn
-cX
+uh
 "}
 (18,1,1) = {"
-cX
+uh
 ap
 ap
 ap
@@ -1911,14 +1908,14 @@ fv
 bp
 cF
 do
-cX
+uh
 "}
 (19,1,1) = {"
-cX
-cX
-cX
-cX
-cX
+uh
+uh
+uh
+uh
+uh
 dY
 aN
 fv
@@ -1937,15 +1934,15 @@ cN
 cN
 cN
 di
-cX
-cX
+uh
+uh
 "}
 (20,1,1) = {"
-cX
-cX
-cX
-dX
-dX
+uh
+uh
+uh
+Dv
+Dv
 dZ
 aE
 bq
@@ -1964,15 +1961,15 @@ cO
 cU
 dd
 dj
-cX
-cX
+uh
+uh
 "}
 (21,1,1) = {"
-cX
-cX
-cX
-cX
-dX
+uh
+uh
+uh
+uh
+Dv
 dZ
 dO
 br
@@ -1991,15 +1988,15 @@ dK
 bd
 aS
 dj
-cX
-cX
+uh
+uh
 "}
 (22,1,1) = {"
-cX
-cX
-cX
-cX
-dX
+uh
+uh
+uh
+uh
+Dv
 ap
 by
 ap
@@ -2018,15 +2015,15 @@ bE
 dU
 aS
 by
-cX
-cX
+uh
+uh
 "}
 (23,1,1) = {"
-cX
-cX
-cX
-cX
-cX
+uh
+uh
+uh
+uh
+uh
 ap
 bQ
 aS
@@ -2045,15 +2042,15 @@ cP
 bE
 bd
 dk
-cX
-cX
+uh
+uh
 "}
 (24,1,1) = {"
-cX
-cX
-cX
-cX
-cX
+uh
+uh
+uh
+uh
+uh
 bN
 bf
 bs
@@ -2072,15 +2069,15 @@ el
 em
 cA
 be
-cX
-cX
+uh
+uh
 "}
 (25,1,1) = {"
-cX
-cX
-cX
-cX
-bR
+uh
+uh
+uh
+uh
+UM
 ap
 ap
 ap
@@ -2099,6 +2096,6 @@ cA
 cW
 de
 ap
-cX
-cX
+uh
+uh
 "}

@@ -9,7 +9,7 @@
 		return
 	if(!xeno.check_state())
 		return
-	if(xeno.burrow)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
 		return
 
 	var/turf/turf = xeno.loc
@@ -89,7 +89,7 @@
 		to_chat(src, SPAN_WARNING("You cannot rest while fortified!"))
 		return
 
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_WARNING("You cannot rest while burrowed!"))
 		return
 
@@ -529,7 +529,7 @@
 
 	if (istype(X, /mob/living/carbon/xenomorph/burrower))
 		var/mob/living/carbon/xenomorph/burrower/B = X
-		if (B.burrow)
+		if (HAS_TRAIT(B, TRAIT_ABILITY_BURROWED))
 			return
 
 	var/turf/T = get_turf(X)
@@ -908,7 +908,7 @@
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
-	if(stabbing_xeno.burrow || stabbing_xeno.is_ventcrawling)
+	if(HAS_TRAIT(stabbing_xeno, TRAIT_ABILITY_BURROWED) || stabbing_xeno.is_ventcrawling)
 		to_chat(stabbing_xeno, SPAN_XENOWARNING("You must be above ground to do this."))
 		return
 

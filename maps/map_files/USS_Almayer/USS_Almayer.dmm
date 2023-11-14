@@ -40935,7 +40935,6 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "hRy" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/brig/chief,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/execution)
@@ -41476,10 +41475,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
-"icX" = (
-/turf/open/space/basic,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/perma)
 "idx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -47068,7 +47063,6 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "kta" = (
-/obj/structure/surface/table/almayer,
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 4
@@ -79843,7 +79837,6 @@
 	name = "ship-grade camera";
 	dir = 1
 	},
-/turf/open/space/basic,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/perma)
 "xQV" = (
@@ -94440,7 +94433,7 @@ uDp
 uDp
 uDp
 qyd
-icX
+pHp
 xQD
 naB
 kIV

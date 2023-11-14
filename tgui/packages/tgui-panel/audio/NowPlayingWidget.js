@@ -54,11 +54,11 @@ export const NowPlayingWidget = (props, context) => {
       <Flex.Item mx={0.5} fontSize="0.9em">
         <Knob
           minValue={0}
-          maxValue={0.20} // Maximum set to 20% to preserve users' sanity
+          maxValue={0.25} // Maximum set to 25% to preserve users' sanity
           value={settings.adminMusicVolume}
           step={0.0005}
           stepPixelSize={1}
-          format={(value) => toFixed(value * 500) + '%'}
+          format={(value) => toFixed(value * 400) + '%'}
           onDrag={(e, value) =>
             settings.update({
               adminMusicVolume: value,

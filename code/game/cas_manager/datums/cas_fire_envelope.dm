@@ -1,7 +1,6 @@
 /datum/cas_fire_envelope
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console
 	var/list/datum/cas_fire_mission/missions
-	var/max_mission_len = 5
 	var/fire_length
 	var/grace_period //how much time you have after initiating fire mission and before you can't change firemissions
 	var/flyto_period //how much time it takes from sound alarm start to first hit. CAS is vulnerable here
@@ -45,7 +44,7 @@
 		mission.update_weapons(weapons, fire_length)
 
 /datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
-	if(!missions || !linked_console || missions.len>max_mission_len || !fire_length)
+	if(!missions || !linked_console || !fire_length)
 		return null
 	var/list/obj/structure/dropship_equipment/weapons = list()
 	var/shuttle_tag = linked_console.shuttle_tag

@@ -714,12 +714,9 @@
 	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 		to_chat(weapon_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
-	if(firemission_envelope.max_mission_len <= firemission_envelope.missions.len)
-		to_chat(weapon_operator, SPAN_WARNING("Cannot store more than [firemission_envelope.max_mission_len] Fire Missions."))
-		return FALSE
 	// Check name
-	if(!firemission_name || length(firemission_name) < 5)
-		to_chat(weapon_operator, SPAN_WARNING("Name too short (at least 5 symbols)."))
+	if(!firemission_name || length(firemission_name) < 1)
+		to_chat(weapon_operator, SPAN_WARNING("Name too short (at least 1 symbols)."))
 		return FALSE
 	// Check length
 	if(!firemission_length)

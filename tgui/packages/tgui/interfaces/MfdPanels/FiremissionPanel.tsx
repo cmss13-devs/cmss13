@@ -1,5 +1,5 @@
 import { MfdPanel, MfdProps } from './MultifunctionDisplay';
-import { Box, Button, Divider, Input, Stack } from '../../components';
+import { Box, Button, Divider, Icon, Input, Stack } from '../../components';
 import { useBackend, useLocalState } from '../../backend';
 import { CasFiremission, FiremissionContext } from './types';
 import { range } from 'common/collections';
@@ -14,11 +14,12 @@ const CreateFiremissionPanel = (props, context) => {
   const { act } = useBackend(context);
   const [fmName, setFmName] = useLocalState<string>(context, 'fmname', '');
   return (
-    <Stack align="center">
+    <Stack align="center" vertical>
       <Stack.Item>
         <h3>Create Fire Mission</h3>
       </Stack.Item>
       <Stack.Item>
+        Firemission Name
         <Input
           value={fmName}
           onInput={(e, value) => setFmName(value)}
@@ -46,8 +47,10 @@ const FiremissionList = (props, context) => {
         <h3>Existing Fire Missions</h3>
       </Stack.Item>
       <Stack.Item>
-        {data.firemission_data.map((x) => (
-          <Stack.Item key={x.name}>{x.name}</Stack.Item>
+        {data.firemission_data.map((x, i) => (
+          <Stack.Item key={x.name}>
+            FM {i + 1}. {x.name}
+          </Stack.Item>
         ))}
       </Stack.Item>
     </Stack>
@@ -64,18 +67,37 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
     const firemission =
       data.firemission_data.length > x ? data.firemission_data[x] : undefined;
     return {
-      children: firemission?.name,
+      children: firemission ? (
+        <div>
+          FM {x + 1} <br /> {firemission?.name}
+        </div>
+      ) : undefined,
       onClick: () => setSelectedFm(firemission?.name),
     };
   };
 
-  const left_firemissions = range(0, 5).map(firemission_mapper);
+  const [fmOffset, setFmOffset] = useLocalState(
+    context,
+    `${props.panelStateId}_fm_select_offset`,
+    0
+  );
+
+  const left_firemissions = range(fmOffset, fmOffset + 5).map(
+    firemission_mapper
+  );
+  const right_firemissions = range(fmOffset + 5, fmOffset + 10).map(
+    firemission_mapper
+  );
 
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
       leftButtons={left_firemissions}
-      rightButtons={[
+      rightButtons={right_firemissions}
+      topButtons={[
+        {},
+        {},
+        {},
         fmName
           ? {
             children: 'SAVE',
@@ -88,11 +110,30 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
             },
           }
           : {},
+        {
+          children: <Icon name="arrow-up" />,
+          onClick: () => {
+            if (fmOffset >= 1) {
+              setFmOffset(fmOffset - 1);
+            }
+          },
+        },
       ]}
       bottomButtons={[
         {
           children: 'EXIT',
           onClick: () => setPanelState(''),
+        },
+        {},
+        {},
+        {},
+        {
+          children: <Icon name="arrow-down" />,
+          onClick: () => {
+            if (fmOffset + 8 < data.firemission_data.length) {
+              setFmOffset(fmOffset + 1);
+            }
+          },
         },
       ]}>
       <Box className="NavigationMenu">
@@ -129,10 +170,15 @@ const ViewFiremissionMfdPanel = (
   const { setPanelState } = mfdState(context, props.panelStateId);
   const { setSelectedFm } = fmState(context, props.panelStateId);
   const { editFm, setEditFm } = fmEditState(context, props.panelStateId);
-  const { setEditFmWeapon } = fmWeaponEditState(context, props.panelStateId);
+  const { editFmWeapon, setEditFmWeapon } = fmWeaponEditState(
+    context,
+    props.panelStateId
+  );
 
   const rightButtons = [
-    { children: 'WEAPON', onClick: () => setEditFmWeapon(undefined) },
+    editFmWeapon === undefined
+      ? {}
+      : { children: 'BACK', onClick: () => setEditFmWeapon(undefined) },
     ...data.equipment_data
       .filter((x) => x.is_weapon === 1)
       .sort((a, b) => (a.mount_point < b.mount_point ? -1 : 1))
@@ -367,7 +413,7 @@ const FMOffsetStack = (
 
   const firemissionOffsets = props.equipment.firemission_delay ?? 0;
 
-  const availableMap = range(0, 12).map((_) => true);
+  const availableMap = range(0, 13).map((_) => true);
   offsets?.forEach((x, index) => {
     if (x === undefined || x === '-') {
       return;

@@ -6,9 +6,9 @@ import { range } from 'common/collections';
 import { DropshipEquipment, DropshipProps } from '../DropshipWeaponsConsole';
 import { fmEditState, fmState, fmWeaponEditState, mfdState } from './stateManagers';
 
-function sortWeapons(a: DropshipEquipment, b: DropshipEquipment): number {
+const sortWeapons = (a: DropshipEquipment, b: DropshipEquipment) => {
   return (a?.mount_point ?? 0) < (b?.mount_point ?? 0) ? -1 : 1;
-}
+};
 
 const CreateFiremissionPanel = (props, context) => {
   const { act } = useBackend(context);

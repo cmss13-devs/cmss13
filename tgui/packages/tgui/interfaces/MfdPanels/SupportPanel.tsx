@@ -9,7 +9,7 @@ import { EquipmentContext } from './types';
 import { mfdState, useEquipmentState } from './stateManagers';
 
 export const SupportMfdPanel = (props: MfdProps, context) => {
-  const { equipmentState } = useEquipmentState(props.panelStateId, context);
+  const { equipmentState } = useEquipmentState(context, props.panelStateId);
 
   const { setPanelState } = mfdState(context, props.panelStateId);
 
@@ -39,14 +39,14 @@ export const SupportMfdPanel = (props: MfdProps, context) => {
         },
       ]}>
       <Box className="NavigationMenu">
-        <Stack align="center">
+        <Stack align="center" vertical>
           <Stack.Item>
             <h3>Component {result?.shorthand} not found</h3>
           </Stack.Item>
           <Stack.Item>
             <h3>Is this authorised equipment?</h3>
           </Stack.Item>
-          <Stack.Item>
+          <Stack.Item width="300px">
             <h3>
               Contact your local WY representative for further upgrade options
             </h3>

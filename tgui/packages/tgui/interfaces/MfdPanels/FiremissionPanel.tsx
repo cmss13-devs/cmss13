@@ -6,6 +6,10 @@ import { range } from 'common/collections';
 import { DropshipEquipment, DropshipProps } from '../DropshipWeaponsConsole';
 import { fmEditState, fmState, fmWeaponEditState, mfdState } from './stateManagers';
 
+function sortWeapons(a: DropshipEquipment, b: DropshipEquipment): number {
+  return (a?.mount_point ?? 0) < (b?.mount_point ?? 0) ? -1 : 1;
+}
+
 const CreateFiremissionPanel = (props, context) => {
   const { act } = useBackend(context);
   const [fmName, setFmName] = useLocalState<string>(context, 'fmname', '');
@@ -205,7 +209,8 @@ const FiremissionView = (props: MfdProps & { fm: CasFiremission }, context) => {
 
   const weaponData = props.fm.records
     .map((x) => data.equipment_data.find((y) => y.mount_point === x.weapon))
-    .filter((x) => x !== undefined) as Array<DropshipEquipment>;
+    .filter((x) => x !== undefined)
+    .sort(sortWeapons) as Array<DropshipEquipment>;
 
   const selectedWeapon = weaponData.find((x) => x.mount_point === editFmWeapon);
   const displayDetail = editFm;
@@ -273,8 +278,8 @@ const FiremissionView = (props: MfdProps & { fm: CasFiremission }, context) => {
 
 const gimbals: GimbalInfo[] = [
   { min: -1, max: -1, values: [] },
-  { min: -6, max: 0, values: ['-6', '-5', '-4 ', '-3', '-2', '-1', '0', '-'] },
-  { min: -6, max: 0, values: ['-6', '-5', '-4 ', '-3', '-2', '-1', '0', '-'] },
+  { min: -6, max: 0, values: ['-6', '-5', '-4', '-3', '-2', '-1', '0', '-'] },
+  { min: -6, max: 0, values: ['-6', '-5', '-4', '-3', '-2', '-1', '0', '-'] },
   { min: 0, max: 6, values: ['-', '0', '1', '2', '3', '4', '5', '6'] },
   { min: 0, max: 6, values: ['-', '0', '1', '2', '3', '4', '5', '6'] },
 ];

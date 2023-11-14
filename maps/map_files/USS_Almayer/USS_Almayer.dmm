@@ -42542,7 +42542,8 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "courtyard_cells";
-	name = "\improper Courtyard Lockdown Shutter"
+	name = "\improper Courtyard Lockdown Shutter";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -44459,7 +44460,8 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "courtyard_cells";
-	name = "\improper Courtyard Lockdown Shutter"
+	name = "\improper Courtyard Lockdown Shutter";
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/perma)
@@ -48030,7 +48032,8 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "courtyard_cells";
-	name = "\improper Courtyard Lockdown Shutter"
+	name = "\improper Courtyard Lockdown Shutter";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

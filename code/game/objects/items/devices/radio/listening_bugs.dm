@@ -178,11 +178,11 @@
 			return "PVST"
 		if(HC_FREQ)
 			return "HC"
-		if(WY_FREQ, PMC_FREQ)
+		if(WY_FREQ, PMC_CCT_FREQ)
 			return "WY"
 		if(PMC_CMD_FREQ)
 			return "WYC"
-		if(UPP_FREQ, UPP_KDO_FREQ)
+		if(UPP_CCT_FREQ, UPP_KDO_FREQ)
 			return "UPP"
 		else
 			return "X"
@@ -238,12 +238,22 @@
 	frequency = SEC_FREQ
 	req_one_access = list(ACCESS_MARINE_BRIG)
 
+/obj/item/device/radio/listening_bug/radio_linked/hc
+	frequency = HC_FREQ
+	req_one_access = list(ACCESS_MARINE_CO)
+/obj/item/device/radio/listening_bug/radio_linked/hc/pvst
+	frequency = PVST_FREQ
+
 /obj/item/device/radio/listening_bug/radio_linked/wy
 	frequency = WY_FREQ
 	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_SECURITY)
 
+/obj/item/device/radio/listening_bug/radio_linked/wy/pmc
+	frequency = PMC_CCT_FREQ
+	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_SECURITY)
+
 /obj/item/device/radio/listening_bug/radio_linked/upp
-	frequency = UPP_FREQ
+	frequency = UPP_CCT_FREQ
 	req_one_access = list(ACCESS_UPP_COMMANDO, ACCESS_UPP_SECURITY)
 
 /obj/item/device/radio/listening_bug/radio_linked/upp/commando

@@ -75,6 +75,18 @@ export const VerticalPanel = (
   );
 };
 
+const HexScrew = () => {
+  return (
+    <svg viewBox="0 0 10 10" width="30px" height="30px">
+      <circle cx="5" cy="5" r="4" fill="#202020" />
+      <polygon
+        points="3.5,2.5 6.5,2.5 8,5 6.5,7.5 3.5,7.5 2,5"
+        fill="#040404"
+      />
+    </svg>
+  );
+};
+
 export const MfdPanel = (props: MfdProps) => {
   const topProps = props.topButtons ?? [];
   const botProps = props.bottomButtons ?? [];
@@ -94,11 +106,15 @@ export const MfdPanel = (props: MfdProps) => {
   return (
     <Table className="primarypanel">
       <TableRow>
-        <TableCell />
+        <TableCell className={classes(['Screw_cell_top', 'Screw_cell_left'])}>
+          <HexScrew />
+        </TableCell>
         <TableCell>
           <HorizontalPanel buttons={topButtons} />
         </TableCell>
-        <TableCell />
+        <TableCell className={classes(['Screw_cell_top', 'Screw_cell_right'])}>
+          <HexScrew />
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell>
@@ -114,11 +130,15 @@ export const MfdPanel = (props: MfdProps) => {
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell />
+        <TableCell className={classes(['Screw_cell_bot', 'Screw_cell_left'])}>
+          <HexScrew />
+        </TableCell>
         <TableCell>
           <HorizontalPanel buttons={bottomButtons} />
         </TableCell>
-        <TableCell />
+        <TableCell className={classes(['Screw_cell_bot', 'Screw_cell_right'])}>
+          <HexScrew />
+        </TableCell>
       </TableRow>
     </Table>
   );

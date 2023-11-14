@@ -5,7 +5,17 @@
   border: 1px solid red;
 }
 
+.WeaponsConsoleBackground {
+  background-color: #040404;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .WeaponsConsole {
+  padding: 8px;
   .primarypanel {
     width: fit-content;
     height: 512px;
@@ -208,6 +218,18 @@
     vertical-align: middle;
     padding: 2px;
     margin: 0px;
+  }
+  .Screw_cell_top {
+    vertical-align: top;
+  }
+  .Screw_cell_bot {
+    vertical-align: bottom;
+  }
+  .Screw_cell_right {
+    text-align: right;
+  }
+  .Screw_cell_left {
+    text-align: left;
   }
 }
 

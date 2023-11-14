@@ -334,19 +334,20 @@ const PrimaryPanel = (props: MfdProps, context) => {
   }
 };
 
-export const DropshipWeaponsConsole = (_, context) => {
-  const { data } = useBackend<DropshipProps>(context);
+export const DropshipWeaponsConsole = () => {
   return (
     <Window height={700} width={1300}>
       <Window.Content>
-        <Stack horizontal className="WeaponsConsole">
-          <Stack.Item>
-            <PrimaryPanel panelStateId="left-screen" />
-          </Stack.Item>
-          <Stack.Item>
-            <PrimaryPanel panelStateId="right-screen" />
-          </Stack.Item>
-        </Stack>
+        <Box className="WeaponsConsoleBackground">
+          <Stack horizontal className="WeaponsConsole">
+            <Stack.Item>
+              <PrimaryPanel panelStateId="left-screen" />
+            </Stack.Item>
+            <Stack.Item>
+              <PrimaryPanel panelStateId="right-screen" />
+            </Stack.Item>
+          </Stack>
+        </Box>
       </Window.Content>
     </Window>
   );

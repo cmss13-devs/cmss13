@@ -265,10 +265,13 @@ const lazeMapper = (context) => {
   return (index: number) => {
     const target = lazes.length > index ? lazes[index] : undefined;
     const label = target?.target_name.split(' ')[0] ?? '';
-    const squad = label[0] ?? '';
-    const number = label.split('-')[1] ?? '';
+    const squad = label[0] ?? undefined;
+    const number = label.split('-')[1] ?? undefined;
     return {
-      children: `${squad}-${number}`,
+      children:
+        squad !== undefined && number !== undefined
+          ? `${squad}-${number}`
+          : undefined,
       onClick: target
         ? () => {
           act('set-camera', { 'equipment_id': target.target_tag });

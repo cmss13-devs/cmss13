@@ -460,10 +460,11 @@
 			else
 				msg += "\[[criminal]\]\n"
 
-			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]\n</a>"
+			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>"
 			if(!observer)
 				msg += " <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
-
+			else
+				msg += "\n"
 	if(hasHUD(user,"medical"))
 		var/cardcolor = holo_card_color
 		if(!cardcolor) cardcolor = "none"

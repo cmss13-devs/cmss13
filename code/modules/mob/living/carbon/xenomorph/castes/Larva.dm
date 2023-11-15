@@ -106,8 +106,6 @@
 	if(evolution_stored < evolution_threshold / 2) //We're still bloody
 		state = "Bloody "
 
-	if(istype(src,/mob/living/carbon/xenomorph/larva/predalien))
-		state = "Predalien " //Sort of a hack. <- BIRD: Refactor this out
 	if(stat == DEAD)
 		icon_state = "[state_override || state]Larva Dead"
 	else if(handcuffed || legcuffed)

@@ -73,6 +73,12 @@
 	if (pass_flags_container)
 		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
 
+/mob/living/carbon/xenomorph/runner/recalculate_actions()
+	..()
+	//Xeno runners need a small nerf to dragging speed mutator
+	pull_multiplier = 1 - (1 - mutators.pull_multiplier) * 0.85
+	if(is_zoomed)
+		zoom_out()
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"
 

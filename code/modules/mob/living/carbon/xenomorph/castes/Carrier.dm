@@ -92,6 +92,11 @@
 	var/eggs_max = 0
 	var/laid_egg = 0
 
+/mob/living/carbon/xenomorph/carrier/recalculate_actions()
+	..()
+	huggers_max = caste.huggers_max
+	eggs_max = caste.eggs_max
+
 /mob/living/carbon/xenomorph/carrier/update_icons()
 	. = ..()
 	if (mutation_type == CARRIER_NORMAL)

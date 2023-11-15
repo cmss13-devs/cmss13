@@ -29,13 +29,6 @@
 
 //=================================================
 
-// =============================
-// slowdowns
-#define XENO_SLOWED_AMOUNT 0.7
-#define XENO_SUPERSLOWED_AMOUNT 1.5
-#define HUMAN_SLOWED_AMOUNT 2
-#define HUMAN_SUPERSLOWED_AMOUNT 4
-
 #define XENOCON_THRESHOLD 6000
 
 #define TUNNEL_MOVEMENT_XENO_DELAY 20

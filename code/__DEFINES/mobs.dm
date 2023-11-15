@@ -117,6 +117,13 @@
 #define CANSLOW (1<<19)
 #define NO_PERMANENT_DAMAGE (1<<20)
 
+// =============================
+// slowdowns
+#define XENO_SLOWED_AMOUNT 0.7
+#define XENO_SUPERSLOWED_AMOUNT 1.5
+#define HUMAN_SLOWED_AMOUNT 2
+#define HUMAN_SUPERSLOWED_AMOUNT 4
+
 // Adds onto HUMAN_*****_AMOUNT
 #define YAUTJA_SLOWED_AMOUNT -1.25 // 0.75s slowdown
 #define YAUTJA_SUPERSLOWED_AMOUNT -3 // 1s slowdown

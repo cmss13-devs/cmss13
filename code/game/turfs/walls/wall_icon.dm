@@ -19,6 +19,8 @@
 		icon_state = "blank"
 		var/image/I
 
+		flags_atom |= HTML_USE_INITAL_ICON
+
 		if(!density)
 			I = image(icon, "[walltype]fwall_open")
 			overlays += I

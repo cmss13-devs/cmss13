@@ -35,8 +35,6 @@ var/global/river_activated = FALSE
 			if (prob(10))
 				get_broken()
 				return
-		else
-	return
 
 /obj/structure/machinery/filtration/console/proc/get_broken()
 	if(damaged)

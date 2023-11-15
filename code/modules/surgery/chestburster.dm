@@ -57,7 +57,7 @@
 			if(prob(60) && !victim.stat && victim.pain.feels_pain)
 				INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
 			victim.take_limb_damage(0, 12) //Sizzledam! This automagically burns a random existing body part.
-			victim.add_blood("#dffc00", BLOOD_BODY)
+			victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 			playsound(victim, "acid_sizzle", 25, TRUE)
 			animation_flash_color(victim, "#FF0000") //pain hit flicker
 

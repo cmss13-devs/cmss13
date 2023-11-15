@@ -53,6 +53,7 @@
 
 	data["faction"] = announcement_faction
 	data["cooldown_message"] = cooldown_between_messages
+	data["distresstimelock"] = DISTRESS_TIME_LOCK
 
 	return data
 
@@ -60,10 +61,9 @@
 	var/list/data = list()
 
 	data["alert_level"] = security_level
-	data["evac_status"] = EvacuationAuthority.evac_status
+	data["evac_status"] = SShijack.evac_status
 	data["endtime"] = announcement_cooldown
 	data["distresstime"] = distress_cooldown
-	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["worldtime"] = world.time
 
 	return data
@@ -135,16 +135,17 @@
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
 
-			if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
+			if(SShijack.evac_admin_denied)
 				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 				return FALSE
 
-			if(!EvacuationAuthority.initiate_evacuation())
+			if(!SShijack.initiate_evacuation())
 				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 				return FALSE
 
 			log_game("[key_name(usr)] has called for an emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
+			log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
 			. = TRUE
 
 		if("distress")
@@ -158,7 +159,7 @@
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
+			SSticker.mode.request_ert(usr)
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE

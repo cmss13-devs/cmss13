@@ -31,17 +31,6 @@
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_THROUGH
 
-
-/obj/effect/begin
-	name = "begin"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	icon_state = "begin"
-	anchored = TRUE
-	unacidable = TRUE
-
-
-
-
 /obj/effect/list_container
 	name = "list container"
 

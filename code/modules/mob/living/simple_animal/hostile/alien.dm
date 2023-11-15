@@ -40,7 +40,7 @@
 	pixel_x = -12
 	old_x = -12
 
-	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
+	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
 
 /mob/living/simple_animal/hostile/alien/Initialize()
 	maxHealth = health
@@ -52,8 +52,8 @@
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		color = hive.color
 
-	wound_icon_carrier = new(null, src)
-	vis_contents += wound_icon_carrier
+	wound_icon_holder = new(null, src)
+	vis_contents += wound_icon_holder
 
 /mob/living/simple_animal/hostile/alien/proc/generate_name()
 	change_real_name(src, "[caste_name] (BD-[rand(1, 999)])")
@@ -105,24 +105,24 @@
 	update_wounds()
 
 /mob/living/simple_animal/hostile/alien/proc/update_wounds()
-	if(!wound_icon_carrier)
+	if(!wound_icon_holder)
 		return
 
-	wound_icon_carrier.layer = layer + 0.01
-	wound_icon_carrier.dir = dir
+	wound_icon_holder.layer = layer + 0.01
+	wound_icon_holder.dir = dir
 	var/health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
-			wound_icon_carrier.icon_state = "none"
+			wound_icon_holder.icon_state = "none"
 		else if(lying)
 			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-				wound_icon_carrier.icon_state = "[caste_name]_rest_[health_threshold]"
+				wound_icon_holder.icon_state = "[caste_name]_rest_[health_threshold]"
 			else
-				wound_icon_carrier.icon_state = "[caste_name]_downed_[health_threshold]"
+				wound_icon_holder.icon_state = "[caste_name]_downed_[health_threshold]"
 		else
-			wound_icon_carrier.icon_state = "[caste_name]_walk_[health_threshold]"
+			wound_icon_holder.icon_state = "[caste_name]_walk_[health_threshold]"
 
-/mob/living/simple_animal/hostile/alien/bullet_act(obj/item/projectile/P)
+/mob/living/simple_animal/hostile/alien/bullet_act(obj/projectile/P)
 	. = ..()
 	if(P.damage)
 		var/splatter_dir = get_dir(P.starting, loc)//loc is the xeno getting hit, P.starting is the turf of where the projectile got spawned
@@ -148,8 +148,8 @@
 	animate(src, 5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 
 /mob/living/simple_animal/hostile/alien/Destroy()
-	vis_contents -= wound_icon_carrier
-	QDEL_NULL(wound_icon_carrier)
+	vis_contents -= wound_icon_holder
+	QDEL_NULL(wound_icon_holder)
 	return ..()
 
 /mob/living/simple_animal/hostile/alien/ravager
@@ -187,8 +187,8 @@
 // melee_damage_lower = 15
 // melee_damage_upper = 15
 // ranged = 1
-// projectiletype = /obj/item/projectile/neurotox
+// projectiletype = /obj/projectile/neurotox
 // projectilesound = 'sound/weapons/pierce.ogg'
-/obj/item/projectile/neurotox
+/obj/projectile/neurotox
 	damage = 30
 	icon_state = "toxin"

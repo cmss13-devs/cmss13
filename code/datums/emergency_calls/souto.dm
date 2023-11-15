@@ -4,9 +4,12 @@
 	name = "Souto Man"
 	mob_max = 1
 	mob_min = 1
-	arrival_message = "Incoming Transmission: Give a round of applause for the marine who sent in ten-thousand Souto tabs to get me here! USS Almayer, Souto Man's here to party with YOU!"
 	objectives = "Party like it's 1999!"
 	probability = 0
+
+/datum/emergency_call/souto/New()
+	arrival_message = "Give a round of applause for the marine who sent in ten-thousand Souto tabs to get me here! [MAIN_SHIP_NAME], Souto Man's here to party with YOU!"
+	return ..()
 
 /datum/emergency_call/souto/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

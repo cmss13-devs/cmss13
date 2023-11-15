@@ -98,7 +98,7 @@
 	surgery.patient_head = tool
 
 	user.drop_inv_item_to_loc(surgery.patient_head, target)
-	surgery.affected_limb.robotize(TRUE)
+	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = FALSE, synth_skin = TRUE)
 	target.updatehealth()
 	target.regenerate_icons()
 

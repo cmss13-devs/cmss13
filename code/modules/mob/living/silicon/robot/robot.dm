@@ -150,10 +150,22 @@ var/list/robot_verbs_default = list(
 //Improved /N
 /mob/living/silicon/robot/Destroy()
 	if(mmi)//Safety for when a cyborg gets dust()ed. Or there is no MMI inside.
-		var/turf/T = get_turf(loc)//To hopefully prevent run time errors.
-		if(T) mmi.forceMove(T)
+		var/turf/turf = get_turf(loc)//To hopefully prevent run time errors.
+		if(turf) mmi.forceMove(turf)
 		if(mind) mind.transfer_to(mmi.brainmob)
 		mmi = null
+	QDEL_NULL(aiCamera)
+	QDEL_NULL(spark_system)
+	QDEL_NULL(module)
+	module_active = null
+	module_state_1 = null
+	module_state_2 = null
+	module_state_3 = null
+	QDEL_NULL(radio)
+	connected_ai = null
+	QDEL_NULL(cell)
+	QDEL_NULL(camera)
+	QDEL_LIST_ASSOC_VAL(components)
 	. = ..()
 
 /mob/living/silicon/robot/proc/pick_module()
@@ -325,9 +337,9 @@ var/list/robot_verbs_default = list(
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 	if(lights_on)
-		SetLuminosity(integrated_light_power) // 1.5x luminosity of flashlight
+		set_light(integrated_light_power) // 1.5x luminosity of flashlight
 	else
-		SetLuminosity(0)
+		set_light(0)
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()
 	set category = "Robot Commands"
@@ -396,7 +408,7 @@ var/list/robot_verbs_default = list(
 /mob/living/silicon/robot/is_mob_restrained()
 	return 0
 
-/mob/living/silicon/robot/bullet_act(obj/item/projectile/Proj)
+/mob/living/silicon/robot/bullet_act(obj/projectile/Proj)
 	..(Proj)
 	if(prob(75) && Proj.damage > 0) spark_system.start()
 	return 2
@@ -694,14 +706,6 @@ var/list/robot_verbs_default = list(
 			overlays += "ov-openpanel +c"
 		else
 			overlays += "ov-openpanel -c"
-
-//Call when target overlay should be added/removed
-/mob/living/silicon/robot/update_targeted()
-	if(!targeted_by && target_locked)
-		QDEL_NULL(target_locked)
-	update_icons()
-	if (targeted_by && target_locked)
-		overlays += target_locked
 
 /mob/living/silicon/robot/proc/installed_modules()
 	if(weapon_lock)

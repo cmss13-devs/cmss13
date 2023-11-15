@@ -242,7 +242,7 @@ const Accuracy = (props, context) => {
   return (
     <Fragment>
       <ProgressBar value={accuracy / accuracy_max} ranges={RedGreenRange}>
-        Wielded accuracy: {accuracy} / {accuracy_max}
+        Wielded accurate range: {accuracy} / {accuracy_max}
       </ProgressBar>
       {!two_handed_only ? (
         <Fragment>
@@ -250,7 +250,7 @@ const Accuracy = (props, context) => {
           <ProgressBar
             value={unwielded_accuracy / accuracy_max}
             ranges={RedGreenRange}>
-            Unwielded accuracy: {unwielded_accuracy} / {accuracy_max}
+            Unwielded accurate range: {unwielded_accuracy} / {accuracy_max}
           </ProgressBar>
         </Fragment>
       ) : null}
@@ -258,7 +258,7 @@ const Accuracy = (props, context) => {
         <Fragment>
           <Box height="5px" />
           <ProgressBar value={min_accuracy / accuracy_max}>
-            Minimum accuracy: {min_accuracy}
+            Minimum accurate range: {min_accuracy}
           </ProgressBar>
         </Fragment>
       ) : null}

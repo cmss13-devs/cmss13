@@ -272,26 +272,57 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
 /obj/item/clothing/suit/storage/webbing
-	name = "External webbing"
+	name = "external webbing"
 	desc = "Designed to be worn over a jumpsuit rather than clipped on."
 	icon_state = "webbing"
 	item_state = "webbing"
 	allowed = list(
-		/obj/item/storage/fancy/cigarettes,
-		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/weapon/gun,
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
-		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
+		/obj/item/device/motiondetector,
+	)
+
+/obj/item/clothing/suit/storage/utility_vest
+	name = "utility vest"
+	desc = "A utility vest to hold tools in."
+	icon_state = "synth_utility_vest"
+	item_state = "synth_utility_vest"
+	allowed = list(
+		/obj/item/weapon/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/weapon/gun,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/crew_monitor,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
 	)
 
@@ -416,6 +447,11 @@
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/weapon/gun,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
@@ -425,6 +461,7 @@
 		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
 	)
 	min_cold_protection_temperature = T0C

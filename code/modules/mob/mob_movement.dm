@@ -168,7 +168,6 @@
 		if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
 			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
 
-		mob.last_move_intent = world.time + 10
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move
 		moving = TRUE
@@ -188,7 +187,7 @@
 					return
 			//now crawl
 			mob.crawling = TRUE
-			if(!do_after(mob, 3 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, BUSY_ICON_GENERIC))
+			if(!do_after(mob, 1 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, NO_BUSY_ICON))
 				mob.crawling = FALSE
 				next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 				mob.move_intentionally = FALSE

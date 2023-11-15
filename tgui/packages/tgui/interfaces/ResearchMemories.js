@@ -1,11 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import {
-  Flex,
-  Section,
-  Box,
-  Tabs,
-  LabeledList,
-} from '../components';
+import { Flex, Section, Box, Tabs, LabeledList } from '../components';
 import { Window } from '../layouts';
 
 export const ResearchMemories = (props, context) => {
@@ -22,9 +16,7 @@ export const ResearchMemories = (props, context) => {
     <Window width={650} height={700} theme={theme}>
       <Window.Content scrollable>
         <Section title={'Clearance: ' + clearance}>
-          <Flex.Item>
-            {'Research Credits: ' + research_credits}
-          </Flex.Item>
+          <Flex.Item>{'Research Credits: ' + research_credits}</Flex.Item>
         </Section>
 
         <Objectives />
@@ -68,9 +60,7 @@ const CluesAdvanced = (props, context) => {
               justify="space-between"
               px="1rem"
               py=".5rem">
-              <Flex.Item>
-                {clue.text}
-              </Flex.Item>
+              <Flex.Item>{clue.text}</Flex.Item>
             </Flex>
           );
         })}
@@ -83,8 +73,7 @@ const Objectives = (props, context) => {
   const { data } = useBackend(context);
 
   return (
-    <Section
-      title="Objectives">
+    <Section title="Objectives">
       <LabeledList>
         {data.objectives.map((page) => {
           return (

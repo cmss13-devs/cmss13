@@ -48,10 +48,6 @@
 	name = "Engineer"
 	equip_path = /datum/equipment_preset/corpse/engineer
 
-/obj/effect/landmark/corpsespawner/clown
-	name = "Clown"
-	equip_path = /datum/equipment_preset/corpse/clown
-
 /obj/effect/landmark/corpsespawner/scientist
 	name = "Scientist"
 	equip_path = /datum/equipment_preset/corpse/scientist
@@ -201,3 +197,9 @@
 /obj/effect/landmark/corpsespawner/gladiator/burst
 	name = "Burst Gladiator"
 	equip_path = /datum/equipment_preset/corpse/gladiator/burst
+
+//FORECON
+
+/obj/effect/landmark/corpsespawner/forecon_spotter
+	name = "USCM Reconnaissance Spotter"
+	equip_path = /datum/equipment_preset/corpse/forecon_spotter

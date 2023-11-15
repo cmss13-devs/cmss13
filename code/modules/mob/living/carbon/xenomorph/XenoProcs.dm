@@ -18,19 +18,20 @@
 	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/M = L.current
-			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.ally_of_hivenumber(hivenumber))) //Only living and connected xenos
+			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.hivenumber == hivenumber)) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
-//Sends a maptext alert to our currently selected squad. Does not make sound.
+//Sends a maptext alert to xenos.
 /proc/xeno_maptext(text = "", title_text = "", hivenumber = XENO_HIVE_NORMAL)
 	if(text == "" || !hivenumber)
 		return //Logic
 
 	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
-		for(var/datum/mind/L in SSticker.mode.xenomorphs)
-			var/mob/living/carbon/M = L.current
-			if(M && istype(M) && !M.stat && M.client && M.ally_of_hivenumber(hivenumber)) //Only living and connected xenos
-				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
+		for(var/datum/mind/living in SSticker.mode.xenomorphs)
+			var/mob/living/carbon/xenomorph/xeno = living.current
+			if(istype(xeno) && !xeno.stat && xeno.client && xeno.hivenumber == hivenumber) //Only living and connected xenos
+				playsound_client(xeno.client, 'sound/voice/alien_distantroar_3.ogg', xeno.loc, 25, FALSE)
+				xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
 
 /proc/xeno_message_all(message = null, size = 3)
 	xeno_message(message, size)
@@ -71,7 +72,7 @@
 
 	if(caste && caste.evolution_allowed)
 		evolve_progress = "[min(stored_evolution, evolution_threshold)]/[evolution_threshold]"
-		if(hive && !hive.allow_no_queen_actions && !caste?.evolve_without_queen)
+		if(hive && !hive.allow_no_queen_evo && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
 			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
@@ -147,7 +148,7 @@
 	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.
-/mob/living/carbon/xenomorph/proc/check_state(permissive = 0)
+/mob/living/carbon/xenomorph/proc/check_state(permissive = FALSE)
 	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
@@ -273,7 +274,7 @@
 		return
 
 	var/mob/living/carbon/M = L
-	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
+	if(M.stat == DEAD || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
 		throwing = FALSE
 		return
 
@@ -319,15 +320,17 @@
 		if(pounceAction.freeze_play_sound)
 			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		canmove = FALSE
-		frozen = TRUE
-		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze)), pounceAction.freeze_time, TIMER_STOPPABLE)
-
+		ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze_pounce)), pounceAction.freeze_time, TIMER_STOPPABLE)
 	pounceAction.additional_effects(M)
 
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
 
 	throwing = FALSE //Reset throwing since something was hit.
+
+/mob/living/carbon/xenomorph/proc/unfreeze_pounce()
+	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 
 /mob/living/carbon/xenomorph/proc/pounced_mob_wrapper(mob/living/L)
 	pounced_mob(L)
@@ -356,8 +359,8 @@
 
 /mob/living/carbon/xenomorph/proc/pounced_turf(turf/T)
 	if(!T.density)
-		for(var/mob/M in T)
-			pounced_mob(M)
+		for(var/mob/living/mob in T)
+			pounced_mob(mob)
 			break
 	else
 		turf_launch_collision(T)
@@ -432,6 +435,9 @@
 			has_obstacle = TRUE
 			break
 		if(istype(O, /obj/structure/fence))
+			has_obstacle = TRUE
+			break
+		if(istype(O, /obj/structure/tunnel))
 			has_obstacle = TRUE
 			break
 		if(istype(O, /obj/structure/bed))
@@ -629,7 +635,7 @@
 		TC.tackle_reset_id = null
 
 	. = TC.attempt_tackle(tackle_bonus)
-	if (!.)
+	if (!. || (M.status_flags & XENO_HOST))
 		TC.tackle_reset_id = addtimer(CALLBACK(src, PROC_REF(reset_tackle), M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		reset_tackle(M)
@@ -652,7 +658,7 @@
 
 
 /mob/living/carbon/xenomorph/burn_skin(burn_amount)
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return FALSE
 
 	if(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE)
@@ -691,13 +697,15 @@
 /mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
-	if(!silent)
-		if(destroyed)
-			to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
-		else
-			to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+
 	if(tracked_marker)
+		if(!silent)
+			if(destroyed)
+				to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
+			else
+				to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
 		tracked_marker.xenos_tracking -= src
+
 	tracked_marker = null
 
 /mob/living/carbon/xenomorph/proc/do_nesting_host(mob/current_mob, nest_structural_base)
@@ -705,6 +713,10 @@
 
 	if(!ishuman(current_mob))
 		to_chat(src, SPAN_XENONOTICE("This is not a host."))
+		return
+
+	if(current_mob.stat == DEAD)
+		to_chat(src, SPAN_XENONOTICE("This host is dead."))
 		return
 
 	var/mob/living/carbon/human/host_to_nest = current_mob

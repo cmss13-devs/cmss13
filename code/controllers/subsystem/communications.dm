@@ -73,6 +73,7 @@ var/const/YAUT_FREQ = 1205
 var/const/DUT_FREQ = 1210
 var/const/CMB_FREQ = 1220
 var/const/VAI_FREQ = 1215
+var/const/RMC_FREQ = 1216
 
 //WY Channels (1230-1249)
 var/const/WY_FREQ = 1231
@@ -105,6 +106,8 @@ var/const/MAX_FREQ = 1468 // ---------------------------------------------------
 //USCM High Command (USCM 1470-1499)
 var/const/HC_FREQ = 1471
 var/const/SOF_FREQ = 1472
+var/const/PVST_FREQ = 1473
+var/const/CBRN_FREQ = 1474
 
 //Ship department channels
 var/const/SENTRY_FREQ = 1480
@@ -139,8 +142,10 @@ var/list/radiochannels = list(
 	RADIO_CHANNEL_VAI = VAI_FREQ,
 	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
+	RADIO_CHANNEL_ROYAL_MARINE = RMC_FREQ,
 
 	RADIO_CHANNEL_HIGHCOM = HC_FREQ,
+	RADIO_CHANNEL_PROVOST = PVST_FREQ,
 	RADIO_CHANNEL_ALMAYER = PUB_FREQ,
 	RADIO_CHANNEL_COMMAND = COMM_FREQ,
 	RADIO_CHANNEL_MEDSCI = MED_FREQ,
@@ -158,6 +163,7 @@ var/list/radiochannels = list(
 	SQUAD_MARINE_5 = ECHO_FREQ,
 	SQUAD_MARINE_CRYO = CRYO_FREQ,
 	SQUAD_SOF = SOF_FREQ,
+	SQUAD_CBRN = CBRN_FREQ,
 
 	RADIO_CHANNEL_ALAMO = DS1_FREQ,
 	RADIO_CHANNEL_NORMANDY = DS2_FREQ,
@@ -188,7 +194,7 @@ var/list/radiochannels = list(
 )
 
 // Response Teams
-#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, CMB_FREQ)
+#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, CMB_FREQ, RMC_FREQ)
 
 // UPP Frequencies
 #define UPP_FREQS list(UPP_FREQ, UPP_CMD_FREQ, UPP_ENGI_FREQ, UPP_MED_FREQ, UPP_CCT_FREQ, UPP_KDO_FREQ)
@@ -216,6 +222,7 @@ var/const/RADIO_DEFAULT = "radio_default"
 var/const/RADIO_TO_AIRALARM = "radio_airalarm" //air alarms
 var/const/RADIO_FROM_AIRALARM = "radio_airalarm_rcvr" //devices interested in receiving signals from air alarms
 var/const/RADIO_CHAT = "radio_telecoms"
+var/const/RADIO_SIGNALS = "radio_signals"
 var/const/RADIO_ATMOSIA = "radio_atmos"
 var/const/RADIO_NAVBEACONS = "radio_navbeacon"
 var/const/RADIO_AIRLOCK = "radio_airlock"
@@ -248,6 +255,7 @@ SUBSYSTEM_DEF(radio)
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
 		"[VAI_FREQ]" = "vairadio",
+		"[RMC_FREQ]" = "rmcradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[CLF_FREQ]" = "clfradio",
 		"[ALPHA_FREQ]" = "alpharadio",
@@ -256,8 +264,10 @@ SUBSYSTEM_DEF(radio)
 		"[DELTA_FREQ]" = "deltaradio",
 		"[ECHO_FREQ]" = "echoradio",
 		"[CRYO_FREQ]" = "cryoradio",
+		"[CBRN_FREQ]" = "hcradio",
 		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",
+		"[PVST_FREQ]" = "pvstradio",
 		"[COLONY_FREQ]" = "deptradio",
 	)
 
@@ -368,6 +378,9 @@ SUBSYSTEM_DEF(radio)
 	for(var/datum/weakref/device_ref as anything in devices[filter])
 		var/obj/device = device_ref.resolve()
 
+		if(!device)
+			continue
+
 		if(device == source)
 			continue
 
@@ -400,12 +413,9 @@ SUBSYSTEM_DEF(radio)
 /datum/radio_frequency/proc/remove_listener(obj/device)
 	for (var/devices_filter in devices)
 		var/list/devices_line = devices[devices_filter]
-		devices_line -= WEAKREF(device)
-		while (null in devices_line)
-			devices_line -= null
-		if (devices_line.len==0)
+		devices_line -= device.weak_reference
+		if (!length(devices_line))
 			devices -= devices_filter
-			qdel(devices_line)
 
 /datum/signal
 	var/obj/source

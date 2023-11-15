@@ -147,12 +147,12 @@
 /obj/structure/machinery/defenses/start_processing()
 	if(!machine_processing)
 		machine_processing = TRUE
-		fast_machines += src
+	START_PROCESSING(SSdefprocess, src)
 
 /obj/structure/machinery/defenses/stop_processing()
 	if(machine_processing)
 		machine_processing = FALSE
-		fast_machines -= src
+	STOP_PROCESSING(SSdefprocess, src)
 
 /obj/structure/machinery/defenses/proc/earn_kill()
 	kills++
@@ -303,6 +303,10 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 		else
+			var/turf/open/floor = get_turf(src)
+			if(!floor.allow_construction)
+				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
+				return FALSE
 			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),
 			SPAN_NOTICE("You begin securing [src] to the ground."))
 
@@ -427,6 +431,7 @@
 		turned_on = FALSE
 
 /obj/structure/machinery/defenses/emp_act(severity)
+	. = ..()
 	if(turned_on)
 		if(prob(50))
 			visible_message("[icon2html(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")
@@ -444,7 +449,7 @@
 		return
 	update_health(severity)
 
-/obj/structure/machinery/defenses/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/defenses/bullet_act(obj/projectile/P)
 	bullet_ping(P)
 	visible_message(SPAN_WARNING("[src] is hit by the [P]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags

@@ -48,6 +48,7 @@
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
 		/datum/action/xeno_action/activable/scattered_spit, //second macro
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

@@ -5,7 +5,7 @@
 	  */
 
 /proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
-	if(!tool)
+	if(!tool && !(affecting.status & LIMB_UNCALIBRATED_PROSTHETIC))
 		return FALSE
 
 	var/target_zone = user.zone_selected
@@ -17,7 +17,7 @@
 		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
 	else
-		if(!T.supports_surgery)
+		if(!istype(T) || !T.supports_surgery)
 			if(tool.flags_item & CAN_DIG_SHRAPNEL) //Both shrapnel removal and prosthetic repair shouldn't be affected by being on the dropship.
 				tool.dig_out_shrapnel_check(target, user)
 				return TRUE //Otherwise you get 'poked' by the knife.
@@ -26,6 +26,13 @@
 			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
+
+	var/obj/limb/surgery_limb = target.get_limb(target_zone)
+	if(surgery_limb)
+		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
+		if(blocker)
+			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+			return
 
 	if(user.action_busy) //already doing an action
 		return FALSE
@@ -129,6 +136,12 @@
 
 		if(surgeryinstance.lying_required && !target.lying)
 			return TRUE
+
+		if(surgery_limb)
+			var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
+			if(blocker)
+				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+				return
 
 		if(affecting)
 			if(surgeryinstance.requires_bodypart)

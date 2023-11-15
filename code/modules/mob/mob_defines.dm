@@ -65,22 +65,14 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
-	var/knocked_out = 0
-	var/stunned = 0
-	var/frozen = 0
-	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
-	var/dazed = 0
-	var/slowed = 0 // X_SLOW_AMOUNT
-	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 
 	// bool status effects \\
 
 	/// bool that tracks if blind
 	var/blinded = FALSE
-	var/sleeping = 0 //Carbon
-	var/resting = 0 //Carbon
+	var/resting = 0
 	var/is_floating = 0
 	var/is_dizzy = 0
 	var/is_jittery = 0
@@ -125,6 +117,7 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+	var/life_revives_total = 0
 	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
@@ -225,6 +218,12 @@
 	var/next_delay_delay = 10 // how much time we wait for next calc of move delay
 	var/move_delay
 
+	///Holds the time when a mob can throw an item next, only applies after two throws, reference /mob/proc/do_click()
+	COOLDOWN_DECLARE(throw_delay)
+
+	///holds the buffer to allow for throwing two things before the cooldown effects throwing, reference /mob/proc/do_click()
+	var/throw_buffer = 0
+
 	var/list/datum/action/actions = list()
 
 	can_block_movement = TRUE
@@ -263,6 +262,9 @@
 	var/mutable_appearance/active_thinking_indicator
 	/// User is thinking in character. Used to revert to thinking state after stop_typing
 	var/thinking_IC = FALSE
+
+	// contains /atom/movable/screen/alert only
+	var/list/alerts = list()
 
 /mob/vv_get_dropdown()
 	. = ..()

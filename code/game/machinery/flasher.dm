@@ -26,10 +26,10 @@
 	..()
 	if ( !(stat & NOPOWER) )
 		icon_state = "[base_state]1"
-// src.sd_SetLuminosity(2)
+// src.sd_set_light(2)
 	else
 		icon_state = "[base_state]1-p"
-// src.sd_SetLuminosity(0)
+// src.sd_set_light(0)
 
 //Don't want to render prison breaks impossible
 /obj/structure/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
@@ -84,12 +84,11 @@
 
 
 /obj/structure/machinery/flasher/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	if(prob(75/severity))
 		flash()
-	..(severity)
 
 /obj/structure/machinery/flasher/portable/HasProximity(atom/movable/AM as mob|obj)
 	if ((src.disable) || (src.last_flash && world.time < src.last_flash + 150))

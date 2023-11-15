@@ -58,7 +58,7 @@
 		for(var/obj/vehicle/multitile/M in D.loc)
 			if(M) return 0
 
-		for(var/turf/T in D.get_filler_turfs())
+		for(var/turf/T in D.locate_filler_turfs())
 			for(var/obj/vehicle/multitile/M in T)
 				if(M) return 0
 
@@ -102,6 +102,7 @@
 		automated_launch = FALSE
 	automated_launch_timer = TIMER_ID_NULL
 	ai_silent_announcement("Dropship '[name]' departing.")
+	log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
 
 
 /*
@@ -228,7 +229,7 @@
 			if(X && X.stat != DEAD)
 				var/name = "Unidentified Lifesigns"
 				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 				set_security_level(SEC_LEVEL_RED)
 				break
 
@@ -266,16 +267,10 @@
 
 	in_transit_time_left = 0
 
-	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
-		return FALSE //If a nuke is in progress, don't attempt a landing.
-
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
 	playsound(turfs_trg[sound_target], sound_landing, 100)
 	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
 	sleep(100) //Wait for it to finish.
-
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
-		return FALSE //If a nuke finished, don't land.
 
 	target_turf = T_trg
 	target_rotation = trg_rot
@@ -414,7 +409,7 @@
 		// At halftime, we announce whether or not the AA forced the dropship to divert
 		// The rounding is because transit time is decreased by 10 each loop. Travel time, however, might not be a multiple of 10
 		if(in_transit_time_left == round(travel_time / 2, 10) && true_crash_target_section != crash_target_section)
-			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System")
+			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
 
 			var/area/shuttle_area
 			for(var/turf/T in turfs_int)
@@ -433,23 +428,17 @@
 
 	in_transit_time_left = 0
 
-	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
-		return FALSE //If a nuke is in progress, don't attempt a landing.
-
 	//This is where things change and shit gets real
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
+	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[T_trg.x];Y=[T_trg.y];Z=[T_trg.z]'>JMP</a>)")))
+		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " [OBSERVER_JMP(observer, T_trg)]")))
 
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
 	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
 
 	sleep(85)
-
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
-		return FALSE //If a nuke finished, don't land.
 
 	if(security_level < SEC_LEVEL_RED) //automatically set security level to red.
 		set_security_level(SEC_LEVEL_RED, TRUE)

@@ -23,7 +23,7 @@
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
 	var/icon_panel = "smartfridge-panel"
-	var/item_quants = list()
+	var/list/item_quants = list() //! Assoc list of names -> list(items)
 	var/ispowered = TRUE //starts powered
 	var/is_secure_fridge = FALSE
 	var/shoot_inventory = FALSE
@@ -39,6 +39,24 @@
 	. = ..()
 	GLOB.vending_products[/obj/item/reagent_container/glass/bottle] = 1
 	GLOB.vending_products[/obj/item/storage/pill_bottle] = 1
+
+/obj/structure/machinery/smartfridge/Destroy(force)
+	if(is_in_network()) // Delete all contents from networked storage index
+		for(var/atom/movable/item as anything in contents)
+			delete_contents(item)
+	item_quants.Cut()
+	return ..() // parent will delete contents if we're not networked
+
+/// Deletes given object in contents of the smartfridge
+/obj/structure/machinery/smartfridge/proc/delete_contents(obj/item/item)
+	if(item.loc != src)
+		return
+	contents -= item
+	if(item_quants[item.name])
+		item_quants[item.name] -= item
+	if(is_in_network() && chemical_data.shared_item_storage[item.name])
+		chemical_data.shared_item_storage[item.name] -= item
+	qdel(item)
 
 /obj/structure/machinery/smartfridge/proc/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
@@ -520,7 +538,7 @@
 	return 0
 
 /obj/structure/machinery/smartfridge/chemistry/antag
-	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
 
 /obj/structure/machinery/smartfridge/chemistry/virology
 	name = "\improper Smart Virus Storage"

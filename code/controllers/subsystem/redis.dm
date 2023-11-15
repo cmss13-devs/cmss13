@@ -89,6 +89,7 @@ SUBSYSTEM_DEF(redis)
 	can_fire = TRUE
 
 /datum/controller/subsystem/redis/proc/disconnect(reason)
+	message_admins("Note: Redis connection interrupted.")
 	var/list/data = list("source" = SSredis.instance_name, "type" = "disconnect", "reason" = reason)
 	publish("byond.meta", json_encode(data))
 	rustg_redis_disconnect()

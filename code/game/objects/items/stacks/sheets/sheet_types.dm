@@ -69,6 +69,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	sheettype = "metal"
 	stack_id = "metal"
 
+
 /obj/item/stack/sheet/metal/small_stack
 	amount = STACK_10
 
@@ -114,6 +115,8 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	amount_sprites = TRUE
 	sheettype = "plasteel"
 	stack_id = "plasteel"
+	ground_offset_x = 4
+	ground_offset_y = 5
 
 /obj/item/stack/sheet/plasteel/New(loc, amount=null)
 	recipes = plasteel_recipes
@@ -144,6 +147,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	/*
 	new/datum/stack_recipe("table parts", /obj/item/frame/table/wood, 2), \
 	 */
+	new/datum/stack_recipe("campfire", /obj/structure/prop/brazier/frame/full/campfire, 5, time = 15, one_per_turf = ONE_TYPE_PER_TURF, on_floor = TRUE), \
 	new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood/normal, 1, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("wooden barricade", /obj/structure/barricade/wooden, 5, time = 20, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1), \
 	new/datum/stack_recipe("wooden crate", /obj/structure/closet/coffin/woodencrate, 5, time = 15, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
@@ -207,6 +211,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	new/datum/stack_recipe("cardborg suit", /obj/item/clothing/suit/cardborg, 3), \
 	new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg), \
 	new/datum/stack_recipe("pizza box", /obj/item/pizzabox), \
+	new/datum/stack_recipe("dartboard", /obj/item/dartboard), \
 	null, \
 	new/datum/stack_recipe_list("folders",list( \
 		new/datum/stack_recipe("blue folder", /obj/item/folder/blue), \

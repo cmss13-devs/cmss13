@@ -88,7 +88,7 @@
 /area/vehicle/apc)
 "t" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /turf/open/floor/wood,
 /area/vehicle/apc)
 "u" = (

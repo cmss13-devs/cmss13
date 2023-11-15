@@ -2,7 +2,7 @@
 /datum/emergency_call/xeno_cult
 	name = "Xeno Cultists"
 	mob_max = 6
-	arrival_message = "Incoming Transmission: 'Ia! Ia!'"
+	arrival_message = "'Ia! Ia!'"
 	objectives = "Support the Xenomorphs in any way, up to and including giving your life for them!"
 	probability = 0
 	hostility = TRUE

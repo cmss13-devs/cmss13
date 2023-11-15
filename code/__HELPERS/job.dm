@@ -26,13 +26,6 @@
 	if(I.assignment in GLOB.joblist) return I.assignment
 	return "Unknown"
 
-/proc/FindNameFromID(mob/living/carbon/human/H)
-	ASSERT(istype(H))
-	var/obj/item/card/id/I = H.wear_id
-	if(istype(I)) return I.registered_name
-	I = H.get_active_hand()
-	if(istype(I)) return I.registered_name
-
 /proc/get_all_job_icons() return GLOB.joblist + list("Prisoner")//For all existing HUD icons
 
 /obj/proc/GetJobName() //Used in secHUD icon generation
@@ -73,7 +66,7 @@
 			JOB_SQUAD_ENGI,
 			JOB_SQUAD_MEDIC,
 			JOB_SQUAD_SPECIALIST,
-			JOB_SQUAD_RTO,
+			JOB_SQUAD_TEAM_LEADER,
 			JOB_SQUAD_SMARTGUN,
 			JOB_SQUAD_MARINE,
 			JOB_CMO,

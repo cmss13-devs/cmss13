@@ -1,4 +1,3 @@
 /obj/structure/surface/table:
   banned_neighbors:
-    /obj/structure/surface/table:
-      identical: true
+  - /obj/structure/surface/table

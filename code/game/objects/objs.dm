@@ -29,6 +29,8 @@
 	var/list/req_one_access = null
 	var/req_access_txt = null
 	var/req_one_access_txt = null
+	///Whether or not this instance is using accesses different from initial code. Used for easy locating in map files.
+	var/access_modified = FALSE
 
 	var/flags_obj = NO_FLAGS
 	/// set when a player uses a pen on a renamable object
@@ -40,7 +42,7 @@
 	if(garbage)
 		add_to_garbage(src)
 
-/obj/Destroy()
+/obj/Destroy(force)
 	if(buckled_mob)
 		unbuckle()
 	. = ..()
@@ -223,9 +225,15 @@
 
 /obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
 	handle_rotation()
+	SEND_SIGNAL(src, COSMIG_OBJ_AFTER_BUCKLE, buckled_mob)
+	if(!buckled_mob)
+		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
+	else
+		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
 	return buckled_mob
 
 /obj/proc/unbuckle()
+	SIGNAL_HANDLER
 	if(buckled_mob && buckled_mob.buckled == src)
 		buckled_mob.buckled = null
 		buckled_mob.anchored = initial(buckled_mob.anchored)
@@ -302,11 +310,9 @@
 		src.add_fingerprint(user)
 		afterbuckle(target)
 		if(buckle_lying) // Make sure buckling to beds/nests etc only turns, and doesn't give a random offset
-			var/matrix/M = matrix()
-			var/matrix/L = matrix() //Counterrotation for langchat text.
-			M.Turn(90)
-			L.Turn(270)
-			target.apply_transform(M)
+			var/matrix/new_matrix = matrix()
+			new_matrix.Turn(90)
+			target.apply_transform(new_matrix)
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
@@ -352,7 +358,7 @@
 
 	return ..()
 
-/obj/bullet_act(obj/item/projectile/P)
+/obj/bullet_act(obj/projectile/P)
 	//Tasers and the like should not damage objects.
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return 0
@@ -450,4 +456,8 @@
 	return 1 SECONDS
 
 /obj/proc/set_origin_name_prefix(name_prefix)
+	return
+
+/// override for subtypes that require extra behaviour when spawned from a vendor
+/obj/proc/post_vendor_spawn_hook(mob/living/carbon/human/user)
 	return

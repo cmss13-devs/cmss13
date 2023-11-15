@@ -66,6 +66,7 @@
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/onclick/tacmap,
 		)
 
 	inherent_verbs = list(
@@ -85,29 +86,29 @@
 
 /mob/living/carbon/xenomorph/burrower/update_canmove()
 	. = ..()
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		density = FALSE
 		canmove = FALSE
 		return canmove
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity)
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	..()
 
 /mob/living/carbon/xenomorph/burrower/attack_hand()
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	..()
 
 /mob/living/carbon/xenomorph/burrower/attackby()
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	..()
 
 /mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance()
 	. = ..()
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return 0
 
 /datum/behavior_delegate/burrower_base
@@ -117,6 +118,6 @@
 	if(bound_xeno.stat == DEAD)
 		return
 
-	if(bound_xeno.burrow)
+	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_BURROWED))
 		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state] Burrower Burrowed"
 		return TRUE

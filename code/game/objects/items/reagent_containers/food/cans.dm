@@ -175,7 +175,8 @@
 
 /obj/item/reagent_container/food/drinks/cans/thirteenloko
 	name = "\improper Thirteen Loko"
-	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc = "Consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc_lore = "A rarity among modern markets, Thirteen Loko is an all-Earth original. With a name coined by the general consensus that only the mildly insane willing to imbibe it, this energy drink has garnered a notorious reputation for itself and a sizeable cult following to match it. After a series of legal proceedings by Weyland-Yutani, denatured cobra venom was removed from the recipe, much to the disappointment of the drink's consumers."
 	icon_state = "thirteen_loko"
 	center_of_mass = "x=16;y=8"
 
@@ -224,13 +225,13 @@
 	. = ..()
 	reagents.add_reagent("lemon_lime", 30)
 
-/obj/item/reagent_container/food/drinks/cans/lemon_lime
+/obj/item/reagent_container/food/drinks/cans/iced_tea
 	name = "iced tea can"
 	desc = "Just like the squad redneck's grandmother used to buy."
 	icon_state = "ice_tea_can"
 	center_of_mass = "x=16;y=10"
 
-/obj/item/reagent_container/food/drinks/cans/lemon_lime/Initialize()
+/obj/item/reagent_container/food/drinks/cans/iced_tea/Initialize()
 	. = ..()
 	reagents.add_reagent("icetea", 30)
 
@@ -269,6 +270,7 @@
 /obj/item/reagent_container/food/drinks/cans/boda
 	name = "\improper Boda"
 	desc = "State regulated soda beverage. Enjoy comrades."
+	desc_lore = "Designed back in 2159, the advertising campaign for BODA started out as an attempt by the UPP to win the hearts and minds of colonists and settlers across the galaxy. Soon after, the ubiquitous cyan vendors and large supplies of the drink began to crop up in UA warehouses with seemingly no clear origin. Despite some concerns, after initial testing determined that the stored products were safe for consumption and surprisingly popular when blind-tested with focus groups, the strange surplus of BODA was authorized for usage within the UA-associated colonies. Subsequently, it enjoyed a relative popularity before falling into obscurity in the coming decades as supplies dwindled." 
 	icon_state = "boda"
 	center_of_mass = "x=16;y=10"
 

@@ -1,6 +1,6 @@
 /client/proc/shakeshipverb()
 	set name = "Shake Shipmap"
-	set category = "Admin.Events"
+	set category = "Admin.Ship"
 
 	var/drop = FALSE
 	var/delayt
@@ -10,7 +10,7 @@
 	if(!sstrength)
 		return
 	var/stime = tgui_input_number(src, "Time Between Shakes?", "Don't make it too long", 0, 30)
-	if(!sstrength)
+	if(!stime)
 		return
 
 	var/prompt = tgui_alert(src, "Drop people?", "Confirmation", list("Yes", "No"), 20 SECONDS)
@@ -39,7 +39,6 @@
 	if(prompt != "Yes")
 		return
 	else
-		log_admin("[key_name_admin(src)] rocked the ship! with the strength of [sstrength], and duration of [stime]")
 		message_admins("[key_name_admin(src)] rocked the ship! with the strength of [sstrength], and duration of [stime]")
 		if(delayed)
 			if(announce)

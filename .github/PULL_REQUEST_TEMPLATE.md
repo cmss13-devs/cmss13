@@ -26,8 +26,8 @@ Put screenshots and videos here with an empty line between the screenshots and t
 
 # Changelog
 
-<!-- If your PR modifies aspects of the game that can be concretely observed by players or admins you should add a changelog. If your change does NOT meet this description, remove this section. Be sure to properly mark your PRs to prevent unnecessary GBP loss. Please note that maintainers freely reserve the right to remove and add tags should they deem it appropriate. You can attempt to finagle the system all you want, but it's best to shoot for clear communication right off the bat. -->
-<!-- If you add a name after the ':cl', that name will be used in the changelog. You must add your CKEY after the CL if your GitHub name doesn't match. Be sure to properly mark your PRs to prevent unnecessary GBP loss. Maintainers freely reserve the right to remove and add tags should they deem it appropriate. -->
+<!-- If your PR modifies aspects of the game that can be concretely observed by players or admins you should add a changelog. If your change does NOT meet this description, remove this section. Be sure to properly label your changes in the changelog. Please note that maintainers freely reserve the right to remove and add tags should they deem it appropriate. You can attempt to finagle the system all you want, but it's best to shoot for clear communication right off the bat. -->
+<!-- If you add a name after the ':cl', that name will be used in the changelog. You must add your CKEY after the CL if your GitHub name doesn't match. Maintainers freely reserve the right to remove and add tags should they deem it appropriate. -->
 
 :cl:
 add: Added something

@@ -60,6 +60,7 @@
 		/datum/action/xeno_action/onclick/predalien_roar,
 		/datum/action/xeno_action/onclick/smash,
 		/datum/action/xeno_action/activable/devastate,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	mutation_type = "Normal"
 
@@ -106,12 +107,11 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 	kills = min(kills + 1, max_kills)
 
-/datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if(!iscarbonsizehuman(A))
-		return
-	var/mob/living/carbon/human/H = A
-	if(isspeciesyautja(H))
-		original_damage *= 1.5
+/datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, mob/living/carbon/attacked_mob)
+	if(ishuman(attacked_mob))
+		var/mob/living/carbon/human/attacked_human = attacked_mob
+		if(isspeciesyautja(attacked_human))
+			original_damage *= 1.5
 
 	return original_damage + kills * 2.5
 
@@ -136,12 +136,18 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			to_chat(xeno, SPAN_XENONOTICE("You decide not to butcher [victim]"))
 			return TRUE
 
-		if(ishuman(victim))
+		if(ishuman(victim) && !isworkingjoe(victim)) //No joe meat, can still gib it though
 			var/mob/living/carbon/human/human_victim = victim
 
+			var/flesh_type = /obj/item/reagent_container/food/snacks/meat
+			var/flesh = "meat"
+			if(issynth(human_victim))
+				flesh_type = /obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh
+				flesh = "synthetic flesh"
 			for(var/i in 1 to 3)
-				var/obj/item/reagent_container/food/snacks/meat/h_meat = new(human_victim.loc)
-				h_meat.name = "[human_victim.name] meat"
+				var/obj/item/reagent_container/food/snacks/meat/new_meat = new flesh_type(human_victim.loc)
+				new_meat.name = "[human_victim.name] [flesh]"
+				
 
 		else if (isxeno(victim))
 			var/mob/living/carbon/xenomorph/xeno_victim = victim

@@ -63,8 +63,9 @@ FIRE ALARM
 	return src.alarm()
 
 /obj/structure/machinery/firealarm/emp_act(severity)
-	if(prob(50/severity)) alarm()
-	..()
+	. = ..()
+	if(prob(50/severity))
+		alarm()
 
 /obj/structure/machinery/firealarm/attackby(obj/item/held_object as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -139,8 +140,10 @@ FIRE ALARM
 	var/area/area = get_area(src)
 
 	if (area.flags_alarm_state & ALARM_WARNING_FIRE)
+		user.visible_message("[user] deactivates [src].", "You deactivate [src].")
 		reset()
 	else
+		user.visible_message("[user] activates [src].", "You activate [src].")
 		alarm()
 
 	return

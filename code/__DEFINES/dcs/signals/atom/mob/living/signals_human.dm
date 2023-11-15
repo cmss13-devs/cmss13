@@ -12,7 +12,7 @@
 #define COMSIG_HUMAN_REVIVED "human_revived"
 /// From /mob/living/carbon/human/bullet_act
 #define COMSIG_HUMAN_PRE_BULLET_ACT "human_pre_bullet_act"
-/// From /mob/living/carbon/human/bullet_act(): (damage_result, ammo_flags, obj/item/projectile/P)
+/// From /mob/living/carbon/human/bullet_act(): (damage_result, ammo_flags, obj/projectile/P)
 #define COMSIG_HUMAN_BULLET_ACT "human_bullet_act"
 	#define COMPONENT_CANCEL_BULLET_ACT (1<<0)
 
@@ -28,11 +28,17 @@
 #define COMSIG_HUMAN_OVERLAY_APPLIED "human_overlay_applied"
 /// From /mob/living/carbon/human/remove_overlay(): (cache_index, overlay_image)
 #define COMSIG_HUMAN_OVERLAY_REMOVED "human_overlay_removed"
+/// From /datum/flaying_datum
+#define COMSIG_HUMAN_FLAY_ATTEMPT "human_flay_attempt"
 
 #define COMSIG_HUMAN_BONEBREAK_PROBABILITY "human_bonebreak_probability"
 
 #define COMSIG_HUMAN_UPDATE_SIGHT "human_update_sight"
 	#define COMPONENT_OVERRIDE_UPDATE_SIGHT (1<<0)
+
+///from /mob/living/carbon/human/movement_delay()
+#define COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION "human_movement_cancel_interaction"
+	#define COMPONENT_HUMAN_MOVEMENT_KEEP_USING (1<<0)
 
 ///from /mob/living/carbon/human/update_sight()
 #define COMSIG_HUMAN_POST_UPDATE_SIGHT "human_post_update_sight"
@@ -50,5 +56,14 @@
 //from /mob/living/carbon/human/equip_to_slot()
 #define COMSIG_HUMAN_EQUIPPED_ITEM "human_equipped_item"
 
+/// From /mob/proc/equip_to_slot_if_possible()
+#define COMSIG_HUMAN_ATTEMPTING_EQUIP "human_attempting_equip"
+	#define COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP (1<<0)
+
 //from /mob/living/carbon/human/Life()
 #define COMSIG_HUMAN_SET_UNDEFIBBABLE "human_set_undefibbable"
+
+/// from /datum/surgery_step/proc/attempt_step()
+#define COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS "human_surgery_apply_modifiers"
+/// From /mob/living/carbon/human/proc/get_flags_cold_protection()
+#define COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS "human_cold_protection_apply_modifiers"

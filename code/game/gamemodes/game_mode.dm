@@ -82,7 +82,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	return
 
 ///Triggered when the dropship first lands.
-/datum/game_mode/proc/ds_first_landed(obj/docking_port/mobile/marine_dropship)
+/datum/game_mode/proc/ds_first_landed(obj/docking_port/stationary/marine_dropship)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return
@@ -103,22 +103,27 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
+	round_time_lobby = world.time
 	log_game("Round started at [time2text(world.realtime)]")
+	log_game("Operation time at round start is [worldtime2text()]")
 	if(SSticker.mode)
 		log_game("Game mode set to [SSticker.mode]")
 	log_game("Server IP: [world.internet_address]:[world.port]")
-	return 1
+	return TRUE
 
+/datum/game_mode/proc/get_affected_zlevels()
+	if(is_in_endgame)
+		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP))
+		return
 
 ///process()
 ///Called by the gameticker
 /datum/game_mode/process()
-	return 0
+	return FALSE
 
 
 /datum/game_mode/proc/check_finished() //to be called by ticker
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED )
-		return TRUE
+	return
 
 /datum/game_mode/proc/cleanup() //This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return
@@ -128,7 +133,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 		round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [master_mode]!\nEnd of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
 /datum/game_mode/proc/declare_completion()
 	if(round_statistics)

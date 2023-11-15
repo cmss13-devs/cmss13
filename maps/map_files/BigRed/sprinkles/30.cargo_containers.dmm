@@ -643,7 +643,7 @@
 /area/bigredv2/outside/cargo)
 "ck" = (
 /obj/structure/machinery/camera/autoname{
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)

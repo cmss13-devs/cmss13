@@ -9,13 +9,12 @@
 	var/list/stacktypes
 
 /obj/item/circuitboard/robot_module/emp_act(severity)
+	. = ..()
 	if(modules)
 		for(var/obj/O in modules)
 			O.emp_act(severity)
 	if(emag)
 		emag.emp_act(severity)
-	..()
-	return
 
 
 /obj/item/circuitboard/robot_module/Initialize()
@@ -31,6 +30,7 @@
 	. = ..()
 	QDEL_NULL(emag)
 	QDEL_NULL(jetpack)
+	QDEL_NULL_LIST(modules)
 
 /obj/item/circuitboard/robot_module/proc/respawn_consumable(mob/living/silicon/robot/R)
 

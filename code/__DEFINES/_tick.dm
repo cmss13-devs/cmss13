@@ -1,3 +1,5 @@
+#define MAPTICK_LAST_INTERNAL_TICK_USAGE (world.map_cpu)
+
 /// Tick limit while running normally
 #define TICK_BYOND_RESERVE 2
 #define TICK_LIMIT_RUNNING 80

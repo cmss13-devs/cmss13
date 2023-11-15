@@ -5,7 +5,7 @@
 	desc = "This can be used to check medical records."
 	icon_state = "medcomp"
 	density = TRUE
-	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_MEDICAL)
 	circuit = /obj/item/circuitboard/computer/med_data
 	var/obj/item/card/id/scan = null
 	var/last_user_name = ""
@@ -123,7 +123,6 @@
 					else
 						dat += "<br>[bdat]"
 
-				else
 		else
 			dat += text("<A href='?src=\ref[];login=1'>{Log In}</A>", src)
 	show_browser(user, dat, "Medical Records", "med_rec")
@@ -365,8 +364,6 @@
 				for(var/datum/data/record/E in GLOB.data_core.medical)
 					if ((E.fields["ref"] == R.fields["ref"] || E.fields["id"] == R.fields["id"]))
 						M = E
-					else
-						//Foreach continue //goto(2540)
 				src.active1 = R
 				src.active2 = M
 				src.screen = 4
@@ -417,16 +414,12 @@
 				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if ((lowertext(R.fields["name"]) == t1 || t1 == lowertext(R.fields["id"])))
 						src.active2 = R
-					else
-						//Foreach continue //goto(3229)
 				if (!active2)
 					temp = "Could not locate record [t1]."
 				else
 					for(var/datum/data/record/E in GLOB.data_core.general)
 						if ((E.fields["name"] == src.active2.fields["name"] || E.fields["id"] == src.active2.fields["id"]))
 							src.active1 = E
-						else
-							//Foreach continue //goto(3334)
 					src.screen = 4
 
 			if (href_list["print_p"])
@@ -469,9 +462,10 @@
 					if(!record) return
 					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 					sleep(40)
+					var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 					var/obj/item/paper/P = new /obj/item/paper( src.loc )
 					P.name = text("Scan: [], []",record.fields["name"],worldtime2text())
-					P.info += text("<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Scan Record</I><HR><H2>[]</H2>\n</center>",record.fields["name"])
+					P.info += text("<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Scan Record</I><HR><H2>[]</H2>\n</center>",record.fields["name"])
 					for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 						if (R.fields["name"] ==  record.fields["name"])
 							if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
@@ -489,8 +483,8 @@
 	return
 
 /obj/structure/machinery/computer/med_data/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 
 	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
@@ -514,8 +508,6 @@
 			GLOB.data_core.medical -= R
 			qdel(R)
 			continue
-
-	..(severity)
 
 
 /obj/structure/machinery/computer/med_data/laptop

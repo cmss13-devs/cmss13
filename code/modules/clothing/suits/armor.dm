@@ -215,7 +215,7 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 	allowed = list(
-		/obj/item/weapon/claymore/mercsword,
+		/obj/item/weapon/sword,
 		/obj/item/weapon/shield/riot,
 		/obj/item/device/flashlight,
 	)
@@ -238,6 +238,9 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 
+/obj/item/clothing/suit/armor/riot/marine/vintage_riot
+	desc = "Barring the slightly off-color plates, it's preserved quite well."
+	icon_state = "old_riot"
 
 /obj/item/clothing/suit/armor/swat
 	name = "swat suit"
@@ -332,10 +335,10 @@
 		add_fingerprint(user)
 
 /obj/item/clothing/suit/armor/reactive/emp_act(severity)
+	. = ..()
 	active = 0
 	src.icon_state = "reactiveoff"
 	src.item_state = "reactiveoff"
-	..()
 
 
 
@@ -420,7 +423,7 @@
 			return
 		var/obj/item/weapon/gun/W = usr.get_active_hand()
 		if (W.w_class > SIZE_MEDIUM)
-			to_chat(usr, SPAN_DANGER("This gun won't fit in \the belt!"))
+			to_chat(usr, SPAN_DANGER("This gun won't fit in the belt!"))
 			return
 		holstered = usr.get_active_hand()
 		usr.drop_held_item()

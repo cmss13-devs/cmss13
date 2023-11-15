@@ -26,4 +26,4 @@
 	icon_state = "furnace"
 	density = TRUE
 	anchored = TRUE
-	luminosity = 3
+	light_range = 3

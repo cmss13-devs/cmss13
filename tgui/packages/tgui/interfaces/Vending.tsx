@@ -208,10 +208,9 @@ const VendingRow = (props, context) => {
   const { product, productStock } = props;
   const { access, user, checking_id } = data;
   const remaining = productStock.amount;
+  const denied = checking_id && (!user || !access);
   const disabled =
-    remaining === 0 ||
-    (!user && checking_id) ||
-    (!access && product.price > user?.cash);
+    denied || remaining === 0 || (checking_id && product.price > user?.cash);
 
   return (
     <Table.Row>
@@ -223,7 +222,7 @@ const VendingRow = (props, context) => {
         <ProductStock product={product} remaining={remaining} />
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
-        <ProductButton disabled={disabled} product={product} />
+        <ProductButton disabled={disabled} product={product} denied={denied} />
       </Table.Cell>
     </Table.Row>
   );
@@ -259,7 +258,7 @@ const ProductStock = (props) => {
 /** The main button to purchase an item. */
 const ProductButton = (props, context) => {
   const { act, data } = useBackend<VendingData>(context);
-  const { disabled, product } = props;
+  const { denied, disabled, product } = props;
   const { checking_id } = data;
 
   const price = product.price && checking_id ? '$' + product.price : 'FREE';
@@ -267,6 +266,7 @@ const ProductButton = (props, context) => {
     <Button
       fluid
       disabled={disabled}
+      tooltip={denied ? 'Access Denied' : ''}
       onClick={() =>
         act('vend', {
           'ref': product.ref,

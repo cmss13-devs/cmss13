@@ -29,7 +29,7 @@
 
 /datum/item_to_box_mapping/New()
 	//Ammo magazine boxes, minus loose ammo boxes
-	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine))
+	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine) - /obj/item/ammo_box/magazine/misc)
 		if(initial(ammo_box.empty))
 			//Ignore all the empty boxes
 			continue

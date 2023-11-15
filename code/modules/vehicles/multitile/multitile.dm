@@ -21,6 +21,14 @@
 
 	can_buckle = FALSE
 
+	light_system = MOVABLE_LIGHT
+	light_range = 5
+
+	var/atom/movable/vehicle_light_holder/lighting_holder
+
+	var/vehicle_light_range = 5
+	var/vehicle_light_power = 2
+
 	//Yay! Working cameras in the vehicles at last!!
 	var/obj/structure/machinery/camera/vehicle/camera = null
 	var/obj/structure/machinery/camera/vehicle/camera_int = null
@@ -163,18 +171,34 @@
 /obj/vehicle/multitile/Initialize()
 	. = ..()
 
-	if(interior_map)
-		interior = new(src)
-		INVOKE_ASYNC(src, PROC_REF(do_create_interior))
-
 	var/angle_to_turn = turning_angle(SOUTH, dir)
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
+
+	if(bound_width > world.icon_size || bound_height > world.icon_size)
+		lighting_holder = new(src)
+		lighting_holder.set_light_range(vehicle_light_range)
+		lighting_holder.set_light_power(vehicle_light_power)
+		lighting_holder.set_light_on(vehicle_light_range || vehicle_light_power)
+	else if(light_range)
+		set_light_on(TRUE)
+
+	light_pixel_x = -bound_x
+	light_pixel_y = -bound_y
 
 	healthcheck()
 	update_icon()
 
 	GLOB.all_multi_vehicles += src
+
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/vehicle/multitile/LateInitialize()
+	. = ..()
+
+	if(interior_map)
+		interior = new(src)
+		INVOKE_ASYNC(src, PROC_REF(do_create_interior))
 
 /obj/vehicle/multitile/proc/do_create_interior()
 	interior.create_interior(interior_map)
@@ -192,7 +216,7 @@
 
 	GLOB.all_multi_vehicles -= src
 
-	. = ..()
+	return ..()
 
 /obj/vehicle/multitile/proc/initialize_cameras()
 	return
@@ -359,8 +383,8 @@
 		handle_all_modules_broken()
 
 	//vehicle is dead, no more lights
-	if(health <= 0 && luminosity)
-		SetLuminosity(0)
+	if(health <= 0 && lighting_holder.light_range)
+		lighting_holder.set_light_on(FALSE)
 	update_icon()
 
 /*
@@ -416,3 +440,20 @@
 /obj/vehicle/multitile/proc/handle_acidic_environment(atom/A)
 	for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
 		Loco.handle_acid_damage(A)
+
+/atom/movable/vehicle_light_holder
+	light_system = MOVABLE_LIGHT
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/atom/movable/vehicle_light_holder/Initialize(mapload, ...)
+	. = ..()
+
+	var/atom/attached_to = loc
+
+	forceMove(attached_to.loc)
+	RegisterSignal(attached_to, COMSIG_MOVABLE_MOVED, PROC_REF(handle_parent_move))
+
+/atom/movable/vehicle_light_holder/proc/handle_parent_move(atom/movable/mover, atom/oldloc, direction)
+	SIGNAL_HANDLER
+
+	forceMove(get_turf(mover))

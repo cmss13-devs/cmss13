@@ -14,6 +14,8 @@
 
 	var/ventcrawl_message_busy = FALSE //Prevent spamming
 
+	/// Whether or not the pipe will explode (when on the Almayer) during hijack
+	var/explodey = TRUE
 	/// The grenade subtypes that pipes will use when they explode
 	var/static/list/exploding_types = list(/obj/item/explosive/grenade/high_explosive/bursting_pipe, /obj/item/explosive/grenade/incendiary/bursting_pipe)
 
@@ -40,7 +42,8 @@
 	if(!is_mainship_level(z))
 		return
 
-	GLOB.mainship_pipes += src
+	if(explodey)
+		GLOB.mainship_pipes += src
 
 /obj/structure/pipes/Destroy()
 	for(var/mob/living/M in src)

@@ -25,6 +25,7 @@ GLOBAL_LIST_INIT_TYPED(paygrades, /datum/paygrade, setup_paygrades())
 				.[pg_id] = new PG
 
 GLOBAL_LIST_INIT(highcom_paygrades, list(
+	"PvI",
 	"NO7",
 	"MO7",
 	"NO8",
@@ -51,4 +52,10 @@ GLOBAL_LIST_INIT(co_paygrades, list(
 	"MO6C",
 	"MO5",
 	"MO4"
+))
+
+GLOBAL_LIST_INIT(wy_paygrades, list(
+	"WYC8",
+	"WYC9",
+	"WYC10"
 ))

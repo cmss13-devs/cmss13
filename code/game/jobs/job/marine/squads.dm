@@ -25,29 +25,53 @@
 	sub_leader = "Strike Leader"
 
 /datum/squad
-	var/name //Name of the squad
+	/// Name of the squad
+	var/name
+	/// Squads ID that is set on New()
 	var/tracking_id = null //Used for the tracking subsystem
-	var/max_positions = -1 //Maximum number allowed in a squad. Defaults to infinite
-	var/color = 0 //Color for helmets, etc.
-	var/list/access = list() //Which special access do we grant them
-	var/omni_squad_vendor = FALSE /// Can use any squad vendor regardless of squad connection
-	var/max_engineers = 3 //maximum # of engineers allowed in squad
-	var/max_medics = 4 //Ditto, squad medics
+	/// Maximum number allowed in a squad. Defaults to infinite
+	var/max_positions = -1
+	/// If uses the overlay
+	var/use_stripe_overlay = TRUE
+	/// Color for the squad marines gear overlays
+	var/equipment_color = "#FFFFFF"
+	/// The alpha for the armor overlay used by equipment color
+	var/armor_alpha = 125
+	/// Color for the squad marines langchat
+	var/chat_color = "#FFFFFF"
+	/// Which special access do we grant them
+	var/list/access = list()
+	/// Can use any squad vendor regardless of squad connection
+	var/omni_squad_vendor = FALSE
+	/// maximum # of engineers allowed in the squad
+	var/max_engineers = 3
+	/// maximum # of squad medics allowed in the squad
+	var/max_medics = 4
+	/// maximum # of specs allowed in the squad
 	var/max_specialists = 1
-	var/max_rto = 2
+	/// maximum # of fireteam leaders allowed in the suqad
+	var/max_tl = 2
+	/// maximum # of smartgunners allowed in the squad
 	var/max_smartgun = 1
+	/// maximum # of squad leaders allowed in the squad
 	var/max_leaders = 1
-	var/radio_freq = 1461 //Squad radio headset frequency.
+	/// Squad headsets default radio frequency
+	var/radio_freq = 1461
 
-	///Variables for showing up in various places
-	var/usable = FALSE  //Is it used in-game?
-	var/roundstart = TRUE /// Whether this squad can be picked at roundstart
-	var/locked = FALSE //Is it available for squad management?
-	var/active = FALSE //Is it visible in overwatch?
-	var/faction = FACTION_MARINE //What faction runs the squad?
+	/// Whether this squad can be used by marines
+	var/usable = FALSE
+	/// Whether this squad can be picked at roundstart
+	var/roundstart = TRUE
+	// Whether the squad is available for squad management
+	var/locked = FALSE
+	/// Whether it is visible in overwatch
+	var/active = FALSE
+	/// Which faction the squad is in
+	var/faction = FACTION_MARINE
 
-	///Squad Type Specifics
+	/// What will the assistant squad leader be called
 	var/squad_type = "Squad" //Referenced for aSL details. Squad/Team/Cell etc.
+	/// Squad leaders icon
 	var/lead_icon //Referenced for SL's 'L' icon. If nulled, won't override icon for aSLs.
 
 	//vvv Do not set these in squad defines
@@ -69,7 +93,7 @@
 	var/num_leaders = 0
 	var/num_smartgun = 0
 	var/num_specialists = 0
-	var/num_rto = 0
+	var/num_tl = 0
 	var/count = 0 //Current # in the squad
 	var/list/marines_list = list() // list of mobs (or name, not always a mob ref) in that squad.
 
@@ -86,6 +110,9 @@
 
 	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
 
+	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
+	var/prepend_squad_name_to_assignment = TRUE
+
 
 /datum/squad/marine
 	name = "Root"
@@ -96,35 +123,40 @@
 
 /datum/squad/marine/alpha
 	name = SQUAD_MARINE_1
-	color = 1
+	equipment_color = "#e61919"
+	chat_color = "#e67d7d"
 	access = list(ACCESS_MARINE_ALPHA)
 	radio_freq = ALPHA_FREQ
 	minimap_color = MINIMAP_SQUAD_ALPHA
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
-	color = 2
+	equipment_color = "#ffc32d"
+	chat_color = "#ffe650"
 	access = list(ACCESS_MARINE_BRAVO)
 	radio_freq = BRAVO_FREQ
 	minimap_color = MINIMAP_SQUAD_BRAVO
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
-	color = 3
+	equipment_color = "#c864c8"
+	chat_color = "#ff96ff"
 	access = list(ACCESS_MARINE_CHARLIE)
 	radio_freq = CHARLIE_FREQ
 	minimap_color = MINIMAP_SQUAD_CHARLIE
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
-	color = 4
+	equipment_color = "#4148c8"
+	chat_color = "#828cff"
 	access = list(ACCESS_MARINE_DELTA)
 	radio_freq = DELTA_FREQ
 	minimap_color = MINIMAP_SQUAD_DELTA
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
-	color = 5
+	equipment_color = "#67d692"
+	chat_color = "#67d692"
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	radio_freq = ECHO_FREQ
 	omni_squad_vendor = TRUE
@@ -136,7 +168,8 @@
 
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO
-	color = 6
+	equipment_color = "#c47a50"
+	chat_color = "#c47a50"
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	minimap_color = MINIMAP_SQUAD_FOXTROT
 
@@ -147,13 +180,42 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/intel
+	name = SQUAD_MARINE_INTEL
+	use_stripe_overlay = FALSE
+	equipment_color = "#053818"
+	minimap_color = MINIMAP_SQUAD_INTEL
+	radio_freq = INTEL_FREQ
+
+	roundstart = FALSE
+	prepend_squad_name_to_assignment = FALSE
+
+	max_engineers = 0
+	max_medics = 0
+	max_specialists = 0
+	max_tl = 0
+	max_smartgun = 0
+	max_leaders = 0
+
 /datum/squad/marine/sof
 	name = SQUAD_SOF
-	color = 7
+	equipment_color = "#400000"
+	chat_color = "#400000"
 	radio_freq = SOF_FREQ
 	squad_type = "Team"
 	lead_icon = "soctl"
 	minimap_color = MINIMAP_SQUAD_SOF
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
+/datum/squad/marine/cbrn
+	name = SQUAD_CBRN
+	equipment_color = "#3B2A7B" //Chemical Corps Purple
+	chat_color = "#553EB2"
+	radio_freq = CBRN_FREQ
+	minimap_color = "#3B2A7B"
 
 	active = FALSE
 	roundstart = FALSE
@@ -168,23 +230,28 @@
 
 /datum/squad/upp/one
 	name = "UPPS1"
-	color = 1
+	equipment_color = "#e61919"
+	chat_color = "#e67d7d"
 
 /datum/squad/upp/twp
 	name = "UPPS2"
-	color = 2
+	equipment_color = "#ffc32d"
+	chat_color = "#ffe650"
 
 /datum/squad/upp/three
 	name = "UPPS3"
-	color = 3
+	equipment_color = "#c864c8"
+	chat_color = "#ff96ff"
 
 /datum/squad/upp/four
 	name = "UPPS4"
-	color = 4
+	equipment_color = "#4148c8"
+	chat_color = "#828cff"
 
 /datum/squad/upp/kdo
 	name = "UPPKdo"
-	color = 6
+	equipment_color = "#c47a50"
+	chat_color = "#c47a50"
 	squad_type = "Team"
 	locked = TRUE
 //###############################
@@ -197,11 +264,13 @@
 
 /datum/squad/pmc/one
 	name = "Team Upsilon"
-	color = 3
+	equipment_color = "#c864c8"
+	chat_color = "#ff96ff"
 
 /datum/squad/pmc/two
 	name = "Team Gamma"
-	color = 6
+	equipment_color = "#c47a50"
+	chat_color = "#c47a50"
 
 /datum/squad/pmc/wo
 	name = "Taskforce White"
@@ -280,6 +349,7 @@
 	return TRUE
 
 /// Clear references in squad listing upon deletion. Zap also erases the kept records.
+/// NOTE: zap will be set true for a forced COMSIG_PARENT_QDELETING
 /datum/squad/proc/personnel_deleted(mob/M, zap = FALSE)
 	SIGNAL_HANDLER
 	if(M == overwatch_officer)
@@ -330,16 +400,17 @@
 
 /// Displays a message to squad members directly on the game map
 /datum/squad/proc/send_maptext(text = "", title_text = "", only_leader = 0)
-	var/message_colour = squad_colors_chat[color]
+	var/message_colour = chat_color
 	if(only_leader)
 		if(squad_leader)
-			var/mob/living/carbon/human/SL = squad_leader
-			if(!SL.stat && SL.client)
-				SL.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
+			if(!squad_leader.stat && squad_leader.client)
+				playsound_client(squad_leader.client, 'sound/effects/radiostatic.ogg', squad_leader.loc, 25, FALSE)
+				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 	else
-		for(var/mob/living/carbon/human/M in marines_list)
-			if(!M.stat && M.client) //Only living and connected people in our squad
-				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
+		for(var/mob/living/carbon/human/marine in marines_list)
+			if(!marine.stat && marine.client) //Only living and connected people in our squad
+				playsound_client(marine.client, 'sound/effects/radiostatic.ogg', marine.loc, 25, FALSE)
+				marine.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 
 /// Displays a message to the squad members in chat
 /datum/squad/proc/send_message(text = "", plus_name = 0, only_leader = 0)
@@ -354,14 +425,14 @@
 			if(!SL.stat && SL.client)
 				if(plus_name)
 					SL << sound('sound/effects/tech_notification.ogg')
-				to_chat(SL, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]")
+				to_chat(SL, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
 				return
 	else
 		for(var/mob/living/carbon/human/M in marines_list)
 			if(!M.stat && M.client) //Only living and connected people in our squad
 				if(plus_name)
 					M << sound('sound/effects/tech_notification.ogg')
-				to_chat(M, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]")
+				to_chat(M, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
 
 
 
@@ -404,9 +475,9 @@
 		if(JOB_SQUAD_SPECIALIST)
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
-		if(JOB_SQUAD_RTO)
-			assignment = JOB_SQUAD_RTO
-			num_rto++
+		if(JOB_SQUAD_TEAM_LEADER)
+			assignment = JOB_SQUAD_TEAM_LEADER
+			num_tl++
 			M.important_radio_channels += radio_freq
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
@@ -458,7 +529,10 @@
 	marines_list += M
 	M.assigned_squad = src //Add them to the squad
 	C.access += (src.access + extra_access) //Add their squad access to their ID
-	C.assignment = "[name] [assignment]"
+	if(prepend_squad_name_to_assignment)
+		C.assignment = "[name] [assignment]"
+	else
+		C.assignment = assignment
 
 	SEND_SIGNAL(M, COMSIG_SET_SQUAD)
 
@@ -467,7 +541,7 @@
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 
 	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(M.wear_l_ear, M.wear_r_ear)
-	if(headset)
+	if(headset && radio_freq)
 		headset.set_frequency(radio_freq)
 	M.update_inv_head()
 	M.update_inv_wear_suit()
@@ -520,8 +594,8 @@
 			num_specialists--
 		if(JOB_SQUAD_SMARTGUN)
 			num_smartgun--
-		if(JOB_SQUAD_RTO)
-			num_rto--
+		if(JOB_SQUAD_TEAM_LEADER)
+			num_tl--
 		if(JOB_SQUAD_LEADER)
 			num_leaders--
 
@@ -540,8 +614,8 @@
 			old_lead.comm_title = "ComTech"
 		if(JOB_SQUAD_MEDIC)
 			old_lead.comm_title = "HM"
-		if(JOB_SQUAD_RTO)
-			old_lead.comm_title = "RTO"
+		if(JOB_SQUAD_TEAM_LEADER)
+			old_lead.comm_title = "FTL"
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 		if(JOB_SQUAD_LEADER)

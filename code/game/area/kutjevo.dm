@@ -8,20 +8,17 @@
 	icon_state = "kutjevo"
 	can_build_special = TRUE //T-Comms structure
 	temperature = 308.7 //kelvin, 35c, 95f
-	lighting_use_dynamic = 1
 	minimap_color = MINIMAP_AREA_ENGI
 
 /area/shuttle/drop1/kutjevo
 	name = "Kutjevo - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_kutjevo.dmi'
-	lighting_use_dynamic = 1
 
 /area/shuttle/drop2/kutjevo
 	name = "Kutjevo - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_kutjevo.dmi'
-	lighting_use_dynamic = 1
 
 /area/kutjevo/exterior
 	name = "Kutjevo - Exterior"

@@ -1,5 +1,5 @@
 
-/// Dropship equipments, mainly weaponry but also utility implements
+/// Dropship equipment, mainly weaponry but also utility implements
 /obj/structure/dropship_equipment
 	density = TRUE
 	anchored = TRUE
@@ -153,7 +153,7 @@
 /// Turret holder for dropship automated sentries
 /obj/structure/dropship_equipment/sentry_holder
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
-	name = "sentry deployment system"
+	name = "\improper A/A-32-P Sentry Defense System"
 	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
 	health = null
@@ -256,6 +256,13 @@
 	deployed_turret.start_processing()
 	deployed_turret.set_range()
 
+	deployed_turret.linked_cam = new(deployed_turret.loc, "[capitalize_first_letters(ship_base.name)] [capitalize_first_letters(name)]")
+	if (linked_shuttle.id == DROPSHIP_ALAMO)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_ALAMO)
+	else if (linked_shuttle.id == DROPSHIP_NORMANDY)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
+
+
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()
 	if(!deployed_turret)
 		return
@@ -267,18 +274,22 @@
 	deployed_turret.stop_processing()
 	deployed_turret.unset_range()
 	icon_state = "sentry_system_installed"
+	QDEL_NULL(deployed_turret.linked_cam)
 
-
+/obj/structure/dropship_equipment/sentry_holder/Destroy()
+	if(deployed_turret)
+		QDEL_NULL(deployed_turret.linked_cam)
+	. = ..()
 
 
 /// Holder for the dropship mannable machinegun system
 /obj/structure/dropship_equipment/mg_holder
-	name = "machine gun deployment system"
+	name = "\improper MTU-4B Door Gunner Hardpoint System"
 	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
-	point_cost = 300
+	point_cost = 50
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 	combat_equipment = FALSE
@@ -408,13 +419,13 @@
 
 
 /obj/structure/dropship_equipment/fuel/fuel_enhancer
-	name = "fuel enhancer"
+	name = "\improper fuel enhancer"
 	desc = "A fuel enhancement system for dropships. It improves the thrust produced by the fuel combustion for faster travels. Fits inside the engine attach points. You need a powerloader to lift it."
 	icon_state = "fuel_enhancer"
 	point_cost = 800
 
 /obj/structure/dropship_equipment/fuel/cooling_system
-	name = "cooling system"
+	name = "\improper cooling system"
 	desc = "A cooling system for dropships. It produces additional cooling reducing delays between launch. Fits inside the engine attach points. You need a powerloader to lift it."
 	icon_state = "cooling_system"
 	point_cost = 800
@@ -426,7 +437,7 @@
 	equip_categories = list(DROPSHIP_ELECTRONICS)
 
 /obj/structure/dropship_equipment/electronics/chaff_launcher
-	name = "chaff launcher"
+	name = "\improper AN/ALE-203 Chaff Launcher"
 	icon_state = "chaff_launcher"
 	point_cost = 0
 
@@ -434,27 +445,24 @@
 #define LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS 12
 
 /obj/structure/dropship_equipment/electronics/spotlights
-	name = "spotlight"
+	name = "\improper AN/LEN-15 Spotlight"
 	icon_state = "spotlights"
 	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
-	point_cost = 300
+	point_cost = 50
 	var/spotlights_cooldown
 	var/brightness = 11
-
-/obj/structure/dropship_equipment/electronics/spotlights/get_light_range()
-	return min(luminosity, LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS)
 
 /obj/structure/dropship_equipment/electronics/spotlights/equipment_interact(mob/user)
 	if(spotlights_cooldown > world.time)
 		to_chat(user, SPAN_WARNING("[src] is busy."))
 		return //prevents spamming deployment/undeployment
 	if(luminosity != brightness)
-		SetLuminosity(brightness)
+		set_light(brightness)
 		icon_state = "spotlights_on"
 		to_chat(user, SPAN_NOTICE("You turn on [src]."))
 	else
-		SetLuminosity(0)
+		set_light(0)
 		icon_state = "spotlights_off"
 		to_chat(user, SPAN_NOTICE("You turn off [src]."))
 	spotlights_cooldown = world.time + 50
@@ -469,25 +477,25 @@
 	else
 		icon_state = "spotlights"
 		if(luminosity)
-			SetLuminosity(0)
+			set_light(0)
 
 /obj/structure/dropship_equipment/electronics/spotlights/on_launch()
-	SetLuminosity(0)
+	set_light(0)
 
 /obj/structure/dropship_equipment/electronics/spotlights/on_arrival()
-	SetLuminosity(brightness)
+	set_light(brightness)
 
 #undef LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS
 
 
 
 /obj/structure/dropship_equipment/electronics/flare_launcher
-	name = "flare launcher"
+	name = "\improper AN/ALE-557 Flare Launcher"
 	icon_state = "flare_launcher"
 	point_cost = 0
 
 /obj/structure/dropship_equipment/electronics/targeting_system
-	name = "targeting system"
+	name = "\improper AN/AAQ-178 Weapon Targeting System"
 	icon_state = "targeting_system"
 	desc = "A targeting system for dropships. It improves firing accuracy on laser targets. Fits on electronics attach points. You need a powerloader to lift this."
 	point_cost = 800
@@ -499,42 +507,40 @@
 		icon_state = initial(icon_state)
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
-	name = "\improper LZ detector"
-	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
+	name = "\improper AN/AVD-60 LZ detector"
+	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone."
 	icon_state = "lz_detector"
-	point_cost = 400
+	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
+
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/connect_cameras() //searches for dropship_camera_console and connects with it
+	if(linked_cam_console)
+		return
+	var/obj/structure/machinery/computer/cameras/dropship/dropship_camera_console = locate() in range(5, loc)
+	linked_cam_console = dropship_camera_console
+	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES)
+
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/disconnect_cameras() //clears up vars and updates users
+	if(!linked_cam_console)
+		return
+	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
+	for(var/datum/weakref/ref as anything in linked_cam_console.concurrent_users)
+		var/mob/user = ref.resolve()
+		if(user)
+			linked_cam_console.update_static_data(user)
+	linked_cam_console = null
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
 	if(ship_base)
-		if(!linked_cam_console)
-			for(var/obj/structure/machinery/computer/cameras/dropship/D in range(5, loc))
-				linked_cam_console = D
-				break
+		connect_cameras()
 		icon_state = "[initial(icon_state)]_installed"
 	else
-		linked_cam_console = null
+		disconnect_cameras()
 		icon_state = initial(icon_state)
 
-
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/Destroy()
-	linked_cam_console = null
+	disconnect_cameras()
 	return ..()
-
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/on_launch()
-	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES) //only accessible while in the air.
-	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
-		var/mob/user = ref.resolve()
-		if(user)
-			linked_cam_console.update_static_data(user)
-
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/on_arrival()
-	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
-	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
-		var/mob/user = ref.resolve()
-		if(user)
-			linked_cam_console.update_static_data(user)
-
 
 /////////////////////////////////// COMPUTERS //////////////////////////////////////
 
@@ -551,7 +557,7 @@
 
 
 /obj/structure/dropship_equipment/adv_comp/docking
-	name = "docking computer"
+	name = "\improper AN/AKW-222 Docking Computer"
 	icon_state = "docking_comp"
 	point_cost = 0
 
@@ -630,7 +636,7 @@
 			ammo_travelling_time = max(ammo_travelling_time - 20, 10)
 			break
 
-	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 	if(ammo_travelling_time)
 		var/total_seconds = max(round(ammo_travelling_time/10),1)
 		for(var/i = 0 to total_seconds)
@@ -678,7 +684,7 @@
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run."
+	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates"
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400
@@ -694,9 +700,9 @@
 
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
-	name = "missile pod"
-	icon_state = "rocket_pod"
-	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter."
+	name = "\improper LAU-444 Guided Missile Launcher"
+	icon_state = "rocket_pod" //I want to force whoever used rocket and missile interchangeably to come back and look at this god damn mess.
+	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter. Accepts AGM, AIM, BLU, and GBU missile systems."
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
 	point_cost = 600
@@ -714,9 +720,9 @@
 
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod
-	name = "minirocket pod"
+	name = "\improper LAU-229 Rocket Pod"
 	icon_state = "minirocket_pod"
-	desc = "A mini rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter."
+	desc = "A rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter. Accepts the AGR-59 series of minirockets."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 10 //1 seconds
@@ -735,9 +741,9 @@
 		ammo_equipped = null
 
 /obj/structure/dropship_equipment/weapon/laser_beam_gun
-	name = "laser beam gun"
+	name = "\improper LWU-6B Laser Cannon"
 	icon_state = "laser_beam"
-	desc = "State of the art technology recently acquired by the USCM, it fires a battery-fed pulsed laser beam at near lightspeed setting on fire everything it touches. Moving this will require some sort of lifter."
+	desc = "State of the art technology recently acquired by the USCM, it fires a battery-fed pulsed laser beam at near lightspeed setting on fire everything it touches. Moving this will require some sort of lifter. Accepts the BTU-17/LW Hi-Cap Laser Batteries."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/phasein.ogg'
 	firing_delay = 50 //5 seconds
@@ -753,9 +759,9 @@
 		else icon_state = "laser_beam"
 
 /obj/structure/dropship_equipment/weapon/launch_bay
-	name = "launch bay"
+	name = "\improper LAG-14 Internal Sentry Launcher"
 	icon_state = "launch_bay"
-	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter."
+	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter. Accepts the A/C-49-P Air Deployable Sentry as ammunition."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
@@ -774,7 +780,7 @@
 
 
 /obj/structure/dropship_equipment/medevac_system
-	name = "medevac system"
+	name = "\improper RMU-4M Medevac System"
 	desc = "A winch system to lift injured marines on medical stretchers onto the dropship. Acquire lift target through the dropship equipment console."
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "medevac_system"
@@ -909,7 +915,6 @@
 
 
 
-
 //on arrival we break any link
 /obj/structure/dropship_equipment/medevac_system/on_arrival()
 	if(linked_stretcher)
@@ -922,7 +927,7 @@
 		return
 	if(!ship_base) //not installed
 		return
-	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
 		to_chat(user, SPAN_WARNING(" You don't know how to use [src]."))
 		return
 
@@ -938,7 +943,7 @@
 		return
 
 	if(!linked_stretcher)
-		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
+		equipment_interact(user)
 		return
 
 	if(!is_ground_level(linked_stretcher.z))
@@ -952,7 +957,6 @@
 		return
 
 	activate_winch(user)
-
 
 /obj/structure/dropship_equipment/medevac_system/proc/activate_winch(mob/user)
 	set waitfor = 0
@@ -1001,14 +1005,14 @@
 	flick("winched_stretcher", linked_stretcher)
 	linked_stretcher.visible_message(SPAN_NOTICE("A winch hook falls from the sky and starts lifting [linked_stretcher] up."))
 
-	medevac_cooldown = world.time + 600
+	medevac_cooldown = world.time + DROPSHIP_MEDEVAC_COOLDOWN
 	linked_stretcher.linked_medevac = null
 	linked_stretcher = null
 
 // Fulton extraction system
 
 /obj/structure/dropship_equipment/fulton_system
-	name = "fulton recovery system"
+	name = "\improper RMU-19 Fulton Recovery System"
 	desc = "A winch system to collect any fulton recovery balloons in high altitude. Make sure you turn it on!"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "fulton_system"
@@ -1125,10 +1129,10 @@
 
 // Rappel deployment system
 /obj/structure/dropship_equipment/rappel_system
-	name = "rappel deployment system"
+	name = "\improper HPU-1 Rappel Deployment System"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
-	point_cost = 500
+	point_cost = 50
 	combat_equipment = FALSE
 
 	var/harness = /obj/item/rappel_harness
@@ -1247,3 +1251,25 @@
 		return FALSE
 
 	return TRUE
+
+// used in the simulation room for cas runs, removed the sound and ammo depletion methods.
+// copying code is definitely bad, but adding an unnecessary sim or not sim boolean check in the open_fire_firemission just doesn't seem right.
+/obj/structure/dropship_equipment/weapon/proc/open_simulated_fire_firemission(obj/selected_target, mob/user = usr)
+	set waitfor = FALSE
+	var/turf/target_turf = get_turf(selected_target)
+	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
+	var/ammo_accuracy_range = SA.accuracy_range
+	// no warning sound and no travel time
+	last_fired = world.time
+
+	if(locate(/obj/structure/dropship_equipment/electronics/targeting_system) in linked_shuttle.equipments) ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
+
+	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
+
+	var/list/possible_turfs = list()
+	for(var/turf/TU in range(ammo_accuracy_range, target_turf))
+		possible_turfs += TU
+	var/turf/impact = pick(possible_turfs)
+	sleep(3)
+	SA.source_mob = user
+	SA.detonate_on(impact)

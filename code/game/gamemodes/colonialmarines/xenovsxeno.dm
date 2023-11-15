@@ -79,9 +79,6 @@
 		spawn(0)
 			//Deleting Almayer, for performance!
 			SSitem_cleanup.delete_almayer()
-	if(SSxenocon)
-		//Don't need XENOCON
-		SSxenocon.wait = 30 MINUTES
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -261,7 +258,7 @@
 /datum/game_mode/xenovs/declare_completion()
 	announce_ending()
 	var/musical_track
-	musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
 
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
@@ -285,7 +282,7 @@
 		round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [master_mode]!\nEnd of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
 // for the toolbox
 /datum/game_mode/xenovs/end_round_message()

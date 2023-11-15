@@ -18,7 +18,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Space"
 	requires_power = 1
 	always_unpowered = 1
-	lighting_use_dynamic = 0
+	base_lighting_alpha = 255
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
@@ -26,6 +26,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	pressure = 0
 	flags_area = AREA_NOTUNNEL
 	weather_enabled = FALSE
+
+	//fix for issue https://github.com/cmss13-devs/cmss13/issues/2191
+	base_muffle = AREA_MUTED
 
 /area/engine
 	//ambience = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
@@ -36,7 +39,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	ceiling = CEILING_METAL
 
 /area/admin/droppod
-	lighting_use_dynamic = FALSE
+	base_lighting_alpha = 255
 
 /area/admin/droppod/holding
 	name = "\improper Admin Supply Drops Droppod"
@@ -53,9 +56,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "start area"
 	icon_state = "start"
 	ceiling = CEILING_MAX
-	requires_power = 0
-	luminosity = 1
-	lighting_use_dynamic = 0
+	requires_power = FALSE
+	static_lighting = FALSE
+	base_lighting_alpha = 255
 	has_gravity = 1
 
 // === end remove
@@ -68,6 +71,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
+
+	base_lighting_alpha = 255	
 
 /area/centcom/control
 	name = "\improper abandoned  Centcom Control"
@@ -82,6 +87,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	flags_area = AREA_NOTUNNEL
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
+
+	base_lighting_alpha = 255
 
 /area/tdome/tdome1
 	name = "\improper abandoned  Thunderdome (Team 1)"

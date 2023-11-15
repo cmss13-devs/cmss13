@@ -21,14 +21,14 @@
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin]
-	var/obj/item/projectile/projectile = new /obj/item/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
+	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
 	projectile.generate_bullet(xeno.ammo)
 	projectile.permutated += xeno
 	projectile.def_zone = xeno.get_limbzone_target()
 	projectile.fire_at(target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 
 	apply_cooldown()
-	..()
+	return ..()
 
 /datum/action/xeno_action/activable/scattered_spit/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -56,14 +56,14 @@
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin/shotgun]
-	var/obj/item/projectile/projectile = new /obj/item/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
+	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
 	projectile.generate_bullet(xeno.ammo)
 	projectile.permutated += xeno
 	projectile.def_zone = xeno.get_limbzone_target()
 	projectile.fire_at(target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 
 	apply_cooldown()
-	..()
+	return ..()
 
 /datum/action/xeno_action/onclick/paralyzing_slash/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -90,8 +90,7 @@
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/paralyzing_slash/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/xeno = owner

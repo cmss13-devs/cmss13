@@ -29,6 +29,8 @@
 		user.put_in_hands(iff_tag)
 		iff_tag = null
 		user.visible_message(SPAN_NOTICE("[user] removes \the [src]'s IFF tag."), SPAN_NOTICE("You remove \the [src]'s IFF tag."), max_distance = 3)
+		if(hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
+			to_chat(src, SPAN_NOTICE("With the removal of the device, your instincts have returned to normal."))
 		return
 	return ..()
 
@@ -272,7 +274,7 @@
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 				if(prob(60) && !victim.stat && victim.pain.feels_pain)
 					INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
-				victim.take_limb_damage(0, dmg["damage"]) //Sizzledam! This automagically burns a random existing body part.
+				victim.apply_armoured_damage(dmg["damage"], ARMOR_BIO, BURN) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
 				handle_blood_splatter(get_dir(src, victim), 1 SECONDS)

@@ -24,7 +24,8 @@
 
 /datum/db/connection_settings/native/New(list/config)
 	..()
-	filename = config["db_filename"]
+
+	filename = CONFIG_GET(string/db_filename)
 
 /datum/db/connection_settings/native/create_connection()
 	var/datum/db/connection/native/connection = new()

@@ -48,16 +48,16 @@
 	max_rounds = 6
 
 
-//SVD //Based on the actual Dragunov designated marksman rifle.
+//Type 88 //Based on the actual Dragunov designated marksman rifle.
 
 /obj/item/ammo_magazine/sniper/svd
-	name = "\improper SVD magazine (7.62x54mmR)"
-	desc = "A large caliber magazine for the SVD designated marksman rifle."
+	name = "\improper Type-88 Magazine (7.62x54mmR)"
+	desc = "A large caliber magazine for the Type-88 designated marksman rifle."
 	caliber = "7.62x54mmR"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "svd"
-	default_ammo = /datum/ammo/bullet/sniper/crude
-	max_rounds = 10
+	icon_state = "type88mag"
+	default_ammo = /datum/ammo/bullet/sniper/upp
+	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/rifle/sniper/svd
 
 //M4RA magazines
@@ -107,6 +107,12 @@
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
 
+/obj/item/ammo_magazine/smartgun/holo_targetting
+	name = "holotargetting smartgun drum"
+	desc = "Holotargetting rounds for use in the royal marines commando L56A2 smartgun."
+	icon_state = "m56_drum"
+	default_ammo = /datum/ammo/bullet/smartgun/holo_target
+	gun_type = /obj/item/weapon/gun/smartgun/rmc
 //-------------------------------------------------------
 //Flare gun. Close enough?
 /obj/item/ammo_magazine/internal/flare
@@ -331,3 +337,47 @@
 	default_ammo = /datum/ammo/rocket/ap/anti_tank
 	gun_type = /obj/item/weapon/gun/launcher/rocket/anti_tank
 	reload_delay = 100
+
+
+//-------------------------------------------------------
+//UPP Rockets
+
+/obj/item/ammo_magazine/rocket/upp
+	name = "\improper HJRA-12 High-Explosive Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard High-Explosive rocket for anti-personal or light-vehicle use."
+	caliber = "88mm"
+	icon_state = "hjra_explosive"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85
+
+/obj/item/ammo_magazine/rocket/upp/update_icon()
+	if(current_rounds <= 0)
+		qdel(src)
+	else
+		icon_state = initial(icon_state)
+
+/obj/item/ammo_magazine/rocket/upp/at
+	name = "\improper HJRA-12 Anti-Tank Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard Anti-Tank rocket designed to disable or destroy hostile vehicles."
+	caliber = "88mm"
+	icon_state = "hjra_tank"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/ap/anti_tank
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85
+
+/obj/item/ammo_magazine/rocket/upp/incen
+	name = "\improper HJRA-12 Extreme-Intensity Incendiary Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is an extreme-intensity incendiary rocket, using an experimental chemical designated R-189 by the UPP, it is designed to melt through fortified positions and bunkers but is most commonly used in an anti-personnal role due to over-issuing and the tempatures after use in its intended role leaving the tempature of the air incompatible with human life."
+	caliber = "88mm"
+	icon_state = "hjra_incen"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/wp/upp
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85

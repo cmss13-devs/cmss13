@@ -11,7 +11,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	var/cardinals = 0
 	var/turf/location
 	var/atom/holder
-	var/setup = 0
+	var/setup = FALSE
 
 /datum/effect_system/Destroy(force, ...)
 	holder = null
@@ -24,7 +24,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	number = n
 	cardinals = c
 	location = loca
-	setup = 1
+	setup = TRUE
 
 /datum/effect_system/proc/attach(atom/atom)
 	holder = atom
@@ -64,13 +64,13 @@ steam.start() -- spawns the effect
 
 /datum/effect_system/steam_spread/start()
 	var/i = 0
-	for(i=0, i<src.number, i++)
+	for(i=0, i<number, i++)
 		spawn(0)
 			if(holder)
-				src.location = get_turf(holder)
-			var/obj/effect/particle_effect/steam/steam = new /obj/effect/particle_effect/steam(src.location)
+				location = get_turf(holder)
+			var/obj/effect/particle_effect/steam/steam = new /obj/effect/particle_effect/steam(location)
 			var/direction
-			if(src.cardinals)
+			if(cardinals)
 				direction = pick(cardinal)
 			else
 				direction = pick(alldirs)
@@ -96,10 +96,10 @@ steam.start() -- spawns the effect
 
 /obj/effect/particle_effect/sparks/New()
 	..()
-	playsound(src.loc, "sparks", 25, 1)
-// var/turf/T = src.loc
-// if (istype(T, /turf))
-// T.hotspot_expose(1000,100)
+	playsound(loc, "sparks", 25, 1)
+// var/turf/turf = src.loc
+// if (istype(turf, /turf))
+// turf.hotspot_expose(1000,100)
 	spawn (100)
 		qdel(src)
 
@@ -119,16 +119,16 @@ steam.start() -- spawns the effect
 
 /datum/effect_system/spark_spread/start()
 	var/i = 0
-	for(i=0, i<src.number, i++)
-		if(src.total_sparks > 20)
+	for(i=0, i<number, i++)
+		if(total_sparks > 20)
 			return
 		spawn(0)
 			if(holder)
-				src.location = get_turf(holder)
-			var/obj/effect/particle_effect/sparks/sparks = new /obj/effect/particle_effect/sparks(src.location)
-			src.total_sparks++
+				location = get_turf(holder)
+			var/obj/effect/particle_effect/sparks/sparks = new /obj/effect/particle_effect/sparks(location)
+			total_sparks++
 			var/direction
-			if(src.cardinals)
+			if(cardinals)
 				direction = pick(cardinal)
 			else
 				direction = pick(alldirs)
@@ -156,42 +156,45 @@ steam.start() -- spawns the effect
 
 /datum/effect_system/ion_trail_follow
 	var/turf/oldposition
-	var/processing = 1
-	var/on = 1
+	var/processing = TRUE
+	var/on = TRUE
 
 /datum/effect_system/ion_trail_follow/set_up(atom/atom)
 	attach(atom)
 	oldposition = get_turf(atom)
 
 /datum/effect_system/ion_trail_follow/start()
-	if(!src.on)
-		src.on = 1
-		src.processing = 1
-	if(src.processing)
-		src.processing = 0
+	if(!on)
+		on = TRUE
+		processing = TRUE
+	if(processing)
+		processing = FALSE
 		spawn(0)
-			var/turf/T = get_turf(src.holder)
-			if(T != src.oldposition)
-				if(istype(T, /turf/open/space))
-					var/obj/effect/particle_effect/ion_trails/I = new /obj/effect/particle_effect/ion_trails(src.oldposition)
-					src.oldposition = T
-					I.setDir(src.holder.dir)
-					flick("ion_fade", I)
-					I.icon_state = "blank"
-					QDEL_IN(I, 20)
+			var/turf/turf = get_turf(holder)
+			if(isnull(turf))
+				qdel(src)
+				return
+			if(turf != oldposition)
+				if(istype(turf, /turf/open/space))
+					var/obj/effect/particle_effect/ion_trails/trails = new /obj/effect/particle_effect/ion_trails(oldposition)
+					oldposition = turf
+					trails.setDir(holder.dir)
+					flick("ion_fade", trails)
+					trails.icon_state = "blank"
+					QDEL_IN(trails, 20)
 				spawn(2)
-					if(src.on)
-						src.processing = 1
-						src.start()
+					if(on)
+						processing = TRUE
+						start()
 			else
 				spawn(2)
-					if(src.on)
-						src.processing = 1
-						src.start()
+					if(on)
+						processing = TRUE
+						start()
 
 /datum/effect_system/ion_trail_follow/proc/stop()
-	src.processing = 0
-	src.on = 0
+	processing = FALSE
+	on = FALSE
 
 
 
@@ -203,39 +206,42 @@ steam.start() -- spawns the effect
 
 /datum/effect_system/steam_trail_follow
 	var/turf/oldposition
-	var/processing = 1
-	var/on = 1
+	var/processing = TRUE
+	var/on = TRUE
 
 /datum/effect_system/steam_trail_follow/set_up(atom/atom)
 	attach(atom)
 	oldposition = get_turf(atom)
 
 /datum/effect_system/steam_trail_follow/start()
-	if(!src.on)
-		src.on = 1
-		src.processing = 1
-	if(src.processing)
-		src.processing = 0
+	if(!on)
+		on = TRUE
+		processing = TRUE
+	if(processing)
+		processing = FALSE
 		spawn(0)
-			if(src.number < 3)
-				var/obj/effect/particle_effect/steam/I = new /obj/effect/particle_effect/steam(src.oldposition)
-				src.number++
-				src.oldposition = get_turf(holder)
-				I.setDir(src.holder.dir)
+			if(number < 3)
+				var/obj/effect/particle_effect/steam/trails = new /obj/effect/particle_effect/steam(oldposition)
+				number++
+				oldposition = get_turf(holder)
+				if(isnull(oldposition))
+					qdel(src)
+					return
+				trails.setDir(holder.dir)
 				spawn(10)
-					qdel(I)
+					qdel(trails)
 					number--
 				spawn(2)
-					if(src.on)
-						src.processing = 1
-						src.start()
+					if(on)
+						processing = TRUE
+						start()
 			else
 				spawn(2)
-					if(src.on)
-						src.processing = 1
-						src.start()
+					if(on)
+						processing = TRUE
+						start()
 
 /datum/effect_system/steam_trail_follow/proc/stop()
-	src.processing = 0
-	src.on = 0
+	processing = FALSE
+	on = FALSE
 

@@ -20,11 +20,10 @@
 	var/total_projectiles_hit_human = 0
 	var/total_projectiles_hit_xeno = 0
 	var/total_friendly_fire_instances = 0
-	var/total_friendly_fire_kills = 0
 	var/total_slashes = 0
 
 	// untracked data
-	var/datum/entity/statistic/map/current_map = null // reference to current map
+	var/datum/entity/statistic/map/current_map // reference to current map
 	var/list/datum/entity/statistic/death/death_stats_list = list()
 
 	var/list/abilities_used = list() // types of /datum/entity/statistic, "tail sweep" = 10, "screech" = 2
@@ -38,8 +37,20 @@
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
 
 	// nanoui data
-	var/round_data[0]
-	var/death_data[0]
+	var/list/round_data = list()
+	var/list/death_data = list()
+
+/datum/entity/statistic/round/Destroy(force)
+	. = ..()
+	QDEL_NULL(current_map)
+	QDEL_LIST(death_stats_list)
+	QDEL_LIST_ASSOC_VAL(abilities_used)
+	QDEL_LIST_ASSOC_VAL(final_participants)
+	QDEL_LIST_ASSOC_VAL(hijack_participants)
+	QDEL_LIST_ASSOC_VAL(total_deaths)
+	QDEL_LIST_ASSOC_VAL(caste_stats_list)
+	QDEL_LIST_ASSOC_VAL(weapon_stats_list)
+	QDEL_LIST_ASSOC_VAL(job_stats_list)
 
 /datum/entity_meta/statistic_round
 	entity_type = /datum/entity/statistic/round
@@ -295,7 +306,7 @@
 	track_dead_participant(new_death.faction_name)
 
 /datum/entity/statistic/round/proc/log_round_statistics()
-	if(!round_stats)
+	if(!GLOB.round_stats)
 		return
 	var/total_xenos_created = 0
 	var/total_predators_spawned = 0
@@ -360,7 +371,6 @@
 
 	stats += "Total shots fired: [total_projectiles_fired]\n"
 	stats += "Total friendly fire instances: [total_friendly_fire_instances]\n"
-	stats += "Total friendly fire kills: [total_friendly_fire_kills]\n"
 
 	stats += "Marines remaining: [end_of_round_marines]\n"
 	stats += "Xenos remaining: [end_of_round_xenos]\n"
@@ -368,7 +378,7 @@
 
 	stats += "[log_end]"
 
-	round_stats << stats // Logging to data/logs/round_stats.log
+	WRITE_LOG(GLOB.round_stats, stats)
 
 /datum/action/show_round_statistics
 	name = "View End-Round Statistics"

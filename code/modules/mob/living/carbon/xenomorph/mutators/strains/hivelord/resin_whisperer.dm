@@ -113,6 +113,7 @@
 	target_turf.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [resing_construction.construction_name]!"), null, 5)
 	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [resing_construction.construction_name]."))
 	playsound(target_turf, "alien_resin_build", 25)
+	return TRUE
 
 /datum/action/xeno_action/verb/verb_coerce_resin()
 	set category = "Alien"

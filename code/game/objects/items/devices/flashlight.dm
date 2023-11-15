@@ -10,9 +10,13 @@
 
 	matter = list("metal" = 50,"glass" = 20)
 
+	light_range = 5
+	light_power = 1
+	ground_offset_x = 2
+	ground_offset_y = 6
+
 	actions_types = list(/datum/action/item_action)
 	var/on = FALSE
-	var/brightness_on = 5 //luminosity when on
 	var/raillight_compatible = TRUE //Can this be turned into a rail light ?
 	var/toggleable = TRUE
 
@@ -22,6 +26,7 @@
 /obj/item/device/flashlight/Initialize()
 	. = ..()
 	update_icon()
+	set_light_on(on)
 
 /obj/item/device/flashlight/update_icon()
 	. = ..()
@@ -30,27 +35,18 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/device/flashlight/Destroy()
-	if(on)
-		if(ismob(src.loc))
-			src.loc.SetLuminosity(0, FALSE, src)
-		else
-			SetLuminosity(0)
-	. = ..()
+/obj/item/device/flashlight/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
+	clockwise = pick(TRUE, FALSE)
+	angular_offset = rand(360)
+	return ..()
 
 /obj/item/device/flashlight/proc/update_brightness(mob/user = null)
 	if(on)
+		set_light_range(light_range)
+		set_light_on(TRUE)
 		update_icon()
-		if(loc && loc == user)
-			user.SetLuminosity(brightness_on, FALSE, src)
-		else if(isturf(loc))
-			SetLuminosity(brightness_on)
 	else
-		icon_state = initial(icon_state)
-		if(loc && loc == user)
-			user.SetLuminosity(0, FALSE, src)
-		else if(isturf(loc))
-			SetLuminosity(0)
+		set_light_on(FALSE)
 
 /obj/item/device/flashlight/attack_self(mob/user)
 	..()
@@ -58,12 +54,14 @@
 	if(!toggleable)
 		to_chat(user, SPAN_WARNING("You cannot toggle \the [src.name] on or off."))
 		return FALSE
+
 	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in [user.loc].") //To prevent some lighting anomalities.
+		to_chat(user, SPAN_WARNING("You cannot turn the light [on ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
 		return FALSE
 
 	on = !on
-	update_brightness(user)
+	set_light_on(on)
+	update_icon()
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
@@ -72,8 +70,9 @@
 
 /obj/item/device/flashlight/proc/turn_off_light(mob/bearer)
 	if(on)
-		on = 0
-		update_brightness(bearer)
+		on = FALSE
+		set_light_on(on)
+		update_icon()
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
@@ -141,21 +140,7 @@
 	if(on && can_be_broken)
 		if(breaking_sound)
 			playsound(src.loc, breaking_sound, 25, 1)
-		on = FALSE
-		update_brightness()
-
-/obj/item/device/flashlight/pickup(mob/user)
-	if(on)
-		user.SetLuminosity(brightness_on, FALSE, src)
-		SetLuminosity(0)
-	..()
-
-
-/obj/item/device/flashlight/dropped(mob/user)
-	if(on && src.loc != user)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(brightness_on)
-	..()
+		turn_off_light()
 
 /obj/item/device/flashlight/on
 	on = TRUE
@@ -166,7 +151,7 @@
 	icon_state = "penlight"
 	item_state = ""
 	flags_atom = FPRINT|CONDUCT
-	brightness_on = 2
+	light_range = 2
 	w_class = SIZE_TINY
 	raillight_compatible = 0
 
@@ -175,7 +160,7 @@
 	desc = "A miniature lamp, that might be used by small robots."
 	icon_state = "penlight"
 	item_state = ""
-	brightness_on = 2
+	light_range = 2
 	w_class = SIZE_TINY
 	raillight_compatible = 0
 
@@ -185,23 +170,15 @@
 	desc = "A desk lamp with an adjustable mount."
 	icon_state = "lamp"
 	item_state = "lamp"
-	brightness_on = 5
+	light_range = 5
 	w_class = SIZE_LARGE
 	on = 0
 	raillight_compatible = 0
 
 	breaking_sound = 'sound/effects/Glasshit.ogg'
 
-/obj/item/device/flashlight/lamp/Initialize()
-	. = ..()
-
-	if(on)
-		update_brightness()
-
-/obj/item/device/flashlight/lamp/on/Initialize() //unused, but im leaving it here anyways :D
-	. = ..()
-	on = 1
-	update_brightness()
+/obj/item/device/flashlight/lamp/on
+	on = TRUE
 
 //Menorah!
 /obj/item/device/flashlight/lamp/menorah
@@ -209,7 +186,7 @@
 	desc = "For celebrating Chanukah."
 	icon_state = "menorah"
 	item_state = "menorah"
-	brightness_on = 2
+	light_range = 2
 	w_class = SIZE_LARGE
 	on = 1
 	breaking_sound = null
@@ -229,13 +206,13 @@
 	desc = "A classic green-shaded desk lamp."
 	icon_state = "lampgreen"
 	item_state = "lampgreen"
-	brightness_on = 5
+	light_range = 5
 
 /obj/item/device/flashlight/lamp/tripod
 	name = "tripod lamp"
 	desc = "An emergency light tube mounted onto a tripod. It seemingly lasts forever."
 	icon_state = "tripod_lamp"
-	brightness_on = 6//pretty good
+	light_range = 6//pretty good
 	w_class = SIZE_LARGE
 	on = 1
 
@@ -260,7 +237,8 @@
 	name = "flare"
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
-	brightness_on = 5 //As bright as a flashlight, but more disposable. Doesn't burn forever though
+	light_power = 2
+	light_range = 7
 	icon_state = "flare"
 	item_state = "flare"
 	actions = list() //just pull it manually, neckbeard.
@@ -285,7 +263,8 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(1600 SECONDS, 2000 SECONDS)
+	fuel = rand(9.5 MINUTES, 10.5 MINUTES)
+	set_light_color(flame_tint)
 
 /obj/item/device/flashlight/flare/update_icon()
 	overlays?.Cut()
@@ -324,8 +303,6 @@
 
 // Causes flares to stop with a rotation offset for visual purposes
 /obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
-	clockwise = pick(TRUE, FALSE)
-	angular_offset = rand(360)
 	pixel_fuzz = 16
 	return ..()
 /obj/item/device/flashlight/flare/pickup()
@@ -352,7 +329,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/turn_off()
-	on = 0
+	on = FALSE
 	heat_source = 0
 	force = initial(force)
 	damtype = initial(damtype)
@@ -400,7 +377,6 @@
 
 /// Flares deployed by a flare gun
 /obj/item/device/flashlight/flare/on/gun
-	brightness_on = 7
 
 //Special flare subtype for the illumination flare shell
 //Acts like a flare, just even stronger, and set length
@@ -408,14 +384,12 @@
 	name = "illumination flare"
 	desc = "It's really bright, and unreachable."
 	icon_state = "" //No sprite
-	invisibility = 101 //Can't be seen or found, it's "up in the sky"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	brightness_on = 7 //Way brighter than most lights
 	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
-	fuel = rand(800 SECONDS, 1000 SECONDS) // Half the duration of a flare, but justified since it's invincible
+	fuel = rand(4.5 MINUTES, 5.5 MINUTES) // Half the duration of a flare, but justified since it's invincible
 
 /obj/item/device/flashlight/flare/on/illumination/update_icon()
 	return
@@ -429,9 +403,8 @@
 
 /obj/item/device/flashlight/flare/on/starshell_ash
 	name = "burning star shell ash"
-	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, oh it'll burn ya'."
+	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, or it'll burn ya'."
 	icon_state = "starshell_ash"
-	brightness_on = 7
 	anchored = TRUE//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
 	show_flame = FALSE
@@ -440,18 +413,18 @@
 	if(mapload)
 		return INITIALIZE_HINT_QDEL
 	. = ..()
-	fuel = rand(5 SECONDS, 60 SECONDS)
+	fuel = rand(30 SECONDS,	60 SECONDS)
 
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"
-	brightness_on = 0
+	light_range = 0
 
 /obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, amount)
 	. = ..()
-	brightness_on = round(amount * 0.04)
-	if(!brightness_on)
+	light_range = round(amount * 0.04)
+	if(!light_range)
 		return INITIALIZE_HINT_QDEL
-	SetLuminosity(brightness_on)
+	set_light(light_range)
 	fuel = amount * 5 SECONDS
 
 /obj/item/device/flashlight/slime
@@ -463,7 +436,7 @@
 	icon_state = "floor1"
 	item_state = "slime"
 	w_class = SIZE_TINY
-	brightness_on = 6
+	light_range = 6
 	// Bio-luminesence has one setting, on.
 	on = TRUE
 	raillight_compatible = FALSE
@@ -472,7 +445,7 @@
 
 /obj/item/device/flashlight/slime/Initialize()
 	. = ..()
-	SetLuminosity(brightness_on)
+	set_light(light_range)
 	update_brightness()
 	icon_state = initial(icon_state)
 
@@ -482,7 +455,7 @@
 	name = "lantern"
 	icon_state = "lantern"
 	desc = "A mining lantern."
-	brightness_on = 6 // luminosity when on
+	light_range = 6 // luminosity when on
 
 //Signal Flare
 /obj/item/device/flashlight/flare/signal
@@ -524,8 +497,9 @@
 		anchored = TRUE
 		if(activate_message)
 			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
-		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP LOC</a>)")
-		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
+		var/turf/target_turf = get_turf(src)
+		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]).")
 		return TRUE
 
 /obj/item/device/flashlight/flare/signal/attack_hand(mob/user)

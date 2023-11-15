@@ -76,6 +76,11 @@ Contains most of the procs that are called when a mob is attacked by something
 				protection += C.get_armor(type)
 	return protection
 
+/mob/living/carbon/human/get_sharp_obj_blocker(obj/limb/limb)
+	for(var/obj/item/gear in list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses))
+		if(HAS_FLAG(gear.flags_armor_protection, limb.body_part) && HAS_FLAG(gear.flags_inventory, BLOCKSHARPOBJ))
+			return gear
+
 /mob/living/carbon/human/proc/check_head_coverage()
 
 	var/list/body_parts = list(head, wear_mask, wear_suit ) /* w_uniform, gloves, shoes*/ //We don't need to check these for heads.
@@ -150,6 +155,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	return FALSE
 
 /mob/living/carbon/human/emp_act(severity)
+	. = ..()
 	for(var/obj/O in src)
 		if(!O)
 			continue
@@ -162,7 +168,6 @@ Contains most of the procs that are called when a mob is attacked by something
 			if(I.robotic == FALSE)
 				continue
 			I.emp_act(severity)
-	..()
 
 
 //Returns 1 if the attack hit, 0 if it missed.
@@ -372,16 +377,6 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/list/overlap = compare_group & access_to_check
 	return length(overlap)
-
-/mob/living/carbon/human/freeze()
-	. = ..()
-	if(.)
-		update_xeno_hostile_hud()
-
-/mob/living/carbon/human/unfreeze()
-	. = ..()
-	if(.)
-		update_xeno_hostile_hud()
 
 /mob/living/carbon/human/get_target_lock(access_to_check)
 	if(isnull(access_to_check))

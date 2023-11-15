@@ -287,39 +287,55 @@
 	opacity = FALSE
 	anchored = TRUE
 	unacidable = TRUE
+	/// Target the acid is melting
 	var/atom/acid_t
-	var/ticks = 0
-	var/acid_strength = 1 //100% speed, normal
+	/// Duration left to next acid stage
+	var/remaining = 0
+	/// Acid stages left to complete melting
+	var/ticks_left = 3
+	/// Factor of duration between acid progression
+	var/acid_delay = 1
+	/// How much fuel the acid drains from the flare every acid tick
+	var/flare_damage = 500
 	var/barricade_damage = 40
-	var/barricade_damage_ticks = 10 // tick is once per 5 seconds. This tells us how many times it will try damaging barricades
 	var/in_weather = FALSE
 
 //Sentinel weakest acid
 /obj/effect/xenomorph/acid/weak
 	name = "weak acid"
-	acid_strength = 2.5 //250% normal speed
+	acid_delay = 2.5 //250% delay (40% speed)
 	barricade_damage = 20
+	flare_damage = 150
 	icon_state = "acid_weak"
 
 //Superacid
 /obj/effect/xenomorph/acid/strong
 	name = "strong acid"
-	acid_strength = 0.4 //20% normal speed
+	acid_delay = 0.4 //40% delay (250% speed)
 	barricade_damage = 100
+	flare_damage = 1875
 	icon_state = "acid_strong"
 
-/obj/effect/xenomorph/acid/New(loc, target)
-	..(loc)
+/obj/effect/xenomorph/acid/Initialize(mapload, atom/target)
+	. = ..()
 	acid_t = target
-	var/strength_t = isturf(acid_t) ? 8:4 // Turf take twice as long to take down.
+	if(isturf(acid_t))
+		ticks_left = 7 // Turf take twice as long to take down.
+	else if(istype(acid_t, /obj/structure/barricade))
+		ticks_left = 9
 	handle_weather()
-	tick(strength_t)
-
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
+	RegisterSignal(acid_t, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
+	START_PROCESSING(SSeffects, src)
 
 /obj/effect/xenomorph/acid/Destroy()
 	acid_t = null
+	STOP_PROCESSING(SSeffects, src)
 	. = ..()
+
+/obj/effect/xenomorph/acid/proc/cleanup()
+	SIGNAL_HANDLER
+	qdel(src)
 
 /obj/effect/xenomorph/acid/proc/handle_weather()
 	SIGNAL_HANDLER
@@ -328,73 +344,86 @@
 	if(!acids_area)
 		return
 
-	if(SSweather.is_weather_event && locate(acids_area.master) in SSweather.weather_areas)
-		acid_strength = acid_strength + (SSweather.weather_event_instance.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
+	if(SSweather.is_weather_event && locate(acids_area) in SSweather.weather_areas)
+		acid_delay = acid_delay + (SSweather.weather_event_instance.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
 		in_weather = SSweather.weather_event_instance.fire_smothering_strength
 	else
-		acid_strength = initial(acid_strength)
+		acid_delay = initial(acid_delay)
 		in_weather = FALSE
 
 /obj/effect/xenomorph/acid/proc/handle_barricade()
+	if(prob(in_weather))
+		visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
+		return NONE
 	var/obj/structure/barricade/cade = acid_t
-	if(istype(cade))
-		cade.take_acid_damage(barricade_damage)
+	cade.take_acid_damage(barricade_damage)
+	return (5 SECONDS)
 
-/obj/effect/xenomorph/acid/proc/tick(strength_t)
-	set waitfor = 0
-	if(!acid_t || !acid_t.loc)
+/obj/effect/xenomorph/acid/proc/handle_flashlight()
+	var/obj/item/device/flashlight/flare/flare = acid_t
+	if(flare.fuel <= 0)
+		return NONE
+	flare.fuel -= flare_damage
+	return (rand(15, 25) SECONDS) * acid_delay
+
+/obj/effect/xenomorph/acid/process(delta_time)
+	remaining -= delta_time * (1 SECONDS)
+	if(remaining > 0)
+		return
+	ticks_left -= 1
+
+	var/return_delay = NONE
+	if(istype(acid_t, /obj/structure/barricade))
+		return_delay = handle_barricade()
+	else if(istype(acid_t, /obj/item/device/flashlight/flare))
+		return_delay = handle_flashlight()
+	else
+		return_delay = (rand(20, 30) SECONDS) * acid_delay
+
+	if(!ticks_left)
+		finish_melting()
+		return PROCESS_KILL
+
+	if(!return_delay)
 		qdel(src)
-		return
+		return PROCESS_KILL
 
-	if(istype(acid_t,/obj/structure/barricade))
-		if(++ticks >= barricade_damage_ticks || prob(in_weather))
-			visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
-			qdel(src)
-			return
-		handle_barricade()
-		sleep(50)
-		.()
-		return
+	remaining = return_delay
 
-	if(++ticks >= strength_t)
-		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
-		playsound(src, "acid_hit", 25, TRUE)
-
-		if(istype(acid_t, /turf))
-			if(istype(acid_t, /turf/closed/wall))
-				var/turf/closed/wall/W = acid_t
-				new /obj/effect/acid_hole (W)
-			else
-				var/turf/T = acid_t
-				T.ScrapeAway()
-		else if (istype(acid_t, /obj/structure/girder))
-			var/obj/structure/girder/G = acid_t
-			G.dismantle()
-		else if(istype(acid_t, /obj/structure/window/framed))
-			var/obj/structure/window/framed/WF = acid_t
-			WF.deconstruct(disassembled = FALSE)
-		else if(istype(acid_t,/obj/item/explosive/plastic))
-			qdel(acid_t)
-
-		else
-			if(acid_t.contents.len) //Hopefully won't auto-delete things inside melted stuff..
-				for(var/mob/M in acid_t.contents)
-					if(acid_t.loc) M.forceMove(acid_t.loc)
-			QDEL_NULL(acid_t)
-
-		qdel(src)
-		return
-
-	switch(strength_t - ticks)
+	switch(ticks_left)
 		if(6) visible_message(SPAN_XENOWARNING("\The [acid_t] is barely holding up against the acid!"))
 		if(4) visible_message(SPAN_XENOWARNING("\The [acid_t]\s structure is being melted by the acid!"))
 		if(2) visible_message(SPAN_XENOWARNING("\The [acid_t] is struggling to withstand the acid!"))
 		if(0 to 1) visible_message(SPAN_XENOWARNING("\The [acid_t] begins to crumble under the acid!"))
 
-	sleep(rand(200,300) * (acid_strength))
-	.()
+/obj/effect/xenomorph/acid/proc/finish_melting()
+	visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
+	playsound(src, "acid_hit", 25, TRUE)
 
+	if(istype(acid_t, /turf))
+		if(istype(acid_t, /turf/closed/wall))
+			var/turf/closed/wall/wall = acid_t
+			new /obj/effect/acid_hole(wall)
+		else
+			var/turf/turf = acid_t
+			turf.ScrapeAway()
 
+	else if (istype(acid_t, /obj/structure/girder))
+		var/obj/structure/girder/girder = acid_t
+		girder.dismantle()
+
+	else if(istype(acid_t, /obj/structure/window/framed))
+		var/obj/structure/window/framed/window = acid_t
+		window.deconstruct(disassembled = FALSE)
+
+	else if(istype(acid_t, /obj/structure/barricade))
+		pass() // Don't delete it, just damaj
+
+	else
+		for(var/mob/mob in acid_t)
+			mob.forceMove(loc)
+		qdel(acid_t)
+	qdel(src)
 
 /obj/effect/xenomorph/boiler_bombard
 	name = "???"

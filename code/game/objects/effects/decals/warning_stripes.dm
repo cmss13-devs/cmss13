@@ -91,14 +91,6 @@
 /obj/effect/decal/sand_overlay/sand2/corner2
 	icon_state = "sand2_c"
 
-/obj/effect/decal/halftile
-	name = "half tile"
-	icon_state = "halftile"
-
-/obj/effect/decal/halftile/warning
-	name = "warning stripes half tile"
-	icon_state = "halftile_w"
-
 /obj/effect/decal/siding
 	name = "siding"
 	icon = 'icons/turf/floors/floors.dmi'

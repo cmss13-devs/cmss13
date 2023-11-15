@@ -35,6 +35,9 @@
 
 	var/colony_camera_mapload = TRUE
 
+	/// If this camera should have innate EMP-proofing
+	var/emp_proof = FALSE
+
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
 	WireColorToFlag = randomCameraWires()
@@ -72,6 +75,7 @@
 		if(WEST) pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
+	. = ..()
 	if(!isEmpProof())
 		if(prob(100/severity))
 			icon_state = "[initial(icon_state)]emp"
@@ -79,7 +83,7 @@
 			network = list()
 			cameranet.removeCamera(src)
 			stat |= EMPED
-			SetLuminosity(0)
+			set_light(0)
 			triggerCameraAlarm()
 			spawn(900)
 				network = previous_network
@@ -89,7 +93,6 @@
 				if(can_use())
 					cameranet.addCamera(src)
 			kick_viewers()
-			..()
 
 
 /obj/structure/machinery/camera/ex_act(severity)
@@ -187,9 +190,9 @@
 		else
 			visible_message(SPAN_WARNING("[user] has deactivated [src]!"))
 	if(status)
-		icon_state = initial(icon_state)
+		icon_state = "camera"
 	else
-		icon_state = "[initial(icon_state)]1"
+		icon_state = "camera1"
 	// now disconnect anyone using the camera
 	//Apparently, this will disconnect anyone even if the camera was re-activated.
 	//I guess that doesn't matter since they can't use it anyway?

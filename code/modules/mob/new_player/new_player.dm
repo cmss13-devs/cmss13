@@ -20,7 +20,6 @@
 	if(ready)
 		readied_players--
 	GLOB.new_player_list -= src
-	GLOB.dead_mob_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
@@ -35,8 +34,8 @@
 		return
 
 	var/tempnumber = rand(1, 999)
-	var/postfix_text = (client.prefs && client.prefs.xeno_postfix) ? ("-"+client.prefs.xeno_postfix) : ""
-	var/prefix_text = (client.prefs && client.prefs.xeno_prefix) ? client.prefs.xeno_prefix : "XX"
+	var/postfix_text = (client.xeno_postfix) ? ("-"+client.xeno_postfix) : ""
+	var/prefix_text = (client.xeno_prefix) ? client.xeno_prefix : "XX"
 	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
 	var/round_start = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME
 
@@ -229,6 +228,7 @@
 			new_player_panel()
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
+	var/datum/job/player_rank = RoleAuthority.roles_for_mode[rank]
 	if (src != usr)
 		return
 	if(SSticker.current_state != GAME_STATE_PLAYING)
@@ -237,24 +237,24 @@
 	if(!enter_allowed)
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
-	if(!RoleAuthority.assign_role(src, RoleAuthority.roles_for_mode[rank], 1))
+	if(!RoleAuthority.assign_role(src, player_rank, 1))
 		to_chat(src, alert("[rank] is not available. Please try another."))
 		return
 
 	spawning = TRUE
 	close_spawn_windows()
 
-	var/mob/living/carbon/human/character = create_character() //creates the human and transfers vars and mind
-	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
+	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
+	RoleAuthority.equip_role(character, player_rank, late_join = TRUE)
 	EquipCustomItems(character)
 
-	if(security_level > SEC_LEVEL_BLUE || EvacuationAuthority.evac_status)
-		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[EvacuationAuthority.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
+	if((security_level > SEC_LEVEL_BLUE || SShijack.hijack_status) && player_rank.gets_emergency_kit)
+		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[SShijack.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
 		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc. //TODO!!!!! ~Carn
-	SSticker.mode.latejoin_tally += RoleAuthority.calculate_role_weight(RoleAuthority.roles_for_mode[rank])
+	SSticker.mode.latejoin_tally += RoleAuthority.calculate_role_weight(player_rank)
 
 	for(var/datum/squad/sq in RoleAuthority.squads)
 		if(sq)
@@ -263,21 +263,22 @@
 
 	if(SSticker.mode.latejoin_larva_drop && SSticker.mode.latejoin_tally >= SSticker.mode.latejoin_larva_drop)
 		SSticker.mode.latejoin_tally -= SSticker.mode.latejoin_larva_drop
-		var/datum/hive_status/HS
+		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
-			HS = GLOB.hive_datum[hivenumber]
-			if(length(HS.totalXenos))
-				HS.stored_larva++
-				HS.hive_ui.update_burrowed_larva()
+			hive = GLOB.hive_datum[hivenumber]
+			if(hive.latejoin_burrowed == TRUE)
+				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2))
+					hive.stored_larva++
+					hive.hive_ui.update_burrowed_larva()
 
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity
 		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
-			msg_admin_niche("NEW JOIN: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[character]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
+			msg_admin_niche("NEW JOIN: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 		if(character.client)
 			var/client/C = character.client
 			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
-				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[C]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
+				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
 				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
@@ -294,10 +295,10 @@
 	var/dat = "<html><body onselectstart='return false;'><center>"
 	dat += "Round Duration: [round(hours)]h [round(mins)]m<br>"
 
-	if(EvacuationAuthority)
-		switch(EvacuationAuthority.evac_status)
-			if(EVACUATION_STATUS_INITIATING) dat += "<font color='red'><b>The [MAIN_SHIP_NAME] is being evacuated.</b></font><br>"
-			if(EVACUATION_STATUS_COMPLETE) dat += "<font color='red'>The [MAIN_SHIP_NAME] has undergone evacuation.</font><br>"
+	if(SShijack)
+		switch(SShijack.evac_status)
+			if(EVACUATION_STATUS_INITIATED)
+				dat += "<font color='red'><b>The [MAIN_SHIP_NAME] is being evacuated.</b></font><br>"
 
 	dat += "Choose from the following open positions:<br>"
 	var/roles_show = FLAG_SHOW_ALL_JOBS
@@ -349,7 +350,7 @@
 	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
 
 
-/mob/new_player/proc/create_character()
+/mob/new_player/proc/create_character(is_late_join = FALSE)
 	spawning = TRUE
 	close_spawn_windows()
 
@@ -368,7 +369,7 @@
 
 	new_character.lastarea = get_area(loc)
 
-	client.prefs.copy_all_to(new_character)
+	client.prefs.copy_all_to(new_character, job, is_late_join)
 
 	if (client.prefs.be_random_body)
 		var/datum/preferences/TP = new()
@@ -444,7 +445,7 @@
 /mob/proc/close_spawn_windows() // Somehow spawn menu stays open for non-newplayers
 	close_browser(src, "latechoices") //closes late choices window
 	close_browser(src, "playersetup") //closes the player setup window
-	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // Stops lobby music.
+	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // Stops lobby music.
 	if(src.open_uis)
 		for(var/datum/nanoui/ui in src.open_uis)
 			if(ui.allowed_user_stat == -1)

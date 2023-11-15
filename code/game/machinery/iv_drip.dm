@@ -4,13 +4,18 @@
 	anchored = FALSE
 	density = FALSE
 	drag_delay = 1
+	base_pixel_x = 15
+	base_pixel_y = -2
 
-	var/mob/living/carbon/human/attached = null
+	var/mob/living/carbon/attached = null
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
 	var/obj/item/reagent_container/beaker = null
+	var/datum/beam/current_beam
+	//make it so that IV doesn't require power to function.
+	use_power = USE_POWER_NONE
 
 /obj/structure/machinery/iv_drip/update_icon()
-	if(src.attached)
+	if(attached)
 		icon_state = "hooked"
 	else
 		icon_state = ""
@@ -35,50 +40,71 @@
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			overlays += filling
 
+/obj/structure/machinery/iv_drip/proc/update_beam()
+	if(current_beam && !attached)
+		QDEL_NULL(current_beam)
+	else if(!current_beam && attached && !QDELETED(src))
+		current_beam = beam(attached, "iv_tube")
+
+/obj/structure/machinery/iv_drip/Destroy()
+	attached?.active_transfusions -= src
+	attached = null
+	update_beam()
+	. = ..()
+
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()
 
 	if(ishuman(usr))
-		var/mob/living/carbon/human/H = usr
-		if(H.stat || get_dist(H, src) > 1 || H.blinded || H.lying)
+		var/mob/living/carbon/human/user = usr
+		if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying)
+			return
+
+		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
+			to_chat(user, SPAN_WARNING("You don't know how to [attached ? "disconnect" : "connect"] this!"))
 			return
 
 		if(attached)
-			H.visible_message("[H] detaches \the [src] from \the [attached].", \
+			user.visible_message("[user] detaches \the [src] from \the [attached].", \
 			"You detach \the [src] from \the [attached].")
+			attached.active_transfusions -= src
 			attached = null
+			update_beam()
 			update_icon()
 			stop_processing()
 			return
 
 		if(in_range(src, usr) && iscarbon(over_object) && get_dist(over_object, src) <= 1)
-			H.visible_message("[H] attaches \the [src] to \the [over_object].", \
+			user.visible_message("[user] attaches \the [src] to \the [over_object].", \
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
+			attached.active_transfusions += src
+			update_beam()
 			update_icon()
 			start_processing()
 
-
-/obj/structure/machinery/iv_drip/attackby(obj/item/W, mob/living/user)
-	if (istype(W, /obj/item/reagent_container))
+/obj/structure/machinery/iv_drip/attackby(obj/item/container, mob/living/user)
+	if (istype(container, /obj/item/reagent_container))
 		if(beaker)
 			to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))
 			return
 
-		if((!istype(W, /obj/item/reagent_container/blood) && !istype(W, /obj/item/reagent_container/glass)) || istype(W, /obj/item/reagent_container/glass/bucket))
+		if((!istype(container, /obj/item/reagent_container/blood) && !istype(container, /obj/item/reagent_container/glass)) || istype(container, /obj/item/reagent_container/glass/bucket))
 			to_chat(user, SPAN_WARNING("That won't fit!"))
 			return
 
-		if(user.drop_inv_item_to_loc(W, src))
-			beaker = W
+		if(user.drop_inv_item_to_loc(container, src))
+			beaker = container
 
 			var/reagentnames = ""
-			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				reagentnames += ";[R.name]"
+
+			for(var/datum/reagent/chem in beaker.reagents.reagent_list)
+				reagentnames += ";[chem.name]"
 
 			log_admin("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
 
-			to_chat(user, "You attach \the [W] to \the [src].")
+			to_chat(user, "You attach \the [container] to \the [src].")
+			update_beam()
 			update_icon()
 		return
 	else
@@ -93,7 +119,9 @@
 			attached.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
 			if(attached.pain.feels_pain)
 				attached.emote("scream")
+			attached.active_transfusions -= src
 			attached = null
+			update_beam()
 			update_icon()
 			stop_processing()
 			return
@@ -118,20 +146,20 @@
 				if(prob(5)) visible_message("\The [src] pings.")
 				return
 
-			var/mob/living/carbon/T = attached
+			var/mob/living/carbon/patient = attached
 
-			if(!istype(T))
+			if(!istype(patient))
 				return
-			if(ishuman(T))
-				var/mob/living/carbon/human/H = T
-				if(H.species && H.species.flags & NO_BLOOD)
+			if(ishuman(patient))
+				var/mob/living/carbon/human/human_patient = patient
+				if(human_patient.species && human_patient.species.flags & NO_BLOOD)
 					return
 
 			// If the human is losing too much blood, beep.
-			if(T.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
+			if(patient.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
 				visible_message("\The [src] beeps loudly.")
 
-			T.take_blood(beaker,amount)
+			patient.take_blood(beaker,amount)
 			update_icon()
 
 /obj/structure/machinery/iv_drip/attack_hand(mob/user as mob)

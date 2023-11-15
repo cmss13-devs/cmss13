@@ -6,9 +6,13 @@ SUBSYSTEM_DEF(mapping)
 	var/list/datum/map_config/configs
 	var/list/datum/map_config/next_map_configs
 
+	///Name of all maps
 	var/list/map_templates = list()
-
+	///Name of all shuttles
 	var/list/shuttle_templates = list()
+	var/list/all_shuttle_templates = list()
+	///map_id of all tents
+	var/list/tent_type_templates = list()
 
 	var/list/areas_in_z = list()
 
@@ -29,9 +33,7 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
 	if(!configs)
 		configs = load_map_configs(ALL_MAPTYPES, error_if_missing = FALSE)
-		for(var/i in GLOB.clients)
-			var/client/C = i
-			winset(C, null, "mainwindow.title='[CONFIG_GET(string/title)] - [SSmapping.configs[SHIP_MAP].map_name]'")
+		world.name = "[CONFIG_GET(string/title)] - [SSmapping.configs[SHIP_MAP].map_name]"
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()
@@ -85,7 +87,7 @@ SUBSYSTEM_DEF(mapping)
 	z_list = SSmapping.z_list
 
 #define INIT_ANNOUNCE(X) to_chat(world, "<span class='notice'>[X]</span>"); log_world(X)
-/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
+/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, override_map_path = "maps/")
 	. = list()
 	var/start_time = REALTIMEOFDAY
 
@@ -96,7 +98,7 @@ SUBSYSTEM_DEF(mapping)
 	var/total_z = 0
 	var/list/parsed_maps = list()
 	for (var/file in files)
-		var/full_path = "maps/[path]/[file]"
+		var/full_path = "[override_map_path]/[path]/[file]"
 		var/datum/parsed_map/pm = new(file(full_path))
 		var/bounds = pm?.bounds
 		if (!bounds)
@@ -123,19 +125,23 @@ SUBSYSTEM_DEF(mapping)
 		++i
 
 	// load the maps
-	for (var/P in parsed_maps)
-		var/datum/parsed_map/pm = P
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
+	for (var/datum/parsed_map/pm as anything in parsed_maps)
+		var/cur_z = start_z + parsed_maps[pm]
+		if (!pm.load(1, 1, cur_z, no_changeturf = TRUE))
 			errorList |= pm.original_path
+		if(istype(z_list[cur_z], /datum/space_level))
+			var/datum/space_level/cur_level = z_list[cur_z]
+			cur_level.x_bounds = pm.bounds[MAP_MAXX]
+			cur_level.y_bounds = pm.bounds[MAP_MAXY]
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps
 
-/datum/controller/subsystem/mapping/proc/Loadship(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
-	LoadGroup(errorList, name, path, files, traits, default_traits, silent)
+/datum/controller/subsystem/mapping/proc/Loadship(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, override_map_path = "maps/")
+	LoadGroup(errorList, name, path, files, traits, default_traits, silent, override_map_path = override_map_path)
 
-/datum/controller/subsystem/mapping/proc/Loadground(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
-	LoadGroup(errorList, name, path, files, traits, default_traits, silent)
+/datum/controller/subsystem/mapping/proc/Loadground(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, override_map_path = "maps/")
+	LoadGroup(errorList, name, path, files, traits, default_traits, silent, override_map_path = override_map_path)
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
 	//if any of these fail, something has gone horribly, HORRIBLY, wrong
@@ -149,12 +155,18 @@ SUBSYSTEM_DEF(mapping)
 
 	var/datum/map_config/ground_map = configs[GROUND_MAP]
 	INIT_ANNOUNCE("Loading [ground_map.map_name]...")
-	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND)
+	var/ground_base_path = "maps/"
+	if(ground_map.override_map)
+		ground_base_path = "data/"
+	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND, override_map_path = ground_base_path)
 
 	if(!ground_map.disable_ship_map)
 		var/datum/map_config/ship_map = configs[SHIP_MAP]
+		var/ship_base_path = "maps/"
+		if(ship_map.override_map)
+			ship_base_path = "data/"
 		INIT_ANNOUNCE("Loading [ship_map.map_name]...")
-		Loadship(FailedZs, ship_map.map_name, ship_map.map_path, ship_map.map_file, ship_map.traits, ZTRAITS_MAIN_SHIP)
+		Loadship(FailedZs, ship_map.map_name, ship_map.map_path, ship_map.map_file, ship_map.traits, ZTRAITS_MAIN_SHIP, override_map_path = ship_base_path)
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
@@ -192,6 +204,7 @@ SUBSYSTEM_DEF(mapping)
 		map_templates[T.name] = T
 
 	preloadShuttleTemplates()
+	preload_tent_templates()
 
 /proc/generateMapList(filename)
 	. = list()
@@ -230,7 +243,13 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_template/shuttle/S = new shuttle_type()
 
 		shuttle_templates[S.shuttle_id] = S
+		all_shuttle_templates[item] = S
 		map_templates[S.shuttle_id] = S
+
+/datum/controller/subsystem/mapping/proc/preload_tent_templates()
+	for(var/template in subtypesof(/datum/map_template/tent))
+		var/datum/map_template/tent/new_tent = new template()
+		tent_type_templates[new_tent.map_id] = new_tent
 
 /datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override)
 	UNTIL(initialized && !clearing_reserved_turfs)

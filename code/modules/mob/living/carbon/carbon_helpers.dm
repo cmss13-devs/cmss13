@@ -39,3 +39,7 @@
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(2)
 		to_chat(src, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
+
+///Checks if something prevents sharp objects from interacting with the mob (such as armor blocking surgical tools / surgery)
+/mob/living/carbon/proc/get_sharp_obj_blocker(obj/limb/limb)
+	return null

@@ -42,14 +42,21 @@
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	var/ovipositor_check = (hive.allow_no_queen_evo || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
 	if(caste && caste.evolution_allowed && (ovipositor_check || caste?.evolve_without_queen))
 		if(evolution_stored >= evolution_threshold)
 			if(!got_evolution_message)
 				evolve_message()
 				got_evolution_message = TRUE
+
 			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
 				evolution_stored += progress_amount
+				return
+
+			if(evolution_stored > evolution_threshold + progress_amount)
+				evolution_stored -= progress_amount
+				return
+
 		else
 			evolution_stored += progress_amount
 
@@ -194,7 +201,8 @@
 			blinded = TRUE
 			set_stat(UNCONSCIOUS)
 		else
-			blinded = FALSE
+			if(!interference)//If their connection to hivemind is affected, their vision should be too.
+				blinded = FALSE
 			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
 				if(resting)
@@ -215,9 +223,9 @@
 	//Deal with dissolving/damaging stuff in stomach.
 	if(stomach_contents.len)
 		for(var/atom/movable/M in stomach_contents)
-			if(ishuman_strict(M))
-				if(world.time == (devour_timer - 30))
-					to_chat(usr, SPAN_WARNING("You're about to regurgitate [M]..."))
+			if(ishuman(M))
+				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
+					to_chat(src, SPAN_WARNING("You're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
@@ -327,11 +335,6 @@ Make sure their actual health updates immediately.*/
 	if(!T || !istype(T))
 		return
 
-	var/is_runner_hiding
-
-	if(isrunner(src) && layer != initial(layer))
-		is_runner_hiding = 1
-
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
 			if(!hive) return // can't heal if you have no hive, sorry bud
@@ -362,9 +365,8 @@ Make sure their actual health updates immediately.*/
 			if(armor_integrity > armor_integrity_max)
 				armor_integrity = armor_integrity_max
 
-		else //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
-			if(prob(50) && !is_runner_hiding && !current_aura)
-				plasma_stored += 0.1 * plasma_max / 100
+		else if(prob(50) && !current_aura) //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
+			plasma_stored += 0.1 * plasma_max / 100
 
 
 		for(var/datum/action/xeno_action/action in src.actions)
@@ -397,7 +399,7 @@ Make sure their actual health updates immediately.*/
 		return
 
 	var/atom/tracking_atom
-	switch(QL.track_state)
+	switch(QL.track_state[1])
 		if(TRACKER_QUEEN)
 			if(!hive || !hive.living_xeno_queen)
 				QL.icon_state = "trackoff"
@@ -408,8 +410,13 @@ Make sure their actual health updates immediately.*/
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.hive_location
-		else
-			var/leader_tracker = text2num(QL.track_state)
+		if(TRACKER_LEADER)
+			if(!QL.track_state[2])
+				QL.icon_state = "trackoff"
+				return
+
+			var/leader_tracker = QL.track_state[2]
+
 			if(!hive || !hive.xeno_leader_list)
 				QL.icon_state = "trackoff"
 				return
@@ -420,6 +427,23 @@ Make sure their actual health updates immediately.*/
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.xeno_leader_list[leader_tracker]
+		if(TRACKER_TUNNEL)
+			if(!QL.track_state[2])
+				QL.icon_state = "trackoff"
+				return
+
+			var/tunnel_tracker = QL.track_state[2]
+
+			if(!hive || !hive.tunnels)
+				QL.icon_state = "trackoff"
+				return
+			if(tunnel_tracker > hive.tunnels.len)
+				QL.icon_state = "trackoff"
+				return
+			if(!hive.tunnels[tunnel_tracker])
+				QL.icon_state = "trackoff"
+				return
+			tracking_atom = hive.tunnels[tunnel_tracker]
 
 	if(!tracking_atom)
 		QL.icon_state = "trackoff"
@@ -521,7 +545,11 @@ Make sure their actual health updates immediately.*/
 		new_luminosity += caste.caste_luminosity
 	if(on_fire)
 		new_luminosity += min(fire_stacks, 5)
-	SetLuminosity(new_luminosity) // light up xenos
+	set_light_range(new_luminosity) // light up xenos
+	if(new_luminosity)
+		set_light_on(TRUE)
+	else
+		set_light_on(FALSE)
 
 /mob/living/carbon/xenomorph/handle_stunned()
 	if(stunned)

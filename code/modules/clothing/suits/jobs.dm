@@ -61,6 +61,7 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
 		/obj/item/storage/belt/gun/m4a3,
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/smartpistol,
@@ -201,6 +202,7 @@
 		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -260,6 +262,7 @@
 		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -323,6 +326,7 @@
 		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
@@ -409,6 +413,12 @@
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/weapon/gun,
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -417,6 +427,7 @@
 		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS

@@ -25,6 +25,8 @@
 /// called after a successful var edit somewhere in the world: (list/args)
 #define COMSIG_GLOB_VAR_EDIT "!var_edit"
 
+#define COMSIG_GLOB_CONFIG_LOADED "!config_loaded"
+
 ///from /mob/living/carbon/xenomorph/initialize
 #define COMSIG_GLOB_XENO_SPAWN "!xeno_spawn"
 
@@ -47,3 +49,22 @@
 
 // Used for smothering fires upon weather event start/stop
 #define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"
+
+/// From /obj/structure/machinery/telecomms/proc/tcomms_shutdown(), called when the relay turns off
+#define COMSIG_GLOB_GROUNDSIDE_TELECOMM_TURNED_OFF "!groundside_telecomm_turned_off"
+
+/// From /datum/admins/proc/force_predator_round()
+#define COMSIG_GLOB_PREDATOR_ROUND_TOGGLED "!predator_round_toglged"
+
+/// From /datum/game_mode/colonialmarines/proc/check_ground_humans()
+#define COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING "!groundside_forsaken_handling"
+
+/// From
+#define COMSIG_GLOB_YAUTJA_ARMORY_OPENED "!yautja_armory_opened"
+
+/// From /proc/biohazard_lockdown()
+#define COMSIG_GLOB_RESEARCH_LOCKDOWN "!research_lockdown_closed"
+#define COMSIG_GLOB_RESEARCH_LIFT "!research_lockdown_opened"
+
+/// From /obj/structure/machinery/power/fusion_engine/proc/set_overloading() : (set_overloading)
+#define COMSIG_GLOB_GENERATOR_SET_OVERLOADING "!generator_set_overloading"

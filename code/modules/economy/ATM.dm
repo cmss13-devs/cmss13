@@ -232,9 +232,9 @@ log transactions
 				// check if they have low security enabled
 				scan_user(usr)
 
-				if(!ticks_left_locked_down && held_card)
+				if(!ticks_left_locked_down)
 					var/tried_account_num = text2num(href_list["account_num"])
-					if(!tried_account_num)
+					if(!tried_account_num && held_card)
 						tried_account_num = held_card.associated_account_number
 					var/tried_pin = text2num(href_list["account_pin"])
 
@@ -268,6 +268,7 @@ log transactions
 						playsound(src, 'sound/machines/twobeep.ogg', 25, 1)
 						ticks_left_timeout = 120
 						view_screen = NO_SCREEN
+						number_incorrect_tries = 0
 
 						//create a transaction log entry
 						var/datum/transaction/T = new()
@@ -357,7 +358,7 @@ log transactions
 
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					stampoverlay.icon_state = "paper_stamp-cent"
+					stampoverlay.icon_state = "paper_stamp-weyyu"
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/tool/stamp
@@ -399,7 +400,7 @@ log transactions
 
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					stampoverlay.icon_state = "paper_stamp-cent"
+					stampoverlay.icon_state = "paper_stamp-weyyu"
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/tool/stamp

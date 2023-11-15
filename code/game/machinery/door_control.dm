@@ -52,6 +52,11 @@
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
+/obj/structure/machinery/door_control/ex_act(severity)
+	if(indestructible)
+		return FALSE
+	..()
+
 /obj/structure/machinery/door_control/proc/handle_dropship(ship_id)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(ship_id)
 	if (!istype(shuttle))
@@ -145,47 +150,6 @@
 	else
 		icon_state = initial(icon_state) + "0"
 
-/obj/structure/machinery/driver_button/attack_remote(mob/user as mob)
-	return src.attack_hand(user)
-
-/obj/structure/machinery/driver_button/attackby(obj/item/W, mob/user as mob)
-	return src.attack_hand(user)
-
-/obj/structure/machinery/driver_button/attack_hand(mob/user as mob)
-
-	src.add_fingerprint(usr)
-	if(inoperable())
-		return
-	if(active)
-		return
-	add_fingerprint(user)
-
-	use_power(5)
-
-	active = 1
-	icon_state = "launcheract"
-
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
-
-	sleep(20)
-
-	for(var/obj/structure/machinery/mass_driver/M in machines)
-		if(M.id == src.id)
-			M.drive()
-
-	sleep(50)
-
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
-
-	icon_state = "launcherbtt"
-	active = 0
-
-	return
-
 // Controls elevator railings
 /obj/structure/machinery/door_control/railings
 	name = "railing controls"
@@ -270,5 +234,3 @@
 
 	desiredstate = !desiredstate
 
-/obj/structure/machinery/door_control/power_change()
-	return

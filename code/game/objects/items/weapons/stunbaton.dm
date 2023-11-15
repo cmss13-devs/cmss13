@@ -11,7 +11,7 @@
 	w_class = SIZE_MEDIUM
 
 	attack_verb = list("beaten")
-	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_SENIOR, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_SENIOR, ACCESS_WY_GENERAL, ACCESS_WY_SECURITY, ACCESS_CIVILIAN_BRIG)
 	var/stunforce = 50
 	var/status = 0 //whether the thing is on or not
 	var/obj/item/cell/bcell = null
@@ -197,9 +197,9 @@
 	return TRUE
 
 /obj/item/weapon/baton/emp_act(severity)
+	. = ..()
 	if(bcell)
 		bcell.emp_act(severity) //let's not duplicate code everywhere if we don't have to please.
-	..()
 
 //secborg stun baton module
 /obj/item/weapon/baton/robot/attack_self(mob/user)

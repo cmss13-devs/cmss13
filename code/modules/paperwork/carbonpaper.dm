@@ -30,7 +30,7 @@
 	set category = "Object"
 	set src in usr
 
-	if (copied == 0)
+	if (!copied && !iscopy)
 		var/obj/item/paper/carbon/c = src
 		var/copycontents = html_decode(c.info)
 		var/obj/item/paper/carbon/copy = new /obj/item/paper/carbon (usr.loc)

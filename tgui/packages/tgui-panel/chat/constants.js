@@ -34,6 +34,7 @@ export const MESSAGE_TYPE_COMBAT = 'combat';
 export const MESSAGE_TYPE_ADMINCHAT = 'adminchat';
 export const MESSAGE_TYPE_MODCHAT = 'modchat';
 export const MESSAGE_TYPE_MENTOR = 'mentor';
+export const MESSAGE_TYPE_STAFF_IC = 'staff_ic';
 export const MESSAGE_TYPE_EVENTCHAT = 'eventchat';
 export const MESSAGE_TYPE_ADMINLOG = 'adminlog';
 export const MESSAGE_TYPE_ATTACKLOG = 'attacklog';
@@ -113,19 +114,19 @@ export const MESSAGE_TYPES = [
     name: 'Unsorted',
     description: 'Everything we could not sort, always enabled',
   },
+  {
+    type: MESSAGE_TYPE_STAFF_IC,
+    name: 'Staff IC',
+    description: 'IC interaction with staff',
+    selector: '.staff_ic',
+  },
   // Admin stuff
   {
     type: MESSAGE_TYPE_ADMINCHAT,
     name: 'Admin Chat',
     description: 'ASAY messages',
-    selector: '.admin_channel, .adminsay, .headminsay',
-    admin: true,
-  },
-  {
-    type: MESSAGE_TYPE_MODCHAT,
-    name: 'Mod Chat',
-    description: 'MSAY messages',
-    selector: '.mod_channel, .mod, .adminmod, .staffsay',
+    selector:
+      '.admin_channel, .adminsay, .headminsay, .mod_channel, .mod, .adminmod, .staffsay',
     admin: true,
   },
   {

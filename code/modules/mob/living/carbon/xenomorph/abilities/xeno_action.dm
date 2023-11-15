@@ -131,6 +131,9 @@
 	// TODO: make hidden a part of can_use_action
 	if(!hidden && can_use_action() && use_ability(arglist(args)))
 		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
+		return TRUE
+
+	return FALSE
 
 // For actions that do something on each life tick
 /datum/action/xeno_action/proc/life_tick()
@@ -155,6 +158,8 @@
 	if(xeno.selected_ability == src)
 		if(xeno.deselect_timer > world.time)
 			return // We clicked the same ability in a very short time
+		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
+			return
 		to_chat(xeno, "You will no longer use [ability_name] with \
 			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		button.icon_state = "template"

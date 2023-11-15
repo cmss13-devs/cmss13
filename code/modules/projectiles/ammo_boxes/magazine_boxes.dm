@@ -144,7 +144,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m4ra/ext
-	name = "\improper magazine box (Ext M4RA x 16)"
+	name = "\improper magazine box (Ext M4RA x 12)"
 	overlay_ammo_type = "_ext"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/rifle/m4ra/ext

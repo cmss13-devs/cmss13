@@ -15,10 +15,6 @@
 
 #define DECISECONDS_TO_HOURS /36000
 
-#define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
-#define XENO_LEAVE_TIMER 300 //300 seconds
-#define XENO_AVAILABLE_TIMER 60 //60 seconds, when to add a xeno to the avaliable list so ghosts can get ready
-
 var/midnight_rollovers = 0
 var/rollovercheck_last_timeofday = 0
 

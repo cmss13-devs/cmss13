@@ -273,7 +273,7 @@ CULT
 
 	var/mob/living/carbon/human/H = user
 
-	if(H.job != JOB_SQUAD_RTO)
+	if(H.job != JOB_SQUAD_TEAM_LEADER)
 		return FALSE
 
 	return ..()
@@ -414,8 +414,8 @@ CULT
 		return
 
 	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
-	preset.load_race(chosen, H.hivenumber)
-	preset.load_status(chosen)
+	preset.load_race(chosen)
+	preset.load_status(chosen, H.hivenumber)
 
 	to_chat(chosen, SPAN_ROLE_HEADER("You are now a Xeno Cultist!"))
 	to_chat(chosen, SPAN_ROLE_BODY("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself."))
@@ -456,21 +456,21 @@ CULT
 
 	to_chat(chosen, SPAN_HIGHDANGER("You feel a dangerous presence in the back of your head. You find yourself unable to move!"))
 
-	chosen.frozen = TRUE
+	ADD_TRAIT(chosen, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cultist Stun"))
 	chosen.update_canmove()
 
 	chosen.update_xeno_hostile_hud()
 
 	if(!do_after(H, 2 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, chosen, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(H, SPAN_XENOMINORWARNING("You decide not to stun [chosen]."))
-		unroot_human(chosen)
+		unroot_human(chosen, TRAIT_SOURCE_ABILITY("Cultist Stun"))
 
 		enter_cooldown(5 SECONDS)
 		return
 
 	enter_cooldown()
 
-	unroot_human(chosen)
+	unroot_human(chosen, TRAIT_SOURCE_ABILITY("Cultist Stun"))
 
 	chosen.apply_effect(10, PARALYZE)
 	chosen.make_jittery(105)

@@ -1,6 +1,6 @@
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
-	description = "You lose your choice of resin secretions, half of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for a large amount of health, strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve using your vital fluids. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
 	flavor_description = "To the very last drop, your blood belongs to The Hive; share it with your sisters to keep them fighting."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -11,10 +11,10 @@
 		/datum/action/xeno_action/activable/transfer_plasma,
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant
-		/datum/action/xeno_action/activable/apply_salve, //Third macro.
-		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
-		)
+		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant.
+		/datum/action/xeno_action/activable/apply_salve, //Third macro, heal over time ability.
+		/datum/action/xeno_action/activable/transfer_plasma/healer, //Fourth macro, an improved plasma transfer.
+	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer
 
@@ -28,12 +28,12 @@
 	drone.mutation_type = DRONE_HEALER
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
 	drone.plasma_types += PLASMA_PHEROMONE
-	drone.health_modifier += XENO_HEALTH_MOD_VERYLARGE // 500HP -> 600HP
-	drone.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+	drone.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+
 	drone.max_placeable = 3
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit
-	drone.tackle_chance_modifier -= 10
+	drone.tackle_chance_modifier -= 5
 	mutator_update_actions(drone)
 	apply_behavior_holder(drone)
 	mutator_set.recalculate_actions(description, flavor_description)
@@ -41,6 +41,16 @@
 	drone.recalculate_damage()
 	drone.recalculate_pheromones()
 	drone.recalculate_tackle()
+
+/*
+	Improved Plasma Transfer
+*/
+
+/datum/action/xeno_action/activable/transfer_plasma/healer //Improved plasma transfer, but not as much as Hivey.
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	plasma_transfer_amount = 100
+	transfer_delay = 15
+	max_range = 1
 
 /*
 	Apply Resin Salve
@@ -52,15 +62,15 @@
 	ability_name = "Apply Resin Salve"
 	var/health_transfer_amount = 100
 	var/max_range = 1
-	var/self_health_drain_mod = 1.2
+	var/damage_taken_mod = 0.75
 	macro_path = /datum/action/xeno_action/verb/verb_apply_salve
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, self_health_drain_mod)
-	..()
+	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, damage_taken_mod)
+	return ..()
 
 /datum/action/xeno_action/verb/verb_apply_salve()
 	set category = "Alien"
@@ -69,53 +79,63 @@
 	var/action_name = "Apply Resin Salve"
 	handle_xeno_macro(src, action_name)
 
-/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 1.2)
+/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 0.75)
+
+	if(!check_plasma(amount * 2))
+		return
 
 	if(!istype(target_xeno))
 		return
 
 	if(target_xeno == src)
-		to_chat(src, "You can't heal yourself with your own resin!")
+		to_chat(src, SPAN_XENOWARNING("You can't heal yourself with your own resin salve!"))
 		return
 
 	if(!check_state())
 		return
 
-	if (SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+	if(SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 		to_chat(src, SPAN_XENOWARNING("Extinguish [target_xeno] first or the flames will burn your resin salve away!"))
 		return
 
 	if(!can_not_harm(target_xeno)) //We don't wanna heal hostile hives, but we do want to heal our allies!
-		to_chat(src, SPAN_WARNING("[target_xeno] is hostile to your hive, so your regenerative resin is incompatible!"))
+		to_chat(src, SPAN_XENOWARNING("[target_xeno] is hostile to your hive! Go find one of your sisters or allies!"))
 		return
 
 	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't apply your regenerative resin from here!"))
+		to_chat(src, SPAN_XENOWARNING("You can't apply your resin salve from here!"))
 		return
 
 	if(get_dist(src, target_xeno) > max_range)
-		to_chat(src, SPAN_WARNING("You need to be closer to [target_xeno]."))
+		to_chat(src, SPAN_XENOWARNING("You need to be closer to [target_xeno] to apply your resin salve!"))
 		return
 
 	if(target_xeno.stat == DEAD)
-		to_chat(src, SPAN_WARNING("[target_xeno] is dead!"))
+		to_chat(src, SPAN_XENOWARNING("[target_xeno] is dead!"))
 		return
 
 	if(target_xeno.health >= target_xeno.maxHealth)
-		to_chat(src, SPAN_WARNING("\The [target_xeno] is already at max health!"))
+		to_chat(src, SPAN_XENOWARNING("[target_xeno] is already at max health!"))
 		return
 
-	if(health <= 0)
-		to_chat(src, SPAN_WARNING("You do not have enough health to make regenerative resin!"))
-		return
+///Tiny xenos (Larva and Facehuggers), don't need as much health so don't cost as much.
+	if(target_xeno.mob_size == 0)
+		amount = amount * 0.15
+		damage_taken_mod = 1
 
+//Forces an equivalent exchange of health between healers so they do not spam heal each other to full health.
+	if(target_xeno.mutation_type == DRONE_HEALER)
+		damage_taken_mod = 1
+
+	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)
+	use_plasma(amount * 2)
 	updatehealth()
-	new /datum/effects/heal_over_time(target_xeno, amount, 12, 2) //Healer now sacrifices the same amount of health that will heal the other xenomorph. Previously, she healed 100 damage while sacrificing 120 health of her own. That is not the law of equivalent exchange!
+	new /datum/effects/heal_over_time(target_xeno, amount, 10, 1)
 	target_xeno.xeno_jitter(1 SECONDS)
 	target_xeno.flick_heal_overlay(10 SECONDS, "#00be6f")
-	to_chat(target_xeno, SPAN_XENOWARNING("\The [src] covers your wounds with regenerative resin. You feel reinvigorated!"))
-	to_chat(src, SPAN_XENOWARNING("You regurgitate your vital fluids to create a regenerative resin and apply it to \the [target_xeno]'s wounds. You feel weakened...")) //The vital fluids mix with sticky saliva.
+	to_chat(target_xeno, SPAN_XENOWARNING("[src] covers your wounds with a regenerative resin salve. You feel reinvigorated!"))
+	to_chat(src, SPAN_XENOWARNING("You regurgitate your vital fluids and some plasma to create a regenerative resin salve and apply it to [target_xeno]'s wounds. You feel weakened..."))
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE

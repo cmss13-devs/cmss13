@@ -52,6 +52,7 @@
 		/datum/action/xeno_action/activable/warrior_punch,
 		/datum/action/xeno_action/activable/lunge,
 		/datum/action/xeno_action/activable/fling,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	mutation_type = WARRIOR_NORMAL
@@ -112,28 +113,12 @@
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 
-	var/slash_charge_cdr = 0.20 SECONDS // Amount to reduce charge cooldown by per slash
 	var/lifesteal_percent = 7
 	var/max_lifesteal = 9
 	var/lifesteal_range =  3 // Marines within 3 tiles of range will give the warrior extra health
 	var/lifesteal_lock_duration = 20 // This will remove the glow effect on warrior after 2 seconds
 	var/color = "#6c6f24"
 	var/emote_cooldown = 0
-
-/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
-	..()
-
-	var/datum/action/xeno_action/activable/lunge/cAction1 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/lunge)
-	if (!cAction1.action_cooldown_check())
-		cAction1.reduce_cooldown(slash_charge_cdr)
-
-	var/datum/action/xeno_action/activable/fling/cAction2 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/fling)
-	if (!cAction2.action_cooldown_check())
-		cAction2.reduce_cooldown(slash_charge_cdr)
-
-	var/datum/action/xeno_action/activable/warrior_punch/cAction3 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/warrior_punch)
-	if (!cAction3.action_cooldown_check())
-		cAction3.reduce_cooldown(slash_charge_cdr)
 
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 	..()

@@ -62,7 +62,7 @@
 					stat &= ~BROKEN // the machine's not borked anymore!
 				else
 					to_chat(user, SPAN_WARNING("You need five coils of wire for this."))
-			if(istype(P, /obj/item/tool/crowbar))
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR))
 				to_chat(user, "You begin prying out the circuit board other components...")
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

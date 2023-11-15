@@ -134,7 +134,7 @@
 	return
 
 /obj/item/hardpoint/proc/generate_bullet(mob/user, turf/origin_turf)
-	var/obj/item/projectile/P = new(origin_turf, create_cause_data(initial(name), user))
+	var/obj/projectile/P = new(origin_turf, create_cause_data(initial(name), user))
 	P.generate_bullet(new ammo.default_ammo)
 	// Apply bullet traits from gun
 	for(var/entry in traits_to_give)
@@ -529,6 +529,8 @@
 
 //doing last preparation before actually firing gun
 /obj/item/hardpoint/proc/fire(mob/user, atom/A)
+	if(!ammo) //Prevents a runtime
+		return
 	if(ammo.current_rounds <= 0)
 		return
 
@@ -550,7 +552,7 @@
 	var/turf/origin_turf = get_turf(src)
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
 
-	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
+	var/obj/projectile/P = generate_bullet(user, origin_turf)
 	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, user)
 	P.fire_at(A, user, src, P.ammo.max_range, P.ammo.shell_speed)
 

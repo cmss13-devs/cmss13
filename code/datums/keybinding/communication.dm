@@ -32,7 +32,7 @@
 /datum/keybinding/client/communication/whisper
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "Whisper"
+	name = WHISPER_CHANNEL
 	full_name = "IC Whisper"
 	keybind_signal = COMSIG_KB_CLIENT_WHISPER_DOWN
 
@@ -41,13 +41,6 @@
 	name = COMMS_CHANNEL
 	full_name = "IC Comms (;)"
 	keybind_signal = COMSIG_KG_CLIENT_RADIO_DOWN
-
-/datum/keybinding/client/communication/mod_say
-	hotkey_keys = list("Unbound")
-	classic_keys = list("Unbound")
-	name = MOD_CHANNEL
-	full_name = "Mod Say"
-	keybind_signal = COMSIG_KB_ADMIN_ASAY_DOWN
 
 /datum/keybinding/client/communication/asay
 	hotkey_keys = list("F3")
@@ -63,4 +56,4 @@
 	name = MENTOR_CHANNEL
 	full_name = "Mentor Say"
 	description = "Talk with other mentors."
-	keybind_signal = COMSIG_KB_ADMIN_ASAY_DOWN
+	keybind_signal = COMSIG_KB_ADMIN_MENTORSAY_DOWN

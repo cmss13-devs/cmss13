@@ -11,7 +11,7 @@
 			to_chat(src, SPAN_WARNING("[O] is too far away."))
 			return
 
-	if(!isturf(loc) || burrow)
+	if(!isturf(loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_WARNING("You can't melt [O] from here!"))
 		return
 
@@ -135,7 +135,7 @@
 
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
-		R.take_damage_type((1 / A.acid_strength) * 40, "acid", src)
+		R.take_damage_type(40 / A.acid_delay, "acid", src)
 		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
 			SPAN_XENOWARNING("You vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
@@ -160,11 +160,11 @@
 	SPAN_XENOWARNING("You vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
-/proc/unroot_human(mob/living/carbon/H)
+/proc/unroot_human(mob/living/carbon/H, trait_source)
 	if (!isxeno_human(H))
 		return
 
-	H.frozen = 0
+	REMOVE_TRAIT(H, TRAIT_IMMOBILIZED, trait_source)
 	H.update_canmove()
 
 	if(ishuman(H))
@@ -224,11 +224,10 @@
 	client.pixel_x = 0
 	client.pixel_y = 0
 	is_zoomed = 0
-	// Since theres several ways we can get here, we need to update the ability button state
-	for (var/datum/action/xeno_action/action in actions)
-		if (istype(action, /datum/action/xeno_action/onclick/toggle_long_range))
-			action.button.icon_state = "template"
-			break;
+	// Since theres several ways we can get here, we need to update the ability button state and handle action's specific effects
+	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)
+		action.on_zoom_out()
+		return
 
 /mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
 	set waitfor = FALSE
@@ -375,6 +374,10 @@
 
 	if(target.plasma_max == XENO_NO_PLASMA)
 		to_chat(src, SPAN_WARNING("\The [target] doesn't use plasma."))
+		return FALSE
+
+	if(target == src)
+		to_chat(src, SPAN_WARNING("You can't transfer plasma to yourself!"))
 		return FALSE
 
 	return TRUE

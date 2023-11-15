@@ -33,6 +33,7 @@
         "xeno_hive_bravo": 0,
         "xeno_hive_charlie": 70
     },
+    "camouflage": "snow",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

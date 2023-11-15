@@ -27,7 +27,7 @@
 	edge = 0
 	var/icon/broken_outline = icon('icons/obj/items/drinks.dmi', "broken")
 
-/obj/item/weapon/broken_bottle/bullet_act(obj/item/projectile/P)
+/obj/item/weapon/broken_bottle/bullet_act(obj/projectile/P)
 	. = ..()
 	new/obj/item/shard(src.loc)
 	new/obj/item/shard(src.loc)
@@ -50,9 +50,26 @@
 	edge = 0
 	var/icon/broken_outline = icon('icons/obj/items/drinks.dmi', "broken")
 
-/obj/item/weapon/broken_glass/bullet_act(obj/item/projectile/P)
+/obj/item/weapon/broken_glass/bullet_act(obj/projectile/P)
 	. = ..()
 	new/obj/item/shard(src.loc)
 	new/obj/item/shard(src.loc)
 	playsound(src, "shatter", 25, 1)
 	qdel(src)
+
+/obj/item/weapon/dart
+	name = "red throwing dart"
+	desc = "A dart. For throwing. This one's red."
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "red_dart"
+	force = MELEE_FORCE_WEAK
+	throwforce = MELEE_FORCE_WEAK
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 5
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("stabbed", "poked", "attacked")
+
+/obj/item/weapon/dart/green
+	name = "green throwing dart"
+	desc = "A dart. For throwing. This one's green."
+	icon_state = "green_dart"

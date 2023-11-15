@@ -142,9 +142,9 @@
 				return TRUE
 
 /obj/item/stack/medical/advanced/bruise_pack
-	name = "advanced trauma kit"
-	singular_name = "advanced trauma kit"
-	desc = "An advanced trauma kit for severe injuries."
+	name = "trauma kit"
+	singular_name = "trauma kit"
+	desc = "A trauma kit for severe injuries."
 	icon_state = "traumakit"
 	heal_brute = 12
 
@@ -209,13 +209,13 @@
 	stack_id = "soothing herbs"
 	alien = TRUE
 /obj/item/stack/medical/advanced/ointment
-	name = "advanced burn kit"
-	singular_name = "advanced burn kit"
-	desc = "An advanced treatment kit for severe burns."
+	name = "burn kit"
+	singular_name = "burn kit"
+	desc = "A treatment kit for severe burns."
 	icon_state = "burnkit"
 	heal_burn = 12
 
-	stack_id = "advanced burn kit"
+	stack_id = "burn kit"
 
 /obj/item/stack/medical/advanced/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(..())

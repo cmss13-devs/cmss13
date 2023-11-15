@@ -1,16 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Input,
-  Button,
-  Stack,
-  Section,
-  Tabs,
-  Box,
-  Dropdown,
-  Slider,
-  Tooltip,
-} from '../components';
+import { Input, Button, Stack, Section, Tabs, Box, Dropdown, Slider, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
@@ -426,26 +416,27 @@ const PunishmentActions = (props, context) => {
       </Section>
 
       <Section level={2} title="Human Name">
-        <Stack
-          align="right"
-          grow={1}
-        >
+        <Stack align="right" grow={1}>
           <Button
             width="100%"
             icon="clipboard-list"
             color="average"
             content="Human name reset"
-            disabled={!hasPermission(data, "reset_human_name")}
-            onClick={() => act("reset_human_name")}
+            disabled={!hasPermission(data, 'reset_human_name')}
+            onClick={() => act('reset_human_name')}
           />
           <Button
             width="100%"
             height="100%"
             icon="clipboard-list"
             color="bad"
-            content={!data?.client_name_banned_status ? ("Human name ban") : ("Human name unban")}
-            disabled={!hasPermission(data, "ban_human_name")}
-            onClick={() => act("ban_human_name")}
+            content={
+              !data?.client_name_banned_status
+                ? 'Human name ban'
+                : 'Human name unban'
+            }
+            disabled={!hasPermission(data, 'ban_human_name')}
+            onClick={() => act('ban_human_name')}
           />
         </Stack>
       </Section>
@@ -852,12 +843,12 @@ const PhysicalActions = (props, context) => {
               onClick={() => act('set_squad')}
             />
             <Button.Confirm
-                content="Set Faction"
-                icon="clipboard-list"
-                width="100%"
-                height="100%"
-                disabled={!hasPermission(data, 'set_faction')}
-                onClick={() => act('set_faction')}
+              content="Set Faction"
+              icon="clipboard-list"
+              width="100%"
+              height="100%"
+              disabled={!hasPermission(data, 'set_faction')}
+              onClick={() => act('set_faction')}
             />
           </Stack>
         )}

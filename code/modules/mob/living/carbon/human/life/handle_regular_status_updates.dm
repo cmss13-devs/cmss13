@@ -59,7 +59,7 @@
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
-			speech_problem_flag = 1
+			speech_problem_flag = TRUE
 			if(regular_update)
 				handle_dreams()
 				apply_damage(-3, HALLOSS)
@@ -122,7 +122,7 @@
 		handle_statuses()
 
 		if(paralyzed)
-			speech_problem_flag = 1
+			speech_problem_flag = TRUE
 			apply_effect(1, WEAKEN)
 			silent = 1
 			blinded = TRUE

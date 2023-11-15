@@ -1,4 +1,5 @@
 #define HIJACK_EXPLOSION_COUNT 5
+#define MARINE_MAJOR_ROUND_END_DELAY 3 MINUTES
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -33,11 +34,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
 /obj/effect/landmark/lv624
-	icon = 'icons/old_stuff/mark.dmi'
+	icon = 'icons/landmarks.dmi'
 
 /obj/effect/landmark/lv624/fog_blocker
 	name = "fog blocker"
-	icon_state = "spawn_event"
+	icon_state = "fog"
 
 	var/time_to_dispel = 25 MINUTES
 
@@ -58,7 +59,7 @@
 
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
-	icon_state = "spawn_event"
+	icon_state = "xeno_tunnel"
 
 /obj/effect/landmark/lv624/xeno_tunnel/Initialize(mapload, ...)
 	. = ..()
@@ -117,8 +118,6 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_BASIC_RT])
 		flags_round_type |= MODE_BASIC_RT
 
-	round_time_lobby = world.time
-
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 
@@ -142,15 +141,15 @@
 		var/monkey_to_spawn = pick(monkey_types)
 		new monkey_to_spawn(T)
 
-/datum/game_mode/colonialmarines/proc/ares_online()
-	var/name = "ARES Online"
-	var/input = "ARES. Online. Good morning, marines."
-	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
-
 /datum/game_mode/colonialmarines/proc/map_announcement()
 	if(SSmapping.configs[GROUND_MAP].announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+
+/datum/game_mode/colonialmarines/proc/ares_conclude()
+	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
+	ai_silent_announcement("Saving operational report to archive.", ".V")
+	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -165,6 +164,7 @@
 
 	if(is_in_endgame)
 		check_hijack_explosions()
+		check_ground_humans()
 
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)
@@ -242,6 +242,35 @@
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
 
+#define GROUNDSIDE_XENO_MULTIPLIER 1.0
+
+///Checks for humans groundside after hijack, spawns forsaken if requirements met
+/datum/game_mode/colonialmarines/proc/check_ground_humans()
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIJACK_GROUND_CHECK))
+		return
+
+	var/groundside_humans = 0
+	var/groundside_xenos = 0
+
+	for(var/mob/current_mob in GLOB.player_list)
+		if(!is_ground_level(current_mob.z) || !current_mob.client || current_mob.stat == DEAD)
+			continue
+
+		if(ishuman_strict(current_mob))
+			groundside_humans++
+			continue
+
+		if(isxeno(current_mob))
+			groundside_xenos++
+			continue
+
+	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
+		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", TRUE, FALSE)
+
+	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
+
+#undef GROUNDSIDE_XENO_MULTIPLIER
+
 /**
  * Makes the mainship shake, along with playing a klaxon sound effect.
  */
@@ -268,26 +297,25 @@
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
-	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
 
 	if(force_end_at && world.time > force_end_at)
 		round_finished = MODE_INFESTATION_X_MINOR
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
-		round_finished = MODE_GENERIC_DRAW_NUKE //Nuke went off, ending the round.
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
-		round_finished = MODE_INFESTATION_M_MINOR //Nuke went off, ending the round.
-	if(EvacuationAuthority.dest_status < NUKE_EXPLOSION_IN_PROGRESS) //If the nuke ISN'T in progress. We do not want to end the round before it detonates.
-		if(!num_humans && num_xenos) //No humans remain alive.
-			round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
-		else if(num_humans && !num_xenos)
-			if(SSticker.mode && SSticker.mode.is_in_endgame)
-				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
-			else
-				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
-		else if(!num_humans && !num_xenos)
-			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
+
+	if(!num_humans && num_xenos) //No humans remain alive.
+		round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
+	else if(num_humans && !num_xenos)
+		if(SSticker.mode && SSticker.mode.is_in_endgame)
+			round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
+		else
+			SSticker.roundend_check_paused = TRUE
+			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+			ares_conclude()
+			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
+	else if(!num_humans && !num_xenos)
+		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
 /datum/game_mode/colonialmarines/check_queen_status(hivenumber)
 	set waitfor = 0
@@ -315,6 +343,8 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
+#define MAJORITY 0.5 // What percent do we consider a 'majority?'
+
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
 	var/musical_track
@@ -333,7 +363,20 @@
 				round_statistics.current_map.total_marine_victories++
 				round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
-			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
+			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
+				var/headcount = count_per_faction()
+				var/living = headcount["total_headcount"]
+				if ((headcount["WY_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+				else if ((headcount["marine_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
+			else
+				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			end_icon = "xeno_minor"
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_xeno_victories++
@@ -344,7 +387,7 @@
 				round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
-			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
@@ -541,3 +584,5 @@
 		incrementer++
 
 #undef HIJACK_EXPLOSION_COUNT
+#undef MARINE_MAJOR_ROUND_END_DELAY
+#undef MAJORITY

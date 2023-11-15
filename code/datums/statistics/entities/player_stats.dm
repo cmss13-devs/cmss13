@@ -6,12 +6,20 @@
 	var/total_rounds_played = 0
 	var/steps_walked = 0
 	var/round_played = FALSE
-	var/datum/entity/statistic/nemesis = null // "runner" = 3
+	var/datum/entity/statistic/nemesis // "runner" = 3
 	var/list/niche_stats = list() // list of type /datum/entity/statistic, "Total Executions" = number
 	var/list/humans_killed = list() // list of type /datum/entity/statistic, "jobname2" = number
 	var/list/xenos_killed = list() // list of type /datum/entity/statistic, "caste" = number
 	var/list/death_list = list() // list of type /datum/entity/death_stats
 	var/display_stat = TRUE
+
+/datum/entity/player_stats/Destroy(force)
+	QDEL_NULL(nemesis)
+	QDEL_LIST_ASSOC_VAL(niche_stats)
+	QDEL_LIST_ASSOC_VAL(humans_killed)
+	QDEL_LIST_ASSOC_VAL(xenos_killed)
+	QDEL_LIST_ASSOC_VAL(death_list)
+	return ..()
 
 /datum/entity/player_stats/proc/get_playtime()
 	return total_playtime

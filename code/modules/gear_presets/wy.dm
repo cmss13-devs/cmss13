@@ -6,31 +6,22 @@
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver
 	faction_group = FACTION_LIST_WY
-	access = list(
-		ACCESS_WY_CORPORATE,
-		ACCESS_ILLEGAL_PIRATE,
-		ACCESS_MARINE_COMMAND,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_RESEARCH,
-		ACCESS_WY_CORPORATE_DS,
-		ACCESS_MARINE_MEDBAY,
-	)
 	skills = /datum/skills/civilian
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/headset_type = /obj/item/device/radio/headset/distress/WY
 
 /datum/equipment_preset/wy/New()
 	. = ..()
-	access += get_all_civilian_accesses() + get_all_centcom_access()
+	access += get_access(ACCESS_LIST_WY_BASE)
 
-/datum/equipment_preset/wy/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/wy/load_id(mob/living/carbon/human/new_human)
 	. = ..()
 
-/datum/equipment_preset/wy/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new headset_type(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+/datum/equipment_preset/wy/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new headset_type(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	. = ..()
 
 /datum/equipment_preset/wy/trainee
@@ -40,8 +31,8 @@
 	rank = JOB_TRAINEE
 	paygrade = "WYC1"
 
-/datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(H), WEAR_BODY)
+/datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(new_human), WEAR_BODY)
 	. = ..()
 
 /datum/equipment_preset/wy/junior_exec
@@ -86,13 +77,13 @@
 
 /datum/equipment_preset/wy/manager/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_access(ACCESS_LIST_WY_SENIOR)
 
-/datum/equipment_preset/wy/manager/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/manager(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
+/datum/equipment_preset/wy/manager/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/manager(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
 	..()
 
 /datum/equipment_preset/wy/manager/assistant_manager
@@ -116,6 +107,10 @@
 	rank = JOB_CHIEF_EXECUTIVE
 	paygrade = "WYC9"
 
+/datum/equipment_preset/wy/manager/chief_executive/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_ALL)
+
 /datum/equipment_preset/wy/manager/director
 	name = "Corporate - J - Director"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -125,9 +120,13 @@
 	skills = /datum/skills/civilian/manager/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
 
-/datum/equipment_preset/wy/manager/director/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/director(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/director(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/director(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general(H), WEAR_WAIST)
+/datum/equipment_preset/wy/manager/director/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_ALL)
+
+/datum/equipment_preset/wy/manager/director/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/director(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/director(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/director(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general(new_human), WEAR_WAIST)
 	..()

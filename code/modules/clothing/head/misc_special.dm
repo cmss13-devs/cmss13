@@ -130,31 +130,14 @@
 	..()
 
 	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in [user.loc]") //To prevent some lighting anomalities.
+		to_chat(user, SPAN_WARNING("You cannot turn the light [on ? "off" : "on" ] while in [user.loc].")) //To prevent some lighting anomalies.
 		return
+
 	on = !on
 	icon_state = "hardhat[on]_pumpkin"
 
 	if(on)
-		user.SetLuminosity(brightness_on, FALSE, src)
+		set_light_range(brightness_on)
+		set_light_on(TRUE)
 	else
-		user.SetLuminosity(0, FALSE, src)
-
-/obj/item/clothing/head/pumpkinhead/pickup(mob/user)
-	..()
-	if(on)
-		user.SetLuminosity(brightness_on, FALSE, src)
-	SetLuminosity(0)
-
-/obj/item/clothing/head/pumpkinhead/dropped(mob/user)
-	..()
-	if(on)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(brightness_on)
-
-/obj/item/clothing/head/pumpkinhead/Destroy()
-	if(ismob(src.loc))
-		src.loc.SetLuminosity(0, FALSE, src)
-	else
-		SetLuminosity(0)
-	return ..()
+		set_light_on(FALSE)

@@ -21,9 +21,12 @@
 
 	var/static/regex/ic_filter_regex
 
+	var/is_loaded = FALSE
+
 /datum/controller/configuration/proc/admin_reload()
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("configuration admin_reload")
+		return PROC_BLOCKED
 	log_admin("[key_name(usr)] has forcefully reloaded the configuration from disk.")
 	message_admins("[key_name_admin(usr)] has forcefully reloaded the configuration from disk.")
 	full_wipe()
@@ -32,7 +35,8 @@
 
 /datum/controller/configuration/proc/Load(_directory)
 	if(IsAdminAdvancedProcCall()) //If admin proccall is detected down the line it will horribly break everything.
-		return
+		alert_proccall("configuration Load")
+		return PROC_BLOCKED
 	if(_directory)
 		directory = _directory
 	if(entries)
@@ -51,8 +55,12 @@
 	loadmaplist(CONFIG_SHIP_MAPS_FILE, SHIP_MAP)
 	LoadChatFilter()
 
+	is_loaded = TRUE
+
 	if(Master)
 		Master.OnConfigLoad()
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CONFIG_LOADED)
 
 
 /datum/controller/configuration/proc/loadmaplist(filename, maptype)
@@ -115,7 +123,8 @@
 
 /datum/controller/configuration/proc/full_wipe()
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("configuration full_wipe")
+		return PROC_BLOCKED
 	entries_by_type.Cut()
 	QDEL_LIST_ASSOC_VAL(entries)
 	entries = null
@@ -161,7 +170,8 @@
 
 /datum/controller/configuration/proc/LoadEntries(filename, list/stack = list())
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("configuration LoadEntries")
+		return PROC_BLOCKED
 
 	var/filename_to_test = world.system_type == MS_WINDOWS ? lowertext(filename) : filename
 	if(filename_to_test in stack)
@@ -262,7 +272,7 @@
 		CRASH("Missing config entry for [entry_type]!")
 	if((E.protection & CONFIG_ENTRY_HIDDEN) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Get" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
 		log_admin_private("Config access of [entry_type] attempted by [key_name(usr)]")
-		return
+		return PROC_BLOCKED
 	return E.config_entry_value
 
 
@@ -276,7 +286,7 @@
 		CRASH("Missing config entry for [entry_type]!")
 	if((E.protection & CONFIG_ENTRY_LOCKED) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Set" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
 		log_admin_private("Config rewrite of [entry_type] to [new_val] attempted by [key_name(usr)]")
-		return
+		return PROC_BLOCKED
 	return E.ValidateAndSet("[new_val]")
 
 
@@ -324,3 +334,4 @@
 //Message admins when you can.
 /datum/controller/configuration/proc/DelayedMessageAdmins(text)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(message_admins), text), 0)
+

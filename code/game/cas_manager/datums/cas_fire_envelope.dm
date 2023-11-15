@@ -125,10 +125,6 @@
 		mission_error = mission.error_message(check_result)
 		return 0
 
-	if(target_turf && target_turf.signal_loc)
-		var/turf/TT = get_turf(target_turf.signal_loc)
-		if(TT && TT.z)
-			msg_admin_niche("[key_name(usr)] launching Fire Mission '[mission.name]' onto [target_turf.name] at ([TT.x],[TT.y],[TT.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[TT.x];Y=[TT.y];Z=[TT.z]'>JMP LOC</a>)")
 	//actual firemission code
 	execute_firemission_unsafe(target_turf, offset, dir, mission)
 	return 1
@@ -185,7 +181,7 @@
 		apply_upgrade(user)
 		if(!(user in guidance.users))
 			guidance.users += user
-			RegisterSignal(usr, COMSIG_MOB_RESISTED, PROC_REF(exit_cam_resist))
+			RegisterSignal(user, COMSIG_MOB_RESISTED, PROC_REF(exit_cam_resist))
 
 
 /datum/cas_fire_envelope/proc/apply_upgrade(user)
@@ -224,6 +220,7 @@
 			M.reset_view()
 			remove_upgrades(user)
 		guidance.users -= user
+		UnregisterSignal(user, COMSIG_MOB_RESISTED)
 
 /datum/cas_fire_envelope/proc/exit_cam_resist(mob/user)
 	SIGNAL_HANDLER
@@ -353,6 +350,7 @@
 		return firemission_envelope.mission_error
 	return "OK"
 
+// Used in the simulation room for firemission testing.
 /obj/structure/machinery/computer/dropship_weapons/proc/execute_firemission(obj/location, offset, dir, mission_id)
 	var/result = firemission_envelope.execute_firemission(get_turf(location), offset, dir, mission_id)
 	if(result<1)

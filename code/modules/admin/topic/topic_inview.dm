@@ -18,3 +18,5 @@
 			subtlemessageall()
 		if("alertall")
 			alertall()
+		if("stripall")
+			owner.strip_all_in_view()

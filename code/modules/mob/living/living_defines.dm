@@ -77,8 +77,12 @@
 		/obj/item/alien_embryo
 	)
 	//blood.dm
-	var/blood_volume = 0 //how much blood the mob has
-	var/max_blood = BLOOD_VOLUME_NORMAL  // how much they should have
+	///How much blood the mob has
+	var/blood_volume = 0
+	///How much blood the mob should ideally have
+	var/max_blood = BLOOD_VOLUME_NORMAL
+	///How much blood the mob can have
+	var/limit_blood = BLOOD_VOLUME_MAXIMUM
 
 	var/hivenumber
 
@@ -106,3 +110,11 @@
 
 	/// This is what the value is changed to when the mob dies. Actual BMV definition in atom/movable.
 	var/dead_black_market_value = 0
+
+	var/dazed = 0
+	var/knocked_out = 0
+	var/stunned = 0
+	var/knocked_down = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
+	var/sleeping = 0

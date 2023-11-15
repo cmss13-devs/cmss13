@@ -33,8 +33,8 @@
 	plane = GHOST_PLANE
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
-	var/adminlarva = 0
-	var/ghostvision = 1
+	var/adminlarva = FALSE
+	var/ghostvision = TRUE
 	var/can_reenter_corpse
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
 							//If you died in the game and are a ghost - this will remain as null.
@@ -45,16 +45,23 @@
 							"Squad HUD" = FALSE,
 							"Xeno Status HUD" = FALSE
 							)
-	universal_speak = 1
+	universal_speak = TRUE
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
-	var/mob/observetarget = null //The target mob that the ghost is observing. Used as a reference in logout()
+	/// The target mob that the ghost is observing.
+	var/mob/observe_target_mob = null
+	/// The target client that the ghost is observing.
+	var/client/observe_target_client = null
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
-	var/observer_actions = list(/datum/action/observer_action/join_xeno)
+	var/observer_actions = list(/datum/action/observer_action/join_xeno, /datum/action/observer_action/join_lesser_drone)
 	var/datum/action/minimap/observer/minimap
+	var/larva_queue_cached_message
+	///Used to bypass time of death checks such as when being selected for larva.
+	var/bypass_time_of_death_checks = FALSE
+
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -80,10 +87,10 @@
 		life_kills_total = body.life_kills_total //kills also copy over
 
 		appearance = body.appearance
+		underlays.Cut()
 		base_transform = matrix(body.base_transform)
 		body.alter_ghost(src)
 		apply_transform(matrix())
-
 
 		own_orbit_size = body.get_orbit_size()
 
@@ -93,6 +100,7 @@
 		invisibility = INVISIBILITY_OBSERVER
 		plane = GHOST_PLANE
 		layer = ABOVE_FLY_LAYER
+		mouse_opacity = MOUSE_OPACITY_ICON // In case we were weed_food
 
 		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
 		see_invisible = INVISIBILITY_OBSERVER
@@ -123,12 +131,14 @@
 	minimap = new
 	minimap.give_to(src)
 
-	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
-
 	for(var/path in subtypesof(/datum/action/observer_action))
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
+
+	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
@@ -144,31 +154,108 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
 
-/mob/dead/observer/proc/clean_observetarget()
+/// Removes all signals and data related to the observe target and resets observer's HUD/eye
+/mob/dead/observer/proc/clean_observe_target()
 	SIGNAL_HANDLER
-	UnregisterSignal(observetarget, COMSIG_PARENT_QDELETING)
-	if(observetarget?.observers)
-		observetarget.observers -= src
-		UNSETEMPTY(observetarget.observers)
-	observetarget = null
+
+	UnregisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE)
+	UnregisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND)
+	UnregisterSignal(observe_target_mob, COMSIG_MOB_LOGIN)
+
+	if(observe_target_client)
+		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD)
+		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE)
+
+	if(observe_target_mob?.observers)
+		observe_target_mob.observers -= src
+		UNSETEMPTY(observe_target_mob.observers)
+
+	observe_target_mob = null
+	observe_target_client = null
+
 	client.eye = src
 	hud_used.show_hud(hud_used.hud_version, src)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
+/// When the observer moves we disconnect from the observe target if we aren't on the same turf
 /mob/dead/observer/proc/observer_move_react()
 	SIGNAL_HANDLER
-	if(src.loc == get_turf(observetarget))
+
+	if(loc == get_turf(observe_target_mob))
 		return
-	clean_observetarget()
+	clean_observe_target()
+
+/// When the observer target gets a screen, our observer gets a screen minus some game screens we don't want the observer to touch
+/mob/dead/observer/proc/observe_target_screen_add(observe_target_mob_client, add_to_screen)
+	SIGNAL_HANDLER
+
+	if(!client)
+		return
+
+	if(istype(add_to_screen, /atom/movable/screen/action_button))
+		return
+
+	if(istype(add_to_screen, /atom/movable/screen/fullscreen))
+		return
+
+	if(istype(add_to_screen, /atom/movable/screen/click_catcher))
+		return
+
+	if(istype(add_to_screen, /atom/movable/screen/escape_menu))
+		return
+
+	if(istype(add_to_screen, /obj/effect/detector_blip))
+		return
+
+	client.add_to_screen(add_to_screen)
+
+/// When the observer target loses a screen, our observer loses it as well
+/mob/dead/observer/proc/observe_target_screen_remove(observe_target_mob_client, remove_from_screen)
+	SIGNAL_HANDLER
+
+	if(!client)
+		return
+
+	client.remove_from_screen(remove_from_screen)
+
+/// When the observe target ghosts our observer disconnect from their screen updates
+/mob/dead/observer/proc/observe_target_ghosting(mob/observer_target_mob)
+	SIGNAL_HANDLER
+
+	if(observe_target_client) //Should never not have one if ghostizing but maaaybe?
+		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD)
+		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE)
+
+/// When the observe target gets a new mind our observer connects to the new client's screens
+/mob/dead/observer/proc/observe_target_new_mind(mob/living/new_character, client/new_client)
+	SIGNAL_HANDLER
+
+	if(observe_target_client != new_client)
+		observe_target_client = new_client
+
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
+
+/// When the observe target logs in our observer connect to the new client
+/mob/dead/observer/proc/observe_target_login(mob/living/new_character)
+	SIGNAL_HANDLER
+
+	if(observe_target_client != new_character.client)
+		observe_target_client = new_character.client
+
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
 
 ///makes the ghost see the target hud and sets the eye at the target.
 /mob/dead/observer/proc/do_observe(mob/target)
 	if(!client || !target || !istype(target))
 		return
 
-	//I do not give a singular flying fuck about not being able to see xeno huds, literally only human huds are useful to see
-	if(!ishuman(target))
-		ManualFollow(target)
+	ManualFollow(target)
+	reset_perspective()
+
+	if(!ishuman(target) || !client.prefs?.auto_observe)
 		return
 
 	client.eye = target
@@ -180,13 +267,45 @@
 	LAZYINITLIST(target.observers)
 	target.observers |= src
 	target.hud_used.show_hud(target.hud_used.hud_version, src)
-	observetarget = target
-	RegisterSignal(observetarget, COMSIG_PARENT_QDELETING, PROC_REF(clean_observetarget))
+
+	var/mob/living/carbon/human/human_target = target
+
+	var/list/target_contents = human_target.get_contents()
+
+	//Handles any currently open storage containers the target is looking in when we observe
+	for(var/obj/item/storage/checked_storage in target_contents)
+		if(!(target in checked_storage.content_watchers))
+			continue
+
+		client.add_to_screen(checked_storage.closer)
+		client.add_to_screen(checked_storage.contents)
+
+		if(checked_storage.storage_slots)
+			client.add_to_screen(checked_storage.boxes)
+		else
+			client.add_to_screen(checked_storage.storage_start)
+			client.add_to_screen(checked_storage.storage_continue)
+			client.add_to_screen(checked_storage.storage_end)
+
+		break
+
+	observe_target_mob = target
+	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_LOGIN, PROC_REF(observe_target_login))
+
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
 
+	if(target.client)
+		observe_target_client = target.client
+		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
+		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
+		return
+
 /mob/dead/observer/reset_perspective(atom/A)
-	if(observetarget)
-		clean_observetarget()
+	if(observe_target_mob)
+		clean_observe_target()
 	. = ..()
 
 	if(!.)
@@ -200,14 +319,22 @@
 
 /mob/dead/observer/Login()
 	..()
+
+	toggle_predator_action()
+
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
-/mob/dead/observer/Destroy()
+	if(observe_target_mob)
+		clean_observe_target()
+
+/mob/dead/observer/Destroy(force)
+	GLOB.observer_list -= src
 	QDEL_NULL(orbit_menu)
 	QDEL_NULL(last_health_display)
-	GLOB.observer_list -= src
+	QDEL_NULL(minimap)
 	following = null
-	observetarget = null
+	observe_target_mob = null
+	observe_target_client = null
 	return ..()
 
 /mob/dead/observer/MouseDrop(atom/A)
@@ -229,8 +356,10 @@
 			A.reenter_corpse()
 	if(href_list["track"])
 		var/mob/target = locate(href_list["track"]) in GLOB.mob_list
-		if(target)
-			ManualFollow(target)
+		if(!target)
+			return
+		do_observe(target)
+
 	if(href_list[XENO_OVERWATCH_TARGET_HREF])
 		var/mob/target = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in GLOB.living_xeno_list
 		if(target)
@@ -245,6 +374,10 @@
 				A.JumpToCoord(x, y, z)
 	if(href_list["joinresponseteam"])
 		JoinResponseTeam()
+	if(href_list["claim_freed"])
+		handle_joining_as_freed_mob(locate(href_list["claim_freed"]))
+	if(href_list["join_xeno"])
+		join_as_alien()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -257,28 +390,28 @@
 			switch(i)
 				if("Medical HUD")
 					H = huds[MOB_HUD_MEDICAL_OBSERVER]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Security HUD")
 					H = huds[MOB_HUD_SECURITY_ADVANCED]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Squad HUD")
 					H = huds[MOB_HUD_FACTION_OBSERVER]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Xeno Status HUD")
 					H = huds[MOB_HUD_XENO_STATUS]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Faction UPP HUD")
 					H = huds[MOB_HUD_FACTION_UPP]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Faction Wey-Yu HUD")
 					H = huds[MOB_HUD_FACTION_WY]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Faction TWE HUD")
 					H = huds[MOB_HUD_FACTION_TWE]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 				if("Faction CLF HUD")
 					H = huds[MOB_HUD_FACTION_CLF]
-					H.add_hud_to(src)
+					H.add_hud_to(src, src)
 
 	see_invisible = INVISIBILITY_OBSERVER
 
@@ -311,6 +444,9 @@ Works together with spawning an observer, noted above.
 		return
 	if(aghosted)
 		src.aghosted = TRUE
+
+	SEND_SIGNAL(src, COMSIG_MOB_GHOSTIZE)
+
 	var/mob/dead/observer/ghost = new(loc, src) //Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
@@ -322,8 +458,8 @@ Works together with spawning an observer, noted above.
 	ghost.langchat_make_image()
 
 	SStgui.on_transfer(src, ghost)
-	if(is_admin_level(z))
-		ghost.timeofdeath = 0 // Bypass respawn limit if you die on the admin zlevel
+	if(is_admin_level((get_turf(src))?.z)) // Gibbed humans ghostize the brain in their head which itself is z 0
+		ghost.timeofdeath = 1 // Bypass respawn limit if you die on the admin zlevel
 
 	ghost.key = key
 	ghost.mind = mind
@@ -358,6 +494,14 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
+		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+		var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+
+		// if they died as facehugger or lesser drone, bypass typical TOD checks
+		ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
+		ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+
 	ghost.set_huds_from_prefs()
 
 	return ghost
@@ -379,9 +523,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		ghostize(TRUE)
 	else
 		var/list/options = list("Ghost", "Stay in body")
-		if(check_rights(R_MOD))
+		if(check_other_rights(client, R_MOD, FALSE))
 			options = list("Aghost") + options
-		var/response = tgui_alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", options)
+		var/text_prompt = "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)"
+		var/is_nested = (buckled && istype(buckled, /obj/structure/bed/nest)) ? TRUE : FALSE
+		var/obj/structure/bed/nest/nest = FALSE
+		if(is_nested)
+			text_prompt += "\nSince you're nested, you will get a chance to reenter your body if freed."
+			nest = buckled
+		var/response = tgui_alert(src, text_prompt, "Are you sure you want to ghost?", options)
 		if(response == "Aghost")
 			client.admin_ghost()
 			return
@@ -389,11 +539,22 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
-			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
-		log_game("[key_name_admin(usr)] has ghosted.")
-		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
+			msg_admin_niche("[key_name_admin(client)] has ghosted. [ADMIN_JMP(location)]")
+		log_game("[key_name_admin(client)] has ghosted.")
+		var/mob/dead/observer/ghost = ghostize((is_nested && nest && !QDELETED(nest))) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
+
+			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+			var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+
+			// if they died as facehugger or lesser drone, bypass typical TOD checks
+			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
+			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+		if(is_nested && nest && !QDELETED(nest))
+			ghost.can_reenter_corpse = FALSE
+			nest.ghost_of_buckled_mob = ghost
 
 /mob/dead/observer/Move(atom/newloc, direct)
 	following = null
@@ -427,6 +588,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	for(var/obj/effect/step_trigger/S in new_turf) //<-- this is dumb
 		S.Crossed(src)
+
+	// CRUTCH because ghost don't respect normal movement rules
+	SEND_SIGNAL(new_turf, COMSIG_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_GHOST_MOVED, new_turf)
 
 /mob/dead/observer/get_examine_text(mob/user)
 	return list(desc)
@@ -505,6 +670,27 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!istype(target))
 		return
 
+	if(check_client_rights(client, R_MOD, FALSE))
+		view_health_scan(target)
+		return
+
+	if(!mind.original)
+		view_health_scan(target)
+		return
+
+	if(!ishuman(mind.original))
+		view_health_scan(target)
+		return
+
+	var/mob/living/carbon/human/original_human = mind.original
+
+	if((original_human.stat == DEAD && !original_human.check_tod() || !original_human.is_revivable()) || !can_reenter_corpse)
+		view_health_scan(target)
+		return
+
+	to_chat(src, SPAN_NOTICE("You must be permanently unrevivable or unable to reenter your body to use the scan health verb."))
+
+/mob/dead/observer/proc/view_health_scan(mob/living/target)
 	if (!last_health_display)
 		last_health_display = new(target)
 	else
@@ -516,8 +702,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Follow Local Mob"
 	set desc = "Follow on-screen mob"
 
-	ManualFollow(target)
-	return
+	do_observe(target)
 
 /mob/dead/observer/verb/follow()
 	set category = "Ghost.Follow"
@@ -744,6 +929,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_xeno_late_join(src))
 		SSticker.mode.attempt_to_join_as_facehugger(src)
 
+/mob/dead/verb/join_as_lesser_drone()
+	set category = "Ghost.Join"
+	set name = "Join as a Lesser Drone"
+	set desc = "Try joining as a Lesser Drone to support the hive."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_xeno_late_join(src))
+		SSticker.mode.attempt_to_join_as_lesser_drone(src)
+
 /mob/dead/verb/join_as_zombie() //Adapted from join as hellhoud
 	set category = "Ghost.Join"
 	set name = "Join as Zombie"
@@ -813,12 +1013,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/mobs_by_role = list() // the list the mobs are assigned to first, for sorting purposes
-	for(var/mob/living/L as anything in GLOB.freed_mob_list)
-		var/role_name = L.get_role_name()
+	for(var/mob/freed_mob as anything in GLOB.freed_mob_list)
+		var/role_name = freed_mob.get_role_name()
 		if(!role_name)
 			role_name = "No Role"
 		LAZYINITLIST(mobs_by_role[role_name])
-		mobs_by_role[role_name] += L
+		mobs_by_role[role_name] += freed_mob
 
 	var/list/freed_mob_choices = list() // the list we'll be choosing from
 	for(var/role in mobs_by_role)
@@ -830,19 +1030,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/mob/living/L = freed_mob_choices[choice]
-	if(!L || !(L in GLOB.freed_mob_list))
+
+	handle_joining_as_freed_mob(L)
+
+/mob/dead/proc/handle_joining_as_freed_mob(mob/living/freed_mob)
+	if(!istype(freed_mob) || !(freed_mob in GLOB.freed_mob_list))
 		return
 
-	if(!istype(L))
-		return
-
-	if(QDELETED(L) || L.client)
-		GLOB.freed_mob_list -= L
+	if(QDELETED(freed_mob) || freed_mob.client)
+		GLOB.freed_mob_list -= freed_mob
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	GLOB.freed_mob_list -= L
-	M.mind.transfer_to(L, TRUE)
+	GLOB.freed_mob_list -= freed_mob
+	mind.transfer_to(freed_mob, TRUE)
 
 /mob/dead/verb/join_as_hellhound()
 	set category = "Ghost.Join"
@@ -1000,10 +1201,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		else
 			. += "Hijack Over"
 
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+	if(SShijack)
+		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
-			. += "Evacuation: [eta_status]"
+			. += "Evacuation Goal: [eta_status]"
+
+		if(SShijack.sd_unlocked)
+			. += "Self Destruct Goal: [SShijack.get_sd_eta()]"
+
+	if(client.prefs?.be_special & BE_ALIEN_AFTER_DEATH)
+		if(larva_queue_cached_message)
+			. += larva_queue_cached_message
 
 
 /proc/message_ghosts(message)
@@ -1042,3 +1250,31 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
 			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
 	return TRUE
+
+/// This proc is called when a predator round is toggled by the admin verb, as well as when a ghost logs in
+/mob/dead/observer/proc/toggle_predator_action()
+	SIGNAL_HANDLER
+
+	var/key_to_use = ckey || persistent_ckey
+
+	if(!key_to_use)
+		return
+
+	if(!(RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
+		return
+
+	if(!SSticker.mode)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(toggle_predator_action)))
+		return
+
+	if(SSticker.mode.flags_round_type & MODE_PREDATOR)
+		if(locate(/datum/action/join_predator) in actions)
+			return
+
+		var/datum/action/join_predator/new_action = new()
+		new_action.give_to(src)
+		return
+
+	var/datum/action/join_predator/old_action = locate() in actions
+	if(old_action)
+		qdel(old_action)

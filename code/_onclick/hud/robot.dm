@@ -121,29 +121,6 @@
 	zone_sel.update_icon(owner)
 	static_inventory += zone_sel
 
-	//Handle the gun settings buttons
-	gun_setting_icon = new /atom/movable/screen/gun/mode()
-	gun_setting_icon.screen_loc = ui_robot_datum.ui_gun_select
-	gun_setting_icon.update_icon(owner)
-	static_inventory += gun_setting_icon
-
-	gun_item_use_icon = new /atom/movable/screen/gun/item()
-	gun_item_use_icon.screen_loc = ui_robot_datum.ui_gun1
-	gun_item_use_icon.update_icon(owner)
-	static_inventory += gun_item_use_icon
-
-	gun_move_icon = new /atom/movable/screen/gun/move()
-	gun_move_icon.screen_loc = ui_robot_datum.ui_gun2
-	gun_move_icon.update_icon(owner)
-	static_inventory += gun_move_icon
-
-	gun_run_icon = new /atom/movable/screen/gun/run()
-	gun_run_icon.screen_loc = ui_robot_datum.ui_gun3
-	gun_run_icon.update_icon(owner)
-	static_inventory += gun_run_icon
-
-
-
 /mob/living/silicon/robot/create_hud()
 	if(!hud_used)
 		hud_used = new /datum/hud/robot(src)
@@ -157,13 +134,13 @@
 	if(hud_shown)
 		if(R.module_state_1)
 			R.module_state_1.screen_loc = ui_robot_datum.ui_inv1
-			R.client.screen += R.module_state_1
+			R.client.add_to_screen(R.module_state_1)
 		if(R.module_state_2)
 			R.module_state_2.screen_loc = ui_robot_datum.ui_inv2
-			R.client.screen += R.module_state_2
+			R.client.add_to_screen(R.module_state_2)
 		if(R.module_state_3)
 			R.module_state_3.screen_loc = ui_robot_datum.ui_inv3
-			R.client.screen += R.module_state_3
+			R.client.add_to_screen(R.module_state_3)
 	else
 		if(R.module_state_1)
 			R.module_state_1.screen_loc = null

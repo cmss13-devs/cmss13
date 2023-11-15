@@ -62,16 +62,9 @@
 	QDEL_NULL_LIST(embedded_items)
 	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
 	QDEL_NULL_LIST(limbs)
-	remove_from_all_mob_huds()
+	if(hud_used)
+		QDEL_NULL(hud_used)
 	. = ..()
-
-	species = null
-	limbs_to_process = null
-	brute_mod_override = null
-	burn_mod_override = null
-	assigned_squad = null
-	selected_ability = null
-	remembered_dropped_objects = null
 
 	overlays_standing = null
 
@@ -97,7 +90,6 @@
 	assigned_squad = null
 	selected_ability = null
 	remembered_dropped_objects = null
-
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
@@ -131,10 +123,12 @@
 	if(marksman_aura)
 		. += "Active Order: FOCUS"
 
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+	if(SShijack)
+		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
-			. += "Evacuation: [eta_status]"
+			. += "Evacuation Goals: [eta_status]"
+		if(SShijack.sd_unlocked)
+			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
 	if(lying)
@@ -517,8 +511,11 @@
 					if(U == w_uniform)
 						U.remove_accessory(usr, A)
 				else
+					if(HAS_TRAIT(src, TRAIT_UNSTRIPPABLE) && !is_mob_incapacitated()) //Can't strip the unstrippable!
+						to_chat(usr, SPAN_DANGER("[src] has an unbreakable grip on their equipment!"))
+						return
 					visible_message(SPAN_DANGER("<B>[usr] is trying to take off \a [A] from [src]'s [U]!</B>"), null, null, 5)
-					if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+					if(do_after(usr, get_strip_delay(usr, src), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 						if(U == w_uniform)
 							U.remove_accessory(usr, A)
 
@@ -537,7 +534,7 @@
 			else
 				var/oldsens = U.has_sensor
 				visible_message(SPAN_DANGER("<B>[usr] is trying to modify [src]'s sensors!</B>"), null, null, 4)
-				if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+				if(do_after(usr, get_strip_delay(usr, src), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 					if(U == w_uniform)
 						if(U.has_sensor >= UNIFORM_FORCED_SENSORS)
 							to_chat(usr, "The controls are locked.")
@@ -615,7 +612,7 @@
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["secrecord"])
-		if(hasHUD(usr,"security"))
+		if(hasHUD(usr,"security") || isobserver(usr))
 			var/perpref = null
 			var/read = 0
 
@@ -627,7 +624,7 @@
 				if(E.fields["ref"] == perpref)
 					for(var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
-							if(hasHUD(usr,"security"))
+							if(hasHUD(usr,"security") || isobserver(usr))
 								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
 								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
@@ -636,7 +633,7 @@
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-	if(href_list["secrecordComment"] && hasHUD(usr,"security"))
+	if(href_list["secrecordComment"] && (hasHUD(usr,"security") || isobserver(usr)))
 		var/perpref = null
 		if(wear_id)
 			var/obj/item/card/id/ID = wear_id.GetID()
@@ -665,7 +662,8 @@
 							continue
 						comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
 					to_chat(usr, comment_markup)
-					to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
+					if(!isobserver(usr))
+						to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
 
 		if(!read)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
@@ -1393,10 +1391,14 @@
 	sight &= ~BLIND // Never have blind on by default
 
 	lighting_alpha = default_lighting_alpha
-	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_BLACKNESS)
 	see_in_dark = species.darksight
+	sight |= species.flags_sight
 	if(glasses)
 		process_glasses(glasses)
+
+	if(!(sight & SEE_TURFS) && !(sight & SEE_MOBS) && !(sight & SEE_OBJS))
+		sight |= SEE_BLACKNESS
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
 	sync_lighting_plane_alpha()
@@ -1729,4 +1731,11 @@
 		if(I.throwforce) // for hurty stuff only
 			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
 			return
+	. = ..()
+
+/mob/living/carbon/human/equip_to_slot_if_possible(obj/item/equipping_item, slot, ignore_delay = 1, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, permanent = 0)
+
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_ATTEMPTING_EQUIP, equipping_item, slot) & COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP)
+		return FALSE
+
 	. = ..()

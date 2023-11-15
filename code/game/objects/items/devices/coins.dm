@@ -11,11 +11,8 @@
 	black_market_value = 10
 	var/string_attached
 	var/sides = 2
-
-/obj/item/coin/Initialize()
-	. = ..()
-	pixel_x = rand(0,16)-8
-	pixel_y = rand(0,8)-8
+	ground_offset_x = 8
+	ground_offset_y = 4
 
 /obj/item/coin/gold
 	name = "gold coin"
@@ -29,8 +26,13 @@
 	icon_state = "coin_silver"
 	black_market_value = 25
 
+//CO coin
+/obj/item/coin/silver/falcon
+	name = "falling falcons challenge coin"
+	desc = "A small coin, bearing the falling falcons insignia."
+
 /obj/item/coin/copper
-	name = "gold coin"
+	name = "copper coin"
 	desc = "A familiar, but cheap form of currency."
 	icon_state = "coin_copper"
 	black_market_value = 30
@@ -43,7 +45,7 @@
 
 /obj/item/coin/iron
 	name = "iron coin"
-	desc = "You fear this might get rusty."
+	desc = "A coin made of sturdy iron. You fear this might become rusty."
 	icon_state = "coin_iron"
 	black_market_value = 15
 
@@ -55,13 +57,13 @@
 
 /obj/item/coin/uranium
 	name = "uranium coin"
-	desc = "Don't touch it!"
+	desc = "A radioactive coin. Don't touch it!"
 	icon_state = "coin_uranium"
 	black_market_value = 35
 
 /obj/item/coin/platinum
 	name = "platinum coin"
-	desc = "This is quite valuable."
+	desc = "A coin made of shiny platinum. It is quite valuable."
 	icon_state = "coin_platinum"
 	black_market_value = 35
 
@@ -73,7 +75,7 @@
 
 /obj/item/coin/chitin
 	name = "chitin coin"
-	desc = "Durable chitin pressed into a coin. Why would anyone make this?"
+	desc = "Durable alien chitin pressed into a coin. There are much better uses for chitin..."
 	icon_state = "coin_chitin"
 	black_market_value = 35
 

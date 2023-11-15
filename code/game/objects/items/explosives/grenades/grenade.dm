@@ -20,12 +20,12 @@
 	var/hand_throwable = TRUE
 	harmful = TRUE //Is it harmful? Are they banned for synths?
 	antigrief_protection = TRUE //Should it be checked by antigrief?
+	ground_offset_x = 7
+	ground_offset_y = 6
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
 	det_time = max(0, rand(det_time - 5, det_time + 5))
-	pixel_y = rand(-6, 6)
-	pixel_x = rand(-7, 7)
 
 /obj/item/explosive/grenade/proc/can_use_grenade(mob/living/carbon/human/user)
 	if(!hand_throwable)
@@ -63,7 +63,7 @@
 	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
 		// Let staff know, in case someone's actually about to try to grief
-		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 		return
 
 	if(SEND_SIGNAL(user, COMSIG_GRENADE_PRE_PRIME) & COMPONENT_GRENADE_PRIME_CANCEL)

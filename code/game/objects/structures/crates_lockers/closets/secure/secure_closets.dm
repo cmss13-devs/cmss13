@@ -30,6 +30,7 @@
 		return 0
 
 /obj/structure/closet/secure_closet/emp_act(severity)
+	. = ..()
 	for(var/obj/O in src)
 		O.emp_act(severity)
 	if(!broken)
@@ -41,8 +42,7 @@
 				open()
 			else
 				src.req_access = list()
-				src.req_access += pick(get_all_accesses())
-	..()
+				src.req_access += pick(get_access(ACCESS_LIST_MARINE_MAIN))
 
 /obj/structure/closet/secure_closet/proc/togglelock(mob/living/user)
 	if(src.opened)

@@ -1,13 +1,15 @@
 /area/shuttle
 	name = "Shuttle"
 	requires_power = FALSE
+	unlimited_power = TRUE
 	always_unpowered = FALSE
 	icon_state = "shuttle"
 	ceiling_muffle = TRUE
 
 	// Loading the same shuttle map at a different time will produce distinct area instances.
 	unique = FALSE
-	lighting_use_dynamic = FALSE
+
+	base_lighting_alpha = 255
 
 
 ///area/shuttle/Initialize()
@@ -37,6 +39,7 @@
 	name = "Hyperspace"
 	desc = "Weeeeee"
 	ambience_exterior = 'sound/ambience/shuttle_fly_loop.ogg'
+	base_lighting_alpha = 255
 
 /area/shuttle/vehicle_elevator
 	name = "Vehicle ASRS"
@@ -51,8 +54,9 @@
 	icon_state = "lifeboat"
 
 /area/shuttle/trijent_shuttle/elevator
-	requires_power = FALSE
-	lighting_use_dynamic = FALSE
+	requires_power = TRUE
+	unlimited_power = FALSE
+	powernet_name = "ground"
 
 /area/shuttle/trijent_shuttle/lz1
 	name = "Trijent LZ1"
@@ -65,6 +69,7 @@
 
 /area/shuttle/trijent_shuttle/omega
 	name = "Trijent Omega"
+
 /area/shuttle/escape_pod
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"

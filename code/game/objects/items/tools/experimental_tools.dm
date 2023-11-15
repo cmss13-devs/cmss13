@@ -76,7 +76,7 @@
 							SPAN_NOTICE("You start fitting \the [src] onto [M]'s chest."),
 							SPAN_WARNING("[user] starts fitting \the [src] onto your chest!"),
 							SPAN_NOTICE("[user] starts fitting \the [src] onto [M]'s chest."))
-		if(!(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)))
+		if(!(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)))
 			return
 		if(!mob_can_equip(M, WEAR_JACKET))
 			return

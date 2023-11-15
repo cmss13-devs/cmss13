@@ -5,7 +5,6 @@ import { Window } from '../layouts';
 export const SquadMod = (props, context) => {
   const { act, data } = useBackend(context);
   const { squads = [], human, id_name, has_id } = data;
-  const COLORS_SPECTRUM = ['red', 'yellow', 'purple', 'teal', 'brown', 'grey'];
   return (
     <Window width={400} height={300}>
       <Window.Content>
@@ -47,7 +46,7 @@ export const SquadMod = (props, context) => {
                 key={entry.name}
                 fluid
                 content={entry.name}
-                color={COLORS_SPECTRUM[entry.color]}
+                backgroundColor={entry.color}
                 onClick={() =>
                   act('PRG_squad', {
                     name: entry.name,

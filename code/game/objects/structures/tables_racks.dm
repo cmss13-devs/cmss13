@@ -326,11 +326,13 @@
 /// Checks whether a table is a straight line along a given axis
 /obj/structure/surface/table/proc/straight_table_check(direction)
 	var/obj/structure/surface/table/table = src
-	while(table)
+	var/obj/structure/surface/table/side_table
+	var/tables_count = 7 // Lazy extra safety against infinite loops. If table big, can't flip, i guess.
+	while(--tables_count)
 		// Check whether there are connected tables perpendicular to the axis
 		for(var/angle in list(-90, 90))
-			table = locate() in get_step(loc, turn(direction, angle))
-			if(table && !table.flipped)
+			side_table = locate() in get_step(table, turn(direction, angle))
+			if(side_table && !side_table.flipped)
 				return FALSE
 		table = locate() in get_step(table, direction)
 		if(!table || table.flipped)
@@ -339,6 +341,8 @@
 			var/obj/structure/surface/table/reinforced/reinforced_table = table
 			if(reinforced_table.status == RTABLE_NORMAL)
 				return FALSE
+	if(!tables_count)
+		return FALSE
 	return TRUE
 
 /obj/structure/surface/table/verb/do_flip()
@@ -421,7 +425,7 @@
 		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
 		return FALSE
 
-	if(!skip_straight_check && (!straight_table_check(turn(direction, 90)) || !straight_table_check(turn(direction, -90))))
+	if(!skip_straight_check && !(straight_table_check(turn(direction, 90)) && straight_table_check(turn(direction, -90))))
 		to_chat(usr, SPAN_WARNING("[src] is too wide to be flipped."))
 		return FALSE
 
@@ -429,8 +433,6 @@
 
 	verbs -= /obj/structure/surface/table/verb/do_flip
 	verbs += /obj/structure/surface/table/proc/do_put
-
-	detach_all()
 
 	var/list/targets = list(get_step(src, dir), get_step(src, turn(dir, 45)), get_step(src, turn(dir, -45)))
 	for(var/atom/movable/movable_on_table in get_turf(src))
@@ -475,7 +477,6 @@
 		var/obj/structure/surface/table/T = locate() in get_step(src.loc,D)
 		if(T && T.flipped && T.dir == src.dir)
 			T.unflip()
-	attach_all()
 	update_icon()
 	update_adjacent()
 
@@ -618,7 +619,7 @@
 /obj/structure/surface/table/reinforced/cloth
 	name = "cloth table"
 	desc = "A fancy cloth-topped wooden table, bolted to the floor. Fit for formal occasions."
-	icon_state = "cloth"
+	icon_state = "clothtable"
 	table_prefix = "cloth"
 
 /*

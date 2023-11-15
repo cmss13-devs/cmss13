@@ -102,6 +102,30 @@ display round(lastgen) and phorontank amount
 	else
 		. += SPAN_NOTICE("The generator is off.")
 
+/obj/structure/machinery/power/port_gen/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	if(!active && !anchored)
+		return ..()
+
+	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to affect this!"))
+		return XENO_NO_DELAY_ACTION
+
+	attacking_xeno.animation_attack_on(src)
+	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
+
+	if(active)
+		active = FALSE
+		stop_processing()
+		icon_state = initial(icon_state)
+		visible_message(SPAN_NOTICE("[src] sputters to a stop!"))
+		return XENO_NONCOMBAT_ACTION
+
+	if(anchored)
+		anchored = FALSE
+		visible_message(SPAN_NOTICE("[src]'s bolts are dislodged!"))
+		return XENO_NONCOMBAT_ACTION
+
 //A power generator that runs on solid plasma sheets.
 /obj/structure/machinery/power/port_gen/pacman
 	name = "P.A.C.M.A.N.-type Portable Generator"
@@ -240,7 +264,7 @@ display round(lastgen) and phorontank amount
 				to_chat(user, SPAN_NOTICE(" You open the access panel."))
 			else
 				to_chat(user, SPAN_NOTICE(" You close the access panel."))
-		else if(istype(O, /obj/item/tool/crowbar) && open)
+		else if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) && open)
 			var/obj/structure/machinery/constructable_frame/new_frame = new /obj/structure/machinery/constructable_frame(src.loc)
 			for(var/obj/item/I in component_parts)
 				if(I.reliability < 100)

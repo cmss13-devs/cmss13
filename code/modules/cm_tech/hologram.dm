@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(hologram_list)
+GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 /mob/hologram
 	name = "Hologram"
@@ -16,6 +16,8 @@ GLOBAL_LIST_EMPTY(hologram_list)
 
 	var/mob/linked_mob
 	var/datum/action/leave_hologram/leave_button
+	///If can be detected on motion detectors.
+	var/motion_sensed = FALSE
 
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram
@@ -103,7 +105,8 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	qdel(src)
 
 /datum/action/leave_hologram/Destroy()
-	QDEL_NULL(linked_hologram)
+	if(!QDESTROYING(linked_hologram))
+		QDEL_NULL(linked_hologram)
 	return ..()
 
 /mob/hologram/techtree/Initialize(mapload, mob/M)

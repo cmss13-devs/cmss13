@@ -47,3 +47,6 @@
 
 /proc/synth_slot_formula(playercount)
 	return job_slot_formula(playercount,120,1,1,2)
+
+/proc/working_joe_slot_formula(playercount)
+	return job_slot_formula(playercount,30,1,3,6)

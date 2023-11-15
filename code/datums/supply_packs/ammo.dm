@@ -122,16 +122,6 @@
 	containername = "\improper M39 AP magazines crate"
 	group = "Ammo"
 
-/datum/supply_packs/ammo_smg_mag_box_ext
-	name = "Magazine box (M39, 10x extended mags)"
-	contains = list(
-		/obj/item/ammo_box/magazine/m39/ext,
-	)
-	cost = 30
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper M39 extended magazines crate"
-	group = "Ammo"
-
 //------------------------For M4RA----------------
 
 /datum/supply_packs/ammo_m4ra_mag_box
@@ -308,15 +298,17 @@
 
 //------------------------Smartgunner stuff----------------
 
-/datum/supply_packs/ammo_smartgun_powerpack
-	name = "M56 smartgun powerpack crate (x2)"
+/datum/supply_packs/ammo_smartgun_battery_pack
+	name = "M56 smartgun battery crate (x4)"
 	contains = list(
-		/obj/item/smartgun_powerpack,
-		/obj/item/smartgun_powerpack,
+		/obj/item/smartgun_battery,
+		/obj/item/smartgun_battery,
+		/obj/item/smartgun_battery,
+		/obj/item/smartgun_battery,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper smartgun powerpacks crate"
+	containername = "\improper smartgun battery crate"
 	group = "Ammo"
 
 /datum/supply_packs/ammo_smartgun

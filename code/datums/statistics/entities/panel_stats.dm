@@ -8,7 +8,7 @@
 		update_panel_data(round_statistics)
 	ui_interact(user)
 
-/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", datum/nanoui/ui = null, force_open = 1)
+/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", datum/nanoui/ui, force_open = 1)
 	data["menu"] = menu
 	data["subMenu"] = subMenu
 	data["dataMenu"] = dataMenu
@@ -741,7 +741,6 @@
 		"total_projectiles_hit_xeno" = total_projectiles_hit_xeno,
 		"total_slashes" = total_slashes,
 		"total_friendly_fire_instances" = total_friendly_fire_instances,
-		"total_friendly_fire_kills" = total_friendly_fire_kills,
 		"total_huggers_applied" = total_huggers_applied,
 		"total_larva_burst" = total_larva_burst,
 		"participants" = participants_list,

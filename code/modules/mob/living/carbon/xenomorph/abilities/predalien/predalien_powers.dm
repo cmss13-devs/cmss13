@@ -24,8 +24,8 @@
 
 			var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in human
 			if(isyautja(human) && YG)
-				if(YG.cloaked)
-					YG.decloak(human)
+				if(HAS_TRAIT(human, TRAIT_CLOAKED))
+					YG.decloak(human, TRUE, DECLOAK_PREDALIEN)
 
 				YG.cloak_timer = xeno_cooldown * 0.1
 		else if(isxeno(carbon) && xeno.can_not_harm(carbon))
@@ -40,9 +40,7 @@
 			shake_camera(M, 10, 1)
 
 	apply_cooldown()
-
-	. = ..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/smash/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -80,14 +78,14 @@
 
 	for(var/mob/living/carbon/carbon in oview(round(behavior.kills * 0.5 + 2), xeno))
 		if(!xeno.can_not_harm(carbon) && carbon.stat != DEAD)
-			carbon.frozen = 1
+			ADD_TRAIT(carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Smash"))
 			carbon.update_canmove()
 
 			if (ishuman(carbon))
 				var/mob/living/carbon/human/human = carbon
 				human.update_xeno_hostile_hud()
 
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), carbon), get_xeno_stun_duration(carbon, freeze_duration))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), carbon, TRAIT_SOURCE_ABILITY("Smash")), get_xeno_stun_duration(carbon, freeze_duration))
 
 
 	for(var/mob/M in view(xeno))
@@ -95,9 +93,7 @@
 			shake_camera(M, 0.2 SECONDS, 1)
 
 	apply_cooldown()
-
-	. = ..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/devastate/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -129,7 +125,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	carbon.frozen = 1
+	ADD_TRAIT(carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 	carbon.update_canmove()
 
 	if (ishuman(carbon))
@@ -138,7 +134,7 @@
 
 	apply_cooldown()
 
-	xeno.frozen = 1
+	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 	xeno.anchored = TRUE
 	xeno.update_canmove()
 
@@ -155,13 +151,13 @@
 
 	playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 
-	xeno.frozen = 0
+	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 	xeno.anchored = FALSE
+	unroot_human(carbon, TRAIT_SOURCE_ABILITY("Devastate"))
 	xeno.update_canmove()
 
 	unroot_human(carbon)
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] rapidly slices into [carbon]!"))
 
-	. = ..()
-	return
+	return ..()

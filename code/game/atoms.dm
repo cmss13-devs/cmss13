@@ -33,8 +33,11 @@
 
 	var/list/filter_data //For handling persistent filters
 
-	// Base transform matrix
-	var/matrix/base_transform = null
+	/// Base transform matrix, edited by admin tooling and such
+	var/matrix/base_transform
+	/// Last transform used before being compound with base_transform
+	/// This allows us to re-create transform if only base_transform changes
+	var/matrix/raw_transform
 
 	///Chemistry.
 	var/datum/reagents/reagents = null
@@ -59,6 +62,36 @@
 	///Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
 
+	//light stuff
+
+	///Light systems, only one of the three should be active at the same time.
+	var/light_system = STATIC_LIGHT
+	///Range of the light in tiles. Zero means no light.
+	var/light_range = 0
+	///Intensity of the light. The stronger, the less shadows you will see on the lit area.
+	var/light_power = 1
+	///Hexadecimal RGB string representing the colour of the light. White by default.
+	var/light_color = COLOR_WHITE
+	///Boolean variable for toggleable lights. Has no effect without the proper light_system, light_range and light_power values.
+	var/light_on = FALSE
+	///Bitflags to determine lighting-related atom properties.
+	var/light_flags = NONE
+	///Our light source. Don't fuck with this directly unless you have a good reason!
+	var/tmp/datum/dynamic_light_source/light
+	///Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
+	var/tmp/list/hybrid_light_sources
+
+	//Values should avoid being close to -16, 16, -48, 48 etc.
+	//Best keep them within 10 units of a multiple of 32, as when the light is closer to a wall, the probability
+	//that a shadow extends to opposite corners of the light mask square is increased, resulting in more shadow
+	//overlays.
+	///x offset for dynamic lights on this atom
+	var/light_pixel_x
+	///y offset for dynamic lights on this atom
+	var/light_pixel_y
+	///typepath for the lighting maskfor dynamic light sources
+	var/light_mask_type = null
+
 	///The color this atom will be if we choose to draw it on the minimap
 	var/minimap_color = MINIMAP_SOLID
 
@@ -77,7 +110,7 @@ Make sure the return value equals the return value of the parent so that the
 directive is properly returned.
 */
 //===========================================================================
-/atom/Destroy()
+/atom/Destroy(force)
 	orbiters = null // The component is attached to us normally and will be deleted elsewhere
 	QDEL_NULL(reagents)
 	QDEL_NULL(light)
@@ -86,7 +119,14 @@ directive is properly returned.
 
 //===========================================================================
 
-
+// TODO make all atoms use set_density, do not rely on it at present
+///Setter for the `density` variable to append behavior related to its changing.
+/atom/proc/set_density(new_value)
+	SHOULD_CALL_PARENT(TRUE)
+	if(density == new_value)
+		return
+	. = density
+	density = new_value
 
 //atmos procs
 
@@ -111,15 +151,27 @@ directive is properly returned.
 	if(loc)
 		return loc.return_gas()
 
-// Updates the atom's transform
-/atom/proc/apply_transform(matrix/M)
-	if(!base_transform)
-		transform = M
-		return
+/// Updates the atom's transform compounding it with [/atom/var/base_transform]
+/atom/proc/apply_transform(matrix/new_transform, time = 0, easing = (EASE_IN|EASE_OUT))
+	var/matrix/base_copy
+	if(base_transform)
+		base_copy = matrix(base_transform)
+	else
+		base_copy = matrix()
+	raw_transform = matrix(new_transform) // Keep a copy to replay if needed
 
-	var/matrix/base_copy = matrix(base_transform)
 	// Compose the base and applied transform in that order
-	transform = base_copy.Multiply(M)
+	var/matrix/complete = base_copy.Multiply(raw_transform)
+
+	if(!time)
+		transform = complete
+		return
+	animate(src, transform = complete, time = time, easing = easing)
+
+/// Upates the base_transform which will be compounded with other transforms
+/atom/proc/update_base_transform(matrix/new_transform, time = 0)
+	base_transform = matrix(new_transform)
+	apply_transform(raw_transform, time)
 
 /atom/proc/on_reagent_change()
 	return
@@ -153,7 +205,9 @@ directive is properly returned.
 	return
 
 /atom/proc/emp_act(severity)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+
+	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))
@@ -193,8 +247,8 @@ directive is properly returned.
 	if(!examine_strings)
 		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
 		return
-	to_chat(user, examine_block(examine_strings.Join("\n")))
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
+	to_chat(user, examine_block(examine_strings.Join("\n")))
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()
@@ -327,6 +381,12 @@ Parameters are passed from New.
 		CRASH("Warning: [src]([type]) initialized multiple times!")
 	flags_atom |= INITIALIZED
 
+	if(light_system != MOVABLE_LIGHT && light_system != DIRECTIONAL_LIGHT && light_power && light_range)
+		update_light()
+	if(isturf(loc) && opacity)
+		var/turf/opaque_turf = loc
+		opaque_turf.directional_opacity = ALL_CARDINALS // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
+
 	pass_flags = pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()
@@ -439,7 +499,7 @@ Parameters are passed from New.
 		return TRUE
 
 	if(href_list["desc_lore"])
-		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
+		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x500")
 		onclose(usr, "[name]")
 
 ///This proc is called on atoms when they are loaded into a shuttle
@@ -570,6 +630,37 @@ Parameters are passed from New.
 	return (I.Width() + I.Height()) * 0.5
 
 /**
+ * If this object has lights, turn it on/off.
+ * user: the mob actioning this
+ * toggle_on: if TRUE, will try to turn ON the light. Opposite if FALSE
+ * cooldown: how long until you can toggle the light on/off again
+ * sparks: if a spark effect will be generated
+ * forced: if TRUE and toggle_on = FALSE, will cause the light to turn on in cooldown second
+ * originated_turf: if not null, will check if the obj_turf is closer than distance_max to originated_turf, and the proc will return if not
+ * distance_max: used to check if originated_turf is close to obj.loc
+*/
+/atom/proc/turn_light(mob/user, toggle_on , cooldown = 1 SECONDS, sparks = FALSE, forced = FALSE, light_again = FALSE)
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_LIGHT) && !forced)
+		return STILL_ON_COOLDOWN
+	if(cooldown <= 0)
+		cooldown = 1 SECONDS
+	TIMER_COOLDOWN_START(src, COOLDOWN_LIGHT, cooldown)
+	if(toggle_on == light_on)
+		return NO_LIGHT_STATE_CHANGE
+	if(light_again && !toggle_on) //Is true when turn light is called by nightfall and the light is already on
+		addtimer(CALLBACK(src, PROC_REF(reset_light)), cooldown + 1)
+	if(sparks && light_on)
+		var/datum/effect_system/spark_spread/spark_system = new
+		spark_system.set_up(5, 0, src)
+		spark_system.attach(src)
+		spark_system.start(src)
+	return CHECKS_PASSED
+
+///Turn on the light, should be called by a timer
+/atom/proc/reset_light()
+	turn_light(null, TRUE, 1 SECONDS, FALSE, TRUE)
+
+/**
  * Return the markup to for the dropdown list for the VV panel for this atom
  *
  * Override in subtypes to add custom VV handling in the VV panel
@@ -580,7 +671,7 @@ Parameters are passed from New.
 	if(!ismovable(src))
 		var/turf/curturf = get_turf(src)
 		if(curturf)
-			. += "<option value='?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]'>Jump To</option>"
+			. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]'>Jump To</option>"
 	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "Modify Transform")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP Pulse")
@@ -635,7 +726,6 @@ Parameters are passed from New.
 		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate"))
 		if(!result)
 			return
-		var/matrix/M = transform
 		if(!result)
 			return
 		switch(result)
@@ -644,23 +734,26 @@ Parameters are passed from New.
 				var/y = tgui_input_real_number(usr, "Choose y mod","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
-				transform = M.Scale(x,y)
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Scale(x,y))
 			if("Translate")
 				var/x = tgui_input_real_number(usr, "Choose x mod (negative = left, positive = right)","Transform Mod")
 				var/y = tgui_input_real_number(usr, "Choose y mod (negative = down, positive = up)","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
-				transform = M.Translate(x,y)
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Translate(x,y))
 			if("Rotate")
 				var/angle = tgui_input_real_number(usr, "Choose angle to rotate","Transform Mod")
 				if(isnull(angle))
 					return
-				transform = M.Turn(angle)
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Turn(angle))
 
 		SEND_SIGNAL(src, COMSIG_ATOM_VV_MODIFY_TRANSFORM)
 
 	if(href_list[VV_HK_AUTO_RENAME] && check_rights(R_VAREDIT))
-		var/newname = tgui_input_text(usr, "What do you want to rename this to?", "Automatic Rename", name)
+		var/newname = tgui_input_text(usr, "What do you want to rename this to?", "Automatic Rename", name, encode = FALSE)
 		if(newname)
 			name = newname
 

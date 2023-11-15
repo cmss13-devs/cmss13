@@ -28,7 +28,7 @@
 
 //TODO: Integrate defence zones and targeting body parts with the actual organ system, move these into organ definitions.
 
-//The base miss chance for the different defence zones
+/// The base miss chance for the different defence zones
 var/list/global/base_miss_chance = list(
 	"head" = 10,
 	"chest" = 0,
@@ -114,26 +114,22 @@ var/global/list/limb_types_by_name = list(
 
 	return rand_zone
 
-/proc/stars(n, pr)
-	if (pr == null)
-		pr = 25
-	if (pr <= 0)
-		return null
-	else
-		if (pr >= 100)
-			return n
-	var/te = n
-	var/t = ""
-	n = length(n)
-	var/p = null
-	p = 1
-	while(p <= n)
-		if ((copytext(te, p, p + 1) == " " || prob(pr)))
-			t = text("[][]", t, copytext(te, p, p + 1))
+/proc/stars(message, clear_char_probability = 25)
+	clear_char_probability = max(clear_char_probability, 0)
+	if(clear_char_probability >= 100)
+		return message
+
+	var/output_message = ""
+	var/message_length = length(message)
+	var/index = 1
+	while(index <= message_length)
+		var/char = copytext(message, index, index + 1)
+		if(char == " " || prob(clear_char_probability))
+			output_message += char
 		else
-			t = text("[]*", t)
-		p++
-	return t
+			output_message += "*"
+		index++
+	return output_message
 
 /proc/slur(phrase)
 	phrase = html_decode(phrase)
@@ -158,29 +154,60 @@ var/global/list/limb_types_by_name = list(
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
-/proc/stutter(n)
-	var/te = html_decode(n)
-	var/t = ""//placed before the message. Not really sure what it's for.
-	n = length(n)//length of the entire word
-	var/p = null
-	p = 1//1 is the start of any word
-	while(p <= n)//while P, which starts at 1 is less or equal to N which is the length.
-		var/n_letter = copytext(te, p, p + 1)//copies text from a certain distance. In this case, only one letter at a time.
-		if (prob(80) && (ckey(n_letter) in alphabet_lowercase))
-			if (prob(10))
-				n_letter = text("[n_letter]-[n_letter]-[n_letter]-[n_letter]")//replaces the current letter with this instead.
-			else
-				if (prob(20))
-					n_letter = text("[n_letter]-[n_letter]-[n_letter]")
-				else
-					if (prob(5))
-						n_letter = null
-					else
-						n_letter = text("[n_letter]-[n_letter]")
-		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
-		p++//for each letter p is increased to find where the next letter will be.
-	return strip_html(t)
+/proc/stutter(phrase, strength = 1)
+	if(strength < 1)
+		return phrase
+	else
+		strength = Ceiling(strength/5)
 
+	var/list/split_phrase = text2list(phrase," ") //Split it up into words.
+	var/list/unstuttered_words = split_phrase.Copy()
+
+	var/max_stutter = min(strength, split_phrase.len)
+	var/stutters = rand(max(max_stutter - 3, 1), max_stutter)
+
+	for(var/i = 0, i < stutters, i++)
+		if (!unstuttered_words.len)
+			break
+
+		var/word = pick(unstuttered_words)
+		unstuttered_words -= word //Remove from unstuttered words so we don't stutter it again.
+		var/index = split_phrase.Find(word) //Find the word in the split phrase so we can replace it.
+		var/regex/R = regex("^(\\W*)((?:\[Tt\]|\[Cc\]|\[Ss\])\[Hh\]|\\w)(\\w*)(\\W*)$")
+		var/regex/upper = regex("\[A-Z\]")
+
+		if(!R.Find(word))
+			continue
+
+		if (length(word) > 1)
+			if((prob(20) && strength > 1) || (prob(30) && strength > 4)) // stutter word instead
+				var/stuttered = R.group[2] + R.group[3]
+				if(upper.Find(stuttered) && !upper.Find(stuttered, 2)) // if they're screaming (all caps) or saying something like 'AI', keep the letter capitalized - else don't
+					stuttered = lowertext(stuttered)
+				word = R.Replace(word, "$1$2$3-[stuttered]$4")
+			else if(prob(25) && strength > 1) // prolong word
+				var/prolonged = ""
+				var/prolong_amt = min(length(word), 5)
+				prolong_amt = rand(1, prolong_amt)
+				for(var/j = 0, j < prolong_amt, j++)
+					prolonged += R.group[2]
+				if(!upper.Find(R.group[3]))
+					prolonged = lowertext(prolonged)
+				word = R.Replace(word, "$1$2[prolonged]$3$4")
+			else
+				if(prob(5 * strength)) // harder stutter if stronger
+					word = R.Replace(word, "$1$2-$2-$2-$2$3$4")
+				else if(prob(10 * strength))
+					word = R.Replace(word, "$1$2-$2-$2$3$4")
+				else // normal stutter
+					word = R.Replace(word, "$1$2-$2$3$4")
+
+		if(prob(3 * strength) && index != unstuttered_words.len - 1) // stammer / pause - don't pause at the end of sentences!
+			word = R.Replace(word, "$0 ...")
+
+		split_phrase[index] = word
+
+	return jointext(split_phrase, " ")
 
 /proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
 	/* Turn text into complete gibberish! */
@@ -285,7 +312,7 @@ var/global/list/limb_types_by_name = list(
 	return
 
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
+	return (stat || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
 
 
 //returns how many non-destroyed legs the mob has (currently only useful for humans)
@@ -295,13 +322,10 @@ var/global/list/limb_types_by_name = list(
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
 
-/mob/verb/a_select_zone(input as text)
-	set name = "a-select-zone"
-	set hidden = TRUE
-
+/mob/proc/a_select_zone(input, client/user)
 	var/atom/movable/screen/zone_sel/zone
 
-	for(var/A in usr.client.screen)
+	for(var/A in user.screen)
 		if(istype(A, /atom/movable/screen/zone_sel))
 			zone = A
 
@@ -383,6 +407,10 @@ var/global/list/limb_types_by_name = list(
 		if(SKILL_ENGINEER)
 			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				return DURATION_MULTIPLIER_TIER_2
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				return DURATION_MULTIPLIER_TIER_1
 // Construction
 		if(SKILL_CONSTRUCTION)
 			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_MASTER))
@@ -501,3 +529,71 @@ var/global/list/limb_types_by_name = list(
 
 /mob/proc/get_paygrade()
 	return
+
+
+/proc/notify_ghosts(message, ghost_sound = null, enter_link = null, enter_text = null, atom/source = null, mutable_appearance/alert_overlay = null, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header = null, notify_volume = 100, extra_large = FALSE) //Easy notification of ghosts.
+	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
+		return
+	for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+		if(!ghost.client)
+			continue
+		ghost.notify_ghost(message, ghost_sound, enter_link, enter_text, source, alert_overlay, action, flashwindow, ignore_mapload, ignore_key, header, notify_volume, extra_large)
+
+/mob/dead/observer/proc/notify_ghost(message, ghost_sound, enter_link, enter_text, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header, notify_volume = 100, extra_large = FALSE) //Easy notification of a single ghosts.
+	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
+		return
+	if(!client)
+		return
+	var/track_link
+	if (source && action == NOTIFY_ORBIT)
+		track_link = " <a href='byond://?src=[REF(src)];track=[REF(source)]'>(Follow)</a>"
+	if (source && action == NOTIFY_JUMP)
+		var/turf/T = get_turf(source)
+		track_link = " <a href='byond://?src=[REF(src)];jumptocoord=1;X=[T.x];Y=[T.y];Z=[T.z]'>(Jump)</a>"
+	var/full_enter_link
+	if (enter_link)
+		full_enter_link = "<a href='byond://?src=[REF(src)];[enter_link]'>[(enter_text) ? "[enter_text]" : "(Claim)"]</a>"
+	to_chat(src, "[(extra_large) ? "<br><hr>" : ""][SPAN_DEADSAY("[message][(enter_link) ? " [full_enter_link]" : ""][track_link]")][(extra_large) ? "<hr><br>" : ""]")
+	if(ghost_sound)
+		SEND_SOUND(src, sound(ghost_sound, volume = notify_volume, channel = SOUND_CHANNEL_NOTIFY))
+	if(flashwindow)
+		window_flash(client)
+
+	if(!source)
+		return
+
+	var/atom/movable/screen/alert/notify_action/screen_alert = throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
+	if(!screen_alert)
+		return
+	if (header)
+		screen_alert.name = header
+	screen_alert.desc = message
+	screen_alert.action = action
+	screen_alert.target = source
+	if(!alert_overlay)
+		alert_overlay = new(source)
+		var/icon/source_icon = icon(source.icon)
+		var/iheight = source_icon.Height()
+		var/iwidth = source_icon.Width()
+		var/higher_power = (iheight > iwidth) ? iheight : iwidth
+		alert_overlay.pixel_y = initial(source.pixel_y)
+		alert_overlay.pixel_x = initial(source.pixel_x)
+		if(higher_power > 32)
+			var/diff = 32 / higher_power
+			alert_overlay.transform = alert_overlay.transform.Scale(diff, diff)
+			if(higher_power > 48)
+				alert_overlay.pixel_y = -(iheight * 0.5) * diff
+				alert_overlay.pixel_x = -(iwidth * 0.5) * diff
+
+
+	alert_overlay.layer = FLOAT_LAYER
+	alert_overlay.plane = FLOAT_PLANE
+
+	screen_alert.overlays += alert_overlay
+
+/mob/proc/reset_lighting_alpha()
+	SIGNAL_HANDLER
+
+	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	sync_lighting_plane_alpha()
+

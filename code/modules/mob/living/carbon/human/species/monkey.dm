@@ -141,7 +141,7 @@
 	deform = 'icons/mob/humans/species/monkeys/r_neaera.dmi'
 
 	flesh_color = "#8cd7a3"
-	blood_color = "#1d2cbf"
+	blood_color = BLOOD_COLOR_NEAERA
 	tail = null
 
 /datum/species/monkey/neaera/New()

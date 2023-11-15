@@ -129,15 +129,18 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	return 0
 
 /client/proc/deadmin()
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("deadmin")
+		return PROC_BLOCKED
 	if(admin_holder)
 		admin_holder.disassociate()
 		QDEL_NULL(admin_holder)
-	return 1
+	return TRUE
 
 /client/proc/readmin()
 	if(admin_datums[ckey])
 		admin_datums[ckey].associate(src)
-	return 1
+	return TRUE
 
 /datum/admins/proc/check_for_rights(rights_required)
 	if(rights_required && !(rights_required & rights))

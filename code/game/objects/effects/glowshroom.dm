@@ -39,12 +39,8 @@
 	else //if on the floor, glowshroom on-floor sprite
 		icon_state = "glowshroomf"
 
-	SetLuminosity(round(potency/15))
+	set_light(round(potency/15))
 	lastTick = world.timeofday
-
-/obj/effect/glowshroom/Destroy()
-	SetLuminosity(0)
-	. = ..()
 
 /obj/effect/glowshroom/proc/CalcDir(turf/location = loc)
 	set background = 1
@@ -99,8 +95,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/effect/glowshroom/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)

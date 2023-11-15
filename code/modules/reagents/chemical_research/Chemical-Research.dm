@@ -98,47 +98,61 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data
 			research_property_data += P
 
 //Chem storage for various chem dispensers
-/datum/chemical_data/proc/add_chem_storage(obj/structure/machinery/chem_storage/C)
-	if(chemical_networks.Find(C.network))
+/datum/chemical_data/proc/add_chem_storage(obj/structure/machinery/chem_storage/storage)
+	if(chemical_networks.Find(storage.network))
 		return FALSE
 	else
-		chemical_networks[C.network] = C
+		chemical_networks[storage.network] = storage
+
+/datum/chemical_data/proc/remove_chem_storage(obj/structure/machinery/chem_storage/storage)
+	if(!istype(storage))
+		return FALSE
+	return chemical_networks.Remove(storage.network)
 
 /datum/chemical_data/proc/connect_chem_storage(network)
-	var/obj/structure/machinery/chem_storage/C = chemical_networks[network]
-	if(!C)
+	var/obj/structure/machinery/chem_storage/storage = chemical_networks[network]
+	if(!storage)
 		return FALSE
 	//Make the chem storage scale with number of dispensers
-	C.recharge_rate += 5
-	C.max_energy += 50
-	C.energy = C.max_energy
-	return C
+	storage.recharge_rate += 5
+	storage.max_energy += 50
+	storage.energy = storage.max_energy
+	return storage
 
+/datum/chemical_data/proc/disconnect_chem_storage(network)
+	var/obj/structure/machinery/chem_storage/storage = chemical_networks[network]
+	if(!storage)
+		return FALSE
+	//Make the chem storage scale with number of dispensers
+	storage.recharge_rate -= 5
+	storage.max_energy -= 50
+	storage.energy = storage.max_energy
+	return TRUE
 
-/datum/chemical_data/proc/complete_chemical(datum/reagent/S)
+/datum/chemical_data/proc/complete_chemical(datum/reagent/chem)
 	update_credits(2)
-	chemical_identified_list[S.id] = S.objective_value
-	chemical_not_completed_objective_list -= S.id
+	chemical_identified_list[chem.id] = chem.objective_value
+	chemical_not_completed_objective_list -= chem.id
 
 	SSobjectives.statistics["chemicals_completed"]++
-	SSobjectives.statistics["chemicals_total_points_earned"] += S.objective_value
+	SSobjectives.statistics["chemicals_total_points_earned"] += chem.objective_value
 
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
-	tree.add_points(S.objective_value)
+	tree.add_points(chem.objective_value)
 
 
-/datum/chemical_data/proc/add_chemical_objective(datum/reagent/S)
-	chemical_objective_list[S.id] = S.objective_value
-	chemical_not_completed_objective_list[S.id] = S.objective_value
+/datum/chemical_data/proc/add_chemical_objective(datum/reagent/chem)
+	chemical_objective_list[chem.id] = chem.objective_value
+	chemical_not_completed_objective_list[chem.id] = chem.objective_value
 
 /datum/chemical_data/proc/get_tgui_data(chemid)
-	var/datum/reagent/S = chemical_reagents_list[chemid]
-	if(!S)
+	var/datum/reagent/chem = chemical_reagents_list[chemid]
+	if(!chem)
 		error("Invalid chemid [chemid]")
 		return
 	var/list/clue = list()
 
-	clue["text"] = S.name
+	clue["text"] = chem.name
 
 	return clue
 

@@ -36,7 +36,7 @@
 	move_momentum_build_factor = 1.8
 	move_turn_momentum_loss_factor = 0.6
 
-	luminosity = 7
+	vehicle_light_range = 7
 
 	// Rest (all the guns) is handled by the tank turret hardpoint
 	hardpoints_allowed = list(

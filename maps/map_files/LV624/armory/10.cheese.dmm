@@ -110,7 +110,6 @@
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "cult"
 	},

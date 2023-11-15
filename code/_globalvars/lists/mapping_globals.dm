@@ -27,6 +27,7 @@ GLOBAL_LIST_EMPTY(latewhiskey)
 
 GLOBAL_LIST_EMPTY(latejoin)
 GLOBAL_LIST_EMPTY(latejoin_by_squad)
+GLOBAL_LIST_EMPTY(latejoin_by_job)
 
 GLOBAL_LIST_EMPTY(zombie_landmarks)
 
@@ -52,6 +53,8 @@ GLOBAL_LIST_EMPTY(teleporter_landmarks)
 
 GLOBAL_LIST_INIT(cardinals, list(NORTH, SOUTH, EAST, WEST))
 GLOBAL_LIST_EMPTY(nightmare_landmarks)
+
+GLOBAL_LIST_EMPTY(ship_areas)
 
 // Objective landmarks. Value is TRUE if it contains documents
 GLOBAL_LIST_EMPTY_TYPED(objective_landmarks_close, /obj/effect/landmark/objective_landmark/close)

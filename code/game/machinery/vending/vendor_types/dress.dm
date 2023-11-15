@@ -74,7 +74,7 @@
 				if(uniform_path in vended_items)
 					can_vend = FALSE
 				var/name = sanitize(initial(O.name))
-				var/flags = can_vend ? NO_FLAGS : MARINE_CAN_BUY_ALL
+				var/flags = can_vend ? null : MARINE_CAN_BUY_DRESS
 				display_list += list(
 					list(name, 0, uniform_path, flags, VENDOR_ITEM_REGULAR)
 				)

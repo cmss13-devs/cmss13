@@ -19,6 +19,8 @@
 	flags_equip_slot = SLOT_HEAD
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
+	ground_offset_x = 9
+	ground_offset_y = 8
 
 	var/info //What's actually written on the paper.
 	var/info_links //A different version of the paper which includes html links at fields and EOF
@@ -42,8 +44,6 @@
 
 /obj/item/paper/Initialize(mapload, photo_list)
 	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 	stamps = ""
 	src.photo_list = photo_list
 
@@ -906,3 +906,14 @@
 
 	info = parsepencode(template, null, null, FALSE)
 #undef MAX_FIELDS
+
+/obj/item/paper/colonial_grunts
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "paper_stack_words"
+	name = "Colonial Space Grunts"
+	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
+
+/obj/item/paper/colonial_grunts/Initialize(mapload, ...)
+	. = ..()
+	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
+	update_icon()

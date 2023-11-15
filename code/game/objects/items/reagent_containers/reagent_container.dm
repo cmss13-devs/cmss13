@@ -14,6 +14,8 @@
 	var/transparent = FALSE //can we see what's in it?
 	var/reagent_desc_override = FALSE //does it have a special examining mechanic that should override the normal /reagent_containers examine proc?
 	actions_types = list(/datum/action/item_action/reagent_container/set_transfer_amount)
+	ground_offset_x = 7
+	ground_offset_y = 7
 
 /obj/item/reagent_container/Initialize()
 	if(!possible_transfer_amounts)
@@ -64,12 +66,6 @@
 	var/N = tgui_input_list(usr, "Amount per transfer from this:","[R]", possible_transfer_amounts)
 	if (N)
 		R.amount_per_transfer_from_this = N
-
-/obj/item/reagent_container/Initialize()
-	. = ..()
-	if (!possible_transfer_amounts)
-		verbs -= /obj/item/reagent_container/verb/set_APTFT //which objects actually uses it?
-	create_reagents(volume)
 
 /obj/item/reagent_container/Destroy()
 	possible_transfer_amounts = null

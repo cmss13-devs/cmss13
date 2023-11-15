@@ -274,12 +274,12 @@
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = TRUE
+	ground_offset_x = 5
+	ground_offset_y = 5
 	var/pro_case_overlay
 
 /obj/item/storage/box/kit/Initialize()
 	. = ..()
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
 	if(pro_case_overlay)
 		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
 

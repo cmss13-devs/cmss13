@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Rooting effects should now properly update when stacked and unstacked."

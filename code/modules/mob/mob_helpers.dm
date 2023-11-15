@@ -28,7 +28,7 @@
 
 //TODO: Integrate defence zones and targeting body parts with the actual organ system, move these into organ definitions.
 
-//The base miss chance for the different defence zones
+/// The base miss chance for the different defence zones
 var/list/global/base_miss_chance = list(
 	"head" = 10,
 	"chest" = 0,
@@ -312,7 +312,7 @@ var/global/list/limb_types_by_name = list(
 	return
 
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
+	return (stat || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
 
 
 //returns how many non-destroyed legs the mob has (currently only useful for humans)

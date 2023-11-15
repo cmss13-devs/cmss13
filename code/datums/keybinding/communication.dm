@@ -32,7 +32,7 @@
 /datum/keybinding/client/communication/whisper
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "Whisper"
+	name = WHISPER_CHANNEL
 	full_name = "IC Whisper"
 	keybind_signal = COMSIG_KB_CLIENT_WHISPER_DOWN
 
@@ -56,4 +56,4 @@
 	name = MENTOR_CHANNEL
 	full_name = "Mentor Say"
 	description = "Talk with other mentors."
-	keybind_signal = COMSIG_KB_ADMIN_ASAY_DOWN
+	keybind_signal = COMSIG_KB_ADMIN_MENTORSAY_DOWN

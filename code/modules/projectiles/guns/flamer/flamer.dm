@@ -250,6 +250,9 @@
 /obj/item/weapon/gun/flamer/deathsquad/nolock
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
+/obj/item/weapon/gun/flamer/deathsquad/standard
+	current_mag = /obj/item/ammo_magazine/flamer_tank
+
 /obj/item/weapon/gun/flamer/M240T
 	name = "\improper M240-T incinerator unit"
 	desc = "An improved version of the M240A1 incinerator unit, the M240-T model is capable of dispersing a larger variety of fuel types."
@@ -739,7 +742,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		switch(angle) //this reduces power when the explosion is going around corners
 			if (45)
 				spread_power *= 0.75
-			else //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
+			if (90 to 180) //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
 				continue
 
 		switch(spread_direction)

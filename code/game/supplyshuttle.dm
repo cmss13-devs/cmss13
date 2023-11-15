@@ -327,7 +327,7 @@ var/datum/controller/supply/supply_controller = new()
 		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
 	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-	var/obj/structure/droppod/supply/pod = new()
+	var/obj/structure/droppod/supply/pod = new(null, C)
 	C.forceMove(pod)
 	pod.launch(T)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
@@ -1251,7 +1251,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /datum/controller/supply/proc/black_market_investigation()
 	black_market_heat = -1
-	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", TRUE, TRUE, FALSE)
+	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", TRUE, TRUE)
 	log_game("Black Market Inspection auto-triggered.")
 
 /obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)

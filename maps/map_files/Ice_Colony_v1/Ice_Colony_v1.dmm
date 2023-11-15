@@ -4301,7 +4301,7 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "mv" = (
-/obj/item/weapon/gun/pistol/c99,
+/obj/item/weapon/gun/pistol/t73,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
 "mw" = (

@@ -1,3 +1,41 @@
+// Xeno ages
+
+#define XENO_NO_AGE  -1
+#define XENO_YOUNG 0
+#define XENO_NORMAL 1
+#define XENO_MATURE 2
+#define XENO_ELDER 3
+#define XENO_ANCIENT 4
+#define XENO_PRIME 5
+
+
+// =============================
+// hive types
+
+#define XENO_HIVE_NORMAL "xeno_hive_normal"
+#define XENO_HIVE_CORRUPTED "xeno_hive_corrupted"
+#define XENO_HIVE_ALPHA "xeno_hive_alpha"
+#define XENO_HIVE_BRAVO "xeno_hive_bravo"
+#define XENO_HIVE_CHARLIE "xeno_hive_charlie"
+#define XENO_HIVE_DELTA "xeno_hive_delta"
+#define XENO_HIVE_FERAL "xeno_hive_feral"
+#define XENO_HIVE_TAMED "xeno_hive_tamed"
+#define XENO_HIVE_MUTATED "xeno_hive_mutated"
+#define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
+#define XENO_HIVE_YAUTJA "xeno_hive_yautja"
+#define XENO_HIVE_RENEGADE "xeno_hive_renegade"
+
+#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA, XENO_HIVE_RENEGADE)
+
+//=================================================
+
+// =============================
+// slowdowns
+#define XENO_SLOWED_AMOUNT 0.7
+#define XENO_SUPERSLOWED_AMOUNT 1.5
+#define HUMAN_SLOWED_AMOUNT 2
+#define HUMAN_SUPERSLOWED_AMOUNT 4
+
 #define XENOCON_THRESHOLD 6000
 
 #define TUNNEL_MOVEMENT_XENO_DELAY 20

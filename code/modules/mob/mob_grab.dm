@@ -130,7 +130,7 @@
 			return
 		xeno.visible_message(SPAN_DANGER("[xeno] starts to devour [pulled]!"), \
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
-			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to devour you!")))
+			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to devour you!"))
 		SPAN_DANGER("You start to devour [pulled]!"), null, 5)
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if(isxeno(pulled.loc) && !xeno.stomach_contents.len)

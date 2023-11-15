@@ -104,7 +104,7 @@
 		"Atmospheric" = SOUND_ADMIN_ATMOSPHERIC
 	)
 
-	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All Inview", "Single Inview", "Cancel"))
+	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All Inview", "Single Inview"))
 	var/sound_type = tgui_input_list(src, "What kind of sound is this?", "Select Sound Type", sound_type_list)
 	sound_type = sound_type_list[sound_type]
 

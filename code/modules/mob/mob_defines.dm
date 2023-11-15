@@ -65,7 +65,6 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
-	var/frozen = 0
 	var/losebreath = 0.0//Carbon
 	var/shakecamera = 0
 

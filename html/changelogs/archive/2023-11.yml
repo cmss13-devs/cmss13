@@ -208,3 +208,6 @@
   - bugfix: Fixed ghost droppods appearing when launching crates by Echo pad.
   - bugfix: Fixed an issue in traits backend update causing among others leadership
       action buttons to be missing.
+2023-11-15:
+  Birdtalon:
+  - code_imp: Replaced single letter vars in runner code.

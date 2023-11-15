@@ -350,8 +350,13 @@
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 
 	var/datum/hive_status/hive
-	if(hivenumber)
+	if(old_xeno && old_xeno.hivenumber)
+		hive = GLOB.hive_datum[old_xeno.hivenumber]
+	else if(hivenumber)
 		hive = GLOB.hive_datum[hivenumber]
+	else
+		CRASH("Tried to create a xenomorph [src] with no hive datum.")
+
 	if(hive)
 		hive.add_xeno(src)
 
@@ -379,7 +384,7 @@
 		set_movement_intent(old_xeno.m_intent)
 		a_intent_change(old_xeno.a_intent)
 		if(src.client)
-			a_select_zone(old_xeno.zone_selected, src.client)
+			src.a_select_zone(old_xeno.zone_selected, src.client) // BIRD: fix this
 
 		//We are hiding, let's keep hiding if we can!
 		if(old_xeno.layer == XENO_HIDING_LAYER)

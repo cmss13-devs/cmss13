@@ -552,16 +552,7 @@
 /mob/living/carbon/xenomorph/proc/generate_name()
 	//We don't have a nicknumber yet, assign one to stick with us
 	if(!nicknumber)
-		var/tempnumber = rand(1, 999)
-		var/list/numberlist = list()
-		for(var/mob/living/carbon/xenomorph/X in GLOB.xeno_mob_list)
-			numberlist += X.nicknumber
-
-		while(tempnumber in numberlist)
-			tempnumber = rand(1, 999)
-
-		nicknumber = tempnumber
-
+		generate_and_set_nicknumber()
 	// Even if we don't have the hive datum we usually still have the hive number
 	var/datum/hive_status/in_hive = hive
 	if(!in_hive)
@@ -570,9 +561,8 @@
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
 
-	handle_name(in_hive)
+	//handle_name(in_hive) -> look at queen handle_name() also
 
-/mob/living/carbon/xenomorph/proc/handle_name(datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
@@ -1093,3 +1083,16 @@
 	. = ..()
 	if(!resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
 		update_wounds()
+
+///Generate a new unused nicknumber for the current hive, if hive doesn't exist return 0
+/mob/living/carbon/xenomorph/proc/generate_and_set_nicknumber()
+	if(!hive)
+		//If hive doesn't exist make it 0
+		nicknumber = 0
+		return
+	var/datum/hive_status/hive_status = hive
+	if(length(hive_status.available_nicknumbers))
+		nicknumber = pick(hive_status.available_nicknumbers)
+	else
+		//If we somehow use all 999 numbers fallback on 0
+		nicknumber = 0

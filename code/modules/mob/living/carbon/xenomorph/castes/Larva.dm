@@ -101,30 +101,13 @@
 
 //Larva code is just a mess, so let's get it over with
 /mob/living/carbon/xenomorph/larva/update_icons()
-	var/progress = "" //Naming convention, three different names
 	var/state = "" //Icon convention, two different sprite sets
 
-	var/name_prefix = ""
-
-	if(hive)
-		name_prefix = hive.prefix
-		color = hive.color
-
-	if(evolution_stored >= evolution_threshold)
-		progress = "Mature "
-	else if(evolution_stored < evolution_threshold / 2) //We're still bloody
-		progress = "Bloody "
+	if(evolution_stored < evolution_threshold / 2) //We're still bloody
 		state = "Bloody "
-	else
-		progress = ""
 
-	name = "[name_prefix][progress]Larva ([nicknumber])"
-
-	if(istype(src,/mob/living/carbon/xenomorph/larva/predalien)) state = "Predalien " //Sort of a hack.
-
-	//Update linked data so they show up properly
-	change_real_name(src, name)
-
+	if(istype(src,/mob/living/carbon/xenomorph/larva/predalien))
+		state = "Predalien " //Sort of a hack. <- BIRD: Refactor this out
 	if(stat == DEAD)
 		icon_state = "[state_override || state]Larva Dead"
 	else if(handcuffed || legcuffed)
@@ -140,9 +123,6 @@
 
 /mob/living/carbon/xenomorph/larva/alter_ghost(mob/dead/observer/ghost)
 	ghost.icon_state = "[caste.caste_type]"
-
-/mob/living/carbon/xenomorph/larva/handle_name()
-	return
 
 /mob/living/carbon/xenomorph/larva/start_pulling(atom/movable/AM)
 	return
@@ -177,5 +157,28 @@
 /mob/living/carbon/xenomorph/larva/is_xeno_grabbable()
 	return TRUE
 
+///Larva name generation, set nickname = (number between 1 & 999) which isn't taken by any other xenos in GLOB.xeno_mob_list
 /mob/living/carbon/xenomorph/larva/generate_name()
-	update_icons()
+	if(!nicknumber)
+		generate_and_set_nicknumber()
+
+	var/progress = "" //Naming convention, three different names
+	var/name_prefix = "" // Prefix for hive
+
+	if(hive)
+		name_prefix = hive.prefix
+		color = hive.color
+
+	if(evolution_stored >= evolution_threshold)
+		progress = "Mature "
+	else if(evolution_stored < evolution_threshold / 2) //We're still bloody
+		progress = "Bloody "
+
+	name = "[name_prefix][progress]Larva ([nicknumber])"
+
+	//Update linked data so they show up properly
+	change_real_name(src, name)
+	//Update the hive status UI
+	if(hive)
+		var/datum/hive_status/hive_status = hive
+		hive_status.hive_ui.update_xeno_info()

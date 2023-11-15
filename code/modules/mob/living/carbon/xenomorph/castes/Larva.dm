@@ -176,3 +176,6 @@
 
 /mob/living/carbon/xenomorph/larva/is_xeno_grabbable()
 	return TRUE
+
+/mob/living/carbon/xenomorph/larva/generate_name()
+	update_icons()

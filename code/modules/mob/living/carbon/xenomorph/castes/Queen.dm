@@ -445,6 +445,11 @@
 	//Update linked data so they show up properly
 	change_real_name(src, name)
 
+/mob/living/carbon/xenomorph/queen/set_hive_and_update(new_hivenumber)
+	if(!..())
+		return FALSE
+	update_living_queens()
+
 /mob/living/carbon/xenomorph/queen/proc/make_combat_effective()
 	queen_aged = TRUE
 

@@ -808,23 +808,17 @@
 /mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL)
 	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
 	if(!new_hive)
-		return
+		return FALSE
 
-	for(var/T in _status_traits) // They can't keep getting away with this!!!
-		REMOVE_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+	for(var/trait in _status_traits) // They can't keep getting away with this!!!
+		REMOVE_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	new_hive.add_xeno(src)
 
-	for(var/T in new_hive.hive_inherant_traits)
-		ADD_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+	for(var/trait in new_hive.hive_inherant_traits)
+		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-	if(istype(src, /mob/living/carbon/xenomorph/larva))
-		var/mob/living/carbon/xenomorph/larva/L = src
-		L.update_icons() // larva renaming done differently
-	else
-		generate_name()
-	if(istype(src, /mob/living/carbon/xenomorph/queen))
-		update_living_queens()
+	generate_name()
 
 	lock_evolve = FALSE
 	banished = FALSE
@@ -834,6 +828,8 @@
 
 	// Update the hive status UI
 	new_hive.hive_ui.update_all_xeno_data()
+
+	return TRUE
 
 //*********************************************************//
 //********************Mutator functions********************//
@@ -928,7 +924,6 @@
 	recalculate_weeds()
 	pull_multiplier = mutators.pull_multiplier
 	need_weeds = mutators.need_weeds
-
 
 /mob/living/carbon/xenomorph/proc/recalculate_acid()
 	if(caste)

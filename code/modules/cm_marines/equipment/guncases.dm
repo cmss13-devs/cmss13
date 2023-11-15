@@ -335,6 +335,19 @@
 	new /obj/item/device/vulture_spotter_scope/skillless(src, WEAKREF(rifle))
 	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
 
+/obj/item/storage/box/guncase/xm51
+	name = "\improper XM51 Breaching Scattergun case"
+	desc = "A gun case containing the XM51 Breaching Scattergun."
+	storage_slots = 5
+	can_hold = list(/obj/item/weapon/gun/rifle/xm51, /obj/item/ammo_magazine/rifle/xm51, /obj/item/storage/belt/gun/xm51, /obj/item/attachable/stock/xm51)
+
+/obj/item/storage/box/guncase/xm51/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/xm51(src)
+	new /obj/item/ammo_magazine/rifle/xm51(src)
+	new /obj/item/ammo_magazine/rifle/xm51(src)
+	new /obj/item/storage/belt/gun/xm51(src)
+	new /obj/item/attachable/stock/xm51(src)
+
 //Handgun case for Military police vendor three mag , a railflashligh and the handgun.
 
 //88 Mod 4 Combat Pistol

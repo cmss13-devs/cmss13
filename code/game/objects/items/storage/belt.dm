@@ -1186,6 +1186,23 @@
 			"icon_x" = -11,
 			"icon_y" = -5))
 
+/obj/item/storage/belt/gun/xm51
+	name = "\improper M276 pattern XM51 holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, along with two pouches for spare magazines or shells."
+	icon_state = "xm51_belt"
+	item_state = "s_marinebelt"
+	storage_slots = 3
+	max_w_class = 5
+	can_hold = list(
+		/obj/item/weapon/gun/rifle/xm51,
+		/obj/item/ammo_magazine/rifle/xm51,
+		/obj/item/ammo_magazine/handful,
+	)
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 9,
+			"icon_y" = -2))
+
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M44 magnum revolver, along with six small pouches for speedloaders. It smells faintly of hay."

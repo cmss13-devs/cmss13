@@ -102,9 +102,6 @@
     text-align: center;
   }
 
-  .MedevacRow {
-  }
-
   .MapPanel {
     text-align: center;
     width: 100%;
@@ -115,6 +112,7 @@
     z-index: 2;
     margin-top: -10px;
   }
+
   .MapContainer > * {
     grid-column: 1 / 1;
     grid-row: 1 / 1;

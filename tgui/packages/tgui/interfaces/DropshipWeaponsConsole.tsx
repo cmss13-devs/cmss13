@@ -299,7 +299,8 @@ const BaseMfdPanel = (props: MfdProps, context) => {
       ]}>
       <Box className="NavigationMenu">
         <div className="welcome-page">
-          <h1>USCM Dropship Weapons Control System</h1>
+          <h1>U.S.C.M.</h1>
+          <h1>Dropship Weapons Control System</h1>
           <h3>UA Northbridge</h3>
           <h3>V 0.1</h3>
         </div>

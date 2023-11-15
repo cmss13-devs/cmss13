@@ -26,12 +26,7 @@
 	cam_plane_masters = list()
 	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
 		var/atom/movable/screen/plane_master/instance = new plane()
-		instance.assigned_map = map_name
-		instance.del_on_map_removal = FALSE
-		if(instance.blend_mode_override)
-			instance.blend_mode = instance.blend_mode_override
-		instance.screen_loc = "[map_name]:CENTER"
-		cam_plane_masters += instance
+		add_plane(instance)
 
 /datum/camera_manager/Destroy(force, ...)
 	. = ..()
@@ -40,6 +35,14 @@
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
 	QDEL_LIST(cam_plane_masters)
+
+/datum/camera_manager/proc/add_plane(atom/movable/screen/plane_master/instance)
+	instance.assigned_map = map_name
+	instance.del_on_map_removal = FALSE
+	if(instance.blend_mode_override)
+		instance.blend_mode = instance.blend_mode_override
+	instance.screen_loc = "[map_name]:CENTER"
+	cam_plane_masters += instance
 
 /datum/camera_manager/proc/register(mob/user)
 	var/client/user_client = user.client
@@ -66,6 +69,20 @@
 	target_y = y
 	target_z = z
 	update_active_camera()
+
+/datum/camera_manager/proc/enable_nvg(power, matrixcol)
+	var/color_matrix = color_matrix_multiply(
+		color_matrix_saturation(1),
+		color_matrix_rotate_x(-1*(20.8571-1.57143*power)),
+		color_matrix_from_string(matrixcol))
+	for(var/atom/movable/screen/plane_master/nvg_plane/plane in cam_plane_masters)
+		log_debug("updating [plane] with [color_matrix]")
+		animate(plane, color=color_matrix, time=0, easing=LINEAR_EASING)
+
+/datum/camera_manager/proc/disable_nvg()
+	for(var/atom/movable/screen/plane_master/nvg_plane/plane in cam_plane_masters)
+		log_debug("removing [plane]")
+		animate(plane, color=null, time=0, easing=LINEAR_EASING)
 
 /**
  * Set the displayed camera to the static not-connected.
@@ -184,14 +201,14 @@
 
 /obj/structure/machinery/computer/dropship_weapons/attackby(obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/frame/matrix_frame))
-		var/obj/item/frame/matrix_frame/MATRIX = W
-		if(MATRIX.state == ASSEMBLY_LOCKED)
+		var/obj/item/frame/matrix_frame/matrix = W
+		if(matrix.state == ASSEMBLY_LOCKED)
 			user.drop_held_item(W, src)
 			W.forceMove(src)
 			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
-			upgraded = MATRIX.upgrade
-			matrixcol = MATRIX.matrixcol
-			power = MATRIX.power
+			upgraded = matrix.upgrade
+			matrixcol = matrix.matrixcol
+			power = matrix.power
 
 		else
 			to_chat(user, SPAN_WARNING("matrix is not complete!"))
@@ -495,6 +512,13 @@
 			ui_delete_firemission(user, name)
 			return TRUE
 
+		if("nvg-enable")
+			cam_manager.enable_nvg(5, "#7aff7a")
+			return TRUE
+		if("nvg-disable")
+			cam_manager.disable_nvg()
+			return TRUE
+
 		if("firemission-edit")
 			var/fm_tag = text2num(params["tag"])
 			var/weapon_id = text2num(params["weapon_id"])
@@ -509,13 +533,21 @@
 			var/offset_direction = params["offset_direction"]
 			var/offset_value = params["offset_value"]
 
-
 			if(!ui_select_firemission(user, fm_tag))
+				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
 				return FALSE
-			update_direction(user, text2num(direction))
-			ui_select_laser_firemission(user, shuttle, target_id)
-			ui_firemission_camera(user, shuttle)
-			initiate_firemission(user, fm_tag, text2num(offset_direction), text2num(offset_value))
+			if(!update_direction(user, text2num(direction)))
+				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
+				return FALSE
+			if(!ui_select_laser_firemission(user, shuttle, target_id))
+				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
+				return FALSE
+			if(!ui_firemission_camera(user, shuttle))
+				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
+				return FALSE
+			if(!initiate_firemission(user, fm_tag, text2num(offset_direction), text2num(offset_value)))
+				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
+				return FALSE
 			return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
@@ -542,8 +574,10 @@
 	if(!target)
 		cam_manager.show_camera_static()
 		return
-
-	cam_manager.set_camera(target.linked_cam, camera_width, camera_height)
+	if(upgraded == MATRIX_WIDE)
+		cam_manager.set_camera(target.linked_cam, camera_width * 1.5, camera_height * 1.5)
+	else
+		cam_manager.set_camera(target.linked_cam, camera_width, camera_height)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
 	. = 0

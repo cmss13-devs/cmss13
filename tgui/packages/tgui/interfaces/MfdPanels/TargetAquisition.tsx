@@ -357,7 +357,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
         {},
         {},
         {
-          children: <Icon name="arrow-up" />,
+          children: targetOffset > 0 ? <Icon name="arrow-up" /> : undefined,
           onClick: () => {
             if (targetOffset > 0) {
               setTargetOffset(targetOffset - 1);
@@ -374,9 +374,12 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
         {},
         {},
         {
-          children: <Icon name="arrow-down" />,
+          children:
+            targetOffset - 5 > lazes.length - 1 ? (
+              <Icon name="arrow-down" />
+            ) : undefined,
           onClick: () => {
-            if (targetOffset < lazes.length - 1) {
+            if (targetOffset - 5 < lazes.length - 1) {
               setTargetOffset(targetOffset + 1);
             }
           },
@@ -474,6 +477,67 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
                 fillOpacity="0"
                 d="M 40 0 l -50 50 l 0 400 l 50 50"
               />
+              <g transform="translate(-60)">
+                {data.targets_data.length === 0 && (
+                  <text
+                    stroke="#00e94e"
+                    x={-20}
+                    y={210}
+                    text-anchor="end"
+                    transform="rotate(-90 20 210)"
+                    fontSize="2em">
+                    <tspan x={50} y={250} dy="1.2em">
+                      NO TARGETS
+                    </tspan>
+                  </text>
+                )}
+                {data.targets_data.length > 0 && (
+                  <text stroke="#00e94e" x={20} y={210} text-anchor="end">
+                    <tspan x={40} dy="1.2em">
+                      SELECT
+                    </tspan>
+                    <tspan x={40} dy="1.2em">
+                      TARGETS
+                    </tspan>
+                  </text>
+                )}
+                {data.targets_data.length > 0 && (
+                  <path
+                    fill-opacity="0"
+                    stroke="#00e94e"
+                    d="M 50 210 l 20 0 l 20 -180 l 40 0"
+                  />
+                )}
+                {data.targets_data.length > 1 && (
+                  <path
+                    fill-opacity="0"
+                    stroke="#00e94e"
+                    d="M 50 220 l 25 0 l 15 -90 l 40 0"
+                  />
+                )}
+                {data.targets_data.length > 2 && (
+                  <path
+                    fill-opacity="0"
+                    stroke="#00e94e"
+                    d="M 50 230 l 20 0 l 20 0 l 40 0"
+                  />
+                )}
+
+                {data.targets_data.length > 3 && (
+                  <path
+                    fill-opacity="0"
+                    stroke="#00e94e"
+                    d="M 50 240 l 25 0 l 15 90 l 40 0"
+                  />
+                )}
+                {data.targets_data.length > 4 && (
+                  <path
+                    fill-opacity="0"
+                    stroke="#00e94e"
+                    d="M 50 250 l 20 0 l 20 180 l 40 0"
+                  />
+                )}
+              </g>
             </svg>
           </Stack.Item>
         </Stack>

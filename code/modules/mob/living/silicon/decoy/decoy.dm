@@ -27,7 +27,7 @@
 /mob/living/silicon/decoy/ship_ai/Destroy()
 	QDEL_NULL(ai_headset)
 #ifdef UNIT_TESTS
-	ai_mob_list -= src // Or should we always remove them?
+	GLOB.ai_mob_list -= src // Or should we always remove them?
 #endif
 	return ..()
 

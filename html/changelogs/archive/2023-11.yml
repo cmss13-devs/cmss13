@@ -176,3 +176,41 @@
   SpartanBobby Tophatpenguin:
   - maptweak: redetails a room on the upper deck of the USS Almayer, places a few
       L42As in this room
+2023-11-14:
+  BeagleGaming1:
+  - rscdel: Removes icon baking on surfaces (primarily seen on tables)
+  Birdtalon:
+  - bugfix: Boiler acid shroud now works on hotkey 5
+  - code_imp: Replaces single letter vars and removes unused code for boiler.
+  - code_imp: Replaces burrow var from Xenomorph with burrowed trait
+  - code_imp: Starts refactoring some vars on xenomorph class
+  - rscadd: Observer with Security HUD enabled can examine and read security records.
+  - rscadd: Toggle HUD button to ghost UI
+  BraveMole, Zonespace:
+  - bugfix: Guns should no longer very rarely jam mid-burst.
+  Ediblebomb:
+  - qol: Changed "Subject is brain-dead." to "Subject has taken extreme amounts of
+      brain damage." when scanning somebody with 100 brain damage.
+  Releasethesea:
+  - bugfix: Fixxed the improperly area'd hull south of construction site, adds fire
+      shutters to north fueling pod to make it mirror the south one
+  - rscadd: Adds Colonial Space Grunts to rec vend aswell as several pens and Dice
+      for playing the game.
+  - rscadd: Adds functional bedrolls to the game.
+  SpartanBobby:
+  - maptweak: fixes broken sidewalk on bigred
+  Steelpoint:
+  - rscadd: Less powerful variants of the Commando ERTs (Marsoc, WY Whiteout, UPP
+      Commandos) have been added for admin use.
+  - admin: The powerful versions of commando ERTs are denoted with (!DEATHSQUAD!)
+      in the distress call and equipment preset menus.
+  fira:
+  - bugfix: Fixed ghost droppods appearing when launching crates by Echo pad.
+  - bugfix: Fixed an issue in traits backend update causing among others leadership
+      action buttons to be missing.
+2023-11-15:
+  Birdtalon:
+  - code_imp: Replaced single letter vars in runner code.
+2023-11-16:
+  fira:
+  - bugfix: Rooting effects should now properly update when stacked and unstacked.

@@ -1168,7 +1168,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		return
 	stat |= IN_USE
 
-	var/vendor_flags = vend_flags
 	var/turf/target_turf = get_appropriate_vend_turf(user)
 	if(LAZYLEN(itemspec)) //making sure it's not empty
 		if(vend_delay)
@@ -1185,9 +1184,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		else
 			vendor_successful_vend_one(prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
 
-		if(vendor_flags & VEND_LIMITED_INVENTORY)
+		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
-			if(vendor_flags & VEND_LOAD_AMMO_BOXES)
+			if(vend_flags & VEND_LOAD_AMMO_BOXES)
 				update_derived_ammo_and_boxes(itemspec)
 
 	else
@@ -1200,7 +1199,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 /obj/structure/machinery/cm_vending/proc/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override)
 	var/obj/item/new_item
-	var/vendor_flags = vend_flags
 	if(ispath(prod_type, /obj/item))
 		if(ispath(prod_type, /obj/item/weapon/gun))
 			new_item = new prod_type(target_turf, TRUE)
@@ -1214,7 +1212,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	else
 		new_item = new prod_type(target_turf)
 
-	if(vendor_flags & VEND_UNIFORM_RANKS)
+	if(vend_flags & VEND_UNIFORM_RANKS)
 		if(insignas_override)
 			var/obj/item/clothing/under/underclothes = new_item
 			//Gives ranks to the ranked
@@ -1224,7 +1222,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
 					underclothes.attach_accessory(user, rank_insignia)
 
-	if(vendor_flags & VEND_UNIFORM_AUTOEQUIP)
+	if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
 		// autoequip
 		if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS) //auto-equipping feature here
 			if(new_item.flags_equip_slot == SLOT_ACCESSORY)
@@ -1235,7 +1233,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			else
 				user.equip_to_appropriate_slot(new_item)
 
-	if(vendor_flags & VEND_TO_HAND)
+	if(vend_flags & VEND_TO_HAND)
 		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
 			if(Adjacent(user))
 				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)

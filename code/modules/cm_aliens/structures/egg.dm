@@ -328,7 +328,12 @@ SPECIAL EGG USED BY EGG CARRIER
 /obj/effect/alien/egg/carrier_egg/Destroy()
 	if(life_timer)
 		deltimer(life_timer)
-	owner = null
+	//Remove reference to src in owner's behavior_delegate and set owner to null
+	if(owner)
+		var/mob/living/carbon/xenomorph/carrier/my_owner = owner
+		var/datum/behavior_delegate/carrier_eggsac/behavior = my_owner.behavior_delegate
+		behavior.eggs_sustained -= src
+		my_owner = null
 	return ..()
 
 /// Set the owner of the egg to the planter.

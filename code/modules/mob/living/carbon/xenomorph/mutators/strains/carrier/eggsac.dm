@@ -86,6 +86,11 @@
 		remove_egg_owner(my_egg)
 		my_egg.start_unstoppable_decay()
 
+///Remove all references to src in eggs_sustained
+/datum/behavior_delegate/carrier_eggsac/Destroy()
+	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
+		my_egg.owner = null
+
 /datum/action/xeno_action/active_toggle/generate_egg
 	name = "Generate Eggs (50)"
 	action_icon_state = "lay_egg"

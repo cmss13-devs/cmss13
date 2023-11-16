@@ -1,0 +1,4 @@
+author: "sleepynecrons"
+delete-after: True
+changes:
+  - imageadd: "fixes biosuit body sprite not properly covering mobs"

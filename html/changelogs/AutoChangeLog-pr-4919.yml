@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - bugfix: "Adds missing newline when viewing sec records as observer."

@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - admin: "VV 'Modify Transform' can now be used to flip objects."

@@ -383,8 +383,6 @@
 		//Carry over intents & targeted limb to the new Xeno
 		set_movement_intent(old_xeno.m_intent)
 		a_intent_change(old_xeno.a_intent)
-		if(src.client)
-			src.a_select_zone(old_xeno.zone_selected, src.client) // BIRD: fix this
 
 		//We are hiding, let's keep hiding if we can!
 		if(old_xeno.layer == XENO_HIDING_LAYER)
@@ -571,6 +569,7 @@
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
+	var/number_decorator = ""
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
@@ -581,9 +580,11 @@
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
+	if(nicknumber == 666)
+		number_decorator = "Infernal "
 	if(show_name_numbers)
 		name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
-	name = "[name_prefix][age_display][caste.display_name || caste.caste_type][name_display]"
+	name = "[name_prefix][number_decorator][age_display][caste.display_name || caste.caste_type][name_display]"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

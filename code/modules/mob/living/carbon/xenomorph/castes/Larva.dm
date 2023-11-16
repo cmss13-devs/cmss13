@@ -56,7 +56,7 @@
 	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
 
 /mob/living/carbon/xenomorph/larva/Life()
-	if(bloody && (evolution_stored >= evolution_threshold / 2)) //We're still bloody
+	if(is_bloody && (evolution_stored >= evolution_threshold / 2)) //We're no longer bloody so update our name...
 		generate_name()
 		is_bloody = FALSE
 	return ..()

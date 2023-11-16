@@ -854,14 +854,17 @@ GLOBAL_LIST_EMPTY(vending_products)
 	for(var/list/vendspec in dynamic_stock_multipliers)
 		var/list/metadata = dynamic_stock_multipliers[vendspec]
 		var/multiplier = metadata[1] // How much do we multiply scales by
-		var/previous_max_amount = metadata[2] // How many we would have total at old scale
+		var/previous_max_amount = metadata[2] // How many we already handed out at old scale
 		var/projected_max_amount = round(new_scale * multiplier) // How much we would have had total now in total
-		if(projected_max_amount > previous_max_amount)
-			vendspec[2] += (projected_max_amount - previous_max_amount) // Add missing ones!
+		var/amount_to_add = round(projected_max_amount - previous_max_amount) // Rounding just in case
+		if(amount_to_add > 0)
+			metadata[2] += amount_to_add
+			vendspec[2] += amount_to_add
 			update_derived_ammo_and_boxes_on_add(vendspec)
 
 ///this proc, well, populates product list based on roundstart amount of players
 ///do not rely on scale here if you use VEND_STOCK_DYNAMIC because it's already taken into account
+///this is here for historical reasons and should ONLY be called by populate_product_list_and_boxes if you want dynamic stocks and ammoboxes to work
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(scale)
 	return
 

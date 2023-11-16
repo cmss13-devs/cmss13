@@ -935,7 +935,7 @@ Additional game mode variables.
 
 ///Updates the [/datum/game_mode/var/gear_scale] multiplier based on joining marines in [/datum/game_mode/var/latejoin_tally]
 /datum/game_mode/proc/update_gear_scale()
-	var/new_gear_scale = round(gear_scale_init + latejoin_tally / MARINE_GEAR_SCALING_NORMAL)
+	var/new_gear_scale = gear_scale_init + latejoin_tally / MARINE_GEAR_SCALING_NORMAL
 	if(new_gear_scale > gear_scale)
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(new_gear_scale)

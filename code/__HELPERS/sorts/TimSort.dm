@@ -16,6 +16,6 @@
 		sort_instance.cmp = cmp
 		sort_instance.associative = associative
 
-		sort_i	nstance.timSort(fromIndex, toIndex)
+		sort_instance.timSort(fromIndex, toIndex)
 
 	return L

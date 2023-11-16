@@ -73,8 +73,7 @@
 	vis_contents.Cut()
 
 	GLOB.turfs += src
-	if(is_ground_level(z))
-		GLOB.z1turfs += src
+
 
 	assemble_baseturfs()
 

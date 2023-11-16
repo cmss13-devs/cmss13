@@ -434,8 +434,6 @@
 	verbs -= /obj/structure/surface/table/verb/do_flip
 	verbs += /obj/structure/surface/table/proc/do_put
 
-	detach_all()
-
 	var/list/targets = list(get_step(src, dir), get_step(src, turn(dir, 45)), get_step(src, turn(dir, -45)))
 	for(var/atom/movable/movable_on_table in get_turf(src))
 		if(!movable_on_table.anchored)
@@ -479,7 +477,6 @@
 		var/obj/structure/surface/table/T = locate() in get_step(src.loc,D)
 		if(T && T.flipped && T.dir == src.dir)
 			T.unflip()
-	attach_all()
 	update_icon()
 	update_adjacent()
 

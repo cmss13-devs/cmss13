@@ -312,7 +312,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return
 
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
+	return (stat || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
 
 
 //returns how many non-destroyed legs the mob has (currently only useful for humans)

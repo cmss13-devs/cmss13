@@ -474,8 +474,13 @@
 	. = list()
 	.["mob_name"] = targetMob.name
 
-	.["mob_sleeping"] = targetMob.sleeping
-	.["mob_frozen"] = targetMob.frozen
+	if(istype(targetMob, /mob/living))
+		var/mob/living/livingTarget = targetMob
+		.["mob_sleeping"] = livingTarget.sleeping
+	else
+		.["mob_sleeping"] = 0
+
+	.["mob_frozen"] = HAS_TRAIT_FROM(targetMob, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ADMIN)
 
 	.["mob_speed"] = targetMob.speed
 	.["mob_status_flags"] = targetMob.status_flags

@@ -906,3 +906,14 @@
 
 	info = parsepencode(template, null, null, FALSE)
 #undef MAX_FIELDS
+
+/obj/item/paper/colonial_grunts
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "paper_stack_words"
+	name = "Colonial Space Grunts"
+	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
+
+/obj/item/paper/colonial_grunts/Initialize(mapload, ...)
+	. = ..()
+	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
+	update_icon()

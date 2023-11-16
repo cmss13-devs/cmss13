@@ -221,7 +221,7 @@
 	update()
 
 ///Attempt to move while inside
-/obj/structure/machinery/disposal/relaymove(mob/user)
+/obj/structure/machinery/disposal/relaymove(mob/living/user)
 	if(user.stat || user.stunned || user.knocked_down || flushing)
 		return FALSE
 	if(user.loc == src)
@@ -229,7 +229,7 @@
 		return TRUE
 
 ///Leave the disposal
-/obj/structure/machinery/disposal/proc/go_out(mob/user)
+/obj/structure/machinery/disposal/proc/go_out(mob/living/user)
 	if(user.client)
 		user.client.eye = user.client.mob
 		user.client.perspective = MOB_PERSPECTIVE
@@ -302,12 +302,12 @@
 	for(var/atom/movable/AM in src)
 		AM.forceMove(loc)
 		AM.pipe_eject(0)
-		if(ismob(AM))
-			var/mob/M = AM
-			M.stunned = max(M.stunned, 2)  //Action delay when going out of a bin
-			M.update_canmove() //Force the delay to go in action immediately
-			if(!M.lying)
-				M.visible_message(SPAN_WARNING("[M] is suddenly pushed out of [src]!"),
+		if(isliving(AM))
+			var/mob/living/living = AM
+			living.Stun(2)
+			living.update_canmove() //Force the delay to go in action immediately
+			if(!living.lying)
+				living.visible_message(SPAN_WARNING("[living] is suddenly pushed out of [src]!"),
 				SPAN_WARNING("You get pushed out of [src] and get your bearings!"))
 	update()
 

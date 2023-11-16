@@ -799,3 +799,11 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 #undef FIRE_LAYER
 #undef BURST_LAYER
 
+/* To update the rooting graphic effect. Surely there's a better way... */
+/mob/living/carbon/human/on_immobilized_trait_gain(datum/source)
+	. = ..()
+	update_xeno_hostile_hud()
+
+/mob/living/carbon/human/on_immobilized_trait_loss(datum/source)
+	. = ..()
+	update_xeno_hostile_hud()

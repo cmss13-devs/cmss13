@@ -466,7 +466,7 @@
 					return
 
 			if(user.get_active_hand() == null && user.get_inactive_hand() == null)
-				user.freeze()
+				ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 				user.set_interaction(src)
 				give_action(user, /datum/action/human_action/mg_exit)
 			else

@@ -831,7 +831,7 @@
 						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 						return
 					else
-						user.freeze()
+						ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 						user.set_interaction(src)
 						give_action(user, /datum/action/human_action/mg_exit)
 
@@ -859,7 +859,7 @@
 	SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
-	user.unfreeze()
+	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 	user.reset_view(null)
 	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal

@@ -1107,8 +1107,8 @@
 	item_state_slots = list(WEAR_JACKET = "pmc_sniper")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth
-	name = "\improper M4 synthetic PMC armor"
-	desc = "A modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, offering protection and storage while not restricting movement."
+	name = "\improper M4 Synthetic PMC armor"
+	desc = "A serious modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, with every armor insert removed. It's designed with the idea of a high speed lifesaver in mind."
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	armor_melee = CLOTHING_ARMOR_NONE
@@ -1120,6 +1120,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	storage_slots = 3
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth/Initialize()
 	flags_atom |= NO_NAME_OVERRIDE

@@ -327,7 +327,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
 	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-	var/obj/structure/droppod/supply/pod = new()
+	var/obj/structure/droppod/supply/pod = new(null, C)
 	C.forceMove(pod)
 	pod.launch(T)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")

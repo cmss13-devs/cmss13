@@ -9,7 +9,7 @@
 
 
 /mob/living/carbon/human/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
-	if(M.fortify || M.burrow)
+	if(M.fortify || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
 	var/intent = M.a_intent
@@ -220,7 +220,7 @@
 
 //Every other type of nonhuman mob
 /mob/living/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.fortify || M.burrow)
+	if(M.fortify || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
 	switch(M.a_intent)

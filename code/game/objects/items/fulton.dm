@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 			var/mob/living/carbon/human/H = target_atom
 			if(isyautja(H) && H.stat == DEAD)
 				can_attach = TRUE
-			else if((H.stat != DEAD || H.mind && H.check_tod() && H.is_revivable()))
+			else if((H.stat != DEAD || H.check_tod() && H.is_revivable()))
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], they still have a chance!"))
 				return
 			else

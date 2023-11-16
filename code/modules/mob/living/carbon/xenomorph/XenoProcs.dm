@@ -320,15 +320,17 @@
 		if(pounceAction.freeze_play_sound)
 			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		canmove = FALSE
-		frozen = TRUE
-		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze)), pounceAction.freeze_time, TIMER_STOPPABLE)
-
+		ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze_pounce)), pounceAction.freeze_time, TIMER_STOPPABLE)
 	pounceAction.additional_effects(M)
 
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
 
 	throwing = FALSE //Reset throwing since something was hit.
+
+/mob/living/carbon/xenomorph/proc/unfreeze_pounce()
+	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 
 /mob/living/carbon/xenomorph/proc/pounced_mob_wrapper(mob/living/L)
 	pounced_mob(L)
@@ -656,7 +658,7 @@
 
 
 /mob/living/carbon/xenomorph/burn_skin(burn_amount)
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return FALSE
 
 	if(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE)

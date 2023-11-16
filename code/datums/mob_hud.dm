@@ -798,7 +798,7 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
 	// Hacky, but works. Currently effects are hard to make with precise timings
-	var/freeze_found = frozen
+	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && !buckled && !lying
 
 	if (freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")

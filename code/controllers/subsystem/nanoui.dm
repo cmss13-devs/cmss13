@@ -6,12 +6,10 @@ SUBSYSTEM_DEF(nano)
 	var/list/currentrun = list()
 	var/datum/nanomanager/nanomanager
 
-/datum/controller/subsystem/nano/Initialize()
+/datum/controller/subsystem/nano/New()
 	. = ..()
 
 	nanomanager = new()
-
-	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/nano/stat_entry(msg)
 	msg = "P:[nanomanager.processing_uis.len]"

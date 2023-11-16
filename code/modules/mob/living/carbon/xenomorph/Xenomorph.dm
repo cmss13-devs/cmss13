@@ -354,8 +354,6 @@
 		hive = GLOB.hive_datum[old_xeno.hivenumber]
 	else if(hivenumber)
 		hive = GLOB.hive_datum[hivenumber]
-	else
-		CRASH("Tried to create a xenomorph [src] with no hive datum.")
 
 	if(hive)
 		hive.add_xeno(src)
@@ -393,7 +391,7 @@
 		old_xeno.empty_gut()
 
 		//Set leader to the new mob
-		if(IS_XENO_LEADER(old_xeno))
+		if(hive && IS_XENO_LEADER(old_xeno))
 			hive.replace_hive_leader(old_xeno, src)
 
 		if(old_xeno.iff_tag)
@@ -401,8 +399,9 @@
 			iff_tag.forceMove(src)
 			old_xeno.iff_tag = null
 
-	for(var/trait in hive.hive_inherant_traits)
-		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+	if(hive)
+		for(var/trait in hive.hive_inherant_traits)
+			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	mutators.xeno = src
 
@@ -485,7 +484,7 @@
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	// Only handle free slots if the xeno is not in tdome
-	if(!is_admin_level(z))
+	if(hive && !is_admin_level(z))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		hive.used_slots[selected_caste]++
 

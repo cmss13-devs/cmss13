@@ -179,38 +179,38 @@
 
 
 // Adds a xeno to this hive
-/datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)
-	if(!X || !istype(X))
+/datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/xeno)
+	if(!xeno || !istype(xeno))
 		return
 
 	// If the xeno is part of another hive, they should be removed from that one first
-	if(X.hive && X.hive != src)
-		X.hive.remove_xeno(X, TRUE)
+	if(xeno.hive && xeno.hive != src)
+		xeno.hive.remove_xeno(xeno, TRUE)
 
 	// Already in the hive
-	if(X in totalXenos)
+	if(xeno in totalXenos)
 		return
 
 	// Can only have one queen.
-	if(isqueen(X))
-		if(!living_xeno_queen && !is_admin_level(X.z)) // Don't consider xenos in admin level
-			set_living_xeno_queen(X)
+	if(isqueen(xeno))
+		if(!living_xeno_queen && !is_admin_level(xeno.z)) // Don't consider xenos in admin level
+			set_living_xeno_queen(xeno)
 
-	X.hivenumber = hivenumber
-	X.hive = src
+	xeno.hivenumber = hivenumber
+	xeno.hive = src
 
-	X.set_faction(internal_faction)
+	xeno.set_faction(internal_faction)
 
-	if(X.hud_list)
-		X.hud_update()
+	if(xeno.hud_list)
+		xeno.hud_update()
 
-	var/area/A = get_area(X)
-	if(!is_admin_level(X.z) || (A.flags_atom & AREA_ALLOW_XENO_JOIN))
-		totalXenos += X
-		if(X.tier == 2)
-			tier_2_xenos += X
-		else if(X.tier == 3)
-			tier_3_xenos += X
+	var/area/area = get_area(xeno)
+	if(!is_admin_level(xeno.z) || (area.flags_atom & AREA_ALLOW_XENO_JOIN))
+		totalXenos += xeno
+		if(xeno.tier == 2)
+			tier_2_xenos += xeno
+		else if(xeno.tier == 3)
+			tier_3_xenos += xeno
 
 	// Xenos are a fuckfest of cross-dependencies of different datums that are initialized at different times
 	// So don't even bother trying updating UI here without large refactors
@@ -374,8 +374,8 @@
 	hive_ui.update_xeno_keys()
 
 /datum/hive_status/proc/handle_xeno_leader_pheromones()
-	for(var/mob/living/carbon/xenomorph/L in xeno_leader_list)
-		L.handle_xeno_leader_pheromones()
+	for(var/mob/living/carbon/xenomorph/xeno_leader in xeno_leader_list)
+		xeno_leader.handle_xeno_leader_pheromones()
 
 /*
  * Helper procs for the Hive Status UI

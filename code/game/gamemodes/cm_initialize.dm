@@ -75,6 +75,12 @@ Additional game mode variables.
 	var/list/monkey_types = list() //What type of monkeys do we spawn
 	var/latejoin_tally = 0 //How many people latejoined Marines
 	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
+	/// Amount of latejoin_tally already awarded as larvas
+	var/latejoin_larva_used = 0
+	/// Multiplier to the amount of gear awarded so far - increases only
+	var/gear_scale = 1
+	/// Roundstart gear scale to base off current gear_scale, for latejoin calculations
+	var/gear_scale_init = 1
 
 	//Role Authority set up.
 	/// List of role titles to override to different roles when starting game
@@ -903,23 +909,38 @@ Additional game mode variables.
 
 //We do NOT want to initilialize the gear before everyone is properly spawned in
 /datum/game_mode/proc/initialize_post_marine_gear_list()
-	var/scale = get_scaling_value()
+	init_gear_scale()
 
 	//Set up attachment vendor contents related to Marine count
 	for(var/i in GLOB.cm_vending_vendors)
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
-		CVS.populate_product_list_and_boxes(scale)
+		CVS.populate_product_list_and_boxes(gear_scale)
 
 	//Scale the amount of cargo points through a direct multiplier
-	supply_controller.points = round(supply_controller.points * scale)
+	supply_controller.points += round(supply_controller.points_scale * gear_scale)
 
-/datum/game_mode/proc/get_scaling_value()
+///Returns a multiplier to the amount of gear that is to be distributed roundstart, stored in [/datum/game_mode/var/gear_scale]
+/datum/game_mode/proc/init_gear_scale()
 	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment
-	//This might count players who ready up but get kicked back to the lobby
-	var/marine_pop_size = length(GLOB.alive_human_list)
+	var/marine_pop_size = 0
+	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
+		if(human.faction == FACTION_USCM)
+			var/datum/job/job = GET_MAPPED_ROLE(human.job)
+				marine_pop_size += RoleAuthority.calculate_role_weight(job)
 
 	//This gives a decimal value representing a scaling multiplier. Cannot go below 1
-	return max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
+	gear_scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
+	gear_scale_init = gear_scale
+	return gear_scale
+
+///Updates the [/datum/game_mode/var/gear_scale] multiplier based on joining marines in [/datum/game_mode/var/latejoin_tally]
+/datum/game_mode/proc/update_gear_scale()
+	var/new_gear_scale = round(gear_scale_init + latejoin_tally / MARINE_GEAR_SCALING_NORMAL)
+	if(new_gear_scale > gear_scale)
+		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
+			vendor.update_dynamic_stock(new_gear_scale)
+		supply_controller.points += round((new_gear_scale - gear_scale) * supply_controller.points_scale)
+	gear_scale = new_gear_scale
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()

@@ -367,6 +367,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 * survivors and the number of roundstart Squad Rifleman slots.
 */
 /datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
+	if(!J)
+		return 0
 	if(ROLES_MARINES.Find(J.title))
 		return 1
 	if(ROLES_XENO.Find(J.title))

@@ -196,8 +196,6 @@
 		M.overlay_fullscreen("matrix", /atom/movable/screen/fullscreen/flash/noise/nvg)
 		M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		M.sync_lighting_plane_alpha()
-	else if (linked_console.upgraded == MATRIX_WIDE)
-		M.client?.change_view(linked_console.power + 5, M)
 
 
 /datum/cas_fire_envelope/proc/remove_upgrades(user)

@@ -153,8 +153,9 @@
 	name = "NVG plane"
 	plane = NVG_PLANE
 	render_relay_plane = RENDER_PLANE_GAME
-	icon = 'icons/mob/hud/screen1.dmi'
-	icon_state = "noise"
+	blend_mode_override = BLEND_MULTIPLY
+	//icon = 'icons/mob/hud/screen1.dmi'
+	//icon_state = "noise"
 
 /atom/movable/screen/plane_master/fullscreen
 	name = "fullscreen alert plane"

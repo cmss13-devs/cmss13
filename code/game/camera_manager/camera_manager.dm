@@ -42,7 +42,7 @@
 	if(instance.blend_mode_override)
 		instance.blend_mode = instance.blend_mode_override
 	instance.screen_loc = "[map_name]:CENTER"
-	cam_plane_masters += instance
+	cam_plane_masters["[instance.plane]"] = instance
 
 /datum/component/camera_manager/proc/register(source, mob/user)
 	var/client/user_client = user.client
@@ -50,8 +50,8 @@
 		return
 	user_client.register_map_obj(cam_background)
 	user_client.register_map_obj(cam_screen)
-	for(var/plane in cam_plane_masters)
-		user_client.register_map_obj(plane)
+	for(var/plane_id in cam_plane_masters)
+		user_client.register_map_obj(cam_plane_masters[plane_id])
 
 /datum/component/camera_manager/proc/unregister(source, mob/user)
 	var/client/user_client = user.client
@@ -59,8 +59,8 @@
 		return
 	user_client.clear_map(cam_background)
 	user_client.clear_map(cam_screen)
-	for(var/plane in cam_plane_masters)
-		user_client.clear_map(plane)
+	for(var/plane_id in cam_plane_masters)
+		user_client.clear_map(cam_plane_masters[plane_id])
 
 /datum/component/camera_manager/RegisterWithParent()
 	. = ..()
@@ -97,7 +97,7 @@
 
 /datum/component/camera_manager/proc/set_camera(source, atom/target, w, h)
 	log_debug("setting camera from [source] to [target]")
-	set_camera_rect(target.x, target.y, target.z, w, h)
+	set_camera_rect(source, target.x, target.y, target.z, w, h)
 
 /datum/component/camera_manager/proc/set_camera_rect(source, x, y, z, w, h)
 	current_area = RECT(x, y, w, h)
@@ -107,18 +107,24 @@
 	update_active_camera()
 
 /datum/component/camera_manager/proc/enable_nvg(source, power, matrixcol)
-	var/color_matrix = color_matrix_multiply(
-		color_matrix_saturation(1),
-		color_matrix_rotate_x(-1*(20.8571-1.57143*power)),
-		color_matrix_from_string(matrixcol))
-	for(var/atom/movable/screen/plane_master/nvg_plane/plane in cam_plane_masters)
-		log_debug("updating [plane] with [color_matrix]")
-		animate(plane, color=color_matrix, time=0, easing=LINEAR_EASING)
+	for(var/plane_id in cam_plane_masters)
+		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
+		plane.add_filter("nvg", 1, color_matrix_filter(color_matrix_from_string(matrixcol)))
+	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
 
 /datum/component/camera_manager/proc/disable_nvg()
-	for(var/atom/movable/screen/plane_master/nvg_plane/plane in cam_plane_masters)
-		log_debug("removing [plane]")
-		animate(plane, color=null, time=0, easing=LINEAR_EASING)
+	for(var/plane_id in cam_plane_masters)
+		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
+		plane.remove_filter("nvg")
+	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_VISIBLE)
+
+/datum/component/camera_manager/proc/sync_lighting_plane_alpha(lighting_alpha)
+	var/atom/movable/screen/plane_master/lighting/lighting = cam_plane_masters["[LIGHTING_PLANE]"]
+	if (lighting)
+		lighting.alpha = lighting_alpha
+	var/atom/movable/screen/plane_master/lighting/exterior_lighting = cam_plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
+	if (exterior_lighting)
+		exterior_lighting.alpha = min(GLOB.minimum_exterior_lighting_alpha, lighting_alpha)
 
 /**
  * Set the displayed camera to the static not-connected.

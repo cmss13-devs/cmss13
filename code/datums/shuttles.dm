@@ -115,3 +115,13 @@
 
 /datum/map_template/shuttle/trijent_elevator/B
 	elevator_network = "B"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator
+	name = "Classic Ice Elevator"
+	shuttle_id = "ice_classic_shuttle"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/lab
+	elevator_network = "lab"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm
+	elevator_network = "dorm"

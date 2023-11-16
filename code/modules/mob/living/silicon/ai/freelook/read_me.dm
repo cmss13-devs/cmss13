@@ -43,7 +43,7 @@ sight; for example, we don't update glass airlocks or floors.
 
 WHERE IS EVERYTHING?
 
-GLOB.cameranet.dm = Everything about the cameranet datum.
+cameranet.dm = Everything about the cameranet datum.
 chunk.dm = Everything about the chunk datum.
 eye.dm = Everything about the AI and the AIEye.
 updating.dm = Everything about triggers that will update chunks.

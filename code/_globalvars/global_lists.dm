@@ -133,7 +133,6 @@ GLOBAL_LIST_EMPTY(active_areas)
 GLOBAL_LIST_EMPTY(all_areas)
 
 GLOBAL_LIST_EMPTY(turfs)
-GLOBAL_LIST_EMPTY(z1turfs)
 
 GLOBAL_LIST(objects_of_interest) // This is used to track the stealing objective for Agents.
 

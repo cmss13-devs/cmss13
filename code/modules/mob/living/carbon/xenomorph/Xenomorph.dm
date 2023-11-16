@@ -718,7 +718,7 @@
 	return FALSE
 
 /mob/living/carbon/xenomorph/start_pulling(atom/movable/movable_atom, lunge, no_msg)
-	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
+	if(SEND_SIGNAL(movable_atom, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
 		return do_pull(movable_atom, lunge, no_msg)
 
 	if(HAS_TRAIT(src,TRAIT_ABILITY_BURROWED))

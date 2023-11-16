@@ -135,7 +135,7 @@
 /mob/living/carbon/xenomorph/larva/pull_response(mob/puller)
 	return TRUE
 
-/mob/living/carbon/xenomorph/larva/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack, ignores_resin = FALSE)
+/mob/living/carbon/xenomorph/larva/UnarmedAttack(atom/atom, proximity, click_parameters, tile_attack, ignores_resin = FALSE)
 	a_intent = INTENT_HELP //Forces help intent for all interactions.
 	if(!caste)
 		return FALSE
@@ -143,14 +143,14 @@
 	if(lying) //No attacks while laying down
 		return FALSE
 
-	A.attack_larva(src)
+	atom.attack_larva(src)
 	xeno_attack_delay(src) //Adds some lag to the 'attack'
 
 /proc/spawn_hivenumber_larva(atom/atom, hivenumber)
 	if(!GLOB.hive_datum[hivenumber] || isnull(atom))
 		return
 
-	var/mob/living/carbon/xenomorph/larva/larva = new /mob/living/carbon/xenomorph/larva(A)
+	var/mob/living/carbon/xenomorph/larva/larva = new /mob/living/carbon/xenomorph/larva(atom)
 
 	larva.set_hive_and_update(hivenumber)
 

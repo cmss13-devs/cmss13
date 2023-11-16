@@ -327,7 +327,6 @@
 #include "code\datums\mind.dm"
 #include "code\datums\mixed.dm"
 #include "code\datums\mob_hud.dm"
-#include "code\datums\modules.dm"
 #include "code\datums\movement_detector.dm"
 #include "code\datums\mutable_appearance.dm"
 #include "code\datums\quadtree.dm"

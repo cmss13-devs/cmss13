@@ -46,7 +46,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	LoadBans()
 	load_motd()
 	load_tm_message()
-	loadShuttleInfoDatums()
 	populate_gear_list()
 	initialize_global_regex()
 

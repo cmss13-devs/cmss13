@@ -1,8 +1,5 @@
 GLOBAL_VAR_INIT(game_year, 2182)
 
-/// If this is anything but "secret", the secret rotation will forceably choose this mode.
-GLOBAL_VAR_INIT(secret_force_mode, "secret")
-
 GLOBAL_VAR_INIT(ooc_allowed, TRUE)
 GLOBAL_VAR_INIT(looc_allowed, TRUE)
 GLOBAL_VAR_INIT(dsay_allowed, TRUE)
@@ -38,7 +35,6 @@ GLOBAL_LIST_EMPTY(IClog)
 GLOBAL_LIST_EMPTY(OOClog)
 GLOBAL_LIST_EMPTY(adminlog)
 
-GLOBAL_DATUM_INIT(mods, /datum/moduletypes, new())
 
 GLOBAL_VAR(join_motd)
 GLOBAL_VAR(current_tms)

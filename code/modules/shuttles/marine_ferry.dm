@@ -73,13 +73,6 @@
 		control.visible_message(SPAN_WARNING(fail_flavortext))
 		return //Kill it so as not to repeat
 
-/datum/shuttle/ferry/marine/proc/load_datums()
-	if(!(info_tag in GLOB.s_info))
-		message_admins(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
-
-	var/list/L = GLOB.s_info[info_tag]
-	info_datums = L.Copy()
-
 /datum/shuttle/ferry/marine/proc/set_automated_launch(bool_v)
 	automated_launch = bool_v
 	if(bool_v)

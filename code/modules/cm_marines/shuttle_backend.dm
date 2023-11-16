@@ -87,11 +87,6 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 
 */
 
-GLOBAL_LIST(s_info)
-
-/proc/loadShuttleInfoDatums()
-	GLOB.s_info = list()
-	return 1
 
 
 /proc/get_shuttle_turfs(turf/ref, list/L)

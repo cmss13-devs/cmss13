@@ -769,7 +769,7 @@
 	name = "box of meat"
 
 /obj/item/storage/box/meat/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/meat/monkey(src)
 
 //fish
@@ -777,7 +777,7 @@
 	name = "box of fish"
 
 /obj/item/storage/box/fish/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/carpmeat(src)
 
 //grocery
@@ -787,7 +787,7 @@
 	name = "box of milk"
 
 /obj/item/storage/box/milk/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/drinks/milk(src)
 
 //soymilk
@@ -795,7 +795,7 @@
 	name = "box of soymilk"
 
 /obj/item/storage/box/soymilk/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/drinks/soymilk(src)
 
 //enzyme
@@ -803,7 +803,7 @@
 	name = "box of enzyme"
 
 /obj/item/storage/box/enzyme/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/condiment/enzyme(src)
 
 //dry storage
@@ -813,7 +813,7 @@
 	name = "box of flour"
 
 /obj/item/storage/box/flour/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/flour(src)
 
 //sugar
@@ -821,7 +821,7 @@
 	name = "box of sugar"
 
 /obj/item/storage/box/sugar/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/condiment/sugar(src)
 
 //saltshaker
@@ -829,7 +829,7 @@
 	name = "box of saltshakers"
 
 /obj/item/storage/box/saltshaker/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/condiment/saltshaker(src)
 
 //peppermill
@@ -837,7 +837,7 @@
 	name = "box of peppermills"
 
 /obj/item/storage/box/peppermill/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/condiment/peppermill(src)
 
 //mint
@@ -845,7 +845,7 @@
 	name = "box of mints"
 
 /obj/item/storage/box/mint/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/mint(src)
 
 // ORGANICS
@@ -855,7 +855,7 @@
 	name = "box of apples"
 
 /obj/item/storage/box/apple/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/apple(src)
 
 //banana
@@ -863,7 +863,7 @@
 	name = "box of bananas"
 
 /obj/item/storage/box/banana/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/banana(src)
 
 //chanterelle
@@ -871,7 +871,7 @@
 	name = "box of chanterelle"
 
 /obj/item/storage/box/chanterelle/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle(src)
 
 //cherries
@@ -879,7 +879,7 @@
 	name = "box of cherries"
 
 /obj/item/storage/box/cherries/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/cherries(src)
 
 //chili
@@ -887,7 +887,7 @@
 	name = "box of chili"
 
 /obj/item/storage/box/chili/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/chili(src)
 
 //cabbage
@@ -895,7 +895,7 @@
 	name = "box of cabbages"
 
 /obj/item/storage/box/cabbage/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/cabbage(src)
 
 //carrot
@@ -903,7 +903,7 @@
 	name = "box of carrots"
 
 /obj/item/storage/box/carrot/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/carrot(src)
 
 //corn
@@ -911,7 +911,7 @@
 	name = "box of corn"
 
 /obj/item/storage/box/corn/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/corn(src)
 
 //eggplant
@@ -919,7 +919,7 @@
 	name = "box of eggplants"
 
 /obj/item/storage/box/eggplant/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/eggplant(src)
 
 //lemon
@@ -927,7 +927,7 @@
 	name = "box of lemons"
 
 /obj/item/storage/box/lemon/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/lemon(src)
 
 //lime
@@ -935,7 +935,7 @@
 	name = "box of limes"
 
 /obj/item/storage/box/lime/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/lime(src)
 
 //orange
@@ -943,7 +943,7 @@
 	name = "box of oranges"
 
 /obj/item/storage/box/orange/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/orange(src)
 
 //potato
@@ -951,7 +951,7 @@
 	name = "box of potatoes"
 
 /obj/item/storage/box/potato/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/potato(src)
 
 //tomato
@@ -959,7 +959,7 @@
 	name = "box of tomatoes"
 
 /obj/item/storage/box/tomato/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/tomato(src)
 
 //whitebeet
@@ -967,5 +967,5 @@
 	name = "box of whitebeet"
 
 /obj/item/storage/box/whitebeet/fill_preset_inventory()
-	for(var/i = 0, i < 7, i++)
+	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/whitebeet(src)

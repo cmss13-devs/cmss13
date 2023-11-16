@@ -1,0 +1,5 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - bugfix: "Lurker can no longer tail jab through doors/structures."
+  - code_imp: "Var disambiguation, cleanup and removal of redundant typechecks in lurker code."

@@ -360,10 +360,6 @@
 	if(hive)
 		hive.add_xeno(src)
 
-	var/area/current_area = get_area(src)
-	if(current_area && current_area.statistic_exempt)
-		statistic_exempt = TRUE
-
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
 
@@ -493,6 +489,10 @@
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		hive.used_slots[selected_caste]++
 
+	//Statistics
+	var/area/current_area = get_area(src)
+	if(current_area && current_area.statistic_exempt)
+		statistic_exempt = TRUE
 	if(round_statistics && !statistic_exempt)
 		round_statistics.track_new_participant(faction, 1)
 
@@ -516,11 +516,11 @@
 		return
 	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
 
-/mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (PF)
-		PF.flags_pass = PASS_MOB_IS_XENO
-		PF.flags_can_pass_all = PASS_MOB_THRU_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
+	if (pass_flags)
+		pass_flags.flags_pass = PASS_MOB_IS_XENO
+		pass_flags.flags_can_pass_all = PASS_MOB_THRU_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
 /mob/living/carbon/xenomorph/initialize_pain()
 	pain = new /datum/pain/xeno(src)
@@ -528,18 +528,18 @@
 /mob/living/carbon/xenomorph/initialize_stamina()
 	stamina = new /datum/stamina/none(src)
 
-/mob/living/carbon/xenomorph/proc/fire_immune(mob/living/L)
+/mob/living/carbon/xenomorph/proc/fire_immune(mob/living/living_mob)
 	SIGNAL_HANDLER
 
-	if(L.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+	if(living_mob.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 
 	return COMPONENT_CANCEL_IGNITION
 
-/mob/living/carbon/xenomorph/proc/flamer_crossed_immune(mob/living/L, datum/reagent/R)
+/mob/living/carbon/xenomorph/proc/flamer_crossed_immune(mob/living/living_mob, datum/reagent/reagent)
 	SIGNAL_HANDLER
 
-	if(R.fire_penetrating)
+	if(reagent.fire_penetrating)
 		return
 
 	. = COMPONENT_NO_BURN
@@ -564,8 +564,6 @@
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
 
-	//handle_name(in_hive) -> look at queen handle_name() also
-
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
@@ -580,6 +578,7 @@
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
+	// Rare easter egg
 	if(nicknumber == 666)
 		number_decorator = "Infernal "
 	if(show_name_numbers)
@@ -713,44 +712,37 @@
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
 
-	. = ..()
-
-	// Everything below fits the "we have to clear by principle it but i dont wanna break stuff" bill
-	mutators = null
-
-
+	return ..()
 
 /mob/living/carbon/xenomorph/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE
 
-
-
-/mob/living/carbon/xenomorph/start_pulling(atom/movable/AM, lunge, no_msg)
+/mob/living/carbon/xenomorph/start_pulling(atom/movable/movable_atom, lunge, no_msg)
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
-		return do_pull(AM, lunge, no_msg)
+		return do_pull(movable_atom, lunge, no_msg)
 
 	if(HAS_TRAIT(src,TRAIT_ABILITY_BURROWED))
 		return
-	if(!isliving(AM))
+	if(!isliving(movable_atom))
 		return FALSE
-	var/mob/living/L = AM
-	if(issynth(L) && L.health < 0) // no pulling critted or dead synths
+	var/mob/living/living_mob = movable_atom
+	if(issynth(living_mob) && living_mob.health < 0) // no pulling critted or dead synths
 		return FALSE
-	if(L.buckled)
+	if(living_mob.buckled)
 		return FALSE //to stop xeno from pulling marines on roller beds.
-	if(!L.is_xeno_grabbable())
+	if(!living_mob.is_xeno_grabbable())
 		return FALSE
-	var/atom/A = AM.handle_barriers(src)
-	if(A != AM)
-		A.attack_alien(src)
+	var/atom/atom = movable_atom.handle_barriers(src)
+	if(atom != movable_atom)
+		atom.attack_alien(src)
 		xeno_attack_delay(src)
 		return FALSE
 	return ..()
 
 /mob/living/carbon/xenomorph/pull_response(mob/puller)
 	if(stat != DEAD && has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
-		var/mob/living/carbon/human/H = puller
-		if(H.ally_of_hivenumber(hivenumber))
+		var/mob/living/carbon/human/human = puller
+		if(human.ally_of_hivenumber(hivenumber))
 			return TRUE
 		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
@@ -766,8 +758,6 @@
 	pulledby.stop_pulling()
 	. = 1
 
-
-
 /mob/living/carbon/xenomorph/prepare_huds()
 	..()
 	//updating all the mob's hud images
@@ -777,12 +767,10 @@
 	hud_set_pheromone()
 	hud_set_marks()
 
-
 	//and display them
 	add_to_all_mob_huds()
-	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
-	MH.add_hud_to(src, src)
-
+	var/datum/mob_hud/mob_hud = huds[MOB_HUD_XENO_INFECTION]
+	mob_hud.add_hud_to(src, src)
 
 /mob/living/carbon/xenomorph/check_improved_pointing()
 	//xeno leaders get a big arrow and less cooldown
@@ -840,7 +828,6 @@
 	update_icon_source()
 	if(hive && hive.living_xeno_queen && hive.living_xeno_queen == src)
 		hive.recalculate_hive() //Recalculating stuff around Queen maturing
-
 
 /mob/living/carbon/xenomorph/proc/recalculate_stats()
 	recalculate_health()
@@ -1006,14 +993,14 @@
 
 	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
 	to_chat(src, SPAN_WARNING("You attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and you need to stand still)"))
-	for(var/mob/O in viewers(src))
-		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
+	for(var/mob/viewer in viewers(src))
+		viewer.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)
 		return // time leniency for lag which also might make this whole thing pointless but the server
-	for(var/mob/O in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink
-		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
+	for(var/mob/viewer in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink
+		viewer.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	to_chat(src, SPAN_NOTICE(" You successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 
@@ -1055,9 +1042,9 @@
 /mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
 	var/color_override
 	if(special_blood)
-		var/datum/reagent/D = chemical_reagents_list[special_blood]
-		if(D)
-			color_override = D.color
+		var/datum/reagent/reagent_datum = chemical_reagents_list[special_blood]
+		if(reagent_datum)
+			color_override = reagent_datum.color
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)
 
 /mob/living/carbon/xenomorph/Collide(atom/movable/movable_atom)

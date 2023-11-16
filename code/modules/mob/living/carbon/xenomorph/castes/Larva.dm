@@ -61,11 +61,11 @@
 		is_bloody = FALSE
 	return ..()
 
-/mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (PF)
-		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
+	if (pass_flags)
+		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
+		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/larva/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
@@ -146,15 +146,15 @@
 	A.attack_larva(src)
 	xeno_attack_delay(src) //Adds some lag to the 'attack'
 
-/proc/spawn_hivenumber_larva(atom/A, hivenumber)
-	if(!GLOB.hive_datum[hivenumber] || isnull(A))
+/proc/spawn_hivenumber_larva(atom/atom, hivenumber)
+	if(!GLOB.hive_datum[hivenumber] || isnull(atom))
 		return
 
-	var/mob/living/carbon/xenomorph/larva/L = new /mob/living/carbon/xenomorph/larva(A)
+	var/mob/living/carbon/xenomorph/larva/larva = new /mob/living/carbon/xenomorph/larva(A)
 
-	L.set_hive_and_update(hivenumber)
+	larva.set_hive_and_update(hivenumber)
 
-	return L
+	return larva
 
 /mob/living/carbon/xenomorph/larva/emote(act, m_type, message, intentional, force_silence)
 	playsound(loc, "alien_roar_larva", 15)

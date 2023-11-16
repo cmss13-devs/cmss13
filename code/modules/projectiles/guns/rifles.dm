@@ -1874,7 +1874,7 @@
 	desc = "An experimental shotgun model going through testing trials in the USCM. Based on the original civilian and CMB version, the XM51 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge armor-piercing breaching rounds, which are effective at breaching doors, walls and people."
 	icon_state = "xm51"
 	item_state = "xm51"
-	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/xm51
@@ -1883,6 +1883,7 @@
 	var/recent_pump
 	var/pump_sound = "shotgunpump"
 	var/message_cooldown //To not spam the above.
+	var/burst_count = 0 //To detect when the burst fire is near its end.
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
@@ -1891,6 +1892,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
@@ -1902,21 +1904,21 @@
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
 
 /obj/item/weapon/gun/rifle/xm51/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 21, "under_x" = 24, "under_y" = 13, "stock_x" = 26, "stock_y" = 12)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 21, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)
 
 /obj/item/weapon/gun/rifle/xm51/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_4)
-	set_burst_amount(0)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_4*2)
+	set_burst_amount(2)
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
-	recoil = RECOIL_AMOUNT_TIER_3
+	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	scatter = SCATTER_AMOUNT_TIER_8
+	scatter = SCATTER_AMOUNT_TIER_6
 
 /obj/item/weapon/gun/rifle/xm51/Initialize(mapload, spawn_empty)
 	. = ..()
-	pump_delay = FIRE_DELAY_TIER_6
+	pump_delay = FIRE_DELAY_TIER_8*3
 	additional_fire_group_delay += pump_delay
 
 /obj/item/weapon/gun/rifle/xm51/set_bullet_traits()
@@ -1938,21 +1940,24 @@
 	playsound(user, pump_sound, 10, 1)
 	recent_pump = world.time
 	ready_in_chamber()
+	burst_count = 0 //Reset the count for burst mode.
 	if(in_chamber)
 		pumped = TRUE
-
-/obj/item/weapon/gun/rifle/xm51/cock_gun(mob/user)
-	return
 
 /obj/item/weapon/gun/rifle/xm51/load_into_chamber(mob/user)
 	return in_chamber
 
 /obj/item/weapon/gun/rifle/xm51/reload_into_chamber(mob/user) //Drop the mag if it's empty, but don't load in bullets automatically.
 	if(current_mag)
+		in_chamber = null
+		if (gun_firemode == GUN_FIREMODE_BURSTFIRE & burst_count < burst_amount - 1) //Fire two (or more) shots in a burst without having to pump.
+			ready_in_chamber()
+			burst_count++
+			return in_chamber
 		if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
 			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
 				update_icon()
-			else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber)
+			else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) //Magazine will only unload once burstfire is over
 				var/drop_to_ground = TRUE
 				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
 					drop_to_ground = FALSE
@@ -1960,14 +1965,12 @@
 					user.swap_hand()
 				unload(user, TRUE, drop_to_ground)
 				playsound(src, empty_sound, 25, 1)
+		pumped = FALSE
+		return TRUE
 	else
 		update_icon()
 
-	pumped = FALSE
-	in_chamber = null
-	return TRUE
-
-/obj/item/weapon/gun/rifle/xm51/replace_magazine(mob/user, obj/item/ammo_magazine/magazine) //No cocking the gun when reloading.
+/obj/item/weapon/gun/rifle/xm51/replace_magazine(mob/user, obj/item/ammo_magazine/magazine) //Don't chamber a round when reloading.
 	user.drop_inv_item_to_loc(magazine, src) //Click!
 	current_mag = magazine
 	replace_ammo(user,magazine)
@@ -1975,3 +1978,10 @@
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
+
+/obj/item/weapon/gun/rifle/xm51/cock_gun(mob/user)
+	return
+
+/obj/item/weapon/gun/rifle/xm51/cock(mob/user)
+	unique_action(user)
+	return

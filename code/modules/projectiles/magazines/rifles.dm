@@ -513,6 +513,3 @@
 	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/rifle/xm51
 	transfer_handful_amount = 6
-	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
-	ammo_band_icon = "+xm51_band"
-	ammo_band_icon_empty = "+xm51_band"

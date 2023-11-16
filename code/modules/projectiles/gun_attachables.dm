@@ -2090,7 +2090,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper XM51 stock"
 	desc = "A specialized stock designed for XM51 breaching shotguns. Helps the user mitigate the recoil of the shotgun in addition to increasing its accuracy. Unfortunately, this comes at a cost of the gun becoming too unwieldy to holster."
 	icon_state = "xm51_stock"
-	icon_state = "xm51_stock_a"
+	attach_icon = "xm51_stock_a"
 	wield_delay_mod = WIELD_DELAY_FAST
 	hud_offset_mod = 3
 

@@ -211,3 +211,6 @@
 2023-11-15:
   Birdtalon:
   - code_imp: Replaced single letter vars in runner code.
+2023-11-16:
+  fira:
+  - bugfix: Rooting effects should now properly update when stacked and unstacked.

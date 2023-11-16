@@ -87,10 +87,10 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 
 */
 
-var/global/list/s_info = null
+GLOBAL_LIST(s_info)
 
 /proc/loadShuttleInfoDatums()
-	s_info = list()
+	GLOB.s_info = list()
 	return 1
 
 

@@ -492,7 +492,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 								vend_fail()
 								return FALSE
 							var/p_name = itemspec[1]
-							if(!available_specialist_sets.Find(p_name))
+							if(!GLOB.available_specialist_sets.Find(p_name))
 								to_chat(user, SPAN_WARNING("That set is already taken."))
 								vend_fail()
 								return FALSE
@@ -523,7 +523,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 									return FALSE
 							ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
 							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
-							available_specialist_sets -= p_name
+							GLOB.available_specialist_sets -= p_name
 						else if(vendor_role.Find(JOB_SYNTH))
 							if(user.job != JOB_SYNTH)
 								to_chat(user, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))

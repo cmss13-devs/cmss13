@@ -242,10 +242,10 @@
 			qdel(AM)
 			return
 		var/mob/living/carbon/human/thrown_human = AM
-		for(var/atom/computer as anything in supply_controller.bound_supply_computer_list)
+		for(var/atom/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
 			computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
-		var/area/area_shuttle = supply_controller.shuttle?.get_location_area()
+		var/area/area_shuttle = GLOB.supply_controller.shuttle?.get_location_area()
 		if(!area_shuttle)
 			return
 		var/list/turflist = list()
@@ -452,7 +452,7 @@
 
 /turf/open/floor/grass/LateInitialize()
 	. = ..()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(istype(get_step(src,direction),/turf/open/floor))
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() //so siding get updated properly
@@ -497,7 +497,7 @@
 	if(!broken && !burnt)
 		if(icon_state != "carpetsymbol")
 			var/connectdir = 0
-			for(var/direction in cardinal)
+			for(var/direction in GLOB.cardinals)
 				if(istype(get_step(src, direction), /turf/open/floor))
 					var/turf/open/floor/FF = get_step(src, direction)
 					if(FF.is_carpet_floor())
@@ -538,7 +538,7 @@
 			icon_state = "carpet[connectdir]-[diagonalconnect]"
 
 /turf/open/floor/carpet/make_plating()
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		if(istype(get_step(src, direction), /turf/open/floor))
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() // So siding get updated properly

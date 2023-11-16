@@ -98,9 +98,9 @@
 						if(-INFINITY to SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN //Cannot go below green.
 						if(SEC_LEVEL_BLUE to INFINITY) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot go above blue.
 
-					var/old_level = security_level
+					var/old_level = GLOB.security_level
 					set_security_level(tmp_alertlevel)
-					if(security_level != old_level)
+					if(GLOB.security_level != old_level)
 						//Only notify the admins if an actual change happened
 						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
@@ -134,7 +134,7 @@
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
-				if(security_level < SEC_LEVEL_DELTA)
+				if(GLOB.security_level < SEC_LEVEL_DELTA)
 					to_chat(usr, SPAN_WARNING("The ship must be under delta alert in order to enact evacuation procedures."))
 					return FALSE
 
@@ -185,7 +185,7 @@
 					to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 					return FALSE
 
-				if(security_level == SEC_LEVEL_DELTA)
+				if(GLOB.security_level == SEC_LEVEL_DELTA)
 					to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 					return FALSE
 

@@ -22,11 +22,11 @@
 	var/last_name
 	//gender checks
 	if(new_human.gender == MALE)
-		first_name = "[pick(first_names_male_pmc)]"
+		first_name = "[pick(GLOB.first_names_male_pmc)]"
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
-		first_name = "[pick(first_names_female_pmc)]"
-	last_name = "[pick(last_names_pmc)]"
+		first_name = "[pick(GLOB.first_names_female_pmc)]"
+	last_name = "[pick(GLOB.last_names_pmc)]"
 	random_name = "[first_name] [last_name]"
 	new_human.change_real_name(new_human, random_name)
 

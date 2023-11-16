@@ -24,7 +24,7 @@
 	if(amount < 5.0) return
 	var/turf/S = loc
 	if(!istype(S)) return
-	for(var/d in cardinal)
+	for(var/d in GLOB.cardinals)
 		if(rand(25))
 			var/turf/target = get_step(src, d)
 			var/turf/origin = get_turf(src)

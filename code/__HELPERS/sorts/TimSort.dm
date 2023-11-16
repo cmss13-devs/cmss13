@@ -8,6 +8,10 @@
 		if(toIndex <= 0)
 			toIndex += L.len + 1
 
+		var/datum/sortInstance = GLOB.sortInstance
+		if(!sortInstance)
+			sortInstance = new()
+
 		sortInstance.L = L
 		sortInstance.cmp = cmp
 		sortInstance.associative = associative

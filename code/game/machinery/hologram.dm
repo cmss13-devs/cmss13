@@ -63,7 +63,7 @@ Possible to do for anyone motivated enough:
 // HOLOPAD MODE
 // 0 = RANGE BASED
 // 1 = AREA BASED
-var/const/HOLOPAD_MODE = 0
+GLOBAL_VAR_INIT(HOLOPAD_MODE, 0)
 
 /obj/structure/machinery/hologram/holopad
 	name = "\improper AI holopad"
@@ -167,10 +167,10 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	if(hologram)//If there is a hologram.
 		if(master && !master.stat && master.client && master.eyeobj)//If there is an AI attached, it's not incapacitated, it has a client, and the client eye is centered on the projector.
 			if(!(stat & NOPOWER))//If the  machine has power.
-				if((HOLOPAD_MODE == 0 && (get_dist(master.eyeobj, src) <= holo_range)))
+				if((GLOB.HOLOPAD_MODE == 0 && (get_dist(master.eyeobj, src) <= holo_range)))
 					return 1
 
-				else if (HOLOPAD_MODE == 1)
+				else if (GLOB.HOLOPAD_MODE == 1)
 
 					var/area/holo_area = get_area(src)
 					var/area/eye_area = get_area(master.eyeobj)

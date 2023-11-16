@@ -1,7 +1,7 @@
 // Fulton baloon deployment devices, used to gather and send crates, dead things, and other objective-based items into space for collection.
 
 /// A list of fultons currently airborne.
-var/global/list/deployed_fultons = list()
+GLOBAL_LIST_EMPTY(deployed_fultons)
 
 /obj/item/stack/fulton
 	name = "fulton recovery device"
@@ -36,7 +36,7 @@ var/global/list/deployed_fultons = list()
 		attached_atom = null
 	if(original_location)
 		original_location = null
-	deployed_fultons -= src
+	GLOB.deployed_fultons -= src
 	. = ..()
 
 /obj/item/stack/fulton/update_icon()
@@ -154,7 +154,7 @@ var/global/list/deployed_fultons = list()
 	attached_atom.forceMove(space_tile)
 
 	forceMove(attached_atom)
-	deployed_fultons += src
+	GLOB.deployed_fultons += src
 	attached_atom.overlays -= I
 
 	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)
@@ -169,11 +169,11 @@ var/global/list/deployed_fultons = list()
 	attached_atom.anchored = FALSE
 	playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
 
-	if(intel_system)
+	if(GLOB.intel_system)
 		if (!LAZYISIN(GLOB.failed_fultons, attached_atom))
 			//Giving marines an objective to retrieve that fulton (so they'd know what they lost and where)
 			var/datum/cm_objective/retrieve_item/fulton/objective = new /datum/cm_objective/retrieve_item/fulton(attached_atom)
-			intel_system.store_single_objective(objective)
+			GLOB.intel_system.store_single_objective(objective)
 
 	qdel(reservation)
 	qdel(src)

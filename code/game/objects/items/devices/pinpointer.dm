@@ -45,7 +45,7 @@
 
 /obj/item/device/pinpointer/get_examine_text(mob/user)
 	. = ..()
-	for(var/obj/structure/machinery/nuclearbomb/bomb in machines)
+	for(var/obj/structure/machinery/nuclearbomb/bomb in GLOB.machines)
 		if(bomb.timing)
 			. += "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]"
 

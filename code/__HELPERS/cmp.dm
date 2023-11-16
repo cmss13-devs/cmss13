@@ -53,7 +53,6 @@ GLOBAL_LIST_INIT(cmp_field, "name")
 	if (!.)
 		. = B.qdels - A.qdels
 
-GLOBAL_DATUM(cmp_dist_origin, /atom)
 
 /proc/cmp_typepaths_asc(A, B)
 	return sorttext("[B]","[A]")

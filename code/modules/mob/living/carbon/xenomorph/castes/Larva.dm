@@ -50,9 +50,16 @@
 
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
+	var/is_bloody = TRUE //We're still "bloody"
 
 	icon_xeno = 'icons/mob/xenos/larva.dmi'
 	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
+
+/mob/living/carbon/xenomorph/larva/Life()
+	if(bloody && (evolution_stored >= evolution_threshold / 2)) //We're still bloody
+		generate_name()
+		is_bloody = FALSE
+	return ..()
 
 /mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -155,7 +162,10 @@
 /mob/living/carbon/xenomorph/larva/is_xeno_grabbable()
 	return TRUE
 
-///Larva name generation, set nickname = (number between 1 & 999) which isn't taken by any other xenos in GLOB.xeno_mob_list
+/*
+Larva name generation, set nicknumber = (number between 1 & 999) which isn't taken by any other xenos in GLOB.xeno_mob_list if doesn't already exist.
+Also handles the "Mature / Bloody naming convention. Call this to update the name."
+*/
 /mob/living/carbon/xenomorph/larva/generate_name()
 	if(!nicknumber)
 		generate_and_set_nicknumber()

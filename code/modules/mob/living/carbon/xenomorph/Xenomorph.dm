@@ -1097,7 +1097,7 @@
 		return
 	var/datum/hive_status/hive_status = hive
 	if(length(hive_status.available_nicknumbers))
-		nicknumber = pick(hive_status.available_nicknumbers)
+		nicknumber = pick_n_take(hive_status.available_nicknumbers)
 	else
 		//If we somehow use all 999 numbers fallback on 0
 		nicknumber = 0

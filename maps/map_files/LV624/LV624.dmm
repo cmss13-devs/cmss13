@@ -13364,7 +13364,7 @@
 /area/lv624/lazarus/corporate_dome)
 "dwb" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_central_jungle)
 "dws" = (
 /obj/structure/stairs/perspective{
@@ -15958,6 +15958,10 @@
 	icon_state = "wall3"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"jWW" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirtgrassborder/east,
+/area/lv624/ground/jungle/south_central_jungle)
 "jXT" = (
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/north_east_jungle)
@@ -16365,6 +16369,9 @@
 "ldZ" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_jungle)
+"leP" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/lv624/ground/jungle/south_central_jungle)
 "lfy" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/west,
@@ -32266,7 +32273,7 @@ qIO
 qIO
 qIO
 qtj
-tsa
+qtj
 dwb
 rox
 wqz
@@ -32494,8 +32501,8 @@ qIO
 qIO
 aXH
 wGX
-dwb
-kxI
+jWW
+leP
 kxI
 wbK
 rHp

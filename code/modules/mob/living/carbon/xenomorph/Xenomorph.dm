@@ -349,11 +349,12 @@
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 
-	var/datum/hive_status/hive
 	if(old_xeno && old_xeno.hivenumber)
-		hive = GLOB.hive_datum[old_xeno.hivenumber]
+		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
-		hive = GLOB.hive_datum[hivenumber]
+		src.hivenumber = hivenumber
+
+	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 
 	if(hive)
 		hive.add_xeno(src)
@@ -365,7 +366,6 @@
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
 	if(old_xeno)
-		src.hivenumber = old_xeno.hivenumber
 		src.nicknumber = old_xeno.nicknumber
 		src.life_kills_total = old_xeno.life_kills_total
 		src.life_damage_taken_total = old_xeno.life_damage_taken_total

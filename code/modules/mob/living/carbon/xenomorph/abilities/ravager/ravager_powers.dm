@@ -171,7 +171,7 @@
 	for (var/step in 0 to 3)
 		temp = get_step(turf, facing)
 		if(facing in GLOB.diagonals) // check if it goes through corners
-			var/reverse_face = reverse_dir[facing]
+			var/reverse_face = GLOB.reverse_dir[facing]
 
 			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
 			var/turf/back_right = get_step(temp, turn(reverse_face, -45))

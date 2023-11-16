@@ -78,7 +78,14 @@ export const VerticalPanel = (
 const HexScrew = () => {
   return (
     <svg viewBox="0 0 10 10" width="30px" height="30px">
-      <circle cx="5" cy="5" r="4" fill="#202020" />
+      <circle
+        cx="5"
+        cy="5"
+        r="4"
+        fill="#202020"
+        stroke="#505050"
+        strokeWidth="0.5"
+      />
       <polygon
         points="3.5,2.5 6.5,2.5 8,5 6.5,7.5 3.5,7.5 2,5"
         fill="#040404"

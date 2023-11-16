@@ -1,134 +1,3 @@
-
-/datum/camera_manager
-	var/map_name
-	var/datum/shape/rectangle/current_area
-	var/atom/movable/screen/map_view/cam_screen
-	var/atom/movable/screen/background/cam_background
-	var/list/range_turfs = list()
-	/// The turf where the camera was last updated.
-	var/turf/last_camera_turf
-	var/target_x
-	var/target_y
-	var/target_z
-	var/list/cam_plane_masters
-
-/datum/camera_manager/New(map_ref)
-	map_name = map_ref
-	cam_screen = new
-	cam_screen.name = "screen"
-	cam_screen.assigned_map = map_name
-	cam_screen.del_on_map_removal = FALSE
-	cam_screen.screen_loc = "[map_name]:1,1"
-	cam_background = new
-	cam_background.assigned_map = map_name
-	cam_background.del_on_map_removal = FALSE
-
-	cam_plane_masters = list()
-	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
-		var/atom/movable/screen/plane_master/instance = new plane()
-		add_plane(instance)
-
-/datum/camera_manager/Destroy(force, ...)
-	. = ..()
-	range_turfs = null
-	current_area = null
-	QDEL_NULL(cam_background)
-	QDEL_NULL(cam_screen)
-	QDEL_LIST(cam_plane_masters)
-
-/datum/camera_manager/proc/add_plane(atom/movable/screen/plane_master/instance)
-	instance.assigned_map = map_name
-	instance.del_on_map_removal = FALSE
-	if(instance.blend_mode_override)
-		instance.blend_mode = instance.blend_mode_override
-	instance.screen_loc = "[map_name]:CENTER"
-	cam_plane_masters += instance
-
-/datum/camera_manager/proc/register(mob/user)
-	var/client/user_client = user.client
-	if(!user_client)
-		return
-	user_client.register_map_obj(cam_background)
-	user_client.register_map_obj(cam_screen)
-	for(var/plane in cam_plane_masters)
-		user_client.register_map_obj(plane)
-
-/datum/camera_manager/proc/clear_camera()
-	current_area = null
-	target_x = null
-	target_y = null
-	target_z = null
-	update_active_camera()
-
-/datum/camera_manager/proc/set_camera(atom/target, w, h)
-	set_camera_rect(target.x, target.y, target.z, w, h)
-
-/datum/camera_manager/proc/set_camera_rect(x, y, z, w, h)
-	current_area = RECT(x, y, w, h)
-	target_x = x
-	target_y = y
-	target_z = z
-	update_active_camera()
-
-/datum/camera_manager/proc/enable_nvg(power, matrixcol)
-	var/color_matrix = color_matrix_multiply(
-		color_matrix_saturation(1),
-		color_matrix_rotate_x(-1*(20.8571-1.57143*power)),
-		color_matrix_from_string(matrixcol))
-	for(var/atom/movable/screen/plane_master/nvg_plane/plane in cam_plane_masters)
-		log_debug("updating [plane] with [color_matrix]")
-		animate(plane, color=color_matrix, time=0, easing=LINEAR_EASING)
-
-/datum/camera_manager/proc/disable_nvg()
-	for(var/atom/movable/screen/plane_master/nvg_plane/plane in cam_plane_masters)
-		log_debug("removing [plane]")
-		animate(plane, color=null, time=0, easing=LINEAR_EASING)
-
-/**
- * Set the displayed camera to the static not-connected.
- */
-/datum/camera_manager/proc/show_camera_static()
-	cam_screen.vis_contents.Cut()
-	last_camera_turf = null
-	cam_background.icon_state = "scanline2"
-	cam_background.fill_rect(1, 1, 15, 15)
-
-/datum/camera_manager/proc/update_active_camera()
-	// Show static if can't use the camera
-	if(!current_area || !target_z)
-		show_camera_static()
-		return
-
-	// If we're not forcing an update for some reason and the cameras are in the same location,
-	// we don't need to update anything.
-	// Most security cameras will end here as they're not moving.
-	var/turf/new_location = locate(target_x, target_y, target_z)
-	if(last_camera_turf == new_location)
-		return
-
-	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
-	last_camera_turf = new_location
-
-	var/x_size = current_area.width
-	var/y_size = current_area.height
-	var/turf/target = locate(current_area.center_x, current_area.center_y, target_z)
-	var/list/guncamera_zone = range("[x_size]x[y_size]", target)
-
-	var/list/visible_turfs = list()
-
-	for(var/turf/visible_turf in guncamera_zone)
-		visible_turfs += visible_turf
-
-	var/list/bbox = get_bbox_of_atoms(visible_turfs)
-	var/size_x = bbox[3] - bbox[1] + 1
-	var/size_y = bbox[4] - bbox[2] + 1
-	cam_screen.icon = null
-	cam_screen.icon_state = "clear"
-	cam_screen.vis_contents = visible_turfs
-	cam_background.icon_state = "clear"
-	cam_background.fill_rect(1, 1, size_x, size_y)
-
-
 /obj/structure/machinery/computer/dropship_weapons
 	name = "abstract dropship weapons controls"
 	desc = "A computer to manage equipment, weapons and simulations installed on the dropship."
@@ -160,10 +29,10 @@
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 	// Cameras
-	var/datum/camera_manager/cam_manager
 	var/camera_target_id
 	var/camera_width = 11
 	var/camera_height = 11
+	var/camera_map_name
 
 	var/registered = FALSE
 
@@ -172,14 +41,23 @@
 	simulation = new()
 	tacmap = new(src, minimap_type)
 
+	RegisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED, PROC_REF(camera_mapname_update))
+
 	// camera setup
-	cam_manager = new("dropship_camera_[REF(src)]_map")
-	cam_manager.show_camera_static()
+	AddComponent(/datum/component/camera_manager)
+	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
 	if(firemission_envelope)
 		firemission_envelope.linked_console = src
+
+/obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
+	camera_map_name = value
+
+/obj/structure/machinery/computer/dropship_weapons/Destroy()
+	. = ..()
+	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -267,12 +145,13 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		cam_manager.register(user)
+		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
 
 /obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
 	. = ..()
+	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	if(simulation.looking_at_simulation)
 		simulation.stop_watching(user)
 
@@ -293,7 +172,7 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
 	.["tactical_map_ref"] = tacmap.map_holder.map_ref
-	.["camera_map_ref"] = cam_manager.map_name
+	.["camera_map_ref"] = camera_map_name
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
 	. = list()
@@ -437,13 +316,7 @@
 					if (defense.has_camera)
 						defense.set_range()
 						var/datum/shape/rectangle/current_bb = defense.range_bounds
-						cam_manager.set_camera_rect(
-							current_bb.center_x,
-							current_bb.center_y,
-							defense.loc.z,
-							current_bb.width,
-							current_bb.height
-						)
+						SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, current_bb.center_x, current_bb.center_y, defense.loc.z, current_bb.width, current_bb.height)
 				return TRUE
 
 		if("clear-camera")
@@ -461,7 +334,7 @@
 					var/target_ref = params["ref"]
 					medevac.automate_interact(user, target_ref)
 					if(medevac.linked_stretcher)
-						cam_manager.set_camera(medevac.linked_stretcher, 5, 5)
+						SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, medevac.linked_stretcher, 5, 5)
 				return TRUE
 		if("fulton-target")
 			var/equipment_tag = params["equipment_id"]
@@ -513,10 +386,10 @@
 			return TRUE
 
 		if("nvg-enable")
-			cam_manager.enable_nvg(5, "#7aff7a")
+			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
 			return TRUE
 		if("nvg-disable")
-			cam_manager.disable_nvg()
+			SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR_NVG)
 			return TRUE
 
 		if("firemission-edit")
@@ -572,12 +445,16 @@
 	var/datum/cas_signal/target = get_cas_signal(target_ref)
 	camera_target_id = target_ref
 	if(!target)
-		cam_manager.show_camera_static()
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 		return
+
+	var/cam_width = camera_width
+	var/cam_height = camera_height
 	if(upgraded == MATRIX_WIDE)
-		cam_manager.set_camera(target.linked_cam, camera_width * 1.5, camera_height * 1.5)
-	else
-		cam_manager.set_camera(target.linked_cam, camera_width, camera_height)
+		cam_width = cam_width * 1.5
+		cam_height = cam_height * 1.5
+
+	SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, target.linked_cam, cam_width, cam_height)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
 	. = 0
@@ -848,8 +725,6 @@
 		to_chat(camera_operator, SPAN_WARNING("Guidance is not selected or lost."))
 		return FALSE
 
-	firemission_envelope.add_camera_manager_to_tracking(cam_manager)
-
 	to_chat(camera_operator, "You peek through the guidance camera.")
 	return TRUE
 
@@ -938,7 +813,6 @@
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
 	. = ..()
-	QDEL_NULL(cam_manager)
 	QDEL_NULL(firemission_envelope)
 	QDEL_NULL(tacmap)
 

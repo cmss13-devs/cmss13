@@ -1,28 +1,22 @@
 /obj/effect/firemission_guidance
 	invisibility = 101
 	var/list/mob/users
-	var/list/datum/camera_manager/camera_managers
 	var/camera_width = 11
 	var/camera_height = 11
 
 /obj/effect/firemission_guidance/New()
 	..()
 	users = list()
-	camera_managers = list()
 
 /obj/effect/firemission_guidance/Destroy(force)
 	. = ..()
 	users = null
-	camera_managers = null
 
-/obj/effect/firemission_guidance/proc/updateCameras()
-	for(var/datum/camera_manager/manager as anything in camera_managers)
-		manager.set_camera(src, camera_width, camera_height)
+/obj/effect/firemission_guidance/proc/updateCameras(atom/target)
+	SEND_SIGNAL(target, COMSIG_CAMERA_SET_TARGET, src, camera_width, camera_height)
 
-/obj/effect/firemission_guidance/proc/clearCameras()
-	for(var/datum/camera_manager/manager as anything in camera_managers)
-		manager.show_camera_static()
-	camera_managers = list()
+/obj/effect/firemission_guidance/proc/clearCameras(atom/target)
+	SEND_SIGNAL(target, COMSIG_CAMERA_CLEAR)
 
 /datum/cas_fire_mission
 	var/mission_length = 3 //can be 3,4,6 or 12

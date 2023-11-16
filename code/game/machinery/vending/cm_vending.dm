@@ -443,7 +443,44 @@ GLOBAL_LIST_EMPTY(vending_products)
 //------------TGUI PROCS---------------
 
 /obj/structure/machinery/cm_vending/ui_data(mob/user)
-	return vendor_user_ui_data(user)
+	if(vend_flags & VEND_LIMITED_INVENTORY)
+		return vendor_inventory_ui_data(user)
+
+	. = list()
+	var/list/ui_listed_products = get_listed_products(user)
+	// list format
+	// (
+	// name: str
+	// cost
+	// item reference
+	// allowed to buy flag
+	// item priority (mandatory/recommended/regular)
+	// )
+
+	var/list/stock_values = list()
+
+	var/mob/living/carbon/human/marine = user
+	var/points = 0
+
+	if(instanced_vendor_points)
+		points = available_points_to_display
+	else
+		if(use_snowflake_points)
+			points = marine.marine_snowflake_points
+		else if(use_points)
+			points = marine.marine_points
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
+		var/prod_available = FALSE
+		var/p_cost = myprod[2]
+		var/category = myprod[4]
+		if(points >= p_cost && (!category || ((category in marine.marine_buyable_categories) && (marine.marine_buyable_categories[category]))))
+			prod_available = TRUE
+		stock_values += list(prod_available)
+
+	.["stock_listing"] = stock_values
+	.["current_m_points"] = points
 
 /obj/structure/machinery/cm_vending/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -1122,46 +1159,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		var/p_amount = myprod[2] //amount left
 		ui_categories += list(p_amount)
 	.["stock_listing"] = ui_categories
-
-/obj/structure/machinery/cm_vending/proc/vendor_user_ui_data(mob/user)
-	if(vend_flags & VEND_LIMITED_INVENTORY)
-		return vendor_inventory_ui_data(user)
-
-	. = list()
-	var/list/ui_listed_products = get_listed_products(user)
-	// list format
-	// (
-	// name: str
-	// cost
-	// item reference
-	// allowed to buy flag
-	// item priority (mandatory/recommended/regular)
-	// )
-
-	var/list/stock_values = list()
-
-	var/mob/living/carbon/human/marine = user
-	var/points = 0
-
-	if(instanced_vendor_points)
-		points = available_points_to_display
-	else
-		if(use_snowflake_points)
-			points = marine.marine_snowflake_points
-		else if(use_points)
-			points = marine.marine_points
-
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
-		var/prod_available = FALSE
-		var/p_cost = myprod[2]
-		var/category = myprod[4]
-		if(points >= p_cost && (!category || ((category in marine.marine_buyable_categories) && (marine.marine_buyable_categories[category]))))
-			prod_available = TRUE
-		stock_values += list(prod_available)
-
-	.["stock_listing"] = stock_values
-	.["current_m_points"] = points
 
 /obj/structure/machinery/cm_vending/proc/vendor_successful_vend(list/itemspec, mob/living/carbon/human/user)
 	if(stat & IN_USE)

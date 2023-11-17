@@ -698,5 +698,5 @@
 	set name = "View Xeno Tacmap"
 	set desc = "This opens a tactical map, where you can see where every xenomorph is."
 	set category = "Alien"
-
 	hive.tacmap.tgui_interact(src)
+

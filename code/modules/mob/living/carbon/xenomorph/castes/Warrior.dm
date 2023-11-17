@@ -73,7 +73,7 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/movable_atom, lunge)
-	if (!check_state() || agility)
+	if (!check_state())
 		return FALSE
 
 	if(!isliving(movable_atom))

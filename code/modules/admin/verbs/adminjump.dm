@@ -15,11 +15,17 @@
 	if(!src.mob)
 		return
 
+	var/list/area_turfs = get_area_turfs(A)
+
+	if(!length(area_turfs))
+		to_chat(src, "There aren't any turfs in this area!")
+		return
+
 	if(!isobserver(mob))
 		src.admin_ghost()
 
 	src.mob.on_mob_jump()
-	src.mob.forceMove(pick(get_area_turfs(A)))
+	src.mob.forceMove(pick(area_turfs))
 
 	message_admins(WRAP_STAFF_LOG(usr, "jumped to area [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
 

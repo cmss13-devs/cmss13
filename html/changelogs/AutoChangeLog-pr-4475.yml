@@ -1,0 +1,5 @@
+author: "Cthulhu80, Drathek"
+delete-after: True
+changes:
+  - rscadd: "Adds drawing to tactical maps, viewable via stat panel for marines and xeno tacmap for xenos."
+  - bugfix: "Corrupted (and other hives) now have separate tactical maps."

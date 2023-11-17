@@ -214,3 +214,31 @@
 2023-11-16:
   fira:
   - bugfix: Rooting effects should now properly update when stacked and unstacked.
+2023-11-17:
+  Birdtalon:
+  - bugfix: Lurker can no longer tail jab through doors/structures.
+  - code_imp: Var disambiguation, cleanup and removal of redundant typechecks in lurker
+      code.
+  - bugfix: Adds missing newline when viewing sec records as observer.
+  - bugfix: Fixes posters in CL office displaying IO description.
+  - code_imp: Replaces single letter var in hivelord code
+  - code_imp: Replaces single letter vars in ravager code
+  - code_imp: Refactors vending machine global scope procs
+  Doubleumc:
+  - rscadd: vehicles can be followed by ghosts
+  SpartanBobby, GDS Pathe:
+  - maptweak: Updates bigred floortiles
+  - maptweak: Re-adds reactor to bigred
+  Steelpoint:
+  - maptweak: LV-624's Caves have had an aesthetic change regarding jungle tiles and
+      flora.
+  casperr04:
+  - bugfix: Removes the ability to fulton bodies that can still be revived
+  fira:
+  - admin: VV 'Modify Transform' can now be used to flip objects.
+  - bugfix: Horizontal Almayer walls no longer change icon randomly, and now properly
+      display damage overlays.
+  realforest2001:
+  - rscadd: Faxes sent from HighCom fax machines now appear in their correct category.
+  sleepynecrons:
+  - imageadd: fixes biosuit body sprite not properly covering mobs

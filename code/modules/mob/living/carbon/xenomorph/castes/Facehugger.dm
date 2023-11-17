@@ -40,7 +40,6 @@
 	counts_for_slots = FALSE
 	counts_for_roundend = FALSE
 	refunds_larva_if_banished = FALSE
-	can_hivemind_speak = FALSE
 	/// The lifetime hugs from this hugger
 	var/total_facehugs = 0
 	/// How many hugs the hugger needs to age
@@ -59,6 +58,10 @@
 
 	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
+
+/mob/living/carbon/xenomorph/facehugger/say()
+	to_chat(src, SPAN_DANGER("Your psychic power isn't strong enough to communicate."))
+	return
 
 /mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

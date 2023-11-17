@@ -306,12 +306,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	player_entity = setup_player_entity(ckey)
 
-	if(!CONFIG_GET(flag/no_localhost_rank))
-		var/static/list/localhost_addresses = list("127.0.0.1", "::1")
-		if(isnull(address) || (address in localhost_addresses))
-			var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
-			admin.associate(src)
-			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
+	if(check_localhost_status())
+		var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
+		admin.associate(src)
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
@@ -792,3 +789,29 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		xeno_prefix = "XX"
 	if(!xeno_postfix || xeno_name_ban)
 		xeno_postfix = ""
+
+/client/proc/check_whitelist_status(flag_to_check)
+	if(check_localhost_status())
+		return TRUE
+
+	if((flag_to_check & WHITELIST_MENTOR) && CLIENT_IS_MENTOR(src))
+		return TRUE
+
+	if((flag_to_check & WHITELIST_JOE) && CLIENT_IS_STAFF(src))
+		return TRUE
+
+	var/datum/entity/player/player = get_player_from_key(ckey)
+	if(!player)
+		return FALSE
+
+	return player.check_whitelist_status(flag_to_check)
+
+/client/proc/check_localhost_status()
+	if(CONFIG_GET(flag/no_localhost_rank))
+		return FALSE
+
+	var/static/list/localhost_addresses = list("127.0.0.1", "::1")
+	if(isnull(address) || (address in localhost_addresses))
+		return TRUE
+
+	return FALSE

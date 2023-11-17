@@ -37,7 +37,6 @@ var/global/players_preassigned = 0
 	var/list/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
 	var/list/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
 	var/list/roles_for_mode //Derived list of roles only for the game mode, generated when the round starts.
-	var/list/roles_whitelist //Associated list of lists, by ckey. Checks to see if a person is whitelisted for a specific role.
 	var/list/castes_by_path //Master list generated when role aithority is created, listing every caste by path.
 	var/list/castes_by_name //Master list generated when role authority is created, listing every default caste by name.
 
@@ -117,8 +116,9 @@ var/global/players_preassigned = 0
 		squads += S
 		squads_by_type[S.type] = S
 
-	load_whitelist()
+/* TODO: delete this
 
+	load_whitelist()
 
 /datum/authority/branch/role/proc/load_whitelist(filename = "config/role_whitelist.txt")
 	var/L[] = file2list(filename)
@@ -167,6 +167,7 @@ var/global/players_preassigned = 0
 		W[ckey] = role
 
 	roles_whitelist = W
+*/
 
 //#undef FACTION_TO_JOIN
 
@@ -413,7 +414,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(!J.can_play_role(M.client))
 		return FALSE
-	if(J.flags_startup_parameters & ROLE_WHITELISTED && !(roles_whitelist[M.ckey] & J.flags_whitelist))
+	if(J.flags_startup_parameters & ROLE_WHITELISTED && !(M.client.check_whitelist_status(J.flags_whitelist)))
 		return FALSE
 	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
 		return FALSE
@@ -516,7 +517,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
 
 	var/job_whitelist = new_job.title
-	var/whitelist_status = new_job.get_whitelist_status(roles_whitelist, new_human.client)
+	var/whitelist_status = new_job.get_whitelist_status(new_human.client)
 
 	if(whitelist_status)
 		job_whitelist = "[new_job.title][whitelist_status]"

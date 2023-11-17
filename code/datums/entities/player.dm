@@ -5,6 +5,9 @@
 	var/last_known_ip
 	var/last_known_cid
 
+	var/whitelist_status
+	var/whitelist_flags
+
 	var/discord_link_id
 
 	var/last_login
@@ -63,6 +66,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
+		"whitelist_status" = DB_FIELDTYPE_STRING_MAX,
 		"discord_link_id" = DB_FIELDTYPE_BIGINT,
 		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
 		"is_time_banned" = DB_FIELDTYPE_INT,
@@ -321,20 +325,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			value.delete()
 			job_bans -= value
 
-/datum/entity/player/proc/load_refs()
-	if(refs_loaded)
-		return
-	while(!notes_loaded || !jobbans_loaded)
-		stoplag()
-	for(var/key in job_bans)
-		var/datum/entity/player_job_ban/value = job_bans[key]
-		if(istype(value))
-			value.load_refs()
-	for(var/datum/entity/player_note/note in notes)
-		if(istype(note))
-			note.load_refs()
-	refs_loaded = TRUE
-
 /datum/entity_meta/player/on_read(datum/entity/player/player)
 	player.job_bans = list()
 	player.notes = list()
@@ -391,7 +381,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(discord_link_id)
 		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
+	if(whitelist_status)
+		var/list/whitelists = splittext(whitelist_status, "|")
 
+		for(var/whitelist in whitelists)
+			if(whitelist in GLOB.bitfields["whitelist_status"])
+				whitelist_flags |= GLOB.bitfields["whitelist_status"]["[whitelist]"]
 
 /datum/entity/player/proc/on_read_notes(list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE
@@ -657,6 +652,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		stat.stat_number += num
 	stat.save()
 
+/datum/entity/player/proc/check_whitelist_status(flag_to_check)
+	if(whitelist_flags & flag_to_check)
+		return TRUE
+
+	return FALSE
+
 /datum/entity_link/player_to_banning_admin
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player
@@ -685,6 +686,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	var/last_known_cid
 	var/last_known_ip
 	var/discord_link_id
+	var/whitelist_status
 
 /datum/entity_view_meta/players
 	root_record_type = /datum/entity/player
@@ -702,4 +704,5 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"last_known_ip",
 		"last_known_cid",
 		"discord_link_id",
+		"whitelist_status"
 		)

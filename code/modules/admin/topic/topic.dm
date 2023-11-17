@@ -39,6 +39,18 @@
 		show_player_panel(M)
 		return
 
+	if(href_list["change_whitelist"])
+		var/target_ckey = href_list["change_whitelist"]
+		if(target_ckey == TRUE)
+			target_ckey = ckey(tgui_input_text(usr, "Which CKEY do you want to edit?", "Select CKEY"))
+
+			if(!target_ckey || target_ckey == TRUE)
+				return
+
+		var/datum/entity/player/player = get_player_from_key(target_ckey)
+
+		var/flags = input_bitfield(usr, "Select Flags", "whitelist_status", player.whitelist_flags)
+
 	if(href_list["editrights"])
 		if(!check_rights(R_PERMISSIONS))
 			message_admins("[key_name_admin(usr)] attempted to edit the admin permissions without sufficient rights.")

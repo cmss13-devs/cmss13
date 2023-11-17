@@ -19,16 +19,16 @@
 		"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/councillor
 	)
 
-/datum/job/civilian/synthetic/get_whitelist_status(list/roles_whitelist, client/player)
+/datum/job/civilian/synthetic/get_whitelist_status(client/player)
 	. = ..()
 	if(!.)
 		return
 
-	if(roles_whitelist[player.ckey] & WHITELIST_SYNTHETIC_LEADER)
+	if(player.check_whitelist_status(WHITELIST_SYNTHETIC_LEADER))
 		return get_desired_status(player.prefs.synth_status, WHITELIST_LEADER)
-	else if(roles_whitelist[player.ckey] & (WHITELIST_SYNTHETIC_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL_LEGACY))
+	if(player.check_whitelist_status(WHITELIST_SYNTHETIC_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL_LEGACY))
 		return get_desired_status(player.prefs.synth_status, WHITELIST_COUNCIL)
-	else if(roles_whitelist[player.ckey] & WHITELIST_SYNTHETIC)
+	if(player.check_whitelist_status(WHITELIST_SYNTHETIC))
 		return get_desired_status(player.prefs.synth_status, WHITELIST_NORMAL)
 
 /datum/job/civilian/synthetic/set_spawn_positions(count)

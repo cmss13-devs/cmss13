@@ -61,7 +61,7 @@
 			possible_synth_survivors -= A
 			continue
 
-		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
+		if(A.current.client?.check_whitelist_status(WHITELIST_SYNTHETIC))
 			if(A in possible_survivors)
 				continue //they are already applying to be a survivor
 			else

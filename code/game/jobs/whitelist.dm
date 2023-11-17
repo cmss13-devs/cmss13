@@ -42,11 +42,12 @@ GLOBAL_LIST_FILE_LOAD(alien_whitelist, "config/alienwhitelist.txt")
 
 /// returns a list of strings containing the whitelists held by a specific ckey
 /proc/get_whitelisted_roles(ckey)
-	if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_PREDATOR)
+	var/datum/entity/player/player = get_player_from_key(ckey)
+	if(player.check_whitelist_status(WHITELIST_YAUTJA))
 		LAZYADD(., "predator")
-	if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_COMMANDER)
+	if(player.check_whitelist_status(WHITELIST_COMMANDER))
 		LAZYADD(., "commander")
-	if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_SYNTHETIC)
+	if(player.check_whitelist_status(WHITELIST_SYNTHETIC))
 		LAZYADD(., "synthetic")
 
 #undef WHITELISTFILE

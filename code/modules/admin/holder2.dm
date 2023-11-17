@@ -47,7 +47,6 @@ GLOBAL_PROTECT(href_token)
 		owner = C
 		owner.admin_holder = src
 		owner.add_admin_verbs()
-		owner.add_admin_whitelists()
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
 		GLOB.admins |= C

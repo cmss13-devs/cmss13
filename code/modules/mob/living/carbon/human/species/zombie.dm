@@ -53,9 +53,6 @@
 	if(zombie.glasses) zombie.drop_inv_item_on_ground(zombie.glasses, FALSE, TRUE)
 	if(zombie.wear_mask) zombie.drop_inv_item_on_ground(zombie.wear_mask, FALSE, TRUE)
 
-//	if(zombie.lying)
-//		zombie.lying = FALSE
-
 	var/obj/item/weapon/zombie_claws/ZC = new(zombie)
 	ZC.icon_state = "claw_r"
 	zombie.equip_to_slot_or_del(ZC, WEAR_R_HAND, TRUE)

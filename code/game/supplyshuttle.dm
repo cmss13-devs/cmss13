@@ -372,7 +372,7 @@ var/datum/controller/supply/supply_controller = new()
 	/// Current supply points
 	var/points = 0
 	/// Multiplier to the amount of points awarded based on marine scale
-	var/points_scale = 90
+	var/points_scale = 120
 	var/points_per_process = 1.5
 	var/points_per_slip = 1
 	var/points_per_crate = 2

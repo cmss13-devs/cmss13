@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "Cloaked lurker devouring now shows a message to target again."

@@ -1,4 +1,0 @@
-author: "Doubleumc"
-delete-after: True
-changes:
-  - rscadd: "vehicles can be followed by ghosts"

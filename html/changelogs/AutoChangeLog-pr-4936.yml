@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Horizontal Almayer walls no longer change icon randomly, and now properly display damage overlays."

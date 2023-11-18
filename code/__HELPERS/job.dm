@@ -14,17 +14,7 @@
 		all_jobs += new jobtype
 	return all_jobs
 
-
 /proc/get_all_centcom_jobs() return list()
-
-//gets the actual job rank (ignoring alt titles)
-//this is used solely for sechuds
-/obj/proc/GetJobRealName()
-	if (!istype(src,/obj/item/card/id)) return
-	var/obj/item/card/id/I = src
-	if(I.rank in GLOB.joblist) return I.rank
-	if(I.assignment in GLOB.joblist) return I.assignment
-	return "Unknown"
 
 /proc/get_all_job_icons() return GLOB.joblist + list("Prisoner")//For all existing HUD icons
 

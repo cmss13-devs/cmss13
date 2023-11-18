@@ -50,6 +50,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 						/datum/equipment_preset/survivor/miner,
 						/datum/equipment_preset/survivor/colonial_marshal,
 						/datum/equipment_preset/survivor/engineer,
+						/datum/equipment_preset/survivor/security
 
 */
 
@@ -256,36 +257,42 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	add_survivor_weapon_civilian(new_human)
 
 	..()
+
+// 8 -- Security Survivor
+
+/datum/equipment_preset/survivor/security
+	name = "Survivor - Security"
+	assignment = "Security"
+	skills = /datum/skills/civilian/survivor/marshal
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/data
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_COMMAND)
+
+	survivor_variant = SECURITY_SURVIVOR
+
+/datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(new_human), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(new_human), WEAR_HEAD)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine(new_human), WEAR_R_STORE)
+	add_survivor_weapon_security(new_human)
+	..()
+
 /*
 Everything bellow is a parent used as a base for one or multiple maps.
 */
 
-// ----- Interstellar Human Rights Survivor
-
-// Used in Sorokyne Strata and Fiorina Science Annex.
-/datum/equipment_preset/survivor/interstellar_human_rights_observer
-	name = "Survivor - Interstellar Human Rights Observer"
-	assignment = "Interstellar Human Rights Observer(Colony)"
-	skills = /datum/skills/civilian/survivor
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
-
-/datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	add_random_cl_survivor_loot(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
-	add_survivor_weapon_civilian(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
-
-	..()
-
-
 // ----- CL Survivor
+
 // Used in Solaris Ridge and LV-624.
 
 /datum/equipment_preset/survivor/corporate
@@ -334,52 +341,10 @@ Everything bellow is a parent used as a base for one or multiple maps.
 				return paygrade
 	return paygrade
 
-// ----- Security Survivor
-/*
-
-present in xenomorph.dm file
-
-var/list/survivor_types = list(
-		/datum/equipment_preset/survivor/scientist,
-		/datum/equipment_preset/survivor/doctor,
-		/datum/equipment_preset/survivor/security,
-		/datum/equipment_preset/survivor/engineer
-	)
-
-and is used as a base for all of the maps.
-
-*/
-
-/datum/equipment_preset/survivor/security
-	name = "Survivor - Security"
-	assignment = "Security"
-	skills = /datum/skills/civilian/survivor/marshal
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	idtype = /obj/item/card/id/data
-	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_COMMAND)
-
-	survivor_variant = SECURITY_SURVIVOR
-
-/datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(new_human), WEAR_HEAD)
-	if(new_human.disabilities & NEARSIGHTED)
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(new_human), WEAR_EYES)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine(new_human), WEAR_R_STORE)
-	add_survivor_weapon_security(new_human)
-	..()
-
 // ---- Trucker Survivor
 
 // Used in Kutjevo Refinery, LV-624, New Varadero, Solaris Ridge and Trijent Dam.
+
 /datum/equipment_preset/survivor/trucker
 	name = "Survivor - Trucker"
 	assignment = "Trucker"
@@ -403,9 +368,58 @@ and is used as a base for all of the maps.
 
 	..()
 
-// ----- CL Survivor
+// -- Flight Control Operator
 
-// Used in Trijent Dam and New Varadero
+// Used in Solaris Ridge.
+
+/datum/equipment_preset/survivor/flight_control_operator
+	name = "Survivor - Flight Control Operator"
+	assignment = "Flight Control Operator"
+	skills = /datum/skills/civilian/survivor/trucker
+	idtype = /obj/item/card/id/data
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS)
+
+/datum/equipment_preset/survivor/engineer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/lawyer/bluesuit(new_human), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headset(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	add_survivor_weapon_civilian(new_human)
+
+	..()
+
+// ----- Interstellar Human Rights Survivor
+
+// Used in Sorokyne Strata and Fiorina Science Annex.
+/datum/equipment_preset/survivor/interstellar_human_rights_observer
+	name = "Survivor - Interstellar Human Rights Observer"
+	assignment = "Interstellar Human Rights Observer(Colony)"
+	skills = /datum/skills/civilian/survivor
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
+
+/datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(new_human), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	add_random_cl_survivor_loot(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
+	add_survivor_weapon_civilian(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
+
+	..()
+
+
+// ----- Interstellar Commerce Commission Survivor
+
+// Used in Trijent Dam and New Varadero.
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"

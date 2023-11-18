@@ -1113,8 +1113,8 @@
 	var/list/faction_groups = human.faction_group
 	if(faction_groups)
 		allied_factions = faction_groups.Copy()
-		if(!(H.faction in allied_factions))
-			allied_factions += H.faction
+		if(!(human.faction in allied_factions))
+			allied_factions += human.faction
 
 /datum/hive_status/corrupted/tamed/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()

@@ -262,7 +262,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 // ----- Interstellar Human Rights Survivor
 
-// it's used as a base for soro map.
+// Used in Sorokyne Strata and Fiorina Science Annex.
 /datum/equipment_preset/survivor/interstellar_human_rights_observer
 	name = "Survivor - Interstellar Human Rights Observer"
 	assignment = "Interstellar Human Rights Observer(Colony)"
@@ -286,7 +286,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 
 // ----- CL Survivor
-//used as a base for shiva and solaris spawn.
+// Used in Solaris Ridge and LV-624.
 
 /datum/equipment_preset/survivor/corporate
 	name = "Survivor - Corporate Liaison"
@@ -312,9 +312,9 @@ Everything bellow is a parent used as a base for one or multiple maps.
 		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
 	add_random_cl_survivor_loot(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	add_survivor_weapon_civilian(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
 
@@ -379,7 +379,7 @@ and is used as a base for all of the maps.
 
 // ---- Trucker Survivor
 
-// it's used as a base for kutjevo lv nv solaris and trijent maps.
+// Used in Kutjevo Refinery, LV-624, New Varadero, Solaris Ridge and Trijent Dam.
 /datum/equipment_preset/survivor/trucker
 	name = "Survivor - Trucker"
 	assignment = "Trucker"
@@ -405,7 +405,7 @@ and is used as a base for all of the maps.
 
 // ----- CL Survivor
 
-//this is used as a base for corsat and nv
+// Used in Trijent Dam and New Varadero
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
@@ -429,7 +429,7 @@ and is used as a base for all of the maps.
 		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)

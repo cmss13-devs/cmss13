@@ -866,10 +866,10 @@
 
 	return TRUE
 
-/datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)
-	var/mob/living/carbon/xenomorph/facehugger/hugger = new /mob/living/carbon/xenomorph/facehugger(A.loc, null, hivenumber)
+/datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/atom)
+	var/mob/living/carbon/xenomorph/facehugger/hugger = new /mob/living/carbon/xenomorph/facehugger(atom.loc, null, hivenumber)
 	user.mind.transfer_to(hugger, TRUE)
-	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
+	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of [atom]!"), SPAN_XENODANGER("You emerge out of [atom] and awaken from your slumber. For the Hive!"))
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
@@ -1093,45 +1093,45 @@
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
 	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
 
-/datum/hive_status/corrupted/tamed/proc/make_leader(mob/living/carbon/human/H)
-	if(!istype(H))
+/datum/hive_status/corrupted/tamed/proc/make_leader(mob/living/carbon/human/human)
+	if(!istype(human))
 		return
 
 	if(leader)
 		UnregisterSignal(leader, COMSIG_PARENT_QDELETING)
 
-	leader = H
+	leader = human
 	RegisterSignal(leader, COMSIG_PARENT_QDELETING, PROC_REF(handle_qdelete))
 
-/datum/hive_status/corrupted/tamed/proc/handle_qdelete(mob/living/carbon/human/H)
+/datum/hive_status/corrupted/tamed/proc/handle_qdelete(mob/living/carbon/human/human)
 	SIGNAL_HANDLER
 
-	if(H == leader)
+	if(human == leader)
 		leader = null
 
-	var/list/faction_groups = H.faction_group
+	var/list/faction_groups = human.faction_group
 	if(faction_groups)
 		allied_factions = faction_groups.Copy()
 		if(!(H.faction in allied_factions))
 			allied_factions += H.faction
 
-/datum/hive_status/corrupted/tamed/add_xeno(mob/living/carbon/xenomorph/X)
+/datum/hive_status/corrupted/tamed/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
-	X.faction_group = allied_factions
+	xeno.faction_group = allied_factions
 
-/datum/hive_status/corrupted/tamed/remove_xeno(mob/living/carbon/xenomorph/X, hard)
+/datum/hive_status/corrupted/tamed/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
 	. = ..()
-	X.faction_group = list(X.faction)
+	xeno.faction_group = list(xeno.faction)
 
-/datum/hive_status/corrupted/tamed/is_ally(mob/living/carbon/C)
+/datum/hive_status/corrupted/tamed/is_ally(mob/living/carbon/carbon)
 	if(leader)
-		if(C.faction in leader.faction_group)
+		if(carbon.faction in leader.faction_group)
 			return TRUE
 
-		if(C.faction == leader.faction)
+		if(carbon.faction == leader.faction)
 			return TRUE
 	else
-		if(C.faction in allied_factions)
+		if(carbon.faction in allied_factions)
 			return TRUE
 
 	return ..()

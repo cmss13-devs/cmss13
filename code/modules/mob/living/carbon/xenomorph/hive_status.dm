@@ -495,55 +495,55 @@
 /datum/hive_status/proc/get_xeno_info()
 	var/list/xenos = list()
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
-			var/area/A = get_area(X)
-			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
+	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
+		if(is_admin_level(xeno.z))
+			var/area/area = get_area(xeno)
+			if(!(area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		var/xeno_name = X.name
+		var/xeno_name = xeno.name
 		// goddamn fucking larvas with their weird ass maturing system
 		// its name updates with its icon, unlike other castes which only update the mature/elder, etc. prefix on evolve
-		if(istype(X, /mob/living/carbon/xenomorph/larva))
-			xeno_name = "Larva ([X.nicknumber])"
-		xenos["[X.nicknumber]"] = list(
+		if(istype(xeno, /mob/living/carbon/xenomorph/larva))
+			xeno_name = "Larva ([xeno.nicknumber])"
+		xenos["[xeno.nicknumber]"] = list(
 			"name" = xeno_name,
-			"strain" = X.mutation_type,
-			"ref" = "\ref[X]"
+			"strain" = xeno.mutation_type,
+			"ref" = "\ref[xeno]"
 		)
 
 	return xenos
 
-/datum/hive_status/proc/set_hive_location(obj/effect/alien/resin/special/pylon/core/C)
-	if(!C || C == hive_location)
+/datum/hive_status/proc/set_hive_location(obj/effect/alien/resin/special/pylon/core/hive_core)
+	if(!hive_core || hive_core == hive_location)
 		return
-	var/area/A = get_area(C)
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has set the hive location as \the [A]."), 3, hivenumber)
-	hive_location = C
+	var/area/area = get_area(hive_core)
+	xeno_message(SPAN_XENOANNOUNCE("The Queen has set the hive location as [area]."), 3, hivenumber)
+	hive_location = hive_core
 	hive_ui.update_hive_location()
 
 // Returns a list of xeno healths and locations
 /datum/hive_status/proc/get_xeno_vitals()
 	var/list/xenos = list()
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
-			var/area/A = get_area(X)
-			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
+	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
+		if(is_admin_level(xeno.z))
+			var/area/area = get_area(xeno)
+			if(!(area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		if(!(X in GLOB.living_xeno_list))
+		if(!(xeno in GLOB.living_xeno_list))
 			continue
 
-		var/area/A = get_area(X)
+		var/area/area = get_area(xeno)
 		var/area_name = "Unknown"
-		if(A)
-			area_name = A.name
+		if(area)
+			area_name = area.name
 
-		xenos["[X.nicknumber]"] = list(
-			"health" = round((X.health / X.maxHealth) * 100, 1),
+		xenos["[xeno.nicknumber]"] = list(
+			"health" = round((xeno.health / xeno.maxHealth) * 100, 1),
 			"area" = area_name,
-			"is_ssd" = (!X.client)
+			"is_ssd" = (!xeno.client)
 		)
 
 	return xenos
@@ -623,14 +623,14 @@
 /datum/hive_status/proc/has_structure(structure_name)
 	if(!structure_name)
 		return FALSE
-	if(hive_structures[structure_name] && hive_structures[structure_name].len)
+	if(hive_structures[structure_name] && length(hive_structures[structure_name]))
 		return TRUE
 	return FALSE
 
-/datum/hive_status/proc/add_construction(obj/effect/alien/resin/construction/S)
-	if(!S || !S.template)
+/datum/hive_status/proc/add_construction(obj/effect/alien/resin/construction/construction)
+	if(!construction || !construction.template)
 		return FALSE
-	var/name_ref = initial(S.template.name)
+	var/name_ref = initial(construction.template.name)
 	if(!hive_constructions[name_ref])
 		hive_constructions[name_ref] = list()
 	if(hive_constructions[name_ref].len >= hive_structures_limit[name_ref])
@@ -638,52 +638,52 @@
 	hive_constructions[name_ref] += src
 	return TRUE
 
-/datum/hive_status/proc/remove_construction(obj/effect/alien/resin/construction/S)
-	if(!S || !S.template)
+/datum/hive_status/proc/remove_construction(obj/effect/alien/resin/construction/construction)
+	if(!construction || !construction.template)
 		return FALSE
-	var/name_ref = initial(S.template.name)
+	var/name_ref = initial(construction.template.name)
 	hive_constructions[name_ref] -= src
 	return TRUE
 
-/datum/hive_status/proc/add_special_structure(obj/effect/alien/resin/special/S)
-	if(!S)
+/datum/hive_status/proc/add_special_structure(obj/effect/alien/resin/special/construction)
+	if(!construction)
 		return FALSE
-	var/name_ref = initial(S.name)
+	var/name_ref = initial(construction.name)
 	if(!hive_structures[name_ref])
 		hive_structures[name_ref] = list()
-	if(hive_structures[name_ref].len >= hive_structures_limit[name_ref])
+	if(length(hive_structures[name_ref]) >= hive_structures_limit[name_ref])
 		return FALSE
-	hive_structures[name_ref] += S
+	hive_structures[name_ref] += construction
 	return TRUE
 
-/datum/hive_status/proc/remove_special_structure(obj/effect/alien/resin/special/S)
-	if(!S)
+/datum/hive_status/proc/remove_special_structure(obj/effect/alien/resin/special/construction)
+	if(!construction)
 		return FALSE
-	var/name_ref = initial(S.name)
-	hive_structures[name_ref] -= S
+	var/name_ref = initial(construction.name)
+	hive_structures[name_ref] -= construction
 	return TRUE
 
 /datum/hive_status/proc/has_special_structure(name_ref)
-	if(!name_ref || !hive_structures[name_ref] || !hive_structures[name_ref].len)
+	if(!name_ref || !hive_structures[name_ref] || length(!hive_structures[name_ref]))
 		return 0
-	return hive_structures[name_ref].len
+	return length(hive_structures[name_ref])
 
 /datum/hive_status/proc/abandon_on_hijack()
 	var/area/hijacked_dropship = get_area(living_xeno_queen)
 	var/shipside_humans_weighted_count = 0
 	var/xenos_count = 0
 	for(var/name_ref in hive_structures)
-		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
-			if(get_area(S) == hijacked_dropship)
+		for(var/obj/effect/alien/resin/special/construction in hive_structures[name_ref])
+			if(get_area(construction) == hijacked_dropship)
 				continue
-			S.hijack_delete = TRUE
-			hive_structures[name_ref] -= S
-			qdel(S)
+			construction.hijack_delete = TRUE
+			hive_structures[name_ref] -= construction
+			qdel(construction)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				if(xeno.stomach_contents.len)
+				if(length(xeno.stomach_contents))
 					xeno.devour_timer = 0
 					xeno.handle_stomach_contents()
 				qdel(xeno)
@@ -693,7 +693,7 @@
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				if(xeno.stomach_contents.len)
+				if(length(xeno.stomach_contents))
 					xeno.devour_timer = 0
 					xeno.handle_stomach_contents()
 				qdel(xeno)
@@ -701,14 +701,14 @@
 			continue
 		if(xeno.tier >= 1)
 			xenos_count++
-	for(var/i in GLOB.alive_mob_list)
-		var/mob/living/potential_host = i
+	for(var/alive_mob in GLOB.alive_mob_list)
+		var/mob/living/potential_host = alive_mob
 		if(!(potential_host.status_flags & XENO_HOST))
 			continue
 		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
 			continue
-		var/obj/item/alien_embryo/A = locate() in potential_host
-		if(A && A.hivenumber != hivenumber)
+		var/obj/item/alien_embryo/alien_embryo = locate() in potential_host
+		if(alien_embryo && alien_embryo.hivenumber != hivenumber)
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
@@ -727,9 +727,9 @@
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
-/datum/hive_status/proc/free_respawn(client/C)
+/datum/hive_status/proc/free_respawn(client/client)
 	stored_larva++
-	if(!hive_location || !hive_location.spawn_burrowed_larva(C.mob))
+	if(!hive_location || !hive_location.spawn_burrowed_larva(client.mob))
 		stored_larva--
 	else
 		hive_ui.update_burrowed_larva()
@@ -775,8 +775,8 @@
 	if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 		qdel(new_xeno)
 		return FALSE
-	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of \the [spawning_turf]!"),
-	SPAN_XENODANGER("You burrow out of \the [spawning_turf] and awaken from your slumber. For the Hive!"))
+	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of [spawning_turf]!"),
+	SPAN_XENODANGER("You burrow out of [spawning_turf] and awaken from your slumber. For the Hive!"))
 	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
 	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
@@ -796,9 +796,9 @@
 
 /datum/hive_status/proc/is_ally(mob/living/living_mob)
 	if(isxeno(living_mob))
-		var/mob/living/carbon/xenomorph/zenomorf = living_mob
-		if(zenomorf.hivenumber == hivenumber)
-			return !zenomorf.banished
+		var/mob/living/carbon/xenomorph/xeno = living_mob
+		if(xeno.hivenumber == hivenumber)
+			return !xeno.banished
 
 	if(!living_mob.faction)
 		return FALSE

@@ -217,7 +217,7 @@
 		else
 			X.armor_deflection_buff += 30
 			X.armor_explosive_buff += 60
-			X.frozen = TRUE
+			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 			X.anchored = TRUE
 			X.small_explosives_stun = FALSE
 			X.update_canmove()
@@ -228,7 +228,7 @@
 		X.fortify = TRUE
 	else
 		to_chat(X, SPAN_XENOWARNING("You resume your normal stance."))
-		X.frozen = FALSE
+		REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 		X.anchored = FALSE
 		if(X.mutation_type == DEFENDER_STEELCREST)
 			X.armor_deflection_buff -= 10

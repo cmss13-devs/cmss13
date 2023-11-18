@@ -36331,11 +36331,9 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/obj/structure/sign/poster{
-	desc = "A large piece of cheap printed paper. This one proudly demands that you REMEMBER IO!";
-	icon_state = "poster14";
-	name = "propaganda poster";
-	pixel_y = 32
+/obj/structure/sign/poster/io{
+	pixel_y = 32;
+	name = "propaganda poster"
 	},
 /obj/structure/sign/safety/escapepod{
 	pixel_x = -17
@@ -39271,11 +39269,9 @@
 /obj/structure/machinery/photocopier{
 	anchored = 0
 	},
-/obj/structure/sign/poster{
-	desc = "A large piece of cheap printed paper. This one proudly demands that you REMEMBER IO!";
-	icon_state = "poster14";
-	name = "propaganda poster";
-	pixel_y = 32
+/obj/structure/sign/poster/io{
+	pixel_y = 32;
+	name = "propaganda poster"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)

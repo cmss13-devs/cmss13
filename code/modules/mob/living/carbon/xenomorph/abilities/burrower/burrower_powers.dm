@@ -35,7 +35,6 @@
 		return
 	// TODO Make immune to all damage here.
 	to_chat(src, SPAN_XENOWARNING("You burrow yourself into the ground."))
-	frozen = TRUE
 	invisibility = 101
 	anchored = TRUE
 	density = FALSE
@@ -45,6 +44,7 @@
 				COMSIG_LIVING_FLAMER_CROSSED,
 				COMSIG_LIVING_FLAMER_FLAMED,
 		), PROC_REF(flamer_crossed_immune))
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Burrow"))
 	ADD_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
 	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
@@ -74,9 +74,9 @@
 				COMSIG_LIVING_FLAMER_CROSSED,
 				COMSIG_LIVING_FLAMER_FLAMED,
 		))
+	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Burrow"))
 	REMOVE_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
 	REMOVE_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_ABILITY("Burrow"))
-	frozen = FALSE
 	invisibility = FALSE
 	anchored = FALSE
 	density = TRUE
@@ -166,9 +166,7 @@
 /mob/living/carbon/xenomorph/proc/do_tunnel(turf/T)
 	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))
 	anchored = FALSE
-	unfreeze()
 	forceMove(T)
-	UnregisterSignal(src, COMSIG_LIVING_FLAMER_FLAMED)
 	burrow_off()
 
 /mob/living/carbon/xenomorph/proc/do_tunnel_cooldown()

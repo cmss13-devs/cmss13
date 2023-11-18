@@ -374,6 +374,8 @@ function draw_debug() {
 	document.getElementById("statcontent").appendChild(table3);
 }
 function draw_status() {
+	var status_tab_map_href_exception =
+		"<a href='?MapView=1'>View Tactical Map</a>";
 	if (!document.getElementById("Status")) {
 		createStatusTab("Status");
 		current_tab = "Status";
@@ -384,6 +386,13 @@ function draw_status() {
 			document
 				.getElementById("statcontent")
 				.appendChild(document.createElement("br"));
+		} else if (
+			// hardcoded because merely using .includes() to test for a href seems unreliable for some reason.
+			status_tab_parts[i] == status_tab_map_href_exception
+		) {
+			var maplink = document.createElement("a");
+			maplink.innerHTML = status_tab_parts[i];
+			document.getElementById("statcontent").appendChild(maplink);
 		} else {
 			var div = document.createElement("div");
 			div.textContent = status_tab_parts[i];

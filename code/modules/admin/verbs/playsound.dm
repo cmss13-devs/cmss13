@@ -132,9 +132,9 @@
 		if((client?.prefs.toggles_sound & SOUND_INTERNET) && (client?.prefs.toggles_sound & sound_type))
 			if(must_send_assets)
 				SSassets.transport.send_assets(client, asset_name)
-				client?.tgui_panel?.play_music(web_sound_url, music_extra_data)
-				if(announce_title)
-					to_chat(client, SPAN_BOLDANNOUNCE("An admin played: [music_extra_data["title"]]"), confidential = TRUE)
+			client?.tgui_panel?.play_music(web_sound_url, music_extra_data)
+			if(announce_title)
+				to_chat(client, SPAN_BOLDANNOUNCE("An admin played: [music_extra_data["title"]]"), confidential = TRUE)
 		else
 			client?.tgui_panel?.stop_music()
 

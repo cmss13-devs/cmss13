@@ -136,7 +136,7 @@
 
 	for(var/mob/mob as anything in targets)
 		var/client/client = mob?.client
-		if((client?.prefs?.toggles_sound & SOUND_INTERNET) && (client?.prefs?.toggles_sound & sound_type))
+		if((client?.prefs?.toggles_sound & SOUND_MIDI) && (client?.prefs?.toggles_sound & sound_type))
 			if(must_send_assets)
 				SSassets.transport.send_assets(client, asset_name)
 			client?.tgui_panel?.play_music(web_sound_url, music_extra_data)

@@ -305,9 +305,6 @@
 	name = "vending"
 
 /datum/asset/spritesheet/vending_products/register()
-	log_debug("[type] is registering.")
-	stack_trace("[type] is registering.") // Remove these after testing - Morrow
-
 	for (var/k in GLOB.vending_products)
 		var/atom/item = k
 		var/icon_file = initial(item.icon)

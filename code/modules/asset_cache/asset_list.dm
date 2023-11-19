@@ -18,12 +18,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	GLOB.asset_datums[type] = src
 	register()
 
-/datum/asset/Destroy(force, ...)
-	. = ..()
-
-	log_debug("[type] has been destroyed.")
-	stack_trace("[type] has been destroyed.") // Remove these after testing - Morrow
-
 /datum/asset/proc/get_url_mappings()
 	return list()
 

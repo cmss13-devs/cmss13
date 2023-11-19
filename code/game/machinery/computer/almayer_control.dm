@@ -141,7 +141,7 @@
 				idcard = human_user.wear_id
 			if(!istype(idcard))
 				bio_fail = TRUE
-			if(!check_biometrics(human_user))
+			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
 			if(bio_fail)
 				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))

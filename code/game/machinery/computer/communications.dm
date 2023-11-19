@@ -156,14 +156,16 @@
 		if("evacuation_cancel")
 			var/mob/living/carbon/human/human_user = usr
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
 			if(!istype(idcard))
 				idcard = human_user.wear_id
-				if(!istype(idcard))
-					to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
-					return FALSE
-				if(!check_biometrics(human_user))
-					to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
-					return FALSE
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
 
 			if(state == STATE_EVACUATION_CANCEL)
 				if(!SShijack.cancel_evacuation())

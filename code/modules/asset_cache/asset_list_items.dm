@@ -305,6 +305,9 @@
 	name = "vending"
 
 /datum/asset/spritesheet/vending_products/register()
+	log_debug("[type] is registering.")
+	stack_trace("[type] is registering.") // Remove these after testing - Morrow
+
 	for (var/k in GLOB.vending_products)
 		var/atom/item = k
 		var/icon_file = initial(item.icon)
@@ -315,7 +318,9 @@
 			log_debug("not atom! [item]")
 			continue
 
-		if (sprites[icon_file])
+		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
+
+		if(sprites[imgid])
 			continue
 
 		if(icon_state in icon_states(icon_file))
@@ -339,7 +344,6 @@
 				item = new k()
 				I = icon(item.icon, item.icon_state, SOUTH)
 				qdel(item)
-		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
 
 		Insert(imgid, I)
 	return ..()

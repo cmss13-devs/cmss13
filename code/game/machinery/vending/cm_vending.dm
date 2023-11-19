@@ -534,7 +534,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 								vend_fail()
 								return FALSE
 							var/obj/item/card/id/ID = user.wear_id
-							if(!istype(ID) || ID.check_biometrics(user))
+							if(!istype(ID) || !ID.check_biometrics(user))
 								to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 								return FALSE
 							var/specialist_assignment

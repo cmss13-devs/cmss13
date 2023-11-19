@@ -105,8 +105,8 @@
 /obj/structure/machinery/cryopod/evacuation/ex_act(severity)
 	return FALSE
 
-/obj/structure/machinery/cryopod/evacuation/attackby(obj/item/grab/G, mob/user)
-	if(istype(G))
+/obj/structure/machinery/cryopod/evacuation/attackby(obj/item/grab/the_grab, mob/user)
+	if(istype(the_grab))
 		if(user.is_mob_incapacitated() || !(ishuman(user)))
 			return FALSE
 
@@ -122,16 +122,19 @@
 			to_chat(user, SPAN_WARNING("The cryo pod is not responding to commands!"))
 			return FALSE
 
-		var/mob/living/carbon/human/M = G.grabbed_thing
-		if(!istype(M))
+		var/mob/living/carbon/human/grabbed_mob = the_grab.grabbed_thing
+		if(!istype(grabbed_mob))
+			return FALSE
+		if(grabbed_mob.stat == DEAD) //This mob is dead
+			to_chat(user, SPAN_WARNING("[src] immediately rejects [grabbed_mob]. \He passed away!"))
 			return FALSE
 
-		visible_message(SPAN_WARNING("[user] starts putting [M.name] into the cryo pod."), null, null, 3)
+		visible_message(SPAN_WARNING("[user] starts putting [grabbed_mob.name] into the cryo pod."), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			if(!M || !G || !G.grabbed_thing || !G.grabbed_thing.loc || G.grabbed_thing != M)
+			if(!grabbed_mob || !the_grab || !the_grab.grabbed_thing || !the_grab.grabbed_thing.loc || the_grab.grabbed_thing != grabbed_mob)
 				return FALSE
-			move_mob_inside(M)
+			move_mob_inside(grabbed_mob)
 			injector_name = user.real_name
 
 /obj/structure/machinery/cryopod/evacuation/eject()
@@ -189,6 +192,7 @@
 	if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		user.stop_pulling()
 		move_mob_inside(user)
+		injector_name = user.real_name
 
 /obj/structure/machinery/cryopod/evacuation/attack_alien(mob/living/carbon/xenomorph/user)
 	if(being_forced)

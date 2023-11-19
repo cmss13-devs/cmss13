@@ -920,6 +920,20 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/aft_hallway)
+"acS" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = -29
+	},
+/turf/open/floor/almayer{
+	icon_state = "silver"
+	},
+/area/almayer/command/cichallway)
 "acU" = (
 /obj/structure/closet/basketball,
 /turf/open/floor/almayer{
@@ -4088,15 +4102,6 @@
 	icon_state = "bluecorner"
 	},
 /area/almayer/hallways/aft_hallway)
-"aox" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
-/area/almayer/command/cichallway)
 "aoy" = (
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 8;
@@ -27424,6 +27429,10 @@
 	},
 /mob/living/simple_animal/cat/Jones{
 	dir = 8
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 28;
+	pixel_x = -1
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -52995,6 +53004,17 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/airoom)
+"mRp" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
+/turf/open/floor/almayer,
+/area/almayer/hull/upper_hull/u_f_s)
 "mRQ" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -54752,9 +54772,6 @@
 /obj/item/storage/box/drinkingglasses{
 	pixel_x = -1;
 	pixel_y = 2
-	},
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -61870,11 +61887,6 @@
 "qCi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = -28
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
@@ -76988,8 +77000,8 @@
 	pixel_y = 24;
 	density = 0
 	},
-/obj/item/paper_bin/uscm{
-	pixel_y = 0
+/obj/item/paper_bin{
+	pixel_y = 28
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/commandbunks)
@@ -100761,7 +100773,7 @@ pCi
 kwS
 avl
 avl
-lIh
+mRp
 agj
 nCx
 hvH
@@ -101381,7 +101393,7 @@ mXj
 mXj
 mXj
 agj
-amI
+aic
 aov
 wVW
 awA
@@ -101584,7 +101596,7 @@ nCU
 faE
 aDl
 agj
-aic
+amI
 aov
 wVW
 wVW
@@ -101787,8 +101799,8 @@ ako
 tYM
 hGB
 agj
-aox
-aov
+aic
+acS
 wVW
 asQ
 awG

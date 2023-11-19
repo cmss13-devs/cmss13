@@ -337,8 +337,8 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/rifle/sniper/xm43e1
-	name = "\improper XM43E1 experimental anti-materiel rifle"
+/obj/item/weapon/gun/rifle/sniper/XM42B
+	name = "\improper XM42B experimental anti-materiel rifle"
 	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "xm42b"
@@ -353,7 +353,7 @@
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
-	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
+	starting_attachment_types = list(/obj/item/attachable/pmc_sniperbarrel)
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
@@ -415,7 +415,7 @@
 	force = 17
 	zoomdevicename = "scope"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
-	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
+	starting_attachment_types = list(/obj/item/attachable/pmc_sniperbarrel)
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"

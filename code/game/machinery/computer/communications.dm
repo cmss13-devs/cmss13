@@ -154,6 +154,17 @@
 			state = STATE_EVACUATION
 
 		if("evacuation_cancel")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+				if(!istype(idcard))
+					to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+					return FALSE
+				if(!check_biometrics(human_user))
+					to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+					return FALSE
+
 			if(state == STATE_EVACUATION_CANCEL)
 				if(!SShijack.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))

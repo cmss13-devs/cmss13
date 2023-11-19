@@ -97,6 +97,8 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	time_till_despawn = 6000000 //near infinite so despawn never occurs.
+	/// The name of the mob who injected the occupant into the pod. If it does not match the occupant, the occupant can leave.
+	var/injector_name
 	var/being_forced = 0 //Simple variable to prevent sound spam.
 	var/dock_state = STATE_IDLE
 
@@ -105,6 +107,9 @@
 
 /obj/structure/machinery/cryopod/evacuation/attackby(obj/item/grab/G, mob/user)
 	if(istype(G))
+		if(user.is_mob_incapacitated() || !(ishuman(user)))
+			return FALSE
+
 		if(being_forced)
 			to_chat(user, SPAN_WARNING("There's something forcing it open!"))
 			return FALSE
@@ -127,6 +132,7 @@
 			if(!M || !G || !G.grabbed_thing || !G.grabbed_thing.loc || G.grabbed_thing != M)
 				return FALSE
 			move_mob_inside(M)
+			injector_name = user.real_name
 
 /obj/structure/machinery/cryopod/evacuation/eject()
 	set name = "Eject Pod"
@@ -136,17 +142,24 @@
 	if(!occupant || !usr.stat || usr.is_mob_restrained())
 		return FALSE
 
-	if(occupant) //Once you're in, you cannot exit, and outside forces cannot eject you.
-		//The occupant is actually automatically ejected once the evac is canceled.
-		if(occupant != usr) to_chat(usr, SPAN_WARNING("You are unable to eject the occupant unless the evacuation is canceled."))
-
 	add_fingerprint(usr)
+	//Once you're in, you cannot exit, and outside forces cannot eject you.
+	//The occupant is actually automatically ejected once the evac is canceled.
+	if(occupant != usr)
+		to_chat(usr, SPAN_WARNING("You are unable to eject the occupant unless the evacuation is canceled."))
+		return FALSE
+	if(occupant.real_name != injector_name)
+		go_out()
+	else
+		to_chat(usr, SPAN_WARNING("You are unable to leave the [src] until evacuation completes, or is cancelled!."))
+		return FALSE
 
 /obj/structure/machinery/cryopod/evacuation/go_out() //When the system ejects the occupant.
 	if(occupant)
 		occupant.forceMove(get_turf(src))
 		occupant.in_stasis = FALSE
 		occupant = null
+		injector_name = null
 		icon_state = orient_right ? "body_scanner_open-r" : "body_scanner_open"
 
 /obj/structure/machinery/cryopod/evacuation/move_inside()

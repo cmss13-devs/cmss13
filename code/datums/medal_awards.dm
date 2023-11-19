@@ -173,9 +173,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		user.visible_message("ERROR: ID card not registered in USCM registry. Potential medal fraud detected.")
 		return
 
-	var/real_owner_ref = card.registered_ref
-
-	if(real_owner_ref != WEAKREF(user))
+	if(!card.check_biometrics(user))
 		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
 		return
 

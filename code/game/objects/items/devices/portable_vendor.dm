@@ -44,7 +44,7 @@
 	if(!ishuman(user))
 		return
 
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/human_user = user
 
 	src.add_fingerprint(usr)
 
@@ -56,17 +56,17 @@
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
-	var/obj/item/card/id/I = H.wear_id
-	if(!istype(I)) //not wearing an ID
-		to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+	var/obj/item/card/id/idcard = human_user.wear_id
+	if(!istype(idcard)) //not wearing an ID
+		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected"))
 		return
 
-	if(I.registered_name != H.real_name)
-		to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+	if(!idcard.check_biometrics(human_user))
+		to_chat(human_user, SPAN_WARNING("Wrong ID card owner detected."))
 		return
 
-	if(req_role && I.rank != req_role)
-		to_chat(H, SPAN_WARNING("This device isn't for you."))
+	if(req_role && idcard.rank != req_role)
+		to_chat(human_user, SPAN_WARNING("This device isn't for you."))
 		return
 
 

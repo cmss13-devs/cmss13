@@ -159,8 +159,9 @@
 /obj/structure/closet/proc/take_damage(damage)
 	health = max(health - damage, 0)
 	if(health <= 0)
-		for(var/atom/movable/A as anything in src)
-			A.forceMove(src.loc)
+		if(loc)
+			for(var/atom/movable/movable as anything in src)
+				movable.forceMove(loc)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 		qdel(src)
 

@@ -92,7 +92,7 @@
 	user.lighting_alpha = 127
 	user.sync_lighting_plane_alpha()
 	user.overlay_fullscreen("vulture_spotter", /atom/movable/screen/fullscreen/vulture/spotter)
-	user.freeze()
+	ADD_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Vulture spotter"))
 	user.status_flags |= IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] looks through [src]."),SPAN_NOTICE("You look through [src], ready to go!"))
 	user.forceMove(loc)
@@ -105,7 +105,7 @@
 /obj/structure/vulture_spotter_tripod/on_unset_interaction(mob/user)
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] looks up from [src]."),SPAN_NOTICE("You look up from [src]."))
-	user.unfreeze()
+	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Vulture spotter"))
 	user.reset_view(null)
 	user.Move(get_step(src, reverse_direction(src.dir)))
 	user.client?.change_view(world_view_size, src)

@@ -72,9 +72,9 @@
 		return FALSE
 
 	// Create their vis object if needed
-	if(!xeno.backpack_icon_carrier)
-		xeno.backpack_icon_carrier = new(null, xeno)
-		xeno.vis_contents += xeno.backpack_icon_carrier
+	if(!xeno.backpack_icon_holder)
+		xeno.backpack_icon_holder = new(null, xeno)
+		xeno.vis_contents += xeno.backpack_icon_holder
 
 	target_mob.put_in_back(src)
 	return FALSE
@@ -1126,6 +1126,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	max_storage_space = 21
 	camo_alpha = 10
+
+/obj/item/storage/backpack/marine/satchel/scout_cloak/upp/weak
+	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units. This one is less effective than normal."
+	actions_types = null
 
 //----------TWE SECTION----------
 /obj/item/storage/backpack/rmc

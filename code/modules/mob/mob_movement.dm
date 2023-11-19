@@ -142,6 +142,12 @@
 
 	if(mob.is_mob_incapacitated(TRUE))
 		return
+
+	if(mob.buckled)
+		// Handle buckled relay before mobility because buckling inherently immobilizes
+		// This means you can (try to) move with a cargo tug or powerloader while immobilized, which i think makes sense
+		return mob.buckled.relaymove(mob, direct)
+
 	if(!(living_mob.mobility_flags & MOBILITY_MOVE))
 		return
 	if(living_mob.body_position == LYING_DOWN && !living_mob.can_crawl)
@@ -159,9 +165,6 @@
 	if(SEND_SIGNAL(mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct) & COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
-
-	if(mob.buckled)
-		return mob.buckled.relaymove(mob, direct)
 
 	if(!mob.z)//Inside an object, tell it we moved
 		var/atom/O = mob.loc

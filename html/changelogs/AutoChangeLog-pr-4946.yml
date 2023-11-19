@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "Jump-to-area verb will now warn you if there aren't any turfs in the given area."

@@ -385,6 +385,75 @@
 			ui_delete_firemission(user, name)
 			return TRUE
 
+		if("firemission-dual-offset-camera")
+			var/target_id = params["target_id"]
+
+			var/x_offset_value = params["x_offset_value"]
+			var/y_offset_value = params["y_offset_value"]
+
+			var/datum/cas_iff_group/cas_group = cas_groups[faction]
+			var/datum/cas_signal/cas_sig
+			for(var/X in cas_group.cas_signals)
+				var/datum/cas_signal/LT = X
+				if(LT.target_id == target_id  && LT.valid_signal())
+					cas_sig = LT
+					break
+			if(!cas_sig)
+				return TRUE
+
+			// find position of cas_sig with offset dir and value applied
+			var/dx = text2num(x_offset_value)
+			var/dy = text2num(y_offset_value)
+
+			var/obj/current = cas_sig.signal_loc
+			var/obj/new_target = locate(
+				current.x + dx,
+				current.y + dy,
+				current.z)
+
+			firemission_envelope.change_current_loc(new_target)
+
+			return TRUE
+		if("firemission-offset-camera")
+			var/target_id = params["target_id"]
+			var/offset_direction = params["offset_direction"]
+			var/offset_value = params["offset_value"]
+
+			var/datum/cas_iff_group/cas_group = cas_groups[faction]
+			var/datum/cas_signal/cas_sig
+			for(var/X in cas_group.cas_signals)
+				var/datum/cas_signal/LT = X
+				if(LT.target_id == target_id  && LT.valid_signal())
+					cas_sig = LT
+					break
+			if(!cas_sig)
+				return TRUE
+
+			// find position of cas_sig with offset dir and value applied
+			var/dx = 0
+			var/dy = 0
+			var/offset_dir = text2num(offset_direction)
+
+			if (offset_dir == NORTH)
+				dy += text2num(offset_value)
+			else if (offset_dir == NORTH)
+				dy -= text2num(offset_value)
+			else if (offset_dir == WEST)
+				dx -= text2num(offset_value)
+			else if (offset_dir == EAST)
+				dx += text2num(offset_value)
+
+
+			var/obj/current = cas_sig.signal_loc
+			var/obj/new_target = locate(
+				current.x + dx,
+				current.y + dy,
+				current.z)
+
+			firemission_envelope.change_current_loc(new_target)
+
+			return TRUE
+
 		if("nvg-enable")
 			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
 			return TRUE
@@ -419,6 +488,7 @@
 				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
 				return FALSE
 			if(!initiate_firemission(user, fm_tag, text2num(offset_direction), text2num(offset_value)))
+				to_chat(user, SPAN_WARNING("initiate fail"))
 				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
 				return FALSE
 			return TRUE
@@ -731,35 +801,44 @@
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission(mob/user, fmId, direction, offset)
 	set waitfor = 0
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	log_debug("initiate 1")
 	if (!istype(dropship))
-		return
+		return FALSE
+	log_debug("initiate 2")
 	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("Has to be in Fly By mode"))
-		return
+		return FALSE
+	log_debug("initiate 3")
 	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.get_total_duration())
 		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
-		return
-
+		return FALSE
+	log_debug("initiate 4")
 	var/result = firemission_envelope.execute_firemission(firemission_envelope.recorded_loc, offset, direction, fmId)
 	if(result<1)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 	else
 		update_trace_loc()
+	log_debug("initiate 5")
+	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_location(mob/user, new_location)
 	var/result = firemission_envelope.change_target_loc(new_location)
 	if(result<1)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
+		return FALSE
 	else
 		update_trace_loc()
+	return TRUE
 
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_direction(mob/user, new_direction)
 	var/result = firemission_envelope.change_direction(new_direction)
 	if(result<1)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
+		return FALSE
 	else
 		update_trace_loc()
+	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc(mob/user)
 	if(!firemission_envelope)
@@ -798,6 +877,7 @@
 		firemission_envelope.change_current_loc()
 	else
 		firemission_envelope.change_current_loc(shootloc)
+	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/dropship1
 	name = "\improper 'Alamo' weapons controls"

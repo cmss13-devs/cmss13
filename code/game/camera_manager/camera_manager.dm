@@ -1,5 +1,11 @@
+#define DEFAULT_MAP_SIZE 15
+
+#define RENDER_MODE_TARGET 1
+#define RENDER_MODE_AREA 2
+
 /datum/component/camera_manager
 	var/map_name
+	var/obj/structure/machinery/camera/current
 	var/datum/shape/rectangle/current_area
 	var/atom/movable/screen/map_view/cam_screen
 	var/atom/movable/screen/background/cam_background
@@ -9,7 +15,11 @@
 	var/target_x
 	var/target_y
 	var/target_z
+	var/target_width
+	var/target_height
 	var/list/cam_plane_masters
+	var/isXRay = FALSE
+	var/render_mode = RENDER_MODE_TARGET
 
 /datum/component/camera_manager/Initialize()
 	. = ..()
@@ -80,31 +90,42 @@
 
 	UnregisterSignal(parent, COMSIG_CAMERA_REGISTER_UI)
 	UnregisterSignal(parent, COMSIG_CAMERA_UNREGISTER_UI)
-
 	UnregisterSignal(parent, COMSIG_CAMERA_SET_NVG)
 	UnregisterSignal(parent, COMSIG_CAMERA_CLEAR_NVG)
-
 	UnregisterSignal(parent, COMSIG_CAMERA_SET_AREA)
 	UnregisterSignal(parent, COMSIG_CAMERA_SET_TARGET)
 	UnregisterSignal(parent, COMSIG_CAMERA_CLEAR)
 
 /datum/component/camera_manager/proc/clear_camera()
 	current_area = null
+	current = null
 	target_x = null
 	target_y = null
 	target_z = null
-	update_active_camera()
+	target_width = null
+	target_height = null
+	show_camera_static()
 
 /datum/component/camera_manager/proc/set_camera(source, atom/target, w, h)
-	log_debug("setting camera from [source] to [target]")
-	set_camera_rect(source, target.x, target.y, target.z, w, h)
+	render_mode = RENDER_MODE_TARGET
+	if(current)
+		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
+	current = target
+	target_width = w
+	target_height = h
+	RegisterSignal(current, COMSIG_PARENT_QDELETING, PROC_REF(show_camera_static))
+	update_target_camera()
 
 /datum/component/camera_manager/proc/set_camera_rect(source, x, y, z, w, h)
+	render_mode = RENDER_MODE_AREA
+	if(current)
+		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
+	current = null
 	current_area = RECT(x, y, w, h)
 	target_x = x
 	target_y = y
 	target_z = z
-	update_active_camera()
+	update_area_camera()
 
 /datum/component/camera_manager/proc/enable_nvg(source, power, matrixcol)
 	for(var/plane_id in cam_plane_masters)
@@ -133,9 +154,36 @@
 	cam_screen.vis_contents.Cut()
 	last_camera_turf = null
 	cam_background.icon_state = "scanline2"
-	cam_background.fill_rect(1, 1, 15, 15)
+	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
 
-/datum/component/camera_manager/proc/update_active_camera()
+/datum/component/camera_manager/proc/update_target_camera()
+	// Show static if can't use the camera
+	if(!current?.can_use())
+		show_camera_static()
+		return
+
+	// Is this camera located in or attached to a living thing, Vehicle or helmet? If so, assume the camera's loc is the living (or non) thing.
+	var/cam_location = current
+	if(isliving(current.loc) || isVehicle(current.loc))
+		cam_location = current.loc
+	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
+		cam_location = helmet.loc
+
+	// If we're not forcing an update for some reason and the cameras are in the same location,
+	// we don't need to update anything.
+	// Most security cameras will end here as they're not moving.
+	var/newturf = get_turf(cam_location)
+	if(last_camera_turf == newturf)
+		return
+
+	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
+	last_camera_turf = get_turf(cam_location)
+
+	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
+	render_objects(visible_things)
+
+/datum/component/camera_manager/proc/update_area_camera()
 	// Show static if can't use the camera
 	if(!current_area || !target_z)
 		show_camera_static()
@@ -154,19 +202,23 @@
 	var/x_size = current_area.width
 	var/y_size = current_area.height
 	var/turf/target = locate(current_area.center_x, current_area.center_y, target_z)
-	var/list/guncamera_zone = range("[x_size]x[y_size]", target)
 
+	var/list/visible_things = isXRay ? range("[x_size]x[y_size]", target) : view("[x_size]x[y_size]", target)
+	src.render_objects(visible_things)
+
+/datum/component/camera_manager/proc/render_objects(list/visible_things)
 	var/list/visible_turfs = list()
-
-	for(var/turf/visible_turf in guncamera_zone)
+	for(var/turf/visible_turf in visible_things)
 		visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
 	var/size_y = bbox[4] - bbox[2] + 1
-	cam_screen.icon = null
-	cam_screen.icon_state = "clear"
+
 	cam_screen.vis_contents = visible_turfs
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
 
+#undef DEFAULT_MAP_SIZE
+#undef RENDER_MODE_TARGET
+#undef RENDER_MODE_AREA

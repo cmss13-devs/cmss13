@@ -1,8 +1,8 @@
 import { range } from 'common/collections';
 import { useBackend, useLocalState, useSharedState } from '../../backend';
-import { Box, Icon, NumberInput, Stack } from '../../components';
+import { Box, Icon, Stack } from '../../components';
 import { MfdProps, MfdPanel } from './MultifunctionDisplay';
-import { mfdState } from './stateManagers';
+import { mfdState, useFiremissionXOffsetValue, useFiremissionYOffsetValue, useLazeTarget } from './stateManagers';
 import { dirMap, EquipmentContext, FiremissionContext, TargetContext } from './types';
 
 const directionLookup = new Map<string, number>();
@@ -20,18 +20,6 @@ const useStrikeMode = (context) => {
   return {
     strikeMode: data,
     setStrikeMode: set,
-  };
-};
-
-const useLazeTarget = (context) => {
-  const [data, set] = useSharedState<number | undefined>(
-    context,
-    'laze-target',
-    undefined
-  );
-  return {
-    selectedTarget: data,
-    setSelectedTarget: set,
   };
 };
 
@@ -115,18 +103,20 @@ const useFiremissionOffsetValue = (context) => {
 };
 
 const leftButtonGenerator = (context, panelId: string) => {
-  const { data } = useBackend<
+  const { data, act } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
   >(context);
   const { leftButtonMode, setLeftButtonMode } = useTargetSubmenu(
     context,
     panelId
   );
+  const { selectedTarget } = useLazeTarget(context);
   const { strikeMode, setStrikeMode } = useStrikeMode(context);
   const { setStrikeDirection } = useStrikeDirection(context);
   const { firemissionSelected, setFiremissionSelected } =
     useTargetFiremissionSelect(context);
   const { setFmOffsetDir } = useFiremissionOffset(context);
+  const { fmOffsetValue } = useFiremissionOffsetValue(context);
 
   const { weaponSelected, setWeaponSelected } = useWeaponSelectedState(context);
   const weapons = data.equipment_data.filter((x) => x.is_weapon);
@@ -228,6 +218,11 @@ const leftButtonGenerator = (context, panelId: string) => {
         onClick: () => {
           setFmOffsetDir('NORTH');
           setLeftButtonMode(undefined);
+          act('firemission-offset-camera', {
+            'target_id': selectedTarget,
+            'offset_direction': 1,
+            'offset_value': fmOffsetValue,
+          });
         },
       },
       {
@@ -235,6 +230,11 @@ const leftButtonGenerator = (context, panelId: string) => {
         onClick: () => {
           setFmOffsetDir('SOUTH');
           setLeftButtonMode(undefined);
+          act('firemission-offset-camera', {
+            'target_id': selectedTarget,
+            'offset_direction': 2,
+            'offset_value': fmOffsetValue,
+          });
         },
       },
       {
@@ -242,6 +242,11 @@ const leftButtonGenerator = (context, panelId: string) => {
         onClick: () => {
           setFmOffsetDir('EAST');
           setLeftButtonMode(undefined);
+          act('firemission-offset-camera', {
+            'target_id': selectedTarget,
+            'offset_direction': 4,
+            'offset_value': fmOffsetValue,
+          });
         },
       },
       {
@@ -249,6 +254,11 @@ const leftButtonGenerator = (context, panelId: string) => {
         onClick: () => {
           setFmOffsetDir('WEST');
           setLeftButtonMode(undefined);
+          act('firemission-offset-camera', {
+            'target_id': selectedTarget,
+            'offset_direction': 8,
+            'offset_value': fmOffsetValue,
+          });
         },
       },
     ];
@@ -262,6 +272,10 @@ const lazeMapper = (context) => {
   const lazes = range(0, 5).map((x) =>
     x > data.targets_data.length ? undefined : data.targets_data[x]
   );
+
+  const { fmXOffsetValue } = useFiremissionXOffsetValue(context);
+  const { fmYOffsetValue } = useFiremissionYOffsetValue(context);
+
   return (index: number) => {
     const target = lazes.length > index ? lazes[index] : undefined;
     const label = target?.target_name.split(' ')[0] ?? '';
@@ -269,13 +283,15 @@ const lazeMapper = (context) => {
     const number = label.split('-')[1] ?? undefined;
     return {
       children:
-        squad !== undefined && number !== undefined
-          ? `${squad}-${number}`
-          : undefined,
+        squad !== undefined && number !== undefined && `${squad}-${number}`,
       onClick: target
         ? () => {
-          act('set-camera', { 'equipment_id': target.target_tag });
           setSelectedTarget(target.target_tag);
+          act('firemission-dual-offset-camera', {
+            'target_id': target.target_tag,
+            'x_offset_value': fmXOffsetValue,
+            'y_offset_value': fmYOffsetValue,
+          });
         }
         : () => {
           act('set-camera', { 'equipment_id': null });
@@ -307,6 +323,11 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
 
   const { fmOffsetValue, setFmOffsetValue } =
     useFiremissionOffsetValue(context);
+
+  const { fmXOffsetValue, setFmXOffsetValue } =
+    useFiremissionXOffsetValue(context);
+  const { fmYOffsetValue, setFmYOffsetValue } =
+    useFiremissionYOffsetValue(context);
 
   const lazes = range(0, 5).map((x) =>
     x > data.targets_data.length ? undefined : data.targets_data[x]
@@ -444,22 +465,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
               </Stack.Item>
               <Stack.Item>
                 <h3>
-                  Offset {fmOffsetDir}{' '}
-                  <NumberInput
-                    value={fmOffsetValue}
-                    onChange={(e, value) => {
-                      if (value < 0) {
-                        setFmOffsetValue(0);
-                        return;
-                      }
-                      if (value > 12) {
-                        setFmOffsetValue(12);
-                        return;
-                      }
-                      setFmOffsetValue(value);
-                    }}
-                    width="40px"
-                  />
+                  Offset {fmXOffsetValue},{fmYOffsetValue}
                 </h3>
               </Stack.Item>
               <Stack.Item>

@@ -71,3 +71,39 @@ export const useWeaponState = (context, panelId: string) => {
     setWeaponState: set,
   };
 };
+
+export const useFiremissionXOffsetValue = (context) => {
+  const [data, set] = useSharedState<number>(
+    context,
+    'firemission-x-offset-value',
+    0
+  );
+  return {
+    fmXOffsetValue: data,
+    setFmXOffsetValue: set,
+  };
+};
+
+export const useFiremissionYOffsetValue = (context) => {
+  const [data, set] = useSharedState<number>(
+    context,
+    'firemission-y-offset-value',
+    0
+  );
+  return {
+    fmYOffsetValue: data,
+    setFmYOffsetValue: set,
+  };
+};
+
+export const useLazeTarget = (context) => {
+  const [data, set] = useSharedState<number | undefined>(
+    context,
+    'laze-target',
+    undefined
+  );
+  return {
+    selectedTarget: data,
+    setSelectedTarget: set,
+  };
+};

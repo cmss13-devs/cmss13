@@ -11,6 +11,7 @@ import { SupportMfdPanel } from './MfdPanels/SupportPanel';
 import { FiremissionMfdPanel } from './MfdPanels/FiremissionPanel';
 import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
 import { mfdState } from './MfdPanels/stateManagers';
+import { Dpad } from './common/Dpad';
 
 export interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -337,13 +338,29 @@ const PrimaryPanel = (props: MfdProps, context) => {
 
 export const DropshipWeaponsConsole = () => {
   return (
-    <Window height={700} width={1300}>
+    <Window height={700} width={1420}>
       <Window.Content>
         <Box className="WeaponsConsoleBackground">
           <Stack horizontal className="WeaponsConsole">
             <Stack.Item>
               <PrimaryPanel panelStateId="left-screen" />
             </Stack.Item>
+            <Stack.Item>
+              <Stack vertical>
+                <Stack.Item height="20px" />
+                <Stack.Item>
+                  <Dpad panelStateId="left-screen" />
+                </Stack.Item>
+                <Stack.Item height="10px" />
+                <Stack.Item className="DLabel">
+                  Offset
+                  <br />
+                  Calibration
+                </Stack.Item>
+                <Stack.Item height="280px" />
+              </Stack>
+            </Stack.Item>
+
             <Stack.Item>
               <PrimaryPanel panelStateId="right-screen" />
             </Stack.Item>

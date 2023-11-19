@@ -3,6 +3,7 @@
 	var/list/mob/users
 	var/camera_width = 11
 	var/camera_height = 11
+	var/view_range = 7
 
 /obj/effect/firemission_guidance/New()
 	..()
@@ -11,6 +12,12 @@
 /obj/effect/firemission_guidance/Destroy(force)
 	. = ..()
 	users = null
+
+/obj/effect/firemission_guidance/proc/can_use()
+	return TRUE
+
+/obj/effect/firemission_guidance/proc/isXRay()
+	return FALSE
 
 /obj/effect/firemission_guidance/proc/updateCameras(atom/target)
 	SEND_SIGNAL(target, COMSIG_CAMERA_SET_TARGET, src, camera_width, camera_height)

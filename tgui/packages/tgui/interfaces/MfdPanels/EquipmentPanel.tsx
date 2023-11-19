@@ -282,6 +282,9 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
   const support2 = data.equipment_data.find((x) => x.mount_point === 8);
   const support3 = data.equipment_data.find((x) => x.mount_point === 9);
 
+  const elec1 = data.equipment_data.find((x) => x.mount_point === 5);
+  const elec2 = data.equipment_data.find((x) => x.mount_point === 6);
+
   const generateWeaponButton = (equip: DropshipEquipment) => {
     return {
       children: equip.shorthand,
@@ -331,6 +334,8 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
       rightButtons={[
         weap3 ? generateButton(weap3) : {},
         weap4 ? generateButton(weap4) : {},
+        elec1 ? generateButton(elec1) : {},
+        elec2 ? generateButton(elec2) : {},
         {},
       ]}
       bottomButtons={[

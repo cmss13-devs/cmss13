@@ -205,7 +205,7 @@
 						acting_sl = " (acting SL)"
 					is_squad_leader = TRUE
 				else if(current_turf && (current_turf.z == SL_z))
-					distance = "[get_dist(marine_human, current_squad.squad_leader)] ([dir2text_short(get_dir(current_squad.squad_leader, marine_human))])"
+					distance = "[get_dist(marine_human, current_squad.squad_leader)] ([dir2text_short(Get_Compass_Dir(current_squad.squad_leader, marine_human))])"
 
 
 			switch(marine_human.stat)

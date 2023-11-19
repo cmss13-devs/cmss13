@@ -1878,7 +1878,6 @@
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/xm51
-	var/pumped = FALSE
 	var/pump_delay
 	var/recent_pump
 	var/pump_sound = "shotgunpump"
@@ -1909,7 +1908,8 @@
 /obj/item/weapon/gun/rifle/xm51/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_4*2)
-	set_burst_amount(2)
+	set_burst_amount(0)
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	recoil = RECOIL_AMOUNT_TIER_4
@@ -1931,7 +1931,7 @@
 /obj/item/weapon/gun/rifle/xm51/unique_action(mob/user)
 	if(world.time < (recent_pump + pump_delay))
 		return
-	if(pumped)
+	if(in_chamber)
 		if (world.time > (message_cooldown + pump_delay))
 			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
 			message_cooldown = world.time
@@ -1941,23 +1941,16 @@
 	recent_pump = world.time
 	ready_in_chamber()
 	burst_count = 0 //Reset the count for burst mode.
-	if(in_chamber)
-		pumped = TRUE
 
 /obj/item/weapon/gun/rifle/xm51/load_into_chamber(mob/user)
 	return in_chamber
 
-/obj/item/weapon/gun/rifle/xm51/reload_into_chamber(mob/user) //Drop the mag if it's empty, but don't load in bullets automatically.
+/obj/item/weapon/gun/rifle/xm51/reload_into_chamber(mob/user) //Don't chamber bullets after firing.
 	if(current_mag)
 		in_chamber = null
-		if (gun_firemode == GUN_FIREMODE_BURSTFIRE & burst_count < burst_amount - 1) //Fire two (or more) shots in a burst without having to pump.
-			ready_in_chamber()
-			burst_count++
-			return in_chamber
 		if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
 			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
 				update_icon()
-			else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) //Magazine will only unload once burstfire is over
 				var/drop_to_ground = TRUE
 				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
 					drop_to_ground = FALSE
@@ -1965,8 +1958,11 @@
 					user.swap_hand()
 				unload(user, TRUE, drop_to_ground)
 				playsound(src, empty_sound, 25, 1)
-		pumped = FALSE
 		return TRUE
+		if (gun_firemode == GUN_FIREMODE_BURSTFIRE & burst_count < burst_amount - 1) //Fire two (or more) shots in a burst without having to pump.
+			ready_in_chamber()
+			burst_count++
+			return in_chamber
 	else
 		update_icon()
 
@@ -1982,6 +1978,6 @@
 /obj/item/weapon/gun/rifle/xm51/cock_gun(mob/user)
 	return
 
-/obj/item/weapon/gun/rifle/xm51/cock(mob/user)
+/obj/item/weapon/gun/rifle/xm51/cock(mob/user) //Stops the "You cock the gun." message where nothing happens.
 	unique_action(user)
 	return

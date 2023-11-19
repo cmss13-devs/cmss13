@@ -2088,7 +2088,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/xm51
 	name = "\improper XM51 stock"
-	desc = "A specialized stock designed for XM51 breaching shotguns. Helps the user mitigate the recoil of the shotgun in addition to increasing its accuracy. Unfortunately, this comes at a cost of the gun becoming too unwieldy to holster."
+	desc = "A specialized lightweight stock designed for XM51 breaching shotguns. Helps the user absorb the recoil of the weapon while also reducing scatter. Integrated mechanisms inside the stock allow use of a devastating two-shot burst. This comes at a cost of the gun becoming too unwieldy to holster and having much weaker one-handed performance."
 	icon_state = "xm51_stock"
 	attach_icon = "xm51_stock_a"
 	wield_delay_mod = WIELD_DELAY_FAST
@@ -2097,16 +2097,16 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/xm51/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
-	recoil_mod = -RECOIL_AMOUNT_TIER_3
-	scatter_mod = -SCATTER_AMOUNT_TIER_7
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_6
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
-	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
-	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
-	//but at the same time you are slow when 2 handed
-	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+	//and allows for burst-fire
+	burst_mod = BURST_AMOUNT_TIER_2
+	//but it makes stuff much worse when one handed
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_7
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_5
 
 /obj/item/attachable/stock/mod88
 	name = "\improper Mod 88 burst stock"

@@ -104,7 +104,7 @@
 		"Atmospheric" = SOUND_ADMIN_ATMOSPHERIC
 	)
 
-	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All Inview", "Single Inview"))
+	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All In View Range", "Single Mob"))
 	var/sound_type = tgui_input_list(src, "What kind of sound is this?", "Select Sound Type", sound_type_list)
 	sound_type = sound_type_list[sound_type]
 
@@ -117,10 +117,17 @@
 			targets = GLOB.human_mob_list + GLOB.dead_mob_list
 		if("Ghosts")
 			targets = GLOB.observer_list + GLOB.dead_mob_list
-		if("All Inview")
-			targets = viewers(usr.client.view, src)
-		if("Single Inview")
-			var/mob/choice = tgui_input_list(src, "Select the mob to play to:","Select Mob", sortmobs())
+		if("All In View Range")
+			var/list/atom/ranged_atoms = urange(usr.client.view, get_turf(usr))
+			for(var/mob/receiver in ranged_atoms)
+				targets += receiver
+		if("Single Mob")
+			var/list/mob/all_mobs = sortmobs()
+			var/list/mob/all_client_mobs = list()
+			for(var/mob/mob in all_mobs)
+				if(mob.client)
+					all_client_mobs += mob
+			var/mob/choice = tgui_input_list(src, "Select the mob to play to:","Select Mob", all_client_mobs)
 			if(QDELETED(choice))
 				return
 			targets.Add(choice)
@@ -129,7 +136,7 @@
 
 	for(var/mob/mob as anything in targets)
 		var/client/client = mob?.client
-		if((client?.prefs.toggles_sound & SOUND_INTERNET) && (client?.prefs.toggles_sound & sound_type))
+		if((client?.prefs?.toggles_sound & SOUND_INTERNET) && (client?.prefs?.toggles_sound & sound_type))
 			if(must_send_assets)
 				SSassets.transport.send_assets(client, asset_name)
 			client?.tgui_panel?.play_music(web_sound_url, music_extra_data)

@@ -68,10 +68,10 @@
 	icon_xenonid = 'icons/mob/xenonids/runner.dmi'
 
 
-/mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
-	if (PF)
-		PF.flags_pass |= PASS_FLAGS_CRAWLER
+	if (pass_flags_container)
+		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
 
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"

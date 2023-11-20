@@ -255,7 +255,7 @@
 	var/facing = get_dir(xeno, atom)
 	var/turf/turf = xeno.loc
 	var/turf/temp = xeno.loc
-	for(var/xeno in 0 to max_distance)
+	for(var/distance in 0 to max_distance)
 		temp = get_step(turf, facing)
 		if(facing in diagonals) // check if it goes through corners
 			var/reverse_face = reverse_dir[facing]

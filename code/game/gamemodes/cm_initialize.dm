@@ -591,7 +591,11 @@ Additional game mode variables.
 
 	for(var/obj/effect/alien/resin/special/pylon/cycled_pylon as anything in hive.hive_structures[XENO_STRUCTURE_PYLON])
 		if(cycled_pylon.lesser_drone_spawns >= 1)
-			selection_list += "[cycled_pylon.name] at [get_area(cycled_pylon)]"
+			var/pylon_name = "[cycled_pylon.name] at [get_area(cycled_pylon)]"
+			if(!(pylon_name in selection_list))
+				selection_list += pylon_name
+			else
+				selection_list += pylon_name + " (1)"
 			selection_list_structure += cycled_pylon
 
 	if(!length(selection_list))

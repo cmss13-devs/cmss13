@@ -267,8 +267,8 @@
 			break
 
 		var/blocked = FALSE
-		for(var/obj/structure/S in temp)
-			if(S.opacity || ((istype(S, /obj/structure/barricade) || istype(S, /obj/structure/girder) && S.density || istype(S, /obj/structure/machinery/door)) && S.density))
+		for(var/obj/structure/structure in temp)
+			if(structure.opacity || ((istype(structure, /obj/structure/barricade) || istype(structure, /obj/structure/girder) && structure.density || istype(structure, /obj/structure/machinery/door)) && structure.density))
 				blocked = TRUE
 				break
 		if(blocked)
@@ -298,9 +298,9 @@
 		to_chat(xeno, SPAN_XENOWARNING("You relax your tail."))
 		apply_cooldown()
 
-		for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
-			telegraph_atom_list -= XT
-			qdel(XT)
+		for (var/obj/effect/xenomorph/xeno_telegraph/xenotelegraph in telegraph_atom_list)
+			telegraph_atom_list -= xenotelegraph
+			qdel(xenotelegraph)
 
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 		xeno.update_canmove()

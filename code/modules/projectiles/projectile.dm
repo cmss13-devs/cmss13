@@ -72,6 +72,8 @@
 	/// How much to make the bullet fall off by accuracy-wise when closer than the ideal range
 	var/accuracy_range_falloff = 10
 
+	glide_size = INFINITY //disables gliding because it fights against what animate() is doing
+
 /obj/projectile/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()
 	path = list()
@@ -255,6 +257,9 @@
 /obj/projectile/process(delta_time)
 	. = PROC_RETURN_SLEEP
 
+	var/distance_travelled_old = distance_travelled
+	var/turf/turf_old = get_turf(src)
+
 	// Keep going as long as we got speed and time
 	while(speed > 0 && (speed * ((delta_time + time_carry)/10) >= 1))
 		time_carry -= 1/speed*10
@@ -266,6 +271,55 @@
 			return PROCESS_KILL
 
 	time_carry += delta_time
+
+	//Get pixelspace coordinates of visual start and end positions
+
+	//if this is the first leg (vis not reset) start at loc center, otherwise use p_x&y of prev leg (half of current leg)
+	var/prev_p_mult = (distance_travelled == vis_travelled) ? (0) : (0.5)
+	var/pixel_x_source = vis_source.x * world.icon_size + p_x * prev_p_mult
+	var/pixel_y_source = vis_source.y * world.icon_size + p_y * prev_p_mult
+
+	var/turf/vis_target = path[path.len]
+	var/pixel_x_target = vis_target.x * world.icon_size + p_x
+	var/pixel_y_target = vis_target.y * world.icon_size + p_y
+
+	//Determine relative position along visual path, then lerp between start and end positions
+
+	var/vis_length = vis_travelled + path.len
+	//speed * (time_carry * 0.1) advances forward the remainder time, visually "catching up" to where it should be at this point in time and showing sub-tile movement
+	//-0.5 shifts from current & next loc midpoints, to start and end of current loc
+	var/vis_current = vis_travelled + speed * (time_carry * 0.1) - 0.5
+	var/vis_interpolant = vis_current / vis_length
+
+	var/pixel_x_lerped = pixel_x_source + (pixel_x_target - pixel_x_source) * vis_interpolant
+	var/pixel_y_lerped = pixel_y_source + (pixel_y_target - pixel_y_source) * vis_interpolant
+
+	//Convert pixelspace to pixel offset relative to current loc
+
+	var/turf/current_turf = get_turf(src)
+	var/pixel_x_rel_new = pixel_x_lerped - current_turf.x * world.icon_size
+	var/pixel_y_rel_new = pixel_y_lerped - current_turf.y * world.icon_size
+
+	//Get pixel offset of old position and set as initial position
+
+	var/pixel_x_rel_old = (turf_old.x - current_turf.x) * world.icon_size + pixel_x
+	var/pixel_y_rel_old = (turf_old.y - current_turf.y) * world.icon_size + pixel_y
+
+	if(distance_travelled_old == 0 && distance_travelled > 0)
+		//shift the fire origin slightly away from the firer, makes first move look a little "slower" but can't really schedule the animation start at a fraction of a tick
+		var/shift_interpolant = 0.5 / distance_travelled
+		pixel_x = pixel_x_rel_old + (pixel_x_rel_new - pixel_x_rel_old) * shift_interpolant
+		pixel_y = pixel_y_rel_old + (pixel_y_rel_new - pixel_y_rel_old) * shift_interpolant
+	else
+		pixel_x = pixel_x_rel_old
+		pixel_y = pixel_y_rel_old
+
+	//Animate the movement from set (old) position to new position
+
+	//time "consumed" by movement and remainder time for sub-tile movement
+	var/anim_time = (distance_travelled - distance_travelled_old) / speed + time_carry * 0.1
+	animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, time = anim_time, flags = ANIMATION_END_NOW)
+
 	return FALSE
 
 /// Flies the projectile forward one single turf
@@ -319,20 +373,6 @@
 		p_x *= 2
 		p_y *= 2
 		retarget(aim_turf, keep_angle = TRUE)
-
-	// Nowe we update visual offset by tracing the bullet predicted location against real one
-	//
-	// Travelled real distance so far
-	var/dist = vis_travelled * 32 + speed * (time_carry*10)
-	// Compute where we should be
-	var/vis_x = vis_source.x * 32 + sin(angle) * dist
-	var/vis_y = vis_source.y * 32 + cos(angle) * dist
-	// Get the difference with where we actually are
-	var/dx = vis_x - loc.x * 32
-	var/dy = vis_y - loc.y * 32
-	// Clamp and set this as pixel offsets
-	pixel_x = Clamp(dx, -16, 16)
-	pixel_y = Clamp(dy, -16, 16)
 
 /obj/projectile/proc/retarget(atom/new_target, keep_angle = FALSE)
 	var/turf/current_turf = get_turf(src)

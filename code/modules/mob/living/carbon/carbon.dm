@@ -260,11 +260,7 @@
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src == M)
 		return
-	var/t_him = "them"
-	if(gender == MALE)
-		t_him = "him"
-	else if(gender == FEMALE)
-		t_him = "her"
+	var/t_him = p_them()
 
 	var/shake_action
 	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || sleeping) // incap implies also unconscious or knockedout

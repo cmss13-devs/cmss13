@@ -388,16 +388,6 @@
 
 	handle_rotation()
 
-/obj/structure/bed/chair/vehicle/unbuckle()
-	if(buckled_mob && buckled_mob.buckled == src)
-		buckled_mob.buckled = null
-		buckled_mob.anchored = initial(buckled_mob.anchored)
-
-		var/M = buckled_mob
-		buckled_mob = null
-
-		afterbuckle(M)
-
 //attack handling
 
 /obj/structure/bed/chair/vehicle/attack_alien(mob/living/user)

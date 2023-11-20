@@ -25,6 +25,8 @@
 
 	///a list of all status effects the mob has
 	var/list/status_effects
+	/// Cooldown for manually toggling resting to avoid spamming
+	COOLDOWN_DECLARE(rest_cooldown)
 
 	var/hallucination = 0 //Directly affects how long a mob will hallucinate for
 	var/list/atom/hallucinations = list() //A list of hallucinated people that try to attack the mob. See /obj/effect/fake_attacker in hallucinations.dm

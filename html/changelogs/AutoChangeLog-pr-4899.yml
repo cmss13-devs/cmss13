@@ -1,4 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - code_imp: "Starts refactoring some vars on xenomorph class"

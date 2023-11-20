@@ -182,14 +182,7 @@
 /datum/species/proc/hug(mob/living/carbon/human/H, mob/living/carbon/target, target_zone = "chest")
 	if(H.flags_emote)
 		return
-	var/t_him = "them"
-	switch(target.gender)
-		if(MALE)
-			t_him = "him"
-		if(FEMALE)
-			t_him = "her"
-		else
-			t_him = "them"
+	var/t_him = target.p_them()
 
 	if(target_zone == "head")
 		attempt_rock_paper_scissors(H, target)

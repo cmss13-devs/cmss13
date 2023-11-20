@@ -201,6 +201,10 @@
 		return
 	if(new_resting == resting)
 		return
+	if(!COOLDOWN_FINISHED(src, rest_cooldown))
+		to_chat(src, SPAN_WARNING("You can't 'rest' that fast. Take a breather!"))
+		return
+	COOLDOWN_START(src, rest_cooldown, 1 SECONDS)
 
 	. = resting
 	resting = new_resting

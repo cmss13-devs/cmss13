@@ -317,10 +317,10 @@
 						shipwide_ai_announcement("Instant launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "port" : "starboard") + " lifeboat.")
 						return
 
-	if(SHUTTLE_IGNITING)
-		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
-	if(SHUTTLE_CALL)
-		to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
+			if(SHUTTLE_IGNITING)
+				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
+			if(SHUTTLE_CALL)
+				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.caste && xeno.caste.is_intelligent)

@@ -94,10 +94,13 @@
 		stun_timer = TIMER_ID_NULL
 
 /mob/living/proc/stun_callback_check()
-	if(knocked_out)
+	if(stunned)
 		ADD_TRAIT(src, TRAIT_INCAPACITATED, STUNNED_TRAIT)
 	if(stunned && stunned < recovery_constant)
 		stun_timer = addtimer(CALLBACK(src, PROC_REF(stun_callback)), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+		return
+	if(!stunned) // Force reset since the timer wasn't called
+		stun_callback()
 		return
 
 	if(stun_timer != TIMER_ID_NULL)
@@ -186,6 +189,10 @@
 
 	if(knocked_down && knocked_down < recovery_constant)
 		knocked_down_timer = addtimer(CALLBACK(src, PROC_REF(knocked_down_callback)), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
+		return
+
+	if(!knocked_down) // Force reset since the timer wasn't called
+		knocked_down_callback()
 		return
 
 	if(knocked_down_timer)

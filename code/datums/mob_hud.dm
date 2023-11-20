@@ -797,6 +797,6 @@ var/global/image/hud_icon_hudfocus
 	if (tag_found)
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
-	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && body_position == STANDING_UP // Don't display roots on targets down due to eg. Knockdowns, Knockouts, SSD, resting, and so on
+	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && body_position == STANDING_UP && !buckled // Eligible targets are unable to move but can stand and aren't buckled (eg nested) - This is to convey that they are temporarily unable to move
 	if (freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")

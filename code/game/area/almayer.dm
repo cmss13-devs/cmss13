@@ -200,7 +200,7 @@
 /area/almayer/shipboard/navigation
 	name = "\improper Astronavigational Deck"
 	icon_state = "astronavigation"
-	fake_zlevel = 2 // lowerrdeck
+	fake_zlevel = 2 // lowerdeck
 	hijack_evacuation_area = TRUE
 	hijack_evacuation_weight = 1.1
 	hijack_evacuation_type = EVACUATION_TYPE_MULTIPLICATIVE
@@ -208,7 +208,7 @@
 /area/almayer/shipboard/panic
 	name = "\improper Hangar Panic Room"
 	icon_state = "brig"
-	fake_zlevel = 2 // lowerrdeck
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/starboard_missiles
 	name = "\improper Upper Deck Starboard Missile Tubes"
@@ -223,7 +223,7 @@
 /area/almayer/shipboard/weapon_room
 	name = "\improper Lower Deck Weapon Control"
 	icon_state = "weaponroom"
-	fake_zlevel = 2 // lowerrdeck
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/weapon_room/notunnel
 	flags_area = AREA_NOTUNNEL

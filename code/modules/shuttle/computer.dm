@@ -289,8 +289,6 @@
 		to_chat(user, SPAN_WARNING("[src] flickers with error messages."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
-	else if(lifeboat.status == LIFEBOAT_LAUNCHING)
-		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Launch already in progress\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)

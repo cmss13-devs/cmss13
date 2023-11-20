@@ -233,6 +233,25 @@
 	..()
 	update_icon()
 
+/* Decreases the buildstate of the sensor tower and switches it off if affected by any explosion.
+Higher severity explosion will damage the sensor tower more
+*/
+/obj/structure/machinery/sensortower/ex_act(severity)
+	if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
+		return
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			buildstate += 1
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			buildstate = min(buildstate + 2, buildstate)
+		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
+			buildstate = 3
+	if(is_on)
+		is_on = FALSE
+		cur_tick = 0
+		stop_processing()
+	update_icon()
+
 #undef SENSORTOWER_BUILDSTATE_WORKING
 #undef SENSORTOWER_BUILDSTATE_BLOWTORCH
 #undef SENSORTOWER_BUILDSTATE_WIRECUTTERS

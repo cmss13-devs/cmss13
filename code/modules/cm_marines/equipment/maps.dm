@@ -150,6 +150,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_KUTJEVO = new /obj/item/map/kutjevo_map(),
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero()
+		//MAP_ARENA = new /obj/item/map/testmap
 	)
 
 //used by marine equipment machines to spawn the correct map.

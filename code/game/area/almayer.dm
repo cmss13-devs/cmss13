@@ -158,8 +158,8 @@
 
 /area/almayer/engineering/lower_engineering
 	name = "\improper Lower Deck Engineering"
-	icon_state = "lowerrengineering"
-	fake_zlevel = 2 // lowerrdeck
+	icon_state = "lowerengineering"
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/engineering/engineering_workshop
 	name = "\improper Lower Deck Engineering Workshop"

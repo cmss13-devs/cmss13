@@ -319,7 +319,7 @@
 	var/list/targets = list()
 	for (var/turf/target_turf in turflist)
 		for (var/mob/living/carbon/H in target_turf)
-			if(!isxeno_human(H) || X.can_not_harm(H) || H.is_dead() || H.is_mob_incapacitated(TRUE))
+			if(!isxeno_human(H) || X.can_not_harm(H) || H.is_dead() || H.is_mob_incapacitated(TRUE) || H.mob_size >= MOB_SIZE_BIG)
 				continue
 
 			targets += H

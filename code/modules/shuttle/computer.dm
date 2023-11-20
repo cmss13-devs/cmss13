@@ -309,7 +309,7 @@
 				switch (response)
 					if ("Yes")
 						to_chat(user, "[src]'s screen blinks and says \"Early launch accepted\".")
-						shipwide_ai_announcement("Launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "port" : "starboard") + " lifeboat in 10 seconds.")
+						shipwide_ai_announcement("Launch command received. " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " lifeboat doors will close in 10 seconds.")
 						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
 					if ("Instantly")
 						to_chat(user, "[src]'s screen blinks and says \"Instant early launch accepted\".")

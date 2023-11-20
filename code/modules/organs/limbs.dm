@@ -700,7 +700,7 @@ This function completely restores a damaged organ to perfect condition.
 	else
 		body_type = "mesomorphic"
 
-	if(isspeciesyautja(owner))
+	if(owner && isspeciesyautja(owner))
 		ethnicity = owner.ethnicity
 		body_type = owner.body_type
 

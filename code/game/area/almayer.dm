@@ -164,7 +164,7 @@
 /area/almayer/engineering/engineering_workshop
 	name = "\improper Lower Deck Engineering Workshop"
 	icon_state = "workshop"
-	fake_zlevel = 2 // lowerrdeck
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/engineering/engineering_workshop/hangar
 	name = "\improper Ordnance workshop"
@@ -172,7 +172,7 @@
 /area/almayer/engineering/engine_core
 	name = "\improper Engine Reactor Core Room"
 	icon_state = "coreroom"
-	fake_zlevel = 2 // lowerrdeck
+	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ENG
 	soundscape_interval = 15
 	hijack_evacuation_area = TRUE

@@ -1,9 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 1;
-	id = "elevator";
-	name = "\improper Elevator Lock"
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/pivot{
+	base_icon_state = "hatch";
+	icon_state = "hatch1";
+	openspeed = 22;
+	name = "\improper Elevator Hatch";
+	dir = 4;
+	unacidable = 1;
+	id = "elevator"
 	},
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/trijent_shuttle/elevator)
@@ -59,17 +63,14 @@
 "L" = (
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/trijent_shuttle/elevator)
+"R" = (
+/obj/structure/machinery/computer/shuttle/elevator_controller{
+	pixel_y = 32
+	},
+/turf/open/shuttle/elevator/grating,
+/area/shuttle/trijent_shuttle/elevator)
 "S" = (
 /turf/closed/shuttle/elevator/gears,
-/area/shuttle/trijent_shuttle/elevator)
-"U" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call{
-	shuttleId = "ice_classic_elevator"
-	},
-/turf/closed/shuttle/elevator{
-	dir = 4;
-	tag = "icon-wall (EAST)"
-	},
 /area/shuttle/trijent_shuttle/elevator)
 
 (1,1,1) = {"
@@ -94,25 +95,25 @@ L
 a
 "}
 (4,1,1) = {"
-U
-L
+A
+R
 E
 L
-a
+L
 "}
 (5,1,1) = {"
 u
 L
 E
 L
-a
+L
 "}
 (6,1,1) = {"
 S
 L
 L
 L
-a
+L
 "}
 (7,1,1) = {"
 S

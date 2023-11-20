@@ -1062,14 +1062,6 @@
 "df" = (
 /turf/closed/wall,
 /area/ice_colony/surface/hangar/hallway)
-"dg" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_elevator";
-	dockId = "ice_lab_lower";
-	dir = 1
-	},
-/turf/closed/wall/hangar,
-/area/ice_colony/underground/research/storage)
 "dh" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "burst_r";
@@ -1689,6 +1681,23 @@
 	tag = "icon-warnplate"
 	},
 /area/shuttle/elevator3/underground)
+"eN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner";
+	tag = "icon-W-corner"
+	},
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
+	shuttleId = "ice_classic_shuttle";
+	dockId = "ice_lab_lower";
+	dir = 1;
+	pixel_y = -32
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkpurple2";
+	tag = "icon-darkpurple2 (EAST)"
+	},
+/area/ice_colony/underground/research/storage)
 "eO" = (
 /obj/structure/surface/rack,
 /obj/item/storage/briefcase/inflatable,
@@ -1726,13 +1735,13 @@
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "eU" = (
 /obj/docking_port/stationary/trijent_elevator{
-	id = "ice_dorm_lower";
-	elevator_network = "dorm";
-	name = "Dormitory Lower Floor";
-	height = 5;
-	width = 8;
 	airlock_area = /area/shuttle/elevator2/underground;
-	airlock_exit = "elevator"
+	airlock_exit = "elevator";
+	elevator_network = "dorm";
+	width = 8;
+	height = 5;
+	id = "ice_dorm_lower";
+	name = "Dormitory Lower Floor"
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 10;
@@ -1828,6 +1837,18 @@
 	tag = "icon-darkgreencorners2 (NORTH)"
 	},
 /area/ice_colony/surface/dorms/canteen)
+"fk" = (
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
+	shuttleId = "ice_classic_shuttle2";
+	dockId = "ice_dorm_upper";
+	pixel_y = 32
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellow2";
+	tag = "icon-darkyellow2 (EAST)"
+	},
+/area/ice_colony/surface/dorms)
 "fl" = (
 /turf/open/floor{
 	dir = 1;
@@ -1884,6 +1905,23 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/ice_colony/surface/engineering)
+"fu" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
+	},
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
+	shuttleId = "ice_classic_shuttle2";
+	dockId = "ice_dorm_lower";
+	dir = 8;
+	pixel_y = 32
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkgreen2";
+	tag = "icon-darkgreen2 (NORTH)"
+	},
+/area/ice_colony/underground/reception)
 "fv" = (
 /turf/open/floor/plating/icefloor{
 	dir = 5;
@@ -4987,14 +5025,6 @@
 	icon_state = "darkbluecorners2"
 	},
 /area/ice_colony/surface/excavation)
-"om" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_elevator";
-	dockId = "ice_lab_upper";
-	dir = 1
-	},
-/turf/closed/wall/r_wall,
-/area/ice_colony/surface/research)
 "on" = (
 /obj/structure/prop/static_tank/fuel,
 /turf/open/floor/plating/icefloor,
@@ -6064,13 +6094,6 @@
 	tag = "icon-warnplate (NORTH)"
 	},
 /area/ice_colony/exterior/surface/landing_pad)
-"rl" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_elevator";
-	dockId = "ice_dorm_upper"
-	},
-/turf/closed/wall/r_wall,
-/area/ice_colony/surface/dorms)
 "rm" = (
 /obj/structure/xenoautopsy/tank/broken,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -8131,6 +8154,19 @@
 	icon_state = "floor6"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"wR" = (
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
+	shuttleId = "ice_classic_shuttle";
+	dockId = "ice_lab_upper";
+	dir = 1;
+	pixel_y = -32
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkpurplecorners2";
+	tag = "icon-darkpurplecorners2 (NORTH)"
+	},
+/area/ice_colony/surface/research)
 "wT" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
@@ -8242,14 +8278,6 @@
 "xj" = (
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/north)
-"xk" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_elevator";
-	dockId = "ice_dorm_lower";
-	dir = 1
-	},
-/turf/closed/wall/hangar,
-/area/ice_colony/underground/reception)
 "xl" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -15010,14 +15038,14 @@
 /area/ice_colony/surface/engineering)
 "QF" = (
 /obj/docking_port/stationary/trijent_elevator{
-	id = "ice_dorm_upper";
-	elevator_network = "dorm";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
-	name = "Dormitory Upper Floor";
-	width = 8;
 	height = 5;
-	airlock_area = /area/shuttle/elevator2/ground;
-	airlock_exit = "elevator"
+	width = 8;
+	id = "ice_dorm_upper";
+	name = "Dormitory Upper Floor";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
+	airlock_exit = "elevator";
+	elevator_network = "dorm";
+	airlock_area = /area/shuttle/elevator2/ground
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 10;
@@ -25388,8 +25416,8 @@ EB
 EB
 EB
 EB
-EB
-dg
+eN
+ci
 rC
 lG
 lG
@@ -30953,8 +30981,8 @@ YM
 RX
 Qp
 Qp
-Qp
-om
+wR
+uk
 xC
 Mn
 Mn
@@ -43778,8 +43806,8 @@ vr
 vr
 vr
 MM
-xk
-Uc
+wK
+fu
 Pj
 Pj
 Pj
@@ -52093,8 +52121,8 @@ OV
 OV
 OV
 jv
-rl
-fz
+Du
+fk
 fz
 fz
 fz

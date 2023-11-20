@@ -305,7 +305,7 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
 					return
 
-				var/response = tgui_alert(user, "Early launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
+				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
 				switch (response)
 					if ("Yes")
 						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")

@@ -306,21 +306,21 @@
 					return
 
 				var/response = tgui_alert(user, "Early launch the lifeboat?", "Confirm", list("Yes", "No", "Instantly"), 10 SECONDS)
-				switch(response)
-					if("Yes")
+				switch (response)
+					if ("Yes")
 						to_chat(user, "[src]'s screen blinks and says \"Early launch accepted\".")
-						shipwide_ai_announcement("Launch command received. " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " lifeboat doors will close in 10 seconds.")
+						shipwide_ai_announcement("Launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "port" : "starboard") + " lifeboat in 10 seconds.")
 						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
-					else if("Instantly")
+					if ("Instantly")
 						to_chat(user, "[src]'s screen blinks and says \"Instant early launch accepted\".")
 						lifeboat.evac_launch()
 						shipwide_ai_announcement("Instant launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "port" : "starboard") + " lifeboat.")
-					return
+						return
 
-			if(SHUTTLE_IGNITING)
-				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
-			if(SHUTTLE_CALL)
-				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
+	if(SHUTTLE_IGNITING)
+		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
+	if(SHUTTLE_CALL)
+		to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.caste && xeno.caste.is_intelligent)

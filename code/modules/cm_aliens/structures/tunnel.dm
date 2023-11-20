@@ -48,7 +48,7 @@
 	if(resin_trap)
 		qdel(resin_trap)
 
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "xenotunnel")
+	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
 
 /obj/structure/tunnel/Destroy()
 	if(hive)

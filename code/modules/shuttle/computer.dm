@@ -305,16 +305,16 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
 					return
 
-				var/response = tgui_alert(user, "Early launch the lifeboat?", "Confirm", list("Yes", "No", "Instantly"), 10 SECONDS)
+				var/response = tgui_alert(user, "Early launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
 				switch (response)
 					if ("Yes")
-						to_chat(user, "[src]'s screen blinks and says \"Early launch accepted\".")
+						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
 						shipwide_ai_announcement("Launch command received. " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " lifeboat doors will close in 10 seconds.")
 						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
-					if ("Instantly")
-						to_chat(user, "[src]'s screen blinks and says \"Instant early launch accepted\".")
+					if ("Emergency Launch")
+						to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
 						lifeboat.evac_launch()
-						shipwide_ai_announcement("Instant launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "port" : "starboard") + " lifeboat.")
+						shipwide_ai_announcement("Emergency Launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "port" : "starboard") + " lifeboat.")
 						return
 
 			if(SHUTTLE_IGNITING)

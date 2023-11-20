@@ -44,7 +44,10 @@ const DropshipDoorControl = (_, context) => {
               <Button
                 disabled={disable_door_controls}
                 onClick={() =>
-                  act('door-control', { interaction: 'lock', location: 'all' })
+                  act('door-control', {
+                    interaction: 'lock',
+                    location: 'all',
+                  })
                 }
                 icon="triangle-exclamation">
                 Lockdown
@@ -278,13 +281,13 @@ const AutopilotConfig = (props, context) => {
   );
 };
 
-const StopPlayLaunchAnnouncementAlarm = (_, context) => {
+const StopLaunchAnnouncementAlarm = (_, context) => {
   const { act } = useBackend<NavigationProps>(context);
   return (
     <Button
       icon="ban"
       onClick={() => {
-        act('stop_play_launch_announcement_alarm');
+        act('stop_playing_launch_announcement_alarm');
       }}>
       Stop Alarm
     </Button>
@@ -315,19 +318,11 @@ const LaunchAnnouncementAlarm = (_, context) => {
     <Section
       title="Launch Announcement Alarm"
       buttons={
-        <>
-          {!data.playing_launch_announcement_alarm && (
-            <PlayLaunchAnnouncementAlarm />
-          )}
-
-          {data.playing_launch_announcement_alarm && (
-            <Button
-              onClick={() => act('stop_play_launch_announcement_alarm')}
-              icon="triangle-exclamation">
-              Stop Launch Alarm
-            </Button>
-          )}
-        </>
+        !data.playing_launch_announcement_alarm ? (
+          <PlayLaunchAnnouncementAlarm />
+        ) : (
+          <StopLaunchAnnouncementAlarm />
+        )
       }
     />
   );

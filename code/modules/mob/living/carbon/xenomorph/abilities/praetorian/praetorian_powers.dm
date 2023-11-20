@@ -284,7 +284,7 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook(turf, windup)
 
 	if(!length(turflist))
-		to_chat(xeno, SPAN_XENOWARNING("You don'turf have any room to do your abduction!"))
+		to_chat(xeno, SPAN_XENOWARNING("You don't have any room to do your abduction!"))
 		return
 
 	xeno.visible_message(SPAN_XENODANGER("\The [xeno]'s segmented tail starts coiling..."), SPAN_XENODANGER("You begin coiling your tail, aiming towards \the [atom]..."))

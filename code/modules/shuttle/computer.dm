@@ -295,12 +295,12 @@
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)
 				if(!istype(user, /mob/living/carbon/human))
-					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 
 				var/mob/living/carbon/human/human_user = user
 				if(!(ACCESS_MARINE_COMMAND in human_user.wear_id?.access))
-					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 
 				if(SShijack.current_progress < SShijack.early_launch_required_progress)
@@ -310,7 +310,7 @@
 				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
 				switch (response)
 					if ("Yes")
-						set_mode(SHUTTLE_LAUNCHING)
+						lifeboat.set_mode(SHUTTLE_IGNITINGSOON)
 						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
 						shipwide_ai_announcement("Launch command received. " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " Lifeboat doors will close in 10 seconds.")
 						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
@@ -323,6 +323,8 @@
 
 			if(SHUTTLE_IGNITING)
 				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
+			if(SHUTTLE_IGNITINGSOON)
+				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing soon\"."))
 			if(SHUTTLE_CALL)
 				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
 

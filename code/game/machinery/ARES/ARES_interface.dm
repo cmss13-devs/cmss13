@@ -79,7 +79,7 @@
 	data["access_level"] = authentication
 
 	data["alert_level"] = security_level
-	data["evac_status"] = EvacuationAuthority.evac_status
+	data["evac_status"] = SShijack.evac_status
 	data["worldtime"] = world.time
 
 	data["access_log"] = datacore.interface_access_list
@@ -397,12 +397,12 @@
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
-			if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
+			if(SShijack.evac_admin_denied)
 				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
-			if(!EvacuationAuthority.initiate_evacuation())
+			if(!SShijack.initiate_evacuation())
 				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE

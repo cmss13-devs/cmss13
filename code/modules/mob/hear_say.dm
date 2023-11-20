@@ -7,10 +7,6 @@
 	if(!client && !(mind && mind.current != src))
 		return
 
-	if(stat == UNCONSCIOUS)
-		hear_sleep(src, message, src == speaker, Adjacent(speaker))
-		return
-
 	var/style = "body"
 	var/comm_paygrade = ""
 
@@ -67,9 +63,6 @@
 	if(!client && !(mind && mind.current != src))
 		return
 
-	if(stat == UNCONSCIOUS)
-		hear_sleep(src, message, FALSE, FALSE)
-		return
 	var/comm_paygrade = ""
 
 	var/track = null
@@ -207,7 +200,19 @@
 			M.show_message(message)
 	src.show_message(message)
 
-/mob/proc/hear_sleep(mob/speaker = null, message, hearing_self = FALSE, proximity_flag = FALSE)
+/mob/living/hear_say(message, verb, datum/language/language, alt_name, italics, mob/speaker, sound/speech_sound, sound_vol)
+	if(client && mind && stat == UNCONSCIOUS)
+		hear_sleep(src, message, src == speaker, Adjacent(speaker))
+		return
+	return ..()
+
+/mob/living/hear_radio(message, verb, datum/language/language, part_a, part_b, mob/speaker, hard_to_hear, vname, command, no_paygrade)
+	if(client && mind && stat == UNCONSCIOUS)
+		hear_sleep(src, message, FALSE, FALSE)
+		return
+	return ..()
+
+/mob/living/proc/hear_sleep(mob/speaker = null, message, hearing_self = FALSE, proximity_flag = FALSE)
 	var/heard = ""
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)

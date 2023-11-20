@@ -547,8 +547,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 
-	new_human.back.pickup()
-
 //Anchorpoint Station Corpsman
 /datum/equipment_preset/uscm/cmb/medic
 	name = "USCM Anchorpoint Station Corpsman"

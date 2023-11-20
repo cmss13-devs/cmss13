@@ -78,7 +78,7 @@
 			return 1
 		if(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME) //emergency shuttle timer
 			message1 = "EVAC"
-			message2 = EvacuationAuthority.get_status_panel_eta()
+			message2 = SShijack.get_evac_eta()
 			if(message2)
 				if(length(message2) > CHARS_PER_LINE) message2 = "Error"
 				update_display(message1, message2)
@@ -163,6 +163,15 @@
 	if(maptext)
 		maptext = ""
 
+/obj/structure/machinery/status_display/proc/set_sec_level_picture()
+	switch(security_level)
+		if(SEC_LEVEL_GREEN)
+			set_picture("default")
+		if(SEC_LEVEL_BLUE)
+			set_picture("bluealert")
+		if(SEC_LEVEL_RED, SEC_LEVEL_DELTA)
+			set_picture("redalert")
+
 /obj/structure/machinery/ai_status_display
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
@@ -179,11 +188,10 @@
 	var/emotion = "Neutral"
 
 /obj/structure/machinery/ai_status_display/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	set_picture("ai_bsod")
-	..(severity)
 
 /obj/structure/machinery/ai_status_display/proc/update()
 	if(mode==0) //Blank

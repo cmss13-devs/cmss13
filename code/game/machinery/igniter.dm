@@ -105,11 +105,10 @@
 	return 1
 
 /obj/structure/machinery/sparker/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	ignite()
-	..(severity)
 
 /obj/structure/machinery/ignition_switch/attack_remote(mob/user as mob)
 	return attack_hand(user)

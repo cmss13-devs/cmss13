@@ -13,7 +13,7 @@
 
 	if(isxeno(src))
 		var/mob/living/carbon/xenomorph/xeno = src
-		if(xeno.burrow)
+		if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
 			to_chat(src, SPAN_WARNING("You can't resist in your current state."))
 			return
 

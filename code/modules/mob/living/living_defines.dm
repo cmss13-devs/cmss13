@@ -110,3 +110,11 @@
 
 	/// This is what the value is changed to when the mob dies. Actual BMV definition in atom/movable.
 	var/dead_black_market_value = 0
+
+	var/dazed = 0
+	var/knocked_out = 0
+	var/stunned = 0
+	var/knocked_down = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
+	var/sleeping = 0

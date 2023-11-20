@@ -283,6 +283,12 @@ var/list/datum/mob_hud/huds = list(
 	return
 
 /mob/living/carbon/xenomorph/med_hud_set_health()
+	if(QDELETED(src))
+		return
+
+	if(!(HEALTH_HUD_XENO in hud_list))
+		CRASH("hud_list lacks HEALTH_HUD_XENO despite not being deleted in med_hud_set_health()")
+
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
 
 	var/health_hud_type = "xenohealth"
@@ -798,7 +804,7 @@ var/global/image/hud_icon_hudfocus
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
 	// Hacky, but works. Currently effects are hard to make with precise timings
-	var/freeze_found = frozen
+	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && !buckled && !lying
 
 	if (freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")

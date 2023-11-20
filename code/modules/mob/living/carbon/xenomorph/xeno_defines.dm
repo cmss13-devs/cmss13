@@ -279,7 +279,6 @@
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 	var/crystal_stored = 0 //How much stockpiled material is stored for the hive to use.
-	var/xenocon_points = 0 //Xeno version of DEFCON
 
 	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1
@@ -363,7 +362,7 @@
 	/// This number divides the total xenos counted for slots to give the max number of lesser drones
 	var/playable_lesser_drones_max_divisor = 3
 
-	var/datum/tacmap/xeno/tacmap
+	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
 /datum/hive_status/New()
@@ -371,6 +370,7 @@
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
+	minimap_type = get_minimap_flag_for_faction(hivenumber)
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name

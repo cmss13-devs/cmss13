@@ -541,6 +541,14 @@
 
 	hide_from(owner)
 
+/datum/action/xeno_action/onclick/tacmap/can_use_action()
+	if(!owner)
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.is_mob_incapacitated() || xeno.dazed)
+		return FALSE
+	return TRUE
+
 /datum/action/xeno_action/onclick/tacmap/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_tacmap()

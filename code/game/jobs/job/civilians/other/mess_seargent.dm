@@ -3,7 +3,7 @@
 	total_positions = 2
 	spawn_positions = 1
 	allow_additional = 1
-	scaled = 1
+	scaled = TRUE
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	supervisors = "the auxiliary support officer"

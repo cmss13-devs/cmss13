@@ -13,7 +13,7 @@
 /datum/job/civilian/chef/set_spawn_positions(count)
 	spawn_positions = mess_sergeant_slot_formula(count)
 
-/datum/job/civilian/chef/get_total_positions(latejoin = 0)
+/datum/job/civilian/chef/get_total_positions(latejoin = FALSE)
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = mess_sergeant_slot_formula(get_total_marines())

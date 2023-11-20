@@ -853,11 +853,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_slowed()
 	handle_superslowed()
 
-/mob/living/proc/handle_stunned()
-	if(stunned)
-		adjust_effect(-1, STUN)
-	return stunned
-
 /mob/living/proc/handle_dazed()
 	if(dazed)
 		adjust_effect(-1, DAZE)

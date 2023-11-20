@@ -206,14 +206,14 @@
 		w_uniform.add_fingerprint(M)
 
 
-	if(body_position == LYING_DOWN || sleeping)
+	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)
 		if(client)
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
 			set_resting(FALSE)
 		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
 			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
-	else if(stunned)
+	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
 		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"), \
 			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)
 	else

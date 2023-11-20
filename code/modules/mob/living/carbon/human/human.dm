@@ -1098,9 +1098,9 @@
 		for(var/datum/effects/bleeding/internal/internal_bleed in effects_list)
 			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name]\n"
 
-	if(knocked_out && stat != DEAD)
+	if(stat == UNCONSCIOUS)
 		msg += "They seem to be unconscious\n"
-	if(stat == DEAD)
+	else if(stat == DEAD)
 		if(src.check_tod() && is_revivable())
 			msg += "They're not breathing"
 		else

@@ -49,7 +49,7 @@
 
 	if(!isxeno(M))
 		if(insta_neuro)
-			if(M.GetKnockDownValueNotADurationDoNotUse() < 3) // If they have less than somewhere random between 4 and 6 seconds KD left and assuming it doesnt get refreshed itnernally
+			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
 				M.adjust_effect(1 * power, WEAKEN)
 				return
 
@@ -65,7 +65,7 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.GetKnockDownValueNotADurationDoNotUse() < 5) // If they have less than somewhere random between 8 and 10 seconds KD left and assuming it doesnt get refreshed itnernally
+			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
 				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
@@ -79,7 +79,7 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		if(M.GetKnockDownValueNotADurationDoNotUse() < 0.7) // basically (knocked_down && prob(90))
+		if(M.GetKnockDownDuration() < 0.7) // Worth noting that the value has 0.25~0.5 resolution so this is completely stupid. Stop microdosing balance and get real
 			M.apply_effect(0.7, WEAKEN)
 			M.visible_message(SPAN_DANGER("[M] falls prone."))
 

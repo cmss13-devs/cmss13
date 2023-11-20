@@ -343,8 +343,8 @@
 			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 			target.update_canmove()
 			if (ishuman(target))
-				var/mob/living/carbon/human/Hu = target
-				Hu.update_xeno_hostile_hud()
+				var/mob/living/carbon/human/human = target
+				human.update_xeno_hostile_hud()
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target), get_xeno_stun_duration(target, 25))
 			to_chat(target, SPAN_XENOHIGHDANGER("[xeno] has pinned you to the ground! You cannot move!"))
 

@@ -243,7 +243,7 @@ Higher severity explosion will damage the sensor tower more
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			buildstate += 1
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			buildstate = min(buildstate + 2, buildstate)
+			buildstate = clamp(buildstate + 2, SENSORTOWER_BUILDSTATE_WORKING, SENSORTOWER_BUILDSTATE_WRENCH)
 		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
 			buildstate = 3
 	if(is_on)

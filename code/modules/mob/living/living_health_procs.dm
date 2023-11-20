@@ -87,7 +87,7 @@
 	return amount * GLOBAL_STATUS_MULTIPLIER
 /mob/living/proc/IsStun() //If we're stunned
 	return has_status_effect(/datum/status_effect/incapacitating/stun)
-/mob/living/proc/AmountStun() //How many deciseconds remain in our stun
+/mob/living/proc/AmountStun() //How much time remain in our stun - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
 	var/datum/status_effect/incapacitating/stun/S = IsStun()
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
@@ -176,7 +176,7 @@
 	return amount * GLOBAL_STATUS_MULTIPLIER
 /mob/living/proc/IsKnockDown()
 	return has_status_effect(/datum/status_effect/incapacitating/knockdown)
-/mob/living/proc/AmountKnockDown() //How many deciseconds remains
+/mob/living/proc/AmountKnockDown() //How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
 	var/datum/status_effect/incapacitating/knockdown/S = IsKnockDown()
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
@@ -222,7 +222,7 @@
 	return amount * GLOBAL_STATUS_MULTIPLIER
 /mob/living/proc/IsKnockOut()
 	return has_status_effect(/datum/status_effect/incapacitating/unconscious)
-/mob/living/proc/AmountKnockOut() //How many deciseconds remains
+/mob/living/proc/AmountKnockOut() //How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
 	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER

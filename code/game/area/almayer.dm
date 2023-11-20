@@ -738,16 +738,16 @@
 	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/lifeboat_pumps/north1
-	name = "North West Lifeboat Fuel Pump"
+	name = "Starboard Fore Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/north2
-	name = "North East Lifeboat Fuel Pump"
+	name = "Starboard Aft Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/south1
-	name = "South West Lifeboat Fuel Pump"
+	name = "Port Fore Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/south2
-	name = "South East Lifeboat Fuel Pump"
+	name = "Port Aft Lifeboat Fuel Pump"
 
 /area/almayer/command/lifeboat
 	name = "\improper Lifeboat Docking Port"

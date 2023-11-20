@@ -756,7 +756,7 @@
 	description = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned slightly faster because of it."
 	rarity = PROPERTY_COMMON
 	value = 1
-	intensity_per_level = 6
+	intensity_per_level = 10
 	duration_per_level = -2
 
 	intensitymod_per_level = 0.2

@@ -262,3 +262,10 @@
       time). Abuse at your discretion.
   ihatethisengine:
   - rscadd: Cloaked lurker devouring now shows a message to target again.
+2023-11-20:
+  Zonespace27:
+  - bugfix: Jump-to-area verb will now warn you if there aren't any turfs in the given
+      area.
+2023-11-21:
+  hislittlecuzingames:
+  - code_imp: Added ability to have looping sounds from further away

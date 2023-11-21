@@ -425,8 +425,7 @@
 /obj/structure/mineral_door/resin/proc/close_blocked()
 	for(var/turf/turf in locs)
 		for(var/mob/living/living_mob in turf)
-			var/datum/component/weed_food/weed = living_mob.GetComponent(/datum/component/weed_food)
-			if(!weed?.merged)
+			if(!HAS_TRAIT(living_mob, TRAIT_MERGED_WITH_WEEDS))
 				return TRUE
 	return FALSE
 

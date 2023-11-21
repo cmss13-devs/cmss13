@@ -644,8 +644,6 @@
 	var/matrix/base = matrix()
 	if(pulledby && pulledby.grab_level >= GRAB_CARRY)
 		visual_angle = 90 // CM code - for fireman carry
-	else if(lying_angle)
-		base.Translate(rand(-10,10), rand(-10,10))
 	if(instant_update)
 		apply_transform(base.Turn(visual_angle))
 	else

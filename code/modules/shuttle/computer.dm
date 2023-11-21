@@ -282,6 +282,8 @@
 	req_access = list()
 	breakable = FALSE
 
+var launch_initiated = 0
+
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
 	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
@@ -305,10 +307,14 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
 					return
 
+				if(launch_initiated == 1)
+					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
+					return
+
 				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
 				switch (response)
 					if ("Yes")
-						lifeboat.set_mode(SHUTTLE_IGNITINGSOON)
+						launch_initiated = 1
 						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
 						shipwide_ai_announcement("Launch command received. " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " Lifeboat doors will close in 10 seconds.")
 						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
@@ -321,8 +327,6 @@
 
 			if(SHUTTLE_IGNITING)
 				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
-			if(SHUTTLE_IGNITINGSOON)
-				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing soon\"."))
 			if(SHUTTLE_CALL)
 				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
 

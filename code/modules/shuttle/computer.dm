@@ -282,7 +282,7 @@
 	req_access = list()
 	breakable = FALSE
 
-var launch_initiated = 0
+var launch_initiated = null
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()

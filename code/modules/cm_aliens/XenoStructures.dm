@@ -418,9 +418,7 @@
 	update_icon()
 	isSwitchingStates = 0
 	layer = DOOR_OPEN_LAYER
-	spawn(close_delay)
-		if(!isSwitchingStates && state == 1)
-			Close()
+	addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /obj/structure/mineral_door/resin/proc/close_blocked()
 	for(var/turf/turf in locs)
@@ -430,11 +428,11 @@
 	return FALSE
 
 /obj/structure/mineral_door/resin/Close()
-	if(!state || !loc) return //already closed
+	if(!state || !loc || isSwitchingStates)
+		return //already closed or changing
 	//Can't close if someone is blocking it
 	if(close_blocked())
-		spawn(close_delay)
-			Close()
+		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE)
 		return
 
 	isSwitchingStates = 1

@@ -422,14 +422,22 @@
 		if(!isSwitchingStates && state == 1)
 			Close()
 
+/obj/structure/mineral_door/resin/proc/close_blocked()
+	for(var/turf/turf in locs)
+		for(var/mob/living/living_mob in turf)
+			var/datum/component/weed_food/weed = living_mob.GetComponent(/datum/component/weed_food)
+			if(!weed?.merged)
+				return TRUE
+	return FALSE
+
 /obj/structure/mineral_door/resin/Close()
 	if(!state || !loc) return //already closed
 	//Can't close if someone is blocking it
-	for(var/turf/turf in locs)
-		if(locate(/mob/living) in turf)
-			spawn (close_delay)
-				Close()
-			return
+	if(close_blocked())
+		spawn(close_delay)
+			Close()
+		return
+
 	isSwitchingStates = 1
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]closing",src)
@@ -440,10 +448,10 @@
 	update_icon()
 	isSwitchingStates = 0
 	layer = DOOR_CLOSED_LAYER
-	for(var/turf/turf in locs)
-		if(locate(/mob/living) in turf)
-			Open()
-			return
+
+	if(close_blocked())
+		Open()
+		return
 
 /obj/structure/mineral_door/resin/Dismantle(devastated = 0)
 	qdel(src)

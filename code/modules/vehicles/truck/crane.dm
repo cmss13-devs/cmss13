@@ -33,7 +33,7 @@
 	move_turn_momentum_loss_factor = 0.6
 
 	hardpoints_allowed = list(
-		/obj/item/hardpoint/locomotion/truck/treads/crane
+		/obj/item/hardpoint/locomotion/truck/treads/crane,
 	)
 
 /*

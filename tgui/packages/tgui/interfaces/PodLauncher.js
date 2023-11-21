@@ -4,19 +4,7 @@ import { multiline } from 'common/string';
 import { createUuid } from 'common/uuid';
 import { Component, Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  ByondUi,
-  Divider,
-  Input,
-  Knob,
-  LabeledControls,
-  NumberInput,
-  Section,
-  Flex,
-  Slider,
-} from '../components';
+import { Box, Button, ByondUi, Divider, Input, Knob, LabeledControls, NumberInput, Section, Flex, Slider } from '../components';
 import { Window } from '../layouts';
 
 const pod_grey = {
@@ -685,23 +673,23 @@ class PresetsPage extends Component {
         )}
         {presets
           ? presets.map((preset, i) => (
-              <Button
-                key={i}
-                width="100%"
-                backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
-                onClick={() => setSelectedPreset(preset.id)}
-                content={preset.title}
-                style={
-                  presetIndex === preset.id
-                    ? {
-                        'border-width': '1px',
-                        'border-style': 'solid',
-                        'border-color': `hsl(${preset.hue}, 80%, 80%)`,
-                      }
-                    : ''
-                }
-              />
-            ))
+            <Button
+              key={i}
+              width="100%"
+              backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
+              onClick={() => setSelectedPreset(preset.id)}
+              content={preset.title}
+              style={
+                presetIndex === preset.id
+                  ? {
+                    'border-width': '1px',
+                    'border-style': 'solid',
+                    'border-color': `hsl(${preset.hue}, 80%, 80%)`,
+                  }
+                  : ''
+              }
+            />
+          ))
           : ''}
       </Section>
     );

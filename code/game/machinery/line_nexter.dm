@@ -3,19 +3,23 @@
 	name = "Turnstile"
 	desc = "a one-way barrier combined with a bar to pull people out of line."
 	icon = 'icons/obj/structures/barricades.dmi'
-	density = 1
+	density = TRUE
 	icon_state = "turnstile"
-	anchored = 1
+	anchored = TRUE
 	flags_atom = ON_BORDER
 	dir = WEST
 	var/last_use
 	var/id
 
+/obj/structure/machinery/line_nexter/med
+	icon = 'icons/obj/structures/barricades.dmi'
+	icon_state = "turnstile_med"
+
 /obj/structure/machinery/line_nexter/Initialize()
 	. = ..()
 	last_use = world.time
 
-/obj/structure/machinery/line_nexter/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/line_nexter/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_THROUGH|PASS_UNDER
@@ -52,7 +56,7 @@
 
 /obj/structure/machinery/line_nexter_control/attack_hand(mob/living/user)
 	add_fingerprint(user)
-	if(istype(user,/mob/living/carbon/Xenomorph))
+	if(istype(user,/mob/living/carbon/xenomorph))
 		return
 
 	icon_state = "doorctrl1"

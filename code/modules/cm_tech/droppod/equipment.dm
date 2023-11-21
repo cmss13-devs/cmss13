@@ -2,13 +2,13 @@
 	name = "\improper USCM droppod"
 	var/obj/equipment_to_spawn
 
-/obj/structure/droppod/equipment/Initialize(mapload, var/equipment, var/mob/M)
+/obj/structure/droppod/equipment/Initialize(mapload, equipment, mob/M)
 	if(!equipment)
 		return INITIALIZE_HINT_QDEL
 	spawn_equipment(equipment, M)
 	return ..()
 
-/obj/structure/droppod/equipment/proc/spawn_equipment(var/equipment, var/mob/M)
+/obj/structure/droppod/equipment/proc/spawn_equipment(equipment, mob/M)
 	equipment_to_spawn = new equipment(src)
 	return equipment_to_spawn
 
@@ -26,7 +26,7 @@
 	if(equipment_to_spawn)
 		equipment_to_spawn.forceMove(loc)
 
-/obj/structure/droppod/equipment/sentry/spawn_equipment(var/equipment, var/mob/M)
+/obj/structure/droppod/equipment/sentry/spawn_equipment(equipment, mob/M)
 	var/obj/structure/machinery/defenses/sentry/S = ..()
 	S.owner_mob = M
 	return S

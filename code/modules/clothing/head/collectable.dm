@@ -17,3 +17,19 @@
 	icon_state = "tophat"
 	item_state = "that"
 	flags_armor_protection = 0
+
+/obj/item/clothing/head/collectable/tophat/super
+	name = "collectable super top hat"
+	desc = "A super top hat worn by only the highest echelon of hat collectors."
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_64.dmi'
+	)
+	icon_state = "super_top_hat"
+	item_state = "super_top_hat"
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	w_class = SIZE_LARGE
+
+/obj/item/clothing/head/collectable/petehat
+	icon_state = "petehat"
+	item_state = "petehat"

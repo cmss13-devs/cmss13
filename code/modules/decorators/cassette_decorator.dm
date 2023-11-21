@@ -8,7 +8,7 @@
 /datum/decorator/cassette/get_decor_types()
 	return typesof(/obj/item/device/cassette_tape)
 
-/datum/decorator/cassette/decorate(var/obj/item/device/cassette_tape/cassette)
+/datum/decorator/cassette/decorate(obj/item/device/cassette_tape/cassette)
 	if(!cassette_data)
 		return
 	cassette.desc = replacetext(cassette_data[cassette.id], "\\n", "\n")

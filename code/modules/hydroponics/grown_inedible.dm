@@ -43,20 +43,20 @@
 
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if(W.sharp == IS_SHARP_ITEM_BIG)
-			user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), 1)
-			for(var/i=0,i<2,i++)
-				var/obj/item/stack/sheet/wood/NG = new (user.loc)
-				for (var/obj/item/stack/sheet/wood/G in user.loc)
-					if(G==NG)
-						continue
-					if(G.amount>=G.max_amount)
-						continue
-					G.attackby(NG, user)
-					to_chat(usr, "You add the newly-formed wood to the stack. It now contains [NG.amount] planks.")
-			qdel(src)
-			return
+/obj/item/grown/log/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.sharp == IS_SHARP_ITEM_BIG)
+		user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), SHOW_MESSAGE_VISIBLE)
+		for(var/i=0,i<2,i++)
+			var/obj/item/stack/sheet/wood/NG = new (user.loc)
+			for (var/obj/item/stack/sheet/wood/G in user.loc)
+				if(G==NG)
+					continue
+				if(G.amount>=G.max_amount)
+					continue
+				G.attackby(NG, user)
+				to_chat(usr, "You add the newly-formed wood to the stack. It now contains [NG.amount] planks.")
+		qdel(src)
+		return
 
 /obj/item/grown/sunflower // FLOWER POWER!
 	plantname = "sunflowers"
@@ -113,7 +113,7 @@
 		return 1
 	return 0
 
-/obj/item/grown/nettle/proc/lose_leaves(var/mob/user)
+/obj/item/grown/nettle/proc/lose_leaves(mob/user)
 	if(force > 0)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)
 		force -= rand(1,(force/3)+1) // When you whack someone with it, leaves fall off
@@ -128,7 +128,7 @@
 
 /obj/item/grown/nettle/death // -- Skie
 	plantname = "deathnettle"
-	desc = "The \red glowing \black nettle incites \red<B>rage</B>\black in you just from looking at it!"
+	desc = "The glowing nettle incites <B>rage</B> in you just from looking at it!"
 	name = "deathnettle"
 	icon_state = "deathnettle"
 
@@ -137,7 +137,7 @@
 /obj/item/grown/nettle/death/pickup(mob/living/carbon/human/user as mob)
 
 	if(..() && prob(50))
-		user.KnockOut(5)
+		user.apply_effect(5, PARALYZE)
 		to_chat(user, SPAN_DANGER("You are stunned by the deathnettle when you try picking it up!"))
 
 /obj/item/grown/nettle/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -157,10 +157,10 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] on [key_name(M)]</font>")
 		msg_admin_attack("[key_name(user)] used the [src.name] on [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-		M.eye_blurry += force/7
+		M.EyeBlur(force/7)
 		if(prob(20))
-			M.KnockOut(force/6)
-			M.KnockDown(force/15)
+			M.apply_effect(force/6, PARALYZE)
+			M.apply_effect(force/15, WEAKEN)
 		M.drop_held_item()
 
 /obj/item/corncob

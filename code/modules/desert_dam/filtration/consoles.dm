@@ -5,9 +5,9 @@ var/global/river_activated = FALSE
 	desc = "A console."
 	icon = 'icons/obj/structures/machinery/filtration.dmi'
 	icon_state = "console"
-	density = 1
-	anchored = 1
-	use_power = 0
+	density = TRUE
+	anchored = TRUE
+	use_power = USE_POWER_NONE
 	//idle_power_usage = 1000
 	var/id = null
 	var/damaged = 0
@@ -35,8 +35,6 @@ var/global/river_activated = FALSE
 			if (prob(10))
 				get_broken()
 				return
-		else
-	return
 
 /obj/structure/machinery/filtration/console/proc/get_broken()
 	if(damaged)

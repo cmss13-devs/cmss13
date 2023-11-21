@@ -1,11 +1,13 @@
-#define MARINE_CONDUCT_MEDAL		"distinguished conduct medal"
-#define MARINE_BRONZE_HEART_MEDAL	"bronze heart medal"
-#define MARINE_VALOR_MEDAL			"medal of valor"
-#define MARINE_HEROISM_MEDAL		"medal of exceptional heroism"
+#define MARINE_CONDUCT_MEDAL "distinguished conduct medal"
+#define MARINE_BRONZE_HEART_MEDAL "bronze heart medal"
+#define MARINE_VALOR_MEDAL "medal of valor"
+#define MARINE_HEROISM_MEDAL "medal of exceptional heroism"
 
-#define XENO_SLAUGHTER_MEDAL		"royal jelly of slaughter"
-#define XENO_RESILIENCE_MEDAL		"royal jelly of resilience"
-#define XENO_SABOTAGE_MEDAL			"royal jelly of sabotage"
+#define XENO_SLAUGHTER_MEDAL "royal jelly of slaughter"
+#define XENO_RESILIENCE_MEDAL "royal jelly of resilience"
+#define XENO_SABOTAGE_MEDAL "royal jelly of sabotage"
+#define XENO_PROLIFERATION_MEDAL "royal jelly of proliferation"
+#define XENO_REJUVENATION_MEDAL "royal jelly of rejuvenation"
 
 GLOBAL_LIST_EMPTY(medal_awards)
 GLOBAL_LIST_EMPTY(jelly_awards)
@@ -18,9 +20,10 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	var/recipient_rank
 	var/recipient_ckey
 	var/mob/recipient_mob
-	var/list/giver_name // Actually key for xenos
-	var/list/giver_rank // Actually name for xenos
+	var/list/giver_name // Designation for xenos
+	var/list/giver_rank // "Name" for xenos
 	var/list/giver_mob
+	var/list/giver_ckey
 
 /datum/recipient_awards/New()
 	medal_names = list()
@@ -30,9 +33,10 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	giver_name = list()
 	giver_rank = list()
 	giver_mob = list()
+	giver_ckey = list()
 
 
-/proc/give_medal_award(var/medal_location, var/as_admin = FALSE)
+/proc/give_medal_award(medal_location, as_admin = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
 		as_admin = FALSE
 
@@ -114,12 +118,13 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	recipient_award.medal_names += medal_type
 	recipient_award.medal_citations += citation
 	recipient_award.posthumous += posthumous
+	recipient_award.giver_ckey += usr.ckey
 
 	if(!as_admin)
 		recipient_award.giver_rank += recipient_ranks[usr.real_name] // Currently not used in marine award message
 		recipient_award.giver_name += usr.real_name // Currently not used in marine award message
 	else
-		recipient_award.giver_rank += "([usr.ckey])" // Just because it'll be displayed in the panel
+		recipient_award.giver_rank += null
 		recipient_award.giver_name += null
 
 	// Create an actual medal item
@@ -150,11 +155,11 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_rank, citation, usr)
 
 	// Inform staff of success
-	message_staff("[key_name_admin(usr)] awarded a <a href='?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
+	message_admins("[key_name_admin(usr)] awarded a <a href='?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
 
 	return TRUE
 
-/proc/print_medal(mob/living/carbon/human/user, var/obj/printer)
+/proc/print_medal(mob/living/carbon/human/user, obj/printer)
 	var/obj/item/card/id/card = user.wear_id
 	if(!card)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
@@ -177,7 +182,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(give_medal_award(get_turf(printer)))
 		user.visible_message(SPAN_NOTICE("[printer] prints a medal."))
 
-/proc/give_jelly_award(var/datum/hive_status/hive, var/as_admin = FALSE)
+/proc/give_jelly_award(datum/hive_status/hive, as_admin = FALSE)
 	if(!hive)
 		return FALSE
 
@@ -188,7 +193,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	var/list/possible_recipients = list()
 	var/list/recipient_castes = list()
 	var/list/recipient_mobs = list()
-	for(var/mob/living/carbon/Xenomorph/xeno in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
 		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award self
 			continue
 		if (xeno.tier == 0) // Don't award larva or facehuggers
@@ -199,7 +204,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_castes[recipient_name] = xeno.caste_type
 		recipient_mobs[recipient_name] = xeno
 		possible_recipients += recipient_name
-	for(var/mob/living/carbon/Xenomorph/xeno in hive.totalDeadXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in hive.total_dead_xenos)
 		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award previous selves
 			continue
 		if (xeno.tier == 0) // Don't award larva or facehuggers
@@ -215,7 +220,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return FALSE
 
 	// Pick a jelly
-	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL), theme="hive_status")
+	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL), theme="hive_status")
 	if(!medal_type)
 		return FALSE
 
@@ -256,15 +261,21 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	recipient_award.medal_names += medal_type
 	recipient_award.medal_citations += citation
 	recipient_award.posthumous += posthumous
+	recipient_award.giver_ckey += usr.ckey
+
 	if(!admin_attribution)
 		recipient_award.giver_rank += usr.name
-		recipient_award.giver_name += usr.key
+		var/mob/living/carbon/xenomorph/giving_xeno = usr
+		if(istype(giving_xeno))
+			recipient_award.giver_name += giving_xeno.full_designation
+		else
+			recipient_award.giver_name += null
 	else if(admin_attribution == "none")
 		recipient_award.giver_rank += null
 		recipient_award.giver_name += null
 	else
 		recipient_award.giver_rank += admin_attribution
-		recipient_award.giver_name += null // If not null, rescinding it will take stats away from a mob with this key
+		recipient_award.giver_name += null
 
 	recipient_award.medal_items += null // TODO: Xeno award item?
 
@@ -275,16 +286,16 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_caste, citation, usr)
 
 	// Inform staff of success
-	message_staff("[key_name_admin(usr)] awarded a <a href='?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
+	message_admins("[key_name_admin(usr)] awarded a <a href='?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
 
 	return TRUE
 
-/proc/remove_award(var/recipient_name, var/is_marine_medal, var/index = 1)
+/proc/remove_award(recipient_name, is_marine_medal, index = 1)
 	if(!check_rights(R_MOD))
 		return FALSE
 
 	// Because the DB is slow, give an early message so there aren't two jumping on it
-	message_staff("[key_name_admin(usr)] is deleting one of [recipient_name]'s medals...")
+	message_admins("[key_name_admin(usr)] is deleting one of [recipient_name]'s medals...")
 
 	// Find the award in the glob list
 	var/datum/recipient_awards/recipient_award
@@ -335,6 +346,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_award.giver_name.Cut(index, index + 1)
 		recipient_award.giver_rank.Cut(index, index + 1)
 		recipient_award.giver_mob.Cut(index, index + 1)
+		recipient_award.giver_ckey.Cut(index, index + 1)
 		recipient_award.medal_items.Cut(index, index + 1)
 
 	// Remove giver's stat
@@ -348,6 +360,6 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 			recipient_player.untrack_medal_earned(medal_type, recipient_mob, citation)
 
 	// Inform staff of success
-	message_staff("[key_name_admin(usr)] deleted [recipient_name]'s <a href='?medals_panel=1'>[medal_type]</a> for: \'[citation]\'.")
+	message_admins("[key_name_admin(usr)] deleted [recipient_name]'s <a href='?medals_panel=1'>[medal_type]</a> for: \'[citation]\'.")
 
 	return TRUE

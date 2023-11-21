@@ -33,7 +33,7 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/secondary/grenade_launcher/can_activate(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/grenade_launcher/can_activate(mob/user, atom/A)
 	if(!..())
 		return FALSE
 
@@ -45,18 +45,18 @@
 
 	return TRUE
 
-/obj/item/hardpoint/secondary/grenade_launcher/fire_projectile(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/grenade_launcher/fire_projectile(mob/user, atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
 
 	//getting distance between supposed target and tank center.
-	var/range = get_dist(origin_turf, A) + 1	//otherwise nade falls one tile shorter
+	var/range = get_dist(origin_turf, A) + 1 //otherwise nade falls one tile shorter
 	if(range > max_range)
 		range = max_range
 
-	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
+	var/obj/projectile/P = generate_bullet(user, origin_turf)
 	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])
 	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed)
 

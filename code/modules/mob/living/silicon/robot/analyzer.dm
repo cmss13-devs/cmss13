@@ -13,7 +13,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	matter = list("metal" = 200)
-	
+
 	var/mode = 1;
 
 /obj/item/device/robotanalyzer/attack(mob/living/M as mob, mob/living/user as mob)
@@ -29,13 +29,13 @@
 	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	if(!isrobot(M) && !isSynth(M))
+	if(!isrobot(M) && !issynth(M))
 		to_chat(user, SPAN_DANGER("You can't analyze non-robotic things!"))
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] has analyzed [M]'s components."), SPAN_NOTICE("You have analyzed [M]'s components."))
-	var/BU = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
-	var/BR = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
+	var/BU = M.getFireLoss() > 50 ? "<b>[M.getFireLoss()]</b>" : M.getFireLoss()
+	var/BR = M.getBruteLoss() > 50 ? "<b>[M.getBruteLoss()]</b>" : M.getBruteLoss()
 	user.show_message(SPAN_NOTICE("Analyzing Results for [M]:\n\t Overall Status: [M.stat > 1 ? "fully disabled" : "[M.health - M.halloss]% functional"]"))
 	user.show_message("\t Key: <font color='#FFA500'>Electronics</font>/<font color='red'>Brute</font>", 1)
 	user.show_message("\t Damage Specifics: <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>")
@@ -58,15 +58,15 @@
 		else
 			user.show_message(SPAN_NOTICE("\t Components are OK."),1)
 
-	if (isSynth(M))
+	if (issynth(M))
 		var/mob/living/carbon/human/H = M
 		var/list/damaged = H.get_damaged_limbs(1,1)
 		user.show_message(SPAN_NOTICE("Localized Damage, Brute/Electronics:"),1)
 		if(length(damaged)>0)
 			for(var/obj/limb/org in damaged)
 				var/msg_display_name = "[capitalize(org.display_name)]" // Here for now until we purge this useless shitcode
-				var/msg_brute_dmg = "[(org.brute_dam > 0)	?	SPAN_DANGER("[org.brute_dam]") : "0"]"
-				var/msg_burn_dmg = "[(org.brute_dam > 0)	?	SPAN_DANGER("[org.brute_dam]") : "0"]"
+				var/msg_brute_dmg = "[(org.brute_dam > 0) ? SPAN_DANGER("[org.brute_dam]") : "0"]"
+				var/msg_burn_dmg = "[(org.brute_dam > 0) ? SPAN_DANGER("[org.brute_dam]") : "0"]"
 				user.show_message(SPAN_NOTICE("\t [msg_display_name]: [msg_brute_dmg] - [msg_burn_dmg]"), 1)
 		else
 			user.show_message(SPAN_NOTICE("\t Components are OK."),1)

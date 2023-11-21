@@ -9,14 +9,14 @@
 	var/list/xeno_keys
 	var/list/xeno_info
 	var/hive_location
-	var/pooled_larva
+	var/burrowed_larva
 	var/evilution_level
 
 	var/data_initialized = FALSE
 
 	var/datum/hive_status/assoc_hive = null
 
-/datum/hive_status_ui/New(var/datum/hive_status/hive)
+/datum/hive_status_ui/New(datum/hive_status/hive)
 	assoc_hive = hive
 	update_all_data()
 	START_PROCESSING(SShive_status, src)
@@ -62,7 +62,7 @@
 
 // Mildly related to the above, but only for when xenos are removed from the hive
 // If a xeno dies, we don't have to regenerate all xeno info and sort it again, just remove them from the data list
-/datum/hive_status_ui/proc/xeno_removed(var/mob/living/carbon/Xenomorph/X)
+/datum/hive_status_ui/proc/xeno_removed(mob/living/carbon/xenomorph/X)
 	if(!xeno_keys)
 		return
 
@@ -89,17 +89,16 @@
 	xeno_vitals = assoc_hive.get_xeno_vitals()
 
 // Updates how many buried larva there are
-/datum/hive_status_ui/proc/update_pooled_larva(send_update = TRUE)
-	pooled_larva = assoc_hive.stored_larva
+/datum/hive_status_ui/proc/update_burrowed_larva(send_update = TRUE)
+	burrowed_larva = assoc_hive.stored_larva
 	if(SSxevolution)
 		evilution_level = SSxevolution.get_evolution_boost_power(assoc_hive.hivenumber)
 	else
 		evilution_level = 1
-
 	if(send_update)
 		SStgui.update_uis(src)
 
-// Updates all data except pooled larva
+// Updates all data except burrowed larva
 /datum/hive_status_ui/proc/update_all_xeno_data(send_update = TRUE)
 	update_xeno_counts(FALSE)
 	update_xeno_vitals()
@@ -109,11 +108,11 @@
 	if(send_update)
 		SStgui.update_uis(src)
 
-// Updates all data, including pooled larva
+// Updates all data, including burrowed larva
 /datum/hive_status_ui/proc/update_all_data()
 	data_initialized = TRUE
 	update_all_xeno_data(FALSE)
-	update_pooled_larva(FALSE)
+	update_burrowed_larva(FALSE)
 	SStgui.update_uis(src)
 
 /datum/hive_status_ui/ui_state(mob/user)
@@ -134,10 +133,10 @@
 	.["xeno_vitals"] = xeno_vitals
 	.["queen_location"] = get_area_name(assoc_hive.living_xeno_queen)
 	.["hive_location"] = hive_location
-	.["pooled_larva"] = pooled_larva
+	.["burrowed_larva"] = burrowed_larva
 	.["evilution_level"] = evilution_level
 
-	var/mob/living/carbon/Xenomorph/Queen/Q = user
+	var/mob/living/carbon/xenomorph/queen/Q = user
 	.["is_in_ovi"] = istype(Q) && Q.ovipositor
 
 /datum/hive_status_ui/ui_static_data(mob/user)
@@ -146,7 +145,7 @@
 	.["hive_color"] = assoc_hive.ui_color
 	.["hive_name"] = assoc_hive.name
 
-/datum/hive_status_ui/proc/open_hive_status(var/mob/user)
+/datum/hive_status_ui/proc/open_hive_status(mob/user)
 	if(!user)
 		return
 
@@ -173,8 +172,8 @@
 
 	switch(action)
 		if("give_plasma")
-			var/mob/living/carbon/Xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
-			var/mob/living/carbon/Xenomorph/xenoSrc = ui.user
+			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
+			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
 			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
 				return
@@ -186,8 +185,8 @@
 			A?.use_ability_wrapper(xenoTarget)
 
 		if("heal")
-			var/mob/living/carbon/Xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
-			var/mob/living/carbon/Xenomorph/xenoSrc = ui.user
+			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
+			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
 			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
 				return
@@ -199,8 +198,8 @@
 			A?.use_ability_wrapper(xenoTarget, TRUE)
 
 		if("overwatch")
-			var/mob/living/carbon/Xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
-			var/mob/living/carbon/Xenomorph/xenoSrc = ui.user
+			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
+			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
 			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
 				return

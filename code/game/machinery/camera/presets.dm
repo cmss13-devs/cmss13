@@ -26,10 +26,11 @@
 	name = "laser camera"
 	invuln = TRUE
 	icon_state = ""
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	network = list(CAMERA_NET_LASER_TARGETS)
 	unslashable = TRUE
 	unacidable = TRUE
+	emp_proof = TRUE
 
 /obj/structure/machinery/camera/laser_cam/Initialize(mapload, laser_name)
 	. = ..()
@@ -37,12 +38,9 @@
 		var/area/A = get_area(src)
 		c_tag = "[laser_name] ([A.name])"
 
-/obj/structure/machinery/camera/laser_cam
-	emp_act(severity)
-		return //immune to EMPs, just in case
 
-	ex_act()
-		return
+/obj/structure/machinery/camera/laser_cam/ex_act()
+	return
 
 
 // ALL UPGRADES
@@ -62,7 +60,7 @@
 	icon_state = "vehicle_camera"
 	network = list(CAMERA_NET_VEHICLE)
 
-/obj/structure/machinery/camera/vehicle/toggle_cam_status(var/on = FALSE)
+/obj/structure/machinery/camera/vehicle/toggle_cam_status(on = FALSE)
 	if(on)
 		status = TRUE
 	else
@@ -103,13 +101,17 @@
 	name = "containment camera"
 	unslashable = TRUE
 	unacidable = TRUE
-	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_CONTAINMENT)
+	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_CONTAINMENT)
 
-/obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
 /obj/structure/machinery/camera/autoname/almayer/containment/hidden
-	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_CONTAINMENT_HIDDEN)
+	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)
+
+/obj/structure/machinery/camera/autoname/almayer/containment/ares
+	name = "ares core camera"
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_ARES)
 
 //used by the landing camera dropship equipment. Do not place them right under where the dropship lands.
 //Should place them near each corner of your LZs.
@@ -117,14 +119,12 @@
 	name = "landing zone camera"
 	invuln = TRUE
 	icon_state = "editor_icon"//for the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	network = list(CAMERA_NET_LANDING_ZONES)
 	invisibility = 101 //fuck you init()
 
 	colony_camera_mapload = FALSE
-
-/obj/structure/machinery/camera/autoname/lz_camera/emp_act(severity)
-	return //immune to EMPs, just in case
+	emp_proof = TRUE
 
 /obj/structure/machinery/camera/autoname/lz_camera/ex_act()
 	return
@@ -134,7 +134,7 @@
 
 /obj/structure/machinery/camera/proc/isEmpProof()
 	var/O = locate(/obj/item/stack/sheet/mineral/osmium) in assembly.upgrades
-	return O
+	return O || emp_proof
 
 /obj/structure/machinery/camera/proc/isXRay()
 	var/obj/item/stock_parts/scanning_module/O = locate(/obj/item/stock_parts/scanning_module) in assembly.upgrades

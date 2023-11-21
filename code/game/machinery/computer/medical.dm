@@ -5,7 +5,7 @@
 	desc = "This can be used to check medical records."
 	icon_state = "medcomp"
 	density = TRUE
-	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_MEDICAL)
 	circuit = /obj/item/circuitboard/computer/med_data
 	var/obj/item/card/id/scan = null
 	var/last_user_name = ""
@@ -24,7 +24,7 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
@@ -82,10 +82,10 @@
 					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 						dat += "<CENTER><B>Medical Record</B></CENTER><BR>"
 						dat += "<table><tr><td>Name: [active1.fields["name"]] \
-								ID: [active1.fields["id"]]<BR>\n	\
-								Sex: <A href='?src=\ref[src];field=sex'>[active1.fields["sex"]]</A><BR>\n	\
-								Age: <A href='?src=\ref[src];field=age'>[active1.fields["age"]]</A><BR>\n	\
-								Physical Status: <A href='?src=\ref[src];field=p_stat'>[active1.fields["p_stat"]]</A><BR>\n	\
+								ID: [active1.fields["id"]]<BR>\n \
+								Sex: <A href='?src=\ref[src];field=sex'>[active1.fields["sex"]]</A><BR>\n \
+								Age: <A href='?src=\ref[src];field=age'>[active1.fields["age"]]</A><BR>\n \
+								Physical Status: <A href='?src=\ref[src];field=p_stat'>[active1.fields["p_stat"]]</A><BR>\n \
 								Mental Status: <A href='?src=\ref[src];field=m_stat'>[active1.fields["m_stat"]]</A><BR></td><td align = center valign = top> \
 								Photo:<br><img src=front.png height=64 width=64 border=5><img src=side.png height=64 width=64 border=5></td></tr></table>"
 					else
@@ -110,9 +110,9 @@
 					var/bdat = null
 					for(var/obj/structure/machinery/bot/medbot/M in machines)
 
-						if(M.z != src.z)	continue	//only find medibots on the same z-level as the computer
+						if(M.z != src.z) continue //only find medibots on the same z-level as the computer
 						var/turf/bl = get_turf(M)
-						if(bl)	//if it can't find a turf for the medibot, then it probably shouldn't be showing up
+						if(bl) //if it can't find a turf for the medibot, then it probably shouldn't be showing up
 							bdat += "[M.name] - <b>\[[bl.x],[bl.y]\]</b> - [M.on ? "Online" : "Offline"]<br>"
 							if((!isnull(M.reagent_glass)) && M.use_beaker)
 								bdat += "Reservoir: \[[M.reagent_glass.reagents.total_volume]/[M.reagent_glass.reagents.maximum_volume]\]<br>"
@@ -123,7 +123,6 @@
 					else
 						dat += "<br>[bdat]"
 
-				else
 		else
 			dat += text("<A href='?src=\ref[];login=1'>{Log In}</A>", src)
 	show_browser(user, dat, "Medical Records", "med_rec")
@@ -365,8 +364,6 @@
 				for(var/datum/data/record/E in GLOB.data_core.medical)
 					if ((E.fields["ref"] == R.fields["ref"] || E.fields["id"] == R.fields["id"]))
 						M = E
-					else
-						//Foreach continue //goto(2540)
 				src.active1 = R
 				src.active2 = M
 				src.screen = 4
@@ -417,16 +414,12 @@
 				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if ((lowertext(R.fields["name"]) == t1 || t1 == lowertext(R.fields["id"])))
 						src.active2 = R
-					else
-						//Foreach continue //goto(3229)
 				if (!active2)
 					temp = "Could not locate record [t1]."
 				else
 					for(var/datum/data/record/E in GLOB.data_core.general)
 						if ((E.fields["name"] == src.active2.fields["name"] || E.fields["id"] == src.active2.fields["id"]))
 							src.active1 = E
-						else
-							//Foreach continue //goto(3334)
 					src.screen = 4
 
 			if (href_list["print_p"])
@@ -469,9 +462,10 @@
 					if(!record) return
 					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 					sleep(40)
+					var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 					var/obj/item/paper/P = new /obj/item/paper( src.loc )
 					P.name = text("Scan: [], []",record.fields["name"],worldtime2text())
-					P.info += text("<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Scan Record</I><HR><H2>[]</H2>\n</center>",record.fields["name"])
+					P.info += text("<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Scan Record</I><HR><H2>[]</H2>\n</center>",record.fields["name"])
 					for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 						if (R.fields["name"] ==  record.fields["name"])
 							if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
@@ -489,8 +483,8 @@
 	return
 
 /obj/structure/machinery/computer/med_data/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 
 	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
@@ -499,7 +493,7 @@
 				if(1)
 					R.fields["name"] = "[pick(pick(first_names_male), pick(first_names_female))] [pick(last_names)]"
 				if(2)
-					R.fields["sex"]	= pick("Male", "Female")
+					R.fields["sex"] = pick("Male", "Female")
 				if(3)
 					R.fields["age"] = rand(5, 85)
 				if(4)
@@ -515,11 +509,9 @@
 			qdel(R)
 			continue
 
-	..(severity)
-
 
 /obj/structure/machinery/computer/med_data/laptop
 	name = "Medical Laptop"
 	desc = "Cheap Weyland-Yutani Laptop."
 	icon_state = "medlaptop"
-	density = 0
+	density = FALSE

@@ -12,7 +12,7 @@
 
 	var/datum/techtree/holder
 
-/datum/tier/New(var/datum/techtree/tree)
+/datum/tier/New(datum/techtree/tree)
 	. = ..()
 	holder = tree
 

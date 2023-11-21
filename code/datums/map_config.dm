@@ -16,33 +16,34 @@
 	var/map_name = "LV624"
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
-	/// Hash of nightmare parser types to config file paths
-	var/list/nightmare
+
+	var/webmap_url
+	var/short_name
 
 	var/traits = null
 	var/space_empty_levels = 1
 	var/list/environment_traits = list()
-	var/armor_style = "default"
 	var/list/gamemodes = list()
+
+	var/camouflage_type = "classic"
 
 	var/allow_custom_shuttles = TRUE
 	var/shuttles = list()
 
 	var/announce_text = ""
+	var/infection_announce_text = ""
 
 	var/squads_max_num = 4
 
 	var/weather_holder
 
-	var/list/survivor_types = list(
-		/datum/equipment_preset/survivor/scientist,
-		/datum/equipment_preset/survivor/doctor,
-		/datum/equipment_preset/survivor/chef,
-		/datum/equipment_preset/survivor/chaplain,
-		/datum/equipment_preset/survivor/miner,
-		/datum/equipment_preset/survivor/colonial_marshal,
-		/datum/equipment_preset/survivor/engineer
-	)
+	var/list/survivor_types
+	var/list/survivor_types_by_variant
+
+	var/list/synth_survivor_types
+	var/list/synth_survivor_types_by_variant
+
+	var/list/CO_survivor_types
 
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
@@ -61,6 +62,41 @@
 	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, XENO_HIVE_BRAVO = 0)
 
 	var/vote_cycle = 1
+
+	var/nightmare_path
+
+	/// If truthy this is config for a round overriden map: search for override maps in data/, instead of using a path in maps/
+	var/override_map
+
+/datum/map_config/New()
+	survivor_types = list(
+		/datum/equipment_preset/survivor/scientist,
+		/datum/equipment_preset/survivor/doctor,
+		/datum/equipment_preset/survivor/chef,
+		/datum/equipment_preset/survivor/chaplain,
+		/datum/equipment_preset/survivor/miner,
+		/datum/equipment_preset/survivor/colonial_marshal,
+		/datum/equipment_preset/survivor/engineer,
+	)
+
+	synth_survivor_types = list(
+		/datum/equipment_preset/synth/survivor/medical_synth,
+		/datum/equipment_preset/synth/survivor/emt_synth,
+		/datum/equipment_preset/synth/survivor/scientist_synth,
+		/datum/equipment_preset/synth/survivor/engineer_synth,
+		/datum/equipment_preset/synth/survivor/janitor_synth,
+		/datum/equipment_preset/synth/survivor/chef_synth,
+		/datum/equipment_preset/synth/survivor/teacher_synth,
+		/datum/equipment_preset/synth/survivor/freelancer_synth,
+		/datum/equipment_preset/synth/survivor/trucker_synth,
+		/datum/equipment_preset/synth/survivor/bartender_synth,
+		/datum/equipment_preset/synth/survivor/detective_synth,
+		/datum/equipment_preset/synth/survivor/cmb_synth,
+		/datum/equipment_preset/synth/survivor/wy/security_synth,
+		/datum/equipment_preset/synth/survivor/wy/protection_synth,
+		/datum/equipment_preset/synth/survivor/wy/corporate_synth,
+		/datum/equipment_preset/synth/survivor/radiation_synth,
+	)
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
@@ -118,21 +154,35 @@
 
 	config_filename = filename
 
+	override_map = json["override_map"]
+
 	CHECK_EXISTS("map_name")
 	map_name = json["map_name"]
-	CHECK_EXISTS("map_path")
-	map_path = json["map_path"]
+
+	webmap_url = json["webmap_url"]
+	short_name = json["short_name"]
 
 	map_file = json["map_file"]
+
+	var/dirpath = "maps/"
+	if(override_map)
+		dirpath = "data/"
+		map_path = "/"
+		map_file = OVERRIDE_MAPS_TO_FILENAME[maptype]
+	else
+		CHECK_EXISTS("map_path")
+		map_path = json["map_path"]
+		dirpath = "[dirpath]/[map_path]"
+
 	// "map_file": "BoxStation.dmm"
 	if (istext(map_file))
-		if (!fexists("maps/[map_path]/[map_file]"))
+		if (!fexists("[dirpath]/[map_file]"))
 			log_world("Map file ([map_file]) does not exist!")
 			return
 	// "map_file": ["Lower.dmm", "Upper.dmm"]
 	else if (islist(map_file))
 		for (var/file in map_file)
-			if (!fexists("maps/[map_path]/[file]"))
+			if (!fexists("[dirpath]/[file]"))
 				log_world("Map file ([file]) does not exist!")
 				return
 	else
@@ -164,6 +214,54 @@
 				continue
 		pathed_survivor_types += survivor_typepath
 	survivor_types = pathed_survivor_types.Copy()
+
+	survivor_types_by_variant = list()
+	for(var/surv_type in survivor_types)
+		var/datum/equipment_preset/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!survivor_types_by_variant[survivor_variant]) survivor_types_by_variant[survivor_variant] = list()
+		survivor_types_by_variant[survivor_variant] += surv_type
+
+	if(islist(json["synth_survivor_types"]))
+		synth_survivor_types = json["synth_survivor_types"]
+	else if ("synth_survivor_types" in json)
+		log_world("map_config synth_survivor_types is not a list!")
+		return
+
+	var/list/pathed_synth_survivor_types = list()
+	for(var/synth_surv_type in synth_survivor_types)
+		var/synth_survivor_typepath = synth_surv_type
+		if(!ispath(synth_survivor_typepath))
+			synth_survivor_typepath = text2path(synth_surv_type)
+			if(!ispath(synth_survivor_typepath))
+				log_world("[synth_surv_type] isn't a proper typepath, removing from synth_survivor_types list")
+				continue
+		pathed_synth_survivor_types += synth_survivor_typepath
+	synth_survivor_types = pathed_synth_survivor_types.Copy()
+
+	synth_survivor_types_by_variant = list()
+	for(var/surv_type in synth_survivor_types)
+		var/datum/equipment_preset/synth/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!synth_survivor_types_by_variant[survivor_variant]) synth_survivor_types_by_variant[survivor_variant] = list()
+		synth_survivor_types_by_variant[survivor_variant] += surv_type
+
+	if(islist(json["CO_survivor_types"]))
+		CO_survivor_types = json["CO_survivor_types"]
+	else if ("CO_survivor_types" in json)
+		log_world("map_config CO_survivor_types is not a list!")
+		return
+
+	var/list/pathed_CO_survivor_types = list()
+	for(var/CO_surv_type in CO_survivor_types)
+		var/CO_survivor_typepath = CO_surv_type
+		if(!ispath(CO_survivor_typepath))
+			CO_survivor_typepath = text2path(CO_surv_type)
+			if(!ispath(CO_survivor_typepath))
+				log_world("[CO_surv_type] isn't a proper typepath, removing from CO_survivor_types list")
+				continue
+		pathed_CO_survivor_types += CO_survivor_typepath
+	CO_survivor_types = pathed_CO_survivor_types.Copy()
 
 	if (islist(json["monkey_types"]))
 		monkey_types = list()
@@ -223,8 +321,8 @@
 
 	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
 
-	if(json["armor"])
-		armor_style = json["armor"]
+	if(json["camouflage"])
+		camouflage_type = json["camouflage"]
 
 	if(json["survivor_message"])
 		survivor_message = json["survivor_message"]
@@ -237,12 +335,15 @@
 
 	if(json["perf_mode"])
 		perf_mode = json["perf_mode"]
-		
+
 	if(json["vote_cycle"])
 		vote_cycle = json["vote_cycle"]
 
 	if(json["announce_text"])
 		announce_text = json["announce_text"]
+
+	if(json["infection_announce_text"])
+		infection_announce_text = json["infection_announce_text"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])
@@ -256,11 +357,8 @@
 			log_world("map_config map_item_type is not a proper typepath!")
 			return
 
-	if(json["nightmare"])
-		if(!islist(json["nightmare"]))
-			log_world("map_config nightmare is not a list!")
-			return
-		nightmare = json["nightmare"]
+	if(json["nightmare_path"])
+		nightmare_path = json["nightmare_path"]
 
 	if(islist(json["environment_traits"]))
 		environment_traits = json["environment_traits"]
@@ -295,16 +393,19 @@
 #undef CHECK_EXISTS
 
 /datum/map_config/proc/GetFullMapPaths()
+	var/dirpath = "maps/[map_path]"
+	if(override_map)
+		dirpath = "data/[map_path]"
 	if (istext(map_file))
-		return list("maps/[map_path]/[map_file]")
+		return list("[dirpath]/[map_file]")
 	. = list()
 	for (var/file in map_file)
-		. += "maps/[map_path]/[file]"
+		. += "[dirpath]/[file]"
 
 
 /datum/map_config/proc/MakeNextMap(maptype = GROUND_MAP)
 	if(CONFIG_GET(flag/ephemeral_map_mode))
-		message_staff("NOTICE: Running in ephemeral mode - map change request ignored")
+		message_admins("NOTICE: Running in ephemeral mode - map change request ignored")
 		return TRUE
 	if(maptype == GROUND_MAP)
 		return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")

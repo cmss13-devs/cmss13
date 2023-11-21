@@ -14,7 +14,7 @@ var/list/datum/mob_hud/huds = list(
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
 	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
-	MOB_HUD_FACTION_RESS = new /datum/mob_hud/faction/ress(),
+	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
@@ -30,10 +30,18 @@ var/list/datum/mob_hud/huds = list(
 
 // Stop displaying a HUD to a specific person
 // (took off medical glasses)
-/datum/mob_hud/proc/remove_hud_from(mob/user)
+/datum/mob_hud/proc/remove_hud_from(mob/user, source)
+	if(length(hudusers[user]) && (source in hudusers[user]))
+		hudusers[user] -= source
+
+	if(length(hudusers[user]))
+		return FALSE
+
 	for(var/mob/target in hudmobs)
 		remove_from_single_hud(user, target)
+
 	hudusers -= user
+	return TRUE
 
 // Stop rendering a HUD on a target
 // "unenroll" them so to speak
@@ -53,8 +61,24 @@ var/list/datum/mob_hud/huds = list(
 			user.client.images -= target.clone.hud_list[i]
 
 // Allow user to view a HUD (putting on medical glasses)
-/datum/mob_hud/proc/add_hud_to(mob/user)
+/datum/mob_hud/proc/add_hud_to(mob/user, source)
 	hudusers |= user
+	if(hudusers[user])
+		hudusers[user] |= list(source)
+	else
+		hudusers[user] += list(source)
+
+	for(var/mob/target in hudmobs)
+		add_to_single_hud(user, target)
+
+/// Refreshes the HUD, adding user and sources if missing and then calls to add the HUD
+/datum/mob_hud/proc/refresh_hud(mob/user, list/source)
+	hudusers |= user
+	if(hudusers[user])
+		hudusers[user] |= source
+	else
+		hudusers[user] += source
+
 	for(var/mob/target in hudmobs)
 		add_to_single_hud(user, target)
 
@@ -168,7 +192,7 @@ var/list/datum/mob_hud/huds = list(
 
 /datum/mob_hud/faction/add_to_single_hud(mob/user, mob/target)
 	var/faction = target.faction
-	if(faction == faction_to_check || isobserver(user) || isYautja(user))
+	if(faction == faction_to_check || isobserver(user) || isyautja(user))
 		..()
 
 /datum/mob_hud/faction/upp
@@ -177,8 +201,8 @@ var/list/datum/mob_hud/huds = list(
 /datum/mob_hud/faction/wy
 	faction_to_check = FACTION_WY
 
-/datum/mob_hud/faction/ress
-	faction_to_check = FACTION_RESS
+/datum/mob_hud/faction/twe
+	faction_to_check = FACTION_TWE
 
 /datum/mob_hud/faction/clf
 	faction_to_check = FACTION_CLF
@@ -205,7 +229,7 @@ var/list/datum/mob_hud/huds = list(
 			continue
 		hud.add_to_hud(src)
 
-/mob/living/carbon/Xenomorph/add_to_all_mob_huds()
+/mob/living/carbon/xenomorph/add_to_all_mob_huds()
 	for(var/datum/mob_hud/hud in huds)
 		if(!istype(hud, /datum/mob_hud/xeno))
 			continue
@@ -225,14 +249,17 @@ var/list/datum/mob_hud/huds = list(
 			continue
 		hud.remove_from_hud(src)
 
-/mob/living/carbon/Xenomorph/remove_from_all_mob_huds()
+/mob/living/carbon/xenomorph/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in huds)
 		if(istype(hud, /datum/mob_hud/xeno))
 			hud.remove_from_hud(src)
-			hud.remove_hud_from(src)
+			hud.remove_hud_from(src, src)
 		else if (istype(hud, /datum/mob_hud/xeno_infection))
-			hud.remove_hud_from(src)
-
+			hud.remove_hud_from(src, src)
+	if (xeno_hostile_hud)
+		xeno_hostile_hud = FALSE
+		var/datum/mob_hud/hostile_hud = huds[MOB_HUD_XENO_HOSTILE]
+		hostile_hud.remove_hud_from(src, src)
 
 
 
@@ -240,15 +267,9 @@ var/list/datum/mob_hud/huds = list(
 	var/mob/M = source_mob ? source_mob : src
 	for(var/datum/mob_hud/hud in huds)
 		if(M in hud.hudusers)
-			readd_hud(hud)
+			hud.refresh_hud(src, hud.hudusers[M])
 
-/mob/proc/readd_hud(datum/mob_hud/hud)
-	hud.add_hud_to(src)
-
-
-
-
- //Medical HUDs
+//Medical HUDs
 
 //called when a human changes suit sensors
 /mob/living/carbon/human/proc/update_suit_sensors()
@@ -261,7 +282,13 @@ var/list/datum/mob_hud/huds = list(
 /mob/proc/med_hud_set_armor()
 	return
 
-/mob/living/carbon/Xenomorph/med_hud_set_health()
+/mob/living/carbon/xenomorph/med_hud_set_health()
+	if(QDELETED(src))
+		return
+
+	if(!(HEALTH_HUD_XENO in hud_list))
+		CRASH("hud_list lacks HEALTH_HUD_XENO despite not being deleted in med_hud_set_health()")
+
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
 
 	var/health_hud_type = "xenohealth"
@@ -278,7 +305,7 @@ var/list/datum/mob_hud/huds = list(
 			amount = -1 //don't want the 'zero health' icon when we are crit
 		holder.icon_state = "[health_hud_type][amount]"
 
-/mob/living/carbon/Xenomorph/proc/overlay_shields()
+/mob/living/carbon/xenomorph/proc/overlay_shields()
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
 	holder.overlays.Cut()
 	var/total_shield_hp
@@ -293,7 +320,7 @@ var/list/datum/mob_hud/huds = list(
 	else
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoshield0")
 
-/mob/living/carbon/Xenomorph/med_hud_set_armor()
+/mob/living/carbon/xenomorph/med_hud_set_armor()
 	if(GLOB.xeno_general.armor_ignore_integrity)
 		return FALSE
 
@@ -307,7 +334,7 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/living/carbon/human/med_hud_set_health()
 	var/image/holder = hud_list[HEALTH_HUD]
-	if(stat == DEAD)
+	if(stat == DEAD || status_flags & FAKEDEATH)
 		holder.icon_state = "hudhealth-100"
 	else
 		var/percentage = round(health*100/species.total_health, 10)
@@ -324,7 +351,7 @@ var/list/datum/mob_hud/huds = list(
 /mob/proc/med_hud_set_status() //called when mob stat changes, or get a virus/xeno host, etc
 	return
 
-/mob/living/carbon/Xenomorph/med_hud_set_status()
+/mob/living/carbon/xenomorph/med_hud_set_status()
 	hud_set_plasma()
 	hud_set_pheromone()
 
@@ -349,6 +376,8 @@ var/list/datum/mob_hud/huds = list(
 
 	if(species && species.flags & IS_SYNTHETIC)
 		holder3.icon_state = "hudsynth" // xenos have less awareness of synth status
+		if(HAS_TRAIT(src, TRAIT_INFILTRATOR_SYNTH))
+			return FALSE
 		if(stat != DEAD)
 			holder.icon_state = "hudsynth"
 			holder2.icon_state = "hudsynth"
@@ -395,10 +424,7 @@ var/list/datum/mob_hud/huds = list(
 				if(hive && hive.color)
 					holder3.color = hive.color
 
-			else if(locate(/mob/living/carbon/Xenomorph/Larva) in src)
-				holder.icon_state = "infected5"
-
-		if(stat == DEAD)
+		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)
 				if(!client)
 					var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
@@ -439,9 +465,9 @@ var/list/datum/mob_hud/huds = list(
 						holder2_set = 1
 					return
 
-				holder.icon_state = "huddead"
+				holder.icon_state = HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "hudhcdead" : "huddead"
 				if(!holder2_set)
-					holder2.icon_state = "huddead"
+					holder2.icon_state = holder.icon_state
 					holder3.icon_state = "huddead"
 					holder2_set = 1
 
@@ -461,13 +487,13 @@ var/list/datum/mob_hud/huds = list(
 
 //xeno status HUD
 
-/mob/living/carbon/Xenomorph/proc/hud_set_marks()
+/mob/living/carbon/xenomorph/proc/hud_set_marks()
 	if(!client)
 		return
 	for(var/obj/effect/alien/resin/marker/i in hive.resin_marks)
 		client.images |= i.seenMeaning
 
-/mob/living/carbon/Xenomorph/proc/hud_set_plasma()
+/mob/living/carbon/xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]
 	if(stat == DEAD || plasma_max == 0)
 		holder.icon_state = "plasma0"
@@ -476,7 +502,7 @@ var/list/datum/mob_hud/huds = list(
 		holder.icon_state = "plasma[amount]"
 
 
-/mob/living/carbon/Xenomorph/proc/hud_set_pheromone()
+/mob/living/carbon/xenomorph/proc/hud_set_pheromone()
 	var/image/holder = hud_list[PHEROMONE_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
@@ -527,18 +553,18 @@ var/list/datum/mob_hud/huds = list(
 	hud_list[PHEROMONE_HUD] = holder
 
 
-/mob/living/carbon/Xenomorph/proc/hud_set_queen_overwatch()
+/mob/living/carbon/xenomorph/proc/hud_set_queen_overwatch()
 	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
 	if (stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
+		var/mob/living/carbon/xenomorph/queen/Q = hive.living_xeno_queen
 		if (Q && Q.observed_xeno == src)
 			holder.icon_state = "queen_overwatch"
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
 
-/mob/living/carbon/Xenomorph/proc/hud_update_banished()
+/mob/living/carbon/xenomorph/proc/hud_update_banished()
 	var/image/holder = hud_list[XENO_BANISHED_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
@@ -546,7 +572,7 @@ var/list/datum/mob_hud/huds = list(
 		holder.icon_state = "xeno_banished"
 	hud_list[XENO_BANISHED_HUD] = holder
 
-/mob/living/carbon/Xenomorph/proc/hud_update()
+/mob/living/carbon/xenomorph/proc/hud_update()
 	var/image/holder = hud_list[XENO_STATUS_HUD]
 	holder.overlays.Cut()
 	if (stat == DEAD)
@@ -682,7 +708,7 @@ var/global/image/hud_icon_hunter_thralled
 
 	hud_list[HUNTER_HUD] = holder
 
-/mob/living/carbon/Xenomorph/hud_set_hunter()
+/mob/living/carbon/xenomorph/hud_set_hunter()
 	var/image/holder = hud_list[HUNTER_HUD]
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
@@ -778,7 +804,7 @@ var/global/image/hud_icon_hudfocus
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
 	// Hacky, but works. Currently effects are hard to make with precise timings
-	var/freeze_found = frozen
+	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && !buckled && !lying
 
 	if (freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")

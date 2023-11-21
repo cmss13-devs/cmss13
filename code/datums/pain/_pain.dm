@@ -17,13 +17,13 @@
 */
 
 // Pain level, how bad are you in pain right now
-#define PAIN_LEVEL_NONE				0
-#define PAIN_LEVEL_MILD				1
-#define PAIN_LEVEL_DISCOMFORTING	2
-#define PAIN_LEVEL_MODERATE			3
-#define PAIN_LEVEL_DISTRESSING		4
-#define PAIN_LEVEL_SEVERE			5
-#define PAIN_LEVEL_HORRIBLE			6
+#define PAIN_LEVEL_NONE 0
+#define PAIN_LEVEL_MILD 1
+#define PAIN_LEVEL_DISCOMFORTING 2
+#define PAIN_LEVEL_MODERATE 3
+#define PAIN_LEVEL_DISTRESSING 4
+#define PAIN_LEVEL_SEVERE 5
+#define PAIN_LEVEL_HORRIBLE 6
 
 // Time to wait between each pain level increase/decrease
 #define PAIN_UPDATE_FREQUENCY 20
@@ -32,11 +32,11 @@
 #define PAIN_REDUCTION_DECREASE_RATE 0.25
 
 // Movespeed levels, how much is the pain slowing you
-#define PAIN_SPEED_VERYSLOW	4.50
-#define PAIN_SPEED_SLOW		3.75
-#define PAIN_SPEED_HIGH		2.75
-#define PAIN_SPEED_MED		1.50
-#define PAIN_SPEED_LOW		1
+#define PAIN_SPEED_VERYSLOW 4.50
+#define PAIN_SPEED_SLOW 3.75
+#define PAIN_SPEED_HIGH 2.75
+#define PAIN_SPEED_MED 1.50
+#define PAIN_SPEED_LOW 1
 
 // Multipliers for how much pain the different types give
 #define BRUTE_PAIN_MULTIPLIER 1
@@ -44,30 +44,30 @@
 #define TOX_PAIN_MULTIPLIER 1.5
 
 /datum/pain
-	var/mob/living/source_mob 		= null
+	var/mob/living/source_mob = null
 
-	var/current_pain 		= 0
-	var/max_pain 			= 100
-	var/reduction_pain		= 0
+	var/current_pain = 0
+	var/max_pain = 100
+	var/reduction_pain = 0
 
-	var/pain_level 			= PAIN_LEVEL_NONE
-	var/last_level			= PAIN_LEVEL_NONE
+	var/pain_level = PAIN_LEVEL_NONE
+	var/last_level = PAIN_LEVEL_NONE
 
-	var/threshold_mild 				= 20
-	var/threshold_discomforting 	= 30
-	var/threshold_moderate			= 40
-	var/threshold_distressing		= 60
-	var/threshold_severe			= 75
-	var/threshold_horrible			= 85
+	var/threshold_mild = 20
+	var/threshold_discomforting = 30
+	var/threshold_moderate = 40
+	var/threshold_distressing = 60
+	var/threshold_severe = 75
+	var/threshold_horrible = 85
 
-	var/pain_slowdown		= 0
+	var/pain_slowdown = 0
 
 	var/last_reduction_update = 0
-	var/level_updating		= FALSE
+	var/level_updating = FALSE
 
 	var/feels_pain = TRUE
 
-/datum/pain/New(var/mob/owner)
+/datum/pain/New(mob/owner)
 	. = ..()
 
 	if(istype(owner))
@@ -88,7 +88,7 @@
 	else
 		return percentage
 
-/datum/pain/proc/apply_pain(var/amount = 0, var/type = BRUTE)
+/datum/pain/proc/apply_pain(amount = 0, type = BRUTE)
 	var/actual_amount = amount
 
 	switch(type)
@@ -110,7 +110,7 @@
 
 	update_pain_level()
 
-/datum/pain/proc/apply_pain_reduction(var/amount = 0)
+/datum/pain/proc/apply_pain_reduction(amount = 0)
 	if(last_reduction_update > world.time || amount <= reduction_pain) // Needed so pain meds cant spam us, neccesary evil.
 		return
 
@@ -152,7 +152,7 @@
 		decrease_pain_level()
 
 
-/datum/pain/proc/check_active_pain(var/level = 0)
+/datum/pain/proc/check_active_pain(level = 0)
 	if(level == last_level) //Check if the new level is same as old one
 		return FALSE
 
@@ -194,12 +194,12 @@
 				activate_horrible()
 
 	if(new_level >= PAIN_LEVEL_SEVERE)
-		RegisterSignal(source_mob, COMSIG_MOB_DRAGGED, .proc/oxyloss_drag, override = TRUE)
-		RegisterSignal(source_mob, COMSIG_MOB_DEVOURED, .proc/handle_devour, override = TRUE)
-		RegisterSignal(source_mob, COMSIG_MOVABLE_PRE_THROW, .proc/oxy_kill, override = TRUE)
+		RegisterSignal(source_mob, COMSIG_MOB_DRAGGED, PROC_REF(oxyloss_drag), override = TRUE)
+		RegisterSignal(source_mob, COMSIG_MOB_DEVOURED, PROC_REF(handle_devour), override = TRUE)
+		RegisterSignal(source_mob, COMSIG_MOVABLE_PRE_THROW, PROC_REF(oxy_kill), override = TRUE)
 
 	last_level = new_level
-	addtimer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
+	addtimer(CALLBACK(src, PROC_REF(before_update)), PAIN_UPDATE_FREQUENCY)
 
 /datum/pain/proc/decrease_pain_level()
 	level_updating = TRUE
@@ -237,7 +237,7 @@
 		))
 
 	last_level = new_level
-	addtimer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
+	addtimer(CALLBACK(src, PROC_REF(before_update)), PAIN_UPDATE_FREQUENCY)
 
 /datum/pain/proc/before_update()
 	level_updating = FALSE
@@ -285,7 +285,7 @@
 
 /datum/pain/proc/oxyloss_drag(mob/living/source, mob/puller)
 	SIGNAL_HANDLER
-	if(isXeno(puller) && source.stat == UNCONSCIOUS)
+	if(isxeno(puller) && source.stat == UNCONSCIOUS)
 		if(source.get_species())
 			var/mob/living/carbon/human/H = source
 			if(H.species.flags & HAS_HARDCRIT)
@@ -300,7 +300,7 @@
 
 /datum/pain/proc/oxy_kill(mob/living/source)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(source, /mob.proc/death, source.last_damage_data)
+	INVOKE_ASYNC(source, TYPE_PROC_REF(/mob, death), source.last_damage_data)
 
 /datum/pain/Destroy()
 	. = ..()

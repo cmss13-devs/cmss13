@@ -6,7 +6,7 @@
 	var/ticks_between_heals = 1
 	var/heal_each_process = 0
 
-/datum/effects/heal_over_time/New(var/atom/A, var/heal_amount = 0, var/healing_time = 5, var/time_between_heals = 1, var/limb_name = null)
+/datum/effects/heal_over_time/New(atom/A, heal_amount = 0, healing_time = 5, time_between_heals = 1, limb_name = null)
 	..(A, null, null, limb_name)
 
 	duration = healing_time
@@ -14,7 +14,7 @@
 	ticks_between_heals = time_between_heals
 	heal_each_process = (heal_amount / healing_time) * time_between_heals
 
-/datum/effects/heal_over_time/validate_atom(var/atom/A)
+/datum/effects/heal_over_time/validate_atom(atom/A)
 	if(isobj(A))
 		return FALSE
 	. = ..()
@@ -27,7 +27,7 @@
 	if(duration % ticks_between_heals)
 		return
 
-	var/mob/living/carbon/Xenomorph/affected_mob = affected_atom
+	var/mob/living/carbon/xenomorph/affected_mob = affected_atom
 	affected_mob.gain_health(heal_each_process)
 	affected_mob.updatehealth()
 

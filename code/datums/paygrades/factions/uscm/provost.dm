@@ -1,5 +1,6 @@
 /datum/paygrade/provost
 	name = "Provost Paygrade"
+	pay_multiplier = 2
 
 /datum/paygrade/provost/officer
 	paygrade = "PvE7"

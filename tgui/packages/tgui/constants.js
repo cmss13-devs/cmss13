@@ -25,6 +25,7 @@ export const COLORS = {
   },
   // Almayer colors
   shipDeps: {
+    highcom: '#318779',
     command: '#004080',
     security: '#a30000',
     medsci: '#008160',
@@ -35,6 +36,8 @@ export const COLORS = {
     charlie: '#aa55aa',
     delta: '#007fcf',
     echo: '#027d02',
+    foxtrot: '#4a4740',
+    raiders: '#6e1919',
   },
   // Damage type colors
   damageType: {

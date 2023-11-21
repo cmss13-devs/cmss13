@@ -8,12 +8,25 @@
 	icon_opened = "open_basic"
 	icon_closed = "closed_basic"
 	climbable = 1
-	anchored = 0
+	anchored = FALSE
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
 	var/rigged = 0
+	/// Types this crate can be made into
+	var/list/crate_customizing_types = list(
+		"Plain" = /obj/structure/closet/crate,
+		"Weapons" = /obj/structure/closet/crate/weapon,
+		"Supply" = /obj/structure/closet/crate/supply,
+		"Ammo" = /obj/structure/closet/crate/ammo,
+		"Construction" = /obj/structure/closet/crate/construction,
+		"Explosives" = /obj/structure/closet/crate/explosives,
+		"Alpha" = /obj/structure/closet/crate/alpha,
+		"Bravo" = /obj/structure/closet/crate/bravo,
+		"Charlie" = /obj/structure/closet/crate/charlie,
+		"Delta" = /obj/structure/closet/crate/delta,
+	)
 
-/obj/structure/closet/crate/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/closet/crate/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
@@ -71,7 +84,7 @@
 	for(var/obj/O in get_turf(src))
 		if(itemcount >= storage_capacity)
 			break
-		if(O.density || O.anchored || istype(O, /obj/structure/closet))
+		if(O.density || O.anchored || istype(O, /obj/structure/closet) || istype(O, /obj/effect))
 			continue
 		if(istype(O, /obj/structure/bed)) //This is only necessary because of rollerbeds and swivel chairs.
 			var/obj/structure/bed/B = O
@@ -119,22 +132,17 @@
 /obj/structure/closet/crate/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(50))
-				qdel(src)
+			if(prob(50))
+				deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			for(var/obj/O in src.contents)
-				if(prob(50))
-					qdel(O)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			for(var/obj/O in src.contents)
-				qdel(O)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/closet/crate/alpha
 	name = "alpha squad crate"
@@ -212,6 +220,7 @@
 	icon_state = "closed_freezer"
 	icon_opened = "open_freezer"
 	icon_closed = "closed_freezer"
+	crate_customizing_types = null
 	var/target_temp = T0C - 40
 	var/cooling_power = 40
 
@@ -378,6 +387,12 @@
 	weapon_type = /obj/item/weapon/gun/rifle/m41a/training
 	ammo_type = /obj/item/ammo_magazine/rifle/rubber
 
+/obj/structure/closet/crate/weapon/training/m4ra
+	name = "training M4RA crate"
+	desc = "A crate with an M4RA battle rifle and nonlethal ammunition for it. Intended for use in combat exercises."
+	weapon_type = /obj/item/weapon/gun/rifle/m4ra/training
+	ammo_type = /obj/item/ammo_magazine/rifle/m4ra/rubber
+
 /obj/structure/closet/crate/weapon/training/l42a
 	name = "training L42A crate"
 	desc = "A crate with an L42A battle rifle and nonlethal ammunition for it. Intended for use in combat exercises."
@@ -405,7 +420,7 @@
 /obj/structure/closet/crate/weapon/training/grenade
 	name = "rubber pellet M15 grenades crate"
 	desc = "A crate with multiple nonlethal M15 grenades. Intended for use in combat exercises and riot control."
-	ammo_type = /obj/item/explosive/grenade/HE/m15/rubber
+	ammo_type = /obj/item/explosive/grenade/high_explosive/m15/rubber
 	ammo_count = 6
 
 
@@ -413,7 +428,7 @@
 	name = "\improper minecart"
 	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
 	icon_state = "closed_mcart"
-	density = 1
+	density = TRUE
 	icon_opened = "open_mcart"
 	icon_closed = "closed_mcart"
 
@@ -421,7 +436,7 @@
 	name = "\improper minecart"
 	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
 	icon_state = "closed_mcart_y"
-	density = 1
+	density = TRUE
 	icon_opened = "open_mcart_y"
 	icon_closed = "closed_mcart_y"
 

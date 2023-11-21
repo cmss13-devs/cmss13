@@ -3,7 +3,7 @@
 /mob/living/carbon/human/handle_fire()
 	if(..())
 		return
-	if(isYautja(src))
+	if(isyautja(src))
 		adjust_fire_stacks(-2, min_stacks = 0) // add some more fire reduction for predators
 		if (fire_stacks == 0)
 			ExtinguishMob()

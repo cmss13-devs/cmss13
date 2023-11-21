@@ -7,13 +7,13 @@
 	var/datum/beam/tether_beam
 	var/always_face
 
-/datum/effects/tethering/New(var/atom/A, var/range, var/icon, var/always_face)
+/datum/effects/tethering/New(atom/A, range, icon, always_face)
 	..()
 	src.range = range
 	tether_icon = icon
 	src.always_face = always_face
 
-/datum/effects/tethering/validate_atom(var/atom/A)
+/datum/effects/tethering/validate_atom(atom/A)
 	if (isturf(A))
 		return TRUE
 
@@ -23,7 +23,7 @@
 	return FALSE
 
 /datum/effects/tethering/on_apply_effect()
-	RegisterSignal(affected_atom, COMSIG_MOVABLE_MOVED, .proc/moved)
+	RegisterSignal(affected_atom, COMSIG_MOVABLE_MOVED, PROC_REF(moved))
 
 /datum/effects/tethering/Destroy()
 	if(tethered)
@@ -62,7 +62,7 @@
 	// Integrity of tether is compromised (cannot maintain range), so delete it
 	qdel(src)
 
-/datum/effects/tethering/proc/set_tethered(var/datum/effects/tethered/T)
+/datum/effects/tethering/proc/set_tethered(datum/effects/tethered/T)
 	tethered = T
 	T.tether = src
 	tether_beam = affected_atom.beam(T.affected_atom, tether_icon, time = BEAM_INFINITE_DURATION, maxdistance = range+1, always_turn = always_face)
@@ -74,23 +74,23 @@
 	var/resistable = FALSE
 	var/resist_time = 15 SECONDS
 
-/datum/effects/tethered/New(var/atom/A, var/resistable)
+/datum/effects/tethered/New(atom/A, resistable)
 	src.resistable = resistable
 	..()
 
-/datum/effects/tethered/validate_atom(var/atom/A)
+/datum/effects/tethered/validate_atom(atom/A)
 	if (istype(A, /atom/movable))
 		return TRUE
 
 	return FALSE
 
 /datum/effects/tethered/on_apply_effect()
-	RegisterSignal(affected_atom, COMSIG_MOVABLE_PRE_MOVE, .proc/check_move)
+	RegisterSignal(affected_atom, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_move))
 	if (resistable)
-		RegisterSignal(affected_atom, COMSIG_MOB_RESISTED, .proc/resist_callback)
+		RegisterSignal(affected_atom, COMSIG_MOB_RESISTED, PROC_REF(resist_callback))
 
 // affected is always going to be the same as affected_atom
-/datum/effects/tethered/proc/check_move(var/dummy, var/turf/target)
+/datum/effects/tethered/proc/check_move(dummy, turf/target)
 	SIGNAL_HANDLER
 
 	if (isnull(tether))
@@ -120,7 +120,7 @@
 	if (isnull(tether))
 		return
 
-	INVOKE_ASYNC(src, .proc/resisted)
+	INVOKE_ASYNC(src, PROC_REF(resisted))
 
 /datum/effects/tethered/proc/resisted()
 	to_chat(affected_atom, SPAN_DANGER("You attempt to break out of your tether to [tether.affected_atom]. (This will take around [resist_time/10] seconds and you need to stand still)"))
@@ -131,7 +131,7 @@
 
 // Tethers the tethered atom to the tetherer
 // If you want both atoms to be tethered to each other, pass in TRUE to the two_way arg
-/proc/apply_tether(var/atom/tetherer, var/atom/tethered, var/two_way = FALSE, var/range = 1, var/resistable = FALSE, var/icon = "chain", var/always_face = TRUE)
+/proc/apply_tether(atom/tetherer, atom/tethered, two_way = FALSE, range = 1, resistable = FALSE, icon = "chain", always_face = TRUE)
 	var/list/ret_list = list()
 
 	var/datum/effects/tethering/TR = new /datum/effects/tethering(tetherer, range, icon, always_face)

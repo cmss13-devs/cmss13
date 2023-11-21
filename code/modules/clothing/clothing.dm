@@ -2,7 +2,7 @@
 	name = "clothing"
 	pickupvol = 40
 	dropvol = 40
-	var/eye_protection = 0 //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
+	var/eye_protection = EYE_PROTECTION_NONE //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
 	var/armor_melee = 0
 	var/armor_bullet = 0
 	var/armor_laser = 0
@@ -44,14 +44,16 @@
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
-	if (drag_unequip && ishuman(usr) && src.loc == user)	//make it harder to accidentally undress yourself
+	if(drag_unequip && ishuman(usr) && src.loc == user) //make it harder to accidentally undress yourself
 		return
-
 	..()
 
 /obj/item/clothing/proc/get_armor(armortype)
 	var/armor_total = 0
 	var/armor_count = 0
+	if(!isnum(armortype))
+		log_debug("Armortype parsed as non-number! ([armortype], mob: [src.loc]) @ clothing.dm line 56.")
+		return 0
 	if(armortype & ARMOR_MELEE)
 		armor_total += armor_melee
 		armor_count++
@@ -122,6 +124,8 @@
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
 	flags_equip_slot = SLOT_EAR
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	black_market_value = 20
 
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()
@@ -213,6 +217,7 @@
 		M.update_inv_gloves()
 
 /obj/item/clothing/gloves/emp_act(severity)
+	. = ..()
 	if(cell)
 		//why is this not part of the powercell code?
 		cell.charge -= 1000 / severity
@@ -220,10 +225,9 @@
 			cell.charge = 0
 		if(cell.reliability != 100 && prob(50/severity))
 			cell.reliability -= 10 / severity
-	..()
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
-/obj/item/clothing/gloves/proc/Touch(var/atom/A, var/proximity)
+/obj/item/clothing/gloves/proc/Touch(atom/A, proximity)
 	return 0 // return 1 to cancel attack_hand()
 
 
@@ -264,7 +268,7 @@
 	else
 		var/list/nicename = null
 		var/list/tankcheck = null
-		var/breathes = "oxygen"    //default, we'll check later
+		var/breathes = "oxygen" //default, we'll check later
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			breathes = H.species.breath_type
@@ -331,10 +335,44 @@
 	var/list/items_allowed
 	var/shoes_blood_amt = 0
 
+///Checks if you can put the item inside of the shoes
+/obj/item/clothing/shoes/proc/attempt_insert_item(mob/user, obj/item/attacking_item, insert_after = FALSE)
+	if(!items_allowed)
+		return
+	if(stored_item)
+		return
+	var/allowed = FALSE
+	for(var/allowed_item in items_allowed)
+		if(istype(attacking_item, allowed_item))
+			allowed = TRUE
+			break
+	if(!allowed)
+		return
+	if(!insert_after)
+		return TRUE
+	insert_item(user, attacking_item)
+
+///Puts the item inside of the shoe
+/obj/item/clothing/shoes/proc/insert_item(mob/user, obj/item/attacking_item)
+	stored_item = attacking_item
+	user.drop_inv_item_to_loc(attacking_item, src)
+	to_chat(user, SPAN_NOTICE("You slide [attacking_item] into [src]."))
+	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+	update_icon()
+
+///Removes the item from the shoes
+/obj/item/clothing/shoes/proc/remove_item(mob/user)
+	if(!user.put_in_active_hand(stored_item))
+		return
+	to_chat(user, SPAN_NOTICE("You slide [stored_item] out of [src]."))
+	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+	stored_item = null
+	update_icon()
+
 /obj/item/clothing/shoes/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_shoes()
+	if(ismob(loc))
+		var/mob/user = loc
+		user.update_inv_shoes()
 
 /obj/item/clothing/shoes/Destroy()
 	if(stored_item)
@@ -342,42 +380,37 @@
 		stored_item = null
 	. = ..()
 
-/obj/item/clothing/shoes/attack_hand(var/mob/living/M)
-	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
-		if(M.put_in_active_hand(stored_item))
-			to_chat(M, SPAN_NOTICE("You slide [stored_item] out of [src]."))
-			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-			stored_item = 0
-			update_icon()
-			desc = initial(desc)
-		return
-	..()
+/obj/item/clothing/shoes/get_examine_text(mob/user)
+	. = ..()
+	if(stored_item)
+		. += "\nIt is storing \a [stored_item]."
 
-/obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/living/M)
-	if(items_allowed && items_allowed.len)
-		for (var/i in items_allowed)
-			if(istype(I, i))
-				if(stored_item)	return
-				stored_item = I
-				M.drop_inv_item_to_loc(I, src)
-				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
-				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-				update_icon()
-				desc = initial(desc) + "\nIt is storing \a [stored_item]."
-				break
+/obj/item/clothing/shoes/attack_hand(mob/living/user)
+	if(!stored_item) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
+		return ..()
+	if(user.is_mob_incapacitated())
+		return ..()
+	if(loc != user)
+		return ..()
+	remove_item(user)
+
+/obj/item/clothing/shoes/attackby(obj/item/attacking_item, mob/living/user)
+	. = ..()
+	user.equip_to_slot_if_possible(attacking_item, WEAR_IN_SHOES)
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
-	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && slot != WEAR_L_STORE && slot != WEAR_R_STORE  && slot != WEAR_J_STORE) //is it going to an actual clothing slot rather than a pocket, hand, or backpack?
+	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?
 		if(!silent && LAZYLEN(equip_sounds))
 			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 		if(clothing_traits_active)
 			for(var/trait in clothing_traits)
-				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
+				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
 	..()
 
 /obj/item/clothing/unequipped(mob/user, slot)
-	for(var/trait in clothing_traits)
-		REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
+	if(is_valid_slot(slot, TRUE))
+		for(var/trait in clothing_traits)
+			REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
 	. = ..()
 
 /obj/item/clothing/proc/get_pockets()
@@ -386,7 +419,7 @@
 		return S.hold
 	return null
 
-/obj/item/clothing/clicked(var/mob/user, var/list/mods)
+/obj/item/clothing/clicked(mob/user, list/mods)
 	var/obj/item/storage/internal/pockets = get_pockets()
 	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
 		pockets.open(user)

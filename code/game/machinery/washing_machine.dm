@@ -2,8 +2,8 @@
 	name = "Washing Machine"
 	icon = 'icons/obj/structures/machinery/washing_machine.dmi'
 	icon_state = "wm_10"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	var/state = 1
 	//1 = empty, open door
 	//2 = empty, closed door
@@ -75,7 +75,7 @@
 		panel = !panel
 		to_chat(user, SPAN_NOTICE(" you [panel ? "))open" : "close"] the [src]'s maintenance panel"*/
 	if(istype(W,/obj/item/toy/crayon) ||istype(W,/obj/item/tool/stamp))
-		if( state in list(	1, 3, 6 ) )
+		if( state in list( 1, 3, 6 ) )
 			if(!crayon)
 				if(user.drop_inv_item_to_loc(crayon, src))
 					crayon = W
@@ -100,9 +100,9 @@
 		if ( istype(W,/obj/item/clothing/suit/syndicatefake ) )
 			to_chat(user, "This item does not fit.")
 			return
-//		if ( istype(W,/obj/item/clothing/suit/powered ) )
-//			to_chat(user, "This item does not fit.")
-//			return
+// if ( istype(W,/obj/item/clothing/suit/powered ) )
+// to_chat(user, "This item does not fit.")
+// return
 		if ( istype(W,/obj/item/clothing/suit/cyborg_suit ) )
 			to_chat(user, "This item does not fit.")
 			return
@@ -124,9 +124,9 @@
 		if ( istype(W,/obj/item/clothing/head/syndicatefake ) )
 			to_chat(user, "This item does not fit.")
 			return
-//		if ( istype(W,/obj/item/clothing/head/powered ) )
-//			to_chat(user, "This item does not fit.")
-//			return
+// if ( istype(W,/obj/item/clothing/head/powered ) )
+// to_chat(user, "This item does not fit.")
+// return
 		if ( istype(W,/obj/item/clothing/head/helmet ) )
 			to_chat(user, "This item does not fit.")
 			return

@@ -36,7 +36,7 @@ $weyland: #af7f38;
   );
   @include meta.load-css(
     '../components/ProgressBar.scss',
-    $with: ('background-color': #252832)
+    $with: ('background-color': #252832, 'color-default-fill': $weyland)
   );
   @include meta.load-css('../components/Section.scss');
 

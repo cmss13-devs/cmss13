@@ -9,30 +9,30 @@
 #define BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN 10
 
 /// Creates text that will float from the atom upwards to the viewer.
-/atom/proc/balloon_alert(mob/viewer, text)
+/atom/proc/balloon_alert(mob/viewer, text, text_color)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	INVOKE_ASYNC(src, .proc/balloon_alert_perform, viewer, text)
+	INVOKE_ASYNC(src, PROC_REF(balloon_alert_perform), viewer, text, text_color)
 
 /// Create balloon alerts (text that floats up) to everything within range.
 /// Will only display to people who can see.
-/atom/proc/balloon_alert_to_viewers(message, self_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs)
+/atom/proc/balloon_alert_to_viewers(message, self_message, max_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, text_color)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	var/list/hearers = get_mobs_in_view(vision_distance, src)
+	var/list/hearers = get_mobs_in_view(max_distance, src)
 	hearers -= ignored_mobs
 
 	for(var/mob/hearer in hearers)
 		if(is_blind(hearer))
 			continue
 
-		balloon_alert(hearer, (hearer == src && self_message) || message)
+		balloon_alert(hearer, (hearer == src && self_message) || message, text_color)
 
 // Do not use.
 // MeasureText blocks. I have no idea for how long.
 // I would've made the maptext_height update on its own, but I don't know
 // if this would look bad on laggy clients.
-/atom/proc/balloon_alert_perform(mob/viewer, text)
+/atom/proc/balloon_alert_perform(mob/viewer, text, text_color)
 	var/client/viewer_client = viewer.client
 	if (isnull(viewer_client))
 		return
@@ -45,6 +45,7 @@
 	var/image/balloon_alert = image(loc = get_atom_on_turf(src), layer = ABOVE_MOB_LAYER)
 	balloon_alert.plane = RUNECHAT_PLANE
 	balloon_alert.alpha = 0
+	balloon_alert.color = text_color
 	balloon_alert.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR|RESET_TRANSFORM|RESET_ALPHA
 	balloon_alert.maptext = MAPTEXT("<span class='center langchat'>[text]</span>")
 	balloon_alert.maptext_x = (BALLOON_TEXT_WIDTH - bound_width) * -0.5
@@ -81,7 +82,7 @@
 		easing = CUBIC_EASING | EASE_IN,
 	)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_image_from_client, balloon_alert, viewer_client), BALLOON_TEXT_TOTAL_LIFETIME(duration_mult))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_image_from_client), balloon_alert, viewer_client), BALLOON_TEXT_TOTAL_LIFETIME(duration_mult))
 
 #undef BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN
 #undef BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MULT

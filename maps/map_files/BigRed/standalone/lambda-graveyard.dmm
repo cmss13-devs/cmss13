@@ -2,36 +2,20 @@
 "a" = (
 /turf/open/mars,
 /area/bigredv2/outside/se)
-"b" = (
-/obj/structure/prop/dam/wide_boulder/boulder1,
-/turf/open/mars,
-/area/bigredv2/outside/se)
-"c" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13";
-	tag = "icon-mars_dirt_13"
-	},
-/area/bigredv2/outside/se)
-"d" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
-	},
-/area/bigredv2/outside/se)
 "e" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_14";
-	tag = "icon-mars_dirt_14"
+/turf/open/floor{
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/se)
 "f" = (
 /obj/item/stool,
-/turf/open/mars,
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
 /area/bigredv2/outside/se)
 "g" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_11";
-	tag = "icon-mars_dirt_11"
+	icon_state = "mars_dirt_11"
 	},
 /area/bigredv2/outside/se)
 "h" = (
@@ -39,14 +23,12 @@
 	cut_level = 1
 	},
 /turf/open/mars{
-	icon_state = "mars_dirt_14";
-	tag = "icon-mars_dirt_14"
+	icon_state = "mars_dirt_14"
 	},
 /area/bigredv2/outside/se)
 "i" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_12";
-	tag = "icon-mars_dirt_12"
+	icon_state = "mars_dirt_12"
 	},
 /area/bigredv2/outside/se)
 "j" = (
@@ -64,25 +46,22 @@
 	},
 /obj/item/weapon/gun/revolver/small,
 /obj/item/reagent_container/food/drinks/bottle/rum,
-/obj/effect/landmark/corpsespawner/clown,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "l" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_8";
-	tag = "icon-mars_dirt_8"
+	icon_state = "mars_dirt_8"
 	},
 /area/bigredv2/outside/se)
 "m" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_3";
-	tag = "icon-mars_dirt_3"
+	icon_state = "mars_dirt_3"
 	},
 /area/bigredv2/outside/se)
 "n" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_9";
-	tag = "icon-mars_dirt_9"
+	icon_state = "mars_dirt_9"
 	},
 /area/bigredv2/outside/se)
 "o" = (
@@ -112,7 +91,7 @@
 /area/bigredv2/caves)
 
 (1,1,1) = {"
-a
+e
 a
 a
 a
@@ -124,7 +103,7 @@ a
 D
 "}
 (2,1,1) = {"
-a
+e
 a
 a
 a
@@ -136,7 +115,7 @@ a
 s
 "}
 (3,1,1) = {"
-a
+e
 a
 a
 a
@@ -148,7 +127,7 @@ a
 a
 "}
 (4,1,1) = {"
-a
+e
 a
 a
 a
@@ -160,7 +139,7 @@ a
 a
 "}
 (5,1,1) = {"
-b
+e
 a
 a
 o
@@ -172,7 +151,7 @@ a
 a
 "}
 (6,1,1) = {"
-a
+e
 a
 a
 o
@@ -184,7 +163,7 @@ o
 a
 "}
 (7,1,1) = {"
-a
+e
 a
 a
 a
@@ -196,7 +175,7 @@ o
 o
 "}
 (8,1,1) = {"
-c
+e
 g
 l
 a
@@ -208,7 +187,7 @@ a
 t
 "}
 (9,1,1) = {"
-d
+e
 h
 m
 a
@@ -232,7 +211,7 @@ a
 t
 "}
 (11,1,1) = {"
-a
+e
 a
 a
 a
@@ -244,7 +223,7 @@ a
 t
 "}
 (12,1,1) = {"
-a
+e
 a
 a
 a
@@ -256,7 +235,7 @@ a
 t
 "}
 (13,1,1) = {"
-a
+e
 a
 a
 o
@@ -268,7 +247,7 @@ r
 t
 "}
 (14,1,1) = {"
-a
+e
 a
 o
 o
@@ -280,7 +259,7 @@ a
 t
 "}
 (15,1,1) = {"
-a
+e
 j
 o
 o
@@ -304,7 +283,7 @@ s
 s
 "}
 (17,1,1) = {"
-a
+e
 a
 p
 a
@@ -316,7 +295,7 @@ s
 s
 "}
 (18,1,1) = {"
-a
+e
 a
 a
 a

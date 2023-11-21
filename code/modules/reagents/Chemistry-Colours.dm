@@ -1,4 +1,4 @@
-/proc/mix_color_from_reagents(var/list/reagent_list)
+/proc/mix_color_from_reagents(list/reagent_list)
 	if(!reagent_list || !length(reagent_list))
 		return 0
 
@@ -14,11 +14,11 @@
 		var/datum/reagent/re = reagent_list[i]
 		var/reagentweight = re.volume
 		if(istype(re, /datum/reagent/paint))
-			reagentweight *= 20 //Paint colours a mixture twenty times as much
+			reagentweight *= 20 //Paint colors a mixture twenty times as much
 		weight[i] = max(reagentweight,1)
 
 
-	//fill the lists of colours
+	//fill the lists of colors
 	for(i=1; i<=contents; i++)
 		var/datum/reagent/re = reagent_list[i]
 		var/hue = re.color
@@ -37,7 +37,7 @@
 	var/finalcolor = rgb(red, green, blue)
 	return finalcolor
 
-/proc/mixOneColor(var/list/weight, var/list/color)
+/proc/mixOneColor(list/weight, list/color)
 	if (!weight || !color || length(weight)!=length(color))
 		return 0
 
@@ -58,14 +58,14 @@
 	mixedcolor = round(mixedcolor)
 
 	//until someone writes a formal proof for this algorithm, let's keep this in
-//	if(mixedcolor<0x00 || mixedcolor>0xFF)
-//		return 0
+// if(mixedcolor<0x00 || mixedcolor>0xFF)
+// return 0
 	//that's not the kind of operation we are running here, nerd
 	mixedcolor=min(max(mixedcolor,0),255)
 
 	return mixedcolor
 
-/proc/mix_burn_colors(var/list/reagent_list)
+/proc/mix_burn_colors(list/reagent_list)
 	var/contents = length(reagent_list)
 	var/list/weight = new /list(contents)
 	var/list/redcolor = new /list(contents)
@@ -76,7 +76,7 @@
 		//fill the list of weights
 		var/datum/reagent/re = reagent_list[i]
 		weight[i] = max(re.volume,1) * re.burncolormod
-		//fill the lists of colours
+		//fill the lists of colors
 		var/hue = re.burncolor
 		if(length(hue) != 7)
 			return 0
@@ -92,4 +92,4 @@
 	//assemble all the pieces
 	var/finalcolor = rgb(red, green, blue)
 	return finalcolor
-	
+

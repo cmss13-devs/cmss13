@@ -26,13 +26,6 @@
 	if(I.assignment in GLOB.joblist) return I.assignment
 	return "Unknown"
 
-/proc/FindNameFromID(mob/living/carbon/human/H)
-	ASSERT(istype(H))
-	var/obj/item/card/id/I = H.wear_id
-	if(istype(I)) return I.registered_name
-	I = H.get_active_hand()
-	if(istype(I)) return I.registered_name
-
 /proc/get_all_job_icons() return GLOB.joblist + list("Prisoner")//For all existing HUD icons
 
 /obj/proc/GetJobName() //Used in secHUD icon generation
@@ -41,13 +34,13 @@
 		var/job_icons = get_all_job_icons()
 		var/centcom = get_all_centcom_jobs()
 
-		if(I.assignment	in job_icons) 	return I.assignment//Check if the job has a hud icon
-		if(I.rank in job_icons) 		return I.rank
-		if(I.assignment	in centcom) 	return "Centcom"//Return with the NT logo if it is a Centcom job
-		if(I.rank in centcom) 			return "Centcom"
+		if(I.assignment in job_icons) return I.assignment//Check if the job has a hud icon
+		if(I.rank in job_icons) return I.rank
+		if(I.assignment in centcom) return "Centcom"//Return with the NT logo if it is a Centcom job
+		if(I.rank in centcom) return "Centcom"
 	return "Unknown" //Return unknown if none of the above apply
 
-/proc/get_actual_job_name(var/mob/M)
+/proc/get_actual_job_name(mob/M)
 	if(!M)
 		return null
 
@@ -62,8 +55,8 @@
 			JOB_INTEL,
 			JOB_PILOT,
 			JOB_DROPSHIP_CREW_CHIEF,
-			JOB_CREWMAN,
 			JOB_CORPORATE_LIAISON,
+			JOB_COMBAT_REPORTER,
 			JOB_CHIEF_ENGINEER,
 			JOB_ORDNANCE_TECH,
 			JOB_MAINT_TECH,
@@ -73,14 +66,13 @@
 			JOB_SQUAD_ENGI,
 			JOB_SQUAD_MEDIC,
 			JOB_SQUAD_SPECIALIST,
-			JOB_SQUAD_RTO,
+			JOB_SQUAD_TEAM_LEADER,
 			JOB_SQUAD_SMARTGUN,
 			JOB_SQUAD_MARINE,
 			JOB_CMO,
 			JOB_RESEARCHER,
 			JOB_DOCTOR,
 			JOB_NURSE,
-			JOB_POLICE_CADET,
 			JOB_POLICE,
 			JOB_WARDEN,
 			JOB_CHIEF_POLICE,

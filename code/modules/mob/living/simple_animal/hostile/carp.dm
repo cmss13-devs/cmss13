@@ -38,18 +38,18 @@
 
 	faction = "carp"
 
-/mob/living/simple_animal/hostile/carp/Process_Spacemove(var/check_drift = 0)
-	return 1	//No drifting in space for space carp!	//original comments do not steal
+/mob/living/simple_animal/hostile/carp/Process_Spacemove(check_drift = 0)
+	return 1 //No drifting in space for space carp! //original comments do not steal
 
 /mob/living/simple_animal/hostile/carp/FindTarget()
 	. = ..()
 	if(.)
-		custom_emote(1,"nashes at [.]")
+		manual_emote("nashes at [.]")
 
 /mob/living/simple_animal/hostile/carp/AttackingTarget()
 	. =..()
 	var/mob/living/L = .
 	if(istype(L))
 		if(prob(15))
-			L.KnockDown(3)
+			L.apply_effect(3, WEAKEN)
 			L.visible_message(SPAN_DANGER("\the [src] knocks down \the [L]!"))

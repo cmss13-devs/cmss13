@@ -42,7 +42,7 @@
 			selected.create_hud()
 
 		arm_equipment(selected, dresscode, FALSE, FALSE)
-		message_staff("[key_name_admin(usr)] changed the equipment of [key_name_admin(selected)] to [dresscode].")
+		message_admins("[key_name_admin(usr)] changed the equipment of [key_name_admin(selected)] to [dresscode].")
 
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		for(var/item in selected.get_equipped_items(TRUE))

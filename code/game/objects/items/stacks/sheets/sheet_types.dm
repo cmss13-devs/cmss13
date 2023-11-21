@@ -1,10 +1,10 @@
 /* Diffrent misc types of sheets
  * Contains:
- *		Metal
- *		Plasteel
- *		Wood
- *		Cloth
- *		Cardboard
+ * Metal
+ * Plasteel
+ * Wood
+ * Cloth
+ * Cardboard
  */
 
 /*
@@ -52,7 +52,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("computer frame", /obj/structure/computerframe, 5, time = 25, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_MASTER), \
 	new/datum/stack_recipe("machine frame", /obj/structure/machinery/constructable_frame, 5, time = 25, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_MASTER), \
 	null, \
-	new/datum/stack_recipe("metal baseball bat", /obj/item/weapon/melee/baseballbat/metal, 10, time = 20, on_floor = 1), \
+	new/datum/stack_recipe("metal baseball bat", /obj/item/weapon/baseballbat/metal, 10, time = 20, on_floor = 1), \
 	null, \
 )
 
@@ -63,11 +63,12 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	icon_state = "sheet-metal"
 	item_state = "sheet-metal"
 	matter = list("metal" = 3750)
-	throwforce = 14.0
+	throwforce = 14
 	flags_atom = FPRINT|CONDUCT
 	amount_sprites = TRUE
 	sheettype = "metal"
 	stack_id = "metal"
+
 
 /obj/item/stack/sheet/metal/small_stack
 	amount = STACK_10
@@ -109,13 +110,15 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	icon_state = "sheet-plasteel"
 	item_state = "sheet-plasteel"
 	matter = list("metal" = 3750)
-	throwforce = 15.0
+	throwforce = 15
 	flags_atom = FPRINT|CONDUCT
 	amount_sprites = TRUE
 	sheettype = "plasteel"
 	stack_id = "plasteel"
+	ground_offset_x = 4
+	ground_offset_y = 5
 
-/obj/item/stack/sheet/plasteel/New(var/loc, var/amount=null)
+/obj/item/stack/sheet/plasteel/New(loc, amount=null)
 	recipes = plasteel_recipes
 	return ..()
 
@@ -144,13 +147,15 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	/*
 	new/datum/stack_recipe("table parts", /obj/item/frame/table/wood, 2), \
 	 */
+	new/datum/stack_recipe("campfire", /obj/structure/prop/brazier/frame/full/campfire, 5, time = 15, one_per_turf = ONE_TYPE_PER_TURF, on_floor = TRUE), \
 	new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood/normal, 1, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("wooden barricade", /obj/structure/barricade/wooden, 5, time = 20, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1), \
 	new/datum/stack_recipe("wooden crate", /obj/structure/closet/coffin/woodencrate, 5, time = 15, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("wooden door", /obj/structure/mineral_door/wood, 10, time = 20, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("coffin", /obj/structure/closet/coffin, 5, time = 15, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("baseball bat", /obj/item/weapon/melee/baseballbat, 10, time = 20, on_floor = 1), \
-	new/datum/stack_recipe("wooden cross", /obj/structure/prop/wooden_cross, 2, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1) \
+	new/datum/stack_recipe("baseball bat", /obj/item/weapon/baseballbat, 10, time = 20, on_floor = 1), \
+	new/datum/stack_recipe("wooden cross", /obj/structure/prop/wooden_cross, 2, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("wooden pole", /obj/item/weapon/pole, 3, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1) \
 	)
 
 /obj/item/stack/sheet/wood
@@ -178,7 +183,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
 
-/obj/item/stack/sheet/wood/New(var/loc, var/amount=null)
+/obj/item/stack/sheet/wood/New(loc, amount=null)
 	recipes = wood_recipes
 	return ..()
 
@@ -206,6 +211,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	new/datum/stack_recipe("cardborg suit", /obj/item/clothing/suit/cardborg, 3), \
 	new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg), \
 	new/datum/stack_recipe("pizza box", /obj/item/pizzabox), \
+	new/datum/stack_recipe("dartboard", /obj/item/dartboard), \
 	null, \
 	new/datum/stack_recipe_list("folders",list( \
 		new/datum/stack_recipe("blue folder", /obj/item/folder/blue), \
@@ -239,6 +245,10 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		new/datum/stack_recipe("empty magazine box (L42A Incen)", /obj/item/ammo_box/magazine/l42a/incen/empty), \
 		new/datum/stack_recipe("empty magazine box (L42A LE)", /obj/item/ammo_box/magazine/l42a/le/empty), \
 		null, \
+		new/datum/stack_recipe("empty magazine box (M4RA)", /obj/item/ammo_box/magazine/m4ra/empty), \
+		new/datum/stack_recipe("empty magazine box (M4RA AP)", /obj/item/ammo_box/magazine/m4ra/ap/empty), \
+		new/datum/stack_recipe("empty magazine box (M4RA Incen)", /obj/item/ammo_box/magazine/m4ra/incen/empty), \
+		null, \
 		new/datum/stack_recipe("empty magazine box (M41A)", /obj/item/ammo_box/magazine/empty), \
 		new/datum/stack_recipe("empty magazine box (M41A AP)", /obj/item/ammo_box/magazine/ap/empty), \
 		new/datum/stack_recipe("empty magazine box (M41A Explosive)", /obj/item/ammo_box/magazine/explosive/empty), \
@@ -271,6 +281,8 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		null, \
 		new/datum/stack_recipe("empty box of MREs", /obj/item/ammo_box/magazine/misc/mre/empty), \
 		new/datum/stack_recipe("empty box of M94 Marking Flare Packs", /obj/item/ammo_box/magazine/misc/flares/empty), \
+		new/datum/stack_recipe("empty box of flashlights", /obj/item/ammo_box/magazine/misc/flashlight/empty), \
+		new/datum/stack_recipe("empty box of High-Capacity Power Cells", /obj/item/ammo_box/magazine/misc/power_cell/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (M16)", /obj/item/ammo_box/magazine/M16/empty), \
 		new/datum/stack_recipe("empty magazine box (M16 AP)", /obj/item/ammo_box/magazine/M16/ap/empty), \
@@ -285,7 +297,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		)) \
 )
 
-/obj/item/stack/sheet/cardboard	//BubbleWrap
+/obj/item/stack/sheet/cardboard //BubbleWrap
 	name = "cardboard"
 	desc = "Large sheets of card, like boxes folded flat."
 	singular_name = "cardboard sheet"
@@ -293,7 +305,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	sheettype = "cardboard"
 	stack_id = "cardboard"
 
-/obj/item/stack/sheet/cardboard/New(var/loc, var/amount=null)
+/obj/item/stack/sheet/cardboard/New(loc, amount=null)
 	recipes = cardboard_recipes
 	return ..()
 
@@ -319,6 +331,7 @@ var/global/list/datum/stack_recipe/aluminum_recipes = list ( \
 	singular_name = "aluminum sheet"
 	icon_state = "sheet-aluminum"
 	sheettype = "aluminum"
+	black_market_value = 10
 
 /*
  * Copper
@@ -333,4 +346,5 @@ var/global/list/datum/stack_recipe/copper_recipes = list ( \
 	singular_name = "copper sheet"
 	icon_state = "sheet-copper"
 	sheettype = "copper"
+	black_market_value = 10
 

@@ -17,6 +17,7 @@
 	var/z
 	var/y_s_offset // Vertical sound offset
 	var/x_s_offset // Horizontal sound offset
+
 /proc/get_free_channel()
 	var/static/cur_chan = 1
 	. = cur_chan++
@@ -72,14 +73,14 @@
 	S.y = turf_source.y
 	S.z = turf_source.z
 
-	if(!GLOB.interior_manager)
+	if(!SSinterior)
 		SSsound.queue(S)
 		return S.channel
 
 	var/list/datum/interior/extra_interiors = list()
 	// If we're in an interior, range the chunk, then adjust to do so from outside instead
-	if(turf_source.z == GLOB.interior_manager.interior_z)
-		var/datum/interior/VI = GLOB.interior_manager.get_interior_by_coords(turf_source.x, turf_source.y)
+	if(SSinterior.in_interior(turf_source))
+		var/datum/interior/VI = SSinterior.get_interior_by_coords(turf_source.x, turf_source.y, turf_source.z)
 		if(VI?.ready)
 			extra_interiors |= VI
 			if(VI.exterior)
@@ -89,7 +90,7 @@
 				S.z = new_turf_source.z
 			else sound_range = 0
 	// Range for 'nearby interiors' aswell
-	for(var/datum/interior/VI in GLOB.interior_manager.interiors)
+	for(var/datum/interior/VI in SSinterior.interiors)
 		if(VI?.ready && VI.exterior?.z == turf_source.z && get_dist(VI.exterior, turf_source) <= sound_range)
 			extra_interiors |= VI
 
@@ -201,14 +202,18 @@
 				S = pick('sound/effects/zippo_close.ogg')
 			if("bonk") //somewhat quiet, increase volume
 				S = pick('sound/machines/bonk.ogg')
+			if("cane_step")
+				S = pick('sound/items/cane_step_1.ogg', 'sound/items/cane_step_2.ogg', 'sound/items/cane_step_3.ogg', 'sound/items/cane_step_4.ogg', 'sound/items/cane_step_5.ogg', )
 			if("match")
 				S = pick('sound/effects/match.ogg')
 			if("punch")
 				S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 			if("swing_hit")
 				S = pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg')
+			if("clan_sword_hit")
+				S = pick('sound/weapons/clan_sword_hit_1.ogg', 'sound/weapons/clan_sword_hit_2.ogg')
 			if("slam")
-				S = pick('sound/effects/slam1.ogg','sound/effects/slam2.ogg','sound/effects/slam3.ogg')
+				S = pick('sound/effects/slam1.ogg','sound/effects/slam2.ogg','sound/effects/slam3.ogg', 0.1;'sound/effects/slam_rare_1.ogg')
 			if("pageturn")
 				S = pick('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg')
 			if("terminal_button")
@@ -231,6 +236,8 @@
 				S = pick('sound/effects/pry1.ogg', 'sound/effects/pry2.ogg','sound/effects/pry3.ogg','sound/effects/pry4.ogg')
 			if("metalbang")
 				S = pick('sound/effects/thud1.ogg','sound/effects/thud2.ogg','sound/effects/thud3.ogg')
+			if("paper_writing")
+				S = pick('sound/items/writing_noises/paper_writing_1.wav', 'sound/items/writing_noises/paper_writing_2.wav', 'sound/items/writing_noises/paper_writing_3.wav', 'sound/items/writing_noises/paper_writing_4.ogg')
 			// Weapons/bullets
 			if("shell_load")
 				S = pick('sound/weapons/shell_load1.ogg','sound/weapons/shell_load2.ogg','sound/weapons/shell_load3.ogg','sound/weapons/shell_load4.ogg')
@@ -268,6 +275,8 @@
 				S = pick('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
 			if("gun_smartgun_rattle")
 				S = pick('sound/weapons/gun_smartgun1_rattle.ogg', 'sound/weapons/gun_smartgun2_rattle.ogg', 'sound/weapons/gun_smartgun3_rattle.ogg', 'sound/weapons/gun_smartgun4_rattle.ogg')
+			if("gun_jam_rack")
+				S = pick('sound/weapons/handling/gun_jam_rack_1.ogg', 'sound/weapons/handling/gun_jam_rack_2.ogg', 'sound/weapons/handling/gun_jam_rack_3.ogg')
 			//A:CM gun sounds
 			if("gun_shotgun_tactical")
 				S = pick('sound/weapons/gun_shotgun_tactical_1.ogg','sound/weapons/gun_shotgun_tactical_2.ogg','sound/weapons/gun_shotgun_tactical_3.ogg','sound/weapons/gun_shotgun_tactical_4.ogg')
@@ -287,6 +296,8 @@
 				S = pick('sound/bullets/acid_impact1.ogg')
 			if("acid_strike")
 				S = pick('sound/weapons/alien_acidstrike1.ogg','sound/weapons/alien_acidstrike2.ogg')
+			if("acid_spit")
+				S = pick('sound/voice/alien_spitacid.ogg','sound/voice/alien_spitacid2.ogg')
 			if("acid_sizzle")
 				S = pick('sound/effects/acid_sizzle1.ogg','sound/effects/acid_sizzle2.ogg','sound/effects/acid_sizzle3.ogg','sound/effects/acid_sizzle4.ogg')
 			if("alien_doorpry")
@@ -339,7 +350,9 @@
 			if("male_fragout")
 				S = pick('sound/voice/human_male_grenadethrow_1.ogg', 'sound/voice/human_male_grenadethrow_2.ogg', 'sound/voice/human_male_grenadethrow_3.ogg')
 			if("male_warcry")
-				S = pick('sound/voice/warcry/male_go.ogg', 'sound/voice/warcry/male_attack.ogg', 'sound/voice/warcry/male_charge.ogg', 'sound/voice/warcry/male_charge2.ogg', 'sound/voice/warcry/warcry_male_1.ogg', 'sound/voice/warcry/warcry_male_2.ogg', 'sound/voice/warcry/warcry_male_3.ogg', 'sound/voice/warcry/warcry_male_4.ogg', 'sound/voice/warcry/warcry_male_5.ogg', 'sound/voice/warcry/warcry_male_6.ogg', 'sound/voice/warcry/warcry_male_7.ogg', 'sound/voice/warcry/warcry_male_8.ogg', 'sound/voice/warcry/warcry_male_9.ogg', 'sound/voice/warcry/warcry_male_10.ogg', 'sound/voice/warcry/warcry_male_11.ogg', 'sound/voice/warcry/warcry_male_12.ogg', 5;'sound/voice/warcry/warcry_male_rare_1.ogg', 5;'sound/voice/warcry/warcry_male_rare_2.ogg', 5;'sound/voice/warcry/warcry_male_rare_3.ogg', 5;'sound/voice/warcry/warcry_male_rare_4.ogg', 5;'sound/voice/warcry/warcry_male_rare_5.ogg')
+				S = pick('sound/voice/warcry/male_go.ogg', 'sound/voice/warcry/male_attack.ogg', 'sound/voice/warcry/male_charge.ogg', 'sound/voice/warcry/male_charge2.ogg', 'sound/voice/warcry/warcry_male_1.ogg', 'sound/voice/warcry/warcry_male_2.ogg', 'sound/voice/warcry/warcry_male_3.ogg', 'sound/voice/warcry/warcry_male_4.ogg', 'sound/voice/warcry/warcry_male_5.ogg', 'sound/voice/warcry/warcry_male_6.ogg', 'sound/voice/warcry/warcry_male_7.ogg', 'sound/voice/warcry/warcry_male_8.ogg', 'sound/voice/warcry/warcry_male_9.ogg', 'sound/voice/warcry/warcry_male_10.ogg', 'sound/voice/warcry/warcry_male_11.ogg', 'sound/voice/warcry/warcry_male_12.ogg', 'sound/voice/warcry/warcry_male_13.ogg', 'sound/voice/warcry/warcry_male_14.ogg', 'sound/voice/warcry/warcry_male_15.ogg', 'sound/voice/warcry/warcry_male_16.ogg', 'sound/voice/warcry/warcry_male_17.ogg', 'sound/voice/warcry/warcry_male_18.ogg', 'sound/voice/warcry/warcry_male_19.ogg', 'sound/voice/warcry/warcry_male_20.ogg', 'sound/voice/warcry/warcry_male_21.ogg', 'sound/voice/warcry/warcry_male_22.ogg', 'sound/voice/warcry/warcry_male_23.ogg', 'sound/voice/warcry/warcry_male_24.ogg', 'sound/voice/warcry/warcry_male_25.ogg', 'sound/voice/warcry/warcry_male_26.ogg', 'sound/voice/warcry/warcry_male_27.ogg', 'sound/voice/warcry/warcry_male_28.ogg', 'sound/voice/warcry/warcry_male_29.ogg', 'sound/voice/warcry/warcry_male_30.ogg', 'sound/voice/warcry/warcry_male_31.ogg', 'sound/voice/warcry/warcry_male_32.ogg', 'sound/voice/warcry/warcry_male_33.ogg', 'sound/voice/warcry/warcry_male_34.ogg', 'sound/voice/warcry/warcry_male_35.ogg', 5;'sound/voice/warcry/warcry_male_rare_1.ogg', 5;'sound/voice/warcry/warcry_male_rare_2.ogg', 5;'sound/voice/warcry/warcry_male_rare_3.ogg', 5;'sound/voice/warcry/warcry_male_rare_4.ogg', 5;'sound/voice/warcry/warcry_male_rare_5.ogg')
+			if("male_upp_warcry")
+				S = pick('sound/voice/upp_warcry/warcry_male_1.ogg', 'sound/voice/upp_warcry/warcry_male_2.ogg')
 			if("female_scream")
 				S = pick('sound/voice/human_female_scream_1.ogg','sound/voice/human_female_scream_2.ogg','sound/voice/human_female_scream_3.ogg','sound/voice/human_female_scream_4.ogg',5;'sound/voice/human_female_scream_5.ogg')
 			if("female_pain")
@@ -347,11 +360,15 @@
 			if("female_fragout")
 				S = pick("sound/voice/human_female_grenadethrow_1.ogg", 'sound/voice/human_female_grenadethrow_2.ogg', 'sound/voice/human_female_grenadethrow_3.ogg')
 			if("female_warcry")
-				S = pick('sound/voice/warcry/female_charge.ogg', 'sound/voice/warcry/female_yell1.ogg', 'sound/voice/warcry/warcry_female_1.ogg', 'sound/voice/warcry/warcry_female_2.ogg', 'sound/voice/warcry/warcry_female_3.ogg', 'sound/voice/warcry/warcry_female_4.ogg', 'sound/voice/warcry/warcry_female_5.ogg', 'sound/voice/warcry/warcry_female_6.ogg')
+				S = pick('sound/voice/warcry/female_charge.ogg', 'sound/voice/warcry/female_yell1.ogg', 'sound/voice/warcry/warcry_female_1.ogg', 'sound/voice/warcry/warcry_female_2.ogg', 'sound/voice/warcry/warcry_female_3.ogg', 'sound/voice/warcry/warcry_female_4.ogg', 'sound/voice/warcry/warcry_female_5.ogg', 'sound/voice/warcry/warcry_female_6.ogg', 'sound/voice/warcry/warcry_female_7.ogg', 'sound/voice/warcry/warcry_female_8.ogg', 'sound/voice/warcry/warcry_female_9.ogg', 'sound/voice/warcry/warcry_female_10.ogg', 'sound/voice/warcry/warcry_female_11.ogg', 'sound/voice/warcry/warcry_female_12.ogg', 'sound/voice/warcry/warcry_female_13.ogg', 'sound/voice/warcry/warcry_female_14.ogg', 'sound/voice/warcry/warcry_female_15.ogg', 'sound/voice/warcry/warcry_female_16.ogg', 'sound/voice/warcry/warcry_female_17.ogg', 'sound/voice/warcry/warcry_female_18.ogg', 'sound/voice/warcry/warcry_female_19.ogg', 'sound/voice/warcry/warcry_female_20.ogg')
+			if("female_upp_warcry")
+				S = pick('sound/voice/upp_warcry/warcry_female_1.ogg', 'sound/voice/upp_warcry/warcry_female_2.ogg')
 			if("rtb_handset")
 				S = pick('sound/machines/telephone/rtb_handset_1.ogg', 'sound/machines/telephone/rtb_handset_2.ogg', 'sound/machines/telephone/rtb_handset_3.ogg', 'sound/machines/telephone/rtb_handset_4.ogg', 'sound/machines/telephone/rtb_handset_5.ogg')
 			if("bone_break")
 				S = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
+			if("plush")
+				S = pick('sound/items/plush1.ogg', 'sound/items/plush2.ogg', 'sound/items/plush3.ogg')
 			//misc mobs
 			if("cat_meow")
 				S = pick('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')

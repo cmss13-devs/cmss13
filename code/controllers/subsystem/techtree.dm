@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(techtree)
 	name = "Tech Tree"
-	init_order	= SS_INIT_TECHTREE
+	init_order = SS_INIT_TECHTREE
 
 	flags = SS_NO_FIRE
 
@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(techtree)
 
 /datum/controller/subsystem/techtree/Initialize()
 	if(GLOB.perf_flags & PERF_TOGGLE_TECHWEBS)
-		return ..()
+		return SS_INIT_NO_NEED
 
 	var/list/tech_trees = subtypesof(/datum/techtree)
 	var/list/tech_nodes = subtypesof(/datum/tech)
@@ -68,10 +68,10 @@ SUBSYSTEM_DEF(techtree)
 				node.on_tree_insertion(tree)
 
 		tree.generate_tree()
-		var/msg = "Loaded [tree.name] Techtree!"
-		to_chat(world, "<span class='boldannounce'>[msg]</span>")
+		var/msg = "Loaded [tree.name]!"
+		to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 
-	. = ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/techtree/proc/activate_passive_nodes()
 	for(var/name in trees)

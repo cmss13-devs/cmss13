@@ -2,17 +2,18 @@
 
 /obj/structure/machinery/cryo_cell
 	name = "cryo cell"
+	desc = "A donation from the old A.W. project, using cryogenic technology. It slowly heals whoever is inside the tube."
 	icon = 'icons/obj/structures/machinery/cryogenics2.dmi'
 	icon_state = "cell"
-	density = 0
-	anchored = 1.0
+	density = FALSE
+	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 
 	var/temperature = 0
 	var/autoeject = FALSE
 	var/release_notice = FALSE
 	var/on = FALSE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 200
 
@@ -160,12 +161,12 @@
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
 			reagentnames += ";[R.name]"
 
-		msg_admin_niche("[key_name(user)] put \a [beaker] into \the [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).", 1)
+		msg_admin_niche("[key_name(user)] put \a [beaker] into \the [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) [ADMIN_JMP(src.loc)].", 1)
 
 		if(user.drop_inv_item_to_loc(W, src))
 			user.visible_message("[user] adds \a [W] to \the [src]!", "You add \a [W] to \the [src]!")
 	else if(istype(W, /obj/item/grab))
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(!ismob(G.grabbed_thing))
 			return
@@ -186,10 +187,10 @@
 		occupant.bodytemperature += 2*(temperature - occupant.bodytemperature)
 		occupant.bodytemperature = max(occupant.bodytemperature, temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
 		occupant.recalculate_move_delay = TRUE
-		occupant.stat = 1
+		occupant.set_stat(UNCONSCIOUS)
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(10)
-			occupant.KnockOut(10)
+			occupant.apply_effect(10, PARALYZE)
 
 			if(occupant.getOxyLoss())
 				occupant.apply_damage(-1, OXY)
@@ -243,7 +244,7 @@
 			if(dead)
 				reason = "<b>Reason for release:</b> Patient death."
 			ai_silent_announcement("Patient [occupant] has been automatically released from \the [src] at: [get_area(occupant)]. [reason]", MED_FREQ)
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	return
 
@@ -251,7 +252,7 @@
 	if(inoperable())
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
-	if(!istype(M) || isXeno(M))
+	if(!istype(M) || isxeno(M))
 		to_chat(usr, SPAN_DANGER("<B>The cryo cell cannot handle such a lifeform!</B>"))
 		return
 	if(occupant)
@@ -266,7 +267,7 @@
 		if(M.health >= -100 && (M.health <= 0 || M.sleeping))
 			to_chat(M, SPAN_NOTICE("<b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
 		occupant = M
-		update_use_power(2)
+		update_use_power(USE_POWER_ACTIVE)
 		update_icon()
 		return TRUE
 

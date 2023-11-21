@@ -10,7 +10,7 @@
 	state = OBJECTIVE_ACTIVE
 	controller = TREE_MARINE
 
-/datum/cm_objective/document/New(var/obj/item/document_objective/D)
+/datum/cm_objective/document/New(obj/item/document_objective/D)
 	. = ..()
 	document = D
 	initial_area = get_area(document)
@@ -27,7 +27,7 @@
 /datum/cm_objective/document/get_related_label()
 	return document.label
 
-/datum/cm_objective/document/complete(var/mob/living/carbon/human/user)
+/datum/cm_objective/document/complete(mob/living/carbon/human/user)
 	. = ..()
 
 	SSobjectives.statistics["documents_total_points_earned"] += value
@@ -122,6 +122,8 @@
 	unacidable = TRUE
 	indestructible = 1
 	is_objective = TRUE
+	ground_offset_x = 9
+	ground_offset_y = 8
 	var/label // label on the document
 	var/renamed = FALSE //Once someone reads a document the item gets renamed based on the objective they are linked to)
 
@@ -131,8 +133,6 @@
 	objective = new objective_type(src)
 	retrieve_objective = new /datum/cm_objective/retrieve_item/document(src)
 	LAZYADD(objective.enables_objectives, retrieve_objective)
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/Destroy()
 	qdel(objective)

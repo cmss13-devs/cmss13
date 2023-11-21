@@ -1,3 +1,18 @@
+//Should likely just replace this with an actual AI mob in the future. Might as well.
+/mob/living/silicon/decoy
+	name = "AI"
+	icon = 'icons/obj/structures/machinery/ai.dmi'
+	icon_state = "hydra"
+	anchored = TRUE
+	canmove = 0
+	density = TRUE //Do not want to see past it.
+	bound_height = 64 //putting this in so we can't walk through our machine.
+	bound_width = 96
+	custom_slashed_sound = "alien_claw_metal"
+	var/obj/item/device/radio/headset/almayer/mcom/ai/ai_headset //The thing it speaks into.
+	maxHealth = 1000
+	health = 1000
+
 /mob/living/silicon/decoy/ship_ai //For the moment, pending better pathing.
 	var/silent_announcement_cooldown = 0
 
@@ -7,18 +22,14 @@
 	desc = "This is the artificial intelligence system for the [MAIN_SHIP_NAME]. Like many other military-grade AI systems, this one was manufactured by Weyland-Yutani."
 	ai_headset = new(src)
 	ai_mob_list += src
+	real_name = MAIN_AI_SYSTEM
 
-//Should likely just replace this with an actual AI mob in the future. Might as well.
-/mob/living/silicon/decoy
-	name = "AI"
-	icon = 'icons/obj/structures/machinery/ai.dmi'
-	icon_state = "hydra"
-	anchored = 1
-	canmove = 0
-	density = 1 //Do not want to see past it.
-	bound_height = 64 //putting this in so we can't walk through our machine.
-	bound_width = 96
-	var/obj/item/device/radio/headset/almayer/mcom/ai/ai_headset //The thing it speaks into.
+/mob/living/silicon/decoy/ship_ai/Destroy()
+	QDEL_NULL(ai_headset)
+#ifdef UNIT_TESTS
+	ai_mob_list -= src // Or should we always remove them?
+#endif
+	return ..()
 
 /mob/living/silicon/decoy/Life(delta_time)
 	if(stat == DEAD)
@@ -29,7 +40,7 @@
 /mob/living/silicon/decoy/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
 
@@ -37,10 +48,11 @@
 	if(stat == DEAD)
 		return FALSE
 	icon_state = "hydra-off"
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, loc, -1, 0, 8, 12), 2 SECONDS)
+	var/datum/cause_data/cause_data = create_cause_data("rapid unscheduled disassembly", src, src)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, 0, 8, 12, TRUE, FALSE, 0, cause_data), 2 SECONDS)
 	return ..()
 
-/mob/living/silicon/decoy/say(message, new_sound) //General communication across the ship.
+/mob/living/silicon/decoy/say(message) //General communication across the ship.
 	if(stat || !message)
 		return FALSE
 

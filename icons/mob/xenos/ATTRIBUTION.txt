@@ -1,0 +1,7 @@
+Listed artists contributed during closed source. They are credited for their work on the sprites in this directory, and for their work in the theming of this codebase.
+Contact the current Head Developer if this list is inaccurate.
+
+nicboone
+westhybrid
+snypehunter
+afridge

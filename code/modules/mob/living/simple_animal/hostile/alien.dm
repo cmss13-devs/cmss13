@@ -2,7 +2,7 @@
 	name = "Drone"
 	var/caste_name = null
 	desc = "A builder of hives. Only drones may evolve into Queens."
-	icon = 'icons/mob/hostiles/drone.dmi'
+	icon = 'icons/mob/xenos/drone.dmi'
 	icon_gib = "syndicate_gib"
 	layer = BIG_XENO_LAYER
 	response_help = "pokes"
@@ -29,7 +29,7 @@
 	unsuitable_atoms_damage = 15
 	attack_same = TRUE
 	faction = FACTION_XENOMORPH
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 	wall_smash = 1
 	minbodytemp = 0
 	heat_damage_per_tick = 20
@@ -40,7 +40,7 @@
 	pixel_x = -12
 	old_x = -12
 
-	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
+	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
 
 /mob/living/simple_animal/hostile/alien/Initialize()
 	maxHealth = health
@@ -52,8 +52,8 @@
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		color = hive.color
 
-	wound_icon_carrier = new(null, src)
-	vis_contents += wound_icon_carrier
+	wound_icon_holder = new(null, src)
+	vis_contents += wound_icon_holder
 
 /mob/living/simple_animal/hostile/alien/proc/generate_name()
 	change_real_name(src, "[caste_name] (BD-[rand(1, 999)])")
@@ -77,7 +77,7 @@
 		icon_state = "Normal [caste_name] Running"
 	update_wounds()
 
-/mob/living/simple_animal/hostile/alien/evaluate_target(var/mob/living/carbon/target)
+/mob/living/simple_animal/hostile/alien/evaluate_target(mob/living/carbon/target)
 	. = ..()
 	if(!. || !hivenumber)
 		return
@@ -94,7 +94,7 @@
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.KnockDown(2)
+		puller.apply_effect(2, WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		return FALSE
@@ -105,24 +105,24 @@
 	update_wounds()
 
 /mob/living/simple_animal/hostile/alien/proc/update_wounds()
-	if(!wound_icon_carrier)
+	if(!wound_icon_holder)
 		return
 
-	wound_icon_carrier.layer = layer + 0.01
-	wound_icon_carrier.dir = dir
+	wound_icon_holder.layer = layer + 0.01
+	wound_icon_holder.dir = dir
 	var/health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
-			wound_icon_carrier.icon_state = "none"
+			wound_icon_holder.icon_state = "none"
 		else if(lying)
 			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-				wound_icon_carrier.icon_state = "[caste_name]_rest_[health_threshold]"
+				wound_icon_holder.icon_state = "[caste_name]_rest_[health_threshold]"
 			else
-				wound_icon_carrier.icon_state = "[caste_name]_downed_[health_threshold]"
+				wound_icon_holder.icon_state = "[caste_name]_downed_[health_threshold]"
 		else
-			wound_icon_carrier.icon_state = "[caste_name]_walk_[health_threshold]"
+			wound_icon_holder.icon_state = "[caste_name]_walk_[health_threshold]"
 
-/mob/living/simple_animal/hostile/alien/bullet_act(obj/item/projectile/P)
+/mob/living/simple_animal/hostile/alien/bullet_act(obj/projectile/P)
 	. = ..()
 	if(P.damage)
 		var/splatter_dir = get_dir(P.starting, loc)//loc is the xeno getting hit, P.starting is the turf of where the projectile got spawned
@@ -148,14 +148,14 @@
 	animate(src, 5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 
 /mob/living/simple_animal/hostile/alien/Destroy()
-	vis_contents -= wound_icon_carrier
-	QDEL_NULL(wound_icon_carrier)
+	vis_contents -= wound_icon_holder
+	QDEL_NULL(wound_icon_holder)
 	return ..()
 
 /mob/living/simple_animal/hostile/alien/ravager
 	name = "Ravager"
 	desc = "A huge, nasty red alien with enormous scythed claws."
-	icon = 'icons/mob/hostiles/ravager.dmi'
+	icon = 'icons/mob/xenos/ravager.dmi'
 	melee_damage_lower = XENO_DAMAGE_TIER_5
 	melee_damage_upper = XENO_DAMAGE_TIER_5
 	health = XENO_HEALTH_TIER_7
@@ -168,7 +168,7 @@
 /mob/living/simple_animal/hostile/alien/lurker
 	name = "Lurker"
 	desc = "A fast, powerful backline combatant."
-	icon = 'icons/mob/hostiles/lurker.dmi'
+	icon = 'icons/mob/xenos/lurker.dmi'
 	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_3
 	health = XENO_HEALTH_TIER_3
@@ -177,22 +177,18 @@
 	pixel_x = -12
 	old_x = -12
 
-/mob/living/simple_animal/hostile/alien/lurker/handle_icon()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_lurker))
-	return ..()
-
 // Still using old projectile code - commenting this out for now
 // /mob/living/simple_animal/hostile/alien/sentinel
-// 	name = "alien sentinel"
-// 	icon_state = "Sentinel Running"
-// 	icon_living = "Sentinel Running"
-// 	icon_dead = "Sentinel Dead"
-// 	health = 120
-// 	melee_damage_lower = 15
-// 	melee_damage_upper = 15
-// 	ranged = 1
-// 	projectiletype = /obj/item/projectile/neurotox
-// 	projectilesound = 'sound/weapons/pierce.ogg'
-/obj/item/projectile/neurotox
+// name = "alien sentinel"
+// icon_state = "Sentinel Running"
+// icon_living = "Sentinel Running"
+// icon_dead = "Sentinel Dead"
+// health = 120
+// melee_damage_lower = 15
+// melee_damage_upper = 15
+// ranged = 1
+// projectiletype = /obj/projectile/neurotox
+// projectilesound = 'sound/weapons/pierce.ogg'
+/obj/projectile/neurotox
 	damage = 30
 	icon_state = "toxin"

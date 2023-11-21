@@ -10,7 +10,7 @@
 
 /datum/species/human/handle_on_fire(humanoidmob)
 	. = ..()
-	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+	INVOKE_ASYNC(humanoidmob, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 //Tougher humans, basically action movie protagonists.
 /datum/species/human/hero
@@ -29,8 +29,9 @@
 	heat_level_3 = 1100
 	knock_down_reduction = 2
 	stun_reduction = 2
+	weed_slowdown_mult = 0.5
 
-/datum/species/human/hero/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/human/hero/handle_post_spawn(mob/living/carbon/human/H)
 	H.universal_understand = TRUE
 	H.status_flags |= NO_PERMANENT_DAMAGE //John Wick doesn't get internal bleeding from a grazing gunshot
 	H.status_flags &= ~STATUS_FLAGS_DEBILITATE
@@ -65,16 +66,19 @@
 	cold_level_3 = 20
 
 	//To show them we mean business.
-	handle_unique_behavior(var/mob/living/carbon/human/H)
-		//if(prob(25)) animation_horror_flick(H)
+/datum/species/human/spook/handle_unique_behavior(mob/living/carbon/human/H)
+	//if(prob(25)) animation_horror_flick(H)
 
-		//Organ damage will likely still take them down eventually.
-		H.apply_damage(-3, BRUTE)
-		H.apply_damage(-3, BURN)
-		H.apply_damage(-15, OXY)
-		H.apply_damage(-15, TOX)
+	//Organ damage will likely still take them down eventually.
+	H.apply_damage(-3, BRUTE)
+	H.apply_damage(-3, BURN)
+	H.apply_damage(-15, OXY)
+	H.apply_damage(-15, TOX)
 
 
 /datum/species/human/spook/handle_post_spawn(mob/living/carbon/human/H)
 	H.set_languages(list("Drrrrrrr"))
 	return ..()
+
+/datum/species/human/spook/handle_paygrades()
+	return ""

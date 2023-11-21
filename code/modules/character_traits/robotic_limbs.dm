@@ -1,5 +1,5 @@
 /datum/character_trait_group/robo_limb
-	trait_group_name = "Robotic Limb (Commissioned Officers)"
+	trait_group_name = "Robotic Limb"
 	mutually_exclusive = TRUE
 	base_type = /datum/character_trait_group/robo_limb
 
@@ -9,6 +9,7 @@
 	var/additional_description = "Only usable by 2ndLts and up."
 	applyable = FALSE
 	trait_group = /datum/character_trait_group/robo_limb
+	cost = 1
 	var/minimum_ranking = 12 // MO1, so SO and up
 
 /datum/character_trait/robo_limb/New()
@@ -19,7 +20,7 @@
 /datum/character_trait/robo_limb/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
 	var/string_paygrade = preset.load_rank(target)
 	var/datum/paygrade/paygrade_datum = GLOB.paygrades[string_paygrade]
-	if(paygrade_datum.ranking < minimum_ranking)
+	if(paygrade_datum?.ranking < minimum_ranking)
 		to_chat(target, SPAN_WARNING("You aren't a high enough rank to be eligible to have a prosthetic [robo_limb_name]!"))
 		return
 	var/obj/limb/limb = target.get_limb(code_limb)

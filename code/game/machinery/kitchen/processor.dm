@@ -8,7 +8,7 @@
 	wrenchable = TRUE
 	var/broken = 0
 	var/processing = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 50
 
@@ -16,48 +16,52 @@
 	var/input
 	var/output
 	var/time = 40
-	process(loc, what)
-		if (src.output && loc)
-			new src.output(loc)
-		if (what)
-			qdel(what)
+
+/datum/food_processor_process/process(loc, what)
+	if (src.output && loc)
+		new src.output(loc)
+	if (what)
+		qdel(what)
 
 	/* objs */
-	meat
-		input = /obj/item/reagent_container/food/snacks/meat
-		output = /obj/item/reagent_container/food/snacks/meatball
+/datum/food_processor_process/meat
+	input = /obj/item/reagent_container/food/snacks/meat
+	output = /obj/item/reagent_container/food/snacks/rawmeatball
 
-	potato
-		input = /obj/item/reagent_container/food/snacks/grown/potato
-		output = /obj/item/reagent_container/food/snacks/rawsticks
+/datum/food_processor_process/potato
+	input = /obj/item/reagent_container/food/snacks/grown/potato
+	output = /obj/item/reagent_container/food/snacks/rawsticks
 
-	carrot
-		input = /obj/item/reagent_container/food/snacks/grown/carrot
-		output = /obj/item/reagent_container/food/snacks/carrotfries
+/datum/food_processor_process/carrot
+	input = /obj/item/reagent_container/food/snacks/grown/carrot
+	output = /obj/item/reagent_container/food/snacks/carrotfries
 
-	soybeans
-		input = /obj/item/reagent_container/food/snacks/grown/soybeans
-		output = /obj/item/reagent_container/food/snacks/soydope
+/datum/food_processor_process/soybeans
+	input = /obj/item/reagent_container/food/snacks/grown/soybeans
+	output = /obj/item/reagent_container/food/snacks/soydope
 
-	wheat
-		input = /obj/item/reagent_container/food/snacks/grown/wheat
-		output = /obj/item/reagent_container/food/snacks/flour
+/datum/food_processor_process/wheat
+	input = /obj/item/reagent_container/food/snacks/grown/wheat
+	output = /obj/item/reagent_container/food/snacks/flour
 
-	spaghetti
-		input = /obj/item/reagent_container/food/snacks/flour
-		output = /obj/item/reagent_container/food/snacks/spagetti
+/datum/food_processor_process/spaghetti
+	input = /obj/item/reagent_container/food/snacks/flour
+	output = /obj/item/reagent_container/food/snacks/spagetti
+
+/datum/food_processor_process/chocolatebar
+	input = /obj/item/reagent_container/food/snacks/grown/cocoapod
+	output = /obj/item/reagent_container/food/snacks/chocolatebar
 
 	/* mobs */
-	mob
-		process(loc, what)
-			..()
+/datum/food_processor_process/mob/process(loc, what)
+	..()
 
-/obj/structure/machinery/processor/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/processor/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
-/obj/structure/machinery/processor/proc/select_recipe(var/X)
+/obj/structure/machinery/processor/proc/select_recipe(X)
 	for (var/Type in typesof(/datum/food_processor_process) - /datum/food_processor_process - /datum/food_processor_process/mob)
 		var/datum/food_processor_process/P = new Type()
 		if (!istype(X, P.input))
@@ -65,7 +69,7 @@
 		return P
 	return 0
 
-/obj/structure/machinery/processor/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/processor/attackby(obj/item/O as obj, mob/user as mob)
 	if(processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
@@ -89,7 +93,7 @@
 	user.drop_held_item()
 	what.forceMove(src)
 
-/obj/structure/machinery/processor/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/processor/attack_hand(mob/user as mob)
 	if (src.stat != 0) //NOPOWER etc
 		return
 	if(src.processing)

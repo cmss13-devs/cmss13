@@ -1,5 +1,5 @@
-#define MAX_ALPHA 					35
-#define GLOW_COLOR 					"#7a0000"
+#define MAX_ALPHA 35
+#define GLOW_COLOR "#7a0000"
 
 //Adjusts the speed of a xenomorph the component is on. Humans will take or heal stamina damage.
 
@@ -10,8 +10,8 @@
 	var/max_buildup = 10
 	var/increase_speed = FALSE
 
-/datum/component/speed_modifier/Initialize(var/speed_modifier, var/increase_speed = FALSE, var/speed_modifier_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), var/max_buildup = 10)
-	if(!isXenoOrHuman(parent))
+/datum/component/speed_modifier/Initialize(speed_modifier, increase_speed = FALSE, speed_modifier_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), max_buildup = 10)
+	if(!isxeno_human(parent))
 		return COMPONENT_INCOMPATIBLE
 	. = ..()
 	src.speed_modifier = speed_modifier
@@ -19,7 +19,7 @@
 	src.max_buildup = max_buildup
 	src.increase_speed = increase_speed
 
-/datum/component/speed_modifier/InheritComponent(datum/component/speed_modifier/C, i_am_original, var/speed_modifier)
+/datum/component/speed_modifier/InheritComponent(datum/component/speed_modifier/C, i_am_original, speed_modifier)
 	. = ..()
 	if(!C)
 		src.speed_modifier += speed_modifier
@@ -52,8 +52,8 @@
 
 /datum/component/speed_modifier/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
-	RegisterSignal(parent, COMSIG_XENO_MOVEMENT_DELAY, .proc/apply_speed_modifier)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
+	RegisterSignal(parent, COMSIG_XENO_MOVEMENT_DELAY, PROC_REF(apply_speed_modifier))
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
 
 /datum/component/speed_modifier/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)
@@ -64,14 +64,14 @@
 	var/atom/A = parent
 	A.remove_filter("speed_modifier")
 
-/datum/component/speed_modifier/proc/stat_append(var/mob/M, var/list/L)
+/datum/component/speed_modifier/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER
 	if(!increase_speed)
 		L += "Slow: [speed_modifier]/[max_buildup]"
 	else
 		L += "Speed Boost: [speed_modifier]/[max_buildup]"
 
-/datum/component/speed_modifier/proc/apply_speed_modifier(var/mob/living/carbon/Xenomorph/X, var/list/speeds)
+/datum/component/speed_modifier/proc/apply_speed_modifier(mob/living/carbon/xenomorph/X, list/speeds)
 	SIGNAL_HANDLER
 	if(!increase_speed)
 		speeds["speed"] += speed_modifier * 0.075

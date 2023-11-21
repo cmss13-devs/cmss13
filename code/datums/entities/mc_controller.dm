@@ -7,6 +7,6 @@
 	table_name = "mc_controller"
 	key_field = "controller_type"
 	field_types = list(
-			"controller_type"=DB_FIELDTYPE_STRING_LARGE,
-			"wait_time"=DB_FIELDTYPE_INT
-		)
+		"controller_type"=DB_FIELDTYPE_STRING_LARGE,
+		"wait_time"=DB_FIELDTYPE_INT,
+	)

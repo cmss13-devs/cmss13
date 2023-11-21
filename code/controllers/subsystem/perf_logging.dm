@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(perf_logging)
 	name = "Perf Logging"
 	wait = 60 SECONDS
-	flags = SS_NO_INIT | SS_DISABLE_FOR_TESTING | SS_KEEP_TIMING
+	flags = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_PERFLOGGING
 	var/datum/entity/mc_round/round
 	var/list/datum/entity/mc_controller/controller_assoc = list()
@@ -42,9 +42,8 @@ SUBSYSTEM_DEF(perf_logging)
 	var/datum/map_config/ground = SSmapping.configs[GROUND_MAP]
 	if(!ground) return
 	ord = 0
-	round = SSentity_manager.select(/datum/entity/mc_round)
+	round = SSentity_manager.round
 	round.map_name = ground.map_name
-	round.save()
 	var/datum/entity/mc_controller/C
 	for(var/datum/controller/subsystem/SS in Master.subsystems)
 		C = SSentity_manager.select_by_key(/datum/entity/mc_controller, "[SS.type]")

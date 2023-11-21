@@ -10,11 +10,11 @@
 
 //this is an objective that the player has just completed
 //and we want to store the objective clues generated based on it -spookydonut
-/datum/objective_memory_storage/proc/store_objective(var/datum/cm_objective/O)
+/datum/objective_memory_storage/proc/store_objective(datum/cm_objective/O)
 	for(var/datum/cm_objective/R in O.enables_objectives)
 		store_single_objective(R)
 
-/datum/objective_memory_storage/proc/store_single_objective(var/datum/cm_objective/O)
+/datum/objective_memory_storage/proc/store_single_objective(datum/cm_objective/O)
 	if(!istype(O))
 		return
 	if (O.state == OBJECTIVE_COMPLETE)
@@ -35,7 +35,7 @@
 		addToListNoDupe(other, O)
 
 //returns TRUE if we have the objective already
-/datum/objective_memory_storage/proc/has_objective(var/datum/cm_objective/O)
+/datum/objective_memory_storage/proc/has_objective(datum/cm_objective/O)
 	if(O in folders)
 		return TRUE
 	if(O in progress_reports)
@@ -101,10 +101,10 @@ var/global/datum/intel_system/intel_system = new()
 /datum/intel_system
 	var/datum/objective_memory_storage/oms = new()
 
-/datum/intel_system/proc/store_objective(var/datum/cm_objective/O)
+/datum/intel_system/proc/store_objective(datum/cm_objective/O)
 	oms.store_objective(O)
 
-/datum/intel_system/proc/store_single_objective(var/datum/cm_objective/O)
+/datum/intel_system/proc/store_single_objective(datum/cm_objective/O)
 	oms.store_single_objective(O)
 
 
@@ -196,7 +196,7 @@ var/global/datum/intel_system/intel_system = new()
 
 	return TRUE
 
-/obj/structure/machinery/computer/intel/proc/transfer_intel(mob/living/user, var/datum/cm_objective/O)
+/obj/structure/machinery/computer/intel/proc/transfer_intel(mob/living/user, datum/cm_objective/O)
 	if(!intel_system || !intel_system.oms)
 		return 0
 	if(intel_system.oms.has_objective(O))

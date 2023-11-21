@@ -1,7 +1,7 @@
 /atom/movable
 	layer = OBJ_LAYER
 	var/last_move_dir = null
-	var/anchored = 0
+	var/anchored = FALSE
 	var/drag_delay = 3 //delay (in deciseconds) added to mob's move_delay when pulling it.
 	var/l_move_time = 1
 	var/throwing = 0
@@ -16,15 +16,29 @@
 
 	var/move_intentionally = FALSE // this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
 
+	/// How much this mob|object is worth when lowered into the ASRS pit while the black market is unlocked.
+	var/black_market_value = 0
+
 	var/datum/component/orbiter/orbiting
 
+	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
+	var/blocks_emissive = FALSE
+	///Internal holder for emissive blocker object, do not use directly use blocks_emissive
+	var/atom/movable/emissive_blocker/em_block
+
+	///Lazylist to keep track on the sources of illumination.
+	var/list/affected_movable_lights
+	///Highest-intensity light affecting us, which determines our visibility.
+	var/affecting_dynamic_lumi = 0
+
 //===========================================================================
-/atom/movable/Destroy()
+/atom/movable/Destroy(force)
 	for(var/atom/movable/I in contents)
 		qdel(I)
 	if(pulledby)
 		pulledby.stop_pulling()
 	QDEL_NULL(launch_metadata)
+	QDEL_NULL(em_block)
 
 	if(loc)
 		loc.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted
@@ -35,12 +49,15 @@
 	. = ..()
 	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
 
+	QDEL_NULL(light)
+	QDEL_NULL(static_light)
+
 //===========================================================================
 
 //Overlays
 /atom/movable/overlay
 	var/atom/master = null
-	anchored = 1
+	anchored = TRUE
 
 /atom/movable/overlay/New()
 	..()
@@ -57,10 +74,78 @@
 		return src.master.attack_hand(a, b, c)
 	return
 
+/atom/movable/Initialize(mapload, ...)
+	. = ..()
+	switch(blocks_emissive)
+		if(EMISSIVE_BLOCK_GENERIC)
+			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
+			gen_emissive_blocker.color = GLOB.em_block_color
+			gen_emissive_blocker.dir = dir
+			gen_emissive_blocker.appearance_flags |= appearance_flags
+			overlays += gen_emissive_blocker
+		if(EMISSIVE_BLOCK_UNIQUE)
+			render_target = ref(src)
+			em_block = new(src, render_target)
+			overlays += list(em_block)
+	if(opacity)
+		AddElement(/datum/element/light_blocking)
+	if(light_system == MOVABLE_LIGHT)
+		AddComponent(/datum/component/overlay_lighting)
+	if(light_system == DIRECTIONAL_LIGHT)
+		AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
 
+/*
 
+///Updates this movables emissive overlay
+/atom/movable/proc/update_emissive_block()
+	if(!blocks_emissive)
+		return
+	else if (blocks_emissive == EMISSIVE_BLOCK_GENERIC)
+		var/mutable_appearance/gen_emissive_blocker = emissive_blocker(icon, icon_state, alpha = src.alpha, appearance_flags = src.appearance_flags)
+		gen_emissive_blocker.dir = dir
+	if(blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
+		if(!em_block)
+			render_target = ref(src)
+			em_block = new(src, render_target)
+		return em_block
 
+/atom/movable/update_overlays()
+	. = ..()
 
+	. += update_emissive_block()
+
+*/
+
+/atom/movable/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_PARTICLES, "Edit Particles")
+
+/atom/movable/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(!.)
+		return
+
+	if(href_list[VV_HK_EDIT_PARTICLES] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_particle_editor(src)
+
+/atom/movable/vv_edit_var(var_name, var_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, step_x) = TRUE, NAMEOF_STATIC(src, step_y) = TRUE, NAMEOF_STATIC(src, step_size) = TRUE, NAMEOF_STATIC(src, bounds) = TRUE)
+	var/static/list/careful_edits = list(NAMEOF_STATIC(src, bound_x) = TRUE, NAMEOF_STATIC(src, bound_y) = TRUE, NAMEOF_STATIC(src, bound_width) = TRUE, NAMEOF_STATIC(src, bound_height) = TRUE)
+	var/static/list/not_falsey_edits = list(NAMEOF_STATIC(src, bound_width) = TRUE, NAMEOF_STATIC(src, bound_height) = TRUE)
+	if(banned_edits[var_name])
+		return FALSE //PLEASE no.
+	if(careful_edits[var_name] && (var_value % world.icon_size) != 0)
+		return FALSE
+	if(not_falsey_edits[var_name] && !var_value)
+		return FALSE
+
+	if(!isnull(.))
+		datum_flags |= DF_VAR_EDITED
+		return
+
+	return ..()
 
 //when a mob interact with something that gives them a special view,
 //check_eye() is called to verify that they're still eligible.
@@ -103,7 +188,7 @@
 
 
 // Spin for a set amount of time at a set speed using directional states
-/atom/movable/proc/spin(var/duration, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin(duration, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (turn_delay < 1)
@@ -122,7 +207,7 @@
 		setDir(turn(dir, spin_degree))
 		duration -= turn_delay
 
-/atom/movable/proc/spin_circle(var/num_circles = 1, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin_circle(num_circles = 1, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (num_circles < 1 || turn_delay < 1)
@@ -174,7 +259,7 @@
 /atom/movable/clone/attack_hand(mob/user)
 	return src.mstr.attack_hand(user)
 
-/atom/movable/clone/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
+/atom/movable/clone/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
 	return src.mstr.attack_alien(M, dam_bonus)
 
 /atom/movable/clone/attack_animal(mob/living/M as mob)
@@ -186,13 +271,13 @@
 /atom/movable/clone/get_examine_text(mob/user)
 	return src.mstr.get_examine_text(user)
 
-/atom/movable/clone/bullet_act(obj/item/projectile/P)
+/atom/movable/clone/bullet_act(obj/projectile/P)
 	return src.mstr.bullet_act(P)
 /////////////////////
 
 /atom/movable/proc/create_clone_movable(shift_x, shift_y)
 	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
-	C.density = 0
+	C.density = FALSE
 	C.proj_x = shift_x
 	C.proj_y = shift_y
 
@@ -206,26 +291,26 @@
 	//Translate clone position by projection factor
 	//This is done first to reduce movement latency
 
-	clone.anchored 		= anchored //Some of these may be suitable for Init
-	clone.appearance 	= appearance
-	clone.dir 			= dir
-	clone.flags_atom 	= flags_atom
-	clone.density 		= density
-	clone.layer 		= layer
-	clone.level 		= level
-	clone.name 			= name
-	clone.pixel_x 		= pixel_x
-	clone.pixel_y 		= pixel_y
-	clone.transform 	= transform
-	clone.invisibility 	= invisibility
+	clone.anchored = anchored //Some of these may be suitable for Init
+	clone.appearance = appearance
+	clone.dir = dir
+	clone.flags_atom = flags_atom
+	clone.density = density
+	clone.layer = layer
+	clone.level = level
+	clone.name = name
+	clone.pixel_x = pixel_x
+	clone.pixel_y = pixel_y
+	clone.transform = transform
+	clone.invisibility = invisibility
 	////////////////////
 
 	if(light) //Clone lighting
 		if(!clone.light)
-			clone.SetLuminosity(luminosity) //Create clone light
+			clone.set_light(luminosity) //Create clone light
 	else
 		if(clone.light)
-			clone.SetLuminosity(0) //Kill clone light
+			clone.set_light(0) //Kill clone light
 
 /atom/movable/proc/destroy_clone()
 	clones.Remove(src.clone)
@@ -248,5 +333,25 @@
 
 /atom/movable/proc/safe_throw_at(atom/target, range, speed, mob/thrower, spin = TRUE)
 	//if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
-	//	return
+	// return
 	return throw_atom(target, range, speed, thrower, spin)
+
+///Keeps track of the sources of dynamic luminosity and updates our visibility with the highest.
+/atom/movable/proc/update_dynamic_luminosity()
+	var/highest = 0
+	for(var/i in affected_movable_lights)
+		if(affected_movable_lights[i] <= highest)
+			continue
+		highest = affected_movable_lights[i]
+	if(highest == affecting_dynamic_lumi)
+		return
+	luminosity -= affecting_dynamic_lumi
+	affecting_dynamic_lumi = highest
+	luminosity += affecting_dynamic_lumi
+
+
+///Helper to change several lighting overlay settings.
+/atom/movable/proc/set_light_range_power_color(range, power, color)
+	set_light_range(range)
+	set_light_power(power)
+	set_light_color(color)

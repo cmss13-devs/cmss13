@@ -1,10 +1,10 @@
 /datum/custom_event_info
-	var/faction = "default"		//here category/faction/hive name stored
-	var/msg = ""			//here is the message itself
+	var/faction = "default" //here category/faction/hive name stored
+	var/msg = "" //here is the message itself
 
 
 //this shows event info to player. can pass clients and mobs
-/datum/custom_event_info/proc/show_player_event_info(var/user)
+/datum/custom_event_info/proc/show_player_event_info(user)
 
 	if(!istype(user, /client))
 		if(ismob(user))
@@ -53,10 +53,10 @@
 					show_player_event_info(M)
 				return
 
-	message_staff("ERROR, ([faction ? faction : "name lost"]) faction is not found for event info.")
+	message_admins("ERROR, ([faction ? faction : "name lost"]) faction is not found for event info.")
 	return
 
-/mob/proc/check_event_info(var/category = "Global")
+/mob/proc/check_event_info(category = "Global")
 	if(GLOB.custom_event_info_list[category])
 		var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[category]
 		if(CEI.msg)

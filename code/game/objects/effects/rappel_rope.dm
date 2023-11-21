@@ -13,7 +13,7 @@
 
 /obj/effect/rappel_rope/proc/handle_animation()
 	flick("rope_deploy", src)
-	addtimer(CALLBACK(src, .proc/handle_animation_end), 2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(handle_animation_end)), 2 SECONDS)
 
 /obj/effect/rappel_rope/proc/handle_animation_end()
 	flick("rope_up", src)

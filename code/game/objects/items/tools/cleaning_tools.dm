@@ -3,9 +3,9 @@
 	name = "mop"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
-	force = 3.0
+	force = 3
 	attack_speed = 4
-	throwforce = 10.0
+	throwforce = 10
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	w_class = SIZE_MEDIUM
@@ -25,7 +25,7 @@
 	if(.)
 		user.next_move = world.time + 1 SECONDS
 
-/obj/item/tool/mop/update_icon(var/cut_if_empty)
+/obj/item/tool/mop/update_icon(cut_if_empty)
 	if(cut_if_empty)
 		if(!reagents.total_volume)
 			overlays.Cut()
@@ -45,8 +45,8 @@
 /turf/proc/clean(atom/source)
 	if(source.reagents.has_reagent("water", 1))
 		clean_cleanables()
-	source.reagents.reaction(src, TOUCH, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
-	source.reagents.remove_any(1)				//reaction() doesn't use up the reagents
+	source.reagents.reaction(src, TOUCH, 10) //10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
+	source.reagents.remove_any(1) //reaction() doesn't use up the reagents
 
 
 /obj/item/tool/mop/afterattack(atom/A, mob/living/user, proximity)

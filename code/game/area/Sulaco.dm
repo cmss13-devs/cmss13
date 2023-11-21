@@ -2,7 +2,6 @@
 /area/shuttle
 	ceiling = CEILING_METAL
 	requires_power = 0
-	test_exemptions = MAP_TEST_EXEMPTION_SPACE
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 
@@ -14,6 +13,7 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
@@ -28,10 +28,6 @@
 /area/shuttle/drop1/LV624
 	name = "\improper Dropship Alamo"
 	ambience_exterior = AMBIENCE_LV624
-	icon_state = "shuttle"
-
-/area/shuttle/drop1/Haunted
-	name = "\improper Dropship Alamo"
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/prison
@@ -54,7 +50,7 @@
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/transit
-	ambience_exterior 	= 'sound/ambience/dropship_ambience_loop.ogg'
+	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
 	name = "\improper Dropship Alamo Transit"
 	icon_state = "shuttle2"
 
@@ -74,6 +70,7 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"
@@ -83,10 +80,6 @@
 /area/shuttle/drop2/LV624
 	name = "\improper Dropship Normandy"
 	ambience_exterior = AMBIENCE_LV624
-	icon_state = "shuttle2"
-
-/area/shuttle/drop2/Haunted
-	name = "\improper Dropship Normandy"
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/prison
@@ -109,7 +102,7 @@
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/transit
-	ambience_exterior 	= 'sound/ambience/dropship_ambience_loop.ogg'
+	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
 	name = "\improper Dropship Normandy Transit"
 	icon_state = "shuttlered"
 
@@ -124,7 +117,7 @@
 //DISTRESS SHUTTLES
 
 /area/shuttle/distress
-	lighting_use_dynamic = FALSE
+	base_lighting_alpha = 255
 	unique = TRUE
 
 /area/shuttle/distress/start

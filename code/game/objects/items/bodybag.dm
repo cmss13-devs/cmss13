@@ -64,13 +64,17 @@
 	open_sound = 'sound/items/zip.ogg'
 	close_sound = 'sound/items/zip.ogg'
 	var/item_path = /obj/item/bodybag
-	var/open_cooldown = 0 //the active var that tracks the cooldown for opening and closing
-	density = 0
-	anchored = 0
-	layer = ABOVE_OBJ_LAYER //To layer above rollerbeds.
-	drag_delay = 2 //slightly easier than to drag the body directly.
-	var/obj/structure/bed/roller/roller_buckled //the roller bed this bodybag is attached to.
-	///How many extra pixels to offset the bag by when buckled, since rollerbeds are set up to offset a centered horizontal human sprite.
+	/// the active var that tracks the cooldown for opening and closing
+	var/open_cooldown = 0
+	density = FALSE
+	anchored = FALSE
+	/// To layer above rollerbeds.
+	layer = ABOVE_OBJ_LAYER
+	/// slightly easier than to drag the body directly.
+	drag_delay = 2
+	/// the roller bed this bodybag is attached to.
+	var/obj/structure/bed/roller/roller_buckled
+	/// How many extra pixels to offset the bag by when buckled, since rollerbeds are set up to offset a centered horizontal human sprite.
 	var/buckle_offset = 5
 	store_items = FALSE
 
@@ -89,49 +93,56 @@
 			name = "[bag_name] (empty)"
 
 /obj/structure/closet/bodybag/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/tool/pen))
-		var/t = stripped_input(user, "What would you like the label to be?", name, null, MAX_MESSAGE_LEN)
-		if (user.get_active_hand() != W)
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
+		var/prior_label_text
+		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		if(labelcomponent)
+			prior_label_text = labelcomponent.label_name
+		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
+		if(tmp_label == "" || !tmp_label)
+			to_chat(user, SPAN_NOTICE("You're going to need to use wirecutters to remove the label."))
 			return
-		if (!in_range(src, user) && src.loc != user)
-			return
-		if (t)
-			src.name = "body bag - "
-			src.name += t
-			src.overlays += image(src.icon, "bodybag_label")
+		if(length(tmp_label) > MAX_NAME_LEN)
+			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			src.name = "body bag"
-	//..() //Doesn't need to run the parent. Since when can fucking bodybags be welded shut? -Agouri
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+			AddComponent(/datum/component/label, tmp_label)
+			playsound(src, "paper_writing", 15, TRUE)
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
-		src.name = "body bag"
 		src.overlays.Cut()
+		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		if(labelcomponent)
+			labelcomponent.remove_label()
 		return
 	else if(istype(W, /obj/item/weapon/zombie_claws))
 		open()
 
-/obj/structure/closet/bodybag/store_mobs(var/stored_units) // overriding this
+/obj/structure/closet/bodybag/store_mobs(stored_units) // overriding this
 	var/list/dead_mobs = list()
-	for(var/mob/living/M in loc)
-		if(M.buckled)
+	for(var/mob/living/mob in loc)
+		if(mob.buckled)
 			continue
-		if(M.stat != DEAD) // covers alive mobs
+		if(mob.stat != DEAD) // covers alive mobs
 			continue
-		if(!ishuman(M)) // all the dead other shit
-			dead_mobs += M
+		if(!ishuman(mob)) // all the dead other shit
+			dead_mobs += mob
 			continue
-		var/mob/living/carbon/human/H = M
-		if(H.check_tod() || isSynth(H) || H.is_revivable() && H.get_ghost()) // revivable
+		var/mob/living/carbon/human/human = mob
+		if(issynth(human))
 			continue
-		dead_mobs += M
+		if(human.check_tod() && human.is_revivable()) // revivable
+			continue
+		dead_mobs += mob
 	var/mob/living/mob_to_store
 	if(dead_mobs.len)
 		mob_to_store = pick(dead_mobs)
 		mob_to_store.forceMove(src)
 		stored_units += mob_size
-	for(var/obj/item/limb/L in loc)
-		L.forceMove(src)
+	for(var/obj/item/limb/limb in loc)
+		limb.forceMove(src)
 	return stored_units
 
 /obj/structure/closet/bodybag/attack_hand(mob/living/user)
@@ -145,7 +156,7 @@
 
 /obj/structure/closet/bodybag/close()
 	if(..())
-		density = 0
+		density = FALSE
 		update_name()
 		return 1
 	return 0
@@ -157,8 +168,8 @@
 /obj/structure/closet/bodybag/MouseDrop(over_object, src_location, over_location)
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
-		if(!ishuman(usr))	return
-		if(contents.len)	return 0
+		if(!ishuman(usr)) return
+		if(contents.len) return 0
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		var/obj/item/I = new item_path(get_turf(src), src)
 		usr.put_in_hands(I)
@@ -201,10 +212,13 @@
 	icon = 'icons/obj/cryobag.dmi'
 	item_path = /obj/item/bodybag/cryobag
 	store_items = FALSE
-	var/mob/living/carbon/human/stasis_mob //the mob in stasis
+	/// the mob in stasis
+	var/mob/living/carbon/human/stasis_mob
 	var/used = 0
-	var/last_use = 0 //remembers the value of used, to delay crostasis start.
-	var/max_uses = 1800 //15 mins of usable cryostasis
+	/// remembers the value of used, to delay crostasis start.
+	var/last_use = 0
+	/// 15 mins of usable cryostasis
+	var/max_uses = 1800
 
 /obj/structure/closet/bodybag/cryobag/Initialize(mapload, obj/item/bodybag/cryobag/CB)
 	. = ..()
@@ -248,7 +262,7 @@
 		new /obj/item/trash/used_stasis_bag(loc)
 		qdel(src)
 
-/obj/structure/closet/bodybag/cryobag/store_mobs(var/stored_units) // overriding this
+/obj/structure/closet/bodybag/cryobag/store_mobs(stored_units) // overriding this
 	var/list/mobs_can_store = list()
 	for(var/mob/living/carbon/human/H in loc)
 		if(H.buckled)
@@ -330,7 +344,7 @@
 							tgui_interact(usr, human = H)
 						break
 
-/obj/structure/closet/bodybag/cryobag/tgui_interact(mob/user, datum/tgui/ui, var/mob/living/carbon/human/human)
+/obj/structure/closet/bodybag/cryobag/tgui_interact(mob/user, datum/tgui/ui, mob/living/carbon/human/human)
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

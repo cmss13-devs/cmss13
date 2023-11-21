@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/Login()
+/mob/living/carbon/xenomorph/Login()
 	..()
 	if(client)
 		set_lighting_alpha_from_prefs(client)

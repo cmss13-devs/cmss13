@@ -5,7 +5,8 @@
 	icon_closed = "coffin"
 	icon_opened = "coffin_open"
 	material = MATERIAL_WOOD
-	anchored = 0
+	anchored = FALSE
+	layer = BETWEEN_OBJECT_ITEM_LAYER
 
 /obj/structure/closet/coffin/update_icon()
 	if(!opened)

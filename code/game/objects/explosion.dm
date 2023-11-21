@@ -1,7 +1,7 @@
 
 //Now that this has been replaced entirely by D.O.R.E.C, we just need something that translates old explosion calls into a D.O.R.E.C approximation
 
-/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = 0, flame_range = 0, var/datum/cause_data/explosion_cause_data)
+/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = 0, flame_range = 0, datum/cause_data/explosion_cause_data)
 	var/power = 0
 
 	if(devastation_range > 0)
@@ -23,7 +23,7 @@
 
 //A very crude linear approximatiaon of pythagoras theorem. (this is still used by chemsmoke)
 
-/proc/cheap_pythag(var/dx, var/dy)
+/proc/cheap_pythag(dx, dy)
 	dx = abs(dx); dy = abs(dy);
-	if(dx>=dy)	return dx + (0.5*dy)	//The longest side add half the shortest side approximates the hypotenuse
-	else		return dy + (0.5*dx)
+	if(dx>=dy) return dx + (0.5*dy) //The longest side add half the shortest side approximates the hypotenuse
+	else return dy + (0.5*dx)

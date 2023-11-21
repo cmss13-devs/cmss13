@@ -32,7 +32,7 @@
 /// Creates a message packet for sending via output()
 // This is {"type":type,"payload":payload}, but pre-encoded. This is much faster
 // than doing it the normal way.
-// To ensure this is correct, this is unit tested in tgui_create_message. However, CM does not have unit tests available.
+// To ensure this is correct, this is unit tested in tgui_create_message.
 #define TGUI_CREATE_MESSAGE(type, payload) ( \
 	"%7b%22type%22%3a%22[type]%22%2c%22payload%22%3a[url_encode(json_encode(payload))]%7d" \
 )
@@ -42,6 +42,6 @@
 *The higher the level, the more information you can see
 */
 
-#define DETAIL_LEVEL_HEALTHANALYSER	0
-#define DETAIL_LEVEL_BODYSCAN		1
-#define DETAIL_LEVEL_FULL			2
+#define DETAIL_LEVEL_HEALTHANALYSER 0
+#define DETAIL_LEVEL_BODYSCAN 1
+#define DETAIL_LEVEL_FULL 2

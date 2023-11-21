@@ -54,10 +54,10 @@
 	playsound(mainloc, 'sound/machines/twobeep.ogg', 50, 1)
 
 	delaying = TRUE
-	addtimer(CALLBACK(src, .proc/pulse, 0), delay*10)
+	addtimer(CALLBACK(src, PROC_REF(pulse), 0), delay*10)
 
 	cooldown = 2
-	addtimer(CALLBACK(src, .proc/process_cooldown),10)
+	addtimer(CALLBACK(src, PROC_REF(process_cooldown)),10)
 	return
 
 
@@ -84,7 +84,7 @@
 
 
 /obj/item/device/assembly/prox_sensor/proc/toggle_scan()
-	if(!secured)	return 0
+	if(!secured) return 0
 	scanning = !scanning
 	update_icon()
 	return
@@ -183,3 +183,12 @@
 
 	.["min_delay"] = PROXY_MINIMUM_DELAY
 	.["max_delay"] = PROXY_MAXIMUM_DELAY
+
+/obj/item/device/assembly/prox_sensor/attack_alien(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	if(scanning)
+		playsound(loc, "alien_claw_metal", 25, 1)
+		xeno.animation_attack_on(src)
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] slashes [src], turning it off!"), SPAN_XENONOTICE("You slash [src], turning it off!"))
+		toggle_scan()
+	return XENO_ATTACK_ACTION

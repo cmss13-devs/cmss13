@@ -13,8 +13,8 @@
 	Therefore, the top right corner (except during admin shenanigans) is at "15,15"
 */
 
-#define ui_monkey_mask "WEST+4:14,1:5"	//monkey
-#define ui_monkey_back "WEST+5:14,1:5"	//monkey
+#define ui_monkey_mask "WEST+4:14,1:5" //monkey
+#define ui_monkey_back "WEST+5:14,1:5" //monkey
 
 //Upper-middle right (damage indicators)
 #define ui_predator_power "EAST-1:28,9:13"
@@ -22,8 +22,15 @@
 #define ui_acti_alt  "EAST-1:28,1:5" //alternative intent switcher for when the interface is hidden (F12)
 
 // Ghosts
-#define ui_ghost_slot1 "SOUTH:6,CENTER-2:24"
-#define ui_ghost_slot2 "SOUTH:6,CENTER-1:24"
-#define ui_ghost_slot3 "SOUTH:6,CENTER:24"
-#define ui_ghost_slot4 "SOUTH:6,CENTER+1:24"
-#define ui_ghost_slot5 "SOUTH:6,CENTER+2:24"
+#define ui_ghost_slot1 "SOUTH:6,CENTER-2:0"
+#define ui_ghost_slot2 "SOUTH:6,CENTER-1:0"
+#define ui_ghost_slot3 "SOUTH:6,CENTER:0"
+#define ui_ghost_slot4 "SOUTH:6,CENTER+1:0"
+#define ui_ghost_slot5 "SOUTH:6,CENTER+2:0"
+
+//Upper-middle right (alerts)
+#define ui_alert1 "EAST-1:28,CENTER+5:27"
+#define ui_alert2 "EAST-1:28,CENTER+4:25"
+#define ui_alert3 "EAST-1:28,CENTER+3:23"
+#define ui_alert4 "EAST-1:28,CENTER+2:21"
+#define ui_alert5 "EAST-1:28,CENTER+1:19"

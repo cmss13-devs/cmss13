@@ -64,9 +64,8 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "jW" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -107,7 +106,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "mj" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname,
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "ni" = (
@@ -197,7 +196,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "sj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	req_access_txt = "100";
 	name = "\improper Omicron Field Gear Storage"
 	},
@@ -324,8 +323,7 @@
 /area/shiva/interior/colony/research_hab)
 "IK" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
@@ -374,8 +372,7 @@
 /obj/item/clothing/suit/storage/snow_suit,
 /obj/item/clothing/suit/storage/snow_suit,
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
+	icon_state = "NW-out"
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -406,8 +403,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
+	icon_state = "NE-out"
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -415,11 +411,10 @@
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/colony/research_hab)
 "Qz" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 8;
 	name = "\improper Omicron Field Gear Storage";
-	req_access_txt = "100";
-	tag = "icon-door_closed (WEST)"
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -490,8 +485,7 @@
 /area/shiva/interior/colony/research_hab)
 "Yz" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -500,7 +494,7 @@
 /area/shiva/interior/caves/cp_camp)
 "YI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	dir = 1;
 	req_access_txt = "100";
 	name = "\improper Omicron Field Gear Storage"

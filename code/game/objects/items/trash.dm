@@ -37,16 +37,23 @@
 
 /obj/item/trash/cheesie
 	name = "Cheesie honkers"
+	gender = PLURAL
 	icon_state = "cheesie_honkers"
 
 /obj/item/trash/chips
 	name = "Chips"
+	gender = PLURAL
 	icon_state = "chips"
 
 /obj/item/trash/chunk
 	name = "chunk bar box"
 	desc = "An empty box from a chunk bar. Significantly less heavy."
 	icon_state = "chunk_trash"
+
+/obj/item/trash/chunk/hunk
+	name = "hunk bar crate"
+	desc = "An empty crate from a hunk bar. Tremendously less heavy."
+	icon_state = "hunk_trash"
 
 /obj/item/trash/eat
 	name = "EAT bar wrapper"
@@ -60,6 +67,10 @@
 /obj/item/trash/kepler
 	name = "Kepler wrapper"
 	icon_state = "kepler"
+
+/obj/item/trash/kepler/flamehot
+	name = "Kepler Flamehot wrapper"
+	icon_state = "flamehotkepler"
 
 /obj/item/trash/liquidfood
 	name = "\improper \"LiquidFood\" ration"
@@ -75,6 +86,7 @@
 
 /obj/item/trash/raisins
 	name = "4no raisins"
+	gender = PLURAL
 	icon_state= "4no_raisins"
 
 /obj/item/trash/semki
@@ -87,6 +99,7 @@
 
 /obj/item/trash/syndi_cakes
 	name = "Syndi cakes"
+	gender = PLURAL
 	icon_state = "syndi_cakes"
 
 /obj/item/trash/uscm_mre
@@ -97,10 +110,12 @@
 
 /obj/item/trash/waffles
 	name = "Waffles"
+	gender = PLURAL
 	icon_state = "waffles"
 
 /obj/item/trash/wy_chips_pepper
 	name = "Weyland-Yutani Pepper Chips"
+	gender = PLURAL
 	icon_state = "wy_chips_pepper"
 	desc = "An oily empty bag that once held Weyland-Yutani Pepper Chips."
 
@@ -160,7 +175,7 @@
 
 /obj/item/trash/snack_bowl
 	name = "Snack bowl"
-	icon_state	= "snack_bowl"
+	icon_state = "snack_bowl"
 
 /obj/item/trash/tray
 	name = "Tray"

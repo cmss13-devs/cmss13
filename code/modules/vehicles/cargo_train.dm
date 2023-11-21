@@ -4,12 +4,14 @@
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_engine"
 	on = 0
-	luminosity = 5 //Pretty strong because why not
 	powered = 1
 	locked = 0
 	charge_use = 15
 
-	var/car_limit = 3		//how many cars an engine can pull before performance degrades
+	light_system = MOVABLE_LIGHT
+	light_range = 5
+
+	var/car_limit = 3 //how many cars an engine can pull before performance degrades
 	active_engines = 1
 	var/obj/item/key/cargo_train/key
 
@@ -24,8 +26,8 @@
 	name = "cargo train trolley"
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_trailer"
-	luminosity = 0
-	anchored = 0
+	light_range = 0
+	anchored = FALSE
 	locked = 0
 	can_buckle = FALSE
 
@@ -38,7 +40,11 @@
 	key = new()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I
-	turn_off()	//so engine verbs are correctly set
+
+	if(light_range)
+		set_light_on(TRUE)
+
+	turn_off() //so engine verbs are correctly set
 
 /obj/vehicle/train/cargo/engine/Move()
 	if(on && cell.charge < charge_use)
@@ -66,14 +72,14 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/vehicle/train/cargo/trolley/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle/train/cargo/trolley/insert_cell(obj/item/cell/C, mob/living/carbon/human/H)
 	return
 
-/obj/vehicle/train/cargo/engine/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle/train/cargo/engine/insert_cell(obj/item/cell/C, mob/living/carbon/human/H)
 	..()
 	update_stats()
 
-/obj/vehicle/train/cargo/engine/remove_cell(var/mob/living/carbon/human/H)
+/obj/vehicle/train/cargo/engine/remove_cell(mob/living/carbon/human/H)
 	..()
 	update_stats()
 
@@ -202,15 +208,15 @@
 // more engines increases this limit by car_limit per
 // engine.
 //-------------------------------------------------------
-/obj/vehicle/train/cargo/engine/update_car(var/train_length, var/active_engines)
+/obj/vehicle/train/cargo/engine/update_car(train_length, active_engines)
 	src.train_length = train_length
-	src.active_engines = active_engines															//makes cargo trains 10% slower than running when not overweight
+	src.active_engines = active_engines //makes cargo trains 10% slower than running when not overweight
 
-/obj/vehicle/train/cargo/trolley/update_car(var/train_length, var/active_engines)
+/obj/vehicle/train/cargo/trolley/update_car(train_length, active_engines)
 	src.train_length = train_length
 	src.active_engines = active_engines
 
 	if(!lead && !tow)
-		anchored = 0
+		anchored = FALSE
 	else
-		anchored = 1
+		anchored = TRUE

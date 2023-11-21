@@ -41,7 +41,7 @@
 		new /obj/item/storage/backpack/industrial(src)
 	else
 		new /obj/item/storage/backpack/satchel/eng(src)
-//	new /obj/item/device/radio/headset/almayer/ct(src)
+// new /obj/item/device/radio/headset/almayer/ct(src)
 	new /obj/item/clothing/under/rank/miner(src)
 	new /obj/item/clothing/gloves/black(src)
 	new /obj/item/clothing/shoes/black(src)

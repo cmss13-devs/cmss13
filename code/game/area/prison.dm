@@ -3,11 +3,13 @@
 /area/prison
 	can_build_special = TRUE
 	powernet_name = "ground"
+	minimap_color = MINIMAP_AREA_COLONY
 
 //SECURITY
 /area/prison/security
 	name = "\improper security department"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/security/port/entrance
 	name = "\improper security port entrance"
@@ -33,6 +35,7 @@
 /area/prison/medbay
 	name = "\improper infirmary"
 	icon_state = "medbay"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/prison/medbay/theatre
 	name = "\improper surgical theatre"
@@ -53,6 +56,7 @@
 /area/prison/command
 	name = "\improper control room"
 	icon_state = "bridge"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/prison/hallway/central_ring
 	name = "\improper central ring"
@@ -85,26 +89,32 @@
 /area/prison/east/security1
 	name = "\improper east security checkpoint"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/east/security2
 	name = "\improper east security checkpoint"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/north/security1
 	name = "\improper north security checkpoint"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/north/security2
 	name = "\improper north security checkpoint"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/west/security1
 	name = "\improper west security checkpoint"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/west/security2
 	name = "\improper west security checkpoint"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/canteen
 	name = "\improper canteen"
@@ -129,10 +139,12 @@
 /area/prison/power_main
 	name = "\improper power control room"
 	icon_state = "engine"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/prison/ship
 	name = "\improper Weyland-Yutani Ship USS Omortson"
 	icon_state = "blue-red2"
+	minimap_color = MINIMAP_AREA_SHIP
 
 /area/prison/hanger
 	name = "\improper droppod hanger"

@@ -1,4 +1,4 @@
-#define PREDATOR_TO_TOTAL_SPAWN_RATIO 1/40
+#define PREDATOR_TO_TOTAL_SPAWN_RATIO 1/80
 
 /datum/job/antag/predator
 	title = JOB_PREDATOR
@@ -21,17 +21,17 @@
 		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = /datum/equipment_preset/yautja/ancient
 	)
 
-/datum/job/antag/predator/set_spawn_positions(var/count)
+/datum/job/antag/predator/set_spawn_positions(count)
 	spawn_positions = max((round(count * PREDATOR_TO_TOTAL_SPAWN_RATIO)), 4)
 	total_positions = spawn_positions
 
-/datum/job/antag/predator/spawn_and_equip(var/mob/new_player/player)
+/datum/job/antag/predator/spawn_and_equip(mob/new_player/player)
 	player.spawning = TRUE
 	player.close_spawn_windows()
 
 	SSticker.mode.attempt_to_join_as_predator(player)
 
-/datum/job/antag/predator/get_whitelist_status(var/list/roles_whitelist, var/client/player) // Might be a problem waiting here, but we've got no choice
+/datum/job/antag/predator/get_whitelist_status(list/roles_whitelist, client/player) // Might be a problem waiting here, but we've got no choice
 	. = ..()
 	if(!.)
 		return
@@ -58,12 +58,12 @@
 	return rank
 
 
-/datum/job/antag/predator/announce_entry_message(var/mob/new_predator, var/account, var/whitelist_status)
+/datum/job/antag/predator/announce_entry_message(mob/new_predator, account, whitelist_status)
 	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))
 	to_chat(new_predator, SPAN_NOTICE("Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered."))
 	to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
 
-/datum/job/antag/predator/generate_entry_conditions(mob/living/M, var/whitelist_status)
+/datum/job/antag/predator/generate_entry_conditions(mob/living/M, whitelist_status)
 	. = ..()
 
 	if(SSticker.mode)

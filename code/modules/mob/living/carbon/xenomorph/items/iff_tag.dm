@@ -5,8 +5,8 @@
 	icon_state = "xeno_tag"
 	var/list/faction_groups = list()
 
-/obj/item/iff_tag/attack(mob/living/carbon/Xenomorph/xeno, mob/living/carbon/human/injector)
-	if(isXeno(xeno))
+/obj/item/iff_tag/attack(mob/living/carbon/xenomorph/xeno, mob/living/carbon/human/injector)
+	if(isxeno(xeno))
 		if(xeno.stat == DEAD)
 			to_chat(injector, SPAN_WARNING("\The [xeno] is dead..."))
 			return
@@ -19,6 +19,8 @@
 		injector.visible_message(SPAN_NOTICE("[injector] forces \the [src] into [xeno]'s carapace!"), SPAN_NOTICE("You force \the [src] into [xeno]'s carapace!"))
 		xeno.iff_tag = src
 		injector.drop_inv_item_to_loc(src, xeno)
+		if(xeno.hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
+			to_chat(xeno, SPAN_NOTICE("With the insertion of the device into your carapace, your instincts have changed compelling you to protect [english_list(faction_groups, "no one")]."))
 		return
 	return ..()
 
@@ -28,7 +30,7 @@
 		return
 	return ..()
 
-/obj/item/iff_tag/proc/handle_reprogramming(var/mob/living/carbon/human/programmer, var/mob/living/carbon/Xenomorph/xeno)
+/obj/item/iff_tag/proc/handle_reprogramming(mob/living/carbon/human/programmer, mob/living/carbon/xenomorph/xeno)
 	var/list/id_faction_groups = programmer.get_id_faction_group()
 	var/option = tgui_alert(programmer, "The xeno tag's current IFF groups reads as: [english_list(faction_groups, "None")]\nYour ID's IFF group reads as: [english_list(id_faction_groups, "None")]", "Xenomorph IFF Tag", list("Overwrite", "Add", "Remove"))
 	if(!option)
@@ -48,6 +50,8 @@
 		if("Remove")
 			faction_groups = list()
 	to_chat(programmer, SPAN_NOTICE("You <b>[option]</b> the IFF group data, the IFF group on the tag now reads as: [english_list(faction_groups, "None")]"))
+	if(xeno?.hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
+		to_chat(xeno, SPAN_NOTICE("Your instincts have changed, you seem compelled to protect [english_list(faction_groups, "no one")]."))
 	return TRUE
 
 /obj/item/iff_tag/pmc_handler
@@ -63,8 +67,9 @@
 	storage_slots = 8
 	can_hold = list(
 		/obj/item/iff_tag,
-		/obj/item/device/multitool
+		/obj/item/device/multitool,
 	)
+	black_market_value = 25
 
 /obj/item/storage/xeno_tag_case/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots - 1)

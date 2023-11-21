@@ -15,15 +15,15 @@
 	var/bonus_damage = 0
 	var/bonus_speed = 0
 
-/datum/effects/xeno_buff/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", var/ttl = 35, var/bonus_damage = 0, var/bonus_speed = 0)
+/datum/effects/xeno_buff/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 35, bonus_damage = 0, bonus_speed = 0)
 	. = ..(A, from, last_dmg_source, zone)
 
-	if(!isXeno(A))
+	if(!isxeno(A))
 		qdel(src)
 
 	to_chat(A, SPAN_XENONOTICE("You feel empowered"))
 
-	var/mob/living/carbon/Xenomorph/X = A
+	var/mob/living/carbon/xenomorph/X = A
 	X.melee_damage_lower += bonus_damage
 	X.melee_damage_upper += bonus_damage
 
@@ -32,10 +32,10 @@
 	src.bonus_damage = bonus_damage
 	src.bonus_speed = bonus_speed
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), ttl)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), ttl)
 
-/datum/effects/xeno_buff/validate_atom(var/atom/A)
-	if (!isXeno(A))
+/datum/effects/xeno_buff/validate_atom(atom/A)
+	if (!isxeno(A))
 		return FALSE
 
 	var/mob/M = A
@@ -48,7 +48,7 @@
 
 	if(affected_atom)
 		to_chat(affected_atom, SPAN_XENONOTICE("You no longer feel empowered"))
-		var/mob/living/carbon/Xenomorph/X = affected_atom
+		var/mob/living/carbon/xenomorph/X = affected_atom
 		X.melee_damage_lower -= bonus_damage
 		X.melee_damage_upper -= bonus_damage
 

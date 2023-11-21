@@ -12,11 +12,6 @@
 
 	return text
 
-//Sends resource files to client cache
-/client/proc/getFiles()
-	for(var/file in args)
-		src << browse_rsc(file)
-
 /client/proc/browse_files(root="data/logs/", max_iterations=10, list/valid_extensions=list(".txt",".log",".htm"))
 	var/path = root
 
@@ -34,7 +29,7 @@
 				continue
 		path += choice
 
-		if(copytext(path,-1,0) != "/")		//didn't choose a directory, no need to iterate again
+		if(copytext(path,-1,0) != "/") //didn't choose a directory, no need to iterate again
 			break
 
 	var/extension = copytext(path,-4,0)
@@ -44,12 +39,12 @@
 
 	return path
 
-#define FTPDELAY 200	//200 tick delay to discourage spam
-/*	This proc is a failsafe to prevent spamming of file requests.
+#define FTPDELAY 200 //200 tick delay to discourage spam
+/* This proc is a failsafe to prevent spamming of file requests.
 	It is just a timer that only permits a download every [FTPDELAY] ticks.
 	This can be changed by modifying FTPDELAY's value above.
 
-	PLEASE USE RESPONSIBLY, Some log files canr each sizes of 4MB!	*/
+	PLEASE USE RESPONSIBLY, Some log files canr each sizes of 4MB! */
 /client/proc/file_spam_check()
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)

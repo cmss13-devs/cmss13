@@ -25,7 +25,7 @@
 		air_info = get_breath_from_internal()
 
 		//No breath from internal atmosphere so get breath from location
-		if(!air_info)			
+		if(!air_info)
 			var/turf/T = get_turf(loc)
 			air_info = T.return_air()
 
@@ -72,21 +72,21 @@
 
 	if(!air_info)
 		apply_damage(HUMAN_MAX_OXYLOSS, OXY)
-		
+
 		oxygen_alert = max(oxygen_alert, 1)
 
 		return 0
 
 	switch(air_info[1])
 		if(GAS_TYPE_N2O)
-			if(!isYautja(src)) // Prevent Predator anesthetic memes
+			if(!isyautja(src)) // Prevent Predator anesthetic memes
 				var/SA_pp = air_info[3]
 				if(SA_pp > 20) // Enough to make us paralysed for a bit
-					KnockOut(3) // 3 gives them one second to wake up and run away a bit!
+					apply_effect(3, PARALYZE) // 3 gives them one second to wake up and run away a bit!
 					//Enough to make us sleep as well
 					if(SA_pp > 30)
 						sleeping = min(sleeping+4, 10)
-				else if(SA_pp > 1)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
+				else if(SA_pp > 1) // There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 					if(prob(20))
 						spawn(0) emote(pick("giggle", "laugh"))
 	apply_damage(-2, OXY)

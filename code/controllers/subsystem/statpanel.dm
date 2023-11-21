@@ -2,7 +2,9 @@ SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 0.4 SECONDS
 	init_order = SS_INIT_STATPANELS
+	init_stage = INITSTAGE_EARLY
 	priority = SS_PRIORITY_STATPANEL
+	flags = SS_NO_INIT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	var/list/currentrun = list()
 	var/list/global_data
@@ -25,10 +27,10 @@ SUBSYSTEM_DEF(statpanels)
 		if(SSmapping.next_map_configs)
 			cached = SSmapping.next_map_configs[GROUND_MAP]
 		global_data = list(
-			"Map: [SSmapping.configs[GROUND_MAP]?.map_name || "Loading..."]",
+			"Map: [SSmapping.configs?[GROUND_MAP]?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached?.map_name]" : null,
-//			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]", // this is commented because we don't have it and we should have it instead of using debug DB - be the hero of today
-//          "Round Time: [ROUND_TIME]",
+			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
+//   "Round Time: [ROUND_TIME]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Round Time: [duration2text()]",
 			"Operation Time: [worldtime2text()]",
@@ -41,6 +43,9 @@ SUBSYSTEM_DEF(statpanels)
 	while(length(currentrun))
 		var/client/target = currentrun[length(currentrun)]
 		currentrun.len--
+
+		if(!target)
+			continue
 
 		if(!target.stat_panel.is_ready())
 			continue
@@ -63,6 +68,12 @@ SUBSYSTEM_DEF(statpanels)
 
 			if(target.stat_tab == "Tickets" && num_fires % default_wait == 0)
 				set_tickets_tab(target)
+
+			if(!length(GLOB.sdql2_queries) && ("SDQL2" in target.panel_tabs))
+				target.stat_panel.send_message("remove_sdql2")
+
+			else if(length(GLOB.sdql2_queries) && (target.stat_tab == "SDQL2" || !("SDQL2" in target.panel_tabs)) && (num_fires % default_wait == 0))
+				set_SDQL2_tab(target)
 
 		if(target.mob)
 			var/mob/target_mob = target.mob
@@ -133,7 +144,7 @@ SUBSYSTEM_DEF(statpanels)
 		if(turf_content in overrides)
 			continue
 		//if(turf_content.IsObscured()) // requires click under flags to work
-		//	continue
+		// continue
 		atoms_to_display += turf_content
 
 	/// Set the atoms we're meant to display
@@ -190,7 +201,7 @@ SUBSYSTEM_DEF(statpanels)
 		list("World Time:", "[world.time]"),
 		list("Globals:", GLOB.stat_entry(), "\ref[GLOB]"),
 		list("[config]:", config.stat_entry(), "\ref[config]"),
-//		list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)"),
+// list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)"),
 		list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)"),
 		list("Master Controller:", Master.stat_entry(), "\ref[Master]"),
 		list("Failsafe Controller:", Failsafe.stat_entry(), "\ref[Failsafe]"),
@@ -198,6 +209,17 @@ SUBSYSTEM_DEF(statpanels)
 	)
 	for(var/datum/controller/subsystem/sub_system as anything in Master.subsystems)
 		mc_data[++mc_data.len] = list("\[[sub_system.state_letter()]][sub_system.name]", sub_system.stat_entry(), text_ref(sub_system))
+
+/// Sets the current tab to the SDQL tab
+/datum/controller/subsystem/statpanels/proc/set_SDQL2_tab(client/target)
+	var/list/sdql2_initial = list()
+	//sdql2_initial[length(sdql2_initial)++] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
+	var/list/sdql2_querydata = list()
+	//for(var/datum/sdql2_query/query as anything in GLOB.sdql2_queries)
+		//sdql2_querydata = query.generate_stat()
+
+	sdql2_initial += sdql2_querydata
+	target.stat_panel.send_message("update_sdql2", sdql2_initial)
 
 ///immediately update the active statpanel tab of the target client
 /datum/controller/subsystem/statpanels/proc/immediate_send_stat_data(client/target)
@@ -246,6 +268,11 @@ SUBSYSTEM_DEF(statpanels)
 		set_tickets_tab(target)
 		return TRUE
 
+	if(!length(GLOB.sdql2_queries) && ("SDQL2" in target.panel_tabs))
+		target.stat_panel.send_message("remove_sdql2")
+
+	else if(length(GLOB.sdql2_queries) && target.stat_tab == "SDQL2")
+		set_SDQL2_tab(target)
 
 /// Stat panel window declaration
 /client/var/datum/tgui_window/stat_panel
@@ -289,14 +316,39 @@ SUBSYSTEM_DEF(statpanels)
 	for(index in 1 to length(to_make))
 		var/atom/thing = to_make[index]
 
+		// var/start_time = REALTIMEOFDAY
 		var/generated_string
-		/* We're cheap and won't render all overlays. It's expensive and updates with onmob changes!
-		if(ismob(thing) || length(thing.overlays) > 2)
-			generated_string = costly_icon2html(thing, parent, sourceonly=TRUE)
+		// We're cheap and won't render all overlays. It's expensive and updates with onmob changes!
+		//if(ismob(thing) || length(thing.overlays) > 2)
+			//generated_string = costly_icon2html(thing, parent, sourceonly=TRUE)
+		if(ishuman(thing))
+			var/mob/living/carbon/human/human_thing = thing
+			var/icon
+
+			// Ensure they have their armor since its going to be the majority of their appearance
+			var/list/armor = list()
+			var/obj/item/uniform = human_thing.get_item_by_slot(WEAR_BODY)
+			if(uniform)
+				armor += new uniform.type
+			var/obj/item/hat = human_thing.get_item_by_slot(WEAR_HEAD)
+			if(hat)
+				armor += new hat.type
+			var/obj/item/suit = human_thing.get_item_by_slot(WEAR_JACKET)
+			if(suit)
+				armor += new suit.type
+			var/obj/item/gloves = human_thing.get_item_by_slot(WEAR_HANDS)
+			if(gloves)
+				armor += new gloves.type
+			var/obj/item/shoes = human_thing.get_item_by_slot(WEAR_FEET)
+			if(shoes)
+				armor += new shoes.type
+
+			// If we don't succeed making a flat human icon below, allowing the human to pass into icon2html will throw a bad icon operation because of a workaround in icon2html for humans...
+			icon = get_flat_human_copy_icon(human_thing, showDirs = list(SOUTH), outfit_override = armor)
+			generated_string = icon2html(icon, parent, sourceonly=TRUE)
+			// log_debug("object_window_info called on ref=[REF(thing)], instance=[thing], type=[thing.type], finished in [(REALTIMEOFDAY-start_time) / 10]s")
 		else
 			generated_string = icon2html(thing, parent, sourceonly=TRUE)
-		*/
-		generated_string = icon2html(thing, parent, sourceonly=TRUE)
 
 		newly_seen[thing] = generated_string
 		if(TICK_CHECK)
@@ -314,8 +366,8 @@ SUBSYSTEM_DEF(statpanels)
 	if(actively_tracking)
 		stop_turf_tracking()
 	var/static/list/connections = list(
-		COMSIG_MOVABLE_MOVED = .proc/on_mob_move,
-		COMSIG_MOB_LOGOUT = .proc/on_mob_logout,
+		COMSIG_MOVABLE_MOVED = PROC_REF(on_mob_move),
+		COMSIG_MOB_LOGOUT = PROC_REF(on_mob_logout),
 	)
 	AddComponent(/datum/component/connect_mob_behalf, parent, connections)
 	actively_tracking = TRUE
@@ -359,8 +411,10 @@ SUBSYSTEM_DEF(statpanels)
 	set name = "Open Statbrowser Options"
 	set hidden = TRUE
 
+	if (!current_fontsize)
+		current_fontsize = 12
 
-	var/datum/statbrowser_options/SM = statbrowser_options
-	if(!SM)
-		SM = statbrowser_options = new(src, current_fontsize)
-	SM.tgui_interact()
+	var/datum/statbrowser_options/options_panel = statbrowser_options
+	if(!options_panel)
+		options_panel = statbrowser_options = new(src, current_fontsize)
+	options_panel.tgui_interact()

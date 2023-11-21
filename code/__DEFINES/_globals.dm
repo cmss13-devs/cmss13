@@ -3,8 +3,8 @@
 /// Creates a global initializer with a given InitValue expression, do not use
 #define GLOBAL_MANAGED(X, InitValue)\
 /datum/controller/global_vars/proc/InitGlobal##X(){\
-    ##X = ##InitValue;\
-    gvars_datum_init_order += #X;\
+	##X = ##InitValue;\
+	gvars_datum_init_order += #X;\
 }
 /// Creates an empty global initializer, do not use
 #define GLOBAL_UNMANAGED(X) /datum/controller/global_vars/proc/InitGlobal##X() { return; }
@@ -12,31 +12,31 @@
 /// Creates name keyed subtype instance list
 #define GLOBAL_SUBTYPE_INDEXED(X, TypePath, Index)\
 /datum/controller/global_vars/proc/InitGlobal##X(){\
-    ##X = list();\
-    for(var/t in subtypesof(TypePath)){\
-        var##TypePath/A = new t;\
-        ##X[A.##Index] = A;\
-    }\
-    gvars_datum_init_order += #X;\
+	##X = list();\
+	for(var/t in subtypesof(TypePath)){\
+		var##TypePath/A = new t;\
+		##X[A.##Index] = A;\
+	}\
+	gvars_datum_init_order += #X;\
 }
 
 /// Lists subtypes of a given type, indexed by initial value of a variable
 #define GLOBAL_SUBTYPE_PATH_INDEXED(X, TypePath, Index)\
 /datum/controller/global_vars/proc/InitGlobal##X(){\
-    ##X = list();\
-    for(var/t in subtypesof(TypePath)){\
-        var##TypePath/A = t;\
-        ##X[initial(A.##Index)] = t;\
-    }\
-    gvars_datum_init_order += #X;\
+	##X = list();\
+	for(var/t in subtypesof(TypePath)){\
+		var##TypePath/A = t;\
+		##X[initial(A.##Index)] = t;\
+	}\
+	gvars_datum_init_order += #X;\
 }
 
 /// Prevents a given global from being VV'd
 #ifndef TESTING
 #define GLOBAL_PROTECT(X)\
 /datum/controller/global_vars/InitGlobal##X(){\
-    ..();\
-    gvars_datum_protected_varlist[#X] = TRUE;\
+	..();\
+	gvars_datum_protected_varlist[#X] = TRUE;\
 }
 #else
 #define GLOBAL_PROTECT(X)
@@ -44,8 +44,8 @@
 
 #define GLOBAL_SORTED(X)\
 /datum/controller/global_vars/InitGlobal##X(){\
-    ..();\
-    ##X = sortAssoc(##X);\
+	..();\
+	##X = sortAssoc(##X);\
 }
 
 /// Standard BYOND global, do not use

@@ -47,12 +47,12 @@
 
 		//stamp the paper
 		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-		stampoverlay.icon_state = "paper_stamp-cent"
+		stampoverlay.icon_state = "paper_stamp-rd"
 		if(!R.stamped)
 			R.stamped = new
 		R.offset_x += 0
 		R.offset_y += 0
-		R.ico += "paper_stamp-cent"
+		R.ico += "paper_stamp-rd"
 		R.stamped += /obj/item/tool/stamp
 		R.overlays += stampoverlay
 		R.stamps += "<HR><i>This paper has been stamped by the EFTPOS device.</i>"
@@ -70,7 +70,7 @@
 
 	//stamp the paper
 	var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-	stampoverlay.icon_state = "paper_stamp-cent"
+	stampoverlay.icon_state = "paper_stamp-rd"
 	if(!R.stamped)
 		R.stamped = new
 	R.stamped += /obj/item/tool/stamp
@@ -149,7 +149,7 @@
 	else
 		..()
 
-/obj/item/device/eftpos/Topic(var/href, var/href_list)
+/obj/item/device/eftpos/Topic(href, href_list)
 	. = ..()
 	if(.)
 		return
@@ -218,13 +218,13 @@
 				var/obj/item/I = usr.get_active_hand()
 				if (istype(I, /obj/item/card))
 					var/obj/item/card/id/C = I
-					if(ACCESS_MARINE_LOGISTICS in C.access)
+					if(ACCESS_MARINE_DATABASE in C.access)
 						access_code = 0
 						to_chat(usr, "[icon2html(src, usr)]<span class='info'>Access code reset to 0.</span>")
 
 	src.attack_self(usr)
 
-/obj/item/device/eftpos/proc/scan_card(var/obj/item/card/I)
+/obj/item/device/eftpos/proc/scan_card(obj/item/card/I)
 	if (istype(I, /obj/item/card/id))
 		var/obj/item/card/id/C = I
 		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))

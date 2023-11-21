@@ -68,7 +68,6 @@ var/global/datum/money_account/vendor_account
 var/global/datum/money_account/station_account
 var/global/list/datum/money_account/department_accounts = list()
 var/global/num_financial_terminals = 1
-var/global/next_account_number = 0
 var/global/list/all_money_accounts = list()
 var/global/economy_init = 0
 
@@ -114,8 +113,6 @@ var/global/economy_init = 0
 
 /proc/create_station_account()
 	if(!station_account)
-		next_account_number = rand(111111, 999999)
-
 		station_account = new()
 		station_account.owner_name = "[station_name] Station Account"
 		station_account.account_number = rand(111111, 999999)
@@ -136,8 +133,6 @@ var/global/economy_init = 0
 		all_money_accounts.Add(station_account)
 
 /proc/create_department_account(department)
-	next_account_number = rand(111111, 999999)
-
 	var/datum/money_account/department_account = new()
 	department_account.owner_name = "[department] Account"
 	department_account.account_number = rand(111111, 999999)

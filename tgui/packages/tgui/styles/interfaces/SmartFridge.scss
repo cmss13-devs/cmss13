@@ -1,0 +1,33 @@
+.SmartFridge {
+  .ItemIconCell {
+    width: 32px;
+  }
+  .ItemIcon {
+    min-width: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    margin-top: -6px;
+    margin-bottom: -6px;
+  }
+
+  .ContentsTable {
+    .ContentRow {
+      margin-top: 2px;
+      margin-bottom: 2px;
+      &:nth-child(even) {
+        background-color: black;
+      }
+    }
+  }
+
+  .VendButton {
+    width: 100%;
+    display: block;
+    .Button__content {
+      align-self: flex-start;
+      text-align: left;
+      margin-top: -2px;
+      margin-bottom: -1px;
+    }
+  }
+}

@@ -16,15 +16,15 @@
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters so no abuse from marines.
 	color = "#b29082"
 
-/obj/structure/machinery/door/airlock/sandstone/runed/proc/can_use(mob/user as mob, var/loud = 0)
+/obj/structure/machinery/door/airlock/sandstone/runed/proc/can_use(mob/user as mob, loud = 0)
 	if(!in_range(src, user))
 		to_chat(usr, "You cannot operate the door from this far away")
 		return FALSE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/attackby(obj/item/W as obj, mob/user as mob)
-//	..()
+// ..()
 	user.set_interaction(src)
-	if (!istype(W, /obj/item/weapon/wristblades || !isYautja(user)))
+	if (!istype(W, /obj/item/weapon/wristblades || !isyautja(user)))
 		return
 
 	if(istype(W, /obj/item/weapon/wristblades))
@@ -63,22 +63,22 @@
 //ASYNC procs (Probably ok to get rid of)
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/open_door()
 	if(src.density)
-		INVOKE_ASYNC(src, .proc/open)
+		INVOKE_ASYNC(src, PROC_REF(open))
 	return TRUE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/close_door()
 	if(!src.density)
-		INVOKE_ASYNC(src, .proc/close)
+		INVOKE_ASYNC(src, PROC_REF(close))
 	return TRUE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/lock_door()
 	if(!src.locked)
-		INVOKE_ASYNC(src, .proc/lock)
+		INVOKE_ASYNC(src, PROC_REF(lock))
 	return TRUE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/unlock_door()
 	if(src.locked)
-		INVOKE_ASYNC(src, .proc/unlock)
+		INVOKE_ASYNC(src, PROC_REF(unlock))
 	return TRUE
 
 /// Stops the door being interacted with, without wristblades.
@@ -89,33 +89,34 @@
 	return FALSE
 
 
-/obj/structure/machinery/door/airlock/sandstone/runed/open(var/forced=1)
+/obj/structure/machinery/door/airlock/sandstone/runed/open(forced = TRUE)
 	if(operating || welded || locked || !loc || !density)
 		return FALSE
 	if(!forced && !arePowerSystemsOn())
 		return FALSE
+
 	playsound(loc, 'sound/effects/runedsanddoor.ogg', 25, 0)
 	visible_message(SPAN_NOTICE("\The [src] makes a loud grating sound as hidden workings pull it open."))
-
-	if(!operating)
-		operating = TRUE
-	CHECK_TICK
+	operating = TRUE
 	do_animate("opening")
 	icon_state = "door0"
-	src.SetOpacity(FALSE)
-	sleep(openspeed)
-	src.layer = open_layer
-	src.density = FALSE
+	set_opacity(0)
+
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	return
+
+/obj/structure/machinery/door/airlock/sandstone/runed/finish_open()
+	layer = open_layer
+	density = FALSE
 	update_icon()
-	SetOpacity(0)
-	if (filler)
-		filler.SetOpacity(opacity)
+	set_opacity(0)
+	if(length(filler_turfs))
+		change_filler_opacity(opacity)
 
 	if(operating)
 		operating = FALSE
-	return
 
-/obj/structure/machinery/door/airlock/sandstone/runed/close(var/forced=1)
+/obj/structure/machinery/door/airlock/sandstone/runed/close(forced = TRUE)
 	if(operating || welded || locked || !loc || density)
 		return
 	if(safe)
@@ -128,20 +129,23 @@
 	visible_message(SPAN_NOTICE("\The [src] makes a loud grating sound as hidden workings force it shut."))
 
 	operating = TRUE
-	CHECK_TICK
-	src.density = TRUE
-	src.SetOpacity(TRUE)
-	src.layer = closed_layer
+	density = TRUE
+	set_opacity(1)
+	layer = closed_layer
 	do_animate("closing")
-	sleep(openspeed)
+
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
+	return
+
+/obj/structure/machinery/door/airlock/sandstone/runed/finish_close()
 	update_icon()
 	operating = FALSE
 
 	for(var/turf/turf in locs)
 		for(var/mob/living/M in turf)
 			M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-			M.SetStunned(5)
-			M.SetKnockeddown(5)
+			M.set_effect(5, STUN)
+			M.set_effect(5, WEAKEN)
 			M.emote("pain")
 			var/turf/location = loc
 			if(istype(location, /turf))
@@ -150,9 +154,8 @@
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
 			killthis.ex_act(EXPLOSION_THRESHOLD_LOW)
-	return
 
-/obj/structure/machinery/door/airlock/sandstone/runed/lock(var/forced=0)
+/obj/structure/machinery/door/airlock/sandstone/runed/lock(forced=0)
 	if(operating || locked) return
 
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25)
@@ -163,7 +166,7 @@
 		visible_message(SPAN_NOTICE("\The [src] makes a loud grating sound as heavy stone bolts seal it open."))
 	update_icon()
 
-/obj/structure/machinery/door/airlock/sandstone/runed/unlock(var/forced=0)
+/obj/structure/machinery/door/airlock/sandstone/runed/unlock(forced=0)
 	if(operating || !locked) return
 	locked = FALSE
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25)
@@ -172,7 +175,7 @@
 	return TRUE
 
 //Damage procs needed to be redefined because unacidable apparently makes doors immortal.
-/obj/structure/machinery/door/airlock/sandstone/runed/take_damage(var/dam, var/mob/M)
+/obj/structure/machinery/door/airlock/sandstone/runed/take_damage(dam, mob/M)
 	if(!dam)
 		return FALSE
 
@@ -182,25 +185,25 @@
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
-		destroy_airlock()
+		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
+		deconstruct(FALSE)
+		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
+
 		return TRUE
 
 	return FALSE
 
-/obj/structure/machinery/door/airlock/sandstone/runed/destroy_airlock()
+/obj/structure/machinery/door/airlock/sandstone/runed/deconstruct(disassembled = TRUE)
 	if(!src)
 		return
-	var/turf/T = get_turf(src)
 
-	to_chat(loc, SPAN_DANGER("[src] blows apart!"))
-
-	new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-	new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-	new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-	new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-
-	playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
-	qdel(src)
+	if(!disassembled)
+		var/turf/T = get_turf(src)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
+	return ..()
 
 /obj/structure/machinery/door/airlock/sandstone/runed/ex_act(severity, explosion_direction)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR

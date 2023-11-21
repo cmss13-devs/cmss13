@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(decorator)
 		if(!(object.flags_atom & ATOM_DECORATED))
 			object.Decorate(deferable = FALSE)
 		CHECK_TICK
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/decorator/fire(resumed)
 	if(Master.map_loading || !initialized)
@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(decorator)
 		msg = "D:[registered_decorators.len],P:[decoratable.len]"
 	return ..()
 
-/datum/controller/subsystem/decorator/proc/decorate(var/atom/o)
+/datum/controller/subsystem/decorator/proc/decorate(atom/o)
 	if (!o || QDELETED(o))
 		return
 
@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(decorator)
 		decor.decorate(o)
 
 // List of lists, sorts by element[key] - for things like crew monitoring computer sorting records by name.
-/datum/controller/subsystem/decorator/proc/sortDecorators(var/list/datum/decorator/L)
+/datum/controller/subsystem/decorator/proc/sortDecorators(list/datum/decorator/L)
 	if(!istype(L))
 		return null
 	if(L.len < 2)
@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(decorator)
 	var/middle = L.len / 2 + 1
 	return mergeDecoratorLists(sortDecorators(L.Copy(0, middle)), sortDecorators(L.Copy(middle)))
 
-/datum/controller/subsystem/decorator/proc/mergeDecoratorLists(var/list/datum/decorator/L, var/list/datum/decorator/R)
+/datum/controller/subsystem/decorator/proc/mergeDecoratorLists(list/datum/decorator/L, list/datum/decorator/R)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()

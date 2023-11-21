@@ -10,7 +10,7 @@
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -23,7 +23,7 @@
 		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
@@ -81,6 +81,14 @@
 	has_buttons = TRUE
 	icon_state = "coat_officer"
 
+/obj/item/clothing/suit/storage/jacket/marine/pilot
+	name = "\improper M70B1 light flak jacket"
+	desc = "A light flak jacket used by dropship pilots to protect themselves while flying in the cockpit. This specific flak jacket has been designed for style and comfort over protection, and it shows. Don't get hit by any stray bullets!"
+	icon_state = "pilot_alt"
+	has_buttons = TRUE
+	flags_atom = NO_SNOW_TYPE
+	initial_icon_state = "pilot_alt"
+
 /obj/item/clothing/suit/storage/jacket/marine/service/mp
 	name = "military police service jacket"
 	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are willing to bear the shame."
@@ -128,9 +136,10 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
-	name = "marine dress jacket"
+	name = "marine formal service jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
-	icon_state = "marine_formal"
+	icon_state = "coat_formal"
+	initial_icon_state = "coat_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -140,11 +149,13 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_atom = NO_SNOW_TYPE
+	has_buttons = TRUE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
 	name = "marine officer dress jacket"
 	desc = "Dress Jacket worn by Commanding Officers of the USCM."
 	icon_state = "co_jacket"
+	has_buttons = FALSE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
@@ -170,6 +181,11 @@
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
 
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon
+	name = "commanding officer falcon jacket"
+	desc = "A refurbished jacket liner tailor made for a senior officer. This liner has become more of a proper piece of attire, with a new layer of fabric, wrist cuffs, front pockets, and a custom embroidered falcon on the back. This jacket will keep its wearer warm no matter the circumstance, from a cool Sunday drive to chilly autumn's eve."
+	icon_state = "co_falcon"
+
 /obj/item/clothing/suit/storage/jacket/marine/dress/general
 	name = "general's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a General. Has quite a few pockets."
@@ -179,6 +195,7 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
 	)
 	item_state = "general_jacket"
+	has_buttons = FALSE
 	storage_slots = 4
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -189,10 +206,12 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/general/executive
 	name = "director's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a Director. Has quite a few pockets."
+	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat
 	name = "bridge coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is a Dressy Blue for a Commanding officer."
+	has_buttons = FALSE
 	item_state = "bridge_coat"
 	icon_state = "bridge_coat"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
@@ -200,39 +219,39 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey
 	name = "bridge coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is Black."
+	has_buttons = FALSE
 	item_state = "bridge_coat_grey"
 	icon_state = "bridge_coat_grey"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
+/obj/item/clothing/suit/storage/jacket/marine/service/aso
+	name = "auxiliary support officer jacket"
+	desc = "A comfortable vest for officers who are expected to work long hours staring at rows of numbers and inspecting equipment from knives to torpedos to entire dropships."
+	icon_state = "aso_jacket"
+	blood_overlay_type = "coat"
+	flags_armor_protection = BODY_FLAG_CHEST
+	has_buttons = FALSE
 
 
 //=========================//PROVOST\\================================\\
 //=======================================================================\\
+
 /obj/item/clothing/suit/storage/jacket/marine/provost
-	name = "\improper Provost Coat"
-	desc = "The crisp coat of a Provost Officer."
+	name = "\improper Provost Jacket"
+	desc = "A crisp jacket with the Provost sigil."
+	icon_state = "provost_jacket"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
-	icon_state = "provost_coat"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/advisor
-	name = "\improper Provost Advisor Jacket"
-	desc = "The crisp jacket of a Provost Advisor."
-	icon_state = "provost_jacket"
+/obj/item/clothing/suit/storage/jacket/marine/provost/coat
+	name = "\improper Provost Coat"
+	desc = "The crisp coat of a Provost Officer."
+	icon_state = "provost_coat"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/inspector
-	name = "\improper Provost Inspector Jacket"
-	desc = "The crisp jacket of a Provost Inspector."
-	icon_state = "provost_jacket"
+/obj/item/clothing/suit/storage/jacket/marine/provost/coat/marshal
+	name = "\improper Provost Marshal Coat"
+	icon_state = "provost_coat_marshal"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshal
-	name = "\improper Provost Marshal Jacket"
-	desc = "The crisp jacket of a Provost Marshal."
-	icon_state = "provost_jacket"
-
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshal/chief
-	name = "\improper Provost Chief Marshal Jacket"
-	desc = "The crisp jacket of the Provost Chief Marshal."
 
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\
@@ -243,6 +262,7 @@
 	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
 	icon_state = "e_jacket"
 	item_state = "e_jacket"
+	has_buttons = FALSE
 	item_state_slots = null
 	contained_sprite = TRUE
 
@@ -257,3 +277,13 @@
 	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. Features the sleek dark design of the uniform worn by a commissioned officer."
 	icon_state = "o_jacket"
 	item_state = "o_jacket"
+
+//==================War Correspondent==================\\
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter
+	name = "combat correspondent jacket"
+	desc = "A jacket for the most fashionable war correspondents."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_suit"
+	item_state = "wc_suit"
+	contained_sprite = TRUE

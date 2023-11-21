@@ -2,7 +2,7 @@
 	name = ORIGIN_UPP
 	desc = "You were born in the Union of Progressive Peoples."
 
-/datum/origin/upp/generate_human_name(var/gender = MALE)
+/datum/origin/upp/generate_human_name(gender = MALE)
 	var/first_name
 	var/last_name
 

@@ -17,6 +17,7 @@
 	stage_prob = 4
 	stage_minimum_age = 150
 	survive_mob_death = TRUE //FALSE //switch to true to make dead infected humans still transform
+	longevity = 500 //should allow the dead to rise
 	var/zombie_transforming = 0 //whether we're currently transforming the host into a zombie.
 	var/goo_message_cooldown = 0 //to make sure we don't spam messages too often.
 	var/stage_counter = 0 // tells a dead infectee their stage, so they can know when-abouts they'll revive
@@ -99,13 +100,14 @@
 	set waitfor = 0
 	zombie_transforming = TRUE
 	human.vomit_on_floor()
-	human.AdjustStunned(5)
+	human.adjust_effect(5, STUN)
 	sleep(20)
 	human.make_jittery(500)
 	sleep(30)
 	if(human && human.loc)
 		if(human.stat == DEAD)
 			human.revive(TRUE)
+			human.remove_language(LANGUAGE_ENGLISH) // You lose the ability to understand english. Language processing is handled in the mind not the body.
 			var/datum/species/zombie/zombie_species = GLOB.all_species[SPECIES_ZOMBIE]
 			zombie_species.handle_alert_ghost(human)
 		playsound(human.loc, 'sound/hallucinations/wail.ogg', 25, 1)
@@ -117,11 +119,12 @@
 
 
 /obj/item/weapon/zombie_claws
+	gender = PLURAL
 	name = "claws"
 	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
 	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
-	force = 40
+	force = MELEE_FORCE_TIER_6 //slightly higher than normal
 	w_class = SIZE_MASSIVE
 	sharp = 1
 	attack_verb = list("slashed", "torn", "scraped", "gashed", "ripped")
@@ -132,10 +135,11 @@
 		return FALSE
 
 	. = ..()
-	if(.)
-		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
+	if(!.)
+		return FALSE
+	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-	if(isHumanStrict(target))
+	if(ishuman_strict(target))
 		var/mob/living/carbon/human/human = target
 
 		if(locate(/datum/disease/black_goo) in human.viruses)
@@ -146,10 +150,7 @@
 				target.AddDisease(new /datum/disease/black_goo)
 				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
 
-	if(isSynth(target))
-		target.Slow(2)
-	else
-		target.Superslow(2) // Make them slower
+	target.apply_effect(2, SLOW)
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(get_dist(src, O) > 1)
@@ -210,21 +211,31 @@
 	. = ..()
 	reagents.add_reagent("antiZed", 30)
 
+/obj/item/reagent_container/glass/bottle/labeled_black_goo_cure
+	name = "\"Pathogen\" cure bottle"
+	desc = "The bottle has a biohazard symbol on the front, and has a label, designating its use against Agent A0-3959X.91–15, colloquially known as the \"Black Goo\"."
+	icon_state = "bottle20"
+
+/obj/item/reagent_container/glass/bottle/labeled_black_goo_cure/Initialize()
+	. = ..()
+	reagents.add_reagent("antiZed", 60)
+
 /datum/language/zombie
 	name = "Zombie"
-	desc = "If you select this from the language screen, expect a ban."
-	colour = "zombie"
-
-	speech_verb = "groans"
-	ask_verb = "groans"
-	exclaim_verb = "groans"
-
-	key = "4"
+	desc = "A growling, guttural method of communication, only Zombies seem to be capable of producing these sounds."
+	speech_verb = "growls"
+	ask_verb = "grumbles"
+	exclaim_verb = "snarls"
+	color = "monkey"
+	key = "h"
 	flags = RESTRICTED
 
+/datum/language/zombie/scramble(input)
+	return pick("Urrghh...", "Rrraaahhh...", "Aaaarghhh...", "Mmmrrrgggghhh...", "Huuuuhhhh...", "Sssssgrrrr...")
 
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"
+	gender = PLURAL
 	icon_state = "stub"
 	item_state = "BLANK"
 	w_class = SIZE_SMALL

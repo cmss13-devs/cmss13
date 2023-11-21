@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/spritesheet
 	_abstract = /datum/asset/spritesheet
 	var/name
-	var/list/sizes = list()    // "32x32" -> list(10, icon/normal, icon/stripped)
+	var/list/sizes = list() // "32x32" -> list(10, icon/normal, icon/stripped)
 	var/list/sprites = list()  // "foo_bar" -> list("32x32", 5)
 
 /datum/asset/spritesheet/register()

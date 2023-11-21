@@ -96,3 +96,12 @@ export const numberOfDecimalDigits = (value) => {
   }
   return 0;
 };
+
+/**
+ * Adds zeros in front until the value.length == digits.
+ *
+ * For example: addZeros(67, 5) returns 00067.
+ */
+export const addZeros = function (value, digits) {
+  return String(value).padStart(digits, '0');
+};

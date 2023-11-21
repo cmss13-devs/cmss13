@@ -27,17 +27,17 @@
 	mode = new /datum/buildmode_mode/basic(src)
 	holder = c
 	buttons = list()
-	li_cb = CALLBACK(src, .proc/post_login)
+	li_cb = CALLBACK(src, PROC_REF(post_login))
 	holder.player_details.post_login_callbacks += li_cb
 	holder.show_popup_menus = FALSE
 	create_buttons()
-	holder.screen += buttons
+	holder.add_to_screen(buttons)
 	holder.click_intercept = src
 	mode.enter_mode(src)
 
 /datum/buildmode/proc/quit()
 	mode.exit_mode(src)
-	holder.screen -= buttons
+	holder.remove_from_screen(buttons)
 	holder.click_intercept = null
 	holder.show_popup_menus = TRUE
 	qdel(src)
@@ -53,7 +53,7 @@
 
 /datum/buildmode/proc/post_login()
 	// since these will get wiped upon login
-	holder?.screen += buttons
+	holder?.add_to_screen(buttons)
 	// re-open the according switch mode
 	switch(switch_state)
 		if(BM_SWITCHSTATE_MODE)
@@ -103,11 +103,11 @@
 
 /datum/buildmode/proc/open_modeswitch()
 	switch_state = BM_SWITCHSTATE_MODE
-	holder.screen += modeswitch_buttons
+	holder.add_to_screen(modeswitch_buttons)
 
 /datum/buildmode/proc/close_modeswitch()
 	switch_state = BM_SWITCHSTATE_NONE
-	holder.screen -= modeswitch_buttons
+	holder.remove_from_screen(modeswitch_buttons)
 
 /datum/buildmode/proc/toggle_dirswitch()
 	if(switch_state == BM_SWITCHSTATE_DIR)
@@ -118,11 +118,11 @@
 
 /datum/buildmode/proc/open_dirswitch()
 	switch_state = BM_SWITCHSTATE_DIR
-	holder.screen += dirswitch_buttons
+	holder.add_to_screen(dirswitch_buttons)
 
 /datum/buildmode/proc/close_dirswitch()
 	switch_state = BM_SWITCHSTATE_NONE
-	holder.screen -= dirswitch_buttons
+	holder.remove_from_screen(dirswitch_buttons)
 
 /datum/buildmode/proc/change_mode(newmode)
 	mode.exit_mode(src)
@@ -150,6 +150,7 @@
 		if(istype(M.client.click_intercept, /datum/buildmode))
 			var/datum/buildmode/B = M.client.click_intercept
 			B.quit()
+			message_admins("[key_name(usr)] has left build mode.")
 			log_admin("[key_name(usr)] has left build mode.")
 		else
 			new /datum/buildmode(M.client)

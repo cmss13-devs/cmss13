@@ -17,10 +17,10 @@
 		/obj/structure/machinery/computer/objective,
 		/obj/item/limb/head/synth,
 	)
+	var/detect_empty_vial_boxes = FALSE
 
-/obj/item/device/motiondetector/get_examine_text(mob/user)
-	. = ..()
-	. += SPAN_INFO("Green indicators on your HUD will show the location of intelligence objects detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("(14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")].")
+/obj/item/device/motiondetector/intel/get_help_text()
+	. = "Green indicators on your HUD will show the location of intelligence objects detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("(14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")]."
 
 /obj/item/device/motiondetector/intel/update_icon()
 	if (active)
@@ -43,10 +43,16 @@
 		var/detected
 		for(var/DT in objects_to_detect)
 			if(istype(I, DT))
+				if(!detect_empty_vial_boxes && istype(I, /obj/item/storage/fancy/vials/random))
+					if(!I.contents)
+						continue
 				detected = TRUE
 			if(I.contents)
 				for(var/obj/item/CI in I.contents)
 					if(istype(CI, DT))
+						if(!detect_empty_vial_boxes && istype(I, /obj/item/storage/fancy/vials/random))
+							if(!I.contents)
+								continue
 						detected = TRUE
 						break
 			if(human_user && detected)
@@ -64,12 +70,15 @@
 		if(loc == null || M == null) continue
 		if(loc.z != M.z) continue
 		if(M == loc) continue //device user isn't detected
-		if((isXeno(M) || isYautja(M)) && M.stat == DEAD )
+		if((isxeno(M) || isyautja(M)) && M.stat == DEAD )
 			detected = TRUE
 		else if(ishuman(M) && M.stat == DEAD && M.contents.len)
 			for(var/obj/I in M.contents_twice())
 				for(var/DT in objects_to_detect)
 					if(istype(I, DT))
+						if(!detect_empty_vial_boxes && istype(I, /obj/item/storage/fancy/vials/random))
+							if(!I.contents)
+								continue
 						detected = TRUE
 						break
 				if(detected)

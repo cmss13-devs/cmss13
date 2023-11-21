@@ -8,7 +8,7 @@
 
 	var/techs_to_unlock = 0
 
-/datum/tech/transitory/check_tier_level(var/mob/M)
+/datum/tech/transitory/check_tier_level(mob/M)
 	if(before && before != holder.tier.type)
 		to_chat(M, SPAN_WARNING("You can't unlock this node!"))
 		return
@@ -83,6 +83,25 @@
 	flags = TREE_FLAG_XENO
 
 /datum/tech/transitory/tier3/marine
+	techs_to_unlock = 0
+	required_points = 5
+
+	flags = TREE_FLAG_MARINE
+
+/datum/tech/transitory/tier4
+	name = "Unlock Tier 4"
+	tier = /datum/tier/three_transition_four
+
+	before = /datum/tier/three
+	next = /datum/tier/four
+
+/datum/tech/transitory/tier4/xeno
+	techs_to_unlock = 0
+	required_points = 5
+
+	flags = TREE_FLAG_XENO
+
+/datum/tech/transitory/tier4/marine
 	techs_to_unlock = 0
 	required_points = 5
 

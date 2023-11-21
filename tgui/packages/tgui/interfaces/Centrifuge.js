@@ -8,7 +8,7 @@ export const Centrifuge = (_props, context) => {
   return (
     <Window width={300} height={270} theme="weyland">
       <Window.Content scrollable>
-        <Section title="Pod controls">
+        <Section title="Centrifuge controls">
           <Flex direction="column">
             <Flex.Item>
               Label :{' '}
@@ -22,6 +22,7 @@ export const Centrifuge = (_props, context) => {
                   })
                 }
               />
+              <Box height="10px" />
             </Flex.Item>
             <Flex.Item>
               <Button

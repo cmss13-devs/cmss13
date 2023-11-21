@@ -4,10 +4,7 @@
 #define BSQL_IS_DELETED(obj) (QDELETED(obj))
 
 #ifndef TESTING
-#define BSQL_PROTECT_DATUM(path) \
-##path/is_datum_protected(){\
-    return TRUE;\
-}
+#define BSQL_PROTECT_DATUM(path) GENERAL_PROTECT_DATUM(path)
 #else
 #define BSQL_PROTECT_DATUM(path)
 #endif

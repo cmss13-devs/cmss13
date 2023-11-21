@@ -24,12 +24,8 @@
 /tools/docker/ @Fira
 /Dockerfile @Fira
 
-# Stan_Albatross
+# Zonespace
 
-/code/modules/projectiles/guns/lever_action.dm @stanalbatross
-/code/game/objects/items/backpack_sprayers.dm @stanalbatross
-/code/game/objects/items/tools/experimental_tools.dm @stanalbatross
+/code/modules/gear_presets/survivors.dm @zonespace27
 
 # MULTIPLE OWNERS
-/icons/ @Agameofscones @Monkeysfist101 @nauticall
-/maps/ @Agameofscones @nauticall @Nanu308

@@ -10,14 +10,14 @@
 	var/z_level
 
 	/// Don't divide further when truthy
-	var/final
+	var/final_divide = FALSE
 
 /datum/quadtree/New(datum/shape/rectangle/rect, z)
 	. = ..()
 	boundary = rect
 	z_level = z
 	if(boundary.width <= QUADTREE_BOUNDARY_MINIMUM_WIDTH || boundary.height <= QUADTREE_BOUNDARY_MINIMUM_HEIGHT)
-		final = TRUE
+		final_divide = TRUE
 
 // By design i guess, discarding branch discards rest with BYOND soft-GCing
 // There should never be anything else but SSquadtree referencing quadtrees,
@@ -81,7 +81,7 @@
 			&& coords.y_pos >= center_y - height /2  \
 			&& coords.y_pos <= center_y + height / 2)
 
-/datum/shape/rectangle/proc/contains_atom(var/atom/A)
+/datum/shape/rectangle/proc/contains_atom(atom/A)
 	return (A.x >= center_x - width / 2  \
 			&& A.x <= center_x + width / 2 \
 			&& A.y >= center_y - height /2  \
@@ -103,7 +103,7 @@
 		player_coords = list(p_coords)
 		return TRUE
 
-	else if(!final && player_coords.len >= QUADTREE_CAPACITY)
+	else if(!final_divide && player_coords.len >= QUADTREE_CAPACITY)
 		if(!is_divided)
 			subdivide()
 		if(nw_branch.insert_player(p_coords))

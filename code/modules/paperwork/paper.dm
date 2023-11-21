@@ -3,31 +3,38 @@
  * also scraps of paper
  */
 
+#define MAX_FIELDS 51
+
 /obj/item/paper
 	name = "paper"
 	gender = PLURAL
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
-	pickupsound = 'sound/handling/paper_pickup.ogg'
-	dropsound = 'sound/handling/paper_drop.ogg'
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST
 	flags_equip_slot = SLOT_HEAD
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
+	ground_offset_x = 9
+	ground_offset_y = 8
 
-	var/info		//What's actually written on the paper.
-	var/info_links	//A different version of the paper which includes html links at fields and EOF
-	var/stamps		//The (text for the) stamps on the paper.
-	var/fields		//Amount of user created fields
+	var/info //What's actually written on the paper.
+	var/info_links //A different version of the paper which includes html links at fields and EOF
+	var/stamps //The (text for the) stamps on the paper.
+	var/fields //Amount of user created fields
 	var/list/stamped
-	var/ico[0]      //Icons and
+	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
 	var/rigged = 0
 	var/spam_flag = 0
+
+	// any photos that might be attached to the paper
+	var/list/photo_list
 
 	var/deffont = "Verdana"
 	var/signfont = "Times New Roman"
@@ -35,11 +42,10 @@
 
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
-/obj/item/paper/Initialize()
+/obj/item/paper/Initialize(mapload, photo_list)
 	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 	stamps = ""
+	src.photo_list = photo_list
 
 	if(info != initial(info))
 		info = html_encode(info)
@@ -50,7 +56,7 @@
 	updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune")
+	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune" || icon_state == "paper_flag")
 		return
 	if(info)
 		if(icon_state == "paper_wy")
@@ -59,29 +65,36 @@
 		if(icon_state == "paper_uscm")
 			icon_state = "paper_uscm_words"
 			return
+		if(icon_state == "paper_flag")
+			icon_state = "paper_flag_words"
+			item_state = "paper_flag"
+			return
 		icon_state = "paper_words"
 		return
 	icon_state = "paper"
 
 /obj/item/paper/get_examine_text(mob/user)
-//	..()	//We don't want them to see the dumb "this is a paper" thing every time.
-// I didn't like the idea that people can read tiny pieces of paper from across the room.
-// Now you need to be next to the paper in order to read it.
+	. = ..()
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
-			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
+			if(photo_list)
+				for(var/photo in photo_list)
+					user << browse_rsc(photo_list[photo], photo)
+			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name, "size=650x700")
 			onclose(user, name)
 		else
 			read_paper(user)
 	else
-		return list(SPAN_NOTICE("It is too far away."))
+		. += SPAN_NOTICE("It is too far away.")
 
 /obj/item/paper/proc/read_paper(mob/user)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
 	asset_datum.send(user)
-
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
+	if(photo_list)
+		for(var/photo in photo_list)
+			user << browse_rsc(photo_list[photo], photo)
+	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name, "size=650x700")
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -98,9 +111,9 @@
 
 /obj/item/paper/attack_self(mob/living/user)
 	..()
-	examine(user)
+	read_paper(user)
 
-/obj/item/paper/attack_remote(var/mob/living/silicon/ai/user as mob)
+/obj/item/paper/attack_remote(mob/living/silicon/ai/user as mob)
 	var/dist
 	if(istype(user) && user.camera) //is AI
 		dist = get_dist(src, user.camera)
@@ -129,19 +142,19 @@
 				H.update_body()
 			else
 				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
-								 	 SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
-				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//user needs to keep their active hand, H does not.
+									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
+				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //user needs to keep their active hand, H does not.
 					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
-										 SPAN_NOTICE("You wipe off [H]'s face paint."))
+										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
 
-/obj/item/paper/get_vv_options()
+/obj/item/paper/vv_get_dropdown()
 	. = ..()
 	. += "<option value>-----PAPER-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];customise_paper=\ref[src]'>Customise content</option>"
 
-/obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
+/obj/item/paper/proc/addtofield(id, text, links = 0)
 	var/locid = 0
 	var/laststart = 1
 	var/textindex = 1
@@ -185,7 +198,7 @@
 
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
-	for(var/i=1,  i<=min(fields, 15), i++)
+	for(var/i=1,  i<=min(fields, MAX_FIELDS), i++)
 		addtofield(i, "<font face=\"[deffont]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
 
@@ -199,7 +212,9 @@
 	update_icon()
 
 
-/obj/item/paper/proc/parsepencode(var/t, var/obj/item/tool/pen/P, mob/user as mob, var/iscrayon = 0)
+/obj/item/paper/proc/parsepencode(t, obj/item/tool/pen/P, mob/user as mob, iscrayon = 0)
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+
 	t = replacetext(t, "\[center\]", "<center>")
 	t = replacetext(t, "\[/center\]", "</center>")
 	t = replacetext(t, "\[br\]", "<BR>")
@@ -238,9 +253,11 @@
 		t = replacetext(t, "\[/grid\]", "</td></tr></table>")
 		t = replacetext(t, "\[row\]", "</td><tr>")
 		t = replacetext(t, "\[cell\]", "<td>")
-		t = replacetext(t, "\[logo\]", "<img src = wylogo.png>")
-		t = replacetext(t, "\[wy\]", "<img src = wylogo.png>")
-		t = replacetext(t, "\[uscm\]", "<img src = uscmlogo.png>")
+		t = replacetext(t, "\[logo\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
+		t = replacetext(t, "\[wy\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
+		t = replacetext(t, "\[uscm\]", "<img src = [asset.get_url_mappings()["uscmlogo.png"]]>")
+		t = replacetext(t, "\[upp\]", "<img src = [asset.get_url_mappings()["upplogo.png"]]>")
+		t = replacetext(t, "\[cmb\]", "<img src = [asset.get_url_mappings()["cmblogo.png"]]>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
@@ -258,7 +275,7 @@
 
 		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
 
-//	t = replacetext(t, "#", "") // Junk converted to nothing!
+// t = replacetext(t, "#", "") // Junk converted to nothing!
 
 //Count the fields
 	var/laststart = 1
@@ -267,7 +284,8 @@
 		if(i==0)
 			break
 		laststart = i+1
-		fields = min(fields+1, 20)
+		fields = min(fields+1, MAX_FIELDS)
+		//NOTE: The max here will include the auto-created field when hitting a paper with a pen. So it should be [your_desired_number]+1.
 	return t
 
 
@@ -326,6 +344,10 @@
 	if(!usr || (usr.stat || usr.is_mob_restrained()))
 		return
 
+	if(usr.client.prefs.muted & MUTE_IC)
+		to_chat(usr, SPAN_DANGER("You cannot write on paper (muted)."))
+		return
+
 	if(href_list["write"])
 		var/id = href_list["write"]
 		var/t =  stripped_multiline_input(usr, "Enter what you want to write:", "Write", "", MAX_MESSAGE_LEN)
@@ -334,7 +356,7 @@
 
 		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		var/iscrayon = 0
-		if(!istype(i, /obj/item/tool/pen))
+		if(!HAS_TRAIT(i, TRAIT_TOOL_PEN))
 			if(!istype(i, /obj/item/toy/crayon))
 				return
 			iscrayon = 1
@@ -356,13 +378,10 @@
 		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 
 		update_icon()
-
+		playsound(src, "paper_writing", 15, TRUE)
 
 /obj/item/paper/attackby(obj/item/P, mob/user)
 	..()
-	var/clown = 0
-	if(user.mind && (user.job == "Clown"))
-		clown = 1
 
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/photo))
 		if (istype(P, /obj/item/paper/carbon))
@@ -384,8 +403,8 @@
 		B.attach_doc(P, user, TRUE)
 		user.put_in_hands(B)
 
-	else if(istype(P, /obj/item/tool/pen) || istype(P, /obj/item/toy/crayon))
-		if(istype(P, /obj/item/tool/pen))
+	else if(HAS_TRAIT(P, TRAIT_TOOL_PEN) || istype(P, /obj/item/toy/crayon))
+		if(HAS_TRAIT(P, TRAIT_TOOL_PEN))
 			var/obj/item/tool/pen/p = P
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
@@ -402,11 +421,12 @@
 			return
 
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
+		playsound(src, 'sound/effects/alien_footstep_medium3.ogg', 20, TRUE, 6)
 
 		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 		var/x
 		var/y
-		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/centcomm))
+		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/weyyu))
 			x = rand(-2, 0)
 			y = rand(-1, 2)
 		else
@@ -416,11 +436,6 @@
 		offset_y += y
 		stampoverlay.pixel_x = x
 		stampoverlay.pixel_y = y
-
-		if(istype(P, /obj/item/tool/stamp/clown))
-			if(!clown)
-				to_chat(user, SPAN_NOTICE("You are totally unable to use the stamp. HONK!"))
-				return
 
 		if(!ico)
 			ico = new
@@ -490,9 +505,12 @@
 	info = "<B>Hello USCM Orbital Cannon System Owner!</B><BR><BR>We regret to inform you that a communications mishap has resulted in your orbital bombardment warheads being recycled for spare metal! Worry not, the metal has been put to good use in High Command's chest freezer."
 
 /obj/item/paper/flag
-	icon_state = "flag_neutral"
-	item_state = "paper"
-	anchored = 1.0
+	name = "paper flag"
+	desc = "Somebody crudely glued a piece of paper to a stick. You feel like waving it around like an idiot."
+	icon_state = "paper_flag"
+	item_state = "paper_flag"
+
+	anchored = TRUE
 
 /obj/item/paper/jobs
 	name = "Job Information"
@@ -501,7 +519,7 @@
 /obj/item/paper/photograph
 	name = "photo"
 	icon_state = "photo"
-	var/photo_id = 0.0
+	var/photo_id = 0
 	item_state = "paper"
 
 /obj/item/paper/sop
@@ -537,12 +555,15 @@
 	name = "paper= 'Captain's log'"
 	info = "<p>We found him.</p><p>His location, anyway. Figures that he'd end up in the Fop, given our reputation.</p><p>As good an escape artist he is, he ain't getting out by himself. Too many security measures, and no way off without a ship. They're prepared for anything coming from inside.</p><p>They AREN'T prepared for a \"tramp freighter\" ramming straight through their hull.</p><p>Hang tight, Jack. We're coming for you."
 
+/obj/item/paper/prison_station/pirate_note/clfship
+	info = "<p>We're hit!</p><p>MAYDAY! MAYDAY! We have been hit by the -... .</p><p>We're on a planet somewhere, seems there is a colony to our south. Might head on over there and see if there is any USCM presence. Our ship is fucking busted beyond normal means of repair, still waiting for a damage assessment tho.</p><p>Coby and Ryan died today from their wounds... \"Fucking USCM.\" I'll have my revenge someday...</p><p>And the colonies will be freed one day from the oppressive regime of Wey-Yu and USCM henchmen."
+
 /obj/item/paper/prison_station/nursery_rhyme
 	info = "<p>Mary had a little lamb,<BR>\nits fleece was white as snow;<BR>\nAnd everywhere that Mary went,<BR>\nthe lamb was sure to go.</p><p>It followed her to school one day,<BR>\nwhich was against the rule;<BR>\nIt made the children laugh and play,<BR>\nto see a lamb at school.</p><p>And so the teacher turned it out,<BR>\nbut still it lingered near,<BR>\nAnd waited patiently about,<BR>\ntill Mary did appear.</p><p>\"Why does the lamb love Mary so?\"<BR>\nthe eager children cry;<BR>\n\"Why, Mary loves the lamb, you know\",<BR>\nthe teacher did reply."
 
 /obj/item/paper/lv_624/cheese
-	name = "paper= 'Note on the contents of the armoury'"
-	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshall"
+	name = "paper= 'Note on the contents of the armory'"
+	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armory for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshal Johnson"
 
 /obj/item/paper/bigred/walls
 	name = "crumpled note"
@@ -580,6 +601,15 @@
 	color = "green"
 	info =  "<p> I could not do it, the fucking marshals, the minions of THEM, have gotten a whiff of my co-workers plans and started raiding us pre-emptively. We managed to get word of it and erected a few barricades to slow them down, but it is too late. Our plan, my plan to save humanity has turned to dust. </p> As I lay and write this, they are gassing the entire area with tear gas, while gunshots echo around the caves. \n  They have gotten to my mind already, their voices are... laughing, saying that, \" it's over \" and that \n “we have risen\". Their voices are mocking me as I could do nothing to prevent their rise \n Just as I am about to finish my final entry, I overhear a few panicked radio calls from a dead officer's radio, about a code red lambda breach, and \" X-RAYS OUT OF CONTAINMENT\". \n However, not a single one of their cries has been met with a response as their fellow officers are too preoccupied with beating up poor miners... \n <b> They have won.... they have PLANNED THIS all along.... </b> \n only God may save us now..."
 
+/obj/item/paper/bigred/upp
+	name = "UPP Orders"
+
+/obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center> <img src = [asset.get_url_mappings()["upplogo.png"]]> <br> <b><small>Union Of Progressive People's Fourth Fleet</b></small> <br> <b><large>Orders For 173rd Airborne Reconnaissance: 2nd Platoon</large></b> <br> <small>No.52</small></center> <hr> <b>Order of Military Officer of the UPP</b><br><b>Kolonel <redacted> Ganbaatar </b><br><b>Commander of MV-35</b> <br> Date: 2182 <br> <b><large>On Special Mission<large></b>  <hr>  The actions of the hostile Weyland-Yutani corporation on the fringes of the Neroid sector have grown increasingly intolerable. However, evidence suggesting they are researching into the creation and deployment of some form of biological weapons program represent an unacceptable risk to the security of UPP interests in this sector. The risk of these items falling into UA/USCM hands is unacceptable. <br><br> Orders for the Boris squad of the 173rd Airborne Recon are as follows. Initiate airborne reconnaissance of WY colony Oxley's Buttle, Trijent Dam, location on planet Raijin  (UA Code: LV-670). Ascertain veracity of onsight biological weapons program. If positive confirmation of the weapons program is identified, authorization for rapid assault and recovery is granted. Avoid all contact with UA/USCM military forces, abort missions if UA/USCM forces are encountered. <hr><center><b>Authorizing Officer: Gaanbatar</b><br>Name and Rank: Kolonel </center>  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
+
 /obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "scrap"
@@ -595,11 +625,21 @@
 
 /obj/item/paper/wy
 	icon_state = "paper_wy"
-	info = "<center><img src = wylogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/wy/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/uscm
 	icon_state = "paper_uscm"
-	info = "<center><img src = uscmlogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/uscm/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center><img src = [asset.get_url_mappings()["uscmlogo.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"
@@ -631,17 +671,19 @@
 			if(note_type == "test")
 				random_chem = pick(chemical_gen_classes_list["T4"])
 			else
-				random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
+				random_chem = pick( prob(55);pick(chemical_gen_classes_list["T2"]),
 									prob(30);pick(chemical_gen_classes_list["T3"]),
 									prob(15);pick(chemical_gen_classes_list["T4"]))
 		if(!random_chem)
 			random_chem = pick(chemical_gen_classes_list["T1"])
 		C = chemical_reagents_list["[random_chem]"]
-	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	var/txt = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
 			name = "Synthesis of [C.name]"
+			icon_state = "paper_wy_partial_report"
 			txt += "[name] </H2></center>"
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in G.required_reagents)
@@ -657,6 +699,7 @@
 			if(full_report)
 				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
 				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
+				icon_state = "paper_wy_full_report"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			var/is_volatile = FALSE
@@ -672,12 +715,14 @@
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("test")
 			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
+			icon_state = "paper_wy_synthesis"
 			txt += "Note for [name]</H2></center>"
 			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("grant")
 			if(!grant)
 				grant = rand(2,4)
+			icon_state = "paper_wy_grant"
 			name = "Research Grant"
 			txt += "Weyland-Yutani Research Grant</H2></center>"
 			txt += "Dear valued researcher. Weyland-Yutani has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weyland-Yutani research data terminal to receive the benefits.<BR>\n"
@@ -737,7 +782,7 @@
 	chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
-	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] [ADMIN_JMP(loc)].")
 	. = ..()
 
 /obj/item/paper/research_notes/grant
@@ -752,7 +797,7 @@
 	var/datum/reagent/data
 	var/completed = FALSE
 
-/obj/item/paper/research_report/proc/generate(var/datum/reagent/S, var/info_only = FALSE)
+/obj/item/paper/research_report/proc/generate(datum/reagent/S, info_only = FALSE)
 	if(!S)
 		return
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
@@ -764,25 +809,30 @@
 			info += "<BR>Overdoses at: [S.overdose] units\n"
 			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 			completed = TRUE
+			icon_state = "paper_wy_full_report"
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
+			icon_state = "paper_wy_partial_report"
 	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
+		icon_state = "paper_wy_partial_report"
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"
 		info += "<BR>Standard duration multiplier: [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 		completed = TRUE
+		icon_state = "paper_wy_full_report"
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
-	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id] && !info_only)
+		icon_state = "paper_wy_synthesis"
+	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
 	if(chemical_reactions_list[S.id])
 		var/datum/chemical_reaction/C = chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id] && !info_only)
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 			else
@@ -793,7 +843,7 @@
 				info += "<BR>Reaction would require the following catalysts:<BR>\n"
 				for(var/I in C.required_catalysts)
 					var/datum/reagent/R = chemical_reagents_list["[I]"]
-					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id] && !info_only)
+					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
 						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 						completed = FALSE
 					else
@@ -837,7 +887,7 @@
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
 
-/obj/item/paper/fingerprint/Initialize(mapload, var/list/prints)
+/obj/item/paper/fingerprint/Initialize(mapload, list/prints)
 	. = ..()
 	var/template = {"\[center\]\[logo\]\[/center\]"}
 
@@ -855,3 +905,15 @@
 		\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
+#undef MAX_FIELDS
+
+/obj/item/paper/colonial_grunts
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "paper_stack_words"
+	name = "Colonial Space Grunts"
+	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
+
+/obj/item/paper/colonial_grunts/Initialize(mapload, ...)
+	. = ..()
+	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
+	update_icon()

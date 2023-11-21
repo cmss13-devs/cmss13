@@ -1,13 +1,13 @@
 /obj/structure/machinery/hydro_floodlight_switch
 	name = "Biodome Floodlight Switch"
-	icon = 'icons/turf/ground_map.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	var/ispowered = FALSE
 	var/turned_on = 0 //has to be toggled in engineering
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/list/floodlist = list() // This will save our list of floodlights on the map
@@ -18,6 +18,13 @@
 		floodlist += F
 		F.fswitch = src
 	start_processing()
+
+/obj/structure/machinery/hydro_floodlight_switch/Destroy()
+	for(var/obj/structure/machinery/hydro_floodlight/floodlight as anything in floodlist)
+		floodlight.fswitch = null
+	floodlist = null
+	return ..()
+
 
 /obj/structure/machinery/hydro_floodlight_switch/process()
 	var/lightpower = 0
@@ -53,9 +60,9 @@
 
 		spawn(rand(0,50))
 			if(F.is_lit) //Shut it down
-				F.SetLuminosity(0)
+				F.set_light(0)
 			else
-				F.SetLuminosity(F.lum_value)
+				F.set_light(F.lum_value)
 			F.is_lit = !(F.is_lit)
 			F.update_icon()
 	return 0
@@ -78,20 +85,22 @@
 	name = "Biodome Floodlight"
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
 	icon_state = "flood_s_off"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	var/power_tick = 800 // power each floodlight takes up per process
-	use_power = 0 //It's the switch that uses the actual power, not the lights
+	use_power = USE_POWER_NONE //It's the switch that uses the actual power, not the lights
 	var/obj/structure/machinery/hydro_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
 	var/lum_value = 7
 
 /obj/structure/machinery/hydro_floodlight/Destroy()
-	SetLuminosity(0)
+	if(fswitch?.floodlist)
+		fswitch.floodlist -= src
+	fswitch = null
 	return ..()
 
 /obj/structure/machinery/hydro_floodlight/update_icon()
@@ -120,7 +129,7 @@
 				user.visible_message(SPAN_NOTICE("[user] finishes welding [src]'s damage."), \
 					SPAN_NOTICE("You finish welding [src]'s damage."))
 				if(is_lit)
-					SetLuminosity(lum_value)
+					set_light(lum_value)
 				update_icon()
 				return 1
 		else
@@ -141,7 +150,7 @@
 			to_chat(user, SPAN_WARNING("It's already damaged."))
 			return 0
 		else
-			if(isXenoLarva(user))
+			if(islarva(user))
 				return //Larvae can't do shit
 			if(user.get_active_hand())
 				to_chat(user, SPAN_WARNING("You need your claws empty for this!"))
@@ -151,7 +160,7 @@
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !damaged) //Not when it's already damaged.
 				if(!src) return 0
 				damaged = 1
-				SetLuminosity(0)
+				set_light(0)
 				user.visible_message(SPAN_DANGER("[user] slashes up [src]!"),
 				SPAN_DANGER("You slash up [src]!"))
 				playsound(src, 'sound/weapons/blade1.ogg', 25, 1)

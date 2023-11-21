@@ -3,9 +3,10 @@
 	desc = "A piece of headgear used in dangerous working conditions to protect the head. Comes with a built-in flashlight."
 	icon_state = "hardhat0_yellow"
 	item_state = "hardhat0_yellow"
-	var/brightness_on = 4 //luminosity when on
-	var/on = 0
+	light_range = 4
+	light_power = 2
 	var/hardhat_color = "yellow" //Determines used sprites: hardhat[on]_[hardhat_color]
+	var/toggleable = TRUE
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -18,46 +19,63 @@
 	siemens_coefficient = 0.9
 	flags_inventory = BLOCKSHARPOBJ
 
+	/// Can it be be broken by xenomorphs?
+	var/can_be_broken = TRUE
+	/// The sound it makes when broken by a xenomorph.
+	var/breaking_sound = 'sound/handling/click_2.ogg'
+
+/obj/item/clothing/head/hardhat/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/clothing/head/hardhat/update_icon()
+	. = ..()
+	if(light_on)
+		icon_state = "hardhat[light_on]_[hardhat_color]"
+		item_state = "hardhat[light_on]_[hardhat_color]"
+	else
+		icon_state = initial(icon_state)
+		item_state = initial(item_state)
+
 /obj/item/clothing/head/hardhat/attack_self(mob/user)
-	..()
+	. = ..()
+
+	if(!toggleable)
+		to_chat(user, SPAN_WARNING("You cannot toggle [src] on or off."))
+		return FALSE
 
 	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in [user.loc]") //To prevent some lighting anomalities.
+		to_chat(user, SPAN_WARNING("You cannot turn the light [light_on ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
+		return FALSE
+
+	turn_light(user, !light_on)
+
+/obj/item/clothing/head/hardhat/turn_light(mob/user, toggle_on)
+
+	. = ..()
+	if(. != CHECKS_PASSED)
 		return
-	on = !on
-	icon_state = "hardhat[on]_[hardhat_color]"
-	item_state = "hardhat[on]_[hardhat_color]"
 
-	if(on)	user.SetLuminosity(brightness_on, FALSE, src)
-	else	user.SetLuminosity(0, FALSE, src)
+	set_light_on(toggle_on)
+	if(user == loc)
+		user.update_inv_head()
 
-	if(ismob(loc))
-		var/mob/M = loc
-		M.update_inv_head()
+	for(var/datum/action/current_action as anything in actions)
+		current_action.update_button_icon()
 
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
+	update_icon()
 
-/obj/item/clothing/head/hardhat/pickup(mob/user)
-	if(on)
-		user.SetLuminosity(brightness_on, FALSE, src)
-		SetLuminosity(0)
-	..()
+/obj/item/clothing/head/hardhat/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	if(!can_be_broken)
+		return
 
-/obj/item/clothing/head/hardhat/dropped(mob/user)
-	if(on)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(brightness_on)
-	..()
+	if(turn_light(attacking_xeno, toggle_on = FALSE) != CHECKS_PASSED)
+		return
 
-/obj/item/clothing/head/hardhat/Destroy()
-	if(ismob(src.loc))
-		src.loc.SetLuminosity(0, FALSE, src)
-	else
-		SetLuminosity(0)
-	return ..()
+	if(!breaking_sound)
+		return
 
+	playsound(loc, breaking_sound, 25, 1)
 
 /obj/item/clothing/head/hardhat/orange
 	icon_state = "hardhat0_orange"
@@ -72,15 +90,15 @@
 	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ|COVERMOUTH|ALLOWINTERNALS|COVEREYES|BLOCKGASEFFECT|ALLOWREBREATH|ALLOWCPR
 	flags_heat_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
-	max_heat_protection_temperature = FIRE_HELMET_max_heat_protection_temperature
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROT
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/head/hardhat/white
 	icon_state = "hardhat0_white"
 	hardhat_color = "white"
 	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ
 	flags_heat_protection = BODY_FLAG_HEAD
-	max_heat_protection_temperature = FIRE_HELMET_max_heat_protection_temperature
+	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROT
 
 /obj/item/clothing/head/hardhat/dblue
 	icon_state = "hardhat0_dblue"

@@ -2,12 +2,12 @@
 
 ### This file contains a list of all the areas in your station. Format is as follows:
 
-/area/CATEGORY/OR/DESCRIPTOR/NAME 	(you can make as many subdivisions as you want)
-	name = "NICE NAME" 				(not required but makes things really nice)
-	icon = "ICON FILENAME" 			(defaults to areas.dmi)
-	icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
-	requires_power = 0 				(defaults to 1)
-	music = "music/music.ogg"		(defaults to "music/music.ogg")
+/area/CATEGORY/OR/DESCRIPTOR/NAME (you can make as many subdivisions as you want)
+	name = "NICE NAME" (not required but makes things really nice)
+	icon = "ICON FILENAME" (defaults to areas.dmi)
+	icon_state = "NAME OF ICON" (defaults to "unknown" (blank))
+	requires_power = 0 (defaults to 1)
+	music = "music/music.ogg" (defaults to "music/music.ogg")
 
 NOTE: there are two lists of areas in the end of this file: centcom and station itself. Please maintain these lists valid. --rastaf0
 
@@ -18,15 +18,17 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Space"
 	requires_power = 1
 	always_unpowered = 1
-	lighting_use_dynamic = 0
+	base_lighting_alpha = 255
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
 	temperature = TCMB
 	pressure = 0
 	flags_area = AREA_NOTUNNEL
-	test_exemptions = MAP_TEST_EXEMPTION_SPACE
 	weather_enabled = FALSE
+
+	//fix for issue https://github.com/cmss13-devs/cmss13/issues/2191
+	base_muffle = AREA_MUTED
 
 /area/engine
 	//ambience = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
@@ -37,7 +39,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	ceiling = CEILING_METAL
 
 /area/admin/droppod
-	lighting_use_dynamic = FALSE
+	base_lighting_alpha = 255
 
 /area/admin/droppod/holding
 	name = "\improper Admin Supply Drops Droppod"
@@ -50,13 +52,13 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "High Altitude"
 	icon_state = "blue"
 
-/area/start            // will be unused once kurper gets his login interface patch done
+/area/start // will be unused once kurper gets his login interface patch done
 	name = "start area"
 	icon_state = "start"
 	ceiling = CEILING_MAX
-	requires_power = 0
-	luminosity = 1
-	lighting_use_dynamic = 0
+	requires_power = FALSE
+	static_lighting = FALSE
+	base_lighting_alpha = 255
 	has_gravity = 1
 
 // === end remove
@@ -69,6 +71,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
+
+	base_lighting_alpha = 255	
 
 /area/centcom/control
 	name = "\improper abandoned  Centcom Control"
@@ -83,6 +87,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	flags_area = AREA_NOTUNNEL
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
+
+	base_lighting_alpha = 255
 
 /area/tdome/tdome1
 	name = "\improper abandoned  Thunderdome (Team 1)"

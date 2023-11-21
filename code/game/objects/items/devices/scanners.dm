@@ -145,10 +145,11 @@ FORENSIC SCANNER
 /obj/item/device/healthanalyzer/alien
 	name = "\improper YMX scanner"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "Tracker"
+	icon_state = "scanner"
 	item_state = "analyzer"
 	desc = "An alien design hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	alien = TRUE
+	black_market_value = 35
 
 /obj/item/device/analyzer
 	desc = "A hand-held environmental scanner which reports current gas levels."
@@ -377,7 +378,7 @@ FORENSIC SCANNER
 		to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
 	return
 
-/obj/item/device/demo_scanner/proc/scan(var/obj/O)
+/obj/item/device/demo_scanner/proc/scan(obj/O)
 	if(QDELETED(O.reagents))
 		return
 	if(O.reagents.reagent_list.len > 0)
@@ -401,3 +402,77 @@ FORENSIC SCANNER
 		printing.name = scan_name
 		printing.info = "Chemicals found: [dat]"
 		user.put_in_hands(printing)
+
+/obj/item/device/black_market_scanner
+	name = "suspicious device"
+	desc = "This is... seemingly a makeshift combination between an autopsy scanner, an ancient t-ray scanner, and some sort of robotic clamp, but you can see a lightbulb inside it. What the hell is this?"
+	icon_state = "mendoza_scanner"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT|CONDUCT
+	flags_equip_slot = SLOT_WAIST
+	throwforce = 5
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 20
+	matter = list("metal" = 60, "glass" = 30)
+
+/obj/item/device/black_market_scanner/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/device/black_market_scanner/update_icon(scan_value = 0, scanning = FALSE)
+	. = ..()
+	overlays.Cut()
+	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_flash")
+	if(scanning)
+		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_on")
+		switch(scan_value)
+			if(0)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_red")
+			if(1 to 15)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_orange")
+			if(15 to 20)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_yellow")
+			if(25 to 30)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_green")
+			if(35 to 49)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_cyan")
+			else
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_white")
+		addtimer(CALLBACK(src, PROC_REF(update_icon)), 1 SECONDS)
+	else
+		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_off")
+
+/obj/item/device/black_market_scanner/afterattack(atom/hit_atom, mob/user, proximity)
+	if(!proximity)
+		return
+	if(!ismovable(hit_atom))
+		return ..()
+	var/market_value = get_black_market_value(hit_atom)
+	if(isnull(market_value))
+		return ..()
+	market_value = POSITIVE(market_value)
+	user.visible_message(SPAN_WARNING("[user] presses a button on [src] and holds it over [hit_atom]..."), SPAN_WARNING("You scan [hit_atom]..."))
+	update_icon(market_value, TRUE)
+	playsound(user, 'sound/machines/twobeep.ogg', 15, TRUE)
+	to_chat(user, SPAN_NOTICE("You scan [hit_atom] and notice a reading on [src]'s pad, it says:<b> ITEM HAS [market_value] VALUE <b>"))
+
+/obj/item/device/black_market_hacking_device
+	name = "modified security access tuner"
+	desc = "A security access tuner with wires and electrical pins sticking out at odd angles. A handwritten label on the bottom says something about the ASRS system."
+	icon_state = "bm_hacker"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT
+	flags_equip_slot = SLOT_WAIST
+	inherent_traits = list(TRAIT_TOOL_BLACKMARKET_HACKER)
+
+/obj/item/device/cmb_black_market_tradeband
+	name = "\improper CMB Tradeband Compliance Device"
+	desc = "A device used to reset any tampering done to trading devices' signal range. Occasionally used to fix any signal chips damaged in an accident, but often for malpractice in trading. Use this with caution, as it will also reset any evidence of potential illicit trade. Created to fulfill a joint-organization requirement for CMB-ICC teams on the frontier, where tampered machinery was difficult to move and refurbish. Smugglers beware."
+	icon_state = "cmb_scanner"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT
+	flags_equip_slot = SLOT_WAIST
+	inherent_traits = list(TRAIT_TOOL_TRADEBAND)

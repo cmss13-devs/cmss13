@@ -1,5 +1,5 @@
 
-/datum/entity/player_entity/proc/setup_save(var/key)
+/datum/entity/player_entity/proc/setup_save(key)
 	if(key && !IsGuestKey(key))
 		load_path(lowertext(key))
 		load_statistics()
@@ -22,9 +22,9 @@
 
 	update_panel_data()
 
-	S["version"] 		<< savefile_version
-	S["xeno"]			<< data["xeno"]
-	S["human"]			<< data["human"]
+	S["version"] << savefile_version
+	S["xeno"] << data["xeno"]
+	S["human"] << data["human"]
 
 	return TRUE
 
@@ -41,13 +41,13 @@
 	if(S["version"] < PREFFILE_VERSION_MIN)
 		return FALSE
 
-	S["version"] 		>> savefile_version
+	S["version"] >> savefile_version
 
 	var/list/human_save = list()
 	var/list/xeno_save = list()
 
-	S["human"]			>> human_save
-	S["xeno"]			>> xeno_save
+	S["human"] >> human_save
+	S["xeno"] >> xeno_save
 
 	if(human_save)
 		setup_human_stats()

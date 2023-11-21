@@ -1,7 +1,7 @@
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
 
@@ -16,6 +16,7 @@
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
+	register_init_signals()
 	initialize_incision_depths()
 	initialize_pain()
 	initialize_stamina()
@@ -35,7 +36,7 @@
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
-/mob/living/proc/calculate_affecting_pressure(var/pressure)
+/mob/living/proc/calculate_affecting_pressure(pressure)
 	return
 
 /mob/living/proc/initialize_pain()
@@ -48,7 +49,7 @@
 	for(var/location in incision_depths)
 		incision_depths[location] = SURGERY_DEPTH_SURFACE
 
-/mob/living/proc/apply_stamina_damage(var/damage, var/def_zone, var/armor_type)
+/mob/living/proc/apply_stamina_damage(damage, def_zone, armor_type)
 	if(!stamina)
 		return
 
@@ -57,12 +58,12 @@
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
 	if(ishuman(src))
-		var/mob/living/carbon/human/H = src	//make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
+		var/mob/living/carbon/human/H = src //make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
 		var/divided_damage = (burn_amount)/(H.limbs.len)
-		var/extradam = 0	//added to when organ is at max dam
+		var/extradam = 0 //added to when organ is at max dam
 		for(var/obj/limb/affecting in H.limbs)
-			if(!affecting)	continue
-			if(affecting.take_damage(0, divided_damage+extradam))	//TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
+			if(!affecting) continue
+			if(affecting.take_damage(0, divided_damage+extradam)) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
 				H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
@@ -72,9 +73,9 @@
 
 /mob/living/proc/adjustBodyTemp(actual, desired, incrementboost)
 	var/temperature = actual
-	var/difference = abs(actual-desired)	//get difference
+	var/difference = abs(actual-desired) //get difference
 	var/increments = difference/10 //find how many increments apart they are
-	var/change = increments*incrementboost	// Get the amount to change by (x per increment)
+	var/change = increments*incrementboost // Get the amount to change by (x per increment)
 
 	// Too cold
 	if(actual < desired)
@@ -86,7 +87,7 @@
 		temperature -= change
 		if(actual < desired)
 			temperature = desired
-//	if(istype(src, /mob/living/carbon/human))
+// if(istype(src, /mob/living/carbon/human))
 	return temperature
 
 
@@ -95,43 +96,26 @@
 
 
 //Recursive function to find everything a mob is holding.
-/mob/living/get_contents(var/obj/item/storage/Storage = null)
-	var/list/L = list()
+/mob/living/get_contents(obj/passed_object, recursion = 0)
+	var/list/total_contents = list()
 
-	if(Storage) //If it called itself
-		L += Storage.return_inv()
+	if(passed_object)
+		if(recursion > 8)
+			debug_log("Recursion went long for get_contents() for [src] ending at the object [passed_object]. Likely object_one is holding object_two which is holding object_one ad naseum.")
+			return total_contents
 
-		//Leave this commented out, it will cause storage items to exponentially add duplicate to the list
-		//for(var/obj/item/storage/S in Storage.return_inv()) //Check for storage items
-		//	L += get_contents(S)
+		total_contents += passed_object.contents
 
-		for(var/obj/item/gift/G in Storage.return_inv()) //Check for gift-wrapped items
-			L += G.gift
-			if(isstorage(G.gift))
-				L += get_contents(G.gift)
+		for(var/obj/checked_object in total_contents)
+			total_contents += get_contents(checked_object, recursion + 1)
 
-		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
-			L += D.wrapped
-			if(isstorage(D.wrapped)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
+		return total_contents
 
-	else
+	total_contents += contents
+	for(var/obj/checked_object in total_contents)
+		total_contents += get_contents(checked_object, recursion + 1)
 
-		L += src.contents
-		for(var/obj/item/storage/S in src.contents)	//Check for storage items
-			L += get_contents(S)
-
-		for(var/obj/item/gift/G in src.contents) //Check for gift-wrapped items
-			L += G.gift
-			if(isstorage(G.gift))
-				L += get_contents(G.gift)
-
-		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
-			L += D.wrapped
-			if(isstorage(D.wrapped)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
+	return total_contents
 
 /mob/living/proc/check_contents_for(A)
 	var/list/L = src.get_contents()
@@ -216,7 +200,7 @@
 	if(pulledby && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()
 
-	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
+	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src)) //check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
 		s_active.storage_close(src)
 
 	// Check if we're still pulling something
@@ -258,7 +242,7 @@
 	if (drowsyness > 0)
 		. += 6
 
-	if(pulling && pulling.drag_delay && get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
+	if(pulling && pulling.drag_delay && get_pull_miltiplier()) //Dragging stuff can slow you down a bit.
 		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_miltiplier()
 
 		var/grab_level_delay = 0
@@ -294,14 +278,19 @@
 		if(grab_level == GRAB_CARRY)
 			return 0.1
 		else
-			return 1.0
+			return 1
 	else
 		return 0
 
 /mob/living/forceMove(atom/destination)
-	stop_pulling()
+	if(pulling)
+		var/pull_dist = get_dist(pulling, destination)
+		if(pulling.z != destination?.z || pull_dist < 0 || pull_dist > 1)
+			stop_pulling()
 	if(pulledby)
-		pulledby.stop_pulling()
+		var/pull_dist = get_dist(pulledby, destination)
+		if(pulledby.z != destination?.z || pull_dist < 0 || pull_dist > 1)
+			pulledby.stop_pulling()
 	if(buckled && destination != buckled.loc)
 		buckled.unbuckle()
 	. = ..()
@@ -345,9 +334,9 @@
 		now_pushing = FALSE
 		return
 
-	if(isXeno(L) && !isXenoLarva(L))
-		var/mob/living/carbon/Xenomorph/X = L
-		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isYautja(src))) // Small xenos can be pushed by other xenos or preds
+	if(isxeno(L) && !islarva(L))
+		var/mob/living/carbon/xenomorph/X = L
+		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src))) // Small xenos can be pushed by other xenos or preds
 			now_pushing = FALSE
 			return
 
@@ -400,7 +389,7 @@
 
 	..()
 
-/mob/living/launch_towards(var/datum/launch_metadata/LM)
+/mob/living/launch_towards(datum/launch_metadata/LM)
 	if(src)
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
 	if(!istype(LM) || !LM.target || !src || buckled)
@@ -412,7 +401,7 @@
 	. = ..()
 
 //to make an attack sprite appear on top of the target atom.
-/mob/living/proc/flick_attack_overlay(atom/target, attack_icon_state, var/duration = 4)
+/mob/living/proc/flick_attack_overlay(atom/target, attack_icon_state, duration = 4)
 	set waitfor = 0
 
 	if(!attack_icon)
@@ -447,7 +436,7 @@
 /mob/proc/flash_eyes()
 	return
 
-/mob/living/flash_eyes(intensity = 1, bypass_checks, type = /atom/movable/screen/fullscreen/flash, var/flash_timer = 40)
+/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, type = /atom/movable/screen/fullscreen/flash, flash_timer = 40)
 	if( bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
 		overlay_fullscreen("flash", type)
 		spawn(flash_timer)
@@ -465,3 +454,20 @@
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
 
+/mob/living/set_stat(new_stat)
+	. = ..()
+	if(isnull(.))
+		return
+	switch(.)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
+	switch(stat)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)
+
+/// Uses presence of [TRAIT_UNDENSE] to figure out what is the correct density state for the mob. Triggered by trait signal.
+/mob/living/proc/update_density()
+	if(HAS_TRAIT(src, TRAIT_UNDENSE))
+		set_density(FALSE)
+	else
+		set_density(TRUE)

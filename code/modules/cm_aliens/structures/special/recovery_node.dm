@@ -11,21 +11,21 @@
 
 /obj/effect/alien/resin/special/recovery/get_examine_text(mob/user)
 	. = ..()
-	if((isXeno(user) || isobserver(user)) && linked_hive)
+	if((isxeno(user) || isobserver(user)) && linked_hive)
 		. += "Recovers the health of adjacent Xenomorphs."
 
 /obj/effect/alien/resin/special/recovery/process()
 	if(last_healed && world.time < last_healed + heal_cooldown)
 		return
 	var/list/heal_candidates = list()
-	for(var/mob/living/carbon/Xenomorph/X in orange(src, 1))
+	for(var/mob/living/carbon/xenomorph/X in orange(src, 1))
 		if(X.health >= X.maxHealth || !X.resting || X.hivenumber != linked_hive.hivenumber)
 			continue
 		heal_candidates += X
 	last_healed = world.time
 	if(!heal_candidates.len)
 		return
-	var/mob/living/carbon/Xenomorph/picked_candidate = pick(heal_candidates)
+	var/mob/living/carbon/xenomorph/picked_candidate = pick(heal_candidates)
 	picked_candidate.visible_message(SPAN_HELPFUL("\The [picked_candidate] glows as a warm aura envelops them."), \
 				SPAN_HELPFUL("You feel a warm aura envelop you."))
 	if(!do_after(picked_candidate, heal_cooldown, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))

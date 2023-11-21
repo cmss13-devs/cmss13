@@ -1,28 +1,28 @@
-#define AIRLOCK_WIRE_MAIN_POWER     1
+#define AIRLOCK_WIRE_MAIN_POWER  1
 #define AIRLOCK_WIRE_BACKUP_POWER   2
-#define AIRLOCK_WIRE_DOOR_BOLTS     3
-#define AIRLOCK_WIRE_OPEN_DOOR      4
-#define AIRLOCK_WIRE_IDSCAN         5
-#define AIRLOCK_WIRE_LIGHT          6
-#define AIRLOCK_WIRE_SAFETY         7
-#define AIRLOCK_WIRE_SPEED          8
-#define AIRLOCK_WIRE_ELECTRIFY      9
+#define AIRLOCK_WIRE_DOOR_BOLTS  3
+#define AIRLOCK_WIRE_OPEN_DOOR   4
+#define AIRLOCK_WIRE_IDSCAN  5
+#define AIRLOCK_WIRE_LIGHT   6
+#define AIRLOCK_WIRE_SAFETY  7
+#define AIRLOCK_WIRE_SPEED   8
+#define AIRLOCK_WIRE_ELECTRIFY   9
 
 GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		AIRLOCK_WIRE_MAIN_POWER   = "Main power",
 		AIRLOCK_WIRE_BACKUP_POWER = "Backup power",
 		AIRLOCK_WIRE_DOOR_BOLTS   = "Door bolts",
-		AIRLOCK_WIRE_OPEN_DOOR    = "Door motors",
-		AIRLOCK_WIRE_IDSCAN       = "ID scanner",
-		AIRLOCK_WIRE_LIGHT        = "Bolt lights",
-		AIRLOCK_WIRE_SAFETY       = "Proximity sensor",
-		AIRLOCK_WIRE_SPEED        = "Motor speed override",
-		AIRLOCK_WIRE_ELECTRIFY    = "Ground safety"
+		AIRLOCK_WIRE_OPEN_DOOR = "Door motors",
+		AIRLOCK_WIRE_IDSCAN    = "ID scanner",
+		AIRLOCK_WIRE_LIGHT = "Bolt lights",
+		AIRLOCK_WIRE_SAFETY    = "Proximity sensor",
+		AIRLOCK_WIRE_SPEED = "Motor speed override",
+		AIRLOCK_WIRE_ELECTRIFY = "Ground safety"
 	))
 
 /obj/structure/machinery/door/airlock
 	name = "airlock"
-	icon = 'icons/obj/structures/doors/Doorint.dmi'
+	icon = 'icons/obj/structures/doors/Door1.dmi'
 	icon_state = "door_closed"
 	power_channel = POWER_CHANNEL_ENVIRON
 
@@ -48,7 +48,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	normalspeed = 1
 	var/obj/item/circuitboard/airlock/electronics = null
 	var/hasShocked = 0 //Prevents multiple shocks from happening
-	var/secured_wires = 0	//for mapping use
+	var/secured_wires = 0 //for mapping use
 
 	var/no_panel = 0 //the airlock has no panel that can be screwdrivered open
 	var/not_weldable = 0 // stops people welding the door if true
@@ -61,8 +61,23 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	var/announce_hacked = TRUE
 
+	//Resin constructions that will be SMUSHED by closing doors
+	var/static/list/resin_door_shmushereds = list(
+		/obj/effect/resin_construct/door,
+		/obj/structure/mineral_door/resin,
+		/obj/structure/bed/nest,
+		/obj/effect/alien/resin/spike,
+		/obj/effect/alien/resin/acid_pillar,
+		/obj/effect/alien/resin/shield_pillar,
+		/obj/item/explosive/grenade/alien/acid,
+		/obj/structure/alien/movable_wall,
+		/turf/closed/wall/resin,
+	)
+
 /obj/structure/machinery/door/airlock/Destroy()
 	QDEL_NULL_LIST(attached_signallers)
+	QDEL_NULL(closeOther)
+	QDEL_NULL(electronics)
 	return ..()
 
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
@@ -97,7 +112,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(masterkey_resist)
 		. += SPAN_INFO("It has been reinforced against breaching attempts.")
 
-/obj/structure/machinery/door/airlock/proc/take_damage(var/dam, var/mob/M)
+/obj/structure/machinery/door/airlock/proc/take_damage(dam, mob/M)
 	if(!dam || unacidable)
 		return FALSE
 
@@ -107,31 +122,28 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
-		destroy_airlock()
+		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
+		deconstruct(FALSE)
+		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 		return TRUE
 
 	return FALSE
 
-/obj/structure/machinery/door/airlock/proc/destroy_airlock()
-	if(!src || unacidable)
-		return
-	var/turf/T = get_turf(src)
-
-	to_chat(loc, SPAN_DANGER("[src] blows apart!"))
-	if(width == 1)
-		new /obj/item/stack/rods(T)
-		new /obj/item/stack/cable_coil/cut(T)
-		new /obj/effect/spawner/gibspawner/robot(T)
-		new /obj/effect/decal/cleanable/blood/oil(T)
-	else // big airlock, big debris
-		for(var/turf/DT in locs) // locs = covered by airlock bounding box
-			new /obj/item/stack/rods(DT)
-			new /obj/item/stack/cable_coil/cut(DT)
-			new /obj/effect/spawner/gibspawner/robot(DT)
-			new /obj/effect/decal/cleanable/blood/oil(DT)
-
-	playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
-	qdel(src)
+// no, i don't know why this provides stuff if you shoot it apart vs disassembling
+/obj/structure/machinery/door/airlock/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		if(width == 1)
+			new /obj/item/stack/rods(loc)
+			new /obj/item/stack/cable_coil/cut(loc)
+			new /obj/effect/spawner/gibspawner/robot(loc)
+			new /obj/effect/decal/cleanable/blood/oil(loc)
+		else // big airlock, big debris
+			for(var/turf/DT in locs) // locs = covered by airlock bounding box
+				new /obj/item/stack/rods(DT)
+				new /obj/item/stack/cable_coil/cut(DT)
+				new /obj/effect/spawner/gibspawner/robot(DT)
+				new /obj/effect/decal/cleanable/blood/oil(DT)
+	return ..()
 
 /obj/structure/machinery/door/airlock/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR
@@ -150,7 +162,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	else
 		return FALSE
 
-/obj/structure/machinery/door/airlock/bullet_act(var/obj/item/projectile/P)
+/obj/structure/machinery/door/airlock/bullet_act(obj/projectile/P)
 	bullet_ping(P)
 	if(P.damage)
 		if(P.ammo.flags_ammo_behavior & AMMO_ROCKET)
@@ -161,7 +173,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			return TRUE
 	return FALSE
 
-/obj/structure/machinery/door/airlock/proc/pulse(var/wire)
+/obj/structure/machinery/door/airlock/proc/pulse(wire)
 	switch(wire)
 		if(AIRLOCK_WIRE_IDSCAN)
 			//Sending a pulse through this flashes the red light on the door (if the door has power).
@@ -203,8 +215,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			//tries to open the door without ID
 			//will succeed only if the ID wire is cut or the door requires no access
 			if(!requiresID() || check_access(null))
-				if(density)	open()
-				else		close()
+				if(density) open()
+				else close()
 
 		if(AIRLOCK_WIRE_SAFETY)
 			safe = !safe
@@ -225,7 +237,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(AIRLOCK_WIRE_LIGHT)
 			lights = !lights
 
-/obj/structure/machinery/door/airlock/proc/cut(var/wire)
+/obj/structure/machinery/door/airlock/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -262,7 +274,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(AIRLOCK_WIRE_LIGHT)
 			lights = 0
 
-/obj/structure/machinery/door/airlock/proc/mend(var/wire)
+/obj/structure/machinery/door/airlock/proc/mend(wire)
 	wires |= getWireFlag(wire)
 
 	switch(wire)
@@ -297,10 +309,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/door/airlock/proc/isWireCut(var/wire)
+/obj/structure/machinery/door/airlock/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
-/obj/structure/machinery/door/airlock/proc/getAssembly(var/wire)
+/obj/structure/machinery/door/airlock/proc/getAssembly(wire)
 	for(var/signaller in attached_signallers)
 		if(wire == attached_signallers[signaller])
 			return signaller
@@ -369,7 +381,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(!arePowerSystemsOn())
 		return FALSE
 	if(hasShocked)
-		return FALSE	//Already shocked someone recently?
+		return FALSE //Already shocked someone recently?
 	if(..())
 		hasShocked = 1
 		sleep(10)
@@ -538,10 +550,13 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	add_fingerprint(usr)
 	update_icon()
 
-/obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)
-	if(istype(C, /obj/item/clothing/mask/cigarette))
+/obj/structure/machinery/door/airlock/attackby(obj/item/attacking_item, mob/user)
+	if(SEND_SIGNAL(attacking_item, COMSIG_ITEM_ATTACK_AIRLOCK, src, user) & COMPONENT_CANCEL_AIRLOCK_ATTACK)
+		return
+
+	if(istype(attacking_item, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
-			var/obj/item/clothing/mask/cigarette/L = C
+			var/obj/item/clothing/mask/cigarette/L = attacking_item
 			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from the [src]"))
 			return
 
@@ -552,7 +567,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	add_fingerprint(user)
 
-	if(istype(C, /obj/item/weapon/zombie_claws) && (welded || locked))
+	if(istype(attacking_item, /obj/item/weapon/zombie_claws) && (welded || locked))
 		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on the [src]!"), \
 			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."), \
 			SPAN_NOTICE("You hear tearing noises!"))
@@ -569,8 +584,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 		return
 
-	if((iswelder(C) && !operating && density))
-		var/obj/item/tool/weldingtool/W = C
+	if((iswelder(attacking_item) && !operating && density))
+		var/obj/item/tool/weldingtool/W = attacking_item
 		var/weldtime = 50
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			weldtime = 70
@@ -594,7 +609,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				update_icon()
 		return
 
-	else if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER))
+	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 		if(no_panel)
 			to_chat(user, SPAN_WARNING("\The [src] has no panel to open!"))
 			return
@@ -604,17 +619,17 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		update_icon()
 		return
 
-	else if(HAS_TRAIT(C, TRAIT_TOOL_WIRECUTTERS))
+	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS))
 		return attack_hand(user)
 
-	else if(HAS_TRAIT(C, TRAIT_TOOL_MULTITOOL))
+	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_MULTITOOL))
 		return attack_hand(user)
 
-	else if(isgun(C))
-		var/obj/item/weapon/gun/G = C
-		for(var/slot in G.attachments)
-			if(istype(G.attachments[slot], /obj/item/attachable/bayonet))
-				var/obj/item/attachable/bayonet/a_bayonet = G.attachments[slot]
+	else if(isgun(attacking_item))
+		var/obj/item/weapon/gun/gun_item = attacking_item
+		for(var/slot in gun_item.attachments)
+			if(istype(gun_item.attachments[slot], /obj/item/attachable/bayonet))
+				var/obj/item/attachable/bayonet/a_bayonet = gun_item.attachments[slot]
 				if(arePowerSystemsOn())
 					to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
 				else if(locked)
@@ -632,58 +647,56 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 							if(do_after(user, a_bayonet.pry_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 								close(1)
 
-	else if(C.pry_capable)
-		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
+	else if(attacking_item.pry_capable)
+		if(attacking_item.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
-				return
-			if(width > 1)
-				to_chat(user, SPAN_WARNING("Large doors seem impossible to disassemble."))
 				return
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message("[user] starts removing the electronics from the airlock assembly.", "You start removing electronics from the airlock assembly.")
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				to_chat(user, SPAN_NOTICE(" You removed the airlock electronics!"))
 
-				var/obj/structure/airlock_assembly/da = new assembly_type(loc)
-				if(istype(da, /obj/structure/airlock_assembly/multi_tile))
-					da.setDir(dir)
+				var/obj/structure/airlock_assembly/doors_assembly = new assembly_type(loc)
+				if(istype(doors_assembly, /obj/structure/airlock_assembly/multi_tile))
+					doors_assembly.setDir(dir)
+					doors_assembly.update_collision_box()
 
-				da.anchored = 1
+				doors_assembly.anchored = TRUE
 				if(mineral)
-					da.glass = mineral
+					doors_assembly.glass = mineral
 				//else if(glass)
-				else if(glass && !da.glass)
-					da.glass = 1
-				da.state = 0
-				da.created_name = name
-				da.update_icon()
+				else if(glass && !doors_assembly.glass)
+					doors_assembly.glass = TRUE
+				doors_assembly.state = 0
+				doors_assembly.created_name = name
+				doors_assembly.update_icon()
 
-				var/obj/item/circuitboard/airlock/ae
+				var/obj/item/circuitboard/airlock/airlock_electronics
 				if(!electronics)
-					ae = new/obj/item/circuitboard/airlock( loc )
+					airlock_electronics = new/obj/item/circuitboard/airlock(loc)
 					if(!req_access || !req_one_access)
 						check_access()
 					if(req_access.len)
-						ae.conf_access = req_access
+						airlock_electronics.conf_access = req_access
 					else if(req_one_access.len)
-						ae.conf_access = req_one_access
-						ae.one_access = 1
+						airlock_electronics.conf_access = req_one_access
+						airlock_electronics.one_access = TRUE
 				else
-					ae = electronics
+					airlock_electronics = electronics
 					electronics = null
-					ae.forceMove(loc)
+					airlock_electronics.forceMove(loc)
 				if(operating == -1)
-					ae.fried = TRUE
-					ae.update_icon()
+					airlock_electronics.fried = TRUE
+					airlock_electronics.update_icon()
 					operating = 0
 
 				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_AIRLOCK, src)
-				qdel(src)
+				deconstruct()
 				return
 
-		else if(arePowerSystemsOn() && C.pry_capable != IS_PRY_CAPABLE_FORCE)
+		else if(arePowerSystemsOn() && attacking_item.pry_capable != IS_PRY_CAPABLE_FORCE)
 			to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
 
 		else if(locked)
@@ -692,7 +705,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		else if(welded)
 			to_chat(user, SPAN_WARNING("The airlock is welded shut."))
 
-		else if(C.pry_capable == IS_PRY_CAPABLE_FORCE)
+		else if(attacking_item.pry_capable == IS_PRY_CAPABLE_FORCE)
 			return FALSE //handled by the item's afterattack
 
 		else if(!operating)
@@ -704,19 +717,19 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 		return TRUE //no afterattack call
 
-	if(istype(C, /obj/item/large_shrapnel))
+	if(istype(attacking_item, /obj/item/large_shrapnel))
 		return FALSE //trigger afterattack call
 	else
 		return ..()
 
 
-/obj/structure/machinery/door/airlock/open(var/forced=0)
+/obj/structure/machinery/door/airlock/open(forced=0)
 	if( operating || welded || locked || !loc)
 		return FALSE
 	if(!forced)
 		if( !arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR) )
 			return FALSE
-	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
+	use_power(360) //360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	else
@@ -725,7 +738,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		closeOther.close()
 	return ..(forced)
 
-/obj/structure/machinery/door/airlock/close(var/forced=0)
+/obj/structure/machinery/door/airlock/close(forced = FALSE)
 	if(operating || welded || locked || !loc)
 		return
 	if(!forced)
@@ -734,7 +747,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(safe)
 		for(var/turf/turf in locs)
 			if(locate(/mob/living) in turf)
-			//	playsound(loc, 'sound/machines/buzz-two.ogg', 25, 0)	//THE BUZZING IT NEVER STOPS	-Pete
+			// playsound(loc, 'sound/machines/buzz-two.ogg', 25, 0) //THE BUZZING IT NEVER STOPS -Pete
 				spawn (60 + openspeed)
 					close()
 				return
@@ -747,8 +760,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-				M.SetStunned(5)
-				M.SetKnockeddown(5)
+				M.set_effect(5, STUN)
+				M.set_effect(5, WEAKEN)
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
 					if(H.pain.feels_pain)
@@ -757,7 +770,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			if(istype(location, /turf))
 				location.add_mob_blood(M)
 
-	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
+	break_resin_objects()
+
+	use_power(360) //360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	else
@@ -769,19 +784,20 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	..()
 	return
 
-/obj/structure/machinery/door/airlock/proc/lock(var/forced=0)
-	if(operating || locked) return
+/obj/structure/machinery/door/airlock/proc/lock(forced = FALSE)
+	if((operating && !forced) || locked)
+		return
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
-	locked = 1
+	locked = TRUE
 	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))
 	update_icon()
 
-/obj/structure/machinery/door/airlock/proc/unlock(var/forced=0)
+/obj/structure/machinery/door/airlock/proc/unlock(forced=0)
 	if(operating || !locked) return
 
 	if(forced || (arePowerSystemsOn())) //only can raise bolts if power's on
-		locked = 0
+		locked = FALSE
 
 		playsound(loc, 'sound/machines/hydraulics_2.ogg', 25)
 		visible_message(SPAN_NOTICE("\The [src] airlock emits a click, then hums slightly."))
@@ -820,3 +836,38 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
 		return TRUE
 	return ..(M)
+
+/obj/structure/machinery/door/airlock/proc/break_resin_objects()
+	var/list/things_to_shmush = locs
+	for(var/turf/i in things_to_shmush)
+		things_to_shmush |= i.contents
+	for(var/x in things_to_shmush)
+		for(var/i in resin_door_shmushereds)
+			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
+				playsound(loc, "alien_resin_break", 25)
+				visible_message(SPAN_WARNING("The [src.name] closes on the [x], shmushing it!"))
+				if(isturf(x))
+					var/turf/closed/wall/resin_wall_to_destroy = x
+					resin_wall_to_destroy.dismantle_wall()
+				else
+					qdel(x)
+				break
+
+/obj/structure/machinery/door/airlock/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(isElectrified() && arePowerSystemsOn())
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(5, 1, src)
+		sparks.start()
+		xeno.apply_effect(1, WEAKEN)
+
+	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes \the [src] with its tail!"), SPAN_XENOWARNING("You strike \the [src] with your tail!"))
+	xeno.emote("tail")
+	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
+	take_damage(damage, xeno)
+	return TAILSTAB_COOLDOWN_NORMAL
+
+/obj/structure/machinery/door/airlock/autoclose()
+	if(locked)
+		return
+	..()

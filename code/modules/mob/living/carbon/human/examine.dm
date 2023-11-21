@@ -5,7 +5,11 @@
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
-	if(isXeno(user))
+	var/mob/dead/observer/observer
+	if(isobserver(user))
+		observer = user
+
+	if(isxeno(user))
 		var/msg = "<span class='info'>This is "
 
 		if(icon)
@@ -26,7 +30,7 @@
 		if(stat == DEAD)
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n</span>"
 		else if(stat || !client)
-			msg += "<span class='xenowarning'>It doesn't seem responsive.\n</span>"
+			msg += SPAN_XENOWARNING("It doesn't seem responsive.\n")
 		msg += "</span>"
 		return list(msg)
 
@@ -102,10 +106,10 @@
 	if(head)
 		msg += "[t_He] [t_is] wearing [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_him, t_has, t_is)].\n"
 
-	//suit/armour
+	//suit/armor
 	if(wear_suit)
 		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
-	//suit/armour storage
+	//suit/armor storage
 	if(s_store && !skipsuitstorage)
 		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
 
@@ -194,7 +198,7 @@
 	var/distance = get_dist(user,src)
 	if(istype(user, /mob/dead/observer) || user.stat == DEAD) // ghosts can see anything
 		distance = 1
-	if (stat)
+	if (stat || status_flags & FAKEDEATH)
 		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
 		if(stat == DEAD && distance <= 3)
 			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
@@ -203,15 +207,15 @@
 		if(ishuman(user) && !user.stat && Adjacent(user))
 			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
 		spawn(15)
-			if(user && src && distance <= 1 && user.stat != 1)
-				if(pulse == PULSE_NONE)
-					to_chat(user, "<span class='deadsay'>[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]...</span>")
+			if(user && src && distance <= 1)
+				if(pulse == PULSE_NONE || status_flags & FAKEDEATH)
+					to_chat(user, SPAN_DEADSAY("[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]..."))
 				else
-					to_chat(user, "<span class='deadsay'>[t_He] has a pulse!</span>")
+					to_chat(user, SPAN_DEADSAY("[t_He] has a pulse!"))
 
 	if((species && !species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
 		if(!key)
-			msg += "<span class='deadsay'>[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n</span>"
+			msg += SPAN_DEADSAY("[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n")
 		else if(!client)
 			msg += "[t_He] [t_has] suddenly fallen asleep.\n"
 
@@ -435,7 +439,7 @@
 	for(var/implant in get_visible_implants())
 		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
 
-	if(hasHUD(user,"security"))
+	if(hasHUD(user,"security") || (observer && observer.HUD_toggled["Security HUD"]))
 		var/perpref
 
 
@@ -450,9 +454,17 @@
 						if(R.fields["id"] == E.fields["id"])
 							criminal = R.fields["criminal"]
 
-			msg += "<span class = 'deptradio'>Criminal status:</span> <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
-			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
+			msg += "<span class = 'deptradio'>Criminal status:</span>"
+			if(!observer)
+				msg += "<a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
+			else
+				msg += "\[[criminal]\]\n"
 
+			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>"
+			if(!observer)
+				msg += " <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
+			else
+				msg += "\n"
 	if(hasHUD(user,"medical"))
 		var/cardcolor = holo_card_color
 		if(!cardcolor) cardcolor = "none"
@@ -492,7 +504,7 @@
 	. += msg
 
 
-	if(isYautja(user))
+	if(isyautja(user))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
 			. += SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>.")
@@ -512,25 +524,30 @@
 
 
 //Helper procedure. Called by /mob/living/carbon/human/get_examine_text() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
-/proc/hasHUD(mob/M, hudtype)
-	if(istype(M, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if (isSynth(H))
+/proc/hasHUD(mob/passed_mob, hudtype)
+	if(istype(passed_mob, /mob/living/carbon/human))
+		var/mob/living/carbon/human/passed_human = passed_mob
+		if (issynth(passed_human))
 			return 1
 		switch(hudtype)
 			if("security")
-				//only MPs can use the security HUD glasses's functionalities
-				if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED))
-					return istype(H.glasses, /obj/item/clothing/glasses/hud/security) || istype(H.glasses, /obj/item/clothing/glasses/sunglasses/sechud)
+				if(skillcheck(passed_human, SKILL_POLICE, SKILL_POLICE_SKILLED))
+					var/datum/mob_hud/sec_hud = huds[MOB_HUD_SECURITY_ADVANCED]
+					if(locate(passed_mob) in sec_hud.hudusers)
+						return TRUE
 			if("medical")
-				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-					return istype(H.glasses, /obj/item/clothing/glasses/hud/health)
+				if(skillcheck(passed_human, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+					var/datum/mob_hud/med_hud = huds[MOB_HUD_MEDICAL_ADVANCED]
+					if(locate(passed_mob) in med_hud.hudusers)
+						return TRUE
 			if("squadleader")
-				return H.mind && H.assigned_squad && H.assigned_squad.squad_leader == H && H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+				var/datum/mob_hud/faction_hud = huds[MOB_HUD_FACTION_USCM]
+				if(passed_human.mind && passed_human.assigned_squad && passed_human.assigned_squad.squad_leader == passed_human && locate(passed_mob) in faction_hud.hudusers)
+					return TRUE
 			else
 				return 0
-	else if(isrobot(M))
-		var/mob/living/silicon/robot/R = M
+	else if(isrobot(passed_mob))
+		var/mob/living/silicon/robot/R = passed_mob
 		switch(hudtype)
 			if("security")
 				return istype(R.module_state_1, /obj/item/robot/sight/hud/sec) || istype(R.module_state_2, /obj/item/robot/sight/hud/sec) || istype(R.module_state_3, /obj/item/robot/sight/hud/sec)

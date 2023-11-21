@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //  Parent of all door displays.
 //  Description: This is a controls the timer for the brig doors, displays the timer on itself and
-//               has a popup window when used, allowing to set the timer.
+//    has a popup window when used, allowing to set the timer.
 //  Code Notes: Combination of old brigdoor.dm code from rev4407 and the status_display.dm code
 //  Date: 01/September/2010
 //  Programmer: Veryinky
@@ -11,11 +11,11 @@
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 	desc = "A remote control for a door."
-	anchored = 1.0    		// can't pick it up
-	density = 0       		// can walk through it.
-	var/open = 0			// If door should be open.
-	var/id = null     		// id of door it controls.
-	var/picture_state		// icon_state of alert picture, if not displaying text/numbers
+	anchored = TRUE // can't pick it up
+	density = FALSE // can walk through it.
+	var/open = 0 // If door should be open.
+	var/id = null // id of door it controls.
+	var/picture_state // icon_state of alert picture, if not displaying text/numbers
 	var/list/obj/structure/machinery/targets = list()
 	var/uses_tgui = FALSE
 
@@ -52,34 +52,34 @@
 
 // Opens and locks doors, power check
 /obj/structure/machinery/door_display/proc/open_door()
-	if(inoperable())	return FALSE
+	if(inoperable()) return FALSE
 
 	for(var/obj/structure/machinery/door/D in targets)
-		if(!D.density)	continue
-		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+		if(!D.density) continue
+		INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	return TRUE
 
 
 // Closes and unlocks doors, power check
 /obj/structure/machinery/door_display/proc/close_door()
-	if(inoperable())	return FALSE
+	if(inoperable()) return FALSE
 
 	for(var/obj/structure/machinery/door/D in targets)
-		if(D.density)	continue
-		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+		if(D.density) continue
+		INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	return TRUE
 
 // Allows AIs to use door_display, see human attack_hand function below
-/obj/structure/machinery/door_display/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/door_display/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 
 // Allows humans to use door_display
 // Opens dialog window when someone clicks on door timer
 // Allows altering timer and the timing boolean.
-/obj/structure/machinery/door_display/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/door_display/attack_hand(mob/user as mob)
 	if(..())
 		return
 
@@ -88,7 +88,7 @@
 		show_browser(user, display_contents(user), name, "computer", "size=400x500")
 	return
 
-/obj/structure/machinery/door_display/proc/display_contents(var/mob/user as mob)
+/obj/structure/machinery/door_display/proc/display_contents(mob/user as mob)
 	var/data = "<HTML><BODY><TT>"
 
 	data += "<HR>Linked Door:</hr>"
@@ -156,7 +156,7 @@
 
 
 // Adds an icon in case the screen is broken/off, stolen from status_display.dm
-/obj/structure/machinery/door_display/proc/set_picture(var/state)
+/obj/structure/machinery/door_display/proc/set_picture(state)
 	picture_state = state
 	overlays.Cut()
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state = picture_state)
@@ -164,7 +164,7 @@
 
 //Checks to see if there's 1 line or 2, adds text-icons-numbers/letters over display
 // Stolen from status_display
-/obj/structure/machinery/door_display/proc/update_display(var/text)
+/obj/structure/machinery/door_display/proc/update_display(text)
 	var/new_text = {"<div style="font-size:'5pt'; color:'#09f'; font:'Arial Black'; text-align:center;" valign="top">[text]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
@@ -172,7 +172,7 @@
 
 //Actual string input to icon display for loop, with 5 pixel x offsets for each letter.
 //Stolen from status_display
-/obj/structure/machinery/door_display/proc/texticon(var/tn, var/px = 0, var/py = 0)
+/obj/structure/machinery/door_display/proc/texticon(tn, px = 0, py = 0)
 	var/image/I = image('icons/obj/structures/machinery/status_display.dmi', "blank")
 	var/len = length(tn)
 
@@ -313,7 +313,7 @@
 	tgui_interact(user)
 
 // Opens and locks doors, power check
-/obj/structure/machinery/door_display/research_cell/open_door(var/force = FALSE)
+/obj/structure/machinery/door_display/research_cell/open_door(force = FALSE)
 	if(inoperable() && !force)
 		return FALSE
 
@@ -341,7 +341,7 @@
 	return TRUE
 
 // Opens and locks doors, power check
-/obj/structure/machinery/door_display/research_cell/proc/open_shutter(var/force = FALSE)
+/obj/structure/machinery/door_display/research_cell/proc/open_shutter(force = FALSE)
 	if(inoperable() && !force)
 		return FALSE
 

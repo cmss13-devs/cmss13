@@ -6,12 +6,12 @@
 	var/effect_modifier_source = null
 	var/effect_end_message = null
 
-/datum/effects/xeno_speed/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", ttl = 3.5 SECONDS, set_speed_modifier = 0, set_modifier_source = null, set_end_message = SPAN_XENONOTICE("You feel lethargic..."))
+/datum/effects/xeno_speed/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 3.5 SECONDS, set_speed_modifier = 0, set_modifier_source = null, set_end_message = SPAN_XENONOTICE("You feel lethargic..."))
 	. = ..(A, from, last_dmg_source, zone)
 	if(QDELETED(src))
 		return
 	QDEL_IN(src, ttl)
-	var/mob/living/carbon/Xenomorph/xeno = A
+	var/mob/living/carbon/xenomorph/xeno = A
 	xeno.speed_modifier -= set_speed_modifier
 	xeno.recalculate_speed()
 	if(set_modifier_source)
@@ -21,8 +21,8 @@
 	effect_end_message = set_end_message
 	added_effect = TRUE
 
-/datum/effects/xeno_speed/validate_atom(var/atom/A)
-	if(!isXeno(A))
+/datum/effects/xeno_speed/validate_atom(atom/A)
+	if(!isxeno(A))
 		return FALSE
 	return ..()
 
@@ -37,7 +37,7 @@
 
 /datum/effects/xeno_speed/Destroy()
 	if(added_effect)
-		var/mob/living/carbon/Xenomorph/xeno = affected_atom
+		var/mob/living/carbon/xenomorph/xeno = affected_atom
 		xeno.speed_modifier += effect_speed_modifier
 		xeno.recalculate_speed()
 		if(effect_modifier_source)

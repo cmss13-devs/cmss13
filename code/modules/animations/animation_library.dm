@@ -7,7 +7,7 @@ functions so that other people won't have to wonder what it actually does.
 /*
 This is something like a gun spin, where the user spins it in the hand.
 Instead of being uniform, it starts out a littler slower, goes fast in the middle, then slows down again.
-4 ticks * 5 = 2.0 seconds. Doesn't loop on default, and spins right.
+4 ticks * 5 = 2 seconds. Doesn't loop on default, and spins right.
 */
 /proc/animation_wrist_flick(atom/A, direction = 1, loop_num = 0) //-1 for a left spin.
 	animate(A, transform = matrix(120 * direction, MATRIX_ROTATE), time = 1, loop = loop_num, easing = SINE_EASING|EASE_IN)
@@ -83,12 +83,12 @@ Instead of being uniform, it starts out a littler slower, goes fast in the middl
 	animate(pixel_x = x_o, pixel_y = y_o, time = speed, easing = CIRCULAR_EASING|EASE_OUT)
 
 //Basic megaman-like animation. No bells or whistles, but looks nice. Could work for Predator relay device, for example.
-proc/animation_teleport_quick_out(atom/A, speed = 10)
+/proc/animation_teleport_quick_out(atom/A, speed = 10)
 	animate(A, transform = matrix(0, 4, MATRIX_SCALE), alpha = 0, time = speed, easing = BACK_EASING)
 	return speed
 
 //We want to make sure to reset color here as it can be changed by other animations.
-proc/animation_teleport_quick_in(atom/A, speed = 10)
+/proc/animation_teleport_quick_in(atom/A, speed = 10)
 	A.transform = matrix(0, 4, MATRIX_SCALE)
 	A.alpha = 0 //Start with transparency, just in case.
 	animate(A, alpha = 255, transform = null, color = "#FFFFFF", time = speed, easing = BACK_EASING)
@@ -103,7 +103,7 @@ Can look good elsewhere as well.*/
 	I.flick_overlay(A,9)
 	return speed*3
 
-proc/animation_teleport_magic_in(atom/A, speed = 6)
+/proc/animation_teleport_magic_in(atom/A, speed = 6)
 	A.transform = matrix(0,3.5, MATRIX_SCALE)
 	A.alpha = 0
 	animate(A, alpha = 255, color = "#FFFF00", time = speed, easing = BACK_EASING)
@@ -113,7 +113,7 @@ proc/animation_teleport_magic_in(atom/A, speed = 6)
 	I.flick_overlay(A,10)
 
 //A spooky teleport for evil dolls, horrors, and whatever else. Halloween type stuff.
-proc/animation_teleport_spooky_out(atom/A, speed = 6, sleep_duration = 0)
+/proc/animation_teleport_spooky_out(atom/A, speed = 6, sleep_duration = 0)
 	animate(A, transform = matrix() * 1.5, color = "#551a8b", time = speed, easing = BACK_EASING)
 	animate(transform = matrix() * 0.2, alpha = 100, color = "#000000", time = speed, easing = BACK_EASING)
 	animate(alpha = 0, time = speed)
@@ -121,7 +121,7 @@ proc/animation_teleport_spooky_out(atom/A, speed = 6, sleep_duration = 0)
 	I.flick_overlay(A,9,RESET_COLOR|RESET_ALPHA|TILE_BOUND)
 	return speed*3
 
-proc/animation_teleport_spooky_in(atom/A, speed = 4)
+/proc/animation_teleport_spooky_in(atom/A, speed = 4)
 	A.transform *= 1.2
 	A.alpha = 0
 	animate(A, alpha = 255, color = "#551a8b", time = speed)
@@ -130,20 +130,20 @@ proc/animation_teleport_spooky_in(atom/A, speed = 4)
 	I.flick_overlay(A,10)*/
 
 //Regular fadeout disappear, for most objects.
-proc/animation_destruction_fade(atom/A, speed = 12)
+/proc/animation_destruction_fade(atom/A, speed = 12)
 	A.flags_atom |= NOINTERACT
-	A.mouse_opacity = 0 //We don't want them to click this while the animation is still playing.
-	A.density = 0 //So it doesn't block anything.
+	A.mouse_opacity = MOUSE_OPACITY_TRANSPARENT //We don't want them to click this while the animation is still playing.
+	A.density = FALSE //So it doesn't block anything.
 	var/i = 1 + (0.1 * rand(1,5))
 	animate(A, transform = matrix() * i, color = "#808080", time = speed, easing = SINE_EASING)
 	animate(alpha = 0, time = speed)
 	return speed
 
 //Fadeout when something gets hit. Not completely done yet, as offset doesn't want to cooperate.
-proc/animation_destruction_knock_fade(atom/A, speed = 7, x_n = rand(10,18), y_n = rand(10,18))
+/proc/animation_destruction_knock_fade(atom/A, speed = 7, x_n = rand(10,18), y_n = rand(10,18))
 	A.flags_atom |= NOINTERACT
-	A.mouse_opacity = 0
-	A.density = 0
+	A.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	A.density = FALSE
 	var/x_o = initial(A.pixel_x)
 	var/y_o = initial(A.pixel_y)
 	animate(A, transform = matrix() * 1.2,  alpha = 100, pixel_x = x_o + pick(x_n,-x_n), pixel_y = y_o + pick(y_n,-y_n), time = speed, easing = QUAD_EASING|EASE_IN)
@@ -152,10 +152,10 @@ proc/animation_destruction_knock_fade(atom/A, speed = 7, x_n = rand(10,18), y_n 
 
 /*
 //Work in progress animation. Needs byond 511 parallel animation to look nice.
-proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
+/proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 	A.flags_atom |= NOINTERACT
-	A.mouse_opacity = 0
-	A.density = 0
+	A.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	A.density = FALSE
 	var/x_o = initial(A.pixel_x)
 	var/y_o = initial(A.pixel_y)
 	animate(A, pixel_x = x_o+rand(-x_n, x_n), pixel_y = y_o+rand(-y_n, y_n), time = speed, easing = ELASTIC_EASING|EASE_IN)
@@ -173,7 +173,7 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 
 
 
-/mob/living/proc/animation_attack_on(atom/A, var/pixel_offset = 8)
+/mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8)
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
@@ -207,28 +207,37 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 	animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
 
 
-/atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3)
+/atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	if(!sections)
 		return
 	var/section = 360/sections
 	if(!clockwise)
 		section = -section
+	if(angular_offset)
+		var/matrix/initial_matrix = matrix(transform)
+		initial_matrix.Turn(angular_offset)
+		apply_transform(initial_matrix)
+	var/dx = 0
+	var/dy = 0
+	if(pixel_fuzz)
+		dx = (rand()-0.5)*pixel_fuzz / sections
+		dy = (rand()-0.5)*pixel_fuzz / sections
 	var/list/matrix_list = list()
 	for(var/i in 1 to sections-1)
 		var/matrix/M = matrix(transform)
-		M.Turn(section*i)
+		M.Turn(section*i + angular_offset)
 		matrix_list += M
 	var/matrix/last = matrix(transform)
 	matrix_list += last
 	speed /= sections
-	animate(src, transform = matrix_list[1], time = speed, loop_amount)
+	animate(src, transform = matrix_list[1], pixel_x = pixel_x + dx, pixel_y = pixel_y + dy, time = speed, loop_amount)
 	for(var/i in 2 to sections)
-		animate(transform = matrix_list[i], time = speed)
+		animate(transform = matrix_list[i], pixel_x = pixel_x + dx*i, pixel_y = pixel_y + dy*i, time = speed)
 
 /atom/proc/animation_cancel()
 	animate(src)
 
-/atom/proc/sway_jitter(var/times = 3, var/steps = 3, var/strength = 3, var/sway = 5)
+/atom/proc/sway_jitter(times = 3, steps = 3, strength = 3, sway = 5)
 	var/sway_dir = 1 //left to right
 	animate(src, transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING, flags = ANIMATION_PARALLEL)
 	for(var/i in 1 to steps)

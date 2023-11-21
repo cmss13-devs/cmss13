@@ -5,13 +5,13 @@
 	matter = list("metal" = 500, "glass" = 50, "waste" = 10)
 
 	var/listening = 0
-	var/recorded	//the activation message
+	var/recorded //the activation message
 
 /obj/item/device/assembly/voice/hear_talk(mob/living/M as mob, msg)
 	if(listening)
 		recorded = msg
 		listening = 0
-		var/turf/T = get_turf(src)	//otherwise it won't work in hand
+		var/turf/T = get_turf(src) //otherwise it won't work in hand
 		T.visible_message("[icon2html(src, hearers(src))] beeps, \"Activation message is '[recorded]'.\"")
 	else
 		if(findtext(msg, recorded))

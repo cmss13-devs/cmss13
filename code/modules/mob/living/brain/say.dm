@@ -1,5 +1,5 @@
 //TODO: Convert this over for languages.
-/mob/living/brain/say(var/message)
+/mob/living/brain/say(message)
 	if (silent)
 		return
 

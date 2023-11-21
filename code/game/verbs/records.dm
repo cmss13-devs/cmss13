@@ -22,7 +22,7 @@
 			return
 	to_chat(usr, SPAN_NOTICE("Displaying your [choice] Record."))
 
-/client/proc/show_own_notes(var/note_category, var/category_text)
+/client/proc/show_own_notes(note_category, category_text)
 	var/datum/entity/player/P = get_player_from_key(ckey)
 	if(!P.migrated_notes)
 		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
@@ -53,7 +53,7 @@
 			if(NOTE_YAUTJA)
 				color = "#114e11"
 
-		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date]</i></font> "
+		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		dat += "<br><br>"
 
 	dat += "<br>"
@@ -133,7 +133,7 @@
 	to_chat(usr, SPAN_NOTICE("Displaying [target]'s [choice] notes."))
 
 
-/client/proc/show_other_record(var/note_category, var/category_text, var/target, var/can_edit = FALSE, var/can_del = FALSE)
+/client/proc/show_other_record(note_category, category_text, target, can_edit = FALSE, can_del = FALSE)
 	var/datum/entity/player/P = get_player_from_key(target)
 	if(!P?.migrated_notes)
 		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
@@ -143,7 +143,7 @@
 	dat += "<body>"
 
 	var/color = "#008800"
-	var/add_dat = "<A href='?src=\ref[admin_holder];add_player_info=[target]'>Add Admin Note</A><br><A href='?src=\ref[admin_holder];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
+	var/add_dat = "<A href='?src=\ref[admin_holder];[HrefToken()];add_player_info=[target]'>Add Admin Note</A><br><A href='?src=\ref[admin_holder];[HrefToken()];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
 	switch(note_category)
 		if(NOTE_MERIT)
 			color = "#9e3dff"
@@ -168,7 +168,7 @@
 			continue
 		var/admin_ckey = N.admin_ckey
 
-		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date]</i></font> "
+		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		///Can remove notes from anyone other than yourself, unless you're the host. So long as you have deletion access anyway.
 		if((can_del && target != get_player_from_key(key)) || ishost(usr))
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_wl_info=[key];remove_index=[N.id]'>Remove</A>"

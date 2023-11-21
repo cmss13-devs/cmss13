@@ -16,23 +16,20 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/telecomm)
 "e" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/telecomm)
 "f" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/telecomm)
 "g" = (
@@ -48,16 +45,14 @@
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/telecomm)
 "j" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/telecomm)
 "k" = (
@@ -141,8 +136,7 @@
 /area/bigredv2/outside/telecomm)
 "v" = (
 /turf/open/floor{
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/telecomm)
 "w" = (
@@ -158,27 +152,23 @@
 "y" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
+	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/outside/lz1_telecomm_cas)
 "z" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
+	icon_state = "mars_cave_6"
 	},
 /area/bigredv2/outside/lz1_telecomm_cas)
 "A" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/lz1_telecomm_cas)
 "B" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
+	icon_state = "mars_cave_6"
 	},
 /area/bigredv2/outside/lz1_telecomm_cas)
 "C" = (
@@ -194,20 +184,17 @@
 "F" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/lz1_telecomm_cas)
 "G" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_23";
-	tag = "icon-mars_cave_23"
+	icon_state = "mars_cave_23"
 	},
 /area/bigredv2/outside/lz1_telecomm_cas)
 "U" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_5";
-	tag = "icon-mars_cave_5"
+	icon_state = "mars_cave_5"
 	},
 /area/bigredv2/outside/lz1_telecomm_cas)
 

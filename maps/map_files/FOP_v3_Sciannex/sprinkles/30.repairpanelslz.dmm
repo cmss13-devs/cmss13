@@ -13,10 +13,8 @@
 /turf/open/space,
 /area/template_noop)
 "c" = (
-/obj/structure/cargo_container{
-	desc = "A huge industrial shipping container. This one is in space.";
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
+/obj/structure/cargo_container/grant/left{
+	desc = "A huge industrial shipping container. This one is in space."
 	},
 /turf/open/space,
 /area/template_noop)
@@ -29,8 +27,7 @@
 /area/template_noop)
 "e" = (
 /turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
+	icon_state = "floor_plate"
 	},
 /area/template_noop)
 "f" = (
@@ -76,10 +73,8 @@
 /turf/open/floor/almayer_hull,
 /area/template_noop)
 "n" = (
-/obj/structure/cargo_container{
-	desc = "A huge industrial shipping container. You're not sure how it got here.";
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
+/obj/structure/cargo_container/grant/right{
+	desc = "A huge industrial shipping container. You're not sure how it got here."
 	},
 /turf/open/space,
 /area/template_noop)

@@ -35,6 +35,13 @@
 		inserted_tank = new starting_tank_type(src)
 	update_icon()
 
+/obj/structure/machinery/suit_storage_unit/Destroy()
+	QDEL_NULL(inserted_suit)
+	QDEL_NULL(inserted_helmet)
+	QDEL_NULL(inserted_mask)
+	QDEL_NULL(inserted_tank)
+	. = ..()
+
 
 /obj/structure/machinery/suit_storage_unit/update_icon()
 	overlays.Cut()
@@ -73,11 +80,11 @@
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				dump_everything()
-				qdel(src)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(prob(50))
 				dump_everything() //So suits dont survive all the time
-			qdel(src)
+			deconstruct(FALSE)
 
 
 /obj/structure/machinery/suit_storage_unit/attack_hand(mob/user)

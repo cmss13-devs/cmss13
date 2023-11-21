@@ -1,7 +1,0 @@
-[
-	{ "type": "map_sprinkle", "path": "map_files/Whiskey_Outpost_v2/sprinkles/" },
-	{
-		"type": "include", "name": "Standalone variations",
-		"file": "maps/Sorokyne_Strate/mapgen_variations.json"
-	}
-]

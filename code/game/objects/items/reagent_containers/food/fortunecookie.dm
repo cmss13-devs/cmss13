@@ -19,7 +19,7 @@
 	var/luckynumbers = "[num1], [num2], [num3], [num4], and [num5]"
 	return luckynumbers
 
-/obj/item/paper/fortune/premade/Initialize(mapload, var/message = "Random", var/numbers = "Random")
+/obj/item/paper/fortune/premade/Initialize(mapload, message = "Random", numbers = "Random")
 	. = ..()
 	switch(message)
 		if("None")

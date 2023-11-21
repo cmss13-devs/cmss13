@@ -2,6 +2,12 @@
 
 //wall
 
+/obj/structure/interior_wall/Initialize()
+	. = ..()
+
+	if(loc.opacity)
+		loc.opacity = FALSE
+
 /obj/structure/interior_wall/apc
 	name = "\improper APC interior wall"
 	icon = 'icons/obj/vehicles/interiors/apc.dmi'
@@ -64,7 +70,7 @@
 				break
 	. += SPAN_HELPFUL("Clicking on the [name] while being adjacent to support gunner seat will buckle you in and give you the control of the M56 FPW.")
 
-/obj/structure/prop/vehicle/firing_port_weapon/attack_hand(var/mob/living/carbon/human/H)
+/obj/structure/prop/vehicle/firing_port_weapon/attack_hand(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	if(!SG_seat)

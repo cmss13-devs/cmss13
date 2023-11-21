@@ -1,25 +1,40 @@
 /* First aid storage
  * Contains:
- *		First Aid Kits
- * 		Pill Bottles
- *		Pill Packets
+ * First Aid Kits
+ * Pill Bottles
+ * Pill Packets
  */
 
 //---------FIRST AID KITS---------
 /obj/item/storage/firstaid
 	name = "first-aid kit"
-	desc = "It's an emergency medical kit for those serious boo-boos."
+	desc = "It's an emergency medical kit for those serious boo-boos. With medical training you can fit this in a backpack."
 	icon_state = "firstaid"
 	throw_speed = SPEED_FAST
 	throw_range = 8
 	use_sound = "toolbox"
 	matter = list("plastic" = 2000)
-	cant_hold = list(
-		/obj/item/ammo_magazine,
-		/obj/item/explosive/grenade,
-		/obj/item/tool
-	) //to prevent powergaming.
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/storage/surgical_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/roller,
+		/obj/item/bodybag,
+		/obj/item/reagent_container/blood,
+	)
 	storage_flags = STORAGE_FLAGS_BOX
+	required_skill_for_nest_opening = SKILL_MEDICAL
+	required_skill_level_for_nest_opening = SKILL_MEDICAL_MEDIC
+
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
 
@@ -49,7 +64,7 @@
 
 /obj/item/storage/firstaid/fire
 	name = "fire first-aid kit"
-	desc = "It's an emergency medical kit for when the dropship ammo storage <i>-spontaneously-</i> burns down."
+	desc = "It's an emergency medical kit for when the dropship ammo storage <i>-spontaneously-</i> burns down. With medical training you can fit this in a backpack."
 	icon_state = "ointment"
 	item_state = "firstaid-ointment"
 	possible_icons_full = list("ointment","firefirstaid")
@@ -69,6 +84,7 @@
 
 /obj/item/storage/firstaid/regular
 	icon_state = "firstaid"
+	desc = "It's an emergency medical kit containing basic medication and equipment. No training required to use. With medical training you can fit this in a backpack."
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -81,6 +97,11 @@
 
 /obj/item/storage/firstaid/regular/empty/fill_preset_inventory()
 	return
+
+/obj/item/storage/firstaid/regular/response
+	desc = "It's an emergency medical kit containing basic medication and equipment. No training required to use. This one is simpler and requires no training to store."
+	required_skill_for_nest_opening = SKILL_MEDICAL
+	required_skill_level_for_nest_opening = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/firstaid/robust
 	icon_state = "firstaid"
@@ -99,7 +120,7 @@
 
 /obj/item/storage/firstaid/toxin
 	name = "toxin first-aid kit"
-	desc = "Used to treat when you have a high amount of toxins in your body."
+	desc = "It's an emergency medical kit containing lifesaving anti-toxic medication. With medical training you can fit this in a backpack."
 	icon_state = "antitoxin"
 	item_state = "firstaid-toxin"
 	possible_icons_full = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
@@ -116,7 +137,7 @@
 
 /obj/item/storage/firstaid/o2
 	name = "oxygen deprivation first-aid kit"
-	desc = "A box full of reoxygenating goodies."
+	desc = "A box full of reoxygenating goodies. With medical training you can fit this in a backpack."
 	icon_state = "o2"
 	item_state = "firstaid-o2"
 
@@ -134,7 +155,7 @@
 
 /obj/item/storage/firstaid/adv
 	name = "advanced first-aid kit"
-	desc = "Contains advanced medical treatments."
+	desc = "Contains more effective methods of medical treatment than a basic first-aid kit, such as burn and trauma kits. With medical training you can fit this in a backpack."
 	icon_state = "advfirstaid"
 	item_state = "firstaid-advanced"
 
@@ -150,9 +171,43 @@
 /obj/item/storage/firstaid/adv/empty/fill_preset_inventory()
 	return
 
+/obj/item/storage/firstaid/synth
+	name = "synthetic repair kit"
+	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack seperately.' With medical training you can fit this in a backpack."
+	icon_state = "bezerk"
+	item_state = "firstaid-advanced"
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/stack/nanopaste,
+		/obj/item/stack/cable_coil,
+		/obj/item/tool/weldingtool,
+	)
+
+/obj/item/storage/firstaid/synth/fill_preset_inventory()
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/cable_coil/white(src)
+	new /obj/item/stack/cable_coil/white(src)
+	new /obj/item/tool/weldingtool(src)
+
+/obj/item/storage/firstaid/synth/empty/fill_preset_inventory()
+	return
+
 /obj/item/storage/firstaid/rad
 	name = "radiation first-aid kit"
-	desc = "Contains treatment for radiation exposure"
+	desc = "Contains treatment for radiation exposure. With medical training you can fit this in a backpack."
 	icon_state = "purplefirstaid"
 
 /obj/item/storage/firstaid/rad/fill_preset_inventory()
@@ -168,12 +223,20 @@
 
 /obj/item/storage/firstaid/surgical
 	name = "basic field surgery kit"
-	desc = "Contains a surgical line, cautery, scalpel, hemostat, retractor, drapes and an oxycodone injector for tending wounds surgically."
+	desc = "Contains a surgical line, cautery, scalpel, hemostat, retractor, drapes and an oxycodone injector for tending wounds surgically. With medical training you can fit this in a backpack."
 	icon_state = "bezerk"
-	cant_hold = list(
-		/obj/item/ammo_magazine,
-		/obj/item/explosive/grenade
-	) // we need surgery tools buddy
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery,
+	)
 
 /obj/item/storage/firstaid/surgical/fill_preset_inventory()
 	new /obj/item/tool/surgery/surgical_line(src)
@@ -186,7 +249,6 @@
 
 /obj/item/storage/firstaid/surgical/empty/fill_preset_inventory()
 	return
-
 
 //---------SYRINGE CASE---------
 
@@ -204,7 +266,7 @@
 		/obj/item/reagent_container/glass/bottle,
 		/obj/item/paper,
 		/obj/item/reagent_container/syringe,
-		/obj/item/reagent_container/hypospray/autoinjector
+		/obj/item/reagent_container/hypospray/autoinjector,
 	)
 
 /obj/item/storage/syringe_case/regular
@@ -235,6 +297,37 @@
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/dexalin( src )
 
+//---------SURGICAL CASE---------
+
+
+/obj/item/storage/surgical_case
+	name = "surgical case"
+	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds.\
+		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
+		\nStep one: Open an incision at the site with the scalpel.\
+		\nStep two: Clamp bleeders with the hemostat.\
+		\nStep three: Draw back the skin with the retracter.\
+		\nStep four: Patch the damaged vein with a surgical line.\
+		\nStep five: Close the incision with a surgical line."
+
+	icon_state = "surgical_case"
+	throw_speed = SPEED_FAST
+	throw_range = 8
+	storage_slots = 3
+	w_class = SIZE_SMALL
+	matter = list("plastic" = 1000)
+	can_hold = list(
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/hemostat,
+		/obj/item/tool/surgery/retractor,
+	)
+
+/obj/item/storage/surgical_case/regular
+
+/obj/item/storage/surgical_case/regular/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
 
 //---------PILL BOTTLES---------
 
@@ -249,13 +342,13 @@
 	can_hold = list(
 		/obj/item/reagent_container/pill,
 		/obj/item/toy/dice,
-		/obj/item/paper
+		/obj/item/paper,
 	)
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
 	storage_slots = null
 	use_sound = "pillbottle"
 	max_storage_space = 16
-	var/skilllock = SKILL_MEDICAL_DEFAULT
+	var/skilllock = SKILL_MEDICAL_MEDIC
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
 	var/bottle_lid = TRUE //Whether it shows a visual lid when opened or closed.
 	var/display_maptext = TRUE
@@ -285,7 +378,7 @@
 		overlays += "pills_closed"
 
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
-		maptext = "<span class='langchat'>[maptext_label]</span>"
+		maptext = SPAN_LANGCHAT("[maptext_label]")
 	else
 		maptext = ""
 
@@ -307,7 +400,6 @@
 				. += SPAN_INFO("The [name] feels like it's nearly empty!")
 	else
 		. += SPAN_INFO("The [name] is empty.")
-
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
 	..()
@@ -333,7 +425,7 @@
 		return
 
 
-/obj/item/storage/pill_bottle/attackby(var/obj/item/storage/pill_bottle/W, mob/user)
+/obj/item/storage/pill_bottle/attackby(obj/item/storage/pill_bottle/W, mob/user)
 	if(istype(W))
 		if((skilllock || W.skilllock) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			error_idlock(user)
@@ -349,14 +441,14 @@
 		return
 	..()
 
-/obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, stop_messages = 0)
+/obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(.)
 		if(skilllock && !skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			error_idlock(usr)
 			return
 
-/obj/item/storage/pill_bottle/clicked(var/mob/user, var/list/mods)
+/obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE
 	if(!istype(loc, /obj/item/storage/belt/medical))
@@ -382,7 +474,7 @@
 		to_chat(user, SPAN_NOTICE("You take [I] out of the [name]."))
 		return TRUE
 
-/obj/item/storage/pill_bottle/empty(var/mob/user, var/turf/T)
+/obj/item/storage/pill_bottle/empty(mob/user, turf/T)
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		error_idlock(user)
 		return
@@ -400,12 +492,28 @@
 	..()
 	update_icon()
 
+/obj/item/storage/pill_bottle/attack_hand(mob/user, mods)
+	if(loc != user)
+		return ..()
+
+	if(!mods || !mods["alt"])
+		return ..()
+
+	if(!ishuman(user))
+		return ..()
+
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		error_idlock(user)
+		return FALSE
+
+	return ..()
+
 /obj/item/storage/pill_bottle/proc/error_idlock(mob/user)
 	to_chat(user, SPAN_WARNING("It must have some kind of ID lock..."))
 
 /obj/item/storage/pill_bottle/verb/set_maptext()
 	set category = "Object"
-	set name = "Set Short Label (on-sprite)"
+	set name = "Set short label (on-sprite)"
 	set src in usr
 
 	if(src && ishuman(usr))
@@ -423,7 +531,6 @@
 	name = "\improper Kelotane pill bottle"
 	icon_state = "pill_canister2"
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Kl"
 
 /obj/item/storage/pill_bottle/kelotane/skillless
@@ -433,7 +540,6 @@
 	name = "\improper Dylovene pill bottle"
 	icon_state = "pill_canister6"
 	pill_type_to_fill = /obj/item/reagent_container/pill/antitox
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Dy"
 
 
@@ -444,7 +550,6 @@
 	name = "\improper Inaprovaline pill bottle"
 	icon_state = "pill_canister3"
 	pill_type_to_fill = /obj/item/reagent_container/pill/inaprovaline
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "In"
 
 /obj/item/storage/pill_bottle/inaprovaline/skillless
@@ -454,7 +559,6 @@
 	name = "\improper Tramadol pill bottle"
 	icon_state = "pill_canister5"
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Tr"
 
 /obj/item/storage/pill_bottle/tramadol/skillless
@@ -464,7 +568,6 @@
 	name = "\improper Spaceacillin pill bottle"
 	icon_state = "pill_canister4"
 	pill_type_to_fill = /obj/item/reagent_container/pill/spaceacillin
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Sp"
 
 /obj/item/storage/pill_bottle/spaceacillin/skillless
@@ -474,7 +577,6 @@
 	name = "\improper Bicaridine pill bottle"
 	icon_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Bi"
 
 /obj/item/storage/pill_bottle/bicaridine/skillless
@@ -484,7 +586,6 @@
 	name = "\improper Dexalin pill bottle"
 	icon_state = "pill_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Dx"
 
 /obj/item/storage/pill_bottle/dexalin/skillless
@@ -495,7 +596,6 @@
 	name = "\improper Alkysine pill bottle"
 	icon_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/alkysine
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Al"
 
 /obj/item/storage/pill_bottle/alkysine/skillless
@@ -506,7 +606,6 @@
 	name = "\improper Imidazoline pill bottle"
 	icon_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imidazoline
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Im"
 
 /obj/item/storage/pill_bottle/imidazoline/skillless
@@ -517,7 +616,6 @@
 	name = "\improper Peridaxon pill bottle"
 	icon_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Pr"
 
 /obj/item/storage/pill_bottle/peridaxon/skillless
@@ -525,24 +623,12 @@
 
 //RUSSIAN RED ANTI-RAD
 /obj/item/storage/pill_bottle/russianRed
-	name = "\improper Russian Red pill bottle"
+	name = "\improper Russian red pill bottle"
 	icon_state = "pill_canister"
 	pill_type_to_fill = /obj/item/reagent_container/pill/russianRed
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Rr"
 
 /obj/item/storage/pill_bottle/russianRed/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
-
-
-/obj/item/storage/pill_bottle/quickclot
-	name = "\improper Quickclot pill bottle"
-	icon_state = "pill_canister8"
-	pill_type_to_fill = /obj/item/reagent_container/pill/quickclot
-	skilllock = SKILL_MEDICAL_MEDIC
-	maptext_label = "Qc"
-
-/obj/item/storage/pill_bottle/quickclot/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 //Ultrazine
@@ -551,39 +637,35 @@
 	icon_state = "pill_canister11"
 	max_storage_space = 5
 	skilllock = SKILL_MEDICAL_DEFAULT //CL can open it
-	var/idlock = 1
+	var/idlock = TRUE
 	pill_type_to_fill = /obj/item/reagent_container/pill/ultrazine/unmarked
 	display_maptext = FALSE //for muh corporate secrets - Stan_Albatross
 
-	req_access = list(ACCESS_WY_CORPORATE)
-	var/req_role = JOB_CORPORATE_LIAISON
+	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_RESEARCH)
+	black_market_value = 35
 
 
 /obj/item/storage/pill_bottle/ultrazine/proc/id_check(mob/user)
 
 	if(!idlock)
-		return 1
+		return TRUE
 
 	var/mob/living/carbon/human/H = user
 
 	if(!allowed(user))
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
-		return 0
+		return FALSE
 
 	var/obj/item/card/id/I = H.wear_id
 	if(!istype(I)) //not wearing an ID
 		to_chat(H, SPAN_NOTICE("It must have some kind of ID lock..."))
-		return 0
+		return FALSE
 
 	if(I.registered_name != H.real_name)
 		to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-		return 0
+		return FALSE
 
-	if(req_role && I.rank != req_role)
-		to_chat(H, SPAN_NOTICE("It must have some kind of ID lock..."))
-		return 0
-
-	return 1
+	return TRUE
 
 /obj/item/storage/pill_bottle/ultrazine/attack_self(mob/living/user)
 	if(!id_check(user))
@@ -597,14 +679,13 @@
 
 /obj/item/storage/pill_bottle/ultrazine/skillless
 	name = "\improper Ultrazine pill bottle"
-	idlock = 0
+	idlock = FALSE
 	display_maptext = TRUE
 	maptext_label = "Uz"
 
 /obj/item/storage/pill_bottle/mystery
 	name = "\improper Weird-looking pill bottle"
 	desc = "You can't seem to identify this."
-	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/storage/pill_bottle/mystery/Initialize()
 	icon_state = "pill_canister[rand(1, 12)]"
@@ -625,14 +706,22 @@
 	name = "\improper Stimulant pill bottle"
 	icon_state = "pill_canister12"
 	pill_type_to_fill = /obj/item/reagent_container/pill/stimulant
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "ST"
 
 /obj/item/storage/pill_bottle/stimulant/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+//NOT FOR USCM USE!!!!
+/obj/item/storage/pill_bottle/paracetamol
+	name = "\improper Paracetamol pill bottle"
+	desc = "This is probably someone's prescription bottle."
+	icon_state = "pill_canister7"
+	pill_type_to_fill = /obj/item/reagent_container/pill/paracetamol
+	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "Pc"
+
 //---------PILL PACKETS---------
-obj/item/storage/pill_bottle/packet
+/obj/item/storage/pill_bottle/packet
 	name = "\improper pill packet"
 	desc = "Contains pills. Once you take them out, they don't go back in."
 	icon_state = "pill_packet"
@@ -647,29 +736,29 @@ obj/item/storage/pill_bottle/packet
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"
 	icon_state = "tricordrazine_packet"
-	desc = "This packet contains Tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	desc = "This packet contains tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
 
 /obj/item/storage/pill_bottle/packet/tramadol
 	name = "Tramadol pill packet"
 	icon_state = "tramadol_packet"
-	desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	desc = "This packet contains tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 
 /obj/item/storage/pill_bottle/packet/bicaridine
-    name = "Bicaridine pill packet"
-    icon_state = "bicaridine_packet"
-    desc = "This packet contains Bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
+	name = "Bicaridine pill packet"
+	icon_state = "bicaridine_packet"
+	desc = "This packet contains bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 
 /obj/item/storage/pill_bottle/packet/kelotane
-    name = "kelotane pill packet"
-    icon_state = "kelotane_packet"
-    desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
+	name = "kelotane pill packet"
+	icon_state = "kelotane_packet"
+	desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 
 /obj/item/storage/pill_bottle/packet/oxycodone
-    name = "oxycodone pill packet"
-    icon_state = "oxycodone_packet"
-    desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
+	name = "oxycodone pill packet"
+	icon_state = "oxycodone_packet"
+	desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone

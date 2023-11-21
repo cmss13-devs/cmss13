@@ -8,6 +8,7 @@
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = OPENCONTAINER
+	possible_transfer_amounts = null//no point giving it possibility when mister can't it just confuse people
 	volume = 500
 	var/fill_reagent = "water"
 	var/spawn_empty = FALSE
@@ -83,7 +84,9 @@
 /obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
 	set category = "Object"
+	set src in usr
 	toggle_mister(usr)
+
 
 /obj/item/reagent_container/glass/watertank/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
@@ -132,7 +135,7 @@
 	item_state = "nozzle"
 	w_class = SIZE_LARGE
 	flags_equip_slot = null
-	amount_per_transfer_from_this = 50
+	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	spray_size = 5
 	volume = 500
@@ -251,11 +254,12 @@
 
 /obj/item/reagent_container/spray/mister/atmos/Initialize(mapload)
 	. = ..()
+	if(!istype(loc, /obj/item/reagent_container/glass/watertank/atmos))
+		return INITIALIZE_HINT_QDEL
+
 	tank = loc
 	nozzle_mode = tank.nozzle_mode
 
-/obj/item/reagent_container/spray/mister/atmos/Initialize()
-	. = ..()
 	initialize_internal_extinguisher()
 	update_icon()
 
@@ -307,7 +311,7 @@
 	update_icon()
 
 /obj/item/reagent_container/spray/mister/atmos/afterattack(atom/target, mob/user)
-	if(!isSynth(user))
+	if(!issynth(user))
 		to_chat(user, SPAN_WARNING("You have no idea how use \the [src]!"))
 		return
 	if(nozzle_mode == EXTINGUISHER)

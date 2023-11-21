@@ -42,7 +42,7 @@
 			return
 		if(!ET.folded)
 			user.visible_message(SPAN_NOTICE("\The [user] removes \the [src]."))
-			destroy(TRUE)
+			deconstruct(TRUE)
 		return
 	else
 		. = ..()

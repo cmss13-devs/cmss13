@@ -1,11 +1,11 @@
-proc/empulse(turf/epicenter, heavy_range, light_range, log=0)
+/proc/empulse(turf/epicenter, heavy_range, light_range, log=0)
 	if(!epicenter) return
 
 	if(!istype(epicenter, /turf))
 		epicenter = get_turf(epicenter.loc)
 
 	if(log)
-		message_staff("EMP with size ([heavy_range], [light_range]) in area [epicenter.loc.name] ")
+		message_admins("EMP with size ([heavy_range], [light_range]) in area [epicenter.loc.name] ")
 		log_game("EMP with size ([heavy_range], [light_range]) in area [epicenter.loc.name] ")
 
 	if(heavy_range > 1)

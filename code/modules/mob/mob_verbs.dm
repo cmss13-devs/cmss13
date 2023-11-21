@@ -30,6 +30,7 @@
 
 	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
 	return
+
 /mob/verb/view_stats()
 	set category = "OOC"
 	set name = "View Playtimes"
@@ -38,7 +39,7 @@
 		to_chat(src, "DB is still starting up, please wait")
 		return
 	if(client && client.player_entity)
-		client.player_data.ui_interact(src)
+		client.player_data.tgui_interact(src)
 
 /mob/verb/toggle_high_toss()
 	set name = "Toggle High Toss"
@@ -97,8 +98,7 @@
 		if(length(mind.memory) < 4000)
 			mind.store_memory(msg)
 		else
-			src.sleeping = 9999999
-			message_staff("[key_name(usr)] auto-slept for attempting to exceed mob memory limit. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			message_admins("[key_name(usr)] auto-slept for attempting to exceed mob memory limit.]", loc.x, loc.y, loc.z)
 	else
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
@@ -155,10 +155,10 @@
 
 	M.key = key
 	if(M.client) M.client.change_view(world_view_size)
-//	M.Login()	//wat
+// M.Login() //wat
 	return
 
-/*/mob/dead/observer/verb/observe()
+/mob/dead/observer/verb/observe()
 	set name = "Observe"
 	set category = "Ghost"
 
@@ -168,7 +168,7 @@
 	if(!target)
 		return
 
-	do_observe(target) */ //disabled thanks to le exploiterinos
+	do_observe(target)
 
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"
@@ -181,36 +181,36 @@
 			M.cameraFollow = null
 
 /mob/verb/eastface()
-	set hidden = 1
-	return facedir(EAST)
+	set hidden = TRUE
+	return face_dir(EAST)
 
 /mob/verb/westface()
-	set hidden = 1
-	return facedir(WEST)
+	set hidden = TRUE
+	return face_dir(WEST)
 
 /mob/verb/northface()
-	set hidden = 1
-	return facedir(NORTH)
+	set hidden = TRUE
+	return face_dir(NORTH)
 
 /mob/verb/southface()
-	set hidden = 1
-	return facedir(SOUTH)
+	set hidden = TRUE
+	return face_dir(SOUTH)
 
 
 /mob/verb/northfaceperm()
-	set hidden = 1
+	set hidden = TRUE
 	set_face_dir(NORTH)
 
 /mob/verb/southfaceperm()
-	set hidden = 1
+	set hidden = TRUE
 	set_face_dir(SOUTH)
 
 /mob/verb/eastfaceperm()
-	set hidden = 1
+	set hidden = TRUE
 	set_face_dir(EAST)
 
 /mob/verb/westfaceperm()
-	set hidden = 1
+	set hidden = TRUE
 	set_face_dir(WEST)
 
 

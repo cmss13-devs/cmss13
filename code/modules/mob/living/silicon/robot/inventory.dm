@@ -13,7 +13,7 @@
 		if(istype(module_state_1,/obj/item/robot/sight))
 			sight_mode &= ~module_state_1:sight_mode
 		if (client)
-			client.screen -= module_state_1
+			client.remove_from_screen(module_state_1)
 		contents -= module_state_1
 		module_active = null
 		module_state_1 = null
@@ -22,7 +22,7 @@
 		if(istype(module_state_2,/obj/item/robot/sight))
 			sight_mode &= ~module_state_2:sight_mode
 		if (client)
-			client.screen -= module_state_2
+			client.remove_from_screen(module_state_2)
 		contents -= module_state_2
 		module_active = null
 		module_state_2 = null
@@ -31,7 +31,7 @@
 		if(istype(module_state_3,/obj/item/robot/sight))
 			sight_mode &= ~module_state_3:sight_mode
 		if (client)
-			client.screen -= module_state_3
+			client.remove_from_screen(module_state_3)
 		contents -= module_state_3
 		module_active = null
 		module_state_3 = null
@@ -45,7 +45,7 @@
 		if(istype(module_state_1,/obj/item/robot/sight))
 			sight_mode &= ~module_state_1:sight_mode
 		if (client)
-			client.screen -= module_state_1
+			client.remove_from_screen(module_state_1)
 		contents -= module_state_1
 		module_state_1 = null
 		inv1.icon_state = "inv1"
@@ -53,7 +53,7 @@
 		if(istype(module_state_2,/obj/item/robot/sight))
 			sight_mode &= ~module_state_2:sight_mode
 		if (client)
-			client.screen -= module_state_2
+			client.remove_from_screen(module_state_2)
 		contents -= module_state_2
 		module_state_2 = null
 		inv2.icon_state = "inv2"
@@ -61,7 +61,7 @@
 		if(istype(module_state_3,/obj/item/robot/sight))
 			sight_mode &= ~module_state_3:sight_mode
 		if (client)
-			client.screen -= module_state_3
+			client.remove_from_screen(module_state_3)
 		contents -= module_state_3
 		module_state_3 = null
 		inv3.icon_state = "inv3"
@@ -81,11 +81,11 @@
 //These are hackish but they help clean up code elsewhere.
 
 //module_selected(module) - Checks whether the module slot specified by "module" is currently selected.
-/mob/living/silicon/robot/proc/module_selected(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/module_selected(module) //Module is 1-3
 	return module == get_selected_module()
 
 //module_active(module) - Checks whether there is a module active in the slot specified by "module".
-/mob/living/silicon/robot/proc/module_active(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/module_active(module) //Module is 1-3
 	if(module < 1 || module > 3) return 0
 
 	switch(module)
@@ -112,7 +112,7 @@
 	return 0
 
 //select_module(module) - Selects the module slot specified by "module"
-/mob/living/silicon/robot/proc/select_module(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/select_module(module) //Module is 1-3
 	if(module < 1 || module > 3) return
 
 	if(!module_active(module)) return
@@ -142,7 +142,7 @@
 	return
 
 //deselect_module(module) - Deselects the module slot specified by "module"
-/mob/living/silicon/robot/proc/deselect_module(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/deselect_module(module) //Module is 1-3
 	if(module < 1 || module > 3) return
 
 	switch(module)
@@ -164,7 +164,7 @@
 	return
 
 //toggle_module(module) - Toggles the selection of the module slot specified by "module".
-/mob/living/silicon/robot/proc/toggle_module(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/toggle_module(module) //Module is 1-3
 	if(module < 1 || module > 3) return
 
 	if(module_selected(module))

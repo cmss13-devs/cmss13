@@ -1,14 +1,14 @@
 /*
- *	Absorbs /obj/item/secstorage.
- *	Reimplements it only slightly to use existing storage functionality.
+ * Absorbs /obj/item/secstorage.
+ * Reimplements it only slightly to use existing storage functionality.
  *
- *	Contains:
- *		Secure Briefcase
- *		Wall Safe
+ * Contains:
+ * Secure Briefcase
+ * Wall Safe
  */
 
 // -----------------------------
-//         Generic Item
+//  Generic Item
 // -----------------------------
 /obj/item/storage/secure
 	name = "secstorage"
@@ -37,23 +37,23 @@
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				open =! open
 				var/msg_open_status = "[open ? "open" : "close"]"
-				user.show_message(SPAN_NOTICE("You [msg_open_status	] the service panel."))
+				user.show_message(SPAN_NOTICE("You [msg_open_status ] the service panel."), SHOW_MESSAGE_VISIBLE)
 			return
 		if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) && open == 1 && !l_hacking)
-			user.show_message(text(SPAN_DANGER("Now attempting to reset internal memory, please hold.")), 1)
+			user.show_message(text(SPAN_DANGER("Now attempting to reset internal memory, please hold.")), SHOW_MESSAGE_VISIBLE)
 			l_hacking = 1
 			if (do_after(usr, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if (prob(40))
 					l_setshort = 1
 					l_set = 0
-					user.show_message(text(SPAN_DANGER("Internal memory reset.  Please give it a few seconds to reinitialize.")), 1)
+					user.show_message(text(SPAN_DANGER("Internal memory reset.  Please give it a few seconds to reinitialize.")), SHOW_MESSAGE_VISIBLE)
 					sleep(80)
 					l_setshort = 0
 					l_hacking = 0
 				else
-					user.show_message(text(SPAN_DANGER("Unable to reset internal memory.")), 1)
+					user.show_message(text(SPAN_DANGER("Unable to reset internal memory.")), SHOW_MESSAGE_VISIBLE)
 					l_hacking = 0
-			else	l_hacking = 0
+			else l_hacking = 0
 			return
 		//At this point you have exhausted all the special things to do when locked
 		// ... but it's still locked.
@@ -119,7 +119,7 @@
 	return
 
 // -----------------------------
-//        Secure Briefcase
+// Secure Briefcase
 // -----------------------------
 /obj/item/storage/secure/briefcase
 	name = "secure briefcase"
@@ -127,7 +127,7 @@
 	icon_state = "secure"
 	item_state = "sec-case"
 	desc = "A large briefcase with a digital locking system."
-	force = 8.0
+	force = 8
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
@@ -150,7 +150,7 @@
 	add_fingerprint(user)
 
 // -----------------------------
-//        Secure Safe
+// Secure Safe
 // -----------------------------
 
 /obj/item/storage/secure/safe
@@ -161,11 +161,11 @@
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
 	flags_atom = FPRINT|CONDUCT
-	force = 8.0
+	force = 8
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_LARGE
-	anchored = 1.0
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	cant_hold = list(/obj/item/storage/secure/briefcase)
 
 /obj/item/storage/secure/safe/fill_preset_inventory()

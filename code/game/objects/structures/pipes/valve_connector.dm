@@ -18,7 +18,7 @@
 			return
 		add_underlay(T, dir)
 
-/obj/structure/pipes/valve/hide(var/invis)
+/obj/structure/pipes/valve/hide(invis)
 	update_underlays()
 
 /obj/structure/pipes/valve/open
@@ -61,13 +61,13 @@
 
 		add_underlay(T, dir)
 
-/obj/structure/pipes/tvalve/hide(var/invis)
+/obj/structure/pipes/tvalve/hide(invis)
 	update_underlays()
 
 /obj/structure/pipes/tvalve/create_valid_directions()
 	valid_directions = list(turn(dir, 180), dir, turn(dir, 90))
 
-/obj/structure/pipes/tvalve/digital		// can be controlled by AI
+/obj/structure/pipes/tvalve/digital // can be controlled by AI
 	name = "digital switching valve"
 	desc = "A digitally controlled valve."
 	icon = 'icons/obj/pipes/digital_tvalve.dmi'
@@ -117,5 +117,5 @@
 			return
 		add_underlay(T, dir)
 
-/obj/structure/pipes/portables_connector/hide(var/invis)
+/obj/structure/pipes/portables_connector/hide(invis)
 	update_underlays()

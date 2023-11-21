@@ -8,7 +8,7 @@
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
 
-/obj/structure/blocker/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/blocker/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE
@@ -20,12 +20,15 @@
 	name = "invisible wall"
 	desc = "You cannot go this way."
 	icon_state = "invisible_wall"
-	opacity = 0
+	opacity = FALSE
 	layer = ABOVE_FLY_LAYER + 0.1 //to make it visible in the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/blocker/invisible_wall/Collided(atom/movable/AM)
-	to_chat(AM, SPAN_WARNING("You cannot go this way."))
+	var/msg = desc
+	if(!msg)
+		msg = "You cannot go this way."
+	to_chat(AM, SPAN_WARNING(msg))
 
 /obj/structure/blocker/invisible_wall/New()
 	..()
@@ -35,20 +38,21 @@
 	desc = "You cannot wade out any further"
 	icon_state = "map_blocker"
 
-/obj/structure/blocker/invisible_wall/water/Collided(atom/movable/AM)
-	to_chat(AM, SPAN_WARNING("You cannot wade out any further."))
-
-
 /obj/structure/blocker/fog
 	name = "dense fog"
 	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
-	opacity = 1
+	opacity = TRUE
 
-/obj/structure/blocker/fog/New()
-	..()
-	dir  = pick(CARDINAL_DIRS)
+/obj/structure/blocker/fog/Initialize(mapload, time_to_dispel)
+	. = ..()
+
+	if(!time_to_dispel)
+		return INITIALIZE_HINT_QDEL
+
+	dir = pick(CARDINAL_DIRS)
+	QDEL_IN(src, time_to_dispel + rand(-5 SECONDS, 5 SECONDS))
 
 /obj/structure/blocker/fog/attack_hand(mob/M)
 	to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
@@ -63,7 +67,7 @@
 
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
-	anchored = 1.0
+	anchored = TRUE
 	unacidable = TRUE
 	density = FALSE
 
@@ -73,7 +77,7 @@
 	var/list/types = list()
 	var/visible = FALSE
 
-/obj/structure/blocker/forcefield/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/blocker/forcefield/get_projectile_hit_boolean(obj/projectile/P)
 	if(!is_whitelist)
 		return FALSE
 	. = ..()
@@ -101,8 +105,20 @@
 /obj/structure/blocker/forcefield/vehicles
 	types = list(/obj/vehicle/)
 
+
+/obj/structure/blocker/forcefield/vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
+	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)
+		return TRUE
+	return FALSE
+
 /obj/structure/blocker/forcefield/multitile_vehicles
 	types = list(/obj/vehicle/multitile/)
+
+
+/obj/structure/blocker/forcefield/multitile_vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
+	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)
+		return TRUE
+	return FALSE
 
 /obj/structure/blocker/forcefield/human
 	types = list(/mob/living/carbon/human)

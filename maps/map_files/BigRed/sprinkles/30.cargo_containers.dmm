@@ -165,10 +165,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "aF" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -178,10 +175,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -191,10 +185,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -273,30 +264,21 @@
 	},
 /area/bigredv2/outside/cargo)
 "aS" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/cargo)
 "aT" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/cargo)
 "aU" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -313,9 +295,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Cargo Bay Security";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	name = "\improper Cargo Bay Security"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -326,30 +307,21 @@
 	},
 /area/bigredv2/outside/cargo)
 "aY" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/cargo)
 "aZ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/cargo)
 "ba" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -362,50 +334,35 @@
 /area/bigredv2/outside/cargo)
 "bc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/cargo)
 "bd" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/cargo)
 "be" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/cargo)
 "bf" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/cargo)
 "bg" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -478,8 +435,7 @@
 "bz" = (
 /obj/effect/landmark/corpsespawner/security,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -506,8 +462,7 @@
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -569,10 +524,9 @@
 /area/bigredv2/outside/cargo)
 "bR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Cargo Bay Quartermaster";
-	req_one_access = null
+	name = "\improper Cargo Bay Quartermaster"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -595,10 +549,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -609,10 +560,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -623,10 +571,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -636,10 +581,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -667,9 +609,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ce" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Cargo Bay Quartermaster";
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Cargo Bay Quartermaster"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -702,7 +643,7 @@
 /area/bigredv2/outside/cargo)
 "ck" = (
 /obj/structure/machinery/camera/autoname{
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -765,8 +706,7 @@
 "ct" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)

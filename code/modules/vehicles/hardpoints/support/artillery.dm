@@ -14,7 +14,7 @@
 	var/view_buff = 10 //This way you can VV for more or less fun
 	var/view_tile_offset = 7
 
-/obj/item/hardpoint/support/artillery_module/activate(var/mob/user, var/atom/A)
+/obj/item/hardpoint/support/artillery_module/activate(mob/user, atom/A)
 	if(!user.client)
 		return
 

@@ -26,11 +26,11 @@
 		flagIndex+=1
 	return wires
 
-/obj/structure/machinery/camera/proc/isWireColorCut(var/wireColor)
+/obj/structure/machinery/camera/proc/isWireColorCut(wireColor)
 	var/wireFlag = WireColorToFlag[wireColor]
 	return ((src.wires & wireFlag) == 0)
 
-/obj/structure/machinery/camera/proc/isWireCut(var/wireIndex)
+/obj/structure/machinery/camera/proc/isWireCut(wireIndex)
 	var/wireFlag = IndexToFlag[wireIndex]
 	return ((src.wires & wireFlag) == 0)
 
@@ -40,7 +40,7 @@
 	else
 		return 0
 
-/obj/structure/machinery/camera/proc/cut(var/wireColor)
+/obj/structure/machinery/camera/proc/cut(wireColor)
 	var/wireFlag = WireColorToFlag[wireColor]
 	var/wireIndex = WireColorToIndex[wireColor]
 	wires &= ~wireFlag
@@ -60,7 +60,7 @@
 
 	src.interact(usr)
 
-/obj/structure/machinery/camera/proc/mend(var/wireColor)
+/obj/structure/machinery/camera/proc/mend(wireColor)
 	var/wireFlag = WireColorToFlag[wireColor]
 	var/wireIndex = WireColorToIndex[wireColor]
 	wires |= wireFlag
@@ -81,7 +81,7 @@
 	src.interact(usr)
 
 
-/obj/structure/machinery/camera/proc/pulse(var/wireColor)
+/obj/structure/machinery/camera/proc/pulse(wireColor)
 	var/wireIndex = WireColorToIndex[wireColor]
 	switch(wireIndex)
 		if(CAMERA_WIRE_FOCUS)
@@ -141,7 +141,7 @@
 			var/t1 = text2num(href_list["wires"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, "You need wirecutters!")
+				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 				return
 			if (src.isWireColorCut(t1))
 				src.mend(t1)
@@ -151,10 +151,10 @@
 			var/t1 = text2num(href_list["pulse"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, "You need a multitool!")
+				to_chat(usr, SPAN_WARNING("You need a multitool!"))
 				return
 			if (src.isWireColorCut(t1))
-				to_chat(usr, "You can't pulse a cut wire.")
+				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 				return
 			else
 				src.pulse(t1)

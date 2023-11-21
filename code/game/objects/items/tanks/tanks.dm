@@ -1,5 +1,6 @@
 #define TANK_MAX_RELEASE_PRESSURE (3*ONE_ATMOSPHERE)
 #define TANK_DEFAULT_RELEASE_PRESSURE 24
+#define TANK_MIN_RELEASE_PRESSURE 0
 
 /obj/item/tank
 	name = "tank"
@@ -14,24 +15,24 @@
 	var/gas_type = GAS_TYPE_AIR
 	var/temperature = T20C
 
-	force = 5.0
-	throwforce = 10.0
+	force = 5
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 4
 
 	var/distribute_pressure = ONE_ATMOSPHERE
 	var/integrity = 3
 	var/volume = 70
-	var/manipulated_by = null		//Used by _onclick/hud/screen_objects.dm internals to determine if someone has messed with our tank or not.
+	var/manipulated_by = null //Used by _onclick/hud/screen_objects.dm internals to determine if someone has messed with our tank or not.
 						//If they have and we haven't scanned it with the PDA or gas analyzer then we might just breath whatever they put in it.
 
 /obj/item/tank/get_examine_text(mob/user)
 	. = ..()
-	if (in_range(src, user))
+	if(in_range(src, user))
 		var/celsius_temperature = temperature-T0C
 		var/descriptive
 		switch(celsius_temperature)
-			if (-280 to 20)
+			if(-280 to 20)
 				descriptive = "cold"
 			if(20 to 40)
 				descriptive = "room temperature"
@@ -50,98 +51,93 @@
 /obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
-	if ((istype(W, /obj/item/device/analyzer)) && get_dist(user, src) <= 1)
-		for (var/mob/O in viewers(user, null))
+	if((istype(W, /obj/item/device/analyzer)) && get_dist(user, src) <= 1)
+		for(var/mob/O in viewers(user, null))
 			to_chat(O, SPAN_DANGER("[user] has used [W] on [icon2html(src, O)] [src]"))
 
-		manipulated_by = user.real_name			//This person is aware of the contents of the tank.
+		manipulated_by = user.real_name //This person is aware of the contents of the tank.
 
-		to_chat(user, SPAN_NOTICE(" Results of analysis of [icon2html(src, user)]"))
-		if (pressure>0)
-			to_chat(user, SPAN_NOTICE(" Pressure: [round(pressure,0.1)] kPa"))
-
-			to_chat(user, SPAN_NOTICE(" [gas_type]: 100%"))
-			to_chat(user, SPAN_NOTICE(" Temperature: [round(temperature-T0C)]&deg;C"))
+		to_chat(user, SPAN_NOTICE("Results of analysis of [icon2html(src, user)]"))
+		if(pressure>0)
+			to_chat(user, SPAN_NOTICE("Pressure: [round(pressure,0.1)] kPa"))
+			to_chat(user, SPAN_NOTICE("[gas_type]: 100%"))
+			to_chat(user, SPAN_NOTICE("Temperature: [round(temperature-T0C)]&deg;C"))
 		else
-			to_chat(user, SPAN_NOTICE(" Tank is empty!"))
+			to_chat(user, SPAN_NOTICE("Tank is empty!"))
 		src.add_fingerprint(user)
 
 
 /obj/item/tank/attack_self(mob/user)
-	..()
+	. = ..()
 
-	if (pressure == 0)
-		return
+	tgui_interact(user)
 
-	ui_interact(user)
+/obj/item/tank/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Tank", name)
+		ui.open()
 
-/obj/item/tank/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/tank/ui_state(mob/user)
+	return GLOB.inventory_state
 
-	var/using_internal
-	if(istype(loc,/mob/living/carbon))
-		var/mob/living/carbon/location = loc
-		if(location.internal==src)
-			using_internal = 1
+/obj/item/tank/ui_data(mob/user)
+	var/list/data = list()
 
-	// this is the data which will be sent to the ui
-	var/data[0]
 	data["tankPressure"] = round(pressure)
-	data["releasePressure"] = round(distribute_pressure ? distribute_pressure : 0)
+	data["tankMaxPressure"] = round(pressure_full)
+	data["ReleasePressure"] = round(distribute_pressure)
 	data["defaultReleasePressure"] = round(TANK_DEFAULT_RELEASE_PRESSURE)
 	data["maxReleasePressure"] = round(TANK_MAX_RELEASE_PRESSURE)
-	data["valveOpen"] = using_internal ? 1 : 0
+	data["minReleasePressure"] = round(TANK_MIN_RELEASE_PRESSURE)
 
-	data["maskConnected"] = 0
+	var/mask_connected = FALSE
+	var/using_internal = FALSE
+
 	if(istype(loc,/mob/living/carbon))
 		var/mob/living/carbon/location = loc
+		if(location.internal == src)
+			using_internal = TRUE
 		if(location.internal == src || (location.wear_mask && (location.wear_mask.flags_inventory & ALLOWINTERNALS)))
-			data["maskConnected"] = 1
+			mask_connected = TRUE
 
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "tanks.tmpl", "Tank", 500, 300)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
-		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
+	data["mask_connected"] = mask_connected
+	data["valve_open"] = using_internal
 
-/obj/item/tank/Topic(href, href_list)
-	..()
-	if (usr.stat|| usr.is_mob_restrained())
-		return 0
-	if (src.loc != usr)
-		return 0
+	return data
 
-	if (href_list["dist_p"])
-		if (href_list["dist_p"] == "reset")
-			src.distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
-		else if (href_list["dist_p"] == "max")
-			src.distribute_pressure = TANK_MAX_RELEASE_PRESSURE
-		else
-			var/cp = text2num(href_list["dist_p"])
-			src.distribute_pressure += cp
-		src.distribute_pressure = min(max(round(src.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
-	if (href_list["stat"])
-		if(istype(loc,/mob/living/carbon))
-			var/mob/living/carbon/location = loc
-			if(location.internal == src)
-				location.internal = null
-				to_chat(usr, SPAN_NOTICE(" You close the tank release valve."))
-			else
-				if(location.wear_mask && (location.wear_mask.flags_inventory & ALLOWINTERNALS))
-					location.internal = src
-					to_chat(usr, SPAN_NOTICE(" You open \the [src] valve."))
+/obj/item/tank/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("pressure")
+			var/tgui_pressure = params["pressure"]
+			if(tgui_pressure == "reset")
+				src.distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
+			else if(tgui_pressure == "max")
+				src.distribute_pressure = TANK_MAX_RELEASE_PRESSURE
+			else if(tgui_pressure == "min")
+				src.distribute_pressure = TANK_MIN_RELEASE_PRESSURE
+			else if(text2num(tgui_pressure) != null)
+				pressure = text2num(tgui_pressure)
+			src.distribute_pressure = min(max(round(src.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
+			. = TRUE
+
+		if("valve")
+			if(istype(loc,/mob/living/carbon))
+				var/mob/living/carbon/location = loc
+				if(location.internal == src)
+					location.internal = null
+					to_chat(usr, SPAN_NOTICE("You close the tank release valve."))
 				else
-					to_chat(usr, SPAN_NOTICE(" You need something to connect to \the [src]."))
-
-	src.add_fingerprint(usr)
-	return 1
-
+					if(location.wear_mask && (location.wear_mask.flags_inventory & ALLOWINTERNALS))
+						location.internal = src
+						to_chat(usr, SPAN_NOTICE("You open \the [src]'s valve."))
+					else
+						to_chat(usr, SPAN_NOTICE("You need something to connect to \the [src]."))
+				. = TRUE
 
 /obj/item/tank/return_air()
 	return list(gas_type, temperature, pressure)

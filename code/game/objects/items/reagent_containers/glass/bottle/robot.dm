@@ -14,9 +14,9 @@
 	reagent = "inaprovaline"
 
 /obj/item/reagent_container/glass/bottle/robot/inaprovaline/Initialize()
-		..()
-		reagents.add_reagent("inaprovaline", 60)
-		return
+	. = ..()
+	reagents.add_reagent("inaprovaline", 60)
+	return
 
 
 /obj/item/reagent_container/glass/bottle/robot/antitoxin
@@ -27,6 +27,6 @@
 	reagent = "anti_toxin"
 
 /obj/item/reagent_container/glass/bottle/robot/antitoxin/Initialize()
-		..()
-		reagents.add_reagent("anti_toxin", 60)
-		return
+	. = ..()
+	reagents.add_reagent("anti_toxin", 60)
+	return

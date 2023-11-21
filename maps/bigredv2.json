@@ -2,6 +2,7 @@
     "map_name": "Solaris Ridge",
     "map_path": "map_files/BigRed",
     "map_file": "BigRed.dmm",
+    "webmap_url": "Solaris",
     "weather_holder": "/datum/weather_ss_map_holder/big_red",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/solaris",
@@ -10,7 +11,10 @@
         "/datum/equipment_preset/survivor/engineer/solaris",
         "/datum/equipment_preset/survivor/trucker/solaris",
         "/datum/equipment_preset/survivor/security/solaris",
-        "/datum/equipment_preset/survivor/colonial_marshal/solaris"
+        "/datum/equipment_preset/survivor/colonial_marshal/solaris",
+        "/datum/equipment_preset/survivor/corporate/solaris",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [
         4750,
@@ -20,21 +24,19 @@
         0.0
     ],
     "map_item_type": "/obj/item/map/big_red_map",
-    "announce_text": "We've lost contact with the Weyland-Yutani's research facility, Solaris Ridge. The ###SHIPNAME### has been dispatched to assist.",
+    "announce_text": "We've lost contact with Weyland-Yutani's research facility, Solaris Ridge. The ###SHIPNAME### has been dispatched to assist.",
     "monkey_types": [
         "neaera"
     ],
     "traits": [{ "Ground": true }],
-    "nightmare": {
-        "scenario": "maps/Nightmare/maps/BigRed/scenario.json",
-        "mapgen": "maps/Nightmare/maps/BigRed/mapgen.json"
-    },
+    "nightmare_path": "maps/Nightmare/maps/BigRed/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,
         "xeno_hive_bravo": 0,
         "xeno_hive_charlie": 0,
         "xeno_hive_delta": 100
     },
+    "camouflage": "desert",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

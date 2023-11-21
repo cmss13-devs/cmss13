@@ -126,7 +126,7 @@
 /area/corsat/omega/checkpoint)
 "r" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 2;
 	icon_state = "cameras";
 	network = list("omega")
@@ -195,7 +195,6 @@
 /area/corsat/omega/checkpoint)
 "B" = (
 /obj/structure/bed/chair/comfy/black{
-	tag = "icon-comfychair (NORTH)";
 	icon_state = "comfychair";
 	dir = 1
 	},
@@ -293,7 +292,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "K" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	icon_state = "cameras";
 	network = list("omega")

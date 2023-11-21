@@ -1,13 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import {
-  Button,
-  Flex,
-  Section,
-  Box,
-  Tabs,
-  Fragment,
-  LabeledList,
-} from '../components';
+import { Button, Flex, Section, Box, Tabs, Fragment, LabeledList } from '../components';
 import { Window } from '../layouts';
 
 export const TechMemories = (props, context) => {

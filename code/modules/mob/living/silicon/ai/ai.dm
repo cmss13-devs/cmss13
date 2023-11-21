@@ -42,8 +42,8 @@ var/list/ai_verbs_default = list(
 	name = "AI"
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
-	anchored = 1 // -- TLE
-	density = 1
+	anchored = TRUE // -- TLE
+	density = TRUE
 	status_flags = CANSTUN|CANKNOCKOUT
 	med_hud = MOB_HUD_MEDICAL_BASIC
 	sec_hud = MOB_HUD_SECURITY_BASIC
@@ -57,7 +57,7 @@ var/list/ai_verbs_default = list(
 	var/ioncheck[1]
 	var/lawchannel = "Common" // Default channel on which to state laws
 	var/icon/holo_icon//Default is assigned when AI is created.
-//	var/obj/item/device/pda/ai/aiPDA = null
+// var/obj/item/device/pda/ai/aiPDA = null
 	var/obj/item/device/multitool/aiMulti = null
 	var/obj/item/device/radio/headset/ai_integrated/aiRadio = null
 //Hud stuff
@@ -76,7 +76,7 @@ var/list/ai_verbs_default = list(
 
 	var/mob/living/silicon/ai/parent = null
 
-	var/camera_light_on = 0	//Defines if the AI toggled the light on the camera it's looking through.
+	var/camera_light_on = 0 //Defines if the AI toggled the light on the camera it's looking through.
 	var/datum/trackable/track = null
 	var/last_announcement = ""
 	var/datum/announcement/priority/announcement
@@ -87,7 +87,7 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/proc/remove_ai_verbs()
 	remove_verb(src, ai_verbs_default)
 
-/mob/living/silicon/ai/New(loc, var/obj/item/device/mmi/B, var/safety = 0)
+/mob/living/silicon/ai/New(loc, obj/item/device/mmi/B, safety = 0)
 	var/list/possibleNames = ai_names
 
 	var/pickedName = null
@@ -98,11 +98,11 @@ var/list/ai_verbs_default = list(
 				possibleNames -= pickedName
 				pickedName = null
 
-//	aiPDA = new/obj/item/device/pda/ai(src)
+// aiPDA = new/obj/item/device/pda/ai(src)
 	SetName(pickedName)
-	anchored = 1
+	anchored = TRUE
 	canmove = 0
-	density = 1
+	density = TRUE
 	forceMove(loc)
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
@@ -116,7 +116,6 @@ var/list/ai_verbs_default = list(
 		add_ai_verbs(src)
 
 	//Languages
-	add_language(LANGUAGE_BINARY, 1)
 	add_language(LANGUAGE_ENGLISH, 1)
 	add_language(LANGUAGE_RUSSIAN, 1)
 	add_language(LANGUAGE_XENOMORPH, 0)
@@ -150,6 +149,11 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/Destroy()
 	ai_list -= src
+	QDEL_NULL(aiMulti)
+	if(aiRadio)
+		aiRadio.myAi = null
+	QDEL_NULL(aiRadio)
+	QDEL_NULL(aiCamera)
 	. = ..()
 
 /mob/living/silicon/ai/proc/SetName(pickedName as text)
@@ -173,12 +177,12 @@ var/list/ai_verbs_default = list(
 /obj/structure/machinery/ai_powersupply
 	name="Power Supply"
 	active_power_usage=1000
-	use_power = 2
+	use_power = USE_POWER_ACTIVE
 	power_channel = POWER_CHANNEL_EQUIP
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/structure/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai)
+/obj/structure/machinery/ai_powersupply/New(mob/living/silicon/ai/ai)
 	powered_ai = ai
 	if(isnull(powered_ai))
 		qdel(src)
@@ -194,9 +198,9 @@ var/list/ai_verbs_default = list(
 		return
 	if(!powered_ai.anchored)
 		forceMove(powered_ai.loc)
-		update_use_power(0)
+		update_use_power(USE_POWER_NONE)
 	if(powered_ai.anchored)
-		update_use_power(2)
+		update_use_power(USE_POWER_ACTIVE)
 
 /mob/living/silicon/ai/proc/pick_icon()
 	set category = "AI Commands"
@@ -297,8 +301,8 @@ var/list/ai_verbs_default = list(
 	return 0
 
 /mob/living/silicon/ai/emp_act(severity)
+	. = ..()
 	if (prob(30)) view_core()
-	..()
 
 /mob/living/silicon/ai/Topic(href, href_list)
 	if(usr != src)
@@ -341,7 +345,7 @@ var/list/ai_verbs_default = list(
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
 		last_damage_data = create_cause_data(initial(M.name), M)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
@@ -351,16 +355,16 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/reset_view(atom/A)
 	if(camera)
-		camera.SetLuminosity(0)
+		camera.set_light(0)
 	if(istype(A,/obj/structure/machinery/camera))
 		camera = A
 	..()
 	if(istype(A,/obj/structure/machinery/camera))
-		if(camera_light_on)	A.SetLuminosity(AI_CAMERA_LUMINOSITY)
-		else				A.SetLuminosity(0)
+		if(camera_light_on) A.set_light(AI_CAMERA_LUMINOSITY)
+		else A.set_light(0)
 
 
-/mob/living/silicon/ai/proc/switchCamera(var/obj/structure/machinery/camera/C)
+/mob/living/silicon/ai/proc/switchCamera(obj/structure/machinery/camera/C)
 	if (!C || stat == DEAD) //C.can_use())
 		return 0
 
@@ -373,7 +377,7 @@ var/list/ai_verbs_default = list(
 
 	return 1
 
-/mob/living/silicon/ai/triggerAlarm(var/class, area/A, list/cameralist, var/source)
+/mob/living/silicon/ai/triggerAlarm(class, area/A, list/cameralist, source)
 	if (stat == 2)
 		return 1
 
@@ -387,7 +391,7 @@ var/list/ai_verbs_default = list(
 
 	if (viewalerts) ai_alerts()
 
-/mob/living/silicon/ai/cancelAlarm(var/class, area/A as area, var/source)
+/mob/living/silicon/ai/cancelAlarm(class, area/A as area, source)
 	var/has_alarm = ..()
 
 	if (!has_alarm)
@@ -468,7 +472,7 @@ var/list/ai_verbs_default = list(
 				SD.friendc = 0
 	return
 
-//I am the icon meister. Bow fefore me.	//>fefore
+//I am the icon meister. Bow fefore me. //>fefore
 /mob/living/silicon/ai/proc/ai_hologram_change()
 	set name = "Change Hologram"
 	set desc = "Change the default hologram available to AI to something else."
@@ -535,7 +539,7 @@ var/list/ai_verbs_default = list(
 	to_chat(src, "Camera lights [camera_light_on ? "activated" : "deactivated"].")
 	if(!camera_light_on)
 		if(camera)
-			camera.SetLuminosity(0)
+			camera.set_light(0)
 			camera = null
 	else
 		lightNearbyCamera()
@@ -550,20 +554,20 @@ var/list/ai_verbs_default = list(
 		if(src.camera)
 			var/obj/structure/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && src.camera != camera)
-				src.camera.SetLuminosity(0)
+				src.camera.set_light(0)
 				if(!camera.light_disabled)
 					src.camera = camera
-					src.camera.SetLuminosity(AI_CAMERA_LUMINOSITY)
+					src.camera.set_light(AI_CAMERA_LUMINOSITY)
 				else
 					src.camera = null
 			else if(isnull(camera))
-				src.camera.SetLuminosity(0)
+				src.camera.set_light(0)
 				src.camera = null
 		else
 			var/obj/structure/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && !camera.light_disabled)
 				src.camera = camera
-				src.camera.SetLuminosity(AI_CAMERA_LUMINOSITY)
+				src.camera.set_light(AI_CAMERA_LUMINOSITY)
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
 
 
@@ -575,7 +579,7 @@ var/list/ai_verbs_default = list(
 				user.visible_message(SPAN_NOTICE("\The [user] decides not to unbolt \the [src]."))
 				return
 			user.visible_message(SPAN_NOTICE("\The [user] finishes unfastening \the [src]!"))
-			anchored = 0
+			anchored = FALSE
 			return
 		else
 			user.visible_message(SPAN_NOTICE("\The [user] starts to bolt \the [src] to the plating..."))
@@ -583,7 +587,7 @@ var/list/ai_verbs_default = list(
 				user.visible_message(SPAN_NOTICE("\The [user] decides not to bolt \the [src]."))
 				return
 			user.visible_message(SPAN_NOTICE("\The [user] finishes fastening down \the [src]!"))
-			anchored = 1
+			anchored = TRUE
 			return
 	else
 		return ..()
@@ -606,7 +610,7 @@ var/list/ai_verbs_default = list(
 	set desc = "Augment visual feed with internal sensor overlays"
 	toggle_sensor_mode()
 
-/mob/living/silicon/ai/proc/check_unable(var/flags = 0)
+/mob/living/silicon/ai/proc/check_unable(flags = 0)
 	if(stat == DEAD)
 		to_chat(usr, SPAN_DANGER("You are dead!"))
 		return 1

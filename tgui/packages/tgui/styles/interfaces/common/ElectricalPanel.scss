@@ -1,0 +1,96 @@
+.ElectricalAccessPanel {
+  border-bottom: 2px solid #606060;
+  border-left: 2px solid #606060;
+  border-right: 2px solid grey;
+  border-top: 2px solid grey;
+  display: relative;
+  width: 100%;
+
+  .PanelClosed {
+    height: 100%;
+    margin-bottom: -2px;
+  }
+  .PanelOpen {
+    padding: 6px;
+  }
+  .Hide {
+    visibility: hidden;
+  }
+  .ElectricalSafetySign {
+    height: 100%;
+  }
+  span {
+    display: flex;
+    text-align: center;
+  }
+
+  .led {
+    margin: 0 auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+  .led-off {
+    background-color: #606060;
+    box-shadow: none;
+    animation: none;
+  }
+  .led-green {
+    background-color: #abff00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 3px 1px, inset #304701 0 -1px 6px,
+      #89ff00 0 2px 6px;
+  }
+  .led-red {
+    background-color: #f00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 3px 1px, inset #441313 0 -1px 6px,
+      rgba(255, 0, 0, 0.5) 0 2px 6px;
+    animation: blinkRed 0.5s infinite;
+  }
+  @keyframes blinkRed {
+    from {
+      background-color: #f00;
+    }
+    50% {
+      background-color: #a00;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px,
+        rgba(255, 0, 0, 0.5) 0 2px 0;
+    }
+    to {
+      background-color: #f00;
+    }
+  }
+
+  .WarningIcon {
+    border: 2px solid black;
+    padding: 3px;
+    font-weight: bold;
+    width: 200px;
+    height: 100%;
+  }
+  .OpenSafetySign {
+    border-top: 1px solid black;
+    margin-bottom: -6px;
+    margin-left: -6px;
+    margin-right: -6px;
+  }
+  .WireLabel {
+    overflow: auto;
+    word-wrap: break-word;
+    width: 100px;
+  }
+  .WirePanel {
+    display: inline-table;
+    margin-bottom: 6px;
+    span {
+      border: 2px solid black;
+    }
+  }
+  .WireControl {
+    height: 50px;
+  }
+  .WireSketch {
+    border: 1px solid white;
+    height: 100%;
+    width: 2px;
+  }
+}

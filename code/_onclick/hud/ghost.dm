@@ -4,7 +4,7 @@
 /atom/movable/screen/ghost/MouseEntered()
 	flick(icon_state + "_anim", src)
 
-/atom/movable/screen/ghost/attack_ghost(mob/dead/observer/user)
+/atom/movable/screen/attack_ghost(mob/dead/observer/user)
 	Click()
 
 /atom/movable/screen/ghost/follow_ghosts
@@ -15,21 +15,30 @@
 	var/mob/dead/observer/G = usr
 	G.follow()
 
+/atom/movable/screen/ghost/minimap
+	name = "Minimap"
+	icon_state = "minimap"
+
+/atom/movable/screen/ghost/minimap/Click()
+	var/mob/dead/observer/ghost = usr
+
+	ghost.minimap.action_activate()
+
 // /atom/movable/screen/ghost/follow_xeno
-// 	name = "Follow Xeno"
-// 	icon_state = "follow_xeno"
+// name = "Follow Xeno"
+// icon_state = "follow_xeno"
 
 // /atom/movable/screen/ghost/follow_xeno/Click()
-// 	var/mob/dead/observer/G = usr
-// 	G.follow_xeno()
+// var/mob/dead/observer/G = usr
+// G.follow_xeno()
 
 // /atom/movable/screen/ghost/follow_human
-// 	name = "Follow Humans"
-// 	icon_state = "follow_human"
+// name = "Follow Humans"
+// icon_state = "follow_human"
 
 // /atom/movable/screen/ghost/follow_human/Click()
-// 	var/mob/dead/observer/G = usr
-// 	G.follow_human()
+// var/mob/dead/observer/G = usr
+// G.follow_human()
 
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
@@ -39,6 +48,14 @@
 	var/mob/dead/observer/G = usr
 	G.reenter_corpse()
 
+/atom/movable/screen/ghost/toggle_huds
+	name = "Toggle HUDs"
+	icon_state = "ghost_hud_toggle"
+
+/atom/movable/screen/ghost/toggle_huds/Click()
+	var/client/client = usr.client
+	client.toggle_ghost_hud()
+
 /datum/hud/ghost/New(mob/owner, ui_style='icons/mob/hud/human_white.dmi', ui_color, ui_alpha = 230)
 	. = ..()
 	var/atom/movable/screen/using
@@ -47,23 +64,26 @@
 	using.screen_loc = ui_ghost_slot2
 	static_inventory += using
 
-	// using = new /atom/movable/screen/ghost/follow_xeno()
-	// using.screen_loc = ui_ghost_slot2
-	// static_inventory += using
+	using = new /atom/movable/screen/ghost/minimap()
+	using.screen_loc = ui_ghost_slot3
+	static_inventory += using
 
 	// using = new /atom/movable/screen/ghost/follow_human()
 	// using.screen_loc = ui_ghost_slot3
 	// static_inventory += using
 
 	using = new /atom/movable/screen/ghost/reenter_corpse()
-	using.screen_loc = ui_ghost_slot3
+	using.screen_loc = ui_ghost_slot4
 	static_inventory += using
 
+	using = new /atom/movable/screen/ghost/toggle_huds()
+	using.screen_loc = ui_ghost_slot5
+	static_inventory += using
 
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)
 	// don't show this HUD if observing; show the HUD of the observee
 	var/mob/dead/observer/O = mymob
-	if (istype(O) && O.observetarget)
+	if (istype(O) && O.observe_target_mob)
 		plane_masters_update()
 		return FALSE
 
@@ -71,7 +91,8 @@
 	if(!.)
 		return
 	var/mob/screenmob = viewmob || mymob
-/*	if(!screenmob.client.prefs.ghost_hud)
-		screenmob.client.screen -= static_inventory
-	else*/
-	screenmob.client.screen += static_inventory
+
+	if(!hud_shown)
+		screenmob.client.remove_from_screen(static_inventory)
+	else
+		screenmob.client.add_to_screen(static_inventory)

@@ -1,7 +1,8 @@
 /obj/effect/landmark/interior
 	name = "interior marker"
+	var/datum/interior/parent
 
-/obj/effect/landmark/interior/proc/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/proc/on_load(datum/interior/I)
 	return
 
 /*
@@ -12,7 +13,7 @@
 	name = "interior interactable spawner"
 
 // Interiors will call this when they're created
-/obj/effect/landmark/interior/spawn/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/on_load(datum/interior/I)
 	qdel(src)
 
 // Entrance & exit spawner
@@ -22,7 +23,7 @@
 
 	var/exit_type = /obj/structure/interior_exit
 
-/obj/effect/landmark/interior/spawn/entrance/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/entrance/on_load(datum/interior/I)
 	var/exit_path = exit_type
 	if(!exit_path)
 		return
@@ -41,7 +42,7 @@
 	E.pixel_y = pixel_y
 	// Don't qdel this because it's used for entering as well
 
-/obj/effect/landmark/interior/spawn/entrance/step_toward/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/entrance/step_toward/on_load(datum/interior/I)
 	var/exit_path = exit_type
 	if(!exit_path)
 		return
@@ -62,7 +63,7 @@
 	icon_state = "comfychair"
 	color = "red"
 
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/S = new(loc)
 
 	S.icon = icon
@@ -86,7 +87,7 @@
 	icon_state = "comfychair"
 	color = "blue"
 
-/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/gunner/S = new(loc)
 
 	S.icon = icon
@@ -108,7 +109,7 @@
 	icon_state = "armor_chair"
 	color = "red"
 
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/armor/S = new(loc)
 
 	S.icon = icon
@@ -130,7 +131,7 @@
 	icon_state = "armor_chair"
 	color = "blue"
 
-/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/gunner/armor/S = new(loc)
 
 	S.icon = icon
@@ -151,7 +152,7 @@
 	icon_state = "armor_chair"
 	color = "#00ad00"
 
-/obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/support_gunner/S = new(loc)
 
 	S.icon = icon
@@ -170,7 +171,7 @@
 	name = "2nd support gunner's seat spawner"
 	color = "#b1b100"
 
-/obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/second/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/second/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/support_gunner/second/S = new(loc)
 
 	S.icon = icon
@@ -191,7 +192,7 @@
 	icon_state = "vehicle_camera"
 	color = "#00c5cc"
 
-/obj/effect/landmark/interior/spawn/interior_camera/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/interior_camera/on_load(datum/interior/I)
 
 	var/obj/structure/machinery/camera/vehicle/CAM = new(loc)
 
@@ -214,7 +215,7 @@
 	icon_state = "wall_phone"
 	color = "yellow"
 
-/obj/effect/landmark/interior/spawn/telephone/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/telephone/on_load(datum/interior/I)
 	var/obj/structure/transmitter/Phone = new(loc)
 
 	Phone.icon = icon
@@ -237,7 +238,7 @@
 	icon_state = "weapons_loader"
 	color = "#00920c"
 
-/obj/effect/landmark/interior/spawn/weapons_loader/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/weapons_loader/on_load(datum/interior/I)
 	var/obj/structure/weapons_loader/R = new(loc)
 
 	R.icon = icon
@@ -259,7 +260,7 @@
 	layer = INTERIOR_DOOR_LAYER
 	color = "#009cb8"
 
-/obj/effect/landmark/interior/spawn/interior_viewport/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/interior_viewport/on_load(datum/interior/I)
 	var/obj/structure/interior_viewport/V = new(loc)
 
 	V.dir = dir
@@ -279,7 +280,7 @@
 	layer = INTERIOR_DOOR_LAYER
 	color = "#009cb8"
 
-/obj/effect/landmark/interior/spawn/interior_viewport/simple/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/on_load(datum/interior/I)
 	var/obj/structure/interior_viewport/simple/V = new(loc)
 
 	V.vehicle = I.exterior
@@ -298,7 +299,7 @@
 	color = "#009cb8"
 	alpha = 80
 
-/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield/on_load(datum/interior/I)
 	var/obj/structure/interior_viewport/simple/windshield/V = new(loc)
 
 	V.vehicle = I.exterior

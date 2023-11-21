@@ -155,7 +155,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "X" = (
-/obj/item/weapon/gun/boltaction/colony{
+/obj/item/weapon/gun/boltaction{
 	pixel_x = -6
 	},
 /turf/open/floor/shiva{

@@ -11,29 +11,29 @@
 	build_path = M.type
 
 //TODO: Move these into computer/camera.dm
-/obj/item/circuitboard/computer/security
-	name = "Circuit board (Security Camera Monitor)"
-	build_path = /obj/structure/machinery/computer/security
+/obj/item/circuitboard/computer/cameras
+	name = "Circuit board (security camera monitor)"
+	build_path = /obj/structure/machinery/computer/cameras
 	var/network = list(CAMERA_NET_MILITARY)
 	req_access = list(ACCESS_MARINE_BRIG)
 	var/locked = 1
 
-/obj/item/circuitboard/computer/security/construct(var/obj/structure/machinery/computer/security/C)
+/obj/item/circuitboard/computer/cameras/construct(obj/structure/machinery/computer/cameras/C)
 	if (..(C))
 		C.network = network
 
-/obj/item/circuitboard/computer/security/deconstruct(var/obj/structure/machinery/computer/security/C)
+/obj/item/circuitboard/computer/cameras/disassemble(obj/structure/machinery/computer/cameras/C)
 	if (..(C))
 		network = C.network
 
-/obj/item/circuitboard/computer/security/engineering
+/obj/item/circuitboard/computer/cameras/engineering
 	name = "Circuit board (Engineering Camera Monitor)"
-	build_path = /obj/structure/machinery/computer/security/engineering
+	build_path = /obj/structure/machinery/computer/cameras/engineering
 	network = list("Engineering","Power Alarms","Atmosphere Alarms","Fire Alarms")
 	req_access = list()
-/obj/item/circuitboard/computer/security/mining
+/obj/item/circuitboard/computer/cameras/mining
 	name = "Circuit board (Mining Camera Monitor)"
-	build_path = /obj/structure/machinery/computer/security/mining
+	build_path = /obj/structure/machinery/computer/cameras/mining
 	network = list("MINE")
 	req_access = list()
 
@@ -96,9 +96,9 @@
 /obj/item/circuitboard/computer/atmos_alert
 	name = "Circuit board (Atmospheric Alert)"
 	build_path = /obj/structure/machinery/computer/atmos_alert
-/obj/item/circuitboard/computer/pod
-	name = "Circuit board (Massdriver control)"
-	build_path = /obj/structure/machinery/computer/pod
+/obj/item/circuitboard/computer/pod/old
+	name = "Circuit board (DoorMex)"
+	build_path = /obj/structure/machinery/computer/pod/old
 /obj/item/circuitboard/computer/robotics
 	name = "Circuit board (Robotics Control)"
 	build_path = /obj/structure/machinery/computer/robotics
@@ -117,15 +117,6 @@
 /obj/item/circuitboard/computer/powermonitor
 	name = "Circuit board (Power Monitor)"
 	build_path = /obj/structure/machinery/power/monitor
-/obj/item/circuitboard/computer/olddoor
-	name = "Circuit board (DoorMex)"
-	build_path = /obj/structure/machinery/computer/pod/old
-/obj/item/circuitboard/computer/syndicatedoor
-	name = "Circuit board (ProComp Executive)"
-	build_path = /obj/structure/machinery/computer/pod/old/syndicate
-/obj/item/circuitboard/computer/swfdoor
-	name = "Circuit board (Magix)"
-	build_path = /obj/structure/machinery/computer/pod/old/swf
 /obj/item/circuitboard/computer/prisoner
 	name = "Circuit board (Prisoner Management)"
 	build_path = /obj/structure/machinery/computer/prisoner
@@ -158,15 +149,71 @@
 	name = "Circuit board (ASRS console)"
 	build_path = /obj/structure/machinery/computer/supplycomp
 
-	var/contraband_enabled = 0
+	var/contraband_enabled = FALSE
+	var/black_market_lock = FALSE
 
-/obj/item/circuitboard/computer/supplycomp/construct(var/obj/structure/machinery/computer/supplycomp/SC)
+/obj/item/circuitboard/computer/supplycomp/construct(obj/structure/machinery/computer/supplycomp/SC)
 	if (..(SC))
-		SC.can_order_contraband = contraband_enabled
+		SC.toggle_contraband(contraband_enabled)
+		SC.lock_black_market(black_market_lock)
 
-/obj/item/circuitboard/computer/supplycomp/deconstruct(var/obj/structure/machinery/computer/supplycomp/SC)
+/obj/item/circuitboard/computer/supplycomp/disassemble(obj/structure/machinery/computer/supplycomp/SC)
+	if(SC.can_order_contraband)
+		contraband_enabled = TRUE
+	if(SC.black_market_lockout)
+		black_market_lock = TRUE
 	if (..(SC))
-		contraband_enabled = SC.can_order_contraband
+		SC.toggle_contraband(contraband_enabled)
+		SC.lock_black_market(black_market_lock)
+
+/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)
+	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens. Maybe you need something more specialized?"))
+		return
+
+	else if(HAS_TRAIT(tool, TRAIT_TOOL_BLACKMARKET_HACKER))
+		to_chat(user, SPAN_WARNING("You start messing around with the electronics of [src]..."))
+		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
+				return
+			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
+			if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(!contraband_enabled)
+					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [tool], and a red light starts blinking on and off on the board. Put it back in?"))
+					contraband_enabled = TRUE
+				else
+					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [tool], and the red light stops blinking, turning off. It's probably good now."))
+					contraband_enabled = FALSE
+
+	else if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))
+		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+			to_chat(user, SPAN_NOTICE("You do not know how to use [tool]"))
+			return
+
+		if(black_market_lock)
+			to_chat(user, SPAN_NOTICE("[src] has already been reset."))
+			return
+
+		if(user.action_busy)
+			to_chat(user, "You are too busy with other actions to fix any tampering.")
+			return
+
+		playsound(tool, 'sound/machines/lockenable.ogg', 25)
+		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),\
+		SPAN_NOTICE("You begin to fix any tampering to [src]."))
+		tool.icon_state = "[tool.icon_state]_on"
+
+		if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, tool, INTERRUPT_ALL))
+			tool.icon_state = initial(tool.icon_state)
+			return
+
+		playsound(tool, 'sound/machines/ping.ogg', 25)
+		black_market_lock = TRUE
+		contraband_enabled = FALSE
+		tool.icon_state = initial(tool.icon_state)
+
+	else ..()
 
 /obj/item/circuitboard/computer/supplycomp/vehicle
 	name = "Circuit board (vehicle ASRS console)"
@@ -174,12 +221,12 @@
 	var/spent = FALSE //so that they can't just reconstruct the console to get another APC
 	var/tank_unlocked = FALSE
 
-/obj/item/circuitboard/computer/supplycomp/vehicle/construct(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+/obj/item/circuitboard/computer/supplycomp/vehicle/construct(obj/structure/machinery/computer/supplycomp/vehicle/SCV)
 	if (..(SCV))
 		SCV.spent = spent
 		SCV.tank_unlocked = tank_unlocked
 
-/obj/item/circuitboard/computer/supplycomp/vehicle/deconstruct(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+/obj/item/circuitboard/computer/supplycomp/vehicle/disassemble(obj/structure/machinery/computer/supplycomp/vehicle/SCV)
 	if (..(SCV))
 		spent = SCV.spent
 		tank_unlocked = SCV.tank_unlocked
@@ -214,30 +261,7 @@
 	build_path = /obj/structure/machinery/computer/research/main_terminal
 
 
-
-/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/I as obj, mob/user as mob)
-	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
-		var/catastasis = src.contraband_enabled
-		var/opposite_catastasis
-		if(catastasis)
-			opposite_catastasis = "STANDARD"
-			catastasis = "BROAD"
-		else
-			opposite_catastasis = "BROAD"
-			catastasis = "STANDARD"
-
-		switch( alert("Current receiver spectrum is set to: [catastasis]","Multitool-Circuitboard interface","Switch to [opposite_catastasis]","Cancel") )
-		//switch( alert("Current receiver spectrum is set to: " {(src.contraband_enabled) ? ("BROAD") : ("STANDARD")} , "Multitool-Circuitboard interface" , "Switch to " {(src.contraband_enabled) ? ("STANDARD") : ("BROAD")}, "Cancel") )
-			if("Switch to STANDARD","Switch to BROAD")
-				src.contraband_enabled = !src.contraband_enabled
-
-			if("Cancel")
-				return
-			else
-				to_chat(user, "DERP! BUG! Report this (And what you were doing to cause it) to Agouri")
-	return
-
-/obj/item/circuitboard/computer/security/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/circuitboard/computer/cameras/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/card/id))
 		if(check_access(I))
 			locked = !locked

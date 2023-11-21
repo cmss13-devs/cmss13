@@ -15,8 +15,8 @@
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	flags_armor_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 	unacidable = TRUE
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -28,27 +28,35 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
-	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
+	var/notification_sound = TRUE // Whether the bracer pings when a message comes or not
 	var/charge = 1500
 	var/charge_max = 1500
-	var/cloaked = 0
+	/// The amount charged per process
+	var/charge_rate = 30
+	/// Cooldown on draining power from APC
+	var/charge_cooldown = COOLDOWN_BRACER_CHARGE
 	var/cloak_timer = 0
 	var/cloak_malfunction = 0
+	/// Determines the alpha level of the cloaking device.
+	var/cloak_alpha = 50
+	/// If TRUE will change the mob invisibility level, providing 100% invisibility. Exclusively for events.
+	var/true_cloak = FALSE
 
 	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
+	COOLDOWN_DECLARE(bracer_recharge)
+	/// What minimap icon this bracer should have
+	var/minimap_icon = "predator"
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_HANDS)
-		flags_item |= NODROP
 		START_PROCESSING(SSobj, src)
-		if(isYautja(user))
-			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
-		else
-			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
 		if(!owner)
 			owner = user
+		toggle_lock_internal(user, TRUE)
+		RegisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH), PROC_REF(update_minimap_icon))
+		INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), user)
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -60,33 +68,76 @@
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
 	STOP_PROCESSING(SSobj, src)
 	flags_item = initial(flags_item)
+	UnregisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH))
+	SSminimaps.remove_marker(user)
+	unlock_bracer() // So as to prevent the bracer being stuck with nodrop if the pred gets gibbed/arm removed/etc.
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
 	..()
-	if(!isYautja(user))
+	if(!isyautja(user))
 		to_chat(user, SPAN_WARNING("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
 
 /obj/item/clothing/gloves/yautja/process()
 	if(!ishuman(loc))
 		STOP_PROCESSING(SSobj, src)
 		return
-	var/mob/living/carbon/human/H = loc
+	var/mob/living/carbon/human/human_holder = loc
 
-	charge = min(charge + 30, charge_max)
-	var/perc_charge = (charge / charge_max * 100)
-	H.update_power_display(perc_charge)
+	if(charge < charge_max)
+		var/charge_increase = charge_rate
+		if(is_ground_level(human_holder.z))
+			charge_increase = charge_rate / 6
+		else if(is_mainship_level(human_holder.z))
+			charge_increase = charge_rate / 3
+
+		charge = min(charge + charge_increase, charge_max)
+		var/perc_charge = (charge / charge_max * 100)
+		human_holder.update_power_display(perc_charge)
+
+	//Non-Yautja have a chance to get stunned with each power drain
+	if(!HAS_TRAIT(human_holder, TRAIT_CLOAKED))
+		return
+	if(human_holder.stat == DEAD)
+		decloak(human_holder, TRUE)
+	if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled && prob(2))
+		decloak(human_holder)
+		shock_user(human_holder)
 
 /// handles decloaking only on HUNTER gloves
 /obj/item/clothing/gloves/yautja/proc/decloak()
 	return
 
+/// Called to update the minimap icon of the predator
+/obj/item/clothing/gloves/yautja/proc/update_minimap_icon()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/human_owner = owner
+	var/turf/wearer_turf = get_turf(owner)
+	SSminimaps.remove_marker(owner)
+	if(!wearer_turf)
+		return
+
+	if(!isyautja(owner))
+		if(owner.stat >= DEAD)
+			if(human_owner.undefibbable)
+				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable"))
+			else
+				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("defibbable"))
+		else
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi')
+	else
+		if(owner?.stat >= DEAD)
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable")) //defib/undefib status doesn't really matter because they're gonna explode in the end regardless
+		else
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, 'icons/ui_icons/map_blips.dmi')
 /*
 *This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
 *It can take a negative value in amount to restore energy.
 *Also instantly updates the yautja power HUD display.
 */
-/obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/human, var/amount)
+/obj/item/clothing/gloves/yautja/proc/drain_power(mob/living/carbon/human/human, amount)
 	if(!human)
 		return FALSE
 	if(charge < amount)
@@ -97,18 +148,9 @@
 	var/perc = (charge / charge_max * 100)
 	human.update_power_display(perc)
 
-	//Non-Yautja have a chance to get stunned with each power drain
-	if(!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled)
-		if(prob(15))
-			if(cloaked)
-				decloak(human)
-				cloak_timer = world.time + 5 SECONDS
-			shock_user(human)
-			return FALSE
-
 	return TRUE
 
-/obj/item/clothing/gloves/yautja/proc/shock_user(var/mob/living/carbon/human/M)
+/obj/item/clothing/gloves/yautja/proc/shock_user(mob/living/carbon/human/M)
 	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
 		//Spark
 		playsound(M, 'sound/effects/sparks2.ogg', 60, 1)
@@ -117,8 +159,8 @@
 		s.start()
 		M.visible_message(SPAN_WARNING("[src] beeps and sends a shock through [M]'s body!"))
 		//Stun and knock out, scream in pain
-		M.Stun(2)
-		M.KnockDown(2)
+		M.apply_effect(2, STUN)
+		M.apply_effect(2, WEAKEN)
 		if(M.pain.feels_pain)
 			M.emote("scream")
 		//Apply a bit of burn damage
@@ -127,7 +169,7 @@
 
 //We use this to determine whether we should activate the given verb, or a random verb
 //0 - do nothing, 1 - random function, 2 - this function
-/obj/item/clothing/gloves/yautja/hunter/proc/check_random_function(var/mob/living/carbon/human/user, var/forced = FALSE, var/always_delimb = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/check_random_function(mob/living/carbon/human/user, forced = FALSE, always_delimb = FALSE)
 	if(!istype(user))
 		return TRUE
 
@@ -139,10 +181,10 @@
 
 	var/workingProbability = 20
 	var/randomProbability = 10
-	if(isSynth(user)) // Synths are smart, they can figure this out pretty well
+	if(issynth(user)) // Synths are smart, they can figure this out pretty well
 		workingProbability = 40
 		randomProbability = 4
-	else if(isResearcher(user)) // Researchers are sort of smart, they can sort of figure this out
+	else if(isresearcher(user)) // Researchers are sort of smart, they can sort of figure this out
 		workingProbability = 25
 		randomProbability = 7
 
@@ -181,14 +223,29 @@
 	desc = "A pair of strange alien bracers, adapted for human biology."
 
 	color = "#b85440"
+	minimap_icon = "thrall"
 
+
+/obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/human_owner = owner
+	var/turf/wearer_turf = get_turf(owner)
+	if(owner.stat >= DEAD)
+		if(human_owner.undefibbable)
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("undefibbable"))
+		else
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("defibbable"))
+	else
+		SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon)
 
 /obj/item/clothing/gloves/yautja/hunter
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
 
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -198,6 +255,8 @@
 
 	charge = 3000
 	charge_max = 3000
+
+	cloak_alpha = 10
 
 	var/exploding = 0
 	var/inject_timer = 0
@@ -209,7 +268,7 @@
 	var/caster_material = "ebony"
 
 	var/obj/item/card/id/bracer_chip/embedded_id
-
+	var/owner_rank = CLAN_RANK_UNBLOODED_INT
 
 	var/caster_deployed = FALSE
 	var/obj/item/weapon/gun/energy/yautja/plasma_caster/caster
@@ -218,8 +277,10 @@
 	var/obj/item/weapon/wristblades/left_wristblades
 	var/obj/item/weapon/wristblades/right_wristblades
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, var/new_translator_type, var/new_caster_material)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_caster_material, new_owner_rank)
 	. = ..()
+	if(new_owner_rank)
+		owner_rank = new_owner_rank
 	embedded_id = new(src)
 	if(new_translator_type)
 		translator_type = new_translator_type
@@ -230,13 +291,14 @@
 	right_wristblades = new(src)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
+	. = ..()
 	charge = max(charge - (severity * 500), 0)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.gloves == src)
 			wearer.visible_message(SPAN_DANGER("You hear a hiss and crackle!"), SPAN_DANGER("Your bracers hiss and spark!"), SPAN_DANGER("You hear a hiss and crackle!"))
-			if(cloaked)
-				decloak(wearer)
+			if(HAS_TRAIT(wearer, TRAIT_CLOAKED))
+				decloak(wearer, TRUE, DECLOAK_EMP)
 		else
 			var/turf/our_turf = get_turf(src)
 			our_turf.visible_message(SPAN_DANGER("You hear a hiss and crackle!"), SPAN_DANGER("You hear a hiss and crackle!"))
@@ -250,11 +312,11 @@
 			embedded_id.set_user_data(user)
 
 //Any projectile can decloak a predator. It does defeat one free bullet though.
-/obj/item/clothing/gloves/yautja/hunter/proc/bullet_hit(mob/living/carbon/human/H, obj/item/projectile/P)
+/obj/item/clothing/gloves/yautja/hunter/proc/bullet_hit(mob/living/carbon/human/H, obj/projectile/P)
 	SIGNAL_HANDLER
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_XENO_ACID)) //<--- These will auto uncloak.
+	if(ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_ACIDIC)) //<--- These will auto uncloak.
 		decloak(H) //Continue on to damage.
 	else if(prob(20))
 		decloak(H)
@@ -276,33 +338,29 @@
 
 	var/mob/living/carbon/human/human = loc
 
-	if(cloaked)
-		charge = max(charge - 10, 0)
-		if(charge <= 0)
-			decloak(loc)
-		//Non-Yautja have a chance to get stunned with each power drain
-		if(!isYautja(human))
-			if(prob(15))
-				decloak(human)
-				shock_user(human)
-		return
+	//Non-Yautja have a chance to get stunned with each power drain
+	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(4))
+		if(HAS_TRAIT(human, TRAIT_CLOAKED))
+			decloak(human, TRUE, DECLOAK_SPECIES)
+		shock_user(human)
+
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)
 	move_chip_to_bracer()
-	if(cloaked)
-		decloak(user)
+	if(HAS_TRAIT(user, TRAIT_CLOAKED))
+		decloak(user, TRUE)
 	..()
 
 /obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/human = loc
-		if(cloaked)
-			decloak(human)
+		if(HAS_TRAIT(human, TRAIT_CLOAKED))
+			decloak(human, TRUE)
 	. = ..()
 
 //We use this to activate random verbs for non-Yautja
-/obj/item/clothing/gloves/yautja/hunter/proc/activate_random_verb(var/mob/caller)
+/obj/item/clothing/gloves/yautja/hunter/proc/activate_random_verb(mob/caller)
 	var/option = rand(1, 11)
 	//we have options from 1 to 8, but we're giving the user a higher probability of being punished if they already rolled this bad
 	switch(option)
@@ -317,7 +375,7 @@
 		if(5)
 			. = injectors_internal(caller, TRUE)
 		if(6)
-			. = call_disk_internal(caller, TRUE)
+			. = call_disc_internal(caller, TRUE)
 		if(7)
 			. = translate_internal(caller, TRUE)
 		if(8)
@@ -326,10 +384,10 @@
 			. = delimb_user(caller)
 
 //This is used to punish people that fiddle with technology they don't understand
-/obj/item/clothing/gloves/yautja/hunter/proc/delimb_user(var/mob/living/carbon/human/user)
+/obj/item/clothing/gloves/yautja/hunter/proc/delimb_user(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	if(isYautja(user))
+	if(isyautja(user))
 		return
 
 	var/obj/limb/O = user.get_limb(check_zone("r_arm"))
@@ -341,10 +399,6 @@
 	playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 	return TRUE
 
-// Toggle the notification sound
-/obj/item/clothing/gloves/yautja/hunter/toggle_notification_sound()
-	set category = "Yautja.Misc"
-
 //Should put a cool menu here, like ninjas.
 /obj/item/clothing/gloves/yautja/hunter/verb/wristblades()
 	set name = "Use Wrist Blades"
@@ -353,7 +407,7 @@
 	set src in usr
 	. = wristblades_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(var/mob/living/carbon/human/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(mob/living/carbon/human/caller, forced = FALSE)
 	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
 		return
 
@@ -405,7 +459,7 @@
 	set src in usr
 	. = track_gear_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/track_gear_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/track_gear_internal(mob/caller, forced = FALSE)
 	. = check_random_function(caller, forced)
 	if(.)
 		return
@@ -419,17 +473,19 @@
 	var/gear_on_almayer = 0
 	var/gear_low_orbit = 0
 	var/closest = 10000
+	/// The item itself, to be referenced so Yautja know what to look for.
+	var/obj/closest_item
 	var/direction = -1
 	var/atom/areaLoc = null
-	for(var/obj/item/I as anything in GLOB.loose_yautja_gear)
-		var/atom/loc = get_true_location(I)
-		if(I.anchored)
+	for(var/obj/item/tracked_item as anything in GLOB.loose_yautja_gear)
+		var/atom/loc = get_true_location(tracked_item)
+		if(tracked_item.anchored)
 			continue
-		if(is_honorable_carrier(recursive_holder_check(I)))
+		if(is_honorable_carrier(recursive_holder_check(tracked_item)))
 			continue
-		if(istype(get_area(I), /area/yautja))
+		if(istype(get_area(tracked_item), /area/yautja))
 			continue
-		if(is_loworbit_level(loc.z))
+		if(is_reserved_level(loc.z))
 			gear_low_orbit++
 		else if(is_mainship_level(loc.z))
 			gear_on_almayer++
@@ -439,6 +495,7 @@
 			var/dist = get_dist(M,loc)
 			if(dist < closest)
 				closest = dist
+				closest_item = tracked_item
 				direction = get_dir(M,loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
@@ -446,7 +503,7 @@
 			continue
 		if(istype(get_area(Y), /area/yautja))
 			continue
-		if(is_loworbit_level(Y.z))
+		if(is_reserved_level(Y.z))
 			dead_low_orbit++
 		else if(is_mainship_level(Y.z))
 			dead_on_almayer++
@@ -470,9 +527,9 @@
 		output = TRUE
 		var/areaName = get_area_name(areaLoc)
 		if(closest == 0)
-			to_chat(M, SPAN_NOTICE("You are directly on top of the closest signature."))
+			to_chat(M, SPAN_NOTICE("You are directly on top of the[closest_item ? " <b>[closest_item.name]</b>'s" : ""] signature."))
 		else
-			to_chat(M, SPAN_NOTICE("The closest signature is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
+			to_chat(M, SPAN_NOTICE("The closest signature[closest_item ? ", a <b>[closest_item.name]</b>" : ""], is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
 	if(!output)
 		to_chat(M, SPAN_NOTICE("There are no signatures that require your attention."))
 	return TRUE
@@ -485,17 +542,18 @@
 	set src in usr
 	. = cloaker_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/cloaker_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/cloaker_internal(mob/caller, forced = FALSE)
 	. = check_random_function(caller, forced)
 	if(.)
 		return
 
 	var/mob/living/carbon/human/M = caller
+	var/new_alpha = cloak_alpha
 
 	if(!istype(M) || M.is_mob_incapacitated())
 		return FALSE
 
-	if(cloaked) //Turn it off.
+	if(HAS_TRAIT(caller, TRAIT_CLOAKED)) //Turn it off.
 		if(cloak_timer > world.time)
 			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
@@ -516,17 +574,21 @@
 		if(!drain_power(M, 50))
 			return FALSE
 
-		cloaked = TRUE
+		ADD_TRAIT(M, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 
-		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, .proc/wrapper_fizzle_camouflage)
-		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, .proc/bullet_hit)
+		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
+		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
+		RegisterSignal(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak))
 
 		cloak_timer = world.time + 1.5 SECONDS
+		if(true_cloak)
+			M.invisibility = INVISIBILITY_LEVEL_ONE
+			M.see_invisible = SEE_INVISIBLE_LEVEL_ONE
 
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
-		animate(M, alpha = 10, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
+		animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
 
 		var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
@@ -546,24 +608,29 @@
 	sparks.set_up(5, 4, src)
 	sparks.start()
 
-	decloak(wearer, TRUE)
+	decloak(wearer, TRUE, DECLOAK_EXTINGUISHER)
 
-/obj/item/clothing/gloves/yautja/hunter/decloak(var/mob/user, forced)
+/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multipler = DECLOAK_FORCED)
 	if(!user)
 		return
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
+	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
+	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
 	if(forced)
-		cloak_malfunction = world.time + 10 SECONDS
+		cloak_malfunction = world.time + decloak_timer
 
-	cloaked = FALSE
-	log_game("[key_name_admin(usr)] has disabled their cloaking device.")
+	REMOVE_TRAIT(user, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
+	log_game("[key_name_admin(user)] has disabled their cloaking device.")
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
 	playsound(user.loc, 'sound/effects/pred_cloakoff.ogg', 15, 1)
 	user.alpha = initial(user.alpha)
-	cloak_timer = world.time + 5 SECONDS
+	if(true_cloak)
+		user.invisibility = initial(user.invisibility)
+		user.see_invisible = initial(user.see_invisible)
+	cloak_timer = world.time + (DECLOAK_STANDARD / 2)
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(user)
@@ -580,7 +647,7 @@
 	set src in usr
 	. = caster_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(var/mob/living/carbon/human/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(mob/living/carbon/human/caller, forced = FALSE)
 	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
 		return
 
@@ -610,19 +677,21 @@
 	return TRUE
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/explode(var/mob/living/carbon/victim)
+/obj/item/clothing/gloves/yautja/hunter/proc/explode(mob/living/carbon/victim)
 	set waitfor = 0
 
 	if (exploding)
 		return
 
+	notify_ghosts(header = "Yautja self destruct", message = "[victim] is self destructing to protect their honor!", source = victim, action = NOTIFY_ORBIT)
+
 	exploding = 1
 	var/turf/T = get_turf(src)
-	if(explosion_type == SD_TYPE_BIG && victim.stat == CONSCIOUS && is_ground_level(T.z))
+	if(explosion_type == SD_TYPE_BIG && victim.stat == CONSCIOUS && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
-	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
+	message_admins(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
 	T = get_turf(src)
@@ -632,7 +701,7 @@
 			victim.gib() // kills the pred
 			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self-destruct", victim)
-		if(explosion_type == SD_TYPE_BIG && is_ground_level(T.z))
+		if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
@@ -662,14 +731,14 @@
 	set src in usr
 	. = activate_suicide_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/activate_suicide_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/activate_suicide_internal(mob/caller, forced = FALSE)
 	. = check_random_function(caller, forced, TRUE)
 	if(.)
 		return
 
 	var/mob/living/carbon/human/M = caller
 
-	if(cloaked)
+	if(HAS_TRAIT(M, TRAIT_CLOAKED))
 		to_chat(M, SPAN_WARNING("Not while you're cloaked. It might disrupt the sequence."))
 		return
 	if(M.stat == DEAD)
@@ -685,15 +754,18 @@
 	var/obj/item/grab/G = M.get_active_hand()
 	if(istype(G))
 		var/mob/living/carbon/human/victim = G.grabbed_thing
-		if(isYautja(victim) && victim.stat == DEAD)
+		if(victim.stat == DEAD)
 			var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
+			var/message = "Are you sure you want to detonate this [victim.species]'s bracer?"
+			if(isspeciesyautja(victim))
+				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
 			if(istype(bracer))
-				if(forced || alert("Are you sure you want to send this [victim.species] into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
+				if(forced || alert(message,"Explosive Bracers", "Yes", "No") == "Yes")
 					if(M.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
 						if(A)
-							message_staff(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
+							message_admins(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] [ADMIN_JMP(T)]</font>"))
 							log_attack("[key_name(M)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
 						if (!bracer.exploding)
 							bracer.explode(victim)
@@ -718,12 +790,13 @@
 				return
 			exploding = FALSE
 			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
-			message_staff("[M] ([M.key]) has deactivated their Self-Destruct.")
+			message_all_yautja("[M.real_name] has cancelled their bracer's self-destruction sequence.")
+			message_admins("[key_name(M)] has deactivated their Self-Destruct.")
 		return
 	if(istype(M.wear_mask,/obj/item/clothing/mask/facehugger) || (M.status_flags & XENO_HOST))
 		to_chat(M, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
 		return
-	if(forced || alert("Detonate the bracers? Are you sure?","Explosive Bracers", "Yes", "No") == "Yes")
+	if(forced || alert("Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.","Explosive Bracers", "Yes", "No") == "Yes")
 		if(M.gloves != src)
 			return
 		if(M.stat == DEAD)
@@ -737,7 +810,7 @@
 		to_chat(M, SPAN_DANGER("You set the timer. May your journey to the great hunting grounds be swift."))
 		var/area/A = get_area(M)
 		var/turf/T = get_turf(M)
-		message_staff(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
+		message_admins(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] [ADMIN_JMP(T)]"))
 		log_attack("[key_name(M)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
 		message_all_yautja("[M.real_name] has triggered their bracer's self-destruction sequence.")
 		explode(M)
@@ -753,7 +826,7 @@
 	. = injectors_internal(usr, FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/injectors_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/injectors_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -769,11 +842,11 @@
 		to_chat(caller, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
 		return FALSE
 
-	if(!drain_power(caller, 1000))
+	if(!drain_power(caller, 400))
 		return FALSE
 
 	inject_timer = TRUE
-	addtimer(CALLBACK(src, .proc/injectors_ready), 2 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(injectors_ready)), 2 MINUTES)
 
 	to_chat(caller, SPAN_NOTICE("You feel a faint hiss and a crystalline injector drops into your hand."))
 	var/obj/item/reagent_container/hypospray/autoinjector/yautja/O = new(caller)
@@ -794,7 +867,7 @@
 	. = healing_capsule_internal(usr, FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -810,11 +883,11 @@
 		to_chat(usr, SPAN_WARNING("Your bracer is still generating a new healing capsule!"))
 		return FALSE
 
-	if(!drain_power(caller, 800))
+	if(!drain_power(caller, 600))
 		return FALSE
 
 	healing_capsule_timer = TRUE
-	addtimer(CALLBACK(src, .proc/healing_capsule_ready), 4 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(healing_capsule_ready)), 4 MINUTES)
 
 	to_chat(caller, SPAN_NOTICE("You feel your bracer churn as it pops out a healing capsule."))
 	var/obj/item/tool/surgery/healing_gel/O = new(caller)
@@ -827,15 +900,15 @@
 		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new healing capsule is ready to be created."))
 	healing_capsule_timer = FALSE
 
-/obj/item/clothing/gloves/yautja/hunter/verb/call_disk()
+/obj/item/clothing/gloves/yautja/hunter/verb/call_disc()
 	set name = "Call Smart-Disc"
 	set category = "Yautja.Weapons"
 	set desc = "Call back your smart-disc, if it's in range. If not you'll have to go retrieve it."
 	set src in usr
-	. = call_disk_internal(usr, FALSE)
+	. = call_disc_internal(usr, FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/call_disk_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/call_disc_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -871,7 +944,7 @@
 	set src in usr
 	. = remove_tracked_item_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/remove_tracked_item_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/remove_tracked_item_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -898,7 +971,7 @@
 	set src in usr
 	. = add_tracked_item_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/add_tracked_item_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/add_tracked_item_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -924,7 +997,7 @@
 	set src in usr
 	. = call_combi_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/call_combi_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/call_combi_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -932,17 +1005,10 @@
 	if(.)
 		return
 
-	for(var/obj/item/weapon/melee/yautja/combistick/C in range(7))
-		if(caller.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
-			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
-				return TRUE
-			caller.visible_message(SPAN_WARNING("<b>[caller] yanks [C]'s chain back!</b>"), SPAN_WARNING("<b>You yank [C]'s chain back!</b>"))
-		else if(caller.put_in_inactive_hand(C))///...Try putting it in our inactive hand.
-			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
-				return TRUE
-			caller.visible_message(SPAN_WARNING("<b>[caller] yanks [C]'s chain back!</b>"), SPAN_WARNING("<b>You yank [C]'s chain back!</b>"))
-		else //If neither hand can hold it, you must not have a free hand.
-			to_chat(caller, SPAN_WARNING("You need a free hand to do this!</b>"))
+	for(var/datum/effects/tethering/tether in caller.effects_list)
+		if(istype(tether.tethered.affected_atom, /obj/item/weapon/yautja/combistick))
+			var/obj/item/weapon/yautja/combistick/stick = tether.tethered.affected_atom
+			stick.recall()
 
 /obj/item/clothing/gloves/yautja/hunter/verb/translate()
 	set name = "Translator"
@@ -951,7 +1017,7 @@
 	set src in usr
 	. = translate_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/caller, forced = FALSE)
 	if(!caller || caller.stat)
 		return
 
@@ -959,9 +1025,13 @@
 	if(.)
 		return
 
-	caller.set_typing_indicator(TRUE, "translator")
+	if(caller.client.prefs.muted & MUTE_IC)
+		to_chat(caller, SPAN_DANGER("You cannot translate (muted)."))
+		return
+
+	caller.create_typing_indicator()
 	var/msg = sanitize(input(caller, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
-	caller.set_typing_indicator(FALSE, "translator")
+	caller.remove_typing_indicator()
 	if(!msg || !caller.client)
 		return
 
@@ -1047,3 +1117,77 @@
 		M.u_equip(embedded_id, src, FALSE, TRUE)
 	else
 		embedded_id.forceMove(src)
+
+/// Verb to let Yautja attempt the unlocking.
+/obj/item/clothing/gloves/yautja/hunter/verb/toggle_lock()
+	set name = "Toggle Bracer Lock"
+	set desc = "Toggle the lock on your bracers, allowing them to be removed."
+	set category = "Yautja.Misc"
+	set src in usr
+
+	if(usr.stat)
+		to_chat(usr, SPAN_WARNING("You can't do that right now..."))
+		return FALSE
+	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+		to_chat(usr, SPAN_WARNING("You have no idea how to use this..."))
+		return FALSE
+
+	attempt_toggle_lock(usr, FALSE)
+	return TRUE
+
+/// Handles all the locking and unlocking of bracers.
+/obj/item/clothing/gloves/yautja/proc/attempt_toggle_lock(mob/user, force_lock)
+	if(!user)
+		return FALSE
+
+	var/obj/item/grab/held_mob = user.get_active_hand()
+	if(!istype(held_mob))
+		log_attack("[key_name_admin(usr)] has unlocked their own bracer.")
+		toggle_lock_internal(user)
+		return TRUE
+
+	var/mob/living/carbon/human/victim = held_mob.grabbed_thing
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
+	if(isspeciesyautja(victim) && !(victim.stat == DEAD))
+		to_chat(user, SPAN_WARNING("You cannot unlock the bracer of a living hunter!"))
+		return FALSE
+
+	if(!istype(bracer))
+		to_chat(user, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
+		return FALSE
+
+	if(alert("Are you sure you want to unlock this [victim.species]'s bracer?", "Unlock Bracers", "Yes", "No") != "Yes")
+		return FALSE
+
+	if(user.get_active_hand() == held_mob && victim && victim.gloves == bracer)
+		log_interact(user, victim, "[key_name(user)] unlocked the [bracer.name] of [key_name(victim)].")
+		user.visible_message(SPAN_WARNING("[user] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You unlock the bracer."))
+		bracer.toggle_lock_internal(victim)
+		return TRUE
+
+/// The actual unlock/lock function.
+/obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/wearer, force_lock)
+	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
+		return unlock_bracer()
+
+	return lock_bracer()
+
+/obj/item/clothing/gloves/yautja/proc/lock_bracer(mob/wearer)
+	flags_item |= NODROP
+	flags_inventory |= CANTSTRIP
+	if(wearer)
+		if(isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+		else
+			to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	return TRUE
+
+/obj/item/clothing/gloves/yautja/proc/unlock_bracer(mob/wearer)
+	flags_item &= ~NODROP
+	flags_inventory &= ~CANTSTRIP
+	if(wearer)
+		if(!isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing its grip on your forearm."))
+		else
+			to_chat(wearer, SPAN_WARNING("With an angry blare, the bracer releases your forearm."))
+	return TRUE

@@ -6,15 +6,15 @@
 	name = "proxy bucket"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "bucket_proxy"
-	force = 3.0
-	throwforce = 10.0
+	force = 3
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	var/created_name = "Cleanbot"
 
 
-/obj/item/frame/bucket_sensor/attackby(var/obj/item/W, mob/user as mob)
+/obj/item/frame/bucket_sensor/attackby(obj/item/W, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/robot_parts/arm/l_arm) || istype(W, /obj/item/robot_parts/arm/r_arm))
 		user.drop_held_item()
@@ -26,7 +26,7 @@
 		user.temp_drop_inv_item(src)
 		qdel(src)
 
-	else if (istype(W, /obj/item/tool/pen))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
 		if (!t)
 			return
@@ -42,15 +42,15 @@
 	name = "tiles and toolbox"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "toolbox_tiles"
-	force = 3.0
-	throwforce = 10.0
+	force = 3
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	var/created_name = "Floorbot"
 
 
-/obj/item/frame/toolbox_tiles/attackby(var/obj/item/W, mob/user as mob)
+/obj/item/frame/toolbox_tiles/attackby(obj/item/W, mob/user as mob)
 	..()
 	if(isprox(W))
 		qdel(W)
@@ -61,7 +61,7 @@
 		user.temp_drop_inv_item(src)
 		qdel(src)
 
-	else if (istype(W, /obj/item/tool/pen))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
 		if (!t)
 			return
@@ -77,14 +77,14 @@
 	name = "tiles, toolbox and sensor arrangement"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "toolbox_tiles_sensor"
-	force = 3.0
-	throwforce = 10.0
+	force = 3
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	var/created_name = "Floorbot"
 
-/obj/item/frame/toolbox_tiles_sensor/attackby(var/obj/item/W, mob/user as mob)
+/obj/item/frame/toolbox_tiles_sensor/attackby(obj/item/W, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/robot_parts/arm/l_arm) || istype(W, /obj/item/robot_parts/arm/r_arm))
 		qdel(W)
@@ -94,7 +94,7 @@
 		to_chat(user, SPAN_NOTICE("You add the robot arm to the odd looking toolbox assembly! Boop beep!"))
 		user.temp_drop_inv_item(src)
 		qdel(src)
-	else if (istype(W, /obj/item/tool/pen))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/t = stripped_input(user, "Enter new robot name", src.name, src.created_name)
 
 		if (!t)
@@ -120,16 +120,16 @@
 	var/skin = null //Same as medbot, set to tox or ointment for the respective kits.
 	w_class = SIZE_MEDIUM
 
-	New()
-		..()
-		spawn(5)
-			if(src.skin)
-				src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "kit_skin_[src.skin]")
+/obj/item/frame/firstaid_arm_assembly/New()
+	..()
+	spawn(5)
+		if(src.skin)
+			src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "kit_skin_[src.skin]")
 
 
 /obj/item/frame/firstaid_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/tool/pen))
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
 		if (!t)
 			return

@@ -5,7 +5,7 @@
 	var/value
 	var/enabled = TRUE
 
-/datum/decorator/manual/admin_runtime/New(_decorate_type, _decorate_subtypes, _field, _value)	
+/datum/decorator/manual/admin_runtime/New(_decorate_type, _decorate_subtypes, _field, _value)
 	decorate_type = text2path("[_decorate_type]")
 	decorate_subtypes = _decorate_subtypes
 	field = _field
@@ -20,7 +20,7 @@
 	else
 		return list(decorate_type)
 
-/datum/decorator/manual/admin_runtime/decorate(var/atom/obj)
+/datum/decorator/manual/admin_runtime/decorate(atom/obj)
 	if(enabled)
 		obj.vars[field] = value
-	
+

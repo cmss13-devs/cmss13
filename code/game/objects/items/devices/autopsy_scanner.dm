@@ -26,8 +26,7 @@
 
 /datum/autopsy_data_scanner
 	var/weapon = null // this is the DEFINITE weapon type that was used
-	var/list/organs_scanned = list() // this maps a number of scanned organs to
-									 // the wounds to those organs with this data's weapon type
+	var/list/organs_scanned = list() // this maps a number of scanned organs to the wounds to those organs with this data's weapon type
 	var/organ_names = ""
 
 /datum/autopsy_data
@@ -46,7 +45,7 @@
 	W.time_inflicted = time_inflicted
 	return W
 
-/obj/item/device/autopsy_scanner/proc/add_data(var/obj/limb/O)
+/obj/item/device/autopsy_scanner/proc/add_data(obj/limb/O)
 	if(!O.autopsy_data.len && !O.trace_chemicals.len) return
 
 	for(var/V in O.autopsy_data)
@@ -157,7 +156,7 @@
 			scan_data += "<br>"
 
 	for(var/mob/O in viewers(usr))
-		O.show_message(SPAN_DANGER("\the [src] rattles and prints out a sheet of paper."), 1)
+		O.show_message(SPAN_DANGER("\the [src] rattles and prints out a sheet of paper."), SHOW_MESSAGE_VISIBLE)
 
 	sleep(10)
 
@@ -193,7 +192,7 @@
 		src.wdata = list()
 		src.chemtraces = list()
 		src.timeofdeath = null
-		to_chat(user, SPAN_DANGER("A new patient has been registered.. Purging data for previous patient."))
+		to_chat(user, SPAN_DANGER("A new patient has been registered. Purging data for previous patient."))
 
 	src.timeofdeath = M.timeofdeath
 
@@ -205,7 +204,7 @@
 		to_chat(usr, "<b>You have to cut the limb open first!</b>")
 		return
 	for(var/mob/O in viewers(M))
-		O.show_message(SPAN_DANGER("[user.name] scans the wounds on [M.name]'s [S.display_name] with \the [src.name]"), 1)
+		O.show_message(SPAN_DANGER("[user.name] scans the wounds on [M.name]'s [S.display_name] with \the [src.name]"), SHOW_MESSAGE_VISIBLE)
 
 	src.add_data(S)
 

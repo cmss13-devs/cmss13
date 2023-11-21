@@ -21,44 +21,48 @@
 
 /obj/effect/landmark/supplyspawner/weapons
 	name = "weapon supplies"
-	supply = list(/obj/structure/largecrate/supply/weapons/m41a = 2,
-				/obj/structure/largecrate/supply/weapons/shotgun = 2,
-				/obj/structure/largecrate/supply/weapons/m39 = 2,
-				/obj/structure/largecrate/supply/weapons/pistols = 2,
-				/obj/structure/largecrate/supply/weapons/flamers = 2,
-				/obj/structure/largecrate/supply/weapons/hpr = 2,
-				/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit = 1,
-				/obj/structure/largecrate/supply/explosives/mines = 2,
-				/obj/structure/largecrate/supply/explosives/grenades = 2
-				)
+	supply = list(
+		/obj/structure/largecrate/supply/weapons/m41a = 2,
+		/obj/structure/largecrate/supply/weapons/shotgun = 2,
+		/obj/structure/largecrate/supply/weapons/m39 = 2,
+		/obj/structure/largecrate/supply/weapons/pistols = 2,
+		/obj/structure/largecrate/supply/weapons/flamers = 2,
+		/obj/structure/largecrate/supply/weapons/hpr = 2,
+		/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit = 1,
+		/obj/structure/largecrate/supply/explosives/mines = 2,
+		/obj/structure/largecrate/supply/explosives/grenades = 2,
+	)
 
 /obj/effect/landmark/supplyspawner/ammo
 	name = "ammunition supplies"
-	supply = list(/obj/structure/largecrate/supply/ammo/m41a = 4,
-				/obj/structure/largecrate/supply/ammo/m41a_box = 4,
-				/obj/structure/largecrate/supply/ammo/shotgun = 4,
-				/obj/structure/largecrate/supply/ammo/m39 = 4,
-				/obj/structure/largecrate/supply/ammo/pistol = 4
-				)
+	supply = list(
+		/obj/structure/largecrate/supply/ammo/m41a = 4,
+		/obj/structure/largecrate/supply/ammo/m41a_box = 4,
+		/obj/structure/largecrate/supply/ammo/shotgun = 4,
+		/obj/structure/largecrate/supply/ammo/m39 = 4,
+		/obj/structure/largecrate/supply/ammo/pistol = 4,
+	)
 
 /obj/effect/landmark/supplyspawner/engineering
 	name = "engineering supplies"
-	supply = list(/obj/structure/largecrate/supply/supplies/metal = 5,
-				/obj/structure/largecrate/supply/supplies/plasteel = 3,
-				/obj/structure/largecrate/supply/supplies/sandbags = 5,
-				/obj/structure/largecrate/supply/generator = 1,
-				/obj/structure/largecrate/supply/floodlights = 2,
-				/obj/structure/largecrate/supply/supplies/flares = 3,
-				/obj/structure/largecrate/supply/powerloader = 1,
-				/obj/structure/largecrate/machine/recycler = 2
-				)
+	supply = list(
+		/obj/structure/largecrate/supply/supplies/metal = 5,
+		/obj/structure/largecrate/supply/supplies/plasteel = 3,
+		/obj/structure/largecrate/supply/supplies/sandbags = 5,
+		/obj/structure/largecrate/supply/generator = 1,
+		/obj/structure/largecrate/supply/floodlights = 2,
+		/obj/structure/largecrate/supply/supplies/flares = 3,
+		/obj/structure/largecrate/supply/powerloader = 1,
+		/obj/structure/largecrate/machine/recycler = 2,
+	)
 
 /obj/effect/landmark/supplyspawner/turrets
 	name = "defensive gun emplacement supplies"
-	supply = list(/obj/structure/largecrate/supply/weapons/m56d = 2,
-				/obj/structure/largecrate/supply/ammo/sentry = 1,
-				/obj/structure/largecrate/supply/ammo/m56d = 1
-				)
+	supply = list(
+		/obj/structure/largecrate/supply/weapons/m56d = 2,
+		/obj/structure/largecrate/supply/ammo/sentry = 1,
+		/obj/structure/largecrate/supply/ammo/m56d = 1,
+	)
 
 /obj/effect/landmark/supplyspawner/food
 	name = "food crate supplies"
@@ -66,16 +70,17 @@
 
 /obj/effect/landmark/supplyspawner/medical
 	name = "medical supplies"
-	supply = list(/obj/structure/largecrate/supply/medicine/medkits = 2,
-				/obj/structure/largecrate/supply/medicine/blood = 2,
-				/obj/structure/largecrate/supply/medicine/iv = 2,
-				/obj/structure/largecrate/supply/medicine/medivend = 2,
-				/obj/structure/largecrate/machine/autodoc = 3,
-				/obj/structure/largecrate/machine/bodyscanner = 1,
-				/obj/structure/largecrate/machine/sleeper = 2,
-				/obj/structure/largecrate/supply/medicine/optable = 1,
-				/obj/structure/largecrate/supply/supplies/tables_racks = 1
-				)
+	supply = list(
+		/obj/structure/largecrate/supply/medicine/medkits = 2,
+		/obj/structure/largecrate/supply/medicine/blood = 2,
+		/obj/structure/largecrate/supply/medicine/iv = 2,
+		/obj/structure/largecrate/supply/medicine/medivend = 2,
+		/obj/structure/largecrate/machine/autodoc = 3,
+		/obj/structure/largecrate/machine/bodyscanner = 1,
+		/obj/structure/largecrate/machine/sleeper = 2,
+		/obj/structure/largecrate/supply/medicine/optable = 1,
+		/obj/structure/largecrate/supply/supplies/tables_racks = 1,
+	)
 /*NEW SUPPLY CRATES*/
 //Lotsocrates for lotsosupplies for events, meaning less setup time.
 //Wooden crates and not metal ones so we don't have a ton of metal crates laying around
@@ -290,13 +295,14 @@
 /obj/structure/largecrate/supply/medicine/medkits
 	name = "first aid supply crate (x20)"
 	desc = "A medical supply crate containing six advanced, three standard, three burn, two toxin, two oxygen, and two radiation first aid kits."
-	supplies = list(/obj/item/storage/firstaid/regular = 3,
-					/obj/item/storage/firstaid/fire = 3,
-					/obj/item/storage/firstaid/adv = 6,
-					/obj/item/storage/firstaid/toxin = 2,
-					/obj/item/storage/firstaid/o2 = 2,
-					/obj/item/storage/firstaid/rad = 2
-					)
+	supplies = list(
+		/obj/item/storage/firstaid/regular = 3,
+		/obj/item/storage/firstaid/fire = 3,
+		/obj/item/storage/firstaid/adv = 6,
+		/obj/item/storage/firstaid/toxin = 2,
+		/obj/item/storage/firstaid/o2 = 2,
+		/obj/item/storage/firstaid/rad = 2,
+	)
 
 /obj/structure/largecrate/supply/medicine/blood
 	name = "blood supply crate (x12)"
@@ -331,7 +337,7 @@
 	if(unmovable)
 		. += SPAN_DANGER("!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!")
 
-/obj/structure/largecrate/machine/unpack(var/forced)
+/obj/structure/largecrate/machine/unpack(forced)
 	if(parts_type)
 		new parts_type(loc, 2)
 	playsound(src, unpacking_sound, 35)
@@ -342,7 +348,7 @@
 		if(turf_blocked_check())
 			to_chat(user, SPAN_WARNING("You need a clear space[dir_needed ? " to the [dir2text(dir_needed)] of the crate" : ""] in order to unpack \the [src]."))
 			return
-		if(alert(user, "Are you sure you want to unpack \the [src] here?", "Confirmation", "Yes", "No") == "No")
+		if(alert(user, "Are you sure you want to unpack \the [src] here?", "Confirmation", "Yes", "No") != "Yes")
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), SPAN_NOTICE("You pry open \the [src]."))
@@ -364,7 +370,7 @@
 					break
 	else
 		T = get_turf(loc)
-		if(T.density)	//I can totally imagine marines getting this crate on dense turf somehow
+		if(T.density) //I can totally imagine marines getting this crate on dense turf somehow
 			turf_blocked = TRUE
 		else
 			for(var/atom/movable/AM in T.contents)
@@ -405,7 +411,7 @@
 		new parts_type(loc, 2)
 	playsound(src, unpacking_sound, 35)
 
-	var/obj/structure/machinery/autodoc/event/E = new (T)
+	var/obj/structure/machinery/medical_pod/autodoc/unskilled/E = new (T)
 	var/obj/structure/machinery/autodoc_console/C = new (get_step(T, dir_needed))
 	E.connected = C
 	C.connected = E
@@ -426,7 +432,7 @@
 		new parts_type(loc, 2)
 	playsound(src, unpacking_sound, 35)
 
-	var/obj/structure/machinery/bodyscanner/E = new (T)
+	var/obj/structure/machinery/medical_pod/bodyscanner/E = new (T)
 	var/obj/structure/machinery/body_scanconsole/C = new (get_step(T, dir_needed))
 	C.connected = E
 
@@ -446,7 +452,7 @@
 		new parts_type(loc, 2)
 	playsound(src, unpacking_sound, 35)
 
-	var/obj/structure/machinery/sleeper/E = new (T)
+	var/obj/structure/machinery/medical_pod/sleeper/E = new (T)
 	var/obj/structure/machinery/sleep_console/C = new (get_step(T, dir_needed))
 	E.connected = C
 	C.connected = E

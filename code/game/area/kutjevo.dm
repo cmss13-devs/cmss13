@@ -8,19 +8,17 @@
 	icon_state = "kutjevo"
 	can_build_special = TRUE //T-Comms structure
 	temperature = 308.7 //kelvin, 35c, 95f
-	lighting_use_dynamic = 1
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/shuttle/drop1/kutjevo
 	name = "Kutjevo - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_kutjevo.dmi'
-	lighting_use_dynamic = 1
 
 /area/shuttle/drop2/kutjevo
 	name = "Kutjevo - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_kutjevo.dmi'
-	lighting_use_dynamic = 1
 
 /area/kutjevo/exterior
 	name = "Kutjevo - Exterior"
@@ -153,6 +151,7 @@
 /area/kutjevo/interior/complex/botany
 	name = "Kutjevo Complex - Botany Bay"
 	icon_state = "botany0"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/kutjevo/interior/complex/botany/east
 	name = "Kutjevo Complex - Botany East Hall"
@@ -169,6 +168,7 @@
 /area/kutjevo/interior/complex/med
 	name = "Kutjevo Complex - Medical Foyer"
 	icon_state = "med0"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/kutjevo/interior/complex/med/auto_doc
 	name = "Kutjevo Complex - Medical Autodoc Hallway"
@@ -211,12 +211,14 @@
 	icon_state = "Colony_int"
 	ceiling = CEILING_METAL
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_SEC
 
 //Out buildings + foremans
 /area/kutjevo/interior/power
 	name = "Kutjevo - Hydroelectric Dam Substation"
 	ceiling = CEILING_METAL
 	icon_state = "power"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/kutjevo/interior/power/comms
 	name = "Kutjevo - Hydroelectric Dam Comms Relay"
@@ -252,6 +254,7 @@
 	name = "Kutjevo - Central Colony Caves"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "colony_caves_0"
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/kutjevo/interior/colony_central/mine_elevator
 	name = "Kutjevo - Central Colony Elevator"
@@ -282,3 +285,4 @@
 	name = "Kutjevo - South Colony Treatment Plant"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_3"
+	minimap_color = MINIMAP_AREA_ENGI_CAVE

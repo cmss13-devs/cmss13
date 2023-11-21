@@ -7,12 +7,12 @@
 	desc = "A small handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well."
 	icon_state = "multitool"
 	item_state = "multitool"
-	pickupsound = 'sound/handling/multitool_pickup.ogg'
-	dropsound = 'sound/handling/multitool_drop.ogg'
+	pickup_sound = 'sound/handling/multitool_pickup.ogg'
+	drop_sound = 'sound/handling/multitool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 5.0
+	force = 5
 	w_class = SIZE_SMALL
-	throwforce = 5.0
+	throwforce = 5
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 
@@ -20,6 +20,19 @@
 	inherent_traits = list(TRAIT_TOOL_MULTITOOL)
 	var/hack_speed = 10 SECONDS // Only used for vendors right now
 	var/next_scan
+
+	var/list/encryption_keys = list()
+
+/obj/item/device/multitool/proc/load_encryption_key(key, obj/object)
+	encryption_keys[key] = WEAKREF(object)
+
+/obj/item/device/multitool/proc/has_encryption_key(key)
+	if(encryption_keys[key])
+		return TRUE
+	return FALSE
+
+/obj/item/device/multitool/proc/remove_encryption_key(key)
+	return encryption_keys.Remove(key)
 
 /obj/item/device/multitool/attack(mob/M as mob, mob/user as mob)
 	return FALSE
@@ -40,8 +53,8 @@
 	var/area/A = get_area(src)
 	var/APC = A? A.get_apc() : null
 	if(APC)
-		to_chat(user, SPAN_NOTICE("The local APC is located at <span class='bold'>[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]</span>."))
+		to_chat(user, SPAN_NOTICE("The local APC is located at [SPAN_BOLD("[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]")]."))
 		user.balloon_alert(user, "[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]")
 	else
 		to_chat(user, SPAN_WARNING("ERROR: Could not locate local APC."))
-		user.balloon_alert(user, "Could not locate")
+		user.balloon_alert(user, "could not locate!")

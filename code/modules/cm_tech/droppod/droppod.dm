@@ -14,6 +14,10 @@
 	var/droppod_flags = NO_FLAGS
 
 	var/land_damage = 5000
+	/// List of special structures drop pod will give damage to
+	var/list/special_structures_to_damage = list()
+	/// Amount of damage structures will take on landing
+	var/special_structure_damage = 0
 	var/tiles_to_take = 15
 
 	var/drop_time = 0
@@ -31,7 +35,7 @@
 
 	var/obj/effect/warning/droppod/warning_zone
 
-/obj/structure/droppod/proc/launch(var/turf/T)
+/obj/structure/droppod/proc/launch(turf/T)
 	if(!forceMove(T))
 		return
 
@@ -39,7 +43,7 @@
 	droppod_flags &= ~(DROPPOD_RETURNING|DROPPOD_DROPPED|DROPPOD_DROPPING)
 
 	warn_turf(loc)
-	addtimer(CALLBACK(src, .proc/drop_on_target, loc), drop_time)
+	addtimer(CALLBACK(src, PROC_REF(drop_on_target), loc), drop_time)
 	update_icon()
 
 
@@ -115,13 +119,13 @@
 	droppod_flags &= ~DROPPOD_OPEN
 	update_icon()
 
-/obj/structure/droppod/proc/warn_turf(var/turf/T)
+/obj/structure/droppod/proc/warn_turf(turf/T)
 	if(warning_zone)
 		qdel(warning_zone)
 
 	warning_zone = new(T)
 
-/obj/structure/droppod/proc/drop_on_target(var/turf/T)
+/obj/structure/droppod/proc/drop_on_target(turf/T)
 	droppod_flags |= DROPPOD_DROPPING
 
 	invisibility = 0
@@ -130,9 +134,9 @@
 	playsound(loc, landing_sound, 100, TRUE, 15)
 	animate(src, pixel_y = 0, time = dropping_time, easing = LINEAR_EASING)
 
-	addtimer(CALLBACK(src, .proc/land, T), dropping_time)
+	addtimer(CALLBACK(src, PROC_REF(land), T), dropping_time)
 
-/obj/structure/droppod/proc/land(var/turf/T)
+/obj/structure/droppod/proc/land(turf/T)
 	playsound(T, land_sound, 100, FALSE, sound_range = 15)
 
 	if(warning_zone)
@@ -152,15 +156,22 @@
 /obj/structure/droppod/proc/post_land()
 	density = TRUE
 	for(var/mob/mob in loc)
-		mob.gib(create_cause_data(initial(name)))
+		mob.gib(create_cause_data("gibbing", initial(name)))
 
 	for(var/obj/structure/structure in loc)
 		structure.update_health(-land_damage)
 
+		// Deal damage exclusively to special structures thats specified for the object on landing, currently used for sentry post
+		if(is_type_in_list(structure, special_structures_to_damage))
+			structure.update_health(special_structure_damage)
+
+	for(var/obj/structure/machinery/defenses/def in loc)
+		qdel(def)
+
 	for(var/mob/mob in view(7, loc))
 		shake_camera(mob, 4, 5)
 
-	addtimer(CALLBACK(src, .proc/open), open_time)
+	addtimer(CALLBACK(src, PROC_REF(open)), open_time)
 
 /obj/structure/droppod/proc/recall()
 	if(droppod_flags & DROPPOD_RETURNING)
@@ -180,7 +191,7 @@
 
 	var/pixels_to_take = 32*tiles_to_take
 	animate(src, pixel_y = pixels_to_take, time = dropping_time, easing = QUAD_EASING)
-	addtimer(CALLBACK(src, .proc/post_recall), dropping_time)
+	addtimer(CALLBACK(src, PROC_REF(post_recall)), dropping_time)
 
 /obj/structure/droppod/proc/post_recall()
 	qdel(src)

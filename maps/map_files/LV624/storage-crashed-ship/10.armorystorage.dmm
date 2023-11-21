@@ -16,15 +16,15 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "d" = (
 /obj/item/tool/shovel,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "e" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 1;
@@ -34,7 +34,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "i" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/smg/mp27,
@@ -58,10 +58,10 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "j" = (
 /turf/closed/wall,
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "n" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
@@ -78,7 +78,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "p" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
@@ -98,19 +98,19 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "t" = (
 /obj/item/tool/pickaxe,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "v" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "x" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/fp9000,
@@ -118,21 +118,21 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "y" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/explosive/grenade/HE/stick,
-/obj/item/explosive/grenade/HE/stick{
+/obj/item/explosive/grenade/high_explosive/stick,
+/obj/item/explosive/grenade/high_explosive/stick{
 	pixel_x = 6
 	},
-/obj/item/explosive/grenade/HE/stick{
+/obj/item/explosive/grenade/high_explosive/stick{
 	pixel_x = -6
 	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "z" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/mar40{
@@ -146,7 +146,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "B" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/rifle/mar40,
@@ -159,17 +159,17 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "F" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/smg/nailgun,
 /obj/item/weapon/gun/smg/nailgun,
-/obj/item/ammo_box/magazine/smg/nailgun,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "G" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/mp27{
@@ -182,7 +182,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "I" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -204,7 +204,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "K" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
@@ -213,7 +213,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "O" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -221,7 +221,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "P" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/mac15,
@@ -232,7 +232,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "Q" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond{
@@ -242,9 +242,9 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "T" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	icon_state = "door_locked";
 	locked = 1;
 	name = "\improper Armory Vault";
@@ -253,7 +253,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "U" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/lmg,
@@ -262,7 +262,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "V" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond{
@@ -275,7 +275,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "X" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
@@ -294,7 +294,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 
 (1,1,1) = {"
 X

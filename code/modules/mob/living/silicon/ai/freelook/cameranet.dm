@@ -55,9 +55,9 @@ var/datum/cameranet/cameranet = new()
 		var/datum/camerachunk/c = chunk
 		c.add(ai)
 
-// Updates the chunks that the turf is located in. Use this when obstacles are destroyed or	when doors open.
+// Updates the chunks that the turf is located in. Use this when obstacles are destroyed or when doors open.
 
-/datum/cameranet/proc/updateVisibility(atom/A, var/opacity_check = 1)
+/datum/cameranet/proc/updateVisibility(atom/A, opacity_check = 1)
 
 	if(opacity_check && !A.opacity)
 		return
@@ -88,7 +88,7 @@ var/datum/cameranet/cameranet = new()
 	if(c.can_use())
 		majorChunkChange(c, 1)
 	//else
-	//	majorChunkChange(c, 0)
+	// majorChunkChange(c, 0)
 
 // Never access this proc directly!!!!
 // This will update the chunk and all the surrounding chunks.
@@ -96,7 +96,7 @@ var/datum/cameranet/cameranet = new()
 // Setting the choice to 0 will remove the camera from the chunks.
 // If you want to update the chunks around an object, without adding/removing a camera, use choice 2.
 
-/datum/cameranet/proc/majorChunkChange(atom/c, var/choice)
+/datum/cameranet/proc/majorChunkChange(atom/c, choice)
 	// 0xf = 15
 	if(!c)
 		return
@@ -128,7 +128,7 @@ var/datum/cameranet/cameranet = new()
 	var/turf/position = get_turf(target)
 	return checkTurfVis(position)
 
-/datum/cameranet/proc/checkTurfVis(var/turf/position)
+/datum/cameranet/proc/checkTurfVis(turf/position)
 	var/datum/camerachunk/chunk = getCameraChunk(position.x, position.y, position.z)
 	if(chunk)
 		if(chunk.changed)

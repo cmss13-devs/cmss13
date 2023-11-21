@@ -17,8 +17,8 @@
 	return
 
 //turf/open/desert/desert
-//	name = "desert"
-//	icon_state = "desert1"
+// name = "desert"
+// icon_state = "desert1"
 
 /turf/open/desert/dirt
 	name = "desert"
@@ -45,11 +45,11 @@
 	name = "riverbed"
 	icon_state = "dirt1"
 //turf/open/desert/riverbed/dirt2
-//	name = "riverbed"
-//	icon_state = "dirt2"
+// name = "riverbed"
+// icon_state = "dirt2"
 //turf/open/desert/riverbed/dirt3
-//	name = "riverbed"
-//	icon_state = "dirt3"
+// name = "riverbed"
+// icon_state = "dirt3"
 
 //desert floor
 /turf/open/desert/rock
@@ -111,13 +111,13 @@
 	..()
 	switch(toxic)
 		if(1)
-			SetLuminosity(2)
+			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 /turf/open/desert/desert_shore/is_weedable()
@@ -196,13 +196,13 @@
 	..()
 	switch(toxic)
 		if(1)
-			SetLuminosity(2)
+			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 //Desert River Toxic
@@ -221,13 +221,13 @@
 	..()
 	switch(toxic)
 		if(1)
-			SetLuminosity(2)
+			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
-			SetLuminosity(1)
+			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 	update_overlays()
 
@@ -282,24 +282,24 @@
 	icon_state = "channel_three"
 
 
-turf/open/desert/excavation
+/turf/open/desert/excavation
 	icon = 'icons/turf/floors/desert_excavation.dmi'
 //Engineer Ship
-turf/open/desert/excavation/component1
+/turf/open/desert/excavation/component1
 	icon_state = "component1"
-turf/open/desert/excavation/component2
+/turf/open/desert/excavation/component2
 	icon_state = "component2"
-turf/open/desert/excavation/component3
+/turf/open/desert/excavation/component3
 	icon_state = "component3"
-turf/open/desert/excavation/component4
+/turf/open/desert/excavation/component4
 	icon_state = "component4"
-turf/open/desert/excavation/component5
+/turf/open/desert/excavation/component5
 	icon_state = "component5"
-turf/open/desert/excavation/component6
+/turf/open/desert/excavation/component6
 	icon_state = "component6"
-turf/open/desert/excavation/component7
+/turf/open/desert/excavation/component7
 	icon_state = "component7"
-turf/open/desert/excavation/component8
+/turf/open/desert/excavation/component8
 	icon_state = "component8"
-turf/open/desert/excavation/component9
+/turf/open/desert/excavation/component9
 	icon_state = "component9"

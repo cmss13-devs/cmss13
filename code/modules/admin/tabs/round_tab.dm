@@ -16,19 +16,25 @@
 
 		if(value)
 			SSticker.mode.pred_additional_max = abs(value)
-			message_staff("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)].")
+			message_admins("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)].")
 
 /datum/admins/proc/force_predator_round()
 	set name = "Toggle Predator Round"
 	set desc = "Force-toggle a predator round for the round type. Only works on maps that support Predator spawns."
 	set category = "Server.Round"
 
+	// note: This is a proof of concept. ideally, scenario parameters should all be changeable in the same UI, rather than writing snowflake code everywhere like this
 	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(usr, SPAN_DANGER("The game hasn't started yet!"))
+		var/enabled = FALSE
+		if(SSnightmare.get_scenario_value("predator_round"))
+			enabled = TRUE
+		var/ret = alert("Nightmare Scenario has the upcoming round being a [(enabled ? "PREDATOR" : "NORMAL")] round. Do you want to toggle this?", "Toggle Predator Round", "Yes", "No")
+		if(ret == "Yes")
+			SSnightmare.set_scenario_value("predator_round", !enabled)
 		return
 
 	var/datum/game_mode/predator_round = SSticker.mode
-	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") == "No")
+	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") != "Yes")
 		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
@@ -39,7 +45,8 @@
 	else
 		predator_round.flags_round_type &= ~MODE_PREDATOR
 
-	message_staff("[key_name_admin(usr)] has [(predator_round.flags_round_type & MODE_PREDATOR) ? "allowed predators to spawn" : "prevented predators from spawning"].")
+	message_admins("[key_name_admin(usr)] has [(predator_round.flags_round_type & MODE_PREDATOR) ? "allowed predators to spawn" : "prevented predators from spawning"].")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PREDATOR_ROUND_TOGGLED)
 
 /client/proc/free_slot()
 	set name = "Free Job Slots"
@@ -74,7 +81,7 @@
 
 	var/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
-		active_role_names = ROLES_REGULAR_ALL
+		active_role_names = ROLES_DISTRESS_SIGNAL
 
 	for(var/role_name as anything in active_role_names)
 		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
@@ -92,7 +99,7 @@
 		return
 	if(!RoleAuthority.modify_role(J, num))
 		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
-	message_staff("[key_name(usr)] adjusted job slots of [J.title] to be [num].")
+	message_admins("[key_name(usr)] adjusted job slots of [J.title] to be [num].")
 
 /client/proc/check_antagonists()
 	set name = "Check Antagonists"
@@ -125,7 +132,7 @@
 		return
 
 	SSticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
-	message_staff("[key_name(usr)] has made the round end early.")
+	message_admins("[key_name(usr)] has made the round end early.")
 	for(var/client/C in GLOB.admins)
 		to_chat(C, {"
 		<hr>
@@ -141,9 +148,12 @@
 
 	if(!check_rights(R_SERVER))
 		return
-	if (SSticker.current_state != GAME_STATE_PREGAME)
+	if(SSticker.current_state != GAME_STATE_PREGAME)
+		if(SSticker.delay_end)
+			if(tgui_alert(usr, "Round end delay is already enabled, are you sure you want to disable it?", "Confirmation", list("Yes", "No"), 30 SECONDS) != "Yes")
+				return
 		SSticker.delay_end = !SSticker.delay_end
-		message_staff("[SPAN_NOTICE("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
+		message_admins("[SPAN_NOTICE("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
 		for(var/client/C in GLOB.admins)
 			to_chat(C, {"<hr>
 			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"]")]
@@ -151,7 +161,7 @@
 		return
 	else
 		SSticker.delay_start = !SSticker.delay_start
-		message_staff("[SPAN_NOTICE("[key_name(usr)] [SSticker.delay_start ? "delayed the round start" : "has made the round start normally"].")]")
+		message_admins("[SPAN_NOTICE("[key_name(usr)] [SSticker.delay_start ? "delayed the round start" : "has made the round start normally"].")]")
 		to_chat(world, SPAN_CENTERBOLD("The game start has been [SSticker.delay_start ? "delayed" : "continued"]."))
 		return
 
@@ -159,17 +169,49 @@
 	set name = "Start Round"
 	set desc = "Start the round RIGHT NOW"
 	set category = "Server.Round"
-
-	if (!SSticker)
-		alert("Unable to start the game as it is not set up.")
-		return
 	if (alert("Are you sure you want to start the round early?",,"Yes","No") != "Yes")
 		return
+	if (SSticker.current_state == GAME_STATE_STARTUP)
+		message_admins("Game is setting up and will launch as soon as it is ready.")
+		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the process to start the game when loading is finished."))
+		while (SSticker.current_state == GAME_STATE_STARTUP)
+			sleep(50) // it patiently waits for the game to be ready here before moving on.
 	if (SSticker.current_state == GAME_STATE_PREGAME)
 		SSticker.request_start()
-		message_staff(SPAN_BLUE("[usr.key] has started the game."))
+		message_admins(SPAN_BLUE("[usr.key] has started the game."))
 
 		return TRUE
 	else
 		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
 		return FALSE
+
+/client/proc/toggle_cdn()
+	set name = "Toggle CDN"
+	set category = "Server"
+	var/static/admin_disabled_cdn_transport = null
+	if(alert(usr, "Are you sure you want to toggle CDN asset transport?", "Confirm", "Yes", "No") != "Yes")
+		return
+
+	var/current_transport = CONFIG_GET(string/asset_transport)
+	if(!current_transport || current_transport == "simple")
+		if(admin_disabled_cdn_transport)
+			CONFIG_SET(string/asset_transport, admin_disabled_cdn_transport)
+			admin_disabled_cdn_transport = null
+			SSassets.OnConfigLoad()
+			message_admins("[key_name_admin(usr)] re-enabled the CDN asset transport")
+			log_admin("[key_name(usr)] re-enabled the CDN asset transport")
+			return
+
+		to_chat(usr, SPAN_ADMINNOTICE("The CDN is not enabled!"))
+		if(alert(usr, "CDN asset transport is not enabled! If you're having issues with assets, you can also try disabling filename mutations.", "CDN asset transport is not enabled!", "Try disabling filename mutations", "Nevermind") == "Try disabling filename mutations")
+			SSassets.transport.dont_mutate_filenames = !SSassets.transport.dont_mutate_filenames
+			message_admins("[key_name_admin(usr)] [(SSassets.transport.dont_mutate_filenames ? "disabled" : "re-enabled")] asset filename transforms.")
+			log_admin("[key_name(usr)] [(SSassets.transport.dont_mutate_filenames ? "disabled" : "re-enabled")] asset filename transforms.")
+		return
+
+	admin_disabled_cdn_transport = current_transport
+	CONFIG_SET(string/asset_transport, "simple")
+	SSassets.OnConfigLoad()
+	SSassets.transport.dont_mutate_filenames = TRUE
+	message_admins("[key_name_admin(usr)] disabled CDN asset transport")
+	log_admin("[key_name(usr)] disabled CDN asset transport")

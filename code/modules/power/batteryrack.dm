@@ -80,12 +80,12 @@
 
 /obj/structure/machinery/power/smes/batteryrack/updateicon()
 	overlays.Cut()
-	if(stat & BROKEN)	return
+	if(stat & BROKEN) return
 
 	if (outputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
 	if(inputting)
-		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_inputting")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_charging")
 
 	var/clevel = chargedisplay()
 	if(clevel>0)
@@ -97,7 +97,7 @@
 	return round(4 * charge/(capacity ? capacity : 5e6))
 
 
-/obj/structure/machinery/power/smes/batteryrack/attackby(var/obj/item/W as obj, var/mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
+/obj/structure/machinery/power/smes/batteryrack/attackby(obj/item/W as obj, mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
 	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
 	if(open_hatch)
 		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
@@ -149,12 +149,12 @@
 
 /obj/structure/machinery/power/smes/batteryrack/makeshift/updateicon()
 	overlays.Cut()
-	if(stat & BROKEN)	return
+	if(stat & BROKEN) return
 
 	if (outputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
 	if(inputting)
-		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_inputting")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_charging")
 	if (overcharge_percent > 100)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_overcharge")
 	else
@@ -212,9 +212,9 @@
 			charge = 0
 
 
-#define SMESRATE 0.05			// rate of internal charge to external power
+#define SMESRATE 0.05 // rate of internal charge to external power
 /obj/structure/machinery/power/smes/batteryrack/makeshift/process()
-	if(stat & BROKEN)	return
+	if(stat & BROKEN) return
 
 	//store machine state to see if we need to update the icon overlays
 	var/last_disp = chargedisplay()
@@ -226,25 +226,25 @@
 		var/excess = terminal.surplus()
 
 		if(inputting)
-			if(excess >= 0)		// if there's power available, try to charge
-				var/load = min((capacity * 1.5 - charge)/SMESRATE, input_level)		// charge at set rate, limited to spare capacity
-				load = add_load(load)		// add the load to the terminal side network
-				charge += load * SMESRATE	// increase the charge
+			if(excess >= 0) // if there's power available, try to charge
+				var/load = min((capacity * 1.5 - charge)/SMESRATE, input_level) // charge at set rate, limited to spare capacity
+				load = add_load(load) // add the load to the terminal side network
+				charge += load * SMESRATE // increase the charge
 
 
-			else					// if not enough capacity
-				inputting = 0		// stop inputting
+			else // if not enough capacity
+				inputting = 0 // stop inputting
 
 		else
 			if (input_attempt && excess > 0 && excess >= input_level)
 				inputting = 1
 
-	if(outputting)		// if outputting
-		output_used = min( charge/SMESRATE, output_level)		//limit output to that stored
-		charge -= output_used*SMESRATE		// reduce the storage (may be recovered in /restore() if excessive)
-		add_avail(output_used)				// add output to powernet (smes side)
+	if(outputting) // if outputting
+		output_used = min( charge/SMESRATE, output_level) //limit output to that stored
+		charge -= output_used*SMESRATE // reduce the storage (may be recovered in /restore() if excessive)
+		add_avail(output_used) // add output to powernet (smes side)
 		if(charge < 0.0001)
-			outputting = 0					// stop output if charge falls to zero
+			outputting = 0 // stop output if charge falls to zero
 
 	overcharge_percent = round((charge / capacity) * 100)
 	if (overcharge_percent > 115) //115% is the minimum overcharge for anything to happen

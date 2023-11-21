@@ -1,28 +1,54 @@
 /obj/item/reagent_container/food/drinks/cans
-	var/canopened = 0
+	var/canopened = FALSE
+	var/crushed = FALSE
 	gulp_size = 10
+	icon = 'icons/obj/items/drinkcans.dmi'
 
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()
 
-	if (canopened == FALSE)
+	if(crushed)
+		return
+
+	if (!canopened)
 		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
 		canopened = TRUE
 
+/obj/item/reagent_container/food/drinks/cans/attack_hand(mob/user)
+	if(crushed)
+		return ..()
+
+	if (canopened && !reagents.total_volume)
+		if(user.a_intent == INTENT_HARM)
+			if(isturf(loc))
+				if(user.zone_selected == "r_foot" || user.zone_selected == "l_foot" )
+					crush_can(user)
+					return FALSE
+			else if(loc == user && src == user.get_inactive_hand())
+				crush_can(user)
+				return FALSE
+	return ..()
+
 /obj/item/reagent_container/food/drinks/cans/attack(mob/M, mob/user)
-	if (canopened == 0)
+	if(crushed)
+		return
+
+	if(!canopened)
 		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 		return
 	var/datum/reagents/R = src.reagents
 	var/fillevel = gulp_size
 
 	if(!R.total_volume || !R)
+		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head")
+			crush_can(M)
+			return
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 		return 0
 
 	if(M == user)
-		to_chat(M, SPAN_NOTICE(" You swallow a gulp of [src]."))
+		to_chat(M, SPAN_NOTICE("You swallow a gulp of [src]."))
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
@@ -30,11 +56,10 @@
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return 1
 	else if( istype(M, /mob/living/carbon/human) )
-		if (canopened == 0)
+		if (!canopened)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
-	else if (canopened == 1)
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -69,28 +94,62 @@
 
 
 /obj/item/reagent_container/food/drinks/cans/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
+	if(crushed || !proximity) return
 
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-		if (canopened == 0)
+		if (!canopened)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
 
 	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
-		if (canopened == 0)
+		if (!canopened)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
 		if (istype(target, /obj/item/reagent_container/food/drinks/cans))
 			var/obj/item/reagent_container/food/drinks/cans/cantarget = target
-			if(cantarget.canopened == 0)
+			if(!cantarget.canopened)
 				to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
 				return
 
 	return ..()
 
+/obj/item/reagent_container/food/drinks/cans/proc/crush_can(mob/user)
+	if(!ishuman(user))
+		return
 
+	var/mob/living/carbon/human/H = user
+	var/message
+	var/obj/limb/L
+	L = H.get_limb(H.zone_selected)
+
+	if(src == H.get_inactive_hand())
+		message = "between [user.gender == MALE ? "his" : "her"] hands"
+		to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //crushing with hands takes great effort and might
+			return
+	else
+		switch(user.zone_selected)
+			if("head")
+				if(!L)
+					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
+					return
+				message = "against [user.gender == MALE ? "his" : "her"] head!"
+				L.take_damage(brute = 3) //ouch! but you're a tough badass so it barely hurts
+				H.UpdateDamageIcon()
+			if("l_foot" , "r_foot")
+				if(!L)
+					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))
+					return
+				message = "under [user.gender == MALE ? "his" : "her"] foot!"
+
+	crushed = TRUE
+	flags_atom &= ~OPENCONTAINER
+	desc += "\nIts been crushed! A badass must have been through here..."
+	icon_state = "[icon_state]_crushed"
+	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
+	playsound(src,"sound/items/can_crush.ogg", 20, FALSE, 15)
 
 //SODA
 
@@ -116,7 +175,8 @@
 
 /obj/item/reagent_container/food/drinks/cans/thirteenloko
 	name = "\improper Thirteen Loko"
-	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc = "Consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc_lore = "A rarity among modern markets, Thirteen Loko is an all-Earth original. With a name coined by the general consensus that only the mildly insane willing to imbibe it, this energy drink has garnered a notorious reputation for itself and a sizeable cult following to match it. After a series of legal proceedings by Weyland-Yutani, denatured cobra venom was removed from the recipe, much to the disappointment of the drink's consumers."
 	icon_state = "thirteen_loko"
 	center_of_mass = "x=16;y=8"
 
@@ -165,13 +225,13 @@
 	. = ..()
 	reagents.add_reagent("lemon_lime", 30)
 
-/obj/item/reagent_container/food/drinks/cans/lemon_lime
+/obj/item/reagent_container/food/drinks/cans/iced_tea
 	name = "iced tea can"
 	desc = "Just like the squad redneck's grandmother used to buy."
 	icon_state = "ice_tea_can"
 	center_of_mass = "x=16;y=10"
 
-/obj/item/reagent_container/food/drinks/cans/lemon_lime/Initialize()
+/obj/item/reagent_container/food/drinks/cans/iced_tea/Initialize()
 	. = ..()
 	reagents.add_reagent("icetea", 30)
 
@@ -210,6 +270,7 @@
 /obj/item/reagent_container/food/drinks/cans/boda
 	name = "\improper Boda"
 	desc = "State regulated soda beverage. Enjoy comrades."
+	desc_lore = "Designed back in 2159, the advertising campaign for BODA started out as an attempt by the UPP to win the hearts and minds of colonists and settlers across the galaxy. Soon after, the ubiquitous cyan vendors and large supplies of the drink began to crop up in UA warehouses with seemingly no clear origin. Despite some concerns, after initial testing determined that the stored products were safe for consumption and surprisingly popular when blind-tested with focus groups, the strange surplus of BODA was authorized for usage within the UA-associated colonies. Subsequently, it enjoyed a relative popularity before falling into obscurity in the coming decades as supplies dwindled." 
 	icon_state = "boda"
 	center_of_mass = "x=16;y=10"
 
@@ -262,7 +323,7 @@
 /obj/item/reagent_container/food/drinks/cans/ale
 	name = "\improper Weyland-Yutani IPA"
 	desc = "Beer's misunderstood cousin."
-	icon_state = "alebottle"
+	icon_state = "ale"
 	item_state = "beer"
 	center_of_mass = "x=16;y=10"
 
@@ -375,6 +436,7 @@
 	desc = "It tastes like the color blue. Technology really is amazing. Canned in Havana."
 	icon_state = "souto_blueraspberry"
 	item_state = "souto_blueraspberry"
+	black_market_value = 10 //mendoza likes blue souto
 
 /obj/item/reagent_container/food/drinks/cans/souto/blue/Initialize()
 	. = ..()

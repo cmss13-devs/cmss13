@@ -4,7 +4,7 @@
 	var/back_icon = "card_back"
 	var/sort_index = 0
 
-/datum/playing_card/New(var/set_name, var/set_card_icon, var/set_back_icon, var/set_sort_index)
+/datum/playing_card/New(set_name, set_card_icon, set_back_icon, set_sort_index)
 	..()
 	if(set_name)
 		name = set_name
@@ -21,7 +21,6 @@
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
 	w_class = SIZE_TINY
-	flags_item = NOTABLEMERGE
 
 	var/base_icon = "deck"
 	var/max_cards = 52
@@ -122,7 +121,7 @@
 
 	handle_draw_cards(usr)
 
-/obj/item/toy/deck/proc/handle_draw_cards(var/mob/mob)
+/obj/item/toy/deck/proc/handle_draw_cards(mob/mob)
 	if(mob.stat || !ishuman(mob) || !Adjacent(mob))
 		return
 
@@ -234,7 +233,7 @@
 		user.visible_message(SPAN_NOTICE("\The [user] deals a card to \the [target]."), SPAN_NOTICE("You deal a card to \the [target]."))
 	H.throw_atom(get_step(target,target.dir), 10, SPEED_VERY_FAST, H)
 
-/obj/item/toy/deck/attack_self(var/mob/user)
+/obj/item/toy/deck/attack_self(mob/user)
 	..()
 	var/list/newcards = list()
 	for(var/i = 1 to length(cards))
@@ -262,7 +261,6 @@
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "empty"
 	w_class = SIZE_TINY
-	flags_item = NOTABLEMERGE
 
 	var/concealed = FALSE
 	var/pile_state = FALSE
@@ -279,19 +277,19 @@
 
 /obj/item/toy/handcard/uno_reverse_red
 	icon_state = "red_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
 
 /obj/item/toy/handcard/uno_reverse_blue
 	icon_state = "blue_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
 
 /obj/item/toy/handcard/uno_reverse_yellow
 	icon_state = "yellow_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
 
 /obj/item/toy/handcard/uno_reverse_purple
 	icon_state = "purple_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
 
 /obj/item/toy/handcard/verb/toggle_discard_state()
 	set name = "Toggle Pile State"
@@ -383,7 +381,7 @@
 		return
 	return ..()
 
-/obj/item/toy/handcard/attack_self(var/mob/user)
+/obj/item/toy/handcard/attack_self(mob/user)
 	..()
 	concealed = !concealed
 	update_icon()
@@ -408,7 +406,7 @@
 			. += SPAN_NOTICE("The cards are: [english_list(card_names)]")
 
 
-/obj/item/toy/handcard/update_icon(var/direction = 0)
+/obj/item/toy/handcard/update_icon(direction = 0)
 	var/cards_length = length(cards)
 	if(pile_state)
 		if(concealed)
@@ -479,7 +477,7 @@
 	update_icon()
 
 
-/proc/get_or_make_user_hand(var/mob/living/user, var/obj/item/toy/handcard/ignore_hand)
+/proc/get_or_make_user_hand(mob/living/user, obj/item/toy/handcard/ignore_hand)
 	var/obj/item/toy/handcard/H
 	if(istype(user.l_hand, /obj/item/toy/handcard) && user.l_hand != ignore_hand)
 		H = user.l_hand

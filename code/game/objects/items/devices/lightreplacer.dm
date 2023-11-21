@@ -100,23 +100,23 @@
 	icon_state = "lightreplacer0"
 
 
-/obj/item/device/lightreplacer/proc/Use(var/mob/user)
+/obj/item/device/lightreplacer/proc/Use(mob/user)
 
 	playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
 	AddUses(-1)
 	return 1
 
 // Negative numbers will subtract
-/obj/item/device/lightreplacer/proc/AddUses(var/amount = 1)
+/obj/item/device/lightreplacer/proc/AddUses(amount = 1)
 	uses = min(max(uses + amount, 0), max_uses)
 
-/obj/item/device/lightreplacer/proc/Charge(var/mob/user)
+/obj/item/device/lightreplacer/proc/Charge(mob/user)
 	charge++
 	if(charge > 7)
 		AddUses(1)
 		charge = 1
 
-/obj/item/device/lightreplacer/proc/ReplaceLight(var/obj/structure/machinery/light/target, var/mob/living/U)
+/obj/item/device/lightreplacer/proc/ReplaceLight(obj/structure/machinery/light/target, mob/living/U)
 
 	if(target.status != LIGHT_OK)
 		if(CanUse(U))
@@ -159,7 +159,7 @@
 
 //Can you use it?
 
-/obj/item/device/lightreplacer/proc/CanUse(var/mob/living/user)
+/obj/item/device/lightreplacer/proc/CanUse(mob/living/user)
 	src.add_fingerprint(user)
 	//Not sure what else to check for. Maybe if clumsy?
 	if(uses > 0)

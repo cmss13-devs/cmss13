@@ -553,6 +553,7 @@
 #include "code\datums\langchat\langchat.dm"
 #include "code\datums\looping_sounds\_looping_sound.dm"
 #include "code\datums\looping_sounds\item_sounds.dm"
+#include "code\datums\looping_sounds\misc_sounds.dm"
 #include "code\datums\origin\civilian.dm"
 #include "code\datums\origin\origin.dm"
 #include "code\datums\origin\upp.dm"

@@ -347,157 +347,158 @@
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
 
-/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
-	var/area/A = get_area(src)
-	if(A && A.statistic_exempt)
-		statistic_exempt = TRUE
+/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+
+	if(old_xeno && old_xeno.hivenumber)
+		src.hivenumber = old_xeno.hivenumber
+	else if(hivenumber)
+		src.hivenumber = hivenumber
+
+	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
+
+	if(hive)
+		hive.add_xeno(src)
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
 
-	if(oldXeno)
-		set_movement_intent(oldXeno.m_intent)
-		hivenumber = oldXeno.hivenumber
-		nicknumber = oldXeno.nicknumber
-		life_kills_total = oldXeno.life_kills_total
-		life_damage_taken_total = oldXeno.life_damage_taken_total
-		evolution_stored = oldXeno.evolution_stored
-		if(oldXeno.iff_tag)
-			iff_tag = oldXeno.iff_tag
-			iff_tag.forceMove(src)
-			oldXeno.iff_tag = null
-	else if (h_number)
-		hivenumber = h_number
-
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
-	if(oldXeno)
-		for(var/datum/language/L in oldXeno.languages)
-			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
 
-	// Well, not yet, technically
-	var/datum/hive_status/in_hive = GLOB.hive_datum[hivenumber]
-	if(in_hive)
-		in_hive.add_xeno(src)
-		// But now we are!
+	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
+	if(old_xeno)
+		src.nicknumber = old_xeno.nicknumber
+		src.life_kills_total = old_xeno.life_kills_total
+		src.life_damage_taken_total = old_xeno.life_damage_taken_total
+		src.evolution_stored = old_xeno.evolution_stored
 
-	for(var/T in in_hive.hive_inherant_traits)
-		ADD_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+		for(var/datum/language/language in old_xeno.languages)
+			add_language(language.name)//Make sure to keep languages (mostly for event Queens that know English)
 
-	mutators.xeno = src
+		//Carry over intents & targeted limb to the new Xeno
+		set_movement_intent(old_xeno.m_intent)
+		a_intent_change(old_xeno.a_intent)
 
-	if(caste_type && GLOB.xeno_datum_list[caste_type])
-		caste = GLOB.xeno_datum_list[caste_type]
-	else
-		to_world("something went very wrong")
-		return
-
-	update_icon_source()
-
-	acid_splash_cooldown = caste.acid_splash_cooldown
-
-	if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
-		if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
-		RegisterSignal(src, list(
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED,
-		), PROC_REF(flamer_crossed_immune))
-	else
-		UnregisterSignal(src, list(
-			COMSIG_LIVING_PREIGNITION,
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED,
-		))
-
-	recalculate_everything()
-
-	if(mob_size < MOB_SIZE_BIG)
-		mob_flags |= SQUEEZE_UNDER_VEHICLES
-
-	generate_name()
-
-	if(isqueen(src))
-		SStracking.set_leader("hive_[hivenumber]", src)
-	SStracking.start_tracking("hive_[hivenumber]", src)
-
-	. = ..()
-	//WO GAMEMODE
-	if(SSticker?.mode?.hardcore)
-		hardcore = 1 //Prevents healing and queen evolution
-	time_of_birth = world.time
-
-	add_inherent_verbs()
-	add_abilities()
-	recalculate_actions()
-
-	if(z)
-		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
-
-	sight |= SEE_MOBS
-	see_invisible = SEE_INVISIBLE_LIVING
-	see_in_dark = 12
-	if(client)
-		set_lighting_alpha_from_prefs(client)
-	else
-		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-
-	if(caste && caste.spit_types && caste.spit_types.len)
-		ammo = GLOB.ammo_list[caste.spit_types[1]]
-
-	create_reagents(100)
-
-	GLOB.living_xeno_list += src
-	GLOB.xeno_mob_list += src
-
-	if(caste && caste.adjust_size_x != 1)
-		var/matrix/M = matrix()
-		M.Scale(caste.adjust_size_x, caste.adjust_size_y)
-		apply_transform(M)
-
-	if(caste)
-		behavior_delegate = new caste.behavior_delegate_type()
-		behavior_delegate.bound_xeno = src
-		behavior_delegate.add_to_xeno()
-		resin_build_order = caste.resin_build_order
-	else
-		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
-
-	regenerate_icons()
-	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
-	toggle_xeno_hostilehud()
-
-	if(oldXeno)
-		a_intent_change(oldXeno.a_intent)//Keep intent
-
-		if(oldXeno.layer == XENO_HIDING_LAYER)
-			//We are hiding, let's keep hiding if we can!
+		//We are hiding, let's keep hiding if we can!
+		if(old_xeno.layer == XENO_HIDING_LAYER)
 			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
 				if(istype(hide))
 					layer = XENO_HIDING_LAYER
 					hide.button.icon_state = "template_active"
 
-		for(var/obj/item/W in oldXeno.contents) //Drop stuff
-			oldXeno.drop_inv_item_on_ground(W)
+		//If we're holding things drop them
+		for(var/obj/item/item in old_xeno.contents) //Drop stuff
+			old_xeno.drop_inv_item_on_ground(item)
+		old_xeno.empty_gut()
 
-		oldXeno.empty_gut()
+		//Set leader to the new mob
+		if(hive && IS_XENO_LEADER(old_xeno))
+			hive.replace_hive_leader(old_xeno, src)
 
-		if(IS_XENO_LEADER(oldXeno))
-			hive.replace_hive_leader(oldXeno, src)
+		if(old_xeno.iff_tag)
+			iff_tag = old_xeno.iff_tag
+			iff_tag.forceMove(src)
+			old_xeno.iff_tag = null
+
+	if(hive)
+		for(var/trait in hive.hive_inherant_traits)
+			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+
+	mutators.xeno = src
+
+	//Set caste stuff
+	if(caste_type && GLOB.xeno_datum_list[caste_type])
+		caste = GLOB.xeno_datum_list[caste_type]
+
+		//Fire immunity signals
+		if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
+			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
+				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
+
+			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
+		else
+			UnregisterSignal(src, list(
+				COMSIG_LIVING_PREIGNITION,
+				COMSIG_LIVING_FLAMER_CROSSED,
+				COMSIG_LIVING_FLAMER_FLAMED
+			))
+
+		if(caste.spit_types && length(caste.spit_types))
+			ammo = GLOB.ammo_list[caste.spit_types[1]]
+
+		acid_splash_cooldown = caste.acid_splash_cooldown
+
+		if(caste.adjust_size_x != 1)
+			var/matrix/matrix = matrix()
+			matrix.Scale(caste.adjust_size_x, caste.adjust_size_y)
+			apply_transform(matrix)
+
+		behavior_delegate = new caste.behavior_delegate_type()
+		behavior_delegate.bound_xeno = src
+		behavior_delegate.add_to_xeno()
+		resin_build_order = caste.resin_build_order
+
+		job = caste.caste_type // Used for tracking the caste playtime
+
+	else
+		CRASH("Attempted to create a new xenomorph [src] without caste datum.")
+
+	if(mob_size < MOB_SIZE_BIG)
+		mob_flags |= SQUEEZE_UNDER_VEHICLES
+
+	// More setup stuff for names, abilities etc
+	update_icon_source()
+	generate_name()
+	add_inherent_verbs()
+	add_abilities()
+	create_reagents(100)
+	regenerate_icons()
+	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
+	toggle_xeno_hostilehud()
+	recalculate_everything()
+
+	//Begin SStracking
+	SStracking.start_tracking("hive_[hivenumber]", src)
+
+	. = ..()
+
+	GLOB.living_xeno_list += src
+	GLOB.xeno_mob_list += src
+
+	//WO GAMEMODE
+	if(SSticker?.mode?.hardcore)
+		hardcore = 1 //Prevents healing and queen evolution
+	time_of_birth = world.time
+
+	//Minimap
+	if(z)
+		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
+
+	//Sight
+	sight |= SEE_MOBS
+	see_invisible = SEE_INVISIBLE_LIVING
+	see_in_dark = 12
+
+	if(client)
+		set_lighting_alpha_from_prefs(client)
+	else
+		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	// Only handle free slots if the xeno is not in tdome
-	if(!is_admin_level(z))
+	if(hive && !is_admin_level(z))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		hive.used_slots[selected_caste]++
 
+	//Statistics
+	var/area/current_area = get_area(src)
+	if(current_area && current_area.statistic_exempt)
+		statistic_exempt = TRUE
 	if(round_statistics && !statistic_exempt)
 		round_statistics.track_new_participant(faction, 1)
-	generate_name()
 
 	// This can happen if a xeno gets made before the game starts
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
-	job = caste.caste_type // Used for tracking the caste playtime
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))

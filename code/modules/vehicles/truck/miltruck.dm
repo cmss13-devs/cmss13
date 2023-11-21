@@ -33,7 +33,7 @@
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/truck/wheels,
-		/obj/item/hardpoint/locomotion/truck/treads
+		/obj/item/hardpoint/locomotion/truck/treads,
 	)
 
 /obj/vehicle/multitile/miltruck/miltruck_2

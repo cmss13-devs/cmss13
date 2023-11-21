@@ -29,7 +29,7 @@
 	move_turn_momentum_loss_factor = 1
 
 	hardpoints_allowed = list(
-		/obj/item/hardpoint/locomotion/truck/wheels/civtruck
+		/obj/item/hardpoint/locomotion/truck/wheels/civtruck,
 	)
 
 /obj/vehicle/multitile/civtruck/civtruck_2

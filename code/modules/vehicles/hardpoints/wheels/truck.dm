@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/truck
 	icon = 'icons/obj/vehicles/hardpoints/truck.dmi'
-	icon_state = 'truck_tires'
+	icon_state = "truck_tires"
 	slot = HDPT_WHEELS
 
 

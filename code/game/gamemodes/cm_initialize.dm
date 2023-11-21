@@ -370,13 +370,13 @@ Additional game mode variables.
 		if(!hive.hive_location && (world.time > XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
 			continue
 
-			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
-				available_xenos |= "any buried larva"
-				LAZYADD(available_xenos["any buried larva"], hive)
-			else
-				var/larva_option = "buried larva ([hive])"
-				available_xenos += larva_option
-				available_xenos[larva_option] = list(hive)
+		if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
+			available_xenos |= "any buried larva"
+			LAZYADD(available_xenos["any buried larva"], hive)
+		else
+			var/larva_option = "buried larva ([hive])"
+			available_xenos += larva_option
+			available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
 		if(!xeno_candidate.client || !xeno_candidate.client.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))

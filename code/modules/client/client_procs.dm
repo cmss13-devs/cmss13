@@ -145,10 +145,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(!receiver_client)
 			to_chat(src, SPAN_WARNING("The person you were attempting to PM has gone offline!"))
 			return
-		if(unansweredAhelps[receiver_client.computer_id]) unansweredAhelps.Remove(receiver_client.computer_id)
 		cmd_admin_pm(receiver_client, null)
 		return
-
 	else if(href_list["FaxView"])
 
 		var/datum/fax/info = locate(href_list["FaxView"])
@@ -164,6 +162,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
+
+	else if(href_list["tacmaps_panel"])
+		GLOB.tacmap_admin_panel.tgui_interact(mob)
+
+	else if(href_list["MapView"])
+		if(isxeno(mob))
+			return
+		GLOB.uscm_tacmap_status.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -467,7 +473,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.clients -= src
 	SSping.currentrun -= src
 
-	unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")
 	if(CLIENT_IS_STAFF(src))
 		message_admins("Admin logout: [key_name(src)]")
@@ -726,7 +731,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
-				if("Whisper")
+				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
 /client/proc/toggle_fullscreen(new_value)

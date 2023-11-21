@@ -423,7 +423,7 @@ Additional game mode variables.
 				for(var/mob_name in picked_hive.banished_ckeys)
 					if(picked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 						to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [picked_hive], you may not rejoin unless the Queen re-admits you or dies."))
-						return
+						return FALSE
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/noob = xeno_candidate
 					noob.close_spawn_windows()
@@ -442,9 +442,6 @@ Additional game mode variables.
 		if(!isxeno(userInput) || !xeno_candidate)
 			return FALSE
 		new_xeno = userInput
-
-		if(!xeno_candidate)
-			return FALSE
 
 		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
@@ -479,14 +476,14 @@ Additional game mode variables.
 	else new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
 	if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
 		if(isnewplayer(xeno_candidate))
-			var/mob/new_player/N = xeno_candidate
-			N.close_spawn_windows()
+			var/mob/new_player/noob = xeno_candidate
+			noob.close_spawn_windows()
 		for(var/mob_name in new_xeno.hive.banished_ckeys)
 			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
-				return
+				return FALSE
 		if(transfer_xeno(xeno_candidate, new_xeno))
-			return 1
+			return TRUE
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
 
 /datum/game_mode/proc/attempt_to_join_as_facehugger(mob/xeno_candidate)
@@ -614,20 +611,21 @@ Additional game mode variables.
 /datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno)
 	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
+
 	var/datum/mind/xeno_candidate_mind
 	if(ismind(xeno_candidate))
 		xeno_candidate_mind = xeno_candidate
 	else if(ismob(xeno_candidate))
-		var/mob/M = xeno_candidate
-		if(M.mind)
-			xeno_candidate_mind = M.mind
+		var/mob/xeno_candidate_mob = xeno_candidate
+		if(xeno_candidate_mob.mind)
+			xeno_candidate_mind = xeno_candidate_mob.mind
 		else
-			xeno_candidate_mind = new /datum/mind(M.key, M.ckey)
+			xeno_candidate_mind = new /datum/mind(xeno_candidate_mob.key, xeno_candidate_mob.ckey)
 			xeno_candidate_mind.active = TRUE
 			xeno_candidate_mind.current = new_xeno
 	else if(isclient(xeno_candidate))
-		var/client/C = xeno_candidate
-		xeno_candidate_mind = new /datum/mind(C.key, C.ckey)
+		var/client/xeno_candidate_client = xeno_candidate
+		xeno_candidate_mind = new /datum/mind(xeno_candidate_client.key, xeno_candidate_client.ckey)
 		xeno_candidate_mind.active = TRUE
 		xeno_candidate_mind.current = new_xeno
 	else

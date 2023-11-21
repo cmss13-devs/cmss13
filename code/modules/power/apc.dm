@@ -1266,6 +1266,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 //Damage and destruction acts
 /obj/structure/machinery/power/apc/emp_act(severity)
+	. = ..()
 	if(cell)
 		cell.emp_act(severity)
 	lighting = 0
@@ -1274,7 +1275,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	spawn(1 MINUTES)
 		equipment = 3
 		environ = 3
-	..()
 
 /obj/structure/machinery/power/apc/ex_act(severity)
 	switch(severity)

@@ -211,6 +211,15 @@
 	. = ..()
 	reagents.add_reagent("antiZed", 30)
 
+/obj/item/reagent_container/glass/bottle/labeled_black_goo_cure
+	name = "\"Pathogen\" cure bottle"
+	desc = "The bottle has a biohazard symbol on the front, and has a label, designating its use against Agent A0-3959X.91–15, colloquially known as the \"Black Goo\"."
+	icon_state = "bottle20"
+
+/obj/item/reagent_container/glass/bottle/labeled_black_goo_cure/Initialize()
+	. = ..()
+	reagents.add_reagent("antiZed", 60)
+
 /datum/language/zombie
 	name = "Zombie"
 	desc = "A growling, guttural method of communication, only Zombies seem to be capable of producing these sounds."

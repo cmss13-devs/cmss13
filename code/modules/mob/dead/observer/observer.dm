@@ -248,7 +248,7 @@
 	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
 
 ///makes the ghost see the target hud and sets the eye at the target.
-/mob/dead/observer/proc/do_observe(mob/target)
+/mob/dead/observer/proc/do_observe(atom/movable/target)
 	if(!client || !target || !istype(target))
 		return
 
@@ -257,24 +257,23 @@
 
 	if(!ishuman(target) || !client.prefs?.auto_observe)
 		return
+	var/mob/living/carbon/human/human_target = target
 
-	client.eye = target
+	client.eye = human_target
 
-	if(!target.hud_used)
+	if(!human_target.hud_used)
 		return
 
 	client.clear_screen()
-	LAZYINITLIST(target.observers)
-	target.observers |= src
-	target.hud_used.show_hud(target.hud_used.hud_version, src)
-
-	var/mob/living/carbon/human/human_target = target
+	LAZYINITLIST(human_target.observers)
+	human_target.observers |= src
+	human_target.hud_used.show_hud(human_target.hud_used.hud_version, src)
 
 	var/list/target_contents = human_target.get_contents()
 
 	//Handles any currently open storage containers the target is looking in when we observe
 	for(var/obj/item/storage/checked_storage in target_contents)
-		if(!(target in checked_storage.content_watchers))
+		if(!(human_target in checked_storage.content_watchers))
 			continue
 
 		client.add_to_screen(checked_storage.closer)
@@ -289,7 +288,7 @@
 
 		break
 
-	observe_target_mob = target
+	observe_target_mob = human_target
 	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
@@ -297,8 +296,8 @@
 
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
 
-	if(target.client)
-		observe_target_client = target.client
+	if(human_target.client)
+		observe_target_client = human_target.client
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
 		return
@@ -327,10 +326,11 @@
 	if(observe_target_mob)
 		clean_observe_target()
 
-/mob/dead/observer/Destroy()
+/mob/dead/observer/Destroy(force)
+	GLOB.observer_list -= src
 	QDEL_NULL(orbit_menu)
 	QDEL_NULL(last_health_display)
-	GLOB.observer_list -= src
+	QDEL_NULL(minimap)
 	following = null
 	observe_target_mob = null
 	observe_target_client = null
@@ -377,6 +377,10 @@
 		handle_joining_as_freed_mob(locate(href_list["claim_freed"]))
 	if(href_list["join_xeno"])
 		join_as_alien()
+	if(href_list[NOTIFY_USCM_TACMAP])
+		GLOB.uscm_tacmap_status.tgui_interact(src)
+	if(href_list[NOTIFY_XENO_TACMAP])
+		GLOB.xeno_tacmap_status.tgui_interact(src)
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -898,6 +902,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
 
+/mob/dead/observer/verb/view_uscm_tacmap()
+	set name = "View USCM Tacmap"
+	set category = "Ghost.View"
+
+	GLOB.uscm_tacmap_status.tgui_interact(src)
+
+/mob/dead/observer/verb/view_xeno_tacmap()
+	set name = "View Xeno Tacmap"
+	set category = "Ghost.View"
+
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	if(!hive || !length(hive.totalXenos))
+		to_chat(src, SPAN_ALERT("There seems to be no living normal hive at the moment"))
+		return
+
+	GLOB.xeno_tacmap_status.tgui_interact(src)
+
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost.Join"
 	set name = "Join as Xeno"
@@ -1200,10 +1221,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		else
 			. += "Hijack Over"
 
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+	if(SShijack)
+		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
-			. += "Evacuation: [eta_status]"
+			. += "Evacuation Goal: [eta_status]"
+
+		if(SShijack.sd_unlocked)
+			. += "Self Destruct Goal: [SShijack.get_sd_eta()]"
 
 	if(client.prefs?.be_special & BE_ALIEN_AFTER_DEATH)
 		if(larva_queue_cached_message)

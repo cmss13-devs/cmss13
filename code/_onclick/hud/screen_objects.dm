@@ -535,7 +535,7 @@
 	if(!user.hive.living_xeno_queen)
 		to_chat(user, SPAN_WARNING("Without a queen your psychic link is broken!"))
 		return FALSE
-	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.hive.mark_ui.update_all_data()
 	user.hive.mark_ui.open_mark_menu(user)
@@ -583,7 +583,7 @@
 	if(!user.hive.living_xeno_queen)
 		to_chat(user, SPAN_WARNING("Your hive doesn't have a living queen!"))
 		return FALSE
-	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.overwatch(user.hive.living_xeno_queen)
 

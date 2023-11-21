@@ -147,6 +147,10 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_WY_PMC)
 
+/datum/equipment_preset/synth/survivor/wy/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH + ACCESS_WY_GENERAL // for WY synths - admin building and wy fax machines access
+
 /datum/equipment_preset/synth/survivor/load_gear(mob/living/carbon/human/new_human)
 	for(var/equipment in equipment_to_spawn)
 		var/equipment_path = islist(equipment_to_spawn[equipment]) ? pick(equipment_to_spawn[equipment]) : equipment_to_spawn[equipment]
@@ -300,11 +304,28 @@
 		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
 	)
 
+/datum/equipment_preset/synth/survivor/freelancer_synth
+	name = "Survivor - Synthetic - Freelancer Synth"
+	equipment_to_spawn = list(
+		WEAR_HEAD = /obj/item/clothing/head/welding,
+		WEAR_FACE = /obj/item/clothing/mask/rebreather/scarf,
+		WEAR_BODY = /obj/item/clothing/under/marine/veteran/freelancer,
+		WEAR_BACK = /obj/item/storage/backpack/lightpack,
+		WEAR_IN_BACK = /obj/item/tool/weldpack/minitank,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/utility_vest,
+		WEAR_IN_JACKET = /obj/item/explosive/grenade/smokebomb,
+		WEAR_WAIST = /obj/item/storage/belt/marine,
+		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
+		WEAR_R_HAND = /obj/item/storage/pouch/flare/full,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/upp,
+		WEAR_L_HAND = /obj/item/storage/large_holster/katana/full
+	)
+
 /datum/equipment_preset/synth/survivor/trucker_synth
 	name = "Survivor - Synthetic - Trucker Synth"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/ferret,
-		WEAR_BODY = /obj/item/clothing/under/colonist,
+		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/frontier,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
 		WEAR_IN_BACK = /obj/item/pamphlet/skill/powerloader,
 		WEAR_R_HAND = /obj/item/tool/weldingtool/hugetank,
@@ -359,6 +380,7 @@
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/CM_uniform,
+		WEAR_ACCESSORY = /obj/item/clothing/accessory/holobadge/cord,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 		WEAR_IN_BACK = /obj/item/device/camera,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
@@ -373,7 +395,7 @@
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/security_synth
+/datum/equipment_preset/synth/survivor/wy/security_synth
 	name = "Survivor - Synthetic - Corporate Security Synth"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
@@ -394,7 +416,7 @@
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/protection_synth
+/datum/equipment_preset/synth/survivor/wy/protection_synth
 	name = "Survivor - Synthetic - Corporate Protection Synth"
 	idtype = /obj/item/card/id/pmc
 	role_comm_title = "WY Syn"
@@ -418,7 +440,7 @@
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/corporate_synth
+/datum/equipment_preset/synth/survivor/wy/corporate_synth
 	name = "Survivor - Synthetic - Corporate Clerical Synth"
 	idtype = /obj/item/card/id/data
 	role_comm_title = "WY Syn"

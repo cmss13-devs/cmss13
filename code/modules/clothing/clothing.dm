@@ -217,6 +217,7 @@
 		M.update_inv_gloves()
 
 /obj/item/clothing/gloves/emp_act(severity)
+	. = ..()
 	if(cell)
 		//why is this not part of the powercell code?
 		cell.charge -= 1000 / severity
@@ -224,7 +225,6 @@
 			cell.charge = 0
 		if(cell.reliability != 100 && prob(50/severity))
 			cell.reliability -= 10 / severity
-	..()
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
 /obj/item/clothing/gloves/proc/Touch(atom/A, proximity)
@@ -341,9 +341,13 @@
 		return
 	if(stored_item)
 		return
+	var/allowed = FALSE
 	for(var/allowed_item in items_allowed)
-		if(!istype(attacking_item, allowed_item))
-			continue
+		if(istype(attacking_item, allowed_item))
+			allowed = TRUE
+			break
+	if(!allowed)
+		return
 	if(!insert_after)
 		return TRUE
 	insert_item(user, attacking_item)

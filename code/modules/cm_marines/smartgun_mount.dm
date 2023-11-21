@@ -51,9 +51,8 @@
 	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
 	var/has_mount = FALSE // Indicates whether the M56D will come with its folding mount already attached
 
-/obj/item/device/m56d_gun/New()
-	..()
-
+/obj/item/device/m56d_gun/Initialize(mapload, ...)
+	. = ..()
 	update_icon()
 
 /obj/item/device/m56d_gun/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
@@ -519,6 +518,7 @@
 	operator = null
 	QDEL_NULL(in_chamber)
 	STOP_PROCESSING(SSobj, src)
+	ammo = null
 	return ..()
 
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
@@ -831,7 +831,7 @@
 						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 						return
 					else
-						user.freeze()
+						ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 						user.set_interaction(src)
 						give_action(user, /datum/action/human_action/mg_exit)
 
@@ -859,7 +859,7 @@
 	SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
-	user.unfreeze()
+	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 	user.reset_view(null)
 	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal

@@ -53,7 +53,7 @@
 		current_mob.pixel_y = buckling_y["[dir]"]
 		current_mob.pixel_x = buckling_x["[dir]"]
 		current_mob.dir = turn(dir, 180)
-		current_mob.density = FALSE
+		ADD_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
@@ -67,7 +67,7 @@
 
 	current_mob.pixel_y = initial(buckled_mob.pixel_y)
 	current_mob.pixel_x = initial(buckled_mob.pixel_x)
-	current_mob.density = !(current_mob.lying || current_mob.stat == DEAD)
+	REMOVE_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 	if(dir == SOUTH)
 		current_mob.layer = initial(current_mob.layer)
 		if(!ishuman(current_mob))

@@ -63,8 +63,9 @@ FIRE ALARM
 	return src.alarm()
 
 /obj/structure/machinery/firealarm/emp_act(severity)
-	if(prob(50/severity)) alarm()
-	..()
+	. = ..()
+	if(prob(50/severity))
+		alarm()
 
 /obj/structure/machinery/firealarm/attackby(obj/item/held_object as obj, mob/user as mob)
 	src.add_fingerprint(user)

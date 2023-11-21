@@ -1,7 +1,6 @@
 //shuttle mode defines
 #define SHUTTLE_IDLE    "idle"
 #define SHUTTLE_IGNITING   "igniting"
-#define SHUTTLE_IGNITINGSOON "ignitingsoon"
 #define SHUTTLE_RECALL  "recalled"
 #define SHUTTLE_CALL    "called"
 #define SHUTTLE_DOCKED  "docked"

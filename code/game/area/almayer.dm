@@ -98,14 +98,14 @@
 	resin_construction_allowed = FALSE
 
 /area/almayer/command/securestorage
-	name = "\improper Secure Storage"
+	name = "\improper Upper Deck Secure Storage"
 	icon_state = "corporatespace"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 1 // upperdeck
 
 /area/almayer/command/computerlab
-	name = "\improper Computer Lab"
+	name = "\improper Upper Deck Computer Lab"
 	icon_state = "ceroom"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 1 // upperdeck
 
 /area/almayer/command/telecomms
 	name = "\improper Upper Deck Telecommunications"

@@ -81,6 +81,16 @@
 	has_buttons = TRUE
 	icon_state = "coat_officer"
 
+/obj/item/clothing/suit/storage/jacket/marine/service/webbing
+	name = "custom external webbing"
+	desc = "An external webbing vest, designed to be worn over a jumpsuit rather than on. This one has more and larger straps and pouches infused with shards of kevlar for bearing equipment. This offers minimal protection."
+	icon = 'icons/obj/items/clothing/cm_suits.dmi'
+	has_buttons = FALSE
+	icon_state = "coat_ioweb"
+	initial_icon_state = "coat_ioweb"
+	flags_atom = NO_SNOW_TYPE
+	item_state = "webbing"
+
 /obj/item/clothing/suit/storage/jacket/marine/pilot
 	name = "\improper M70B1 light flak jacket"
 	desc = "A light flak jacket used by dropship pilots to protect themselves while flying in the cockpit. This specific flak jacket has been designed for style and comfort over protection, and it shows. Don't get hit by any stray bullets!"

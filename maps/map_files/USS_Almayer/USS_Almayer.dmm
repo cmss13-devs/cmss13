@@ -9121,12 +9121,12 @@
 /area/almayer/living/grunt_rnr)
 "aDX" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/containment{
-	dir = 4
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -12927,7 +12927,13 @@
 "aWb" = (
 /obj/structure/machinery/computer/working_joe{
 	dir = 4;
-	pixel_x = -17
+	pixel_x = -17;
+	pixel_y = 8
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 4;
+	pixel_x = -17;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer{
 	dir = 1;

@@ -99,7 +99,7 @@
 /mob/living/carbon/xenomorph/lesser_drone/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)
 	. = ..()
 	if(. && !aghosted)
-		src.gib()
+		gib()
 
 /mob/living/carbon/xenomorph/lesser_drone/handle_ghost_message()
 	return

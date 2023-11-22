@@ -231,7 +231,7 @@
 	var/step = 1
 	for(step = 1; step<=steps; step++)
 		if(step > next_step)
-			current_turf = get_step(current_turf,direction)
+			current_turf = get_step(current_turf, direction)
 			next_step += tally_step
 			if(envelope)
 				envelope.change_current_loc(current_turf)

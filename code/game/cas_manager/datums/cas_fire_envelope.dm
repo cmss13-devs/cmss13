@@ -100,21 +100,12 @@
 
 	return 0
 
-/datum/cas_fire_envelope/proc/execute_firemission(datum/cas_signal/target_turf, offset, dir, mission_id)
-	if(!istype(target_turf))
-		mission_error = "No target."
-		return 0
+/datum/cas_fire_envelope/proc/execute_firemission(datum/cas_signal/signal, target_turf,dir, mission_id)
 	if(stat != FIRE_MISSION_STATE_IDLE)
 		mission_error = "Fire Mission is under way already."
 		return 0
 	if(!missions[mission_id])
 		return -1
-	if(offset<0)
-		mission_error = "Can't have negative offsets."
-		return 0
-	if(offset>max_offset)
-		mission_error = "[max_offset] is the maximum possible offset."
-		return 0
 	if(dir!=NORTH && dir!=SOUTH && dir!=WEST && dir!=EAST)
 		mission_error = "Incorrect direction."
 		return 0
@@ -129,7 +120,7 @@
 		return 0
 
 	//actual firemission code
-	execute_firemission_unsafe(target_turf, offset, dir, mission)
+	execute_firemission_unsafe(signal, target_turf, dir, mission)
 	return 1
 
 /datum/cas_fire_envelope/proc/firemission_status_message()
@@ -236,45 +227,23 @@
 /**
  * Execute firemission.
  */
-/datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/target_turf, offset, dir, datum/cas_fire_mission/mission)
-	var/sx = 0
-	var/sy = 0
-
+/datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
 	stat = FIRE_MISSION_STATE_IN_TRANSIT
 	sleep(grace_period)
 	stat = FIRE_MISSION_STATE_ON_TARGET
-	switch(dir)
-		if(NORTH) //default direction
-			sx = 0
-			sy = 1
-		if(SOUTH)
-			sx = 0
-			sy = -1
-		if(EAST)
-			sx = 1
-			sy = 0
-		if(WEST)
-			sx = -1
-			sy = 0
 	if(!target_turf)
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target Lost."
 		return
-	var/turf/tt_turf = get_turf(target_turf.signal_loc)
-	if(!tt_turf || !check_firemission_loc(target_turf))
+	if(!target_turf || !check_firemission_loc(signal))
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
 		return
-	var/turf/shootloc = locate(tt_turf.x + sx*offset, tt_turf.y + sy*offset,tt_turf.z)
-	if(!shootloc || !istype(shootloc))
-		stat = FIRE_MISSION_STATE_IDLE
-		mission_error = "Target is off bounds."
-		return
-	change_current_loc(shootloc)
-	playsound(shootloc, soundeffect, 70, TRUE, 50)
+	change_current_loc(target_turf)
+	playsound(target_turf, soundeffect, 70, TRUE, 50)
 	sleep(flyto_period)
 	stat = FIRE_MISSION_STATE_FIRING
-	mission.execute_firemission(linked_console, shootloc, recorded_dir, fire_length, step_delay, src)
+	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
 	sleep(flyoff_period)
 	stat = FIRE_MISSION_STATE_COOLDOWN

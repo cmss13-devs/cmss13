@@ -3,7 +3,7 @@ import { useBackend, useLocalState, useSharedState } from '../../backend';
 import { Box, Icon, Stack } from '../../components';
 import { MfdProps, MfdPanel } from './MultifunctionDisplay';
 import { mfdState, useFiremissionXOffsetValue, useFiremissionYOffsetValue, useLazeTarget } from './stateManagers';
-import { dirMap, EquipmentContext, FiremissionContext, TargetContext } from './types';
+import { CasFiremission, EquipmentContext, FiremissionContext, TargetContext } from './types';
 
 const directionLookup = new Map<string, number>();
 directionLookup['N-S'] = 2;
@@ -48,7 +48,7 @@ const useWeaponSelectedState = (context) => {
 };
 
 const useTargetFiremissionSelect = (context) => {
-  const [data, set] = useSharedState<number | undefined>(
+  const [data, set] = useSharedState<CasFiremission | undefined>(
     context,
     'target-firemission-select',
     undefined
@@ -78,29 +78,6 @@ const useTargetSubmenu = (context, panelId: string) => {
     setLeftButtonMode: set,
   };
 };
-const useFiremissionOffset = (context) => {
-  const [data, set] = useSharedState<'NORTH' | 'SOUTH' | 'EAST' | 'WEST'>(
-    context,
-    'firemission-offset-dir',
-    'NORTH'
-  );
-  return {
-    fmOffsetDir: data,
-    setFmOffsetDir: set,
-  };
-};
-
-const useFiremissionOffsetValue = (context) => {
-  const [data, set] = useSharedState<number>(
-    context,
-    'firemission-offset-value',
-    0
-  );
-  return {
-    fmOffsetValue: data,
-    setFmOffsetValue: set,
-  };
-};
 
 const leftButtonGenerator = (context, panelId: string) => {
   const { data, act } = useBackend<
@@ -110,14 +87,10 @@ const leftButtonGenerator = (context, panelId: string) => {
     context,
     panelId
   );
-  const { selectedTarget } = useLazeTarget(context);
   const { strikeMode, setStrikeMode } = useStrikeMode(context);
   const { setStrikeDirection } = useStrikeDirection(context);
   const { firemissionSelected, setFiremissionSelected } =
     useTargetFiremissionSelect(context);
-  const { setFmOffsetDir } = useFiremissionOffset(context);
-  const { fmOffsetValue } = useFiremissionOffsetValue(context);
-
   const { weaponSelected, setWeaponSelected } = useWeaponSelectedState(context);
   const weapons = data.equipment_data.filter((x) => x.is_weapon);
   if (leftButtonMode === undefined) {
@@ -129,10 +102,6 @@ const leftButtonGenerator = (context, panelId: string) => {
       {
         children: 'VECTOR',
         onClick: () => setLeftButtonMode('VECTOR'),
-      },
-      {
-        children: 'OFFSET',
-        onClick: () => setLeftButtonMode('OFFSET'),
       },
     ];
   }
@@ -153,7 +122,7 @@ const leftButtonGenerator = (context, panelId: string) => {
         return {
           children: x.name,
           onClick: () => {
-            setFiremissionSelected(x.mission_tag);
+            setFiremissionSelected(x);
             setLeftButtonMode(undefined);
           },
         };
@@ -210,59 +179,7 @@ const leftButtonGenerator = (context, panelId: string) => {
       },
     ];
   }
-  if (leftButtonMode === 'OFFSET') {
-    return [
-      { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
-      {
-        children: 'NORTH',
-        onClick: () => {
-          setFmOffsetDir('NORTH');
-          setLeftButtonMode(undefined);
-          act('firemission-offset-camera', {
-            'target_id': selectedTarget,
-            'offset_direction': 1,
-            'offset_value': fmOffsetValue,
-          });
-        },
-      },
-      {
-        children: 'SOUTH',
-        onClick: () => {
-          setFmOffsetDir('SOUTH');
-          setLeftButtonMode(undefined);
-          act('firemission-offset-camera', {
-            'target_id': selectedTarget,
-            'offset_direction': 2,
-            'offset_value': fmOffsetValue,
-          });
-        },
-      },
-      {
-        children: 'EAST',
-        onClick: () => {
-          setFmOffsetDir('EAST');
-          setLeftButtonMode(undefined);
-          act('firemission-offset-camera', {
-            'target_id': selectedTarget,
-            'offset_direction': 4,
-            'offset_value': fmOffsetValue,
-          });
-        },
-      },
-      {
-        children: 'WEST',
-        onClick: () => {
-          setFmOffsetDir('WEST');
-          setLeftButtonMode(undefined);
-          act('firemission-offset-camera', {
-            'target_id': selectedTarget,
-            'offset_direction': 8,
-            'offset_value': fmOffsetValue,
-          });
-        },
-      },
-    ];
-  }
+
   return [];
 };
 
@@ -319,15 +236,8 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
     panelStateId
   );
 
-  const { fmOffsetDir } = useFiremissionOffset(context);
-
-  const { fmOffsetValue, setFmOffsetValue } =
-    useFiremissionOffsetValue(context);
-
-  const { fmXOffsetValue, setFmXOffsetValue } =
-    useFiremissionXOffsetValue(context);
-  const { fmYOffsetValue, setFmYOffsetValue } =
-    useFiremissionYOffsetValue(context);
+  const { fmXOffsetValue } = useFiremissionXOffsetValue(context);
+  const { fmYOffsetValue } = useFiremissionYOffsetValue(context);
 
   const lazes = range(0, 5).map((x) =>
     x > data.targets_data.length ? undefined : data.targets_data[x]
@@ -338,7 +248,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
       ? data.equipment_data.find((x) => x.mount_point === weaponSelected)?.name
       : firemissionSelected !== undefined
         ? data.firemission_data.find(
-          (x) => x.mission_tag === firemissionSelected
+          (x) => x.mission_tag === firemissionSelected.mission_tag
         )?.name
         : 'NONE';
 
@@ -360,13 +270,13 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
             }
             if (strikeMode === 'firemission') {
               act('firemission-execute', {
-                tag: firemissionSelected,
+                tag: firemissionSelected?.mission_tag,
                 direction: strikeDirection
                   ? directionLookup[strikeDirection]
                   : 1,
                 target_id: selectedTarget,
-                offset_direction: dirMap(fmOffsetDir),
-                offset_value: fmOffsetValue,
+                offset_x_value: fmXOffsetValue,
+                offset_y_value: fmYOffsetValue,
               });
             }
             if (strikeMode === 'weapon') {

@@ -231,17 +231,12 @@
 	if(firemission_envelope)
 		.["can_launch_firemission"] = !!selected_firemission && dropship.mode == SHUTTLE_CALL && firemission_envelope.stat != FIRE_MISSION_STATE_IDLE
 		.["firemission_data"] = get_firemission_data(user)
-		.["firemission_direction"] = get_firemission_dir()
+		.["firemission_state"] = firemission_envelope.stat
 		.["firemission_offset"] = firemission_envelope.recorded_offset
 		.["firemission_message"] = firemission_envelope.firemission_status_message()
 		.["firemission_name"] = selected_firemission ? selected_firemission.name : ""
 		.["firemission_step"] = firemission_envelope.stat
 		.["firemission_selected_laser"] = firemission_envelope.recorded_loc ? firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
-
-		var/list/firemission_edit_timeslices = list()
-		for(var/ts = 1; ts <= firemission_envelope.fire_length; ts++)
-			firemission_edit_timeslices += ts
-		.["firemission_edit_timeslices"] = firemission_edit_timeslices
 
 	.["configuration"] = configuration
 	.["looking"] = simulation.looking_at_simulation
@@ -414,46 +409,6 @@
 			firemission_envelope.change_current_loc(new_target)
 
 			return TRUE
-		if("firemission-offset-camera")
-			var/target_id = params["target_id"]
-			var/offset_direction = params["offset_direction"]
-			var/offset_value = params["offset_value"]
-
-			var/datum/cas_iff_group/cas_group = cas_groups[faction]
-			var/datum/cas_signal/cas_sig
-			for(var/X in cas_group.cas_signals)
-				var/datum/cas_signal/LT = X
-				if(LT.target_id == target_id  && LT.valid_signal())
-					cas_sig = LT
-					break
-			if(!cas_sig)
-				return TRUE
-
-			// find position of cas_sig with offset dir and value applied
-			var/dx = 0
-			var/dy = 0
-			var/offset_dir = text2num(offset_direction)
-
-			if (offset_dir == NORTH)
-				dy += text2num(offset_value)
-			else if (offset_dir == NORTH)
-				dy -= text2num(offset_value)
-			else if (offset_dir == WEST)
-				dx -= text2num(offset_value)
-			else if (offset_dir == EAST)
-				dx += text2num(offset_value)
-
-
-			var/obj/current = cas_sig.signal_loc
-			var/obj/new_target = locate(
-				current.x + dx,
-				current.y + dy,
-				current.z)
-
-			firemission_envelope.change_current_loc(new_target)
-
-			return TRUE
-
 		if("nvg-enable")
 			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
 			return TRUE
@@ -472,8 +427,8 @@
 			var/fm_tag = text2num(params["tag"])
 			var/direction = params["direction"]
 			var/target_id = params["target_id"]
-			var/offset_direction = params["offset_direction"]
-			var/offset_value = params["offset_value"]
+			var/offset_x_value = params["offset_x_value"]
+			var/offset_y_value = params["offset_y_value"]
 
 			if(!ui_select_firemission(user, fm_tag))
 				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
@@ -484,10 +439,7 @@
 			if(!ui_select_laser_firemission(user, shuttle, target_id))
 				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
 				return FALSE
-			if(!ui_firemission_camera(user, shuttle))
-				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
-				return FALSE
-			if(!initiate_firemission(user, fm_tag, text2num(offset_direction), text2num(offset_value)))
+			if(!initiate_firemission(user, fm_tag, direction, text2num(offset_x_value), text2num(offset_y_value)))
 				to_chat(user, SPAN_WARNING("initiate fail"))
 				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
 				return FALSE
@@ -569,12 +521,6 @@
 				"gimbal" = gimbal,
 				"offsets" = firerec.offsets
 			)
-
-/obj/structure/machinery/computer/dropship_weapons/proc/get_firemission_dir()
-	var/fm_direction = dir2text(firemission_envelope.recorded_dir)
-	if(!fm_direction)
-		fm_direction = "NOT SELECTED"
-	return fm_direction
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_sanitised_equipment(mob/user, obj/docking_port/mobile/marine_dropship/dropship)
 	. = list()
@@ -738,11 +684,11 @@
 	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 		to_chat(weapon_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
-	if(firemission_tag > firemission_envelope.missions.len)
-		to_chat(weapon_operator, SPAN_WARNING("Fire Mission ID corrupted or deleted."))
-		return FALSE
 	if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
 		to_chat(weapon_operator, SPAN_WARNING("Fire Mission already underway."))
+		return FALSE
+	if(firemission_tag > firemission_envelope.missions.len)
+		to_chat(weapon_operator, SPAN_WARNING("Fire Mission ID corrupted or deleted."))
 		return FALSE
 	if(selected_firemission == firemission_envelope.missions[firemission_tag])
 		selected_firemission = null
@@ -786,39 +732,27 @@
 	update_location(weapons_operator, cas_sig)
 	return TRUE
 
-/obj/structure/machinery/computer/dropship_weapons/proc/ui_firemission_camera(mob/camera_operator, obj/docking_port/mobile/marine_dropship/dropship)
-	if(dropship.mode != SHUTTLE_CALL)
-		to_chat(camera_operator, SPAN_WARNING("Shuttle has to be in orbit."))
-		return FALSE
-
-	if(!firemission_envelope.guidance)
-		to_chat(camera_operator, SPAN_WARNING("Guidance is not selected or lost."))
-		return FALSE
-
-	to_chat(camera_operator, "You peek through the guidance camera.")
-	return TRUE
-
-/obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission(mob/user, fmId, direction, offset)
+/obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission(mob/user, fmId, dir, offset_x, offset_y)
 	set waitfor = 0
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	log_debug("initiate 1")
 	if (!istype(dropship))
 		return FALSE
-	log_debug("initiate 2")
 	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("Has to be in Fly By mode"))
 		return FALSE
-	log_debug("initiate 3")
 	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.get_total_duration())
 		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
 		return FALSE
-	log_debug("initiate 4")
-	var/result = firemission_envelope.execute_firemission(firemission_envelope.recorded_loc, offset, direction, fmId)
-	if(result<1)
+	var/datum/cas_signal/recorded_loc = firemission_envelope.recorded_loc
+	var/obj/source = recorded_loc.signal_loc
+	var/turf/target = locate(
+		source.x + offset_x,
+		source.y + offset_y,
+		source.z
+	)
+	var/result = firemission_envelope.execute_firemission(recorded_loc, target, dir, fmId)
+	if(result < 1)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
-	else
-		update_trace_loc()
-	log_debug("initiate 5")
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_location(mob/user, new_location)

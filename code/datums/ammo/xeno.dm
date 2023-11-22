@@ -37,7 +37,7 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/target_mob, power, insta_neuro)
+/proc/apply_neuro(mob/living/target_mob, power, insta_neuro)
 	if(skillcheck(target_mob, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		target_mob.visible_message(SPAN_DANGER("[target_mob] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
@@ -75,7 +75,7 @@
 		target_human.apply_effect(4, SLOW)
 		target_human.visible_message(SPAN_DANGER("[target_human]'s movements are slowed."))
 
-/proc/apply_scatter_neuro(mob/target_mob)
+/proc/apply_scatter_neuro(mob/living/target_mob)
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/target_human = target_mob
 		if(skillcheck(target_mob, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
@@ -323,7 +323,7 @@
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 
-/datum/ammo/xeno/bone_chips/on_hit_mob(mob/target_mob, obj/projectile/target_projectile)
+/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/target_mob, obj/projectile/target_projectile)
 	if(iscarbon(target_mob))
 		var/mob/living/carbon/target_carbon = target_mob
 		if((HAS_FLAG(target_carbon.status_flags, XENO_HOST) && HAS_TRAIT(target_carbon, TRAIT_NESTED)) || target_carbon.stat == DEAD)
@@ -353,7 +353,7 @@
 	damage = 10
 	shrapnel_chance = 0
 
-/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/target_mob, obj/projectile/target_projectile)
+/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/target_mob, obj/projectile/target_projectile)
 	if(iscarbon(target_mob))
 		var/mob/living/carbon/target_carbon = target_mob
 		if((HAS_FLAG(target_carbon.status_flags, XENO_HOST) && HAS_TRAIT(target_carbon, TRAIT_NESTED)) || target_carbon.stat == DEAD)

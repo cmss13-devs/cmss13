@@ -158,12 +158,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_flight.Add(new /datum/ares_record/flight(details, user_name))
 
-/proc/log_ares_tech(user_name, tier_tech = FALSE, announce_name, announce_message, cost)
+/proc/log_ares_tech(user_name, tier_tech = FALSE, title, details, point_cost, current_points)
 	if(!ares_can_log())
 		return FALSE
-	var/new_details = "[announce_name] - [announce_message] - [cost] INT"
+	var/new_details = "[title] - [details]"
+	if(point_cost)
+		new_details += " - Used [point_cost] INT of [current_points]."
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_tech.Add(new /datum/ares_record/tech(announce_name, new_details, user_name, tier_tech))
+	datacore.records_tech.Add(new /datum/ares_record/tech(title, new_details, user_name, tier_tech))
 
 // ------ End ARES Logging Procs ------ //
 

@@ -76,7 +76,8 @@
 		var/log_details = announce_message
 		if(!log_details)
 			log_details = name
-		log_ares_tech(user.real_name, is_tier_tech(), announce_name, log_details, required_points)
+		var/current_points = holder.points
+		log_ares_tech(user.real_name, is_tier_tech(), announce_name, log_details, required_points, current_points)
 	holder.spend_points(required_points)
 	update_icon(node)
 

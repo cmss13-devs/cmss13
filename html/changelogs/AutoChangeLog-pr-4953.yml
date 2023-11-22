@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Tweaked larva queue spawning: Now spawns as many larva as possible each cycle rather than one."

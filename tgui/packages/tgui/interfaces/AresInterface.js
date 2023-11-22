@@ -18,6 +18,7 @@ const PAGES = {
   'security': () => Security,
   'requisitions': () => Requisitions,
   'emergency': () => Emergency,
+  'tech_log': () => TechLogs,
 };
 
 export const AresInterface = (props, context) => {
@@ -252,12 +253,24 @@ const MainMenu = (props, context) => {
               <Button
                 content="ASRS Audit Log"
                 tooltip="Review the ASRS Audit Log."
-                icon="cart-shopping"
+                icon="magnifying-glass-dollar"
                 ml="auto"
                 px="2rem"
                 width="25vw"
                 bold
                 onClick={() => act('page_requisitions')}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Tech Control Log"
+                tooltip="Review the Intel Tech Log."
+                icon="magnifying-glass-chart"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_tech')}
               />
             </Stack.Item>
           </Stack>
@@ -1538,6 +1551,118 @@ const Emergency = (props, context) => {
           disabled={!canNuke}
         />
       </Flex>
+    </>
+  );
+};
+
+const TechLogs = (props, context) => {
+  const { data, act } = useBackend(context);
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_tech,
+    access_level,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Tech Control Logs</h1>
+        {!!records_tech.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="15rem" grow bold>
+              Authenticator
+            </Flex.Item>
+            <Flex.Item width="40rem" textAlign="center">
+              Details
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_tech.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item width="15rem" grow italic>
+                {record.user}
+              </Flex.Item>
+              {!!record.tier_changer && (
+                <Flex.Item
+                  width="40rem"
+                  ml="1rem"
+                  shrink="0"
+                  textAlign="center"
+                  color="red">
+                  {record.details}
+                </Flex.Item>
+              )}
+              {!record.tier_changer && (
+                <Flex.Item
+                  width="40rem"
+                  ml="1rem"
+                  shrink="0"
+                  textAlign="center">
+                  {record.details}
+                </Flex.Item>
+              )}
+
+              <Flex.Item ml="1rem">
+                <Button.Confirm
+                  icon="trash"
+                  tooltip="Delete Record"
+                  disabled={access_level < 4 || !!record.tier_changer}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
     </>
   );
 };

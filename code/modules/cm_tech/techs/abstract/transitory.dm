@@ -22,7 +22,10 @@
 
 	return TRUE
 
-/datum/tech/transitory/on_unlock()
+/datum/tech/transitory/is_tier_tech()
+	return TRUE
+
+/datum/tech/transitory/on_unlock(mob/user)
 	. = ..()
 	if(!next)
 		return
@@ -31,6 +34,8 @@
 	if(next_tier)
 		holder.tier = next_tier
 		holder.on_tier_change(previous_tier)
+		if(flags & TREE_FLAG_MARINE)
+			log_ares_tech(user.real_name, is_tier_tech(), "ALMAYER DEFCON LEVEL INCREASED", "THREAT ASSESSMENT LEVEL INCREASED TO LEVEL [next_tier.tier].\n\nLEVEL [next_tier.tier] assets have been authorised to handle the situation.", required_points)
 
 /datum/tech/transitory/get_tier_overlay()
 	if(!next)

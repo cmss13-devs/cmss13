@@ -21,7 +21,7 @@
 	var/background_icon = "background"
 	var/background_icon_locked = "marine"
 
-	var/announce_name
+	var/announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	var/announce_message
 
 /datum/tech/proc/can_unlock(mob/M)
@@ -58,6 +58,9 @@
 
 	return TRUE
 
+/datum/tech/proc/is_tier_tech()
+	return FALSE
+
 /** Called when a tech is unlocked. Usually, benefits can be applied here
 * however, the purchase can still be cancelled by returning FALSE
 *
@@ -69,11 +72,16 @@
 	unlocked = TRUE
 	to_chat(user, SPAN_HELPFUL("You have purchased the '[name]' tech node."))
 	log_admin("[key_name_admin(user)] has bought '[name]' via tech points.")
+	if(!is_tier_tech())
+		var/log_details = announce_message
+		if(!log_details)
+			log_details = name
+		log_ares_tech(user.real_name, is_tier_tech(), announce_name, log_details, required_points)
 	holder.spend_points(required_points)
 	update_icon(node)
 
 	if(!(tech_flags & TECH_FLAG_NO_ANNOUNCE) && announce_message && announce_name)
-		marine_announcement(announce_message, announce_name, 'sound/misc/notice2.ogg')
+		marine_announcement(announce_message, announce_name, 'sound/misc/notice2.ogg', logging = ARES_LOG_NONE)
 
 	return TRUE
 

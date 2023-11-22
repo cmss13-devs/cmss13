@@ -7,8 +7,6 @@
 
 	tier = /datum/tier/two
 
-	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
-
 	var/type_to_give
 
 /datum/tech/repeatable/ob/on_unlock()

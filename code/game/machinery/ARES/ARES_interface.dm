@@ -183,6 +183,19 @@
 		logged_orders += list(current_order)
 	data["records_requisition"] = logged_orders
 
+	var/list/logged_techs = list()
+	for(var/datum/ares_record/tech/tech_unlock as anything in datacore.records_tech)
+		if(!istype(tech_unlock))
+			continue
+		var/list/current_tech = list()
+		current_tech["time"] = tech_unlock.time
+		current_tech["details"] = tech_unlock.details
+		current_tech["user"] = tech_unlock.user
+		current_tech["tier_changer"] = tech_unlock.is_tier
+		current_tech["ref"] = "\ref[tech_unlock]"
+		logged_techs += list(current_tech)
+	data["records_tech"] = logged_techs
+
 	var/list/logged_convos = list()
 	var/list/active_convo = list()
 	var/active_ref
@@ -315,6 +328,9 @@
 		if("page_deleted_1to1")
 			last_menu = current_menu
 			current_menu = "deleted_talks"
+		if("page_tech")
+			last_menu = current_menu
+			current_menu = "tech_log"
 
 		// -- Delete Button -- //
 		if("delete_record")

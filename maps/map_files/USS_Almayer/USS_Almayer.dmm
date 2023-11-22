@@ -6732,10 +6732,10 @@
 	},
 /area/almayer/command/airoom)
 "avM" = (
-/obj/structure/machinery/computer/cameras/almayer/ares{
+/obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	pixel_x = 17;
-	pixel_y = 6
+	pixel_y = 8
 	},
 /obj/structure/surface/table/reinforced/almayer_B{
 	climbable = 0;
@@ -6747,6 +6747,11 @@
 	pixel_y = 6
 	},
 /obj/item/tool/pen,
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 8;
+	pixel_x = 17;
+	pixel_y = -6
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -7494,7 +7499,13 @@
 /obj/item/storage/belt/medical/full,
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
-	pixel_x = 17
+	pixel_x = 17;
+	pixel_y = 8
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 8;
+	pixel_x = 17;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -41726,9 +41737,6 @@
 "ikM" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer_network,
-/obj/structure/machinery/computer/secure_data{
-	pixel_x = 17
-	},
 /obj/structure/machinery/computer/card{
 	pixel_x = -16
 	},
@@ -41738,6 +41746,9 @@
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/structure/machinery/computer/secure_data{
+	pixel_x = 17
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -50040,6 +50051,9 @@
 /obj/item/tool/lighter/zippo/gold{
 	pixel_y = 3;
 	layer = 3.05
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	pixel_y = 16
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -58779,13 +58793,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "pmV" = (
-/obj/structure/prop/server_equipment/yutani_server/broken{
-	density = 0;
-	desc = "A powerful server tower housing various AI functions.";
-	name = "server tower";
-	pixel_y = 16
-	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/structure/machinery/computer/tech_control{
+	pixel_y = 16;
+	density = 0
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -63686,8 +63698,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "rna" = (
-/turf/closed/wall/almayer/white,
-/area/almayer/command/airoom)
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	pixel_x = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/shipboard/brig/main_office)
 "rne" = (
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)
@@ -92069,7 +92087,7 @@ ahE
 hUg
 wcn
 vBm
-gqW
+rna
 buX
 mLJ
 eRL
@@ -138018,7 +138036,7 @@ fEN
 cqm
 gTH
 qit
-rna
+ebN
 qQS
 gwn
 pfT
@@ -138622,12 +138640,12 @@ daz
 daz
 kfU
 daz
-rna
-rna
+ebN
+ebN
 lnS
 uVv
 yit
-rna
+ebN
 cxc
 kBy
 kBy
@@ -138826,12 +138844,12 @@ daz
 daz
 daz
 sGZ
-rna
-rna
+ebN
+ebN
 roH
 ebN
-ebN
-ebN
+daz
+daz
 daz
 wnh
 wnh
@@ -139638,12 +139656,12 @@ daz
 daz
 daz
 tHu
-rna
-rna
+ebN
+ebN
 gXs
 ebN
-ebN
-ebN
+daz
+daz
 daz
 wnh
 wnh
@@ -139840,12 +139858,12 @@ daz
 daz
 sTV
 daz
-rna
-rna
+ebN
+ebN
 gbg
 uVv
 erN
-rna
+ebN
 qQS
 kBy
 kBy
@@ -140454,7 +140472,7 @@ rCi
 gba
 mUz
 our
-rna
+ebN
 cxc
 kBy
 kBy

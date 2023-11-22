@@ -103,7 +103,7 @@ block( \
 #define SOUND_MIDI (1<<1)
 #define SOUND_AMBIENCE (1<<2)
 #define SOUND_LOBBY (1<<3)
-#define SOUND_INTERNET (1<<4)
+#define SOUND_INTERNET (1<<4) // Unused currently. Kept for default prefs compat only
 #define SOUND_REBOOT (1<<5)
 #define SOUND_ADMIN_MEME (1<<6)
 #define SOUND_ADMIN_ATMOSPHERIC (1<<7)

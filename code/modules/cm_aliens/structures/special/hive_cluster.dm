@@ -23,9 +23,15 @@
 /obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
 	. = ..()
 	node = place_node()
+	update_minimap_icon()
+
+/obj/effect/alien/resin/special/cluster/proc/update_minimap_icon()
+	SSminimaps.remove_marker(src)
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "cluster")
 
 /obj/effect/alien/resin/special/cluster/Destroy()
 	QDEL_NULL(node)
+	SSminimaps.remove_marker(src)
 	return ..()
 
 /obj/effect/alien/resin/special/cluster/attack_alien(mob/living/carbon/xenomorph/M)

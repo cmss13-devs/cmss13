@@ -251,7 +251,7 @@
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return
 	var/mob/living/carbon/xenomorph/X = owner
-	X.frozen = FALSE
+	REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 	X.update_canmove()
 	deltimer(freeze_timer_id)
 	freeze_timer_id = TIMER_ID_NULL

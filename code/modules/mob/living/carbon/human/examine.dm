@@ -5,6 +5,10 @@
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
+	var/mob/dead/observer/observer
+	if(isobserver(user))
+		observer = user
+
 	if(isxeno(user))
 		var/msg = "<span class='info'>This is "
 
@@ -435,7 +439,7 @@
 	for(var/implant in get_visible_implants())
 		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
 
-	if(hasHUD(user,"security"))
+	if(hasHUD(user,"security") || (observer && observer.HUD_toggled["Security HUD"]))
 		var/perpref
 
 
@@ -450,9 +454,17 @@
 						if(R.fields["id"] == E.fields["id"])
 							criminal = R.fields["criminal"]
 
-			msg += "<span class = 'deptradio'>Criminal status:</span> <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
-			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
+			msg += "<span class = 'deptradio'>Criminal status:</span>"
+			if(!observer)
+				msg += "<a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
+			else
+				msg += "\[[criminal]\]\n"
 
+			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>"
+			if(!observer)
+				msg += " <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
+			else
+				msg += "\n"
 	if(hasHUD(user,"medical"))
 		var/cardcolor = holo_card_color
 		if(!cardcolor) cardcolor = "none"

@@ -6,6 +6,7 @@ var/list/alldepartments = list()
 #define DEPARTMENT_CMB "CMB Incident Command Center, Local Operations"
 #define DEPARTMENT_PROVOST "USCM Provost Office"
 #define DEPARTMENT_PRESS "Various Press Organizations"
+#define HIGHCOM_DEPARTMENTS list(DEPARTMENT_WY, DEPARTMENT_HC, DEPARTMENT_CMB, DEPARTMENT_PROVOST, DEPARTMENT_PRESS)
 
 /obj/structure/machinery/faxmachine // why not fax_machine?
 	name = "\improper General Purpose Fax Machine"
@@ -319,10 +320,14 @@ var/list/alldepartments = list()
 
 	GLOB.fax_contents += faxcontents
 
+	var/scan_department = target_department
+	if(department in HIGHCOM_DEPARTMENTS)
+		scan_department = department
+
 	var/msg_admin = SPAN_STAFF_IC("<b><font color='#006100'>[target_department]: </font>[key_name(user, 1)] ")
 	msg_admin += "[CC_MARK(user)] [ADMIN_PP(user)] [ADMIN_VV(user)] [ADMIN_SM(user)] [ADMIN_JMP_USER(user)] "
 
-	switch(target_department)
+	switch(scan_department)
 		if(DEPARTMENT_HC)
 			GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "

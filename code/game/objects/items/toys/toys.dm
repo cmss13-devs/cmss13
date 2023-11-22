@@ -553,15 +553,15 @@
 	///Hexadecimal 0-F (0-15)
 	var/static/list/hexadecimal = list("0", "1", "2", "3" , "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 
-/obj/item/toy/plush/therapy/random_color/New(loc, ...)
+/obj/item/toy/plush/therapy/random_color/Initialize(mapload, ...)
 	. = ..()
 	var/color_code = "#[pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)]" //This is dumb and I hope theres a better way I'm missing
 	color = color_code
-	desc = "A custom therapy plush, in a unique color. This one is labeled with \"#[color_code]\"."
+	desc = "A custom therapy plush, in a unique color."
 
 /obj/item/toy/plush/random_plushie //Not using an effect so it can fit into storage from loadout
 	name = "random plush"
-	desc = "You should not be seeing this"
+	desc = "This plush looks awfully standard and bland. Is it actually yours?"
 	/// Standard plushies for the spawner to pick from
 	var/list/plush_list = list(
 		/obj/item/toy/plush/farwa,
@@ -587,22 +587,32 @@
 	. = ..()
 	if(mapload) //Placed in mapping, will be randomized instantly on spawn
 		create_plushie()
-		return
-	RegisterSignal(src, COMSIG_POST_SPAWN_UPDATE, PROC_REF(create_plushie))
+		return INITIALIZE_HINT_QDEL
+
+/obj/item/toy/plush/random_plushie/pickup(mob/user, silent)
+	. = ..()
+	RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(create_plushie), override = TRUE)
 
 ///The randomizer picking and spawning a plushie on either the ground or in the humans backpack. Needs var/source due to signals
-/obj/item/toy/plush/random_plushie/proc/create_plushie(source = src, mob/living/user)
-	UnregisterSignal(src, COMSIG_POST_SPAWN_UPDATE)
+/obj/item/toy/plush/random_plushie/proc/create_plushie(datum/source)
+	SIGNAL_HANDLER
+	if(source)
+		UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+	var/turf/spawn_location = get_turf(src)
 	var/plush_list_variety = pick(60; plush_list, 40; therapy_plush_list)
 	var/random_plushie = pick(plush_list_variety)
-	var/obj/item/toy/plush/plush = new random_plushie(get_turf(src)) //Starts on floor by default
+	var/obj/item/toy/plush/plush = new random_plushie(spawn_location) //Starts on floor by default
+	var/mob/living/carbon/human/user = source
 
 	if(!user) //If it didn't spawn on a humanoid
 		qdel(src)
 		return
+
 	var/obj/item/storage/backpack/storage = locate() in user //If the user has a backpack, put it there
 	if(storage?.can_be_inserted(plush, user, stop_messages = TRUE))
 		storage.attempt_item_insertion(plush, TRUE, user)
+	if(plush.loc == spawn_location) // Still on the ground
+		user.put_in_hands(plush, drop_on_fail = TRUE)
 	qdel(src)
 
 //Admin plushies

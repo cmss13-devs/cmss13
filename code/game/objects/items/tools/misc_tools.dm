@@ -284,21 +284,24 @@
 	matter = list("metal" = 20, "gold" = 10)
 	var/static/list/colour_list = list("red", "blue", "green", "yellow", "purple", "pink", "brown", "black", "orange") // Can add more colors as required
 	var/current_colour_index = 1
-	var/owner = "hard to read text"
+	var/owner_name
 
-/obj/item/tool/pen/fountain/Initialize(mapload, ...)
+/obj/item/tool/pen/fountain/pickup(mob/user, silent)
 	. = ..()
-	if(!mapload)
-		RegisterSignal(src, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+	if(!owner_name)
+		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
 
 ///Sets the owner of the pen to who it spawns with, requires var/source for signals
-/obj/item/tool/pen/fountain/proc/set_owner(source = src, mob/living/carbon/human/user)
-	UnregisterSignal(src, COMSIG_POST_SPAWN_UPDATE)
-	owner = user
+/obj/item/tool/pen/fountain/proc/set_owner(datum/source)
+	SIGNAL_HANDLER
+	UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+	var/mob/living/carbon/human/user = source
+	owner_name = user.name
 
 /obj/item/tool/pen/fountain/get_examine_text(mob/user)
 	. = ..()
-	. += "There's a laser engraving of [owner] on it."
+	if(owner_name)
+		. += "There's a laser engraving of [owner_name] on it."
 
 /obj/item/tool/pen/fountain/attack_self(mob/living/carbon/human/user)
 	if(on)

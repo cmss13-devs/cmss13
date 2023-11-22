@@ -108,3 +108,174 @@
   - admin: Added better logging for orbital bombardment.
   realforest2001:
   - rscadd: Added a big line to Nightmare survivor spawns that indicates hostility.
+2023-11-08:
+  BeagleGaming1:
+  - rscadd: Added CBRN ERT with new CBRN MOPP equipment. (Sprites by DrMacCool and
+      Esselnek, names and descriptions by TopHatPenguin and Kaga)
+  - rscadd: ERT Squads (Marine Raider and new CBRN) get assigned to their squad even
+      if spawned as an ERT, and do not automatically unlock it for overwatch
+  - balance: Tool Webbing can now only hold tools, instead of just being a better
+      webbing
+  - spellcheck: Corrected spelling of "Intercepted Transmission" for ERTs
+  - bugfix: USCM faction squads that are not default marine squads should no longer
+      cause a crew manifest runtime
+  Birdtalon:
+  - rscadd: Xeno tacmap icons for hive core and clusters.
+  Drathek:
+  - bugfix: Fix the ColMarTechAutomated Munition Vendor in req not vending to the
+      table.
+  - bugfix: Fix the first use of a USCM equipment preset (such as cryo marines) not
+      properly loading rank and other values
+  QuickLode:
+  - rscadd: adds another Colony Synthetic variant, changes up some existing ones(trucker,CMB)
+  - bugfix: fixes a small problem with WY-Colony Synthetic access(thx forest), adds
+      WY subtype of Synthetics for admin building/faxes
+  - bugfix: fixes problems with organic spawning ferret industries Trucker Synthetic
+  Releasethesea:
+  - rscadd: Makes it so cigars fit in helmets.
+  Skye.:
+  - maptweak: Tweaks a Cabinet in the SW mines of Solaris Ridge
+  - bugfix: On account of it being propped up on the floor like a cardboard cutout.
+  fira:
+  - bugfix: Spawned bottles now use all 4 of their sprites as intended rather than
+      always the same.
+  zzzmike:
+  - spellcheck: fixed a typo
+2023-11-09:
+  fira:
+  - bugfix: Fixed incorrect signals causing malfunctions in tgui_say for ASAY and
+      MentorSay channel hotkeys.
+  - admin: VV "Update Transform" will now properly compound with other sources of
+      transform (eg. lying down)
+  - bugfix: Density effects should now properly update when stacked and unstacked.
+  - rscadd: You can now use package wrap to change standard crates visuals.
+  - rscadd: You can now label crate with package wrap, which will also be shown during
+      overwatch supply drop alert.
+  - mapadd: Added more packaging wrap to Requisitions.
+2023-11-10:
+  Drathek:
+  - bugfix: Fixed fax template images in CDN mode
+  - bugfix: Fixed imaginary friend merge ability preventing hearing if ghost ears
+      are set to only nearby.
+  - bugfix: Fixed imaginary friend hide ability not updating its icons.
+  MorrowWolf:
+  - bugfix: Fixed Pumpkins appearing past season.
+  MrDas:
+  - bugfix: You can no longer see through solid rear drop ship doors.
+  - code_imp: Moved filler turf logic from almayer airlocks to its parent door.
+  SpartanBobby:
+  - maptweak: fixes conflicting tiles on USS Almayer squad bunks
+  - maptweak: updates multiple bedrooms and closet area detailing
+2023-11-11:
+  QuickLode:
+  - rscadd: SUPERLIGHT armor category.
+  - balance: M4 Synthetic Armor slows by 10% to justify having 1 extra storage slot.
+  - spellcheck: Clarifies M4 Synthetic Armor description that it does not have any
+      armor whatsoever.
+2023-11-12:
+  SpartanBobby Tophatpenguin:
+  - maptweak: redetails a room on the upper deck of the USS Almayer, places a few
+      L42As in this room
+2023-11-14:
+  BeagleGaming1:
+  - rscdel: Removes icon baking on surfaces (primarily seen on tables)
+  Birdtalon:
+  - bugfix: Boiler acid shroud now works on hotkey 5
+  - code_imp: Replaces single letter vars and removes unused code for boiler.
+  - code_imp: Replaces burrow var from Xenomorph with burrowed trait
+  - code_imp: Starts refactoring some vars on xenomorph class
+  - rscadd: Observer with Security HUD enabled can examine and read security records.
+  - rscadd: Toggle HUD button to ghost UI
+  BraveMole, Zonespace:
+  - bugfix: Guns should no longer very rarely jam mid-burst.
+  Ediblebomb:
+  - qol: Changed "Subject is brain-dead." to "Subject has taken extreme amounts of
+      brain damage." when scanning somebody with 100 brain damage.
+  Releasethesea:
+  - bugfix: Fixxed the improperly area'd hull south of construction site, adds fire
+      shutters to north fueling pod to make it mirror the south one
+  - rscadd: Adds Colonial Space Grunts to rec vend aswell as several pens and Dice
+      for playing the game.
+  - rscadd: Adds functional bedrolls to the game.
+  SpartanBobby:
+  - maptweak: fixes broken sidewalk on bigred
+  Steelpoint:
+  - rscadd: Less powerful variants of the Commando ERTs (Marsoc, WY Whiteout, UPP
+      Commandos) have been added for admin use.
+  - admin: The powerful versions of commando ERTs are denoted with (!DEATHSQUAD!)
+      in the distress call and equipment preset menus.
+  fira:
+  - bugfix: Fixed ghost droppods appearing when launching crates by Echo pad.
+  - bugfix: Fixed an issue in traits backend update causing among others leadership
+      action buttons to be missing.
+2023-11-15:
+  Birdtalon:
+  - code_imp: Replaced single letter vars in runner code.
+2023-11-16:
+  fira:
+  - bugfix: Rooting effects should now properly update when stacked and unstacked.
+2023-11-17:
+  Birdtalon:
+  - bugfix: Lurker can no longer tail jab through doors/structures.
+  - code_imp: Var disambiguation, cleanup and removal of redundant typechecks in lurker
+      code.
+  - bugfix: Adds missing newline when viewing sec records as observer.
+  - bugfix: Fixes posters in CL office displaying IO description.
+  - code_imp: Replaces single letter var in hivelord code
+  - code_imp: Replaces single letter vars in ravager code
+  - code_imp: Refactors vending machine global scope procs
+  Doubleumc:
+  - rscadd: vehicles can be followed by ghosts
+  SpartanBobby, GDS Pathe:
+  - maptweak: Updates bigred floortiles
+  - maptweak: Re-adds reactor to bigred
+  Steelpoint:
+  - maptweak: LV-624's Caves have had an aesthetic change regarding jungle tiles and
+      flora.
+  casperr04:
+  - bugfix: Removes the ability to fulton bodies that can still be revived
+  fira:
+  - admin: VV 'Modify Transform' can now be used to flip objects.
+  - bugfix: Horizontal Almayer walls no longer change icon randomly, and now properly
+      display damage overlays.
+  realforest2001:
+  - rscadd: Faxes sent from HighCom fax machines now appear in their correct category.
+  sleepynecrons:
+  - imageadd: fixes biosuit body sprite not properly covering mobs
+2023-11-18:
+  Cthulhu80, Drathek:
+  - rscadd: Adds drawing to tactical maps, viewable via stat panel for marines and
+      xeno tacmap for xenos.
+  - bugfix: Corrupted (and other hives) now have separate tactical maps.
+  fira:
+  - admin: Moderators are now immune to inactivity kick, much like Admins.
+  - bugfix: Fixed the tank driving through vehicle blockers and accessing "deep" parts
+      of the map it wasn't intended to push.
+  - bugfix: Tentatively fixed some visual bugs with turret based vehicles.
+  - bugfix: Fixed using the tank coupon as first vehicle spawn causing Gear Vendor
+      to still give out APC gear.
+  - admin: Added an APC coupon in same vein as Tank Coupon for Admins to use.
+  - admin: Tank/APC Coupons now spawn broken down versions of the vehicles, for the
+      full VC experience. You want a ready to use one, just spawn it.
+  - admin: Tank/APC coupons do not spawn VC pamphlets in ASRS anymore.
+  - admin: Added a vehicle_flag for tanks to bypass blockers (in a legit fashion this
+      time). Abuse at your discretion.
+  ihatethisengine:
+  - rscadd: Cloaked lurker devouring now shows a message to target again.
+2023-11-20:
+  Zonespace27:
+  - bugfix: Jump-to-area verb will now warn you if there aren't any turfs in the given
+      area.
+2023-11-21:
+  hislittlecuzingames:
+  - code_imp: Added ability to have looping sounds from further away
+2023-11-22:
+  AnturK:
+  - server: the server now supports auto-profiling
+  Birdtalon:
+  - code_imp: Removes some istype(src)
+  Morrow:
+  - rscadd: Mess tech positions now scale from 1 to 2 after 70 marines are in the
+      game
+  hislittlecuzingames:
+  - rscadd: Launch Announcement Alarm for dropships to notify ground forces of departure.

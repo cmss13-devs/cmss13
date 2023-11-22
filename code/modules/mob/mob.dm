@@ -513,6 +513,7 @@
 
 	return do_pull(AM, lunge, no_msg)
 
+
 /mob/living/vv_get_header()
 	. = ..()
 	var/refid = REF(src)
@@ -592,20 +593,13 @@
 adds a dizziness amount to a mob
 use this rather than directly changing var/dizziness
 since this ensures that the dizzy_process proc is started
-currently only humans get dizzy
+currently only mob/living/carbon/human get dizzy
 
 value of dizziness ranges from 0 to 1000
 below 100 is not dizzy
 */
 /mob/proc/make_dizzy(amount)
-	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
-		return
-
-	dizziness = min(500, dizziness + amount) // store what will be new value
-													// clamped to max 500
-	if(dizziness > 100 && !is_dizzy)
-		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
-
+	return
 
 /*
 dizzy process - wiggles the client's pixel offset over time
@@ -709,7 +703,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
-	var/laid_down = (stat || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
+	var/laid_down = is_laid_down()
 
 	if(laid_down)
 		lying = TRUE
@@ -723,19 +717,25 @@ note dizziness decrements automatically in the mob's Life() proc.
 		else
 			lying = FALSE
 
-	canmove = !(stunned || frozen)
+	canmove = !HAS_TRAIT(src, TRAIT_IMMOBILIZED)
+
+	if(isliving(src)) // Temporary I SWEAR. This whole proc is going down
+		var/mob/living/living = src
+		if(living.stunned)
+			canmove = FALSE
+
 	if(!can_crawl && lying)
 		canmove = FALSE
 
 	if(lying_prev != lying)
 		if(lying)
-			density = FALSE
+			ADD_TRAIT(src, TRAIT_UNDENSE, LYING_TRAIT)
 			add_temp_pass_flags(PASS_MOB_THRU)
 			drop_l_hand()
 			drop_r_hand()
 			SEND_SIGNAL(src, COMSIG_MOB_KNOCKED_DOWN)
 		else
-			density = TRUE
+			REMOVE_TRAIT(src, TRAIT_UNDENSE, LYING_TRAIT)
 			SEND_SIGNAL(src, COMSIG_MOB_GETTING_UP)
 			remove_temp_pass_flags(PASS_MOB_THRU)
 		update_transform()
@@ -754,6 +754,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 	SEND_SIGNAL(src, COMSIG_MOB_POST_UPDATE_CANMOVE, canmove, laid_down, lying)
 
 	return canmove
+
+/mob/proc/is_laid_down()
+	return (stat || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
 
 /mob/proc/face_dir(ndir, specific_dir)
 	if(!canface()) return 0
@@ -788,22 +791,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/get_species()
 	return ""
-
-/// Sets freeze if possible and wasn't already set, returning success
-/mob/proc/freeze()
-	if(frozen)
-		return FALSE
-	frozen = TRUE
-	update_canmove()
-	return TRUE
-
-/// Attempts to unfreeze mob, returning success
-/mob/proc/unfreeze()
-	if(!frozen)
-		return FALSE
-	frozen = FALSE
-	update_canmove()
-	return TRUE
 
 /mob/proc/flash_weak_pain()
 	overlay_fullscreen("pain", /atom/movable/screen/fullscreen/pain, 1)
@@ -1138,3 +1125,4 @@ note dizziness decrements automatically in the mob's Life() proc.
 		return
 	. = stat //old stat
 	stat = new_stat
+	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, new_stat, .)

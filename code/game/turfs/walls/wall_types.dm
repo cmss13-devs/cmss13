@@ -28,15 +28,23 @@
 		/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend,
 	)
 
+	/// The type of wall decoration we use, to avoid the wall changing icon all the time
+	var/decoration_type
+
+/turf/closed/wall/almayer/Initialize(mapload, ...)
+	if(!special_icon && prob(20))
+		decoration_type = rand(0,3)
+	return ..()
+
 /turf/closed/wall/almayer/update_icon()
-	..()
-	if(special_icon)
-		return
+	if(decoration_type == null)
+		return ..()
 	if(neighbors_list in list(EAST|WEST))
-		var/r1 = rand(0,10) //Make a random chance for this to happen
-		var/r2 = rand(0,3) // Which wall if we do choose it
-		if(r1 >= 9)
-			overlays += image(icon, icon_state = "almayer_deco_wall[r2]")
+		special_icon = TRUE
+		icon_state = "almayer_deco_wall[decoration_type]"
+	else // Wall connection was broken, return to normality
+		special_icon = FALSE
+	return ..()
 
 /turf/closed/wall/almayer/take_damage(dam, mob/M)
 	var/damage_check = max(0, damage + dam)

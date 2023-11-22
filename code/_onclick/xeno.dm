@@ -3,7 +3,7 @@
 */
 
 /mob/living/carbon/xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
-	if(lying || burrow) //No attacks while laying down
+	if(lying || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //No attacks while laying down
 		return FALSE
 	var/mob/alt
 

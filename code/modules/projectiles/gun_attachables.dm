@@ -2106,7 +2106,7 @@ Defined in conflicts.dm of the #defines folder.
 	//but it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_7
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
 
 /obj/item/attachable/stock/mod88
 	name = "\improper Mod 88 burst stock"

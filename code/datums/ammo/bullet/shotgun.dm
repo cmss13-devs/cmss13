@@ -323,9 +323,10 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_3
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_3
 	damage = 20
-
-	accurate_range = 6
-	max_range = 12
+	accurate_range = 4
+	max_range = 7
+	damage_falloff = DAMAGE_FALLOFF_TIER_1 //It has a lot of energy, but the 26mm bullet drops off fast.
+	effective_range_max = EFFECTIVE_RANGE_MAX_TIER_1 //Full damage up to this distance, then falloff for each tile beyond.
 
 	penetration = ARMOR_PENETRATION_TIER_6
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3

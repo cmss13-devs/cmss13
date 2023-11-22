@@ -1871,7 +1871,7 @@
 
 /obj/item/weapon/gun/rifle/xm51
 	name = "\improper XM51 breaching scattergun"
-	desc = "An experimental shotgun model going through testing trials in the USCM. Based on the original civilian and CMB version, the XM51 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge armor-piercing breaching rounds, which are effective at breaching doors, walls and people."
+	desc = "An experimental shotgun model going through testing trials in the USCM. Based on the original civilian and CMB version, the XM51 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge armor-piercing breaching rounds, which are effective at breaching doors and walls, though their efficacy against soft targets is questionable."
 	icon_state = "xm51"
 	item_state = "xm51"
 	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'
@@ -1923,9 +1923,9 @@
 
 /obj/item/weapon/gun/rifle/xm51/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 15, GLOB.damage_boost_turfs),
-		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 20, GLOB.damage_boost_breaching),
-		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 15.5, GLOB.damage_boost_turfs), //800, 4 taps regular walls, 8 taps reinforced walls, 2 taps resin walls with some leeway
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 25, GLOB.damage_boost_breaching), //1250, enough to 1 tap airlocks
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 8, GLOB.damage_boost_pylons) //400, 4.5 shots to take out a pylon
 	))
 
 /obj/item/weapon/gun/rifle/xm51/unique_action(mob/user)
@@ -1979,5 +1979,4 @@
 	return
 
 /obj/item/weapon/gun/rifle/xm51/cock(mob/user) //Stops the "You cock the gun." message where nothing happens.
-	unique_action(user)
 	return

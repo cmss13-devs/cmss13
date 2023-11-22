@@ -1189,9 +1189,8 @@
 /obj/item/storage/belt/gun/xm51
 	name = "\improper M276 pattern XM51 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, along with two pouches for spare magazines or shells."
-	icon_state = "xm51_belt"
-	item_state = "s_marinebelt"
-	has_gamemode_skin = FALSE
+	icon_state = "xm51_holster"
+	has_gamemode_skin = TRUE
 	storage_slots = 3
 	max_w_class = 5
 	can_hold = list(

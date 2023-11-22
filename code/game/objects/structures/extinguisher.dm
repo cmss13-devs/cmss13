@@ -5,13 +5,14 @@
 	icon_state = "extinguisher"
 	anchored = TRUE
 	density = FALSE
-	var/obj/item/tool/extinguisher/has_extinguisher = new/obj/item/tool/extinguisher
+	var/obj/item/tool/extinguisher/has_extinguisher
 	var/opened = 0
 	var/base_icon
 
 /obj/structure/extinguisher_cabinet/Initialize()
 	. = ..()
 	base_icon = initial(icon_state)
+	has_extinguisher = new /obj/item/tool/extinguisher()
 
 /obj/structure/extinguisher_cabinet/lifeboat
 	name = "extinguisher cabinet"

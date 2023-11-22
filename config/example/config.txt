@@ -140,6 +140,9 @@ RULESURL https://cm-ss13.com/viewtopic.php?f=57&t=5094
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
 BANAPPEALS https://cm-ss13.com/viewforum.php?f=76
 
+## Discord URL - uncomment and add a valid Discord invite link (remember to make it a permanent one, since it does not default to it) to make the Discord button work properly.
+## DISCORDURL
+
 ## In-game features
 ## Remove the # to show a popup 'reply to' window to every non-admin that recieves an adminPM.
 ## The intention is to make adminPMs more visible. (although I fnd popups annoying so this defaults to off)

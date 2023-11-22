@@ -1360,21 +1360,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
-"aeD" = (
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	access_modified = 1;
-	req_one_access = null;
-	req_one_access_txt = "2;7"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hull/upper_hull/u_f_p)
 "aeE" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
@@ -3514,15 +3499,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north2)
-"amI" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
-/area/almayer/command/cichallway)
 "amJ" = (
 /obj/structure/largecrate/machine/bodyscanner,
 /turf/open/floor/almayer{
@@ -4398,14 +4374,6 @@
 	allow_construction = 0
 	},
 /area/almayer/stair_clone/upper)
-"apt" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/pilotbunks)
 "apu" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -7361,18 +7329,15 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "ayh" = (
-/obj/structure/machinery/power/smes/buildable,
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -32
+/obj/effect/landmark/start/synthetic,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 13
 	},
-/obj/structure/sign/safety/high_voltage{
-	pixel_y = -32
-	},
-/turf/open/floor/almayer{
-	icon_state = "orange"
-	},
-/area/almayer/hull/upper_hull/u_f_p)
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer,
+/area/almayer/living/synthcloset)
 "ayi" = (
 /obj/structure/machinery/recharger,
 /obj/structure/surface/table/almayer,
@@ -8504,16 +8469,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
-"aBP" = (
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	access_modified = 1;
-	dir = 1;
-	req_one_access = list(36)
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/living/synthcloset)
 "aBR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/ashtray/glass,
@@ -9292,9 +9247,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/telecomms)
 "aFj" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
@@ -9346,30 +9298,20 @@
 	},
 /area/almayer/living/numbertwobunks)
 "aFp" = (
-/obj/structure/machinery/light/small{
-	dir = 1
+/obj/structure/machinery/cm_vending/own_points/experimental_tools,
+/obj/effect/decal/cleanable/cobweb{
+	plane = -4
 	},
-/obj/structure/closet/toolcloset,
 /turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
+	icon_state = "cargo"
 	},
-/area/almayer/hull/upper_hull/u_f_p)
+/area/almayer/living/synthcloset)
 "aFq" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/station_alert,
-/obj/structure/sign/safety/maint{
-	pixel_x = 32
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = 8;
-	pixel_y = 32
-	},
+/obj/structure/machinery/cm_vending/clothing/synth,
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "orange"
+	icon_state = "cargo"
 	},
-/area/almayer/hull/upper_hull/u_f_p)
+/area/almayer/living/synthcloset)
 "aFr" = (
 /obj/structure/machinery/light,
 /obj/structure/reagent_dispensers/watertank,
@@ -9745,7 +9687,8 @@
 	pixel_y = 16
 	},
 /obj/structure/mirror{
-	pixel_y = 21
+	pixel_y = 31;
+	pixel_x = -1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -9768,15 +9711,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/numbertwobunks)
 "aHo" = (
-/obj/structure/machinery/computer/working_joe{
-	dir = 4;
-	pixel_x = -17
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
-	},
-/area/almayer/hull/upper_hull/u_f_p)
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/almayer,
+/area/almayer/living/synthcloset)
 "aHq" = (
 /turf/closed/wall/almayer,
 /area/almayer/command/computerlab)
@@ -9863,12 +9803,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering)
-"aHB" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
-	},
-/area/almayer/hull/upper_hull/u_f_p)
 "aHK" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -9951,18 +9885,17 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
 "aIa" = (
-/obj/structure/machinery/power/terminal,
-/turf/open/floor/almayer,
-/area/almayer/hull/upper_hull/u_f_p)
+/obj/effect/landmark/start/synthetic,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/synthcloset)
 "aIb" = (
-/obj/structure/machinery/light/small{
-	dir = 4
+/obj/structure/machinery/cm_vending/clothing/synth/snowflake{
+	pixel_x = -1
 	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
+	icon_state = "cargo"
 	},
-/area/almayer/hull/upper_hull/u_f_p)
+/area/almayer/living/synthcloset)
 "aIe" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -11647,15 +11580,23 @@
 	},
 /area/almayer/living/offices)
 "aQs" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/extinguisher,
-/obj/item/tool/extinguisher,
-/obj/item/tool/crowbar,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 13
 	},
-/area/almayer/hull/upper_hull/u_f_p)
+/obj/structure/surface/rack,
+/obj/item/book/manual/robotics_cyborgs{
+	pixel_y = 8
+	},
+/obj/item/robot_parts/leg/r_leg,
+/obj/item/robot_parts/leg/l_leg,
+/obj/item/robot_parts/arm/r_arm,
+/obj/item/robot_parts/arm/l_arm,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/living/synthcloset)
 "aQt" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -11830,14 +11771,21 @@
 	},
 /area/almayer/living/bridgebunks)
 "aRr" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/toolbox,
-/obj/item/storage/firstaid/o2,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "orange"
+/obj/structure/machinery/recharge_station,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 13
 	},
-/area/almayer/hull/upper_hull/u_f_p)
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/living/synthcloset)
 "aRt" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -12426,20 +12374,15 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 2;
-	id = "CIC Lockdown";
-	layer = 2.2;
-	name = "\improper Combat Information Center Blast Door"
-	},
-/obj/structure/machinery/door/airlock/almayer/engineering/reinforced{
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
-	name = "\improper Command Power Substation"
+	req_one_access = list(36);
+	name = "\improper Synthetic Storage Closet"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hull/upper_hull/u_f_p)
+/area/almayer/living/synthcloset)
 "aTS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -12882,14 +12825,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/stern_hallway)
-"aWk" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/bridgebunks)
 "aWl" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -24154,13 +24089,6 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/north1)
-"bZg" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/upper_hull/u_f_s)
 "bZi" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -24248,15 +24176,14 @@
 	},
 /area/almayer/engineering/lower_engineering)
 "bZH" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
+/obj/structure/closet/fireaxecabinet{
+	pixel_x = -32
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
+/obj/structure/bed/chair{
+	dir = 4
 	},
-/area/almayer/hull/upper_hull/u_f_p)
+/turf/open/floor/almayer,
+/area/almayer/living/synthcloset)
 "bZJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/effect/landmark/map_item,
@@ -28301,12 +28228,12 @@
 "cLN" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
-	pixel_y = 13
+	pixel_y = 0
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "cLV" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/almayer{
@@ -28833,6 +28760,18 @@
 	icon_state = "containment_corner_variant_2"
 	},
 /area/almayer/medical/containment/cell/cl)
+"cXL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silver"
+	},
+/area/almayer/command/cichallway)
 "cXR" = (
 /turf/open/floor/almayer{
 	icon_state = "greencorner"
@@ -28869,6 +28808,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/lifeboat)
+"cYH" = (
+/obj/structure/machinery/door_control{
+	id = "C_Sub";
+	name = "Command Power Substation";
+	pixel_y = 32;
+	req_one_access_txt = "19";
+	pixel_x = -6
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silvercorner"
+	},
+/area/almayer/command/cichallway)
 "cYT" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -30823,15 +30775,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/medical/medical_science)
-"dHZ" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
-	},
-/turf/open/floor/plating,
-/area/almayer/living/bridgebunks)
 "dIi" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/plating/plating_catwalk{
@@ -32084,8 +32027,8 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = -17
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -33124,7 +33067,7 @@
 	icon_state = "S"
 	},
 /turf/open/floor/almayer,
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "eDz" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -34078,12 +34021,11 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "eYQ" = (
-/obj/structure/closet/fireaxecabinet{
-	pixel_x = -32
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
 	},
-/obj/effect/landmark/start/synthetic,
-/turf/open/floor/almayer,
-/area/almayer/living/synthcloset)
+/area/almayer/hull/upper_hull/u_f_s)
 "eYR" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -34196,9 +34138,6 @@
 	},
 /area/almayer/living/grunt_rnr)
 "fbv" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/sign/safety/security{
 	pixel_x = -17;
 	pixel_y = 6
@@ -40003,8 +39942,23 @@
 	},
 /area/almayer/command/airoom)
 "hyQ" = (
-/turf/closed/wall/almayer,
-/area/almayer/living/synthcloset)
+/obj/structure/machinery/door/airlock/almayer/engineering/reinforced{
+	dir = 1;
+	name = "\improper Command Power Substation";
+	req_access = list(19);
+	req_one_access = null
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Command Power Substation Shutters";
+	id = "C_Sub"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "hzc" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/engineering/upper_engineering/notunnel)
@@ -42237,15 +42191,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south1)
-"iur" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silvercorner"
-	},
-/area/almayer/command/cichallway)
 "iuu" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/hardhat/orange{
@@ -43345,7 +43290,7 @@
 "iTD" = (
 /obj/effect/landmark/start/auxiliary_officer,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "iTI" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -44205,7 +44150,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "jhY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -44911,7 +44856,7 @@
 	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/plating,
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "jxK" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1;
@@ -46398,9 +46343,17 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "kfE" = (
-/obj/structure/bed/sofa/south/grey/right,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/stack/medical/bruise_pack{
+	pixel_y = 11;
+	pixel_x = -5
+	},
+/obj/item/stack/medical/bruise_pack{
+	pixel_y = 3;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -48390,16 +48343,6 @@
 	icon_state = "greencorner"
 	},
 /area/almayer/squads/req)
-"kWq" = (
-/obj/structure/sign/safety/synth_storage{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silvercorner"
-	},
-/area/almayer/command/cichallway)
 "kWT" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -49816,16 +49759,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
-"lzj" = (
-/obj/structure/sign/safety/storage{
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/almayer/hallways/aft_hallway)
 "lzn" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -50401,19 +50334,24 @@
 	},
 /area/almayer/living/grunt_rnr)
 "lIa" = (
-/obj/item/robot_parts/arm/l_arm,
-/obj/item/robot_parts/leg/l_leg,
-/obj/item/robot_parts/arm/r_arm,
-/obj/item/robot_parts/leg/r_leg,
-/obj/structure/surface/rack,
-/obj/effect/decal/cleanable/cobweb{
+/obj/structure/machinery/computer/working_joe{
+	layer = 3.2;
 	dir = 8
 	},
-/obj/item/book/manual/robotics_cyborgs{
-	pixel_y = 8
+/obj/structure/sign/safety/terminal{
+	pixel_x = 32;
+	pixel_y = 0
 	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "lIh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -52603,6 +52541,21 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/req)
+"mJd" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/handrail{
+	plane = -4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/living/pilotbunks)
 "mJe" = (
 /obj/structure/sign/safety/conference_room{
 	pixel_x = -17;
@@ -53337,12 +53290,12 @@
 "mWD" = (
 /obj/structure/machinery/cryopod/right{
 	layer = 3.1;
-	pixel_y = 13
+	pixel_y = 0
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "mWQ" = (
 /obj/structure/flora/pottedplant{
 	desc = "It is made of Fiberbush(tm). It contains asbestos.";
@@ -53530,6 +53483,13 @@
 "naB" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/perma)
+"naL" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "naQ" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -54701,11 +54661,8 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "nxK" = (
-/obj/structure/sign/safety/high_voltage{
-	pixel_y = -32
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
+/obj/structure/sign/safety/synth_storage{
+	pixel_x = 8;
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
@@ -55407,9 +55364,8 @@
 	},
 /area/almayer/shipboard/port_missiles)
 "nNv" = (
-/obj/structure/machinery/vending/cigarette{
-	density = 0;
-	pixel_y = 16
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -55518,11 +55474,16 @@
 	},
 /area/almayer/medical/containment)
 "nPs" = (
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12
+/obj/structure/machinery/power/terminal{
+	dir = 4;
+	pixel_x = 2
 	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/hull/upper_hull/u_f_s)
 "nPx" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -55751,6 +55712,25 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/briefing)
+"nVo" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/spawner/random/powercell,
+/obj/item/stack/sheet/glass/reinforced{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass/reinforced{
+	amount = 50
+	},
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "nVu" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -55971,6 +55951,21 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"obz" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/handrail{
+	plane = -4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/command/cichallway)
 "obC" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -57473,13 +57468,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "oGx" = (
-/obj/structure/closet/secure_closet/surgical{
-	pixel_x = 30
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo"
+	dir = 1;
+	icon_state = "cargo_arrow"
 	},
-/area/almayer/living/synthcloset)
+/area/almayer/hull/upper_hull/u_f_s)
 "oGy" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -58143,7 +58139,6 @@
 /area/almayer/medical/lower_medical_lobby)
 "oWg" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
 	name = "ship-grade camera"
 	},
 /obj/structure/sign/safety/bridge{
@@ -58590,6 +58585,15 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/airoom)
+"pgk" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
+/turf/open/floor/plating,
+/area/almayer/hull/upper_hull/u_f_p)
 "pgt" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/almayer{
@@ -58881,6 +58885,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/auxiliary_officer_office)
+"ppZ" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer,
+/area/almayer/hull/upper_hull/u_f_s)
 "pqc" = (
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -60056,10 +60064,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
-"pQy" = (
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
-/area/almayer/living/bridgebunks)
 "pQF" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
@@ -61996,7 +62000,7 @@
 "qCy" = (
 /obj/effect/landmark/start/captain,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "qCG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -63654,11 +63658,20 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
 "rlf" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
-/turf/open/floor/almayer{
-	icon_state = "cargo"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
-/area/almayer/living/synthcloset)
+/obj/structure/barricade/handrail{
+	plane = -4
+	},
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/living/bridgebunks)
 "rlh" = (
 /obj/structure/closet/firecloset,
 /obj/structure/machinery/power/apc/almayer{
@@ -63857,7 +63870,7 @@
 "rpp" = (
 /obj/effect/landmark/start/executive,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "rpK" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -63959,7 +63972,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "rrK" = (
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -64328,12 +64341,18 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "rBa" = (
-/obj/structure/machinery/cm_vending/clothing/synth,
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	plane = -4
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo"
+	dir = 5;
+	icon_state = "plating"
 	},
 /area/almayer/living/synthcloset)
 "rBb" = (
@@ -64592,6 +64611,9 @@
 "rEY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/toy/deck,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver"
@@ -64740,6 +64762,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
+"rHG" = (
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/high_voltage{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silvercorner"
+	},
+/area/almayer/command/cichallway)
 "rHN" = (
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/plating/plating_catwalk,
@@ -64863,12 +64898,25 @@
 	},
 /area/almayer/squads/charlie_delta_shared)
 "rJD" = (
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12
+/obj/structure/machinery/door_control{
+	id = "C_Sub";
+	name = "Command Power Substation";
+	pixel_y = -24;
+	req_one_access_txt = "19";
+	pixel_x = -6
 	},
-/obj/structure/machinery/cm_vending/own_points/experimental_tools,
-/turf/open/floor/almayer,
-/area/almayer/living/synthcloset)
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -28;
+	pixel_x = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "rJK" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -66086,14 +66134,11 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "soq" = (
-/obj/structure/machinery/computer/working_joe{
-	dir = 4;
-	pixel_x = -17
-	},
 /turf/open/floor/almayer{
-	icon_state = "cargo"
+	dir = 1;
+	icon_state = "cargo_arrow"
 	},
-/area/almayer/living/synthcloset)
+/area/almayer/hull/upper_hull/u_f_s)
 "sos" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -66675,6 +66720,18 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
+"sBx" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 30
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/command/cichallway)
 "sBH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -68141,6 +68198,14 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"thZ" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/numbertwobunks)
 "tig" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco{
@@ -68540,7 +68605,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "tpK" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/effect/spawner/random/toolbox,
@@ -69367,6 +69432,9 @@
 	pixel_y = 11
 	},
 /obj/item/poster,
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver"
@@ -69544,7 +69612,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "tLc" = (
 /obj/structure/surface/rack,
 /obj/item/storage/bag/plants{
@@ -70120,11 +70188,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_s)
-"tYX" = (
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/living/bridgebunks)
 "tZc" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
@@ -72148,7 +72211,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "uNl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -73361,16 +73424,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/brig/general_equipment)
-"vkR" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/obj/structure/bed/sofa/south/grey,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
-/area/almayer/shipboard/brig/cic_hallway)
 "vli" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -74292,7 +74345,7 @@
 "vCO" = (
 /obj/effect/landmark/start/bridge,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "vDa" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -74302,12 +74355,14 @@
 	},
 /area/almayer/medical/hydroponics)
 "vEj" = (
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
 	},
-/obj/effect/landmark/start/synthetic,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "vEn" = (
 /obj/structure/bed/chair/comfy/bravo{
 	dir = 1
@@ -74663,6 +74718,15 @@
 	icon_state = "orange"
 	},
 /area/almayer/squads/bravo)
+"vJW" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "vJZ" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -75839,6 +75903,16 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_m_p)
+"wfo" = (
+/obj/structure/machinery/vending/walkman,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silver"
+	},
+/area/almayer/shipboard/brig/cic_hallway)
 "wft" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -76004,7 +76078,7 @@
 /area/almayer/living/grunt_rnr)
 "wiN" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 1;
 	name = "ship-grade camera"
 	},
 /obj/structure/sign/safety/bridge{
@@ -76279,7 +76353,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "wnh" = (
 /obj/structure/window/framed/almayer/white/hull,
 /turf/open/floor/plating,
@@ -76644,14 +76718,22 @@
 	},
 /area/almayer/shipboard/brig/processing)
 "wvU" = (
-/obj/structure/machinery/recharge_station,
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/station_alert{
+	dir = 8
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo"
+	dir = 5;
+	icon_state = "orange"
 	},
-/area/almayer/living/synthcloset)
+/area/almayer/hull/upper_hull/u_f_s)
 "wwk" = (
 /obj/structure/bed/chair/comfy/bravo{
 	dir = 1
@@ -78332,7 +78414,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/living/bridgebunks)
+/area/almayer/hull/upper_hull/u_f_p)
 "xfT" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -79896,12 +79978,20 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "xKT" = (
-/obj/effect/decal/cleanable/cobweb,
-/obj/structure/machinery/power/apc/almayer{
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/fire{
+	pixel_y = 4;
+	pixel_x = 7
+	},
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/almayer,
-/area/almayer/living/synthcloset)
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "xKW" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -80276,7 +80366,6 @@
 /turf/open/floor/plating,
 /area/almayer/squads/charlie)
 "xSz" = (
-/obj/structure/surface/table/almayer,
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
@@ -81107,16 +81196,16 @@
 	},
 /area/almayer/squads/charlie)
 "yiX" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
-/obj/structure/bed/chair{
-	dir = 8;
+/obj/structure/machinery/power/smes/buildable{
 	pixel_y = 3
 	},
-/turf/open/floor/almayer,
-/area/almayer/living/synthcloset)
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "yjb" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -96745,7 +96834,7 @@ vxM
 tXs
 oCX
 vxM
-vkR
+vGA
 wsD
 jUY
 qwp
@@ -97151,7 +97240,7 @@ dFC
 bRH
 bRH
 vxM
-xDn
+wfo
 pEB
 jUY
 awz
@@ -98968,15 +99057,15 @@ aag
 aag
 pCi
 dRV
-bZg
-kcH
-kcH
-kcH
-kcH
-kcH
-kcH
-kcH
-kWq
+tGf
+age
+age
+age
+age
+age
+age
+age
+aic
 qnh
 aVG
 awz
@@ -98997,13 +99086,13 @@ awz
 dFR
 qnh
 ouW
-mKq
-dHZ
-dHZ
-aES
-aES
-aES
-aES
+qFl
+pgk
+pgk
+pUJ
+pgk
+pgk
+pUJ
 sDy
 cNe
 xEF
@@ -99171,15 +99260,15 @@ pCi
 pCi
 pCi
 lFb
-avl
-kcH
-kcH
-kcH
-kcH
+ppZ
+age
+mJd
+vJW
+nVo
 xKT
-eqN
-aBP
-aKa
+naL
+age
+rHG
 qnh
 ewS
 oBA
@@ -99201,12 +99290,12 @@ iVy
 qnh
 aKa
 rrB
-aGr
+gpe
 eDu
 tKr
 uNg
 cLN
-aES
+pUJ
 gpe
 xuB
 xEF
@@ -99375,14 +99464,14 @@ kTM
 puK
 lFb
 avl
-kcH
+age
 rlf
 soq
 eYQ
-eqN
-dmA
+avl
+avl
 hyQ
-iur
+aKa
 lTt
 haB
 dvl
@@ -99390,7 +99479,7 @@ miE
 dCK
 esF
 mQc
-mQc
+sBx
 wgk
 gaQ
 aIl
@@ -99402,8 +99491,8 @@ uCW
 omb
 haB
 gtp
-qfA
-tYX
+aKa
+wWT
 tpD
 xfO
 iTD
@@ -99578,15 +99667,15 @@ unJ
 iJf
 mBk
 nUy
-kcH
+age
 rBa
-nPs
+soq
 vEj
 nPs
 rJD
-hyQ
-fEk
-hlU
+age
+cYH
+qXl
 wVW
 feD
 azL
@@ -99604,9 +99693,9 @@ vMI
 gII
 oPy
 wVW
-fDU
-uiZ
-mKq
+cXL
+qfA
+qFl
 qCy
 rpp
 vCO
@@ -99781,15 +99870,15 @@ tGf
 avl
 avl
 qtS
-kcH
-rIW
+age
+obz
 oGx
 wvU
 yiX
 lIa
-hyQ
-aic
-aov
+age
+fEk
+hlU
 wVW
 wVW
 sEp
@@ -99807,15 +99896,15 @@ wVW
 osz
 wVW
 wVW
-aKn
-aKz
-pQy
+fDU
+uiZ
+qFl
 jhW
 mWD
 wmT
 jhW
 mWD
-jxB
+pUJ
 hWX
 tYv
 mRU
@@ -101615,7 +101704,7 @@ jom
 xmq
 mXj
 agj
-amI
+aic
 aov
 wVW
 wVW
@@ -102449,7 +102538,7 @@ wVW
 aKn
 aKz
 mKq
-aWk
+ceK
 aWW
 aGr
 uvt
@@ -104877,7 +104966,7 @@ amO
 avj
 awF
 aFo
-aGY
+thZ
 rvA
 aqm
 awF
@@ -105473,7 +105562,7 @@ aku
 eGH
 qnl
 aiX
-apt
+amh
 sCI
 pWN
 uTN
@@ -105687,12 +105776,12 @@ aiX
 atV
 amO
 oXd
-qFl
-qFl
-qFl
-qFl
-qFl
-qFl
+kcH
+kcH
+kcH
+kcH
+kcH
+kcH
 aRE
 qVC
 qVC
@@ -105890,12 +105979,12 @@ aiX
 ayT
 amO
 avj
-qFl
+kcH
 aFp
 aHo
 bZH
 aQs
-qFl
+kcH
 aSq
 aTE
 aTE
@@ -106090,15 +106179,15 @@ aqz
 aKH
 and
 aiX
-lzj
+ayT
 amO
 bYe
 aTR
-gpe
-gpe
+dmA
+eqN
 aIa
 ayh
-qFl
+kcH
 aSt
 aTE
 aTE
@@ -106296,12 +106385,12 @@ aiX
 ukh
 amO
 nxK
-qFl
+kcH
 aFq
-aHB
+rIW
 aIb
 aRr
-qFl
+kcH
 aSx
 aTE
 aTG
@@ -106501,7 +106590,7 @@ amO
 avm
 qFl
 qFl
-aeD
+qFl
 qFl
 qFl
 qFl

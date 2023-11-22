@@ -155,6 +155,8 @@
 #define TRAIT_FORCED_STANDING "forcedstanding"
 /// Stuns preventing movement and using objects but without further impairement
 #define TRAIT_INCAPACITATED "incapacitated"
+/// Apply this to identify a mob as merged with weeds
+#define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology

@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "Mess tech positions now scale from 1 to 2 after 70 marines are in the game"

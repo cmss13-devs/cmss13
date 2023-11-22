@@ -78,6 +78,9 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/hydroponics)
+"fv" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+/area/lv624/ground/jungle/north_jungle)
 "fX" = (
 /obj/item/device/analyzer/plant_analyzer,
 /obj/effect/spawner/random/claymore,
@@ -206,6 +209,9 @@
 "ou" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
+"qd" = (
+/turf/open/gm/dirtgrassborder/west,
+/area/lv624/ground/jungle/north_jungle)
 "qe" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/spawner/random/claymore/lowchance{
@@ -585,6 +591,9 @@
 	icon_state = "panelscorched"
 	},
 /area/lv624/lazarus/hydroponics)
+"QS" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/north_jungle)
 "RT" = (
 /obj/item/clothing/shoes/veteran/pmc{
 	armor_bio = 15;
@@ -654,7 +663,10 @@
 /area/lv624/ground/jungle/north_jungle)
 "XJ" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/grass/grass1,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/north_jungle)
+"XO" = (
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_jungle)
 "YJ" = (
 /obj/item/storage/firstaid,
@@ -721,8 +733,8 @@ Km
 se
 "}
 (3,1,1) = {"
-XA
-XA
+qd
+fv
 XA
 BL
 YV
@@ -753,7 +765,7 @@ Xv
 se
 "}
 (5,1,1) = {"
-XA
+QS
 qe
 YV
 TC
@@ -769,7 +781,7 @@ zL
 fk
 "}
 (6,1,1) = {"
-XA
+QS
 Ed
 Wg
 Wg
@@ -881,7 +893,7 @@ Cq
 Cq
 "}
 (13,1,1) = {"
-XA
+QS
 On
 IO
 Zm
@@ -897,7 +909,7 @@ YV
 ou
 "}
 (14,1,1) = {"
-XA
+QS
 Lu
 ih
 jY
@@ -913,7 +925,7 @@ Lu
 eU
 "}
 (15,1,1) = {"
-XA
+QS
 Xv
 Xv
 Ed
@@ -929,8 +941,8 @@ Cq
 bM
 "}
 (16,1,1) = {"
-XA
-XA
+QS
+XO
 XA
 XA
 Xv

@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - maptweak: "Secure Storage on LV-624 has been broken open, making it far less defendable but easier to access."

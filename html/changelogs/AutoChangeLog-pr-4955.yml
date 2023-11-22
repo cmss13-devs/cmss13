@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - code_imp: "Removes some istype(src)"

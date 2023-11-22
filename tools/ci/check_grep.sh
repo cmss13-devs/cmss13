@@ -198,6 +198,13 @@ if $grep 'balloon_alert\(.*?, ?"[A-Z]' $code_files; then
 	st=1
 fi;
 
+part "to_chat without user"
+if $grep 'to_chat\(("|SPAN)' $code_files; then
+	echo
+	echo -e "${RED}ERROR: to_chat() requires a target as its first argument.${NC}"
+	st=1
+fi;
+
 section "515 Proc Syntax"
 part "proc ref syntax"
 if $grep '\.proc/' $code_x_515 ; then

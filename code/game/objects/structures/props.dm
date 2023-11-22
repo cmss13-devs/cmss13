@@ -805,14 +805,14 @@
 
 /obj/structure/prop/brazier/campfire/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/stack/sheet/wood))
-		to_chat(SPAN_NOTICE("You cannot fuel [src] with [attacking_item]."))
+		to_chat(user, SPAN_NOTICE("You cannot fuel [src] with [attacking_item]."))
 		return
 	var/obj/item/stack/sheet/wood/fuel = attacking_item
 	if(remaining_fuel >= initial(remaining_fuel))
 		to_chat(user, SPAN_NOTICE("You cannot fuel [src] further."))
 		return
 	if(!fuel.use(1))
-		to_chat(SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
+		to_chat(user, SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
 		return
 	visible_message(SPAN_NOTICE("[user] fuels [src] with [fuel]."))
 	remaining_fuel++

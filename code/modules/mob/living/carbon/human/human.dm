@@ -1741,3 +1741,9 @@
 		return FALSE
 
 	. = ..()
+
+/mob/living/carbon/human/make_dizzy(amount)
+	dizziness = min(500, dizziness + amount) // store what will be new value
+													// clamped to max 500
+	if(dizziness > 100 && !is_dizzy)
+		INVOKE_ASYNC(src, PROC_REF(dizzy_process))

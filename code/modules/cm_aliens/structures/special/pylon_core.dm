@@ -272,12 +272,14 @@
 		if(spawning_larva || (last_larva_queue_time + spawn_cooldown * 4) < world.time)
 			last_larva_queue_time = world.time
 			var/list/players_with_xeno_pref = get_alien_candidates(linked_hive)
-			if(length(players_with_xeno_pref))
-				if(spawning_larva && spawn_burrowed_larva(players_with_xeno_pref[1]))
-					// We were in spawning_larva mode and successfully spawned someone
-					count_spawned = 1
-				// Update everyone's queue status
-				message_alien_candidates(players_with_xeno_pref, dequeued = count_spawned)
+			if(spawning_larva)
+				var/i = 0
+				while(i < length(players_with_xeno_pref) && can_spawn_larva())
+					if(spawn_burrowed_larva(players_with_xeno_pref[++i]))
+						// We were in spawning_larva mode and successfully spawned someone
+						count_spawned++
+			// Update everyone's queue status
+			message_alien_candidates(players_with_xeno_pref, dequeued = count_spawned)
 
 		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
 			last_surge_time = world.time

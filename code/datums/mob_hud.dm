@@ -283,6 +283,12 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	return
 
 /mob/living/carbon/xenomorph/med_hud_set_health()
+	if(QDELETED(src))
+		return
+
+	if(!(HEALTH_HUD_XENO in hud_list))
+		CRASH("hud_list lacks HEALTH_HUD_XENO despite not being deleted in med_hud_set_health()")
+
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
 
 	var/health_hud_type = "xenohealth"

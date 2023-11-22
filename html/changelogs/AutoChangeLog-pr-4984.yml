@@ -1,0 +1,5 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - rscadd: "Explosion handling logic to experimental sensor tower."
+  - bugfix: "Explosions no longer delete experimental sensor tower."

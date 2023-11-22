@@ -529,7 +529,7 @@
 /obj/item/prop/helmetgarb/family_photo/pickup(mob/user, silent)
 	. = ..()
 	if(!owner)
-		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
 
 
 ///Sets the owner of the family photo to the human it spawns with, needs var/source for signals

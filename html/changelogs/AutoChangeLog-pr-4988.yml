@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed buried larva spawn grace period at start of round if there is a queue: Now join as xeno when there's a queue will only prevent buried larva spawns if there is no core."

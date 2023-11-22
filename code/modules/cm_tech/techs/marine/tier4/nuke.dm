@@ -36,7 +36,7 @@
 		return
 
 	if(ROUND_TIME < NUKE_UNLOCK_TIME)
-		to_chat(unlocking_mob, SPAN_WARNING("You cannot purchase this node before [NUKE_UNLOCK_TIME / (1 MINUTES)] minutes into the operation."))
+		to_chat(unlocking_mob, SPAN_WARNING("You cannot purchase this node before [Ceiling((NUKE_UNLOCK_TIME + SSticker.round_start_time) / (1 MINUTES))] minutes into the operation."))
 		return FALSE
 
 	return TRUE

@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - qol: "ARES hijack announcement specifies that pods will not crash at 100% fuel"

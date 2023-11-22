@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Resin doors will now close on dead mobs that are merged with weeds (currently only human)."
+  - bugfix: "Resin doors will now restart their closing timer each open making the delay to close consistent."
+  - code_imp: "Added a TRAIT_MERGED_WITH_WEEDS that is set whenever the mob is currently merged with weeds."

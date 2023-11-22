@@ -246,3 +246,8 @@
 			ghost_user.do_observe(target)
 		if(NOTIFY_JOIN_XENO)
 			ghost_user.join_as_alien()
+		if(NOTIFY_USCM_TACMAP)
+			GLOB.uscm_tacmap_status.tgui_interact(ghost_user)
+		if(NOTIFY_XENO_TACMAP)
+			GLOB.xeno_tacmap_status.tgui_interact(ghost_user)
+

@@ -71,12 +71,12 @@
 
 
 /obj/item/cell/emp_act(severity)
+	. = ..()
 	charge -= 1000 / severity
 	if (charge < 0)
 		charge = 0
 	if(reliability != 100 && prob(50/severity))
 		reliability -= 10 / severity
-	..()
 
 /obj/item/cell/ex_act(severity)
 

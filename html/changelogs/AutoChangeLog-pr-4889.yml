@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed ghost droppods appearing when launching crates by Echo pad."

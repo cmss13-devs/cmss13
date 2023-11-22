@@ -1,5 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - bugfix: "Boiler acid shroud now works on hotkey 5"
-  - code_imp: "Replaces single letter vars and removes unused code for boiler."

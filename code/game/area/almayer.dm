@@ -29,12 +29,12 @@
 		SShijack.progress_areas[src] = power_equip
 
 /area/shuttle/almayer/elevator_maintenance/upperdeck
-	name = "\improper Maintenance Elevator"
+	name = "\improper Upper Deck Maintenance Elevator"
 	icon_state = "shuttle"
 	fake_zlevel = 1
 
 /area/shuttle/almayer/elevator_maintenance/lowerdeck
-	name = "\improper Maintenance Elevator"
+	name = "\improper Lower Deck Maintenance Elevator"
 	icon_state = "shuttle"
 	fake_zlevel = 2
 
@@ -98,23 +98,23 @@
 	resin_construction_allowed = FALSE
 
 /area/almayer/command/securestorage
-	name = "\improper Secure Storage"
+	name = "\improper Upper Deck Secure Storage"
 	icon_state = "corporatespace"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 1 // upperdeck
 
 /area/almayer/command/computerlab
-	name = "\improper Computer Lab"
+	name = "\improper Upper Deck Computer Lab"
 	icon_state = "ceroom"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 1 // upperdeck
 
 /area/almayer/command/telecomms
-	name = "\improper Telecommunications"
+	name = "\improper Upper Deck Telecommunications"
 	icon_state = "tcomms"
 	fake_zlevel = 1 // upperdeck
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/self_destruct
-	name = "\improper Self-Destruct Core Room"
+	name = "\improper Upper Deck Self-Destruct Core Room"
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
 	flags_area = AREA_NOTUNNEL
@@ -125,7 +125,7 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/command/combat_correspondent
-	name = "\improper Combat Correspondent Office"
+	name = "\improper Upper Deck Combat Correspondent Office"
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
 
@@ -133,36 +133,36 @@
 	minimap_color = MINIMAP_AREA_ENGI
 
 /area/almayer/engineering/upper_engineering
-	name = "\improper Upper Engineering"
+	name = "\improper Upper Deck Engineering"
 	icon_state = "upperengineering"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/engineering/upper_engineering/starboard
-	name = "\improper Starboard Upper Engineering"
+	name = "\improper Upper Deck Starboard Engineering"
 
 /area/almayer/engineering/upper_engineering/port
-	name = "\improper Port Upper Engineering"
+	name = "\improper Upper Deck Port Engineering"
 
 /area/almayer/engineering/upper_engineering/notunnel
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/engineering/ce_room
-	name = "\improper Chief Engineer Office"
+	name = "\improper Upper Deck Chief Engineer Office"
 	icon_state = "ceroom"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/engineering/lower_engine_monitoring
-	name = "\improper Engine Reactor Monitoring"
+	name = "\improper Lower Deck Engine Reactor Monitoring"
 	icon_state = "lowermonitoring"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/engineering/lower_engineering
-	name = "\improper Engineering Lower"
+	name = "\improper Lower Deck Engineering"
 	icon_state = "lowerengineering"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/engineering/engineering_workshop
-	name = "\improper Engineering Workshop"
+	name = "\improper Lower Deck Engineering Workshop"
 	icon_state = "workshop"
 	fake_zlevel = 2 // lowerdeck
 
@@ -180,17 +180,17 @@
 	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/engineering/starboard_atmos
-	name = "\improper Atmospherics Starboard"
+	name = "\improper Upper Deck Starboard Atmospherics"
 	icon_state = "starboardatmos"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/engineering/port_atmos
-	name = "\improper Atmospherics Port"
+	name = "\improper Upper Deck Port Atmospherics"
 	icon_state = "portatmos"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/engineering/laundry
-	name = "\improper Laundry Room"
+	name = "\improper Upper Deck Laundry Room"
 	icon_state = "laundry"
 	fake_zlevel = 1 // upperdeck
 
@@ -211,17 +211,17 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/starboard_missiles
-	name = "\improper Missile Tubes Starboard"
+	name = "\improper Upper Deck Starboard Missile Tubes"
 	icon_state = "starboardmissile"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/shipboard/port_missiles
-	name = "\improper Missile Tubes Port"
+	name = "\improper Upper Deck Port Missile Tubes"
 	icon_state = "portmissile"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/shipboard/weapon_room
-	name = "\improper Weapon Control Room"
+	name = "\improper Lower Deck Weapon Control"
 	icon_state = "weaponroom"
 	fake_zlevel = 2 // lowerdeck
 
@@ -229,12 +229,12 @@
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/shipboard/starboard_point_defense
-	name = "\improper Point Defense Starboard"
+	name = "\improper Lower Deck Starboard Point Defense"
 	icon_state = "starboardpd"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/port_point_defense
-	name = "\improper Point Defense Port"
+	name = "\improper Lower Deck Port Point Defense"
 	icon_state = "portpd"
 	fake_zlevel = 2 // lowerdeck
 
@@ -300,7 +300,7 @@
 	icon_state = "chiefmpoffice"
 
 /area/almayer/shipboard/sea_office
-	name = "\improper Senior Enlisted Advisor Office"
+	name = "\improper Lower Deck Senior Enlisted Advisor Office"
 	icon_state = "chiefmpoffice"
 	fake_zlevel = 2 // lowerdeck
 
@@ -326,7 +326,7 @@
 	soundscape_interval = 50
 
 /area/almayer/hallways/vehiclehangar
-	name = "\improper Vehicle Storage"
+	name = "\improper Lower Deck Vehicle Storage"
 	icon_state = "exoarmor"
 	fake_zlevel = 2
 
@@ -334,135 +334,136 @@
 	minimap_color = MINIMAP_AREA_COLONY
 
 /area/almayer/living/tankerbunks
-	name = "\improper Vehicle Crew Bunks"
+	name = "\improper Lower Deck Vehicle Crew Bunks"
 	icon_state = "livingspace"
 	fake_zlevel = 2
 
 /area/almayer/living/auxiliary_officer_office
-	name = "\improper Auxiliary Support Officer office"
+	name = "\improper Lower Deck Auxiliary Support Officer office"
 	icon_state = "livingspace"
 	fake_zlevel = 2
 
 /area/almayer/squads/tankdeliveries
-	name = "\improper Vehicle ASRS"
+	name = "\improper Lower Deck Vehicle ASRS"
 	icon_state = "req"
 	fake_zlevel = 2
 
 /area/almayer/hallways/exoarmor
-	name = "\improper Vehicle Armor Storage"
+	name = "\improper Lower Deck Vehicle Armor Storage"
 	icon_state = "exoarmor"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/repair_bay
-	name = "\improper Deployment Workshop"
+	name = "\improper Lower Deck Deployment Workshop"
 	icon_state = "dropshiprepair"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/mission_planner
-	name = "\improper Dropship Central Computer Room"
+	name = "\improper Lower Deck Dropship Central Computer Room"
 	icon_state = "missionplanner"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/starboard_umbilical
-	name = "\improper Umbilical Starboard"
+	name = "\improper Lower Deck Starboard Umbilical Hallway"
 	icon_state = "starboardumbilical"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/port_umbilical
-	name = "\improper Umbilical Port"
+	name = "\improper Lower Deck Port Umbilical Hallway"
 	icon_state = "portumbilical"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/aft_hallway
-	name = "\improper Hallway Aft"
+	name = "\improper Upper Deck Aft Hallway"
 	icon_state = "aft"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/hallways/stern_hallway
-	name = "\improper Hallway Stern"
+	name = "\improper Upper Deck Stern Hallway"
 	icon_state = "stern"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/hallways/port_hallway
-	name = "\improper Hallway Port"
+	name = "\improper Lower Deck Port Hallway"
 	icon_state = "port"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/starboard_hallway
-	name = "\improper Hallway Starboard"
+	name = "\improper Lower Deck Starboard Hallway"
 	icon_state = "starboard"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/stair_clone
-	name = "\improper Stairs"
+	name = "\improper Lower Deck Stairs"
 	icon_state = "stairs_lowerdeck"
 	fake_zlevel = 2 // lowerdeck
 	resin_construction_allowed = FALSE
 
 /area/almayer/stair_clone/upper
+	name = "\improper Upper Deck Stairs"
 	icon_state = "stairs_upperdeck"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/hull/lower_hull
-	name = "\improper Hull Lower"
+	name = "\improper Lower Deck Hull"
 	icon_state = "lowerhull"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hull/upper_hull
-	name = "\improper Hull Upper"
+	name = "\improper Upper Deck Hull"
 	icon_state = "upperhull"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/hull/upper_hull/u_f_s
-	name = "\improper Upper Fore-Starboard Hull"
+	name = "\improper Upper Deck Fore-Starboard Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_m_s
-	name = "\improper Upper Midship-Starboard Hull"
+	name = "\improper Upper Deck Starboard-Midship Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_a_s
-	name = "\improper Upper Aft-Starboard Hull"
+	name = "\improper Upper Deck Starboard-Aft Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_f_p
-	name = "\improper Upper Fore-Port Hull"
+	name = "\improper Upper Deck Port-Fore Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_m_p
-	name = "\improper Upper Midship-Port Hull"
+	name = "\improper Upper Deck Port-Midship Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_a_p
-	name = "\improper Upper Aft-Port Hull"
+	name = "\improper Upper Deck Port-Aft Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/lower_hull/l_f_s
-	name = "\improper Lower Fore-Starboard Hull"
+	name = "\improper Lower Deck Starboard-Fore Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/lower_hull/l_m_s
-	name = "\improper Lower Midship-Starboard Hull"
+	name = "\improper Lower Deck Starboard-Midship Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/lower_hull/l_a_s
-	name = "\improper Lower Aft-Starboard Hull"
+	name = "\improper Lower Deck Starboard Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/lower_hull/l_f_p
-	name = "\improper Lower Fore-Port Hull"
+	name = "\improper Lower Deck Port-Fore Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/lower_hull/l_m_p
-	name = "\improper Lower Midship-Port Hull"
+	name = "\improper Lower Deck Port-Midship Hull"
 	icon_state = "upperhull"
 
 /area/almayer/hull/lower_hull/l_a_p
-	name = "\improper Lower Aft-Port Hull"
+	name = "\improper Lower Deck Port-Aft Hull"
 	icon_state = "upperhull"
 
 /area/almayer/living/cryo_cells
-	name = "\improper Cryo Cells"
+	name = "\improper Lower Deck Cryo Cells"
 	icon_state = "cryo"
 	fake_zlevel = 2 // lowerdeck
 
@@ -472,22 +473,22 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/living/port_emb
-	name = "\improper Extended Mission Bunks"
+	name = "\improper Lower Deck Port Extended Mission Bunks"
 	icon_state = "portemb"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/living/starboard_emb
-	name = "\improper Extended Mission Bunks"
+	name = "\improper Lower Deck Starboard Extended Mission Bunks"
 	icon_state = "starboardemb"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/living/port_garden
-	name = "\improper Garden"
+	name = "\improper Port Garden"
 	icon_state = "portemb"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/living/starboard_garden
-	name = "\improper Garden"
+	name = "\improper Starboard Garden"
 	icon_state = "starboardemb"
 	fake_zlevel = 1 // upperdeck
 
@@ -502,12 +503,12 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/living/officer_rnr
-	name = "\improper Officer's Lounge"
+	name = "\improper Upper Deck Officer's Lounge"
 	icon_state = "officerrnr"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/living/officer_study
-	name = "\improper Officer's Study"
+	name = "\improper Upper Deck Officer's Study"
 	icon_state = "officerstudy"
 	fake_zlevel = 1 // upperdeck
 
@@ -522,17 +523,17 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/living/gym
-	name = "\improper Gym"
+	name = "\improper Lower Deck Gym"
 	icon_state = "officerrnr"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/living/cafeteria_officer
-	name = "\improper Officer Cafeteria"
+	name = "\improper Upper Deck Officer Cafeteria"
 	icon_state = "food"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/living/offices
-	name = "\improper Conference Office"
+	name = "\improper Lower Deck Conference Office"
 	icon_state = "briefing"
 	fake_zlevel = 2 // lowerdeck
 
@@ -560,7 +561,7 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/living/synthcloset
-	name = "\improper Synthetic Storage Closet"
+	name = "\improper Upper Deck Synthetic Storage Closet"
 	icon_state = "livingspace"
 	fake_zlevel = 1 // upperdeck
 
@@ -738,16 +739,16 @@
 	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/lifeboat_pumps/north1
-	name = "North West Lifeboat Fuel Pump"
+	name = "Starboard Fore Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/north2
-	name = "North East Lifeboat Fuel Pump"
+	name = "Starboard Aft Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/south1
-	name = "South West Lifeboat Fuel Pump"
+	name = "Port Fore Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/south2
-	name = "South East Lifeboat Fuel Pump"
+	name = "Port Aft Lifeboat Fuel Pump"
 
 /area/almayer/command/lifeboat
 	name = "\improper Lifeboat Docking Port"
@@ -760,7 +761,7 @@
 	flags_area = AREA_NOTUNNEL
 
 /area/space/almayer/lifeboat_dock
-	name = "\improper Lifeboat Docking Port"
+	name = "\improper Port Lifeboat Docking"
 	icon_state = "lifeboat"
 	fake_zlevel = 1 // upperdeck
 	flags_area = AREA_NOTUNNEL

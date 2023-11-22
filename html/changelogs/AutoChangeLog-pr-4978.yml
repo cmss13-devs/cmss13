@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - rscdel: "Lesser drones die upon ghosting and are not offered to observers."

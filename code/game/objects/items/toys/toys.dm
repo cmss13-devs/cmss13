@@ -591,7 +591,7 @@
 
 /obj/item/toy/plush/random_plushie/pickup(mob/user, silent)
 	. = ..()
-	RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(create_plushie))
+	RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(create_plushie), override = TRUE)
 
 ///The randomizer picking and spawning a plushie on either the ground or in the humans backpack. Needs var/source due to signals
 /obj/item/toy/plush/random_plushie/proc/create_plushie(datum/source)

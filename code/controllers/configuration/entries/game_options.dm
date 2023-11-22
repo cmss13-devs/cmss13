@@ -101,8 +101,6 @@
 
 /datum/config_entry/flag/continous_rounds
 
-/datum/config_entry/flag/ert_admin_call_only
-
 /datum/config_entry/flag/use_loyalty_implants
 
 /datum/config_entry/number/explosive_antigrief

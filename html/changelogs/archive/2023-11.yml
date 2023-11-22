@@ -266,3 +266,16 @@
   Zonespace27:
   - bugfix: Jump-to-area verb will now warn you if there aren't any turfs in the given
       area.
+2023-11-21:
+  hislittlecuzingames:
+  - code_imp: Added ability to have looping sounds from further away
+2023-11-22:
+  AnturK:
+  - server: the server now supports auto-profiling
+  Birdtalon:
+  - code_imp: Removes some istype(src)
+  Morrow:
+  - rscadd: Mess tech positions now scale from 1 to 2 after 70 marines are in the
+      game
+  hislittlecuzingames:
+  - rscadd: Launch Announcement Alarm for dropships to notify ground forces of departure.

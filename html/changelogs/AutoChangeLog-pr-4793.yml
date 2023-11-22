@@ -1,0 +1,4 @@
+author: "AnturK"
+delete-after: True
+changes:
+  - server: "the server now supports auto-profiling"

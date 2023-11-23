@@ -487,6 +487,7 @@
 
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
 	computer.hijack(usr, force = TRUE)
+	dropship.playing_launch_announcement_alarm = FALSE
 
 /client/proc/cmd_admin_create_centcom_report()
 	set name = "Report: Faction"

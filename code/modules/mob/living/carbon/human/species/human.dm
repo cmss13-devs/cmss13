@@ -1,3 +1,85 @@
+// handles all blood related problems for humans and synthetics, moved from blood.dm
+/mob/living/proc/handle_blood()
+	return
+
+// Takes care blood loss and regeneration
+/mob/living/carbon/human/handle_blood()
+	if((species.flags & NO_BLOOD) && !(species.flags & IS_SYNTHETIC))
+		return
+
+	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
+		//Blood regeneration if there is some space
+		if(blood_volume < max_blood && nutrition >= 1)
+			blood_volume += 0.1 // regenerate blood VERY slowly
+			nutrition -= 0.25
+		else if(blood_volume > max_blood)
+			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
+			if(blood_volume > limit_blood)
+				blood_volume = limit_blood // This should never happen, but lets make sure
+
+		var/b_volume = blood_volume
+
+		// Damaged heart virtually reduces the blood volume, as the blood isn't
+		// being pumped properly anymore.
+		if(species && species.has_organ["heart"])
+			var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
+			if(!heart)
+				b_volume = 0
+			else if(chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+				b_volume *= 1
+			else if(heart.damage >= heart.organ_status >= ORGAN_BRUISED)
+				b_volume *= Clamp(100 - (2 * heart.damage), 30, 100) / 100
+
+	//Effects of bloodloss
+		if(b_volume <= BLOOD_VOLUME_SAFE)
+			/// The blood volume turned into a %, with BLOOD_VOLUME_NORMAL being 100%
+			var/blood_percentage = b_volume / (BLOOD_VOLUME_NORMAL / 100)
+			/// How much oxyloss will there be from the next time blood processes
+			var/additional_oxyloss = (100 - blood_percentage) / 5
+			/// The limit of the oxyloss gained, ignoring oxyloss from the switch statement
+			var/maximum_oxyloss = Clamp((100 - blood_percentage) / 2, oxyloss, 100)
+			if(oxyloss < maximum_oxyloss)
+				oxyloss += round(max(additional_oxyloss, 0))
+
+		switch(b_volume)
+			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+				if(species.flags & IS_SYNTHETIC)
+					if(prob(1))
+						to_chat(src, SPAN_DANGER("Subdermal damage detected in critical region. Operational impact minimal. Diagnosis queued for maintenance cycle."))
+				else
+					if(prob(1))
+						var/word = pick("dizzy","woozy","faint")
+						to_chat(src, SPAN_DANGER("You feel [word]."))
+			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+				if(species.flags & IS_SYNTHETIC)
+					if(prob(3))
+						apply_effect(rand(1, 2), WEAKEN)
+						to_chat(src, SPAN_DANGER("Internal power cell fault detected.\nSeek nearest recharging station."))
+				else
+					if(eye_blurry < 50)
+						AdjustEyeBlur(6)
+						oxyloss += 3
+					if(prob(15))
+						apply_effect(rand(1,3), PARALYZE)
+						var/word = pick("dizzy","woozy","faint")
+						to_chat(src, SPAN_DANGER("You feel very [word]."))
+			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
+				if(species.flags & IS_SYNTHETIC)
+					if(prob(5))
+						apply_effect(rand(1, 2), PARALYZE)
+						to_chat(src, SPAN_DANGER("Critical power cell failure detected.\nSeek recharging station immediately."))
+				else
+					if(eye_blurry < 50)
+						AdjustEyeBlur(6)
+						oxyloss += 8
+						toxloss += 3
+					if(prob(15))
+						apply_effect(rand(1, 3), PARALYZE)
+						var/word = pick("dizzy", "woozy", "faint")
+						to_chat(src, SPAN_DANGER("You feel extremely [word]."))
+			if(0 to BLOOD_VOLUME_SURVIVE)
+				death(create_cause_data(species.flags & IS_SYNTHETIC ? "power failure" : "blood loss"))
+
 /datum/species/human
 	group = SPECIES_HUMAN
 	name = "Human"

@@ -488,13 +488,13 @@ var/datum/controller/supply/supply_controller = new()
 	if(crate_iteration <= 5 && crate_amount < 4)
 		crate_amount = 4
 
-	var/unit_crate_amount = floor(crate_amount)
+	var/unit_crate_amount = round(crate_amount)
 	var/carry = crate_amount - unit_crate_amount
 	random_crates_carry[pool] += carry
 	var/total_carry = random_crates_carry[pool]
 
 	if(total_carry >= 1)
-		var/additional_crates = floor(total_carry)
+		var/additional_crates = round(total_carry)
 		random_crates_carry[pool] -= additional_crates
 		unit_crate_amount += additional_crates
 

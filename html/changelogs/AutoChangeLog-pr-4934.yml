@@ -1,7 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - balance: "Default Web Music Player volume is now 20% down from 50%. It was found too effective against new players."
-  - admin: "\"Play Internet Sound\" is now \"Play Admin Sound\" and optionally allow to hide the track name."
-  - admin: "\"Play Admin Sound\" can now be used with uploaded tracks, which use CDN delivery and the in-chat music player, granting players more control over them."
-  - admin: "Removed \"Play Midi Sound\"."

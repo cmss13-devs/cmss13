@@ -1,6 +1,0 @@
-author: "QuickLode"
-delete-after: True
-changes:
-  - rscadd: "Damage to Synthetic's internal causes debuffs, eventual powercell failure.(death)"
-  - bugfix: "Synthetic's should no longer lose blood."
-  - code_imp: "moves blood proc to human.dm from blood.dm with above changes."

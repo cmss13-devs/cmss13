@@ -482,7 +482,7 @@ var/datum/controller/supply/supply_controller = new()
 	if(pool != ASRS_POOL_MAIN)
 		return 1 // Pool scaling coming in a future update if needed, for now tweak base_random_crate_intervals instead
 
-	var/ground_xenos_amount = rand(1, 20) //TESTING //SSticker.mode.count_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	var/ground_xenos_amount = SSticker.mode.count_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
 	var/crate_amount = max(0, sqrt(ground_xenos_amount/ASRS_XENO_CRATES_DIVIDER))
 
 	if(crate_iteration <= 5 && crate_amount < 4)
@@ -497,7 +497,6 @@ var/datum/controller/supply/supply_controller = new()
 		var/additional_crates = floor(total_carry)
 		random_crates_carry[pool] -= additional_crates
 		unit_crate_amount += additional_crates
-		log_debug("Awarded [additional_crates] extra crates in pool [pool]") //TESTING
 
 	return unit_crate_amount
 

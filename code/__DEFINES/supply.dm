@@ -14,4 +14,4 @@
 #define ASRS_POOL_FOOD "Food"
 
 /// Divider to the amount of xeno forces on the planet to ASRS provided crates. It is used as such sqrt(xenos/ASRS_XENO_CRATES_DIVIDER))
-#define ASRS_XENO_CRATES_DIVIDER 3.5
+#define ASRS_XENO_CRATES_DIVIDER 4

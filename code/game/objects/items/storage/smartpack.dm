@@ -144,7 +144,7 @@
 		immobile_form = FALSE
 		M.status_flags |= CANPUSH
 		M.anchored = FALSE
-		REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
+		M.unfreeze()
 	..()
 
 /obj/item/storage/backpack/marine/smartpack/attack_self(mob/user)
@@ -236,7 +236,7 @@
 		battery_charge -= IMMOBILE_COST
 		user.status_flags &= ~CANPUSH
 		user.anchored = TRUE
-		ADD_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
+		user.frozen = TRUE
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You are anchored in place and cannot be moved.\""))
 		to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 
@@ -248,7 +248,7 @@
 	else
 		user.status_flags |= CANPUSH
 		user.anchored = FALSE
-		REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
+		user.unfreeze()
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You can now move again.\""))
 		user.remove_filter("synth_immobile_form")
 

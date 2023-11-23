@@ -160,11 +160,11 @@
 	SPAN_XENOWARNING("You vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
-/proc/unroot_human(mob/living/carbon/H, trait_source)
+/proc/unroot_human(mob/living/carbon/H)
 	if (!isxeno_human(H))
 		return
 
-	REMOVE_TRAIT(H, TRAIT_IMMOBILIZED, trait_source)
+	H.frozen = 0
 	H.update_canmove()
 
 	if(ishuman(H))

@@ -283,9 +283,6 @@
 /area/lv624/ground/caves/west_caves)
 "abH" = (
 /obj/effect/landmark/good_item,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "abI" = (
@@ -401,7 +398,7 @@
 "aco" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "acp" = (
 /turf/closed/wall/cult,
@@ -509,7 +506,7 @@
 /obj/structure/tunnel{
 	id = "hole1"
 	},
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "acL" = (
 /obj/item/tool/shovel,
@@ -584,9 +581,6 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "acY" = (
 /obj/effect/landmark/hunter_primary,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "acZ" = (
@@ -2587,13 +2581,6 @@
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
-"amI" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "amK" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -2721,10 +2708,6 @@
 	icon_state = "whiteyellowcorner"
 	},
 /area/lv624/lazarus/corporate_dome)
-"anM" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "anP" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass/grass1,
@@ -7940,12 +7923,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/west_jungle)
-"aIA" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "aIB" = (
 /obj/structure/closet,
 /turf/open/floor{
@@ -7953,17 +7930,6 @@
 	icon_state = "purple"
 	},
 /area/lv624/lazarus/sleep_female)
-"aIE" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 11;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "aIH" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/mask/cigarette/cigar,
@@ -9229,6 +9195,12 @@
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
 /obj/item/clothing/suit/armor/vest/security,
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Secure Inner Doors";
+	pixel_x = 25;
+	pixel_y = 5
+	},
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -9560,14 +9532,6 @@
 	icon_state = "chapel"
 	},
 /area/lv624/lazarus/chapel)
-"aPM" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "aPN" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
@@ -10481,12 +10445,6 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/lv624/lazarus/captain)
-"aTy" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "aTB" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor{
@@ -11193,11 +11151,32 @@
 /obj/item/ore/silver,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
+"aWb" = (
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Secure Inner Doors";
+	pixel_x = 25;
+	pixel_y = 5
+	},
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Secure Outer Doors";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
 "aWc" = (
 /obj/structure/computerframe{
 	anchored = 1
 	},
-/turf/open/floor/plating,
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Secure Outer Doors";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWd" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
@@ -11315,7 +11294,24 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"aWu" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "secure_inner_blast";
+	layer = 3.3;
+	name = "\improper Secure Armory Blast Door";
+	unacidable = 1
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
 "aWv" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "secure_outer_blast";
+	layer = 3.3;
+	name = "\improper Secure Armory Blast Door";
+	unacidable = 1
+	},
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
@@ -11915,11 +11911,6 @@
 	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
-"aYI" = (
-/turf/open/gm/dirt{
-	icon_state = "desert0"
-	},
-/area/lv624/ground/caves/south_west_caves)
 "aYJ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/chips,
@@ -12275,13 +12266,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"bak" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "bav" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/up,
 /turf/open/gm/dirt,
@@ -12360,29 +12344,6 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_central_jungle)
-"bcb" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
-"bcU" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -10;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
-"bdu" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "bdL" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/sheet/metal{
@@ -12453,21 +12414,9 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"bje" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "bkG" = (
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/central_river)
-"bkK" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "bkP" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -12495,12 +12444,6 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"bnM" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "bnX" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/beachcorner/south_west,
@@ -12533,10 +12476,6 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"brC" = (
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "bsR" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -12609,17 +12548,6 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
-"bvj" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
-"bvS" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
-"bvX" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "bwc" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/barrens/west_barrens)
@@ -12630,12 +12558,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
-"bxb" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "byl" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -12679,14 +12601,6 @@
 "bBu" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/jungle/west_jungle)
-"bBT" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "bCe" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -12700,14 +12614,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"bEj" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "bEq" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -12761,12 +12667,6 @@
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"bJQ" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "bLs" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -12803,15 +12703,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"bOm" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 4;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/barrens/north_east_barrens)
 "bOy" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
@@ -12826,17 +12717,6 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
-"bPE" = (
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
-"bQz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "bQA" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -12948,10 +12828,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
-"cdw" = (
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "cdF" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "lv-centralcaves"
@@ -12967,11 +12843,6 @@
 "cfD" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/lv624/lazarus/quartstorage/outdoors)
-"cfL" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/gm/grass/grass1/weedable,
-/area/lv624/ground/caves/north_east_caves)
 "cfN" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/north_jungle)
@@ -13014,16 +12885,6 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"chi" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -10;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "cij" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -13053,13 +12914,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"clO" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "cmf" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -13082,12 +12936,6 @@
 	icon_state = "squareswood"
 	},
 /area/lv624/ground/caves/sand_temple)
-"cop" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "cpQ" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
@@ -13106,14 +12954,6 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_west_jungle)
-"cqC" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "cqE" = (
 /obj/structure/barricade/wooden,
 /obj/structure/flora/jungle/vines/light_2,
@@ -13122,23 +12962,6 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
-"cqH" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
-"cqN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
-"crn" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "crF" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/jungle/vines/heavy,
@@ -13171,17 +12994,13 @@
 	icon_state = "desert_dug"
 	},
 /area/lv624/ground/barrens/west_barrens)
-"cxi" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "cys" = (
 /obj/structure/foamed_metal,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/east_central_jungle)
 "czq" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "czu" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -13229,11 +13048,6 @@
 "cCr" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/east_jungle)
-"cCP" = (
-/turf/open/gm/dirt{
-	icon_state = "desert1"
-	},
-/area/lv624/ground/caves/south_west_caves)
 "cDr" = (
 /obj/structure/girder,
 /turf/open/gm/grass/grass1,
@@ -13258,12 +13072,6 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"cEi" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "cEn" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/gm/dirt,
@@ -13276,12 +13084,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"cHW" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "cIL" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
@@ -13294,9 +13096,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "cJw" = (
@@ -13332,12 +13131,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/river/west_river)
-"cMG" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "cNH" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/beakers,
@@ -13363,10 +13156,6 @@
 "cPV" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
-"cQB" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "cQJ" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
@@ -13392,12 +13181,6 @@
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"cSL" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "cTi" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
@@ -13419,10 +13202,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_nexus_road)
-"cWs" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "cXd" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/structure/flora/jungle/vines/heavy,
@@ -13450,14 +13229,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"daY" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "dbA" = (
 /obj/structure/xenoautopsy/tank,
 /turf/open/shuttle{
@@ -13494,7 +13265,7 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/corpsespawner/scientist,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "dhp" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -13545,18 +13316,9 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"dmT" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "dmZ" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
-"doe" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "dop" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -13614,13 +13376,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"dtr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "dvf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
@@ -13683,31 +13438,6 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
-"dzM" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
-"dAu" = (
-/obj/effect/landmark/crap_item,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"dBS" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -10;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
-"dCD" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "dCL" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
 	pixel_x = 2
@@ -13752,9 +13482,6 @@
 "dFz" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "dGc" = (
@@ -13768,10 +13495,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
-"dHg" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "dHo" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -13782,18 +13505,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
-"dIj" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
-"dIu" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
-"dIv" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "dID" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata{
@@ -13815,10 +13526,6 @@
 "dKg" = (
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"dKl" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "dLd" = (
 /obj/structure/bookcase,
 /obj/item/book/manual/research_and_development,
@@ -13830,13 +13537,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
-"dLm" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "dLn" = (
 /obj/effect/acid_hole,
 /turf/closed/wall/r_wall,
@@ -13847,19 +13547,9 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/east_jungle)
-"dLW" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "dLY" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"dMc" = (
-/obj/structure/flora/jungle/planttop1,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/south_central_jungle)
 "dMF" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -13888,19 +13578,11 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"dOb" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/angel,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "dOf" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"dOA" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "dOC" = (
 /obj/structure/kitchenspike,
 /obj/effect/decal/cleanable/blood,
@@ -13959,18 +13641,12 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "dWM" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "dXq" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"dYx" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "dYE" = (
 /obj/structure/fence,
 /turf/open/gm/dirt,
@@ -13994,14 +13670,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
-"eaI" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "eaJ" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -14011,21 +13679,10 @@
 	icon_state = "bot"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
-"ebr" = (
-/turf/open/gm/dirtgrassborder/east,
-/area/lv624/ground/jungle/south_central_jungle)
 "ebS" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/colony/south_nexus_road)
-"ecn" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "ecy" = (
 /turf/closed/wall/sulaco,
 /area/lv624/lazarus/crashed_ship_containers)
@@ -14052,27 +13709,9 @@
 "efp" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_tcomms_road)
-"eft" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "efX" = (
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
-"egc" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
-"egU" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "ehy" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "Hydroponics"
@@ -14104,14 +13743,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
-"ejp" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "ejx" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/window/framed/colony,
@@ -14143,22 +13774,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"elp" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
-"enn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "eny" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass1,
@@ -14173,10 +13788,6 @@
 	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
-"eoW" = (
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "epG" = (
 /obj/structure/showcase,
 /obj/structure/window/reinforced{
@@ -14206,10 +13817,6 @@
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
-"eqS" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "erx" = (
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/jungle/west_jungle)
@@ -14224,10 +13831,6 @@
 	icon_state = "cult"
 	},
 /area/lv624/ground/caves/south_west_caves)
-"etU" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "euh" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/gm/dirt,
@@ -14386,12 +13989,6 @@
 	icon_state = "floor4"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
-"eMe" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "eNK" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -14429,9 +14026,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
-"eQL" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/barrens/north_east_barrens)
 "eSg" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
@@ -14452,10 +14046,6 @@
 	icon_state = "cult"
 	},
 /area/lv624/ground/caves/south_west_caves)
-"eYb" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "eYh" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
@@ -14469,10 +14059,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
-"eZg" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "eZC" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -14504,16 +14090,6 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_jungle)
-"fcQ" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -5;
-	pixel_y = -5;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "fdl" = (
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
@@ -14620,25 +14196,12 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/lazarus/corporate_dome)
-"fmV" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
-"fmW" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "fpn" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/barrens/east_barrens)
 "fqh" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/east_jungle)
-"fqi" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "fqM" = (
 /obj/structure/machinery/power/apc{
 	start_charge = 0
@@ -14648,12 +14211,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
-"frV" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "fsa" = (
 /obj/structure/surface/table,
 /turf/open/floor{
@@ -14661,12 +14218,6 @@
 	icon_state = "barber"
 	},
 /area/lv624/lazarus/kitchen)
-"fsc" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "fsu" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -14762,18 +14313,10 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
-"fDE" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "fDO" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/lv624/ground/barrens/west_barrens)
-"fDT" = (
-/turf/open/gm/dirt{
-	icon_state = "desert_dug"
-	},
-/area/lv624/ground/caves/south_west_caves)
 "fEn" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
@@ -14814,11 +14357,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/ground/colony/telecomm/cargo)
-"fGn" = (
-/obj/effect/decal/grass_overlay/grass1,
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "fGO" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
@@ -14853,24 +14391,12 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor,
 /area/lv624/lazarus/medbay)
-"fIW" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "fJQ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_tcomms_road)
-"fKc" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
-"fLh" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/angel,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "fMl" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -14896,14 +14422,6 @@
 "fQL" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/west_river)
-"fRD" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
-"fRU" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "fSX" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_jungle)
@@ -14923,14 +14441,6 @@
 "fTM" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
-"fTN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
-"fUj" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "fXr" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
@@ -14944,10 +14454,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
-"fYG" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "fZO" = (
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/north_west_jungle)
@@ -14981,16 +14487,6 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_central_jungle)
-"gcB" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 6;
-	pixel_y = -8;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "gcI" = (
 /obj/effect/landmark/crap_item,
 /turf/open/shuttle{
@@ -15076,16 +14572,6 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"gnt" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -5;
-	pixel_y = -5;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "gnx" = (
 /turf/open/floor{
 	icon_state = "white"
@@ -15095,10 +14581,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/north_nexus_road)
-"gos" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "gpC" = (
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/flora/jungle/vines/heavy,
@@ -15117,21 +14599,10 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"grW" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "grZ" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
-"gsq" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "gss" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/shuttle{
@@ -15171,17 +14642,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/lv624/ground/jungle/south_west_jungle/ceiling)
-"gvm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
-"gvr" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "gwP" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
@@ -15200,12 +14660,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
-"gze" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "gzo" = (
 /turf/open/gm/dirt{
 	icon_state = "desert3"
@@ -15217,10 +14671,6 @@
 	icon_state = "dark"
 	},
 /area/lv624/lazarus/quartstorage)
-"gzH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "gzW" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
@@ -15296,22 +14746,12 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"gPu" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "gPN" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "gQr" = (
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/caves/sand_temple)
-"gRk" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "gRm" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/dirtgrassborder/north,
@@ -15319,12 +14759,6 @@
 "gRx" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
-"gTj" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "gTu" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -15357,18 +14791,6 @@
 "gUq" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_east_jungle)
-"gVw" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"gVR" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "gWf" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sandbags/large_stack{
@@ -15384,12 +14806,6 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/quartstorage)
-"gWE" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/south_east_caves)
 "gWI" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
@@ -15415,16 +14831,6 @@
 /obj/structure/prop/brazier,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
-"han" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
-"hav" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "haN" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
@@ -15476,16 +14882,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
-"hez" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "heC" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -15518,11 +14914,6 @@
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/west_jungle)
-"hhs" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "hhv" = (
 /turf/open/floor{
 	dir = 8;
@@ -15538,12 +14929,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/colony/west_tcomms_road)
-"hjo" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "hke" = (
 /obj/structure/platform/mineral/sandstone/runed,
 /obj/structure/stairs/perspective{
@@ -15553,25 +14938,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"hkT" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"hmq" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"hmJ" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "hmK" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -15587,16 +14953,6 @@
 	icon_state = "bot"
 	},
 /area/lv624/ground/caves/north_central_caves)
-"hpK" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -10;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "hpN" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/good_item,
@@ -15632,15 +14988,6 @@
 "hsc" = (
 /turf/closed/wall/r_wall,
 /area/lv624/ground/river/central_river)
-"htV" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 4;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "huH" = (
 /obj/structure/flora/jungle/planttop1,
 /obj/structure/flora/jungle/vines/light_3,
@@ -15660,13 +15007,6 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"hyF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "hyK" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
@@ -15702,10 +15042,6 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_tcomms_road)
-"hEe" = (
-/obj/effect/landmark/crap_item,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/barrens/north_east_barrens)
 "hEl" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/strata_ice/jungle,
@@ -15770,10 +15106,6 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_jungle)
-"hKP" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "hLu" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_central_jungle)
@@ -15811,10 +15143,6 @@
 /obj/item/clothing/under/colonist,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"hNT" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "hPV" = (
 /obj/effect/decal/remains/xeno{
 	pixel_x = 31
@@ -15831,18 +15159,6 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/quartstorage)
-"hRy" = (
-/turf/open/gm/dirt{
-	icon_state = "desert3"
-	},
-/area/lv624/ground/caves/south_west_caves)
-"hRB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "hRI" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
@@ -15868,10 +15184,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_central_jungle)
-"hTR" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "hUs" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -15949,10 +15261,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"icd" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "idz" = (
 /obj/item/weapon/sword{
 	pixel_x = 6;
@@ -15981,24 +15289,10 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"ieN" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "ifk" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
-"ifr" = (
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "ifF" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -16009,11 +15303,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"igN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "ihS" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/lemon_lime{
@@ -16030,10 +15319,6 @@
 /obj/effect/landmark/queen_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"ikA" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "ilf" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -16041,13 +15326,6 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
-"ilF" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8
-	},
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "ilO" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lantern{
@@ -16077,13 +15355,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_jungle)
-"isL" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "isR" = (
 /obj/effect/landmark/objective_landmark/medium,
 /obj/structure/largecrate/random,
@@ -16098,13 +15369,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
-"iuf" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "iuO" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert3"
@@ -16136,12 +15400,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/lv624/ground/caves/sand_temple)
-"iye" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "iyr" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -16194,11 +15452,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/west_nexus_road)
-"iDX" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "iFp" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/barricade/wooden{
@@ -16209,19 +15462,10 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
-"iGf" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "iGn" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"iGx" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "iHQ" = (
 /obj/structure/xenoautopsy/tank/broken,
 /turf/open/gm/dirt,
@@ -16270,10 +15514,6 @@
 /obj/structure/ore_box,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
-"iNJ" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "iOz" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -16315,14 +15555,6 @@
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"iTQ" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "iUm" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
@@ -16349,10 +15581,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/colony/west_nexus_road)
-"iXX" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/angel,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "iYJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
@@ -16385,12 +15613,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"jcn" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "jdi" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines/light_3,
@@ -16403,30 +15625,10 @@
 "jga" = (
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
-"jgj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
-"jgy" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "jgJ" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/south_nexus_road)
-"jhj" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "jhG" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -16450,12 +15652,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
-"jlt" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "jnG" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
@@ -16479,21 +15675,6 @@
 	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
-"jpX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"jqr" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "jrC" = (
 /obj/structure/curtain/red,
 /turf/open/shuttle{
@@ -16518,12 +15699,6 @@
 /obj/structure/cargo_container/lockmart/mid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
-"jvQ" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "jwW" = (
 /turf/open/floor/plating{
 	dir = 6;
@@ -16599,19 +15774,6 @@
 	icon_state = "floor6"
 	},
 /area/lv624/ground/caves/sand_temple)
-"jBl" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
-"jCO" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "jDY" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/limb,
 /turf/open/gm/dirt,
@@ -16636,12 +15798,6 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_west_jungle/ceiling)
-"jGU" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "jGW" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/central_jungle)
@@ -16665,16 +15821,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"jJg" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
-"jKc" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "jKu" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/jungle/vines/heavy,
@@ -16704,12 +15850,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/west_central_jungle)
-"jLY" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "jMk" = (
 /obj/structure/lattice{
 	layer = 2.9
@@ -16725,12 +15865,6 @@
 	icon_state = "warnplate"
 	},
 /area/lv624/lazarus/engineering)
-"jMD" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "jMH" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -16805,16 +15939,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_west_jungle)
-"jRL" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "jRM" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/effect/landmark/lv624/fog_blocker,
@@ -16877,20 +16001,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"jZX" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
-"kae" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "kbn" = (
 /obj/structure/machinery/sensortower,
 /turf/open/floor{
@@ -16913,10 +16023,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/river/west_river)
-"kdj" = (
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "keS" = (
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/east_barrens/ceiling)
@@ -16943,18 +16049,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/east_jungle)
-"klD" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
-"kmH" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "kmP" = (
 /obj/item/stool,
 /turf/open/gm/dirt,
@@ -16974,12 +16068,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"kpx" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "kqx" = (
 /obj/structure/flora/jungle/plantbot1,
 /obj/structure/flora/jungle/vines/light_3,
@@ -16989,26 +16077,10 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"krs" = (
-/turf/open/gm/dirt{
-	icon_state = "desert2"
-	},
-/area/lv624/ground/caves/south_west_caves)
-"ksc" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush{
-	icon_state = "fernybush_2";
-	pixel_y = 10
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "ksB" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
-"ksM" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/south_central_jungle)
 "ksQ" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical{
@@ -17031,12 +16103,6 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"ktr" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "kuP" = (
 /obj/item/tool/hatchet{
 	pixel_x = 6;
@@ -17067,25 +16133,12 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
-"kxv" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "kxI" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "kyc" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/central_river)
-"kyt" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "kyN" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
@@ -17107,12 +16160,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"kzn" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "kzu" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
@@ -17121,10 +16168,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"kzw" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "kzE" = (
 /obj/structure/cargo_container/lockmart/right,
 /turf/open/floor,
@@ -17156,14 +16199,6 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/quartstorage)
-"kBq" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
-/area/lv624/ground/jungle/south_west_jungle)
-"kCD" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "kFx" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -17186,10 +16221,6 @@
 "kHU" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
-"kIM" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "kJm" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
@@ -17201,31 +16232,11 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"kKa" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
-"kLl" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "kLP" = (
 /obj/structure/flora/jungle/plantbot1,
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"kML" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "kNm" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
@@ -17292,12 +16303,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/north_tcomms_road)
-"kVG" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "kVP" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -17313,10 +16318,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"kWV" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "kWX" = (
 /turf/open/floor{
 	dir = 8;
@@ -17360,11 +16361,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
-"lav" = (
-/turf/open/gm/dirt{
-	icon_state = "desert_dug"
-	},
-/area/lv624/ground/caves/west_caves)
 "laY" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/strata_ice/jungle,
@@ -17372,23 +16368,12 @@
 "lbd" = (
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/barrens/west_barrens)
-"lbt" = (
-/obj/effect/landmark/hunter_primary,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "lbX" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_jungle)
-"ldi" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "ldB" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 4
@@ -17406,24 +16391,6 @@
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"lhE" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
-"lhH" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"liI" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "lju" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
@@ -17435,11 +16402,6 @@
 /obj/structure/inflatable/popped/door,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"lkq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "lkF" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -17451,10 +16413,6 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
-"lnr" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "lnK" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /obj/effect/landmark/nightmare{
@@ -17470,16 +16428,6 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/south_east_jungle)
-"loP" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "lpV" = (
 /turf/open/floor/plating{
 	icon_state = "platebotc"
@@ -17543,19 +16491,6 @@
 "lyS" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/lv624/lazarus/quartstorage)
-"lyZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
-"lzf" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "lzE" = (
 /turf/open/gm/dirt{
 	icon_state = "desert0"
@@ -17565,12 +16500,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
-"lBl" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "lBq" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/barricade/handrail/strata{
@@ -17653,13 +16582,6 @@
 	icon_state = "dark"
 	},
 /area/lv624/lazarus/quartstorage)
-"lIL" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "lIU" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/south_central_jungle)
@@ -17699,16 +16621,6 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
-"lKl" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 6;
-	pixel_y = -8;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "lKF" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/barrens/containers)
@@ -17716,23 +16628,12 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
-"lLK" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "lLO" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"lLU" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "lNe" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
@@ -17740,16 +16641,6 @@
 	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
-"lNG" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "lPJ" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert"
@@ -17787,23 +16678,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
-"lSA" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
-"lSN" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
-"lTv" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "lTZ" = (
 /obj/item/tool/shovel,
 /turf/open/gm/dirt,
@@ -17825,25 +16699,6 @@
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/sand_temple)
-"lUQ" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"lWh" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"lWl" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "lWw" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -17856,12 +16711,6 @@
 "lWO" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/south_west_jungle)
-"lYt" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "lYB" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
@@ -17909,16 +16758,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_jungle)
-"mca" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "mdQ" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -17926,16 +16765,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"mfn" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "mfu" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -17950,12 +16779,6 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"mgi" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "mgs" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 8;
@@ -17997,9 +16820,6 @@
 	icon_state = "grass1"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
-"mkn" = (
-/turf/open/floor/plating,
-/area/lv624/lazarus/secure_storage)
 "mko" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/north,
@@ -18070,11 +16890,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/east_river)
-"mrg" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "mrQ" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -18167,12 +16982,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
-"mEo" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "mEw" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder/south,
@@ -18181,22 +16990,10 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
-"mFZ" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "mGG" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
-"mHk" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "mHM" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/colony/south_medbay_road)
@@ -18211,10 +17008,6 @@
 	icon_state = "whiteyellowcorner"
 	},
 /area/lv624/lazarus/corporate_dome)
-"mJF" = (
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "mKf" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_nexus_road)
@@ -18224,10 +17017,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"mLv" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "mMq" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -18247,12 +17036,6 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/quartstorage)
-"mNl" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "mNz" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
@@ -18269,10 +17052,6 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"mOL" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "mPt" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
@@ -18349,10 +17128,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
-"mVr" = (
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "mVK" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
@@ -18363,10 +17138,6 @@
 "mWe" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/jungle/south_west_jungle)
-"mWA" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "mXR" = (
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/colony/north_nexus_road)
@@ -18397,22 +17168,10 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
-"ndk" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "ndK" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
-"ner" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "nfD" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/gm/dirt,
@@ -18427,14 +17186,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"nha" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "nhi" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -18531,15 +17282,6 @@
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"nrR" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -10;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "nsk" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/river/west_river)
@@ -18637,12 +17379,6 @@
 	icon_state = "whiteyellowcorner"
 	},
 /area/lv624/lazarus/corporate_dome)
-"nys" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "nzw" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -18799,12 +17535,6 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"nLF" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "nLH" = (
 /obj/structure/prop/tower,
 /turf/open/floor{
@@ -18826,16 +17556,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
-"nNu" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 6;
-	pixel_y = -8;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/barrens/north_east_barrens)
 "nNw" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
@@ -18867,16 +17587,6 @@
 	icon_state = "squareswood"
 	},
 /area/lv624/ground/caves/sand_temple)
-"nQH" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 6;
-	pixel_y = -8;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "nRb" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -18888,13 +17598,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/caves/sand_temple)
-"nRA" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "nSg" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor{
@@ -18944,10 +17647,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
-"nUZ" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "nVC" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -19078,21 +17777,10 @@
 	icon_state = "squareswood"
 	},
 /area/lv624/ground/caves/sand_temple)
-"ofg" = (
-/turf/open/gm/dirt{
-	icon_state = "desert1"
-	},
-/area/lv624/ground/caves/west_caves)
 "ofv" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
-"ogJ" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "ogM" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/river/east_river)
@@ -19106,21 +17794,6 @@
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
-"oha" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
-"ohf" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "ohE" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/snacks/tomatomeat,
@@ -19144,10 +17817,6 @@
 "omK" = (
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/barrens/west_barrens)
-"onP" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "onU" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/west_caves)
@@ -19184,20 +17853,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/cargo)
-"osf" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 11;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
-"otl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "oua" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
@@ -19217,21 +17872,9 @@
 /obj/item/stack/sheet/wood,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"owe" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "owQ" = (
 /turf/open/gm/coast/east,
 /area/lv624/ground/barrens/east_barrens)
-"owZ" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "oxY" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -19293,10 +17936,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"oDE" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "oDY" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4
@@ -19337,14 +17976,6 @@
 "oFf" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/river/east_river)
-"oFJ" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "oFO" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 1
@@ -19448,10 +18079,6 @@
 	icon_state = "loadingarea"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
-"oQm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "oRH" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_east_jungle)
@@ -19621,10 +18248,6 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"pgc" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/barrens/north_east_barrens)
 "pgf" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -19658,15 +18281,6 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"pkU" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "plf" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -19705,13 +18319,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
-"poX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "ppR" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/north_nexus_road)
@@ -19759,11 +18366,6 @@
 	icon_state = "floor4"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
-"ptm" = (
-/turf/open/gm/dirt{
-	icon_state = "desert0"
-	},
-/area/lv624/ground/caves/west_caves)
 "ptr" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass/grass1,
@@ -19813,18 +18415,10 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
-"pAE" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "pBk" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"pBH" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "pDh" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -19863,12 +18457,6 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"pET" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "pEV" = (
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -19878,24 +18466,10 @@
 "pFe" = (
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/south_east_jungle)
-"pFB" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "pGD" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"pGL" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "pHn" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
@@ -19911,12 +18485,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
-"pIl" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "pIy" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/north,
@@ -19925,10 +18493,6 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"pIB" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "pIC" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/gm/grass/grass1,
@@ -19962,15 +18526,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/colony/west_nexus_road)
-"pLv" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 4;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "pMM" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/dirtgrassborder/east,
@@ -20017,10 +18572,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
-"pQV" = (
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "pRe" = (
 /obj/item/storage/firstaid/adv/empty,
 /obj/structure/machinery/door_control{
@@ -20067,21 +18618,9 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"pRD" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "pRT" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/sand_temple)
-"pSe" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "pSt" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
@@ -20096,15 +18635,6 @@
 "pUm" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/east_caves)
-"pVZ" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -10;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "pXI" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass1,
@@ -20145,12 +18675,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"qdx" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "qdQ" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
@@ -20183,25 +18707,9 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz2)
-"qfK" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "qgA" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/south_east_jungle)
-"qhl" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
-"qiL" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "qjf" = (
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
@@ -20231,14 +18739,6 @@
 "qqJ" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
-"qrH" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "qsM" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
@@ -20248,14 +18748,6 @@
 "qtj" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_central_jungle)
-"qtK" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "qtS" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
@@ -20440,12 +18932,6 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"qJE" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "qKl" = (
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/colony/north_nexus_road)
@@ -20488,14 +18974,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/caves/sand_temple)
-"qPY" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "qRj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
@@ -20506,16 +18984,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"qSG" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"qSS" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "qSZ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -20538,32 +19006,9 @@
 "qUM" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/west_central_jungle)
-"qVh" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
-"qVi" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -10;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
-"qVN" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "qWf" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/colony/west_nexus_road)
-"qWI" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "qXo" = (
 /obj/structure/surface/rack,
 /obj/item/explosive/grenade/incendiary/molotov,
@@ -20580,10 +19025,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
-"qYS" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "qZv" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass1,
@@ -20606,16 +19047,6 @@
 	icon_state = "desert1"
 	},
 /area/lv624/ground/barrens/west_barrens)
-"rbs" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"rby" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "rck" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -20672,26 +19103,10 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
-"rgj" = (
-/obj/effect/decal/remains/xeno,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "rgQ" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"rhi" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 4;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "rit" = (
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
@@ -20712,37 +19127,10 @@
 	icon_state = "dark"
 	},
 /area/lv624/lazarus/engineering)
-"rmt" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 4;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"rmW" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 11;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "rox" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
-"roQ" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
-"rpx" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "rpR" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor{
@@ -20798,9 +19186,6 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/corpsespawner/wygoon,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "rwB" = (
@@ -20814,11 +19199,6 @@
 	icon_state = "desert_dug"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
-"ryp" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "ryJ" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -20833,12 +19213,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"rze" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "rzT" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/item/stack/sheet/wood{
@@ -20861,16 +19235,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/lazarus/corporate_dome)
-"rAU" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 6;
-	pixel_y = -8;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "rBF" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
@@ -20889,13 +19253,6 @@
 "rCV" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_central_jungle)
-"rER" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "rGd" = (
 /obj/structure/girder/displaced,
 /obj/structure/shuttle/engine/propulsion,
@@ -20914,16 +19271,6 @@
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"rGE" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 6;
-	pixel_y = -8;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "rGW" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/south,
@@ -20937,34 +19284,11 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
-"rHV" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"rIc" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
-"rIm" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "rIq" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
-"rID" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "rJd" = (
 /obj/structure/bed/alien{
 	color = "#aba9a9"
@@ -21057,13 +19381,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/north_tcomms_road)
-"rTT" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"rUX" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "rVH" = (
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
@@ -21076,12 +19393,6 @@
 	icon_state = "brown"
 	},
 /area/lv624/lazarus/comms)
-"rWs" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "rWW" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/river,
@@ -21091,11 +19402,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
-"rYe" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "rYA" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
@@ -21128,12 +19434,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
-"scs" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "sdh" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor/wood,
@@ -21167,16 +19467,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/colony/north_nexus_road)
-"sgU" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
-"shb" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "shq" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -21207,15 +19497,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"snc" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 4;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "sne" = (
 /obj/item/ammo_casing/bullet{
 	icon_state = "cartridge_10_1"
@@ -21237,26 +19518,10 @@
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"soz" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
-"soY" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "spm" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/lv624/ground/barrens/east_barrens)
-"spK" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "sqj" = (
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
@@ -21286,12 +19551,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/caves/sand_temple)
-"srn" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "ssc" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/jungle/east_central_jungle)
@@ -21299,11 +19558,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"stt" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "suv" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass2,
@@ -21321,21 +19575,9 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"sxl" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "sxn" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"sxo" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "sxY" = (
 /obj/structure/surface/rack,
 /obj/item/moneybag,
@@ -21353,16 +19595,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_medbay_road)
-"sAh" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
-"sAI" = (
-/obj/structure/flora/jungle/planttop1,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "sBg" = (
 /obj/structure/machinery/vending/cigarette,
 /obj/structure/machinery/light{
@@ -21381,9 +19613,6 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
-"sBY" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "sCg" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -21413,23 +19642,10 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
-"sET" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "sFc" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
-"sFD" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "sFY" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Workshop Storage";
@@ -21483,19 +19699,6 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
-"sLT" = (
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
-"sLU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "sLX" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -21513,12 +19716,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"sNq" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "sOp" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -21542,10 +19739,6 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"sPK" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/angel,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "sRH" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass/grass1,
@@ -21580,19 +19773,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
-"sVx" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"sWk" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/lv624/lazarus/secure_storage)
 "sWy" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/grass1,
@@ -21624,16 +19804,6 @@
 	icon_state = "squareswood"
 	},
 /area/lv624/ground/caves/sand_temple)
-"sXg" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -10;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "sXi" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -21663,16 +19833,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"tcF" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
-"tde" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "tdX" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -21725,16 +19885,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/west_river)
-"thk" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -5;
-	pixel_y = -5;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "thn" = (
 /obj/item/weapon/sword{
 	pixel_x = -6;
@@ -21763,13 +19913,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/lv624/ground/caves/sand_temple)
-"thI" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "thS" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -21777,6 +19920,12 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"tiw" = (
+/mob/living/simple_animal/bat,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/north_west_caves)
 "tka" = (
 /obj/item/ammo_casing/bullet{
 	icon_state = "casing_9_1"
@@ -21789,10 +19938,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_west_jungle)
-"tlk" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "tlD" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river,
@@ -21816,11 +19961,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"tnY" = (
-/turf/open/gm/dirt{
-	icon_state = "desert3"
-	},
-/area/lv624/ground/caves/west_caves)
 "toz" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
@@ -21850,10 +19990,6 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
-"tqQ" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "trs" = (
 /obj/item/tool/shovel,
 /turf/open/gm/dirt,
@@ -21876,13 +20012,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/colony/north_nexus_road)
-"tti" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "ttu" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
@@ -21898,16 +20027,6 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"tuJ" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -5;
-	pixel_y = -5;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "tuX" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/wood{
@@ -21983,14 +20102,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"tEm" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "tEn" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/floor{
@@ -22090,38 +20201,10 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
-"tMQ" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "tOS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"tOV" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
-"tPH" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"tQU" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "tRu" = (
 /obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines/heavy,
@@ -22131,20 +20214,9 @@
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_west_jungle)
-"tRM" = (
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "tSd" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/lazarus/quartstorage/outdoors)
-"tSi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "tSN" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
@@ -22159,12 +20231,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"tVw" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "tWw" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor{
@@ -22188,17 +20254,8 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "tYx" = (
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
-"tYW" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "tZa" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/beachcorner/south_east,
@@ -22210,10 +20267,6 @@
 "tZD" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/landing_zones/lz2)
-"uaL" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "uaP" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
@@ -22338,14 +20391,6 @@
 	icon_state = "desert1"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
-"ukY" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "ukZ" = (
 /turf/open/floor{
 	dir = 1;
@@ -22387,10 +20432,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/east_jungle)
-"uop" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "upM" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
@@ -22408,10 +20449,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_jungle)
-"uqm" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "urR" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -22442,12 +20479,6 @@
 "uvh" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"uwG" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "uxh" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
@@ -22457,16 +20488,6 @@
 /obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"uxL" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 11;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "uxT" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/east,
@@ -22477,12 +20498,6 @@
 "uya" = (
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"uyn" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "uzH" = (
 /turf/open/floor/plating{
 	dir = 8;
@@ -22492,11 +20507,6 @@
 "uAp" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"uBR" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "uDd" = (
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
@@ -22558,12 +20568,6 @@
 	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
-"uHc" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "uHI" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass2,
@@ -22586,17 +20590,11 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
-"uMd" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "uMz" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "uMD" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -22607,20 +20605,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/caves/sand_temple)
-"uOl" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
-"uOu" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/libertycap,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
-"uOD" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "uOK" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -22631,10 +20615,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_tcomms_road)
-"uRe" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "uRE" = (
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -22707,19 +20687,12 @@
 "uWJ" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/south_west_caves)
-"uXV" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_central_jungle)
 "uXW" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
 	},
 /area/lv624/ground/caves/north_central_caves)
-"uYj" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "uYC" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -22766,22 +20739,10 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_jungle)
-"vbK" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "vcY" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
-"vdt" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "vdy" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
@@ -22840,19 +20801,6 @@
 /obj/structure/girder,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"vih" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"viC" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "vjH" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
@@ -22880,25 +20828,6 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_central_jungle)
-"vkS" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
-"vle" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "vly" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -22937,14 +20866,6 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"vtk" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "vtt" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
@@ -22979,13 +20900,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
-"vxj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "vxU" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
@@ -22997,25 +20911,6 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/quartstorage)
-"vAg" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
-"vAB" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
-"vAT" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
-"vBd" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "vBe" = (
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/east_central_jungle)
@@ -23062,19 +20957,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"vGj" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"vGy" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "vHe" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/plasteel{
@@ -23124,23 +21006,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"vNs" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
 "vNP" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"vNT" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "vNW" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
@@ -23152,14 +21021,6 @@
 "vOF" = (
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/south_central_jungle)
-"vPo" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "vPu" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
@@ -23167,18 +21028,10 @@
 "vPV" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/jungle/east_jungle)
-"vQR" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "vSG" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"vUj" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/south_west_jungle)
 "vUw" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
@@ -23192,9 +21045,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
-"vVe" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
-/area/lv624/ground/jungle/south_central_jungle)
 "vVf" = (
 /turf/open/floor{
 	dir = 5;
@@ -23219,12 +21069,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_jungle)
-"vXP" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "vXW" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -23234,18 +21078,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"waw" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
-"wbg" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "wbK" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
@@ -23301,16 +21133,6 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/caves/sand_temple)
-"whk" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_west_caves)
 "whr" = (
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/ammo_magazine/smg/mp5,
@@ -23327,10 +21149,6 @@
 	icon_state = "desert2"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
-"whx" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "whQ" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
 	desc = "The oranges aren't done yet... this sucks.";
@@ -23425,19 +21243,9 @@
 	icon_state = "multi_tiles"
 	},
 /area/lv624/ground/caves/sand_temple)
-"woT" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "wpw" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"wpY" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/barrens/north_east_barrens)
 "wqy" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
@@ -23459,10 +21267,6 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_east_jungle)
-"wty" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "wtK" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/fancy/cigarettes/wypacket{
@@ -23496,16 +21300,18 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"wzI" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"wAF" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
+"wAe" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Secure Inner Doors";
+	pixel_x = -25;
+	pixel_y = 5
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/research)
 "wAI" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/dirtgrassborder/south,
@@ -23518,12 +21324,6 @@
 /obj/item/clothing/suit/armor/yautja_flavor,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"wCs" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "wEO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -23549,28 +21349,12 @@
 	icon_state = "wood-broken3"
 	},
 /area/lv624/ground/caves/north_central_caves)
-"wHh" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "wHp" = (
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
-"wHE" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -1;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "wJA" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/window/framed/colony/reinforced,
@@ -23605,24 +21389,10 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
-"wLT" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_east_caves)
 "wMk" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
-"wMr" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "wNp" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/gm/dirt,
@@ -23665,18 +21435,6 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
-"wQK" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
-"wRb" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "wSg" = (
 /obj/structure/inflatable/popped,
 /turf/open/gm/dirt,
@@ -23810,18 +21568,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"wYz" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"wYB" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 5
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "wZc" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
@@ -23839,10 +21585,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"xar" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "xbu" = (
 /obj/item/shard,
 /turf/open/floor{
@@ -23857,10 +21599,6 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"xdb" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "xdO" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -23897,17 +21635,6 @@
 "xgE" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
-"xhc" = (
-/mob/living/simple_animal/bat,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_west_caves)
-"xhv" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "xhC" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -23918,10 +21645,6 @@
 	icon_state = "whiteyellow"
 	},
 /area/lv624/lazarus/corporate_dome)
-"xmK" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "xov" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
@@ -23990,10 +21713,6 @@
 "xwr" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/west_barrens)
-"xwN" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/east_caves)
 "xwQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/handcuffs/cable/white{
@@ -24013,14 +21732,6 @@
 	icon_state = "whiteyellow"
 	},
 /area/lv624/lazarus/corporate_dome)
-"xyH" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "xyI" = (
 /obj/item/ammo_magazine/rifle/nsg23{
 	current_rounds = 0
@@ -24044,10 +21755,6 @@
 "xBm" = (
 /turf/open/gm/river,
 /area/lv624/ground/barrens/west_barrens)
-"xBO" = (
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_west_caves)
 "xCF" = (
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/weapon/gun/smg/mp5,
@@ -24079,23 +21786,10 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"xGL" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "xHa" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"xHW" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/west_caves)
 "xJA" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
@@ -24114,36 +21808,14 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/west_jungle)
-"xKL" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "xLi" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"xLT" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/lv624/lazarus/secure_storage)
-"xNi" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "xNK" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
-"xNQ" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirtgrassborder/east,
-/area/lv624/ground/jungle/south_central_jungle)
 "xPk" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/colony/south_medbay_road)
@@ -24172,22 +21844,12 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"xRe" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "xRo" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
-"xSk" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/north_east_caves)
 "xSA" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -24221,12 +21883,6 @@
 "xVN" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/jungle/south_central_jungle)
-"xWy" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "xXB" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass/grass1,
@@ -24238,12 +21894,6 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"xYD" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "xZE" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -24272,14 +21922,8 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "ydz" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
-"yfe" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
+/area/lv624/ground/caves/central_caves)
 "yfH" = (
 /turf/open/shuttle{
 	icon_state = "floor4"
@@ -24317,11 +21961,6 @@
 	icon_state = "purple"
 	},
 /area/lv624/lazarus/sleep_female)
-"yhT" = (
-/turf/open/gm/dirt{
-	icon_state = "desert2"
-	},
-/area/lv624/ground/caves/west_caves)
 "yhY" = (
 /obj/structure/inflatable/door,
 /turf/open/gm/dirt,
@@ -24354,10 +21993,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/west_tcomms_road)
-"yjs" = (
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "yjN" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
@@ -25629,7 +23264,7 @@ mdQ
 mdQ
 gwP
 gwP
-yhT
+gwP
 mdQ
 mdQ
 mdQ
@@ -26081,10 +23716,10 @@ gwP
 gwP
 gwP
 tOS
-vle
-qdx
-qdx
-hyF
+gwP
+gwP
+gwP
+tOS
 gwP
 gwP
 gwP
@@ -26307,18 +23942,18 @@ gwP
 gwP
 gwP
 gwP
-vle
-qdx
-cHW
-dOA
-dmT
-grW
-xKL
 gwP
-yhT
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
 tOS
 gwP
-ptm
+gwP
 gwP
 gwP
 gwP
@@ -26530,19 +24165,19 @@ mdQ
 mdQ
 mdQ
 gwP
-ptm
 gwP
-tnY
+gwP
+gwP
 tOS
 gwP
-wQK
-cQB
-dmT
-dmT
-rmW
-ndk
-grW
-xKL
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -26578,7 +24213,7 @@ amy
 ane
 ane
 ane
-krs
+ahF
 ahF
 ane
 ane
@@ -26763,14 +24398,14 @@ gwP
 gwP
 gwP
 gwP
-wQK
+gwP
 mdQ
 mdQ
 onU
 onU
-owe
-dmT
-uRe
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -26798,7 +24433,7 @@ nBh
 afV
 ahF
 ahF
-aYI
+ahF
 ahF
 ahF
 ahF
@@ -26988,23 +24623,23 @@ gwP
 gwP
 gwP
 gwP
-vle
-qdx
-qdx
+gwP
+gwP
+gwP
 mdQ
 mdQ
 mdQ
 onU
 onU
 mdQ
-dmT
-igN
+gwP
+tOS
 gwP
 gwP
 mdQ
 gwP
 gwP
-yhT
+gwP
 gwP
 gwP
 gwP
@@ -27215,9 +24850,9 @@ mdQ
 gwP
 gwP
 tOS
-vle
-amI
-dmT
+gwP
+gwP
+gwP
 mdQ
 mdQ
 onU
@@ -27225,8 +24860,8 @@ onU
 onU
 mdQ
 mdQ
-bcb
-wHh
+gwP
+gwP
 gwP
 gwP
 mdQ
@@ -27263,7 +24898,7 @@ ahF
 ahF
 ahF
 ahF
-cCP
+ahF
 ahF
 ane
 ane
@@ -27443,8 +25078,8 @@ gwP
 gwP
 gwP
 gwP
-wQK
-dmT
+gwP
+gwP
 mdQ
 mdQ
 onU
@@ -27667,13 +25302,13 @@ mdQ
 mdQ
 mdQ
 mdQ
-ofg
 gwP
 gwP
 gwP
-wQK
-dmT
-fRU
+gwP
+gwP
+gwP
+gwP
 onU
 onU
 onU
@@ -27682,7 +25317,7 @@ mdQ
 gwP
 gwP
 gwP
-ptm
+gwP
 gwP
 gwP
 mdQ
@@ -27701,8 +25336,8 @@ afV
 afV
 afV
 afV
-hRy
-aYI
+ahF
+ahF
 ahF
 afV
 afV
@@ -27895,18 +25530,18 @@ gwP
 mdQ
 mdQ
 gwP
-ptm
 gwP
 gwP
 gwP
-wQK
-dmT
-dmT
-nRA
-htV
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
 onU
 mdQ
-uRe
+gwP
 gwP
 gwP
 gwP
@@ -27927,7 +25562,6 @@ ahF
 ahF
 ahF
 ahF
-aYI
 ahF
 ahF
 ahF
@@ -27938,7 +25572,8 @@ ahF
 ahF
 ahF
 ahF
-krs
+ahF
+ahF
 ahF
 ane
 ane
@@ -28122,19 +25757,19 @@ gwP
 gwP
 mdQ
 mdQ
-lav
 gwP
 gwP
-ofg
 gwP
-hjo
-gvm
-qJE
-dmT
-dmT
-dmT
-fLh
-uRe
+gwP
+gwP
+gwP
+tOS
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
 gwP
 tOS
 gwP
@@ -28161,7 +25796,7 @@ ahF
 ahF
 ahF
 ahF
-fDT
+ahF
 ahF
 ahF
 ahF
@@ -28357,12 +25992,12 @@ gwP
 gwP
 gwP
 gwP
-hjo
-qJE
-tlk
-gRk
-owZ
-wHh
+gwP
+gwP
+gwP
+tOS
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -28387,7 +26022,7 @@ ahF
 ahF
 ahF
 ahF
-krs
+ahF
 ahF
 ahF
 ahH
@@ -28395,14 +26030,14 @@ ahF
 ahF
 ahF
 ahF
-cCP
+ahF
 ahF
 ane
-fDT
 ahF
 ahF
 ahF
-aYI
+ahF
+ahF
 ahF
 ahF
 ane
@@ -28578,7 +26213,6 @@ gwP
 gwP
 gwP
 aca
-ptm
 gwP
 gwP
 gwP
@@ -28586,13 +26220,14 @@ gwP
 gwP
 gwP
 gwP
-hjo
-qhl
-qhl
-wHh
 gwP
-ptm
-yhT
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
 gwP
 mdQ
 mdQ
@@ -28611,10 +26246,10 @@ ahF
 ahF
 ahV
 ahF
-xYD
-gTj
-gTj
-nys
+ahF
+ahH
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -28837,13 +26472,13 @@ ane
 ane
 ahF
 ahF
-xYD
-hmq
-lYt
-chi
-fmW
-rHV
-nys
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
 ePu
 ahF
 ahF
@@ -28858,9 +26493,9 @@ ane
 ahF
 ahF
 ahF
-hRy
-hRy
-fDT
+ahF
+ahF
+ahF
 afV
 ane
 ane
@@ -29005,7 +26640,7 @@ mdQ
 mdQ
 mdQ
 mdQ
-uRe
+gwP
 gwP
 gwP
 gwP
@@ -29064,19 +26699,19 @@ ane
 ane
 ane
 ane
-xYD
-lYt
-fmW
-fmW
+ahF
+ahF
+ahF
+ahF
 uWJ
-ilF
-fmW
-rHV
-nys
 ahF
 ahF
 ahF
-aYI
+ahF
+ahF
+ahF
+ahF
+ahF
 ahF
 ahH
 ahF
@@ -29192,9 +26827,9 @@ abB
 abB
 abB
 abN
-pSe
-kzn
-tcF
+abN
+abN
+abN
 amk
 amk
 amk
@@ -29203,7 +26838,7 @@ abM
 abM
 abM
 abM
-qVh
+abN
 abN
 abN
 abN
@@ -29231,9 +26866,9 @@ amk
 onU
 onU
 mdQ
-gRk
-dmT
-uRe
+tOS
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -29292,16 +26927,16 @@ ane
 ane
 ane
 ahF
-wAF
-aIE
-fmW
+ahF
+ahF
+ahF
 uWJ
 uWJ
 uWJ
-fmW
-fmW
-vGj
-nys
+ahF
+ahF
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -29417,21 +27052,21 @@ abM
 abM
 abB
 abB
-abB
-tgL
+tiw
 abN
 abN
-lTv
-pLv
-sBY
+abN
+abN
+abN
+abN
 amk
 amk
 amk
 amk
 amk
 abM
-qiL
-qVh
+abN
+abN
 abQ
 abN
 abN
@@ -29452,16 +27087,16 @@ abN
 abN
 abN
 abN
-cMG
-waw
-cWs
-sBY
+abN
+abN
+abN
+abN
 onU
 onU
 onU
-lKl
-tRM
-uRe
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -29476,21 +27111,21 @@ gwP
 gwP
 gwP
 gwP
-vle
-jvQ
-jvQ
-jvQ
-xKL
 gwP
 gwP
 gwP
 gwP
-tOS
+gwP
+gwP
+gwP
 gwP
 gwP
 tOS
 gwP
 gwP
+tOS
+gwP
+gwP
 mdQ
 mdQ
 mdQ
@@ -29520,20 +27155,20 @@ ane
 ane
 ahF
 ahF
-wAF
-fmW
-uWJ
-uWJ
-uWJ
-eoW
-fmW
-fmW
-fmW
-rHV
-vXP
-nys
 ahF
-aYI
+ahF
+uWJ
+uWJ
+uWJ
+ahF
+ahF
+ahH
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -29649,17 +27284,17 @@ abN
 abN
 abN
 abN
-pSe
-kzn
-sBY
-sBY
-sBY
+abN
+abN
+abN
+abN
+abN
 amk
 amk
-gnt
-qVN
-sBY
-qVh
+abN
+abN
+abN
+abN
 abN
 abN
 abN
@@ -29679,17 +27314,17 @@ abN
 abN
 abN
 abQ
-cMG
-waw
-sBY
-sBY
-sBY
-iGf
-dKl
-dmT
-dmT
-owZ
-wHh
+abN
+abN
+abN
+abN
+abN
+aca
+gwP
+gwP
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -29702,14 +27337,14 @@ gwP
 aYC
 gwP
 gwP
-vle
-jvQ
-pkU
-gRk
-lLK
-dmT
-grW
-xKL
+gwP
+gwP
+gwP
+tOS
+gwP
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -29747,19 +27382,19 @@ ane
 ane
 ahF
 ahF
+ahH
 ahF
-doe
-pIl
-eZg
-fmW
-fmW
-fmW
-fmW
-fmW
-fmW
-fmW
-fmW
-rHV
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
 ahF
 ahF
 ane
@@ -29878,16 +27513,16 @@ abN
 abN
 abN
 abN
-bak
-kzn
-iXX
-sBY
-sBY
-iNJ
-sBY
-sBY
-frV
-klD
+abQ
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
 abN
 abN
 abN
@@ -29906,17 +27541,17 @@ abN
 abN
 abN
 abN
-cMG
-waw
-sBY
-sBY
-fTN
-sBY
-iGf
-dmT
-gRk
-owZ
-wHh
+abN
+abN
+abN
+abN
+abQ
+abN
+aca
+gwP
+tOS
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -29930,15 +27565,15 @@ gwP
 aca
 gwP
 gwP
-jGU
-hhs
-hhs
-hhs
-htV
-dOA
-fRU
-grW
-xKL
+gwP
+xZE
+xZE
+xZE
+gwP
+gwP
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -29974,20 +27609,20 @@ ane
 ane
 ane
 ahF
-aYI
 ahF
 ahF
-doe
-pIl
-uqm
-fmW
-fmW
-fmW
-ikA
-fmW
-fmW
-wty
-chi
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
 ane
 ane
 ane
@@ -30000,7 +27635,7 @@ ane
 ahF
 ahF
 ahH
-cCP
+ahF
 ahF
 ane
 ane
@@ -30102,19 +27737,19 @@ abN
 abN
 abN
 abN
-vNs
-bdu
-bdu
-bdu
-jKc
-pSe
-jLY
-jLY
-jLY
-jLY
-jLY
-kKa
-klD
+abQ
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abQ
+abN
 abN
 abN
 abN
@@ -30133,17 +27768,17 @@ abM
 abB
 abN
 abN
-cMG
-waw
-gvr
-uOu
-sBY
-iNJ
-sBY
-iGf
-owZ
-qhl
-wHh
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+aca
+gwP
+gwP
+gwP
 gwP
 qaE
 gwP
@@ -30163,11 +27798,11 @@ mdQ
 onU
 onU
 onU
-hhs
-hhs
-hhs
-grW
-jvQ
+xZE
+xZE
+xZE
+gwP
+gwP
 gwP
 gwP
 tOS
@@ -30206,22 +27841,22 @@ ahF
 vZT
 ahF
 ahF
-doe
-qSS
-pIl
+ahF
+ahF
+ahF
 dWM
-fmW
-fmW
-fmW
-fmW
-sAI
-pBH
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
 ane
 ane
 afV
 afV
-hRy
-krs
+ahF
+ahF
 afV
 afV
 ane
@@ -30327,16 +27962,16 @@ abN
 abN
 abN
 abN
-cMG
-bdu
-bdu
-waw
-tcF
-sBY
-sBY
-mgi
-bdu
-jKc
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
 abQ
 abN
 abN
@@ -30360,11 +27995,11 @@ abN
 abN
 dhD
 abN
-vNs
-waw
-sBY
-sBY
-sBY
+abQ
+abN
+abN
+abN
+abN
 amk
 abM
 abM
@@ -30393,11 +28028,11 @@ onU
 onU
 onU
 onU
-hhs
-hhs
-hhs
-grW
-xKL
+xZE
+xZE
+xZE
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -30434,13 +28069,13 @@ ane
 ane
 ane
 ahF
-fDT
 ahF
-wAF
-fmW
-fmW
-snc
-fmW
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
 uWJ
 uWJ
 uWJ
@@ -30448,7 +28083,7 @@ ane
 ane
 afV
 ahF
-aYI
+ahF
 ahF
 ahF
 afV
@@ -30554,17 +28189,17 @@ abM
 abN
 abN
 abN
-vNs
-waw
-dIj
-sBY
-sBY
-sBY
-sBY
-pLv
-sBY
-sBY
-hKP
+abQ
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
+abN
 abN
 abN
 abN
@@ -30587,12 +28222,12 @@ abN
 abN
 abQ
 dhD
-cMG
-waw
-sBY
-sBY
-sBY
-sBY
+abN
+abN
+abN
+abN
+abN
+abN
 amk
 amk
 abM
@@ -30623,9 +28258,9 @@ onU
 onU
 onU
 onU
-hhs
-hhs
-uRe
+xZE
+xZE
+gwP
 gwP
 gwP
 gwP
@@ -30663,12 +28298,12 @@ afV
 afV
 afV
 ahF
-cCP
-wAF
-fmW
-fmW
-jCO
-uqm
+ahF
+ahH
+ahF
+ahF
+ahF
+ahF
 uWJ
 ane
 ane
@@ -30782,17 +28417,17 @@ abM
 abN
 abN
 abN
-vGy
-sBY
-whk
-sBY
+abN
+abN
+abN
+abN
 amk
 amk
 amk
 amk
-sBY
-sBY
-hKP
+abN
+abN
+abN
 abN
 abN
 abN
@@ -30815,11 +28450,11 @@ abN
 abN
 abN
 dhD
-vGy
-sBY
-sBY
-gnt
-sBY
+abN
+abN
+abN
+abN
+abN
 amk
 amk
 amk
@@ -30887,14 +28522,14 @@ ahF
 ahF
 ahF
 ahF
-cCP
+ahF
 ahF
 afJ
-xYD
-vXP
-lYt
-dIu
-fmW
+ahF
+ahF
+ahF
+ahF
+ahF
 ane
 ane
 ane
@@ -30907,7 +28542,7 @@ ahF
 ahF
 ahF
 ahF
-cCP
+ahF
 ahF
 ahF
 ahF
@@ -31010,7 +28645,7 @@ abN
 abN
 abN
 abN
-vGy
+abN
 abM
 abM
 amk
@@ -31043,10 +28678,10 @@ abN
 abN
 abN
 dhD
-vGy
-qVN
-sBY
-ksc
+abN
+abN
+abN
+abN
 amk
 amk
 amk
@@ -31109,7 +28744,7 @@ acp
 ane
 ane
 ahF
-fDT
+ahF
 ahF
 ahF
 ahH
@@ -31118,10 +28753,10 @@ ahF
 ahF
 ahF
 afJ
-wAF
-fmW
-fmW
-fmW
+ahF
+ahF
+ahF
+ahF
 ane
 ane
 ane
@@ -31237,8 +28872,8 @@ abM
 abN
 abN
 abN
-cMG
-waw
+abN
+abN
 abM
 abM
 abM
@@ -31341,13 +28976,13 @@ ahF
 ahF
 ahF
 ahF
-gTj
-gTj
-gTj
-nys
+ahF
+ahF
+ahF
+ahF
 afV
-wAF
-tQU
+ahF
+ahF
 uWJ
 uWJ
 ane
@@ -31364,7 +28999,7 @@ ahF
 ahF
 ahF
 ahF
-krs
+ahF
 ahF
 ahF
 ahF
@@ -31464,9 +29099,9 @@ abM
 abN
 abN
 abQ
-cMG
-waw
-tcF
+abN
+abN
+abN
 abM
 abM
 abM
@@ -31568,11 +29203,11 @@ afV
 ahF
 isF
 ahF
-lYt
-fmW
-gos
-fmW
-lWl
+ahF
+ahF
+ahF
+ahF
+ahF
 afV
 afV
 uWJ
@@ -31692,8 +29327,8 @@ abM
 abN
 abN
 abN
-vGy
-sBY
+abN
+abN
 abM
 abM
 abM
@@ -31795,13 +29430,13 @@ ane
 vUx
 vMV
 vMV
-lUQ
-bJQ
+vMV
+vMV
 uWJ
-nQH
-fmW
-lWl
-krs
+ahF
+ahF
+ahF
+ahF
 afV
 ane
 ane
@@ -31815,7 +29450,7 @@ ahF
 ahF
 ahF
 ahF
-krs
+ahF
 ahF
 ahV
 ahF
@@ -31919,9 +29554,9 @@ abM
 abM
 abN
 abN
-cMG
-waw
-pLv
+abN
+abN
+abN
 abM
 abM
 abM
@@ -32023,12 +29658,12 @@ ane
 afV
 ahF
 ahF
-wAF
-fmW
+ahF
+ahF
 uWJ
-dIu
-fmW
-lWl
+ahF
+ahF
+ahF
 ahF
 afV
 afV
@@ -32039,7 +29674,7 @@ afV
 ahF
 ahF
 ahF
-fDT
+ahF
 ahF
 ahH
 ahF
@@ -32049,7 +29684,7 @@ ahF
 ahF
 ahF
 ahF
-aYI
+ahF
 ahF
 ane
 ane
@@ -32146,9 +29781,9 @@ abM
 abM
 abN
 abN
-cMG
-waw
-sBY
+abN
+abN
+abN
 amk
 abM
 abM
@@ -32251,16 +29886,16 @@ ane
 ane
 ahF
 ahF
-thI
-cdw
+ahH
+pmt
 uWJ
 uWJ
-dOb
-lWl
-aYI
 ahF
 ahF
-krs
+ahF
+ahF
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -32374,9 +30009,9 @@ abM
 abM
 abN
 abN
-vGy
-fTN
-sLT
+abN
+abQ
+abN
 amk
 amk
 abM
@@ -32477,20 +30112,20 @@ acp
 ane
 ane
 ane
-krs
 ahF
-wAF
-fmW
+ahF
+ahF
+ahF
 uWJ
 uWJ
-kzw
-kyt
-nys
 ahF
 ahF
 ahF
 ahF
-krs
+ahF
+ahF
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -32602,8 +30237,8 @@ abM
 abN
 abN
 abN
-xhc
-sBY
+tgL
+abN
 amk
 amk
 amk
@@ -32707,14 +30342,15 @@ ane
 ane
 ahF
 ahF
-wAF
-tOV
-fKc
+ahF
+ahF
+ahF
 uWJ
-jCO
-fmW
-rHV
-nys
+ahF
+ahF
+ahF
+ahF
+ahH
 ahF
 ahF
 ahF
@@ -32722,7 +30358,6 @@ ahF
 ahF
 ahF
 ahF
-krs
 ahF
 ahF
 ahF
@@ -32830,8 +30465,8 @@ abM
 abN
 abN
 abN
-vGy
-sBY
+abN
+abN
 amk
 amk
 abM
@@ -32935,17 +30570,17 @@ afV
 afV
 ahF
 ahF
-doe
-pIl
-fmW
+ahF
+ahF
+ahF
 uWJ
 ane
 uWJ
-fmW
-qSG
 ahF
 ahF
-cCP
+ahF
+ahF
+ahF
 ahF
 ahH
 ahF
@@ -33058,9 +30693,9 @@ abM
 abN
 abN
 abN
-vGy
-sBY
-bPE
+abN
+abN
+abN
 amk
 abM
 abM
@@ -33160,18 +30795,18 @@ acp
 ane
 ane
 ahF
-cCP
 ahF
 ahF
 ahF
-wYz
-chi
+ahF
+ahF
+ahF
 uWJ
 ane
 uWJ
-fmW
-rHV
-nys
+ahF
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -33286,11 +30921,11 @@ abM
 abN
 abN
 abN
-pSe
-kzn
-sBY
-dBS
-stt
+abN
+abN
+abN
+abN
+abB
 abM
 abM
 abM
@@ -33361,8 +30996,8 @@ mdQ
 mdQ
 mdQ
 mdQ
-qdx
-xKL
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -33392,15 +31027,15 @@ ahF
 ane
 ane
 ahF
+ahH
 ahF
-pIl
 ane
 ane
 uWJ
-tOV
-fmW
-rHV
-nys
+ahF
+ahF
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -33487,10 +31122,10 @@ aTf
 aTf
 aTf
 aUQ
+aWb
 aUQ
 aUQ
 aUQ
-sWk
 aUQ
 aUQ
 aTf
@@ -33515,12 +31150,12 @@ abM
 abN
 abN
 abN
-bak
-kzn
-qYS
-stt
-stt
-stt
+abQ
+abN
+abN
+abB
+abB
+abB
 abM
 abM
 abM
@@ -33588,9 +31223,9 @@ mdQ
 mdQ
 mdQ
 mdQ
-tlk
-dmT
-uRe
+gwP
+gwP
+gwP
 gwP
 gwP
 acS
@@ -33621,16 +31256,16 @@ ane
 ane
 ane
 ahF
-doe
-pIl
-fmW
+ahF
+ahF
+ahF
 uWJ
 uWJ
 ane
-eZg
-rHV
-gTj
-nys
+ahF
+ahF
+ahF
+ahF
 isF
 ahF
 ahF
@@ -33716,11 +31351,11 @@ aTf
 aTf
 aTf
 aTf
-mkn
-xLT
-mkn
-xLT
-sWk
+aWu
+aWu
+aWu
+aTf
+aTf
 aTf
 aTf
 aXh
@@ -33744,12 +31379,12 @@ abM
 abN
 abN
 abN
-pSe
-jLY
-jLY
-jLY
-jLY
-qrH
+abN
+abN
+abN
+abN
+abN
+abB
 abM
 abM
 abM
@@ -33817,8 +31452,8 @@ mdQ
 mdQ
 mdQ
 mdQ
-dmT
-igN
+gwP
+tOS
 gwP
 gwP
 gwP
@@ -33850,20 +31485,20 @@ ane
 ane
 ahF
 ahF
-doe
-pIl
-fcQ
+ahF
+ahF
+ahF
 uWJ
 ane
 ane
-fmW
-fmW
-lWl
+ahF
+ahH
 ahF
 ahF
 ahF
 ahF
-krs
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -33944,13 +31579,13 @@ efp
 aTf
 aTf
 aWc
-mkn
-mkn
-sWk
-mkn
-mkn
-xLT
-kBq
+aUQ
+aUQ
+aUQ
+aTf
+aTf
+aTf
+cWm
 aXh
 aXh
 aKb
@@ -34044,9 +31679,9 @@ mdQ
 mdQ
 mdQ
 onU
-dmT
-dmT
-uRe
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -34072,26 +31707,26 @@ mdQ
 ane
 afV
 ahF
-aYI
-krs
 ahF
 ahF
 ahF
 ahF
 ahF
-wYz
-fmW
-fmW
+ahF
+ahF
+ahF
+ahF
+ahF
 uWJ
 uWJ
 uWJ
-fmW
-lWl
 ahF
-hRy
-hRy
-hRy
-hRy
+ahF
+ahF
+ahF
+ahF
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -34172,13 +31807,13 @@ efp
 efp
 aTf
 aTf
-xLT
 aWv
 aWv
-xLT
-xTT
-xTT
-vUj
+aWv
+aTf
+aXh
+aXh
+aXh
 qGH
 aLj
 aXk
@@ -34272,9 +31907,9 @@ mdQ
 mdQ
 onU
 onU
-dmT
-dmT
-kVG
+gwP
+gwP
+sMx
 sMx
 gwP
 gwP
@@ -34305,16 +31940,16 @@ ahF
 ahF
 ahF
 ahF
-fDT
 ahF
 ahF
-pIl
-fmW
+ahF
+ahH
+ahF
 uWJ
 uWJ
-wHE
-fmW
-lWl
+ahF
+ahF
+ahF
 ahF
 ahF
 ahF
@@ -34403,10 +32038,10 @@ uSq
 qIO
 qIO
 qIO
-qIO
-uXV
-qtj
-dMc
+ntL
+mnK
+kxI
+wkP
 knp
 iIU
 kZw
@@ -34500,9 +32135,9 @@ mdQ
 mdQ
 onU
 onU
-dmT
-xHW
-kVG
+gwP
+gwP
+sMx
 sMx
 gwP
 gwP
@@ -34536,13 +32171,13 @@ ahF
 ahF
 ahF
 ahF
-wYz
-sgU
+ahF
+ahF
 uWJ
 ane
-xBO
-lWh
-dYx
+ahF
+ahF
+ahF
 ahF
 ahH
 ahF
@@ -34631,10 +32266,10 @@ uSq
 njC
 qIO
 qIO
-qIO
-qtj
-qtj
-ksM
+ntL
+kxI
+tsa
+kxI
 rox
 wqz
 kZw
@@ -34727,10 +32362,10 @@ mdQ
 mdQ
 mdQ
 onU
-lKl
-dmT
-dmT
-uRe
+gwP
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -34759,17 +32394,17 @@ ahF
 ane
 ane
 ane
-hRy
-hRy
-hRy
 ahF
 ahF
-doe
-pIl
+ahF
+ahF
+ahF
+ahF
+ahF
 ane
 ane
-lWh
-dYx
+ahF
+ahF
 ahH
 ahF
 ahF
@@ -34860,9 +32495,9 @@ hDX
 qIO
 qIO
 aXH
-ebr
-xNQ
-vVe
+kxI
+gGd
+kxI
 kxI
 wbK
 rHp
@@ -34950,15 +32585,15 @@ mdQ
 mdQ
 onU
 onU
-ieN
-kWV
+gwP
+gwP
 xZE
-xyH
-hhs
-ndk
-dmT
-dmT
-uRe
+xZE
+xZE
+gwP
+gwP
+gwP
+gwP
 tOS
 gwP
 sMx
@@ -34987,7 +32622,7 @@ ahF
 ahF
 ane
 ane
-krs
+ahF
 afV
 afV
 afV
@@ -35174,19 +32809,19 @@ mdQ
 mdQ
 mdQ
 mdQ
-jGU
-ndk
-onU
-dmT
-dmT
-kWV
 gwP
-hjo
-qtK
-qhl
-clO
-qhl
-wHh
+gwP
+onU
+gwP
+gwP
+gwP
+gwP
+gwP
+aca
+gwP
+abO
+gwP
+gwP
 gwP
 gwP
 sMx
@@ -35215,20 +32850,20 @@ ahF
 ahF
 ane
 ane
-cCP
+ahF
 afV
 ahF
 ahF
 ahF
 ahF
 ane
-aYI
+ahF
 ahF
 ahF
 ane
 ahF
-aYI
-fDT
+ahF
+ahF
 ahF
 ane
 ane
@@ -35402,20 +33037,20 @@ gwP
 mdQ
 gwP
 gwP
-jGU
-dmT
-iGf
-dmT
-owZ
-wHh
+gwP
+gwP
+aca
+gwP
+gwP
+gwP
 tOS
 gwP
 aca
 gwP
 gwP
-vle
-qdx
-xKL
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -35630,22 +33265,22 @@ gwP
 gwP
 gwP
 gwP
-hjo
-kML
-ukY
-soY
-wHh
+gwP
+tOS
+aca
+gwP
+gwP
 gwP
 gwP
 gwP
 aca
-vle
-qdx
-cHW
-dmT
-grW
-qdx
-xKL
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -35868,15 +33503,15 @@ gwP
 gwP
 mdQ
 mdQ
-hhs
-hhs
-hhs
-fLh
-dmT
-grW
+xZE
+xZE
+xZE
+gwP
+gwP
+gwP
 acp
 acp
-xKL
+gwP
 gwP
 gwP
 abO
@@ -36098,14 +33733,14 @@ mdQ
 mdQ
 onU
 onU
-hhs
-hhs
-hhs
-dmT
-dmT
-hhs
-eft
-xKL
+xZE
+xZE
+xZE
+gwP
+gwP
+xZE
+xZE
+gwP
 gwP
 oMZ
 oMZ
@@ -36328,13 +33963,13 @@ mdQ
 onU
 onU
 acK
-dmT
-dmT
-kCD
-dmT
-hhs
-soz
-jqr
+gwP
+gwP
+gwP
+gwP
+xZE
+aca
+aca
 dFz
 oMZ
 aca
@@ -36556,15 +34191,15 @@ mdQ
 mdQ
 onU
 onU
-htV
-dmT
-dmT
-dmT
-sNq
-rTT
-rTT
-nLF
-rbs
+gwP
+gwP
+gwP
+gwP
+aYC
+eGD
+eGD
+eGD
+eGD
 eGD
 eGD
 eGD
@@ -36788,11 +34423,11 @@ onU
 onU
 onU
 onU
-hhs
-rTT
-aIA
-lhH
-lkq
+xZE
+eGD
+eGD
+eGD
+acq
 eGD
 eGD
 eGD
@@ -37018,10 +34653,10 @@ iIB
 iIB
 iIB
 iIB
-rTT
-rTT
-nLF
-liI
+eGD
+eGD
+eGD
+ufG
 eGD
 eGD
 ufG
@@ -37246,10 +34881,10 @@ abS
 iIB
 iIB
 iIB
-rTT
-dAu
-hkT
-shb
+eGD
+adc
+eGD
+ufG
 eGD
 eGD
 gIe
@@ -37437,8 +35072,8 @@ mdQ
 mdQ
 mdQ
 mdQ
-jqr
-sxl
+aca
+xZE
 xZE
 acp
 acu
@@ -37474,10 +35109,10 @@ abS
 abS
 iIB
 iIB
-rmt
-rTT
-tde
-vtk
+eGD
+eGD
+eGD
+ufG
 eGD
 acq
 eGD
@@ -37665,8 +35300,8 @@ mdQ
 mdQ
 mdQ
 mdQ
-fLh
-uRe
+gwP
+gwP
 acp
 acu
 acu
@@ -37702,9 +35337,9 @@ abS
 abS
 abS
 iIB
-rTT
-rTT
-onP
+eGD
+eGD
+eGD
 ufG
 eGD
 eGD
@@ -37893,8 +35528,8 @@ mdQ
 mdQ
 mdQ
 onU
-gRk
-uRe
+tOS
+gwP
 acu
 acu
 acu
@@ -37930,9 +35565,9 @@ abS
 abS
 abS
 abS
-wzI
-tde
-uwG
+eGD
+eGD
+eGD
 eGD
 eGD
 eGD
@@ -38121,8 +35756,8 @@ mdQ
 mdQ
 onU
 onU
-dmT
-uRe
+gwP
+gwP
 acp
 acu
 acy
@@ -38158,8 +35793,8 @@ abS
 ady
 ady
 ady
-tde
-uwG
+eGD
+eGD
 ufG
 hzR
 eGD
@@ -38349,8 +35984,8 @@ acf
 onU
 onU
 onU
-dmT
-grW
+gwP
+gwP
 xZE
 acp
 acu
@@ -38385,8 +36020,8 @@ abS
 abS
 ady
 eGD
-fqi
-uwG
+eGD
+eGD
 eGD
 ufG
 hzR
@@ -38577,8 +36212,8 @@ acf
 onU
 onU
 onU
-dOA
-dmT
+gwP
+gwP
 xZE
 xZE
 acp
@@ -38805,10 +36440,10 @@ acf
 mdQ
 onU
 mdQ
-htV
-dmT
-grW
-xKL
+gwP
+gwP
+gwP
+gwP
 xZE
 xZE
 xZE
@@ -38846,11 +36481,11 @@ adP
 eGD
 acq
 eGD
-bje
-gVw
-vih
-gVw
-rbs
+eGD
+eGD
+acq
+eGD
+eGD
 eGD
 eGD
 eGD
@@ -39033,10 +36668,10 @@ acf
 mdQ
 mdQ
 mdQ
-iGx
-dmT
-cQB
-uRe
+uSF
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -39072,14 +36707,14 @@ eGD
 adP
 adP
 adP
-bje
-gVw
-tMQ
-rTT
-mJF
-rTT
-nLF
-rbs
+eGD
+eGD
+eGD
+eGD
+eGD
+eGD
+eGD
+eGD
 eGD
 ady
 ady
@@ -39261,14 +36896,14 @@ acf
 acf
 mdQ
 mdQ
-hhs
-hhs
-uaL
-iuf
-jvQ
+xZE
+xZE
+gwP
+tOS
+gwP
 abH
-jvQ
-xKL
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -39299,15 +36934,15 @@ eGD
 eGD
 eGD
 adP
-daY
-tPH
-rTT
-pIB
-rTT
-hpK
-rTT
-ohf
-onP
+adP
+adP
+eGD
+eGD
+eGD
+eGD
+eGD
+eGD
+eGD
 eGD
 ady
 abS
@@ -39490,15 +37125,15 @@ acf
 acf
 mdQ
 mdQ
-hhs
-hhs
-hhs
-hhs
-dmT
-dmT
-grW
-jvQ
-xKL
+xZE
+xZE
+xZE
+xZE
+gwP
+gwP
+gwP
+gwP
+gwP
 gwP
 gwP
 gwP
@@ -39527,15 +37162,15 @@ acq
 eGD
 eGD
 eGD
-sVx
-iDX
-kdj
-rTT
+adP
+adP
+eGD
+eGD
 iIB
 iIB
 iIB
-uOD
-onP
+eGD
+eGD
 abS
 abS
 abS
@@ -39723,10 +37358,10 @@ mdQ
 onU
 onU
 onU
-sXg
-dmT
-tlk
-uRe
+gwP
+gwP
+gwP
+gwP
 gwP
 acf
 acf
@@ -39754,10 +37389,10 @@ eGD
 eGD
 eGD
 eGD
-bje
-tMQ
-rTT
-rTT
+eGD
+eGD
+eGD
+eGD
 iIB
 iIB
 abS
@@ -39953,8 +37588,8 @@ uxU
 uxU
 uxU
 uxU
-ryp
-vbK
+dGQ
+any
 dGQ
 acf
 acf
@@ -39982,7 +37617,7 @@ eGD
 adc
 eGD
 eGD
-fqi
+eGD
 abS
 iIB
 iIB
@@ -40177,12 +37812,12 @@ acf
 acf
 acf
 acf
-fDE
-pAE
-fDE
-vAB
-fDE
-nUZ
+abl
+abl
+abl
+abl
+abl
+abl
 abl
 acf
 acf
@@ -40402,15 +38037,15 @@ acf
 acf
 acf
 acf
-pAE
-fDE
-fDE
-sPK
-ogJ
-scs
-scs
-scs
-jgy
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
 abl
 abl
 abl
@@ -40629,12 +38264,12 @@ acf
 izh
 izh
 izh
-ejp
-scs
-rIc
-scs
-scs
-jgy
+izh
+abl
+abv
+abl
+abl
+abl
 abl
 abl
 abl
@@ -40883,10 +38518,10 @@ abS
 abS
 eGD
 eGD
-bje
-gVw
-gVw
-rbs
+eGD
+eGD
+eGD
+eGD
 eGD
 acO
 eGD
@@ -41109,13 +38744,13 @@ abl
 abl
 abl
 dGQ
-bje
-gVw
-lbt
-rTT
-rTT
-nLF
-rbs
+eGD
+eGD
+acY
+eGD
+eGD
+eGD
+eGD
 acO
 eGD
 acq
@@ -41337,13 +38972,13 @@ abl
 abl
 abl
 dGQ
-wbg
-xdb
-rTT
-mca
-rTT
-rTT
-onP
+eGD
+acq
+eGD
+eGD
+eGD
+eGD
+eGD
 acO
 eGD
 eGD
@@ -41565,13 +39200,13 @@ abl
 abl
 abl
 dGQ
-wbg
-rTT
-rTT
+eGD
+eGD
+eGD
 iIB
 iIB
 abS
-onP
+eGD
 acO
 eGD
 eGD
@@ -41653,7 +39288,7 @@ auV
 atU
 avE
 atp
-awr
+wAe
 atU
 axH
 aum
@@ -42489,8 +40124,8 @@ abS
 abS
 abS
 abS
-gVw
-jpX
+eGD
+acq
 eGD
 abS
 abS
@@ -42717,8 +40352,8 @@ abS
 abS
 abS
 abS
-bBT
-rze
+acO
+acO
 acO
 abS
 abS
@@ -42945,9 +40580,9 @@ abS
 abS
 abS
 abS
-rTT
-nLF
-rbs
+eGD
+eGD
+eGD
 eGD
 xTa
 abS
@@ -43172,10 +40807,10 @@ abS
 abS
 abS
 iIB
-rTT
-kdj
-rTT
-onP
+eGD
+eGD
+eGD
+eGD
 eGD
 eGD
 abS
@@ -43400,10 +41035,10 @@ abS
 abS
 iIB
 iIB
-rTT
-rTT
-rTT
-onP
+eGD
+eGD
+eGD
+eGD
 eGD
 eGD
 abS
@@ -43628,10 +41263,10 @@ abS
 iIB
 iIB
 iIB
-mca
-rTT
-tde
-uwG
+eGD
+eGD
+eGD
+eGD
 eGD
 eGD
 abS
@@ -43854,11 +41489,11 @@ abS
 abS
 abS
 iIB
-rTT
-rTT
-rTT
-rTT
-onP
+eGD
+eGD
+eGD
+eGD
+eGD
 acq
 eGD
 eGD
@@ -44083,11 +41718,11 @@ abS
 abS
 abS
 abS
-rTT
-xdb
-rTT
+eGD
+acq
+eGD
 acY
-rbs
+eGD
 eGD
 eGD
 abS
@@ -44310,12 +41945,12 @@ abS
 abS
 abS
 abS
-wzI
-aIA
-rTT
-rTT
-rTT
-onP
+eGD
+eGD
+eGD
+eGD
+eGD
+eGD
 eGD
 eGD
 abS
@@ -44540,10 +42175,10 @@ abS
 abS
 abS
 iIB
-rTT
-rTT
-rTT
-onP
+eGD
+eGD
+eGD
+eGD
 eGD
 eGD
 abS
@@ -44769,9 +42404,9 @@ abS
 abS
 iIB
 iIB
-rTT
-uxL
-onP
+eGD
+eGD
+eGD
 eGD
 abS
 abS
@@ -44997,9 +42632,9 @@ abS
 abS
 abS
 iIB
-rTT
-rTT
-onP
+eGD
+eGD
+eGD
 eGD
 abS
 abS
@@ -45225,9 +42860,9 @@ abS
 abS
 abS
 iIB
-rTT
-cxi
-onP
+eGD
+eGD
+eGD
 eGD
 abS
 abS
@@ -45453,10 +43088,10 @@ abS
 abS
 abS
 abS
-rTT
-rTT
-nLF
-rbs
+eGD
+eGD
+eGD
+eGD
 eGD
 abS
 abS
@@ -45680,11 +43315,11 @@ abS
 abS
 abS
 abS
-rTT
-rTT
-hpK
-xdb
-onP
+eGD
+eGD
+eGD
+acq
+eGD
 eGD
 abS
 abS
@@ -45907,12 +43542,12 @@ abS
 abS
 abS
 abS
-brC
-rTT
-rTT
-rTT
-rTT
-onP
+xTa
+eGD
+eGD
+eGD
+eGD
+eGD
 eGD
 abS
 abS
@@ -46103,12 +43738,12 @@ abl
 abl
 abl
 abl
-gPu
-jcn
-jcn
-jcn
-jcn
-jcn
+abl
+abl
+abl
+abl
+abl
+abl
 acf
 acf
 acf
@@ -46135,12 +43770,12 @@ abS
 abS
 abS
 abS
-rTT
-rTT
-xdb
-rTT
-lnr
-onP
+eGD
+eGD
+acq
+eGD
+eGD
+eGD
 eGD
 abS
 abS
@@ -46331,12 +43966,12 @@ abv
 abl
 abl
 abl
-xWy
-cqH
-fDE
-bvX
-fDE
-fDE
+abl
+abl
+abl
+abl
+abl
+abl
 acf
 acf
 acf
@@ -46364,11 +43999,11 @@ abS
 abS
 abS
 abS
-rTT
-mOL
-rTT
-tde
-uwG
+eGD
+eGD
+eGD
+eGD
+eGD
 eGD
 abS
 abS
@@ -46562,9 +44197,9 @@ abl
 acf
 acf
 uxU
-ryp
+dGQ
 uMz
-ryp
+dGQ
 acf
 acf
 acf
@@ -46592,10 +44227,10 @@ abS
 abS
 abS
 abS
-ohf
-rTT
-rTT
-onP
+eGD
+eGD
+eGD
+eGD
 eGD
 abS
 abS
@@ -46791,9 +44426,9 @@ acf
 acf
 uxU
 uxU
-fDE
-gcB
-fDE
+abl
+abl
+abl
 acf
 acf
 acf
@@ -46820,10 +44455,10 @@ abS
 abS
 abS
 iIB
-rTT
-rTT
-xdb
-onP
+eGD
+eGD
+acq
+eGD
 eGD
 abS
 abS
@@ -47019,9 +44654,9 @@ acf
 acf
 acf
 uxU
-fDE
-tti
-fDE
+abl
+abl
+abl
 acf
 acf
 acf
@@ -47048,10 +44683,10 @@ abS
 abS
 iIB
 iIB
-rTT
-rmt
-rTT
-onP
+eGD
+eGD
+eGD
+eGD
 abS
 abS
 abS
@@ -47247,14 +44882,14 @@ acf
 acf
 acf
 uxU
-fDE
-otl
-fDE
-fDE
+abl
+abv
+abl
+abl
 acf
 acf
 uxU
-fDE
+abl
 acf
 acf
 acf
@@ -47264,7 +44899,7 @@ abl
 abl
 abv
 abl
-gPu
+abl
 abS
 abS
 abS
@@ -47276,10 +44911,10 @@ abS
 iIB
 iIB
 iIB
-rTT
-rTT
-rTT
-onP
+eGD
+eGD
+eGD
+eGD
 abS
 abS
 abS
@@ -47475,16 +45110,16 @@ acf
 acf
 acf
 acf
-fDE
-fDE
-fDE
-fDE
+abl
+abl
+abl
+abl
 uxU
 uxU
 uxU
-hez
-fDE
-spK
+abl
+abl
+abl
 acf
 acf
 acf
@@ -47492,7 +45127,7 @@ acf
 abl
 abl
 abl
-kxv
+abl
 abS
 abS
 abS
@@ -47504,8 +45139,8 @@ abS
 abS
 iIB
 iIB
-hav
-hav
+cIU
+cIU
 cIU
 abS
 abS
@@ -47704,15 +45339,15 @@ acf
 acf
 acf
 acf
-fDE
-fDE
-fDE
+abl
+abl
+abl
 czq
 uxU
 uxU
-rUX
-fDE
-spK
+abl
+abl
+abl
 abl
 acf
 acf
@@ -47720,8 +45355,8 @@ acf
 abl
 abl
 abl
-kxv
-han
+abl
+abl
 abS
 abS
 abS
@@ -47732,9 +45367,9 @@ abS
 abS
 abS
 abS
-aTy
-aTy
-tYW
+pDt
+pDt
+pDt
 abS
 pDt
 pDt
@@ -47933,14 +45568,14 @@ acf
 acf
 acf
 acf
-fDE
-fDE
-fDE
+abl
+abl
+abl
 uxU
-mrg
-fDE
-poX
-jgy
+izh
+abl
+abv
+abl
 acf
 acf
 acf
@@ -47948,8 +45583,8 @@ abl
 abl
 abl
 abl
-uMd
-bvX
+abl
+abl
 iIB
 abS
 abS
@@ -48161,13 +45796,13 @@ acf
 acf
 acf
 acf
-mrg
-fDE
-fDE
-otl
-ryp
-ogJ
-jgy
+izh
+abl
+abl
+abv
+dGQ
+abl
+abl
 abl
 acf
 acf
@@ -48175,8 +45810,8 @@ acf
 abl
 abl
 abl
-kxv
-fDE
+abl
+abl
 iIB
 iIB
 abS
@@ -48389,12 +46024,12 @@ acf
 acf
 acf
 acf
-mrg
-sPK
-fDE
-fDE
-mrg
-spK
+izh
+abl
+abl
+abl
+izh
+abl
 abl
 abl
 abl
@@ -48404,16 +46039,16 @@ abl
 abv
 abl
 abl
-uOl
+abl
 ydz
-eQL
-eQL
-eQL
-pgc
+pDt
+pDt
+pDt
+pDt
 iIB
 iIB
-bOm
-xhv
+pDt
+pDt
 abS
 pDt
 pDt
@@ -48618,11 +46253,11 @@ acf
 acf
 acf
 acf
-fDE
-fDE
-fDE
-mrg
-spK
+abl
+abl
+abl
+izh
+abl
 abl
 abl
 abl
@@ -48632,16 +46267,16 @@ abl
 abl
 abl
 abl
-bnM
-lIL
-aTy
-xNi
-aTy
-bxb
-eQL
-eQL
-eQL
-xhv
+abl
+ydz
+pDt
+qRj
+pDt
+pDt
+pDt
+pDt
+pDt
+pDt
 pDt
 pDt
 pDt
@@ -48847,29 +46482,29 @@ acf
 acf
 acf
 uxU
-tti
-fDE
-ryp
-spK
 abl
-gPu
-jcn
-ner
-jcn
-jcn
-jcn
-jcn
-jcn
-jcn
-dLm
-kae
+abl
+dGQ
+abl
+abl
+abl
+abl
+dGQ
+abl
+abl
+abl
+abl
+abl
+abl
+ydz
 pDt
 pDt
-kpx
-aTy
-aTy
-aTy
-tYW
+pDt
+pDt
+pDt
+pDt
+pDt
+pDt
 pDt
 pDt
 pDt
@@ -49075,29 +46710,29 @@ acf
 uxU
 uxU
 uxU
-fDE
-fDE
+abl
+abl
 acf
-xRe
-kLl
-cqN
-fDE
-ryp
-fDE
-fDE
-fDE
-fDE
-osf
-hNT
+abl
+abl
+abv
+abl
+dGQ
+abl
+abl
+abl
+abl
+abl
+abl
 ydz
-xhv
 pDt
 pDt
-dCD
-hmJ
-hmJ
-hmJ
-enn
+pDt
+pDt
+pDt
+pDt
+pDt
+qRj
 pDt
 pDt
 pDt
@@ -49301,31 +46936,31 @@ acf
 acf
 uxU
 uxU
-fDE
-fDE
-fDE
-fDE
+abl
+abl
+abl
+abl
 acf
 acf
-fDE
-icd
-fDE
+abl
+abl
+abl
 uxU
 uxU
-fDE
-fDE
-han
-otl
-fDE
+abl
+abl
+abl
+abv
+abl
 acf
-xhv
 pDt
-dCD
-cEi
-wpY
-eQL
-eQL
-xhv
+pDt
+pDt
+pDt
+pDt
+pDt
+pDt
+pDt
 pDt
 oeN
 oeN
@@ -49524,36 +47159,36 @@ abv
 abl
 abl
 acf
-xWy
-fDE
+abl
+abl
 acf
 uxU
-fDE
-fDE
-yjs
-fDE
-fDE
+abl
+abl
+abl
+abl
+abl
 acf
 acf
-fDE
-cSL
-fDE
+abl
+abl
+abl
 uxU
 acf
 acf
-fDE
-mVr
+abl
+abl
 uxU
 uxU
 acf
-tYW
 pDt
-crn
-eQL
-eQL
+pDt
+pDt
+pDt
+pDt
 ntr
-hEe
-xhv
+iZG
+pDt
 pDt
 oeN
 adC
@@ -49752,36 +47387,36 @@ abl
 abl
 abl
 abl
-xWy
-cSL
-ryp
-fDE
-fDE
-pVZ
-fDE
-fDE
+abl
+abl
+dGQ
+abl
+abl
+abl
+abl
+abl
 acf
 acf
 uxU
-fDE
-fDE
-fDE
-fDE
+abl
+abl
+abl
+abl
 acf
 acf
-fDE
-fDE
+abl
+abl
 uxU
 acf
 acf
 nbw
 pDt
-crn
+pDt
 nbw
 ntr
 ntr
-nNu
-xhv
+pDt
+pDt
 pDt
 oeN
 adD
@@ -49980,20 +47615,20 @@ abl
 abl
 abl
 abl
-bnM
-uOl
-ryp
-fDE
-fDE
-fDE
-fDE
-ogJ
-jgy
+abl
+abl
+dGQ
+abl
+abl
+abl
+abl
+abl
+abl
 acf
 uxU
 uxU
-fDE
-ogJ
+abl
+abl
 tYx
 acf
 acf
@@ -50007,9 +47642,9 @@ nbw
 nbw
 nbw
 nbw
-eQL
-eQL
-xhv
+pDt
+pDt
+pDt
 pDt
 oeN
 adE
@@ -50209,19 +47844,19 @@ abl
 abl
 abv
 abl
-bnM
-oha
-rWs
-rWs
-rWs
-vBd
-jgy
+abl
+dGQ
+abl
+abl
+abl
+abv
+abl
 abl
 acf
 uxU
-osf
-fDE
-qWI
+abl
+abl
+abv
 abl
 acf
 acf
@@ -50234,10 +47869,10 @@ acf
 nbw
 nbw
 nbw
-aTy
-aTy
-aTy
-hRB
+pDt
+pDt
+pDt
+qRj
 pDt
 oeN
 abt
@@ -50447,9 +48082,9 @@ abl
 abl
 acf
 acf
-fDE
-ogJ
-jgy
+abl
+abl
+abl
 abl
 acf
 acf
@@ -50669,14 +48304,14 @@ acf
 acf
 acf
 acf
-kLl
-kLl
-kLl
+abl
+abl
+abl
 abl
 acf
 acf
 acf
-jgy
+abl
 abl
 abl
 acf
@@ -50897,10 +48532,10 @@ acf
 acf
 acf
 uxU
-fDE
-roQ
-fDE
-spK
+abl
+abl
+abl
+abl
 abl
 acf
 abl
@@ -51125,10 +48760,10 @@ acf
 acf
 uxU
 uxU
-mrg
-fDE
-fDE
-qWI
+izh
+abl
+abl
+abv
 abl
 abl
 abl
@@ -51353,10 +48988,10 @@ acf
 acf
 uxU
 uxU
-mrg
-thk
-ogJ
-jgy
+izh
+abl
+abl
+abl
 abl
 abl
 abl
@@ -51581,9 +49216,9 @@ acf
 acf
 uxU
 acf
-mrg
-kIM
-spK
+izh
+abl
+abl
 abl
 abl
 abv
@@ -51809,9 +49444,9 @@ acf
 acf
 acf
 acf
-mrg
-fDE
-spK
+izh
+abl
+abl
 abl
 abl
 abl
@@ -52036,10 +49671,10 @@ acf
 acf
 acf
 acf
-mrg
-mrg
-ogJ
-jgy
+izh
+izh
+abl
+abl
 abl
 abl
 abl
@@ -52264,9 +49899,9 @@ acf
 acf
 acf
 acf
-iTQ
-rWs
-jgy
+izh
+abl
+abl
 abv
 abl
 abl
@@ -52492,7 +50127,7 @@ acf
 acf
 acf
 acf
-jZX
+izh
 abl
 abl
 abl
@@ -53633,8 +51268,8 @@ acf
 acf
 acf
 acf
-oFJ
-sLU
+dGQ
+any
 dGQ
 acf
 acf
@@ -53861,9 +51496,9 @@ pUm
 pUm
 pUm
 vVC
-bvj
-mHk
-egU
+acg
+acg
+acg
 pUm
 whU
 whU
@@ -54080,8 +51715,8 @@ acf
 vVC
 pUm
 pUm
-iye
-dtr
+acg
+aaN
 acg
 pUm
 pUm
@@ -54089,9 +51724,9 @@ pUm
 pUm
 vVC
 vVC
-uop
-bvj
-xar
+acg
+acg
+acg
 pUm
 whU
 whU
@@ -54307,19 +51942,19 @@ acf
 uxU
 vVC
 vVC
-fYG
-bvj
-mHk
-iye
+acg
+acg
+acg
+acg
 pUm
 pUm
 pUm
 pUm
 vVC
 vVC
-rhi
-etU
-xar
+acg
+acg
+acg
 pUm
 whU
 whU
@@ -54535,29 +52170,29 @@ vVC
 vVC
 vVC
 vVC
-bvj
-jRL
-bvj
-bvj
+acg
+acg
+acg
+acg
 pUm
 pUm
 pUm
 pUm
 vVC
-bvj
-bvj
-jgj
-dLW
+acg
+acg
+aaN
+acg
 pUm
 whU
 whU
 whU
 whU
 fTM
-lSA
-yfe
-yfe
-uyn
+fTM
+fTM
+fTM
+fTM
 fTM
 fTM
 fTM
@@ -54762,19 +52397,19 @@ pUm
 vVC
 vVC
 vVC
-bvj
-bvj
-pQV
-bvj
+acg
+acg
+acg
+acg
 pUm
 pUm
 pUm
 pUm
 pUm
 vVC
-xwN
-wCs
-dLW
+acg
+acg
+acg
 acg
 pUm
 whU
@@ -54783,20 +52418,20 @@ whU
 whU
 whU
 whU
-vAT
-wLT
-lBl
-yfe
-bQz
+fTM
+fTM
+fTM
+fTM
+akL
 fTM
 fTM
 fTM
 fTM
 fTM
-lSA
-eMe
-eMe
-uyn
+fTM
+fTM
+fTM
+fTM
 vCG
 pDt
 pDt
@@ -54990,9 +52625,9 @@ pUm
 vVC
 vVC
 vVC
-bvj
-oQm
-bvj
+acg
+aaN
+acg
 pUm
 pUm
 pUm
@@ -55000,8 +52635,8 @@ pUm
 pUm
 pUm
 pUm
-bvj
-xar
+acg
+acg
 acg
 pUm
 pUm
@@ -55012,19 +52647,19 @@ whU
 whU
 whU
 unp
-vAT
-lNG
-vAT
-lBl
-uyn
+fTM
+fTM
+fTM
+fTM
+fTM
 jMS
 jMS
 fTM
-lSA
-bkK
-vAT
-vAT
-lBl
+fTM
+fTM
+fTM
+fTM
+fTM
 vCG
 pDt
 pDt
@@ -55217,10 +52852,10 @@ pUm
 pUm
 pUm
 vVC
-bvj
-mfn
-bvj
-bvj
+acg
+acg
+acg
+acg
 pUm
 pUm
 pUm
@@ -55228,8 +52863,8 @@ pUm
 pUm
 pUm
 pUm
-nha
-tEm
+gkC
+nzw
 gkC
 pUm
 pUm
@@ -55242,16 +52877,16 @@ whU
 unp
 unp
 unp
-wLT
-vAT
-lBl
-vAg
-pGL
-tSi
-bkK
-vAT
-jJg
-nrR
+fTM
+fTM
+fTM
+jMS
+jMS
+akL
+fTM
+fTM
+fTM
+fTM
 whU
 whU
 pDt
@@ -55429,7 +53064,7 @@ aag
 pZb
 pZb
 pZb
-uYj
+aag
 xpR
 xpR
 xpR
@@ -55445,10 +53080,10 @@ pUm
 pUm
 pUm
 pUm
-bvj
-bvj
-bvj
-ifr
+acg
+acg
+acg
+acg
 pUm
 nzw
 nzw
@@ -55471,12 +53106,12 @@ whU
 whU
 unp
 unp
-vAT
-vAT
-vAT
-vAT
-vAT
-vAT
+fTM
+fTM
+fTM
+fTM
+fTM
+fTM
 whU
 unp
 unp
@@ -55646,21 +53281,21 @@ aag
 aag
 aag
 aag
-tVw
-srn
-srn
-srn
-pRD
+aag
+aag
+aag
+aag
+aag
 aag
 aag
 aag
 pZb
 pZb
 pZb
-uYj
-eqS
-uYj
-tuJ
+aag
+aag
+aag
+aag
 xpR
 xpR
 xpR
@@ -55672,12 +53307,12 @@ pZb
 pUm
 pUm
 pUm
-rID
-woT
-woT
-woT
-woT
-dLW
+acg
+acg
+acg
+acg
+acg
+acg
 acg
 acg
 acg
@@ -55698,12 +53333,12 @@ whU
 whU
 whU
 whU
-vAT
-sxo
-rby
-vAT
-vAT
-jMD
+fTM
+fTM
+akL
+fTM
+fTM
+fTM
 whU
 whU
 unp
@@ -55874,24 +53509,24 @@ aag
 aag
 aag
 aag
-dzM
-uYj
-tuJ
-gzH
-qfK
-pRD
+aag
+aag
+aag
+aai
+aag
+aag
 aag
 aag
 aag
 pZb
 pZb
-uYj
-uYj
-uYj
-mWA
-uYj
-uYj
-uYj
+aag
+aag
+aag
+aag
+aag
+aag
+aag
 pZb
 pZb
 pZb
@@ -55925,13 +53560,13 @@ whU
 whU
 whU
 whU
-jlt
-jlt
-jlt
-jlt
-jlt
-jlt
-pET
+fTM
+fTM
+fTM
+fTM
+fTM
+fTM
+fTM
 whU
 whU
 whU
@@ -56101,27 +53736,27 @@ aai
 aag
 aag
 aag
-tVw
-vxj
-uYj
-uYj
-dHg
-uYj
-rIm
+aag
+aai
+aag
+aag
+aag
+aag
+aag
 aag
 aai
 aag
 vly
-wYB
-pFB
-pFB
-fsc
-uYj
-uYj
-uYj
-dIv
-uYj
-uYj
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
 pZb
 pZb
 pZb
@@ -56164,9 +53799,9 @@ whU
 whU
 whU
 whU
-yfe
-yfe
-uyn
+fTM
+fTM
+fTM
 fTM
 fTM
 fTM
@@ -56328,14 +53963,14 @@ aag
 aag
 aag
 aag
-tVw
-uHc
-uYj
-uYj
+aag
+aag
+aag
+aag
 xpR
-uYj
-uYj
-rIm
+aag
+aag
+aag
 aag
 aag
 aag
@@ -56343,15 +53978,15 @@ vly
 aag
 aai
 aag
-wYB
-pFB
-sET
-pFB
-pFB
-pFB
-pFB
-pFB
-mFZ
+aag
+aag
+aai
+aag
+aag
+aag
+aag
+aag
+aag
 vly
 acg
 acg
@@ -56393,8 +54028,8 @@ whU
 whU
 whU
 whU
-vAT
-fIW
+fTM
+fTM
 fTM
 fTM
 fTM
@@ -56555,15 +54190,15 @@ aag
 aag
 aag
 aag
-tVw
-uHc
-uYj
-eYb
+aag
+aag
+aag
+aag
 xpR
 xpR
-uYj
-uYj
-rIm
+aag
+aag
+aag
 aag
 aag
 aag
@@ -56581,11 +54216,11 @@ aag
 aag
 aag
 vly
-cop
-iye
-iye
-iye
-egU
+acg
+acg
+acg
+acg
+acg
 acg
 acg
 acg
@@ -56621,8 +54256,8 @@ whU
 whU
 whU
 whU
-fUj
-fIW
+fTM
+fTM
 aeT
 fTM
 fTM
@@ -56783,15 +54418,15 @@ aag
 aag
 aag
 aag
-dzM
-uYj
-rYe
+aag
+aag
+aab
 xpR
 xpR
 xpR
-uYj
-uYj
-rIm
+aag
+aag
+aag
 aag
 aag
 aag
@@ -56807,14 +54442,14 @@ aag
 aag
 aag
 aag
-tVw
-cqC
-kmH
-mLv
-bvj
-bvj
-elp
-egU
+aag
+vly
+acg
+acg
+acg
+acg
+acg
+acg
 acg
 acg
 acg
@@ -56848,9 +54483,9 @@ whU
 whU
 whU
 unp
-vAT
-vAT
-fIW
+fTM
+fTM
+fTM
 fTM
 sIH
 fTM
@@ -57011,15 +54646,15 @@ aag
 aag
 aag
 aai
-dzM
-rYe
-rYe
+aag
+aab
+aab
 xpR
 xpR
-rYe
-uYj
-anM
-rIm
+aab
+aag
+aag
+aag
 aag
 aag
 aag
@@ -57035,15 +54670,15 @@ aag
 aag
 aai
 aag
-jBl
-vdt
-bvj
-bvj
-oQm
-bvj
-mfn
-mHk
-egU
+aag
+vly
+acg
+acg
+aaN
+acg
+acg
+acg
+acg
 acg
 acg
 acg
@@ -57077,8 +54712,8 @@ whU
 whU
 unp
 unp
-vAT
-fIW
+fTM
+fTM
 fTM
 agd
 afE
@@ -57239,15 +54874,15 @@ aag
 aag
 aag
 aag
-eaI
-rYe
+aab
+aab
 pZb
 xpR
 pZb
-rYe
-tuJ
-uYj
-rIm
+aab
+aag
+aag
+aag
 aag
 aag
 aag
@@ -57263,15 +54898,15 @@ aag
 aag
 aag
 aag
-jBl
-xSk
+aag
+aci
 vVC
 vVC
 vVC
 vVC
-bvj
-fmV
-oDE
+acg
+acg
+acg
 acg
 acg
 pUm
@@ -57305,8 +54940,8 @@ whU
 whU
 whU
 unp
-rGE
-fIW
+fTM
+fTM
 akL
 adZ
 fTM
@@ -57467,39 +55102,39 @@ aag
 aag
 aag
 aag
-eaI
+aab
 pZb
 pZb
 pZb
 pZb
-rYe
-ktr
-sFD
-mFZ
-aag
-aag
-aag
-pZb
-pZb
-pZb
-pZb
-pZb
-pZb
-pZb
-pZb
+aab
 aag
 aag
 aag
 aag
-wYB
+aag
+aag
+pZb
+pZb
+pZb
+pZb
+pZb
+pZb
+pZb
+pZb
+aag
+aag
+aag
+aag
+aag
 pZb
 pUm
 vVC
 vVC
 vVC
 vVC
-lyZ
-lhE
+xSA
+nzw
 gkC
 pUm
 pUm
@@ -57533,8 +55168,8 @@ whU
 whU
 whU
 unp
-vAT
-fIW
+fTM
+fTM
 fTM
 adH
 fTM
@@ -57684,10 +55319,10 @@ pZb
 pZb
 pZb
 pZb
-vPo
-vPo
-wRb
-pRD
+aab
+aab
+aag
+aag
 aag
 aag
 aag
@@ -57700,8 +55335,8 @@ pZb
 pZb
 pZb
 pZb
-ktr
-mFZ
+aag
+aag
 aag
 aag
 aai
@@ -57726,8 +55361,8 @@ pUm
 vVC
 vVC
 pUm
-fYG
-oDE
+acg
+acg
 acg
 pUm
 pUm
@@ -57760,9 +55395,9 @@ whU
 whU
 whU
 whU
-vQR
-vAT
-fIW
+fTM
+fTM
+fTM
 aeT
 aek
 agA
@@ -57912,11 +55547,11 @@ pZb
 pZb
 pZb
 pZb
-rYe
-fRD
-uYj
-lLU
-pRD
+aab
+aag
+aag
+aag
+aag
 aag
 aag
 aag
@@ -57928,7 +55563,7 @@ pZb
 pZb
 pZb
 pZb
-mFZ
+aag
 aag
 aag
 aag
@@ -57954,8 +55589,8 @@ pUm
 pUm
 pUm
 pUm
-wCs
-dLW
+acg
+acg
 acg
 pUm
 pUm
@@ -57988,9 +55623,9 @@ whU
 fTM
 whU
 whU
-sAh
-sAh
-pET
+fTM
+fTM
+fTM
 fTM
 adH
 fTM
@@ -58140,11 +55775,11 @@ pZb
 pZb
 pZb
 xpR
-rYe
-uYj
-gzH
-mEo
-rpx
+aab
+aag
+aai
+aag
+aag
 aag
 aag
 aag
@@ -58182,8 +55817,8 @@ pUm
 pUm
 pUm
 pUm
-xGL
-egU
+acg
+acg
 acg
 pUm
 pUm
@@ -58369,10 +56004,10 @@ pZb
 pZb
 xpR
 xpR
-uYj
-wMr
-uYj
-rpx
+aag
+aag
+aag
+aag
 aag
 aag
 aag
@@ -58411,8 +56046,8 @@ pUm
 pUm
 pUm
 pUm
-mHk
-dtr
+acg
+aaN
 pUm
 pUm
 pUm
@@ -58597,10 +56232,10 @@ pZb
 pZb
 xpR
 xpR
-uYj
-uYj
-uYj
-rpx
+aag
+aag
+aag
+aag
 aag
 aai
 aag
@@ -58639,9 +56274,9 @@ pUm
 pUm
 pUm
 vVC
-bvj
-mHk
-egU
+acg
+acg
+acg
 abj
 pUm
 acg
@@ -58677,9 +56312,9 @@ vCG
 fTM
 akL
 fTM
-lSA
-rgj
-gWE
+fTM
+aeT
+agA
 ahv
 ahv
 slW
@@ -58825,10 +56460,10 @@ pZb
 pZb
 pZb
 xpR
-bvS
-uYj
-ktr
-mFZ
+aag
+aag
+aag
+aag
 aag
 aag
 aag
@@ -58867,10 +56502,10 @@ pUm
 pUm
 vVC
 vVC
-xmK
-bvj
-mHk
-egU
+acg
+acg
+acg
+acg
 abo
 acg
 acg
@@ -58905,9 +56540,9 @@ vCG
 fTM
 fTM
 fTM
-vNT
-vAT
-vkS
+fTM
+fTM
+fTM
 ahv
 ahv
 slW
@@ -59053,9 +56688,9 @@ pZb
 pZb
 pZb
 pZb
-uYj
-ktr
-mFZ
+aag
+aag
+aag
 aag
 aag
 aag
@@ -59095,10 +56730,10 @@ pUm
 pUm
 vVC
 vVC
-rhi
-bvj
-mNl
-oDE
+acg
+acg
+acg
+acg
 acg
 acg
 acg
@@ -59132,10 +56767,10 @@ fTM
 whU
 whU
 fTM
-lSA
-bkK
-vAT
-vAT
+fTM
+fTM
+fTM
+fTM
 ahv
 ahv
 aeg
@@ -59281,8 +56916,8 @@ pZb
 pZb
 pZb
 pZb
-aPM
-mFZ
+aab
+aag
 aag
 aag
 aag
@@ -59323,10 +56958,10 @@ pUm
 pUm
 vVC
 vVC
-bvj
-bvj
-wCs
-dLW
+acg
+acg
+acg
+acg
 acg
 vjL
 acg
@@ -59350,10 +56985,10 @@ whU
 jMS
 jMS
 fTM
-lSA
-eMe
-eMe
-uyn
+fTM
+fTM
+fTM
+fTM
 jMS
 jMS
 fTM
@@ -59361,8 +56996,8 @@ whU
 ajc
 vCG
 whU
-vAT
-hTR
+fTM
+fTM
 pRT
 ahv
 ahv
@@ -59551,9 +57186,9 @@ pUm
 pUm
 pUm
 pUm
-bvj
-rER
-dLW
+acg
+acg
+acg
 iiK
 acg
 acg
@@ -59577,13 +57212,13 @@ whU
 whU
 whU
 whU
-eMe
-bkK
-ldi
-vAT
-lBl
-loP
-bQz
+fTM
+fTM
+fTM
+fTM
+fTM
+fTM
+akL
 fTM
 wEO
 fTM
@@ -59778,9 +57413,9 @@ pUm
 pUm
 pUm
 pUm
-woT
-woT
-dLW
+acg
+acg
+acg
 acg
 acg
 acg
@@ -59806,13 +57441,13 @@ whU
 whU
 whU
 aco
-vAT
-vAT
-bcU
-vAT
-whx
-lBl
-uyn
+fTM
+fTM
+fTM
+fTM
+fTM
+fTM
+fTM
 wEO
 fTM
 fTM
@@ -60037,10 +57672,10 @@ whU
 unp
 unp
 unp
-vAT
-vAT
-vAT
-tqQ
+fTM
+fTM
+fTM
+fTM
 eFS
 fTM
 fTM
@@ -60267,8 +57902,8 @@ whU
 unp
 unp
 unp
-gsq
-viC
+wEO
+wEO
 wEO
 fTM
 fTM
@@ -60494,9 +58129,9 @@ whU
 whU
 whU
 whU
-vAg
-vAT
-lSN
+jMS
+fTM
+fTM
 fTM
 akL
 fTM
@@ -60652,12 +58287,12 @@ pZb
 pZb
 pZb
 pZb
-vPo
-vPo
-lzf
-wRb
-wRb
-pRD
+aab
+aab
+aag
+aag
+aag
+aag
 aag
 aag
 aai
@@ -60722,9 +58357,9 @@ whU
 whU
 whU
 whU
-ecn
-jlt
-pET
+jMS
+fTM
+fTM
 fTM
 fTM
 diW
@@ -60881,15 +58516,15 @@ pZb
 pZb
 pZb
 pZb
-rYe
-rYe
-uYj
-gzH
-qfK
-wRb
-wRb
-wRb
-pRD
+aab
+aab
+aag
+aai
+aag
+aag
+aag
+aag
+aag
 aag
 aag
 aag
@@ -61110,15 +58745,15 @@ pZb
 pZb
 pZb
 pZb
-cfL
-rYe
-uYj
-qVi
-egc
-uYj
-mEo
-isL
-pRD
+aab
+aab
+aag
+aag
+aag
+aag
+aag
+aag
+aag
 aag
 aag
 aai
@@ -61143,7 +58778,7 @@ pZb
 pZb
 vVC
 vVC
-uBR
+nzw
 aaQ
 aaR
 aaR
@@ -61343,10 +58978,10 @@ xpR
 xpR
 xpR
 xpR
-rYe
-rYe
-uYj
-rpx
+aab
+aab
+aag
+aag
 aag
 aag
 aag
@@ -61371,8 +59006,8 @@ pZb
 pZb
 vVC
 vVC
-uBR
-uBR
+nzw
+nzw
 aaQ
 aaQ
 aaQ
@@ -61572,9 +59207,9 @@ xpR
 xpR
 xpR
 xpR
-rYe
-rYe
-gze
+aab
+aab
+aab
 aab
 aab
 aab
@@ -61599,8 +59234,8 @@ pZb
 pZb
 vVC
 vVC
-bvj
-uBR
+acg
+nzw
 nzw
 nzw
 nzw
@@ -61827,10 +59462,10 @@ pZb
 pZb
 vVC
 vVC
-bvj
-bvj
-mHk
-egU
+acg
+acg
+acg
+acg
 acg
 aaN
 acg
@@ -61843,9 +59478,9 @@ acg
 acg
 acg
 acg
-iye
-iye
-bEj
+acg
+acg
+nzw
 acg
 aaN
 acg
@@ -62056,10 +59691,10 @@ pZb
 vVC
 vVC
 vVC
-bvj
-bvj
-mHk
-egU
+acg
+acg
+acg
+acg
 acg
 nzw
 bfY
@@ -62071,9 +59706,9 @@ nzw
 nzw
 nzw
 pUm
-pQV
-bvj
-lhE
+acg
+acg
+nzw
 acg
 acg
 acg
@@ -62284,11 +59919,11 @@ pZb
 pUm
 vVC
 vVC
-bvj
-bvj
-oQm
-mHk
-egU
+acg
+acg
+aaN
+acg
+acg
 nzw
 nHq
 jAo
@@ -62297,11 +59932,11 @@ acg
 umb
 iyr
 eZC
-uBR
+nzw
 pUm
 vVC
-rAU
-lhE
+acg
+nzw
 acg
 acg
 acg
@@ -62513,11 +60148,11 @@ pUm
 vVC
 vVC
 vVC
-bvj
-bvj
-bvj
-mHk
-bEj
+acg
+acg
+acg
+acg
+nzw
 jAo
 acg
 gkC
@@ -62525,12 +60160,12 @@ acg
 gkC
 acg
 jAo
-uBR
+nzw
 vVC
 vVC
 aaQ
-qPY
-egU
+nzw
+acg
 acg
 acg
 acg
@@ -62743,9 +60378,9 @@ vVC
 vVC
 vVC
 pUm
-bvj
-bvj
-gVR
+acg
+acg
+nzw
 umb
 umb
 umb
@@ -62753,12 +60388,12 @@ aaN
 umb
 umb
 umb
-uBR
+nzw
 vVC
 vVC
 vVC
-uBR
-oDE
+nzw
+acg
 acg
 acg
 acg
@@ -62971,9 +60606,9 @@ pUm
 vVC
 vVC
 vVC
-bvj
-bvj
-qPY
+acg
+acg
+nzw
 rwx
 acg
 gkC
@@ -62981,12 +60616,12 @@ acg
 gkC
 acg
 dfJ
-uBR
+nzw
 pUm
 vVC
 vVC
-uBR
-oDE
+nzw
+acg
 acg
 acg
 acg
@@ -63201,21 +60836,21 @@ vVC
 vVC
 vVC
 pUm
-uBR
-jhj
+nzw
+rPK
 upQ
 umb
 acg
 umb
 fAD
 rPK
-uBR
+nzw
 pUm
 pUm
 vVC
-uBR
-mHk
-dtr
+nzw
+acg
+aaN
 acg
 acg
 acg
@@ -63429,8 +61064,8 @@ pUm
 vVC
 pUm
 pUm
-uBR
-gVR
+nzw
+nzw
 nzw
 nzw
 nzw
@@ -63441,9 +61076,9 @@ nzw
 pUm
 pUm
 pUm
-uBR
-bvj
-fGn
+nzw
+acg
+acg
 acg
 acg
 aaQ

@@ -627,5 +627,3 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/flag/guest_ban
-
-/datum/config_entry/flag/auto_profile

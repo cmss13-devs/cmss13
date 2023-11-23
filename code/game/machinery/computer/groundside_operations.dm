@@ -25,11 +25,7 @@
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
-	if(announcement_faction == FACTION_MARINE)
-		tacmap = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		tacmap = new(src, minimap_type) // Non-drawing version
-
+	tacmap = new(src, minimap_type)
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/Destroy()

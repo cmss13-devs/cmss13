@@ -61,6 +61,7 @@ const SquadPanel = (props, context) => {
   const { act, data } = useBackend(context);
 
   const [category, setCategory] = useLocalState(context, 'selected', 'monitor');
+  let hello = 2;
 
   return (
     <>

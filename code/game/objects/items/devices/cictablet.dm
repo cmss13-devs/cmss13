@@ -24,10 +24,7 @@
 	COOLDOWN_DECLARE(distress_cooldown)
 
 /obj/item/device/cotablet/Initialize()
-	if(announcement_faction == FACTION_MARINE)
-		tacmap = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		tacmap = new(src, minimap_type) // Non-drawing version
+	tacmap = new(src, minimap_type)
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)

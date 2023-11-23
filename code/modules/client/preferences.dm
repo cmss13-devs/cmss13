@@ -586,7 +586,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Tooltips:</b> <a href='?_src_=prefs;preference=tooltips'><b>[tooltips ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
-			dat += "<b>Play Admin Sounds:</b> <a href='?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Play Admin Internet Sounds:</b> <a href='?_src_=prefs;preference=hear_internet'><b>[(toggles_sound & SOUND_INTERNET) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
 			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
@@ -1806,10 +1807,11 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("rand_body")
 					be_random_body = !be_random_body
 
-				if("hear_admin_sounds")
+				if("hear_midis")
 					toggles_sound ^= SOUND_MIDI
-					if(!(toggles_sound & SOUND_MIDI))
-						user?.client?.tgui_panel?.stop_music()
+
+				if("hear_internet")
+					toggles_sound ^= SOUND_INTERNET
 
 				if("lobby_music")
 					toggles_sound ^= SOUND_LOBBY

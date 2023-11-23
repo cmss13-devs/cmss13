@@ -53,6 +53,5 @@
 #define VEHICLE_CLASS_LIGHT (1<<2) //light class armor (APC, tank)
 #define VEHICLE_CLASS_MEDIUM (1<<3) //medium class armor (tank)
 #define VEHICLE_CLASS_HEAVY (1<<4) //heavy class armor (tank)
-// Other vehicle flags
-/// Vehicle can bypass vehicle blockers, typically going further into maps than intended
-#define VEHICLE_BYPASS_BLOCKERS (1<<5)
+
+#define TANK_POPLOCK 90

@@ -26,7 +26,7 @@
 
 /obj/item/explosive/plastic/Destroy()
 	disarm()
-	return ..()
+	. = ..()
 
 /obj/item/explosive/plastic/explosion_throw(severity, direction, scatter_multiplier)
 	if(active)
@@ -156,9 +156,7 @@
 		plant_target.overlays -= overlay
 		qdel(overlay)
 		plant_target.contents -= src
-		var/turf/plant_turf = get_turf(plant_target)
-		if(plant_turf)
-			forceMove(plant_turf)
+		forceMove(get_turf(plant_target))
 	plant_target = null
 	if(customizable)
 		if(active) //deactivate

@@ -1,9 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ai" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ak" = (
 /obj/effect/spawner/random/tool,
@@ -12,35 +10,25 @@
 "al" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "am" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	dir = 10;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "an" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ao" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aq" = (
 /turf/closed/wall/solaris/reinforced,
@@ -54,17 +42,13 @@
 "aD" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aE" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/technology_scanner,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aF" = (
 /obj/structure/window/framed/solaris,
@@ -72,51 +56,34 @@
 /area/bigredv2/outside/engineering)
 "aT" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aU" = (
 /obj/structure/surface/rack,
 /obj/item/device/camera_film,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aV" = (
 /obj/structure/surface/rack,
 /obj/item/device/analyzer,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aY" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ba" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -124,20 +91,14 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/lightreplacer,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/item/stack/sheet/metal,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bc" = (
 /obj/structure/machinery/light{
@@ -146,58 +107,41 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/landmark/hunter_secondary,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellowcorners2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "be" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bg" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/mask/breath,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/stack/sheet/metal,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -205,9 +149,7 @@
 	dir = 1;
 	pixel_y = -30
 	},
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bl" = (
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -216,9 +158,7 @@
 	name = "Storm Shutters";
 	pixel_y = -32
 	},
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bm" = (
 /obj/structure/bed/chair{
@@ -226,35 +166,26 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bn" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/glasses/welding,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bo" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bp" = (
 /obj/item/folder/yellow,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellowcorners2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -263,18 +194,14 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engineering Workshop"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "br" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -290,60 +217,41 @@
 	dir = 1;
 	name = "\improper Engine Reactor Control"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "bv" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bw" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bx" = (
 /obj/structure/machinery/computer/arcade,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bA" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bB" = (
 /obj/item/stack/sheet/glass,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -361,30 +269,19 @@
 	dir = 8
 	},
 /obj/effect/spawner/random/technology_scanner,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "bF" = (
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "bG" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "bH" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bJ" = (
 /obj/structure/bed/chair{
@@ -393,70 +290,46 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bK" = (
 /obj/item/folder/yellow,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellowcorners2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bL" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bM" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bN" = (
 /obj/structure/machinery/vending/cola,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bO" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bP" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bQ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "darkyellowcorners2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bR" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bS" = (
 /obj/structure/bed/chair/office/light{
@@ -465,18 +338,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "bT" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "bU" = (
 /obj/item/device/radio/intercom{
@@ -485,27 +353,21 @@
 	name = "General Listening Channel";
 	pixel_x = 30
 	},
-/turf/open/floor{
-	icon_state = "podhatchfloor"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "bV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -513,27 +375,19 @@
 	amount = 30
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bZ" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/pen,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ca" = (
 /obj/structure/sign/safety/hazard{
 	pixel_y = -32
 	},
-/turf/open/floor{
-	dir = 10;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ce" = (
 /obj/item/tool/lighter/random,
@@ -541,9 +395,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cf" = (
 /obj/item/stack/sheet/metal,
@@ -559,55 +411,38 @@
 /area/bigredv2/outside/engineering)
 "ch" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ck" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/suit/radiation,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkyellowcorners2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/head/welding,
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cn" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 1;
 	name = "\improper Engine Reactor"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "co" = (
 /obj/structure/closet/radiation,
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cp" = (
 /obj/item/folder/yellow,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cq" = (
 /obj/effect/decal/cleanable/ash,
@@ -618,10 +453,7 @@
 /area/bigredv2/outside/telecomm/engi)
 "cr" = (
 /obj/effect/decal/cleanable/molten_item,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "cs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -630,9 +462,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engine Reactor Control"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "ct" = (
 /obj/structure/machinery/door_control{
@@ -650,9 +480,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engine Reactor Control"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "cw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -666,24 +494,18 @@
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/constructable_frame,
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cz" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cA" = (
 /obj/structure/surface/table,
@@ -691,10 +513,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 30
 	},
-/turf/open/floor{
-	dir = 6;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cB" = (
 /obj/structure/machinery/light{
@@ -703,9 +522,7 @@
 /obj/structure/sign/safety/high_rad{
 	pixel_x = 32
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -717,10 +534,7 @@
 /area/bigredv2/outside/engineering)
 "cD" = (
 /obj/structure/machinery/computer/area_atmos,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cE" = (
 /obj/structure/machinery/light{
@@ -729,17 +543,12 @@
 /obj/structure/sign/safety/high_rad{
 	pixel_x = -32
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cG" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -755,9 +564,7 @@
 /obj/effect/landmark/static_comms/net_two{
 	broken_on_spawn = 1
 	},
-/turf/open/floor{
-	icon_state = "podhatchfloor"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "cI" = (
 /obj/structure/sign/safety/hazard{
@@ -765,16 +572,12 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/extinguisher,
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/molten_item,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "cM" = (
 /turf/open/mars,
@@ -812,9 +615,7 @@
 	dir = 1;
 	name = "\improper Engineering Complex"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cY" = (
 /turf/open/mars_cave{
@@ -854,10 +655,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "dj" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
@@ -1193,10 +991,7 @@
 /area/bigredv2/outside/engineering)
 "eI" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkyellow2"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "eJ" = (
 /obj/effect/decal/cleanable/molten_item,
@@ -1229,31 +1024,6 @@
 "eO" = (
 /turf/closed/wall/mineral/uranium/leaking,
 /area/bigredv2/outside/engineering)
-"fI" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/engineering)
-"gT" = (
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
-/area/bigredv2/outside/engineering)
-"im" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/engineering)
-"iQ" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
-/area/bigredv2/outside/engineering)
 "jr" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
@@ -1264,14 +1034,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave,
 /area/bigredv2/outside/lz2_south_cas)
-"ng" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/engineering)
 "oE" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "rad_door";
@@ -1279,26 +1041,12 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/telecomm/engi)
-"oK" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkyellow2"
-	},
-/area/bigredv2/outside/engineering)
 "sU" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6"
 	},
 /area/bigredv2/outside/lz2_south_cas)
-"to" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
-/area/bigredv2/outside/engineering)
 "vs" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm/engi)
@@ -1308,19 +1056,6 @@
 	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
-	},
-/area/bigredv2/outside/telecomm/engi)
-"xl" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkyellowcorners2"
-	},
-/area/bigredv2/outside/engineering)
-"xz" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
 	},
 /area/bigredv2/outside/telecomm/engi)
 "yH" = (
@@ -1337,9 +1072,7 @@
 /area/bigredv2/outside/lz2_south_cas)
 "Bo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "CA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1350,26 +1083,6 @@
 	icon_state = "panelscorched"
 	},
 /area/bigredv2/outside/telecomm/engi)
-"Dh" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellowcorners2"
-	},
-/area/bigredv2/outside/engineering)
-"Dq" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
-/area/bigredv2/outside/engineering)
-"ET" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkyellow2"
-	},
-/area/bigredv2/outside/engineering)
 "IE" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
@@ -1380,29 +1093,10 @@
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/telecomm/engi)
-"Lf" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
-/area/bigredv2/outside/engineering)
 "LE" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
-	},
-/area/bigredv2/outside/telecomm/engi)
-"Nv" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/engineering)
-"NT" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellowcorners2"
 	},
 /area/bigredv2/outside/telecomm/engi)
 "NX" = (
@@ -1422,35 +1116,10 @@
 	icon_state = "panelscorched"
 	},
 /area/bigredv2/outside/telecomm/engi)
-"Sz" = (
-/obj/item/stack/sheet/glass,
-/turf/open/floor{
-	icon_state = "darkyellow2"
-	},
-/area/bigredv2/outside/engineering)
-"SC" = (
-/turf/open/floor{
-	icon_state = "delivery"
-	},
-/area/bigredv2/outside/engineering)
-"Tv" = (
-/turf/open/floor{
-	icon_state = "podhatchfloor"
-	},
-/area/bigredv2/outside/telecomm/engi)
 "Uo" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "podhatchfloor"
-	},
+/turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
-"WI" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
-/area/bigredv2/outside/engineering)
 
 (1,1,1) = {"
 au
@@ -1462,7 +1131,7 @@ bp
 by
 ai
 bX
-fI
+bQ
 cx
 cG
 Ah
@@ -1492,9 +1161,9 @@ au
 au
 an
 bz
-Nv
+bw
 bY
-Nv
+bw
 cy
 cG
 NX
@@ -1523,10 +1192,10 @@ au
 au
 au
 an
-Nv
+bw
 bO
-Nv
-Nv
+bw
+bw
 cz
 aq
 Ph
@@ -1558,7 +1227,7 @@ an
 bA
 bP
 bZ
-WI
+bQ
 cA
 aq
 Ph
@@ -1618,9 +1287,9 @@ au
 au
 au
 au
-ng
+an
 bw
-oK
+bQ
 ca
 aq
 co
@@ -1652,8 +1321,8 @@ aU
 bw
 br
 bB
-Nv
-fI
+bw
+bQ
 cn
 cB
 cn
@@ -1681,11 +1350,11 @@ au
 au
 au
 aV
-Nv
-ng
-Nv
-Nv
-gT
+bw
+an
+bw
+bw
+bw
 aq
 aq
 aq
@@ -1715,9 +1384,9 @@ au
 aW
 ai
 bs
-Nv
+bw
 ew
-Sz
+bB
 co
 co
 dk
@@ -1810,8 +1479,8 @@ au
 au
 aZ
 bQ
-WI
-WI
+bQ
+bQ
 bR
 ez
 cC
@@ -1841,7 +1510,7 @@ au
 au
 au
 ba
-iQ
+bQ
 vs
 vs
 vs
@@ -1873,7 +1542,7 @@ au
 au
 au
 an
-gT
+bw
 vs
 bE
 eI
@@ -1905,7 +1574,7 @@ au
 au
 au
 aZ
-iQ
+bQ
 vs
 bF
 bS
@@ -1937,12 +1606,12 @@ ak
 au
 au
 bb
-fI
+bQ
 bu
 bG
 bT
-NT
-xz
+bG
+Uo
 RN
 eE
 oE
@@ -2001,9 +1670,9 @@ au
 au
 au
 bd
-iQ
+bQ
 vs
-Tv
+bG
 bU
 ct
 RN
@@ -2032,7 +1701,7 @@ dR
 au
 au
 au
-ng
+an
 bl
 vs
 vs
@@ -2064,13 +1733,13 @@ dT
 au
 au
 au
-ng
+an
 ck
 bw
 bw
 di
 bw
-fI
+bQ
 ew
 dr
 cS
@@ -2100,8 +1769,8 @@ be
 bm
 bv
 bv
-fI
-Nv
+bQ
+bw
 ez
 ew
 dr
@@ -2128,11 +1797,11 @@ dT
 au
 au
 au
-ng
+an
 bn
 aE
 bH
-fI
+bQ
 ch
 ew
 ew
@@ -2160,11 +1829,11 @@ dT
 au
 au
 au
-ng
+an
 aD
 al
 ce
-Nv
+bw
 ew
 ew
 cD
@@ -2196,8 +1865,8 @@ bf
 bo
 bo
 bJ
-fI
-iQ
+bQ
+bQ
 aq
 aq
 aq
@@ -2225,11 +1894,11 @@ au
 au
 au
 bg
-to
-Dh
-im
+ai
+ai
+bg
 bV
-fI
+bQ
 cn
 cE
 cn
@@ -2325,11 +1994,11 @@ au
 aq
 bM
 ao
-xl
-ET
-ET
-ET
-ET
+ai
+ai
+ai
+ai
+ai
 am
 aq
 as
@@ -2356,13 +2025,13 @@ au
 au
 aq
 bN
-Dq
+bw
 cm
 bR
 cF
 aT
-Nv
-Lf
+bw
+an
 aq
 as
 as
@@ -2393,7 +2062,7 @@ aq
 aq
 aq
 aq
-SC
+bw
 cX
 aq
 as

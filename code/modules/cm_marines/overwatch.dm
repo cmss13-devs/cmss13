@@ -39,11 +39,8 @@
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
+	tacmap = new(src, minimap_type)
 
-	if (faction == FACTION_MARINE)
-		tacmap = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		tacmap = new(src, minimap_type) // Non-drawing version
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	QDEL_NULL(tacmap)

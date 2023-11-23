@@ -119,7 +119,7 @@
 
 /// This check mainly exists because of the new resin node ability for resin whisperer.
 /mob/living/carbon/xenomorph/hivelord/proc/on_weeds()
-	var/turf/turf = get_turf(src)
-	if(locate(/obj/effect/alien/weeds) in turf)
+	var/turf/T = get_turf(src)
+	if(locate(/obj/effect/alien/weeds) in T)
 		return TRUE
 	return FALSE

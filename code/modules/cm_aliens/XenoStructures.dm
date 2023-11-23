@@ -418,23 +418,18 @@
 	update_icon()
 	isSwitchingStates = 0
 	layer = DOOR_OPEN_LAYER
-	addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE)
-
-/obj/structure/mineral_door/resin/proc/close_blocked()
-	for(var/turf/turf in locs)
-		for(var/mob/living/living_mob in turf)
-			if(!HAS_TRAIT(living_mob, TRAIT_MERGED_WITH_WEEDS))
-				return TRUE
-	return FALSE
+	spawn(close_delay)
+		if(!isSwitchingStates && state == 1)
+			Close()
 
 /obj/structure/mineral_door/resin/Close()
-	if(!state || !loc || isSwitchingStates)
-		return //already closed or changing
+	if(!state || !loc) return //already closed
 	//Can't close if someone is blocking it
-	if(close_blocked())
-		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE)
-		return
-
+	for(var/turf/turf in locs)
+		if(locate(/mob/living) in turf)
+			spawn (close_delay)
+				Close()
+			return
 	isSwitchingStates = 1
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]closing",src)
@@ -445,10 +440,10 @@
 	update_icon()
 	isSwitchingStates = 0
 	layer = DOOR_CLOSED_LAYER
-
-	if(close_blocked())
-		Open()
-		return
+	for(var/turf/turf in locs)
+		if(locate(/mob/living) in turf)
+			Open()
+			return
 
 /obj/structure/mineral_door/resin/Dismantle(devastated = 0)
 	qdel(src)

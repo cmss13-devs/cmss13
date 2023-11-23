@@ -252,6 +252,23 @@
 	)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 
+/obj/structure/machinery/vending/security/riot
+	name = "\improper RiotTech"
+	desc = "A security riot equipment vendor."
+	hacking_safety = TRUE
+	wrenchable = FALSE
+	products = list(
+		/obj/item/handcuffs/zip = 40,
+		/obj/item/explosive/grenade/flashbang = 20,
+		/obj/item/explosive/grenade/custom/teargas = 40,
+		/obj/item/ammo_magazine/smg/m39/rubber = 40,
+		/obj/item/ammo_magazine/pistol/rubber = 40,
+		/obj/item/ammo_magazine/pistol/mod88/rubber = 40,
+		/obj/item/ammo_magazine/rifle/rubber = 40,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber = 40,
+		/obj/item/clothing/head/helmet/marine/MP = 8,
+	)
+
 /obj/structure/machinery/vending/sea
 	name = "\improper SeaTech"
 	desc = "An equipment vendor designed to save lives"

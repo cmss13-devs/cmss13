@@ -461,8 +461,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
 
-	if(obj_reagents)
-		tied_reagents = obj_reagents
+	tied_reagents = obj_reagents
 
 	target_clicked = target
 

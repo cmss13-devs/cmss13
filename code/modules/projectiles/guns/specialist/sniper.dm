@@ -154,7 +154,7 @@
 	target.overlays -= lockon_direction_icon
 	qdel(laser_beam)
 
-	if(!check_can_use(target, TRUE) || target.is_dead())
+	if(!check_can_use(target, TRUE))
 		return
 
 	var/obj/projectile/aimed_proj = sniper_rifle.in_chamber

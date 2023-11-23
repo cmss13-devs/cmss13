@@ -593,13 +593,20 @@
 adds a dizziness amount to a mob
 use this rather than directly changing var/dizziness
 since this ensures that the dizzy_process proc is started
-currently only mob/living/carbon/human get dizzy
+currently only humans get dizzy
 
 value of dizziness ranges from 0 to 1000
 below 100 is not dizzy
 */
 /mob/proc/make_dizzy(amount)
-	return
+	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
+		return
+
+	dizziness = min(500, dizziness + amount) // store what will be new value
+													// clamped to max 500
+	if(dizziness > 100 && !is_dizzy)
+		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
+
 
 /*
 dizzy process - wiggles the client's pixel offset over time
@@ -717,7 +724,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		else
 			lying = FALSE
 
-	canmove = !HAS_TRAIT(src, TRAIT_IMMOBILIZED)
+	canmove = !frozen
 
 	if(isliving(src)) // Temporary I SWEAR. This whole proc is going down
 		var/mob/living/living = src
@@ -791,6 +798,22 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/get_species()
 	return ""
+
+/// Sets freeze if possible and wasn't already set, returning success
+/mob/proc/freeze()
+	if(frozen)
+		return FALSE
+	frozen = TRUE
+	update_canmove()
+	return TRUE
+
+/// Attempts to unfreeze mob, returning success
+/mob/proc/unfreeze()
+	if(!frozen)
+		return FALSE
+	frozen = FALSE
+	update_canmove()
+	return TRUE
 
 /mob/proc/flash_weak_pain()
 	overlay_fullscreen("pain", /atom/movable/screen/fullscreen/pain, 1)

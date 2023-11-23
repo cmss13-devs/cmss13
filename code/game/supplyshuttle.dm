@@ -483,7 +483,7 @@ var/datum/controller/supply/supply_controller = new()
 		return 1 // Pool scaling coming in a future update if needed, for now tweak base_random_crate_intervals instead
 
 	var/ground_xenos_amount = rand(1, 20) //TESTING //SSticker.mode.count_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
-	var/crate_amount = max(0, sqrt(ground_xenos_amount/3))
+	var/crate_amount = max(0, sqrt(ground_xenos_amount/ASRS_XENO_CRATES_DIVIDER))
 
 	if(crate_iteration <= 5 && crate_amount < 4)
 		crate_amount = 4

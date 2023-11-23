@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(ticker)
 	if(round_statistics)
 		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [round_statistics.round_name]</B>")))
 
-	supply_controller.process() //Start the supply shuttle regenerating points -- TLE
+	supply_controller.start_processing()
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i

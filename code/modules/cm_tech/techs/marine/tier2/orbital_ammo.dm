@@ -19,7 +19,8 @@
 	var/datum/supply_order/O = new /datum/supply_order()
 	O.ordernum = supply_controller.ordernum
 	supply_controller.ordernum++
-	O.object = supply_controller.supply_packs[type_to_give]
+	var/actual_type = GLOB.supply_packs_types[type_to_give]
+	O.object = GLOB.supply_packs_datums[actual_type]
 	O.orderedby = MAIN_AI_SYSTEM
 
 	supply_controller.shoppinglist += O

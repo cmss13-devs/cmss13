@@ -3,7 +3,9 @@
 	"type": "pick", "name": "LV624 Global Event",
 	"choices": [
 		{ "weight": 2, "type": "def", "values": { "lvevent": "none"       } },
-		{ "weight": 4, "type": "def", "values": { "lvevent": "last_stand" } }
+		{ "weight": 4, "type": "def", "values": { "lvevent": "last_stand" } },
+		{ "weight": 2, "type": "def", "values": { "lvevent": "fallen_ship"} },
+		{ "weight": 2, "type": "def", "values": { "lvevent": "fallen_ship"} }
 	]
 }
 ]

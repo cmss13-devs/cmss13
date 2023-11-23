@@ -48,25 +48,10 @@
 	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
 /client/verb/togglemidis()
-	set name = "Silence Current Midi"
+	set name = "Silence Current Admin Sound"
 	set category = "Preferences.Sound"
-	set desc = "Toggles hearing sounds uploaded by admins"
-	// prefs.toggles_sound ^= SOUND_MIDI // Toggle on/off
-	// prefs.save_preferences() // We won't save the change - it'll be a temporary switch instead of permanent, but they can still make it permanent in character setup.
-	if(prefs.toggles_sound & SOUND_MIDI) // Not using && midi_playing here - since we can't tell how long an admin midi is, the user should always be able to turn it off at any time.
-		to_chat(src, SPAN_BOLDNOTICE("The currently playing midi has been silenced."))
-		var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = SOUND_CHANNEL_ADMIN_MIDI)
-		break_sound.priority = 250
-		src << break_sound //breaks the client's sound output on SOUND_CHANNEL_ADMIN_MIDI
-		if(src.mob.client.midi_silenced) return
-		if(midi_playing)
-			total_silenced++
-			message_admins("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
-			src.mob.client.midi_silenced = 1
-			spawn(30 SECONDS) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
-				src.mob.client.midi_silenced = 0
-	else
-		to_chat(src, SPAN_BOLDNOTICE("You have 'Play Admin Midis' disabled in your Character Setup, so this verb is useless to you."))
+	set desc = "Stops the current admin sound. You can also use the STOP icon in the player above tgchat."
+	tgui_panel?.stop_music()
 
 /client/verb/togglechat()
 	set name = "Toggle Abovehead Chat"

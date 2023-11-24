@@ -329,7 +329,6 @@
 	var/list/list/hive_structures = list() //Stringref list of structures that have been built
 	var/list/list/hive_constructions = list() //Stringref list of structures that are being built
 
-	var/list/evolve_pictures
 	var/datum/hive_status_ui/hive_ui
 	var/datum/mark_menu_ui/mark_ui
 	var/datum/hive_faction_ui/faction_ui
@@ -366,6 +365,9 @@
 	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
+	///Stores the image()'s for the xeno evolution radial menu
+	var/static/list/evolution_menu_images
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
@@ -378,11 +380,18 @@
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
-	evolve_pictures = list("Drone" = image(icon = 'icons/mob/xenos/drone.dmi', icon_state = "Normal Drone Running"), "Burrower" = image(icon = 'icons/mob/xenos/burrower.dmi', icon_state = "Burrower Walking"))
-
-
+	if(!evolution_menu_images)
+		evolution_menu_images = list()
+		generate_evo_menu_images()
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
+
+///Generate the image()'s requried for the evolution radial menu.
+/datum/hive_status/proc/generate_evo_menu_images()
+	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
+		var/datum/caste_datum/new_caste = new caste()
+		evolution_menu_images[new_caste.caste_type] = image('icons/mob/xenos/radial_xenos.dmi', new_caste.caste_type)
+		qdel(new_caste)
 
 /datum/hive_status/proc/post_setup()
 	SIGNAL_HANDLER

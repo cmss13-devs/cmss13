@@ -365,7 +365,11 @@
 	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
-	///Stores the image()'s for the xeno evolution radial menu
+	/*Stores the image()'s for the xeno evolution radial menu
+	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
+	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
+	The name of the icon should be the same as the XENO_CASTE_ define for that caste eg. #define XENO_CASTE_DRONE "Drone"
+	*/
 	var/static/list/evolution_menu_images
 
 /datum/hive_status/New()

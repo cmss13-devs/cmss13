@@ -9576,17 +9576,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"aCT" = (
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean"
-	},
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -9651,18 +9640,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"aDd" = (
-/obj/structure/bed/chair,
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean"
-	},
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDe" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt{
@@ -85490,8 +85467,8 @@ dTs
 dTs
 aEa
 aEa
-aCS
-aCS
+aEa
+aEa
 aEa
 aEa
 dTs
@@ -85724,8 +85701,8 @@ dTs
 dTs
 aEa
 aCD
-aCT
-aDd
+aCF
+aDg
 aDn
 aEa
 aDt

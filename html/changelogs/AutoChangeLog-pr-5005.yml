@@ -1,0 +1,4 @@
+author: "HeresKozmos"
+delete-after: True
+changes:
+  - bugfix: "fixed a nonsensical window facing a solid rock wall"

@@ -390,10 +390,6 @@
 			old_xeno.drop_inv_item_on_ground(item)
 		old_xeno.empty_gut()
 
-		//Set leader to the new mob
-		if(hive && IS_XENO_LEADER(old_xeno))
-			hive.replace_hive_leader(old_xeno, src)
-
 		if(old_xeno.iff_tag)
 			iff_tag = old_xeno.iff_tag
 			iff_tag.forceMove(src)
@@ -452,14 +448,19 @@
 	add_abilities()
 	create_reagents(100)
 	regenerate_icons()
-	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
+
 	toggle_xeno_hostilehud()
 	recalculate_everything()
-
-	//Begin SStracking
-	SStracking.start_tracking("hive_[hivenumber]", src)
+	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
 
 	. = ..()
+
+					//Set leader to the new mob
+	if(old_xeno && hive && IS_XENO_LEADER(old_xeno))
+		hive.replace_hive_leader(old_xeno, src)
+
+	//Begin SStracking
+	SStracking.start_tracking("hive_[src.hivenumber]", src)
 
 	GLOB.living_xeno_list += src
 	GLOB.xeno_mob_list += src

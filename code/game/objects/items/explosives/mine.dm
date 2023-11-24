@@ -60,16 +60,19 @@
 
 
 /obj/item/explosive/mine/sebb
+	name = "\improper G2 Electroshock grenade"
 	icon_state = "grenade_sebb_planted"
+	desc = "A G2 electroshock grenade planted as a landmine"
 	map_deployed = TRUE
 
 /obj/item/explosive/mine/sebb/disarm()
 	. = ..()
 	new /obj/item/explosive/grenade/sebb(src)
-	qdel(src.loc)
+	qdel(src)
+
 /obj/item/explosive/mine/sebb/prime()
 	set waitfor = 0
-	new /obj/item/explosive/grenade/sebb/primed(src)
+	new /obj/item/explosive/grenade/sebb/primed(src.loc)
 	if(!QDELETED(src))
 		disarm()
 

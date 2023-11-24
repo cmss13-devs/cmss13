@@ -739,13 +739,15 @@
 	if(user.action_busy)
 		return
 
-	var/turf/T = target
-	to_chat(user, SPAN_NOTICE("You switch \the [src] into landmind mode and start burying it..."))
+	if(target != user.loc)
+		return
+
+	to_chat(user, SPAN_NOTICE("You switch \the [src] into landmine mode and start burying it..."))
 	playsound(user.loc, 'sound/effects/thud.ogg', 100, 6)
 	if(!do_after(user,20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_NOTICE("You stop digging."))
 		return
-	new /obj/item/explosive/mine/sebb(T.loc)
+	new /obj/item/explosive/mine/sebb(user.loc)
 	qdel(src)
 
 /obj/item/explosive/grenade/sebb/activate()
@@ -792,12 +794,13 @@
 
 
 /obj/item/explosive/grenade/sebb/primed
+	icon_state = "grenade_sebb"
 	name = "\improper G2 Electroshock grenade"
 	desc = "A G2 Electroshock Grenade, looks like its quite angry! Oh shit!"
 	det_time = 10
 
 /obj/item/explosive/grenade/sebb/primed/New()
-	prime()
+	activate()
 
 /obj/effect/overlay/sebb
 	name = "Danger"

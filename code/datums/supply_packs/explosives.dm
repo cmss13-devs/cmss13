@@ -87,6 +87,17 @@
 	containername = "\improper explosive M40 HEDP grenades crate (WARNING)"
 	group = "Explosives"
 
+/datum/supply_packs/explosives_sebb
+	name = "M40 HEDP blast grenades crate (x6)"
+	contains = list(
+		/obj/item/storage/box/packet/sebb,
+		/obj/item/storage/box/packet/sebb,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper explosive M40 HEDP grenades crate (WARNING)"
+	group = "Explosives"
+
 /datum/supply_packs/explosives_hedp
 	name = "M40 HEDP blast grenade box crate (x25)"
 	contains = list(

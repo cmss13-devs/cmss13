@@ -138,3 +138,9 @@ var/list/grenade_packets = list(
 	desc = "It contains three R2175/B HIDP grenades. Handle with care."
 	icon_state = "hidp_packet"
 	content_type = /obj/item/explosive/grenade/incendiary/rmc
+
+/obj/item/storage/box/packet/sebb
+	name = "\improper G2 Electroshock grenade packet"
+	desc = "It contains three G2 Electroshock grenades. Handle with care."
+	icon_state = "sebb_packet"
+	content_type = /obj/item/explosive/grenade/sebb

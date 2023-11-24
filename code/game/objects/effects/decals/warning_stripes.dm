@@ -91,6 +91,20 @@
 /obj/effect/decal/sand_overlay/sand2/corner2
 	icon_state = "sand2_c"
 
+/obj/effect/decal/grass_overlay
+	name = "grass edge"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	unacidable = TRUE
+	icon = 'icons/turf/floors/auto_strata_grass.dmi'
+	layer = TURF_LAYER
+
+/obj/effect/decal/grass_overlay/grass1
+	icon_state = "grass_outercorner"
+
+/obj/effect/decal/grass_overlay/grass1/inner
+	name = "grass edge"
+	icon_state = "grass_innercorner"
+
 /obj/effect/decal/siding
 	name = "siding"
 	icon = 'icons/turf/floors/floors.dmi'

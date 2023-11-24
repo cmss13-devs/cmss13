@@ -47,7 +47,7 @@
 
 /obj/item/weapon/chloroform/proc/grab_stun(mob/living/M, mob/living/user)
 	M.anchored = TRUE
-	M.frozen = TRUE
+	ADD_TRAIT(M, TRAIT_IMMOBILIZED, CHLOROFORM_TRAIT)
 	ADD_TRAIT(M, TRAIT_UNDENSE, CHLOROFORM_TRAIT)
 	M.able_to_speak = FALSE
 	M.update_canmove()
@@ -82,7 +82,7 @@
 	M.density = TRUE
 	M.able_to_speak = TRUE
 	M.layer = MOB_LAYER
-	M.unfreeze()
+	REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, CHLOROFORM_TRAIT)
 	REMOVE_TRAIT(M, TRAIT_UNDENSE, CHLOROFORM_TRAIT)
 
 	QDEL_NULL(mask_item)

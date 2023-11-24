@@ -180,7 +180,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/warrant_officer
 	name = "chief MP's locker"
-	req_access = list(ACCESS_MARINE_ARMORY)
+	req_access = list(ACCESS_MARINE_BRIG)
 	icon_state = "secure_locked_warrant"
 	icon_closed = "secure_unlocked_warrant"
 	icon_locked = "secure_locked_warrant"

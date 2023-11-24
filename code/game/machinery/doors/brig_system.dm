@@ -390,14 +390,6 @@
 	name = "Cell 4"
 	id = "Cell 4"
 
-/obj/structure/machinery/brig_cell/cell_5
-	name = "Cell 5"
-	id = "Cell 5"
-
-/obj/structure/machinery/brig_cell/cell_6
-	name = "Cell 6"
-	id = "Cell 6"
-
 /obj/structure/machinery/brig_cell/perma_1
 	name = "Perma 1"
 	id = "Perma 1"

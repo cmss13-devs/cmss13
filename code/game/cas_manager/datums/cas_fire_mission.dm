@@ -114,7 +114,7 @@
 		if(get_turf(M) == initial_turf)
 			relative_dir = 0
 		else
-			relative_dir = get_dir(M, initial_turf)
+			relative_dir = Get_Compass_Dir(M, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"
 		if (M.mob_flags & KNOWS_TECHNOLOGY)
@@ -132,7 +132,7 @@
 		if(get_turf(M) == initial_turf)
 			relative_dir = 0
 		else
-			relative_dir = get_dir(M, initial_turf)
+			relative_dir = Get_Compass_Dir(M, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"
 		if (M.mob_flags & KNOWS_TECHNOLOGY)

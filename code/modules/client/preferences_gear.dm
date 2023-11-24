@@ -350,7 +350,7 @@ var/global/list/gear_datums_by_name = list()
 	path = /obj/item/prop/helmetgarb/trimmed_wire
 
 /datum/gear/helmet_garb/bullet_pipe
-	display_name = "10x99mm XM42B casing pipe"
+	display_name = "10x99mm XM43E1 casing pipe"
 	path = /obj/item/prop/helmetgarb/bullet_pipe
 	allowed_origins = USCM_ORIGINS
 

@@ -1,0 +1,5 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - imageadd: "2-wide dropship side doors"
+  - maptweak: "changed dropship side doors to a lone doublewide door"

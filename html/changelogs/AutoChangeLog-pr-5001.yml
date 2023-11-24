@@ -1,0 +1,4 @@
+author: "HeresKozmos"
+delete-after: True
+changes:
+  - bugfix: "deleted random raised edges from inside rock wall"

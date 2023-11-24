@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-/// Admin music volume, from 0 to 1.
-/client/var/admin_music_volume = 1
 
 /**
  * public
@@ -22,8 +20,9 @@
 /datum/tgui_panel/proc/play_music(url, extra_data)
 	if(!is_ready())
 		return
-	if(!findtext(url, GLOB.is_http_protocol))
-		return
+	// Commented to allow playing via simple asset transport. Just check when calling.
+//	if(!findtext(url, GLOB.is_http_protocol))
+//		return
 	var/list/payload = list()
 	if(length(extra_data) > 0)
 		for(var/key in extra_data)

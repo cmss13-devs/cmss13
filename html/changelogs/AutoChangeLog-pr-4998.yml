@@ -1,0 +1,5 @@
+author: "HeresKozmos"
+delete-after: True
+changes:
+  - rscadd: "Added pizza and pizza cutter to Req"
+  - rscdel: "Deleted a random kepler crisps bag"

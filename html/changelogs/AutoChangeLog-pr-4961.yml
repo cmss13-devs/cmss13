@@ -1,0 +1,4 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - qol: "directions in trackers and messages are more accurate"

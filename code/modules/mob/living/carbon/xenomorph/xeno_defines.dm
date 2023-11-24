@@ -329,6 +329,7 @@
 	var/list/list/hive_structures = list() //Stringref list of structures that have been built
 	var/list/list/hive_constructions = list() //Stringref list of structures that are being built
 
+	var/list/evolve_pictures
 	var/datum/hive_status_ui/hive_ui
 	var/datum/mark_menu_ui/mark_ui
 	var/datum/hive_faction_ui/faction_ui
@@ -376,6 +377,10 @@
 		internal_faction = name
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
+
+	evolve_pictures = list("Drone" = image(icon = 'icons/mob/xenos/drone.dmi', icon_state = "Normal Drone Running"), "Burrower" = image(icon = 'icons/mob/xenos/burrower.dmi', icon_state = "Burrower Walking"))
+
+
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
 

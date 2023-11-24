@@ -73,7 +73,7 @@
 	var/super_empower_threshold = 3
 	var/dmg_buff_per_target = 2
 
-/datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
+/datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon)
 	var/damage_plus
 	if(empower_targets)
 		damage_plus = dmg_buff_per_target * empower_targets
@@ -90,18 +90,18 @@
 /datum/behavior_delegate/ravager_base/append_to_stat()
 	. = list()
 	var/shield_total = 0
-	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
-			shield_total += XS.amount
+	for (var/datum/xeno_shield/xeno_shield in bound_xeno.xeno_shields)
+		if (xeno_shield.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
+			shield_total += xeno_shield.amount
 
 	. += "Empower Shield: [shield_total]"
 	. += "Bonus Slash Damage: [dmg_buff_per_target * empower_targets]"
 
 /datum/behavior_delegate/ravager_base/on_life()
 	var/datum/xeno_shield/rav_shield
-	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
-			rav_shield = XS
+	for (var/datum/xeno_shield/xeno_shield in bound_xeno.xeno_shields)
+		if (xeno_shield.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
+			rav_shield = xeno_shield
 			break
 
 	if (rav_shield && ((rav_shield.last_damage_taken + shield_decay_time) < world.time))

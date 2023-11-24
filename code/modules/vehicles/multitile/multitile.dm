@@ -240,26 +240,15 @@
 
 	var/amt_hardpoints = LAZYLEN(hardpoints)
 	if(amt_hardpoints)
-		var/list/hardpoint_images[amt_hardpoints]
-		var/list/C[HDPT_LAYER_MAX]
-
-		// Counting sort the images into a list so we get the hardpoint images sorted by layer
-		for(var/obj/item/hardpoint/H in hardpoints)
-			C[H.hdpt_layer] += 1
-
-		for(var/i = 2 to HDPT_LAYER_MAX)
-			C[i] += C[i-1]
-
-		for(var/obj/item/hardpoint/H in hardpoints)
-			hardpoint_images[C[H.hdpt_layer]] = H.get_hardpoint_image()
-			C[H.hdpt_layer] -= 1
-
-		for(var/i = 1 to amt_hardpoints)
-			var/image/I = hardpoint_images[i]
-			// get_hardpoint_image() can return a list of images
-			if(istype(I))
-				I.layer = layer + (i*0.1)
-			overlays += I
+		for(var/obj/item/hardpoint/hardpoint in hardpoints)
+			var/image/hardpoint_image = hardpoint.get_hardpoint_image()
+			if(istype(hardpoint_image))
+				hardpoint_image.layer = layer + hardpoint.hdpt_layer * 0.1
+			else if(islist(hardpoint_image))
+				var/list/image/hardpoint_image_list = hardpoint_image // Linter will complain about iterating on "an image" otherwise
+				for(var/image/subimage in hardpoint_image_list)
+					subimage.layer = layer + hardpoint.hdpt_layer * 0.1
+			overlays += hardpoint_image
 
 	if(clamped)
 		var/image/J = image(icon, icon_state = "vehicle_clamp", layer = layer+0.1)

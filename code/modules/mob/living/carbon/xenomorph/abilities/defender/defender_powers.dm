@@ -51,7 +51,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(fendy.fortify && !fendy.mutation_type == DEFENDER_STEELCREST)
+	if(fendy.fortify && !(fendy.mutation_type == DEFENDER_STEELCREST))
 		to_chat(fendy, SPAN_XENOWARNING("You cannot use headbutt while fortified."))
 		return
 

@@ -115,7 +115,9 @@
 			. += "Primary Objective: [html_decode(assigned_squad.primary_objective)]"
 		if(assigned_squad.secondary_objective)
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
-
+	if(faction == FACTION_MARINE)
+		. += ""
+		. += "<a href='?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)
 		. += "Active Order: MOVE"
 	if(protection_aura)
@@ -1328,7 +1330,7 @@
 			else if(C.z != src.z || get_dist(src,C) < 1)
 				hud_used.locate_leader.icon_state = "trackondirect_lz"
 			else
-				hud_used.locate_leader.setDir(get_dir(src,C))
+				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
 				hud_used.locate_leader.icon_state = "trackon_lz"
 			return
 		if(TRACKER_FTL)
@@ -1358,7 +1360,7 @@
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
 	else
-		hud_used.locate_leader.setDir(get_dir(src,H))
+		hud_used.locate_leader.setDir(Get_Compass_Dir(src,H))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
 
 /mob/living/carbon/proc/locate_nearest_nuke()
@@ -1376,7 +1378,7 @@
 	if(get_dist(src,N) < 1)
 		hud_used.locate_nuke.icon_state = "nuke_trackondirect"
 	else
-		hud_used.locate_nuke.setDir(get_dir(src,N))
+		hud_used.locate_nuke.setDir(Get_Compass_Dir(src,N))
 		hud_used.locate_nuke.icon_state = "nuke_trackon"
 
 
@@ -1739,3 +1741,9 @@
 		return FALSE
 
 	. = ..()
+
+/mob/living/carbon/human/make_dizzy(amount)
+	dizziness = min(500, dizziness + amount) // store what will be new value
+													// clamped to max 500
+	if(dizziness > 100 && !is_dizzy)
+		INVOKE_ASYNC(src, PROC_REF(dizzy_process))

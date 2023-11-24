@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - ui: "Tweaked the colour of the 'Maintainer' category in staffwho."

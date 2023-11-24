@@ -362,21 +362,27 @@ Additional game mode variables.
 		else
 			available_xenos_non_ssd += cur_xeno
 
-	// Only offer buried larva if there is no queue:
-	// This basically means this block of code will almost never execute, because we are instead relying on the hive cores/larva pops to handle their larva
-	// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
-	if(GLOB.xeno_queue_candidate_count < 1)
-		var/datum/hive_status/hive
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time)))
-				if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
-					available_xenos |= "any buried larva"
-					LAZYADD(available_xenos["any buried larva"], hive)
-				else
-					var/larva_option = "buried larva ([hive])"
-					available_xenos += larva_option
-					available_xenos[larva_option] = list(hive)
+	var/datum/hive_status/hive
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(hive.hardcore)
+			continue
+		if(!hive.stored_larva)
+			continue
+		// Only offer buried larva if there is no queue because we are instead relying on the hive cores/larva pops to handle their larva:
+		// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
+		if(hive.hive_location && GLOB.xeno_queue_candidate_count > 0)
+			continue
+		if(!hive.hive_location && (world.time > XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
+			continue
+
+		if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
+			available_xenos |= "any buried larva"
+			LAZYADD(available_xenos["any buried larva"], hive)
+		else
+			var/larva_option = "buried larva ([hive])"
+			available_xenos += larva_option
+			available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
 		if(!xeno_candidate.client || !xeno_candidate.client.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
@@ -429,7 +435,7 @@ Additional game mode variables.
 				for(var/mob_name in picked_hive.banished_ckeys)
 					if(picked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 						to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [picked_hive], you may not rejoin unless the Queen re-admits you or dies."))
-						return
+						return FALSE
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/noob = xeno_candidate
 					noob.close_spawn_windows()
@@ -448,9 +454,6 @@ Additional game mode variables.
 		if(!isxeno(userInput) || !xeno_candidate)
 			return FALSE
 		new_xeno = userInput
-
-		if(!xeno_candidate)
-			return FALSE
 
 		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
@@ -485,14 +488,14 @@ Additional game mode variables.
 	else new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
 	if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
 		if(isnewplayer(xeno_candidate))
-			var/mob/new_player/N = xeno_candidate
-			N.close_spawn_windows()
+			var/mob/new_player/noob = xeno_candidate
+			noob.close_spawn_windows()
 		for(var/mob_name in new_xeno.hive.banished_ckeys)
 			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
-				return
+				return FALSE
 		if(transfer_xeno(xeno_candidate, new_xeno))
-			return 1
+			return TRUE
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
 
 /datum/game_mode/proc/attempt_to_join_as_facehugger(mob/xeno_candidate)
@@ -600,7 +603,14 @@ Additional game mode variables.
 
 	for(var/obj/effect/alien/resin/special/pylon/cycled_pylon as anything in hive.hive_structures[XENO_STRUCTURE_PYLON])
 		if(cycled_pylon.lesser_drone_spawns >= 1)
-			selection_list += "[cycled_pylon.name] at [get_area(cycled_pylon)]"
+			var/pylon_number = 1
+			var/pylon_name = "[cycled_pylon.name] at [get_area(cycled_pylon)]"
+			//For renaming the pylon if we have duplicates
+			var/pylon_selection_name = pylon_name
+			while(pylon_selection_name in selection_list)
+				pylon_selection_name = "[pylon_name] ([pylon_number])"
+				pylon_number ++
+			selection_list += pylon_selection_name
 			selection_list_structure += cycled_pylon
 
 	if(!length(selection_list))
@@ -620,20 +630,21 @@ Additional game mode variables.
 /datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno)
 	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
+
 	var/datum/mind/xeno_candidate_mind
 	if(ismind(xeno_candidate))
 		xeno_candidate_mind = xeno_candidate
 	else if(ismob(xeno_candidate))
-		var/mob/M = xeno_candidate
-		if(M.mind)
-			xeno_candidate_mind = M.mind
+		var/mob/xeno_candidate_mob = xeno_candidate
+		if(xeno_candidate_mob.mind)
+			xeno_candidate_mind = xeno_candidate_mob.mind
 		else
-			xeno_candidate_mind = new /datum/mind(M.key, M.ckey)
+			xeno_candidate_mind = new /datum/mind(xeno_candidate_mob.key, xeno_candidate_mob.ckey)
 			xeno_candidate_mind.active = TRUE
 			xeno_candidate_mind.current = new_xeno
 	else if(isclient(xeno_candidate))
-		var/client/C = xeno_candidate
-		xeno_candidate_mind = new /datum/mind(C.key, C.ckey)
+		var/client/xeno_candidate_client = xeno_candidate
+		xeno_candidate_mind = new /datum/mind(xeno_candidate_client.key, xeno_candidate_client.ckey)
 		xeno_candidate_mind.active = TRUE
 		xeno_candidate_mind.current = new_xeno
 	else

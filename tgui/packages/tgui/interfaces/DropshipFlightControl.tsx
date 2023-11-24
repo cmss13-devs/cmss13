@@ -44,10 +44,14 @@ const DropshipDoorControl = (_, context) => {
               <Button
                 disabled={disable_door_controls}
                 onClick={() =>
+<<<<<<< HEAD
+                  act('door-control', { interaction: 'lock', location: 'all' })
+=======
                   act('door-control', {
-                    interaction: 'lock',
+                    interaction: 'force-lock',
                     location: 'all',
                   })
+>>>>>>> master
                 }
                 icon="triangle-exclamation">
                 Lockdown
@@ -81,7 +85,7 @@ const DropshipDoorControl = (_, context) => {
                     <Button
                       onClick={() =>
                         act('door-control', {
-                          interaction: 'lock',
+                          interaction: 'force-lock',
                           location: x.id,
                         })
                       }

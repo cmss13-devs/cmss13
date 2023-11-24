@@ -166,6 +166,13 @@
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
 
+	// We just deleted the legs so they fell down.
+	// Update again now that the legs are back so they can stand properly during rest of species code and before outside updates kick in.
+	// I hate this code.
+	H.update_leg_status()
+	// While we're deep in shitcode we also force instant transition so this nonsense isn't visually noticeable
+	H.update_transform(instant_update = TRUE)
+
 /datum/species/proc/initialize_pain(mob/living/carbon/human/H)
 	if(pain_type)
 		QDEL_NULL(H.pain)

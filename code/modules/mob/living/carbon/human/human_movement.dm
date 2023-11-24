@@ -140,3 +140,10 @@
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)
+
+/// Updates [TRAIT_FLOORED] based on whether the mob has appropriate limbs to stand or not
+/mob/living/carbon/human/proc/update_leg_status()
+	if((has_limb("r_foot") && has_limb("r_leg")) || (has_limb("l_foot") && has_limb("l_leg")))
+		REMOVE_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)
+	else
+		ADD_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)

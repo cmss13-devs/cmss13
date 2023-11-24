@@ -112,12 +112,7 @@ There are several things that need to be remembered:
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body()
-	if((has_limb("r_foot") && has_limb("r_leg")) || (has_limb("l_foot") && has_limb("l_leg")))
-		// temporary crutch. i know this is in effect an icons proc, but this is literally "update_body" material.
-		// remove this when we can migrate it to signal based limb handling.
-		REMOVE_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)
-	else
-		ADD_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)
+	update_leg_status() // Not icon ops, but placed here due to lack of a non-icons update_body
 
 	appearance_flags |= KEEP_TOGETHER // sanity
 

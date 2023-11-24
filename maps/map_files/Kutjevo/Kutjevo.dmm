@@ -14435,18 +14435,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
-"tRD" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
-/turf/closed/wall/kutjevo/rock,
-/area/kutjevo/interior/oob)
 "tRG" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
@@ -35827,7 +35815,7 @@ dxF
 dxF
 dxF
 dxF
-tRD
+dxF
 dxF
 dxF
 dxF

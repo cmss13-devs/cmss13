@@ -275,12 +275,12 @@
 	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
 	if(!points_to_add)
 		return
-	else if((supply_controller.points + points_to_add) < 0)
-		supply_controller.points = 0
-	else if((supply_controller.points + points_to_add) > 99999)
-		supply_controller.points = 99999
+	else if((GLOB.supply_controller.points + points_to_add) < 0)
+		GLOB.supply_controller.points = 0
+	else if((GLOB.supply_controller.points + points_to_add) > 99999)
+		GLOB.supply_controller.points = 99999
 	else
-		supply_controller.points += points_to_add
+		GLOB.supply_controller.points += points_to_add
 
 
 	message_admins("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
@@ -294,11 +294,11 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 
-	var/req_heat_change = tgui_input_real_number(usr, "Set the new requisitions black market heat. ERT is called at 100, disabled at -1. Current Heat: [supply_controller.black_market_heat]", "Modify Req Heat", 0, 100, -1)
+	var/req_heat_change = tgui_input_real_number(usr, "Set the new requisitions black market heat. ERT is called at 100, disabled at -1. Current Heat: [GLOB.supply_controller.black_market_heat]", "Modify Req Heat", 0, 100, -1)
 	if(!req_heat_change)
 		return
 
-	supply_controller.black_market_heat = req_heat_change
+	GLOB.supply_controller.black_market_heat = req_heat_change
 	message_admins("[key_name_admin(usr)] set requisitions heat to [req_heat_change].")
 
 
@@ -433,12 +433,12 @@
 		return
 
 	var/datum/supply_order/new_order = new()
-	new_order.ordernum = supply_controller.ordernum
-	supply_controller.ordernum++
-	new_order.object = supply_controller.supply_packs[nuketype]
+	new_order.ordernum = GLOB.supply_controller.ordernum
+	GLOB.supply_controller.ordernum++
+	new_order.object = GLOB.supply_controller.supply_packs[nuketype]
 	new_order.orderedby = MAIN_AI_SYSTEM
 	new_order.approvedby = MAIN_AI_SYSTEM
-	supply_controller.shoppinglist += new_order
+	GLOB.supply_controller.shoppinglist += new_order
 
 	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
 	message_admins("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
@@ -507,7 +507,7 @@
 	if(!customname)
 		customname = "[faction] Update"
 	if(faction == FACTION_MARINE)
-		for(var/obj/structure/machinery/computer/almayer_control/C in machines)
+		for(var/obj/structure/machinery/computer/almayer_control/C in GLOB.machines)
 			if(!(C.inoperable()))
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
 				P.name = "'[customname].'"
@@ -678,14 +678,14 @@
 	set name = "Mob Event Verbs - Show"
 	set category = "Admin.Events"
 
-	add_verb(src, admin_mob_event_verbs_hideable)
+	add_verb(src, GLOB.admin_mob_event_verbs_hideable)
 	remove_verb(src, /client/proc/enable_event_mob_verbs)
 
 /client/proc/hide_event_mob_verbs()
 	set name = "Mob Event Verbs - Hide"
 	set category = "Admin.Events"
 
-	remove_verb(src, admin_mob_event_verbs_hideable)
+	remove_verb(src, GLOB.admin_mob_event_verbs_hideable)
 	add_verb(src, /client/proc/enable_event_mob_verbs)
 
 // ----------------------------

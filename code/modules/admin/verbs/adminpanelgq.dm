@@ -2,7 +2,7 @@
 	set name = "Call General Quarters"
 	set category = "Admin.Ship"
 
-	if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
+	if(GLOB.security_level == SEC_LEVEL_RED || GLOB.security_level == SEC_LEVEL_DELTA)
 		tgui_alert(src, "Security is already red or above, General Quarters cannot be called.", "Acknowledge!", list("ok."), 10 SECONDS)
 		return FALSE
 

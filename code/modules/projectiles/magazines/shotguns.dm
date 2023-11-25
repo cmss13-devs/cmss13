@@ -8,11 +8,11 @@ you're looking back on the different shotgun projectiles available. In short of 
 one type of shotgun ammo, but I think it helps in referencing it. ~N
 */
 
-var/list/shotgun_boxes_12g = list(
+GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	/obj/item/ammo_magazine/shotgun/buckshot,
 	/obj/item/ammo_magazine/shotgun/flechette,
 	/obj/item/ammo_magazine/shotgun/slugs
-	)
+	))
 
 /obj/item/ammo_magazine/shotgun
 	name = "box of shotgun slugs"
@@ -151,21 +151,21 @@ also doesn't really matter. You can only reload them with handfuls.
 Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, etc
 */
 
-var/list/shotgun_handfuls_8g = list(
+GLOBAL_LIST_INIT(shotgun_handfuls_8g, list(
 	/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath
-	)
+	))
 
-var/list/shotgun_handfuls_12g = list(
+GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	/obj/item/ammo_magazine/handful/shotgun/slug,
 	/obj/item/ammo_magazine/handful/shotgun/buckshot,
 	/obj/item/ammo_magazine/handful/shotgun/flechette,
 	/obj/item/ammo_magazine/handful/shotgun/incendiary,
 	/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary,
 	/obj/item/ammo_magazine/handful/shotgun/beanbag
-	)
+	))
 
 /obj/item/ammo_magazine/handful/shotgun
 	name = "handful of shotgun slugs (12g)"

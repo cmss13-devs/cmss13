@@ -1,6 +1,6 @@
 #define get_job_playtime(client, job) (client.player_data? LAZYACCESS(client.player_data.playtimes, job)? client.player_data.playtimes[job].total_minutes MINUTES_TO_DECISECOND : 0 : 0)
-#define GET_MAPPED_ROLE(title) (RoleAuthority?.role_mappings[title] ? RoleAuthority.role_mappings[title] : RoleAuthority.roles_by_name[title])
-#define GET_DEFAULT_ROLE(title) (RoleAuthority?.default_roles[title] ? RoleAuthority.default_roles[title] : title)
+#define GET_MAPPED_ROLE(title) (GLOB.RoleAuthority?.role_mappings[title] ? GLOB.RoleAuthority.role_mappings[title] : GLOB.RoleAuthority.roles_by_name[title])
+#define GET_DEFAULT_ROLE(title) (GLOB.RoleAuthority?.default_roles[title] ? GLOB.RoleAuthority.default_roles[title] : title)
 
 // Squad name defines
 #define SQUAD_MARINE_1 "Alpha"
@@ -24,7 +24,7 @@
 #define JOB_SQUAD_ROLES /datum/timelock/squad
 #define JOB_SQUAD_ROLES_LIST list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_TEAM_LEADER)
 
-var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
+GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 
 #define JOB_COLONIST "Colonist"
 #define JOB_PASSENGER "Passenger"
@@ -72,7 +72,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_SO "Staff Officer"
 #define JOB_COMMAND_ROLES /datum/timelock/command
 #define JOB_COMMAND_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_SO)
-var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
+GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_AUXILIARY_OFFICER "Auxiliary Support Officer"
 #define JOB_PILOT "Pilot Officer"

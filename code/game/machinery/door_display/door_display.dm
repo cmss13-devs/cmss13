@@ -31,7 +31,7 @@
 	get_targets()
 
 /obj/structure/machinery/door_display/proc/get_targets()
-	for(var/obj/structure/machinery/door/D in machines)
+	for(var/obj/structure/machinery/door/D in GLOB.machines)
 		if (D.id == id)
 			targets += D
 
@@ -199,7 +199,7 @@
 
 /obj/structure/machinery/door_display/research_cell/get_targets()
 	..()
-	for(var/obj/structure/machinery/flasher/F in machines)
+	for(var/obj/structure/machinery/flasher/F in GLOB.machines)
 		if(F.id == id)
 			targets += F
 	if(has_wall_divider)

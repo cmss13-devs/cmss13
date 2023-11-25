@@ -43,7 +43,7 @@
 		M.unset_interaction()
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
@@ -177,7 +177,7 @@
 		M.unset_interaction()
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 	else
@@ -255,7 +255,7 @@
 		M.unset_interaction()
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()

@@ -47,7 +47,7 @@ FIRE ALARM
 
 	if(stat & BROKEN)
 		icon_state = "firex"
-	else if(stat & NOPOWER & (security_level != SEC_LEVEL_RED))
+	else if(stat & NOPOWER & (GLOB.security_level != SEC_LEVEL_RED))
 		icon_state = "firep"
 
 /obj/structure/machinery/firealarm/fire_act(temperature, volume)
@@ -183,7 +183,7 @@ FIRE ALARM
 		pixel_y = (dir & 3)? (dir ==1 ? -24 : 24) : 0
 
 	if(!is_mainship_level(z))
-		if(security_level)
+		if(GLOB.security_level)
 			src.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_[get_security_level()]")
 		else
 			src.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_green")

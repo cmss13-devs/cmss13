@@ -29,7 +29,7 @@
 /obj/structure/tunnel/Initialize(mapload, h_number)
 	. = ..()
 	var/turf/L = get_turf(src)
-	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
+	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
 
 	if(h_number && GLOB.hive_datum[h_number])
 		hivenumber = h_number

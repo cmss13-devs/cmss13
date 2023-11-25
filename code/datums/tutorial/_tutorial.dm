@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(ongoing_tutorials)
+GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// A tutorial datum contains a set of instructions for a player tutorial, such as what to spawn, what's scripted to occur, and so on.
 /datum/tutorial

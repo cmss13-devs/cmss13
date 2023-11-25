@@ -75,6 +75,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 /// The proc used to end and clean up the tutorial
 /datum/tutorial/proc/end_tutorial(completed = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
+	SIGNAL_HANDLER
 
 	if(tutorial_mob)
 		remove_action(tutorial_mob, /datum/action/tutorial_end)

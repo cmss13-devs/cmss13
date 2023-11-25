@@ -448,8 +448,9 @@
 	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
 		if(istype(equipment, /obj/structure/dropship_equipment/weapon))
 			//is weapon
-			selected_equipment = equipment
-			return equipment
+			if(selected_equipment == equipment)
+				return equipment
+	return
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_cas_signal(target_ref)
 	if(!target_ref)

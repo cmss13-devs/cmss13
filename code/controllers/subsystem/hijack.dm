@@ -238,7 +238,7 @@ SUBSYSTEM_DEF(hijack)
 			return "Complete"
 
 /datum/controller/subsystem/hijack/proc/get_sd_eta()
-	if(!sd_time_remaining)
+	if(sd_detonated)
 		return "Complete"
 
 	if(overloaded_generators <= 0)

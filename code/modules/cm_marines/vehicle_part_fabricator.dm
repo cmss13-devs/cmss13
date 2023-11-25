@@ -12,7 +12,6 @@
 	var/generate_points = TRUE
 	var/valid_parts = null
 	var/valid_ammo = null
-	var/omnisentry_counter = 0
 	var/omnisentry_price_scale = 100
 	var/omnisentry_price = 300
 

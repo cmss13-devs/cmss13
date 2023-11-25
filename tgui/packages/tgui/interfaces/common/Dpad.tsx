@@ -27,7 +27,7 @@ const SvgButton = (
   );
 };
 
-export const Dpad = (props: { panelStateId: string }, context) => {
+export const Dpad = (props, context) => {
   const { act } = useBackend(context);
   const { selectedTarget } = useLazeTarget(context);
 

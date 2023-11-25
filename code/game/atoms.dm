@@ -387,11 +387,11 @@ Parameters are passed from New.
 		var/turf/opaque_turf = loc
 		opaque_turf.directional_opacity = ALL_CARDINALS // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
 
-	pass_flags = pass_flags_cache[type]
+	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()
 		initialize_pass_flags(pass_flags)
-		pass_flags_cache[type] = pass_flags
+		GLOB.pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
 	Decorate(mapload)
@@ -418,7 +418,7 @@ Parameters are passed from New.
 	T.appearance = src.appearance
 	T.setDir(src.dir)
 
-	clones_t.Add(src)
+	GLOB.clones_t.Add(src)
 	src.clone = T
 
 // EFFECTS

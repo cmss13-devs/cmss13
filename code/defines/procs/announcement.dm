@@ -93,7 +93,7 @@
 		if(isobserver(M) || ishuman(M) && is_mainship_level(M.z))
 			playsound_client(M.client, sound_to_play, M, vol = 45)
 
-	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+	for(var/mob/living/silicon/decoy/ship_ai/AI in GLOB.ai_mob_list)
 		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
 
 	switch(logging)
@@ -106,7 +106,7 @@
 	if(!message)
 		return
 
-	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+	for(var/mob/living/silicon/decoy/ship_ai/AI in GLOB.ai_mob_list)
 		if(channel_prefix)
 			message = "[channel_prefix][message]"
 		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)

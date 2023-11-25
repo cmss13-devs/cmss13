@@ -62,7 +62,7 @@
 	..()
 	if(inoperable())
 		icon_state = "modifier_off"
-	nanomanager.update_uis(src) // update all UIs attached to src
+	SSnano.nanomanager.update_uis(src) // update all UIs attached to src
 
 /obj/structure/machinery/chem_simulator/attackby(obj/item/B, mob/living/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
@@ -93,7 +93,7 @@
 	to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
 	flick("[icon_state]_reading",src)
 	update_costs()
-	nanomanager.update_uis(src) // update all UIs attached to src
+	SSnano.nanomanager.update_uis(src) // update all UIs attached to src
 
 /obj/structure/machinery/chem_simulator/attack_hand(mob/user as mob)
 	if(inoperable())
@@ -105,7 +105,7 @@
 
 /obj/structure/machinery/chem_simulator/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/list/data = list(
-		"rsc_credits" = chemical_data.rsc_credits,
+		"rsc_credits" = GLOB.chemical_data.rsc_credits,
 		"target" = target,
 		"reference" = reference,
 		"mode" = mode,
@@ -122,7 +122,7 @@
 
 	if(simulating == SIMULATION_STAGE_FINAL)
 		for(var/reagent_id in recipe_targets)
-			var/datum/reagent/R = chemical_reagents_list[reagent_id]
+			var/datum/reagent/R = GLOB.chemical_reagents_list[reagent_id]
 			var/list/id_name[0]
 			id_name["[R.id]"] = R.name
 			data["recipe_targets"] += id_name
@@ -134,7 +134,7 @@
 
 		//List of all available properties
 		data["property_data_list"] = list()
-		for(var/datum/chem_property/P in chemical_data.research_property_data)
+		for(var/datum/chem_property/P in GLOB.chemical_data.research_property_data)
 			data["property_codings"][P.name] = P.code
 			if(template_filter && !check_bitflag(P.category, template_filter))
 				continue
@@ -182,7 +182,7 @@
 	else
 		data["reference_info"] = ""
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnano.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "chem_simulator.tmpl", "Synthesis Simulator", 800, 550)
 		ui.set_initial_data(data)
@@ -198,7 +198,7 @@
 	if(user.stat || user.is_mob_restrained() || !in_range(src, user))
 		return
 
-	if(mode == MODE_CREATE && chemical_data.has_new_properties)
+	if(mode == MODE_CREATE && GLOB.chemical_data.has_new_properties)
 		update_costs()
 
 	if(href_list["simulate"] && ready)
@@ -252,7 +252,7 @@
 			return
 		if(mode == MODE_CREATE)
 			var/target_name = href_list["set_target"]
-			for(var/datum/chem_property/P in chemical_data.research_property_data)
+			for(var/datum/chem_property/P in GLOB.chemical_data.research_property_data)
 				if(P.name == target_name)
 					if(target_property && target_property.name == target_name)
 						//Toggle the property
@@ -294,15 +294,15 @@
 		newname = reject_bad_name(newname, TRUE, 20, FALSE)
 		if(isnull(newname))
 			to_chat(user, "Bad name.")
-		else if(chemical_reagents_list[newname])
+		else if(GLOB.chemical_reagents_list[newname])
 			to_chat(user, "Name already taken.")
 		else
 			creation_name = newname
 	else if(href_list["set_level"] && target_property)
 		var/level_to_set = 1
-		if(chemical_data.clearance_level <= 2)
+		if(GLOB.chemical_data.clearance_level <= 2)
 			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4))
-		else if(chemical_data.clearance_level <= 4)
+		else if(GLOB.chemical_data.clearance_level <= 4)
 			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8))
 		else
 			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8,9,10))
@@ -350,7 +350,7 @@
 		calculate_creation_cost()
 	ready = check_ready()
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)
-	nanomanager.update_uis(src)
+	SSnano.nanomanager.update_uis(src)
 
 /obj/structure/machinery/chem_simulator/process()
 	if(inoperable())
@@ -384,7 +384,7 @@
 					C.name = C.id
 					if(C.id in simulations)
 						//We've already simulated this before, so we don't need to continue
-						C = chemical_reagents_list[C.id]
+						C = GLOB.chemical_reagents_list[C.id]
 						print(C.id)
 						status_bar = "SIMULATION COMPLETE"
 						simulating = SIMULATION_STAGE_OFF
@@ -398,13 +398,13 @@
 	else
 		ready = check_ready()
 		stop_processing()
-	nanomanager.update_uis(src)
+	SSnano.nanomanager.update_uis(src)
 
 /obj/structure/machinery/chem_simulator/proc/update_costs()
 	property_costs = list()
 	var/only_positive = TRUE
 	if(mode == MODE_CREATE)
-		for(var/datum/chem_property/P in chemical_data.research_property_data)
+		for(var/datum/chem_property/P in GLOB.chemical_data.research_property_data)
 			property_costs[P.name] = max(abs(P.value), 1)
 	else if(target && target.data && target.completed)
 		for(var/datum/chem_property/P in target.data.properties)
@@ -431,7 +431,7 @@
 		if(only_positive)
 			for(var/P in property_costs)
 				property_costs[P] = property_costs[P] + 1
-	chemical_data.has_new_properties = FALSE
+	GLOB.chemical_data.has_new_properties = FALSE
 
 //Here the cost for creating a chemical is calculated. If you're looking to rebalance create mode, this is where you do it
 /obj/structure/machinery/chem_simulator/proc/calculate_creation_cost()
@@ -468,7 +468,7 @@
 		new_od_level = max(new_od_level - 5, 5)
 
 /obj/structure/machinery/chem_simulator/proc/prepare_recipe_options()
-	var/datum/chemical_reaction/generated/O = chemical_reactions_list[target.data.id]
+	var/datum/chemical_reaction/generated/O = GLOB.chemical_reactions_list[target.data.id]
 	if(!O) //If it doesn't have a recipe, go immediately to finalizing, which will then generate a new associated recipe
 		return FALSE
 	recipe_targets = list() //reset
@@ -481,7 +481,7 @@
 			if(LAZYLEN(R.required_reagents) > 2)
 				LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
 			var/new_component_id = R.add_component(tier = max(min(target.data.chemclass, CHEM_CLASS_COMMON), target.data.gen_tier, 1))
-			var/datum/reagent/new_component = chemical_reagents_list[new_component_id]
+			var/datum/reagent/new_component = GLOB.chemical_reagents_list[new_component_id]
 			//Make sure we don't have an identical reaction and that the component is identified
 			if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_SPECIAL)
 				R.required_reagents = old_reaction.Copy()
@@ -512,27 +512,27 @@
 			status_bar = "TARGET CAN NOT BE ALTERED"
 			return FALSE
 		//Safety check in case of irregular papers
-		var/datum/chemical_reaction/C = chemical_reactions_list[target.data.id]
+		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[target.data.id]
 		if(C)
 			for(var/component in C.required_reagents)
-				var/datum/reagent/R = chemical_reagents_list[component]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id])
+				var/datum/reagent/R = GLOB.chemical_reagents_list[component]
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED COMPONENTS DETECTED"
 					return FALSE
 			for(var/catalyst in C.required_catalysts)
-				var/datum/reagent/R = chemical_reagents_list[catalyst]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id])
+				var/datum/reagent/R = GLOB.chemical_reagents_list[catalyst]
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED CATALYSTS DETECTED"
 					return FALSE
 		if(target_property)
-			if(property_costs[target_property.name] > chemical_data.rsc_credits)
+			if(property_costs[target_property.name] > GLOB.chemical_data.rsc_credits)
 				status_bar = "INSUFFICIENT FUNDS"
 				return FALSE
 			if(target_property.category & PROPERTY_TYPE_UNADJUSTABLE)
 				status_bar = "TARGET PROPERTY CAN NOT BE SIMULATED"
 				return FALSE
 			if(mode == MODE_AMPLIFY)
-				if(target_property.level >= chemical_data.clearance_level*TECHTREE_LEVEL_MULTIPLIER + 2 && chemical_data.clearance_level < 5)
+				if(target_property.level >= GLOB.chemical_data.clearance_level*TECHTREE_LEVEL_MULTIPLIER + 2 && GLOB.chemical_data.clearance_level < 5)
 					status_bar = "CLEARANCE INSUFFICIENT FOR AMPLIFICATION"
 					return FALSE
 		if(target && length(target.data.properties) < 2)
@@ -560,7 +560,7 @@
 		if(LAZYLEN(creation_name) < 2)
 			status_bar = "NAME NOT SET"
 			return FALSE
-		if(creation_cost > chemical_data.rsc_credits)
+		if(creation_cost > GLOB.chemical_data.rsc_credits)
 			status_bar = "INSUFFICIENT FUNDS"
 			return FALSE
 	else if(!target)
@@ -575,18 +575,18 @@
 	flick("[icon_state]_printing",src)
 	sleep(10)
 	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
-	var/datum/reagent/D = chemical_reagents_list[id]
+	var/datum/reagent/D = GLOB.chemical_reagents_list[id]
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	report.name = "Simulation result for [D.name]"
 	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.name]</H2></center>"
 	report.generate(D)
-	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
+	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[GLOB.game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	if(is_new)
-		chemical_data.save_document(report, "Synthesis Simulations", report.name)
+		GLOB.chemical_data.save_document(report, "Synthesis Simulations", report.name)
 
 /obj/structure/machinery/chem_simulator/proc/encode_reagent(datum/reagent/C)
-	var/datum/reagent/O = chemical_reagents_list[C.original_id] //So make the new name based on the Original
+	var/datum/reagent/O = GLOB.chemical_reagents_list[C.original_id] //So make the new name based on the Original
 	var/suffix = " "
 	for(var/datum/chem_property/P in C.properties)
 		suffix += P.code+"[P.level]"
@@ -661,7 +661,7 @@
 	R.gen_tier = C.gen_tier
 
 	if(mode != MODE_CREATE)
-		assoc_R = chemical_reactions_list[target.data.id]
+		assoc_R = GLOB.chemical_reactions_list[target.data.id]
 	if(!assoc_R) //no associated recipe found
 		if(mode == MODE_CREATE)
 			assoc_R = C.generate_assoc_recipe(creation_complexity)
@@ -690,25 +690,25 @@
 
 	//Pay
 	if(mode == MODE_CREATE)
-		chemical_data.update_credits(creation_cost * -1)
+		GLOB.chemical_data.update_credits(creation_cost * -1)
 	else
-		chemical_data.update_credits(property_costs[target_property.name] * -1)
+		GLOB.chemical_data.update_credits(property_costs[target_property.name] * -1)
 		//Refund 1 credit if a rare or rarer target was added
-		var/datum/reagent/component = chemical_reagents_list[recipe_target]
+		var/datum/reagent/component = GLOB.chemical_reagents_list[recipe_target]
 		if(component && component.chemclass >= CHEM_CLASS_RARE)
-			chemical_data.update_credits(1)
+			GLOB.chemical_data.update_credits(1)
 
 
 	//Save the reagent
 	C.generate_description()
 	C.chemclass = CHEM_CLASS_RARE //So that we can always scan this in the future, don't generate defcon, and don't get a loop of making credits
-	chemical_reagents_list[C.id] = C
+	GLOB.chemical_reagents_list[C.id] = C
 	LAZYADD(simulations, C.id) //Remember we've simulated this
 
 	//Save the reaction
 	R.id = C.id
 	R.result = C.id
-	chemical_reactions_list[R.id] = R
+	GLOB.chemical_reactions_list[R.id] = R
 	R.add_to_filtered_list()
 	status_bar = "SIMULATION COMPLETE"
 	print(C.id, TRUE)

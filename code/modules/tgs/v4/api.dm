@@ -319,4 +319,4 @@
 	return channel
 
 /datum/tgs_api/v4/SecurityLevel()
-	return security_level
+	return GLOB.security_level

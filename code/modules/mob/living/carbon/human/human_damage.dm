@@ -372,7 +372,7 @@ This function restores all limbs.
 /mob/living/carbon/human/get_limb(zone)
 	RETURN_TYPE(/obj/limb)
 	zone = check_zone(zone)
-	return (locate(limb_types_by_name[zone]) in limbs)
+	return (locate(GLOB.limb_types_by_name[zone]) in limbs)
 
 
 /mob/living/carbon/human/apply_armoured_damage(damage = 0, armour_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0)

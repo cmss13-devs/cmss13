@@ -15,7 +15,7 @@ export const PhoneMenu = (props, context) => {
 
 const GeneralPanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const { availability } = data;
+  const { availability, last_caller } = data;
   const available_transmitters = Object.keys(data.available_transmitters);
   const transmitters = data.transmitters.filter((val1) =>
     available_transmitters.includes(val1.phone_id)
@@ -131,6 +131,7 @@ const GeneralPanel = (props, context) => {
             />
           </Stack.Item>
         )}
+        {!!last_caller && <Stack.Item>Last Caller: {last_caller}</Stack.Item>}
         <Stack.Item>
           <Button
             content="Do Not Disturb"

@@ -502,8 +502,8 @@
 	icon_state = "trimmed_wire"
 
 /obj/item/prop/helmetgarb/bullet_pipe
-	name = "10x99mm XM42B casing pipe"
-	desc = "The XM42B was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by ARMAT systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
+	name = "10x99mm XM43E1 casing pipe"
+	desc = "The XM43E1 was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by ARMAT systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
 	icon_state = "bullet_pipe"
 
 /obj/item/prop/helmetgarb/chaplain_patch
@@ -529,7 +529,7 @@
 /obj/item/prop/helmetgarb/family_photo/pickup(mob/user, silent)
 	. = ..()
 	if(!owner)
-		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
 
 
 ///Sets the owner of the family photo to the human it spawns with, needs var/source for signals

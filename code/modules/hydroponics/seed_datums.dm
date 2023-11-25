@@ -1,5 +1,5 @@
-var/global/list/seed_types = list()    // A list of all seed data.
-var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious trial and error goodness.
+GLOBAL_LIST_EMPTY(seed_types)    // A list of all seed data.
+GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and error goodness.
 
 // Debug for testing seed genes.
 /client/proc/show_plant_genes()
@@ -9,12 +9,12 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 
 	if(!admin_holder) return
 
-	if(!gene_tag_masks)
+	if(!GLOB.gene_tag_masks)
 		to_chat(usr, "Gene masks not set.")
 		return
 
-	for(var/mask in gene_tag_masks)
-		to_chat(usr, "[mask]: [gene_tag_masks[mask]]")
+	for(var/mask in GLOB.gene_tag_masks)
+		to_chat(usr, "[mask]: [GLOB.gene_tag_masks[mask]]")
 
 // Predefined/roundstart varieties use a string key to make it
 // easier to grab the new variety when mutating. Post-roundstart
@@ -26,8 +26,8 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	// Populate the global seed datum list.
 	for(var/type in typesof(/datum/seed)-/datum/seed)
 		var/datum/seed/S = new type
-		seed_types[S.name] = S
-		S.uid = "[seed_types.len]"
+		GLOB.seed_types[S.name] = S
+		S.uid = "[GLOB.seed_types.len]"
 		S.roundstart = 1
 
 	// Make sure any seed packets that were mapped in are updated
@@ -54,7 +54,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 
 		used_masks += gene_mask
 		gene_tags -= gene_tag
-		gene_tag_masks[gene_tag] = gene_mask
+		GLOB.gene_tag_masks[gene_tag] = gene_mask
 
 /datum/plantgene
 	var/genetype // Label used when applying trait.
@@ -379,12 +379,12 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers wither and fall off."))
 			else //New chems! (20% chance)
-				var/new_chem = list(pick( prob(10);pick(chemical_gen_classes_list["C1"]),\
-											prob(15);pick(chemical_gen_classes_list["C2"]),\
-											prob(25);pick(chemical_gen_classes_list["C3"]),\
-											prob(30);pick(chemical_gen_classes_list["C4"]),\
-											prob(15);pick(chemical_gen_classes_list["T1"]),\
-											prob(5);pick(chemical_gen_classes_list["T2"])) = list(1,rand(1,2)))
+				var/new_chem = list(pick( prob(10);pick(GLOB.chemical_gen_classes_list["C1"]),\
+											prob(15);pick(GLOB.chemical_gen_classes_list["C2"]),\
+											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),\
+											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),\
+											prob(15);pick(GLOB.chemical_gen_classes_list["T1"]),\
+											prob(5);pick(GLOB.chemical_gen_classes_list["T2"])) = list(1,rand(1,2)))
 				chems += new_chem
 
 
@@ -580,10 +580,10 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 		to_chat(user, "You [harvest_sample ? "take a sample" : "harvest"] from the [display_name].")
 
 		//This may be a new line. Update the global if it is.
-		if(name == "new line" || !(name in seed_types))
-			uid = seed_types.len + 1
+		if(name == "new line" || !(name in GLOB.seed_types))
+			uid = GLOB.seed_types.len + 1
 			name = "[uid]"
-			seed_types[name] = src
+			GLOB.seed_types[name] = src
 
 		if(harvest_sample)
 			var/obj/item/seeds/seeds = new(get_turf(user))

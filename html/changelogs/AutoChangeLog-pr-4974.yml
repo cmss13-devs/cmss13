@@ -1,4 +1,0 @@
-author: "Releasethesea"
-delete-after: True
-changes:
-  - bugfix: "fixes the XM43E1s name (previously named XM42B) and sprite, fixes the M42C and XM43E1s barrel, correctly names several items relating to the XM43E1"

@@ -215,6 +215,8 @@ const ObservableItem = (
 
   const [autoObserve] = useLocalState<boolean>(context, 'autoObserve', false);
 
+  const displayHealth = typeof health === 'number';
+
   return (
     <Button
       color={'transparent'}
@@ -225,9 +227,9 @@ const ObservableItem = (
         'color': color ? 'white' : 'grey',
       }}
       onClick={() => act('orbit', { ref: ref })}
-      tooltip={!!health && <ObservableTooltip item={item} />}
+      tooltip={displayHealth && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">
-      {!!health && (
+      {displayHealth && (
         <ColorBox
           color={getHealthColor(health)}
           style={{ 'margin-right': '0.5em' }}

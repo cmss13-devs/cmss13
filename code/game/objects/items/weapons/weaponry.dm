@@ -260,7 +260,7 @@
 		M.apply_effect(kill_delay/15, STUN)
 
 
-	for (var/mob/O in hearers(world_view_size, M))
+	for (var/mob/O in hearers(GLOB.world_view_size, M))
 		O << sound('sound/effects/Heart Beat.ogg', repeat = 1, wait = 0, volume = 100, channel = 2) //play on same channel as ambience
 		spawn(kill_delay)
 			O << sound(, , , , channel = 2) //cut sound

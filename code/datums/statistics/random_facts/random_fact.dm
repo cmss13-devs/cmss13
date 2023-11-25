@@ -24,8 +24,8 @@
 	var/datum/entity/statistic/death/death_to_report = null
 	var/mob/mob_to_report = null
 
-	if(round_statistics && length(round_statistics.death_stats_list))
-		for(var/datum/entity/statistic/death/death in round_statistics.death_stats_list)
+	if(GLOB.round_statistics && length(GLOB.round_statistics.death_stats_list))
+		for(var/datum/entity/statistic/death/death in GLOB.round_statistics.death_stats_list)
 			if(!check_human && !death.is_xeno)
 				continue
 			if(!check_xeno && death.is_xeno)

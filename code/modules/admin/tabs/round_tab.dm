@@ -38,9 +38,9 @@
 		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
-		var/datum/job/PJ = RoleAuthority.roles_for_mode[JOB_PREDATOR]
+		var/datum/job/PJ = GLOB.RoleAuthority.roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ) && !PJ.spawn_positions)
-			PJ.set_spawn_positions(players_preassigned)
+			PJ.set_spawn_positions(GLOB.players_preassigned)
 		predator_round.flags_round_type |= MODE_PREDATOR
 	else
 		predator_round.flags_round_type &= ~MODE_PREDATOR
@@ -58,8 +58,8 @@
 	var/roles[] = new
 	var/i
 	var/datum/job/J
-	for(i in RoleAuthority.roles_for_mode) //All the roles in the game.
-		J = RoleAuthority.roles_for_mode[i]
+	for(i in GLOB.RoleAuthority.roles_for_mode) //All the roles in the game.
+		J = GLOB.RoleAuthority.roles_for_mode[i]
 		if(J.total_positions > 0 && J.current_positions > 0)
 			roles += i
 
@@ -67,7 +67,7 @@
 	var/role = input("This list contains all roles that have at least one slot taken.\nPlease select role slot to free.", "Free role slot")  as null|anything in roles
 	if(!role)
 		return
-	RoleAuthority.free_role_admin(RoleAuthority.roles_for_mode[role], TRUE, src)
+	GLOB.RoleAuthority.free_role_admin(GLOB.RoleAuthority.roles_for_mode[role], TRUE, src)
 
 /client/proc/modify_slot()
 	set name = "Adjust Job Slots"
@@ -81,10 +81,10 @@
 
 	var/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
-		active_role_names = ROLES_DISTRESS_SIGNAL
+		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 
 	for(var/role_name as anything in active_role_names)
-		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
+		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			continue
 		roles += role_name
@@ -92,12 +92,12 @@
 	var/role = input("Please select role slot to modify", "Modify amount of slots")  as null|anything in roles
 	if(!role)
 		return
-	J = RoleAuthority.roles_by_name[role]
+	J = GLOB.RoleAuthority.roles_by_name[role]
 	var/tpos = J.spawn_positions
 	var/num = tgui_input_number(src, "How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos)
 	if(isnull(num))
 		return
-	if(!RoleAuthority.modify_role(J, num))
+	if(!GLOB.RoleAuthority.modify_role(J, num))
 		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
 	message_admins("[key_name(usr)] adjusted job slots of [J.title] to be [num].")
 

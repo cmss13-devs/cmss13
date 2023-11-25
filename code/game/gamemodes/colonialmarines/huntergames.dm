@@ -83,8 +83,6 @@
 								100; /obj/item/clothing/suit/storage/CMB \
 								)
 
-var/waiting_for_drop_votes = 0
-
 //Digging through this is a pain. I'm leaving it mostly alone until a full rework takes place.
 
 /datum/game_mode/huntergames
@@ -104,6 +102,8 @@ var/waiting_for_drop_votes = 0
 
 	var/ticks_passed = 0
 	var/drops_disabled = 0
+
+	var/waiting_for_drop_votes = FALSE
 
 	votable = FALSE // borkeds
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
@@ -234,7 +234,7 @@ var/waiting_for_drop_votes = 0
 		H = new(picked)
 
 	H.key = M.key
-	if(H.client) H.client.change_view(world_view_size)
+	if(H.client) H.client.change_view(GLOB.world_view_size)
 
 	if(!H.mind)
 		H.mind = new(H.key)
@@ -393,8 +393,8 @@ var/waiting_for_drop_votes = 0
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/huntergames/declare_completion()
-	if(round_statistics)
-		round_statistics.track_round_end()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_round_end()
 	var/mob/living/carbon/winner = null
 
 	for(var/mob/living/carbon/human/Q in GLOB.alive_mob_list)
@@ -415,12 +415,12 @@ var/waiting_for_drop_votes = 0
 		to_world("<FONT size = 3><B>There was a winner, but they died before they could receive the prize!! Bummer.</B></FONT>")
 		world << 'sound/misc/sadtrombone.ogg'
 
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = count_humans()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = count_humans()
 
-		round_statistics.log_round_statistics()
+		GLOB.round_statistics.log_round_statistics()
 
 
 	return 1

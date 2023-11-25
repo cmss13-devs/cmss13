@@ -48,12 +48,12 @@
 	return ..()
 
 /obj/item/device/tracker/proc/select_object(mob/user)
-	if(!LAZYLEN(objects_of_interest))
+	if(!LAZYLEN(GLOB.objects_of_interest))
 		to_chat(user, SPAN_WARNING("There are nothing of interest to track."))
 		return
 
 	var/list/object_choices = list()
-	for(var/obj/O in objects_of_interest)
+	for(var/obj/O in GLOB.objects_of_interest)
 		var/z_level_to_compare_from = O.z
 		if(istype(O.loc, /obj/structure/surface))
 			z_level_to_compare_from = O.loc.z

@@ -252,7 +252,9 @@ const ObservableTooltip = (props: { item: Observable }) => {
   const {
     item: { caste, health, job, full_name, icon, background_color },
   } = props;
-  const displayHealth = !!health && health >= 0 ? `${health}%` : 'Critical';
+
+  const displayHealth = typeof health === 'number';
+  const healthText = !!health && health >= 0 ? `${health}%` : 'Critical';
 
   return (
     <LabeledList>
@@ -275,8 +277,8 @@ const ObservableTooltip = (props: { item: Observable }) => {
           {job}
         </LabeledList.Item>
       )}
-      {!!health && (
-        <LabeledList.Item label="Health">{displayHealth}</LabeledList.Item>
+      {displayHealth && (
+        <LabeledList.Item label="Health">{healthText}</LabeledList.Item>
       )}
     </LabeledList>
   );

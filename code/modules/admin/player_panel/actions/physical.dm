@@ -91,8 +91,8 @@
 						if(SKILL_SPEC_SNIPER)
 							set_name = "Sniper Set"
 
-					if(set_name && !available_specialist_sets.Find(set_name))
-						available_specialist_sets += set_name
+					if(set_name && !GLOB.available_specialist_sets.Find(set_name))
+						GLOB.available_specialist_sets += set_name
 			S.forget_marine_in_squad(H)
 		message_admins("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
 
@@ -100,7 +100,7 @@
 	SSticker.mode.latejoin_tally -= RoleAuthority.calculate_role_weight(job)
 
 	//Handle job slot/tater cleanup.
-	RoleAuthority.free_role(RoleAuthority.roles_for_mode[target.job], TRUE)
+	GLOB.RoleAuthority.free_role(GLOB.RoleAuthority.roles_for_mode[target.job], TRUE)
 
 	//Delete them from datacore.
 	var/target_ref = WEAKREF(target)
@@ -202,7 +202,7 @@
 
 /datum/player_action/set_squad/act(client/user, mob/living/carbon/human/target, list/params)
 	var/list/squads = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
+	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 		squads[S.name] = S
 
 	var/selected_squad = tgui_input_list(user, "Select a squad.", "Squad Selection", squads)

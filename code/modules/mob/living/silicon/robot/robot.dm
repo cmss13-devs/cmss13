@@ -1,6 +1,6 @@
-var/list/robot_verbs_default = list(
+GLOBAL_LIST_INIT(robot_verbs_default, list(
 	/mob/living/silicon/robot/proc/sensor_mode
-)
+))
 
 #define CYBORG_POWER_USAGE_MULTIPLIER 2.5 // Multiplier for amount of power cyborgs use.
 
@@ -871,7 +871,7 @@ var/list/robot_verbs_default = list(
 	//Disconnect it's camera so it's not so easily tracked.
 	if(src.camera)
 		src.camera.network = list()
-		cameranet.removeCamera(src.camera)
+		GLOB.cameranet.removeCamera(src.camera)
 
 
 /mob/living/silicon/robot/proc/ResetSecurityCodes()
@@ -933,10 +933,10 @@ var/list/robot_verbs_default = list(
 	toggle_sensor_mode()
 
 /mob/living/silicon/robot/proc/add_robot_verbs()
-	add_verb(src, robot_verbs_default)
+	add_verb(src, GLOB.robot_verbs_default)
 
 /mob/living/silicon/robot/proc/remove_robot_verbs()
-	remove_verb(src, robot_verbs_default)
+	remove_verb(src, GLOB.robot_verbs_default)
 
 // Uses power from cyborg's cell. Returns 1 on success or 0 on failure.
 // Properly converts using CELLRATE now! Amount is in Joules.

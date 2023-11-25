@@ -253,7 +253,7 @@
 
 /datum/tgs_api/v5/SecurityLevel()
 	RequireInitialBridgeResponse()
-	return security_level
+	return GLOB.security_level
 
 /datum/tgs_api/v5/Visibility()
 	RequireInitialBridgeResponse()

@@ -94,8 +94,8 @@
 	layer = AREAS_LAYER
 	uid = ++global_uid
 	. = ..()
-	active_areas += src
-	all_areas += src
+	GLOB.active_areas += src
+	GLOB.all_areas += src
 	reg_in_areas_in_z()
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
@@ -138,13 +138,13 @@
 					C.network.Remove(CAMERA_NET_POWER_ALARMS)
 				else
 					C.network.Add(CAMERA_NET_POWER_ALARMS)
-			for (var/mob/living/silicon/aiPlayer in ai_mob_list)
+			for (var/mob/living/silicon/aiPlayer in GLOB.ai_mob_list)
 				if(aiPlayer.z == source.z)
 					if (state == 1)
 						aiPlayer.cancelAlarm("Power", src, source)
 					else
 						aiPlayer.triggerAlarm("Power", src, cameras, source)
-			for(var/obj/structure/machinery/computer/station_alert/a in machines)
+			for(var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 				if(a.z == source.z)
 					if(state == 1)
 						a.cancelAlarm("Power", src, source)
@@ -169,9 +169,9 @@
 		if (danger_level < 2 && atmosalm >= 2)
 			for(var/obj/structure/machinery/camera/C in src)
 				C.network.Remove(CAMERA_NET_ATMOSPHERE_ALARMS)
-			for(var/mob/living/silicon/aiPlayer in ai_mob_list)
+			for(var/mob/living/silicon/aiPlayer in GLOB.ai_mob_list)
 				aiPlayer.cancelAlarm("Atmosphere", src, src)
-			for(var/obj/structure/machinery/computer/station_alert/a in machines)
+			for(var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 				a.cancelAlarm("Atmosphere", src, src)
 
 		if (danger_level >= 2 && atmosalm < 2)
@@ -180,9 +180,9 @@
 			for(var/obj/structure/machinery/camera/C in src)
 				cameras += C
 				C.network.Add(CAMERA_NET_ATMOSPHERE_ALARMS)
-			for(var/mob/living/silicon/aiPlayer in ai_mob_list)
+			for(var/mob/living/silicon/aiPlayer in GLOB.ai_mob_list)
 				aiPlayer.triggerAlarm("Atmosphere", src, cameras, src)
-			for(var/obj/structure/machinery/computer/station_alert/a in machines)
+			for(var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 				a.triggerAlarm("Atmosphere", src, cameras, src)
 			air_doors_close()
 
@@ -231,9 +231,9 @@
 		for (var/obj/structure/machinery/camera/C in src)
 			cameras.Add(C)
 			C.network.Add(CAMERA_NET_FIRE_ALARMS)
-		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
+		for (var/mob/living/silicon/ai/aiPlayer in GLOB.ai_mob_list)
 			aiPlayer.triggerAlarm("Fire", src, cameras, src)
-		for (var/obj/structure/machinery/computer/station_alert/a in machines)
+		for (var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 			a.triggerAlarm("Fire", src, cameras, src)
 
 /area/proc/firereset()
@@ -249,9 +249,9 @@
 					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 		for (var/obj/structure/machinery/camera/C in src)
 			C.network.Remove(CAMERA_NET_FIRE_ALARMS)
-		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
+		for (var/mob/living/silicon/ai/aiPlayer in GLOB.ai_mob_list)
 			aiPlayer.cancelAlarm("Fire", src, src)
-		for (var/obj/structure/machinery/computer/station_alert/a in machines)
+		for (var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 			a.cancelAlarm("Fire", src, src)
 
 /area/proc/readyalert()

@@ -343,14 +343,14 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 						if(SKILL_SPEC_SNIPER)
 							set_name = "Sniper Set"
 
-					if(set_name && !available_specialist_sets.Find(set_name))
-						available_specialist_sets += set_name
+					if(set_name && !GLOB.available_specialist_sets.Find(set_name))
+						GLOB.available_specialist_sets += set_name
 
 	//Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 	SSticker.mode.latejoin_tally -= RoleAuthority.calculate_role_weight(job)
 
 	//Handle job slot/tater cleanup.
-	RoleAuthority.free_role(GET_MAPPED_ROLE(occupant.job), TRUE)
+	GLOB.RoleAuthority.free_role(GET_MAPPED_ROLE(occupant.job), TRUE)
 
 	var/occupant_ref = WEAKREF(occupant)
 	//Delete them from datacore.

@@ -72497,13 +72497,6 @@
 /obj/item/pizzabox/margherita{
 	pixel_y = 8
 	},
-/obj/item/weapon/pizza_cutter{
-	force = 20;
-	name = "\improper Replica PIZZA TIME";
-	desc = "A cheap replica of the fabled PIZZA TIME novelty pizza cutter, this one is not as sharp as the original which legends said could slice any pizza....";
-	pixel_x = -6;
-	pixel_y = 8
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green"

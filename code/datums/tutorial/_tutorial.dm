@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(ongoing_tutorials)
+GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// A tutorial datum contains a set of instructions for a player tutorial, such as what to spawn, what's scripted to occur, and so on.
 /datum/tutorial
@@ -75,6 +75,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 /// The proc used to end and clean up the tutorial
 /datum/tutorial/proc/end_tutorial(completed = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
+	SIGNAL_HANDLER
 
 	if(tutorial_mob)
 		remove_action(tutorial_mob, /datum/action/tutorial_end) // Just in case to make sure the client can't try and leave the tutorial while it's mid-cleanup

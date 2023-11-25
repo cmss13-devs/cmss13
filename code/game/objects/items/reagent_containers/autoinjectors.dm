@@ -140,7 +140,7 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
-	desc = "An EZ autoinjector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with 1 use of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1

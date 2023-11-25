@@ -84,12 +84,11 @@
 
 
 /obj/structure/machinery/flasher/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	if(prob(75/severity))
 		flash()
-	..(severity)
 
 /obj/structure/machinery/flasher/portable/HasProximity(atom/movable/AM as mob|obj)
 	if ((src.disable) || (src.last_flash && world.time < src.last_flash + 150))
@@ -134,7 +133,7 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/flasher/M in machines)
+	for(var/obj/structure/machinery/flasher/M in GLOB.machines)
 		if(M.id == src.id)
 			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/flasher, flash))
 

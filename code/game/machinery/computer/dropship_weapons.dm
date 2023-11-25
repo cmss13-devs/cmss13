@@ -162,7 +162,7 @@
 	if(!faction)
 		return UI_CLOSE
 
-	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	if(!cas_group)
 		return UI_CLOSE
 
@@ -386,7 +386,7 @@
 			var/x_offset_value = params["x_offset_value"]
 			var/y_offset_value = params["y_offset_value"]
 
-			var/datum/cas_iff_group/cas_group = cas_groups[faction]
+			var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 			var/datum/cas_signal/cas_sig
 			for(var/X in cas_group.cas_signals)
 				var/datum/cas_signal/LT = X
@@ -456,7 +456,7 @@
 	if(!target_ref)
 		return
 
-	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	for(var/datum/cas_signal/sig in cas_group.cas_signals)
 		if(sig.target_id == target_ref)
 			return sig
@@ -549,7 +549,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_targets()
 	. = list()
-	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
 		if(!istype(LT) || !LT.valid_signal())
 			continue
@@ -604,7 +604,7 @@
 		to_chat(weapon_operator, SPAN_WARNING("[DEW] just fired, wait for it to cool down."))
 		return FALSE
 
-	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 
 	if(!cas_group)
 		return FALSE//broken group. No fighting
@@ -718,7 +718,7 @@
 	if(dropship.mode != SHUTTLE_CALL)
 		to_chat(weapons_operator, SPAN_WARNING("Shuttle has to be in orbit."))
 		return FALSE
-	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	var/datum/cas_signal/cas_sig
 	for(var/X in cas_group.cas_signals)
 		var/datum/cas_signal/LT = X

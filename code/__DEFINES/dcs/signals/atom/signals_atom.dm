@@ -51,3 +51,6 @@
 
 /// Called when an atom is mouse dropped on another atom, from /client/MouseDrop: (atom/dropped_onto)
 #define COMSIG_ATOM_DROP_ON "atom_drop_on"
+
+/// Called when an atom has emp_act called on it, from /atom/emp_act: (severity)
+#define COMSIG_ATOM_EMP_ACT "atom_emp_act"

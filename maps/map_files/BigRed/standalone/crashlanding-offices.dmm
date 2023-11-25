@@ -23,8 +23,9 @@
 	},
 /area/bigredv2/outside/c)
 "ag" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/e)
 "ah" = (
@@ -38,13 +39,12 @@
 /area/bigredv2/outside/e)
 "aj" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_11"
+	icon_state = "mars_dirt_12"
 	},
 /area/bigredv2/outside/e)
 "ak" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
+/turf/open/mars{
+	icon_state = "mars_dirt_11"
 	},
 /area/bigredv2/outside/e)
 "al" = (
@@ -54,8 +54,8 @@
 	},
 /area/bigredv2/outside/e)
 "am" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12"
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/outside/e)
 "an" = (
@@ -2147,8 +2147,8 @@ Ha
 dq
 "}
 (20,1,1) = {"
-aj
-ag
+ai
+at
 aA
 dX
 dX
@@ -2175,7 +2175,7 @@ PR
 "}
 (21,1,1) = {"
 ak
-ak
+am
 aA
 aG
 dX
@@ -2201,9 +2201,9 @@ Ha
 PR
 "}
 (22,1,1) = {"
-al
-al
-aA
+ag
+ag
+aG
 aG
 dX
 ap
@@ -2228,9 +2228,9 @@ Ha
 PR
 "}
 (23,1,1) = {"
-am
-ag
-aA
+al
+al
+aG
 aG
 aG
 ap
@@ -2255,8 +2255,8 @@ Ha
 dq
 "}
 (24,1,1) = {"
-ai
-at
+aj
+am
 aA
 aG
 aG

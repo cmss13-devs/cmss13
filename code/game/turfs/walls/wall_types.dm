@@ -28,15 +28,23 @@
 		/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend,
 	)
 
+	/// The type of wall decoration we use, to avoid the wall changing icon all the time
+	var/decoration_type
+
+/turf/closed/wall/almayer/Initialize(mapload, ...)
+	if(!special_icon && prob(20))
+		decoration_type = rand(0,3)
+	return ..()
+
 /turf/closed/wall/almayer/update_icon()
-	..()
-	if(special_icon)
-		return
+	if(decoration_type == null)
+		return ..()
 	if(neighbors_list in list(EAST|WEST))
-		var/r1 = rand(0,10) //Make a random chance for this to happen
-		var/r2 = rand(0,3) // Which wall if we do choose it
-		if(r1 >= 9)
-			overlays += image(icon, icon_state = "almayer_deco_wall[r2]")
+		special_icon = TRUE
+		icon_state = "almayer_deco_wall[decoration_type]"
+	else // Wall connection was broken, return to normality
+		special_icon = FALSE
+	return ..()
 
 /turf/closed/wall/almayer/take_damage(dam, mob/M)
 	var/damage_check = max(0, damage + dam)
@@ -255,15 +263,15 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	tag = "LOBBYART"
 
 /proc/force_lobby_art(art_id)
-	displayed_lobby_art = art_id
+	GLOB.displayed_lobby_art = art_id
 	var/turf/closed/wall/indestructible/splashscreen/SS = locate("LOBBYART")
 	var/list/lobby_arts = CONFIG_GET(str_list/lobby_art_images)
 	var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
-	SS.icon_state = lobby_arts[displayed_lobby_art]
-	SS.desc = "Artwork by [lobby_authors[displayed_lobby_art]]"
+	SS.icon_state = lobby_arts[GLOB.displayed_lobby_art]
+	SS.desc = "Artwork by [lobby_authors[GLOB.displayed_lobby_art]]"
 	for(var/client/C in GLOB.clients)
-		if(displayed_lobby_art != -1)
-			var/author = lobby_authors[displayed_lobby_art]
+		if(GLOB.displayed_lobby_art != -1)
+			var/author = lobby_authors[GLOB.displayed_lobby_art]
 			if(author != "Unknown")
 				to_chat_forced(C, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 
@@ -814,7 +822,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 				var/datum/movable_wall_group/MWG = new()
 				MWG.add_structure(current)
 
-			for(var/dir in cardinal)
+			for(var/dir in GLOB.cardinals)
 				connected = locate() in get_step(current, dir)
 				if(connected in current_walls)
 					if(connected.group == src)
@@ -949,7 +957,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /obj/structure/alien/movable_wall/proc/update_connections(propagate = FALSE)
 	var/list/wall_dirs = list()
 
-	for(var/dir in alldirs)
+	for(var/dir in GLOB.alldirs)
 		var/obj/structure/alien/movable_wall/MW = locate() in get_step(src, dir)
 		if(!(MW in group.walls))
 			continue
@@ -1003,7 +1011,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /obj/structure/alien/movable_wall/proc/recalculate_structure()
 	var/list/found_structures = list()
 	var/current_walls = 0
-	for(var/i in cardinal)
+	for(var/i in GLOB.cardinals)
 		var/turf/T = get_step(src, i)
 		var/obj/structure/alien/movable_wall/MW = locate() in T
 		if(!MW)
@@ -1060,7 +1068,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 			return COMPONENT_TURF_ALLOW_MOVEMENT
 
 /obj/structure/alien/movable_wall/Move(NewLoc, direct)
-	if(!(direct in cardinal))
+	if(!(direct in GLOB.cardinals))
 		return
 	group.try_move_in_direction(direct)
 
@@ -1234,7 +1242,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	. = ..()
 	if(.)
 		var/turf/T
-		for(var/i in cardinal)
+		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
 			if(!istype(T)) continue
 			for(var/obj/structure/mineral_door/resin/R in T)

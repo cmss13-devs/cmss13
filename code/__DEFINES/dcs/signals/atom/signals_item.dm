@@ -66,7 +66,7 @@
 /// from  /obj/item/weapon/gun/proc/load_into_chamber() : ()
 #define COMSIG_GUN_INTERRUPT_FIRE "gun_interrupt_fire"
 
-//Additional procs on items that will be triggered right after the human finishes spawns in
+//from /datum/authority/branch/role/proc/equip_role()
 #define COMSIG_POST_SPAWN_UPDATE "post_spawn_update"
 
 #define COMSIG_CAMERA_MAPNAME_ASSIGNED "camera_manager_mapname_assigned"

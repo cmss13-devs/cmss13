@@ -133,8 +133,8 @@
 	new_death.total_damage_taken = life_damage_taken_total
 	new_death.total_revives_done = life_revives_total
 
-	if(round_statistics)
-		round_statistics.track_death(new_death)
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_death(new_death)
 
 	new_death.save()
 	new_death.detach()

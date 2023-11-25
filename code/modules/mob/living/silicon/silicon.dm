@@ -36,6 +36,7 @@
 	return
 
 /mob/living/silicon/emp_act(severity)
+	. = ..()
 	switch(severity)
 		if(1)
 			src.take_limb_damage(20)
@@ -47,7 +48,6 @@
 
 	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
 	to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
-	..()
 
 /mob/living/silicon/stun_effect_act(stun_amount, agony_amount)
 	return //immune
@@ -148,12 +148,12 @@
 	var/HUD_nbr = 1
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_OBSERVER]
+			H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 			HUD_nbr = 2
 		if("Squad HUD")
-			H = huds[MOB_HUD_FACTION_USCM]
+			H = GLOB.huds[MOB_HUD_FACTION_USCM]
 			HUD_nbr = 3
 		else
 			return

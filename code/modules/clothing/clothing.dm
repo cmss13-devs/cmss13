@@ -130,12 +130,12 @@
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()
 
-	LAZYADD(objects_of_interest, src)
+	LAZYADD(GLOB.objects_of_interest, src)
 
 /obj/item/clothing/ears/earmuffs/Destroy()
 	. = ..()
 
-	LAZYREMOVE(objects_of_interest, src)
+	LAZYREMOVE(GLOB.objects_of_interest, src)
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -217,6 +217,7 @@
 		M.update_inv_gloves()
 
 /obj/item/clothing/gloves/emp_act(severity)
+	. = ..()
 	if(cell)
 		//why is this not part of the powercell code?
 		cell.charge -= 1000 / severity
@@ -224,7 +225,6 @@
 			cell.charge = 0
 		if(cell.reliability != 100 && prob(50/severity))
 			cell.reliability -= 10 / severity
-	..()
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
 /obj/item/clothing/gloves/proc/Touch(atom/A, proximity)

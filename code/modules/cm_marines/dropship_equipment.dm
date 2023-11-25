@@ -857,7 +857,7 @@
 
 /obj/structure/dropship_equipment/medevac_system/proc/get_targets()
 	. = list()
-	for(var/obj/structure/bed/medevac_stretcher/MS in activated_medevac_stretchers)
+	for(var/obj/structure/bed/medevac_stretcher/MS in GLOB.activated_medevac_stretchers)
 		var/area/AR = get_area(MS)
 		var/evaccee_name
 		var/evaccee_triagecard_color
@@ -1195,7 +1195,7 @@
 
 /obj/structure/dropship_equipment/fulton_system/proc/get_targets()
 	. = list()
-	for(var/obj/item/stack/fulton/F in deployed_fultons)
+	for(var/obj/item/stack/fulton/F in GLOB.deployed_fultons)
 		var/recovery_object
 		if(F.attached_atom)
 			recovery_object = F.attached_atom.name
@@ -1304,7 +1304,7 @@
 	color = "#17d17a"
 
 /obj/structure/dropship_equipment/rappel_system/attack_hand(mob/living/carbon/human/user)
-	var/datum/cas_iff_group/cas_group = cas_groups[FACTION_MARINE]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[FACTION_MARINE]
 	var/list/targets = cas_group.cas_signals
 
 	if(!LAZYLEN(targets))

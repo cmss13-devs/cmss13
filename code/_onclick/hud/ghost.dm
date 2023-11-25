@@ -48,6 +48,14 @@
 	var/mob/dead/observer/G = usr
 	G.reenter_corpse()
 
+/atom/movable/screen/ghost/toggle_huds
+	name = "Toggle HUDs"
+	icon_state = "ghost_hud_toggle"
+
+/atom/movable/screen/ghost/toggle_huds/Click()
+	var/client/client = usr.client
+	client.toggle_ghost_hud()
+
 /datum/hud/ghost/New(mob/owner, ui_style='icons/mob/hud/human_white.dmi', ui_color, ui_alpha = 230)
 	. = ..()
 	var/atom/movable/screen/using
@@ -68,6 +76,9 @@
 	using.screen_loc = ui_ghost_slot4
 	static_inventory += using
 
+	using = new /atom/movable/screen/ghost/toggle_huds()
+	using.screen_loc = ui_ghost_slot5
+	static_inventory += using
 
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)
 	// don't show this HUD if observing; show the HUD of the observee

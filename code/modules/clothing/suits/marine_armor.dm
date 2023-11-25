@@ -909,9 +909,9 @@
 
 	RegisterSignal(H, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.remove_from_hud(H)
 
 	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
@@ -941,9 +941,9 @@
 	REMOVE_TRAIT(H, TRAIT_UNDENSE, SPECIALIST_GEAR_TRAIT)
 	H.update_canmove()
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(H)
 
 	H.visible_message(SPAN_DANGER("[H]'s camouflage fails!"), SPAN_WARNING("Your camouflage fails!"), max_distance = 4)
@@ -1107,8 +1107,8 @@
 	item_state_slots = list(WEAR_JACKET = "pmc_sniper")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth
-	name = "\improper M4 synthetic PMC armor"
-	desc = "A modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, offering protection and storage while not restricting movement."
+	name = "\improper M4 Synthetic PMC armor"
+	desc = "A serious modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, with every armor insert removed. It's designed with the idea of a high speed lifesaver in mind."
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	armor_melee = CLOTHING_ARMOR_NONE
@@ -1120,6 +1120,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	storage_slots = 3
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth/Initialize()
 	flags_atom |= NO_NAME_OVERRIDE

@@ -15,7 +15,7 @@
 	to_world("<B>Don't ahelp asking for specific details, you won't get them.</B>")
 
 /datum/game_mode/infection/get_roles_list()
-	return ROLES_USCM
+	return GLOB.ROLES_USCM
 
 /datum/game_mode/infection/pre_setup()
 	return ..()
@@ -61,7 +61,7 @@
 			possible_synth_survivors -= A
 			continue
 
-		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
+		if(GLOB.RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
 			if(A in possible_survivors)
 				continue //they are already applying to be a survivor
 			else
@@ -120,11 +120,11 @@
 	var/musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 	world << musical_track
 
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = GLOB.clients.len
-		round_statistics.log_round_statistics()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
+		GLOB.round_statistics.log_round_statistics()
 
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()

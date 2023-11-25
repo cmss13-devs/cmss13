@@ -59,12 +59,6 @@ Possible to do for anyone motivated enough:
 	Itegrate EMP effect to disable the unit.
 */
 
-
-// HOLOPAD MODE
-// 0 = RANGE BASED
-// 1 = AREA BASED
-var/const/HOLOPAD_MODE = 0
-
 /obj/structure/machinery/hologram/holopad
 	name = "\improper AI holopad"
 	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
@@ -167,16 +161,8 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	if(hologram)//If there is a hologram.
 		if(master && !master.stat && master.client && master.eyeobj)//If there is an AI attached, it's not incapacitated, it has a client, and the client eye is centered on the projector.
 			if(!(stat & NOPOWER))//If the  machine has power.
-				if((HOLOPAD_MODE == 0 && (get_dist(master.eyeobj, src) <= holo_range)))
+				if(get_dist(master.eyeobj, src) <= holo_range)
 					return 1
-
-				else if (HOLOPAD_MODE == 1)
-
-					var/area/holo_area = get_area(src)
-					var/area/eye_area = get_area(master.eyeobj)
-
-					if(eye_area == holo_area)
-						return 1
 
 		clear_holo()//If not, we want to get rid of the hologram.
 	return 1

@@ -26,17 +26,17 @@
 		if(prob(10))
 			first_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
 		else
-			first_name = "[pick(first_names_male_pmc)]"
+			first_name = "[pick(GLOB.first_names_male_pmc)]"
 		new_human.f_style = "5 O'clock Shadow"
 	else
 		if(prob(10))
 			first_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
 		else
-			first_name = "[pick(first_names_female_pmc)]"
+			first_name = "[pick(GLOB.first_names_female_pmc)]"
 	if(prob(25))
 		last_name = "[capitalize(randomly_generate_japanese_word(rand(2, 4)))]"
 	else
-		last_name = "[pick(last_names_pmc)]"
+		last_name = "[pick(GLOB.last_names_pmc)]"
 	random_name = "[first_name] [last_name]"
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(25,35)
@@ -1860,9 +1860,9 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
 	else if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male_pmc)]"
+		random_name = "[pick(GLOB.first_names_male_pmc)]"
 	else
-		random_name = "[pick(first_names_female_pmc)]"
+		random_name = "[pick(GLOB.first_names_female_pmc)]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = "5 O'clock Shadow"

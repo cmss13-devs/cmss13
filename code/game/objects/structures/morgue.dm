@@ -113,7 +113,7 @@
 	else
 		. = ..()
 
-/obj/structure/morgue/relaymove(mob/user)
+/obj/structure/morgue/relaymove(mob/living/user)
 	if(user.is_mob_incapacitated())
 		return
 	if(exit_stun)

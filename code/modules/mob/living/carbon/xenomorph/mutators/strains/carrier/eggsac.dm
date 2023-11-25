@@ -90,6 +90,7 @@
 /datum/behavior_delegate/carrier_eggsac/Destroy()
 	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
 		my_egg.owner = null
+	return ..()
 
 /datum/action/xeno_action/active_toggle/generate_egg
 	name = "Generate Eggs (50)"

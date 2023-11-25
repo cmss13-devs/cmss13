@@ -229,6 +229,7 @@
  */
 /datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
 	stat = FIRE_MISSION_STATE_IN_TRANSIT
+	to_chat(usr, SPAN_ALERT("Firemission underway!"))
 	sleep(grace_period)
 	stat = FIRE_MISSION_STATE_ON_TARGET
 	if(!target_turf)

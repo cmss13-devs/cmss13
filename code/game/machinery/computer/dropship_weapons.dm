@@ -439,10 +439,8 @@
 			if(!ui_select_laser_firemission(user, shuttle, target_id))
 				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
 				return FALSE
-			if(!initiate_firemission(user, fm_tag, direction, text2num(offset_x_value), text2num(offset_y_value)))
-				to_chat(user, SPAN_WARNING("initiate fail"))
-				playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
-				return FALSE
+
+			initiate_firemission(user, fm_tag, direction, text2num(offset_x_value), text2num(offset_y_value))
 			return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
@@ -760,8 +758,6 @@
 	if(result<1)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 		return FALSE
-	else
-		update_trace_loc()
 	return TRUE
 
 
@@ -770,8 +766,6 @@
 	if(result<1)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 		return FALSE
-	else
-		update_trace_loc()
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc(mob/user)

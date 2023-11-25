@@ -493,8 +493,8 @@
 	var/area/current_area = get_area(src)
 	if(current_area && current_area.statistic_exempt)
 		statistic_exempt = TRUE
-	if(round_statistics && !statistic_exempt)
-		round_statistics.track_new_participant(faction, 1)
+	if(GLOB.round_statistics && !statistic_exempt)
+		GLOB.round_statistics.track_new_participant(faction, 1)
 
 	// This can happen if a xeno gets made before the game starts
 	if (hive && hive.hive_ui)
@@ -791,7 +791,7 @@
 
 	//and display them
 	add_to_all_mob_huds()
-	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 
 
@@ -1080,7 +1080,7 @@
 /mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
 	var/color_override
 	if(special_blood)
-		var/datum/reagent/D = chemical_reagents_list[special_blood]
+		var/datum/reagent/D = GLOB.chemical_reagents_list[special_blood]
 		if(D)
 			color_override = D.color
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)

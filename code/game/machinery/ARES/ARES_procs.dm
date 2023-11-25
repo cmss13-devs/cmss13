@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 // ------ ARES Logging Procs ------ //
 /proc/ares_apollo_talk(broadcast_message)
 	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
+	for(var/mob/living/silicon/decoy/ship_ai/ai in GLOB.ai_mob_list)
 		if(ai.stat == DEAD)
 			return FALSE
 		apollo.broadcast(ai, broadcast_message)

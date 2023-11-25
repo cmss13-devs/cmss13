@@ -289,7 +289,7 @@
 /obj/item/tool/pen/fountain/pickup(mob/user, silent)
 	. = ..()
 	if(!owner_name)
-		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
 
 ///Sets the owner of the pen to who it spawns with, requires var/source for signals
 /obj/item/tool/pen/fountain/proc/set_owner(datum/source)

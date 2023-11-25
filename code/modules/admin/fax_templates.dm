@@ -70,7 +70,7 @@
 
 	dat += "<div class='message-header-text'>"
 	dat += "<p id='header-title'>[fax_header]</p>"
-	dat += "<p id='header-subtitle'>[fax_subject] - [time2text(world.realtime, "DD Month")] [game_year]</p>"
+	dat += "<p id='header-subtitle'>[fax_subject] - [time2text(world.realtime, "DD Month")] [GLOB.game_year]</p>"
 	dat += "</div> <!-- /message-header-text -->"
 
 	dat += "<div class='message-body-text'>"

@@ -27484,6 +27484,17 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
+"cpr" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
+/turf/open/floor/almayer,
+/area/almayer/hull/upper_hull/u_f_s)
 "cpw" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -45539,6 +45550,15 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
+"jLf" = (
+/obj/structure/closet/secure_closet/bar{
+	name = "Success Cabinet";
+	req_access_txt = "1"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/captain_mess)
 "jLj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -61970,11 +61990,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = -28
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "qCo" = (
@@ -64427,17 +64442,24 @@
 /area/almayer/living/commandbunks)
 "rDe" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/kepler_crisps{
-	pixel_x = 8;
-	pixel_y = 4
-	},
-/obj/item/toy/deck{
-	pixel_x = -4;
-	pixel_y = 1
-	},
 /obj/structure/sign/safety/cryo{
 	pixel_x = 8;
 	pixel_y = 33
+	},
+/obj/item/toy/deck{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry{
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -4
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -72494,14 +72516,15 @@
 /area/almayer/hallways/stern_hallway)
 "uWI" = (
 /obj/structure/surface/table/almayer,
-/obj/item/ashtray/plastic,
-/obj/item/trash/cigbutt{
-	pixel_x = 1;
+/obj/item/pizzabox/margherita{
 	pixel_y = 8
 	},
-/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry{
-	pixel_x = -9;
-	pixel_y = 12
+/obj/item/weapon/pizza_cutter{
+	force = 20;
+	name = "\improper Replica PIZZA TIME";
+	desc = "A cheap replica of the fabled PIZZA TIME novelty pizza cutter, this one is not as sharp as the original which legends said could slice any pizza....";
+	pixel_x = -6;
+	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -100648,7 +100671,7 @@ pCi
 kwS
 avl
 avl
-lIh
+cpr
 agj
 oMM
 ocs
@@ -104128,7 +104151,7 @@ aGV
 rvA
 aKE
 awF
-cST
+jLf
 aUw
 aUm
 aET

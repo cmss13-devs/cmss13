@@ -1,0 +1,5 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - bugfix: "Warriors can no longer behead caps if they start limb ripping before embryo is inserted."
+  - code_imp: "Refactors warrior limb proc to the warrior class."

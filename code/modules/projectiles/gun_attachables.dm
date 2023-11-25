@@ -2096,6 +2096,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/xm51/New()
 	..()
+	select_gamemode_skin(type)
 	//it makes stuff much better when two-handed
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_6
 	recoil_mod = -RECOIL_AMOUNT_TIER_4

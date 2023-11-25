@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - rscadd: "Added a new section to role squad vendors called binoculars except specialist."
+  - qol: "moved NVG and medical hud into helmet optics section for SL and just NVG for TL"

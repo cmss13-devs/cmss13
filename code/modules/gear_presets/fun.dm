@@ -191,8 +191,8 @@
 	var/satchel_success = new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
 	var/waist_success = new_human.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(new_human), WEAR_WAIST)
 	var/pouch_r_success = new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/claymore/hefa(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/claymore/hefa(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/hefa(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/hefa(new_human), WEAR_IN_BACK)
 
 	if(shoes_success)
 		var/obj/item/clothing/shoes/marine/knife/shoes = new_human.shoes

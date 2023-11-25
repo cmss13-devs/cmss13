@@ -93,7 +93,7 @@
 			user.put_in_hands(cookiefortune)
 			cookiefortune = null
 		else
-			to_chat(SPAN_WARNING("You break open the fortune cookie, but there's no fortune inside! Oh no!"))
+			to_chat(user, SPAN_WARNING("You break open the fortune cookie, but there's no fortune inside! Oh no!"))
 	else
 		. = ..()
 
@@ -109,7 +109,7 @@
 			user.put_in_hands(cookiefortune)
 			cookiefortune = null
 		else
-			to_chat(SPAN_WARNING("You break open the fortune cookie, but there's no fortune inside! Oh no!"))
+			to_chat(user, SPAN_WARNING("You break open the fortune cookie, but there's no fortune inside! Oh no!"))
 	else
 		. = ..()
 

@@ -19,7 +19,7 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	siemens_coefficient = 0.7
 	var/armor_stage = 0
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver, /obj/item/tool/surgery/scalpel)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver, /obj/item/tool/surgery/scalpel, /obj/item/weapon/straight_razor)
 	var/knife_type
 
 /obj/item/clothing/shoes/marine/Initialize(mapload, ...)
@@ -119,7 +119,7 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/weapon/straight_razor)
 
 /obj/item/clothing/shoes/veteran/pmc/update_icon()
 	if(stored_item)
@@ -157,6 +157,19 @@
 	stored_item = knife
 	update_icon()
 
+/obj/item/clothing/shoes/veteran/pmc/commando/cbrn
+	name = "\improper M3 MOPP boots"
+	desc = "M3 MOPP boots have been designed to protect the wearer from contact with any possible infection vectors or hazardous substances that may have contaminated the area of operations. This includes further enhancements in conjunction with the standard durability of M3 boots, reducing the probability of punctures or cuts as well as the effects of radiation."
+	icon_state = "cbrn"
+	item_state = "cbrn"
+	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+
+/obj/item/clothing/shoes/veteran/pmc/commando/cbrn/Initialize(mapload, ...)
+	. = ..()
+	stored_item = new /obj/item/attachable/bayonet(src)
+	update_icon()
+
 /obj/item/clothing/shoes/marine/corporate
 	name = "rugged boots"
 	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
@@ -187,7 +200,7 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/weapon/straight_razor)
 	var/weed_slowdown_mult = 0.5
 
 /obj/item/clothing/shoes/hiking/equipped(mob/user, slot, silent)

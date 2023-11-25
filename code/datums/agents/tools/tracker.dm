@@ -12,7 +12,7 @@
 	overlays.Cut()
 
 	if(active && tracked_object)
-		overlays += icon(icon, "+tracker_arrow", get_dir(src, tracked_object))
+		overlays += icon(icon, "+tracker_arrow", Get_Compass_Dir(src, tracked_object))
 
 /obj/item/device/tracker/attack_self(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))

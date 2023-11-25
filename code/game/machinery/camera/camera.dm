@@ -35,6 +35,9 @@
 
 	var/colony_camera_mapload = TRUE
 
+	/// If this camera should have innate EMP-proofing
+	var/emp_proof = FALSE
+
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
 	WireColorToFlag = randomCameraWires()
@@ -72,6 +75,7 @@
 		if(WEST) pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
+	. = ..()
 	if(!isEmpProof())
 		if(prob(100/severity))
 			icon_state = "[initial(icon_state)]emp"
@@ -89,7 +93,6 @@
 				if(can_use())
 					cameranet.addCamera(src)
 			kick_viewers()
-			..()
 
 
 /obj/structure/machinery/camera/ex_act(severity)

@@ -291,6 +291,7 @@
 	right_wristblades = new(src)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
+	. = ..()
 	charge = max(charge - (severity * 500), 0)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
@@ -495,7 +496,7 @@
 			if(dist < closest)
 				closest = dist
 				closest_item = tracked_item
-				direction = get_dir(M,loc)
+				direction = Get_Compass_Dir(M,loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD)
@@ -512,7 +513,7 @@
 			var/dist = get_dist(M,Y)
 			if(dist < closest)
 				closest = dist
-				direction = get_dir(M,Y)
+				direction = Get_Compass_Dir(M,Y)
 				areaLoc = loc
 
 	var/output = FALSE
@@ -577,6 +578,7 @@
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
+		RegisterSignal(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak))
 
 		cloak_timer = world.time + 1.5 SECONDS
 		if(true_cloak)
@@ -614,6 +616,7 @@
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
+	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
 	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
 	if(forced)

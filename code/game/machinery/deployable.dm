@@ -65,6 +65,7 @@
 	return
 
 /obj/structure/machinery/deployable/barrier/emp_act(severity)
+	. = ..()
 	if(inoperable())
 		return
 	if(prob(50/severity))

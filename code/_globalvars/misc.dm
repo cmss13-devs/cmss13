@@ -14,6 +14,22 @@ GLOBAL_LIST_INIT(pill_icon_mappings, map_pill_icons())
 /// In-round override to default OOC color
 GLOBAL_VAR(ooc_color_override)
 
+// tacmap cooldown for xenos and marines
+GLOBAL_VAR_INIT(uscm_canvas_cooldown, 0)
+GLOBAL_VAR_INIT(xeno_canvas_cooldown, 0)
+
+// getFlatIcon cooldown for xenos and marines
+GLOBAL_VAR_INIT(uscm_flatten_map_icon_cooldown, 0)
+GLOBAL_VAR_INIT(xeno_flatten_map_icon_cooldown, 0)
+
+// latest unannounced flat tacmap for xenos and marines
+GLOBAL_VAR(uscm_unannounced_map)
+GLOBAL_VAR(xeno_unannounced_map)
+
+//global tacmaps for action button access
+GLOBAL_DATUM_INIT(uscm_tacmap_status, /datum/tacmap/drawing/status_tab_view, new)
+GLOBAL_DATUM_INIT(xeno_tacmap_status, /datum/tacmap/drawing/status_tab_view/xeno, new)
+
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_INIT(gamemode_roles, list())
 
@@ -30,3 +46,10 @@ GLOBAL_VAR_INIT(time_offset, setup_offset())
 
 /// The last count of possible candidates in the xeno larva queue (updated via get_alien_candidates)
 GLOBAL_VAR(xeno_queue_candidate_count)
+
+//Coordinate obsfucator
+//Used by the rangefinders and linked systems to prevent coords collection/prefiring
+/// A number between -500 and 500.
+GLOBAL_VAR(obfs_x)
+/// A number between -500 and 500.
+GLOBAL_VAR(obfs_y)

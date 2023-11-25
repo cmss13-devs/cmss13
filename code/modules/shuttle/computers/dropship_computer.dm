@@ -214,19 +214,19 @@
 
 	// door controls being overriden
 	if(!dropship_control_lost)
-		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
-		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
-		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
-
 		if(almayer_orbital_cannon)
 			almayer_orbital_cannon.is_disabled = TRUE
 			addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
-
 		if(!GLOB.resin_lz_allowed)
 			set_lz_resin_allowed(TRUE)
+
+		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
+		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
+		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
+		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 		return
 
 	if(dropship_control_lost)
@@ -319,6 +319,9 @@
 	.["door_status"] = is_remote ? list() : shuttle.get_door_data()
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
+	// Launch Alarm Variables
+	.["playing_launch_announcement_alarm"] = shuttle.playing_launch_announcement_alarm
+
 	.["destinations"] = list()
 	// add flight
 	.["destinations"] += list(
@@ -381,6 +384,7 @@
 				msg_admin_niche(log)
 				log_interact(user, msg = "[log]")
 				shuttle.send_for_flyby()
+				stop_playing_launch_announcement_alarm()
 				return TRUE
 
 			update_equipment(is_optimised, FALSE)
@@ -410,6 +414,7 @@
 			var/log = "[key_name(user)] launched the dropship [src.shuttleId] on transport."
 			msg_admin_niche(log)
 			log_interact(user, msg = "[log]")
+			stop_playing_launch_announcement_alarm()
 			return TRUE
 		if("button-push")
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
@@ -469,6 +474,23 @@
 		if("cancel-flyby")
 			if(shuttle.in_flyby && shuttle.timer && shuttle.timeLeft(1) >= DROPSHIP_WARMUP_TIME)
 				shuttle.setTimer(DROPSHIP_WARMUP_TIME)
+		if("play_launch_announcement_alarm")
+			if (shuttle.mode != SHUTTLE_IDLE && shuttle.mode != SHUTTLE_RECHARGING)
+				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
+				return
+			shuttle.alarm_sound_loop.start()
+			shuttle.playing_launch_announcement_alarm = TRUE
+			return
+		if ("stop_playing_launch_announcement_alarm")
+			stop_playing_launch_announcement_alarm()
+			return
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/stop_playing_launch_announcement_alarm()
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+
+	shuttle.alarm_sound_loop.stop()
+	shuttle.playing_launch_announcement_alarm = FALSE
+	return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1
 	icon = 'icons/obj/structures/machinery/computer.dmi'

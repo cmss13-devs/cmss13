@@ -393,7 +393,7 @@
 ///Generate the image()'s requried for the evolution radial menu.
 /datum/hive_status/proc/generate_evo_menu_images()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
-		evolution_menu_images[initial(new_caste.caste_type)] = image('icons/mob/xenos/radial_xenos.dmi', initial(new_caste.caste_type))
+		evolution_menu_images[initial(caste.caste_type)] = image('icons/mob/xenos/radial_xenos.dmi', initial(caste.caste_type))
 
 /datum/hive_status/proc/post_setup()
 	SIGNAL_HANDLER

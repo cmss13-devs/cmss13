@@ -106,7 +106,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	return
 
-/datum/ammo/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
+/datum/ammo/proc/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	return
 
 /datum/ammo/proc/do_at_max_range(obj/projectile/P)

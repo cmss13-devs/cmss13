@@ -588,4 +588,4 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		occupant.mind_initialize()
 
 	occupant.mind.transfer_to(new_player)
-	QDEL_NULL(occupant)
+	SEND_SIGNAL(occupant, COMSIG_MOB_END_TUTORIAL)

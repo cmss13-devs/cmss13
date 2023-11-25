@@ -81,7 +81,7 @@
 /obj/item/large_shrapnel/proc/on_embedded_movement(mob/living/embedded_mob)
 	return
 
-/obj/item/large_shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
+/obj/item/large_shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	return
 
 /obj/item/large_shrapnel/at_rocket_dud
@@ -180,14 +180,14 @@
 	cell_explosion(get_turf(target), 200, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, create_cause_data("[cause] UXO detonation", user))
 	qdel(src)
 
-/obj/item/large_shrapnel/at_rocket_dud/on_embed(mob/embedded_mob, obj/limb/target_organ)
+/obj/item/large_shrapnel/at_rocket_dud/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
 	if(H.species.flags & NO_SHRAPNEL)
 		return
 	if(istype(target_organ))
-		target_organ.embed(src)
+		target_organ.embed(src, silent)
 
 /obj/item/large_shrapnel/at_rocket_dud/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
@@ -212,14 +212,14 @@
 	source_sheet_type = null
 	var/damage_on_move = 0.5
 
-/obj/item/shard/shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
+/obj/item/shard/shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
 	if(H.species.flags & NO_SHRAPNEL)
 		return
 	if(istype(target_organ))
-		target_organ.embed(src)
+		target_organ.embed(src, silent)
 
 /obj/item/shard/shrapnel/proc/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
@@ -265,11 +265,3 @@
 /obj/item/shard/shrapnel/tutorial
 	damage_on_move = 0
 
-/obj/item/shard/shrapnel/tutorial/on_embed(mob/embedded_mob, obj/limb/target_organ)
-	if(!ishuman(embedded_mob))
-		return
-	var/mob/living/carbon/human/H = embedded_mob
-	if(H.species.flags & NO_SHRAPNEL)
-		return
-	if(istype(target_organ))
-		target_organ.embed(src, TRUE)

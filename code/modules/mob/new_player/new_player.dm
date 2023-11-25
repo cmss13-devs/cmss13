@@ -394,30 +394,8 @@
 
 	new_character.lastarea = get_area(loc)
 
-	client.prefs.copy_all_to(new_character, job, is_late_join)
+	setup_human(new_character, src)
 
-	if (client.prefs.be_random_body)
-		var/datum/preferences/TP = new()
-		TP.randomize_appearance(new_character)
-
-	if(mind)
-		mind_initialize()
-		mind.active = 0 //we wish to transfer the key manually
-		mind.original = new_character
-		mind.transfer_to(new_character) //won't transfer key since the mind is not active
-		mind.setup_human_stats()
-
-	new_character.job = job
-	new_character.name = real_name
-	new_character.voice = real_name
-
-	// Update the character icons
-	// This is done in set_species when the mob is created as well, but
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
-
-	new_character.key = key //Manually transfer the key to log them in
 	new_character.client?.change_view(world_view_size)
 
 	return new_character

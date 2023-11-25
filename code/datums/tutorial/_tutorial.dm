@@ -77,10 +77,7 @@ GLOBAL_LIST_EMPTY(ongoing_tutorials)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(tutorial_mob)
-		remove_action(tutorial_mob, /datum/action/tutorial_end)
-		var/datum/component/status = tutorial_mob.GetComponent(/datum/component/tutorial_status)
-		qdel(status)
-		REMOVE_TRAIT(tutorial_mob, TRAIT_IN_TUTORIAL, TRAIT_SOURCE_TUTORIAL)
+		remove_action(tutorial_mob, /datum/action/tutorial_end) // Just in case to make sure the client can't try and leave the tutorial while it's mid-cleanup
 		if(tutorial_mob.client?.prefs && completed)
 			tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
 			tutorial_mob.client.prefs.save_character()

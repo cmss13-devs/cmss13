@@ -142,7 +142,7 @@
 	add_highlight(knife)
 
 	var/obj/item/shard/shrapnel/tutorial/shrapnel = new
-	shrapnel.on_embed(tutorial_mob, mob_chest)
+	shrapnel.on_embed(tutorial_mob, mob_chest, TRUE)
 
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(on_shrapnel_removed))
 

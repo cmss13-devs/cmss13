@@ -3,19 +3,25 @@
 /turf/closed/wall/almayer/outer,
 /area/misc/tutorial)
 "c" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "green"
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	dir = 2;
+	no_panel = 1;
+	not_weldable = 1;
+	req_one_access = null
 	},
+/turf/open/floor/almayer,
 /area/misc/tutorial)
 "l" = (
 /obj/structure/surface/table/almayer,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green"
+	},
 /area/misc/tutorial)
 "m" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/blend,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
+	dir = 8;
 	icon_state = "green"
 	},
 /area/misc/tutorial)
@@ -23,7 +29,11 @@
 /obj/structure/surface/table/almayer{
 	breakable = 0;
 	throwpass = 0;
-	climbable = 0
+	climbable = 0;
+	indestructible = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	visible = 0
 	},
 /turf/open/floor/almayer,
 /area/misc/tutorial)
@@ -39,11 +49,17 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green"
+	},
 /area/misc/tutorial)
 "y" = (
 /obj/structure/machinery/line_nexter,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green"
+	},
 /area/misc/tutorial)
 "E" = (
 /obj/structure/bed/chair/office/dark{
@@ -52,10 +68,11 @@
 /turf/open/floor/almayer,
 /area/misc/tutorial)
 "J" = (
-/obj/structure/machinery/cm_vending/sorted/attachments/blend,
-/turf/open/floor/almayer{
-	icon_state = "plate"
+/obj/item/toy/bikehorn/rubberducky{
+	name = "Quackers";
+	desc = "You feel as though this rubber duck has been here for a long time. It's Mr. Quackers! He loves you!"
 	},
+/turf/open/floor/almayer,
 /area/misc/tutorial)
 "K" = (
 /turf/open/floor/almayer,
@@ -85,13 +102,9 @@ a
 a
 a
 a
-a
-a
 "}
 (2,1,1) = {"
 a
-K
-K
 K
 K
 K
@@ -107,9 +120,7 @@ a
 "}
 (3,1,1) = {"
 a
-K
-K
-K
+J
 X
 y
 x
@@ -125,9 +136,7 @@ a
 (4,1,1) = {"
 a
 a
-a
-a
-J
+K
 n
 w
 o
@@ -136,22 +145,20 @@ a
 a
 a
 a
-K
+c
 a
 "}
 (5,1,1) = {"
 a
 a
-a
-a
-c
+K
 E
 l
 l
-K
-K
-K
-K
+m
+m
+m
+m
 K
 K
 a
@@ -159,9 +166,7 @@ a
 (6,1,1) = {"
 a
 a
-a
-a
-m
+K
 K
 K
 K
@@ -177,8 +182,6 @@ a
 a
 a
 a
-a
-a
 K
 K
 K
@@ -191,8 +194,6 @@ K
 a
 "}
 (8,1,1) = {"
-a
-a
 a
 a
 a

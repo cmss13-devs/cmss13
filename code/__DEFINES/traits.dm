@@ -147,6 +147,8 @@
 #define TRAIT_IMMOBILIZED "immobilized"
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
+/// Apply this to identify a mob as merged with weeds
+#define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology

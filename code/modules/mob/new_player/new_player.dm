@@ -151,7 +151,7 @@
 				observer.set_huds_from_prefs()
 
 				qdel(src)
-				return 1
+				return TRUE
 
 		if("late_join")
 
@@ -301,11 +301,11 @@
 		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
 			msg_admin_niche("NEW JOIN: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 		if(character.client)
-			var/client/C = character.client
-			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+			var/client/client = character.client
+			if(client.player_data && client.player_data.playtime_loaded && length(client.player_data.playtimes) == 0)
 				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
-			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= CONFIG_GET(number/notify_new_player_age)))
-				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
+			if(client.player_data && client.player_data.playtime_loaded && ((round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= CONFIG_GET(number/notify_new_player_age)))
+				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_verbs()
 	qdel(src)

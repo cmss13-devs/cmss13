@@ -69,6 +69,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/toggle_ares_ping,
 	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
+	/client/proc/cmd_admin_tacmaps_panel,
 	)
 
 var/list/admin_verbs_admin = list(
@@ -99,10 +100,8 @@ var/list/admin_verbs_ban = list(
 )
 
 var/list/admin_verbs_sounds = list(
-	/client/proc/play_web_sound,
-	/client/proc/play_sound,
-	/client/proc/stop_web_sound,
-	/client/proc/stop_sound,
+	/client/proc/play_admin_sound,
+	/client/proc/stop_admin_sound,
 	/client/proc/cmd_admin_vox_panel
 )
 

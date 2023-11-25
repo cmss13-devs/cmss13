@@ -397,7 +397,7 @@ var/list/ob_type_fuel_requirements
 		if(get_turf(M) == target)
 			relative_dir = 0
 		else
-			relative_dir = get_dir(M, target)
+			relative_dir = Get_Compass_Dir(M, target)
 		M.show_message( \
 			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
@@ -408,7 +408,7 @@ var/list/ob_type_fuel_requirements
 		if(get_turf(M) == target)
 			relative_dir = 0
 		else
-			relative_dir = get_dir(M, target)
+			relative_dir = Get_Compass_Dir(M, target)
 		M.show_message( \
 			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \

@@ -377,6 +377,10 @@
 		handle_joining_as_freed_mob(locate(href_list["claim_freed"]))
 	if(href_list["join_xeno"])
 		join_as_alien()
+	if(href_list[NOTIFY_USCM_TACMAP])
+		GLOB.uscm_tacmap_status.tgui_interact(src)
+	if(href_list[NOTIFY_XENO_TACMAP])
+		GLOB.xeno_tacmap_status.tgui_interact(src)
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -898,6 +902,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			return
 
 		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
+
+/mob/dead/observer/verb/view_uscm_tacmap()
+	set name = "View USCM Tacmap"
+	set category = "Ghost.View"
+
+	GLOB.uscm_tacmap_status.tgui_interact(src)
+
+/mob/dead/observer/verb/view_xeno_tacmap()
+	set name = "View Xeno Tacmap"
+	set category = "Ghost.View"
+
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	if(!hive || !length(hive.totalXenos))
+		to_chat(src, SPAN_ALERT("There seems to be no living normal hive at the moment"))
+		return
+
+	GLOB.xeno_tacmap_status.tgui_interact(src)
 
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost.Join"

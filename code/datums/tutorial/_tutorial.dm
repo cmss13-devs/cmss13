@@ -59,11 +59,15 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/turf/bottom_left_corner_reservation = locate(reservation.bottom_left_coords[1], reservation.bottom_left_coords[2], reservation.bottom_left_coords[3])
 	var/datum/map_template/tutorial/template = new tutorial_template
 	template.load(bottom_left_corner_reservation, FALSE, TRUE)
-
-	GLOB.ongoing_tutorials |= src
 	var/obj/landmark = locate(/obj/effect/landmark/tutorial_bottom_left) in GLOB.landmarks_list
 	bottom_left_corner = get_turf(landmark)
 	qdel(landmark)
+
+	if(!verify_template_loaded())
+		abort_tutorial()
+		return FALSE
+
+	GLOB.ongoing_tutorials |= src
 	var/area/tutorial_area = get_area(bottom_left_corner)
 	tutorial_area.update_base_lighting() // this will be entirely dark otherwise
 	init_map()
@@ -90,6 +94,26 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	if(!QDELETED(src))
 		qdel(src)
+
+/// Verify the template loaded fully and without error.
+/datum/tutorial/proc/verify_template_loaded()
+	var/turf/top_right_corner = locate(
+		bottom_left_corner.x + initial(tutorial_template.width),
+		bottom_left_corner.y + initial(tutorial_template.height),
+		bottom_left_corner.z
+	)
+	for(var/turf/tile as anything in block(bottom_left_corner, top_right_corner))
+		// For some reason I'm unsure of, the template will not always fully load, leaving some tiles to be space tiles. So, we check all tiles in the (small) tutorial area
+		// and tell start_tutorial to abort if there's any space tiles.
+		if(istype(tile, /turf/open/space))
+			return FALSE
+
+	return TRUE
+
+/// Something went very, very wrong during load so let's abort
+/datum/tutorial/proc/abort_tutorial()
+	to_chat(tutorial_mob, SPAN_BOLDWARNING("Something went wrong during tutorial load, please try again!"))
+	end_tutorial(FALSE)
 
 /datum/tutorial/proc/add_highlight(atom/target, color = "#d19a02")
 	target.add_filter("tutorial_highlight", 2, list("type" = "outline", "color" = color, "size" = 1))

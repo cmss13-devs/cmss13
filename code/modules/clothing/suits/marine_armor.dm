@@ -217,11 +217,11 @@
 			return 0
 
 /**
-  * Updates the armor's `icon_state` to the style represented by `new_style`.
-  *
-  * Arguments:
-  * * new_style - The new armor style. May only be one of `GLOB.armor_style_list`'s keys, or `"Random"`.
-  */
+ * Updates the armor's `icon_state` to the style represented by `new_style`.
+ *
+ * Arguments:
+ * * new_style - The new armor style. May only be one of `GLOB.armor_style_list`'s keys, or `"Random"`.
+ */
 /obj/item/clothing/suit/storage/marine/proc/set_armor_style(new_style)
 	// Regex to match one or more digits.
 	var/static/regex/digits = new("\\d+")

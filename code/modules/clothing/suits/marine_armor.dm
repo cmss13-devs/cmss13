@@ -118,7 +118,7 @@
 		select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	if(armor_variation && mapload)
-		post_vendor_spawn_hook()
+		set_armor_style("Random")
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
@@ -149,18 +149,15 @@
 
 
 /obj/item/clothing/suit/storage/marine/post_vendor_spawn_hook(mob/living/carbon/human/user) //used for randomizing/selecting a variant for armors.
-	var/new_look //used for the icon_state text replacement.
+	if(!armor_variation)
+		return
 
-	if(!user?.client?.prefs)
-		new_look = rand(1,armor_variation)
-
-	else if(user.client.prefs.preferred_armor == "Random")
-		new_look = rand(1,armor_variation)
-
+	if(user?.client?.prefs)
+		// Set the armor style to the user's preference.
+		set_armor_style(user.client.prefs.preferred_armor)
 	else
-		new_look = GLOB.armor_style_list[user.client.prefs.preferred_armor]
-
-	icon_state = replacetext(icon_state,"1","[new_look]")
+		// Or if that isn't possible, just pick a random one.
+		set_armor_style("Random")
 	update_icon(user)
 
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
@@ -218,6 +215,27 @@
 		if(issynth(M) && M.allow_gun_usage == FALSE && !(flags_marine_armor & SYNTH_ALLOWED))
 			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
 			return 0
+
+/**
+  * Updates the armor's `icon_state` to the style represented by `new_style`.
+  *
+  * Arguments:
+  * * new_style - The new armor style. May only be one of `GLOB.armor_style_list`'s keys, or `"Random"`.
+  */
+/obj/item/clothing/suit/storage/marine/proc/set_armor_style(new_style)
+	// Regex to match one or more digits.
+	var/static/regex/digits = new("\\d+")
+	// Integer for the new armor style's `icon_state`.
+	var/new_look
+
+	if(new_style == "Random")
+		// The style icon states are all numbers between 1 and `armor_variation`, so this picks a random one.
+		new_look = rand(1, armor_variation)
+	else
+		new_look = GLOB.armor_style_list[new_style]
+
+	// Replace the digits in the current icon state with `new_look`. (E.g. "L6" -> "L2")
+	icon_state = digits.Replace(icon_state, new_look)
 
 /obj/item/clothing/suit/storage/marine/padded
 	name = "M3 pattern padded marine armor"

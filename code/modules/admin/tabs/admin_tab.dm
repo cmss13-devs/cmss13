@@ -53,12 +53,6 @@
 		admin_holder.unbanpanel()
 	return
 
-/client/proc/whitelist_panel()
-	set name = "Whitelist Panel"
-	set category = "Admin.Panels"
-
-	admin_holder?.whitelist_panel()
-
 /client/proc/player_panel_new()
 	set name = "Player Panel"
 	set category = "Admin.Panels"

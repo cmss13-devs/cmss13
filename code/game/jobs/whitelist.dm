@@ -50,4 +50,25 @@ GLOBAL_LIST_FILE_LOAD(alien_whitelist, "config/alienwhitelist.txt")
 	if(player.check_whitelist_status(WHITELIST_SYNTHETIC))
 		LAZYADD(., "synthetic")
 
+/client/proc/whitelist_panel()
+	set name = "Whitelist Panel"
+	set category = "Admin.Panels"
+
+	var/data = "<hr><b>Whitelists:</b> <a href='?src=\ref[src];[HrefToken()];change_whitelist=[TRUE]'>Add Whitelist</a> <hr><table border=1 rules=all frame=void cellspacing=0 cellpadding=3>"
+
+	var/list/datum/view_record/players/players_view = DB_VIEW(/datum/view_record/players, DB_COMP("whitelist_status", DB_NOTEQUAL, ""))
+
+	for(var/datum/view_record/players/whitelistee in players_view)
+		data += "<tr><td> <a href='?src=\ref[src];[HrefToken()];change_whitelist=[whitelistee.ckey]'>(CHANGE)</a> Key: <b>[whitelistee.ckey]</b></td> <td>Whitelists: [whitelistee.whitelist_status]</td></tr>"
+
+	data += "</table>"
+
+	show_browser(usr, data, "Whitelist Panel", "whitelist_panel", "size=857x400")
+
+/client/load_player_data_info(datum/entity/player/player)
+	. = ..()
+
+	if(WHITELISTS_LEADER & player.whitelist_flags)
+		add_verb(src, /client/proc/whitelist_panel)
+
 #undef WHITELISTFILE

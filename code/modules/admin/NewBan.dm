@@ -189,18 +189,6 @@ var/savefile/Banlist
 	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
 	show_browser(usr, dat_header, "Unban Panel", "unbanp", "size=875x400")
 
-/datum/admins/proc/whitelist_panel()
-	var/data = "<hr><b>Whitelists:</b> <a href='?src=\ref[src];[HrefToken()];change_whitelist=[TRUE]'>Add Whitelist</a> <hr><table border=1 rules=all frame=void cellspacing=0 cellpadding=3>"
-
-	var/list/datum/view_record/players/players_view = DB_VIEW(/datum/view_record/players, DB_COMP("whitelist_status", DB_NOTEQUAL, ""))
-
-	for(var/datum/view_record/players/whitelistee in players_view)
-		data += "<tr><td> <a href='?src=\ref[src];[HrefToken()]>;change_whitelist=[whitelistee.ckey]'>(CHANGE)</a> Key: <b>[whitelistee.ckey]</b></td> <td>Whitelists: [whitelistee.whitelist_status]</td></tr>"
-
-	data += "</table>"
-
-	show_browser(usr, data, "Whitelist Panel", "whitelist_panel", "size=857x400")
-
 //////////////////////////////////// DEBUG ////////////////////////////////////
 
 /proc/CreateBans()

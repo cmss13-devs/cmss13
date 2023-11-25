@@ -960,9 +960,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		pref_job_slots[J.title] = JOB_SLOT_CURRENT_SLOT
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
-	var/datum/entity/player/player = get_player_from_key(user.ckey)
 
-	var/whitelist_flags = player.whitelist_flags
 
 	switch(href_list["preference"])
 		if("job")
@@ -1198,6 +1196,9 @@ var/const/MAX_SAVE_SLOTS = 10
 				if ("all")
 					randomize_appearance()
 		if("input")
+			var/datum/entity/player/player = get_player_from_key(user.ckey)
+			var/whitelist_flags = player.whitelist_flags
+
 			switch(href_list["preference"])
 				if("name")
 					if(human_name_ban)

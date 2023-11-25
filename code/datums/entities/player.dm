@@ -658,6 +658,17 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	return FALSE
 
+/datum/entity/player/proc/set_whitelist_status(field_to_set)
+	whitelist_flags = field_to_set
+
+	var/list/output = list()
+	for(var/bitfield in GLOB.bitfields["whitelist_status"])
+		if(field_to_set & GLOB.bitfields["whitelist_status"]["[bitfield]"])
+			output += bitfield
+	whitelist_status = output.Join("|")
+
+	save()
+
 /datum/entity_link/player_to_banning_admin
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player

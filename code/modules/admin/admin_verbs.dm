@@ -342,7 +342,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, admin_verbs_sounds)
 	if(CLIENT_HAS_RIGHTS(src, R_SPAWN))
 		add_verb(src, admin_verbs_spawn)
-	if(RoleAuthority && check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+	if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		add_verb(src, clan_verbs)
 
 /client/proc/remove_admin_verbs()

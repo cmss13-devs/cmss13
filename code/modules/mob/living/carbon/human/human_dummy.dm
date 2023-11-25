@@ -80,5 +80,5 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 /mob/living/carbon/human/dummy/tutorial/Initialize(mapload)
 	. = ..()
 	status_flags = GODMODE
-	frozen = TRUE
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_TUTORIAL)
 	anchored = TRUE

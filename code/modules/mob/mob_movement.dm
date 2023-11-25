@@ -208,7 +208,7 @@
 				return
 		mob.crawling = FALSE
 		if(mob.confused)
-			mob.Move(get_step(mob, pick(cardinal)))
+			mob.Move(get_step(mob, pick(GLOB.cardinals)))
 		else
 			. = ..()
 

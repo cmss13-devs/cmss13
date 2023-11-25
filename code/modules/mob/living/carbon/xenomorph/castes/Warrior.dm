@@ -72,41 +72,41 @@
 		lunged.set_effect(0, WEAKEN)
 	return ..()
 
-/mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/AM, lunge)
-	if (!check_state() || agility)
+/mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/movable_atom, lunge)
+	if (!check_state())
 		return FALSE
 
-	if(!isliving(AM))
+	if(!isliving(movable_atom))
 		return FALSE
-	var/mob/living/L = AM
-	var/should_neckgrab = !(src.can_not_harm(L)) && lunge
+	var/mob/living/living_mob = movable_atom
+	var/should_neckgrab = !(src.can_not_harm(living_mob)) && lunge
 
-	if(!QDELETED(L) && !QDELETED(L.pulledby) && L != src ) //override pull of other mobs
-		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
-		L.pulledby.stop_pulling()
+	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob != src ) //override pull of other mobs
+		visible_message(SPAN_WARNING("[src] has broken [living_mob.pulledby]'s grip on [living_mob]!"), null, null, 5)
+		living_mob.pulledby.stop_pulling()
 
-	. = ..(L, lunge, should_neckgrab)
+	. = ..(living_mob, lunge, should_neckgrab)
 
 	if(.) //successful pull
-		if(isxeno(L))
-			var/mob/living/carbon/xenomorph/X = L
-			if(X.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
-				return .
+		if(isxeno(living_mob))
+			var/mob/living/carbon/xenomorph/xeno = living_mob
+			if(xeno.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
+				return
 
-		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
-			L.drop_held_items()
-			L.apply_effect(get_xeno_stun_duration(L, 2), WEAKEN)
-			L.pulledby = src
-			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
-			SPAN_XENOWARNING("You grab [L] by the throat!"))
+		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
+			living_mob.drop_held_items()
+			living_mob.apply_effect(get_xeno_stun_duration(living_mob, 2), WEAKEN)
+			living_mob.pulledby = src
+			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"), \
+			SPAN_XENOWARNING("You grab [living_mob] by the throat!"))
 			lunging = TRUE
-			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
 
 /mob/living/carbon/xenomorph/warrior/proc/stop_lunging(world_time)
 	lunging = FALSE
 
-/mob/living/carbon/xenomorph/warrior/hitby(atom/movable/AM)
-	if(ishuman(AM))
+/mob/living/carbon/xenomorph/warrior/hitby(atom/movable/movable_atom)
+	if(ishuman(movable_atom))
 		return
 	..()
 
@@ -120,7 +120,7 @@
 	var/color = "#6c6f24"
 	var/emote_cooldown = 0
 
-/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
+/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/carbon)
 	..()
 
 	if(SEND_SIGNAL(bound_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)

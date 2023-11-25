@@ -86,8 +86,8 @@
 
 	if(!SSticker.mode)
 		to_chat(usr, "Mode not found?")
-	round_should_check_for_win = !round_should_check_for_win
-	if (round_should_check_for_win)
+	GLOB.round_should_check_for_win = !GLOB.round_should_check_for_win
+	if (GLOB.round_should_check_for_win)
 		message_admins("[key_name(src)] enabled checking for round-end.")
 	else
 		message_admins("[key_name(src)] disabled checking for round-end.")
@@ -333,17 +333,17 @@
 		individual_counts["[M.type]"]++
 	for(var/mob/M in SShuman.processable_human_list)
 		individual_counts["[M.type]"]++
-	for(var/obj/structure/machinery/M in processing_machines)
+	for(var/obj/structure/machinery/M in GLOB.processing_machines)
 		individual_counts["[M.type]"]++
-	for(var/datum/powernet/M in powernets)
+	for(var/datum/powernet/M in GLOB.powernets)
 		individual_counts["[M.type]"]++
 	for(var/mob/M in SSmob.living_misc_mobs)
 		individual_counts["[M.type]"]++
-	for(var/datum/nanoui/M in nanomanager.processing_uis)
+	for(var/datum/nanoui/M in SSnano.nanomanager.processing_uis)
 		individual_counts["[M.type]"]++
-	for(var/datum/powernet/M in powernets)
+	for(var/datum/powernet/M in GLOB.powernets)
 		individual_counts["[M.type]"]++
-	for(var/datum/M in power_machines)
+	for(var/datum/M in GLOB.power_machines)
 		individual_counts["[M.type]"]++
 	for(var/mob/M in GLOB.xeno_mob_list)
 		individual_counts["[M.type]"]++

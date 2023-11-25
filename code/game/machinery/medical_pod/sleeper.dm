@@ -164,7 +164,7 @@
 
 	var/chemicals[0]
 	for(var/re in connected.available_chemicals)
-		var/datum/reagent/temp = chemical_reagents_list[re]
+		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
 		if(temp)
 			var/reagent_amount = 0
 			var/pretty_amount
@@ -365,7 +365,7 @@
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= max_chem)
 			occupant.reagents.add_reagent(chemical, amount, , , user)
-			var/datum/reagent/temp = chemical_reagents_list[chemical]
+			var/datum/reagent/temp = GLOB.chemical_reagents_list[chemical]
 			to_chat(user, SPAN_NOTICE("[occupant] now has [occupant.reagents.get_reagent_amount(chemical)] units of [temp.name] in \his bloodstream."))
 			return
 	to_chat(user, SPAN_WARNING("There's no occupant in the sleeper or the subject has too many chemicals!"))

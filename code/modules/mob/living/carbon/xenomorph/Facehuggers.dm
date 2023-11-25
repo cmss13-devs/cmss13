@@ -329,8 +329,8 @@
 	else
 		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
 
-	if(round_statistics && ishuman(target))
-		round_statistics.total_huggers_applied++
+	if(GLOB.round_statistics && ishuman(target))
+		GLOB.round_statistics.total_huggers_applied++
 
 /obj/item/clothing/mask/facehugger/proc/go_active()
 	if(stat == DEAD)
@@ -523,7 +523,7 @@
 
 /datum/species/yautja/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger)
 	var/catch_chance = 50
-	if(target.dir == reverse_dir[hugger.dir])
+	if(target.dir == GLOB.reverse_dir[hugger.dir])
 		catch_chance += 20
 	if(target.body_position == LYING_DOWN)
 		catch_chance -= 50

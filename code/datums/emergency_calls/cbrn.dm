@@ -55,7 +55,7 @@
 	max_medics = 0
 
 /datum/emergency_call/cbrn/specialists/New()
-	var/cbrn_ship_name = "Unit [pick(nato_phonetic_alphabet)]-[rand(1, 99)]"
+	var/cbrn_ship_name = "Unit [pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
 	arrival_message = "[MAIN_SHIP_NAME], CBRN [cbrn_ship_name] has been dispatched. Follow all orders provided by [cbrn_ship_name]."
 	objectives = "You are a specialist team in [cbrn_ship_name] dispatched to quell a threat to [MAIN_SHIP_NAME]. Further orders may be provided."
 

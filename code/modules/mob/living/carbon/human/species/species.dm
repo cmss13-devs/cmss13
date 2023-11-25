@@ -475,7 +475,7 @@
 /datum/species/proc/handle_blood_splatter(mob/living/carbon/human/human, splatter_dir)
 	var/color_override
 	if(human.special_blood)
-		var/datum/reagent/D = chemical_reagents_list[human.special_blood]
+		var/datum/reagent/D = GLOB.chemical_reagents_list[human.special_blood]
 		if(D)
 			color_override = D.color
 

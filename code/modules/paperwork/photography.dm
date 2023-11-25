@@ -288,7 +288,7 @@
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 	var/mob_descriptions = ""
 	var/radius = (size-1)*0.5
-	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(world_view_size + radius, user.client)
+	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(GLOB.world_view_size + radius, user.client)
 	for(var/turf/the_turf as anything in turfs)
 		mob_descriptions = get_mob_descriptions(the_turf, mob_descriptions)
 	var/datum/picture/the_picture = createpicture(target, user, turfs, mob_descriptions, flag)

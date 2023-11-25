@@ -219,7 +219,7 @@
 /mob/living/carbon/xenomorph/proc/zoom_out()
 	if(!client)
 		return
-	client.change_view(world_view_size)
+	client.change_view(GLOB.world_view_size)
 	client.pixel_x = 0
 	client.pixel_y = 0
 	is_zoomed = 0

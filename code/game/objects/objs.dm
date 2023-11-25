@@ -387,7 +387,7 @@
 	else if(LAZYISIN(item_icons, slot))
 		mob_icon = item_icons[slot]
 	else
-		mob_icon = default_onmob_icons[slot]
+		mob_icon = GLOB.default_onmob_icons[slot]
 
 	var/image/overlay_img
 

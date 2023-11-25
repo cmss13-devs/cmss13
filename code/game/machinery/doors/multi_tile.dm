@@ -275,6 +275,17 @@
 	name = "\improper Normandy cargo door"
 	icon = 'icons/obj/structures/doors/dropship2_cargo.dmi'
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
+	width = 2
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds1
+	name = "\improper Alamo crew hatch"
+	icon = 'icons/obj/structures/doors/dropship1_side2.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2
+	name = "\improper Normandy crew hatch"
+	icon = 'icons/obj/structures/doors/dropship2_side2.dmi'
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor
 	name = "bulkhead blast door"
 	icon = 'icons/obj/structures/doors/almayerblastdoor.dmi'

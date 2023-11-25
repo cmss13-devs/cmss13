@@ -322,7 +322,7 @@
 /atom/movable/vis_obj/xeno_pack/Initialize(mapload, mob/living/carbon/source)
 	. = ..()
 	if(source)
-		icon = default_xeno_onmob_icons[source.type]
+		icon = GLOB.default_xeno_onmob_icons[source.type]
 
 //Xeno Overlays Indexes//////////
 #undef X_BACK_LAYER

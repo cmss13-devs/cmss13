@@ -441,7 +441,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 	data["ssd"] = null //clear the data in case we have an old input from a previous scan
 	if(target_mob.getBrainLoss() >= 100 || !target_mob.has_brain())
-		data["ssd"] = "Subject is brain-dead."
+		data["ssd"] = "Subject has taken extreme amounts of brain damage."
 	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob))
 		if(!target_mob.key)
 			data["ssd"] = "No soul detected." // they ghosted
@@ -586,7 +586,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if(!D.hidden[SCANNER])
 			dat += "\t<span class='scannerb'> *Warning: [D.form] Detected</span><span class='scanner'>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]</span>\n"
 	if (src.getBrainLoss() >= 100 || !src.has_brain())
-		dat += "\t<span class='scanner'> *Subject is <b>brain dead</b></span>.\n"
+		dat += "\t<span class='scanner'> *Subject has taken extreme amounts of <b>brain damage</b></span>.\n"
 
 	if(src.has_brain() && src.stat != DEAD && ishuman(src))
 		if(!src.key)

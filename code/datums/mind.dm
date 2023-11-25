@@ -29,9 +29,14 @@
 	research_objective_interface = new()
 
 /datum/mind/Destroy()
+	QDEL_NULL(initial_account)
 	QDEL_NULL(objective_memory)
 	QDEL_NULL(objective_interface)
 	QDEL_NULL(research_objective_interface)
+	current = null
+	original = null
+	ghost_mob = null
+	player_entity = null
 	return ..()
 
 /datum/mind/proc/transfer_to(mob/living/new_character, force = FALSE)

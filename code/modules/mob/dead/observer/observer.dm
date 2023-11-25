@@ -248,7 +248,7 @@
 	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
 
 ///makes the ghost see the target hud and sets the eye at the target.
-/mob/dead/observer/proc/do_observe(mob/target)
+/mob/dead/observer/proc/do_observe(atom/movable/target)
 	if(!client || !target || !istype(target))
 		return
 
@@ -257,24 +257,23 @@
 
 	if(!ishuman(target) || !client.prefs?.auto_observe)
 		return
+	var/mob/living/carbon/human/human_target = target
 
-	client.eye = target
+	client.eye = human_target
 
-	if(!target.hud_used)
+	if(!human_target.hud_used)
 		return
 
 	client.clear_screen()
-	LAZYINITLIST(target.observers)
-	target.observers |= src
-	target.hud_used.show_hud(target.hud_used.hud_version, src)
-
-	var/mob/living/carbon/human/human_target = target
+	LAZYINITLIST(human_target.observers)
+	human_target.observers |= src
+	human_target.hud_used.show_hud(human_target.hud_used.hud_version, src)
 
 	var/list/target_contents = human_target.get_contents()
 
 	//Handles any currently open storage containers the target is looking in when we observe
 	for(var/obj/item/storage/checked_storage in target_contents)
-		if(!(target in checked_storage.content_watchers))
+		if(!(human_target in checked_storage.content_watchers))
 			continue
 
 		client.add_to_screen(checked_storage.closer)
@@ -289,7 +288,7 @@
 
 		break
 
-	observe_target_mob = target
+	observe_target_mob = human_target
 	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
@@ -297,8 +296,8 @@
 
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
 
-	if(target.client)
-		observe_target_client = target.client
+	if(human_target.client)
+		observe_target_client = human_target.client
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
 		return
@@ -327,10 +326,11 @@
 	if(observe_target_mob)
 		clean_observe_target()
 
-/mob/dead/observer/Destroy()
+/mob/dead/observer/Destroy(force)
+	GLOB.observer_list -= src
 	QDEL_NULL(orbit_menu)
 	QDEL_NULL(last_health_display)
-	GLOB.observer_list -= src
+	QDEL_NULL(minimap)
 	following = null
 	observe_target_mob = null
 	observe_target_client = null
@@ -1013,13 +1013,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/mobs_by_role = list() // the list the mobs are assigned to first, for sorting purposes
-	for(var/datum/weakref/ref as anything in GLOB.freed_mob_list)
-		var/mob/living/resolved_mob = ref.resolve()
-		var/role_name = resolved_mob.get_role_name()
+	for(var/mob/freed_mob as anything in GLOB.freed_mob_list)
+		var/role_name = freed_mob.get_role_name()
 		if(!role_name)
 			role_name = "No Role"
 		LAZYINITLIST(mobs_by_role[role_name])
-		mobs_by_role[role_name] += resolved_mob
+		mobs_by_role[role_name] += freed_mob
 
 	var/list/freed_mob_choices = list() // the list we'll be choosing from
 	for(var/role in mobs_by_role)
@@ -1035,18 +1034,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	handle_joining_as_freed_mob(L)
 
 /mob/dead/proc/handle_joining_as_freed_mob(mob/living/freed_mob)
-	if(!freed_mob || !(WEAKREF(freed_mob) in GLOB.freed_mob_list))
-		return
-
-	if(!istype(freed_mob))
+	if(!istype(freed_mob) || !(freed_mob in GLOB.freed_mob_list))
 		return
 
 	if(QDELETED(freed_mob) || freed_mob.client)
-		GLOB.freed_mob_list -= WEAKREF(freed_mob)
+		GLOB.freed_mob_list -= freed_mob
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	GLOB.freed_mob_list -= WEAKREF(freed_mob)
+	GLOB.freed_mob_list -= freed_mob
 	mind.transfer_to(freed_mob, TRUE)
 
 /mob/dead/verb/join_as_hellhound()
@@ -1205,10 +1201,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		else
 			. += "Hijack Over"
 
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+	if(SShijack)
+		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
-			. += "Evacuation: [eta_status]"
+			. += "Evacuation Goal: [eta_status]"
+
+		if(SShijack.sd_unlocked)
+			. += "Self Destruct Goal: [SShijack.get_sd_eta()]"
+
+	if(client.prefs?.be_special & BE_ALIEN_AFTER_DEATH)
+		if(larva_queue_cached_message)
+			. += larva_queue_cached_message
 
 
 /proc/message_ghosts(message)

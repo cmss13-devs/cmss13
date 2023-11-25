@@ -36,6 +36,10 @@
 #define COMSIG_HUMAN_UPDATE_SIGHT "human_update_sight"
 	#define COMPONENT_OVERRIDE_UPDATE_SIGHT (1<<0)
 
+///from /mob/living/carbon/human/movement_delay()
+#define COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION "human_movement_cancel_interaction"
+	#define COMPONENT_HUMAN_MOVEMENT_KEEP_USING (1<<0)
+
 ///from /mob/living/carbon/human/update_sight()
 #define COMSIG_HUMAN_POST_UPDATE_SIGHT "human_post_update_sight"
 ///from /mob/living/carbon/human/movement_delay(): (list/movedata)

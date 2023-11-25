@@ -11,7 +11,7 @@
 			to_chat(src, SPAN_WARNING("[O] is too far away."))
 			return
 
-	if(!isturf(loc) || burrow)
+	if(!isturf(loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_WARNING("You can't melt [O] from here!"))
 		return
 
@@ -135,7 +135,7 @@
 
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
-		R.take_damage_type((1 / A.acid_strength) * 40, "acid", src)
+		R.take_damage_type(40 / A.acid_delay, "acid", src)
 		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
 			SPAN_XENOWARNING("You vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
@@ -160,11 +160,11 @@
 	SPAN_XENOWARNING("You vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
-/proc/unroot_human(mob/living/carbon/H)
+/proc/unroot_human(mob/living/carbon/H, trait_source)
 	if (!isxeno_human(H))
 		return
 
-	H.frozen = 0
+	REMOVE_TRAIT(H, TRAIT_IMMOBILIZED, trait_source)
 	H.update_canmove()
 
 	if(ishuman(H))

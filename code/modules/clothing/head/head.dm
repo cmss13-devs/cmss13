@@ -75,6 +75,12 @@
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
 
+/obj/item/clothing/head/beret/cm/white
+	icon_state = "s_beret"
+
+/obj/item/clothing/head/beret/cm/black
+	icon_state = "beret_black"
+
 /obj/item/clothing/head/beret/cm/squadberet
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
@@ -108,6 +114,12 @@
 				if(SQUAD_MARINE_5)
 					icon_state = "beret_echo"
 					desc = "Tightly Woven, as it should be."
+				if(SQUAD_MARINE_CRYO)
+					icon_state = "beret_foxtrot"
+					desc = "Looks and feels starched, cold to the touch."
+				if(SQUAD_MARINE_INTEL)
+					icon_state = "beret_intel"
+					desc = "Looks more intellegent than the person wearing it."
 		else
 			icon_state = "beret"
 			desc = initial(desc)
@@ -236,6 +248,7 @@
 						/obj/item/clothing/glasses/mgoggles/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/black = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/orange = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/v2 = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/marsoc = HAT_GARB_RELAY_ICON_STATE,
@@ -301,8 +314,8 @@
 
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
 	var/image/return_image = ..()
-	if(!slot == WEAR_HEAD)
-		return
+	if(slot != WEAR_HEAD)
+		return return_image
 
 	if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
 		for(var/obj/garb_object in pockets.contents)

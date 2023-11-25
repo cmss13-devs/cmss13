@@ -55,8 +55,7 @@
 					dat += " Locked Down |"
 				else
 					dat += " Operating Normally |"
-				if (!R.canmove)
-				else if(R.cell)
+				if(R.canmove && R.cell)
 					dat += " Battery Installed ([R.cell.charge]/[R.cell.maxcharge]) |"
 				else
 					dat += " No Cell Installed |"

@@ -171,6 +171,7 @@
 */
 
 /obj/limb/emp_act(severity)
+	. = ..()
 	if(!(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))) //meatbags do not care about EMP
 		return
 	var/probability = 30

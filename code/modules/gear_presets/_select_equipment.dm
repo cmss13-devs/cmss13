@@ -110,22 +110,22 @@
 /datum/equipment_preset/proc/load_id(mob/living/carbon/human/new_human, client/mob_client)
 	if(!idtype)
 		return
-	var/obj/item/card/id/W = new idtype()
-	W.name = "[new_human.real_name]'s ID Card"
+	var/obj/item/card/id/ID = new idtype()
+	ID.name = "[new_human.real_name]'s ID Card"
 	if(assignment)
-		W.name += " ([assignment])"
-	W.access = access.Copy(1, 0)
-	W.faction = faction
-	W.faction_group = faction_group.Copy()
-	W.assignment = assignment
-	W.rank = rank
-	W.registered_name = new_human.real_name
-	W.registered_ref = WEAKREF(new_human)
-	W.registered_gid = new_human.gid
-	W.blood_type = new_human.blood_type
-	W.paygrade = load_rank(new_human)
-	W.uniform_sets = uniform_sets
-	new_human.equip_to_slot_or_del(W, WEAR_ID)
+		ID.name += " ([assignment])"
+	ID.access = access.Copy(1, 0)
+	ID.faction = faction
+	ID.faction_group = faction_group.Copy()
+	ID.assignment = assignment
+	ID.rank = rank
+	ID.registered_name = new_human.real_name
+	ID.registered_ref = WEAKREF(new_human)
+	ID.registered_gid = new_human.gid
+	ID.blood_type = new_human.blood_type
+	ID.paygrade = load_rank(new_human) || ID.paygrade
+	ID.uniform_sets = uniform_sets
+	new_human.equip_to_slot_or_del(ID, WEAR_ID)
 	new_human.faction = faction
 	new_human.faction_group = faction_group.Copy()
 	if(new_human.mind)
@@ -171,18 +171,18 @@
 /datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
 	if(!new_human.client || !new_human.client.prefs || !new_human.client.prefs.gear)
 		return//We want to equip them with custom stuff second, after they are equipped with everything else.
-	var/datum/gear/G
 	for(var/gear_name in new_human.client.prefs.gear)
-		G = gear_datums_by_name[gear_name]
-		if(G)
-			if(G.allowed_roles && !(assignment in G.allowed_roles))
-				to_chat(new_human, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Role"))
+		var/datum/gear/current_gear = gear_datums_by_name[gear_name]
+		if(current_gear)
+			if(current_gear.allowed_roles && !(assignment in current_gear.allowed_roles))
+				to_chat(new_human, SPAN_WARNING("Custom gear [current_gear.display_name] cannot be equipped: Invalid Role"))
 				return
-			if(G.allowed_origins && !(new_human.origin in G.allowed_origins))
-				to_chat(new_human, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Origin"))
+			if(current_gear.allowed_origins && !(new_human.origin in current_gear.allowed_origins))
+				to_chat(new_human, SPAN_WARNING("Custom gear [current_gear.display_name] cannot be equipped: Invalid Origin"))
 				return
-			if(!(G.slot && new_human.equip_to_slot_or_del(new G.path, G.slot)))
-				new_human.equip_to_slot_or_del(new G.path, WEAR_IN_BACK)
+			if(!(current_gear.slot && new_human.equip_to_slot_or_del(new current_gear.path, current_gear.slot)))
+				var/obj/equipping_gear = new current_gear.path
+				new_human.equip_to_slot_or_del(equipping_gear, WEAR_IN_BACK)
 
 	//Gives ranks to the ranked
 	var/current_rank = paygrade

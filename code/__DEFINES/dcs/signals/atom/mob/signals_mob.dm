@@ -1,3 +1,5 @@
+///from base of mob/set_stat(): (new_stat, old_stat)
+#define COMSIG_MOB_STATCHANGE "mob_statchange"
 /// From /obj/structure/machinery/door/airlock/proc/take_damage
 #define COMSIG_MOB_DESTROY_AIRLOCK "mob_destroy_airlock"
 
@@ -167,3 +169,6 @@
 /// From /obj/item/grab/proc/progress_passive() : (mob/living/carbon/human/grabber)
 #define COMSIG_MOB_AGGRESSIVELY_GRABBED "mob_aggressively_grabbed"
 	#define COMSIG_MOB_AGGRESIVE_GRAB_CANCEL (1<<0)
+
+/// Cancels all running cloaking effects on target
+#define COMSIG_MOB_EFFECT_CLOAK_CANCEL "mob_effect_cloak_cancel"

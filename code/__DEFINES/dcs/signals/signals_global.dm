@@ -60,8 +60,11 @@
 #define COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING "!groundside_forsaken_handling"
 
 /// From
-#define COMSIG_GLOB_YAUTJA_ARMORY_OPENED "yautja_armory_opened"
+#define COMSIG_GLOB_YAUTJA_ARMORY_OPENED "!yautja_armory_opened"
 
 /// From /proc/biohazard_lockdown()
-#define COMSIG_GLOB_RESEARCH_LOCKDOWN "research_lockdown_closed"
-#define COMSIG_GLOB_RESEARCH_LIFT "research_lockdown_opened"
+#define COMSIG_GLOB_RESEARCH_LOCKDOWN "!research_lockdown_closed"
+#define COMSIG_GLOB_RESEARCH_LIFT "!research_lockdown_opened"
+
+/// From /obj/structure/machinery/power/fusion_engine/proc/set_overloading() : (set_overloading)
+#define COMSIG_GLOB_GENERATOR_SET_OVERLOADING "!generator_set_overloading"

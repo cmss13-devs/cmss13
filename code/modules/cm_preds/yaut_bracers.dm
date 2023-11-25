@@ -35,7 +35,6 @@
 	var/charge_rate = 30
 	/// Cooldown on draining power from APC
 	var/charge_cooldown = COOLDOWN_BRACER_CHARGE
-	var/cloaked = 0
 	var/cloak_timer = 0
 	var/cloak_malfunction = 0
 	/// Determines the alpha level of the cloaking device.
@@ -71,6 +70,7 @@
 	flags_item = initial(flags_item)
 	UnregisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH))
 	SSminimaps.remove_marker(user)
+	unlock_bracer() // So as to prevent the bracer being stuck with nodrop if the pred gets gibbed/arm removed/etc.
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
@@ -96,7 +96,7 @@
 		human_holder.update_power_display(perc_charge)
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if(!cloaked)
+	if(!HAS_TRAIT(human_holder, TRAIT_CLOAKED))
 		return
 	if(human_holder.stat == DEAD)
 		decloak(human_holder, TRUE)
@@ -116,6 +116,9 @@
 	var/mob/living/carbon/human/human_owner = owner
 	var/turf/wearer_turf = get_turf(owner)
 	SSminimaps.remove_marker(owner)
+	if(!wearer_turf)
+		return
+
 	if(!isyautja(owner))
 		if(owner.stat >= DEAD)
 			if(human_owner.undefibbable)
@@ -288,12 +291,13 @@
 	right_wristblades = new(src)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
+	. = ..()
 	charge = max(charge - (severity * 500), 0)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.gloves == src)
 			wearer.visible_message(SPAN_DANGER("You hear a hiss and crackle!"), SPAN_DANGER("Your bracers hiss and spark!"), SPAN_DANGER("You hear a hiss and crackle!"))
-			if(cloaked)
+			if(HAS_TRAIT(wearer, TRAIT_CLOAKED))
 				decloak(wearer, TRUE, DECLOAK_EMP)
 		else
 			var/turf/our_turf = get_turf(src)
@@ -336,7 +340,7 @@
 
 	//Non-Yautja have a chance to get stunned with each power drain
 	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(4))
-		if(cloaked)
+		if(HAS_TRAIT(human, TRAIT_CLOAKED))
 			decloak(human, TRUE, DECLOAK_SPECIES)
 		shock_user(human)
 
@@ -344,14 +348,14 @@
 
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)
 	move_chip_to_bracer()
-	if(cloaked)
+	if(HAS_TRAIT(user, TRAIT_CLOAKED))
 		decloak(user, TRUE)
 	..()
 
 /obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/human = loc
-		if(cloaked)
+		if(HAS_TRAIT(human, TRAIT_CLOAKED))
 			decloak(human, TRUE)
 	. = ..()
 
@@ -549,7 +553,7 @@
 	if(!istype(M) || M.is_mob_incapacitated())
 		return FALSE
 
-	if(cloaked) //Turn it off.
+	if(HAS_TRAIT(caller, TRAIT_CLOAKED)) //Turn it off.
 		if(cloak_timer > world.time)
 			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
@@ -570,11 +574,11 @@
 		if(!drain_power(M, 50))
 			return FALSE
 
-		cloaked = TRUE
 		ADD_TRAIT(M, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
+		RegisterSignal(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak))
 
 		cloak_timer = world.time + 1.5 SECONDS
 		if(true_cloak)
@@ -612,12 +616,12 @@
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
+	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
 	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
 	if(forced)
 		cloak_malfunction = world.time + decloak_timer
 
-	cloaked = FALSE
 	REMOVE_TRAIT(user, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 	log_game("[key_name_admin(user)] has disabled their cloaking device.")
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
@@ -734,7 +738,7 @@
 
 	var/mob/living/carbon/human/M = caller
 
-	if(cloaked)
+	if(HAS_TRAIT(M, TRAIT_CLOAKED))
 		to_chat(M, SPAN_WARNING("Not while you're cloaked. It might disrupt the sequence."))
 		return
 	if(M.stat == DEAD)
@@ -838,7 +842,7 @@
 		to_chat(caller, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
 		return FALSE
 
-	if(!drain_power(caller, 1000))
+	if(!drain_power(caller, 400))
 		return FALSE
 
 	inject_timer = TRUE
@@ -879,7 +883,7 @@
 		to_chat(usr, SPAN_WARNING("Your bracer is still generating a new healing capsule!"))
 		return FALSE
 
-	if(!drain_power(caller, 800))
+	if(!drain_power(caller, 600))
 		return FALSE
 
 	healing_capsule_timer = TRUE
@@ -1164,18 +1168,26 @@
 /// The actual unlock/lock function.
 /obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/wearer, force_lock)
 	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
-		flags_item &= ~NODROP
-		flags_inventory &= ~CANTSTRIP
-		if(!isyautja(wearer))
-			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing it's grip on your forearm."))
-		else
-			to_chat(wearer, SPAN_WARNING("With an angry blare the bracer releases your forearm."))
-		return TRUE
+		return unlock_bracer()
 
+	return lock_bracer()
+
+/obj/item/clothing/gloves/yautja/proc/lock_bracer(mob/wearer)
 	flags_item |= NODROP
 	flags_inventory |= CANTSTRIP
-	if(isyautja(wearer))
-		to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
-	else
-		to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	if(wearer)
+		if(isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+		else
+			to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	return TRUE
+
+/obj/item/clothing/gloves/yautja/proc/unlock_bracer(mob/wearer)
+	flags_item &= ~NODROP
+	flags_inventory &= ~CANTSTRIP
+	if(wearer)
+		if(!isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing its grip on your forearm."))
+		else
+			to_chat(wearer, SPAN_WARNING("With an angry blare, the bracer releases your forearm."))
 	return TRUE

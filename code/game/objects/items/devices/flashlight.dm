@@ -12,6 +12,8 @@
 
 	light_range = 5
 	light_power = 1
+	ground_offset_x = 2
+	ground_offset_y = 6
 
 	actions_types = list(/datum/action/item_action)
 	var/on = FALSE
@@ -32,6 +34,11 @@
 		icon_state = "[initial(icon_state)]-on"
 	else
 		icon_state = initial(icon_state)
+
+/obj/item/device/flashlight/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
+	clockwise = pick(TRUE, FALSE)
+	angular_offset = rand(360)
+	return ..()
 
 /obj/item/device/flashlight/proc/update_brightness(mob/user = null)
 	if(on)
@@ -65,6 +72,7 @@
 	if(on)
 		on = FALSE
 		set_light_on(on)
+		update_icon()
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
@@ -295,8 +303,6 @@
 
 // Causes flares to stop with a rotation offset for visual purposes
 /obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
-	clockwise = pick(TRUE, FALSE)
-	angular_offset = rand(360)
 	pixel_fuzz = 16
 	return ..()
 /obj/item/device/flashlight/flare/pickup()

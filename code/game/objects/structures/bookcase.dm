@@ -58,8 +58,6 @@
 			contents_explosion(severity)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/bookcase/update_icon()
 	if(contents.len < 5)

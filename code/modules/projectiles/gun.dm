@@ -287,16 +287,11 @@
 /obj/item/weapon/gun/Destroy()
 	in_chamber = null
 	ammo = null
-	current_mag = null
+	QDEL_NULL(current_mag)
 	target = null
 	last_moved_mob = null
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
 		flags_gun_features &= ~GUN_FLASHLIGHT_ON
-		if(ismob(loc))
-			for(var/slot in attachments)
-				var/obj/item/attachable/potential_attachment = attachments[slot]
-				if(!potential_attachment)
-					continue
 	attachments = null
 	attachable_overlays = null
 	QDEL_NULL(active_attachable)
@@ -485,6 +480,7 @@
 
 
 /obj/item/weapon/gun/emp_act(severity)
+	. = ..()
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
@@ -492,7 +488,7 @@
 Note: pickup and dropped on weapons must have both the ..() to update zoom AND twohanded,
 As sniper rifles have both and weapon mods can change them as well. ..() deals with zoom only.
 */
-/obj/item/weapon/gun/equipped(mob/user, slot)
+/obj/item/weapon/gun/equipped(mob/living/user, slot)
 	if(flags_item & NODROP) return
 
 	unwield(user)
@@ -523,6 +519,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+
+	for(var/obj/item/attachable/stock/smg/collapsible/brace/current_stock in contents) //SMG armbrace folds to stop it getting stuck on people
+		if(current_stock.stock_activated)
+			current_stock.activate_attachment(src, user, turn_off = TRUE)
 
 	unwield(user)
 	set_gun_user(null)
@@ -732,7 +732,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 // END TGUI \\
 
-/obj/item/weapon/gun/wield(mob/user)
+/obj/item/weapon/gun/wield(mob/living/user)
 
 	if(!(flags_item & TWOHANDED) || flags_item & WIELDED)
 		return
@@ -1216,10 +1216,11 @@ and you're good to go.
 		shots_fired++
 
 		if(dual_wield && !fired_by_akimbo)
-			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-				user.swap_hand()
-			else
-				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+			switch(user?.client?.prefs?.dual_wield_pref)
+				if(DUAL_WIELD_FIRE)
+					INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+				if(DUAL_WIELD_SWAP)
+					user.swap_hand()
 
 	else
 		return TRUE
@@ -1458,10 +1459,11 @@ and you're good to go.
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
 		if(dual_wield && !fired_by_akimbo)
-			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-				user.swap_hand()
-			else
-				INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
+			switch(user?.client?.prefs?.dual_wield_pref)
+				if(DUAL_WIELD_FIRE)
+					INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
+				if(DUAL_WIELD_SWAP)
+					user.swap_hand()
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [attacked_mob] with [src]!"), SPAN_DANGER("You have executed [attacked_mob] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
@@ -1959,6 +1961,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /// Setter proc for fa_firing
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
+	SIGNAL_HANDLER
 	fa_firing = auto
 
 /// Getter for gun_user

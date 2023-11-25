@@ -62,6 +62,10 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange
 
+/datum/gear/eyewear/goggles2
+	display_name = "Ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2
+
 /datum/gear/eyewear/bimex_shades
 	display_name = "BiMex personal shades"
 	path = /obj/item/clothing/glasses/sunglasses/big
@@ -205,6 +209,14 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "USCM beret, tan"
 	path = /obj/item/clothing/head/beret/cm/tan
 
+/datum/gear/headwear/uscm/beret_black
+	display_name = "USCM beret, black"
+	path = /obj/item/clothing/head/beret/cm/black
+
+/datum/gear/headwear/uscm/beret_white
+	display_name = "USCM beret, white"
+	path = /obj/item/clothing/head/beret/cm/white
+
 /datum/gear/headwear/uscm/boonie_olive
 	display_name = "USCM boonie hat, olive"
 	path = /obj/item/clothing/head/cmcap/boonie
@@ -324,6 +336,10 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/helmet_garb/spent_slugs
 	display_name = "Spent slugs"
 	path = /obj/item/prop/helmetgarb/spent_slug
+
+/datum/gear/helmet_garb/cartridge
+	display_name = "Cartridge"
+	path = /obj/item/prop/helmetgarb/cartridge
 
 /datum/gear/helmet_garb/spacejam_tickets
 	display_name = "Tickets to Space Jam"
@@ -498,6 +514,72 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/toy/crayon
 	display_name = "Crayon"
 	path = /obj/item/toy/crayon/rainbow
+
+/datum/gear/plush
+	category = "Plushies"
+	cost = 4
+
+/datum/gear/plush/random
+	display_name = "Random plush"
+	path = /obj/item/toy/plush/random_plushie
+	cost = 2
+
+/datum/gear/plush/farwa
+	display_name = "Farwa plush"
+	path = /obj/item/toy/plush/farwa
+
+/datum/gear/plush/barricade
+	display_name = "Barricade plush"
+	path = /obj/item/toy/plush/barricade
+
+/datum/gear/plush/bee
+	display_name = "Bee plush"
+	path = /obj/item/toy/plush/bee
+
+/datum/gear/plush/shark
+	display_name = "Shark plush"
+	path = /obj/item/toy/plush/shark
+
+/datum/gear/plush/moth
+	display_name = "Moth plush"
+	path = /obj/item/toy/plush/moth
+
+/datum/gear/plush/rock
+	display_name = "Rock plush"
+	path = /obj/item/toy/plush/rock
+
+/datum/gear/plush/therapy
+	display_name = "Therapy plush"
+	path = /obj/item/toy/plush/therapy
+
+/datum/gear/plush/therapy/red
+	display_name = "Therapy plush (Red)"
+	path = /obj/item/toy/plush/therapy/red
+
+/datum/gear/plush/therapy/blue
+	display_name = "Therapy plush (Blue)"
+	path = /obj/item/toy/plush/therapy/blue
+
+/datum/gear/plush/therapy/green
+	display_name = "Therapy plush (Green)"
+	path = /obj/item/toy/plush/therapy/green
+
+/datum/gear/plush/therapy/orange
+	display_name = "Therapy plush (Orange)"
+	path = /obj/item/toy/plush/therapy/orange
+
+/datum/gear/plush/therapy/purple
+	display_name = "Therapy plush (Purple)"
+	path = /obj/item/toy/plush/therapy/purple
+
+/datum/gear/plush/therapy/yellow
+	display_name = "Therapy plush (Yellow)"
+	path = /obj/item/toy/plush/therapy/yellow
+
+/datum/gear/plush/therapy/random
+	display_name = "Therapy plush (???)"
+	path = /obj/item/toy/plush/therapy/random_color
+	cost = 7
 
 /datum/gear/weapon
 	category = "Weapons"
@@ -769,6 +851,16 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Lighter, zippo"
 	path = /obj/item/tool/lighter/zippo
 
+/datum/gear/smoking/electronic_cigarette
+	display_name = "Electronic cigarette"
+	path = /obj/item/clothing/mask/electronic_cigarette
+	cost = 3
+
+/datum/gear/smoking/electronic_cigarette/cigar
+	display_name = "Electronic cigar"
+	path = /obj/item/clothing/mask/electronic_cigarette/cigar
+	cost = 4
+
 /datum/gear/misc
 	category = "Miscellaneous"
 
@@ -825,3 +917,21 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/misc/patch_uscm/falcon
 	display_name = "Falling Falcons shoulder patch"
 	path = /obj/item/clothing/accessory/patch/falcon
+
+/datum/gear/misc/family_photo
+	display_name = "Family photo"
+	path = /obj/item/prop/helmetgarb/family_photo
+
+/datum/gear/misc/compass
+	display_name = "Compass"
+	path = /obj/item/prop/helmetgarb/compass
+	cost = 1
+
+/datum/gear/misc/bug_spray
+	display_name = "Bug spray"
+	path = /obj/item/prop/helmetgarb/bug_spray
+
+/datum/gear/misc/straight_razor
+	display_name = "Cut-throat razor"
+	path = /obj/item/weapon/straight_razor
+	cost = 3

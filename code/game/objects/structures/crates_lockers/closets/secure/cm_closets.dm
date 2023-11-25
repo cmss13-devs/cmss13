@@ -32,6 +32,8 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/securecom/Initialize()
 	. = ..()
+	new /obj/item/storage/box/kit/honorguard(src)
+	new /obj/item/storage/box/kit/honorguard(src)
 	GLOB.co_secure_boxes += src
 
 /obj/structure/closet/secure_closet/securecom/Destroy()
@@ -62,8 +64,6 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/belt/marine(src)
 	new /obj/item/clothing/under/marine/officer/boiler(src)
 	new /obj/item/clothing/under/marine/officer/boiler(src)
-	new /obj/item/clothing/suit/storage/webbing(src)
-	new /obj/item/clothing/suit/storage/webbing(src)
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/clothing/gloves/combat(src)
 

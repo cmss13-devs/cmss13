@@ -354,8 +354,8 @@
 	exproof = TRUE
 	colony_camera_mapload = FALSE
 
-/obj/structure/machinery/computer/cameras/mortar/emp_act(severity)
-	return FALSE
+/obj/structure/machinery/computer/cameras/mortar/set_broken()
+	return
 
 /obj/structure/machinery/computer/cameras/dropship
 	name = "abstract dropship camera computer"

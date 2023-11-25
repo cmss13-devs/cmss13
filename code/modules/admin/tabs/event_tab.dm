@@ -218,14 +218,17 @@
 	if(!istype(chosen_ert))
 		return
 
-	var/is_announcing = tgui_alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
-	if(!is_announcing)
-		qdel(chosen_ert)
-		return
-	if(is_announcing == "No")
-		is_announcing = FALSE
-	if (is_announcing == "Yes")
-		is_announcing = TRUE
+	var/launch_broadcast = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+	if(launch_broadcast == "Yes")
+		launch_broadcast = TRUE
+	else
+		launch_broadcast = FALSE
+
+	var/announce_receipt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+	if(announce_receipt == "Yes")
+		announce_receipt = TRUE
+	else
+		announce_receipt = FALSE
 
 	var/turf/override_spawn_loc
 	var/prompt = tgui_alert(usr, "Spawn at their assigned spawn, or at your location?", "Spawnpoint Selection", list("Spawn", "Current Location"), 0)
@@ -235,7 +238,7 @@
 	if(prompt == "Current Location")
 		override_spawn_loc = get_turf(usr)
 
-	chosen_ert.activate(is_announcing, override_spawn_loc)
+	chosen_ert.activate(quiet_launch = launch_broadcast, announce_incoming = announce_receipt, override_spawn_loc = override_spawn_loc)
 
 	message_admins("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 
@@ -247,7 +250,7 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 	set_security_level(SEC_LEVEL_RED)
-	EvacuationAuthority.initiate_evacuation()
+	SShijack.initiate_evacuation()
 
 	message_admins("[key_name_admin(usr)] forced an emergency evacuation.")
 
@@ -258,7 +261,7 @@
 
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
-	EvacuationAuthority.cancel_evacuation()
+	SShijack.cancel_evacuation()
 
 	message_admins("[key_name_admin(usr)] canceled an emergency evacuation.")
 
@@ -322,7 +325,7 @@
 	if(!admin_holder)
 		return
 
-	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "Other", "Cancel")
+	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "CMB", "Other", "Cancel")
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
@@ -597,9 +600,9 @@
 		return FALSE
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.p_apollo.inoperable())
+	if(link.processor_apollo.inoperable())
 		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
-		if(prompt == "No")
+		if(prompt != "Yes")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
 			return FALSE
 
@@ -931,13 +934,8 @@
 		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
 		warhead.warhead_impact(target)
 
-		if(istype(warhead, /obj/structure/ob_ammo/warhead/cluster))
-		// so the user's screen can shake for the duration of the cluster, otherwise we get a runtime.
-			QDEL_IN(warhead, OB_CLUSTER_DURATION)
-		else
-			QDEL_IN(warhead, OB_CRASHING_DOWN)
 	else
-		warhead.loc = target
+		warhead.forceMove(target)
 
 /client/proc/change_taskbar_icon()
 	set name = "Set Taskbar Icon"

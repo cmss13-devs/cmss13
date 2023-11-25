@@ -38,3 +38,5 @@
 
 /// from /obj/limb/proc/remove_all_bleeding() : (external, internal)
 #define COMSIG_LIMB_STOP_BLEEDING "limb_stop_bleeding"
+
+#define COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED "structure_crate_squad_launched"

@@ -12,7 +12,7 @@
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!istype(X))
 		return FALSE
-	if(X.is_mob_incapacitated() || X.buckled || X.burrow)
+	if(X.is_mob_incapacitated() || X.buckled || HAS_TRAIT(X, TRAIT_ABILITY_BURROWED))
 		return FALSE
 	else
 		return TRUE

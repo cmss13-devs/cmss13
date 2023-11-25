@@ -56,7 +56,7 @@
 	if(target_carbon.stat == DEAD)
 		return
 
-	if(!(target_carbon.knocked_down || target_carbon.frozen || target_carbon.slowed))
+	if(!(target_carbon.knocked_down || HAS_TRAIT(target_carbon, TRAIT_IMMOBILIZED) || target_carbon.slowed))
 		return
 
 	target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, tearing_damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected ? bound_xeno.zone_selected : "chest")

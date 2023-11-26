@@ -45,9 +45,9 @@
 
 	//we want to check if we have reach enough stage level to gain a stage
 	// change to 60 for testing should be at 360 normaly
-	if(stage_level >= 60)
+	if(stage_level >= 120)
 		stage ++
-		stage_level = stage_level - 60
+		stage_level = stage_level - 120
 
 	switch(stage)
 		//stage 1 : Viatiate "afflicted"

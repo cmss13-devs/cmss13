@@ -7,17 +7,15 @@
 	spread = "Bites"
 	spread_type = SPECIAL
 	affected_species = list("Human")
-	curable = 0
-	cure_chance = 100
-	desc = ""
+	cure_chance = 100 //meaning the cure will kill the virus asap
 	severity = "Medium"
 	agent = "Unknown Biological Organism X-65"
 	hidden = list(1,0) //Hidden from med-huds, but not pandemic scanners.  BLOOD TESTS FOR THE WIN
 	permeability_mod = 2
 	stage_prob = 4
 	stage_minimum_age = 150
-	survive_mob_death = TRUE //FALSE //switch to true to make dead infected humans still transform
-	longevity = 500 //should allow the dead to rise
+	survive_mob_death = TRUE //We want the dead to turn into zombie.
+	longevity = 500 //the virus tend to die before the dead is turn into zombie this should fix it.
 	var/zombie_transforming = 0 //whether we're currently transforming the host into a zombie.
 	var/goo_message_cooldown = 0 //to make sure we don't spam messages too often.
 	var/stage_counter = 0 // tells a dead infectee their stage, so they can know when-abouts they'll revive
@@ -35,7 +33,6 @@
 			if(H.stat == DEAD && stage_counter != stage)
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage One! Zombie transformation begins at Stage Four."))
 				stage_counter = stage
-			survive_mob_death = TRUE //changed because infection rate was REALLY horrible.
 			if(goo_message_cooldown < world.time )
 				if(prob(3))
 					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
@@ -54,7 +51,6 @@
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Three! Zombie transformation begins at Stage Four, which will be soon."))
 				stage_counter = stage
 			hidden = list(0,0)
-			//survive_mob_death = TRUE //even if host dies now, the transformation will occur.
 			H.next_move_slowdown = max(H.next_move_slowdown, 1)
 			if(goo_message_cooldown < world.time)
 				if (prob(3))

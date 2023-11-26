@@ -105,7 +105,7 @@ Class Procs:
 	var/list/component_parts //list of all the parts used to build it, if made from certain kinds of frames.
 	var/manual = 0
 	layer = OBJ_LAYER
-	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler.
+	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler. // Please replace this by DF_ISPROCESSING in another refactor --fira
 	throwpass = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	var/power_machine = FALSE //Whether the machine should process on power, or normal processor
@@ -128,15 +128,15 @@ Class Procs:
 
 /obj/structure/machinery/Initialize(mapload, ...)
 	. = ..()
-	machines += src
+	GLOB.machines += src
 	var/area/A = get_area(src)
 	if(A)
 		A.add_machine(src) //takes care of adding machine's power usage
 
 /obj/structure/machinery/Destroy()
-	machines -= src
-	processing_machines -= src
-	power_machines -= src
+	GLOB.machines -= src
+	GLOB.processing_machines -= src
+	GLOB.power_machines -= src
 	var/area/A = get_area(src)
 	if(A)
 		A.remove_machine(src) //takes care of removing machine from power usage
@@ -151,15 +151,15 @@ Class Procs:
 	if(!machine_processing)
 		machine_processing = 1
 		if(power_machine)
-			addToListNoDupe(power_machines, src)
+			addToListNoDupe(GLOB.power_machines, src)
 		else
-			addToListNoDupe(processing_machines, src)
+			addToListNoDupe(GLOB.processing_machines, src)
 
 /obj/structure/machinery/proc/stop_processing()
 	if(machine_processing)
 		machine_processing = 0
-		processing_machines -= src
-		power_machines -= src
+		GLOB.processing_machines -= src
+		GLOB.power_machines -= src
 
 /obj/structure/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL
@@ -175,10 +175,10 @@ Class Procs:
 		. += SPAN_WARNING("[msg]")
 
 /obj/structure/machinery/emp_act(severity)
+	. = ..()
 	if(use_power && stat == 0)
 		use_power(7500/severity)
 	new /obj/effect/overlay/temp/emp_sparks (loc)
-	..()
 
 
 /obj/structure/machinery/ex_act(severity)

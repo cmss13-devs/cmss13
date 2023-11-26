@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	return ..()
 
 /obj/structure/machinery/computer/shuttle_control/proc/get_shuttle()
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = SSoldshuttle.shuttle_controller.shuttles[shuttle_tag]
 
 	if(shuttle_datum)
 		shuttle = shuttle_datum
@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		"auto_time_cdown" = automated_launch_time_left,
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnano.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, shuttle.iselevator? "elevator_control_console.tmpl" : "shuttle_control_console.tmpl", shuttle.iselevator? "Elevator Control" : "Shuttle Control", 550, 500)
@@ -262,7 +262,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					return
 
 				// Allow the queen to choose the ship section to crash into
-				var/crash_target = tgui_input_list(usr, "Choose a ship section to target","Hijack", almayer_ship_sections + list("Cancel"))
+				var/crash_target = tgui_input_list(usr, "Choose a ship section to target","Hijack", GLOB.almayer_ship_sections + list("Cancel"))
 				if(crash_target == "Cancel")
 					return
 
@@ -280,21 +280,20 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					shuttle1.true_crash_target_section = crash_target
 
 					// If the AA is protecting the target area, pick any other section to crash into at random
-					if(almayer_aa_cannon.protecting_section == crash_target)
-						var/list/potential_crash_sections = almayer_ship_sections.Copy()
-						potential_crash_sections -= almayer_aa_cannon.protecting_section
+					if(GLOB.almayer_aa_cannon.protecting_section == crash_target)
+						var/list/potential_crash_sections = GLOB.almayer_ship_sections.Copy()
+						potential_crash_sections -= GLOB.almayer_aa_cannon.protecting_section
 						crash_target = pick(potential_crash_sections)
 
 					shuttle1.crash_target_section = crash_target
 					shuttle1.transit_gun_mission = 0
 
-					if(round_statistics)
-						round_statistics.track_hijack()
+					if(GLOB.round_statistics)
+						GLOB.round_statistics.track_hijack()
 
 					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 					shuttle.alerts_allowed--
-					var/datum/ares_link/link = GLOB.ares_link
-					link.log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
+					log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
@@ -309,16 +308,16 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					if(Q.hive)
 						addtimer(CALLBACK(Q.hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
 
-					if(bomb_set)
+					if(GLOB.bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 							bomb.end_round = FALSE
 
-					if(almayer_orbital_cannon)
-						almayer_orbital_cannon.is_disabled = TRUE
-						addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
+					if(GLOB.almayer_orbital_cannon)
+						GLOB.almayer_orbital_cannon.is_disabled = TRUE
+						addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
 
-					if(almayer_aa_cannon)
-						almayer_aa_cannon.is_disabled = TRUE
+					if(GLOB.almayer_aa_cannon)
+						GLOB.almayer_aa_cannon.is_disabled = TRUE
 				else
 					if(shuttle.require_link)
 						use_power(4080)

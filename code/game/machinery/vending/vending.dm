@@ -343,7 +343,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		if (CH) // Only proceed if card contains proper account number.
 			if(!CH.suspended)
 				if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
-					if(vendor_account)
+					if(GLOB.vendor_account)
 						var/attempt_pin = tgui_input_number(usr, "Enter pin code", "Vendor transaction")
 						var/datum/money_account/D = attempt_account_access(card.associated_account_number, attempt_pin, 2)
 						transfer_and_vend(D)
@@ -364,18 +364,18 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 			//transfer the money
 			acc.money -= transaction_amount
-			vendor_account.money += transaction_amount
+			GLOB.vendor_account.money += transaction_amount
 
 			//create entries in the two account transaction logs
 			var/datum/transaction/T = new()
-			T.target_name = "[vendor_account.owner_name] (via [name])"
+			T.target_name = "[GLOB.vendor_account.owner_name] (via [name])"
 			T.purpose = "Purchase of [currently_vending.product_name]"
 			if(transaction_amount > 0)
 				T.amount = "([transaction_amount])"
 			else
 				T.amount = "[transaction_amount]"
 			T.source_terminal = name
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = worldtime2text()
 			acc.transaction_log.Add(T)
 							//
@@ -384,9 +384,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			T.purpose = "Purchase of [currently_vending.product_name]"
 			T.amount = "[transaction_amount]"
 			T.source_terminal = name
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = worldtime2text()
-			vendor_account.transaction_log.Add(T)
+			GLOB.vendor_account.transaction_log.Add(T)
 
 			// Vend the item
 			vend(currently_vending, usr)
@@ -398,28 +398,25 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 /obj/structure/machinery/vending/proc/GetProductIndex(datum/data/vending_product/product)
 	var/list/plist
-	switch(product.category)
-		if(CAT_NORMAL)
-			plist=product_records
-		if(CAT_HIDDEN)
-			plist=hidden_records
-		if(CAT_COIN)
-			plist=coin_records
-		else
-			warning("UNKNOWN CATEGORY [product.category] IN TYPE [product.product_path] INSIDE [type]!")
+	if(product.category == CAT_NORMAL)
+		plist = product_records
+	else if(product.category == CAT_HIDDEN)
+		plist = hidden_records
+	else if(product.category == CAT_COIN)
+		plist = coin_records
+	else
+		warning("UNKNOWN CATEGORY [product.category] IN TYPE [product.product_path] INSIDE [type]!")
 	return plist.Find(product)
 
 /obj/structure/machinery/vending/proc/GetProductByID(pid, category)
-	switch(category)
-		if(CAT_NORMAL)
-			return product_records[pid]
-		if(CAT_HIDDEN)
-			return hidden_records[pid]
-		if(CAT_COIN)
-			return coin_records[pid]
-		else
-			warning("UNKNOWN PRODUCT: PID: [pid], CAT: [category] INSIDE [type]!")
-			return null
+	if(category == CAT_NORMAL)
+		return product_records[pid]
+	else if(category == CAT_HIDDEN)
+		return hidden_records[pid]
+	else if(category == CAT_COIN)
+		return coin_records[pid]
+	else
+		warning("UNKNOWN PRODUCT: PID: [pid], CAT: [category] INSIDE [type]!")
 
 /obj/structure/machinery/vending/attack_hand(mob/user)
 	if(is_tipped_over)
@@ -625,18 +622,18 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	//transfer the money
 	user_account.money -= transaction_amount
-	vendor_account.money += transaction_amount
+	GLOB.vendor_account.money += transaction_amount
 
 	//create entries in the two account transaction logs
 	var/datum/transaction/new_transaction = new()
-	new_transaction.target_name = "[vendor_account.owner_name] (via [name])"
+	new_transaction.target_name = "[GLOB.vendor_account.owner_name] (via [name])"
 	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
 	if(transaction_amount > 0)
 		new_transaction.amount = "([transaction_amount])"
 	else
 		new_transaction.amount = "[transaction_amount]"
 	new_transaction.source_terminal = name
-	new_transaction.date = current_date_string
+	new_transaction.date = GLOB.current_date_string
 	new_transaction.time = worldtime2text()
 	user_account.transaction_log.Add(new_transaction)
 
@@ -645,9 +642,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
 	new_transaction.amount = "[transaction_amount]"
 	new_transaction.source_terminal = name
-	new_transaction.date = current_date_string
+	new_transaction.date = GLOB.current_date_string
 	new_transaction.time = worldtime2text()
-	vendor_account.transaction_log.Add(new_transaction)
+	GLOB.vendor_account.transaction_log.Add(new_transaction)
 
 	return TRUE
 
@@ -658,7 +655,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	//transfer the money
 	cash.worth -= transaction_amount
-	vendor_account.money += transaction_amount
+	GLOB.vendor_account.money += transaction_amount
 
 	//consume the cash if needed
 	if(!cash.worth)
@@ -670,9 +667,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
 	new_transaction.amount = "[transaction_amount]"
 	new_transaction.source_terminal = name
-	new_transaction.date = current_date_string
+	new_transaction.date = GLOB.current_date_string
 	new_transaction.time = worldtime2text()
-	vendor_account.transaction_log.Add(new_transaction)
+	GLOB.vendor_account.transaction_log.Add(new_transaction)
 
 	return TRUE
 

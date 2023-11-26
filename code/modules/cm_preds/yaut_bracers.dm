@@ -116,6 +116,9 @@
 	var/mob/living/carbon/human/human_owner = owner
 	var/turf/wearer_turf = get_turf(owner)
 	SSminimaps.remove_marker(owner)
+	if(!wearer_turf)
+		return
+
 	if(!isyautja(owner))
 		if(owner.stat >= DEAD)
 			if(human_owner.undefibbable)
@@ -288,6 +291,7 @@
 	right_wristblades = new(src)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
+	. = ..()
 	charge = max(charge - (severity * 500), 0)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
@@ -492,7 +496,7 @@
 			if(dist < closest)
 				closest = dist
 				closest_item = tracked_item
-				direction = get_dir(M,loc)
+				direction = Get_Compass_Dir(M,loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD)
@@ -509,7 +513,7 @@
 			var/dist = get_dist(M,Y)
 			if(dist < closest)
 				closest = dist
-				direction = get_dir(M,Y)
+				direction = Get_Compass_Dir(M,Y)
 				areaLoc = loc
 
 	var/output = FALSE
@@ -574,6 +578,7 @@
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
+		RegisterSignal(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak))
 
 		cloak_timer = world.time + 1.5 SECONDS
 		if(true_cloak)
@@ -585,9 +590,9 @@
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
 		animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
 
-		var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+		var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
-		var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+		var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 		XI.remove_from_hud(M)
 		anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
 
@@ -611,6 +616,7 @@
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
+	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
 	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
 	if(forced)
@@ -626,9 +632,9 @@
 		user.see_invisible = initial(user.see_invisible)
 	cloak_timer = world.time + (DECLOAK_STANDARD / 2)
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(user)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(user)
 
 	anim(user.loc, user, 'icons/mob/mob.dmi', null, "uncloak", null, user.dir)

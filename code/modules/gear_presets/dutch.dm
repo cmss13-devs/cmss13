@@ -19,10 +19,10 @@
 	human.randomize_appearance(new_human)
 	var/random_name
 	if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male_dutch)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_male_dutch)] [pick(GLOB.last_names)]"
 		new_human.f_style = "5 O'clock Shadow"
 	else
-		random_name = "[pick(first_names_female_dutch)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_female_dutch)] [pick(GLOB.last_names)]"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(25,35)
@@ -47,7 +47,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/empgrenade/dutch(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/empgrenade/dutch(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/empgrenade/dutch(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/dutch(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(new_human), WEAR_IN_ACCESSORY)

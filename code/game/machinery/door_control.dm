@@ -64,7 +64,7 @@
 	if(is_mainship_level(z)) // on the almayer
 		return
 
-	shuttle.control_doors("lock", "all", force=FALSE)
+	shuttle.control_doors("force-lock", "all", force=FALSE)
 
 /obj/structure/machinery/door_control/proc/handle_door()
 	for(var/obj/structure/machinery/door/airlock/D in range(range))
@@ -95,7 +95,7 @@
 					D.safe = 1
 
 /obj/structure/machinery/door_control/proc/handle_pod()
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == id)
 			if(M.density)
 				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
@@ -150,47 +150,6 @@
 	else
 		icon_state = initial(icon_state) + "0"
 
-/obj/structure/machinery/driver_button/attack_remote(mob/user as mob)
-	return src.attack_hand(user)
-
-/obj/structure/machinery/driver_button/attackby(obj/item/W, mob/user as mob)
-	return src.attack_hand(user)
-
-/obj/structure/machinery/driver_button/attack_hand(mob/user as mob)
-
-	src.add_fingerprint(usr)
-	if(inoperable())
-		return
-	if(active)
-		return
-	add_fingerprint(user)
-
-	use_power(5)
-
-	active = 1
-	icon_state = "launcheract"
-
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
-
-	sleep(20)
-
-	for(var/obj/structure/machinery/mass_driver/M in machines)
-		if(M.id == src.id)
-			M.drive()
-
-	sleep(50)
-
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
-
-	icon_state = "launcherbtt"
-	active = 0
-
-	return
-
 // Controls elevator railings
 /obj/structure/machinery/door_control/railings
 	name = "railing controls"
@@ -228,7 +187,7 @@
 	add_fingerprint(user)
 
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == id)
 			effective = 1
 			spawn()

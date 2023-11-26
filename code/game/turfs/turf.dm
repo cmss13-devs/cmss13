@@ -72,9 +72,8 @@
 	// by default, vis_contents is inherited from the turf that was here before
 	vis_contents.Cut()
 
-	turfs += src
-	if(is_ground_level(z))
-		z1turfs += src
+	GLOB.turfs += src
+
 
 	assemble_baseturfs()
 
@@ -82,11 +81,11 @@
 
 	visibilityChanged()
 
-	pass_flags = pass_flags_cache[type]
+	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()
 		initialize_pass_flags(pass_flags)
-		pass_flags_cache[type] = pass_flags
+		GLOB.pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
 

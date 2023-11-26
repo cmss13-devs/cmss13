@@ -81,7 +81,7 @@
 	set desc = "Toggles the health and plasma HUD appearing above Xenomorphs."
 	set category = "Alien"
 
-	var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_STATUS]
 	if (xeno_mobhud)
 		H.remove_hud_from(usr, usr)
 	else
@@ -94,7 +94,7 @@
 	set desc = "Toggles the HUD that renders various negative status effects inflicted on humans."
 	set category = "Alien"
 
-	var/datum/mob_hud/H = huds[MOB_HUD_XENO_HOSTILE]
+	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_HOSTILE]
 	if (xeno_hostile_hud)
 		H.remove_hud_from(usr, usr)
 	else

@@ -51,7 +51,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(fendy.fortify && !fendy.steelcrest)
+	if(fendy.fortify && !(fendy.mutation_type == DEFENDER_STEELCREST))
 		to_chat(fendy, SPAN_XENOWARNING("You cannot use headbutt while fortified."))
 		return
 
@@ -78,7 +78,9 @@
 	SPAN_XENOWARNING("You ram [carbone] with your armored crest!"))
 
 	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)) )
-		var/h_damage = 30 - (fendy.crest_defense * 10) + (fendy.steelcrest * 7.5) //30 if crest up, 20 if down, plus 7.5
+		var/h_damage = 30 - (fendy.crest_defense * 10)
+		if(fendy.mutation_type == DEFENDER_STEELCREST)
+			h_damage += 7.5
 		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
 	var/facing = get_dir(fendy, carbone)
@@ -159,7 +161,7 @@
 	if (!istype(xeno))
 		return
 
-	if(xeno.crest_defense && xeno.steelcrest)
+	if(xeno.crest_defense && xeno.mutation_type == DEFENDER_STEELCREST)
 		to_chat(src, SPAN_XENOWARNING("You cannot fortify while your crest is already down!"))
 		return
 
@@ -207,7 +209,7 @@
 
 	if(fortify_state)
 		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
-		if(X.steelcrest)
+		if(X.mutation_type == DEFENDER_STEELCREST)
 			X.armor_deflection_buff += 10
 			X.armor_explosive_buff += 60
 			X.ability_speed_modifier += 3
@@ -215,7 +217,7 @@
 		else
 			X.armor_deflection_buff += 30
 			X.armor_explosive_buff += 60
-			X.frozen = TRUE
+			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 			X.anchored = TRUE
 			X.small_explosives_stun = FALSE
 			X.update_canmove()
@@ -226,9 +228,9 @@
 		X.fortify = TRUE
 	else
 		to_chat(X, SPAN_XENOWARNING("You resume your normal stance."))
-		X.frozen = FALSE
+		REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 		X.anchored = FALSE
-		if(X.steelcrest)
+		if(X.mutation_type == DEFENDER_STEELCREST)
 			X.armor_deflection_buff -= 10
 			X.armor_explosive_buff -= 60
 			X.ability_speed_modifier -= 3

@@ -116,16 +116,15 @@
 		hive.remove_xeno(src)
 		// Finding the last xeno for anti-delay.
 		if(SSticker.mode && SSticker.current_state != GAME_STATE_FINISHED)
-			if((last_ares_callout + 2 MINUTES) > world.time)
+			if((GLOB.last_ares_callout + 2 MINUTES) > world.time)
 				return
 			if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
 				var/mob/living/carbon/xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
-				last_ares_callout = world.time
+				GLOB.last_ares_callout = world.time
 				// Tell the marines where the last one is.
 				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
-				var/datum/ares_link/link = GLOB.ares_link
-				link.log_ares_bioscan(name, input)
+				log_ares_bioscan(name, input)
 				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 				// Tell the xeno she is the last one.
 				if(X.client)

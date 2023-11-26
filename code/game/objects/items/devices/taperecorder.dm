@@ -168,7 +168,7 @@
 		mytape.timestamp += mytape.used_capacity
 		var/language_known = (M.universal_speak || (speaking && (speaking.name in known_languages)))
 		var/mob_name = language_known ? M.GetVoice() : "Unknown"
-		var/message = language_known ? msg : speaking.scramble(msg)
+		var/message = (!speaking || language_known) ? msg : speaking.scramble(msg)
 		mytape.storedinfo += "\[[time2text(mytape.used_capacity,"mm:ss")]\] [mob_name] [verb], \"[italics ? "<i>" : null][message][italics ? "</i>" : null]\""
 
 
@@ -261,7 +261,7 @@
 			audible_message(SPAN_MAROON("[icon2html(src, usr)] End of recording."))
 			break
 
-		var/list/heard = get_mobs_in_view(world_view_size, src)
+		var/list/heard = get_mobs_in_view(GLOB.world_view_size, src)
 		langchat_speech(mytape.storedinfo[i], heard, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] [mytape.storedinfo[i]]"))//We want to display this properly, don't double encode

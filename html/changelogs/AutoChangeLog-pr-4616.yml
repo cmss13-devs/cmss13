@@ -1,5 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - bugfix: "You can now pick up paper bins"
-  - bugfix: "Campfires stop consuming wood when full"

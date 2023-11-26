@@ -187,7 +187,7 @@
 					return
 			//now crawl
 			mob.crawling = TRUE
-			if(!do_after(mob, 3 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, BUSY_ICON_GENERIC))
+			if(!do_after(mob, 1 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, NO_BUSY_ICON))
 				mob.crawling = FALSE
 				next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 				mob.move_intentionally = FALSE
@@ -195,7 +195,7 @@
 				return
 		mob.crawling = FALSE
 		if(mob.confused)
-			mob.Move(get_step(mob, pick(cardinal)))
+			mob.Move(get_step(mob, pick(GLOB.cardinals)))
 		else
 			. = ..()
 

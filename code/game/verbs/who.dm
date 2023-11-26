@@ -83,7 +83,7 @@
 									counted_humanoids["Infected humans"]++
 								if(C.mob.faction == FACTION_MARINE)
 									counted_humanoids[FACTION_MARINE]++
-									if(C.mob.job in (ROLES_MARINES))
+									if(C.mob.job in (GLOB.ROLES_MARINES))
 										counted_humanoids["USCM Marines"]++
 								else
 									counted_humanoids[C.mob.faction]++
@@ -160,7 +160,7 @@
 	if(CONFIG_GET(flag/show_manager))
 		LAZYSET(mappings, "<B style='color:purple'>Management</B>", R_PERMISSIONS)
 	if(CONFIG_GET(flag/show_devs))
-		LAZYSET(mappings, "<B style='color:blue'>Maintainers</B>", R_PROFILER)
+		LAZYSET(mappings, "<B style='color:dodgerblue'>Maintainers</B>", R_PROFILER)
 	LAZYSET(mappings, "<B style='color:red'>Admins</B>", R_ADMIN)
 	if(CONFIG_GET(flag/show_mods))
 		LAZYSET(mappings, "<B style='color:orange'>Moderators</B>", R_MOD)

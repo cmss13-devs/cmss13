@@ -363,11 +363,8 @@
 	matter = list()
 	possible_transfer_amounts = list(5,10,15,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
-
-/obj/item/reagent_container/glass/beaker/vial/Initialize()
-	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
+	ground_offset_x = 9
+	ground_offset_y = 8
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"
@@ -392,17 +389,17 @@
 	. = ..()
 	var/random_chem
 	if(tier)
-		random_chem = pick(chemical_gen_classes_list[tier])
+		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
 	else
-		random_chem = pick( prob(3);pick(chemical_gen_classes_list["C1"]),\
-							prob(5);pick(chemical_gen_classes_list["C2"]),\
-							prob(7);pick(chemical_gen_classes_list["C3"]),\
-							prob(10);pick(chemical_gen_classes_list["C4"]),\
-							prob(15);pick(chemical_gen_classes_list["C5"]),\
-							prob(25);pick(chemical_gen_classes_list["T1"]),\
-							prob(15);pick(chemical_gen_classes_list["T2"]),\
-							prob(10);pick(chemical_gen_classes_list["T3"]),\
-							prob(5);pick(chemical_gen_classes_list["T4"]),\
+		random_chem = pick( prob(3);pick(GLOB.chemical_gen_classes_list["C1"]),\
+							prob(5);pick(GLOB.chemical_gen_classes_list["C2"]),\
+							prob(7);pick(GLOB.chemical_gen_classes_list["C3"]),\
+							prob(10);pick(GLOB.chemical_gen_classes_list["C4"]),\
+							prob(15);pick(GLOB.chemical_gen_classes_list["C5"]),\
+							prob(25);pick(GLOB.chemical_gen_classes_list["T1"]),\
+							prob(15);pick(GLOB.chemical_gen_classes_list["T2"]),\
+							prob(10);pick(GLOB.chemical_gen_classes_list["T3"]),\
+							prob(5);pick(GLOB.chemical_gen_classes_list["T4"]),\
 							prob(15);"")
 	if(random_chem)
 		reagents.add_reagent(random_chem, 30)

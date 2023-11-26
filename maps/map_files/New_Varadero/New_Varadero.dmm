@@ -4928,7 +4928,7 @@
 "dhQ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/colonist,
-/obj/item/weapon/katana,
+/obj/item/weapon/sword/katana,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "dhV" = (
@@ -5652,12 +5652,6 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/hall_N)
-"dKm" = (
-/obj/structure/closet/secure_closet/personal/patient,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
-/area/varadero/interior/bunks)
 "dKy" = (
 /obj/structure/closet/crate/freezer/cooler/oj,
 /obj/item/reagent_container/food/drinks/cans/beer,
@@ -7259,15 +7253,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"eKW" = (
-/obj/structure/bed,
-/obj/item/bedsheet/orange,
-/obj/item/toy/farwadoll,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "snow_mat"
-	},
-/area/varadero/interior/security)
 "eLE" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/brigdoor/westleft,
@@ -7371,9 +7356,6 @@
 /obj/item/circuitboard/airlock,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
-"eOK" = (
-/turf/open/floor/plating,
-/area/varadero/interior_protected/caves/central)
 "eOZ" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -8588,28 +8570,6 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/electrical)
-"fDn" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/item/toy/farwadoll,
-/turf/open/floor/wood,
-/area/varadero/interior/bunks)
 "fDB" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -10632,11 +10592,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance)
-"gPE" = (
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
-/area/varadero/interior_protected/caves/central)
 "gPG" = (
 /turf/open/gm/dirt{
 	icon_state = "desert2"
@@ -13981,6 +13936,13 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/maintenance)
+"jab" = (
+/obj/structure/closet/secure_closet/scientist,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "purple"
+	},
+/area/varadero/interior/research)
 "jai" = (
 /obj/structure/filingcabinet/security,
 /obj/effect/landmark/objective_landmark/far,
@@ -15343,6 +15305,12 @@
 "jTR" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/monsoon)
+"jTY" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/varadero/interior/bunks)
 "jUt" = (
 /obj/item/tool/weldingtool/experimental,
 /turf/open/floor/plating/icefloor{
@@ -15547,6 +15515,9 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
+"kce" = (
+/turf/open/floor/plating,
+/area/varadero/interior_protected/caves/central)
 "kcn" = (
 /obj/item/stack/sandbags_empty/full,
 /turf/open/auto_turf/sand_white/layer1,
@@ -16148,33 +16119,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/comms2)
-"kxW" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/item/bedsheet/purple{
-	pixel_y = 13
-	},
-/obj/item/bedsheet/hos{
-	layer = 3.1
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/bunks)
 "kyh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
@@ -18298,6 +18242,15 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/exterior/eastbeach)
+"lNq" = (
+/obj/structure/bed,
+/obj/item/bedsheet/orange,
+/obj/item/toy/plush/farwa,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "snow_mat"
+	},
+/area/varadero/interior/security)
 "lNw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/prop/server_equipment/laptop/closed{
@@ -20096,6 +20049,28 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
+"mSc" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/toy/plush/farwa,
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
 "mSf" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva{
@@ -21745,14 +21720,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/hall_NW)
-"nYi" = (
-/obj/structure/machinery/sensortower{
-	pixel_x = -9
-	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
-/area/varadero/interior_protected/caves/central)
 "nYx" = (
 /obj/structure/machinery/storm_siren{
 	dir = 8;
@@ -24509,6 +24476,31 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/morgue)
+"pMy" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/toy/plush/farwa,
+/obj/structure/machinery/light,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/medical)
 "pMG" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
@@ -26679,9 +26671,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
-"raW" = (
-/turf/closed/wall,
-/area/varadero/interior_protected/caves/central)
 "rbd" = (
 /obj/item/stack/sheet/wood/small_stack,
 /turf/open/floor/plating/icefloor{
@@ -27543,10 +27532,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/north)
-"rAt" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating,
-/area/varadero/interior_protected/caves/central)
 "rAy" = (
 /obj/structure/bedsheetbin,
 /turf/open/floor/shiva{
@@ -28194,6 +28179,14 @@
 	icon_state = "white"
 	},
 /area/varadero/interior/toilets)
+"rWG" = (
+/obj/structure/machinery/sensortower{
+	pixel_x = -9
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior_protected/caves/central)
 "rWJ" = (
 /obj/item/stool,
 /turf/open/floor/shiva{
@@ -28406,6 +28399,33 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/medical)
+"seZ" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/purple{
+	pixel_y = 13
+	},
+/obj/item/bedsheet/hos{
+	layer = 3.1
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
 "sff" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -29185,13 +29205,6 @@
 	dir = 1
 	},
 /area/varadero/interior/cargo)
-"sCK" = (
-/obj/structure/closet/secure_closet/scientist,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "purple"
-	},
-/area/varadero/interior/research)
 "sCV" = (
 /obj/structure/machinery/alarm{
 	dir = 8;
@@ -30659,6 +30672,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"tCl" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior_protected/caves/central)
 "tCA" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -32260,6 +32277,9 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/security)
+"uIR" = (
+/turf/closed/wall,
+/area/varadero/interior_protected/caves/central)
 "uIW" = (
 /turf/open/gm/coast/north,
 /area/varadero/exterior/lz2_near)
@@ -32351,31 +32371,6 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/technical_storage)
-"uMN" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/item/toy/farwadoll,
-/obj/structure/machinery/light,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
-/area/varadero/interior/medical)
 "uMQ" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "cartridge_1_1"
@@ -35970,6 +35965,11 @@
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool)
+"wSM" = (
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/varadero/interior_protected/caves/central)
 "wSX" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -42760,7 +42760,7 @@ rQV
 rQV
 nuQ
 lKS
-sCK
+jab
 cjU
 nLw
 fay
@@ -49842,7 +49842,7 @@ wQd
 sWp
 dBB
 maN
-uMN
+pMy
 qcN
 oHo
 qqA
@@ -53340,9 +53340,9 @@ etv
 xxk
 xxk
 mCF
-raW
-rAt
-rAt
+uIR
+tCl
+tCl
 cty
 hoC
 mCF
@@ -53522,9 +53522,9 @@ toU
 cto
 xxk
 meS
-eOK
-gPE
-gPE
+kce
+wSM
+wSM
 cty
 cty
 mCF
@@ -53704,9 +53704,9 @@ etv
 xxk
 xxk
 aOg
-eOK
-gPE
-nYi
+kce
+wSM
+rWG
 cty
 aOg
 aOg
@@ -53885,9 +53885,9 @@ ixr
 toU
 xxk
 xxk
-eOK
+kce
 mCF
-gPE
+wSM
 cty
 cty
 aOg
@@ -54068,7 +54068,7 @@ mMZ
 xxk
 xxk
 mCF
-eOK
+kce
 cty
 cty
 cty
@@ -54589,7 +54589,7 @@ tcq
 jyw
 xya
 ydx
-fDn
+mSc
 wpX
 qQt
 jNT
@@ -54958,7 +54958,7 @@ yhy
 sJq
 iwo
 tMY
-dKm
+jTY
 xxo
 uLP
 xNR
@@ -55681,7 +55681,7 @@ pbt
 qvQ
 bLy
 ydx
-kxW
+seZ
 pbd
 mnm
 kWj
@@ -60799,7 +60799,7 @@ lxy
 qhZ
 bUg
 vpV
-eKW
+lNq
 obS
 ryD
 wXs

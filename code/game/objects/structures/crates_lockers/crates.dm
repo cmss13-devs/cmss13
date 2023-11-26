@@ -12,6 +12,19 @@
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
 	var/rigged = 0
+	/// Types this crate can be made into
+	var/list/crate_customizing_types = list(
+		"Plain" = /obj/structure/closet/crate,
+		"Weapons" = /obj/structure/closet/crate/weapon,
+		"Supply" = /obj/structure/closet/crate/supply,
+		"Ammo" = /obj/structure/closet/crate/ammo,
+		"Construction" = /obj/structure/closet/crate/construction,
+		"Explosives" = /obj/structure/closet/crate/explosives,
+		"Alpha" = /obj/structure/closet/crate/alpha,
+		"Bravo" = /obj/structure/closet/crate/bravo,
+		"Charlie" = /obj/structure/closet/crate/charlie,
+		"Delta" = /obj/structure/closet/crate/delta,
+	)
 
 /obj/structure/closet/crate/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -130,8 +143,6 @@
 			contents_explosion(severity)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/closet/crate/alpha
 	name = "alpha squad crate"
@@ -209,6 +220,7 @@
 	icon_state = "closed_freezer"
 	icon_opened = "open_freezer"
 	icon_closed = "closed_freezer"
+	crate_customizing_types = null
 	var/target_temp = T0C - 40
 	var/cooling_power = 40
 

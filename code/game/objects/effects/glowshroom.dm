@@ -46,7 +46,7 @@
 	set background = 1
 	var/direction = 16
 
-	for(var/wallDir in cardinal)
+	for(var/wallDir in GLOB.cardinals)
 		var/turf/newTurf = get_step(location,wallDir)
 		if(istype(newTurf, /turf/closed/wall))
 			direction |= wallDir
@@ -95,8 +95,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/effect/glowshroom/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)

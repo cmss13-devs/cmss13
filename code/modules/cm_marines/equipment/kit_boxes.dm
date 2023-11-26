@@ -213,13 +213,13 @@
 			return TRUE
 
 /obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
-	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", available_specialist_kit_boxes)
+	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", GLOB.available_specialist_kit_boxes)
 	if(!selection || QDELETED(src))
 		return FALSE
 	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
 		return
-	if(!available_specialist_kit_boxes[selection] || available_specialist_kit_boxes[selection] <= 0)
+	if(!GLOB.available_specialist_kit_boxes[selection] || GLOB.available_specialist_kit_boxes[selection] <= 0)
 		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
 		return FALSE
 	var/obj/item/card/id/ID = user.wear_id
@@ -274,12 +274,12 @@
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = TRUE
+	ground_offset_x = 5
+	ground_offset_y = 5
 	var/pro_case_overlay
 
 /obj/item/storage/box/kit/Initialize()
 	. = ..()
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
 	if(pro_case_overlay)
 		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
 

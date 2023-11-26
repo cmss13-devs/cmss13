@@ -466,7 +466,7 @@
 					return
 
 			if(user.get_active_hand() == null && user.get_inactive_hand() == null)
-				user.freeze()
+				ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 				user.set_interaction(src)
 				give_action(user, /datum/action/human_action/mg_exit)
 			else
@@ -557,7 +557,7 @@
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
-			user.client.change_view(world_view_size)
+			user.client.change_view(GLOB.world_view_size)
 			user.client.pixel_x = 0
 			user.client.pixel_y = 0
 

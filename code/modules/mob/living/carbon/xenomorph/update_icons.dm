@@ -131,12 +131,12 @@
 		apply_overlay(X_L_HAND_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_back()
-	if(!backpack_icon_carrier)
+	if(!backpack_icon_holder)
 		return // Xenos will only have a vis_obj if they've been equipped with a pack before
 
 	var/obj/item/storage/backpack/backpack = back
 	if(!backpack?.xeno_icon_state)
-		backpack_icon_carrier.icon_state = "none"
+		backpack_icon_holder.icon_state = "none"
 		return
 
 	var/state_modifier = ""
@@ -150,11 +150,11 @@
 	else if(handle_special_state())
 		state_modifier = handle_special_backpack_states()
 
-	backpack_icon_carrier.icon_state = backpack.xeno_icon_state + state_modifier
+	backpack_icon_holder.icon_state = backpack.xeno_icon_state + state_modifier
 
-	backpack_icon_carrier.layer = -X_BACK_LAYER
+	backpack_icon_holder.layer = -X_BACK_LAYER
 	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
-		backpack_icon_carrier.layer = -X_BACK_FRONT_LAYER
+		backpack_icon_holder.layer = -X_BACK_FRONT_LAYER
 
 /mob/living/carbon/xenomorph/proc/update_inv_resource()
 	remove_overlay(X_RESOURCE_LAYER)
@@ -269,24 +269,24 @@
 
 // Shamelessly inspired from the equivalent proc on TGCM
 /mob/living/carbon/xenomorph/proc/update_wounds()
-	if(!wound_icon_carrier)
+	if(!wound_icon_holder)
 		return
 
 	var/health_threshold
-	wound_icon_carrier.layer = layer + 0.01
+	wound_icon_holder.layer = layer + 0.01
 	health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
-			wound_icon_carrier.icon_state = "none"
+			wound_icon_holder.icon_state = "none"
 		else if(lying)
 			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-				wound_icon_carrier.icon_state = "[caste.caste_type]_rest_[health_threshold]"
+				wound_icon_holder.icon_state = "[caste.caste_type]_rest_[health_threshold]"
 			else
-				wound_icon_carrier.icon_state = "[caste.caste_type]_downed_[health_threshold]"
+				wound_icon_holder.icon_state = "[caste.caste_type]_downed_[health_threshold]"
 		else if(!handle_special_state())
-			wound_icon_carrier.icon_state = "[caste.caste_type]_walk_[health_threshold]"
+			wound_icon_holder.icon_state = "[caste.caste_type]_walk_[health_threshold]"
 		else
-			wound_icon_carrier.icon_state = handle_special_wound_states(health_threshold)
+			wound_icon_holder.icon_state = handle_special_wound_states(health_threshold)
 
 
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
@@ -300,7 +300,7 @@
 /atom/movable/vis_obj/xeno_pack/Initialize(mapload, mob/living/carbon/source)
 	. = ..()
 	if(source)
-		icon = default_xeno_onmob_icons[source.type]
+		icon = GLOB.default_xeno_onmob_icons[source.type]
 
 //Xeno Overlays Indexes//////////
 #undef X_BACK_LAYER

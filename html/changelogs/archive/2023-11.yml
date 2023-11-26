@@ -355,3 +355,15 @@
   - rscadd: Locking down dropship's doors closes them before locking.
   realforest2001:
   - rscadd: Telephones now list the last attempted caller, above the DND button.
+2023-11-26:
+  Birdtalon:
+  - code_imp: Replaces single letter vars removes redundant abilitiesin warrior code.
+  - bugfix: Warriors can no longer behead caps if they start limb ripping before embryo
+      is inserted.
+  - code_imp: Refactors warrior limb proc to the warrior class.
+  Huffie56:
+  - rscadd: Added a new section to role squad vendors called binoculars except specialist.
+  - qol: moved NVG and medical hud into helmet optics section for SL and just NVG
+      for TL
+  Nanu308:
+  - rscdel: Removed the Pizza Cutter.

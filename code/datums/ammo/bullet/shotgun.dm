@@ -323,8 +323,8 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_3
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_3
 	damage = 20
-	max_range = 4
-	damage_falloff = DAMAGE_FALLOFF_TIER_1
+	max_range = 6
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	effective_range_max = EFFECTIVE_RANGE_MAX_TIER_1
 
 	penetration = ARMOR_PENETRATION_TIER_6
@@ -335,8 +335,8 @@
 	bonus_projectiles_amount = 0
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	scatter = SCATTER_AMOUNT_TIER_4
-	damage_falloff = DAMAGE_FALLOFF_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_2
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	damage = 10
 
 //Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.

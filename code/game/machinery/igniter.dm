@@ -124,11 +124,11 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/sparker/M in machines)
+	for(var/obj/structure/machinery/sparker/M in GLOB.machines)
 		if (M.id == src.id)
 			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/sparker, ignite))
 
-	for(var/obj/structure/machinery/igniter/M in machines)
+	for(var/obj/structure/machinery/igniter/M in GLOB.machines)
 		if(M.id == src.id)
 			use_power(50)
 			M.on = !( M.on )

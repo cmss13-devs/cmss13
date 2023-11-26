@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - qol: "Location name standardization. So, North is now Starboard. This is already how it is for everything except pumps."

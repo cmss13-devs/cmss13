@@ -30,10 +30,10 @@
 		return
 	seed.forceMove(get_turf(src))
 
-	if(seed.seed.name == "new line" || isnull(seed_types[seed.seed.name]))
-		seed.seed.uid = seed_types.len + 1
+	if(seed.seed.name == "new line" || isnull(GLOB.seed_types[seed.seed.name]))
+		seed.seed.uid = GLOB.seed_types.len + 1
 		seed.seed.name = "[seed.seed.uid]"
-		seed_types[seed.seed.name] = seed.seed
+		GLOB.seed_types[seed.seed.name] = seed.seed
 
 	seed.update_seed()
 	playsound(src, 'sound/machines/terminal_eject.ogg', 25, TRUE)

@@ -52,7 +52,7 @@
 		if("whiteout")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return
-			for(var/obj/structure/machinery/light/L in machines)
+			for(var/obj/structure/machinery/light/L in GLOB.machines)
 				L.fix()
 			message_admins("[key_name_admin(usr)] fixed all lights")
 		if("power")
@@ -82,16 +82,16 @@
 			power_restore_ship_reactors()
 		if("change_clearance")
 			var/list/clearance_levels = list(0,1,2,3,4,5)
-			var/level = tgui_input_list(usr, "Select new clearance level:","Current level: [chemical_data.clearance_level]", clearance_levels)
+			var/level = tgui_input_list(usr, "Select new clearance level:","Current level: [GLOB.chemical_data.clearance_level]", clearance_levels)
 			if(!level)
 				return
 			message_admins("[key_name_admin(usr)] changed research clearance level to [level].")
-			chemical_data.clearance_level = level
+			GLOB.chemical_data.clearance_level = level
 		if("give_research_credits")
 			var/amount = tgui_input_real_number(usr, "How many credits to add?")
 			if(amount != 0) //can add negative numbers too!
 				message_admins("[key_name_admin(usr)] added [amount] research credits.")
-				chemical_data.update_credits(amount)
+				GLOB.chemical_data.update_credits(amount)
 
 /datum/admins/proc/create_humans_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
@@ -272,7 +272,7 @@
 		if(!length(turfs))
 			return
 
-		var/caste_type = RoleAuthority.get_caste_by_text(xeno_caste)
+		var/caste_type = GLOB.RoleAuthority.get_caste_by_text(xeno_caste)
 
 		var/list/xenos = list()
 		var/mob/living/carbon/xenomorph/X

@@ -196,7 +196,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		return FALSE
 
 	var/wall_support = FALSE
-	for(var/D in cardinal)
+	for(var/D in GLOB.cardinals)
 		var/turf/CT = get_step(T, D)
 		if(CT)
 			if(CT.density)

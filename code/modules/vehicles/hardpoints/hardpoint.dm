@@ -536,7 +536,7 @@
 
 	next_use = world.time + cooldown * owner.misc_multipliers["cooldown"]
 	if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
-		A = get_step(get_turf(A), pick(cardinal))
+		A = get_step(get_turf(A), pick(GLOB.cardinals))
 
 	if(LAZYLEN(activation_sounds))
 		playsound(get_turf(src), pick(activation_sounds), 60, 1)

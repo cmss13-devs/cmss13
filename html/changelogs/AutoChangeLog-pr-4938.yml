@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - admin: "Moderators are now immune to inactivity kick, much like Admins."

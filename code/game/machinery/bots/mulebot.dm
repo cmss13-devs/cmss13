@@ -70,8 +70,8 @@
 /obj/structure/machinery/bot/mulebot/Initialize(mapload, ...)
 	. = ..()
 	botcard = new(src)
-	if(RoleAuthority)
-		var/datum/job/ctequiv = RoleAuthority.roles_by_name[JOB_CARGO_TECH]
+	if(GLOB.RoleAuthority)
+		var/datum/job/ctequiv = GLOB.RoleAuthority.roles_by_name[JOB_CARGO_TECH]
 		if(ctequiv) botcard.access = ctequiv.get_access()
 
 	cell = new(src)
@@ -83,7 +83,7 @@
 	SSradio.add_object(src, beacon_freq, filter = RADIO_NAVBEACONS)
 
 	var/count = 0
-	for(var/obj/structure/machinery/bot/mulebot/other in machines)
+	for(var/obj/structure/machinery/bot/mulebot/other in GLOB.machines)
 		count++
 	if(!suffix)
 		suffix = "#[count]"

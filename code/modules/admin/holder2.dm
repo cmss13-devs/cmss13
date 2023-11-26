@@ -1,4 +1,4 @@
-var/list/datum/admins/admin_datums = list()
+GLOBAL_LIST_INIT_TYPED(admin_datums, /datum/admins, list())
 
 GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
@@ -35,7 +35,7 @@ GLOBAL_PROTECT(href_token)
 	rank = initial_rank
 	rights = initial_rights
 	href_token = GenerateToken()
-	admin_datums[ckey] = src
+	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
 
 // Letting admins edit their own permission giver is a poor idea
@@ -138,8 +138,8 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	return TRUE
 
 /client/proc/readmin()
-	if(admin_datums[ckey])
-		admin_datums[ckey].associate(src)
+	if(GLOB.admin_datums[ckey])
+		GLOB.admin_datums[ckey].associate(src)
 	return TRUE
 
 /datum/admins/proc/check_for_rights(rights_required)

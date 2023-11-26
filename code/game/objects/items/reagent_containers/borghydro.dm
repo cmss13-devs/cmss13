@@ -22,7 +22,7 @@
 
 	for(var/T in reagent_ids)
 		reagent_volumes[T] = volume
-		var/datum/reagent/R = chemical_reagents_list[T]
+		var/datum/reagent/R = GLOB.chemical_reagents_list[T]
 		reagent_names += R.name
 
 	START_PROCESSING(SSobj, src)
@@ -71,7 +71,7 @@
 	..()
 	var/selection = tgui_input_list(usr, "Please select a reagent:", "Reagent", reagent_ids)
 	if(!selection) return
-	var/datum/reagent/R = chemical_reagents_list[selection]
+	var/datum/reagent/R = GLOB.chemical_reagents_list[selection]
 	to_chat(user, SPAN_NOTICE(" Synthesizer is now producing '[R.name]'."))
 	mode = reagent_ids.Find(selection)
 	playsound(src.loc, 'sound/effects/pop.ogg', 15, 0)
@@ -81,6 +81,6 @@
 	. = ..()
 	if (user != loc) return
 
-	var/datum/reagent/R = chemical_reagents_list[reagent_ids[mode]]
+	var/datum/reagent/R = GLOB.chemical_reagents_list[reagent_ids[mode]]
 
 	. += SPAN_NOTICE("It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.")

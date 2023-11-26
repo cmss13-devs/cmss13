@@ -29,7 +29,7 @@
 	var/mob/living/carbon/human/H = affected_mob
 
 	// check if your already a zombie or in the process of being transform into one...
-	if(H.species.name == SPECIES_ZOMBIE || zombie_transforming = TRUE)
+	if(H.species.name == SPECIES_ZOMBIE || zombie_transforming == TRUE)
 		return
 
 	//check if dead
@@ -86,7 +86,7 @@
 		// at the end of stage 3 you will be turned into a "zombie"
 		if(3)
 			//check if your already a zombie just return to avoid weird stuff... if for some weird reason first filter deoesn't work...
-			if(H.species.name == SPECIES_ZOMBIE || zombie_transforming = TRUE)
+			if(H.species.name == SPECIES_ZOMBIE || zombie_transforming == TRUE)
 				return
 
 			if(H.stat == DEAD && stage_counter != stage)

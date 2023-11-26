@@ -1,0 +1,4 @@
+author: "hislittlecuzingames"
+delete-after: True
+changes:
+  - bugfix: "Disables launch announcment alarm if it's sounding when queen hijacks"

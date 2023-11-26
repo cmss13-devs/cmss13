@@ -73,7 +73,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 /obj/structure/flora/proc/spread_fire()
 	SIGNAL_HANDLER
-	for(var/D in cardinal) //Spread fire
+	for(var/D in GLOB.cardinals) //Spread fire
 		var/turf/T = get_step(src.loc, D)
 		if(T)
 			for(var/obj/structure/flora/F in T)

@@ -18,17 +18,17 @@ Accuracy determines if your bullets will hit whatever you're shooting at. Think 
 It DOES NOT control where your bullets go, that's scatter and projectile variance.
 
 .../update_projectiles/guns/code.dm
-var/accuracy_mult //Base firearm accuracy when firing from a 2-hand, "secure", wielded, etc, whatever grip.
-var/accuracy_mult_unwielded //Base firearm accuracy when firing from hip. Both of these default to 1, with additions or subtractions from the mult vars.
+	var/accuracy_mult //Base firearm accuracy when firing from a 2-hand, "secure", wielded, etc, whatever grip.
+	var/accuracy_mult_unwielded //Base firearm accuracy when firing from hip. Both of these default to 1, with additions or subtractions from the mult vars.
 
 .../updated_projectiles/ammo_datums.dm
-var/accuracy //This is added to the firearm's base accuracy when the specific ammo is shot.
-var/accuracy_var_low //These two vars are used for the upper and lower bounds of accuracy variance when a bullet is fired. Bullet 'wobble' if you will.
-var/accuracy_var_high
+	var/accuracy //This is added to the firearm's base accuracy when the specific ammo is shot.
+	var/accuracy_var_low //These two vars are used for the upper and lower bounds of accuracy variance when a bullet is fired. Bullet 'wobble' if you will.
+	var/accuracy_var_high
 
 .../updated_projectiles/gun_attachables.dm
-var/accuracy_mult //Attachments ADD an additional multiplier to the base config value. Only ever use accuracy_mult config references.
-var/accuracy_mult_unwielded
+	var/accuracy_mult //Attachments ADD an additional multiplier to the base config value. Only ever use accuracy_mult config references.
+	var/accuracy_mult_unwielded
 */
 
 #define HIT_ACCURACY_TIER_1 5

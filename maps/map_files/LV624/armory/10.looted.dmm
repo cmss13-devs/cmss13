@@ -186,18 +186,6 @@
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
-"K" = (
-/obj/item/stack/sheet/metal,
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Secure Inner Doors";
-	pixel_x = 25;
-	pixel_y = 5
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
 "T" = (
 /obj/structure/machinery/door_control{
 	id = "garage_blast";
@@ -272,7 +260,7 @@ i
 w
 w
 w
-K
+w
 p
 i
 "}

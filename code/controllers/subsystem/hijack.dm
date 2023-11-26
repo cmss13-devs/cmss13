@@ -216,13 +216,13 @@ SUBSYSTEM_DEF(hijack)
 
 	switch(announce)
 		if(1)
-			marine_announcement("Emergency fuel replenishment at 25 percent. Lifeboat emergency early launch now available.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat emergency early launch is now available.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(2)
-			marine_announcement("Emergency fuel replenishment at 50 percent.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(3)
-			marine_announcement("Emergency fuel replenishment at 75 percent.[marine_warning_areas ? "\nTo increase speed restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 75 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(4)
-			marine_announcement("Emergency fuel replenishment at 100 percent. Safe utilization of lifeboats now possible.", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 100 percent. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
 			if(!admin_sd_blocked)
 				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
 
@@ -238,7 +238,7 @@ SUBSYSTEM_DEF(hijack)
 			return "Complete"
 
 /datum/controller/subsystem/hijack/proc/get_sd_eta()
-	if(!sd_time_remaining)
+	if(sd_detonated)
 		return "Complete"
 
 	if(overloaded_generators <= 0)
@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(hijack)
 		evac_status = EVACUATION_STATUS_INITIATED
 		ai_announcement("Attention. Emergency. All personnel must evacuate immediately.", 'sound/AI/evacuate.ogg')
 
-		for(var/obj/structure/machinery/status_display/cycled_status_display in machines)
+		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
 			if(is_mainship_level(cycled_status_display.z))
 				cycled_status_display.set_picture("evac")
 		for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
@@ -269,7 +269,7 @@ SUBSYSTEM_DEF(hijack)
 		deactivate_lifeboats()
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
 
-		for(var/obj/structure/machinery/status_display/cycled_status_display in machines)
+		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
 			if(is_mainship_level(cycled_status_display.z))
 				cycled_status_display.set_sec_level_picture()
 

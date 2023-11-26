@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/say(message)
 	var/verb = "says"
 	var/forced = 0
-	var/message_range = world_view_size
+	var/message_range = GLOB.world_view_size
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)

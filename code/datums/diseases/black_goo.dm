@@ -1,7 +1,7 @@
 //Disease Datum
 /datum/disease/black_goo
 	name = "Black Goo"
-	max_stages = 5
+	max_stages = 4
 	cure = "Anti-Zed"
 	cure_id = "antiZed"
 	spread = "Bites"
@@ -12,75 +12,102 @@
 	agent = "Unknown Biological Organism X-65"
 	hidden = list(1,0) //Hidden from med-huds, but not pandemic scanners.  BLOOD TESTS FOR THE WIN
 	permeability_mod = 2
-	stage_prob = 4
-	stage_minimum_age = 150
+
 	survive_mob_death = TRUE //We want the dead to turn into zombie.
 	longevity = 500 //the virus tend to die before the dead is turn into zombie this should fix it.
 	var/zombie_transforming = 0 //whether we're currently transforming the host into a zombie.
 	var/goo_message_cooldown = 0 //to make sure we don't spam messages too often.
 	var/stage_counter = 0 // tells a dead infectee their stage, so they can know when-abouts they'll revive
 
+	// set of new var to handle stage progress and
+	var/stage_level = 0 // we start at zero when dead everything go twice as fast each stage take 6 min so it need 360 and if your dead it require 180 so 3 min
+	var/infection_rate = 1
+
 /datum/disease/black_goo/stage_act()
 	..()
 	if(!ishuman(affected_mob)) return
 	var/mob/living/carbon/human/H = affected_mob
 
-	if(age > 1.5*stage_minimum_age) stage_prob = 100 //if it takes too long we force a stage increase
-	else stage_prob = initial(stage_prob)
-	if(H.stat == DEAD) stage_minimum_age = 75 //the virus progress faster when the host is dead.
+	// check if your already a zombie or in the process of being transform into one...
+	if(H.species.name == SPECIES_ZOMBIE || zombie_transforming = TRUE)
+		return
+
+	//check if dead
+	if(H.stat == DEAD)
+		infection_rate = 2
+
+	//check if he isn't dead
+	if(H.stat != DEAD)
+		infection_rate = 1
+
+	// here we add the new infection rate to the stage level.
+	stage_level = stage_level + infection_rate
+
+	//we want to check if we have reach enough stage level to gain a stage
+	// change to 60 for testing should be at 360 normaly
+	if(stage_level >= 60)
+		stage ++
+		stage_level = stage_level - 60
+
 	switch(stage)
+		//stage 1 : Viatiate "afflicted"
+		// goign to keep you feel warm and maybe add you can experience paranoia don't know how?
 		if(1)
 			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage One! Zombie transformation begins at Stage Four."))
+				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage One! Zombie transformation begins at Stage Three."))
 				stage_counter = stage
 			if(goo_message_cooldown < world.time )
-				if(prob(3))
-					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
+				if(prob(5))
+					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))//small hint that your infected
 					goo_message_cooldown = world.time + 100
+				else if(prob(3))
+					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))//try at making you feel paranoic
+					goo_message_cooldown = world.time + 100
+
+		//stage 2 : Ague "Febrile"
+		//pain fever and the eye will darken ? some veine become dark as the tissue start to necrose
+		//maybe febrile seizure due to fever basicly. pain is from necrosis...(witch is not ingame)
+		// screaming, seizure from fever fever symptome, pain
 		if(2)
 			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Two! Zombie transformation begins at Stage Four."))
+				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Two! Zombie transformation begins at Stage Three."))
 				stage_counter = stage
 			if(goo_message_cooldown < world.time)
 				if (prob(3)) to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
 				else if (prob(6)) to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
+				else if (prob(2)) to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
+				else if (prob(2))to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
 				else if (prob(2)) H.vomit_on_floor()
 				goo_message_cooldown = world.time + 100
+
+		//stage 3 : Lusus "Freak" you turn into a zombie (should be pretty dramatic scream etc... convulsion coma etc...?)
+		//you become animalistic husk you will attack everyone on sight some can retain some inteligence (using tools ) maybe just make it justify
+		// for them to avoid running to certain death and allow them to be "smart" will staying withing RP///
+		// at the end of stage 3 you will be turned into a "zombie"
 		if(3)
+			//check if your already a zombie just return to avoid weird stuff... if for some weird reason first filter deoesn't work...
+			if(H.species.name == SPECIES_ZOMBIE || zombie_transforming = TRUE)
+				return
+
 			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Three! Zombie transformation begins at Stage Four, which will be soon."))
+				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Three! Zombie transformation begin!"))
 				stage_counter = stage
-			hidden = list(0,0)
-			H.next_move_slowdown = max(H.next_move_slowdown, 1)
-			if(goo_message_cooldown < world.time)
-				if (prob(3))
-					to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
-					goo_message_cooldown = world.time + 100
-				else if (prob(6))
-					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-					goo_message_cooldown = world.time + 100
-				else if (prob(9))
-					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
-					goo_message_cooldown = world.time + 100
-				else if(prob(5))
-					goo_message_cooldown = world.time + 100
-					H.vomit_on_floor()
+			//hidden = list(0,0)//why?
+			if(!zombie_transforming)
+				zombie_transform(H)
+			H.next_move_slowdown = max(H.next_move_slowdown, 2)//what is this?
+
+		//stage 4 : Lusus "Freak" this part will be to force people to turn in case stage 3 fail
+		// safety stage will be remove if nobody reach it in my tests..
 		if(4)
 			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Four! Your transformation will happen any moment now."))
+				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Four! Zombie transformation begin!"))
 				stage_counter = stage
-			H.next_move_slowdown = max(H.next_move_slowdown, 2)
-			if(prob(5) || age >= stage_minimum_age-1)
-				if(!zombie_transforming)
-					zombie_transform(H)
-			else if(prob(5))
-				H.vomit_on_floor()
-		if(5)
 			if(H.stat == DEAD && stage_counter != stage)
-				stage_counter = stage
-				if(H.species.name != SPECIES_ZOMBIE && !zombie_transforming)
-					to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Five! Your transformation should have happened already, but will be forced now."))
-					zombie_transform(H)
+					stage_counter = stage
+					if(H.species.name != SPECIES_ZOMBIE && !zombie_transforming)
+						to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Five! Your transformation should have happened already, but will be forced now."))
+						zombie_transform(H)
 			if(!zombie_transforming && prob(50))
 				if(H.stat != DEAD)
 					var/healamt = 2
@@ -90,7 +117,6 @@
 						H.apply_damage(-healamt, TOX)
 						H.apply_damage(-healamt, OXY)
 				H.nutrition = NUTRITION_MAX //never hungry
-
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0

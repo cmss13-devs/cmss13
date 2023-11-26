@@ -1620,6 +1620,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/new_pref_armor = tgui_input_list(user, "Choose your character's default style of armor:", "Character Preferences", GLOB.armor_style_list)
 					if(new_pref_armor)
 						preferred_armor = new_pref_armor
+						// Update the dummy with the new armor style.
+						update_preview_icon()
 
 				if("limbs")
 					var/limb_name = tgui_input_list(user, "Which limb do you want to change?", list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand"))

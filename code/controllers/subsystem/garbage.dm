@@ -139,9 +139,6 @@ SUBSYSTEM_DEF(garbage)
 			pass_counts[i] = 0
 			fail_counts[i] = 0
 
-// 1 from the hard reference in the queue, and 1 from the variable used before this
-#define IS_DELETED(datum, _) (refcount(##datum) == 2)
-
 /datum/controller/subsystem/garbage/proc/HandleQueue(level = GC_QUEUE_FILTER)
 	if (level == GC_QUEUE_FILTER)
 		delslasttick = 0
@@ -176,7 +173,9 @@ SUBSYSTEM_DEF(garbage)
 
 		var/datum/D = L[GC_QUEUE_ITEM_REF]
 
-		if (IS_DELETED(D, GCd_at_time)) // So if something else coincidently gets the same ref, it's not deleted by mistake
+		// 1 from the hard reference in the queue, and 1 from the variable used before this
+		// If that's all we've got, send er off
+		if (refcount(D) == 2)
 			++gcedlasttick
 			++totalgcs
 			pass_counts[level]++
@@ -245,8 +244,6 @@ SUBSYSTEM_DEF(garbage)
 	if (count)
 		queue.Cut(1,count+1)
 		count = 0
-
-#undef IS_DELETED
 
 /datum/controller/subsystem/garbage/proc/Queue(datum/D, level = GC_QUEUE_FILTER)
 	if (isnull(D))

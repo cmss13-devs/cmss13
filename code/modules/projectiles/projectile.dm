@@ -300,6 +300,11 @@
 	var/pixel_x_rel_new = pixel_x_lerped - current_turf.x * world.icon_size
 	var/pixel_y_rel_new = pixel_y_lerped - current_turf.y * world.icon_size
 
+	if(projectile_flags & PROJECTILE_SHRAPNEL) //there can be a LOT of shrapnel especially from a cluster OB, not important enough for the expense of an animate()
+		pixel_x = pixel_x_rel_new
+		pixel_y = pixel_y_rel_new
+		return FALSE
+
 	//Get pixel offset of old position and set as initial position
 
 	var/pixel_x_rel_old = (turf_old.x - current_turf.x) * world.icon_size + pixel_x

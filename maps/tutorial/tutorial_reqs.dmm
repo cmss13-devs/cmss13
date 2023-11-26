@@ -30,9 +30,10 @@
 	breakable = 0;
 	throwpass = 0;
 	climbable = 0;
-	indestructible = 1
+	indestructible = 1;
+	density = 0
 	},
-/obj/structure/blocker/forcefield/human{
+/obj/structure/blocker/forcefield/human/bulletproof{
 	visible = 0
 	},
 /turf/open/floor/almayer,
@@ -72,6 +73,7 @@
 	name = "Quackers";
 	desc = "You feel as though this rubber duck has been here for a long time. It's Mr. Quackers! He loves you!"
 	},
+/obj/effect/landmark/tutorial/reqs_line_cleaner,
 /turf/open/floor/almayer,
 /area/misc/tutorial)
 "K" = (
@@ -100,13 +102,9 @@ a
 a
 a
 a
-a
-a
 "}
 (2,1,1) = {"
 a
-K
-K
 K
 K
 K
@@ -127,8 +125,6 @@ x
 x
 x
 x
-x
-x
 a
 K
 a
@@ -140,8 +136,6 @@ K
 n
 w
 o
-a
-a
 a
 a
 a
@@ -157,8 +151,6 @@ l
 l
 m
 m
-m
-m
 K
 K
 a
@@ -166,8 +158,6 @@ a
 (6,1,1) = {"
 a
 a
-K
-K
 K
 K
 K
@@ -189,13 +179,9 @@ K
 K
 K
 K
-K
-K
 a
 "}
 (8,1,1) = {"
-a
-a
 a
 a
 a

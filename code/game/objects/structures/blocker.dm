@@ -125,3 +125,6 @@
 	icon_state = "purple_line"
 
 	visible = TRUE
+
+/obj/structure/blocker/forcefield/human/bulletproof/get_projectile_hit_boolean()
+	return TRUE

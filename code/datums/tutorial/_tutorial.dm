@@ -97,12 +97,19 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// Verify the template loaded fully and without error.
 /datum/tutorial/proc/verify_template_loaded()
-	var/turf/top_right_corner = locate(
-		bottom_left_corner.x + initial(tutorial_template.width),
-		bottom_left_corner.y + initial(tutorial_template.height),
+	// We subtract 1 from x and y because the bottom left corner doesn't start at the walls.
+	var/turf/true_bottom_left_corner = locate(
+		bottom_left_corner.x - 1,
+		bottom_left_corner.y - 1,
 		bottom_left_corner.z
 	)
-	for(var/turf/tile as anything in block(bottom_left_corner, top_right_corner))
+	// We subtract 1 from x and y here because the bottom left corner counts as the first tile
+	var/turf/top_right_corner = locate(
+		true_bottom_left_corner.x + initial(tutorial_template.width) - 1,
+		true_bottom_left_corner.y + initial(tutorial_template.height) - 1,
+		true_bottom_left_corner.z
+	)
+	for(var/turf/tile as anything in block(true_bottom_left_corner, top_right_corner))
 		// For some reason I'm unsure of, the template will not always fully load, leaving some tiles to be space tiles. So, we check all tiles in the (small) tutorial area
 		// and tell start_tutorial to abort if there's any space tiles.
 		if(istype(tile, /turf/open/space))

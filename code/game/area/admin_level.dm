@@ -146,13 +146,14 @@
 	name = "Test Room"
 
 /area/misc/tutorial
-	name = "tutorial zone"
+	name = "Tutorial Zone"
 	icon_state = "tutorial"
 	requires_power = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
 	block_game_interaction = TRUE
+	unique = TRUE
 
 	base_lighting_alpha = 255
 

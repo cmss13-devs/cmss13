@@ -22,6 +22,7 @@
 	// set of new var to handle stage progress and
 	var/stage_level = 0 // we start at zero when dead everything go twice as fast each stage take 6 min so it need 360 and if your dead it require 180 so 3 min
 	var/infection_rate = 1
+	stage_prob = 0//no randomness
 
 /datum/disease/black_goo/stage_act()
 	..()

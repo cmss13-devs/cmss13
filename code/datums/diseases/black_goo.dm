@@ -1,7 +1,7 @@
 //Disease Datum
 /datum/disease/black_goo
 	name = "Black Goo"
-	max_stages = 4
+	max_stages = 3
 	cure = "Anti-Zed"
 	cure_id = "antiZed"
 	spread = "Bites"
@@ -96,7 +96,7 @@
 			if(!zombie_transforming)
 				zombie_transform(H)
 			H.next_move_slowdown = max(H.next_move_slowdown, 2)//what is this?
-
+/*shouldn't need this going to test it without it...
 		//stage 4 : Lusus "Freak" this part will be to force people to turn in case stage 3 fail
 		// safety stage will be remove if nobody reach it in my tests..
 		if(4)
@@ -117,7 +117,7 @@
 						H.apply_damage(-healamt, TOX)
 						H.apply_damage(-healamt, OXY)
 				H.nutrition = NUTRITION_MAX //never hungry
-
+*/
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0
 	zombie_transforming = TRUE

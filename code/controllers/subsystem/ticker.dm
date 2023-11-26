@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(ticker)
 
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
-				ooc_allowed = TRUE
+				GLOB.ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
 				REDIS_PUBLISH("byond.round", "type" = "round-complete")
 				flash_clients()
@@ -135,8 +135,8 @@ SUBSYSTEM_DEF(ticker)
 	REDIS_PUBLISH("byond.round", "type" = "round-start")
 
 	for(var/client/C in GLOB.admins)
-		remove_verb(C, roundstart_mod_verbs)
-	admin_verbs_minor_event -= roundstart_mod_verbs
+		remove_verb(C, GLOB.roundstart_mod_verbs)
+	GLOB.admin_verbs_minor_event -= GLOB.roundstart_mod_verbs
 
 	return TRUE
 
@@ -173,14 +173,14 @@ SUBSYSTEM_DEF(ticker)
 	if(!mode.can_start(bypass_checks))
 		to_chat(world, "Reverting to pre-game lobby.")
 		QDEL_NULL(mode)
-		RoleAuthority.reset_roles()
+		GLOB.RoleAuthority.reset_roles()
 		return FALSE
 
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
 		QDEL_NULL(mode)
 		to_chat(world, "<b>Error in pre-setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
-		RoleAuthority.reset_roles()
+		GLOB.RoleAuthority.reset_roles()
 		return FALSE
 
 	CHECK_TICK
@@ -194,7 +194,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 	if(CONFIG_GET(flag/autooocmute))
-		ooc_allowed = FALSE
+		GLOB.ooc_allowed = FALSE
 
 	round_start_time = world.time
 
@@ -213,7 +213,7 @@ SUBSYSTEM_DEF(ticker)
 		var/roles_to_roll = null
 		if(length(mode.roles_to_roll))
 			roles_to_roll = mode.roles_to_roll
-		RoleAuthority.setup_candidates_and_roles(roles_to_roll) //Distribute jobs
+		GLOB.RoleAuthority.setup_candidates_and_roles(roles_to_roll) //Distribute jobs
 		if(mode.flags_round_type & MODE_NEW_SPAWN)
 			create_characters() // Create and equip characters
 		else
@@ -235,7 +235,7 @@ SUBSYSTEM_DEF(ticker)
 
 	setup_economy()
 
-	shuttle_controller?.setup_shuttle_docks()
+	SSoldshuttle.shuttle_controller?.setup_shuttle_docks()
 
 	PostSetup()
 	return TRUE
@@ -251,15 +251,15 @@ SUBSYSTEM_DEF(ticker)
 	// Switch back to default automatically
 	save_mode(CONFIG_GET(string/gamemode_default))
 
-	if(round_statistics)
-		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [round_statistics.round_name]</B>")))
+	if(GLOB.round_statistics)
+		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [GLOB.round_statistics.round_name]</B>")))
 
-	supply_controller.process() //Start the supply shuttle regenerating points -- TLE
+	GLOB.supply_controller.process() //Start the supply shuttle regenerating points -- TLE
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i
 		INVOKE_ASYNC(C, TYPE_PROC_REF(/obj/structure/closet, select_gamemode_equipment), mode.type)
-	for(var/obj/structure/machinery/vending/V in machines)
+	for(var/obj/structure/machinery/vending/V in GLOB.machines)
 		INVOKE_ASYNC(V, TYPE_PROC_REF(/obj/structure/machinery/vending, select_gamemode_equipment), mode.type)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_POST_SETUP)
@@ -376,7 +376,7 @@ SUBSYSTEM_DEF(ticker)
 	world.Reboot(TRUE)
 
 /datum/controller/subsystem/ticker/proc/create_characters()
-	if(!RoleAuthority)
+	if(!GLOB.RoleAuthority)
 		return
 
 	for(var/mob/new_player/player in GLOB.player_list)
@@ -386,7 +386,7 @@ SUBSYSTEM_DEF(ticker)
 		INVOKE_ASYNC(src, PROC_REF(spawn_and_equip_char), player)
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(mob/new_player/player)
-	var/datum/job/J = RoleAuthority.roles_for_mode[player.job]
+	var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[player.job]
 	if(J.job_options && player?.client?.prefs?.pref_special_job_options[J.title])
 		J.handle_job_options(player.client.prefs.pref_special_job_options[J.title])
 	if(J.handle_spawn_and_equip)
@@ -424,7 +424,7 @@ SUBSYSTEM_DEF(ticker)
 			if(player.job == JOB_CO)
 				captainless = FALSE
 			if(player.job)
-				RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.job], late_join = FALSE)
+				GLOB.RoleAuthority.equip_role(player, GLOB.RoleAuthority.roles_by_name[player.job], late_join = FALSE)
 				EquipCustomItems(player)
 			if(player.client)
 				var/client/C = player.client

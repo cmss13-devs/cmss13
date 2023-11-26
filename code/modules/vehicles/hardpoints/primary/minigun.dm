@@ -64,7 +64,7 @@
 	for(var/i = 1; i <= t; i++)
 		var/atom/T = A
 		if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
-			T = get_step(get_turf(T), pick(cardinal))
+			T = get_step(get_turf(T), pick(GLOB.cardinals))
 		fire_projectile(user, T)
 		if(ammo.current_rounds <= 0)
 			break

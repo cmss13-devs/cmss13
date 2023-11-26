@@ -55,7 +55,7 @@
 	if (href_list["setarea"])
 
 		//Probably should consider using another list, but this one will do.
-		var/t_area = tgui_input_list(usr, "Select the area to ping.", "Set Target Area", null, tagger_locations)
+		var/t_area = tgui_input_list(usr, "Select the area to ping.", "Set Target Area", null, GLOB.tagger_locations)
 
 		if(!t_area)
 			return

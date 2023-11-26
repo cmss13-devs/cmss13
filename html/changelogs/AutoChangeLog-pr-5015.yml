@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - rscadd: "Locking down dropship's doors closes them before locking."

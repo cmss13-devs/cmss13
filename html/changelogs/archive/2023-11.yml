@@ -331,3 +331,39 @@
   - qol: ARES hijack announcement specifies that pods will not crash at 100% fuel
   - qol: Location name standardization. So, North is now Starboard. This is already
       how it is for everything except pumps.
+2023-11-25:
+  BadAtThisGame302:
+  - bugfix: fixed corporate supervisor burst corpse landmark
+  Birdtalon:
+  - bugfix: Fixes defender headbutt bug while fortified.
+  - bugfix: Lifeboats fire extinguisher runtime.
+  Doubleumc:
+  - imageadd: 2-wide dropship side doors
+  - maptweak: changed dropship side doors to a lone doublewide door
+  - qol: directions in trackers and messages are more accurate
+  HeresKozmos:
+  - bugfix: fixed a nonsensical window facing a solid rock wall
+  - rscadd: Added pizza and pizza cutter to Req
+  - rscdel: Deleted a random kepler crisps bag
+  - bugfix: deleted random raised edges from inside rock wall
+  Releasethesea:
+  - bugfix: fixes the XM43E1s name (previously named XM42B) and sprite, fixes the
+      M42C and XM43E1s barrel, correctly names several items relating to the XM43E1
+  SabreML:
+  - ui: Tweaked the colour of the 'Maintainer' category in staffwho.
+  ihatethisengine:
+  - rscadd: Locking down dropship's doors closes them before locking.
+  realforest2001:
+  - rscadd: Telephones now list the last attempted caller, above the DND button.
+2023-11-26:
+  Birdtalon:
+  - code_imp: Replaces single letter vars removes redundant abilitiesin warrior code.
+  - bugfix: Warriors can no longer behead caps if they start limb ripping before embryo
+      is inserted.
+  - code_imp: Refactors warrior limb proc to the warrior class.
+  Huffie56:
+  - rscadd: Added a new section to role squad vendors called binoculars except specialist.
+  - qol: moved NVG and medical hud into helmet optics section for SL and just NVG
+      for TL
+  Nanu308:
+  - rscdel: Removed the Pizza Cutter.

@@ -59,10 +59,10 @@
 			if(B)
 				var/datum/disease/D = null
 				if(!vaccine_type)
-					D = archive_diseases[path]
+					D = GLOB.archive_diseases[path]
 					vaccine_type = path
 				else
-					if(vaccine_type in diseases)
+					if(vaccine_type in GLOB.diseases)
 						D = new vaccine_type(0, null)
 
 				if(D)
@@ -90,11 +90,11 @@
 			B.icon_state = "bottle3"
 			var/datum/disease/D = null
 			if(!virus_type)
-				var/datum/disease/advance/A = archive_diseases[href_list["create_virus_culture"]]
+				var/datum/disease/advance/A = GLOB.archive_diseases[href_list["create_virus_culture"]]
 				if(A)
 					D = new A.type(0, A)
 			else
-				if(virus_type in diseases) // Make sure this is a disease
+				if(virus_type in GLOB.diseases) // Make sure this is a disease
 					D = new virus_type(0, null)
 			var/list/data = list("viruses"=list(D))
 			var/name = strip_html(input(user,"Name:","Name the culture",D.name))
@@ -129,8 +129,8 @@
 		if(user.stat || user.is_mob_restrained()) return
 		if(!in_range(src, user)) return
 		var/id = href_list["name_disease"]
-		if(archive_diseases[id])
-			var/datum/disease/advance/A = archive_diseases[id]
+		if(GLOB.archive_diseases[id])
+			var/datum/disease/advance/A = GLOB.archive_diseases[id]
 			A.AssignName(new_name)
 			for(var/datum/disease/advance/AD in SSdisease.all_diseases)
 				AD.Refresh()
@@ -184,7 +184,7 @@
 							if(istype(D, /datum/disease/advance))
 
 								var/datum/disease/advance/A = D
-								D = archive_diseases[A.GetDiseaseID()]
+								D = GLOB.archive_diseases[A.GetDiseaseID()]
 								disease_creation = A.GetDiseaseID()
 								if(D.name == "Unknown")
 									dat += "<b><a href='?src=\ref[src];name_disease=[A.GetDiseaseID()]'>Name Disease</a></b><BR>"
@@ -216,7 +216,7 @@
 						var/disease_name = "Unknown"
 
 						if(!ispath(type))
-							var/datum/disease/advance/A = archive_diseases[type]
+							var/datum/disease/advance/A = GLOB.archive_diseases[type]
 							if(A)
 								disease_name = A.name
 						else

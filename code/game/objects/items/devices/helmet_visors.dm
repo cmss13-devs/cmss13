@@ -61,12 +61,12 @@
 
 /// Called by toggle_visor() to activate the visor's effects
 /obj/item/device/helmet_visor/proc/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
-	var/datum/mob_hud/current_mob_hud = huds[hud_type]
+	var/datum/mob_hud/current_mob_hud = GLOB.huds[hud_type]
 	current_mob_hud.add_hud_to(user, attached_helmet)
 
 /// Called by toggle_visor() to deactivate the visor's effects
 /obj/item/device/helmet_visor/proc/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
-	var/datum/mob_hud/current_mob_hud = huds[hud_type]
+	var/datum/mob_hud/current_mob_hud = GLOB.huds[hud_type]
 	current_mob_hud.remove_hud_from(user, attached_helmet)
 
 /// Called by /obj/item/clothing/head/helmet/marine/get_examine_text(mob/user) to get extra examine text for this visor
@@ -112,7 +112,7 @@
 
 /obj/item/device/helmet_visor/medical/advanced/ui_data(mob/user)
 	var/list/data = list(
-		"published_documents" = chemical_data.research_publications,
+		"published_documents" = GLOB.chemical_data.research_publications,
 		"terminal_view" = FALSE
 	)
 	return data
@@ -140,7 +140,7 @@
 		if ("read_document")
 			var/print_type = params["print_type"]
 			var/print_title = params["print_title"]
-			var/obj/item/paper/research_report/report = chemical_data.get_report(print_type, print_title)
+			var/obj/item/paper/research_report/report = GLOB.chemical_data.get_report(print_type, print_title)
 			if(report)
 				report.read_paper(user)
 			return
@@ -311,14 +311,14 @@
 	. = ..()
 
 	for(var/type in hud_type)
-		var/datum/mob_hud/current_mob_hud = huds[type]
+		var/datum/mob_hud/current_mob_hud = GLOB.huds[type]
 		current_mob_hud.add_hud_to(user, attached_helmet)
 
 /obj/item/device/helmet_visor/night_vision/marine_raider/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
 
 	for(var/type in hud_type)
-		var/datum/mob_hud/current_mob_hud = huds[type]
+		var/datum/mob_hud/current_mob_hud = GLOB.huds[type]
 		current_mob_hud.remove_hud_from(user, attached_helmet)
 
 /obj/item/device/helmet_visor/night_vision/marine_raider/process(delta_time)

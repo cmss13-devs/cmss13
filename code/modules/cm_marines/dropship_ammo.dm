@@ -40,7 +40,7 @@
 	var/combat_equipment = TRUE
 
 /obj/structure/ship_ammo/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
-	if(unslashable) 
+	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -170,7 +170,7 @@
 		var/turf/impact_tile = pick(turf_list)
 		sleep(1)
 		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
+		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
 		create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
 		for(var/atom/movable/explosion_effect in impact_tile)
 			if(iscarbon(explosion_effect))

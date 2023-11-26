@@ -200,7 +200,7 @@
 
 /datum/chem_property/neutral/hallucinogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(isturf(M.loc) && !istype(M.loc, /turf/open/space) && M.canmove && !M.is_mob_restrained())
-		step(M, pick(cardinal))
+		step(M, pick(GLOB.cardinals))
 	M.hallucination += 10
 	M.make_jittery(5)
 

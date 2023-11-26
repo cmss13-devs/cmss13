@@ -15,19 +15,19 @@
 
 #define DECISECONDS_TO_HOURS /36000
 
-var/midnight_rollovers = 0
-var/rollovercheck_last_timeofday = 0
+GLOBAL_VAR_INIT(midnight_rollovers, 0)
+GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 
 // Real time that is still reliable even when the round crosses over midnight time reset.
 #define REALTIMEOFDAY (world.timeofday + (864000 * MIDNIGHT_ROLLOVER_CHECK))
-#define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : midnight_rollovers )
+#define MIDNIGHT_ROLLOVER_CHECK ( GLOB.rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : GLOB.midnight_rollovers )
 
 /proc/update_midnight_rollover()
-	if(world.timeofday < rollovercheck_last_timeofday)
-		midnight_rollovers++
+	if(world.timeofday < GLOB.rollovercheck_last_timeofday)
+		GLOB.midnight_rollovers++
 
-	rollovercheck_last_timeofday = world.timeofday
-	return midnight_rollovers
+	GLOB.rollovercheck_last_timeofday = world.timeofday
+	return GLOB.midnight_rollovers
 
 ///Returns the world time in english. Do not use to get date information - starts at 0 + a random time offset from 10 minutes to 24 hours.
 /proc/worldtime2text(format = "hh:mm", time = world.time)

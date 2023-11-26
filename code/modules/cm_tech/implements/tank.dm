@@ -31,8 +31,8 @@
 /obj/item/vehicle_coupon/proc/redeem_vehicle(mob/user)
 	SHOULD_NOT_SLEEP(TRUE)
 	. = FALSE
-	var/obj/structure/machinery/computer/supplycomp/vehicle/comp = VehicleElevatorConsole
-	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = VehicleGearConsole
+	var/obj/structure/machinery/computer/supplycomp/vehicle/comp = GLOB.VehicleElevatorConsole
+	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = GLOB.VehicleGearConsole
 
 	if(!comp || !gearcomp)
 		return

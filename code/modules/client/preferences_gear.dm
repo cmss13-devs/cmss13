@@ -876,6 +876,11 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Facepaint, black"
 	path = /obj/item/facepaint/black
 
+/datum/gear/skullfacepaint
+	display_name = "Skull Facepaint"
+	path = /obj/item/facepaint/skull
+	cost = 3 
+
 /datum/gear/misc/facepaint_body
 	display_name = "Fullbody paint"
 	path = /obj/item/facepaint/sniper

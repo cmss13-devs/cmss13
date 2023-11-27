@@ -68,7 +68,7 @@
 		for(var/mob/dead/observer/ghost in GLOB.observer_list)
 			if(ghost.mind && ghost.mind.original == R)
 				R.key = ghost.key
-				if(R.client) R.client.change_view(world_view_size)
+				if(R.client) R.client.change_view(GLOB.world_view_size)
 				break
 
 	R.set_stat(CONSCIOUS)

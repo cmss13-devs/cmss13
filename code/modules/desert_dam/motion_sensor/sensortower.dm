@@ -211,7 +211,7 @@
 	if(do_after(M, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return XENO_NO_DELAY_ACTION //Make sure we're still there
-		if(M.lying)
+		if(M.is_mob_incapacitated())
 			return XENO_NO_DELAY_ACTION
 		if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
 			return XENO_NO_DELAY_ACTION
@@ -231,6 +231,25 @@
 
 /obj/structure/machinery/sensortower/power_change()
 	..()
+	update_icon()
+
+/* Decreases the buildstate of the sensor tower and switches it off if affected by any explosion.
+Higher severity explosion will damage the sensor tower more
+*/
+/obj/structure/machinery/sensortower/ex_act(severity)
+	if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
+		return
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			buildstate += 1
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			buildstate = clamp(buildstate + 2, SENSORTOWER_BUILDSTATE_WORKING, SENSORTOWER_BUILDSTATE_WRENCH)
+		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
+			buildstate = 3
+	if(is_on)
+		is_on = FALSE
+		cur_tick = 0
+		stop_processing()
 	update_icon()
 
 #undef SENSORTOWER_BUILDSTATE_WORKING

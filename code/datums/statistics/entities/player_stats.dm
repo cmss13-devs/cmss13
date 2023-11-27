@@ -81,10 +81,10 @@
 /mob/proc/track_death_calculations()
 	if(statistic_exempt || statistic_tracked)
 		return
-	if(round_statistics)
-		round_statistics.recalculate_nemesis()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.recalculate_nemesis()
 	if(mind && mind.player_entity)
-		mind.player_entity.update_panel_data(round_statistics)
+		mind.player_entity.update_panel_data(GLOB.round_statistics)
 	statistic_tracked = TRUE
 
 //*****************

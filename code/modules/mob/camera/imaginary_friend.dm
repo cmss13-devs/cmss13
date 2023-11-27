@@ -150,21 +150,21 @@
 	var/datum/mob_hud/hud
 	switch(hud_choice)
 		if("Medical HUD")
-			hud = huds[MOB_HUD_MEDICAL_OBSERVER]
+			hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 		if("Security HUD")
-			hud = huds[MOB_HUD_SECURITY_ADVANCED]
+			hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			hud = huds[MOB_HUD_FACTION_OBSERVER]
+			hud = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
-			hud = huds[MOB_HUD_XENO_STATUS]
+			hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 		if("Faction UPP HUD")
-			hud = huds[MOB_HUD_FACTION_UPP]
+			hud = GLOB.huds[MOB_HUD_FACTION_UPP]
 		if("Faction Wey-Yu HUD")
-			hud = huds[MOB_HUD_FACTION_WY]
+			hud = GLOB.huds[MOB_HUD_FACTION_WY]
 		if("Faction TWE HUD")
-			hud = huds[MOB_HUD_FACTION_TWE]
+			hud = GLOB.huds[MOB_HUD_FACTION_TWE]
 		if("Faction CLF HUD")
-			hud = huds[MOB_HUD_FACTION_CLF]
+			hud = GLOB.huds[MOB_HUD_FACTION_CLF]
 
 	if(hud_choice in current_huds)
 		hud.remove_hud_from(src, src)

@@ -82,8 +82,8 @@
 				last_living_human = null
 				break
 			last_living_human = cur_human
-		if(last_living_human && (last_qm_callout + 2 MINUTES) < world.time)
-			last_qm_callout = world.time
+		if(last_living_human && (GLOB.last_qm_callout + 2 MINUTES) < world.time)
+			GLOB.last_qm_callout = world.time
 			// Tell the xenos where the human is.
 			xeno_announcement("I sense the last tallhost hiding in [get_area(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			// Tell the human he is the last guy.

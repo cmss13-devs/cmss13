@@ -81,8 +81,8 @@
 			GLOB.dead_mob_list -= src
 			GLOB.alive_mob_list += src
 			set_stat(CONSCIOUS)
-			lying = 0
-			density = TRUE
+//			lying = 0
+//			density = TRUE
 			reload_fullscreens()
 		return 0
 
@@ -96,15 +96,14 @@
 	handle_stunned()
 	handle_knocked_down(TRUE)
 	handle_knocked_out(TRUE)
-	update_canmove()
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
-		if(isturf(src.loc) && !resting && !buckled && canmove) //This is so it only moves if it's not inside a closet, gentics machine, etc.
+		if(isturf(src.loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled
-					var/move_dir = pick(cardinal)
+					var/move_dir = pick(GLOB.cardinals)
 					Move(get_step(src, move_dir ))
 					setDir(move_dir)
 					turns_since_move = 0
@@ -361,10 +360,17 @@
 
 	..(message, null, verb, nolog = !ckey) //if the animal has a ckey then it will log the message
 
-/mob/living/simple_animal/update_canmove()
+/mob/living/simple_animal/on_immobilized_trait_gain(datum/source)
 	. = ..()
-	if(!canmove)
-		stop_moving()
+	stop_moving()
+
+/mob/living/simple_animal/on_knockedout_trait_gain(datum/source)
+	. = ..()
+	stop_moving()
+
+/mob/living/simple_animal/on_incapacitated_trait_gain(datum/source)
+	. = ..()
+	stop_moving()
 
 /mob/living/simple_animal/proc/stop_moving()
 	walk_to(src, 0) // stops us dead in our tracks

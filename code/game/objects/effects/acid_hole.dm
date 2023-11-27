@@ -50,18 +50,18 @@
 			return XENO_NO_DELAY_ACTION
 
 /obj/effect/acid_hole/proc/expand_hole(mob/living/carbon/xenomorph/user)
-	if(user.action_busy || user.lying)
+	if(user.action_busy || user.is_mob_incapacitated())
 		return
 
 	playsound(src, "pry", 25, 1)
 	xeno_attack_delay(user)
-	if(do_after(user, 60, INTERRUPT_ALL, BUSY_ICON_GENERIC) && !QDELETED(src) && holed_wall && !user.lying && istype(holed_wall))
+	if(do_after(user, 60, INTERRUPT_ALL, BUSY_ICON_GENERIC) && !QDELETED(src) && holed_wall && istype(holed_wall))
 		holed_wall.take_damage(rand(2000,3500))
 		user.emote("roar")
 
-/obj/effect/acid_hole/proc/use_wall_hole(mob/user)
+/obj/effect/acid_hole/proc/use_wall_hole(mob/living/user)
 
-	if(user.mob_size >= MOB_SIZE_BIG || user.is_mob_incapacitated() || user.lying || user.buckled || user.anchored)
+	if(user.mob_size >= MOB_SIZE_BIG || user.is_mob_incapacitated() || user.buckled || user.anchored)
 		return FALSE
 
 	var/mob_dir = get_dir(user, src)
@@ -95,7 +95,7 @@
 	to_chat(user, SPAN_NOTICE("You start crawling through the hole."))
 
 	if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		if(!user.is_mob_incapacitated() && !user.lying && !user.buckled)
+		if(!user.is_mob_incapacitated() && !user.buckled)
 			if (T.density)
 				return
 			for(var/obj/O in T)

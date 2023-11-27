@@ -164,7 +164,7 @@
 
 	var/chemicals[0]
 	for(var/re in connected.available_chemicals)
-		var/datum/reagent/temp = chemical_reagents_list[re]
+		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
 		if(temp)
 			var/reagent_amount = 0
 			var/pretty_amount
@@ -365,7 +365,7 @@
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= max_chem)
 			occupant.reagents.add_reagent(chemical, amount, , , user)
-			var/datum/reagent/temp = chemical_reagents_list[chemical]
+			var/datum/reagent/temp = GLOB.chemical_reagents_list[chemical]
 			to_chat(user, SPAN_NOTICE("[occupant] now has [occupant.reagents.get_reagent_amount(chemical)] units of [temp.name] in \his bloodstream."))
 			return
 	to_chat(user, SPAN_WARNING("There's no occupant in the sleeper or the subject has too many chemicals!"))
@@ -390,8 +390,8 @@
 		to_chat(user, "[]\t -Respiratory Damage %: []", (occupant.getOxyLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getOxyLoss())
 		to_chat(user, "[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getToxLoss())
 		to_chat(user, "[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getFireLoss())
-		to_chat(user, SPAN_NOTICE(" Expected time till occupant can safely awake: (note: If health is below 20% these times are inaccurate)"))
-		to_chat(user, SPAN_NOTICE(" \t [occupant.knocked_out / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
+		to_chat(user, SPAN_NOTICE(" Expected time till occupant can safely awake: (note: These times are always inaccurate)"))
+		to_chat(user, SPAN_NOTICE(" \t [occupant.GetKnockOutValueNotADurationDoNotUse() / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
 	else
 		to_chat(user, SPAN_NOTICE(" There is no one inside!"))
 	return

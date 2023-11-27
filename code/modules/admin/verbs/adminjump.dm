@@ -29,7 +29,7 @@
 
 	message_admins(WRAP_STAFF_LOG(usr, "jumped to area [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
 
-/client/proc/jump_to_turf(turf/T in turfs)
+/client/proc/jump_to_turf(turf/T in GLOB.turfs)
 	set name = "Jump to Turf"
 	set category = null
 

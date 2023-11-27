@@ -53,7 +53,7 @@
 		return
 
 	bleed_layer = max(0, new_layer)
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		var/turf/open/T = get_step(src, direction)
 		if(istype(T))
 			T.update_icon()

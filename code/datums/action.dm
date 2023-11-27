@@ -187,8 +187,10 @@
 		I.ui_action_click(owner, holder_item)
 
 /datum/action/item_action/can_use_action()
-	if(ishuman(owner) && !owner.is_mob_incapacitated() && !owner.lying)
-		return TRUE
+	if(ishuman(owner) && !owner.is_mob_incapacitated())
+		var/mob/living/carbon/human/human = owner
+		if(human.body_position == STANDING_UP)
+			return TRUE
 
 /datum/action/item_action/update_button_icon()
 	button.overlays.Cut()

@@ -25,7 +25,7 @@
 	to_chat(H, role_header("You are Souto Man! You should bring awareness to the Souto brand!"))
 	to_chat(H, role_body("Your job is to party hard and share Souto. Make sure those marines are never thirsty again!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
 
 /datum/emergency_call/souto/cryo
 	name = "Souto Man (Cryo)"

@@ -28,7 +28,7 @@
 	to_chat(H, role_header("<big>If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced.</big>"))
 
 	sleep(10)
-	to_chat(H, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>"))
+	to_chat(H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]"))
 
 	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
 

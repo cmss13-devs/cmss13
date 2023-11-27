@@ -45,11 +45,11 @@
 	to_chat(H, role_body("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
 	to_chat(H, role_body("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)
-		to_chat(H, SPAN_NOTICE(role_body("Despite this, you have been tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
-		to_chat(H, SPAN_NOTICE(role_body("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.")))
+		to_chat(H, role_body("Despite this, you have been tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way."))
+		to_chat(H, role_body("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile."))
 	else
-		to_chat(H, SPAN_NOTICE(role_body("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
-		to_chat(H, SPAN_NOTICE(role_body("Ensure they are not destroyed.</b>")))
+		to_chat(H, role_body("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME].."))
+		to_chat(H, role_body("Ensure they are not destroyed.</b>"))
 
 /datum/emergency_call/mercs/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -75,7 +75,7 @@
 		to_chat(H, role_header("You are a Freelancer Mercenary!"))
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
 
 /datum/emergency_call/mercs/platoon
 	name = "Freelancers (Platoon)"
@@ -126,11 +126,11 @@
 	to_chat(H, role_body("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
 	to_chat(H, role_body("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)
-		to_chat(H, SPAN_NOTICE(role_body("Despite this, you have been specially tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
-		to_chat(H, SPAN_NOTICE(role_body("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.")))
+		to_chat(H, role_body("Despite this, you have been specially tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way."))
+		to_chat(H, role_body("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile."))
 	else
-		to_chat(H, SPAN_NOTICE(role_body("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
-		to_chat(H, SPAN_NOTICE(role_body("Ensure they are not destroyed.</b>")))
+		to_chat(H, role_body("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME].."))
+		to_chat(H, role_body("Ensure they are not destroyed.</b>"))
 
 /datum/emergency_call/heavy_mercs/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -164,4 +164,4 @@
 		to_chat(H, role_header("You are an Elite Mercenary!"))
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)

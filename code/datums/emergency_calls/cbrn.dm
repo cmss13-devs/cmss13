@@ -36,7 +36,7 @@
 		to_chat(mob, role_header("You are a CBRN Squad Rifleman!"))
 
 	to_chat(mob, role_body("You are a member of the USCM's CBRN. The CBRN is a force that specializes in handling chemical, biological, radiological, and nuclear threats."))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
 
 /datum/emergency_call/cbrn/ert
 	name = "CBRN (Distress)"
@@ -77,4 +77,4 @@
 		to_chat(mob, role_header("You are a CBRN Specialist!"))
 
 	to_chat(mob, role_body("You are a member of the USCM's CBRN. The CBRN is a force that specializes in handling chemical, biological, radiological, and nuclear threats."))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)

@@ -252,7 +252,7 @@ SUBSYSTEM_DEF(ticker)
 	save_mode(CONFIG_GET(string/gamemode_default))
 
 	if(GLOB.round_statistics)
-		to_chat(world, html = role_body("<B><center>Welcome to <big>[GLOB.round_statistics.round_name]</big></center></B>"))
+		to_chat(world, html = role_header("Welcome to [GLOB.round_statistics.round_name]"))
 
 	GLOB.supply_controller.process() //Start the supply shuttle regenerating points -- TLE
 

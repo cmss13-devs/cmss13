@@ -37,4 +37,4 @@
 		to_chat(H, role_body("You must clear out any traces of the unholy from this wretched place!"))
 		to_chat(H, role_body("Follow any orders directly from the Higher Power!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)

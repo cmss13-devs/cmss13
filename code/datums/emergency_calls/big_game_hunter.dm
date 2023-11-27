@@ -25,4 +25,4 @@
 
 	to_chat(H, role_header("You are a big game hunter!"))
 	to_chat(H, role_body("You've taken a shot at every beast of the earth, every fowl of the air, and everything that creepeth upon the earth. Mundane beasts now bore you (and there may be some minor poaching charges after the Misunderstanding) and so you have traveled to this backwater sector to hunt the most dangerous game wherever you can find it. You've heard grisly tales of murderous xenomorphs, triggerhappy soldiers, and bloodthirsty alien hunters (who sound like they have the right idea, not like those ghastl Arcturians at all!) but so far all you've potted has been penny-ante stuff.</p><p>Whether you recruit the natives for porters, beaters, and guides, or hunt them for sport, is entirely up to you. They'll point you at something excellent if they know what's good for them."))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)

@@ -36,7 +36,7 @@
 		arm_equipment(H, /datum/equipment_preset/dutch/medic, TRUE, TRUE)
 	else
 		arm_equipment(H, /datum/equipment_preset/dutch, TRUE, TRUE)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
 
 /datum/emergency_call/dutch/full_dozen //AWWW YEAH DA FULL DOZEN FO TODAY
 	name = "Dutch's Dozen - Full Strength"

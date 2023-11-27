@@ -27,4 +27,4 @@
 		to_chat(H, role_header("You are a jolly pirate! Yarr!"))
 		to_chat(H, role_body("Loot this place for all its worth! Take everything of value that's not nailed down!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)

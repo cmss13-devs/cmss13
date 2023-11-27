@@ -97,7 +97,7 @@
 		message_admins("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
 
 	//Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
-	SSticker.mode.latejoin_tally -= RoleAuthority.calculate_role_weight(job)
+	SSticker.mode.latejoin_tally -= GLOB.RoleAuthority.calculate_role_weight(job)
 
 	//Handle job slot/tater cleanup.
 	GLOB.RoleAuthority.free_role(GLOB.RoleAuthority.roles_for_mode[target.job], TRUE)

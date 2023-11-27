@@ -4,7 +4,7 @@
 	tutorial_id = "marine_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s8x9/no_baselight
 	/// How many items need to be vended from the clothing vendor for the script to continue, if something vends 2 items (for example), increase this number by 2.
-	var/clothing_items_to_vend = 9
+	var/clothing_items_to_vend = 8
 	/// How many items need to be vended from the gun vendor to continue
 	var/gun_items_to_vend = 2
 

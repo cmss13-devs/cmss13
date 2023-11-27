@@ -250,10 +250,6 @@
 		else if(dx < 0)
 			angle += 360
 
-	var/matrix/rotate = matrix() //Change the bullet angle.
-	rotate.Turn(angle)
-	apply_transform(rotate)
-
 /obj/projectile/process(delta_time)
 	. = PROC_RETURN_SLEEP
 
@@ -300,15 +296,22 @@
 	var/pixel_x_rel_new = pixel_x_lerped - current_turf.x * world.icon_size
 	var/pixel_y_rel_new = pixel_y_lerped - current_turf.y * world.icon_size
 
-	if(projectile_flags & PROJECTILE_SHRAPNEL) //there can be a LOT of shrapnel especially from a cluster OB, not important enough for the expense of an animate()
-		pixel_x = pixel_x_rel_new
-		pixel_y = pixel_y_rel_new
-		return FALSE
-
 	//Get pixel offset of old position and set as initial position
 
 	var/pixel_x_rel_old = (turf_old.x - current_turf.x) * world.icon_size + pixel_x
 	var/pixel_y_rel_old = (turf_old.y - current_turf.y) * world.icon_size + pixel_y
+
+	//Change the bullet angle to its visual path
+
+	var/vis_angle = get_pixel_angle(x = pixel_x_rel_new - pixel_x_rel_old, y = pixel_y_rel_new - pixel_y_rel_old) //naming vars because the proc takes y,x in that order and that's WEIRD
+	var/matrix/rotate = matrix()
+	rotate.Turn(vis_angle)
+	apply_transform(rotate)
+
+	if(projectile_flags & PROJECTILE_SHRAPNEL) //there can be a LOT of shrapnel especially from a cluster OB, not important enough for the expense of an animate()
+		pixel_x = pixel_x_rel_new
+		pixel_y = pixel_y_rel_new
+		return FALSE
 
 	if(distance_travelled_old == 0 && distance_travelled > 0)
 		//shift the fire origin slightly away from the firer, makes first move look a little "slower" but can't really schedule the animation start at a fraction of a tick

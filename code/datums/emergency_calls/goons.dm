@@ -19,23 +19,23 @@
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Lead!"))
+		to_chat(mob, role_header("You are a Weyland-Yutani Corporate Security Lead!"))
 		arm_equipment(mob, /datum/equipment_preset/goon/lead, TRUE, TRUE)
 	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Officer!"))
+		to_chat(mob, role_header("You are a Weyland-Yutani Corporate Security Officer!"))
 		arm_equipment(mob, /datum/equipment_preset/goon/standard, TRUE, TRUE)
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
 
 /datum/emergency_call/goon/print_backstory(mob/living/carbon/human/M)
-	to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))
-	to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani was all you could do to keep yourself and your loved ones fed."))
-	to_chat(M, SPAN_BOLD("You have no idea what a xenomorph is."))
-	to_chat(M, SPAN_BOLD("You are a simple security officer employed by Weyland-Yutani to guard their outposts and colonies."))
-	to_chat(M, SPAN_BOLD("You heard about the original distress signal ages ago, but you have only just gotten permission from corporate to enter the area."))
-	to_chat(M, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
+	to_chat(M, role_body("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))
+	to_chat(M, role_body("Joining the ranks of Weyland-Yutani was all you could do to keep yourself and your loved ones fed."))
+	to_chat(M, role_body("You have no idea what a xenomorph is."))
+	to_chat(M, role_body("You are a simple security officer employed by Weyland-Yutani to guard their outposts and colonies."))
+	to_chat(M, role_body("You heard about the original distress signal ages ago, but you have only just gotten permission from corporate to enter the area."))
+	to_chat(M, role_body("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
 
 /datum/emergency_call/goon/chem_retrieval
 	name = "Weyland-Yutani Goon (Chemical Investigation Squad)"
@@ -66,35 +66,35 @@
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Lead!"))
+		to_chat(mob, role_header("You are a Weyland-Yutani Corporate Security Lead!"))
 		arm_equipment(mob, /datum/equipment_preset/goon/lead, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Research Consultant!"))
+		to_chat(mob, role_header("You are a Weyland-Yutani Corporate Research Consultant!"))
 		arm_equipment(mob, /datum/equipment_preset/goon/researcher, TRUE, TRUE)
 	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Officer!"))
+		to_chat(mob, role_header("You are a Weyland-Yutani Corporate Security Officer!"))
 		arm_equipment(mob, /datum/equipment_preset/goon/standard, TRUE, TRUE)
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
 
 /datum/emergency_call/goon/chem_retrieval/print_backstory(mob/living/carbon/human/backstory_human)
 	if(backstory_human.job == JOB_WY_GOON_RESEARCHER)
-		to_chat(backstory_human, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a wealthy family."))
-		to_chat(backstory_human, SPAN_BOLD("Joining the ranks of Weyland-Yutani was the perfect way to further your research goals."))
-		to_chat(backstory_human, SPAN_BOLD("You have a very in depth understanding of xenomorphs."))
-		to_chat(backstory_human, SPAN_BOLD("You are a well educated scientist employed by Weyland-Yutani to study various non-humans."))
-		to_chat(backstory_human, SPAN_BOLD("You heard about the original distress signal ages ago, but you have only just gotten permission from corporate to enter the area."))
-		to_chat(backstory_human, SPAN_BOLD("Your only goal is to recover the chemical aboard the Almayer. Do whatever you have to do."))
+		to_chat(backstory_human, role_body("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a wealthy family."))
+		to_chat(backstory_human, role_body("Joining the ranks of Weyland-Yutani was the perfect way to further your research goals."))
+		to_chat(backstory_human, role_body("You have a very in depth understanding of xenomorphs."))
+		to_chat(backstory_human, role_body("You are a well educated scientist employed by Weyland-Yutani to study various non-humans."))
+		to_chat(backstory_human, role_body("You heard about the original distress signal ages ago, but you have only just gotten permission from corporate to enter the area."))
+		to_chat(backstory_human, role_body("Your only goal is to recover the chemical aboard the Almayer. Do whatever you have to do."))
 	else
-		to_chat(backstory_human, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))
-		to_chat(backstory_human, SPAN_BOLD("Joining the ranks of Weyland-Yutani was all you could do to keep yourself and your loved ones fed."))
-		to_chat(backstory_human, SPAN_BOLD("You have had a basic brief on xenomorphs."))
-		to_chat(backstory_human, SPAN_BOLD("You are a simple security officer employed by Weyland-Yutani to guard their outposts and colonies."))
-		to_chat(backstory_human, SPAN_BOLD("You heard about the original distress signal ages ago, but you have only just gotten permission from corporate to enter the area."))
-		to_chat(backstory_human, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the researcher is kept safe and follow their instructions."))
+		to_chat(backstory_human, role_body("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))
+		to_chat(backstory_human, role_body("Joining the ranks of Weyland-Yutani was all you could do to keep yourself and your loved ones fed."))
+		to_chat(backstory_human, role_body("You have had a basic brief on xenomorphs."))
+		to_chat(backstory_human, role_body("You are a simple security officer employed by Weyland-Yutani to guard their outposts and colonies."))
+		to_chat(backstory_human, role_body("You heard about the original distress signal ages ago, but you have only just gotten permission from corporate to enter the area."))
+		to_chat(backstory_human, role_body("Ensure no damage is incurred against Weyland-Yutani. Make sure the researcher is kept safe and follow their instructions."))
 
 /datum/emergency_call/goon/platoon
 	name = "Weyland-Yutani Corporate Security (Platoon)"

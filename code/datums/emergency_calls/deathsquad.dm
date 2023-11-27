@@ -29,25 +29,25 @@
 
 	if(!leader && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(person.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = person
-		to_chat(person, SPAN_ROLE_HEADER("You are the Whiteout Team Leader!"))
-		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
+		to_chat(person, role_header("You are the Whiteout Team Leader!"))
+		to_chat(person, role_body("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/leader, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(person.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Medic!"))
-		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
+		to_chat(person, role_header("You are a Whiteout Team Medic!"))
+		to_chat(person, role_body("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/medic, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(person.client, list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN), time_required_for_job))
 		heavies++
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Terminator!"))
-		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
+		to_chat(person, role_header("You are a Whiteout Team Terminator!"))
+		to_chat(person, role_body("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/terminator, TRUE, TRUE)
 	else
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Operative!"))
-		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
+		to_chat(person, role_header("You are a Whiteout Team Operative!"))
+		to_chat(person, role_body("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout, TRUE, TRUE)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), person, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), person, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
 
 /datum/emergency_call/death/low_threat
 	name = "Weyland Whiteout Operators"
@@ -64,25 +64,25 @@
 
 	if(!leader && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(person.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = person
-		to_chat(person, SPAN_ROLE_HEADER("You are the Whiteout Team Leader!"))
-		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
+		to_chat(person, role_header("You are the Whiteout Team Leader!"))
+		to_chat(person, role_body("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(person.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Medic!"))
-		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
+		to_chat(person, role_header("You are a Whiteout Team Medic!"))
+		to_chat(person, role_body("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(person.client, list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN), time_required_for_job))
 		heavies++
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Terminator!"))
-		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
+		to_chat(person, role_header("You are a Whiteout Team Terminator!"))
+		to_chat(person, role_body("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat/terminator, TRUE, TRUE)
 	else
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Operative!"))
-		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
+		to_chat(person, role_header("You are a Whiteout Team Operative!"))
+		to_chat(person, role_body("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat, TRUE, TRUE)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), person, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), person, role_body("<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")), 1 SECONDS)
 
 //################################################################################################
 // Marine commandos - USCM Deathsquad. Event only
@@ -106,13 +106,13 @@
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Marine Raider Team Leader, better than all the rest.")))
+		to_chat(H, role_header("You are a Marine Raider Team Leader, better than all the rest."))
 		arm_equipment(H, /datum/equipment_preset/uscm/marsoc/sl, TRUE, TRUE)
 	else
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an elite Marine Raider Operative, the best of the best.")))
+		to_chat(H, role_header("You are an elite Marine Raider Operative, the best of the best."))
 		arm_equipment(H, /datum/equipment_preset/uscm/marsoc, TRUE, TRUE)
-	to_chat(H, SPAN_BOLDNOTICE("You are absolutely loyal to High Command and must follow their directives."))
-	to_chat(H, SPAN_BOLDNOTICE("Execute the mission assigned to you with extreme prejudice!"))
+	to_chat(H, role_header("You are absolutely loyal to High Command and must follow their directives."))
+	to_chat(H, role_body("<center>Execute the mission assigned to you with extreme prejudice!</center>"))
 	return
 
 /datum/emergency_call/marsoc_covert
@@ -134,13 +134,13 @@
 	M.transfer_to(H, TRUE)
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Marine Raider Team Leader, better than all the rest.")))
+		to_chat(H, role_header("You are a Marine Raider Team Leader, better than all the rest."))
 		arm_equipment(H, /datum/equipment_preset/uscm/marsoc/sl/covert, TRUE, TRUE)
 	else
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an elite Marine Raider, the best of the best.")))
+		to_chat(H, role_header("You are an elite Marine Raider, the best of the best."))
 		arm_equipment(H, /datum/equipment_preset/uscm/marsoc/covert, TRUE, TRUE)
-	to_chat(H, SPAN_BOLDNOTICE("You are absolutely loyal to High Command and must follow their directives."))
-	to_chat(H, SPAN_BOLDNOTICE("Execute the mission assigned to you with extreme prejudice!"))
+	to_chat(H, role_header("You are absolutely loyal to High Command and must follow their directives."))
+	to_chat(H, role_body("<center>Execute the mission assigned to you with extreme prejudice!</center>"))
 	return
 
 
@@ -158,11 +158,11 @@
 	MIND.transfer_to(player, TRUE)
 	if(!leader && HAS_FLAG(player.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(player.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = player
-		to_chat(player, SPAN_WARNING(FONT_SIZE_BIG("You are a Marine Raider Team Leader, better than all the rest.")))
+		to_chat(player, role_header("You are a Marine Raider Team Leader, better than all the rest."))
 		arm_equipment(player, /datum/equipment_preset/uscm/marsoc/low_threat/sl, TRUE, TRUE)
 	else
-		to_chat(player, SPAN_WARNING(FONT_SIZE_BIG("You are an elite Marine Raider, the best of the best.")))
+		to_chat(player, role_header("You are an elite Marine Raider, the best of the best."))
 		arm_equipment(player, /datum/equipment_preset/uscm/marsoc/low_threat, TRUE, TRUE)
-	to_chat(player, SPAN_BOLDNOTICE("You are absolutely loyal to High Command and must follow their directives."))
-	to_chat(player, SPAN_BOLDNOTICE("Execute the mission assigned to you with extreme prejudice!"))
+	to_chat(player, role_header("You are absolutely loyal to High Command and must follow their directives."))
+	to_chat(player, role_body("<center>Execute the mission assigned to you with extreme prejudice!</center>"))
 	return

@@ -417,8 +417,8 @@ CULT
 	preset.load_race(chosen)
 	preset.load_status(chosen, H.hivenumber)
 
-	to_chat(chosen, SPAN_ROLE_HEADER("You are now a Xeno Cultist!"))
-	to_chat(chosen, SPAN_ROLE_BODY("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself."))
+	to_chat(chosen, role_header("You are now a Xeno Cultist!"))
+	to_chat(chosen, role_body("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself."))
 
 	xeno_message("[chosen] has been converted into a cultist!", 2, hive.hivenumber)
 

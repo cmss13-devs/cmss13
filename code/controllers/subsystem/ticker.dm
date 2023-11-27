@@ -252,7 +252,7 @@ SUBSYSTEM_DEF(ticker)
 	save_mode(CONFIG_GET(string/gamemode_default))
 
 	if(GLOB.round_statistics)
-		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [GLOB.round_statistics.round_name]</B>")))
+		to_chat(world, html = role_body("<B><center>Welcome to <big>[GLOB.round_statistics.round_name]</big></center></B>"))
 
 	GLOB.supply_controller.process() //Start the supply shuttle regenerating points -- TLE
 
@@ -415,14 +415,11 @@ SUBSYSTEM_DEF(ticker)
 		qdel(player)
 
 /datum/controller/subsystem/ticker/proc/equip_characters()
-	var/captainless=1
 	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
 		return
 
 	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
 		if(player.mind)
-			if(player.job == JOB_CO)
-				captainless = FALSE
 			if(player.job)
 				GLOB.RoleAuthority.equip_role(player, GLOB.RoleAuthority.roles_by_name[player.job], late_join = FALSE)
 				EquipCustomItems(player)
@@ -432,10 +429,6 @@ SUBSYSTEM_DEF(ticker)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 				if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
 					msg_sea(("NEW PLAYER: <b>[key_name(player, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(player)] - Current location: [get_area(player)]"), TRUE)
-	if(captainless)
-		for(var/mob/M in GLOB.player_list)
-			if(!istype(M,/mob/new_player))
-				to_chat(M, "Marine commanding officer position not forced on anyone.")
 
 /datum/controller/subsystem/ticker/proc/send_tip_of_the_round()
 	var/message

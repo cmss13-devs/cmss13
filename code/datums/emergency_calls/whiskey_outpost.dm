@@ -50,7 +50,7 @@
 		to_chat(mob, SPAN_BOLDNOTICE("You are a Rifleman in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
 
 	sleep(10)
-	to_chat(mob, "<B>Objectives:</b> [objectives]")
+	to_chat(mob, "<b><center>Your objectives are:</center></b></p><p><b>[objectives]</b>")
 	GLOB.RoleAuthority.randomize_squad(mob)
 	mob.sec_hud_set_ID()
 	mob.hud_set_squad()

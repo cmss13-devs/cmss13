@@ -795,7 +795,7 @@ cases. Override_icon_state should be a list.*/
 
 
 /obj/item/proc/showoff(mob/user)
-	var/list/viewers = get_mobs_in_view(world_view_size, user)
+	var/list/viewers = get_mobs_in_view(GLOB.world_view_size, user)
 	user.langchat_speech("holds up [src].", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 	for (var/mob/M in viewers)
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
@@ -850,7 +850,7 @@ cases. Override_icon_state should be a list.*/
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
-		user.client.change_view(world_view_size, src)
+		user.client.change_view(GLOB.world_view_size, src)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 

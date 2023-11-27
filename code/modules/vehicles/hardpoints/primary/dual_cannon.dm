@@ -48,7 +48,7 @@
 	for(var/bullets_fired = 1, bullets_fired <= burst_amount, bullets_fired++)
 		var/atom/T = A
 		if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
-			T = get_step(get_turf(A), pick(cardinal))
+			T = get_step(get_turf(A), pick(GLOB.cardinals))
 		if(LAZYLEN(activation_sounds))
 			playsound(get_turf(src), pick(activation_sounds), 60, 1)
 		fire_projectile(user, T)

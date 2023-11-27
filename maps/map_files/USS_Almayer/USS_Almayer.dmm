@@ -64421,17 +64421,24 @@
 /area/almayer/engineering/upper_engineering/port)
 "rDe" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/kepler_crisps{
-	pixel_x = 8;
-	pixel_y = 4
-	},
-/obj/item/toy/deck{
-	pixel_x = -4;
-	pixel_y = 1
-	},
 /obj/structure/sign/safety/cryo{
 	pixel_x = 8;
 	pixel_y = 33
+	},
+/obj/item/toy/deck{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry{
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -4
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -72517,14 +72524,8 @@
 /area/almayer/hallways/stern_hallway)
 "uWI" = (
 /obj/structure/surface/table/almayer,
-/obj/item/ashtray/plastic,
-/obj/item/trash/cigbutt{
-	pixel_x = 1;
+/obj/item/pizzabox/margherita{
 	pixel_y = 8
-	},
-/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry{
-	pixel_x = -9;
-	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	dir = 1;

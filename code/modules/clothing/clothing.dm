@@ -135,12 +135,12 @@
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()
 
-	LAZYADD(objects_of_interest, src)
+	LAZYADD(GLOB.objects_of_interest, src)
 
 /obj/item/clothing/ears/earmuffs/Destroy()
 	. = ..()
 
-	LAZYREMOVE(objects_of_interest, src)
+	LAZYREMOVE(GLOB.objects_of_interest, src)
 
 
 ///////////////////////////////////////////////////////////////////////

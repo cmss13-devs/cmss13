@@ -86,6 +86,7 @@
 	VAR_PROTECTED/stun_timer = TIMER_ID_NULL
 
 /mob/living/proc/stun_callback()
+	REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STUNNED_TRAIT)
 	stunned = 0
 	handle_regular_status_updates(FALSE)
 	if(stun_timer != TIMER_ID_NULL)
@@ -93,8 +94,13 @@
 		stun_timer = TIMER_ID_NULL
 
 /mob/living/proc/stun_callback_check()
+	if(stunned)
+		ADD_TRAIT(src, TRAIT_INCAPACITATED, STUNNED_TRAIT)
 	if(stunned && stunned < recovery_constant)
 		stun_timer = addtimer(CALLBACK(src, PROC_REF(stun_callback)), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+		return
+	if(!stunned) // Force reset since the timer wasn't called
+		stun_callback()
 		return
 
 	if(stun_timer != TIMER_ID_NULL)
@@ -172,13 +178,21 @@
 	VAR_PRIVATE/knocked_down_timer
 
 /mob/living/proc/knocked_down_callback()
+	remove_traits(list(TRAIT_FLOORED, TRAIT_INCAPACITATED), KNOCKEDDOWN_TRAIT)
 	knocked_down = 0
 	handle_regular_status_updates(FALSE)
 	knocked_down_timer = null
 
 /mob/living/proc/knocked_down_callback_check()
+	if(knocked_down)
+		add_traits(list(TRAIT_FLOORED, TRAIT_INCAPACITATED), KNOCKEDDOWN_TRAIT)
+
 	if(knocked_down && knocked_down < recovery_constant)
 		knocked_down_timer = addtimer(CALLBACK(src, PROC_REF(knocked_down_callback)), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
+		return
+
+	if(!knocked_down) // Force reset since the timer wasn't called
+		knocked_down_callback()
 		return
 
 	if(knocked_down_timer)
@@ -192,11 +206,14 @@
 	return
 
 /mob/living/proc/knocked_out_callback()
+	REMOVE_TRAIT(src, TRAIT_KNOCKEDOUT, KNOCKEDOUT_TRAIT)
 	knocked_out = 0
 	handle_regular_status_updates(FALSE)
 	knocked_out_timer = null
 
 /mob/living/proc/knocked_out_callback_check()
+	if(knocked_out)
+		ADD_TRAIT(src, TRAIT_KNOCKEDOUT, KNOCKEDOUT_TRAIT)
 	if(knocked_out && knocked_out < recovery_constant)
 		knocked_out_timer = addtimer(CALLBACK(src, PROC_REF(knocked_out_callback)), (knocked_out/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
 		return
@@ -218,7 +235,6 @@
 		knockdown_clock_adjustment()
 		knocked_down_callback_check()
 	return
-
 
 /mob/living/proc/SetKnockDown(amount)
 	if(status_flags & CANKNOCKDOWN)
@@ -362,12 +378,6 @@
 	to_chat(src, SPAN_WARNING("You start hearing things again!"))
 	SEND_SIGNAL(src, COMSIG_MOB_REGAINED_HEARING)
 
-
-
-
-
-
-
 // heal ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_limb_damage(brute, burn)
 	apply_damage(-brute, BRUTE)
@@ -491,14 +501,13 @@
 		return
 	if(stat >= UNCONSCIOUS)
 		return
+	face_dir(direction)
 	return ..()
 
-/mob/living/is_laid_down()
-	if(knocked_down || knocked_out)
-		return TRUE
-	return ..()
-
-/mob/living/is_mob_incapacitated(ignore_restrained)
-	if(stunned || knocked_down || knocked_out)
-		return TRUE
-	return ..()
+// Transition handlers. do NOT use this. I mean seriously don't. It's broken. Players love their broken behaviors.
+/mob/living/proc/GetStunValueNotADurationDoNotUse()
+	return stunned
+/mob/living/proc/GetKnockDownValueNotADurationDoNotUse()
+	return knocked_down
+/mob/living/proc/GetKnockOutValueNotADurationDoNotUse()
+	return knocked_out

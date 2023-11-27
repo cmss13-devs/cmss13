@@ -78,7 +78,7 @@
 
 	try_scope(user)
 
-/obj/structure/vulture_spotter_tripod/on_set_interaction(mob/user)
+/obj/structure/vulture_spotter_tripod/on_set_interaction(mob/living/user)
 	var/obj/item/attachable/vulture_scope/scope = get_vulture_scope()
 	scope.spotter_spotting = TRUE
 	to_chat(scope.scope_user, SPAN_NOTICE("You notice that [scope] drifts less."))
@@ -102,13 +102,13 @@
 	give_action(user, /datum/action/vulture_tripod_unscope, null, null, src)
 	set_scope_loc(user, scope)
 
-/obj/structure/vulture_spotter_tripod/on_unset_interaction(mob/user)
+/obj/structure/vulture_spotter_tripod/on_unset_interaction(mob/living/user)
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] looks up from [src]."),SPAN_NOTICE("You look up from [src]."))
 	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Vulture spotter"))
 	user.reset_view(null)
 	user.Move(get_step(src, reverse_direction(src.dir)))
-	user.client?.change_view(world_view_size, src)
+	user.client?.change_view(GLOB.world_view_size, src)
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
 	update_pixels(FALSE)
 	remove_action(user, /datum/action/vulture_tripod_unscope)
@@ -238,7 +238,7 @@
 		user.pixel_x = 0
 		user.pixel_y = 0
 		if(user.client)
-			user.client.change_view(world_view_size, src)
+			user.client.change_view(GLOB.world_view_size, src)
 			user.client.pixel_x = 0
 			user.client.pixel_y = 0
 			UnregisterSignal(user.client, COMSIG_PARENT_QDELETING)

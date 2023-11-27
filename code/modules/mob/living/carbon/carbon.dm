@@ -74,7 +74,7 @@
 
 /mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
-	if(lying)
+	if(body_position == LYING_DOWN)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)
@@ -260,19 +260,24 @@
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src == M)
 		return
-	var/t_him = "it"
-	if(gender == MALE)
-		t_him = "him"
-	else if(gender == FEMALE)
-		t_him = "her"
-	if(lying || sleeping)
+	var/t_him = p_them()
+
+	var/shake_action
+	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || sleeping) // incap implies also unconscious or knockedout
+		shake_action = "wake [t_him] up!"
+	else if(HAS_TRAIT(src, TRAIT_FLOORED))
+		shake_action = "get [t_him] up!"
+
+	if(shake_action) // We are incapacitated in some fashion
 		if(client)
 			sleeping = max(0,sleeping-5)
-		if(sleeping == 0)
-			resting = 0
-			update_canmove()
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
-			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to [shake_action]"), \
+			SPAN_NOTICE("You shake [src] trying to [shake_action]"), null, 4)
+
+	else if(body_position == LYING_DOWN) // We're just chilling on the ground, let us be
+		M.visible_message(SPAN_NOTICE("[M] stares and waves impatiently at [src] lying on the ground."), \
+			SPAN_NOTICE("You stare and wave at [src] just lying on the ground."), null, 4)
+
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
@@ -452,19 +457,19 @@
 /mob/living/carbon/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	set waitfor = 0
 	if(buckled) return FALSE //can't slip while buckled
-	if(lying) return FALSE //can't slip if already lying down.
+	if(body_position != STANDING_UP) return FALSE //can't slip if already lying down.
 	stop_pulling()
 	to_chat(src, SPAN_WARNING("You slipped on \the [slip_source_name? slip_source_name : "floor"]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 25, 1)
 	apply_effect(stun_level, STUN)
 	apply_effect(weaken_level, WEAKEN)
 	. = TRUE
-	if(slide_steps && lying)//lying check to make sure we downed the mob
+	if(slide_steps && HAS_TRAIT(src, TRAIT_FLOORED))//lying check to make sure we downed the mob
 		var/slide_dir = dir
 		for(var/i=1, i<=slide_steps, i++)
 			step(src, slide_dir)
 			sleep(2)
-			if(!lying)
+			if(!HAS_TRAIT(src, TRAIT_FLOORED)) // just watch this break in the most horrible way possible
 				break
 
 
@@ -518,3 +523,17 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
+
+
+/mob/living/carbon/on_lying_down(new_lying_angle)
+	. = ..()
+	if(!buckled || buckled.buckle_lying != 0)
+		lying_angle_on_lying_down(new_lying_angle)
+
+
+/// Special carbon interaction on lying down, to transform its sprite by a rotation.
+/mob/living/carbon/proc/lying_angle_on_lying_down(new_lying_angle)
+	if(!new_lying_angle)
+		set_lying_angle(pick(90, 270))
+	else
+		set_lying_angle(new_lying_angle)

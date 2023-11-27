@@ -2,7 +2,7 @@
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
-	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST)
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return 1
 	return 0
 
@@ -81,7 +81,7 @@
 	taskbar_icon = 'icons/taskbar/gml_wo.png'
 
 /datum/game_mode/whiskey_outpost/get_roles_list()
-	return ROLES_WO
+	return GLOB.ROLES_WO
 
 /datum/game_mode/whiskey_outpost/announce()
 	return 1
@@ -178,7 +178,7 @@
 	if(checkwin_counter >= 10) //Only check win conditions every 10 ticks.
 		if(xeno_wave == WO_MAX_WAVE && last_wave_time == 0)
 			last_wave_time = world.time
-		if(!finished && round_should_check_for_win && last_wave_time != 0)
+		if(!finished && GLOB.round_should_check_for_win && last_wave_time != 0)
 			check_win()
 		checkwin_counter = 0
 	return 0
@@ -212,8 +212,8 @@
 		finished = 2 //Marine win
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
-	for(var/i in RoleAuthority.roles_by_name)
-		var/datum/job/J = RoleAuthority.roles_by_name[i]
+	for(var/i in GLOB.RoleAuthority.roles_by_name)
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
 
 		// If the job has unlimited job slots, We set the amount of slots to the amount it has at the moment this is called
 		if (J.spawn_positions < 0)
@@ -254,8 +254,8 @@
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/whiskey_outpost/declare_completion()
-	if(round_statistics)
-		round_statistics.track_round_end()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_round_end()
 	if(finished == 1)
 		log_game("Round end result - xenos won")
 		to_world(SPAN_ROUND_HEADER("The Xenos have succesfully defended their hive from colonization."))
@@ -263,11 +263,11 @@
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
 		world << sound('sound/misc/Game_Over_Man.ogg')
-		if(round_statistics)
-			round_statistics.round_result = MODE_INFESTATION_X_MAJOR
-			if(round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories++
-				round_statistics.current_map.total_xeno_majors++
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.round_result = MODE_INFESTATION_X_MAJOR
+			if(GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_xeno_victories++
+				GLOB.round_statistics.current_map.total_xeno_majors++
 
 	else if(finished == 2)
 		log_game("Round end result - marines won")
@@ -276,26 +276,26 @@
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
 		world << sound('sound/misc/hell_march.ogg')
-		if(round_statistics)
-			round_statistics.round_result = MODE_INFESTATION_M_MAJOR
-			if(round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories++
-				round_statistics.current_map.total_marine_majors++
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.round_result = MODE_INFESTATION_M_MAJOR
+			if(GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_marine_victories++
+				GLOB.round_statistics.current_map.total_marine_majors++
 
 	else
 		log_game("Round end result - no winners")
 		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
 		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
 		world << 'sound/misc/sadtrombone.ogg'
-		if(round_statistics)
-			round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
 
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = GLOB.clients.len
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
 
-		round_statistics.log_round_statistics()
+		GLOB.round_statistics.log_round_statistics()
 
 		round_finished = 1
 
@@ -511,10 +511,10 @@
 	unacidable = TRUE
 	var/working = 0
 
-/obj/structure/machinery/wo_recycler/attack_hand(mob/user)
+/obj/structure/machinery/wo_recycler/attack_hand(mob/living/user)
 	if(inoperable(MAINT))
 		return
-	if(user.lying || user.stat)
+	if(user.is_mob_incapacitated())
 		return
 	if(ismaintdrone(usr) || \
 		istype(usr, /mob/living/carbon/xenomorph))

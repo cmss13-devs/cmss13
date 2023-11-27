@@ -442,7 +442,7 @@
 
 /obj/effect/alien/resin/fruit/MouseDrop(atom/over_object)
 	var/mob/living/carbon/xenomorph/X = over_object
-	if(!istype(X) || !Adjacent(X) || X != usr || X.is_mob_incapacitated() || X.lying) return ..()
+	if(!istype(X) || !Adjacent(X) || X != usr || X.is_mob_incapacitated() || X.body_position == LYING_DOWN) return ..()
 	X.pickup_fruit(src)
 
 // Handles xenos picking up fruit

@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		else if(user.hallucination > 50 && prob(10) && operating == 0)
 			to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
 			user.halloss += 10
-			user.stunned += 10
+			user.apply_effect(10, STUN)
 			return
 	..(user)
 
@@ -817,7 +817,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/LateInitialize()
 	. = ..()
 	if(closeOtherId != null)
-		for(var/obj/structure/machinery/door/airlock/A in machines)
+		for(var/obj/structure/machinery/door/airlock/A in GLOB.machines)
 			if(A.closeOtherId == closeOtherId && A != src)
 				closeOther = A
 				break
@@ -833,7 +833,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	return
 
 /obj/structure/machinery/door/airlock/allowed(mob/M)
-	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
+	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (GLOB.maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
 		return TRUE
 	return ..(M)
 

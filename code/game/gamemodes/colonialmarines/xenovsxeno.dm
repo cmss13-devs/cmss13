@@ -26,9 +26,9 @@
 /* Pre-pre-startup */
 /datum/game_mode/xenovs/can_start()
 	for(var/hivename in SSmapping.configs[GROUND_MAP].xvx_hives)
-		if(readied_players > SSmapping.configs[GROUND_MAP].xvx_hives[hivename])
+		if(GLOB.readied_players > SSmapping.configs[GROUND_MAP].xvx_hives[hivename])
 			hives += hivename
-	xeno_starting_num = readied_players
+	xeno_starting_num = GLOB.readied_players
 	if(!initialize_starting_xenomorph_list(hives, TRUE))
 		hives.Cut()
 		return
@@ -38,7 +38,7 @@
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
 /datum/game_mode/xenovs/get_roles_list()
-	return ROLES_XENO
+	return GLOB.ROLES_XENO
 
 /* Pre-setup */
 /datum/game_mode/xenovs/pre_setup()
@@ -91,7 +91,7 @@
 	initialize_post_xenomorph_list(GLOB.xeno_hive_spawns)
 
 	round_time_lobby = world.time
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(!(A.is_resin_allowed))
 			A.is_resin_allowed = TRUE
 
@@ -141,7 +141,6 @@
 		original.statistic_exempt = TRUE
 		original.buckled = start_nest
 		original.setDir(start_nest.dir)
-		original.update_canmove()
 		start_nest.buckled_mob = original
 		start_nest.afterbuckle(original)
 
@@ -193,7 +192,7 @@
 					qdel(C)
 				hive_cores = list()
 
-			if(round_should_check_for_win)
+			if(GLOB.round_should_check_for_win)
 				check_win()
 			round_checkwin = 0
 
@@ -263,12 +262,12 @@
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = GLOB.clients.len
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
 
-		round_statistics.log_round_statistics()
+		GLOB.round_statistics.log_round_statistics()
 
 	declare_completion_announce_xenomorphs()
 	calculate_end_statistics()
@@ -278,11 +277,11 @@
 	return TRUE
 
 /datum/game_mode/xenovs/announce_ending()
-	if(round_statistics)
-		round_statistics.track_round_end()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
 // for the toolbox
 /datum/game_mode/xenovs/end_round_message()

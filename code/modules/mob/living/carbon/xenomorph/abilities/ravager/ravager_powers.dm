@@ -170,8 +170,9 @@
 
 	for (var/step in 0 to 3)
 		temp = get_step(turf, facing)
-		if(facing in diagonals) // check if it goes through corners
-			var/reverse_face = reverse_dir[facing]
+		if(facing in GLOB.diagonals) // check if it goes through corners
+			var/reverse_face = GLOB.reverse_dir[facing]
+
 			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
 			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
 			if((!back_left || back_left.density) && (!back_right || back_right.density))
@@ -387,7 +388,6 @@
 
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = TRUE
-	xeno.update_canmove()
 
 	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		xeno.emote("roar")
@@ -432,7 +432,6 @@
 
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = FALSE
-	xeno.update_canmove()
 
 	return ..()
 

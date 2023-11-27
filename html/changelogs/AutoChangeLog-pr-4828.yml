@@ -1,0 +1,7 @@
+author: "fira"
+delete-after: True
+changes:
+  - code_imp: "Ported basic /tg/ Status Backend."
+  - rscadd: "Human transform changes such as lying down, knock down, buckling, are now animated."
+  - bugfix: "Some statuses will now take effect immediately instead of waiting for a life tick, notably Resting."
+  - balance: "Many interaction requirements were changed to eg. fail upon stuns rather than if lying down."

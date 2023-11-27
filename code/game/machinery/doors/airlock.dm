@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		else if(user.hallucination > 50 && prob(10) && operating == 0)
 			to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
 			user.halloss += 10
-			user.stunned += 10
+			user.apply_effect(10, STUN)
 			return
 	..(user)
 

@@ -68,7 +68,6 @@
 			src.occupant.updatehealth()
 			if (src.occupant.health >= 0 && src.occupant.stat == DEAD)
 				src.occupant.set_stat(CONSCIOUS)
-				src.occupant.lying = 0
 				GLOB.dead_mob_list -= src.occupant
 				GLOB.alive_mob_list += src.occupant
 				occupant.reload_fullscreens()

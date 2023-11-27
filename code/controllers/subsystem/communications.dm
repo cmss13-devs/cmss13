@@ -69,11 +69,11 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define MIN_FREE_FREQ 1201 // -------------------------------------------------
 
 //Misc channels
-var/const/YAUT_FREQ = 1205
-var/const/DUT_FREQ = 1210
-var/const/VAI_FREQ = 1215
-var/const/RMC_FREQ = 1216
-var/const/CMB_FREQ = 1220
+#define YAUT_FREQ 1205
+#define DUT_FREQ 1210
+#define VAI_FREQ 1215
+#define RMC_FREQ 1216
+#define CMB_FREQ 1220
 
 //WY Channels (1230-1249)
 #define WY_FREQ 1231
@@ -100,13 +100,13 @@ var/const/CMB_FREQ = 1220
 #define CLF_CCT_FREQ 1275
 
 //Listening Bugs (1290-1291)
-var/const/BUG_A_FREQ = 1290
-var/const/BUG_B_FREQ = 1291
+#define BUG_A_FREQ 1290
+#define BUG_B_FREQ 1291
 
 //General Radio
-var/const/MIN_FREQ = 1460 // ------------------------------------------------------
-var/const/PUB_FREQ = 1461
-var/const/MAX_FREQ = 1468 // ------------------------------------------------------
+#define MIN_FREQ 1460 // ------------------------------------------------------
+#define PUB_FREQ 1461
+#define MAX_FREQ 1468 // ------------------------------------------------------
 
 //USCM High Command (USCM 1470-1499)
 #define HC_FREQ 1471

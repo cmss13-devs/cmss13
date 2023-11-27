@@ -1,5 +1,0 @@
-author: "HeresKozmos"
-delete-after: True
-changes:
-  - rscadd: "Added eight new tunnels to Sorokyne"
-  - rscdel: "Removed the original five tunnels on Sorokyne"

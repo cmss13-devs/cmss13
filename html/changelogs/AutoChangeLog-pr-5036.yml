@@ -1,4 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - bugfix: "The Self Destruct timer in the status panel will now stop once SD has gone off."

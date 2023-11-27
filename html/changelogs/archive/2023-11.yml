@@ -367,3 +367,24 @@
       for TL
   Nanu308:
   - rscdel: Removed the Pizza Cutter.
+2023-11-27:
+  Birdtalon:
+  - bugfix: "Fixes vendor sprites not updating icon when fully repaired\n/\U0001F191"
+  - bugfix: Fix lesser drone crash on getting gibbed.
+  Doubleumc:
+  - bugfix: CORSAT poddoors no longer have extra sprites overlaid on them
+  - maptweak: CORSAT LZs can be used by shuttles
+  HeresKozmos:
+  - rscadd: Added eight new tunnels to Sorokyne
+  - rscdel: Removed the original five tunnels on Sorokyne
+  SabreML:
+  - rscadd: Made the character preview in the character creation menu show the 'Preferred
+      Armor' setting.
+  - bugfix: Fixed 'Padded' armour being replaced by the user's armour style preference
+      when vended.
+  - qol: Made the squad prep attachments vendors vend items into the user's hands.
+  Zonespace27:
+  - bugfix: The Self Destruct timer in the status panel will now stop once SD has
+      gone off.
+  hislittlecuzingames:
+  - bugfix: Disables launch announcment alarm if it's sounding when queen hijacks

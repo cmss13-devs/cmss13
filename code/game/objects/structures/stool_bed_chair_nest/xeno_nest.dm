@@ -10,7 +10,7 @@
 	health = 100
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE
-	buckle_lying = FALSE
+	buckle_lying = 0
 	var/on_fire = 0
 	var/resisting = 0
 	var/resisting_ready = 0
@@ -145,7 +145,7 @@
 	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))
 		return
 
-	if(user.stat || user.lying || user.is_mob_restrained())
+	if(user.body_position == LYING_DOWN || user.is_mob_incapacitated())
 		return
 
 	if(isxeno(user))
@@ -167,7 +167,7 @@
 		if(H.stat != DEAD)
 			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") != "Yes")
 				return
-			if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
+			if(!buckled_mob || !user.Adjacent(H) || user.is_mob_incapacitated(FALSE))
 				return
 
 	if(ishuman(user))
@@ -191,7 +191,7 @@
 
 /obj/structure/bed/nest/buckle_mob(mob/mob, mob/user)
 	. = FALSE
-	if(!isliving(mob) || islarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || mob.buckled || !iscarbon(user))
+	if(!isliving(mob) || islarva(user) || (get_dist(src, user) > 1) || user.is_mob_incapacitated(FALSE))
 		return
 
 	if(isxeno(mob))
@@ -220,7 +220,7 @@
 	var/mob/living/carbon/human/human = null
 	if(ishuman(mob))
 		human = mob
-		if(!human.lying) //Don't ask me why is has to be
+		if(human.body_position != LYING_DOWN) //Don't ask me why is has to be
 			to_chat(user, SPAN_WARNING("[mob] is resisting, ground them."))
 			return
 
@@ -242,7 +242,7 @@
 		return
 
 	if(human) //Improperly stunned Marines won't be nested
-		if(!human.lying) //Don't ask me why is has to be
+		if(human.body_position != LYING_DOWN) //Don't ask me why is has to be
 			to_chat(user, SPAN_WARNING("[mob] is resisting, ground them."))
 			return
 

@@ -50,7 +50,6 @@
 	ADD_TRAIT(M, TRAIT_IMMOBILIZED, CHLOROFORM_TRAIT)
 	ADD_TRAIT(M, TRAIT_UNDENSE, CHLOROFORM_TRAIT)
 	M.able_to_speak = FALSE
-	M.update_canmove()
 
 	M.drop_inv_item_on_ground(M.wear_mask, force = TRUE)
 
@@ -79,7 +78,6 @@
 /obj/item/weapon/chloroform/proc/remove_stun(mob/living/M)
 	animate(M, pixel_x = 0, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
 	M.anchored = FALSE
-	M.density = TRUE
 	M.able_to_speak = TRUE
 	M.layer = MOB_LAYER
 	REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, CHLOROFORM_TRAIT)

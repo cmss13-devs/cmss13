@@ -117,9 +117,8 @@
 	if(user.is_mob_incapacitated())
 		return
 	if(exit_stun)
-		user.stunned = max(user.stunned, exit_stun) //Action delay when going out of a closet (or morgue in this case)
-		user.update_canmove() //Force the delay to go in action immediately
-		if(!user.lying)
+		user.apply_effect(exit_stun, STUN)
+		if(user.mobility_flags & MOBILITY_MOVE)
 			user.visible_message(SPAN_WARNING("[user] suddenly gets out of [src]!"),
 			SPAN_WARNING("You get out of [src] and get your bearings!"))
 		toggle_morgue(user)

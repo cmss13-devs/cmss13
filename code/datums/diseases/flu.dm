@@ -46,7 +46,7 @@
 				stage--
 				return
 */
-			if(affected_mob.resting && prob(15))  //added until sleeping is fixed
+			if(affected_mob.body_position == LYING_DOWN && prob(15))  //added until sleeping is fixed
 				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
 				stage--
 				return

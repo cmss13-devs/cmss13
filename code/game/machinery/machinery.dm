@@ -128,15 +128,15 @@ Class Procs:
 
 /obj/structure/machinery/Initialize(mapload, ...)
 	. = ..()
-	machines += src
+	GLOB.machines += src
 	var/area/A = get_area(src)
 	if(A)
 		A.add_machine(src) //takes care of adding machine's power usage
 
 /obj/structure/machinery/Destroy()
-	machines -= src
-	processing_machines -= src
-	power_machines -= src
+	GLOB.machines -= src
+	GLOB.processing_machines -= src
+	GLOB.power_machines -= src
 	var/area/A = get_area(src)
 	if(A)
 		A.remove_machine(src) //takes care of removing machine from power usage
@@ -151,15 +151,15 @@ Class Procs:
 	if(!machine_processing)
 		machine_processing = 1
 		if(power_machine)
-			addToListNoDupe(power_machines, src)
+			addToListNoDupe(GLOB.power_machines, src)
 		else
-			addToListNoDupe(processing_machines, src)
+			addToListNoDupe(GLOB.processing_machines, src)
 
 /obj/structure/machinery/proc/stop_processing()
 	if(machine_processing)
 		machine_processing = 0
-		processing_machines -= src
-		power_machines -= src
+		GLOB.processing_machines -= src
+		GLOB.power_machines -= src
 
 /obj/structure/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL

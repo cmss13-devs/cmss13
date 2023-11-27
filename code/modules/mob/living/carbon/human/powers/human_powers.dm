@@ -264,9 +264,9 @@
 	var/chosen_HUD = 1
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_ADVANCED]
+			H = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 			chosen_HUD = 2
 		else
 			return

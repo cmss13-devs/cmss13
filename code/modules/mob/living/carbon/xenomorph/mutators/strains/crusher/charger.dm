@@ -385,8 +385,8 @@
 		if(HAS_TRAIT(src, TRAIT_CHARGING))
 			apply_effect(2, WEAKEN)
 			xeno.apply_effect(2, WEAKEN)
-			src.throw_atom(pick(cardinal),1,3,xeno,TRUE)
-			xeno.throw_atom(pick(cardinal),1,3,xeno,TRUE)
+			src.throw_atom(pick(GLOB.cardinals),1,3,xeno,TRUE)
+			xeno.throw_atom(pick(GLOB.cardinals),1,3,xeno,TRUE)
 			charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
 			playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
 			return

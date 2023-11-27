@@ -874,7 +874,7 @@ SUBSYSTEM_DEF(minimaps)
 			if(faction == FACTION_MARINE)
 				COOLDOWN_START(GLOB, uscm_canvas_cooldown, canvas_cooldown_time)
 				var/mob/living/carbon/human/human_leader = user
-				for(var/datum/squad/current_squad in RoleAuthority.squads)
+				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
 				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
 				playsound_client(human_leader.client, "sound/effects/sos-morse-code.ogg")

@@ -106,7 +106,7 @@
 			if(AC)
 				to_chat(usr, SPAN_WARNING("\The [src] cannot be built here!"))
 				return TRUE
-			var/list/directions = new/list(cardinal)
+			var/list/directions = GLOB.cardinals.Copy()
 			var/i = 0
 			for (var/obj/structure/window/win in user.loc)
 				i++
@@ -114,7 +114,7 @@
 					to_chat(user, SPAN_DANGER("There are too many windows in this location."))
 					return TRUE
 				directions-=win.dir
-				if(!(win.dir in cardinal))
+				if(!(win.dir in GLOB.cardinals))
 					to_chat(user, SPAN_DANGER("Can't let you do that."))
 					return TRUE
 

@@ -13,7 +13,7 @@
 			var/obj/structure/S = A
 			S.do_climb(src, mods)
 			return TRUE
-		else if(!(isitem(A) && get_dist(src, A) <= 1) && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS)
+		else if(!(isitem(A) && get_dist(src, A) <= 1) && (client && (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS)))
 			swap_hand()
 			return TRUE
 

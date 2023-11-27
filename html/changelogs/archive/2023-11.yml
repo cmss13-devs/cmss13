@@ -266,3 +266,125 @@
   Zonespace27:
   - bugfix: Jump-to-area verb will now warn you if there aren't any turfs in the given
       area.
+2023-11-21:
+  hislittlecuzingames:
+  - code_imp: Added ability to have looping sounds from further away
+2023-11-22:
+  AnturK:
+  - server: the server now supports auto-profiling
+  Birdtalon:
+  - code_imp: Removes some istype(src)
+  Morrow:
+  - rscadd: Mess tech positions now scale from 1 to 2 after 70 marines are in the
+      game
+  hislittlecuzingames:
+  - rscadd: Launch Announcement Alarm for dropships to notify ground forces of departure.
+2023-11-23:
+  Birdtalon:
+  - rscdel: Lesser drones die upon ghosting and are not offered to observers.
+  - rscadd: Explosion handling logic to experimental sensor tower.
+  - bugfix: Explosions no longer delete experimental sensor tower.
+  - bugfix: Pylons now differentiated in the input list with a (1) if in the same
+      area.
+  Drathek:
+  - bugfix: Resin doors will now close on dead mobs that are merged with weeds (currently
+      only human).
+  - bugfix: Resin doors will now restart their closing timer each open making the
+      delay to close consistent.
+  - code_imp: Added a TRAIT_MERGED_WITH_WEEDS that is set whenever the mob is currently
+      merged with weeds.
+  - bugfix: 'Fixed buried larva spawn grace period at start of round if there is a
+      queue: Now join as xeno when there''s a queue will only prevent buried larva
+      spawns if there is no core.'
+  - bugfix: 'Tweaked larva queue spawning: Now spawns as many larva as possible each
+      cycle rather than one.'
+  LC4492:
+  - maptweak: 'Changes to the CO office: The bathroom now faces into the CO''s bedroom,
+      and not to his main office. Victory cabinet have been moved to the Officer''s
+      mess because of logical issues. Extra-detail to the office, including an exclusive
+      stamp, table flags and others. The safe is now inside the CO''s bedroom, and
+      not in his office. The energy APC is now inside the CO''s bedroom, and not in
+      his office. Jones finally have a BED again, or something like that. Other minor
+      changes to objects, such the addition of a cane, a box of glasses for serving
+      guests, etc.'
+  QuickLode:
+  - rscadd: Damage to Synthetic's internal causes debuffs, eventual powercell failure.(death)
+  - bugfix: Synthetic's should no longer lose blood.
+  - code_imp: moves blood proc to human.dm from blood.dm with above changes.
+  SortieEnMer:
+  - qol: Match Unlock Time in Nuke Timelock Message with Nuke Techtree Description
+  Steelpoint:
+  - maptweak: Secure Storage on LV-624 has been broken open, making it far less defendable
+      but easier to access.
+  fira:
+  - bugfix: The Thunderdome floor is now explosion-proof.
+  - balance: Default Web Music Player volume is now 20% down from 50%. It was found
+      too effective against new players.
+  - admin: '"Play Internet Sound" is now "Play Admin Sound" and optionally allow to
+      hide the track name.'
+  - admin: '"Play Admin Sound" can now be used with uploaded tracks, which use CDN
+      delivery and the in-chat music player, granting players more control over them.'
+  - admin: Removed "Play Midi Sound".
+  ihatethisengine:
+  - balance: Oppressor no longer can abduct big xenos.
+  zzzmike:
+  - qol: ARES hijack announcement specifies that pods will not crash at 100% fuel
+  - qol: Location name standardization. So, North is now Starboard. This is already
+      how it is for everything except pumps.
+2023-11-25:
+  BadAtThisGame302:
+  - bugfix: fixed corporate supervisor burst corpse landmark
+  Birdtalon:
+  - bugfix: Fixes defender headbutt bug while fortified.
+  - bugfix: Lifeboats fire extinguisher runtime.
+  Doubleumc:
+  - imageadd: 2-wide dropship side doors
+  - maptweak: changed dropship side doors to a lone doublewide door
+  - qol: directions in trackers and messages are more accurate
+  HeresKozmos:
+  - bugfix: fixed a nonsensical window facing a solid rock wall
+  - rscadd: Added pizza and pizza cutter to Req
+  - rscdel: Deleted a random kepler crisps bag
+  - bugfix: deleted random raised edges from inside rock wall
+  Releasethesea:
+  - bugfix: fixes the XM43E1s name (previously named XM42B) and sprite, fixes the
+      M42C and XM43E1s barrel, correctly names several items relating to the XM43E1
+  SabreML:
+  - ui: Tweaked the colour of the 'Maintainer' category in staffwho.
+  ihatethisengine:
+  - rscadd: Locking down dropship's doors closes them before locking.
+  realforest2001:
+  - rscadd: Telephones now list the last attempted caller, above the DND button.
+2023-11-26:
+  Birdtalon:
+  - code_imp: Replaces single letter vars removes redundant abilitiesin warrior code.
+  - bugfix: Warriors can no longer behead caps if they start limb ripping before embryo
+      is inserted.
+  - code_imp: Refactors warrior limb proc to the warrior class.
+  Huffie56:
+  - rscadd: Added a new section to role squad vendors called binoculars except specialist.
+  - qol: moved NVG and medical hud into helmet optics section for SL and just NVG
+      for TL
+  Nanu308:
+  - rscdel: Removed the Pizza Cutter.
+2023-11-27:
+  Birdtalon:
+  - bugfix: "Fixes vendor sprites not updating icon when fully repaired\n/\U0001F191"
+  - bugfix: Fix lesser drone crash on getting gibbed.
+  Doubleumc:
+  - bugfix: CORSAT poddoors no longer have extra sprites overlaid on them
+  - maptweak: CORSAT LZs can be used by shuttles
+  HeresKozmos:
+  - rscadd: Added eight new tunnels to Sorokyne
+  - rscdel: Removed the original five tunnels on Sorokyne
+  SabreML:
+  - rscadd: Made the character preview in the character creation menu show the 'Preferred
+      Armor' setting.
+  - bugfix: Fixed 'Padded' armour being replaced by the user's armour style preference
+      when vended.
+  - qol: Made the squad prep attachments vendors vend items into the user's hands.
+  Zonespace27:
+  - bugfix: The Self Destruct timer in the status panel will now stop once SD has
+      gone off.
+  hislittlecuzingames:
+  - bugfix: Disables launch announcment alarm if it's sounding when queen hijacks

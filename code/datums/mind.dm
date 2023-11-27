@@ -48,7 +48,7 @@
 
 	if(current)
 		current.mind = null //remove ourself from our old body's mind variable
-		nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
+		SSnano.nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
 
 	if(key)
 		if(new_character.key != key)
@@ -68,7 +68,7 @@
 		SSround_recording.recorder.update_key(new_character)
 		if(new_character.client)
 			new_character.client.init_verbs()
-			new_character.client.change_view(world_view_size) //reset view range to default.
+			new_character.client.change_view(GLOB.world_view_size) //reset view range to default.
 			new_character.client.pixel_x = 0
 			new_character.client.pixel_y = 0
 			if(usr && usr.open_uis)

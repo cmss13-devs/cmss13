@@ -144,7 +144,7 @@
 		to_chat(user, SPAN_NOTICE("\The [src] is malfunctioning."))
 		return
 	var/list/L = list(  )
-	for(var/obj/structure/machinery/teleport/hub/R in machines)
+	for(var/obj/structure/machinery/teleport/hub/R in GLOB.machines)
 		var/obj/structure/machinery/computer/teleporter/com = locate(/obj/structure/machinery/computer/teleporter, locate(R.x - 2, R.y, R.z))
 		if (istype(com, /obj/structure/machinery/computer/teleporter) && com.locked && !com.one_time_use)
 			if(R.icon_state == "tele1")

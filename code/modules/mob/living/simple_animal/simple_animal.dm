@@ -99,7 +99,7 @@
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled
-					var/move_dir = pick(cardinal)
+					var/move_dir = pick(GLOB.cardinals)
 					Move(get_step(src, move_dir ))
 					setDir(move_dir)
 					turns_since_move = 0

@@ -563,6 +563,10 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
+"aKg" = (
+/obj/structure/tunnel,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_South)
 "aKl" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1
@@ -964,7 +968,7 @@
 "bsq" = (
 /obj/structure/tunnel,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_north)
 "bsw" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
@@ -8631,11 +8635,9 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
 "lZT" = (
-/obj/structure/tunnel{
-	id = "hole1"
-	},
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/colony_north)
+/obj/structure/tunnel,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/construction)
 "lZZ" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
@@ -9543,11 +9545,9 @@
 /turf/open/desert/desert_shore/shore_corner2,
 /area/kutjevo/exterior/runoff_river)
 "niP" = (
-/obj/structure/tunnel{
-	id = "hole3"
-	},
+/obj/structure/tunnel,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/complex_border/botany_medical_cave)
+/area/kutjevo/exterior/runoff_river)
 "niT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
@@ -11686,6 +11686,10 @@
 	},
 /turf/open/floor/kutjevo/colors/cyan/inner_corner,
 /area/kutjevo/interior/complex/med/triage)
+"pVH" = (
+/obj/structure/tunnel,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/runoff_river)
 "pWe" = (
 /obj/structure/platform_decoration/kutjevo/rock{
 	dir = 1
@@ -12195,11 +12199,9 @@
 	},
 /area/kutjevo/interior/oob)
 "qLV" = (
-/obj/structure/tunnel{
-	id = "hole2"
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/stonyfields)
+/obj/structure/tunnel,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_S_East)
 "qMC" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -15689,11 +15691,9 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "vzy" = (
-/obj/structure/tunnel{
-	id = "hole4"
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/scrubland)
+/obj/structure/tunnel,
+/turf/open/gm/dirtgrassborder2,
+/area/kutjevo/exterior/complex_border/med_park)
 "vzC" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -27671,7 +27671,7 @@ sYd
 bXl
 bXl
 bXl
-vzy
+bXl
 sYd
 bXl
 sYd
@@ -31167,7 +31167,7 @@ bEp
 bEp
 bEp
 bEp
-tKY
+niP
 dic
 dic
 dic
@@ -33232,7 +33232,7 @@ xJg
 xJg
 xJg
 xJg
-qLV
+xJg
 jfQ
 jfQ
 xJg
@@ -34516,7 +34516,7 @@ jhS
 jhS
 jhS
 wff
-niP
+wff
 wff
 wff
 jhS
@@ -35144,7 +35144,7 @@ dxF
 mxB
 mxB
 mxB
-quy
+vzy
 tUm
 wYp
 bGV
@@ -37390,7 +37390,7 @@ nKh
 nKh
 nKh
 wtH
-sbX
+pVH
 mtS
 fPH
 dTM
@@ -42333,7 +42333,7 @@ bkR
 wTt
 bkR
 bEH
-lZT
+bEH
 hUk
 hUk
 hUk
@@ -42680,7 +42680,7 @@ hUk
 hUk
 hUk
 hUk
-xWK
+lZT
 nlA
 xWK
 xWK
@@ -46404,7 +46404,7 @@ wXd
 wXd
 wXd
 wXd
-mMH
+aKg
 bpj
 npL
 bpj
@@ -48327,7 +48327,7 @@ bkR
 bkR
 bkR
 wTt
-wTt
+bsq
 hUk
 hUk
 hUk
@@ -49701,7 +49701,7 @@ kZz
 feg
 feg
 feg
-bsq
+uiK
 mnT
 mnT
 mnT
@@ -53907,7 +53907,7 @@ ptY
 ebB
 ebB
 bOc
-ptY
+qLV
 dxF
 dxF
 dxF

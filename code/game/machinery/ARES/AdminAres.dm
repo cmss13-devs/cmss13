@@ -63,7 +63,7 @@
 	data["access_text"] = "[interface.sudo_holder ? "(SUDO)," : ""] access level [interface.authentication], [interface.ares_auth_to_text(interface.authentication)]."
 	data["access_level"] = interface.authentication
 
-	data["alert_level"] = security_level
+	data["alert_level"] = GLOB.security_level
 	data["evac_status"] = SShijack.evac_status
 	data["worldtime"] = world.time
 

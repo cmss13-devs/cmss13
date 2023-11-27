@@ -154,7 +154,7 @@
 		return
 
 	M.key = key
-	if(M.client) M.client.change_view(world_view_size)
+	if(M.client) M.client.change_view(GLOB.world_view_size)
 // M.Login() //wat
 	return
 

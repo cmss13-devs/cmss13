@@ -202,7 +202,7 @@
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Colonial Marshal!"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && GLOB.RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Investigative Synthetic!"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/synth, TRUE, TRUE)

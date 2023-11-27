@@ -19,10 +19,10 @@
 	human.randomize_appearance(new_human)
 	var/random_name
 	if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male_dutch)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_male_dutch)] [pick(GLOB.last_names)]"
 		new_human.f_style = "5 O'clock Shadow"
 	else
-		random_name = "[pick(first_names_female_dutch)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_female_dutch)] [pick(GLOB.last_names)]"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(25,35)

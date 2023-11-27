@@ -19,8 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-var/datum/controller/subsystem/database_query_manager/SSdatabase
-
+GLOBAL_REAL(SSdatabase, /datum/controller/subsystem/database_query_manager)
 /datum/controller/subsystem/database_query_manager
 	name   = "Database QM"
 	wait   = 1

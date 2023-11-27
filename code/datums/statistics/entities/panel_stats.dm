@@ -3,9 +3,9 @@
 //*******************************************************
 
 
-/datum/entity/player_entity/proc/show_statistics(mob/user, datum/entity/statistic/round/viewing_round = round_statistics, update_data = FALSE)
+/datum/entity/player_entity/proc/show_statistics(mob/user, datum/entity/statistic/round/viewing_round = GLOB.round_statistics, update_data = FALSE)
 	if(update_data)
-		update_panel_data(round_statistics)
+		update_panel_data(GLOB.round_statistics)
 	ui_interact(user)
 
 /datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", datum/nanoui/ui, force_open = 1)
@@ -13,7 +13,7 @@
 	data["subMenu"] = subMenu
 	data["dataMenu"] = dataMenu
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnano.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if(!ui)
 		ui = new(user, src, ui_key, "cm_stat_panel.tmpl", "Statistics", 450, 700, null, -1)
@@ -31,7 +31,7 @@
 	if(href_list["dataMenu"])
 		dataMenu = href_list["dataMenu"]
 
-	nanomanager.update_uis(src)
+	SSnano.nanomanager.update_uis(src)
 
 /datum/entity/player_entity/proc/check_eye()
 	return
@@ -68,7 +68,7 @@
 //*******************PLAYER DATA*************************
 //*******************************************************
 
-/datum/entity/player_entity/proc/update_panel_data(datum/entity/statistic/round/viewing_round = round_statistics)
+/datum/entity/player_entity/proc/update_panel_data(datum/entity/statistic/round/viewing_round = GLOB.round_statistics)
 	data["current_time"] = worldtime2text()
 
 	if(viewing_round)

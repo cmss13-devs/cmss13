@@ -535,81 +535,9 @@
 	if(client)
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
 
-// Called when pulling something and attacking yourself with the pull
-/mob/living/carbon/xenomorph/proc/pull_power(mob/M)
-	if(iswarrior(src) && !ripping_limb && M.stat != DEAD)
-		if(M.status_flags & XENO_HOST)
-			to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
-			return
-		ripping_limb = TRUE
-		if(rip_limb(M))
-			stop_pulling()
-		ripping_limb = FALSE
-
-
-// Warrior Rip Limb - called by pull_power()
-/mob/living/carbon/xenomorph/proc/rip_limb(mob/M)
-	if(!istype(M, /mob/living/carbon/human))
-		return FALSE
-
-	if(action_busy) //can't stack the attempts
-		return FALSE
-
-	var/mob/living/carbon/human/H = M
-	var/obj/limb/L = H.get_limb(check_zone(zone_selected))
-
-	if(can_not_harm(H))
-		to_chat(src, SPAN_XENOWARNING("You can't harm this host!"))
-		return
-
-	if(!L || L.body_part == BODY_FLAG_CHEST || L.body_part == BODY_FLAG_GROIN || (L.status & LIMB_DESTROYED)) //Only limbs and head.
-		to_chat(src, SPAN_XENOWARNING("You can't rip off that limb."))
-		return FALSE
-	var/limb_time = rand(40,60)
-
-	if(L.body_part == BODY_FLAG_HEAD)
-		limb_time = rand(90,110)
-
-	visible_message(SPAN_XENOWARNING("[src] begins pulling on [M]'s [L.display_name] with incredible strength!"), \
-	SPAN_XENOWARNING("You begin to pull on [M]'s [L.display_name] with incredible strength!"))
-
-	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || M.stat == DEAD)
-		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
-		return FALSE
-
-	if(L.status & LIMB_DESTROYED)
-		return FALSE
-
-	if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-		L.take_damage(rand(30,40), 0, 0) // just do more damage
-		visible_message(SPAN_XENOWARNING("You hear [M]'s [L.display_name] being pulled beyond its load limits!"), \
-		SPAN_XENOWARNING("[M]'s [L.display_name] begins to tear apart!"))
-	else
-		visible_message(SPAN_XENOWARNING("You hear the bones in [M]'s [L.display_name] snap with a sickening crunch!"), \
-		SPAN_XENOWARNING("[M]'s [L.display_name] bones snap with a satisfying crunch!"))
-		L.take_damage(rand(15,25), 0, 0)
-		L.fracture(100)
-	M.last_damage_data = create_cause_data(initial(caste_type), src)
-	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress</font>")
-	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 1/2 progress</font>")
-	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress")
-
-	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || M.stat == DEAD || iszombie(M))
-		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
-		return FALSE
-
-	if(L.status & LIMB_DESTROYED)
-		return FALSE
-
-	visible_message(SPAN_XENOWARNING("[src] rips [M]'s [L.display_name] away from \his body!"), \
-	SPAN_XENOWARNING("[M]'s [L.display_name] rips away from \his body!"))
-	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 2/2 progress</font>")
-	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
-	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 2/2 progress")
-
-	L.droplimb(0, 0, initial(name))
-
-	return TRUE
+/// Called when pulling something and attacking yourself wth the pull (Z hotkey) override for caste specific behaviour
+/mob/living/carbon/xenomorph/proc/pull_power(mob/mob)
+	return
 
 // Vent Crawl
 /mob/living/carbon/xenomorph/proc/vent_crawl()

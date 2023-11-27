@@ -928,7 +928,7 @@ Additional game mode variables.
 		CVS.populate_product_list_and_boxes(gear_scale)
 
 	//Scale the amount of cargo points through a direct multiplier
-	supply_controller.points += round(GLOB.supply_controller.points_scale * gear_scale)
+	GLOB.supply_controller.points += round(GLOB.supply_controller.points_scale * gear_scale)
 
 ///Returns a multiplier to the amount of gear that is to be distributed roundstart, stored in [/datum/game_mode/var/gear_scale]
 /datum/game_mode/proc/init_gear_scale()
@@ -937,7 +937,7 @@ Additional game mode variables.
 	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
 		if(human.faction == FACTION_USCM)
 			var/datum/job/job = GET_MAPPED_ROLE(human.job)
-			marine_pop_size += RoleAuthority.calculate_role_weight(job)
+			marine_pop_size += GLOB.RoleAuthority.calculate_role_weight(job)
 
 	//This gives a decimal value representing a scaling multiplier. Cannot go below 1
 	gear_scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
@@ -950,7 +950,7 @@ Additional game mode variables.
 	if(new_gear_scale > gear_scale)
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(new_gear_scale)
-		supply_controller.points += round((new_gear_scale - gear_scale) * supply_controller.points_scale)
+		GLOB.supply_controller.points += round((new_gear_scale - gear_scale) * GLOB.supply_controller.points_scale)
 	gear_scale = new_gear_scale
 
 // for the toolbox

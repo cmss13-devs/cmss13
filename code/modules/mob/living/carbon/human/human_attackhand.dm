@@ -205,7 +205,6 @@
 	if (w_uniform)
 		w_uniform.add_fingerprint(M)
 
-
 	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)
 		if(client)
 			sleeping = max(0,src.sleeping-5)

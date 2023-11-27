@@ -184,8 +184,10 @@
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL // We pre-set this now for the crawling case. If crawling do_after fails, next_movement would be set after the attempt end instead of now.
 
-		//We are now going to move
-		if(!mob.crawling && living_mob && living_mob.body_position == LYING_DOWN)
+		//Try to crawl first
+		if(living_mob && living_mob.body_position == LYING_DOWN)
+			if(mob.crawling)
+				return // Already doing it.
 			//check for them not being a limbless blob (only humans have limbs)
 			if(ishuman(mob))
 				var/mob/living/carbon/human/human = mob
@@ -201,9 +203,10 @@
 				mob.crawling = FALSE
 				return
 			if(!mob.crawling)
-				return // Crawling interrupted by a "real" move. Do nothing. Normally do_after INTERRUPT_CHANGED_LYING would do it, but it's not instant.
+				return // Crawling interrupted by a "real" move. Do nothing. In theory INTERRUPT_MOVED|INTERRUPT_CHANGED_LYING catches this in do_after.
 		mob.crawling = FALSE
 		mob.move_intentionally = TRUE
+		moving = TRUE
 		if(mob.confused)
 			mob.Move(get_step(mob, pick(GLOB.cardinals)))
 		else

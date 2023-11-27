@@ -17,7 +17,7 @@
 		liaison = 1
 
 	if(liaison)
-		msg = "<b><big>[SPAN_STAFF_IC("<font color=purple>LIAISON:</font>")][key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]: [msg]</b></big>"
+		msg = "<b><big>[SPAN_STAFF_IC("<font color=purple>LIAISON:</font>")][key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]: [msg]</big></b>"
 	else
 		msg = "<b><big>[SPAN_STAFF_IC("<font color=purple>PRAY: </font>")][key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]: [msg]</big></b>"
 	log_admin(msg)

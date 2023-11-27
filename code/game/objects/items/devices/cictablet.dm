@@ -63,7 +63,7 @@
 /obj/item/device/cotablet/ui_data(mob/user)
 	var/list/data = list()
 
-	data["alert_level"] = security_level
+	data["alert_level"] = GLOB.security_level
 	data["evac_status"] = SShijack.evac_status
 	data["endtime"] = announcement_cooldown
 	data["distresstime"] = distress_cooldown
@@ -134,7 +134,7 @@
 			if(announcement_faction != FACTION_MARINE)
 				return
 
-			if(security_level < SEC_LEVEL_RED)
+			if(GLOB.security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
 
@@ -155,7 +155,7 @@
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 
-			if(security_level == SEC_LEVEL_DELTA)
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE
 

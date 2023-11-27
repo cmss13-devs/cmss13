@@ -1,0 +1,5 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - bugfix: "CORSAT poddoors no longer have extra sprites overlaid on them"
+  - maptweak: "CORSAT LZs can be used by shuttles"

@@ -95,7 +95,7 @@
 					D.safe = 1
 
 /obj/structure/machinery/door_control/proc/handle_pod()
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == id)
 			if(M.density)
 				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
@@ -187,7 +187,7 @@
 	add_fingerprint(user)
 
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == id)
 			effective = 1
 			spawn()

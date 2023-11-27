@@ -41,10 +41,10 @@ would spawn and follow the beaker, even if it is carried or thrown.
 // will always spawn at the items location, even if it's moved.
 
 /* Example:
-var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread() -- creates new system
-steam.set_up(5, 0, mob.loc) -- sets up variables
-OPTIONAL: steam.attach(mob)
-steam.start() -- spawns the effect
+	var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread() -- creates new system
+	steam.set_up(5, 0, mob.loc) -- sets up variables
+	OPTIONAL: steam.attach(mob)
+	steam.start() -- spawns the effect
 */
 /////////////////////////////////////////////
 /obj/effect/particle_effect/steam
@@ -71,9 +71,9 @@ steam.start() -- spawns the effect
 			var/obj/effect/particle_effect/steam/steam = new /obj/effect/particle_effect/steam(location)
 			var/direction
 			if(cardinals)
-				direction = pick(cardinal)
+				direction = pick(GLOB.cardinals)
 			else
-				direction = pick(alldirs)
+				direction = pick(GLOB.alldirs)
 			for(i=0, i<pick(1,2,3), i++)
 				sleep(5)
 				step(steam,direction)
@@ -129,9 +129,9 @@ steam.start() -- spawns the effect
 			total_sparks++
 			var/direction
 			if(cardinals)
-				direction = pick(cardinal)
+				direction = pick(GLOB.cardinals)
 			else
-				direction = pick(alldirs)
+				direction = pick(GLOB.alldirs)
 			for(i=0, i<pick(1,2,3), i++)
 				sleep(5)
 				step(sparks,direction)

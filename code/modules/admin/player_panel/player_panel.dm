@@ -389,7 +389,7 @@
 		dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 		if(check_rights(R_DEBUG, 0))
-			dat += "<A HREF='?_src_=vars;Vars=\ref[shuttle_controller]'>VV Shuttle Controller</A><br><br>"
+			dat += "<A HREF='?_src_=vars;Vars=\ref[SSoldshuttle.shuttle_controller]'>VV Shuttle Controller</A><br><br>"
 
 		if(check_rights(R_MOD, 0))
 			dat += "<b>Evacuation Goals:</b> "

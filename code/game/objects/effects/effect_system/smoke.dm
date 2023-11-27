@@ -80,7 +80,7 @@
 	if(QDELETED(src)) return
 	var/turf/U = get_turf(src)
 	if(!U) return
-	for(var/i in cardinal)
+	for(var/i in GLOB.cardinals)
 		if(direction && i != direction)
 			continue
 		var/turf/T = get_step(U, i)
@@ -93,7 +93,7 @@
 			else
 				continue
 		var/obj/effect/particle_effect/smoke/S = new type(T, amount, cause_data)
-		S.setDir(pick(cardinal))
+		S.setDir(pick(GLOB.cardinals))
 		S.time_to_live = time_to_live
 		if(S.amount>0)
 			S.spread_smoke()
@@ -548,7 +548,7 @@
 	if(QDELETED(src)) return
 	var/turf/U = get_turf(src)
 	if(!U) return
-	for(var/i in cardinal)
+	for(var/i in GLOB.cardinals)
 		if(direction && i != direction)
 			continue
 		var/turf/T = get_step(U, i)
@@ -569,7 +569,7 @@
 			if(istype(A, /obj/flamer_fire))
 				qdel(A)
 
-		S.setDir(pick(cardinal))
+		S.setDir(pick(GLOB.cardinals))
 		S.time_to_live = time_to_live
 		if(S.amount>0)
 			S.spread_smoke()

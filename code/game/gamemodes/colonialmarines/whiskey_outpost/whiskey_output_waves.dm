@@ -52,12 +52,12 @@
 	if(!xeno_candidate)
 		return FALSE
 
-	if(RoleAuthority.castes_by_name[userInput])
+	if(GLOB.RoleAuthority.castes_by_name[userInput])
 		if(!(userInput in xeno_pool))
 			to_chat(xeno_candidate, SPAN_WARNING("The caste type you chose was occupied by someone else."))
 			return FALSE
 		var/spawn_loc = pick(xeno_spawns)
-		var/xeno_type = RoleAuthority.get_caste_by_text(userInput)
+		var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(userInput)
 		var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(spawn_loc)
 		if(new_xeno.hive.construction_allowed == NORMAL_XENO)
 			new_xeno.hive.construction_allowed = XENO_QUEEN

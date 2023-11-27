@@ -40,6 +40,8 @@
 		instance.del_on_map_removal = FALSE
 		if(instance.blend_mode_override)
 			instance.blend_mode = instance.blend_mode_override
+		if(istype(instance, /atom/movable/screen/plane_master/lighting))
+			instance.add_filter("awooga", 1, color_matrix_filter(color_matrix_from_string("#90ee90")))
 		instance.screen_loc = "[map_name]:CENTER"
 		cam_plane_masters += instance
 
@@ -226,7 +228,7 @@
 // Returns the list of cameras accessible from this computer
 /obj/structure/machinery/computer/cameras/proc/get_available_cameras()
 	var/list/D = list()
-	for(var/obj/structure/machinery/camera/C in cameranet.cameras)
+	for(var/obj/structure/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue

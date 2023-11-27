@@ -215,7 +215,7 @@
 
 /obj/item/device/binoculars/range/designator/Initialize()
 	. = ..()
-	tracking_id = ++cas_tracking_id_increment
+	tracking_id = ++GLOB.cas_tracking_id_increment
 
 /obj/item/device/binoculars/range/designator/Destroy()
 	QDEL_NULL(laser)

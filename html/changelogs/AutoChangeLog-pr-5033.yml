@@ -1,0 +1,5 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - rscadd: "Made the character preview in the character creation menu show the 'Preferred Armor' setting."
+  - bugfix: "Fixed 'Padded' armour being replaced by the user's armour style preference when vended."

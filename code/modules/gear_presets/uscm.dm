@@ -860,7 +860,7 @@
 	uses_special_name = TRUE
 /datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
-	new_human.change_real_name(new_human, "[pick(nato_phonetic_alphabet)]")
+	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
 	new_human.age = rand(20,30)
 /datum/equipment_preset/uscm/marsoc/covert/load_rank(mob/living/carbon/human/new_human)
 	return "O"
@@ -888,7 +888,7 @@
 	uses_special_name = TRUE
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
-	new_human.change_real_name(new_human, "[pick(nato_phonetic_alphabet)]")
+	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
 	new_human.age = rand(20,30)
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_rank(mob/living/carbon/human/new_human)
 	return "O"

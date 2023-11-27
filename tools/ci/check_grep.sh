@@ -147,12 +147,12 @@ if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' $code_files; then
 	st=1
 fi;
 
-#part "unmanaged global vars"
-#if grep -P '^/*var/' $code_files; then
-#	echo
-#	echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
-#	st=1
-#fi;
+part "unmanaged global vars"
+if grep -P '^/*var/' $code_files; then
+	echo
+	echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
+	st=1
+fi;
 
 
 part "map json naming"

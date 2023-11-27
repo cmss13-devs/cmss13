@@ -371,7 +371,7 @@
 		src.life_damage_taken_total = old_xeno.life_damage_taken_total
 		src.evolution_stored = old_xeno.evolution_stored
 
-		for(var/datum/language/language in old_xeno.languages)
+		for(var/datum/language/language as anything in old_xeno.languages)
 			add_language(language.name)//Make sure to keep languages (mostly for event Queens that know English)
 
 		//Carry over intents & targeted limb to the new Xeno
@@ -381,9 +381,8 @@
 		//We are hiding, let's keep hiding if we can!
 		if(old_xeno.layer == XENO_HIDING_LAYER)
 			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
-				if(istype(hide))
-					layer = XENO_HIDING_LAYER
-					hide.button.icon_state = "template_active"
+				layer = XENO_HIDING_LAYER
+				hide.button.icon_state = "template_active"
 
 		//If we're holding things drop them
 		for(var/obj/item/item in old_xeno.contents) //Drop stuff

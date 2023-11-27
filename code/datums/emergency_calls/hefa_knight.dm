@@ -18,4 +18,6 @@
 	M.transfer_to(H, TRUE)
 
 	arm_equipment(H, /datum/equipment_preset/fun/hefa/melee, FALSE, TRUE)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
+	sleep(1 SECONDS)
+	to_chat(H, role_header("Your objectives are:"))
+	to_chat(H, role_body("[objectives]"))

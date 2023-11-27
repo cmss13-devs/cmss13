@@ -34,4 +34,6 @@
 		arm_equipment(H, /datum/equipment_preset/other/xeno_cultist, TRUE, TRUE)
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
+	sleep(1 SECONDS)
+	to_chat(H, role_header("Your objectives are:"))
+	to_chat(H, role_body("[objectives]"))

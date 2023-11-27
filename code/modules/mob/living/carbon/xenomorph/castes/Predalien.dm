@@ -82,8 +82,9 @@
 		return FALSE
 
 	to_chat(src, role_header("You are a predator-alien hybrid!"))
-	to_chat(src, role_body("<b>You are a very powerful xenomorph creature that was born of a Yautja warrior body.</b></p><p>You are stronger, faster, and smarter than a regular xenomorph, but you must still listen to the queen. You have a degree of freedom to where you can hunt and claim the heads of the hive's enemies, so <big>check your verbs</big>."))
-	to_chat(src, role_header("<b>Your health meter will not regenerate normally, so kill and die for the hive!</b>"))
+	to_chat(src, role_body("<b>You are a very powerful xenomorph creature that was born of a Yautja warrior body.</b>"))
+	to_chat(src, role_body("You are stronger, faster, and smarter than a regular xenomorph, but you must still listen to the queen. You have a degree of freedom to where you can hunt and claim the heads of the hive's enemies, so <big>check your verbs</big>."))
+	to_chat(src, role_header("Your health meter will not regenerate normally, so kill and die for the hive!"))
 	emote("roar")
 
 /datum/behavior_delegate/predalien_base

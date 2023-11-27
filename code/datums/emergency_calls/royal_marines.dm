@@ -46,8 +46,9 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
-
+	sleep(1 SECONDS)
+	to_chat(mob, role_header("Your objectives are:"))
+	to_chat(mob, role_body("[objectives]"))
 
 /datum/emergency_call/royal_marines/print_backstory(mob/living/carbon/human/spawning_mob)
 	to_chat(spawning_mob, role_body("You were born in the Three World Empire to a [pick_weight(list("average" = 75, "poor" = 15, "well-established" = 10))] family."))

@@ -27,7 +27,9 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
+	sleep(1 SECONDS)
+	to_chat(mob, role_header("Your objectives are:"))
+	to_chat(mob, role_body("[objectives]"))
 
 /datum/emergency_call/goon/print_backstory(mob/living/carbon/human/M)
 	to_chat(M, role_body("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))
@@ -78,7 +80,9 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
+	sleep(1 SECONDS)
+	to_chat(mob, role_header("Your objectives are:"))
+	to_chat(mob, role_body("[objectives]"))
 
 /datum/emergency_call/goon/chem_retrieval/print_backstory(mob/living/carbon/human/backstory_human)
 	if(backstory_human.job == JOB_WY_GOON_RESEARCHER)

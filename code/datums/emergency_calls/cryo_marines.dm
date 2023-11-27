@@ -83,7 +83,8 @@
 	sleep(10)
 	if(!mind)
 		human.free_for_ghosts()
-	to_chat(human, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]"))
+	to_chat(human, role_header("Your objectives are:"))
+	to_chat(human, role_body("[objectives]"))
 
 /datum/emergency_call/cryo_squad/platoon
 	name = "Marine Cryo Reinforcements (Platoon)"

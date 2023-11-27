@@ -31,8 +31,9 @@
 		to_chat(H, role_body("Follow any orders directly from High Command or your Team Leader!"))
 		to_chat(H, role_body("You only answer to your superior, Marine Law and High Command!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
-
+	sleep(1 SECONDS)
+	to_chat(H, role_header("Your objectives are:"))
+	to_chat(H, role_body("[objectives]"))
 
 /datum/emergency_call/provost_enforcer/spawn_items()
 	var/turf/drop_spawn

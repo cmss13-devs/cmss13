@@ -49,7 +49,9 @@
 		arm_equipment(H, /datum/equipment_preset/upp/commando, TRUE, TRUE)
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
+	sleep(1 SECONDS)
+	to_chat(H, role_header("Your objectives are:"))
+	to_chat(H, role_body("[objectives]"))
 
 /datum/emergency_call/upp_commando/low_threat
 	name = "UPP Commandos"
@@ -76,4 +78,6 @@
 		arm_equipment(person, /datum/equipment_preset/upp/commando/low_threat, TRUE, TRUE)
 	print_backstory(person)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), person, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
+	sleep(1 SECONDS)
+	to_chat(person, role_header("Your objectives are:"))
+	to_chat(person, role_body("[objectives]"))

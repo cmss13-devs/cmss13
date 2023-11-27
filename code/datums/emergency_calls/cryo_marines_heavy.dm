@@ -67,9 +67,9 @@
 		to_chat(H, role_header("You are a Rifleman in the USCM"))
 		to_chat(H, role_body("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 
-	sleep(10)
-	to_chat(H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]"))
-
+	sleep(1 SECONDS)
+	to_chat(H, role_header("Your objectives are:"))
+	to_chat(H, role_body("[objectives]"))
 
 /datum/emergency_call/cryo_squad_equipped/platoon
 	name = "Marine Cryo Reinforcements (Full Equipment) (Platoon)"

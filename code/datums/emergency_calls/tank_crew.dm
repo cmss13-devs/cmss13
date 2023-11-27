@@ -27,8 +27,9 @@
 	to_chat(H, role_body("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 	to_chat(H, role_header("<big>If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced.</big>"))
 
-	sleep(10)
-	to_chat(H, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]"))
+	sleep(1 SECONDS)
+	to_chat(H, role_header("Your objectives are:"))
+	to_chat(H, role_body("[objectives]"))
 
 	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
 

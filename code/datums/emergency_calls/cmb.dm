@@ -53,8 +53,9 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
-
+	sleep(1 SECONDS)
+	to_chat(mob, role_header("Your objectives are:"))
+	to_chat(mob, role_body("[objectives]"))
 
 /datum/emergency_call/cmb/print_backstory(mob/living/carbon/human/M)
 	if(M == leader)
@@ -159,8 +160,9 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, role_body("<b><center>Your objectives are:</center></b></p><p>[objectives]")), 1 SECONDS)
-
+	sleep(1 SECONDS)
+	to_chat(mob, role_header("Your objectives are:"))
+	to_chat(mob, role_body("[objectives]"))
 
 /datum/emergency_call/cmb/anchorpoint/print_backstory(mob/living/carbon/human/M)
 	if(M == leader)

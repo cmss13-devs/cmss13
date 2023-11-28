@@ -125,6 +125,8 @@
 
 /// for xenos to hide behind bushes and tall grass
 #define ABOVE_XENO_LAYER 4.12
+/// For eggs so they can't hide below grass
+#define EGG_LAYER 4.121
 /// For facehuggers
 #define FACEHUGGER_LAYER 4.13
 /// For WEATHER

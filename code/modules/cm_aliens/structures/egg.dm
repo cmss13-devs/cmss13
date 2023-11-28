@@ -8,7 +8,7 @@
 	icon_state = "Egg Growing"
 	density = FALSE
 	anchored = TRUE
-	layer = LYING_BETWEEN_MOB_LAYER //to stop hiding eggs under corpses
+	layer = EGG_LAYER
 	health = 80
 	plane = GAME_PLANE
 	var/list/egg_triggers = list()

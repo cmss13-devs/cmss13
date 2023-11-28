@@ -270,6 +270,9 @@
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
 
+	dropship.alarm_sound_loop.stop()
+	dropship.playing_launch_announcement_alarm = FALSE
+
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 

@@ -24,7 +24,7 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.is_mob_incapacitated()) return
 
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")

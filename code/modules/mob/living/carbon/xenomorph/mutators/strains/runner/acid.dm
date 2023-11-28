@@ -87,7 +87,7 @@
 		if(embryo?.stage >= 4) //very late stage hugged in case the runner unnests them
 			return
 
-		if(target_mob.lying)
+		if(target_mob.body_position == LYING_DOWN)
 			modify_acid(acid_slash_regen_lying)
 			return
 		modify_acid(acid_slash_regen_standing)

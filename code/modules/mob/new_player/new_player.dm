@@ -6,7 +6,6 @@
 	invisibility = 101
 
 	density = FALSE
-	canmove = FALSE
 	anchored = TRUE
 	universal_speak = TRUE
 	stat = DEAD
@@ -15,6 +14,7 @@
 	. = ..()
 	GLOB.new_player_list += src
 	GLOB.dead_mob_list -= src
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 
 /mob/new_player/Destroy()
 	if(ready)

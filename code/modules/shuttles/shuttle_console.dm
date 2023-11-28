@@ -82,8 +82,6 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
 				SPAN_NOTICE("You try to take back the control over the shuttle. It will take around 3 minutes."))
 				if(do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-					if(user.lying)
-						return 0
 					shuttle.last_locked = world.time
 					shuttle.queen_locked = 0
 					shuttle.last_door_override = world.time

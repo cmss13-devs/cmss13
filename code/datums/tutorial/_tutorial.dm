@@ -143,6 +143,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/init_mob()
 	tutorial_mob.AddComponent(/datum/component/tutorial_status)
 	give_action(tutorial_mob, /datum/action/tutorial_end, null, null, src)
+	ADD_TRAIT(tutorial_mob, TRAIT_IN_TUTORIAL, TRAIT_SOURCE_TUTORIAL)
 
 /// Ends the tutorial after a certain amount of time.
 /datum/tutorial/proc/tutorial_end_in(time = 5 SECONDS, completed = TRUE)

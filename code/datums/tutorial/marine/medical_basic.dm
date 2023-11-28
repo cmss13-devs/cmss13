@@ -123,6 +123,10 @@
 /datum/tutorial/marine/medical_basic/proc/on_chest_bleed_stop(datum/source, external, internal)
 	SIGNAL_HANDLER
 
+	// If you exit on this step, your limbs get deleted, which stops the bleeding, which progresses the tutorial despite it ending
+	if(!tutorial_mob || QDELETED(src))
+		return
+
 	var/mob/living/carbon/human/human_mob = tutorial_mob
 	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in human_mob.limbs
 	UnregisterSignal(mob_chest, COMSIG_LIMB_STOP_BLEEDING)

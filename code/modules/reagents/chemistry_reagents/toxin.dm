@@ -113,6 +113,7 @@
 	if(!. || deleted)
 		return
 	M.status_flags |= FAKEDEATH
+	ADD_TRAIT(M, TRAIT_IMMOBILIZED, FAKEDEATH_TRAIT)
 	M.apply_damage(0.5*REM, OXY)
 	M.apply_effect(2, WEAKEN)
 	M.silent = max(M.silent, 10)
@@ -125,6 +126,7 @@
 	var/mob/living/holder_mob = .
 
 	holder_mob.status_flags &= ~FAKEDEATH
+	REMOVE_TRAIT(holder_mob, TRAIT_IMMOBILIZED, FAKEDEATH_TRAIT)
 
 /datum/reagent/toxin/mindbreaker
 	name = "Mindbreaker Toxin"
@@ -279,4 +281,4 @@
 	color = "#669900"
 	reagent_state = LIQUID
 	chemclass = CHEM_CLASS_NONE
-	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1)
+	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1, PROPERTY_CROSSMETABOLIZING = 3)

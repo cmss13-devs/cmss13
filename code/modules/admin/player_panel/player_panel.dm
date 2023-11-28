@@ -389,35 +389,21 @@
 		dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 		if(check_rights(R_DEBUG, 0))
-			dat += "<br><A HREF='?_src_=vars;Vars=\ref[EvacuationAuthority]'>VV Evacuation Controller</A><br>"
-			dat += "<A HREF='?_src_=vars;Vars=\ref[shuttle_controller]'>VV Shuttle Controller</A><br><br>"
+			dat += "<A HREF='?_src_=vars;Vars=\ref[SSoldshuttle.shuttle_controller]'>VV Shuttle Controller</A><br><br>"
 
 		if(check_rights(R_MOD, 0))
-			dat += "<b>Evacuation:</b> "
-			switch(EvacuationAuthority.evac_status)
-				if(EVACUATION_STATUS_STANDING_BY) dat += "STANDING BY"
-				if(EVACUATION_STATUS_INITIATING) dat += "IN PROGRESS: [EvacuationAuthority.get_status_panel_eta()]"
-				if(EVACUATION_STATUS_COMPLETE) dat += "COMPLETE"
+			dat += "<b>Evacuation Goals:</b> "
+			switch(SShijack.evac_status)
+				if(EVACUATION_STATUS_NOT_INITIATED)
+					dat += "STANDING BY"
+				if(EVACUATION_STATUS_INITIATED)
+					dat += "IN PROGRESS"
 			dat += "<br>"
 
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
 			if(check_rights(R_ADMIN, 0)) dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
-
-		if(check_rights(R_ADMIN, 0))
-			dat += "<b>Self-Destruct:</b> "
-			switch(EvacuationAuthority.dest_status)
-				if(NUKE_EXPLOSION_INACTIVE) dat += "INACTIVE"
-				if(NUKE_EXPLOSION_ACTIVE) dat += "ACTIVE"
-				if(NUKE_EXPLOSION_IN_PROGRESS) dat += "IN PROGRESS"
-				if(NUKE_EXPLOSION_FINISHED, NUKE_EXPLOSION_GROUND_FINISHED) dat += "FINISHED"
-			dat += "<br>"
-
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_dest'>Unlock Self-Destruct control panel for humans</a><br>"
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_dest'>Lock Self-Destruct control panel for humans</A><br>"
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=use_dest'>Destruct the [MAIN_SHIP_NAME] NOW</A><br>"
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_dest'>Toggle Self-Destruct Permission (does not affect evac in progress)</A><br>"
 
 		dat += "<br><A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"
@@ -488,8 +474,13 @@
 	. = list()
 	.["mob_name"] = targetMob.name
 
-	.["mob_sleeping"] = targetMob.sleeping
-	.["mob_frozen"] = targetMob.frozen
+	if(istype(targetMob, /mob/living))
+		var/mob/living/livingTarget = targetMob
+		.["mob_sleeping"] = livingTarget.sleeping
+	else
+		.["mob_sleeping"] = 0
+
+	.["mob_frozen"] = HAS_TRAIT_FROM(targetMob, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ADMIN)
 
 	.["mob_speed"] = targetMob.speed
 	.["mob_status_flags"] = targetMob.status_flags

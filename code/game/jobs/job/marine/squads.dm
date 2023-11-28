@@ -210,6 +210,17 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/cbrn
+	name = SQUAD_CBRN
+	equipment_color = "#3B2A7B" //Chemical Corps Purple
+	chat_color = "#553EB2"
+	radio_freq = CBRN_FREQ
+	minimap_color = "#3B2A7B"
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
 //############################### UPP Squads
 /datum/squad/upp
 	name = "Root"
@@ -638,10 +649,10 @@
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
 /proc/get_squad_by_name(text)
-	if(!RoleAuthority || RoleAuthority.squads.len == 0)
+	if(!GLOB.RoleAuthority || GLOB.RoleAuthority.squads.len == 0)
 		return null
 	var/datum/squad/S
-	for(S in RoleAuthority.squads)
+	for(S in GLOB.RoleAuthority.squads)
 		if(S.name == text)
 			return S
 	return null
@@ -749,7 +760,7 @@
 //moved the main proc for ft management from human.dm here to make it support both examine and squad info way to edit fts
 /datum/squad/proc/manage_fireteams(mob/living/carbon/human/target)
 	var/obj/item/card/id/ID = target.get_idcard()
-	if(!ID || !(ID.rank in ROLES_MARINES))
+	if(!ID || !(ID.rank in GLOB.ROLES_MARINES))
 		return
 	if(ID.rank == JOB_SQUAD_LEADER || squad_leader == target) //if SL/aSL are chosen
 		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))

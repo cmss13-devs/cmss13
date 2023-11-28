@@ -96,9 +96,9 @@
 /obj/item/circuitboard/computer/atmos_alert
 	name = "Circuit board (Atmospheric Alert)"
 	build_path = /obj/structure/machinery/computer/atmos_alert
-/obj/item/circuitboard/computer/pod
-	name = "Circuit board (Massdriver control)"
-	build_path = /obj/structure/machinery/computer/pod
+/obj/item/circuitboard/computer/pod/old
+	name = "Circuit board (DoorMex)"
+	build_path = /obj/structure/machinery/computer/pod/old
 /obj/item/circuitboard/computer/robotics
 	name = "Circuit board (Robotics Control)"
 	build_path = /obj/structure/machinery/computer/robotics
@@ -117,15 +117,6 @@
 /obj/item/circuitboard/computer/powermonitor
 	name = "Circuit board (Power Monitor)"
 	build_path = /obj/structure/machinery/power/monitor
-/obj/item/circuitboard/computer/olddoor
-	name = "Circuit board (DoorMex)"
-	build_path = /obj/structure/machinery/computer/pod/old
-/obj/item/circuitboard/computer/syndicatedoor
-	name = "Circuit board (ProComp Executive)"
-	build_path = /obj/structure/machinery/computer/pod/old/syndicate
-/obj/item/circuitboard/computer/swfdoor
-	name = "Circuit board (Magix)"
-	build_path = /obj/structure/machinery/computer/pod/old/swf
 /obj/item/circuitboard/computer/prisoner
 	name = "Circuit board (Prisoner Management)"
 	build_path = /obj/structure/machinery/computer/prisoner
@@ -287,7 +278,7 @@
 			to_chat(usr, "No input found please hang up and try your call again.")
 			return
 		var/list/tempnetwork = splittext(input, ",")
-		tempnetwork = difflist(tempnetwork,RESTRICTED_CAMERA_NETWORKS,1)
+		tempnetwork = difflist(tempnetwork,GLOB.RESTRICTED_CAMERA_NETWORKS,1)
 		if(tempnetwork.len < 1)
 			to_chat(usr, "No network found please hang up and try your call again.")
 			return

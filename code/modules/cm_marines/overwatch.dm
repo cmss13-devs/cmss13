@@ -39,8 +39,11 @@
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
-	tacmap = new(src, minimap_type)
 
+	if (faction == FACTION_MARINE)
+		tacmap = new /datum/tacmap/drawing(src, minimap_type)
+	else
+		tacmap = new(src, minimap_type) // Non-drawing version
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	QDEL_NULL(tacmap)
@@ -112,7 +115,7 @@
 
 	if(!current_squad)
 		data["squad_list"] = list()
-		for(var/datum/squad/current_squad in RoleAuthority.squads)
+		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
 				data["squad_list"] += current_squad.name
 		return data
@@ -202,7 +205,7 @@
 						acting_sl = " (acting SL)"
 					is_squad_leader = TRUE
 				else if(current_turf && (current_turf.z == SL_z))
-					distance = "[get_dist(marine_human, current_squad.squad_leader)] ([dir2text_short(get_dir(current_squad.squad_leader, marine_human))])"
+					distance = "[get_dist(marine_human, current_squad.squad_leader)] ([dir2text_short(Get_Compass_Dir(current_squad.squad_leader, marine_human))])"
 
 
 			switch(marine_human.stat)
@@ -315,8 +318,8 @@
 	data["can_launch_crates"] = has_supply_pad
 	data["has_crate_loaded"] = supply_crate
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
-	data["ob_cooldown"] = COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)
-	data["ob_loaded"] = almayer_orbital_cannon.chambered_tray
+	data["ob_cooldown"] = COOLDOWN_TIMELEFT(GLOB.almayer_orbital_cannon, ob_firing_cooldown)
+	data["ob_loaded"] = GLOB.almayer_orbital_cannon.chambered_tray
 
 	data["operator"] = operator.name
 
@@ -340,7 +343,7 @@
 			if(current_squad)
 				return
 			var/datum/squad/selected_squad
-			for(var/datum/squad/searching_squad in RoleAuthority.squads)
+			for(var/datum/squad/searching_squad in GLOB.RoleAuthority.squads)
 				if(searching_squad.active && !searching_squad.overwatch_officer && searching_squad.faction == faction && searching_squad.name != "Root" && searching_squad.name == params["squad"])
 					selected_squad = searching_squad
 					break
@@ -453,10 +456,10 @@
 				return
 			x_bomb = text2num(params["x"])
 			y_bomb = text2num(params["y"])
-			if(almayer_orbital_cannon.is_disabled)
+			if(GLOB.almayer_orbital_cannon.is_disabled)
 				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
-			else if(!COOLDOWN_FINISHED(almayer_orbital_cannon, ob_firing_cooldown))
-				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
+			else if(!COOLDOWN_FINISHED(GLOB.almayer_orbital_cannon, ob_firing_cooldown))
+				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(GLOB.almayer_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(user)
 
@@ -503,7 +506,7 @@
 					user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					user.reset_view(null)
-				else if(user.client.view != world_view_size)
+				else if(user.client.view != GLOB.world_view_size)
 					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					if(cam)
@@ -628,9 +631,9 @@
 	var/area/ob_area = get_area(target)
 	if(!ob_area)
 		return
-	var/ob_type = almayer_orbital_cannon.tray.warhead ? almayer_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
+	var/ob_type = GLOB.almayer_orbital_cannon.tray.warhead ? GLOB.almayer_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
 
-	for(var/datum/squad/S in RoleAuthority.squads)
+	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 		if(!S.active)
 			continue
 		for(var/mob/living/carbon/human/M in S.marines_list)
@@ -697,7 +700,7 @@
 		return
 
 	var/list/available_squads = list()
-	for(var/datum/squad/squad as anything in RoleAuthority.squads)
+	for(var/datum/squad/squad as anything in GLOB.RoleAuthority.squads)
 		if(squad.active && !squad.locked && squad.faction == faction && squad.name != "Root")
 			available_squads += squad
 
@@ -718,7 +721,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is already in [new_squad]!")]")
 		return
 
-	if(RoleAuthority.check_squad_capacity(transfer_marine, new_squad))
+	if(GLOB.RoleAuthority.check_squad_capacity(transfer_marine, new_squad))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.job].")]")
 		return
 
@@ -741,7 +744,7 @@
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("No squad selected!")]")
 		return
 
-	if(!almayer_orbital_cannon.chambered_tray)
+	if(!GLOB.almayer_orbital_cannon.chambered_tray)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
 		return
 
@@ -776,7 +779,7 @@
 	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, alert_ob), T), 2 SECONDS)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, begin_fire)), 6 SECONDS)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, A, T), 6 SECONDS + 6)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, T), 6 SECONDS + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/H in GLOB.alive_mob_list)
@@ -787,23 +790,20 @@
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
 	current_squad.send_message("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
 
-/obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user, area/A, turf/T)
-	if(!A || !T)
+/obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user,turf/T)
+	if(!T)
 		return
 
-	var/ob_name = lowertext(almayer_orbital_cannon.tray.warhead.name)
-	var/mutable_appearance/warhead_appearance = mutable_appearance(almayer_orbital_cannon.tray.warhead.icon, almayer_orbital_cannon.tray.warhead.icon_state)
-	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [A.name] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
-	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' [ADMIN_JMP(T)]"))
-	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
+	var/ob_name = lowertext(GLOB.almayer_orbital_cannon.tray.warhead.name)
+	var/mutable_appearance/warhead_appearance = mutable_appearance(GLOB.almayer_orbital_cannon.tray.warhead.icon, GLOB.almayer_orbital_cannon.tray.warhead.icon_state)
+	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
 	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "X[x_bomb], Y[y_bomb] in [A.name]")
+	log_ares_bombardment(user.name, ob_name, "X[x_bomb], Y[y_bomb] in [get_area(T)]")
 
 	busy = FALSE
-	var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)
-	if(target && istype(target))
-		almayer_orbital_cannon.fire_ob_cannon(target, user)
+	if(istype(T))
+		GLOB.almayer_orbital_cannon.fire_ob_cannon(T, user, current_squad)
 		user.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
@@ -844,18 +844,14 @@
 
 	busy = TRUE
 	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
-	C.anchored = TRUE //To avoid accidental pushes
-	current_squad.send_message("'[C.name]' supply drop incoming. Heads up!")
-	current_squad.send_maptext(C.name, "Incoming Supply Drop:")
-	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
-	COOLDOWN_START(S, next_supplydrop, 500 SECONDS)
+	SEND_SIGNAL(C, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)
+	COOLDOWN_START(current_squad, next_supplydrop, 500 SECONDS)
 	if(ismob(usr))
 		var/mob/M = usr
 		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
 	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-	var/obj/structure/droppod/supply/pod = new()
-	C.forceMove(pod)
+	var/obj/structure/droppod/supply/pod = new(null, C)
 	pod.launch(T)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
 	busy = FALSE

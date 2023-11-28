@@ -6,9 +6,13 @@ SUBSYSTEM_DEF(mapping)
 	var/list/datum/map_config/configs
 	var/list/datum/map_config/next_map_configs
 
+	///Name of all maps
 	var/list/map_templates = list()
-
+	///Name of all shuttles
 	var/list/shuttle_templates = list()
+	var/list/all_shuttle_templates = list()
+	///map_id of all tents
+	var/list/tent_type_templates = list()
 
 	var/list/areas_in_z = list()
 
@@ -200,6 +204,7 @@ SUBSYSTEM_DEF(mapping)
 		map_templates[T.name] = T
 
 	preloadShuttleTemplates()
+	preload_tent_templates()
 
 /proc/generateMapList(filename)
 	. = list()
@@ -238,7 +243,13 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_template/shuttle/S = new shuttle_type()
 
 		shuttle_templates[S.shuttle_id] = S
+		all_shuttle_templates[item] = S
 		map_templates[S.shuttle_id] = S
+
+/datum/controller/subsystem/mapping/proc/preload_tent_templates()
+	for(var/template in subtypesof(/datum/map_template/tent))
+		var/datum/map_template/tent/new_tent = new template()
+		tent_type_templates[new_tent.map_id] = new_tent
 
 /datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override)
 	UNTIL(initialized && !clearing_reserved_turfs)

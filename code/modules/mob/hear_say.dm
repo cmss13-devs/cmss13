@@ -7,16 +7,12 @@
 	if(!client && !(mind && mind.current != src))
 		return
 
-	if(stat == UNCONSCIOUS)
-		hear_sleep(src, message, src == speaker, Adjacent(speaker))
-		return
-
 	var/style = "body"
 	var/comm_paygrade = ""
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
 	if (language && (language.flags & NONVERBAL))
-		if (!speaker || (src.sdisabilities & DISABILITY_BLIND || src.blinded) || !(speaker.z == z && get_dist(speaker, src) <= world_view_size))
+		if (!speaker || (src.sdisabilities & DISABILITY_BLIND || src.blinded) || !(speaker.z == z && get_dist(speaker, src) <= GLOB.world_view_size))
 			message = language.scramble(message)
 
 	if(!say_understands(speaker,language))
@@ -51,7 +47,7 @@
 			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] talks but you cannot hear them."))
 	else
 		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>"))
-		if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
+		if (speech_sound && (get_dist(speaker, src) <= GLOB.world_view_size && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			playsound_client(src.client, speech_sound, source, sound_vol, GET_RANDOM_FREQ)
 
@@ -67,9 +63,6 @@
 	if(!client && !(mind && mind.current != src))
 		return
 
-	if(stat == UNCONSCIOUS)
-		hear_sleep(src, message, FALSE, FALSE)
-		return
 	var/comm_paygrade = ""
 
 	var/track = null
@@ -207,7 +200,19 @@
 			M.show_message(message)
 	src.show_message(message)
 
-/mob/proc/hear_sleep(mob/speaker = null, message, hearing_self = FALSE, proximity_flag = FALSE)
+/mob/living/hear_say(message, verb, datum/language/language, alt_name, italics, mob/speaker, sound/speech_sound, sound_vol)
+	if(client && mind && stat == UNCONSCIOUS)
+		hear_sleep(src, message, src == speaker, Adjacent(speaker))
+		return
+	return ..()
+
+/mob/living/hear_radio(message, verb, datum/language/language, part_a, part_b, mob/speaker, hard_to_hear, vname, command, no_paygrade)
+	if(client && mind && stat == UNCONSCIOUS)
+		hear_sleep(src, message, FALSE, FALSE)
+		return
+	return ..()
+
+/mob/living/proc/hear_sleep(mob/speaker = null, message, hearing_self = FALSE, proximity_flag = FALSE)
 	var/heard = ""
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)

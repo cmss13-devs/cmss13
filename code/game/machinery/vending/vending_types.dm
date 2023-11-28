@@ -411,6 +411,13 @@
 		/obj/item/device/camera = 5,
 		/obj/item/device/camera_film = 10,
 		/obj/item/notepad = 5,
+		/obj/item/device/toner = 5,
+		/obj/item/paper/colonial_grunts = 15,
+		/obj/item/toy/dice/d20 = 10,
+		/obj/item/tool/pen = 10,
+		/obj/item/tool/pen/blue = 10,
+		/obj/item/tool/pen/red = 10,
+		/obj/item/tool/pen/fountain = 3,
 	)
 
 	contraband = list(/obj/item/toy/sword = 2)
@@ -431,5 +438,12 @@
 		/obj/item/toy/deck = 20,
 		/obj/item/toy/deck/uno = 15,
 		/obj/item/device/camera = 30,
+		/obj/item/device/toner = 15,
+		/obj/item/paper/colonial_grunts = 5,
+		/obj/item/toy/dice/d20 = 1,
+		/obj/item/tool/pen = 2,
+		/obj/item/tool/pen/blue = 2,
+		/obj/item/tool/pen/red = 2,
+		/obj/item/tool/pen/fountain = 30,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL

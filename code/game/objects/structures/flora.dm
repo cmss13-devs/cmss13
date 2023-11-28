@@ -72,7 +72,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	addtimer(CALLBACK(src, PROC_REF(burn_up)), spread_time + 5 SECONDS)
 
 /obj/structure/flora/proc/spread_fire()
-	for(var/D in cardinal) //Spread fire
+	SIGNAL_HANDLER
+	for(var/D in GLOB.cardinals) //Spread fire
 		var/turf/T = get_step(src.loc, D)
 		if(T)
 			for(var/obj/structure/flora/F in T)
@@ -82,6 +83,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 					new /obj/flamer_fire(T, create_cause_data("wildfire"))
 
 /obj/structure/flora/proc/burn_up()
+	SIGNAL_HANDLER
 	new /obj/effect/decal/cleanable/dirt(loc)
 	if(center)
 		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
@@ -717,7 +719,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	//hatchets and shiet can clear away undergrowth
 	if(I && (I.sharp >= IS_SHARP_ITEM_ACCURATE) && !stump)
 		var/damage = rand(2,5)
-		if(istype(I,/obj/item/weapon/claymore/mercsword))
+		if(istype(I,/obj/item/weapon/sword))
 			damage = rand(8,18)
 		if(indestructable)
 			//this bush marks the edge of the map, you can't destroy it

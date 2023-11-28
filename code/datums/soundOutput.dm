@@ -152,11 +152,6 @@
 	adjust_volume_prefs(VOLUME_AMB, "Set the volume for ambience and soundscapes", 0)
 	soundOutput.update_ambience(null, null, TRUE)
 
-/client/verb/adjust_volume_admin_music()
-	set name = "Adjust Volume Admin MIDIs"
-	set category = "Preferences.Sound"
-	adjust_volume_prefs(VOLUME_ADM, "Set the volume for admin MIDIs", SOUND_CHANNEL_ADMIN_MIDI)
-
 /client/verb/adjust_volume_lobby_music()
 	set name = "Adjust Volume LobbyMusic"
 	set category = "Preferences.Sound"

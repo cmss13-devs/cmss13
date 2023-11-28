@@ -11,6 +11,66 @@
 	w_class = SIZE_SMALL
 	garbage = TRUE
 
+/obj/item/prop/geiger_counter
+	name = "geiger counter"
+	desc = "A geiger counter measures the radiation it receives. This type automatically records and transfers any information it reads, provided it has a battery, with no user input required beyond being enabled."
+	icon = 'icons/obj/items/devices.dmi'
+	icon_state = "geiger"
+	item_state = ""
+	w_class = SIZE_SMALL
+	flags_equip_slot = SLOT_WAIST
+	///Whether the geiger counter is on or off
+	var/toggled_on = FALSE
+	///Iconstate of geiger counter when on
+	var/enabled_state = "geiger_on"
+	///Iconstate of geiger counter when off
+	var/disabled_state = "geiger"
+	///New battery it will spawn with
+	var/starting_battery = /obj/item/cell/crap
+	///Battery inside geiger counter
+	var/obj/item/cell/battery //It doesn't drain the battery, but it has a battery for emergency use
+
+/obj/item/prop/geiger_counter/Initialize(mapload, ...)
+	. = ..()
+	if(!starting_battery)
+		return
+	battery = new starting_battery(src)
+
+/obj/item/prop/geiger_counter/Destroy()
+	. = ..()
+	if(battery)
+		qdel(battery)
+
+/obj/item/prop/geiger_counter/attack_self(mob/user)
+	. = ..()
+	toggled_on = !toggled_on
+	if(!battery)
+		to_chat(user, SPAN_NOTICE("[src] is missing a battery."))
+		return
+	to_chat(user, SPAN_NOTICE("You [toggled_on ? "enable" : "disable"] [src]."))
+	update_icon()
+
+/obj/item/prop/geiger_counter/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && !HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
+		return
+
+	if(!battery)
+		to_chat(user, SPAN_NOTICE("There is no battery for you to remove."))
+		return
+	to_chat(user, SPAN_NOTICE("You jam [battery] out of [src] with [attacking_item], prying it out irreversibly."))
+	user.put_in_hands(battery)
+	battery = null
+	update_icon()
+
+/obj/item/prop/geiger_counter/update_icon()
+	. = ..()
+
+	if(battery && toggled_on)
+		icon_state = enabled_state
+		return
+	icon_state = disabled_state
+
 /obj/item/prop/tableflag
 	name = "United Americas table flag"
 	icon = 'icons/obj/items/items.dmi'

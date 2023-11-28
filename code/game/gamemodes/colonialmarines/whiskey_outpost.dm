@@ -2,7 +2,7 @@
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
-	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST)
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return 1
 	return 0
 
@@ -81,7 +81,7 @@
 	taskbar_icon = 'icons/taskbar/gml_wo.png'
 
 /datum/game_mode/whiskey_outpost/get_roles_list()
-	return ROLES_WO
+	return GLOB.ROLES_WO
 
 /datum/game_mode/whiskey_outpost/announce()
 	return 1
@@ -152,9 +152,6 @@
 		spawn(0)
 			//Deleting Almayer, for performance!
 			SSitem_cleanup.delete_almayer()
-	if(SSxenocon)
-		//Don't need XENOCON
-		SSxenocon.wait = 30 MINUTES
 
 
 //PROCCESS
@@ -181,7 +178,7 @@
 	if(checkwin_counter >= 10) //Only check win conditions every 10 ticks.
 		if(xeno_wave == WO_MAX_WAVE && last_wave_time == 0)
 			last_wave_time = world.time
-		if(!finished && round_should_check_for_win && last_wave_time != 0)
+		if(!finished && GLOB.round_should_check_for_win && last_wave_time != 0)
 			check_win()
 		checkwin_counter = 0
 	return 0
@@ -215,8 +212,8 @@
 		finished = 2 //Marine win
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
-	for(var/i in RoleAuthority.roles_by_name)
-		var/datum/job/J = RoleAuthority.roles_by_name[i]
+	for(var/i in GLOB.RoleAuthority.roles_by_name)
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
 
 		// If the job has unlimited job slots, We set the amount of slots to the amount it has at the moment this is called
 		if (J.spawn_positions < 0)
@@ -257,8 +254,8 @@
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/whiskey_outpost/declare_completion()
-	if(round_statistics)
-		round_statistics.track_round_end()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_round_end()
 	if(finished == 1)
 		log_game("Round end result - xenos won")
 		to_world(SPAN_ROUND_HEADER("The Xenos have succesfully defended their hive from colonization."))
@@ -266,11 +263,11 @@
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
 		world << sound('sound/misc/Game_Over_Man.ogg')
-		if(round_statistics)
-			round_statistics.round_result = MODE_INFESTATION_X_MAJOR
-			if(round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories++
-				round_statistics.current_map.total_xeno_majors++
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.round_result = MODE_INFESTATION_X_MAJOR
+			if(GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_xeno_victories++
+				GLOB.round_statistics.current_map.total_xeno_majors++
 
 	else if(finished == 2)
 		log_game("Round end result - marines won")
@@ -279,26 +276,26 @@
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
 		world << sound('sound/misc/hell_march.ogg')
-		if(round_statistics)
-			round_statistics.round_result = MODE_INFESTATION_M_MAJOR
-			if(round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories++
-				round_statistics.current_map.total_marine_majors++
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.round_result = MODE_INFESTATION_M_MAJOR
+			if(GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_marine_victories++
+				GLOB.round_statistics.current_map.total_marine_majors++
 
 	else
 		log_game("Round end result - no winners")
 		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
 		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
 		world << 'sound/misc/sadtrombone.ogg'
-		if(round_statistics)
-			round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
 
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = GLOB.clients.len
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
 
-		round_statistics.log_round_statistics()
+		GLOB.round_statistics.log_round_statistics()
 
 		round_finished = 1
 
@@ -322,9 +319,9 @@
 		OT = "sup" //no breaking anything.
 
 	else if (OT == "sup")
-		randpick = rand(0,50)
+		randpick = rand(0,90)
 		switch(randpick)
-			if(0 to 5)//Marine Gear 10% Chance.
+			if(0 to 3)//Marine Gear 3% Chance.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				choosemax = rand(5,10)
 				randomitems = list(/obj/item/clothing/head/helmet/marine,
@@ -340,19 +337,19 @@
 								/obj/effect/landmark/wo_supplies/storage/webbing,
 								/obj/item/device/binoculars)
 
-			if(6 to 10)//Lights and shiet 10%
+			if(4 to 6)//Lights and shiet 2%
 				new /obj/structure/largecrate/supply/floodlights(T)
 				new /obj/structure/largecrate/supply/supplies/flares(T)
 
 
-			if(11 to 13) //6% Chance to drop this !FUN! junk.
+			if(7 to 10) //3% Chance to drop this !FUN! junk.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				spawnitems = list(/obj/item/storage/belt/utility/full,
 									/obj/item/storage/belt/utility/full,
 									/obj/item/storage/belt/utility/full,
 									/obj/item/storage/belt/utility/full)
 
-			if(14 to 18)//Materials 10% Chance.
+			if(11 to 22)//Materials 12% Chance.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				choosemax = rand(3,8)
 				randomitems = list(/obj/item/stack/sheet/metal,
@@ -363,7 +360,7 @@
 								/obj/item/stack/sandbags_empty/half,
 								/obj/item/stack/sandbags_empty/half)
 
-			if(19 to 20)//Blood Crate 4% chance
+			if(23 to 25)//Blood Crate 2% chance
 				crate = new /obj/structure/closet/crate/medical(T)
 				spawnitems = list(/obj/item/reagent_container/blood/OMinus,
 								/obj/item/reagent_container/blood/OMinus,
@@ -371,7 +368,7 @@
 								/obj/item/reagent_container/blood/OMinus,
 								/obj/item/reagent_container/blood/OMinus)
 
-			if(21 to 25)//Advanced meds Crate 10%
+			if(26 to 30)//Advanced meds Crate 5%
 				crate = new /obj/structure/closet/crate/medical(T)
 				spawnitems = list(/obj/item/storage/firstaid/fire,
 								/obj/item/storage/firstaid/regular,
@@ -386,7 +383,7 @@
 								/obj/item/clothing/glasses/hud/health,
 								/obj/item/device/defibrillator)
 
-			if(26 to 30)//Random Medical Items 10% as well. Made the list have less small junk
+			if(31 to 34)//Random Medical Items 4%. Made the list have less small junk
 				crate = new /obj/structure/closet/crate/medical(T)
 				spawnitems = list(/obj/item/storage/belt/medical/lifesaver/full,
 								/obj/item/storage/belt/medical/lifesaver/full,
@@ -394,7 +391,7 @@
 								/obj/item/storage/belt/medical/lifesaver/full,
 								/obj/item/storage/belt/medical/lifesaver/full)
 
-			if(31 to 35)//Random explosives Crate 10% because the lord commeth and said let there be explosives.
+			if(35 to 40)//Random explosives Crate 5% because the lord commeth and said let there be explosives.
 				crate = new /obj/structure/closet/crate/ammo(T)
 				choosemax = rand(1,5)
 				randomitems = list(/obj/item/storage/box/explosive_mines,
@@ -404,7 +401,7 @@
 								/obj/item/explosive/grenade/high_explosive,
 								/obj/item/storage/box/nade_box
 								)
-			if(36 to 40) // Junk
+			if(41 to 44)
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(
 									/obj/item/attachable/heavy_barrel,
@@ -412,20 +409,75 @@
 									/obj/item/attachable/heavy_barrel,
 									/obj/item/attachable/heavy_barrel)
 
-			if(40 to 48)//Weapon + supply beacon drop. 6%
+			if(45 to 50)//Weapon + supply beacon drop. 5%
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon)
 
-			if(49 to 50)//Rare weapons. Around 4%
+			if(51 to 57)//Rare weapons. Around 6%
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aap,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aapmag,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/smgap,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/smgextend)
+
+			if(58 to 65) // Sandbags kit
+				crate = new /obj/structure/closet/crate(T)
+				spawnitems = list(/obj/item/tool/shovel/etool,
+								/obj/item/stack/sandbags_empty/half,
+								/obj/item/stack/sandbags_empty/half,
+								/obj/item/stack/sandbags_empty/half)
+
+			if(66 to 70) // Mortar shells. Pew Pew!
+				crate = new /obj/structure/closet/crate/secure/mortar_ammo(T)
+				choosemax = rand(6,10)
+				randomitems = list(/obj/item/mortar_shell/he,
+								/obj/item/mortar_shell/incendiary,
+								/obj/item/mortar_shell/flare,
+								/obj/item/mortar_shell/frag)
+
+			if(71 to 79)
+				crate = new /obj/structure/closet/crate/ammo(T)
+				choosemax = rand(2, 3)
+				randomitems = list(/obj/item/ammo_box/rounds,
+								/obj/item/ammo_box/rounds/ap,
+								/obj/item/ammo_box/rounds/smg,
+								/obj/item/ammo_box/rounds/smg/ap,
+								/obj/item/ammo_box/magazine/ap,
+								/obj/item/ammo_box/magazine/ext,
+								/obj/item/ammo_box/magazine/m4ra/ap,
+								/obj/item/ammo_box/magazine/m4ra/ap,
+								/obj/item/ammo_box/magazine/m39/ap,
+								/obj/item/ammo_box/magazine/m39/ext,
+				)
+
+			if(80 to 82)
+				crate = new /obj/structure/closet/crate/ammo(T)
+				choosemax = rand(2, 3)
+				randomitems = list(/obj/item/ammo_magazine/rifle/lmg/holo_target,
+								/obj/item/ammo_magazine/rifle/lmg/holo_target,
+								/obj/item/ammo_magazine/rifle/lmg,
+								/obj/item/ammo_magazine/rifle/lmg,
+				)
+
+			if(83 to 86)
+				crate = new /obj/structure/closet/crate/ammo(T)
+				spawnitems = list(
+									/obj/item/attachable/magnetic_harness,
+									/obj/item/attachable/magnetic_harness,
+									/obj/item/attachable/magnetic_harness,
+									/obj/item/attachable/magnetic_harness)
+
+			if(86 to 90)
+				crate = new /obj/structure/closet/crate/secure/gear(T)
+				spawnitems = list(
+									/obj/item/device/binoculars/range,
+									/obj/item/device/binoculars/range,
+				)
+
 	if(crate)
 		crate.storage_capacity = 60
 
@@ -459,10 +511,10 @@
 	unacidable = TRUE
 	var/working = 0
 
-/obj/structure/machinery/wo_recycler/attack_hand(mob/user)
+/obj/structure/machinery/wo_recycler/attack_hand(mob/living/user)
 	if(inoperable(MAINT))
 		return
-	if(user.lying || user.stat)
+	if(user.is_mob_incapacitated())
 		return
 	if(ismaintdrone(usr) || \
 		istype(usr, /mob/living/carbon/xenomorph))

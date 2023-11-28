@@ -145,10 +145,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(!receiver_client)
 			to_chat(src, SPAN_WARNING("The person you were attempting to PM has gone offline!"))
 			return
-		if(unansweredAhelps[receiver_client.computer_id]) unansweredAhelps.Remove(receiver_client.computer_id)
 		cmd_admin_pm(receiver_client, null)
 		return
-
 	else if(href_list["FaxView"])
 
 		var/datum/fax/info = locate(href_list["FaxView"])
@@ -164,6 +162,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
+
+	else if(href_list["tacmaps_panel"])
+		GLOB.tacmap_admin_panel.tgui_interact(mob)
+
+	else if(href_list["MapView"])
+		if(isxeno(mob))
+			return
+		GLOB.uscm_tacmap_status.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -312,20 +318,20 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(isnull(address) || (address in localhost_addresses))
 			var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
 			admin.associate(src)
-			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
+			GLOB.RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
 	//Admin Authorisation
-	admin_holder = admin_datums[ckey]
+	admin_holder = GLOB.admin_datums[ckey]
 	if(admin_holder)
 		admin_holder.associate(src)
 	notify_login()
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
-	prefs = preferences_datums[ckey]
+	prefs = GLOB.preferences_datums[ckey]
 	if(QDELETED(prefs) || !istype(prefs))
 		prefs = new /datum/preferences(src)
-		preferences_datums[ckey] = prefs
+		GLOB.preferences_datums[ckey] = prefs
 	prefs.client_reconnected(src)
 	prefs.last_ip = address //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
@@ -345,7 +351,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 
-	view = world_view_size
+	view = GLOB.world_view_size
 	. = ..() //calls mob.Login()
 
 	if(SSinput.initialized)
@@ -399,10 +405,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			CEI = GLOB.custom_event_info_list[mob.faction]
 			CEI.show_player_event_info(src)
 
-	if( (world.address == address || !address) && !host )
-		host = key
-		world.update_status()
-
 	connection_time = world.time
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
 
@@ -436,7 +438,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	load_player_data()
 
-	view = world_view_size
+	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
 
@@ -467,7 +469,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.clients -= src
 	SSping.currentrun -= src
 
-	unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")
 	if(CLIENT_IS_STAFF(src))
 		message_admins("Admin logout: [key_name(src)]")
@@ -529,17 +530,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /proc/setup_player_entity(ckey)
 	if(!ckey)
 		return
-	if(player_entities["[ckey]"])
-		return player_entities["[ckey]"]
+	if(GLOB.player_entities["[ckey]"])
+		return GLOB.player_entities["[ckey]"]
 	var/datum/entity/player_entity/P = new()
 	P.ckey = ckey
 	P.name = ckey
-	player_entities["[ckey]"] = P
+	GLOB.player_entities["[ckey]"] = P
 	// P.setup_save(ckey)
 	return P
 
 /proc/save_player_entities()
-	for(var/key_ref in player_entities)
+	for(var/key_ref in GLOB.player_entities)
 		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
@@ -726,7 +727,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
-				if("Whisper")
+				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
 /client/proc/toggle_fullscreen(new_value)

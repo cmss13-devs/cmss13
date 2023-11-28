@@ -585,7 +585,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/box/packet/hefa/toy,
 		/obj/item/toy/inflatable_duck,
 		/obj/item/toy/beach_ball,
-		/obj/item/toy/farwadoll,
+		/obj/item/toy/plush/farwa,
 		/obj/item/toy/waterflower,
 		/obj/item/toy/spinningtoy,
 		/obj/item/storage/box/snappops,
@@ -749,8 +749,8 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/deep_storage/xm42b_pipe
-	name = "10x99mm XM42B casing"
+/datum/supply_packs/contraband/deep_storage/xm43e1_pipe
+	name = "10x99mm XM43E1 casing"
 	contains = list(/obj/item/prop/helmetgarb/bullet_pipe)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market

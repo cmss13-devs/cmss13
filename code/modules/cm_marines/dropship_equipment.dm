@@ -508,41 +508,39 @@
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
 	name = "\improper AN/AVD-60 LZ detector"
-	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
+	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone."
 	icon_state = "lz_detector"
 	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/connect_cameras() //searches for dropship_camera_console and connects with it
+	if(linked_cam_console)
+		return
+	var/obj/structure/machinery/computer/cameras/dropship/dropship_camera_console = locate() in range(5, loc)
+	linked_cam_console = dropship_camera_console
+	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES)
+
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/proc/disconnect_cameras() //clears up vars and updates users
+	if(!linked_cam_console)
+		return
+	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
+	for(var/datum/weakref/ref as anything in linked_cam_console.concurrent_users)
+		var/mob/user = ref.resolve()
+		if(user)
+			linked_cam_console.update_static_data(user)
+	linked_cam_console = null
+
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
 	if(ship_base)
-		if(!linked_cam_console)
-			for(var/obj/structure/machinery/computer/cameras/dropship/D in range(5, loc))
-				linked_cam_console = D
-				break
+		connect_cameras()
 		icon_state = "[initial(icon_state)]_installed"
 	else
-		linked_cam_console = null
+		disconnect_cameras()
 		icon_state = initial(icon_state)
 
-
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/Destroy()
-	linked_cam_console = null
+	disconnect_cameras()
 	return ..()
-
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/on_launch()
-	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES) //only accessible while in the air.
-	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
-		var/mob/user = ref.resolve()
-		if(user)
-			linked_cam_console.update_static_data(user)
-
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/on_arrival()
-	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
-	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
-		var/mob/user = ref.resolve()
-		if(user)
-			linked_cam_console.update_static_data(user)
-
 
 /////////////////////////////////// COMPUTERS //////////////////////////////////////
 
@@ -826,7 +824,7 @@
 		return
 
 	var/list/possible_stretchers = list()
-	for(var/obj/structure/bed/medevac_stretcher/MS in activated_medevac_stretchers)
+	for(var/obj/structure/bed/medevac_stretcher/MS in GLOB.activated_medevac_stretchers)
 		var/area/AR = get_area(MS)
 		var/evaccee_name
 		var/evaccee_triagecard_color
@@ -1048,7 +1046,7 @@
 		return
 
 	var/list/possible_fultons = list()
-	for(var/obj/item/stack/fulton/F in deployed_fultons)
+	for(var/obj/item/stack/fulton/F in GLOB.deployed_fultons)
 		var/recovery_object
 		if(F.attached_atom)
 			recovery_object = F.attached_atom.name
@@ -1150,7 +1148,7 @@
 	color = "#17d17a"
 
 /obj/structure/dropship_equipment/rappel_system/attack_hand(mob/living/carbon/human/user)
-	var/datum/cas_iff_group/cas_group = cas_groups[FACTION_MARINE]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[FACTION_MARINE]
 	var/list/targets = cas_group.cas_signals
 
 	if(!LAZYLEN(targets))

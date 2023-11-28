@@ -112,6 +112,7 @@
 	return
 
 /obj/vehicle/emp_act(severity)
+	. = ..()
 	var/was_on = on
 	stat |= EMPED
 	new /obj/effect/overlay/temp/emp_sparks (loc)

@@ -147,12 +147,12 @@
 /obj/structure/machinery/defenses/start_processing()
 	if(!machine_processing)
 		machine_processing = TRUE
-		fast_machines += src
+	START_PROCESSING(SSdefprocess, src)
 
 /obj/structure/machinery/defenses/stop_processing()
 	if(machine_processing)
 		machine_processing = FALSE
-		fast_machines -= src
+	STOP_PROCESSING(SSdefprocess, src)
 
 /obj/structure/machinery/defenses/proc/earn_kill()
 	kills++
@@ -408,9 +408,9 @@
 		damaged_action(damage)
 
 	if(stat == DEFENSE_DAMAGED)
-		density = FALSE
+		set_density(FALSE)
 	else
-		density = initial(density)
+		set_density(initial(density))
 
 	update_icon()
 
@@ -431,6 +431,7 @@
 		turned_on = FALSE
 
 /obj/structure/machinery/defenses/emp_act(severity)
+	. = ..()
 	if(turned_on)
 		if(prob(50))
 			visible_message("[icon2html(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")

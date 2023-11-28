@@ -27,4 +27,3 @@
 		set_stat(CONSCIOUS)
 		icon_state = "bat"
 		wander = 1
-		canmove = 1

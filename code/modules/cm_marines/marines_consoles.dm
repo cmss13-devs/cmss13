@@ -199,7 +199,7 @@
 				if(is_centcom)
 					new_access = get_access(ACCESS_LIST_WY_ALL)
 				else
-					var/datum/job/job = RoleAuthority.roles_for_mode[target]
+					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[target]
 
 					if(!job)
 						visible_message("[SPAN_BOLD("[src]")] states, \"DATA ERROR: Can not find next entry in database: [target]\"")
@@ -293,7 +293,7 @@
 
 /obj/structure/machinery/computer/card/ui_static_data(mob/user)
 	var/list/data = list()
-	data["station_name"] = station_name
+	data["station_name"] = MAIN_SHIP_NAME
 	data["centcom_access"] = is_centcom
 	data["manifest"] = GLOB.data_core.get_manifest(FALSE, FALSE, TRUE)
 
@@ -303,25 +303,25 @@
 	else if(Check_WO())
 		// I am not sure about WOs departments so it may need adjustment
 		departments = list(
-			CARDCON_DEPARTMENT_COMMAND = ROLES_CIC & ROLES_WO,
-			CARDCON_DEPARTMENT_AUXCOM = ROLES_AUXIL_SUPPORT & ROLES_WO,
-			CARDCON_DEPARTMENT_MISC = ROLES_MISC & ROLES_WO,
-			CARDCON_DEPARTMENT_SECURITY = ROLES_POLICE & ROLES_WO,
-			CARDCON_DEPARTMENT_ENGINEERING = ROLES_ENGINEERING & ROLES_WO,
-			CARDCON_DEPARTMENT_SUPPLY = ROLES_REQUISITION & ROLES_WO,
-			CARDCON_DEPARTMENT_MEDICAL = ROLES_MEDICAL & ROLES_WO,
-			CARDCON_DEPARTMENT_MARINE = ROLES_MARINES
+			CARDCON_DEPARTMENT_COMMAND = GLOB.ROLES_CIC & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_AUXCOM = GLOB.ROLES_AUXIL_SUPPORT & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = GLOB.ROLES_MISC & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SECURITY = GLOB.ROLES_POLICE & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_ENGINEERING = GLOB.ROLES_ENGINEERING & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SUPPLY = GLOB.ROLES_REQUISITION & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MEDICAL = GLOB.ROLES_MEDICAL & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MARINE = GLOB.ROLES_MARINES
 		)
 	else
 		departments = list(
-			CARDCON_DEPARTMENT_COMMAND = ROLES_CIC - ROLES_WO,
-			CARDCON_DEPARTMENT_AUXCOM = ROLES_AUXIL_SUPPORT - ROLES_WO,
-			CARDCON_DEPARTMENT_MISC = ROLES_MISC - ROLES_WO,
-			CARDCON_DEPARTMENT_SECURITY = ROLES_POLICE - ROLES_WO,
-			CARDCON_DEPARTMENT_ENGINEERING = ROLES_ENGINEERING - ROLES_WO,
-			CARDCON_DEPARTMENT_SUPPLY = ROLES_REQUISITION - ROLES_WO,
-			CARDCON_DEPARTMENT_MEDICAL = ROLES_MEDICAL - ROLES_WO,
-			CARDCON_DEPARTMENT_MARINE = ROLES_MARINES
+			CARDCON_DEPARTMENT_COMMAND = GLOB.ROLES_CIC - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_AUXCOM = GLOB.ROLES_AUXIL_SUPPORT - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = GLOB.ROLES_MISC - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SECURITY = GLOB.ROLES_POLICE - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_ENGINEERING = GLOB.ROLES_ENGINEERING - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SUPPLY = GLOB.ROLES_REQUISITION - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MEDICAL = GLOB.ROLES_MEDICAL - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MARINE = GLOB.ROLES_MARINES
 		)
 	data["jobs"] = list()
 	for(var/department in departments)
@@ -376,7 +376,7 @@
 /obj/structure/machinery/computer/card/ui_data(mob/user)
 	var/list/data = list()
 
-	data["station_name"] = station_name
+	data["station_name"] = MAIN_SHIP_NAME
 	data["authenticated"] = authenticated
 
 	data["has_id"] = !!target_id_card
@@ -432,7 +432,7 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.is_mob_incapacitated()) return
 
 	if(user_id_card)
 		user_id_card.loc = get_turf(src)
@@ -498,7 +498,7 @@
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.is_mob_incapacitated()) return
 
 	if(ishuman(usr) && ID_to_modify)
 		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
@@ -560,7 +560,7 @@
 				var/datum/squad/selected = get_squad_by_name(params["name"])
 				if(!selected)
 					return
-				if(RoleAuthority.check_squad_capacity(person_to_modify, selected))
+				if(GLOB.RoleAuthority.check_squad_capacity(person_to_modify, selected))
 					visible_message("[SPAN_BOLD("[src]")] states, \"CAPACITY ERROR: [selected] can't have another [person_to_modify.job].\"")
 					return TRUE
 				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, ID_to_modify))
@@ -594,7 +594,7 @@
 /obj/structure/machinery/computer/squad_changer/ui_static_data(mob/user)
 	var/list/data = list()
 	var/list/squads = list()
-	for(var/datum/squad/current_squad in RoleAuthority.squads)
+	for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 		if(current_squad.name != "Root" && !current_squad.locked && current_squad.active && current_squad.faction == faction)
 			var/list/squad = list(list(
 				"name" = current_squad.name,
@@ -1005,7 +1005,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				RAIDER_SQUAD = 131,
 			)
 			var/squad_number = 70
-			for(var/squad_name in ROLES_SQUAD_ALL + "")
+			for(var/squad_name in GLOB.ROLES_SQUAD_ALL + "")
 				if(!squad_name) squad_number = 120
 				else squad_name += " "
 				jobs += list(

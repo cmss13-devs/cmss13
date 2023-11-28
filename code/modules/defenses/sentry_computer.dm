@@ -121,6 +121,7 @@
 	playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
 
 /obj/item/device/sentry_computer/emp_act(severity)
+	. = ..()
 	return TRUE
 
 /**

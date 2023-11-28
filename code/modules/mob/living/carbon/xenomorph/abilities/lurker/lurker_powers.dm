@@ -208,6 +208,9 @@
 				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
 				apply_cooldown(cooldown_modifier = 0.5)
 				return
+			if(current_structure.density)
+				to_chat(xeno, SPAN_WARNING("There's something blocking you from striking!"))
+				return
 
 	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target) || hit_target.stat == DEAD)
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
@@ -265,7 +268,7 @@
 	if(xeno.can_not_harm(target_carbon))
 		return
 
-	if(!(target_carbon.knocked_out || target_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
+	if(!(HAS_TRAIT(target_carbon, TRAIT_KNOCKEDOUT) || target_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
 		return
 

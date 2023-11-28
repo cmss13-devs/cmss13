@@ -118,6 +118,15 @@ const ObservableContent = (props, context) => {
     survivors = [],
     xenos = [],
     ert_members = [],
+    upp = [],
+    clf = [],
+    wy = [],
+    twe = [],
+    freelancer = [],
+    mercenary = [],
+    contractor = [],
+    dutch = [],
+    marshal = [],
     synthetics = [],
     predators = [],
     animals = [],
@@ -144,6 +153,43 @@ const ObservableContent = (props, context) => {
         color="light-grey"
         section={synthetics}
         title="Synthetics"
+      />
+      <ObservableSection
+        color="green"
+        section={upp}
+        title="Union of Progressive Peoples"
+      />
+      <ObservableSection
+        color="teal"
+        section={clf}
+        title="Colonial Liberation Front"
+      />
+      <ObservableSection color="white" section={wy} title="Weyland Yutani" />
+      <ObservableSection
+        color="red"
+        section={twe}
+        title="Royal Marines Commando"
+      />
+      <ObservableSection
+        color="orange"
+        section={freelancer}
+        title="Freelancers"
+      />
+      <ObservableSection
+        color="label"
+        section={mercenary}
+        title="Mercenaries"
+      />
+      <ObservableSection
+        color="light-grey"
+        section={contractor}
+        title="Military Contractors"
+      />
+      <ObservableSection color="good" section={dutch} title="Dutchs Dozen" />
+      <ObservableSection
+        color="dark-blue"
+        section={marshal}
+        title="Colonial Marshal Bureau"
       />
       <ObservableSection color="green" section={predators} title="Predators" />
       <ObservableSection color="olive" section={escaped} title="Escaped" />

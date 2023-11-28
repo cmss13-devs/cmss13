@@ -1,5 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - rscadd: "Eggsac carrier can now place eggs on normal weeds to a maximum of 4 eggs."
-  - rscadd: "Eggsac carrier eggs on normal weeds have an expiry date."

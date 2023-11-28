@@ -93,7 +93,7 @@
 		remove_highlight(flare_pouch)
 
 	message_to_player("Now throw the <b>flare</b> by <b>clicking</b> on a nearby tile, or dropping it with <b>Q</b>.")
-	update_objective("Throw the flare by clicking on a nearby tile, or dropping it with <b>Q</b>.")
+	update_objective("Throw the flare by clicking on a nearby tile, or dropping it with Q.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_ITEM_DROPPED, PROC_REF(on_flare_throw))
 
 /datum/tutorial/marine/basic/proc/on_flare_throw(datum/source, obj/item/thrown)
@@ -121,7 +121,7 @@
 		remove_highlight(gun_vendor)
 		UnregisterSignal(gun_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)
 		message_to_player("Now insert the <b>magazine</b> into the <b>M41A Pulse Rifle</b> by having the <b>magazine</b> in your active hand and hitting the <b>Pulse Rifle</b> with it. If it is in the off-hand, switch with <b>X</b>.")
-		update_objective("Insert the M41A magazine</b> by hitting the <b>M41A Pulse Rifle</b> with it.")
+		update_objective("Insert the M41A magazine by hitting the M41A Pulse Rifle with it.")
 		RegisterSignal(tutorial_mob, COMSIG_MOB_RELOADED_GUN, PROC_REF(on_magazine_insert))
 
 /datum/tutorial/marine/basic/proc/on_magazine_insert(datum/source, atom/attacked, obj/item/attacked_with)

@@ -31,8 +31,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	GLOB.ongoing_tutorials -= src
 	QDEL_NULL(reservation) // Its Destroy() handles releasing reserved turfs
 
-	if(!QDELETED(tutorial_mob))
-		QDEL_NULL(tutorial_mob)
+	tutorial_mob = null // We don't delete it because the turf reservation will typically clean it up
 
 	for(var/path in tracking_atoms)
 		QDEL_NULL(tracking_atoms[path])
@@ -86,12 +85,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 		if(tutorial_mob.client?.prefs && completed)
 			tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
 			tutorial_mob.client.prefs.save_character()
-		var/mob/new_player/new_player = new
-		if(!tutorial_mob.mind)
-			tutorial_mob.mind_initialize()
-
-		new_player.ckey = tutorial_mob.ckey //zonenote
-		tutorial_mob.mind.transfer_to(new_player)
+		tutorial_mob.send_to_lobby()
 
 	if(!QDELETED(src))
 		qdel(src)

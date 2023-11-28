@@ -1075,3 +1075,15 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/update_stat()
 	return
+
+/// Send src back to the lobby as a `/mob/new_player()`
+/mob/proc/send_to_lobby()
+	var/mob/new_player/new_player = new
+
+	if(!mind)
+		mind_initialize()
+
+	mind.transfer_to(new_player)
+
+	if(!QDELETED(src))
+		qdel(src)

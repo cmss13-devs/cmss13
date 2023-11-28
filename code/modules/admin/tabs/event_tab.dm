@@ -655,11 +655,11 @@
 	var/narrate_header_text
 	var/narrate_output
 
-	if(tgui_alert(usr,"Do you want to use a header?","Global Narrate",list("Yes","No"),0) == "Yes")
-		narrate_header_text = tgui_input_text(usr,"Please enter a Header paragraph. Ideally, it should be 1-2 sentences. Do not use paragraph tags.","Global Narrate Header","",MAX_BOOK_MESSAGE_LEN,TRUE,FALSE,0)
+	if(tgui_alert(usr,"Do you want your narration to include a header paragraph?","Global Narrate",list("Yes","No"),0) == "Yes")
+		narrate_header_text = tgui_input_text(usr,"Please type the header paragraph below. One or two sentences or a title work best. HTML style tags are available. Paragraphs are not recommended.","Global Narrate Header","",MAX_BOOK_MESSAGE_LEN,TRUE,FALSE,0)
 		if(!narrate_header_text)
 			return
-	narrate_body_text = tgui_input_text(usr,"Please enter the text of the global narration. All text is justified and supports HTML paragraphs and style tags. Linebreaks will carry over and double if you also use paragraphs.","Global Narrate Body","",MAX_BOOK_MESSAGE_LEN,TRUE,FALSE,0)
+	narrate_body_text = tgui_input_text(usr,"Please enter the text for your narration. Paragraphs without line breaks produce the best visual results, but html tags in general are respected. A preview will be available.","Global Narrate Text","",MAX_BOOK_MESSAGE_LEN,TRUE,FALSE,0)
 	if(!narrate_body_text)
 		return
 
@@ -669,7 +669,7 @@
 		narrate_output = "[narrate_head("[narrate_header_text]")]" + "[narrate_body("[narrate_body_text]")]"
 
 	to_chat(usr,"[narrate_output]")
-	if(tgui_alert(usr,"Do you want to send this narration?","Confirmation",list("Yes","No"),0) == "Yes")
+	if(tgui_alert(usr,"Text preview is avaiable. Send narration?","Confirmation",list("Yes","No"),0) == "Yes")
 		to_chat(world, "[narrate_output]")
 		message_admins("\bold [key_name_admin(usr)] has sent a Global Narrate message!")
 		return

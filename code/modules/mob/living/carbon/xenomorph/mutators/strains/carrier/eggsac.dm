@@ -67,8 +67,6 @@
 			remove_egg_owner(my_egg)
 			my_egg.start_unstoppable_decay()
 			to_chat(bound_xeno, SPAN_XENOWARNING("You can only sustain [egg_sustain_cap] eggs off hive weeds! Your oldest placed egg is decaying rapidly."))
-		else
-			eggs_sustained -= my_egg
 
 	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
 		//Get the distance from us to our sustained egg

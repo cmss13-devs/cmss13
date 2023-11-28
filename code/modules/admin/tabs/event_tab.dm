@@ -651,14 +651,30 @@
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
+	var/narrate_body_text
+	var/narrate_header_text
+	var/narrate_output
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to everyone:")) as text
-
-	if(!msg)
+	if(tgui_alert(usr,"Do you want to use a header?","Global Narrate",list("Yes","No"),0) == "Yes")
+		narrate_header_text = tgui_input_text(usr,"Please enter a Header paragraph. Ideally, it should be 1-2 sentences. Do not use paragraph tags.","Global Narrate Header","",MAX_BOOK_MESSAGE_LEN,TRUE,FALSE,0)
+		if(!narrate_header_text)
+			return
+	narrate_body_text = tgui_input_text(usr,"Please enter the text of the global narration. All text is justified and supports HTML paragraphs and style tags. Linebreaks will carry over and double if you also use paragraphs.","Global Narrate Body","",MAX_BOOK_MESSAGE_LEN,TRUE,FALSE,0)
+	if(!narrate_body_text)
 		return
 
-	to_chat_spaced(world, html = SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
-	message_admins("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]")
+	if(!narrate_header_text)
+		narrate_output = "[narrate_body("[narrate_body_text]")]"
+	else
+		narrate_output = "[narrate_head("[narrate_header_text]")]" + "[narrate_body("[narrate_body_text]")]"
+
+	to_chat(usr,"[narrate_output]")
+	if(tgui_alert(usr,"Do you want to send this narration?","Confirmation",list("Yes","No"),0) == "Yes")
+		to_chat(world, "[narrate_output]")
+		message_admins("\bold [key_name_admin(usr)] has sent a Global Narrate message!")
+		return
+	else
+		return
 
 
 /client

@@ -35,7 +35,7 @@
 
 	// check if dead
 	if(H.stat == DEAD)
-		infection_rate = 2
+		infection_rate = 4
 
 	// check if he isn't dead
 	if(H.stat != DEAD)

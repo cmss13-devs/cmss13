@@ -2314,7 +2314,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 /// Converts a saved string of completed tutorials into a list for in-game use
 /datum/preferences/proc/tutorial_savestring_to_list(savestring)
-completed_tutorials = splittext(savestring, ";")
+	completed_tutorials = splittext(savestring, ";")
 	return completed_tutorials
 
 #undef MENU_MARINE

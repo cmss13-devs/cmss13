@@ -28,6 +28,3 @@ GLOBAL_LIST_INIT(cm_vending_clothing_tutorial, list(
 
 /obj/structure/machinery/cm_vending/clothing/tutorial/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_tutorial
-
-//		list("UTILITIES", 0, null, null, null),
-//		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),

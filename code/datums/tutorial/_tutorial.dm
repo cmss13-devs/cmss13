@@ -90,6 +90,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 		if(!tutorial_mob.mind)
 			tutorial_mob.mind_initialize()
 
+		new_player.ckey = tutorial_mob.ckey //zonenote
 		tutorial_mob.mind.transfer_to(new_player)
 
 	if(!QDELETED(src))
@@ -99,9 +100,9 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/verify_template_loaded()
 	// We subtract 1 from x and y because the bottom left corner doesn't start at the walls.
 	var/turf/true_bottom_left_corner = locate(
-		bottom_left_corner.x - 1,
-		bottom_left_corner.y - 1,
-		bottom_left_corner.z
+		reservation.bottom_left_coords[1],
+		reservation.bottom_left_coords[2],
+		reservation.bottom_left_coords[3],
 	)
 	// We subtract 1 from x and y here because the bottom left corner counts as the first tile
 	var/turf/top_right_corner = locate(

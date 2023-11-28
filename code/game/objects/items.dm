@@ -518,14 +518,14 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_L_HAND)
 				if(human.l_hand)
 					return FALSE
-				if(human.lying)
+				if(human.body_position == LYING_DOWN)
 					to_chat(human, SPAN_WARNING("You can't equip that while lying down."))
 					return
 				return TRUE
 			if(WEAR_R_HAND)
 				if(human.r_hand)
 					return FALSE
-				if(human.lying)
+				if(human.body_position == LYING_DOWN)
 					to_chat(human, SPAN_WARNING("You can't equip that while lying down."))
 					return
 				return TRUE
@@ -921,9 +921,10 @@ cases. Override_icon_state should be a list.*/
 		mob_state += GLOB.slot_to_contained_sprite_shorthand[slot]
 	return mob_state
 
-/obj/item/proc/drop_to_floor(mob/wearer)
+/obj/item/proc/drop_to_floor(mob/wearer, body_position)
 	SIGNAL_HANDLER
-	wearer.drop_inv_item_on_ground(src)
+	if(body_position == LYING_DOWN)
+		wearer.drop_inv_item_on_ground(src)
 
 // item animatzionen
 

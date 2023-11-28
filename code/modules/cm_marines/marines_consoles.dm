@@ -432,7 +432,7 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.is_mob_incapacitated()) return
 
 	if(user_id_card)
 		user_id_card.loc = get_turf(src)
@@ -498,7 +498,7 @@
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.is_mob_incapacitated()) return
 
 	if(ishuman(usr) && ID_to_modify)
 		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")

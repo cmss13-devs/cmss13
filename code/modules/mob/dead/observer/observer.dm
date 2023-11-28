@@ -25,7 +25,6 @@
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
 	density = FALSE
-	canmove = TRUE
 	blinded = FALSE
 	anchored = TRUE //  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
@@ -79,6 +78,9 @@
 	. = ..()
 
 	GLOB.observer_list += src
+
+	// Ghosts don't move, they teleport via a special case in mob code
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 
 	var/turf/spawn_turf
 	if(ismob(body))

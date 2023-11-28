@@ -138,7 +138,7 @@
 /datum/ammo/proc/knockback(mob/living/living_mob, obj/projectile/fired_projectile, max_range = 2)
 	if(!living_mob || living_mob == fired_projectile.firer)
 		return
-	if(fired_projectile.distance_travelled > max_range || living_mob.lying)
+	if(fired_projectile.distance_travelled > max_range || living_mob.body_position == LYING_DOWN)
 		return //Two tiles away or more, basically.
 
 	if(living_mob.mob_size >= MOB_SIZE_BIG)
@@ -180,8 +180,8 @@
 	else
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
-/datum/ammo/proc/pushback(mob/target_mob, obj/projectile/fired_projectile, max_range = 2)
-	if(!target_mob || target_mob == fired_projectile.firer || fired_projectile.distance_travelled > max_range || target_mob.lying)
+/datum/ammo/proc/pushback(mob/living/target_mob, obj/projectile/fired_projectile, max_range = 2)
+	if(!target_mob || target_mob == fired_projectile.firer || fired_projectile.distance_travelled > max_range || target_mob.body_position == LYING_DOWN)
 		return
 
 	if(target_mob.mob_size >= MOB_SIZE_BIG)

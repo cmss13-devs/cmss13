@@ -311,23 +311,23 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
 					return
 
-				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
-					if(launch_initiated)
-						to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
+			var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
+				if(launch_initiated)
+					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
+					return
+				switch(response)
+					if ("Yes")
+						launch_initiated = TRUE
+						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
+						shipwide_ai_announcement("Launch command received. " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " Lifeboat doors will close in 10 seconds.")
+						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
 						return
-					switch(response)
-						if ("Yes")
-							launch_initiated = TRUE
-							to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
-							shipwide_ai_announcement("Launch command received. " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " Lifeboat doors will close in 10 seconds.")
-							addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
-							return
-						if ("Emergency Launch")
-							launch_initiated = TRUE
-							to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
-							lifeboat.evac_launch()
-							shipwide_ai_announcement("Emergency Launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " Lifeboat.")
-							return
+					if ("Emergency Launch")
+						launch_initiated = TRUE
+						to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
+						lifeboat.evac_launch()
+						shipwide_ai_announcement("Emergency Launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " Lifeboat.")
+						return
 
 			if(SHUTTLE_IGNITING)
 				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))

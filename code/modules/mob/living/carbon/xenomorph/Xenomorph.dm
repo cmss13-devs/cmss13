@@ -489,8 +489,8 @@
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		hive.used_slots[selected_caste]++
 
-	if(round_statistics && !statistic_exempt)
-		round_statistics.track_new_participant(faction, 1)
+	if(GLOB.round_statistics && !statistic_exempt)
+		GLOB.round_statistics.track_new_participant(faction, 1)
 	generate_name()
 
 	// This can happen if a xeno gets made before the game starts
@@ -508,7 +508,11 @@
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
-/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags = MINIMAP_FLAG_XENO)
+/// Adds a minimap marker for this xeno using the provided flags.
+/// If flags is 0, it will use get_minimap_flag_for_faction for this xeno
+/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags)
+	if(!flags)
+		flags = get_minimap_flag_for_faction(hivenumber)
 	if(IS_XENO_LEADER(src))
 		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
 		return
@@ -785,7 +789,7 @@
 
 	//and display them
 	add_to_all_mob_huds()
-	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 
 
@@ -1074,7 +1078,7 @@
 /mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
 	var/color_override
 	if(special_blood)
-		var/datum/reagent/D = chemical_reagents_list[special_blood]
+		var/datum/reagent/D = GLOB.chemical_reagents_list[special_blood]
 		if(D)
 			color_override = D.color
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)

@@ -103,7 +103,7 @@ update_flag
 		src.add_fingerprint(user)
 	..()
 
-	nanomanager.update_uis(src) // Update all NanoUIs attached to src
+	SSnano.nanomanager.update_uis(src) // Update all NanoUIs attached to src
 
 /obj/structure/machinery/portable_atmospherics/canister/attack_remote(mob/user as mob)
 	return src.attack_hand(user)

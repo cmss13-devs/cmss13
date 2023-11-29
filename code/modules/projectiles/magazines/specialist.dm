@@ -27,14 +27,14 @@
 	default_ammo = /datum/ammo/bullet/sniper/flak
 	ammo_band_color = AMMO_BAND_COLOR_IMPACT
 
-//M42B Magazine
+//XM43E1 Magazine
 /obj/item/ammo_magazine/sniper/anti_materiel
-	name = "\improper XM42B marksman magazine (10x99mm)"
+	name = "\improper XM43E1 marksman magazine (10x99mm)"
 	desc = "A magazine of caseless 10x99mm anti-materiel rounds."
 	max_rounds = 8
 	caliber = "10x99mm"
 	default_ammo = /datum/ammo/bullet/sniper/anti_materiel
-	gun_type = /obj/item/weapon/gun/rifle/sniper/XM42B
+	gun_type = /obj/item/weapon/gun/rifle/sniper/XM43E1
 
 //M42C magazine
 

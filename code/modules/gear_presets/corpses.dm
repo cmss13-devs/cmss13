@@ -39,7 +39,6 @@
 		if(nest)
 			new_human.buckled = nest
 			new_human.setDir(nest.dir)
-			new_human.update_canmove()
 			nest.buckled_mob = new_human
 			nest.afterbuckle(new_human)
 	new_human.spawned_corpse = TRUE

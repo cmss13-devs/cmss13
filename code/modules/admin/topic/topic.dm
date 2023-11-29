@@ -50,7 +50,7 @@
 		if(task == "add")
 			var/new_ckey = ckey(input(usr,"New admin's ckey","Admin ckey", null) as text|null)
 			if(!new_ckey) return
-			if(new_ckey in admin_datums)
+			if(new_ckey in GLOB.admin_datums)
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': [new_ckey] is already an admin</font>")
 				return
 			adm_ckey = new_ckey
@@ -61,20 +61,20 @@
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': No valid ckey</font>")
 				return
 
-		var/datum/admins/D = admin_datums[adm_ckey]
+		var/datum/admins/D = GLOB.admin_datums[adm_ckey]
 
 		if(task == "remove")
 			if(alert("Are you sure you want to remove [adm_ckey]?","Message","Yes","Cancel") == "Yes")
 				if(!D) return
-				admin_datums -= adm_ckey
+				GLOB.admin_datums -= adm_ckey
 				D.disassociate()
 
 				message_admins("[key_name_admin(usr)] removed [adm_ckey] from the admins list")
 
 		else if(task == "rank")
 			var/new_rank
-			if(admin_ranks.len)
-				new_rank = tgui_input_list(usr, "Please select a rank", "New rank", (admin_ranks|"*New Rank*"))
+			if(GLOB.admin_ranks.len)
+				new_rank = tgui_input_list(usr, "Please select a rank", "New rank", (GLOB.admin_ranks|"*New Rank*"))
 			else
 				new_rank = tgui_input_list(usr, "Please select a rank", "New rank", list("Game Master","Game Admin", "Trial Admin", "Admin Observer","*New Rank*"))
 
@@ -91,15 +91,15 @@
 						to_chat(usr, "<font color='red'>Error: Topic 'editrights': Invalid rank</font>")
 						return
 					if(CONFIG_GET(flag/admin_legacy_system))
-						if(admin_ranks.len)
-							if(new_rank in admin_ranks)
-								rights = admin_ranks[new_rank] //we typed a rank which already exists, use its rights
+						if(GLOB.admin_ranks.len)
+							if(new_rank in GLOB.admin_ranks)
+								rights = GLOB.admin_ranks[new_rank] //we typed a rank which already exists, use its rights
 							else
-								admin_ranks[new_rank] = 0 //add the new rank to admin_ranks
+								GLOB.admin_ranks[new_rank] = 0 //add the new rank to admin_ranks
 				else
 					if(CONFIG_GET(flag/admin_legacy_system))
 						new_rank = ckeyEx(new_rank)
-						rights = admin_ranks[new_rank] //we input an existing rank, use its rights
+						rights = GLOB.admin_ranks[new_rank] //we input an existing rank, use its rights
 
 			if(D)
 				D.disassociate() //remove adminverbs and unlink from client
@@ -238,31 +238,31 @@
 		var/reason
 
 		var/banfolder = href_list["unbanupgradeperma"]
-		Banlist.cd = "/base/[banfolder]"
-		var/reason2 = Banlist["reason"]
+		GLOB.Banlist.cd = "/base/[banfolder]"
+		var/reason2 = GLOB.Banlist["reason"]
 
-		var/minutes = Banlist["minutes"]
+		var/minutes = GLOB.Banlist["minutes"]
 
-		var/banned_key = Banlist["key"]
-		Banlist.cd = "/base"
+		var/banned_key = GLOB.Banlist["key"]
+		GLOB.Banlist.cd = "/base"
 
 		var/mins = 0
-		if(minutes > CMinutes)
-			mins = minutes - CMinutes
+		if(minutes > GLOB.CMinutes)
+			mins = minutes - GLOB.CMinutes
 		if(!mins) return
 		mins = max(5255990,mins) // 10 years
-		minutes = CMinutes + mins
+		minutes = GLOB.CMinutes + mins
 		reason = input(usr,"Reason?","reason",reason2) as message|null
 		if(!reason) return
 
 		ban_unban_log_save("[key_name(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
 		message_admins("[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
-		Banlist.cd = "/base/[banfolder]"
-		Banlist["reason"] << sanitize(reason)
-		Banlist["temp"] << 0
-		Banlist["minutes"] << minutes
-		Banlist["bannedby"] << usr.ckey
-		Banlist.cd = "/base"
+		GLOB.Banlist.cd = "/base/[banfolder]"
+		GLOB.Banlist["reason"] << sanitize(reason)
+		GLOB.Banlist["temp"] << 0
+		GLOB.Banlist["minutes"] << minutes
+		GLOB.Banlist["bannedby"] << usr.ckey
+		GLOB.Banlist.cd = "/base"
 		unbanpanel()
 
 	else if(href_list["unbane"])
@@ -272,36 +272,36 @@
 		var/reason
 
 		var/banfolder = href_list["unbane"]
-		Banlist.cd = "/base/[banfolder]"
-		var/reason2 = Banlist["reason"]
-		var/temp = Banlist["temp"]
+		GLOB.Banlist.cd = "/base/[banfolder]"
+		var/reason2 = GLOB.Banlist["reason"]
+		var/temp = GLOB.Banlist["temp"]
 
-		var/minutes = Banlist["minutes"]
+		var/minutes = GLOB.Banlist["minutes"]
 
-		var/banned_key = Banlist["key"]
-		Banlist.cd = "/base"
+		var/banned_key = GLOB.Banlist["key"]
+		GLOB.Banlist.cd = "/base"
 
 		var/duration
 
 		var/mins = 0
-		if(minutes > CMinutes)
-			mins = minutes - CMinutes
+		if(minutes > GLOB.CMinutes)
+			mins = minutes - GLOB.CMinutes
 		mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
 		if(!mins) return
 		mins = min(525599,mins)
-		minutes = CMinutes + mins
+		minutes = GLOB.CMinutes + mins
 		duration = GetExp(minutes)
 		reason = input(usr,"Reason?","reason",reason2) as message|null
 		if(!reason) return
 
 		ban_unban_log_save("[key_name(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
 		message_admins("[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
-		Banlist.cd = "/base/[banfolder]"
-		Banlist["reason"] << sanitize(reason)
-		Banlist["temp"] << temp
-		Banlist["minutes"] << minutes
-		Banlist["bannedby"] << usr.ckey
-		Banlist.cd = "/base"
+		GLOB.Banlist.cd = "/base/[banfolder]"
+		GLOB.Banlist["reason"] << sanitize(reason)
+		GLOB.Banlist["temp"] << temp
+		GLOB.Banlist["minutes"] << minutes
+		GLOB.Banlist["bannedby"] << usr.ckey
+		GLOB.Banlist.cd = "/base"
 		unbanpanel()
 
 	/////////////////////////////////////new ban stuff
@@ -320,7 +320,7 @@
 				alert("You cannot perform this action. You must be of a higher administrative rank!")
 				return
 
-		if(!RoleAuthority)
+		if(!GLOB.RoleAuthority)
 			to_chat(usr, "Role Authority has not been set up!")
 			return
 
@@ -333,23 +333,23 @@
 		var/list/joblist = list()
 		switch(href_list["jobban3"])
 			if("CICdept")
-				joblist += get_job_titles_from_list(ROLES_COMMAND)
+				joblist += get_job_titles_from_list(GLOB.ROLES_COMMAND)
 			if("Supportdept")
-				joblist += get_job_titles_from_list(ROLES_AUXIL_SUPPORT)
+				joblist += get_job_titles_from_list(GLOB.ROLES_AUXIL_SUPPORT)
 			if("Policedept")
-				joblist += get_job_titles_from_list(ROLES_POLICE)
+				joblist += get_job_titles_from_list(GLOB.ROLES_POLICE)
 			if("Engineeringdept")
-				joblist += get_job_titles_from_list(ROLES_ENGINEERING)
+				joblist += get_job_titles_from_list(GLOB.ROLES_ENGINEERING)
 			if("Requisitiondept")
-				joblist += get_job_titles_from_list(ROLES_REQUISITION)
+				joblist += get_job_titles_from_list(GLOB.ROLES_REQUISITION)
 			if("Medicaldept")
-				joblist += get_job_titles_from_list(ROLES_MEDICAL)
+				joblist += get_job_titles_from_list(GLOB.ROLES_MEDICAL)
 			if("Marinesdept")
-				joblist += get_job_titles_from_list(ROLES_MARINES)
+				joblist += get_job_titles_from_list(GLOB.ROLES_MARINES)
 			if("Miscdept")
-				joblist += get_job_titles_from_list(ROLES_MISC)
+				joblist += get_job_titles_from_list(GLOB.ROLES_MISC)
 			if("Xenosdept")
-				joblist += get_job_titles_from_list(ROLES_XENO)
+				joblist += get_job_titles_from_list(GLOB.ROLES_XENO)
 			else
 				joblist += href_list["jobban3"]
 
@@ -562,22 +562,8 @@
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
 			dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
-		dat += {"Now: [master_mode]"}
+		dat += {"Now: [GLOB.master_mode]"}
 		show_browser(usr, dat, "Change Gamemode", "c_mode")
-
-	else if(href_list["f_secret"])
-		if(!check_rights(R_ADMIN)) return
-
-		if(SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		if(master_mode != "secret")
-			return alert(usr, "The game mode has to be secret!", null, null, null, null)
-		var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
-		for(var/mode in config.modes)
-			dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
-		dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];f_secret2=secret'>Random (default)</A><br>"}
-		dat += {"Now: [secret_force_mode]"}
-		show_browser(usr, dat, "Change Secret Gamemode", "f_secret")
 
 	else if(href_list["c_mode2"])
 		if(!check_rights(R_ADMIN|R_SERVER)) return
@@ -587,19 +573,6 @@
 		to_world(SPAN_NOTICE("<b><i>The mode is now: [GLOB.master_mode]!</i></b>"))
 		Game() // updates the main game menu
 		SSticker.save_mode(GLOB.master_mode)
-
-
-	else if(href_list["f_secret2"])
-		if(!check_rights(R_ADMIN|R_SERVER)) return
-
-		if(SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		if(master_mode != "secret")
-			return alert(usr, "The game mode has to be secret!", null, null, null, null)
-		secret_force_mode = href_list["f_secret2"]
-		message_admins("[key_name_admin(usr)] set the forced secret mode as [secret_force_mode].")
-		Game() // updates the main game menu
-		.(href, list("f_secret"=1))
 
 	else if(href_list["monkeyone"])
 		if(!check_rights(R_SPAWN)) return
@@ -611,17 +584,6 @@
 
 		message_admins("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
 		H.monkeyize()
-
-	else if(href_list["corgione"])
-		if(!check_rights(R_SPAWN)) return
-
-		var/mob/living/carbon/human/H = locate(href_list["corgione"])
-		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
-			return
-
-		message_admins("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]")
-		H.corgize()
 
 	else if(href_list["forcespeech"])
 		if(!check_rights(R_ADMIN)) return
@@ -949,7 +911,7 @@
 				H.mind.transfer_to(M)
 			else
 				M.key = H.key
-				if(M.client) M.client.change_view(world_view_size)
+				if(M.client) M.client.change_view(GLOB.world_view_size)
 
 			if(M.skills)
 				qdel(M.skills)
@@ -1044,7 +1006,7 @@
 			return
 		if(alert("Are you sure you want to cancel this OB?",,"Yes","No") != "Yes")
 			return
-		orbital_cannon_cancellation["[cancel_token]"] = null
+		GLOB.orbital_cannon_cancellation["[cancel_token]"] = null
 		message_admins("[src.owner] has cancelled the orbital strike.")
 
 	else if(href_list["admincancelpredsd"])
@@ -1208,7 +1170,7 @@
 		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax(msg_ghost = msg_ghost)
 
-		for(var/obj/structure/machinery/faxmachine/F in machines)
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
 			if(F == fax)
 				if(!(F.inoperable()))
 
@@ -1290,7 +1252,7 @@
 		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
-		for(var/obj/structure/machinery/faxmachine/F in machines)
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
 			if(F == fax)
 				if(!(F.inoperable()))
 
@@ -1372,7 +1334,7 @@
 		announce_fax( ,msg_ghost)
 
 
-		for(var/obj/structure/machinery/faxmachine/F in machines)
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
 			if(F == fax)
 				if(!(F.inoperable()))
 
@@ -1454,7 +1416,7 @@
 		announce_fax( ,msg_ghost)
 
 
-		for(var/obj/structure/machinery/faxmachine/F in machines)
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
 			if(F == fax)
 				if(!(F.inoperable()))
 
@@ -1778,16 +1740,16 @@
 		//unanswered_distress -= ref_person
 
 	if(href_list["distresscancel"])
-		if(distress_cancel)
+		if(GLOB.distress_cancel)
 			to_chat(usr, "The distress beacon was either canceled, or you are too late to cancel.")
 			return
 		log_game("[key_name_admin(usr)] has canceled the distress beacon.")
 		message_admins("[key_name_admin(usr)] has canceled the distress beacon.")
-		distress_cancel = TRUE
+		GLOB.distress_cancel = TRUE
 		return
 
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
-		distress_cancel = FALSE
+		GLOB.distress_cancel = FALSE
 		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
 		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
@@ -1795,7 +1757,7 @@
 	if(href_list["distress_handheld"]) //Prepares to call and logs accepted handheld distress beacons
 		var/mob/ref_person = href_list["distress_handheld"]
 		var/ert_name = href_list["ert_name"]
-		distress_cancel = FALSE
+		GLOB.distress_cancel = FALSE
 		message_admins("[key_name_admin(usr)] has opted to SEND [ert_name]! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
 		addtimer(CALLBACK(src, PROC_REF(accept_handheld_ert), usr, ref_person, ert_name), 10 SECONDS)
 
@@ -1806,10 +1768,10 @@
 		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
-		destroy_cancel = FALSE
+		GLOB.destroy_cancel = FALSE
 		message_admins("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
-			if(distress_cancel)
+			if(GLOB.distress_cancel)
 				return
 			var/mob/ref_person = locate(href_list["destroyship"])
 			set_security_level(SEC_LEVEL_DELTA)
@@ -1830,12 +1792,12 @@
 
 		//make ASRS order for nuke
 		var/datum/supply_order/new_order = new()
-		new_order.ordernum = supply_controller.ordernum
-		supply_controller.ordernum++
-		new_order.object = supply_controller.supply_packs[nuketype]
+		new_order.ordernum = GLOB.supply_controller.ordernum
+		GLOB.supply_controller.ordernum++
+		new_order.object = GLOB.supply_controller.supply_packs[nuketype]
 		new_order.orderedby = ref_person
 		new_order.approvedby = "USCM High Command"
-		supply_controller.shoppinglist += new_order
+		GLOB.supply_controller.shoppinglist += new_order
 
 		//Can no longer request a nuke
 		GLOB.ares_datacore.nuke_available = FALSE
@@ -1859,7 +1821,7 @@
 		message_admins("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
 	if(href_list["sdcancel"])
-		if(destroy_cancel)
+		if(GLOB.destroy_cancel)
 			to_chat(usr, "The self-destruct was already canceled.")
 			return
 		if(get_security_level() == "delta")
@@ -1867,7 +1829,7 @@
 			return
 		log_game("[key_name_admin(usr)] has canceled the self-destruct.")
 		message_admins("[key_name_admin(usr)] has canceled the self-destruct.")
-		destroy_cancel = 1
+		GLOB.destroy_cancel = TRUE
 		return
 
 	if(href_list["tag_datum"])
@@ -1975,18 +1937,18 @@
 	return
 
 /datum/admins/proc/accept_ert(mob/approver, mob/ref_person)
-	if(distress_cancel)
+	if(GLOB.distress_cancel)
 		return
-	distress_cancel = TRUE
+	GLOB.distress_cancel = TRUE
 	SSticker.mode.activate_distress()
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
 ///Handles calling the ERT sent by handheld distress beacons
 /datum/admins/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
-	if(distress_cancel)
+	if(GLOB.distress_cancel)
 		return
-	distress_cancel = TRUE
+	GLOB.distress_cancel = TRUE
 	SSticker.mode.get_specific_call("[ert_called]", TRUE, FALSE)
 	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
@@ -2000,7 +1962,7 @@
 	for(var/jobPos in roles)
 		if(!jobPos)
 			continue
-		var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
+		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[jobPos]
 		if(!job)
 			continue
 
@@ -2022,7 +1984,7 @@
 	for(var/jobPos in roles)
 		if(!jobPos)
 			continue
-		var/datum/job/J = RoleAuthority.roles_by_name[jobPos]
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[jobPos]
 		if(!J)
 			continue
 		temp += J.title

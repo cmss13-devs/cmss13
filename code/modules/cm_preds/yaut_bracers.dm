@@ -106,6 +106,7 @@
 
 /// handles decloaking only on HUNTER gloves
 /obj/item/clothing/gloves/yautja/proc/decloak()
+	SIGNAL_HANDLER
 	return
 
 /// Called to update the minimap icon of the predator
@@ -408,7 +409,7 @@
 	. = wristblades_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(mob/living/carbon/human/caller, forced = FALSE)
-	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
+	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
 		return
 
 	. = check_random_function(caller, forced)
@@ -496,7 +497,7 @@
 			if(dist < closest)
 				closest = dist
 				closest_item = tracked_item
-				direction = get_dir(M,loc)
+				direction = Get_Compass_Dir(M,loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD)
@@ -513,7 +514,7 @@
 			var/dist = get_dist(M,Y)
 			if(dist < closest)
 				closest = dist
-				direction = get_dir(M,Y)
+				direction = Get_Compass_Dir(M,Y)
 				areaLoc = loc
 
 	var/output = FALSE
@@ -590,9 +591,9 @@
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
 		animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
 
-		var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+		var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
-		var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+		var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 		XI.remove_from_hud(M)
 		anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
 
@@ -632,9 +633,9 @@
 		user.see_invisible = initial(user.see_invisible)
 	cloak_timer = world.time + (DECLOAK_STANDARD / 2)
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(user)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(user)
 
 	anim(user.loc, user, 'icons/mob/mob.dmi', null, "uncloak", null, user.dir)
@@ -648,7 +649,7 @@
 	. = caster_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(mob/living/carbon/human/caller, forced = FALSE)
-	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
+	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
 		return
 
 	. = check_random_function(caller, forced)

@@ -1,4 +1,4 @@
-/var/create_object_html = null
+/datum/admins/var/static/create_object_html = null
 
 /datum/admins/proc/create_object(mob/user)
 	if (!create_object_html)

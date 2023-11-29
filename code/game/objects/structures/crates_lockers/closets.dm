@@ -79,10 +79,11 @@
 		M.forceMove(loc)
 		if(exit_stun)
 			M.apply_effect(exit_stun, STUN) //Action delay when going out of a closet
-		M.update_canmove() //Force the delay to go in action immediately
-		if(!M.lying)
-			M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
-			SPAN_WARNING("You get out of [src] and get your bearings!"))
+		if(isliving(M))
+			var/mob/living/living_M = M
+			if(living_M.mobility_flags & MOBILITY_MOVE)
+				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
+				SPAN_WARNING("You get out of [src] and get your bearings!"))
 
 /obj/structure/closet/proc/open()
 	if(opened)
@@ -157,10 +158,15 @@
 
 
 /obj/structure/closet/proc/take_damage(damage)
+	if(health <= 0)
+		return
+
 	health = max(health - damage, 0)
 	if(health <= 0)
-		for(var/atom/movable/A as anything in src)
-			A.forceMove(src.loc)
+		for(var/atom/movable/movable as anything in src)
+			if(!loc)
+				break
+			movable.forceMove(loc)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 		qdel(src)
 
@@ -333,7 +339,7 @@
 	set category = "Object"
 	set name = "Toggle Open"
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+	if(usr.is_mob_incapacitated())
 		return
 
 	if(usr.loc == src)

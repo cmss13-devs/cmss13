@@ -343,6 +343,9 @@
 	var/rechargeTime = 0 //time spent after arrival before being able to launch again
 	var/prearrivalTime = 0 //delay after call time finishes for sound effects, explosions, etc.
 
+	var/playing_launch_announcement_alarm = FALSE // FALSE = off ; TRUE = on
+	var/datum/looping_sound/looping_launch_announcement_alarm/alarm_sound_loop
+
 	var/landing_sound = 'sound/effects/engine_landing.ogg'
 	var/ignition_sound = 'sound/effects/engine_startup.ogg'
 	/// Default shuttle audio ambience while flying
@@ -383,6 +386,7 @@
 
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
+		QDEL_NULL(alarm_sound_loop)
 		SSshuttle.mobile -= src
 		destination = null
 		previous = null
@@ -409,6 +413,14 @@
 
 	initial_engines = count_engines()
 	current_engines = initial_engines
+
+	//Launch Announcement Alarm variables setup
+	alarm_sound_loop = new(src)
+	alarm_sound_loop.mid_length = 20
+	alarm_sound_loop.extra_range = 30
+	alarm_sound_loop.volume = 100
+	alarm_sound_loop.is_sound_projecting = TRUE
+	alarm_sound_loop.falloff_distance = 7
 
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#0f0")

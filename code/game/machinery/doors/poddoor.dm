@@ -247,10 +247,9 @@
 	density = FALSE
 
 /obj/structure/machinery/door/poddoor/filler_object
-	name = "filler object"
-	mouse_opacity = FALSE
-	alpha = 0
-	icon_state = null
+	name = ""
+	icon = null
+	icon_state = ""
 	unslashable = TRUE
 	unacidable = TRUE
 

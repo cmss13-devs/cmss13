@@ -1400,7 +1400,7 @@ and you're good to go.
 
 		var/damage_buff = BASE_BULLET_DAMAGE_MULT
 		//if target is lying or unconscious - add damage bonus
-		if(attacked_mob.lying == TRUE || attacked_mob.stat == UNCONSCIOUS)
+		if(!(attacked_mob.mobility_flags & MOBILITY_STAND) || attacked_mob.stat == UNCONSCIOUS)
 			damage_buff += BULLET_DAMAGE_MULT_TIER_4
 		projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
 		if(bullets_fired == 1) //First shot gives the PB message.
@@ -1424,7 +1424,7 @@ and you're good to go.
 				projectile_to_fire.give_bullet_traits(BP)
 				if(bullets_fired > 1)
 					BP.original = attacked_mob //original == the original target of the projectile. If the target is downed and this isn't set, the projectile will try to fly over it. Of course, it isn't going anywhere, but it's the principle of the thing. Very embarrassing.
-					if(!BP.handle_mob(attacked_mob) && attacked_mob.lying) //This is the 'handle impact' proc for a flying projectile, including hit RNG, on_hit_mob and bullet_act. If it misses, it doesn't go anywhere. We'll pretend it slams into the ground or punches a hole in the ceiling, because trying to make it bypass the xeno or shoot from the tile beyond it is probably more spaghet than my life is worth.
+					if(!BP.handle_mob(attacked_mob) && attacked_mob.body_position == LYING_DOWN) //This is the 'handle impact' proc for a flying projectile, including hit RNG, on_hit_mob and bullet_act. If it misses, it doesn't go anywhere. We'll pretend it slams into the ground or punches a hole in the ceiling, because trying to make it bypass the xeno or shoot from the tile beyond it is probably more spaghet than my life is worth.
 						if(BP.ammo.sound_bounce)
 							playsound(attacked_mob.loc, BP.ammo.sound_bounce, 35, 1)
 						attacked_mob.visible_message(SPAN_AVOIDHARM("[BP] slams into [get_turf(attacked_mob)]!"), //Managing to miss an immobile target flat on the ground deserves some recognition, don't you think?
@@ -1437,7 +1437,7 @@ and you're good to go.
 
 		if(bullets_fired > 1)
 			projectile_to_fire.original = attacked_mob
-			if(!projectile_to_fire.handle_mob(attacked_mob) && attacked_mob.lying)
+			if(!projectile_to_fire.handle_mob(attacked_mob) && attacked_mob.body_position == LYING_DOWN)
 				if(projectile_to_fire.ammo.sound_bounce)
 					playsound(attacked_mob.loc, projectile_to_fire.ammo.sound_bounce, 35, 1)
 				attacked_mob.visible_message(SPAN_AVOIDHARM("[projectile_to_fire] slams into [get_turf(attacked_mob)]!"),

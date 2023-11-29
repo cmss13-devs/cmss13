@@ -5,7 +5,6 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	desc = "It seems to be a visual projection of someone" //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "hologram"
-	canmove = TRUE
 	blinded = FALSE
 
 	invisibility = INVISIBILITY_OBSERVER

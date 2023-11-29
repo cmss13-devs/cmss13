@@ -1,5 +1,4 @@
-var/bomb_set = FALSE
-
+GLOBAL_VAR_INIT(bomb_set, FALSE)
 /obj/structure/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
 	desc = "Nuke the entire site from orbit, it's the only way to be sure. Too bad we don't have any orbital nukes."
@@ -59,7 +58,7 @@ var/bomb_set = FALSE
 		update_minimap_icon()
 		return PROCESS_KILL
 
-	bomb_set = TRUE //So long as there is one nuke timing, it means one nuke is armed.
+	GLOB.bomb_set = TRUE //So long as there is one nuke timing, it means one nuke is armed.
 	timeleft = explosion_time - world.time
 	if(world.time >= explosion_time)
 		explode()
@@ -90,7 +89,7 @@ var/bomb_set = FALSE
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
-	if(anchored && timing && bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
+	if(anchored && timing && GLOB.bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		user.visible_message(SPAN_INFO("[user] begins to defuse \the [src]."), SPAN_INFO("You begin to defuse \the [src]. This will take some time..."))
 		if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			disable()
@@ -99,7 +98,7 @@ var/bomb_set = FALSE
 	..()
 
 /obj/structure/machinery/nuclearbomb/attack_hand(mob/user as mob)
-	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isRemoteControlling(user))
+	if(user.is_mob_incapacitated() || get_dist(src, user) > 1 || isRemoteControlling(user))
 		return
 
 	if(isyautja(user))
@@ -111,7 +110,7 @@ var/bomb_set = FALSE
 			return
 
 		if(isqueen(user))
-			if(timing && bomb_set)
+			if(timing && GLOB.bomb_set)
 				user.visible_message(SPAN_INFO("[user] begins to defuse \the [src]."), SPAN_INFO("You begin to defuse \the [src]. This will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 					disable()
@@ -196,14 +195,14 @@ var/bomb_set = FALSE
 				timing = !timing
 				if(timing)
 					if(!safety)
-						bomb_set = TRUE
+						GLOB.bomb_set = TRUE
 						explosion_time = world.time + timeleft
 						update_minimap_icon()
 						start_processing()
 						announce_to_players()
 						message_admins("\The [src] has been activated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
 					else
-						bomb_set = FALSE
+						GLOB.bomb_set = FALSE
 				else
 					disable()
 					message_admins("\The [src] has been deactivated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
@@ -232,7 +231,7 @@ var/bomb_set = FALSE
 			being_used = FALSE
 			if(safety)
 				timing = FALSE
-				bomb_set = FALSE
+				GLOB.bomb_set = FALSE
 			. = TRUE
 
 		if("toggleCommandLockout")
@@ -291,7 +290,7 @@ var/bomb_set = FALSE
 	set name = "Make Deployable"
 	set src in oview(1)
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || timing)
+	if(usr.is_mob_incapacitated() || being_used || timing)
 		return
 
 	if(!ishuman(usr))
@@ -378,7 +377,7 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/proc/disable()
 	timing = FALSE
-	bomb_set = FALSE
+	GLOB.bomb_set = FALSE
 	timeleft = initial(timeleft)
 	explosion_time = null
 	announce_to_players()
@@ -436,7 +435,7 @@ var/bomb_set = FALSE
 	if(timing != -1)
 		message_admins("\The [src] has been unexpectedly deleted at ([x],[y],[x]). [ADMIN_JMP(src)]")
 		log_game("\The [src] has been unexpectedly deleted at ([x],[y],[x]).")
-	bomb_set = FALSE
+	GLOB.bomb_set = FALSE
 	SSminimaps.remove_marker(src)
 	return ..()
 

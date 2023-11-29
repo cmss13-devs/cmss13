@@ -461,7 +461,8 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
 
-	tied_reagents = obj_reagents
+	if(obj_reagents)
+		tied_reagents = obj_reagents
 
 	target_clicked = target
 
@@ -731,7 +732,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	if(target.density)
 		return
 
-	for(var/spread_direction in alldirs)
+	for(var/spread_direction in GLOB.alldirs)
 
 		var/spread_power = remaining_distance
 
@@ -777,7 +778,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	fire_reag.burncolor = f_color
 
 	new/obj/flamer_fire(target, cause_data, fire_reag)
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		var/spread_power = range
 		switch(direction)
 			if(NORTH,SOUTH,EAST,WEST)

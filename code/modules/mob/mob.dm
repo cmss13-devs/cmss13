@@ -54,8 +54,8 @@
 	if(!faction_group)
 		faction_group = list(faction)
 
-	last_mob_gid++
-	gid = last_mob_gid
+	GLOB.last_mob_gid++
+	gid = GLOB.last_mob_gid
 
 	GLOB.mob_list += src
 	if(stat == DEAD)
@@ -454,7 +454,7 @@
 	if(!Adjacent(usr)) return
 	if(!ishuman(M) && !ismonkey(M)) return
 	if(!ishuman(src) && !ismonkey(src)) return
-	if(M.lying || M.is_mob_incapacitated())
+	if(M.is_mob_incapacitated())
 		return
 	if(M.pulling == src && (M.a_intent & INTENT_GRAB) && M.grab_level == GRAB_AGGRESSIVE)
 		return
@@ -593,20 +593,13 @@
 adds a dizziness amount to a mob
 use this rather than directly changing var/dizziness
 since this ensures that the dizzy_process proc is started
-currently only humans get dizzy
+currently only mob/living/carbon/human get dizzy
 
 value of dizziness ranges from 0 to 1000
 below 100 is not dizzy
 */
 /mob/proc/make_dizzy(amount)
-	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
-		return
-
-	dizziness = min(500, dizziness + amount) // store what will be new value
-													// clamped to max 500
-	if(dizziness > 100 && !is_dizzy)
-		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
-
+	return
 
 /*
 dizzy process - wiggles the client's pixel offset over time
@@ -700,70 +693,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // facing verbs
 /mob/proc/canface()
-	if(!canmove) return 0
 	if(client.moving) return 0
 	if(stat==2) return 0
 	if(anchored) return 0
 	if(monkeyizing) return 0
 	if(is_mob_restrained()) return 0
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED)) // We allow rotation if simply floored
+		return FALSE
 	return 1
-
-//Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
-/mob/proc/update_canmove()
-	var/laid_down = is_laid_down()
-
-	if(laid_down)
-		lying = TRUE
-		flags_atom &= ~DIRLOCK
-	else
-		lying = FALSE
-	if(buckled)
-		if(buckled.buckle_lying)
-			lying = TRUE
-			flags_atom &= ~DIRLOCK
-		else
-			lying = FALSE
-
-	canmove = !HAS_TRAIT(src, TRAIT_IMMOBILIZED)
-
-	if(isliving(src)) // Temporary I SWEAR. This whole proc is going down
-		var/mob/living/living = src
-		if(living.stunned)
-			canmove = FALSE
-
-	if(!can_crawl && lying)
-		canmove = FALSE
-
-	if(lying_prev != lying)
-		if(lying)
-			ADD_TRAIT(src, TRAIT_UNDENSE, LYING_TRAIT)
-			add_temp_pass_flags(PASS_MOB_THRU)
-			drop_l_hand()
-			drop_r_hand()
-			SEND_SIGNAL(src, COMSIG_MOB_KNOCKED_DOWN)
-		else
-			REMOVE_TRAIT(src, TRAIT_UNDENSE, LYING_TRAIT)
-			SEND_SIGNAL(src, COMSIG_MOB_GETTING_UP)
-			remove_temp_pass_flags(PASS_MOB_THRU)
-		update_transform()
-
-	if(lying)
-		//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
-		if(pulledby && pulledby.grab_level == GRAB_CARRY)
-			layer = ABOVE_MOB_LAYER
-		else if (stat == DEAD)
-			layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
-		else if(layer == initial(layer)) //to avoid things like hiding larvas.
-			layer = LYING_LIVING_MOB_LAYER
-	else if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
-		layer = initial(layer)
-
-	SEND_SIGNAL(src, COMSIG_MOB_POST_UPDATE_CANMOVE, canmove, laid_down, lying)
-
-	return canmove
-
-/mob/proc/is_laid_down()
-	return (stat || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
 
 /mob/proc/face_dir(ndir, specific_dir)
 	if(!canface()) return 0
@@ -931,13 +868,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/living/proc/handle_knocked_down(bypass_client_check = FALSE)
 	if(knocked_down && (bypass_client_check || client))
-		knocked_down = max(knocked_down-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
+		knocked_down = max(knocked_down-1,0)
 		knocked_down_callback_check()
 	return knocked_down
 
 /mob/living/proc/handle_knocked_out(bypass_client_check = FALSE)
 	if(knocked_out && (bypass_client_check || client))
-		knocked_out = max(knocked_out-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
+		knocked_out = max(knocked_out-1,0)
 		knocked_out_callback_check()
 	return knocked_out
 
@@ -1130,6 +1067,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/set_stat(new_stat)
 	if(new_stat == stat)
 		return
-	. = stat //old stat
+	. = stat
 	stat = new_stat
 	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, new_stat, .)
+
+/mob/proc/update_stat()
+	return

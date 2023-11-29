@@ -313,7 +313,7 @@
 				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
 				switch (response)
 					if ("Yes")
-						if(launch_initiated == 0)
+						if(!launch_initiated)
 							launch_initiated = 1
 							to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
 							shipwide_ai_announcement("Launch command received. " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " Lifeboat doors will close in 10 seconds.")

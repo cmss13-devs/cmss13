@@ -859,3 +859,14 @@
 	icon_state = "shuttle2"
 	requires_power = TRUE
 	unlimited_power = FALSE
+
+/area/ice_colony/landing/console
+	name = "\improper LZ1 'Lazarus'"
+	icon_state = "tcomsatcham"
+	requires_power = FALSE
+
+/area/ice_colony/landing/console2
+	name = "\improper LZ2 'Underground'"
+	icon_state = "tcomsatcham"
+	requires_power = FALSE
+

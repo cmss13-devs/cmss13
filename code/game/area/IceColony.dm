@@ -869,4 +869,3 @@
 	name = "\improper LZ2 'Underground'"
 	icon_state = "tcomsatcham"
 	requires_power = FALSE
-

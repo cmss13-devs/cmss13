@@ -181,7 +181,7 @@
 				bullet_effect.adjust_effect(slow_duration, SLOW)
 			else
 				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
-		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)//moved this
+		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)//moved this
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
 			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
 			soundplaycooldown = 3

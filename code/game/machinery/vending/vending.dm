@@ -820,7 +820,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	if(inoperable())
 		return
 
-	if(user.stat || user.is_mob_restrained() || user.lying)
+	if(user.stat || user.is_mob_restrained())
 		return
 
 	if(get_dist(user, src) > 1 || get_dist(src, A) > 1)

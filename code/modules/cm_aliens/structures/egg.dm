@@ -296,3 +296,63 @@
 			linked_egg.HasProximity(C)
 		if(linked_eggmorph)
 			linked_eggmorph.HasProximity(C)
+
+/*
+SPECIAL EGG USED BY EGG CARRIER
+*/
+
+#define CARRIER_EGG_UNSUSTAINED_LIFE 1 MINUTES
+#define CARRIER_EGG_MAXIMUM_LIFE 5 MINUTES
+
+/obj/effect/alien/egg/carrier_egg
+	name = "fragile egg"
+	desc = "It looks like a weird, fragile egg."
+	///Owner of the fragile egg, must be a mob/living/carbon/xenomorph/carrier
+	var/mob/living/carbon/xenomorph/carrier/owner = null
+	///Time that the carrier was last within refresh range of the egg (14 tiles)
+	var/last_refreshed = null
+	/// Timer holder for the maximum lifetime of the egg as defined CARRIER_EGG_MAXIMUM_LIFE
+	var/life_timer = null
+
+/obj/effect/alien/egg/carrier_egg/Initialize(mapload, hivenumber, planter = null)
+	. = ..()
+	last_refreshed = world.time
+	if(!planter)
+		//If we have no owner when created... this really shouldn't happen but start decaying the egg immediately.
+		start_unstoppable_decay()
+	else
+		//Die after maximum lifetime
+		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
+		set_owner(planter)
+
+/obj/effect/alien/egg/carrier_egg/Destroy()
+	if(life_timer)
+		deltimer(life_timer)
+	//Remove reference to src in owner's behavior_delegate and set owner to null
+	if(owner)
+		var/mob/living/carbon/xenomorph/carrier/my_owner = owner
+		var/datum/behavior_delegate/carrier_eggsac/behavior = my_owner.behavior_delegate
+		behavior.eggs_sustained -= src
+		my_owner = null
+	return ..()
+
+/// Set the owner of the egg to the planter.
+/obj/effect/alien/egg/carrier_egg/proc/set_owner(mob/living/carbon/xenomorph/carrier/planter)
+	var/datum/behavior_delegate/carrier_eggsac/my_delegate = planter.behavior_delegate
+	my_delegate.eggs_sustained += src
+	owner = planter
+
+///Check the last refreshed time and burst the egg if we're over the lifetime of the egg
+/obj/effect/alien/egg/carrier_egg/proc/check_decay()
+	if(last_refreshed + CARRIER_EGG_UNSUSTAINED_LIFE < world.time)
+		start_unstoppable_decay()
+
+///Burst the egg without hugger release after a 10 second timer & remove the life timer.
+/obj/effect/alien/egg/carrier_egg/proc/start_unstoppable_decay()
+	addtimer(CALLBACK(src, PROC_REF(Burst), TRUE), 10 SECONDS)
+	if(life_timer)
+		deltimer(life_timer)
+
+/obj/effect/alien/egg/carrier_egg/Burst(kill, instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled)
+	. = ..()
+	owner = null

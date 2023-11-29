@@ -449,21 +449,17 @@ GLOBAL_LIST_EMPTY(vending_products)
 	redeem_token(attacking_item, user)
 
 /obj/structure/machinery/cm_vending/proc/get_token_type(obj/item/coin/marine/token)
-	if(istype(token, /obj/item/coin/marine/engineer))
-		return TOKEN_ENGINEER
-	if(istype(token, /obj/item/coin/marine/specialist))
-		return TOKEN_SPEC
-	if(istype(token, /obj/item/coin/marine/synth))
-		return TOKEN_SYNTH
-	return TOKEN_VOID
+	if(!istype(token))
+		return VEND_TOKEN_VOID
+	return token.token_type
 
 /obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/token, mob/user)
 	var/reward_typepath
 	switch(get_token_type(token))
-		if(TOKEN_VOID)
+		if(VEND_TOKEN_VOID)
 			to_chat(user, SPAN_WARNING("ERROR: TOKEN NOT RECOGNISED."))
 			return FALSE
-		if(TOKEN_SPEC)
+		if(VEND_TOKEN_SPEC)
 			reward_typepath = /obj/item/spec_kit/rifleman
 		else
 			to_chat(user, SPAN_WARNING("ERROR: INCORRECT TOKEN."))

@@ -69,8 +69,8 @@
 #define VEND_LOAD_AMMO_BOXES (1<<9)
 
 // Redemption Tokens
-#define TOKEN_ENGINEER "Engineer"
-#define TOKEN_SPEC "Specialist"
-#define TOKEN_SYNTH "Synthetic"
+#define VEND_TOKEN_ENGINEER "Engineer"
+#define VEND_TOKEN_SPEC "Specialist"
+#define VEND_TOKEN_SYNTH "Synthetic"
 /// Token invalid/unrecognised.
-#define TOKEN_VOID "Void"
+#define VEND_TOKEN_VOID "Void"

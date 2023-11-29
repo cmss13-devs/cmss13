@@ -121,6 +121,9 @@
 	name = "marine equipment token"
 	desc = "I wonder what it does?"
 	icon_state = "coin_copper"
+	black_market_value = 0
+	/// What is the token for?
+	var/token_type = VEND_TOKEN_VOID
 
 /obj/item/coin/marine/attackby(obj/item/W as obj, mob/user as mob) //To remove attaching a string functionality
 	return
@@ -129,14 +132,16 @@
 	name = "marine engineer support token"
 	desc = "Insert this into an engineer vendor in order to access a support weapon."
 	icon_state = "coin_gold"
+	token_type = VEND_TOKEN_ENGINEER
 
 /obj/item/coin/marine/specialist
 	name = "marine specialist weapon token"
 	desc = "Insert this into a USCM equipment vendor in order to access a single highly dangerous weapon."
 	icon_state = "coin_diamond"
+	token_type = VEND_TOKEN_SPEC
 
 /obj/item/coin/marine/synth
 	name = "synthetic experimental tool redemption token"
 	desc = "Insert this into a synthetic experimental tools vendor in order to access a variety of experimental support tools."
 	icon_state = "coin_synth"
-	black_market_value = 0
+	token_type = VEND_TOKEN_SYNTH

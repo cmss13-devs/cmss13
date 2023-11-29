@@ -274,4 +274,16 @@
 
 		list("AMMO", 0, null, null, null),
 		list("ES-4 stun magazine", 10, /obj/item/ammo_magazine/pistol/es4, "white", "Holds 19 rounds of specialized Conductive 9mm."),
+
+		list("RADIO KEYS", 0, null, null, null),
+		list("Alpha Squad", 25, /obj/item/device/encryptionkey/alpha, "white", "Radio Key for USCM Alpha Squad."),	
+		list("Bravo Squad", 25, /obj/item/device/encryptionkey/bravo, "white", "Radio Key for USCM Bravo Squad."),
+		list("Charlie Squad", 25, /obj/item/device/encryptionkey/charlie, "white", "Radio Key for USCM Charlie Squad."),	
+		list("Delta Squad", 25, /obj/item/device/encryptionkey/delta, "white", "Radio Key for USCM Delta Squad."),
+		list("Echo Squad", 25, /obj/item/device/encryptionkey/echo, "white", "Radio Key for USCM Echo Squad."),	
+		list("W-Y PMC", 30, /obj/item/device/encryptionkey/pmc, "white", "Radio Key for Weyland-Yutani PMC Combat Comms."),
+		list("Colony", 30, /obj/item/device/encryptionkey/colony, "white", "Pre-tuned Radio Key for local colony comms."),	
+		list("Colonial Marshals", 50, /obj/item/device/encryptionkey/cmb, "red", "CONTRABAND: Radio Key for the CMB."),	
+		list("Colonial Liberation Front", 50, /obj/item/device/encryptionkey/clf, "red", "CONTRABAND: Radio Key for known local CLF frequencies."),	
+		list("United People's Republic", 50, /obj/item/device/encryptionkey/upp, "red", "CONTRABAND: Radio Key for known UPP listening frequencies."),
 	)

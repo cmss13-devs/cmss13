@@ -166,8 +166,9 @@
 		turf_list += T
 	var/soundplaycooldown = 0
 	var/debriscooldown = 0
-	var/turf/impact_tile = pick(turf_list)
+
 	for(var/i = 1 to ammo_used_per_firing)
+		var/turf/impact_tile = pick(turf_list)
 		sleep(1)
 		for(var/j = 1 to 2) //rather than halving the sleep, were doubling the bullets shot "bang"
 			var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
@@ -181,14 +182,14 @@
 				else
 					explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
 			new /obj/effect/particle_effect/expl_particles(impact_tile)
-		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
-			soundplaycooldown = 3
-		soundplaycooldown--
-		if(!debriscooldown)
-			impact_tile.ceiling_debris_check(1)
-			debriscooldown = 6
-		debriscooldown--
+			if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
+				playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
+				soundplaycooldown = 3
+			soundplaycooldown--
+			if(!debriscooldown)
+				impact_tile.ceiling_debris_check(1)
+				debriscooldown = 6
+			debriscooldown--
 	sleep(11) //speed of sound simulation
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 

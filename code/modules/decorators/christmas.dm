@@ -49,6 +49,8 @@
 	helmet.desc = "Ho ho ho, Merry Christmas!"
 	helmet.icon = 'icons/obj/items/clothing/hats.dmi'
 	helmet.icon_override = 'icons/mob/humans/onmob/head_0.dmi'
+	helmet.flags_inv_hide = HIDEEARS|HIDEALLHAIR
+	helmet.flags_marine_helmet = NO_FLAGS
 	if(prob(50))
 		helmet.icon_state = "santa_hat_red"
 	else

@@ -222,7 +222,7 @@
 
 ///Attempt to move while inside
 /obj/structure/machinery/disposal/relaymove(mob/living/user)
-	if(user.stat || user.stunned || user.knocked_down || flushing)
+	if(user.is_mob_incapacitated(TRUE) || flushing)
 		return FALSE
 	if(user.loc == src)
 		go_out(user)
@@ -234,9 +234,8 @@
 		user.client.eye = user.client.mob
 		user.client.perspective = MOB_PERSPECTIVE
 	user.forceMove(loc)
-	user.stunned = max(user.stunned, 2)  //Action delay when going out of a bin
-	user.update_canmove() //Force the delay to go in action immediately
-	if(!user.lying)
+	user.apply_effect(2, STUN)
+	if(user.mobility_flags & MOBILITY_MOVE)
 		user.visible_message(SPAN_WARNING("[user] suddenly climbs out of [src]!"),
 		SPAN_WARNING("You climb out of [src] and get your bearings!"))
 		update()
@@ -305,8 +304,7 @@
 		if(isliving(AM))
 			var/mob/living/living = AM
 			living.Stun(2)
-			living.update_canmove() //Force the delay to go in action immediately
-			if(!living.lying)
+			if(living.body_position == STANDING_UP)
 				living.visible_message(SPAN_WARNING("[living] is suddenly pushed out of [src]!"),
 				SPAN_WARNING("You get pushed out of [src] and get your bearings!"))
 	update()
@@ -746,7 +744,7 @@
 //Remains : set to leave broken pipe pieces in place
 /obj/structure/disposalpipe/deconstruct(disassembled = TRUE)
 	if(disassembled)
-		for(var/D in cardinal)
+		for(var/D in GLOB.cardinals)
 			if(D & dpdir)
 				var/obj/structure/disposalpipe/broken/P = new(loc)
 				P.setDir(D)
@@ -1096,7 +1094,8 @@
 /obj/structure/disposalpipe/tagger/Initialize(mapload, ...)
 	. = ..()
 	dpdir = dir|turn(dir, 180)
-	if(sort_tag) tagger_locations |= sort_tag
+	if(sort_tag)
+		GLOB.tagger_locations |= sort_tag
 	updatename()
 	updatedesc()
 	update()
@@ -1152,7 +1151,8 @@
 
 /obj/structure/disposalpipe/sortjunction/Initialize(mapload, ...)
 	. = ..()
-	if(sortType) tagger_locations |= sortType
+	if(sortType)
+		GLOB.tagger_locations |= sortType
 
 	updatedir()
 	updatename()
@@ -1457,7 +1457,7 @@
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))
 	else
-		dirs = alldirs.Copy()
+		dirs = GLOB.alldirs.Copy()
 
 	INVOKE_ASYNC(streak(dirs))
 
@@ -1466,7 +1466,7 @@
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))
 	else
-		dirs = alldirs.Copy()
+		dirs = GLOB.alldirs.Copy()
 
 	INVOKE_ASYNC(streak(dirs))
 

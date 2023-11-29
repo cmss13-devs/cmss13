@@ -29,7 +29,7 @@
 //TODO: Integrate defence zones and targeting body parts with the actual organ system, move these into organ definitions.
 
 /// The base miss chance for the different defence zones
-var/list/global/base_miss_chance = list(
+GLOBAL_LIST_INIT(base_miss_chance, list(
 	"head" = 10,
 	"chest" = 0,
 	"groin" = 5,
@@ -43,11 +43,11 @@ var/list/global/base_miss_chance = list(
 	"r_foot" = 40,
 	"eyes" = 20,
 	"mouth" = 15,
-)
+))
 
 //Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
 //Also used to weight the protection value that armor provides for covering that body part when calculating protection from full-body effects.
-var/list/global/organ_rel_size = list(
+GLOBAL_LIST_INIT(organ_rel_size, list(
 	"head" = 15,
 	"chest" = 70,
 	"groin" = 30,
@@ -61,10 +61,10 @@ var/list/global/organ_rel_size = list(
 	"r_foot" = 10,
 	"eyes" = 5,
 	"mouth" = 15,
-)
+))
 
 // This is much faster than a string comparison
-var/global/list/limb_types_by_name = list(
+GLOBAL_LIST_INIT(limb_types_by_name, list(
 	"head" = /obj/limb/head,
 	"chest" = /obj/limb/chest,
 	"groin" = /obj/limb/groin,
@@ -76,7 +76,7 @@ var/global/list/limb_types_by_name = list(
 	"r_hand" = /obj/limb/hand/r_hand,
 	"l_foot" = /obj/limb/foot/l_foot,
 	"r_foot" = /obj/limb/foot/r_foot,
-)
+))
 
 /proc/check_zone(zone)
 	if(!zone)
@@ -99,17 +99,17 @@ var/global/list/limb_types_by_name = list(
 	var/rand_zone = zone
 	while (rand_zone == zone)
 		rand_zone = pick (
-			organ_rel_size["head"]; "head",
-			organ_rel_size["chest"]; "chest",
-			organ_rel_size["groin"]; "groin",
-			organ_rel_size["l_arm"]; "l_arm",
-			organ_rel_size["r_arm"]; "r_arm",
-			organ_rel_size["l_leg"]; "l_leg",
-			organ_rel_size["r_leg"]; "r_leg",
-			organ_rel_size["l_hand"]; "l_hand",
-			organ_rel_size["r_hand"]; "r_hand",
-			organ_rel_size["l_foot"]; "l_foot",
-			organ_rel_size["r_foot"]; "r_foot",
+			GLOB.organ_rel_size["head"]; "head",
+			GLOB.organ_rel_size["chest"]; "chest",
+			GLOB.organ_rel_size["groin"]; "groin",
+			GLOB.organ_rel_size["l_arm"]; "l_arm",
+			GLOB.organ_rel_size["r_arm"]; "r_arm",
+			GLOB.organ_rel_size["l_leg"]; "l_leg",
+			GLOB.organ_rel_size["r_leg"]; "r_leg",
+			GLOB.organ_rel_size["l_hand"]; "l_hand",
+			GLOB.organ_rel_size["r_hand"]; "r_hand",
+			GLOB.organ_rel_size["l_foot"]; "l_foot",
+			GLOB.organ_rel_size["r_foot"]; "r_foot",
 		)
 
 	return rand_zone
@@ -311,14 +311,11 @@ var/global/list/limb_types_by_name = list(
 /mob/proc/is_mob_restrained()
 	return
 
+/// Returns if the mob is incapacitated and unable to perform general actions
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
-
-
-//returns how many non-destroyed legs the mob has (currently only useful for humans)
-/mob/proc/has_legs()
-	return 2
-
+	// note that stat includes knockout via unconscious
+	// TODO: re-re-re-figure out if we need TRAIT_FLOORED here or using TRAIT_INCAPACITATED only is acceptable deviance from legacy behavior
+	return (stat || (!ignore_restrained && is_mob_restrained()) || (status_flags & FAKEDEATH) || HAS_TRAIT(src, TRAIT_INCAPACITATED))
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
 
@@ -480,7 +477,7 @@ var/global/list/limb_types_by_name = list(
 	set name = "Pick Up"
 	set category = "Object"
 
-	if(!canmove || stat || is_mob_restrained() || !Adjacent(pickupify))
+	if(is_mob_incapacitated() || !Adjacent(pickupify))
 		return
 
 	if(world.time <= next_move)

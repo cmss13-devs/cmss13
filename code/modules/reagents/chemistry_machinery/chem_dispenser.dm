@@ -59,7 +59,7 @@
 
 /obj/structure/machinery/chem_dispenser/process()
 	if(!chem_storage)
-		chem_storage = chemical_data.connect_chem_storage(network)
+		chem_storage = GLOB.chemical_data.connect_chem_storage(network)
 
 /obj/structure/machinery/chem_dispenser/Initialize()
 	. = ..()
@@ -68,7 +68,7 @@
 
 /obj/structure/machinery/chem_dispenser/Destroy()
 	if(!chem_storage)
-		chem_storage = chemical_data.disconnect_chem_storage(network)
+		chem_storage = GLOB.chemical_data.disconnect_chem_storage(network)
 	return ..()
 
 /obj/structure/machinery/chem_dispenser/ex_act(severity)
@@ -155,7 +155,7 @@
 
 	var/list/chemicals = list()
 	for(var/re in dispensable_reagents)
-		var/datum/reagent/temp = chemical_reagents_list[re]
+		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
 		if(temp)
 			var/chemname = temp.name
 			chemicals.Add(list(list("title" = chemname, "id" = temp.id)))

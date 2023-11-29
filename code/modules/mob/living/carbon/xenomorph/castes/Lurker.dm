@@ -102,7 +102,7 @@
 	if (!isxeno_human(target_carbon))
 		return
 
-	if (target_carbon.knocked_down)
+	if (HAS_TRAIT(target_carbon, TRAIT_FLOORED))
 		new /datum/effects/xeno_slow(target_carbon, bound_xeno, null, null, get_xeno_stun_duration(target_carbon, slash_slow_duration))
 
 	return

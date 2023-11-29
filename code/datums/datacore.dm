@@ -8,16 +8,16 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/locked[] = list()
 
 /datum/datacore/proc/get_manifest(monochrome, OOC, nonHTML)
-	var/list/cic = ROLES_CIC.Copy()
-	var/list/auxil = ROLES_AUXIL_SUPPORT.Copy()
-	var/list/misc = ROLES_MISC.Copy()
-	var/list/mp = ROLES_POLICE.Copy()
-	var/list/eng = ROLES_ENGINEERING.Copy()
-	var/list/req = ROLES_REQUISITION.Copy()
-	var/list/med = ROLES_MEDICAL.Copy()
-	var/list/marines_by_squad = ROLES_SQUAD_ALL.Copy()
+	var/list/cic = GLOB.ROLES_CIC.Copy()
+	var/list/auxil = GLOB.ROLES_AUXIL_SUPPORT.Copy()
+	var/list/misc = GLOB.ROLES_MISC.Copy()
+	var/list/mp = GLOB.ROLES_POLICE.Copy()
+	var/list/eng = GLOB.ROLES_ENGINEERING.Copy()
+	var/list/req = GLOB.ROLES_REQUISITION.Copy()
+	var/list/med = GLOB.ROLES_MEDICAL.Copy()
+	var/list/marines_by_squad = GLOB.ROLES_SQUAD_ALL.Copy()
 	for(var/squad_name in marines_by_squad)
-		marines_by_squad[squad_name] = ROLES_MARINES.Copy()
+		marines_by_squad[squad_name] = GLOB.ROLES_MARINES.Copy()
 	var/list/isactive = new()
 
 // If we need not the HTML table, but list
@@ -43,7 +43,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			var/has_department = FALSE
 			for(var/department in departments)
 				// STOP SIGNING ALL MARINES IN ALPHA!
-				if(department in ROLES_SQUAD_ALL)
+				if(department in GLOB.ROLES_SQUAD_ALL)
 					if(squad != department)
 						continue
 				var/list/jobs = departments[department]
@@ -83,7 +83,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 	// sort mobs
 	var/dept_flags = NO_FLAGS //Is there anybody in the department?.
-	var/list/squad_sublists = ROLES_SQUAD_ALL.Copy() //Are there any marines in the squad?
+	var/list/squad_sublists = GLOB.ROLES_SQUAD_ALL.Copy() //Are there any marines in the squad?
 
 	for(var/datum/data/record/t in GLOB.data_core.general)
 		if(t.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
@@ -107,34 +107,34 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			isactive[name] = t.fields["p_stat"]
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
 
-		if(real_rank in ROLES_CIC)
+		if(real_rank in GLOB.ROLES_CIC)
 			dept_flags |= FLAG_SHOW_CIC
 			LAZYSET(cic[real_rank], name, rank)
-		else if(real_rank in ROLES_AUXIL_SUPPORT)
+		else if(real_rank in GLOB.ROLES_AUXIL_SUPPORT)
 			dept_flags |= FLAG_SHOW_AUXIL_SUPPORT
 			LAZYSET(auxil[real_rank], name, rank)
-		else if(real_rank in ROLES_MISC)
+		else if(real_rank in GLOB.ROLES_MISC)
 			dept_flags |= FLAG_SHOW_MISC
 			LAZYSET(misc[real_rank], name, rank)
-		else if(real_rank in ROLES_POLICE)
+		else if(real_rank in GLOB.ROLES_POLICE)
 			dept_flags |= FLAG_SHOW_POLICE
 			LAZYSET(mp[real_rank], name, rank)
-		else if(real_rank in ROLES_ENGINEERING)
+		else if(real_rank in GLOB.ROLES_ENGINEERING)
 			dept_flags |= FLAG_SHOW_ENGINEERING
 			LAZYSET(eng[real_rank], name, rank)
-		else if(real_rank in ROLES_REQUISITION)
+		else if(real_rank in GLOB.ROLES_REQUISITION)
 			dept_flags |= FLAG_SHOW_REQUISITION
 			LAZYSET(req[real_rank], name, rank)
-		else if(real_rank in ROLES_MEDICAL)
+		else if(real_rank in GLOB.ROLES_MEDICAL)
 			dept_flags |= FLAG_SHOW_MEDICAL
 			LAZYSET(med[real_rank], name, rank)
-		else if(real_rank in ROLES_MARINES)
+		else if(real_rank in GLOB.ROLES_MARINES)
 			if(isnull(squad_name))
 				continue
 			dept_flags |= FLAG_SHOW_MARINES
 			squad_sublists[squad_name] = TRUE
 			///If it is a real squad in the USCM squad list to prevent the crew manifest from breaking
-			if(!(squad_name in ROLES_SQUAD_ALL))
+			if(!(squad_name in GLOB.ROLES_SQUAD_ALL))
 				continue
 			LAZYSET(marines_by_squad[squad_name][real_rank], name, rank)
 
@@ -155,7 +155,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 				even = !even
 	if(dept_flags & FLAG_SHOW_MARINES)
 		dat += "<tr><th colspan=3>Marines</th></tr>"
-		for(var/squad_name in ROLES_SQUAD_ALL)
+		for(var/squad_name in GLOB.ROLES_SQUAD_ALL)
 			if(!squad_sublists[squad_name])
 				continue
 			dat += "<tr><th colspan=3>[squad_name]</th></tr>"
@@ -205,7 +205,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		if(!nosleep)
 			sleep(40)
 
-		var/list/jobs_to_check = ROLES_CIC + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_POLICE + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES
+		var/list/jobs_to_check = GLOB.ROLES_CIC + GLOB.ROLES_AUXIL_SUPPORT + GLOB.ROLES_MISC + GLOB.ROLES_POLICE + GLOB.ROLES_ENGINEERING + GLOB.ROLES_REQUISITION + GLOB.ROLES_MEDICAL + GLOB.ROLES_MARINES
 		for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 			if(is_admin_level(H.z))
 				continue

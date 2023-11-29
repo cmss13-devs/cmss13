@@ -73,13 +73,6 @@
 		control.visible_message(SPAN_WARNING(fail_flavortext))
 		return //Kill it so as not to repeat
 
-/datum/shuttle/ferry/marine/proc/load_datums()
-	if(!(info_tag in s_info))
-		message_admins(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
-
-	var/list/L = s_info[info_tag]
-	info_datums = L.Copy()
-
 /datum/shuttle/ferry/marine/proc/set_automated_launch(bool_v)
 	automated_launch = bool_v
 	if(bool_v)
@@ -343,17 +336,17 @@
 
 	var/target_section = crash_target_section
 	if(isnull(target_section))
-		var/list/potential_crash_sections = almayer_ship_sections.Copy()
-		potential_crash_sections -= almayer_aa_cannon.protecting_section
+		var/list/potential_crash_sections = GLOB.almayer_ship_sections.Copy()
+		potential_crash_sections -= GLOB.almayer_aa_cannon.protecting_section
 		target_section = pick(potential_crash_sections)
 
-	var/turf/T_trg = pick(shuttle_controller.locs_crash[target_section])
+	var/turf/T_trg = pick(SSoldshuttle.shuttle_controller.locs_crash[target_section])
 
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X
 		if(istype(E, /obj/structure/dropship_equipment/adv_comp/docking))
 			var/list/crash_turfs = list()
-			for(var/turf/TU in shuttle_controller.locs_crash[target_section])
+			for(var/turf/TU in SSoldshuttle.shuttle_controller.locs_crash[target_section])
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
 			if(crash_turfs.len) T_trg = pick(crash_turfs)
@@ -363,7 +356,7 @@
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
 		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
 
-	shuttle_controller.locs_crash[target_section] -= T_trg
+	SSoldshuttle.shuttle_controller.locs_crash[target_section] -= T_trg
 
 	//END: Heavy lifting backend
 
@@ -440,12 +433,12 @@
 
 	sleep(85)
 
-	if(security_level < SEC_LEVEL_RED) //automatically set security level to red.
+	if(GLOB.security_level < SEC_LEVEL_RED) //automatically set security level to red.
 		set_security_level(SEC_LEVEL_RED, TRUE)
 
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 
-	for(var/obj/structure/machinery/power/apc/A in machines) //break APCs
+	for(var/obj/structure/machinery/power/apc/A in GLOB.machines) //break APCs
 		if(A.z != T_trg.z) continue
 		if(prob(A.crash_break_probability))
 			A.overload_lighting()
@@ -477,7 +470,7 @@
 	var/explosion_alive = TRUE
 	while(explosion_alive)
 		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/E in cellauto_cells)
+		for(var/datum/automata_cell/explosion/E in GLOB.cellauto_cells)
 			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
@@ -520,15 +513,15 @@
 	open_doors_crashed(turfs_trg) //And now open the doors
 
 
-	for (var/obj/structure/machinery/door_display/research_cell/d in machines)
+	for (var/obj/structure/machinery/door_display/research_cell/d in GLOB.machines)
 		if(is_mainship_level(d.z) || is_reserved_level(d.z))
 			d.ion_act() //Breaking xenos out of containment
 
 	//Stolen from events.dm. WARNING: This code is old as hell
-	for (var/obj/structure/machinery/power/apc/APC in machines)
+	for (var/obj/structure/machinery/power/apc/APC in GLOB.machines)
 		if(is_mainship_level(APC.z) || is_reserved_level(APC.z))
 			APC.ion_act()
-	for (var/obj/structure/machinery/power/smes/SMES in machines)
+	for (var/obj/structure/machinery/power/smes/SMES in GLOB.machines)
 		if(is_mainship_level(SMES.z) || is_reserved_level(SMES.z))
 			SMES.ion_act()
 
@@ -545,7 +538,7 @@
 			colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /datum/shuttle/ferry/marine/proc/disable_latejoin()
-	enter_allowed = FALSE
+	GLOB.enter_allowed = FALSE
 
 
 /datum/shuttle/ferry/marine/short_jump()

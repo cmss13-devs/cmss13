@@ -5,7 +5,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	add_verb(src, debug_verbs)
+	add_verb(src, GLOB.debug_verbs)
 	remove_verb(src, /client/proc/enable_debug_verbs)
 
 /client/proc/hide_debug_verbs()
@@ -15,7 +15,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	remove_verb(src, debug_verbs)
+	remove_verb(src, GLOB.debug_verbs)
 	add_verb(src, /client/proc/enable_debug_verbs)
 
 /client/proc/enter_tree()
@@ -81,8 +81,8 @@
 	set name = "Reset Intel Data Tab"
 
 	if(tgui_alert(src, "Clear the data tab?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
-		for(var/datum/cm_objective/Objective in intel_system.oms.disks)
-			intel_system.oms.disks -= Objective
+		for(var/datum/cm_objective/Objective in GLOB.intel_system.oms.disks)
+			GLOB.intel_system.oms.disks -= Objective
 
 /client/proc/check_round_statistics()
 	set category = "Debug"
@@ -90,7 +90,7 @@
 	if(!check_rights(R_ADMIN|R_DEBUG))
 		return
 
-	debug_variables(round_statistics)
+	debug_variables(GLOB.round_statistics)
 
 /client/proc/cmd_admin_delete(atom/O as obj|mob|turf in world)
 	set category = "Debug"
@@ -165,10 +165,10 @@
 	set name = "Reload Whitelist"
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
-	if(!check_rights(R_SERVER) || !RoleAuthority) return
+	if(!check_rights(R_SERVER) || !GLOB.RoleAuthority) return
 
 	message_admins("[usr.ckey] manually reloaded the role whitelist.")
-	RoleAuthority.load_whitelist()
+	GLOB.RoleAuthority.load_whitelist()
 
 /client/proc/bulk_fetcher()
 	set name = "Bulk Fetch Items"

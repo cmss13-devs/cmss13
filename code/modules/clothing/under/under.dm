@@ -45,7 +45,7 @@
 	else
 		worn_state = icon_state
 
-	var/check_icon = contained_sprite ? icon : default_onmob_icons[WEAR_BODY]
+	var/check_icon = contained_sprite ? icon : GLOB.default_onmob_icons[WEAR_BODY]
 
 	//autodetect rollability, cuttability, and removability.
 	if(icon_exists(check_icon, "[worn_state]_d[contained_sprite ? "_un" : ""]"))
@@ -106,7 +106,7 @@
 		if ((flags_item & NODROP) || loc != usr)
 			return
 
-		if (!usr.is_mob_incapacitated() && !(usr.buckled && usr.lying))
+		if (!usr.is_mob_incapacitated() && !(usr.buckled))
 			if(over_object)
 				switch(over_object.name)
 					if("r_hand")
@@ -259,7 +259,7 @@
 	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
-		under_icon = default_onmob_icons[WEAR_BODY]
+		under_icon = GLOB.default_onmob_icons[WEAR_BODY]
 
 	var/check_worn_state = "[worn_state]_d[contained_sprite ? "_un" : ""]"
 	if(!(check_worn_state in icon_states(under_icon)))
@@ -292,7 +292,7 @@
 	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
-		under_icon = default_onmob_icons[WEAR_BODY]
+		under_icon = GLOB.default_onmob_icons[WEAR_BODY]
 
 	var/check_worn_state = "[worn_state]_dj[contained_sprite ? "_un" : ""]"
 	if(!(check_worn_state in icon_states(under_icon)))

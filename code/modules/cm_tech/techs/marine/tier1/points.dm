@@ -24,7 +24,7 @@
 
 /datum/tech/repeatable/req_points/on_unlock()
 	. = ..()
-	supply_controller.points += points_to_give * get_tech_scaling_value()
+	GLOB.supply_controller.points += points_to_give * get_tech_scaling_value()
 
 /datum/tech/repeatable/dropship_points
 	name = "Dropship Budget Increase"
@@ -43,4 +43,4 @@
 
 /datum/tech/repeatable/dropship_points/on_unlock()
 	. = ..()
-	supply_controller.dropship_points += points_to_give
+	GLOB.supply_controller.dropship_points += points_to_give

@@ -14,7 +14,8 @@
 	/// If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/in_use = FALSE
 	var/mob/living/buckled_mob
-	var/buckle_lying = FALSE //Is the mob buckled in a lying position
+	/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
+	var/buckle_lying = NO_BUCKLE_LYING
 	var/can_buckle = FALSE
 	/**Applied to surgery times for mobs buckled prone to it or lying on the same tile, if the surgery
 	cares about surface conditions. The lowest multiplier of objects on the tile is used.**/
@@ -224,7 +225,7 @@
 	else . = ..()
 
 /obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
-	handle_rotation()
+	handle_rotation() // To be removed when we have full dir support in set_buckled
 	SEND_SIGNAL(src, COSMIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	if(!buckled_mob)
 		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
@@ -235,9 +236,8 @@
 /obj/proc/unbuckle()
 	SIGNAL_HANDLER
 	if(buckled_mob && buckled_mob.buckled == src)
-		buckled_mob.buckled = null
+		buckled_mob.set_buckled(null)
 		buckled_mob.anchored = initial(buckled_mob.anchored)
-		buckled_mob.update_canmove()
 
 		var/M = buckled_mob
 		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
@@ -268,7 +268,7 @@
 
 //trying to buckle a mob
 /obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
 		return
 
 	if (isxeno(user))
@@ -299,20 +299,15 @@
 
 // the actual buckling proc
 // Yes I know this is not style but its unreadable otherwise
-/obj/proc/do_buckle(mob/target, mob/user)
+/obj/proc/do_buckle(mob/living/target, mob/user)
 	send_buckling_message(target, user)
 	if (src && src.loc)
-		target.buckled = src
+		target.set_buckled(src)
 		target.forceMove(src.loc)
 		target.setDir(dir)
-		target.update_canmove()
 		src.buckled_mob = target
 		src.add_fingerprint(user)
 		afterbuckle(target)
-		if(buckle_lying) // Make sure buckling to beds/nests etc only turns, and doesn't give a random offset
-			var/matrix/new_matrix = matrix()
-			new_matrix.Turn(90)
-			target.apply_transform(new_matrix)
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
@@ -392,7 +387,7 @@
 	else if(LAZYISIN(item_icons, slot))
 		mob_icon = item_icons[slot]
 	else
-		mob_icon = default_onmob_icons[slot]
+		mob_icon = GLOB.default_onmob_icons[slot]
 
 	var/image/overlay_img
 

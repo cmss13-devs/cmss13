@@ -22,7 +22,7 @@
 	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
-	var/random_name = capitalize(pick(new_human.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(21,45)
 
@@ -339,7 +339,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 present in xenomorph.dm file
 
-var/list/survivor_types = list(
+GLOBAL_LIST_INIT(survivor_types, list()
 		/datum/equipment_preset/survivor/scientist,
 		/datum/equipment_preset/survivor/doctor,
 		/datum/equipment_preset/survivor/security,

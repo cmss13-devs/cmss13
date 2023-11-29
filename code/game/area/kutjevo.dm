@@ -67,6 +67,10 @@
 	name = "Kutjevo - Power Station River"
 	icon_state = "lz_river"
 
+/area/kutjevo/exterior/spring
+	name = "Kutjevo - Southern Spring"
+	icon_state = "lz_river"
+
 /area/kutjevo/exterior/scrubland
 	name = "Kutjevo - Scrubland"
 	icon_state = "scrubland"

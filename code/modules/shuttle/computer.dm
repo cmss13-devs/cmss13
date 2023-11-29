@@ -324,7 +324,7 @@
 							return
 					if ("Emergency Launch")
 						if(!launch_initiated)
-							launch_initiated = 1
+							launch_initiated = TRUE
 							to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
 							lifeboat.evac_launch()
 							shipwide_ai_announcement("Emergency Launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " Lifeboat.")

@@ -44,7 +44,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	//If you don't specify a bodypart, it checks ALL your bodyparts for protection, and averages out the values
 	for(var/X in limbs)
 		var/obj/limb/E = X
-		var/weight = organ_rel_size[E.name]
+		var/weight = GLOB.organ_rel_size[E.name]
 		armorval += getarmor_organ(E, type) * weight
 		total += weight
 	return (armorval/max(total, 1))
@@ -377,16 +377,6 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/list/overlap = compare_group & access_to_check
 	return length(overlap)
-
-/mob/living/carbon/human/freeze()
-	. = ..()
-	if(.)
-		update_xeno_hostile_hud()
-
-/mob/living/carbon/human/unfreeze()
-	. = ..()
-	if(.)
-		update_xeno_hostile_hud()
 
 /mob/living/carbon/human/get_target_lock(access_to_check)
 	if(isnull(access_to_check))

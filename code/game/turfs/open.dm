@@ -24,7 +24,7 @@
 	add_cleanable_overlays()
 
 	var/list/turf/open/auto_turf/auto_turf_dirs = list()
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		var/turf/open/auto_turf/T = get_step(src, direction)
 		if(!istype(T))
 			continue
@@ -36,7 +36,7 @@
 
 	var/list/handled_dirs = list()
 	var/list/unhandled_dirs = list()
-	for(var/direction in diagonals)
+	for(var/direction in GLOB.diagonals)
 		var/x_dir = direction & (direction-1)
 		var/y_dir = direction - x_dir
 
@@ -90,7 +90,7 @@
 				if(!T.icon_state_before_scorching)
 					T.icon_state_before_scorching = T.icon_state
 				var/direction_from_neighbor_towards_src = get_dir(T, src)
-				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[turf_edgeinfo_cache[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_neighbor_towards_src)]]", direction_from_neighbor_towards_src)
+				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[GLOB.turf_edgeinfo_cache[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_neighbor_towards_src)]]", direction_from_neighbor_towards_src)
 				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
@@ -370,16 +370,16 @@
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()
 
-	if(!locate(icon_state) in turf_edgeinfo_cache)
+	if(!locate(icon_state) in GLOB.turf_edgeinfo_cache)
 		switch(icon_state)
 			if("grass1")
-				turf_edgeinfo_cache["grass1"] = GLOB.edgeinfo_full
+				GLOB.turf_edgeinfo_cache["grass1"] = GLOB.edgeinfo_full
 			if("grass2")
-				turf_edgeinfo_cache["grass2"] = GLOB.edgeinfo_full
+				GLOB.turf_edgeinfo_cache["grass2"] = GLOB.edgeinfo_full
 			if("grassbeach")
-				turf_edgeinfo_cache["grassbeach"] = GLOB.edgeinfo_edge
+				GLOB.turf_edgeinfo_cache["grassbeach"] = GLOB.edgeinfo_edge
 			if("gbcorner")
-				turf_edgeinfo_cache["gbcorner"] = GLOB.edgeinfo_corner
+				GLOB.turf_edgeinfo_cache["gbcorner"] = GLOB.edgeinfo_corner
 
 /turf/open/gm/dirt2
 	name = "dirt"
@@ -435,14 +435,14 @@
 /turf/open/gm/dirtgrassborder/Initialize(mapload, ...)
 	. = ..()
 
-	if(!locate(icon_state) in turf_edgeinfo_cache)
+	if(!locate(icon_state) in GLOB.turf_edgeinfo_cache)
 		switch(icon_state)
 			if("grassdirt_edge")
-				turf_edgeinfo_cache["grassdirt_edge"] = GLOB.edgeinfo_edge
+				GLOB.turf_edgeinfo_cache["grassdirt_edge"] = GLOB.edgeinfo_edge
 			if("grassdirt_corner")
-				turf_edgeinfo_cache["grassdirt_corner"] = GLOB.edgeinfo_corner
+				GLOB.turf_edgeinfo_cache["grassdirt_corner"] = GLOB.edgeinfo_corner
 			if("grassdirt_corner2")
-				turf_edgeinfo_cache["grassdirt_corner2"] = GLOB.edgeinfo_corner2
+				GLOB.turf_edgeinfo_cache["grassdirt_corner2"] = GLOB.edgeinfo_corner2
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"

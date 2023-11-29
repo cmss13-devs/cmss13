@@ -166,7 +166,7 @@ directive is properly returned.
 	if(!time)
 		transform = complete
 		return
-	animate(src, transform = complete, time = time, easing = easing)
+	animate(src, transform = complete, time = time, easing = easing, flags = ANIMATION_PARALLEL)
 
 /// Upates the base_transform which will be compounded with other transforms
 /atom/proc/update_base_transform(matrix/new_transform, time = 0)
@@ -387,11 +387,11 @@ Parameters are passed from New.
 		var/turf/opaque_turf = loc
 		opaque_turf.directional_opacity = ALL_CARDINALS // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
 
-	pass_flags = pass_flags_cache[type]
+	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()
 		initialize_pass_flags(pass_flags)
-		pass_flags_cache[type] = pass_flags
+		GLOB.pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
 	Decorate(mapload)
@@ -418,7 +418,7 @@ Parameters are passed from New.
 	T.appearance = src.appearance
 	T.setDir(src.dir)
 
-	clones_t.Add(src)
+	GLOB.clones_t.Add(src)
 	src.clone = T
 
 // EFFECTS
@@ -723,7 +723,7 @@ Parameters are passed from New.
 		usr.client.cmd_admin_emp(src)
 
 	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
-		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate"))
+		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate", "Reflect X Axis", "Reflect Y Axis"))
 		if(!result)
 			return
 		if(!result)
@@ -749,7 +749,22 @@ Parameters are passed from New.
 					return
 				var/matrix/base_matrix = matrix(base_transform)
 				update_base_transform(base_matrix.Turn(angle))
-
+			if("Reflect X Axis")
+				var/matrix/current = matrix(base_transform)
+				var/matrix/reflector = matrix()
+				reflector.a = -1
+				reflector.d = 0
+				reflector.b = 0
+				reflector.e = 1
+				update_base_transform(current * reflector)
+			if("Reflect Y Axis")
+				var/matrix/current = matrix(base_transform)
+				var/matrix/reflector = matrix()
+				reflector.a = 1
+				reflector.d = 0
+				reflector.b = 0
+				reflector.e = -1
+				update_base_transform(current * reflector)
 		SEND_SIGNAL(src, COMSIG_ATOM_VV_MODIFY_TRANSFORM)
 
 	if(href_list[VV_HK_AUTO_RENAME] && check_rights(R_VAREDIT))

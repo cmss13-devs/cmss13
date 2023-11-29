@@ -172,7 +172,7 @@
 	STOP_PROCESSING(SSobj, src)
 	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
 		for(var/listed_hud in mask_huds)
-			var/datum/mob_hud/H = huds[listed_hud]
+			var/datum/mob_hud/H = GLOB.huds[listed_hud]
 			H.remove_hud_from(user, src)
 		var/obj/item/visor = user.glasses
 		if(visor) //make your hud fuck off
@@ -187,7 +187,7 @@
 	if(slot == WEAR_FACE)
 		START_PROCESSING(SSobj, src)
 		for(var/listed_hud in mask_huds)
-			var/datum/mob_hud/H = huds[listed_hud]
+			var/datum/mob_hud/H = GLOB.huds[listed_hud]
 			H.add_hud_to(user, src)
 		if(current_goggles)
 			var/obj/item/clothing/gloves/yautja/bracer = user.gloves

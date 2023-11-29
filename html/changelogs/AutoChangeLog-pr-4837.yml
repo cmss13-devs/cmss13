@@ -1,5 +1,0 @@
-author: "MrDas"
-delete-after: True
-changes:
-  - bugfix: "You can no longer see through solid rear drop ship doors."
-  - code_imp: "Moved filler turf logic from almayer airlocks to its parent door."

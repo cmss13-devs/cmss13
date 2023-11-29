@@ -73,7 +73,7 @@
 		var/drawtype = tgui_input_list(usr, "Choose what you'd like to draw.", "Crayon scribbles", list("graffiti","rune","letter"))
 		switch(drawtype)
 			if("letter")
-				drawtype = tgui_input_list(usr, "Choose the letter.", "Crayon scribbles", alphabet_lowercase)
+				drawtype = tgui_input_list(usr, "Choose the letter.", "Crayon scribbles", GLOB.alphabet_lowercase)
 				to_chat(user, "You start drawing a letter on the [target.name].")
 			if("graffiti")
 				to_chat(user, "You start drawing graffiti on the [target.name].")

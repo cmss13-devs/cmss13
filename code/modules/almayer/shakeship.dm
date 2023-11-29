@@ -35,7 +35,7 @@
 				playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
 
 			if(drop)
-				INVOKE_ASYNC(current_mob,  TYPE_PROC_REF(/atom/movable, throw_atom), get_ranged_target_turf(current_mob, pick(cardinal), sstrength-5), pick(cardinal), sstrength)
+				INVOKE_ASYNC(current_mob,  TYPE_PROC_REF(/atom/movable, throw_atom), get_ranged_target_turf(current_mob, pick(GLOB.cardinals), sstrength-5), pick(GLOB.cardinals), sstrength)
 
 			to_chat(current_mob, SPAN_HIGHDANGER("YOU ARE THROWN AROUND VIOLENTLY AND HIT THE DECK WITH FULL FORCE!!"))
 			if(current_mob.client && osound)

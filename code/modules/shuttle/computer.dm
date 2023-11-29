@@ -323,7 +323,7 @@
 							to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
 							return
 					if ("Emergency Launch")
-						if(launch_initiated == 0)
+						if(!launch_initiated)
 							launch_initiated = 1
 							to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
 							lifeboat.evac_launch()

@@ -496,6 +496,32 @@
 	desc = "The USCM had its funding pulled for these when it became apparent that not every deployed enlisted was wearing a helmet 24/7; much to the bafflement of UA High Command."
 	icon_state = "helmet_gasmask"
 
+/obj/item/prop/helmetgarb/helmet_gasmask/on_enter_storage(obj/item/storage/internal/S)
+	if(!istype(S))
+		return
+
+	var/obj/item/MO = S.master_object
+
+	if(!istype(MO, /obj/item/clothing/head/helmet/marine))
+		return
+
+	MO.flags_inventory = BLOCKSHARPOBJ | COVERMOUTH | COVEREYES | ALLOWINTERNALS | BLOCKGASEFFECT | ALLOWREBREATH | ALLOWCPR
+	MO.flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR
+	..()
+
+/obj/item/prop/helmetgarb/helmet_gasmask/on_exit_storage(obj/item/storage/internal/S)
+	if(!istype(S))
+		return
+
+	var/obj/item/MO = S.master_object
+
+	if(!istype(MO, /obj/item/clothing/head/helmet/marine))
+		return
+
+	MO.flags_inventory = BLOCKSHARPOBJ
+	MO.flags_inv_hide = HIDEEARS
+	return..()
+
 /obj/item/prop/helmetgarb/trimmed_wire
 	name = "trimmed barbed wire"
 	desc = "It is a length of barbed wire that's had most of the sharp points filed down so that it is safe to handle."

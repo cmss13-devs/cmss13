@@ -165,7 +165,6 @@
 		return
 
 	REMOVE_TRAIT(H, TRAIT_IMMOBILIZED, trait_source)
-	H.update_canmove()
 
 	if(ishuman(H))
 		var/mob/living/carbon/human/T = H

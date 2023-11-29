@@ -37445,7 +37445,6 @@
 /area/corsat/gamma/biodome/virology)
 "drp" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	dwidth = 1;
 	name = "Gamma Landing Zone"
 	},
 /turf/open/floor/plating,
@@ -38223,7 +38222,6 @@
 /area/corsat/omega/complex)
 "dUj" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	dwidth = 1;
 	name = "Sigma Landing Zone"
 	},
 /turf/open/floor/plating,

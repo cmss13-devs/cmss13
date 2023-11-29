@@ -198,6 +198,16 @@
 
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
+	// If the dummy was equipped with marine armor.
+	var/jacket = preview_dummy.get_item_by_slot(WEAR_JACKET)
+	if(istype(jacket, /obj/item/clothing/suit/storage/marine))
+		var/obj/item/clothing/suit/storage/marine/armor = jacket
+		// If the armor has different sprite variants.
+		if(armor.armor_variation)
+			// Set its `icon_state` to the style the player picked as their 'Preferred Armor'.
+			armor.set_armor_style(preferred_armor)
+			armor.update_icon(preview_dummy)
+
 	if(isnull(preview_front))
 		preview_front = new()
 		owner.add_to_screen(preview_front)

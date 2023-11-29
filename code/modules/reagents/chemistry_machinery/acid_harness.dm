@@ -443,7 +443,7 @@
 	else if(inject_conditions & ACID_SCAN_CONDITION_DEFIB && vitals_scan < ACID_VITALS_DEAD && last_vitals_scan & ACID_SCAN_CONDITION_DEATH)
 		condition_scan |= ACID_SCAN_CONDITION_DEFIB //If we were previously dead and are now alive, we assume we got defibbed
 
-	if(inject_conditions & ACID_SCAN_CONDITION_CONCUSSION && (user.knocked_down || user.knocked_out))
+	if(inject_conditions & ACID_SCAN_CONDITION_CONCUSSION && (HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || HAS_TRAIT(src, TRAIT_FLOORED)))
 		condition_scan |= ACID_SCAN_CONDITION_CONCUSSION
 
 	if(inject_conditions & ACID_SCAN_CONDITION_INTOXICATION && (user.dazed || user.slowed || user.confused || user.drowsyness || user.dizziness || user.druggy))

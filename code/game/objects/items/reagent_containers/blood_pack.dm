@@ -163,7 +163,7 @@
 	if(!istype(usr, /mob/living))
 		return
 
-	if(usr.stat || usr.lying)
+	if(usr.stat || usr.is_mob_incapacitated())
 		return
 
 	mode = !mode

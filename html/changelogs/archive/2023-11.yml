@@ -355,3 +355,53 @@
   - rscadd: Locking down dropship's doors closes them before locking.
   realforest2001:
   - rscadd: Telephones now list the last attempted caller, above the DND button.
+2023-11-26:
+  Birdtalon:
+  - code_imp: Replaces single letter vars removes redundant abilitiesin warrior code.
+  - bugfix: Warriors can no longer behead caps if they start limb ripping before embryo
+      is inserted.
+  - code_imp: Refactors warrior limb proc to the warrior class.
+  Huffie56:
+  - rscadd: Added a new section to role squad vendors called binoculars except specialist.
+  - qol: moved NVG and medical hud into helmet optics section for SL and just NVG
+      for TL
+  Nanu308:
+  - rscdel: Removed the Pizza Cutter.
+2023-11-27:
+  Birdtalon:
+  - bugfix: "Fixes vendor sprites not updating icon when fully repaired\n/\U0001F191"
+  - bugfix: Fix lesser drone crash on getting gibbed.
+  Doubleumc:
+  - bugfix: CORSAT poddoors no longer have extra sprites overlaid on them
+  - maptweak: CORSAT LZs can be used by shuttles
+  HeresKozmos:
+  - rscadd: Added eight new tunnels to Sorokyne
+  - rscdel: Removed the original five tunnels on Sorokyne
+  SabreML:
+  - rscadd: Made the character preview in the character creation menu show the 'Preferred
+      Armor' setting.
+  - bugfix: Fixed 'Padded' armour being replaced by the user's armour style preference
+      when vended.
+  - qol: Made the squad prep attachments vendors vend items into the user's hands.
+  Zonespace27:
+  - bugfix: The Self Destruct timer in the status panel will now stop once SD has
+      gone off.
+  hislittlecuzingames:
+  - bugfix: Disables launch announcment alarm if it's sounding when queen hijacks
+2023-11-28:
+  Birdtalon:
+  - rscadd: Eggsac carrier can now place eggs on normal weeds to a maximum of 4 eggs.
+  - rscadd: Eggsac carrier eggs on normal weeds have an expiry date.
+  fira:
+  - code_imp: Ported basic /tg/ Status Backend.
+  - rscadd: Human transform changes such as lying down, knock down, buckling, are
+      now animated.
+  - bugfix: Some statuses will now take effect immediately instead of waiting for
+      a life tick, notably Resting.
+  - balance: Many interaction requirements were changed to eg. fail upon stuns rather
+      than if lying down.
+  stalkerino:
+  - rscadd: readds skull facepaint and skull balaclava (blue and black)
+2023-11-29:
+  realforest2001:
+  - rscdel: Whiskey Outpost no longer rolls pred rounds naturally.

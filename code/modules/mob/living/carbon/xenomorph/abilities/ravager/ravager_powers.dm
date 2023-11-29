@@ -388,7 +388,6 @@
 
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = TRUE
-	xeno.update_canmove()
 
 	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		xeno.emote("roar")
@@ -433,7 +432,6 @@
 
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = FALSE
-	xeno.update_canmove()
 
 	return ..()
 

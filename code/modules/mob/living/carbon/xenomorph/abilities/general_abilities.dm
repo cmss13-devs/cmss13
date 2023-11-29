@@ -252,7 +252,6 @@
 		return
 	var/mob/living/carbon/xenomorph/X = owner
 	REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
-	X.update_canmove()
 	deltimer(freeze_timer_id)
 	freeze_timer_id = TIMER_ID_NULL
 	to_chat(X, SPAN_XENONOTICE("Slashing frenzies you! You feel free to move immediately!"))
@@ -285,7 +284,7 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled)
+	if(xeno && !xeno.is_mob_incapacitated() && !xeno.buckled)
 		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_long_range/give_to(mob/living/living_mob)
@@ -541,6 +540,14 @@
 	SIGNAL_HANDLER
 
 	hide_from(owner)
+
+/datum/action/xeno_action/onclick/tacmap/can_use_action()
+	if(!owner)
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.is_mob_incapacitated() || xeno.dazed)
+		return FALSE
+	return TRUE
 
 /datum/action/xeno_action/onclick/tacmap/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner

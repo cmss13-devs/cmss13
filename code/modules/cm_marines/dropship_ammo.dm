@@ -141,7 +141,7 @@
 	ammo_count = 400
 	max_ammo_count = 400
 	transferable_ammo = TRUE
-	ammo_used_per_firing = 80
+	ammo_used_per_firing = 40
 	point_cost = 275
 	fire_mission_delay = 2
 	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land

@@ -13092,7 +13092,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hull/upper_hull/u_m_p)
+/area/almayer/powered)
 "aZB" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -20173,9 +20173,6 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
-"bIO" = (
-/turf/closed/wall/almayer/outer,
-/area)
 "bIR" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -29152,7 +29149,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hull/upper_hull/u_m_s)
+/area/almayer/powered)
 "dhq" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -36042,7 +36039,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hull/upper_hull/u_m_s)
+/area/almayer/powered)
 "fLX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -36698,9 +36695,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
-"gbt" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/lifeboat_pumps/south1)
 "gbQ" = (
 /obj/structure/toilet{
 	dir = 8
@@ -38892,7 +38886,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hull/upper_hull/u_m_p)
+/area/almayer/powered)
 "gTH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/skills{
@@ -54706,15 +54700,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
-"nhH" = (
-/obj/structure/inflatable{
-	name = "umbilical wall";
-	indestructible = 1;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/open/floor/plating,
-/area/space)
 "nig" = (
 /turf/open/floor/almayer{
 	icon_state = "red"
@@ -58854,7 +58839,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/space)
+/area/almayer/hull/upper_hull/u_m_s)
 "oOO" = (
 /obj/structure/sign/safety/debark_lounge{
 	pixel_x = 15;
@@ -61156,9 +61141,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/port_missiles)
-"pPO" = (
-/turf/open/floor/plating,
-/area/space)
 "pQq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -64639,7 +64621,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/space)
+/area/almayer/hull/upper_hull/u_m_s)
 "rhD" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -68571,7 +68553,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/space)
+/area/almayer/hull/upper_hull/u_m_s)
 "sMs" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1
@@ -70645,9 +70627,6 @@
 	icon_state = "plating"
 	},
 /area/almayer/medical/upper_medical)
-"tEp" = (
-/turf/closed/wall/almayer/reinforced,
-/area/space)
 "tEB" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -71164,10 +71143,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"tQQ" = (
-/obj/docking_port/stationary/escape_pod/south,
-/turf/open/floor/plating,
-/area/space)
 "tQV" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/lifeboat_pumps/south1)
@@ -101187,7 +101162,7 @@ kCT
 iRS
 mzo
 oFG
-bIO
+vRz
 aaa
 aaa
 aaa
@@ -102203,7 +102178,7 @@ hTu
 mzo
 vot
 vRz
-aKQ
+vRz
 aag
 ajZ
 aaa
@@ -102406,7 +102381,7 @@ kCT
 mzo
 gJd
 mjR
-aKQ
+vRz
 aag
 ajZ
 aaa
@@ -108741,13 +108716,13 @@ aaa
 aaa
 bdH
 bdH
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-abs
-adq
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
+aar
 awW
 awW
 awW
@@ -108807,8 +108782,8 @@ baw
 baw
 baw
 baw
-pgD
-tQV
+qVM
+czu
 czu
 czu
 czu
@@ -108944,13 +108919,13 @@ aaa
 aaa
 bdH
 aaC
-aKQ
-nhH
-nhH
-nhH
-nhH
-gpY
-adq
+lYA
+dwH
+dwH
+dwH
+dwH
+oOK
+aar
 aei
 aka
 aWn
@@ -109010,8 +108985,8 @@ qVM
 hXV
 yhI
 rRz
-pgD
-gbt
+qVM
+pBF
 pJK
 pJK
 pJK
@@ -109148,12 +109123,12 @@ aaa
 bdH
 aaC
 sMj
-pPO
-pPO
-pPO
-tQQ
-gpY
-adq
+aIZ
+aIZ
+aIZ
+aLC
+oOK
+aar
 nBN
 apr
 aoV
@@ -109213,8 +109188,8 @@ qVM
 jpO
 wTy
 kyn
-pgD
-gbt
+qVM
+pBF
 iBt
 iBt
 iBt
@@ -109351,11 +109326,11 @@ aaa
 bdH
 aaC
 sMj
-pPO
-pPO
-pPO
-pPO
-gpY
+aIZ
+aIZ
+aIZ
+aIZ
+oOK
 gyi
 aub
 akc
@@ -109417,7 +109392,7 @@ crh
 csI
 nqG
 hQL
-gbt
+pBF
 iBt
 iBt
 iBt
@@ -109554,10 +109529,10 @@ aaa
 bdH
 aaC
 sMj
-pPO
-pPO
-pPO
-pPO
+aIZ
+aIZ
+aIZ
+aIZ
 qkL
 sYv
 rfH
@@ -109757,11 +109732,11 @@ aaa
 bdH
 aaC
 sMj
-pPO
-pPO
-pPO
-pPO
-gpY
+aIZ
+aIZ
+aIZ
+aIZ
+oOK
 pGl
 aGP
 aka
@@ -109823,7 +109798,7 @@ hWB
 yhI
 qSX
 bcq
-gbt
+pBF
 iBt
 iBt
 iBt
@@ -109960,12 +109935,12 @@ aaa
 bdH
 aaC
 sMj
-pPO
-pPO
-pPO
-pPO
-gpY
-adq
+aIZ
+aIZ
+aIZ
+aIZ
+oOK
+aar
 aGQ
 awW
 euO
@@ -110025,8 +110000,8 @@ dLz
 crh
 baw
 iPH
-pgD
-gbt
+qVM
+pBF
 iBt
 iBt
 iBt
@@ -110162,13 +110137,13 @@ aaa
 aaa
 bdH
 aaY
-aKQ
-nhH
-nhH
-nhH
-nhH
-gpY
-adq
+lYA
+dwH
+dwH
+dwH
+dwH
+oOK
+aar
 cLc
 akt
 qWI
@@ -110228,8 +110203,8 @@ qVM
 ehj
 sMM
 ilJ
-pgD
-gbt
+qVM
+pBF
 pJK
 pJK
 pJK
@@ -110365,13 +110340,13 @@ aaa
 aaa
 bdH
 aaa
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-abs
-adq
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
+aar
 aWm
 akt
 jSA
@@ -110431,8 +110406,8 @@ qVM
 dRz
 sMM
 tmI
-pgD
-tQV
+qVM
+czu
 czu
 czu
 czu
@@ -110568,13 +110543,13 @@ aaa
 aaa
 bdH
 aaY
-aKQ
-nhH
-nhH
-nhH
-nhH
-gpY
-adq
+lYA
+dwH
+dwH
+dwH
+dwH
+oOK
+aar
 oBi
 awW
 aWu
@@ -110634,8 +110609,8 @@ qVM
 hWB
 baw
 xCv
-pgD
-gbt
+qVM
+pBF
 pJK
 pJK
 pJK
@@ -110772,12 +110747,12 @@ bdH
 bdH
 aaC
 oON
-pPO
-pPO
-pPO
-tQQ
-gpY
-adq
+aIZ
+aIZ
+aIZ
+aLC
+oOK
+aar
 aGQ
 akc
 euO
@@ -110837,8 +110812,8 @@ qVM
 crh
 csI
 iPH
-pgD
-gbt
+qVM
+pBF
 iBt
 iBt
 iBt
@@ -110975,11 +110950,11 @@ aaf
 aaf
 rKu
 oON
-pPO
-pPO
-pPO
-pPO
-gpY
+aIZ
+aIZ
+aIZ
+aIZ
+oOK
 odq
 rEq
 akt
@@ -111041,7 +111016,7 @@ dRz
 sMM
 xXF
 gFd
-gbt
+pBF
 iBt
 iBt
 iBt
@@ -111178,10 +111153,10 @@ aag
 aag
 xew
 oON
-pPO
-pPO
-pPO
-pPO
+aIZ
+aIZ
+aIZ
+aIZ
 xtI
 sYv
 rfH
@@ -111381,11 +111356,11 @@ aag
 aag
 xew
 oON
-pPO
-pPO
-pPO
-pPO
-gpY
+aIZ
+aIZ
+aIZ
+aIZ
+oOK
 pGl
 agS
 akt
@@ -111447,7 +111422,7 @@ dRz
 sMM
 kVi
 bcq
-gbt
+pBF
 iBt
 iBt
 iBt
@@ -111584,12 +111559,12 @@ aag
 aag
 xew
 oON
-pPO
-pPO
-pPO
-pPO
-gpY
-adq
+aIZ
+aIZ
+aIZ
+aIZ
+oOK
+aar
 agB
 aka
 aWu
@@ -111649,8 +111624,8 @@ bDo
 hWB
 yhI
 fMR
-pgD
-gbt
+qVM
+pBF
 iBt
 iBt
 iBt
@@ -111786,13 +111761,13 @@ aag
 aag
 aag
 xew
-aKQ
-nhH
-nhH
-nhH
-nhH
-gpY
-adq
+lYA
+dwH
+dwH
+dwH
+dwH
+oOK
+aar
 wsk
 awW
 euO
@@ -111852,8 +111827,8 @@ eOM
 crh
 baw
 tYa
-pgD
-gbt
+qVM
+pBF
 pJK
 pJK
 pJK
@@ -111989,13 +111964,13 @@ aag
 aag
 aag
 aag
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-abs
-adq
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
+aar
 aWm
 akt
 jSA
@@ -112055,8 +112030,8 @@ jeI
 dRz
 sMM
 tmI
-pgD
-tQV
+qVM
+czu
 czu
 czu
 czu
@@ -112192,13 +112167,13 @@ aag
 aag
 aag
 xew
-aKQ
-nhH
-nhH
-nhH
-nhH
-gpY
-adq
+lYA
+dwH
+dwH
+dwH
+dwH
+oOK
+aar
 cLc
 akt
 jSA
@@ -112258,8 +112233,8 @@ qVM
 dRz
 sMM
 ilJ
-pgD
-gbt
+qVM
+pBF
 pJK
 pJK
 pJK
@@ -112396,12 +112371,12 @@ aag
 aag
 xew
 rhr
-pPO
-pPO
-pPO
-tQQ
-gpY
-adq
+aIZ
+aIZ
+aIZ
+aLC
+oOK
+aar
 agB
 awW
 aWu
@@ -112461,8 +112436,8 @@ qVM
 hWB
 baw
 fMR
-pgD
-gbt
+qVM
+pBF
 iBt
 iBt
 iBt
@@ -112599,11 +112574,11 @@ aag
 aag
 xew
 rhr
-pPO
-pPO
-pPO
-pPO
-gpY
+aIZ
+aIZ
+aIZ
+aIZ
+oOK
 fyr
 mVl
 akc
@@ -112665,7 +112640,7 @@ cSG
 csI
 qYC
 kwo
-gbt
+pBF
 iBt
 iBt
 iBt
@@ -112802,10 +112777,10 @@ aag
 aag
 xew
 rhr
-pPO
-pPO
-pPO
-pPO
+aIZ
+aIZ
+aIZ
+aIZ
 aba
 sYv
 rfH
@@ -113005,11 +112980,11 @@ aah
 aah
 bgS
 rhr
-pPO
-pPO
-pPO
-pPO
-gpY
+aIZ
+aIZ
+aIZ
+aIZ
+oOK
 ddn
 wgv
 ale
@@ -113071,7 +113046,7 @@ uIz
 dBp
 gVA
 bcq
-gbt
+pBF
 iBt
 iBt
 iBt
@@ -113208,11 +113183,11 @@ aaa
 bdH
 aaY
 rhr
-pPO
-pPO
-pPO
-pPO
-tEp
+aIZ
+aIZ
+aIZ
+aIZ
+oOK
 aet
 aet
 aet
@@ -113410,12 +113385,12 @@ aaa
 aaa
 bdH
 aaY
-aKQ
-nhH
-nhH
-nhH
-nhH
-tEp
+lYA
+dwH
+dwH
+dwH
+dwH
+oOK
 aet
 aiH
 alf
@@ -113613,12 +113588,12 @@ aaa
 aaa
 bdH
 aaa
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
 acf
 uaC
 alg
@@ -125557,7 +125532,7 @@ clZ
 bSJ
 xRE
 ebO
-yhQ
+vTK
 ajZ
 aaa
 avo
@@ -125760,7 +125735,7 @@ acp
 bSJ
 vMn
 vuR
-yhQ
+vTK
 ajZ
 avo
 avo
@@ -125963,7 +125938,7 @@ clZ
 bSJ
 bob
 emG
-yhQ
+vTK
 ajZ
 avo
 avs
@@ -126775,7 +126750,7 @@ bSJ
 bSJ
 nOG
 cAH
-yhQ
+vTK
 ajZ
 avo
 avs
@@ -126978,7 +126953,7 @@ bVq
 bSJ
 fTx
 vmZ
-yhQ
+vTK
 ajZ
 avo
 avo
@@ -127181,7 +127156,7 @@ clT
 bSJ
 cJP
 vuR
-yhQ
+vTK
 ajZ
 aaa
 avo

@@ -85,7 +85,11 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 		if(tutorial_mob.client?.prefs && completed)
 			tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
 			tutorial_mob.client.prefs.save_character()
-		tutorial_mob.send_to_lobby()
+		var/mob/new_player/new_player = new
+		if(!tutorial_mob.mind)
+			tutorial_mob.mind_initialize()
+
+		tutorial_mob.mind.transfer_to(new_player)
 
 	if(!QDELETED(src))
 		qdel(src)

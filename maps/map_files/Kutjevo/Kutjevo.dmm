@@ -9204,6 +9204,10 @@
 	dir = 6
 	},
 /area/kutjevo/interior/complex/med/locks)
+"mvX" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/spring)
 "mwh" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /turf/open/floor/kutjevo/colors/green/tile,
@@ -44487,7 +44491,7 @@ dxF
 dxF
 hRG
 skx
-skx
+mvX
 uzJ
 skx
 skx
@@ -45329,7 +45333,7 @@ iNI
 skx
 skx
 skx
-skx
+mvX
 skx
 iNI
 dxF
@@ -46336,7 +46340,7 @@ giY
 skx
 skx
 skx
-skx
+mvX
 skx
 skx
 skx
@@ -46509,7 +46513,7 @@ iNI
 soL
 uzJ
 cKY
-skx
+mvX
 hRG
 dxF
 dxF
@@ -46999,7 +47003,7 @@ dxF
 dxF
 dxF
 fMB
-skx
+mvX
 iNI
 dcC
 qaU
@@ -48170,7 +48174,7 @@ dxF
 skx
 skx
 skx
-skx
+mvX
 iNI
 iNI
 iNI
@@ -48345,7 +48349,7 @@ skx
 skx
 skx
 skx
-skx
+mvX
 skx
 hRG
 dxF
@@ -48832,7 +48836,7 @@ dxF
 dxF
 iNI
 skx
-skx
+mvX
 skx
 skx
 iNI

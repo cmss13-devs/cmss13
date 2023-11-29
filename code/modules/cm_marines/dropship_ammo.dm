@@ -208,8 +208,6 @@
 	fire_mission_delay = 1
 	directhit_damage = 65 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	penetration = 40 //AP value pretty much
-	var/holo_stacks = 100
-	var/slow_duration = 2
 
 //laser battery
 

@@ -329,7 +329,7 @@
 							lifeboat.evac_launch()
 							shipwide_ai_announcement("Emergency Launch command received. Launching " + (lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard") + " Lifeboat.")
 							return
-						if(launch_initiated == 1)
+						if(launch_initiated)
 							to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
 							return
 

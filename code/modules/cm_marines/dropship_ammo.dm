@@ -141,7 +141,7 @@
 	ammo_count = 400
 	max_ammo_count = 400
 	transferable_ammo = TRUE
-	ammo_used_per_firing = 40
+	ammo_used_per_firing = 80
 	point_cost = 275
 	fire_mission_delay = 2
 	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
@@ -160,36 +160,38 @@
 		return "It's loaded with an empty [name]."
 
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact)
-	set waitfor = 0
-	var/list/turf_list = list()
-	for(var/turf/T in range(bullet_spread_range, impact))
-		turf_list += T
-	var/soundplaycooldown = 0
-	var/debriscooldown = 0
-	for(var/i = 1 to ammo_used_per_firing)
-		var/turf/impact_tile = pick(turf_list)
-		sleep(1)
-		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
-		create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
-		for(var/atom/movable/explosion_effect in impact_tile)
-			if(iscarbon(explosion_effect))
-				var/mob/living/carbon/bullet_effect = explosion_effect
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
-				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
-			else
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
-		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
-			soundplaycooldown = 3
-		soundplaycooldown--
-		if(!debriscooldown)
-			impact_tile.ceiling_debris_check(1)
-			debriscooldown = 6
-		debriscooldown--
-		new /obj/effect/particle_effect/expl_particles(impact_tile)
-	sleep(11) //speed of sound simulation
-	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
+    set waitfor = 0
+    var/list/turf_list = list()
+    for(var/turf/T in range(bullet_spread_range, impact))
+        turf_list += T
+    var/soundplaycooldown = 0
+    var/debriscooldown = 0
+    for(var/i = 1 to ammo_used_per_firing)
+        sleep(1)
+        for(var/j = 1 to 2) //rather than halving the sleep, were doubling the bullets shot "bang"
+            var/turf/impact_tile = pick(turf_list)
+            
+            var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+            impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
+            create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
+            for(var/atom/movable/explosion_effect in impact_tile)
+                if(iscarbon(explosion_effect))
+                    var/mob/living/carbon/bullet_effect = explosion_effect
+                    explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+                    bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
+                else
+                    explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
+            new /obj/effect/particle_effect/expl_particles(impact_tile)
+        if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
+            playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
+            soundplaycooldown = 3
+        soundplaycooldown--
+        if(!debriscooldown)
+            impact_tile.ceiling_debris_check(1)
+            debriscooldown = 6
+        debriscooldown--
+    sleep(11) //speed of sound simulation
+    playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 
 
 /obj/structure/ship_ammo/heavygun/antitank

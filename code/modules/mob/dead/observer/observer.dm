@@ -25,7 +25,6 @@
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
 	density = FALSE
-	canmove = TRUE
 	blinded = FALSE
 	anchored = TRUE //  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
@@ -80,6 +79,9 @@
 
 	GLOB.observer_list += src
 
+	// Ghosts don't move, they teleport via a special case in mob code
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
+
 	var/turf/spawn_turf
 	if(ismob(body))
 		spawn_turf = get_turf(body) //Where is the body located?
@@ -117,7 +119,7 @@
 		forceMove(spawn_turf)
 
 	if(!name) //To prevent nameless ghosts
-		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 	if(name == "Unknown")
 		if(body)
 			name = body.real_name
@@ -392,28 +394,28 @@
 		if(HUD_toggled[i])
 			switch(i)
 				if("Medical HUD")
-					H = huds[MOB_HUD_MEDICAL_OBSERVER]
+					H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 					H.add_hud_to(src, src)
 				if("Security HUD")
-					H = huds[MOB_HUD_SECURITY_ADVANCED]
+					H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 					H.add_hud_to(src, src)
 				if("Squad HUD")
-					H = huds[MOB_HUD_FACTION_OBSERVER]
+					H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 					H.add_hud_to(src, src)
 				if("Xeno Status HUD")
-					H = huds[MOB_HUD_XENO_STATUS]
+					H = GLOB.huds[MOB_HUD_XENO_STATUS]
 					H.add_hud_to(src, src)
 				if("Faction UPP HUD")
-					H = huds[MOB_HUD_FACTION_UPP]
+					H = GLOB.huds[MOB_HUD_FACTION_UPP]
 					H.add_hud_to(src, src)
 				if("Faction Wey-Yu HUD")
-					H = huds[MOB_HUD_FACTION_WY]
+					H = GLOB.huds[MOB_HUD_FACTION_WY]
 					H.add_hud_to(src, src)
 				if("Faction TWE HUD")
-					H = huds[MOB_HUD_FACTION_TWE]
+					H = GLOB.huds[MOB_HUD_FACTION_TWE]
 					H.add_hud_to(src, src)
 				if("Faction CLF HUD")
-					H = huds[MOB_HUD_FACTION_CLF]
+					H = GLOB.huds[MOB_HUD_FACTION_CLF]
 					H.add_hud_to(src, src)
 
 	see_invisible = INVISIBILITY_OBSERVER
@@ -472,20 +474,20 @@ Works together with spawning an observer, noted above.
 
 	if(!can_reenter_corpse)
 		away_timer = 300 //They'll never come back, so we can max out the timer right away.
-		if(round_statistics)
-			round_statistics.update_panel_data()
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.update_panel_data()
 		track_death_calculations() //This needs to be done before mind is nullified
 		if(ghost.mind)
 			ghost.mind.original = ghost
 	else if(ghost.mind && ghost.mind.player_entity) //Use else here because track_death_calculations() already calls this.
-		ghost.mind.player_entity.update_panel_data(round_statistics)
+		ghost.mind.player_entity.update_panel_data(GLOB.round_statistics)
 		ghost.mind.original = src
 
 	mind = null
 
 	if(ghost.client)
 		ghost.client.init_verbs()
-		ghost.client.change_view(world_view_size) //reset view range to default
+		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0
 		ghost.set_lighting_alpha_from_pref(ghost.client)
@@ -522,7 +524,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/living/proc/do_ghost()
 	if(stat == DEAD)
 		if(mind && mind.player_entity)
-			mind.player_entity.update_panel_data(round_statistics)
+			mind.player_entity.update_panel_data(GLOB.round_statistics)
 		ghostize(TRUE)
 	else
 		var/list/options = list("Ghost", "Stay in body")
@@ -829,8 +831,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.Settings"
 
 	if(client)
-		if(client.view != world_view_size)
-			client.change_view(world_view_size)
+		if(client.view != GLOB.world_view_size)
+			client.change_view(GLOB.world_view_size)
 		else
 			client.change_view(14)
 
@@ -1147,7 +1149,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_INFO("Wrong game mode. You have to be observing a Hunter Games round."))
 		return
 
-	if(!waiting_for_drop_votes)
+	var/datum/game_mode/huntergames/mode = SSticker.mode
+
+	if(!mode.waiting_for_drop_votes)
 		to_chat(src, SPAN_INFO("There's no drop vote currently in progress. Wait for a supply drop to be announced!"))
 		return
 
@@ -1191,8 +1195,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "View Kill Feed"
 	set desc = "View global kill statistics tied to the game."
 
-	if(round_statistics)
-		round_statistics.show_kill_feed(src)
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.show_kill_feed(src)
 
 /mob/dead/observer/get_status_tab_items()
 	. = ..()
@@ -1280,7 +1284,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!key_to_use)
 		return
 
-	if(!(RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
+	if(!(GLOB.RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
 		return
 
 	if(!SSticker.mode)

@@ -334,7 +334,7 @@
 	if(P.distance_travelled > 8)
 		knockback(M, P, 12)
 
-	else if(!M || M == P.firer || M.lying) //These checks are included in knockback and would be redundant above.
+	else if(!M || M == P.firer || M.body_position == LYING_DOWN) //These checks are included in knockback and would be redundant above.
 		return
 
 	shake_camera(M, 3, 4)

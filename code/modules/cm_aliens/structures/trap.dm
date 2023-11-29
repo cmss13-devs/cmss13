@@ -106,7 +106,7 @@
 				var/mob/living/carbon/human/H = AM
 				if(issynth(H) || isyautja(H))
 					return
-				if(H.stat == DEAD || H.lying)
+				if(H.stat == DEAD || H.body_position == LYING_DOWN)
 					return
 				if(H.ally_of_hivenumber(hivenumber))
 					return

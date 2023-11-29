@@ -5,7 +5,7 @@
 		alert("Invalid mob")
 		return
 
-	var/rank_list = list("Custom", "Weyland-Yutani") + RoleAuthority.roles_by_name
+	var/rank_list = list("Custom", "Weyland-Yutani") + GLOB.RoleAuthority.roles_by_name
 
 	var/newrank = tgui_input_list(usr, "Select new rank for [H]", "Change the mob's rank and skills", rank_list)
 	if (!newrank)
@@ -14,8 +14,8 @@
 		return
 	var/obj/item/card/id/I = H.wear_id
 
-	if(RoleAuthority.roles_by_name[newrank])
-		var/datum/job/J = RoleAuthority.roles_by_name[newrank]
+	if(GLOB.RoleAuthority.roles_by_name[newrank])
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newrank]
 		H.comm_title = J.get_comm_title()
 		H.set_skills(J.get_skills())
 		if(istype(I))
@@ -44,14 +44,14 @@
 				H.faction = FACTION_WY
 				H.faction_group = FACTION_LIST_WY
 
-				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", (list("Keep Skillset") +RoleAuthority.roles_by_name))
+				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", (list("Keep Skillset") +GLOB.RoleAuthority.roles_by_name))
 				if(!newskillset || newskillset == "Keep Skillset")
 					return
 
 				if(!H)
 					return
 
-				var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
+				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newskillset]
 				H.set_skills(J.get_skills())
 
 			if("Custom")
@@ -88,14 +88,14 @@
 					new_faction = FACTION_NEUTRAL
 				H.faction = new_faction
 
-				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", RoleAuthority.roles_by_name)
+				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", GLOB.RoleAuthority.roles_by_name)
 				if(!newskillset)
 					return
 
 				if(!H)
 					return
 
-				var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
+				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[newskillset]
 				H.set_skills(J.get_skills())
 
 /client/proc/cmd_admin_dress(mob/M)

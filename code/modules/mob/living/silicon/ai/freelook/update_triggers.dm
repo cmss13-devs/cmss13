@@ -9,47 +9,47 @@
 
 /turf/proc/visibilityChanged()
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
-		cameranet.updateVisibility(src)
+		GLOB.cameranet.updateVisibility(src)
 
 /obj/structure/machinery/door/poddoor/shutters/open()
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
-		cameranet.updateVisibility(src)
+		GLOB.cameranet.updateVisibility(src)
 	. = ..()
 
 
 /obj/structure/machinery/door/poddoor/shutters/close()
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
-		cameranet.updateVisibility(src)
+		GLOB.cameranet.updateVisibility(src)
 	. = ..()
 
 
 /obj/structure/machinery/door/poddoor/shutters/Destroy()
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
-		cameranet.updateVisibility(src)
+		GLOB.cameranet.updateVisibility(src)
 	. = ..()
 // STRUCTURES
 
 /obj/structure/Destroy(force)
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
-		cameranet.updateVisibility(src)
+		GLOB.cameranet.updateVisibility(src)
 	. = ..()
 
 /obj/structure/Initialize(mapload, ...)
 	. = ..()
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
-		cameranet.updateVisibility(src)
+		GLOB.cameranet.updateVisibility(src)
 
 // EFFECTS
 
 /obj/effect/Destroy()
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
-		cameranet.updateVisibility(src)
+		GLOB.cameranet.updateVisibility(src)
 	. = ..()
 
 /obj/effect/Initialize(mapload, ...)
 	. = ..()
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
-		cameranet.updateVisibility(src)
+		GLOB.cameranet.updateVisibility(src)
 
 
 
@@ -68,7 +68,7 @@
 				updating = 1
 				spawn(BORG_CAMERA_BUFFER)
 					if(oldLoc != src.loc)
-						cameranet.updatePortableCamera(src.camera)
+						GLOB.cameranet.updatePortableCamera(src.camera)
 					updating = 0
 
 /mob/living/carbon/human/var/updating = 0
@@ -85,7 +85,7 @@
 			updating = TRUE
 			spawn(BORG_CAMERA_BUFFER)
 				if (oldLoc != loc)
-					cameranet.updatePortableCamera(H.camera)
+					GLOB.cameranet.updatePortableCamera(H.camera)
 				updating = FALSE
 
 // CAMERA
@@ -95,23 +95,23 @@
 /obj/structure/machinery/camera/toggle_cam_status(mob/user, silent)
 	..()
 	if(can_use())
-		cameranet.addCamera(src)
+		GLOB.cameranet.addCamera(src)
 	else
 		set_light(0)
-		cameranet.removeCamera(src)
+		GLOB.cameranet.removeCamera(src)
 
 /obj/structure/machinery/camera/Initialize()
 	. = ..()
-	cameranet.cameras += src //Camera must be added to global list of all cameras no matter what...
-	var/list/open_networks = difflist(network,RESTRICTED_CAMERA_NETWORKS) //...but if all of camera's networks are restricted, it only works for specific camera consoles.
+	GLOB.cameranet.cameras += src //Camera must be added to global list of all cameras no matter what...
+	var/list/open_networks = difflist(network,GLOB.RESTRICTED_CAMERA_NETWORKS) //...but if all of camera's networks are restricted, it only works for specific camera consoles.
 	if(open_networks.len) //If there is at least one open network, chunk is available for AI usage.
-		cameranet.addCamera(src)
+		GLOB.cameranet.addCamera(src)
 
 /obj/structure/machinery/camera/Destroy()
-	cameranet.cameras -= src
-	var/list/open_networks = difflist(network,RESTRICTED_CAMERA_NETWORKS)
+	GLOB.cameranet.cameras -= src
+	var/list/open_networks = difflist(network,GLOB.RESTRICTED_CAMERA_NETWORKS)
 	if(open_networks.len)
-		cameranet.removeCamera(src)
+		GLOB.cameranet.removeCamera(src)
 	. = ..()
 
 //#undef BORG_CAMERA_BUFFER

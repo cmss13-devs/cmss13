@@ -118,7 +118,7 @@
 		select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	if(armor_variation && mapload)
-		post_vendor_spawn_hook()
+		set_armor_style("Random")
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
@@ -149,18 +149,15 @@
 
 
 /obj/item/clothing/suit/storage/marine/post_vendor_spawn_hook(mob/living/carbon/human/user) //used for randomizing/selecting a variant for armors.
-	var/new_look //used for the icon_state text replacement.
+	if(!armor_variation)
+		return
 
-	if(!user?.client?.prefs)
-		new_look = rand(1,armor_variation)
-
-	else if(user.client.prefs.preferred_armor == "Random")
-		new_look = rand(1,armor_variation)
-
+	if(user?.client?.prefs)
+		// Set the armor style to the user's preference.
+		set_armor_style(user.client.prefs.preferred_armor)
 	else
-		new_look = GLOB.armor_style_list[user.client.prefs.preferred_armor]
-
-	icon_state = replacetext(icon_state,"1","[new_look]")
+		// Or if that isn't possible, just pick a random one.
+		set_armor_style("Random")
 	update_icon(user)
 
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
@@ -218,6 +215,27 @@
 		if(issynth(M) && M.allow_gun_usage == FALSE && !(flags_marine_armor & SYNTH_ALLOWED))
 			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
 			return 0
+
+/**
+ * Updates the armor's `icon_state` to the style represented by `new_style`.
+ *
+ * Arguments:
+ * * new_style - The new armor style. May only be one of `GLOB.armor_style_list`'s keys, or `"Random"`.
+ */
+/obj/item/clothing/suit/storage/marine/proc/set_armor_style(new_style)
+	// Regex to match one or more digits.
+	var/static/regex/digits = new("\\d+")
+	// Integer for the new armor style's `icon_state`.
+	var/new_look
+
+	if(new_style == "Random")
+		// The style icon states are all numbers between 1 and `armor_variation`, so this picks a random one.
+		new_look = rand(1, armor_variation)
+	else
+		new_look = GLOB.armor_style_list[new_style]
+
+	// Replace the digits in the current icon state with `new_look`. (E.g. "L6" -> "L2")
+	icon_state = digits.Replace(icon_state, new_look)
 
 /obj/item/clothing/suit/storage/marine/padded
 	name = "M3 pattern padded marine armor"
@@ -626,7 +644,7 @@
 	set category = "Object"
 	set src in usr
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+	if(usr.is_mob_incapacitated())
 		return 0
 
 	if(!injections)
@@ -905,13 +923,12 @@
 	H.alpha = full_camo_alpha
 	H.FF_hit_evade = 1000
 	ADD_TRAIT(H, TRAIT_UNDENSE, SPECIALIST_GEAR_TRAIT)
-	H.density = FALSE
 
 	RegisterSignal(H, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.remove_from_hud(H)
 
 	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
@@ -930,7 +947,6 @@
 		COMSIG_MOB_FIRED_GUN,
 		COMSIG_MOB_FIRED_GUN_ATTACHMENT,
 		COMSIG_MOB_DEATH,
-		COMSIG_MOB_POST_UPDATE_CANMOVE,
 		COMSIG_HUMAN_EXTINGUISH,
 		COMSIG_MOB_MOVE_OR_LOOK
 	))
@@ -939,11 +955,10 @@
 	animate(H, alpha = initial(H.alpha), flags = ANIMATION_END_NOW)
 	H.FF_hit_evade = initial(H.FF_hit_evade)
 	REMOVE_TRAIT(H, TRAIT_UNDENSE, SPECIALIST_GEAR_TRAIT)
-	H.update_canmove()
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(H)
 
 	H.visible_message(SPAN_DANGER("[H]'s camouflage fails!"), SPAN_WARNING("Your camouflage fails!"), max_distance = 4)
@@ -984,7 +999,7 @@
 
 /datum/action/item_action/specialist/prepare_position/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.wear_suit)
+	if(istype(H) && !H.is_mob_incapacitated() && H.body_position == STANDING_UP && holder_item == H.wear_suit)
 		return TRUE
 
 /datum/action/item_action/specialist/prepare_position/action_activate()

@@ -9323,16 +9323,12 @@
 	},
 /area/ice_colony/surface/dorms)
 "yJ" = (
-/obj/structure{
-	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation";
-	icon = 'icons/obj/structures/droppod_32x64.dmi';
-	icon_state = "techpod_open";
-	layer = 3.1;
-	name = "Remote Console Pod"
-	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
-	layer = 3.11
+	layer = 3.5;
+	pixel_y = -9;
+	density = 1
 	},
+/obj/structure/prop/invuln/remote_console_pod,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/pass)
 "yK" = (
@@ -17292,16 +17288,12 @@
 	},
 /area/ice_colony/underground/reception)
 "Ud" = (
-/obj/structure{
-	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation";
-	icon = 'icons/obj/structures/droppod_32x64.dmi';
-	icon_state = "techpod_open";
-	layer = 3.1;
-	name = "Remote Console Pod"
-	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
-	layer = 3.11
+	layer = 3.5;
+	pixel_y = -9;
+	density = 1
 	},
+/obj/structure/prop/invuln/remote_console_pod,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/south)
 "Ue" = (

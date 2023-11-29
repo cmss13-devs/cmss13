@@ -14175,10 +14175,6 @@
 	icon_state = "darkbrowncorners2"
 	},
 /area/ice_colony/surface/garage/one)
-"OV" = (
-/turf/open/space/basic,
-/turf/open/floor/plating/icefloor,
-/area/shuttle/elevator2/ground)
 "OW" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/snow/layer2,
@@ -52689,9 +52685,9 @@ rf
 rf
 Du
 oB
-OV
-OV
-OV
+AZ
+AZ
+AZ
 jv
 Du
 wW

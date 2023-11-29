@@ -388,3 +388,20 @@
       gone off.
   hislittlecuzingames:
   - bugfix: Disables launch announcment alarm if it's sounding when queen hijacks
+2023-11-28:
+  Birdtalon:
+  - rscadd: Eggsac carrier can now place eggs on normal weeds to a maximum of 4 eggs.
+  - rscadd: Eggsac carrier eggs on normal weeds have an expiry date.
+  fira:
+  - code_imp: Ported basic /tg/ Status Backend.
+  - rscadd: Human transform changes such as lying down, knock down, buckling, are
+      now animated.
+  - bugfix: Some statuses will now take effect immediately instead of waiting for
+      a life tick, notably Resting.
+  - balance: Many interaction requirements were changed to eg. fail upon stuns rather
+      than if lying down.
+  stalkerino:
+  - rscadd: readds skull facepaint and skull balaclava (blue and black)
+2023-11-29:
+  realforest2001:
+  - rscdel: Whiskey Outpost no longer rolls pred rounds naturally.

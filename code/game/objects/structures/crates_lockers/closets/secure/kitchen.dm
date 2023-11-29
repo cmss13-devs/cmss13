@@ -9,6 +9,7 @@
 	icon_opened = "fridgeopen"
 	icon_broken = "fridgebroken"
 	icon_off = "fridge1"
+	storage_capacity = 60 //give extra storage capacity so that everything can fit.
 
 /obj/structure/closet/secure_closet/fridge/update_icon()
 	if(broken)

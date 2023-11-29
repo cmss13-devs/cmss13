@@ -285,5 +285,5 @@
 		list("Colony", 20, /obj/item/device/encryptionkey/colony, "white", "Pre-tuned Radio Key for local colony comms."),	
 		list("CONTRABAND: Colonial Marshals", 40, /obj/item/device/encryptionkey/cmb, "white", "Radio Key for the CMB."),	
 		list("CONTRABAND: Colonial Liberation Front", 40, /obj/item/device/encryptionkey/clf, "white", "Radio Key for known local CLF frequencies."),	
-		list("CONTRABAND: United People's Republic", 40, /obj/item/device/encryptionkey/upp, "white", "Radio Key for known UPP listening frequencies."),
+		list("CONTRABAND: Union of Progressive Peoples", 40, /obj/item/device/encryptionkey/upp, "white", "Radio Key for known UPP listening frequencies."),
 	)

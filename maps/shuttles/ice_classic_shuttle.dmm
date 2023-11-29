@@ -13,15 +13,13 @@
 /area/shuttle/trijent_shuttle/elevator)
 "f" = (
 /turf/closed/shuttle/elevator{
-	dir = 5;
-	tag = "icon-wall (NORTHEAST)"
+	dir = 5
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "j" = (
 /obj/docking_port/mobile/trijent_elevator/ice_classic,
 /turf/closed/shuttle/elevator{
-	dir = 10;
-	tag = "icon-wall (SOUTHWEST)"
+	dir = 10
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "k" = (
@@ -29,26 +27,22 @@
 /area/shuttle/trijent_shuttle/elevator)
 "t" = (
 /turf/closed/shuttle/elevator{
-	dir = 6;
-	tag = "icon-wall (SOUTHEAST)"
+	dir = 6
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "u" = (
 /turf/closed/shuttle/elevator{
-	dir = 8;
-	tag = "icon-wall (WEST)"
+	dir = 8
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "w" = (
 /turf/closed/shuttle/elevator{
-	dir = 1;
-	tag = "icon-wall (NORTH)"
+	dir = 1
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "A" = (
 /turf/closed/shuttle/elevator{
-	dir = 4;
-	tag = "icon-wall (EAST)"
+	dir = 4
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "E" = (
@@ -56,8 +50,7 @@
 /area/shuttle/trijent_shuttle/elevator)
 "F" = (
 /turf/closed/shuttle/elevator{
-	dir = 9;
-	tag = "icon-wall (NORTHWEST)"
+	dir = 9
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "L" = (

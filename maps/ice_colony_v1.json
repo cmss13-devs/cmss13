@@ -5,15 +5,16 @@
     "environment_traits": {
         "COLD": true
     },
+    "weather_holder": "/datum/weather_ss_map_holder/sorokyne",
     "survivor_types": [
         "/datum/equipment_preset/survivor/corporate/shiva",
         "/datum/equipment_preset/survivor/doctor/shiva",
         "/datum/equipment_preset/survivor/scientist/shiva",
         "/datum/equipment_preset/survivor/engineer/shiva",
         "/datum/equipment_preset/survivor/security/shiva",
-        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/clf/cold",
         "/datum/equipment_preset/survivor/civilian"
-   ],
+    ],
     "defcon_triggers": [
         3300,
         2100,

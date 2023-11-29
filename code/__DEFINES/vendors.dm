@@ -67,3 +67,10 @@
 //Whether or not to load ammo boxes depending on ammo loaded into the vendor
 //Only relevant in big vendors, like Requisitions or Squad Prep
 #define VEND_LOAD_AMMO_BOXES (1<<9)
+
+// Redemption Tokens
+#define TOKEN_ENGINEER "Engineer"
+#define TOKEN_SPEC "Specialist"
+#define TOKEN_SYNTH "Synthetic"
+/// Token invalid/unrecognised.
+#define TOKEN_VOID "Void"

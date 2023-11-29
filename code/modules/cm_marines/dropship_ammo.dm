@@ -189,7 +189,7 @@
 		if(!debriscooldown)
 			impact_tile.ceiling_debris_check(1)
 			debriscooldown = 6
-			debriscooldown--
+		debriscooldown--
 	sleep(11) //speed of sound simulation
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 

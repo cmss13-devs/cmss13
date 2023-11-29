@@ -14,7 +14,7 @@
 		to_chat(wearer, SPAN_WARNING("You've already claimed your equipment."))
 		return
 
-	if(wearer.is_mob_incapacitated() || wearer.lying || wearer.buckled)
+	if(wearer.is_mob_incapacitated() || wearer.body_position == LYING_DOWN /* replace by mobility_flags */ || wearer.buckled)
 		to_chat(wearer, SPAN_WARNING("You're not able to do that right now."))
 		return
 

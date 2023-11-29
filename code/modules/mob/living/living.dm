@@ -34,11 +34,6 @@
 	QDEL_NULL(stamina)
 	QDEL_NULL(hallucinations)
 
-//This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
-//affects them once clothing is factored in. ~Errorage
-/mob/living/proc/calculate_affecting_pressure(pressure)
-	return
-
 /mob/living/proc/initialize_pain()
 	pain = new /datum/pain(src)
 
@@ -151,6 +146,8 @@
 	return
 
 /mob/living/Move(NewLoc, direct)
+	if(lying_angle != 0)
+		lying_angle_on_movement(direct)
 	if (buckled && buckled.loc != NewLoc) //not updating position
 		if (!buckled.anchored)
 			return buckled.Move(NewLoc, direct)
@@ -454,16 +451,170 @@
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
 
+// Note that this might CLASH with handle_regular_status_updates until it is ELIMINATED
+// and everything is switched from updates to signaling - due to not accounting for all cases.
+// If this proc causes issues you can probably disable it until then.
+/mob/living/carbon/update_stat()
+	if(stat != DEAD)
+		if(health <= HEALTH_THRESHOLD_DEAD)
+			death()
+			return
+		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+			set_stat(UNCONSCIOUS)
+		else
+			set_stat(CONSCIOUS)
+
 /mob/living/set_stat(new_stat)
 	. = ..()
 	if(isnull(.))
 		return
-	switch(.)
+
+	switch(.) //Previous stat.
+		if(CONSCIOUS)
+			if(stat >= UNCONSCIOUS)
+				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
+			add_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED), STAT_TRAIT)
+		if(UNCONSCIOUS)
+			if(stat >= UNCONSCIOUS)
+				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT) //adding trait sources should come before removing to avoid unnecessary updates
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
-	switch(stat)
+//			remove_from_dead_mob_list()
+//			add_to_alive_mob_list()
+
+	switch(stat) //Current stat.
+		if(CONSCIOUS)
+			if(. >= UNCONSCIOUS)
+				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
+			remove_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED, /*TRAIT_CRITICAL_CONDITION*/), STAT_TRAIT)
+		if(UNCONSCIOUS)
+			if(. >= UNCONSCIOUS)
+				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)
+//			REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
+//			remove_from_alive_mob_list()
+//			add_to_dead_mob_list()
+
+/**
+ * Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.
+ *
+ * In BYOND-angles 0 is NORTH, 90 is EAST, 180 is SOUTH and 270 is WEST.
+ * This usually means that 0 is standing up, 90 and 270 are horizontal positions to right and left respectively, and 180 is upside-down.
+ * Mobs that do now follow these conventions due to unusual sprites should require a special handling or redefinition of this proc, due to the density and layer changes.
+ * The return of this proc is the previous value of the modified lying_angle if a change was successful (might include zero), or null if no change was made.
+ */
+/mob/living/proc/set_lying_angle(new_lying, on_movement = FALSE)
+	if(new_lying == lying_angle)
+		return
+	. = lying_angle
+	lying_angle = new_lying
+	if(lying_angle != lying_prev)
+		update_transform(instant_update = on_movement) // Don't use transition for eg. crawling movement, because we already have the movement glide
+		lying_prev = lying_angle
+
+///Called by mob Move() when the lying_angle is different than zero, to better visually simulate crawling.
+/mob/living/proc/lying_angle_on_movement(direct)
+	if(direct & EAST)
+		set_lying_angle(90, on_movement = TRUE)
+	else if(direct & WEST)
+		set_lying_angle(270, on_movement = TRUE)
+
+///Reports the event of the change in value of the buckled variable.
+/mob/living/proc/set_buckled(new_buckled)
+	if(new_buckled == buckled)
+		return
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_BUCKLED, new_buckled)
+	. = buckled
+	buckled = new_buckled
+	if(buckled)
+//		if(!HAS_TRAIT(buckled, TRAIT_NO_IMMOBILIZE))
+//			ADD_TRAIT(src, TRAIT_IMMOBILIZED, BUCKLED_TRAIT)
+		ADD_TRAIT(src, TRAIT_IMMOBILIZED, BUCKLED_TRAIT)
+		switch(buckled.buckle_lying)
+			if(NO_BUCKLE_LYING) // The buckle doesn't force a lying angle.
+				REMOVE_TRAIT(src, TRAIT_FLOORED, BUCKLED_TRAIT)
+			if(0) // Forcing to a standing position.
+				REMOVE_TRAIT(src, TRAIT_FLOORED, BUCKLED_TRAIT)
+				set_body_position(STANDING_UP)
+				set_lying_angle(0)
+			else // Forcing to a lying position.
+				ADD_TRAIT(src, TRAIT_FLOORED, BUCKLED_TRAIT)
+				set_body_position(LYING_DOWN)
+				set_lying_angle(buckled.buckle_lying)
+	else
+		remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_FLOORED), BUCKLED_TRAIT)
+		if(.) // We unbuckled from something.
+			//var/atom/movable/old_buckled = .
+			var/obj/old_buckled = . // /tg/ code has buckling defined on /atom/movable - consider refactoring this sometime
+			if(old_buckled.buckle_lying == 0 && (resting || HAS_TRAIT(src, TRAIT_FLOORED))) // The buckle forced us to stay up (like a chair)
+				set_lying_down() // We want to rest or are otherwise floored, so let's drop on the ground.
+
+/mob/living/proc/get_up(instant = FALSE) // arg ignored
+//	set waitfor = FALSE
+//	if(!instant && !do_after(src, 1 SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, TYPE_PROC_REF(/mob/living, rest_checks_callback)), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+//		return
+	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
+		return
+	set_body_position(STANDING_UP)
+	set_lying_angle(0)
+
+/// Change the [body_position] to [LYING_DOWN] and update associated behavior.
+/mob/living/proc/set_lying_down(new_lying_angle)
+	set_body_position(LYING_DOWN)
+
+/// Proc to append behavior related to lying down.
+/mob/living/proc/on_lying_down(new_lying_angle)
+//	if(layer == initial(layer)) //to avoid things like hiding larvas.
+//		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
+	add_traits(list(/*TRAIT_UI_BLOCKED, TRAIT_PULL_BLOCKED,*/ TRAIT_UNDENSE), LYING_DOWN_TRAIT)
+	if(HAS_TRAIT(src, TRAIT_FLOORED) && !(dir & (NORTH|SOUTH)))
+		setDir(pick(NORTH, SOUTH)) // We are and look helpless.
+//	if(rotate_on_lying)
+//		body_position_pixel_y_offset = PIXEL_Y_OFFSET_LYING
+
+	// CM legacy canmove procs, replace this with signal procs probably
+	drop_l_hand()
+	drop_r_hand()
+	add_temp_pass_flags(PASS_MOB_THRU)
+	//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
+	if(pulledby && pulledby.grab_level == GRAB_CARRY)
+		layer = ABOVE_MOB_LAYER
+	else if (stat == DEAD)
+		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
+	else if(layer == initial(layer)) //to avoid things like hiding larvas.
+		layer = LYING_LIVING_MOB_LAYER
+
+/// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
+/mob/living/proc/on_fall()
+	return
+
+/// Changes the value of the [living/body_position] variable. Call this before set_lying_angle()
+/mob/living/proc/set_body_position(new_value)
+	if(body_position == new_value)
+		return
+	if((new_value == LYING_DOWN) && !(mobility_flags & MOBILITY_LIEDOWN))
+		return
+	. = body_position
+	body_position = new_value
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_BODY_POSITION, new_value, .)
+	if(new_value == LYING_DOWN) // From standing to lying down.
+		on_lying_down()
+	else // From lying down to standing up.
+		on_standing_up()
+
+/// Proc to append behavior related to lying down.
+/mob/living/proc/on_standing_up()
+	//if(layer == LYING_MOB_LAYER)
+	//	layer = initial(layer)
+	remove_traits(list(/*TRAIT_UI_BLOCKED, TRAIT_PULL_BLOCKED,*/ TRAIT_UNDENSE), LYING_DOWN_TRAIT)
+	// Make sure it doesn't go out of the southern bounds of the tile when standing.
+	//body_position_pixel_y_offset = get_pixel_y_offset_standing(current_size)
+	// CM stuff below
+	remove_temp_pass_flags(PASS_MOB_THRU)
+	if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
+		layer = initial(layer)
+
 
 /// Uses presence of [TRAIT_UNDENSE] to figure out what is the correct density state for the mob. Triggered by trait signal.
 /mob/living/proc/update_density()
@@ -471,3 +622,40 @@
 		set_density(FALSE)
 	else
 		set_density(TRUE)
+
+/// Proc to append behavior to the condition of being floored. Called when the condition starts.
+/mob/living/proc/on_floored_start()
+	if(body_position == STANDING_UP) //force them on the ground
+		set_body_position(LYING_DOWN)
+		set_lying_angle(pick(90, 270), on_movement = TRUE)
+//		on_fall()
+
+
+/// Proc to append behavior to the condition of being floored. Called when the condition ends.
+/mob/living/proc/on_floored_end()
+	if(!resting)
+		get_up()
+
+
+/mob/living/update_transform(instant_update = FALSE)
+	var/visual_angle = lying_angle
+	if(!rotate_on_lying)
+		return
+	var/matrix/base = matrix()
+	if(pulledby && pulledby.grab_level >= GRAB_CARRY)
+		visual_angle = 90 // CM code - for fireman carry
+	if(instant_update)
+		apply_transform(base.Turn(visual_angle))
+	else
+		apply_transform(base.Turn(visual_angle), UPDATE_TRANSFORM_ANIMATION_TIME)
+
+
+// legacy procs
+/mob/living/put_in_l_hand(obj/item/W)
+	if(body_position == LYING_DOWN)
+		return
+	return ..()
+/mob/living/put_in_r_hand(obj/item/W)
+	if(body_position == LYING_DOWN)
+		return
+	return ..()

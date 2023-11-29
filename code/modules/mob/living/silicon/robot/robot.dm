@@ -840,7 +840,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 						cleaned_item.clean_blood()
 					else if(istype(A, /mob/living/carbon/human))
 						var/mob/living/carbon/human/cleaned_human = A
-						if(cleaned_human.lying)
+						if(cleaned_human.body_position == LYING_DOWN)
 							if(cleaned_human.head)
 								cleaned_human.head.clean_blood()
 								cleaned_human.update_inv_head(0)
@@ -866,7 +866,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 		src.connected_ai = null
 	lawupdate = 0
 	lockcharge = 0
-	canmove = 1
+	//canmove = 1  // Yes this will probably break something, whatevver it is
 	scrambledcodes = 1
 	//Disconnect it's camera so it's not so easily tracked.
 	if(src.camera)

@@ -36,7 +36,7 @@
 	return
 
 /datum/action/item_action/view_publications/can_use_action()
-	if(owner && !owner.is_mob_incapacitated() && !owner.lying && owner.faction != FACTION_SURVIVOR)
+	if(owner && !owner.is_mob_incapacitated() && owner.faction != FACTION_SURVIVOR)
 		return TRUE
 
 /datum/action/item_action/view_publications/action_activate()

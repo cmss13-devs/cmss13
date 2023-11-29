@@ -168,9 +168,9 @@
 	var/debriscooldown = 0
 
 	for(var/i = 1 to ammo_used_per_firing)
-		var/turf/impact_tile = pick(turf_list)
 		sleep(1)
 		for(var/j = 1 to 2) //rather than halving the sleep, were doubling the bullets shot "bang"
+			var/turf/impact_tile = pick(turf_list)
 			var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 			impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
 			create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet

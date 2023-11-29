@@ -3983,7 +3983,6 @@
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/south)
 "lG" = (
-/turf/open/space/basic,
 /turf/open/floor/plating/icefloor,
 /area/shuttle/elevator3/underground)
 "lH" = (
@@ -7413,7 +7412,6 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "vr" = (
-/turf/open/space/basic,
 /turf/open/floor/plating/icefloor,
 /area/shuttle/elevator2/underground)
 "vs" = (
@@ -9375,6 +9373,9 @@
 	icon_state = "darkpurplecorners2"
 	},
 /area/ice_colony/underground/research/work)
+"AZ" = (
+/turf/open/floor/plating/icefloor,
+/area/shuttle/elevator2/ground)
 "Ba" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -13262,7 +13263,6 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "Mn" = (
-/turf/open/space/basic,
 /turf/open/floor/plating/icefloor,
 /area/shuttle/elevator3/ground)
 "Mo" = (
@@ -51509,9 +51509,9 @@ rf
 rf
 Du
 oB
-OV
-OV
-OV
+AZ
+AZ
+AZ
 jv
 Du
 wW
@@ -51745,9 +51745,9 @@ rf
 rf
 Du
 oB
-OV
-OV
-OV
+AZ
+AZ
+AZ
 jv
 Du
 fk
@@ -51981,9 +51981,9 @@ rf
 rf
 Du
 oB
-OV
-OV
-OV
+AZ
+AZ
+AZ
 jv
 RO
 Ql
@@ -52217,9 +52217,9 @@ rf
 rf
 Du
 oB
-OV
-OV
-OV
+AZ
+AZ
+AZ
 jv
 cq
 Nm
@@ -52453,9 +52453,9 @@ rf
 rf
 Du
 oB
-OV
-OV
-OV
+AZ
+AZ
+AZ
 jv
 Du
 mo

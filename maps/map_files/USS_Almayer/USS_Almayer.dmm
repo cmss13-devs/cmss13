@@ -31463,6 +31463,14 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"dXs" = (
+/obj/structure/closet,
+/obj/item/stack/flag/blue,
+/obj/item/stack/flag/blue,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/port_emb)
 "dXy" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
@@ -33527,6 +33535,8 @@
 "eKM" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/stack/flag/green,
+/obj/item/stack/flag/green,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -36119,6 +36129,14 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
+"fRK" = (
+/obj/structure/closet,
+/obj/item/stack/flag/purple,
+/obj/item/stack/flag/purple,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/port_emb)
 "fRN" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8;
@@ -46496,6 +46514,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/stack/flag/yellow,
+/obj/item/stack/flag/yellow,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -76424,6 +76444,8 @@
 	pixel_y = 28
 	},
 /obj/structure/closet,
+/obj/item/stack/flag/red,
+/obj/item/stack/flag/red,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -117001,7 +117023,7 @@ uAC
 rhQ
 pyc
 uMn
-ivz
+fRK
 nsY
 oed
 oDf
@@ -117407,7 +117429,7 @@ mus
 pVA
 mzV
 pML
-ivz
+dXs
 nsY
 jZO
 oDf

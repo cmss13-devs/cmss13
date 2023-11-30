@@ -499,8 +499,8 @@ Parameters are passed from New.
 		return TRUE
 
 	if(href_list["desc_lore"])
-		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x500")
-		onclose(usr, "[name]")
+		to_chat(usr, examine_block(desc_lore))
+
 
 ///This proc is called on atoms when they are loaded into a shuttle
 /atom/proc/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)

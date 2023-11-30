@@ -85,6 +85,8 @@
 	var/handful = "shells" //used for 'magazine' boxes that give handfuls to determine what kind for the sprite
 	can_explode = TRUE
 	limit_per_tile = 2
+	ground_offset_x = 5
+	ground_offset_y = 5
 
 /obj/item/ammo_box/magazine/empty
 	empty = TRUE
@@ -102,8 +104,6 @@
 		while(i < num_of_magazines)
 			contents += new magazine_type(src)
 			i++
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
 	update_icon()
 
 /obj/item/ammo_box/magazine/update_icon()

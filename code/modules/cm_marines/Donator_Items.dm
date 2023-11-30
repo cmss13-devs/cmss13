@@ -23,7 +23,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -35,7 +35,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -91,7 +91,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -103,7 +103,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -124,6 +124,9 @@
 //END FEET TEMPLATE
 
 /obj/item/storage/backpack/marine/fluff
+	xeno_types = null
+
+/obj/item/storage/backpack/marine/satchel/fluff
 	xeno_types = null
 
 /obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
@@ -211,10 +214,10 @@
 	item_state = "armor_reflec"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Armor"
+	name = "juggernaut armor"
 	desc = "Some fancy looking armor. DONOR ITEM"
-	icon_state = "rig-syndi"
-	item_state = "syndie_hardsuit"
+	icon_state = "skinnerarmor"
+	item_state = "skinnerarmor"
 
 /obj/item/clothing/suit/storage/marine/fluff/penguin //CKEY=tophatpenguin
 	name = "Trenchcoat"
@@ -589,8 +592,8 @@
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Helmet"
-	icon_state = "rig0-syndi"
+	name = "juggernaut helmet"
+	icon_state = "skinnerhelmet"
 	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/tristan //CKEY=tristan63
@@ -610,13 +613,6 @@
 	name = "Doom Helmet"
 	icon_state = "doom_helmet"
 	desc = "A Helmet, of a famous Earth warrior... Donor Item"
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
-
-/obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut_alt //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Helmet"
-	icon_state = "ncrhelmet"
-	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
@@ -1365,6 +1361,13 @@
 	desc = "A large security backpack, with a radio booster.  Donor Item"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+
+/obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
+	name = "tactical radiopack"
+	desc = "A Radio backpack for use with the Juggernaut armor. DONOR ITEM"
+	icon_state = "skinnerpack"
+	item_state = "securitypack"
+	has_gamemode_skin = FALSE //same sprite for all gamemodes.
 
 /obj/item/clothing/glasses/fluff/alexwarhammer
 	name = "Black Jack's Dank Shades"

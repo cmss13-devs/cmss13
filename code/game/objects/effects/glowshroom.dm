@@ -46,7 +46,7 @@
 	set background = 1
 	var/direction = 16
 
-	for(var/wallDir in cardinal)
+	for(var/wallDir in GLOB.cardinals)
 		var/turf/newTurf = get_step(location,wallDir)
 		if(istype(newTurf, /turf/closed/wall))
 			direction |= wallDir

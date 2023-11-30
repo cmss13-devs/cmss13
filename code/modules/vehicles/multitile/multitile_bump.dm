@@ -106,14 +106,12 @@
 	return TRUE
 
 /obj/structure/surface/handle_vehicle_bump(obj/vehicle/multitile/V)
-	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	qdel(src)
 	return TRUE
 
 /obj/structure/surface/table/handle_vehicle_bump(obj/vehicle/multitile/V)
-	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	if(prob(50))
@@ -122,7 +120,6 @@
 	return TRUE
 
 /obj/structure/surface/rack/handle_vehicle_bump(obj/vehicle/multitile/V)
-	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	deconstruct()
@@ -642,7 +639,7 @@
 			//Check what dir they should be facing to be looking directly at the vehicle
 			else if(dir_between == dir) //front hit (facing the vehicle)
 				blocked = TRUE
-			else if(dir_between == reverse_dir[dir]) // rear hit (facing directly away from the vehicle)
+			else if(dir_between == GLOB.reverse_dir[dir]) // rear hit (facing directly away from the vehicle)
 				takes_damage = TRUE
 			//side hit
 			else if(caste.caste_type == XENO_CASTE_QUEEN) // queen blocks even with sides
@@ -740,7 +737,7 @@
 
 //BURROWER
 /mob/living/carbon/xenomorph/burrower/handle_vehicle_bump(obj/vehicle/multitile/V)
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return TRUE
 	else
 		return . = ..()

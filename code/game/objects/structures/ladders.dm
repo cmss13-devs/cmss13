@@ -67,8 +67,8 @@
 	else //wtf make your ladders properly assholes
 		icon_state = "ladder00"
 
-/obj/structure/ladder/attack_hand(mob/user)
-	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying || user.buckled || user.anchored) return
+/obj/structure/ladder/attack_hand(mob/living/user)
+	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored) return
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
@@ -94,7 +94,7 @@
 	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
 	busy = TRUE
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
-		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && !user.lying && !user.buckled && !user.anchored)
+		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && user.body_position != LYING_DOWN && !user.buckled && !user.anchored)
 			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
 			user.visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src]."),
 			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
@@ -103,9 +103,9 @@
 	busy = FALSE
 	add_fingerprint(user)
 
-/obj/structure/ladder/check_eye(mob/user)
+/obj/structure/ladder/check_eye(mob/living/user)
 	//Are we capable of looking?
-	if(user.is_mob_incapacitated() || get_dist(user, src) > 1 || user.blinded || user.lying || !user.client)
+	if(user.is_mob_incapacitated() || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || !user.client)
 		user.unset_interaction()
 
 	//Are ladder cameras ok?
@@ -140,7 +140,7 @@
 //Peeking up/down
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr))))
-		if(islarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded || usr.lying)
+		if(islarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded)
 			to_chat(usr, "You can't do that in your current state.")
 			return
 		if(is_watching)

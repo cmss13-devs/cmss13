@@ -84,6 +84,14 @@
 	var/mutable_appearance/hugger_overlays_icon
 	var/mutable_appearance/eggsac_overlays_icon
 
+	//Carrier specific vars
+	var/threw_a_hugger = 0
+	var/huggers_cur = 0
+	var/eggs_cur = 0
+	var/huggers_max = 0
+	var/eggs_max = 0
+	var/laid_egg = 0
+
 /mob/living/carbon/xenomorph/carrier/update_icons()
 	. = ..()
 	if (mutation_type == CARRIER_NORMAL)
@@ -109,8 +117,8 @@
 	for(var/i in hugger_image_index)
 		if(stat == DEAD)
 			hugger_overlays_icon.overlays += icon(icon, "clinger_[i] Knocked Down")
-		else if(lying)
-			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+		else if(body_position == LYING_DOWN)
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 				hugger_overlays_icon.overlays += icon(icon, "clinger_[i] Sleeping")
 			else
 				hugger_overlays_icon.overlays +=icon(icon, "clinger_[i] Knocked Down")
@@ -154,8 +162,8 @@
 		i = 1
 
 	if(stat != DEAD)
-		if(lying)
-			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+		if(body_position == LYING_DOWN)
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 				eggsac_overlays_icon.overlays += icon(icon, "eggsac_[i] Sleeping")
 			else
 				eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i] Knocked Down")

@@ -52,9 +52,6 @@
 			turfs += T
 	return turfs
 
-
-//var/debug_mob = 0
-
 // Will recursively loop through an atom's contents and check for mobs, then it will loop through every atom in that atom's contents.
 // It will keep doing this until it checks every content possible. This will fix any problems with mobs, that are inside objects,
 // being unable to hear people due to being in a box within a bag.

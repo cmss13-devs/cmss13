@@ -13,7 +13,7 @@
 	icon_state = "bed"
 	icon = 'icons/obj/objects.dmi'
 	can_buckle = TRUE
-	buckle_lying = TRUE
+	buckle_lying = 90
 	throwpass = TRUE
 	debris = list(/obj/item/stack/sheet/metal)
 	var/buildstacktype = /obj/item/stack/sheet/metal
@@ -310,7 +310,7 @@
 //////////////////////////////////////////////
 
 //List of all activated medevac stretchers
-var/global/list/activated_medevac_stretchers = list()
+GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 /obj/structure/bed/medevac_stretcher
 	name = "medevac stretcher"
@@ -328,7 +328,7 @@ var/global/list/activated_medevac_stretchers = list()
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)
 		stretcher_activated = FALSE
-		activated_medevac_stretchers -= src
+		GLOB.activated_medevac_stretchers -= src
 		if(linked_medevac)
 			linked_medevac.linked_stretcher = null
 			linked_medevac = null
@@ -366,7 +366,7 @@ var/global/list/activated_medevac_stretchers = list()
 
 	if(stretcher_activated)
 		stretcher_activated = FALSE
-		activated_medevac_stretchers -= src
+		GLOB.activated_medevac_stretchers -= src
 		if(linked_medevac)
 			linked_medevac.linked_stretcher = null
 			linked_medevac = null
@@ -384,7 +384,7 @@ var/global/list/activated_medevac_stretchers = list()
 			return
 
 		stretcher_activated = TRUE
-		activated_medevac_stretchers += src
+		GLOB.activated_medevac_stretchers += src
 		to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
 		update_icon()
 
@@ -404,7 +404,17 @@ var/global/list/activated_medevac_stretchers = list()
 
 //bedroll
 /obj/structure/bed/bedroll
-	name = "bedroll"
-	desc = "bedroll"
-	icon_state = "bedroll_o"
+	name = "unfolded bedroll"
+	desc = "Perfect for those long missions, when there's nowhere else to sleep, you remembered to bring at least one thing of comfort."
 	icon = 'icons/monkey_icos.dmi'
+	icon_state = "bedroll_o"
+	buckling_y = 0
+	foldabletype = /obj/item/roller/bedroll
+	accepts_bodybag = FALSE
+
+/obj/item/roller/bedroll
+	name = "folded bedroll"
+	desc = "A standard issue USCMC bedroll, They've been in service for as long as you can remember. The tag on it states to unfold it before rest, but who needs rules anyway, right?"
+	icon = 'icons/monkey_icos.dmi'
+	icon_state = "bedroll"
+	rollertype = /obj/structure/bed/bedroll

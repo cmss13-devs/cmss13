@@ -318,7 +318,7 @@
 	var/turf/min = reservation.bottom_left_coords
 	var/turf/max = reservation.top_right_coords
 
-	return list(Floor(min[1] + (max[1] - min[1])), Floor(min[2] + (max[2] - min[2])), min[3])
+	return list(Floor(min[1] + (max[1] - min[1])/2), Floor(min[2] + (max[2] - min[2])/2), min[3])
 
 /datum/interior/proc/get_middle_turf()
 	var/list/turf/bounds = get_bound_turfs()

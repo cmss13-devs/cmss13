@@ -69,8 +69,8 @@
 		icon_state = "[mutation_caste_state] Dead"
 		if(!(icon_state in icon_states(icon_xeno)))
 			icon_state = "Normal [caste.caste_type] Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(body_position == LYING_DOWN)
+		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 			icon_state = "[mutation_caste_state] Sleeping"
 			if(!(icon_state in icon_states(icon_xeno)))
 				icon_state = "Normal [caste.caste_type] Sleeping"
@@ -92,6 +92,28 @@
 	update_inv_back()
 	update_inv_resource()
 	update_icons()
+
+/* CRUTCH ZONE - Update icons when relevant status happen - Ideally do this properly and for everything, then kill update_icons() someday */
+// set_body_position is needed on addition of floored start/stop because we can be switching between resting and knockeddown
+/mob/living/carbon/xenomorph/set_body_position(new_value)
+	. = ..()
+	if(. != new_value)
+		update_icons() // Snowflake handler for xeno resting icons
+
+/mob/living/carbon/xenomorph/on_floored_start()
+	. = ..()
+	update_icons()
+/mob/living/carbon/xenomorph/on_floored_end()
+	. = ..()
+	update_icons()
+/mob/living/carbon/xenomorph/on_incapacitated_trait_gain()
+	. = ..()
+	update_icons()
+/mob/living/carbon/xenomorph/on_incapacitated_trait_loss()
+	. = ..()
+	update_icons()
+
+/* ^^^^^^^^^^^^^^ End Icon updates */
 
 /mob/living/carbon/xenomorph/update_inv_pockets()
 	var/datum/custom_hud/alien/ui_datum = GLOB.custom_huds_list[HUD_ALIEN]
@@ -131,30 +153,30 @@
 		apply_overlay(X_L_HAND_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_back()
-	if(!backpack_icon_carrier)
+	if(!backpack_icon_holder)
 		return // Xenos will only have a vis_obj if they've been equipped with a pack before
 
 	var/obj/item/storage/backpack/backpack = back
 	if(!backpack?.xeno_icon_state)
-		backpack_icon_carrier.icon_state = "none"
+		backpack_icon_holder.icon_state = "none"
 		return
 
 	var/state_modifier = ""
 	if(stat == DEAD)
 		state_modifier = " Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(body_position == LYING_DOWN)
+		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 			state_modifier = " Sleeping"
 		else
 			state_modifier = " Knocked Down"
 	else if(handle_special_state())
 		state_modifier = handle_special_backpack_states()
 
-	backpack_icon_carrier.icon_state = backpack.xeno_icon_state + state_modifier
+	backpack_icon_holder.icon_state = backpack.xeno_icon_state + state_modifier
 
-	backpack_icon_carrier.layer = -X_BACK_LAYER
+	backpack_icon_holder.layer = -X_BACK_LAYER
 	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
-		backpack_icon_carrier.layer = -X_BACK_FRONT_LAYER
+		backpack_icon_holder.layer = -X_BACK_FRONT_LAYER
 
 /mob/living/carbon/xenomorph/proc/update_inv_resource()
 	remove_overlay(X_RESOURCE_LAYER)
@@ -237,7 +259,7 @@
 	if(on_fire && fire_reagent)
 		var/image/I
 		if(mob_size >= MOB_SIZE_BIG)
-			if((!initial(pixel_y) || lying) && !resting && !sleeping)
+			if((!initial(pixel_y) || body_position != LYING_DOWN)) // what's that pixel_y doing here???
 				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 			else
 				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
@@ -269,24 +291,24 @@
 
 // Shamelessly inspired from the equivalent proc on TGCM
 /mob/living/carbon/xenomorph/proc/update_wounds()
-	if(!wound_icon_carrier)
+	if(!wound_icon_holder)
 		return
 
 	var/health_threshold
-	wound_icon_carrier.layer = layer + 0.01
+	wound_icon_holder.layer = layer + 0.01
 	health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
-			wound_icon_carrier.icon_state = "none"
-		else if(lying)
-			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-				wound_icon_carrier.icon_state = "[caste.caste_type]_rest_[health_threshold]"
+			wound_icon_holder.icon_state = "none"
+		else if(body_position == LYING_DOWN)
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+				wound_icon_holder.icon_state = "[caste.caste_type]_rest_[health_threshold]"
 			else
-				wound_icon_carrier.icon_state = "[caste.caste_type]_downed_[health_threshold]"
+				wound_icon_holder.icon_state = "[caste.caste_type]_downed_[health_threshold]"
 		else if(!handle_special_state())
-			wound_icon_carrier.icon_state = "[caste.caste_type]_walk_[health_threshold]"
+			wound_icon_holder.icon_state = "[caste.caste_type]_walk_[health_threshold]"
 		else
-			wound_icon_carrier.icon_state = handle_special_wound_states(health_threshold)
+			wound_icon_holder.icon_state = handle_special_wound_states(health_threshold)
 
 
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
@@ -300,7 +322,7 @@
 /atom/movable/vis_obj/xeno_pack/Initialize(mapload, mob/living/carbon/source)
 	. = ..()
 	if(source)
-		icon = default_xeno_onmob_icons[source.type]
+		icon = GLOB.default_xeno_onmob_icons[source.type]
 
 //Xeno Overlays Indexes//////////
 #undef X_BACK_LAYER

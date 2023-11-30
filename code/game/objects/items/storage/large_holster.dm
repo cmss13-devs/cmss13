@@ -75,20 +75,20 @@
 	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the back or the armor."
 	icon_state = "machete_holster"
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	can_hold = list(/obj/item/weapon/claymore/mercsword/machete)
+	can_hold = list(/obj/item/weapon/sword/machete)
 
 /obj/item/storage/large_holster/machete/full/fill_preset_inventory()
-	new /obj/item/weapon/claymore/mercsword/machete(src)
+	new /obj/item/weapon/sword/machete(src)
 
 /obj/item/storage/large_holster/machete/arnold
 	name = "\improper QH20 pattern M2100 custom machete scabbard"
 	desc = "A large leather scabbard used to carry a M2100 \"Ngájhe\" machete. It can be strapped to the back or the armor."
 	icon_state = "arnold-machete-pouch"
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	can_hold = list(/obj/item/weapon/claymore/mercsword/machete)
+	can_hold = list(/obj/item/weapon/sword/machete)
 
 /obj/item/storage/large_holster/machete/arnold/full/fill_preset_inventory()
-	new /obj/item/weapon/claymore/mercsword/machete/arnold(src)
+	new /obj/item/weapon/sword/machete/arnold(src)
 
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
@@ -97,10 +97,10 @@
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	can_hold = list(/obj/item/weapon/katana)
+	can_hold = list(/obj/item/weapon/sword/katana)
 
 /obj/item/storage/large_holster/katana/full/fill_preset_inventory()
-	new /obj/item/weapon/katana(src)
+	new /obj/item/weapon/sword/katana(src)
 
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
@@ -108,10 +108,10 @@
 	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	force = 12
 	flags_equip_slot = SLOT_WAIST
-	can_hold = list(/obj/item/weapon/claymore/mercsword/ceremonial)
+	can_hold = list(/obj/item/weapon/sword/ceremonial)
 
 /obj/item/storage/large_holster/ceremonial_sword/full/fill_preset_inventory()
-	new /obj/item/weapon/claymore/mercsword/ceremonial(src)
+	new /obj/item/weapon/sword/ceremonial(src)
 
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"
@@ -249,9 +249,13 @@
 	if(!ishuman(user) || user.is_mob_incapacitated())
 		return FALSE
 
-	var/obj/item/weapon/gun/flamer/M240T/F = user.get_active_hand()
-	if(!istype(F))
-		to_chat(usr, "You must be holding the M240-T incinerator unit to use [src]")
+	if(user.back != src)
+		to_chat(user, "The [src] must be equipped before you can switch types")
+		return
+
+	var/obj/item/weapon/gun/flamer/M240T/flamer = user.get_active_hand()
+	if(!istype(flamer))
+		to_chat(user, "You must be holding the M240-T incinerator unit to use [src]")
 		return
 
 	if(!active_fuel)
@@ -267,14 +271,13 @@
 	else
 		active_fuel = fuelB
 
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
+	for(var/datum/action/action_added as anything in actions)
+		action_added.update_button_icon()
 
 	to_chat(user, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
-	F.current_mag = active_fuel
-	F.update_icon()
+	flamer.current_mag = active_fuel
+	flamer.update_icon()
 
 	return TRUE
 
@@ -364,7 +367,7 @@
 
 /datum/action/item_action/specialist/toggle_fuel/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.back)
+	if(istype(H) && !H.is_mob_incapacitated() && H.body_position == STANDING_UP && holder_item == H.back)
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_fuel/action_activate()

@@ -6,6 +6,7 @@
 	breakable = FALSE
 
 	minimap_type = MINIMAP_FLAG_ALL
+	faction = FACTION_YAUTJA
 
 /obj/structure/machinery/autolathe/yautja
 	name = "yautja autolathe"

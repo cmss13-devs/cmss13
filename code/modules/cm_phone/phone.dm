@@ -26,6 +26,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/enabled = TRUE
 	/// Whether or not the phone is receiving calls or not. Varies between on/off or forcibly on/off.
 	var/do_not_disturb = PHONE_DND_OFF
+	/// The Phone_ID of the last person to call this telephone.
+	var/last_caller
 
 	var/base_icon_state
 
@@ -138,6 +140,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/list/data = list()
 
 	data["availability"] = do_not_disturb
+	data["last_caller"] = last_caller
 
 	return data
 
@@ -175,6 +178,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	calling = T
 	T.caller = src
+	T.last_caller = src.phone_id
 	T.update_icon()
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))

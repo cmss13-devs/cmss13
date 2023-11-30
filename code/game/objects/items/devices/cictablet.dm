@@ -24,7 +24,10 @@
 	COOLDOWN_DECLARE(distress_cooldown)
 
 /obj/item/device/cotablet/Initialize()
-	tacmap = new(src, minimap_type)
+	if(announcement_faction == FACTION_MARINE)
+		tacmap = new /datum/tacmap/drawing(src, minimap_type)
+	else
+		tacmap = new(src, minimap_type) // Non-drawing version
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
@@ -60,8 +63,8 @@
 /obj/item/device/cotablet/ui_data(mob/user)
 	var/list/data = list()
 
-	data["alert_level"] = security_level
-	data["evac_status"] = EvacuationAuthority.evac_status
+	data["alert_level"] = GLOB.security_level
+	data["evac_status"] = SShijack.evac_status
 	data["endtime"] = announcement_cooldown
 	data["distresstime"] = distress_cooldown
 	data["worldtime"] = world.time
@@ -131,15 +134,15 @@
 			if(announcement_faction != FACTION_MARINE)
 				return
 
-			if(security_level < SEC_LEVEL_RED)
+			if(GLOB.security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
 
-			if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
+			if(SShijack.evac_admin_denied)
 				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 				return FALSE
 
-			if(!EvacuationAuthority.initiate_evacuation())
+			if(!SShijack.initiate_evacuation())
 				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 				return FALSE
 
@@ -152,7 +155,7 @@
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 
-			if(security_level == SEC_LEVEL_DELTA)
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE
 

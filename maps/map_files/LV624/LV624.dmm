@@ -8590,7 +8590,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aLz" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Nexus Landing Zone"
+	name = "LZ1: Nexus Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)

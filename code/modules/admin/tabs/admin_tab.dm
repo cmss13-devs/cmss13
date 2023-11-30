@@ -189,16 +189,23 @@
 	set name = "Check CKey"
 	set category = "Admin"
 
+	var/mob/user = usr
 	if (!istype(src,/datum/admins))
-		src = usr.client.admin_holder
+		src = user.client.admin_holder
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
-		to_chat(usr, "Error: you are not an admin!")
+		to_chat(user, "Error: you are not an admin!")
 		return
 	if(!target_key)
+		to_chat(user, "Error: No key detected!")
 		return
+	var/list/keys = list()
+	keys += analyze_ckey(target_key)
+	var/text_output = "Check Ckey Results: "
+	for(var/key in keys)
+		text_output += "[key],"
+	to_chat(user, SPAN_WARNING(text_output))
 
-	analyze_ckey(target_key)
-	log_admin("[key_name(usr)] analyzed ckey '[target_key]'")
+	log_admin("[key_name(user)] analyzed ckey '[target_key]'")
 
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"

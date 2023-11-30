@@ -33,14 +33,17 @@ Humans will take continuous damage instead.
 /datum/component/healing_reduction/process(delta_time)
 	if(!parent)
 		qdel(src)
+		return
+
 	healing_reduction = max(healing_reduction - healing_reduction_dissipation * delta_time, 0)
+
+	if(healing_reduction <= 0)
+		qdel(src)
+		return
 
 	if(ishuman(parent)) //deals brute to humans
 		var/mob/living/carbon/human/H = parent
 		H.apply_damage(healing_reduction_dissipation * delta_time, BRUTE)
-
-	if(healing_reduction <= 0)
-		qdel(src)
 
 	var/color = GLOW_COLOR
 	var/intensity = healing_reduction/max_buildup

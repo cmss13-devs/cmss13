@@ -195,7 +195,7 @@
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/W = target
 		if(W.hull)
-			to_chat(user, SPAN_WARNING("You are unable to stick \the [src] to the [W]!"))
+			to_chat(user, SPAN_WARNING("You are unable to stick \the [src] to [W]!"))
 			return FALSE
 
 	if(istype(target, /obj/structure/window))

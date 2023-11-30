@@ -186,7 +186,7 @@
 				if(isxeno(bullet_effect))
 					var/mob/living/carbon/xenomorph/xenomorph = bullet_effect
 					xenomorph.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
-					xenomorph.plasma_stored = max(X.plasma_stored - plasma_drain_hit, 0)
+					xenomorph.plasma_stored = max(xenomorph.plasma_stored - plasma_drain_hit, 0)
 					xenomorph.interference += (interference_duration)
 					xenomorph.AddComponent(/datum/component/healing_reduction, healing_reduction_duration)
 			else

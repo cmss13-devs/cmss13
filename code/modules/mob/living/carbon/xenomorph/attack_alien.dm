@@ -204,12 +204,14 @@
 
 			if(M.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-				apply_effect(rand(M.tacklestrength_min, M.tacklestrength_max), WEAKEN)
+				var/strength = rand(M.tacklestrength_min, M.tacklestrength_max)
+				Stun(strength)
+				KnockDown(strength) // Purely for knockdown visuals. All the heavy lifting is done by Stun
 				M.visible_message(SPAN_DANGER("[M] tackles down [src]!"), \
 				SPAN_DANGER("You tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			else
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-				if (HAS_TRAIT(src, TRAIT_FLOORED))
+				if (body_position == LYING_DOWN)
 					M.visible_message(SPAN_DANGER("[M] tries to tackle [src], but they are already down!"), \
 					SPAN_DANGER("You try to tackle [src], but they are already down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				else

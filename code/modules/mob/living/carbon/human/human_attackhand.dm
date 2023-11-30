@@ -161,7 +161,9 @@
 			disarm_chance += 5 * defender_skill_level
 
 			if(disarm_chance <= 25)
-				apply_effect(2 + max((attacker_skill_level - defender_skill_level), 0), WEAKEN)
+				var/strength = 2 + max((attacker_skill_level - defender_skill_level), 0)
+				KnockDown(strength)
+				Stun(strength)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				var/shove_text = attacker_skill_level > 1 ? "tackled" : pick("pushed", "shoved")
 				visible_message(SPAN_DANGER("<B>[attacking_mob] has [shove_text] [src]!</B>"), null, null, 5)

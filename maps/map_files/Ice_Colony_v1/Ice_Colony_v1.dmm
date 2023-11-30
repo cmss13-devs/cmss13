@@ -3208,7 +3208,7 @@
 	},
 /area/ice_colony/surface/clinic/storage)
 "eno" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/r_wall,
 /area/ice_colony/exterior/surface/valley/southeast/apc_support)
 "eob" = (
 /turf/open/floor/plating/icefloor{
@@ -8081,7 +8081,7 @@
 	},
 /area/ice_colony/underground/research/work)
 "ldy" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/r_wall,
 /area/ice_colony/exterior/surface/valley/northeast/apc_support)
 "lev" = (
 /obj/structure/machinery/vending/coffee,

@@ -124,6 +124,12 @@
 	name = "\improper South Western Valleys"
 	icon_state = "valley_south_west"
 
+/area/ice_colony/exterior/surface/valley/northeast/apc_support
+	always_unpowered = FALSE
+
+/area/ice_colony/exterior/surface/valley/southeast/apc_support
+	always_unpowered = FALSE
+
 //
 // Clearing
 // The Colony Center, so to speak

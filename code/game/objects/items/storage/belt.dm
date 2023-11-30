@@ -903,6 +903,7 @@
 	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
 	///Used to get flap overlay states as inserting a gun changes icon state.
 	var/base_icon
+	var/gun_has_gamemode_skin
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
@@ -965,7 +966,17 @@
 		sure that we don't have to do any extra calculations.
 		*/
 		playsound(src, drawSound, 7, TRUE)
-		var/image/gun_underlay = image(icon, current_gun.base_gun_icon)
+		var/image/gun_underlay
+		if(gun_has_gamemode_skin)
+			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+				if("snow")
+					gun_underlay = image(icon, "s_" + current_gun.base_gun_icon)
+				if("desert")
+					gun_underlay = image(icon, "d_" + current_gun.base_gun_icon)
+				if("classic")
+					gun_underlay = image(icon, "c_" + current_gun.base_gun_icon)
+		else
+			gun_underlay = image(icon, current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
 		gun_underlay.color = current_gun.color
@@ -1191,6 +1202,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, along with two pouches for spare magazines or shells."
 	icon_state = "xm51_holster"
 	has_gamemode_skin = TRUE
+	gun_has_gamemode_skin = TRUE
 	storage_slots = 3
 	max_w_class = 5
 	can_hold = list(

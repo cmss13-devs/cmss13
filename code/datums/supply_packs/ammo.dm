@@ -241,25 +241,13 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_shell_box_breaching
-	name = "16-gauge shell box (120x breaching shells)"
+	name = "Shell box (16g) (120x breaching shells)"
 	contains = list(
 		/obj/item/ammo_box/magazine/shotgun/light/breaching,
 	)
-	cost = 30
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper shotgun breaching crate"
-	group = "Ammo"
-
-//------------------------For XM51 ----------------
-
-/datum/supply_packs/ammo_xm51_mag_box
-	name = "Magazine box (XM51, 8x mags)"
-	contains = list(
-		/obj/item/ammo_box/magazine/xm51,
-	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper XM51 magazines crate"
+	containername = "\improper shotgun breaching crate"
 	group = "Ammo"
 
 //------------------------For 88M4 ----------------

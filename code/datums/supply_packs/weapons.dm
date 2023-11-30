@@ -60,7 +60,7 @@
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/weapon
-	containername = "MOU-53 Breack Action Shotgun Crate"
+	containername = "MOU-53 Break Action Shotgun Crate"
 	group = "Weapons"
 
 /datum/supply_packs/xm51

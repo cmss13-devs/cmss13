@@ -198,6 +198,7 @@
 		return
 
 	analyze_ckey(target_key)
+	log_admin("[key_name(usr)] analyzed ckey '[target_key]'")
 
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"

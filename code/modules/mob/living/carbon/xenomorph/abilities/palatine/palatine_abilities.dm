@@ -1,5 +1,6 @@
 /datum/action/xeno_action/onclick/palatine_roar
 	name = "Roar"
+	icon_file = 'icons/mob/hud/actions_palatine.dmi'
 	action_icon_state = "screech_empower"
 	ability_name = "roar"
 	action_type = XENO_ACTION_CLICK

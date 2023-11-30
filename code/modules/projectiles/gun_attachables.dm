@@ -2112,7 +2112,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/xm51/Initialize(mapload, ...)
 	..()
 	select_gamemode_skin(type)
-	//it makes stuff much better when two-handedf
+	//it makes stuff much better when two-handed
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8

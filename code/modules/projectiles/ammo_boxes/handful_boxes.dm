@@ -63,7 +63,7 @@
 //-----------------------16 GAUGE SHOTGUN SHELL BOXES-----------------------
 
 /obj/item/ammo_box/magazine/shotgun/light/breaching
-	name = "\improper 16-gauge shotgun shell box (Breaching x 100)"
+	name = "\improper 16-gauge shotgun shell box (Breaching x 120)"
 	icon_state = "base_breach"
 	overlay_content = "_breach"
 	magazine_type = /obj/item/ammo_magazine/shotgun/light/breaching

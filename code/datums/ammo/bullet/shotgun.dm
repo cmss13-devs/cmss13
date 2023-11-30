@@ -335,7 +335,7 @@
 	bonus_projectiles_amount = 0
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	scatter = SCATTER_AMOUNT_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	damage = 10
 

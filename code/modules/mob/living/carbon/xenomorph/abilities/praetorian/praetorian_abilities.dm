@@ -131,6 +131,9 @@
 	var/max_distance = 7
 	var/windup = 8
 
+/datum/action/xeno_action/activable/prae_abduct/palatine_macro
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
 	action_icon_state = "punch"
@@ -307,6 +310,8 @@
 
 	var/curr_effect_type = WARDEN_HEAL_HP
 
+/datum/action/xeno_action/activable/warden_heal/palatine_macro
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type
 	name = "Toggle Aid Type"
@@ -360,3 +365,6 @@
 	var/max_distance = 7
 	var/windup = 6
 	var/retrieve_cost = 100
+
+/datum/action/xeno_action/activable/prae_retrieve/palatine_macro
+	ability_primacy = XENO_PRIMARY_ACTION_3

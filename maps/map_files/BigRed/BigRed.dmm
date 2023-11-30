@@ -118,11 +118,23 @@
 	},
 /area/bigredv2/outside/space_port)
 "aau" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Communications Landing Zone"
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 8
 	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 4
+	},
+/mob/living/simple_animal/hostile/retaliate/clown{
+	desc = "Always returning. Always watching.";
+	health = 10000;
+	move_to_delay = 2;
+	name = "Gonzo the Magnificent";
+	rapid = 1
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2"
+	},
+/area/space)
 "aav" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
@@ -167,6 +179,12 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
+/area/bigredv2/outside/space_port)
+"aaB" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Communications Landing Zone"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aaC" = (
 /obj/structure/surface/table,
@@ -343,6 +361,12 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/space_port)
+"abb" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ 2: Engineering Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port_lz2)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
@@ -987,24 +1011,6 @@
 "acZ" = (
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
-"ada" = (
-/mob/living/simple_animal/hostile/retaliate/clown{
-	desc = "Always returning. Always watching.";
-	health = 10000;
-	move_to_delay = 2;
-	name = "Gonzo the Magnificent";
-	rapid = 1
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 8
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 4
-	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
-/area/space)
 "adb" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
@@ -21452,12 +21458,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/space_port_lz2)
-"biI" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Engineering Landing Zone"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port_lz2)
 "biK" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/floor,
@@ -39095,8 +39095,7 @@
 /area/bigredv2/caves/mining)
 "vVz" = (
 /obj/structure/machinery/power/geothermal{
-	name = "Reactor Turbine";
-	power_generation_max = 100000
+	name = "Reactor Turbine"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -41489,7 +41488,7 @@ aaa
 aab
 aao
 cnk
-ada
+aau
 qjO
 gsW
 aao
@@ -46497,7 +46496,7 @@ aah
 aah
 aah
 aah
-aau
+aaB
 aah
 aah
 aah
@@ -47899,7 +47898,7 @@ bie
 bie
 bie
 bie
-biI
+abb
 bie
 bie
 bie

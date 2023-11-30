@@ -20,14 +20,11 @@ GLOBAL_LIST_EMPTY(larva_burst_by_hive)
 GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 
-//Since it didn't really belong in any other category, I'm putting this here
-//This is for procs to replace all the goddamn 'in world's that are chilling around the code
-
-var/readied_players = 0 //How many players are readied up in the lobby
+GLOBAL_VAR_INIT(readied_players, 0) //How many players are readied up in the lobby
 
 GLOBAL_LIST_EMPTY_TYPED(other_factions_human_list, /mob/living/carbon/human)
 
-var/global/list/ai_mob_list = list() //List of all AIs
+GLOBAL_LIST_EMPTY(ai_mob_list) //List of all AIs
 
 GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 
@@ -109,12 +106,12 @@ GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin
 GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 
 //Chem Stuff
-var/global/list/chemical_reactions_filtered_list //List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
-var/global/list/chemical_reactions_list //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
-var/global/list/chemical_reagents_list //List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
-var/global/list/chemical_properties_list //List of all /datum/chem_property datums indexed by property name
+GLOBAL_LIST(chemical_reactions_filtered_list) //List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
+GLOBAL_LIST(chemical_reactions_list) //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
+GLOBAL_LIST(chemical_reagents_list) //List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
+GLOBAL_LIST(chemical_properties_list) //List of all /datum/chem_property datums indexed by property name
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
-var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau" = list())
+GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau", list()))
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 
@@ -140,13 +137,12 @@ GLOBAL_LIST_INIT(surgical_patient_types, setup_surgical_patient_types())
 GLOBAL_LIST_INIT_TYPED(gear_path_presets_list, /datum/equipment_preset, setup_gear_path_presets())
 GLOBAL_LIST_INIT_TYPED(gear_name_presets_list, /datum/equipment_preset, setup_gear_name_presets())
 
-var/global/list/active_areas = list()
-var/global/list/all_areas = list()
+GLOBAL_LIST_EMPTY(active_areas)
+GLOBAL_LIST_EMPTY(all_areas)
 
-var/global/list/turfs = list()
-var/global/list/z1turfs = list()
+GLOBAL_LIST_EMPTY(turfs)
 
-/var/global/list/objects_of_interest // This is used to track the stealing objective for Agents.
+GLOBAL_LIST(objects_of_interest) // This is used to track the stealing objective for Agents.
 
 // Areas exempt from explosive antigrief (not Z-levels)
 GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
@@ -209,23 +205,23 @@ GLOBAL_REFERENCE_LIST_INDEXED(hair_gradient_list, /datum/sprite_accessory/hair_g
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
 	//Backpacks
-var/global/list/backbaglist = list("Backpack", "Satchel")
+GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel"))
 	//Armor styles
 GLOBAL_LIST_INIT(armor_style_list, list("Padded" = 1, "Padless" = 2, "Ridged" = 3, "Carrier" = 4, "Skull" = 5, "Smooth" = 6, "Random"))
 
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
-var/global/round_should_check_for_win = TRUE
+GLOBAL_VAR_INIT(round_should_check_for_win, TRUE)
 
-var/global/list/key_mods = list("CTRL", "ALT", "SHIFT")
+GLOBAL_LIST_INIT(key_mods, list("CTRL", "ALT", "SHIFT"))
 
 // A list storing the pass flags for specific types of atoms
-var/global/list/pass_flags_cache = list()
+GLOBAL_LIST_EMPTY(pass_flags_cache)
 
 //Parameterss cache
-var/global/list/paramslist_cache = list()
+GLOBAL_LIST_EMPTY(paramslist_cache)
 
 //Turf Edge info uberlist -- a list whos states contain GLOB.edgeinfo_X keyed as different icon_states
-var/global/list/turf_edgeinfo_cache = list()
+GLOBAL_LIST_EMPTY(turf_edgeinfo_cache)
 
 #define FULL_EDGE 1
 #define HALF_EDGE_RIGHT 2
@@ -277,10 +273,10 @@ GLOBAL_LIST_INIT(typecache_living, typecacheof(/mob/living))
 GLOBAL_LIST_INIT(emote_list, init_emote_list())
 
 /proc/cached_params_decode(params_data, decode_proc)
-	. = paramslist_cache[params_data]
+	. = GLOB.paramslist_cache[params_data]
 	if(!.)
 		. = call(decode_proc)(params_data)
-		paramslist_cache[params_data] = .
+		GLOB.paramslist_cache[params_data] = .
 
 /proc/key_number_decode(key_number_data)
 	var/list/L = params2list(key_number_data)
@@ -461,10 +457,10 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()
 
-	for (var/reaction in chemical_reactions_filtered_list)
-		. += "chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[chemical_reactions_filtered_list[reaction]]\"\n"
-		if(islist(chemical_reactions_filtered_list[reaction]))
-			var/list/L = chemical_reactions_filtered_list[reaction]
+	for (var/reaction in GLOB.chemical_reactions_filtered_list)
+		. += "GLOB.chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[GLOB.chemical_reactions_filtered_list[reaction]]\"\n"
+		if(islist(GLOB.chemical_reactions_filtered_list[reaction]))
+			var/list/L = GLOB.chemical_reactions_filtered_list[reaction]
 			for(var/t in L)
 				. += " has: [t]\n"
 	world << .
@@ -478,22 +474,22 @@ GLOBAL_LIST_EMPTY(timelocks)
 
 
 //the global list of specialist kits that haven't been claimed yet.
-var/global/list/available_specialist_sets = list(
+GLOBAL_LIST_INIT(available_specialist_sets, list(
 			"Scout Set",
 			"Sniper Set",
 			"Demolitionist Set",
 			"Heavy Grenadier Set",
 			"Pyro Set"
-			)
+			))
 
 //Similar thing, but used in /obj/item/spec_kit
-var/global/list/available_specialist_kit_boxes = list(
+GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 			"Pyro" = 2,
 			"Grenadier" = 2,
 			"Sniper" = 2,
 			"Scout" = 2,
 			"Demo" = 2,
-			)
+			))
 
 /proc/init_global_referenced_datums()
 	init_keybindings()

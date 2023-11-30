@@ -112,26 +112,6 @@
 
 // ============================
 // FOOD POOL - for Mess Tech gradual supplies throughout the round
-/datum/supply_packs_asrs/funfood
-	reference_package = /datum/supply_packs/funfood
-	pool = ASRS_POOL_FOOD
-
-/datum/supply_packs_asrs/condiment
-	reference_package = /datum/supply_packs/condiment
-	pool = ASRS_POOL_FOOD
-
-/datum/supply_packs_asrs/meat
-	reference_package = /datum/supply_packs/meat
-	pool = ASRS_POOL_FOOD
-
-/datum/supply_packs_asrs/potato
-	reference_package = /datum/supply_packs/potato
-	pool = ASRS_POOL_FOOD
-
-/datum/supply_packs_asrs/tomato
-	reference_package = /datum/supply_packs/tomato
-	pool = ASRS_POOL_FOOD
-
-/datum/supply_packs_asrs/wheat
-	reference_package = /datum/supply_packs/wheat
+/datum/supply_packs_asrs/ingredient
+	reference_package = /datum/supply_packs/ingredient
 	pool = ASRS_POOL_FOOD

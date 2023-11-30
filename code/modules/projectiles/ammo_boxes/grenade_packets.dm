@@ -25,7 +25,7 @@
 	for(var/i in 1 to storage_slots)
 		new content_type(src)
 
-var/list/grenade_packets = list(
+GLOBAL_LIST_INIT(grenade_packets, list(
 	/obj/item/storage/box/packet/high_explosive,
 	/obj/item/storage/box/packet/baton_slug,
 	/obj/item/storage/box/packet/flare,
@@ -37,7 +37,7 @@ var/list/grenade_packets = list(
 	/obj/item/storage/box/packet/m15,
 	/obj/item/storage/box/packet/airburst_he,
 	/obj/item/storage/box/packet/airburst_incen
-	)
+	))
 
 /obj/item/storage/box/packet/high_explosive
 	name = "\improper HEDP grenade packet"

@@ -90,7 +90,7 @@
 
 		// Skip this if this corner is result of a door connection (mostly for Almayer shutters)
 		var/valid = TRUE
-		for(var/a_cardinal in cardinal)
+		for(var/a_cardinal in GLOB.cardinals)
 			var/cardinal_dir = diag & a_cardinal
 			if(!a_cardinal) // We check cardinals contributing to that diagonal
 				continue

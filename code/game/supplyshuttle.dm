@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY_TYPED(asrs_empty_space_tiles_list, /turf/open/floor/almayer/em
 GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(supply_packs_types, /datum/supply_packs, name)
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(supply_packs_datums, /datum/supply_packs, type)
 
-var/datum/controller/supply/supply_controller = new()
+GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /area/supply
 	ceiling = CEILING_METAL
@@ -115,11 +115,11 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supplycomp/Initialize()
 	. = ..()
-	LAZYADD(supply_controller.bound_supply_computer_list, src)
+	LAZYADD(GLOB.supply_controller.bound_supply_computer_list, src)
 
 /obj/structure/machinery/computer/supplycomp/Destroy()
 	. = ..()
-	LAZYREMOVE(supply_controller.bound_supply_computer_list, src)
+	LAZYREMOVE(GLOB.supply_controller.bound_supply_computer_list, src)
 
 /obj/structure/machinery/computer/supplycomp/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/spacecash))
@@ -129,7 +129,7 @@ var/datum/controller/supply/supply_controller = new()
 				to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [slotted_cash] into it, but it rejects it! Maybe it's counterfeit?"))
 				return
 			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You feed \the [slotted_cash] into it.."))
-			supply_controller.black_market_points += slotted_cash.worth
+			GLOB.supply_controller.black_market_points += slotted_cash.worth
 			qdel(slotted_cash)
 		else
 			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [hit_item] into it, but it's seemingly blocked off from the inside."))
@@ -138,17 +138,17 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supplycomp/proc/toggle_contraband(contraband_enabled = FALSE)
 	can_order_contraband = contraband_enabled
-	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in supply_controller.bound_supply_computer_list)
+	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
 		if(computer.can_order_contraband)
-			supply_controller.black_market_enabled = TRUE
+			GLOB.supply_controller.black_market_enabled = TRUE
 			return
-	supply_controller.black_market_enabled = FALSE
+	GLOB.supply_controller.black_market_enabled = FALSE
 
 	//If any computers are able to order contraband, it's enabled. Otherwise, it's disabled!
 
 /// Prevents use of black market, even if it is otherwise enabled. If any computer has black market locked out, it applies across all of the currently established ones.
 /obj/structure/machinery/computer/supplycomp/proc/lock_black_market(market_locked = FALSE)
-	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in supply_controller.bound_supply_computer_list)
+	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
 		if(market_locked)
 			computer.black_market_lockout = TRUE
 
@@ -196,7 +196,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/list/data = list()
 
 	var/list/squad_list = list()
-	for(var/datum/squad/current_squad in RoleAuthority.squads)
+	for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 		if(current_squad.active && current_squad.faction == faction && current_squad.equipment_color)
 			squad_list += list(list(
 				"squad_name" = current_squad.name,
@@ -466,7 +466,7 @@ var/datum/controller/supply/supply_controller = new()
 		return
 	for(var/pool in base_random_crate_intervals)
 		var/interval = base_random_crate_intervals[pool]
-		if(interval && iteration % interval == 0 && supply_controller.shoppinglist.len <= 20)
+		if(interval && iteration % interval == 0 && shoppinglist.len <= 20)
 			add_random_crates(pool)
 		crate_iteration++
 
@@ -735,10 +735,10 @@ var/datum/controller/supply/supply_controller = new()
 	if(temp)
 		dat = temp
 	else
-		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+		var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 		if (shuttle)
 			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
-			<HR>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
+			<HR>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
 		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
 		<A href='?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
 		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
@@ -759,14 +759,14 @@ var/datum/controller/supply/supply_controller = new()
 			//all_supply_groups
 			//Request what?
 			last_viewed_group = "categories"
-			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
 			temp += "<b>Select a category</b><BR><BR>"
-			for(var/supply_group_name in supply_controller.all_supply_groups)
+			for(var/supply_group_name in GLOB.supply_controller.all_supply_groups)
 				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 		else
 			last_viewed_group = href_list["order"]
-			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_type in GLOB.supply_packs_datums)
@@ -804,11 +804,11 @@ var/datum/controller/supply/supply_controller = new()
 		else if(ishighersilicon(usr))
 			idname = usr.real_name
 
-		supply_controller.ordernum++
+		GLOB.supply_controller.ordernum++
 		var/obj/item/paper/reqform = new /obj/item/paper(loc)
 		reqform.name = "Requisition Form - [supply_pack.name]"
-		reqform.info += "<h3>[station_name] Supply Requisition Form</h3><hr>"
-		reqform.info += "INDEX: #[supply_controller.ordernum]<br>"
+		reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
+		reqform.info += "INDEX: #[GLOB.supply_controller.ordernum]<br>"
 		reqform.info += "REQUESTED BY: [idname]<br>"
 		reqform.info += "RANK: [idrank]<br>"
 		reqform.info += "REASON: [reason]<br>"
@@ -824,24 +824,24 @@ var/datum/controller/supply/supply_controller = new()
 
 		//make our supply_order datum
 		var/datum/supply_order/supply_order = new /datum/supply_order()
-		supply_order.ordernum = supply_controller.ordernum
+		supply_order.ordernum = GLOB.supply_controller.ordernum
 		supply_order.object = supply_pack
 		supply_order.orderedby = idname
-		supply_controller.requestlist += supply_order
+		GLOB.supply_controller.requestlist += supply_order
 
 		temp = "Thanks for your request. The cargo team will process it as soon as possible.<BR>"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
 	else if (href_list["vieworders"])
 		temp = "Current approved orders: <BR><BR>"
-		for(var/S in supply_controller.shoppinglist)
+		for(var/S in GLOB.supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
 			temp += "[SO.object.name] approved by [SO.approvedby]<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 
 	else if (href_list["viewrequests"])
 		temp = "Current requests: <BR><BR>"
-		for(var/S in supply_controller.requestlist)
+		for(var/S in GLOB.supply_controller.requestlist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby]<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
@@ -867,7 +867,7 @@ var/datum/controller/supply/supply_controller = new()
 	if (temp)
 		dat = temp
 	else
-		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+		var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 		if (shuttle)
 			dat += "\nPlatform position: "
 			if (shuttle.has_arrive_time())
@@ -901,7 +901,7 @@ var/datum/controller/supply/supply_controller = new()
 					dat += "<BR>\n<BR>"
 
 
-		dat += {"<HR>\nSupply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>\n<BR>
+		dat += {"<HR>\nSupply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>\n<BR>
 		\n<A href='?src=\ref[src];order=categories'>Order items</A><BR>\n<BR>
 		\n<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR>\n<BR>
 		\n<A href='?src=\ref[src];vieworders=1'>View orders</A><BR>\n<BR>
@@ -913,10 +913,10 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supplycomp/Topic(href, href_list)
 	if(!is_mainship_level(z)) return
-	if(!supply_controller)
-		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
+	if(!GLOB.supply_controller)
+		world.log << "## ERROR: Eek. The GLOB.supply_controller controller datum is missing somehow."
 		return
-	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 	if (!shuttle)
 		world.log << "## ERROR: Eek. The supply/shuttle datum is missing somehow."
 		return
@@ -954,10 +954,10 @@ var/datum/controller/supply/supply_controller = new()
 			//all_supply_groups
 			//Request what?
 			last_viewed_group = "categories"
-			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
 			temp += "<b>Select a category</b><BR><BR>"
-			for(var/supply_group_name in supply_controller.all_supply_groups)
+			for(var/supply_group_name in GLOB.supply_controller.all_supply_groups)
 				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 			if(can_order_contraband)
 				temp += "<A href='?src=\ref[src];order=["Black Market"]'>[SPAN_DANGER("$E4RR301¿")]</A><BR>"
@@ -965,10 +965,10 @@ var/datum/controller/supply/supply_controller = new()
 			last_viewed_group = href_list["order"]
 			if(last_viewed_group == "Black Market")
 				handle_black_market(temp)
-			else if(last_viewed_group in supply_controller.contraband_supply_groups)
+			else if(last_viewed_group in GLOB.supply_controller.contraband_supply_groups)
 				handle_black_market_groups()
 			else
-				temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+				temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 				temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 				temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 				for(var/supply_type in GLOB.supply_packs_datums)
@@ -1008,11 +1008,11 @@ var/datum/controller/supply/supply_controller = new()
 		else if(isSilicon(usr))
 			idname = usr.real_name
 
-		supply_controller.ordernum++
+		GLOB.supply_controller.ordernum++
 		var/obj/item/paper/reqform = new /obj/item/paper(loc)
 		reqform.name = "Requisition Form - [supply_pack.name]"
-		reqform.info += "<h3>[station_name] Supply Requisition Form</h3><hr>"
-		reqform.info += "INDEX: #[supply_controller.ordernum]<br>"
+		reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
+		reqform.info += "INDEX: #[GLOB.supply_controller.ordernum]<br>"
 		reqform.info += "REQUESTED BY: [idname]<br>"
 		reqform.info += "RANK: [idrank]<br>"
 		reqform.info += "REASON: [reason]<br>"
@@ -1028,10 +1028,10 @@ var/datum/controller/supply/supply_controller = new()
 
 		//make our supply_order datum
 		var/datum/supply_order/supply_order = new /datum/supply_order()
-		supply_order.ordernum = supply_controller.ordernum
+		supply_order.ordernum = GLOB.supply_controller.ordernum
 		supply_order.object = supply_pack
 		supply_order.orderedby = idname
-		supply_controller.requestlist += supply_order
+		GLOB.supply_controller.requestlist += supply_order
 
 		temp = "Order request placed.<BR>"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>|<A href='?src=\ref[src];confirmorder=[supply_order.ordernum]'>Authorize Order</A>"
@@ -1044,29 +1044,29 @@ var/datum/controller/supply/supply_controller = new()
 		temp = "Invalid Request"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
-		if(supply_controller.shoppinglist.len > 20)
+		if(GLOB.supply_controller.shoppinglist.len > 20)
 			to_chat(usr, SPAN_DANGER("Current retrieval load has reached maximum capacity."))
 			return
 
-		for(var/i=1, i<=supply_controller.requestlist.len, i++)
-			var/datum/supply_order/SO = supply_controller.requestlist[i]
+		for(var/i=1, i<=GLOB.supply_controller.requestlist.len, i++)
+			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
 				supply_order = SO
 				supply_pack = supply_order.object
-				if(supply_controller.points >= round(supply_pack.cost) && supply_controller.black_market_points >= supply_pack.dollar_cost)
-					supply_controller.requestlist.Cut(i,i+1)
-					supply_controller.points -= round(supply_pack.cost)
-					supply_controller.black_market_points -= round(supply_pack.dollar_cost)
-					if(supply_controller.black_market_heat != -1) //-1 Heat means heat is disabled
-						supply_controller.black_market_heat = clamp(supply_controller.black_market_heat + supply_pack.crate_heat + (supply_pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100) // black market heat added is crate heat +- up to 25% of crate heat
-					supply_controller.shoppinglist += supply_order
+				if(GLOB.supply_controller.points >= round(supply_pack.cost) && GLOB.supply_controller.black_market_points >= supply_pack.dollar_cost)
+					GLOB.supply_controller.requestlist.Cut(i,i+1)
+					GLOB.supply_controller.points -= round(supply_pack.cost)
+					GLOB.supply_controller.black_market_points -= round(supply_pack.dollar_cost)
+					if(GLOB.supply_controller.black_market_heat != -1) //-1 Heat means heat is disabled
+						GLOB.supply_controller.black_market_heat = clamp(GLOB.supply_controller.black_market_heat + supply_pack.crate_heat + (supply_pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100) // black market heat added is crate heat +- up to 25% of crate heat
+					GLOB.supply_controller.shoppinglist += supply_order
 					supply_pack.cost = supply_pack.cost * SUPPLY_COST_MULTIPLIER
 					temp = "Thank you for your order.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 					supply_order.approvedby = usr.name
 					msg_admin_niche("[usr] confirmed supply order of [supply_pack.name].")
-					if(supply_controller.black_market_heat == 100)
-						supply_controller.black_market_investigation()
+					if(GLOB.supply_controller.black_market_heat == 100)
+						GLOB.supply_controller.black_market_investigation()
 					var/pack_source = "Cargo Hold"
 					var/pack_name = supply_pack.name
 					if(supply_pack.dollar_cost)
@@ -1081,7 +1081,7 @@ var/datum/controller/supply/supply_controller = new()
 
 	else if (href_list["vieworders"])
 		temp = "Current approved orders: <BR><BR>"
-		for(var/S in supply_controller.shoppinglist)
+		for(var/S in GLOB.supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.ordernum] - [SO.object.name] approved by [SO.approvedby]<BR>"// <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
@@ -1099,7 +1099,7 @@ var/datum/controller/supply/supply_controller = new()
 */
 	else if (href_list["viewrequests"])
 		temp = "Current requests: <BR><BR>"
-		for(var/S in supply_controller.requestlist)
+		for(var/S in GLOB.supply_controller.requestlist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby] <A href='?src=\ref[src];confirmorder=[SO.ordernum]'>Approve</A> <A href='?src=\ref[src];rreq=[SO.ordernum]'>Remove</A><BR>"
 
@@ -1109,16 +1109,16 @@ var/datum/controller/supply/supply_controller = new()
 	else if (href_list["rreq"])
 		var/ordernum = text2num(href_list["rreq"])
 		temp = "Invalid Request.<BR>"
-		for(var/i=1, i<=supply_controller.requestlist.len, i++)
-			var/datum/supply_order/SO = supply_controller.requestlist[i]
+		for(var/i=1, i<=GLOB.supply_controller.requestlist.len, i++)
+			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
-				supply_controller.requestlist.Cut(i,i+1)
+				GLOB.supply_controller.requestlist.Cut(i,i+1)
 				temp = "Request removed.<BR>"
 				break
 		temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
 	else if (href_list["clearreq"])
-		supply_controller.requestlist.Cut()
+		GLOB.supply_controller.requestlist.Cut()
 		temp = "List cleared.<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 
@@ -1131,24 +1131,24 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_black_market()
 
-	temp = "<b>W-Y Dollars: $[supply_controller.black_market_points]</b><BR>"
+	temp = "<b>W-Y Dollars: $[GLOB.supply_controller.black_market_points]</b><BR>"
 	temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 	temp += SPAN_DANGER("ERR0R UNK7OWN C4T2G#!$0-<HR><HR><HR>")
 	if(black_market_lockout)
 		temp += "<DIV ALIGN='center'><BR><img src='cmblogo.png'><BR><BR><BR><BR><FONT SIZE=4><B>Unauthorized Access Removed.<BR>This console is currently under CMB investigation.<BR>Thank you for your cooperation.</FONT></div></B>"
 		return
 	temp += "KHZKNHZH#0-"
-	if(!supply_controller.mendoza_status) // he's daed
+	if(!GLOB.supply_controller.mendoza_status) // he's daed
 		temp += "........."
 		return
 	handle_mendoza_dialogue() //mendoza has been in there for a while. he gets lonely sometimes
 	temp += "<b>[last_viewed_group]</b><BR><BR>"
 
-	for(var/supply_group_name in supply_controller.contraband_supply_groups)
+	for(var/supply_group_name in GLOB.supply_controller.contraband_supply_groups)
 		temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_black_market_groups()
-	temp = "<b>W-Y Dollars: $[supply_controller.black_market_points]</b><BR>"
+	temp = "<b>W-Y Dollars: $[GLOB.supply_controller.black_market_points]</b><BR>"
 	temp += "<A href='?src=\ref[src];order=Black Market'>Back to black market categories</A><HR><BR><BR>"
 	temp += "<b>Purchase from: [last_viewed_group]</b><BR><BR>"
 	for(var/supply_type in GLOB.supply_packs_datums)
@@ -1213,7 +1213,7 @@ var/datum/controller/supply/supply_controller = new()
 		return_value = movable_atom.black_market_value
 
 	// so they cant sell the same thing over and over and over
-	return_value = POSITIVE(return_value - supply_controller.black_market_sold_items[movable_atom.type] * 0.5)
+	return_value = POSITIVE(return_value - GLOB.supply_controller.black_market_sold_items[movable_atom.type] * 0.5)
 	return return_value
 
 /datum/controller/supply/proc/kill_mendoza()
@@ -1376,11 +1376,11 @@ var/datum/controller/supply/supply_controller = new()
 		new /datum/vehicle_order/apc/cmd(),
 	)
 
-	if(!VehicleElevatorConsole)
-		VehicleElevatorConsole = src
+	if(!GLOB.VehicleElevatorConsole)
+		GLOB.VehicleElevatorConsole = src
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Destroy()
-	VehicleElevatorConsole = null
+	GLOB.VehicleElevatorConsole = null
 	return ..()
 
 /obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(mob/living/carbon/human/H as mob)
@@ -1436,8 +1436,8 @@ var/datum/controller/supply/supply_controller = new()
 		return
 	if(spent)
 		return
-	if(!supply_controller)
-		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
+	if(!GLOB.supply_controller)
+		world.log << "## ERROR: Eek. The GLOB.supply_controller controller datum is missing somehow."
 		return
 
 	if (!SSshuttle.vehicle_elevator)

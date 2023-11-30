@@ -98,7 +98,7 @@
 		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
 		return
 
-	if(!hive_weeds)
+	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC)
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 
@@ -117,9 +117,16 @@
 		return
 
 	for(var/obj/effect/alien/weeds/weed in T)
-		if(weed.weed_strength >= WEED_LEVEL_HIVE)
+		if(weed.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
 			user.use_plasma(30)
-			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
+			var/obj/effect/alien/egg/newegg
+			if(weed.weed_strength >= WEED_LEVEL_HIVE)
+				newegg = new /obj/effect/alien/egg(T, hivenumber)
+			else if(weed.weed_strength >= WEED_LEVEL_STANDARD)
+				newegg = new /obj/effect/alien/egg/carrier_egg(T,hivenumber, user)
+			else
+				to_chat(user, SPAN_XENOWARNING("[src] can't be planted on these weeds."))
+				return
 
 			newegg.flags_embryo = flags_embryo
 

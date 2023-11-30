@@ -21,14 +21,13 @@
 	. = ..()
 
 	var/datum/supply_order/new_order = new()
-	new_order.ordernum = supply_controller.ordernum
-	supply_controller.ordernum++
+	new_order.ordernum = GLOB.supply_controller.ordernum++
 	var/actual_type = GLOB.supply_packs_types["Encrypted Operational Nuke"]
 	new_order.object = GLOB.supply_packs_datums[actual_type]
 	new_order.orderedby = MAIN_AI_SYSTEM
 	new_order.approvedby = MAIN_AI_SYSTEM
 
-	supply_controller.shoppinglist += new_order
+	GLOB.supply_controller.shoppinglist += new_order
 
 /datum/tech/nuke/can_unlock(mob/unlocking_mob)
 	. = ..()

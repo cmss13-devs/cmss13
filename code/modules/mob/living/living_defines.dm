@@ -14,6 +14,18 @@
 	var/brainloss = 0 //'Retardation' damage caused by someone hitting you in the head with a bible or being infected with brainrot.
 	var/halloss = 0 //Hallucination damage. 'Fake' damage obtained through hallucinating or the holodeck. Sleeping should cause it to wear off.
 
+	// please don't use these
+	VAR_PROTECTED/knocked_out = 0
+	VAR_PROTECTED/knocked_down = 0
+	VAR_PROTECTED/stunned = 0
+	var/dazed = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
+	var/sleeping = 0
+
+	/// Cooldown for manually toggling resting to avoid spamming
+	COOLDOWN_DECLARE(rest_cooldown)
+
 	var/hallucination = 0 //Directly affects how long a mob will hallucinate for
 	var/list/atom/hallucinations = list() //A list of hallucinated people that try to attack the mob. See /obj/effect/fake_attacker in hallucinations.dm
 
@@ -99,7 +111,6 @@
 
 	var/current_weather_effect_type
 
-
 	var/slash_verb = "attack"
 	var/slashes_verb = "attacks"
 
@@ -111,10 +122,15 @@
 	/// This is what the value is changed to when the mob dies. Actual BMV definition in atom/movable.
 	var/dead_black_market_value = 0
 
-	var/dazed = 0
-	var/knocked_out = 0
-	var/stunned = 0
-	var/knocked_down = 0
-	var/slowed = 0 // X_SLOW_AMOUNT
-	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
-	var/sleeping = 0
+	/// Variable to track the body position of a mob, regardgless of the actual angle of rotation (usually matching it, but not necessarily).
+	var/body_position = STANDING_UP
+	/// Number of degrees of rotation of a mob. 0 means no rotation, up-side facing NORTH. 90 means up-side rotated to face EAST, and so on.
+	VAR_PROTECTED/lying_angle = 0
+	/// Value of lying lying_angle before last change. TODO: Remove the need for this.
+	var/lying_prev = 0
+	/// Does the mob rotate when lying
+	var/rotate_on_lying = FALSE
+
+	/// Flags that determine the potential of a mob to perform certain actions. Do not change this directly.
+	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+

@@ -64,7 +64,7 @@
 
 /mob/living/carbon/human/UnarmedAttack(atom/A, proximity, click_parameters)
 
-	if(lying) //No attacks while laying down
+	if(body_position == LYING_DOWN) //No attacks while laying down
 		return 0
 
 	var/obj/item/clothing/gloves/G = gloves // not typecast specifically enough in defines
@@ -88,7 +88,7 @@
 /atom/proc/attack_hand(mob/user)
 	return
 
-/mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)
+/mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/living/user)
 	if(user != src)
 		return . = ..()
 
@@ -152,7 +152,5 @@
 
 	target.Move(user.loc, get_dir(target.loc, user.loc))
 	target.update_transform(TRUE)
-
-	target.update_canmove()
 
 

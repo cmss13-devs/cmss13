@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscdel: "Removed flame particles. Possibly increases performance for some players."

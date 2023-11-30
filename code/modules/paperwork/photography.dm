@@ -213,7 +213,7 @@
 			// Check if we're looking at a mob that's lying down
 			if(istype(cur_atom, /mob/living))
 				var/mob/living/cur_mob = cur_atom
-				if(!isxeno(cur_mob) && cur_mob.lying) //xenos don't use icon rotatin for lying.
+				if(!isxeno(cur_mob) && cur_mob.body_position == LYING_DOWN) //xenos don't use icon rotatin for lying.
 					cur_icon.BecomeLying()
 
 			// Calculate where we are relative to the center of the photo
@@ -288,7 +288,7 @@
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 	var/mob_descriptions = ""
 	var/radius = (size-1)*0.5
-	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(world_view_size + radius, user.client)
+	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(GLOB.world_view_size + radius, user.client)
 	for(var/turf/the_turf as anything in turfs)
 		mob_descriptions = get_mob_descriptions(the_turf, mob_descriptions)
 	var/datum/picture/the_picture = createpicture(target, user, turfs, mob_descriptions, flag)

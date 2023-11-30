@@ -1,10 +1,15 @@
 SUBSYSTEM_DEF(nano)
 	name  = "Nano UI"
-	flags = SS_NO_INIT
 	wait  = 2 SECONDS
 	priority = SS_PRIORITY_NANOUI
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/list/currentrun = list()
+	var/datum/nanomanager/nanomanager
+
+/datum/controller/subsystem/nano/New()
+	. = ..()
+
+	nanomanager = new()
 
 /datum/controller/subsystem/nano/stat_entry(msg)
 	msg = "P:[nanomanager.processing_uis.len]"

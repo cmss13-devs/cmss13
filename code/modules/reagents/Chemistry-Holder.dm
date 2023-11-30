@@ -25,7 +25,7 @@
 	maximum_volume = maximum
 
 #ifdef UNIT_TESTS
-	if(!chemical_reagents_list || !chemical_reactions_filtered_list || !chemical_properties_list)
+	if(!GLOB.chemical_reagents_list || !GLOB.chemical_reactions_filtered_list || !GLOB.chemical_properties_list)
 		CRASH("Chemistry reagents are not set up!")
 #endif
 
@@ -240,7 +240,7 @@
 						O.volume += R.volume
 						qdel(R)
 						break
-			for(var/reaction in chemical_reactions_filtered_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
+			for(var/reaction in GLOB.chemical_reactions_filtered_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
 
 				if(!reaction)
 					continue
@@ -417,10 +417,10 @@
 				handle_reactions()
 			return FALSE
 
-	var/datum/reagent/D = chemical_reagents_list[reagent]
+	var/datum/reagent/D = GLOB.chemical_reagents_list[reagent]
 	if(D)
 		if(!istype(D, /datum/reagent))
-			CRASH("Not REAGENT - [reagent] - chemical_reagents_list[reagent]")
+			CRASH("Not REAGENT - [reagent] - GLOB.chemical_reagents_list[reagent]")
 
 		var/datum/reagent/R = new D.type()
 		if(D.type == /datum/reagent/generated)

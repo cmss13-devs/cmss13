@@ -1,12 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/caves/lambda/xenobiology)
-"ab" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11"
+/obj/structure/inflatable/popped/door,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -11;
+	pixel_y = 10
 	},
-/area/bigredv2/caves_lambda)
+/turf/open/floor{
+	icon_state = "darkpurplecorners2"
+	},
+/area/bigredv2/caves/lambda/breakroom)
+"ab" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 6
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkpurplecorners2"
+	},
+/area/bigredv2/caves/lambda/breakroom)
 "ac" = (
 /obj/item/tool/pickaxe/drill,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -25,13 +36,11 @@
 	},
 /area/bigredv2/caves_lambda)
 "af" = (
-/obj/structure/machinery/vending/hydronutrients,
-/obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "whitegreen"
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_7"
 	},
-/area/bigredv2/caves/lambda/xenobiology)
+/area/bigredv2/caves_lambda)
 "ag" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor{
@@ -95,6 +104,10 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "ao" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8;
+	pixel_y = 6
+	},
 /turf/open/floor{
 	icon_state = "darkpurplecorners2"
 	},
@@ -184,11 +197,8 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "aA" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
-/area/bigredv2/caves/lambda/xenobiology)
+/turf/template_noop,
+/area/template_noop)
 "aB" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -373,35 +383,71 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_lambda)
+"vm" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_18"
+	},
+/area/bigredv2/caves_lambda)
 "zP" = (
 /obj/effect/glowshroom,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5"
 	},
 /area/bigredv2/caves_lambda)
+"EW" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "sci_br";
+	name = "\improper Lambda Observation Shutters"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/structure/window_frame/solaris/reinforced,
+/turf/open/floor/plating,
+/area/bigredv2/caves/lambda/breakroom)
+"Gv" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "sci_br";
+	name = "\improper Lambda Observation Shutters"
+	},
+/obj/item/shard,
+/obj/structure/window_frame/solaris/reinforced,
+/turf/open/floor/plating,
+/area/bigredv2/caves/lambda/breakroom)
+"RW" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_6"
+	},
+/area/bigredv2/caves_lambda)
 
 (1,1,1) = {"
 aA
-aa
-ak
-ak
-ak
+aA
+aA
+aA
+aA
 aI
 am
 al
 aI
-ak
-ak
+aA
+aA
 aY
 aT
 ak
 "}
 (2,1,1) = {"
-af
-aa
-ak
-ak
-aY
+aA
+aA
+aA
+aA
+zP
 aG
 aw
 aD
@@ -413,11 +459,11 @@ ba
 aX
 "}
 (3,1,1) = {"
-aa
-aa
+aA
+aA
 ah
 ai
-zP
+ai
 aG
 aH
 aE
@@ -429,7 +475,7 @@ ai
 aZ
 "}
 (4,1,1) = {"
-aa
+aA
 ae
 aP
 ba
@@ -439,7 +485,7 @@ ax
 aC
 aI
 ae
-ai
+RW
 ac
 ba
 aZ
@@ -448,13 +494,13 @@ aZ
 ai
 ai
 aj
-aP
+ad
 aZ
 aG
 ao
 ag
-aG
-aP
+EW
+af
 ba
 ba
 ba
@@ -465,12 +511,12 @@ aY
 ai
 ai
 ba
-ad
+ba
 aG
-aw
+aa
 aD
-aG
-aQ
+Gv
+vm
 aN
 aS
 ba
@@ -484,17 +530,17 @@ ak
 ak
 aI
 an
-aE
+ab
 ap
-ak
-ak
+aA
+aA
 aP
 aS
 aZ
 "}
 (8,1,1) = {"
 ba
-ab
+ak
 ak
 aI
 aI
@@ -503,7 +549,7 @@ aI
 aW
 aI
 aI
-ak
+aA
 ba
 aP
 aZ
@@ -519,15 +565,15 @@ au
 au
 aK
 aI
-ak
+aA
 aY
 ba
 aZ
 "}
 (10,1,1) = {"
-aZ
 ak
-ak
+aA
+aA
 aI
 au
 at
@@ -535,15 +581,15 @@ aq
 at
 au
 aI
-ak
+aA
 aP
 ba
 aZ
 "}
 (11,1,1) = {"
-ab
 ak
-ak
+aA
+aA
 aI
 aF
 at
@@ -551,15 +597,15 @@ aB
 at
 aJ
 aI
-ak
+aA
 aP
 ba
 aZ
 "}
 (12,1,1) = {"
-ak
-ak
-ak
+aA
+aA
+aA
 aI
 au
 at
@@ -567,15 +613,15 @@ aM
 at
 aL
 aI
-ak
+aA
 aQ
 aV
 ba
 "}
 (13,1,1) = {"
-ak
-ak
-ak
+aA
+aA
+aA
 aI
 ar
 av
@@ -583,15 +629,15 @@ aL
 aL
 aL
 aI
-ak
+aA
 ba
 ba
 ba
 "}
 (14,1,1) = {"
-ak
-ak
-ak
+aA
+aA
+aA
 aI
 aI
 aI
@@ -599,7 +645,7 @@ aI
 aI
 aI
 aI
-ak
+aA
 ba
 ba
 ba

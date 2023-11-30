@@ -1,6 +1,6 @@
 //Refer to life.dm for caller
 
-/mob/living/carbon/human/handle_regular_status_updates(regular_update = TRUE)
+/mob/living/carbon/human/handle_regular_status_updates(regular_update = TRUE) // you're next, evil proc --fira
 
 	if(status_flags & GODMODE)
 		return 0
@@ -53,9 +53,8 @@
 			if(!already_in_crit)
 				new /datum/effects/crit/human(src)
 
-		if(knocked_out)
+		if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 			blinded = TRUE
-			set_stat(UNCONSCIOUS)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)

@@ -1,4 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - bugfix: "Fixes vendor sprites not updating icon when fully repaired\n/🆑"

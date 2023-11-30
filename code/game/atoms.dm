@@ -166,7 +166,7 @@ directive is properly returned.
 	if(!time)
 		transform = complete
 		return
-	animate(src, transform = complete, time = time, easing = easing)
+	animate(src, transform = complete, time = time, easing = easing, flags = ANIMATION_PARALLEL)
 
 /// Upates the base_transform which will be compounded with other transforms
 /atom/proc/update_base_transform(matrix/new_transform, time = 0)

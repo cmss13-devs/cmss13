@@ -150,6 +150,7 @@
 	var/penetration = 10 //AP value pretty much
 	var/holo_stacks = 100
 	var/slow_duration = 2
+	var/accid_per_hit = 10 
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
 	. = ..()
@@ -179,6 +180,7 @@
 				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
 				bullet_effect.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
 				bullet_effect.adjust_effect(slow_duration, SLOW)
+				bullet_effect.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
 			else
 				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
 		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)//moved this

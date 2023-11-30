@@ -5331,6 +5331,7 @@
 "hpF" = (
 /obj/effect/landmark/queen_spawn,
 /obj/structure/bed/chair/office/light,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/engine,
 /area/ice_colony/underground/research)
 "hpH" = (

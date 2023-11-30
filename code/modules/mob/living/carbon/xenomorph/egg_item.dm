@@ -122,7 +122,7 @@
 			var/obj/effect/alien/egg/newegg
 			if(weed.weed_strength >= WEED_LEVEL_HIVE)
 				newegg = new /obj/effect/alien/egg(T, hivenumber)
-			else if(weed.weed_strength == WEED_LEVEL_STANDARD)
+			else if(weed.weed_strength >= WEED_LEVEL_STANDARD)
 				newegg = new /obj/effect/alien/egg/carrier_egg(T,hivenumber, user)
 			else
 				to_chat(user, SPAN_XENOWARNING("[src] can't be planted on these weeds."))

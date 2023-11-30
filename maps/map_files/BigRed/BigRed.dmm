@@ -5927,8 +5927,15 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "aqZ" = (
-/obj/structure/closet/fireaxecabinet{
-	pixel_y = 32
+/obj/structure/noticeboard{
+	dir = 1;
+	pixel_y = 30;
+	desc = "A board for pinning important items upon.";
+	name = "trophy board"
+	},
+/obj/item/XenoBio/Chitin{
+	pixel_y = 27;
+	anchored = 1
 	},
 /turf/open/floor{
 	dir = 1;
@@ -5936,11 +5943,11 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "ara" = (
-/obj/item/XenoBio/Chitin,
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp{
 	pixel_y = 15
 	},
+/obj/item/paper/bigred/lambda,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "elevatorshaft"
@@ -6414,7 +6421,6 @@
 	desc = "It's a corgi puppy. MISTER WIGGLES!! HE IS THE GREATEST!";
 	name = "\improper Mister Wiggles"
 	},
-/obj/item/paper/bigred/lambda,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "elevatorshaft"

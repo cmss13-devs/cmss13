@@ -448,14 +448,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return FALSE
 	redeem_token(attacking_item, user)
 
-/obj/structure/machinery/cm_vending/proc/get_token_type(obj/item/coin/marine/token)
-	if(!istype(token))
-		return VEND_TOKEN_VOID
-	return token.token_type
-
-/obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/token, mob/user)
+/obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/coin/marine/token, mob/user)
 	var/reward_typepath
-	switch(get_token_type(token))
+	switch(token.token_type)
 		if(VEND_TOKEN_VOID)
 			to_chat(user, SPAN_WARNING("ERROR: TOKEN NOT RECOGNISED."))
 			return FALSE

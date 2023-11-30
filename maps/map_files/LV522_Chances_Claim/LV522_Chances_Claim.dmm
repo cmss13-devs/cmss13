@@ -7115,7 +7115,7 @@
 /area/lv522/indoors/a_block/dorms)
 "dos" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Southwest Landing Zone"
+	name = "LZ1: Southwest Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/shuttle/drop1/lv522)
@@ -27052,8 +27052,7 @@
 "kNM" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Dormitories";
-	welded = null
+	name = "\improper Dormitories"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -51667,9 +51666,7 @@
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "tNT" = (
 /obj/structure/prop/vehicles/crawler{
-	icon_state = "crawler_covered_bed";
-	unacidable = 0;
-	unslashable = 0
+	icon_state = "crawler_covered_bed"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"

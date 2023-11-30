@@ -33,10 +33,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "ag" = (
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	health = 25000
-	},
+/obj/structure/barricade/wooden,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkpurplecorners2"

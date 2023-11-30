@@ -571,7 +571,7 @@
 
 /obj/item/paper/bigred/lambda
 	name = "ripped diary entry"
-	info = "Director Smith's Diary \n Entry Date: 15 December 20## \n Today.. I feel progress! The XX-121 species reproduction programm is in full effect and Administrator Cooper gave us the all clear to continue breeding them. It appears that this original XX-121 specimen is what we can call a 'Queen' of the hive... it's almost 5 metres tall and has already produced a bunch of eggs! This beauty will be the next Synthetic, we'll show those Seegson bastards."
+	info = "Director Smith's Diary\nEntry Date: 15 December 20##\nToday.. I feel progress! The XX-121 species reproduction programm is in full effect and Administrator Cooper gave us the all clear to continue breeding them. It appears that this original XX-121 specimen is what we can call a 'Queen' of the hive... it's almost 5 metres tall and has already produced a bunch of eggs! This beauty will be the next Synthetic, we'll show those Seegson bastards."
 
 /obj/item/paper/bigred/union
 	name = "Shaft miners union"

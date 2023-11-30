@@ -7354,7 +7354,9 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "boD" = (
-/obj/docking_port/stationary/marine_dropship/lz1,
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Landing Zone"
+	},
 /turf/open/floor/plating,
 /area/shiva/exterior/lz1_valley)
 "boS" = (
@@ -17375,7 +17377,7 @@
 /area/shiva/interior/caves/s_lz2)
 "mlX" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Research Landing Zone"
+	name = "LZ2: Research Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/shiva/exterior/lz2_fortress)

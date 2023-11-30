@@ -132,3 +132,8 @@
 	buyable = 0
 	group = "ASRS"
 	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/ingredient/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_LOW_WEIGHT

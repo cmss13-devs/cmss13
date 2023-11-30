@@ -185,6 +185,20 @@
 	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
 
+/datum/admins/proc/check_ckey(target_key as text)
+	set name = "Check CKey"
+	set category = "Admin"
+
+	if (!istype(src,/datum/admins))
+		src = usr.client.admin_holder
+	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
+		to_chat(usr, "Error: you are not an admin!")
+		return
+	if(!target_key)
+		return
+
+	analyze_ckey(target_key)
+
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"
 	set category = "Admin.InView"

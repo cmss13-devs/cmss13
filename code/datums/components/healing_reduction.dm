@@ -42,8 +42,8 @@ Humans will take continuous damage instead.
 		return
 
 	if(ishuman(parent)) //deals brute to humans
-		var/mob/living/carbon/human/H = parent
-		H.apply_damage(healing_reduction_dissipation * delta_time, BRUTE)
+		var/mob/living/carbon/human/human_parent = parent
+		human_parent.apply_damage(healing_reduction_dissipation * delta_time, BRUTE)
 
 	var/color = GLOW_COLOR
 	var/intensity = healing_reduction/max_buildup

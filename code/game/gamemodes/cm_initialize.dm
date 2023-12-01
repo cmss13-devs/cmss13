@@ -942,6 +942,8 @@ Additional game mode variables.
 	//This gives a decimal value representing a scaling multiplier. Cannot go below 1
 	gear_scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
 	gear_scale_init = gear_scale
+	log_debug("SUPPLY: Game start detected [marine_pop_size] weighted marines, resulting in gear_scale = [gear_scale]")
+	log_debug("SUPPLY: Previous supply calculation would have been [length(GLOB.alive_human_list)] alive humans, resulting in gear_scale = [length(GLOB.alive_human_list)/30]") // DEBUG REMOVE ME
 	return gear_scale
 
 ///Updates the [/datum/game_mode/var/gear_scale] multiplier based on joining marines in [/datum/game_mode/var/latejoin_tally]

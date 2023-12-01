@@ -308,8 +308,8 @@
 			if(iscolonysynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
-					KnockDown(1.5)
-					Stun(1.5)
+				KnockDown(1.5)
+				Stun(1.5)
 				throwing = FALSE
 				return
 

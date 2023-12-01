@@ -760,9 +760,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	following = null
 	spawn(0)
 		// To stop the ghost flickering.
-		x = tx
-		y = ty
-		z = tz
+		forceMove(locate(tx, ty, tz))
 		sleep(15)
 
 /mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak

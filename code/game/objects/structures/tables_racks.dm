@@ -288,7 +288,7 @@
 				M.apply_effect(5, WEAKEN)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				user.visible_message(SPAN_DANGER("<B>[user] throws [M] on [src], stunning them!</B>"),
-				SPAN_DANGER("You throw [M] on [src], stunning them!"))
+				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))

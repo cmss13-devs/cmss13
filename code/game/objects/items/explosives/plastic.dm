@@ -301,7 +301,7 @@
 	prime(TRUE)
 
 /obj/item/explosive/plastic/custom
-	name = "Custom plastic explosive"
+	name = "custom plastic explosive"
 	desc = "A custom plastic explosive."
 	icon_state = "custom_plastic_explosive"
 	overlay_image = "custom_plastic_explosive_sensing"

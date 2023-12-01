@@ -34,8 +34,8 @@
 
 ///Process of the ERT call , checks if the request was denied, if not it will call ERT
 /datum/game_mode/proc/process_ert_call(user)
-	if(distress_cancel)
-		distress_cancel = FALSE
+	if(GLOB.distress_cancel)
+		GLOB.distress_cancel = FALSE
 		return
 	activate_distress()
 

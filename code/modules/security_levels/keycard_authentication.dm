@@ -65,7 +65,7 @@
 
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
-		if(security_level < SEC_LEVEL_RED)
+		if(GLOB.security_level < SEC_LEVEL_RED)
 			dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
 		if(!SSticker.mode.ert_dispatched)
 			dat += "<li><A href='?src=\ref[src];triggerevent=distress_beacon'>Distress Beacon</A></li>"
@@ -162,11 +162,11 @@
 		to_chat(usr, SPAN_WARNING("A distress beacon has already launched successfully!"))
 		return
 
-	if(security_level == SEC_LEVEL_DELTA)
+	if(GLOB.security_level == SEC_LEVEL_DELTA)
 		to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 		return
 
-	if(security_level < SEC_LEVEL_RED)
+	if(GLOB.security_level < SEC_LEVEL_RED)
 		to_chat(usr, SPAN_WARNING("The ship security level is not high enough to call a distress beacon!"))
 		return
 

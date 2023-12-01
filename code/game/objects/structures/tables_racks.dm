@@ -277,8 +277,8 @@
 					if (prob(15)) M.apply_effect(5, WEAKEN)
 					playsound(loc, 'sound/weapons/tablehit1.ogg', 25, 1, 7)
 					M.apply_damage(8, def_zone = "head")
-					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
-					SPAN_DANGER("You slam [M]'s face against [src]!"))
+					user.visible_message(SPAN_DANGER("<B>[user] slams [M]'s face against [src]!</B>"),
+					SPAN_DANGER("<B>You slam [M]'s face against [src]!</B>"))
 					playsound(src.loc, 'sound/weapons/tablehit1.ogg', 25, 1)
 				else
 					to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
@@ -286,7 +286,7 @@
 			else if(user.grab_level >= GRAB_AGGRESSIVE)
 				M.forceMove(loc)
 				M.apply_effect(5, WEAKEN)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				playsound(loc, 'sound/weapons/tablehit1.ogg', 25, 1, 7)
 				user.visible_message(SPAN_DANGER("<B>[user] throws [M] on [src], stunning them!</B>"),
 				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
 		return

@@ -145,7 +145,7 @@
 	point_cost = 275
 	fire_mission_delay = 1
 	travelling_time = 30
-	var/bullet_spread_range = 3 //3 from 4
+	var/bullet_spread_range = 2 
 	var/directhit_damage = 90 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	var/penetration = 10 //AP value pretty much
 	var/holo_stacks = 100

@@ -45,20 +45,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Rebreather", 0, /obj/item/clothing/mask/rebreather, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
-//that's to make the seperation before entering the section
 		list("RESTRICTED FIREARMS", 0, null, null, null),
 
 		list("VP78", 0, null, null, null),
 		list("VP78 Pistol", 4, /obj/item/weapon/gun/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("VP78 Magazine", 2, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 
-//need to verifie that belt spawn empty...
 		list("SU-6", 0, null, null, null),
 		list("SU-6 Smart Pistol", 4, /obj/item/weapon/gun/pistol/smart, null, VENDOR_ITEM_REGULAR),
 		list("M276 pattern SU-6 Smartpistol holster rig", 1, /obj/item/storage/belt/gun/smartpistol, null, VENDOR_ITEM_REGULAR),//shouldn't be full.
 		list("SU-6 Smartpistol magazine (.45)", 2, /obj/item/ammo_magazine/pistol/smart, null, VENDOR_ITEM_REGULAR),
 
-//still need to calculate the cost of each item better
 		list("SU-6 Smart Pistol", 0, null, null, null),
 		list("M79 Grenade Launcher", 12, /obj/item/weapon/gun/launcher/grenade/m81/m79, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-S star shell packet", 6, /obj/item/storage/box/packet/flare, null, VENDOR_ITEM_REGULAR),

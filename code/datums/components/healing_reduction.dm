@@ -70,7 +70,7 @@ Humans will take continuous damage instead.
 	var/atom/parent_atom = parent
 	parent_atom.remove_filter("healing_reduction")
 
-/datum/component/healing_reduction/proc/stat_append(mob/mob_with_list, list/stat_list)
+/datum/component/healing_reduction/proc/stat_append(mob/target_mob, list/stat_list)
 	SIGNAL_HANDLER
 	stat_list += "Healing Reduction: [healing_reduction]/[max_buildup]"
 

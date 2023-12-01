@@ -49,21 +49,21 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("RESTRICTED FIREARMS", 0, null, null, null),
 
 		list("VP78", 0, null, null, null),
-		list("VP78 Pistol", 6, /obj/item/weapon/gun/pistol/vp78, null, VENDOR_ITEM_REGULAR),
+		list("VP78 Pistol", 4, /obj/item/weapon/gun/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("VP78 Magazine", 2, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 
 //need to verifie that belt spawn empty...
-		list("SU-6 Smart Pistol", 0, null, null, null),
-		list("SU-6 Smart Pistol", 6, /obj/item/weapon/gun/pistol/smart, null, VENDOR_ITEM_REGULAR),
+		list("SU-6", 0, null, null, null),
+		list("SU-6 Smart Pistol", 4, /obj/item/weapon/gun/pistol/smart, null, VENDOR_ITEM_REGULAR),
 		list("M276 pattern SU-6 Smartpistol holster rig", 1, /obj/item/storage/belt/gun/smartpistol, null, VENDOR_ITEM_REGULAR),//shouldn't be full.
-		list("SU-6 Smartpistol magazine (.45)", 3, /obj/item/ammo_magazine/pistol/smart, null, VENDOR_ITEM_REGULAR),
+		list("SU-6 Smartpistol magazine (.45)", 2, /obj/item/ammo_magazine/pistol/smart, null, VENDOR_ITEM_REGULAR),
 
 //still need to calculate the cost of each item better
 		list("SU-6 Smart Pistol", 0, null, null, null),
 		list("M79 Grenade Launcher", 12, /obj/item/weapon/gun/launcher/grenade/m81/m79, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-S star shell packet", 6, /obj/item/storage/box/packet/flare, null, VENDOR_ITEM_REGULAR),
 		list("HIRR baton slug packet", 6, /obj/item/storage/box/packet/baton_slug, null, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-H hornet shell packet", 6, /obj/item/ammo_magazine/pistol/smart, null, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-H hornet shell packet", 6, /obj/item/storage/box/packet/hornet, null, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("M40 HEDP High Explosive Packet (x3 grenades)", 20, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),

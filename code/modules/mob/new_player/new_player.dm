@@ -254,7 +254,7 @@
 
 	GLOB.data_core.manifest_inject(character)
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc. //TODO!!!!! ~Carn
-	SSticker.mode.latejoin_update(job)
+	SSticker.mode.latejoin_update(player_rank)
 	SSticker.mode.update_gear_scale()
 
 	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)

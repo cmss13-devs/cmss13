@@ -257,7 +257,7 @@ everything bellow isn't used or out of place.
 	name = "Survivor - USASF Commander"
 	assignment = "USASF Commander"
 	skills = /datum/skills/commander
-	paygrade = "NO5"
+	paygrade = PAY_SHORT_NO5
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "USASF CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

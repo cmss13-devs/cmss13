@@ -985,7 +985,7 @@
 	name = "Corpse - USCM Reconnaissance Spotter"
 	assignment = "Reconnaissance Spotter"
 	xenovictim = FALSE
-	paygrade = "ME5"
+	paygrade = PAY_SHORT_ME5
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)

@@ -4,30 +4,30 @@
 	fprefix = "DTC."
 
 /datum/paygrade/dutch/standard
-	paygrade = "DTC"
+	paygrade = PAY_SHORT_DTC
 	name = "Dutch's Dozen Standard Mercenary"
 
 /datum/paygrade/dutch/medic
-	paygrade = "DTCM"
+	paygrade = PAY_SHORT_DTCM
 	name = "Dutch's Dozen Medic"
 	prefix = "MED."
 	pay_multiplier = 6
 
 /datum/paygrade/dutch/specialist_flamer
-	paygrade = "DTCF"
+	paygrade = PAY_SHORT_DTCF
 	name = "Dutch's Dozen Flamethrower Specialist"
 	prefix = "SPC."
 	pay_multiplier = 6
 
 /datum/paygrade/dutch/specialist_minigunner
-	paygrade = "DTCMG"
-	name = "Dutch's Dozen Medic"
+	paygrade = PAY_SHORT_DTCMG
+	name = "Dutch's Dozen Machinegunner"
 	prefix = "SPC."
 	pay_multiplier = 6
 
 /datum/paygrade/dutch/arnold
-	paygrade = "ARN"
-	name = "Arnold"
+	paygrade = PAY_SHORT_DTCA
+	name = "Major"
 	prefix = "LDR."
 	pay_multiplier = 9
 

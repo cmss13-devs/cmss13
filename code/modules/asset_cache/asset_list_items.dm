@@ -236,8 +236,8 @@
 	tier4_icon.Scale(32, 32)
 	Insert("tier4_big", tier4_icon)
 
-	tier4_icon.Crop(6,30,18,18)
-	tier4_icon.Scale(32, 32)
+	tier5_icon.Crop(6,30,18,18)
+	tier5_icon.Scale(32, 32)
 	Insert("tier5_big", tier5_icon)
 	return ..()
 

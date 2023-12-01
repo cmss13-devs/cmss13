@@ -189,7 +189,7 @@
 
 /datum/equipment_preset/uscm/cbrn/specialist
 	name = "CBRN Specialist"
-	paygrade = "O"
+	paygrade = PAY_SHORT_OPR
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
 	role_comm_title = "Spc"

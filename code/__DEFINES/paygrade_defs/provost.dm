@@ -1,12 +1,6 @@
 // Paygrade shorthand defines, to allow clearer designation.
 
 // PROVOST OFFICE
-/// PvOff, Officer
-#define PAY_SHORT_PVOFF "PvOff"
-
-/// PvTML, Senior Officer
-#define PAY_SHORT_PVTML "PvTML"
-
 /// PvI, Provost Inspector
 #define PAY_SHORT_PVI "PvI"
 

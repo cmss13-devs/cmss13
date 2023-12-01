@@ -389,7 +389,7 @@
 	access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_COMMAND, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_CMO
 	rank = JOB_WO_CMO
-	paygrade = "CCMO"
+	paygrade = PAY_SHORT_CCMO
 	role_comm_title = "HS"
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
@@ -432,7 +432,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_DOCTOR
 	rank = JOB_WO_DOCTOR
-	paygrade = "CD"
+	paygrade = PAY_SHORT_CDOC
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 	idtype = /obj/item/card/id
@@ -472,7 +472,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_RESEARCHER
 	rank = JOB_WO_RESEARCHER
-	paygrade = "CD"
+	paygrade = PAY_SHORT_CDOC
 	role_comm_title = "Chem"
 	skills = /datum/skills/researcher
 	idtype = /obj/item/card/id
@@ -579,7 +579,7 @@
 
 	assignment = JOB_WO_CORPORATE_LIAISON
 	rank = JOB_WO_CORPORATE_LIAISON
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_WYC2
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl

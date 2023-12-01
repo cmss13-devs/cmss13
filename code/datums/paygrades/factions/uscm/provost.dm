@@ -2,16 +2,6 @@
 	name = "Provost Paygrade"
 	pay_multiplier = 2
 
-/datum/paygrade/provost/enforcer
-	paygrade = PAY_SHORT_PVOFF
-	name = "Officer"
-	prefix = "Off."
-
-/datum/paygrade/provost/tml
-	paygrade = PAY_SHORT_PVTML
-	name = "Senior Officer"
-	prefix = "Sr. Off."
-
 /datum/paygrade/provost/inspector
 	paygrade = PAY_SHORT_PVI
 	name = "Provost Inspector"

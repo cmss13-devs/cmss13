@@ -178,7 +178,7 @@ everything bellow isn't used or out of place.
 	name = "Survivor - Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
-	paygrade = "WEY-GOON"
+	paygrade = PAY_SHORT_CPO
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)

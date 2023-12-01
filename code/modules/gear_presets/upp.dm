@@ -2592,7 +2592,7 @@
 	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_COMBAT_SYNTH
 	rank = JOB_UPP_COMBAT_SYNTH
-	paygrade = "SYN"
+	paygrade = PAY_SHORT_SYN
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/new_human, randomise)

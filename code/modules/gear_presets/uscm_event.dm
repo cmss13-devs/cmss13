@@ -196,7 +196,7 @@
 
 	assignment = JOB_PROVOST_ENFORCER
 	rank = "Provost Enforcer"
-	paygrade = PAY_SHORT_PVOFF
+	paygrade = PAY_SHORT_CPO
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -238,7 +238,7 @@
 
 	assignment = JOB_PROVOST_TML
 	rank = "Provost Team Leader"
-	paygrade = PAY_SHORT_PVTML
+	paygrade = PAY_SHORT_CSPO
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -313,7 +313,7 @@
 
 	assignment = JOB_PROVOST_ADVISOR
 	rank = "Provost Advisor"
-	paygrade = PAY_SHORT_PVTML
+	paygrade = PAY_SHORT_CSPO
 	role_comm_title = "PvA"
 	flags = EQUIPMENT_PRESET_EXTRA
 

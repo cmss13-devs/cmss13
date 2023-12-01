@@ -45,7 +45,7 @@
 	)
 	assignment = JOB_CORPORATE_LIAISON
 	rank = JOB_CORPORATE_LIAISON
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_WYC2
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
 
@@ -89,11 +89,11 @@
 		var/playtime = get_job_playtime(new_human.client, rank)
 		if(new_human.client.prefs.playtime_perks)
 			if(playtime > JOB_PLAYTIME_TIER_4)
-				return "WYC5"
+				return PAY_SHORT_WYC5
 			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return "WYC4"
+				return PAY_SHORT_WYC4
 			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return "WYC3"
+				return PAY_SHORT_WYC3
 			else
 				return paygrade
 	return paygrade
@@ -119,7 +119,7 @@
 	)
 	assignment = JOB_COMBAT_REPORTER
 	rank = JOB_COMBAT_REPORTER
-	paygrade = "C"
+	paygrade = PAY_SHORT_CIV
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl

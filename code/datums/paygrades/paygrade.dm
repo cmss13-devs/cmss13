@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(co_paygrades, list(
 ))
 
 GLOBAL_LIST_INIT(wy_paygrades, list(
-	"WYC8",
-	"WYC9",
-	"WYC10"
+	PAY_SHORT_WYC8,
+	PAY_SHORT_WYC9,
+	PAY_SHORT_WYC10
 ))

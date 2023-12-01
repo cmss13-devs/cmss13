@@ -5,7 +5,7 @@
 
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH)
-	paygrade = "C"
+	paygrade = PAY_SHORT_CIV
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_SURVIVOR)
@@ -293,7 +293,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_WYC2
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -325,11 +325,11 @@ Everything bellow is a parent used as a base for one or multiple maps.
 		var/playtime = get_job_playtime(new_human.client, JOB_CORPORATE_LIAISON)
 		if(new_human.client.prefs.playtime_perks)
 			if(playtime > JOB_PLAYTIME_TIER_4)
-				return "WYC5"
+				return PAY_SHORT_WYC5
 			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return "WYC4"
+				return PAY_SHORT_WYC4
 			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return "WYC3"
+				return PAY_SHORT_WYC3
 			else
 				return paygrade
 	return paygrade

@@ -4,41 +4,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("MEDICAL SET (MANDATORY)", 0, null, null, null),
 		list("Essential Medical Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
-		list("FIELD SUPPLIES", 0, null, null, null),
-		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_RECOMMENDED),
-		list("Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_RECOMMENDED),
-		list("Gauze", 1, /obj/item/stack/medical/bruise_pack, null, VENDOR_ITEM_REGULAR),
-		list("Ointment", 1, /obj/item/stack/medical/ointment, null, VENDOR_ITEM_REGULAR),
-		list("Blood Bag (O-)", 4, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
-
-		list("FIRSTAID KITS", 0, null, null, null),
-		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
-		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
-		list("Fire Firstaid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
-		list("Toxin Firstaid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
-		list("Oxygen Firstaid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
-		list("Radiation Firstaid Kit", 6, /obj/item/storage/firstaid/rad, null, VENDOR_ITEM_REGULAR),
-
-		list("AUTOINJECTORS", 0, null, null, null),
-		list("Autoinjector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Epinephrine)", 2, /obj/item/reagent_container/hypospray/autoinjector/adrenaline, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
-
-		list("PILL BOTTLES", 0, null, null, null),
-		list("Pill Bottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
-		list("Pill Bottle (Dexalin)", 5, /obj/item/storage/pill_bottle/dexalin, null, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Dylovene)", 5, /obj/item/storage/pill_bottle/antitox, null, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Inaprovaline)", 5, /obj/item/storage/pill_bottle/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Kelotane)", 5, /obj/item/storage/pill_bottle/kelotane, null, VENDOR_ITEM_RECOMMENDED),
-		list("Pill Bottle (Peridaxon)", 5, /obj/item/storage/pill_bottle/peridaxon, null, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Tramadol)", 5, /obj/item/storage/pill_bottle/tramadol, null, VENDOR_ITEM_RECOMMENDED),
-
 		list("MEDICAL UTILITIES", 0, null, null, null),
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Roller Bed", 4, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
@@ -224,3 +189,57 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 		/obj/item/reagent_container/blood/OMinus,
 		/obj/item/reagent_container/blood/OMinus,
 	)
+
+// vendor for consumable for medics
+
+GLOBAL_LIST_INIT(cm_vending_gear_medic_consumable, list(
+list("FIELD SUPPLIES", 0, null, null, null),
+		list("Burn Kit", 6, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_RECOMMENDED),
+		list("Trauma Kit", 6, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_RECOMMENDED),
+		list("Medical Splints", 3, /obj/item/stack/medical/splint, null, VENDOR_ITEM_RECOMMENDED),
+		list("Gauze", 3, /obj/item/stack/medical/bruise_pack, null, VENDOR_ITEM_REGULAR),
+		list("Ointment", 3, /obj/item/stack/medical/ointment, null, VENDOR_ITEM_REGULAR),
+		list("Blood Bag (O-)", 12, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
+
+		list("FIRSTAID KITS", 0, null, null, null),
+		list("Advanced Firstaid Kit", 36, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
+		list("Firstaid Kit", 15, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
+		list("Fire Firstaid Kit", 18, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
+		list("Toxin Firstaid Kit", 18, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
+		list("Oxygen Firstaid Kit", 18, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
+		list("Radiation Firstaid Kit", 18, /obj/item/storage/firstaid/rad, null, VENDOR_ITEM_REGULAR),
+
+		list("AUTOINJECTORS", 0, null, null, null),
+		list("Autoinjector (Bicaridine)", 3, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Dexalin+)", 3, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Epinephrine)", 6, /obj/item/reagent_container/hypospray/autoinjector/adrenaline, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Inaprovaline)", 3, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Kelotane)", 3, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Oxycodone)", 6, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tramadol)", 3, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricord)", 3, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
+
+		list("PILL BOTTLES", 0, null, null, null),
+		list("Pill Bottle (Bicaridine)", 15, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
+		list("Pill Bottle (Dexalin)", 15, /obj/item/storage/pill_bottle/dexalin, null, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Dylovene)", 15, /obj/item/storage/pill_bottle/antitox, null, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Inaprovaline)", 15, /obj/item/storage/pill_bottle/inaprovaline, null, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Kelotane)", 15, /obj/item/storage/pill_bottle/kelotane, null, VENDOR_ITEM_RECOMMENDED),
+		list("Pill Bottle (Peridaxon)", 15, /obj/item/storage/pill_bottle/peridaxon, null, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Tramadol)", 15, /obj/item/storage/pill_bottle/tramadol, null, VENDOR_ITEM_RECOMMENDED),
+
+	))
+
+/obj/structure/machinery/cm_vending/gear/medic_consumable
+	name = "\improper ColMarTech Squad Weapons Specialist Gear Rack"
+	desc = "An automated gear rack for Squad Weapons Specialists."
+	icon_state = "spec_gear"
+	show_points = TRUE
+	use_points = FALSE
+	use_snowflake_points = TRUE
+	vendor_role = list(JOB_SQUAD_SPECIALIST)
+	req_access = list(ACCESS_MARINE_SPECPREP)
+
+/obj/structure/machinery/cm_vending/gear/medic_consumable/get_listed_products(mob/user)
+	return GLOB.cm_vending_gear_medic_consumable
+

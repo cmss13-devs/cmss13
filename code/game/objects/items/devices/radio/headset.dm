@@ -59,8 +59,8 @@
 		verbs += /obj/item/device/radio/headset/proc/switch_tracker_target
 
 	if(frequency)
-		for(var/cycled_channel in radiochannels)
-			if(radiochannels[cycled_channel] == frequency)
+		for(var/cycled_channel in GLOB.radiochannels)
+			if(GLOB.radiochannels[cycled_channel] == frequency)
 				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/Destroy()
@@ -183,7 +183,7 @@
 
 /obj/item/device/radio/headset/proc/recalculateChannels()
 	for(var/ch_name in channels)
-		SSradio.remove_object(src, radiochannels[ch_name])
+		SSradio.remove_object(src, GLOB.radiochannels[ch_name])
 		secure_radio_connections[ch_name] = null
 	channels = list()
 	translate_apollo = FALSE
@@ -214,14 +214,14 @@
 		locate_setting = initial(locate_setting)
 
 	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
 	SStgui.update_uis(src)
 
 /obj/item/device/radio/headset/set_frequency(new_frequency)
 	..()
 	if(frequency)
-		for(var/cycled_channel in radiochannels)
-			if(radiochannels[cycled_channel] == frequency)
+		for(var/cycled_channel in GLOB.radiochannels)
+			if(GLOB.radiochannels[cycled_channel] == frequency)
 				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
@@ -237,7 +237,7 @@
 		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(update_minimap_icon))
 		if(headset_hud_on)
-			var/datum/mob_hud/H = huds[hud_type]
+			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			H.add_hud_to(user, src)
 			//squad leader locator is no longer invisible on our player HUD.
 			if(user.mind && (user.assigned_squad || misc_tracking) && user.hud_used && user.hud_used.locate_leader)
@@ -256,7 +256,7 @@
 		COMSIG_MOB_STAT_SET_ALIVE
 	))
 	if(istype(user) && user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
-		var/datum/mob_hud/H = huds[hud_type]
+		var/datum/mob_hud/H = GLOB.huds[hud_type]
 		H.remove_hud_from(user, src)
 		//squad leader locator is invisible again
 		if(user.hud_used && user.hud_used.locate_leader)
@@ -288,7 +288,7 @@
 	if(ishuman(usr))
 		var/mob/living/carbon/human/user = usr
 		if(user.has_item_in_ears(src)) //worn
-			var/datum/mob_hud/H = huds[hud_type]
+			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			if(headset_hud_on)
 				H.add_hud_to(usr, src)
 				if(user.mind && (misc_tracking || user.assigned_squad) && user.hud_used?.locate_leader)
@@ -808,7 +808,7 @@
 
 			set_frequency(frequency)
 			for(var/ch_name in channels)
-				secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+				secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
 			recalculateChannels()
 			if(H.mind && H.hud_used && H.hud_used.locate_leader) //make SL tracker visible
 				H.hud_used.locate_leader.alpha = 255

@@ -72,7 +72,7 @@
 	var/list/data = list()
 	var/list/messages = list()
 
-	data["alert_level"] = security_level
+	data["alert_level"] = GLOB.security_level
 
 	data["time_request"] = cooldown_request
 	data["time_destruct"] = cooldown_destruct
@@ -116,7 +116,7 @@
 		// evac stuff start \\
 
 		if("evacuation_start")
-			if(security_level < SEC_LEVEL_RED)
+			if(GLOB.security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
 
@@ -147,7 +147,7 @@
 
 		if("change_sec_level")
 			var/list/alert_list = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE))
-			switch(security_level)
+			switch(GLOB.security_level)
 				if(SEC_LEVEL_GREEN)
 					alert_list -= num2seclevel(SEC_LEVEL_GREEN)
 				if(SEC_LEVEL_BLUE)
@@ -217,7 +217,7 @@
 				to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 				return FALSE
 
-			if(security_level == SEC_LEVEL_DELTA)
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 				return FALSE
 

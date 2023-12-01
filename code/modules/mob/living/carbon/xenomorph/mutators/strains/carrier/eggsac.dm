@@ -1,6 +1,6 @@
 /datum/xeno_mutator/eggsac
 	name = "STRAIN: Carrier - Eggsac"
-	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal"
+	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nYou can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while you remain within 14 tiles. Or one minute if you leave this range."
 	flavor_description = "An egg is always an adventure; the next one may be different."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -15,6 +15,7 @@
 		/datum/action/xeno_action/active_toggle/generate_egg,
 		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
 	)
+	behavior_delegate_type = /datum/behavior_delegate/carrier_eggsac
 	keystone = TRUE
 
 /datum/xeno_mutator/eggsac/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
@@ -40,7 +41,56 @@
 	carrier.update_eggsac_overlays()
 	carrier.eggs_max = 12
 	carrier.egg_planting_range = 2
+	apply_behavior_holder(carrier)
 	return TRUE
+
+#define EGGSAC_OFF_WEED_EGGCAP 4
+#define EGGSAC_EGG_SUSTAIN_DISTANCE 14
+
+/datum/behavior_delegate/carrier_eggsac
+	name = "Eggsac Carrier Behavior Delegate"
+	///List of /obj/effect/alien/egg/carrier_egg sustained by the carrier on normal weeds
+	var/list/eggs_sustained = list()
+	///Total number of eggs which can be sustained defined as EGGSAC_OFF_WEED_EGGCAP
+	var/egg_sustain_cap = EGGSAC_OFF_WEED_EGGCAP
+	///Distance from the egg that the carrier can go before it stops sustaining it
+	var/sustain_distance = EGGSAC_EGG_SUSTAIN_DISTANCE
+
+/datum/behavior_delegate/carrier_eggsac/append_to_stat()
+	. = list()
+	. += "Eggs sustained: [length(eggs_sustained)] / [egg_sustain_cap]"
+
+/datum/behavior_delegate/carrier_eggsac/on_life()
+	if(length(eggs_sustained) > egg_sustain_cap)
+		var/obj/effect/alien/egg/carrier_egg/my_egg = eggs_sustained[1]
+		remove_egg_owner(my_egg)
+		my_egg.start_unstoppable_decay()
+		to_chat(bound_xeno, SPAN_XENOWARNING("You can only sustain [egg_sustain_cap] eggs off hive weeds! Your oldest placed egg is decaying rapidly."))
+
+	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
+		//Get the distance from us to our sustained egg
+		if(get_dist(bound_xeno, my_egg) <= sustain_distance)
+			my_egg.last_refreshed = world.time
+		else
+			my_egg.check_decay()
+
+///Remove owner of egg
+/datum/behavior_delegate/carrier_eggsac/proc/remove_egg_owner(obj/effect/alien/egg/carrier_egg/egg)
+	if(!egg.owner || egg.owner != bound_xeno)
+		return
+	eggs_sustained -= egg
+	egg.owner = null
+
+/datum/behavior_delegate/carrier_eggsac/handle_death(mob/M)
+	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
+		remove_egg_owner(my_egg)
+		my_egg.start_unstoppable_decay()
+
+///Remove all references to src in eggs_sustained
+/datum/behavior_delegate/carrier_eggsac/Destroy()
+	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
+		my_egg.owner = null
+	return ..()
 
 /datum/action/xeno_action/active_toggle/generate_egg
 	name = "Generate Eggs (50)"
@@ -77,3 +127,6 @@
 				xeno.eggs_cur++
 				to_chat(xeno, SPAN_XENONOTICE("You generate a egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
 				xeno.update_icons()
+
+#undef EGGSAC_OFF_WEED_EGGCAP
+#undef EGGSAC_EGG_SUSTAIN_DISTANCE

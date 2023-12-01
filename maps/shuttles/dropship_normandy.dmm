@@ -350,8 +350,8 @@
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "En" = (
-/obj/structure/machinery/door/airlock/dropship_hatch/two{
-	dir = 8;
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
+	dir = 1;
 	id = "starboard_door"
 	},
 /turf/open/shuttle/dropship{
@@ -583,8 +583,9 @@
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "SC" = (
-/obj/structure/machinery/door/airlock/dropship_hatch/two{
-	id = "port_door"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
+	id = "port_door";
+	dir = 2
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -708,7 +709,7 @@ eu
 OI
 GE
 lJ
-SC
+PJ
 SC
 jc
 pU
@@ -892,7 +893,7 @@ wX
 fI
 fx
 Tp
-En
+PJ
 En
 gG
 RG

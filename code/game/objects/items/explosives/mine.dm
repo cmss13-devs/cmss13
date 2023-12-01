@@ -123,7 +123,7 @@
 				if(prob(75))
 					triggered = TRUE
 					if(tripwire)
-						var/direction = reverse_dir[src.dir]
+						var/direction = GLOB.reverse_dir[src.dir]
 						var/step_direction = get_step(src, direction)
 						tripwire.forceMove(step_direction)
 					prime()
@@ -241,7 +241,7 @@
 	//We move the tripwire randomly in either of the four cardinal directions
 	triggered = TRUE
 	if(tripwire)
-		var/direction = pick(cardinal)
+		var/direction = pick(GLOB.cardinals)
 		var/step_direction = get_step(src, direction)
 		tripwire.forceMove(step_direction)
 	prime()

@@ -8,7 +8,7 @@
 			owner.jump_to_area(choice)
 
 		if("jump_to_turf")
-			var/turf/choice = tgui_input_list(owner, "Pick a turf to jump to:", "Jump", turfs)
+			var/turf/choice = tgui_input_list(owner, "Pick a turf to jump to:", "Jump", GLOB.turfs)
 			if(QDELETED(choice))
 				return
 

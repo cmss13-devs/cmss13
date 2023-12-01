@@ -72,41 +72,41 @@
 		lunged.set_effect(0, WEAKEN)
 	return ..()
 
-/mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/AM, lunge)
-	if (!check_state() || agility)
+/mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/movable_atom, lunge)
+	if (!check_state())
 		return FALSE
 
-	if(!isliving(AM))
+	if(!isliving(movable_atom))
 		return FALSE
-	var/mob/living/L = AM
-	var/should_neckgrab = !(src.can_not_harm(L)) && lunge
+	var/mob/living/living_mob = movable_atom
+	var/should_neckgrab = !(src.can_not_harm(living_mob)) && lunge
 
-	if(!QDELETED(L) && !QDELETED(L.pulledby) && L != src ) //override pull of other mobs
-		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
-		L.pulledby.stop_pulling()
+	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob != src ) //override pull of other mobs
+		visible_message(SPAN_WARNING("[src] has broken [living_mob.pulledby]'s grip on [living_mob]!"), null, null, 5)
+		living_mob.pulledby.stop_pulling()
 
-	. = ..(L, lunge, should_neckgrab)
+	. = ..(living_mob, lunge, should_neckgrab)
 
 	if(.) //successful pull
-		if(isxeno(L))
-			var/mob/living/carbon/xenomorph/X = L
-			if(X.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
-				return .
+		if(isxeno(living_mob))
+			var/mob/living/carbon/xenomorph/xeno = living_mob
+			if(xeno.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
+				return
 
-		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
-			L.drop_held_items()
-			L.apply_effect(get_xeno_stun_duration(L, 2), WEAKEN)
-			L.pulledby = src
-			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
-			SPAN_XENOWARNING("You grab [L] by the throat!"))
+		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
+			living_mob.drop_held_items()
+			living_mob.apply_effect(get_xeno_stun_duration(living_mob, 2), WEAKEN)
+			living_mob.pulledby = src
+			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"), \
+			SPAN_XENOWARNING("You grab [living_mob] by the throat!"))
 			lunging = TRUE
-			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
 
 /mob/living/carbon/xenomorph/warrior/proc/stop_lunging(world_time)
 	lunging = FALSE
 
-/mob/living/carbon/xenomorph/warrior/hitby(atom/movable/AM)
-	if(ishuman(AM))
+/mob/living/carbon/xenomorph/warrior/hitby(atom/movable/movable_atom)
+	if(ishuman(movable_atom))
 		return
 	..()
 
@@ -120,7 +120,7 @@
 	var/color = "#6c6f24"
 	var/emote_cooldown = 0
 
-/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
+/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/carbon)
 	..()
 
 	if(SEND_SIGNAL(bound_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
@@ -156,3 +156,82 @@
 
 /datum/behavior_delegate/warrior_base/proc/lifesteal_lock()
 	bound_xeno.remove_filter("empower_rage")
+
+
+/// Warrior specific behaviour for increasing pull power, limb rip.
+/mob/living/carbon/xenomorph/warrior/pull_power(mob/mob)
+	if(!ripping_limb && mob.stat != DEAD)
+		if(mob.status_flags & XENO_HOST)
+			to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
+			return
+		ripping_limb = TRUE
+		if(rip_limb(mob))
+			stop_pulling()
+		ripping_limb = FALSE
+
+
+/// Warrior Rip Limb - called by pull_power()
+/mob/living/carbon/xenomorph/warrior/proc/rip_limb(mob/mob)
+	if(!istype(mob, /mob/living/carbon/human))
+		return FALSE
+
+	if(action_busy) //can't stack the attempts
+		return FALSE
+
+	var/mob/living/carbon/human/human = mob
+	var/obj/limb/limb = human.get_limb(check_zone(zone_selected))
+
+	if(can_not_harm(human))
+		to_chat(src, SPAN_XENOWARNING("You can't harm this host!"))
+		return
+
+	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || (limb.status & LIMB_DESTROYED)) //Only limbs and head.
+		to_chat(src, SPAN_XENOWARNING("You can't rip off that limb."))
+		return FALSE
+	var/limb_time = rand(40,60)
+
+	if(limb.body_part == BODY_FLAG_HEAD)
+		limb_time = rand(90,110)
+
+	visible_message(SPAN_XENOWARNING("[src] begins pulling on [mob]'s [limb.display_name] with incredible strength!"), \
+	SPAN_XENOWARNING("You begin to pull on [mob]'s [limb.display_name] with incredible strength!"))
+
+	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || mob.stat == DEAD || mob.status_flags & XENO_HOST)
+		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
+		if(mob.status_flags & XENO_HOST)
+			to_chat(src, SPAN_NOTICE("You detect an embryo inside [mob] which overwhelms your instinct to rip."))
+		return FALSE
+
+	if(limb.status & LIMB_DESTROYED)
+		return FALSE
+
+	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
+		limb.take_damage(rand(30,40), 0, 0) // just do more damage
+		visible_message(SPAN_XENOWARNING("You hear [mob]'s [limb.display_name] being pulled beyond its load limits!"), \
+		SPAN_XENOWARNING("[mob]'s [limb.display_name] begins to tear apart!"))
+	else
+		visible_message(SPAN_XENOWARNING("You hear the bones in [mob]'s [limb.display_name] snap with a sickening crunch!"), \
+		SPAN_XENOWARNING("[mob]'s [limb.display_name] bones snap with a satisfying crunch!"))
+		limb.take_damage(rand(15,25), 0, 0)
+		limb.fracture(100)
+	mob.last_damage_data = create_cause_data(initial(caste_type), src)
+	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 1/2 progress</font>")
+	mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 1/2 progress</font>")
+	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 1/2 progress")
+
+	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || mob.stat == DEAD || iszombie(mob))
+		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
+		return FALSE
+
+	if(limb.status & LIMB_DESTROYED)
+		return FALSE
+
+	visible_message(SPAN_XENOWARNING("[src] rips [mob]'s [limb.display_name] away from their body!"), \
+	SPAN_XENOWARNING("[mob]'s [limb.display_name] rips away from their body!"))
+	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 2/2 progress</font>")
+	mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
+	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 2/2 progress")
+
+	limb.droplimb(0, 0, initial(name))
+
+	return TRUE

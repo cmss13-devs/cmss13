@@ -11,7 +11,7 @@ When a round starts, the roles are assigned based on the round, from another lis
 by name can be kept for things like job bans, while the round may add or remove roles as needed.If you need to equip a mob for a job, always
 use roles_by_path as it is an accurate account of every specific role path (with specific equipment).
 */
-var/global/datum/authority/branch/role/RoleAuthority
+GLOBAL_DATUM(RoleAuthority, /datum/authority/branch/role)
 
 #define GET_RANDOM_JOB 0
 #define BE_MARINE 1
@@ -25,11 +25,10 @@ var/global/datum/authority/branch/role/RoleAuthority
 
 #define SHIPSIDE_ROLE_WEIGHT 0.25
 
-var/global/players_preassigned = 0
-
+GLOBAL_VAR_INIT(players_preassigned, 0)
 
 /proc/guest_jobbans(job)
-	return (job in ROLES_COMMAND)
+	return (job in GLOB.ROLES_COMMAND)
 
 /datum/authority/branch/role
 	var/name = "Role Authority"
@@ -236,7 +235,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	// Get balancing weight for the readied players.
 	// Squad marine roles have a weight of 1, and shipside roles have a lower weight of SHIPSIDE_ROLE_WEIGHT.
-	players_preassigned = assign_roles(temp_roles_for_mode.Copy(), unassigned_players.Copy(), TRUE)
+	GLOB.players_preassigned = assign_roles(temp_roles_for_mode.Copy(), unassigned_players.Copy(), TRUE)
 
 	// Even though we pass a copy of temp_roles_for_mode, job counters still change, so we reset them here.
 	for(var/title in temp_roles_for_mode)
@@ -247,28 +246,28 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))
-		XJ.set_spawn_positions(players_preassigned)
+		XJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Limit the number of SQUAD MARINE roles players can roll initially
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 	if(istype(SMJ))
-		SMJ.set_spawn_positions(players_preassigned)
+		SMJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
 	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
-		SJ.set_spawn_positions(players_preassigned)
+		SJ.set_spawn_positions(GLOB.players_preassigned)
 
 	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
 	if(istype(CO_surv_job))
-		CO_surv_job.set_spawn_positions(players_preassigned)
+		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
 
-	if(SSnightmare.get_scenario_value("predator_round"))
+	if(SSnightmare.get_scenario_value("predator_round") && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
-			PJ.set_spawn_positions(players_preassigned)
+			PJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
@@ -312,13 +311,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/assigned = 0
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
 		// Assigning xenos first.
-		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_XENO, unassigned_players)
+		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_XENO, unassigned_players)
 		// Assigning special roles second. (survivor, predator)
-		assigned += assign_initial_roles(priority, roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL), unassigned_players)
+		assigned += assign_initial_roles(priority, roles_for_mode & (GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL), unassigned_players)
 		// Assigning command third.
-		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_COMMAND, unassigned_players)
+		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_COMMAND, unassigned_players)
 		// Assigning the rest
-		var/rest_roles_for_mode = roles_for_mode - (roles_for_mode & ROLES_XENO) - (roles_for_mode & ROLES_COMMAND) - (roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
+		var/rest_roles_for_mode = roles_for_mode - (roles_for_mode & GLOB.ROLES_XENO) - (roles_for_mode & GLOB.ROLES_COMMAND) - (roles_for_mode & (GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL))
 		if(count)
 			assigned += assign_initial_roles(priority, rest_roles_for_mode, unassigned_players)
 		else
@@ -367,9 +366,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 * survivors and the number of roundstart Squad Rifleman slots.
 */
 /datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
-	if(ROLES_MARINES.Find(J.title))
+	if(GLOB.ROLES_MARINES.Find(J.title))
 		return 1
-	if(ROLES_XENO.Find(J.title))
+	if(GLOB.ROLES_XENO.Find(J.title))
 		return 1
 	if(J.title == JOB_SURVIVOR)
 		return 1
@@ -436,9 +435,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 //here is the main reason this proc exists - to remove freed squad jobs from squad,
 //so latejoining person ends in the squad which's job was freed and not random one
 	var/datum/squad/sq = null
-	if(job_squad_roles.Find(J.title))
+	if(GLOB.job_squad_roles.Find(J.title))
 		var/list/squad_list = list()
-		for(sq in RoleAuthority.squads)
+		for(sq in GLOB.RoleAuthority.squads)
 			if(sq.usable)
 				squad_list += sq
 		sq = null
@@ -537,7 +536,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 		randomize_squad(new_human)
 
-	if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(new_human.job))) //activates self setting proc for marine headsets for WO
+	if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(new_human.job))) //activates self setting proc for marine headsets for WO
 		var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 		WO.self_set_headset(new_human)
 
@@ -817,7 +816,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/found_desired = FALSE
 	var/found_limit = FALSE
 
-	for(var/status in whitelist_hierarchy)
+	for(var/status in GLOB.whitelist_hierarchy)
 		if(status == desired_status)
 			found_desired = TRUE
 			break

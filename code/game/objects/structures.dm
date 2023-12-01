@@ -150,7 +150,8 @@
 
 	for(var/mob/living/M in get_turf(src))
 
-		if(M.lying) return //No spamming this on people.
+		if(HAS_TRAIT(M, TRAIT_FLOORED))
+			return //No spamming this on people.
 
 		M.apply_effect(5, WEAKEN)
 		to_chat(M, SPAN_WARNING("You topple as \the [src] moves under you!"))
@@ -191,7 +192,7 @@
 			H.updatehealth()
 	return
 
-/obj/structure/proc/can_touch(mob/user)
+/obj/structure/proc/can_touch(mob/living/user)
 	if(!user)
 		return 0
 	if(!Adjacent(user) || !isturf(user.loc))
@@ -199,7 +200,7 @@
 	if(user.is_mob_restrained() || user.buckled)
 		to_chat(user, SPAN_NOTICE("You need your hands and legs free for this."))
 		return 0
-	if(user.is_mob_incapacitated(TRUE) || user.lying)
+	if(user.is_mob_incapacitated(TRUE) || user.body_position == LYING_DOWN)
 		return 0
 	if(isRemoteControlling(user))
 		to_chat(user, SPAN_NOTICE("You need hands for this."))

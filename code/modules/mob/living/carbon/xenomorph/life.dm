@@ -10,7 +10,8 @@
 
 	..()
 
-	if(is_zoomed && (stat || lying))
+	// replace this by signals or trait signals
+	if(is_zoomed && (stat || body_position == LYING_DOWN))
 		zoom_out()
 
 	if(stat != DEAD) //Stop if dead. Performance boost
@@ -23,7 +24,6 @@
 		handle_regular_status_updates()
 		handle_stomach_contents()
 		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
-		update_canmove()
 		update_icons()
 		handle_luminosity()
 		handle_blood()
@@ -187,9 +187,8 @@
 		ear_damage = 0
 		SetEyeBlind(0)
 
-		if(knocked_out) //If they're down, make sure they are actually down.
+		if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT)) //If they're down, make sure they are actually down.
 			blinded = TRUE
-			set_stat(UNCONSCIOUS)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
@@ -342,7 +341,7 @@ Make sure their actual health updates immediately.*/
 			if(recovery_aura)
 				plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
 			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
-				if(lying || resting)
+				if(body_position == LYING_DOWN || resting)
 					if(health < 0) //Unconscious
 						heal_wounds(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
@@ -455,7 +454,7 @@ Make sure their actual health updates immediately.*/
 		var/area/A = get_area(loc)
 		var/area/QA = get_area(tracking_atom.loc)
 		if(A.fake_zlevel == QA.fake_zlevel)
-			QL.setDir(get_dir(src, tracking_atom))
+			QL.setDir(Get_Compass_Dir(src, tracking_atom))
 			QL.icon_state = "trackon"
 		else
 			QL.icon_state = "trackondirect"
@@ -484,7 +483,7 @@ Make sure their actual health updates immediately.*/
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "all_direction")
 		return
 	else if(A.fake_zlevel == MA.fake_zlevel) //normal tracking
-		ML.setDir(get_dir(src, tracked_marker_turf))
+		ML.setDir(Get_Compass_Dir(src, tracked_marker_turf))
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "direction")
@@ -536,8 +535,6 @@ Make sure their actual health updates immediately.*/
 	if(layer != initial(layer)) //Unhide
 		layer = initial(layer)
 	recalculate_move_delay = TRUE
-	if(!lying)
-		update_canmove()
 
 /mob/living/carbon/xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0
@@ -583,16 +580,14 @@ Make sure their actual health updates immediately.*/
 	return superslowed
 
 /mob/living/carbon/xenomorph/handle_knocked_down()
-	if(knocked_down)
+	if(HAS_TRAIT(src, TRAIT_FLOORED))
 		adjust_effect(life_knockdown_reduction, WEAKEN, EFFECT_FLAG_LIFE)
 		knocked_down_callback_check()
-	return knocked_down
 
 /mob/living/carbon/xenomorph/handle_knocked_out()
-	if(knocked_out)
+	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		adjust_effect(life_knockout_reduction, PARALYZE, EFFECT_FLAG_LIFE)
 		knocked_out_callback_check()
-	return knocked_out
 
 //Returns TRUE if xeno is on weeds
 //Returns TRUE if xeno is off weeds AND doesn't need weeds for healing AND is not on Almayer UNLESS Queen is also on Almayer (aka - no solo Lurker Almayer hero)

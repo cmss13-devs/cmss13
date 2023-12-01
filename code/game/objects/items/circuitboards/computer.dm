@@ -278,7 +278,7 @@
 			to_chat(usr, "No input found please hang up and try your call again.")
 			return
 		var/list/tempnetwork = splittext(input, ",")
-		tempnetwork = difflist(tempnetwork,RESTRICTED_CAMERA_NETWORKS,1)
+		tempnetwork = difflist(tempnetwork,GLOB.RESTRICTED_CAMERA_NETWORKS,1)
 		if(tempnetwork.len < 1)
 			to_chat(usr, "No network found please hang up and try your call again.")
 			return

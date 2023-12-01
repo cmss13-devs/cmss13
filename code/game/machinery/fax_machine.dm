@@ -1,5 +1,5 @@
-var/list/obj/structure/machinery/faxmachine/allfaxes = list()
-var/list/alldepartments = list()
+GLOBAL_LIST_INIT_TYPED(allfaxes, /obj/structure/machinery/faxmachine, list())
+GLOBAL_LIST_EMPTY(alldepartments)
 
 #define DEPARTMENT_WY "Weyland-Yutani"
 #define DEPARTMENT_HC "USCM High Command"
@@ -45,11 +45,11 @@ var/list/alldepartments = list()
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
-	allfaxes += src
+	GLOB.allfaxes += src
 	update_departments()
 
 /obj/structure/machinery/faxmachine/Destroy()
-	allfaxes -= src
+	GLOB.allfaxes -= src
 	. = ..()
 
 /obj/structure/machinery/faxmachine/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -110,7 +110,8 @@ var/list/alldepartments = list()
 	set category = "Object"
 	set name = "Eject ID Card"
 	set src in view(1)
-	if(!usr || usr.stat || usr.lying) return
+	if(usr.is_mob_incapacitated())
+		return
 
 	if(ishuman(usr) && scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
@@ -125,18 +126,18 @@ var/list/alldepartments = list()
 	return
 
 /obj/structure/machinery/faxmachine/proc/update_departments()
-	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
-		alldepartments += department
-	if(!(DEPARTMENT_WY in alldepartments))
-		alldepartments += DEPARTMENT_WY
-	if(!(DEPARTMENT_HC in alldepartments))
-		alldepartments += DEPARTMENT_HC
-	if(!(DEPARTMENT_PROVOST in alldepartments))
-		alldepartments += DEPARTMENT_PROVOST
-	if(!(DEPARTMENT_CMB in alldepartments))
-		alldepartments += DEPARTMENT_CMB
-	if(!(DEPARTMENT_PRESS in alldepartments))
-		alldepartments += DEPARTMENT_PRESS
+	if( !("[department]" in GLOB.alldepartments) ) //Initialize departments. This will work with multiple fax machines.
+		GLOB.alldepartments += department
+	if(!(DEPARTMENT_WY in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_WY
+	if(!(DEPARTMENT_HC in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_HC
+	if(!(DEPARTMENT_PROVOST in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_PROVOST
+	if(!(DEPARTMENT_CMB in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_CMB
+	if(!(DEPARTMENT_PRESS in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_PRESS
 // TGUI SHIT \\
 
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
@@ -255,7 +256,7 @@ var/list/alldepartments = list()
 
 		if("select")
 			var/last_target_department = target_department
-			target_department = tgui_input_list(ui.user, "Which department?", "Choose a department", alldepartments)
+			target_department = tgui_input_list(ui.user, "Which department?", "Choose a department", GLOB.alldepartments)
 			if(!target_department) target_department = last_target_department
 			. = TRUE
 
@@ -379,7 +380,7 @@ var/list/alldepartments = list()
 
 
 /obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents)
-	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
+	for(var/obj/structure/machinery/faxmachine/F in GLOB.allfaxes)
 		if(F != src && F.department == target_department)
 			if(!faxcontents)
 				return

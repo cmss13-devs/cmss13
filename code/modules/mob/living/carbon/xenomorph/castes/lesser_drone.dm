@@ -95,3 +95,11 @@
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
 		PF.flags_can_pass_all = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
+
+/mob/living/carbon/xenomorph/lesser_drone/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)
+	. = ..()
+	if(. && !aghosted && !QDELETED(src))
+		gib()
+
+/mob/living/carbon/xenomorph/lesser_drone/handle_ghost_message()
+	return

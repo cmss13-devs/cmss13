@@ -77,10 +77,10 @@ Additional game mode variables.
 	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 	/// Amount of latejoin_tally already awarded as larvas
 	var/latejoin_larva_used = 0
-	/// Multiplier to the amount of gear awarded so far - increases only
+	/// Multiplier to the amount of marine gear, current value as calculated with modifiers
 	var/gear_scale = 1
-	/// Roundstart gear scale to base off current gear_scale, for latejoin calculations
-	var/gear_scale_init = 1
+	/// Multiplier to the amount of marine gear, maximum reached value for
+	var/gear_scale_max = 1
 
 	//Role Authority set up.
 	/// List of role titles to override to different roles when starting game
@@ -934,26 +934,36 @@ Additional game mode variables.
 /datum/game_mode/proc/init_gear_scale()
 	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment
 	var/marine_pop_size = 0
+	var/uscm_personnel_count = 0
 	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
 		if(human.faction == FACTION_USCM)
+			uscm_personnel_count++
 			var/datum/job/job = GET_MAPPED_ROLE(human.job)
 			marine_pop_size += GLOB.RoleAuthority.calculate_role_weight(job)
 
 	//This gives a decimal value representing a scaling multiplier. Cannot go below 1
 	gear_scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
-	gear_scale_init = gear_scale
-	log_debug("SUPPLY: Game start detected [marine_pop_size] weighted marines, resulting in gear_scale = [gear_scale]")
-	log_debug("SUPPLY: Previous supply calculation would have been [length(GLOB.alive_human_list)] alive humans, resulting in gear_scale = [length(GLOB.alive_human_list)/30]") // DEBUG REMOVE ME
+	gear_scale_max = gear_scale
+	log_debug("SUPPLY: Game start detected [marine_pop_size] weighted marines (out of [uscm_personnel_count]/[length(GLOB.alive_human_list)] USCM humans), resulting in gear_scale = [gear_scale]")
 	return gear_scale
 
-///Updates the [/datum/game_mode/var/gear_scale] multiplier based on joining marines in [/datum/game_mode/var/latejoin_tally]
-/datum/game_mode/proc/update_gear_scale()
-	var/new_gear_scale = gear_scale_init + latejoin_tally / MARINE_GEAR_SCALING_NORMAL * MARINE_GEAR_SCALING_LATEJOIN
-	if(new_gear_scale > gear_scale)
+///Updates the [/datum/game_mode/var/gear_scale] multiplier based on joining and cryoing marines
+/datum/game_mode/proc/update_gear_scale(delta)
+	// Magic inverse function that guarantees marines still get good supplies for latejoins within first ~30 minutes but stalls starting 2 hours or so
+	gear_scale += delta * (0.25 + 0.75 / (1 + ROUND_TIME / 20000)) / MARINE_GEAR_SCALING_NORMAL
+	var/gear_delta = gear_scale - gear_scale_max
+	if(gear_delta > 0)
+		log_debug("SUPPLY DEBUG - gear_scale increasing from [gear_scale_max] to [gear_scale]") // FIXME Remove this
+		gear_scale_max = gear_scale
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
-			vendor.update_dynamic_stock(new_gear_scale)
-		GLOB.supply_controller.points += round((new_gear_scale - gear_scale) * GLOB.supply_controller.points_scale)
-	gear_scale = new_gear_scale
+			vendor.update_dynamic_stock(gear_scale_max)
+		GLOB.supply_controller.points += round(gear_delta * GLOB.supply_controller.points_scale)
+
+/// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
+/datum/game_mode/proc/latejoin_update(role, delta = 1)
+	var/weight = GLOB.RoleAuthority.calculate_role_weight(role)
+	latejoin_tally += weight * delta
+	update_gear_scale(weight * delta)
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()

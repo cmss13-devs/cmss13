@@ -3,24 +3,29 @@
 	pay_multiplier = 1.4 // Government work. Nice benefits.
 
 /datum/paygrade/cmb/standard
-	paygrade = "GS-9"
+	paygrade = PAY_SHORT_CMBD
 	name = "CMB Deputy"
 	prefix = "Dep."
 
 /datum/paygrade/cmb/leader
-	paygrade = "GS-13"
+	paygrade = PAY_SHORT_CMBM
 	name = "CMB Marshal"
 	prefix = "Marshal"
 
 /datum/paygrade/cmb/syn
-	paygrade = "GS-C.9"
+	paygrade = PAY_SHORT_CMBS
 	name = "CMB Investigative Synthetic"
 
-/datum/paygrade/cmb/liaison
-	paygrade = "GS-6"
+/datum/paygrade/cmb/icc
+	paygrade = PAY_SHORT_ICCA
+	name = "Interstellar Commerce Commission Agent"
+	prefix = "Agent"
+
+/datum/paygrade/cmb/icc/liaison
+	paygrade = PAY_SHORT_ICCL
 	name = "Interstellar Commerce Commission Corporate Liaison"
 	prefix = "Exec."
 
 /datum/paygrade/cmb/observer
-	paygrade = "GS-3"
+	paygrade = PAY_SHORT_IHRO
 	name = "Interstellar Human Rights Observer"

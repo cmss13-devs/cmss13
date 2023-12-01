@@ -195,7 +195,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 /datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
-	paygrade = "GS-9"
+	paygrade = PAY_SHORT_CMBD
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
@@ -411,7 +411,7 @@ and is used as a base for all of the maps.
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	idtype = /obj/item/card/id/silver/cl
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_ICCL
 	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 

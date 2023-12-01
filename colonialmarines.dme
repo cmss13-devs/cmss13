@@ -134,6 +134,7 @@
 #include "code\__DEFINES\dcs\signals\atom\mob\living\signals_human.dm"
 #include "code\__DEFINES\dcs\signals\atom\mob\living\signals_living.dm"
 #include "code\__DEFINES\dcs\signals\atom\mob\living\signals_xeno.dm"
+#include "code\__DEFINES\paygrade_defs\cmb.dm"
 #include "code\__DEFINES\paygrade_defs\marines.dm"
 #include "code\__DEFINES\paygrade_defs\navy.dm"
 #include "code\__DEFINES\paygrade_defs\provost.dm"

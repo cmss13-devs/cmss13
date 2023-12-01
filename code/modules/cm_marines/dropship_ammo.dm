@@ -143,17 +143,19 @@
 	transferable_ammo = TRUE
 	ammo_used_per_firing = 40
 	point_cost = 275
-	fire_mission_delay = 1 //1 from 2
+	fire_mission_delay = 2
 	travelling_time = 30
 	var/bullet_spread_range = 3 //3 from 4
 	var/directhit_damage = 80 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	var/penetration = 10 //AP value pretty much
 	var/holo_stacks = 100
-	var/slow_duration = 2
-	var/acid_per_hit = 10 
+	var/slow_duration = 3
+	var/acid_per_hit = 10
+	var/max_armor_reduction = 0.2
 	var/plasma_drain_hit = 200
 	var/interference_duration = 10
 	var/healing_reduction_duration = 10
+	var/max_interference = 10
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
 	. = ..()
@@ -179,19 +181,18 @@
 		for(var/atom/movable/explosion_effect in impact_tile)
 			if(iscarbon(explosion_effect))
 				var/mob/living/carbon/bullet_effect = explosion_effect
-				bullet_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
-				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
 				bullet_effect.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
-				bullet_effect.adjust_effect(slow_duration, SLOW)			
+				bullet_effect.adjust_effect(slow_duration, SUPERSLOW)
 				if(isxeno(bullet_effect))
 					var/mob/living/carbon/xenomorph/xenomorph = bullet_effect
-					xenomorph.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+					xenomorph.AddComponent(/datum/component/toxic_buildup,acid_per_hit, xenomorph.armor_deflection*max_armor_reduction)
 					xenomorph.plasma_stored = max(xenomorph.plasma_stored - plasma_drain_hit, 0)
-					xenomorph.interference += (interference_duration)
+					if(xenomorph.interference < max_interference)
+						xenomorph.interference = max(max_interference, xenomorph.interference)
 					xenomorph.AddComponent(/datum/component/healing_reduction, healing_reduction_duration)
+				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
 			else
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
-		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)//moved this
+				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)//moved this
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
 			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
 			soundplaycooldown = 3
@@ -203,7 +204,6 @@
 		new /obj/effect/particle_effect/expl_particles(impact_tile)
 	sleep(11) //speed of sound simulation
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
-
 
 /obj/structure/ship_ammo/heavygun/antitank
 	name = "\improper PGU-105 30mm Anti-tank ammo crate"

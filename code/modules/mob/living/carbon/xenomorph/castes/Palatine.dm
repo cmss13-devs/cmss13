@@ -84,7 +84,7 @@
 
 /datum/behavior_delegate/palatine_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target)
 	if(!iscarbonsizehuman(target))
-		return
+		return original_damage
 
 	var/size = target.mob_size
 	var/multiplier = thirst - size

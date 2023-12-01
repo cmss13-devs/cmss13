@@ -2110,7 +2110,7 @@ Defined in conflicts.dm of the #defines folder.
 	melee_mod = 10
 
 /obj/item/attachable/stock/xm51/Initialize(mapload, ...)
-	..()
+	. = ..()
 	select_gamemode_skin(type)
 	//it makes stuff much better when two-handed
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3

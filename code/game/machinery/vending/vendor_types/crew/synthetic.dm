@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Surgical Drop Pouch", 0, /obj/item/clothing/accessory/storage/surg_vest/drop_green, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Drop Pouch (Blue)", 0, /obj/item/clothing/accessory/storage/surg_vest/drop_blue, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Drop Pouch (Black)", 0, /obj/item/clothing/accessory/storage/surg_vest/drop_black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Tool Webbing", 0, /obj/item/clothing/accessory/storage/black_vest/tool_webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Tool Webbing", 0, /obj/item/clothing/accessory/storage/tool_webbing/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("SHOES (CHOOSE 1)", 0, null, null, null),

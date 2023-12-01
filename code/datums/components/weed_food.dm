@@ -259,7 +259,8 @@
 	active = FALSE
 	merged = TRUE
 
-	parent_mob.density = FALSE
+	ADD_TRAIT(parent_mob, TRAIT_UNDENSE, XENO_WEED_TRAIT)
+	ADD_TRAIT(parent_mob, TRAIT_MERGED_WITH_WEEDS, XENO_WEED_TRAIT)
 	parent_mob.anchored = TRUE
 	parent_mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	parent_mob.plane = FLOOR_PLANE
@@ -288,6 +289,7 @@
 		UnregisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING)
 	absorbing_weeds = null
 
+	REMOVE_TRAIT(parent_mob, TRAIT_MERGED_WITH_WEEDS, XENO_WEED_TRAIT)
 	parent_mob.anchored = FALSE
 	parent_mob.mouse_opacity = MOUSE_OPACITY_ICON
 	parent_mob.plane = GAME_PLANE

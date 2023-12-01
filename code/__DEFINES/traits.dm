@@ -1,22 +1,20 @@
-//shamelessly ripped from TG
 #define SIGNAL_ADDTRAIT(trait_ref) "addtrait [trait_ref]"
 #define SIGNAL_REMOVETRAIT(trait_ref) "removetrait [trait_ref]"
 
 // trait accessor defines
-//here be dragons
 #define ADD_TRAIT(target, trait, source) \
 	do { \
 		var/list/_L; \
-		if (!target.status_traits) { \
-			target.status_traits = list(); \
-			_L = target.status_traits; \
+		if (!target._status_traits) { \
+			target._status_traits = list(); \
+			_L = target._status_traits; \
 			_L[trait] = list(source); \
 			SEND_SIGNAL(target, SIGNAL_ADDTRAIT(trait), trait); \
 			if(trait in GLOB.traits_with_elements){ \
 				target.AddElement(GLOB.traits_with_elements[trait]); \
 			} \
 		} else { \
-			_L = target.status_traits; \
+			_L = target._status_traits; \
 			if (_L[trait]) { \
 				_L[trait] |= list(source); \
 			} else { \
@@ -30,16 +28,16 @@
 	} while (0)
 #define REMOVE_TRAIT(target, trait, sources) \
 	do { \
-		var/list/_L = target.status_traits; \
+		var/list/_L = target._status_traits; \
 		var/list/_S; \
 		if (sources && !islist(sources)) { \
 			_S = list(sources); \
 		} else { \
 			_S = sources\
 		}; \
-		if (_L && _L[trait]) { \
+		if (_L?[trait]) { \
 			for (var/_T in _L[trait]) { \
-				if ((!_S && (_T != TRAIT_SOURCE_QUIRK)) || (_T in _S)) { \
+				if ((!_S && (_T != ROUNDSTART_TRAIT)) || (_T in _S)) { \
 					_L[trait] -= _T \
 				} \
 			};\
@@ -51,13 +49,40 @@
 				} \
 			}; \
 			if (!length(_L)) { \
-				target.status_traits = null \
+				target._status_traits = null \
+			}; \
+		} \
+	} while (0)
+#define REMOVE_TRAIT_NOT_FROM(target, trait, sources) \
+	do { \
+		var/list/_traits_list = target._status_traits; \
+		var/list/_sources_list; \
+		if (sources && !islist(sources)) { \
+			_sources_list = list(sources); \
+		} else { \
+			_sources_list = sources\
+		}; \
+		if (_traits_list?[trait]) { \
+			for (var/_trait_source in _traits_list[trait]) { \
+				if (!(_trait_source in _sources_list)) { \
+					_traits_list[trait] -= _trait_source \
+				} \
+			};\
+			if (!length(_traits_list[trait])) { \
+				_traits_list -= trait; \
+				SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(trait), trait); \
+				if(trait in GLOB.traits_with_elements) { \
+					target.RemoveElement(GLOB.traits_with_elements[trait]); \
+				} \
+			}; \
+			if (!length(_traits_list)) { \
+				target._status_traits = null \
 			}; \
 		} \
 	} while (0)
 #define REMOVE_TRAITS_NOT_IN(target, sources) \
 	do { \
-		var/list/_L = target.status_traits; \
+		var/list/_L = target._status_traits; \
 		var/list/_S = sources; \
 		if (_L) { \
 			for (var/_T in _L) { \
@@ -65,20 +90,20 @@
 				if (!length(_L[_T])) { \
 					_L -= _T; \
 					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T), _T); \
-					if(_T in GLOB.traits_with_elements) { \
-						target.RemoveElement(GLOB.traits_with_elements[_T]); \
+					if(trait in GLOB.traits_with_elements) { \
+						target.RemoveElement(GLOB.traits_with_elements[trait]); \
 					}; \
 				};\
 			};\
 			if (!length(_L)) { \
-				target.status_traits = null\
+				target._status_traits = null\
 			};\
 		}\
 	} while (0)
 
 #define REMOVE_TRAITS_IN(target, sources) \
 	do { \
-		var/list/_L = target.status_traits; \
+		var/list/_L = target._status_traits; \
 		var/list/_S = sources; \
 		if (sources && !islist(sources)) { \
 			_S = list(sources); \
@@ -97,40 +122,42 @@
 				};\
 			};\
 			if (!length(_L)) { \
-				target.status_traits = null\
+				target._status_traits = null\
 			};\
 		}\
 	} while (0)
 
-/// Will 100% nuke a trait regardless of source. Preferably use this as little as possible
-#define REMOVE_TRAIT_ALLSOURCES(target, trait) \
-	do { \
-		var/list/_L = target.status_traits; \
-		if (_L?[trait]) { \
-			if (length(_L)) { \
-				_L -= trait; \
-				SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(trait), trait); \
-			}; \
-			else { \
-				target.status_traits = null \
-			}; \
-		} \
-	} while (0)
-
-#define HAS_TRAIT(target, trait) (target.status_traits ? (target.status_traits[trait] ? TRUE : FALSE) : FALSE)
-#define HAS_TRAIT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (source in target.status_traits[trait]) : FALSE) : FALSE)
-#define HAS_TRAIT_FROM_ONLY(target, trait, source) (\
-	target.status_traits ?\
-		(target.status_traits[trait] ?\
-			((source in target.status_traits[trait]) && (length(target.status_traits) == 1))\
-			: FALSE)\
-		: FALSE)
-#define HAS_TRAIT_NOT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (length(target.status_traits[trait] - source) > 0) : FALSE) : FALSE)
-
+#define HAS_TRAIT(target, trait) (target._status_traits?[trait] ? TRUE : FALSE)
+#define HAS_TRAIT_FROM(target, trait, source) (HAS_TRAIT(target, trait) && (source in target._status_traits[trait]))
+#define HAS_TRAIT_FROM_ONLY(target, trait, source) (HAS_TRAIT(target, trait) && (source in target._status_traits[trait]) && (length(target._status_traits[trait]) == 1))
+#define HAS_TRAIT_NOT_FROM(target, trait, source) (HAS_TRAIT(target, trait) && (length(target._status_traits[trait] - source) > 0))
+/// Returns a list of trait sources for this trait. Only useful for wacko cases and internal futzing
+/// You should not be using this
+#define GET_TRAIT_SOURCES(target, trait) (target._status_traits?[trait] || list())
+/// Returns the amount of sources for a trait. useful if you don't want to have a "thing counter" stuck around all the time
+#define COUNT_TRAIT_SOURCES(target, trait) length(GET_TRAIT_SOURCES(target, trait))
+/// A simple helper for checking traits in a mob's mind
+#define HAS_MIND_TRAIT(target, trait) (HAS_TRAIT(target, trait) || (target.mind ? HAS_TRAIT(target.mind, trait) : FALSE))
 
 /// Example trait
 // #define TRAIT_X "t_x"
+
 //-- mob traits --
+/// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
+#define TRAIT_UNDENSE "undense"
+/// Forces the user to stay unconscious.
+#define TRAIT_KNOCKEDOUT "knockedout"
+/// Prevents voluntary movement.
+#define TRAIT_IMMOBILIZED "immobilized"
+/// Prevents voluntary standing or staying up on its own.
+#define TRAIT_FLOORED "floored"
+/// Forces user to stay standing
+#define TRAIT_FORCED_STANDING "forcedstanding"
+/// Stuns preventing movement and using objects but without further impairement
+#define TRAIT_INCAPACITATED "incapacitated"
+/// Apply this to identify a mob as merged with weeds
+#define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
+
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
 #define TRAIT_YAUTJA_TECH "t_yautja_tech"
@@ -279,6 +306,11 @@ GLOBAL_LIST_INIT(mob_traits, list(
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob = list(
+		"TRAIT_KNOCKEDOUT" = TRAIT_KNOCKEDOUT,
+		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
+		"TRAIT_INCAPACITATED" = TRAIT_INCAPACITATED,
+		"TRAIT_FLOORED" = TRAIT_FLOORED,
+		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
 		"TRAIT_FOREIGN_BIO" = TRAIT_FOREIGN_BIO,
@@ -354,15 +386,17 @@ GLOBAL_LIST(trait_name_map)
 /// Example trait source
 // #define TRAIT_SOURCE_Y "t_s_y"
 #define TRAIT_SOURCE_INHERENT "t_s_inherent"
+/// cannot be removed without admin intervention
+#define ROUNDSTART_TRAIT "roundstart"
 //-- mob traits --
+///Status trait coming from lying down through update_canmove()
+#define LYING_TRAIT "lying"
 ///Status trait coming from species. .human/species_gain()
 #define TRAIT_SOURCE_SPECIES "t_s_species"
 ///Status trait coming from the hive.
 #define TRAIT_SOURCE_HIVE "t_s_hive"
 ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
-///Status trait coming from roundstart quirks (that don't exist yet). Unremovable by REMOVE_TRAIT
-#define TRAIT_SOURCE_QUIRK "t_s_quirk"
 ///Status trait coming from being assigned as [acting] squad leader.
 #define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
 ///Status trait coming from their job
@@ -379,6 +413,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
+///Status trait coming from a xeno nest
+#define XENO_NEST_TRAIT "xeno_nest"
 //-- structure traits --
 ///Status trait coming from being flipped or unflipped.
 #define TRAIT_SOURCE_FLIP_TABLE "t_s_flip_table"
@@ -390,3 +426,40 @@ GLOBAL_LIST(trait_name_map)
 
 //Status trait coming from clothing.
 #define TRAIT_SOURCE_CLOTHING "t_s_clothing"
+
+/// trait associated to being buckled
+#define BUCKLED_TRAIT "buckled" // Yes the name doesn't conform. /tg/ appears to have changed naming style inbetween
+/// trait source when an effect is coming from a fakedeath effect (refactor this)
+#define FAKEDEATH_TRAIT "fakedeath"
+/// trait source where a condition comes from body state
+#define BODY_TRAIT "body"
+/// Trait associated to lying down (having a [lying_angle] of a different value than zero).
+#define LYING_DOWN_TRAIT "lying-down"
+/// trait associated to a stat value or range of
+#define STAT_TRAIT "stat"
+/// trait effect related to the queen ovipositor
+#define OVIPOSITOR_TRAIT "ovipositor"
+/// trait associated to being held in a chokehold
+#define CHOKEHOLD_TRAIT "chokehold"
+/// trait effect related to active specialist gear
+#define SPECIALIST_GEAR_TRAIT "specialist_gear"
+/// traits associated with usage of snowflake dropship double seats
+#define DOUBLE_SEATS_TRAIT "double_seats"
+/// traits associated with xeno on-ground weeds
+#define XENO_WEED_TRAIT "xeno_weed"
+/// traits associated with actively interacted machinery
+#define INTERACTION_TRAIT "interaction"
+/// traits bound by stunned status effects
+#define STUNNED_TRAIT "stunned"
+/// traits bound by knocked_down status effect
+#define KNOCKEDDOWN_TRAIT "knockeddown"
+/// traits bound by knocked_out status effect
+#define KNOCKEDOUT_TRAIT "knockedout"
+/// traits from being pounced
+#define POUNCED_TRAIT "pounced"
+/// traits from step_triggers on the map
+#define STEP_TRIGGER_TRAIT "step_trigger"
+/// traits from hacked machine interactions
+#define HACKED_TRAIT "hacked"
+/// traits from chloroform usage
+#define CHLOROFORM_TRAIT "chloroform"

@@ -35,6 +35,9 @@
 
 	var/colony_camera_mapload = TRUE
 
+	/// If this camera should have innate EMP-proofing
+	var/emp_proof = FALSE
+
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
 	WireColorToFlag = randomCameraWires()
@@ -72,12 +75,13 @@
 		if(WEST) pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
+	. = ..()
 	if(!isEmpProof())
 		if(prob(100/severity))
 			icon_state = "[initial(icon_state)]emp"
 			var/list/previous_network = network
 			network = list()
-			cameranet.removeCamera(src)
+			GLOB.cameranet.removeCamera(src)
 			stat |= EMPED
 			set_light(0)
 			triggerCameraAlarm()
@@ -87,9 +91,8 @@
 				stat &= ~EMPED
 				cancelCameraAlarm()
 				if(can_use())
-					cameranet.addCamera(src)
+					GLOB.cameranet.addCamera(src)
 			kick_viewers()
-			..()
 
 
 /obj/structure/machinery/camera/ex_act(severity)
@@ -101,7 +104,7 @@
 
 /obj/structure/machinery/camera/proc/setViewRange(num = 7)
 	src.view_range = num
-	cameranet.updateVisibility(src, 0)
+	GLOB.cameranet.updateVisibility(src, 0)
 
 /obj/structure/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
 

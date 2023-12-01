@@ -191,8 +191,8 @@
 	var/satchel_success = new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
 	var/waist_success = new_human.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(new_human), WEAR_WAIST)
 	var/pouch_r_success = new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/claymore/hefa(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/claymore/hefa(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/hefa(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/hefa(new_human), WEAR_IN_BACK)
 
 	if(shoes_success)
 		var/obj/item/clothing/shoes/marine/knife/shoes = new_human.shoes
@@ -433,7 +433,7 @@
 	new_human.age = rand(1, 40)
 
 /datum/equipment_preset/fun/monkey/proc/get_random_name(mob/living/carbon/human/new_human)
-	return pick(monkey_names)
+	return pick(GLOB.monkey_names)
 
 /datum/equipment_preset/fun/monkey/marine
 	name = "Fun - Monkey Marine"
@@ -460,7 +460,7 @@
 	paygrade = "UE1"
 
 /datum/equipment_preset/fun/monkey/soldier/get_random_name(mob/living/carbon/human/new_human)
-	return new_human.gender == MALE ? pick(first_names_male_upp) : pick(first_names_female_upp)
+	return new_human.gender == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp)
 
 /datum/equipment_preset/fun/monkey/soldier/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)

@@ -21,18 +21,18 @@
 		if(prob(40))
 			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
 		else
-			first_name = "[pick(first_names_male_upp)]"
+			first_name = "[pick(GLOB.first_names_male_upp)]"
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
 		if(prob(40))
 			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
 		else
-			first_name = "[pick(first_names_female_upp)]"
+			first_name = "[pick(GLOB.first_names_female_upp)]"
 	//surname
 	if(prob(35))
 		last_name = "[capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))]"
 	else
-		last_name = "[pick(last_names_upp)]"
+		last_name = "[pick(GLOB.last_names_upp)]"
 	//put them together
 	random_name = "[first_name] [last_name]"
 
@@ -419,7 +419,7 @@
 	new_human.equip_to_slot_or_del(new headgear, WEAR_HEAD)
 	//body
 	var/obj/item/clothing/under/marine/veteran/UPP/engi/UPP = new()
-	var/obj/item/clothing/accessory/storage/black_vest/tool_webbing/W = new()
+	var/obj/item/clothing/accessory/storage/tool_webbing/equipped/W = new()
 	UPP.attach_accessory(new_human, W)
 	new_human.equip_to_slot_or_del(UPP, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
@@ -2567,7 +2567,7 @@
 	new_human.equip_to_slot_or_del(new headgear, WEAR_HEAD)
 	//body
 	var/obj/item/clothing/under/marine/veteran/UPP/engi/UPP = new()
-	var/obj/item/clothing/accessory/storage/black_vest/tool_webbing/W = new()
+	var/obj/item/clothing/accessory/storage/tool_webbing/equipped/W = new()
 	UPP.attach_accessory(new_human, W)
 	new_human.equip_to_slot_or_del(UPP, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
@@ -2603,9 +2603,9 @@
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_chinese_word(2))]"
 	else if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male_upp)]"
+		random_name = "[pick(GLOB.first_names_male_upp)]"
 	else
-		random_name = "[pick(first_names_female_upp)]"
+		random_name = "[pick(GLOB.first_names_female_upp)]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
@@ -2652,7 +2652,7 @@
 	new_human.equip_to_slot_or_del(new hat, WEAR_HEAD)
 	//body
 	var/obj/item/clothing/under/marine/veteran/UPP/medic/UPP = new()
-	var/obj/item/clothing/accessory/storage/black_vest/tool_webbing/W = new()
+	var/obj/item/clothing/accessory/storage/tool_webbing/equipped/W = new()
 	UPP.attach_accessory(new_human, W)
 	new_human.equip_to_slot_or_del(UPP, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/support, WEAR_JACKET)
@@ -2902,7 +2902,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando
-	name = "UPP Commando"
+	name = "UPP Commando (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando
@@ -3031,7 +3031,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/medic
-	name = "UPP Commando Medic"
+	name = "UPP Commando Medic (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando/medic
@@ -3200,7 +3200,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/leader
-	name = "UPP Commando Leader"
+	name = "UPP Commando Leader (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando/leader
@@ -3350,6 +3350,106 @@
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
+
+/datum/equipment_preset/upp/commando/low_threat
+	name = "UPP Commando"
+
+/datum/equipment_preset/upp/commando/low_threat/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/commando, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/np92/suppressed, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/upp/weak, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/upp, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
+
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_BACK)
+
+	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 8)
+
+/datum/equipment_preset/upp/commando/medic/low_threat
+	name = "UPP Commando Medic"
+
+/datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/new_human)
+	//TODO: add backpacks and satchels
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo/medic, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/commando, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/upp/weak, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/upp, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_IN_BACK)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_L_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_JACKET)
+
+	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 5)
+
+/datum/equipment_preset/upp/commando/leader/low_threat
+	name = "UPP Commando Leader"
+
+/datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/new_human)
+	//TODO: add backpacks and satchels
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo/command, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/commando, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/upp/weak, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/upp, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/np92/suppressed, WEAR_WAIST)
+
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_L_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 

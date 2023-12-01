@@ -43,7 +43,7 @@
 	var/stat_msg1
 	var/stat_msg2
 
-	var/datum/tacmap/tacmap
+	var/datum/tacmap/drawing/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 	processing = TRUE
@@ -98,9 +98,9 @@
 						if(-INFINITY to SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN //Cannot go below green.
 						if(SEC_LEVEL_BLUE to INFINITY) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot go above blue.
 
-					var/old_level = security_level
+					var/old_level = GLOB.security_level
 					set_security_level(tmp_alertlevel)
-					if(security_level != old_level)
+					if(GLOB.security_level != old_level)
 						//Only notify the admins if an actual change happened
 						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
@@ -134,15 +134,15 @@
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
-				if(security_level < SEC_LEVEL_DELTA)
+				if(GLOB.security_level < SEC_LEVEL_DELTA)
 					to_chat(usr, SPAN_WARNING("The ship must be under delta alert in order to enact evacuation procedures."))
 					return FALSE
 
-				if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
+				if(SShijack.evac_admin_denied)
 					to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 					return FALSE
 
-				if(!EvacuationAuthority.initiate_evacuation())
+				if(!SShijack.initiate_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 					return FALSE
 
@@ -155,16 +155,9 @@
 
 		if("evacuation_cancel")
 			if(state == STATE_EVACUATION_CANCEL)
-				if(!EvacuationAuthority.cancel_evacuation())
+				if(!SShijack.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
 					return FALSE
-
-				spawn(35)//some time between AI announcements for evac cancel and SD cancel.
-					if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
-						//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
-						if(!EvacuationAuthority.cancel_self_destruct(1))
-							//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
-							set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
 
 				log_game("[key_name(usr)] has canceled the emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
@@ -192,7 +185,7 @@
 					to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 					return FALSE
 
-				if(security_level == SEC_LEVEL_DELTA)
+				if(GLOB.security_level == SEC_LEVEL_DELTA)
 					to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 					return FALSE
 
@@ -327,8 +320,8 @@
 
 	user.set_interaction(src)
 	var/dat = "<head><title>Communications Console</title></head><body>"
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
-		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [EvacuationAuthority.get_status_panel_eta()]<BR>"
+	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
+		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [SShijack.get_evac_eta()]<BR>"
 	switch(state)
 		if(STATE_DEFAULT)
 			if(authenticated)
@@ -351,9 +344,11 @@
 					dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self-Destruct</A>"
-					switch(EvacuationAuthority.evac_status)
-						if(EVACUATION_STATUS_STANDING_BY) dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
-						if(EVACUATION_STATUS_INITIATING) dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A>"
+					switch(SShijack.evac_status)
+						if(EVACUATION_STATUS_NOT_INITIATED)
+							dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
+						if(EVACUATION_STATUS_INITIATED)
+							dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A>"
 
 			else
 				dat += "<BR><A HREF='?src=\ref[src];operation=login'>LOG IN</A>"
@@ -408,20 +403,8 @@
 
 		if(STATE_ALERT_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
-			if(security_level == SEC_LEVEL_DELTA)
-				if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_ACTIVE)
-					dat += SET_CLASS("<b>The self-destruct mechanism is active. [EvacuationAuthority.evac_status != EVACUATION_STATUS_INITIATING ? "You have to manually deactivate the self-destruct mechanism." : ""]</b>", INTERFACE_RED)
-					dat += "<BR>"
-				switch(EvacuationAuthority.evac_status)
-					if(EVACUATION_STATUS_INITIATING)
-						dat += SET_CLASS("<b>Evacuation initiated. Evacuate or rescind evacuation orders.</b>", INTERFACE_RED)
-					if(EVACUATION_STATUS_IN_PROGRESS)
-						dat += SET_CLASS("<b>Evacuation in progress.</b>", INTERFACE_RED)
-					if(EVACUATION_STATUS_COMPLETE)
-						dat += SET_CLASS("<b>Evacuation complete.</b>", INTERFACE_RED)
-			else
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
+			dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
+			dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
 
 		if(STATE_CONFIRM_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"

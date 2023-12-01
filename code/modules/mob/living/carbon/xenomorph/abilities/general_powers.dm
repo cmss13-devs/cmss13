@@ -9,7 +9,7 @@
 		return
 	if(!xeno.check_state())
 		return
-	if(xeno.burrow)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
 		return
 
 	var/turf/turf = xeno.loc
@@ -89,7 +89,7 @@
 		to_chat(src, SPAN_WARNING("You cannot rest while fortified!"))
 		return
 
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_WARNING("You cannot rest while burrowed!"))
 		return
 
@@ -411,24 +411,21 @@
 	if (windup)
 		X.set_face_dir(get_cardinal_dir(X, A))
 		if (!windup_interruptable)
-			X.frozen = TRUE
+			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			X.anchored = TRUE
-			X.update_canmove()
 		pre_windup_effects()
 
 		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENODANGER("You cancel your [ability_name]!"))
 			if (!windup_interruptable)
-				X.frozen = FALSE
+				REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 				X.anchored = FALSE
-				X.update_canmove()
 			post_windup_effects(interrupted = TRUE)
 			return
 
 		if (!windup_interruptable)
-			X.frozen = FALSE
+			REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			X.anchored = FALSE
-			X.update_canmove()
 		post_windup_effects()
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
@@ -529,7 +526,7 @@
 
 	if (istype(X, /mob/living/carbon/xenomorph/burrower))
 		var/mob/living/carbon/xenomorph/burrower/B = X
-		if (B.burrow)
+		if (HAS_TRAIT(B, TRAIT_ABILITY_BURROWED))
 			return
 
 	var/turf/T = get_turf(X)
@@ -571,6 +568,13 @@
 	var/obj/effect/alien/weeds/alien_weeds = locate() in src
 	if(!alien_weeds)
 		to_chat(X, SPAN_XENOWARNING("You can only shape on weeds. Find some resin before you start building!"))
+		return FALSE
+
+	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
+	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
+	var/obj/structure/stairs/staircase = locate() in src
+	if(staircase)
+		to_chat(X, SPAN_XENOWARNING("You cannot make a hole beneath a staircase!"))
 		return FALSE
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
@@ -849,7 +853,7 @@
 	for(var/mob/living/L in T)
 		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
 
-	for(var/dirn in alldirs)
+	for(var/dirn in GLOB.alldirs)
 		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth)
 
 
@@ -908,7 +912,7 @@
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
-	if(stabbing_xeno.burrow || stabbing_xeno.is_ventcrawling)
+	if(HAS_TRAIT(stabbing_xeno, TRAIT_ABILITY_BURROWED) || stabbing_xeno.is_ventcrawling)
 		to_chat(stabbing_xeno, SPAN_XENOWARNING("You must be above ground to do this."))
 		return
 

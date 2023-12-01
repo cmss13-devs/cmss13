@@ -80,10 +80,8 @@
 #define CAN_DIG_SHRAPNEL (1<<11)
 /// whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 #define ANIMATED_SURGICAL_TOOL (1<<12)
-/// The item goes on top of tables, instead of into them with the overlay system
-#define NOTABLEMERGE (1<<13)
 /// Has heat source but isn't 'on fire' and thus can be stored
-#define IGNITING_ITEM (1<<14)
+#define IGNITING_ITEM (1<<13)
 //==========================================================================================
 
 
@@ -495,7 +493,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define UNIFORM_VEND_DRESS_EXTRA "dress extra"
 
 
-var/global/list/uniform_categories = list(
+GLOBAL_LIST_INIT(uniform_categories, list(
 	"UTILITY" = list(UNIFORM_VEND_UTILITY_UNIFORM, UNIFORM_VEND_UTILITY_JACKET, UNIFORM_VEND_UTILITY_HEAD, UNIFORM_VEND_UTILITY_GLOVES, UNIFORM_VEND_UTILITY_SHOES),
 	"UTILITY EXTRAS" = list(UNIFORM_VEND_UTILITY_EXTRA),
 	"SERVICE" = list(UNIFORM_VEND_SERVICE_UNIFORM, UNIFORM_VEND_SERVICE_JACKET, UNIFORM_VEND_SERVICE_GLOVES, UNIFORM_VEND_SERVICE_SHOES),
@@ -504,7 +502,7 @@ var/global/list/uniform_categories = list(
 	"DRESS" = list(UNIFORM_VEND_DRESS_UNIFORM, UNIFORM_VEND_DRESS_JACKET, UNIFORM_VEND_DRESS_GLOVES, UNIFORM_VEND_DRESS_SHOES),
 	"DRESS HEADWEAR" = list(UNIFORM_VEND_DRESS_HEAD),
 	"DRESS EXTRAS" = list(UNIFORM_VEND_DRESS_EXTRA)
-)
+))
 //=================================================
 
 

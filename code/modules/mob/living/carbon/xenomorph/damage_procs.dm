@@ -36,7 +36,7 @@
 
 /mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0)
 
-	if(lying)
+	if(body_position == LYING_DOWN)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)

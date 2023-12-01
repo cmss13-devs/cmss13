@@ -21,7 +21,8 @@
 	if(mind in SSticker.mode.xenomorphs)
 		to_chat(src, SPAN_DEBUG("[src] mind is in the xenomorph list. Mind key is [mind.key]."))
 		to_chat(src, SPAN_DEBUG("Current mob is: [mind.current]. Original mob is: [mind.original]."))
-	else to_chat(src, SPAN_DEBUG("This xenomorph is not in the xenomorph list."))
+	else
+		to_chat(src, SPAN_DEBUG("This xenomorph is not in the xenomorph list."))
 #endif
 
 #undef DEBUG_XENO
@@ -274,13 +275,11 @@
 	var/tunnel = FALSE
 	/// for check on lurker invisibility
 	var/stealth = FALSE
-	var/burrow = FALSE
 	var/fortify = FALSE
 	var/crest_defense = FALSE
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
 	var/ripping_limb = FALSE
-	var/steelcrest = FALSE
 	/// The world.time at which we will regurgitate our currently-vored victim
 	var/devour_timer = 0
 	/// For drones/hivelords. Extends the maximum build range they have
@@ -338,178 +337,168 @@
 
 	//Burrower Vars
 	var/used_tremor = 0
-	// Defender vars
-	var/used_headbutt = 0
-	var/used_fortify = 0
 	// Burrowers
 	var/used_burrow = 0
 	var/used_tunnel = 0
 
-	//Carrier vars
-	var/threw_a_hugger = 0
-	var/huggers_cur = 0
-	var/eggs_cur = 0
-	var/huggers_max = 0
-	var/eggs_max = 0
-	var/laid_egg = 0
-
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
-	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
-	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
+	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
+	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
 
-/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
-	var/area/A = get_area(src)
-	if(A && A.statistic_exempt)
-		statistic_exempt = TRUE
+/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 
-	wound_icon_carrier = new(null, src)
-	vis_contents += wound_icon_carrier
+	if(old_xeno && old_xeno.hivenumber)
+		src.hivenumber = old_xeno.hivenumber
+	else if(hivenumber)
+		src.hivenumber = hivenumber
 
-	if(oldXeno)
-		set_movement_intent(oldXeno.m_intent)
-		hivenumber = oldXeno.hivenumber
-		nicknumber = oldXeno.nicknumber
-		life_kills_total = oldXeno.life_kills_total
-		life_damage_taken_total = oldXeno.life_damage_taken_total
-		evolution_stored = oldXeno.evolution_stored
-		if(oldXeno.iff_tag)
-			iff_tag = oldXeno.iff_tag
-			iff_tag.forceMove(src)
-			oldXeno.iff_tag = null
-	else if (h_number)
-		hivenumber = h_number
+	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
+
+	if(hive)
+		hive.add_xeno(src)
+
+	wound_icon_holder = new(null, src)
+	vis_contents += wound_icon_holder
 
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
-	if(oldXeno)
-		for(var/datum/language/L in oldXeno.languages)
-			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
 
-	// Well, not yet, technically
-	var/datum/hive_status/in_hive = GLOB.hive_datum[hivenumber]
-	if(in_hive)
-		in_hive.add_xeno(src)
-		// But now we are!
+	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
+	if(old_xeno)
+		src.nicknumber = old_xeno.nicknumber
+		src.life_kills_total = old_xeno.life_kills_total
+		src.life_damage_taken_total = old_xeno.life_damage_taken_total
+		src.evolution_stored = old_xeno.evolution_stored
 
-	for(var/T in in_hive.hive_inherant_traits)
-		ADD_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+		for(var/datum/language/language as anything in old_xeno.languages)
+			add_language(language.name)//Make sure to keep languages (mostly for event Queens that know English)
+
+		//Carry over intents & targeted limb to the new Xeno
+		set_movement_intent(old_xeno.m_intent)
+		a_intent_change(old_xeno.a_intent)
+
+		//We are hiding, let's keep hiding if we can!
+		if(old_xeno.layer == XENO_HIDING_LAYER)
+			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
+				layer = XENO_HIDING_LAYER
+				hide.button.icon_state = "template_active"
+
+		//If we're holding things drop them
+		for(var/obj/item/item in old_xeno.contents) //Drop stuff
+			old_xeno.drop_inv_item_on_ground(item)
+		old_xeno.empty_gut()
+
+		if(old_xeno.iff_tag)
+			iff_tag = old_xeno.iff_tag
+			iff_tag.forceMove(src)
+			old_xeno.iff_tag = null
+
+	if(hive)
+		for(var/trait in hive.hive_inherant_traits)
+			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	mutators.xeno = src
 
+	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
+
+		//Fire immunity signals
+		if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
+			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
+				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
+
+			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
+		else
+			UnregisterSignal(src, list(
+				COMSIG_LIVING_PREIGNITION,
+				COMSIG_LIVING_FLAMER_CROSSED,
+				COMSIG_LIVING_FLAMER_FLAMED
+			))
+
+		if(caste.spit_types && length(caste.spit_types))
+			ammo = GLOB.ammo_list[caste.spit_types[1]]
+
+		acid_splash_cooldown = caste.acid_splash_cooldown
+
+		if(caste.adjust_size_x != 1)
+			var/matrix/matrix = matrix()
+			matrix.Scale(caste.adjust_size_x, caste.adjust_size_y)
+			apply_transform(matrix)
+
+		behavior_delegate = new caste.behavior_delegate_type()
+		behavior_delegate.bound_xeno = src
+		behavior_delegate.add_to_xeno()
+		resin_build_order = caste.resin_build_order
+
+		job = caste.caste_type // Used for tracking the caste playtime
+
 	else
-		to_world("something went very wrong")
-		return
-
-	update_icon_source()
-
-	acid_splash_cooldown = caste.acid_splash_cooldown
-
-	if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
-		if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
-		RegisterSignal(src, list(
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED,
-		), PROC_REF(flamer_crossed_immune))
-	else
-		UnregisterSignal(src, list(
-			COMSIG_LIVING_PREIGNITION,
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED,
-		))
-
-	recalculate_everything()
+		CRASH("Attempted to create a new xenomorph [src] without caste datum.")
 
 	if(mob_size < MOB_SIZE_BIG)
 		mob_flags |= SQUEEZE_UNDER_VEHICLES
 
+	// More setup stuff for names, abilities etc
+	update_icon_source()
 	generate_name()
+	add_inherent_verbs()
+	add_abilities()
+	create_reagents(100)
+	regenerate_icons()
 
-	if(isqueen(src))
-		SStracking.set_leader("hive_[hivenumber]", src)
-	SStracking.start_tracking("hive_[hivenumber]", src)
+	toggle_xeno_hostilehud()
+	recalculate_everything()
+	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
 
 	. = ..()
+
+					//Set leader to the new mob
+	if(old_xeno && hive && IS_XENO_LEADER(old_xeno))
+		hive.replace_hive_leader(old_xeno, src)
+
+	//Begin SStracking
+	SStracking.start_tracking("hive_[src.hivenumber]", src)
+
+	GLOB.living_xeno_list += src
+	GLOB.xeno_mob_list += src
+
 	//WO GAMEMODE
 	if(SSticker?.mode?.hardcore)
 		hardcore = 1 //Prevents healing and queen evolution
 	time_of_birth = world.time
 
-	add_inherent_verbs()
-	add_abilities()
-	recalculate_actions()
-
+	//Minimap
 	if(z)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
+	//Sight
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
+
 	if(client)
 		set_lighting_alpha_from_prefs(client)
 	else
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
-	if(caste && caste.spit_types && caste.spit_types.len)
-		ammo = GLOB.ammo_list[caste.spit_types[1]]
-
-	create_reagents(100)
-
-	GLOB.living_xeno_list += src
-	GLOB.xeno_mob_list += src
-
-	if(caste && caste.adjust_size_x != 1)
-		var/matrix/M = matrix()
-		M.Scale(caste.adjust_size_x, caste.adjust_size_y)
-		apply_transform(M)
-
-	if(caste)
-		behavior_delegate = new caste.behavior_delegate_type()
-		behavior_delegate.bound_xeno = src
-		behavior_delegate.add_to_xeno()
-		resin_build_order = caste.resin_build_order
-	else
-		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
-
-	regenerate_icons()
-	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
-	toggle_xeno_hostilehud()
-
-	if(oldXeno)
-		a_intent_change(oldXeno.a_intent)//Keep intent
-
-		if(oldXeno.layer == XENO_HIDING_LAYER)
-			//We are hiding, let's keep hiding if we can!
-			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
-				if(istype(hide))
-					layer = XENO_HIDING_LAYER
-					hide.button.icon_state = "template_active"
-
-		for(var/obj/item/W in oldXeno.contents) //Drop stuff
-			oldXeno.drop_inv_item_on_ground(W)
-
-		oldXeno.empty_gut()
-
-		if(IS_XENO_LEADER(oldXeno))
-			hive.replace_hive_leader(oldXeno, src)
-
 	// Only handle free slots if the xeno is not in tdome
-	if(!is_admin_level(z))
+	if(hive && !is_admin_level(z))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		hive.used_slots[selected_caste]++
 
-	if(round_statistics && !statistic_exempt)
-		round_statistics.track_new_participant(faction, 1)
-	generate_name()
+	//Statistics
+	var/area/current_area = get_area(src)
+	if(current_area && current_area.statistic_exempt)
+		statistic_exempt = TRUE
+	if(GLOB.round_statistics && !statistic_exempt)
+		GLOB.round_statistics.track_new_participant(faction, 1)
 
 	// This can happen if a xeno gets made before the game starts
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
-	job = caste.caste_type // Used for tracking the caste playtime
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
@@ -520,7 +509,11 @@
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
-/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags = MINIMAP_FLAG_XENO)
+/// Adds a minimap marker for this xeno using the provided flags.
+/// If flags is 0, it will use get_minimap_flag_for_faction for this xeno
+/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags)
+	if(!flags)
+		flags = get_minimap_flag_for_faction(hivenumber)
 	if(IS_XENO_LEADER(src))
 		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
 		return
@@ -541,7 +534,7 @@
 /mob/living/carbon/xenomorph/proc/fire_immune(mob/living/L)
 	SIGNAL_HANDLER
 
-	if(L.fire_reagent?.fire_penetrating && !burrow)
+	if(L.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 
 	return COMPONENT_CANCEL_IGNITION
@@ -554,7 +547,7 @@
 
 	. = COMPONENT_NO_BURN
 	// Burrowed xenos also cannot be ignited
-	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || burrow)
+	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		. |= COMPONENT_NO_IGNITE
 	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
@@ -562,19 +555,13 @@
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
 //We set their name first, then update their real_name AND their mind name
+//Off-load this proc so it can be called freely
+//Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
+//We set their name first, then update their real_name AND their mind name
 /mob/living/carbon/xenomorph/proc/generate_name()
 	//We don't have a nicknumber yet, assign one to stick with us
 	if(!nicknumber)
-		var/tempnumber = rand(1, 999)
-		var/list/numberlist = list()
-		for(var/mob/living/carbon/xenomorph/X in GLOB.xeno_mob_list)
-			numberlist += X.nicknumber
-
-		while(tempnumber in numberlist)
-			tempnumber = rand(1, 999)
-
-		nicknumber = tempnumber
-
+		generate_and_set_nicknumber()
 	// Even if we don't have the hive datum we usually still have the hive number
 	var/datum/hive_status/in_hive = hive
 	if(!in_hive)
@@ -583,12 +570,10 @@
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
 
-	handle_name(in_hive)
-
-/mob/living/carbon/xenomorph/proc/handle_name(datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
+	var/number_decorator = ""
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
@@ -599,9 +584,12 @@
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
+	// Rare easter egg
+	if(nicknumber == 666)
+		number_decorator = "Infernal "
 	if(show_name_numbers)
 		name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
-	name = "[name_prefix][age_display][caste.display_name || caste.caste_type][name_display]"
+	name = "[name_prefix][number_decorator][age_display][caste.display_name || caste.caste_type][name_display]"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -719,11 +707,11 @@
 
 	built_structures = null
 
-	vis_contents -= wound_icon_carrier
-	QDEL_NULL(wound_icon_carrier)
-	if(backpack_icon_carrier)
-		vis_contents -= backpack_icon_carrier
-		QDEL_NULL(backpack_icon_carrier)
+	vis_contents -= wound_icon_holder
+	QDEL_NULL(wound_icon_holder)
+	if(backpack_icon_holder)
+		vis_contents -= backpack_icon_holder
+		QDEL_NULL(backpack_icon_holder)
 
 	QDEL_NULL(iff_tag)
 
@@ -746,7 +734,7 @@
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
 		return do_pull(AM, lunge, no_msg)
 
-	if(burrow)
+	if(HAS_TRAIT(src,TRAIT_ABILITY_BURROWED))
 		return
 	if(!isliving(AM))
 		return FALSE
@@ -797,7 +785,7 @@
 
 	//and display them
 	add_to_all_mob_huds()
-	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 
 
@@ -821,23 +809,17 @@
 /mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL)
 	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
 	if(!new_hive)
-		return
+		return FALSE
 
-	for(var/T in status_traits)
-		REMOVE_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+	for(var/trait in _status_traits) // They can't keep getting away with this!!!
+		REMOVE_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	new_hive.add_xeno(src)
 
-	for(var/T in new_hive.hive_inherant_traits)
-		ADD_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+	for(var/trait in new_hive.hive_inherant_traits)
+		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-	if(istype(src, /mob/living/carbon/xenomorph/larva))
-		var/mob/living/carbon/xenomorph/larva/L = src
-		L.update_icons() // larva renaming done differently
-	else
-		generate_name()
-	if(istype(src, /mob/living/carbon/xenomorph/queen))
-		update_living_queens()
+	generate_name()
 
 	lock_evolve = FALSE
 	banished = FALSE
@@ -847,6 +829,9 @@
 
 	// Update the hive status UI
 	new_hive.hive_ui.update_all_xeno_data()
+
+	return TRUE
+
 
 //*********************************************************//
 //********************Mutator functions********************//
@@ -946,8 +931,9 @@
 		if(is_zoomed)
 			zoom_out()
 	if(iscarrier(src))
-		huggers_max = caste.huggers_max
-		eggs_max = caste.eggs_max
+		var/mob/living/carbon/xenomorph/carrier/carrier = src
+		carrier.huggers_max = caste.huggers_max
+		carrier.eggs_max = caste.eggs_max
 	need_weeds = mutators.need_weeds
 
 
@@ -1069,7 +1055,7 @@
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]
 
-/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE)
+/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	. = ..()
 	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !is_admin_level(z))
 		handle_ghost_message()
@@ -1085,7 +1071,7 @@
 /mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
 	var/color_override
 	if(special_blood)
-		var/datum/reagent/D = chemical_reagents_list[special_blood]
+		var/datum/reagent/D = GLOB.chemical_reagents_list[special_blood]
 		if(D)
 			color_override = D.color
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)
@@ -1119,3 +1105,16 @@
 	. = ..()
 	if(!resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
 		update_wounds()
+
+///Generate a new unused nicknumber for the current hive, if hive doesn't exist return 0
+/mob/living/carbon/xenomorph/proc/generate_and_set_nicknumber()
+	if(!hive)
+		//If hive doesn't exist make it 0
+		nicknumber = 0
+		return
+	var/datum/hive_status/hive_status = hive
+	if(length(hive_status.available_nicknumbers))
+		nicknumber = pick_n_take(hive_status.available_nicknumbers)
+	else
+		//If we somehow use all 999 numbers fallback on 0
+		nicknumber = 0

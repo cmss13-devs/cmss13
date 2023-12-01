@@ -78,14 +78,13 @@
 
 	for(var/mob/living/carbon/carbon in oview(round(behavior.kills * 0.5 + 2), xeno))
 		if(!xeno.can_not_harm(carbon) && carbon.stat != DEAD)
-			carbon.frozen = 1
-			carbon.update_canmove()
+			ADD_TRAIT(carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Smash"))
 
 			if (ishuman(carbon))
 				var/mob/living/carbon/human/human = carbon
 				human.update_xeno_hostile_hud()
 
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), carbon), get_xeno_stun_duration(carbon, freeze_duration))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), carbon, TRAIT_SOURCE_ABILITY("Smash")), get_xeno_stun_duration(carbon, freeze_duration))
 
 
 	for(var/mob/M in view(xeno))
@@ -125,8 +124,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	carbon.frozen = 1
-	carbon.update_canmove()
+	ADD_TRAIT(carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 
 	if (ishuman(carbon))
 		var/mob/living/carbon/human/human = carbon
@@ -134,9 +132,8 @@
 
 	apply_cooldown()
 
-	xeno.frozen = 1
+	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 	xeno.anchored = TRUE
-	xeno.update_canmove()
 
 	if (do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [carbon]!"))
@@ -151,11 +148,9 @@
 
 	playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 
-	xeno.frozen = 0
+	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 	xeno.anchored = FALSE
-	xeno.update_canmove()
-
-	unroot_human(carbon)
+	unroot_human(carbon, TRAIT_SOURCE_ABILITY("Devastate"))
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] rapidly slices into [carbon]!"))
 

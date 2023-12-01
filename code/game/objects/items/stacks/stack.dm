@@ -182,6 +182,11 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				to_chat(usr, SPAN_WARNING("The [R.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
 				return
 
+			var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in usr.loc
+			if(tunnel)
+				to_chat(usr, SPAN_WARNING("The [R.title] cannot be constructed on a tunnel!"))
+				return
+
 		if((R.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
 			to_chat(usr, SPAN_WARNING("The [R.title] must be built on snow!"))
 			return
@@ -307,6 +312,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 /obj/item/stack/clicked(mob/user, list/mods)
 	if(mods["alt"])
 		if(!CAN_PICKUP(user, src))
+			return
+		if(amount <= 1)
 			return
 		var/desired = tgui_input_number(user, "How much would you like to split off from this stack?", "How much?", 1, amount-1, 1)
 		if(!desired)

@@ -29,3 +29,5 @@
 
 /// from /obj/proc/afterbuckle()
 #define COSMIG_OBJ_AFTER_BUCKLE "signal_obj_after_buckle"
+
+#define COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED "structure_crate_squad_launched"

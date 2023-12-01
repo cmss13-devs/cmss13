@@ -11,7 +11,7 @@ When a round starts, the roles are assigned based on the round, from another lis
 by name can be kept for things like job bans, while the round may add or remove roles as needed.If you need to equip a mob for a job, always
 use roles_by_path as it is an accurate account of every specific role path (with specific equipment).
 */
-var/global/datum/authority/branch/role/RoleAuthority
+GLOBAL_DATUM(RoleAuthority, /datum/authority/branch/role)
 
 #define GET_RANDOM_JOB 0
 #define BE_MARINE 1
@@ -25,11 +25,10 @@ var/global/datum/authority/branch/role/RoleAuthority
 
 #define SHIPSIDE_ROLE_WEIGHT 0.25
 
-var/global/players_preassigned = 0
-
+GLOBAL_VAR_INIT(players_preassigned, 0)
 
 /proc/guest_jobbans(job)
-	return (job in ROLES_COMMAND)
+	return (job in GLOB.ROLES_COMMAND)
 
 /datum/authority/branch/role
 	var/name = "Role Authority"
@@ -236,7 +235,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	// Get balancing weight for the readied players.
 	// Squad marine roles have a weight of 1, and shipside roles have a lower weight of SHIPSIDE_ROLE_WEIGHT.
-	players_preassigned = assign_roles(temp_roles_for_mode.Copy(), unassigned_players.Copy(), TRUE)
+	GLOB.players_preassigned = assign_roles(temp_roles_for_mode.Copy(), unassigned_players.Copy(), TRUE)
 
 	// Even though we pass a copy of temp_roles_for_mode, job counters still change, so we reset them here.
 	for(var/title in temp_roles_for_mode)
@@ -247,28 +246,28 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))
-		XJ.set_spawn_positions(players_preassigned)
+		XJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Limit the number of SQUAD MARINE roles players can roll initially
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 	if(istype(SMJ))
-		SMJ.set_spawn_positions(players_preassigned)
+		SMJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
 	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
-		SJ.set_spawn_positions(players_preassigned)
+		SJ.set_spawn_positions(GLOB.players_preassigned)
 
 	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
 	if(istype(CO_surv_job))
-		CO_surv_job.set_spawn_positions(players_preassigned)
+		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
 
-	if(SSnightmare.get_scenario_value("predator_round"))
+	if(SSnightmare.get_scenario_value("predator_round") && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
-			PJ.set_spawn_positions(players_preassigned)
+			PJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
@@ -312,13 +311,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/assigned = 0
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
 		// Assigning xenos first.
-		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_XENO, unassigned_players)
+		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_XENO, unassigned_players)
 		// Assigning special roles second. (survivor, predator)
-		assigned += assign_initial_roles(priority, roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL), unassigned_players)
+		assigned += assign_initial_roles(priority, roles_for_mode & (GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL), unassigned_players)
 		// Assigning command third.
-		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_COMMAND, unassigned_players)
+		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_COMMAND, unassigned_players)
 		// Assigning the rest
-		var/rest_roles_for_mode = roles_for_mode - (roles_for_mode & ROLES_XENO) - (roles_for_mode & ROLES_COMMAND) - (roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
+		var/rest_roles_for_mode = roles_for_mode - (roles_for_mode & GLOB.ROLES_XENO) - (roles_for_mode & GLOB.ROLES_COMMAND) - (roles_for_mode & (GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL))
 		if(count)
 			assigned += assign_initial_roles(priority, rest_roles_for_mode, unassigned_players)
 		else
@@ -367,9 +366,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 * survivors and the number of roundstart Squad Rifleman slots.
 */
 /datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
-	if(ROLES_MARINES.Find(J.title))
+	if(GLOB.ROLES_MARINES.Find(J.title))
 		return 1
-	if(ROLES_XENO.Find(J.title))
+	if(GLOB.ROLES_XENO.Find(J.title))
 		return 1
 	if(J.title == JOB_SURVIVOR)
 		return 1
@@ -436,9 +435,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 //here is the main reason this proc exists - to remove freed squad jobs from squad,
 //so latejoining person ends in the squad which's job was freed and not random one
 	var/datum/squad/sq = null
-	if(job_squad_roles.Find(J.title))
+	if(GLOB.job_squad_roles.Find(J.title))
 		var/list/squad_list = list()
-		for(sq in RoleAuthority.squads)
+		for(sq in GLOB.RoleAuthority.squads)
 			if(sq.usable)
 				squad_list += sq
 		sq = null
@@ -501,85 +500,86 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		M.job = null
 
 
-/datum/authority/branch/role/proc/equip_role(mob/living/M, datum/job/J, turf/late_join)
-	if(!istype(M) || !istype(J))
+/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join)
+	if(!istype(new_mob) || !istype(new_job))
 		return
 
 	. = TRUE
 
-	if(!ishuman(M))
+	if(!ishuman(new_mob))
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/new_human = new_mob
 
-	if(J.job_options && H?.client?.prefs?.pref_special_job_options[J.title])
-		J.handle_job_options(H.client.prefs.pref_special_job_options[J.title])
+	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
+		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
 
-	var/job_whitelist = J.title
-	var/whitelist_status = J.get_whitelist_status(roles_whitelist, H.client)
+	var/job_whitelist = new_job.title
+	var/whitelist_status = new_job.get_whitelist_status(roles_whitelist, new_human.client)
 
 	if(whitelist_status)
-		job_whitelist = "[J.title][whitelist_status]"
+		job_whitelist = "[new_job.title][whitelist_status]"
 
-	H.job = J.title //TODO Why is this a mob variable at all?
+	new_human.job = new_job.title //TODO Why is this a mob variable at all?
 
-	if(J.gear_preset_whitelist[job_whitelist])
-		arm_equipment(H, J.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
-		var/generated_account = J.generate_money_account(H)
-		J.announce_entry_message(H, generated_account, whitelist_status) //Tell them their spawn info.
-		J.generate_entry_conditions(H, whitelist_status) //Do any other thing that relates to their spawn.
+	if(new_job.gear_preset_whitelist[job_whitelist])
+		arm_equipment(new_human, new_job.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
+		var/generated_account = new_job.generate_money_account(new_human)
+		new_job.announce_entry_message(new_human, generated_account, whitelist_status) //Tell them their spawn info.
+		new_job.generate_entry_conditions(new_human, whitelist_status) //Do any other thing that relates to their spawn.
 	else
-		arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
-		var/generated_account = J.generate_money_account(H)
-		J.announce_entry_message(H, generated_account) //Tell them their spawn info.
-		J.generate_entry_conditions(H) //Do any other thing that relates to their spawn.
+		arm_equipment(new_human, new_job.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
+		var/generated_account = new_job.generate_money_account(new_human)
+		new_job.announce_entry_message(new_human, generated_account) //Tell them their spawn info.
+		new_job.generate_entry_conditions(new_human) //Do any other thing that relates to their spawn.
 
-	if(J.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
-		randomize_squad(H)
+	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
+		randomize_squad(new_human)
 
-	if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(H.job))) //activates self setting proc for marine headsets for WO
+	if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(new_human.job))) //activates self setting proc for marine headsets for WO
 		var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
-		WO.self_set_headset(H)
+		WO.self_set_headset(new_human)
 
 	var/assigned_squad
-	if(ishuman(H))
-		var/mob/living/carbon/human/human = H
+	if(ishuman(new_human))
+		var/mob/living/carbon/human/human = new_human
 		if(human.assigned_squad)
 			assigned_squad = human.assigned_squad.name
 
 	if(isturf(late_join))
-		H.forceMove(late_join)
+		new_human.forceMove(late_join)
 	else if(late_join)
 		var/turf/late_join_turf
 		if(GLOB.latejoin_by_squad[assigned_squad])
 			late_join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
-		else if(GLOB.latejoin_by_job[J.title])
-			late_join_turf = get_turf(pick(GLOB.latejoin_by_job[J.title]))
+		else if(GLOB.latejoin_by_job[new_job.title])
+			late_join_turf = get_turf(pick(GLOB.latejoin_by_job[new_job.title]))
 		else
 			late_join_turf = get_turf(pick(GLOB.latejoin))
-		H.forceMove(late_join_turf)
+		new_human.forceMove(late_join_turf)
 	else
 		var/turf/join_turf
-		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][J.type])
-			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][J.type]))
-		else if(GLOB.spawns_by_job[J.type])
-			join_turf = get_turf(pick(GLOB.spawns_by_job[J.type]))
+		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][new_job.type])
+			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][new_job.type]))
+		else if(GLOB.spawns_by_job[new_job.type])
+			join_turf = get_turf(pick(GLOB.spawns_by_job[new_job.type]))
 		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
 			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
-		H.forceMove(join_turf)
+		new_human.forceMove(join_turf)
 
 	for(var/cardinal in GLOB.cardinals)
-		var/obj/structure/machinery/cryopod/pod = locate() in get_step(H, cardinal)
+		var/obj/structure/machinery/cryopod/pod = locate() in get_step(new_human, cardinal)
 		if(pod)
-			pod.go_in_cryopod(H, silent = TRUE)
+			pod.go_in_cryopod(new_human, silent = TRUE)
 			break
 
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+	new_human.sec_hud_set_ID()
+	new_human.hud_set_squad()
 
-	SSround_recording.recorder.track_player(H)
+	SEND_SIGNAL(new_human, COMSIG_POST_SPAWN_UPDATE)
+	SSround_recording.recorder.track_player(new_human)
 
 //Find which squad has the least population. If all 4 squads are equal it should just use a random one
 /datum/authority/branch/role/proc/get_lowest_squad(mob/living/carbon/human/H)
@@ -816,7 +816,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/found_desired = FALSE
 	var/found_limit = FALSE
 
-	for(var/status in whitelist_hierarchy)
+	for(var/status in GLOB.whitelist_hierarchy)
 		if(status == desired_status)
 			found_desired = TRUE
 			break

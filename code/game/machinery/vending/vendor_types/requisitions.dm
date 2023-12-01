@@ -175,22 +175,8 @@
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
-
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
-		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
-	else
-		turf_to_vent_to = get_turf(get_step(src, NORTH))
-		if(H.loc == turf_to_vent_to)
-			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-		else
-			turf_to_vent_to = get_turf(get_step(src, SOUTH))
-			if(H.loc == turf_to_vent_to)
-				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-			else
-				turf_to_vent_to = H.loc
-	return turf_to_vent_to
+	vend_dir = WEST
+	vend_dir_whitelist = list(NORTH, SOUTH)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend
 	icon_state = "req_guns_wall"
@@ -209,6 +195,8 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES
+	vend_dir = WEST
+	vend_dir_whitelist = list(SOUTHWEST, NORTHWEST)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
 	return
@@ -307,22 +295,6 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
-		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
-	else
-		turf_to_vent_to = get_turf(get_step(src, NORTHWEST))
-		if(H.loc == turf_to_vent_to)
-			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-		else
-			turf_to_vent_to = get_turf(get_step(src, SOUTHWEST))
-			if(H.loc == turf_to_vent_to)
-				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-			else
-				turf_to_vent_to = H.loc
-	return turf_to_vent_to
-
 //------------ATTACHMENTS VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/attachments
@@ -331,6 +303,9 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 	icon_state = "req_attach"
+	vend_dir = WEST
+	vend_dir_whitelist = list(SOUTHEAST, NORTHEAST)
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
 
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return
@@ -379,22 +354,6 @@
 		list("M44 Magnum Sharpshooter Stock", round(scale * 4.5), /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
 		)
 
-/obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
-		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
-	else
-		turf_to_vent_to = get_turf(get_step(src, NORTHEAST))
-		if(H.loc == turf_to_vent_to)
-			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-		else
-			turf_to_vent_to = get_turf(get_step(src, SOUTHEAST))
-			if(H.loc == turf_to_vent_to)
-				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-			else
-				turf_to_vent_to = loc
-	return turf_to_vent_to
-
 /obj/structure/machinery/cm_vending/sorted/attachments/blend
 	icon_state = "req_attach_wall"
 	tiles_with = list(
@@ -402,7 +361,6 @@
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer,
 	)
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
 
 //------------UNIFORM VENDOR---------------
 
@@ -455,6 +413,9 @@
 		list("MASKS", -1, null, null, null),
 		list("Gas Mask", 20, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
+
+		list("MISCELLANEOUS", -1, null, null),
+		list("Bedroll", 30, /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),
 		)
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)

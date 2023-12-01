@@ -347,15 +347,15 @@ What a mess.*/
 	return
 
 /obj/structure/machinery/computer/skills/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 
 	for(var/datum/data/record/R in GLOB.data_core.security)
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
-					R.fields["name"] = "[pick(pick(first_names_male), pick(first_names_female))] [pick(last_names)]"
+					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
 					R.fields["sex"] = pick("Male", "Female")
 				if(3)
@@ -373,4 +373,3 @@ What a mess.*/
 			qdel(R)
 			continue
 
-	..(severity)

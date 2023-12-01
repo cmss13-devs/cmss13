@@ -147,6 +147,7 @@
 		"cmblogo.png" = 'html/images/cmblogo.png',
 		"faxwylogo.png" = 'html/images/faxwylogo.png',
 		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
+		"colonialspacegruntsEZ.png" = 'html/images/colonialspacegruntsEZ.png',
 	)
 
 /datum/asset/spritesheet/chat
@@ -285,7 +286,7 @@
 		list("SL", "hudsquad_leader"),
 	)
 
-	for(var/datum/squad/marine/squad in RoleAuthority.squads)
+	for(var/datum/squad/marine/squad in GLOB.RoleAuthority.squads)
 		var/color = squad.equipment_color
 		for(var/iref in icon_data)
 			var/list/iconref = iref
@@ -314,7 +315,9 @@
 			log_debug("not atom! [item]")
 			continue
 
-		if (sprites[icon_file])
+		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
+
+		if(sprites[imgid])
 			continue
 
 		if(icon_state in icon_states(icon_file))
@@ -338,7 +341,6 @@
 				item = new k()
 				I = icon(item.icon, item.icon_state, SOUTH)
 				qdel(item)
-		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
 
 		Insert(imgid, I)
 	return ..()

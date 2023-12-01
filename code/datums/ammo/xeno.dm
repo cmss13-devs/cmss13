@@ -37,7 +37,7 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/M, power, insta_neuro)
+/proc/apply_neuro(mob/living/M, power, insta_neuro)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
@@ -49,9 +49,9 @@
 
 	if(!isxeno(M))
 		if(insta_neuro)
-			if(M.knocked_down < 3)
+			if(M.GetKnockDownValueNotADurationDoNotUse() < 3) // If they have less than somewhere random between 4 and 6 seconds KD left and assuming it doesnt get refreshed itnernally
 				M.adjust_effect(1 * power, WEAKEN)
-			return
+				return
 
 		if(ishuman(M))
 			M.apply_effect(2.5, SUPERSLOW)
@@ -65,11 +65,11 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.knocked_down < 5)
+			if(M.GetKnockDownValueNotADurationDoNotUse() < 5) // If they have less than somewhere random between 8 and 10 seconds KD left and assuming it doesnt get refreshed itnernally
 				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
-/proc/apply_scatter_neuro(mob/M)
+/proc/apply_scatter_neuro(mob/living/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
@@ -79,7 +79,7 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		if(M.knocked_down < 0.7) // apply knockdown only if current knockdown is less than 0.7 second
+		if(M.GetKnockDownValueNotADurationDoNotUse() < 0.7) // basically (knocked_down && prob(90))
 			M.apply_effect(0.7, WEAKEN)
 			M.visible_message(SPAN_DANGER("[M] falls prone."))
 
@@ -317,7 +317,7 @@
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 
-/datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
@@ -347,7 +347,7 @@
 	damage = 10
 	shrapnel_chance = 0
 
-/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)

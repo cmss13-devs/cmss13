@@ -1,5 +1,6 @@
 /mob/living/carbon/human
 	light_system = MOVABLE_LIGHT
+	rotate_on_lying = TRUE
 	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -176,8 +177,8 @@
 
 	var/total_marine_playtime = 0
 
-	for(var/job in RoleAuthority.roles_by_name)
-		var/datum/job/J = RoleAuthority.roles_by_name[job]
+	for(var/job in GLOB.RoleAuthority.roles_by_name)
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[job]
 		if(istype(J, /datum/job/antag))
 			continue
 

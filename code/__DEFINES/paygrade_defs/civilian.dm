@@ -28,3 +28,8 @@
 /// CSPO, Senior Officer
 #define PAY_SHORT_CSPO "CSPO"
 
+/// REB, Rebel
+#define PAY_SHORT_REB "REB"
+
+/// REBC, Rebel Commander "REBC"
+#define PAY_SHORT_REBC "REBC"

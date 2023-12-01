@@ -3,7 +3,7 @@
 	languages = list(LANGUAGE_JAPANESE, LANGUAGE_ENGLISH)
 	assignment = JOB_CLF
 	rank = FACTION_CLF
-	paygrade = PAY_SHORT_CIV
+	paygrade = PAY_SHORT_REB
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
 	idtype = /obj/item/card/id/data
@@ -900,7 +900,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COMMANDER
 	rank = JOB_CLF_COMMANDER
-	paygrade = PAY_SHORT_NO5
+	paygrade = PAY_SHORT_REBC
 	role_comm_title = "CMDR"
 	skills = /datum/skills/clf/commander
 

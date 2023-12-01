@@ -578,7 +578,7 @@
 #include "code\datums\pain\pain_zombie.dm"
 #include "code\datums\paygrades\helper.dm"
 #include "code\datums\paygrades\paygrade.dm"
-#include "code\datums\paygrades\factions\civillian\civilian.dm"
+#include "code\datums\paygrades\factions\other\civilian.dm"
 #include "code\datums\paygrades\factions\other\cmb.dm"
 #include "code\datums\paygrades\factions\other\contractors.dm"
 #include "code\datums\paygrades\factions\other\dutch_dozen.dm"

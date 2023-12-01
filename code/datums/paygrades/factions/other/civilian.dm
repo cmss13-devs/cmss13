@@ -41,3 +41,12 @@
 	name = "Senior Officer"
 	prefix = "Sr. Off."
 	pay_multiplier = 0.8
+
+/datum/paygrade/civilian/rebel
+	paygrade = PAY_SHORT_REB
+	name = "Rebel"
+
+/datum/paygrade/civilian/rebel/leader
+	paygrade = PAY_SHORT_REBC
+	name = "Rebel Commander"
+	prefix = "CMDR."

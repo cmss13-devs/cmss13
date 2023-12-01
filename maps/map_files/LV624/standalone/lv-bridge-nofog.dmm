@@ -158,7 +158,6 @@
 	},
 /area/lv624/ground/river/central_river)
 "EG" = (
-/obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
 "Pz" = (

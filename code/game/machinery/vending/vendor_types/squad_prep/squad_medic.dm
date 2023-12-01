@@ -237,7 +237,7 @@ list("FIELD SUPPLIES", 0, null, null, null),
 	show_points = TRUE
 	use_points = FALSE
 	use_snowflake_points = TRUE
-	vendor_role = list(JOB_SQUAD_SPECIALIST)
+	vendor_role = list(JOB_SQUAD_MEDIC)
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
 /obj/structure/machinery/cm_vending/gear/medic_consumable/get_listed_products(mob/user)

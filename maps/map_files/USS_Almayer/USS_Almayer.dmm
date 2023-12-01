@@ -14173,8 +14173,7 @@
 	},
 /area/almayer/medical/operating_room_two)
 "bcZ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/cm_vending/gear/medic_consumable,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -14481,8 +14480,7 @@
 	},
 /area/almayer/medical/operating_room_one)
 "bew" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/cm_vending/gear/medic_consumable,
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
@@ -20872,8 +20870,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engine_core)
 "bKX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/cm_vending/gear/medic_consumable,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald"
@@ -23364,8 +23361,7 @@
 	},
 /area/almayer/living/briefing)
 "bVy" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/cm_vending/gear/medic_consumable,
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},

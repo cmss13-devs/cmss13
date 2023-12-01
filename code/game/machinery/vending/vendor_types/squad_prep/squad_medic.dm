@@ -231,9 +231,9 @@ list("FIELD SUPPLIES", 0, null, null, null),
 	))
 
 /obj/structure/machinery/cm_vending/gear/medic_consumable
-	name = "\improper ColMarTech Squad Weapons Specialist Gear Rack"
-	desc = "An automated gear rack for Squad Weapons Specialists."
-	icon_state = "spec_gear"
+	name = "\improper ColMarTech Hospital Corpsmen Supply Vendor"
+	desc = "An automated medical supply for hospital corpsmen ."
+	icon_state = "med_gear"
 	show_points = TRUE
 	use_points = FALSE
 	use_snowflake_points = TRUE

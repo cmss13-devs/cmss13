@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - bugfix: "Restricts burrower tunnels to alphanumeric characters as some other characters break the tunnel.\ncode; Adds new proc to replace non alphanumeric or space characters."

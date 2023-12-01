@@ -275,6 +275,7 @@
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
 					if (prob(15)) M.apply_effect(5, WEAKEN)
+					playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 					M.apply_damage(8, def_zone = "head")
 					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
 					SPAN_DANGER("You slam [M]'s face against [src]!"))
@@ -285,8 +286,9 @@
 			else if(user.grab_level >= GRAB_AGGRESSIVE)
 				M.forceMove(loc)
 				M.apply_effect(5, WEAKEN)
-				user.visible_message(SPAN_DANGER("[user] throws [M] on [src]."),
-				SPAN_DANGER("You throw [M] on [src]."))
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				user.visible_message(SPAN_DANGER("[user] throws [M] on [src], stunning them!"),
+				SPAN_DANGER("You throw [M] on [src], stunning them!"))
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))

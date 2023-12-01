@@ -39566,6 +39566,19 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
+/obj/structure/closet/secure_closet/cmdcabinet{
+	pixel_y = 24;
+	desc = "A bulletproof cabinet containing communications equipment.";
+	name = "communications cabinet";
+	req_access = null;
+	req_one_access_txt = "207;203"
+	},
+/obj/item/device/radio,
+/obj/item/device/radio/listening_bug/radio_linked/wy,
+/obj/item/device/radio/listening_bug/radio_linked/wy{
+	pixel_x = 4;
+	pixel_y = -3
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "hpk" = (
@@ -60648,6 +60661,23 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
+"qan" = (
+/obj/item/device/radio/listening_bug/radio_linked/mp{
+	pixel_y = 8
+	},
+/obj/item/device/radio/listening_bug/radio_linked/mp,
+/obj/structure/closet/secure_closet/cmdcabinet{
+	pixel_y = 24;
+	desc = "A bulletproof cabinet containing communications equipment.";
+	name = "communications cabinet";
+	req_access = null;
+	req_one_access_txt = "3"
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/main_office)
 "qau" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -89898,7 +89928,7 @@ tak
 tak
 bvx
 xys
-ldu
+qan
 eRL
 eRL
 mLJ

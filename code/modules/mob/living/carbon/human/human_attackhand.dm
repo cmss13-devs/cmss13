@@ -175,7 +175,7 @@
 				else
 					drop_held_item()
 					visible_message(SPAN_DANGER("<B>[attacking_mob] has disarmed [src]!</B>"), null, null, 5)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
 				return
 
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, 7)

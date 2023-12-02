@@ -46441,6 +46441,8 @@
 /area/almayer/hallways/starboard_hallway)
 "jWW" = (
 /obj/structure/largecrate/supply/supplies/flares,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "jXf" = (
@@ -47012,6 +47014,14 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
+"kip" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "kiF" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/warning_stripes{
@@ -50061,6 +50071,8 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -53392,6 +53404,11 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
+"mFx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "mFN" = (
 /obj/effect/step_trigger/ares_alert/mainframe,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -56841,6 +56858,8 @@
 /area/almayer/shipboard/brig/main_office)
 "nSN" = (
 /obj/structure/largecrate/supply/supplies/mre,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -57338,6 +57357,8 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -62905,6 +62926,8 @@
 /obj/structure/machinery/light/small/built{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "qjF" = (
@@ -76364,6 +76387,8 @@
 /obj/item/explosive/grenade/smokebomb,
 /obj/item/explosive/grenade/smokebomb,
 /obj/item/explosive/grenade/smokebomb,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -77976,6 +78001,8 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -84135,6 +84162,8 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "ygK" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -120043,7 +120072,7 @@ bPT
 aLf
 hhw
 vVj
-iiP
+kip
 lpX
 hhw
 nEA
@@ -120246,7 +120275,7 @@ pKb
 aLf
 hhw
 ygK
-aLf
+mFx
 ocr
 hhw
 hhw

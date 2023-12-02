@@ -1,0 +1,8 @@
+author: "BadAtThisGame302"
+delete-after: True
+changes:
+  - rscadd: "Added a flavor diary entry from the Director of Lambda"
+  - mapadd: "added back the old vault nightmare insert on Solaris which was removed due to the creation of static comms where it spawned"
+  - maptweak: "tweaked the Lambda Director's Office"
+  - maptweak: "tweaked the Lambda Administration Office"
+  - maptweak: "tweaked the Lambda Relaxation Room"

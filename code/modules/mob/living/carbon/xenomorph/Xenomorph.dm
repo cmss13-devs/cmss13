@@ -555,19 +555,13 @@
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
 //We set their name first, then update their real_name AND their mind name
+//Off-load this proc so it can be called freely
+//Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
+//We set their name first, then update their real_name AND their mind name
 /mob/living/carbon/xenomorph/proc/generate_name()
 	//We don't have a nicknumber yet, assign one to stick with us
 	if(!nicknumber)
-		var/tempnumber = rand(1, 999)
-		var/list/numberlist = list()
-		for(var/mob/living/carbon/xenomorph/X in GLOB.xeno_mob_list)
-			numberlist += X.nicknumber
-
-		while(tempnumber in numberlist)
-			tempnumber = rand(1, 999)
-
-		nicknumber = tempnumber
-
+		generate_and_set_nicknumber()
 	// Even if we don't have the hive datum we usually still have the hive number
 	var/datum/hive_status/in_hive = hive
 	if(!in_hive)
@@ -576,12 +570,10 @@
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
 
-	handle_name(in_hive)
-
-/mob/living/carbon/xenomorph/proc/handle_name(datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
+	var/number_decorator = ""
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
@@ -592,9 +584,12 @@
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
+	// Rare easter egg
+	if(nicknumber == 666)
+		number_decorator = "Infernal "
 	if(show_name_numbers)
 		name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
-	name = "[name_prefix][age_display][caste.display_name || caste.caste_type][name_display]"
+	name = "[name_prefix][number_decorator][age_display][caste.display_name || caste.caste_type][name_display]"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -814,23 +809,17 @@
 /mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL)
 	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
 	if(!new_hive)
-		return
+		return FALSE
 
-	for(var/T in _status_traits) // They can't keep getting away with this!!!
-		REMOVE_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+	for(var/trait in _status_traits) // They can't keep getting away with this!!!
+		REMOVE_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	new_hive.add_xeno(src)
 
-	for(var/T in new_hive.hive_inherant_traits)
-		ADD_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+	for(var/trait in new_hive.hive_inherant_traits)
+		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-	if(istype(src, /mob/living/carbon/xenomorph/larva))
-		var/mob/living/carbon/xenomorph/larva/L = src
-		L.update_icons() // larva renaming done differently
-	else
-		generate_name()
-	if(istype(src, /mob/living/carbon/xenomorph/queen))
-		update_living_queens()
+	generate_name()
 
 	lock_evolve = FALSE
 	banished = FALSE
@@ -840,6 +829,9 @@
 
 	// Update the hive status UI
 	new_hive.hive_ui.update_all_xeno_data()
+
+	return TRUE
+
 
 //*********************************************************//
 //********************Mutator functions********************//
@@ -1113,3 +1105,16 @@
 	. = ..()
 	if(!resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
 		update_wounds()
+
+///Generate a new unused nicknumber for the current hive, if hive doesn't exist return 0
+/mob/living/carbon/xenomorph/proc/generate_and_set_nicknumber()
+	if(!hive)
+		//If hive doesn't exist make it 0
+		nicknumber = 0
+		return
+	var/datum/hive_status/hive_status = hive
+	if(length(hive_status.available_nicknumbers))
+		nicknumber = pick_n_take(hive_status.available_nicknumbers)
+	else
+		//If we somehow use all 999 numbers fallback on 0
+		nicknumber = 0

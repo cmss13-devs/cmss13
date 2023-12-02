@@ -155,4 +155,7 @@ h1.alert, h2.alert {color: #000000;}
 .retro_translator {font-weight: bold;}
 .yautja_translator {color: #aa0000; font-weight: bold;}
 
+.narrate_head {font-size: 3; text-align: center; color: #ffccff;padding: 0em 1em;}
+.narrate_body {font-size: 2; text-align: justify; color: #ff99ff;padding: 0em 1em;}
+
 </style>"}

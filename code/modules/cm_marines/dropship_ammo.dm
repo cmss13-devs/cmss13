@@ -180,10 +180,6 @@
 		turf_list -= impact_tile//moved it from here
 		for(var/atom/movable/atom in impact_tile)
 			affected_atom += atom
-		//if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-		//	playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
-		//	soundplaycooldown = 3
-		//soundplaycooldown--
 		if(!debriscooldown)
 			impact_tile.ceiling_debris_check(1)
 			debriscooldown = 6
@@ -206,7 +202,6 @@
 		else
 			explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)//moved this
 		explosion_effect.throw_random_direction(1)
-	//sleep(11) //speed of sound simulation
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 
 

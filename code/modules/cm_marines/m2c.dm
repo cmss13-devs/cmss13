@@ -54,7 +54,7 @@
 	var/anti_cadehugger_range = 1
 	var/broken_gun = FALSE
 	var/field_recovery = 130
-	health = 230
+	health = 200
 
 /obj/item/device/m2c_gun/Initialize()
 	. = ..()
@@ -172,7 +172,7 @@
 		user.visible_message(SPAN_NOTICE("[user] field recovers \the [src], restoring it back to its original state."), \
 			SPAN_NOTICE("You repair \the [src] back to a functional state."))
 		broken_gun = FALSE
-		health = 110
+		health = 100
 		update_icon()
 		return
 	else
@@ -193,8 +193,8 @@
 	var/fold_time = 1.5 SECONDS
 	var/repair_time = 5 SECONDS
 	density = TRUE
-	health = 230
-	health_max = 230
+	health = 200
+	health_max = 200
 	display_ammo = FALSE
 	var/list/cadeblockers = list()
 	var/cadeblockers_range = 1
@@ -530,34 +530,17 @@
 	if(mounting)
 		var/diff_x = 0
 		var/diff_y = 0
-		var/tilesize = 32
-		var/viewoffset = tilesize * 1
-
 		user.reset_view(src)
 		if(dir == EAST)
 			diff_x = -16 + user_old_x
-			user.client.pixel_x = viewoffset
-			user.client.pixel_y = 0
 		if(dir == WEST)
 			diff_x = 16 + user_old_x
-			user.client.pixel_x = -viewoffset
-			user.client.pixel_y = 0
 		if(dir == NORTH)
 			diff_y = -16 + user_old_y
-			user.client.pixel_x = 0
-			user.client.pixel_y = viewoffset
 		if(dir == SOUTH)
 			diff_y = 16 + user_old_y
-			user.client.pixel_x = 0
-			user.client.pixel_y = -viewoffset
-
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
-		if(user.client)
-			user.client.change_view(GLOB.world_view_size)
-			user.client.pixel_x = 0
-			user.client.pixel_y = 0
-
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
 
 

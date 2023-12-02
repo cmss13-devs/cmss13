@@ -13,7 +13,6 @@
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
-	var/contraband = FALSE
 
 	/// to be compared with assigned_role to only allow those to use that machine.
 	var/req_role = ""
@@ -22,7 +21,6 @@
 	var/use_points = TRUE
 	var/fabricating = FALSE
 	var/broken = FALSE
-
 
 	var/list/purchase_log = list()
 
@@ -285,9 +283,3 @@
 		list("Echo Squad", 15, /obj/item/device/encryptionkey/echo, "white", "Radio Key for USCM Echo Squad."),	
 		list("Colony", 20, /obj/item/device/encryptionkey/colony, "white", "Pre-tuned Radio Key for local colony comms."),	
 	)
-	if(contraband)
-		listed_products += list("CONTRABAND", 0, null, null, null)
-		listed_products += list("W-Y PMC", 20, /obj/item/device/encryptionkey/pmc, "white", "Radio Key for Weyland-Yutani PMC Combat Comms.")
-		listed_products += list("CONTRABAND: Colonial Marshals", 40, /obj/item/device/encryptionkey/cmb, "white", "Radio Key for the CMB.")   
-		listed_products += list("CONTRABAND: Colonial Liberation Front", 40, /obj/item/device/encryptionkey/clf, "white", "Radio Key for known local CLF frequencies.") 
-		listed_products += list("CONTRABAND: Union of Progressive Peoples", 40, /obj/item/device/encryptionkey/upp, "white", "Radio Key for known UPP listening frequencies.")

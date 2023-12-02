@@ -236,12 +236,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/hallways/repair_bay)
-"abe" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_m_s)
 "abf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -1791,7 +1785,7 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "ahk" = (
-/obj/structure/closet/firecloset,
+/obj/structure/largecrate/random/case,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -4756,6 +4750,19 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
+"arN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -28
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/hallways/starboard_hallway)
 "arO" = (
 /obj/effect/projector{
 	name = "Almayer_Up2";
@@ -14701,6 +14708,19 @@
 "bkA" = (
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/chemistry)
+"bkC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/almayer/lifeboat_pumps/south1)
 "bkD" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 2;
@@ -33989,6 +34009,10 @@
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
+"fid" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/almayer/hull/upper_hull/u_m_s)
 "fiq" = (
 /turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_m_p)
@@ -36132,26 +36156,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
-"gcx" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/largecrate/supply/supplies/mre{
-	desc = "A supply crate containing everything you need to stop a CLF uprising.";
-	name = "\improper USCM crate 'FOB supplies'"
-	},
-/obj/item/folded_tent/big{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/storage/box/mousetraps{
-	pixel_x = 3;
-	pixel_y = 12
-	},
-/turf/closed/wall/almayer,
-/area/almayer/living/port_emb)
 "gcK" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -36890,6 +36894,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/main_office)
+"grf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/hallways/aft_hallway)
 "grk" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -40561,6 +40578,18 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
+"hLz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 26
+	},
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/almayer/hallways/port_hallway)
 "hLB" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -46698,6 +46727,15 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/containment)
+"kbS" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_m_s)
 "kbV" = (
 /obj/structure/platform{
 	dir = 1
@@ -47052,6 +47090,10 @@
 	icon_state = "plating"
 	},
 /area/almayer/engineering/engine_core)
+"klF" = (
+/obj/structure/lattice,
+/turf/closed/wall/almayer/outer,
+/area/almayer/hull/upper_hull/u_m_s)
 "klH" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -47596,6 +47638,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_s)
+"kwX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/almayer/hallways/port_hallway)
 "kxd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -49292,6 +49347,19 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
+"lfm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/almayer/lifeboat_pumps/north1)
 "lft" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -51201,6 +51269,19 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/stern_hallway)
+"lKY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/almayer/hallways/port_hallway)
 "lLC" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
@@ -51581,12 +51662,6 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/starboard_hallway)
-"lSD" = (
-/obj/structure/closet/firecloset,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_m_p)
 "lTt" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -57263,16 +57338,6 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/light,
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -57508,6 +57573,20 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"ogk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "red"
+	},
+/area/almayer/hallways/starboard_hallway)
 "ogo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -57810,6 +57889,7 @@
 	pixel_x = -9;
 	pixel_y = 19
 	},
+/obj/structure/closet/emcloset,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
 "okz" = (
@@ -63491,6 +63571,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
+"qxK" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_m_s)
 "qxL" = (
 /obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
@@ -64048,6 +64132,9 @@
 	pixel_x = -11;
 	pixel_y = -1
 	},
+/obj/structure/machinery/firealarm{
+	pixel_y = -28
+	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -64329,6 +64416,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
+"qOb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/almayer/hallways/aft_hallway)
 "qOf" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -67993,7 +68092,8 @@
 /area/almayer/living/grunt_rnr)
 "smn" = (
 /obj/structure/sign/safety/escapepod{
-	pixel_y = -32
+	pixel_y = -32;
+	pixel_x = -2
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
@@ -73773,6 +73873,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
+"uxG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -28
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/almayer/lifeboat_pumps/north1)
 "uxO" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal8";
@@ -74103,6 +74215,19 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
+"uCU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 26
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/almayer/hallways/aft_hallway)
 "uCW" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -74204,6 +74329,19 @@
 /obj/effect/landmark/map_item,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"uFJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 26
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "red"
+	},
+/area/almayer/lifeboat_pumps/south1)
 "uFL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -78382,6 +78520,7 @@
 /area/almayer/shipboard/brig/processing)
 "wdH" = (
 /obj/effect/landmark/yautja_teleport,
+/obj/structure/closet/firecloset,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
 "wdI" = (
@@ -78562,6 +78701,20 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
+"whM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/almayer/hallways/starboard_hallway)
 "whZ" = (
 /obj/structure/sign/safety/refridgeration{
 	pixel_x = 8;
@@ -80540,6 +80693,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
+"wVO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -28
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "red"
+	},
+/area/almayer/hallways/aft_hallway)
 "wVP" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -82634,12 +82799,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
-"xIb" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_m_p)
 "xId" = (
 /obj/structure/surface/rack,
 /obj/item/mortar_shell/he,
@@ -82965,9 +83124,6 @@
 "xOL" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "xOY" = (
@@ -110034,8 +110190,8 @@ aaa
 aaa
 aaa
 bdH
-bdH
-lYA
+aaC
+klF
 nJd
 nJd
 nJd
@@ -110237,7 +110393,7 @@ aaa
 aaa
 aaa
 bdH
-bdH
+aaC
 wyG
 aIZ
 aIZ
@@ -110440,7 +110596,7 @@ aaa
 aaa
 aaa
 bdH
-bdH
+aaC
 wyG
 aIZ
 aIZ
@@ -110643,7 +110799,7 @@ aaa
 aaa
 aaa
 bdH
-bdH
+aaC
 wyG
 aIZ
 aIZ
@@ -110846,7 +111002,7 @@ aaa
 aaa
 aaa
 bdH
-bdH
+aaC
 wyG
 aIZ
 aIZ
@@ -111049,7 +111205,7 @@ aaa
 aaa
 aaa
 bdH
-bdH
+aaC
 wyG
 aIZ
 aIZ
@@ -111252,7 +111408,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+aaY
 lYA
 nJd
 nJd
@@ -111658,7 +111814,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+aaY
 lYA
 nJd
 nJd
@@ -111668,7 +111824,7 @@ uXx
 aar
 lGc
 awW
-tyr
+lfm
 aar
 kWe
 lgA
@@ -111722,7 +111878,7 @@ qVM
 nTj
 rGl
 qVM
-ojM
+bkC
 baw
 caP
 qVM
@@ -111861,7 +112017,7 @@ bdH
 bdH
 bdH
 bdH
-bdH
+aaC
 gay
 aIZ
 aIZ
@@ -111871,7 +112027,7 @@ uXx
 aar
 vYQ
 akc
-tfQ
+uxG
 aar
 nxC
 sTB
@@ -111925,7 +112081,7 @@ xCX
 csz
 nSQ
 qVM
-nfy
+uFJ
 csI
 awl
 qVM
@@ -112064,7 +112220,7 @@ aaf
 aaf
 aaf
 aaf
-aaf
+dvR
 gay
 aIZ
 aIZ
@@ -112267,7 +112423,7 @@ aag
 aag
 aag
 aag
-aag
+sCe
 gay
 aIZ
 aIZ
@@ -112470,7 +112626,7 @@ aag
 aag
 aag
 aag
-aag
+sCe
 gay
 aIZ
 aIZ
@@ -112673,7 +112829,7 @@ aag
 aag
 aag
 aag
-aag
+sCe
 gay
 aIZ
 aIZ
@@ -112876,7 +113032,7 @@ aag
 aag
 aag
 aag
-aag
+sCe
 lYA
 nJd
 nJd
@@ -113282,7 +113438,7 @@ aag
 aag
 aag
 aag
-aag
+sCe
 lYA
 nJd
 nJd
@@ -113485,7 +113641,7 @@ aag
 aag
 aag
 aag
-aag
+sCe
 foG
 aIZ
 aIZ
@@ -113688,7 +113844,7 @@ aag
 aag
 aag
 aag
-aag
+sCe
 foG
 aIZ
 aIZ
@@ -113891,7 +114047,7 @@ aag
 aag
 aag
 aag
-aag
+sCe
 foG
 aIZ
 aIZ
@@ -114094,7 +114250,7 @@ aah
 aah
 aah
 aah
-aah
+hsz
 foG
 aIZ
 aIZ
@@ -114297,7 +114453,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+aaY
 foG
 aIZ
 aIZ
@@ -114500,7 +114656,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+aaY
 lYA
 nJd
 nJd
@@ -115625,7 +115781,7 @@ uWa
 hhw
 uGq
 aMV
-cLF
+whM
 aQF
 aQF
 weR
@@ -115681,7 +115837,7 @@ bDs
 bDs
 hVw
 bJt
-uMU
+lKY
 sln
 kUD
 fiq
@@ -116131,7 +116287,7 @@ aad
 aag
 aag
 aag
-acf
+lYA
 aet
 uli
 ipK
@@ -116334,7 +116490,7 @@ aad
 aag
 aag
 aag
-acf
+lYA
 aet
 avx
 ipK
@@ -116537,7 +116693,7 @@ aad
 aag
 aag
 aag
-acv
+fid
 aez
 uli
 uli
@@ -116740,7 +116896,7 @@ aad
 aag
 aag
 aag
-acv
+fid
 aez
 aIB
 aKg
@@ -116943,7 +117099,7 @@ aad
 aag
 aag
 aag
-acf
+lYA
 aet
 aJJ
 aIB
@@ -117146,7 +117302,7 @@ aad
 aag
 aag
 aag
-acf
+lYA
 aet
 avx
 ahN
@@ -117349,7 +117505,7 @@ aad
 aag
 aag
 aag
-acv
+fid
 aiH
 uli
 bLO
@@ -117452,7 +117608,7 @@ aKW
 hhw
 hir
 xmH
-sxc
+arN
 hhw
 aQF
 aQF
@@ -117508,7 +117664,7 @@ gSk
 bDs
 hdJ
 bJt
-qyK
+hLz
 gmG
 iJm
 fiq
@@ -117552,7 +117708,7 @@ aad
 aag
 aag
 aag
-acv
+fid
 aiH
 aiH
 bWd
@@ -117655,7 +117811,7 @@ uWa
 hhw
 xAF
 aMM
-sBf
+ogk
 hhw
 hhw
 cEw
@@ -117711,7 +117867,7 @@ gSk
 bDs
 ljG
 bJt
-lNd
+kwX
 oyQ
 fVC
 fiq
@@ -117962,7 +118118,7 @@ lYA
 aiS
 aao
 aao
-acD
+kbS
 aNi
 cYT
 aNm
@@ -118077,7 +118233,7 @@ jfm
 jfm
 bUP
 aem
-mUa
+fau
 aLG
 tda
 mng
@@ -118165,7 +118321,7 @@ lYA
 aiT
 aap
 aao
-aap
+qxK
 aNi
 aZe
 aNm
@@ -118280,7 +118436,7 @@ bdd
 bdd
 bdd
 xfr
-aYO
+aZi
 xNB
 bdd
 vuA
@@ -118948,7 +119104,7 @@ aaa
 bdH
 bdH
 bdH
-bdH
+aaa
 aab
 aaa
 aaa
@@ -119380,7 +119536,7 @@ lYA
 lYA
 lYA
 lYA
-aao
+qsd
 aap
 aao
 aap
@@ -119437,8 +119593,8 @@ vGk
 gYS
 weU
 vGk
+vGk
 csz
-xIb
 czu
 czu
 czu
@@ -119639,9 +119795,9 @@ qVM
 qVM
 qVM
 qVM
+csz
 vGk
 csz
-lSD
 czu
 gFQ
 gFQ
@@ -119786,7 +119942,7 @@ dAH
 dAH
 dAH
 lYA
-abe
+amN
 aap
 aao
 aar
@@ -119842,8 +119998,8 @@ bjH
 bjH
 bjH
 qVM
-vGk
 csz
+vGk
 csz
 czu
 gFQ
@@ -120045,8 +120201,8 @@ bjH
 bjH
 bjH
 qVM
-vGk
 csz
+vGk
 csz
 czu
 gFQ
@@ -120491,7 +120647,7 @@ nsY
 iIP
 kxd
 dDt
-gcx
+nsY
 aLf
 aSm
 aLf
@@ -121213,7 +121369,7 @@ abu
 abl
 uGo
 fmg
-avn
+bYe
 avn
 avn
 avn
@@ -121416,7 +121572,7 @@ aar
 aar
 aar
 aar
-aar
+tiM
 aar
 aar
 aar
@@ -122627,7 +122783,7 @@ lYA
 lYA
 lYA
 aar
-acG
+qOb
 cCV
 lCz
 aar
@@ -122687,7 +122843,7 @@ foh
 qVM
 uzu
 cCV
-caF
+grf
 qVM
 czu
 czu
@@ -123035,7 +123191,7 @@ uXx
 aar
 aJd
 aJs
-cbN
+wVO
 aar
 aar
 fht
@@ -123091,7 +123247,7 @@ qVM
 vGk
 qVM
 qVM
-acO
+uCU
 aJs
 arJ
 qVM

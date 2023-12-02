@@ -91,8 +91,10 @@
 //=================================================
 
 
-/// Number of marine players against which the Marines' gear scales
-#define MARINE_GEAR_SCALING_NORMAL 60
+/// Number of ROUNDSTART weighter marine player for 1 gear_scale. gear_scale is clamped to 1 minimum
+#define MARINE_GEAR_SCALING_NORMAL 30
+/// Number of LATEJOIN weighted marine players for 1 gear_scale
+#define MARINE_GEAR_SCALING_LATEJOIN 60
 
 #define RESOURCE_NODE_SCALE 95 //How many players minimum per extra set of resource nodes
 #define RESOURCE_NODE_QUANTITY_PER_POP 11 //How many resources total per pop

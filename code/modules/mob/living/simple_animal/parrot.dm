@@ -127,7 +127,7 @@
 /mob/living/simple_animal/parrot/Topic(href, href_list)
 
 	//Can the usr physically do this?
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+	if(usr.is_mob_incapacitated() || !in_range(loc, usr))
 		return
 
 	//Is the usr's mob type able to do this?
@@ -284,7 +284,7 @@
 	if(client || stat)
 		return //Lets not force players or dead/incap parrots to move
 
-	if(!isturf(src.loc) || !canmove || buckled)
+	if(!isturf(src.loc) || !(mobility_flags & MOBILITY_MOVE) || buckled)
 		return //If it can't move, dont let it move. (The buckled check probably isn't necessary thanks to canmove)
 
 

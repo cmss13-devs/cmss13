@@ -125,7 +125,7 @@
 	if(client)
 		return 0
 
-	if(!stat && canmove)
+	if(!stat && mobility_flags & MOBILITY_MOVE)
 		switch(stance)
 			if(HOSTILE_STANCE_IDLE)
 				target_mob = FindTarget()

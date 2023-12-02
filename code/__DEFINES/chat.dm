@@ -24,6 +24,10 @@
 /// Adds a generic box around whatever message you're sending in chat. Really makes things stand out.
 #define examine_block(str) ("<div class='examine_block'>" + str + "</div>")
 
+// Role Display
+#define role_header(str) ("<div class='role_header'><p>" + str + "</p></div>")
+#define role_body(str) ("<div class='role_body'><p>" + str + "</p></div>")
+
 // Global Narrate
 #define narrate_head(str) ("<div class='narrate_head'>" + str + "</div>")
 #define narrate_body(str) ("<div class='narrate_body'>" + str + "</div>")

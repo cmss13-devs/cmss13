@@ -585,17 +585,6 @@
 		message_admins("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
 		H.monkeyize()
 
-	else if(href_list["corgione"])
-		if(!check_rights(R_SPAWN)) return
-
-		var/mob/living/carbon/human/H = locate(href_list["corgione"])
-		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
-			return
-
-		message_admins("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]")
-		H.corgize()
-
 	else if(href_list["forcespeech"])
 		if(!check_rights(R_ADMIN)) return
 

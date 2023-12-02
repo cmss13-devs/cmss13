@@ -101,8 +101,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 // aiPDA = new/obj/item/device/pda/ai(src)
 	SetName(pickedName)
 	anchored = TRUE
-	canmove = 0
-	density = TRUE
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
+	set_density(TRUE)
 	forceMove(loc)
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))

@@ -24,8 +24,8 @@
 
 	sleep(20)
 	if(H && H.loc)
-		to_chat(H, SPAN_ROLE_HEADER("You are a colonist!"))
-		to_chat(H, SPAN_ROLE_BODY("You have been put into the game by a staff member. Please follow all staff instructions."))
+		to_chat(H, role_header("You are a colonist!"))
+		to_chat(H, role_body("You have been put into the game by a staff member. Please follow all staff instructions."))
 
 /datum/emergency_call/colonist/engineers
 	name = "Colonists - Engineers"

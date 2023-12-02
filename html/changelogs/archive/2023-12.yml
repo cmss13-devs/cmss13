@@ -1,0 +1,7 @@
+2023-12-01:
+  Birdtalon:
+  - bugfix: Eggsac fragile eggs can be placed on hardy weeds.
+  Morrow:
+  - rscdel: Removed flame particles. Possibly increases performance for some players.
+  Zonespace27:
+  - bugfix: Resin holes can no longer be planted below stairs

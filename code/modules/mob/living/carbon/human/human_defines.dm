@@ -1,5 +1,6 @@
 /mob/living/carbon/human
 	light_system = MOVABLE_LIGHT
+	rotate_on_lying = TRUE
 	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0

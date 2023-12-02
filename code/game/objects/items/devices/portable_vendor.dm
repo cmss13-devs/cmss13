@@ -13,7 +13,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
-	contraband = FALSE
+	var/contraband = FALSE
 
 	/// to be compared with assigned_role to only allow those to use that machine.
 	var/req_role = ""

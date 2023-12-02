@@ -458,6 +458,9 @@
 		var/obj/structure/window/H = i
 		H.deconstruct(FALSE)
 
+	for(var/turf/closed/wall/almayer/reinforced/temphull/hull in GLOB.hijack_bustable_hull)
+		hull.de_hull()
+
 	for(var/k in GLOB.hijack_bustable_ladders)
 		var/obj/structure/ladder/fragile_almayer/L = k
 		L.deconstruct()

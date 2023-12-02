@@ -59,6 +59,26 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 
+/// Acts like /turf/closed/wall/almayer/outer until post-hijack where it reverts to /turf/closed/wall/almayer/reinforced.
+/turf/closed/wall/almayer/reinforced/temphull
+	name = "heavy reinforced hull"
+	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It would take a great impact to weaken this wall."
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "temphull"
+	hull = TRUE
+
+/turf/closed/wall/almayer/reinforced/temphull/Initialize()
+	. = ..()
+	GLOB.hijack_bustable_hull += src
+
+/turf/closed/wall/almayer/reinforced/temphull/Destroy()
+	GLOB.hijack_bustable_hull -= src
+	return ..()
+
+/turf/closed/wall/almayer/reinforced/temphull/proc/de_hull()
+	hull = FALSE
+	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It has been weakened by a great impact."
+
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
 	desc = "A metal wall used to separate space from the ship"

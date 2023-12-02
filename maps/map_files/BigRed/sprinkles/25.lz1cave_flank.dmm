@@ -1,11 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
 "c" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 "d" = (
 /turf/closed/wall/solaris/reinforced,
@@ -18,15 +16,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "i" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "j" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 "F" = (
 /obj/structure/sign/safety/hazard,
@@ -232,14 +226,14 @@ a
 a
 a
 c
-c
-c
+i
+i
 c
 j
 "}
 (13,1,1) = {"
 c
-c
+i
 a
 a
 a
@@ -249,15 +243,15 @@ a
 a
 c
 c
-c
-c
+i
+i
 c
 j
 "}
 (14,1,1) = {"
 c
 c
-c
+i
 a
 a
 a
@@ -265,8 +259,8 @@ a
 a
 a
 c
-c
-c
+i
+i
 c
 c
 j

@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "bA" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/central_jungle)
 "bQ" = (
 /turf/open/floor{
@@ -55,16 +55,10 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
-"ic" = (
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/central_jungle)
 "iv" = (
 /obj/item/toy/inflatable_duck,
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
-"iJ" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
-/area/lv624/ground/colony/north_nexus_road)
 "jS" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -120,12 +114,6 @@
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/fitness)
-"ma" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 9
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/central_jungle)
 "oK" = (
 /obj/item/shard,
 /turf/open/floor{
@@ -168,27 +156,8 @@
 	icon_state = "whitepurplecorner"
 	},
 /area/lv624/lazarus/fitness)
-"wj" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/south_medbay_road)
-"wH" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/east_central_jungle)
-"wO" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 8
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/central_jungle)
-"xt" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 5
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/central_jungle)
 "xS" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "yO" = (
 /obj/item/toy/beach_ball,
@@ -276,9 +245,6 @@
 	icon_state = "whitepurplecorner"
 	},
 /area/lv624/lazarus/fitness)
-"Gf" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/colony/south_medbay_road)
 "Iu" = (
 /obj/structure/machinery/atm{
 	name = "Weyland-Yutani Automatic Teller Machine";
@@ -299,23 +265,14 @@
 	icon_state = "whitepurplecorner"
 	},
 /area/lv624/lazarus/fitness)
-"Jk" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 10
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/central_jungle)
 "JM" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "KS" = (
 /obj/structure/fence,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/north_nexus_road)
-"NC" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/central_jungle)
 "Ot" = (
 /obj/structure/window_frame/colony,
 /turf/open/floor/plating,
@@ -324,9 +281,6 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
-"Pw" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/north_nexus_road)
 "Px" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -366,11 +320,10 @@
 /area/lv624/lazarus/fitness)
 "Td" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "Ua" = (
-/obj/structure/flora/grass/tallgrass/jungle,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/central_jungle)
 "Us" = (
 /obj/structure/closet/athletic_mixed,
@@ -393,7 +346,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "Vb" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "Vo" = (
 /obj/structure/window/framed/colony,
@@ -409,10 +362,10 @@
 	},
 /area/lv624/lazarus/fitness)
 "Wj" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/east_central_jungle)
 "WV" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/north_nexus_road)
 "Zo" = (
 /obj/effect/landmark/good_item,
@@ -420,7 +373,7 @@
 /area/lv624/lazarus/fitness)
 "ZM" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 
 (1,1,1) = {"
@@ -433,11 +386,11 @@ Vo
 Ez
 hX
 Vo
-NC
-Jk
 Ua
 Ua
-xt
+Ua
+Ua
+Ua
 bA
 "}
 (2,1,1) = {"
@@ -451,11 +404,11 @@ lB
 tV
 sA
 sA
-NC
-Jk
-wO
-ma
-NC
+Ua
+Ua
+Ua
+Ua
+Ua
 "}
 (3,1,1) = {"
 ZM
@@ -472,7 +425,7 @@ Vo
 Vo
 Ot
 sA
-NC
+Ua
 "}
 (4,1,1) = {"
 Vb
@@ -489,10 +442,10 @@ re
 vq
 FO
 Fx
-ic
+Ua
 "}
 (5,1,1) = {"
-Gf
+Vb
 Vo
 rI
 vq
@@ -506,10 +459,10 @@ bQ
 vq
 VM
 Vo
-NC
+Ua
 "}
 (6,1,1) = {"
-wj
+Vb
 sA
 yV
 vq
@@ -523,7 +476,7 @@ bQ
 vq
 Px
 sA
-NC
+Ua
 "}
 (7,1,1) = {"
 sA
@@ -611,7 +564,7 @@ sA
 sA
 "}
 (12,1,1) = {"
-Pw
+WV
 sA
 vq
 vq
@@ -645,7 +598,7 @@ Vo
 Wj
 "}
 (14,1,1) = {"
-iJ
+WV
 Vo
 kE
 vq
@@ -676,5 +629,5 @@ Vo
 Vo
 Vo
 sA
-wH
+Wj
 "}

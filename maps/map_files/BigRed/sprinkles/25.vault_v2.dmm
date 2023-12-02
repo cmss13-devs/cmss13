@@ -21,25 +21,11 @@
 "ac" = (
 /obj/item/tool/pickaxe/drill,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/caves_lambda)
-"ad" = (
-/obj/effect/glowshroom,
-/turf/open/mars_cave,
-/area/bigredv2/caves_lambda)
-"ae" = (
-/obj/effect/glowshroom,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 "af" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 "ag" = (
 /obj/structure/barricade/wooden,
@@ -48,25 +34,8 @@
 	icon_state = "darkpurplecorners2"
 	},
 /area/bigredv2/caves/lambda/breakroom)
-"ah" = (
-/obj/effect/glowshroom,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_10"
-	},
-/area/bigredv2/caves_lambda)
-"ai" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6"
-	},
-/area/bigredv2/caves_lambda)
-"aj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11"
-	},
-/area/bigredv2/caves_lambda)
 "ak" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
 "al" = (
 /obj/structure/sign/safety/restrictedarea{
@@ -304,19 +273,6 @@
 	icon_state = "w-y2"
 	},
 /area/bigredv2/caves/lambda/breakroom)
-"aN" = (
-/turf/open/mars_cave,
-/area/bigredv2/caves_lambda)
-"aP" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
-/area/bigredv2/caves_lambda)
-"aQ" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_18"
-	},
-/area/bigredv2/caves_lambda)
 "aR" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -333,22 +289,9 @@
 	icon_state = "white_cyan1"
 	},
 /area/bigredv2/caves/lambda/breakroom)
-"aS" = (
-/obj/effect/glowshroom,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/caves_lambda)
-"aT" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_4"
-	},
-/area/bigredv2/caves_lambda)
 "aV" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 "aW" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced/colony{
@@ -363,39 +306,18 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/caves/lambda/breakroom)
-"aX" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_8"
-	},
-/area/bigredv2/caves_lambda)
-"aY" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_10"
-	},
-/area/bigredv2/caves_lambda)
-"aZ" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_5"
-	},
-/area/bigredv2/caves_lambda)
 "ba" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 "vm" = (
 /obj/item/shard{
 	icon_state = "small"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_18"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 "zP" = (
 /obj/effect/glowshroom,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_5"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 "EW" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -421,9 +343,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 
 (1,1,1) = {"
@@ -438,8 +358,8 @@ al
 aI
 aA
 aA
-aY
-aT
+ba
+ba
 ak
 "}
 (2,1,1) = {"
@@ -452,50 +372,50 @@ aG
 aw
 aD
 aG
-ai
-ai
-aZ
 ba
-aX
+ba
+ba
+ba
+ba
 "}
 (3,1,1) = {"
 aA
 aA
-ah
-ai
-ai
+ba
+ba
+ba
 aG
 aH
 aE
 aG
-aP
 ba
-aP
-ai
-aZ
+ba
+ba
+ba
+ba
 "}
 (4,1,1) = {"
 aA
-ae
-aP
 ba
-aZ
+ba
+ba
+ba
 aI
 ax
 aC
 aI
-ae
+ba
 RW
 ac
 ba
-aZ
+ba
 "}
 (5,1,1) = {"
-ai
-ai
-aj
-ad
-aZ
+ba
+ba
+aV
+ba
+ba
 aG
 ao
 ag
@@ -504,12 +424,12 @@ af
 ba
 ba
 ba
-aZ
+ba
 "}
 (6,1,1) = {"
-aY
-ai
-ai
+ba
+ba
+ba
 ba
 ba
 aG
@@ -517,10 +437,10 @@ aa
 aD
 Gv
 vm
-aN
-aS
 ba
-aZ
+ba
+ba
+ba
 "}
 (7,1,1) = {"
 ba
@@ -534,9 +454,9 @@ ab
 ap
 aA
 aA
-aP
-aS
-aZ
+ba
+ba
+ba
 "}
 (8,1,1) = {"
 ba
@@ -551,11 +471,11 @@ aI
 aI
 aA
 ba
-aP
-aZ
+ba
+ba
 "}
 (9,1,1) = {"
-aZ
+ba
 ak
 ak
 aI
@@ -566,9 +486,9 @@ au
 aK
 aI
 aA
-aY
 ba
-aZ
+ba
+ba
 "}
 (10,1,1) = {"
 ak
@@ -582,9 +502,9 @@ at
 au
 aI
 aA
-aP
 ba
-aZ
+ba
+ba
 "}
 (11,1,1) = {"
 ak
@@ -598,9 +518,9 @@ at
 aJ
 aI
 aA
-aP
 ba
-aZ
+ba
+ba
 "}
 (12,1,1) = {"
 aA
@@ -614,7 +534,7 @@ at
 aL
 aI
 aA
-aQ
+ba
 aV
 ba
 "}

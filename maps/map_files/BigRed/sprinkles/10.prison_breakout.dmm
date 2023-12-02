@@ -54,10 +54,10 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshal_office)
 "ai" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
 "aj" = (
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/n)
 "ak" = (
 /obj/structure/pipes/vents/pump,

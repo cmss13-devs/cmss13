@@ -97,14 +97,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
-"jY" = (
-/obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_jungle)
-"kg" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/colony/south_medbay_road)
 "kh" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
@@ -114,10 +106,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
-"kD" = (
-/obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/colony/south_medbay_road)
 "lk" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
@@ -160,12 +148,8 @@
 	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
-"nG" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/colony/south_medbay_road)
 "og" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "ok" = (
 /turf/open/floor{
@@ -208,14 +192,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/medbay)
-"rZ" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_west_jungle)
-"se" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_west_jungle)
 "tK" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -237,10 +213,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/medbay)
-"xe" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder/west,
-/area/lv624/ground/colony/south_medbay_road)
 "xF" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/surgical_tray,
@@ -252,20 +224,13 @@
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
-"xM" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/colony/south_medbay_road)
-"ym" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_jungle)
 "yU" = (
 /obj/structure/girder,
 /turf/closed/wall,
 /area/lv624/lazarus/medbay)
 "zj" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "zl" = (
 /obj/item/reagent_container/hypospray,
@@ -296,16 +261,12 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
-"zS" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_west_jungle)
 "Be" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "Bn" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "BL" = (
 /obj/structure/window_frame/colony,
@@ -369,10 +330,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
-"Ha" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_jungle)
 "Il" = (
 /obj/structure/machinery/bioprinter,
 /turf/open/floor{
@@ -399,9 +356,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/medbay)
-"JE" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_west_jungle)
 "JK" = (
 /obj/item/stack/medical/ointment,
 /obj/structure/machinery/light{
@@ -425,8 +379,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "Km" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/north_west_jungle)
 "Lk" = (
 /obj/structure/machinery/light{
@@ -508,7 +461,7 @@
 /area/lv624/lazarus/medbay)
 "Pd" = (
 /obj/item/trash/cigbutt,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "Pk" = (
 /turf/open/floor/plating{
@@ -603,7 +556,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "XA" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/north_jungle)
 "XJ" = (
 /turf/closed/wall/r_wall,
@@ -629,14 +582,14 @@ XA
 XA
 XA
 XA
-JE
-JE
-zS
-JE
-JE
 Km
-JE
-JE
+Km
+Km
+Km
+Km
+Km
+Km
+Km
 "}
 (2,1,1) = {"
 XA
@@ -649,19 +602,19 @@ XA
 XA
 XA
 XA
-JE
-JE
-JE
-JE
-JE
-JE
-JE
+Km
+Km
+Km
+Km
+Km
+Km
+Km
 "}
 (3,1,1) = {"
 XA
 XA
 XA
-Ha
+XA
 XA
 XJ
 BL
@@ -669,12 +622,12 @@ BL
 zy
 am
 Fk
-JE
-JE
-rZ
-JE
-JE
-se
+Km
+Km
+Km
+Km
+Km
+Km
 "}
 (4,1,1) = {"
 XA
@@ -692,8 +645,8 @@ Ny
 Ny
 Fk
 Be
-xe
-xe
+Be
+Be
 "}
 (5,1,1) = {"
 XA
@@ -710,7 +663,7 @@ pp
 TC
 zD
 OK
-xM
+Bn
 og
 og
 "}
@@ -729,7 +682,7 @@ aw
 Uq
 Pk
 Pk
-xM
+Bn
 og
 og
 "}
@@ -862,7 +815,7 @@ Dk
 RT
 Px
 am
-xM
+Bn
 og
 og
 "}
@@ -881,7 +834,7 @@ lD
 FJ
 Os
 OK
-xM
+Bn
 og
 og
 "}
@@ -900,7 +853,7 @@ Jc
 BL
 BL
 Fk
-nG
+Be
 og
 og
 "}
@@ -919,15 +872,15 @@ XJ
 Bn
 Bn
 Bn
-nG
+Be
 og
 og
 "}
 (17,1,1) = {"
 XA
 XA
-jY
-ym
+XA
+XA
 XA
 XA
 XJ
@@ -935,10 +888,10 @@ Qd
 Qd
 XJ
 Bn
-kD
-kg
 Bn
-nG
+Bn
+Bn
+Be
 og
 zj
 "}

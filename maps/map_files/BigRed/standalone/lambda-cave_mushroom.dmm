@@ -1,32 +1,22 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/caves_lambda)
 "b" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
 "c" = (
-/obj/effect/glowshroom,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 "g" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
+c
+c
+c
+c
+c
+c
 b
 b
 b
@@ -39,9 +29,9 @@ b
 "}
 (2,1,1) = {"
 b
-a
+c
 g
-a
+c
 b
 b
 b
@@ -56,10 +46,10 @@ b
 "}
 (3,1,1) = {"
 b
-a
-a
-a
-a
+c
+c
+c
+c
 b
 b
 b
@@ -69,75 +59,75 @@ b
 b
 b
 b
-a
+c
 "}
 (4,1,1) = {"
 b
-a
-a
-a
 c
-a
-a
-a
+c
+c
+c
+c
+c
+c
 b
 b
 b
 b
 b
-a
-a
+c
+c
 "}
 (5,1,1) = {"
 b
 b
-a
-a
-a
-a
-a
-a
-a
+c
+c
+c
+c
+c
+c
+c
 b
 b
 b
 b
-a
-a
+c
+c
 "}
 (6,1,1) = {"
 b
 b
 b
-a
-a
-a
-g
-a
 c
-a
+c
+c
+g
+c
+c
+c
 b
 b
-a
-a
-a
+c
+c
+c
 "}
 (7,1,1) = {"
 b
 b
 b
 b
-a
-a
-a
-a
-a
-a
-a
+c
+c
+c
+c
+c
+c
+c
 b
-a
+c
 g
-a
+c
 "}
 (8,1,1) = {"
 b
@@ -145,16 +135,16 @@ b
 b
 b
 b
-a
-a
-a
-a
+c
+c
+c
+c
 g
-a
-a
-a
-a
-a
+c
+c
+c
+c
+c
 "}
 (9,1,1) = {"
 b
@@ -162,59 +152,59 @@ b
 c
 c
 b
-a
 c
-a
-a
 c
-a
-a
-a
-a
-a
+c
+c
+c
+c
+c
+c
+c
+c
 "}
 (10,1,1) = {"
 b
 c
-a
-a
 c
-a
-a
+c
+c
+c
+c
 b
 b
 b
 b
 b
-a
-a
-a
+c
+c
+c
 "}
 (11,1,1) = {"
 b
 c
-a
-a
-a
+c
+c
+c
 g
-a
+c
 b
 b
 b
 b
 b
 b
-a
-a
+c
+c
 "}
 (12,1,1) = {"
 b
 c
-a
 c
-a
 c
-a
+c
+c
+c
 c
 b
 b
@@ -222,7 +212,7 @@ b
 b
 b
 b
-a
+c
 "}
 (13,1,1) = {"
 b
@@ -230,9 +220,9 @@ b
 c
 c
 c
-a
 c
-a
+c
+c
 b
 b
 b

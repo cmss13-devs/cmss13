@@ -1,17 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ac" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_jungle)
 "ae" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/medbay)
 "af" = (
 /turf/closed/wall,
 /area/lv624/lazarus/medbay)
-"ag" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_jungle)
 "ai" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
@@ -27,10 +20,6 @@
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
-"al" = (
-/obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_jungle)
 "an" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
@@ -99,8 +88,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "au" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/north_jungle)
 "av" = (
 /turf/open/floor{
@@ -263,10 +251,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
-"bw" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
-/area/lv624/ground/colony/south_medbay_road)
 "bx" = (
 /obj/item/trash/plate,
 /turf/open/floor{
@@ -297,20 +281,13 @@
 	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
-"bE" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder/west,
-/area/lv624/ground/colony/south_medbay_road)
-"bF" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/south_medbay_road)
 "bI" = (
 /obj/item/trash/cigbutt,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "bK" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "bN" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -358,10 +335,6 @@
 	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
-"qK" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_west_jungle)
 "qP" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -404,13 +377,9 @@
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
-"we" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_west_jungle)
 "wz" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "yd" = (
 /turf/open/floor{
@@ -418,19 +387,12 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
-"zE" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_west_jungle)
 "zF" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
-"zL" = (
-/obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/colony/south_medbay_road)
 "AO" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
@@ -468,12 +430,8 @@
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
-"Es" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_west_jungle)
 "ES" = (
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "Gu" = (
 /obj/structure/closet/wardrobe,
@@ -504,15 +462,10 @@
 	},
 /area/lv624/lazarus/medbay)
 "LQ" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/north_west_jungle)
-"Np" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/colony/south_medbay_road)
 "Pe" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "Pi" = (
 /obj/structure/surface/table,
@@ -578,65 +531,65 @@
 /area/lv624/lazarus/medbay)
 
 (1,1,1) = {"
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-zE
-zE
-we
-zE
-zE
-qK
-zE
-zE
+au
+au
+au
+au
+au
+au
+au
+au
+au
+LQ
+LQ
+LQ
+LQ
+LQ
+LQ
+LQ
+LQ
 "}
 (2,1,1) = {"
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-zE
-zE
-zE
-zE
-zE
-zE
-zE
+au
+au
+au
+au
+au
+au
+au
+au
+au
+au
+LQ
+LQ
+LQ
+LQ
+LQ
+LQ
+LQ
 "}
 (3,1,1) = {"
-ac
-ac
-ac
-ag
-ac
+au
+au
+au
+au
+au
 ae
 mA
 mA
 bo
 mA
 af
-zE
-zE
 LQ
-zE
-zE
-Es
+LQ
+LQ
+LQ
+LQ
+LQ
 "}
 (4,1,1) = {"
-ac
-ac
+au
+au
 ae
 ae
 ae
@@ -649,13 +602,13 @@ af
 mA
 mA
 af
-bw
-bE
-bE
+wz
+wz
+wz
 "}
 (5,1,1) = {"
-ac
-ac
+au
+au
 ae
 an
 En
@@ -669,12 +622,12 @@ qr
 QQ
 mA
 ES
-bF
-bF
+ES
+ES
 "}
 (6,1,1) = {"
-ac
-ac
+au
+au
 ae
 ao
 av
@@ -688,11 +641,11 @@ aq
 zF
 mA
 ES
-bF
-bF
+ES
+ES
 "}
 (7,1,1) = {"
-ac
+au
 ae
 ae
 qP
@@ -707,11 +660,11 @@ aq
 bp
 af
 af
-bF
-bF
+ES
+ES
 "}
 (8,1,1) = {"
-ac
+au
 ae
 ai
 bi
@@ -726,11 +679,11 @@ bx
 bB
 bN
 bo
-bF
-bF
+ES
+ES
 "}
 (9,1,1) = {"
-ac
+au
 ae
 aj
 aA
@@ -745,11 +698,11 @@ by
 aq
 aq
 TK
-bF
-bF
+ES
+ES
 "}
 (10,1,1) = {"
-ac
+au
 ae
 ap
 aq
@@ -764,11 +717,11 @@ aq
 aq
 aq
 aq
-bF
+ES
 bI
 "}
 (11,1,1) = {"
-ac
+au
 ae
 Qu
 qC
@@ -783,11 +736,11 @@ QG
 bg
 yd
 mA
-bF
-bF
+ES
+ES
 "}
 (12,1,1) = {"
-ac
+au
 ae
 ae
 ar
@@ -802,12 +755,12 @@ aq
 us
 af
 af
-bF
-bF
+ES
+ES
 "}
 (13,1,1) = {"
-ac
-ac
+au
+au
 ae
 as
 aB
@@ -821,12 +774,12 @@ pc
 Vq
 mA
 ES
-bF
-bF
+ES
+ES
 "}
 (14,1,1) = {"
-ac
-ac
+au
+au
 ae
 at
 aC
@@ -840,12 +793,12 @@ DR
 bA
 mA
 ES
-bF
-bF
+ES
+ES
 "}
 (15,1,1) = {"
-ac
-ac
+au
+au
 ae
 ae
 ae
@@ -859,15 +812,15 @@ mA
 mA
 af
 wz
-bF
-bF
+ES
+ES
 "}
 (16,1,1) = {"
-ac
-ac
-ac
-ac
-ac
+au
+au
+au
+au
+au
 ae
 ae
 aq
@@ -878,25 +831,25 @@ Pe
 Pe
 Pe
 wz
-bF
-bF
+ES
+ES
 "}
 (17,1,1) = {"
-ac
-ac
-al
 au
-ac
-ac
+au
+au
+au
+au
+au
 ae
 aX
 aX
 ae
 Pe
-zL
-Np
+Pe
+Pe
 Pe
 wz
-bF
+ES
 bK
 "}

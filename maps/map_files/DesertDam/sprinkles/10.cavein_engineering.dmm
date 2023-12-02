@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/wall/rock/orange,
+/turf/closed/wall/shiva/ice,
 /area/template_noop)
 "c" = (
 /obj/effect/decal/warning_stripes{

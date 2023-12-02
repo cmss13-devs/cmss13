@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/north_west_jungle)
 "ab" = (
 /turf/closed/wall/r_wall,
@@ -30,14 +30,14 @@
 	},
 /area/lv624/lazarus/research)
 "ae" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "ag" = (
 /obj/effect/decal/remains/xeno,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "ah" = (
-/turf/closed/wall/strata_ice/jungle,
+/turf/closed/wall/shiva/ice,
 /area/lv624/ground/jungle/north_west_jungle)
 "ai" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -69,7 +69,7 @@
 /area/lv624/lazarus/research)
 "an" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "ao" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -139,7 +139,7 @@
 	},
 /area/lv624/lazarus/research)
 "ax" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "ay" = (
 /turf/open/floor{
@@ -412,10 +412,10 @@
 	},
 /area/lv624/lazarus/research)
 "bE" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/central_jungle)
 "bF" = (
-/turf/closed/wall/strata_ice/jungle,
+/turf/closed/wall/shiva/ice,
 /area/lv624/ground/jungle/central_jungle)
 "ky" = (
 /obj/effect/landmark/objective_landmark/science,

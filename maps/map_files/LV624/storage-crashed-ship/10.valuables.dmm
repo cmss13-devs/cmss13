@@ -36,7 +36,7 @@
 "l" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/north_east_barrens)
 "o" = (
 /obj/structure/closet/crate,
@@ -75,7 +75,7 @@
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "r" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/north_east_barrens)
 "s" = (
 /obj/structure/surface/rack,
@@ -166,10 +166,10 @@
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "N" = (
 /obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/north_east_barrens)
 "O" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/north_east_barrens)
 "R" = (
 /obj/structure/surface/rack,

@@ -1,453 +1,285 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"al" = (
-/obj/structure/flora/jungle/vines/light_2,
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
-"aK" = (
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_east_jungle)
 "br" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
-"cC" = (
-/obj/structure/flora/jungle/vines/light_1,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/lazarus/landing_zones/lz1)
-"gO" = (
-/obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"gU" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 26
-	},
-/obj/structure/flora/jungle/vines/light_2{
-	pixel_y = -22
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
-"jc" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
-"kd" = (
-/obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
-"lV" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 26
-	},
-/obj/structure/flora/jungle/vines/light_3,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_east_jungle)
-"nI" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"qo" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
-"rA" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 26
-	},
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_east_jungle)
-"ug" = (
-/obj/structure/flora/jungle/vines/light_1,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_east_jungle)
-"uk" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 26
-	},
-/turf/closed/wall/mineral/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
-"un" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
-"ur" = (
-/obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
-"wQ" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_x = -28
-	},
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer1,
 /area/lv624/ground/jungle/south_east_jungle)
 "xk" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/lv624/ground/jungle/south_east_jungle)
-"yg" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 26
-	},
-/obj/structure/flora/jungle/vines/light_3,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
-"zg" = (
-/obj/structure/flora/jungle/vines/light_3,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/lazarus/landing_zones/lz1)
-"Be" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
 "CW" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 26
-	},
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_east_jungle)
-"EZ" = (
-/obj/structure/flora/jungle/vines/light_3,
-/turf/open/floor/sandstone/runed,
+/turf/open/auto_turf/snow/layer1,
 /area/lv624/ground/jungle/south_east_jungle)
 "LV" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/lazarus/landing_zones/lz1)
 "LW" = (
-/turf/closed/wall/strata_ice/jungle,
+/turf/closed/wall/shiva/ice,
 /area/lv624/lazarus/landing_zones/lz1)
-"NU" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 26
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_east_jungle)
-"Tl" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
-"Uc" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 26
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
-"UA" = (
-/obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
 "VR" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/south_east_jungle)
 "Wl" = (
 /turf/closed/wall/mineral/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
-"Wp" = (
-/obj/structure/flora/jungle/vines/light_2{
-	pixel_y = -22
-	},
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/south_east_jungle)
-"Wr" = (
-/obj/structure/flora/jungle/vines/light_2,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_east_jungle)
-"Wt" = (
-/obj/structure/flora/jungle/vines/light_2{
-	pixel_y = -22
-	},
-/turf/closed/wall/mineral/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
-"WQ" = (
-/turf/open/gm/dirtgrassborder/west,
-/area/lv624/ground/jungle/south_east_jungle)
-"Xl" = (
-/turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_east_jungle)
 "Xy" = (
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "Xz" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_east_jungle)
-"XB" = (
-/obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
-"XR" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_east_jungle)
-"XS" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/open/auto_turf/snow/layer3,
 /area/lv624/ground/jungle/south_east_jungle)
 "Ya" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
-"Yr" = (
-/turf/open/gm/grass/grass2,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/south_east_jungle)
 "Yz" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 24
-	},
-/turf/closed/wall/strata_ice/jungle,
+/turf/closed/wall/shiva/ice,
 /area/lv624/ground/jungle/south_east_jungle)
 "Ze" = (
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/south_east_jungle)
-"Zi" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_y = 24
-	},
-/obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer3,
 /area/lv624/ground/jungle/south_east_jungle)
 "Zp" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/south_east_jungle)
 
 (1,1,1) = {"
 LV
-nI
-gO
+LV
+LV
 LW
 LW
-jc
-ur
-XB
-XR
-ug
-qo
-qo
-qo
-qo
+Zp
+Zp
+Zp
+Yz
+Yz
+Zp
+Zp
+Zp
+Zp
 "}
 (2,1,1) = {"
-gO
-zg
-gO
+LV
 LW
-aK
-al
-UA
-UA
-qo
-qo
-qo
-qo
-qo
-UA
+LV
+LW
+Yz
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
 "}
 (3,1,1) = {"
-nI
+LV
 LW
 LW
 LW
-UA
+Zp
 Wl
 Wl
-WQ
-WQ
-XS
-jc
-jc
-Yr
-aK
+Ze
+Ze
+Wl
+Zp
+Zp
+Zp
+Yz
 "}
 (4,1,1) = {"
-cC
 LW
-Wr
-ur
-jc
+LW
+Yz
+Zp
+Zp
 Wl
 CW
-Xl
-Xl
-XS
-XS
-XS
-aK
-aK
+Ze
+Ze
+Wl
+Wl
+Wl
+Yz
+Yz
 "}
 (5,1,1) = {"
 LW
-jc
-jc
-qo
-UA
+Zp
+Zp
+Zp
+Zp
 xk
-EZ
-Xl
+Xy
+Ze
 Xy
 Xy
-EZ
+Xy
 Wl
 Yz
-aK
+Yz
 "}
 (6,1,1) = {"
 LW
 LW
-ur
-qo
-qo
+Zp
+Zp
+Zp
 Wl
-Uc
 Xy
 Xy
 Xy
-un
+Xy
+Xy
 xk
-rA
-aK
+Yz
+Yz
 "}
 (7,1,1) = {"
-qo
-UA
-jc
-qo
-qo
-Wt
-gU
+Zp
+Zp
+Zp
+Zp
+Zp
+Wl
+Xy
 Xz
 Xy
-Xl
-Xl
-Xl
+br
 Ze
-qo
+Ze
+Ze
+Zp
 "}
 (8,1,1) = {"
-qo
-qo
-qo
-qo
-qo
+Zp
+Zp
+Zp
+Zp
+Zp
 xk
-EZ
 Xy
 Xy
 Xy
-Xl
-Xl
+Xy
 Ze
-qo
+Ze
+Ze
+Zp
 "}
 (9,1,1) = {"
-qo
-aK
-kd
-Tl
-aK
+Zp
+Yz
+Zp
+Zp
+Yz
 Wl
-yg
 Xy
-Xl
-br
-EZ
+Xy
+Ze
+Xy
+Xy
 Wl
-Zi
-qo
+Zp
+Zp
 "}
 (10,1,1) = {"
-aK
-aK
-qo
-qo
-qo
-Wp
-EZ
+Yz
+Yz
+Zp
+Zp
+Zp
+Ze
 Xy
 Xy
-EZ
-Be
+Xy
+Xy
+Xy
 Wl
-lV
-qo
+Yz
+Zp
 "}
 (11,1,1) = {"
-qo
-qo
 Zp
-qo
-qo
-Wp
-EZ
+Zp
+Zp
+Zp
+Zp
+Ze
 Xy
 Xy
-EZ
-uk
+Xy
+Xy
 Wl
-XB
-qo
+Wl
+Zp
+Zp
 "}
 (12,1,1) = {"
-qo
-qo
-qo
-aK
-qo
-Wp
-NU
-yg
-EZ
-Xl
+Zp
+Zp
+Zp
+Yz
+Zp
 Ze
-wQ
-qo
-qo
+Ze
+Xy
+Xy
+Ze
+Ze
+Zp
+Zp
+Zp
 "}
 (13,1,1) = {"
-qo
-qo
-aK
-aK
-aK
+Zp
+Zp
+Yz
+Yz
+Yz
 Wl
 Wl
 Wl
 xk
 Wl
-qo
-qo
-qo
-qo
+Zp
+Zp
+Zp
+Zp
 "}
 (14,1,1) = {"
-aK
-aK
-aK
-aK
-aK
-aK
-aK
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
 Ya
-qo
-qo
-qo
+Zp
+Zp
+Zp
 VR
-qo
-aK
+Zp
+Yz
 "}
 (15,1,1) = {"
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-qo
-qo
-qo
-qo
-aK
-aK
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Zp
+Zp
+Zp
+Zp
+Yz
+Yz
 "}

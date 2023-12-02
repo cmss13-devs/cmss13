@@ -5,8 +5,7 @@
 	no_weather_turf_icon_state = "strata_clearsky"
 
 	potential_weather_events = list(
-		/datum/weather_event/dust,
-		/datum/weather_event/sand,
+		/datum/weather_event/snowstorm,
 	)
 
 /datum/weather_ss_map_holder/big_red/should_affect_area(area/A)

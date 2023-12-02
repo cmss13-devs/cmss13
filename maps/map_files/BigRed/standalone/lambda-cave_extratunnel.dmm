@@ -1,17 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_18"
-	},
-/area/bigredv2/caves_lambda)
 "b" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
-"c" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11"
-	},
-/area/bigredv2/caves_lambda)
 "d" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -38,9 +28,6 @@
 	icon_state = "darkgreencorners2"
 	},
 /area/bigredv2/caves/lambda/virology)
-"h" = (
-/turf/open/mars_cave,
-/area/bigredv2/caves_lambda)
 "i" = (
 /turf/open/floor{
 	dir = 10;
@@ -62,15 +49,7 @@
 "l" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11"
-	},
-/area/bigredv2/caves_lambda)
-"m" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 "n" = (
 /turf/closed/wall/solaris/reinforced,
@@ -101,59 +80,19 @@
 	icon_state = "whitegreen"
 	},
 /area/bigredv2/caves/lambda/virology)
-"r" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
-/area/bigredv2/caves_lambda)
-"w" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_10"
-	},
-/area/bigredv2/caves_lambda)
-"F" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_8"
-	},
-/area/bigredv2/caves_lambda)
-"H" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_3"
-	},
-/area/bigredv2/caves_lambda)
-"I" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_12"
-	},
-/area/bigredv2/caves_lambda)
-"K" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_10"
-	},
-/area/bigredv2/caves_lambda)
-"O" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_23"
-	},
-/area/bigredv2/caves_lambda)
 "P" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 "X" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_8"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_lambda)
 
 (1,1,1) = {"
-a
-h
-H
-c
+P
+P
+P
+P
 b
 b
 "}
@@ -168,150 +107,150 @@ b
 (3,1,1) = {"
 b
 b
-c
-r
-I
+P
+P
+P
 b
 "}
 (4,1,1) = {"
 b
 b
-r
-O
-H
-h
+P
+P
+P
+P
 "}
 (5,1,1) = {"
-h
-F
-I
+P
+P
+P
 X
-h
-c
+P
+P
 "}
 (6,1,1) = {"
 b
-O
-I
-I
-c
+P
+P
+P
+P
 b
 "}
 (7,1,1) = {"
 b
 b
-c
-K
-c
+P
+P
+P
 b
 "}
 (8,1,1) = {"
 b
 b
-K
-F
-I
-O
+P
+P
+P
+P
 "}
 (9,1,1) = {"
 b
-h
-c
-K
-I
-c
+P
+P
+P
+P
+P
 "}
 (10,1,1) = {"
-h
-H
-m
-c
-O
-I
+P
+P
+X
+P
+P
+P
 "}
 (11,1,1) = {"
-I
-h
-H
-H
-O
-O
+P
+P
+P
+P
+P
+P
 "}
 (12,1,1) = {"
 b
-c
-O
-K
-I
-c
+P
+P
+P
+P
+P
 "}
 (13,1,1) = {"
 b
 b
-c
-c
-w
-O
+P
+P
+X
+P
 "}
 (14,1,1) = {"
 b
 b
-c
-O
-c
-c
+P
+P
+P
+P
 "}
 (15,1,1) = {"
 b
 b
-c
-O
-c
+P
+P
+P
 b
 "}
 (16,1,1) = {"
 b
-I
-K
+P
+P
 P
 b
 b
 "}
 (17,1,1) = {"
 b
-c
-h
-O
+P
+P
+P
 b
 b
 "}
 (18,1,1) = {"
 b
-c
-m
-c
+P
+X
+P
 b
 b
 "}
 (19,1,1) = {"
-c
-K
-K
-c
+P
+P
+P
+P
 b
 b
 "}
 (20,1,1) = {"
-H
-O
-K
+P
+P
+P
 b
 b
 b
 "}
 (21,1,1) = {"
-h
-c
+P
+P
 b
 b
 b

@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/se)
 "e" = (
 /turf/open/floor{
@@ -13,31 +13,13 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/se)
-"g" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
-/area/bigredv2/outside/se)
-"h" = (
-/obj/structure/flora/bush/ausbushes{
-	cut_level = 1
-	},
-/turf/open/mars{
-	icon_state = "mars_dirt_14"
-	},
-/area/bigredv2/outside/se)
-"i" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12"
-	},
-/area/bigredv2/outside/se)
 "j" = (
 /obj/item/trash/cigbutt{
 	pixel_x = 2;
 	pixel_y = 3
 	},
 /obj/item/trash/cigbutt,
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/se)
 "k" = (
 /obj/item/reagent_container/food/drinks/bottle/rum{
@@ -47,48 +29,42 @@
 /obj/item/weapon/gun/revolver/small,
 /obj/item/reagent_container/food/drinks/bottle/rum,
 /obj/effect/landmark/corpsespawner/colonist/random,
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/se)
 "l" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_8"
-	},
-/area/bigredv2/outside/se)
-"m" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/auto_turf/snow/layer1,
 /area/bigredv2/outside/se)
 "n" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_9"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/se)
 "o" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/outside/se)
 "p" = (
-/obj/structure/prop/dam/large_boulder/boulder2,
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/se)
 "q" = (
 /obj/structure/prop/dam/gravestone,
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/se)
 "r" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/se)
 "s" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
 "t" = (
 /obj/structure/fence,
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/se)
 "D" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
+"S" = (
+/obj/structure/prop/dam/gravestone,
+/turf/open/auto_turf/snow/layer2,
+/area/bigredv2/outside/se)
 
 (1,1,1) = {"
 e
@@ -109,8 +85,8 @@ a
 a
 a
 a
-a
-a
+p
+p
 a
 s
 "}
@@ -120,9 +96,9 @@ a
 a
 a
 a
-a
-a
-a
+p
+p
+p
 a
 a
 "}
@@ -133,9 +109,9 @@ a
 a
 a
 a
-a
-a
-a
+p
+p
+p
 a
 "}
 (5,1,1) = {"
@@ -146,8 +122,8 @@ o
 o
 o
 o
-a
-a
+p
+p
 a
 "}
 (6,1,1) = {"
@@ -176,20 +152,20 @@ o
 "}
 (8,1,1) = {"
 e
-g
+n
 l
 a
 a
 a
-q
+S
 a
 a
 t
 "}
 (9,1,1) = {"
 e
-h
-m
+n
+n
 a
 a
 a
@@ -200,61 +176,61 @@ t
 "}
 (10,1,1) = {"
 e
-i
+n
+n
 n
 a
 a
 a
-a
-q
-a
+S
+p
 t
 "}
 (11,1,1) = {"
 e
+n
+n
+n
 a
 a
 a
-a
-a
-a
-a
-a
+p
+p
 t
 "}
 (12,1,1) = {"
 e
-a
-a
-a
+n
+n
+n
 o
-q
-a
-a
-a
+S
+p
+p
+p
 t
 "}
 (13,1,1) = {"
 e
-a
-a
+n
+n
 o
 o
-q
-a
-a
+S
+p
+p
 r
 t
 "}
 (14,1,1) = {"
 e
-a
+n
 o
 o
 o
 a
 a
-a
+p
 a
 t
 "}
@@ -263,7 +239,7 @@ e
 j
 o
 o
-q
+S
 a
 a
 a
@@ -286,21 +262,21 @@ s
 e
 a
 p
+p
+p
 a
-a
-a
-q
+S
 a
 s
 s
 "}
 (18,1,1) = {"
 e
-a
-a
-a
-a
-a
+p
+p
+p
+p
+p
 a
 a
 s

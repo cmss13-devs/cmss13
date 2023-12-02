@@ -19,7 +19,7 @@
 	dir = 1;
 	icon_state = "metal_3"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "aC" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -34,13 +34,13 @@
 "aO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "aY" = (
 /obj/structure/tunnel{
 	id = "hole3"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "bc" = (
 /obj/structure/machinery/vending/snack,
@@ -61,7 +61,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "by" = (
-/turf/closed/wall/rock/brown,
+/turf/closed/wall/shiva/ice,
 /area/lv624/ground/caves/west_caves)
 "bF" = (
 /obj/item/stool,
@@ -90,11 +90,11 @@
 	dir = 1;
 	faction_group = list("CLF")
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "ca" = (
 /obj/structure/largecrate/supply/supplies/flares,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "ch" = (
 /obj/structure/surface/rack,
@@ -125,7 +125,7 @@
 	stat = 1
 	},
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/lazarus/crashed_ship)
 "eD" = (
 /obj/structure/surface/table/woodentable,
@@ -139,7 +139,7 @@
 /area/lv624/lazarus/crashed_ship)
 "eG" = (
 /obj/structure/largecrate/random/barrel/red,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "eT" = (
 /turf/closed/shuttle/ert{
@@ -219,11 +219,11 @@
 /area/lv624/lazarus/crashed_ship)
 "gn" = (
 /obj/structure/girder/displaced,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/lazarus/crashed_ship)
 "gt" = (
 /obj/structure/largecrate/random/barrel/yellow,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "gv" = (
 /obj/item/stack/rods,
@@ -340,7 +340,7 @@
 	dir = 1;
 	icon_state = "metal_2"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "jr" = (
 /turf/open/floor/almayer{
@@ -359,7 +359,7 @@
 	dir = 4;
 	icon_state = "sandbag_2"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "jH" = (
 /obj/structure/surface/table/woodentable,
@@ -397,11 +397,11 @@
 "jS" = (
 /obj/structure/girder/displaced,
 /obj/item/stack/rods,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "kj" = (
 /obj/structure/largecrate/random/barrel/white,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "kp" = (
 /obj/item/stack/rods,
@@ -455,7 +455,7 @@
 	dir = 4;
 	icon_state = "sandbag_3"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "lh" = (
 /obj/item/stack/rods,
@@ -467,7 +467,7 @@
 /area/lv624/lazarus/crashed_ship)
 "lj" = (
 /obj/item/tool/shovel/spade,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "ll" = (
 /obj/structure/surface/table/almayer,
@@ -519,7 +519,7 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_9_1"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "mK" = (
 /obj/structure/girder/displaced,
@@ -637,7 +637,7 @@
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_2"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "qU" = (
 /obj/item/ammo_magazine/smg/fp9000,
@@ -650,10 +650,10 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_7_1"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "ro" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/lazarus/crashed_ship)
 "rw" = (
 /obj/item/stack/rods,
@@ -668,7 +668,7 @@
 /area/lv624/lazarus/crashed_ship)
 "sj" = (
 /obj/item/stack/rods,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "sH" = (
 /obj/structure/surface/table/woodentable,
@@ -684,7 +684,7 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "sT" = (
 /obj/structure/barricade/metal/wired{
@@ -694,7 +694,7 @@
 	dir = 8;
 	icon_state = "metal_1"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "tc" = (
 /obj/structure/barricade/metal/wired{
@@ -708,7 +708,7 @@
 /area/lv624/lazarus/crashed_ship)
 "te" = (
 /obj/item/tool/pickaxe,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "tB" = (
 /obj/structure/bed/chair,
@@ -723,7 +723,7 @@
 /area/lv624/lazarus/crashed_ship)
 "uq" = (
 /obj/item/tool/warning_cone,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "ur" = (
 /obj/item/stack/rods,
@@ -773,7 +773,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "vw" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/west_barrens)
 "vO" = (
 /obj/structure/girder/reinforced,
@@ -859,10 +859,10 @@
 /area/lv624/lazarus/crashed_ship)
 "xs" = (
 /obj/effect/landmark/corpsespawner/wysec,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/lazarus/crashed_ship)
 "xu" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/south_west_barrens)
 "xF" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -982,7 +982,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Ab" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "Ac" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_medic,
@@ -1023,7 +1023,7 @@
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "Bc" = (
 /turf/open/floor{
@@ -1049,7 +1049,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "BY" = (
 /obj/structure/cargo_container/arious/leftmid,
@@ -1087,7 +1087,7 @@
 	id = "clf_umbilical_1";
 	name = "\improper Umbillical Airlock"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/lazarus/crashed_ship)
 "CZ" = (
 /turf/open/floor/almayer{
@@ -1278,7 +1278,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Hj" = (
-/turf/closed/wall/rock/brown,
+/turf/closed/wall/shiva/ice,
 /area/lv624/ground/caves/south_west_caves)
 "HN" = (
 /turf/open/floor/almayer{
@@ -1367,7 +1367,7 @@
 /obj/item/toy/beach_ball{
 	desc = "Round and Big! Just like...."
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "Kg" = (
 /turf/closed/shuttle/ert{
@@ -1421,7 +1421,7 @@
 /area/lv624/lazarus/crashed_ship)
 "LV" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/west_caves)
 "Mm" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -1579,7 +1579,7 @@
 /area/lv624/lazarus/crashed_ship)
 "OU" = (
 /obj/structure/machinery/floodlight,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "OZ" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1674,7 +1674,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Qp" = (
 /obj/item/stack/rods,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/lazarus/crashed_ship)
 "Qs" = (
 /obj/structure/barricade/metal/wired{
@@ -1739,7 +1739,7 @@
 "Sy" = (
 /obj/structure/girder,
 /obj/item/stack/rods,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/lazarus/crashed_ship)
 "SG" = (
 /turf/closed/shuttle/ert,
@@ -1783,7 +1783,7 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_7_1"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "TN" = (
 /obj/structure/surface/rack,
@@ -1836,7 +1836,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Uw" = (
 /obj/structure/largecrate/random/barrel/blue,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "UD" = (
 /obj/structure/barricade/plasteel/wired{
@@ -1889,7 +1889,7 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "shell_2_1"
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_west_caves)
 "VA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{

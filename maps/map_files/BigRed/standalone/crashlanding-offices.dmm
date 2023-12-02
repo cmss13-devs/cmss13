@@ -5,16 +5,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/e)
-"ac" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/outside/c)
-"ad" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
-/area/bigredv2/outside/c)
 "ae" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -35,17 +25,7 @@
 	},
 /area/bigredv2/outside/c)
 "ai" = (
-/turf/open/mars,
-/area/bigredv2/outside/e)
-"aj" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12"
-	},
-/area/bigredv2/outside/e)
-"ak" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/e)
 "al" = (
 /turf/open/floor{
@@ -53,15 +33,8 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/e)
-"am" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/outside/e)
 "an" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_9"
-	},
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/c)
 "ao" = (
 /turf/open/floor{
@@ -95,9 +68,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
 "at" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
-	},
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/e)
 "au" = (
 /obj/effect/landmark/crap_item,
@@ -1075,28 +1046,14 @@
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/office_complex)
-"ds" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
-/area/bigredv2/outside/se)
 "dt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	icon_state = "mars_dirt_12"
-	},
-/area/bigredv2/outside/se)
-"du" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	icon_state = "mars_dirt_8"
-	},
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/se)
 "dv" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/se)
 "dw" = (
 /turf/open/floor{
@@ -1634,8 +1591,8 @@
 /area/bigredv2/outside/office_complex)
 
 (1,1,1) = {"
-ac
-ad
+an
+an
 ao
 aH
 aH
@@ -1661,8 +1618,8 @@ cX
 cX
 "}
 (2,1,1) = {"
-ac
-ad
+an
+an
 ah
 ap
 ap
@@ -1688,8 +1645,8 @@ cX
 ap
 "}
 (3,1,1) = {"
-ac
-ad
+an
+an
 ah
 ap
 aI
@@ -1715,8 +1672,8 @@ cX
 ap
 "}
 (4,1,1) = {"
-ac
-ad
+an
+an
 au
 as
 aJ
@@ -1742,8 +1699,8 @@ cX
 ap
 "}
 (5,1,1) = {"
-ac
-ad
+an
+an
 ah
 as
 aK
@@ -1769,8 +1726,8 @@ cX
 ap
 "}
 (6,1,1) = {"
-ac
-ad
+an
+an
 ah
 as
 aL
@@ -1796,8 +1753,8 @@ cX
 ap
 "}
 (7,1,1) = {"
-ac
-ad
+an
+an
 ah
 ap
 aJ
@@ -1823,8 +1780,8 @@ aB
 ap
 "}
 (8,1,1) = {"
-ac
-ad
+an
+an
 ah
 ap
 aM
@@ -1850,8 +1807,8 @@ ap
 ap
 "}
 (9,1,1) = {"
-ac
-ad
+an
+an
 ah
 ap
 ap
@@ -1877,7 +1834,7 @@ dl
 dr
 "}
 (10,1,1) = {"
-ac
+an
 an
 ah
 cX
@@ -2009,7 +1966,7 @@ bv
 dT
 cF
 do
-ds
+dv
 "}
 (15,1,1) = {"
 cX
@@ -2036,7 +1993,7 @@ bc
 bc
 dh
 dp
-du
+dv
 "}
 (16,1,1) = {"
 aA
@@ -2174,8 +2131,8 @@ Ha
 PR
 "}
 (21,1,1) = {"
-ak
-am
+at
+at
 aA
 aG
 dX
@@ -2255,8 +2212,8 @@ Ha
 dq
 "}
 (24,1,1) = {"
-aj
-am
+at
+at
 aA
 aG
 aG

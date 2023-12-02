@@ -395,26 +395,14 @@
 	},
 /area/bigredv2/outside/space_port)
 "bh" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
-"bi" = (
-/turf/open/mars,
-/area/bigredv2/outside/nw)
-"bj" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
-/area/bigredv2/outside/nw)
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/nw)
 "bl" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/nw)
 "bm" = (
 /turf/open/floor{
@@ -452,21 +440,9 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/nw)
-"bs" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12"
-	},
-/area/bigredv2/outside/nw)
-"bt" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13"
-	},
-/area/bigredv2/outside/nw)
 "bu" = (
 /obj/structure/fence,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/nw)
 "bv" = (
 /turf/open/floor{
@@ -491,7 +467,7 @@
 /area/bigredv2/outside/nw)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/nw)
 "bz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -501,21 +477,11 @@
 	},
 /area/bigredv2/outside/nw)
 "bA" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
-	},
-/area/bigredv2/outside/nw)
-"bB" = (
-/obj/structure/fence,
-/turf/open/mars{
-	icon_state = "mars_dirt_10"
-	},
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/nw)
 "bC" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/nw)
 "bD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -619,10 +585,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/nw)
-"bT" = (
-/obj/structure/fence,
-/turf/open/mars,
-/area/bigredv2/outside/nw)
 "bU" = (
 /turf/open/floor{
 	dir = 4;
@@ -638,9 +600,7 @@
 /area/bigredv2/outside/nw)
 "bW" = (
 /obj/structure/fence,
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/nw)
 "bX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -658,15 +618,8 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/nw)
-"ca" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_9"
-	},
-/area/bigredv2/outside/nw)
 "cb" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_14"
-	},
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/nw)
 "cc" = (
 /obj/effect/decal/cleanable/blood,
@@ -675,6 +628,10 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
+"yo" = (
+/obj/structure/fence,
+/turf/open/auto_turf/snow/layer3,
+/area/bigredv2/outside/nw)
 "Dc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/template_noop,
@@ -699,7 +656,7 @@ bY
 Dc
 bY
 bY
-bi
+cb
 "}
 (2,1,1) = {"
 ab
@@ -709,18 +666,18 @@ aC
 aM
 aU
 ac
-bi
-bt
-bj
+cb
+bA
+bA
 bC
-bj
+bA
 bY
 bY
 Dc
 bY
 bY
 bY
-bi
+cb
 "}
 (3,1,1) = {"
 ac
@@ -730,18 +687,18 @@ aD
 aN
 ac
 ac
-bj
-bk
+bA
+bC
 bu
 bu
 bu
-bT
-bT
+bW
+bW
 bE
 bn
-bi
-bi
-bi
+cb
+cb
+cb
 "}
 (4,1,1) = {"
 ac
@@ -757,12 +714,12 @@ bu
 bD
 bF
 bm
-bT
+bW
 bZ
 bX
-bi
-bi
-bi
+cb
+cb
+cb
 "}
 (5,1,1) = {"
 ad
@@ -778,12 +735,12 @@ bu
 bE
 bH
 bP
-bT
+bW
 bZ
 bn
-bi
-bi
-bi
+cb
+cb
+cb
 "}
 (6,1,1) = {"
 ae
@@ -799,12 +756,12 @@ bu
 bE
 bI
 bQ
-bT
+bW
 bE
 bn
 by
-bi
-bi
+cb
+cb
 "}
 (7,1,1) = {"
 ac
@@ -820,12 +777,12 @@ bu
 bE
 bJ
 bn
-bT
+bW
 bE
 bn
-bi
-bi
-bi
+cb
+cb
+cb
 "}
 (8,1,1) = {"
 ac
@@ -940,8 +897,8 @@ aJ
 aQ
 aY
 ac
-bs
-bs
+cb
+bA
 bl
 bE
 bM
@@ -961,8 +918,8 @@ aA
 aR
 aZ
 ac
-bi
-bi
+cb
+cb
 bA
 bE
 bM
@@ -982,9 +939,9 @@ aw
 aK
 ba
 ai
-bi
-bi
-bA
+cb
+cb
+cb
 bE
 bN
 bz
@@ -1003,18 +960,18 @@ aA
 aA
 bb
 ai
-bi
-bi
-bB
+cb
+cb
+bW
 bE
 bG
 bn
 bu
 bu
-bs
-bs
-bl
-bl
+cb
+cb
+cb
+cb
 "}
 (17,1,1) = {"
 ai
@@ -1024,18 +981,18 @@ cc
 aw
 bc
 ai
-bi
-bi
-bB
+cb
+cb
+yo
 bE
 bG
 bn
 bu
-ca
-bi
-bi
 cb
-bs
+cb
+cb
+cb
+cb
 "}
 (18,1,1) = {"
 ac
@@ -1045,18 +1002,18 @@ aA
 aS
 bd
 ac
-bi
-bi
-bB
+cb
+cb
+yo
 bE
 bG
 bn
 bW
-bi
-bi
-bi
-bi
-bi
+cb
+cb
+cb
+cb
+cb
 "}
 (19,1,1) = {"
 aj
@@ -1066,16 +1023,16 @@ aL
 aT
 be
 ac
-bi
-bi
-bB
+cb
+cb
+bW
 bE
 bG
 bn
 bW
-bi
-bi
-bi
-bi
-bi
+cb
+cb
+cb
+cb
+cb
 "}

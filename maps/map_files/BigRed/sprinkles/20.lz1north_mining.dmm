@@ -1,67 +1,49 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
 "b" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "c" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /obj/item/tool/pickaxe,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "d" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "e" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "f" = (
 /obj/structure/surface/table,
 /obj/item/storage/toolbox,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "g" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "h" = (
 /obj/structure/surface/table,
 /obj/item/tool/pickaxe,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "i" = (
 /obj/item/ore,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "j" = (
 /obj/effect/decal/remains/human,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "k" = (
 /obj/structure/barricade/wooden{
@@ -69,9 +51,7 @@
 	dir = 4;
 	health = 25000
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "l" = (
 /obj/structure/surface/rack,
@@ -81,61 +61,45 @@
 /obj/item/lightstick/red,
 /obj/item/storage/box/lightstick/red,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "m" = (
 /obj/item/tool/shovel,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/outside/lz1_north_cas)
 "n" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "o" = (
 /obj/item/tool/pickaxe,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 "p" = (
 /obj/item/tool/warning_cone,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 "q" = (
 /obj/structure/surface/table,
 /obj/item/clothing/mask/gas,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 "r" = (
 /obj/structure/surface/table,
 /obj/item/pizzabox,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 "s" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 "t" = (
 /obj/structure/ore_box,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 "u" = (
 /obj/structure/sign/safety/hazard,
@@ -148,18 +112,42 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"y" = (
+/turf/open/auto_turf/ice/layer1,
+/area/bigredv2/outside/lz1_north_cas)
 "A" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer0,
+/area/bigredv2/outside/lz1_north_cas)
+"G" = (
+/obj/effect/decal/remains/human,
+/turf/open/auto_turf/ice/layer1,
+/area/bigredv2/outside/lz1_north_cas)
+"I" = (
+/obj/item/ore,
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 "P" = (
 /obj/item/ore,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+/turf/open/auto_turf/snow/layer0,
+/area/bigredv2/outside/lz1_north_cas)
+"U" = (
+/obj/item/ore,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/ice/layer1,
+/area/bigredv2/outside/lz1_north_cas)
+"V" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
 	},
+/turf/open/auto_turf/ice/layer1,
+/area/bigredv2/outside/lz1_north_cas)
+"W" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/lz1_north_cas)
 
 (1,1,1) = {"
@@ -206,8 +194,8 @@ e
 j
 e
 e
-i
-A
+I
+W
 u
 "}
 (5,1,1) = {"
@@ -218,7 +206,7 @@ e
 e
 i
 e
-e
+y
 q
 n
 "}
@@ -230,7 +218,7 @@ f
 e
 e
 e
-e
+y
 r
 n
 "}
@@ -242,7 +230,7 @@ g
 e
 i
 o
-e
+y
 s
 n
 "}
@@ -253,9 +241,9 @@ a
 h
 e
 e
-j
-e
-P
+G
+y
+U
 n
 "}
 (9,1,1) = {"
@@ -264,8 +252,8 @@ a
 a
 a
 k
-k
-e
+V
+y
 p
 t
 n
@@ -276,9 +264,9 @@ a
 a
 e
 e
-e
-k
-k
+y
+V
+V
 a
 n
 "}

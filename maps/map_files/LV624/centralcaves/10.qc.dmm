@@ -2,39 +2,7 @@
 "aD" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"bV" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"dd" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"gU" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
-"hJ" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"hP" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 11;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_central_caves)
 "hW" = (
 /obj/structure/fence,
@@ -43,168 +11,46 @@
 	icon_state = "warning"
 	},
 /area/lv624/ground/barrens/containers)
-"iS" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"kc" = (
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"ks" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 2;
-	pixel_y = 7;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"lp" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "lq" = (
-/turf/closed/wall/rock/brown,
+/turf/closed/wall/shiva/ice,
 /area/lv624/ground/barrens/west_barrens)
 "mN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/north_east_barrens)
-"oB" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "oJ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/central_caves)
-"pd" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"pC" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/barrens/north_east_barrens)
-"pR" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"qK" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"ry" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "sL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"sO" = (
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/caves/south_central_caves)
-"vC" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 6
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"vR" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_central_caves)
 "wk" = (
-/turf/closed/wall/rock/brown,
-/area/lv624/ground/caves/south_central_caves)
-"wL" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
+/turf/closed/wall/shiva/ice,
 /area/lv624/ground/caves/south_central_caves)
 "yv" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"yD" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
-"yO" = (
-/obj/effect/decal/grass_overlay/grass1,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
-"zh" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 6
-	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_central_caves)
 "An" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/ice/layer1,
 /area/lv624/ground/caves/south_central_caves)
 "AL" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"DG" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"ER" = (
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_central_caves)
 "GE" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 4;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/ice/layer1,
 /area/lv624/ground/barrens/north_east_barrens)
-"GR" = (
-/obj/effect/landmark/hunter_primary,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "Is" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/ice/layer1,
 /area/lv624/ground/caves/central_caves)
-"Jf" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"JB" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
-"JX" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
 "JZ" = (
 /obj/structure/fence,
 /turf/open/floor{
@@ -213,7 +59,7 @@
 	},
 /area/lv624/ground/barrens/containers)
 "KX" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/west_barrens)
 "Od" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -221,11 +67,10 @@
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 1
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_central_caves)
 "Oe" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/ice/layer1,
 /area/lv624/ground/caves/central_caves)
 "Pd" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
@@ -233,88 +78,45 @@
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 1
 	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_central_caves)
-"PB" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "Rx" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/ice/layer1,
 /area/lv624/ground/caves/south_central_caves)
 "Tu" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 8
-	},
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/ice/layer1,
 /area/lv624/ground/caves/south_central_caves)
-"Uu" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = 4;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"UB" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "Vd" = (
 /obj/effect/landmark/hunter_primary,
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 9
-	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_central_caves)
 "VY" = (
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
-	pixel_x = -10;
-	pixel_y = -2;
-	light_on = 1;
-	light_range = 1;
-	light_system = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/south_central_caves)
-"Xj" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/ice/layer1,
 /area/lv624/ground/caves/south_central_caves)
 "XV" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/south_central_caves)
 "ZM" = (
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 4
-	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/north_east_barrens)
 "ZU" = (
-/obj/effect/decal/grass_overlay/grass1/inner{
-	dir = 5
-	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/caves/central_caves)
 
 (1,1,1) = {"
-PB
-qK
-dd
-DG
+ZU
+yv
+XV
+XV
 Vd
-ER
-ER
-wL
-Xj
-qK
+VY
+VY
+XV
+XV
+yv
 XV
 sL
 XV
@@ -328,16 +130,16 @@ wk
 wk
 "}
 (2,1,1) = {"
-PB
-qK
-JB
+ZU
+yv
+XV
 Rx
-ER
-ks
-ER
-ER
-hJ
-qK
+VY
+VY
+VY
+VY
+XV
+yv
 XV
 XV
 XV
@@ -351,16 +153,16 @@ lq
 KX
 "}
 (3,1,1) = {"
-PB
-qK
-JB
-ER
-ER
-sO
-sO
+ZU
+yv
+XV
+VY
+VY
 wk
-hJ
-qK
+wk
+wk
+XV
+yv
 XV
 XV
 XV
@@ -374,12 +176,12 @@ KX
 KX
 "}
 (4,1,1) = {"
-PB
+ZU
 aD
 wk
 wk
-sO
-sO
+wk
+wk
 wk
 wk
 wk
@@ -459,8 +261,8 @@ wk
 wk
 Tu
 yv
-qK
-qK
+yv
+yv
 wk
 wk
 lq
@@ -480,9 +282,9 @@ wk
 wk
 wk
 wk
-ER
-wL
-Xj
+VY
+XV
+XV
 XV
 AL
 wk
@@ -502,10 +304,10 @@ wk
 wk
 wk
 wk
-ER
-kc
-ER
-hJ
+VY
+VY
+VY
+XV
 XV
 XV
 wk
@@ -524,11 +326,11 @@ wk
 wk
 wk
 wk
-sO
-ER
-ER
-ER
-hJ
+wk
+VY
+VY
+VY
+XV
 XV
 XV
 wk
@@ -546,12 +348,12 @@ wk
 wk
 wk
 wk
-sO
-sO
-ks
-ER
-bV
-zh
+wk
+wk
+VY
+VY
+XV
+XV
 XV
 XV
 wk
@@ -568,12 +370,12 @@ wk
 wk
 wk
 wk
-sO
-sO
-sO
-ER
-ER
-hJ
+wk
+wk
+wk
+VY
+VY
+XV
 sL
 XV
 XV
@@ -591,13 +393,13 @@ wk
 wk
 wk
 wk
-sO
-ER
-ER
+wk
+VY
+VY
 Rx
-ER
-GR
-Xj
+VY
+Vd
+XV
 XV
 XV
 wk
@@ -615,12 +417,12 @@ wk
 wk
 wk
 wk
-sO
-ER
-ER
-ER
-ER
-hJ
+wk
+VY
+VY
+VY
+VY
+XV
 XV
 XV
 wk
@@ -638,12 +440,12 @@ XV
 wk
 wk
 wk
-pd
-iS
-ER
-ER
-ER
-hJ
+VY
+VY
+VY
+VY
+VY
+XV
 XV
 XV
 wk
@@ -662,11 +464,11 @@ XV
 wk
 wk
 wk
-sO
-sO
-ER
-hP
-hJ
+wk
+wk
+VY
+VY
+XV
 XV
 wk
 wk
@@ -686,10 +488,10 @@ XV
 wk
 wk
 wk
-sO
-ER
-ER
-hJ
+wk
+VY
+VY
+XV
 XV
 wk
 wk
@@ -709,10 +511,10 @@ sL
 XV
 XV
 wk
-sO
-ER
-Jf
-hJ
+wk
+VY
+VY
+XV
 XV
 wk
 wk
@@ -732,11 +534,11 @@ XV
 XV
 XV
 Od
-ER
-ER
-ER
-wL
-Xj
+VY
+VY
+VY
+XV
+XV
 XV
 wk
 wk
@@ -755,17 +557,17 @@ XV
 XV
 XV
 Od
-ER
-ER
+VY
+VY
 VY
 Rx
-hJ
+XV
 XV
 wk
 wk
 "}
 (21,1,1) = {"
-PB
+ZU
 XV
 XV
 XV
@@ -778,17 +580,17 @@ XV
 XV
 sL
 Pd
-ER
-ER
-ER
-ER
-hJ
+VY
+VY
+VY
+VY
+XV
 XV
 wk
 wk
 "}
 (22,1,1) = {"
-PB
+ZU
 XV
 sL
 XV
@@ -801,18 +603,18 @@ XV
 XV
 XV
 Od
-ER
+VY
 Rx
-ER
-JX
-hJ
+VY
+VY
+XV
 XV
 wk
 wk
 "}
 (23,1,1) = {"
-PB
-PB
+ZU
+ZU
 XV
 XV
 wk
@@ -824,18 +626,18 @@ wk
 XV
 XV
 Od
-ER
-ry
-ER
-bV
-zh
+VY
+VY
+VY
+XV
+XV
 XV
 wk
 wk
 "}
 (24,1,1) = {"
-PB
-PB
+ZU
+ZU
 XV
 XV
 wk
@@ -847,18 +649,18 @@ wk
 wk
 wk
 wk
-pR
-ER
-ER
-hJ
+VY
+VY
+VY
+XV
 XV
 wk
 wk
 wk
 "}
 (25,1,1) = {"
-PB
-PB
+ZU
+ZU
 XV
 wk
 wk
@@ -867,21 +669,21 @@ wk
 wk
 wk
 wk
-sO
-sO
-ER
-ER
-ER
+wk
+wk
+VY
+VY
+VY
 Rx
-hJ
+XV
 XV
 wk
 wk
 wk
 "}
 (26,1,1) = {"
-PB
-PB
+ZU
+ZU
 XV
 wk
 wk
@@ -890,21 +692,21 @@ wk
 wk
 wk
 wk
-sO
-ER
-ER
-ER
-Uu
-ER
-hJ
+wk
+VY
+VY
+VY
+VY
+VY
+XV
 wk
 wk
 wk
 wk
 "}
 (27,1,1) = {"
-PB
-PB
+ZU
+ZU
 wk
 wk
 wk
@@ -913,20 +715,20 @@ wk
 wk
 wk
 wk
-sO
-sO
-ER
-ER
-ER
-ER
-hJ
+wk
+wk
+VY
+VY
+VY
+VY
+XV
 wk
 wk
 wk
 hW
 "}
 (28,1,1) = {"
-PB
+ZU
 oJ
 wk
 wk
@@ -939,9 +741,9 @@ wk
 wk
 wk
 wk
-ER
-ER
-ER
+VY
+VY
+VY
 wk
 wk
 wk
@@ -949,8 +751,8 @@ wk
 JZ
 "}
 (29,1,1) = {"
-PB
-UB
+ZU
+ZU
 wk
 wk
 wk
@@ -960,11 +762,11 @@ wk
 wk
 wk
 wk
-sO
-sO
+wk
+wk
 An
 An
-vC
+An
 wk
 wk
 wk
@@ -972,9 +774,9 @@ wk
 JZ
 "}
 (30,1,1) = {"
-PB
-UB
-oB
+ZU
+ZU
+VY
 wk
 wk
 wk
@@ -990,15 +792,14 @@ ZM
 ZM
 wk
 wk
-yD
-yD
+ZM
+ZM
 JZ
 "}
 (31,1,1) = {"
-PB
-gU
+ZU
+ZU
 Oe
-sO
 wk
 wk
 wk
@@ -1007,59 +808,60 @@ wk
 wk
 wk
 wk
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
+wk
+ZM
+ZM
+ZM
+ZM
+ZM
+ZM
+ZM
+ZM
 JZ
 "}
 (32,1,1) = {"
-UB
-lp
-sO
-sO
+ZU
+Oe
 wk
 wk
 wk
 wk
-sO
-sO
 wk
 wk
 wk
-yD
-yD
-yD
-yD
-yD
+wk
+wk
+wk
+wk
+ZM
+ZM
+ZM
+ZM
+ZM
 mN
-yD
+ZM
 JZ
 "}
 (33,1,1) = {"
-PB
+ZU
 ZU
 Is
-pC
-pC
-pC
-vR
-sO
-sO
 GE
-yO
+GE
+GE
+VY
 wk
-yD
-yD
-yD
-yD
-yD
-yD
-yD
-yD
+wk
+GE
+ZM
+wk
+ZM
+ZM
+ZM
+ZM
+ZM
+ZM
+ZM
+ZM
 JZ
 "}

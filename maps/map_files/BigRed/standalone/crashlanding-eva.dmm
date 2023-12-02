@@ -1,10 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
 "an" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_north)
 "at" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -14,13 +14,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars,
-/area/bigredv2/caves_north)
-"av" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars{
-	icon_state = "mars_dirt_11"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_north)
 "aw" = (
 /turf/closed/shuttle/ert{
@@ -104,7 +98,7 @@
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars,
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_north)
 "aR" = (
 /turf/open/shuttle/dropship{
@@ -314,12 +308,6 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/general_offices)
-"bz" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/caves_north)
 "bA" = (
 /obj/structure/surface/table,
 /turf/open/floor,
@@ -666,7 +654,7 @@
 "cI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/human,
-/turf/open/mars,
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/caves_north)
 "cJ" = (
 /turf/closed/shuttle/ert{
@@ -717,12 +705,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"cU" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5"
-	},
-/area/bigredv2/caves_north)
 "cV" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
@@ -942,9 +924,6 @@
 	icon_state = "wood-broken6"
 	},
 /area/bigredv2/outside/general_offices)
-"dG" = (
-/turf/open/mars,
-/area/bigredv2/outside/ne)
 "dQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -991,11 +970,7 @@
 	dir = 1;
 	icon_state = "gib6"
 	},
-/turf/open/mars,
-/area/bigredv2/outside/ne)
-"dX" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/ne)
 "ea" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1043,15 +1018,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/hydroponics)
 "ej" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/outside/ne)
-"el" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/ne)
 "em" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1076,15 +1043,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/hydroponics)
 "ey" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_8"
-	},
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/ne)
 "ez" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/ne)
 "eA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1191,9 +1154,7 @@
 /area/bigredv2/outside/general_offices)
 "xT" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6"
-	},
+/turf/open/auto_turf/snow/layer0,
 /area/bigredv2/caves_north)
 "EO" = (
 /turf/closed/shuttle/ert{
@@ -1620,7 +1581,7 @@ dC
 bU
 dS
 eN
-el
+ez
 ez
 "}
 (14,1,1) = {"
@@ -1804,7 +1765,7 @@ eg
 du
 dD
 cY
-dX
+ez
 eO
 ec
 eC
@@ -1815,7 +1776,7 @@ eF
 eF
 eF
 eF
-av
+xT
 an
 aH
 aV
@@ -1835,7 +1796,7 @@ eK
 dr
 eU
 aW
-dX
+ez
 ef
 ec
 eD
@@ -1846,7 +1807,7 @@ eF
 eF
 eF
 eF
-bz
+xT
 an
 IB
 aW
@@ -1866,7 +1827,7 @@ bU
 dc
 eJ
 bU
-dX
+ez
 eG
 eo
 eD
@@ -1877,7 +1838,7 @@ eF
 eF
 eF
 eF
-cU
+xT
 ab
 aB
 aX
@@ -1897,7 +1858,7 @@ dj
 dq
 dr
 aB
-dG
+ej
 eH
 eo
 eE
@@ -1928,7 +1889,7 @@ aB
 dv
 dF
 aB
-dG
+ej
 eh
 ep
 ep

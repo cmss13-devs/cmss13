@@ -35,7 +35,7 @@
 /area/lv624/lazarus/hydroponics)
 "bM" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/north_nexus_road)
 "ck" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -56,12 +56,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/hydroponics)
-"eU" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
-/area/lv624/ground/colony/north_nexus_road)
-"fk" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
-/area/lv624/ground/colony/south_medbay_road)
 "ft" = (
 /obj/item/clothing/gloves/marine/veteran/pmc{
 	armor_bio = 10;
@@ -103,10 +97,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/hydroponics)
-"jg" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_jungle)
 "jy" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/plating{
@@ -195,7 +185,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
 "og" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "ot" = (
 /obj/effect/landmark/crap_item,
@@ -204,7 +194,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "ou" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/north_nexus_road)
 "qe" = (
 /obj/item/stack/sheet/metal,
@@ -217,7 +207,7 @@
 /area/lv624/lazarus/hydroponics)
 "se" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/colony/south_medbay_road)
 "tK" = (
 /obj/structure/barricade/deployable{
@@ -336,10 +326,6 @@
 	icon_state = "panelscorched"
 	},
 /area/lv624/lazarus/hydroponics)
-"BL" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_jungle)
 "Cp" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/apron,
@@ -443,7 +429,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Km" = (
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "Lk" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -467,7 +453,7 @@
 /area/lv624/lazarus/hydroponics)
 "Mm" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/colony/south_medbay_road)
 "MM" = (
 /obj/structure/barricade/deployable{
@@ -649,12 +635,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"XA" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_jungle)
 "XJ" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/snow/layer2,
 /area/lv624/ground/jungle/north_jungle)
 "YJ" = (
 /obj/item/storage/firstaid,
@@ -689,11 +671,11 @@
 /area/lv624/lazarus/hydroponics)
 
 (1,1,1) = {"
-XA
-XA
-XA
-jg
-XA
+XJ
+XJ
+XJ
+XJ
+XJ
 kg
 JE
 JE
@@ -705,11 +687,11 @@ Mm
 se
 "}
 (2,1,1) = {"
-XA
-BL
-XA
-XA
-XA
+XJ
+XJ
+XJ
+XJ
+XJ
 kh
 JE
 JE
@@ -721,10 +703,10 @@ Km
 se
 "}
 (3,1,1) = {"
-XA
-XA
-XA
-BL
+XJ
+XJ
+XJ
+XJ
 YV
 zL
 Ed
@@ -753,7 +735,7 @@ Xv
 se
 "}
 (5,1,1) = {"
-XA
+XJ
 qe
 YV
 TC
@@ -766,10 +748,10 @@ OK
 OK
 xM
 zL
-fk
+og
 "}
 (6,1,1) = {"
-XA
+XJ
 Ed
 Wg
 Wg
@@ -881,7 +863,7 @@ Cq
 Cq
 "}
 (13,1,1) = {"
-XA
+XJ
 On
 IO
 Zm
@@ -897,7 +879,7 @@ YV
 ou
 "}
 (14,1,1) = {"
-XA
+XJ
 Lu
 ih
 jY
@@ -910,10 +892,10 @@ Wg
 lm
 Ed
 Lu
-eU
+ou
 "}
 (15,1,1) = {"
-XA
+XJ
 Xv
 Xv
 Ed
@@ -929,18 +911,18 @@ Cq
 bM
 "}
 (16,1,1) = {"
-XA
-XA
-XA
-XA
+XJ
+XJ
+XJ
+XJ
 Xv
 Xv
 Xv
 Xv
 Lu
 Cq
-XA
-XA
-XA
+XJ
+XJ
+XJ
 bM
 "}

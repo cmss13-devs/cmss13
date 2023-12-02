@@ -38,7 +38,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "aj" = (
-/turf/closed/wall/solaris/rock,
+/turf/closed/wall/shiva/ice,
 /area/bigredv2/caves)
 "ak" = (
 /obj/structure/closet/wardrobe/atmospherics_yellow,
@@ -127,9 +127,7 @@
 	},
 /area/bigredv2/outside/se)
 "aw" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_6"
-	},
+/turf/open/auto_turf/snow/layer1,
 /area/bigredv2/outside/se)
 "ax" = (
 /turf/open/floor{
@@ -215,9 +213,7 @@
 	},
 /area/bigredv2/outside/se)
 "aK" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/auto_turf/snow/layer2,
 /area/bigredv2/outside/se)
 "aL" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -563,7 +559,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "bK" = (
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/se)
 "bN" = (
 /obj/structure/surface/table,
@@ -573,16 +569,9 @@
 	icon_state = "darkyellow2"
 	},
 /area/bigredv2/outside/filtration_plant)
-"bO" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/outside/filtration_cave_cas)
 "bP" = (
 /obj/item/tank/air,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/filtration_cave_cas)
 "bQ" = (
 /obj/structure/surface/table,
@@ -669,15 +658,11 @@
 /area/bigredv2/outside/filtration_plant)
 "ch" = (
 /obj/structure/dispenser/oxygen,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/filtration_cave_cas)
 "ci" = (
 /obj/item/tool/warning_cone,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/filtration_cave_cas)
 "cj" = (
 /obj/item/tool/pickaxe,
@@ -686,14 +671,6 @@
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/filtration_plant)
-"ck" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner"
-	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/outside/filtration_cave_cas)
 "cl" = (
 /turf/open/floor{
 	dir = 8;
@@ -818,9 +795,7 @@
 /area/bigredv2/outside/filtration_plant)
 "tB" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/filtration_cave_cas)
 "vK" = (
 /turf/open/floor{
@@ -849,9 +824,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "zu" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/filtration_cave_cas)
 "Ap" = (
 /obj/effect/decal/cleanable/dirt,
@@ -973,9 +946,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/filtration_cave_cas)
 "US" = (
 /turf/open/floor{
@@ -1006,9 +977,7 @@
 /area/bigredv2/outside/filtration_plant)
 "WD" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/filtration_cave_cas)
 "Xx" = (
 /obj/structure/surface/table,
@@ -1428,14 +1397,14 @@ bF
 bF
 bw
 WD
-bO
+zu
 ci
-bO
-bO
+zu
+zu
 ci
-bO
-bO
-bO
+zu
+zu
+zu
 "}
 (16,1,1) = {"
 aa
@@ -1457,12 +1426,12 @@ bw
 WD
 ch
 bP
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (17,1,1) = {"
 am
@@ -1483,13 +1452,13 @@ WD
 WD
 WD
 ci
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (18,1,1) = {"
 av
@@ -1506,17 +1475,17 @@ bu
 ff
 cO
 WD
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (19,1,1) = {"
 ax
@@ -1533,17 +1502,17 @@ by
 bW
 et
 WD
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (20,1,1) = {"
 ax
@@ -1560,17 +1529,17 @@ bW
 bT
 et
 WD
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
 tB
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
 "}
 (21,1,1) = {"
 ax
@@ -1587,17 +1556,17 @@ FI
 kE
 bX
 WD
-bO
-bO
-bO
+zu
+zu
+zu
 ci
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (22,1,1) = {"
 am
@@ -1614,17 +1583,17 @@ bA
 ah
 aY
 WD
-bO
-bO
-bO
-bO
-bO
-bO
-bO
 zu
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (23,1,1) = {"
 am
@@ -1641,17 +1610,17 @@ bv
 bv
 aY
 aj
-bO
-bO
-aj
-aj
-bO
-bO
-bO
 zu
-bO
-bO
-bO
+zu
+aj
+aj
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (24,1,1) = {"
 am
@@ -1673,10 +1642,10 @@ aj
 aj
 aj
 aj
-ck
-ck
 UH
-ck
-ck
-ck
+UH
+UH
+UH
+UH
+UH
 "}

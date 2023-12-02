@@ -1,7 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/closed/wall/rock/brown,
-/area/lv624/ground/caves/north_central_caves)
 "ac" = (
 /obj/structure/largecrate/supply/ammo/shotgun,
 /turf/open/floor/wood,
@@ -131,7 +128,7 @@
 	},
 /area/lv624/ground/caves/north_central_caves)
 "aD" = (
-/turf/closed/wall/strata_ice/jungle,
+/turf/closed/wall/shiva/ice,
 /area/lv624/ground/caves/north_central_caves)
 "aE" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -405,15 +402,15 @@
 /area/lv624/ground/caves/north_central_caves)
 "Yc" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
 	phone_category = "Lazarus Landing";
-	phone_id = "Lakeside Bar"
+	phone_id = "Lakeside Bar";
+	pixel_y = 32
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 
 (1,1,1) = {"
-aa
+aD
 ah
 ah
 ah
@@ -425,7 +422,7 @@ aD
 aD
 "}
 (2,1,1) = {"
-aa
+aD
 ah
 am
 aP
@@ -437,7 +434,7 @@ aD
 aD
 "}
 (3,1,1) = {"
-aa
+aD
 ah
 an
 bg
@@ -449,7 +446,7 @@ aD
 aD
 "}
 (4,1,1) = {"
-aa
+aD
 ah
 ao
 bf
@@ -461,7 +458,7 @@ aD
 aD
 "}
 (5,1,1) = {"
-aa
+aD
 ah
 ap
 bf
@@ -473,7 +470,7 @@ ah
 ah
 "}
 (6,1,1) = {"
-aa
+aD
 ah
 aq
 bf
@@ -485,7 +482,7 @@ bf
 ah
 "}
 (7,1,1) = {"
-aa
+aD
 ah
 ar
 aC
@@ -665,7 +662,7 @@ ah
 ah
 "}
 (22,1,1) = {"
-aa
+aD
 ah
 al
 bf
@@ -677,7 +674,7 @@ UM
 aZ
 "}
 (23,1,1) = {"
-aa
+aD
 ah
 ay
 bf
@@ -689,7 +686,7 @@ ND
 aZ
 "}
 (24,1,1) = {"
-aa
+aD
 ah
 aM
 bf
@@ -701,7 +698,7 @@ qW
 aZ
 "}
 (25,1,1) = {"
-aa
+aD
 ah
 aB
 aJ
@@ -713,7 +710,7 @@ rq
 aZ
 "}
 (26,1,1) = {"
-aa
+aD
 ah
 ah
 aZ

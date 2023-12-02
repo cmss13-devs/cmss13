@@ -63,9 +63,7 @@
 /area/bigred/ground/security)
 "ie" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/auto_turf/ice/layer1,
 /area/bigredv2/outside/filtration_cave_cas)
 "kd" = (
 /obj/structure/surface/table/almayer,
@@ -323,7 +321,7 @@
 /turf/open/floor,
 /area/bigred/ground/security)
 "PS" = (
-/turf/open/mars,
+/turf/open/auto_turf/snow/layer3,
 /area/bigredv2/outside/se)
 "Qf" = (
 /obj/effect/decal/cleanable/dirt,

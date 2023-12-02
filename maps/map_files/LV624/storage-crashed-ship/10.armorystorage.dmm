@@ -80,7 +80,7 @@
 	},
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "p" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/north_east_barrens)
 "s" = (
 /obj/structure/closet/crate,
@@ -207,7 +207,7 @@
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "K" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/north_east_barrens)
 "N" = (
 /turf/open/floor{
@@ -278,7 +278,7 @@
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "X" = (
 /obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/snow/layer0,
 /area/lv624/ground/barrens/north_east_barrens)
 "Z" = (
 /obj/structure/surface/rack,

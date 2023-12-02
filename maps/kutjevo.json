@@ -29,7 +29,7 @@
 	],
 	"traits": [{ "Ground": true }],
     "nightmare_path": "maps/Nightmare/maps/Kutjevo/",
-    "camouflage": "desert",
+    "camouflage": "snow",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

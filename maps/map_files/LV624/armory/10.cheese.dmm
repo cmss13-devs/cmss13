@@ -201,7 +201,7 @@
 	},
 /area/lv624/lazarus/security)
 "z" = (
-/turf/closed/wall/strata_ice/jungle,
+/turf/closed/wall/shiva/ice,
 /area/lv624/ground/jungle/east_central_jungle)
 "A" = (
 /obj/effect/landmark/crap_item,

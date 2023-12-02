@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	slot = WEAR_FACE
 
 /datum/gear/mask/uscm/skull_balaclava_black
-	display_name = "Black Skull Balaclava"
+	display_name = "USCM balaclava, black skull"
 	path = /obj/item/clothing/mask/rebreather/skull/black
 	cost = 4
 	slot = WEAR_FACE

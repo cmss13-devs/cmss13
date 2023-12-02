@@ -248,6 +248,12 @@
 	)
 	flags_atom = NO_NAME_OVERRIDE
 
+/obj/item/clothing/shoes/royal_marine/update_icon()
+	if(stored_item)
+		icon_state = "[initial(icon_state)]-1"
+	else
+		icon_state = initial(icon_state)
+
 /obj/item/clothing/shoes/royal_marine/knife
 /obj/item/clothing/shoes/royal_marine/knife/Initialize(mapload, ...)
 	. = ..()

@@ -128,7 +128,7 @@
 		return
 	else if(duration - world.time <= STATUS_EFFECT_TIME_THRESHOLD)
 		if(!timerid || force_refresh)
-			timerid = addtimer(CALLBACK(src, PROC_REF(timer_callback)), duration - world.time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+			timerid = addtimer(CALLBACK(src, PROC_REF(timer_callback)), duration - world.time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
 	else if(timerid)
 		deltimer(timerid)
 		timerid = null

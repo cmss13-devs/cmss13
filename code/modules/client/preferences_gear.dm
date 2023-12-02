@@ -889,7 +889,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	path = /obj/item/facepaint/black
 
 /datum/gear/misc/facepaint_skull
-	display_name = "Skull Facepaint"
+	display_name = "Facepaint, skull"
 	path = /obj/item/facepaint/skull
 	cost = 3 
 

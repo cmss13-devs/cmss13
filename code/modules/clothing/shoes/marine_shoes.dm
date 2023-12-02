@@ -18,7 +18,6 @@
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	siemens_coefficient = 0.7
-	var/armor_stage = 0
 	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver, /obj/item/tool/surgery/scalpel, /obj/item/weapon/straight_razor)
 	var/knife_type
 
@@ -29,17 +28,17 @@
 	update_icon()
 
 /obj/item/clothing/shoes/marine/update_icon()
-	if(stored_item && !armor_stage)
+	if(stored_item)
 		icon_state = "[initial(icon_state)]-1"
 	else
-		if(!armor_stage)
-			icon_state = initial(icon_state)
+		icon_state = initial(icon_state)
 
 /obj/item/clothing/shoes/marine/knife
 	knife_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/jungle
 	icon_state = "marine_jungle"
+	item_state = "marine_jungle"
 	desc = "Don't go walkin' slow, the devil's on the loose."
 
 /obj/item/clothing/shoes/marine/jungle/knife
@@ -47,6 +46,7 @@
 
 /obj/item/clothing/shoes/marine/brown
 	icon_state = "marine_brown"
+	item_state = "marine_brown"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time. These are brown."
 
 /obj/item/clothing/shoes/marine/brown/knife
@@ -62,6 +62,7 @@
 /obj/item/clothing/shoes/marine/upp
 	name = "military combat boots"
 	icon_state = "marine_brown"
+	item_state = "marine_brown"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
@@ -224,6 +225,7 @@
 	name = "\improper L10 pattern combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
 	icon_state = "rmc_boots"
+	item_state = "rmc_boots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_LOW

@@ -125,13 +125,14 @@
 
 /// For use by Hunter Flay
 #define FLAY_LAYER 37
-#define UNIFORM_LAYER 36
+
+#define SHOES_LAYER 36
+#define UNIFORM_LAYER 35
 
 /// bs12 specific. this hack is probably gonna come back to haunt me
-#define TAIL_LAYER 35
+#define TAIL_LAYER 34
 
-#define ID_LAYER 34
-#define SHOES_LAYER 33
+#define ID_LAYER 33
 #define GLOVES_LAYER 32
 
 /// For splint and gauze overlays

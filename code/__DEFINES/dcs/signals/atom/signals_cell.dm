@@ -19,6 +19,13 @@
 #define COMSIG_CELL_CHECK_CHARGE "cell_check_charge"
 	#define COMPONENT_CELL_CHARGE_INSUFFICIENT (1<<0)
 
+/// (check_percent)
+#define COMSIG_CELL_CHECK_CHARGE_PERCENT "cell_check_charge_percent"
+	#define COMPONENT_CELL_CHARGE_PERCENT_INSUFFICIENT (1<<0)
+
+#define COMSIG_CELL_CHECK_FULL_CHARGE "cell_check_full_charge"
+	#define COMPONENT_CELL_CHARGE_NOT_FULL (1<<0)
+
 #define COMSIG_CELL_TRY_INSERT_CELL "cell_try_insert_cell"
 	#define COMPONENT_CANCEL_CELL_INSERT (1<<0)
 

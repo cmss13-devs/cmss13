@@ -256,6 +256,10 @@ Class Procs:
 		return src.attack_hand(user)
 
 /obj/structure/machinery/attack_hand(mob/living/user as mob)
+	. = ..()
+	if(.)
+		return
+
 	if(inoperable(MAINT))
 		return TRUE
 	if(user.is_mob_incapacitated())

@@ -54,3 +54,6 @@
 
 /// Called when an atom has emp_act called on it, from /atom/emp_act: (severity)
 #define COMSIG_ATOM_EMP_ACT "atom_emp_act"
+
+/// Called when an atom has attack_hand called on it, from /atom/attack_hand: (mob/user)
+#define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"

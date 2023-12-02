@@ -31,3 +31,10 @@
 #define COSMIG_OBJ_AFTER_BUCKLE "signal_obj_after_buckle"
 
 #define COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED "structure_crate_squad_launched"
+
+/// from /obj/structure/machinery/power_change(): (new_power_state)
+#define COMSIG_MACHINERY_POWER_CHANGE "machinery_power_change"
+
+/// from /datum/element/simple_unwrench(): (obj/item/wrench, mob/living/user)
+#define COMSIG_OBJ_TRY_UNWRENCH "obj_try_unwrench"
+	#define ELEMENT_OBJ_STOP_UNWRENCH (1<<0)

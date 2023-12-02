@@ -91,6 +91,9 @@
 		stat |= NOPOWER
 		src.update_use_power(USE_POWER_NONE)
 
+	SEND_SIGNAL(src, COMSIG_MACHINERY_POWER_CHANGE, has_power)
+	update_icon()
+
 // the powernet datum
 // each contiguous network of cables & nodes
 

@@ -69,10 +69,6 @@ IN_USE used for vending/denying
 	. = ..()
 	cm_build_inventory(get_listed_products(), 1, 3)
 
-/obj/structure/machinery/power_change(area/master_area = null)
-	..()
-	update_icon()
-
 /obj/structure/machinery/cm_vending/update_icon()
 
 	//restoring sprite to initial

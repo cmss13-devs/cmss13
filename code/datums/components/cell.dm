@@ -52,13 +52,14 @@
 	QDEL_NULL(inserted_cell)
 	return ..()
 
-
 /datum/component/cell/RegisterWithParent()
 	..()
 	RegisterSignal(parent, list(COMSIG_PARENT_ATTACKBY, COMSIG_ITEM_ATTACKED), PROC_REF(on_object_hit))
 	RegisterSignal(parent, COMSIG_CELL_ADD_CHARGE, PROC_REF(add_charge))
 	RegisterSignal(parent, COMSIG_CELL_USE_CHARGE, PROC_REF(use_charge))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_CHARGE, PROC_REF(has_charge))
+	RegisterSignal(parent, COMSIG_CELL_CHECK_CHARGE_PERCENT, PROC_REF(has_charge_percent))
+	RegisterSignal(parent, COMSIG_CELL_CHECK_FULL_CHARGE, PROC_REF(has_full_charge))
 	RegisterSignal(parent, COMSIG_CELL_START_TICK_DRAIN, PROC_REF(start_drain))
 	RegisterSignal(parent, COMSIG_CELL_STOP_TICK_DRAIN, PROC_REF(stop_drain))
 	RegisterSignal(parent, COMSIG_CELL_REMOVE_CELL, PROC_REF(remove_cell))
@@ -193,6 +194,20 @@
 
 	if(charge < charge_amount)
 		return COMPONENT_CELL_CHARGE_INSUFFICIENT
+
+/datum/component/cell/proc/has_charge_percent(datum/source, check_percent = 0)
+	SIGNAL_HANDLER
+
+	var/charge_percent = charge / max_charge
+
+	if(check_percent > charge_percent)
+		return COMPONENT_CELL_CHARGE_PERCENT_INSUFFICIENT
+
+/datum/component/cell/proc/has_full_charge(datum/source)
+	SIGNAL_HANDLER
+
+	if(charge < max_charge)
+		return COMPONENT_CELL_CHARGE_NOT_FULL
 
 /datum/component/cell/proc/on_charge_empty()
 	stop_drain()

@@ -10,6 +10,8 @@
 	var/list/debris
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
+	/// If this structure takes time to wrench/unwrench
+	var/has_wrench_delay = TRUE
 	health = 100
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
@@ -19,6 +21,9 @@
 	. = ..()
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
+
+	if(wrenchable)
+		AddElement(/datum/element/simple_unwrench, has_wrench_delay)
 
 /obj/structure/Destroy()
 	//before ..() because the parent does loc = null
@@ -36,14 +41,6 @@
 		if(user.wall_smash)
 			visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
 			deconstruct(FALSE)
-
-/obj/structure/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		if(user.action_busy)
-			return TRUE
-		toggle_anchored(W, user)
-		return TRUE
-	..()
 
 /obj/structure/ex_act(severity, direction)
 	if(indestructible)
@@ -206,22 +203,6 @@
 		to_chat(user, SPAN_NOTICE("You need hands for this."))
 		return 0
 	return 1
-
-/obj/structure/proc/toggle_anchored(obj/item/W, mob/user)
-	if(!wrenchable)
-		to_chat(user, SPAN_WARNING("The [src] cannot be [anchored ? "un" : ""]anchored."))
-		return FALSE
-	else
-		// Wrenching is faster if we are better at engineering
-		var/timer = max(10, 40 - user.skills.get_skill_level(SKILL_ENGINEER) * 10)
-		if(do_after(usr, timer, INTERRUPT_ALL, BUSY_ICON_BUILD))
-			anchored = !anchored
-			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			if(anchored)
-				user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
-			else
-				user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
-			return TRUE
 
 /obj/structure/get_applying_acid_time()
 	if(unacidable)

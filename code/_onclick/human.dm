@@ -86,6 +86,7 @@
 	return HANDLE_CLICK_PASS_THRU
 
 /atom/proc/attack_hand(mob/user)
+	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user)
 	return
 
 /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/living/user)

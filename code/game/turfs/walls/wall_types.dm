@@ -69,11 +69,8 @@
 
 /turf/closed/wall/almayer/reinforced/temphull/Initialize()
 	. = ..()
-	GLOB.hijack_bustable_hull += src
-
-/turf/closed/wall/almayer/reinforced/temphull/Destroy()
-	GLOB.hijack_bustable_hull -= src
-	return ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(de_hull))
 
 /turf/closed/wall/almayer/reinforced/temphull/proc/de_hull()
 	hull = FALSE

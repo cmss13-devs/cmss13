@@ -189,7 +189,6 @@
 			debriscooldown = 6
 		debriscooldown--
 		new /obj/effect/particle_effect/expl_particles(impact_tile)
-
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 	for(var/atom/movable/explosion_effect in affected_atom)
 		if(iscarbon(explosion_effect))
@@ -209,6 +208,7 @@
 		explosion_effect.throw_random_direction(1)
 	//sleep(11) //speed of sound simulation
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
+
 
 //laser battery
 

@@ -145,8 +145,8 @@
 	point_cost = 275
 	fire_mission_delay = 1
 	travelling_time = 30
-	var/bullet_spread_range = 2 
-	var/directhit_damage = 90 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
+	var/bullet_spread_range = 3 //3 from 4
+	var/directhit_damage = 80 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	var/penetration = 10 //AP value pretty much
 	var/holo_stacks = 100
 	var/slow_duration = 3
@@ -170,39 +170,44 @@
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact)
 	set waitfor = 0
 	var/list/turf_list = list()
-	for(var/turf/T in range(bullet_spread_range, impact))
-		turf_list += T
+	for(var/turf/turf in range(bullet_spread_range, impact))
+		turf_list += turf
 	var/soundplaycooldown = 0
 	var/debriscooldown = 0
+	var/list/affected_atom = list()
 	for(var/i = 1 to ammo_used_per_firing)
 		var/turf/impact_tile = pick(turf_list) //no sleep
 		turf_list -= impact_tile//moved it from here
-		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-		for(var/atom/movable/explosion_effect in impact_tile)
-			if(iscarbon(explosion_effect))
-				var/mob/living/carbon/bullet_effect = explosion_effect
-				bullet_effect.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
-				bullet_effect.adjust_effect(slow_duration, SUPERSLOW)
-				if(isxeno(bullet_effect))
-					var/mob/living/carbon/xenomorph/xenomorph = bullet_effect
-					xenomorph.AddComponent(/datum/component/toxic_buildup,acid_per_hit, xenomorph.armor_deflection*max_armor_reduction)
-					xenomorph.plasma_stored = max(xenomorph.plasma_stored - plasma_drain_hit, 0)
-					if(xenomorph.interference < max_interference)
-						xenomorph.interference = max(max_interference, xenomorph.interference)
-					xenomorph.AddComponent(/datum/component/healing_reduction, healing_reduction_duration)
-				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
-			else
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)//moved this
-		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
-			soundplaycooldown = 3
-		soundplaycooldown--
+		for(var/atom/movable/atom in impact_tile)
+			affected_atom += atom
+		//if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
+		//	playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
+		//	soundplaycooldown = 3
+		//soundplaycooldown--
 		if(!debriscooldown)
 			impact_tile.ceiling_debris_check(1)
 			debriscooldown = 6
 		debriscooldown--
 		new /obj/effect/particle_effect/expl_particles(impact_tile)
-	sleep(11) //speed of sound simulation
+
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+	for(var/atom/movable/explosion_effect in affected_atom)
+		if(iscarbon(explosion_effect))
+			var/mob/living/carbon/bullet_effect = explosion_effect
+			bullet_effect.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
+			bullet_effect.adjust_effect(slow_duration, SUPERSLOW)
+			if(isxeno(bullet_effect))
+				var/mob/living/carbon/xenomorph/xenomorph = bullet_effect
+				xenomorph.AddComponent(/datum/component/toxic_buildup,acid_per_hit, xenomorph.armor_deflection*max_armor_reduction)
+				xenomorph.plasma_stored = max(xenomorph.plasma_stored - plasma_drain_hit, 0)
+				if(xenomorph.interference < max_interference)
+					xenomorph.interference = max(max_interference, xenomorph.interference)
+				xenomorph.AddComponent(/datum/component/healing_reduction, healing_reduction_duration)
+			bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
+		else
+			explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)//moved this
+		explosion_effect.throw_random_direction(1)
+	//sleep(11) //speed of sound simulation
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 
 //laser battery

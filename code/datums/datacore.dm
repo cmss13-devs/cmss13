@@ -304,18 +304,19 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	medical += record_medical
 
 	//Security Record
-	var/datum/data/record/S = new()
-	S.fields["id"] = id
-	S.fields["name"] = H.real_name
-	S.fields["criminal"] = "None"
-	S.fields["incident"] = ""
-	S.fields["ref"] = WEAKREF(H)
+	var/datum/data/record/record_security = new()
+	record_security.fields["id"] = id
+	record_security.fields["name"] = target.real_name
+	record_security.name = target.real_name
+	record_security.fields["criminal"] = "None"
+	record_security.fields["incident"] = ""
+	record_security.fields["ref"] = WEAKREF(target)
 
-	if(H.sec_record && !jobban_isbanned(H, "Records"))
-		var/new_comment = list("entry" = H.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
-		S.fields["comments"] = list("1" = new_comment)
-		S.fields["notes"] = H.sec_record
-	security += S
+	if(target.sec_record && !jobban_isbanned(target, "Records"))
+		var/new_comment = list("entry" = target.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
+		record_security.fields["comments"] = list("1" = new_comment)
+		record_security.fields["notes"] = target.sec_record
+	security += record_security
 
 
 	//Locked Record

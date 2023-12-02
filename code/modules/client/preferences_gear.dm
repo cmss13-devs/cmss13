@@ -162,7 +162,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	path = /obj/item/clothing/mask/rebreather/scarf/tan
 
 /datum/gear/mask/uscm/skull_balaclava_blue
-	display_name = "Blue Skull Balaclava"
+	display_name = "USCM balaclava, blue skull"
 	path = /obj/item/clothing/mask/rebreather/skull
 	cost = 4 //same as skull facepaint
 	slot = WEAR_FACE

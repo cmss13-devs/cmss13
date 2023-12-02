@@ -37,10 +37,6 @@
 #define COMSIG_MOB_FIRED_GUN_ATTACHMENT "mob_fired_gun_attachment"
 /// From /mob/proc/death
 #define COMSIG_MOB_DEATH "mob_death"
-/// From /mob/proc/update_canmove()
-#define COMSIG_MOB_GETTING_UP "mob_getting_up"
-/// From /mob/proc/update_canmove()
-#define COMSIG_MOB_KNOCKED_DOWN "mob_knocked_down"
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
 /// From /obj/item/proc/unequipped()
@@ -85,8 +81,6 @@
 #define COMSIG_MOB_DEAFENED "mob_deafened"
 //from /mob/proc/on_deafness_loss()
 #define COMSIG_MOB_REGAINED_HEARING "mob_regained_hearing"
-
-#define COMSIG_MOB_POST_UPDATE_CANMOVE "mob_can_move"
 
 #define COMSIG_ATTEMPT_MOB_PULL "attempt_mob_pull"
 	#define COMPONENT_CANCEL_MOB_PULL (1<<0)

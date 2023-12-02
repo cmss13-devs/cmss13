@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/device/aicard,\
 	var/clone_weapon = null
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(H.stat || H.lying) continue
+		if(H.stat) continue
 // possible_clones += H
 		clone = H
 		break //changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.

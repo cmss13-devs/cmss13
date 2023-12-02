@@ -1,0 +1,5 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - rscadd: "\"Infernal\" name prefix for xeno who rolls number 666"
+  - code_imp: "Refactors xeno name generation. Larva name generation and removes some istype(src)"

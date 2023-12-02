@@ -37,18 +37,14 @@
 	to_chat(src, SPAN_XENOWARNING("You burrow yourself into the ground."))
 	invisibility = 101
 	anchored = TRUE
-	density = FALSE
 	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
 		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 		RegisterSignal(src, list(
 				COMSIG_LIVING_FLAMER_CROSSED,
 				COMSIG_LIVING_FLAMER_FLAMED,
 		), PROC_REF(flamer_crossed_immune))
-	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Burrow"))
-	ADD_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
-	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_ABILITY("Burrow"))
+	add_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
-	update_canmove()
 	update_icons()
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	burrow_timer = world.time + 90 // How long we can be burrowed
@@ -74,19 +70,15 @@
 				COMSIG_LIVING_FLAMER_CROSSED,
 				COMSIG_LIVING_FLAMER_FLAMED,
 		))
-	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Burrow"))
-	REMOVE_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
-	REMOVE_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_ABILITY("Burrow"))
+	remove_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	invisibility = FALSE
 	anchored = FALSE
-	density = TRUE
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 	for(var/mob/living/carbon/mob in loc)
 		if(!can_not_harm(mob))
 			mob.apply_effect(2, WEAKEN)
 
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
-	update_canmove()
 	update_icons()
 
 /mob/living/carbon/xenomorph/proc/do_burrow_cooldown()
@@ -185,6 +177,7 @@
 		return
 
 	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
+	new_name = replace_non_alphanumeric_plus(new_name)
 	if(new_name)
 		new_name = "[new_name] ([get_area_name(T)])"
 		log_admin("[key_name(src)] has renamed the tunnel \"[T.tunnel_desc]\" as \"[new_name]\".")

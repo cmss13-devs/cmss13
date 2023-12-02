@@ -84,7 +84,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up1";
 	vector_x = -19;
-	vector_y = 98
+	vector_y = 99
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
@@ -171,7 +171,7 @@
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Up1";
 	vector_x = -19;
-	vector_y = 98
+	vector_y = 99
 	},
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
@@ -2419,7 +2419,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up1";
 	vector_x = -19;
-	vector_y = 98
+	vector_y = 99
 	},
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
@@ -3149,12 +3149,12 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/projector{
 	name = "Almayer_Up4";
 	vector_x = -19;
-	vector_y = 104
+	vector_y = 103
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
@@ -3266,7 +3266,7 @@
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Up4";
 	vector_x = -19;
-	vector_y = 104
+	vector_y = 103
 	},
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
@@ -3539,7 +3539,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up4";
 	vector_x = -19;
-	vector_y = 104
+	vector_y = 103
 	},
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
@@ -4621,7 +4621,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up1";
 	vector_x = -19;
-	vector_y = 98
+	vector_y = 99
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
@@ -7608,7 +7608,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up4";
 	vector_x = -19;
-	vector_y = 104
+	vector_y = 103
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
@@ -13148,7 +13148,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up1";
 	vector_x = -19;
-	vector_y = 98
+	vector_y = 99
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0
@@ -13161,7 +13161,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up1";
 	vector_x = -19;
-	vector_y = 98
+	vector_y = 99
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
@@ -13593,7 +13593,7 @@
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Up1";
 	vector_x = -19;
-	vector_y = 98
+	vector_y = 99
 	},
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
@@ -13805,15 +13805,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
-"bff" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
-	pixel_y = 29
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/briefing)
 "bfl" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -25613,7 +25604,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up1";
 	vector_x = -19;
-	vector_y = 98
+	vector_y = 99
 	},
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
@@ -25905,12 +25896,12 @@
 /area/almayer/powered)
 "cno" = (
 /obj/structure/stairs,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/projector{
 	name = "Almayer_Up1";
 	vector_x = -19;
-	vector_y = 98
+	vector_y = 99
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
@@ -26304,6 +26295,15 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
+"cru" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/briefing)
 "crB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -29313,13 +29313,6 @@
 "dvT" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/brig/general_equipment)
-"dwh" = (
-/obj/structure/disposalpipe/up/almayer{
-	dir = 8;
-	id = "almayerlink"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/port_hallway)
 "dwl" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -33542,7 +33535,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up4";
 	vector_x = -19;
-	vector_y = 104
+	vector_y = 103
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0
@@ -37459,9 +37452,6 @@
 	},
 /area/almayer/shipboard/brig/processing)
 "gBk" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/bed/chair/comfy/alpha{
 	dir = 8
 	},
@@ -44582,7 +44572,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up4";
 	vector_x = -19;
-	vector_y = 104
+	vector_y = 103
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
@@ -47100,10 +47090,6 @@
 	icon_state = "plating"
 	},
 /area/almayer/engineering/engine_core)
-"klF" = (
-/obj/structure/lattice,
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/upper_hull/u_m_s)
 "klH" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -54297,9 +54283,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
 "mUm" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/bed/chair/comfy/bravo{
 	dir = 4
 	},
@@ -60236,7 +60219,7 @@
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Up4";
 	vector_x = -19;
-	vector_y = 104
+	vector_y = 103
 	},
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
@@ -67357,6 +67340,9 @@
 	pixel_x = 12;
 	pixel_y = 6
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -68228,10 +68214,6 @@
 /area/almayer/living/synthcloset)
 "sos" = (
 /obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/sign/safety/stairs{
 	pixel_x = 8;
@@ -69579,10 +69561,10 @@
 	},
 /area/almayer/living/briefing)
 "sRh" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -71104,6 +71086,10 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "almayerlink"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green"
@@ -71769,7 +71755,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up4";
 	vector_x = -19;
-	vector_y = 104
+	vector_y = 103
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
@@ -74899,7 +74885,7 @@
 /obj/effect/projector{
 	name = "Almayer_Up4";
 	vector_x = -19;
-	vector_y = 104
+	vector_y = 103
 	},
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
@@ -79125,6 +79111,9 @@
 "wnl" = (
 /obj/structure/bed/chair/comfy/alpha,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/firealarm{
+	pixel_y = 28
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -84242,6 +84231,9 @@
 /area/almayer/hull/upper_hull/u_m_p)
 "yjo" = (
 /obj/structure/bed/chair/comfy/bravo,
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+	pixel_y = 29
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -110220,7 +110212,7 @@ aaa
 aaa
 bdH
 aaC
-klF
+lYA
 nJd
 nJd
 nJd
@@ -119915,7 +119907,7 @@ bFu
 iUk
 lBL
 uZA
-vKe
+cru
 rpf
 jMa
 pXi
@@ -120283,7 +120275,7 @@ yfy
 ugV
 vUi
 bdd
-bff
+sRh
 dgu
 ciP
 lFI
@@ -123177,7 +123169,7 @@ wVy
 vra
 vra
 nsy
-dwh
+bHY
 kro
 nsY
 ymg

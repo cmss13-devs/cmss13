@@ -103,7 +103,7 @@
 		list("Flare Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/flare/full, VENDOR_ITEM_REGULAR),
 		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", round(scale * 2), /obj/item/storage/pouch/sling, VENDOR_ITEM_REGULAR),
-		list("Machete Pouch (Full)", 0.5, /obj/item/storage/pouch/machete/full, VENDOR_ITEM_REGULAR),
+		list("Machete Pouch (Full)", 1, /obj/item/storage/pouch/machete/full, VENDOR_ITEM_REGULAR),
 		list("Bayonet Pouch", round(scale * 2), /obj/item/storage/pouch/bayonet, VENDOR_ITEM_REGULAR),
 		list("Medium General Pouch", round(scale * 2), /obj/item/storage/pouch/general/medium, VENDOR_ITEM_REGULAR),
 		list("Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine, VENDOR_ITEM_REGULAR),

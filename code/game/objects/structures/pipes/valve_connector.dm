@@ -6,6 +6,7 @@
 	level = 1
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH)
+	wrenchable = FALSE
 
 /obj/structure/pipes/valve/create_valid_directions()
 	valid_directions = list(dir, turn(dir, 180))
@@ -42,6 +43,7 @@
 	level = 1
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH, WEST)
+	wrenchable = FALSE
 
 /obj/structure/pipes/tvalve/bypass
 	icon_state = "map_tvalve1"
@@ -101,6 +103,7 @@
 	dir = SOUTH
 	valid_directions = list(SOUTH)
 	level = 1
+	wrenchable = FALSE
 
 /obj/structure/pipes/portables_connector/New()
 	valid_directions = list(dir)

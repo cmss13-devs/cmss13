@@ -4,6 +4,7 @@
 	anchored = TRUE
 	layer = ATMOS_DEVICE_LAYER
 	plane = FLOOR_PLANE
+	wrenchable = TRUE
 
 	var/list/connected_to = list()
 	var/list/valid_directions = list(NORTH, SOUTH, EAST, WEST)
@@ -58,7 +59,7 @@
 	. = ..()
 
 /obj/structure/pipes/attackby(obj/item/W, mob/user)
-	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH) || !wrenchable)
 		return ..()
 
 	var/turf/T = src.loc

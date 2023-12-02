@@ -20,6 +20,7 @@
 	density = FALSE
 	level = 1
 	name = "Gas filter"
+	wrenchable = FALSE
 
 /obj/structure/pipes/trinary/filter/Initialize()
 	. = ..()

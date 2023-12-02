@@ -5,6 +5,7 @@
 	icon_state = "freezer_0"
 	density = TRUE
 	anchored = TRUE
+	wrenchable = FALSE
 
 	var/opened = 0 //for deconstruction
 

@@ -120,6 +120,7 @@
 	dir = SOUTH
 	valid_directions = list(SOUTH)
 	density = TRUE
+	wrenchable = FALSE
 	var/actual_icon_state = "air"
 
 /obj/structure/pipes/standard/tank/New()

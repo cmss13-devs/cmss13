@@ -27,12 +27,15 @@
 	var/charge_overlay_icon
 	/// Ref to the mutable appearance that we use as an overlay for the parent if we're using charge_overlays
 	var/mutable_appearance/charge_overlay
+	/// If things can be inserted/removed while the parent is unanchored
+	var/unanchored_use = FALSE
 
 /datum/component/recharger/Initialize(
 	valid_items,
 	override_charge_amount,
 	charge_overlays,
 	charge_overlay_icon,
+	unanchored_use,
 )
 	. = ..()
 	if(!istype(parent, /obj/structure/machinery))
@@ -55,6 +58,9 @@
 
 	if(override_charge_amount)
 		charge_amount = override_charge_amount
+
+	if(!isnull(unanchored_use))
+		src.unanchored_use = unanchored_use
 
 /datum/component/recharger/Destroy(force, silent)
 	QDEL_NULL(inserted_item)

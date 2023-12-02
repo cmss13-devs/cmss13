@@ -1,5 +1,6 @@
 /datum/element/simple_unwrench
 	element_flags = ELEMENT_DETACH|ELEMENT_BESPOKE
+	id_arg_index = 2
 	/// If we have a delay or if the wrenching is instant
 	var/has_delay = TRUE
 
@@ -7,7 +8,7 @@
 	. = ..()
 	if(!isobj(target))
 		return ELEMENT_INCOMPATIBLE
-	RegisterSignal(target, COMaSIG_PARENT_ATTACKBY, PROC_REF(on_attack))
+	RegisterSignal(target, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attack))
 
 	if(!isnull(has_wrench_delay))
 		has_delay = has_wrench_delay
@@ -23,7 +24,7 @@
 		return
 
 	if(SEND_SIGNAL(source, COMSIG_OBJ_TRY_UNWRENCH, weapon, user) & ELEMENT_OBJ_STOP_UNWRENCH)
-		return
+		return COMPONENT_NO_AFTERATTACK
 
 	if(has_delay && user.action_busy)
 		return

@@ -1,6 +1,7 @@
 /obj/structure/pipes/binary
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH)
+	wrenchable = FALSE
 
 /obj/structure/pipes/binary/create_valid_directions()
 	switch(dir)

@@ -92,7 +92,7 @@
 
 
 /// Number of marine players against which the Marines' gear scales
-#define MARINE_GEAR_SCALING_NORMAL 40
+#define MARINE_GEAR_SCALING_NORMAL 50
 
 #define RESOURCE_NODE_SCALE 95 //How many players minimum per extra set of resource nodes
 #define RESOURCE_NODE_QUANTITY_PER_POP 11 //How many resources total per pop

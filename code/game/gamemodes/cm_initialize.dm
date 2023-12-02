@@ -950,7 +950,7 @@ Additional game mode variables.
 ///Updates the [/datum/game_mode/var/gear_scale] multiplier based on joining and cryoing marines
 /datum/game_mode/proc/update_gear_scale(delta)
 	// Magic inverse function that guarantees marines still get good supplies for latejoins within first ~30 minutes but stalls starting 2 hours or so
-	gear_scale += delta * (0.25 + 0.75 / (1 + ROUND_TIME / 20000)) / MARINE_GEAR_SCALING_LATEJOIN
+	gear_scale += delta * (0.25 + 0.75 / (1 + ROUND_TIME / 20000)) / MARINE_GEAR_SCALING_NORMAL
 	var/gear_delta = gear_scale - gear_scale_max
 	if(gear_delta > 0)
 		gear_scale_max = gear_scale

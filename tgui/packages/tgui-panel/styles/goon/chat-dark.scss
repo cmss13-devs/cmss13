@@ -1205,18 +1205,17 @@ em {
 
 .role_header {
   color: #e92d2d;
-  display: block;
   text-align: center;
   font-weight: bold;
-  font-family: trebuchet-ms;
-  font-size: 150%;
+  font-size: 140%;
+  padding: 0em 1em;
 }
 
 .role_body {
   color: #3a3ae9;
-  display: block;
-  text-align: center;
-  font-size: 125%;
+  text-align: justify;
+  font-size: 110%;
+  padding: 0em 1em;
 }
 
 .round_header {

@@ -40,16 +40,16 @@
 	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, SPAN_BOLD("You started off in the Neroid Sector as a colonist seeking work at one of the established colonies."))
-	to_chat(H, SPAN_BOLD("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
-	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
-	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
+	to_chat(H, role_body("You started off in the Neroid Sector as a colonist seeking work at one of the established colonies."))
+	to_chat(H, role_body("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
+	to_chat(H, role_body("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
+	to_chat(H, role_body("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Despite this, you have been tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.")))
+		to_chat(H, role_body("Despite this, you have been tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way."))
+		to_chat(H, role_body("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile."))
 	else
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed.</b>")))
+		to_chat(H, role_body("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME].."))
+		to_chat(H, role_body("Ensure they are not destroyed.</b>"))
 
 /datum/emergency_call/mercs/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -65,17 +65,19 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/leader, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are the Freelancer leader!"))
+		to_chat(H, role_header("You are the Freelancer leader!"))
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/medic, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer Medic!"))
+		to_chat(H, role_header("You are a Freelancer Medic!"))
 	else
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/standard, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer Mercenary!"))
+		to_chat(H, role_header("You are a Freelancer Mercenary!"))
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	sleep(1 SECONDS)
+	to_chat(H, role_header("Your objectives are:"))
+	to_chat(H, role_body("[objectives]"))
 
 /datum/emergency_call/mercs/platoon
 	name = "Freelancers (Platoon)"
@@ -121,16 +123,16 @@
 	objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, SPAN_BOLD("You started off in the Neroid Sector as an experienced miner seeking work at one of the established colonies."))
-	to_chat(H, SPAN_BOLD("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
-	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
-	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
+	to_chat(H, role_body("You started off in the Neroid Sector as an experienced miner seeking work at one of the established colonies."))
+	to_chat(H, role_body("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
+	to_chat(H, role_body("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
+	to_chat(H, role_body("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Despite this, you have been specially tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.")))
+		to_chat(H, role_body("Despite this, you have been specially tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way."))
+		to_chat(H, role_body("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile."))
 	else
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed.</b>")))
+		to_chat(H, role_body("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME].."))
+		to_chat(H, role_body("Ensure they are not destroyed.</b>"))
 
 /datum/emergency_call/heavy_mercs/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -146,22 +148,24 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/leader, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are the Elite Mercenary leader!"))
+		to_chat(H, role_header("You are the Elite Mercenary leader!"))
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/medic, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary Medic!"))
+		to_chat(H, role_header("You are an Elite Mercenary Medic!"))
 	else if(engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/engineer, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary Engineer!"))
+		to_chat(H, role_header("You are an Elite Mercenary Engineer!"))
 	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/heavy, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary Specialist!"))
+		to_chat(H, role_header("You are an Elite Mercenary Specialist!"))
 	else
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/standard, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary!"))
+		to_chat(H, role_header("You are an Elite Mercenary!"))
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	sleep(1 SECONDS)
+	to_chat(H, role_header("Your objectives are:"))
+	to_chat(H, role_body("[objectives]"))

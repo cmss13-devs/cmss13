@@ -22,5 +22,5 @@
 
 	sleep(20)
 	if(H && H.loc)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Zombie!"))
-		to_chat(H, SPAN_ROLE_BODY("Spread... Consume... Infect..."))
+		to_chat(H, role_header("You are a Zombie!"))
+		to_chat(H, role_body("Spread... Consume... Infect..."))

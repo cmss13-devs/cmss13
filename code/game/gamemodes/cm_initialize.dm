@@ -953,7 +953,6 @@ Additional game mode variables.
 	gear_scale += delta * (0.25 + 0.75 / (1 + ROUND_TIME / 20000)) / MARINE_GEAR_SCALING_NORMAL
 	var/gear_delta = gear_scale - gear_scale_max
 	if(gear_delta > 0)
-		log_debug("SUPPLY DEBUG - gear_scale increasing from [gear_scale_max] to [gear_scale]") // FIXME Remove this
 		gear_scale_max = gear_scale
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(gear_scale_max)

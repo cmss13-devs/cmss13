@@ -376,10 +376,8 @@
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
-
 	for(var/number in 1 to 999)
 		available_nicknumbers += number
-
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 

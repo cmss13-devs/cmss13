@@ -773,7 +773,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 				if(supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable)
 					continue //Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_pack/name]'>[supply_pack.name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
+				temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)

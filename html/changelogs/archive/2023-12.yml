@@ -5,3 +5,22 @@
   - rscdel: Removed flame particles. Possibly increases performance for some players.
   Zonespace27:
   - bugfix: Resin holes can no longer be planted below stairs
+2023-12-02:
+  567Turtle:
+  - rscadd: Brown boots and gloves are now vendable from the surplus vendors.
+  Birdtalon:
+  - rscadd: '"Infernal" name prefix for xeno who rolls number 666'
+  - code_imp: Refactors xeno name generation. Larva name generation and removes some
+      istype(src)
+  - bugfix: 'Restricts burrower tunnels to alphanumeric characters as some other characters
+      break the tunnel.
+
+      code; Adds new proc to replace non alphanumeric or space characters.'
+  Morrow:
+  - code_imp: Corrected a check to avoid repeat work in /datum/asset/spritesheet/vending_products/register()
+  realforest2001:
+  - rscadd: Added disguisable listening bugs/devices. MPs have two outside CMP office,
+      the CL has two in their bedroom.
+  - bugfix: Fixes incorrect frequencies being used to display channel names on radios.
+  - bugfix: Radios and tape recorders placed on tables or placed inside webbing can
+      now hear speech again.

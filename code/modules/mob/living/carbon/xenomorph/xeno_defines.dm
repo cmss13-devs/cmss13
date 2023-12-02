@@ -376,11 +376,12 @@
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
-	if(hivenumber != XENO_HIVE_NORMAL)
-		return
 
 	for(var/number in 1 to 999)
 		available_nicknumbers += number
+
+	if(hivenumber != XENO_HIVE_NORMAL)
+		return
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
 

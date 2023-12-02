@@ -21,6 +21,7 @@
 	var/use_points = TRUE
 	var/fabricating = FALSE
 	var/broken = FALSE
+	var/contraband = FALSE
 
 	var/list/purchase_log = list()
 
@@ -281,9 +282,12 @@
 		list("Charlie Squad", 15, /obj/item/device/encryptionkey/charlie, "white", "Radio Key for USCM Charlie Squad."),	
 		list("Delta Squad", 15, /obj/item/device/encryptionkey/delta, "white", "Radio Key for USCM Delta Squad."),
 		list("Echo Squad", 15, /obj/item/device/encryptionkey/echo, "white", "Radio Key for USCM Echo Squad."),	
-		list("W-Y PMC", 20, /obj/item/device/encryptionkey/pmc, "white", "Radio Key for Weyland-Yutani PMC Combat Comms."),
 		list("Colony", 20, /obj/item/device/encryptionkey/colony, "white", "Pre-tuned Radio Key for local colony comms."),	
-		list("CONTRABAND: Colonial Marshals", 40, /obj/item/device/encryptionkey/cmb, "white", "Radio Key for the CMB."),	
-		list("CONTRABAND: Colonial Liberation Front", 40, /obj/item/device/encryptionkey/clf, "white", "Radio Key for known local CLF frequencies."),	
-		list("CONTRABAND: Union of Progressive Peoples", 40, /obj/item/device/encryptionkey/upp, "white", "Radio Key for known UPP listening frequencies."),
+
+		if (contraband)
+			list("CONTRABAND", 0, null, null, null),
+			list("W-Y PMC", 20, /obj/item/device/encryptionkey/pmc, "white", "Radio Key for Weyland-Yutani PMC Combat Comms."),
+			list("CONTRABAND: Colonial Marshals", 40, /obj/item/device/encryptionkey/cmb, "white", "Radio Key for the CMB."),	
+			list("CONTRABAND: Colonial Liberation Front", 40, /obj/item/device/encryptionkey/clf, "white", "Radio Key for known local CLF frequencies."),	
+			list("CONTRABAND: Union of Progressive Peoples", 40, /obj/item/device/encryptionkey/upp, "white", "Radio Key for known UPP listening frequencies."),
 	)

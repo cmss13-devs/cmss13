@@ -392,7 +392,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/mendoza_status = TRUE
 
 	/// How many processing intervals do we get random crates for each pool. Currently only [ASRS_POOL_MAIN] gets scaled amount of crates.
-	var/list/base_random_crate_intervals = list(ASRS_POOL_MAIN = 10, ASRS_POOL_FOOD = 40)
+	var/list/base_random_crate_intervals = list(ASRS_POOL_MAIN = 10, ASRS_POOL_FOOD = 60)
 	/// How many partial crates are stored in ASRS per pool to smooth amount given out
 	var/list/random_crates_carry = list()
 	/// Pools mapped to list of random ASRS packs that belong to it

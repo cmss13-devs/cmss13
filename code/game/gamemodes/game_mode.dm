@@ -19,6 +19,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	var/config_tag = null
 	var/votable = TRUE
 	var/vote_cycle = null
+	var/min_players = null
 	var/probability = 0
 	var/list/datum/mind/modePlayer = new
 	var/required_players = 0

@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes /spec_kit/asrs (now /spec_kit/rifleman) not allowing use."
+  - code_imp: "Adds back-end functionality for token redeeming on cm_vending vendors, and moves synth experimental tools token to use it."
+  - rscadd: "Spec tokens are real."

@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "fixed a runtime in /datum/component/healing_reduction/process(delta_time)"

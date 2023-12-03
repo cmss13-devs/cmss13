@@ -19,7 +19,7 @@
 	/// whether we're currently transforming the host into a zombie.
 	var/zombie_transforming = 0
 	/// to make sure we don't spam messages too often.
-	var/goo_message_cooldown = 0
+	//var/goo_message_cooldown = 0
 	/// tells a dead infectee their stage, so they can know when-abouts they'll revive
 	var/stage_counter = 0
 
@@ -29,6 +29,12 @@
 	var/stage_level = 0
 	/// variable that handle passive increase of the virus of an host.
 	var/infection_rate = 1
+
+//cooldown
+
+	var/message_cooldown_time = 100
+	COOLDOWN_DECLARE(goo_message_cooldown)
+	COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 /datum/disease/black_goo/stage_act()
 	..()
@@ -60,37 +66,42 @@
 			if(H.stat == DEAD && stage_counter != stage)
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage One! Zombie transformation begins at Stage Three."))
 				stage_counter = stage
-			if(goo_message_cooldown < world.time )
-				if(prob(5))
-					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
-					goo_message_cooldown = world.time + 100
-					stage_level += 4
-				else if(prob(3))
-					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
-					goo_message_cooldown = world.time + 100
-					stage_level += 2
+
+			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
+				return
+			COOLDOWN_RESET(src, goo_message_cooldown)
+
+			if(prob(5))
+				to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
+				stage_level += 4
+			else if(prob(3))
+				to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
+				stage_level += 2
 
 		if(2)
 			if(H.stat == DEAD && stage_counter != stage)
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Two! Zombie transformation begins at Stage Three."))
 				stage_counter = stage
-			if(goo_message_cooldown < world.time)
-				if (prob(5))
-					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-					stage_level += 10
-				else if (prob(6))
-					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
-					stage_level += 5
-				else if (prob(2))
-					to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
-					stage_level += 20
-				else if (prob(2))
-					H.vomit_on_floor()
-					stage_level += 15
-				else if(prob(3))
-					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
-					stage_level += 4
-				goo_message_cooldown = world.time + 100
+
+			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
+				return
+			COOLDOWN_RESET(src, goo_message_cooldown)
+
+			if (prob(5))
+				to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
+				stage_level += 10
+			else if (prob(6))
+				to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
+				stage_level += 5
+			else if (prob(2))
+				to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
+				stage_level += 20
+			else if (prob(2))
+				H.vomit_on_floor()
+				stage_level += 15
+			else if(prob(3))
+				to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
+				stage_level += 4
 
 		if(3)
 			//check if your already a zombie just return to avoid weird stuff... if for some weird reason first filter deoesn't work...

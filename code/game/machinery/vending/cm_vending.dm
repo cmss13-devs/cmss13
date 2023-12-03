@@ -441,13 +441,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	tgui_interact(user)
 
 /// Handles redeeming coin tokens.
-/obj/structure/machinery/cm_vending/attackby(obj/item/attacking_item, mob/user)
-	if(!istype(attacking_item, /obj/item/coin/marine))
-		..()
-	if(!can_access_to_vend(user, ignore_hack = TRUE))
-		return FALSE
-	redeem_token(attacking_item, user)
-
 /obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/coin/marine/token, mob/user)
 	var/reward_typepath
 	switch(token.token_type)
@@ -765,6 +758,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 			return FALSE
 		hack_access(user)
 		return TRUE
+
+	///If we want to redeem a token
+	else if(istype(W, /obj/item/coin/marine))
+		if(!can_access_to_vend(user, ignore_hack = TRUE))
+			return FALSE
+		redeem_token(W, user)
+		return FALSE
 
 	..()
 

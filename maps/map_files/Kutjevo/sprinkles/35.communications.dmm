@@ -108,10 +108,6 @@
 	dir = 1
 	},
 /area/template_noop)
-"qI" = (
-/obj/structure/window/framed/kutjevo,
-/turf/open/space/basic,
-/area/template_noop)
 "qM" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/blood/oil,
@@ -492,7 +488,7 @@ Re
 EK
 "}
 (5,1,1) = {"
-qI
+EK
 wC
 rG
 LO
@@ -506,7 +502,7 @@ cm
 YO
 "}
 (6,1,1) = {"
-qI
+EK
 rm
 lZ
 nn

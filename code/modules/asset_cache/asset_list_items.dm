@@ -315,7 +315,9 @@
 			log_debug("not atom! [item]")
 			continue
 
-		if (sprites[icon_file])
+		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
+
+		if(sprites[imgid])
 			continue
 
 		if(icon_state in icon_states(icon_file))
@@ -339,7 +341,6 @@
 				item = new k()
 				I = icon(item.icon, item.icon_state, SOUTH)
 				qdel(item)
-		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
 
 		Insert(imgid, I)
 	return ..()

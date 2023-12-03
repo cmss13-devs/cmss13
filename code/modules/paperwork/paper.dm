@@ -569,6 +569,10 @@
 	name = "crumpled note"
 	info = "<b>there is cotten candy in the walls</b>"
 
+/obj/item/paper/bigred/lambda
+	name = "ripped diary entry"
+	info = "Director Smith's Diary\nEntry Date: 15 December 2181\nToday, I've felt true progress! The XX-121 reproduction program is in full effect, and Administrator Cooper have given us the all clear to continue producing specimens. To think that all this is coming from just that first specimen, a single 'Queen' form... It's grown to almost 5 meters tall and shows no signs of ceasing egg production! These creatures will be the next Synthetic of our time, we'll show those Seegson bastards."
+
 /obj/item/paper/bigred/union
 	name = "Shaft miners union"
 	info = "Today we have had enough of being underpaid and treated like shit for not reaching the higher up's unreasonable quotas of ore. They say this place has a \"sea of valuable ores,\" yet we have been mining for years and are yet to find a single diamond. We have had it, enough is enough. They think they can control everything we do, they thought wrong! We, the oppressed workers, shall rise up against the capitalist dogs in a mutiny and take back our pay by force. \n If they send their dogs here to bust us, we will kill each and every single one of them."

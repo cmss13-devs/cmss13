@@ -389,6 +389,7 @@
 
 /mob/living/carbon/xenomorph/queen/Initialize()
 	. = ..()
+	SStracking.set_leader("hive_[hivenumber]", src)
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 		notify_ghosts(header = "New Queen", message = "A new Queen has risen.", source = src, action = NOTIFY_ORBIT)
@@ -409,8 +410,10 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 
-/mob/living/carbon/xenomorph/queen/handle_name(datum/hive_status/in_hive)
-	var/name_prefix = in_hive.prefix
+/mob/living/carbon/xenomorph/queen/generate_name()
+	if(!nicknumber)
+		generate_and_set_nicknumber()
+	var/name_prefix = hive.prefix
 	if(queen_aged)
 		age_xeno()
 		switch(age)
@@ -439,10 +442,15 @@
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = in_hive.color
+	color = hive.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
+
+/mob/living/carbon/xenomorph/queen/set_hive_and_update(new_hivenumber)
+	if(!..())
+		return FALSE
+	update_living_queens()
 
 /mob/living/carbon/xenomorph/queen/proc/make_combat_effective()
 	queen_aged = TRUE

@@ -365,6 +365,8 @@
 	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
+	var/list/available_nicknumbers = list()
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
@@ -376,6 +378,9 @@
 		internal_faction = name
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
+
+	for(var/number in 1 to 999)
+		available_nicknumbers += number
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
 

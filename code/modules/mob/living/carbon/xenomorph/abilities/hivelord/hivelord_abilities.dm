@@ -18,7 +18,7 @@
 
 /datum/action/xeno_action/active_toggle/toggle_speed/can_use_action()
 	var/mob/living/carbon/xenomorph/hivelord/xeno = owner
-	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled)
+	if(xeno && !xeno.is_mob_incapacitated() && xeno.body_position == STANDING_UP && !xeno.buckled) // do we rly need standing up?
 		return TRUE
 
 /datum/action/xeno_action/active_toggle/toggle_speed/give_to(mob/living/living_mob)

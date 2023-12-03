@@ -222,7 +222,7 @@
 
 ///Attempt to move while inside
 /obj/structure/machinery/disposal/relaymove(mob/living/user)
-	if(user.stat || user.stunned || user.knocked_down || flushing)
+	if(user.is_mob_incapacitated(TRUE) || flushing)
 		return FALSE
 	if(user.loc == src)
 		go_out(user)
@@ -234,9 +234,8 @@
 		user.client.eye = user.client.mob
 		user.client.perspective = MOB_PERSPECTIVE
 	user.forceMove(loc)
-	user.stunned = max(user.stunned, 2)  //Action delay when going out of a bin
-	user.update_canmove() //Force the delay to go in action immediately
-	if(!user.lying)
+	user.apply_effect(2, STUN)
+	if(user.mobility_flags & MOBILITY_MOVE)
 		user.visible_message(SPAN_WARNING("[user] suddenly climbs out of [src]!"),
 		SPAN_WARNING("You climb out of [src] and get your bearings!"))
 		update()
@@ -305,8 +304,7 @@
 		if(isliving(AM))
 			var/mob/living/living = AM
 			living.Stun(2)
-			living.update_canmove() //Force the delay to go in action immediately
-			if(!living.lying)
+			if(living.body_position == STANDING_UP)
 				living.visible_message(SPAN_WARNING("[living] is suddenly pushed out of [src]!"),
 				SPAN_WARNING("You get pushed out of [src] and get your bearings!"))
 	update()

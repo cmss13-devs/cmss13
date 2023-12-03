@@ -87,9 +87,6 @@
 	var/exploit_record = ""
 
 	var/gibbing = FALSE
-	var/lying = FALSE
-	var/lying_prev = 0
-	var/canmove = 1
 	var/lastpuke = 0
 	unacidable = FALSE
 	var/mob_size = MOB_SIZE_HUMAN

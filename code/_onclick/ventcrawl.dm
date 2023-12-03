@@ -45,7 +45,7 @@
 		to_chat(src, SPAN_WARNING("You must be conscious to do this!"))
 		return
 
-	if(lying)
+	if(is_mob_incapacitated())
 		to_chat(src, SPAN_WARNING("You can't vent crawl while you're stunned!"))
 		return
 
@@ -88,7 +88,7 @@
 			return
 
 		updatehealth()
-		if(stat || stunned || dazed || knocked_down || lying || health < 0 || !client || !ventcrawl_carry())
+		if(is_mob_incapacitated(src) || health < 0 || !client || !ventcrawl_carry())
 			vent_found.animate_ventcrawl_reset()
 			return
 

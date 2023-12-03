@@ -49,9 +49,9 @@
 
 	if(!isxeno(M))
 		if(insta_neuro)
-			if(M.knocked_down < 3)
+			if(M.GetKnockDownValueNotADurationDoNotUse() < 3) // If they have less than somewhere random between 4 and 6 seconds KD left and assuming it doesnt get refreshed itnernally
 				M.adjust_effect(1 * power, WEAKEN)
-			return
+				return
 
 		if(ishuman(M))
 			M.apply_effect(2.5, SUPERSLOW)
@@ -65,7 +65,7 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.knocked_down < 5)
+			if(M.GetKnockDownValueNotADurationDoNotUse() < 5) // If they have less than somewhere random between 8 and 10 seconds KD left and assuming it doesnt get refreshed itnernally
 				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
@@ -79,7 +79,7 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		if(M.knocked_down < 0.7) // apply knockdown only if current knockdown is less than 0.7 second
+		if(M.GetKnockDownValueNotADurationDoNotUse() < 0.7) // basically (knocked_down && prob(90))
 			M.apply_effect(0.7, WEAKEN)
 			M.visible_message(SPAN_DANGER("[M] falls prone."))
 

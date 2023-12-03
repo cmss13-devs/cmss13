@@ -132,7 +132,7 @@
 	"Would you like to [density ? "open" : "close"] this [src.name]?[ alarmed && density ? "\nNote that by doing so, you acknowledge any damages from opening this\n[src.name] as being your own fault, and you will be held accountable under the law." : ""]",\
 	"\The [src]", list("Yes", "No")) != "Yes")
 		return
-	if(user.is_mob_incapacitated() || (!user.canmove && !isRemoteControlling(user)) || (get_dist(src, user) > 1  && !isRemoteControlling(user)))
+	if(user.is_mob_incapacitated() || (get_dist(src, user) > 1  && !isRemoteControlling(user)))
 		to_chat(user, "Sorry, you must remain able bodied and close to \the [src] in order to use it.")
 		return
 	if(density && (inoperable())) //can still close without power

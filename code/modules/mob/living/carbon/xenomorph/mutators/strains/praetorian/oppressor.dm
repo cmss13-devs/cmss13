@@ -52,14 +52,12 @@
 	var/tearing_damage = 15
 
 /datum/behavior_delegate/oppressor_praetorian/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
-
 	if(target_carbon.stat == DEAD)
 		return
 
-	if(!(target_carbon.knocked_down || HAS_TRAIT(target_carbon, TRAIT_IMMOBILIZED) || target_carbon.slowed))
-		return
+	// impaired in some capacity
+	if(!(target_carbon.mobility_flags & MOBILITY_STAND) || !(target_carbon.mobility_flags & MOBILITY_MOVE) || target_carbon.slowed)
+		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, tearing_damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected ? bound_xeno.zone_selected : "chest")
+		target_carbon.visible_message(SPAN_DANGER("[bound_xeno] tears into [target_carbon]!"))
+		playsound(bound_xeno, 'sound/weapons/alien_tail_attack.ogg', 25, TRUE)
 
-	target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, tearing_damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected ? bound_xeno.zone_selected : "chest")
-	target_carbon.visible_message(SPAN_DANGER("[bound_xeno] tears into [target_carbon]!"))
-	playsound(bound_xeno, 'sound/weapons/alien_tail_attack.ogg', 25, TRUE)
-	return

@@ -223,7 +223,7 @@
 	user.remove_filter("synth_protective_form")
 
 
-/obj/item/storage/backpack/marine/smartpack/proc/immobile_form(mob/user)
+/obj/item/storage/backpack/marine/smartpack/proc/immobile_form(mob/living/user)
 	if(activated_form)
 		return
 

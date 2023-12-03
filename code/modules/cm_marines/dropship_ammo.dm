@@ -169,7 +169,7 @@
 
 	for(var/i = 1 to ammo_used_per_firing)
 		sleep(1)
-		for(var/j = 1 to 2) //rather than halving the sleep, were doubling the bullets shot "bang"
+		for(var/j in 1 to 2) //rather than halving the sleep, were doubling the bullets shot "bang"
 			var/turf/impact_tile = pick(turf_list)
 			var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 			impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)

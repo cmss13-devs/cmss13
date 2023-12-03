@@ -299,3 +299,21 @@
 	name = "liaison's winter coat"
 	desc = "A Weyland-Yutani winter coat. Only the best comfort for the liaison in a cold environment."
 	icon_state = "snowsuit_liaison"
+
+/obj/item/clothing/suit/storage/snow_suit/liaison/modified
+	name = "modified liaison's winter coat"
+	desc = "A Weyland-Yutani winter coat. This one has been modified to holster guns and other objects. Only the best comfort and utility for the liaison surviving in a cold, hostile environment."
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+	)

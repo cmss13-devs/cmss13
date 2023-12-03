@@ -63,6 +63,7 @@
 		src.unanchored_use = unanchored_use
 
 /datum/component/recharger/Destroy(force, silent)
+	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(inserted_item)
 
 	if(charge_overlay)

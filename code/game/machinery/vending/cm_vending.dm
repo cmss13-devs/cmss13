@@ -763,8 +763,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 	else if(istype(W, /obj/item/coin/marine))
 		if(!can_access_to_vend(user, ignore_hack = TRUE))
 			return FALSE
-		redeem_token(W, user)
-		return FALSE
+		. = redeem_token(W, user)
+		return
 
 	..()
 

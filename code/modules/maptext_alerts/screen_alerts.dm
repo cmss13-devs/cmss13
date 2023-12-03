@@ -71,10 +71,17 @@
 	fade_out_time = 0.5 SECONDS
 
 /atom/movable/screen/text/screen_text/command_order/tutorial/end_play()
-	if(!player?.mob || !HAS_TRAIT(player.mob, TRAIT_IN_TUTORIAL))
-		for(var/atom/movable/screen/text/screen_text/command_order/tutorial/tutorial_message in player.screen_texts)
-			LAZYREMOVE(player.screen_texts, tutorial_message)
-			qdel(tutorial_message)
+	if(!player)
+		qdel(src)
+		return
+
+	if(player.mob || HAS_TRAIT(player.mob, TRAIT_IN_TUTORIAL))
+		return ..()
+
+	for(var/atom/movable/screen/text/screen_text/command_order/tutorial/tutorial_message in player.screen_texts)
+		LAZYREMOVE(player.screen_texts, tutorial_message)
+		qdel(tutorial_message)
+
 	return ..()
 
 ///proc for actually playing this screen_text on a mob.

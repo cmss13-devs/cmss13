@@ -21,8 +21,8 @@
 
 /datum/tutorial/ss13/intents/proc/require_help()
 	tutorial_mob.a_intent_change(INTENT_DISARM)
-	message_to_player("Your intent has been changed off of <b>help</b>. Change back to it by pressing <b>1</b>.")
-	update_objective("Change to help intent by pressing 1.")
+	message_to_player("Your intent has been changed off of <b>help</b>. Change back to it by pressing <b>[retrieve_bind("select_help_intent")]</b>.")
+	update_objective("Change to help intent by pressing [retrieve_bind("select_help_intent")].")
 
 	RegisterSignal(tutorial_mob, COMSIG_MOB_INTENT_CHANGE, PROC_REF(on_help_intent))
 
@@ -54,8 +54,8 @@
 	REMOVE_TRAIT(tutorial_dummy, TRAIT_IMMOBILIZED, TRAIT_SOURCE_TUTORIAL)
 	tutorial_dummy.anchored = FALSE
 
-	message_to_player("The second intent is <b>disarm</b>, selectable with <b>2</b>. Disarm is used to shove people, which can make them drop items or fall to the ground. Shove the <b>Test Dummy</b> until it falls over.")
-	update_objective("Switch to disarm intent by pressing 2 and shove the dummy to the ground.")
+	message_to_player("The second intent is <b>disarm</b>, selectable with <b>[retrieve_bind("select_disarm_intent")]</b>. Disarm is used to shove people, which can make them drop items or fall to the ground. Shove the <b>Test Dummy</b> until it falls over.")
+	update_objective("Switch to disarm intent by pressing [retrieve_bind("select_disarm_intent")] and shove the dummy to the ground.")
 
 	RegisterSignal(tutorial_dummy, COMSIG_LIVING_APPLY_EFFECT, PROC_REF(on_shove_down))
 

@@ -18,8 +18,8 @@
 	addtimer(CALLBACK(src, PROC_REF(require_move)), 4 SECONDS) // check if this is a good amount of time
 
 /datum/tutorial/ss13/basic/proc/require_move()
-	message_to_player("Now, move in any direction using <b>W</b>, <b>A</b>, <b>S</b>, or <b>D</b>.")
-	update_objective("Move in any direction using the standard WASD keys.")
+	message_to_player("Now, move in any direction using <b>[retrieve_bind("North")]</b>, <b>[retrieve_bind("West")]</b>, <b>[retrieve_bind("South")]</b>, or <b>[retrieve_bind("East")]</b>.")
+	update_objective("Move in any direction using the [retrieve_bind("North")][retrieve_bind("West")][retrieve_bind("South")][retrieve_bind("East")] keys.")
 
 	RegisterSignal(tutorial_mob, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(on_move))
 
@@ -31,8 +31,8 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_MOVE_OR_LOOK)
 
-	message_to_player("Good. Now, switch hands with <b>X</b>.")
-	update_objective("Switch hands with X.")
+	message_to_player("Good. Now, switch hands with <b>[retrieve_bind("swap_hands")]</b>.")
+	update_objective("Switch hands with [retrieve_bind("swap_hands")].")
 
 	RegisterSignal(tutorial_mob, COMSIG_MOB_SWAPPED_HAND, PROC_REF(on_hand_swap))
 
@@ -41,8 +41,8 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_SWAPPED_HAND)
 
-	message_to_player("Good. Now, pick up the <b>satchel</b> that just spawned and equip it with <b>E</b>.")
-	update_objective("Pick up the satchel and equip it with E.")
+	message_to_player("Good. Now, pick up the <b>satchel</b> that just spawned and equip it with <b>[retrieve_bind("quick_equip")]</b>.")
+	update_objective("Pick up the satchel and equip it with [retrieve_bind("quick_equip")].")
 
 	var/obj/item/storage/backpack/marine/satchel/satchel = new(loc_from_corner(2, 2))
 	add_to_tracking_atoms(satchel)
@@ -59,8 +59,8 @@
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_EQUIPPED_ITEM)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/backpack/marine/satchel, satchel)
 	remove_highlight(satchel)
-	message_to_player("Now, say anything by pressing <b>T</b>.")
-	update_objective("Speak using T.")
+	message_to_player("Now, say anything by pressing <b>[retrieve_bind("Say")]</b>.")
+	update_objective("Speak using [retrieve_bind("Say")].")
 
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_SPEAK, PROC_REF(on_speak))
 

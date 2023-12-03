@@ -1085,5 +1085,4 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	mind.transfer_to(new_player)
 
-	if(!QDELETED(src))
-		qdel(src)
+	qdel(src)

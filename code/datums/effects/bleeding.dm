@@ -19,6 +19,11 @@
 	if(L && istype(L))
 		limb = L
 
+/datum/effects/bleeding/Destroy()
+	if(limb)
+		SEND_SIGNAL(limb, COMSIG_LIMB_STOP_BLEEDING, TRUE, FALSE)
+	return ..()
+
 /datum/effects/bleeding/validate_atom(atom/A)
 	if(isobj(A))
 		return FALSE
@@ -58,11 +63,6 @@
 /datum/effects/bleeding/external
 	var/buffer_blood_loss = 0
 
-/datum/effects/bleeding/external/Destroy()
-	if(limb)
-		SEND_SIGNAL(limb, COMSIG_LIMB_STOP_BLEEDING, TRUE, FALSE)
-	return ..()
-
 /datum/effects/bleeding/external/process_mob()
 	. = ..()
 	if(!.)
@@ -90,11 +90,6 @@
 /datum/effects/bleeding/internal
 	effect_name = "internal bleeding"
 	flags = INF_DURATION | NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE
-
-/datum/effects/bleeding/internal/Destroy()
-	if(limb)
-		SEND_SIGNAL(limb, COMSIG_LIMB_STOP_BLEEDING, FALSE, TRUE)
-	return ..()
 
 /datum/effects/bleeding/internal/process_mob()
 	. = ..()

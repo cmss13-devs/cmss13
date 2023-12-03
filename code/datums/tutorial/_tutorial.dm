@@ -26,6 +26,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/datum/map_template/tutorial/tutorial_template = /datum/map_template/tutorial/s12x12
 	/// What is the parent path of this, to exclude from the tutorial menu
 	var/parent_path = /datum/tutorial
+	/// A dictionary of "bind_name" : "keybind_button". The inverse of `key_bindings` on a client's prefs
+	var/list/player_bind_dict = list()
 
 /datum/tutorial/Destroy(force, ...)
 	GLOB.ongoing_tutorials -= src
@@ -66,6 +68,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 		abort_tutorial()
 		return FALSE
 
+	generate_binds()
+
 	GLOB.ongoing_tutorials |= src
 	var/area/tutorial_area = get_area(bottom_left_corner)
 	tutorial_area.update_base_lighting() // this will be entirely dark otherwise
@@ -78,7 +82,6 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /// The proc used to end and clean up the tutorial
 /datum/tutorial/proc/end_tutorial(completed = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
-	SIGNAL_HANDLER
 
 	if(tutorial_mob)
 		remove_action(tutorial_mob, /datum/action/tutorial_end) // Just in case to make sure the client can't try and leave the tutorial while it's mid-cleanup
@@ -173,7 +176,45 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	ghost.mind.transfer_to(new_player)
 
-	end_tutorial()
+	end_tutorial(FALSE)
+
+/// A wrapper for signals to call end_tutorial()
+/datum/tutorial/proc/signal_end_tutorial(datum/source)
+	SIGNAL_HANDLER
+
+	end_tutorial(FALSE)
+
+/// Called whenever the tutorial_mob logs out
+/datum/tutorial/proc/on_logout(datum/source)
+	SIGNAL_HANDLER
+
+	if(tutorial_mob.aghosted)
+		return
+
+	end_tutorial(FALSE)
+
+/// Generate a dictionary of button : action for use of referencing what keys to press
+/datum/tutorial/proc/generate_binds()
+	if(!tutorial_mob.client?.prefs)
+		return
+
+	for(var/bind in tutorial_mob.client.prefs.key_bindings)
+		var/action = tutorial_mob.client.prefs.key_bindings[bind]
+		// We presume the first action under a certain binding is the one we want.
+		if(action[1] in player_bind_dict)
+			player_bind_dict[action[1]] += bind
+		else
+			player_bind_dict[action[1]] = list(bind)
+
+/// Getter for player_bind_dict. Provide an action name like "North" or "quick_equip"
+/datum/tutorial/proc/retrieve_bind(action_name)
+	if(!action_name)
+		return
+
+	if(!(action_name in player_bind_dict))
+		return "Undefined"
+
+	return player_bind_dict[action_name][1]
 
 /datum/action/tutorial_end
 	name = "Stop Tutorial"

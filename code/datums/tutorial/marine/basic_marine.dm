@@ -24,8 +24,8 @@
 	add_to_tracking_atoms(flashlight)
 
 	init_mob()
-	message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>W</b> or <b>D</b> to continue.")
-	update_objective("Exit the cryopod by pressing W or D.")
+	message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>[retrieve_bind("North")]</b> or <b>[retrieve_bind("East")]</b> to continue.")
+	update_objective("Exit the cryopod by pressing [retrieve_bind("North")] or [retrieve_bind("East")].")
 	RegisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT, PROC_REF(on_cryopod_exit))
 
 /datum/tutorial/marine/basic/proc/on_cryopod_exit()
@@ -46,7 +46,7 @@
 	UnregisterSignal(food_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)
 	remove_highlight(food_vendor)
 	food_vendor.req_access = list(ACCESS_TUTORIAL_LOCKED)
-	message_to_player("Now click on your character with the <b>USCM Protein Bar</b> in-hand until it is fully eaten. If you accidentally switched hands, switch back with <b>X</b>.")
+	message_to_player("Now click on your character with the <b>USCM Protein Bar</b> in-hand until it is fully eaten. If you accidentally switched hands, switch back with <b>[retrieve_bind("swap_hands")]</b>.")
 	update_objective("Eat the USCM Protein Bar by clicking on yourself while holding it, until it is gone.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_EATEN_SNACK, PROC_REF(on_foodbar_eaten))
 
@@ -73,7 +73,7 @@
 		UnregisterSignal(clothing_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)
 		clothing_vendor.req_access = list(ACCESS_TUTORIAL_LOCKED)
 		remove_highlight(clothing_vendor)
-		message_to_player("Now, the room will darken. Take a <b>flare</b> out of your <b>flare pouch</b> by clicking on it with an empty hand, and then light it by using it in-hand with <b>Z</b>.")
+		message_to_player("Now, the room will darken. Take a <b>flare</b> out of your <b>flare pouch</b> by clicking on it with an empty hand, and then light it by using it in-hand with <b>[retrieve_bind("activate_inhand")]</b>.")
 		update_objective("Click on your flare pouch to remove a flare before using it in-hand.")
 		var/obj/item/storage/pouch/flare/flare_pouch = locate(/obj/item/storage/pouch/flare) in tutorial_mob.contents
 		if(flare_pouch)
@@ -92,8 +92,8 @@
 	if(flare_pouch)
 		remove_highlight(flare_pouch)
 
-	message_to_player("Now throw the <b>flare</b> by <b>clicking</b> on a nearby tile, or dropping it with <b>Q</b>.")
-	update_objective("Throw the flare by clicking on a nearby tile, or dropping it with Q.")
+	message_to_player("Now throw the <b>flare</b> by <b>clicking</b> on a nearby tile, or dropping it with <b>[retrieve_bind("drop_item")]</b>.")
+	update_objective("Throw the flare by clicking on a nearby tile, or dropping it with [retrieve_bind("drop_item")].")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_ITEM_DROPPED, PROC_REF(on_flare_throw))
 
 /datum/tutorial/marine/basic/proc/on_flare_throw(datum/source, obj/item/thrown)
@@ -120,7 +120,7 @@
 		gun_vendor.req_access = list(ACCESS_TUTORIAL_LOCKED)
 		remove_highlight(gun_vendor)
 		UnregisterSignal(gun_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)
-		message_to_player("Now insert the <b>magazine</b> into the <b>M41A Pulse Rifle</b> by having the <b>magazine</b> in your active hand and hitting the <b>Pulse Rifle</b> with it. If it is in the off-hand, switch with <b>X</b>.")
+		message_to_player("Now insert the <b>magazine</b> into the <b>M41A Pulse Rifle</b> by having the <b>magazine</b> in your active hand and hitting the <b>Pulse Rifle</b> with it. If it is in the off-hand, switch with <b>[retrieve_bind("swap_hands")]</b>.")
 		update_objective("Insert the M41A magazine by hitting the M41A Pulse Rifle with it.")
 		RegisterSignal(tutorial_mob, COMSIG_MOB_RELOADED_GUN, PROC_REF(on_magazine_insert))
 
@@ -128,8 +128,8 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_RELOADED_GUN)
-	message_to_player("Good. Now wield your gun by using it in-hand with <b>Z</b>.")
-	update_objective("Wield your gun with two hands by pressing Z with the gun in your main hand.")
+	message_to_player("Good. Now wield your gun by using it in-hand with <b>[retrieve_bind("activate_inhand")]</b>.")
+	update_objective("Wield your gun with two hands by pressing [retrieve_bind("activate_inhand")] with the gun in your main hand.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_ITEM_ATTACK_SELF, PROC_REF(on_gun_wield))
 
 /datum/tutorial/marine/basic/proc/on_gun_wield(datum/source, obj/item/used)

@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1548" = "bug breaking the \"alpha\" functionality in the game, allowing clients to be able to see things/mobs they should not be able to see.",
 	))
 
-#define LIMITER_SIZE 5
+#define LIMITER_SIZE 12
 #define CURRENT_SECOND 1
 #define SECOND_COUNT 2
 #define CURRENT_MINUTE 3

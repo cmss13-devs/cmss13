@@ -34,7 +34,7 @@
 
 	var/message_cooldown_time = 100
 	COOLDOWN_DECLARE(goo_message_cooldown)
-	COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
+	
 
 /datum/disease/black_goo/stage_act()
 	..()
@@ -69,7 +69,7 @@
 
 			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
 				return
-			COOLDOWN_RESET(src, goo_message_cooldown)
+			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 			if(prob(5))
 				to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
@@ -85,7 +85,7 @@
 
 			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
 				return
-			COOLDOWN_RESET(src, goo_message_cooldown)
+			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 			if (prob(5))
 				to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))

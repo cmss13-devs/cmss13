@@ -12,17 +12,24 @@
 	agent = "Unknown Biological Organism X-65"
 	hidden = list(1,0) //Hidden from med-huds, but not pandemic scanners.  BLOOD TESTS FOR THE WIN
 	permeability_mod = 2
-
 	survive_mob_death = TRUE //We want the dead to turn into zombie.
 	longevity = 500 //the virus tend to die before the dead is turn into zombie this should fix it.
-	var/zombie_transforming = 0 //whether we're currently transforming the host into a zombie.
-	var/goo_message_cooldown = 0 //to make sure we don't spam messages too often.
-	var/stage_counter = 0 // tells a dead infectee their stage, so they can know when-abouts they'll revive
-
-	// set of new var to handle stage progress and
-	var/stage_level = 0 // we start at zero when dead everything go twice as fast each stage take 6 min so it need 360 and if your dead it require 180 so 3 min
-	var/infection_rate = 1
 	stage_prob = 0//no randomness
+
+	/// whether we're currently transforming the host into a zombie.
+	var/zombie_transforming = 0
+	/// to make sure we don't spam messages too often.
+	var/goo_message_cooldown = 0
+	/// tells a dead infectee their stage, so they can know when-abouts they'll revive
+	var/stage_counter = 0
+
+//new variables to handle infection progression inside a stage.
+
+	/// variable that contain accumulated virus progression for an host.
+	var/stage_level = 0
+	/// variable that handle passive increase of the virus of an host.
+	var/infection_rate = 1
+
 
 /datum/disease/black_goo/stage_act()
 	..()
@@ -42,7 +49,7 @@
 		infection_rate = 1
 
 	// here we add the new infection rate to the stage level.
-	stage_level = stage_level + infection_rate
+	stage_level += infection_rate
 
 	// we want to check if we have reach enough stage level to gain a stage 3 stage of 6 min if you get it once.
 	if(stage_level >= 360)
@@ -50,7 +57,6 @@
 		stage_level = stage_level - 360
 
 	switch(stage)
-		//stage 1 : Viatiate "afflicted"
 		if(1)
 			if(H.stat == DEAD && stage_counter != stage)
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage One! Zombie transformation begins at Stage Three."))
@@ -59,13 +65,12 @@
 				if(prob(5))
 					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
 					goo_message_cooldown = world.time + 100
-					stage_level = stage_level + 4
+					stage_level += 4
 				else if(prob(3))
 					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
 					goo_message_cooldown = world.time + 100
-					stage_level = stage_level + 2
+					stage_level += 2
 
-		//stage 2 : Ague "Febrile"
 		if(2)
 			if(H.stat == DEAD && stage_counter != stage)
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Two! Zombie transformation begins at Stage Three."))
@@ -73,22 +78,21 @@
 			if(goo_message_cooldown < world.time)
 				if (prob(5))
 					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-					stage_level = stage_level + 10
+					stage_level += 10
 				else if (prob(6))
 					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
-					stage_level = stage_level +5
+					stage_level += 5
 				else if (prob(2))
 					to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
-					stage_level = stage_level + 20
+					stage_level += 20
 				else if (prob(2))
 					H.vomit_on_floor()
-					stage_level = stage_level + 15
+					stage_level += 15
 				else if(prob(3))
 					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
-					stage_level = stage_level + 4
+					stage_level += 4
 				goo_message_cooldown = world.time + 100
 
-		//stage 3 : Lusus "Freak"
 		if(3)
 			//check if your already a zombie just return to avoid weird stuff... if for some weird reason first filter deoesn't work...
 			if(H.species.name == SPECIES_ZOMBIE || zombie_transforming == TRUE)

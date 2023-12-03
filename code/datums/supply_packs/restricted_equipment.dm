@@ -4,7 +4,7 @@
 	name = "B12 pattern marine armor crate (x1 helmet, x1 armor)"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/leader,
-		/obj/item/clothing/suit/storage/marine/leader,
+		/obj/item/clothing/suit/storage/marine/medium/leader,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate

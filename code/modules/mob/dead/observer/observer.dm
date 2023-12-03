@@ -758,12 +758,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!tx || !ty || !tz)
 		return
 	following = null
-	spawn(0)
-		// To stop the ghost flickering.
-		x = tx
-		y = ty
-		z = tz
-		sleep(15)
+	forceMove(locate(tx, ty, tz))
 
 /mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"

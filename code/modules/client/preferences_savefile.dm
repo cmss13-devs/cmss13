@@ -188,11 +188,6 @@
 	S["co_affiliation"] >> affiliation
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
-	S["key_bindings"] >> key_bindings
-	check_keybindings()
-
-	var/list/remembered_key_bindings
-	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	S["lang_chat_disabled"] >> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
@@ -206,6 +201,12 @@
 	S["autofit_viewport"] >> auto_fit_viewport
 	S["adaptive_zoom"] >> adaptive_zoom
 	S["tooltips"] >> tooltips
+
+	S["key_bindings"] >> key_bindings
+	check_keybindings()
+
+	var/list/remembered_key_bindings
+	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))

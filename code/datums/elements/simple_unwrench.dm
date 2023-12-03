@@ -34,8 +34,10 @@
 
 /datum/element/simple_unwrench/proc/handle_wrench(obj/source, obj/item/weapon, mob/living/user)
 	// If there's a delay, take 1-4 seconds (dependent on skill) to unwrench/wrench this
-	if(has_delay && !do_after(user, max(1 SECONDS, (4 SECONDS) - (user.skills.get_skill_level(SKILL_ENGINEER) * (1 SECONDS))), INTERRUPT_ALL, BUSY_ICON_BUILD))
-		return
+	if(has_delay)
+		var/delay_time = (user.skills ? (4 SECONDS) - (user.skills.get_skill_level(SKILL_ENGINEER) * (1 SECONDS)) : 1 SECONDS)
+		if(!do_after(user, max(1 SECONDS, delay_time), INTERRUPT_ALL, BUSY_ICON_BUILD))
+			return
 
 	user.visible_message(
 		SPAN_NOTICE("[user] [source.anchored ? "unanchors" : "anchors"] [source]."),

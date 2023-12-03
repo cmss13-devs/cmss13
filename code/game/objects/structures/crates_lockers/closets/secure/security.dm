@@ -209,6 +209,7 @@
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	anchored = TRUE
 	locked = TRUE
+
 /obj/structure/closet/secure_closet/brig/prison_uni/Initialize()
 	. = ..()
 	new /obj/item/clothing/shoes/orange(src)

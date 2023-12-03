@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "Whiskey outpost is voteable less often and requires 140 players."

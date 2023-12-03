@@ -38,6 +38,7 @@
 	resin_build_order = GLOB.resin_build_order_lesser_drone
 
 /mob/living/carbon/xenomorph/lesser_drone
+	ADD_TRAIT(src, TRAIT_MUTE, TRAIT_SOURCE_ABILITY("mute"))
 	caste_type = XENO_CASTE_LESSER_DRONE
 	name = XENO_CASTE_LESSER_DRONE
 	desc = "An alien drone. Looks... smaller."
@@ -75,8 +76,6 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	addtimer(CALLBACK(src, PROC_REF(un_mute)), 5 MINUTES)
-
 	mutation_type = DRONE_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/lesser_drone.dmi'
@@ -91,6 +90,9 @@
 	hud_update()
 
 	xeno_jitter(25)
+
+/mob/living/carbon/xenomorph/lesser_drone/mute()
+	addtimer(CALLBACK(src, PROC_REF(un_mute)), 5 MINUTES)
 
 /mob/living/carbon/xenomorph/lesser_drone/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

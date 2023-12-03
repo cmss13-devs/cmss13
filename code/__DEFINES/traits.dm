@@ -145,6 +145,8 @@
 //-- mob traits --
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
+/// Apply this to make a mob unable to speak ICly.
+#define TRAIT_MUTE "mute"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -295,6 +297,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob = list(
 		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
+		"TRAIT_MUTE" = TRAIT_MUTE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
 		"TRAIT_FOREIGN_BIO" = TRAIT_FOREIGN_BIO,

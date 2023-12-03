@@ -75,14 +75,12 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
+	addtimer(CALLBACK(src, PROC_REF(un_mute)), 5 MINUTES)
+
 	mutation_type = DRONE_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/lesser_drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/lesser_drone.dmi'
-
-/mob/living/carbon/xenomorph/lesser_drone/say()
-	to_chat(src, SPAN_DANGER("Your psychic power isn't strong enough to communicate."))
-	return
 
 /mob/living/carbon/xenomorph/lesser_drone/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)

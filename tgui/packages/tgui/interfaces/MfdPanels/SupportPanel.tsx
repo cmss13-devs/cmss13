@@ -5,6 +5,7 @@ import { FultonMfdPanel } from './FultonPanel';
 import { Box, Stack } from '../../components';
 import { SentryMfdPanel } from './SentryPanel';
 import { MgMfdPanel } from './MGPanel';
+import { SpotlightMfdPanel } from './SpotlightPanel';
 import { EquipmentContext } from './types';
 import { mfdState, useEquipmentState } from './stateManagers';
 
@@ -28,6 +29,9 @@ export const SupportMfdPanel = (props: MfdProps, context) => {
   }
   if (result?.shorthand === 'MG') {
     return <MgMfdPanel panelStateId={props.panelStateId} />;
+  }
+  if (result?.shorthand === 'Spotlight') {
+    return <SpotlightMfdPanel panelStateId={props.panelStateId} />;
   }
   return (
     <MfdPanel

@@ -69,6 +69,10 @@ export type SentrySpec = {
   deployed: number;
 };
 
+export type SpotlightSpec = {
+  name: string;
+};
+
 export type MGSpec = {
   name: string;
   health: number;

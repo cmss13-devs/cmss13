@@ -119,7 +119,7 @@
 /area/bigredv2/outside/space_port)
 "aau" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Communications Landing Zone"
+	name = "LZ1: Communications Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -2548,7 +2548,8 @@
 "ahv" = (
 /obj/structure/surface/table/holotable/wood,
 /obj/item/paper_bin,
-/turf/open/floor/wood,
+/obj/item/tool/pen/clicky,
+/turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "ahw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -3147,6 +3148,15 @@
 /area/bigredv2/outside/marshal_office)
 "ajd" = (
 /obj/structure/surface/table/holotable/wood,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Lambda Labs";
+	phone_color = "blue";
+	phone_id = "Administration"
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = 5;
+	pixel_y = 6
+	},
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "aje" = (
@@ -3198,7 +3208,8 @@
 /area/bigredv2/outside/dorms)
 "ajm" = (
 /obj/structure/filingcabinet,
-/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "ajn" = (
@@ -3410,8 +3421,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "ajO" = (
-/obj/structure/surface/table/holotable/wood,
-/obj/item/tool/pen,
+/obj/structure/machinery/prop/almayer/computer/PC,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "ajP" = (
@@ -3501,8 +3512,8 @@
 	},
 /area/bigredv2/outside/nw)
 "aka" = (
-/obj/structure/filingcabinet/chestdrawer,
-/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/faxmachine,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "akc" = (
@@ -4484,16 +4495,14 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "amW" = (
-/obj/structure/machinery/door_control{
-	id = "safe_room";
-	layer = 4;
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_y = -5;
-	req_access_txt = "7";
-	specialfunctions = 4
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/turf/closed/wall/solaris/reinforced,
+/obj/structure/closet/crate/freezer/rations,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "elevatorshaft"
+	},
 /area/bigredv2/caves/lambda/breakroom)
 "amX" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -5896,9 +5905,13 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aqX" = (
-/obj/structure/closet/crate/freezer/rations,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/device/multitool,
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/surface/rack,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "elevatorshaft"
@@ -5914,8 +5927,15 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "aqZ" = (
-/obj/structure/closet/fireaxecabinet{
-	pixel_y = 32
+/obj/structure/noticeboard{
+	dir = 1;
+	pixel_y = 30;
+	desc = "A board for pinning important items upon.";
+	name = "trophy board"
+	},
+/obj/item/XenoBio/Chitin{
+	pixel_y = 27;
+	anchored = 1
 	},
 /turf/open/floor{
 	dir = 1;
@@ -5923,8 +5943,11 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "ara" = (
-/obj/structure/surface/table/holotable/wood,
-/obj/item/device/flashlight/lamp,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 15
+	},
+/obj/item/paper/bigred/lambda,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "elevatorshaft"
@@ -6141,9 +6164,7 @@
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/weapon/gun/shotgun/combat,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/machinery/door/window/eastleft,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "elevatorshaft"
@@ -6157,7 +6178,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "arG" = (
 /obj/structure/bed,
-/obj/item/bedsheet/captain,
+/obj/item/bedsheet/rd,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "elevatorshaft"
@@ -6387,8 +6408,9 @@
 /area/bigredv2/outside/ne)
 "asn" = (
 /obj/structure/surface/rack,
-/obj/structure/window/reinforced,
 /obj/item/clothing/suit/armor/vest,
+/obj/structure/machinery/door/window/eastright,
+/obj/structure/window/reinforced,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "elevatorshaft"
@@ -6405,9 +6427,7 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "asp" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4
-	},
+/obj/structure/bed/chair/comfy/black,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "asq" = (
@@ -6417,7 +6437,7 @@
 	},
 /area/bigredv2/outside/medical)
 "asr" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -6690,9 +6710,12 @@
 /area/bigredv2/outside/chapel)
 "ate" = (
 /obj/structure/machinery/door_control{
-	id = "safe_blast";
-	name = "Blast Door";
-	pixel_y = -25
+	id = "safe_room";
+	name = "Door Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_y = -28;
+	req_access_txt = "106";
+	specialfunctions = 4
 	},
 /turf/open/floor{
 	dir = 1;
@@ -6700,12 +6723,8 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "atf" = (
-/obj/structure/closet/crate/medical,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/firstaid/rad,
-/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet/secure_closet/RD,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "elevatorshaft"
@@ -6918,7 +6937,7 @@
 	dir = 1;
 	icon_state = "door_locked";
 	id = "safe_room";
-	name = "\improper Lambda Lab Secure Storage"
+	name = "\improper Lambda Lab Director's Safe Room"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -7145,7 +7164,7 @@
 /area/bigredv2/outside/office_complex)
 "aum" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
-	name = "\improper Lambda Lab Administration Office"
+	name = "\improper Lambda Lab Director's Office"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -7718,7 +7737,6 @@
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "avN" = (
-/obj/structure/bed/chair,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
@@ -7982,8 +8000,19 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "awz" = (
-/obj/structure/surface/table/holotable/wood,
-/obj/item/XenoBio/Chitin,
+/obj/item/ashtray/bronze{
+	pixel_x = -7
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "awA" = (
@@ -7998,13 +8027,12 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "awB" = (
-/obj/structure/surface/table/holotable/wood,
-/obj/item/reagent_container/food/drinks/coffee,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Lambda Labs";
 	phone_color = "blue";
-	phone_id = "Administration"
+	phone_id = "Director"
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "awC" = (
@@ -8253,10 +8281,10 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "axo" = (
-/obj/structure/bed/chair/office/light{
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "axp" = (
@@ -8711,6 +8739,12 @@
 /area/bigredv2/caves/lambda/breakroom)
 "ayB" = (
 /obj/structure/machinery/light,
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/tool/lighter/zippo,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "ayC" = (
@@ -10831,8 +10865,10 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aEs" = (
-/obj/structure/surface/table/holotable/wood,
-/turf/open/floor/wood,
+/obj/structure/bed/chair/comfy/lime{
+	dir = 8
+	},
+/turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "aEt" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -11491,9 +11527,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aGh" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
+/obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "aGi" = (
@@ -19537,7 +19571,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bcy" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bcz" = (
@@ -21454,7 +21488,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "biI" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Engineering Landing Zone"
+	name = "LZ2: Engineering Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port_lz2)
@@ -29670,6 +29704,10 @@
 	icon_state = "darkyellowcorners2"
 	},
 /area/bigredv2/caves/eta/living)
+"fnv" = (
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/carpet,
+/area/bigredv2/caves/lambda/breakroom)
 "fnO" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_13"
@@ -30300,7 +30338,7 @@
 	do_not_disturb = 1;
 	phone_category = "Lambda Labs";
 	phone_color = "red";
-	phone_id = "Secure Storage";
+	phone_id = "Director's Safe Room";
 	pixel_x = -18
 	},
 /turf/open/floor{
@@ -30986,7 +31024,7 @@
 	},
 /area/bigredv2/outside/lambda_cave_cas)
 "hSP" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6"
 	},
@@ -32672,6 +32710,12 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/admin_building)
+"kIF" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/bigredv2/caves/lambda/breakroom)
 "kIW" = (
 /obj/structure/fence,
 /turf/open/floor{
@@ -33067,6 +33111,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
+"lAF" = (
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "lAK" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor{
@@ -34629,6 +34679,10 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/caves/eta/research)
+"orT" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/carpet,
+/area/bigredv2/caves/lambda/breakroom)
 "orZ" = (
 /obj/structure/closet/secure_closet/atmos_personal,
 /obj/effect/landmark/objective_landmark/medium,
@@ -36192,6 +36246,12 @@
 	icon_state = "mars_cave_13"
 	},
 /area/bigredv2/caves/mining)
+"reL" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "vault_v2"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "rfe" = (
 /obj/structure/platform/kutjevo/rock{
 	dir = 8
@@ -36653,6 +36713,17 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"rUs" = (
+/obj/structure/machinery/door_control{
+	id = "safe_room";
+	name = "Door Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_y = 28;
+	req_access_txt = "106";
+	specialfunctions = 4
+	},
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "rUN" = (
 /obj/structure/platform{
 	dir = 4
@@ -37316,6 +37387,10 @@
 	icon_state = "mars_cave_19"
 	},
 /area/bigredv2/outside/lz2_south_cas)
+"sUQ" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "sWa" = (
 /obj/item/ore{
 	pixel_x = 12;
@@ -39478,6 +39553,10 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
+"wCs" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/carpet,
+/area/bigredv2/caves/lambda/breakroom)
 "wDa" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 6
@@ -76696,9 +76775,9 @@ asn
 gvI
 amk
 ajm
-aqc
+sUQ
 avM
-aqc
+lAF
 aka
 amk
 tQw
@@ -76914,9 +76993,9 @@ atc
 amk
 auj
 auY
-auY
+fnv
 awz
-ahv
+aqc
 amk
 aao
 tQw
@@ -77341,14 +77420,14 @@ adZ
 afd
 afd
 adZ
-aqY
+amW
 arF
 arF
 ate
-amW
-aqc
+amk
+rUs
 auY
-auY
+fnv
 awB
 aqc
 amk
@@ -78001,7 +78080,7 @@ agd
 agd
 amX
 awC
-axp
+kIF
 axp
 ayA
 amk
@@ -78220,7 +78299,7 @@ avO
 auY
 aqc
 axT
-auY
+wCs
 amk
 anI
 aAM
@@ -78437,7 +78516,7 @@ auy
 auY
 aqc
 aqc
-auY
+orT
 amk
 anI
 aAN
@@ -78652,8 +78731,8 @@ agd
 agd
 amX
 awD
-auY
-auY
+aEs
+aEs
 ayB
 amk
 anI
@@ -78859,8 +78938,8 @@ adZ
 anQ
 amK
 adZ
-aEs
-aGh
+sUQ
+aqc
 aqc
 asp
 aqc
@@ -79077,7 +79156,7 @@ anR
 amM
 adZ
 adZ
-aqc
+aGh
 ahv
 ajd
 aqc
@@ -79295,7 +79374,7 @@ anS
 apv
 adZ
 adZ
-aqc
+auY
 asr
 aqc
 amX
@@ -82127,7 +82206,7 @@ aao
 aao
 jgW
 aig
-aao
+reL
 aao
 anI
 anI

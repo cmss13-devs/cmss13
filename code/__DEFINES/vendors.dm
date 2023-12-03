@@ -70,3 +70,10 @@
 /// Vendors with this flag will fill retroactively based on latejoining players,
 /// and expect a scale multiplier instead of amount of items
 #define VEND_STOCK_DYNAMIC (1<<10)
+
+// Redemption Tokens
+#define VEND_TOKEN_ENGINEER "Engineer"
+#define VEND_TOKEN_SPEC "Specialist"
+#define VEND_TOKEN_SYNTH "Synthetic"
+/// Token invalid/unrecognised.
+#define VEND_TOKEN_VOID "Void"

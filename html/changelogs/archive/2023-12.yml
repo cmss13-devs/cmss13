@@ -1,0 +1,40 @@
+2023-12-01:
+  Birdtalon:
+  - bugfix: Eggsac fragile eggs can be placed on hardy weeds.
+  Morrow:
+  - rscdel: Removed flame particles. Possibly increases performance for some players.
+  Zonespace27:
+  - bugfix: Resin holes can no longer be planted below stairs
+2023-12-02:
+  567Turtle:
+  - rscadd: Brown boots and gloves are now vendable from the surplus vendors.
+  Birdtalon:
+  - rscadd: '"Infernal" name prefix for xeno who rolls number 666'
+  - code_imp: Refactors xeno name generation. Larva name generation and removes some
+      istype(src)
+  - bugfix: 'Restricts burrower tunnels to alphanumeric characters as some other characters
+      break the tunnel.
+
+      code; Adds new proc to replace non alphanumeric or space characters.'
+  Morrow:
+  - code_imp: Corrected a check to avoid repeat work in /datum/asset/spritesheet/vending_products/register()
+  realforest2001:
+  - rscadd: Added disguisable listening bugs/devices. MPs have two outside CMP office,
+      the CL has two in their bedroom.
+  - bugfix: Fixes incorrect frequencies being used to display channel names on radios.
+  - bugfix: Radios and tape recorders placed on tables or placed inside webbing can
+      now hear speech again.
+2023-12-03:
+  BadAtThisGame302:
+  - rscadd: Added a flavor diary entry from the Director of Lambda
+  - mapadd: added back the old vault nightmare insert on Solaris which was removed
+      due to the creation of static comms where it spawned
+  - maptweak: tweaked the Lambda Director's Office
+  - maptweak: tweaked the Lambda Administration Office
+  - maptweak: tweaked the Lambda Relaxation Room
+  SpartanBobby:
+  - maptweak: Redetails Almayer Squad briefing rooms
+  blackdragonTOW:
+  - maptweak: Standardized the names of LZs to include the name of the LZ.
+  stalkerino:
+  - bugfix: fixes the skull facepaint, black mask, blue mask

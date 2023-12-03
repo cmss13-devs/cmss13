@@ -71,9 +71,9 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 //Misc channels
 #define YAUT_FREQ 1205
 #define DUT_FREQ 1210
-#define CMB_FREQ 1220
 #define VAI_FREQ 1215
 #define RMC_FREQ 1216
+#define CMB_FREQ 1220
 
 //WY Channels (1230-1249)
 #define WY_FREQ 1231
@@ -99,6 +99,11 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define CLF_MED_FREQ 1274
 #define CLF_CCT_FREQ 1275
 
+//Listening Bugs (1290-1291)
+#define BUG_A_FREQ 1290
+#define BUG_B_FREQ 1291
+
+//General Radio
 #define MIN_FREQ 1460 // ------------------------------------------------------
 #define PUB_FREQ 1461
 #define MAX_FREQ 1468 // ------------------------------------------------------
@@ -191,6 +196,9 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_CLF_ENGI = CLF_ENGI_FREQ,
 	RADIO_CHANNEL_CLF_MED = CLF_MED_FREQ,
 	RADIO_CHANNEL_CLF_CCT = CLF_CCT_FREQ,
+
+	RADIO_CHANNEL_BUG_A = BUG_A_FREQ,
+	RADIO_CHANNEL_BUG_B = BUG_B_FREQ,
 ))
 
 // Response Teams
@@ -204,6 +212,9 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 // PMC Frequencies
 #define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ)
+
+//Listening Device Frequencies
+#define BUG_FREQS list(BUG_A_FREQ, BUG_B_FREQ)
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
@@ -269,6 +280,8 @@ SUBSYSTEM_DEF(radio)
 		"[HC_FREQ]" = "hcradio",
 		"[PVST_FREQ]" = "pvstradio",
 		"[COLONY_FREQ]" = "deptradio",
+		"[BUG_A_FREQ]" = "airadio",
+		"[BUG_B_FREQ]" = "aiprivradio",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)

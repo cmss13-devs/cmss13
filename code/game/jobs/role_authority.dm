@@ -262,7 +262,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(CO_surv_job))
 		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
 
-	if(SSnightmare.get_scenario_value("predator_round"))
+	if(SSnightmare.get_scenario_value("predator_round") && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]

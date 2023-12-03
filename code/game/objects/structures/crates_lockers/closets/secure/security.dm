@@ -249,9 +249,6 @@
 
 /obj/structure/closet/secure_closet/brig/Initialize()
 	. = ..()
-
-/obj/structure/closet/secure_closet/brig/Initialize()
-	. = ..()
 	new /obj/item/clothing/under/color/orange(src)
 	new /obj/item/clothing/shoes/orange(src)
 	new /obj/item/device/radio/headset(src)

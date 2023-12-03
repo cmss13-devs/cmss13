@@ -382,7 +382,8 @@ const OffsetDetailed = (
         {props.equipment.shorthand} {props.equipment.mount_point}
       </Stack.Item>
       <Stack.Item className="FireMissionOffsetLabel">
-        {props.equipment.ammo} / {props.equipment.max_ammo}
+        {props.equipment.ammo} / {props.equipment.max_ammo} using{' '}
+        {ammoConsumption} per run.
       </Stack.Item>
       <Stack.Item className="FireMissionOffsetLabel">
         {availableGimbals.min} to {availableGimbals.max}
@@ -391,6 +392,41 @@ const OffsetDetailed = (
         {(props.equipment.firemission_delay ?? 0) - 1}
       </Stack.Item>
     </>
+  );
+};
+
+const FMOffsetError = (
+  props: MfdProps & {
+    fm: CasFiremission;
+    equipment: DropshipEquipment;
+    displayDetail?: boolean;
+  }
+) => {
+  return (
+    <Stack vertical className="FireMissionStack">
+      {props.displayDetail ? (
+        <OffsetDetailed
+          fm={props.fm}
+          panelStateId={props.panelStateId}
+          equipment={props.equipment}
+        />
+      ) : (
+        <OffsetOverview
+          fm={props.fm}
+          panelStateId={props.panelStateId}
+          equipment={props.equipment}
+        />
+      )}
+      <Stack.Item height="25px" />
+      <Divider />
+      <Stack.Item>
+        Unable to set firemission offsets.
+        <br />
+        Offsets depend on ammunition.
+        <br />
+        Load ammunition to adjust.
+      </Stack.Item>
+    </Stack>
   );
 };
 
@@ -413,15 +449,26 @@ const FMOffsetStack = (
 
   const firemissionOffsets = props.equipment.firemission_delay ?? 0;
 
+  if (firemissionOffsets === 0) {
+    return <FMOffsetError {...props} />;
+  }
+
   const availableMap = range(0, 13).map((_) => true);
   offsets?.forEach((x, index) => {
     if (x === undefined || x === '-') {
       return;
     }
+    // if offset is 0 then not allowed on strike.
+    if (firemissionOffsets === 0) {
+      range(0, availableMap.length - 1).forEach(
+        (value) => (availableMap[value] = false)
+      );
+      return;
+    }
     const indexMin = Math.max(index - firemissionOffsets + 1, 0);
-    const indexMax = Math.min(
-      index + firemissionOffsets,
-      availableMap.length - 1
+    const indexMax = Math.max(
+      Math.min(index + firemissionOffsets, availableMap.length - 1),
+      indexMin
     );
     range(indexMin, indexMax).forEach((value) => (availableMap[value] = false));
   });

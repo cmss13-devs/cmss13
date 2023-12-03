@@ -73,6 +73,7 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(de_hull))
 
 /turf/closed/wall/almayer/reinforced/temphull/proc/de_hull()
+	SIGNAL_HANDLER
 	hull = FALSE
 	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It has been weakened by a great impact."
 

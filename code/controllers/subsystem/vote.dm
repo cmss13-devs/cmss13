@@ -276,7 +276,7 @@ SUBSYSTEM_DEF(vote)
 					var/datum/game_mode/M = mode_type
 					if(initial(M.config_tag))
 						var/vote_cycle_met = !initial(M.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(M.vote_cycle) == 0)
-						var/min_players_met = !initial(M.min_players) || length(GLOB.clients) >= M.min_players
+						var/min_players_met = length(GLOB.clients) >= M.required_players
 						if(initial(M.votable) && vote_cycle_met && min_players_met)
 							choices += initial(M.config_tag)
 			if("groundmap")

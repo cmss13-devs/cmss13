@@ -64,7 +64,7 @@
 	switch(stage)
 		if(1)
 			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage One! Zombie transformation begins at Stage Three."))
+				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage one! Zombie transformation begins at stage three."))
 				stage_counter = stage
 
 			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
@@ -80,7 +80,7 @@
 
 		if(2)
 			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Two! Zombie transformation begins at Stage Three."))
+				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage two! Zombie transformation begins at stage three."))
 				stage_counter = stage
 
 			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
@@ -109,7 +109,7 @@
 				return
 
 			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Three! Zombie transformation begin!"))
+				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage three! Zombie transformation begin!"))
 				stage_counter = stage
 			hidden = list(0,0)
 			if(!zombie_transforming)

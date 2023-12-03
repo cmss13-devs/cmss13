@@ -38,7 +38,6 @@
 	resin_build_order = GLOB.resin_build_order_lesser_drone
 
 /mob/living/carbon/xenomorph/lesser_drone
-	ADD_TRAIT(src, TRAIT_MUTE, TRAIT_SOURCE_ABILITY("mute"))
 	caste_type = XENO_CASTE_LESSER_DRONE
 	name = XENO_CASTE_LESSER_DRONE
 	desc = "An alien drone. Looks... smaller."

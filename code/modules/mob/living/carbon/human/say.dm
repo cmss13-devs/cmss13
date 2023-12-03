@@ -53,6 +53,11 @@
 	else
 		.["message"] = message_and_language
 
+/mob/living/carbon/say(message)
+	if((HAS_TRAIT(src, TRAIT_MUTE)))
+		to_chat(src, SPAN_DANGER("You try to speak, but nothing comes out!"))
+		return
+
 /mob/living/carbon/human/say(message)
 
 	var/verb = "says"
@@ -60,7 +65,7 @@
 	var/message_range = world_view_size
 	var/italics = 0
 
-	if((!able_to_speak) || (HAS_TRAIT(src, TRAIT_MUTE)))
+	if((!able_to_speak))
 		to_chat(src, SPAN_DANGER("You try to speak, but nothing comes out!"))
 		return
 

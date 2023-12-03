@@ -30,14 +30,13 @@
 	/// variable that handle passive increase of the virus of an host.
 	var/infection_rate = 1
 
-
 /datum/disease/black_goo/stage_act()
 	..()
 	if(!ishuman(affected_mob)) return
 	var/mob/living/carbon/human/H = affected_mob
 
 	// check if your already a zombie or in the process of being transform into one...
-	if(H.species.name == SPECIES_ZOMBIE || zombie_transforming == TRUE)
+	if(iszombie(H))
 		return
 
 	// check if dead
@@ -54,7 +53,7 @@
 	// we want to check if we have reach enough stage level to gain a stage 3 stage of 6 min if you get it once.
 	if(stage_level >= 360)
 		stage ++
-		stage_level = stage_level - 360
+		stage_level -= 360
 
 	switch(stage)
 		if(1)
@@ -95,7 +94,7 @@
 
 		if(3)
 			//check if your already a zombie just return to avoid weird stuff... if for some weird reason first filter deoesn't work...
-			if(H.species.name == SPECIES_ZOMBIE || zombie_transforming == TRUE)
+			if(iszombie(H))
 				return
 
 			if(H.stat == DEAD && stage_counter != stage)

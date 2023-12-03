@@ -24,3 +24,17 @@
   - bugfix: Fixes incorrect frequencies being used to display channel names on radios.
   - bugfix: Radios and tape recorders placed on tables or placed inside webbing can
       now hear speech again.
+2023-12-03:
+  BadAtThisGame302:
+  - rscadd: Added a flavor diary entry from the Director of Lambda
+  - mapadd: added back the old vault nightmare insert on Solaris which was removed
+      due to the creation of static comms where it spawned
+  - maptweak: tweaked the Lambda Director's Office
+  - maptweak: tweaked the Lambda Administration Office
+  - maptweak: tweaked the Lambda Relaxation Room
+  SpartanBobby:
+  - maptweak: Redetails Almayer Squad briefing rooms
+  blackdragonTOW:
+  - maptweak: Standardized the names of LZs to include the name of the LZ.
+  stalkerino:
+  - bugfix: fixes the skull facepaint, black mask, blue mask

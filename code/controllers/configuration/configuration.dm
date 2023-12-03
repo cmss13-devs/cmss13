@@ -302,8 +302,6 @@
 			if(!(M.config_tag in modes)) //Ensure each mode is added only once
 				modes += M.config_tag
 				mode_names[M.config_tag] = M.name
-				if(M.config_tag == GAMEMODE_WHISKEY_OUTPOST)
-					M.required_players = CONFIG_GET(number/whiskey_required_players)
 		GLOB.gamemode_roles[M.name] = M.get_roles_list()
 		qdel(M)
 

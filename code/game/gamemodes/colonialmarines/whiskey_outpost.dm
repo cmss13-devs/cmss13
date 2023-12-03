@@ -82,7 +82,7 @@
 
 /datum/game_mode/whiskey_outpost/New()
 	. = ..()
-	M.required_players = CONFIG_GET(number/whiskey_required_players)
+	required_players = CONFIG_GET(number/whiskey_required_players)
 
 /datum/game_mode/whiskey_outpost/get_roles_list()
 	return ROLES_WO

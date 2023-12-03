@@ -201,9 +201,7 @@
 	S["autofit_viewport"] >> auto_fit_viewport
 	S["adaptive_zoom"] >> adaptive_zoom
 	S["tooltips"] >> tooltips
-
 	S["key_bindings"] >> key_bindings
-	check_keybindings()
 
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
@@ -274,6 +272,8 @@
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
 	vars["fps"] = fps
+
+	check_keybindings()
 
 	if(remembered_key_bindings)
 		for(var/i in GLOB.keybindings_by_name)

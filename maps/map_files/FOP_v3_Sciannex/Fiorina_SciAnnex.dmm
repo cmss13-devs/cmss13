@@ -359,7 +359,9 @@
 	},
 /area/fiorina/station/research_cells)
 "akW" = (
-/obj/structure/bed/chair/janicart,
+/obj/structure/reagent_dispensers/watertank{
+	layer = 2.6
+	},
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "akZ" = (
@@ -70809,7 +70811,7 @@ fIT
 hVI
 mEO
 mEO
-ddD
+akW
 hVI
 lmn
 fkH
@@ -71021,7 +71023,7 @@ mEO
 sJu
 mEO
 mEO
-akW
+ddD
 hVI
 gZf
 bLM

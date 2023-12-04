@@ -4883,7 +4883,7 @@
 /area/kutjevo/interior/oob)
 "gnj" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Dunes Landing Zone"
+	name = "LZ1: Dunes Landing Zone"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/shuttle/drop1/kutjevo)
@@ -8316,7 +8316,7 @@
 /area/kutjevo/interior/power/comms)
 "lkY" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "NW Colony Landing Zone"
+	name = "LZ2: NW Colony Landing Zone"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/shuttle/drop2/kutjevo)

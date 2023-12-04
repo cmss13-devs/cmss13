@@ -24,12 +24,11 @@
 	sleep(5)
 	arm_equipment(H, /datum/equipment_preset/uscm/tank/full, TRUE, TRUE)
 	to_chat(H, role_header("You are a Vehicle Crewman in the USCM"))
-	to_chat(H, role_body("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-	to_chat(H, role_header("<big>If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced.</big>"))
+	to_chat(H, role_body("You are here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+	to_chat(H, role_header("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
 
 	sleep(1 SECONDS)
 	to_chat(H, role_header("Your objectives are:"))
 	to_chat(H, role_body("[objectives]"))
 
 	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
-

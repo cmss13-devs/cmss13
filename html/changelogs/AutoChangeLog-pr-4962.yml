@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - code_imp: "Corrected a check to avoid repeat work in /datum/asset/spritesheet/vending_products/register()"

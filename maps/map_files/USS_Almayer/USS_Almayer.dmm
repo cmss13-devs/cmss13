@@ -12863,7 +12863,8 @@
 	pixel_y = 26;
 	id = "engie_store";
 	name = "Emergency Storage";
-	pixel_x = -2
+	pixel_x = -2;
+	req_one_access_txt = "6"
 	},
 /turf/open/floor/almayer{
 	dir = 1;

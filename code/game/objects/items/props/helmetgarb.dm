@@ -502,11 +502,11 @@
 
 	var/obj/item/Helmet = HelmetInternalInv.master_object
 
-	if(!istype(Helmet, /obj/item/clothing/head/helmet/marine))
+	if(!istype(Helmet, /obj/item/clothing/head/helmet))
 		return
 
-	Helmet.flags_inventory = BLOCKSHARPOBJ | COVERMOUTH | COVEREYES | ALLOWINTERNALS | BLOCKGASEFFECT | ALLOWREBREATH | ALLOWCPR
-	Helmet.flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR
+	Helmet.flags_inventory = initial(Helmet.flags_inventory)+BLOCKGASEFFECT
+	Helmet.flags_inv_hide = initial(Helmet.flags_inv_hide)+HIDEFACE
 	..()
 
 /obj/item/prop/helmetgarb/helmet_gasmask/on_exit_storage(obj/item/storage/internal/HelmetInternalInv)
@@ -515,11 +515,11 @@
 
 	var/obj/item/Helmet = HelmetInternalInv.master_object
 
-	if(!istype(Helmet, /obj/item/clothing/head/helmet/marine))
+	if(!istype(Helmet, /obj/item/clothing/head/helmet))
 		return
 
-	Helmet.flags_inventory = BLOCKSHARPOBJ
-	Helmet.flags_inv_hide = HIDEEARS
+	Helmet.flags_inventory = initial(Helmet.flags_inventory)
+	Helmet.flags_inv_hide = initial(Helmet.flags_inv_hide)
 	return..()
 
 /obj/item/prop/helmetgarb/trimmed_wire

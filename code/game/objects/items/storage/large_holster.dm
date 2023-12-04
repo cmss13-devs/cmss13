@@ -250,7 +250,7 @@
 		return FALSE
 
 	if(user.back != src)
-		to_chat(user, "The [src] must be equipped before you can switch types")
+		to_chat(user, "[src] must be equipped before you can switch types")
 		return
 
 	var/obj/item/weapon/gun/flamer/M240T/flamer = user.get_active_hand()

@@ -151,7 +151,7 @@
 							GM.apply_damage(5, OXY)
 					swirlie = null
 				else
-					user.visible_message(SPAN_DANGER("[user] slams [GM.name] into the [src]!"), SPAN_NOTICE("You slam [GM.name] into the [src]!"))
+					user.visible_message(SPAN_DANGER("[user] slams [GM.name] into [src]!"), SPAN_NOTICE("You slam [GM.name] into [src]!"))
 					GM.apply_damage(8, BRUTE)
 			else
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))
@@ -189,7 +189,7 @@
 				if(!GM.loc == get_turf(src))
 					to_chat(user, SPAN_NOTICE("[GM.name] needs to be on the urinal."))
 					return
-				user.visible_message(SPAN_DANGER("[user] slams [GM.name] into the [src]!"), SPAN_NOTICE("You slam [GM.name] into the [src]!"))
+				user.visible_message(SPAN_DANGER("[user] slams [GM.name] into [src]!"), SPAN_NOTICE("You slam [GM.name] into [src]!"))
 				GM.apply_damage(8, BRUTE)
 			else
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))

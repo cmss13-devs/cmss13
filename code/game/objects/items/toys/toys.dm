@@ -53,7 +53,7 @@
 	if(istype(O, /obj/item/reagent_container/glass))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
-				to_chat(user, "The [O] is empty.")
+				to_chat(user, "[O] is empty.")
 			else if(O.reagents.total_volume >= 1)
 				if(O.reagents.has_reagent("pacid", 1))
 					to_chat(user, "The acid chews through the balloon!")
@@ -68,7 +68,7 @@
 
 /obj/item/toy/balloon/launch_impact(atom/hit_atom)
 	if(src.reagents.total_volume >= 1)
-		src.visible_message(SPAN_DANGER("The [src] bursts!"),"You hear a pop and a splash.")
+		src.visible_message(SPAN_DANGER("[src] bursts!"),"You hear a pop and a splash.")
 		src.reagents.reaction(get_turf(hit_atom))
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.reaction(A)

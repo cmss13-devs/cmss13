@@ -237,7 +237,7 @@
 		overlays += lid
 
 /obj/item/reagent_container/glass/minitank
-	name = "MS-11 Smart Refill Tank"
+	name = "\improper MS-11 Smart Refill Tank"
 	desc = "A robust little tank capable of refilling autoinjectors that previously required a nanomed system to refill. Using the wonders of microchips, it automatically sorts the correct chemicals into most single reagent autoinjectors. It is unable to partially fill them however. A valve exists on the top to transfer reagents to another container or to flush it entirely."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "mini_reagent_tank"
@@ -277,7 +277,7 @@
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
 		if(A.mixed_chem)
-			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into the [src]'s valve. It's probably not compatible."))
+			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
 			return
 		if(reagents.has_reagent(A.chemname, A.volume))
 			reagents.trans_id_to(A, A.chemname, A.volume)
@@ -672,5 +672,5 @@
 	if(istype(AM) && (src in user))
 		user.visible_message("[user] starts to wipe down [AM] with [src]!")
 		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			user.visible_message("[user] finishes wiping off the [AM]!")
+			user.visible_message("[user] finishes wiping off [AM]!")
 			AM.clean_blood()

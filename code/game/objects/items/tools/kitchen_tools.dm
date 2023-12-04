@@ -218,7 +218,7 @@
 	var/cooldown = 0
 
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
-	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))
+	to_chat(user, SPAN_WARNING("You accidentally slam yourself with [src]!"))
 	user.apply_effect(1, WEAKEN)
 	user.take_limb_damage(2)
 

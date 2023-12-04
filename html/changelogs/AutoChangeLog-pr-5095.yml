@@ -1,4 +1,0 @@
-author: "MrDas"
-delete-after: True
-changes:
-  - bugfix: "Observer minimap should no longer occasionally show wrong / no map."

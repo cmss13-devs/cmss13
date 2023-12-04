@@ -44,7 +44,7 @@
 	if(!proximity) return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, SPAN_NOTICE(" You fill the balloon with the contents of [A]."))
+		to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [A]."))
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
@@ -53,15 +53,15 @@
 	if(istype(O, /obj/item/reagent_container/glass))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
-				to_chat(user, "[O] is empty.")
+				to_chat(user, SPAN_WARNING("[O] is empty."))
 			else if(O.reagents.total_volume >= 1)
 				if(O.reagents.has_reagent("pacid", 1))
-					to_chat(user, "The acid chews through the balloon!")
+					to_chat(user, SPAN_WARNING("The acid chews through the balloon!"))
 					O.reagents.reaction(user)
 					qdel(src)
 				else
 					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-					to_chat(user, SPAN_NOTICE(" You fill the balloon with the contents of [O]."))
+					to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [O]."))
 					O.reagents.trans_to(src, 10)
 	src.update_icon()
 	return

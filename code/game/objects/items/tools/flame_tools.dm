@@ -777,7 +777,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		item_state = icon_off
 		if(!silent)
 			if(istype(src, /obj/item/tool/lighter/zippo) )
-				bearer.visible_message("<span class='rose'>You hear a quiet click, as [bearer] shuts off [src] without even looking at what they're doing.")
+				bearer.visible_message(SPAN_ROSE("You hear a quiet click, as [bearer] shuts off [src] without even looking at what they're doing."))
 				playsound(src.loc,"zippo_close",10, 1, 3)
 			else
 				bearer.visible_message(SPAN_NOTICE("[bearer] quietly shuts off [src]."))

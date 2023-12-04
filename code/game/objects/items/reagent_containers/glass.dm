@@ -285,10 +285,10 @@
 			A.update_icon()
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		else
-			to_chat(user, SPAN_WARNING("A small LED on \the [src] blinks. The tank can't refill \the [A] - it's either incompatible or out of chemicals to fill it with!"))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The tank can't refill [A] - it's either incompatible or out of chemicals to fill it with!"))
 			. = ..()
 			return
-		to_chat(user,SPAN_INFO("You successfully refill \the [W.name] with \the [src]!"))
+		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
 
 /obj/item/reagent_container/glass/minitank/verb/flush_tank(mob/user)
 	set category = "Object"
@@ -299,7 +299,7 @@
 		to_chat(user, SPAN_WARNING("It's already empty!"))
 		return
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush \the [src]'s contents!"))
+	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon() // just to be sure
 	return

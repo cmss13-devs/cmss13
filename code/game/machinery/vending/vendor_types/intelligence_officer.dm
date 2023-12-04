@@ -7,6 +7,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Power Control Module", 5, /obj/item/circuitboard/apc, null, VENDOR_ITEM_REGULAR),
 		list("Plastic Explosive", 10, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("M4RA AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m4ra/ap, null, VENDOR_ITEM_REGULAR),
@@ -30,7 +31,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("UTILITIES", 0, null, null, null),
 		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", 10, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
-		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
+		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
 		list("Data Detector", 5, /obj/item/device/motiondetector/intel, null, VENDOR_ITEM_REGULAR),
 
 		list("BINOCULARS", 0, null, null, null),

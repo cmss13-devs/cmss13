@@ -306,6 +306,18 @@
 	containername = "\improper M41AE2 HPR holo-target magazines crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_xm51
+	contains = list(
+		/obj/item/ammo_magazine/rifle/xm51,
+		/obj/item/ammo_magazine/rifle/xm51,
+		/obj/item/ammo_magazine/shotgun/light/breaching,
+	)
+	name = "XM51 Ammo (2x mags) (1x small breaching shell box)"
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper XM51 ammo crate"
+	group = "Ammo"
+
 //------------------------Smartgunner stuff----------------
 
 /datum/supply_packs/ammo_smartgun_battery_pack

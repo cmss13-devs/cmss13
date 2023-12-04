@@ -544,7 +544,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/direct_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
 	. = ..()
-	playsound(target, direct_hit_sound, 75, vary = TRUE)
+	playsound(target, direct_hit_sound, 75)
 
 #undef FLOATING_PENETRATION_TIER_0
 #undef FLOATING_PENETRATION_TIER_1

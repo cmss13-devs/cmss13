@@ -457,7 +457,7 @@
 
 	assignment = "Monkey Soldier"
 	rank = "Monkey Soldier"
-	paygrade = "UE1"
+	paygrade = PAY_SHORT_UE1
 
 /datum/equipment_preset/fun/monkey/soldier/get_random_name(mob/living/carbon/human/new_human)
 	return new_human.gender == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp)

@@ -199,7 +199,10 @@
 		to_chat(user, "Error: No key detected!")
 		return
 	var/list/keys = analyze_ckey(target_key)
-	to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
+	if(!keys)
+		 to_chat(user, SPAN_WARNING("No results for [target_key]."))
+		 return
+	 to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
 
 	log_admin("[key_name(user)] analyzed ckey '[target_key]'")
 

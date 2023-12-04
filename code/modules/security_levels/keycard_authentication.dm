@@ -42,7 +42,7 @@
 			else if(screen == 2)
 				event_triggered_by = usr
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
-
+			playsound(src, 'sound/machines/switch.ogg', 25, 1)
 /obj/structure/machinery/keycard_auth/power_change()
 	..()
 	if(stat & NOPOWER)
@@ -68,10 +68,10 @@
 		if(GLOB.security_level < SEC_LEVEL_RED)
 			dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
 		if(!SSticker.mode.ert_dispatched)
-			dat += "<li><A href='?src=\ref[src];triggerevent=distress_beacon'>Distress Beacon</A></li>"
+			dat += "<li><A href='?src=\ref[src];triggerevent=Distress Beacon'>Distress Beacon</A></li>"
 
-		dat += "<li><A href='?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=Disable Maintenance Access'>Disable Maintenance Access</A></li>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=Enable Maintenance Access'>Enable Maintenance Access</A></li>"
 		dat += "</ul>"
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
@@ -142,11 +142,11 @@
 	switch(event)
 		if("Red alert")
 			set_security_level(SEC_LEVEL_RED)
-		if("disable_maint_sec")
+		if("Enable Maintenance Access")
 			make_maint_all_access()
-		if("enable_maint_sec")
+		if("Disable Maintenance Access")
 			revoke_maint_all_access()
-		if("distress_beacon")
+		if("Distress Beacon")
 			call_ert()
 
 /obj/structure/machinery/keycard_auth/proc/call_ert()
@@ -175,9 +175,11 @@
 			playsound_client(client,'sound/effects/sos-morse-code.ogg')
 	if(SSticker.mode.is_in_endgame)
 		SSticker.mode.authorized_request_ert(usr)
+		to_chat(usr, SPAN_WARNING("Priority distress beacon launched successfully!"))
 	else
 		SSticker.mode.request_ert(usr)
-	to_chat(usr, SPAN_NOTICE("An emergency distress beacon has been sent to nearby vessels."))
+		to_chat(usr, SPAN_NOTICE("Distress beacon request sent to ARES systems."))
+	playsound(src, 'sound/machines/terminal_success.ogg', 25, 1)
 	COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 
 GLOBAL_VAR_INIT(maint_all_access, TRUE)

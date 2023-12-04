@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - ui: "Removed the scrollbar from the 'Player setup' menu."

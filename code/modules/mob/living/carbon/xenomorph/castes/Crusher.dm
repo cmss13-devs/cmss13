@@ -66,10 +66,10 @@
 	mutation_icon_state = CRUSHER_NORMAL
 	mutation_type = CRUSHER_NORMAL
 
-	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Crusher_1","Crusher_2","Crusher_3")
 	weed_food_states_flipped = list("Crusher_1","Crusher_2","Crusher_3")
 

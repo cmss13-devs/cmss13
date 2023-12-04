@@ -66,10 +66,10 @@
 	)
 	mutation_type = HELLHOUND_NORMAL
 
-	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	icon_xeno = 'icons/mob/xenos/hellhound.dmi'
 	icon_xenonid = 'icons/mob/xenos/hellhound.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Hellhound_1","Hellhound_2","Hellhound_3")
 	weed_food_states_flipped = list("Hellhound_1","Hellhound_2","Hellhound_3")
 

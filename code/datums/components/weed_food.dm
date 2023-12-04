@@ -6,6 +6,7 @@
 	desc = "Weird black weeds in the shape of a body..."
 	gender = PLURAL
 	vis_flags = VIS_INHERIT_DIR|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/mob/xenos/weeds.dmi'
 	var/list/icon_states
 	var/list/icon_states_flipped

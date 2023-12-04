@@ -9,6 +9,7 @@
 	late_joinable = FALSE
 	job_options = SURVIVOR_VARIANT_LIST
 	var/intro_text
+	var/intro_body
 	var/story_text
 	/// Whether or not the survivor is an inherently hostile to marines.
 	var/hostile = FALSE
@@ -25,11 +26,7 @@
 /datum/job/civilian/survivor/announce_entry_message(mob/living/carbon/human/survivor, datum/money_account/account, whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
 	if(survivor?.loc && survivor.client)
 		//Document syntax cannot have tabs for proper formatting.
-		var/entrydisplay = " \
-			[SPAN_ROLE_BODY("|______________________|")] \n\
-			[SPAN_ROLE_BODY("[generate_entry_message(survivor)]<br>[account ? "Your account number is: <b>[account.account_number]</b>. Your account pin is: <b>[account.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
-			[SPAN_ROLE_BODY("|______________________|")] \
-		"
+		var/entrydisplay = "[generate_entry_message(survivor)][account ? "Your account number is: <b>[account.account_number]</b>. Your account pin is: <b>[account.remote_access_pin]</b>." : "You do not have a bank account."]"
 		to_chat_spaced(survivor, html = entrydisplay)
 
 /datum/job/civilian/survivor/spawn_in_player(mob/new_player/NP)
@@ -69,16 +66,19 @@
 
 /datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/survivor)
 	if(intro_text)
-		for(var/line in intro_text)
-			to_chat(survivor, line)
+		to_chat(survivor, role_header(intro_text))
 	else
-		to_chat(survivor, "<h2>You are a survivor!</h2>")
-		to_chat(survivor, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-		to_chat(survivor, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-		to_chat(survivor, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+		to_chat(survivor, role_header("You are a survivor!"))
+
+	if(intro_body)
+		to_chat(survivor, role_body(intro_body))
+	else
+		to_chat(survivor, role_body(SSmapping.configs[GROUND_MAP].survivor_message))
+		to_chat(survivor, role_body("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
+		to_chat(survivor, role_body("You are NOT aware of the marines or their intentions. "))
 
 	if(story_text)
-		to_chat(survivor, story_text)
+		to_chat(survivor, role_body(story_text))
 		survivor.mind.memory += story_text
 	else
 		tell_survivor_story(survivor)
@@ -121,7 +121,7 @@
 
 	var/random_name = pick(random_name(FEMALE), random_name(MALE))
 	var/temp_story = "<b>Your story thus far</b>: " + replacetext(pick(survivor_story), "{name}", "[random_name]")
-	to_chat(H, temp_story)
+	to_chat(H, role_body(temp_story))
 	H.mind.memory += temp_story
 
 	return TRUE

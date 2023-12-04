@@ -800,16 +800,22 @@ Additional game mode variables.
 	H.name = H.get_visible_name()
 
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
-		if(spawner.intro_text && spawner.intro_text.len)
+		if(spawner.intro_text)
 			spawn(4)
-				for(var/line in spawner.intro_text)
-					to_chat(H, line)
+				to_chat(H, role_header(spawner.intro_text))
+				if(spawner.intro_body)
+					to_chat(H, role_body(spawner.intro_body))
+				else
+					to_chat(H, role_body(SSmapping.configs[GROUND_MAP].survivor_message))
+					to_chat(H, role_body("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
+					to_chat(H, role_body("You are NOT aware of the marines or their intentions. "))
+
 		else
 			spawn(4)
-				to_chat(H, "<h2>You are a survivor!</h2>")
-				to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-				to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+				to_chat(H, role_header("You are a survivor!"))
+				to_chat(H, role_body(SSmapping.configs[GROUND_MAP].survivor_message))
+				to_chat(H, role_body("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
+				to_chat(H, role_body("You are NOT aware of the marines or their intentions. "))
 		if(spawner.story_text)
 			. = 1
 			spawn(6)
@@ -829,10 +835,10 @@ Additional game mode variables.
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
 		new /datum/cm_objective/move_mob/almayer/survivor(H)
 		spawn(4)
-			to_chat(H, "<h2>You are a survivor!</h2>")
-			to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-			to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-			to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
+			to_chat(H, role_header("You are a survivor!"))
+			to_chat(H, role_body(SSmapping.configs[GROUND_MAP].survivor_message))
+			to_chat(H, role_body("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
+			to_chat(H, role_body("You are NOT aware of the marines or their intentions."))
 		return 1
 
 /datum/game_mode/proc/tell_survivor_story()

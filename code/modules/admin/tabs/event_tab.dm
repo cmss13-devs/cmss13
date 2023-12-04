@@ -217,10 +217,10 @@
 
 	if(!istype(chosen_ert))
 		return
-	var/launch_broadcast = FALSE
-	var/lb_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
-	if(lb_prompt == "Yes")
-		launch_broadcast = TRUE
+	var/quiet_launch = TRUE
+	var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+	if(ql_prompt == "Yes")
+		quiet_launch = FALSE
 
 	var/announce_receipt = FALSE
 	var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
@@ -235,7 +235,7 @@
 	if(prompt == "Current Location")
 		override_spawn_loc = get_turf(usr)
 
-	chosen_ert.activate(launch_broadcast, announce_receipt, override_spawn_loc)
+	chosen_ert.activate(quiet_launch, announce_receipt, override_spawn_loc)
 
 	message_admins("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 

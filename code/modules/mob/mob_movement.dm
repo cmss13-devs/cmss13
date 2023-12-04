@@ -56,9 +56,6 @@
 
 	if(istype(mob, /mob/living/carbon))
 		mob.swap_hand()
-	if(istype(mob,/mob/living/silicon/robot))
-		var/mob/living/silicon/robot/R = mob
-		R.cycle_modules()
 	return
 
 
@@ -71,8 +68,7 @@
 
 /client/verb/drop_item()
 	set hidden = TRUE
-	if(!isrobot(mob))
-		mob.drop_item_v()
+	mob.drop_item_v()
 	return
 
 

@@ -228,7 +228,7 @@
 // Returns the list of cameras accessible from this computer
 /obj/structure/machinery/computer/cameras/proc/get_available_cameras()
 	var/list/D = list()
-	for(var/obj/structure/machinery/camera/C in GLOB.cameranet.cameras)
+	for(var/obj/structure/machinery/camera/C in GLOB.all_cameras)
 		if(!C.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue

@@ -585,18 +585,6 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	flags = REAGENT_NO_GENERATION
 
-/datum/reagent/nanites
-	name = "Nanomachines"
-	id = "nanites"
-	description = "Microscopic construction robots."
-	reagent_state = LIQUID
-	color = "#535E66" // rgb: 83, 94, 102
-
-/datum/reagent/nanites/reaction_mob(mob/M, method=TOUCH, volume)
-	src = null
-	if((prob(10) && method==TOUCH) || method==INGEST)
-		M.contract_disease(new /datum/disease/robotic_transformation(0),1)
-
 /datum/reagent/xenomicrobes
 	name = "Xenomicrobes"
 	id = "xenomicrobes"

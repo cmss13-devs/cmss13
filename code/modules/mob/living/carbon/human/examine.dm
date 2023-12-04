@@ -546,14 +546,5 @@
 					return TRUE
 			else
 				return 0
-	else if(isrobot(passed_mob))
-		var/mob/living/silicon/robot/R = passed_mob
-		switch(hudtype)
-			if("security")
-				return istype(R.module_state_1, /obj/item/robot/sight/hud/sec) || istype(R.module_state_2, /obj/item/robot/sight/hud/sec) || istype(R.module_state_3, /obj/item/robot/sight/hud/sec)
-			if("medical")
-				return istype(R.module_state_1, /obj/item/robot/sight/hud/med) || istype(R.module_state_2, /obj/item/robot/sight/hud/med) || istype(R.module_state_3, /obj/item/robot/sight/hud/med)
-			else
-				return 0
 	else
 		return 0

@@ -254,8 +254,6 @@
 /obj/structure/surface/table/MouseDrop_T(obj/item/I, mob/user)
 	if (!istype(I) || user.get_active_hand() != I)
 		return ..()
-	if(isrobot(user))
-		return
 	user.drop_held_item()
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
@@ -299,7 +297,7 @@
 			deconstruct(TRUE)
 		return
 
-	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
+	if(W.flags_item & ITEM_ABSTRACT)
 		return
 
 	if(istype(W, /obj/item/weapon/wristblades))
@@ -655,8 +653,6 @@
 /obj/structure/surface/rack/MouseDrop_T(obj/item/I, mob/user)
 	if (!istype(I) || user.get_active_hand() != I)
 		return ..()
-	if(isrobot(user))
-		return
 	user.drop_held_item()
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
@@ -666,7 +662,7 @@
 		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return
-	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
+	if(W.flags_item & ITEM_ABSTRACT)
 		return
 	..()
 

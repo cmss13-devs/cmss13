@@ -38,8 +38,10 @@
 	/// If this camera should have innate EMP-proofing
 	var/emp_proof = FALSE
 
+GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
+	GLOB.all_cameras += src
 	WireColorToFlag = randomCameraWires()
 	assembly = new(src)
 	assembly.state = 4
@@ -59,6 +61,7 @@
 	update_icon()
 
 /obj/structure/machinery/camera/Destroy()
+	GLOB.all_cameras -= src
 	. = ..()
 	QDEL_NULL(assembly)
 
@@ -81,7 +84,6 @@
 			icon_state = "[initial(icon_state)]emp"
 			var/list/previous_network = network
 			network = list()
-			GLOB.cameranet.removeCamera(src)
 			stat |= EMPED
 			set_light(0)
 			triggerCameraAlarm()
@@ -90,8 +92,6 @@
 				icon_state = initial(icon_state)
 				stat &= ~EMPED
 				cancelCameraAlarm()
-				if(can_use())
-					GLOB.cameranet.addCamera(src)
 			kick_viewers()
 
 
@@ -104,7 +104,6 @@
 
 /obj/structure/machinery/camera/proc/setViewRange(num = 7)
 	src.view_range = num
-	GLOB.cameranet.updateVisibility(src, 0)
 
 /obj/structure/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
 
@@ -166,16 +165,6 @@
 				if (S.current == src)
 					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
 					show_browser(O, info, itemname, itemname)
-	else if (istype(W, /obj/item/device/camera_bug))
-		if (!src.can_use())
-			to_chat(user, SPAN_NOTICE(" Camera non-functional"))
-			return
-		if (src.bugged)
-			to_chat(user, SPAN_NOTICE(" Camera bug removed."))
-			src.bugged = 0
-		else
-			to_chat(user, SPAN_NOTICE(" Camera bugged."))
-			src.bugged = 1
 	else
 		..()
 	return
@@ -209,15 +198,10 @@
 				to_chat(O, "The screen bursts into static.")
 
 /obj/structure/machinery/camera/proc/triggerCameraAlarm()
-	alarm_on = 1
-	for(var/mob/living/silicon/S in GLOB.mob_list)
-		S.triggerAlarm("Camera", get_area(src), list(src), src)
-
+	alarm_on = TRUE
 
 /obj/structure/machinery/camera/proc/cancelCameraAlarm()
-	alarm_on = 0
-	for(var/mob/living/silicon/S in GLOB.mob_list)
-		S.cancelAlarm("Camera", get_area(src), src)
+	alarm_on = FALSE
 
 /obj/structure/machinery/camera/proc/can_use()
 	if(!status)

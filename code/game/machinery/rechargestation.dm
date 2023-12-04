@@ -143,21 +143,6 @@
 /obj/structure/machinery/recharge_station/proc/process_occupant()
 	if(src.occupant)
 		var/doing_stuff = FALSE
-		if (isrobot(occupant))
-			var/mob/living/silicon/robot/R = occupant
-			if(R.module)
-				R.module.respawn_consumable(R)
-			if(!R.cell)
-				return
-			if(!R.cell.fully_charged())
-				var/diff = min(R.cell.maxcharge - R.cell.charge, 500) // 500 charge / tick is about 2% every 3 seconds
-				diff = min(diff, current_internal_charge) // No over-discharging
-				R.cell.give(diff)
-				current_internal_charge = max(current_internal_charge - diff, 0)
-				to_chat(occupant, "Recharging...")
-				doing_stuff = TRUE
-			else
-				update_use_power(USE_POWER_IDLE)
 		if (issynth(occupant))
 			var/mob/living/carbon/human/humanoid_occupant = occupant //for special synth surgeries
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
@@ -226,14 +211,10 @@
 	return move_mob_inside(target)
 
 /obj/structure/machinery/recharge_station/verb/move_mob_inside(mob/living/M)
-	if (!isrobot(M) && !issynth(M))
+	if (!issynth(M))
 		return FALSE
 	if (occupant)
 		return FALSE
-	if (isrobot(M))
-		var/mob/living/silicon/robot/R = M
-		if(QDELETED(R.cell))
-			return FALSE
 	M.stop_pulling()
 	if(M && M.client)
 		M.client.perspective = EYE_PERSPECTIVE
@@ -254,18 +235,12 @@
 	if (usr.stat == 2)
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
-	if (!isrobot(usr) && !issynth(usr))
+	if (!issynth(usr))
 		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the recharge and repair station!</B>"))
 		return
 	if (src.occupant)
 		to_chat(usr, SPAN_NOTICE(" <B>The cell is already occupied!</B>"))
 		return
-	if (isrobot(usr))
-		var/mob/living/silicon/robot/R = usr
-		if(QDELETED(R.cell))
-			to_chat(usr, SPAN_NOTICE("Without a powercell, you can't be recharged."))
-			//Make sure they actually HAVE a cell, now that they can get in while powerless. --NEO
-			return
 	move_mob_inside(usr)
 	return
 
@@ -275,7 +250,7 @@
 		var/obj/item/grab/G = W
 		if(!ismob(G.grabbed_thing))
 			return
-		if(!issynth(G.grabbed_thing) && !isrobot(G.grabbed_thing))
+		if(!issynth(G.grabbed_thing))
 			return
 
 		if(occupant)

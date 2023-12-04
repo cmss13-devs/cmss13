@@ -119,6 +119,9 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
+"dw" = (
+/turf/open/gm/coast/north,
+/area/lv624/ground/river/west_river)
 "dN" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
@@ -147,10 +150,9 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"eH" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner2/north_west,
-/area/template_noop)
+"eS" = (
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/lv624/ground/river/west_river)
 "eT" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_inner_t_left"
@@ -174,6 +176,9 @@
 	icon_state = "bluecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
+"fm" = (
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/lv624/ground/river/west_river)
 "ft" = (
 /obj/item/stool,
 /turf/open/floor{
@@ -344,6 +349,10 @@
 	icon_state = "damaged3"
 	},
 /area/lv624/lazarus/crashed_ship)
+"iJ" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/lv624/ground/river/west_river)
 "jb" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer,
@@ -629,6 +638,9 @@
 	icon_state = "stan2"
 	},
 /area/lv624/lazarus/crashed_ship)
+"pt" = (
+/turf/open/gm/coast/south,
+/area/lv624/ground/river/west_river)
 "pK" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer,
@@ -670,6 +682,9 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
+"qW" = (
+/turf/open/gm/coast/beachcorner/north_west,
+/area/lv624/ground/river/west_river)
 "rf" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_7_1"
@@ -738,6 +753,10 @@
 /obj/structure/bed/chair,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
+"uc" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/west,
+/area/lv624/ground/river/west_river)
 "ug" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
@@ -784,6 +803,9 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
+"vn" = (
+/turf/open/gm/coast/east,
+/area/lv624/ground/river/west_river)
 "vo" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan23"
@@ -1015,6 +1037,10 @@
 "Ar" = (
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
+"Ax" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/lv624/ground/river/west_river)
 "AD" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
@@ -1314,6 +1340,10 @@
 "Hj" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_west_caves)
+"Hq" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/lv624/ground/river/west_river)
 "HN" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -1413,6 +1443,9 @@
 	icon_state = "stan_leftengine"
 	},
 /area/lv624/lazarus/crashed_ship)
+"Kr" = (
+/turf/open/gm/coast/beachcorner/south_east,
+/area/lv624/ground/river/west_river)
 "Kt" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan5"
@@ -1495,6 +1528,9 @@
 	icon_state = "bluecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
+"MC" = (
+/turf/open/gm/coast/west,
+/area/lv624/ground/river/west_river)
 "MO" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -1638,9 +1674,16 @@
 	icon_state = "orangecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
-"Pi" = (
+"Pd" = (
+/obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/east,
-/area/template_noop)
+/area/lv624/ground/river/west_river)
+"Pl" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
+	},
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/south_west_caves)
 "Pu" = (
 /obj/effect/landmark/corpsespawner/clf,
 /turf/open/floor{
@@ -2105,6 +2148,10 @@
 	opacity = 0
 	},
 /area/lv624/lazarus/crashed_ship)
+"YK" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
 "YX" = (
 /turf/open/floor/plating{
 	dir = 6;
@@ -2191,7 +2238,7 @@ Hj
 Hj
 Hj
 Hj
-OG
+Pl
 "}
 (2,1,1) = {"
 by
@@ -3412,8 +3459,8 @@ Yj
 Yj
 Yj
 Yj
-fC
-oU
+qW
+uc
 "}
 (28,1,1) = {"
 by
@@ -3459,8 +3506,8 @@ Yj
 Yj
 Yj
 Yj
-on
-CS
+dw
+YK
 "}
 (29,1,1) = {"
 by
@@ -3506,8 +3553,8 @@ Yj
 Yj
 Yj
 Yj
-on
-CS
+dw
+YK
 "}
 (30,1,1) = {"
 by
@@ -3552,9 +3599,9 @@ Yj
 Yj
 Yj
 Yj
-fC
-ev
-CS
+qW
+fm
+YK
 "}
 (31,1,1) = {"
 Hj
@@ -3599,9 +3646,9 @@ Yj
 Yj
 Yj
 Yj
-on
+dw
 Yj
-CS
+YK
 "}
 (32,1,1) = {"
 Hj
@@ -3644,11 +3691,11 @@ Yj
 Yj
 Yj
 Yj
-fC
-Fb
-ev
+qW
+MC
+fm
 Yj
-CS
+YK
 "}
 (33,1,1) = {"
 Hj
@@ -3691,11 +3738,11 @@ Yj
 Yj
 Yj
 Yj
-on
+dw
 Yj
 Yj
 Yj
-CS
+YK
 "}
 (34,1,1) = {"
 Hj
@@ -3738,11 +3785,11 @@ Yj
 Yj
 Yj
 Yj
-on
+dw
 Yj
 Yj
 Yj
-CS
+YK
 "}
 (35,1,1) = {"
 Hj
@@ -3785,11 +3832,11 @@ Yj
 Yj
 Yj
 Yj
-eH
+Ax
 Yj
 Yj
 Yj
-CS
+YK
 "}
 (36,1,1) = {"
 Hj
@@ -3832,11 +3879,11 @@ Yj
 Yj
 Yj
 Yj
-CS
+YK
 Yj
 Yj
 Yj
-CS
+YK
 "}
 (37,1,1) = {"
 Hj
@@ -3879,11 +3926,11 @@ Yj
 Yj
 Yj
 Yj
-CS
+YK
 Yj
 Yj
 Yj
-CS
+YK
 "}
 (38,1,1) = {"
 Hj
@@ -3926,11 +3973,11 @@ Yj
 Yj
 Yj
 Yj
-CS
+YK
 Yj
 Yj
 Yj
-UN
+iJ
 "}
 (39,1,1) = {"
 Hj
@@ -3973,11 +4020,11 @@ Yj
 Yj
 Yj
 Yj
-CS
+YK
 Yj
 Yj
 Yj
-BW
+pt
 "}
 (40,1,1) = {"
 Hj
@@ -4020,11 +4067,11 @@ Yj
 Yj
 Yj
 Yj
-CS
+YK
 Yj
 Yj
 Yj
-BW
+pt
 "}
 (41,1,1) = {"
 Hj
@@ -4067,11 +4114,11 @@ Yj
 Yj
 Yj
 Yj
-CS
+YK
 Yj
-aT
-Pi
-Um
+eS
+vn
+Kr
 "}
 (42,1,1) = {"
 Hj
@@ -4114,9 +4161,9 @@ Yj
 Yj
 Yj
 Yj
-CS
-Lt
-Um
+YK
+Hq
+Kr
 Yj
 Yj
 "}
@@ -4161,8 +4208,8 @@ Yj
 Yj
 Yj
 Yj
-CS
-BW
+YK
+pt
 Yj
 Yj
 Yj
@@ -4208,8 +4255,8 @@ Yj
 Yj
 Yj
 Yj
-kz
-Um
+Pd
+Kr
 Yj
 Yj
 Yj

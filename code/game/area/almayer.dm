@@ -374,7 +374,7 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/aft_hallway
-	name = "\improper Upper Deck Aft Hallway"
+	name = "\improper Upper Deck Fore Hallway"
 	icon_state = "aft"
 	fake_zlevel = 1 // upperdeck
 

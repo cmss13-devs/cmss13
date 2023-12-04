@@ -205,18 +205,15 @@
 			em_call.mob_max = humans.len
 			em_call.players_to_offer = humans
 			em_call.owner = owner
-
-			var/launch_broadcast = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
-			if(launch_broadcast == "Yes")
+			var/launch_broadcast = FALSE
+			var/lb_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+			if(lb_prompt == "Yes")
 				launch_broadcast = TRUE
-			else
-				launch_broadcast = FALSE
 
-			var/announce_receipt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
-			if(announce_receipt == "Yes")
+			var/announce_receipt = FALSE
+			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+			if(ar_prompt == "Yes")
 				announce_receipt = TRUE
-			else
-				announce_receipt = FALSE
 
 			em_call.activate(launch_broadcast, announce_receipt)
 

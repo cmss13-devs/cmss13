@@ -57,10 +57,16 @@
 
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
+
 	icon_xeno = 'icons/mob/xenos/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Warrior_1","Warrior_2","Warrior_3")
+	weed_food_states_flipped = list("Warrior_1","Warrior_2","Warrior_3")
+
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
+
 /mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 

@@ -80,6 +80,10 @@
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Carrier_1","Carrier_2","Carrier_3")
+	weed_food_states_flipped = list("Carrier_1","Carrier_2","Carrier_3")
+
 	var/list/hugger_image_index = list()
 	var/mutable_appearance/hugger_overlays_icon
 	var/mutable_appearance/eggsac_overlays_icon

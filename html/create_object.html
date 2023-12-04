@@ -9,16 +9,17 @@
 	<form name="spawner" action="byond://?src=/* ref src */" method="get">
 		<input type="hidden" name="src" value="/* ref src */">
 		<input type="hidden" name="admin_token" value="/* href token */">
-		Type <input type="text" name="filter" value="" onkeypress="submitFirst(event)" style="width:350px"> <input
+		Type: <input type="text" name="filter" onkeypress="submitFirst(event)" style="width:350px"> <input
 			type="button" class="button" value="Search" onclick="updateSearch()" /><br>
-		Offset: <input type="text" name="offset" value="x,y,z" style="width:250px">
 
+		Offset: <input type="text" name="offset" value="x,y,z" style="width:250px">
 		A <input type="radio" class="radioButton" name="offset_type" value="absolute">
 		R <input type="radio" class="radioButton" name="offset_type" value="relative" checked="checked"><br>
 
 		Number: <input type="text" name="object_count" value="1" style="width:30px">
 		Dir: <input type="text" name="object_dir" value="2" style="width:30px">
-		Name: <input type="text" name="object_name" value="" style="width:180px"><br>
+		Name: <input type="text" name="object_name" style="width:180px"><br>
+
 		Where:
 		<select name='object_where' style="width:320px">
 			<option value='onfloor'>On floor below own mob</option>
@@ -26,6 +27,7 @@
 			<option value='inmarked'>In marked object</option>
 		</select>
 		<br><br>
+
 		<select name="object_list" size="18" multiple style="width:98%"></select><br>
 		<input type="submit" class="button" value="Spawn">
 	</form>
@@ -41,8 +43,7 @@
 		function populateList(from_list) {
 			object_list.options.length = 0;
 
-			var i;
-			for (i in from_list) {
+			for (var i in from_list) {
 				var new_option = document.createElement("option");
 				new_option.value = from_list[i];
 				new_option.text = from_list[i];
@@ -70,6 +71,7 @@
 				return false;
 			}
 
+			// Carriage return
 			if (event.keyCode == 13 || event.which == 13) {
 				object_list.options[0].selected = 'true';
 			}

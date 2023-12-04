@@ -197,8 +197,17 @@
 			hive_xenos -= xeno
 
 	var/real_total_xeno_count = length(hive_xenos) + linked_hive.stored_larva
-
-	if(real_total_xeno_count > (length(GLOB.alive_human_list) * ENDGAME_LARVA_CAP_MULTIPLIER))
+	var/groundside_humans_weighted_count = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+		var/datum/job/job = RoleAuthority.roles_for_mode[current_human.job]
+		if(!job)
+			continue
+		var/turf/turf = get_turf(current_human)
+		if(!is_ground_level(turf?.z))
+			groundside_humans_weighted_count += RoleAuthority.calculate_role_weight(job)
+	if(real_total_xeno_count > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER))
 		return
 
 	linked_hive.partial_larva += real_total_xeno_count * LARVA_ADDITION_MULTIPLIER

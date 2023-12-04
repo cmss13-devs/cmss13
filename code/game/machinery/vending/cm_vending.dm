@@ -443,7 +443,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /// Handles redeeming coin tokens.
 /obj/structure/machinery/cm_vending/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/coin/marine))
-		return ..()
+		..()
 	if(!can_access_to_vend(user, ignore_hack = TRUE))
 		return FALSE
 	redeem_token(attacking_item, user)

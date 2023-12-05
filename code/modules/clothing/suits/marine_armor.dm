@@ -456,7 +456,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "B12 pattern marine"
-	light_power = 5
+	light_power = 4
 	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/tanker

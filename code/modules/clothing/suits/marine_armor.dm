@@ -456,7 +456,6 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "B12 pattern marine"
-	light_power = 4
 	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/tanker
@@ -473,7 +472,6 @@
 /obj/item/clothing/suit/storage/marine/medium
 	armor_variation = 6
 	light_power = 4
-	light_range = 4
 
 /obj/item/clothing/suit/storage/marine/medium/padded
 	name = "M3 pattern padded marine armor"

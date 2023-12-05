@@ -328,6 +328,8 @@
 				lifeboat.status = LIFEBOAT_LOCKED
 				lifeboat.available = FALSE
 				lifeboat.set_mode(SHUTTLE_IDLE)
+				var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+				lifeboat_dock.open_dock()
 				xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
 		return XENO_NO_DELAY_ACTION
 	else

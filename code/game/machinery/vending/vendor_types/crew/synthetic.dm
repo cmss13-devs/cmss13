@@ -335,13 +335,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	req_access = list(ACCESS_MARINE_SYNTH)
 	vendor_role = list(JOB_SYNTH)
 
-/obj/structure/machinery/cm_vending/own_points/experimental_tools/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/coin/marine/synth))
-		if(user.drop_inv_item_to_loc(W, src))
+/obj/structure/machinery/cm_vending/own_points/experimental_tools/redeem_token(obj/item/coin/marine/token, mob/user)
+	if(token.token_type == VEND_TOKEN_SYNTH)
+		if(user.drop_inv_item_to_loc(token, src))
 			available_points = 30
 			available_points_to_display = available_points
-			to_chat(user, SPAN_NOTICE("You insert \the [W] into \the [src]."))
-			return
+			to_chat(user, SPAN_NOTICE("You insert \the [token] into \the [src]."))
+			return TRUE
 	return ..()
 
 /obj/structure/machinery/cm_vending/own_points/experimental_tools/get_listed_products(mob/user)

@@ -204,7 +204,7 @@
 			to_chat(user, SPAN_WARNING("Nothing to fix."))
 		else if(shape == NVG_SHAPE_COSMETIC)
 
-			to_chat(user, SPAN_WARNING("it's nothing but a husk of what it used to be."))
+			to_chat(user, SPAN_WARNING("It's nothing but a husk of what it used to be."))
 
 	else
 		to_chat(user, "You begin to repair \the [src].")

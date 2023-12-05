@@ -557,7 +557,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(istype(attacking_item, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
 			var/obj/item/clothing/mask/cigarette/L = attacking_item
-			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from the [src]"))
+			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from [src]"))
 			return
 
 	if(!isRemoteControlling(user))
@@ -568,7 +568,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	add_fingerprint(user)
 
 	if(istype(attacking_item, /obj/item/weapon/zombie_claws) && (welded || locked))
-		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on the [src]!"), \
+		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on [src]!"), \
 			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."), \
 			SPAN_NOTICE("You hear tearing noises!"))
 
@@ -845,7 +845,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		for(var/i in resin_door_shmushereds)
 			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
 				playsound(loc, "alien_resin_break", 25)
-				visible_message(SPAN_WARNING("The [src.name] closes on the [x], shmushing it!"))
+				visible_message(SPAN_WARNING("The [src.name] closes on [x], shmushing it!"))
 				if(isturf(x))
 					var/turf/closed/wall/resin_wall_to_destroy = x
 					resin_wall_to_destroy.dismantle_wall()

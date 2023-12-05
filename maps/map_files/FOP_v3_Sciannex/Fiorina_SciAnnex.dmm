@@ -6510,7 +6510,7 @@
 /area/fiorina/station/disco)
 "dYp" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
+	name = "LZ1: Hangar Landing Zone"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)

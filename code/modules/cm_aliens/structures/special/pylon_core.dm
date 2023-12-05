@@ -205,7 +205,7 @@
 		if(!job)
 			continue
 		var/turf/turf = get_turf(current_human)
-		if(!is_ground_level(turf?.z))
+		if(is_ground_level(turf?.z))
 			groundside_humans_weighted_count += RoleAuthority.calculate_role_weight(job)
 	if(real_total_xeno_count > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER))
 		return

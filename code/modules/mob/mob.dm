@@ -542,9 +542,9 @@
 			return
 	else if(istype(AM, /obj))
 		AM.add_fingerprint(src)
-
 	pulling = AM
 	AM.pulledby = src
+	AM.debug_pulledby_warned = FALSE
 
 	var/obj/item/grab/G = new /obj/item/grab()
 	G.grabbed_thing = AM

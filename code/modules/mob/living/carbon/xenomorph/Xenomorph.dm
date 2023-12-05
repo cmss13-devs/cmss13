@@ -766,6 +766,9 @@
 /mob/living/carbon/xenomorph/resist_grab(moving_resist)
 	if(!pulledby)
 		return
+	if(pulledby && pulledby?.pulling != pulledby && !debug_pulledby_warned)
+		debug_pulledby_warned = TRUE
+		debug_pulledby()
 	if(pulledby.grab_level)
 		visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 	pulledby.stop_pulling()

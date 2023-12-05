@@ -215,6 +215,9 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
+	if(pulledby && pulledby?.pulling != pulledby && !debug_pulledby_warned)
+		debug_pulledby_warned = TRUE
+		debug_pulledby()
 	if(pulledby.grab_level)
 		if(prob(50))
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
@@ -228,6 +231,8 @@
 		pulledby.stop_pulling()
 		return 1
 
+/mob/proc/debug_pulledby()
+	log_debug("PULLEDBY: Improper pulling relationship between pullee \[[src.name] (type:[src.type]) @ \ref[src]\] [ADMIN_VV(src)] and would-be puller \[[src.pulledby?.name] (type:[src.pulledby?.type]) @ \ref[src.pulledby]\] [ADMIN_VV(src.pulledby)]")
 
 /mob/living/movement_delay()
 	. = ..()

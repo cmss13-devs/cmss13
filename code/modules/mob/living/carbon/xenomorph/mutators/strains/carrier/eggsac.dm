@@ -63,9 +63,10 @@
 /datum/behavior_delegate/carrier_eggsac/on_life()
 	if(length(eggs_sustained) > egg_sustain_cap)
 		var/obj/effect/alien/egg/carrier_egg/my_egg = eggs_sustained[1]
-		remove_egg_owner(my_egg)
-		my_egg.start_unstoppable_decay()
-		to_chat(bound_xeno, SPAN_XENOWARNING("You can only sustain [egg_sustain_cap] eggs off hive weeds! Your oldest placed egg is decaying rapidly."))
+		if(my_egg)
+			remove_egg_owner(my_egg)
+			my_egg.start_unstoppable_decay()
+			to_chat(bound_xeno, SPAN_XENOWARNING("You can only sustain [egg_sustain_cap] eggs off hive weeds! Your oldest placed egg is decaying rapidly."))
 
 	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
 		//Get the distance from us to our sustained egg

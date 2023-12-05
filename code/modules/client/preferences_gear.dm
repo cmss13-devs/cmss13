@@ -161,14 +161,14 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "USCM balaclava, tan"
 	path = /obj/item/clothing/mask/rebreather/scarf/tan
 
-/datum/gear/skull_balaclava_blue
-	display_name = "Blue Skull Balaclava"
+/datum/gear/mask/uscm/skull_balaclava_blue
+	display_name = "USCM balaclava, blue skull"
 	path = /obj/item/clothing/mask/rebreather/skull
 	cost = 4 //same as skull facepaint
 	slot = WEAR_FACE
 
-/datum/gear/skull_balaclava_black
-	display_name = "Black Skull Balaclava"
+/datum/gear/mask/uscm/skull_balaclava_black
+	display_name = "USCM balaclava, black skull"
 	path = /obj/item/clothing/mask/rebreather/skull/black
 	cost = 4
 	slot = WEAR_FACE
@@ -888,8 +888,8 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Facepaint, black"
 	path = /obj/item/facepaint/black
 
-/datum/gear/skullfacepaint
-	display_name = "Skull Facepaint"
+/datum/gear/misc/facepaint_skull
+	display_name = "Facepaint, skull"
 	path = /obj/item/facepaint/skull
 	cost = 3 
 

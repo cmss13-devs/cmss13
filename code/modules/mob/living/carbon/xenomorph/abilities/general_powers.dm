@@ -570,6 +570,13 @@
 		to_chat(X, SPAN_XENOWARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return FALSE
 
+	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
+	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
+	var/obj/structure/stairs/staircase = locate() in src
+	if(staircase)
+		to_chat(X, SPAN_XENOWARNING("You cannot make a hole beneath a staircase!"))
+		return FALSE
+
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_XENOWARNING("These weeds don't belong to your hive!"))
 		return FALSE

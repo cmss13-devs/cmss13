@@ -496,30 +496,30 @@
 	desc = "The USCM had its funding pulled for these when it became apparent that not every deployed enlisted was wearing a helmet 24/7; much to the bafflement of UA High Command."
 	icon_state = "helmet_gasmask"
 
-/obj/item/prop/helmetgarb/helmet_gasmask/on_enter_storage(obj/item/storage/internal/HelmetInternalInv)
-	if(!istype(HelmetInternalInv))
+/obj/item/prop/helmetgarb/helmet_gasmask/on_enter_storage(obj/item/storage/internal/helmet_internal_inventory)
+	if(!istype(helmet_internal_inventory))
 		return
 
-	var/obj/item/Helmet = HelmetInternalInv.master_object
+	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
 
-	if(!istype(Helmet, /obj/item/clothing/head/helmet))
+	if(!istype(helmet_item))
 		return
 
-	Helmet.flags_inventory = initial(Helmet.flags_inventory)+BLOCKGASEFFECT
-	Helmet.flags_inv_hide = initial(Helmet.flags_inv_hide)+HIDEFACE
+	helmet_item.flags_inventory|=BLOCKGASEFFECT
+	helmet_item.flags_inv_hide|=HIDEFACE
 	..()
 
-/obj/item/prop/helmetgarb/helmet_gasmask/on_exit_storage(obj/item/storage/internal/HelmetInternalInv)
-	if(!istype(HelmetInternalInv))
+/obj/item/prop/helmetgarb/helmet_gasmask/on_exit_storage(obj/item/storage/internal/helmet_internal_inventory)
+	if(!istype(helmet_internal_inventory))
 		return
 
-	var/obj/item/Helmet = HelmetInternalInv.master_object
+	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
 
-	if(!istype(Helmet, /obj/item/clothing/head/helmet))
+	if(!istype(helmet_item))
 		return
 
-	Helmet.flags_inventory = initial(Helmet.flags_inventory)
-	Helmet.flags_inv_hide = initial(Helmet.flags_inv_hide)
+	helmet_item.flags_inventory = initial(helmet_item.flags_inventory)
+	helmet_item.flags_inv_hide = initial(helmet_item.flags_inv_hide)
 	return..()
 
 /obj/item/prop/helmetgarb/trimmed_wire

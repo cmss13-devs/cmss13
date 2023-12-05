@@ -36,9 +36,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"aT" = (
-/turf/open/gm/coast/beachcorner2/south_east,
-/area/template_noop)
 "aY" = (
 /obj/structure/tunnel{
 	id = "hole3"
@@ -133,9 +130,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
-"ev" = (
-/turf/open/gm/coast/beachcorner2/north_west,
-/area/template_noop)
 "eD" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/spawner/random/toolbox,
@@ -196,9 +190,6 @@
 	icon_state = "bluecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
-"fC" = (
-/turf/open/gm/coast/beachcorner/north_west,
-/area/template_noop)
 "fX" = (
 /obj/item/stool,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -453,10 +444,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
-"kz" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/east,
-/area/template_noop)
 "kO" = (
 /obj/structure/bed,
 /obj/item/bedsheet/green,
@@ -595,9 +582,6 @@
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-"on" = (
-/turf/open/gm/coast/north,
-/area/template_noop)
 "ou" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor{
@@ -620,10 +604,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
-"oU" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/west,
-/area/template_noop)
 "oW" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
@@ -1101,9 +1081,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"BW" = (
-/turf/open/gm/coast/south,
-/area/template_noop)
 "BY" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor{
@@ -1142,10 +1119,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
-"CS" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/river,
-/area/template_noop)
 "CZ" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -1289,9 +1262,6 @@
 	icon_state = "greencorner"
 	},
 /area/lv624/lazarus/crashed_ship)
-"Fb" = (
-/turf/open/gm/coast/west,
-/area/template_noop)
 "Gf" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8;
@@ -1467,10 +1437,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
-"Lt" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast/beachcorner2/south_east,
-/area/template_noop)
 "LD" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating{
@@ -1641,12 +1607,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
-"OG" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfship"
-	},
-/turf/closed/wall/rock/brown,
-/area/lv624/ground/caves/south_west_caves)
 "OL" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/plating/plating_catwalk,
@@ -1678,12 +1638,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/west_river)
-"Pl" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfship"
-	},
-/turf/closed/wall/rock/brown,
-/area/lv624/ground/caves/south_west_caves)
 "Pu" = (
 /obj/effect/landmark/corpsespawner/clf,
 /turf/open/floor{
@@ -1908,9 +1862,6 @@
 	icon_state = "emeraldcorner"
 	},
 /area/lv624/lazarus/crashed_ship)
-"Um" = (
-/turf/open/gm/coast/beachcorner/south_east,
-/area/template_noop)
 "Up" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tank/oxygen/red,
@@ -1939,10 +1890,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
-"UN" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner2/south_east,
-/area/template_noop)
 "UV" = (
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -2238,7 +2185,7 @@ Hj
 Hj
 Hj
 Hj
-Pl
+Hj
 "}
 (2,1,1) = {"
 by

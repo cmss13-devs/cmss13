@@ -275,7 +275,6 @@
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
 					if (prob(15)) M.apply_effect(5, WEAKEN)
-					playsound(loc, 'sound/weapons/tablehit1.ogg', 25, 1, 7)
 					M.apply_damage(8, def_zone = "head")
 					user.visible_message(SPAN_DANGER("<B>[user] slams [M]'s face against [src]!</B>"),
 					SPAN_DANGER("<B>You slam [M]'s face against [src]!</B>"))

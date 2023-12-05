@@ -1,6 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscadd: "added new sections(Binoculars, Utilities, Helmet Optics, Radio keys, and fill them with items already in the vendor."
-  - qol: "move the section called pouches just above utilities section."
-  - qol: "changed the section called \"Supplies\" to \"engineering supplies\" and fill it with C4 and APC circuit board ."

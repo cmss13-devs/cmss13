@@ -253,6 +253,7 @@
 	id = "cl_evac"
 	normaldoorcontrol = 1
 /obj/structure/machinery/door_control/cl/quarter
+	id = "cl_quarter_door;cl_quarter_maintenance;cl_quarter_windows"
 /obj/structure/machinery/door_control/cl/quarter/officedoor
 	name = "Quarter Door Shutter"
 	id = "cl_quarter_door"

@@ -8661,9 +8661,7 @@
 /area/almayer/medical/medical_science)
 "aCv" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter{
-	id = "cl_quarter_windows"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/window,
 /turf/open/floor/plating,
 /area/almayer/command/corporateliason)
 "aCw" = (
@@ -13239,9 +13237,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office{
-	id = "cl_office_windows"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/window,
 /turf/open/floor/plating,
 /area/almayer/command/corporateliason)
 "aYq" = (
@@ -23412,9 +23408,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office{
-	id = "cl_office_door"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/door,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -40635,10 +40629,7 @@
 	req_access_txt = "200";
 	req_one_access = null
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter{
-	dir = 4;
-	id = "cl_quarter_maintenance"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/backdoor,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -53837,10 +53828,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter{
-	dir = 4;
-	id = "cl_quarter_door"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/door,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},

@@ -8,8 +8,6 @@
 	activation_sounds = list('sound/weapons/vehicles/cannon_fire1.ogg', 'sound/weapons/vehicles/cannon_fire2.ogg')
 
 	health = 500
-	cooldown = 200
-	accuracy = 0.97
 	firing_arc = 60
 
 	origins = list(0, -3)
@@ -30,3 +28,6 @@
 		"4" = list(89, -4),
 		"8" = list(-89, -4)
 	)
+
+	scatter = 2
+	fire_delay = 20.0 SECONDS

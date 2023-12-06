@@ -106,6 +106,7 @@
 
 /// handles decloaking only on HUNTER gloves
 /obj/item/clothing/gloves/yautja/proc/decloak()
+	SIGNAL_HANDLER
 	return
 
 /// Called to update the minimap icon of the predator
@@ -408,7 +409,7 @@
 	. = wristblades_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(mob/living/carbon/human/caller, forced = FALSE)
-	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
+	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
 		return
 
 	. = check_random_function(caller, forced)
@@ -648,7 +649,7 @@
 	. = caster_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(mob/living/carbon/human/caller, forced = FALSE)
-	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
+	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
 		return
 
 	. = check_random_function(caller, forced)
@@ -927,7 +928,7 @@
 	addtimer(VARSET_CALLBACK(src, disc_timer, FALSE), 10 SECONDS)
 
 	for(var/mob/living/simple_animal/hostile/smartdisc/S in range(7))
-		to_chat(caller, SPAN_WARNING("The [S] skips back towards you!"))
+		to_chat(caller, SPAN_WARNING("[S] skips back towards you!"))
 		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(S.loc)
 		qdel(S)
 

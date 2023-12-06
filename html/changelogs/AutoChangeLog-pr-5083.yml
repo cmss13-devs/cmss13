@@ -1,0 +1,4 @@
+author: "Ediblebomb"
+delete-after: True
+changes:
+  - rscadd: "M5 Helmet Gasmask now functions as a gasmask when in a marine helmet (and yes, gasmasks do still have some functionality)"

@@ -160,7 +160,8 @@
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
 	. = ..()
 	var/mob/living/carbon/human/H = AM
-	if(istype(H) && !H.lying && !H.ally_of_hivenumber(hivenumber))
+	// Wait doesn't this stack slows if you get dragged over it? What's going on here?
+	if(istype(H) && !H.ally_of_hivenumber(hivenumber))
 		H.next_move_slowdown = H.next_move_slowdown + slow_amt
 		return .
 	var/mob/living/carbon/xenomorph/X = AM
@@ -565,7 +566,7 @@
 			return FALSE
 		burning_friendly = TRUE
 
-	else if(current_mob.lying || current_mob.is_mob_incapacitated(TRUE))
+	else if(current_mob.body_position == LYING_DOWN || current_mob.is_mob_incapacitated(TRUE))
 		return FALSE
 
 	if(!burning_friendly && current_mob.health < 0)
@@ -780,7 +781,7 @@
 
 /obj/effect/alien/resin/resin_pillar/proc/brittle()
 	//playsound(granite cracking)
-	visible_message(SPAN_DANGER("You hear cracking sounds from the [src] as splinters start falling off from the structure! It seems brittle now."))
+	visible_message(SPAN_DANGER("You hear cracking sounds from [src] as splinters start falling off from the structure! It seems brittle now."))
 	health = vulnerable_health
 	for(var/i in walls)
 		var/turf/closed/wall/T = i
@@ -813,7 +814,7 @@
 
 /obj/effect/alien/resin/resin_pillar/hitby(atom/movable/AM)
 	if(!brittle)
-		visible_message(SPAN_DANGER("[AM] harmlessly bounces off the [src]!"))
+		visible_message(SPAN_DANGER("[AM] harmlessly bounces off [src]!"))
 		return
 	return ..()
 

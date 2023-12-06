@@ -110,7 +110,8 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	set category = "Object"
 	set name = "Eject ID Card"
 	set src in view(1)
-	if(!usr || usr.stat || usr.lying) return
+	if(usr.is_mob_incapacitated())
+		return
 
 	if(ishuman(usr) && scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")

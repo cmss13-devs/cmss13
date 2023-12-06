@@ -98,7 +98,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	..()
 
 /obj/structure/machinery/nuclearbomb/attack_hand(mob/user as mob)
-	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isRemoteControlling(user))
+	if(user.is_mob_incapacitated() || get_dist(src, user) > 1 || isRemoteControlling(user))
 		return
 
 	if(isyautja(user))
@@ -290,7 +290,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	set name = "Make Deployable"
 	set src in oview(1)
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || timing)
+	if(usr.is_mob_incapacitated() || being_used || timing)
 		return
 
 	if(!ishuman(usr))

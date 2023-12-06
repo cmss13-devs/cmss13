@@ -177,9 +177,13 @@ nanoui is used to open and update nano browser uis
 			close()
 			return
 
+		var/mob/living/living_user
+		if(isliving(user))
+			living_user = user
+
 		if ((allowed_user_stat > -1) && (user.stat > allowed_user_stat))
 			set_status(STATUS_DISABLED, push_update) // no updates, completely disabled (red visibility)
-		else if (user.is_mob_restrained() || user.lying)
+		else if (user.is_mob_restrained() || (living_user && living_user.body_position == LYING_DOWN))
 			set_status(STATUS_UPDATE, push_update) // update only (orange visibility)
 		else if (!(src_object in view(4, user))) // If the src object is not in visable, set status to 0
 			set_status(STATUS_DISABLED, push_update) // interactive (green visibility)

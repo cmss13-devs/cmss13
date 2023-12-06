@@ -182,7 +182,7 @@
 	for(var/category in listings)
 		dat += "<BR><B>Current [category] ([length(listings[category])]):<BR></B>\n"
 		for(var/client/entry in listings[category])
-			dat += "\t[entry.key] is a [entry.admin_holder.rank]"
+			dat += "\t[entry.key] is \a [entry.admin_holder.rank]"
 			if(entry.admin_holder.extra_titles?.len)
 				for(var/srank in entry.admin_holder.extra_titles)
 					dat += " & [srank]"

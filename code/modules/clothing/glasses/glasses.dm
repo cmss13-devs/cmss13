@@ -507,38 +507,40 @@
 	set name = "Adjust welding goggles"
 	set src in usr
 
-	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
-		if(active)
-			active = 0
-			vision_impair = vision_impair_off
-			flags_inventory &= ~COVEREYES
-			flags_inv_hide &= ~HIDEEYES
-			flags_armor_protection &= ~BODY_FLAG_EYES
-			update_icon()
-			eye_protection = EYE_PROTECTION_NONE
-			to_chat(usr, "You push [src] up out of your face.")
-		else
-			active = 1
-			vision_impair = vision_impair_on
-			flags_inventory |= COVEREYES
-			flags_inv_hide |= HIDEEYES
-			flags_armor_protection |= BODY_FLAG_EYES
-			update_icon()
-			eye_protection = initial(eye_protection)
-			to_chat(usr, "You flip [src] down to protect your eyes.")
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(active)
+		active = 0
+		vision_impair = vision_impair_off
+		flags_inventory &= ~COVEREYES
+		flags_inv_hide &= ~HIDEEYES
+		flags_armor_protection &= ~BODY_FLAG_EYES
+		update_icon()
+		eye_protection = EYE_PROTECTION_NONE
+		to_chat(usr, "You push [src] up out of your face.")
+	else
+		active = 1
+		vision_impair = vision_impair_on
+		flags_inventory |= COVEREYES
+		flags_inv_hide |= HIDEEYES
+		flags_armor_protection |= BODY_FLAG_EYES
+		update_icon()
+		eye_protection = initial(eye_protection)
+		to_chat(usr, "You flip [src] down to protect your eyes.")
 
 
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			if(H.glasses == src)
-				H.update_tint()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		if(H.glasses == src)
+			H.update_tint()
 
-		update_clothing_icon()
+	update_clothing_icon()
 
-		for(var/X in actions)
-			var/datum/action/A = X
-			if(istype(A, /datum/action/item_action/toggle))
-				A.update_button_icon()
+	for(var/X in actions)
+		var/datum/action/A = X
+		if(istype(A, /datum/action/item_action/toggle))
+			A.update_button_icon()
 
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"

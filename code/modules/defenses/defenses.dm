@@ -408,9 +408,9 @@
 		damaged_action(damage)
 
 	if(stat == DEFENSE_DAMAGED)
-		density = FALSE
+		set_density(FALSE)
 	else
-		density = initial(density)
+		set_density(initial(density))
 
 	update_icon()
 

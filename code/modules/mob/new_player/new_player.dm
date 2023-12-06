@@ -6,7 +6,6 @@
 	invisibility = 101
 
 	density = FALSE
-	canmove = FALSE
 	anchored = TRUE
 	universal_speak = TRUE
 	stat = DEAD
@@ -15,6 +14,7 @@
 	. = ..()
 	GLOB.new_player_list += src
 	GLOB.dead_mob_list -= src
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 
 /mob/new_player/Destroy()
 	if(ready)
@@ -63,7 +63,7 @@
 	output += "</div>"
 	if (refresh)
 		close_browser(src, "playersetup")
-	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 460];can_close=0;can_minimize=0")
+	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 360 : 460];can_close=0;can_minimize=0")
 	return
 
 /mob/new_player/Topic(href, href_list[])

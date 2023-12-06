@@ -78,7 +78,7 @@
 
 	try_scope(user)
 
-/obj/structure/vulture_spotter_tripod/on_set_interaction(mob/user)
+/obj/structure/vulture_spotter_tripod/on_set_interaction(mob/living/user)
 	var/obj/item/attachable/vulture_scope/scope = get_vulture_scope()
 	scope.spotter_spotting = TRUE
 	to_chat(scope.scope_user, SPAN_NOTICE("You notice that [scope] drifts less."))
@@ -102,7 +102,7 @@
 	give_action(user, /datum/action/vulture_tripod_unscope, null, null, src)
 	set_scope_loc(user, scope)
 
-/obj/structure/vulture_spotter_tripod/on_unset_interaction(mob/user)
+/obj/structure/vulture_spotter_tripod/on_unset_interaction(mob/living/user)
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] looks up from [src]."),SPAN_NOTICE("You look up from [src]."))
 	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Vulture spotter"))

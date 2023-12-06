@@ -788,7 +788,7 @@
 /area/varadero/exterior/pool)
 "aAX" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2 - Palm Airfield"
+	name = "LZ2: Palm Airfield"
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -23224,7 +23224,7 @@
 /area/varadero/interior/security)
 "oXw" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1 - Pontoon Dock"
+	name = "LZ1: Pontoon Dock"
 	},
 /turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz1_near)

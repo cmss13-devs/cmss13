@@ -44,7 +44,7 @@
 	current_area = null
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
-	QDEL_LIST(cam_plane_masters)
+	QDEL_NULL_LIST(cam_plane_masters)
 
 /datum/component/camera_manager/proc/add_plane(atom/movable/screen/plane_master/instance)
 	instance.assigned_map = map_name

@@ -9,7 +9,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_TSL) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	idtype = /obj/item/card/id/pmc/ds
-	paygrade = "O"
+	paygrade = PAY_SHORT_OPR
 
 /datum/equipment_preset/pmc/w_y_whiteout/New()
 	. = ..()

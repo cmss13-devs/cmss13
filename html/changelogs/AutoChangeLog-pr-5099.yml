@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Cleaned up 1 letter vars in the global datacore. Also made the entry names reflect the real name of who they relate to, for VV purposes."

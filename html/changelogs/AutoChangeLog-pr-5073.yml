@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - admin: "Added a Check Ckey verb to analyze for multikey. We're watching you Wazowski. Always watching."

@@ -787,9 +787,20 @@
 	spitting = FALSE
 
 	SEND_SIGNAL(xeno, COMSIG_XENO_POST_SPIT)
-
+	if(xeno.ammo.spit_windup)
+		RegisterSignal(proj, COMSIG_BULLET_PRE_HANDLE_TURF, PROC_REF(xeno_spit_check_turf))
 	apply_cooldown()
 	return ..()
+
+/datum/action/xeno_action/activable/xeno_spit/proc/xeno_spit_check_turf(obj/projectile/projectile, turf/turf)
+	SIGNAL_HANDLER
+	if(!istype(turf, /turf/closed/wall/resin/membrane) || !istype(projectile.ammo, /datum/ammo/xeno/boiler_gas))
+		return
+	var/turf/closed/wall/resin/membrane/membrane = turf
+	xeno_announcement(SPAN_XENOANNOUNCE("TEST"), membrane.hivenumber, XENO_GENERAL_ANNOUNCE)
+	if(membrane.can_bombard(projectile.firer))
+		xeno_announcement(SPAN_XENOANNOUNCE("TEST4"), membrane.hivenumber, XENO_GENERAL_ANNOUNCE)
+		return COMPONENT_BULLET_PASS_THROUGH
 
 /datum/action/xeno_action/activable/bombard/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner

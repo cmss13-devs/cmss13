@@ -58663,10 +58663,6 @@
 	icon_state = "red"
 	},
 /area/almayer/living/offices/flight)
-"oYu" = (
-/obj/structure/machinery/door_control/cl/quarter,
-/turf/open/floor/carpet,
-/area/almayer/command/corporateliason)
 "oZd" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
@@ -80112,10 +80108,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
-"xzx" = (
-/obj/structure/machinery/door_control/cl/office,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliason)
 "xzB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -114174,7 +114166,7 @@ avj
 aYp
 aWS
 bYj
-xzx
+bYj
 btz
 rne
 rne
@@ -115595,7 +115587,7 @@ avj
 awE
 ceo
 rne
-oYu
+rne
 wft
 awE
 awE

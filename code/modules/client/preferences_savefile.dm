@@ -274,6 +274,7 @@
 	vars["fps"] = fps
 
 	check_keybindings()
+	S["key_bindings"] << key_bindings
 
 	if(remembered_key_bindings)
 		for(var/i in GLOB.keybindings_by_name)
@@ -652,7 +653,7 @@
 					addedbind = TRUE
 		if(!addedbind)
 			notadded += kb
-	save_preferences()
+
 	if(length(notadded))
 		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
 

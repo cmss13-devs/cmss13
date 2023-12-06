@@ -195,6 +195,7 @@
 	if (!istype(src, /datum/admins) || !(rights & R_MOD))
 		to_chat(user, "Error: you are not an admin!")
 		return
+	target_key = ckey(target_key)
 	if(!target_key)
 		to_chat(user, "Error: No key detected!")
 		return

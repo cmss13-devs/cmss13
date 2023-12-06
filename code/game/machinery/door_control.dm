@@ -244,6 +244,14 @@
 /obj/structure/machinery/door_control/cl/office/window
 	name = "Office Windows Shutters"
 	id = "cl_office_windows"
+/obj/structure/machinery/door_control/cl/office/divider
+	name = "Room Divider"
+	id = "RoomDivider"
+//special button that unlock the cl lock on is evac pod door bypassing general lockdown.
+/obj/structure/machinery/door_control/cl/office/evac
+	name = "Lock Evac Pod Control"
+	id = "cl_evac"
+	normaldoorcontrol = 1
 /obj/structure/machinery/door_control/cl/quarter
 /obj/structure/machinery/door_control/cl/quarter/officedoor
 	name = "Quarter Door Shutter"

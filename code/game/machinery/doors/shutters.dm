@@ -79,13 +79,6 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 	)
-//make a subtype for CL office so it as a proper name.
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl
-		name = "\improper Corporate Liason Privacy Shutters"
-//adding a subtype for CL office to use to secure access to cl office.
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office
-//adding a subtype for CL quarter to use to secure access to cl quarter.(including seperation with the office)
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/open
 	density = FALSE
@@ -162,3 +155,11 @@
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 		return
 	..()
+
+//make a subtype for CL office so it as a proper name.
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl
+		name = "\improper Corporate Liason Privacy Shutters"
+//adding a subtype for CL office to use to secure access to cl office.
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office
+//adding a subtype for CL quarter to use to secure access to cl quarter.(including seperation with the office)
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter

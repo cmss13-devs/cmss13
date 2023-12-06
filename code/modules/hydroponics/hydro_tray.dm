@@ -369,7 +369,7 @@
 	yield_mod = 0
 	mutation_mod = 0
 
-	to_chat(user, "You remove the dead plant from the [src].")
+	to_chat(user, "You remove the dead plant from [src].")
 	check_level_sanity()
 	update_icon()
 	return
@@ -593,7 +593,7 @@
 	else if (istype(O, /obj/item/tool/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
-			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from the [src]."))
+			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from [src]."))
 			weedlevel = 0
 			update_icon()
 		else

@@ -118,6 +118,13 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					listening += M
 					hearturfs += M.locs[1]
 					for(var/obj/O in M.contents)
+						var/obj/item/clothing/worn_item = O
+						if((O.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
+							listening_obj |= O
+				else if(istype(I, /obj/structure/surface))
+					var/obj/structure/surface/table = I
+					hearturfs += table.locs[1]
+					for(var/obj/O in table.contents)
 						if(O.flags_atom & USES_HEARING)
 							listening_obj |= O
 				else if(istype(I, /obj/))

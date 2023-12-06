@@ -209,7 +209,7 @@
 				SPAN_DANGER("You tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			else
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-				if (knocked_down)
+				if (HAS_TRAIT(src, TRAIT_FLOORED))
 					M.visible_message(SPAN_DANGER("[M] tries to tackle [src], but they are already down!"), \
 					SPAN_DANGER("You try to tackle [src], but they are already down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				else
@@ -555,7 +555,7 @@
 	if(M.action_busy)
 		return XENO_NO_DELAY_ACTION
 
-	if(M.lying)
+	if(M.is_mob_incapacitated() || M.body_position != STANDING_UP)
 		return XENO_NO_DELAY_ACTION
 
 	var/delay
@@ -574,7 +574,7 @@
 	if(do_after(M, delay, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return XENO_NO_DELAY_ACTION //Make sure we're still there
-		if(M.lying)
+		if(M.is_mob_incapacitated() || M.body_position != STANDING_UP)
 			return XENO_NO_DELAY_ACTION
 		if(locked)
 			to_chat(M, SPAN_WARNING("[src] is bolted down tight."))

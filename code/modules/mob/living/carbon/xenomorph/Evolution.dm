@@ -26,8 +26,15 @@
 	if(!length(castes_available))
 		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes you can evolve to yet."))
 		return
+	var/castepick
+	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
+		castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
+	else
+		var/list/fancy_caste_list = list()
+		for(var/caste in castes_available)
+			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
 
-	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
+		castepick = show_radial_menu(src, src.client?.eye, fancy_caste_list)
 	if(!castepick) //Changed my mind
 		return
 

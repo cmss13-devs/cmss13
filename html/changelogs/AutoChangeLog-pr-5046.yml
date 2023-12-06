@@ -1,0 +1,5 @@
+author: "silencer_pl"
+delete-after: True
+changes:
+  - admin: "Recieving prayers now makes a sound"
+  - admin: "Prayers and USCM emergency messages are now better highlighted for mods/admins"

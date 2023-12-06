@@ -25,7 +25,6 @@
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
 	density = FALSE
-	canmove = TRUE
 	blinded = FALSE
 	anchored = TRUE //  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
@@ -79,6 +78,9 @@
 	. = ..()
 
 	GLOB.observer_list += src
+
+	// Ghosts don't move, they teleport via a special case in mob code
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 
 	var/turf/spawn_turf
 	if(ismob(body))
@@ -756,12 +758,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!tx || !ty || !tz)
 		return
 	following = null
-	spawn(0)
-		// To stop the ghost flickering.
-		x = tx
-		y = ty
-		z = tz
-		sleep(15)
+	forceMove(locate(tx, ty, tz))
 
 /mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"

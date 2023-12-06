@@ -455,9 +455,7 @@ CULT
 		return
 
 	to_chat(chosen, SPAN_HIGHDANGER("You feel a dangerous presence in the back of your head. You find yourself unable to move!"))
-
 	ADD_TRAIT(chosen, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cultist Stun"))
-	chosen.update_canmove()
 
 	chosen.update_xeno_hostile_hud()
 

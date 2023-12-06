@@ -116,8 +116,8 @@
 			attack_hand(user)//Not a carrier, or already full? Just pick it up.
 		return XENO_NO_DELAY_ACTION
 
-/obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
-	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled && !isyautja(M)))
+/obj/item/clothing/mask/facehugger/attack(mob/living/M, mob/user)
+	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled && !isyautja(M)))
 		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
 		return
@@ -130,7 +130,7 @@
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 
-		if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled))
+		if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled))
 			return
 
 	attach(M)
@@ -525,7 +525,7 @@
 	var/catch_chance = 50
 	if(target.dir == GLOB.reverse_dir[hugger.dir])
 		catch_chance += 20
-	if(target.lying)
+	if(target.body_position == LYING_DOWN)
 		catch_chance -= 50
 	catch_chance -= ((target.maxHealth - target.health) / 3)
 	if(target.get_active_hand())

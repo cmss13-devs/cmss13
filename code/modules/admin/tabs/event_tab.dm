@@ -441,8 +441,8 @@
 	GLOB.supply_controller.shoppinglist += new_order
 
 	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
-	message_admins("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
-	log_game("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
+	message_admins("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
+	log_game("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
@@ -524,7 +524,7 @@
 	else
 		marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
 
-	message_admins("[key_name_admin(src)] has created a [faction] command report")
+	message_admins("[key_name_admin(src)] has created \a [faction] command report")
 	log_admin("[key_name_admin(src)] [faction] command report: [input]")
 
 /client/proc/cmd_admin_xeno_report()

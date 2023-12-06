@@ -1,0 +1,4 @@
+author: "zzzmike, drathek, ihatethisengine2"
+delete-after: True
+changes:
+  - rscadd: "Lifeboat launch now has an ARES announcement followed by a 10 second delay before doors close. The current launch functionality is preserved as Emergency Launch."

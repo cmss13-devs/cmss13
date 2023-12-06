@@ -22,7 +22,7 @@
 /obj/item/lightstick/Crossed(mob/living/O)
 	if(anchored && prob(trample_chance) && can_trample)
 		if(!istype(O,/mob/living/carbon/xenomorph/larva))
-			visible_message(SPAN_DANGER("[O] tramples the [src]!"))
+			visible_message(SPAN_DANGER("[O] tramples [src]!"))
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 			if(istype(O,/mob/living/carbon/xenomorph))
 				if(prob(40))
@@ -46,17 +46,17 @@
 	if(!anchored)//If planted
 		return
 
-	to_chat(user, "You start pulling out \the [src].")
-	if(!do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	to_chat(user, "You start pulling out [src].")
+	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 
 	anchored = FALSE
-	user.visible_message("[user.name] removes \the [src] from the ground.","You remove the [src] from the ground.")
+	user.visible_message("[user.name] removes [src] from the ground.", "You remove [src] from the ground.")
 	icon_state = "lightstick_[s_color][anchored]"
 	set_light(0)
 	pixel_x = 0
 	pixel_y = 0
-	playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
+	playsound(user, 'sound/weapons/Genhit.ogg', 25, TRUE)
 
 //Red
 /obj/item/lightstick/planted

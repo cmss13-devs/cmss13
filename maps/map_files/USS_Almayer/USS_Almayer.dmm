@@ -34946,6 +34946,9 @@
 	pixel_x = -5;
 	pixel_y = 5
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "fqg" = (
@@ -55599,6 +55602,12 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/commandbunks)
+"nKJ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliason)
 "nLa" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -116804,7 +116813,7 @@ qVM
 csz
 awE
 qMe
-bYj
+nKJ
 bYj
 dyF
 awE

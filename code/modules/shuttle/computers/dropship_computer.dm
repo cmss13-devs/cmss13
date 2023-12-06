@@ -143,21 +143,21 @@
 		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
 		return
 	var/remaining_time = timeleft(door_control_cooldown) / 10
-	if(remaining_time > 60)
-		to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
+	to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
 	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
 		if(do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			remaining_time = timeleft(door_control_cooldown) / 10 - 20
 			if(remaining_time > 0)
-				to_chat(user, SPAN_WARNING("You partly remove the Queens override, only [remaining_time] seconds left."))
-				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_DELETE_ME|TIMER_OVERRIDE)
+				to_chat(user, SPAN_NOTICE("You partly remove the Queens override, only [remaining_time] seconds left."))
+				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 				return
 		else
-			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))
+			to_chat(user, SPAN_WARNING("You fail to remove the Queens override!"))
 			return
 		if(dropship_control_lost)
 			remove_door_lock()
+		to_chat(user, SPAN_NOTICE("You succesfully removed the Queens override!"))
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)
@@ -222,7 +222,7 @@
 	if(!dropship_control_lost)
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
-		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_DELETE_ME|TIMER_OVERRIDE)
+		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		if(GLOB.almayer_orbital_cannon)
 			GLOB.almayer_orbital_cannon.is_disabled = TRUE
 			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
@@ -305,6 +305,7 @@
 	playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 	dropship_control_lost = FALSE
 	if(door_control_cooldown)
+		deltimer(door_control_cooldown)
 		door_control_cooldown = null
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)

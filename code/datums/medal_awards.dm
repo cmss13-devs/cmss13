@@ -165,7 +165,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
 
-	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.highcom_paygrades) || (card.paygrade == "MO3")))
+	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.highcom_paygrades) || (card.paygrade == PAY_SHORT_MO3)))
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
 

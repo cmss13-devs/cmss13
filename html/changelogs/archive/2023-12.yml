@@ -78,3 +78,8 @@
   silencer_pl:
   - admin: Recieving prayers now makes a sound
   - admin: Prayers and USCM emergency messages are now better highlighted for mods/admins
+2023-12-06:
+  Birdtalon:
+  - bugfix: "Fixes runtime in spiders.dm\n/\U0001F191"
+  Blundir:
+  - rscadd: added new ammo boxes for various weapons and ammo

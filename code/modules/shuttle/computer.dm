@@ -331,8 +331,8 @@
                 return XENO_NO_DELAY_ACTION
             if(lifeboat.mode == SHUTTLE_CALLED)
                 to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
-			    return XENO_NO_DELAY_ACTION
-		    lifeboat.status = LIFEBOAT_LOCKED
+				return XENO_NO_DELAY_ACTION
+			lifeboat.status = LIFEBOAT_LOCKED
 			lifeboat.available = FALSE
 			lifeboat.set_mode(SHUTTLE_IDLE)
 			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()

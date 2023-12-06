@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Reduced most preference re-saving when preferences are initially loaded"

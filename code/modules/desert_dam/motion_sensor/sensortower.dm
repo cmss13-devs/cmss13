@@ -211,7 +211,7 @@
 	if(do_after(M, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return XENO_NO_DELAY_ACTION //Make sure we're still there
-		if(M.lying)
+		if(M.is_mob_incapacitated())
 			return XENO_NO_DELAY_ACTION
 		if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
 			return XENO_NO_DELAY_ACTION

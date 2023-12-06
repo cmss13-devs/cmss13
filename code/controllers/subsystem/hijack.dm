@@ -238,7 +238,7 @@ SUBSYSTEM_DEF(hijack)
 			return "Complete"
 
 /datum/controller/subsystem/hijack/proc/get_sd_eta()
-	if(!sd_time_remaining)
+	if(sd_detonated)
 		return "Complete"
 
 	if(overloaded_generators <= 0)
@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(hijack)
 		evac_status = EVACUATION_STATUS_INITIATED
 		ai_announcement("Attention. Emergency. All personnel must evacuate immediately.", 'sound/AI/evacuate.ogg')
 
-		for(var/obj/structure/machinery/status_display/cycled_status_display in machines)
+		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
 			if(is_mainship_level(cycled_status_display.z))
 				cycled_status_display.set_picture("evac")
 		for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
@@ -269,7 +269,7 @@ SUBSYSTEM_DEF(hijack)
 		deactivate_lifeboats()
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
 
-		for(var/obj/structure/machinery/status_display/cycled_status_display in machines)
+		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
 			if(is_mainship_level(cycled_status_display.z))
 				cycled_status_display.set_sec_level_picture()
 

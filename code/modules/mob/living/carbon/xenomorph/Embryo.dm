@@ -102,7 +102,7 @@
 	switch(stage)
 		if(2)
 			if(prob(4))
-				if(affected_mob.knocked_out < 1)
+				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
@@ -123,7 +123,7 @@
 			else if(prob(2))
 				affected_mob.emote("[pick("sneeze", "cough")]")
 			if(prob(5))
-				if(affected_mob.knocked_out < 1)
+				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
@@ -139,7 +139,7 @@
 				if(prob(50))
 					affected_mob.emote("scream")
 			if(prob(6))
-				if(affected_mob.knocked_out < 1)
+				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
@@ -260,7 +260,7 @@
 		new_xeno.key = picked.key
 
 		if(new_xeno.client)
-			new_xeno.client.change_view(world_view_size)
+			new_xeno.client.change_view(GLOB.world_view_size)
 			if(new_xeno.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 				window_flash(new_xeno.client)
 
@@ -295,7 +295,7 @@
 		return
 	victim.chestburst = TRUE
 	to_chat(src, SPAN_DANGER("You start bursting out of [victim]'s chest!"))
-	if(victim.knocked_out < 1)
+	if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		victim.apply_effect(20, DAZE)
 	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
 						SPAN_DANGER("You feel something ripping up your insides!"))
@@ -336,17 +336,17 @@
 		victim.attack_log += "\[[time_stamp()]\]<font color='orange'> Was chestbursted in [get_area_name(larva_embryo)] at X[victim.x], Y[victim.y], Z[victim.z]. The larva was [key_name(larva_embryo)].</font>"
 
 		if(burstcount)
-			step(larva_embryo, pick(cardinal))
+			step(larva_embryo, pick(GLOB.cardinals))
 
-		if(round_statistics)
-			round_statistics.total_larva_burst++
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.total_larva_burst++
 		GLOB.larva_burst_by_hive[hive] = (GLOB.larva_burst_by_hive[hive] || 0) + 1
 		burstcount++
 
 		if(!larva_embryo.ckey && larva_embryo.burrowable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			larva_embryo.visible_message(SPAN_XENODANGER("[larva_embryo] quickly burrows into the ground."))
-			if(round_statistics && !larva_embryo.statistic_exempt)
-				round_statistics.track_new_participant(faction, -1) // keep stats sane
+			if(GLOB.round_statistics && !larva_embryo.statistic_exempt)
+				GLOB.round_statistics.track_new_participant(faction, -1) // keep stats sane
 			hive.stored_larva++
 			hive.hive_ui.update_burrowed_larva()
 			qdel(larva_embryo)

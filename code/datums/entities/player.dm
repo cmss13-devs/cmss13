@@ -93,7 +93,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
-		message_admins("[key_name_admin(admin.mob)] has edited [ckey]'s [note_categories[note_category]] notes: [sanitize(note_text)]")
+		message_admins("[key_name_admin(admin.mob)] has edited [ckey]'s [GLOB.note_categories[note_category]] notes: [sanitize(note_text)]")
 	if(!is_confidential && note_category == NOTE_ADMIN && owning_client)
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin(admin.mob, FALSE)].")))
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("The note is : [sanitize(note_text)]")))
@@ -235,7 +235,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			if(job_bans[safe_rank])
 				continue
 			var/old_rank = check_jobban_path(safe_rank)
-			jobban_keylist[old_rank][ckey] = ban_text
+			GLOB.jobban_keylist[old_rank][ckey] = ban_text
 			jobban_savebanfile()
 
 	add_note("Banned from [total_rank] - [ban_text]", FALSE, NOTE_ADMIN, TRUE, duration) // it is ban related note
@@ -570,33 +570,33 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	save()
 
 /datum/entity/player/proc/migrate_bans()
-	if(!Banlist) // if Banlist cannot be located for some reason
+	if(!GLOB.Banlist) // if GLOB.Banlist cannot be located for some reason
 		LoadBans() // try to load the bans
-		if(!Banlist) // uh oh, can't find bans!
+		if(!GLOB.Banlist) // uh oh, can't find bans!
 			return
 
 	var/reason
 	var/expiration
 	var/banned_by
 
-	Banlist.cd = "/base"
+	GLOB.Banlist.cd = "/base"
 
-	for (var/A in Banlist.dir)
-		Banlist.cd = "/base/[A]"
+	for (var/A in GLOB.Banlist.dir)
+		GLOB.Banlist.cd = "/base/[A]"
 
-		if(ckey != Banlist["key"])
+		if(ckey != GLOB.Banlist["key"])
 			continue
 
-		if(Banlist["temp"])
-			if (!GetExp(Banlist["minutes"]))
+		if(GLOB.Banlist["temp"])
+			if (!GetExp(GLOB.Banlist["minutes"]))
 				return
 
-		if(expiration > Banlist["minutes"])
+		if(expiration > GLOB.Banlist["minutes"])
 			return // found longer ban
 
-		reason = Banlist["reason"]
-		banned_by = Banlist["bannedby"]
-		expiration = Banlist["minutes"]
+		reason = GLOB.Banlist["reason"]
+		banned_by = GLOB.Banlist["bannedby"]
+		expiration = GLOB.Banlist["minutes"]
 
 	migrated_bans = TRUE
 	save()
@@ -619,13 +619,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity/player/proc/migrate_jobbans()
 	if(!job_bans)
 		job_bans = list()
-	for(var/name in RoleAuthority.roles_for_mode)
+	for(var/name in GLOB.RoleAuthority.roles_for_mode)
 		var/safe_job_name = ckey(name)
-		if(!jobban_keylist[safe_job_name])
+		if(!GLOB.jobban_keylist[safe_job_name])
 			continue
 		if(!safe_job_name)
 			continue
-		var/reason = jobban_keylist[safe_job_name][ckey]
+		var/reason = GLOB.jobban_keylist[safe_job_name][ckey]
 		if(!reason)
 			continue
 

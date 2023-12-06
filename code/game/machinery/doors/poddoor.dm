@@ -240,6 +240,7 @@
 
 /obj/structure/machinery/door/poddoor/filler_object
 	name = ""
+	icon = null
 	icon_state = ""
 	unslashable = TRUE
 	unacidable = TRUE

@@ -29,7 +29,7 @@
 /obj/structure/tunnel/Initialize(mapload, h_number)
 	. = ..()
 	var/turf/L = get_turf(src)
-	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
+	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
 
 	if(h_number && GLOB.hive_datum[h_number])
 		hivenumber = h_number
@@ -127,7 +127,7 @@
 
 /obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/xenomorph/X)
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
-	if(!istype(X) || X.stat || X.lying || !isfriendly(X) || !hive)
+	if(!istype(X) || X.is_mob_incapacitated(TRUE) || !isfriendly(X) || !hive)
 		return FALSE
 	if(X in contents)
 		var/list/tunnels = list()
@@ -195,7 +195,7 @@
 	. = attack_alien(M)
 
 /obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!istype(M) || M.stat || M.lying)
+	if(!istype(M) || M.is_mob_incapacitated(TRUE))
 		return XENO_NO_DELAY_ACTION
 
 	if(!isfriendly(M))

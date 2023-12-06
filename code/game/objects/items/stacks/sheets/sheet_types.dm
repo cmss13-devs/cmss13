@@ -10,7 +10,7 @@
 /*
  * Metal
  */
-var/global/list/datum/stack_recipe/metal_recipes = list ( \
+GLOBAL_LIST_INIT_TYPED(metal_recipes, /datum/stack_recipe, list ( \
 	new/datum/stack_recipe("barbed wire", /obj/item/stack/barbed_wire, 1, 1, 20, time = 1 SECONDS, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED), \
 	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 4, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS), \
 	new/datum/stack_recipe("folding metal barricade", /obj/structure/barricade/plasteel/metal, 6, time = 3 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, min_time = 1.5 SECONDS), \
@@ -54,7 +54,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	null, \
 	new/datum/stack_recipe("metal baseball bat", /obj/item/weapon/baseballbat/metal, 10, time = 20, on_floor = 1), \
 	null, \
-)
+))
 
 /obj/item/stack/sheet/metal
 	name = "metal sheets"
@@ -88,20 +88,20 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 /obj/item/stack/sheet/metal/cyborg
 
 /obj/item/stack/sheet/metal/Initialize(mapload, amount)
-	recipes = metal_recipes
+	recipes = GLOB.metal_recipes
 	return ..()
 
 /*
  * Plasteel
  */
-var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
+GLOBAL_LIST_INIT_TYPED(plasteel_recipes, /datum/stack_recipe, list ( \
 	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 8, time = 4 SECONDS, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, min_time = 2 SECONDS),
 	null, \
 	new/datum/stack_recipe("reinforced window frame", /obj/structure/window_frame/colony/reinforced, 5, time = 40, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI),
 	null, \
 	new/datum/stack_recipe("plasteel rod", /obj/item/stack/rods/plasteel, 1, 1, 30),
 	new/datum/stack_recipe("metal crate", /obj/structure/closet/crate, 5, time = 50, one_per_turf = ONE_TYPE_PER_TURF), \
-	)
+	))
 
 /obj/item/stack/sheet/plasteel
 	name = "plasteel sheet"
@@ -119,7 +119,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	ground_offset_y = 5
 
 /obj/item/stack/sheet/plasteel/New(loc, amount=null)
-	recipes = plasteel_recipes
+	recipes = GLOB.plasteel_recipes
 	return ..()
 
 
@@ -141,7 +141,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 /*
  * Wood
  */
-var/global/list/datum/stack_recipe/wood_recipes = list ( \
+GLOBAL_LIST_INIT_TYPED(wood_recipes, /datum/stack_recipe, list ( \
 	new/datum/stack_recipe("pair of wooden sandals", /obj/item/clothing/shoes/sandal, 1), \
 	new/datum/stack_recipe("wood floor tile", /obj/item/stack/tile/wood, 1, 4, 20), \
 	/*
@@ -156,7 +156,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	new/datum/stack_recipe("baseball bat", /obj/item/weapon/baseballbat, 10, time = 20, on_floor = 1), \
 	new/datum/stack_recipe("wooden cross", /obj/structure/prop/wooden_cross, 2, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("wooden pole", /obj/item/weapon/pole, 3, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1) \
-	)
+	))
 
 /obj/item/stack/sheet/wood
 	name = "wooden plank"
@@ -184,7 +184,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	icon_state = "sheet-wood"
 
 /obj/item/stack/sheet/wood/New(loc, amount=null)
-	recipes = wood_recipes
+	recipes = GLOB.wood_recipes
 	return ..()
 
 /*
@@ -201,7 +201,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 /*
  * Cardboard
  */
-var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
+GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 	new/datum/stack_recipe("box", /obj/item/storage/box), \
 	new/datum/stack_recipe("donut box", /obj/item/storage/donut_box/empty), \
 	new/datum/stack_recipe("egg box", /obj/item/storage/fancy/egg_box), \
@@ -223,11 +223,13 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	null, \
 	new/datum/stack_recipe_list("empty ammo boxes",list( \
 		new/datum/stack_recipe("empty magazine box (88 Mod 4 AP)", /obj/item/ammo_box/magazine/mod88/empty), \
+		new/datum/stack_recipe("empty magazine box (SU-6)", /obj/item/ammo_box/magazine/su6/empty), \
+		new/datum/stack_recipe("empty magazine box (VP78)", /obj/item/ammo_box/magazine/vp78/empty), \
+		null, \
 		new/datum/stack_recipe("empty magazine box (M4A3)", /obj/item/ammo_box/magazine/m4a3/empty), \
 		new/datum/stack_recipe("empty magazine box (M4A3 AP)", /obj/item/ammo_box/magazine/m4a3/ap/empty), \
 		new/datum/stack_recipe("empty magazine box (M4A3 HP)", /obj/item/ammo_box/magazine/m4a3/hp/empty), \
-		new/datum/stack_recipe("empty magazine box (SU-6)", /obj/item/ammo_box/magazine/su6/empty), \
-		new/datum/stack_recipe("empty magazine box (VP78)", /obj/item/ammo_box/magazine/vp78/empty), \
+		new/datum/stack_recipe("empty magazine box (M4A3 Incen)", /obj/item/ammo_box/magazine/m4a3/incen/empty), \
 		null, \
 		new/datum/stack_recipe("empty speed loader box (M44)", /obj/item/ammo_box/magazine/m44/empty), \
 		new/datum/stack_recipe("empty speed loader box (M44 Heavy)", /obj/item/ammo_box/magazine/m44/heavy/empty), \
@@ -256,10 +258,27 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		new/datum/stack_recipe("empty magazine box (M41A Incen)", /obj/item/ammo_box/magazine/incen/empty), \
 		new/datum/stack_recipe("empty magazine box (M41A LE)", /obj/item/ammo_box/magazine/le/empty), \
 		null, \
+		new/datum/stack_recipe("empty magazine box (M41A MK1)", /obj/item/ammo_box/magazine/mk1/empty), \
+		new/datum/stack_recipe("empty magazine box (M41A MK1 AP)", /obj/item/ammo_box/magazine/mk1/ap/empty), \
+		null, \
+		new/datum/stack_recipe("empty drum box (M56B)", /obj/item/ammo_box/magazine/m56b/empty), \
+		new/datum/stack_recipe("empty drum box (M56B Irradiated)", /obj/item/ammo_box/magazine/m56b/dirty/empty), \
+		new/datum/stack_recipe("empty drum box (M56D)", /obj/item/ammo_box/magazine/m56d/empty), \
+		null, \
+		new/datum/stack_recipe("empty drum box (M2C)", /obj/item/ammo_box/magazine/m2c/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (M41AE2)", /obj/item/ammo_box/magazine/m41ae2/empty), \
+		new/datum/stack_recipe("empty magazine box (M41AE2 Holo-Target)", /obj/item/ammo_box/magazine/m41ae2/holo/empty), \
+		new/datum/stack_recipe("empty magazine box (M41AE2 HEAP)", /obj/item/ammo_box/magazine/m41ae2/heap/empty), \
+		null, \
+		new/datum/stack_recipe("empty flamer tank box (UT-Napthal)", /obj/item/ammo_box/magazine/flamer/empty), \
+		new/datum/stack_recipe("empty flamer tank box (Napalm B-Gel)", /obj/item/ammo_box/magazine/flamer/bgel/empty), \
+		null, \
 		new/datum/stack_recipe("empty shotgun shell box (Beanbag)", /obj/item/ammo_box/magazine/shotgun/beanbag/empty), \
 		new/datum/stack_recipe("empty shotgun shell box (Buckshot)", /obj/item/ammo_box/magazine/shotgun/buckshot/empty), \
 		new/datum/stack_recipe("empty shotgun shell box (Flechette)", /obj/item/ammo_box/magazine/shotgun/flechette/empty), \
 		new/datum/stack_recipe("empty shotgun shell box (Incendiary)", /obj/item/ammo_box/magazine/shotgun/incendiary/empty), \
+		new/datum/stack_recipe("empty shotgun shell box (Incendiary Buckshot)", /obj/item/ammo_box/magazine/shotgun/incendiarybuck/empty), \
 		new/datum/stack_recipe("empty shotgun shell box (Slugs)", /obj/item/ammo_box/magazine/shotgun/empty), \
 		null, \
 		new/datum/stack_recipe("empty 45-70 bullets box", /obj/item/ammo_box/magazine/lever_action/empty), \
@@ -279,23 +298,48 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		new/datum/stack_recipe("empty rifle ammo box (10x24mm Incen)", /obj/item/ammo_box/rounds/incen/empty), \
 		new/datum/stack_recipe("empty rifle ammo box (10x24mm LE)", /obj/item/ammo_box/rounds/le/empty), \
 		null, \
+		new/datum/stack_recipe("empty rifle ammo box (9mm)", /obj/item/ammo_box/rounds/pistol/empty), \
+		new/datum/stack_recipe("empty rifle ammo box (9mm AP)", /obj/item/ammo_box/rounds/pistol/ap/empty), \
+		new/datum/stack_recipe("empty rifle ammo box (9mm HP)", /obj/item/ammo_box/rounds/pistol/hp/empty), \
+		new/datum/stack_recipe("empty rifle ammo box (9mm Incen)", /obj/item/ammo_box/rounds/pistol/incen/empty), \
+		null, \
 		new/datum/stack_recipe("empty box of MREs", /obj/item/ammo_box/magazine/misc/mre/empty), \
 		new/datum/stack_recipe("empty box of M94 Marking Flare Packs", /obj/item/ammo_box/magazine/misc/flares/empty), \
+		new/datum/stack_recipe("empty box of M89 Signal Flare Packs", /obj/item/ammo_box/magazine/misc/flares/signal/empty), \
 		new/datum/stack_recipe("empty box of flashlights", /obj/item/ammo_box/magazine/misc/flashlight/empty), \
 		new/datum/stack_recipe("empty box of High-Capacity Power Cells", /obj/item/ammo_box/magazine/misc/power_cell/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (Desert Eagle)", /obj/item/ammo_box/magazine/deagle/empty), \
+		new/datum/stack_recipe("empty magazine box (Desert Eagle Heavy)", /obj/item/ammo_box/magazine/deagle/super/empty), \
+		new/datum/stack_recipe("empty magazine box (Desert Eagle High-Impact)", /obj/item/ammo_box/magazine/deagle/super/highimpact/empty), \
+		new/datum/stack_recipe("empty magazine box (Desert Eagle AP)", /obj/item/ammo_box/magazine/deagle/super/highimpact/ap/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (Spearhead HP)", /obj/item/ammo_box/magazine/spearhead/empty), \
+		new/datum/stack_recipe("empty magazine box (Spearhead)", /obj/item/ammo_box/magazine/spearhead/normalpoint/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (M16)", /obj/item/ammo_box/magazine/M16/empty), \
 		new/datum/stack_recipe("empty magazine box (M16 AP)", /obj/item/ammo_box/magazine/M16/ap/empty), \
 		null, \
+		new/datum/stack_recipe("empty magazine box (AR10)", /obj/item/ammo_box/magazine/ar10/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (MP5)", /obj/item/ammo_box/magazine/mp5/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (NSG 23)", /obj/item/ammo_box/magazine/nsg23/empty), \
+		new/datum/stack_recipe("empty magazine box (NSG 23 AP)", /obj/item/ammo_box/magazine/nsg23/ap/empty), \
+		new/datum/stack_recipe("empty magazine box (NSG 23 EX)", /obj/item/ammo_box/magazine/nsg23/ex/empty), \
+		null, \
 		new/datum/stack_recipe("empty magazine box (Type71)", /obj/item/ammo_box/magazine/type71/empty), \
 		new/datum/stack_recipe("empty magazine box (Type71 AP)", /obj/item/ammo_box/magazine/type71/ap/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (Type73)", /obj/item/ammo_box/magazine/type73/empty), \
+		new/datum/stack_recipe("empty magazine box (Type73 High-Impact)", /obj/item/ammo_box/magazine/type73/impact/empty), \
 		null, \
 		new/datum/stack_recipe("empty rifle ammo box (5.45x39mm)", /obj/item/ammo_box/rounds/type71/empty), \
 		new/datum/stack_recipe("empty rifle ammo box (5.45x39mm AP)", /obj/item/ammo_box/rounds/type71/ap/empty), \
 
 
 		)) \
-)
+))
 
 /obj/item/stack/sheet/cardboard //BubbleWrap
 	name = "cardboard"
@@ -306,7 +350,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	stack_id = "cardboard"
 
 /obj/item/stack/sheet/cardboard/New(loc, amount=null)
-	recipes = cardboard_recipes
+	recipes = GLOB.cardboard_recipes
 	return ..()
 
 /obj/item/stack/sheet/cardboard/small_stack
@@ -321,9 +365,9 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 /*
  * Aluminum
  */
-var/global/list/datum/stack_recipe/aluminum_recipes = list ( \
+GLOBAL_LIST_INIT_TYPED(aluminium_recipes, /datum/stack_recipe, list ( \
 	new/datum/stack_recipe("flask", /obj/item/reagent_container/food/drinks/flask, 1)
-	)
+	))
 
 /obj/item/stack/sheet/aluminum
 	name = "aluminum"
@@ -336,9 +380,9 @@ var/global/list/datum/stack_recipe/aluminum_recipes = list ( \
 /*
  * Copper
  */
-var/global/list/datum/stack_recipe/copper_recipes = list ( \
+GLOBAL_LIST_INIT_TYPED(copper_recipes, /datum/stack_recipe, list ( \
 	new/datum/stack_recipe("cable coil", /obj/item/stack/cable_coil, 2, 1, 20, time = 10, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED)
-	)
+	))
 
 /obj/item/stack/sheet/copper
 	name = "copper"

@@ -75,6 +75,15 @@
 	overlay_gun_type = "_m94"
 	overlay_content = "_flares"
 
+//------------------------M89 Signal Flare Packs Box--------------------------
+
+/obj/item/ammo_box/magazine/misc/flares/signal
+	name = "\improper box of M89 signal flare packs"
+	desc = "A box of M89 signal flare packs, to mark up the way."
+	magazine_type = /obj/item/storage/box/m94/signal
+	overlay_gun_type = "_m89"
+	overlay_content = "_flares_signal"
+
 //---------------------FIRE HANDLING PROCS
 
 //flare box has unique stuff
@@ -137,6 +146,9 @@
 	return
 
 /obj/item/ammo_box/magazine/misc/flares/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/flares/signal/empty
 	empty = TRUE
 
 //------------------------Flashlight Box--------------------------

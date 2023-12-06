@@ -51,7 +51,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(fendy.fortify && !fendy.mutation_type == DEFENDER_STEELCREST)
+	if(fendy.fortify && !(fendy.mutation_type == DEFENDER_STEELCREST))
 		to_chat(fendy, SPAN_XENOWARNING("You cannot use headbutt while fortified."))
 		return
 
@@ -220,7 +220,6 @@
 			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 			X.anchored = TRUE
 			X.small_explosives_stun = FALSE
-			X.update_canmove()
 		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 		X.mob_size = MOB_SIZE_IMMOBILE //knockback immune
 		X.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
@@ -242,7 +241,6 @@
 		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
 		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		X.mob_flags |= SQUEEZE_UNDER_VEHICLES
-		X.update_canmove()
 		X.update_icons()
 		X.fortify = FALSE
 

@@ -75,6 +75,7 @@
 	X.tunnel_delay = 1
 	addtimer(CALLBACK(src, PROC_REF(cooldown_end)), 4 MINUTES)
 	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
+	msg = replace_non_alphanumeric_plus(msg)
 	var/description
 	if(msg)
 		description = msg

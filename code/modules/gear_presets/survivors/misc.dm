@@ -1,12 +1,12 @@
 
 
 /*
-everything bellow isn't used or out of place.
+Everything below isn't used or out of place.
 
 */
 
 
-// ----- Prisioner Survivors
+// ----- Prisoner Survivors
 // Used in Fiorina Science Annex.
 /datum/equipment_preset/survivor/prisoner
 	name = "Survivor - Prisoner"
@@ -51,7 +51,7 @@ everything bellow isn't used or out of place.
 
 // ----- Civilian Survivor
 
-// Used in LV-624, Solaris Ridge, Fiorina Science Annex and Kutjevo Refinery.
+// Used in LV-624, Solaris Ridge, Trijent Dam, Fiorina Science Annex and Kutjevo Refinery.
 /datum/equipment_preset/survivor/civilian
 	name = "Survivor - Civilian"
 	assignment = "Civilian"

@@ -110,7 +110,7 @@
 						to_chat(user, SPAN_NOTICE("You lack the required metal."))
 						return
 					if((usr.get_active_hand()) != metal)
-						to_chat(user, SPAN_WARNING("You must be holding the [metal] to upgrade \the [src]!"))
+						to_chat(user, SPAN_WARNING("You must be holding [metal] to upgrade [src]!"))
 						return
 
 					switch(choice)
@@ -150,7 +150,7 @@
 						to_chat(user, SPAN_NOTICE("You lack the required metal."))
 						return
 					if((usr.get_active_hand()) != metal)
-						to_chat(user, SPAN_WARNING("You must be holding the [metal] to upgrade \the [src]!"))
+						to_chat(user, SPAN_WARNING("You must be holding [metal] to upgrade [src]!"))
 						return
 
 					switch(choice)

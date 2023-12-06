@@ -292,7 +292,7 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L]  at this position!")
+			to_chat(user, "There's already \a [L] at this position!")
 			return
 
 		to_chat(user, "Now planting \the [L].")
@@ -787,7 +787,7 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L]  at this position!")
+			to_chat(user, "There's already \a [L] at this position!")
 			return
 
 		to_chat(user, "Now planting \the [L].")

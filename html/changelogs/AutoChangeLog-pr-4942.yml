@@ -1,6 +1,0 @@
-author: "IowaPotatoFarmer"
-delete-after: True
-changes:
-  - rscadd: "Added a Corporate Liaison survivor to Sorokyne."
-  - rscadd: "Added a modified version of the liaison's winter coat that allows it to holster guns and a few other things. Only available to the Sorokyne Strata Corporate Liaison for now."
-  - spellcheck: "Fixed a typo in the Sorokyne Strata Political Prisoner's ID tag."

@@ -132,7 +132,7 @@
 			qdel(I) //delete the paper item
 			labels_left = initial(labels_left)
 		else
-			to_chat(user, SPAN_NOTICE("The [src] is already full."))
+			to_chat(user, SPAN_NOTICE("[src] is already full."))
 
 /*
 	Instead of updating labels_left to user every label used,

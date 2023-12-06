@@ -281,9 +281,10 @@
 		//update the datacore records! This is goig to be a bit costly.
 		var/mob_ref = WEAKREF(src)
 		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
-			for(var/datum/data/record/R in L)
-				if(R.fields["ref"] == mob_ref)
-					R.fields["name"] = newname
+			for(var/datum/data/record/record_entry in L)
+				if(record_entry.fields["ref"] == mob_ref)
+					record_entry.fields["name"] = newname
+					record_entry.name = newname
 					break
 
 		//update our pda and id if we have them on our person

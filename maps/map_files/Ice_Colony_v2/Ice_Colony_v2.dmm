@@ -34904,7 +34904,7 @@
 /area/ice_colony/surface/hangar/alpha)
 "sto" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
+	name = "LZ1: Hangar Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/exterior/surface/landing_pad)

@@ -142,16 +142,22 @@
 	if(shuttle.mode == SHUTTLE_CRASHED)
 		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
 		return
-
+	var/remaining_time = timeleft(door_control_cooldown) / 10
+	if(remaining_time > 60)
+		to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
 	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
-		var/remaining_time = timeleft(door_control_cooldown) / 10
-		if(remaining_time > 60)
-			to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
-			return
 		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
-		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			remaining_time = timeleft(door_control_cooldown) / 10 - 20
+			if(remaining_time > 0)
+				to_chat(user, SPAN_WARNING("You partly remove the Queens override, only [remaining_time] seconds left."))
+				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_DELETE_ME|TIMER_OVERRIDE)
+				return
+		else
 			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))
 			return
+		if(dropship_control_lost)
+			remove_door_lock()
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)
@@ -216,7 +222,7 @@
 	if(!dropship_control_lost)
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
-		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
+		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_DELETE_ME|TIMER_OVERRIDE)
 		if(GLOB.almayer_orbital_cannon)
 			GLOB.almayer_orbital_cannon.is_disabled = TRUE
 			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)

@@ -27664,11 +27664,6 @@
 	allow_construction = 0
 	},
 /area/almayer/hallways/port_hallway)
-"cyS" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door_control/cl/office/door,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliason)
 "cyU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -38004,17 +37999,10 @@
 	pixel_y = 3
 	},
 /obj/structure/machinery/door_control{
-	id = "cl_shutters";
-	name = "Privacy Shutters";
-	pixel_x = -5;
-	pixel_y = 8;
-	req_access_txt = "200"
-	},
-/obj/structure/machinery/door_control{
 	id = "RoomDivider";
 	name = "Room Divider";
 	pixel_x = -5;
-	pixel_y = -4;
+	pixel_y = -3;
 	req_access_txt = "200"
 	},
 /obj/structure/surface/table/woodentable/fancy,
@@ -38023,7 +38011,7 @@
 	name = "Evac Pod Door Control";
 	normaldoorcontrol = 1;
 	pixel_x = -5;
-	pixel_y = 2;
+	pixel_y = 4;
 	req_access_txt = "200"
 	},
 /turf/open/floor/carpet,
@@ -51863,12 +51851,6 @@
 	},
 /area/almayer/shipboard/brig/lobby)
 "mkx" = (
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 2";
-	name = "Quarters Shutters";
-	pixel_x = -25;
-	req_access_txt = "200"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_x = 1;
@@ -65073,13 +65055,21 @@
 /area/almayer/living/briefing)
 "rEm" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/spacecash/c500{
-	pixel_x = 4;
-	pixel_y = 8
-	},
 /obj/item/ashtray/bronze{
-	pixel_x = -13;
-	pixel_y = -4
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/structure/machinery/door_control/cl/office/window{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/structure/machinery/door_control/cl/office/door{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/spacecash/c500{
+	pixel_x = -10;
+	pixel_y = 8
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)
@@ -67853,6 +67843,9 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -71488,10 +71481,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/port_point_defense)
-"unq" = (
-/obj/structure/machinery/door_control/cl/office/window,
-/turf/open/floor/carpet,
-/area/almayer/command/corporateliason)
 "uns" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/item/seeds/carrotseed,
@@ -114198,7 +114187,7 @@ aWS
 bYj
 bYj
 btz
-unq
+rne
 rne
 bYj
 xne
@@ -114401,7 +114390,7 @@ aZJ
 baD
 baD
 tsH
-cyS
+bqw
 bqw
 hiB
 xne

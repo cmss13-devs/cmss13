@@ -359,7 +359,7 @@
 	if(!user || !dead) return
 
 	if(closed_system)
-		to_chat(user, "You can't remove the dead plant while the lid is shut.")
+		to_chat(user, SPAN_WARNING("You can't remove the dead plant while the lid is shut."))
 		return
 
 	seed = null
@@ -369,10 +369,9 @@
 	yield_mod = 0
 	mutation_mod = 0
 
-	to_chat(user, "You remove the dead plant from [src].")
+	to_chat(user, SPAN_NOTICE("You remove the dead plant from [src]."))
 	check_level_sanity()
 	update_icon()
-	return
 
 //Refreshes the icon and sets the luminosity
 /obj/structure/machinery/portable_atmospherics/hydroponics/update_icon()

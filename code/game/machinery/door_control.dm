@@ -249,7 +249,7 @@
 	id = "RoomDivider"
 //special button that unlock the cl lock on is evac pod door bypassing general lockdown.
 /obj/structure/machinery/door_control/cl/office/evac
-	name = "Lock Evac Pod Control"
+	name = "Evac Pod Door Control"
 	id = "cl_evac"
 	normaldoorcontrol = 1
 /obj/structure/machinery/door_control/cl/quarter

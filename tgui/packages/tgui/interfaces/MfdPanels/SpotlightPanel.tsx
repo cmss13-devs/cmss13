@@ -17,9 +17,6 @@ const SpotPanel = (props: DropshipEquipment) => {
           <Stack.Item>
             <h3>{props.name}</h3>
           </Stack.Item>
-          <Stack.Item>
-            <h3>{spotData.deployed === 1 ? 'DEPLOYED' : 'UNDEPLOYED'}</h3>
-          </Stack.Item>
         </Stack>
       </Stack.Item>
       <Stack.Item width="100px">

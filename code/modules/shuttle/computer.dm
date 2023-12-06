@@ -321,9 +321,15 @@
 		if(lifeboat.status == LIFEBOAT_LOCKED)
 			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
 			return XENO_NO_DELAY_ACTION
+        if(lifeboat.mode == SHUTTLE_CALLED)
+            to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+			return XENO_NO_DELAY_ACTION
 
 		xeno_attack_delay(xeno)
 		if(do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+            if(lifeboat.mode == SHUTTLE_CALLED)
+                to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+			    return XENO_NO_DELAY_ACTION
 			if(lifeboat.status != LIFEBOAT_LOCKED)
 				lifeboat.status = LIFEBOAT_LOCKED
 				lifeboat.available = FALSE

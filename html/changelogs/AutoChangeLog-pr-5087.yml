@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - spellcheck: "Fixed instances of \"The the\" and \"A the\" in chat messages so that they're just \"The\" instead. (Part 1)"

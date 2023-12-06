@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - bugfix: "disarm chance wasn't calculating properly"

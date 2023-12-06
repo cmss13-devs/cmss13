@@ -1,4 +1,0 @@
-author: "Tsurupeta"
-delete-after: True
-changes:
-  - bugfix: "fixed saving of certain preferences."

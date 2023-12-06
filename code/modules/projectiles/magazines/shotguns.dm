@@ -46,6 +46,14 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
 	handful_state = "incendiary_slug"
 
+/obj/item/ammo_magazine/shotgun/incendiarybuck
+	name = "box of incendiary buckshots"
+	desc = "A box filled with self-detonating buckshot incendiary shotgun rounds. 12 Gauge."
+	icon_state = "incendiarybuck"
+	item_state = "incendiarybuck"
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
+	handful_state = "incen_buckshot"
+
 /obj/item/ammo_magazine/shotgun/buckshot
 	name = "box of buckshot shells"
 	desc = "A box filled with buckshot spread shotgun shells. 12 Gauge."

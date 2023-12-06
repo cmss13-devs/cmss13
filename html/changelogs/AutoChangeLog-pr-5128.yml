@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Paygrade shorthands now use defines."
+  - bugfix: "CLF and Survivors are no longer privates."
+  - bugfix: "Civillian Mr/Ms/Mx prefix now works correctly, and is the default for new ID cards."

@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - soundadd: "The XM88 now has a scaling hit sound for every direct hit you manage to land with it."

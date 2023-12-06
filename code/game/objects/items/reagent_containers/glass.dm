@@ -237,7 +237,7 @@
 		overlays += lid
 
 /obj/item/reagent_container/glass/minitank
-	name = "MS-11 Smart Refill Tank"
+	name = "\improper MS-11 Smart Refill Tank"
 	desc = "A robust little tank capable of refilling autoinjectors that previously required a nanomed system to refill. Using the wonders of microchips, it automatically sorts the correct chemicals into most single reagent autoinjectors. It is unable to partially fill them however. A valve exists on the top to transfer reagents to another container or to flush it entirely."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "mini_reagent_tank"
@@ -277,7 +277,7 @@
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
 		if(A.mixed_chem)
-			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into the [src]'s valve. It's probably not compatible."))
+			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
 			return
 		if(reagents.has_reagent(A.chemname, A.volume))
 			reagents.trans_id_to(A, A.chemname, A.volume)
@@ -285,10 +285,10 @@
 			A.update_icon()
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		else
-			to_chat(user, SPAN_WARNING("A small LED on \the [src] blinks. The tank can't refill \the [A] - it's either incompatible or out of chemicals to fill it with!"))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The tank can't refill [A] - it's either incompatible or out of chemicals to fill it with!"))
 			. = ..()
 			return
-		to_chat(user,SPAN_INFO("You successfully refill \the [W.name] with \the [src]!"))
+		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
 
 /obj/item/reagent_container/glass/minitank/verb/flush_tank(mob/user)
 	set category = "Object"
@@ -299,7 +299,7 @@
 		to_chat(user, SPAN_WARNING("It's already empty!"))
 		return
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush \the [src]'s contents!"))
+	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon() // just to be sure
 	return
@@ -672,5 +672,5 @@
 	if(istype(AM) && (src in user))
 		user.visible_message("[user] starts to wipe down [AM] with [src]!")
 		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			user.visible_message("[user] finishes wiping off the [AM]!")
+			user.visible_message("[user] finishes wiping off [AM]!")
 			AM.clean_blood()

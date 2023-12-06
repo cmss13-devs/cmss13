@@ -238,7 +238,6 @@
 	req_access_txt = "200"
 // seperating quarter and office because we might want to allow more access to the office than quarter in the future.
 /obj/structure/machinery/door_control/cl/office
-	id = "cl_office_door","cl_office_windows"
 /obj/structure/machinery/door_control/cl/office/door
 	name = "Office Door Shutter"
 	id = "cl_office_door"
@@ -246,7 +245,6 @@
 	name = "Office Windows Shutters"
 	id = "cl_office_windows"
 /obj/structure/machinery/door_control/cl/quarter
-	id = "cl_quarter_door","cl_quarter_maintenance","cl_quarter_windows"
 /obj/structure/machinery/door_control/cl/quarter/officedoor
 	name = "Quarter Door Shutter"
 	id = "cl_quarter_door"

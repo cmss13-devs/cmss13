@@ -498,6 +498,8 @@
 
 /obj/item/prop/helmetgarb/helmet_gasmask/on_enter_storage(obj/item/storage/internal/helmet_internal_inventory)
 	..()
+	if(!istype(helmet_internal_inventory))
+		return
 	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
@@ -508,13 +510,15 @@
 
 /obj/item/prop/helmetgarb/helmet_gasmask/on_exit_storage(obj/item/storage/internal/helmet_internal_inventory)
 	..()
+	if(!istype(helmet_internal_inventory))
+		return
 	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
 		return
 
-	helmet_item.flags_inventory = initial(helmet_item.flags_inventory)
-	helmet_item.flags_inv_hide = initial(helmet_item.flags_inv_hide)
+	helmet_item.flags_inventory &= ~(BLOCKGASEFFECT)
+	helmet_item.flags_inv_hide &= ~(HIDEFACE)
 
 /obj/item/prop/helmetgarb/trimmed_wire
 	name = "trimmed barbed wire"

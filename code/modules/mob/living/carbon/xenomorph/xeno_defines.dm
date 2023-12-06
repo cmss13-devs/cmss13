@@ -367,6 +367,13 @@
 
 	var/list/available_nicknumbers = list()
 
+	/*Stores the image()'s for the xeno evolution radial menu
+	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
+	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
+	The name of the icon should be the same as the XENO_CASTE_ define for that caste eg. #define XENO_CASTE_DRONE "Drone"
+	*/
+	var/static/list/evolution_menu_images
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
@@ -376,13 +383,21 @@
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
+	for(var/number in 1 to 999)
+		available_nicknumbers += number
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
-	for(var/number in 1 to 999)
-		available_nicknumbers += number
+	if(!evolution_menu_images)
+		evolution_menu_images = list()
+		generate_evo_menu_images()
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
+
+///Generate the image()'s requried for the evolution radial menu.
+/datum/hive_status/proc/generate_evo_menu_images()
+	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
+		evolution_menu_images[initial(caste.caste_type)] = image('icons/mob/xenos/radial_xenos.dmi', initial(caste.caste_type))
 
 /datum/hive_status/proc/post_setup()
 	SIGNAL_HANDLER

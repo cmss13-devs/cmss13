@@ -440,6 +440,27 @@ GLOBAL_LIST_EMPTY(vending_products)
 	user.set_interaction(src)
 	tgui_interact(user)
 
+/// Handles redeeming coin tokens.
+/obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/coin/marine/token, mob/user)
+	var/reward_typepath
+	switch(token.token_type)
+		if(VEND_TOKEN_VOID)
+			to_chat(user, SPAN_WARNING("ERROR: TOKEN NOT RECOGNISED."))
+			return FALSE
+		if(VEND_TOKEN_SPEC)
+			reward_typepath = /obj/item/spec_kit/rifleman
+		else
+			to_chat(user, SPAN_WARNING("ERROR: INCORRECT TOKEN."))
+			return FALSE
+
+	if(reward_typepath && user.drop_inv_item_to_loc(token, src))
+		to_chat(user, SPAN_NOTICE("You insert \the [token] into \the [src]."))
+		var/obj/new_item = new reward_typepath(get_turf(src))
+		user.put_in_any_hand_if_possible(new_item)
+		return TRUE
+	return FALSE
+
+
 //------------TGUI PROCS---------------
 
 /obj/structure/machinery/cm_vending/ui_data(mob/user)
@@ -738,13 +759,20 @@ GLOBAL_LIST_EMPTY(vending_products)
 		hack_access(user)
 		return TRUE
 
+	///If we want to redeem a token
+	else if(istype(W, /obj/item/coin/marine))
+		if(!can_access_to_vend(user, ignore_hack = TRUE))
+			return FALSE
+		. = redeem_token(W, user)
+		return
+
 	..()
 
 /obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
 	return listed_products
 
-/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, display=TRUE)
-	if(!hacked)
+/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+	if(!hacked || ignore_hack)
 		if(!allowed(user))
 			if(display)
 				to_chat(user, SPAN_WARNING("Access denied."))

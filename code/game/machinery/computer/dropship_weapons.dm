@@ -89,7 +89,7 @@
 			power = matrix.power
 
 		else
-			to_chat(user, SPAN_WARNING("matrix is not complete!"))
+			to_chat(user, SPAN_WARNING("Matrix is not complete!"))
 
 /obj/structure/machinery/computer/dropship_weapons/proc/equipment_update(obj/docking_port/mobile/marine_dropship/dropship)
 	SIGNAL_HANDLER

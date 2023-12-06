@@ -156,13 +156,13 @@
 /obj/structure/machinery/power/fusion_engine/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/fuelCell))
 		if(is_on)
-			to_chat(user, SPAN_WARNING("The [src] needs to be turned off first."))
+			to_chat(user, SPAN_WARNING("[src] needs to be turned off first."))
 			return TRUE
 		if(!fusion_cell)
 			if(user.drop_inv_item_to_loc(O, src))
 				fusion_cell = O
 				update_icon()
-				to_chat(user, SPAN_NOTICE("You load the [src] with the [O]."))
+				to_chat(user, SPAN_NOTICE("You load [src] with [O]."))
 			return TRUE
 		else
 			to_chat(user, SPAN_WARNING("You need to remove the fuel cell from [src] first."))

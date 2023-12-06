@@ -37998,21 +37998,14 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
-/obj/structure/machinery/door_control{
-	id = "RoomDivider";
-	name = "Room Divider";
-	pixel_x = -5;
-	pixel_y = -3;
-	req_access_txt = "200"
-	},
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/door_control{
-	id = "cl_evac";
-	name = "Evac Pod Door Control";
-	normaldoorcontrol = 1;
+/obj/structure/machinery/door_control/cl/office/evac{
 	pixel_x = -5;
-	pixel_y = 4;
-	req_access_txt = "200"
+	pixel_y = 4
+	},
+/obj/structure/machinery/door_control/cl/office/divider{
+	pixel_x = -5;
+	pixel_y = -3
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)
@@ -65056,7 +65049,7 @@
 "rEm" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/bronze{
-	pixel_x = 6;
+	pixel_x = 2;
 	pixel_y = 9
 	},
 /obj/structure/machinery/door_control/cl/office/window{

@@ -13,8 +13,9 @@
 	anchored = TRUE //You will not have me, space wind!
 	flags_atom = NOINTERACT //No real need for this, but whatever. Maybe this flag will do something useful in the future.
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	invisibility = 100 // We want this thing to be invisible when it drops on a turf because it will be on the user's turf. We then want to make it visible as it travels.
+	alpha = 0 // We want this thing to be transparent when it drops on a turf because it will be on the user's turf. We then want to make it opaque as it travels.
 	layer = FLY_LAYER
+	animate_movement = NO_STEPS //disables gliding because it fights against what animate() is doing
 
 	var/datum/ammo/ammo //The ammo data which holds most of the actual info.
 
@@ -48,6 +49,13 @@
 	var/vis_travelled = 0
 	/// Origin point for tracing and visual updates
 	var/turf/vis_source
+	var/vis_source_pixel_x = 0
+	var/vis_source_pixel_y = 0
+
+	/// Starting point of projectile before each flight.
+	var/turf/process_start_turf
+	var/process_start_pixel_x = 0
+	var/process_start_pixel_y = 0
 
 	var/damage = 0
 	var/accuracy = 85 //Base projectile accuracy. Can maybe be later taken from the mob if desired.
@@ -71,8 +79,6 @@
 	var/hit_effect_color = "#FF0000"
 	/// How much to make the bullet fall off by accuracy-wise when closer than the ideal range
 	var/accuracy_range_falloff = 10
-
-	glide_size = INFINITY //disables gliding because it fights against what animate() is doing
 
 /obj/projectile/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()
@@ -231,9 +237,11 @@
 	p_x = Clamp(p_x, -16, 16)
 	p_y = Clamp(p_y, -16, 16)
 
-	if(source_turf != vis_source)
+	if(process_start_turf != vis_source)
 		vis_travelled = 0
-	vis_source = source_turf
+	vis_source = process_start_turf || source_turf
+	vis_source_pixel_x = process_start_pixel_x
+	vis_source_pixel_y = process_start_pixel_y
 
 	angle = 0 // Stolen from Get_Angle() basically
 	var/dx = p_x + aim_turf.x * 32 - source_turf.x * 32 // todo account for firer offsets
@@ -253,8 +261,10 @@
 /obj/projectile/process(delta_time)
 	. = PROC_RETURN_SLEEP
 
-	var/distance_travelled_old = distance_travelled
-	var/turf/turf_old = get_turf(src)
+	var/process_start_delta_time = delta_time //easier to take it unaltered than to recalculate it later
+	process_start_turf = get_turf(src) //obj-level vars so update_angle() can use it without passing it through a ton of procs
+	process_start_pixel_x = pixel_x
+	process_start_pixel_y = pixel_y
 
 	// Keep going as long as we got speed and time
 	while(speed > 0 && (speed * ((delta_time + time_carry)/10) >= 1))
@@ -268,27 +278,39 @@
 
 	time_carry += delta_time
 
-	//Get pixelspace coordinates of visual start and end positions
+	animate_flight(process_start_turf, process_start_pixel_x, process_start_pixel_y, process_start_delta_time)
 
-	//if this is the first leg (vis not reset) start at loc center, otherwise use p_x&y of prev leg (half of current leg)
-	var/prev_p_mult = (distance_travelled == vis_travelled) ? (0) : (0.5)
-	var/pixel_x_source = vis_source.x * world.icon_size + p_x * prev_p_mult
-	var/pixel_y_source = vis_source.y * world.icon_size + p_y * prev_p_mult
+	return FALSE
+
+//#define LERP(a, b, t) (a + (b - a) * CLAMP01(t))
+#define LERP_UNCLAMPED(a, b, t) (a + (b - a) * t)
+
+/// Animates the projectile across the process'ed flight.
+/obj/projectile/proc/animate_flight(turf/start_turf, start_pixel_x, start_pixel_y, delta_time)
+	//Get pixelspace coordinates of start and end of visual path
+
+	var/pixel_x_source = vis_source.x * world.icon_size + vis_source_pixel_x
+	var/pixel_y_source = vis_source.y * world.icon_size + vis_source_pixel_y
 
 	var/turf/vis_target = path[path.len]
 	var/pixel_x_target = vis_target.x * world.icon_size + p_x
 	var/pixel_y_target = vis_target.y * world.icon_size + p_y
 
-	//Determine relative position along visual path, then lerp between start and end positions
+	//Change the bullet angle to its visual path
+
+	var/vis_angle = get_pixel_angle(x = pixel_x_target - pixel_x_source, y = pixel_y_target - pixel_y_source) //naming vars because the proc takes y then x and that's WEIRD
+	var/matrix/rotate = matrix()
+	rotate.Turn(vis_angle)
+	apply_transform(rotate)
+
+	//Determine apparent position along visual path, then lerp between start and end positions
 
 	var/vis_length = vis_travelled + path.len
-	//speed * (time_carry * 0.1) advances forward the remainder time, visually "catching up" to where it should be at this point in time and showing sub-tile movement
-	//-0.5 shifts from current & next loc midpoints, to start and end of current loc
-	var/vis_current = vis_travelled + speed * (time_carry * 0.1) - 0.5
+	var/vis_current = vis_travelled + speed * (time_carry * 0.1) //speed * (time_carry * 0.1) for remainder time movement, visually "catching up" to where it should be
 	var/vis_interpolant = vis_current / vis_length
 
-	var/pixel_x_lerped = pixel_x_source + (pixel_x_target - pixel_x_source) * vis_interpolant
-	var/pixel_y_lerped = pixel_y_source + (pixel_y_target - pixel_y_source) * vis_interpolant
+	var/pixel_x_lerped = LERP_UNCLAMPED(pixel_x_source, pixel_x_target, vis_interpolant)
+	var/pixel_y_lerped = LERP_UNCLAMPED(pixel_y_source, pixel_y_target, vis_interpolant)
 
 	//Convert pixelspace to pixel offset relative to current loc
 
@@ -296,39 +318,30 @@
 	var/pixel_x_rel_new = pixel_x_lerped - current_turf.x * world.icon_size
 	var/pixel_y_rel_new = pixel_y_lerped - current_turf.y * world.icon_size
 
-	//Get pixel offset of old position and set as initial position
+	//Set pixel offset as from current loc to old position, so it appears to start in the old position
 
-	var/pixel_x_rel_old = (turf_old.x - current_turf.x) * world.icon_size + pixel_x
-	var/pixel_y_rel_old = (turf_old.y - current_turf.y) * world.icon_size + pixel_y
+	pixel_x = (start_turf.x - current_turf.x) * world.icon_size + start_pixel_x
+	pixel_y = (start_turf.y - current_turf.y) * world.icon_size + start_pixel_y
 
-	//Change the bullet angle to its visual path
+	//Determine apparent distance travelled, then lerp for projectile fade-in
 
-	var/vis_angle = get_pixel_angle(x = pixel_x_rel_new - pixel_x_rel_old, y = pixel_y_rel_new - pixel_y_rel_old) //naming vars because the proc takes y,x in that order and that's WEIRD
-	var/matrix/rotate = matrix()
-	rotate.Turn(vis_angle)
-	apply_transform(rotate)
+	var/dist_current = distance_travelled + speed * (time_carry * 0.1) //speed * (time_carry * 0.1) for remainder time fade-in
+	var/alpha_interpolant = dist_current - 1 //-1 so it transitions from transparent to opaque between dist 1-2
+	var/alpha_new = LERP_UNCLAMPED(0, 255, alpha_interpolant)
+
+	//Animate the visuals from starting position to new position
 
 	if(projectile_flags & PROJECTILE_SHRAPNEL) //there can be a LOT of shrapnel especially from a cluster OB, not important enough for the expense of an animate()
+		alpha = alpha_new
 		pixel_x = pixel_x_rel_new
 		pixel_y = pixel_y_rel_new
-		return FALSE
+		return
 
-	if(distance_travelled_old == 0 && distance_travelled > 0)
-		//shift the fire origin slightly away from the firer, makes first move look a little "slower" but can't really schedule the animation start at a fraction of a tick
-		var/shift_interpolant = 0.5 / distance_travelled
-		pixel_x = pixel_x_rel_old + (pixel_x_rel_new - pixel_x_rel_old) * shift_interpolant
-		pixel_y = pixel_y_rel_old + (pixel_y_rel_new - pixel_y_rel_old) * shift_interpolant
-	else
-		pixel_x = pixel_x_rel_old
-		pixel_y = pixel_y_rel_old
+	var/anim_time = delta_time * 0.1
+	animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, alpha = alpha_new, time = anim_time, flags = ANIMATION_END_NOW)
 
-	//Animate the movement from set (old) position to new position
-
-	//time "consumed" by movement and remainder time for sub-tile movement
-	var/anim_time = (distance_travelled - distance_travelled_old) / speed + time_carry * 0.1
-	animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, time = anim_time, flags = ANIMATION_END_NOW)
-
-	return FALSE
+//#undef LERP
+#undef LERP_UNCLAMPED
 
 /// Flies the projectile forward one single turf
 /obj/projectile/proc/fly()
@@ -356,8 +369,6 @@
 	forceMove(next_turf)
 	distance_travelled++
 	vis_travelled++
-	if(distance_travelled > 1)
-		invisibility = 0
 
 	// Check we're still flying - in the highly unlikely but apparently possible case
 	// we hit something through forceMove callbacks that we didn't pick up in scan_a_turf

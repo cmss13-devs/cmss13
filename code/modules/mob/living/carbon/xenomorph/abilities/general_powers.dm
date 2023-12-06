@@ -797,9 +797,7 @@
 	if(!istype(turf, /turf/closed/wall/resin/membrane) || !istype(projectile.ammo, /datum/ammo/xeno/boiler_gas))
 		return
 	var/turf/closed/wall/resin/membrane/membrane = turf
-	xeno_announcement(SPAN_XENOANNOUNCE("TEST"), membrane.hivenumber, XENO_GENERAL_ANNOUNCE)
 	if(membrane.can_bombard(projectile.firer))
-		xeno_announcement(SPAN_XENOANNOUNCE("TEST4"), membrane.hivenumber, XENO_GENERAL_ANNOUNCE)
 		return COMPONENT_BULLET_PASS_THROUGH
 
 /datum/action/xeno_action/activable/bombard/use_ability(atom/A)

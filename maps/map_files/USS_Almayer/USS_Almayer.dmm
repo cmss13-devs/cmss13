@@ -8660,12 +8660,10 @@
 	},
 /area/almayer/medical/medical_science)
 "aCv" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "cl_shutters 2";
-	name = "\improper Privacy Shutters"
-	},
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter{
+	id = "cl_quarter_windows"
+	},
 /turf/open/floor/plating,
 /area/almayer/command/corporateliason)
 "aCw" = (
@@ -13241,9 +13239,8 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "cl_shutters";
-	name = "\improper Privacy Shutters"
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office{
+	id = "cl_office_windows"
 	},
 /turf/open/floor/plating,
 /area/almayer/command/corporateliason)
@@ -16644,12 +16641,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
-"bqy" = (
-/obj/structure/sign/poster/hero/voteno{
-	pixel_y = 32
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliason)
 "bqF" = (
 /obj/structure/dropship_equipment/fuel/fuel_enhancer,
 /turf/open/floor/almayer{
@@ -17643,12 +17634,9 @@
 	},
 /area/almayer/hallways/starboard_umbilical)
 "bvY" = (
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 2";
-	name = "Quarters Shutters";
+/obj/structure/machinery/door_control/cl/quarter/backdoor{
 	pixel_x = -25;
-	pixel_y = 23;
-	req_access_txt = "200"
+	pixel_y = 23
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -23422,12 +23410,11 @@
 	dir = 2;
 	name = "\improper Weyland-Yutani Office"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "cl_shutters";
-	name = "\improper Privacy Shutters"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office{
+	id = "cl_office_door"
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -23831,11 +23818,8 @@
 	icon_state = "pottedplant_18";
 	pixel_y = 7
 	},
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 3";
-	name = "Quarters Shutters";
-	pixel_x = -25;
-	req_access_txt = "200"
+/obj/structure/machinery/door_control/cl/quarter/officedoor{
+	pixel_x = -25
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -23927,11 +23911,8 @@
 	},
 /area/almayer/engineering/engine_core)
 "bXW" = (
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 3";
-	name = "Quarters Shutters";
-	pixel_x = 25;
-	req_access_txt = "200"
+/obj/structure/machinery/door_control/cl/quarter/officedoor{
+	pixel_x = 25
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -27683,6 +27664,11 @@
 	allow_construction = 0
 	},
 /area/almayer/hallways/port_hallway)
+"cyS" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door_control/cl/office/door,
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliason)
 "cyU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -30410,15 +30396,12 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 2";
-	name = "Quarters Shutters";
-	pixel_x = 25;
-	req_access_txt = "200"
-	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 8;
 	pixel_y = -32
+	},
+/obj/structure/machinery/door_control/cl/quarter/backdoor{
+	pixel_x = 25
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -31513,12 +31496,9 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 2";
-	name = "Quarters Shutters";
+/obj/structure/machinery/door_control/cl/quarter/windows{
 	pixel_x = 11;
-	pixel_y = 37;
-	req_access_txt = "200"
+	pixel_y = 37
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -39606,6 +39586,12 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cic)
+"hlq" = (
+/obj/structure/machinery/door_control/cl/office/door{
+	pixel_y = 25
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliason)
 "hlw" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -40663,15 +40649,14 @@
 	},
 /area/almayer/squads/delta)
 "hIL" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "cl_shutters 2";
-	name = "\improper Privacy Shutters"
-	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	access_modified = 1;
 	req_access_txt = "200";
 	req_one_access = null
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter{
+	dir = 4;
+	id = "cl_quarter_maintenance"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -47100,11 +47085,8 @@
 /turf/open/floor/plating,
 /area/almayer/command/airoom)
 "kpl" = (
-/obj/structure/machinery/door_control{
-	id = "cl_shutters";
-	name = "Privacy Shutters";
-	pixel_y = -20;
-	req_access_txt = "200"
+/obj/structure/machinery/door_control/cl/office/door{
+	pixel_y = -20
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -53877,13 +53859,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "cl_shutters 3";
-	name = "\improper Privacy Shutters"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter{
+	dir = 4;
+	id = "cl_quarter_door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -71507,6 +71488,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/port_point_defense)
+"unq" = (
+/obj/structure/machinery/door_control/cl/office/window,
+/turf/open/floor/carpet,
+/area/almayer/command/corporateliason)
 "uns" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/item/seeds/carrotseed,
@@ -73962,12 +73947,11 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/obj/structure/sign/poster/io{
-	name = "propaganda poster";
-	pixel_y = 32
-	},
 /obj/structure/sign/safety/escapepod{
 	pixel_x = -17
+	},
+/obj/structure/sign/poster/hero/voteno{
+	pixel_y = 32
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -113805,7 +113789,7 @@ akU
 avj
 kpl
 awE
-xgr
+hlq
 bYj
 btz
 bsc
@@ -114008,7 +113992,7 @@ akU
 avj
 awE
 awE
-bqy
+xgr
 bYj
 eUR
 gEI
@@ -114214,7 +114198,7 @@ aWS
 bYj
 bYj
 btz
-rne
+unq
 rne
 bYj
 xne
@@ -114417,7 +114401,7 @@ aZJ
 baD
 baD
 tsH
-bqw
+cyS
 bqw
 hiB
 xne

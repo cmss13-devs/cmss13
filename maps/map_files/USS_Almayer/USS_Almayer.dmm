@@ -38981,10 +38981,6 @@
 	pixel_x = 4;
 	pixel_y = -2
 	},
-/obj/item/device/camera/siliconcam{
-	pixel_x = -6;
-	pixel_y = 11
-	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "gZw" = (

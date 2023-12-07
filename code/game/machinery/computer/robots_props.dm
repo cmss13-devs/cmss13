@@ -17,35 +17,3 @@
 	icon_state = "power"
 	circuit = /obj/item/circuitboard/computer/drone_control
 
-/obj/item/broken_device
-	name = "broken component"
-	icon = 'icons/obj/items/robot_component.dmi'
-	icon_state = "broken"
-
-/obj/item/robot_parts/robot_component
-	icon = 'icons/obj/items/robot_component.dmi'
-	icon_state = "working"
-
-/obj/item/robot_parts/robot_component/binary_communication_device
-	name = "binary communication device"
-	icon_state = "binradio"
-
-/obj/item/robot_parts/robot_component/actuator
-	name = "actuator"
-	icon_state = "motor"
-
-/obj/item/robot_parts/robot_component/armour
-	name = "armour plating"
-	icon_state = "armor"
-
-/obj/item/robot_parts/robot_component/camera
-	name = "camera"
-	icon_state = "camera"
-
-/obj/item/robot_parts/robot_component/diagnosis_unit
-	name = "diagnosis unit"
-	icon_state = "analyser"
-
-/obj/item/robot_parts/robot_component/radio
-	name = "radio"
-	icon_state = "radio"

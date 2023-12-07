@@ -61,3 +61,25 @@
   - code_imp: Adds back-end functionality for token redeeming on cm_vending vendors,
       and moves synth experimental tools token to use it.
   - rscadd: Spec tokens are real.
+2023-12-05:
+  Birdtalon:
+  - bugfix: "Fixes a runtime in vendors\n/\U0001F191"
+  Huffie56:
+  - rscadd: added new sections(Binoculars, Utilities, Helmet Optics, Radio keys, and
+      fill them with items already in the vendor.
+  - qol: move the section called pouches just above utilities section.
+  - qol: changed the section called "Supplies" to "engineering supplies" and fill
+      it with C4 and APC circuit board .
+  SabreML:
+  - spellcheck: Fixed instances of "The the" and "A the" in chat messages so that
+      they're just "The" instead. (Part 1)
+  Tsurupeta:
+  - bugfix: fixed saving of certain preferences.
+  silencer_pl:
+  - admin: Recieving prayers now makes a sound
+  - admin: Prayers and USCM emergency messages are now better highlighted for mods/admins
+2023-12-06:
+  Birdtalon:
+  - bugfix: "Fixes runtime in spiders.dm\n/\U0001F191"
+  Blundir:
+  - rscadd: added new ammo boxes for various weapons and ammo

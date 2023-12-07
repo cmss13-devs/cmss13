@@ -185,6 +185,29 @@
 	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
 
+/datum/admins/proc/check_ckey(target_key as text)
+	set name = "Check CKey"
+	set category = "Admin"
+
+	var/mob/user = usr
+	if (!istype(src, /datum/admins))
+		src = user.client.admin_holder
+	if (!istype(src, /datum/admins) || !(rights & R_MOD))
+		to_chat(user, "Error: you are not an admin!")
+		return
+	target_key = ckey(target_key)
+	if(!target_key)
+		to_chat(user, "Error: No key detected!")
+		return
+	to_chat(user, SPAN_WARNING("Checking Ckey: [target_key]"))
+	var/list/keys = analyze_ckey(target_key)
+	if(!keys)
+		to_chat(user, SPAN_WARNING("No results for [target_key]."))
+		return
+	to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
+
+	log_admin("[key_name(user)] analyzed ckey '[target_key]'")
+
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"
 	set category = "Admin.InView"

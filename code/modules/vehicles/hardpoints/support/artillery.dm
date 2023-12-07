@@ -14,7 +14,7 @@
 	var/view_buff = 10 //This way you can VV for more or less fun
 	var/view_tile_offset = 7
 
-/obj/item/hardpoint/support/artillery_module/activate(mob/user, atom/A)
+/obj/item/hardpoint/support/artillery_module/handle_fire(atom/target, mob/living/user, params)
 	if(!user.client)
 		return
 
@@ -62,8 +62,9 @@
 		user.client.pixel_y = 0
 	is_active = FALSE
 
-/obj/item/hardpoint/support/artillery_module/can_activate()
+/obj/item/hardpoint/support/artillery_module/try_fire(target, user, params)
 	if(health <= 0)
 		to_chat(usr, SPAN_WARNING("\The [src] is broken!"))
-		return FALSE
-	return TRUE
+		return NONE
+
+	return handle_fire(target, user, params)

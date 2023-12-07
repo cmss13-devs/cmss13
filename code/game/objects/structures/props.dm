@@ -1187,7 +1187,7 @@
 		var/obj/item/dogtag/dog = W
 		if(!tagged)
 			tagged = TRUE
-			user.visible_message(SPAN_NOTICE("[user] drapes the [W] around the [src]."))
+			user.visible_message(SPAN_NOTICE("[user] drapes [W] around [src]."))
 			dogtag_name = popleft(dog.fallen_names)
 			dogtag_assign = popleft(dog.fallen_assgns)
 			dogtag_blood = popleft(dog.fallen_blood_types)
@@ -1198,7 +1198,7 @@
 			else
 				return
 		else
-			to_chat(user, SPAN_WARNING("There's already a dog tag on the [src]!"))
+			to_chat(user, SPAN_WARNING("There's already a dog tag on [src]!"))
 			balloon_alert(user, "already a tag here!")
 
 	if(istype(W, /obj/item/clothing/head))
@@ -1372,4 +1372,3 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
-

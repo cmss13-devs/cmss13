@@ -217,10 +217,10 @@
 	if(isanimal(M))
 		if(iscorgi(M))
 			if(bitecount == 0 || prob(50))
-				M.emote("nibbles away at the [src]")
+				M.emote("nibbles away at [src]")
 			bitecount++
 			if(bitecount >= 5)
-				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where the [src] was")
+				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where [src] was")
 				if(sattisfaction_text)
 					M.emote("[sattisfaction_text]")
 				qdel(src)
@@ -2801,7 +2801,7 @@
 	if( open && pizza )
 		user.put_in_hands( pizza )
 
-		to_chat(user, SPAN_DANGER("You take the [src.pizza] out of the [src]."))
+		to_chat(user, SPAN_DANGER("You take the [src.pizza] out of [src]."))
 		src.pizza = null
 		update_icon()
 		return
@@ -2852,11 +2852,11 @@
 				box.update_icon()
 				update_icon()
 
-				to_chat(user, SPAN_DANGER("You put the [box] ontop of the [src]!"))
+				to_chat(user, SPAN_DANGER("You put [box] ontop of [src]!"))
 			else
 				to_chat(user, SPAN_DANGER("The stack is too high!"))
 		else
-			to_chat(user, SPAN_DANGER("Close the [box] first!"))
+			to_chat(user, SPAN_DANGER("Close [box] first!"))
 
 		return
 
@@ -2868,9 +2868,9 @@
 
 			update_icon()
 
-			to_chat(user, SPAN_DANGER("You put the [I] in the [src]!"))
+			to_chat(user, SPAN_DANGER("You put [I] in [src]!"))
 		else
-			to_chat(user, SPAN_DANGER("You try to push the [I] through the lid but it doesn't work!"))
+			to_chat(user, SPAN_DANGER("You try to push [I] through the lid but it doesn't work!"))
 		return
 
 	if( istype(I, /obj/item/tool/pen/) )

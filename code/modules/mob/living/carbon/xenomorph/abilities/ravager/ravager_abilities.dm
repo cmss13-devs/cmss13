@@ -100,12 +100,11 @@
 	xeno_cooldown = 23 SECONDS
 
 	// Config values
-	var/activation_delay = 20
+	var/activation_delay = 1 SECONDS
 
 	var/base_damage = 25
-	var/damage_at_rage_levels = list(5, 10, 25, 45, 70)
-	var/range_at_rage_levels = list(1, 1, 1, 2, 2)
-	var/windup_reduction_at_rage_levels = list(0, 2, 4, 6, 10)
+	var/eviscerate_damage = 70
+	var/eviscerate_range = 2
 
 
 ////// HEDGEHOG ABILITIES

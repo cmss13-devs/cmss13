@@ -362,57 +362,49 @@
 	if(!xeno.check_state())
 		return
 
-	var/damage = base_damage
-	var/range = 1
-	var/windup_reduction = 0
+	if(xeno.mutation_type != RAVAGER_BERSERKER)
+		return
+
 	var/lifesteal_per_marine = 50
 	var/max_lifesteal = 250
 	var/lifesteal_range =  1
 
-	if (xeno.mutation_type == RAVAGER_BERSERKER)
-		var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
-		if (behavior.rage == 0)
-			to_chat(xeno, SPAN_XENODANGER("You cannot eviscerate when you have 0 rage!"))
-			return
-		damage = damage_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		range = range_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		windup_reduction = windup_reduction_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		behavior.decrement_rage(behavior.rage)
 
-		apply_cooldown()
 
-	if (range > 1)
-		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a massive strike!"))
-	else
-		xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a strike!"))
+	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
+	if (behavior.rage < 5)
+		to_chat(xeno, SPAN_XENODANGER("You cannot eviscerate when you have less than 5 rage!"))
+		return
+	behavior.decrement_rage(behavior.rage)
+	apply_cooldown()
+
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a massive strike!"))
 
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = TRUE
 
-	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		xeno.emote("roar")
-		xeno.spin_circle()
+	if(!do_after(xeno, activation_delay, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		xeno.anchored = FALSE //sanity check
+		return ..()
+	xeno.emote("roar")
+	xeno.spin_circle()
 
-		for (var/mob/living/carbon/human in orange(xeno, range))
-			if(!isxeno_human(human) || xeno.can_not_harm(human))
-				continue
+	for (var/mob/living/carbon/human in orange(xeno, eviscerate_range))
+		if(!isxeno_human(human) || xeno.can_not_harm(human))
+			continue
 
-			if (human.stat == DEAD)
-				continue
+		if (human.stat == DEAD)
+			continue
 
-			if(!check_clear_path_to_target(xeno, human))
-				continue
+		if(!check_clear_path_to_target(xeno, human))
+			continue
 
-			if (range > 1)
-				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [human]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [human]!"))
-				human.spawn_gibs()
-				playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
-				human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
-			else
-				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("You claw [human]!"))
-				playsound(get_turf(human), "alien_claw_flesh", 30, 1)
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [human]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [human]!"))
+		human.spawn_gibs()
+		playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
+		human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
 
-			human.apply_armoured_damage(get_xeno_damage_slash(human, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+		human.apply_armoured_damage(get_xeno_damage_slash(human, eviscerate_damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

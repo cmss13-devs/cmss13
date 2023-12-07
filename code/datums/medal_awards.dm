@@ -182,6 +182,8 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(give_medal_award(get_turf(printer)))
 		user.visible_message(SPAN_NOTICE("[printer] prints a medal."))
 
+GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL))
+
 /proc/give_jelly_award(datum/hive_status/hive, as_admin = FALSE)
 	if(!hive)
 		return FALSE
@@ -220,7 +222,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return FALSE
 
 	// Pick a jelly
-	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL), theme="hive_status")
+	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", GLOB.xeno_medals, theme="hive_status")
 	if(!medal_type)
 		return FALSE
 

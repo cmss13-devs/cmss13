@@ -189,7 +189,7 @@ GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(all_medals, /obj/item/clothing/accessory/medal
 /datum/medals_view_tgui/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "MedalsViewer", "[user.ckey] Medals")
+		ui = new(user, src, "MedalsViewer", "[user.ckey]'s Medals")
 		ui.open()
 
 /datum/medals_view_tgui/ui_static_data(mob/user)
@@ -197,10 +197,15 @@ GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(all_medals, /obj/item/clothing/accessory/medal
 	.["medals"] = list()
 
 	for(var/datum/view_record/medal_view/medal as anything in DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id"), DB_EQUALS, user.client.player_data.id))
+		var/xeno_medal = FALSE
+		if(medal.medal_type in GLOB.xeno_medals)
+			xeno_medal = TRUE
+
 		var/list/current_medal = list(
 			"round_id" = medal.round_id,
 			"medal_type" = medal.medal_type,
 			"medal_icon" = replacetext(medal.medal_type, " ", "-"),
+			"xeno_medal" = xeno_medal,
 			"recipient_name" = medal.recipient_name,
 			"recipient_role" = medal.recipient_role,
 			"giver_name" = medal.giver_name,

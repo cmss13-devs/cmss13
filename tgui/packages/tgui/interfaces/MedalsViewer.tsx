@@ -1,4 +1,4 @@
-import { classes } from 'common/react';
+import { BooleanLike, classes } from 'common/react';
 import { useBackend } from '../backend';
 import { Section } from '../components';
 import { Window } from '../layouts';
@@ -11,6 +11,7 @@ interface Medal {
   round_id: string;
   medal_type?: string;
   medal_icon?: string;
+  xeno_medal?: BooleanLike;
   recipient_name?: string;
   recipient_role?: string;
   giver_name?: string;
@@ -29,20 +30,26 @@ export const MedalsViewer = (props, context) => {
             ? medal.medal_type
             : 'Unknown Medal';
           const sectionTitle = `Round ${medal.round_id} - ${medalType}`;
+          const sectionType = medal.xeno_medal ? 'xeno-medal' : 'human-medal';
           return (
-            <Section key={medal.citation} title={sectionTitle}>
+            <Section
+              key={medal.citation}
+              title={sectionTitle}
+              className={sectionType}>
               Issued to{' '}
               <b>
                 {medal.recipient_name} ({medal.recipient_role})
               </b>{' '}
               by <b>{medal.giver_name}</b> for: <br />
-              <span
-                className={classes([
-                  'medal32x32',
-                  medal.medal_icon,
-                  'medal-icon',
-                ])}
-              />
+              {!medal.xeno_medal && (
+                <span
+                  className={classes([
+                    'medal32x32',
+                    medal.medal_icon,
+                    'medal-icon',
+                  ])}
+                />
+              )}
               {medal.citation}
             </Section>
           );

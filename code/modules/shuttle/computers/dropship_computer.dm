@@ -146,7 +146,7 @@
 
 	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10
-		to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorazed access attempt, a large lockout timers reads that the lockout will be automatically removed in [remaining_time] seconds."))
+		to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt. In large text it says the lockout will be automatically removed in [remaining_time] seconds."))
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 			return
 		if(user.action_busy || override_being_removed)

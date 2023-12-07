@@ -178,7 +178,8 @@
 /mob/living/proc/IsKnockDown()
 	return has_status_effect(/datum/status_effect/incapacitating/knockdown)
 
-/mob/living/proc/AmountKnockDown() //How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
+///How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
+/mob/living/proc/AmountKnockDown()
 	var/datum/status_effect/incapacitating/knockdown/S = IsKnockDown()
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
@@ -195,7 +196,8 @@
 		S = apply_status_effect(/datum/status_effect/incapacitating/knockdown, amount)
 	return S
 
-/mob/living/proc/SetKnockDown(amount, ignore_canstun = FALSE) //Sets remaining duration
+///Sets exact remaining KnockDown duration
+/mob/living/proc/SetKnockDown(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKDOWN))
 		return
 	amount = GetKnockDownDuration(amount)
@@ -210,7 +212,8 @@
 			S = apply_status_effect(/datum/status_effect/incapacitating/knockdown, amount)
 	return S
 
-/mob/living/proc/AdjustKnockDown(amount, ignore_canstun = FALSE) //Adds to remaining duration
+///Adds to remaining Knockdown duration
+/mob/living/proc/AdjustKnockDown(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKDOWN))
 		return
 	amount = GetKnockDownDuration(amount)
@@ -235,6 +238,7 @@
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
 	return 0
 
+/// Sets Knockout duration to at least the amount provided
 /mob/living/proc/KnockOut(amount)
 	if(!(status_flags & CANKNOCKOUT))
 		return
@@ -246,7 +250,8 @@
 		S = apply_status_effect(/datum/status_effect/incapacitating/unconscious, amount)
 	return S
 
-/mob/living/proc/SetKnockOut(amount, ignore_canstun = FALSE) //Sets remaining duration
+/// Sets exact remaining Knockout duration
+/mob/living/proc/SetKnockOut(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKOUT))
 		return
 	amount = GetKnockOutDuration(amount)
@@ -261,7 +266,8 @@
 			S = apply_status_effect(/datum/status_effect/incapacitating/unconscious, amount)
 	return S
 
-/mob/living/proc/AdjustKnockOut(amount, ignore_canstun = FALSE) //Adds to remaining duration
+/// Adds to remaining Knockout duration
+/mob/living/proc/AdjustKnockOut(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKOUT))
 		return
 	amount = GetKnockOutDuration(amount)

@@ -1,5 +1,6 @@
+import { classes } from 'common/react';
 import { useBackend } from '../backend';
-import { Flex } from '../components';
+import { Section } from '../components';
 import { Window } from '../layouts';
 
 interface MedalProps {
@@ -9,6 +10,7 @@ interface MedalProps {
 interface Medal {
   round_id: string;
   medal_type?: string;
+  medal_icon?: string;
   recipient_name?: string;
   recipient_role?: string;
   giver_name?: string;
@@ -20,20 +22,31 @@ export const MedalsViewer = (props, context) => {
   const { medals } = data;
 
   return (
-    <Window width={350} height={350}>
+    <Window width={700} height={350}>
       <Window.Content scrollable>
-        <Flex direction="column">
-          {medals.map((medal) => {
-            return (
-              <Flex.Item key={medal.citation}>
-                {medal.round_id}: {medal.medal_type} issued to{' '}
-                {medal.recipient_name} ({medal.recipient_role}) by{' '}
-                {medal.giver_name} for: <br />
-                {medal.citation}
-              </Flex.Item>
-            );
-          })}
-        </Flex>
+        {medals.map((medal) => {
+          const medalType = medal.medal_type
+            ? medal.medal_type
+            : 'Unknown Medal';
+          const sectionTitle = `Round ${medal.round_id} - ${medalType}`;
+          return (
+            <Section key={medal.citation} title={sectionTitle}>
+              Issued to{' '}
+              <b>
+                {medal.recipient_name} ({medal.recipient_role})
+              </b>{' '}
+              by <b>{medal.giver_name}</b> for: <br />
+              <span
+                className={classes([
+                  'medal32x32',
+                  medal.medal_icon,
+                  'medal-icon',
+                ])}
+              />
+              {medal.citation}
+            </Section>
+          );
+        })}
       </Window.Content>
     </Window>
   );

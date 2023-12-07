@@ -163,7 +163,7 @@
 				break
 			remaining_time = timeleft(door_control_cooldown) / 10 - 20
 			if(remaining_time > 0)
-				to_chat(user, SPAN_NOTICE("You partly remove the lockout, only [remaining_time] seconds left."))
+				to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time] seconds left."))
 				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	override_being_removed = FALSE
 	if(dropship_control_lost)

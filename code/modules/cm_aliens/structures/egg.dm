@@ -355,4 +355,8 @@ SPECIAL EGG USED BY EGG CARRIER
 
 /obj/effect/alien/egg/carrier_egg/Burst(kill, instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled)
 	. = ..()
-	owner = null
+	if(owner)
+		var/datum/behavior_delegate/carrier_eggsac/behavior = owner.behavior_delegate
+		behavior.remove_egg_owner(src)
+	if(life_timer)
+		deltimer(life_timer)

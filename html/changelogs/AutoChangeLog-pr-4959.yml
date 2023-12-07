@@ -1,0 +1,5 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - refactor: "vehicle weapons can fire full-auto"
+  - rscdel: "no more controls for firing vehicle non-selected weapons"

@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes custom sent ERTs broadcasting when they shouldn't."
+  - bugfix: "Fixes UPP friendly ERT telling staff it's hostile."

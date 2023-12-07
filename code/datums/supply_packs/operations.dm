@@ -112,10 +112,10 @@
 /datum/supply_packs/spec_kits
 	name = "Weapons Specialist Kits"
 	contains = list(
-		/obj/item/spec_kit/asrs,
-		/obj/item/spec_kit/asrs,
-		/obj/item/spec_kit/asrs,
-		/obj/item/spec_kit/asrs,
+		/obj/item/spec_kit/rifleman,
+		/obj/item/spec_kit/rifleman,
+		/obj/item/spec_kit/rifleman,
+		/obj/item/spec_kit/rifleman,
 	)
 	cost = 0
 	containertype = /obj/structure/closet/crate/supply

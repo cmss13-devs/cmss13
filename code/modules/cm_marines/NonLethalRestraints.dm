@@ -46,7 +46,7 @@
 		M.KnockDown(6)
 		M.Stun(6)
 		charges -= 2
-		M.visible_message(SPAN_DANGER("[M] has been prodded with the [src] by [user]!"))
+		M.visible_message(SPAN_DANGER("[M] has been prodded with [src] by [user]!"))
 
 		user.attack_log += "\[[time_stamp()]\]<font color='red'> Stunned [key_name(M)] with [src.name]</font>"
 		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Stunned by [key_name(user)] with [src.name]</font>"

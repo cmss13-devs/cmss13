@@ -17,7 +17,6 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-	pickup_sound = "armorequip"
 	drop_sound = "armorequip"
 	///Makes it so that we can see the right name in the vendor.
 	var/specialty = "USCM"

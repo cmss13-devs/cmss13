@@ -1,0 +1,4 @@
+author: "alexguinea atticus-rezzer"
+delete-after: True
+changes:
+  - rscadd: "Adds alarm sound for lifeboats when launching"

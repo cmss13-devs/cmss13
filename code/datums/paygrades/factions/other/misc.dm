@@ -1,9 +1,9 @@
-/datum/paygrade/misc/operator
+/datum/paygrade/misc/operative
 	name = "Operative"
-	paygrade = "O"
+	paygrade = PAY_SHORT_OPR
 	pay_multiplier = 1 //????
 
 /datum/paygrade/misc/synth
 	name = "Synthetic"
-	paygrade = "SYN"
+	paygrade = PAY_SHORT_SYN
 	pay_multiplier = 1

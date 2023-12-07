@@ -40,8 +40,8 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
@@ -174,8 +174,8 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
@@ -252,8 +252,8 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0

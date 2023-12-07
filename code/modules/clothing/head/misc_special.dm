@@ -54,14 +54,14 @@
 		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE
 		icon_state = initial(icon_state)
 		eye_protection = initial(eye_protection)
-		to_chat(usr, "You flip the [src] down to protect your eyes.")
+		to_chat(usr, SPAN_NOTICE("You flip [src] down to protect your eyes."))
 	else
 		vision_impair = VISION_IMPAIR_NONE
 		flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
 		flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
 		icon_state = "[initial(icon_state)]up"
 		eye_protection = EYE_PROTECTION_NONE
-		to_chat(usr, "You push the [src] up out of your face.")
+		to_chat(usr, SPAN_NOTICE("You push [src] up out of your face."))
 	up = !up
 
 	if(ishuman(loc))

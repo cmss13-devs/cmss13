@@ -125,7 +125,7 @@
 					user.visible_message(SPAN_NOTICE("[user] sets up [src] for linking."),
 					SPAN_NOTICE("You set up [src] for linking."))
 				else
-					to_chat(user, SPAN_WARNING("The [src] has no linking points..."))
+					to_chat(user, SPAN_WARNING("[src] has no linking points..."))
 					return
 				linked = !linked
 				for(var/direction in GLOB.cardinals)
@@ -210,7 +210,7 @@
 
 	if(closed)
 		if(recentlyflipped)
-			to_chat(user, SPAN_NOTICE("The [src] has been flipped too recently!"))
+			to_chat(user, SPAN_NOTICE("[src] has been flipped too recently!"))
 			return
 		user.visible_message(SPAN_NOTICE("[user] flips [src] open."),
 		SPAN_NOTICE("You flip [src] open."))
@@ -222,7 +222,7 @@
 
 	else
 		if(recentlyflipped)
-			to_chat(user, SPAN_NOTICE("The [src] has been flipped too recently!"))
+			to_chat(user, SPAN_NOTICE("[src] has been flipped too recently!"))
 			return
 		user.visible_message(SPAN_NOTICE("[user] flips [src] closed."),
 		SPAN_NOTICE("You flip [src] closed."))

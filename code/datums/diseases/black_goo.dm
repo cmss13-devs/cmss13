@@ -33,8 +33,8 @@
 	///the number of stage level needed to pass another stage.
 	var/stage_level_check = 360
 
-	/// cooldown between each check to see if we display a symptome
-	var/message_cooldown_time = 100
+	/// cooldown between each check to see if we display a symptome idea is to get 60s between symptome atleast.
+	var/message_cooldown_time = 600
 	COOLDOWN_DECLARE(goo_message_cooldown)
 
 /datum/disease/black_goo/stage_act()
@@ -75,7 +75,9 @@
 			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 			switch(rand(0, 100))
-				if(0 to 75)
+				if(0 to 25)
+
+				if(25 to 75)
 					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
 					stage_level += 9
 				if(75 to 95)
@@ -97,7 +99,9 @@
 			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 			switch(rand(0, 100))
-				if(0 to 50)
+				if(0 to 25)
+				
+				if(25 to 50)
 					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
 					stage_level += 5
 				if(50 to 75)

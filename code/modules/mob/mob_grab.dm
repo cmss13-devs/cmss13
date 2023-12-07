@@ -88,7 +88,7 @@
 
 /obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_AGGRESSIVE
-	playsound(src.loc, 'sound/weapons/Genhit.ogg', 25, 1, 7)
+	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively!"), null, null, 5)
 
 /obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)

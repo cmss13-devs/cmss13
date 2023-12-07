@@ -73,12 +73,15 @@
 			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 			switch(rand(0, 100))
-				if(0 to 95)
+				if(0 to 50)
 					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
-					stage_level += 3
+					stage_level += 2
+				if(0 to 50)
+					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
+					stage_level += 5
 				if(95 to 100)
 					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
-					stage_level += 5
+					stage_level += 10
 
 		if(2)
 			if(H.stat == DEAD && stage_counter != stage)
@@ -90,13 +93,13 @@
 			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 			switch(rand(0, 100))
-				if(0 to 75)
+				if(0 to 50)
 					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
 					stage_level += 4
-				if(75 to 80)
+				if(50 to 70)
 					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
 					stage_level += 5
-				if(80 to 85)
+				if(70 to 85)
 					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
 					stage_level += 10
 				if(85 to 95)

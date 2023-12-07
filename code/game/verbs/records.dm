@@ -224,4 +224,4 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 	set name = "View Own Medals"
 	set category = "OOC.Records"
 
-	GLOB.medals_view_tgui.tgui_interact(src.mob)
+	GLOB.medals_view_tgui.tgui_interact(mob)

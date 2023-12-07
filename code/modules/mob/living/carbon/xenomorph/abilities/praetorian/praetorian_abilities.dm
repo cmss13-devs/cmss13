@@ -124,12 +124,12 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 180
+	xeno_cooldown = 15 SECONDS
 	plasma_cost = 180
 
 	// Config
 	var/max_distance = 7
-	var/windup = 8
+	var/windup = 6
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -169,7 +169,7 @@
 
 	// Config
 	var/fling_dist = 3
-	var/windup = 2
+	var/windup = 1
 
 ////////// Dancer Abilities
 

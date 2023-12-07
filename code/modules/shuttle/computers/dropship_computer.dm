@@ -146,29 +146,29 @@
 
 	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10
-		to_chat(user, SPAN_WARNING("The shuttle is not responding due to the Queen's override, the system will automatically remove the override in about [remaining_time] seconds."))
+		to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorazed access attempt, the system will automatically remove the lockout in about [remaining_time] seconds."))
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 			return
 		if(user.action_busy || override_being_removed)
 			return
-		to_chat(user, SPAN_NOTICE("You start to remove the Queen's override."))
+		to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
 		override_being_removed = TRUE
 		while(remaining_time > 20)
 			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				to_chat(user, SPAN_WARNING("You fail to remove the Queen's override!"))
+				to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
 				override_being_removed = FALSE
 				return
 			if(!dropship_control_lost)
-				to_chat(user, SPAN_NOTICE("The Queen's override is already removed."))
+				to_chat(user, SPAN_NOTICE("The lockout is already removed."))
 				break
 			remaining_time = timeleft(door_control_cooldown) / 10 - 20
 			if(remaining_time > 0)
-				to_chat(user, SPAN_NOTICE("You partly remove the Queen's override, about [remaining_time] seconds left."))
+				to_chat(user, SPAN_NOTICE("You partly remove the lockout, about [remaining_time] seconds left."))
 				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	override_being_removed = FALSE
 	if(dropship_control_lost)
 		remove_door_lock()
-		to_chat(user, SPAN_NOTICE("You succesfully removed the Queen's override!"))
+		to_chat(user, SPAN_NOTICE("You succesfully removed the lockout!"))
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)

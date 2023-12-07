@@ -1782,19 +1782,19 @@
 		var/mob/ref_person = locate(href_list["nukeapprove"])
 		if(!istype(ref_person))
 			return FALSE
-		var/nuketype = "Encrypted Operational Nuke"
+		var/nukename = "Encrypted Operational Nuke"
 		var/prompt = tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 		if(prompt == "Decrypted")
-			nuketype = "Decrypted Operational Nuke"
-		prompt = tgui_alert(usr, "Are you sure you want to authorize \a [nuketype] to the marines? This will greatly affect the round!", "DEFCON 1", list("No", "Yes"))
+			nukename = "Decrypted Operational Nuke"
+		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("No", "Yes"))
 		if(prompt != "Yes")
 			return
 
+		var/nuketype = GLOB.supply_packs_types[nukename]
 		//make ASRS order for nuke
 		var/datum/supply_order/new_order = new()
-		new_order.ordernum = GLOB.supply_controller.ordernum
-		GLOB.supply_controller.ordernum++
-		new_order.object = GLOB.supply_controller.supply_packs[nuketype]
+		new_order.ordernum = GLOB.supply_controller.ordernum++
+		new_order.object = GLOB.supply_packs_datums[nuketype]
 		new_order.orderedby = ref_person
 		new_order.approvedby = "USCM High Command"
 		GLOB.supply_controller.shoppinglist += new_order

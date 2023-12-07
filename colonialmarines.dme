@@ -100,6 +100,7 @@
 #include "code\__DEFINES\stats.dm"
 #include "code\__DEFINES\STUI.dm"
 #include "code\__DEFINES\subsystems.dm"
+#include "code\__DEFINES\supply.dm"
 #include "code\__DEFINES\surgery.dm"
 #include "code\__DEFINES\techtree.dm"
 #include "code\__DEFINES\text.dm"

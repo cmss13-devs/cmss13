@@ -139,7 +139,7 @@
 		timerid = null
 	qdel(src) // shrimple as that
 
-/// Called whenever the effect is applied in on_created
+/// Called when the effect is applied in on_created
 /// Returning FALSE will cause it to delete itself during creation instead.
 /datum/status_effect/proc/on_apply()
 	return TRUE

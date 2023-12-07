@@ -67,8 +67,6 @@
 			if(H.stat == DEAD && stage_counter != stage)
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage one! Zombie transformation begins at stage three."))
 				stage_counter = stage
-				//doesn't want dead to have symptome make no sense
-				return
 
 			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
 				return
@@ -91,8 +89,6 @@
 			if(H.stat == DEAD && stage_counter != stage)
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage two! Zombie transformation begins at stage three."))
 				stage_counter = stage
-				//doesn't want dead to have symptome make no sense
-				return
 
 			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
 				return

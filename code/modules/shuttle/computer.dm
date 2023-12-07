@@ -324,7 +324,7 @@
 						lifeboat.alarm_sound_loop.start()
 						lifeboat.playing_launch_announcement_alarm = TRUE
 						return
-            
+
 					if ("Emergency Launch")
 						launch_initiated = TRUE
 						to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")

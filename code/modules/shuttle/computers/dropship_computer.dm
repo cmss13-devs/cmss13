@@ -142,22 +142,32 @@
 	if(shuttle.mode == SHUTTLE_CRASHED)
 		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
 		return
-	var/remaining_time = timeleft(door_control_cooldown) / 10
-	to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
-	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
-		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
-		if(do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+
+	if(dropship_control_lost)
+		var/remaining_time = timeleft(door_control_cooldown) / 10
+		to_chat(user, SPAN_WARNING("The shuttle is not responding due to the Queen's override, the system will automatically remove the override in about [remaining_time] seconds."))
+		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+			return
+		if(user.action_busy)
+			return
+		to_chat(user, SPAN_NOTICE("You start to remove the Queen's override."))
+		for(var/i in 1 to n_ceil(remaining_time/40))
+			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				to_chat(user, SPAN_WARNING("You fail to remove the Queen's override!"))
+				return
+			if(!dropship_control_lost)
+				to_chat(user, SPAN_NOTICE("The Queen's override is already removed."))
+				break
 			remaining_time = timeleft(door_control_cooldown) / 10 - 20
 			if(remaining_time > 0)
-				to_chat(user, SPAN_NOTICE("You partly remove the Queens override, only [remaining_time] seconds left."))
+				to_chat(user, SPAN_NOTICE("You partly remove the Queen's override, about [remaining_time] seconds left."))
 				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-				return
-		else
-			to_chat(user, SPAN_WARNING("You fail to remove the Queens override!"))
-			return
-		if(dropship_control_lost)
-			remove_door_lock()
-		to_chat(user, SPAN_NOTICE("You succesfully removed the Queens override!"))
+			else
+				break
+
+	if(dropship_control_lost)
+		remove_door_lock()
+		to_chat(user, SPAN_NOTICE("You succesfully removed the Queen's override!"))
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)

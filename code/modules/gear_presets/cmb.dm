@@ -58,7 +58,7 @@
 
 /datum/equipment_preset/cmb/standard
 	name = "CMB - Colonial Marshal Deputy"
-	paygrade = "GS-9"
+	paygrade = PAY_SHORT_CMBD
 	role_comm_title = "CMB DEP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
@@ -141,7 +141,7 @@
 
 /datum/equipment_preset/cmb/leader
 	name = "CMB - The Colonial Marshal"
-	paygrade = "GS-13"
+	paygrade = PAY_SHORT_CMBM
 	idtype = /obj/item/card/id/marshal
 	role_comm_title = "CMB MAR"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -195,7 +195,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/cmb/synth
 	name = "CMB - Colonial Marshal Investigative Synthetic"
-	paygrade = "GS-C.9"
+	paygrade = PAY_SHORT_CMBS
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -298,7 +298,7 @@
 
 /datum/equipment_preset/cmb/liaison
 	name = "CMB - ICC Liaison"
-	paygrade = "GS-6"
+	paygrade = PAY_SHORT_ICCL
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -357,7 +357,7 @@
 
 /datum/equipment_preset/cmb/observer
 	name = "CMB - Interstellar Human Rights Observer"
-	paygrade = "GS-3"
+	paygrade = PAY_SHORT_IHRO
 	idtype = /obj/item/card/id/lanyard
 	role_comm_title = "OBS"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -416,7 +416,7 @@
 
 	assignment = "Anchorpoint Station Marine Rifleman"
 	rank = JOB_SQUAD_MARINE
-	paygrade = "ME2"
+	paygrade = PAY_SHORT_ME2
 	role_comm_title = "A-RFN"
 	skills = /datum/skills/pfc/crafty
 	faction = FACTION_MARSHAL
@@ -466,7 +466,7 @@
 
 	assignment = "Anchorpoint Station Marine Team Leader"
 	rank = JOB_SQUAD_LEADER
-	paygrade = "ME6"
+	paygrade = PAY_SHORT_ME6
 	role_comm_title = "A-TL"
 	minimum_age = 25
 	skills = /datum/skills/SL
@@ -511,7 +511,7 @@
 
 	assignment = "Anchorpoint Station Marine Technical Specialist"
 	rank = JOB_SQUAD_TEAM_LEADER
-	paygrade = "ME4"
+	paygrade = PAY_SHORT_ME4
 	role_comm_title = "A-TS"
 	skills = /datum/skills/tl
 
@@ -556,7 +556,7 @@
 
 	assignment = "Anchorpoint Station Hospital Corpsman"
 	rank = JOB_SQUAD_MEDIC
-	paygrade = "ME3"
+	paygrade = PAY_SHORT_ME3
 	role_comm_title = "A-HM"
 	skills = /datum/skills/combat_medic
 
@@ -617,7 +617,7 @@
 
 	assignment = "Anchorpoint Station Marine Smartgunner"
 	rank = JOB_SQUAD_SMARTGUN
-	paygrade = "ME3"
+	paygrade = PAY_SHORT_ME3
 	role_comm_title = "A-SG"
 	skills = /datum/skills/smartgunner
 

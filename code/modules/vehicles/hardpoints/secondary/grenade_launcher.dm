@@ -8,8 +8,6 @@
 	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
 
 	health = 500
-	cooldown = 30
-	accuracy = 0.4
 	firing_arc = 90
 	var/max_range = 7
 
@@ -27,40 +25,19 @@
 		"8" = list(-6, 17)
 	)
 
+	scatter = 10
+	fire_delay = 3.0 SECONDS
+
 /obj/item/hardpoint/secondary/grenade_launcher/set_bullet_traits()
 	..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/secondary/grenade_launcher/can_activate(mob/user, atom/A)
-	if(!..())
-		return FALSE
+/obj/item/hardpoint/secondary/grenade_launcher/try_fire(mob/user, atom/A)
+	var/turf/origin_turf = get_origin_turf()
+	if(origin_turf == get_turf(A))
+		to_chat(user, SPAN_WARNING("The target is too close."))
+		return NONE
 
-	var/turf/origin_turf = get_turf(src)
-	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-	if(get_dist(origin_turf, A) < 1)
-		to_chat(usr, SPAN_WARNING("The target is too close."))
-		return FALSE
-
-	return TRUE
-
-/obj/item/hardpoint/secondary/grenade_launcher/fire_projectile(mob/user, atom/A)
-	set waitfor = 0
-
-	var/turf/origin_turf = get_turf(src)
-	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-
-	//getting distance between supposed target and tank center.
-	var/range = get_dist(origin_turf, A) + 1 //otherwise nade falls one tile shorter
-	if(range > max_range)
-		range = max_range
-
-	var/obj/projectile/P = generate_bullet(user, origin_turf)
-	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])
-	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed)
-
-	if(use_muzzle_flash)
-		muzzle_flash(Get_Angle(owner, A))
-
-	ammo.current_rounds--
+	return ..()

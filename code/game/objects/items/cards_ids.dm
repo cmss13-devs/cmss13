@@ -80,7 +80,7 @@
 	/// actual job
 	var/rank = null
 	/// Marine's paygrade
-	var/paygrade = "ME1"
+	var/paygrade = PAY_SHORT_CIV
 	/// For medics and engineers to 'claim' a locker
 	var/claimedgear = 1
 

@@ -78,3 +78,44 @@
   silencer_pl:
   - admin: Recieving prayers now makes a sound
   - admin: Prayers and USCM emergency messages are now better highlighted for mods/admins
+2023-12-06:
+  Birdtalon:
+  - bugfix: "Fixes runtime in spiders.dm\n/\U0001F191"
+  Blundir:
+  - rscadd: added new ammo boxes for various weapons and ammo
+2023-12-07:
+  Doubleumc:
+  - refactor: vehicle weapons can fire full-auto
+  - rscdel: no more controls for firing vehicle non-selected weapons
+  Drathek:
+  - bugfix: Fix some errors regarding the nano subystem
+  - code_imp: Reduced most preference re-saving when preferences are initially loaded
+  Ediblebomb:
+  - rscadd: M5 Helmet Gasmask now functions as a gasmask when in a marine helmet (and
+      yes, gasmasks do still have some functionality)
+  SabreML:
+  - admin: Fixed a freeze when opening the the 'Create Object' interface.
+  - admin: Adjusted the size and positioning of the 'Create Object/Mob/Turf' panels
+      so that everything fits into the window.
+  - spellcheck: Fixed instances of "The the" and "A the" in chat messages so that
+      they're just "The" instead. (Part 2)
+  VileBeggar:
+  - soundadd: The XM88 now has a scaling hit sound for every direct hit you manage
+      to land with it.
+  realforest2001:
+  - admin: Added a Check Ckey verb to analyze for multikey. We're watching you Wazowski.
+      Always watching.
+  - code_imp: Cleaned up 1 letter vars in the global datacore. Also made the entry
+      names reflect the real name of who they relate to, for VV purposes.
+  - code_imp: Paygrade shorthands now use defines.
+  - bugfix: CLF and Survivors are no longer privates.
+  - bugfix: Civillian Mr/Ms/Mx prefix now works correctly, and is the default for
+      new ID cards.
+  - bugfix: Fixes custom sent ERTs broadcasting when they shouldn't.
+  - bugfix: Fixes UPP friendly ERT telling staff it's hostile.
+  zzzmike:
+  - bugfix: disarm chance wasn't calculating properly
+  zzzmike, drathek, ihatethisengine2:
+  - rscadd: Lifeboat launch now has an ARES announcement followed by a 10 second delay
+      before doors close. The current launch functionality is preserved as Emergency
+      Launch.

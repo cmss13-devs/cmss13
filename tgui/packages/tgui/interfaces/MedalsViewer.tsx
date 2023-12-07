@@ -24,7 +24,7 @@ export const MedalsViewer = (props, context) => {
 
   return (
     <Window width={700} height={350}>
-      <Window.Content scrollable>
+      <Window.Content scrollable className={'MedalsViewer'}>
         {medals.map((medal) => {
           const medalType = medal.medal_type
             ? medal.medal_type

@@ -169,7 +169,7 @@
 
 	// Config
 	var/fling_dist = 3
-	var/windup = 1
+	var/windup = 1 DECISECONDS
 
 ////////// Dancer Abilities
 

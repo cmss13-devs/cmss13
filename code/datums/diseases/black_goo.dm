@@ -32,7 +32,7 @@
 
 	///the number of stage level needed to pass another stage.
 	var/stage_level_check = 360
-	
+
 	/// cooldown between each check to see if we display a symptome
 	var/message_cooldown_time = 100
 	COOLDOWN_DECLARE(goo_message_cooldown)
@@ -73,7 +73,7 @@
 			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 			switch(rand(0, 100))
-				if(80 to 95)
+				if(0 to 95)
 					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
 					stage_level += 3
 				if(95 to 100)
@@ -90,7 +90,7 @@
 			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 			switch(rand(0, 100))
-				if(65 to 75)
+				if(0 to 75)
 					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
 					stage_level += 4
 				if(75 to 80)

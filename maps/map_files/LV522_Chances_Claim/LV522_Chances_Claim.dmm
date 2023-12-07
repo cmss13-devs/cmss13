@@ -28075,7 +28075,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/clothing/suit/storage/marine/rto,
+/obj/item/clothing/suit/storage/marine/medium/rto,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{

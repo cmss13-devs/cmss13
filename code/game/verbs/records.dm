@@ -184,8 +184,6 @@
 
 GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 
-GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(all_medals, /obj/item/clothing/accessory/medal, name)
-
 /datum/medals_view_tgui/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

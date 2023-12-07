@@ -285,7 +285,7 @@
 			else if(user.grab_level >= GRAB_AGGRESSIVE)
 				M.forceMove(loc)
 				M.apply_effect(5, WEAKEN)
-				playsound(loc, 'sound/weapons/tablehit1.ogg', 25, 1, 7)
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				user.visible_message(SPAN_DANGER("<B>[user] throws [M] on [src], stunning them!</B>"),
 				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
 		return

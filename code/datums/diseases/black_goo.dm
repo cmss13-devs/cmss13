@@ -74,7 +74,6 @@
 
 			switch(rand(0, 100))
 				if(0 to 25)
-
 				if(25 to 75)
 					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
 					stage_level += 9
@@ -96,7 +95,6 @@
 
 			switch(rand(0, 100))
 				if(0 to 25)
-				
 				if(25 to 50)
 					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
 					stage_level += 5

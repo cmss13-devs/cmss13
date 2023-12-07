@@ -153,7 +153,7 @@
 			return
 		to_chat(user, SPAN_NOTICE("You start to remove the Queen's override."))
 		override_being_removed = TRUE
-		for(var/i in 1 to n_ceil(remaining_time/40))
+		while(remaining_time > 0)
 			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(user, SPAN_WARNING("You fail to remove the Queen's override!"))
 				override_being_removed = FALSE
@@ -165,8 +165,6 @@
 			if(remaining_time > 0)
 				to_chat(user, SPAN_NOTICE("You partly remove the Queen's override, about [remaining_time] seconds left."))
 				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-			else
-				break
 	override_being_removed = FALSE
 	if(dropship_control_lost)
 		remove_door_lock()

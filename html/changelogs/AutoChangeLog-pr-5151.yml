@@ -1,0 +1,4 @@
+author: "Firartix, Birdtalon"
+delete-after: True
+changes:
+  - bugfix: "Fixed a logic error in Warrior code causing lunging some M2C/M56D users to semi-permanently brick lunge."

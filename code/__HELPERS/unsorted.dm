@@ -867,13 +867,25 @@
 		animation.master = target
 		flick(flick_anim, animation)
 
-//Will return the contents of an atom recursivly to a depth of 'searchDepth'
+//Will return the contents of an atom recursivly to a depth of 'searchDepth', not including starting atom
 /atom/proc/GetAllContents(searchDepth = 5, list/toReturn = list())
 	for(var/atom/part as anything in contents)
 		toReturn += part
 		if(part.contents.len && searchDepth)
 			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
+
+// FIXME take care of standardizing GetAllContents to get_all_contents
+
+///Returns the src and all recursive contents as a list. Includes the starting atom.
+/atom/proc/get_all_contents(ignore_flag_1)
+	. = list(src)
+	var/i = 0
+	while(i < length(.))
+		var/atom/checked_atom = .[++i]
+		if(checked_atom.flags_atom & ignore_flag_1)
+			continue
+		. += checked_atom.contents
 
 /// Returns list of contents of a turf recursively, much like GetAllContents
 /// We only get containing atoms in the turf, excluding multitiles bordering on it

@@ -176,6 +176,7 @@
 #include "code\__HELPERS\sanitize_values.dm"
 #include "code\__HELPERS\shell.dm"
 #include "code\__HELPERS\status_effects.dm"
+#include "code\__HELPERS\string_lists.dm"
 #include "code\__HELPERS\text.dm"
 #include "code\__HELPERS\traits.dm"
 #include "code\__HELPERS\type2type.dm"

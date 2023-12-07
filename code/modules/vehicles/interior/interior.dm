@@ -304,21 +304,13 @@
 
 // Returns min and max turfs for the interior
 /datum/interior/proc/get_bound_turfs()
-	var/turf/min = TURF_FROM_COORDS_LIST(reservation.bottom_left_coords)
-	if(!min)
-		return null
-
-	var/turf/max = TURF_FROM_COORDS_LIST(reservation.top_right_coords)
-	if(!max)
-		return null
-
-	return list(min, max)
+	return list(reservation.bottom_left_turfs[1], reservation.top_right_turfs[1])
 
 /datum/interior/proc/get_middle_coords()
-	var/turf/min = reservation.bottom_left_coords
-	var/turf/max = reservation.top_right_coords
+	var/turf/min = reservation.bottom_left_turfs[1]
+	var/turf/max = reservation.top_right_turfs[1]
+	return list(Floor(min.x + (max.x - min.x)/2), Floor(min.y + (max.y - min.y)/2), min.z)
 
-	return list(Floor(min[1] + (max[1] - min[1])/2), Floor(min[2] + (max[2] - min[2])/2), min[3])
 
 /datum/interior/proc/get_middle_turf()
 	var/list/turf/bounds = get_bound_turfs()

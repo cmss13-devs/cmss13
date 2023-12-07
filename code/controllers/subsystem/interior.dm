@@ -17,9 +17,9 @@ SUBSYSTEM_DEF(interior)
 
 	var/datum/turf_reservation/reserved_area = SSmapping.request_turf_block_reservation(width_to_request, height_to_request, 1, type = /datum/turf_reservation/interior)
 
-	var/list/bottom_left = reserved_area.bottom_left_coords
+	var/turf/bottom_left = reserved_area.bottom_left_turfs[1]
 
-	var/list/bounds = template.load(locate(bottom_left[1] + (INTERIOR_BORDER_SIZE / 2), bottom_left[2] + (INTERIOR_BORDER_SIZE / 2), bottom_left[3]), centered = FALSE)
+	var/list/bounds = template.load(locate(bottom_left.x + (INTERIOR_BORDER_SIZE / 2), bottom_left.y + (INTERIOR_BORDER_SIZE / 2), bottom_left.z), centered = FALSE)
 
 	var/list/turfs = block( locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
 							locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))

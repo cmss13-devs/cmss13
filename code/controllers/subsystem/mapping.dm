@@ -19,6 +19,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/turf/unused_turfs = list() //Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
 	var/list/datum/turf_reservations //list of turf reservations
 	var/list/used_turfs = list() //list of turf = datum/turf_reservation
+	/// List of lists of turfs to reserve
+	var/list/lists_to_reserve = list()
 
 	var/list/reservation_ready = list()
 	var/clearing_reserved_turfs = FALSE
@@ -60,7 +62,7 @@ SUBSYSTEM_DEF(mapping)
 	preloadTemplates()
 	// Add the first transit level
 	var/datum/space_level/base_transit = add_reservation_zlevel()
-	initialize_reserved_level(transit.z_value)
+	initialize_reserved_level(base_transit.z_value)
 	repopulate_sorted_areas()
 
 	return SS_INIT_SUCCESS
@@ -68,8 +70,9 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/fire(resumed)
 	// Cache for sonic speed
 	var/list/unused_turfs = src.unused_turfs
-	var/list/world_contents = GLOB.areas_by_type[world.area].contents
-	var/list/world_turf_contents = GLOB.areas_by_type[world.area].contained_turfs
+	// CM TODO: figure out if these 2 are needed. Might be required by updated versions of map reader
+	//var/list/world_contents = GLOB.areas_by_type[world.area].contents
+	//var/list/world_turf_contents = GLOB.areas_by_type[world.area].contained_turfs
 	var/list/lists_to_reserve = src.lists_to_reserve
 	var/index = 0
 	while(index < length(lists_to_reserve))
@@ -84,11 +87,11 @@ SUBSYSTEM_DEF(mapping)
 			T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
 			LAZYINITLIST(unused_turfs["[T.z]"])
 			unused_turfs["[T.z]"] |= T
-			var/area/old_area = T.loc
+			//var/area/old_area = T.loc
 			//old_area.turfs_to_uncontain += T
 			T.turf_flags = UNUSED_RESERVATION_TURF
-			world_contents += T
-			world_turf_contents += T
+			//world_contents += T
+			//world_turf_contents += T
 			packet.len--
 			packetlen = length(packet)
 
@@ -169,7 +172,7 @@ SUBSYSTEM_DEF(mapping)
 		var/bounds = pm.bounds
 		var/x_offset = bounds ? round(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1 : 1
 		var/y_offset = bounds ? round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1 : 1
-		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[P], no_changeturf = TRUE, new_z = TRUE))
+		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[pm], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
@@ -386,21 +389,9 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/manage_z_level(datum/space_level/new_z, filled_with_space, contain_turfs = TRUE)
 	// First, add the z
 	z_list += new_z
+	// Then we build our lookup lists
+	//var/z_value = new_z.z_value
 	//TODO: All the Z-plane init stuff goes below here normally, we don't have that yet
-	if(contain_turfs)
-		build_area_turfs(z_value, filled_with_space)
-
-/datum/controller/subsystem/mapping/proc/build_area_turfs(z_level, space_guaranteed)
-	// If we know this is filled with default tiles, we can use the default area
-	// Faster
-	if(space_guaranteed)
-		var/area/global_area = GLOB.areas_by_type[world.area]
-		global_area.contained_turfs += Z_TURFS(z_level)
-		return
-
-	for(var/turf/to_contain as anything in Z_TURFS(z_level))
-		var/area/our_area = to_contain.loc
-		our_area.contained_turfs += to_contain
 
 /// Gets a name for the marine ship as per the enabled ship map configuration
 /datum/controller/subsystem/mapping/proc/get_main_ship_name()

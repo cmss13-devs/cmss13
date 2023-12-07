@@ -117,3 +117,5 @@ require only minor tweaks.
 #define MAP_ARMOR_STYLE_JUNGLE "jungle"
 #define MAP_ARMOR_STYLE_PRISON "prison"
 
+/// A map key that corresponds to being one exclusively for Space.
+#define SPACE_KEY "space"

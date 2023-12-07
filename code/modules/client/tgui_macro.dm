@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			if(choice == "Cancel")
 				return TRUE
 			prefs.hotkeys = (choice == "Hotkey")
-			prefs.key_bindings = (prefs.hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
+			prefs.key_bindings = (prefs.hotkeys) ? deep_copy_list(GLOB.hotkey_keybinding_list_by_key) : deep_copy_list(GLOB.classic_keybinding_list_by_key)
 			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			prefs.save_preferences()
 			return TRUE

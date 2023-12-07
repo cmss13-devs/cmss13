@@ -154,7 +154,7 @@
 		to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
 		override_being_removed = TRUE
 		while(remaining_time > 20)
-			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, numticks = 20))
+			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
 				to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
 				override_being_removed = FALSE
 				return

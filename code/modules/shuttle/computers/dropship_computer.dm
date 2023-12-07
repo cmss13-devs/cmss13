@@ -7,6 +7,7 @@
 	unacidable = TRUE
 	exproof = TRUE
 	needs_power = FALSE
+	var/override_being_removed = FALSE
 
 	// Admin disabled
 	var/disabled = FALSE
@@ -148,12 +149,14 @@
 		to_chat(user, SPAN_WARNING("The shuttle is not responding due to the Queen's override, the system will automatically remove the override in about [remaining_time] seconds."))
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 			return
-		if(user.action_busy)
+		if(user.action_busy || override_being_removed)
 			return
 		to_chat(user, SPAN_NOTICE("You start to remove the Queen's override."))
+		override_being_removed = TRUE
 		for(var/i in 1 to n_ceil(remaining_time/40))
 			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(user, SPAN_WARNING("You fail to remove the Queen's override!"))
+				override_being_removed = FALSE
 				return
 			if(!dropship_control_lost)
 				to_chat(user, SPAN_NOTICE("The Queen's override is already removed."))
@@ -164,7 +167,7 @@
 				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 			else
 				break
-
+	override_being_removed = FALSE
 	if(dropship_control_lost)
 		remove_door_lock()
 		to_chat(user, SPAN_NOTICE("You succesfully removed the Queen's override!"))

@@ -67,26 +67,30 @@
 			if(H.stat == DEAD && stage_counter != stage)
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage one! Zombie transformation begins at stage three."))
 				stage_counter = stage
+				//doesn't want dead to have symptome make no sense
+				return
 
 			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
 				return
 			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
 
 			switch(rand(0, 100))
-				if(0 to 50)
+				if(0 to 75)
 					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
-					stage_level += 2
-				if(0 to 50)
+					stage_level += 9
+				if(75 to 95)
 					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-					stage_level += 5
+					stage_level += 18
 				if(95 to 100)
 					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
-					stage_level += 10
+					stage_level += 36
 
 		if(2)
 			if(H.stat == DEAD && stage_counter != stage)
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage two! Zombie transformation begins at stage three."))
 				stage_counter = stage
+				//doesn't want dead to have symptome make no sense
+				return
 
 			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
 				return
@@ -95,19 +99,19 @@
 			switch(rand(0, 100))
 				if(0 to 50)
 					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
-					stage_level += 4
-				if(50 to 70)
-					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
 					stage_level += 5
-				if(70 to 85)
+				if(50 to 75)
+					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
+					stage_level += 9
+				if(75 to 85)
 					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-					stage_level += 10
+					stage_level += 18
 				if(85 to 95)
 					H.vomit_on_floor()
-					stage_level += 15
+					stage_level += 36
 				if(95 to 100)
 					to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
-					stage_level += 20
+					stage_level += 42
 
 		if(3)
 			//check if your already a zombie just return to avoid weird stuff... if for some weird reason first filter deoesn't work...

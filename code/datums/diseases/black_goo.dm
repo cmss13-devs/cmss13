@@ -34,7 +34,7 @@
 	var/stage_level_check = 360
 
 	/// cooldown between each check to see if we display a symptome idea is to get 60s between symptome atleast.
-	var/message_cooldown_time = 600
+	var/message_cooldown_time = 1 MINUTES
 	COOLDOWN_DECLARE(goo_message_cooldown)
 
 /datum/disease/black_goo/stage_act()

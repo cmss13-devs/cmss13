@@ -317,7 +317,8 @@
 	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
 
 	if (pounceAction.knockdown)
-		M.apply_effect(pounceAction.knockdown_duration, WEAKEN)
+		M.KnockDown(pounceAction.knockdown_duration)
+		M.Stun(pounceAction.knockdown_duration) // To replicate legacy bheavior. Otherwise M39 Armbrace users for example can still shoot
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)

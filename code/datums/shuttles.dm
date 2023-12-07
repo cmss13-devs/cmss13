@@ -62,19 +62,19 @@
 							locate(.[MAP_MAXX], .[MAP_MAXY], .[MAP_MAXZ]))
 	for(var/i in 1 to turfs.len)
 		var/turf/place = turfs[i]
+
+		// CM Note: We do this BEFORE and not AFTER because CM Lifeboats
+		// have their edges on space tiles and we'd skip the mobile port init
+		for(var/obj/docking_port/mobile/port in place)
+			SSatoms.InitializeAtoms(list(port))
+			if(register)
+				port.register()
+
 		if(istype(place, /turf/open/space)) // This assumes all shuttles are loaded in a single spot then moved to their real destination.
 			continue
 		if(length(place.baseturfs) < 2) // Some snowflake shuttle shit
 			continue
 		place.baseturfs.Insert(3, /turf/baseturf_skipover/shuttle)
-
-		for(var/obj/docking_port/mobile/port in place)
-			// TG doesn't have this; Unsure if it matters. I think not.
-			//if(isnull(port_x_offset))
-			//	continue
-			SSatoms.InitializeAtoms(list(port))
-			if(register)
-				port.register()
 
 //Whatever special stuff you want
 /datum/map_template/shuttle/post_load(obj/docking_port/mobile/M)

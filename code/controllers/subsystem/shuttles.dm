@@ -435,6 +435,7 @@ SUBSYSTEM_DEF(shuttle)
 	preview_shuttle.register(replace)
 	var/list/force_memory = preview_shuttle.movement_force
 	preview_shuttle.movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
+
 	preview_shuttle.initiate_docking(D)
 	preview_shuttle.movement_force = force_memory
 
@@ -467,6 +468,8 @@ SUBSYSTEM_DEF(shuttle)
 	if(!preview_reservation)
 		CRASH("failed to reserve an area for shuttle template loading")
 	var/turf/bottom_left = preview_reservation.bottom_left_turfs[1]
+	if(loading_template.type == /datum/map_template/shuttle/lifeboat_starboard)
+		pass() //DEBUG FIXME remove this
 	loading_template.load(bottom_left, centered = FALSE, register = FALSE)
 
 	var/affected = loading_template.get_affected_turfs(bottom_left, centered=FALSE)

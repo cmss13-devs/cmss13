@@ -53,7 +53,7 @@
 	if(!target_turf?.z)
 		log_debug("Nightmare Mapload: Could not find landmark: [landmark]")
 		return
-	var/result = parsed.load(target_turf.x, target_turf.y, target_turf.z, cropMap = TRUE, no_changeturf = FALSE, place_on_top = FALSE, delete = replace)
+	var/result = parsed.load(target_turf.x, target_turf.y, target_turf.z, crop_map = TRUE, no_changeturf = FALSE, place_on_top = FALSE, delete = replace)
 	if(!result || !parsed.bounds)
 		log_debug("Nightmare Mapload: Map insertion failed unexpectedly for file: [filepath]")
 		return

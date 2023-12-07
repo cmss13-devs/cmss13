@@ -208,7 +208,7 @@
 				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
 				apply_cooldown(cooldown_modifier = 0.5)
 				return
-			if(current_structure.density)
+			if(current_structure.density && !current_structure.throwpass)
 				to_chat(xeno, SPAN_WARNING("There's something blocking you from striking!"))
 				return
 

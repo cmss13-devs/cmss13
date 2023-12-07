@@ -11,7 +11,7 @@
 			to_chat(src, SPAN_WARNING("[O] is too far away."))
 			return
 
-	if(!isturf(loc) || burrow)
+	if(!isturf(loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_WARNING("You can't melt [O] from here!"))
 		return
 
@@ -219,7 +219,7 @@
 /mob/living/carbon/xenomorph/proc/zoom_out()
 	if(!client)
 		return
-	client.change_view(world_view_size)
+	client.change_view(GLOB.world_view_size)
 	client.pixel_x = 0
 	client.pixel_y = 0
 	is_zoomed = 0

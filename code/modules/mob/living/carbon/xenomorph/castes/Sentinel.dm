@@ -99,5 +99,6 @@
 #undef NEURO_TOUCH_DELAY
 
 /datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
-	human_target.apply_effect(2, WEAKEN)
+	human_target.KnockDown(2)
+	human_target.Stun(2)
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))

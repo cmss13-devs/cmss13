@@ -209,7 +209,6 @@
 /obj/structure/machinery/door/airlock/evacuation
 	name = "\improper Evacuation Airlock"
 	icon = 'icons/obj/structures/doors/pod_doors.dmi'
-	heat_proof = 1
 	unslashable = TRUE
 	unacidable = TRUE
 	var/obj/docking_port/mobile/crashable/escape_shuttle/linked_shuttle

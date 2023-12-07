@@ -51,10 +51,10 @@
 	. = ..()
 	if(!.)
 		return
-	ADD_TRAIT(owner, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(id))
+	owner.add_traits(list(TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_STATUS_EFFECT(id))
 
 /datum/status_effect/incapacitating/knockdown/on_remove()
-	REMOVE_TRAIT(owner, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(id))
+	owner.remove_traits(list(TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_STATUS_EFFECT(id))
 	return ..()
 
 /atom/movable/screen/alert/status_effect/knockdown

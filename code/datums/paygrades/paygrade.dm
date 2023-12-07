@@ -26,36 +26,36 @@ GLOBAL_LIST_INIT_TYPED(paygrades, /datum/paygrade, setup_paygrades())
 
 GLOBAL_LIST_INIT(highcom_paygrades, list(
 	"PvI",
-	"NO7",
-	"MO7",
-	"NO8",
-	"MO8",
-	"NO9",
-	"MO9",
-	"NO10",
-	"MO10",
-	"NO10C",
-	"MO10C",
+	PAY_SHORT_NO7,
+	PAY_SHORT_MO7,
+	PAY_SHORT_NO8,
+	PAY_SHORT_MO8,
+	PAY_SHORT_NO9,
+	PAY_SHORT_MO9,
+	PAY_SHORT_NO10,
+	PAY_SHORT_MO10,
+	PAY_SHORT_NO10C,
+	PAY_SHORT_MO10C,
 	"PvO8",
 	"PvO9",
 	"PvCM"
 ))
 
 GLOBAL_LIST_INIT(co_paygrades, list(
-	"NO6",
-	"NO6E",
-	"NO6C",
-	"NO5",
-	"NO4",
-	"MO6",
-	"MO6E",
-	"MO6C",
-	"MO5",
-	"MO4"
+	PAY_SHORT_NO6,
+	PAY_SHORT_NO6E,
+	PAY_SHORT_NO6C,
+	PAY_SHORT_NO5,
+	PAY_SHORT_NO4,
+	PAY_SHORT_MO6,
+	PAY_SHORT_MO6E,
+	PAY_SHORT_MO6C,
+	PAY_SHORT_MO5,
+	PAY_SHORT_MO4
 ))
 
 GLOBAL_LIST_INIT(wy_paygrades, list(
-	"WYC8",
-	"WYC9",
-	"WYC10"
+	PAY_SHORT_WYC8,
+	PAY_SHORT_WYC9,
+	PAY_SHORT_WYC10
 ))

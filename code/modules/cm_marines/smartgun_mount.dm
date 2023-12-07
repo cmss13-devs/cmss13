@@ -1,12 +1,6 @@
 //////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.
 
-//Adds a coin for engi vendors
-/obj/item/coin/marine/engineer
-	name = "marine engineer support token"
-	desc = "Insert this into an engineer vendor in order to access a support weapon."
-	icon_state = "coin_platinum"
-
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
 	name = "M56D drum magazine (10x28mm Caseless)"
@@ -910,7 +904,7 @@
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
-			user.client.change_view(world_view_size)
+			user.client.change_view(GLOB.world_view_size)
 			user.client.pixel_x = 0
 			user.client.pixel_y = 0
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)

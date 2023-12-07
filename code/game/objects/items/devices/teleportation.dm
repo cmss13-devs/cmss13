@@ -49,7 +49,7 @@
 		return
 	var/turf/current_location = get_turf(usr)//What turf is the user on?
 	if(!current_location || is_admin_level(current_location.z))//If turf was not found or they're on z level 2.
-		to_chat(usr, "The [src] is malfunctioning.")
+		to_chat(usr, "[src] is malfunctioning.")
 		return
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
@@ -144,7 +144,7 @@
 		to_chat(user, SPAN_NOTICE("\The [src] is malfunctioning."))
 		return
 	var/list/L = list(  )
-	for(var/obj/structure/machinery/teleport/hub/R in machines)
+	for(var/obj/structure/machinery/teleport/hub/R in GLOB.machines)
 		var/obj/structure/machinery/computer/teleporter/com = locate(/obj/structure/machinery/computer/teleporter, locate(R.x - 2, R.y, R.z))
 		if (istype(com, /obj/structure/machinery/computer/teleporter) && com.locked && !com.one_time_use)
 			if(R.icon_state == "tele1")
@@ -177,4 +177,3 @@
 	P.creator = src
 	src.add_fingerprint(user)
 	return
-

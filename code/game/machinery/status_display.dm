@@ -146,7 +146,7 @@
 		maptext = new_text
 
 /obj/structure/machinery/status_display/proc/get_supply_shuttle_timer()
-	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 	if (!shuttle)
 		return "Error"
 
@@ -164,7 +164,7 @@
 		maptext = ""
 
 /obj/structure/machinery/status_display/proc/set_sec_level_picture()
-	switch(security_level)
+	switch(GLOB.security_level)
 		if(SEC_LEVEL_GREEN)
 			set_picture("default")
 		if(SEC_LEVEL_BLUE)
@@ -188,11 +188,10 @@
 	var/emotion = "Neutral"
 
 /obj/structure/machinery/ai_status_display/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	set_picture("ai_bsod")
-	..(severity)
 
 /obj/structure/machinery/ai_status_display/proc/update()
 	if(mode==0) //Blank

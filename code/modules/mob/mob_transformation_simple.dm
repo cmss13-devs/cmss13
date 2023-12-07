@@ -4,7 +4,7 @@
 //Note that this proc does NOT do MMI related stuff!
 /mob/proc/change_mob_type(new_type = null, turf/location = null, new_name = null as text, delete_old_mob = 0 as num, subspecies)
 	if(istype(src,/mob/new_player))
-		to_chat(usr, SPAN_DANGER("cannot convert players who have not entered yet."))
+		to_chat(usr, SPAN_DANGER("Cannot convert players who have not entered yet."))
 		return
 
 	if(!new_type)
@@ -18,7 +18,7 @@
 		return
 
 	if( new_type == /mob/new_player )
-		to_chat(usr, SPAN_DANGER("cannot convert into a new_player mob type."))
+		to_chat(usr, SPAN_DANGER("Cannot convert into a new_player mob type."))
 		return
 
 	var/mob/M

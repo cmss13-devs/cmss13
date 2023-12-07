@@ -456,7 +456,7 @@ Make sure their actual health updates immediately.*/
 		var/area/A = get_area(loc)
 		var/area/QA = get_area(tracking_atom.loc)
 		if(A.fake_zlevel == QA.fake_zlevel)
-			QL.setDir(get_dir(src, tracking_atom))
+			QL.setDir(Get_Compass_Dir(src, tracking_atom))
 			QL.icon_state = "trackon"
 		else
 			QL.icon_state = "trackondirect"
@@ -485,7 +485,7 @@ Make sure their actual health updates immediately.*/
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "all_direction")
 		return
 	else if(A.fake_zlevel == MA.fake_zlevel) //normal tracking
-		ML.setDir(get_dir(src, tracked_marker_turf))
+		ML.setDir(Get_Compass_Dir(src, tracked_marker_turf))
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "direction")

@@ -87,7 +87,7 @@
 	return amount * GLOBAL_STATUS_MULTIPLIER
 /mob/living/proc/IsStun() //If we're stunned
 	return has_status_effect(/datum/status_effect/incapacitating/stun)
-/mob/living/proc/AmountStun() //How many deciseconds remain in our stun
+/mob/living/proc/AmountStun() //How much time remain in our stun - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
 	var/datum/status_effect/incapacitating/stun/S = IsStun()
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
@@ -205,13 +205,17 @@
 /// Overridable handler to adjust the numerical value of status effects. Expand as needed
 /mob/living/proc/GetKnockDownDuration(amount)
 	return amount * GLOBAL_STATUS_MULTIPLIER
+
 /mob/living/proc/IsKnockDown()
 	return has_status_effect(/datum/status_effect/incapacitating/knockdown)
-/mob/living/proc/AmountKnockDown() //How many deciseconds remains
+
+///How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
+/mob/living/proc/AmountKnockDown()
 	var/datum/status_effect/incapacitating/knockdown/S = IsKnockDown()
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
 	return 0
+
 /mob/living/proc/KnockDown(amount)
 	if(!(status_flags & CANKNOCKDOWN))
 		return
@@ -222,7 +226,9 @@
 	else if(amount > 0)
 		S = apply_status_effect(/datum/status_effect/incapacitating/knockdown, amount)
 	return S
-/mob/living/proc/SetKnockDown(amount, ignore_canstun = FALSE) //Sets remaining duration
+
+///Sets exact remaining KnockDown duration
+/mob/living/proc/SetKnockDown(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKDOWN))
 		return
 	amount = GetKnockDownDuration(amount)
@@ -236,7 +242,9 @@
 		else
 			S = apply_status_effect(/datum/status_effect/incapacitating/knockdown, amount)
 	return S
-/mob/living/proc/AdjustKnockDown(amount, ignore_canstun = FALSE) //Adds to remaining duration
+
+///Adds to remaining Knockdown duration
+/mob/living/proc/AdjustKnockDown(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKDOWN))
 		return
 	amount = GetKnockDownDuration(amount)
@@ -251,13 +259,17 @@
 /// Overridable handler to adjust the numerical value of status effects. Expand as needed
 /mob/living/proc/GetKnockOutDuration(amount)
 	return amount * GLOBAL_STATUS_MULTIPLIER
+
 /mob/living/proc/IsKnockOut()
 	return has_status_effect(/datum/status_effect/incapacitating/unconscious)
-/mob/living/proc/AmountKnockOut() //How many deciseconds remains
+
+/mob/living/proc/AmountKnockOut() //How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
 	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
 	return 0
+
+/// Sets Knockout duration to at least the amount provided
 /mob/living/proc/KnockOut(amount)
 	if(!(status_flags & CANKNOCKOUT))
 		return
@@ -268,7 +280,9 @@
 	else if(amount > 0)
 		S = apply_status_effect(/datum/status_effect/incapacitating/unconscious, amount)
 	return S
-/mob/living/proc/SetKnockOut(amount, ignore_canstun = FALSE) //Sets remaining duration
+
+/// Sets exact remaining Knockout duration
+/mob/living/proc/SetKnockOut(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKOUT))
 		return
 	amount = GetKnockOutDuration(amount)
@@ -282,7 +296,9 @@
 		else
 			S = apply_status_effect(/datum/status_effect/incapacitating/unconscious, amount)
 	return S
-/mob/living/proc/AdjustKnockOut(amount, ignore_canstun = FALSE) //Adds to remaining duration
+
+/// Adds to remaining Knockout duration
+/mob/living/proc/AdjustKnockOut(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKOUT))
 		return
 	amount = GetKnockOutDuration(amount)
@@ -528,3 +544,4 @@
 	if(stat >= UNCONSCIOUS)
 		return
 	face_dir(direction)
+	return ..()

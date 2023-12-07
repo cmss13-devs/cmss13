@@ -221,7 +221,7 @@
 	update()
 
 ///Attempt to move while inside
-/obj/structure/machinery/disposal/relaymove(mob/user)
+/obj/structure/machinery/disposal/relaymove(mob/living/user)
 	if(user.is_mob_incapacitated(TRUE) || flushing)
 		return FALSE
 	if(user.loc == src)
@@ -744,7 +744,7 @@
 //Remains : set to leave broken pipe pieces in place
 /obj/structure/disposalpipe/deconstruct(disassembled = TRUE)
 	if(disassembled)
-		for(var/D in cardinal)
+		for(var/D in GLOB.cardinals)
 			if(D & dpdir)
 				var/obj/structure/disposalpipe/broken/P = new(loc)
 				P.setDir(D)
@@ -1094,7 +1094,8 @@
 /obj/structure/disposalpipe/tagger/Initialize(mapload, ...)
 	. = ..()
 	dpdir = dir|turn(dir, 180)
-	if(sort_tag) tagger_locations |= sort_tag
+	if(sort_tag)
+		GLOB.tagger_locations |= sort_tag
 	updatename()
 	updatedesc()
 	update()
@@ -1150,7 +1151,8 @@
 
 /obj/structure/disposalpipe/sortjunction/Initialize(mapload, ...)
 	. = ..()
-	if(sortType) tagger_locations |= sortType
+	if(sortType)
+		GLOB.tagger_locations |= sortType
 
 	updatedir()
 	updatename()
@@ -1455,7 +1457,7 @@
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))
 	else
-		dirs = alldirs.Copy()
+		dirs = GLOB.alldirs.Copy()
 
 	INVOKE_ASYNC(streak(dirs))
 
@@ -1464,7 +1466,7 @@
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))
 	else
-		dirs = alldirs.Copy()
+		dirs = GLOB.alldirs.Copy()
 
 	INVOKE_ASYNC(streak(dirs))
 

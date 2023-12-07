@@ -166,7 +166,7 @@
 
 	var/total_xeno_playtime = 0
 
-	for(var/caste in RoleAuthority.castes_by_name)
+	for(var/caste in GLOB.RoleAuthority.castes_by_name)
 		total_xeno_playtime += get_job_playtime(src, caste)
 
 	total_xeno_playtime += get_job_playtime(src, JOB_XENOMORPH)
@@ -187,7 +187,7 @@
 
 	var/list/drone_evo_castes = list(XENO_CASTE_DRONE, XENO_CASTE_CARRIER, XENO_CASTE_BURROWER, XENO_CASTE_HIVELORD, XENO_CASTE_QUEEN)
 
-	for(var/caste in RoleAuthority.castes_by_name)
+	for(var/caste in GLOB.RoleAuthority.castes_by_name)
 		if(!(caste in drone_evo_castes))
 			continue
 		total_drone_playtime += get_job_playtime(src, caste)
@@ -198,8 +198,8 @@
 /client/proc/get_total_t3_playtime()
 	var/total_t3_playtime = 0
 	var/datum/caste_datum/caste
-	for(var/caste_name in RoleAuthority.castes_by_name)
-		caste = RoleAuthority.castes_by_name[caste_name]
+	for(var/caste_name in GLOB.RoleAuthority.castes_by_name)
+		caste = GLOB.RoleAuthority.castes_by_name[caste_name]
 		if(caste.tier < 3)
 			continue
 		total_t3_playtime += get_job_playtime(src, caste_name)
@@ -362,21 +362,42 @@
 	/// This number divides the total xenos counted for slots to give the max number of lesser drones
 	var/playable_lesser_drones_max_divisor = 3
 
-	var/datum/tacmap/xeno/tacmap
+	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
+
+	var/list/available_nicknumbers = list()
+
+	/*Stores the image()'s for the xeno evolution radial menu
+	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
+	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
+	The name of the icon should be the same as the XENO_CASTE_ define for that caste eg. #define XENO_CASTE_DRONE "Drone"
+	*/
+	var/static/list/evolution_menu_images
 
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
+	minimap_type = get_minimap_flag_for_faction(hivenumber)
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
+	for(var/number in 1 to 999)
+		available_nicknumbers += number
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
+	if(!evolution_menu_images)
+		evolution_menu_images = list()
+		generate_evo_menu_images()
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
+
+///Generate the image()'s requried for the evolution radial menu.
+/datum/hive_status/proc/generate_evo_menu_images()
+	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
+		evolution_menu_images[initial(caste.caste_type)] = image('icons/mob/xenos/radial_xenos.dmi', initial(caste.caste_type))
 
 /datum/hive_status/proc/post_setup()
 	SIGNAL_HANDLER
@@ -944,12 +965,12 @@
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
 			continue
-		var/datum/job/job = RoleAuthority.roles_for_mode[current_human.job]
+		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
 		if(!job)
 			continue
 		var/turf/turf = get_turf(current_human)
 		if(is_mainship_level(turf?.z))
-			shipside_humans_weighted_count += RoleAuthority.calculate_role_weight(job)
+			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
 	hijack_burrowed_left = max(n_ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE

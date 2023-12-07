@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(influxstats)
 
 /datum/controller/subsystem/influxstats/proc/run_job_statistics()
 	var/list/team_job_stats = list()
-	var/list/squad_job_stats = ROLES_SQUAD_ALL.Copy()
+	var/list/squad_job_stats = GLOB.ROLES_SQUAD_ALL.Copy()
 	for(var/squad in squad_job_stats)
 		squad_job_stats[squad] = list()
 

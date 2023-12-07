@@ -128,7 +128,7 @@
 		return
 	else if(duration - world.time <= STATUS_EFFECT_TIME_THRESHOLD)
 		if(!timerid || force_refresh)
-			timerid = addtimer(CALLBACK(src, PROC_REF(timer_callback)), duration - world.time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+			timerid = addtimer(CALLBACK(src, PROC_REF(timer_callback)), duration - world.time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
 	else if(timerid)
 		deltimer(timerid)
 		timerid = null
@@ -139,7 +139,7 @@
 		timerid = null
 	qdel(src) // shrimple as that
 
-/// Called whenever the effect is applied in on_created
+/// Called when the effect is applied in on_created
 /// Returning FALSE will cause it to delete itself during creation instead.
 /datum/status_effect/proc/on_apply()
 	return TRUE

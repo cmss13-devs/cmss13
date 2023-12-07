@@ -130,7 +130,7 @@
 				for(var/mob/living/M in D.loc)
 					if(!istype(M,/mob/living)) continue
 					if(M == user) continue
-					for(var/mob/O in viewers(world_view_size, D))
+					for(var/mob/O in viewers(GLOB.world_view_size, D))
 						O.show_message(SPAN_DANGER("[M] was hit by the foam dart!"), SHOW_MESSAGE_VISIBLE)
 					new /obj/item/toy/crossbow_ammo(M.loc)
 					qdel(D)
@@ -152,7 +152,7 @@
 		return
 	else if (bullets == 0)
 		user.apply_effect(5, WEAKEN)
-		for(var/mob/O in viewers(world_view_size, user))
+		for(var/mob/O in viewers(GLOB.world_view_size, user))
 			O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), SHOW_MESSAGE_VISIBLE)
 
 

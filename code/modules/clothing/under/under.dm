@@ -45,7 +45,7 @@
 	else
 		worn_state = icon_state
 
-	var/check_icon = contained_sprite ? icon : default_onmob_icons[WEAR_BODY]
+	var/check_icon = contained_sprite ? icon : GLOB.default_onmob_icons[WEAR_BODY]
 
 	//autodetect rollability, cuttability, and removability.
 	if(icon_exists(check_icon, "[worn_state]_d[contained_sprite ? "_un" : ""]"))
@@ -259,7 +259,7 @@
 	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
-		under_icon = default_onmob_icons[WEAR_BODY]
+		under_icon = GLOB.default_onmob_icons[WEAR_BODY]
 
 	var/check_worn_state = "[worn_state]_d[contained_sprite ? "_un" : ""]"
 	if(!(check_worn_state in icon_states(under_icon)))
@@ -292,7 +292,7 @@
 	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
-		under_icon = default_onmob_icons[WEAR_BODY]
+		under_icon = GLOB.default_onmob_icons[WEAR_BODY]
 
 	var/check_worn_state = "[worn_state]_dj[contained_sprite ? "_un" : ""]"
 	if(!(check_worn_state in icon_states(under_icon)))
@@ -326,7 +326,7 @@
 		return
 	update_rollsuit_status() //we need the _d version of the sprite anyways. In the future we might need to make a different version of the sprite to accomodate for rolling sleeves and hoods.
 	if(user.head && !istype(user.head, hood_state))
-		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing the [user.head]!"))
+		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing [user.head]!"))
 		return
 
 	if(!HAS_TRAIT(src, TRAIT_CLOTHING_HOOD))

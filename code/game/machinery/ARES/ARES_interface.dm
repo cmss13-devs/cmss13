@@ -78,7 +78,7 @@
 	data["access_text"] = "[sudo_holder ? "(SUDO)," : ""] access level [authentication], [ares_auth_to_text(authentication)]."
 	data["access_level"] = authentication
 
-	data["alert_level"] = security_level
+	data["alert_level"] = GLOB.security_level
 	data["evac_status"] = SShijack.evac_status
 	data["worldtime"] = world.time
 
@@ -382,7 +382,7 @@
 				to_chat(usr, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(security_level < SEC_LEVEL_RED)
+			if(GLOB.security_level < SEC_LEVEL_RED)
 				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(usr)] has called for general quarters via ARES.")
@@ -392,7 +392,7 @@
 			. = TRUE
 
 		if("evacuation_start")
-			if(security_level < SEC_LEVEL_RED)
+			if(GLOB.security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
@@ -423,11 +423,11 @@
 				to_chat(usr, SPAN_WARNING("The distress launcher is cooling down!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(security_level == SEC_LEVEL_DELTA)
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			else if(security_level < SEC_LEVEL_RED)
+			if(GLOB.security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert to launch a distress beacon!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
@@ -451,7 +451,7 @@
 				to_chat(usr, SPAN_WARNING("The ordnance request frequency is garbled, wait for reset!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(security_level == SEC_LEVEL_DELTA || SSticker.mode.is_in_endgame)
+			if(GLOB.security_level == SEC_LEVEL_DELTA || SSticker.mode.is_in_endgame)
 				to_chat(usr, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for?!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE

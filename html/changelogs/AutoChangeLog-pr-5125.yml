@@ -1,0 +1,5 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - admin: "Fixed a freeze when opening the the 'Create Object' interface."
+  - admin: "Adjusted the size and positioning of the 'Create Object/Mob/Turf' panels so that everything fits into the window."

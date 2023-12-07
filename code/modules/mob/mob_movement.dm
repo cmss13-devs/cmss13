@@ -142,6 +142,12 @@
 
 	if(mob.is_mob_incapacitated(TRUE))
 		return
+
+	if(mob.buckled)
+		// Handle buckled relay before mobility because buckling inherently immobilizes
+		// This means you can (try to) move with a cargo tug or powerloader while immobilized, which i think makes sense
+		return mob.buckled.relaymove(mob, direct)
+
 	if(!(living_mob.mobility_flags & MOBILITY_MOVE))
 		return
 	if(living_mob.body_position == LYING_DOWN && !living_mob.can_crawl)
@@ -159,9 +165,6 @@
 	if(SEND_SIGNAL(mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct) & COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
-
-	if(mob.buckled)
-		return mob.buckled.relaymove(mob, direct)
 
 	if(!mob.z)//Inside an object, tell it we moved
 		var/atom/O = mob.loc
@@ -181,8 +184,10 @@
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL // We pre-set this now for the crawling case. If crawling do_after fails, next_movement would be set after the attempt end instead of now.
 
-		//We are now going to move
-		if(!mob.crawling && living_mob && living_mob.body_position == LYING_DOWN)
+		//Try to crawl first
+		if(living_mob && living_mob.body_position == LYING_DOWN)
+			if(mob.crawling)
+				return // Already doing it.
 			//check for them not being a limbless blob (only humans have limbs)
 			if(ishuman(mob))
 				var/mob/living/carbon/human/human = mob
@@ -198,11 +203,12 @@
 				mob.crawling = FALSE
 				return
 			if(!mob.crawling)
-				return // Crawling interrupted by a "real" move. Do nothing. Normally do_after INTERRUPT_CHANGED_LYING would do it, but it's not instant.
+				return // Crawling interrupted by a "real" move. Do nothing. In theory INTERRUPT_MOVED|INTERRUPT_CHANGED_LYING catches this in do_after.
 		mob.crawling = FALSE
 		mob.move_intentionally = TRUE
+		moving = TRUE
 		if(mob.confused)
-			mob.Move(get_step(mob, pick(cardinal)))
+			mob.Move(get_step(mob, pick(GLOB.cardinals)))
 		else
 			. = ..()
 

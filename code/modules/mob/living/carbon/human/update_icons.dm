@@ -4,8 +4,8 @@
 	TODO: Proper documentation
 	icon_key is [species.race_key][g][husk][fat][hulk][skeleton][ethnicity]
 */
-var/global/list/human_icon_cache = list()
-var/global/list/tail_icon_cache = list()
+GLOBAL_LIST_EMPTY(human_icon_cache)
+GLOBAL_LIST_EMPTY(tail_icon_cache)
 
 /proc/overlay_image(icon, icon_state, color, flags)
 	var/image/ret = image(icon,icon_state)
@@ -19,7 +19,7 @@ var/global/list/tail_icon_cache = list()
 	Global associative list for caching uniform masks.
 	Each index is just 0 or 1 for not removed and removed (as in previously delimbed).
 */
-var/global/list/uniform_mask_cache = list()
+GLOBAL_LIST_EMPTY(uniform_mask_cache)
 
 	///////////////////////
 	//UPDATE_ICONS SYSTEM//
@@ -112,12 +112,7 @@ There are several things that need to be remembered:
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body()
-	if((has_limb("r_foot") && has_limb("r_leg")) || (has_limb("l_foot") && has_limb("l_leg")))
-		// temporary crutch. i know this is in effect an icons proc, but this is literally "update_body" material.
-		// remove this when we can migrate it to signal based limb handling.
-		REMOVE_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)
-	else
-		ADD_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)
+	update_leg_status() // Not icon ops, but placed here due to lack of a non-icons update_body
 
 	appearance_flags |= KEEP_TOGETHER // sanity
 
@@ -687,11 +682,11 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 /mob/living/carbon/human/proc/get_tail_icon()
 	var/icon_key = "[species.race_key][r_skin][g_skin][b_skin][r_hair][g_hair][b_hair]"
-	var/icon/tail_icon = tail_icon_cache[icon_key]
+	var/icon/tail_icon = GLOB.tail_icon_cache[icon_key]
 	if(!tail_icon)
 		//generate a new one
 		tail_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]")
-		tail_icon_cache[icon_key] = tail_icon
+		GLOB.tail_icon_cache[icon_key] = tail_icon
 
 	return tail_icon
 

@@ -40,7 +40,7 @@
 	pixel_x = -12
 	old_x = -12
 
-	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
+	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
 
 /mob/living/simple_animal/hostile/alien/Initialize()
 	maxHealth = health
@@ -52,8 +52,8 @@
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		color = hive.color
 
-	wound_icon_carrier = new(null, src)
-	vis_contents += wound_icon_carrier
+	wound_icon_holder = new(null, src)
+	vis_contents += wound_icon_holder
 
 /mob/living/simple_animal/hostile/alien/proc/generate_name()
 	change_real_name(src, "[caste_name] (BD-[rand(1, 999)])")
@@ -105,22 +105,22 @@
 	update_wounds()
 
 /mob/living/simple_animal/hostile/alien/proc/update_wounds()
-	if(!wound_icon_carrier)
+	if(!wound_icon_holder)
 		return
 
-	wound_icon_carrier.layer = layer + 0.01
-	wound_icon_carrier.dir = dir
+	wound_icon_holder.layer = layer + 0.01
+	wound_icon_holder.dir = dir
 	var/health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
-			wound_icon_carrier.icon_state = "none"
+			wound_icon_holder.icon_state = "none"
 		else if(body_position == LYING_DOWN)
-			if((resting || sleeping) && (!HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && health > 0))
-				wound_icon_carrier.icon_state = "[caste_name]_rest_[health_threshold]"
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+				wound_icon_holder.icon_state = "[caste_name]_rest_[health_threshold]"
 			else
-				wound_icon_carrier.icon_state = "[caste_name]_downed_[health_threshold]"
+				wound_icon_holder.icon_state = "[caste_name]_downed_[health_threshold]"
 		else
-			wound_icon_carrier.icon_state = "[caste_name]_walk_[health_threshold]"
+			wound_icon_holder.icon_state = "[caste_name]_walk_[health_threshold]"
 
 /mob/living/simple_animal/hostile/alien/bullet_act(obj/projectile/P)
 	. = ..()
@@ -148,8 +148,8 @@
 	animate(src, 5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 
 /mob/living/simple_animal/hostile/alien/Destroy()
-	vis_contents -= wound_icon_carrier
-	QDEL_NULL(wound_icon_carrier)
+	vis_contents -= wound_icon_holder
+	QDEL_NULL(wound_icon_holder)
 	return ..()
 
 /mob/living/simple_animal/hostile/alien/ravager

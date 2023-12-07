@@ -153,7 +153,7 @@
 			return
 		to_chat(user, SPAN_NOTICE("You start to remove the Queen's override."))
 		override_being_removed = TRUE
-		while(remaining_time > 0)
+		while(remaining_time > 20)
 			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(user, SPAN_WARNING("You fail to remove the Queen's override!"))
 				override_being_removed = FALSE

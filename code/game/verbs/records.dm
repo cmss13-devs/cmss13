@@ -181,3 +181,34 @@
 
 	dat += "</body></html>"
 	show_browser(src, dat, "[target]'s [category_text] Notes", "otherplayersinfo", "size=480x480")
+
+GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
+
+/datum/medals_view_tgui/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MedalsViewer", "[user.ckey] Medals")
+		ui.open()
+
+/datum/medals_view_tgui/ui_static_data(mob/user)
+	. = ..()
+	.["medals"] = list()
+
+	for(var/datum/view_record/medal_view/medal as anything in DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id"), DB_EQUALS, user.client.player_data.id))
+		.["medals"] += list(
+			"round_id" = medal.round_id,
+			"medal_type" = medal.medal_type,
+			"recipient_name" = medal.recipient_name,
+			"recipient_role" = medal.recipient_role,
+			"giver_name" = medal.giver_name,
+			"citation" = medal.citation
+		)
+
+/datum/medals_view_tgui/ui_status(mob/user, datum/ui_state/state)
+	return GLOB.always_state
+
+/client/verb/view_own_medals()
+	set name = "View Own Medals"
+	set category = "OOC.Records"
+
+	GLOB.medals_view_tgui.tgui_interact(src.mob)

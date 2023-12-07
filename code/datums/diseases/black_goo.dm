@@ -71,13 +71,14 @@
 			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
 				return
 			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
+
 			switch(rand(0, 100))
 				if(80 to 95)
 					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
 					stage_level += 3
 				if(95 to 100)
-				to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
-				stage_level += 5
+					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
+					stage_level += 5
 
 		if(2)
 			if(H.stat == DEAD && stage_counter != stage)

@@ -712,7 +712,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
-	flags_turf = TURF_ORGANIC
+	turf_flags = TURF_ORGANIC
 
 /turf/closed/wall/resin/Initialize(mapload)
 	. = ..()

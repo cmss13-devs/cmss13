@@ -1,9 +1,3 @@
-#define RANGE_TURFS(RADIUS, CENTER) \
-block( \
-	locate(max(CENTER.x-(RADIUS),1),   max(CENTER.y-(RADIUS),1),   CENTER.z), \
-	locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-)
-
 //Admin perms are in global.dm.
 
 /// To make it even more clear that something is a bitfield.

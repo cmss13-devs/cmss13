@@ -47,7 +47,7 @@
 	var/changing_turf = FALSE
 	var/chemexploded = FALSE // Prevents explosion stacking
 
-	var/flags_turf = NO_FLAGS
+	var/turf_flags = NO_FLAGS
 
 	/// Whether we've broken through the ceiling yet
 	var/ceiling_debrised = FALSE

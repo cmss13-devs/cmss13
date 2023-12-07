@@ -108,6 +108,7 @@
 #include "code\__DEFINES\tgui.dm"
 #include "code\__DEFINES\traits.dm"
 #include "code\__DEFINES\turf_flags.dm"
+#include "code\__DEFINES\turfs.dm"
 #include "code\__DEFINES\unit_tests.dm"
 #include "code\__DEFINES\urls.dm"
 #include "code\__DEFINES\vehicle.dm"

@@ -39,9 +39,6 @@ SUBSYSTEM_DEF(shuttle)
 	var/loading_shuttle = FALSE
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
-	if(GLOB.perf_flags & PERF_TOGGLE_SHUTTLES)
-		can_fire = FALSE
-		return
 	initial_load()
 	return SS_INIT_SUCCESS
 
@@ -52,8 +49,6 @@ SUBSYSTEM_DEF(shuttle)
 		CHECK_TICK
 
 /datum/controller/subsystem/shuttle/fire(resumed = FALSE)
-	if(!resumed && (GLOB.perf_flags & PERF_TOGGLE_SHUTTLES))
-		return
 	for(var/thing in mobile)
 		if(!thing)
 			mobile.Remove(thing)
@@ -199,7 +194,13 @@ SUBSYSTEM_DEF(shuttle)
 		if(WEST)
 			transit_path = /turf/open/space/transit/west
 
-	var/datum/turf_reservation/proposal = SSmapping.RequestBlockReservation(transit_width, transit_height, null, /datum/turf_reservation/transit, transit_path)
+	var/datum/turf_reservation/proposal = SSmapping.request_turf_block_reservation(
+		transit_width,
+		transit_height,
+		1,
+		reservation_type = /datum/turf_reservation/transit,
+		turf_type_override = transit_path,
+	)
 
 	if(!istype(proposal))
 		log_debug("generate_transit_dock() failed to get a block reservation from mapping system")
@@ -374,7 +375,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	return shuttle
 
-/datum/controller/subsystem/shuttle/proc/action_load(datum/map_template/shuttle/loading_template, obj/docking_port/stationary/destination_port)
+/datum/controller/subsystem/shuttle/proc/action_load(datum/map_template/shuttle/loading_template, obj/docking_port/stationary/destination_port, replace = FALSE)
 	// Check for an existing preview
 	if(preview_shuttle && (loading_template != preview_template))
 		preview_shuttle.jumpToNullSpace()
@@ -420,7 +421,8 @@ SUBSYSTEM_DEF(shuttle)
 	for(var/area/A as anything in preview_shuttle.shuttle_areas)
 		for(var/turf/T as anything in A)
 			// turfs inside the shuttle are not available for shuttles
-			T.flags_atom &= ~UNUSED_RESERVATION_TURF
+			// FIXME: /tg/ doesn't have this. Figure out if it's really needed.
+			//T.turf_flags &= ~UNUSED_RESERVATION_TURF
 
 			// update underlays
 			if(istype(T, /turf/closed/shuttle))
@@ -430,6 +432,7 @@ SUBSYSTEM_DEF(shuttle)
 				T.underlays.Cut()
 				T.underlays += mutable_appearance(target_lz.icon, target_lz.icon_state, TURF_LAYER, FLOOR_PLANE)
 
+	preview_shuttle.register(replace)
 	var/list/force_memory = preview_shuttle.movement_force
 	preview_shuttle.movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
 	preview_shuttle.initiate_docking(D)

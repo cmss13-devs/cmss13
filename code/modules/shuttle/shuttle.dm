@@ -382,6 +382,24 @@
 
 /obj/docking_port/mobile/register()
 	. = ..()
+	if(!shuttle_id)
+		shuttle_id = "shuttle"
+
+	if(!name)
+		name = "shuttle"
+
+	var/counter = SSshuttle.assoc_mobile[shuttle_id]
+	if(!replace || !counter)
+		if(counter)
+			counter++
+			SSshuttle.assoc_mobile[shuttle_id] = counter
+			shuttle_id = "[shuttle_id]_[counter]"
+			name = "[name] [counter]"
+			//Re link machinery to new shuttle id
+			linkup()
+		else
+			SSshuttle.assoc_mobile[shuttle_id] = 1
+
 	SSshuttle.mobile += src
 
 /obj/docking_port/mobile/Destroy(force)

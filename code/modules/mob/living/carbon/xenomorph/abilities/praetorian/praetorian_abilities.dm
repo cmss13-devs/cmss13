@@ -129,7 +129,7 @@
 
 	// Config
 	var/max_distance = 7
-	var/windup = 6 DECISECONDS
+	var/windup = 7 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"

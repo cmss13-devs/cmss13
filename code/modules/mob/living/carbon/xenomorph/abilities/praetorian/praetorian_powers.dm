@@ -386,7 +386,7 @@
 	var/obj/limb/target_limb = target_carbon.get_limb(check_zone(oppressor_user.zone_selected))
 
 	if (ishuman(target_carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
-		return
+		target_limb = target_carbon.get_limb("chest")
 
 	if (!check_and_use_plasma_owner())
 		return
@@ -412,19 +412,18 @@
 
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Oppressor Punch")), get_xeno_stun_duration(target_carbon, 1.2 SECONDS))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
-
-		var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
-		var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
-		if(abduct_action && abduct_action.action_cooldown_check())
-			abduct_action.reduce_cooldown(5 SECONDS)
-		if(tail_lash_action && tail_lash_action.action_cooldown_check())
-			tail_lash_action.reduce_cooldown(5 SECONDS)
 	else
 		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
 		step_away(target_carbon, oppressor_user, 2)
 
 
 	shake_camera(target_carbon, 2, 1)
+	var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
+	var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
+	if(abduct_action && !abduct_action.action_cooldown_check())
+		abduct_action.reduce_cooldown(5 SECONDS)
+	if(tail_lash_action && !tail_lash_action.action_cooldown_check())
+		tail_lash_action.reduce_cooldown(5 SECONDS)
 
 	apply_cooldown()
 	return ..()

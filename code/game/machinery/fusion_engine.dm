@@ -356,6 +356,11 @@
 		else
 			. += SPAN_INFO("There is no fuel cell in the receptacle.")
 
+/obj/structure/machinery/power/fusion_engine/ex_act(severity)
+	if(overloaded)
+		set_overloading(FALSE)
+	return
+
 /obj/structure/machinery/power/fusion_engine/update_icon()
 	switch(buildstate)
 		if(0)

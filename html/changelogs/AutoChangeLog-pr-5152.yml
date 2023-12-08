@@ -1,4 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - qol: "Gun safety messages now use balloon alerts."

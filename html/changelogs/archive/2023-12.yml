@@ -119,3 +119,61 @@
   - rscadd: Lifeboat launch now has an ARES announcement followed by a 10 second delay
       before doors close. The current launch functionality is preserved as Emergency
       Launch.
+2023-12-08:
+  Birdtalon:
+  - bugfix: Wall weeds now destroyed when closed wall turfs are changed.
+  - code_imp: Reorganises some xeno code from xeno_defines.dm
+  Doubleumc:
+  - code_imp: projectiles smoothly animate their movement
+  Firartix, Birdtalon:
+  - bugfix: Fixed a logic error in Warrior code causing lunging some M2C/M56D users
+      to semi-permanently brick lunge.
+  Huffie56:
+  - maptweak: added a button inside the CL office to open the shutter for the door
+      and rearranged other buttons.
+  - maptweak: separated shutter for cl office door and for the windows.
+  - maptweak: add three lights in CL office and quarter.
+  - balance: add document and sling pouch to ASO vendor.
+  - balance: add shoulder webbing to ASO vendor.
+  - balance: add a bag section to ASO vendor and add leather satchel to it.
+  SabreML:
+  - spellcheck: Fixed instances of "The the" and "A the" in chat messages so that
+      they're just "The" instead. (Part 3)
+  alexguinea atticus-rezzer:
+  - rscadd: Adds alarm sound for lifeboats when launching
+  fira:
+  - bugfix: Cryoing someone now properly takes into account role weights for the purpose
+      of latejoin larvas. This should very slightly increase larvas amount.
+  - bugfix: Roundstart distributed amount of gear and ASRS points now takes shipside
+      role weights into account. This should moderately decrease budget and starting
+      gear.
+  - bugfix: Roundstart distributed amount of gear and ASRS points does not count Survivors
+      and Monkeys anymore. This should moderatly decrease budget and starting gear.
+  - rscadd: Main marine vendors and ASRS now get matching supply for every additional
+      marine latejoining, similar to larvas. This should be a substantial increase
+      over the course of a round. Supplies given are 60% of what a roundstart marine
+      would give.
+  - balance: Amount of gear in main marine vendors and ASRS supplies have been decreased
+      by 40% to help counteract added supplies the marines will get in latejoining.
+      Hopefully this also keeps reqs active to dispatch new supplies.
+  - bugfix: Altered a few items vendor stock scalings to be linear for use with the
+      new system, such as RTO pack, Drop Pouch and Machete Pouch.
+  - rscadd: Introduced ASRS supply pools. As proof of concept, ASRS now spawns a crate
+      of food ingredients every 30 minutes, in addition to regular gear.
+  - balance: ASRS now keeps track of partial crates awarded. This means if you should
+      receive 2.5 then 2.5 crates, you now get 2 then 3, rather than 2 and 2. This
+      is intended to result in smoother, more reliable transitions and scaling with
+      varying amount of Xenos on map.
+  - balance: Amount of ASRS crates awarded was reduced by about 15.5% to make up for
+      crates carrying over. Overall this should result in an about 5-10% reduction
+      in highpop crates, and ~10% increase in lowpop. Pop being based on xeno count.
+  - code_imp: Refactored part of ASRS supply code to be less of a painful, antique
+      artifact.
+  - bugfix: Fixed incorrect weighting in the ASRS supply code, effects on crate distributions
+      are unknown.
+  - bugfix: Fixed HPR ammo ASRS packs failing to spawn and ending up as MK1s instead.
+  - bugfix: Fixed ASRS order numbers not increasing the order IDs... This whole time..
+  ihatethisengine:
+  - balance: PO can remove queens dropship override again.
+  private-tristan:
+  - qol: Gun safety messages now use balloon alerts.

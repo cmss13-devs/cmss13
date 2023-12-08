@@ -1,4 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - bugfix: "Wall weeds now destroyed when closed wall turfs are changed."

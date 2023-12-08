@@ -1,6 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - maptweak: "added a button inside the CL office to open the shutter for the door and rearranged other buttons."
-  - maptweak: "separated shutter for cl office door and for the windows."
-  - maptweak: "add three lights in CL office and quarter."

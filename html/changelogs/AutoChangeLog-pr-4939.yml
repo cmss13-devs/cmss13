@@ -1,9 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Cryoing someone now properly takes into account role weights for the purpose of latejoin larvas. This should very slightly increase larvas amount."
-  - bugfix: "Roundstart distributed amount of gear and ASRS points now takes shipside role weights into account. This should moderately decrease budget and starting gear."
-  - bugfix: "Roundstart distributed amount of gear and ASRS points does not count Survivors and Monkeys anymore. This should moderatly decrease budget and starting gear."
-  - rscadd: "Main marine vendors and ASRS now get matching supply for every additional marine latejoining, similar to larvas. This should be a substantial increase over the course of a round. Supplies given are 60% of what a roundstart marine would give."
-  - balance: "Amount of gear in main marine vendors and ASRS supplies have been decreased by 40% to help counteract added supplies the marines will get in latejoining. Hopefully this also keeps reqs active to dispatch new supplies."
-  - bugfix: "Altered a few items vendor stock scalings to be linear for use with the new system, such as RTO pack, Drop Pouch and Machete Pouch."

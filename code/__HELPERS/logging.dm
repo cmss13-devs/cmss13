@@ -286,6 +286,16 @@ GLOBAL_PROTECT(config_error_log)
 	WRITE_LOG(GLOB.config_error_log, text)
 	SEND_TEXT(world.log, text)
 
+/// Logging for mapping errors
+/proc/log_mapping(text, skip_world_log)
+#ifdef UNIT_TESTS
+	GLOB.unit_test_mapping_logs += text
+#endif
+	if(skip_world_log)
+		return
+	WRITE_LOG(GLOB.mapping_log, text)
+	SEND_TEXT(world.log, text)
+
 /proc/log_admin_private(text)
 	log_admin(text)
 

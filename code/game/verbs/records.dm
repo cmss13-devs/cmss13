@@ -194,7 +194,7 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 	. = ..()
 	.["medals"] = list()
 
-	for(var/datum/view_record/medal_view/medal as anything in DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id"), DB_EQUALS, user.client.player_data.id))
+	for(var/datum/view_record/medal_view/medal as anything in DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id", DB_EQUALS, user.client.player_data.id)))
 		var/xeno_medal = FALSE
 		if(medal.medal_type in GLOB.xeno_medals)
 			xeno_medal = TRUE

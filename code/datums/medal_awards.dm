@@ -36,7 +36,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	giver_ckey = list()
 
 
-/proc/give_medal_award(medal_location, as_admin = FALSE)
+/proc/give_medal_award(medal_location, as_admin = FALSE, as_xo = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
 		as_admin = FALSE
 
@@ -51,8 +51,12 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(!chosen_recipient)
 		return FALSE
 
+	var/list/medals_list = list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL)
+	if(as_xo)
+		medals_list = list(MARINE_CONDUCT_MEDAL)
+
 	// Pick a medal
-	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
+	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", medals_list)
 	if(!medal_type)
 		return FALSE
 
@@ -179,7 +183,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
 		return
 
-	if(give_medal_award(get_turf(printer)))
+	if(give_medal_award(get_turf(printer), as_xo = card.paygrade == PAY_SHORT_MO3))
 		user.visible_message(SPAN_NOTICE("[printer] prints a medal."))
 
 /proc/give_jelly_award(datum/hive_status/hive, as_admin = FALSE)

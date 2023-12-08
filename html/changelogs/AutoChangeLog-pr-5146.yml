@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - code_imp: "Reorganises some xeno code from xeno_defines.dm"

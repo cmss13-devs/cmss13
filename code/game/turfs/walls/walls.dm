@@ -88,7 +88,7 @@
 			if(istype(found_object, /obj/structure/sign/poster))
 				var/obj/structure/sign/poster/found_poster = found_object
 				found_poster.roll_and_drop(src)
-			if(istype(found_object, /obj/effect/alien/weeds))
+			if(istype(found_object, /obj/effect/alien/weeds/weedwall))
 				qdel(found_object)
 
 		var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))

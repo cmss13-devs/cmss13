@@ -447,3 +447,69 @@
 		/obj/item/tool/pen/fountain = 30,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL
+
+//vendor of ingredients for kitchen
+/obj/structure/machinery/vending/ingredients
+	name = "\improper Galley Auxiliary Storage Requisition System"
+	desc = "A vending machine meant to be use for cooks."
+	product_ads = "If your out of ingredients i am here for you;all my organic produce are fresh;don't let my potatoes go stale time for you to cook some fries"
+	icon_state = "snack"
+	hacking_safety = TRUE
+	products = list(
+		/obj/item/storage/fancy/egg_box = 12,
+		/obj/item/storage/box/fish = 12,
+		/obj/item/storage/box/meat = 12,
+		/obj/item/storage/box/milk = 12,
+		/obj/item/storage/box/soymilk = 12,
+		/obj/item/storage/box/enzyme = 12,
+		/obj/item/storage/box/flour = 12,
+		/obj/item/storage/box/sugar = 12,
+		/obj/item/storage/box/saltshaker = 12,
+		/obj/item/storage/box/peppermill = 12,
+		/obj/item/storage/box/mint = 12,
+		/obj/item/storage/box/apple = 12,
+		/obj/item/storage/box/banana = 12,
+		/obj/item/storage/box/chanterelle = 12,
+		/obj/item/storage/box/cherries = 12,
+		/obj/item/storage/box/chili = 12,
+		/obj/item/storage/box/cabbage = 12,
+		/obj/item/storage/box/carrot = 12,
+		/obj/item/storage/box/corn = 12,
+		/obj/item/storage/box/eggplant = 12,
+		/obj/item/storage/box/lemon = 12,
+		/obj/item/storage/box/lime = 12,
+		/obj/item/storage/box/orange = 12,
+		/obj/item/storage/box/potato = 12,
+		/obj/item/storage/box/tomato = 12,
+		/obj/item/storage/box/whitebeet = 12,
+	)
+
+	prices = list(
+		/obj/item/storage/fancy/egg_box = 1,
+		/obj/item/storage/box/fish = 1,
+		/obj/item/storage/box/meat = 1,
+		/obj/item/storage/box/milk =1,
+		/obj/item/storage/box/soymilk = 1,
+		/obj/item/storage/box/enzyme = 1,
+		/obj/item/storage/box/flour = 1,
+		/obj/item/storage/box/sugar = 1,
+		/obj/item/storage/box/saltshaker = 1,
+		/obj/item/storage/box/peppermill = 1,
+		/obj/item/storage/box/mint = 1,
+		/obj/item/storage/box/apple = 1,
+		/obj/item/storage/box/banana = 2,
+		/obj/item/storage/box/chanterelle = 2,
+		/obj/item/storage/box/cherries = 2,
+		/obj/item/storage/box/chili = 2,
+		/obj/item/storage/box/cabbage = 2,
+		/obj/item/storage/box/carrot = 2,
+		/obj/item/storage/box/corn = 2,
+		/obj/item/storage/box/eggplant = 2,
+		/obj/item/storage/box/lemon = 2,
+		/obj/item/storage/box/lime = 2,
+		/obj/item/storage/box/orange = 2,
+		/obj/item/storage/box/potato = 2,
+		/obj/item/storage/box/tomato = 2,
+		/obj/item/storage/box/whitebeet = 2,
+	)
+	product_type = VENDOR_PRODUCT_TYPE_FOOD

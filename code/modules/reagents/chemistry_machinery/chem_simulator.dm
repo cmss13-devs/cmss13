@@ -13,7 +13,7 @@
 #define SIMULATION_STAGE_BEGIN 6
 
 /obj/structure/machinery/chem_simulator
-	name = "Synthesis Simulator"
+	name = "synthesis simulator"
 	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	icon_state = "modifier"
@@ -87,10 +87,10 @@
 			to_chat(user, SPAN_WARNING("Chemical data already inserted."))
 			return
 	else
-		to_chat(user, SPAN_WARNING("The [src] refuses the [B]."))
+		to_chat(user, SPAN_WARNING("[src] refuses [B]."))
 		return
 	user.drop_inv_item_to_loc(B, src)
-	to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
+	to_chat(user, SPAN_NOTICE("You insert [B] into [src]."))
 	flick("[icon_state]_reading",src)
 	update_costs()
 	SSnano.nanomanager.update_uis(src) // update all UIs attached to src

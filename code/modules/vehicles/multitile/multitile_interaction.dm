@@ -330,80 +330,61 @@
 
 	healthcheck()
 
-/obj/vehicle/multitile/handle_click(mob/living/user, atom/A, list/mods)
+/obj/vehicle/multitile/on_set_interaction(mob/user)
+	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(crew_mousedown))
+	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(crew_mousedrag))
+	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(crew_mouseup))
 
-	var/seat
-	for(var/vehicle_seat in seats)
-		if(seats[vehicle_seat] == user)
-			seat = vehicle_seat
-			break
+/obj/vehicle/multitile/on_unset_interaction(mob/user)
+	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 
-	if(istype(A, /atom/movable/screen) || !seat)
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(user)
+	if(hardpoint)
+		SEND_SIGNAL(hardpoint, COMSIG_GUN_INTERRUPT_FIRE) //abort fire when crew leaves
+
+/// Relays crew mouse release to active hardpoint.
+/obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
+	if(!hardpoint)
 		return
 
-	if(seat == VEHICLE_DRIVER)
-		if(mods["shift"] && !mods["alt"])
-			A.examine(user)
-			return
+	hardpoint.stop_fire(source, object, location, control, params)
 
-		if(mods["ctrl"] && !mods["alt"])
-			activate_horn()
-			return
+/// Relays crew mouse movement to active hardpoint.
+/obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
+	if(!hardpoint)
+		return
 
-		var/obj/item/hardpoint/HP = active_hp[seat]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-			return
+	hardpoint.change_target(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
 
-		if(!HP.can_activate(user, A))
-			return
+/// Checks for special control keybinds, else relays crew mouse press to active hardpoint.
+/obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
 
-		HP.activate(user, A)
+	var/list/modifiers = params2list(params)
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK]) //don't step on examine, point, etc
+		return
 
-	if(seat == VEHICLE_GUNNER)
-		if(mods["shift"] && !mods["middle"])
-			if(vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER)
-				shoot_other_weapon(user, seat, A)
-			else
-				A.examine(user)
-			return
-		if(mods["middle"] && !mods["shift"])
-			if(!(vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
-				shoot_other_weapon(user, seat, A)
-			return
-		if(mods["alt"])
-			toggle_gyrostabilizer()
-			return
-		if(mods["ctrl"])
-			activate_support_module(user, seat, A)
-			return
+	var/seat = get_mob_seat(source)
+	switch(seat)
+		if(VEHICLE_DRIVER)
+			if(modifiers[LEFT_CLICK] && modifiers[CTRL_CLICK])
+				activate_horn()
+				return
+		if(VEHICLE_GUNNER)
+			if(modifiers[LEFT_CLICK] && modifiers[ALT_CLICK])
+				toggle_gyrostabilizer()
+				return
 
-		var/obj/item/hardpoint/HP = active_hp[seat]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-			return
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
+	if(!hardpoint)
+		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+		return
 
-		if(!HP.can_activate(user, A))
-			return
-
-		HP.activate(user, A)
-
-	if(seat == VEHICLE_SUPPORT_GUNNER_ONE || seat == VEHICLE_SUPPORT_GUNNER_TWO)
-		if(mods["shift"])
-			A.examine(user)
-			return
-		if(mods["middle"] || mods["alt"] || mods["ctrl"])
-			return
-
-		var/obj/item/hardpoint/HP = active_hp[seat]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-			return
-
-		if(!HP.can_activate(user, A))
-			return
-
-		HP.activate(user, A)
+	hardpoint.start_fire(source, object, location, control, params)
 
 /obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
 	if(!M || M.client == null) return

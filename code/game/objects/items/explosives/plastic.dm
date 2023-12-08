@@ -184,7 +184,7 @@
 
 	//vehicle interior stuff checks
 	if(SSinterior.in_interior(target))
-		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy [src]."))
 		return FALSE
 
 	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
@@ -195,7 +195,7 @@
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/W = target
 		if(W.hull)
-			to_chat(user, SPAN_WARNING("You are unable to stick \the [src] to the [W]!"))
+			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [W]!"))
 			return FALSE
 
 	if(istype(target, /obj/structure/window))
@@ -301,7 +301,7 @@
 	prime(TRUE)
 
 /obj/item/explosive/plastic/custom
-	name = "Custom plastic explosive"
+	name = "custom plastic explosive"
 	desc = "A custom plastic explosive."
 	icon_state = "custom_plastic_explosive"
 	overlay_image = "custom_plastic_explosive_sensing"

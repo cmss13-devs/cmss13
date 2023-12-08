@@ -82,15 +82,15 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 
 	if(!tray.warhead)
 		if(user)
-			to_chat(user, "no warhead in the tray, loading operation cancelled.")
+			to_chat(user, SPAN_WARNING("No warhead in the tray, loading operation cancelled."))
 		return
 
 	if(tray.fuel_amt < 1)
-		to_chat(user, "no solid fuel in the tray, loading operation cancelled.")
+		to_chat(user, SPAN_WARNING("No solid fuel in the tray, loading operation cancelled."))
 		return
 
 	if(loaded_tray)
-		to_chat(user, "Tray is already loaded.")
+		to_chat(user, SPAN_WARNING("Tray is already loaded."))
 		return
 
 	tray.forceMove(src)
@@ -685,4 +685,3 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		return TRUE
 
 	tgui_interact(user)
-

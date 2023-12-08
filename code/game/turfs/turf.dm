@@ -57,10 +57,6 @@
 	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
 	var/dynamic_lumcount = 0
 
-	///Bool, whether this turf will always be illuminated no matter what area it is in
-	///Makes it look blue, be warned
-	var/space_lit = FALSE
-
 	///List of light sources affecting this turf.
 	///Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources.
 	var/directional_opacity = NONE

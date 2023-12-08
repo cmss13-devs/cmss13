@@ -321,7 +321,10 @@
 						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
 						shipwide_ai_announcement("Launch command received. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat doors will close in 10 seconds.")
 						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
+						lifeboat.alarm_sound_loop.start()
+						lifeboat.playing_launch_announcement_alarm = TRUE
 						return
+
 					if ("Emergency Launch")
 						launch_initiated = TRUE
 						to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")

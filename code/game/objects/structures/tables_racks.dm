@@ -278,8 +278,8 @@
 						M.KnockDown(5)
 						M.Stun(5)
 					M.apply_damage(8, def_zone = "head")
-					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
-					SPAN_DANGER("You slam [M]'s face against [src]!"))
+					user.visible_message(SPAN_DANGER("<B>[user] slams [M]'s face against [src]!</B>"),
+					SPAN_DANGER("<B>You slam [M]'s face against [src]!</B>"))
 					playsound(src.loc, 'sound/weapons/tablehit1.ogg', 25, 1)
 				else
 					to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
@@ -288,8 +288,9 @@
 				M.forceMove(loc)
 				M.KnockDown(5)
 				M.Stun(5)
-				user.visible_message(SPAN_DANGER("[user] throws [M] on [src]."),
-				SPAN_DANGER("You throw [M] on [src]."))
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				user.visible_message(SPAN_DANGER("<B>[user] throws [M] on [src], stunning them!</B>"),
+				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))

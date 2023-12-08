@@ -20,7 +20,6 @@
 	var/group = null
 	var/buyable = 1 ///Can this pack be bought? These packs don't show up at all - they have to be spawned externally (fe: DEFCON ASRS)
 	var/randomised_num_contained = 0 //Randomly picks X of items out of the contains list instead of using all.
-	var/iteration_needed = 0
 	/// How many W-Y dollars are deducted from the supply controller. Only use for contraband.
 	var/dollar_cost = 0
 	/// How much "heat" this crate adds, too much heat will send an investigation. Only use for contraband.

@@ -21,6 +21,7 @@
 	var/armor_stage = 0
 	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver, /obj/item/tool/surgery/scalpel, /obj/item/weapon/straight_razor)
 	var/knife_type
+	drop_sound = "armorequip"
 
 /obj/item/clothing/shoes/marine/Initialize(mapload, ...)
 	. = ..()

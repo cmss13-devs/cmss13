@@ -180,6 +180,8 @@
 	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
 /// Looped proc via timer to give larva after time
+#define ENDGAME_LARVA_CAP_MULTIPLIER 0.4
+#define LARVA_ADDITION_MULTIPLIER 0.10
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
 	if(!activated)
 		return

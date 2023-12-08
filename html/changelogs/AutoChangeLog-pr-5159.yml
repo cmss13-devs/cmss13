@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - rscdel: "removes a nanoui debug verb that no one has ever used, ever"

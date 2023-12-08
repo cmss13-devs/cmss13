@@ -63,8 +63,12 @@
 	for(var/i in 1 to turfs.len)
 		var/turf/place = turfs[i]
 
-		// CM Note: We do this BEFORE and not AFTER because CM Lifeboats
-		// have their edges on space tiles and we'd skip the mobile port init
+		// ================== CM Change ==================
+		// We perform atom initialization of the docking_ports BEFORE skipping space,
+		// because our lifeboats have their corners as object props and still
+		// reside on space turfs. Notably the bottom left corner, which also contains
+		// the docking port.
+
 		for(var/obj/docking_port/mobile/port in place)
 			SSatoms.InitializeAtoms(list(port))
 			if(register)
@@ -75,6 +79,7 @@
 		if(length(place.baseturfs) < 2) // Some snowflake shuttle shit
 			continue
 		place.baseturfs.Insert(3, /turf/baseturf_skipover/shuttle)
+		// =============== END CM Change =================
 
 //Whatever special stuff you want
 /datum/map_template/shuttle/post_load(obj/docking_port/mobile/M)

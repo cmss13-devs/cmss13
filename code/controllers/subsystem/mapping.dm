@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(mapping)
 		return
 	clearing_reserved_turfs = TRUE
 	message_admins("Clearing dynamic reservation space.")
-	// FIXME : /tg/ Shuttles have extra handling here to avoid them being desallocated
+	// /tg/ Shuttles have extra handling here to avoid them being desallocated
 	do_wipe_turf_reservations()
 	clearing_reserved_turfs = FALSE
 

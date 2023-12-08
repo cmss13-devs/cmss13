@@ -419,10 +419,6 @@ SUBSYSTEM_DEF(shuttle)
 
 	for(var/area/A as anything in preview_shuttle.shuttle_areas)
 		for(var/turf/T as anything in A)
-			// turfs inside the shuttle are not available for shuttles
-			// FIXME: /tg/ doesn't have this. Figure out if it's really needed.
-			//T.turf_flags &= ~UNUSED_RESERVATION_TURF
-
 			// update underlays
 			if(istype(T, /turf/closed/shuttle))
 				var/dx = T.x - preview_shuttle.x
@@ -467,8 +463,6 @@ SUBSYSTEM_DEF(shuttle)
 	if(!preview_reservation)
 		CRASH("failed to reserve an area for shuttle template loading")
 	var/turf/bottom_left = preview_reservation.bottom_left_turfs[1]
-	if(loading_template.type == /datum/map_template/shuttle/lifeboat_starboard)
-		pass() //DEBUG FIXME remove this
 	loading_template.load(bottom_left, centered = FALSE, register = FALSE)
 
 	var/affected = loading_template.get_affected_turfs(bottom_left, centered=FALSE)

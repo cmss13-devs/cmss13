@@ -187,7 +187,28 @@
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
-	linked_hive.give_larva_from_pylon()
+		var/list/hive_xenos = totalXenos
+	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
+		if(!xeno.counts_for_slots)
+			hive_xenos -= xeno
+	var/real_total_xeno_count = length(hive_xenos) + stored_larva
+
+	var/groundside_humans_weighted_count = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
+		if(!job)
+			continue
+		var/turf/turf = get_turf(current_human)
+		if(!is_ground_level(turf?.z))
+			groundside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
+	if(real_total_xeno_count > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER))
+		return
+
+	partial_larva += real_total_xeno_count * LARVA_ADDITION_MULTIPLIER
+	convert_partial_larva_to_full_larva()
+	hive_ui.update_burrowed_larva()
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

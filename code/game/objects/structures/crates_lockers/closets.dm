@@ -200,7 +200,7 @@
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
-		visible_message(SPAN_DANGER("[user] destroys the [src]. "))
+		visible_message(SPAN_DANGER("[user] destroys [src]."))
 		for(var/atom/movable/A as mob|obj in src)
 			A.forceMove(src.loc)
 		qdel(src)

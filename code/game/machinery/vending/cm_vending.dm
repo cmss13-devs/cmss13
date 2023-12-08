@@ -441,13 +441,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	tgui_interact(user)
 
 /// Handles redeeming coin tokens.
-/obj/structure/machinery/cm_vending/attackby(obj/item/attacking_item, mob/user)
-	if(!istype(attacking_item, /obj/item/coin/marine))
-		..()
-	if(!can_access_to_vend(user, ignore_hack = TRUE))
-		return FALSE
-	redeem_token(attacking_item, user)
-
 /obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/coin/marine/token, mob/user)
 	var/reward_typepath
 	switch(token.token_type)
@@ -766,6 +759,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 		hack_access(user)
 		return TRUE
 
+	///If we want to redeem a token
+	else if(istype(W, /obj/item/coin/marine))
+		if(!can_access_to_vend(user, ignore_hack = TRUE))
+			return FALSE
+		. = redeem_token(W, user)
+		return
+
 	..()
 
 /obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
@@ -875,8 +875,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 	show_points = FALSE
 
-	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
+	///this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
+	///If using [VEND_STOCK_DYNAMIC], assoc list of product entry to list of (product multiplier, awarded objects) - as seen in [/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list]
+	///This allows us to backtrack and refill the stocks when new players latejoin
+	var/list/list/dynamic_stock_multipliers
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
@@ -889,14 +892,44 @@ GLOBAL_LIST_EMPTY(vending_products)
 	GLOB.cm_vending_vendors -= src
 	return ..()
 
-//this proc, well, populates product list based on roundstart amount of players
+///this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(scale)
-	populate_product_list(scale)
+	if(vend_flags & VEND_STOCK_DYNAMIC)
+		populate_product_list(1.0)
+		dynamic_stock_multipliers = list()
+		for(var/list/vendspec in listed_products)
+			var/multiplier = vendspec[2]
+			if(multiplier > 0)
+				var/awarded = round(vendspec[2] * scale) // Starting amount
+				//Record the multiplier and how many have actually been given out
+				dynamic_stock_multipliers[vendspec] = list(vendspec[2], awarded)
+				vendspec[2] = awarded // Override starting amount
+	else
+		populate_product_list(scale)
+
 	if(vend_flags & VEND_LOAD_AMMO_BOXES)
 		populate_ammo_boxes()
 	return
 
-//this proc, well, populates product list based on roundstart amount of players
+///Updates the vendor stock when the [/datum/game_mode/var/marine_tally] has changed and we're using [VEND_STOCK_DYNAMIC]
+///Assumes the scale can only increase!!! Don't take their items away!
+/obj/structure/machinery/cm_vending/sorted/proc/update_dynamic_stock(new_scale)
+	if(!(vend_flags & VEND_STOCK_DYNAMIC))
+		return
+	for(var/list/vendspec in dynamic_stock_multipliers)
+		var/list/metadata = dynamic_stock_multipliers[vendspec]
+		var/multiplier = metadata[1] // How much do we multiply scales by
+		var/previous_max_amount = metadata[2] // How many we already handed out at old scale
+		var/projected_max_amount = round(new_scale * multiplier) // How much we would have had total now in total
+		var/amount_to_add = round(projected_max_amount - previous_max_amount) // Rounding just in case
+		if(amount_to_add > 0)
+			metadata[2] += amount_to_add
+			vendspec[2] += amount_to_add
+			update_derived_ammo_and_boxes_on_add(vendspec)
+
+///this proc, well, populates product list based on roundstart amount of players
+///do not rely on scale here if you use VEND_STOCK_DYNAMIC because it's already taken into account
+///this is here for historical reasons and should ONLY be called by populate_product_list_and_boxes if you want dynamic stocks and ammoboxes to work
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(scale)
 	return
 

@@ -79,15 +79,15 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if(!isxeno(user) && (onboard || is_ground_level(z)) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
-				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
-				SPAN_NOTICE("You try to take back the control over the shuttle. It will take around 3 minutes."))
+				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
+					SPAN_NOTICE("You try to take back the control over the shuttle. It will take around 3 minutes."))
 				if(do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					shuttle.last_locked = world.time
 					shuttle.queen_locked = 0
 					shuttle.last_door_override = world.time
 					shuttle.door_override = 0
-					user.visible_message(SPAN_NOTICE("The [src] blinks with blue lights."),
-					SPAN_NOTICE("You have successfully taken back the control over the dropship."))
+					user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+						SPAN_NOTICE("You have successfully taken back the control over the dropship."))
 					ui_interact(user)
 				return
 			else
@@ -106,13 +106,13 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				shuttle.door_override = 0
 
 	if(link && !shuttle.linked)
-		user.visible_message(SPAN_NOTICE("The [src] blinks with blue lights."),
-		SPAN_NOTICE("Transport link activated."))
+		user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+			SPAN_NOTICE("Transport link activated."))
 		shuttle.linked = TRUE
 
 	if(shuttle.require_link && !shuttle.linked)
-		user.visible_message(SPAN_NOTICE("The [src] blinks with red lights."),
-		SPAN_WARNING("Transport terminal unlinked. Manual activation required."))
+		user.visible_message(SPAN_NOTICE("[src] blinks with red lights."),
+			SPAN_WARNING("Transport terminal unlinked. Manual activation required."))
 		return
 	ui_interact(user)
 
@@ -329,7 +329,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				shuttle.launch(src)
 				if(onboard && !shuttle.iselevator)
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
-			msg_admin_niche("[M] ([M.key]) launched a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
+			msg_admin_niche("[M] ([M.key]) launched \a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
 
 	ui_interact(usr)
 

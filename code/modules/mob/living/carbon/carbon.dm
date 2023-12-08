@@ -192,7 +192,7 @@
 	playsound(loc, "sparks", 25, 1)
 	if(shock_damage > 10)
 		src.visible_message(
-			SPAN_DANGER("[src] was shocked by the [source]!"), \
+			SPAN_DANGER("[src] was shocked by [source]!"), \
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
@@ -207,7 +207,7 @@
 
 	else
 		src.visible_message(
-			SPAN_DANGER("[src] was mildly shocked by the [source]."), \
+			SPAN_DANGER("[src] was mildly shocked by [source]."), \
 			SPAN_DANGER("You feel a mild shock course through your body."), \
 			SPAN_DANGER("You hear a light zapping.") \
 		)

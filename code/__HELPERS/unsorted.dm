@@ -1988,8 +1988,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	return list(region_x1 & region_x2, region_y1 & region_y2)
 
-#define TURF_FROM_COORDS_LIST(List) (locate(List[1], List[2], List[3]))
-
 //Vars that will not be copied when using /DuplicateObject
 GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	"tag", "datum_components", "area", "type", "loc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",

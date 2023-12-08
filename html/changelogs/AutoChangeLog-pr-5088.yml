@@ -1,0 +1,7 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - spellcheck: "tablestun text is more clear that it stuns"
+  - soundadd: "unequip noise added to uniform, backpack, shoes."
+  - soundadd: "sound added to tablestun"
+  - sounddel: "for disarms, whoosh only triggers on stun. otherwise, the miss sound plays"

@@ -1,4 +1,0 @@
-author: "Doubleumc"
-delete-after: True
-changes:
-  - code_imp: "projectiles smoothly animate their movement"

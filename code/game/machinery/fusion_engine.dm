@@ -357,7 +357,7 @@
 			. += SPAN_INFO("There is no fuel cell in the receptacle.")
 
 /obj/structure/machinery/power/fusion_engine/ex_act(severity)
-	if(overloaded)
+	if(overloaded && severity >= EXPLOSION_THRESHOLD_MLOW)
 		set_overloading(FALSE)
 	return
 

@@ -102,3 +102,9 @@
 
 /datum/map_template/shuttle/trijent_elevator/B
 	elevator_network = "B"
+
+/datum/map_template/shuttle/trijent_elevator/post_load(obj/docking_port/mobile/M)
+	. = ..()
+	var/obj/docking_port/mobile/trijent_elevator/elev = M
+	elev.elevator_network = elevator_network
+	log_debug("Adding network [elevator_network] to [M.id]")

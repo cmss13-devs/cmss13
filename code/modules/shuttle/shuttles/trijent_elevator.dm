@@ -37,12 +37,6 @@
 	. = ..()
 	door_control.control_doors("force-lock-launch", "all", force=TRUE)
 
-/obj/docking_port/mobile/trijent_elevator/linkup(datum/map_template/shuttle/template, obj/docking_port/stationary/dock)
-	..()
-	var/datum/map_template/shuttle/trijent_elevator/elev = template
-	elevator_network = elev.elevator_network
-	log_debug("Adding network [elev.elevator_network] to [id]")
-
 /obj/docking_port/stationary/trijent_elevator
 	dir=NORTH
 	width=7

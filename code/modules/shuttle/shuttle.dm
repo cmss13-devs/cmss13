@@ -447,6 +447,15 @@
 	. = ..()
 	SSshuttle.mobile += src
 
+/**
+ * Actions to be taken after shuttle is loaded and has been moved to its final location
+ *
+ * Arguments:
+ * * replace - TRUE if this shuttle is replacing an existing one. FALSE by default.
+ */
+/obj/docking_port/mobile/proc/postregister(replace = FALSE)
+	return
+
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
 		QDEL_NULL(alarm_sound_loop)

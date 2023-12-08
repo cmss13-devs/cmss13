@@ -126,8 +126,15 @@
 	var/cur_x = half_chunk_size
 	var/cur_y = half_chunk_size
 	var/cur_z = mob.z
-	var/width = world.maxx - half_chunk_size + 2
-	var/height = world.maxy - half_chunk_size + 2
+	var/width
+	var/height
+	if(istype(SSmapping.z_list[cur_z], /datum/space_level))
+		var/datum/space_level/cur_level = SSmapping.z_list[cur_z]
+		width = cur_level.x_bounds - half_chunk_size + 2
+		height = cur_level.y_bounds - half_chunk_size + 2
+	else
+		width = world.maxx - half_chunk_size + 2
+		height = world.maxy - half_chunk_size + 2
 	var/width_inside = width - 1
 	var/height_inside = height - 1
 

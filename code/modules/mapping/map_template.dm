@@ -6,7 +6,6 @@
 	var/loaded = 0 // Times loaded this round
 	var/datum/parsed_map/cached_map
 	var/keep_cached_map = FALSE
-	var/station_id = null // used to override the root id when generating
 
 	///Default area associated with the map template
 	var/default_area

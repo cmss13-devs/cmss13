@@ -167,13 +167,25 @@ SUBSYSTEM_DEF(mapping)
 		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = FALSE)
 		++i
 
+	// ================== CM Change ==================
+	// For some reason /tg/ SSmapping attempts to center the map in new Z-Level
+	// but because it's done before loading, it's calculated before performing
+	// X/Y world expansion. When loading a map bigger than world, this results
+	// in a negative offset and the start of the map to not be loaded.
+
 	// load the maps
 	for (var/datum/parsed_map/pm as anything in parsed_maps)
 		var/bounds = pm.bounds
-		var/x_offset = bounds ? round(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1 : 1
-		var/y_offset = bounds ? round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1 : 1
+		var/x_offset = 1
+		var/y_offset = 1
+		if(bounds && world.maxx > bounds[MAP_MAXX])
+			x_offset = round(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1
+		if(bounds && world.maxy > bounds[MAP_MAXY])
+			y_offset = round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[pm], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
+	// =============== END CM Change =================
+
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps

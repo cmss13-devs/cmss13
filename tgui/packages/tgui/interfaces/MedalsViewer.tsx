@@ -38,7 +38,8 @@ export const MedalsViewer = (props, context) => {
               className={sectionType}>
               Issued to{' '}
               <b>
-                {medal.recipient_name} ({medal.recipient_role})
+                {medal.recipient_name}{' '}
+                {!medal.xeno_medal && medal.recipient_role}
               </b>{' '}
               by <b>{medal.giver_name}</b> for: <br />
               {!medal.xeno_medal && (

@@ -35,6 +35,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	giver_mob = list()
 	giver_ckey = list()
 
+GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
 
 /proc/give_medal_award(medal_location, as_admin = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
@@ -52,7 +53,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return FALSE
 
 	// Pick a medal
-	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
+	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", GLOB.human_medals)
 	if(!medal_type)
 		return FALSE
 

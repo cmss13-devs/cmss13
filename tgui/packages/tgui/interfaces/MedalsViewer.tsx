@@ -39,7 +39,7 @@ export const MedalsViewer = (props, context) => {
               Issued to{' '}
               <b>
                 {medal.recipient_name}{' '}
-                {!medal.xeno_medal && medal.recipient_role}
+                {!medal.xeno_medal && `(${medal.recipient_role})`}
               </b>{' '}
               by <b>{medal.giver_name}</b> for: <br />
               {!medal.xeno_medal && (

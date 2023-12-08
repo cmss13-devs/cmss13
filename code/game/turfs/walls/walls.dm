@@ -149,6 +149,8 @@
 /turf/closed/wall/get_examine_text(mob/user)
 	. = ..()
 
+	if(flags_turf & TURF_ORGANIC)
+		return // Skip everything below. 'Organic' walls aren't deconstructable with tools.
 	if(hull)
 		.+= SPAN_WARNING("You don't think you have any tools able to even scratch this.")
 		return //If it's indestructable, we don't want to give the wrong impression by saying "you can decon it with a welder"

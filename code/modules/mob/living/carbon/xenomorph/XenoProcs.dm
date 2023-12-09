@@ -738,5 +738,6 @@
 	if(shake_camera)
 		shake_camera(target, 10, 1)
 
+/// Handler callback to reset immobilization status after a successful [/mob/living/carbon/xenomorph/proc/throw_carbon]
 /mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)

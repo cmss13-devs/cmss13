@@ -6,8 +6,7 @@
 	base_lighting_alpha = 255
 	requires_power = FALSE
 
-// For now we use /turf/closed/wall/almayer/outer as cordon turf as it should be enough for CM
-#define CORDON_TURF_TYPE /turf/closed/wall/almayer/outer
+#define CORDON_TURF_TYPE /turf/closed/cordon
 
 //Yes, they can only be rectangular.
 //Yes, I'm sorry.

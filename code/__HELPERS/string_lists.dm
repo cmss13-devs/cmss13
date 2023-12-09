@@ -19,5 +19,5 @@ GLOBAL_LIST_EMPTY(string_lists)
 		return values //baseturf things
 	// return values
 	if(length(values) > 10)
-		return string_list(list(/turf/closed/wall/almayer/outer))
+		return string_list(list(/turf/closed/cordon/debug))
 	return string_list(values)

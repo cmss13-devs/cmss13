@@ -712,3 +712,20 @@
 
 /mob/living/carbon/xenomorph/lying_angle_on_lying_down(new_lying_angle)
 	return // Do not rotate xenos around on the floor, their sprite is already top-down'ish
+
+/mob/living/carbon/xenomorph/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+	if(!direction)
+		direction = get_dir(src, target)
+	var/turf/target_destination = get_ranged_target_turf(target, direction, distance)
+
+	var/list/end_throw_callbacks
+	if(immobilize)
+		end_throw_callbacks = list(CALLBACK(src, PROC_REF(throw_carbon_end), target))
+		ADD_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
+
+	target.throw_atom(target_destination, distance, speed, src, end_throw_callbacks = end_throw_callbacks)
+	if(shake_camera)
+		shake_camera(target, 10, 1)
+
+/mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
+	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)

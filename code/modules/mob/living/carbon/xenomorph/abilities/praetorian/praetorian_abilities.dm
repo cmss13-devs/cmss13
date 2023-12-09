@@ -60,8 +60,6 @@
 	// Fling config
 	var/fling_dist_unbuffed = 3
 	var/fling_dist_buffed = 6
-	var/stun_power = 0.5
-	var/weaken_power = 0.5
 
 	// Root or do a punch-like-effect.
 	var/root_toggle = TRUE

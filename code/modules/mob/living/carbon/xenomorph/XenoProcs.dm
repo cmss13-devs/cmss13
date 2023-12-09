@@ -318,7 +318,7 @@
 
 	if (pounceAction.knockdown)
 		M.KnockDown(pounceAction.knockdown_duration)
-		M.Stun(pounceAction.knockdown_duration) // To replicate legacy bheavior. Otherwise M39 Armbrace users for example can still shoot
+		M.Stun(pounceAction.knockdown_duration) // To replicate legacy behavior. Otherwise M39 Armbrace users for example can still shoot
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)

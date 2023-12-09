@@ -184,6 +184,11 @@ SUBSYSTEM_DEF(mapping)
 			y_offset = round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[pm], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
+		// CM Snowflake for Mass Screenshot dimensions auto detection
+		for(var/z in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
+			var/datum/space_level/zlevel = z_list[z]
+			zlevel.bounds = list(bounds[MAP_MINX], bounds[MAP_MINY], z, bounds[MAP_MAXX], bounds[MAP_MAXY], z)
+
 	// =============== END CM Change =================
 
 	if(!silent)

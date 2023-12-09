@@ -64,7 +64,7 @@
 			power = MATRIX.power
 
 		else
-			to_chat(user, SPAN_WARNING("matrix is not complete!"))
+			to_chat(user, SPAN_WARNING("Matrix is not complete!"))
 
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
@@ -97,7 +97,7 @@
 	if(!faction)
 		return //no faction, no weapons
 
-	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 
 	if(!cas_group)
 		return //broken group. No fighting
@@ -237,7 +237,7 @@
 		"firemission_step" = firemission_stat,
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnano.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "dropship_weapons_console.tmpl", "Weapons Control", 800, 600)
@@ -280,7 +280,7 @@
 		if(!faction)
 			return //no faction, no weapons
 
-		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 
 		if(!cas_group)
 			return //broken group. No fighting
@@ -490,7 +490,7 @@
 		if(dropship.mode != SHUTTLE_CALL)
 			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
-		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 		var/datum/cas_signal/cas_sig
 		for(var/X in cas_group.cas_signals)
 			var/datum/cas_signal/LT = X
@@ -588,20 +588,27 @@
 			to_chat(usr, SPAN_DANGER("Bug encountered, this console doesn't have a faction set, report this to a coder!"))
 			return
 
-		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 		if(!cas_group)
 			to_chat(usr, SPAN_DANGER("Bug encountered, no CAS group exists for this console, report this to a coder!"))
 			return
 
 		var/targ_id = text2num(href_list["cas_camera"])
+
+		var/datum/cas_signal/new_signal
 		for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
 			if(LT.target_id == targ_id && LT.valid_signal())
-				selected_cas_signal = LT
+				new_signal = LT
 				break
 
-		if(!selected_cas_signal)
+		if(!new_signal)
 			to_chat(usr, SPAN_WARNING("Target lost or obstructed."))
 			return
+
+		if(usr in selected_cas_signal?.linked_cam?.viewing_users) // Reset previous cam
+			remove_from_view(usr)
+
+		selected_cas_signal = new_signal
 		if(selected_cas_signal && selected_cas_signal.linked_cam)
 			selected_cas_signal.linked_cam.view_directly(usr)
 		else
@@ -712,7 +719,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/dropship1
 	name = "\improper 'Alamo' weapons controls"
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 
 /obj/structure/machinery/computer/dropship_weapons/dropship1/New()
@@ -721,7 +728,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/dropship2
 	name = "\improper 'Normandy' weapons controls"
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 
 /obj/structure/machinery/computer/dropship_weapons/dropship2/New()

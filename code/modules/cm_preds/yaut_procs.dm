@@ -48,7 +48,7 @@
 	set name = "Butcher"
 	set desc = "Butcher a corpse you're standing on for its tasty meats."
 
-	if(is_mob_incapacitated() || lying || buckled)
+	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
 		return
 
 	var/list/choices = list()
@@ -77,7 +77,7 @@
 		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return
 
-	if(is_mob_incapacitated() || lying || buckled)
+	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
 		return
 
 	if(issynth(T))
@@ -225,8 +225,7 @@
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
 	requires_power = FALSE
-	luminosity = TRUE
-	lighting_use_dynamic = FALSE
+	base_lighting_alpha = 255
 
 /mob/living/carbon/human/proc/pred_buy()
 	set category = "Yautja.Misc"
@@ -237,7 +236,7 @@
 		to_chat(src, SPAN_WARNING("You've already claimed your equipment."))
 		return
 
-	if(is_mob_incapacitated() || lying || buckled)
+	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
 		to_chat(src, SPAN_WARNING("You're not able to do that right now."))
 		return
 

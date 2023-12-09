@@ -89,7 +89,7 @@
 	shard_target.take_damage(15)
 
 
-/obj/structure/mirror/bullet_act(obj/item/projectile/Proj)
+/obj/structure/mirror/bullet_act(obj/projectile/Proj)
 	if(prob(Proj.damage * 2))
 		if(!shattered)
 			shatter()

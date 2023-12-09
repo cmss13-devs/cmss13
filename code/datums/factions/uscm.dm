@@ -77,6 +77,9 @@
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
+			if(JOB_AUXILIARY_OFFICER)
+				marine_rk = "aso"
+				border_rk = "command"
 			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
 				marine_rk = "general"
 				border_rk = "command"
@@ -186,6 +189,19 @@
 			if(JOB_CMB_OBS)
 				marine_rk = "obs"
 				icon_prefix = "cmb_"
+			// Check squad marines here too, for the unique ones
+			if(JOB_SQUAD_ENGI)
+				marine_rk = "engi"
+			if(JOB_SQUAD_MEDIC)
+				marine_rk = "med"
+			if(JOB_SQUAD_SPECIALIST)
+				marine_rk = "spec"
+			if(JOB_SQUAD_SMARTGUN)
+				marine_rk = "gun"
+			if(JOB_SQUAD_TEAM_LEADER)
+				marine_rk = "tl"
+			if(JOB_SQUAD_LEADER)
+				marine_rk = "leader"
 
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")

@@ -12,13 +12,13 @@
 		return //don't recheck connected clients.
 
 	//Guest Checking
-	if(IsGuestKey(key))
+	if(!real_bans_only && CONFIG_GET(flag/guest_ban) && IsGuestKey(key))
 		log_access("Failed Login: [key] - Guests not allowed")
 		message_admins("Failed Login: [key] - Guests not allowed")
 		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
 
 	WAIT_DB_READY
-	if(admin_datums[ckey] && (admin_datums[ckey].rights & R_MOD))
+	if(GLOB.admin_datums[ckey] && (GLOB.admin_datums[ckey].rights & R_MOD))
 		return ..()
 
 	if(CONFIG_GET(number/limit_players) && CONFIG_GET(number/limit_players) < GLOB.clients.len)

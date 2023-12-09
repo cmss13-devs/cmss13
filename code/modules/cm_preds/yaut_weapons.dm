@@ -254,6 +254,17 @@
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
+	/// Ref to the tether effect when thrown
+	var/datum/effects/tethering/chain
+
+/obj/item/weapon/yautja/combistick/Destroy()
+	cleanup_chain()
+	return ..()
+
+/obj/item/weapon/yautja/combistick/dropped(mob/user)
+	. = ..()
+	if(on && isturf(loc))
+		setup_chain(user)
 
 /obj/item/weapon/yautja/combistick/try_to_throw(mob/living/user)
 	if(!charged)
@@ -262,17 +273,76 @@
 	charged = FALSE
 	remove_filter("combistick_charge")
 	unwield(user) //Otherwise stays wielded even when thrown
+	if(on)
+		setup_chain(user)
 	return TRUE
 
+/obj/item/weapon/yautja/combistick/proc/setup_chain(mob/living/user)
+	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
+	chain = tether_effects["tetherer_tether"]
+	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
+	RegisterSignal(src, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
+
+/// The chain normally breaks if it's put into a container, so let's yank it back if that's the case
+/obj/item/weapon/yautja/combistick/proc/on_move(datum/source, atom/moved, dir, forced)
+	SIGNAL_HANDLER
+	if(!z && !is_type_in_list(loc, list(/obj/structure/surface, /mob))) // I rue for the day I can remove the surface snowflake check
+		recall()
+
+/// Clean up the chain, deleting/nulling/unregistering as needed
+/obj/item/weapon/yautja/combistick/proc/cleanup_chain()
+	SIGNAL_HANDLER
+	if(!QDELETED(chain))
+		QDEL_NULL(chain)
+
+	else
+		chain = null
+
+	UnregisterSignal(src, COMSIG_ITEM_PICKUP)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+
+/obj/item/weapon/yautja/combistick/proc/on_pickup(datum/source, mob/user)
+	SIGNAL_HANDLER
+	if(user != chain.affected_atom)
+		to_chat(chain.affected_atom, SPAN_WARNING("You feel the chain of [src] be torn from your grasp!")) // Recall the fuckin combi my man
+
+	cleanup_chain()
+
+/// recall the combistick to the pred's hands or to be at their feet
+/obj/item/weapon/yautja/combistick/proc/recall()
+	SIGNAL_HANDLER
+	if(!chain)
+		return
+
+	var/mob/living/carbon/human/user = chain.affected_atom
+	if((src in user.contents) || !istype(user.gloves, /obj/item/clothing/gloves/yautja/hunter))
+		cleanup_chain()
+		return
+
+	var/obj/item/clothing/gloves/yautja/hunter/pred_gloves = user.gloves
+
+	if(user.put_in_hands(src, TRUE))
+		if(!pred_gloves.drain_power(user, 70))
+			return TRUE
+		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, catching it in [user.p_their()] hand!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, catching it inhand!</b>"))
+		cleanup_chain()
+
+	else
+		if(!pred_gloves.drain_power(user, 70))
+			return TRUE
+		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, letting [src] fall at [user.p_their()]!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, letting it drop at your feet!</b>"))
+		cleanup_chain()
 
 /obj/item/weapon/yautja/combistick/IsShield()
 	return on
 
-/obj/item/weapon/yautja/combistick/verb/use_unique_action()
+/obj/item/weapon/yautja/combistick/verb/fold_combistick()
 	set category = "Weapons"
-	set name = "Unique Action"
-	set desc = "Activate or deactivate the combistick."
-	set src in usr
+	set name = "Collapse Combi-stick"
+	set desc = "Collapse or extend the combistick."
+	set src = usr.contents
+
 	unique_action(usr)
 
 /obj/item/weapon/yautja/combistick/attack_self(mob/user)
@@ -805,7 +875,7 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/launcher/spike/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/launcher/spike/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) spikes++
 	return TRUE
@@ -823,7 +893,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
-	desc = "A long-barreled heavy plasma weapon capable of taking down large game. It has a mounted scope for distant shots and an integrated battery."
+	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired"
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
 	unacidable = TRUE
@@ -836,7 +906,7 @@
 	var/charge_time = 0
 	var/last_regen = 0
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -885,18 +955,17 @@
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
+	if(charge_time < 7)
+		to_chat(user, SPAN_WARNING("The rifle does not have enough power remaining!"))
+		return
 
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/load_into_chamber()
-	if(charge_time >= 80)
-		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/blast]
-		charge_time -= 80
-	else
-		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
-		charge_time -= 10
-	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
-	projectile.SetLuminosity(1)
+	ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
+	charge_time -= 7
+	var/obj/projectile/projectile = create_bullet(ammo, initial(name))
+	projectile.set_light(1)
 	in_chamber = projectile
 	return in_chamber
 
@@ -907,9 +976,10 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) charge_time *= 2
+	if(refund)
+		charge_time += 7
 	return TRUE
 
 #define FIRE_MODE_STANDARD "Standard"
@@ -992,8 +1062,8 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/load_into_chamber()
 	if(charge_time < 1)
 		return
-	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
-	projectile.SetLuminosity(1)
+	var/obj/projectile/projectile = create_bullet(ammo, initial(name))
+	projectile.set_light(1)
 	in_chamber = projectile
 	charge_time -= shot_cost
 	return in_chamber
@@ -1005,7 +1075,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/reload_into_chamber()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund)
 		charge_time += shot_cost
@@ -1099,15 +1169,15 @@
 			switch(strength)
 				if("low power stun bolts")
 					strength = "high power stun bolts"
-					charge_cost = 100
-					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
+					charge_cost = 50
+					set_fire_delay(FIRE_DELAY_TIER_1)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/stun]
 				if("high power stun bolts")
 					strength = "plasma immobilizers"
-					charge_cost = 300
-					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
+					charge_cost = 200
+					set_fire_delay(FIRE_DELAY_TIER_2 * 8)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/stun]
@@ -1122,8 +1192,8 @@
 			switch(strength)
 				if("plasma bolts")
 					strength = "plasma spheres"
-					charge_cost = 1200
-					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
+					charge_cost = 1000
+					set_fire_delay(FIRE_DELAY_TIER_2 * 12)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
@@ -1194,7 +1264,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/reload_into_chamber()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund)
 		source.charge += charge_cost

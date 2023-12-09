@@ -30,6 +30,7 @@
 		return 0
 
 /obj/structure/closet/secure_closet/emp_act(severity)
+	. = ..()
 	for(var/obj/O in src)
 		O.emp_act(severity)
 	if(!broken)
@@ -41,8 +42,7 @@
 				open()
 			else
 				src.req_access = list()
-				src.req_access += pick(get_all_main_access())
-	..()
+				src.req_access += pick(get_access(ACCESS_LIST_MARINE_MAIN))
 
 /obj/structure/closet/secure_closet/proc/togglelock(mob/living/user)
 	if(src.opened)
@@ -121,7 +121,7 @@
 	set category = "Object"
 	set name = "Toggle Lock"
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
+	if(usr.is_mob_incapacitated()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
 		return
 
 	if(ishuman(usr))

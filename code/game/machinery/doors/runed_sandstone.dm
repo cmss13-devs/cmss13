@@ -100,7 +100,7 @@
 	operating = TRUE
 	do_animate("opening")
 	icon_state = "door0"
-	SetOpacity(FALSE)
+	set_opacity(0)
 
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
 	return
@@ -109,9 +109,9 @@
 	layer = open_layer
 	density = FALSE
 	update_icon()
-	SetOpacity(0)
-	if(filler)
-		filler.SetOpacity(opacity)
+	set_opacity(0)
+	if(length(filler_turfs))
+		change_filler_opacity(opacity)
 
 	if(operating)
 		operating = FALSE
@@ -130,7 +130,7 @@
 
 	operating = TRUE
 	density = TRUE
-	SetOpacity(TRUE)
+	set_opacity(1)
 	layer = closed_layer
 	do_animate("closing")
 

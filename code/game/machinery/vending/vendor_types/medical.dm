@@ -26,7 +26,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
-		/obj/item/reagent_container/hypospray/autoinjector/emergency,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 
@@ -227,7 +226,8 @@
 /obj/structure/machinery/cm_vending/sorted/medical/antag
 	name = "\improper Medical Equipment Vendor"
 	desc = "A vending machine dispensing various pieces of medical equipment."
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed
@@ -267,7 +267,8 @@
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag
 	name = "\improper Basic Medical Supplies Vendor"
 	desc = "A vending machine dispensing basic medical supplies."
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood
@@ -298,7 +299,8 @@
 	return
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/antag
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med

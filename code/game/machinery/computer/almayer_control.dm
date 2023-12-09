@@ -11,11 +11,11 @@
 	/// requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_request)
 	/// requesting evac
-	COOLDOWN_DECLARE(cooldown_destruct) 
+	COOLDOWN_DECLARE(cooldown_destruct)
 	/// messaging HC (admins)
 	COOLDOWN_DECLARE(cooldown_central)
 	/// making a ship announcement
-	COOLDOWN_DECLARE(cooldown_message) 
+	COOLDOWN_DECLARE(cooldown_message)
 
 	var/list/messagetitle = list()
 	var/list/messagetext = list()
@@ -72,7 +72,7 @@
 	var/list/data = list()
 	var/list/messages = list()
 
-	data["alert_level"] = security_level
+	data["alert_level"] = GLOB.security_level
 
 	data["time_request"] = cooldown_request
 	data["time_destruct"] = cooldown_destruct
@@ -81,9 +81,9 @@
 
 	data["worldtime"] = world.time
 
-	data["evac_status"] = EvacuationAuthority.evac_status
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
-		data["evac_eta"] = EvacuationAuthority.get_status_panel_eta()
+	data["evac_status"] = SShijack.evac_status
+	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
+		data["evac_eta"] = SShijack.get_evac_eta()
 
 	if(!messagetitle.len)
 		data["messages"] = null
@@ -108,7 +108,6 @@
 	. = ..()
 	if(.)
 		return
-
 	switch(action)
 		if("award")
 			print_medal(usr, src)
@@ -117,42 +116,38 @@
 		// evac stuff start \\
 
 		if("evacuation_start")
-			if(security_level < SEC_LEVEL_RED)
+			if(GLOB.security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
 
-			if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
+			if(SShijack.evac_admin_denied)
 				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 				return FALSE
 
-			if(!EvacuationAuthority.initiate_evacuation())
+			if(!SShijack.initiate_evacuation())
 				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 				return FALSE
 
 			log_game("[key_name(usr)] has called for an emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
-			var/datum/ares_link/link = GLOB.ares_link
-			link.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
+			log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
 			. = TRUE
 
 		if("evacuation_cancel")
-			if(!EvacuationAuthority.cancel_evacuation())
+			if(!SShijack.cancel_evacuation())
 				to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
 				return FALSE
 
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/almayer_control, cancel_evac)), 4 SECONDS)
-
 			log_game("[key_name(usr)] has canceled the emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
-			var/datum/ares_link/link = GLOB.ares_link
-			link.log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
+			log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
 			. = TRUE
 
 		// evac stuff end \\
 
 		if("change_sec_level")
 			var/list/alert_list = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE))
-			switch(security_level)
+			switch(GLOB.security_level)
 				if(SEC_LEVEL_GREEN)
 					alert_list -= num2seclevel(SEC_LEVEL_GREEN)
 				if(SEC_LEVEL_BLUE)
@@ -164,11 +159,10 @@
 			if(!level_selected)
 				return
 
-			set_security_level(seclevel2num(level_selected))
+			set_security_level(seclevel2num(level_selected), log = ARES_LOG_NONE)
 			log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 			message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-			var/datum/ares_link/link = GLOB.ares_link
-			link.log_ares_security("Security Level Update", "[usr] has changed the security level to [get_security_level()].")
+			log_ares_security("Manual Security Update", "[usr] has changed the security level to [get_security_level()].")
 			. = TRUE
 
 		if("messageUSCM")
@@ -223,14 +217,14 @@
 				to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 				return FALSE
 
-			if(security_level == SEC_LEVEL_DELTA)
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 				return FALSE
 
 			for(var/client/admin_client as anything in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
 					admin_client << 'sound/effects/sos-morse-code.ogg'
-			message_admins("[key_name(usr)] has requested a Distress Beacon! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+			SSticker.mode.request_ert(usr)
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
 			COOLDOWN_START(src, cooldown_request, COOLDOWN_COMM_REQUEST)
@@ -280,10 +274,3 @@
 // end tgui interact \\
 
 // end tgui \\
-
-/obj/structure/machinery/computer/almayer_control/proc/cancel_evac()
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
-		//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
-		if(!EvacuationAuthority.cancel_self_destruct(1))
-			//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
-			set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.

@@ -52,9 +52,6 @@
 			turfs += T
 	return turfs
 
-
-//var/debug_mob = 0
-
 // Will recursively loop through an atom's contents and check for mobs, then it will loop through every atom in that atom's contents.
 // It will keep doing this until it checks every content possible. This will fix any problems with mobs, that are inside objects,
 // being unable to hear people due to being in a box within a bag.
@@ -268,7 +265,7 @@
 
 		// copied from join as xeno
 		var/deathtime = world.time - cur_obs.timeofdeath
-		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN) || !cur_obs.bypass_time_of_death_checks))
+		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) && !cur_obs.bypass_time_of_death_checks)
 			continue
 
 		// AFK players cannot be drafted
@@ -294,6 +291,8 @@
 	if(sorted && length(candidates))
 		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_obs_larvaqueuetime_asc))
 
+	GLOB.xeno_queue_candidate_count = length(candidates)
+
 	return candidates
 
 /**
@@ -309,11 +308,11 @@
 		var/mob/dead/observer/cur_obs = candidates[i]
 
 		// Generate the messages
-		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue.")
+		var/cached_message = "You are currently [i-dequeued]\th in the larva queue."
 		cur_obs.larva_queue_cached_message = cached_message
 		if(!cache_only)
 			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
-			to_chat(candidates[i], chat_message)
+			to_chat(candidates[i], SPAN_XENONOTICE(chat_message))
 
 /proc/convert_k2c(temp)
 	return ((temp - T0C))

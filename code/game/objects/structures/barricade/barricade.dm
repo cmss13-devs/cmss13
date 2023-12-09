@@ -78,7 +78,7 @@
 		switch(dir)
 			if(SOUTH)
 				layer = ABOVE_MOB_LAYER
-			else if(NORTH)
+			if(NORTH)
 				layer = initial(layer) - 0.01
 			else
 				layer = initial(layer)
@@ -248,7 +248,7 @@
 			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(item)
 
-/obj/structure/barricade/bullet_act(obj/item/projectile/bullet)
+/obj/structure/barricade/bullet_act(obj/projectile/bullet)
 	bullet_ping(bullet)
 
 	if(bullet.ammo.damage_type == BURN)

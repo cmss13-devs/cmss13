@@ -51,7 +51,7 @@
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_4 * 5)
+	set_fire_delay(FIRE_DELAY_TIER_5 * 5)
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
 	toggle_gun_safety()
@@ -250,6 +250,9 @@
 /obj/item/weapon/gun/flamer/deathsquad/nolock
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
+/obj/item/weapon/gun/flamer/deathsquad/standard
+	current_mag = /obj/item/ammo_magazine/flamer_tank
+
 /obj/item/weapon/gun/flamer/M240T
 	name = "\improper M240-T incinerator unit"
 	desc = "An improved version of the M240A1 incinerator unit, the M240-T model is capable of dispersing a larger variety of fuel types."
@@ -370,30 +373,7 @@
 
 /obj/item/weapon/gun/flamer/M240T/auto/set_gun_config_values()
 	. = ..()
-	set_fire_delay(FIRE_DELAY_TIER_3)
-
-GLOBAL_LIST_EMPTY(flamer_particles)
-/particles/flamer_fire
-	icon = 'icons/effects/particles/fire.dmi'
-	icon_state = "bonfire"
-	width = 100
-	height = 100
-	count = 1000
-	spawning = 8
-	lifespan = 0.7 SECONDS
-	fade = 1 SECONDS
-	grow = -0.01
-	velocity = list(0, 0)
-	position = generator("box", list(-16, -16), list(16, 16), NORMAL_RAND)
-	drift = generator("vector", list(0, -0.2), list(0, 0.2))
-	gravity = list(0, 0.95)
-	scale = generator("vector", list(0.3, 0.3), list(1,1), NORMAL_RAND)
-	rotation = 30
-	spin = generator("num", -20, 20)
-
-/particles/flamer_fire/New(set_color)
-	..()
-	color = set_color
+	set_fire_delay(FIRE_DELAY_TIER_7)
 
 /obj/flamer_fire
 	name = "fire"
@@ -403,6 +383,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER
+
+	light_system = STATIC_LIGHT
+	light_on = TRUE
+	light_range = 3
+	light_power = 3
+	light_color = "#f88818"
 
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
@@ -443,14 +429,13 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	else
 		flame_icon = R.burn_sprite
 
-	if(!GLOB.flamer_particles[R.burncolor])
-		GLOB.flamer_particles[R.burncolor] = new /particles/flamer_fire(R.burncolor)
-	particles = GLOB.flamer_particles[R.burncolor]
+	set_light(l_color = R.burncolor)
 
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
 
-	tied_reagents = obj_reagents
+	if(obj_reagents)
+		tied_reagents = obj_reagents
 
 	target_clicked = target
 
@@ -576,7 +561,6 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
 /obj/flamer_fire/Destroy()
-	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
 	to_call = null
 	tied_reagent = null
@@ -668,7 +652,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		flame_level++ //the initial flame burst is 1 level higher for a small time
 
 	icon_state = "[flame_icon]_[flame_level]"
-	SetLuminosity(flame_level * 2)
+	set_light(flame_level * 2)
 
 /obj/flamer_fire/proc/un_burst_flame()
 	initial_burst = FALSE
@@ -683,11 +667,11 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/damage = burnlevel*delta_time
 	T.flamer_fire_act(damage)
 
-	update_flame()
-
 	if(!firelevel)
 		qdel(src)
 		return
+
+	update_flame()
 
 	for(var/atom/thing in loc)
 		thing.handle_flamer_fire(src, damage, delta_time)
@@ -703,7 +687,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/area/A = get_area(src)
 	if(!A)
 		return
-	if(SSweather.is_weather_event && locate(A.master) in SSweather.weather_areas)
+	if(SSweather.is_weather_event && locate(A) in SSweather.weather_areas)
 		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
 	else
 		weather_smothering_strength = 0
@@ -712,16 +696,16 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/direction_angle = dir2angle(direction)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
-		var/datum/reagent/R = new()
-		R.intensityfire = burn_lvl
-		R.durationfire = fire_lvl
-		R.burn_sprite = burn_sprite
-		R.burncolor = f_color
-		new/obj/flamer_fire(target, cause_data, R)
+		var/datum/reagent/fire_reag = new()
+		fire_reag.intensityfire = burn_lvl
+		fire_reag.durationfire = fire_lvl
+		fire_reag.burn_sprite = burn_sprite
+		fire_reag.burncolor = f_color
+		new/obj/flamer_fire(target, cause_data, fire_reag)
 	if(target.density)
 		return
 
-	for(var/spread_direction in alldirs)
+	for(var/spread_direction in GLOB.alldirs)
 
 		var/spread_power = remaining_distance
 
@@ -730,11 +714,9 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		var/angle = 180 - abs( abs( direction_angle - spread_direction_angle ) - 180 ) // the angle difference between the spread direction and initial direction
 
 		switch(angle) //this reduces power when the explosion is going around corners
-			if (0)
-				//no change
 			if (45)
 				spread_power *= 0.75
-			else //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
+			if (90 to 180) //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
 				continue
 
 		switch(spread_direction)
@@ -746,33 +728,41 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		if (spread_power < 1)
 			continue
 
-		var/turf/T = get_step(target, spread_direction)
+		var/turf/picked_turf = get_step(target, spread_direction)
 
-		if(!T) //prevents trying to spread into "null" (edge of the map?)
+		if(!picked_turf) //prevents trying to spread into "null" (edge of the map?)
 			continue
 
-		if(aerial_flame_level && (T.get_pylon_protection_level() >= aerial_flame_level))
-			break
+		if(aerial_flame_level)
+			if(picked_turf.get_pylon_protection_level() >= aerial_flame_level)
+				break
+			var/area/picked_area = get_area(picked_turf)
+			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
+				break
 
 		spawn(0)
-			fire_spread_recur(T, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+			fire_spread_recur(picked_turf, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
 
 /proc/fire_spread(turf/target, datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", aerial_flame_level = TURF_PROTECTION_NONE)
-	var/datum/reagent/R = new()
-	R.intensityfire = burn_lvl
-	R.durationfire = fire_lvl
-	R.burn_sprite = burn_sprite
-	R.burncolor = f_color
+	var/datum/reagent/fire_reag = new()
+	fire_reag.intensityfire = burn_lvl
+	fire_reag.durationfire = fire_lvl
+	fire_reag.burn_sprite = burn_sprite
+	fire_reag.burncolor = f_color
 
-	new/obj/flamer_fire(target, cause_data, R)
-	for(var/direction in alldirs)
+	new/obj/flamer_fire(target, cause_data, fire_reag)
+	for(var/direction in GLOB.alldirs)
 		var/spread_power = range
 		switch(direction)
 			if(NORTH,SOUTH,EAST,WEST)
 				spread_power--
 			else
 				spread_power -= 1.414 //diagonal spreading
-		var/turf/T = get_step(target, direction)
-		if(aerial_flame_level && (T.get_pylon_protection_level() >= aerial_flame_level))
-			continue
-		fire_spread_recur(T, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+		var/turf/picked_turf = get_step(target, direction)
+		if(aerial_flame_level)
+			if(picked_turf.get_pylon_protection_level() >= aerial_flame_level)
+				continue
+			var/area/picked_area = get_area(picked_turf)
+			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
+				continue
+		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)

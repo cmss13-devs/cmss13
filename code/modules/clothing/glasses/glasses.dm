@@ -68,12 +68,12 @@
 			update_clothing_icon()
 
 			if(hud_type)
-				var/datum/mob_hud/MH = huds[hud_type]
+				var/datum/mob_hud/MH = GLOB.huds[hud_type]
 				if(active)
-					MH.add_hud_to(H)
+					MH.add_hud_to(H, src)
 					playsound(H, 'sound/handling/hud_on.ogg', 25, 1)
 				else
-					MH.remove_hud_from(H)
+					MH.remove_hud_from(H, src)
 					playsound(H, 'sound/handling/hud_off.ogg', 25, 1)
 			if(active) //turning it on? then add the traits
 				for(var/trait in clothing_traits)
@@ -94,16 +94,16 @@
 			to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
 
 		else if(hud_type)
-			var/datum/mob_hud/MH = huds[hud_type]
-			MH.add_hud_to(user)
+			var/datum/mob_hud/MH = GLOB.huds[hud_type]
+			MH.add_hud_to(user, src)
 	user.update_sight()
 	..()
 
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
 	if(hud_type && active && istype(user))
 		if(src == user.glasses) //dropped is called before the inventory reference is updated.
-			var/datum/mob_hud/H = huds[hud_type]
-			H.remove_hud_from(user)
+			var/datum/mob_hud/H = GLOB.huds[hud_type]
+			H.remove_hud_from(user, src)
 			user.glasses = null
 			user.update_inv_glasses()
 	user.update_sight()
@@ -139,6 +139,11 @@
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+
+/obj/item/clothing/glasses/science/prescription
+	name = "prescription reagent scanner HUD goggles"
+	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy. Contains prescription lenses."
+	prescription = TRUE
 
 /obj/item/clothing/glasses/science/get_examine_text(mob/user)
 	. = ..()
@@ -406,6 +411,13 @@
 	active_icon_state = "mgogglesorg_down"
 	inactive_icon_state = "mgogglesorg"
 
+/obj/item/clothing/glasses/mgoggles/v2
+	name = "M1A1 marine ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	icon_state = "mgoggles2"
+	active_icon_state = "mgoggles2_down"
+	inactive_icon_state = "mgoggles2"
+
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
 	..()
 
@@ -495,38 +507,40 @@
 	set name = "Adjust welding goggles"
 	set src in usr
 
-	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
-		if(active)
-			active = 0
-			vision_impair = vision_impair_off
-			flags_inventory &= ~COVEREYES
-			flags_inv_hide &= ~HIDEEYES
-			flags_armor_protection &= ~BODY_FLAG_EYES
-			update_icon()
-			eye_protection = EYE_PROTECTION_NONE
-			to_chat(usr, "You push [src] up out of your face.")
-		else
-			active = 1
-			vision_impair = vision_impair_on
-			flags_inventory |= COVEREYES
-			flags_inv_hide |= HIDEEYES
-			flags_armor_protection |= BODY_FLAG_EYES
-			update_icon()
-			eye_protection = initial(eye_protection)
-			to_chat(usr, "You flip [src] down to protect your eyes.")
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(active)
+		active = 0
+		vision_impair = vision_impair_off
+		flags_inventory &= ~COVEREYES
+		flags_inv_hide &= ~HIDEEYES
+		flags_armor_protection &= ~BODY_FLAG_EYES
+		update_icon()
+		eye_protection = EYE_PROTECTION_NONE
+		to_chat(usr, "You push [src] up out of your face.")
+	else
+		active = 1
+		vision_impair = vision_impair_on
+		flags_inventory |= COVEREYES
+		flags_inv_hide |= HIDEEYES
+		flags_armor_protection |= BODY_FLAG_EYES
+		update_icon()
+		eye_protection = initial(eye_protection)
+		to_chat(usr, "You flip [src] down to protect your eyes.")
 
 
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			if(H.glasses == src)
-				H.update_tint()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		if(H.glasses == src)
+			H.update_tint()
 
-		update_clothing_icon()
+	update_clothing_icon()
 
-		for(var/X in actions)
-			var/datum/action/A = X
-			if(istype(A, /datum/action/item_action/toggle))
-				A.update_button_icon()
+	for(var/X in actions)
+		var/datum/action/A = X
+		if(istype(A, /datum/action/item_action/toggle))
+			A.update_button_icon()
 
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"
@@ -537,6 +551,12 @@
 	vision_impair_on = VISION_IMPAIR_WEAK
 	vision_impair_off = VISION_IMPAIR_NONE
 
+/obj/item/clothing/glasses/welding/superior/alt
+	desc = "Welding goggles made from more expensive materials."
+
+/obj/item/clothing/glasses/welding/superior/prescription
+	desc = "Welding goggles made from more expensive materials. There are barely visible prescription lenses connected to the frame, allowing vision even when the goggles are raised."
+	prescription = TRUE
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses

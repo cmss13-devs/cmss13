@@ -9,7 +9,7 @@
 	"1:2,3:4" is the square (1,3) with pixel offsets (+2, +4); slightly right and slightly above the turf grid.
 	Pixel offsets are used so you don't perfectly hide the turf under them, that would be crappy.
 
-	The size of the user's screen is defined by client.view (indirectly by world_view_size), in our case "15x15".
+	The size of the user's screen is defined by client.view (indirectly by GLOB.world_view_size), in our case "15x15".
 	Therefore, the top right corner (except during admin shenanigans) is at "15,15"
 */
 
@@ -27,3 +27,10 @@
 #define ui_ghost_slot3 "SOUTH:6,CENTER:0"
 #define ui_ghost_slot4 "SOUTH:6,CENTER+1:0"
 #define ui_ghost_slot5 "SOUTH:6,CENTER+2:0"
+
+//Upper-middle right (alerts)
+#define ui_alert1 "EAST-1:28,CENTER+5:27"
+#define ui_alert2 "EAST-1:28,CENTER+4:25"
+#define ui_alert3 "EAST-1:28,CENTER+3:23"
+#define ui_alert4 "EAST-1:28,CENTER+2:21"
+#define ui_alert5 "EAST-1:28,CENTER+1:19"

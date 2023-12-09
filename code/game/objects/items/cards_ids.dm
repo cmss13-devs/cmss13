@@ -80,7 +80,7 @@
 	/// actual job
 	var/rank = null
 	/// Marine's paygrade
-	var/paygrade = "ME1"
+	var/paygrade = PAY_SHORT_CIV
 	/// For medics and engineers to 'claim' a locker
 	var/claimedgear = 1
 
@@ -96,6 +96,21 @@
 /obj/item/card/id/Destroy()
 	. = ..()
 	screen_loc = null
+
+/obj/item/card/id/proc/GetJobName() //Used in secHUD icon generation
+
+	var/job_icons = get_all_job_icons()
+	var/centcom = get_all_centcom_jobs()
+
+	if(assignment in job_icons)
+		return assignment//Check if the job has a hud icon
+	if(rank in job_icons)
+		return rank
+	if(assignment in centcom)
+		return "Centcom"//Return with the NT logo if it is a Centcom job
+	if(rank in centcom)
+		return "Centcom"
+	return "Unknown" //Return unknown if none of the above apply
 
 /obj/item/card/id/attack_self(mob/user as mob)
 	..()
@@ -210,7 +225,7 @@
 	assignment = "Corporate Mercenary"
 
 /obj/item/card/id/pmc/New()
-	access = get_all_weyland_access()
+	access = get_access(ACCESS_LIST_WY_ALL)
 	..()
 
 /obj/item/card/id/pmc/ds
@@ -236,7 +251,7 @@
 	assignment = "General"
 
 /obj/item/card/id/general/New()
-	access = get_all_weyland_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /obj/item/card/id/provost
 	name = "provost holo-badge"
@@ -246,7 +261,7 @@
 	assignment = "Provost"
 
 /obj/item/card/id/provost/New()
-	access = get_all_weyland_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /obj/item/card/id/syndicate
 	name = "agent card"
@@ -331,7 +346,7 @@
 	assignment = "Captain"
 
 /obj/item/card/id/captains_spare/New()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 	..()
 
 /obj/item/card/id/centcom
@@ -342,7 +357,7 @@
 	assignment = "General"
 
 /obj/item/card/id/centcom/New()
-	access = get_all_weyland_access()
+	access = get_access(ACCESS_LIST_WY_ALL)
 	..()
 
 

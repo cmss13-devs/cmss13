@@ -712,6 +712,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "acq" = (
+/obj/structure/tunnel,
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -9575,17 +9576,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"aCT" = (
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean"
-	},
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -9650,18 +9640,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"aDd" = (
-/obj/structure/bed/chair,
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean"
-	},
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDe" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt{
@@ -10111,7 +10089,8 @@
 	icon_state = "S"
 	},
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega{
-	pixel_y = 32
+	pixel_y = 32;
+	shuttleId = "trijentshuttle22"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -14386,7 +14365,13 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aRB" = (
-/obj/docking_port/stationary/trijent_elevator/lz2,
+/obj/docking_port/stationary/trijent_elevator/occupied{
+	id = "trijent_lz2";
+	name = "Lz2 Elevator";
+	airlock_area = /area/shuttle/trijent_shuttle/lz2;
+	elevator_network = "B";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/B
+	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz2)
 "aRC" = (
@@ -20753,7 +20738,7 @@
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bmo" = (
 /obj/structure/safe,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/sword/katana/replica,
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /obj/structure/machinery/light{
 	dir = 1
@@ -60501,6 +60486,14 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"fcu" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "uppcrash-supply"
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
 "fcE" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
@@ -61270,6 +61263,10 @@
 	icon_state = "cement_sunbleached13"
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
+"hyH" = (
+/obj/structure/tunnel,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_telecoms)
 "hzg" = (
 /obj/effect/decal/sand_overlay/sand2,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
@@ -61525,7 +61522,13 @@
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/interior/caves/temple)
 "ipQ" = (
-/obj/docking_port/stationary/trijent_elevator/omega,
+/obj/docking_port/stationary/trijent_elevator/empty{
+	id = "trijent_omega";
+	name = "Omega Elevator";
+	airlock_exit = "east";
+	airlock_area = /area/shuttle/trijent_shuttle/omega;
+	elevator_network = "B"
+	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/omega)
 "iqs" = (
@@ -61846,6 +61849,12 @@
 	icon_state = "delivery"
 	},
 /area/desert_dam/exterior/telecomm/lz1_south)
+"jxN" = (
+/obj/structure/tunnel,
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_crashsite)
 "jAr" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
 /obj/effect/landmark/objective_landmark/close,
@@ -62147,6 +62156,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
+"kQd" = (
+/obj/structure/tunnel,
+/turf/open/desert/rock/deep{
+	icon_state = "rock3"
+	},
+/area/desert_dam/interior/caves/east_caves)
 "kRX" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
@@ -62521,7 +62536,8 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "mej" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz2{
-	pixel_x = 32
+	pixel_x = 32;
+	shuttleId = "trijentshuttle22"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -63362,7 +63378,13 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "pif" = (
-/obj/docking_port/stationary/trijent_elevator/engineering,
+/obj/docking_port/stationary/trijent_elevator/empty{
+	id = "trijent_engineering";
+	name = "Engineering Elevator";
+	airlock_exit = "east";
+	airlock_area = /area/shuttle/trijent_shuttle/engi;
+	elevator_network = "A"
+	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/engi)
 "pij" = (
@@ -63984,6 +64006,12 @@
 	icon_state = "cement_sunbleached18"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"ruJ" = (
+/obj/structure/tunnel,
+/turf/open/desert/dirt{
+	icon_state = "rock1"
+	},
+/area/desert_dam/exterior/valley/valley_medical)
 "ruS" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/telecomm/lz1_valley)
@@ -63994,7 +64022,13 @@
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
 "rxS" = (
-/obj/docking_port/stationary/trijent_elevator/lz1,
+/obj/docking_port/stationary/trijent_elevator/occupied{
+	id = "trijent_lz1";
+	name = "Lz1 Elevator";
+	elevator_network = "A";
+	airlock_area = /area/shuttle/trijent_shuttle/lz1;
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/A
+	},
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz1)
 "ryG" = (
@@ -64084,6 +64118,12 @@
 "rHw" = (
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
+"rIY" = (
+/obj/structure/tunnel,
+/turf/open/desert/dirt{
+	icon_state = "rock1"
+	},
+/area/desert_dam/exterior/valley/valley_hydro)
 "rJA" = (
 /obj/structure/lz_sign/dam_sign,
 /turf/open/desert/dirt{
@@ -65123,6 +65163,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"vph" = (
+/obj/structure/tunnel,
+/turf/open/desert/dirt{
+	dir = 4;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
 "vpn" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8
@@ -65264,6 +65311,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"vHx" = (
+/obj/structure/tunnel,
+/turf/open/desert/dirt{
+	icon_state = "rock1"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
 "vHQ" = (
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/omega)
@@ -65670,6 +65723,11 @@
 /obj/structure/flora/grass/desert/lightgrass_5,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"xec" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/structure/tunnel,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "xgA" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 5
@@ -69518,7 +69576,7 @@ ceA
 aSI
 chG
 ceA
-ceA
+hyH
 acs
 aWc
 aWF
@@ -70315,7 +70373,7 @@ cDY
 cDY
 cDY
 cDY
-cFa
+cDY
 cML
 cBS
 cUl
@@ -71241,7 +71299,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
+cFa
 cDY
 cDY
 cDY
@@ -73177,7 +73235,7 @@ aWh
 aWh
 aWh
 aWh
-dGU
+aWh
 bDO
 aVi
 aVh
@@ -74103,7 +74161,7 @@ aWh
 aWh
 aWh
 aWh
-aWh
+dGU
 aWh
 aWh
 aWh
@@ -85409,8 +85467,8 @@ dTs
 dTs
 aEa
 aEa
-aCS
-aCS
+aEa
+aEa
 aEa
 aEa
 dTs
@@ -85643,8 +85701,8 @@ dTs
 dTs
 aEa
 aCD
-aCT
-aDd
+aCF
+aDg
 aDn
 aEa
 aDt
@@ -88675,7 +88733,7 @@ bLr
 dTs
 dTs
 nmr
-iwh
+vph
 pvs
 dTs
 dTs
@@ -94129,7 +94187,7 @@ dTs
 dTs
 dTs
 dTs
-dNp
+rIY
 cMl
 dNS
 dNS
@@ -103519,7 +103577,7 @@ cCH
 clZ
 clZ
 crW
-cko
+fcu
 cmc
 cpY
 cpY
@@ -104706,7 +104764,7 @@ dTs
 dTs
 dTs
 dTs
-cuw
+vHx
 cwo
 cux
 cmH
@@ -108071,7 +108129,7 @@ dTs
 dTs
 dTs
 dTs
-agD
+jxN
 adA
 aEZ
 aFi
@@ -110712,7 +110770,7 @@ civ
 cdA
 cdw
 aOG
-cgc
+ruJ
 dTs
 dTs
 dTs
@@ -119438,7 +119496,7 @@ clZ
 crW
 cWV
 xOb
-cpa
+xec
 aVd
 bby
 bvw
@@ -120203,7 +120261,7 @@ dTs
 dTs
 dTs
 acY
-acY
+kQd
 dTs
 dTs
 dTs

@@ -1,3 +1,5 @@
+///from base of mob/set_stat(): (new_stat, old_stat)
+#define COMSIG_MOB_STATCHANGE "mob_statchange"
 /// From /obj/structure/machinery/door/airlock/proc/take_damage
 #define COMSIG_MOB_DESTROY_AIRLOCK "mob_destroy_airlock"
 
@@ -35,10 +37,6 @@
 #define COMSIG_MOB_FIRED_GUN_ATTACHMENT "mob_fired_gun_attachment"
 /// From /mob/proc/death
 #define COMSIG_MOB_DEATH "mob_death"
-/// From /mob/proc/update_canmove()
-#define COMSIG_MOB_GETTING_UP "mob_getting_up"
-/// From /mob/proc/update_canmove()
-#define COMSIG_MOB_KNOCKED_DOWN "mob_knocked_down"
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
 /// From /obj/item/proc/unequipped()
@@ -84,8 +82,6 @@
 //from /mob/proc/on_deafness_loss()
 #define COMSIG_MOB_REGAINED_HEARING "mob_regained_hearing"
 
-#define COMSIG_MOB_POST_UPDATE_CANMOVE "mob_can_move"
-
 #define COMSIG_ATTEMPT_MOB_PULL "attempt_mob_pull"
 	#define COMPONENT_CANCEL_MOB_PULL (1<<0)
 
@@ -111,8 +107,23 @@
 
 #define COMSIG_GHOST_MOVED "ghost_moved"
 
+/// When a mob is turned into a /mob/dead/observer at /mob/proc/ghostize()
+#define COMSIG_MOB_GHOSTIZE "mob_ghostize"
+
+/// When a mob gets a new mind via transfer at /datum/mind/proc/transfer_to()
+#define COMSIG_MOB_NEW_MIND "mob_new_mind"
+
 #define COMSIG_MOB_MOUSEDOWN "mob_mousedown"					//from /client/MouseDown(): (atom/object, turf/location, control, params)
 #define COMSIG_MOB_MOUSEUP "mob_mouseup"						//from /client/MouseUp(): (atom/object, turf/location, control, params)
 #define COMSIG_MOB_MOUSEDRAG "mob_mousedrag"				//from /client/MouseDrag(): (atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	#define COMSIG_MOB_CLICK_CANCELED (1<<0)
 	#define COMSIG_MOB_CLICK_HANDLED (1<<1)
+
+#define COMSIG_MOB_DEPLOYED_BIPOD "mob_deployed_bipod"
+#define COMSIG_MOB_UNDEPLOYED_BIPOD "mob_undeployed_bipod"
+
+/// From /obj/item/proc/pickup() : (obj/item/picked_up)
+#define COMSIG_MOB_PICKUP_ITEM "mob_pickup_item"
+
+/// Cancels all running cloaking effects on target
+#define COMSIG_MOB_EFFECT_CLOAK_CANCEL "mob_effect_cloak_cancel"

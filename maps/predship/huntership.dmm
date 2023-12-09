@@ -672,7 +672,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/claymore/mercsword/machete/arnold{
+/obj/item/weapon/sword/machete/arnold{
 	anchored = 1;
 	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it.";
 	name = "\improper Dutch's Machete"
@@ -793,7 +793,7 @@
 	name = "Cell Lockdown 1";
 	pixel_x = -25;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -803,7 +803,7 @@
 	name = "Cell Lockdown 4";
 	pixel_x = -7;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -858,7 +858,7 @@
 	name = "Cell Lockdown 2";
 	pixel_x = -25;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -911,7 +911,7 @@
 	name = "Cell Lockdown 3";
 	pixel_x = -25;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -921,7 +921,7 @@
 	name = "Cell Lockdown 6";
 	pixel_x = -7;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -1271,36 +1271,36 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 12
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 8
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 4
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -4
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -12
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -8
@@ -1587,7 +1587,7 @@
 	name = "Cell Lockdown 5";
 	pixel_x = -7;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -1788,9 +1788,9 @@
 /area/yautja)
 "gr" = (
 /obj/structure/closet/crate/secure{
+	req_one_access_txt = "392";
 	color = "#6b675e";
-	name = "Secure Yautja crate";
-	req_one_access_txt = "252"
+	name = "Secure Yautja crate"
 	},
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
@@ -1807,7 +1807,8 @@
 	name = "Armory Shutters";
 	needs_power = 0;
 	pixel_x = 24;
-	req_one_access_txt = "252"
+	req_one_access_txt = "392";
+	needs_power = 0
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1882,24 +1883,24 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/claymore{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	name = "duelling claymore"
 	},
-/obj/item/weapon/claymore{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	name = "duelling claymore";
 	pixel_x = -5
 	},
-/obj/item/weapon/claymore{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	name = "duelling claymore";
 	pixel_x = 5
 	},
-/obj/item/weapon/claymore{
+/obj/item/weapon/sword{
 	attack_speed = 12;
 	force = 25;
 	name = "duelling claymore";
@@ -1954,7 +1955,7 @@
 	color = "#6b675e"
 	},
 /obj/item/storage/large_holster/katana,
-/obj/item/weapon/katana,
+/obj/item/weapon/sword/katana,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2245,7 +2246,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/claymore/mercsword/ceremonial,
+/obj/item/weapon/sword/ceremonial,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2423,9 +2424,9 @@
 /area/yautja)
 "Bg" = (
 /obj/structure/closet/crate/secure{
+	req_one_access_txt = "392";
 	color = "#6b675e";
-	name = "Secure Yautja crate";
-	req_one_access_txt = "252"
+	name = "Secure Yautja crate"
 	},
 /obj/item/weapon/yautja/combistick,
 /obj/item/weapon/yautja/combistick{

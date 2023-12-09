@@ -86,8 +86,8 @@
 
 	if(!SSticker.mode)
 		to_chat(usr, "Mode not found?")
-	round_should_check_for_win = !round_should_check_for_win
-	if (round_should_check_for_win)
+	GLOB.round_should_check_for_win = !GLOB.round_should_check_for_win
+	if (GLOB.round_should_check_for_win)
 		message_admins("[key_name(src)] enabled checking for round-end.")
 	else
 		message_admins("[key_name(src)] disabled checking for round-end.")
@@ -203,7 +203,7 @@
 
 /client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = null
-	set name = "Grant Full Access"
+	set name = "Grant Global Access"
 
 	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
@@ -216,11 +216,11 @@
 		if (H.wear_id)
 			var/obj/item/card/id/id = H.wear_id
 			id.icon_state = "gold"
-			id:access = get_global_access()
+			id:access = get_access(ACCESS_LIST_GLOBAL)
 		else
 			var/obj/item/card/id/id = new/obj/item/card/id(M);
 			id.icon_state = "gold"
-			id:access = get_all_main_access()
+			id:access = get_access(ACCESS_LIST_GLOBAL)
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
 			id.assignment = "Captain"
@@ -230,7 +230,7 @@
 	else
 		alert("Invalid mob")
 
-	message_admins("[key_name_admin(usr)] has granted [M.key] full access.")
+	message_admins("[key_name_admin(usr)] has granted [M.key] global access.")
 
 /client/proc/cmd_admin_grantallskills(mob/M in GLOB.mob_list)
 	set category = null
@@ -329,21 +329,21 @@
 	set desc = "For scheduler debugging"
 
 	var/list/individual_counts = list()
-	for(var/datum/disease/M in active_diseases)
+	for(var/datum/disease/M in SSdisease.all_diseases)
 		individual_counts["[M.type]"]++
 	for(var/mob/M in SShuman.processable_human_list)
 		individual_counts["[M.type]"]++
-	for(var/obj/structure/machinery/M in processing_machines)
+	for(var/obj/structure/machinery/M in GLOB.processing_machines)
 		individual_counts["[M.type]"]++
-	for(var/datum/powernet/M in powernets)
+	for(var/datum/powernet/M in GLOB.powernets)
 		individual_counts["[M.type]"]++
 	for(var/mob/M in SSmob.living_misc_mobs)
 		individual_counts["[M.type]"]++
-	for(var/datum/nanoui/M in nanomanager.processing_uis)
+	for(var/datum/nanoui/M in SSnano.nanomanager.processing_uis)
 		individual_counts["[M.type]"]++
-	for(var/datum/powernet/M in powernets)
+	for(var/datum/powernet/M in GLOB.powernets)
 		individual_counts["[M.type]"]++
-	for(var/datum/M in power_machines)
+	for(var/datum/M in GLOB.power_machines)
 		individual_counts["[M.type]"]++
 	for(var/mob/M in GLOB.xeno_mob_list)
 		individual_counts["[M.type]"]++

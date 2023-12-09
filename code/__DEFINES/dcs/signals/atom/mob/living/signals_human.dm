@@ -12,7 +12,7 @@
 #define COMSIG_HUMAN_REVIVED "human_revived"
 /// From /mob/living/carbon/human/bullet_act
 #define COMSIG_HUMAN_PRE_BULLET_ACT "human_pre_bullet_act"
-/// From /mob/living/carbon/human/bullet_act(): (damage_result, ammo_flags, obj/item/projectile/P)
+/// From /mob/living/carbon/human/bullet_act(): (damage_result, ammo_flags, obj/projectile/P)
 #define COMSIG_HUMAN_BULLET_ACT "human_bullet_act"
 	#define COMPONENT_CANCEL_BULLET_ACT (1<<0)
 
@@ -35,6 +35,10 @@
 
 #define COMSIG_HUMAN_UPDATE_SIGHT "human_update_sight"
 	#define COMPONENT_OVERRIDE_UPDATE_SIGHT (1<<0)
+
+///from /mob/living/carbon/human/movement_delay()
+#define COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION "human_movement_cancel_interaction"
+	#define COMPONENT_HUMAN_MOVEMENT_KEEP_USING (1<<0)
 
 ///from /mob/living/carbon/human/update_sight()
 #define COMSIG_HUMAN_POST_UPDATE_SIGHT "human_post_update_sight"

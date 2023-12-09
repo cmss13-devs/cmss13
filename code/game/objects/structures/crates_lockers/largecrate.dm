@@ -28,9 +28,8 @@
 		material_sheet = new parts_type(current_turf, 2)
 
 	// Move the objects back to the turf, above the crate material
-	for(var/atom/movable/moving_atom in contents)
-		var/atom/movable/current_atom = contents[1]
-		current_atom.forceMove(current_turf)
+	for(var/atom/movable/moving_atom as anything in contents)
+		moving_atom.forceMove(current_turf)
 
 	deconstruct(TRUE)
 
@@ -76,7 +75,7 @@
 	if(health <= 0)
 		unpack()
 
-/obj/structure/largecrate/bullet_act(obj/item/projectile/P)
+/obj/structure/largecrate/bullet_act(obj/projectile/P)
 	take_damage(P.calculate_damage(P.damage))
 	return TRUE
 
@@ -335,13 +334,13 @@
 	num_guns = 3
 	num_mags = 3
 	name = "\improper Hyperdyne firearm crate"
-	stuff = list( /obj/item/weapon/gun/revolver/nagant = /obj/item/ammo_magazine/revolver/upp,
-					/obj/item/weapon/gun/pistol/c99 = /obj/item/ammo_magazine/pistol/c99,
+	stuff = list( /obj/item/weapon/gun/revolver/upp = /obj/item/ammo_magazine/revolver/upp,
+					/obj/item/weapon/gun/pistol/np92 = /obj/item/ammo_magazine/pistol/np92,
 					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 					/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40/extended,
 					/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd,
-					/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh
+					/obj/item/weapon/gun/smg/pps43 = /obj/item/ammo_magazine/smg/pps43
 				)
 
 /obj/structure/largecrate/guns/merc
@@ -357,11 +356,11 @@
 					/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
-					/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
+					/obj/item/weapon/gun/smg/bizon = /obj/item/ammo_magazine/smg/bizon,
 					/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 					/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
-					/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh,
+					/obj/item/weapon/gun/smg/pps43 = /obj/item/ammo_magazine/smg/pps43,
 					/obj/item/weapon/gun/rifle/l42a = /obj/item/ammo_magazine/rifle/l42a,
 					/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 					/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
@@ -525,9 +524,9 @@
 		new /obj/item/weapon/gun/rifle/mar40(src)
 		new /obj/item/ammo_magazine/rifle/mar40(src)
 		new /obj/item/ammo_magazine/rifle/mar40(src)
-	new /obj/item/weapon/gun/pistol/skorpion(src)
-	new /obj/item/ammo_magazine/pistol/skorpion(src)
-	new /obj/item/ammo_magazine/pistol/skorpion(src)
+	new /obj/item/weapon/gun/smg/bizon(src)
+	new /obj/item/ammo_magazine/smg/bizon(src)
+	new /obj/item/ammo_magazine/smg/bizon(src)
 	new /obj/item/weapon/gun/shotgun/combat(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
@@ -571,8 +570,8 @@
 	new /obj/item/ammo_magazine/rifle(src)
 	new /obj/item/ammo_magazine/rifle/mar40(src)
 	new /obj/item/ammo_magazine/rifle/mar40(src)
-	new /obj/item/ammo_magazine/pistol/skorpion(src)
-	new /obj/item/ammo_magazine/pistol/skorpion(src)
+	new /obj/item/ammo_magazine/smg/bizon(src)
+	new /obj/item/ammo_magazine/smg/bizon(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 

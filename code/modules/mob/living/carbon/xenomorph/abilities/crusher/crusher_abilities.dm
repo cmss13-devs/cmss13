@@ -120,6 +120,10 @@
 	var/momentum = 0
 
 
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_position_change(mob/living/carbon/xenomorph/xeno, body_position)
+	SIGNAL_HANDLER
+	if(body_position == LYING_DOWN)
+		handle_movement(xeno)
 
 /datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/xenomorph/Xeno, atom/oldloc, dir, forced)
 	SIGNAL_HANDLER
@@ -178,7 +182,7 @@
 		playsound(Xeno, 'sound/effects/alien_footstep_charge1.ogg', 50)
 
 	for(var/mob/living/carbon/human/Mob in Xeno.loc)
-		if(Mob.lying && Mob.stat != DEAD)
+		if(Mob.body_position == LYING_DOWN && Mob.stat != DEAD)
 			Xeno.visible_message(SPAN_DANGER("[Xeno] runs [Mob] over!"),
 				SPAN_DANGER("You run [Mob] over!")
 			)

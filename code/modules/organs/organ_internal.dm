@@ -250,10 +250,14 @@
 /datum/internal_organ/brain/process(delta_time)
 	..()
 
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+		return
+
 	if(organ_status >= ORGAN_BRUISED && prob(5 * delta_time))
 		var/dir_choice = pick(list(NORTH, SOUTH, EAST, WEST))
 		owner.drop_held_items()
-		owner.Move(get_step(get_turf(owner), dir_choice))
+		if(!owner.buckled && owner.stat == CONSCIOUS)
+			owner.Move(get_step(get_turf(owner), dir_choice))
 		to_chat(owner, SPAN_DANGER("Your mind wanders and goes blank for a moment..."))
 
 	if(organ_status >= ORGAN_BROKEN && prob(5 * delta_time))

@@ -20,9 +20,10 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	var/recipient_rank
 	var/recipient_ckey
 	var/mob/recipient_mob
-	var/list/giver_name // Actually key for xenos
-	var/list/giver_rank // Actually name for xenos
+	var/list/giver_name // Designation for xenos
+	var/list/giver_rank // "Name" for xenos
 	var/list/giver_mob
+	var/list/giver_ckey
 
 /datum/recipient_awards/New()
 	medal_names = list()
@@ -32,6 +33,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	giver_name = list()
 	giver_rank = list()
 	giver_mob = list()
+	giver_ckey = list()
 
 
 /proc/give_medal_award(medal_location, as_admin = FALSE)
@@ -116,12 +118,13 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	recipient_award.medal_names += medal_type
 	recipient_award.medal_citations += citation
 	recipient_award.posthumous += posthumous
+	recipient_award.giver_ckey += usr.ckey
 
 	if(!as_admin)
 		recipient_award.giver_rank += recipient_ranks[usr.real_name] // Currently not used in marine award message
 		recipient_award.giver_name += usr.real_name // Currently not used in marine award message
 	else
-		recipient_award.giver_rank += "([usr.ckey])" // Just because it'll be displayed in the panel
+		recipient_award.giver_rank += null
 		recipient_award.giver_name += null
 
 	// Create an actual medal item
@@ -258,15 +261,21 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	recipient_award.medal_names += medal_type
 	recipient_award.medal_citations += citation
 	recipient_award.posthumous += posthumous
+	recipient_award.giver_ckey += usr.ckey
+
 	if(!admin_attribution)
 		recipient_award.giver_rank += usr.name
-		recipient_award.giver_name += usr.key
+		var/mob/living/carbon/xenomorph/giving_xeno = usr
+		if(istype(giving_xeno))
+			recipient_award.giver_name += giving_xeno.full_designation
+		else
+			recipient_award.giver_name += null
 	else if(admin_attribution == "none")
 		recipient_award.giver_rank += null
 		recipient_award.giver_name += null
 	else
 		recipient_award.giver_rank += admin_attribution
-		recipient_award.giver_name += null // If not null, rescinding it will take stats away from a mob with this key
+		recipient_award.giver_name += null
 
 	recipient_award.medal_items += null // TODO: Xeno award item?
 
@@ -337,6 +346,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_award.giver_name.Cut(index, index + 1)
 		recipient_award.giver_rank.Cut(index, index + 1)
 		recipient_award.giver_mob.Cut(index, index + 1)
+		recipient_award.giver_ckey.Cut(index, index + 1)
 		recipient_award.medal_items.Cut(index, index + 1)
 
 	// Remove giver's stat

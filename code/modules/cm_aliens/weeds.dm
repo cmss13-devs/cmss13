@@ -55,7 +55,7 @@
 		linked_hive = GLOB.hive_datum[hivenumber]
 
 	set_hive_data(src, hivenumber)
-	if(spread_on_semiweedable)
+	if(spread_on_semiweedable && weed_strength < WEED_LEVEL_HIVE)
 		if(color)
 			var/list/RGB = ReadRGB(color)
 			RGB[1] = Clamp(RGB[1] + 35, 0, 255)
@@ -193,13 +193,16 @@
 // If you're still confused, scroll aaaall the way down to the bottom of the file.
 // that's /obj/effect/alien/weeds/node/Destroy().
 /obj/effect/alien/weeds/proc/avoid_orphanage()
-	for(var/obj/effect/alien/weeds/node/N in orange(node_range, get_turf(src)))
-		// WE FOUND A NEW MOMMY
-		N.add_child(src)
-		break
+	var/parent_type = /obj/effect/alien/weeds/node
+	if(weed_strength >= WEED_LEVEL_HIVE)
+		parent_type = /obj/effect/alien/weeds/node/pylon
+
+	var/obj/effect/alien/weeds/node/found = locate(parent_type) in orange(node_range, get_turf(src))
+	if(found)
+		found.add_child(src)
 
 	// NO MORE FOOD ON THE TABLE. WE DIE
-	if(!parent || weed_strength > WEED_LEVEL_STANDARD)
+	if(!parent)
 		qdel(src)
 
 /obj/effect/alien/weeds/proc/weed_expand()
@@ -213,7 +216,7 @@
 		return
 
 	var/list/weeds = list()
-	for(var/dirn in cardinal)
+	for(var/dirn in GLOB.cardinals)
 		var/turf/T = get_step(src, dirn)
 		if(!istype(T))
 			continue
@@ -279,7 +282,7 @@
 
 		if(istype(O, /obj/structure/barricade)) //cades on tile we're trying to expand to
 			var/obj/structure/barricade/to_blocking_cade = O
-			if(to_blocking_cade.density && to_blocking_cade.dir == reverse_dir[direction] && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
+			if(to_blocking_cade.density && to_blocking_cade.dir == GLOB.reverse_dir[direction] && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
 				return FALSE
 
 		if(istype(O, /obj/structure/window/framed))
@@ -296,7 +299,7 @@
 	if(!U)
 		U = loc
 	if(istype(U))
-		for(var/dirn in cardinal)
+		for(var/dirn in GLOB.cardinals)
 			var/turf/T = get_step(U, dirn)
 
 			if(!istype(T))
@@ -310,7 +313,7 @@
 	overlays.Cut()
 
 	var/my_dir = 0
-	for(var/check_dir in cardinal)
+	for(var/check_dir in GLOB.cardinals)
 		var/turf/check = get_step(src, check_dir)
 
 		if(!istype(check))
@@ -588,9 +591,13 @@
 	weed_strength = WEED_LEVEL_HIVE
 	node_range = WEED_RANGE_PYLON
 	overlay_node = FALSE
+	spread_on_semiweedable = TRUE
 	var/obj/effect/alien/resin/special/resin_parent
 
 /obj/effect/alien/weeds/node/pylon/proc/set_parent_damaged()
+	if(!resin_parent)
+		return
+
 	var/obj/effect/alien/resin/special/pylon/parent_pylon = resin_parent
 	parent_pylon.damaged = TRUE
 
@@ -616,7 +623,13 @@
 /obj/effect/alien/weeds/node/pylon/acid_spray_act()
 	return
 
+/obj/effect/alien/weeds/node/pylon/cluster
+	spread_on_semiweedable = FALSE
+
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
+	if(!resin_parent)
+		return
+
 	var/obj/effect/alien/resin/special/cluster/parent_cluster = resin_parent
 	parent_cluster.damaged = TRUE
 

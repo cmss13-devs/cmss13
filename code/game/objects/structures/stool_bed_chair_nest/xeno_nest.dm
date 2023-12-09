@@ -10,7 +10,7 @@
 	health = 100
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE
-	buckle_lying = FALSE
+	buckle_lying = 0
 	var/on_fire = 0
 	var/resisting = 0
 	var/resisting_ready = 0
@@ -20,8 +20,6 @@
 	var/force_nest = FALSE
 	/// counterpart to buckling_y --> offsets the buckled mob when it buckles
 	var/list/buckling_x
-	/// saves the density of the buckled_mob
-	var/buckled_mob_density
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
@@ -52,11 +50,10 @@
 		resisting_ready = FALSE
 
 	if(buckled_mob == current_mob)
-		buckled_mob_density = current_mob.density
 		current_mob.pixel_y = buckling_y["[dir]"]
 		current_mob.pixel_x = buckling_x["[dir]"]
 		current_mob.dir = turn(dir, 180)
-		current_mob.density = FALSE
+		ADD_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
@@ -70,7 +67,7 @@
 
 	current_mob.pixel_y = initial(buckled_mob.pixel_y)
 	current_mob.pixel_x = initial(buckled_mob.pixel_x)
-	current_mob.density = buckled_mob_density
+	REMOVE_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 	if(dir == SOUTH)
 		current_mob.layer = initial(current_mob.layer)
 		if(!ishuman(current_mob))
@@ -148,7 +145,7 @@
 	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))
 		return
 
-	if(user.stat || user.lying || user.is_mob_restrained())
+	if(user.body_position == LYING_DOWN || user.is_mob_incapacitated())
 		return
 
 	if(isxeno(user))
@@ -170,7 +167,7 @@
 		if(H.stat != DEAD)
 			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") != "Yes")
 				return
-			if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
+			if(!buckled_mob || !user.Adjacent(H) || user.is_mob_incapacitated(FALSE))
 				return
 
 	if(ishuman(user))
@@ -194,7 +191,7 @@
 
 /obj/structure/bed/nest/buckle_mob(mob/mob, mob/user)
 	. = FALSE
-	if(!isliving(mob) || islarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || mob.buckled || !iscarbon(user))
+	if(!isliving(mob) || islarva(user) || (get_dist(src, user) > 1) || user.is_mob_incapacitated(FALSE))
 		return
 
 	if(isxeno(mob))
@@ -223,7 +220,7 @@
 	var/mob/living/carbon/human/human = null
 	if(ishuman(mob))
 		human = mob
-		if(!human.lying) //Don't ask me why is has to be
+		if(human.body_position != LYING_DOWN) //Don't ask me why is has to be
 			to_chat(user, SPAN_WARNING("[mob] is resisting, ground them."))
 			return
 
@@ -245,7 +242,7 @@
 		return
 
 	if(human) //Improperly stunned Marines won't be nested
-		if(!human.lying) //Don't ask me why is has to be
+		if(human.body_position != LYING_DOWN) //Don't ask me why is has to be
 			to_chat(user, SPAN_WARNING("[mob] is resisting, ground them."))
 			return
 
@@ -281,8 +278,6 @@
 	buckled_mob.old_y = 0
 	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/buckled_human = buckled_mob
-	if(buckled_human.stat == DEAD )
-		buckled_mob_density = FALSE
 
 	var/mob/dead/observer/G = ghost_of_buckled_mob
 	var/datum/mind/M = G?.mind
@@ -311,7 +306,6 @@
 
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
-		buckled_mob_density = FALSE
 		deconstruct()
 
 /obj/structure/bed/nest/fire_act()

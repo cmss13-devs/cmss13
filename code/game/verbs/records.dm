@@ -84,7 +84,7 @@
 	var/list/options = list()
 
 	if(CLIENT_IS_STAFF(src))
-		options = note_categories.Copy()
+		options = GLOB.note_categories.Copy()
 		if(admin_holder.rights & R_PERMISSIONS)
 			MA = TRUE
 	else if(!isCouncil(src))
@@ -97,13 +97,13 @@
 		return
 	target = ckey(target)
 
-	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_COUNCIL)
+	if(GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_COUNCIL)
 		options |= "Commanding Officer"
 		edit_C = TRUE
-	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
+	if(GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
 		options |= "Synthetic"
 		edit_S = TRUE
-	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_COUNCIL)
+	if(GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_COUNCIL)
 		options |= "Yautja"
 		edit_Y = TRUE
 
@@ -116,17 +116,17 @@
 		if("Merit")
 			show_other_record(NOTE_MERIT, choice, target, TRUE)
 		if("Commanding Officer")
-			if(MA || (RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_LEADER))
+			if(MA || (GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_LEADER))
 				show_other_record(NOTE_COMMANDER, choice, target, TRUE, TRUE)
 			else
 				show_other_record(NOTE_COMMANDER, choice, target, edit_C)
 		if("Synthetic")
-			if(MA || (RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_LEADER))
+			if(MA || (GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_LEADER))
 				show_other_record(NOTE_SYNTHETIC, choice, target, TRUE, TRUE)
 			else
 				show_other_record(NOTE_SYNTHETIC, choice, target, edit_S)
 		if("Yautja")
-			if(MA || (RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_LEADER))
+			if(MA || (GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_LEADER))
 				show_other_record(NOTE_YAUTJA, choice, target, TRUE, TRUE)
 			else
 				show_other_record(NOTE_YAUTJA, choice, target, edit_Y)
@@ -143,7 +143,7 @@
 	dat += "<body>"
 
 	var/color = "#008800"
-	var/add_dat = "<A href='?src=\ref[admin_holder];add_player_info=[target]'>Add Admin Note</A><br><A href='?src=\ref[admin_holder];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
+	var/add_dat = "<A href='?src=\ref[admin_holder];[HrefToken()];add_player_info=[target]'>Add Admin Note</A><br><A href='?src=\ref[admin_holder];[HrefToken()];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
 	switch(note_category)
 		if(NOTE_MERIT)
 			color = "#9e3dff"

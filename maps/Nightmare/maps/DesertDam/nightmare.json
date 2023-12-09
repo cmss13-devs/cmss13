@@ -12,5 +12,12 @@
 		"chance": 1.0,
 		"path": "standalone/crashlanding-upp-bar.dmm",
 		"when": { "lvevent": "uppcrash" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "uppcrash-supply",
+		"chance": 1.0,
+		"path": "standalone/crashlanding-upp-alt1.dmm",
+		"when": { "lvevent": "uppcrash" }
 	}
 ]

@@ -175,81 +175,110 @@
 	res.Scale(size*32, size*32)
 	// Initialize the photograph to black.
 	res.Blend("#000", ICON_OVERLAY)
+	CHECK_TICK
 
-	var/atoms[] = list()
-	for(var/turf/the_turf in turfs)
-		// Add outselves to the list of stuff to draw
+	var/pixel_size = world.icon_size
+	var/radius = (size - 1) * 0.5
+	var/center_offset = radius * pixel_size + 1
+	var/x_min = center.x - radius
+	var/x_max = center.x + radius
+	var/y_min = center.y - radius
+	var/y_max = center.y + radius
+
+	var/list/atoms = list()
+	for(var/turf/the_turf as anything in turfs)
+		// Add ourselves to the list of stuff to draw
 		atoms.Add(the_turf);
+
 		// As well as anything that isn't invisible.
-		for(var/atom/A in the_turf)
-			if(A.invisibility) continue
-			atoms.Add(A)
+		for(var/atom/cur_atom as anything in the_turf)
+			if(!cur_atom || cur_atom.invisibility)
+				continue
+			atoms.Add(cur_atom)
 
 	// Sort the atoms into their layers
 	var/list/sorted = sort_atoms_by_layer(atoms)
-	var/center_offset = (size-1)/2 * 32 + 1
-	for(var/i; i <= sorted.len; i++)
-		var/atom/A = sorted[i]
-		if(A)
-			var/icon/IM = getFlatIcon(A)//build_composite_icon(A)
+	for(var/atom/cur_atom as anything in sorted)
+		if(QDELETED(cur_atom))
+			continue
 
-			// If what we got back is actually a picture, draw it.
-			if(istype(IM, /icon))
-				// Check if we're looking at a mob that's lying down
-				if(istype(A, /mob/living))
-					var/mob/living/L = A
-					if(!istype(L, /mob/living/carbon/xenomorph)) //xenos don't use icon rotatin for lying.
-						if(L.lying)
-							// If they are, apply that effect to their picture.
-							IM.BecomeLying()
-				// Calculate where we are relative to the center of the photo
-				var/xoff = (A.x - center.x) * 32 + center_offset
-				var/yoff = (A.y - center.y) * 32 + center_offset
-				if (istype(A,/atom/movable))
-					xoff+=A:step_x
-					yoff+=A:step_y
-				res.Blend(IM, blendMode2iconMode(A.blend_mode),  A.pixel_x + xoff, A.pixel_y + yoff)
+		if(cur_atom.x < x_min || cur_atom.x > x_max || cur_atom.y < y_min || cur_atom.y > y_max)
+			// they managed to move out of frame with all this CHECK_TICK...
+			continue
+
+		var/icon/cur_icon = getFlatIcon(cur_atom)//build_composite_icon(cur_atom)
+
+		// If what we got back is actually a picture, draw it.
+		if(istype(cur_icon, /icon))
+			// Check if we're looking at a mob that's lying down
+			if(istype(cur_atom, /mob/living))
+				var/mob/living/cur_mob = cur_atom
+				if(!isxeno(cur_mob) && cur_mob.body_position == LYING_DOWN) //xenos don't use icon rotatin for lying.
+					cur_icon.BecomeLying()
+
+			// Calculate where we are relative to the center of the photo
+			var/xoff = (cur_atom.x - center.x) * pixel_size + center_offset
+			var/yoff = (cur_atom.y - center.y) * pixel_size + center_offset
+			if(istype(cur_atom, /atom/movable))
+				xoff += cur_atom:step_x
+				yoff += cur_atom:step_y
+			res.Blend(cur_icon, blendMode2iconMode(cur_atom.blend_mode),  cur_atom.pixel_x + xoff, cur_atom.pixel_y + yoff)
+
+		CHECK_TICK
 
 	// Lastly, render any contained effects on top.
 	for(var/turf/the_turf as anything in turfs)
 		// Calculate where we are relative to the center of the photo
-		var/xoff = (the_turf.x - center.x) * 32 + center_offset
-		var/yoff = (the_turf.y - center.y) * 32 + center_offset
-		var/image/IM = getFlatIcon(the_turf.loc)
-		if(IM)
-			res.Blend(IM, blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
+		var/xoff = (the_turf.x - center.x) * pixel_size + center_offset
+		var/yoff = (the_turf.y - center.y) * pixel_size + center_offset
+		var/image/cur_icon = getFlatIcon(the_turf.loc)
+		CHECK_TICK
+
+		if(cur_icon)
+			res.Blend(cur_icon, blendMode2iconMode(the_turf.blend_mode), xoff, yoff)
+			CHECK_TICK
 	return res
 
+/obj/item/device/camera/proc/get_mob_descriptions(turf/the_turf, existing_descripion)
+	var/mob_detail = existing_descripion
+	for(var/mob/living/carbon/cur_carbon in the_turf)
+		if(cur_carbon.invisibility)
+			continue
 
-/obj/item/device/camera/proc/get_mobs(turf/the_turf as turf)
-	var/mob_detail
-	for(var/mob/living/carbon/A in the_turf)
-		if(A.invisibility) continue
 		var/holding = null
-		if(A.l_hand || A.r_hand)
-			if(A.l_hand) holding = "They are holding \a [A.l_hand]"
-			if(A.r_hand)
+		if(cur_carbon.l_hand || cur_carbon.r_hand)
+			if(cur_carbon.l_hand)
+				holding = "They are holding \a [cur_carbon.l_hand]"
+			if(cur_carbon.r_hand)
 				if(holding)
-					holding += " and \a [A.r_hand]"
+					holding += " and \a [cur_carbon.r_hand]"
 				else
-					holding = "They are holding \a [A.r_hand]"
+					holding = "They are holding \a [cur_carbon.r_hand]"
+
+		var/hurt = ""
+		if(cur_carbon.health < 75)
+			hurt = prob(25) ? " - they look hurt" : " - [cur_carbon] looks hurt"
 
 		if(!mob_detail)
-			mob_detail = "You can see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
+			mob_detail = "You can see [cur_carbon] in the photo[hurt].[holding ? " [holding]" : "."]."
 		else
-			mob_detail += "You can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
+			mob_detail += " You [prob(50) ? "can" : "also"] see [cur_carbon] in the photo[hurt].[holding ? " [holding]" : "."]."
 	return mob_detail
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	if(!on || !pictures_left || ismob(target.loc) || isstorage(target.loc)) return
-	if(user.contains(target) || istype(target, /atom/movable/screen)) return
-	captureimage(target, user, flag)
+	if(!on || !pictures_left || ismob(target.loc) || isstorage(target.loc))
+		return
+	if(user.contains(target) || istype(target, /atom/movable/screen))
+		return
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
 
 	pictures_left--
 	desc = "A polaroid camera. It has [pictures_left] photos left."
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
+
+	captureimage(target, user, flag)
+
 	icon_state = icon_off
 	on = 0
 	spawn(64)
@@ -257,37 +286,46 @@
 		on = 1
 
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
-	var/mobs = ""
+	var/mob_descriptions = ""
 	var/radius = (size-1)*0.5
-	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(world_view_size + radius, user.client)
-	for(var/turf/T as anything in turfs)
-		mobs += get_mobs(T)
-	var/datum/picture/P = createpicture(target, user, turfs, mobs, flag)
-	printpicture(user, P)
+	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(GLOB.world_view_size + radius, user.client)
+	for(var/turf/the_turf as anything in turfs)
+		mob_descriptions = get_mob_descriptions(the_turf, mob_descriptions)
+	var/datum/picture/the_picture = createpicture(target, user, turfs, mob_descriptions, flag)
 
-/obj/item/device/camera/proc/createpicture(atom/target, mob/user, list/turfs, mobs, flag)
+	if(QDELETED(user))
+		return
+
+	printpicture(user, the_picture)
+
+/obj/item/device/camera/proc/createpicture(atom/target, mob/user, list/turfs, description, flag)
 	var/icon/photoimage = get_icon(turfs, target)
+
+	if(!description)
+		description = "A very scenic photo"
 
 	var/icon/small_img = icon(photoimage)
 	var/icon/tiny_img = icon(photoimage)
-	var/icon/ic = icon('icons/obj/items/items.dmi',"photo")
-	var/icon/pc = icon('icons/obj/items/paper.dmi', "photo")
+	var/icon/item_icon = icon('icons/obj/items/items.dmi',"photo")
+	var/icon/paper_icon = icon('icons/obj/items/paper.dmi', "photo")
 	small_img.Scale(8, 8)
 	tiny_img.Scale(4, 4)
-	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
-	pc.Blend(tiny_img,ICON_OVERLAY, 12, 19)
+	item_icon.Blend(small_img, ICON_OVERLAY, 10, 13)
+	CHECK_TICK
+	paper_icon.Blend(tiny_img, ICON_OVERLAY, 12, 19)
+	CHECK_TICK
 
-	var/datum/picture/P = new()
-	P.fields["author"] = user
-	P.fields["icon"] = ic
-	P.fields["tiny"] = pc
-	P.fields["img"] = photoimage
-	P.fields["desc"] = mobs
-	P.fields["pixel_x"] = rand(-10, 10)
-	P.fields["pixel_y"] = rand(-10, 10)
-	P.fields["size"] = size
+	var/datum/picture/the_picture = new()
+	the_picture.fields["author"] = user
+	the_picture.fields["icon"] = item_icon
+	the_picture.fields["tiny"] = paper_icon
+	the_picture.fields["img"] = photoimage
+	the_picture.fields["desc"] = description
+	the_picture.fields["pixel_x"] = rand(-10, 10)
+	the_picture.fields["pixel_y"] = rand(-10, 10)
+	the_picture.fields["size"] = size
 
-	return P
+	return the_picture
 
 /obj/item/device/camera/proc/printpicture(mob/user, datum/picture/P)
 	var/obj/item/photo/Photo = new/obj/item/photo()

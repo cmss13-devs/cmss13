@@ -69,7 +69,7 @@
 	..()
 	if(is_grass_floor())
 		var/dir_sum = 0
-		for(var/direction in cardinal)
+		for(var/direction in GLOB.cardinals)
 			var/turf/T = get_step(src,direction)
 			if(!(T.is_grass_floor()))
 				dir_sum += direction
@@ -96,7 +96,7 @@
 	else if(is_light_floor())
 		icon_state = "light_broken"
 		broken = 1
-		SetLuminosity(0)
+		set_light(0)
 	else if(is_plating())
 		icon_state = "platingdmg[pick(1, 2, 3)]"
 		broken = 1
@@ -135,7 +135,7 @@
 
 //This proc auto corrects the grass tiles' siding.
 /turf/open/floor/proc/make_plating()
-	SetLuminosity(0)
+	set_light(0)
 	intact_tile = FALSE
 	broken = FALSE
 	burnt = FALSE

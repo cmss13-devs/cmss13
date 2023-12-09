@@ -35,7 +35,6 @@
 	var/charge_rate = 30
 	/// Cooldown on draining power from APC
 	var/charge_cooldown = COOLDOWN_BRACER_CHARGE
-	var/cloaked = 0
 	var/cloak_timer = 0
 	var/cloak_malfunction = 0
 	/// Determines the alpha level of the cloaking device.
@@ -71,6 +70,7 @@
 	flags_item = initial(flags_item)
 	UnregisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH))
 	SSminimaps.remove_marker(user)
+	unlock_bracer() // So as to prevent the bracer being stuck with nodrop if the pred gets gibbed/arm removed/etc.
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
@@ -96,7 +96,7 @@
 		human_holder.update_power_display(perc_charge)
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if(!cloaked)
+	if(!HAS_TRAIT(human_holder, TRAIT_CLOAKED))
 		return
 	if(human_holder.stat == DEAD)
 		decloak(human_holder, TRUE)
@@ -106,6 +106,7 @@
 
 /// handles decloaking only on HUNTER gloves
 /obj/item/clothing/gloves/yautja/proc/decloak()
+	SIGNAL_HANDLER
 	return
 
 /// Called to update the minimap icon of the predator
@@ -116,6 +117,9 @@
 	var/mob/living/carbon/human/human_owner = owner
 	var/turf/wearer_turf = get_turf(owner)
 	SSminimaps.remove_marker(owner)
+	if(!wearer_turf)
+		return
+
 	if(!isyautja(owner))
 		if(owner.stat >= DEAD)
 			if(human_owner.undefibbable)
@@ -288,12 +292,13 @@
 	right_wristblades = new(src)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
+	. = ..()
 	charge = max(charge - (severity * 500), 0)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.gloves == src)
 			wearer.visible_message(SPAN_DANGER("You hear a hiss and crackle!"), SPAN_DANGER("Your bracers hiss and spark!"), SPAN_DANGER("You hear a hiss and crackle!"))
-			if(cloaked)
+			if(HAS_TRAIT(wearer, TRAIT_CLOAKED))
 				decloak(wearer, TRUE, DECLOAK_EMP)
 		else
 			var/turf/our_turf = get_turf(src)
@@ -308,7 +313,7 @@
 			embedded_id.set_user_data(user)
 
 //Any projectile can decloak a predator. It does defeat one free bullet though.
-/obj/item/clothing/gloves/yautja/hunter/proc/bullet_hit(mob/living/carbon/human/H, obj/item/projectile/P)
+/obj/item/clothing/gloves/yautja/hunter/proc/bullet_hit(mob/living/carbon/human/H, obj/projectile/P)
 	SIGNAL_HANDLER
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -336,7 +341,7 @@
 
 	//Non-Yautja have a chance to get stunned with each power drain
 	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(4))
-		if(cloaked)
+		if(HAS_TRAIT(human, TRAIT_CLOAKED))
 			decloak(human, TRUE, DECLOAK_SPECIES)
 		shock_user(human)
 
@@ -344,14 +349,14 @@
 
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)
 	move_chip_to_bracer()
-	if(cloaked)
+	if(HAS_TRAIT(user, TRAIT_CLOAKED))
 		decloak(user, TRUE)
 	..()
 
 /obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/human = loc
-		if(cloaked)
+		if(HAS_TRAIT(human, TRAIT_CLOAKED))
 			decloak(human, TRUE)
 	. = ..()
 
@@ -404,7 +409,7 @@
 	. = wristblades_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(mob/living/carbon/human/caller, forced = FALSE)
-	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
+	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
 		return
 
 	. = check_random_function(caller, forced)
@@ -492,7 +497,7 @@
 			if(dist < closest)
 				closest = dist
 				closest_item = tracked_item
-				direction = get_dir(M,loc)
+				direction = Get_Compass_Dir(M,loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD)
@@ -509,7 +514,7 @@
 			var/dist = get_dist(M,Y)
 			if(dist < closest)
 				closest = dist
-				direction = get_dir(M,Y)
+				direction = Get_Compass_Dir(M,Y)
 				areaLoc = loc
 
 	var/output = FALSE
@@ -549,7 +554,7 @@
 	if(!istype(M) || M.is_mob_incapacitated())
 		return FALSE
 
-	if(cloaked) //Turn it off.
+	if(HAS_TRAIT(caller, TRAIT_CLOAKED)) //Turn it off.
 		if(cloak_timer > world.time)
 			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
@@ -570,10 +575,11 @@
 		if(!drain_power(M, 50))
 			return FALSE
 
-		cloaked = TRUE
+		ADD_TRAIT(M, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
+		RegisterSignal(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak))
 
 		cloak_timer = world.time + 1.5 SECONDS
 		if(true_cloak)
@@ -585,9 +591,9 @@
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
 		animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
 
-		var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+		var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
-		var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+		var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 		XI.remove_from_hud(M)
 		anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
 
@@ -611,13 +617,14 @@
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
+	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
 	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
 	if(forced)
 		cloak_malfunction = world.time + decloak_timer
 
-	cloaked = FALSE
-	log_game("[key_name_admin(usr)] has disabled their cloaking device.")
+	REMOVE_TRAIT(user, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
+	log_game("[key_name_admin(user)] has disabled their cloaking device.")
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
 	playsound(user.loc, 'sound/effects/pred_cloakoff.ogg', 15, 1)
 	user.alpha = initial(user.alpha)
@@ -626,9 +633,9 @@
 		user.see_invisible = initial(user.see_invisible)
 	cloak_timer = world.time + (DECLOAK_STANDARD / 2)
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(user)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(user)
 
 	anim(user.loc, user, 'icons/mob/mob.dmi', null, "uncloak", null, user.dir)
@@ -642,7 +649,7 @@
 	. = caster_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(mob/living/carbon/human/caller, forced = FALSE)
-	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
+	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
 		return
 
 	. = check_random_function(caller, forced)
@@ -676,6 +683,8 @@
 
 	if (exploding)
 		return
+
+	notify_ghosts(header = "Yautja self destruct", message = "[victim] is self destructing to protect their honor!", source = victim, action = NOTIFY_ORBIT)
 
 	exploding = 1
 	var/turf/T = get_turf(src)
@@ -730,7 +739,7 @@
 
 	var/mob/living/carbon/human/M = caller
 
-	if(cloaked)
+	if(HAS_TRAIT(M, TRAIT_CLOAKED))
 		to_chat(M, SPAN_WARNING("Not while you're cloaked. It might disrupt the sequence."))
 		return
 	if(M.stat == DEAD)
@@ -834,7 +843,7 @@
 		to_chat(caller, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
 		return FALSE
 
-	if(!drain_power(caller, 1000))
+	if(!drain_power(caller, 400))
 		return FALSE
 
 	inject_timer = TRUE
@@ -875,7 +884,7 @@
 		to_chat(usr, SPAN_WARNING("Your bracer is still generating a new healing capsule!"))
 		return FALSE
 
-	if(!drain_power(caller, 800))
+	if(!drain_power(caller, 600))
 		return FALSE
 
 	healing_capsule_timer = TRUE
@@ -919,7 +928,7 @@
 	addtimer(VARSET_CALLBACK(src, disc_timer, FALSE), 10 SECONDS)
 
 	for(var/mob/living/simple_animal/hostile/smartdisc/S in range(7))
-		to_chat(caller, SPAN_WARNING("The [S] skips back towards you!"))
+		to_chat(caller, SPAN_WARNING("[S] skips back towards you!"))
 		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(S.loc)
 		qdel(S)
 
@@ -997,19 +1006,10 @@
 	if(.)
 		return
 
-	for(var/obj/item/weapon/yautja/combistick/C in range(7))
-		if(C in caller.contents) //Can't yank if they are wearing it
-			return FALSE
-		if(caller.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
-			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
-				return TRUE
-			caller.visible_message(SPAN_WARNING("<b>[caller] yanks [C]'s chain back!</b>"), SPAN_WARNING("<b>You yank [C]'s chain back!</b>"))
-		else if(caller.put_in_inactive_hand(C))///...Try putting it in our inactive hand.
-			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
-				return TRUE
-			caller.visible_message(SPAN_WARNING("<b>[caller] yanks [C]'s chain back!</b>"), SPAN_WARNING("<b>You yank [C]'s chain back!</b>"))
-		else //If neither hand can hold it, you must not have a free hand.
-			to_chat(caller, SPAN_WARNING("You need a free hand to do this!</b>"))
+	for(var/datum/effects/tethering/tether in caller.effects_list)
+		if(istype(tether.tethered.affected_atom, /obj/item/weapon/yautja/combistick))
+			var/obj/item/weapon/yautja/combistick/stick = tether.tethered.affected_atom
+			stick.recall()
 
 /obj/item/clothing/gloves/yautja/hunter/verb/translate()
 	set name = "Translator"
@@ -1169,18 +1169,26 @@
 /// The actual unlock/lock function.
 /obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/wearer, force_lock)
 	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
-		flags_item &= ~NODROP
-		flags_inventory &= ~CANTSTRIP
-		if(!isyautja(wearer))
-			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing it's grip on your forearm."))
-		else
-			to_chat(wearer, SPAN_WARNING("With an angry blare the bracer releases your forearm."))
-		return TRUE
+		return unlock_bracer()
 
+	return lock_bracer()
+
+/obj/item/clothing/gloves/yautja/proc/lock_bracer(mob/wearer)
 	flags_item |= NODROP
 	flags_inventory |= CANTSTRIP
-	if(isyautja(wearer))
-		to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
-	else
-		to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	if(wearer)
+		if(isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+		else
+			to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	return TRUE
+
+/obj/item/clothing/gloves/yautja/proc/unlock_bracer(mob/wearer)
+	flags_item &= ~NODROP
+	flags_inventory &= ~CANTSTRIP
+	if(wearer)
+		if(!isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing its grip on your forearm."))
+		else
+			to_chat(wearer, SPAN_WARNING("With an angry blare, the bracer releases your forearm."))
 	return TRUE

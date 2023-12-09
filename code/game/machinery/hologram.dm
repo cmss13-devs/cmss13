@@ -59,12 +59,6 @@ Possible to do for anyone motivated enough:
 	Itegrate EMP effect to disable the unit.
 */
 
-
-// HOLOPAD MODE
-// 0 = RANGE BASED
-// 1 = AREA BASED
-var/const/HOLOPAD_MODE = 0
-
 /obj/structure/machinery/hologram/holopad
 	name = "\improper AI holopad"
 	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
@@ -142,8 +136,8 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
 	hologram.anchored = TRUE//So space wind cannot drag it.
 	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
-	hologram.SetLuminosity(2) //hologram lighting
-	SetLuminosity(2) //pad lighting
+	hologram.set_light(2) //hologram lighting
+	set_light(2) //pad lighting
 	icon_state = "holopad1"
 	A.holo = src
 	master = A//AI is the master.
@@ -151,14 +145,14 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	return 1
 
 /obj/structure/machinery/hologram/holopad/clear_holo()
-// hologram.SetLuminosity(0)//Clear lighting. //handled by the lighting controller when its ower is deleted
+// hologram.set_light(0)//Clear lighting. //handled by the lighting controller when its ower is deleted
 	if(hologram)
 		qdel(hologram)//Get rid of hologram.
 		hologram = null
 	if(master.holo == src)
 		master.holo = null
 	master = null//Null the master, since no-one is using it now.
-	SetLuminosity(0) //pad lighting (hologram lighting will be handled automatically since its owner was deleted)
+	set_light(0) //pad lighting (hologram lighting will be handled automatically since its owner was deleted)
 	icon_state = "holopad0"
 	use_power = USE_POWER_IDLE//Passive power usage.
 	return 1
@@ -167,16 +161,8 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	if(hologram)//If there is a hologram.
 		if(master && !master.stat && master.client && master.eyeobj)//If there is an AI attached, it's not incapacitated, it has a client, and the client eye is centered on the projector.
 			if(!(stat & NOPOWER))//If the  machine has power.
-				if((HOLOPAD_MODE == 0 && (get_dist(master.eyeobj, src) <= holo_range)))
+				if(get_dist(master.eyeobj, src) <= holo_range)
 					return 1
-
-				else if (HOLOPAD_MODE == 1)
-
-					var/area/holo_area = get_area(src)
-					var/area/eye_area = get_area(master.eyeobj)
-
-					if(eye_area in holo_area.master.related)
-						return 1
 
 		clear_holo()//If not, we want to get rid of the hologram.
 	return 1

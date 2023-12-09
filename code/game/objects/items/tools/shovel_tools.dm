@@ -151,7 +151,7 @@
 
 /obj/item/tool/shovel/proc/dump_shovel(atom/target, mob/user)
 	var/turf/T = target
-	to_chat(user, SPAN_NOTICE("you dump the [dirt_type_to_name(dirt_type)]!"))
+	to_chat(user, SPAN_NOTICE("You dump the [dirt_type_to_name(dirt_type)]!"))
 	playsound(user.loc, "rustle", 30, 1, 6)
 	if(dirt_type == DIRT_TYPE_SNOW)
 		var/obj/item/stack/snow/S = locate() in T
@@ -233,7 +233,7 @@
 /obj/item/tool/shovel/etool/attack_self(mob/user as mob)
 	folded = !folded
 	if(folded)
-		w_class = SIZE_MEDIUM
+		w_class = SIZE_SMALL
 		force = 2
 	else
 		w_class = SIZE_LARGE
@@ -242,7 +242,7 @@
 
 /obj/item/tool/shovel/etool/folded
 	folded = TRUE
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	force = 2
 	icon_state = "etool_c"
 	item_state = "etool_c"

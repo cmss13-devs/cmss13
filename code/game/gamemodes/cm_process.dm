@@ -39,16 +39,16 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_fallen_soldiers()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	fallen_list += fallen_list_cross
-	if(fallen_list.len)
+	GLOB.fallen_list += GLOB.fallen_list_cross
+	if(GLOB.fallen_list.len)
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("In Flanders fields...<br>")
 		dat += SPAN_CENTERBOLD("In memoriam of our fallen soldiers: <br>")
-		for(var/i = 1 to fallen_list.len)
-			if(i != fallen_list.len)
-				dat += "[fallen_list[i]], "
+		for(var/i = 1 to GLOB.fallen_list.len)
+			if(i != GLOB.fallen_list.len)
+				dat += "[GLOB.fallen_list[i]], "
 			else
-				dat += "[fallen_list[i]].<br>"
+				dat += "[GLOB.fallen_list[i]].<br>"
 		to_world("[dat]")
 
 
@@ -58,18 +58,18 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	if(LAZYLEN(xenomorphs) || LAZYLEN(dead_queens))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The xenomorph Queen(s) were:")
-		var/mob/M
+		var/mob/living/carbon/xenomorph/xeno_mob
 		for (var/msg in dead_queens)
 			dat += msg
-		for(var/datum/mind/X in xenomorphs)
-			if(!istype(X))
+		for(var/datum/mind/xeno_mind in xenomorphs)
+			if(!istype(xeno_mind))
 				continue
 
-			M = X.current
-			if(!M || !M.loc)
-				M = X.original
-			if(M && M.loc && isqueen(M) && M.stat != DEAD) // Dead queens handled separately
-				dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("(SURVIVED)")]"
+			xeno_mob = xeno_mind.current
+			if(!xeno_mob || !xeno_mob.loc)
+				xeno_mob = xeno_mind.original
+			if(xeno_mob && xeno_mob.loc && isqueen(xeno_mob) && xeno_mob.stat != DEAD) // Dead queens handled separately
+				dat += "<br>[xeno_mob.full_designation] was [xeno_mob] [SPAN_BOLDNOTICE("(SURVIVED)")]"
 
 		to_world("[dat]")
 
@@ -134,7 +134,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
 /datum/game_mode/proc/open_podlocks(podlock_id)
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == podlock_id && M.density)
 			M.open()
 

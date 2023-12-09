@@ -82,8 +82,8 @@
 				last_living_human = null
 				break
 			last_living_human = cur_human
-		if(last_living_human && (last_qm_callout + 2 MINUTES) < world.time)
-			last_qm_callout = world.time
+		if(last_living_human && (GLOB.last_qm_callout + 2 MINUTES) < world.time)
+			GLOB.last_qm_callout = world.time
 			// Tell the xenos where the human is.
 			xeno_announcement("I sense the last tallhost hiding in [get_area(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			// Tell the human he is the last guy.
@@ -104,7 +104,7 @@
 				delayer_armour.can_camo = FALSE //fuck you
 				to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
 			//tell the ghosts
-			announce_dchat("There is only one person left: [last_living_human.real_name].", last_living_human)
+			notify_ghosts(header = "Last Human", message = "There is only one person left: [last_living_human.real_name]!", source = last_living_human, action = NOTIFY_ORBIT)
 
 	var/death_message = species.death_message
 	if(HAS_TRAIT(src, TRAIT_HARDCORE))

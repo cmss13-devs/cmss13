@@ -34,7 +34,6 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
-	luminosity = 7
 	var/gunner_view_buff = 10
 
 	hardpoints_allowed = list(
@@ -257,8 +256,15 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	handle_direction(APC)
 	APC.update_icon()
 
+	return APC
+
 /obj/effect/vehicle_spawner/apc/unarmed/load_hardpoints(obj/vehicle/multitile/apc/V)
 	return
+
+/obj/effect/vehicle_spawner/apc/unarmed/broken/spawn_vehicle()
+	var/obj/vehicle/multitile/apc/apc = ..()
+	load_damage(apc)
+	apc.update_icon()
 
 //PRESET: default hardpoints, destroyed
 /obj/effect/vehicle_spawner/apc/unarmed/decrepit/spawn_vehicle()

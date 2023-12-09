@@ -5305,7 +5305,7 @@
 /area/prison/hanger/research)
 "aoj" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Research Landing Zone"
+	name = "LZ2: Research Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/prison/hanger/research)
@@ -15559,7 +15559,7 @@
 /area/prison/command/secretary_office)
 "aRX" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/sword/katana/replica,
 /turf/open/floor/wood,
 /area/prison/command/office)
 "aRY" = (
@@ -19201,7 +19201,7 @@
 /area/prison/hanger/main)
 "bcF" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
+	name = "LZ1: Hangar Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/prison/hanger/main)
@@ -88624,7 +88624,7 @@ amu
 amu
 amu
 amu
-aoj
+amu
 axz
 jDr
 uaW
@@ -89462,7 +89462,7 @@ amu
 amu
 amu
 amu
-amu
+aoj
 amu
 amu
 amu
@@ -99271,7 +99271,7 @@ aYM
 aYM
 aYM
 aYM
-bcF
+aYM
 btu
 blH
 bkt
@@ -100109,7 +100109,7 @@ aYM
 aYM
 aYM
 aYM
-aYM
+bcF
 aYM
 aYM
 aYM

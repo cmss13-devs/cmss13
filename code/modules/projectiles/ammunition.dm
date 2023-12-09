@@ -18,6 +18,8 @@ They're all essentially identical when it comes to getting the job done.
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_SLOW
 	throw_range = 6
+	ground_offset_x = 7
+	ground_offset_y = 6
 	var/default_ammo = /datum/ammo/bullet
 	var/caliber = null // This is used for matching handfuls to each other or whatever the mag is. Examples are" "12g" ".44" ".357" etc.
 	var/current_rounds = -1 //Set this to something else for it not to start with different initial counts.
@@ -50,8 +52,7 @@ They're all essentially identical when it comes to getting the job done.
 		if(0)
 			icon_state += "_e" //In case it spawns empty instead.
 			item_state += "_e"
-	pixel_y = rand(-6, 6)
-	pixel_x = rand(-7, 7)
+
 	if(ammo_band_color && ammo_band_icon)
 		update_ammo_band()
 
@@ -116,14 +117,17 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, bypass_hold_check = 0)
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/MG = I
-		if(MG.flags_magazine & AMMUNITION_HANDFUL) //got a handful of bullets
+		if((MG.flags_magazine & AMMUNITION_HANDFUL) || (MG.flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
 			if(flags_magazine & AMMUNITION_REFILLABLE) //and a refillable magazine
 				var/obj/item/ammo_magazine/handful/transfer_from = I
 				if(src == user.get_inactive_hand() || bypass_hold_check) //It has to be held.
 					if(default_ammo == transfer_from.default_ammo)
-						transfer_ammo(transfer_from,user,transfer_from.current_rounds) // This takes care of the rest.
-					else to_chat(user, "Those aren't the same rounds. Better not mix them up.")
-				else to_chat(user, "Try holding [src] before you attempt to restock it.")
+						if(transfer_ammo(transfer_from,user,transfer_from.current_rounds)) // This takes care of the rest.
+							to_chat(user, SPAN_NOTICE("You transfer rounds to [src] from [transfer_from]."))
+					else
+						to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
+				else
+					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
 
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)

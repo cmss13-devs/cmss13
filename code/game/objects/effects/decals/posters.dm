@@ -184,6 +184,12 @@
 	serial_number = pick(27,28,30,31)
 	.=..()
 
+/obj/structure/sign/poster/io
+	icon_state = "poster14"
+
+/obj/structure/sign/poster/io/Initialize()
+	serial_number = 14
+	. = ..()
 ////////////////
 //Hero Posters//
 ////////////////

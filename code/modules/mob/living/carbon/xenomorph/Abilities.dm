@@ -75,6 +75,7 @@
 	X.tunnel_delay = 1
 	addtimer(CALLBACK(src, PROC_REF(cooldown_end)), 4 MINUTES)
 	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
+	msg = replace_non_alphanumeric_plus(msg)
 	var/description
 	if(msg)
 		description = msg
@@ -207,9 +208,9 @@
 	if(msg)
 		log_say("PsychicWhisper: [key_name(X)]->[M.key] : [msg]")
 		if(!istype(M, /mob/living/carbon/xenomorph))
-			to_chat(M, SPAN_XENO("You hear a strange, alien voice in your head. \"[msg]\""))
+			to_chat(M, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[msg]\""))
 		else
-			to_chat(M, SPAN_XENO("You hear the voice of [X] resonate in your head. \"[msg]\""))
+			to_chat(M, SPAN_XENOQUEEN("You hear the voice of [X] resonate in your head. \"[msg]\""))
 		to_chat(X, SPAN_XENONOTICE("You said: \"[msg]\" to [M]"))
 	return ..()
 
@@ -234,9 +235,9 @@
 			continue
 		target_list += possible_target
 		if(!istype(possible_target, /mob/living/carbon/xenomorph))
-			to_chat(possible_target, SPAN_XENO("You hear a strange, alien voice in your head. \"[msg]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[msg]\""))
 		else
-			to_chat(possible_target, SPAN_XENO("You hear the voice of [X] resonate in your head. \"[msg]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [X] resonate in your head. \"[msg]\""))
 	if(!length(target_list))
 		return
 	var/targetstring = english_list(target_list)

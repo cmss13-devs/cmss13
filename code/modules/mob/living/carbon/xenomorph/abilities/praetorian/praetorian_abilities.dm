@@ -36,7 +36,7 @@
 
 	var/buff_duration = 12
 	var/damage = 40
-	var/shield_regen_threshold = 2
+	var/shield_regen_threshold = 1
 
 	var/activated_once = FALSE
 	var/time_until_timeout = 20
@@ -54,12 +54,14 @@
 	xeno_cooldown = 120
 
 	// Root config
-	var/root_duration_unbuffed = 5
-	var/root_duration_buffed = 12.5
+	var/root_duration_unbuffed = 1 SECONDS
+	var/root_duration_buffed = 2.5 SECONDS
 
 	// Fling config
 	var/fling_dist_unbuffed = 3
 	var/fling_dist_buffed = 6
+	var/stun_power = 0.5
+	var/weaken_power = 0.5
 
 	// Root or do a punch-like-effect.
 	var/root_toggle = TRUE

@@ -1,0 +1,5 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - balance: "You cannot plant eggs inside vehicles."
+  - balance: "Eggs can no longer be planted on tiles with objects that would obscure them."

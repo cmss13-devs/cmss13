@@ -191,17 +191,10 @@
 			fling_distance *= 0.1
 		vanguard_user.visible_message(SPAN_XENODANGER("[vanguard_user] deals [target_atom] a massive blow, sending them flying!"), SPAN_XENOHIGHDANGER("You deal [target_atom] a massive blow, sending them flying!"))
 		vanguard_user.flick_attack_overlay(target_carbon, "slam")
-
-		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cleave"))
-		var/throw_target = get_ranged_target_turf(target_atom, get_dir(vanguard_user, target_atom), fling_distance)
-		var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_throw_end), target_carbon))
-		target_carbon.throw_atom(throw_target, fling_distance, SPEED_VERY_FAST, end_throw_callbacks = end_throw_callbacks)
+		vanguard_user.throw_carbon(target_atom, null, fling_distance)
 
 	apply_cooldown()
 	return ..()
-
-/datum/action/xeno_action/activable/cleave/proc/on_throw_end(mob/living/carbon/target)
-	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cleave"))
 
 /datum/action/xeno_action/activable/cleave/proc/remove_buff()
 	buffed = FALSE

@@ -47,6 +47,8 @@
 	set_mode(SHUTTLE_IGNITING)
 	on_ignition()
 	setTimer(ignitionTime)
+	alarm_sound_loop.stop()
+	playing_launch_announcement_alarm = FALSE
 
 /obj/docking_port/mobile/crashable/lifeboat/crash_check()
 	. = ..()

@@ -734,7 +734,7 @@
 		end_throw_callbacks = list(CALLBACK(src, PROC_REF(throw_carbon_end), target))
 		ADD_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 
-	target.throw_atom(target_destination, distance, speed, src, end_throw_callbacks = end_throw_callbacks)
+	target.throw_atom(target_destination, distance, speed, src, spin = TRUE, end_throw_callbacks = end_throw_callbacks)
 	if(shake_camera)
 		shake_camera(target, 10, 1)
 

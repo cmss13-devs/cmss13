@@ -713,6 +713,17 @@
 /mob/living/carbon/xenomorph/lying_angle_on_lying_down(new_lying_angle)
 	return // Do not rotate xenos around on the floor, their sprite is already top-down'ish
 
+/**
+ * Helper procedure for throwing other carbon based mobs around
+ * Pretty much a wrapper to [/atom/movable/proc/throw_atom] with extra handling
+ *
+ * * target - the target carbon mob that will be thrown
+ * * direction - the direction the target will be thrown toward, or if null, infered from relative position with target
+ * * distance - the total distance the throw will be made for
+ * * speed - throw_atom relative speed of the throw, check [SPEED_AVERAGE] for details
+ * * shake_camera - whether to shake the thrown mob camera on throw
+ * * immobilize - if TRUE the mob will be immobilized during the throw, ensuring it doesn't move and break it
+ */
 /mob/living/carbon/xenomorph/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
 	if(!direction)
 		direction = get_dir(src, target)

@@ -20416,9 +20416,6 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
-"bIO" = (
-/turf/closed/wall/almayer/outer,
-/area)
 "bIR" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -100073,7 +100070,7 @@ kCT
 iRS
 mzo
 oFG
-bIO
+vRz
 aaa
 aaa
 aaa

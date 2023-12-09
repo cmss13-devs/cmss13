@@ -271,13 +271,6 @@
 	target.xeno_jitter(1 SECONDS)
 	target.flick_heal_overlay(3 SECONDS, "#44253d")
 
-	target.SetKnockDown(0)
-	target.SetStun(0)
-	target.SetKnockOut(0)
-	target.SetDaze(0)
-	target.SetSlow(0)
-	target.SetSuperslow(0)
-
 	target.visible_message(SPAN_XENONOTICE("[xeno] explodes in a deluge of regenerative resin salve, covering [target] in it!"))
 	xeno_message(SPAN_XENOANNOUNCE("[xeno] sacrifices itself to heal [target]!"), 2, target.hive.hivenumber)
 

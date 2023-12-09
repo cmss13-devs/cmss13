@@ -52,7 +52,7 @@
 				if(!(mob_to_act in target_mobs))
 					target_mobs += mob_to_act
 
-	source_xeno.visible_message(SPAN_XENODANGER("[source_xeno] slashes its tail through the area in front of it!"), SPAN_XENODANGER("You slash your tail through the area in front of you!"))
+	source_xeno.visible_message(SPAN_XENODANGER("[source_xeno] slashes its claws through the area in front of it!"), SPAN_XENODANGER("You slash your claws through the area in front of you!"))
 	source_xeno.animation_attack_on(targetted_atom, 15)
 
 	source_xeno.emote("roar")
@@ -67,6 +67,7 @@
 
 		current_mob.flick_attack_overlay(current_mob, "slash")
 		current_mob.apply_armoured_damage(get_xeno_damage_slash(current_mob, damage), ARMOR_MELEE, BRUTE, null, 20)
+		playsound(current_mob, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (source_xeno.mutation_type == PRAETORIAN_VANGUARD)

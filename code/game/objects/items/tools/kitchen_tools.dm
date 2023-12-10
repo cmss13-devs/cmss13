@@ -155,7 +155,7 @@
 
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
-	/*
+/*
  * Wood Pizza Cutter
  */
 /obj/item/tool/kitchen/woodpizzacutter

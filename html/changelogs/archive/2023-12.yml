@@ -193,3 +193,16 @@
   - soundadd: sound added to tablestun
   - sounddel: for disarms, whoosh only triggers on stun. otherwise, the miss sound
       plays
+2023-12-10:
+  Birdtalon:
+  - bugfix: Resting once again cancels xenomorph evolve.
+  SabreML:
+  - bugfix: Fixed resin walls/membranes showing a welder deconstruction hint.
+  Zonespace27:
+  - balance: You cannot plant eggs inside vehicles.
+  - balance: Eggs can no longer be planted on tiles with objects that would obscure
+      them.
+  harryob:
+  - bugfix: xenos can construct in dropships during transport again
+  ihatethisengine:
+  - rscadd: locking lifeboats open the docks

@@ -9282,11 +9282,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/telecomms)
 "aFj" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	density = 0;
+	pixel_y = 30
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -9328,8 +9326,12 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "aFo" = (
-/obj/structure/closet/secure_closet/personal/cabinet{
-	req_access = null
+/obj/structure/machinery/cm_vending/gear/executive_officer{
+	pixel_y = 30;
+	density = 0
+	},
+/obj/structure/machinery/power/apc/almayer{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -10522,6 +10524,9 @@
 /area/almayer/hallways/aft_hallway)
 "aKE" = (
 /obj/structure/machinery/light,
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = null
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/numbertwobunks)
 "aKF" = (
@@ -35165,8 +35170,7 @@
 "fuR" = (
 /obj/structure/bed/bedroll{
 	desc = "A bed of cotton fabric, purposely made for a cat to comfortably sleep on.";
-	name = "cat bed";
-	pixel_y = 0
+	name = "cat bed"
 	},
 /mob/living/simple_animal/cat/Jones{
 	dir = 8
@@ -42302,12 +42306,8 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/item/bedsheet/hop{
-	pixel_y = 0
-	},
-/obj/structure/bed{
-	pixel_y = 0
-	},
+/obj/item/bedsheet/hop,
+/obj/structure/bed,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "isC" = (
@@ -49167,13 +49167,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/cryo_cells)
-"lgK" = (
-/obj/structure/machinery/cm_vending/clothing/senior_officer{
-	density = 0;
-	pixel_y = 30
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/numbertwobunks)
 "lgX" = (
 /obj/structure/sign/safety/storage{
 	pixel_y = 32
@@ -55595,7 +55588,6 @@
 /area/almayer/command/lifeboat)
 "nKs" = (
 /obj/structure/machinery/cm_vending/clothing/dress{
-	pixel_y = 0;
 	req_access = list(1)
 	},
 /turf/open/floor/almayer{
@@ -70184,9 +70176,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "tMu" = (
-/obj/structure/machinery/cm_vending/clothing/commanding_officer{
-	pixel_y = 0
-	},
+/obj/structure/machinery/cm_vending/clothing/commanding_officer,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -71058,9 +71048,7 @@
 /area/almayer/shipboard/brig/evidence_storage)
 "ueD" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/cm_vending/gear/commanding_officer{
-	pixel_y = 0
-	},
+/obj/structure/machinery/cm_vending/gear/commanding_officer,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -76368,6 +76356,14 @@
 "wcn" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
+"wcK" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/numbertwobunks)
 "wcN" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -104826,7 +104822,7 @@ dum
 wVW
 wVW
 wVW
-lgK
+rvA
 aGZ
 awF
 cST
@@ -105637,7 +105633,7 @@ amO
 avj
 awF
 aFo
-aGY
+wcK
 rvA
 aqm
 awF

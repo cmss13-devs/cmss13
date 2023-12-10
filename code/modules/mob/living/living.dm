@@ -507,11 +507,7 @@
 //			REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 //			remove_from_alive_mob_list()
 //			add_to_dead_mob_list()
-
-// Only for layering updates when eg. xenos die
-/mob/living/death()
-	. = ..()
-	update_layer()
+	update_layer() // Force update layers so that lying down works as intended upon death. This is redundant otherwise. Replace this by trait signals
 
 /**
  * Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.
@@ -596,7 +592,7 @@
 	add_temp_pass_flags(PASS_MOB_THRU)
 	update_layer()
 
-/// Updates the layer the mob is on based on its current status
+/// Updates the layer the mob is on based on its current status. This can result in redundant updates. Replace by trait signals eventually
 /mob/living/proc/update_layer()
 	//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
 	if(pulledby && pulledby.grab_level == GRAB_CARRY)

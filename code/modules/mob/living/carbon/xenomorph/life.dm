@@ -524,6 +524,12 @@ Make sure their actual health updates immediately.*/
 	if(!gibbing)
 		med_hud_set_health()
 
+/mob/living/carbon/xenomorph/update_layer()
+	var/datum/action/xeno_action/onclick/xenohide/hide = get_xeno_action_by_type(src, /datum/action/xeno_action/onclick/xenohide)
+	if(hide)
+		hide.post_attack()
+	return ..()
+
 /mob/living/carbon/xenomorph/proc/handle_crit()
 	if(stat <= CONSCIOUS && !gibbing)
 		set_stat(UNCONSCIOUS)

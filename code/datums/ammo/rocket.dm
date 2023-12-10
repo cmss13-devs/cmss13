@@ -15,7 +15,7 @@
 
 	accuracy = HIT_ACCURACY_TIER_2
 	accurate_range = 7
-	max_range = 7
+	max_range = 7 
 	damage = 15
 	shell_speed = AMMO_SPEED_TIER_2
 

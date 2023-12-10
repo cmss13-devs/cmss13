@@ -136,6 +136,46 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /*
+ * Plastic Pizza Cutter
+ */
+/obj/item/tool/kitchen/plasticpizzacutter
+	name = "pizza cutter"
+	icon_state = "plasticpizzacutter"
+	desc = "A circular blade using for cutting pizzas. This one has a cheap plastic handle."
+	flags_atom = FPRINT|CONDUCT
+	sharp = IS_SHARP_ITEM_ACCURATE
+	edge = 1
+	force = 10
+	w_class = SIZE_MEDIUM
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	throwforce = 6
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 6
+	matter = list("metal" = 12000)
+
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+	/*
+ * Wood Pizza Cutter
+ */
+/obj/item/tool/kitchen/woodpizzacutter
+	name = "pizza cutter"
+	icon_state = "woodpizzacutter"
+	desc = "A circular blade using for cutting pizzas. This one has an authetnic wooden handle."
+	flags_atom = FPRINT|CONDUCT
+	sharp = IS_SHARP_ITEM_ACCURATE
+	edge = 1
+	force = 10
+	w_class = SIZE_MEDIUM
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	throwforce = 6
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 6
+	matter = list("metal" = 12000)
+
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/*
  * Bucher's cleaver
  */
 /obj/item/tool/kitchen/knife/butcher

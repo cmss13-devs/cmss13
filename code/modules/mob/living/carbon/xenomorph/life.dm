@@ -516,11 +516,11 @@ Make sure their actual health updates immediately.*/
 			else if(world.time > next_grace_time && stat == CONSCIOUS)
 				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
 				if(grace_time)
-					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 					addtimer(CALLBACK(src, PROC_REF(handle_crit)), grace_time)
 				else
 					handle_crit()
 				next_grace_time = world.time + grace_time
+		blinded = stat == UNCONSCIOUS // Xenos do not go blind from other sources - still, replace that by a status_effect or trait when able
 	if(!gibbing)
 		med_hud_set_health()
 

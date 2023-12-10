@@ -525,16 +525,15 @@ Make sure their actual health updates immediately.*/
 		med_hud_set_health()
 
 /mob/living/carbon/xenomorph/proc/handle_crit()
-	if(stat == DEAD || gibbing)
-		return
+	if(stat <= CONSCIOUS && !gibbing)
+		set_stat(UNCONSCIOUS)
 
-	sound_environment_override = SOUND_ENVIRONMENT_NONE
-	set_stat(UNCONSCIOUS)
-	blinded = TRUE
-	see_in_dark = 5
-	if(layer != initial(layer)) //Unhide
-		layer = initial(layer)
-	recalculate_move_delay = TRUE
+/mob/living/carbon/xenomorph/set_stat(new_stat)
+	. = ..()
+	// Temporarily force triggering HUD updates so they apply immediately rather than on Life tick.
+	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
+	if(stat != .)
+		handle_regular_hud_updates()
 
 /mob/living/carbon/xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0

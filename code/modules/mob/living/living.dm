@@ -508,6 +508,11 @@
 //			remove_from_alive_mob_list()
 //			add_to_dead_mob_list()
 
+// Only for layering updates when eg. xenos die
+/mob/living/death()
+	. = ..()
+	update_layer()
+
 /**
  * Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.
  *
@@ -589,12 +594,16 @@
 	drop_l_hand()
 	drop_r_hand()
 	add_temp_pass_flags(PASS_MOB_THRU)
+	update_layer()
+
+/// Updates the layer the mob is on based on its current status
+/mob/living/proc/update_layer()
 	//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
 	if(pulledby && pulledby.grab_level == GRAB_CARRY)
 		layer = ABOVE_MOB_LAYER
-	else if (stat == DEAD)
+	else if (body_position == LYING_DOWN && stat == DEAD)
 		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
-	else if(layer == initial(layer)) //to avoid things like hiding larvas.
+	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas. //i have no idea what this means
 		layer = LYING_LIVING_MOB_LAYER
 
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.

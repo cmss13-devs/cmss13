@@ -111,7 +111,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 		if(isqueen(user))
 			if(timing && GLOB.bomb_set)
-				user.visible_message(SPAN_INFO("[user] begins to defuse \the [src]."), SPAN_INFO("You begin to defuse \the [src]. This will take some time..."))
+				user.visible_message(SPAN_INFO("[user] begins covering \the [src] with resin."), SPAN_INFO("You start covering \the [src] with resin. This will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 					disable()
 			return
@@ -337,9 +337,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		//xenos part
 		var/warning
 		if(timer_warning & NUKE_SHOW_TIMER_HALF)
-			warning = "A shiver goes down our carapace as we feel the approaching end...the Hive killer is halfway through it's preparation cycle!"
+			warning = "A shiver goes down our carapace as we feel the approaching end...the hive killer is halfway through it's preparation cycle!"
 		else if(timer_warning & NUKE_SHOW_TIMER_MINUTE)
-			warning = "Every sense in our form is screaming.... the hive killer is almost ready to trigger!"
+			warning = "Every sense in our form is screaming... the hive killer is almost ready to trigger!"
 		else
 			warning = "DISABLE IT! NOW!"
 		var/datum/hive_status/hive
@@ -364,7 +364,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	else
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human Purification Device's signature has disappeared."))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human purification device's signature has disappeared."))
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(!hive.totalXenos.len)

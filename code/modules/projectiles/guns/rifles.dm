@@ -1949,25 +1949,26 @@
 	return in_chamber
 
 /obj/item/weapon/gun/rifle/xm51/reload_into_chamber(mob/user) //Don't chamber bullets after firing.
-	if(current_mag)
-		in_chamber = null
-		if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
-			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
-				update_icon()
-			else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
-				var/drop_to_ground = TRUE
-				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
-					drop_to_ground = FALSE
-					unwield(user)
-					user.swap_hand()
-				unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
-				playsound(src, empty_sound, 25, 1)
-		if(gun_firemode == GUN_FIREMODE_BURSTFIRE & burst_count < burst_amount - 1) //Fire two (or more) shots in a burst without having to pump.
-			ready_in_chamber()
-			burst_count++
-			return in_chamber
-	else
+	if(!current_mag)
 		update_icon()
+		return
+
+	in_chamber = null
+	if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
+		if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
+			update_icon()
+		else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
+			var/drop_to_ground = TRUE
+			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
+				drop_to_ground = FALSE
+				unwield(user)
+				user.swap_hand()
+			unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
+			playsound(src, empty_sound, 25, 1)
+	if(gun_firemode == GUN_FIREMODE_BURSTFIRE & burst_count < burst_amount - 1) //Fire two (or more) shots in a burst without having to pump.
+		ready_in_chamber()
+		burst_count++
+		return in_chamber
 
 /obj/item/weapon/gun/rifle/xm51/replace_magazine(mob/user, obj/item/ammo_magazine/magazine) //Don't chamber a round when reloading.
 	user.drop_inv_item_to_loc(magazine, src) //Click!

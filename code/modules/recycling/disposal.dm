@@ -195,7 +195,7 @@
 		return FALSE //Need a firm grip to put someone else in there.
 
 	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || user.is_mob_incapacitated(TRUE) || isRemoteControlling(user) || target.mob_size >= MOB_SIZE_BIG)
-		to_chat(user, SPAN_WARNING("You cannot get into the [src]!"))
+		to_chat(user, SPAN_WARNING("You cannot get into [src]!"))
 		return FALSE
 	add_fingerprint(user)
 	var/target_loc = target.loc

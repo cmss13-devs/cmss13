@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added disguisable listening bugs/devices. MPs have two outside CMP office, the CL has two in their bedroom."
-  - bugfix: "Fixes incorrect frequencies being used to display channel names on radios."
-  - bugfix: "Radios and tape recorders placed on tables or placed inside webbing can now hear speech again."

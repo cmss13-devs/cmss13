@@ -127,7 +127,7 @@
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
 	if(behavior.empower_targets < behavior.super_empower_threshold)
 		return
-	xeno.visible_message(SPAN_XENODANGER("The [xeno] uses its shield to bash [human] as it charges at them!"), SPAN_XENODANGER("You use your shield to bash [human] as you charge at them!"))
+	xeno.visible_message(SPAN_XENODANGER("[xeno] uses its shield to bash [human] as it charges at them!"), SPAN_XENODANGER("You use your shield to bash [human] as you charge at them!"))
 	human.apply_effect(behavior.knockdown_amount, WEAKEN)
 	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 
@@ -170,8 +170,9 @@
 
 	for (var/step in 0 to 3)
 		temp = get_step(turf, facing)
-		if(facing in diagonals) // check if it goes through corners
-			var/reverse_face = reverse_dir[facing]
+		if(facing in GLOB.diagonals) // check if it goes through corners
+			var/reverse_face = GLOB.reverse_dir[facing]
+
 			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
 			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
 			if((!back_left || back_left.density) && (!back_right || back_right.density))
@@ -387,7 +388,6 @@
 
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = TRUE
-	xeno.update_canmove()
 
 	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		xeno.emote("roar")
@@ -432,7 +432,6 @@
 
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = FALSE
-	xeno.update_canmove()
 
 	return ..()
 
@@ -518,7 +517,7 @@
 			return
 		behavior.use_shards(shard_cost)
 
-	xeno.visible_message(SPAN_XENOWARNING("The [xeno] fires their spikes at [affected_atom]!"), SPAN_XENOWARNING("You fire your spikes at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires their spikes at [affected_atom]!"), SPAN_XENOWARNING("You fire your spikes at [affected_atom]!"))
 
 	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))
@@ -565,7 +564,7 @@
 		behavior.use_shards(shard_cost)
 		behavior.lock_shards()
 
-	xeno.visible_message(SPAN_XENOWARNING("The [xeno] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("You shed your spikes, firing them in all directions!!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("You shed your spikes, firing them in all directions!!"))
 	xeno.spin_circle()
 	create_shrapnel(get_turf(xeno), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(xeno.caste_type), owner), TRUE)
 	playsound(xeno, 'sound/effects/spike_spray.ogg', 25, 1)

@@ -1,5 +1,5 @@
-var/global/list/gear_datums_by_category = list()
-var/global/list/gear_datums_by_name = list()
+GLOBAL_LIST_EMPTY(gear_datums_by_category)
+GLOBAL_LIST_EMPTY(gear_datums_by_name)
 
 /proc/populate_gear_list()
 	var/datum/gear/G
@@ -10,11 +10,11 @@ var/global/list/gear_datums_by_name = list()
 		if(!G.category)
 			log_debug("Improper gear datum: [gear_type].")
 			continue
-		if(G.display_name in gear_datums_by_name)
+		if(G.display_name in GLOB.gear_datums_by_name)
 			log_debug("Duplicate gear datum name: [G.display_name].")
 			continue
-		LAZYSET(gear_datums_by_category[G.category], "[G.display_name] [G.cost == 1 ? "(1 point)" : "([G.cost] points)"]", G)
-		gear_datums_by_name[G.display_name] = G
+		LAZYSET(GLOB.gear_datums_by_category[G.category], "[G.display_name] [G.cost == 1 ? "(1 point)" : "([G.cost] points)"]", G)
+		GLOB.gear_datums_by_name[G.display_name] = G
 
 /datum/gear
 	var/display_name  // Name/index.
@@ -160,6 +160,18 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/mask/uscm/balaclava_tan
 	display_name = "USCM balaclava, tan"
 	path = /obj/item/clothing/mask/rebreather/scarf/tan
+
+/datum/gear/mask/uscm/skull_balaclava_blue
+	display_name = "USCM balaclava, blue skull"
+	path = /obj/item/clothing/mask/rebreather/skull
+	cost = 4 //same as skull facepaint
+	slot = WEAR_FACE
+
+/datum/gear/mask/uscm/skull_balaclava_black
+	display_name = "USCM balaclava, black skull"
+	path = /obj/item/clothing/mask/rebreather/skull/black
+	cost = 4
+	slot = WEAR_FACE
 
 /datum/gear/headwear
 	category = "Headwear"
@@ -350,7 +362,7 @@ var/global/list/gear_datums_by_name = list()
 	path = /obj/item/prop/helmetgarb/trimmed_wire
 
 /datum/gear/helmet_garb/bullet_pipe
-	display_name = "10x99mm XM42B casing pipe"
+	display_name = "10x99mm XM43E1 casing pipe"
 	path = /obj/item/prop/helmetgarb/bullet_pipe
 	allowed_origins = USCM_ORIGINS
 
@@ -875,6 +887,11 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/misc/facepaint_black
 	display_name = "Facepaint, black"
 	path = /obj/item/facepaint/black
+
+/datum/gear/misc/facepaint_skull
+	display_name = "Facepaint, skull"
+	path = /obj/item/facepaint/skull
+	cost = 3 
 
 /datum/gear/misc/facepaint_body
 	display_name = "Fullbody paint"

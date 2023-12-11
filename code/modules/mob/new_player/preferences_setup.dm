@@ -198,6 +198,16 @@
 
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
+	// If the dummy was equipped with marine armor.
+	var/jacket = preview_dummy.get_item_by_slot(WEAR_JACKET)
+	if(istype(jacket, /obj/item/clothing/suit/storage/marine))
+		var/obj/item/clothing/suit/storage/marine/armor = jacket
+		// If the armor has different sprite variants.
+		if(armor.armor_variation)
+			// Set its `icon_state` to the style the player picked as their 'Preferred Armor'.
+			armor.set_armor_style(preferred_armor)
+			armor.update_icon(preview_dummy)
+
 	if(isnull(preview_front))
 		preview_front = new()
 		owner.add_to_screen(preview_front)
@@ -237,9 +247,9 @@
 		if(JOB_SQUAD_TEAM_LEADER)
 			return /datum/equipment_preset/uscm/tl_equipped
 		if(JOB_CO)
-			if(length(RoleAuthority.roles_whitelist))
-				var/datum/job/J = RoleAuthority.roles_by_name[JOB_CO]
-				return J.gear_preset_whitelist["[JOB_CO][J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"]
+			if(length(GLOB.RoleAuthority.roles_whitelist))
+				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_CO]
+				return J.gear_preset_whitelist["[JOB_CO][J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, owner)]"]
 			return /datum/equipment_preset/uscm_ship/commander
 		if(JOB_SO)
 			return /datum/equipment_preset/uscm_ship/so
@@ -258,9 +268,9 @@
 		if(JOB_COMBAT_REPORTER)
 			return /datum/equipment_preset/uscm_ship/reporter
 		if(JOB_SYNTH)
-			if(length(RoleAuthority.roles_whitelist))
-				var/datum/job/J = RoleAuthority.roles_by_name[JOB_SYNTH]
-				return J.gear_preset_whitelist["[JOB_SYNTH][J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"]
+			if(length(GLOB.RoleAuthority.roles_whitelist))
+				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_SYNTH]
+				return J.gear_preset_whitelist["[JOB_SYNTH][J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, owner)]"]
 			return /datum/equipment_preset/synth/uscm
 		if(JOB_WORKING_JOE)
 			return /datum/equipment_preset/synth/working_joe
@@ -307,9 +317,9 @@
 				return pick(SSmapping.configs[GROUND_MAP].CO_survivor_types)
 			return /datum/equipment_preset/uscm_ship/commander
 		if(JOB_PREDATOR)
-			if(length(RoleAuthority.roles_whitelist))
-				var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
-				return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"]
+			if(length(GLOB.RoleAuthority.roles_whitelist))
+				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+				return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, owner)]"]
 			return /datum/equipment_preset/yautja/blooded
 
 	return /datum/equipment_preset/uscm/private_equipped

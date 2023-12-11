@@ -374,7 +374,7 @@
 // Hellhound strain flags
 #define HELLHOUND_NORMAL "Normal"
 
-var/list/default_onmob_icons = list(
+GLOBAL_LIST_INIT(default_onmob_icons, list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/belt.dmi',
@@ -393,9 +393,9 @@ var/list/default_onmob_icons = list(
 		WEAR_HANDS = 'icons/mob/humans/onmob/hands.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/suit_slot.dmi',
 		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/ties.dmi'
-		)
+		))
 
-var/list/default_xeno_onmob_icons = list(
+GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 		/mob/living/carbon/xenomorph/runner = 'icons/mob/xenos/onmob/runner.dmi',
 		/mob/living/carbon/xenomorph/praetorian = 'icons/mob/xenos/onmob/praetorian.dmi',
 		/mob/living/carbon/xenomorph/drone = 'icons/mob/xenos/onmob/drone.dmi',
@@ -403,7 +403,7 @@ var/list/default_xeno_onmob_icons = list(
 		/mob/living/carbon/xenomorph/defender = 'icons/mob/xenos/onmob/defender.dmi',
 		/mob/living/carbon/xenomorph/sentinel = 'icons/mob/xenos/onmob/sentinel.dmi',
 		/mob/living/carbon/xenomorph/spitter = 'icons/mob/xenos/onmob/spitter.dmi'
-		)
+		))
 
 // species names
 #define SPECIES_HUMAN "Human"
@@ -417,4 +417,33 @@ var/list/default_xeno_onmob_icons = list(
 #define HANDLING_LIMBS list("l_arm","l_hand", "r_arm", "r_hand")
 #define EXTREMITY_LIMBS list("l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 #define CORE_LIMBS list("chest","head","groin")
+
+#define SYMPTOM_ACTIVATION_PROB 3
+
+// Body position defines.
+/// Mob is standing up, usually associated with lying_angle value of 0.
+#define STANDING_UP 0
+/// Mob is lying down, usually associated with lying_angle values of 90 or 270.
+#define LYING_DOWN 1
+
+/// Possible value of [/atom/movable/buckle_lying]. If set to a different (positive-or-zero) value than this, the buckling thing will force a lying angle on the buckled.
+#define NO_BUCKLE_LYING -1
+
+// ====================================
+// /mob/living  /tg/  mobility_flags
+// These represent in what capacity the mob is capable of moving
+// Because porting this is underway, NOT ALL FLAGS ARE CURRENTLY IN.
+
+/// can move
+#define MOBILITY_MOVE (1<<0)
+/// can, and is, standing up
+#define MOBILITY_STAND (1<<1)
+/// can rest
+#define MOBILITY_REST (1<<7)
+/// can lie down
+#define MOBILITY_LIEDOWN (1<<8)
+
+#define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND)
+#define MOBILITY_FLAGS_CARBON_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
+#define MOBILITY_FLAGS_REST_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
 

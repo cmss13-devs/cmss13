@@ -219,14 +219,6 @@
 
 	return 0
 
-
-/mob/living/carbon/human/has_legs()
-	. = 0
-	if(has_limb("r_foot") && has_limb("r_leg"))
-		.++
-	if(has_limb("l_foot") && has_limb("l_leg"))
-		.++
-
 /mob/living/carbon/human/proc/disable_special_flags()
 	status_flags |= CANPUSH
 	anchored = FALSE

@@ -359,7 +359,7 @@
 	if(!user || !dead) return
 
 	if(closed_system)
-		to_chat(user, "You can't remove the dead plant while the lid is shut.")
+		to_chat(user, SPAN_WARNING("You can't remove the dead plant while the lid is shut."))
 		return
 
 	seed = null
@@ -369,10 +369,9 @@
 	yield_mod = 0
 	mutation_mod = 0
 
-	to_chat(user, "You remove the dead plant from the [src].")
+	to_chat(user, SPAN_NOTICE("You remove the dead plant from [src]."))
 	check_level_sanity()
 	update_icon()
-	return
 
 //Refreshes the icon and sets the luminosity
 /obj/structure/machinery/portable_atmospherics/hydroponics/update_icon()
@@ -426,7 +425,7 @@
 
 	//Remove the seed if something is already planted.
 	if(seed) seed = null
-	seed = seed_types[pick(list("mushrooms","plumphelmet","harebells","poppies","grass","weeds"))]
+	seed = GLOB.seed_types[pick(list("mushrooms","plumphelmet","harebells","poppies","grass","weeds"))]
 	if(!seed) return //Weed does not exist, someone fucked up.
 
 	dead = 0
@@ -456,7 +455,7 @@
 	// We need to make sure we're not modifying one of the global seed datums.
 	// If it's not in the global list, then no products of the line have been
 	// harvested yet and it's safe to assume it's restricted to this tray.
-	if(!isnull(seed_types[seed.name]))
+	if(!isnull(GLOB.seed_types[seed.name]))
 		seed = seed.diverge()
 	seed.mutate(severity,get_turf(src))
 
@@ -481,8 +480,8 @@
 
 	var/previous_plant = seed.display_name
 	var/newseed = seed.get_mutant_variant()
-	if(newseed in seed_types)
-		seed = seed_types[newseed]
+	if(newseed in GLOB.seed_types)
+		seed = GLOB.seed_types[newseed]
 	else
 		return
 
@@ -593,7 +592,7 @@
 	else if (istype(O, /obj/item/tool/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
-			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from the [src]."))
+			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from [src]."))
 			weedlevel = 0
 			update_icon()
 		else

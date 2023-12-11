@@ -318,20 +318,20 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(isnull(address) || (address in localhost_addresses))
 			var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
 			admin.associate(src)
-			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
+			GLOB.RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
 	//Admin Authorisation
-	admin_holder = admin_datums[ckey]
+	admin_holder = GLOB.admin_datums[ckey]
 	if(admin_holder)
 		admin_holder.associate(src)
 	notify_login()
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
-	prefs = preferences_datums[ckey]
+	prefs = GLOB.preferences_datums[ckey]
 	if(QDELETED(prefs) || !istype(prefs))
 		prefs = new /datum/preferences(src)
-		preferences_datums[ckey] = prefs
+		GLOB.preferences_datums[ckey] = prefs
 	prefs.client_reconnected(src)
 	prefs.last_ip = address //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 
-	view = world_view_size
+	view = GLOB.world_view_size
 	. = ..() //calls mob.Login()
 
 	if(SSinput.initialized)
@@ -405,10 +405,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			CEI = GLOB.custom_event_info_list[mob.faction]
 			CEI.show_player_event_info(src)
 
-	if( (world.address == address || !address) && !host )
-		host = key
-		world.update_status()
-
 	connection_time = world.time
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
 
@@ -442,7 +438,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	load_player_data()
 
-	view = world_view_size
+	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
 
@@ -534,17 +530,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /proc/setup_player_entity(ckey)
 	if(!ckey)
 		return
-	if(player_entities["[ckey]"])
-		return player_entities["[ckey]"]
+	if(GLOB.player_entities["[ckey]"])
+		return GLOB.player_entities["[ckey]"]
 	var/datum/entity/player_entity/P = new()
 	P.ckey = ckey
 	P.name = ckey
-	player_entities["[ckey]"] = P
+	GLOB.player_entities["[ckey]"] = P
 	// P.setup_save(ckey)
 	return P
 
 /proc/save_player_entities()
-	for(var/key_ref in player_entities)
+	for(var/key_ref in GLOB.player_entities)
 		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
@@ -799,3 +795,50 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		xeno_prefix = "XX"
 	if(!xeno_postfix || xeno_name_ban)
 		xeno_postfix = ""
+
+/// playtime for all castes
+/client/proc/get_total_xeno_playtime(skip_cache = FALSE)
+	if(cached_xeno_playtime && !skip_cache)
+		return cached_xeno_playtime
+
+	var/total_xeno_playtime = 0
+
+	for(var/caste in GLOB.RoleAuthority.castes_by_name)
+		total_xeno_playtime += get_job_playtime(src, caste)
+
+	total_xeno_playtime += get_job_playtime(src, JOB_XENOMORPH)
+
+	if(player_entity)
+		var/past_xeno_playtime = player_entity.get_playtime(STATISTIC_XENO)
+		if(past_xeno_playtime)
+			total_xeno_playtime += past_xeno_playtime
+
+
+	cached_xeno_playtime = total_xeno_playtime
+
+	return total_xeno_playtime
+
+/// playtime for drone and drone evolution castes
+/client/proc/get_total_drone_playtime()
+	var/total_drone_playtime = 0
+
+	var/list/drone_evo_castes = list(XENO_CASTE_DRONE, XENO_CASTE_CARRIER, XENO_CASTE_BURROWER, XENO_CASTE_HIVELORD, XENO_CASTE_QUEEN)
+
+	for(var/caste in GLOB.RoleAuthority.castes_by_name)
+		if(!(caste in drone_evo_castes))
+			continue
+		total_drone_playtime += get_job_playtime(src, caste)
+
+	return total_drone_playtime
+
+/// playtime for t3 castes and queen
+/client/proc/get_total_t3_playtime()
+	var/total_t3_playtime = 0
+	var/datum/caste_datum/caste
+	for(var/caste_name in GLOB.RoleAuthority.castes_by_name)
+		caste = GLOB.RoleAuthority.castes_by_name[caste_name]
+		if(caste.tier < 3)
+			continue
+		total_t3_playtime += get_job_playtime(src, caste_name)
+
+	return total_t3_playtime

@@ -4,7 +4,6 @@
 	icon = 'icons/obj/structures/machinery/ai.dmi'
 	icon_state = "hydra"
 	anchored = TRUE
-	canmove = 0
 	density = TRUE //Do not want to see past it.
 	bound_height = 64 //putting this in so we can't walk through our machine.
 	bound_width = 96
@@ -21,13 +20,14 @@
 	name = MAIN_AI_SYSTEM
 	desc = "This is the artificial intelligence system for the [MAIN_SHIP_NAME]. Like many other military-grade AI systems, this one was manufactured by Weyland-Yutani."
 	ai_headset = new(src)
-	ai_mob_list += src
+	GLOB.ai_mob_list += src
 	real_name = MAIN_AI_SYSTEM
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 
 /mob/living/silicon/decoy/ship_ai/Destroy()
 	QDEL_NULL(ai_headset)
 #ifdef UNIT_TESTS
-	ai_mob_list -= src // Or should we always remove them?
+	GLOB.ai_mob_list -= src // Or should we always remove them?
 #endif
 	return ..()
 
@@ -76,7 +76,7 @@
 
 	if(length(message) >= 2)
 		var/channel_prefix = copytext(message, 1 ,3)
-		channel_prefix = department_radio_keys[channel_prefix]
+		channel_prefix = GLOB.department_radio_keys[channel_prefix]
 		if(channel_prefix) return channel_prefix
 
 

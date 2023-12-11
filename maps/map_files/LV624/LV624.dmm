@@ -5862,7 +5862,7 @@
 /area/lv624/ground/river/west_river)
 "aBo" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Robotics Landing Zone"
+	name = "LZ2: Robotics Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -8590,7 +8590,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aLz" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Nexus Landing Zone"
+	name = "LZ1: Nexus Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -9229,12 +9229,6 @@
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
 /obj/item/clothing/suit/armor/vest/security,
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Secure Inner Doors";
-	pixel_x = 25;
-	pixel_y = 5
-	},
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -11199,32 +11193,11 @@
 /obj/item/ore/silver,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
-"aWb" = (
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Secure Inner Doors";
-	pixel_x = 25;
-	pixel_y = 5
-	},
-/obj/structure/machinery/door_control{
-	id = "secure_outer_blast";
-	name = "Secure Outer Doors";
-	pixel_x = 25;
-	pixel_y = -5
-	},
-/turf/open/floor/greengrid,
-/area/lv624/lazarus/secure_storage)
 "aWc" = (
 /obj/structure/computerframe{
 	anchored = 1
 	},
-/obj/structure/machinery/door_control{
-	id = "secure_outer_blast";
-	name = "Secure Outer Doors";
-	pixel_x = 25;
-	pixel_y = -5
-	},
-/turf/open/floor/greengrid,
+/turf/open/floor/plating,
 /area/lv624/lazarus/secure_storage)
 "aWd" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
@@ -11342,24 +11315,7 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"aWu" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	id = "secure_inner_blast";
-	layer = 3.3;
-	name = "\improper Secure Armory Blast Door";
-	unacidable = 1
-	},
-/turf/open/floor/greengrid,
-/area/lv624/lazarus/secure_storage)
 "aWv" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	id = "secure_outer_blast";
-	layer = 3.3;
-	name = "\improper Secure Armory Blast Door";
-	unacidable = 1
-	},
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
@@ -13900,6 +13856,10 @@
 "dLY" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
+"dMc" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/south_central_jungle)
 "dMF" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -14051,6 +14011,9 @@
 	icon_state = "bot"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
+"ebr" = (
+/turf/open/gm/dirtgrassborder/east,
+/area/lv624/ground/jungle/south_central_jungle)
 "ebS" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/east,
@@ -17042,6 +17005,10 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
+"ksM" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/south_central_jungle)
 "ksQ" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical{
@@ -17189,6 +17156,10 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/quartstorage)
+"kBq" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+/area/lv624/ground/jungle/south_west_jungle)
 "kCD" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -18026,6 +17997,9 @@
 	icon_state = "grass1"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
+"mkn" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/secure_storage)
 "mko" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/north,
@@ -21614,6 +21588,11 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
+"sWk" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/secure_storage)
 "sWy" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/grass1,
@@ -22728,6 +22707,10 @@
 "uWJ" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/south_west_caves)
+"uXV" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/south_central_jungle)
 "uXW" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor/wood{
@@ -23192,6 +23175,10 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
+"vUj" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/south_west_jungle)
 "vUw" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
@@ -23205,6 +23192,9 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
+"vVe" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/lv624/ground/jungle/south_central_jungle)
 "vVf" = (
 /turf/open/floor{
 	dir = 5;
@@ -23510,18 +23500,6 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
-"wAe" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Secure Inner Doors";
-	pixel_x = -25;
-	pixel_y = 5
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/research)
 "wAF" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 1
@@ -24147,6 +24125,11 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
+"xLT" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/secure_storage)
 "xNi" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/grass_overlay/grass1{
@@ -24157,6 +24140,10 @@
 "xNK" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
+"xNQ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirtgrassborder/east,
+/area/lv624/ground/jungle/south_central_jungle)
 "xPk" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/colony/south_medbay_road)
@@ -33500,10 +33487,10 @@ aTf
 aTf
 aTf
 aUQ
-aWb
 aUQ
 aUQ
 aUQ
+sWk
 aUQ
 aUQ
 aTf
@@ -33729,11 +33716,11 @@ aTf
 aTf
 aTf
 aTf
-aWu
-aWu
-aWu
-aTf
-aTf
+mkn
+xLT
+mkn
+xLT
+sWk
 aTf
 aTf
 aXh
@@ -33957,13 +33944,13 @@ efp
 aTf
 aTf
 aWc
-aUQ
-aUQ
-aUQ
-aTf
-aTf
-aTf
-cWm
+mkn
+mkn
+sWk
+mkn
+mkn
+xLT
+kBq
 aXh
 aXh
 aKb
@@ -34185,13 +34172,13 @@ efp
 efp
 aTf
 aTf
+xLT
 aWv
 aWv
-aWv
-aTf
-aXh
-aXh
-aXh
+xLT
+xTT
+xTT
+vUj
 qGH
 aLj
 aXk
@@ -34416,10 +34403,10 @@ uSq
 qIO
 qIO
 qIO
-ntL
-mnK
-kxI
-wkP
+qIO
+uXV
+qtj
+dMc
 knp
 iIU
 kZw
@@ -34644,10 +34631,10 @@ uSq
 njC
 qIO
 qIO
-ntL
-kxI
-tsa
-kxI
+qIO
+qtj
+qtj
+ksM
 rox
 wqz
 kZw
@@ -34873,9 +34860,9 @@ hDX
 qIO
 qIO
 aXH
-kxI
-gGd
-kxI
+ebr
+xNQ
+vVe
 kxI
 wbK
 rHp
@@ -41666,7 +41653,7 @@ auV
 atU
 avE
 atp
-wAe
+awr
 atU
 axH
 aum

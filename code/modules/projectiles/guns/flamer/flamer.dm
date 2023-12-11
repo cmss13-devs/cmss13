@@ -375,29 +375,6 @@
 	. = ..()
 	set_fire_delay(FIRE_DELAY_TIER_7)
 
-GLOBAL_LIST_EMPTY(flamer_particles)
-/particles/flamer_fire
-	icon = 'icons/effects/particles/fire.dmi'
-	icon_state = "bonfire"
-	width = 100
-	height = 100
-	count = 1000
-	spawning = 8
-	lifespan = 0.7 SECONDS
-	fade = 1 SECONDS
-	grow = -0.01
-	velocity = list(0, 0)
-	position = generator("box", list(-16, -16), list(16, 16), NORMAL_RAND)
-	drift = generator("vector", list(0, -0.2), list(0, 0.2))
-	gravity = list(0, 0.95)
-	scale = generator("vector", list(0.3, 0.3), list(1,1), NORMAL_RAND)
-	rotation = 30
-	spin = generator("num", -20, 20)
-
-/particles/flamer_fire/New(set_color)
-	..()
-	color = set_color
-
 /obj/flamer_fire
 	name = "fire"
 	desc = "Ouch!"
@@ -454,14 +431,11 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	set_light(l_color = R.burncolor)
 
-	if(!GLOB.flamer_particles[R.burncolor])
-		GLOB.flamer_particles[R.burncolor] = new /particles/flamer_fire(R.burncolor)
-	particles = GLOB.flamer_particles[R.burncolor]
-
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
 
-	tied_reagents = obj_reagents
+	if(obj_reagents)
+		tied_reagents = obj_reagents
 
 	target_clicked = target
 
@@ -731,7 +705,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	if(target.density)
 		return
 
-	for(var/spread_direction in alldirs)
+	for(var/spread_direction in GLOB.alldirs)
 
 		var/spread_power = remaining_distance
 
@@ -777,7 +751,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	fire_reag.burncolor = f_color
 
 	new/obj/flamer_fire(target, cause_data, fire_reag)
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		var/spread_power = range
 		switch(direction)
 			if(NORTH,SOUTH,EAST,WEST)

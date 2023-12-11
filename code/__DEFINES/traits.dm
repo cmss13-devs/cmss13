@@ -143,10 +143,20 @@
 // #define TRAIT_X "t_x"
 
 //-- mob traits --
-/// Prevents voluntary movement.
-#define TRAIT_IMMOBILIZED "immobilized"
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
+/// Forces the user to stay unconscious.
+#define TRAIT_KNOCKEDOUT "knockedout"
+/// Prevents voluntary movement.
+#define TRAIT_IMMOBILIZED "immobilized"
+/// Prevents voluntary standing or staying up on its own.
+#define TRAIT_FLOORED "floored"
+/// Forces user to stay standing
+#define TRAIT_FORCED_STANDING "forcedstanding"
+/// Stuns preventing movement and using objects but without further impairement
+#define TRAIT_INCAPACITATED "incapacitated"
+/// Apply this to identify a mob as merged with weeds
+#define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -296,7 +306,10 @@ GLOBAL_LIST_INIT(mob_traits, list(
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob = list(
+		"TRAIT_KNOCKEDOUT" = TRAIT_KNOCKEDOUT,
 		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
+		"TRAIT_INCAPACITATED" = TRAIT_INCAPACITATED,
+		"TRAIT_FLOORED" = TRAIT_FLOORED,
 		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
@@ -414,13 +427,39 @@ GLOBAL_LIST(trait_name_map)
 //Status trait coming from clothing.
 #define TRAIT_SOURCE_CLOTHING "t_s_clothing"
 
-/// traits associated with actively interacted machinery
-#define INTERACTION_TRAIT "interaction"
+/// trait associated to being buckled
+#define BUCKLED_TRAIT "buckled" // Yes the name doesn't conform. /tg/ appears to have changed naming style inbetween
+/// trait source when an effect is coming from a fakedeath effect (refactor this)
+#define FAKEDEATH_TRAIT "fakedeath"
+/// trait source where a condition comes from body state
+#define BODY_TRAIT "body"
+/// Trait associated to lying down (having a [lying_angle] of a different value than zero).
+#define LYING_DOWN_TRAIT "lying-down"
+/// trait associated to a stat value or range of
+#define STAT_TRAIT "stat"
+/// trait effect related to the queen ovipositor
+#define OVIPOSITOR_TRAIT "ovipositor"
+/// trait associated to being held in a chokehold
+#define CHOKEHOLD_TRAIT "chokehold"
 /// trait effect related to active specialist gear
 #define SPECIALIST_GEAR_TRAIT "specialist_gear"
 /// traits associated with usage of snowflake dropship double seats
 #define DOUBLE_SEATS_TRAIT "double_seats"
 /// traits associated with xeno on-ground weeds
 #define XENO_WEED_TRAIT "xeno_weed"
+/// traits associated with actively interacted machinery
+#define INTERACTION_TRAIT "interaction"
+/// traits bound by stunned status effects
+#define STUNNED_TRAIT "stunned"
+/// traits bound by knocked_down status effect
+#define KNOCKEDDOWN_TRAIT "knockeddown"
+/// traits bound by knocked_out status effect
+#define KNOCKEDOUT_TRAIT "knockedout"
+/// traits from being pounced
+#define POUNCED_TRAIT "pounced"
+/// traits from step_triggers on the map
+#define STEP_TRIGGER_TRAIT "step_trigger"
+/// traits from hacked machine interactions
+#define HACKED_TRAIT "hacked"
 /// traits from chloroform usage
 #define CHLOROFORM_TRAIT "chloroform"

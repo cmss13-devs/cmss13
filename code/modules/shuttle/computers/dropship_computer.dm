@@ -7,6 +7,7 @@
 	unacidable = TRUE
 	exproof = TRUE
 	needs_power = FALSE
+	var/override_being_removed = FALSE
 
 	// Admin disabled
 	var/disabled = FALSE
@@ -143,15 +144,31 @@
 		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
 		return
 
-	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10
-		if(remaining_time > 60)
-			to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
+		to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt. In large text it says the lockout will be automatically removed in [remaining_time] seconds."))
+		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 			return
-		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
-		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))
+		if(user.action_busy || override_being_removed)
 			return
+		to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
+		override_being_removed = TRUE
+		while(remaining_time > 20)
+			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
+				to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
+				override_being_removed = FALSE
+				return
+			if(!dropship_control_lost)
+				to_chat(user, SPAN_NOTICE("The lockout is already removed."))
+				break
+			remaining_time = timeleft(door_control_cooldown) / 10 - 20
+			if(remaining_time > 0)
+				to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time] seconds left."))
+				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	override_being_removed = FALSE
+	if(dropship_control_lost)
+		remove_door_lock()
+		to_chat(user, SPAN_NOTICE("You succesfully removed the lockout!"))
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)
@@ -216,10 +233,10 @@
 	if(!dropship_control_lost)
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
-		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
-		if(almayer_orbital_cannon)
-			almayer_orbital_cannon.is_disabled = TRUE
-			addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
+		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		if(GLOB.almayer_orbital_cannon)
+			GLOB.almayer_orbital_cannon.is_disabled = TRUE
+			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
 		if(!GLOB.resin_lz_allowed)
 			set_lz_resin_allowed(TRUE)
 
@@ -251,7 +268,7 @@
 	// select crash location
 	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections , timeout = 10 SECONDS)
+	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", GLOB.almayer_ship_sections , timeout = 10 SECONDS)
 	if(!result)
 		return
 	if(!user.Adjacent(source_turf) && !force)
@@ -269,6 +286,9 @@
 
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
+
+	dropship.alarm_sound_loop.stop()
+	dropship.playing_launch_announcement_alarm = FALSE
 
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
@@ -296,6 +316,7 @@
 	playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 	dropship_control_lost = FALSE
 	if(door_control_cooldown)
+		deltimer(door_control_cooldown)
 		door_control_cooldown = null
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
@@ -318,6 +339,9 @@
 
 	.["door_status"] = is_remote ? list() : shuttle.get_door_data()
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
+
+	// Launch Alarm Variables
+	.["playing_launch_announcement_alarm"] = shuttle.playing_launch_announcement_alarm
 
 	.["destinations"] = list()
 	// add flight
@@ -381,6 +405,7 @@
 				msg_admin_niche(log)
 				log_interact(user, msg = "[log]")
 				shuttle.send_for_flyby()
+				stop_playing_launch_announcement_alarm()
 				return TRUE
 
 			update_equipment(is_optimised, FALSE)
@@ -410,6 +435,7 @@
 			var/log = "[key_name(user)] launched the dropship [src.shuttleId] on transport."
 			msg_admin_niche(log)
 			log_interact(user, msg = "[log]")
+			stop_playing_launch_announcement_alarm()
 			return TRUE
 		if("button-push")
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
@@ -469,6 +495,23 @@
 		if("cancel-flyby")
 			if(shuttle.in_flyby && shuttle.timer && shuttle.timeLeft(1) >= DROPSHIP_WARMUP_TIME)
 				shuttle.setTimer(DROPSHIP_WARMUP_TIME)
+		if("play_launch_announcement_alarm")
+			if (shuttle.mode != SHUTTLE_IDLE && shuttle.mode != SHUTTLE_RECHARGING)
+				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
+				return
+			shuttle.alarm_sound_loop.start()
+			shuttle.playing_launch_announcement_alarm = TRUE
+			return
+		if ("stop_playing_launch_announcement_alarm")
+			stop_playing_launch_announcement_alarm()
+			return
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/stop_playing_launch_announcement_alarm()
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+
+	shuttle.alarm_sound_loop.stop()
+	shuttle.playing_launch_announcement_alarm = FALSE
+	return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1
 	icon = 'icons/obj/structures/machinery/computer.dmi'

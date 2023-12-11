@@ -17,6 +17,7 @@
 		/obj/item/storage/firstaid = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_ENGI),
 		)
+	drop_sound = "armorequip"
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
@@ -767,9 +768,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	H.FF_hit_evade = 1000
 	H.allow_gun_usage = allow_gun_usage
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.remove_from_hud(H)
 
 	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
@@ -806,9 +807,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	H.alpha = initial(H.alpha)
 	H.FF_hit_evade = initial(H.FF_hit_evade)
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(H)
 
 	if(anim)
@@ -842,7 +843,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /datum/action/item_action/specialist/toggle_cloak/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.back)
+	if(istype(H) && !H.is_mob_incapacitated() && holder_item == H.back)
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_cloak/action_activate()

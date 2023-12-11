@@ -17,6 +17,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	drop_sound = "armorequip"
 	///Makes it so that we can see the right name in the vendor.
 	var/specialty = "USCM"
 	///List of map variants that use sleeve rolling on something else, like snow uniforms rolling the collar, and therefore shouldn't hide patches etc when rolled.
@@ -1004,7 +1005,7 @@
 		return
 
 	if(!linked_hood)
-		to_chat(SPAN_BOLDWARNING("You are missing a linked_hood! This should not be possible."))
+		to_chat(user, SPAN_BOLDWARNING("You are missing a linked_hood! This should not be possible."))
 		CRASH("[user] attempted to toggle hood on [src] that was missing a linked_hood.")
 
 	playsound(user.loc, "armorequip", 25, 1)

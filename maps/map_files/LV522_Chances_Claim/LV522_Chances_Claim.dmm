@@ -1030,7 +1030,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "aDE" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Southeast Landing Zone"
+	name = "LZ2: Southeast Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/shuttle/drop2/lv522)
@@ -7115,7 +7115,7 @@
 /area/lv522/indoors/a_block/dorms)
 "dos" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Southwest Landing Zone"
+	name = "LZ1: Southwest Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/shuttle/drop1/lv522)
@@ -42329,8 +42329,10 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/fitness/glass)
 "qzp" = (
-/obj/structure/machinery/door/airlock/dropship_hatch/two{
-	dir = 8
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
+	id = "sh_dropship2";
+	dir = 2;
+	name = "\improper Typhoon crew hatch"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"
@@ -47136,6 +47138,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/storage_blocks)
+"shh" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
+	dir = 1;
+	id = "sh_dropship2";
+	name = "\improper Typhoon crew hatch"
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "shm" = (
 /obj/structure/machinery/vending/cola,
 /obj/effect/decal/cleanable/dirt,
@@ -66448,7 +66460,7 @@ pRK
 qmM
 qGQ
 qTh
-qzp
+rjP
 qzp
 nfq
 fDg
@@ -67810,8 +67822,8 @@ pUc
 qst
 qLz
 qVl
-qzp
-qzp
+rjP
+shh
 rFp
 sdE
 sIx

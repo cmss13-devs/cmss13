@@ -1000,7 +1000,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				SEND_SIGNAL(user, COMSIG_MOB_APC_POWER_PULSE, src)
 			addtimer(VARSET_CALLBACK(src, shorted, FALSE), 2 MINUTES)
 
-/obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, loud = 0) //used by attack_hand() and Topic()
+/obj/structure/machinery/power/apc/proc/can_use(mob/living/user as mob, loud = 0) //used by attack_hand() and Topic()
 	if(user.client && user.client.remote_control)
 		return TRUE
 
@@ -1011,12 +1011,12 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		return 0
 	if(!(ishuman(user) || isRemoteControlling(user)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to use [src]!"))
-		nanomanager.close_user_uis(user, src)
+		SSnano.nanomanager.close_user_uis(user, src)
 		return 0
 	if(user.is_mob_restrained())
 		to_chat(user, SPAN_WARNING("You must have free hands to use [src]."))
 		return 0
-	if(user.lying)
+	if(user.body_position == LYING_DOWN)
 		to_chat(user, SPAN_WARNING("You can't reach [src]!"))
 		return 0
 	autoflag = 5
@@ -1024,11 +1024,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(aidisabled)
 			if(!loud)
 				to_chat(user, SPAN_WARNING("[src] has AI control disabled!"))
-				nanomanager.close_user_uis(user, src)
+				SSnano.nanomanager.close_user_uis(user, src)
 			return 0
 	else
 		if((!in_range(src, user) || !istype(src.loc, /turf)))
-			nanomanager.close_user_uis(user, src)
+			SSnano.nanomanager.close_user_uis(user, src)
 			return 0
 
 	var/mob/living/carbon/human/H = user

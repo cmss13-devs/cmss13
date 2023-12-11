@@ -350,16 +350,16 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(W, /obj/item/co2_cartridge))
 		if(!filled)
 			filled = TRUE
-			user.visible_message(SPAN_NOTICE("[user] slots a CO2 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh CO2 cartridge into [src] and snap the slot cover into place. Only then do you realize \the [W]'s valve broke inside \the [src]. Fuck."))
+			user.visible_message(SPAN_NOTICE("[user] slots a CO2 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh CO2 cartridge into [src] and snap the slot cover into place. Only then do you realize [W]'s valve broke inside [src]. Fuck."))
 			playsound(src, 'sound/machines/click.ogg')
 			qdel(W)
 			update_icon()
 			return
 		else
-			user.visible_message(SPAN_WARNING("[user] fiddles with \the [src]. \He looks frustrated."), SPAN_NOTICE("No way man! You can't seem to pry the existing container out of \the [src]... try a screwdriver?"))
+			user.visible_message(SPAN_WARNING("[user] fiddles with [src]. \He looks frustrated."), SPAN_NOTICE("No way man! You can't seem to pry the existing container out of [src]... try a screwdriver?"))
 			return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-		user.visible_message(SPAN_WARNING("[user] screws with \the [src], using \a [W]. \He looks very frustrated."), SPAN_NOTICE("You try to pry the cartridge out of the [src], but it's stuck damn deep. Piece of junk..."))
+		user.visible_message(SPAN_WARNING("[user] screws with [src], using \a [W]. \He looks very frustrated."), SPAN_NOTICE("You try to pry the cartridge out of [src], but it's stuck damn deep. Piece of junk..."))
 		return
 	..()
 
@@ -491,6 +491,20 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = -3
 
 /obj/item/attachable/sniperbarrel/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+
+/obj/item/attachable/pmc_sniperbarrel
+	name = "sniper barrel"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "pmc_sniperbarrel"
+	desc = "A heavy barrel. CANNOT BE REMOVED."
+	slot = "muzzle"
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = -3
+
+/obj/item/attachable/pmc_sniperbarrel/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
@@ -1283,7 +1297,7 @@ Defined in conflicts.dm of the #defines folder.
 	switch(action)
 		if("adjust_dir")
 			var/direction = params["offset_dir"]
-			if(!(direction in alldirs) || !scoping || !scope_user)
+			if(!(direction in GLOB.alldirs) || !scoping || !scope_user)
 				return
 
 			var/mob/scoper = scope_user.resolve()
@@ -1300,7 +1314,7 @@ Defined in conflicts.dm of the #defines folder.
 
 		if("adjust_position")
 			var/direction = params["position_dir"]
-			if(!(direction in alldirs) || !scoping || !scope_user)
+			if(!(direction in GLOB.alldirs) || !scoping || !scope_user)
 				return
 
 			var/mob/scoper = scope_user.resolve()
@@ -1367,7 +1381,7 @@ Defined in conflicts.dm of the #defines folder.
 	return TRUE
 
 /obj/item/attachable/vulture_scope/proc/get_offset_dirs()
-	var/list/possible_dirs = alldirs.Copy()
+	var/list/possible_dirs = GLOB.alldirs.Copy()
 	if(scope_offset_x >= scope_drift_max)
 		possible_dirs -= list(NORTHEAST, EAST, SOUTHEAST)
 	else if(scope_offset_x <= -scope_drift_max)
@@ -1384,7 +1398,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/vulture_scope/proc/get_adjust_dirs()
 	if(!scoping)
 		return list()
-	var/list/possible_dirs = alldirs.Copy()
+	var/list/possible_dirs = GLOB.alldirs.Copy()
 	var/turf/current_turf = get_turf(src)
 	var/turf/scope_tile = locate(scope_x, scope_y, current_turf.z)
 	var/mob/scoper = scope_user.resolve()
@@ -2671,7 +2685,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
 	if(!ishuman(usr))
 		return
-	if(!user.canmove || user.stat || user.is_mob_restrained() || !user.loc || !isturf(usr.loc))
+	if(user.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(user, SPAN_WARNING("Not right now."))
 		return
 
@@ -3433,4 +3447,3 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_5
 	damage_mod -= BULLET_DAMAGE_MULT_TIER_4
-

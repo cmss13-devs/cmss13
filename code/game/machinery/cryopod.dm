@@ -321,13 +321,13 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			dept_console += A
 			A.moveToNullspace()
 
+	var/datum/job/job = GET_MAPPED_ROLE(occupant.job)
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 		if(H.assigned_squad)
 			var/datum/squad/S = H.assigned_squad
 			S.forget_marine_in_squad(H)
-			var/datum/job/J = GET_MAPPED_ROLE(H.job)
-			if(istype(J, /datum/job/marine/specialist))
+			if(istype(job, /datum/job/marine/specialist))
 				//we make the set this specialist took if any available again
 				if(H.skills)
 					var/set_name
@@ -343,13 +343,14 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 						if(SKILL_SPEC_SNIPER)
 							set_name = "Sniper Set"
 
-					if(set_name && !available_specialist_sets.Find(set_name))
-						available_specialist_sets += set_name
+					if(set_name && !GLOB.available_specialist_sets.Find(set_name))
+						GLOB.available_specialist_sets += set_name
 
-	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+	//Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+	SSticker.mode.latejoin_update(job, -1)
 
 	//Handle job slot/tater cleanup.
-	RoleAuthority.free_role(GET_MAPPED_ROLE(occupant.job), TRUE)
+	GLOB.RoleAuthority.free_role(GET_MAPPED_ROLE(occupant.job), TRUE)
 
 	var/occupant_ref = WEAKREF(occupant)
 	//Delete them from datacore.

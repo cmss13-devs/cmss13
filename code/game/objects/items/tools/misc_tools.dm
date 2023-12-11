@@ -132,7 +132,7 @@
 			qdel(I) //delete the paper item
 			labels_left = initial(labels_left)
 		else
-			to_chat(user, SPAN_NOTICE("The [src] is already full."))
+			to_chat(user, SPAN_NOTICE("[src] is already full."))
 
 /*
 	Instead of updating labels_left to user every label used,
@@ -289,7 +289,7 @@
 /obj/item/tool/pen/fountain/pickup(mob/user, silent)
 	. = ..()
 	if(!owner_name)
-		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner))
+		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
 
 ///Sets the owner of the pen to who it spawns with, requires var/source for signals
 /obj/item/tool/pen/fountain/proc/set_owner(datum/source)

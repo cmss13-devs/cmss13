@@ -106,7 +106,7 @@
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
 
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode))
-		. += "Operation Name: [round_statistics.round_name]"
+		. += "Operation Name: [GLOB.round_statistics.round_name]"
 
 	if(assigned_squad)
 		if(assigned_squad.overwatch_officer)
@@ -133,7 +133,7 @@
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
-	if(lying)
+	if(body_position == LYING_DOWN)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 
@@ -172,6 +172,7 @@
 	var/obj/item/item1 = get_active_hand()
 	var/obj/item/item2 = get_inactive_hand()
 	apply_effect(round(knockdown_minus_armor), WEAKEN)
+	apply_effect(round(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
 	var/knockout_value = damage * 0.1
 	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
 	apply_effect(round(knockout_minus_armor), PARALYZE)
@@ -687,7 +688,7 @@
 					var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)), 1, MAX_MESSAGE_LEN)
 					if(!(t1) || usr.stat || usr.is_mob_restrained())
 						return
-					var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+					var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 					var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
 					if(istype(usr,/mob/living/carbon/human))
 						var/mob/living/carbon/human/U = usr
@@ -816,10 +817,10 @@
 										counter++
 									if(istype(usr,/mob/living/carbon/human))
 										var/mob/living/carbon/human/U = usr
-										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
 									if(istype(usr,/mob/living/silicon/robot))
 										var/mob/living/silicon/robot/U = usr
-										R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+										R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
 
 	if(href_list["medholocard"])
 		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
@@ -1052,7 +1053,7 @@
 
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
-	if((stat == DEAD) || lying || buckled) // Shouldnt be needed, but better safe than sorry
+	if((stat == DEAD) || body_position || buckled) // Shouldnt be needed, but better safe than sorry
 		return
 
 	for(var/obj/item/W in embedded_items)
@@ -1330,7 +1331,7 @@
 			else if(C.z != src.z || get_dist(src,C) < 1)
 				hud_used.locate_leader.icon_state = "trackondirect_lz"
 			else
-				hud_used.locate_leader.setDir(get_dir(src,C))
+				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
 				hud_used.locate_leader.icon_state = "trackon_lz"
 			return
 		if(TRACKER_FTL)
@@ -1345,13 +1346,13 @@
 			H = GLOB.marine_leaders[JOB_XO]
 			tracking_suffix = "_xo"
 		if(TRACKER_CL)
-			var/datum/job/civilian/liaison/liaison_job = RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
+			var/datum/job/civilian/liaison/liaison_job = GLOB.RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
 			if(liaison_job?.active_liaison)
 				H = liaison_job.active_liaison
 			tracking_suffix = "_cl"
 		else
 			if(tracker_setting in squad_leader_trackers)
-				var/datum/squad/S = RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
+				var/datum/squad/S = GLOB.RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
 				H = S.squad_leader
 				tracking_suffix = tracker_setting
 
@@ -1360,11 +1361,11 @@
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
 	else
-		hud_used.locate_leader.setDir(get_dir(src,H))
+		hud_used.locate_leader.setDir(Get_Compass_Dir(src,H))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
 
 /mob/living/carbon/proc/locate_nearest_nuke()
-	if(!bomb_set) return
+	if(!GLOB.bomb_set) return
 	var/obj/structure/machinery/nuclearbomb/N
 	for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 		if(!istype(N) || N.z != src.z )
@@ -1378,7 +1379,7 @@
 	if(get_dist(src,N) < 1)
 		hud_used.locate_nuke.icon_state = "nuke_trackondirect"
 	else
-		hud_used.locate_nuke.setDir(get_dir(src,N))
+		hud_used.locate_nuke.setDir(Get_Compass_Dir(src,N))
 		hud_used.locate_nuke.icon_state = "nuke_trackon"
 
 
@@ -1741,3 +1742,9 @@
 		return FALSE
 
 	. = ..()
+
+/mob/living/carbon/human/make_dizzy(amount)
+	dizziness = min(500, dizziness + amount) // store what will be new value
+													// clamped to max 500
+	if(dizziness > 100 && !is_dizzy)
+		INVOKE_ASYNC(src, PROC_REF(dizzy_process))

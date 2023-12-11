@@ -10,7 +10,7 @@
 
 /datum/dropship_hijack/almayer/proc/crash_landing()
 	//break APCs
-	for(var/obj/structure/machinery/power/apc/A in machines)
+	for(var/obj/structure/machinery/power/apc/A in GLOB.machines)
 		if(A.z != crash_site.z)
 			continue
 		if(prob(A.crash_break_probability))
@@ -66,7 +66,7 @@
 	var/explosion_alive = TRUE
 	while(explosion_alive)
 		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/E in cellauto_cells)
+		for(var/datum/automata_cell/explosion/E in GLOB.cellauto_cells)
 			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
@@ -80,8 +80,8 @@
 		return FALSE
 	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION * GLOB.ship_alt
 	SSshuttle.moveShuttle(shuttle.id, crash_site.id, TRUE)
-	if(round_statistics)
-		round_statistics.track_hijack()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_hijack()
 	return TRUE
 
 /datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
@@ -115,8 +115,8 @@
 		return
 
 	// if the AA site matches target site
-	if(target_ship_section == almayer_aa_cannon.protecting_section)
-		var/list/remaining_crash_sites = almayer_ship_sections.Copy()
+	if(target_ship_section == GLOB.almayer_aa_cannon.protecting_section)
+		var/list/remaining_crash_sites = GLOB.almayer_ship_sections.Copy()
 		remaining_crash_sites -= target_ship_section
 		var/new_target_ship_section = pick(remaining_crash_sites)
 		var/turf/target = get_crashsite_turf(new_target_ship_section)
@@ -173,7 +173,7 @@
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_crash.ogg', volume = 75)
 
 /datum/dropship_hijack/almayer/proc/disable_latejoin()
-	enter_allowed = FALSE
+	GLOB.enter_allowed = FALSE
 
 /datum/dropship_hijack/almayer/proc/get_crashsite_turf(ship_section)
 	var/list/turfs = list()

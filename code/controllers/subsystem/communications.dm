@@ -66,78 +66,83 @@ Frequency range: 1200 to 1600
 Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency, even during mapmaking)
 */
 
-var/const/MIN_FREE_FREQ = 1201 // -------------------------------------------------
+#define MIN_FREE_FREQ 1201 // -------------------------------------------------
 
 //Misc channels
-var/const/YAUT_FREQ = 1205
-var/const/DUT_FREQ = 1210
-var/const/CMB_FREQ = 1220
-var/const/VAI_FREQ = 1215
-var/const/RMC_FREQ = 1216
+#define YAUT_FREQ 1205
+#define DUT_FREQ 1210
+#define VAI_FREQ 1215
+#define RMC_FREQ 1216
+#define CMB_FREQ 1220
 
 //WY Channels (1230-1249)
-var/const/WY_FREQ = 1231
-var/const/PMC_CMD_FREQ = 1232
-var/const/PMC_FREQ = 1233
-var/const/PMC_ENGI_FREQ = 1234
-var/const/PMC_MED_FREQ = 1235
-var/const/PMC_CCT_FREQ = 1236
-var/const/WY_WO_FREQ = 1239
+#define WY_FREQ 1231
+#define PMC_CMD_FREQ 1232
+#define PMC_FREQ 1233
+#define PMC_ENGI_FREQ 1234
+#define PMC_MED_FREQ 1235
+#define PMC_CCT_FREQ 1236
+#define WY_WO_FREQ 1239
 
 //UPP Channels (1250-1269)
-var/const/UPP_FREQ = 1251
-var/const/UPP_CMD_FREQ = 1252
-var/const/UPP_ENGI_FREQ = 1253
-var/const/UPP_MED_FREQ = 1254
-var/const/UPP_CCT_FREQ = 1255
-var/const/UPP_KDO_FREQ = 1259
+#define UPP_FREQ 1251
+#define UPP_CMD_FREQ 1252
+#define UPP_ENGI_FREQ 1253
+#define UPP_MED_FREQ 1254
+#define UPP_CCT_FREQ 1255
+#define UPP_KDO_FREQ 1259
 
 //CLF Channels (1270-1289)
-var/const/CLF_FREQ = 1271
-var/const/CLF_CMD_FREQ = 1272
-var/const/CLF_ENGI_FREQ = 1273
-var/const/CLF_MED_FREQ = 1274
-var/const/CLF_CCT_FREQ = 1275
+#define CLF_FREQ 1271
+#define CLF_CMD_FREQ 1272
+#define CLF_ENGI_FREQ 1273
+#define CLF_MED_FREQ 1274
+#define CLF_CCT_FREQ 1275
 
-var/const/MIN_FREQ = 1460 // ------------------------------------------------------
-var/const/PUB_FREQ = 1461
-var/const/MAX_FREQ = 1468 // ------------------------------------------------------
+//Listening Bugs (1290-1291)
+#define BUG_A_FREQ 1290
+#define BUG_B_FREQ 1291
+
+//General Radio
+#define MIN_FREQ 1460 // ------------------------------------------------------
+#define PUB_FREQ 1461
+#define MAX_FREQ 1468 // ------------------------------------------------------
 
 //USCM High Command (USCM 1470-1499)
-var/const/HC_FREQ = 1471
-var/const/SOF_FREQ = 1472
-var/const/PVST_FREQ = 1473
-var/const/CBRN_FREQ = 1474
+#define HC_FREQ 1471
+#define SOF_FREQ 1472
+#define PVST_FREQ 1473
+#define CBRN_FREQ 1474
 
 //Ship department channels
-var/const/SENTRY_FREQ = 1480
-var/const/COMM_FREQ = 1481
-var/const/MED_FREQ = 1482
-var/const/ENG_FREQ = 1483
-var/const/SEC_FREQ = 1484
-var/const/REQ_FREQ = 1485
-var/const/JTAC_FREQ = 1486
-var/const/INTEL_FREQ = 1487
+#define SENTRY_FREQ 1480
+#define COMM_FREQ 1481
+#define MED_FREQ 1482
+#define ENG_FREQ 1483
+#define SEC_FREQ 1484
+#define REQ_FREQ 1485
+#define JTAC_FREQ 1486
+#define INTEL_FREQ 1487
 
-var/const/DS1_FREQ = 1488
-var/const/DS2_FREQ = 1489
+#define DS1_FREQ 1488
+#define DS2_FREQ 1489
 
 //Marine Squad channels
-var/const/ALPHA_FREQ = 1491
-var/const/BRAVO_FREQ = 1492
-var/const/CHARLIE_FREQ = 1493
-var/const/DELTA_FREQ = 1494
-var/const/ECHO_FREQ = 1495
-var/const/CRYO_FREQ = 1496
+#define ALPHA_FREQ 1491
+#define BRAVO_FREQ 1492
+#define CHARLIE_FREQ 1493
+#define DELTA_FREQ 1494
+#define ECHO_FREQ 1495
+#define CRYO_FREQ 1496
 
 //Civilian channels
-var/const/COLONY_FREQ = 1469
+#define COLONY_FREQ 1469
 
-var/const/AI_FREQ = 1500
+#define AI_FREQ 1500
 
-var/const/MAX_FREE_FREQ = 1599 // -------------------------------------------------
+#define MAX_FREE_FREQ 1599 // -------------------------------------------------
 
-var/list/radiochannels = list(
+GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
 	RADIO_CHANNEL_VAI = VAI_FREQ,
 	RADIO_CHANNEL_CMB = CMB_FREQ,
@@ -191,7 +196,10 @@ var/list/radiochannels = list(
 	RADIO_CHANNEL_CLF_ENGI = CLF_ENGI_FREQ,
 	RADIO_CHANNEL_CLF_MED = CLF_MED_FREQ,
 	RADIO_CHANNEL_CLF_CCT = CLF_CCT_FREQ,
-)
+
+	RADIO_CHANNEL_BUG_A = BUG_A_FREQ,
+	RADIO_CHANNEL_BUG_B = BUG_B_FREQ,
+))
 
 // Response Teams
 #define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, CMB_FREQ, RMC_FREQ)
@@ -205,6 +213,9 @@ var/list/radiochannels = list(
 // PMC Frequencies
 #define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ)
 
+//Listening Device Frequencies
+#define BUG_FREQS list(BUG_A_FREQ, BUG_B_FREQ)
+
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
@@ -217,17 +228,17 @@ var/list/radiochannels = list(
 //This is done for performance, so we don't send signals to lots of machines unnecessarily.
 
 //This filter is special because devices belonging to default also receive signals sent to any other filter.
-var/const/RADIO_DEFAULT = "radio_default"
+#define RADIO_DEFAULT "radio_default"
 
-var/const/RADIO_TO_AIRALARM = "radio_airalarm" //air alarms
-var/const/RADIO_FROM_AIRALARM = "radio_airalarm_rcvr" //devices interested in receiving signals from air alarms
-var/const/RADIO_CHAT = "radio_telecoms"
-var/const/RADIO_SIGNALS = "radio_signals"
-var/const/RADIO_ATMOSIA = "radio_atmos"
-var/const/RADIO_NAVBEACONS = "radio_navbeacon"
-var/const/RADIO_AIRLOCK = "radio_airlock"
-var/const/RADIO_MULEBOT = "radio_mulebot"
-var/const/RADIO_MAGNETS = "radio_magnet"
+#define RADIO_TO_AIRALARM "radio_airalarm" //air alarms
+#define RADIO_FROM_AIRALARM "radio_airalarm_rcvr" //devices interested in receiving signals from air alarms
+#define RADIO_CHAT "radio_telecoms"
+#define RADIO_SIGNALS "radio_signals"
+#define RADIO_ATMOSIA "radio_atmos"
+#define RADIO_NAVBEACONS "radio_navbeacon"
+#define RADIO_AIRLOCK "radio_airlock"
+#define RADIO_MULEBOT "radio_mulebot"
+#define RADIO_MAGNETS "radio_magnet"
 
 //callback used by objects to react to incoming radio signals
 /obj/proc/receive_signal(datum/signal/signal, receive_method, receive_param)
@@ -269,6 +280,8 @@ SUBSYSTEM_DEF(radio)
 		"[HC_FREQ]" = "hcradio",
 		"[PVST_FREQ]" = "pvstradio",
 		"[COLONY_FREQ]" = "deptradio",
+		"[BUG_A_FREQ]" = "airadio",
+		"[BUG_B_FREQ]" = "aiprivradio",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)

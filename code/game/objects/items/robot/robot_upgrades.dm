@@ -12,7 +12,7 @@
 
 /obj/item/robot/upgrade/proc/action(mob/living/silicon/robot/R)
 	if(R.stat == DEAD)
-		to_chat(usr, SPAN_DANGER("The [src] will not function on a deceased robot."))
+		to_chat(usr, SPAN_DANGER("[src] will not function on a deceased robot."))
 		return 1
 	return 0
 
@@ -68,7 +68,7 @@
 		for(var/mob/dead/observer/ghost in GLOB.observer_list)
 			if(ghost.mind && ghost.mind.original == R)
 				R.key = ghost.key
-				if(R.client) R.client.change_view(world_view_size)
+				if(R.client) R.client.change_view(GLOB.world_view_size)
 				break
 
 	R.set_stat(CONSCIOUS)

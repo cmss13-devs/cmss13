@@ -160,14 +160,14 @@
 			return // We clicked the same ability in a very short time
 		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
 			return
-		to_chat(xeno, "You will no longer use [ability_name] with \
+		to_chat(xeno, "We will no longer use [ability_name] with \
 			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		button.icon_state = "template"
 		xeno.selected_ability = null
 		if(charge_time)
 			stop_charging_ability()
 	else
-		to_chat(xeno, "You will now use [ability_name] with \
+		to_chat(xeno, "We will now use [ability_name] with \
 			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		if(xeno.selected_ability)
 			xeno.selected_ability.action_deselect()
@@ -343,11 +343,11 @@
 		if(cooldown_message)
 			to_chat(owner, SPAN_XENODANGER("[cooldown_message]"))
 		else
-			to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
+			to_chat(owner, SPAN_XENODANGER("We feel our strength return! We can use [name] again!"))
 
 /datum/action/xeno_action/proc/start_charging_ability()
 	charge_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_charging_ability)), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
-	to_chat(owner, SPAN_XENOWARNING("You start charging up your <b>[name]</b>!"))
+	to_chat(owner, SPAN_XENOWARNING("We start charging up our <b>[name]</b>!"))
 
 /datum/action/xeno_action/proc/finish_charging_ability()
 	charge_timer_id = TIMER_ID_NULL

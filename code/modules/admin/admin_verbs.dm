@@ -588,7 +588,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 
 /client/proc/toggle_ares_ping()
 	set name = "Toggle ARES notification sound"
-	set category = "Preferences.Sound"
+	set category = "Preferences.Logs"
 
 	prefs.toggles_sound ^= SOUND_ARES_MESSAGE
 	if (prefs.toggles_sound & SOUND_ARES_MESSAGE)

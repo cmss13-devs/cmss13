@@ -248,7 +248,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(X.mob_size < mob_size_required_to_hit)
-		to_chat(X, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		to_chat(X, SPAN_XENOWARNING("We're too small to do any significant damage to this vehicle!"))
 		return XENO_NO_DELAY_ACTION
 
 	var/damage = (X.melee_vehicle_damage + rand(-5,5)) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT

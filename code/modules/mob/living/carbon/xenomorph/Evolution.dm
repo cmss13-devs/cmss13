@@ -353,7 +353,7 @@
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
-	SPAN_XENODANGER("You regress into your previous form."))
+	SPAN_XENODANGER("We regress into our previous form."))
 
 	if(GLOB.round_statistics && !new_xeno.statistic_exempt)
 		GLOB.round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.

@@ -151,14 +151,14 @@
 /mob/living/carbon/xenomorph/proc/check_state(permissive = FALSE)
 	if(!permissive)
 		if(is_mob_incapacitated() || body_position == LYING_DOWN || buckled || evolving || !isturf(loc))
-			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
-			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 	else
 		if(is_mob_incapacitated() || buckled || evolving)
-			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 
 	return TRUE
@@ -166,12 +166,12 @@
 //Checks your plasma levels and gives a handy message.
 /mob/living/carbon/xenomorph/proc/check_plasma(value)
 	if(stat)
-		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+		to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 		return FALSE
 
 	if(value)
 		if(plasma_stored < value)
-			to_chat(src, SPAN_WARNING("You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored."))
+			to_chat(src, SPAN_WARNING("We do not have enough plasma to do this. We require [value] plasma but have only [plasma_stored] stored."))
 			return FALSE
 	return TRUE
 
@@ -291,7 +291,7 @@
 
 			if(isyautja(H))
 				if(H.check_shields(0, "the pounce", 1))
-					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
+					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks our pouncing form with the combistick!"), null, 5)
 					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					playsound(H, "bonk", 75, FALSE)
@@ -304,7 +304,7 @@
 					return
 			if(iscolonysynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
-					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
+					SPAN_XENODANGER("[H] throws us down after withstanding the pounce!"), null, 5)
 				apply_effect(1.5, WEAKEN)
 				throwing = FALSE
 				return

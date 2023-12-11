@@ -97,10 +97,10 @@
 	var/action_icon_result
 	if (cAction.root_toggle)
 		action_icon_result = "prae_cleave_root"
-		to_chat(X, SPAN_WARNING("You will now root marines with your cleave."))
+		to_chat(X, SPAN_WARNING("We will now root marines with our cleave."))
 	else
 		action_icon_result = "prae_cleave_fling" // TODO: update
-		to_chat(X, SPAN_WARNING("You will now throw marines with your cleave."))
+		to_chat(X, SPAN_WARNING("We will now throw marines with our cleave."))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
@@ -335,12 +335,12 @@
 	if (WH.curr_effect_type == WARDEN_HEAL_HP)
 		action_icon_result = "warden_rejuvenate"
 		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
-		to_chat(X, SPAN_XENOWARNING("You will now aid your allies by curing their ailments!"))
+		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by curing their ailments!"))
 
 	else
 		action_icon_result = "warden_heal"
 		WH.curr_effect_type = WARDEN_HEAL_HP
-		to_chat(X, SPAN_XENOWARNING("You will now aid your allies by healing them!"))
+		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by healing them!"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

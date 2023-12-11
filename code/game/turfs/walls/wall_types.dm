@@ -1201,7 +1201,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
-	SPAN_XENONOTICE("You claw \the [src]."))
+	SPAN_XENONOTICE("We claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
 		take_damage(Ceiling(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
@@ -1212,7 +1212,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)
 	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
-	SPAN_DANGER("You tear \the [name]."))
+	SPAN_DANGER("We tear \the [name]."))
 	playsound(src, "alien_resin_break", 25)
 	M.animation_attack_on(src)
 	take_damage(80)

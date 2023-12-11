@@ -409,7 +409,7 @@
 				playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
 				human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
 			else
-				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("You claw [human]!"))
+				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("We claw [human]!"))
 				playsound(get_turf(human), "alien_claw_flesh", 30, 1)
 
 			human.apply_armoured_damage(get_xeno_damage_slash(human, damage), ARMOR_MELEE, BRUTE, "chest", 20)

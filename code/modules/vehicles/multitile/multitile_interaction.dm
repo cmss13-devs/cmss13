@@ -269,11 +269,11 @@
 	if(!damage)
 		playsound(X.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"), \
-		SPAN_DANGER("You swipe at \the [src] to no effect!"))
+		SPAN_DANGER("We swipe at \the [src] to no effect!"))
 		return XENO_ATTACK_ACTION
 
 	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"), \
-	SPAN_DANGER("You slash \the [src]!"))
+	SPAN_DANGER("We slash \the [src]!"))
 	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	take_damage_type(damage * damage_mult, "slash", X)
@@ -420,9 +420,9 @@
 	else if(!entrance_used && !isxeno(M))
 		return
 
-	var/enter_msg = "You start climbing into \the [src]..."
+	var/enter_msg = "We start climbing into \the [src]..."
 	if(health <= 0 && isxeno(M))
-		enter_msg = "You start prying away loose plates, squeezing into \the [src]..."
+		enter_msg = "We start prying away loose plates, squeezing into \the [src]..."
 
 	// Check if drag anything
 	var/atom/dragged_atom

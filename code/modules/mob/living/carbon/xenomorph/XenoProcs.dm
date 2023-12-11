@@ -503,7 +503,7 @@
 	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""
-		to_chat(src, SPAN_XENOWARNING("Our pheromones wane. The Queen is no longer granting you her pheromones."))
+		to_chat(src, SPAN_XENOWARNING("Our pheromones wane. The Queen is no longer granting us her pheromones."))
 	else
 		leader_aura_strength = Q.aura_strength
 		leader_current_aura = Q.current_aura

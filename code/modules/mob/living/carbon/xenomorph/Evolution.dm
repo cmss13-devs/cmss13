@@ -299,7 +299,7 @@
 		return
 
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
 		return FALSE
 
 	var/xeno_type

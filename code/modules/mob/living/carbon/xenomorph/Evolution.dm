@@ -105,8 +105,13 @@
 	evolving = TRUE
 	var/level_to_switch_to = get_vision_level()
 
+<<<<<<< HEAD
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE)) // Can evolve while moving
 		to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Hold still while evolving."))
+=======
+	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
+		to_chat(src, SPAN_WARNING("You quiver, but nothing happens. Your evolution has ceased for now..."))
+>>>>>>> master
 		evolving = FALSE
 		return
 

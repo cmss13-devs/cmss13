@@ -206,3 +206,6 @@
   - bugfix: xenos can construct in dropships during transport again
   ihatethisengine:
   - rscadd: locking lifeboats open the docks
+2023-12-11:
+  ihatethisengine:
+  - bugfix: fusion reactors cannot be destroyed with explosions

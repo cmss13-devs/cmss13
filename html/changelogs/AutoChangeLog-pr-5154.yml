@@ -1,6 +1,0 @@
-author: "InsaneRed"
-delete-after: True
-changes:
-  - balance: "Oppressor tail abduct changed to 15 seconds and lowers the windup to 7 deciseconds"
-  - balance: " Changes around the punch effect so that instead of having to meet demonic standards, you only need to punch to lower your tail/hook on oppressor."
-  - bugfix: "You will now automatically punch chest if the target you are aiming at is delimbed instead of doing nothing"

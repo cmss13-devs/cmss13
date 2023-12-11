@@ -61,6 +61,11 @@ SUBSYSTEM_DEF(mapping)
 		if(MC.perf_mode)
 			GLOB.perf_flags |= MC.perf_mode
 
+	if(configs[GROUND_MAP])
+		send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Round restarted! Map is [configs[GROUND_MAP].map_name]"), CONFIG_GET(string/new_round_alert_channel))
+	else
+		send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Round started!"), CONFIG_GET(string/new_round_alert_channel))
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)

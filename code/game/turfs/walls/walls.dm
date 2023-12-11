@@ -170,6 +170,9 @@
 		if (acided_hole)
 			. += SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid.")
 
+	if(flags_turf & TURF_ORGANIC)
+		return // Skip the part below. 'Organic' walls aren't deconstructable with tools.
+
 	switch(d_state)
 		if(WALL_STATE_WELD)
 			. += SPAN_INFO("The outer plating is intact. A blowtorch should slice it open.")

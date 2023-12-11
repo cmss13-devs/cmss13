@@ -246,7 +246,7 @@
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(xeno, SPAN_XENODANGER("Your next slash will slow!"))
+	to_chat(xeno, SPAN_XENODANGER("Our next slash will slow!"))
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
@@ -564,7 +564,7 @@
 		behavior.use_shards(shard_cost)
 		behavior.lock_shards()
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("We shed your spikes, firing them in all directions!!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("We shed our spikes, firing them in all directions!!"))
 	xeno.spin_circle()
 	create_shrapnel(get_turf(xeno), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(xeno.caste_type), owner), TRUE)
 	playsound(xeno, 'sound/effects/spike_spray.ogg', 25, 1)

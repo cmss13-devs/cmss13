@@ -331,7 +331,7 @@
 	if(!check_can_transfer_plasma(target, max_range))
 		return
 
-	to_chat(src, SPAN_NOTICE("We start focusing your plasma towards [target]."))
+	to_chat(src, SPAN_NOTICE("We start focusing our plasma towards [target]."))
 	to_chat(target, SPAN_NOTICE("We feel that [src] starts transferring some of their plasma to us."))
 	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return

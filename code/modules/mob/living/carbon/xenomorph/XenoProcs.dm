@@ -283,7 +283,7 @@
 			var/mob/living/carbon/human/H = M
 			if(H.check_shields(15, "the pounce")) //Human shield block.
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
-					SPAN_XENODANGER("You slam into [H]!"), null, 5)
+					SPAN_XENODANGER("We slam into [H]!"), null, 5)
 				apply_effect(1, WEAKEN)
 				throwing = FALSE //Reset throwing manually.
 				playsound(H, "bonk", 75, FALSE) //bonk
@@ -298,7 +298,7 @@
 					return
 				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
 					visible_message(SPAN_DANGER("[H] body slams [src]!"),
-						SPAN_XENODANGER("[H] body slams you!"), null, 5)
+						SPAN_XENODANGER("[H] body slams us!"), null, 5)
 					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					return
@@ -310,7 +310,7 @@
 				return
 
 
-	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
+	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("We [pounceAction.ability_name] onto [M]!"), null, 5)
 
 	if (pounceAction.knockdown)
 		M.apply_effect(pounceAction.knockdown_duration, WEAKEN)
@@ -398,13 +398,13 @@
 			victim.forceMove(get_true_turf(loc))
 
 			visible_message(SPAN_XENOWARNING("[src] hurls out the contents of their stomach!"), \
-			SPAN_XENOWARNING("You hurl out the contents of your stomach!"), null, 5)
+			SPAN_XENOWARNING("We hurl out the contents of our stomach!"), null, 5)
 			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
 
 			if (stuns)
 				victim.adjust_effect(2, STUN)
 	else
-		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
+		to_chat(src, SPAN_WARNING("There's nothing in our belly that needs regurgitating."))
 
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE)
 	var/has_obstacle
@@ -503,11 +503,11 @@
 	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""
-		to_chat(src, SPAN_XENOWARNING("Your pheromones wane. The Queen is no longer granting you her pheromones."))
+		to_chat(src, SPAN_XENOWARNING("Our pheromones wane. The Queen is no longer granting you her pheromones."))
 	else
 		leader_aura_strength = Q.aura_strength
 		leader_current_aura = Q.current_aura
-		to_chat(src, SPAN_XENOWARNING("Your pheromones have changed. The Queen has new plans for the Hive."))
+		to_chat(src, SPAN_XENOWARNING("Our pheromones have changed. The Queen has new plans for the Hive."))
 	hud_set_pheromone()
 
 /mob/living/carbon/xenomorph/proc/nocrit(wowave)
@@ -595,7 +595,7 @@
 		burn_amount *= 0.5
 
 	apply_damage(burn_amount, BURN)
-	to_chat(src, SPAN_DANGER("Your flesh, it melts!"))
+	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))
 	updatehealth()
 	return TRUE
 
@@ -621,7 +621,7 @@
 		return
 	target.xenos_tracking |= src
 	tracked_marker = target
-	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
+	to_chat(src, SPAN_XENONOTICE("We start tracking the [target.mark_meaning.name] resin mark."))
 	to_chat(src, SPAN_INFO("Shift click the compass to watch the mark, alt click to stop tracking"))
 
 /mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
@@ -639,7 +639,7 @@
 			if(destroyed)
 				to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
 			else
-				to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+				to_chat(src, SPAN_XENONOTICE("We stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
 		tracked_marker.xenos_tracking -= src
 
 	tracked_marker = null

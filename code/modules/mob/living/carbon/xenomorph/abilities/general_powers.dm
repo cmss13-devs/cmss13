@@ -779,7 +779,7 @@
 	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"), \
 
-	SPAN_XENOWARNING("We spit a [xeno.ammo.name] at [atom]!") )
+	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))

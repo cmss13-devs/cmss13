@@ -18,7 +18,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
 "f" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -2;
 	pixel_y = 23
 	},
@@ -45,7 +45,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "o" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -2;
 	pixel_y = 22
 	},
@@ -119,7 +119,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "J" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = 1;
 	pixel_y = 23
 	},
@@ -145,7 +145,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
 "R" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = 1;
 	pixel_y = 22
 	},

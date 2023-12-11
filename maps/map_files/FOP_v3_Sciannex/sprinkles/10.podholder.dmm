@@ -67,7 +67,7 @@
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "o" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8;
 	pixel_x = 7
 	},
@@ -136,7 +136,7 @@
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "Z" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4;
 	pixel_x = -7
 	},

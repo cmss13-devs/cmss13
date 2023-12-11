@@ -5020,32 +5020,32 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "apf" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
 /area/strata/ag/interior/landingzone_1)
 "aph" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
 /area/strata/ag/interior/landingzone_1)
 "api" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
 /area/strata/ag/interior/landingzone_1)
 "apj" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
 /area/strata/ag/interior/landingzone_1)
 "apk" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -5108,7 +5108,7 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "apv" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -5936,7 +5936,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "arR" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -5948,7 +5948,7 @@
 /turf/open/floor/plating,
 /area/strata/ag/interior/landingzone_1)
 "arT" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -6502,7 +6502,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "atp" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -6511,7 +6511,7 @@
 /area/strata/ag/interior/landingzone_1)
 "atq" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -6773,7 +6773,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/dorms/maintenance)
 "auj" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -6781,7 +6781,7 @@
 	},
 /area/strata/ag/interior/landingzone_1)
 "auk" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -8125,7 +8125,7 @@
 	},
 /area/strata/ag/interior/landingzone_1)
 "ayh" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -14201,7 +14201,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/interior/outpost/canteen/bar)
 "aRx" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -14216,7 +14216,7 @@
 /area/strata/ag/exterior/paths/adminext)
 "aRz" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -14649,7 +14649,7 @@
 /area/strata/ag/interior/dorms/south)
 "aSX" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -18252,7 +18252,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/engi/drome)
 "bgk" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -29012,7 +29012,7 @@
 	},
 /area/strata/ag/interior/administration)
 "crW" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -29551,7 +29551,7 @@
 	},
 /area/strata/ag/interior/landingzone_checkpoint)
 "cwQ" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -29934,7 +29934,7 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "cZH" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -30083,7 +30083,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
 "dnS" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -30743,7 +30743,7 @@
 	},
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "eBo" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -31279,7 +31279,7 @@
 	},
 /area/strata/ag/interior/dorms/flight_control)
 "fuA" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -32551,7 +32551,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "hue" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -32593,7 +32593,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "hzb" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -33085,7 +33085,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/north_outpost)
 "iwp" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -33910,7 +33910,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "jPQ" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -34934,7 +34934,7 @@
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
 "lEo" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -36280,7 +36280,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "nTf" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -36387,7 +36387,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "odB" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -37580,7 +37580,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "qbk" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -37597,7 +37597,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "qbU" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -38301,7 +38301,7 @@
 	},
 /area/strata/ag/interior/dorms/maintenance)
 "rhk" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -38858,7 +38858,7 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "skJ" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -39030,7 +39030,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "sBg" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -39079,7 +39079,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "sFB" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -40853,7 +40853,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "vsp" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -42113,7 +42113,7 @@
 /area/strata/ug/interior/jungle/deep/west_engi)
 "xGE" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -42434,7 +42434,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "yee" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt/cement{

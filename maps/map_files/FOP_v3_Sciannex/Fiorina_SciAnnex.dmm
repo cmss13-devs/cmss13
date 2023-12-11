@@ -1371,7 +1371,7 @@
 	},
 /area/fiorina/station/security)
 "aOT" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -1508,7 +1508,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/medbay)
 "aTe" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -2081,7 +2081,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "bne" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -2397,7 +2397,7 @@
 	},
 /area/fiorina/oob)
 "bxe" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -2832,7 +2832,7 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "bIz" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison,
@@ -3559,7 +3559,7 @@
 	},
 /area/fiorina/station/lowsec)
 "cfG" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -4310,7 +4310,7 @@
 	},
 /area/fiorina/station/park)
 "cFg" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -4763,7 +4763,7 @@
 	},
 /area/fiorina/station/disco)
 "cRZ" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -5931,7 +5931,7 @@
 	},
 /area/fiorina/station/park)
 "dDI" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -6779,7 +6779,7 @@
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
 "ehy" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -7440,7 +7440,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "eAM" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -7499,7 +7499,7 @@
 	},
 /area/fiorina/lz/near_lzII)
 "eDp" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -7786,7 +7786,7 @@
 	},
 /area/fiorina/station/disco)
 "eLB" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -8044,7 +8044,7 @@
 	},
 /area/fiorina/station/botany)
 "eSF" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -8292,7 +8292,7 @@
 /area/fiorina/station/telecomm/lz1_tram)
 "eZr" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "eZQ" = (
@@ -9855,7 +9855,7 @@
 	},
 /area/fiorina/station/research_cells)
 "fZd" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -10353,7 +10353,7 @@
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
 "grA" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison,
@@ -10703,7 +10703,7 @@
 	},
 /area/fiorina/station/medbay)
 "gAQ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -10711,7 +10711,7 @@
 	},
 /area/fiorina/lz/near_lzII)
 "gBe" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -12412,7 +12412,7 @@
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
 "hzG" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8;
 	pixel_x = 7
 	},
@@ -13010,7 +13010,7 @@
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
 "hTh" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -14698,7 +14698,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "iTt" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -16000,7 +16000,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "jKz" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -16842,7 +16842,7 @@
 	},
 /area/fiorina/station/power_ring)
 "klB" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "klC" = (
@@ -17660,7 +17660,7 @@
 /area/fiorina/tumor/aux_engi)
 "kIh" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -18236,7 +18236,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "laz" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -18308,7 +18308,7 @@
 	},
 /area/fiorina/station/medbay)
 "lcm" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -21699,7 +21699,7 @@
 	},
 /area/fiorina/station/power_ring)
 "nfh" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -24407,7 +24407,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "oGR" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -27469,7 +27469,7 @@
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
 "qGe" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -28587,7 +28587,7 @@
 	},
 /area/fiorina/station/research_cells)
 "rrD" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -31599,7 +31599,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "tgK" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -32245,7 +32245,7 @@
 	},
 /area/fiorina/station/flight_deck)
 "tyC" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -33490,7 +33490,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "unp" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -34267,7 +34267,7 @@
 	},
 /area/fiorina/station/transit_hub)
 "uNs" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -34541,7 +34541,7 @@
 	},
 /area/fiorina/station/park)
 "uVX" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4;
 	pixel_x = -7
 	},
@@ -35260,7 +35260,7 @@
 /turf/open/ice/noweed,
 /area/fiorina/station/research_cells)
 "vrA" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -37489,7 +37489,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "wKx" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -38409,7 +38409,7 @@
 	},
 /area/fiorina/station/transit_hub)
 "xrH" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,

@@ -204,6 +204,8 @@
 
 	var/datum/map_template/shuttle/roundstart_template
 	var/json_key
+	var/list/landing_lights = list()
+	var/landing_lights_on = FALSE
 
 /obj/docking_port/stationary/register(replace = FALSE)
 	. = ..()
@@ -244,6 +246,7 @@
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#f00")
 	#endif
+	link_landing_lights()
 
 /obj/docking_port/stationary/unregister()
 	. = ..()
@@ -252,6 +255,11 @@
 /obj/docking_port/stationary/Destroy(force)
 	if(force)
 		unregister()
+	for(var/obj/structure/machinery/landinglight/light in landing_lights)
+		light.linked_port = null
+	if(landing_lights)
+		landing_lights.Cut()
+	landing_lights = null // We didn't make them, so lets leave them
 	. = ..()
 
 /obj/docking_port/stationary/Moved(atom/oldloc, dir, forced)
@@ -280,23 +288,52 @@
 
 /// Called when a new shuttle arrives
 /obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	turn_off_landing_lights()
 	return
 
 /// Called when a new shuttle is about to arrive
 /obj/docking_port/stationary/proc/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
+	turn_on_landing_lights()
 	return
 
 /// Called when the docked shuttle ignites
 /obj/docking_port/stationary/proc/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
+	turn_on_landing_lights()
 	return
 
 /// Called when a shuttle is about to complete undocking from this stationary dock (already physically gone)
 /obj/docking_port/stationary/proc/on_departure(obj/docking_port/mobile/departing_shuttle)
+	turn_off_landing_lights()
 	return
 
 //returns first-found touching shuttleport
 /obj/docking_port/stationary/get_docked()
 	. = locate(/obj/docking_port/mobile) in loc
+
+/obj/docking_port/stationary/proc/link_landing_lights()
+	var/list/coords = return_coords()
+	var/scan_range = 5
+	var/x0 = coords[1] - scan_range
+	var/y0 = coords[2] - scan_range
+	var/x1 = coords[3] + scan_range
+	var/y1 = coords[4] + scan_range
+
+	for(var/xscan = x0; xscan < x1; xscan++)
+		for(var/yscan = y0; yscan < y1; yscan++)
+			var/turf/searchspot = locate(xscan, yscan, src.z)
+			for(var/obj/structure/machinery/landinglight/light in searchspot)
+				landing_lights += light
+				light.linked_port = src
+
+/obj/docking_port/stationary/proc/turn_on_landing_lights()
+	for(var/obj/structure/machinery/landinglight/light in landing_lights)
+		light.turn_on()
+	landing_lights_on = TRUE
+
+/obj/docking_port/stationary/proc/turn_off_landing_lights()
+	for(var/obj/structure/machinery/landinglight/light in landing_lights)
+		light.turn_off()
+	landing_lights_on = FALSE
 
 /obj/docking_port/stationary/transit
 	name = "In Transit"
@@ -704,6 +741,7 @@
 			if(prearrivalTime && mode != SHUTTLE_PREARRIVAL)
 				set_mode(SHUTTLE_PREARRIVAL)
 				setTimer(prearrivalTime)
+				log_debug("WARNING: shuttle on approach failed check!")
 				return
 			on_prearrival()
 			var/error = initiate_docking(destination, preferred_direction)

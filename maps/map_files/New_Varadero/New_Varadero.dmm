@@ -238,7 +238,7 @@
 	},
 /area/varadero/interior_protected/vessel)
 "ahK" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor{
@@ -2269,7 +2269,7 @@
 	},
 /area/varadero/interior/hall_NW)
 "bwP" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor{
@@ -2788,7 +2788,7 @@
 	},
 /area/varadero/interior/administration)
 "bNN" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/item/prop/almayer/comp_open,
@@ -3250,7 +3250,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "ccp" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 22
 	},
@@ -3360,7 +3360,7 @@
 /turf/open/gm/coast/north,
 /area/varadero/interior/caves/north_research)
 "cgA" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/structure/machinery/floodlight/landing/floor{
@@ -4693,7 +4693,7 @@
 	},
 /area/varadero/interior/hall_N)
 "cYr" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /obj/item/stack/cable_coil/cut,
@@ -4727,7 +4727,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "cYZ" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -5510,7 +5510,7 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "dEJ" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 22
 	},
@@ -6244,7 +6244,7 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/exterior/eastocean)
 "efU" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor{
@@ -6767,7 +6767,7 @@
 	},
 /area/varadero/exterior/monsoon)
 "evX" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor{
@@ -9089,7 +9089,7 @@
 	},
 /area/varadero/interior/caves/east)
 "fUF" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor{
@@ -9247,7 +9247,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "fXH" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -11701,7 +11701,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "hEs" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/gibs,
@@ -12294,7 +12294,7 @@
 /area/varadero/interior/comms1)
 "ias" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
-/obj/structure/machinery/landinglight/ds1/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_y = -5;
 	pixel_x = 13
 	},
@@ -12850,7 +12850,7 @@
 	},
 /area/varadero/interior/security)
 "irk" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -14435,7 +14435,7 @@
 /area/varadero/exterior/comms4)
 "jqd" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_y = -5;
 	pixel_x = 13
 	},
@@ -14663,7 +14663,7 @@
 	},
 /area/varadero/interior/maintenance)
 "jyq" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor{
@@ -16081,7 +16081,7 @@
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "kvQ" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /obj/structure/machinery/floodlight/landing/floor{
@@ -16599,7 +16599,7 @@
 	},
 /area/varadero/interior/cargo)
 "kMy" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -18932,7 +18932,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/hall_NW)
 "miF" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor{
@@ -21477,7 +21477,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/cargo)
 "nQA" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 22
 	},
@@ -21701,7 +21701,7 @@
 	},
 /area/varadero/interior/records)
 "nXR" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor{
@@ -22167,7 +22167,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
 "onr" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor{
@@ -24890,7 +24890,7 @@
 	},
 /area/varadero/interior/hall_N)
 "pXT" = (
-/obj/structure/machinery/landinglight/ds1/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_y = -5;
 	pixel_x = 13
 	},
@@ -28829,7 +28829,7 @@
 /area/varadero/interior/comms1)
 "ssv" = (
 /obj/effect/landmark/hunter_secondary,
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor{
@@ -29353,7 +29353,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security)
 "sHV" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -31370,7 +31370,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "uaV" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor{
@@ -32194,7 +32194,7 @@
 /area/varadero/exterior/monsoon)
 "uFE" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor{
@@ -32233,7 +32233,7 @@
 	},
 /area/varadero/interior/maintenance/north)
 "uHD" = (
-/obj/structure/machinery/landinglight/ds1/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_y = -5;
 	pixel_x = -13
 	},
@@ -34076,7 +34076,7 @@
 	},
 /area/varadero/interior/security)
 "vLV" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 22
 	},
@@ -34739,7 +34739,7 @@
 	},
 /area/varadero/interior/maintenance/north)
 "weJ" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 22
 	},
@@ -36540,7 +36540,7 @@
 /area/varadero/interior/technical_storage)
 "xpL" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
-/obj/structure/machinery/landinglight/ds1/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_y = -5;
 	pixel_x = -13
 	},
@@ -36655,7 +36655,7 @@
 	},
 /area/varadero/interior/security)
 "xsH" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor{
@@ -37152,7 +37152,7 @@
 	},
 /area/varadero/interior/cargo)
 "xJb" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 22
 	},
@@ -37936,7 +37936,7 @@
 	},
 /area/varadero/exterior/lz1_near)
 "ygZ" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor{

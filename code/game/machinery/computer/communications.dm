@@ -130,7 +130,7 @@
 				cooldown_message = world.time
 
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)

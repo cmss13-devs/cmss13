@@ -11,6 +11,7 @@
 
 GLOBAL_LIST_EMPTY(medal_awards)
 GLOBAL_LIST_EMPTY(jelly_awards)
+GLOBAL_LIST_EMPTY(medal_recommendations)
 
 /datum/recipient_awards
 	var/list/medal_names
@@ -160,7 +161,102 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 	return TRUE
 
-/proc/print_medal(mob/living/carbon/human/user, obj/printer)
+/proc/give_medal_award_prefilled(medal_location, giving_mob, _recipient_name, _recipient_rank, _recipient_ckey, reason, _medal_type, recommended_by_ckey, recommended_by_name)
+	var/list/recipient_ranks = list()
+	for(var/datum/data/record/record in GLOB.data_core.general)
+		var/recipient_name = record.fields["name"]
+		recipient_ranks[recipient_name] = record.fields["rank"]
+
+	var/chosen_recipient = _recipient_name
+	if(!chosen_recipient)
+		return FALSE
+
+	// Pick a medal
+	var/medal_type = _medal_type
+	if(!medal_type)
+		return FALSE
+
+	// Write a citation
+	var/citation = strip_html(reason)
+	if(!citation)
+		return FALSE
+
+	// Get mob information
+	var/recipient_rank = _recipient_rank
+	var/posthumous = TRUE
+	var/recipient_ckey = _recipient_ckey
+	var/mob/recipient_mob
+	var/found_other = FALSE
+
+	for(var/mob/mob in GLOB.mob_list)
+		if(mob.real_name == chosen_recipient)
+			// Recipient: Check if they are dead, and get some info
+			// We might not get this info if gibbed, so we'd need to refactor again and find another way if we want stats always correct
+			if(isliving(mob) && mob.stat != DEAD)
+				posthumous = FALSE
+			recipient_mob = mob
+			if(found_other)
+				break
+			found_other = TRUE
+	if(!recipient_mob)
+		for(var/mob/mob in GLOB.dead_mob_list)
+			if(mob.real_name == chosen_recipient)
+				// Recipient: Check if they are dead?, and get some info
+				// We might not get this info if gibbed, so we'd need to refactor again and find another way if we want stats always correct
+				if(isliving(mob) && mob.stat != DEAD)
+					posthumous = FALSE
+				recipient_mob = mob
+				break
+
+	// Create the recipient_award
+	if(!GLOB.medal_awards[chosen_recipient])
+		GLOB.medal_awards[chosen_recipient] = new /datum/recipient_awards()
+	var/datum/recipient_awards/recipient_award = GLOB.medal_awards[chosen_recipient]
+	recipient_award.recipient_rank = recipient_rank
+	recipient_award.recipient_ckey = recipient_ckey
+	recipient_award.recipient_mob = recipient_mob
+	recipient_award.giver_mob += giving_mob
+	recipient_award.medal_names += medal_type
+	recipient_award.medal_citations += citation
+	recipient_award.posthumous += posthumous
+	recipient_award.giver_ckey += recommended_by_ckey
+
+	recipient_award.giver_rank += recipient_ranks[recommended_by_name] // Currently not used in marine award message
+	recipient_award.giver_name += recommended_by_name // Currently not used in marine award message
+
+	// Create an actual medal item
+	if(medal_location)
+		var/obj/item/clothing/accessory/medal/medal
+		switch(medal_type)
+			if(MARINE_CONDUCT_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(medal_location)
+			if(MARINE_BRONZE_HEART_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/bronze/heart(medal_location)
+			if(MARINE_VALOR_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/silver/valor(medal_location)
+			if(MARINE_HEROISM_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/gold/heroism(medal_location)
+			else
+				return FALSE
+		medal.recipient_name = chosen_recipient
+		medal.medal_citation = citation
+		medal.recipient_rank = recipient_rank
+		recipient_award.medal_items += medal
+	else
+		recipient_award.medal_items += null
+
+	// Recipient: Add the medal to the player's stats
+	if(recipient_ckey)
+		var/datum/entity/player_entity/recipient_player = setup_player_entity(recipient_ckey)
+		if(recipient_player)
+			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_rank, citation, giving_mob)
+
+	// Inform staff of success
+	message_admins("[key_name_admin(giving_mob)] awarded a <a href='?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
+
+	return TRUE
+
+/proc/open_medal_panel(mob/living/carbon/human/user, obj/printer)
 	var/obj/item/card/id/card = user.wear_id
 	if(!card)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
@@ -180,8 +276,9 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
 		return
 
-	if(give_medal_award(get_turf(printer)))
-		user.visible_message(SPAN_NOTICE("[printer] prints a medal."))
+	GLOB.ic_medals_panel.user_locs[user] = printer
+	GLOB.ic_medals_panel.tgui_interact(user)
+
 
 GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL))
 
@@ -366,3 +463,163 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	message_admins("[key_name_admin(usr)] deleted [recipient_name]'s <a href='?medals_panel=1'>[medal_type]</a> for: \'[citation]\'.")
 
 	return TRUE
+
+/datum/medal_recommendation
+	var/recipient_rank
+	var/recipient_ckey
+	var/recipient_name
+	var/recommended_by_name
+	var/recommended_by_ckey
+	var/reason
+	var/recommended_by_rank
+
+
+/proc/add_medal_recommendation(mob/recommendation_giver)
+	// Pick a marine
+	var/list/possible_recipients = list()
+	var/list/recipient_ranks = list()
+	for(var/datum/data/record/record in GLOB.data_core.general)
+		var/recipient_name = record.fields["name"]
+		recipient_ranks[recipient_name] = record.fields["rank"]
+		possible_recipients += recipient_name
+	var/chosen_recipient = tgui_input_list(recommendation_giver, "Who do you want to recommend a medal for?", "Medal Recommendation", possible_recipients)
+	if(!chosen_recipient)
+		return FALSE
+
+
+	// Write a citation
+	var/reason = strip_html(input("Why does this person deserve a medal?", "Medal Recommendation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	if(!reason)
+		return FALSE
+
+	// Get mob information
+	var/recipient_rank = recipient_ranks[chosen_recipient]
+	var/recipient_ckey
+	var/mob/recipient_mob
+	var/found_other = FALSE
+
+	for(var/mob/mob in GLOB.mob_list)
+		if(mob.real_name == chosen_recipient)
+			// We might not get this info if gibbed, so we'd need to refactor again and find another way if we want stats always correct
+			recipient_ckey = mob.persistent_ckey
+			recipient_mob = mob
+			if(found_other)
+				break
+			found_other = TRUE
+	if(!recipient_mob)
+		for(var/mob/mob in GLOB.dead_mob_list)
+			if(mob.real_name == chosen_recipient)
+				// Recipient: Check if they are dead?, and get some info
+				// We might not get this info if gibbed, so we'd need to refactor again and find another way if we want stats always correct
+				recipient_ckey = mob.persistent_ckey
+				recipient_mob = mob
+				break
+
+	// Create the recipient_award
+	var/datum/medal_recommendation/recommendation = new /datum/medal_recommendation()
+	GLOB.medal_recommendations += recommendation
+
+	recommendation.recipient_rank = recipient_rank
+	recommendation.recipient_ckey = recipient_ckey
+	recommendation.recipient_name = recipient_mob.real_name
+	recommendation.recommended_by_name = recommendation_giver.real_name
+	recommendation.recommended_by_ckey = recommendation_giver.ckey
+	recommendation.recommended_by_rank = recipient_ranks[recommendation_giver.real_name]
+
+
+	recommendation.reason = reason
+
+	return TRUE
+
+
+GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
+
+/datum/ic_medal_panel
+	var/name = "Medals Panel"
+	var/list/user_locs = list()
+
+/datum/ic_medal_panel/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "IcMedalsPanel", "Medals Panel")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+/datum/ic_medal_panel/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
+
+/datum/ic_medal_panel/ui_data(mob/user)
+	var/list/data = list()
+	data["recommendations"] = list()
+
+	for(var/datum/medal_recommendation/recommendation in GLOB.medal_recommendations)
+		var/recommendation_list = list()
+
+		recommendation_list["rank"] = recommendation.recipient_rank
+		recommendation_list["name"] = recommendation.recipient_name
+		recommendation_list["ref"] = REF(recommendation)
+		recommendation_list["recommender_name"] = recommendation.recommended_by_name
+		recommendation_list["reason"] = recommendation.reason
+		recommendation_list["recommender_rank"] = recommendation.recommended_by_rank
+
+		data["recommendations"] += list(recommendation_list)
+	return data
+
+/datum/ic_medal_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/user = usr
+	var/obj/item/card/id/card = user.wear_id
+	if(!card)
+		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
+		return
+
+	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.highcom_paygrades)))
+		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
+		return
+
+	if(!card.registered_ref)
+		user.visible_message("ERROR: ID card not registered in USCM registry. Potential medal fraud detected.")
+		return
+
+	var/real_owner_ref = card.registered_ref
+
+	if(real_owner_ref != WEAKREF(user))
+		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
+		return
+
+	switch(action)
+		if("grant_new_medal")
+			if(!user_locs[user])
+				return
+			if(give_medal_award(get_turf(user_locs[user])))
+				user_locs[user].visible_message(SPAN_NOTICE("[user_locs[user]] prints a medal."))
+
+		if("approve_medal")
+			var/recommendation_ref = params["ref"]
+			var/medal_type = params["medal_type"]
+			if(!(medal_type in GLOB.human_medals))
+				return
+			var/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations
+			if(!recommendation)
+				return
+			if(!user_locs[user])
+				return
+			give_medal_award_prefilled(user_locs[user], user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, recommendation.reason, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name)
+			GLOB.medal_recommendations -= recommendation
+			qdel(recommendation)
+
+		if("deny_medal")
+			var/recommendation_ref = params["ref"]
+			var/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations
+			if(!recommendation)
+				return
+			GLOB.medal_recommendations -= recommendation
+			qdel(recommendation)
+
+/datum/ic_medal_panel/ui_close(mob/user)
+	. = ..()
+	if(user_locs[user])
+		user_locs[user] = null
+

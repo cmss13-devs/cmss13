@@ -595,7 +595,8 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(!user_locs[user])
 				return
 			if(give_medal_award(get_turf(user_locs[user])))
-				user_locs[user].visible_message(SPAN_NOTICE("[user_locs[user]] prints a medal."))
+				var/atom/user_machine = user_locs[user]
+				user_machine.visible_message(SPAN_NOTICE("[user_locs[user]] prints a medal."))
 			. = TRUE
 
 		if("approve_medal")

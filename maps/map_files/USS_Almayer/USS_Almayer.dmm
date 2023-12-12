@@ -164,7 +164,7 @@
 	},
 /area/almayer/hallways/repair_bay)
 "aau" = (
-/turf/closed/wall/almayer/outer,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
 /obj/vehicle/powerloader,
@@ -9814,7 +9814,11 @@
 	name = "\improper Engineering Storage";
 	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	unacidable = 1
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
+	id = "engie_store"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -9834,7 +9838,11 @@
 	name = "\improper Engineering Storage";
 	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	unacidable = 1
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
+	id = "engie_store"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -12868,6 +12876,13 @@
 /obj/structure/machinery/computer/working_joe{
 	dir = 4;
 	pixel_x = -17
+	},
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 26;
+	id = "engie_store";
+	name = "Emergency Storage";
+	pixel_x = -2;
+	req_one_access_txt = "6"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -20416,9 +20431,6 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
-"bIO" = (
-/turf/closed/wall/almayer/outer,
-/area)
 "bIR" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -46591,7 +46603,7 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/living/synthcloset)
 "kcN" = (
-/turf/closed/wall/almayer/outer,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/commandbunks)
 "kdi" = (
 /obj/item/device/flashlight/pen{
@@ -77719,6 +77731,9 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/bravo)
+"wDM" = (
+/turf/closed/wall/almayer/reinforced/temphull,
+/area/almayer/engineering/upper_engineering)
 "wDR" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -78957,7 +78972,7 @@
 	},
 /area/almayer/command/lifeboat)
 "xba" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/cryo_cells)
 "xbd" = (
 /obj/effect/decal/warning_stripes{
@@ -100073,7 +100088,7 @@ kCT
 iRS
 mzo
 oFG
-bIO
+vRz
 aaa
 aaa
 aaa
@@ -121943,7 +121958,7 @@ aKW
 aKW
 aKW
 aKW
-aKW
+hhw
 hhw
 aLT
 sXt
@@ -128159,11 +128174,11 @@ psm
 ylJ
 aDZ
 apd
-alO
-alO
-alO
-alO
-alO
+wDM
+wDM
+wDM
+wDM
+wDM
 axD
 amA
 aBo
@@ -128362,11 +128377,11 @@ ptK
 alG
 aYj
 apd
-alO
+wDM
 aOM
 aoW
 aty
-alO
+wDM
 axE
 amA
 aBp
@@ -128565,7 +128580,7 @@ gpc
 aWd
 aYj
 apd
-alO
+wDM
 uto
 aoX
 auU
@@ -128768,7 +128783,7 @@ ptK
 wOh
 ajP
 apd
-alO
+wDM
 aOQ
 fxI
 nLJ
@@ -128971,11 +128986,11 @@ eNi
 alG
 aDZ
 apf
-alO
+wDM
 aOH
 aJf
 aMw
-alO
+wDM
 xsl
 aya
 atq
@@ -129174,11 +129189,11 @@ eNi
 alG
 aYj
 apd
-alO
-alO
-alO
-alO
-alO
+wDM
+wDM
+wDM
+wDM
+wDM
 axI
 amA
 amx

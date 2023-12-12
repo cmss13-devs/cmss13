@@ -292,8 +292,6 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOUR_SILVER,
 	if(!GLOB.rbarrel_genned)
 		var/icon/icon = new('icons/obj/structures/crates.dmi')
 		var/list/icon_list = icon_states(icon)
-		//rbarrel_cap_states = icon_states(icon)
-		//rbarrel_genned = icon_states(icon)
 		for(var/state in icon_list)
 			if(findtext(state,"+cap"))
 				GLOB.rbarrel_cap_states.Add(state)

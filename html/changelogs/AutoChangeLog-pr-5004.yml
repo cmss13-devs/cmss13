@@ -1,4 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - bugfix: "Fixes defender headbutt bug while fortified."

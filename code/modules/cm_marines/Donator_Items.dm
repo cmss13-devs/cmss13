@@ -23,7 +23,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -35,7 +35,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -91,7 +91,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -103,7 +103,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 

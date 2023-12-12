@@ -127,3 +127,8 @@
 	min_val = 1
 	config_entry_value = 450
 	integer = TRUE
+
+/datum/config_entry/number/whiskey_required_players
+	min_val = 0
+	config_entry_value = 140
+	integer = TRUE

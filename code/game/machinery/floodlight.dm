@@ -36,12 +36,12 @@
 
 	update_icon()
 
-/obj/structure/machinery/floodlight/attack_hand(mob/user)
+/obj/structure/machinery/floodlight/attack_hand(mob/living/user)
 	if(!toggleable)
 		to_chat(user, SPAN_NOTICE("[src] doesn't seem to have a switch to toggle the light."))
 		return
 
-	if(user.lying || user.stat)
+	if(user.is_mob_incapacitated())
 		return
 
 	if(!is_valid_user(user))

@@ -75,6 +75,12 @@ Additional game mode variables.
 	var/list/monkey_types = list() //What type of monkeys do we spawn
 	var/latejoin_tally = 0 //How many people latejoined Marines
 	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
+	/// Amount of latejoin_tally already awarded as larvas
+	var/latejoin_larva_used = 0
+	/// Multiplier to the amount of marine gear, current value as calculated with modifiers
+	var/gear_scale = 1
+	/// Multiplier to the amount of marine gear, maximum reached value for
+	var/gear_scale_max = 1
 
 	//Role Authority set up.
 	/// List of role titles to override to different roles when starting game
@@ -100,7 +106,7 @@ Additional game mode variables.
 
 
 /datum/game_mode/proc/get_roles_list()
-	return ROLES_USCM
+	return GLOB.ROLES_USCM
 
 //===================================================\\
 
@@ -109,16 +115,16 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_special_clamps()
-	xeno_starting_num = clamp((readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
-	surv_starting_num = clamp((readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
+	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
+	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
 	marine_starting_num = GLOB.player_list.len - xeno_starting_num - surv_starting_num
-	for(var/datum/squad/sq in RoleAuthority.squads)
+	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
 		if(sq)
 			sq.max_engineers = engi_slot_formula(marine_starting_num)
 			sq.max_medics = medic_slot_formula(marine_starting_num)
 
-	for(var/i in RoleAuthority.roles_by_name)
-		var/datum/job/J = RoleAuthority.roles_by_name[i]
+	for(var/i in GLOB.RoleAuthority.roles_by_name)
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
 		if(J.scaled)
 			J.set_spawn_positions(marine_starting_num)
 
@@ -149,7 +155,7 @@ Additional game mode variables.
 		else
 			if(!istype(player,/mob/dead)) continue //Otherwise we just want to grab the ghosts.
 
-		if(RoleAuthority.roles_whitelist[player.ckey] & WHITELIST_PREDATOR)  //Are they whitelisted?
+		if(GLOB.RoleAuthority.roles_whitelist[player.ckey] & WHITELIST_PREDATOR)  //Are they whitelisted?
 			if(!player.client.prefs)
 				player.client.prefs = new /datum/preferences(player.client) //Somehow they don't have one.
 
@@ -176,13 +182,13 @@ Additional game mode variables.
 	if(!pred_candidate.client)
 		return
 
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
 	if(!J)
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
+	if(!(GLOB.RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
 		return
 
@@ -195,9 +201,9 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return
 
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
-	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
+	if(J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
 		var/pred_max = calculate_pred_max
 		if(pred_current_num >= pred_max)
 			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
@@ -234,13 +240,13 @@ Additional game mode variables.
 	pred_candidate.mind.transfer_to(new_predator, TRUE)
 	new_predator.client = pred_candidate.client
 
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
 	if(!J)
 		qdel(new_predator)
 		return
 
-	RoleAuthority.equip_role(new_predator, J, new_predator.loc)
+	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
 	return new_predator
 
@@ -655,7 +661,7 @@ Additional game mode variables.
 	// Let the round recorder know that the key has changed
 	SSround_recording.recorder.update_key(new_xeno)
 	if(new_xeno.client)
-		new_xeno.client.change_view(world_view_size)
+		new_xeno.client.change_view(GLOB.world_view_size)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isxeno(new_xeno)) //Dear lord
@@ -914,23 +920,49 @@ Additional game mode variables.
 
 //We do NOT want to initilialize the gear before everyone is properly spawned in
 /datum/game_mode/proc/initialize_post_marine_gear_list()
-	var/scale = get_scaling_value()
+	init_gear_scale()
 
 	//Set up attachment vendor contents related to Marine count
 	for(var/i in GLOB.cm_vending_vendors)
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
-		CVS.populate_product_list_and_boxes(scale)
+		CVS.populate_product_list_and_boxes(gear_scale)
 
 	//Scale the amount of cargo points through a direct multiplier
-	supply_controller.points = round(supply_controller.points * scale)
+	GLOB.supply_controller.points += round(GLOB.supply_controller.points_scale * gear_scale)
 
-/datum/game_mode/proc/get_scaling_value()
+///Returns a multiplier to the amount of gear that is to be distributed roundstart, stored in [/datum/game_mode/var/gear_scale]
+/datum/game_mode/proc/init_gear_scale()
 	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment
-	//This might count players who ready up but get kicked back to the lobby
-	var/marine_pop_size = length(GLOB.alive_human_list)
+	var/marine_pop_size = 0
+	var/uscm_personnel_count = 0
+	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
+		if(human.faction == FACTION_USCM)
+			uscm_personnel_count++
+			var/datum/job/job = GET_MAPPED_ROLE(human.job)
+			marine_pop_size += GLOB.RoleAuthority.calculate_role_weight(job)
 
 	//This gives a decimal value representing a scaling multiplier. Cannot go below 1
-	return max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
+	gear_scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
+	gear_scale_max = gear_scale
+	log_debug("SUPPLY: Game start detected [marine_pop_size] weighted marines (out of [uscm_personnel_count]/[length(GLOB.alive_human_list)] USCM humans), resulting in gear_scale = [gear_scale]")
+	return gear_scale
+
+///Updates the [/datum/game_mode/var/gear_scale] multiplier based on joining and cryoing marines
+/datum/game_mode/proc/update_gear_scale(delta)
+	// Magic inverse function that guarantees marines still get good supplies for latejoins within first ~30 minutes but stalls starting 2 hours or so
+	gear_scale += delta * (0.25 + 0.75 / (1 + ROUND_TIME / 20000)) / MARINE_GEAR_SCALING_NORMAL
+	var/gear_delta = gear_scale - gear_scale_max
+	if(gear_delta > 0)
+		gear_scale_max = gear_scale
+		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
+			vendor.update_dynamic_stock(gear_scale_max)
+		GLOB.supply_controller.points += round(gear_delta * GLOB.supply_controller.points_scale)
+
+/// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
+/datum/game_mode/proc/latejoin_update(role, delta = 1)
+	var/weight = GLOB.RoleAuthority.calculate_role_weight(role)
+	latejoin_tally += weight * delta
+	update_gear_scale(weight * delta)
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()
@@ -964,14 +996,14 @@ Additional game mode variables.
 	if(!joe_candidate.client)
 		return
 
-	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 
 	if(!joe_job)
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(!(RoleAuthority.roles_whitelist[joe_candidate.ckey] & WHITELIST_JOE))
+	if(!(GLOB.RoleAuthority.roles_whitelist[joe_candidate.ckey] & WHITELIST_JOE))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
@@ -982,14 +1014,14 @@ Additional game mode variables.
 		return
 
 	// council doesn't count towards this conditional.
-	if(joe_job.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
+	if(joe_job.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
 		var/joe_max = joe_job.total_positions
 		if((joe_job.current_positions >= joe_max) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 			if(show_warning)
 				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
 
-	if(!enter_allowed && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
+	if(!GLOB.enter_allowed && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
 		return
@@ -1009,14 +1041,14 @@ Additional game mode variables.
 	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_WORKING_JOE]))
 	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
-	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 
 	if(!joe_job)
 		qdel(new_joe)
 		return
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
 	joe_job.current_positions++
-	RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
+	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
 	GLOB.data_core.manifest_inject(new_joe)
 	SSticker.minds += new_joe.mind
 	return new_joe

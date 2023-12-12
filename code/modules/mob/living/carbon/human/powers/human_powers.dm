@@ -9,7 +9,7 @@
 	if(last_special > world.time)
 		return
 
-	if(is_mob_incapacitated() || lying || buckled)
+	if(is_mob_incapacitated() || buckled)
 		to_chat(src, "You cannot tackle someone in your current state.")
 		return
 
@@ -27,7 +27,7 @@
 	if(last_special > world.time)
 		return
 
-	if(is_mob_incapacitated() || lying || buckled)
+	if(is_mob_incapacitated() || buckled)
 		to_chat(src, "You cannot tackle in your current state.")
 		return
 
@@ -56,7 +56,7 @@
 	if(last_special > world.time)
 		return
 
-	if(is_mob_incapacitated() || lying || buckled)
+	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
 		to_chat(src, "You cannot leap in your current state.")
 		return
 
@@ -74,7 +74,7 @@
 	if(last_special > world.time)
 		return
 
-	if(is_mob_incapacitated() || lying || buckled)
+	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
 		to_chat(src, "You cannot leap in your current state.")
 		return
 
@@ -110,7 +110,7 @@
 	if(last_special > world.time)
 		return
 
-	if(is_mob_incapacitated(TRUE) || lying)
+	if(is_mob_incapacitated() || body_position != STANDING_UP)
 		to_chat(src, SPAN_DANGER("You cannot do that in your current state."))
 		return
 
@@ -193,13 +193,46 @@
 /mob/living/verb/lay_down()
 	set name = "Rest"
 	set category = "IC"
+	set_resting(!resting, FALSE, TRUE)
 
-	if(!resting)
-		apply_effect(1, WEAKEN) //so that the mob immediately falls over
+///Proc to hook behavior to the change of value in the resting variable.
+/mob/living/proc/set_resting(new_resting, silent = TRUE, instant = FALSE)
+	if(!(mobility_flags & MOBILITY_REST))
+		return
+	if(new_resting == resting)
+		return
+	if(!COOLDOWN_FINISHED(src, rest_cooldown))
+		to_chat(src, SPAN_WARNING("You can't 'rest' that fast. Take a breather!"))
+		return
+	COOLDOWN_START(src, rest_cooldown, 1 SECONDS)
 
-	resting = !resting
+	. = resting
+	resting = new_resting
+	if(new_resting)
+		if(body_position == LYING_DOWN)
+			if(!silent)
+				to_chat(src, SPAN_NOTICE("You will now try to stay lying down on the floor."))
+		else if(HAS_TRAIT(src, TRAIT_FORCED_STANDING) || (buckled && buckled.buckle_lying != NO_BUCKLE_LYING))
+			if(!silent)
+				to_chat(src, SPAN_NOTICE("You will now lay down as soon as you are able to."))
+		else
+			if(!silent)
+				to_chat(src, SPAN_NOTICE("You lay down."))
+			set_lying_down()
+	else
+		if(body_position == STANDING_UP)
+			if(!silent)
+				to_chat(src, SPAN_NOTICE("You will now try to remain standing up."))
+		else if(HAS_TRAIT(src, TRAIT_FLOORED) || (buckled && buckled.buckle_lying != NO_BUCKLE_LYING))
+			if(!silent)
+				to_chat(src, SPAN_NOTICE("You will now stand up as soon as you are able to."))
+		else
+			if(!silent)
+				to_chat(src, SPAN_NOTICE("You stand up."))
+			get_up(instant)
 
-	to_chat(src, SPAN_NOTICE("You are now [resting ? "resting." : "getting up."]"))
+//	SEND_SIGNAL(src, COMSIG_LIVING_RESTING, new_resting, silent, instant)
+//	update_resting() // HUD icons
 
 /mob/living/carbon/human/proc/toggle_inherent_nightvison()
 	set category = "Synthetic"
@@ -231,9 +264,9 @@
 	var/chosen_HUD = 1
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_ADVANCED]
+			H = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 			chosen_HUD = 2
 		else
 			return

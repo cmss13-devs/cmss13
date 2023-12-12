@@ -174,9 +174,7 @@
 		var/root_duration = buffed ? root_duration_buffed : root_duration_unbuffed
 
 		vanguard_user.visible_message(SPAN_XENODANGER("[vanguard_user] slams [target_atom] into the ground!"), SPAN_XENOHIGHDANGER("You slam [target_atom] into the ground!"))
-
 		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cleave"))
-		target_carbon.update_canmove()
 
 		if (ishuman(target_carbon))
 			var/mob/living/carbon/human/Hu = target_carbon
@@ -257,8 +255,8 @@
 	var/turf/temp = xeno.loc
 	for(var/distance in 0 to max_distance)
 		temp = get_step(turf, facing)
-		if(facing in diagonals) // check if it goes through corners
-			var/reverse_face = reverse_dir[facing]
+		if(facing in GLOB.diagonals) // check if it goes through corners
+			var/reverse_face = GLOB.reverse_dir[facing]
 			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
 			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
 			if((!back_left || back_left.density) && (!back_right || back_right.density))
@@ -293,7 +291,6 @@
 	var/throw_target_turf = get_step(xeno.loc, facing)
 
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-	xeno.update_canmove()
 	if(!do_after(xeno, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
 		to_chat(xeno, SPAN_XENOWARNING("You relax your tail."))
 		apply_cooldown()
@@ -303,7 +300,6 @@
 			qdel(xenotelegraph)
 
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-		xeno.update_canmove()
 
 		return
 
@@ -311,7 +307,6 @@
 		return
 
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-	xeno.update_canmove()
 
 	playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
 	xeno.visible_message(SPAN_XENODANGER("\The [xeno] suddenly uncoils its tail, firing it towards [atom]!"), SPAN_XENODANGER("You uncoil your tail, sending it out towards \the [atom]!"))
@@ -339,13 +334,11 @@
 			new /datum/effects/xeno_slow(target, xeno, , ,25)
 			target.apply_effect(1, SLOW)
 		else if (LAZYLEN(targets) == 2)
-
 			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-			target.update_canmove()
 			if (ishuman(target))
-				var/mob/living/carbon/human/human = target
-				human.update_xeno_hostile_hud()
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target), get_xeno_stun_duration(target, 25))
+				var/mob/living/carbon/human/target_human = target
+				target_human.update_xeno_hostile_hud()
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 25))
 			to_chat(target, SPAN_XENOHIGHDANGER("[xeno] has pinned you to the ground! You cannot move!"))
 
 			target.set_effect(2, DAZE)
@@ -393,7 +386,7 @@
 	var/obj/limb/target_limb = target_carbon.get_limb(check_zone(oppressor_user.zone_selected))
 
 	if (ishuman(target_carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
-		return
+		target_limb = target_carbon.get_limb("chest")
 
 	if (!check_and_use_plasma_owner())
 		return
@@ -409,10 +402,9 @@
 	oppressor_user.animation_attack_on(target_carbon)
 	oppressor_user.flick_attack_overlay(target_carbon, "punch")
 
-	if (HAS_TRAIT(target_carbon, TRAIT_IMMOBILIZED) || target_carbon.slowed || target_carbon.knocked_down)
+	if (!(target_carbon.mobility_flags & MOBILITY_MOVE) || !(target_carbon.mobility_flags & MOBILITY_STAND) || target_carbon.slowed)
 		target_carbon.apply_damage(get_xeno_damage_slash(target_carbon, damage), BRUTE, target_limb? target_limb.name : "chest")
 		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Oppressor Punch"))
-		target_carbon.update_canmove()
 
 		if (ishuman(target_carbon))
 			var/mob/living/carbon/human/Hu = target_carbon
@@ -420,19 +412,18 @@
 
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Oppressor Punch")), get_xeno_stun_duration(target_carbon, 1.2 SECONDS))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
-
-		var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
-		var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
-		if(abduct_action && abduct_action.action_cooldown_check())
-			abduct_action.reduce_cooldown(5 SECONDS)
-		if(tail_lash_action && tail_lash_action.action_cooldown_check())
-			tail_lash_action.reduce_cooldown(5 SECONDS)
 	else
 		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
 		step_away(target_carbon, oppressor_user, 2)
 
 
 	shake_camera(target_carbon, 2, 1)
+	var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
+	var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
+	if(abduct_action && !abduct_action.action_cooldown_check())
+		abduct_action.reduce_cooldown(5 SECONDS)
+	if(tail_lash_action && !tail_lash_action.action_cooldown_check())
+		tail_lash_action.reduce_cooldown(5 SECONDS)
 
 	apply_cooldown()
 	return ..()
@@ -973,8 +964,8 @@
 	var/turf/temp = X.loc
 	for(var/x in 0 to max_distance)
 		temp = get_step(T, facing)
-		if(facing in diagonals) // check if it goes through corners
-			var/reverse_face = reverse_dir[facing]
+		if(facing in GLOB.diagonals) // check if it goes through corners
+			var/reverse_face = GLOB.reverse_dir[facing]
 			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
 			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
 			if((!back_left || back_left.density) && (!back_right || back_right.density))
@@ -1013,7 +1004,6 @@
 		throw_target_turf = behind_turf
 
 	ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
-	X.update_canmove()
 	if(windup)
 		if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
 			to_chat(X, SPAN_XENOWARNING("You cancel your retrieve."))
@@ -1024,12 +1014,10 @@
 				qdel(XT)
 
 			REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
-			X.update_canmove()
 
 			return
 
 	REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
-	X.update_canmove()
 
 	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
 

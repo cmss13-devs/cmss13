@@ -413,7 +413,6 @@
 		if (!windup_interruptable)
 			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			X.anchored = TRUE
-			X.update_canmove()
 		pre_windup_effects()
 
 		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -421,14 +420,12 @@
 			if (!windup_interruptable)
 				REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 				X.anchored = FALSE
-				X.update_canmove()
 			post_windup_effects(interrupted = TRUE)
 			return
 
 		if (!windup_interruptable)
 			REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			X.anchored = FALSE
-			X.update_canmove()
 		post_windup_effects()
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
@@ -571,6 +568,13 @@
 	var/obj/effect/alien/weeds/alien_weeds = locate() in src
 	if(!alien_weeds)
 		to_chat(X, SPAN_XENOWARNING("You can only shape on weeds. Find some resin before you start building!"))
+		return FALSE
+
+	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
+	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
+	var/obj/structure/stairs/staircase = locate() in src
+	if(staircase)
+		to_chat(X, SPAN_XENOWARNING("You cannot make a hole beneath a staircase!"))
 		return FALSE
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
@@ -849,7 +853,7 @@
 	for(var/mob/living/L in T)
 		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
 
-	for(var/dirn in alldirs)
+	for(var/dirn in GLOB.alldirs)
 		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth)
 
 

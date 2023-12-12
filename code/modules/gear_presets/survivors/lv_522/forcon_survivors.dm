@@ -1,7 +1,7 @@
 ///*****************************LV-522 Force Recon Survivors*******************************************************/
 //Nanu told me to put them here so they dont clutter up survivors.dm
 /datum/equipment_preset/survivor/forecon
-	paygrade = "ME5"
+	paygrade = PAY_SHORT_ME5
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	rank = JOB_SURVIVOR
@@ -208,7 +208,7 @@
 	name = "Survivor - USCM Reconnaissance Squad Leader"
 	assignment = JOB_FORECON_SL
 	skills = /datum/skills/military/survivor/forecon_squad_leader
-	paygrade = "MO1"
+	paygrade = PAY_SHORT_MO1
 
 /datum/equipment_preset/survivor/forecon/squad_leader/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
@@ -234,7 +234,7 @@
 	name = "Survivor - USCM Reconnaissance Major"
 	assignment = JOB_FORECON_CO
 	skills = /datum/skills/commander
-	paygrade = "MO4"
+	paygrade = PAY_SHORT_MO4
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "FORECON CO"
 

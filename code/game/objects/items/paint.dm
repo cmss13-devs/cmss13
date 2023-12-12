@@ -1,6 +1,6 @@
 //NEVER USE THIS IT SUX -PETETHEGOAT
 
-var/global/list/cached_icons = list()
+GLOBAL_LIST_EMPTY(cached_icons)
 
 /obj/item/reagent_container/glass/paint
 	desc = "It's a paint bucket."

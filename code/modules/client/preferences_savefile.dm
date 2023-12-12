@@ -11,8 +11,8 @@
 //if a file was updated, return 1
 /datum/preferences/proc/savefile_update(savefile/S)
 	if(!isnum(savefile_version) || savefile_version < SAVEFILE_VERSION_MIN) //lazily delete everything + additional files so they can be saved in the new format
-		for(var/ckey in preferences_datums)
-			var/datum/preferences/D = preferences_datums[ckey]
+		for(var/ckey in GLOB.preferences_datums)
+			var/datum/preferences/D = GLOB.preferences_datums[ckey]
 			if(D == src)
 				var/delpath = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/"
 				if(delpath && fexists(delpath))
@@ -188,11 +188,6 @@
 	S["co_affiliation"] >> affiliation
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
-	S["key_bindings"] >> key_bindings
-	check_keybindings()
-
-	var/list/remembered_key_bindings
-	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	S["lang_chat_disabled"] >> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
@@ -206,6 +201,10 @@
 	S["autofit_viewport"] >> auto_fit_viewport
 	S["adaptive_zoom"] >> adaptive_zoom
 	S["tooltips"] >> tooltips
+	S["key_bindings"] >> key_bindings
+
+	var/list/remembered_key_bindings
+	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -261,11 +260,11 @@
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
-	commander_status = sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
+	commander_status = sanitize_inlist(commander_status, GLOB.whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, (CO_GUNS + COUNCIL_CO_GUNS), initial(commander_sidearm))
 	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
-	yautja_status = sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
-	synth_status = sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
+	yautja_status = sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
+	synth_status = sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
 	key_bindings = sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
@@ -273,6 +272,9 @@
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
 	vars["fps"] = fps
+
+	check_keybindings()
+	S["key_bindings"] << key_bindings
 
 	if(remembered_key_bindings)
 		for(var/i in GLOB.keybindings_by_name)
@@ -520,7 +522,7 @@
 	b_eyes = sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
 	underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
-	backbag = sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
+	backbag = sanitize_integer(backbag, 1, GLOB.backbaglist.len, initial(backbag))
 	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
 	//b_type = sanitize_text(b_type, initial(b_type))
 
@@ -651,7 +653,7 @@
 					addedbind = TRUE
 		if(!addedbind)
 			notadded += kb
-	save_preferences()
+
 	if(length(notadded))
 		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
 

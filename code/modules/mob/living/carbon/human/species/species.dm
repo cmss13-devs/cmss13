@@ -166,6 +166,13 @@
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
 
+	// We just deleted the legs so they fell down.
+	// Update again now that the legs are back so they can stand properly during rest of species code and before outside updates kick in.
+	// I hate this code.
+	H.update_leg_status()
+	// While we're deep in shitcode we also force instant transition so this nonsense isn't visually noticeable
+	H.update_transform(instant_update = TRUE)
+
 /datum/species/proc/initialize_pain(mob/living/carbon/human/H)
 	if(pain_type)
 		QDEL_NULL(H.pain)
@@ -179,12 +186,7 @@
 /datum/species/proc/hug(mob/living/carbon/human/H, mob/living/carbon/target, target_zone = "chest")
 	if(H.flags_emote)
 		return
-	var/t_him = "them"
-	switch(target.gender)
-		if(MALE)
-			t_him = "him"
-		if(FEMALE)
-			t_him = "her"
+	var/t_him = target.p_them()
 
 	if(target_zone == "head")
 		attempt_rock_paper_scissors(H, target)
@@ -195,6 +197,9 @@
 	else if(target_zone in list("l_hand", "r_hand"))
 		attempt_fist_bump(H, target)
 		return
+	else if(H.body_position == LYING_DOWN) // Keep other interactions above lying check for maximum awkwardness potential
+		H.visible_message(SPAN_NOTICE("[H] waves at [target] to make [t_him] feel better!"), \
+			SPAN_NOTICE("You wave at [target] to make [t_him] feel better!"), null, 4)
 	else if(target_zone == "groin")
 		H.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"), \
 			SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)
@@ -470,7 +475,7 @@
 /datum/species/proc/handle_blood_splatter(mob/living/carbon/human/human, splatter_dir)
 	var/color_override
 	if(human.special_blood)
-		var/datum/reagent/D = chemical_reagents_list[human.special_blood]
+		var/datum/reagent/D = GLOB.chemical_reagents_list[human.special_blood]
 		if(D)
 			color_override = D.color
 

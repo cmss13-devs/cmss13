@@ -290,15 +290,15 @@
 	addtimer(CALLBACK(src, PROC_REF(search_for_components)), 20)
 
 /obj/structure/machinery/brig_cell/proc/search_for_components()
-	for(var/obj/structure/machinery/door/window/brigdoor/M in machines)
+	for(var/obj/structure/machinery/door/window/brigdoor/M in GLOB.machines)
 		if(M.id == id)
 			targets += M
 
-	for(var/obj/structure/machinery/flasher/F in machines)
+	for(var/obj/structure/machinery/flasher/F in GLOB.machines)
 		if(F.id == id)
 			targets += F
 
-	for(var/obj/structure/machinery/door/poddoor/almayer/locked/P in machines)
+	for(var/obj/structure/machinery/door/poddoor/almayer/locked/P in GLOB.machines)
 		if(P.id == id)
 			targets += P
 

@@ -98,7 +98,8 @@
 		if(length(mind.memory) < 4000)
 			mind.store_memory(msg)
 		else
-			message_admins("[key_name(usr)] auto-slept for attempting to exceed mob memory limit.]", loc.x, loc.y, loc.z)
+			message_admins("[key_name(usr)] warned for attempting to exceed mob memory limit.]", loc.x, loc.y, loc.z)
+			to_chat(src, "You have exceeded the maximum memory limit. Sorry!")
 	else
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
@@ -154,7 +155,7 @@
 		return
 
 	M.key = key
-	if(M.client) M.client.change_view(world_view_size)
+	if(M.client) M.client.change_view(GLOB.world_view_size)
 // M.Login() //wat
 	return
 
@@ -221,6 +222,7 @@
 	set category = "IC"
 
 	if(pulling)
+		REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 		var/mob/M = pulling
 		pulling.pulledby = null
 		pulling = null
@@ -243,4 +245,3 @@
 				//so we must undo it here so the victim can move right away
 				M.client.next_movement = world.time
 			M.update_transform(TRUE)
-			M.update_canmove()

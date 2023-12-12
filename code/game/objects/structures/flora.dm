@@ -73,7 +73,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 /obj/structure/flora/proc/spread_fire()
 	SIGNAL_HANDLER
-	for(var/D in cardinal) //Spread fire
+	for(var/D in GLOB.cardinals) //Spread fire
 		var/turf/T = get_step(src.loc, D)
 		if(T)
 			for(var/obj/structure/flora/F in T)
@@ -725,7 +725,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 			//this bush marks the edge of the map, you can't destroy it
 			to_chat(user, SPAN_DANGER("You flail away at the undergrowth, but it's too thick here."))
 		else
-			user.visible_message(SPAN_DANGER("[user] flails away at the  [src] with [I]."),SPAN_DANGER("You flail away at the [src] with [I]."))
+			user.visible_message(SPAN_DANGER("[user] flails away at [src] with [I]."), SPAN_DANGER("You flail away at [src] with [I]."))
 			playsound(src.loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 			health -= damage
 			if(health < 0)
@@ -758,4 +758,3 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	desc = "Looks like some of that fruit might be edible."
 	icon_tag = "plant"
 	variations  = 7
-

@@ -278,7 +278,7 @@
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("The [xeno] fires a blast of acid at [affected_atom]!"), SPAN_XENOWARNING("You fire a blast of acid at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a blast of acid at [affected_atom]!"), SPAN_XENOWARNING("You fire a blast of acid at [affected_atom]!"))
 
 	var/turf/target_turf = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))

@@ -5,7 +5,7 @@
 
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH)
-	paygrade = "C"
+	paygrade = PAY_SHORT_CIV
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_SURVIVOR)
@@ -22,7 +22,7 @@
 	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
-	var/random_name = capitalize(pick(new_human.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(21,45)
 
@@ -195,7 +195,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 /datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
-	paygrade = "GS-9"
+	paygrade = PAY_SHORT_CMBD
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
@@ -293,7 +293,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_WYC2
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -325,11 +325,11 @@ Everything bellow is a parent used as a base for one or multiple maps.
 		var/playtime = get_job_playtime(new_human.client, JOB_CORPORATE_LIAISON)
 		if(new_human.client.prefs.playtime_perks)
 			if(playtime > JOB_PLAYTIME_TIER_4)
-				return "WYC5"
+				return PAY_SHORT_WYC5
 			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return "WYC4"
+				return PAY_SHORT_WYC4
 			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return "WYC3"
+				return PAY_SHORT_WYC3
 			else
 				return paygrade
 	return paygrade
@@ -339,7 +339,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 present in xenomorph.dm file
 
-var/list/survivor_types = list(
+GLOBAL_LIST_INIT(survivor_types, list()
 		/datum/equipment_preset/survivor/scientist,
 		/datum/equipment_preset/survivor/doctor,
 		/datum/equipment_preset/survivor/security,
@@ -411,7 +411,7 @@ and is used as a base for all of the maps.
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	idtype = /obj/item/card/id/silver/cl
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_ICCL
 	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 

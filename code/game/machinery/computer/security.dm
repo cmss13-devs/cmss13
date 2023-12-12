@@ -363,7 +363,7 @@ What a mess.*/
 				var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
 				if((!t1 || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!ishighersilicon(usr))) || active2 != a2))
 					return
-				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 				var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
 				if(istype(usr,/mob/living/carbon/human))
 					var/mob/living/carbon/human/U = usr
@@ -391,7 +391,7 @@ What a mess.*/
 						var/mob/living/silicon/robot/U = usr
 						deleter = "[U.name] ([U.modtype] [U.braintype])"
 					updated_comments[href_list["del_c"]]["deleted_by"] = deleter
-					updated_comments[href_list["del_c"]]["deleted_at"] = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+					updated_comments[href_list["del_c"]]["deleted_at"] = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 					active2.fields["comments"] = updated_comments
 					to_chat(usr, text("You have deleted a comment from the Security Record of [].", active2.fields["name"]))
 //RECORD CREATE
@@ -532,7 +532,7 @@ What a mess.*/
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
-					R.fields["name"] = "[pick(pick(first_names_male), pick(first_names_female))] [pick(last_names)]"
+					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
 					R.fields["sex"] = pick("Male", "Female")
 				if(3)

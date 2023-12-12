@@ -417,7 +417,6 @@
 			linked_hive.hardcore = TRUE
 			linked_hive.allow_queen_evolve = FALSE
 			linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 0
-			linked_hive.hive_structures_limit[XENO_STRUCTURE_POOL] = 0
 			xeno_announcement("\The [linked_hive.name] has lost their hive core!", "everything", HIGHER_FORCE_ANNOUNCE)
 
 		if(linked_hive.hijack_burrowed_surge)

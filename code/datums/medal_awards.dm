@@ -596,7 +596,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 				return
 			if(give_medal_award(get_turf(user_locs[user])))
 				var/atom/user_machine = user_locs[user]
-				user_machine.visible_message(SPAN_NOTICE("[user_locs[user]] prints a medal."))
+				user_machine.visible_message(SPAN_NOTICE("[user_machine] prints a medal."))
 			. = TRUE
 
 		if("approve_medal")
@@ -620,10 +620,12 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			var/confirm_choice = tgui_alert(user, "Are you sure you want to give a medal to [recommendation.recipient_name]?", "Medal Confirmation", list("Yes", "No"))
 			if(confirm_choice != "Yes")
 				return
-			give_medal_award_prefilled(user_locs[user], user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name)
-			GLOB.medal_recommendations -= recommendation
-			qdel(recommendation)
-			. = TRUE
+			var/atom/user_machine = user_locs[user]
+			if(give_medal_award_prefilled(get_turf(user_machine), user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
+				GLOB.medal_recommendations -= recommendation
+				qdel(recommendation)
+				user_machine.visible_message(SPAN_NOTICE("[user_machine] prints a medal."))
+				. = TRUE
 
 		if("deny_medal")
 			var/recommendation_ref = params["ref"]

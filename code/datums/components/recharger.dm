@@ -210,35 +210,6 @@
 			update_power_use(USE_POWER_IDLE)
 		return
 
-	else if(istype(inserted_item, /obj/item/device/defibrillator))
-		var/obj/item/device/defibrillator/D = inserted_item
-		if(!D.dcell.fully_charged())
-			D.dcell.give(charge_amount * CELLRATE)
-			update_power_use(USE_POWER_ACTIVE)
-		else
-			update_power_use(USE_POWER_IDLE)
-		return
-
-
-
-	else if(istype(inserted_item, /obj/item/clothing/suit/auto_cpr))
-		var/obj/item/clothing/suit/auto_cpr/A = inserted_item
-		if(!A.pdcell.fully_charged())
-			A.pdcell.give(charge_amount * CELLRATE)
-			update_power_use(USE_POWER_ACTIVE)
-		else
-			update_power_use(USE_POWER_IDLE)
-		return
-
-	else if(istype(inserted_item, /obj/item/tool/portadialysis))
-		var/obj/item/tool/portadialysis/P = inserted_item
-		if(!P.pdcell.fully_charged())
-			P.pdcell.give(charge_amount * CELLRATE)
-			update_power_use(USE_POWER_ACTIVE)
-		else
-			update_power_use(USE_POWER_IDLE)
-		return
-
 	else if(istype(inserted_item, /obj/item/cell))
 		var/obj/item/cell/C = inserted_item
 		if(!C.fully_charged())

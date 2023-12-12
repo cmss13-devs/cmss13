@@ -63,6 +63,7 @@
 	RegisterSignal(parent, COMSIG_CELL_USE_CHARGE, PROC_REF(use_charge))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_CHARGE, PROC_REF(has_charge))
 	RegisterSignal(parent, COMSIG_CELL_GET_CHARGE, PROC_REF(get_charge))
+	RegisterSignal(parent, COMSIG_CELL_GET_MAX_CHARGE, PROC_REF(get_max_charge))
 	RegisterSignal(parent, COMSIG_CELL_GET_PERCENT, PROC_REF(get_percent))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_CHARGE_PERCENT, PROC_REF(has_charge_percent))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_FULL_CHARGE, PROC_REF(has_full_charge))
@@ -99,7 +100,7 @@
 	if((charge_examine_range != UNLIMITED_DISTANCE) && get_dist(examiner, parent) > charge_examine_range)
 		return
 
-	examine_text += replacetext(replacetext(replacetext(examine_text, "%CHARGE%", "[round(100 * charge / max_charge)]"), "%MAXCHARGE%", "[max_charge]"))
+	examine_text += replacetext(replacetext(examine_text, "%CHARGE%", "[round(100 * charge / max_charge)]"), "%MAXCHARGE%", "[max_charge]")
 
 /datum/component/cell/proc/on_object_hit(datum/source, obj/item/cell/attack_obj, mob/living/attacker, params)
 	SIGNAL_HANDLER
@@ -201,6 +202,9 @@
 /datum/component/cell/proc/has_charge(datum/source, charge_amount = 0)
 	SIGNAL_HANDLER
 
+	if(!charge)
+		return COMPONENT_CELL_CHARGE_INSUFFICIENT
+
 	if(cell_insert && !inserted_cell)
 		return COMPONENT_CELL_CHARGE_INSUFFICIENT
 
@@ -210,12 +214,13 @@
 /datum/component/cell/proc/has_charge_percent(datum/source, check_percent = 0)
 	SIGNAL_HANDLER
 
-	var/charge_percent = charge / max_charge
+	if(!charge)
+		return COMPONENT_CELL_CHARGE_INSUFFICIENT
 
 	if(cell_insert && !inserted_cell)
 		return COMPONENT_CELL_CHARGE_PERCENT_INSUFFICIENT
 
-	if(check_percent > charge_percent)
+	if(check_percent > (100 * (charge / max_charge)))
 		return COMPONENT_CELL_CHARGE_PERCENT_INSUFFICIENT
 
 /datum/component/cell/proc/has_full_charge(datum/source)
@@ -237,11 +242,17 @@
 
 	charge_pass += charge
 
-/// When passed in a list, will add the cell's charge as a percentage to that list
+/// When passed in a list, will add the cell's charge as a percentage (out of 100) to that list
 /datum/component/cell/proc/get_percent(datum/source, list/charge_pass)
 	SIGNAL_HANDLER
 
 	charge_pass += (100 * (charge / max_charge))
+
+/// When passed in a list, will add the cell's max charge to that list
+/datum/component/cell/proc/get_max_charge(datum/source, list/charge_pass)
+	SIGNAL_HANDLER
+
+	charge_pass += max_charge
 
 #undef UNLIMITED_CHARGE
 #undef UNLIMITED_DISTANCE

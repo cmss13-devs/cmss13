@@ -371,3 +371,11 @@
 	if(length(pass_list))
 		return pass_list[1]
 	return null
+
+/// Get the movable's max cell charge
+/atom/movable/proc/get_cell_max_charge()
+	var/list/pass_list = list()
+	SEND_SIGNAL(src, COMSIG_CELL_GET_MAX_CHARGE, pass_list)
+	if(length(pass_list))
+		return pass_list[1]
+	return null

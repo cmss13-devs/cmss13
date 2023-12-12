@@ -38,3 +38,6 @@
 
 /// (list/charge_pass) <- convert to a pointer once we're on 515
 #define COMSIG_CELL_GET_PERCENT "cell_get_percent"
+
+/// (list/charge_pass) <- convert to a pointer once we're on 515
+#define COMSIG_CELL_GET_MAX_CHARGE "cell_get_max_charge"

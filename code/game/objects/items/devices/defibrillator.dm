@@ -19,7 +19,6 @@
 	var/damage_heal_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	var/charge_cost = 66 //How much energy is used.
-	var/obj/item/cell/dcell = null
 	var/datum/effect_system/spark_spread/sparks = new
 	var/defib_cooldown = 0 //Cooldown for toggling the defib
 	var/shock_cooldown = 0 //cooldown for shocking someone - separate to toggling
@@ -34,11 +33,13 @@
 
 	sparks.set_up(5, 0, src)
 	sparks.attach(src)
-	dcell = new/obj/item/cell(src)
+	AddComponent(\
+		/datum/component/cell,\
+		max_charge = 1000,\
+	)
 	update_icon()
 
 /obj/item/device/defibrillator/Destroy()
-	QDEL_NULL(dcell)
 	QDEL_NULL(sparks)
 	return ..()
 
@@ -49,25 +50,22 @@
 	if(ready)
 		icon_state += "_out"
 
-	if(dcell && dcell.charge)
-		switch(round(dcell.charge * 100 / dcell.maxcharge))
-			if(67 to INFINITY)
-				overlays += "+full"
-			if(34 to 66)
-				overlays += "+half"
-			if(3 to 33)
-				overlays += "+low"
-			if(0 to 3)
-				overlays += "+empty"
-	else
-		overlays += "+empty"
+	switch(get_cell_percent())
+		if(67 to INFINITY)
+			overlays += "+full"
+		if(34 to 66)
+			overlays += "+half"
+		if(3 to 33)
+			overlays += "+low"
+		if(0 to 3)
+			overlays += "+empty"
 
 /obj/item/device/defibrillator/get_examine_text(mob/user)
 	. = ..()
 	var/maxuses = 0
 	var/currentuses = 0
-	maxuses = round(dcell.maxcharge / charge_cost)
-	currentuses = round(dcell.charge / charge_cost)
+	maxuses = round(get_cell_max_charge() / charge_cost)
+	currentuses = round(get_cell_charge() / charge_cost)
 	. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
 	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit)
 		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
@@ -125,7 +123,7 @@
 	if(!ready)
 		to_chat(user, SPAN_WARNING("Take [src]'s paddles out first."))
 		return
-	if(dcell.charge <= charge_cost)
+	if(get_cell_charge() <= charge_cost)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]'s battery is too low! It needs to recharge."))
 		return
 	if(H.stat != DEAD)
@@ -185,7 +183,7 @@
 
 	//Do this now, order doesn't matter
 	sparks.start()
-	dcell.use(charge_cost)
+	SEND_SIGNAL(src, COMSIG_CELL_USE_CHARGE, charge_cost)
 	update_icon()
 	playsound(get_turf(src), 'sound/items/defib_release.ogg', 25, 1)
 	user.visible_message(SPAN_NOTICE("[user] shocks [H] with the paddles."),

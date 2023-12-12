@@ -858,11 +858,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 					return
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
-				var/obj/item/device/defibrillator/defib = item_to_stock
-				if(!defib.dcell)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
-					return
-				if(defib.dcell.charge < defib.dcell.maxcharge)
+				if(SEND_SIGNAL(item_to_stock, COMSIG_CELL_CHECK_FULL_CHARGE) & COMPONENT_CELL_CHARGE_NOT_FULL)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
 

@@ -40,12 +40,14 @@
 	var/last_pump
 	var/doing_cpr = FALSE
 	var/pump_cost = 20
-	var/obj/item/cell/pdcell = null
 	movement_compensation = 0
 
 /obj/item/clothing/suit/auto_cpr/Initialize(mapload, ...)
 	. = ..()
-	pdcell = new/obj/item/cell(src) //has 1000 charge
+	AddComponent(\
+		/datum/component/cell,\
+		max_charge = 1000,\
+	)
 	update_icon()
 
 /obj/item/clothing/suit/auto_cpr/mob_can_equip(mob/living/carbon/human/H, slot, disable_warning = 0, force = 0)
@@ -105,10 +107,9 @@
 		icon_state = "autocomp_active"
 	else
 		icon_state = "autocomp"
-	if(pdcell && pdcell.charge)
-		overlays.Cut()
-	switch(round(pdcell.charge * 100 / pdcell.maxcharge))
-		if(1 to 32)
+	overlays.Cut()
+	switch(get_cell_percent)
+		if(0 to 32)
 			overlays += "cpr_batt_lo"
 		if(33 to 65)
 			overlays += "cpr_batt_mid"
@@ -118,7 +119,7 @@
 
 /obj/item/clothing/suit/auto_cpr/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("It has [round(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining.")
+	. += SPAN_NOTICE("It has [get_cell_percent()]% charge remaining.")
 
 
 
@@ -152,7 +153,7 @@
 		end_cpr()
 		return PROCESS_KILL
 
-	if(pdcell.charge <= 49)
+	if(SEND_SIGNAL(src, COMSIG_CELL_CHECK_CHARGE, 49) & COMPONENT_CELL_CHARGE_INSUFFICIENT)
 		src.visible_message(SPAN_NOTICE("\The [src] beeps its low power alarm."))
 		end_cpr()
 		return PROCESS_KILL
@@ -167,7 +168,7 @@
 				SPAN_HELPFUL("You feel a <b>breath of fresh air</b> enter your lungs. It feels good."),
 				message_viewer = SPAN_NOTICE("<b>\The [src]</b> automatically performs <b>CPR</b> on <b>[H]</b>.")
 				)
-			pdcell.use(pump_cost)
+			SEND_SIGNAL(src, COMSIG_CELL_USE_CHARGE, pump_cost)
 			update_icon()
 			return
 		else if(H.is_revivable() && H.stat == DEAD)
@@ -180,7 +181,7 @@
 					var/obj/limb/E = H.get_limb("chest")
 					E.fracture(100)
 			H.cpr_cooldown = world.time + 7 SECONDS
-			pdcell.use(pump_cost)
+			SEND_SIGNAL(src, COMSIG_CELL_USE_CHARGE, pump_cost)
 			update_icon()
 			return
 		else
@@ -199,7 +200,6 @@
 	var/filtering = FALSE
 	var/mob/living/carbon/human/attached = null
 	var/reagent_removed_per_second = AMOUNT_PER_TIME(3, 2 SECONDS)
-	var/obj/item/cell/pdcell = null
 	var/filter_cost = AMOUNT_PER_TIME(20, 2 SECONDS)
 	var/blood_cost = AMOUNT_PER_TIME(12, 2 SECONDS)
 	var/attach_time = 1.2 SECONDS
@@ -207,7 +207,10 @@
 /obj/item/tool/portadialysis/Initialize(mapload, ...)
 	. = ..()
 
-	pdcell = new/obj/item/cell(src) //has 1000 charge
+	AddComponent(\
+		/datum/component/cell,\
+		max_charge = 1000,\
+	)
 	update_icon()
 
 /obj/item/tool/portadialysis/update_icon(detaching = FALSE)
@@ -229,28 +232,25 @@
 		overlays += "+running"
 		overlays += "+filtering"
 
-	if(pdcell && pdcell.charge)
-		switch(round(pdcell.charge * 100 / pdcell.maxcharge))
-			if(85 to INFINITY)
-				overlays += "dialysis_battery_100"
-			if(60 to 84)
-				overlays += "dialysis_battery_85"
-			if(45 to 59)
-				overlays += "dialysis_battery_60"
-			if(30 to 44)
-				overlays += "dialysis_battery_45"
-			if(15 to 29)
-				overlays += "dialysis_battery_30"
-			if(1 to 14)
-				overlays += "dialysis_battery_15"
-			else
-				overlays += "dialysis_battery_0"
+	switch(get_cell_percent())
+		if(85 to INFINITY)
+			overlays += "dialysis_battery_100"
+		if(60 to 84)
+			overlays += "dialysis_battery_85"
+		if(45 to 59)
+			overlays += "dialysis_battery_60"
+		if(30 to 44)
+			overlays += "dialysis_battery_45"
+		if(15 to 29)
+			overlays += "dialysis_battery_30"
+		if(1 to 14)
+			overlays += "dialysis_battery_15"
+		else
+			overlays += "dialysis_battery_0"
 
 /obj/item/tool/portadialysis/get_examine_text(mob/user)
 	. = ..()
-	var/currentpercent = 0
-	currentpercent = round(pdcell.charge * 100 / pdcell.maxcharge)
-	. += SPAN_INFO("It has [currentpercent]% charge left in its internal battery.")
+	. += SPAN_INFO("It has [get_cell_percent()]% charge left in its internal battery.")
 
 /obj/item/tool/portadialysis/proc/painful_detach()
 	if(!attached) //sanity
@@ -274,7 +274,7 @@
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 		return
 
-	if(!pdcell || pdcell.charge == 0)
+	if(SEND_SIGNAL(src, COMSIG_CELL_CHECK_CHARGE) & COMPONENT_CELL_CHARGE_INSUFFICIENT)
 		to_chat(user, SPAN_NOTICE("\The [src] flashes its 'battery low' light, and refuses to attach."))
 		return
 
@@ -343,7 +343,7 @@
 		painful_detach()
 		return
 
-	if(!pdcell || pdcell.charge == 0)
+	if(SEND_SIGNAL(src, COMSIG_CELL_CHECK_CHARGE) & COMPONENT_CELL_CHARGE_INSUFFICIENT)
 		attached.visible_message(SPAN_NOTICE("\The [src] automatically detaches from [attached], blinking its 'battery low' light."))
 		attached = null
 		filtering = FALSE
@@ -366,7 +366,7 @@
 		attached.take_blood(attached, blood_cost*delta_time)
 		if(attached.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
 			visible_message("\The [src] beeps loudly.")
-		pdcell.use(filter_cost*delta_time)
+		SEND_SIGNAL(src, COMSIG_CELL_USE_CHARGE, filter_cost * delta_time)
 
 	updateUsrDialog()
 	update_icon()

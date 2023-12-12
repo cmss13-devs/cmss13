@@ -912,11 +912,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
-				var/obj/item/device/defibrillator/D = item_to_stock
-				if(!D.dcell)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
-					return
-				if(D.dcell.charge < D.dcell.maxcharge)
+				if(SEND_SIGNAL(item_to_stock, COMSIG_CELL_CHECK_FULL_CHARGE) & COMPONENT_CELL_CHARGE_NOT_FULL)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
 

@@ -266,10 +266,10 @@
 	var/color_override = null
 
 
-var/static/list/rbarrel_cap_states = list()
-var/static/list/rbarrel_center_states = list()
-var/global/rbarrel_genned = FALSE
-var/static/list/rbarrel_color_list = list(COLOUR_SILVER,
+GLOBAL_LIST(rbarrel_cap_states)
+GLOBAL_LIST(rbarrel_center_states)
+GLOBAL_VAR(rbarrel_genned)
+GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOUR_SILVER,
 	COLOUR_FLOORTILE_GRAY,
 	COLOUR_MAROON,
 	COLOUR_SOFT_RED,
@@ -284,35 +284,35 @@ var/static/list/rbarrel_color_list = list(COLOUR_SILVER,
 	COLOUR_BEIGE,
 	COLOUR_DARK_MODERATE_ORANGE,
 	COLOUR_BROWN,
-	COLOUR_DARK_BROWN)
+	COLOUR_DARK_BROWN))
 
 /obj/structure/largecrate/random/barrel/true_random/Initialize()
 	. = ..()
 	//check if the state lists have been dynamically filled yet. If not, go and do so
-	if(!rbarrel_genned)
+	if(!GLOB.rbarrel_genned)
 		var/icon/icon = new('icons/obj/structures/crates.dmi')
 		var/list/icon_list = icon_states(icon)
 		//rbarrel_cap_states = icon_states(icon)
-		//rbarrel_center_states = icon_states(icon)
+		//rbarrel_genned = icon_states(icon)
 		for(var/state in icon_list)
 			if(findtext(state,"+cap"))
-				rbarrel_cap_states.Add(state)
+				GLOB.rbarrel_cap_states.Add(state)
 			if(findtext(state,"+center"))
-				rbarrel_center_states.Add(state)
-		rbarrel_genned = TRUE
+				GLOB.rbarrel_center_states.Add(state)
+		GLOB.rbarrel_genned = TRUE
 
 	var/image/center_coloring = image(icon, src,"+_center")
 
 	if(!color_override)
-		center_coloring.color = pick(rbarrel_color_list)
+		center_coloring.color = pick(GLOB.rbarrel_color_list)
 
 	center_coloring.appearance_flags = RESET_COLOR|KEEP_APART
 	overlays += center_coloring
 	if(prob(25))
-		cap_doodad_state = pick(rbarrel_cap_states)
+		cap_doodad_state = pick(GLOB.rbarrel_cap_states)
 		overlays += image(icon,src,cap_doodad_state)
 	if(prob(50))
-		center_doodad_state = pick(rbarrel_center_states)
+		center_doodad_state = pick(GLOB.rbarrel_center_states)
 		overlays += image(icon,src,center_doodad_state)
 
 /obj/structure/largecrate/random/barrel/Initialize()

@@ -266,8 +266,8 @@
 	var/color_override = null
 
 
-GLOBAL_LIST(rbarrel_cap_states)
-GLOBAL_LIST(rbarrel_center_states)
+GLOBAL_LIST_EMPTY(rbarrel_cap_states)
+GLOBAL_LIST_EMPTY(rbarrel_center_states)
 GLOBAL_VAR(rbarrel_genned)
 GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOUR_SILVER,
 	COLOUR_FLOORTILE_GRAY,

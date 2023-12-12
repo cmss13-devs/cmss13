@@ -742,7 +742,7 @@
 				set_mode(SHUTTLE_PREARRIVAL)
 				setTimer(prearrivalTime)
 				log_debug("WARNING: shuttle on approach failed check!")
-				return
+				//return
 			on_prearrival()
 			var/error = initiate_docking(destination, preferred_direction)
 			if(error && error & (DOCKING_NULL_DESTINATION | DOCKING_NULL_SOURCE))

@@ -14,6 +14,7 @@
 /obj/docking_port/mobile/emergency_response
 	name = "ERT Shuttle"
 	ignitionTime = DROPSHIP_WARMUP_TIME
+	prearrivalTime = DROPSHIP_WARMUP_TIME
 	area_type = /area/shuttle/ert
 	width = 7
 	height = 13

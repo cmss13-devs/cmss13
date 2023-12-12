@@ -627,14 +627,12 @@
 /datum/hive_status/proc/can_build_structure(structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])
 		return FALSE
-	var/total_count = 0
-	if(hive_structures[structure_name])
-		total_count += hive_structures[structure_name].len
-	if(hive_constructions[structure_name])
-		total_count += hive_constructions[structure_name].len
-	if(total_count >= hive_structures_limit[structure_name])
+	if(get_structure_count(structure_name) >= hive_structures_limit[structure_name])
 		return FALSE
 	return TRUE
+
+/datum/hive_status/proc/get_structure_count(structure_name)
+	return length(hive_structures[structure_name]) + length(hive_constructions[structure_name])
 
 /datum/hive_status/proc/has_structure(structure_name)
 	if(!structure_name)
@@ -1351,6 +1349,3 @@
 	name = "Attack"
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
-
-
-

@@ -1,138 +1,170 @@
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Button, Fragment, Stack, Flex } from '../components';
 import { Window } from '../layouts';
-
-const PAGES = [
-  {
-    title: 'USCM',
-    component: () => MedalsPage,
-    color: 'blue',
-    icon: 'medal',
-  },
-  {
-    title: 'Hive',
-    component: () => MedalsPage,
-    color: 'purple',
-    icon: 'star',
-  },
-];
+import { classes } from 'common/react';
+import { NoticeBox, Section, Box, Button, Stack, Flex } from '../components';
 
 export const IcMedalsPanel = (props, context) => {
-  const { data } = useBackend(context);
-  const { uscm_awards, uscm_award_ckeys, xeno_awards, xeno_award_ckeys } = data;
+  const { act, data } = useBackend(context);
 
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 1);
+  const CONDUCT_MEDAL = 'distinguished conduct medal';
+  const BRONZE_HEART_MEDAL = 'bronze heart medal';
+  const VALOR_MEDAL = 'medal of valor';
+  const HEROISM_MEDAL = 'medal of exceptional heroism';
 
-  const PageComponent = PAGES[pageIndex].component();
-
-  return (
-    <Window
-      width={600}
-      height={400}
-      theme={pageIndex === 0 ? 'ntos' : 'hive_status'}
-      resizable>
-      <Window.Content scrollable>
-        <Stack direction="column" fill>
-          <Stack.Item basis="content" grow={0} pb={1}>
-            <Tabs>
-              {PAGES.map((page, i) => {
-                if (page.canAccess && !page.canAccess(data)) {
-                  return;
-                }
-
-                return (
-                  <Tabs.Tab
-                    key={i}
-                    color={page.color}
-                    selected={i === pageIndex}
-                    icon={page.icon}
-                    onClick={() => setPageIndex(i)}>
-                    {page.title}
-                  </Tabs.Tab>
-                );
-              })}
-            </Tabs>
-          </Stack.Item>
-          <Stack.Item mx={0}>
-            <PageComponent
-              awards={pageIndex === 0 ? uscm_awards : xeno_awards}
-              ckeys={pageIndex === 0 ? uscm_award_ckeys : xeno_award_ckeys}
-              isMarineMedal={pageIndex === 0}
-            />
-          </Stack.Item>
-          <Stack.Item grow={1} mx={0}>
-            <Section fill />
-          </Stack.Item>
-        </Stack>
-      </Window.Content>
-    </Window>
+  const [recommendationMedalTypes, setRecommendationMedalTypes] = useLocalState(
+    context,
+    'recommendation_types',
+    []
   );
-};
-
-const MedalsPage = (props, context) => {
-  const { act } = useBackend(context);
-  const { awards, ckeys, isMarineMedal } = props;
 
   return (
-    <Section
-      title={isMarineMedal ? 'Medal Awards' : 'Royal Jellies'}
-      buttons={
-        <Fragment>
+    <Window width={600} height={400} theme={'ntos'} resizable>
+      <Window.Content scrollable>
+        <NoticeBox textAlign="center">
           <Button
-            icon="clock"
-            content="Refresh"
-            ml={0.5}
-            onClick={() => act('refresh')}
-          />
-          <Button
-            icon="plus"
-            color="green"
-            content={isMarineMedal ? 'Add a medal' : 'Add a jelly'}
-            align="center"
-            width={8.5}
-            ml={0.5}
-            onClick={() => act(isMarineMedal ? 'add_medal' : 'add_jelly')}
-          />
-        </Fragment>
-      }>
-      <Fragment>
-        {Object.keys(awards).map((recipient_name, recipient_index) => (
+            width="350px"
+            fontSize="20px"
+            icon="medal"
+            color="danger"
+            onClick={() => act('grant_new_medal')}>
+            Grant new medal
+          </Button>
+        </NoticeBox>
+        {data.recommendations.map((recommendation, index) => (
           <Section
-            title={recipient_name + ckeys[recipient_name]}
-            key={recipient_index}
-            m={1}>
-            {Object(awards[recipient_name]).map((medal, medalIndex) => (
-              <Flex
-                direction="row"
-                key={medalIndex}
-                backgroundColor={
-                  medalIndex % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''
-                }>
-                <Flex.Item grow={1} align="center" m={1} p={0.2}>
-                  A {medal}
-                </Flex.Item>
-                <Flex.Item grow={0} basis="content" mr={0.5} mt={0.5}>
-                  <Button.Confirm
-                    icon="trash"
-                    color="white"
-                    content="Rescind"
-                    confirmColor="bad"
-                    width={6.5}
-                    textAlign="center"
-                    verticalAlignContent="bottom"
-                    onClick={() =>
-                      act(isMarineMedal ? 'delete_medal' : 'delete_jelly', {
-                        recipient: recipient_name,
-                        index: medalIndex,
-                      })
-                    }
-                  />
-                </Flex.Item>
-              </Flex>
-            ))}
+            key={index}
+            title={recommendation.name + ' (' + recommendation.rank + ')'}>
+            <Stack width="100%">
+              <Stack.Item>
+                <Flex>
+                  <Flex direction="column">
+                    <Flex.Item>
+                      <Button
+                        tooltip="Distinguished Conduct Medal"
+                        color={
+                          recommendationMedalTypes[index] === CONDUCT_MEDAL
+                            ? 'green'
+                            : ''
+                        }
+                        onClick={() => {
+                          let new_array = recommendationMedalTypes;
+                          new_array[index] = CONDUCT_MEDAL;
+                          setRecommendationMedalTypes(new_array);
+                        }}>
+                        <span
+                          className={classes([
+                            'medal32x32',
+                            CONDUCT_MEDAL.replace(/ /g, '-'),
+                            'medal-icon',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
+                    <Flex.Item>
+                      <Button
+                        tooltip="Medal of Valor"
+                        color={
+                          recommendationMedalTypes[index] === VALOR_MEDAL
+                            ? 'green'
+                            : ''
+                        }
+                        onClick={() => {
+                          let new_array = recommendationMedalTypes;
+                          new_array[index] = VALOR_MEDAL;
+                          setRecommendationMedalTypes(new_array);
+                        }}>
+                        <span
+                          className={classes([
+                            'medal32x32',
+                            VALOR_MEDAL.replace(/ /g, '-'),
+                            'medal-icon',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
+                  </Flex>
+                  <Flex direction="column">
+                    <Flex.Item>
+                      <Button
+                        tooltip="Bronze Heart Medal"
+                        color={
+                          recommendationMedalTypes[index] === BRONZE_HEART_MEDAL
+                            ? 'green'
+                            : ''
+                        }
+                        onClick={() => {
+                          let new_array = recommendationMedalTypes;
+                          new_array[index] = BRONZE_HEART_MEDAL;
+                          setRecommendationMedalTypes(new_array);
+                        }}>
+                        <span
+                          className={classes([
+                            'medal32x32',
+                            BRONZE_HEART_MEDAL.replace(/ /g, '-'),
+                            'medal-icon',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
+                    <Flex.Item>
+                      <Button
+                        tooltip="Medal of Exceptional Heroism"
+                        color={
+                          recommendationMedalTypes[index] === HEROISM_MEDAL
+                            ? 'green'
+                            : ''
+                        }
+                        onClick={() => {
+                          let new_array = recommendationMedalTypes;
+                          new_array[index] = HEROISM_MEDAL;
+                          setRecommendationMedalTypes(new_array);
+                        }}>
+                        <span
+                          className={classes([
+                            'medal32x32',
+                            HEROISM_MEDAL.replace(/ /g, '-'),
+                            'medal-icon',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
+                  </Flex>
+                </Flex>
+              </Stack.Item>
+              <Stack.Item grow textAlign={'center'}>
+                <Box>
+                  Recommender: {recommendation.recommender_name} (
+                  {recommendation.recommender_rank})
+                </Box>
+                <Box>Reason: {recommendation.reason}</Box>
+              </Stack.Item>
+              <Stack.Item textAlign="right">
+                <Button
+                  icon="check"
+                  tooltip={
+                    !recommendationMedalTypes[index]
+                      ? 'Select a medal type first!'
+                      : ''
+                  }
+                  disabled={!recommendationMedalTypes[index]}
+                  color="good"
+                  onClick={() =>
+                    act('approve_medal', {
+                      ref: recommendation.ref,
+                      medal_type: recommendationMedalTypes[index],
+                    })
+                  }
+                />
+                <Button
+                  icon="x"
+                  color="red"
+                  onClick={() => act('deny_medal', { ref: recommendation.ref })}
+                />
+              </Stack.Item>
+            </Stack>
           </Section>
         ))}
-      </Fragment>
-    </Section>
+      </Window.Content>
+    </Window>
   );
 };

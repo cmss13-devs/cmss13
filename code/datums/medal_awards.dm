@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 	return TRUE
 
-/proc/give_medal_award_prefilled(medal_location, giving_mob, _recipient_name, _recipient_rank, _recipient_ckey, reason, _medal_type, recommended_by_ckey, recommended_by_name)
+/proc/give_medal_award_prefilled(medal_location, mob/giving_mob, _recipient_name, _recipient_rank, _recipient_ckey, reason, _medal_type)
 	var/list/recipient_ranks = list()
 	for(var/datum/data/record/record in GLOB.data_core.general)
 		var/recipient_name = record.fields["name"]
@@ -219,10 +219,10 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 	recipient_award.medal_names += medal_type
 	recipient_award.medal_citations += citation
 	recipient_award.posthumous += posthumous
-	recipient_award.giver_ckey += recommended_by_ckey
+	recipient_award.giver_ckey += giving_mob.ckey
 
-	recipient_award.giver_rank += recipient_ranks[recommended_by_name] // Currently not used in marine award message
-	recipient_award.giver_name += recommended_by_name // Currently not used in marine award message
+	recipient_award.giver_rank += recipient_ranks[giving_mob.real_name] // Currently not used in marine award message
+	recipient_award.giver_name += giving_mob.real_name // Currently not used in marine award message
 
 	// Create an actual medal item
 	if(medal_location)
@@ -276,7 +276,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
 		return
 
-	GLOB.ic_medals_panel.user_locs[user] = printer
+	GLOB.ic_medals_panel.user_locs[user] = get_turf(printer)
 	GLOB.ic_medals_panel.tgui_interact(user)
 
 
@@ -480,12 +480,13 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/list/recipient_ranks = list()
 	for(var/datum/data/record/record in GLOB.data_core.general)
 		var/recipient_name = record.fields["name"]
+		//if(recipient_name == recommendation_giver.real_name)
+		//	continue
 		recipient_ranks[recipient_name] = record.fields["rank"]
 		possible_recipients += recipient_name
 	var/chosen_recipient = tgui_input_list(recommendation_giver, "Who do you want to recommend a medal for?", "Medal Recommendation", possible_recipients)
 	if(!chosen_recipient)
 		return FALSE
-
 
 	// Write a citation
 	var/reason = strip_html(input("Why does this person deserve a medal?", "Medal Recommendation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
@@ -595,6 +596,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 				return
 			if(give_medal_award(get_turf(user_locs[user])))
 				user_locs[user].visible_message(SPAN_NOTICE("[user_locs[user]] prints a medal."))
+			. = TRUE
 
 		if("approve_medal")
 			var/recommendation_ref = params["ref"]
@@ -606,9 +608,21 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 				return
 			if(!user_locs[user])
 				return
-			give_medal_award_prefilled(user_locs[user], user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, recommendation.reason, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name)
+			if(recommendation.recipient_name == user.real_name)
+				return
+
+			var/choice = tgui_alert(user, "Would you like to change the medal text?", "Medal Citation", list("Yes", "No"))
+			var/medal_citation = recommendation.reason
+			if(choice == "Yes")
+				medal_citation = strip_html(input("What should the medal citation read?", "Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+
+			var/confirm_choice = tgui_alert(user, "Are you sure you want to give a medal to [recommendation.recipient_name]?", "Medal Confirmation", list("Yes", "No"))
+			if(confirm_choice != "Yes")
+				return
+			give_medal_award_prefilled(user_locs[user], user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name)
 			GLOB.medal_recommendations -= recommendation
 			qdel(recommendation)
+			. = TRUE
 
 		if("deny_medal")
 			var/recommendation_ref = params["ref"]
@@ -617,9 +631,14 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 				return
 			GLOB.medal_recommendations -= recommendation
 			qdel(recommendation)
+			. = TRUE
 
 /datum/ic_medal_panel/ui_close(mob/user)
 	. = ..()
 	if(user_locs[user])
 		user_locs[user] = null
 
+/datum/ic_medal_panel/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/medal)
+	)

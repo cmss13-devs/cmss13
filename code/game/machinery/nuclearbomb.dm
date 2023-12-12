@@ -337,7 +337,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		//xenos part
 		var/warning
 		if(timer_warning & NUKE_SHOW_TIMER_HALF)
-			warning = "A shiver goes down our carapace as we feel the approaching end...the hive killer is halfway through it's preparation cycle!"
+			warning = "A shiver goes down our carapace as we feel the approaching end...the hive killer is halfway through its preparation cycle!"
 		else if(timer_warning & NUKE_SHOW_TIMER_MINUTE)
 			warning = "Every sense in our form is screaming... the hive killer is almost ready to trigger!"
 		else

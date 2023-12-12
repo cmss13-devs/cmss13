@@ -12,8 +12,8 @@
 	var/fire_mission_delay = 4
 	/// Time to impact in deciseconds
 	var/travelling_time = 100
-	/// Type of equipment that accept this type of ammo.
-	var/equipment_type
+	/// Type of dropship equipment that accepts this type of ammo.
+	var/obj/structure/dropship_equipment/equipment_type
 	/// Ammunition count remaining
 	var/ammo_count
 	/// Maximal ammunition count
@@ -171,7 +171,7 @@
 		sleep(1)
 		for(var/j in 1 to 2) //rather than halving the sleep, were doubling the bullets shot "bang"
 			var/turf/impact_tile = pick(turf_list)
-			var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+			var/datum/cause_data/cause_data = create_cause_data(initial(equipment_type.name), source_mob)
 			impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
 			create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
 			for(var/atom/movable/explosion_effect in impact_tile)
@@ -259,7 +259,7 @@
 
 
 /obj/structure/ship_ammo/laser_battery/proc/laser_burn(turf/T)
-	fire_spread_recur(T, create_cause_data(initial(name), source_mob), 1, null, 5, 75, "#EE6515")//Very, very intense, but goes out very quick
+	fire_spread_recur(T, create_cause_data(initial(equipment_type.name), source_mob), 1, null, 5, 75, "#EE6515")//Very, very intense, but goes out very quick
 
 
 //Rockets

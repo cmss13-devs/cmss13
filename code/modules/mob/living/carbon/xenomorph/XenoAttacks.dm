@@ -232,7 +232,7 @@
 			return
 		target.flags_emote &= ~EMOTING_TAIL_SWIPE
 		visible_message(SPAN_NOTICE("[src] clashes their tail with [target]!"), \
-			SPAN_NOTICE("You clash your tail with [target]!"), null, 4)
+			SPAN_NOTICE("We clash our tail with [target]!"), null, 4)
 		playsound(src, 'sound/weapons/alien_claw_block.ogg', 50, 1)
 		spin_circle()
 		target.spin_circle()

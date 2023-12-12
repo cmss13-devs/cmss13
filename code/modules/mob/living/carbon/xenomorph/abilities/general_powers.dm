@@ -653,32 +653,28 @@
 	var/structure_type = X.hive.hive_structure_types[choice]
 	var/datum/construction_template/xenomorph/structure_template = new structure_type()
 
-	if(!spacecheck(X,T,structure_template))
+	if(!spacecheck(X, T, structure_template))
 		return FALSE
 
 	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
 
-	if(!spacecheck(X,T,structure_template)) //doublechecking
+	if(!spacecheck(X, T, structure_template)) //doublechecking
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isqueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
 		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
-			return
+			return FALSE
 		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") != "Yes")
-			return
+			return FALSE
 		qdel(X.hive.hive_location)
 	else if(!X.hive.can_build_structure(choice))
 		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
-		return FALSE
-
-	if(!X.hive.can_build_structure(structure_template.name) && !(choice == XENO_STRUCTURE_CORE))
-		to_chat(X, SPAN_WARNING("You cannot build any more [structure_template.name]!"))
 		qdel(structure_template)
 		return FALSE
 
-	if (QDELETED(T))
+	if(QDELETED(T))
 		to_chat(X, SPAN_WARNING("You cannot build here!"))
 		qdel(structure_template)
 		return FALSE

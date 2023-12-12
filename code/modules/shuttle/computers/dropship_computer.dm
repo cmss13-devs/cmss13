@@ -211,21 +211,30 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
+
+	// If the attacking xeno isn't the queen.
+	if(xeno.hive_pos != XENO_QUEEN)
+		// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
+		if(dropship.playing_launch_announcement_alarm)
+			stop_playing_launch_announcement_alarm()
+			xeno.animation_attack_on(src)
+			to_chat(xeno, SPAN_XENONOTICE("You slash at [src], silencing its squawking!"))
+			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
+		else
+			to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+			playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
+
 	if(!is_ground_level(z))
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
-		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-		return
-
-	if(xeno.hive_pos != XENO_QUEEN)
-		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
-		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-		return
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
 
 	if(is_remote)
 		groundside_alien_action(xeno)
 		return
 
-	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 	if(dropship.is_hijacked)
 		return
 
@@ -287,8 +296,7 @@
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
 
-	dropship.alarm_sound_loop.stop()
-	dropship.playing_launch_announcement_alarm = FALSE
+	stop_playing_launch_announcement_alarm()
 
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")

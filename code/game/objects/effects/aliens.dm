@@ -489,29 +489,30 @@
 /obj/effect/xenomorph/xeno_telegraph
 	name = "???"
 	desc = ""
-	icon_state = "xeno_telegraph_red"
+	icon_state = "xeno_telegraph_base"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/effect/xenomorph/xeno_telegraph/New(loc, ttl = 10)
+/obj/effect/xenomorph/xeno_telegraph/New(loc, ttl = 10, color = null)
 	..(loc)
+	if(color)
+		src.color = color
 	QDEL_IN(src, ttl)
 
 /obj/effect/xenomorph/xeno_telegraph/red
-	icon_state = "xeno_telegraph_red"
+	color = COLOUR_DARK_RED
 
 /obj/effect/xenomorph/xeno_telegraph/brown
-	icon_state = "xeno_telegraph_brown"
+	color = COLOUR_BROWN
 
 /obj/effect/xenomorph/xeno_telegraph/green
-	icon_state = "xeno_telegraph_green"
+	color = COLOUR_GREEN
 
-/obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
+/obj/effect/xenomorph/xeno_telegraph/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook_anim"
 
-/obj/effect/xenomorph/xeno_telegraph/brown/lash
+/obj/effect/xenomorph/xeno_telegraph/lash
 	icon_state = "xeno_telegraph_lash"
-
-
+	color = COLOUR_BROWN
 
 /obj/effect/xenomorph/acid_damage_delay
 	name = "???"

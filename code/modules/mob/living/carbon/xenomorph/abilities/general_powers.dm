@@ -638,13 +638,14 @@
 		to_chat(X, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))
 		return FALSE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
-		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help", theme="hive_status")
+		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help", theme = "hive_status")
 		if(!choice)
 			return
 		if(choice == "help")
-			var/message = "<br>Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
+			var/message = "Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
 			for(var/structure_name in X.hive.hive_structure_types)
-				message += "[get_xeno_structure_desc(structure_name)]<br>"
+				var/datum/construction_template/xenomorph/structure_type = X.hive.hive_structure_types[structure_name]
+				message += "<B>[capitalize_first_letters(structure_name)]</B> - [initial(structure_type.description)]<br>"
 			to_chat(X, SPAN_NOTICE(message))
 			return TRUE
 	if(!X.check_state(TRUE) || !X.check_plasma(400))

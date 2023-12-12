@@ -305,7 +305,7 @@
 /area/template_noop)
 "K" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
-/obj/item/weapon/pizza_cutter,
+/obj/item/tool/kitchen/pizzacutter,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},

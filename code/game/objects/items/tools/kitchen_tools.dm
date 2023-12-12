@@ -141,7 +141,7 @@
 /obj/item/tool/kitchen/pizzacutter
 	name = "pizza cutter"
 	icon_state = "plasticpizzacutter"
-	desc = "A circular blade using for cutting pizzas. This one has a cheap plastic handle."
+	desc = "A circular blade used for cutting pizzas. This one has a cheap plastic handle."
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
@@ -160,7 +160,7 @@
  */
 /obj/item/tool/kitchen/pizzacutter/wood
 	icon_state = "woodpizzacutter"
-	desc = "A circular blade using for cutting pizzas. This one has an authetnic wooden handle."
+	desc = "A circular blade used for cutting pizzas. This one has an authentic wooden handle."
 
 /*
  * Holy Relic Pizza Cutter

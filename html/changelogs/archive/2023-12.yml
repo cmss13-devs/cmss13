@@ -209,3 +209,6 @@
 2023-12-11:
   ihatethisengine:
   - bugfix: fusion reactors cannot be destroyed with explosions
+2023-12-12:
+  InsaneRed:
+  - bugfix: M44 Heavy bullets no longer display a "4" when you get hit by them

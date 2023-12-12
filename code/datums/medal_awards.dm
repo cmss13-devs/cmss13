@@ -480,8 +480,8 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/list/recipient_ranks = list()
 	for(var/datum/data/record/record in GLOB.data_core.general)
 		var/recipient_name = record.fields["name"]
-		//if(recipient_name == recommendation_giver.real_name)
-		//	continue
+		if(recipient_name == recommendation_giver.real_name)
+			continue
 		recipient_ranks[recipient_name] = record.fields["rank"]
 		possible_recipients += recipient_name
 	var/chosen_recipient = tgui_input_list(recommendation_giver, "Who do you want to recommend a medal for?", "Medal Recommendation", possible_recipients)

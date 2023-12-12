@@ -23,6 +23,8 @@
 	var/cell_insert = FALSE
 	/// Ref to an inserted cell. Should only be null if cell_insert is false
 	var/obj/item/cell/inserted_cell
+	/// What should be displayed as the examine string if display_charge is TRUE. %CHARGE% and %MAXCHARGE% will be replaced with the remaining charge in the cell and its maximum, respectively
+	var/examine_string = "A small gauge in the corner reads \"Power: %CHARGE%\"."
 
 
 /datum/component/cell/Initialize(
@@ -33,6 +35,7 @@
 	display_charge = TRUE,
 	charge_examine_range = 1,
 	cell_insert = FALSE,
+	examine_string = "A small gauge in the corner reads \"Power: %CHARGE%\".",
 	)
 
 	. = ..()
@@ -47,6 +50,7 @@
 	src.display_charge = display_charge
 	src.charge_examine_range = charge_examine_range
 	src.cell_insert = cell_insert
+	src.examine_string = examine_string
 
 /datum/component/cell/Destroy(force, silent)
 	QDEL_NULL(inserted_cell)
@@ -58,6 +62,8 @@
 	RegisterSignal(parent, COMSIG_CELL_ADD_CHARGE, PROC_REF(add_charge))
 	RegisterSignal(parent, COMSIG_CELL_USE_CHARGE, PROC_REF(use_charge))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_CHARGE, PROC_REF(has_charge))
+	RegisterSignal(parent, COMSIG_CELL_GET_CHARGE, PROC_REF(get_charge))
+	RegisterSignal(parent, COMSIG_CELL_GET_PERCENT, PROC_REF(get_percent))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_CHARGE_PERCENT, PROC_REF(has_charge_percent))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_FULL_CHARGE, PROC_REF(has_full_charge))
 	RegisterSignal(parent, COMSIG_CELL_START_TICK_DRAIN, PROC_REF(start_drain))
@@ -93,7 +99,7 @@
 	if((charge_examine_range != UNLIMITED_DISTANCE) && get_dist(examiner, parent) > charge_examine_range)
 		return
 
-	examine_text += "A small gauge in the corner reads \"Power: [round(100 * charge / max_charge)]%\"."
+	examine_text += replacetext(replacetext(replacetext(examine_text, "%CHARGE%", "[round(100 * charge / max_charge)]"), "%MAXCHARGE%", "[max_charge]"))
 
 /datum/component/cell/proc/on_object_hit(datum/source, obj/item/cell/attack_obj, mob/living/attacker, params)
 	SIGNAL_HANDLER
@@ -163,6 +169,9 @@
 	if(max_charge == UNLIMITED_CHARGE)
 		return
 
+	if(cell_insert && !inserted_cell)
+		return COMPONENT_CELL_NO_INSERTED_CELL
+
 	if(!charge_add)
 		return
 
@@ -173,6 +182,9 @@
 
 	if(max_charge == UNLIMITED_CHARGE)
 		return
+
+	if(cell_insert && !inserted_cell)
+		return COMPONENT_CELL_NO_INSERTED_CELL
 
 	if(!charge_use)
 		return
@@ -189,7 +201,7 @@
 /datum/component/cell/proc/has_charge(datum/source, charge_amount = 0)
 	SIGNAL_HANDLER
 
-	if(!charge)
+	if(cell_insert && !inserted_cell)
 		return COMPONENT_CELL_CHARGE_INSUFFICIENT
 
 	if(charge < charge_amount)
@@ -200,11 +212,17 @@
 
 	var/charge_percent = charge / max_charge
 
+	if(cell_insert && !inserted_cell)
+		return COMPONENT_CELL_CHARGE_PERCENT_INSUFFICIENT
+
 	if(check_percent > charge_percent)
 		return COMPONENT_CELL_CHARGE_PERCENT_INSUFFICIENT
 
 /datum/component/cell/proc/has_full_charge(datum/source)
 	SIGNAL_HANDLER
+
+	if(cell_insert && !inserted_cell)
+		return COMPONENT_CELL_CHARGE_NOT_FULL
 
 	if(charge < max_charge)
 		return COMPONENT_CELL_CHARGE_NOT_FULL
@@ -212,6 +230,18 @@
 /datum/component/cell/proc/on_charge_empty()
 	stop_drain()
 	SEND_SIGNAL(parent, COMSIG_CELL_OUT_OF_CHARGE)
+
+/// When passed in a list, will add the cell's charge to that list
+/datum/component/cell/proc/get_charge(datum/source, list/charge_pass)
+	SIGNAL_HANDLER
+
+	charge_pass += charge
+
+/// When passed in a list, will add the cell's charge as a percentage to that list
+/datum/component/cell/proc/get_percent(datum/source, list/charge_pass)
+	SIGNAL_HANDLER
+
+	charge_pass += (100 * (charge / max_charge))
 
 #undef UNLIMITED_CHARGE
 #undef UNLIMITED_DISTANCE

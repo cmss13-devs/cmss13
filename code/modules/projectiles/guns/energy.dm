@@ -17,7 +17,6 @@
 	w_class = SIZE_LARGE
 	matter = list("metal" = 2000)
 
-	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 350
 	var/max_shots //calculated on init, no need to manually fill out
 	var/works_in_recharger = TRUE
@@ -29,12 +28,14 @@
 
 /obj/item/weapon/gun/energy/Initialize(mapload, spawn_empty)
 	. = ..()
-	cell = new /obj/item/cell/high(src)
 	update_icon()
-	max_shots = round((cell.maxcharge / charge_cost), 1)
+	max_shots = round((get_cell_charge() / charge_cost), 1)
+	AddComponent(\
+		/datum/component/cell,\
+		display_charge = FALSE, \
+	)
 
 /obj/item/weapon/gun/energy/Destroy()
-	QDEL_NULL(cell)
 	. = ..()
 
 /obj/item/weapon/gun/energy/update_icon()
@@ -42,18 +43,15 @@
 
 	icon_state = "[base_gun_icon]"
 
-	if(!cell)
-		return
-
 	if(!has_charge_meter)
-		switch(cell.percent())
+		switch(get_cell_percent())
 			if(10 to 100)
 				overlays -= charge_icon
 			else
 				overlays += charge_icon
 		return
 	else
-		switch(cell.percent())
+		switch(get_cell_percent())
 			if(75 to 100)
 				overlays += charge_icon + "_100"
 			if(50 to 75)
@@ -67,27 +65,25 @@
 
 /obj/item/weapon/gun/energy/emp_act(severity)
 	. = ..()
-	cell.use(round(cell.maxcharge / severity))
 	update_icon()
 
 /obj/item/weapon/gun/energy/load_into_chamber()
-	if(!cell || cell.charge < charge_cost)
+	if(get_cell_charge() < charge_cost)
 		return
 
-	cell.charge -= charge_cost
+	SEND_SIGNAL(src, COMSIG_CELL_USE_CHARGE, charge_cost)
 	in_chamber = create_bullet(ammo, initial(name))
 	return in_chamber
 
 /obj/item/weapon/gun/energy/has_ammunition()
-	if(cell?.charge >= charge_cost)
-		return TRUE //Enough charge for a shot.
+	return (get_cell_charge() >= charge_cost)
 
 /obj/item/weapon/gun/energy/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	. = ..()
 	if(.)
 		var/to_firer = "You fire the [name]!"
 		if(has_charge_meter)
-			to_firer = "[round((cell.charge / charge_cost), 1)] / [max_shots] SHOTS REMAINING"
+			to_firer = "[round((get_cell_charge() / charge_cost), 1)] / [max_shots] SHOTS REMAINING"
 		user.visible_message(SPAN_DANGER("[user] fires \the [src]!"),
 		SPAN_DANGER("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
 		return AUTOFIRE_CONTINUE
@@ -98,17 +94,16 @@
 
 /obj/item/weapon/gun/energy/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) cell.charge += charge_cost
+	if(refund)
+		SEND_SIGNAL(src, COMSIG_CELL_ADD_CHARGE, charge_cost)
 	return TRUE
 
 /obj/item/weapon/gun/energy/get_examine_text(mob/user)
 	. = ..()
-	if(has_charge_meter && cell)
-		. += SPAN_NOTICE("It has [round((cell.charge / charge_cost), 1)] / [max_shots] shots left.")
-	else if(cell)
-		. += SPAN_NOTICE("It has [cell.percent()]% charge left.")
+	if(has_charge_meter)
+		. += SPAN_NOTICE("It has [round((get_cell_charge() / charge_cost), 1)] / [max_shots] shots left.")
 	else
-		. += SPAN_NOTICE("It has no power cell inside.")
+		. += SPAN_NOTICE("It has [get_cell_percent()]% charge left.")
 
 /obj/item/weapon/gun/energy/rxfm5_eva
 	name = "RXF-M5 EVA pistol"

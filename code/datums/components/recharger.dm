@@ -197,18 +197,8 @@
 	// This code is awful.
 	// I plan to cut this down by converting more objects to have cell components over time
 	// But you always know how //TODO goes
-	if(istype(inserted_item, /obj/item/weapon/gun/energy))
-		var/obj/item/weapon/gun/energy/E = inserted_item
-		if(!E.works_in_recharger)
-			return
-		if(!E.cell.fully_charged())
-			E.cell.give(charge_amount * CELLRATE)
-			update_power_use(USE_POWER_ACTIVE)
-		else
-			update_power_use(USE_POWER_IDLE)
-		return
 
-	else if(istype(inserted_item, /obj/item/weapon/baton))
+	if(istype(inserted_item, /obj/item/weapon/baton))
 		var/obj/item/weapon/baton/B = inserted_item
 		if(B.bcell)
 			if(!B.bcell.fully_charged())

@@ -355,3 +355,19 @@
 	set_light_range(range)
 	set_light_power(power)
 	set_light_color(color)
+
+/// Get the movable's cell charge
+/atom/movable/proc/get_cell_charge()
+	var/list/pass_list = list()
+	SEND_SIGNAL(src, COMSIG_CELL_GET_CHARGE, pass_list)
+	if(length(pass_list))
+		return pass_list[1]
+	return null
+
+/// Get the movable's cell charge as a percentage
+/atom/movable/proc/get_cell_percent()
+	var/list/pass_list = list()
+	SEND_SIGNAL(src, COMSIG_CELL_GET_PERCENT, pass_list)
+	if(length(pass_list))
+		return pass_list[1]
+	return null

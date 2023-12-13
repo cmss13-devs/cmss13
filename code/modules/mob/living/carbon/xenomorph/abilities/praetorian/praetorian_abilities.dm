@@ -55,7 +55,7 @@
 
 	// Root config
 	var/root_duration_unbuffed = 1 SECONDS
-	var/root_duration_buffed = 2.5 SECONDS
+	var/root_duration_buffed = 1.8 SECONDS
 
 	// Fling config
 	var/fling_dist_unbuffed = 3

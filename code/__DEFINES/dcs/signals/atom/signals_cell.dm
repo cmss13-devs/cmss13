@@ -44,3 +44,5 @@
 
 /// (list/charge_pass) <- convert to a pointer once we're on 515
 #define COMSIG_CELL_GET_MAX_CHARGE "cell_get_max_charge"
+
+#define COMSIG_CELL_CHARGE_MODIFIED "cell_charge_modified"

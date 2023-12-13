@@ -48,6 +48,7 @@
 		/datum/component/cell,\
 		max_charge = 1000,\
 	)
+	RegisterSignal(src, COMSIG_CELL_CHARGE_MODIFIED, PROC_REF(update_icon))
 	update_icon()
 
 /obj/item/clothing/suit/auto_cpr/mob_can_equip(mob/living/carbon/human/H, slot, disable_warning = 0, force = 0)
@@ -211,6 +212,7 @@
 		/datum/component/cell,\
 		max_charge = 1000,\
 	)
+	RegisterSignal(src, COMSIG_CELL_CHARGE_MODIFIED, PROC_REF(update_icon))
 	update_icon()
 
 /obj/item/tool/portadialysis/update_icon(detaching = FALSE)

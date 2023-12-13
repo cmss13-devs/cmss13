@@ -128,11 +128,13 @@
 /datum/component/recharger/proc/start_charging()
 	START_PROCESSING(SSobj, src)
 	recharging = TRUE
+	update_overlay()
 
 /datum/component/recharger/proc/stop_charging()
 	STOP_PROCESSING(SSobj, src)
 	recharging = FALSE
-	machine_parent.overlays -= charge_overlay
+	var/obj/obj_parent = parent
+	obj_parent.overlays -= charge_overlay
 
 /datum/component/recharger/proc/on_examine(datum/source, mob/examiner, list/examine_text)
 	examine_text += "There's [inserted_item ? "[inserted_item.name]" : "nothing"] in the charger."

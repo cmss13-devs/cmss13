@@ -37,6 +37,7 @@
 		/datum/component/cell,\
 		max_charge = 1000,\
 	)
+	RegisterSignal(src, COMSIG_CELL_CHARGE_MODIFIED, PROC_REF(update_icon))
 	update_icon()
 
 /obj/item/device/defibrillator/Destroy()

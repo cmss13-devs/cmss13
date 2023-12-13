@@ -30,6 +30,7 @@
 	. = ..()
 	AddComponent(/datum/component/cell)
 	update_icon()
+	RegisterSignal(src, COMSIG_CELL_CHARGE_MODIFIED, PROC_REF(update_icon))
 	max_shots = round((get_cell_charge() / charge_cost), 1)
 
 /obj/item/weapon/gun/energy/Destroy()

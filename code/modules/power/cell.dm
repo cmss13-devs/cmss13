@@ -25,6 +25,7 @@
 	. = ..()
 	AddComponent(/datum/component/cell, maxcharge, initial_charge = charge)
 	update_icon()
+	RegisterSignal(src, COMSIG_CELL_CHARGE_MODIFIED, PROC_REF(update_icon))
 
 /obj/item/cell/update_icon()
 	..()

@@ -188,6 +188,7 @@
 		return
 
 	charge = clamp(charge + charge_add, 0, max_charge)
+	on_charge_modify()
 
 /datum/component/cell/proc/use_charge(datum/source, charge_use = 0)
 	SIGNAL_HANDLER
@@ -208,6 +209,7 @@
 		return COMPONENT_CELL_NO_USE_CHARGE
 
 	charge = clamp(charge - charge_use, 0, max_charge)
+	on_charge_modify()
 
 	if(!charge)
 		on_charge_empty()
@@ -245,6 +247,9 @@
 
 	if(charge < max_charge)
 		return COMPONENT_CELL_CHARGE_NOT_FULL
+
+/datum/component/cell/proc/on_charge_modify()
+	SEND_SIGNAL(parent, COMSIG_CELL_CHARGE_MODIFIED)
 
 /datum/component/cell/proc/on_charge_empty()
 	stop_drain()

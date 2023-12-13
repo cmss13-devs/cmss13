@@ -235,6 +235,7 @@
 	anchored = TRUE
 	locked = TRUE
 
+
 /obj/structure/closet/secure_closet/brig/restraints/Initialize()
 	. = ..()
 	new /obj/item/clothing/suit/straight_jacket(src)

@@ -13,8 +13,7 @@
 	attack_verb = list("beaten")
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_SENIOR, ACCESS_WY_GENERAL, ACCESS_WY_SECURITY, ACCESS_CIVILIAN_BRIG)
 	var/stunforce = 50
-	var/status = 0 //whether the thing is on or not
-	var/obj/item/cell/bcell = null
+	var/status = FALSE //whether the thing is on or not
 	var/hitcost = 1000 //oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
 	var/has_user_lock = TRUE //whether the baton prevents people without correct access from using it.
 
@@ -24,37 +23,35 @@
 
 /obj/item/weapon/baton/Initialize(mapload, ...)
 	. = ..()
-	bcell = new/obj/item/cell/high(src) //Fuckit lets givem all the good cells
+	AddComponent(\
+		/datum/component/cell,\
+		cell_insert = TRUE,\
+		cell_insert_default_cell = /obj/item/cell/high,\
+	)
 	update_icon()
-
-/obj/item/weapon/baton/Destroy()
-	QDEL_NULL(bcell)
-	return ..()
 
 // legacy type, remove when able
 /obj/item/weapon/baton/loaded
 
 /obj/item/weapon/baton/proc/deductcharge(chrgdeductamt)
-	if(bcell)
-		if(bcell.use(chrgdeductamt))
-			return TRUE
-		else
-			status = 0
-			update_icon()
-			return FALSE
+	if(SEND_SIGNAL(src, COMSIG_CELL_USE_CHARGE, chrgdeductamt) & COMPONENT_CELL_NO_USE_CHARGE)
+		status = FALSE
+		update_icon()
+		return FALSE
+	return TRUE
 
 /obj/item/weapon/baton/update_icon()
 	if(status)
 		icon_state = "[initial(icon_state)]_active"
-	else if(!bcell)
+	else if(SEND_SIGNAL(src, COMSIG_CELL_CHECK_INSERTED_CELL) & COMPONENT_CELL_NOT_INSERTED)
 		icon_state = "[initial(icon_state)]_nocell"
 	else
 		icon_state = "[initial(icon_state)]"
 
 /obj/item/weapon/baton/get_examine_text(mob/user)
 	. = ..()
-	if(bcell)
-		. += SPAN_NOTICE("The baton is [round(bcell.percent())]% charged.")
+	if(!(SEND_SIGNAL(src, COMSIG_CELL_CHECK_INSERTED_CELL) & COMPONENT_CELL_NOT_INSERTED))
+		. += SPAN_NOTICE("The baton is [get_cell_percent()]% charged.")
 	else
 		. += SPAN_WARNING("The baton does not have a power source installed.")
 
@@ -90,24 +87,9 @@
 	return check_user_auth(puller)
 
 /obj/item/weapon/baton/attackby(obj/item/W, mob/user)
-
-	if(istype(W, /obj/item/cell))
-		if(!bcell)
-			if(user.drop_held_item())
-				W.forceMove(src)
-				bcell = W
-				to_chat(user, SPAN_NOTICE("You install a cell in [src]."))
-				update_icon()
-		else
-			to_chat(user, SPAN_NOTICE("[src] already has a cell."))
-
-	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		if(bcell)
-			bcell.update_icon()
-			bcell.forceMove(get_turf(src.loc))
-			bcell = null
-			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
-			status = 0
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		if(!(SEND_SIGNAL(src, COMSIG_CELL_REMOVE_CELL, user) & COMPONENT_CELL_NO_INSERTED_CELL))
+			status = FALSE
 			update_icon()
 			return
 		..()
@@ -118,14 +100,14 @@
 	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
-	if(bcell && bcell.charge > hitcost)
+	if(!(SEND_SIGNAL(src, COMSIG_CELL_CHECK_CHARGE, hitcost) & COMPONENT_CELL_CHARGE_INSUFFICIENT))
 		status = !status
 		to_chat(user, SPAN_NOTICE("[src] is now [status ? "on" : "off"]."))
 		playsound(loc, "sparks", 25, 1, 6)
 		update_icon()
 	else
 		status = 0
-		if(!bcell)
+		if(SEND_SIGNAL(src, COMSIG_CELL_CHECK_INSERTED_CELL) & COMPONENT_CELL_NOT_INSERTED)
 			to_chat(user, SPAN_WARNING("[src] does not have a power source!"))
 		else
 			to_chat(user, SPAN_WARNING("[src] is out of charge."))
@@ -195,22 +177,6 @@
 	deductcharge(hitcost)
 
 	return TRUE
-
-/obj/item/weapon/baton/emp_act(severity)
-	. = ..()
-	if(bcell)
-		bcell.emp_act(severity) //let's not duplicate code everywhere if we don't have to please.
-
-//secborg stun baton module
-/obj/item/weapon/baton/robot/attack_self(mob/user)
-	//try to find our power cell
-	var/mob/living/silicon/robot/R = loc
-	if (istype(R))
-		bcell = R.cell
-	return ..()
-
-/obj/item/weapon/baton/robot/attackby(obj/item/W, mob/user)
-	return
 
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/weapon/baton/cattleprod

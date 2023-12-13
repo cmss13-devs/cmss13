@@ -117,7 +117,7 @@
 	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
 
 	if(battery && get_dist(user, src) <= 1)
-		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
+		. += "A small gauge on [battery] reads: Power: [battery.get_cell_charge()] / [battery.get_cell_max_charge()]."
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
 	if(mods["alt"])
@@ -145,7 +145,7 @@
 	if(istype(attacking_object, /obj/item/smartgun_battery))
 		var/obj/item/smartgun_battery/new_cell = attacking_object
 		visible_message("[user] swaps out the power cell in the [src].","You swap out the power cell in the [src] and drop the old one.")
-		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.power_cell.charge] power."))
+		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.get_cell_charge()] power."))
 		battery.update_icon()
 		battery.forceMove(get_turf(user))
 		battery = new_cell
@@ -377,18 +377,16 @@
 	if(override_drain)
 		actual_drain = (rand(override_drain / 2, override_drain) / 25)
 
-	if(battery && battery.power_cell.charge > 0)
-		if(battery.power_cell.charge > actual_drain)
-			battery.power_cell.charge -= actual_drain
-		else
-			battery.power_cell.charge = 0
-			to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
-			return FALSE
-		return TRUE
-	if(!battery || battery.power_cell.charge == 0)
+	if(!battery || (SEND_SIGNAL(battery, COMSIG_CELL_CHECK_CHARGE) & COMPONENT_CELL_CHARGE_INSUFFICIENT))
 		to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
 		return FALSE
-	return FALSE
+
+	if(!(SEND_SIGNAL(battery, COMSIG_CELL_CHECK_CHARGE, actual_drain) & COMPONENT_CELL_CHARGE_INSUFFICIENT))
+		SEND_SIGNAL(battery, COMSIG_CELL_USE_CHARGE, actual_drain)
+	else
+		to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
+		return FALSE
+	return TRUE
 
 /obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s recoil compensation.")
@@ -724,17 +722,15 @@
 	throw_range = 5
 	w_class = SIZE_SMALL
 
-	var/obj/item/cell/high/power_cell
-
 /obj/item/smartgun_battery/Initialize(mapload)
 	. = ..()
 
-	power_cell = new(src)
+	AddComponent(/datum/component/cell)
 
 /obj/item/smartgun_battery/get_examine_text(mob/user)
 	. = ..()
 
-	. += SPAN_NOTICE("The power indicator reads [power_cell.charge] charge out of [power_cell.maxcharge] total.")
+	. += SPAN_NOTICE("The power indicator reads [get_cell_charge()] charge out of [get_cell_max_charge()] total.")
 
 /obj/item/weapon/gun/smartgun/rmc
 	name = "\improper L56A2 smartgun"

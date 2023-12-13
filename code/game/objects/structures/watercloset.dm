@@ -487,21 +487,20 @@
 
 	else if (istype(O, /obj/item/weapon/baton))
 		var/obj/item/weapon/baton/B = O
-		if(B.bcell)
-			if(B.bcell.charge > 0 && B.status == 1)
-				flick("baton_active", src)
-				user.apply_effect(10, STUN)
-				user.stuttering = 10
-				user.apply_effect(10, WEAKEN)
-				if(isrobot(user))
-					var/mob/living/silicon/robot/R = user
-					R.cell.charge -= 20
-				else
-					B.deductcharge(B.hitcost)
-				user.visible_message( \
-					SPAN_DANGER("[user] was stunned by \his wet [O]!"), \
-					SPAN_DANGER("You were stunned by your wet [O]!"))
-				return
+		if(!(SEND_SIGNAL(B, COMSIG_CELL_CHECK_CHARGE, B.hitcost) & COMPONENT_CELL_CHARGE_INSUFFICIENT) && B.status)
+			flick("baton_active", src)
+			user.apply_effect(10, STUN)
+			user.stuttering = 10
+			user.apply_effect(10, WEAKEN)
+			if(isrobot(user))
+				var/mob/living/silicon/robot/R = user
+				R.cell.charge -= 20
+			else
+				B.deductcharge(B.hitcost)
+			user.visible_message( \
+				SPAN_DANGER("[user] was stunned by \his wet [O]!"), \
+				SPAN_DANGER("You were stunned by your wet [O]!"))
+			return
 
 	var/turf/location = user.loc
 	if(!isturf(location)) return

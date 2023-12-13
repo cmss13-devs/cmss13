@@ -82,7 +82,7 @@
 	RegisterSignal(parent, COMSIG_OBJ_TRY_UNWRENCH, PROC_REF(on_unwrench))
 
 /datum/component/recharger/proc/on_unwrench(datum/source, obj/item/wrench, mob/living/user)
-	if(recharging || inserted_item)
+	if(!unanchored_use && (recharging || inserted_item))
 		to_chat(user, SPAN_WARNING("Remove [inserted_item] from [parent] before trying to move it!"))
 		return ELEMENT_OBJ_STOP_UNWRENCH
 
@@ -91,7 +91,12 @@
 
 	if(inserted_item)
 		to_chat(user, SPAN_WARNING("There's already something recharging inside [parent]."))
-		return
+		return COMPONENT_NO_AFTERATTACK
+
+	var/obj/obj_parent = parent
+	if(!unanchored_use && !obj_parent.anchored)
+		to_chat(user, SPAN_WARNING("You can't put anything inside [parent] while it's unanchored!"))
+		return COMPONENT_NO_AFTERATTACK
 
 	var/area/parent_area = get_area(parent)
 	if(!isarea(parent_area) || (!parent_area.power_equip && !parent_area.unlimited_power))
@@ -127,6 +132,7 @@
 /datum/component/recharger/proc/stop_charging()
 	STOP_PROCESSING(SSobj, src)
 	recharging = FALSE
+	machine_parent.overlays -= charge_overlay
 
 /datum/component/recharger/proc/on_examine(datum/source, mob/examiner, list/examine_text)
 	examine_text += "There's [inserted_item ? "[inserted_item.name]" : "nothing"] in the charger."
@@ -161,7 +167,6 @@
 
 	if(!charge_overlay)
 		charge_overlay = mutable_appearance(charge_overlay_icon)
-		machine_parent.overlays += charge_overlay
 
 	if(!inserted_item || machine_parent.inoperable())
 		charge_overlay.icon_state = ""
@@ -175,7 +180,10 @@
 			continue
 
 		charge_overlay.icon_state = overlay_state
-		return
+		break
+
+	machine_parent.overlays.Cut()
+	machine_parent.overlays += charge_overlay
 
 /* Can't think of a good way to add these. Not sure if I even should
 	if(istype(charging, /obj/item/weapon/gun/energy))
@@ -194,56 +202,8 @@
 		update_power_use(USE_POWER_IDLE)
 		return
 
-	// This code is awful.
-	// I plan to cut this down by converting more objects to have cell components over time
-	// But you always know how //TODO goes
-
-	if(istype(inserted_item, /obj/item/weapon/baton))
-		var/obj/item/weapon/baton/B = inserted_item
-		if(B.bcell)
-			if(!B.bcell.fully_charged())
-				B.bcell.give(charge_amount * CELLRATE)
-				update_power_use(USE_POWER_ACTIVE)
-			else
-				update_power_use(USE_POWER_IDLE)
-		else
-			update_power_use(USE_POWER_IDLE)
-		return
-
-	else if(istype(inserted_item, /obj/item/cell))
-		var/obj/item/cell/C = inserted_item
-		if(!C.fully_charged())
-			C.give(charge_amount * CELLRATE)
-			update_power_use(USE_POWER_ACTIVE)
-		else
-			update_power_use(USE_POWER_IDLE)
-		return
-
-	else if(istype(inserted_item, /obj/item/smartgun_battery))
-		var/obj/item/smartgun_battery/charging_smartgun_battery = inserted_item
-		if(charging_smartgun_battery.power_cell)
-			if(!charging_smartgun_battery.power_cell.fully_charged())
-				charging_smartgun_battery.power_cell.give(charge_amount * CELLRATE)
-				update_power_use(USE_POWER_ACTIVE)
-				return
-
-		update_power_use(USE_POWER_IDLE)
-		return
-
-	else if(istype(inserted_item, /obj/item/device/helmet_visor/night_vision))
-		var/obj/item/device/helmet_visor/night_vision/charging_night_vision_visor = inserted_item
-		if(charging_night_vision_visor.power_cell)
-			if(!charging_night_vision_visor.power_cell.fully_charged())
-				charging_night_vision_visor.power_cell.give(charge_amount * CELLRATE)
-				update_power_use(USE_POWER_ACTIVE)
-				return
-
-		update_power_use(USE_POWER_IDLE)
-		return
-
+	if(SEND_SIGNAL(inserted_item, COMSIG_CELL_CHECK_FULL_CHARGE) & COMPONENT_CELL_CHARGE_NOT_FULL)
+		SEND_SIGNAL(inserted_item, COMSIG_CELL_ADD_CHARGE, charge_amount * CELLRATE)
+		update_power_use(USE_POWER_ACTIVE)
 	else
-		if(SEND_SIGNAL(inserted_item, COMSIG_CELL_CHECK_FULL_CHARGE) & COMPONENT_CELL_CHARGE_NOT_FULL)
-			SEND_SIGNAL(inserted_item, COMSIG_CELL_ADD_CHARGE, charge_amount * CELLRATE)
-			update_power_use(USE_POWER_ACTIVE)
-		else
-			update_power_use(USE_POWER_IDLE)
+		update_power_use(USE_POWER_IDLE)

@@ -118,7 +118,7 @@
 /obj/item/prop/helmetgarb/helmet_nvg/Initialize(mapload, ...)
 	. = ..()
 	if(shape != NVG_SHAPE_COSMETIC)
-		AddComponent(/datum/component/cell, cell_max_charge, TRUE, charge_drain = 8)
+		AddComponent(/datum/component/cell, cell_max_charge, TRUE, charge_drain = 8, display_charge = TRUE)
 		RegisterSignal(src, COMSIG_CELL_TRY_RECHARGING, PROC_REF(cell_try_recharge))
 		RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, PROC_REF(on_power_out))
 

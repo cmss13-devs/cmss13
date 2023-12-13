@@ -16,7 +16,7 @@
 	/// If draining charge on process(), how much to drain per process call
 	var/charge_drain = 10
 	/// If the parent should show cell charge on examine
-	var/display_charge = TRUE
+	var/display_charge = FALSE
 	/// From how many tiles at the highest someone can examine the parent to see the charge
 	var/charge_examine_range = 1
 	/// If the component requires a cell to be inserted to work instead of having an integrated one
@@ -32,10 +32,12 @@
 	hit_charge = FALSE,
 	max_recharge_tick = 400,
 	charge_drain = 10,
-	display_charge = TRUE,
+	display_charge = FALSE,
 	charge_examine_range = 1,
 	cell_insert = FALSE,
+	cell_insert_default_cell = /obj/item/cell,
 	examine_string = "A small gauge in the corner reads \"Power: %CHARGE%\".",
+	initial_charge = -1,
 	)
 
 	. = ..()
@@ -43,13 +45,18 @@
 		return COMPONENT_INCOMPATIBLE
 
 	src.max_charge = max_charge
-	charge = max_charge
+	if(initial_charge == -1)
+		charge = max_charge
+	else
+		charge = min(initial_charge, max_charge)
 	src.hit_charge = hit_charge
 	src.max_recharge_tick = max_recharge_tick
 	src.charge_drain = charge_drain
 	src.display_charge = display_charge
 	src.charge_examine_range = charge_examine_range
 	src.cell_insert = cell_insert
+	if(cell_insert)
+		inserted_cell = new cell_insert_default_cell(parent)
 	src.examine_string = examine_string
 
 /datum/component/cell/Destroy(force, silent)
@@ -67,6 +74,7 @@
 	RegisterSignal(parent, COMSIG_CELL_GET_PERCENT, PROC_REF(get_percent))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_CHARGE_PERCENT, PROC_REF(has_charge_percent))
 	RegisterSignal(parent, COMSIG_CELL_CHECK_FULL_CHARGE, PROC_REF(has_full_charge))
+	RegisterSignal(parent, COMSIG_CELL_CHECK_INSERTED_CELL, PROC_REF(has_inserted_cell))
 	RegisterSignal(parent, COMSIG_CELL_START_TICK_DRAIN, PROC_REF(start_drain))
 	RegisterSignal(parent, COMSIG_CELL_STOP_TICK_DRAIN, PROC_REF(stop_drain))
 	RegisterSignal(parent, COMSIG_CELL_REMOVE_CELL, PROC_REF(remove_cell))
@@ -130,8 +138,11 @@
 	charge = power_cell.charge
 	max_charge = power_cell.maxcharge
 
-/datum/component/cell/proc/remove_cell(mob/living/user)
+/datum/component/cell/proc/remove_cell(datum/source, mob/living/user)
 	SIGNAL_HANDLER
+
+	if(!inserted_cell)
+		return COMPONENT_CELL_NO_INSERTED_CELL
 
 	user.put_in_hands(inserted_cell, TRUE)
 	to_chat(user, SPAN_NOTICE("You remove [inserted_cell] from [parent]."))
@@ -193,6 +204,9 @@
 	if(!charge)
 		return COMPONENT_CELL_NO_USE_CHARGE
 
+	if(charge_use > charge)
+		return COMPONENT_CELL_NO_USE_CHARGE
+
 	charge = clamp(charge - charge_use, 0, max_charge)
 
 	if(!charge)
@@ -235,6 +249,16 @@
 /datum/component/cell/proc/on_charge_empty()
 	stop_drain()
 	SEND_SIGNAL(parent, COMSIG_CELL_OUT_OF_CHARGE)
+
+/datum/component/cell/proc/has_inserted_cell(datum/source)
+	SIGNAL_HANDLER
+
+	// When a cell isn't required to be inserted, we act like we always have an innate one
+	if(!cell_insert)
+		return
+
+	if(!inserted_cell)
+		return COMPONENT_CELL_NOT_INSERTED
 
 /// When passed in a list, will add the cell's charge to that list
 /datum/component/cell/proc/get_charge(datum/source, list/charge_pass)

@@ -108,7 +108,7 @@
 	else
 		icon_state = "autocomp"
 	overlays.Cut()
-	switch(get_cell_percent)
+	switch(get_cell_percent())
 		if(0 to 32)
 			overlays += "cpr_batt_lo"
 		if(33 to 65)

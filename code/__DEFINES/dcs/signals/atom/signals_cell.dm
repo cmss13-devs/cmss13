@@ -4,7 +4,6 @@
 
 /// (charge_amount)
 #define COMSIG_CELL_ADD_CHARGE "cell_add_charge"
-	#define COMPONENT_CELL_NO_INSERTED_CELL (1<<0)
 
 #define COMSIG_CELL_START_TICK_DRAIN "cell_start_tick_drain"
 
@@ -32,6 +31,10 @@
 
 /// (mob/living/user)
 #define COMSIG_CELL_REMOVE_CELL "cell_remove_cell"
+	#define COMPONENT_CELL_NO_INSERTED_CELL (1<<0)
+
+#define COMSIG_CELL_CHECK_INSERTED_CELL "cell_check_inserted_cell"
+	#define COMPONENT_CELL_NOT_INSERTED (1<<0)
 
 /// (list/charge_pass) <- convert to a pointer once we're on 515
 #define COMSIG_CELL_GET_CHARGE "cell_get_charge"

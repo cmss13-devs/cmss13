@@ -28,12 +28,9 @@
 
 /obj/item/weapon/gun/energy/Initialize(mapload, spawn_empty)
 	. = ..()
+	AddComponent(/datum/component/cell)
 	update_icon()
 	max_shots = round((get_cell_charge() / charge_cost), 1)
-	AddComponent(\
-		/datum/component/cell,\
-		display_charge = FALSE, \
-	)
 
 /obj/item/weapon/gun/energy/Destroy()
 	. = ..()

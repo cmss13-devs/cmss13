@@ -187,8 +187,6 @@
 /obj/item/device/helmet_visor/welding_visor/tanker
 	helmet_overlay = "tanker_weld_visor"
 
-#define NVG_VISOR_USAGE(delta_time) (power_cell.use(power_use * (delta_time ? delta_time : 1)))
-
 /obj/item/device/helmet_visor/night_vision
 	name = "night vision optic"
 	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in units with regular funding."
@@ -198,9 +196,6 @@
 	helmet_overlay = "nvg_sight_right"
 	toggle_on_sound = 'sound/handling/toggle_nv1.ogg'
 	toggle_off_sound = 'sound/handling/toggle_nv2.ogg'
-
-	/// The internal battery for the visor
-	var/obj/item/cell/high/power_cell
 
 	/// About 5 minutes active use charge (hypothetically)
 	var/power_use = 33
@@ -216,16 +211,12 @@
 
 /obj/item/device/helmet_visor/night_vision/Initialize(mapload, ...)
 	. = ..()
-	power_cell = new(src)
-
-/obj/item/device/helmet_visor/night_vision/Destroy()
-	power_cell = null
-	. = ..()
+	AddComponent(/datum/component/cell)
 
 /obj/item/device/helmet_visor/night_vision/get_examine_text(mob/user)
 	. = ..()
 
-	. += SPAN_NOTICE("It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
+	. += SPAN_NOTICE("It is currently at [get_cell_percent()]% charge.")
 
 /obj/item/device/helmet_visor/night_vision/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(on_update_sight))
@@ -252,7 +243,7 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/helmet_visor/night_vision/process(delta_time)
-	if(!NVG_VISOR_USAGE(delta_time))
+	if(SEND_SIGNAL(src, COMSIG_CELL_USE_CHARGE, power_use * delta_time) & COMPONENT_CELL_NO_USE_CHARGE)
 
 		if(!istype(loc, /obj/item/clothing/head/helmet/marine))
 			return PROCESS_KILL
@@ -271,7 +262,7 @@
 	if(!.)
 		return
 
-	if(!NVG_VISOR_USAGE(FALSE))
+	if(SEND_SIGNAL(src, COMSIG_CELL_USE_CHARGE, power_use) & COMPONENT_CELL_NO_USE_CHARGE)
 		to_chat(user, SPAN_NOTICE("Your [src] is out of power! You'll need to recharge it."))
 		return FALSE
 
@@ -280,7 +271,7 @@
 /obj/item/device/helmet_visor/night_vision/get_helmet_examine_text()
 	. = ..()
 
-	. += SPAN_NOTICE(" It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
+	. += SPAN_NOTICE(" It is currently at [get_cell_percent()]% charge.")
 
 /obj/item/device/helmet_visor/night_vision/proc/on_update_sight(mob/user)
 	SIGNAL_HANDLER
@@ -289,8 +280,6 @@
 		user.see_in_dark = 12
 	user.lighting_alpha = lighting_alpha
 	user.sync_lighting_plane_alpha()
-
-#undef NVG_VISOR_USAGE
 
 /atom/movable/nvg_light
 	light_power = 0.5

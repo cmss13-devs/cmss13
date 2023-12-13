@@ -38,6 +38,10 @@
 			new preload(cylinder)
 		update_icon()
 
+/obj/item/weapon/gun/launcher/Destroy(force)
+	QDEL_NULL(cylinder)
+	return ..()
+
 /obj/item/weapon/gun/launcher/verb/toggle_draw_mode()
 	set name = "Switch Storage Drawing Method"
 	set category = "Object"

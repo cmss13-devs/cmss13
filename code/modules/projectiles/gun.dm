@@ -503,13 +503,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
 		set_gun_user(user)
-		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, user))
+		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, WEAKREF(user)))
 			force_light(on = TRUE)
-			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, WEAKREF(user))
 	else
 		set_gun_user(null)
 		force_light(on = FALSE)
-		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, WEAKREF(user))
 
 	return ..()
 

@@ -547,7 +547,10 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		ui.set_autoupdate(FALSE)
 
 /datum/ic_medal_panel/ui_state(mob/user)
-	return GLOB.not_incapacitated_and_adjacent_state
+	if(istype(user_locs[user], /obj/item))
+		return GLOB.not_incapacitated_and_inventory_state
+	else
+		return GLOB.not_incapacitated_and_adjacent_state
 
 /datum/ic_medal_panel/ui_host(mob/user)
 	. = ..()

@@ -266,9 +266,8 @@
 	var/color_override = null
 
 
-GLOBAL_LIST_EMPTY(rbarrel_cap_states)
-GLOBAL_LIST_EMPTY(rbarrel_center_states)
-GLOBAL_VAR(rbarrel_genned)
+GLOBAL_LIST_EMPTY(rbarrel_cap_states) // Will be set up in generate_barrel_states
+GLOBAL_LIST_INIT(rbarrel_center_states, generate_barrel_states())
 GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOUR_SILVER,
 	COLOUR_FLOORTILE_GRAY,
 	COLOUR_MAROON,
@@ -286,18 +285,20 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOUR_SILVER,
 	COLOUR_BROWN,
 	COLOUR_DARK_BROWN))
 
+/proc/generate_barrel_states()
+	var/list/rbarrel_center_states = list()
+	var/icon/icon = new('icons/obj/structures/crates.dmi')
+	var/list/icon_list = icon_states(icon)
+	for(var/state in icon_list)
+		if(findtext(state,"+cap"))
+			GLOB.rbarrel_cap_states.Add(state)
+		if(findtext(state,"+center"))
+			rbarrel_center_states.Add(state)
+	// We are returning rbarrel_center_states (rather than setting GLOB) because we are called by the global initializer to set it
+	return rbarrel_center_states
+
 /obj/structure/largecrate/random/barrel/true_random/Initialize()
 	. = ..()
-	//check if the state lists have been dynamically filled yet. If not, go and do so
-	if(!GLOB.rbarrel_genned)
-		var/icon/icon = new('icons/obj/structures/crates.dmi')
-		var/list/icon_list = icon_states(icon)
-		for(var/state in icon_list)
-			if(findtext(state,"+cap"))
-				GLOB.rbarrel_cap_states.Add(state)
-			if(findtext(state,"+center"))
-				GLOB.rbarrel_center_states.Add(state)
-		GLOB.rbarrel_genned = TRUE
 
 	var/image/center_coloring = image(icon, src,"+_center")
 

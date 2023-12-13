@@ -298,7 +298,7 @@
 
 	//Change the bullet angle to its visual path
 
-	var/vis_angle = get_pixel_angle(x = pixel_x_target - pixel_x_source, y = pixel_y_target - pixel_y_source) //naming vars because the proc takes y then x and that's WEIRD
+	var/vis_angle = Get_Pixel_Angle(pixel_x_target - pixel_x_source, pixel_y_target - pixel_y_source)
 	var/matrix/rotate = matrix()
 	rotate.Turn(vis_angle)
 	apply_transform(rotate)

@@ -698,7 +698,7 @@
 	if(!istype(in_chamber, /obj/projectile))
 		return
 
-	var/angle = get_angle(T, U)
+	var/angle = Get_Angle(T, U)
 
 	if((dir == NORTH) && (angle > 180) && (abs(360 - angle) > shoot_degree)) // If north and shooting to the left, we do some extra math
 		return

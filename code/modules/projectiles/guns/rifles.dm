@@ -1880,11 +1880,6 @@
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/xm51
-	var/pump_delay
-	var/recent_pump
-	var/pump_sound = "shotgunpump"
-	var/message_cooldown //To not spam the above.
-	var/burst_count = 0 //To detect when the burst fire is near its end.
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
@@ -1904,6 +1899,13 @@
 	gun_category = GUN_CATEGORY_SHOTGUN
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
 	map_specific_decoration = TRUE
+
+	var/pump_delay //How long we have to wait before we can pump the shotgun again.
+	var/pump_sound = "shotgunpump"
+	var/message_delay = 1 SECONDS //To stop message spam when trying to pump the gun constantly.
+	var/burst_count = 0 //To detect when the burst fire is near its end.
+	COOLDOWN_DECLARE(allow_message)
+	COOLDOWN_DECLARE(allow_pump)
 
 /obj/item/weapon/gun/rifle/xm51/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 21, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)
@@ -1932,16 +1934,16 @@
 	))
 
 /obj/item/weapon/gun/rifle/xm51/unique_action(mob/user)
-	if(world.time < (recent_pump + pump_delay))
+	if(!COOLDOWN_FINISHED(src, allow_pump))
 		return
 	if(in_chamber)
-		if (world.time > (message_cooldown + pump_delay))
+		if(COOLDOWN_FINISHED(src, allow_message))
 			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
-			message_cooldown = world.time
+			COOLDOWN_START(src, allow_message, message_delay)
 		return
 
 	playsound(user, pump_sound, 10, 1)
-	recent_pump = world.time
+	COOLDOWN_START(src, allow_pump, pump_delay)
 	ready_in_chamber()
 	burst_count = 0 //Reset the count for burst mode.
 

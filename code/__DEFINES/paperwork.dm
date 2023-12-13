@@ -1,0 +1,6 @@
+#define PAPER_CATEGORY_USCM "USCM"
+#define PAPER_CATEGORY_PROVOST "Provost"
+#define PAPER_CATEGORY_WEYYU "Weyland Yutani"
+#define PAPER_CATEGORY_UPP "UPP"
+#define PAPER_CATEGORY_CMB "CMB"
+#define PAPER_CATEGORY_MP "Military Police"

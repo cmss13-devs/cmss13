@@ -141,13 +141,15 @@
 /datum/asset/simple/paper
 	keep_local_name = TRUE
 	assets = list(
-		"wylogo.png" = 'html/images/wylogo.png',
-		"uscmlogo.png" = 'html/images/uscmlogo.png',
-		"upplogo.png" = 'html/images/upplogo.png',
-		"cmblogo.png" = 'html/images/cmblogo.png',
-		"faxwylogo.png" = 'html/images/faxwylogo.png',
-		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
-		"colonialspacegruntsEZ.png" = 'html/images/colonialspacegruntsEZ.png',
+		"logo_wy.png" = 'paperwork/reference_files/logo_wy.png',
+		"logo_uscm.png" = 'paperwork/reference_files/logo_uscm.png',
+		"logo_provost.png" = 'paperwork/reference_files/logo_provost.png',
+		"logo_upp.png" = 'paperwork/reference_files/logo_upp.png',
+		"logo_cmb.png" = 'paperwork/reference_files/logo_cmb.png',
+		"logo_wy_bw.png" = 'paperwork/reference_files/logo_wy_bw.png',
+		"background_white.jpg" = 'paperwork/reference_files/background_white.jpg',
+		"background_dark_fractal.png" = 'paperwork/reference_files/background_dark_fractal.png',
+		"colonialspacegruntsEZ.png" = 'paperwork/reference_files/colonialspacegruntsEZ.png',
 	)
 
 /datum/asset/spritesheet/chat

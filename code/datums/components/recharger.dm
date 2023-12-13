@@ -17,16 +17,21 @@
 		/obj/item/smartgun_battery,
 		/obj/item/device/helmet_visor/night_vision,
 	)
+	/// A list of items that have an overlay added to the recharger when the item is inserted
+	/// Formatted like so: list(/type/path = "overlay_name")
+	var/list/custom_overlay_items = list()
 	/// How much power (later multiplied by CELLRATE, which is 0.006) to recharge by per tick, should the parent not have an active_power_usage
-	var/charge_amount = 15000
+	var/charge_amount = 750
 	/// If not empty, the parent has unique overlays dependent on how charged the inserted item is.
 	/// Formatted like so: list("icon_state_name" = charge_upper_bound)
 	/// Highest charge should be 1st in the list, 2nd highest 2nd in list, etc.
 	var/list/charge_overlays = list()
-	/// Icon file for charge_overlays
-	var/charge_overlay_icon
+	/// Icon file for charge_overlay and custom_item_overlay
+	var/overlay_icon
 	/// Ref to the mutable appearance that we use as an overlay for the parent if we're using charge_overlays
 	var/mutable_appearance/charge_overlay
+	/// Ref to the possible secondary mutable appearance applied if an item present in custom_overlay_items is inserted
+	var/mutable_appearance/custom_item_overlay
 	/// If things can be inserted/removed while the parent is unanchored
 	var/unanchored_use = FALSE
 
@@ -34,8 +39,9 @@
 	valid_items,
 	override_charge_amount,
 	charge_overlays,
-	charge_overlay_icon,
+	overlay_icon,
 	unanchored_use,
+	custom_overlay_items = list(),
 )
 	. = ..()
 	if(!istype(parent, /obj/structure/machinery))
@@ -46,7 +52,7 @@
 	else
 		src.valid_items = typecacheof(default_valid_items)
 
-	src.charge_overlay_icon = charge_overlay_icon
+	src.overlay_icon = overlay_icon
 
 	if(charge_overlays)
 		src.charge_overlays = charge_overlays
@@ -62,11 +68,18 @@
 	if(!isnull(unanchored_use))
 		src.unanchored_use = unanchored_use
 
+	src.custom_overlay_items = custom_overlay_items
+
 /datum/component/recharger/Destroy(force, silent)
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(inserted_item)
 
 	if(charge_overlay)
+		var/obj/structure/machinery/machine_parent = parent
+		machine_parent.overlays -= charge_overlay
+		QDEL_NULL(charge_overlay)
+
+	if(custom_item_overlay)
 		var/obj/structure/machinery/machine_parent = parent
 		machine_parent.overlays -= charge_overlay
 		QDEL_NULL(charge_overlay)
@@ -135,13 +148,12 @@
 	recharging = FALSE
 	var/obj/obj_parent = parent
 	obj_parent.overlays -= charge_overlay
+	machine_parent.overlays -= custom_item_overlay
 
 /datum/component/recharger/proc/on_examine(datum/source, mob/examiner, list/examine_text)
-	examine_text += "There's [inserted_item ? "[inserted_item.name]" : "nothing"] in the charger."
+	examine_text += "There's \a [inserted_item ? "[inserted_item.name]" : "nothing"] in the charger."
 	if(recharging)
-		if(istype(inserted_item, /obj/item/cell))
-			var/obj/item/cell/powercell = inserted_item
-			examine_text += "Current charge: [powercell.charge] ([powercell.percent()]%)"
+		examine_text += "Current charge: [inserted_item.get_cell_charge()] ([inserted_item.get_cell_percent()]%)"
 
 /datum/component/recharger/proc/on_emp(datum/source, severity)
 	SIGNAL_HANDLER
@@ -162,15 +174,26 @@
 /datum/component/recharger/proc/update_overlay(datum/source)
 	SIGNAL_HANDLER
 
-	if(!length(charge_overlays) || !charge_overlay_icon)
+	if(!length(charge_overlays) || !overlay_icon)
 		return
 
 	var/obj/structure/machinery/machine_parent = parent
 
 	if(!charge_overlay)
-		charge_overlay = mutable_appearance(charge_overlay_icon)
+		charge_overlay = mutable_appearance(overlay_icon)
 
-	if(!inserted_item || machine_parent.inoperable())
+	if(!inserted_item)
+		charge_overlay.icon_state = ""
+		return
+
+	for(var/path in custom_overlay_items)
+		if(istype(inserted_item, path))
+			if(!custom_item_overlay)
+				custom_item_overlay = new(overlay_icon)
+			custom_item_overlay.icon_state = custom_overlay_items[path]
+			break
+
+	if(machine_parent.inoperable())
 		charge_overlay.icon_state = ""
 		return
 
@@ -186,13 +209,7 @@
 
 	machine_parent.overlays.Cut()
 	machine_parent.overlays += charge_overlay
-
-/* Can't think of a good way to add these. Not sure if I even should
-	if(istype(charging, /obj/item/weapon/gun/energy))
-		overlays += "recharger-taser"//todo make more generic I guess. It works for now -trii
-	else if(istype(charging, /obj/item/weapon/baton))
-		overlays += "recharger-baton"
-*/
+	machine_parent.overlays += custom_item_overlay
 
 /datum/component/recharger/process()
 	var/obj/structure/machinery/machine_parent = parent
@@ -205,7 +222,7 @@
 		return
 
 	if(SEND_SIGNAL(inserted_item, COMSIG_CELL_CHECK_FULL_CHARGE) & COMPONENT_CELL_CHARGE_NOT_FULL)
-		SEND_SIGNAL(inserted_item, COMSIG_CELL_ADD_CHARGE, charge_amount * CELLRATE)
+		SEND_SIGNAL(inserted_item, COMSIG_CELL_ADD_CHARGE, min(charge_amount, (inserted_item.get_cell_max_charge() * 0.1)))
 		update_power_use(USE_POWER_ACTIVE)
 	else
 		update_power_use(USE_POWER_IDLE)

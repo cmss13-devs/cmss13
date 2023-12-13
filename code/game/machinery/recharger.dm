@@ -22,13 +22,13 @@
 			"recharger-10" = 10,\
 			"recharger-power" = 0,\
 		),\
-		charge_overlay_icon = 'icons/obj/structures/props/stationobjs.dmi',\
+		overlay_icon = 'icons/obj/structures/props/stationobjs.dmi',\
+		custom_overlay_items = list(\
+			/obj/item/weapon/gun/energy = "recharger-taser",\
+			/obj/item/weapon/baton = "recharger-baton",\
+		),\
 	)
 	AddElement(/datum/element/simple_unwrench)
-
-/obj/structure/machinery/recharger/power_change()
-	..()
-	update_icon()
 
 /obj/structure/machinery/recharger/unanchored
 	anchored = FALSE

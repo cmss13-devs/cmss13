@@ -52,11 +52,7 @@
 				if(!(mob_to_act in target_mobs))
 					target_mobs += mob_to_act
 
-<<<<<<< HEAD
-	source_xeno.visible_message(SPAN_XENODANGER("[source_xeno] slashes its tail through the area in front of it!"), SPAN_XENODANGER("We slash our tail through the area in front of you!"))
-=======
-	source_xeno.visible_message(SPAN_XENODANGER("[source_xeno] slashes its claws through the area in front of it!"), SPAN_XENODANGER("You slash your claws through the area in front of you!"))
->>>>>>> upstream/master
+	source_xeno.visible_message(SPAN_XENODANGER("[source_xeno] slashes its claws through the area in front of it!"), SPAN_XENODANGER("We slash our claws through the area in front of us!"))
 	source_xeno.animation_attack_on(targetted_atom, 15)
 
 	source_xeno.emote("roar")

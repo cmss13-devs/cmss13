@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Some Xeno throws now immobilize their targets, ensuring they do not walk out of the toss mid-flight."

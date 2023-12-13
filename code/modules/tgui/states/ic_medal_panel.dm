@@ -20,6 +20,6 @@ GLOBAL_DATUM_INIT(ic_medal_state_check, /datum/ui_state/ic_medal_state_check, ne
 		if(!(src_object.user_locs[user] in user))
 			return UI_DISABLED
 	else if((dist > 1))
-			return UI_DISABLED
+		return UI_DISABLED
 
 	return UI_INTERACTIVE

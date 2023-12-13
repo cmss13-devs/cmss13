@@ -28,7 +28,7 @@
 	X.visible_message(SPAN_XENODANGER("[X] overruns [H], brutally trampling them underfoot!"), SPAN_XENODANGER("You brutalize [H] as you crush them underfoot!"))
 
 	H.apply_armoured_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE)
-	xeno_throw_human(H, X, X.dir, 3)
+	X.throw_carbon(H, X.dir, 3)
 
 	H.last_damage_data = create_cause_data(X.caste_type, X)
 	return
@@ -302,17 +302,11 @@
 	playsound(Xeno,"alien_tail_swipe", 50, 1)
 
 	Xeno.use_plasma(plasma_cost)
-	var/datum/launch_metadata/LM = new()
-	LM.target = get_step(get_step(Xeno, target_dir), target_dir)
-	LM.range = target_dist
-	LM.speed = SPEED_FAST
-	LM.thrower = Xeno
-	LM.spin = FALSE
-	LM.pass_flags = PASS_CRUSHER_CHARGE
-	LM.collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
-	LM.end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
 
-	Xeno.launch_towards(LM)
+	var/target = get_step(get_step(Xeno, target_dir), target_dir)
+	var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
+	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
+	Xeno.throw_atom(target, target_dist, SPEED_FAST, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
 
 	apply_cooldown()
 	return ..()

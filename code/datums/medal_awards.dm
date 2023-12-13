@@ -547,7 +547,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		ui.set_autoupdate(FALSE)
 
 /datum/ic_medal_panel/ui_state(mob/user)
-	return GLOB.not_incapacitated_state
+	return GLOB.ic_medal_state_check
 
 /datum/ic_medal_panel/ui_data(mob/user)
 	var/list/data = list()
@@ -625,7 +625,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(give_medal_award_prefilled(get_turf(user_machine), user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
 				GLOB.medal_recommendations -= recommendation
 				qdel(recommendation)
-				user_machine.visible_message(SPAN_NOTICE("[user_machine] prints a medal."))
+				user.visible_message(SPAN_NOTICE("[user_machine] prints a medal."))
 				. = TRUE
 
 		if("deny_medal")
@@ -633,7 +633,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			var/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations
 			if(!recommendation)
 				return
-			var/confirm = tgui_alert(user, "Are you sure you want to give a deny this medal recommendation?", "Medal Confirmation", list("Yes", "No"))
+			var/confirm = tgui_alert(user, "Are you sure you want to deny this medal recommendation?", "Medal Confirmation", list("Yes", "No"))
 			if(confirm != "Yes")
 				return
 			GLOB.medal_recommendations -= recommendation

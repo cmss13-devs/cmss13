@@ -52,7 +52,11 @@
 				if(!(mob_to_act in target_mobs))
 					target_mobs += mob_to_act
 
+<<<<<<< HEAD
 	source_xeno.visible_message(SPAN_XENODANGER("[source_xeno] slashes its tail through the area in front of it!"), SPAN_XENODANGER("We slash our tail through the area in front of you!"))
+=======
+	source_xeno.visible_message(SPAN_XENODANGER("[source_xeno] slashes its claws through the area in front of it!"), SPAN_XENODANGER("You slash your claws through the area in front of you!"))
+>>>>>>> upstream/master
 	source_xeno.animation_attack_on(targetted_atom, 15)
 
 	source_xeno.emote("roar")
@@ -67,6 +71,7 @@
 
 		current_mob.flick_attack_overlay(current_mob, "slash")
 		current_mob.apply_armoured_damage(get_xeno_damage_slash(current_mob, damage), ARMOR_MELEE, BRUTE, null, 20)
+		playsound(current_mob, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (source_xeno.mutation_type == PRAETORIAN_VANGUARD)
@@ -191,7 +196,7 @@
 			fling_distance *= 0.1
 		vanguard_user.visible_message(SPAN_XENODANGER("[vanguard_user] deals [target_atom] a massive blow, sending them flying!"), SPAN_XENOHIGHDANGER("We deal [target_atom] a massive blow, sending them flying!"))
 		vanguard_user.flick_attack_overlay(target_carbon, "slam")
-		xeno_throw_human(target_carbon, vanguard_user, get_dir(vanguard_user, target_atom), fling_distance)
+		vanguard_user.throw_carbon(target_atom, null, fling_distance)
 
 	apply_cooldown()
 	return ..()
@@ -508,7 +513,7 @@
 			if(H.mob_size >= MOB_SIZE_BIG)
 				continue
 
-			xeno_throw_human(H, X, facing, fling_dist)
+			X.throw_carbon(H, facing, fling_dist)
 
 			H.apply_effect(get_xeno_stun_duration(H, 0.5), WEAKEN)
 			new /datum/effects/xeno_slow(H, X, ttl = get_xeno_stun_duration(H, 25))

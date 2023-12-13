@@ -277,7 +277,7 @@
 	Mob.apply_damage(15,BRUTE)
 	if(ishuman(Mob))
 		var/mob/living/carbon/human/Human = Mob
-		xeno_throw_human(Human, Xeno, get_dir(Xeno, Human), 1)
+		Xeno.throw_carbon(Human, distance = 1)
 		Human.apply_effect(1, WEAKEN)
 	else
 		Mob.apply_effect(1, WEAKEN)

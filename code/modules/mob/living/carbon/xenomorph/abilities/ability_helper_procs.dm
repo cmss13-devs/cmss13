@@ -171,23 +171,6 @@
 		T.update_xeno_hostile_hud()
 	to_chat(H, SPAN_XENOHIGHDANGER("We can move again!"))
 
-/proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/xenomorph/X, direction, distance, shake_camera = TRUE)
-	if (!istype(H) || !istype(X) ||  !direction || !distance)
-		return
-
-	var/turf/T = get_turf(H)
-	var/turf/temp = get_turf(H)
-	for (var/x in 0 to distance)
-		temp = get_step(T, direction)
-		if (!temp)
-			break
-		T = temp
-
-	H.throw_atom(T, distance, SPEED_VERY_FAST, X, TRUE)
-	if(!shake_camera)
-		return
-	shake_camera(H, 10, 1)
-
 /mob/living/carbon/xenomorph/proc/zoom_in()
 	if(stat || resting)
 		if(is_zoomed)

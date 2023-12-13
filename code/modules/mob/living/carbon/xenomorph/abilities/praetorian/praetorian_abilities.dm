@@ -36,7 +36,7 @@
 
 	var/buff_duration = 12
 	var/damage = 40
-	var/shield_regen_threshold = 2
+	var/shield_regen_threshold = 1
 
 	var/activated_once = FALSE
 	var/time_until_timeout = 20
@@ -54,8 +54,8 @@
 	xeno_cooldown = 120
 
 	// Root config
-	var/root_duration_unbuffed = 5
-	var/root_duration_buffed = 12.5
+	var/root_duration_unbuffed = 1 SECONDS
+	var/root_duration_buffed = 2.5 SECONDS
 
 	// Fling config
 	var/fling_dist_unbuffed = 3

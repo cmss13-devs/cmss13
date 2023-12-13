@@ -794,7 +794,7 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	if(!ishuman(usr))
+	if(!ishuman(usr) || usr.stat)
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 

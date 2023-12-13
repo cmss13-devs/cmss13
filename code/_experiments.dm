@@ -3,9 +3,7 @@
 // Any flag you see here can be flipped with the `-D` CLI argument.
 // For example, if you want to enable EXPERIMENT_MY_COOL_FEATURE, compile with -DEXPERIMENT_MY_COOL_FEATURE
 
-#if DM_VERSION < 515
-
-#elif defined(UNIT_TESTS)
+#if defined(UNIT_TESTS)
 
 #endif
 

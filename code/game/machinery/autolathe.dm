@@ -79,7 +79,7 @@
 							recipe.resources[material] = I.matter[material] //Doesn't take more if it's just a sheet or something. Get what you put in.
 						else
 							recipe.resources[material] = round(I.matter[material]*1.25) // More expensive to produce than they are to recycle.
-				qdel(I)
+			QDEL_NULL(I)
 
 	//Create parts for lathe.
 	for(var/component in components)

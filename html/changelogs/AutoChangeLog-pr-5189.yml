@@ -1,0 +1,4 @@
+author: "NateDross"
+delete-after: True
+changes:
+  - bugfix: "fixed hardhat action item icon"

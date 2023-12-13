@@ -111,7 +111,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 		if(isqueen(user))
 			if(timing && GLOB.bomb_set)
-				user.visible_message(SPAN_INFO("[user] begins covering \the [src] with resin."), SPAN_INFO("You start regurgitating and overflowing the \the [src] with resin... stopping the electronics from working, this will take some time..."))
+				user.visible_message(SPAN_INFO("[user] begins engulfing \the [src] with resin."), SPAN_INFO("You start regurgitating and engulfing the \the [src] with resin... stopping the electronics from working, this will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 					disable()
 			return
@@ -337,7 +337,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		//xenos part
 		var/warning
 		if(timer_warning & NUKE_SHOW_TIMER_HALF)
-			warning = "A shiver goes down our carapace as we feel the approaching end... the hive killer is halfway through it's preparation cycle!"
+			warning = "A shiver goes down our carapace as we feel the approaching end... the hive killer is halfway through its preparation cycle!"
 		else if(timer_warning & NUKE_SHOW_TIMER_MINUTE)
 			warning = "Every sense in our form is screaming... the hive killer is almost ready to trigger!"
 		else
@@ -582,7 +582,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				hive = GLOB.hive_datum[hivenumber]
 				if(!length(hive.totalXenos))
 					return
-				xeno_announcement(SPAN_XENOANNOUNCE("We get a sense of impending doom...the hive killer is ready to be activated."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("We get a sense of impending doom... the hive killer is ready to be activated."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 			return
 
 		announcement_helper("DECRYPTION IN [round(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
@@ -595,7 +595,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		//xenos part
 		var/warning = "We are almost out of time, STOP THEM."
 		if(timer_warning & NUKE_DECRYPT_SHOW_TIMER_HALF)
-			warning = "The hive grows restless! its halfway done.."
+			warning = "The Hive grows restless! it's halfway done..."
 
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)

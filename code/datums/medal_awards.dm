@@ -276,7 +276,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
 		return
 
-	GLOB.ic_medals_panel.user_locs[user] = get_turf(printer)
+	GLOB.ic_medals_panel.user_locs[user] = printer
 	GLOB.ic_medals_panel.tgui_interact(user)
 
 
@@ -489,7 +489,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 		return FALSE
 
 	// Write a citation
-	var/reason = strip_html(input("Why does this person deserve a medal?", "Medal Recommendation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	var/reason = strip_html(tgui_input_text(recommendation_giver, "Why does this person deserve a medal?", "Medal Recommendation", null, MAX_PAPER_MESSAGE_LEN, TRUE), MAX_PAPER_MESSAGE_LEN)
 	if(!reason)
 		return FALSE
 
@@ -610,12 +610,13 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(!user_locs[user])
 				return
 			if(recommendation.recipient_name == user.real_name)
+				to_chat(user, SPAN_WARNING("You cannot give medals to yourself!"))
 				return
 
 			var/choice = tgui_alert(user, "Would you like to change the medal text?", "Medal Citation", list("Yes", "No"))
 			var/medal_citation = recommendation.reason
 			if(choice == "Yes")
-				medal_citation = strip_html(input("What should the medal citation read?", "Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+				medal_citation = strip_html(tgui_input_text(user, "What should the medal citation read?", "Medal Citation", null, MAX_PAPER_MESSAGE_LEN, TRUE), MAX_PAPER_MESSAGE_LEN)
 
 			var/confirm_choice = tgui_alert(user, "Are you sure you want to give a medal to [recommendation.recipient_name]?", "Medal Confirmation", list("Yes", "No"))
 			if(confirm_choice != "Yes")
@@ -631,6 +632,9 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			var/recommendation_ref = params["ref"]
 			var/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations
 			if(!recommendation)
+				return
+			var/confirm = tgui_alert(user, "Are you sure you want to give a deny this medal recommendation?", "Medal Confirmation", list("Yes", "No"))
+			if(confirm != "Yes")
 				return
 			GLOB.medal_recommendations -= recommendation
 			qdel(recommendation)

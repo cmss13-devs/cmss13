@@ -240,7 +240,7 @@
 
 /datum/equipment_preset/fun/santa
 	name = "Fun - Santa"
-	paygrade = "C"
+	paygrade = PAY_SHORT_CIV
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
 	faction = FACTION_MARINE
@@ -338,7 +338,7 @@
 
 /datum/equipment_preset/fun/van_bandolier
 	name = "Fun - Big Game Hunter"
-	paygrade = "CCMO"
+	paygrade = PAY_SHORT_CCMO
 	uses_special_name = TRUE
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
@@ -440,7 +440,7 @@
 
 	assignment = "Monkey Marine"
 	rank = "Monkey Marine"
-	paygrade = "ME2"
+	paygrade = PAY_SHORT_ME2
 
 /datum/equipment_preset/fun/monkey/marine/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -457,7 +457,7 @@
 
 	assignment = "Monkey Soldier"
 	rank = "Monkey Soldier"
-	paygrade = "UE1"
+	paygrade = PAY_SHORT_UE1
 
 /datum/equipment_preset/fun/monkey/soldier/get_random_name(mob/living/carbon/human/new_human)
 	return new_human.gender == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp)

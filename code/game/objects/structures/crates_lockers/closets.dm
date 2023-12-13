@@ -158,10 +158,15 @@
 
 
 /obj/structure/closet/proc/take_damage(damage)
+	if(health <= 0)
+		return
+
 	health = max(health - damage, 0)
 	if(health <= 0)
-		for(var/atom/movable/A as anything in src)
-			A.forceMove(src.loc)
+		for(var/atom/movable/movable as anything in src)
+			if(!loc)
+				break
+			movable.forceMove(loc)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 		qdel(src)
 
@@ -195,7 +200,7 @@
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
-		visible_message(SPAN_DANGER("[user] destroys the [src]. "))
+		visible_message(SPAN_DANGER("[user] destroys [src]."))
 		for(var/atom/movable/A as mob|obj in src)
 			A.forceMove(src.loc)
 		qdel(src)

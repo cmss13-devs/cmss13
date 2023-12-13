@@ -262,7 +262,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(CO_surv_job))
 		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
 
-	if(SSnightmare.get_scenario_value("predator_round"))
+	if(SSnightmare.get_scenario_value("predator_round") && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
@@ -366,6 +366,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 * survivors and the number of roundstart Squad Rifleman slots.
 */
 /datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
+	if(!J)
+		return 0
 	if(GLOB.ROLES_MARINES.Find(J.title))
 		return 1
 	if(GLOB.ROLES_XENO.Find(J.title))

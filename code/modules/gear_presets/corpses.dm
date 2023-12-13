@@ -338,7 +338,7 @@
 	name = "Corpse - Corporate Liaison"
 	assignment = "Corporate Liaison"
 	xenovictim = TRUE
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_WYC2
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -430,7 +430,7 @@
 	idtype = /obj/item/card/id/general
 	assignment = "Bridge Officer"
 	uses_special_name = TRUE
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_WYC2
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -637,7 +637,7 @@
 /datum/equipment_preset/corpse/wy/manager
 	name = "Corpse - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WYC7"
+	paygrade = PAY_SHORT_WYC6
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
 	rank = FACTION_WY
@@ -800,7 +800,7 @@
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrade = "WEY-GOON"
+	paygrade = PAY_SHORT_CPO
 	skills = /datum/skills/MP
 
 /datum/equipment_preset/corpse/pmc/goon/load_gear(mob/living/carbon/human/new_human)
@@ -822,7 +822,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
-	paygrade = "WEY-GOON-L"
+	paygrade = PAY_SHORT_CSPO
 
 /datum/equipment_preset/corpse/pmc/goon/lead/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
@@ -985,7 +985,7 @@
 	name = "Corpse - USCM Reconnaissance Spotter"
 	assignment = "Reconnaissance Spotter"
 	xenovictim = FALSE
-	paygrade = "ME5"
+	paygrade = PAY_SHORT_ME5
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)

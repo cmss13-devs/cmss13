@@ -550,6 +550,7 @@
 			to_chat(src, SPAN_WARNING("You can't put \the [interact_item.name] on [target_mob]!"))
 			return
 		visible_message(SPAN_NOTICE("[src] tries to put \the [interact_item.name] on [target_mob]."), null, null, 5)
+		log_interact(src, target_mob, "[key_name(src)] attempted to put [interact_item.name] on [key_name(target_mob)]'s ([slot_to_process]).")
 		if(do_after(src, get_strip_delay(src, target_mob), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(interact_item == get_active_hand() && !target_mob.get_item_by_slot(slot_to_process) && Adjacent(target_mob))
 				if(interact_item.flags_item & WIELDED) //to prevent re-wielding it during the do_after
@@ -558,6 +559,7 @@
 					drop_inv_item_on_ground(interact_item)
 					if(interact_item && !QDELETED(interact_item)) //Might be self-deleted?
 						target_mob.equip_to_slot_if_possible(interact_item, slot_to_process, 1, 0, 1, 1)
+						log_interact(src, target_mob, "[key_name(src)] put [interact_item.name] on [key_name(target_mob)]'s ([slot_to_process]) successfully.")
 						if(ishuman(target_mob) && target_mob.stat == DEAD)
 							var/mob/living/carbon/human/human_target = target_mob
 							human_target.disable_lights() // take that powergamers -spookydonut

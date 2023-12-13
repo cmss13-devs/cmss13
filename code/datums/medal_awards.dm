@@ -547,7 +547,22 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		ui.set_autoupdate(FALSE)
 
 /datum/ic_medal_panel/ui_state(mob/user)
-	return GLOB.ic_medal_state_check
+	. = GLOB.not_incapacitated_state
+
+	if(. != UI_INTERACTIVE)
+		return .
+
+	if(!src_object.user_locs[user])
+		return UI_CLOSE
+	var/dist = get_dist(src_object.user_locs[user], user)
+
+	if(istype(src_object.user_locs[user], /obj/item))
+		if(!(src_object.user_locs[user] in user))
+			return UI_DISABLED
+	else if((dist > 1))
+		return UI_DISABLED
+
+	return UI_INTERACTIVE
 
 /datum/ic_medal_panel/ui_data(mob/user)
 	var/list/data = list()

@@ -210,6 +210,7 @@
 	anchored = TRUE
 	locked = TRUE
 
+
 /obj/structure/closet/secure_closet/brig/prison_uni/Initialize()
 	. = ..()
 	new /obj/item/clothing/shoes/orange(src)

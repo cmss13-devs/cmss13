@@ -245,7 +245,7 @@
 
 	var/dx = p_x + aim_turf.x * 32 - source_turf.x * 32 // todo account for firer offsets
 	var/dy = p_y + aim_turf.y * 32 - source_turf.y * 32
-	angle = Get_Pixel_Angle(dx, dy)
+	angle = delta_to_angle(dx, dy)
 
 /obj/projectile/process(delta_time)
 	. = PROC_RETURN_SLEEP
@@ -287,7 +287,7 @@
 
 	//Change the bullet angle to its visual path
 
-	var/vis_angle = Get_Pixel_Angle(pixel_x_target - pixel_x_source, pixel_y_target - pixel_y_source)
+	var/vis_angle = delta_to_angle(pixel_x_target - pixel_x_source, pixel_y_target - pixel_y_source)
 	var/matrix/rotate = matrix()
 	rotate.Turn(vis_angle)
 	apply_transform(rotate)

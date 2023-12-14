@@ -99,6 +99,7 @@
 		var/atom/movable/big_subject = subject
 		. += (big_subject.bound_height  - world.icon_size) / 2
 
+/// Calculate the angle between two atoms. Uses north-clockwise convention: NORTH = 0, EAST = 90, etc.
 /proc/Get_Angle(atom/start, atom/end)//For beams.
 	if(!start || !end)
 		return 0
@@ -112,13 +113,13 @@
 			return 0 //Atoms are not on turfs.
 	var/dy = get_pixel_position_y(end) - get_pixel_position_y(start)
 	var/dx = get_pixel_position_x(end) - get_pixel_position_x(start)
-	. = arctan(dy, dx)
+	return delta_to_angle(dx, dy)
+
+/// Calculate the angle produced by a pair of x and y deltas. Uses north-clockwise convention: NORTH = 0, EAST = 90, etc.
+/proc/delta_to_angle(dx, dy)
+	. = arctan(dy, dx) //y-then-x results in north-clockwise convention: https://en.wikipedia.org/wiki/Atan2#East-counterclockwise,_north-clockwise_and_south-clockwise_conventions,_etc.
 	if(. < 0)
 		. += 360
-
-/proc/Get_Pixel_Angle(dx, dy)//for getting the angle when animating something's pixel_x and pixel_y
-	var/da = arctan(dy, dx) //y-then-x results in north-clockwise convention: https://en.wikipedia.org/wiki/Atan2#East-counterclockwise,_north-clockwise_and_south-clockwise_conventions,_etc.
-	return (da >= 0 ? da : da + 360)
 
 /proc/angle_to_dir(angle)
 	switch(angle) //diagonal directions get priority over straight directions in edge cases

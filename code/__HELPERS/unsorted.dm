@@ -112,12 +112,8 @@
 			return 0 //Atoms are not on turfs.
 	var/dy = get_pixel_position_y(end) - get_pixel_position_y(start)
 	var/dx = get_pixel_position_x(end) - get_pixel_position_x(start)
-	if(!dy)
-		return (dx >= 0) ? 90 : 270
-	. = arctan(dx / dy)
-	if(dy < 0)
-		. += 180
-	else if(dx < 0)
+	. = arctan(dy, dx)
+	if(. < 0)
 		. += 360
 
 /proc/Get_Pixel_Angle(dx, dy)//for getting the angle when animating something's pixel_x and pixel_y

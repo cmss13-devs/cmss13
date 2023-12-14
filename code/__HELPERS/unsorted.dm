@@ -121,7 +121,7 @@
 		. += 360
 
 /proc/Get_Pixel_Angle(dx, dy)//for getting the angle when animating something's pixel_x and pixel_y
-	var/da = (90 - Atan2(dx, dy))
+	var/da = (90 - arctan(dx, dy))
 	return (da >= 0 ? da : da + 360)
 
 /proc/angle_to_dir(angle)

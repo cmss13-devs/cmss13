@@ -8,12 +8,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 // MATH DEFINES
 
-#define Atan2(x, y) (!x && !y ? 0 : \
-						(y >= 0 ? \
-							arccos(x / sqrt(x*x + y*y)) : \
-							-(arccos(x / sqrt(x*x + y*y))) \
-						) \
-					)
 #define Ceiling(x) (-round(-x))
 #define Clamp(val, min_val, max_val) (max(min_val, min(val, max_val)))
 #define CLAMP01(x) (clamp(x, 0, 1))
@@ -78,7 +72,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 	// Convert to polar coordinates
 	var/radius = sqrt(relative_coords[1]**2 + relative_coords[2]**2)
-	var/phi = Atan2(relative_coords[1], relative_coords[2])
+	var/phi = arctan(relative_coords[1], relative_coords[2])
 
 	// Rotate the point around the axis
 	phi += degrees

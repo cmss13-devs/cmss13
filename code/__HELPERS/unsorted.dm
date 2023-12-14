@@ -121,7 +121,7 @@
 		. += 360
 
 /proc/Get_Pixel_Angle(dx, dy)//for getting the angle when animating something's pixel_x and pixel_y
-	var/da = (90 - arctan(dx, dy))
+	var/da = arctan(dy, dx) //y-then-x results in north-clockwise convention: https://en.wikipedia.org/wiki/Atan2#East-counterclockwise,_north-clockwise_and_south-clockwise_conventions,_etc.
 	return (da >= 0 ? da : da + 360)
 
 /proc/angle_to_dir(angle)

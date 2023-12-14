@@ -12879,6 +12879,11 @@
 	pixel_x = -2;
 	req_one_access_txt = "6"
 	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 4;
+	pixel_x = -17;
+	pixel_y = -6
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orangecorner"
@@ -64090,15 +64095,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
-"rna" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/almayer/ares{
-	pixel_x = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/shipboard/brig/main_office)
 "rne" = (
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)

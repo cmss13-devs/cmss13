@@ -433,18 +433,7 @@
 	pre_pounce_effects()
 
 	X.pounce_distance = get_dist(X, A)
-
-	var/datum/launch_metadata/LM = new()
-	LM.target = A
-	LM.range = distance
-	LM.speed = throw_speed
-	LM.thrower = X
-	LM.spin = FALSE
-	LM.pass_flags = pounce_pass_flags
-	LM.collision_callbacks = pounce_callbacks
-
-	X.launch_towards(LM)
-
+	X.throw_atom(A, distance, throw_speed, X, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks)
 	X.update_icons()
 
 	additional_effects_always()
@@ -568,6 +557,13 @@
 	var/obj/effect/alien/weeds/alien_weeds = locate() in src
 	if(!alien_weeds)
 		to_chat(X, SPAN_XENOWARNING("You can only shape on weeds. Find some resin before you start building!"))
+		return FALSE
+
+	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
+	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
+	var/obj/structure/stairs/staircase = locate() in src
+	if(staircase)
+		to_chat(X, SPAN_XENOWARNING("You cannot make a hole beneath a staircase!"))
 		return FALSE
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)

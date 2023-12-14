@@ -4,7 +4,8 @@
     "map_file": "Corsat.dmm",
     "environment_traits": {
         "Lockdown": true,
-        "COLD": true
+        "COLD": true,
+        "InSpace": true
     },
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/corsat",

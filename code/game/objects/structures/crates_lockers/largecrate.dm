@@ -251,8 +251,80 @@
 	name = "blue barrel"
 	desc = "A blue storage barrel."
 	icon_state = "barrel_blue"
+	var/strap_overlay = "+straps"
 	parts_type = /obj/item/stack/sheet/metal
 	unpacking_sound = 'sound/effects/metalhit.ogg'
+	var/straps = FALSE
+
+/obj/structure/largecrate/random/barrel/true_random
+	name = "barrel"
+	desc = "A barrel."
+	icon_state = "barrel_recolorable"
+	desc_lore = "From the future."
+	var/cap_doodad_state = ""
+	var/center_doodad_state = ""
+	var/color_override = null
+
+
+GLOBAL_LIST_EMPTY(rbarrel_cap_states) // Will be set up in generate_barrel_states
+GLOBAL_LIST_INIT(rbarrel_center_states, generate_barrel_states())
+GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOUR_SILVER,
+	COLOUR_FLOORTILE_GRAY,
+	COLOUR_MAROON,
+	COLOUR_SOFT_RED,
+	COLOUR_LIGHT_GRAYISH_RED,
+	COLOUR_VERY_SOFT_YELLOW,
+	COLOUR_OLIVE,
+	COLOUR_DARK_MODERATE_LIME_GREEN,
+	COLOUR_TEAL,
+	COLOUR_MODERATE_BLUE,
+	COLOUR_PURPLE,
+	COLOUR_STRONG_VIOLET,
+	COLOUR_BEIGE,
+	COLOUR_DARK_MODERATE_ORANGE,
+	COLOUR_BROWN,
+	COLOUR_DARK_BROWN))
+
+/proc/generate_barrel_states()
+	var/list/rbarrel_center_states = list()
+	var/icon/icon = new('icons/obj/structures/crates.dmi')
+	var/list/icon_list = icon_states(icon)
+	for(var/state in icon_list)
+		if(findtext(state,"+cap"))
+			GLOB.rbarrel_cap_states.Add(state)
+		if(findtext(state,"+center"))
+			rbarrel_center_states.Add(state)
+	// We are returning rbarrel_center_states (rather than setting GLOB) because we are called by the global initializer to set it
+	return rbarrel_center_states
+
+/obj/structure/largecrate/random/barrel/true_random/Initialize()
+	. = ..()
+
+	var/image/center_coloring = image(icon, src,"+_center")
+
+	if(!color_override)
+		center_coloring.color = pick(GLOB.rbarrel_color_list)
+
+	center_coloring.appearance_flags = RESET_COLOR|KEEP_APART
+	overlays += center_coloring
+	if(prob(25))
+		cap_doodad_state = pick(GLOB.rbarrel_cap_states)
+		overlays += image(icon,src,cap_doodad_state)
+	if(prob(50))
+		center_doodad_state = pick(GLOB.rbarrel_center_states)
+		overlays += image(icon,src,center_doodad_state)
+
+/obj/structure/largecrate/random/barrel/Initialize()
+	. = ..()
+	if(overlays)
+		overlays.Cut()
+	if(straps)
+		overlays += image(icon,icon_state = "+straps")
+
+/obj/structure/largecrate/random/barrel/unpack()
+	if(overlays)
+		overlays.Cut()
+	. = ..()
 
 /obj/structure/largecrate/random/barrel/blue
 	name = "blue barrel"
@@ -263,6 +335,7 @@
 	name = "red barrel"
 	desc = "A red storage barrel."
 	icon_state = "barrel_red"
+	straps = TRUE//the original sprite had straps, anyway, this is a harmless instance
 
 /obj/structure/largecrate/random/barrel/green
 	name = "green barrel"

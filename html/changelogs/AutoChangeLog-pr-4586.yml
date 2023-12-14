@@ -1,8 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscadd: "Added a lot's of food boxes for that hold the basic ingredients for cooking."
-  - rscadd: "Added a file to handle the fridges in almayer kitchen."
-  - rscadd: "Added a vendor in the kitchen that sell boxes of ingredients."
-  - rscadd: "Added a a food crate called surplus boxes ingredient containing random boxes of ingredients."
-  - rscadd: "Added a version of this crate that will be freely given via the ASR system."

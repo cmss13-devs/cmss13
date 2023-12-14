@@ -237,38 +237,39 @@
 	// Replace the digits in the current icon state with `new_look`. (E.g. "L6" -> "L2")
 	icon_state = digits.Replace(icon_state, new_look)
 
-/obj/item/clothing/suit/storage/marine/padded
+/obj/item/clothing/suit/storage/marine/medium/padded
 	name = "M3 pattern padded marine armor"
 	icon_state = "1"
 	specialty = "M3 pattern padded marine"
 
-/obj/item/clothing/suit/storage/marine/padless
+/obj/item/clothing/suit/storage/marine/medium/padless
 	name = "M3 pattern padless marine armor"
 	icon_state = "2"
 	specialty = "M3 pattern padless marine"
 
-/obj/item/clothing/suit/storage/marine/padless_lines
+/obj/item/clothing/suit/storage/marine/medium/padless_lines
 	name = "M3 pattern ridged marine armor"
 	icon_state = "3"
 	specialty = "M3 pattern ridged marine"
 
-/obj/item/clothing/suit/storage/marine/carrier
+/obj/item/clothing/suit/storage/marine/medium/carrier
 	name = "M3 pattern carrier marine armor"
 	icon_state = "4"
 	specialty = "M3 pattern carrier marine"
 
-/obj/item/clothing/suit/storage/marine/skull
+/obj/item/clothing/suit/storage/marine/medium/skull
 	name = "M3 pattern skull marine armor"
 	icon_state = "5"
 	specialty = "M3 pattern skull marine"
 
-/obj/item/clothing/suit/storage/marine/smooth
+/obj/item/clothing/suit/storage/marine/medium/smooth
 	name = "M3 pattern smooth marine armor"
 	icon_state = "6"
 	specialty = "M3 pattern smooth marine"
 
-/obj/item/clothing/suit/storage/marine/rto
+/obj/item/clothing/suit/storage/marine/medium/rto
 	icon_state = "io"
+	armor_variation = 0
 	name = "\improper M4 pattern marine armor"
 	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches."
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
@@ -277,7 +278,7 @@
 	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
 
-/obj/item/clothing/suit/storage/marine/rto/intel
+/obj/item/clothing/suit/storage/marine/medium/rto/intel
 	name = "\improper XM4 pattern intelligence officer armor"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/marine/officer/intel)
 	specialty = "XM4 pattern intel"
@@ -447,15 +448,17 @@
 
 	UnregisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP)
 
-/obj/item/clothing/suit/storage/marine/leader
+/obj/item/clothing/suit/storage/marine/medium/leader
 	name = "\improper B12 pattern marine armor"
 	desc = "A lightweight suit of carbon fiber body armor built for quick movement. Designed in a lovely forest green. Use it to toggle the built-in flashlight."
 	icon_state = "7"
+	armor_variation = 0
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "B12 pattern marine"
+	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"
@@ -470,6 +473,43 @@
 
 /obj/item/clothing/suit/storage/marine/medium
 	armor_variation = 6
+	light_power = 4
+
+/obj/item/clothing/suit/storage/marine/medium/padded
+	name = "M3 pattern padded marine armor"
+	icon_state = "1"
+	armor_variation = 0
+	specialty = "M3 pattern padded marine"
+
+/obj/item/clothing/suit/storage/marine/medium/padless
+	name = "M3 pattern padless marine armor"
+	icon_state = "2"
+	armor_variation = 0
+	specialty = "M3 pattern padless marine"
+
+/obj/item/clothing/suit/storage/marine/medium/padless_lines
+	name = "M3 pattern ridged marine armor"
+	icon_state = "3"
+	armor_variation = 0
+	specialty = "M3 pattern ridged marine"
+
+/obj/item/clothing/suit/storage/marine/medium/carrier
+	name = "M3 pattern carrier marine armor"
+	icon_state = "4"
+	armor_variation = 0
+	specialty = "M3 pattern carrier marine"
+
+/obj/item/clothing/suit/storage/marine/medium/skull
+	name = "M3 pattern skull marine armor"
+	icon_state = "5"
+	armor_variation = 0
+	specialty = "M3 pattern skull marine"
+
+/obj/item/clothing/suit/storage/marine/medium/smooth
+	name = "M3 pattern smooth marine armor"
+	icon_state = "6"
+	armor_variation = 0
+	specialty = "M3 pattern smooth marine"
 
 /obj/item/clothing/suit/storage/marine/light
 	name = "\improper M3-L pattern light armor"
@@ -591,6 +631,8 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+	light_power = 4
+	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/heavy/padded
 	icon_state = "H1"

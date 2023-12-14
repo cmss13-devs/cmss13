@@ -537,7 +537,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 
 /datum/ic_medal_panel
 	var/name = "Medals Panel"
-	var/list/user_locs = list()
+	var/list/datum/weakref/user_locs = list()
 
 /datum/ic_medal_panel/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -549,7 +549,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 /datum/ic_medal_panel/ui_state(mob/user)
 	var/datum/weakref/user_reference = WEAKREF(user)
 	var/datum/weakref/loc_reference = user_locs[user_reference]
-	if(istype(loc_reference.resolve(), /obj/item))
+	if(istype(loc_reference?.resolve(), /obj/item))
 		return GLOB.not_incapacitated_and_inventory_state
 	else
 		return GLOB.not_incapacitated_and_adjacent_state
@@ -557,8 +557,8 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 /datum/ic_medal_panel/ui_host(mob/user)
 	. = ..()
 	var/datum/weakref/user_reference = WEAKREF(user)
-	if(user_locs[user_reference])
-		. = user_locs[user_reference]
+	var/datum/weakref/loc_reference = user_locs[user_reference]
+	. = loc_reference?.resolve()
 
 /datum/ic_medal_panel/ui_data(mob/user)
 	var/list/data = list()
@@ -602,14 +602,15 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		return
 
 	var/datum/weakref/user_ref = WEAKREF(user)
+	var/datum/weakref/loc_ref = user_locs[user_ref]
+	var/atom/actual_loc = loc_ref?.resolve()
+	if(!actual_loc)
+		return
 
 	switch(action)
 		if("grant_new_medal")
-			if(!user_locs[user_ref])
-				return
-			if(give_medal_award(get_turf(user_locs[user])))
-				var/atom/user_machine = user_locs[user]
-				user_machine.visible_message(SPAN_NOTICE("[user_machine] prints a medal."))
+			if(give_medal_award(get_turf(actual_loc)))
+				actual_loc.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))
 			. = TRUE
 
 		if("approve_medal")
@@ -619,8 +620,6 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 				return
 			var/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations
 			if(!recommendation)
-				return
-			if(!user_locs[user_ref])
 				return
 			if(recommendation.recipient_name == user.real_name)
 				to_chat(user, SPAN_WARNING("You cannot give medals to yourself!"))
@@ -634,13 +633,11 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			var/confirm_choice = tgui_alert(user, "Are you sure you want to give a medal to [recommendation.recipient_name]?", "Medal Confirmation", list("Yes", "No"))
 			if(confirm_choice != "Yes")
 				return
-			var/datum/weakref/loc_ref = user_locs[user_ref]
-			var/atom/user_machine = loc_ref.resolve()
 
-			if(give_medal_award_prefilled(get_turf(user_machine), user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
+			if(give_medal_award_prefilled(get_turf(actual_loc), user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
 				GLOB.medal_recommendations -= recommendation
 				qdel(recommendation)
-				user.visible_message(SPAN_NOTICE("[user_machine] prints a medal."))
+				user.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))
 				. = TRUE
 
 		if("deny_medal")
@@ -657,9 +654,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 
 /datum/ic_medal_panel/ui_close(mob/user)
 	. = ..()
-	var/datum/weakref/user_ref = WEAKREF(user)
-	if(user_locs[user_ref])
-		user_locs[user_ref] = null
+	user_locs -= WEAKREF(user)
 
 /datum/ic_medal_panel/ui_assets(mob/user)
 	return list(

@@ -1,6 +1,0 @@
-author: "InsaneRed"
-delete-after: True
-changes:
-  - balance: "Vanguard dash now restores your shield if you hit ANYONE instead of 2 people."
-  - balance: "Vanguard buffed root now roots you for 2.5 seconds, unbuffed for 1 second"
-  - qol: "Vanguard's pierce has now a hit sound for better feedback"

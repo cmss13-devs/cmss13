@@ -1,6 +1,0 @@
-author: "Nanu308"
-delete-after: True
-changes:
-  - balance: "Adjusted how much light is given by standard marine armor."
-  - balance: "Light Armor remains the same range & power, Medium armor now gives a bit more light, Leader B12 armor gives a bit more light & range, M4 (rto) gives a bit more light, and Heavy armor give the most light and range compared to before."
-  - code_imp: "Changed inheritance for medium armor as the different sprite versions were laid directly under the parent type instead of the medium one and so forth."

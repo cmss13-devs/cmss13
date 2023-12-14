@@ -57,10 +57,11 @@
 		return
 
 	set_light_on(toggle_on)
-	if(user == loc)
-		user.update_inv_head()
 
 	update_icon()
+
+	if(user == loc)
+		user.update_inv_head()
 
 	for(var/datum/action/current_action as anything in actions)
 		current_action.update_button_icon()

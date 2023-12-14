@@ -320,11 +320,11 @@
 
 			targets += target
 	if (LAZYLEN(targets) == 1)
-		xeno.balloon_alert(xeno, "Our tail catches and slows one target!", text_color = "#51a16c")
+		xeno.balloon_alert(xeno, "our tail catches and slows one target!", text_color = "#51a16c")
 	else if (LAZYLEN(targets) == 2)
-		xeno.balloon_alert(xeno, "Our tail catches and roots two targets!", text_color = "#51a16c")
+		xeno.balloon_alert(xeno, "our tail catches and roots two targets!", text_color = "#51a16c")
 	else if (LAZYLEN(targets) >= 3)
-		xeno.balloon_alert(xeno, "Our tail catches and stuns [LAZYLEN(targets)] targets!", text_color = "#51a16c")
+		xeno.balloon_alert(xeno, "our tail catches and stuns [LAZYLEN(targets)] targets!", text_color = "#51a16c")
 
 	for (var/mob/living/carbon/target in targets)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno]'s hooked tail coils itself around [target]!"), SPAN_XENODANGER(" hooked tail coils itself around [target]!"))

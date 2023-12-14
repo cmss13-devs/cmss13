@@ -713,7 +713,7 @@
 			return FALSE
 		var/obj/effect/alien/weeds/alien_weeds = locate() in T
 		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
-			to_chat(X, SPAN_WARNING("We can only shape on [lowertext(GLOB.hive_datum[X.hivenumber].prefix)]hive weeds. we must find a hive node or core before we start building!"))
+			to_chat(X, SPAN_WARNING("We can only shape on [lowertext(GLOB.hive_datum[X.hivenumber].prefix)]hive weeds. We must find a hive node or core before we start building!"))
 			qdel(tem)
 			return FALSE
 		if(T.density)

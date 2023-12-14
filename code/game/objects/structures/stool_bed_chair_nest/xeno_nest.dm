@@ -332,7 +332,7 @@
 
 /obj/structure/bed/nest/attack_animal(mob/living/M as mob)
 	M.visible_message(SPAN_DANGER("\The [M] tears at \the [src]!"), \
-		SPAN_DANGER("We tear at \the [src]."))
+		SPAN_DANGER("You tear at \the [src]."))
 	playsound(loc, "alien_resin_break", 25)
 	health -= 40
 	healthcheck()

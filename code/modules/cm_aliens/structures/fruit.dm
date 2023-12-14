@@ -248,7 +248,7 @@
 
 //Spore
 /obj/effect/alien/resin/fruit/spore
-	desc = "A fruit that can be eaten to reenergize our cooldowns. It also passively emits weak recovery pheromones."
+	desc = "A fruit that can be eaten to reenergize cooldowns. It also passively emits weak recovery pheromones."
 	name = XENO_FRUIT_SPORE
 	time_to_mature = 15 SECONDS
 	icon_state = "fruit_spore_immature"
@@ -319,7 +319,7 @@
 
 /obj/effect/alien/resin/fruit/plasma
 	name = XENO_FRUIT_PLASMA
-	desc = "A fruit that can be eaten to boost our plasma generation."
+	desc = "A fruit that can be eaten to boost plasma generation."
 	time_to_mature = 25 SECONDS
 	icon_state = "fruit_plasma_immature"
 	mature_icon_state = "fruit_plasma"

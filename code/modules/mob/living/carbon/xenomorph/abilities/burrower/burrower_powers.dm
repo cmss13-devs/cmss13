@@ -34,7 +34,7 @@
 		addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		return
 	// TODO Make immune to all damage here.
-	to_chat(src, SPAN_XENOWARNING("We burrow yourself into the ground."))
+	to_chat(src, SPAN_XENOWARNING("We burrow ourselves into the ground."))
 	invisibility = 101
 	anchored = TRUE
 	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)

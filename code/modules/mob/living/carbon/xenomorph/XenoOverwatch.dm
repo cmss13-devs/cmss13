@@ -86,7 +86,7 @@
 			return
 
 		if(targetXeno == src)
-			to_chat(src, SPAN_XENOWARNING("We can't watch ourself!"))
+			to_chat(src, SPAN_XENOWARNING("We can't watch ourselves!"))
 			return
 
 		if(targetXeno.interference)

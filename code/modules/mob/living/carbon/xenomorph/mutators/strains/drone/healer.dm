@@ -135,7 +135,7 @@
 	target_xeno.xeno_jitter(1 SECONDS)
 	target_xeno.flick_heal_overlay(10 SECONDS, "#00be6f")
 	to_chat(target_xeno, SPAN_XENOWARNING("[src] covers our wounds with a regenerative resin salve. We feel reinvigorated!"))
-	to_chat(src, SPAN_XENOWARNING("We regurgitate your vital fluids and some plasma to create a regenerative resin salve and apply it to [target_xeno]'s wounds. We feel weakened..."))
+	to_chat(src, SPAN_XENOWARNING("We regurgitate our vital fluids and some plasma to create a regenerative resin salve and apply it to [target_xeno]'s wounds. We feel weakened..."))
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE

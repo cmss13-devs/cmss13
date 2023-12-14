@@ -153,5 +153,5 @@
 				pulled.forceMove(xeno)
 				return TRUE
 		if(!(pulled in xeno.stomach_contents))
-			to_chat(xeno, SPAN_WARNING("We stop devouring \the [pulled]. \He probably tasted gross anyways."))
+			to_chat(xeno, SPAN_WARNING("We stop devouring [pulled]. They probably tasted gross anyways."))
 		return 0

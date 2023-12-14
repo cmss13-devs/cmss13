@@ -422,7 +422,7 @@
 		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
 		M.visible_message(SPAN_WARNING("[M] creepily taps on [src] with its huge claw."), \
 		SPAN_WARNING("We creepily tap on [src]."), \
-		SPAN_WARNING("We hear a glass tapping sound."), 5, CHAT_TYPE_XENO_COMBAT)
+		SPAN_WARNING("You hear a glass tapping sound."), 5, CHAT_TYPE_XENO_COMBAT)
 	else
 		attack_generic(M, M.melee_damage_lower)
 	return XENO_ATTACK_ACTION
@@ -909,7 +909,7 @@
 
 /obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
 	if((M.caste && M.caste.tier < 2 && !isqueen(M)) || unacidable)
-		to_chat(M, SPAN_WARNING("We claws aren't sharp enough to damage [src]."))
+		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
 	health -= round(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)

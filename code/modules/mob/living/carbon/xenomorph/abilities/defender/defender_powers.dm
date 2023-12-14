@@ -274,7 +274,7 @@
 	RegisterSignal(steelcrest, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(damage_accumulate))
 	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 6 SECONDS)
 
-	steelcrest.balloon_alert(steelcrest, "begins to tank inocoming damage!")
+	steelcrest.balloon_alert(steelcrest, "begins to tank incoming damage!")
 
 	to_chat(steelcrest, SPAN_XENONOTICE("We begin to tank incoming damage!"))
 

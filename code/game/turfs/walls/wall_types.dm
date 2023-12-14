@@ -1230,7 +1230,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)
 	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
-	SPAN_DANGER("We tear \the [name]."))
+	SPAN_DANGER("You tear \the [name]."))
 	playsound(src, "alien_resin_break", 25)
 	M.animation_attack_on(src)
 	take_damage(80)

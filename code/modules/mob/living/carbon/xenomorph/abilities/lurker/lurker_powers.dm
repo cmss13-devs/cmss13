@@ -205,7 +205,7 @@
 					return
 				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
 				target_window.shatter_window(TRUE)
-				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("We strike the window with your tail!"))
+				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("We strike the window with our tail!"))
 				apply_cooldown(cooldown_modifier = 0.5)
 				return
 			if(current_structure.density)
@@ -213,7 +213,7 @@
 				return
 
 	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target) || hit_target.stat == DEAD)
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe your tail through the air!"))
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return

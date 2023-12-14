@@ -9,7 +9,7 @@
 /datum/game_mode/whiskey_outpost
 	name = GAMEMODE_WHISKEY_OUTPOST
 	config_tag = GAMEMODE_WHISKEY_OUTPOST
-	required_players = 0
+	required_players = 140
 	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
@@ -76,9 +76,13 @@
 	hardcore = TRUE
 
 	votable = TRUE
-	vote_cycle = 25 // approx. once every 5 days, if it wins the vote
+	vote_cycle = 75 // approx. once every 5 days, if it wins the vote
 
 	taskbar_icon = 'icons/taskbar/gml_wo.png'
+
+/datum/game_mode/whiskey_outpost/New()
+	. = ..()
+	required_players = CONFIG_GET(number/whiskey_required_players)
 
 /datum/game_mode/whiskey_outpost/get_roles_list()
 	return GLOB.ROLES_WO

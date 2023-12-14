@@ -82,7 +82,7 @@
 /datum/equipment_preset/survivor/wy/manager
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WYC7"
+	paygrade = PAY_SHORT_WYC6
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"

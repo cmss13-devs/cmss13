@@ -96,7 +96,8 @@
 		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
 			living_mob.drop_held_items()
 			living_mob.apply_effect(get_xeno_stun_duration(living_mob, 2), WEAKEN)
-			living_mob.pulledby = src
+			if(living_mob.pulledby != src)
+				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
 			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"), \
 			SPAN_XENOWARNING("You grab [living_mob] by the throat!"))
 			lunging = TRUE

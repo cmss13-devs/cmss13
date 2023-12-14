@@ -412,12 +412,12 @@
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
 			var/obj/effect/build_blocker/bb = O
 			if(!silent)
-				to_chat(src, SPAN_WARNING("This is too close to a [bb.linked_structure]!"))
+				to_chat(src, SPAN_WARNING("This is too close to \a [bb.linked_structure]!"))
 			return
 		if(check_doors)
 			if(istype(O, /obj/structure/machinery/door))
 				if(!silent)
-					to_chat(src, SPAN_WARNING("\The [O] is blocking the resin! There's not enough space to build that here."))
+					to_chat(src, SPAN_WARNING("[O] is blocking the resin! There's not enough space to build that here."))
 				return
 		if(istype(O, /obj/item/clothing/mask/facehugger))
 			if(!silent)
@@ -622,7 +622,7 @@
 	target.xenos_tracking |= src
 	tracked_marker = target
 	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
-	to_chat(src, SPAN_INFO("shift click the compass to watch the mark, alt click to stop tracking"))
+	to_chat(src, SPAN_INFO("Shift click the compass to watch the mark, alt click to stop tracking"))
 
 /mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	if(QDELETED(src))
@@ -712,3 +712,32 @@
 
 /mob/living/carbon/xenomorph/lying_angle_on_lying_down(new_lying_angle)
 	return // Do not rotate xenos around on the floor, their sprite is already top-down'ish
+
+/**
+ * Helper procedure for throwing other carbon based mobs around
+ * Pretty much a wrapper to [/atom/movable/proc/throw_atom] with extra handling
+ *
+ * * target - the target carbon mob that will be thrown
+ * * direction - the direction the target will be thrown toward, or if null, infered from relative position with target
+ * * distance - the total distance the throw will be made for
+ * * speed - throw_atom relative speed of the throw, check [SPEED_AVERAGE] for details
+ * * shake_camera - whether to shake the thrown mob camera on throw
+ * * immobilize - if TRUE the mob will be immobilized during the throw, ensuring it doesn't move and break it
+ */
+/mob/living/carbon/xenomorph/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+	if(!direction)
+		direction = get_dir(src, target)
+	var/turf/target_destination = get_ranged_target_turf(target, direction, distance)
+
+	var/list/end_throw_callbacks
+	if(immobilize)
+		end_throw_callbacks = list(CALLBACK(src, PROC_REF(throw_carbon_end), target))
+		ADD_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
+
+	target.throw_atom(target_destination, distance, speed, src, spin = TRUE, end_throw_callbacks = end_throw_callbacks)
+	if(shake_camera)
+		shake_camera(target, 10, 1)
+
+/// Handler callback to reset immobilization status after a successful [/mob/living/carbon/xenomorph/proc/throw_carbon]
+/mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
+	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)

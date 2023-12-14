@@ -18,8 +18,12 @@
 
 	update_icon()
 
+
 /turf/open/update_icon()
 	overlays.Cut()
+
+	var/area/area = get_area(src)
+	area.add_base_lighting_for_turf(src)
 
 	add_cleanable_overlays()
 

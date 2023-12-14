@@ -164,7 +164,7 @@
 	},
 /area/almayer/hallways/repair_bay)
 "aau" = (
-/turf/closed/wall/almayer/outer,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
 /obj/vehicle/powerloader,
@@ -8660,12 +8660,8 @@
 	},
 /area/almayer/medical/medical_science)
 "aCv" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "cl_shutters 2";
-	name = "\improper Privacy Shutters"
-	},
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/window,
 /turf/open/floor/plating,
 /area/almayer/command/corporateliason)
 "aCw" = (
@@ -9818,7 +9814,11 @@
 	name = "\improper Engineering Storage";
 	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	unacidable = 1
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
+	id = "engie_store"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -9838,7 +9838,11 @@
 	name = "\improper Engineering Storage";
 	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	unacidable = 1
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
+	id = "engie_store"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -12873,6 +12877,13 @@
 	dir = 4;
 	pixel_x = -17
 	},
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 26;
+	id = "engie_store";
+	name = "Emergency Storage";
+	pixel_x = -2;
+	req_one_access_txt = "6"
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orangecorner"
@@ -13241,10 +13252,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "cl_shutters";
-	name = "\improper Privacy Shutters"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/window,
 /turf/open/floor/plating,
 /area/almayer/command/corporateliason)
 "aYq" = (
@@ -16644,12 +16652,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
-"bqy" = (
-/obj/structure/sign/poster/hero/voteno{
-	pixel_y = 32
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliason)
 "bqF" = (
 /obj/structure/dropship_equipment/fuel/fuel_enhancer,
 /turf/open/floor/almayer{
@@ -17643,12 +17645,9 @@
 	},
 /area/almayer/hallways/starboard_umbilical)
 "bvY" = (
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 2";
-	name = "Quarters Shutters";
+/obj/structure/machinery/door_control/cl/quarter/backdoor{
 	pixel_x = -25;
-	pixel_y = 23;
-	req_access_txt = "200"
+	pixel_y = 23
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -20432,9 +20431,6 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
-"bIO" = (
-/turf/closed/wall/almayer/outer,
-/area)
 "bIR" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -23422,12 +23418,9 @@
 	dir = 2;
 	name = "\improper Weyland-Yutani Office"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "cl_shutters";
-	name = "\improper Privacy Shutters"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/door,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -23831,11 +23824,8 @@
 	icon_state = "pottedplant_18";
 	pixel_y = 7
 	},
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 3";
-	name = "Quarters Shutters";
-	pixel_x = -25;
-	req_access_txt = "200"
+/obj/structure/machinery/door_control/cl/quarter/officedoor{
+	pixel_x = -25
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -23927,11 +23917,8 @@
 	},
 /area/almayer/engineering/engine_core)
 "bXW" = (
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 3";
-	name = "Quarters Shutters";
-	pixel_x = 25;
-	req_access_txt = "200"
+/obj/structure/machinery/door_control/cl/quarter/officedoor{
+	pixel_x = 25
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -30410,15 +30397,12 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 2";
-	name = "Quarters Shutters";
-	pixel_x = 25;
-	req_access_txt = "200"
-	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 8;
 	pixel_y = -32
+	},
+/obj/structure/machinery/door_control/cl/quarter/backdoor{
+	pixel_x = 25
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -31513,12 +31497,9 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 2";
-	name = "Quarters Shutters";
+/obj/structure/machinery/door_control/cl/quarter/windows{
 	pixel_x = 11;
-	pixel_y = 37;
-	req_access_txt = "200"
+	pixel_y = 37
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -34977,6 +34958,9 @@
 	pixel_x = -5;
 	pixel_y = 5
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "fqg" = (
@@ -38023,28 +38007,14 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
-/obj/structure/machinery/door_control{
-	id = "cl_shutters";
-	name = "Privacy Shutters";
-	pixel_x = -5;
-	pixel_y = 8;
-	req_access_txt = "200"
-	},
-/obj/structure/machinery/door_control{
-	id = "RoomDivider";
-	name = "Room Divider";
-	pixel_x = -5;
-	pixel_y = -4;
-	req_access_txt = "200"
-	},
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/door_control{
-	id = "cl_evac";
-	name = "Evac Pod Door Control";
-	normaldoorcontrol = 1;
+/obj/structure/machinery/door_control/cl/office/evac{
 	pixel_x = -5;
-	pixel_y = 2;
-	req_access_txt = "200"
+	pixel_y = 4
+	},
+/obj/structure/machinery/door_control/cl/office/divider{
+	pixel_x = -5;
+	pixel_y = -3
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)
@@ -39606,6 +39576,12 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cic)
+"hlq" = (
+/obj/structure/machinery/door_control/cl/office/door{
+	pixel_y = 25
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliason)
 "hlw" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -40663,16 +40639,12 @@
 	},
 /area/almayer/squads/delta)
 "hIL" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "cl_shutters 2";
-	name = "\improper Privacy Shutters"
-	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	access_modified = 1;
 	req_access_txt = "200";
 	req_one_access = null
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/backdoor,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -46631,7 +46603,7 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/living/synthcloset)
 "kcN" = (
-/turf/closed/wall/almayer/outer,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/commandbunks)
 "kdi" = (
 /obj/item/device/flashlight/pen{
@@ -47100,11 +47072,8 @@
 /turf/open/floor/plating,
 /area/almayer/command/airoom)
 "kpl" = (
-/obj/structure/machinery/door_control{
-	id = "cl_shutters";
-	name = "Privacy Shutters";
-	pixel_y = -20;
-	req_access_txt = "200"
+/obj/structure/machinery/door_control/cl/office/door{
+	pixel_y = -20
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -51881,12 +51850,6 @@
 	},
 /area/almayer/shipboard/brig/lobby)
 "mkx" = (
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 2";
-	name = "Quarters Shutters";
-	pixel_x = -25;
-	req_access_txt = "200"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_x = 1;
@@ -53877,14 +53840,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "cl_shutters 3";
-	name = "\improper Privacy Shutters"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/door,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -55655,6 +55614,12 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/commandbunks)
+"nKJ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliason)
 "nLa" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -65092,13 +65057,21 @@
 /area/almayer/living/briefing)
 "rEm" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/spacecash/c500{
-	pixel_x = 4;
-	pixel_y = 8
-	},
 /obj/item/ashtray/bronze{
-	pixel_x = -13;
-	pixel_y = -4
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/structure/machinery/door_control/cl/office/window{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/structure/machinery/door_control/cl/office/door{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/spacecash/c500{
+	pixel_x = -10;
+	pixel_y = 8
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)
@@ -67872,6 +67845,9 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -73962,12 +73938,11 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/obj/structure/sign/poster/io{
-	name = "propaganda poster";
-	pixel_y = 32
-	},
 /obj/structure/sign/safety/escapepod{
 	pixel_x = -17
+	},
+/obj/structure/sign/poster/hero/voteno{
+	pixel_y = 32
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -77756,6 +77731,9 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/bravo)
+"wDM" = (
+/turf/closed/wall/almayer/reinforced/temphull,
+/area/almayer/engineering/upper_engineering)
 "wDR" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -78994,7 +78972,7 @@
 	},
 /area/almayer/command/lifeboat)
 "xba" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/cryo_cells)
 "xbd" = (
 /obj/effect/decal/warning_stripes{
@@ -100110,7 +100088,7 @@ kCT
 iRS
 mzo
 oFG
-bIO
+vRz
 aaa
 aaa
 aaa
@@ -113805,7 +113783,7 @@ akU
 avj
 kpl
 awE
-xgr
+hlq
 bYj
 btz
 bsc
@@ -114008,7 +113986,7 @@ akU
 avj
 awE
 awE
-bqy
+xgr
 bYj
 eUR
 gEI
@@ -116850,7 +116828,7 @@ qVM
 csz
 awE
 qMe
-bYj
+nKJ
 bYj
 dyF
 awE
@@ -121980,7 +121958,7 @@ aKW
 aKW
 aKW
 aKW
-aKW
+hhw
 hhw
 aLT
 sXt
@@ -128196,11 +128174,11 @@ psm
 ylJ
 aDZ
 apd
-alO
-alO
-alO
-alO
-alO
+wDM
+wDM
+wDM
+wDM
+wDM
 axD
 amA
 aBo
@@ -128399,11 +128377,11 @@ ptK
 alG
 aYj
 apd
-alO
+wDM
 aOM
 aoW
 aty
-alO
+wDM
 axE
 amA
 aBp
@@ -128602,7 +128580,7 @@ gpc
 aWd
 aYj
 apd
-alO
+wDM
 uto
 aoX
 auU
@@ -128805,7 +128783,7 @@ ptK
 wOh
 ajP
 apd
-alO
+wDM
 aOQ
 fxI
 nLJ
@@ -129008,11 +128986,11 @@ eNi
 alG
 aDZ
 apf
-alO
+wDM
 aOH
 aJf
 aMw
-alO
+wDM
 xsl
 aya
 atq
@@ -129211,11 +129189,11 @@ eNi
 alG
 aYj
 apd
-alO
-alO
-alO
-alO
-alO
+wDM
+wDM
+wDM
+wDM
+wDM
 axI
 amA
 amx

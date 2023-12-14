@@ -433,18 +433,7 @@
 	pre_pounce_effects()
 
 	X.pounce_distance = get_dist(X, A)
-
-	var/datum/launch_metadata/LM = new()
-	LM.target = A
-	LM.range = distance
-	LM.speed = throw_speed
-	LM.thrower = X
-	LM.spin = FALSE
-	LM.pass_flags = pounce_pass_flags
-	LM.collision_callbacks = pounce_callbacks
-
-	X.launch_towards(LM)
-
+	X.throw_atom(A, distance, throw_speed, X, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks)
 	X.update_icons()
 
 	additional_effects_always()

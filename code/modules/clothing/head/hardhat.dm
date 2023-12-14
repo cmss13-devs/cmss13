@@ -60,10 +60,10 @@
 	if(user == loc)
 		user.update_inv_head()
 
+	update_icon()
+
 	for(var/datum/action/current_action as anything in actions)
 		current_action.update_button_icon()
-
-	update_icon()
 
 /obj/item/clothing/head/hardhat/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
 	if(!can_be_broken)

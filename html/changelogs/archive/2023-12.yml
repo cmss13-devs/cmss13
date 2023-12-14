@@ -212,3 +212,55 @@
 2023-12-12:
   InsaneRed:
   - bugfix: M44 Heavy bullets no longer display a "4" when you get hit by them
+2023-12-13:
+  BadAtThisGame302:
+  - bugfix: fixed Engie not showing up an Engie Area on tacmap on LV-624
+  - bugfix: Fixed Research not showing up as a Research Area on tacmap on LV-624
+  Birdtalon:
+  - bugfix: Fixes a missing area on Almayer
+  NateDross:
+  - spellcheck: Edited 'M56 Battery' to 'M56 DV9 Battery' in requisitions munition
+      vendor
+  NessiePendragon:
+  - rscadd: Adds a new braid hairstyle.
+  blackdragonTOW:
+  - balance: GAU RoF doubled
+  harryob:
+  - rscadd: added a historical medal viewer
+  realforest2001:
+  - rscadd: Added a new almayer hull type (heavy reinforced) which is indestructible
+      by normal means until after hijack collision.
+  - rscadd: Added a new subtype of shutter that automatically opens or closes depending
+      on security level.
+  - maptweak: Maps both of the above around the engineering storeroom. Also adds the
+      walls between the firing ranges and around uniform vendors.
+  - maptweak: Manual control button for shutters over engineering storage in the CEs
+      office.
+  - code_imp: Changes hijack structural changes (walls/windows/windoors/ladders) to
+      use signals.
+  - ui: Shuttle manipulator UI is now slightly wider on initial startup.
+2023-12-14:
+  Contrabang:
+  - rscadd: The compass headgear will now tell you what direction you're facing when
+      on a planet.
+  - code_imp: Added a new ground environmental trait for a ground level in space.
+  InsaneRed:
+  - balance: Vanguard dash now restores your shield if you hit ANYONE instead of 2
+      people.
+  - balance: Vanguard buffed root now roots you for 2.5 seconds, unbuffed for 1 second
+  - qol: Vanguard's pierce has now a hit sound for better feedback
+  Nanu308:
+  - balance: Adjusted how much light is given by standard marine armor.
+  - balance: Light Armor remains the same range & power, Medium armor now gives a
+      bit more light, Leader B12 armor gives a bit more light & range, M4 (rto) gives
+      a bit more light, and Heavy armor give the most light and range compared to
+      before.
+  - code_imp: Changed inheritance for medium armor as the different sprite versions
+      were laid directly under the parent type instead of the medium one and so forth.
+  NateDross:
+  - bugfix: fixed hardhat action item icon
+  fira:
+  - bugfix: Some Xeno throws now immobilize their targets, ensuring they do not walk
+      out of the toss mid-flight.
+  realforest2001:
+  - bugfix: M56D can no longer be used by the dead.

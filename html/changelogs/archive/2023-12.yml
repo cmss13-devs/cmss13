@@ -239,3 +239,28 @@
   - code_imp: Changes hijack structural changes (walls/windows/windoors/ladders) to
       use signals.
   - ui: Shuttle manipulator UI is now slightly wider on initial startup.
+2023-12-14:
+  Contrabang:
+  - rscadd: The compass headgear will now tell you what direction you're facing when
+      on a planet.
+  - code_imp: Added a new ground environmental trait for a ground level in space.
+  InsaneRed:
+  - balance: Vanguard dash now restores your shield if you hit ANYONE instead of 2
+      people.
+  - balance: Vanguard buffed root now roots you for 2.5 seconds, unbuffed for 1 second
+  - qol: Vanguard's pierce has now a hit sound for better feedback
+  Nanu308:
+  - balance: Adjusted how much light is given by standard marine armor.
+  - balance: Light Armor remains the same range & power, Medium armor now gives a
+      bit more light, Leader B12 armor gives a bit more light & range, M4 (rto) gives
+      a bit more light, and Heavy armor give the most light and range compared to
+      before.
+  - code_imp: Changed inheritance for medium armor as the different sprite versions
+      were laid directly under the parent type instead of the medium one and so forth.
+  NateDross:
+  - bugfix: fixed hardhat action item icon
+  fira:
+  - bugfix: Some Xeno throws now immobilize their targets, ensuring they do not walk
+      out of the toss mid-flight.
+  realforest2001:
+  - bugfix: M56D can no longer be used by the dead.

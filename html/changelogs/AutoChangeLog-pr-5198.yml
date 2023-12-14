@@ -1,5 +1,0 @@
-author: "Contrabang"
-delete-after: True
-changes:
-  - rscadd: "The compass headgear will now tell you what direction you're facing when on a planet."
-  - code_imp: "Added a new ground environmental trait for a ground level in space."

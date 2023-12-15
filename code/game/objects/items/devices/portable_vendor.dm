@@ -21,10 +21,12 @@
 	var/use_points = TRUE
 	var/fabricating = FALSE
 	var/broken = FALSE
+	var/contraband = FALSE
 
 	var/list/purchase_log = list()
 
 	var/list/listed_products = list()
+	var/list/contraband_products = list()
 
 	/// needs to be a time define
 	var/special_prod_time_lock
@@ -97,6 +99,22 @@
 		var/available = points >= product[2] || !use_points
 		available_items += list(list("index" = index, "name" = name, "cost" = cost, "available" = available, "color" = color, "description" = description))
 
+	if(contraband)
+		var/non_contraband_product_count = length(listed_products)
+		for(var/index in 1 to length(contraband_products))
+			var/product = contraband_products[index]
+
+			var/name = product[1]
+			var/cost = product[2]
+			var/color = product[4]
+			var/description = product[5]
+
+			if(cost > 0)
+				name += " ([cost] points)"
+
+			var/available = points >= product[2] || !use_points
+			available_items += list(list("index" = index + non_contraband_product_count, "name" = name, "cost" = cost, "available" = available, "color" = color, "description" = description))
+
 	.["vendor_name"] = name
 	.["show_points"] = use_points
 	.["current_points"] = round(points)
@@ -139,7 +157,13 @@
 	if(req_role && req_role != id.rank)
 		to_chat(human_user, SPAN_WARNING("This device isn't for you."))
 
-	var/list/product = listed_products[choice]
+	var/list/product
+	var/non_contraband_product_count = length(listed_products)
+	if(choice > non_contraband_product_count)
+		choice -= non_contraband_product_count
+		product = contraband_products[choice]
+	else
+		product = listed_products[choice]
 
 	var/cost = product[2]
 
@@ -282,4 +306,12 @@
 		list("Delta Squad", 15, /obj/item/device/encryptionkey/delta, "white", "Radio Key for USCM Delta Squad."),
 		list("Echo Squad", 15, /obj/item/device/encryptionkey/echo, "white", "Radio Key for USCM Echo Squad."),	
 		list("Colony", 20, /obj/item/device/encryptionkey/colony, "white", "Pre-tuned Radio Key for local colony comms."),	
+	)
+
+	contraband_products = list(
+		list("CONTRABAND", 0, null, null, null),
+		list("W-Y PMC", 20, /obj/item/device/encryptionkey/pmc, "white", "Radio Key for Weyland-Yutani PMC Combat Comms."),
+		list("CONTRABAND: Colonial Marshals", 40, /obj/item/device/encryptionkey/cmb, "white", "Radio Key for the CMB."),
+		list("CONTRABAND: Colonial Liberation Front", 40, /obj/item/device/encryptionkey/clf, "white", "Radio Key for known local CLF frequencies."),
+		list("CONTRABAND: Union of Progressive Peoples", 40, /obj/item/device/encryptionkey/upp, "white", "Radio Key for known UPP listening frequencies."),
 	)

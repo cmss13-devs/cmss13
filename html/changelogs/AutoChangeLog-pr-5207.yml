@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - rscadd: "Xenomorph telegraph effects can now be any rgb colour."

@@ -139,7 +139,7 @@
 /obj/effect/alien/resin/fruit/proc/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature) // Someone might've eaten it before us!
 		recipient.gain_health(75)
-		to_chat(recipient, SPAN_XENONOTICE("You recover a bit from your injuries."))
+		to_chat(recipient, SPAN_XENONOTICE("We recover a bit from our injuries."))
 		if(do_consume)
 			finish_consume(recipient)
 
@@ -161,18 +161,18 @@
 			return cant_consume
 
 		if(mature)
-			to_chat(affected_xeno, SPAN_XENOWARNING("You prepare to consume [name]."))
+			to_chat(affected_xeno, SPAN_XENOWARNING("We prepare to consume [name]."))
 			xeno_noncombat_delay(affected_xeno)
 			if(!do_after(affected_xeno, consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return XENO_NO_DELAY_ACTION
 
 			cant_consume = prevent_consume(affected_xeno) // Check again after the delay incase they have eaten another fruit
 			if(cant_consume)
-				to_chat(affected_xeno, SPAN_XENOWARNING("You can no longer consume [name]."))
+				to_chat(affected_xeno, SPAN_XENOWARNING("We can no longer consume [name]."))
 				return cant_consume
 			consume_effect(affected_xeno)
 		else
-			to_chat(affected_xeno, SPAN_XENOWARNING("[name] isn't ripe yet. You need to wait a little longer."))
+			to_chat(affected_xeno, SPAN_XENOWARNING("[name] isn't ripe yet. We need to wait a little longer."))
 
 	if(affected_xeno.a_intent == INTENT_HARM && isxeno_builder(affected_xeno) || (!affected_xeno.can_not_harm(bound_xeno) && affected_xeno.hivenumber != hivenumber))
 		affected_xeno.animation_attack_on(src)
@@ -185,7 +185,7 @@
 
 /obj/effect/alien/resin/fruit/proc/prevent_consume(mob/living/carbon/xenomorph/xeno)
 	if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && xeno.health >= xeno.maxHealth)
-		to_chat(xeno, SPAN_XENODANGER("You are at full health! This would be a waste..."))
+		to_chat(xeno, SPAN_XENODANGER("We are at full health! This would be a waste..."))
 		return XENO_NO_DELAY_ACTION
 	return FALSE
 
@@ -212,7 +212,7 @@
 		return
 	if(recipient && !QDELETED(recipient))
 		recipient.gain_health(heal_amount)
-		to_chat(recipient, SPAN_XENONOTICE("You recover a bit from your injuries, and begin to regenerate rapidly."))
+		to_chat(recipient, SPAN_XENONOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
 		// Every second, heal him for 15.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
 	if(do_consume)
@@ -240,7 +240,7 @@
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		recipient.add_xeno_shield(Clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
-		to_chat(recipient, SPAN_XENONOTICE("You feel your defense being bolstered, and begin to regenerate rapidly."))
+		to_chat(recipient, SPAN_XENONOTICE("We feel our defense being bolstered, and begin to regenerate rapidly."))
 		// Every seconds, heal him for 5.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
 	if(do_consume)
@@ -248,7 +248,7 @@
 
 //Spore
 /obj/effect/alien/resin/fruit/spore
-	desc = "A fruit that can be eaten to reenergize your cooldowns. It also passively emits weak recovery pheromones."
+	desc = "A fruit that can be eaten to reenergize cooldowns. It also passively emits weak recovery pheromones."
 	name = XENO_FRUIT_SPORE
 	time_to_mature = 15 SECONDS
 	icon_state = "fruit_spore_immature"
@@ -270,7 +270,7 @@
 			if(E.effect_source == "spore")
 				qdel(E)
 		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 60 SECONDS, "spore")
-		to_chat(recipient, SPAN_XENONOTICE("You feel a frenzy coming onto you! Your abilities will cool off faster as you slash!"))
+		to_chat(recipient, SPAN_XENONOTICE("We feel a frenzy coming onto us! Our abilities will cool off faster as we slash!"))
 	if(do_consume)
 		finish_consume(recipient)
 
@@ -306,20 +306,20 @@
 
 /obj/effect/alien/resin/fruit/speed/prevent_consume(mob/living/carbon/xenomorph/xeno)
 	if(LAZYISIN(xeno.modifier_sources, XENO_FRUIT_SPEED))
-		to_chat(xeno, SPAN_XENOWARNING("You're already under the effects of this fruit, go out and kill!"))
+		to_chat(xeno, SPAN_XENOWARNING("We are already under the effects of this fruit, go out and kill!"))
 		return XENO_NO_DELAY_ACTION
 	return ..()
 
 /obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
-		to_chat(recipient, SPAN_XENONOTICE("The [name] invigorates you to move faster!"))
-		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENONOTICE("You feel the effects of the [name] wane..."))
+		to_chat(recipient, SPAN_XENONOTICE("The [name] invigorates us to move faster!"))
+		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENONOTICE("We feel the effects of the [name] wane..."))
 	if(do_consume)
 		finish_consume(recipient)
 
 /obj/effect/alien/resin/fruit/plasma
 	name = XENO_FRUIT_PLASMA
-	desc = "A fruit that can be eaten to boost your plasma generation."
+	desc = "A fruit that can be eaten to boost plasma generation."
 	time_to_mature = 25 SECONDS
 	icon_state = "fruit_plasma_immature"
 	mature_icon_state = "fruit_plasma"
@@ -333,7 +333,7 @@
 
 /obj/effect/alien/resin/fruit/plasma/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && recipient.plasma_max > 0 && !QDELETED(recipient))
-		to_chat(recipient, SPAN_XENONOTICE("The [name] boosts your plasma regeneration!"))
+		to_chat(recipient, SPAN_XENONOTICE("The [name] boosts our plasma regeneration!"))
 		// with the current values (240, 15, 3), this will give the recipient 48 plasma every 3 seconds, for a total of 240 in 15 seconds
 		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas)
 	if(do_consume)
@@ -360,7 +360,7 @@
 	pixel_y = 0
 
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/link_xeno(mob/living/carbon/xenomorph/X)
-	to_chat(X, SPAN_XENOWARNING("One of your resin fruits has been picked."))
+	to_chat(X, SPAN_XENOWARNING("One of our resin fruits has been picked."))
 	X.current_fruits.Add(src)
 	bound_xeno = X
 	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
@@ -429,7 +429,7 @@
 
 	//Notify the fruit's bound xeno if they exist
 	if(!QDELETED(bound_xeno))
-		to_chat(bound_xeno, SPAN_XENOWARNING("One of your picked resin fruits has been consumed."))
+		to_chat(bound_xeno, SPAN_XENOWARNING("One of our picked resin fruits has been consumed."))
 	qdel(src)
 	return TRUE
 
@@ -449,7 +449,7 @@
 /mob/living/carbon/xenomorph/proc/pickup_fruit(obj/effect/alien/resin/fruit/F)
 
 	if(F.bound_xeno && !can_not_harm(F.bound_xeno))
-		to_chat(src, SPAN_XENODANGER("You crush [F]."))
+		to_chat(src, SPAN_XENODANGER("We crush [F]."))
 		qdel(F)
 		return
 	if(!F.mature)
@@ -476,11 +476,11 @@
 	qdel(F)
 
 /mob/living/carbon/xenomorph/larva/pickup_fruit(obj/effect/alien/resin/fruit/F)
-	to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
+	to_chat(src, SPAN_XENODANGER("We are too small to pick up \the [F]!"))
 	return
 
 /mob/living/carbon/xenomorph/facehugger/pickup_fruit(obj/effect/alien/resin/fruit/F)
-	to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
+	to_chat(src, SPAN_XENODANGER("We are too small to pick up \the [F]!"))
 	return
 
 /obj/item/reagent_container/food/snacks/resin_fruit/greater

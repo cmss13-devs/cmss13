@@ -1,8 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added a new almayer hull type (heavy reinforced) which is indestructible by normal means until after hijack collision."
-  - rscadd: "Added a new subtype of shutter that automatically opens or closes depending on security level."
-  - maptweak: "Maps both of the above around the engineering storeroom. Also adds the walls between the firing ranges and around uniform vendors."
-  - maptweak: "Manual control button for shutters over engineering storage in the CEs office."
-  - code_imp: "Changes hijack structural changes (walls/windows/windoors/ladders) to use signals."

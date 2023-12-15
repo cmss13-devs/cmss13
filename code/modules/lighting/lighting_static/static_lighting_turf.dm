@@ -39,10 +39,10 @@
 			else
 				static_lighting_clear_overlay()
 	//Inherit overlay of new area
-	if(old_area.lighting_effect)
-		overlays -= old_area.lighting_effect
-	if(new_area.lighting_effect)
-		overlays += new_area.lighting_effect
+	if(old_area.get_turf_lighting_effect(src))
+		overlays -= old_area.get_turf_lighting_effect(src)
+	if(new_area.get_turf_lighting_effect(src))
+		overlays += new_area.get_turf_lighting_effect(src)
 
 /turf/proc/static_generate_missing_corners()
 	if (!lighting_corner_NE)

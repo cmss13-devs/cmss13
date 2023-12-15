@@ -37,6 +37,10 @@
 	/// set when a player uses a pen on a renamable object
 	var/renamedByPlayer = FALSE
 
+	//The alphamasking is used for objects where the turf below it has lighting. It is only used in combination with base lighting, when the "area_has_alphamasking" property is enabled.
+	var/use_alphamasking = FALSE
+	var/mutable_appearance/alphamask_appearance = null
+
 
 /obj/Initialize(mapload, ...)
 	. = ..()
@@ -47,6 +51,8 @@
 	if(buckled_mob)
 		unbuckle()
 	. = ..()
+	if(alphamask_appearance != null)
+		QDEL_NULL(alphamask_appearance)
 	remove_from_garbage(src)
 
 /obj/vv_get_dropdown()

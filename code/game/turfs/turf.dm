@@ -97,16 +97,11 @@
 
 	//Get area light
 	var/area/current_area = loc
-	if(current_area?.lighting_effect)
-		overlays += current_area.lighting_effect
+	if(current_area?.get_turf_lighting_effect(src))
+		overlays += current_area.get_turf_lighting_effect(src)
 
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
-
-	//Get area light
-	var/area/A = loc
-	if(A?.lighting_effect)
-		overlays += A.lighting_effect
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -432,8 +427,8 @@
 		W.reconsider_lights()
 
 	var/area/thisarea = get_area(W)
-	if(thisarea.lighting_effect)
-		W.overlays += thisarea.lighting_effect
+	if(thisarea.get_turf_lighting_effect(src))
+		W.overlays += thisarea.get_turf_lighting_effect(src)
 
 	W.levelupdate()
 	return W

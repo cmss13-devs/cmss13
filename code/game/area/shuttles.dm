@@ -10,6 +10,11 @@
 	unique = FALSE
 
 	base_lighting_alpha = 255
+	area_has_alphamasking = TRUE
+
+	base_lighting_multiply_types = list(
+		/turf/open/floor/plating
+	)
 
 
 ///area/shuttle/Initialize()

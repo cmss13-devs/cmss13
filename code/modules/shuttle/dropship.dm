@@ -16,6 +16,7 @@
 
 /obj/structure/shuttle/part/dropship1/transparent
 	opacity = FALSE
+	use_alphamasking = TRUE
 
 /obj/structure/shuttle/part/dropship1/transparent/nose_top_right
 	icon_state = "102"
@@ -121,6 +122,7 @@
 
 /obj/structure/shuttle/part/dropship2/transparent
 	opacity = FALSE
+	use_alphamasking = TRUE
 
 /obj/structure/shuttle/part/dropship2/transparent/nose_top_right
 	icon_state = "102"

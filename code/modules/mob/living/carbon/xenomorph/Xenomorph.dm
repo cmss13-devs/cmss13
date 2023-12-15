@@ -1021,7 +1021,7 @@
 	last_special = world.time + 10
 
 	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
-	to_chat(src, SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and we must to stand still)"))
+	to_chat(src, SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and we must stand still)"))
 	for(var/mob/O in viewers(src))
 		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))

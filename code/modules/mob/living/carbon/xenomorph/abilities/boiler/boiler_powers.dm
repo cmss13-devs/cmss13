@@ -222,7 +222,7 @@
 		if(!mine.empowered)
 			mine.empowered = TRUE
 			mine.button.overlays += "+empowered"
-			to_chat(xeno, SPAN_XENODANGER("We tap in our reserves to prepare a stronger [mine.name]!"))
+			to_chat(xeno, SPAN_XENODANGER("We tap into our reserves to prepare a stronger [mine.name]!"))
 
 	apply_cooldown()
 	return ..()

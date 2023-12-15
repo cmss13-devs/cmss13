@@ -297,7 +297,7 @@
 	UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE)
 
 	damage_accumulated = 0
-	to_chat(owner, SPAN_XENONOTICE("We stop taking inoncoming damage."))
+	to_chat(owner, SPAN_XENONOTICE("We stop taking incoming damage."))
 	owner.remove_filter("steelcrest_enraging")
 
 /datum/action/xeno_action/onclick/soak/proc/enraged()

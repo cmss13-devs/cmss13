@@ -520,7 +520,7 @@
 
 	var/turf/T = get_turf(X)
 	if(!istype(T))
-		to_chat(X, SPAN_XENOWARNING("You We't do that here."))
+		to_chat(X, SPAN_XENOWARNING("We can't do that here."))
 		return
 	var/area/AR = get_area(T)
 	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))

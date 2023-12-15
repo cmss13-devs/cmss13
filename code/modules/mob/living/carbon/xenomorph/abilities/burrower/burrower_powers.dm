@@ -29,7 +29,7 @@
 
 	used_burrow = TRUE
 
-	to_chat(src, SPAN_XENOWARNING("We begin burrowing yourself into the ground."))
+	to_chat(src, SPAN_XENOWARNING("We begin burrowing ourselves into the ground."))
 	if(!do_after(src, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		return

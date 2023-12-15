@@ -12,7 +12,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a burst of bone chips at [affected_atom]!"), SPAN_XENOWARNING("We fire a burst of our bone chips at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a burst of bone chips at [affected_atom]!"), SPAN_XENOWARNING("We fire a burst of bone chips at [affected_atom]!"))
 
 	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))

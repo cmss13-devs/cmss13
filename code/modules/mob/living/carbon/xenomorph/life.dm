@@ -380,7 +380,7 @@ Make sure their actual health updates immediately.*/
 		plasma_stored = 0
 		if(current_aura)
 			current_aura = null
-			to_chat(src, SPAN_WARNING("We have run out of pheromones and stopped emitting pheromones."))
+			to_chat(src, SPAN_WARNING("We have run out of plasma and stopped emitting pheromones."))
 
 	for(var/X in actions)
 		var/datum/action/A = X

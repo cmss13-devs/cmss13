@@ -54,7 +54,7 @@
 		var/dissolvability = T.can_be_dissolved()
 		switch(dissolvability)
 			if(0)
-				to_chat(src, SPAN_WARNING("wE cannot dissolve [T]."))
+				to_chat(src, SPAN_WARNING("We cannot dissolve [T]."))
 				return
 			if(1)
 				wait_time = 50

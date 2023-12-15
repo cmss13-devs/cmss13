@@ -1,7 +1,0 @@
-author: "LTNTS"
-delete-after: True
-changes:
-  - maptweak: "remapped brig to be more concise, more interconnected, and easier to navigate. And added more cells for when needed."
-  - qol: "adds RiotTech (SecTech but for Riot Control with Rubber Bullets - obvs Code Blue+ only)"
-  - qol: "CMP's locker requires Armory access to open now"
-  - qol: "suspects are now colored nardo gray in security list"

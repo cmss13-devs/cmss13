@@ -262,11 +262,8 @@
 
 /obj/structure/ladder/fragile_almayer/Initialize()
 	. = ..()
-	GLOB.hijack_bustable_ladders += src
-
-/obj/structure/ladder/fragile_almayer/Destroy()
-	GLOB.hijack_bustable_ladders -= src
-	return ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
 
 /obj/structure/ladder/fragile_almayer/deconstruct()
 	new /obj/structure/prop/broken_ladder(loc)

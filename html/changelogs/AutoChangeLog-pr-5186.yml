@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - ui: "Shuttle manipulator UI is now slightly wider on initial startup."

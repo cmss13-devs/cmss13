@@ -523,17 +523,17 @@
 		if(user.observed_xeno == user.tracked_marker)
 			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
 		else
-			to_chat(user, SPAN_XENONOTICE("You psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
+			to_chat(user, SPAN_XENONOTICE("We psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
 			user.overwatch(user.tracked_marker) //this is so scuffed, sorry if this causes errors
 		return
 	if(mods["alt"] && user.tracked_marker)
 		user.stop_tracking_resin_mark()
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Without a queen your psychic link is broken!"))
+		to_chat(user, SPAN_WARNING("Without a queen our psychic link is broken!"))
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
@@ -551,10 +551,10 @@
 		return FALSE
 	if(mods["shift"])
 		var/area/current_area = get_area(user)
-		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
+		to_chat(user, SPAN_NOTICE("We are currently at: <b>[current_area.name]</b>."))
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
 	if(mods["alt"])
 		var/list/options = list()
@@ -581,7 +581,7 @@
 			track_state = options[selected]
 		return
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Your hive doesn't have a living queen!"))
+		to_chat(user, SPAN_WARNING("Our hive doesn't have a living queen!"))
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE

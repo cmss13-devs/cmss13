@@ -105,7 +105,7 @@
 	effect.plane = LIGHTING_PLANE
 	effect.layer = LIGHTING_PRIMARY_LAYER
 	effect.blend_mode = BLEND_ADD
-	effect.alpha = 255
+	effect.alpha = base_lighting_alpha
 	effect.color = COLOR_WHITE
 	effect.appearance_flags = KEEP_APART
 	effect.icon = item.icon

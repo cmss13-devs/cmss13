@@ -492,6 +492,7 @@
 	icon_state = "xeno_telegraph_base"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/// Icon is by default a white sprite, provide an rgb hex code #RRGGBB argument to change.
 /obj/effect/xenomorph/xeno_telegraph/New(loc, ttl = 10, color = null)
 	..(loc)
 	if(color)
@@ -507,12 +508,12 @@
 /obj/effect/xenomorph/xeno_telegraph/green
 	color = COLOUR_GREEN
 
+///The below paths /abduct_hook and /lash have a brown icon state by and do not have a color overlay by default.
 /obj/effect/xenomorph/xeno_telegraph/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook_anim"
 
 /obj/effect/xenomorph/xeno_telegraph/lash
 	icon_state = "xeno_telegraph_lash"
-	color = COLOUR_BROWN
 
 /obj/effect/xenomorph/acid_damage_delay
 	name = "???"

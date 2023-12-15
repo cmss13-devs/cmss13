@@ -30570,7 +30570,7 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/structure/closet/secure_closet/brig/prisoner,
+/obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
@@ -34871,7 +34871,7 @@
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "fvA" = (
-/obj/structure/closet/secure_closet/brig/prisoner,
+/obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/perma)
 "fvB" = (
@@ -41263,7 +41263,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
 "icZ" = (
-/obj/structure/closet/secure_closet/brig/prisoner,
+/obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "redcorner"
@@ -47350,7 +47350,7 @@
 	},
 /area/almayer/command/corporateliason)
 "kAL" = (
-/obj/structure/closet/secure_closet/brig/prisoner,
+/obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},

@@ -327,7 +327,7 @@
 		xeno.balloon_alert(xeno, "our tail catches and stuns [LAZYLEN(targets)] targets!", text_color = "#51a16c")
 
 	for (var/mob/living/carbon/target in targets)
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno]'s hooked tail coils itself around [target]!"), SPAN_XENODANGER(" hooked tail coils itself around [target]!"))
+		xeno.visible_message(SPAN_XENODANGER("\The [xeno]'s hooked tail coils itself around [target]!"), SPAN_XENODANGER("Our hooked tail coils itself around [target]!"))
 
 		target.apply_effect(0.2, WEAKEN)
 

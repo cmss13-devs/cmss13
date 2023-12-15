@@ -508,10 +508,11 @@
 /obj/effect/xenomorph/xeno_telegraph/green
 	color = COLOUR_GREEN
 
-///The below paths /abduct_hook and /lash have a brown icon state by and do not have a color overlay by default.
+/// This has a brown icon state and does not have a color overlay by default.
 /obj/effect/xenomorph/xeno_telegraph/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook_anim"
 
+/// This has a brown icon state and does not have a color overlay by default.
 /obj/effect/xenomorph/xeno_telegraph/lash
 	icon_state = "xeno_telegraph_lash"
 

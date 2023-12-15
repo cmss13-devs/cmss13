@@ -28643,6 +28643,15 @@
 	icon_state = "cargo"
 	},
 /area/almayer/shipboard/port_missiles)
+"cRB" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "cRK" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 16
@@ -31855,6 +31864,15 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/grunt_rnr)
+"efo" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/port_point_defense)
 "efK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -39183,6 +39201,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
+"hiV" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/port_point_defense)
 "hji" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -40688,6 +40715,15 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie_delta_shared)
+"hQj" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/starboard_point_defense)
 "hQU" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -44939,6 +44975,15 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/bridgebunks)
+"jxH" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/port_point_defense)
 "jxP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -52332,6 +52377,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
+"muL" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/starboard_point_defense)
 "muV" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine/uscm/command/capt{
@@ -67230,6 +67284,15 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
+"syw" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/starboard_point_defense)
 "syH" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = -28
@@ -70853,6 +70916,15 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/req)
+"tXG" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/port_point_defense)
 "tXM" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -73308,6 +73380,15 @@
 	dir = 8
 	},
 /area/almayer/medical/containment/cell)
+"uXr" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/port_point_defense)
 "uXu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -80836,6 +80917,13 @@
 	dir = 6
 	},
 /area/almayer/command/cic)
+"xMC" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/hull/lower_hull/l_a_s)
 "xML" = (
 /obj/structure/machinery/computer/cameras/wooden_tv/prop{
 	pixel_x = -4;
@@ -110285,15 +110373,15 @@ aaa
 aKR
 iMo
 bGF
-pnw
+muL
 pXg
 iMo
 aKU
-pnw
+muL
 pXg
 iMo
 bGF
-pnw
+muL
 pXg
 baM
 aKS
@@ -110361,15 +110449,15 @@ bSf
 bWe
 bWn
 eCn
-kNT
+uXr
 cQM
 bGN
 eCn
-kNT
+uXr
 cQM
 bWn
 eCn
-kNT
+uXr
 cQM
 bWn
 bWe
@@ -110575,7 +110663,7 @@ bGI
 bGI
 bGI
 bWo
-vcM
+tXG
 bVU
 aaa
 aab
@@ -110702,7 +110790,7 @@ bGO
 bGO
 bGO
 bGO
-gaz
+hQj
 aLL
 etF
 bbS
@@ -110981,7 +111069,7 @@ bGI
 bGI
 bGI
 bGI
-nqR
+efo
 bVU
 aaa
 aab
@@ -111184,7 +111272,7 @@ bGI
 bGI
 bGI
 bGI
-hGt
+jxH
 bVU
 aaa
 aab
@@ -111387,7 +111475,7 @@ bGI
 bGI
 bGI
 bGI
-vcM
+tXG
 bVU
 aaa
 aab
@@ -111514,7 +111602,7 @@ bGO
 bGO
 bGO
 bGO
-gaz
+hQj
 aLL
 etF
 bbS
@@ -111793,7 +111881,7 @@ bGI
 bGI
 bGI
 bGI
-nqR
+efo
 bVU
 aaa
 aab
@@ -111907,15 +111995,15 @@ aaa
 aab
 aaa
 aKR
-hNK
+syw
 pui
 aZO
 iuD
-hNK
-sZu
+syw
+pui
 aZO
 iuD
-hNK
+syw
 pui
 aZO
 iuD
@@ -111985,15 +112073,15 @@ bSf
 bWe
 bWp
 bfZ
-nGU
+hiV
 aZQ
 mHn
 bfZ
-nGU
+hiV
 aZQ
 bWp
 bfZ
-nGU
+hiV
 aZQ
 bWp
 bWe
@@ -139146,7 +139234,7 @@ aaa
 aaa
 aaa
 wVb
-okW
+xMC
 baH
 baH
 baH
@@ -139363,7 +139451,7 @@ aZR
 aZR
 aZR
 aZR
-rCN
+cRB
 vTK
 aaa
 aaa
@@ -139958,7 +140046,7 @@ aaa
 aaa
 aaa
 wVb
-okW
+xMC
 baH
 baH
 baH

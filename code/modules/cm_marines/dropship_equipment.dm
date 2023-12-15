@@ -452,38 +452,49 @@
 	point_cost = 50
 	var/spotlights_cooldown
 	var/brightness = 11
+	var/on = FALSE
 
 /obj/structure/dropship_equipment/electronics/spotlights/equipment_interact(mob/user)
 	if(spotlights_cooldown > world.time)
 		to_chat(user, SPAN_WARNING("[src] is busy."))
 		return //prevents spamming deployment/undeployment
-	if(luminosity != brightness)
-		set_light(brightness)
-		icon_state = "spotlights_on"
+	if(!on)
+		set_on_status(TRUE)
 		to_chat(user, SPAN_NOTICE("You turn on [src]."))
 	else
-		set_light(0)
-		icon_state = "spotlights_off"
+		set_on_status(FALSE)
 		to_chat(user, SPAN_NOTICE("You turn off [src]."))
 	spotlights_cooldown = world.time + 50
+
+
+/obj/structure/dropship_equipment/electronics/spotlights/proc/set_on_status(activate)
+	if(activate)
+		on = TRUE
+		set_light(brightness)
+		icon_state = "spotlights_on"
+	else 
+		on = FALSE
+		set_light(0)
+		icon_state = "spotlights_off"
 
 /obj/structure/dropship_equipment/electronics/spotlights/update_equipment()
 	..()
 	if(ship_base)
-		if(luminosity != brightness)
+		if(!on)
 			icon_state = "spotlights_off"
 		else
 			icon_state = "spotlights_on"
 	else
 		icon_state = "spotlights"
-		if(luminosity)
+		if(on)
+			on = FALSE
 			set_light(0)
 
 /obj/structure/dropship_equipment/electronics/spotlights/on_launch()
-	set_light(0)
+	set_on_status(FALSE)
 
 /obj/structure/dropship_equipment/electronics/spotlights/on_arrival()
-	set_light(brightness)
+	set_on_status(TRUE)
 
 #undef LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS
 

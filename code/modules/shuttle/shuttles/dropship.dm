@@ -238,6 +238,12 @@
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_launch()
 
+/obj/docking_port/stationary/marine_dropship/on_arrival(obj/docking_port/mobile/departing_shuttle)
+	. = ..()
+	var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
+	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
+		eq.on_arrival()
+
 /obj/docking_port/stationary/marine_dropship/lz1
 	name = "LZ1 Landing Zone"
 	id = DROPSHIP_LZ1

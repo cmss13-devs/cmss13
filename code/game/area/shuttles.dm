@@ -13,7 +13,7 @@
 	area_has_alphamasking = TRUE
 
 	base_lighting_multiply_types = list(
-		/turf/open/floor/plating
+		/turf/open/floor/plating,
 	)
 
 

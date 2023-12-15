@@ -81,7 +81,7 @@
 	lighting_multiply_effect.color = base_lighting_color
 	return lighting_multiply_effect
 
-/area/proc/add_base_lighting_for_turf(var/turf/T)
+/area/proc/add_base_lighting_for_turf(turf/T)
 	if(!area_has_base_lighting && (!base_lighting_alpha || !base_lighting_color))
 		return
 
@@ -94,13 +94,13 @@
 	if(area_has_alphamasking)
 		apply_alphamask_to_turf_contents(T)
 
-/area/proc/apply_alphamask_to_turf_contents(var/turf/T)
+/area/proc/apply_alphamask_to_turf_contents(turf/T)
 	for(var/obj/item in contents)
 		if(item.use_alphamasking != null)
 			item.alphamask_appearance = get_alphamask_apperance(item)
 			item.overlays += item.alphamask_appearance
 
-/area/proc/get_alphamask_apperance(var/obj/item)
+/area/proc/get_alphamask_apperance(obj/item)
 	var/mutable_appearance/effect = mutable_appearance('icons/effects/alphacolors.dmi', "white")
 	effect.plane = LIGHTING_PLANE
 	effect.layer = LIGHTING_PRIMARY_LAYER
@@ -114,7 +114,7 @@
 	return effect
 
 
-/area/proc/get_turf_lighting_effect(var/turf/T)
+/area/proc/get_turf_lighting_effect(turf/T)
 	if(!area_has_base_lighting && (!base_lighting_alpha || !base_lighting_color))
 		return null
 	var/mutable_appearance/appearance = get_lighting_params()

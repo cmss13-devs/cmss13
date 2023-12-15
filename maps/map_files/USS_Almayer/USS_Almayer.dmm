@@ -29135,6 +29135,16 @@
 	icon_state = "green"
 	},
 /area/almayer/living/grunt_rnr)
+"dco" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras/almayer_network{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/chief_mp_office)
 "dcp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -40468,6 +40478,12 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/briefing)
+"hMc" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/shipboard/brig/chief_mp_office)
 "hMi" = (
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer,
@@ -45550,12 +45566,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/chief_mp_office)
-"jPY" = (
-/obj/structure/bed/chair/comfy/orange{
-	dir = 8
-	},
-/turf/open/floor/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
 "jQt" = (
 /turf/open/floor/almayer/research/containment/floor2{
@@ -54813,16 +54823,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/delta)
-"nvZ" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/almayer/shipboard/brig/chief_mp_office)
 "nwb" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -95005,7 +95005,7 @@ emp
 wIC
 puE
 crp
-nvZ
+dco
 dqZ
 wIC
 lTK
@@ -95207,7 +95207,7 @@ oIh
 iTl
 wIC
 cBZ
-jPY
+hMc
 vAG
 jIo
 wIC

@@ -192,7 +192,7 @@
 				to_chat(xeno, SPAN_WARNING("The metal bird can not land here. It might be currently occupied!"))
 				return
 			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
-			xeno_announcement(SPAN_XENOANNOUNCE("Your Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
 			log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			return
@@ -219,15 +219,15 @@
 		if(dropship.playing_launch_announcement_alarm)
 			stop_playing_launch_announcement_alarm()
 			xeno.animation_attack_on(src)
-			to_chat(xeno, SPAN_XENONOTICE("You slash at [src], silencing its squawking!"))
+			to_chat(xeno, SPAN_XENONOTICE("We slash at [src], silencing its squawking!"))
 			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
 		else
-			to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+			to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
 			playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
 
 	if(!is_ground_level(z))
-		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
 

@@ -50,6 +50,8 @@
 	var/turf/parent_turf
 	/// The obj that our parent is buckled to and we have registered a signal
 	var/obj/parent_buckle
+	/// A nest our parent is buckled to and we have registered a signal
+	var/obj/structure/bed/nest/parent_nest
 	/// The weeds that we are merging/merged with
 	var/obj/effect/alien/weeds/absorbing_weeds
 	/// The overlay image when merged
@@ -78,6 +80,7 @@
 	QDEL_NULL(weed_appearance)
 	parent_mob = null
 	parent_turf = null
+	parent_buckle = null
 
 /datum/component/weed_food/RegisterWithParent()
 	RegisterSignal(parent_mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
@@ -100,6 +103,8 @@
 		UnregisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH)
 	if(parent_buckle)
 		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+	if(parent_nest)
+		UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
 
 /// SIGNAL_HANDLER for COMSIG_MOVABLE_MOVED
 /datum/component/weed_food/proc/on_move()
@@ -159,6 +164,15 @@
 	if(merged)
 		unmerge_with_weeds()
 		return
+
+/// SIGNAL_HANDLER for COMSIG_PARENT_QDELETING of nest
+/datum/component/weed_food/proc/on_nest_deletion()
+	SIGNAL_HANDLER
+
+	if(merged)
+		parent_mob.plane = FLOOR_PLANE
+	UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
+	parent_nest = null
 
 /**
  * Try to start the process to turn into weeds
@@ -243,6 +257,10 @@
 			parent_buckle = parent_mob.buckled
 			RegisterSignal(parent_mob.buckled, COSMIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
 			return FALSE
+		else
+			parent_nest = parent_mob.buckled
+			RegisterSignal(parent_nest, COMSIG_PARENT_QDELETING, PROC_REF(on_nest_deletion))
+
 	if(parent_buckle)
 		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
 		parent_buckle = null
@@ -263,7 +281,8 @@
 	ADD_TRAIT(parent_mob, TRAIT_MERGED_WITH_WEEDS, XENO_WEED_TRAIT)
 	parent_mob.anchored = TRUE
 	parent_mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	parent_mob.plane = FLOOR_PLANE
+	if(!parent_nest)
+		parent_mob.plane = FLOOR_PLANE
 	parent_mob.remove_from_all_mob_huds()
 
 	if(!weed_appearance) // Make a new sprite if we aren't re-merging
@@ -288,6 +307,10 @@
 	if(absorbing_weeds)
 		UnregisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING)
 	absorbing_weeds = null
+
+	if(parent_nest)
+		UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
+	parent_nest = null
 
 	REMOVE_TRAIT(parent_mob, TRAIT_MERGED_WITH_WEEDS, XENO_WEED_TRAIT)
 	parent_mob.anchored = FALSE

@@ -3947,7 +3947,7 @@
 /area/almayer/hallways/stern_hallway)
 "anS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/landinglight/delayone{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -4023,7 +4023,7 @@
 /area/almayer/medical/morgue)
 "aof" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/landinglight/delayone{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -4031,11 +4031,11 @@
 	},
 /area/almayer/hallways/hangar)
 "aog" = (
-/obj/structure/machinery/landinglight/delayone{
-	dir = 8
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
@@ -4257,11 +4257,11 @@
 	},
 /area/almayer/medical/medical_science)
 "aoN" = (
-/obj/structure/machinery/landinglight/delayone{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
+	},
+/obj/structure/machinery/landinglight{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)

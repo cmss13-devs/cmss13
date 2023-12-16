@@ -744,7 +744,7 @@
 /obj/structure/machinery/landinglight
 	name = "landing light"
 	icon = 'icons/obj/structures/props/landinglights.dmi'
-	icon_state = "landingstripe"
+	icon_state = "landingstripe0"
 	desc = "A landing light, if it's flashing stay clear!"
 	anchored = TRUE
 	density = FALSE
@@ -756,6 +756,9 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/obj/docking_port/stationary/linked_port = null
+	var/icon_on = "landingstripe0_on"
+	var/icon_off = "landingstripe_off"
+	var/light_strength = 2
 
 //Don't allow blowing those up, so Marine nades don't fuck them
 /obj/structure/machinery/landinglight/ex_act(severity)
@@ -772,28 +775,27 @@
 		linked_port = null
 
 /obj/structure/machinery/landinglight/proc/turn_off()
-	icon_state = initial(icon_state)
+	icon_state = icon_off
 	set_light(0)
 
 /obj/structure/machinery/landinglight/proc/turn_on()
-	icon_state = initial(icon_state) + "0"
-	set_light(2)
+	icon_state = icon_on
+	set_light(light_strength)
 
-/obj/structure/machinery/landinglight/delayone/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(2)
+/obj/structure/machinery/landinglight/delayone
+	icon_state = "landingstripe1"
+	icon_on = "landingstripe1_on"
 
-/obj/structure/machinery/landinglight/delaytwo/turn_on()
-	icon_state = initial(icon_state) + "2"
-	set_light(2)
+/obj/structure/machinery/landinglight/delaytwo
+	icon_state = "landingstripe2"
+	icon_on = "landingstripe2_on"
 
-/obj/structure/machinery/landinglight/delaythree/turn_on()
-	icon_state = initial(icon_state) + "3"
-	set_light(2)
+/obj/structure/machinery/landinglight/delaythree
+	icon_state = "landingstripe3"
+	icon_on = "landingstripe3_on"
 
 /obj/structure/machinery/landinglight/spoke
-	icon_state = "lz_spoke_light"
-
-/obj/structure/machinery/landinglight/spoke/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(3)
+	icon_state = "lz_spoke_light_off"
+	icon_on = "lz_spoke_light_on"
+	icon_off = "lz_spoke_light_off"
+	light_strength = 3

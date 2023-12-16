@@ -57,10 +57,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 		medals_list = list(MARINE_CONDUCT_MEDAL)
 
 	// Pick a medal
-
 	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", medals_list)
-
-
 
 	if(!medal_type)
 		return FALSE

@@ -90,7 +90,7 @@
 	fendy.face_atom(carbone)
 	fendy.animation_attack_on(carbone)
 	fendy.flick_attack_overlay(carbone, "punch")
-	fendy.throw_cargon(carbone, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
+	fendy.throw_carbon(carbone, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
 	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	apply_cooldown()
 	return ..()

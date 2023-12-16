@@ -455,11 +455,8 @@
 
 /obj/structure/window/reinforced/ultra/Initialize()
 	. = ..()
-	GLOB.hijack_bustable_windows += src
-
-/obj/structure/window/reinforced/ultra/Destroy()
-	GLOB.hijack_bustable_windows -= src
-	return ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
 
 /obj/structure/window/reinforced/full
 	flags_atom = FPRINT
@@ -585,11 +582,9 @@
 
 /obj/structure/window/framed/almayer/hull/hijack_bustable/Initialize()
 	. = ..()
-	GLOB.hijack_bustable_windows += src
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
 
-/obj/structure/window/framed/almayer/hull/hijack_bustable/Destroy()
-	GLOB.hijack_bustable_windows -= src
-	return ..()
 /obj/structure/window/framed/almayer/white
 	icon_state = "white_rwindow0"
 	basestate = "white_rwindow"

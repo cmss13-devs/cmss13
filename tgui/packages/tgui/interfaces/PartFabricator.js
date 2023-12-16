@@ -15,7 +15,7 @@ export const PartFabricator = (props, context) => {
 
 const GeneralPanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const { points, Equipment, Ammo } = data;
+  const { points, omnisentrygun_price, Equipment, Ammo } = data;
 
   return (
     <div>
@@ -57,18 +57,35 @@ const GeneralPanel = (props, context) => {
                   label={Ammo.name}
                   className="underline"
                   buttons={
-                    <Button
-                      content={'Fabricate  (' + Ammo.cost + ')'}
-                      icon="wrench"
-                      tooltip={Ammo.desc}
-                      tooltipPosition="left"
-                      onClick={() =>
-                        act('produce', {
-                          path: Ammo.path,
-                          cost: Ammo.cost,
-                        })
-                      }
-                    />
+                    Ammo.path === '/obj/structure/ship_ammo/sentry' ? (
+                      <Button
+                        content={'Fabricate  (' + omnisentrygun_price + ')'}
+                        icon="wrench"
+                        tooltip={Ammo.desc}
+                        tooltipPosition="left"
+                        path={Ammo.path}
+                        cost={omnisentrygun_price}
+                        onClick={() =>
+                          act('produce', {
+                            path: Ammo.path,
+                            cost: omnisentrygun_price,
+                          })
+                        }
+                      />
+                    ) : (
+                      <Button
+                        content={'Fabricate  (' + Ammo.cost + ')'}
+                        icon="wrench"
+                        tooltip={Ammo.desc}
+                        tooltipPosition="left"
+                        onClick={() =>
+                          act('produce', {
+                            path: Ammo.path,
+                            cost: Ammo.cost,
+                          })
+                        }
+                      />
+                    )
                   }
                 />
               ))}

@@ -92,7 +92,7 @@
 	xeno.face_atom(carbon)
 	xeno.animation_attack_on(carbon)
 	xeno.flick_attack_overlay(carbon, "disarm")
-	throw_carbon(carbon, facing, fling_distance, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+	xeno.throw_carbon(carbon, facing, fling_distance, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
 
 	apply_cooldown()
 	return ..()

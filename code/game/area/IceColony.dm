@@ -124,6 +124,12 @@
 	name = "\improper South Western Valleys"
 	icon_state = "valley_south_west"
 
+/area/ice_colony/exterior/surface/valley/northeast/apc_support
+	always_unpowered = FALSE
+
+/area/ice_colony/exterior/surface/valley/southeast/apc_support
+	always_unpowered = FALSE
+
 //
 // Clearing
 // The Colony Center, so to speak
@@ -791,57 +797,81 @@
 /area/shuttle/elevator1/ground
 	name = "\improper Elevator I"
 	icon_state = "shuttlered"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator1/underground
 	name = "\improper Elevator I"
 	icon_state = "shuttle"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator1/transit
 	name = "\improper Elevator I"
 	icon_state = "shuttle2"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator2/ground
 	name = "\improper Elevator II"
 	icon_state = "shuttle"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator2/underground
 	name = "\improper Elevator II"
 	icon_state = "shuttle2"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator2/transit
 	name = "\improper Elevator II"
 	icon_state = "shuttlered"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator3/ground
 	name = "\improper Elevator III"
 	icon_state = "shuttle"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator3/underground
 	name = "\improper Elevator III"
 	icon_state = "shuttle2"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator3/transit
 	name = "\improper Elevator III"
 	icon_state = "shuttlered"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator4/ground
 	name = "\improper Elevator IV"
 	icon_state = "shuttlered"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator4/underground
 	name = "\improper Elevator IV"
 	icon_state = "shuttle"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator4/transit
 	name = "\improper Elevator IV"
 	icon_state = "shuttle2"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/ice_colony/landing/console
 	name = "\improper LZ1 'Lazarus'"
 	icon_state = "tcomsatcham"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/ice_colony/landing/console2
 	name = "\improper LZ2 'Underground'"
 	icon_state = "tcomsatcham"
-	requires_power = 0
+	requires_power = FALSE

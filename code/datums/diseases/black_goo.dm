@@ -18,8 +18,6 @@
 
 	/// whether we're currently transforming the host into a zombie.
 	var/zombie_transforming = 0
-	/// to make sure we don't spam messages too often.
-	//var/goo_message_cooldown = 0
 	/// tells a dead infectee their stage, so they can know when-abouts they'll revive
 	var/stage_counter = 0
 

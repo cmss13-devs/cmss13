@@ -295,3 +295,14 @@
       inhands.
   - imageadd: Differentiates synth graft and surgical line, color coded now to represent
       the damage they fix.
+2023-12-16:
+  Birdtalon:
+  - rscadd: Xenomorph telegraph effects can now be any rgb colour.
+  GoldenAlpharex:
+  - bugfix: Chat highlights now escape special RegEx characters from non-RegEx highlights.
+  - bugfix: Broken RegEx expressions no longer cause the chat to bluescreen, allowing
+      you to properly fix them.
+  InsaneRed:
+  - spellcheck: Xenomorph text is now WE/OUR instead of YOU/YOUR
+  blackdragonTOW:
+  - rscadd: Added Radio Keys to the CL's briefcase

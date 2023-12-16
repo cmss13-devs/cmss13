@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Implemented xeno corpse weed merging"
+  - imageadd: "Added 48 sprites, 3 stages per caste silhouette, for xeno weeded corpses"
+  - bugfix: "Fixes ghosts not displaying their name on hover if weeded and weird behavior when orbited via ctrl+click"

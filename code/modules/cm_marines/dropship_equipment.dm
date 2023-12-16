@@ -159,7 +159,7 @@
 	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
-	point_cost = 500
+	point_cost = 200
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 	combat_equipment = FALSE

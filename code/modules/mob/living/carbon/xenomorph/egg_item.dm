@@ -102,6 +102,16 @@
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 
+	if(istype(get_area(T), /area/vehicle))
+		to_chat(user, SPAN_XENOWARNING("[src] cannot be planted inside a vehicle."))
+		return
+
+	for(var/obj/object in T.contents)
+		var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg
+		if(object.layer > initial(xeno_egg.layer))
+			to_chat(user, SPAN_XENOWARNING("[src] cannot be planted below objects that would obscure it."))
+			return
+
 	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
 
 	var/plant_time = 35

@@ -422,11 +422,11 @@
 
 		list("ARMOR", -1, null, null),
 		list("M10 Pattern Marine Helmet", 0, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Carrier Marine Armor", 0, /obj/item/clothing/suit/storage/marine/carrier, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Padded Marine Armor", 0, /obj/item/clothing/suit/storage/marine/padded, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Padless Marine Armor", 0, /obj/item/clothing/suit/storage/marine/padless, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Ridged Marine Armor", 0, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Skull Marine Armor", 0, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Carrier Marine Armor", 0, /obj/item/clothing/suit/storage/marine/medium/carrier, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padded Marine Armor", 0, /obj/item/clothing/suit/storage/marine/medium/padded, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padless Marine Armor", 0, /obj/item/clothing/suit/storage/marine/medium/padless, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Ridged Marine Armor", 0, /obj/item/clothing/suit/storage/marine/medium/padless_lines, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Skull Marine Armor", 0, /obj/item/clothing/suit/storage/marine/medium/skull, VENDOR_ITEM_REGULAR),
 		list("M3-EOD Pattern Heavy Armor", 0, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 0, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 

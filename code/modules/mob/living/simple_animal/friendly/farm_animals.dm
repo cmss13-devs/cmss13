@@ -83,7 +83,7 @@
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, SPAN_DANGER("The [O] is full."))
+			to_chat(user, SPAN_DANGER("[O] is full."))
 		if(!transfered)
 			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else

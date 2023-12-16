@@ -56,7 +56,7 @@
 
 		P.forceMove(user.loc)
 		user.put_in_hands(P)
-		to_chat(user, SPAN_NOTICE("You take [P] out of the [src]."))
+		to_chat(user, SPAN_NOTICE("You take [P] out of [src]."))
 	else
 		to_chat(user, SPAN_NOTICE("[src] is empty!"))
 

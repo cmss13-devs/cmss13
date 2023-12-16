@@ -83,3 +83,226 @@
   - bugfix: "Fixes runtime in spiders.dm\n/\U0001F191"
   Blundir:
   - rscadd: added new ammo boxes for various weapons and ammo
+2023-12-07:
+  Doubleumc:
+  - refactor: vehicle weapons can fire full-auto
+  - rscdel: no more controls for firing vehicle non-selected weapons
+  Drathek:
+  - bugfix: Fix some errors regarding the nano subystem
+  - code_imp: Reduced most preference re-saving when preferences are initially loaded
+  Ediblebomb:
+  - rscadd: M5 Helmet Gasmask now functions as a gasmask when in a marine helmet (and
+      yes, gasmasks do still have some functionality)
+  SabreML:
+  - admin: Fixed a freeze when opening the the 'Create Object' interface.
+  - admin: Adjusted the size and positioning of the 'Create Object/Mob/Turf' panels
+      so that everything fits into the window.
+  - spellcheck: Fixed instances of "The the" and "A the" in chat messages so that
+      they're just "The" instead. (Part 2)
+  VileBeggar:
+  - soundadd: The XM88 now has a scaling hit sound for every direct hit you manage
+      to land with it.
+  realforest2001:
+  - admin: Added a Check Ckey verb to analyze for multikey. We're watching you Wazowski.
+      Always watching.
+  - code_imp: Cleaned up 1 letter vars in the global datacore. Also made the entry
+      names reflect the real name of who they relate to, for VV purposes.
+  - code_imp: Paygrade shorthands now use defines.
+  - bugfix: CLF and Survivors are no longer privates.
+  - bugfix: Civillian Mr/Ms/Mx prefix now works correctly, and is the default for
+      new ID cards.
+  - bugfix: Fixes custom sent ERTs broadcasting when they shouldn't.
+  - bugfix: Fixes UPP friendly ERT telling staff it's hostile.
+  zzzmike:
+  - bugfix: disarm chance wasn't calculating properly
+  zzzmike, drathek, ihatethisengine2:
+  - rscadd: Lifeboat launch now has an ARES announcement followed by a 10 second delay
+      before doors close. The current launch functionality is preserved as Emergency
+      Launch.
+2023-12-08:
+  Birdtalon:
+  - bugfix: Wall weeds now destroyed when closed wall turfs are changed.
+  - code_imp: Reorganises some xeno code from xeno_defines.dm
+  Doubleumc:
+  - code_imp: projectiles smoothly animate their movement
+  Firartix, Birdtalon:
+  - bugfix: Fixed a logic error in Warrior code causing lunging some M2C/M56D users
+      to semi-permanently brick lunge.
+  Huffie56:
+  - maptweak: added a button inside the CL office to open the shutter for the door
+      and rearranged other buttons.
+  - maptweak: separated shutter for cl office door and for the windows.
+  - maptweak: add three lights in CL office and quarter.
+  - balance: add document and sling pouch to ASO vendor.
+  - balance: add shoulder webbing to ASO vendor.
+  - balance: add a bag section to ASO vendor and add leather satchel to it.
+  SabreML:
+  - spellcheck: Fixed instances of "The the" and "A the" in chat messages so that
+      they're just "The" instead. (Part 3)
+  alexguinea atticus-rezzer:
+  - rscadd: Adds alarm sound for lifeboats when launching
+  fira:
+  - bugfix: Cryoing someone now properly takes into account role weights for the purpose
+      of latejoin larvas. This should very slightly increase larvas amount.
+  - bugfix: Roundstart distributed amount of gear and ASRS points now takes shipside
+      role weights into account. This should moderately decrease budget and starting
+      gear.
+  - bugfix: Roundstart distributed amount of gear and ASRS points does not count Survivors
+      and Monkeys anymore. This should moderatly decrease budget and starting gear.
+  - rscadd: Main marine vendors and ASRS now get matching supply for every additional
+      marine latejoining, similar to larvas. This should be a substantial increase
+      over the course of a round. Supplies given are 60% of what a roundstart marine
+      would give.
+  - balance: Amount of gear in main marine vendors and ASRS supplies have been decreased
+      by 40% to help counteract added supplies the marines will get in latejoining.
+      Hopefully this also keeps reqs active to dispatch new supplies.
+  - bugfix: Altered a few items vendor stock scalings to be linear for use with the
+      new system, such as RTO pack, Drop Pouch and Machete Pouch.
+  - rscadd: Introduced ASRS supply pools. As proof of concept, ASRS now spawns a crate
+      of food ingredients every 30 minutes, in addition to regular gear.
+  - balance: ASRS now keeps track of partial crates awarded. This means if you should
+      receive 2.5 then 2.5 crates, you now get 2 then 3, rather than 2 and 2. This
+      is intended to result in smoother, more reliable transitions and scaling with
+      varying amount of Xenos on map.
+  - balance: Amount of ASRS crates awarded was reduced by about 15.5% to make up for
+      crates carrying over. Overall this should result in an about 5-10% reduction
+      in highpop crates, and ~10% increase in lowpop. Pop being based on xeno count.
+  - code_imp: Refactored part of ASRS supply code to be less of a painful, antique
+      artifact.
+  - bugfix: Fixed incorrect weighting in the ASRS supply code, effects on crate distributions
+      are unknown.
+  - bugfix: Fixed HPR ammo ASRS packs failing to spawn and ending up as MK1s instead.
+  - bugfix: Fixed ASRS order numbers not increasing the order IDs... This whole time..
+  ihatethisengine:
+  - balance: PO can remove queens dropship override again.
+  private-tristan:
+  - qol: Gun safety messages now use balloon alerts.
+2023-12-09:
+  InsaneRed:
+  - balance: Oppressor tail abduct changed to 15 seconds and lowers the windup to
+      7 deciseconds
+  - balance: ' Changes around the punch effect so that instead of having to meet demonic
+      standards, you only need to punch to lower your tail/hook on oppressor.'
+  - bugfix: You will now automatically punch chest if the target you are aiming at
+      is delimbed instead of doing nothing
+  harryob:
+  - rscdel: removes a nanoui debug verb that no one has ever used, ever
+  zzzmike:
+  - spellcheck: tablestun text is more clear that it stuns
+  - soundadd: unequip noise added to uniform, backpack, shoes.
+  - soundadd: sound added to tablestun
+  - sounddel: for disarms, whoosh only triggers on stun. otherwise, the miss sound
+      plays
+2023-12-10:
+  Birdtalon:
+  - bugfix: Resting once again cancels xenomorph evolve.
+  SabreML:
+  - bugfix: Fixed resin walls/membranes showing a welder deconstruction hint.
+  Zonespace27:
+  - balance: You cannot plant eggs inside vehicles.
+  - balance: Eggs can no longer be planted on tiles with objects that would obscure
+      them.
+  harryob:
+  - bugfix: xenos can construct in dropships during transport again
+  ihatethisengine:
+  - rscadd: locking lifeboats open the docks
+2023-12-11:
+  ihatethisengine:
+  - bugfix: fusion reactors cannot be destroyed with explosions
+2023-12-12:
+  InsaneRed:
+  - bugfix: M44 Heavy bullets no longer display a "4" when you get hit by them
+2023-12-13:
+  BadAtThisGame302:
+  - bugfix: fixed Engie not showing up an Engie Area on tacmap on LV-624
+  - bugfix: Fixed Research not showing up as a Research Area on tacmap on LV-624
+  Birdtalon:
+  - bugfix: Fixes a missing area on Almayer
+  NateDross:
+  - spellcheck: Edited 'M56 Battery' to 'M56 DV9 Battery' in requisitions munition
+      vendor
+  NessiePendragon:
+  - rscadd: Adds a new braid hairstyle.
+  blackdragonTOW:
+  - balance: GAU RoF doubled
+  harryob:
+  - rscadd: added a historical medal viewer
+  realforest2001:
+  - rscadd: Added a new almayer hull type (heavy reinforced) which is indestructible
+      by normal means until after hijack collision.
+  - rscadd: Added a new subtype of shutter that automatically opens or closes depending
+      on security level.
+  - maptweak: Maps both of the above around the engineering storeroom. Also adds the
+      walls between the firing ranges and around uniform vendors.
+  - maptweak: Manual control button for shutters over engineering storage in the CEs
+      office.
+  - code_imp: Changes hijack structural changes (walls/windows/windoors/ladders) to
+      use signals.
+  - ui: Shuttle manipulator UI is now slightly wider on initial startup.
+2023-12-14:
+  Contrabang:
+  - rscadd: The compass headgear will now tell you what direction you're facing when
+      on a planet.
+  - code_imp: Added a new ground environmental trait for a ground level in space.
+  InsaneRed:
+  - balance: Vanguard dash now restores your shield if you hit ANYONE instead of 2
+      people.
+  - balance: Vanguard buffed root now roots you for 2.5 seconds, unbuffed for 1 second
+  - qol: Vanguard's pierce has now a hit sound for better feedback
+  Nanu308:
+  - balance: Adjusted how much light is given by standard marine armor.
+  - balance: Light Armor remains the same range & power, Medium armor now gives a
+      bit more light, Leader B12 armor gives a bit more light & range, M4 (rto) gives
+      a bit more light, and Heavy armor give the most light and range compared to
+      before.
+  - code_imp: Changed inheritance for medium armor as the different sprite versions
+      were laid directly under the parent type instead of the medium one and so forth.
+  NateDross:
+  - bugfix: fixed hardhat action item icon
+  fira:
+  - bugfix: Some Xeno throws now immobilize their targets, ensuring they do not walk
+      out of the toss mid-flight.
+  realforest2001:
+  - bugfix: M56D can no longer be used by the dead.
+2023-12-15:
+  BeagleGaming1:
+  - imageadd: New sprite for Santa hats
+  Drathek:
+  - bugfix: Fix dead nested mobs disappearing when weeded
+  LTNTS:
+  - maptweak: remapped brig to be more concise, more interconnected, and easier to
+      navigate. And added more cells for when needed.
+  - qol: adds RiotTech (SecTech but for Riot Control with Rubber Bullets - obvs Code
+      Blue+ only)
+  - qol: CMP's locker requires Armory access to open now
+  - qol: suspects are now colored nardo gray in security list
+  NateDross:
+  - bugfix: Fixed hard hat user inventory head icon
+  SabreML:
+  - bugfix: Fixed camera sprites changing to their mapping helper after being EMPed.
+  Triiodine:
+  - rscadd: randomized barrels for mappers. You can instance the straps on and off!
+  - imageadd: 'Resprited the following: traffic cone, goldschlager bottle, cream carton,
+      oj carton, lime juice carton, tomato juice carton, pineapple juice carton, tequila
+      bottle, kahlua bottle, bottle of nothing, cognac bottle, critter crate (now
+      lore accurate), secgear crate, cm barrels, phoron crate, riot shield inhands,'
+  - imageadd: 'Added unique sprites for the following: vodka bottle, gin bottle,'
+  - imageadd: Fixed stray pixels on fridgeopen, open_plastic
+  - imagedel: Removed some unused legacy icons.
+  - bugfix: Hotdogs and burritos now properly appear when worn in a helmet in packaged
+      and unpackaged states.
+  - imageadd: The ME3 hand welder and industrial welder now have unique sprites and
+      inhands.
+  - imageadd: Differentiates synth graft and surgical line, color coded now to represent
+      the damage they fix.
+2023-12-16:
+  Birdtalon:
+  - rscadd: Xenomorph telegraph effects can now be any rgb colour.
+  GoldenAlpharex:
+  - bugfix: Chat highlights now escape special RegEx characters from non-RegEx highlights.
+  - bugfix: Broken RegEx expressions no longer cause the chat to bluescreen, allowing
+      you to properly fix them.
+  InsaneRed:
+  - spellcheck: Xenomorph text is now WE/OUR instead of YOU/YOUR
+  blackdragonTOW:
+  - rscadd: Added Radio Keys to the CL's briefcase

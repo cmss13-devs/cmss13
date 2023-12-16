@@ -35,6 +35,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	giver_mob = list()
 	giver_ckey = list()
 
+GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
 
 /proc/give_medal_award(medal_location, as_admin = FALSE, as_xo = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
@@ -51,12 +52,16 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(!chosen_recipient)
 		return FALSE
 
-	var/list/medals_list = list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL)
+	var/list/medals_list = GLOB.human_medals
 	if(as_xo)
 		medals_list = list(MARINE_CONDUCT_MEDAL)
 
 	// Pick a medal
+
 	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", medals_list)
+
+
+
 	if(!medal_type)
 		return FALSE
 
@@ -186,6 +191,8 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(give_medal_award(get_turf(printer), as_xo = card.paygrade == PAY_SHORT_MO3))
 		user.visible_message(SPAN_NOTICE("[printer] prints a medal."))
 
+GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL))
+
 /proc/give_jelly_award(datum/hive_status/hive, as_admin = FALSE)
 	if(!hive)
 		return FALSE
@@ -224,7 +231,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return FALSE
 
 	// Pick a jelly
-	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL), theme="hive_status")
+	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", GLOB.xeno_medals, theme="hive_status")
 	if(!medal_type)
 		return FALSE
 

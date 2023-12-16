@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - balance: "For SG,IO,medic,comtech standartize the binoculars section as fallow (Binoculars=5, Range Finder =10, Laser Designator=15)."

@@ -371,12 +371,25 @@
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
-"abB" = (
+"abz" = (
 /turf/open/floor/plating/icefloor{
 	dir = 1;
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
+"abB" = (
+/obj/docking_port/stationary/trijent_elevator{
+	height = 5;
+	width = 8;
+	id = "Requisitions_Lower";
+	name = "Requisitions Lower";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
+	airlock_exit = "elevator";
+	elevator_network = "A";
+	airlock_area = /area/shuttle/elevator4/underground
+	},
+/turf/open/gm/empty,
+/area/shuttle/elevator4/underground)
 "abC" = (
 /turf/open/floor/plating/icefloor{
 	dir = 5;
@@ -556,31 +569,18 @@
 	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
 	airlock_exit = "elevator";
 	elevator_network = "A";
-	airlock_area = /area/shuttle/elevator2/underground
+	airlock_area = /area/shuttle/elevator4/ground
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
-"acp" = (
+"acr" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
-"acr" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "Requisitions_Lower";
-	name = "Requisitions Lower";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
-	airlock_exit = "elevator";
-	elevator_network = "A";
-	airlock_area = /area/shuttle/elevator4/underground
-	},
-/turf/open/gm/empty,
-/area/shuttle/elevator4/underground)
 "acs" = (
 /turf/open/floor/plating/icefloor{
 	dir = 6;
@@ -41569,11 +41569,11 @@ aac
 aac
 aae
 abl
-abB
+abz
 abV
 abV
 abV
-acp
+acr
 abl
 acV
 acg
@@ -41851,11 +41851,11 @@ aac
 aac
 aae
 abl
-abB
+abz
 abV
 abV
 abV
-acp
+acr
 acF
 acW
 acg
@@ -42133,11 +42133,11 @@ aac
 aac
 aae
 abl
-abB
+abz
 abV
 abV
 abV
-acp
+acr
 abE
 acX
 acg
@@ -42415,11 +42415,11 @@ aac
 aac
 aae
 abl
-abB
+abz
 abV
 abV
 abV
-acp
+acr
 abE
 acY
 ado
@@ -42697,11 +42697,11 @@ aac
 aac
 aae
 abl
-abB
+abz
 abV
 abV
 abV
-acp
+acr
 acG
 acZ
 acg
@@ -42979,11 +42979,11 @@ aac
 aac
 aae
 abl
-abB
+abz
 abV
 abV
 abV
-acp
+acr
 abl
 ada
 acg
@@ -45650,7 +45650,7 @@ bbn
 bbn
 bbn
 bbn
-acr
+abB
 bdc
 bdb
 bdb

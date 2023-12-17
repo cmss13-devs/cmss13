@@ -366,22 +366,21 @@
 	},
 /area/ice_colony/exterior/surface/valley/north)
 "aby" = (
-/turf/closed/shuttle/elevator{
-	dir = 9
+/turf/open/floor/plating/icefloor{
+	dir = 9;
+	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
-"abz" = (
-/turf/closed/shuttle/elevator/gears,
-/area/shuttle/elevator4/ground)
-"abA" = (
-/turf/closed/shuttle/elevator/button/freight,
-/area/shuttle/elevator4/ground)
 "abB" = (
-/turf/closed/shuttle/elevator/freight,
+/turf/open/floor/plating/icefloor{
+	dir = 1;
+	icon_state = "warnplate"
+	},
 /area/shuttle/elevator4/ground)
 "abC" = (
-/turf/closed/shuttle/elevator{
-	dir = 5
+/turf/open/floor/plating/icefloor{
+	dir = 5;
+	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
 "abD" = (
@@ -457,23 +456,18 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northwest)
 "abT" = (
-/turf/closed/shuttle/elevator,
-/area/shuttle/elevator4/ground)
-"abU" = (
-/turf/open/shuttle/elevator,
+/turf/open/floor/plating/icefloor{
+	dir = 8;
+	icon_state = "warnplate"
+	},
 /area/shuttle/elevator4/ground)
 "abV" = (
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator4/ground)
-"abW" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4{
-	pixel_y = 30
-	},
-/turf/open/shuttle/elevator/grating,
+/turf/open/floor/plating/icefloor,
 /area/shuttle/elevator4/ground)
 "abX" = (
-/turf/closed/shuttle/elevator{
-	dir = 1
+/turf/open/floor/plating/icefloor{
+	dir = 4;
+	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
 "abY" = (
@@ -554,27 +548,43 @@
 	},
 /area/ice_colony/exterior/surface/cliff)
 "aco" = (
-/turf/closed/shuttle/elevator{
-	dir = 10
+/obj/docking_port/stationary/trijent_elevator{
+	height = 5;
+	width = 8;
+	id = "Requisitions_Upper";
+	name = "Requisitions Upper";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
+	airlock_exit = "elevator";
+	elevator_network = "A";
+	airlock_area = /area/shuttle/elevator2/underground
+	},
+/turf/open/floor/plating/icefloor{
+	dir = 10;
+	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
 "acp" = (
-/turf/closed/shuttle/elevator{
-	dir = 8
+/turf/open/floor/plating/icefloor{
+	icon_state = "warnplate"
 	},
-/area/shuttle/elevator4/ground)
-"acq" = (
-/obj/structure/machinery/door/airlock/multi_tile/elevator/freight,
-/turf/open/shuttle/elevator/grating,
 /area/shuttle/elevator4/ground)
 "acr" = (
-/turf/closed/shuttle/elevator{
-	dir = 4
+/obj/docking_port/stationary/trijent_elevator{
+	height = 5;
+	width = 8;
+	id = "Requisitions_Lower";
+	name = "Requisitions Lower";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
+	airlock_exit = "elevator";
+	elevator_network = "A";
+	airlock_area = /area/shuttle/elevator4/underground
 	},
-/area/shuttle/elevator4/ground)
+/turf/open/gm/empty,
+/area/shuttle/elevator4/underground)
 "acs" = (
-/turf/closed/shuttle/elevator{
-	dir = 6
+/turf/open/floor/plating/icefloor{
+	dir = 6;
+	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
 "act" = (
@@ -41559,10 +41569,10 @@ aac
 aac
 aae
 abl
-abz
-abU
+abB
 abV
-abU
+abV
+abV
 acp
 abl
 acV
@@ -41841,11 +41851,11 @@ aac
 aac
 aae
 abl
-abz
+abB
 abV
 abV
 abV
-acq
+acp
 acF
 acW
 acg
@@ -42123,11 +42133,11 @@ aac
 aac
 aae
 abl
-abA
-abW
-abU
+abB
 abV
 abV
+abV
+acp
 abE
 acX
 acg
@@ -42407,9 +42417,9 @@ aae
 abl
 abB
 abV
-abU
 abV
 abV
+acp
 abE
 acY
 ado
@@ -42687,11 +42697,11 @@ aac
 aac
 aae
 abl
-abz
+abB
 abV
 abV
 abV
-abV
+acp
 acG
 acZ
 acg
@@ -42969,11 +42979,11 @@ aac
 aac
 aae
 abl
-abz
-abU
+abB
 abV
-abU
-acr
+abV
+abV
+acp
 abl
 ada
 acg
@@ -45640,7 +45650,7 @@ bbn
 bbn
 bbn
 bbn
-bbn
+acr
 bdc
 bdb
 bdb

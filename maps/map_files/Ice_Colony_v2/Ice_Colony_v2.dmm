@@ -792,7 +792,7 @@
 "ada" = (
 /obj/item/lightstick/planted,
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle4";
+	shuttleId = "ice_classic_shuttle";
 	dockId = "Upper_Requisitions";
 	pixel_y = 32
 	},
@@ -5516,7 +5516,7 @@
 /area/ice_colony/surface/dorms)
 "aqb" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle2";
+	shuttleId = "ice_classic_shuttle3";
 	dockId = "Upper_Dorms";
 	pixel_y = 32
 	},
@@ -12878,7 +12878,7 @@
 /area/ice_colony/surface/hangar/checkpoint)
 "aKN" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle";
+	shuttleId = "ice_classic_shuttle4";
 	dockId = "Upper_Arrivals";
 	pixel_y = 32
 	},
@@ -14273,7 +14273,7 @@
 /obj/docking_port/stationary/trijent_elevator{
 	airlock_area = /area/shuttle/elevator3/ground;
 	airlock_exit = "elevator";
-	elevator_network = "omicorn";
+	elevator_network = "Omicorn";
 	height = 5;
 	width = 8;
 	name = "Upper Omicorn";
@@ -18844,7 +18844,7 @@
 /area/ice_colony/underground/requesition)
 "bdN" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle4";
+	shuttleId = "ice_classic_shuttle";
 	dockId = "Lower_Requisitions";
 	pixel_y = 32
 	},
@@ -22077,7 +22077,7 @@
 /area/ice_colony/underground/hallway/north_west)
 "bom" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle2";
+	shuttleId = "ice_classic_shuttle3";
 	dockId = "Lower_Dorms";
 	pixel_y = 32
 	},
@@ -33255,7 +33255,7 @@
 /area/ice_colony/underground/hallway/south_east)
 "bUm" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle1";
+	shuttleId = "ice_classic_shuttle4";
 	dockId = "Lower_Arrivals";
 	pixel_y = 32
 	},
@@ -35068,7 +35068,7 @@
 "jAR" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
 	dockId = "Omicorn_Upper";
-	shuttleId = "ice_classic_shuttle3"
+	shuttleId = "ice_classic_shuttle2"
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/surface/research)
@@ -35619,7 +35619,7 @@
 "uiF" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
 	dockId = "Omicorn_Lower";
-	shuttleId = "ice_classic_shuttle3"
+	shuttleId = "ice_classic_shuttle2"
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/underground/research)
@@ -35821,7 +35821,7 @@
 /obj/docking_port/stationary/trijent_elevator{
 	airlock_area = /area/shuttle/elevator3/underground;
 	airlock_exit = "elevator";
-	elevator_network = "omicorn";
+	elevator_network = "Omicorn";
 	height = 5;
 	width = 8;
 	name = "Lower Omicorn";

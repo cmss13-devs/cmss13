@@ -52712,6 +52712,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
+"mIr" = (
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = null;
+	pixel_y = 17;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/numbertwobunks)
 "mIy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -59339,9 +59347,6 @@
 /area/almayer/shipboard/port_missiles)
 "puo" = (
 /obj/structure/machinery/light,
-/obj/structure/closet/secure_closet/personal/cabinet{
-	req_access = null
-	},
 /turf/open/floor/almayer,
 /area/almayer/living/numbertwobunks)
 "pur" = (
@@ -104825,7 +104830,7 @@ dum
 wVW
 wVW
 wVW
-rvA
+mIr
 aGZ
 awF
 cST

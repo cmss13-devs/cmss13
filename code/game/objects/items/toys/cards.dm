@@ -271,6 +271,10 @@
 	if(!concealed)
 		. += " ([length(cards)] card\s)"
 
+/obj/item/toy/handcard/Destroy(force)
+	. = ..()
+	cards = null
+
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"
 	desc = "An Ace of Spades"
@@ -390,6 +394,8 @@
 /obj/item/toy/handcard/MouseDrop(atom/over)
 	if(usr != over || !Adjacent(usr))
 		return
+	if(ismob(loc))
+		return
 	usr.put_in_hands(src)
 
 /obj/item/toy/handcard/get_examine_text(mob/user)
@@ -422,6 +428,12 @@
 		else
 			name = "a playing card"
 			desc = "A playing card."
+
+	if(length(cards) >= 200)
+		// BYOND will flat out choke when using thousands of cards for some unknown reason,
+		// possibly due to the transformed overlay stacking below. Nobody's gonna see the
+		// difference past 40 or so anyway.
+		return
 
 	overlays.Cut()
 

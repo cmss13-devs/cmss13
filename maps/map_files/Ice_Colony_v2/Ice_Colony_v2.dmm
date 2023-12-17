@@ -377,7 +377,6 @@
 	width = 8;
 	id = "Requisitions_Lower";
 	name = "Requisitions Lower";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator;
 	airlock_exit = "elevator";
 	elevator_network = "A";
 	airlock_area = /area/shuttle/elevator4/underground
@@ -18139,9 +18138,7 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad)
 "bbn" = (
-/turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/icefloor,
 /area/shuttle/elevator4/underground)
 "bbo" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
@@ -34638,12 +34635,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/tcomms)
-"dhw" = (
-/turf/open/floor/plating/icefloor{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/shuttle/elevator4/underground)
 "dxl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -34663,12 +34654,6 @@
 "dPa" = (
 /turf/open/space/basic,
 /area/ice_colony/exterior/surface/clearing/north)
-"dZA" = (
-/turf/open/floor/plating/icefloor{
-	dir = 9;
-	icon_state = "warnplate"
-	},
-/area/shuttle/elevator4/underground)
 "ecS" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -34721,6 +34706,11 @@
 	icon_state = "darkgreen2"
 	},
 /area/ice_colony/surface/hydroponics/lobby)
+"fbG" = (
+/turf/open/floor/plating/icefloor{
+	icon_state = "warnplate"
+	},
+/area/shuttle/elevator4/underground)
 "fhw" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
@@ -34836,12 +34826,6 @@
 "hrN" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/clearing/north)
-"hsG" = (
-/turf/open/floor/plating/icefloor{
-	dir = 6;
-	icon_state = "warnplate"
-	},
-/area/shuttle/elevator4/underground)
 "hvv" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -34877,6 +34861,12 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"ibS" = (
+/turf/open/floor/plating/icefloor{
+	dir = 6;
+	icon_state = "warnplate"
+	},
+/area/shuttle/elevator4/underground)
 "iog" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/icefloor{
@@ -34884,6 +34874,12 @@
 	icon_state = "floor7"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"irm" = (
+/turf/open/floor/plating/icefloor{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/shuttle/elevator4/underground)
 "iBu" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/paper/research_notes,
@@ -34968,6 +34964,12 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/alpha)
+"jGx" = (
+/turf/open/floor/plating/icefloor{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/shuttle/elevator4/underground)
 "jZI" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/shuttle_control/dropship2,
@@ -35002,6 +35004,12 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/underground/storage)
+"ksK" = (
+/turf/open/floor/plating/icefloor{
+	dir = 9;
+	icon_state = "warnplate"
+	},
+/area/shuttle/elevator4/underground)
 "kuL" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/far,
@@ -35097,6 +35105,12 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/beta)
+"mon" = (
+/turf/open/floor/plating/icefloor{
+	dir = 5;
+	icon_state = "warnplate"
+	},
+/area/shuttle/elevator4/underground)
 "mpT" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/ice,
@@ -35228,9 +35242,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
-"qrC" = (
-/turf/open/floor/plating/icefloor,
-/area/shuttle/elevator4/underground)
 "qwB" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /obj/effect/landmark/objective_landmark/close,
@@ -35244,6 +35255,14 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"qGC" = (
+/obj/docking_port/stationary/trijent_elevator{
+	roundstart_template = s
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/ice_colony/underground/requesition)
 "qRy" = (
 /obj/structure/closet/toolcloset,
 /obj/structure/machinery/door_control{
@@ -35265,12 +35284,6 @@
 	icon_state = "warnplate"
 	},
 /area/ice_colony/surface/tcomms)
-"rdC" = (
-/turf/open/floor/plating/icefloor{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/shuttle/elevator4/underground)
 "rmR" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/plating/icefloor,
@@ -35492,12 +35505,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
-"uqx" = (
-/turf/open/floor/plating/icefloor{
-	dir = 5;
-	icon_state = "warnplate"
-	},
-/area/shuttle/elevator4/underground)
 "urm" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating/icefloor{
@@ -35519,6 +35526,12 @@
 "uBE" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/valley/southwest)
+"uIe" = (
+/turf/open/floor/plating/icefloor{
+	dir = 4;
+	icon_state = "warnplate"
+	},
+/area/shuttle/elevator4/underground)
 "uJU" = (
 /obj/structure/toilet,
 /obj/structure/machinery/light/small{
@@ -35642,12 +35655,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/disposals)
-"xTN" = (
-/turf/open/floor/plating/icefloor{
-	dir = 1;
-	icon_state = "warnplate"
-	},
-/area/shuttle/elevator4/underground)
 "xWm" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -45694,10 +45701,10 @@ aZF
 aZF
 aZF
 bba
-dZA
-rdC
-rdC
-rdC
+ksK
+irm
+irm
+irm
 abz
 bdc
 bdb
@@ -45976,11 +45983,11 @@ aZF
 aZF
 aZF
 bba
-xTN
-qrC
-qrC
-qrC
+jGx
 bbn
+bbn
+bbn
+fbG
 bba
 bdJ
 beu
@@ -46258,15 +46265,15 @@ aZF
 aZF
 aZF
 bba
-xTN
-qrC
-qrC
-qrC
+jGx
 bbn
+bbn
+bbn
+fbG
 bdd
 bdK
 bdL
-bdL
+qGC
 bdL
 bgZ
 bdL
@@ -46540,11 +46547,11 @@ aZF
 aZF
 aZF
 bba
-xTN
-qrC
-qrC
-qrC
+jGx
 bbn
+bbn
+bbn
+fbG
 bde
 bdL
 bdL
@@ -46822,11 +46829,11 @@ aZF
 aZF
 aZF
 bba
-xTN
-qrC
-qrC
-qrC
+jGx
 bbn
+bbn
+bbn
+fbG
 bde
 bdL
 bdL
@@ -47104,11 +47111,11 @@ aZF
 aZF
 aZF
 bba
-xTN
-qrC
-qrC
-qrC
+jGx
 bbn
+bbn
+bbn
+fbG
 bdf
 bdM
 bev
@@ -47386,11 +47393,11 @@ aZF
 aZF
 aZF
 bba
-xTN
-qrC
-qrC
-qrC
+jGx
 bbn
+bbn
+bbn
+fbG
 bba
 bdN
 bfn
@@ -47668,11 +47675,11 @@ aZF
 aZF
 aZF
 bba
-uqx
-dhw
-dhw
-dhw
-hsG
+mon
+uIe
+uIe
+uIe
+ibS
 bba
 bde
 bfo

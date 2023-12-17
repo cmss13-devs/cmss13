@@ -7452,6 +7452,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/structure/machinery/sensortower,
 /turf/open/floor{
 	icon_state = "darkgreencorners2"
 	},

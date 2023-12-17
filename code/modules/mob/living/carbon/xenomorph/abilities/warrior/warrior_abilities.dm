@@ -36,7 +36,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_punch
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 4.5 seconds
+	xeno_cooldown = 4.5 SECONDS
 
 	// Configurables
 	var/base_damage = 25

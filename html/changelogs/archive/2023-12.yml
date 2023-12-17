@@ -295,3 +295,48 @@
       inhands.
   - imageadd: Differentiates synth graft and surgical line, color coded now to represent
       the damage they fix.
+2023-12-16:
+  Birdtalon:
+  - rscadd: Xenomorph telegraph effects can now be any rgb colour.
+  GoldenAlpharex:
+  - bugfix: Chat highlights now escape special RegEx characters from non-RegEx highlights.
+  - bugfix: Broken RegEx expressions no longer cause the chat to bluescreen, allowing
+      you to properly fix them.
+  InsaneRed:
+  - spellcheck: Xenomorph text is now WE/OUR instead of YOU/YOUR
+  blackdragonTOW:
+  - rscadd: Added Radio Keys to the CL's briefcase
+2023-12-17:
+  BadAtThisGame302:
+  - rscadd: Added a LV-624 Corporate Liaison Survivor.
+  - rscadd: Added a Flight Control Operator Survivor to Solaris Ridge (for now, might
+      be added to more maps soon!).
+  - qol: made survivor.dm easier to use by moving the basic security surv with the
+      engineer/scientist/doctor which it wierdly enough it wasn't with.
+  - balance: rebalanced CL a lockable satchel.
+  - bugfix: fixed the survivor.dm comments falsely saying that some surv types are
+      not used anywhere when they are.
+  - spellcheck: fixed the LV-624 announcement text, made it roll off the tongue easier.
+  - code_imp: changed CL and ICC survs shoes from centcom? To laceup.
+  Drathek:
+  - rscadd: Implemented xeno corpse weed merging
+  - imageadd: Added 48 sprites, 3 stages per caste silhouette, for xeno weeded corpses
+  - bugfix: Fixes ghosts not displaying their name on hover if weeded and weird behavior
+      when orbited via ctrl+click
+  Huffie56:
+  - balance: For SG,IO,medic,comtech standartize the binoculars section as fallow
+      (Binoculars=5, Range Finder =10, Laser Designator=15).
+  - balance: reduce the number of stages from 5 to 3. each stage take 6 min or 360s.
+  - balance: rework the logic that handle the disease progress
+  - balance: A-Set stage_prob to zero to prevent random stage increase.
+  - balance: B-add a stage_level variable that when is at-least 360 make an increase
+      of the disease stage...
+  - balance: C-add an infection_rate variable that handle how fast the stage_level
+      increase passively.
+  - balance: D-infection_rate is quadruple when the host is dead.
+  - balance: E-I also added that the goo messages (you feel warm ....) give a boost
+      to stage_level to add some randomness to the infection progress.
+  SpartanBobby, LCMS1:
+  - maptweak: Numerous Fixes for new brig
+  cuberound:
+  - balance: DS doorgun can shoot over cades

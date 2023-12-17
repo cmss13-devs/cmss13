@@ -272,6 +272,10 @@
 	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Queen_1","Queen_2","Queen_3")
+	weed_food_states_flipped = list("Queen_1","Queen_2","Queen_3")
+
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/queen_ability_cooldown = 0

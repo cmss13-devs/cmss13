@@ -126,10 +126,10 @@
 /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm
 	elevator_network = "dorm"
 
-/datum/map_template/shuttle/trijent_elevator/ice_elevator/Arrivals
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/arrivals
 	elevator_network = "Arrivals"
-/datum/map_template/shuttle/trijent_elevator/ice_elevator/Omicorn
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/omicorn
 	elevator_network = "Omicorn"
 
-/datum/map_template/shuttle/trijent_elevator/ice_elevator/Requisitions
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/requisitions
 	elevator_network = "Requisitions"

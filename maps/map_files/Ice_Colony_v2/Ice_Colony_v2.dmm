@@ -568,7 +568,7 @@
 	width = 8;
 	id = "Upper_Requisitions";
 	name = "Upper Requisitions";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator;
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/requisitions;
 	airlock_exit = "elevator";
 	elevator_network = "Requisitions";
 	airlock_area = /area/shuttle/elevator4/ground
@@ -5265,7 +5265,7 @@
 	width = 8;
 	id = "Upper_Dorms";
 	name = "Upper Dorms";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator;
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
 	airlock_exit = "elevator";
 	elevator_network = "Dorms";
 	airlock_area = /area/shuttle/elevator2/ground
@@ -12696,7 +12696,7 @@
 	width = 8;
 	id = "Upper_Arrivals";
 	name = "Upper_Arrivals";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator;
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/arrivals;
 	airlock_exit = "elevator";
 	elevator_network = "A";
 	airlock_area = /area/shuttle/elevator1/ground
@@ -14276,7 +14276,7 @@
 	elevator_network = "Omicorn";
 	id = "Upper Omicorn";
 	name = "Upper Omicorn";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/Omicorn
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 10;
@@ -35797,6 +35797,17 @@
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator1/underground)
+"xMv" = (
+/obj/docking_port/mobile/trijent_elevator/ice_classic{
+	airlock_area = "/area/shuttle/elevator3/ground";
+	airlock_exit = "elevator";
+	elevator_network = "Omicorn";
+	id = "Upper Omicorn";
+	name = "Upper Omicorn";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/ice_colony/exterior/surface/valley/northwest)
 "xRx" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating,
@@ -50832,7 +50843,7 @@ aaJ
 aaI
 aaI
 aaI
-aaI
+xMv
 aaI
 ahA
 ahA

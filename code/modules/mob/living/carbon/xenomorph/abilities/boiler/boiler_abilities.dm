@@ -52,7 +52,7 @@
 	name = "Bombard"
 	ability_name = "Bombard"
 	action_icon_state = "bombard"
-	cooldown_message = "Your belly fills with another gas glob. You are are ready to bombard again."
+	cooldown_message = "Our belly fills with another gas glob. We are ready to bombard again."
 	sound_to_play = 'sound/effects/blobattack.ogg'
 	aim_turf = TRUE
 	/// These are actions that will be placed on cooldown for the cooldown_duration when activates. Added acid shroud for now because it can be abused

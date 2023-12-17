@@ -239,3 +239,104 @@
   - code_imp: Changes hijack structural changes (walls/windows/windoors/ladders) to
       use signals.
   - ui: Shuttle manipulator UI is now slightly wider on initial startup.
+2023-12-14:
+  Contrabang:
+  - rscadd: The compass headgear will now tell you what direction you're facing when
+      on a planet.
+  - code_imp: Added a new ground environmental trait for a ground level in space.
+  InsaneRed:
+  - balance: Vanguard dash now restores your shield if you hit ANYONE instead of 2
+      people.
+  - balance: Vanguard buffed root now roots you for 2.5 seconds, unbuffed for 1 second
+  - qol: Vanguard's pierce has now a hit sound for better feedback
+  Nanu308:
+  - balance: Adjusted how much light is given by standard marine armor.
+  - balance: Light Armor remains the same range & power, Medium armor now gives a
+      bit more light, Leader B12 armor gives a bit more light & range, M4 (rto) gives
+      a bit more light, and Heavy armor give the most light and range compared to
+      before.
+  - code_imp: Changed inheritance for medium armor as the different sprite versions
+      were laid directly under the parent type instead of the medium one and so forth.
+  NateDross:
+  - bugfix: fixed hardhat action item icon
+  fira:
+  - bugfix: Some Xeno throws now immobilize their targets, ensuring they do not walk
+      out of the toss mid-flight.
+  realforest2001:
+  - bugfix: M56D can no longer be used by the dead.
+2023-12-15:
+  BeagleGaming1:
+  - imageadd: New sprite for Santa hats
+  Drathek:
+  - bugfix: Fix dead nested mobs disappearing when weeded
+  LTNTS:
+  - maptweak: remapped brig to be more concise, more interconnected, and easier to
+      navigate. And added more cells for when needed.
+  - qol: adds RiotTech (SecTech but for Riot Control with Rubber Bullets - obvs Code
+      Blue+ only)
+  - qol: CMP's locker requires Armory access to open now
+  - qol: suspects are now colored nardo gray in security list
+  NateDross:
+  - bugfix: Fixed hard hat user inventory head icon
+  SabreML:
+  - bugfix: Fixed camera sprites changing to their mapping helper after being EMPed.
+  Triiodine:
+  - rscadd: randomized barrels for mappers. You can instance the straps on and off!
+  - imageadd: 'Resprited the following: traffic cone, goldschlager bottle, cream carton,
+      oj carton, lime juice carton, tomato juice carton, pineapple juice carton, tequila
+      bottle, kahlua bottle, bottle of nothing, cognac bottle, critter crate (now
+      lore accurate), secgear crate, cm barrels, phoron crate, riot shield inhands,'
+  - imageadd: 'Added unique sprites for the following: vodka bottle, gin bottle,'
+  - imageadd: Fixed stray pixels on fridgeopen, open_plastic
+  - imagedel: Removed some unused legacy icons.
+  - bugfix: Hotdogs and burritos now properly appear when worn in a helmet in packaged
+      and unpackaged states.
+  - imageadd: The ME3 hand welder and industrial welder now have unique sprites and
+      inhands.
+  - imageadd: Differentiates synth graft and surgical line, color coded now to represent
+      the damage they fix.
+2023-12-16:
+  Birdtalon:
+  - rscadd: Xenomorph telegraph effects can now be any rgb colour.
+  GoldenAlpharex:
+  - bugfix: Chat highlights now escape special RegEx characters from non-RegEx highlights.
+  - bugfix: Broken RegEx expressions no longer cause the chat to bluescreen, allowing
+      you to properly fix them.
+  InsaneRed:
+  - spellcheck: Xenomorph text is now WE/OUR instead of YOU/YOUR
+  blackdragonTOW:
+  - rscadd: Added Radio Keys to the CL's briefcase
+2023-12-17:
+  BadAtThisGame302:
+  - rscadd: Added a LV-624 Corporate Liaison Survivor.
+  - rscadd: Added a Flight Control Operator Survivor to Solaris Ridge (for now, might
+      be added to more maps soon!).
+  - qol: made survivor.dm easier to use by moving the basic security surv with the
+      engineer/scientist/doctor which it wierdly enough it wasn't with.
+  - balance: rebalanced CL a lockable satchel.
+  - bugfix: fixed the survivor.dm comments falsely saying that some surv types are
+      not used anywhere when they are.
+  - spellcheck: fixed the LV-624 announcement text, made it roll off the tongue easier.
+  - code_imp: changed CL and ICC survs shoes from centcom? To laceup.
+  Drathek:
+  - rscadd: Implemented xeno corpse weed merging
+  - imageadd: Added 48 sprites, 3 stages per caste silhouette, for xeno weeded corpses
+  - bugfix: Fixes ghosts not displaying their name on hover if weeded and weird behavior
+      when orbited via ctrl+click
+  Huffie56:
+  - balance: For SG,IO,medic,comtech standartize the binoculars section as fallow
+      (Binoculars=5, Range Finder =10, Laser Designator=15).
+  - balance: reduce the number of stages from 5 to 3. each stage take 6 min or 360s.
+  - balance: rework the logic that handle the disease progress
+  - balance: A-Set stage_prob to zero to prevent random stage increase.
+  - balance: B-add a stage_level variable that when is at-least 360 make an increase
+      of the disease stage...
+  - balance: C-add an infection_rate variable that handle how fast the stage_level
+      increase passively.
+  - balance: D-infection_rate is quadruple when the host is dead.
+  - balance: E-I also added that the goo messages (you feel warm ....) give a boost
+      to stage_level to add some randomness to the infection progress.
+  SpartanBobby, LCMS1:
+  - maptweak: Numerous Fixes for new brig
+  cuberound:
+  - balance: DS doorgun can shoot over cades

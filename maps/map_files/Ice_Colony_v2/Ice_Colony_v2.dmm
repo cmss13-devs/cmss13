@@ -377,19 +377,6 @@
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
-"abB" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "Requisitions_Lower";
-	name = "Requisitions Lower";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
-	airlock_exit = "elevator";
-	elevator_network = "A";
-	airlock_area = /area/shuttle/elevator4/underground
-	},
-/turf/open/gm/empty,
-/area/shuttle/elevator4/underground)
 "abC" = (
 /turf/open/floor/plating/icefloor{
 	dir = 5;
@@ -474,7 +461,7 @@
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
-"abV" = (
+"abW" = (
 /turf/open/floor/plating/icefloor,
 /area/shuttle/elevator4/ground)
 "abX" = (
@@ -564,7 +551,7 @@
 /obj/docking_port/stationary/trijent_elevator{
 	height = 5;
 	width = 8;
-	id = "Requisitions_Upper";
+	id = "s";
 	name = "Requisitions Upper";
 	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
 	airlock_exit = "elevator";
@@ -576,6 +563,19 @@
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
+"acq" = (
+/obj/docking_port/stationary/trijent_elevator{
+	height = 5;
+	width = 8;
+	id = "Requisitions_Lower";
+	name = "Requisitions Lower";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
+	airlock_exit = "elevator";
+	elevator_network = "A";
+	airlock_area = /area/shuttle/elevator4/underground
+	},
+/turf/open/gm/empty,
+/area/shuttle/elevator4/underground)
 "acr" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate"
@@ -789,8 +789,10 @@
 /area/ice_colony/surface/requesitions)
 "ada" = (
 /obj/item/lightstick/planted,
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4{
-	pixel_y = 30
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
+	shuttleId = "ice_classic_shuttle4";
+	dockId = "Requisitions_Upper";
+	pixel_y = 32
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
@@ -41570,9 +41572,9 @@ aac
 aae
 abl
 abz
-abV
-abV
-abV
+abW
+abW
+abW
 acr
 abl
 acV
@@ -41852,9 +41854,9 @@ aac
 aae
 abl
 abz
-abV
-abV
-abV
+abW
+abW
+abW
 acr
 acF
 acW
@@ -42134,9 +42136,9 @@ aac
 aae
 abl
 abz
-abV
-abV
-abV
+abW
+abW
+abW
 acr
 abE
 acX
@@ -42416,9 +42418,9 @@ aac
 aae
 abl
 abz
-abV
-abV
-abV
+abW
+abW
+abW
 acr
 abE
 acY
@@ -42698,9 +42700,9 @@ aac
 aae
 abl
 abz
-abV
-abV
-abV
+abW
+abW
+abW
 acr
 acG
 acZ
@@ -42980,9 +42982,9 @@ aac
 aae
 abl
 abz
-abV
-abV
-abV
+abW
+abW
+abW
 acr
 abl
 ada
@@ -45650,7 +45652,7 @@ bbn
 bbn
 bbn
 bbn
-abB
+acq
 bdc
 bdb
 bdb

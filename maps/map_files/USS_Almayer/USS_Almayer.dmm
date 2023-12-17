@@ -59009,6 +59009,15 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/aft_hallway)
+"peE" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/port_point_defense)
 "peO" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = -17;
@@ -110553,15 +110562,15 @@ bWe
 bWn
 eCn
 uXr
-cQM
+peE
 bGN
 eCn
 uXr
-cQM
+peE
 bWn
 eCn
 uXr
-cQM
+peE
 bWn
 bWe
 bVU

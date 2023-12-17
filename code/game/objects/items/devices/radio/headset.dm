@@ -14,7 +14,7 @@
 	inherent_traits = list(TRAIT_ITEM_EAR_EXCLUSIVE)
 	var/translate_apollo = FALSE
 	var/translate_hive = FALSE
-	var/maximum_keys = 5
+	var/maximum_keys = 3
 	var/list/initial_keys //Typepaths of objects to be created at initialisation.
 	var/list/keys //Actual objects.
 	maxf = 1489
@@ -520,6 +520,7 @@
 	name = "corporate liaison radio headset"
 	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY."
 	icon_state = "wy_headset"
+	var/maximum_keys = 5
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
 
 /obj/item/device/radio/headset/almayer/reporter

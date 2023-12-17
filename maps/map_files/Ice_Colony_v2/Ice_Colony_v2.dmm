@@ -12612,7 +12612,7 @@
 	id = "Lower_Arrivals";
 	name = "Lower Arrivals";
 	airlock_exit = "elevator";
-	elevator_network = "A";
+	elevator_network = "Arrivals";
 	airlock_area = /area/shuttle/elevator1/underground
 	},
 /turf/open/floor/plating/icefloor{
@@ -12698,7 +12698,7 @@
 	name = "Upper_Arrivals";
 	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/arrivals;
 	airlock_exit = "elevator";
-	elevator_network = "A";
+	elevator_network = "Arrivals";
 	airlock_area = /area/shuttle/elevator1/ground
 	},
 /turf/open/floor/plating/icefloor{
@@ -14276,7 +14276,7 @@
 	elevator_network = "Omicorn";
 	id = "Upper Omicorn";
 	name = "Upper Omicorn";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/Omicorn
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/omicorn
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 10;
@@ -34765,8 +34765,16 @@
 	},
 /area/ice_colony/surface/tcomms)
 "dPa" = (
-/turf/open/space/basic,
-/area/ice_colony/exterior/surface/clearing/north)
+/obj/docking_port/mobile/trijent_elevator/ice_classic{
+	airlock_area = "/area/shuttle/elevator3/ground";
+	airlock_exit = "elevator";
+	elevator_network = "Omicorn";
+	id = "Upper Omicorn";
+	name = "Upper Omicorn";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/ice_colony/exterior/surface/valley/northwest)
 "ecS" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -35797,17 +35805,6 @@
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator1/underground)
-"xMv" = (
-/obj/docking_port/mobile/trijent_elevator/ice_classic{
-	airlock_area = "/area/shuttle/elevator3/ground";
-	airlock_exit = "elevator";
-	elevator_network = "Omicorn";
-	id = "Upper Omicorn";
-	name = "Upper Omicorn";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
-	},
-/turf/open/auto_turf/snow/layer3,
-/area/ice_colony/exterior/surface/valley/northwest)
 "xRx" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating,
@@ -50843,7 +50840,7 @@ aaJ
 aaI
 aaI
 aaI
-xMv
+dPa
 aaI
 ahA
 ahA
@@ -81022,7 +81019,7 @@ aax
 aax
 agP
 aib
-dPa
+ahj
 aob
 aov
 aoY

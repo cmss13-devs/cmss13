@@ -35067,7 +35067,7 @@
 /area/ice_colony/exterior/underground/caves/open)
 "jAR" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	dockId = "Omicorn_Upper";
+	dockId = "Upper_Omicorn";
 	shuttleId = "ice_classic_shuttle2"
 	},
 /turf/closed/wall/r_wall/unmeltable,
@@ -35618,7 +35618,7 @@
 /area/ice_colony/surface/hydroponics/south)
 "uiF" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	dockId = "Omicorn_Lower";
+	dockId = "Lower_Omicorn";
 	shuttleId = "ice_classic_shuttle2"
 	},
 /turf/closed/wall/r_wall/unmeltable,

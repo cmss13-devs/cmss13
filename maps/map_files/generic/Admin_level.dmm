@@ -116,6 +116,12 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/ert_station)
+"cd" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "co" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -244,6 +250,12 @@
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
+/area/adminlevel/ert_station)
+"eH" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "eQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -544,6 +556,12 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/ert_station)
+"om" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "op" = (
 /obj/structure/machinery/cryopod,
 /obj/structure/sign/safety/cryo{
@@ -688,6 +706,10 @@
 	icon_state = "plating"
 	},
 /area/tdome/tdomeobserve)
+"qD" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "rf" = (
 /obj/structure/sink{
 	dir = 8;
@@ -704,6 +726,12 @@
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
+/area/adminlevel/ert_station)
+"sd" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "sj" = (
 /obj/structure/machinery/faxmachine,
@@ -731,6 +759,17 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
+"sV" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/obj/structure/machinery/door_control{
+	id = "ERT Lock 1";
+	name = "Hangar Lock";
+	pixel_x = 24
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "th" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
@@ -742,8 +781,8 @@
 /turf/open/floor/carpet,
 /area/centcom/living)
 "tP" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
 	},
 /obj/structure/machinery/door_control{
 	id = "ERT Lock 4";
@@ -901,6 +940,12 @@
 	icon_state = "w-y2"
 	},
 /area/tdome)
+"wn" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "wp" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -1007,8 +1052,8 @@
 	},
 /area/adminlevel/ert_station)
 "ym" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
 	},
 /obj/structure/machinery/door_control{
 	id = "ERT Lock 2";
@@ -1070,6 +1115,10 @@
 	},
 /area/adminlevel/ert_station)
 "zr" = (
+/obj/structure/sign/poster{
+	serial_number = 16;
+	pixel_y = 32
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver"
@@ -1110,6 +1159,12 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station)
+"zP" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "AI" = (
 /obj/structure/sign/poster{
 	pixel_x = -32;
@@ -1127,6 +1182,10 @@
 "AS" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdome2)
+"Bb" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "Bv" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2
@@ -1173,6 +1232,12 @@
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
+/area/adminlevel/ert_station)
+"Cb" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Cc" = (
 /obj/effect/landmark/sim_camera,
@@ -1276,6 +1341,12 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
+"DM" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "DV" = (
 /turf/open/floor/tdome{
 	icon_state = "tcomms"
@@ -1322,13 +1393,8 @@
 	},
 /area/adminlevel/ert_station)
 "EG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/machinery/door_control{
-	id = "ERT Lock 1";
-	name = "Hangar Lock";
-	pixel_x = 24
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
@@ -1384,23 +1450,10 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station)
 "FO" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	damage_cap = 50000;
-	name = "\improper Hangar";
-	no_panel = 1
-	},
 /obj/structure/sign/safety/debark_lounge{
-	pixel_x = 15;
-	pixel_y = -32
+	pixel_x = 15
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	id = "ERT Lock 1";
-	unacidable = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
 "FT" = (
 /turf/open/floor/almayer{
@@ -1622,6 +1675,10 @@
 	icon_state = "orange"
 	},
 /area/adminlevel/ert_station)
+"JM" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "JT" = (
 /obj/structure/sink{
 	dir = 8;
@@ -1634,6 +1691,12 @@
 "JW" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor/wood/ship,
+/area/adminlevel/ert_station)
+"Kb" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Kk" = (
 /turf/closed/wall/mineral/gold,
@@ -1945,6 +2008,12 @@
 "OT" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdomeobserve)
+"Pf" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "Po" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
@@ -2349,8 +2418,8 @@
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Wp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
 	},
 /obj/structure/machinery/door_control{
 	id = "ERT Lock 3";
@@ -2397,6 +2466,21 @@
 "WQ" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/wood/ship,
+/area/adminlevel/ert_station)
+"WY" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	damage_cap = 50000;
+	name = "\improper Hangar";
+	no_panel = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "ERT Lock 1";
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
 /area/adminlevel/ert_station)
 "Xi" = (
 /obj/structure/sign/poster/music,
@@ -2515,6 +2599,10 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station)
+"Zm" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "Zp" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin/wy,
@@ -2522,14 +2610,10 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "Zr" = (
-/obj/structure/sign/poster{
-	pixel_x = -32;
-	serial_number = 16
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Zv" = (
 /obj/structure/machinery/autodoc_console,
@@ -3272,39 +3356,39 @@ Ly
 Ya
 wW
 Ya
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
+zP
+om
+cd
+eH
+zP
+om
+cd
+eH
+zP
+om
+cd
+eH
+zP
+om
+cd
 Ya
 wW
 Ya
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
+zP
+om
+cd
+eH
+zP
+om
+cd
+eH
+zP
+om
+cd
+eH
+zP
+om
+cd
 Ya
 wW
 aa
@@ -3423,7 +3507,7 @@ FB
 FB
 Fo
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -3439,9 +3523,9 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -3457,7 +3541,7 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
 aa
 aC
@@ -3575,7 +3659,7 @@ FB
 FB
 Fo
 wW
-KW
+Zm
 FB
 FB
 FB
@@ -3591,9 +3675,9 @@ FB
 FB
 hP
 FB
-Fo
+DM
 wW
-KW
+Zm
 FB
 FB
 FB
@@ -3609,7 +3693,7 @@ FB
 FB
 ks
 FB
-Fo
+DM
 wW
 aa
 aC
@@ -3727,7 +3811,7 @@ FB
 FB
 Fo
 wW
-KW
+qD
 FB
 FB
 FB
@@ -3743,9 +3827,9 @@ FB
 FB
 FB
 FB
-Fo
+sd
 wW
-KW
+qD
 FB
 FB
 FB
@@ -3761,7 +3845,7 @@ FB
 FB
 FB
 FB
-Fo
+sd
 wW
 aa
 aC
@@ -3879,7 +3963,7 @@ FB
 FB
 Fo
 wW
-KW
+JM
 FB
 FB
 FB
@@ -3895,9 +3979,9 @@ FB
 FB
 FB
 FB
-Fo
+Zr
 wW
-KW
+JM
 FB
 FB
 FB
@@ -3913,7 +3997,7 @@ FB
 FB
 FB
 FB
-Fo
+Zr
 wW
 aa
 aC
@@ -4031,7 +4115,7 @@ FB
 FB
 Fo
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -4047,9 +4131,9 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -4065,7 +4149,7 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
 aa
 aC
@@ -4183,7 +4267,7 @@ FB
 FB
 Fo
 wW
-KW
+Zm
 FB
 FB
 FB
@@ -4199,9 +4283,9 @@ FB
 FB
 FB
 FB
-Fo
+DM
 wW
-KW
+Zm
 FB
 FB
 FB
@@ -4217,7 +4301,7 @@ FB
 FB
 FB
 FB
-Fo
+DM
 wW
 aa
 aC
@@ -4335,7 +4419,7 @@ FB
 FB
 Fo
 wW
-KW
+qD
 FB
 FB
 FB
@@ -4351,9 +4435,9 @@ FB
 FB
 FB
 FB
-Fo
+sd
 wW
-KW
+qD
 FB
 FB
 FB
@@ -4369,7 +4453,7 @@ FB
 FB
 FB
 FB
-Fo
+sd
 wW
 aa
 aC
@@ -4487,7 +4571,7 @@ FB
 FB
 Fo
 wW
-KW
+JM
 FB
 FB
 FB
@@ -4503,9 +4587,9 @@ FB
 FB
 FB
 FB
-Fo
+Zr
 wW
-KW
+JM
 FB
 FB
 FB
@@ -4521,7 +4605,7 @@ FB
 FB
 FB
 FB
-Fo
+Zr
 wW
 aa
 aC
@@ -4639,7 +4723,7 @@ FB
 FB
 Fo
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -4655,9 +4739,9 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -4673,7 +4757,7 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
 aa
 aC
@@ -4792,39 +4876,39 @@ FB
 Fo
 wW
 Ya
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
+Pf
 EG
-Js
+wn
+Cb
+Pf
+EG
+wn
+Cb
+Pf
+EG
+wn
+Cb
+Pf
+EG
+sV
 Ya
 wW
 Ya
-Js
+Pf
 ym
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
+wn
+Cb
+Pf
+EG
+wn
+Cb
+Pf
+EG
+wn
+Cb
+Pf
+EG
+wn
 Ya
 wW
 aa
@@ -4954,11 +5038,11 @@ wW
 wW
 wW
 wW
-PT
+wW
 wW
 FO
-wW
-wW
+WY
+FO
 wW
 Sw
 wW
@@ -5110,7 +5194,7 @@ Zp
 YU
 zr
 Gq
-Zr
+Gq
 RK
 MG
 HY
@@ -6920,39 +7004,39 @@ FB
 Fo
 wW
 Ya
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
+zP
+om
+cd
+eH
+zP
+om
+cd
+eH
+zP
+om
+cd
+eH
+zP
+om
 tP
 Ya
 wW
 Ya
-Ly
+zP
 Wp
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
+cd
+eH
+zP
+om
+cd
+eH
+zP
+om
+cd
+eH
+zP
+om
+cd
 Ya
 wW
 aa
@@ -7071,7 +7155,7 @@ FB
 FB
 Fo
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -7087,9 +7171,9 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -7105,7 +7189,7 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
 aa
 aC
@@ -7223,7 +7307,7 @@ FB
 FB
 Fo
 wW
-KW
+Zm
 FB
 FB
 FB
@@ -7239,9 +7323,9 @@ FB
 FB
 ur
 FB
-Fo
+DM
 wW
-KW
+Zm
 FB
 FB
 FB
@@ -7257,7 +7341,7 @@ FB
 FB
 kn
 FB
-Fo
+DM
 wW
 aa
 aC
@@ -7375,7 +7459,7 @@ FB
 FB
 Fo
 wW
-KW
+qD
 FB
 FB
 FB
@@ -7391,9 +7475,9 @@ FB
 FB
 FB
 FB
-Fo
+sd
 wW
-KW
+qD
 FB
 FB
 FB
@@ -7409,7 +7493,7 @@ FB
 FB
 FB
 FB
-Fo
+sd
 wW
 aa
 aC
@@ -7527,7 +7611,7 @@ FB
 FB
 Fo
 wW
-KW
+JM
 FB
 FB
 FB
@@ -7543,9 +7627,9 @@ FB
 FB
 FB
 FB
-Fo
+Zr
 wW
-KW
+JM
 FB
 FB
 FB
@@ -7561,7 +7645,7 @@ FB
 FB
 FB
 FB
-Fo
+Zr
 wW
 aa
 aC
@@ -7679,7 +7763,7 @@ FB
 FB
 Fo
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -7695,9 +7779,9 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -7713,7 +7797,7 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
 aa
 aC
@@ -7831,7 +7915,7 @@ FB
 FB
 Fo
 wW
-KW
+Zm
 FB
 FB
 FB
@@ -7847,9 +7931,9 @@ FB
 FB
 FB
 FB
-Fo
+DM
 wW
-KW
+Zm
 FB
 FB
 FB
@@ -7865,7 +7949,7 @@ FB
 FB
 FB
 FB
-Fo
+DM
 wW
 aa
 aC
@@ -7983,7 +8067,7 @@ FB
 FB
 Fo
 wW
-KW
+qD
 FB
 FB
 FB
@@ -7999,9 +8083,9 @@ FB
 FB
 FB
 FB
-Fo
+sd
 wW
-KW
+qD
 FB
 FB
 FB
@@ -8017,7 +8101,7 @@ FB
 FB
 FB
 FB
-Fo
+sd
 wW
 aa
 aC
@@ -8135,7 +8219,7 @@ Js
 Js
 Ya
 wW
-KW
+JM
 FB
 FB
 FB
@@ -8151,9 +8235,9 @@ FB
 FB
 FB
 FB
-Fo
+Zr
 wW
-KW
+JM
 FB
 FB
 FB
@@ -8169,7 +8253,7 @@ FB
 FB
 FB
 FB
-Fo
+Zr
 wW
 aa
 aC
@@ -8287,7 +8371,7 @@ wW
 wW
 wW
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -8303,9 +8387,9 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
-KW
+Bb
 FB
 FB
 FB
@@ -8321,7 +8405,7 @@ FB
 FB
 FB
 FB
-Fo
+Kb
 wW
 aa
 aC
@@ -8440,39 +8524,39 @@ as
 as
 wW
 Ya
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
+Pf
+EG
+wn
+Cb
+Pf
+EG
+wn
+Cb
+Pf
+EG
+wn
+Cb
+Pf
+EG
+wn
 Ya
 wW
 Ya
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
+Pf
+EG
+wn
+Cb
+Pf
+EG
+wn
+Cb
+Pf
+EG
+wn
+Cb
+Pf
+EG
+wn
 Ya
 wW
 aa

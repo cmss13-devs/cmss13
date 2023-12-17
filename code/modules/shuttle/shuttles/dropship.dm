@@ -118,12 +118,6 @@
 	if(mode == SHUTTLE_CRASHED)
 		return
 
-	/*if(mode == SHUTTLE_PREARRIVAL && !destination.landing_lights_on)
-		if(istype(destination, /obj/docking_port/stationary))
-			destination.turn_on_landing_lights()
-		playsound(destination.return_center_turf(), landing_sound, 60, 0)
-		playsound(return_center_turf(), landing_sound, 60, 0)
-	*/
 	automated_check()
 
 	hijack?.check()

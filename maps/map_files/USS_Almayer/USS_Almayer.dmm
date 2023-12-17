@@ -30926,6 +30926,13 @@
 	icon_state = "cargo"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
+"dJv" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/starboard_point_defense)
 "dJI" = (
 /obj/structure/bed/chair/comfy/bravo{
 	dir = 4
@@ -33393,6 +33400,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
+"eIH" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/starboard_point_defense)
 "eJd" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -50726,6 +50740,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/synthcloset)
+"lIb" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/starboard_point_defense)
 "lIh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -73057,6 +73078,13 @@
 "uOi" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/lifeboat_pumps/south2)
+"uOq" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/starboard_point_defense)
 "uOJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -110278,7 +110306,7 @@ aKQ
 aaa
 aaa
 aab
-aaa
+aKR
 aKR
 aKR
 aKR
@@ -110481,8 +110509,8 @@ aKQ
 aaa
 aaa
 aab
-aaa
 aKR
+aKS
 iMo
 bGF
 muL
@@ -110684,8 +110712,8 @@ aKQ
 aaa
 aaa
 aab
-aaa
 aKR
+dJv
 bGO
 bGO
 bGO
@@ -110887,8 +110915,8 @@ aKQ
 aaa
 aaa
 aab
-aaa
 aKR
+eIH
 bGO
 bGO
 bGO
@@ -111090,8 +111118,8 @@ aKQ
 aaa
 aaa
 aab
-aaa
 aKR
+uOq
 bGO
 bGO
 bGO
@@ -111293,8 +111321,8 @@ aKQ
 aaa
 aaa
 aab
-aaa
 aKR
+lIb
 bGO
 bGO
 bGO
@@ -111496,8 +111524,8 @@ aKQ
 aaa
 aaa
 aab
-aaa
 aKR
+dJv
 bGO
 bGO
 bGO
@@ -111699,8 +111727,8 @@ aKQ
 aaa
 aaa
 aab
-aaa
 aKR
+eIH
 bGO
 bGO
 bGO
@@ -111902,8 +111930,8 @@ aKQ
 aaa
 aaa
 aab
-aaa
 aKR
+uOq
 bGO
 bGO
 bGO
@@ -112105,8 +112133,8 @@ aKQ
 aaa
 aaa
 aab
-aaa
 aKR
+aKS
 syw
 pui
 aZO
@@ -112308,7 +112336,7 @@ aKQ
 aaa
 aaa
 aab
-aaa
+aKR
 aKR
 aKR
 aKR

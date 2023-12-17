@@ -292,9 +292,13 @@
 	return
 
 /// Called when a new shuttle is about to arrive
-/obj/docking_port/stationary/proc/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
+/obj/docking_port/stationary/proc/on_prearrival(obj/docking_port/mobile/arriving_shuttle, landing_sound)
+	if(!landing_lights_on)
+		turn_on_landing_lights()
+		if(landing_sound)
+			playsound(return_center_turf(), landing_sound, 60, 0, falloff=4)
+
 	log_debug("SHUTTLE DEBUG: [name] static prearrival called!")
-	turn_on_landing_lights()
 	return
 
 /// Called when the docked shuttle ignites
@@ -313,7 +317,7 @@
 
 /obj/docking_port/stationary/proc/link_landing_lights()
 	var/list/coords = return_coords()
-	var/scan_range = 5
+	var/scan_range = 3
 	var/x0 = coords[1] - scan_range
 	var/y0 = coords[2] - scan_range
 	var/x1 = coords[3] + scan_range
@@ -596,10 +600,8 @@
 /obj/docking_port/mobile/proc/on_prearrival()
 	log_debug("SHUTTLE DEBUG: [name] prearrival called!")
 	if(destination)
-		destination.on_prearrival(src)
+		destination.on_prearrival(src, landing_sound)
 		log_debug("SHUTTLE DEBUG: destination is '[destination.name]'")
-		if(landing_sound)
-			playsound(destination.return_center_turf(), landing_sound, 60, 0, falloff=4)
 	else
 		log_debug("SHUTTLE DEBUG: No destination found.")
 	playsound(return_center_turf(), landing_sound, 60, 0)
@@ -749,6 +751,7 @@
 				set_mode(SHUTTLE_PREARRIVAL)
 				setTimer(prearrivalTime)
 				log_debug("SHUTTLE DEBUG: shuttle on approach failed check!")
+				on_prearrival()
 				return
 			on_prearrival()
 			var/error = initiate_docking(destination, preferred_direction)

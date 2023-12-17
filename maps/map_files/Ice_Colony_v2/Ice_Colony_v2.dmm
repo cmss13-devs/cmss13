@@ -34767,17 +34767,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/tcomms)
-"dPa" = (
-/obj/docking_port/mobile/trijent_elevator/ice_classic{
-	airlock_area = "/area/shuttle/elevator3/ground";
-	airlock_exit = "elevator";
-	elevator_network = "Omicorn";
-	id = "Upper Omicorn";
-	name = "Upper Omicorn";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
-	},
-/turf/open/auto_turf/snow/layer3,
-/area/ice_colony/exterior/surface/valley/northwest)
 "ecS" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -35729,11 +35718,16 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "vuD" = (
-/turf/open/floor/plating/icefloor,
-/area/shuttle/elevator3/ground{
-	airlock_area = s;
-	airlock_exit = "elevator"
-	})
+/obj/docking_port/mobile/trijent_elevator/ice_classic{
+	airlock_area = "/area/shuttle/elevator3/ground";
+	airlock_exit = "elevator";
+	elevator_network = "Omicorn";
+	id = "Upper Omicorn";
+	name = "Upper Omicorn";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/ice_colony/exterior/surface/valley/northwest)
 "vQI" = (
 /turf/open/floor/plating/icefloor{
 	dir = 8;
@@ -50846,7 +50840,7 @@ aaJ
 aaI
 aaI
 aaI
-dPa
+vuD
 aaI
 ahA
 ahA
@@ -53173,7 +53167,7 @@ aLL
 aMB
 aNf
 aNf
-vuD
+aNf
 aPh
 aQh
 aQY

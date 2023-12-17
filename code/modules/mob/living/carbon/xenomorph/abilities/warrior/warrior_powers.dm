@@ -84,7 +84,6 @@
 		if(carbon.slowed < slowdown)
 			carbon.apply_effect(slowdown, SLOW)
 	carbon.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
-	shake_camera(carbon, 2, 1)
 
 	var/facing = get_dir(xeno, carbon)
 

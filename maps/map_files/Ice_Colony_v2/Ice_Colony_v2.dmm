@@ -372,6 +372,19 @@
 	},
 /area/shuttle/elevator4/ground)
 "abz" = (
+/obj/docking_port/stationary/trijent_elevator{
+	height = 5;
+	width = 8;
+	id = "Requisitions_Lower";
+	name = "Requisitions Lower";
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
+	airlock_exit = "elevator";
+	elevator_network = "A";
+	airlock_area = /area/shuttle/elevator4/underground
+	},
+/turf/open/gm/empty,
+/area/shuttle/elevator4/underground)
+"abB" = (
 /turf/open/floor/plating/icefloor{
 	dir = 1;
 	icon_state = "warnplate"
@@ -461,7 +474,7 @@
 	icon_state = "warnplate"
 	},
 /area/shuttle/elevator4/ground)
-"abW" = (
+"abV" = (
 /turf/open/floor/plating/icefloor,
 /area/shuttle/elevator4/ground)
 "abX" = (
@@ -551,7 +564,7 @@
 /obj/docking_port/stationary/trijent_elevator{
 	height = 5;
 	width = 8;
-	id = "s";
+	id = "Requisitions_Upper";
 	name = "Requisitions Upper";
 	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
 	airlock_exit = "elevator";
@@ -564,19 +577,6 @@
 	},
 /area/shuttle/elevator4/ground)
 "acq" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "Requisitions_Lower";
-	name = "Requisitions Lower";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
-	airlock_exit = "elevator";
-	elevator_network = "A";
-	airlock_area = /area/shuttle/elevator4/underground
-	},
-/turf/open/gm/empty,
-/area/shuttle/elevator4/underground)
-"acr" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate"
 	},
@@ -791,7 +791,7 @@
 /obj/item/lightstick/planted,
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
 	shuttleId = "ice_classic_shuttle4";
-	dockId = "Requisitions_Upper";
+	dockId = "Requisitions_Lower";
 	pixel_y = 32
 	},
 /turf/open/floor/plating/icefloor,
@@ -18738,8 +18738,10 @@
 	},
 /area/ice_colony/underground/requesition)
 "bdN" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4{
-	pixel_y = 30
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
+	shuttleId = "ice_classic_shuttle4";
+	dockId = "Requisitions_Upper";
+	pixel_y = 32
 	},
 /turf/open/floor{
 	dir = 1;
@@ -41571,11 +41573,11 @@ aac
 aac
 aae
 abl
-abz
-abW
-abW
-abW
-acr
+abB
+abV
+abV
+abV
+acq
 abl
 acV
 acg
@@ -41853,11 +41855,11 @@ aac
 aac
 aae
 abl
-abz
-abW
-abW
-abW
-acr
+abB
+abV
+abV
+abV
+acq
 acF
 acW
 acg
@@ -42135,11 +42137,11 @@ aac
 aac
 aae
 abl
-abz
-abW
-abW
-abW
-acr
+abB
+abV
+abV
+abV
+acq
 abE
 acX
 acg
@@ -42417,11 +42419,11 @@ aac
 aac
 aae
 abl
-abz
-abW
-abW
-abW
-acr
+abB
+abV
+abV
+abV
+acq
 abE
 acY
 ado
@@ -42699,11 +42701,11 @@ aac
 aac
 aae
 abl
-abz
-abW
-abW
-abW
-acr
+abB
+abV
+abV
+abV
+acq
 acG
 acZ
 acg
@@ -42981,11 +42983,11 @@ aac
 aac
 aae
 abl
-abz
-abW
-abW
-abW
-acr
+abB
+abV
+abV
+abV
+acq
 abl
 ada
 acg
@@ -45652,7 +45654,7 @@ bbn
 bbn
 bbn
 bbn
-acq
+abz
 bdc
 bdb
 bdb

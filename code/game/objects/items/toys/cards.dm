@@ -30,6 +30,10 @@
 	. = ..()
 	populate_deck()
 
+/obj/item/toy/deck/Destroy(force)
+	. = ..()
+	cards = null
+
 /obj/item/toy/deck/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("There are <b>[length(cards)]</b> cards remaining in the deck.")
@@ -319,6 +323,9 @@
 
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
 	var/cards_length = length(cards)
+	if(cards_length >= 200)
+		to_chat(usr, SPAN_WARNING("Hand is too big to sort. Remove some cards."))
+		return
 	for(var/i = 1 to cards_length)
 		for(var/k = 2 to cards_length)
 			if(cards[i].sort_index > cards[k].sort_index)

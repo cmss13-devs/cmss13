@@ -5267,7 +5267,7 @@
 	name = "Upper Dorms";
 	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
 	airlock_exit = "elevator";
-	elevator_network = "Dorms";
+	elevator_network = "dorm";
 	airlock_area = /area/shuttle/elevator2/ground
 	},
 /turf/open/floor/plating/icefloor{
@@ -12695,7 +12695,7 @@
 	height = 5;
 	width = 8;
 	id = "Upper_Arrivals";
-	name = "Upper_Arrivals";
+	name = "Upper Arrivals";
 	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/arrivals;
 	airlock_exit = "elevator";
 	elevator_network = "Arrivals";
@@ -14271,7 +14271,7 @@
 /area/ice_colony/surface/research)
 "aPg" = (
 /obj/docking_port/mobile/trijent_elevator/ice_classic{
-	airlock_area = "/area/shuttle/elevator3/ground";
+	airlock_area = /area/shuttle/elevator3/ground;
 	airlock_exit = "elevator";
 	elevator_network = "Omicorn";
 	id = "Upper Omicorn";
@@ -35270,7 +35270,7 @@
 	id = "Lower_Dorms";
 	name = "Lower Dorms";
 	airlock_exit = "elevator";
-	elevator_network = "Dorms";
+	elevator_network = "dorm";
 	airlock_area = /area/shuttle/elevator2/underground
 	},
 /turf/open/floor/plating/icefloor{

@@ -35717,17 +35717,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/alpha)
-"vuD" = (
-/obj/docking_port/mobile/trijent_elevator/ice_classic{
-	airlock_area = "/area/shuttle/elevator3/ground";
-	airlock_exit = "elevator";
-	elevator_network = "Omicorn";
-	id = "Upper Omicorn";
-	name = "Upper Omicorn";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
-	},
-/turf/open/auto_turf/snow/layer3,
-/area/ice_colony/exterior/surface/valley/northwest)
 "vQI" = (
 /turf/open/floor/plating/icefloor{
 	dir = 8;
@@ -50840,7 +50829,7 @@ aaJ
 aaI
 aaI
 aaI
-vuD
+aaI
 aaI
 ahA
 ahA

@@ -14,7 +14,7 @@
 	inherent_traits = list(TRAIT_ITEM_EAR_EXCLUSIVE)
 	var/translate_apollo = FALSE
 	var/translate_hive = FALSE
-	var/maximum_keys = 3
+	var/maximum_keys = 5
 	var/list/initial_keys //Typepaths of objects to be created at initialisation.
 	var/list/keys //Actual objects.
 	maxf = 1489

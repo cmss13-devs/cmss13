@@ -125,3 +125,11 @@
 
 /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm
 	elevator_network = "dorm"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/Arrivals
+	elevator_network = "Arrivals"
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/Omicorn
+	elevator_network = "Omicorn"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/Requisitions
+	elevator_network = "Requisitions"

@@ -883,7 +883,7 @@ SUBSYSTEM_DEF(minimaps)
 			else if(faction == XENO_HIVE_NORMAL)
 				var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, canvas_cooldown_time)
-				xeno_maptext("The Queen has updated your hive mind map", "You sense something unusual...", faction)
+				xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
 				notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_XENO_TACMAP, enter_link = "xeno_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
 
 			toolbar_updated_selection = toolbar_color_selection

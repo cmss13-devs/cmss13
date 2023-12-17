@@ -109,8 +109,8 @@
 
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
-	//else if(!gibbed)  // At the moment we only support humans
-		//AddComponent(/datum/component/weed_food)
+	else if(!gibbed)
+		AddComponent(/datum/component/weed_food)
 
 	if(hive)
 		hive.remove_xeno(src)

@@ -1,0 +1,5 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - rscadd: "Updated the 'help' message for xeno special structure construction."
+  - qol: "Added a 'remaining' counter when constructing special structures to let players know how many can still be built."

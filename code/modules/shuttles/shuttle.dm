@@ -221,11 +221,11 @@
 		if(iselevator)
 			if(istype(T,/turf/open/space))
 				if(is_mainship_level(T.z))
-					new /turf/open/floor/almayer/empty(T)
+					T.ChangeTurf(/turf/open/floor/almayer/empty)
 				else
-					new /turf/open/gm/empty(T)
+					T.ChangeTurf(/turf/open/gm/empty)
 		else if(istype(T,/turf/open/space))
-			new /turf/open/floor/plating(T)
+			T.ChangeTurf(/turf/open/floor/plating)
 
 	return
 

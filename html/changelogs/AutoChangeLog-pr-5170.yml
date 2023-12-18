@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - qol: "Added a 'Ghost' button for dead xenomorphs."

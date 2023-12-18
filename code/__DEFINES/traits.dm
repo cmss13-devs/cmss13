@@ -415,6 +415,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
 ///Status trait coming from a xeno nest
 #define XENO_NEST_TRAIT "xeno_nest"
+///Status trait from a generic throw by xeno abilities
+#define XENO_THROW_TRAIT "xeno_throw_trait"
 //-- structure traits --
 ///Status trait coming from being flipped or unflipped.
 #define TRAIT_SOURCE_FLIP_TABLE "t_s_flip_table"

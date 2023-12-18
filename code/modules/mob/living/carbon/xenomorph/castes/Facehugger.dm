@@ -60,6 +60,10 @@
 	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
+	weed_food_states = list("Facehugger_1","Facehugger_2","Facehugger_3")
+	weed_food_states_flipped = list("Facehugger_1","Facehugger_2","Facehugger_3")
+
 /mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)

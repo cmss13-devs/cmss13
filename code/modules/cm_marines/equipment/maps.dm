@@ -56,24 +56,22 @@
 			"}
 	show_browser(usr, dat, name, "papermap", "size=[window_size]")
 
+/obj/item/map/lazarus_landing_map
+	name = "\improper Lazarus Landing Map"
+	desc = "A satellite printout of the Lazarus Landing colony on LV-624."
+	html_link = "images/6/6f/LV624.png"
+
 /obj/item/map/ice_colony_map
 	name = "\improper Ice Colony map"
 	desc = "A satellite printout of the Ice Colony."
 	html_link = "images/1/18/Map_icecolony.png"
 	color = "cyan"
 
-/obj/item/map/lazarus_landing_map
-	name = "\improper Lazarus Landing Map"
-	desc = "A satellite printout of the Lazarus Landing colony on LV-624."
-	html_link = "images/6/6f/LV624.png"
-
 /obj/item/map/ice_colony_map/v1
 	html_link = "https://cm-ss13.com/w/images/8/88/Ice_V1.png"
-	color = "cyan"
 
 /obj/item/map/ice_colony_map/v2
-	html_link = null
-	color = "cyan"
+	html_link = "https://cm-ss13.com/w/images/8/88/Ice_V1.png"
 
 /obj/item/map/ice_colony_map_v3
 	name = "\improper Shivas Snowball map"

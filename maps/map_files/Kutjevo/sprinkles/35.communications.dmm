@@ -306,7 +306,7 @@
 	dir = 1;
 	req_one_access = null
 	},
-/turf/closed/wall/kutjevo/colony,
+/turf/open/floor/plating/kutjevo,
 /area/template_noop)
 "LG" = (
 /obj/structure/fence,

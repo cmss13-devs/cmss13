@@ -164,8 +164,10 @@
 	new_structure.set_template(structure_template)
 	hive.add_construction(new_structure)
 
+	var/max_constructions = hive.hive_structures_limit[structure_template.name]
+	var/remaining_constructions = max_constructions - hive.get_structure_count(structure_template.name)
 	visible_message(SPAN_XENONOTICE("A thick substance emerges from the ground and shapes into \a [new_structure]."), \
-		SPAN_XENONOTICE("We designate a new [structure_template] construction."), null, 5)
+		SPAN_XENONOTICE("We designate a new [structure_template] construction. ([remaining_constructions]/[max_constructions] remaining)"), null, 5)
 	playsound(new_structure, "alien_resin_build", 25)
 
 	if(hive.living_xeno_queen)

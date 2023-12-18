@@ -1,0 +1,8 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added a proc for comparing the registered name of an ID, to the real name of a mob. Also checks registered_ref if one exists."
+  - rscadd: "Evacuation can no longer be cancelled without passing above check."
+  - rscadd: "People forced into escape-pod stasis bays against their wishes can now eject themselves."
+  - bugfix: "Xenos can no longer force humans into escape-pod stasis bays."
+  - bugfix: "Escape-pod stasis bays no longer accept corpses."

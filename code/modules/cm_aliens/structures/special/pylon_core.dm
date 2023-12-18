@@ -190,7 +190,7 @@
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
-	var/list/hive_xenos = list(linked_hive.totalXenos)
+	var/list/hive_xenos = linked_hive.totalXenos.Copy()
 
 	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
 		if(!xeno.counts_for_slots)

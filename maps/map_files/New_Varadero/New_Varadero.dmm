@@ -18115,14 +18115,6 @@
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/carpet,
 /area/varadero/interior/administration)
-"lIW" = (
-/obj/structure/machinery/landinglight/ds1/spoke{
-	pixel_y = -5;
-	pixel_x = 13
-	},
-/obj/structure/machinery/camera/autoname/lz_camera,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/lz2_near)
 "lJo" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -28320,14 +28312,6 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
-"sbP" = (
-/obj/structure/machinery/landinglight/ds1/spoke{
-	pixel_y = -5;
-	pixel_x = -13
-	},
-/obj/structure/machinery/camera/autoname/lz_camera,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/lz2_near)
 "sbX" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -63440,7 +63424,7 @@ wlB
 wlB
 wlB
 lTg
-lIW
+emP
 pXT
 rhu
 wlB
@@ -63787,7 +63771,7 @@ wlB
 pXT
 lTg
 lTg
-lTg
+pXT
 wlB
 wlB
 wlB
@@ -64879,7 +64863,7 @@ lTg
 uHD
 lTg
 lTg
-lTg
+uHD
 wlB
 wlB
 wlB
@@ -65260,7 +65244,7 @@ wlB
 wlB
 wlB
 lTg
-sbP
+emP
 uHD
 lTg
 lTg

@@ -80,6 +80,10 @@
 	icon_xeno = 'icons/mob/xenos/lesser_drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/lesser_drone.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
+	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
+	weed_food_states_flipped = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
+
 /mob/living/carbon/xenomorph/lesser_drone/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)
 		return

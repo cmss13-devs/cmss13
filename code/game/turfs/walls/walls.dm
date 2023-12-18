@@ -88,6 +88,8 @@
 			if(istype(found_object, /obj/structure/sign/poster))
 				var/obj/structure/sign/poster/found_poster = found_object
 				found_poster.roll_and_drop(src)
+			if(istype(found_object, /obj/effect/alien/weeds/weedwall))
+				qdel(found_object)
 
 		var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
 		for(var/turf/cardinal_turf as anything in cardinal_neighbors)
@@ -167,6 +169,9 @@
 
 		if (acided_hole)
 			. += SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid.")
+
+	if(flags_turf & TURF_ORGANIC)
+		return // Skip the part below. 'Organic' walls aren't deconstructable with tools.
 
 	switch(d_state)
 		if(WALL_STATE_WELD)

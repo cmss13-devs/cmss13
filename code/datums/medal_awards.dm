@@ -35,6 +35,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	giver_mob = list()
 	giver_ckey = list()
 
+GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
 
 /proc/give_medal_award(medal_location, as_admin = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
@@ -52,7 +53,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return FALSE
 
 	// Pick a medal
-	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
+	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", GLOB.human_medals)
 	if(!medal_type)
 		return FALSE
 
@@ -173,14 +174,14 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		user.visible_message("ERROR: ID card not registered in USCM registry. Potential medal fraud detected.")
 		return
 
-	var/real_owner_ref = card.registered_ref
-
-	if(real_owner_ref != WEAKREF(user))
+	if(!card.check_biometrics(user))
 		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
 		return
 
 	if(give_medal_award(get_turf(printer)))
 		user.visible_message(SPAN_NOTICE("[printer] prints a medal."))
+
+GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL))
 
 /proc/give_jelly_award(datum/hive_status/hive, as_admin = FALSE)
 	if(!hive)
@@ -220,7 +221,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return FALSE
 
 	// Pick a jelly
-	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL), theme="hive_status")
+	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", GLOB.xeno_medals, theme="hive_status")
 	if(!medal_type)
 		return FALSE
 

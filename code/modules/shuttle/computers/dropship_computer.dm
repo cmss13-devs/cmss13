@@ -7,6 +7,7 @@
 	unacidable = TRUE
 	exproof = TRUE
 	needs_power = FALSE
+	var/override_being_removed = FALSE
 
 	// Admin disabled
 	var/disabled = FALSE
@@ -143,15 +144,31 @@
 		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
 		return
 
-	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10
-		if(remaining_time > 60)
-			to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
+		to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt. In large text it says the lockout will be automatically removed in [remaining_time] seconds."))
+		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 			return
-		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
-		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))
+		if(user.action_busy || override_being_removed)
 			return
+		to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
+		override_being_removed = TRUE
+		while(remaining_time > 20)
+			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
+				to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
+				override_being_removed = FALSE
+				return
+			if(!dropship_control_lost)
+				to_chat(user, SPAN_NOTICE("The lockout is already removed."))
+				break
+			remaining_time = timeleft(door_control_cooldown) / 10 - 20
+			if(remaining_time > 0)
+				to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time] seconds left."))
+				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	override_being_removed = FALSE
+	if(dropship_control_lost)
+		remove_door_lock()
+		to_chat(user, SPAN_NOTICE("You succesfully removed the lockout!"))
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)
@@ -175,7 +192,7 @@
 				to_chat(xeno, SPAN_WARNING("The metal bird can not land here. It might be currently occupied!"))
 				return
 			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
-			xeno_announcement(SPAN_XENOANNOUNCE("Your Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
 			log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			return
@@ -195,12 +212,12 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(!is_ground_level(z))
-		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		return
 
 	if(xeno.hive_pos != XENO_QUEEN)
-		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		return
 
@@ -216,7 +233,7 @@
 	if(!dropship_control_lost)
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
-		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
+		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		if(GLOB.almayer_orbital_cannon)
 			GLOB.almayer_orbital_cannon.is_disabled = TRUE
 			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
@@ -299,6 +316,7 @@
 	playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 	dropship_control_lost = FALSE
 	if(door_control_cooldown)
+		deltimer(door_control_cooldown)
 		door_control_cooldown = null
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)

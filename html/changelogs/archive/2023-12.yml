@@ -340,3 +340,9 @@
   - maptweak: Numerous Fixes for new brig
   cuberound:
   - balance: DS doorgun can shoot over cades
+2023-12-18:
+  Huffie56:
+  - bugfix: added landing zone camera on trijent.
+  - bugfix: fixed landing zone camera on all map in rotation.
+  sleepynecrons:
+  - imageadd: marine snow uniforms and armors given a new look

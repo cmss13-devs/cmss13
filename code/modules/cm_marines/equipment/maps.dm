@@ -56,6 +56,12 @@
 			"}
 	show_browser(usr, dat, name, "papermap", "size=[window_size]")
 
+/obj/item/map/ice_colony_map
+	name = "\improper Ice Colony map"
+	desc = "A satellite printout of the Ice Colony."
+	html_link = "images/1/18/Map_icecolony.png"
+	color = "cyan"
+
 /obj/item/map/lazarus_landing_map
 	name = "\improper Lazarus Landing Map"
 	desc = "A satellite printout of the Lazarus Landing colony on LV-624."

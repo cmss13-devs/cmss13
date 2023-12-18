@@ -104,6 +104,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		tool_modifier = tools[tool_type]
 		if(!(skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_EXPERT)))
 			step_duration *= tool_modifier
+		if(skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
+			step_duration *= (((tool_modifier - 1) * 0.25) + 1)
 
 	if(surgery.lying_required) //Surgery surface modifier.
 		surface_modifier = target.buckled?.surgery_duration_multiplier //If they're buckled, use the surface modifier of the thing they're buckled to.
@@ -114,6 +116,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 					surface_modifier = surface.surgery_duration_multiplier
 		if(!(skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_EXPERT)))
 			step_duration *= surface_modifier
+		if(skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
+			step_duration *= (((surface_modifier - 1) * 0.25) + 1)
 
 	var/list/human_modifiers = list("surgery_speed" = 1.0, "pain_reduction" = 0)
 	SEND_SIGNAL(user, COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS, human_modifiers)

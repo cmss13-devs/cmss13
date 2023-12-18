@@ -633,8 +633,8 @@
 			return FALSE
 
 		DEW.open_fire(LT.signal_loc)
-		break
-	return TRUE
+		return TRUE
+	return FALSE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_create_firemission(mob/weapon_operator, firemission_name, firemission_length)
 	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
@@ -701,7 +701,7 @@
 		return FALSE
 
 	var/result = firemission_envelope.update_mission(fm_tag, weapon_id, offset_id, offset_value)
-	if(result != null && result != "OK")
+	if(result != null && result != 0)
 		playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
 	return TRUE
 

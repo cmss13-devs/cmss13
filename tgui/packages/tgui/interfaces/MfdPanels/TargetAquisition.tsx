@@ -183,38 +183,35 @@ const leftButtonGenerator = (context, panelId: string) => {
   return [];
 };
 
-const lazeMapper = (context) => {
+const lazeMapper = (context, offset) => {
   const { act, data } = useBackend<TargetContext>(context);
   const { setSelectedTarget } = useLazeTarget(context);
-  const lazes = range(0, 5).map((x) =>
-    x > data.targets_data.length ? undefined : data.targets_data[x]
-  );
 
   const { fmXOffsetValue } = useFiremissionXOffsetValue(context);
   const { fmYOffsetValue } = useFiremissionYOffsetValue(context);
 
-  return (index: number) => {
-    const target = lazes.length > index ? lazes[index] : undefined;
-    const label = target?.target_name.split(' ')[0] ?? '';
-    const squad = label[0] ?? undefined;
-    const number = label.split('-')[1] ?? undefined;
-    return {
-      children:
-        squad !== undefined && number !== undefined && `${squad}-${number}`,
-      onClick: target
-        ? () => {
-          setSelectedTarget(target.target_tag);
-          act('firemission-dual-offset-camera', {
-            'target_id': target.target_tag,
-            'x_offset_value': fmXOffsetValue,
-            'y_offset_value': fmYOffsetValue,
-          });
-        }
-        : () => {
-          act('set-camera', { 'equipment_id': null });
-          setSelectedTarget(undefined);
-        },
-    };
+  const target =
+    data.targets_data.length > offset ? data.targets_data[offset] : undefined;
+  const label = target?.target_name.split(' ')[0] ?? '';
+  const squad = label[0] ?? undefined;
+  const number = label.split('-')[1] ?? undefined;
+
+  return {
+    children:
+      squad !== undefined && number !== undefined && `${squad}-${number}`,
+    onClick: target
+      ? () => {
+        setSelectedTarget(target.target_tag);
+        act('firemission-dual-offset-camera', {
+          'target_id': target.target_tag,
+          'x_offset_value': fmXOffsetValue,
+          'y_offset_value': fmYOffsetValue,
+        });
+      }
+      : () => {
+        act('set-camera', { 'equipment_id': null });
+        setSelectedTarget(undefined);
+      },
   };
 };
 
@@ -255,9 +252,20 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
   const lazeIndex = lazes.findIndex((x) => x?.target_tag === selectedTarget);
   const strikeReady = strikeMode !== undefined && lazeIndex !== -1;
 
-  const targets = range(targetOffset, targetOffset + 5).map(
-    lazeMapper(context)
+  const targets = range(targetOffset, targetOffset + 5).map((x) =>
+    lazeMapper(context, x)
   );
+
+  const getLastName = () => {
+    const label =
+      data.targets_data[data.targets_data.length - 1].target_name.split(
+        ' '
+      )[0] ?? '';
+    const squad = label[0] ?? undefined;
+    const number = label.split('-')[1] ?? undefined;
+    return `${squad}-${number}`;
+  };
+
   return (
     <MfdPanel
       panelStateId={panelStateId}
@@ -306,11 +314,11 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
         {},
         {
           children:
-            targetOffset - 5 > lazes.length - 1 ? (
+            targetOffset < lazes.length ? (
               <Icon name="arrow-down" />
             ) : undefined,
           onClick: () => {
-            if (targetOffset - 5 < lazes.length - 1) {
+            if (targetOffset < lazes.length) {
               setTargetOffset(targetOffset + 1);
             }
           },
@@ -408,13 +416,27 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
                   </text>
                 )}
                 {data.targets_data.length > 0 && (
-                  <text stroke="#00e94e" x={20} y={210} text-anchor="end">
+                  <text stroke="#00e94e" x={20} y={190} text-anchor="end">
                     <tspan x={40} dy="1.2em">
                       SELECT
                     </tspan>
                     <tspan x={40} dy="1.2em">
                       TARGETS
                     </tspan>
+                    <tspan x={40} dy="1.2em">
+                      {Math.min(5, data.targets_data.length)} of{' '}
+                      {data.targets_data.length}
+                    </tspan>
+                    {data.targets_data.length > 0 && (
+                      <>
+                        <tspan x={40} dy="1.2em">
+                          LATEST
+                        </tspan>
+                        <tspan x={40} dy="1.2em">
+                          {getLastName()}
+                        </tspan>
+                      </>
+                    )}
                   </text>
                 )}
                 {data.targets_data.length > 0 && (

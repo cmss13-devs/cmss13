@@ -30,12 +30,12 @@
 	/// Do we self-terminate when a fullheal is called? // CM note: this is rejuvenate
 	var/remove_on_fullheal = FALSE
 
-	/* Unimplemented features - add as needed
+	/* Unimplemented feature: Our Rejuv needs refactoring to work with this
 	/// If remove_on_fullheal is TRUE, what flag do we need to be removed?
 	var/heal_flag_necessary = HEAL_STATUS
-	/// A particle effect, for things like embers - Should be set on update_particles()
-	var/obj/effect/abstract/particle_holder/particle_effect
 	*/
+
+	/* Particle effects feature was cut due to lacking backend, feel free to add when we have backend */
 
 	/// Timer ID for triggering the effect end precisely
 	var/timerid
@@ -95,8 +95,6 @@
 		on_remove()
 		UnregisterSignal(owner, COMSIG_LIVING_REJUVENATED)
 		owner = null
-//	if(particle_effect)
-//		QDEL_NULL(particle_effect)
 	return ..()
 
 // Status effect process. Handles adjusting its duration and ticks.

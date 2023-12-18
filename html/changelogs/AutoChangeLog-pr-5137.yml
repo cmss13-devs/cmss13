@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Added the possibility of surgery steps failing based on tool and surface suitability compensated by surgery skill."

@@ -302,10 +302,10 @@
 					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					return
-			if(iscolonysynthetic(H) && prob(60))
+			if(issynth(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws us down after withstanding the pounce!"), null, 5)
-				apply_effect(1.5, WEAKEN)
+				apply_effect(3, WEAKEN)
 				throwing = FALSE
 				return
 

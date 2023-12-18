@@ -88,6 +88,7 @@
 
 	knock_down_reduction = 3.5
 	stun_reduction = 3.5
+	acid_blood_dodge_chance = 20
 
 
 /datum/species/synthetic/colonial/colonial_gen_two

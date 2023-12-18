@@ -44,6 +44,8 @@
 	icon_state = "M56D_gun_e"
 	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
 	var/has_mount = FALSE // Indicates whether the M56D will come with its folding mount already attached
+	var/defense_check_range = 2
+	var/can_be_near_defense = FALSE
 
 /obj/item/device/m56d_gun/Initialize(mapload, ...)
 	. = ..()
@@ -84,7 +86,11 @@
 
 /obj/item/device/m56d_gun/attack_self(mob/user)
 	..()
-
+	if(!can_be_near_defense)
+		for(var/obj/structure/machinery/machine in urange(defense_check_range, loc))
+			if(istype(machine, var/obj/structure/machinery/m56d_hmg) || istype(machine, var/obj/structure/machinery/m56d_post)
+				to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
+				return
 	if(!ishuman(user))
 		return
 	if(!has_mount)
@@ -125,6 +131,11 @@
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
+	if(!can_be_near_defense)
+		for(var/obj/structure/machinery/machine in urange(defense_check_range, loc))
+			if(istype(machine, var/obj/structure/machinery/m56d_hmg) || istype(machine, var/obj/structure/machinery/m56d_post)
+				to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
+				return
 
 	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
 	M.setDir(user.dir) // Make sure we face the right direction

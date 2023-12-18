@@ -414,8 +414,6 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 				return DURATION_MULTIPLIER_TIER_3
 // Medical
 		if(SKILL_MEDICAL)
-			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MASTER))
-				return DURATION_MULTIPLIER_TIER_2
 			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
 				return DURATION_MULTIPLIER_TIER_2
 			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))

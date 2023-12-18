@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - bugfix: "fix a nightmare insert that had a wall and a door on same tile."

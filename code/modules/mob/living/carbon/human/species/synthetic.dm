@@ -13,9 +13,9 @@
 
 	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
 
-	total_health = 150 //more health than regular humans
+	total_health = 125 //more health than regular humans
 
-	brute_mod = 0.5
+	brute_mod = 0.65
 	burn_mod = 0.9 //a small bit of resistance
 
 	cold_level_1 = -1
@@ -40,7 +40,7 @@
 
 	knock_down_reduction = 5
 	stun_reduction = 5
-	acid_blood_dodge_chance = 25
+	acid_blood_dodge_chance = 35
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
@@ -70,7 +70,7 @@
 
 /datum/species/synthetic/gen_two
 	name = SYNTH_GEN_TWO
-	uses_ethnicity = FALSE //2nd gen uses generic human look
+	uses_ethnicity = TRUE //2nd gen uses generic human look
 
 /datum/species/synthetic/colonial
 	name = SYNTH_COLONY
@@ -92,7 +92,7 @@
 
 /datum/species/synthetic/colonial/colonial_gen_two
 	name = SYNTH_COLONY_GEN_TWO
-	uses_ethnicity = FALSE //2nd gen uses generic human look
+	uses_ethnicity = TRUE //2nd gen uses generic human look
 
 /datum/species/synthetic/colonial/colonial_gen_one
 	name = SYNTH_COLONY_GEN_ONE

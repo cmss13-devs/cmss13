@@ -203,7 +203,7 @@
 
 	linked_hive.partial_larva += real_total_xeno_count * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
-	linked_hive.hive_ui.update_burrowed_larva()
+	linked_hive.hive_ui.update_burrowed_larva(send_update = FALSE)
 
 #undef ENDGAME_LARVA_CAP_MULTIPLIER
 #undef LARVA_ADDITION_MULTIPLIER

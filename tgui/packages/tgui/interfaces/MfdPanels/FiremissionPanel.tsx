@@ -419,7 +419,7 @@ const FMOffsetError = (
       )}
       <Stack.Item height="25px" />
       <Divider />
-      <Stack.Item>
+      <Stack.Item className="FireMissionError">
         Unable to set firemission offsets.
         <br />
         Offsets depend on ammunition.

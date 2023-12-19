@@ -190,7 +190,7 @@
 		return
 
 	var/list/hive_xenos = linked_hive.totalXenos.Copy()
-  
+
 	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
 		if(!xeno.counts_for_slots)
 			hive_xenos -= xeno

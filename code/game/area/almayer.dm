@@ -129,8 +129,42 @@
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
 
+// engineering
+
 /area/almayer/engineering
 	minimap_color = MINIMAP_AREA_ENGI
+
+// lower deck
+
+/area/almayer/engineering/lower_engineering
+	name = "\improper Lower Deck Engineering"
+	icon_state = "lowerengineering"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/engineering/lower_engine_monitoring
+	name = "\improper Lower Deck Engine Reactor Monitoring"
+	icon_state = "lowermonitoring"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/engineering/engineering_workshop
+	name = "\improper Lower Deck Engineering Workshop"
+	icon_state = "workshop"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/engineering/engineering_workshop/hangar
+	name = "\improper Ordnance workshop"
+
+/area/almayer/engineering/engine_core
+	name = "\improper Engine Reactor Core Room"
+	icon_state = "coreroom"
+	fake_zlevel = 2 // lowerdeck
+	soundscape_playlist = SCAPE_PL_ENG
+	soundscape_interval = 15
+	hijack_evacuation_area = TRUE
+	hijack_evacuation_weight = 0.2
+	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
+
+// upper deck
 
 /area/almayer/engineering/upper_engineering
 	name = "\improper Upper Deck Engineering"
@@ -151,33 +185,7 @@
 	icon_state = "ceroom"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/engineering/lower_engine_monitoring
-	name = "\improper Lower Deck Engine Reactor Monitoring"
-	icon_state = "lowermonitoring"
-	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/engineering/lower_engineering
-	name = "\improper Lower Deck Engineering"
-	icon_state = "lowerengineering"
-	fake_zlevel = 2 // lowerdeck
-
-/area/almayer/engineering/engineering_workshop
-	name = "\improper Lower Deck Engineering Workshop"
-	icon_state = "workshop"
-	fake_zlevel = 2 // lowerdeck
-
-/area/almayer/engineering/engineering_workshop/hangar
-	name = "\improper Ordnance workshop"
-
-/area/almayer/engineering/engine_core
-	name = "\improper Engine Reactor Core Room"
-	icon_state = "coreroom"
-	fake_zlevel = 2 // lowerdeck
-	soundscape_playlist = SCAPE_PL_ENG
-	soundscape_interval = 15
-	hijack_evacuation_area = TRUE
-	hijack_evacuation_weight = 0.2
-	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/engineering/starboard_atmos
 	name = "\improper Upper Deck Starboard Atmospherics"
@@ -243,6 +251,8 @@
 	icon_state = "portpd"
 	fake_zlevel = 2 // lowerdeck
 
+// brig
+
 /area/almayer/shipboard/brig
 	name = "\improper Brig"
 	icon_state = "brig"
@@ -250,51 +260,38 @@
 
 /area/almayer/shipboard/brig/lobby
 	name = "\improper Brig Lobby"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/armory
 	name = "\improper Brig Armory"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/main_office
 	name = "\improper Brig Main Office"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/perma
 	name = "\improper Brig Perma Cells"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/cryo
 	name = "\improper Brig Cryo Pods"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/surgery
 	name = "\improper Brig Surgery"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/general_equipment
 	name = "\improper Brig General Equipment"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/evidence_storage
 	name = "\improper Brig Evidence Storage"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/execution
 	name = "\improper Brig Execution Room"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/cic_hallway
 	name = "\improper Brig CiC Hallway"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/dress
 	name = "\improper CIC Dress Uniform Room"
-	icon_state = "brig"
-
 /area/almayer/shipboard/brig/processing
 	name = "\improper Brig Processing and Holding"
-	icon_state = "brig"
 
 /area/almayer/shipboard/brig/cells
 	name = "\improper Brig Cells"

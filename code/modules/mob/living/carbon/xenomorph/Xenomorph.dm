@@ -1015,20 +1015,17 @@
 		return
 	var/breakouttime = legcuffed.breakouttime
 
-	next_move = world.time + 100
-	last_special = world.time + 10
+	next_move = world.time + 10 SECONDS
+	last_special = world.time + 1 SECONDS
 
 	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
-	to_chat(src, SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and we must stand still)"))
-	for(var/mob/O in viewers(src))
-		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
-	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
+		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
+	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)
-		return // time leniency for lag which also might make this whole thing pointless but the server
-	for(var/mob/O in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink
-		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
-	to_chat(src, SPAN_NOTICE(" We successfully remove [legcuffed]."))
+		return
+	visible_message(SPAN_DANGER("<b>[src] manages to remove [legcuffed]!</b>"), SPAN_NOTICE("We successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob()

@@ -23,11 +23,6 @@
 #define COMSIG_LIVING_SPEAK "living_speak"
 	#define COMPONENT_OVERRIDE_SPEAK (1<<0)
 
-#define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
-#define COMSIG_LIVING_ADJUST_EFFECT "living_adjust_effect"
-#define COMSIG_LIVING_SET_EFFECT "living_set_effect"
-	#define COMPONENT_CANCEL_EFFECT (1<<0)
-
 /// From /obj/structure/proc/do_climb(var/mob/living/user, mods)
 #define COMSIG_LIVING_CLIMB_STRUCTURE "climb_over_structure"
 /// From /mob/living/Collide(): (atom/A)

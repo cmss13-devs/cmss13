@@ -99,19 +99,32 @@
 	. = ..()
 	if(. != new_value)
 		update_icons() // Snowflake handler for xeno resting icons
+		update_wounds()
 
 /mob/living/carbon/xenomorph/on_floored_start()
 	. = ..()
 	update_icons()
+	update_wounds()
 /mob/living/carbon/xenomorph/on_floored_end()
 	. = ..()
 	update_icons()
+	update_wounds()
 /mob/living/carbon/xenomorph/on_incapacitated_trait_gain()
 	. = ..()
 	update_icons()
+	update_wounds()
 /mob/living/carbon/xenomorph/on_incapacitated_trait_loss()
 	. = ..()
 	update_icons()
+	update_wounds()
+/mob/living/carbon/xenomorph/on_knockedout_trait_gain()
+	. = ..()
+	update_icons()
+	update_wounds()
+/mob/living/carbon/xenomorph/on_knockedout_trait_loss()
+	. = ..()
+	update_icons()
+	update_wounds()
 
 /* ^^^^^^^^^^^^^^ End Icon updates */
 

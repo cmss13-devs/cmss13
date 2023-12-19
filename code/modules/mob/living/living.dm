@@ -24,6 +24,7 @@
 
 /mob/living/Destroy()
 	GLOB.living_mob_list -= src
+	cleanup_status_effects()
 	pipes_shown = null
 
 	. = ..()
@@ -33,6 +34,17 @@
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
 	QDEL_NULL(hallucinations)
+	status_effects = null
+
+/// Clear all running status effects assuming deletion
+/mob/living/proc/cleanup_status_effects()
+	PROTECTED_PROC(TRUE)
+	if(length(status_effects))
+		for(var/datum/status_effect/S as anything in status_effects)
+			if(S?.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
+				qdel(S)
+			else
+				S?.be_replaced()
 
 /mob/living/proc/initialize_pain()
 	pain = new /datum/pain(src)
@@ -473,10 +485,12 @@
 		if(CONSCIOUS)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
+				sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 			add_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED), STAT_TRAIT)
 		if(UNCONSCIOUS)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT) //adding trait sources should come before removing to avoid unnecessary updates
+				sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
 //			remove_from_dead_mob_list()
@@ -486,15 +500,18 @@
 		if(CONSCIOUS)
 			if(. >= UNCONSCIOUS)
 				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
+				sound_environment_override = SOUND_ENVIRONMENT_NONE
 			remove_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED, /*TRAIT_CRITICAL_CONDITION*/), STAT_TRAIT)
 		if(UNCONSCIOUS)
 			if(. >= UNCONSCIOUS)
 				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
+				sound_environment_override = SOUND_ENVIRONMENT_NONE
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)
 //			REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 //			remove_from_alive_mob_list()
 //			add_to_dead_mob_list()
+	update_layer() // Force update layers so that lying down works as intended upon death. This is redundant otherwise. Replace this by trait signals
 
 /**
  * Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.
@@ -577,12 +594,16 @@
 	drop_l_hand()
 	drop_r_hand()
 	add_temp_pass_flags(PASS_MOB_THRU)
+	update_layer()
+
+/// Updates the layer the mob is on based on its current status. This can result in redundant updates. Replace by trait signals eventually
+/mob/living/proc/update_layer()
 	//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
 	if(pulledby && pulledby.grab_level == GRAB_CARRY)
 		layer = ABOVE_MOB_LAYER
-	else if (stat == DEAD)
+	else if (body_position == LYING_DOWN && stat == DEAD)
 		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
-	else if(layer == initial(layer)) //to avoid things like hiding larvas.
+	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas. //i have no idea what this means
 		layer = LYING_LIVING_MOB_LAYER
 
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.

@@ -53,7 +53,7 @@
 			if(!already_in_crit)
 				new /datum/effects/crit/human(src)
 
-		if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+		if(IsKnockOut())
 			blinded = TRUE
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)

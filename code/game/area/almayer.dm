@@ -149,30 +149,12 @@
 	name = "\improper Lower Deck Engineering Workshop"
 	icon_state = "workshop"
 
-/area/almayer/engineering/engineering_workshop
-	name = "\improper Lower Deck Engineering Workshop"
-	icon_state = "workshop"
-	fake_zlevel = 2 // lowerdeck
-
 /area/almayer/engineering/lower/workshop/hangar
-	name = "\improper Ordnance workshop"
-
-/area/almayer/engineering/engineering_workshop/hangar
 	name = "\improper Ordnance workshop"
 
 /area/almayer/engineering/lower/engine_core
 	name = "\improper Engine Reactor Core Room"
 	icon_state = "coreroom"
-	soundscape_playlist = SCAPE_PL_ENG
-	soundscape_interval = 15
-	hijack_evacuation_area = TRUE
-	hijack_evacuation_weight = 0.2
-	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
-
-/area/almayer/engineering/engine_core
-	name = "\improper Engine Reactor Core Room"
-	icon_state = "coreroom"
-	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ENG
 	soundscape_interval = 15
 	hijack_evacuation_area = TRUE

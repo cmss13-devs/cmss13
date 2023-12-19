@@ -390,6 +390,19 @@
 	icon_state = "starboard"
 	fake_zlevel = 2 // lowerdeck
 
+//new hallways areas
+
+/area/almayer/hallways/upper
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/hallways/upper/port
+	name = "\improper Upper Deck port Hallway"
+	icon_state = "port"
+
+/area/almayer/hallways/upper/starboard
+	name = "\improper Upper Deck starboard Hallway"
+	icon_state = "starboard"
+
 /area/almayer/stair_clone
 	name = "\improper Lower Deck Stairs"
 	icon_state = "stairs_lowerdeck"

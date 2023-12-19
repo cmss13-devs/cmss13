@@ -421,11 +421,11 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 // Surgeon
 		if(SKILL_SURGERY)
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
-				return 1
+				return 0.8
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_TRAINED))
-				return 1
+				return 0.8
 			else if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-				return 1.2
+				return 1
 // Intel
 		if(SKILL_INTEL)
 			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_EXPERT))

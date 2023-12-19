@@ -70,7 +70,7 @@
 
 /datum/species/synthetic/gen_two
 	name = SYNTH_GEN_TWO
-	uses_ethnicity = TRUE //2nd gen uses generic human look
+	uses_ethnicity = TRUE
 
 /datum/species/synthetic/colonial
 	name = SYNTH_COLONY
@@ -93,7 +93,7 @@
 
 /datum/species/synthetic/colonial/colonial_gen_two
 	name = SYNTH_COLONY_GEN_TWO
-	uses_ethnicity = TRUE //2nd gen uses generic human look
+	uses_ethnicity = TRUE
 
 /datum/species/synthetic/colonial/colonial_gen_one
 	name = SYNTH_COLONY_GEN_ONE

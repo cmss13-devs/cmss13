@@ -313,9 +313,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 /// Returns if the mob is incapacitated and unable to perform general actions
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	// note that stat includes knockout via unconscious
-	// TODO: re-re-re-figure out if we need TRAIT_FLOORED here or using TRAIT_INCAPACITATED only is acceptable deviance from legacy behavior
 	return (stat || (!ignore_restrained && is_mob_restrained()) || (status_flags & FAKEDEATH) || HAS_TRAIT(src, TRAIT_INCAPACITATED))
+
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
 

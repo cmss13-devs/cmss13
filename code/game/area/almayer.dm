@@ -136,6 +136,12 @@
 
 // lower deck
 
+/area/almayer/engineering/lower
+	name = "\improper Lower Deck Engineering"
+	icon_state = "lowerengineering"
+	fake_zlevel = 2 // lowerdeck
+
+
 /area/almayer/engineering/lower_engineering
 	name = "\improper Lower Deck Engineering"
 	icon_state = "lowerengineering"

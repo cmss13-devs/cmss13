@@ -61,15 +61,15 @@
 	desc = "A satellite printout of the Lazarus Landing colony on LV-624."
 	html_link = "images/6/6f/LV624.png"
 
-/obj/item/map/ice_colony_map
-	name = "\improper Ice Colony map"
-	desc = "A satellite printout of the Ice Colony."
-	html_link = "images/1/18/Map_icecolony.png"
+/obj/item/map/ice_colony_map/v1
+	html_link = "https://cm-ss13.com/w/images/8/88/Ice_V1.png"
 	color = "cyan"
 
-/obj/item/map/ice_colony_map/v1
+/obj/item/map/ice_colony_map_v2
 	name = "\improper Ice Colony Map"
+	desc = "A labelled print out of the anterior scan of the UA colony Shivas Snowball."
 	html_link = "https://cm-ss13.com/w/images/8/88/Ice_V1.png"
+	color = "cyan"
 
 /obj/item/map/ice_colony_map_v3
 	name = "\improper Shivas Snowball map"
@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 	return list(
 		MAP_LV_624 = new /obj/item/map/lazarus_landing_map(),
 		MAP_ICE_COLONY_V1 = new /obj/item/map/ice_colony_map/v1(),
-		MAP_ICE_COLONY_V2 = new /obj/item/map/ice_colony_map(),
+		MAP_ICE_COLONY_V2 = new /obj/item/map/ice_colony_map_v2(),
 		MAP_ICE_COLONY_V3 = new /obj/item/map/ice_colony_map_v3(),
 		MAP_WHISKEY_OUTPOST = new /obj/item/map/whiskey_outpost_map(),
 		MAP_BIG_RED = new /obj/item/map/big_red_map(),

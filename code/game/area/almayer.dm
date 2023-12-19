@@ -141,11 +141,9 @@
 	icon_state = "lowerengineering"
 	fake_zlevel = 2 // lowerdeck
 
-
-/area/almayer/engineering/lower_engineering
-	name = "\improper Lower Deck Engineering"
-	icon_state = "lowerengineering"
-	fake_zlevel = 2 // lowerdeck
+/area/almayer/engineering/lower/engine_monitoring
+	name = "\improper Lower Deck Engine Reactor Monitoring"
+	icon_state = "lowermonitoring"
 
 /area/almayer/engineering/lower_engine_monitoring
 	name = "\improper Lower Deck Engine Reactor Monitoring"

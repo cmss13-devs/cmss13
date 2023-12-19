@@ -1011,6 +1011,8 @@
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
 
 /mob/living/carbon/xenomorph/resist_restraints()
+	if(!legcuffed)
+		return
 	var/breakouttime = legcuffed.breakouttime
 
 	next_move = world.time + 100

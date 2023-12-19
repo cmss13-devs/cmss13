@@ -238,6 +238,11 @@
 	icon_state = "portpd"
 	fake_zlevel = 2 // lowerdeck
 
+/area/almayer/shipboard/stern_point_defense
+	name = "\improper Lower Deck Stern Point Defense"
+	icon_state = "portpd"
+	fake_zlevel = 2 // lowerdeck
+
 /area/almayer/shipboard/brig
 	name = "\improper Brig"
 	icon_state = "brig"
@@ -404,10 +409,37 @@
 	icon_state = "stairs_upperdeck"
 	fake_zlevel = 1 // upperdeck
 
+// hull areas.
+
+// lower deck hull areas
+
 /area/almayer/hull/lower_hull
 	name = "\improper Lower Deck Hull"
 	icon_state = "lowerhull"
 	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/hull/lower_hull/stern
+	name = "\improper Lower Deck Stern Hull"
+
+/area/almayer/hull/lower_hull/l_f_s
+	name = "\improper Lower Deck Starboard-Fore Hull"
+
+/area/almayer/hull/lower_hull/l_m_s
+	name = "\improper Lower Deck Starboard-Midship Hull"
+
+/area/almayer/hull/lower_hull/l_a_s
+	name = "\improper Lower Deck Starboard Hull"
+
+/area/almayer/hull/lower_hull/l_f_p
+	name = "\improper Lower Deck Port-Fore Hull"
+
+/area/almayer/hull/lower_hull/l_m_p
+	name = "\improper Lower Deck Port-Midship Hull"
+
+/area/almayer/hull/lower_hull/l_a_p
+	name = "\improper Lower Deck Port-Aft Hull"
+
+// upper deck hull areas
 
 /area/almayer/hull/upper_hull
 	name = "\improper Upper Deck Hull"
@@ -416,51 +448,21 @@
 
 /area/almayer/hull/upper_hull/u_f_s
 	name = "\improper Upper Deck Fore-Starboard Hull"
-	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_m_s
 	name = "\improper Upper Deck Starboard-Midship Hull"
-	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_a_s
 	name = "\improper Upper Deck Starboard-Aft Hull"
-	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_f_p
 	name = "\improper Upper Deck Port-Fore Hull"
-	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_m_p
 	name = "\improper Upper Deck Port-Midship Hull"
-	icon_state = "upperhull"
 
 /area/almayer/hull/upper_hull/u_a_p
 	name = "\improper Upper Deck Port-Aft Hull"
-	icon_state = "upperhull"
-
-/area/almayer/hull/lower_hull/l_f_s
-	name = "\improper Lower Deck Starboard-Fore Hull"
-	icon_state = "upperhull"
-
-/area/almayer/hull/lower_hull/l_m_s
-	name = "\improper Lower Deck Starboard-Midship Hull"
-	icon_state = "upperhull"
-
-/area/almayer/hull/lower_hull/l_a_s
-	name = "\improper Lower Deck Starboard Hull"
-	icon_state = "upperhull"
-
-/area/almayer/hull/lower_hull/l_f_p
-	name = "\improper Lower Deck Port-Fore Hull"
-	icon_state = "upperhull"
-
-/area/almayer/hull/lower_hull/l_m_p
-	name = "\improper Lower Deck Port-Midship Hull"
-	icon_state = "upperhull"
-
-/area/almayer/hull/lower_hull/l_a_p
-	name = "\improper Lower Deck Port-Aft Hull"
-	icon_state = "upperhull"
 
 /area/almayer/living/cryo_cells
 	name = "\improper Lower Deck Cryo Cells"

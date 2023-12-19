@@ -421,7 +421,7 @@
 	item_state = "merc_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Armor"
+	name = "M4-X Armor"
 	desc = "A next generation body armor system intended for USCM Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features. DONOR ITEM"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	icon_state = "steelpoint_armor"
@@ -842,7 +842,7 @@
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Helmet"
+	name = "M4-X Helmet"
 	desc = "A next generation combat helmet intended to be paired with the M4X armour. The full faced helmet provides complete light ballistic-resistant protection alongside enchanced acid resistance. This prototype version lacks those features. DONOR ITEM"
 	icon_state = "steelpoint_helmet"
 	item_state = "steelpoint_helmet"
@@ -1149,7 +1149,7 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Jumpsuit"
+	name = "M4-X Jumpsuit"
 	desc = "Jumpsuit to the M4X!!!  DONOR ITEM"
 	icon_state = "steelpoint_jumpsuit"
 	worn_state = "steelpoint_jumpsuit"
@@ -1320,7 +1320,7 @@
 	item_state = "doom_boots"
 
 /obj/item/clothing/shoes/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Boot"
+	name = "M4-X Boot"
 	desc = "Boots to the M4X.  DONOR ITEM"
 	icon_state = "jackboots"
 	item_state = "jackboots"

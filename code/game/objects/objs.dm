@@ -233,6 +233,7 @@
 /obj/proc/unbuckle()
 	SIGNAL_HANDLER
 	if(buckled_mob && buckled_mob.buckled == src)
+		buckled_mob.clear_alert(ALERT_BUCKLED)
 		buckled_mob.set_buckled(null)
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 
@@ -299,6 +300,7 @@
 /obj/proc/do_buckle(mob/living/target, mob/user)
 	send_buckling_message(target, user)
 	if (src && src.loc)
+		target.throw_alert(ALERT_BUCKLED, /atom/movable/screen/alert/buckled)
 		target.set_buckled(src)
 		target.forceMove(src.loc)
 		target.setDir(dir)

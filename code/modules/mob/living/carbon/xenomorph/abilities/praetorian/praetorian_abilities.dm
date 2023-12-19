@@ -36,7 +36,7 @@
 
 	var/buff_duration = 12
 	var/damage = 40
-	var/shield_regen_threshold = 2
+	var/shield_regen_threshold = 1
 
 	var/activated_once = FALSE
 	var/time_until_timeout = 20
@@ -54,8 +54,8 @@
 	xeno_cooldown = 120
 
 	// Root config
-	var/root_duration_unbuffed = 5
-	var/root_duration_buffed = 12.5
+	var/root_duration_unbuffed = 1 SECONDS
+	var/root_duration_buffed = 2.5 SECONDS
 
 	// Fling config
 	var/fling_dist_unbuffed = 3
@@ -97,10 +97,10 @@
 	var/action_icon_result
 	if (cAction.root_toggle)
 		action_icon_result = "prae_cleave_root"
-		to_chat(X, SPAN_WARNING("You will now root marines with your cleave."))
+		to_chat(X, SPAN_WARNING("We will now root marines with our cleave."))
 	else
 		action_icon_result = "prae_cleave_fling" // TODO: update
-		to_chat(X, SPAN_WARNING("You will now throw marines with your cleave."))
+		to_chat(X, SPAN_WARNING("We will now throw marines with our cleave."))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
@@ -124,12 +124,12 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 180
+	xeno_cooldown = 15 SECONDS
 	plasma_cost = 180
 
 	// Config
 	var/max_distance = 7
-	var/windup = 8
+	var/windup = 7 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -169,7 +169,7 @@
 
 	// Config
 	var/fling_dist = 3
-	var/windup = 2
+	var/windup = 2 DECISECONDS
 
 ////////// Dancer Abilities
 
@@ -335,12 +335,12 @@
 	if (WH.curr_effect_type == WARDEN_HEAL_HP)
 		action_icon_result = "warden_rejuvenate"
 		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
-		to_chat(X, SPAN_XENOWARNING("You will now aid your allies by curing their ailments!"))
+		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by curing their ailments!"))
 
 	else
 		action_icon_result = "warden_heal"
 		WH.curr_effect_type = WARDEN_HEAL_HP
-		to_chat(X, SPAN_XENOWARNING("You will now aid your allies by healing them!"))
+		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by healing them!"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

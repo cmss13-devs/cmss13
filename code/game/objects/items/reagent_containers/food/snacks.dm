@@ -3123,6 +3123,7 @@
 	icon_state = "packaged-burrito"
 	bitesize = 2
 	package = 1
+	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 
 /obj/item/reagent_container/food/snacks/packaged_burrito/Initialize()
 	. = ..()
@@ -3166,6 +3167,7 @@
 	name = "Packaged Hotdog"
 	desc = "A singular squishy, room temperature, hot dog. There's no time given for how long to cook it, so you assume its probably good to go. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "packaged-hotdog"
+	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	bitesize = 2
 	package = 1
 

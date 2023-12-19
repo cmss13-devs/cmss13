@@ -156,6 +156,27 @@
 		return
 	..()
 
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft
+	name = "Anti-Theft Shutters"
+	desc = "Secure Storage shutters, they're reinforced against entry attempts."
+	var/req_level = SEC_LEVEL_RED
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft/Initialize()
+	. = ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, PROC_REF(sec_changed))
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft/proc/sec_changed(datum/source, new_sec)
+	SIGNAL_HANDLER
+	if(new_sec < req_level)
+		if(density)
+			return
+		close()
+	else
+		if(!density)
+			return
+		open()
+
 //make a subtype for CL office so it as a proper name.
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl
 		name = "\improper Corporate Liason Privacy Shutters"

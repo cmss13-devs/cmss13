@@ -71,7 +71,7 @@
 	html_link = "https://cm-ss13.com/w/images/8/88/Ice_V1.png"
 
 /obj/item/map/ice_colony_map_/v2
-	html_link = "https://cm-ss13.com/w/images/8/88/Ice_V1.png"
+	html_link = "https://cm-ss13.com/w/images/c/cf/Ice_Colony_v2.png"
 
 /obj/item/map/ice_colony_map_v3
 	name = "\improper Shivas Snowball map"

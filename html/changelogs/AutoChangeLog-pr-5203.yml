@@ -1,5 +1,0 @@
-author: "PurpleCIoud"
-delete-after: True
-changes:
-  - imageadd: "added chocolate bar new sprite"
-  - imagedel: "deleted old chocolate bar sprite"

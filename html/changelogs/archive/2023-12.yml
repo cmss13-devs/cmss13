@@ -346,3 +346,31 @@
   - bugfix: fixed landing zone camera on all map in rotation.
   sleepynecrons:
   - imageadd: marine snow uniforms and armors given a new look
+2023-12-19:
+  Drathek:
+  - balance: Added the possibility of surgery steps failing based on tool and surface
+      suitability compensated by surgery skill.
+  Huffie56:
+  - bugfix: fix a nightmare insert that had a wall and a door on same tile.
+  NateDross:
+  - bugfix: Requisitions elevator lighting fix
+  NessiePendragon:
+  - rscadd: Added new sprites for Warrior.
+  PurpleCIoud:
+  - imageadd: added chocolate bar new sprite
+  - imagedel: deleted old chocolate bar sprite
+  SabreML:
+  - rscadd: Updated the 'help' message for xeno special structure construction.
+  - qol: Added a 'remaining' counter when constructing special structures to let players
+      know how many can still be built.
+  - qol: Added a 'Ghost' button for dead xenomorphs.
+  realforest2001:
+  - rscadd: Added a proc for comparing the registered name of an ID, to the real name
+      of a mob. Also checks registered_ref if one exists.
+  - rscadd: Evacuation can no longer be cancelled without passing above check.
+  - rscadd: People forced into escape-pod stasis bays against their wishes can now
+      eject themselves.
+  - bugfix: Xenos can no longer force humans into escape-pod stasis bays.
+  - bugfix: Escape-pod stasis bays no longer accept corpses.
+  stalkerino:
+  - balance: fixes the balance of the game by making hair gradient trait free

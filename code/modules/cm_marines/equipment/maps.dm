@@ -61,7 +61,6 @@
 	desc = "A satellite printout of the Lazarus Landing colony on LV-624."
 	html_link = "images/6/6f/LV624.png"
 
-
 /obj/item/map/ice_colony_map
 	name = "\improper Ice Colony map"
 	desc = "A satellite printout of the Ice Colony."

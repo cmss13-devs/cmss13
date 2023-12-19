@@ -12,8 +12,8 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
-	action_start_message = "You become one with the resin. You feel the urge to run!"
-	action_end_message = "You feel less in tune with the resin."
+	action_start_message = "We become one with the resin. We feel the urge to run!"
+	action_end_message = "We feel less in tune with the resin."
 	plasma_use_per_tick = 30
 
 /datum/action/xeno_action/active_toggle/toggle_speed/can_use_action()

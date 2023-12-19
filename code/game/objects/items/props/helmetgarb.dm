@@ -602,6 +602,13 @@
 	icon_state = "compass"
 	w_class = SIZE_SMALL
 
+/obj/item/prop/helmetgarb/compass/get_examine_text(mob/user)
+	. = ..()
+	if(is_ground_level(user.z) && !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE])
+		. += SPAN_NOTICE("It seems you are facing [dir2text(user.dir)].")
+		return
+	. += SPAN_NOTICE("The needle is not moving.")
+
 /obj/item/prop/helmetgarb/bug_spray
 	name = "insect repellent"
 	desc = "A store-brand insect repellent, to keep any variety of pest or mosquito away from you."

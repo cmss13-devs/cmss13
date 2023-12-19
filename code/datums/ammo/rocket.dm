@@ -62,6 +62,7 @@
 	damage = 10
 	penetration= ARMOR_PENETRATION_TIER_10
 
+
 /datum/ammo/rocket/ap/on_hit_mob(mob/mob, obj/projectile/projectile)
 	var/turf/turf = get_turf(mob)
 	mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)

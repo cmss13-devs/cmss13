@@ -555,8 +555,7 @@
 /datum/reagent/neurotoxin/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	if(!.) return
-	if(!HAS_TRAIT(src, TRAIT_FLOORED))
-		M.apply_effect(5, WEAKEN)
+	M.KnockDown(5)
 	if(!data) data = 1
 	data++
 	M.dizziness +=6

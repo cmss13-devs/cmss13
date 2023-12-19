@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - bugfix: "fusion reactors cannot be destroyed with explosions"

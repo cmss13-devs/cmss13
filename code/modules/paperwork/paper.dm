@@ -41,11 +41,13 @@
 	var/crayonfont = "Comic Sans MS"
 
 	/// If this paper imports a prefab on instance.
-	var/paper_prefab = FALSE
+	var/is_prefab = FALSE
 	/// Category of the paper.
 	var/document_category
-	/// Specific paper. This is the HTML file name.
+	/// Name of the document.
 	var/document_title
+	/// Specific paper. This is the HTML file name.
+	var/doc_file_ref
 
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
@@ -61,7 +63,7 @@
 
 	update_icon()
 	updateinfolinks()
-	if(paper_prefab)
+	if(is_prefab)
 		compile_paper()
 
 /obj/item/paper/update_icon()
@@ -363,12 +365,12 @@
 	return TRUE
 
 /obj/item/paper/proc/compile_paper()
-	if(!paper_prefab)
+	if(!is_prefab)
 		return FALSE
-	if(!document_category || !document_title)
+	if(!document_category || !doc_file_ref)
 		return FALSE
 
-	var/imported = file2text("paperwork/[document_category]/[document_title].html")
+	var/imported = file2text("paperwork/[document_category]/[doc_file_ref].html")
 	if(!imported)
 		log_debug("Paper Prefab: FAILED IMPORT")
 		return FALSE

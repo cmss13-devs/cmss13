@@ -21,6 +21,9 @@
 
 	INVOKE_ASYNC(src, PROC_REF(remove_from), user)
 
+/datum/action/ghost/xeno
+	action_icon_state = "ghost_xeno"
+
 /datum/action/join_ert
 	name = "Join ERT"
 	action_icon_state = "join_ert"

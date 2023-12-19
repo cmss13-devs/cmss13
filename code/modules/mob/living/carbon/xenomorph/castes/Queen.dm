@@ -272,6 +272,10 @@
 	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Queen_1","Queen_2","Queen_3")
+	weed_food_states_flipped = list("Queen_1","Queen_2","Queen_3")
+
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/queen_ability_cooldown = 0
@@ -606,7 +610,7 @@
 	if(word_ability)
 		word_ability.apply_cooldown()
 
-	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in your head...")
+	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in our head...")
 
 	log_and_message_admins("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")

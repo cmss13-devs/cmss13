@@ -1,3 +1,10 @@
+/mob/living/can_resist()
+	if(next_move > world.time)
+		return FALSE
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
+		return FALSE
+	return TRUE
+
 /mob/living/verb/resist()
 	set name = "Resist"
 	set category = "IC"
@@ -114,9 +121,9 @@
 		//okay, so the closet is either welded or locked... resist!!!
 		next_move = world.time + 100
 		last_special = world.time + 100
-		to_chat(src, SPAN_DANGER("You lean on the back of \the [C] and start pushing the door open. (this will take about [breakout_time] minutes)"))
+		to_chat(src, SPAN_DANGER("You lean on the back of [C] and start pushing the door open. (this will take about [breakout_time] minutes)"))
 		for(var/mob/O in viewers(loc))
-			O.show_message(SPAN_DANGER("<B>The [loc] begins to shake violently!</B>"), SHOW_MESSAGE_VISIBLE)
+			O.show_message(SPAN_DANGER("<B>[loc] begins to shake violently!</B>"), SHOW_MESSAGE_VISIBLE)
 
 		if(!do_after(src, (breakout_time*1 MINUTES), INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST))
 			return

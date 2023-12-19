@@ -96,7 +96,10 @@
 	starting = null
 	permutated = null
 	path = null
+	vis_source = null
+	process_start_turf = null
 	weapon_cause_data = null
+	bullet_traits = null
 	firer = null
 	QDEL_NULL(bound_beam)
 	SSprojectiles.stop_projectile(src)
@@ -1262,7 +1265,7 @@
 		return
 
 	attack_log += "\[[time_stamp()]\] <b>SOMETHING??</b> shot <b>[key_name(src)]</b> with a <b>[P]</b>"
-	msg_admin_attack("SOMETHING?? shot [key_name(src)] with a [P] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
+	msg_admin_attack("SOMETHING?? shot [key_name(src)] with \a [P] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
 
 //Abby -- Just check if they're 1 tile horizontal or vertical, no diagonals
 /proc/get_adj_simple(atom/Loc1,atom/Loc2)

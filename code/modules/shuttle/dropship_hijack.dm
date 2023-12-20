@@ -63,7 +63,7 @@
 		sleep(10)
 
 	SShijack.announce_status_on_crash()
-	SSticker.hijack_ocurred()
+	addtimer(CALLBACK(SSticker, PROC_REF(hijack_ocurred)), 5 SECONDS)
 
 /datum/dropship_hijack/almayer/proc/fire()
 	if(!shuttle || !crash_site)

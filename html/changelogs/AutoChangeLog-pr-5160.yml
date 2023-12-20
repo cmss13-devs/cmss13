@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - bugfix: "Lurker can tail jab over ledges and window frames."

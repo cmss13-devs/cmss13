@@ -387,7 +387,7 @@ and is used as a base for all of the maps.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
 
-	survivor_variant = CIVILIAN_SURVIVOR
+	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/survivor/trucker/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/overalls(new_human), WEAR_BODY)

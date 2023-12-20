@@ -193,7 +193,7 @@
 
 /datum/behavior_delegate/drone_healer/append_to_stat()
 	. = list()
-	. += "Transferred health amount: [transferred_amount]"
+	. += "Transferred health amount: [transferred_amount]/[required_transferred_amount]"
 	if(transferred_amount >= required_transferred_amount)
 		. += "Sacrifice will grant you new life."
 

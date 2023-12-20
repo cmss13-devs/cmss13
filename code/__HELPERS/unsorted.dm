@@ -143,7 +143,7 @@
 			return NORTH
 
 /proc/Get_Compass_Dir(atom/start, atom/end)//get_dir() only considers an object to be north/south/east/west if there is zero deviation. This uses rounding instead.
-	return angle_to_dir(Get_Angle(start, end))
+	return angle_to_dir(Get_Angle(get_turf(start), get_turf(end)))
 
 // Among other things, used by flamethrower and boiler spray to calculate if flame/spray can pass through.
 // Returns an atom for specific effects (primarily flames and acid spray) that damage things upon contact

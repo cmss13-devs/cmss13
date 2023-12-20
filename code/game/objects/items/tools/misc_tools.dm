@@ -337,6 +337,7 @@
 /obj/item/tool/pen/multicolor/provost
 	name = "provost pen"
 	desc = "A sleek black shell pen with the Provost Office sigil engraved into the side. It can change colors as needed for various functions within the Provost and Military Police."
+	icon_state = "provost_pen"
 	colour_list = list("blue", "green", "black", "orange", "red", "white")
 
 /*

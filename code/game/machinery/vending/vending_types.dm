@@ -434,7 +434,7 @@
 		/obj/item/tool/pen = 10,
 		/obj/item/tool/pen/blue = 10,
 		/obj/item/tool/pen/red = 10,
-		/obj/item/tool/pen/fountain = 3,
+		/obj/item/tool/pen/multicolor/fountain = 3,
 	)
 
 	contraband = list(/obj/item/toy/sword = 2)
@@ -461,7 +461,7 @@
 		/obj/item/tool/pen = 2,
 		/obj/item/tool/pen/blue = 2,
 		/obj/item/tool/pen/red = 2,
-		/obj/item/tool/pen/fountain = 30,
+		/obj/item/tool/pen/multicolor/fountain = 30,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL
 

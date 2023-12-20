@@ -1,8 +1,12 @@
 GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_title)
 /obj/structure/filingcabinet/documentation
-	name = "filing cabinet (documents)"
+	name = "documents cabinet"
+	/// The categories available from this cabinet. Manually populated.
 	var/list/available_categories = list()
+	/// The possible options that can be withdrawn. Automatically populated by get_possible_documents().
 	var/list/available_documents = list()
+	/// Number of prefab documents that can be withdrawn. Cap intended to prevent people spamming infinite copies.
+	var/remaining_documents = 30
 
 /obj/structure/filingcabinet/documentation/Initialize()
 	. = ..()
@@ -26,7 +30,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 
 
 /obj/structure/filingcabinet/documentation/attack_hand(mob/user as mob)
-	var/choice = tgui_alert(user, "Do you wish to Open the cabinet, or retrieve a document template?", "Action", list("Open", "Document"), 20 SECONDS)
+	var/choice = tgui_alert(user, "Do you wish to open the cabinet, or retrieve a document template?", "Action", list("Open", "Document"), 20 SECONDS)
 	switch(choice)
 		if("Open")
 			if(contents.len <= 0)
@@ -41,10 +45,16 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 			show_browser(user, dat, name, "filingcabinet", "size=350x300")
 			return
 		if("Document")
+			if(!remaining_documents)
+				to_chat(user, SPAN_WARNING("[src] has no remaining official forms!"))
+				return
 			give_document(user)
 			return
 
 /obj/structure/filingcabinet/documentation/proc/give_document(mob/user as mob)
+	if(!remaining_documents)
+		to_chat(user, SPAN_WARNING("[src] has no remaining official forms!"))
+		return FALSE
 	for(var/paper in available_documents)
 		log_debug("Document: [paper]")
 	var/chosen = tgui_input_list(usr, "What document do you need?", "Choose Document", available_documents)
@@ -53,10 +63,10 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document.forceMove(user.loc)
 	user.put_in_hands(document)
 	to_chat(user, SPAN_NOTICE("You take [document] out of [src]."))
-	return
+	remaining_documents--
+	return TRUE
 
 /obj/structure/filingcabinet/documentation/military_police
-	name = "filing cabinet (documents)"
 	available_categories = list(PAPER_CATEGORY_MP)
 //########################################
 //########################################
@@ -77,6 +87,14 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	name = "Blank MP Document"
 	document_category = PAPER_CATEGORY_MP
 
+/obj/item/paper/prefab/carbon/military_police/appeal_form
+	document_title = "PR301 - Appeals Form"
+	doc_file_ref = "appeal_form"
+
 /obj/item/paper/prefab/carbon/military_police/confiscation_receipt
-	document_title = "C356R - Confiscation Receipt"
+	document_title = "PR356 - Confiscation Receipt"
 	doc_file_ref = "confiscation_receipt"
+
+/obj/item/paper/prefab/carbon/military_police/apology_notice
+	document_title = "NJ910 - Apology Notice"
+	doc_file_ref = "apology_notice"

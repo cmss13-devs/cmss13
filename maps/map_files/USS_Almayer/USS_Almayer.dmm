@@ -27328,6 +27328,10 @@
 /obj/structure/machinery/computer/secure_data{
 	dir = 4
 	},
+/obj/item/tool/pen/multicolor/provost{
+	pixel_y = 14;
+	pixel_x = 6
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red"
@@ -28409,7 +28413,10 @@
 /obj/item/paper_bin/uscm{
 	pixel_y = 7
 	},
-/obj/item/tool/pen,
+/obj/item/tool/pen/multicolor/provost{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/multicolor/provost,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red"
@@ -37680,6 +37687,10 @@
 	phone_id = "Brig Cells";
 	pixel_x = 16
 	},
+/obj/item/tool/pen/multicolor/provost{
+	pixel_y = 14;
+	pixel_x = 6
+	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red"
@@ -38114,6 +38125,22 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_m_p)
+"gMJ" = (
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 16;
+	pixel_x = -8;
+	density = 0
+	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 16;
+	pixel_x = 8;
+	density = 0
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/processing)
 "gMN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -58420,6 +58447,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/tool/pen/multicolor/provost,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -66618,7 +66646,7 @@
 "snX" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 16;
-	pixel_y = 27
+	pixel_y = 26
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -74881,12 +74909,12 @@
 /area/almayer/living/briefing)
 "vBJ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/pen,
-/obj/item/device/whistle,
-/obj/item/device/megaphone,
 /obj/item/paper_bin/uscm{
 	pixel_y = 7
 	},
+/obj/item/tool/pen/multicolor/provost,
+/obj/item/device/whistle,
+/obj/item/device/megaphone,
 /turf/open/floor/almayer{
 	allow_construction = 0
 	},
@@ -93447,7 +93475,7 @@ kHa
 tzd
 tzd
 sgi
-bju
+gMJ
 wSm
 kAL
 xkd

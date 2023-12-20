@@ -141,6 +141,8 @@
 
 				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
 					escaped += list(serialized)
+				else if(human.faction in FACTION_LIST_WY)
+					wy += list(serialized)
 				else if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
 				else if(isyautja(human))
@@ -149,8 +151,6 @@
 					ert_members += list(serialized)
 				else if(human.faction in FACTION_LIST_UPP)
 					upp += list(serialized)
-				else if(human.faction in FACTION_LIST_WY)
-					wy += list(serialized)
 				else if(human.faction in FACTION_LIST_CLF)
 					clf += list(serialized)
 				else if(human.faction in FACTION_LIST_TWE)

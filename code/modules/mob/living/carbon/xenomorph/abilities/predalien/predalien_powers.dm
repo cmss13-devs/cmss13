@@ -104,7 +104,7 @@
 		return
 
 	if (!isxeno_human(target) || xeno.can_not_harm(target))
-		to_chat(xeno, SPAN_XENOWARNING("You must target a hostile!"))
+		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
 		return
 
 	if (get_dist_sqrd(target, xeno) > 2)
@@ -114,7 +114,7 @@
 	var/mob/living/carbon/carbon = target
 
 	if (carbon.stat == DEAD)
-		to_chat(xeno, SPAN_XENOWARNING("[carbon] is dead, why would you want to touch them?"))
+		to_chat(xeno, SPAN_XENOWARNING("[carbon] is dead, why would we want to touch them?"))
 		return
 
 	var/datum/behavior_delegate/predalien_base/behavior = xeno.behavior_delegate
@@ -136,7 +136,7 @@
 	xeno.anchored = TRUE
 
 	if (do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [carbon]!"))
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [carbon]!"))
 		carbon.spawn_gibs()
 		playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 75, 1)
 		carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)

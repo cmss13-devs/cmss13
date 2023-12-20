@@ -109,8 +109,8 @@
 
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
-	//else if(!gibbed)  // At the moment we only support humans
-		//AddComponent(/datum/component/weed_food)
+	else if(!gibbed)
+		AddComponent(/datum/component/weed_food)
 
 	if(hive)
 		hive.remove_xeno(src)
@@ -132,6 +132,7 @@
 				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [X.name].", source = X, action = NOTIFY_ORBIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
+	give_action(src, /datum/action/ghost/xeno)
 
 /mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))

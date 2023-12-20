@@ -391,7 +391,7 @@
 		to_chat(user, "[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getToxLoss())
 		to_chat(user, "[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getFireLoss())
 		to_chat(user, SPAN_NOTICE(" Expected time till occupant can safely awake: (note: These times are always inaccurate)"))
-		to_chat(user, SPAN_NOTICE(" \t [occupant.GetKnockOutValueNotADurationDoNotUse() / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
+		to_chat(user, SPAN_NOTICE(" \t [occupant.GetKnockOutDuration() * GLOBAL_STATUS_MULTIPLIER / (1 SECONDS)] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
 	else
 		to_chat(user, SPAN_NOTICE(" There is no one inside!"))
 	return

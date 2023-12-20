@@ -80,6 +80,10 @@
 	icon_xeno = 'icons/mob/xenos/burrower.dmi'
 	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")
+	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
+
 /mob/living/carbon/xenomorph/burrower/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
 	sight |= SEE_TURFS

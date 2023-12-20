@@ -1080,6 +1080,7 @@
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	zoom = 1
+	ammo = /datum/ammo/bullet/machinegun/doorgun
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"

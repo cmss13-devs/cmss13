@@ -25,7 +25,7 @@
 
 	if(HAS_TRAIT(M, TRAIT_CANNOT_EAT))
 		to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to drink!"))
-		return
+		return FALSE
 
 	if(M == user)
 		to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))

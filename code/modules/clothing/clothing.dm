@@ -349,10 +349,10 @@
 	if(allowed_items_typecache)
 		allowed_items_typecache = typecacheof(allowed_items_typecache)
 	if(spawn_item_type)
-		_insert_item(spawn_item_type)
+		_insert_item(new spawn_item_type(src))
 
 /// Returns a boolean indicating if `item_to_insert` can be inserted into the shoes.
-/obj/item/clothing/shoes/proc/can_insert_item(obj/item/item_to_insert)
+/obj/item/clothing/shoes/proc/can_be_inserted(obj/item/item_to_insert)
 	// If the shoes can't actually hold an item.
 	if(allowed_items_typecache == null)
 		return FALSE
@@ -368,10 +368,10 @@
 /**
  * Try to insert `item_to_insert` into the shoes.
  *
- * Returns `TRUE` if it succeeded, or `FALSE` if [/obj/item/clothing/shoes/proc/can_insert_item] failed, or `user` couldn't drop the item.
+ * Returns `TRUE` if it succeeded, or `FALSE` if [/obj/item/clothing/shoes/proc/can_be_inserted] failed, or `user` couldn't drop the item.
  */
 /obj/item/clothing/shoes/proc/attempt_insert_item(mob/user, obj/item/item_to_insert)
-	if(!can_insert_item(item_to_insert))
+	if(!can_be_inserted(item_to_insert))
 		return FALSE
 	// Try to drop the item and place it inside `src`.
 	if(!user.drop_inv_item_to_loc(item_to_insert, src))
@@ -381,7 +381,8 @@
 	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	return TRUE
 
-/// Insert `item_to_insert` into the shoes. (PROTECTED PROC, USE [/obj/item/clothing/shoes/proc/attempt_insert_item()] INSTEAD.)
+/// Insert `item_to_insert` directly into the shoes without bothering with any checks.
+/// (In the majority of cases [/obj/item/clothing/shoes/proc/attempt_insert_item()] should be used instead of this.)
 /obj/item/clothing/shoes/proc/_insert_item(obj/item/item_to_insert)
 	PROTECTED_PROC(TRUE)
 	stored_item = item_to_insert
@@ -391,9 +392,9 @@
 /obj/item/clothing/shoes/proc/remove_item(mob/user)
 	if(!stored_item || !user.put_in_active_hand(stored_item))
 		return
-	stored_item = null
 	to_chat(user, SPAN_NOTICE("You slide [stored_item] out of [src]."))
 	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+	stored_item = null
 	update_icon()
 
 /obj/item/clothing/shoes/update_clothing_icon()

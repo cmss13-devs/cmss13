@@ -96,7 +96,10 @@
 	starting = null
 	permutated = null
 	path = null
+	vis_source = null
+	process_start_turf = null
 	weapon_cause_data = null
+	bullet_traits = null
 	firer = null
 	QDEL_NULL(bound_beam)
 	SSprojectiles.stop_projectile(src)

@@ -1,4 +1,0 @@
-author: "Birdtalon, Fira"
-delete-after: True
-changes:
-  - bugfix: "Fixes hive UI crash upon pylon giving new larva."

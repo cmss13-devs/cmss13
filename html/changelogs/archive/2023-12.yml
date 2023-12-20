@@ -374,3 +374,32 @@
   - bugfix: Escape-pod stasis bays no longer accept corpses.
   stalkerino:
   - balance: fixes the balance of the game by making hair gradient trait free
+2023-12-20:
+  Birdtalon, Fira:
+  - bugfix: Fixes hive UI crash upon pylon giving new larva.
+  Contrabang:
+  - bugfix: Matches now do burn damage instead of brute, when you accidently burn
+      your own hand.
+  InsaneRed:
+  - spellcheck: Converted more "YOU" to "WE"  for xenomorphs.
+  LTNTS:
+  - qol: makes suspect nardo gray
+  fira:
+  - rscadd: Added Buckled, Handcuffed and Legcuffed screen alerts
+  - code_imp: Ported /tg/ status effects backend, modified with timers to let effects
+      end at appropriate time
+  - code_imp: Stun, Knockdown and Knockout now use the new effects backend
+  - balance: Due to backend change, all KO/KD/Stuns may behave differently timing
+      wise. This is of course subject to adjustments.
+  - balance: Endurance is now set at 8% effect duration reduction per level above
+      1. However it now compounds with species bonus. Feel free to adjust.
+  - balance: Knockdowns are not inherently incapacitating anymore and many sources
+      of it have been updated to also stun to make up for it.
+  - bugfix: KO/KD/Stuns do not artificially and randomly ''stack'' due to incorrect
+      timer offset calculation anymore.
+  - bugfix: Stuns now correctly apply Stun reduction values instead of Knockdown reductions.
+  - bugfix: Crawling can now be interrupted by a normal move, if you are fit enough
+      to do so.
+  realforest2001:
+  - maptweak: Various doors around the Almayer will now close their opposites for
+      better security.

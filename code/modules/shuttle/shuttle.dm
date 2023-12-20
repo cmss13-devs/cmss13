@@ -259,7 +259,6 @@
 		light.linked_port = null
 	if(landing_lights)
 		landing_lights.Cut()
-	landing_lights = null // We didn't make them, so lets leave them
 	. = ..()
 
 /obj/docking_port/stationary/Moved(atom/oldloc, dir, forced)

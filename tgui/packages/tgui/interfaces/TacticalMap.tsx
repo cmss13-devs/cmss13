@@ -31,7 +31,7 @@ interface TacMapProps {
 
 const PAGES = [
   {
-    title: 'tacmap',
+    title: 'Live Tacmap',
     canOpen: (data) => {
       return 1;
     },
@@ -42,7 +42,7 @@ const PAGES = [
     },
   },
   {
-    title: 'old canvas',
+    title: 'Map View',
     canOpen: (data) => {
       return 1;
     },
@@ -53,7 +53,7 @@ const PAGES = [
     },
   },
   {
-    title: 'new canvas',
+    title: 'Canvas',
     canOpen: (data) => {
       return data.tacmapReady;
     },

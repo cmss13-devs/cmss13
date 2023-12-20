@@ -51,6 +51,7 @@
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
+	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(finish_landing))
 
 	// Sleep while the explosions do their job
 	var/explosion_alive = TRUE
@@ -62,8 +63,9 @@
 				break
 		sleep(10)
 
+/datum/dropship_hijack/almayer/proc/finish_landing()
 	SShijack.announce_status_on_crash()
-	addtimer(CALLBACK(SSticker, PROC_REF(hijack_ocurred)), 5 SECONDS)
+	SSticker.hijack_ocurred()
 
 /datum/dropship_hijack/almayer/proc/fire()
 	if(!shuttle || !crash_site)

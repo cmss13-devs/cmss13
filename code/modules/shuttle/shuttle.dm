@@ -297,8 +297,6 @@
 		turn_on_landing_lights()
 		if(landing_sound)
 			playsound(return_center_turf(), landing_sound, 60, 0, falloff=4)
-
-	log_debug("SHUTTLE DEBUG: [name] static prearrival called!")
 	return
 
 /// Called when the docked shuttle ignites
@@ -598,12 +596,10 @@
 	return
 
 /obj/docking_port/mobile/proc/on_prearrival()
-	log_debug("SHUTTLE DEBUG: [name] prearrival called!")
 	if(destination)
+		if(destination.landing_lights_on)
+			return //Return early if the lights are on, something went wrong and called twice.
 		destination.on_prearrival(src, landing_sound)
-		log_debug("SHUTTLE DEBUG: destination is '[destination.name]'")
-	else
-		log_debug("SHUTTLE DEBUG: No destination found.")
 	playsound(return_center_turf(), landing_sound, 60, 0)
 	return
 
@@ -750,7 +746,7 @@
 			if(prearrivalTime && mode != SHUTTLE_PREARRIVAL)
 				set_mode(SHUTTLE_PREARRIVAL)
 				setTimer(prearrivalTime)
-				log_debug("SHUTTLE DEBUG: shuttle on approach failed check!")
+				/// Run on_prearrival after setting the mode rather than waiting for next check, as this doesn't occur until landing is complete.
 				on_prearrival()
 				return
 			on_prearrival()

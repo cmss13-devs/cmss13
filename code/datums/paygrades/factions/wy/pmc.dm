@@ -6,65 +6,79 @@
 
 //Standard PMCs
 /datum/paygrade/pmc/standard
-	paygrade = "PMC-OP"
+	paygrade = PAY_SHORT_PMC_OP
 	name = "Operator"
 	prefix = "OPR."
 
 /datum/paygrade/pmc/enforcer
-	paygrade = "PMC-EN"
+	paygrade = PAY_SHORT_PMC_EN
 	name = "Enforcer"
 	prefix = "ENF."
 	pay_multiplier = 2.6
 
 //PMC Field Specialists
 /datum/paygrade/pmc/vehicle
-	paygrade = "PMC-VS"
+	paygrade = PAY_SHORT_PMC_VS
 	name = "Vehicle Specialist"
-	prefix = "CRW."
+	prefix = "SPV."
 	pay_multiplier = 2.8
 
 /datum/paygrade/pmc/support
-	paygrade = "PMC-SS"
+	paygrade = PAY_SHORT_PMC_SS
 	name = "Support Specialist"
 	prefix = "SPS."
 	pay_multiplier = 2.8
 
 /datum/paygrade/pmc/medic
-	paygrade = "PMC-MS"
+	paygrade = PAY_SHORT_PMC_MS
 	name = "Medical Specialist"
 	prefix = "SPM."
 	pay_multiplier = 2.8
 
 /datum/paygrade/pmc/spec
-	paygrade = "PMC-WS"
+	paygrade = PAY_SHORT_PMC_WS
 	name = "Weapon Specialist"
 	prefix = "SPW."
 	pay_multiplier = 3
 
 /datum/paygrade/pmc/handler
-	paygrade = "PMC-XS"
+	paygrade = PAY_SHORT_PMC_XS
 	name = "Xeno Specialist"
 	prefix = "SPX."
 	pay_multiplier = 4
 	officer_grade = GRADE_OFFICER
 
+//PMC Support Staff
+/datum/paygrade/pmc/doctor
+	paygrade = PAY_SHORT_PMC_DOC
+	name = "Trauma Surgeon"
+	prefix = "Dr."
+	pay_multiplier = 4
+	officer_grade = GRADE_OFFICER
+
+/datum/paygrade/pmc/engineer
+	paygrade = PAY_SHORT_PMC_TEC
+	name = "Corporate Technician"
+	prefix = "TEC."
+	pay_multiplier = 4
+
 //PMC Elite
 /datum/paygrade/pmc/elite
-	paygrade = "PMC-ELR"
+	paygrade = PAY_SHORT_PMC_ELR
 	name = "Elite Responder"
 	prefix = "ELR."
 	pay_multiplier = 4
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/pmc/medic/elite
-	paygrade = "PMC-ELM"
+	paygrade = PAY_SHORT_PMC_ELM
 	name = "Elite Medic"
 	prefix = "ELM."
 	pay_multiplier = 4.5
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/pmc/spec/elite
-	paygrade = "PMC-ELG"
+	paygrade = PAY_SHORT_PMC_ELG
 	name = "Elite Gunner"
 	prefix = "ELG."
 	pay_multiplier = 5
@@ -72,34 +86,21 @@
 
 //PMC Command
 /datum/paygrade/pmc/teamlead
-	paygrade = "PMC-TL"
+	paygrade = PAY_SHORT_PMC_TL
 	name = "Team Leader"
 	prefix = "TML."
 	pay_multiplier = 3.5
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/pmc/elitelead
-	paygrade = "PMC-ETL"
+	paygrade = PAY_SHORT_PMC_ETL
 	name = "Elite Team Leader"
 	prefix = "ETML."
 	pay_multiplier = 5.5
 	officer_grade = GRADE_OFFICER
 
-/datum/paygrade/pmc/doctor
-	paygrade = "PMC-DOC"
-	name = "Trauma Surgeon"
-	prefix = "TRI."
-	pay_multiplier = 4
-	officer_grade = GRADE_OFFICER
-
-/datum/paygrade/pmc/engineer
-	paygrade = "PMC-TECH"
-	name = "Corporate Technician"
-	prefix = "TEC."
-	pay_multiplier = 4
-
 /datum/paygrade/pmc/director
-	paygrade = "PMC-DIR"
+	paygrade = PAY_SHORT_PMC_DIR
 	name = "Site Director"
 	prefix = "DIR."
 	pay_multiplier = 10 //it's a corpo director. money is what they care about.

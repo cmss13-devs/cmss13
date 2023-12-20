@@ -19,8 +19,11 @@
 /// SYN, Synthetic
 #define PAY_SHORT_SYN "SYN"
 
-/// OPR, Operative
+/// OPR, Operator
 #define PAY_SHORT_OPR "OPR"
+
+/// CDNM, Operative (intended for codenamed people IE Operative Theta)
+#define PAY_SHORT_CDNM "CDNM"
 
 /// CPO, Officer
 #define PAY_SHORT_CPO "CPO"

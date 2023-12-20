@@ -60,7 +60,7 @@
 
 /datum/equipment_preset/other/freelancer/standard
 	name = "Freelancer (Standard)"
-	paygrade = "Freelancer Standard"
+	paygrade = PAY_SHORT_FL_S
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/freelancer
@@ -134,7 +134,7 @@
 	name = "Freelancer (Medic)"
 	paygrade = "Freelancer Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Freelancer Medic"
+	assignment = PAY_SHORT_FL_M
 	skills = /datum/skills/freelancer/combat_medic
 
 /datum/equipment_preset/other/freelancer/medic/load_gear(mob/living/carbon/human/new_human)
@@ -203,7 +203,7 @@
 
 /datum/equipment_preset/other/freelancer/leader
 	name = "Freelancer (Leader)"
-	paygrade = "Freelancer Leader"
+	paygrade = PAY_SHORT_FL_WL
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Warlord"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_JAPANESE)
@@ -269,7 +269,7 @@
 
 /datum/equipment_preset/other/elite_merc/standard
 	name = "Elite Mercenary (Standard Miner)"
-	paygrade = "Elite Freelancer Standard"
+	paygrade = PAY_SHORT_EFL_S
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -306,7 +306,7 @@
 
 /datum/equipment_preset/other/elite_merc/heavy
 	name = "Elite Mercenary (Heavy)"
-	paygrade = "Elite Freelancer Heavy"
+	paygrade = PAY_SHORT_EFL_H
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -346,7 +346,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/other/elite_merc/engineer
 	name = "Elite Mercenary (Engineer)"
-	paygrade = "Elite Freelancer Engineer"
+	paygrade = PAY_SHORT_EFL_E
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/data
@@ -400,7 +400,7 @@
 
 /datum/equipment_preset/other/elite_merc/medic
 	name = "Elite Mercenary (Medic)"
-	paygrade = "Elite Freelancer Medic"
+	paygrade = PAY_SHORT_EFL_M
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -446,7 +446,7 @@
 
 /datum/equipment_preset/other/elite_merc/leader
 	name = "Elite Mercenary (Leader)"
-	paygrade = "Elite Freelancer Leader"
+	paygrade = PAY_SHORT_EFL_TL
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom

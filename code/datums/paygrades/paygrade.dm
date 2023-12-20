@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT_TYPED(paygrades, /datum/paygrade, setup_paygrades())
 	var/paygrade
 	var/name
 	var/prefix
-	///Factional prefix, currently only used by PMCs. In essence, a pre-prefix.
+	/// Factional prefix, currently only used by PMCs. In essence, a pre-prefix.
 	var/fprefix
 
 	var/rank_pin
@@ -45,7 +45,6 @@ GLOBAL_LIST_INIT(co_paygrades, list(
 		if(FACTION_WEYLAND,FACTION_PMC)
 			if(officer_grade >= GRADE_FLAG)
 				GLOB.wy_highcom_paygrades += paygrade
-
 
 /proc/setup_paygrades()
 	. = list()

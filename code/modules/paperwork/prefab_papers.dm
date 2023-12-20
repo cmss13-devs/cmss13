@@ -68,6 +68,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 
 /obj/structure/filingcabinet/documentation/military_police
 	available_categories = list(PAPER_CATEGORY_MP)
+/obj/structure/filingcabinet/documentation/liaison
+	available_categories = list(PAPER_CATEGORY_WEYYU)
 //########################################
 //########################################
 //########################################
@@ -79,17 +81,17 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	. = ..()
 	name = document_title
 
-/obj/item/paper/prefab/html_checking
-	document_category = PAPER_CATEGORY_PROVOST
-	doc_file_ref = "undercover_provost"
-
 /obj/item/paper/prefab/carbon/military_police
 	name = "Blank MP Document"
 	document_category = PAPER_CATEGORY_MP
 
 /obj/item/paper/prefab/carbon/military_police/appeal_form
-	document_title = "PR301 - Appeals Form"
+	document_title = "PR301a - Appeals Form"
 	doc_file_ref = "appeal_form"
+
+/obj/item/paper/prefab/carbon/military_police/dao_request
+	document_title = "PR301b - Delayed Action Order"
+	doc_file_ref = "dao_request"
 
 /obj/item/paper/prefab/carbon/military_police/confiscation_receipt
 	document_title = "PR356 - Confiscation Receipt"
@@ -98,3 +100,25 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/carbon/military_police/apology_notice
 	document_title = "NJ910 - Apology Notice"
 	doc_file_ref = "apology_notice"
+
+
+/obj/item/paper/prefab/liaison
+	name = "Blank WY Document"
+	document_category = PAPER_CATEGORY_WEYYU
+
+/obj/item/paper/prefab/liaison/preserve_intent
+	document_title = "WY439 - Affidavit of Intent to Preserve"
+	doc_file_ref = "preserve_intent"
+
+/obj/item/paper/prefab/liaison/preserve_intent
+	document_title = "WY440 - Affidavit of Liability"
+	doc_file_ref = "liability"
+
+/obj/item/paper/prefab/liaison/nda_short
+	document_title = "WY441 - Confidentiality Agreement"
+	doc_file_ref = "nda_short"
+
+/obj/item/paper/prefab/liaison/nda_long
+	document_title = "WY442 - Non Disclosure Agreement"
+	doc_file_ref = "nda_long"
+

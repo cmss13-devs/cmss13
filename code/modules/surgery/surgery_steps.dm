@@ -92,6 +92,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	var/self_surgery
 	var/tool_modifier
 	var/surface_modifier
+	var/failure_penalties = 0
 
 	//Skill speed modifier.
 	step_duration *= user.get_skill_duration_multiplier(SKILL_SURGERY)
@@ -134,22 +135,42 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 				message += "this tool is[pick("n't ideal", " not the best")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
 				message += "this tool is[pick("n't suitable", " a bad fit", " difficult to use")]"
-			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE, SURGERY_TOOL_MULT_AWFUL)
+			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
 				message += "this tool is [pick("awful", "barely usable")]"
+				failure_penalties += 1
+			if(SURGERY_TOOL_MULT_AWFUL)
+				message += "this tool is [pick("awful", "barely usable")]"
+				failure_penalties += 2
 
 		switch(surface_modifier)
 			if(SURGERY_SURFACE_MULT_ADEQUATE)
 				message += "[pick("it isn't easy, working", "it's tricky to perform complex surgeries", "this would be quicker if you weren't working")] [pick("in the field", "under these conditions", "without a proper surgical theatre")]"
 			if(SURGERY_SURFACE_MULT_UNSUITED)
 				message += "[pick("it's difficult to work", "it's slow going, working", "you need to take your time")] in these [pick("primitive", "rough", "crude")] conditions"
+				failure_penalties += 1
 			if(SURGERY_SURFACE_MULT_AWFUL)
 				message += "[pick("you need to work slowly and carefully", "you need to be very careful", "this is delicate work, especially")] [pick("in these", "under such")] [pick("terrible", "awful", "utterly unsuitable")] conditions"
+				failure_penalties += 2
 
 		if(length(message))
 			to_chat(user, SPAN_WARNING("[capitalize(english_list(message, final_comma_text = ","))]."))
 
 	var/advance //Whether to continue to the next step afterwards.
 	var/pain_failure_chance = max(0, (target.pain?.feels_pain ? surgery.pain_reduction_required - target.pain.reduction_pain : 0) * 2 - human_modifiers["pain_reduction"]) //Each extra pain unit increases the chance by 2
+
+	// Skill compensation for difficult conditions/tools
+	if(skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
+		failure_penalties -= 2 // will ultimately be -3
+	if(skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_TRAINED))
+		failure_penalties -= 1
+
+	var/surgery_failure_chance = SURGERY_FAILURE_IMPOSSIBLE
+	if(failure_penalties == 1)
+		surgery_failure_chance = SURGERY_FAILURE_UNLIKELY
+	else if(failure_penalties == 2)
+		surgery_failure_chance = SURGERY_FAILURE_POSSIBLE
+	else if(failure_penalties > 2)
+		surgery_failure_chance = SURGERY_FAILURE_LIKELY
 
 	play_preop_sound(user, target, target_zone, tool, surgery)
 
@@ -170,6 +191,17 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			advance = TRUE
 		target.emote("pain")
 		play_failure_sound(user, target, target_zone, tool, surgery)
+
+	else if(prob(surgery_failure_chance))
+		do_after(user, max(rand(step_duration * 0.1, step_duration * 0.5), 0.5), INTERRUPT_ALL|INTERRUPT_DIFF_INTENT,
+				BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL) //Brief do_after so that the interrupt doesn't happen instantly.
+		user.visible_message(SPAN_DANGER("[user] is struggling to perform surgery."),
+		SPAN_DANGER("You are struggling to perform the surgery with these tools and conditions!"))
+		if(failure(user, target, target_zone, tool, tool_type, surgery)) //Failure returns TRUE if the step should complete anyway.
+			advance = TRUE
+		target.emote("pain")
+		play_failure_sound(user, target, target_zone, tool, surgery)
+		msg_admin_niche("[user] failed a [surgery] step on [target] because of [failure_penalties] failure possibility penalties ([surgery_failure_chance]%)")
 
 	else //Help intent.
 		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY,target,INTERRUPT_MOVED,BUSY_ICON_MEDICAL))

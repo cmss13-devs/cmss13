@@ -44,7 +44,7 @@
 	icon_state = "M56D_gun_e"
 	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
 	var/has_mount = FALSE // Indicates whether the M56D will come with its folding mount already attached
-	var/defense_check_range = 2
+	var/defense_check_range = 5
 
 /obj/item/device/m56d_gun/Initialize(mapload, ...)
 	. = ..()

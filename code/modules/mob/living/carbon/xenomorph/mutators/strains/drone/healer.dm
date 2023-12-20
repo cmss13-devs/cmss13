@@ -156,7 +156,7 @@
 	var/mutable_appearance/salve_applied_icon
 
 	var/transferred_amount = 0
-	var/required_transferred_amount = 10000
+	var/required_transferred_amount = 7500
 
 /datum/behavior_delegate/drone_healer/on_update_icons()
 	if(!salve_applied_icon)

@@ -17,6 +17,7 @@
 	name = "Freelancer Leader"
 	prefix = "Warlord"
 	pay_multiplier = 1
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/freelancer/elite
 	name = "Elite Freelancer Paygrade"
@@ -47,3 +48,4 @@
 	name = "Elite Freelancer Leader"
 	prefix = "Warlord"
 	pay_multiplier = 1.5
+	officer_grade = GRADE_OFFICER

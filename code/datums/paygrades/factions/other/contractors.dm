@@ -36,3 +36,4 @@
 	name = "VAI Team Leader"
 	prefix = "VAI TL"
 	pay_multiplier = 2.25
+	officer_grade = GRADE_OFFICER

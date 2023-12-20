@@ -1,6 +1,7 @@
 /datum/paygrade/twe
 	name = "TWE Paygrade"
 	pay_multiplier = 2 // less people = more to pay them
+	default_faction = FACTION_TWE
 
 //RMC Emlisted
 /datum/paygrade/twe/e1
@@ -33,6 +34,7 @@
 	name = "Second Lieutenant"
 	prefix = "2nd LT."
 	pay_multiplier = 3
+	officer_grade = GRADE_OFFICER
 
 //TWE Warrent Officer
 /datum/paygrade/twe/wo1
@@ -40,6 +42,7 @@
 	name = "Warrant Officer"
 	prefix = "WO."
 	pay_multiplier = 3.5
+	officer_grade = GRADE_OFFICER
 
 //TWE Naval Officers
 /datum/paygrade/twe/o1
@@ -47,39 +50,46 @@
 	name = "Second Lieutenant"
 	prefix = "2nd LT"
 	pay_multiplier = 3
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/twe/o2
 	paygrade = "RMC O2"
 	name = "First Lieutenant"
 	prefix = "1st LT"
 	pay_multiplier = 3.25
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/twe/o3
 	paygrade = "TO3"
 	name = "Standing Officer"
 	prefix = "SO."
 	pay_multiplier = 3.5
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/twe/o4
 	paygrade = "TO4"
 	name = "Captain"
 	prefix = "Cpt."
 	pay_multiplier = 5
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/twe/o5
 	paygrade = "TO5"
 	name = "Admiral"
 	prefix = "ADM."
 	pay_multiplier = 7
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/twe/o6
 	paygrade = "TO6"
 	name = "Grand Admiral"
 	prefix = "GADM."
 	pay_multiplier = 9
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/twe/o7
 	paygrade = "TO7"
 	name = "Emperor"
 	prefix = "ER."
 	pay_multiplier = 1000
+	officer_grade = GRADE_FLAG

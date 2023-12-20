@@ -1,6 +1,7 @@
 /datum/paygrade/navy
 	name = "Navy Paygrade"
 	rank_pin = /obj/item/clothing/accessory/ranks/navy
+	default_faction = FACTION_MARINE
 	//someone else can do the multipliers for this one
 
 // ENLISTED PAYGRADES
@@ -90,6 +91,7 @@
 	prefix = "ENS."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o1
 	ranking = 11
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o2
 	paygrade = PAY_SHORT_NO2
@@ -97,6 +99,7 @@
 	prefix = "LTJG."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o2
 	ranking = 12
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o3
 	paygrade = PAY_SHORT_NO3
@@ -104,6 +107,7 @@
 	prefix = "LT."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o3
 	ranking = 13
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o4
 	paygrade = PAY_SHORT_NO4
@@ -111,6 +115,7 @@
 	prefix = "LCDR."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o4
 	ranking = 14
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o5
 	paygrade = PAY_SHORT_NO5
@@ -118,6 +123,7 @@
 	prefix = "CDR."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o5
 	ranking = 15
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o6
 	paygrade = PAY_SHORT_NO6
@@ -125,6 +131,7 @@
 	prefix = "CAPT."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o6
 	ranking = 16
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o6e
 	paygrade = PAY_SHORT_NO6E
@@ -132,6 +139,7 @@
 	prefix = "CDRE."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o6e
 	ranking = 17
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o6c
 	paygrade = PAY_SHORT_NO6C
@@ -139,6 +147,7 @@
 	prefix = "Snr CDRE."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o6e
 	ranking = 18
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o7
 	paygrade = PAY_SHORT_NO7
@@ -146,6 +155,7 @@
 	prefix = "RDML."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o7
 	ranking = 19
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/navy/o8
 	paygrade = PAY_SHORT_NO8
@@ -153,6 +163,7 @@
 	prefix = "RADM."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o8
 	ranking = 20
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/navy/o9
 	paygrade = PAY_SHORT_NO9
@@ -160,6 +171,7 @@
 	prefix = "VADM."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o9
 	ranking = 21
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/navy/o10
 	paygrade = PAY_SHORT_NO10
@@ -167,6 +179,7 @@
 	prefix = "ADM."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o10
 	ranking = 22
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/navy/o10c
 	paygrade = PAY_SHORT_NO10C
@@ -174,3 +187,4 @@
 	prefix = "CNO."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o10c
 	ranking = 23
+	officer_grade = GRADE_FLAG

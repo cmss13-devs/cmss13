@@ -2,6 +2,7 @@
 	name = "PMC Paygrade"
 	fprefix = "PMC."
 	pay_multiplier = 2.5 // they have money. but they sold their soul to the company. is it really worth it
+	default_faction = FACTION_PMC
 
 //Standard PMCs
 /datum/paygrade/pmc/standard
@@ -45,6 +46,7 @@
 	name = "Xeno Specialist"
 	prefix = "SPX."
 	pay_multiplier = 4
+	officer_grade = GRADE_OFFICER
 
 //PMC Elite
 /datum/paygrade/pmc/elite
@@ -52,18 +54,21 @@
 	name = "Elite Responder"
 	prefix = "ELR."
 	pay_multiplier = 4
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/pmc/medic/elite
 	paygrade = "PMC-ELM"
 	name = "Elite Medic"
 	prefix = "ELM."
 	pay_multiplier = 4.5
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/pmc/spec/elite
 	paygrade = "PMC-ELG"
 	name = "Elite Gunner"
 	prefix = "ELG."
 	pay_multiplier = 5
+	officer_grade = GRADE_OFFICER
 
 //PMC Command
 /datum/paygrade/pmc/teamlead
@@ -71,18 +76,21 @@
 	name = "Team Leader"
 	prefix = "TML."
 	pay_multiplier = 3.5
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/pmc/elitelead
 	paygrade = "PMC-ETL"
 	name = "Elite Team Leader"
 	prefix = "ETML."
 	pay_multiplier = 5.5
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/pmc/doctor
 	paygrade = "PMC-DOC"
 	name = "Trauma Surgeon"
 	prefix = "TRI."
 	pay_multiplier = 4
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/pmc/engineer
 	paygrade = "PMC-TECH"
@@ -95,3 +103,4 @@
 	name = "Site Director"
 	prefix = "DIR."
 	pay_multiplier = 10 //it's a corpo director. money is what they care about.
+	officer_grade = GRADE_FLAG

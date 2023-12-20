@@ -23,6 +23,7 @@
 	name = "Professor"
 	prefix = "Prof."
 	pay_multiplier = 1
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/civillian/representative
 	paygrade = PAY_SHORT_CREP
@@ -41,6 +42,7 @@
 	name = "Senior Officer"
 	prefix = "Sr. Off."
 	pay_multiplier = 0.8
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/civilian/rebel
 	paygrade = PAY_SHORT_REB
@@ -50,3 +52,4 @@
 	paygrade = PAY_SHORT_REBC
 	name = "Rebel Commander"
 	prefix = "CMDR."
+	officer_grade = GRADE_OFFICER

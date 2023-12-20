@@ -284,7 +284,8 @@
 			if(H.check_shields(15, "the pounce")) //Human shield block.
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
 					SPAN_XENODANGER("We slam into [H]!"), null, 5)
-				apply_effect(1, WEAKEN)
+				KnockDown(1)
+				Stun(1)
 				throwing = FALSE //Reset throwing manually.
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
@@ -299,13 +300,15 @@
 				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
 					visible_message(SPAN_DANGER("[H] body slams [src]!"),
 						SPAN_XENODANGER("[H] body slams us!"), null, 5)
-					apply_effect(3, WEAKEN)
+					KnockDown(3)
+					Stun(3)
 					throwing = FALSE
 					return
 			if(issynth(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws us down after withstanding the pounce!"), null, 5)
-				apply_effect(1.5, WEAKEN)
+				KnockDown(1.5)
+				Stun(1.5)
 				throwing = FALSE
 				return
 			if(iscolonysynthetic(H) && prob(40))
@@ -319,7 +322,8 @@
 	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("We [pounceAction.ability_name] onto [M]!"), null, 5)
 
 	if (pounceAction.knockdown)
-		M.apply_effect(pounceAction.knockdown_duration, WEAKEN)
+		M.KnockDown(pounceAction.knockdown_duration)
+		M.Stun(pounceAction.knockdown_duration) // To replicate legacy behavior. Otherwise M39 Armbrace users for example can still shoot
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)

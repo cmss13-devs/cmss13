@@ -3320,7 +3320,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	dir = 1;
-	name = "\improper Brig Maintenance"
+	name = "\improper Brig Maintenance";
+	closeOtherId = "brigmaint_s"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "perma_lockdown_2";
@@ -7522,7 +7523,8 @@
 	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Combat Information Center"
+	name = "\improper Combat Information Center";
+	closeOtherId = "ciclobby_n"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -8116,7 +8118,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	id_tag = "cic_exterior";
-	name = "\improper Combat Information Center"
+	name = "\improper Combat Information Center";
+	closeOtherId = "ciclobby_n"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -24843,6 +24846,27 @@
 	icon_state = "red"
 	},
 /area/almayer/living/cryo_cells)
+"ccc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/machinery/door/airlock/almayer/research/reinforced{
+	dir = 8;
+	name = "\improper Containment Airlock";
+	closeOtherId = "containment_n"
+	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/medical/containment)
 "ccd" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /turf/open/floor/almayer{
@@ -26844,7 +26868,8 @@
 	access_modified = 1;
 	name = "\improper Astronavigational Deck";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	closeOtherId = "astroladder_n"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -26856,7 +26881,8 @@
 	access_modified = 1;
 	name = "\improper Astronavigational Deck";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	closeOtherId = "astroladder_s"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -29462,7 +29488,8 @@
 	dir = 1
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	name = "\improper Brig Lobby"
+	name = "\improper Brig Lobby";
+	closeOtherId = "brignorth"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -29998,7 +30025,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	id_tag = "cic_exterior";
-	name = "\improper Combat Information Center"
+	name = "\improper Combat Information Center";
+	closeOtherId = "ciclobby_s"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -33360,7 +33388,8 @@
 "eKa" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
-	name = "\improper Brig Lobby"
+	name = "\improper Brig Lobby";
+	closeOtherId = "briglobby"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -39939,7 +39968,8 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Combat Information Center"
+	name = "\improper Combat Information Center";
+	closeOtherId = "ciclobby_s"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -41546,7 +41576,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	dir = 1;
-	name = "\improper Brig Prison Yard And Offices"
+	name = "\improper Brig Prison Yard And Offices";
+	closeOtherId = "brigcells"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -50405,7 +50436,8 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "lFJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
-	name = "\improper Brig Prisoner Yard"
+	name = "\improper Brig Prisoner Yard";
+	closeOtherId = "brigcells"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -51047,7 +51079,8 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "lUm" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	name = "\improper Brig Cells"
+	name = "\improper Brig Cells";
+	closeOtherId = "briglobby"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -52501,7 +52534,8 @@
 	access_modified = 1;
 	name = "\improper Astronavigational Deck";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	closeOtherId = "astroladder_n"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -57833,7 +57867,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 8;
-	name = "\improper Containment Airlock"
+	name = "\improper Containment Airlock";
+	closeOtherId = "containment_n"
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
@@ -61539,7 +61574,8 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
-	name = "\improper Brig"
+	name = "\improper Brig";
+	closeOtherId = "brigmaint_n"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -64845,7 +64881,8 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	dir = 1;
-	name = "\improper Warden's Office"
+	name = "\improper Warden's Office";
+	closeOtherId = "brigwarden"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -66928,7 +66965,8 @@
 	dir = 2;
 	name = "\improper Brig Armoury";
 	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	closeOtherId = "brignorth"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -70316,7 +70354,8 @@
 /area/almayer/hallways/aft_hallway)
 "tMH" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
-	name = "\improper Warden's Office"
+	name = "\improper Warden's Office";
+	closeOtherId = "brigwarden"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -76333,7 +76372,8 @@
 "wdo" = (
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 8;
-	name = "\improper Containment Airlock"
+	name = "\improper Containment Airlock";
+	closeOtherId = "containment_s"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -77179,7 +77219,8 @@
 	name = "\improper Brig Medbay";
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "20;3"
+	req_one_access_txt = "20;3";
+	closeOtherId = "brigmed"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -79122,7 +79163,8 @@
 "xhM" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	dir = 1;
-	name = "\improper Brig"
+	name = "\improper Brig";
+	closeOtherId = "brigmaint_n"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Brig Lockdown Shutters";
@@ -81974,7 +82016,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 8;
-	name = "\improper Containment Airlock"
+	name = "\improper Containment Airlock";
+	closeOtherId = "containment_s"
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
@@ -115166,7 +115209,7 @@ mSK
 mSK
 vOy
 vOy
-ylc
+ccc
 wKP
 ylc
 vOy

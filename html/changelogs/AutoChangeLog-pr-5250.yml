@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - imageadd: "Update weeded warrior sprites to be compatible with knight strain sprite"

@@ -843,7 +843,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Helmet"
-	desc = "A next generation combat helmet intended to be paired with the M4X armour. The full faced helmet provides complete light ballistic-resistant protection alongside enchanced acid resistance. This prototype version lacks those features. DONOR ITEM"
+	desc = "A next generation combat helmet intended to be paired with the M4-X armour. The full faced helmet provides complete light ballistic-resistant protection alongside enchanced acid resistance. This prototype version lacks those features. DONOR ITEM"
 	icon_state = "steelpoint_helmet"
 	item_state = "steelpoint_helmet"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
@@ -1150,7 +1150,7 @@
 
 /obj/item/clothing/under/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Jumpsuit"
-	desc = "Jumpsuit to the M4X!!!  DONOR ITEM"
+	desc = "Jumpsuit issued alongside the M4-X armor. Considered outdated compared to the more modern armour system.  DONOR ITEM"
 	icon_state = "steelpoint_jumpsuit"
 	worn_state = "steelpoint_jumpsuit"
 	flags_jumpsuit = FALSE
@@ -1321,9 +1321,9 @@
 
 /obj/item/clothing/shoes/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Boot"
-	desc = "Boots to the M4X.  DONOR ITEM"
-	icon_state = "jackboots"
-	item_state = "jackboots"
+	desc = "Standard issue boots issued alongside M4-X armour, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched enviroments safely. This prototype version lacks that feature.  DONOR ITEM"
+	icon_state = "marine"
+	item_state = "marine"
 
 //GENERIC GLASSES, GLOVES, AND MISC ////////////////////
 

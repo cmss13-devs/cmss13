@@ -34019,7 +34019,7 @@
 	},
 /area/almayer/engineering/upper_engineering/port)
 "eYW" = (
-/obj/structure/filingcabinet/security,
+/obj/structure/filingcabinet/documentation/liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "eZi" = (

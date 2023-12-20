@@ -132,9 +132,9 @@
 
 /datum/equipment_preset/other/freelancer/medic
 	name = "Freelancer (Medic)"
-	paygrade = "Freelancer Medic"
+	paygrade = PAY_SHORT_FL_M
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = PAY_SHORT_FL_M
+	assignment = "Freelancer Medic"
 	skills = /datum/skills/freelancer/combat_medic
 
 /datum/equipment_preset/other/freelancer/medic/load_gear(mob/living/carbon/human/new_human)
@@ -884,7 +884,7 @@
 	idtype = /obj/item/card/id/dogtag
 	assignment = JOB_CREWMAN
 	rank = JOB_CREWMAN
-	paygrade = "E4"
+	paygrade = PAY_SHORT_ME4
 	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
@@ -924,7 +924,7 @@
 	idtype = /obj/item/card/id/dogtag
 	assignment = "Crewman Trainee"
 	rank = "Crewman Trainee"
-	paygrade = "E3"
+	paygrade = PAY_SHORT_ME3
 	role_comm_title = "CRTR"
 	minimum_age = 25
 	skills = /datum/skills/tank_crew

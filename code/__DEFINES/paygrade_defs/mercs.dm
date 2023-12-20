@@ -24,3 +24,22 @@
 
 /// EFL-WL, Elite Warlord
 #define PAY_SHORT_EFL_TL "EFL-TL"
+
+// VANGUARD'S ARROW INC
+/// VAI-S, Standard
+#define PAY_SHORT_VAI_S "VAI-S"
+
+/// VAI-M, Medic
+#define PAY_SHORT_VAI_M "VAI-M"
+
+/// VAI-E, Engineer
+#define PAY_SHORT_VAI_E "VAI-E"
+
+/// VAI-G, Machinegunner
+#define PAY_SHORT_VAI_G "VAI-G"
+
+/// VAI-SN, Synthetic
+#define PAY_SHORT_VAI_SN "VAI-SN"
+
+/// VAI-L, Team Leader
+#define PAY_SHORT_VAI_L "VAI-L"

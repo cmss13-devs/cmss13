@@ -380,7 +380,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS)
 
-/datum/equipment_preset/survivor/engineer/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/flight_control_operator/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/lawyer/bluesuit(new_human), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)

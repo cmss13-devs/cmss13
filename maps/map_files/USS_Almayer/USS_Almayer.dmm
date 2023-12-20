@@ -57944,6 +57944,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
+"oKM" = (
+/obj/structure/machinery/pipedispenser/disposal/orderable,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/engine_core)
 "oLd" = (
 /obj/structure/platform{
 	dir = 4
@@ -68906,6 +68912,13 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/starboard_hallway)
+"tiB" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/engineering/engine_core)
 "tiE" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -137436,7 +137449,7 @@ tce
 bhB
 heg
 lfQ
-blo
+tiB
 vNF
 xuU
 vNF
@@ -137841,7 +137854,7 @@ jPf
 jPf
 bhB
 dVZ
-jyi
+oKM
 bPe
 bQm
 wlj

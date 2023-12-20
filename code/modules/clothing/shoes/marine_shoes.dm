@@ -66,9 +66,8 @@
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	spawn_item_type = /obj/item/attachable/bayonet/upp
 
-/obj/item/clothing/shoes/marine/upp_knife
+/obj/item/clothing/shoes/marine/upp/knife
 	spawn_item_type = /obj/item/attachable/bayonet/upp
 
 /obj/item/clothing/shoes/marine/joe

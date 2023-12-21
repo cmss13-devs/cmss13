@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Ghosts can now toggle hearing listening devices or not. This is dependant on hearing radios and will not function to allow hearing devices without also hearing radios."

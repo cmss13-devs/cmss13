@@ -175,9 +175,7 @@
 			volume = RADIO_VOLUME_CRITICAL
 
 	for (var/mob/R in receive)
-		var/is_ghost = FALSE
-		if(istype(R, /mob/dead/observer))
-			is_ghost = TRUE
+		var/is_ghost = istype(R, /mob/dead/observer)
 		/* --- Loop through the receivers and categorize them --- */
 		if (R.client && !(R.client.prefs.toggles_chat & CHAT_RADIO)) //Adminning with 80 people on can be fun when you're trying to talk and all you can hear is radios.
 			continue

@@ -37,6 +37,8 @@
 
 	if (xeno.Adjacent(carbon))
 		xeno.start_pulling(carbon,1)
+		if(ishuman(carbon))
+			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "panic")
 	else
 		xeno.visible_message(SPAN_XENOWARNING("[xeno]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
 

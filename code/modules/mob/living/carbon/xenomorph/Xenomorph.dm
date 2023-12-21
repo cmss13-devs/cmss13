@@ -252,12 +252,8 @@
 	var/pounce_distance = 0
 
 	// Life reduction variables.
-	var/life_stun_reduction = -1.5
-	var/life_knockdown_reduction = -1.5
-	var/life_knockout_reduction = -1.5
 	var/life_daze_reduction = -1.5
 	var/life_slow_reduction = -1.5
-
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -1100,11 +1096,6 @@
 	SPAN_WARNING("We squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE
-
-/mob/living/carbon/xenomorph/knocked_down_callback()
-	. = ..()
-	if(!resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
-		update_wounds()
 
 ///Generate a new unused nicknumber for the current hive, if hive doesn't exist return 0
 /mob/living/carbon/xenomorph/proc/generate_and_set_nicknumber()

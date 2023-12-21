@@ -555,7 +555,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 								vend_fail()
 								return FALSE
 							var/obj/item/card/id/ID = user.wear_id
-							if(!istype(ID) || ID.registered_ref != WEAKREF(usr))
+							if(!istype(ID) || !ID.check_biometrics(user))
 								to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 								return FALSE
 							var/specialist_assignment
@@ -779,15 +779,15 @@ GLOBAL_LIST_EMPTY(vending_products)
 				vend_fail()
 			return FALSE
 
-		var/mob/living/carbon/human/H = user
-		var/obj/item/card/id/I = H.wear_id
-		if(!istype(I))
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/card/id/idcard = human_user.wear_id
+		if(!istype(idcard))
 			if(display)
 				to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
 				vend_fail()
 			return FALSE
 
-		if(I.registered_name != user.real_name)
+		if(!idcard.check_biometrics(human_user))
 			if(display)
 				to_chat(user, SPAN_WARNING("Wrong ID card owner detected."))
 				vend_fail()

@@ -1,5 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - bugfix: "added landing zone camera on trijent."
-  - bugfix: "fixed landing zone camera on all map in rotation."

@@ -453,7 +453,8 @@
 		if(PMC_sniper.body_position == STANDING_UP && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
 			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
-			PMC_sniper.apply_effect(5, WEAKEN)
+			PMC_sniper.KnockDown(5)
+			PMC_sniper.Stun(5)
 
 //Type 88 //Based on the actual Dragunov DMR rifle.
 

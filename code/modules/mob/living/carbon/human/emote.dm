@@ -256,8 +256,6 @@
 			return get_sfx("male_panic_scream")
 		else
 			return get_sfx("female_panic_scream")
-		if(isyautja(user))
-			return get_sfx("pred_pain")
 
 /datum/emote/living/carbon/human/scream/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()

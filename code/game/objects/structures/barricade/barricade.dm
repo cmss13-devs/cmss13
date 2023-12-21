@@ -103,7 +103,7 @@
 
 	if(is_wired)
 		if(!closed)
-			overlays += image(wire_icon, icon_state = "[src.barricade_type]_wire")
+			overlays += image(wire_icon, icon_state = "[barricade_type]_wire")
 		else
 			overlays += image(wire_icon, icon_state = "[src.barricade_type]_closed_wire")
 

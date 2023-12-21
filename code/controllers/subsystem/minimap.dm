@@ -828,7 +828,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	switch(action)
 		if("menuSelect")
-			if(params["selection"] != "new canvas")
+			if(params["selection"] != "Canvas")
 				if(updated_canvas)
 					updated_canvas = FALSE
 					toolbar_updated_selection = toolbar_color_selection  // doing this if it == canvas can cause a latency issue with the stroke.

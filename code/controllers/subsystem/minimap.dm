@@ -826,9 +826,9 @@ SUBSYSTEM_DEF(minimaps)
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 	var/drawing_allowed = !is_observer && can_draw(faction, user)
 
-	switch(action)
-		if("menuSelect")
-			if(params["selection"] != "new canvas")
+	switch (action)
+		if ("menuSelect")
+			if(params["selection"] != "Canvas")
 				if(updated_canvas)
 					updated_canvas = FALSE
 					toolbar_updated_selection = toolbar_color_selection  // doing this if it == canvas can cause a latency issue with the stroke.

@@ -403,3 +403,8 @@
   realforest2001:
   - maptweak: Various doors around the Almayer will now close their opposites for
       better security.
+2023-12-21:
+  Birdtalon:
+  - bugfix: Lurker can tail jab over ledges and window frames.
+  Drathek:
+  - imageadd: Update weeded warrior sprites to be compatible with knight strain sprite

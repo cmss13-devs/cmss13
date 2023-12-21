@@ -245,18 +245,6 @@
 	if(isyautja(user))
 		return get_sfx("pred_pain")
 
-/datum/emote/living/carbon/human/scream/panic
-	key = "panic"
-	key_third_person = "panics"
-	message = "panics!"
-
-/datum/emote/living/carbon/human/scream/panic/get_sound(mob/living/user)
-	if(ishuman_strict(user))
-		if(user.gender == MALE)
-			return get_sfx("male_panic_scream")
-		else
-			return get_sfx("female_panic_scream")
-
 /datum/emote/living/carbon/human/scream/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	if(!.)

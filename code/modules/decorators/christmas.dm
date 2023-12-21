@@ -65,7 +65,7 @@
 /datum/decorator/christmas/barricade/decorate(obj/structure/barricade/barricade)
 	if(!istype(barricade))
 		return
-	barricade.icon = 'icons/obj/structures/barricades_christmas.dmi'
+	barricade.wire_icon = 'icons/obj/structures/barricades_christmas.dmi'
 	barricade.update_icon()
 
 

@@ -79,6 +79,53 @@ const useTargetSubmenu = (context, panelId: string) => {
   };
 };
 
+const TargetLines = (props: { panelId: string }, context) => {
+  const { data } = useBackend<
+    EquipmentContext & FiremissionContext & TargetContext
+  >(context);
+  const { targetOffset } = useTargetOffset(context, props.panelId);
+  return (
+    <>
+      {data.targets_data.length > targetOffset && (
+        <path
+          fill-opacity="0"
+          stroke="#00e94e"
+          d="M 50 210 l 20 0 l 20 -180 l 40 0"
+        />
+      )}
+      {data.targets_data.length > targetOffset + 1 && (
+        <path
+          fill-opacity="0"
+          stroke="#00e94e"
+          d="M 50 220 l 25 0 l 15 -90 l 40 0"
+        />
+      )}
+      {data.targets_data.length > targetOffset + 2 && (
+        <path
+          fill-opacity="0"
+          stroke="#00e94e"
+          d="M 50 230 l 20 0 l 20 0 l 40 0"
+        />
+      )}
+
+      {data.targets_data.length > targetOffset + 3 && (
+        <path
+          fill-opacity="0"
+          stroke="#00e94e"
+          d="M 50 240 l 25 0 l 15 90 l 40 0"
+        />
+      )}
+      {data.targets_data.length > targetOffset + 4 && (
+        <path
+          fill-opacity="0"
+          stroke="#00e94e"
+          d="M 50 250 l 20 0 l 20 180 l 40 0"
+        />
+      )}
+    </>
+  );
+};
+
 const leftButtonGenerator = (context, panelId: string) => {
   const { data, act } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
@@ -192,13 +239,22 @@ const lazeMapper = (context, offset) => {
 
   const target =
     data.targets_data.length > offset ? data.targets_data[offset] : undefined;
-  const label = target?.target_name.split(' ')[0] ?? '';
-  const squad = label[0] ?? undefined;
-  const number = label.split('-')[1] ?? undefined;
+  const isDebug = target?.target_name.includes('debug');
+
+  const buttomLabel = () => {
+    if (isDebug) {
+      return 'd-' + target?.target_name.split(' ')[3];
+    }
+    const label = target?.target_name.split(' ')[0] ?? '';
+    const squad = label[0] ?? undefined;
+    const number = label.split('-')[1] ?? undefined;
+    return squad !== undefined && number !== undefined
+      ? `${squad}-${number}`
+      : target?.target_name;
+  };
 
   return {
-    children:
-      squad !== undefined && number !== undefined && `${squad}-${number}`,
+    children: buttomLabel(),
     onClick: target
       ? () => {
         setSelectedTarget(target.target_tag);
@@ -223,7 +279,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
   >(context);
 
   const { setPanelState } = mfdState(context, panelStateId);
-  const { selectedTarget } = useLazeTarget(context);
+  const { selectedTarget, setSelectedTarget } = useLazeTarget(context);
   const { strikeMode } = useStrikeMode(context);
   const { strikeDirection } = useStrikeDirection(context);
   const { weaponSelected } = useWeaponSelectedState(context);
@@ -257,14 +313,27 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
   );
 
   const getLastName = () => {
-    const label =
-      data.targets_data[data.targets_data.length - 1].target_name.split(
-        ' '
-      )[0] ?? '';
+    const target = data.targets_data[data.targets_data.length - 1] ?? undefined;
+    const isDebug = target?.target_name.includes('debug');
+    if (isDebug) {
+      return 'debug ' + target.target_name.split(' ')[3];
+    }
+    const label = target?.target_name.split(' ')[0] ?? '';
     const squad = label[0] ?? undefined;
     const number = label.split('-')[1] ?? undefined;
-    return `${squad}-${number}`;
+
+    return squad !== undefined && number !== undefined
+      ? `${squad}-${number}`
+      : target?.target_name;
   };
+
+  if (
+    selectedTarget &&
+    data.targets_data.find((x) => `${x.target_tag}` === `${selectedTarget}`) ===
+      undefined
+  ) {
+    setSelectedTarget(undefined);
+  }
 
   return (
     <MfdPanel
@@ -371,9 +440,9 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
               <Stack.Item>
                 <h3>Strike configuration {strikeConfigLabel}</h3>
               </Stack.Item>
-              <Stack.Item>
+              <Stack.Item className="TargetText">
                 <h3>
-                  Target selected{' '}
+                  Target selected:{' '}
                   {lazes.find((x) => x?.target_tag === selectedTarget)
                     ?.target_name ?? 'NONE'}
                 </h3>
@@ -439,42 +508,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
                     )}
                   </text>
                 )}
-                {data.targets_data.length > 0 && (
-                  <path
-                    fill-opacity="0"
-                    stroke="#00e94e"
-                    d="M 50 210 l 20 0 l 20 -180 l 40 0"
-                  />
-                )}
-                {data.targets_data.length > 1 && (
-                  <path
-                    fill-opacity="0"
-                    stroke="#00e94e"
-                    d="M 50 220 l 25 0 l 15 -90 l 40 0"
-                  />
-                )}
-                {data.targets_data.length > 2 && (
-                  <path
-                    fill-opacity="0"
-                    stroke="#00e94e"
-                    d="M 50 230 l 20 0 l 20 0 l 40 0"
-                  />
-                )}
-
-                {data.targets_data.length > 3 && (
-                  <path
-                    fill-opacity="0"
-                    stroke="#00e94e"
-                    d="M 50 240 l 25 0 l 15 90 l 40 0"
-                  />
-                )}
-                {data.targets_data.length > 4 && (
-                  <path
-                    fill-opacity="0"
-                    stroke="#00e94e"
-                    d="M 50 250 l 20 0 l 20 180 l 40 0"
-                  />
-                )}
+                <TargetLines panelId={props.panelStateId} />
               </g>
             </svg>
           </Stack.Item>

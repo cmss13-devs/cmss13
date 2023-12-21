@@ -113,7 +113,7 @@
 	current = target
 	target_width = w
 	target_height = h
-	RegisterSignal(current, COMSIG_PARENT_QDELETING, PROC_REF(show_camera_static))
+	RegisterSignal(current, COMSIG_PARENT_QDELETING, PROC_REF(show_camera_static), override = TRUE)
 	update_target_camera()
 
 /datum/component/camera_manager/proc/set_camera_rect(source, x, y, z, w, h)

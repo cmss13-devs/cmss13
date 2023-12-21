@@ -339,7 +339,7 @@
 			if(ship_base.base_category == DROPSHIP_WEAPON)
 				switch(dir)
 					if(NORTH)
-						var step_contents = get_step(src, EAST).contents
+						var/step_contents = get_step(src, EAST).contents
 						if(locate(/obj/structure) in step_contents)
 							deployed_mg.pixel_x = 5
 						else
@@ -369,7 +369,7 @@
 		if(ship_base.base_category == DROPSHIP_WEAPON)
 			switch(dir)
 				if(NORTH)
-					var step_contents = get_step(src, EAST).contents
+					var/step_contents = get_step(src, EAST).contents
 					if(locate(/obj/structure) in step_contents)
 						deployed_mg.forceMove(get_step(src, WEST))
 					else

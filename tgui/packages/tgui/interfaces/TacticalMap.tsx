@@ -23,7 +23,7 @@ interface TacMapProps {
   mapRef: string;
   currentMenu: string;
   lastUpdateTime: any;
-  nextCanvasTime: any;
+  canvasCooldownDuration: any;
   canvasCooldown: any;
   exportedTacMapImage: any;
   tacmapReady: number;
@@ -192,7 +192,7 @@ const OldMapPanel = (props, context) => {
 const DrawMapPanel = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
 
-  const timeLeftPct = data.canvasCooldown / data.nextCanvasTime;
+  const timeLeftPct = data.canvasCooldown / data.canvasCooldownDuration;
   const canUpdate = data.canvasCooldown <= 0 && !data.updatedCanvas;
 
   const handleTacMapExport = (image: any) => {

@@ -27,7 +27,7 @@
 /// Usually half a second's delay.
 #define xeno_miss_delay(X) (X.next_move = world.time + ((10 + X.caste.attack_delay + X.attack_speed_modifier) * 0.5))
 
-// Determines how xenos interact with walls. normal nothing, sharp can destroy normal walls, very sharp reinforced ones.
+// Determines how xenos interact with walls, normal nothing, sharp can destroy normal walls and window frame, very sharp reinforced ones.
 #define CLAW_TYPE_NORMAL 1
 #define CLAW_TYPE_SHARP 2
 #define CLAW_TYPE_VERY_SHARP 3

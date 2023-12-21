@@ -396,11 +396,11 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/hallways/upper/port
-	name = "\improper Upper Deck port Hallway"
+	name = "\improper Upper Deck Port Hallway"
 	icon_state = "port"
 
 /area/almayer/hallways/upper/starboard
-	name = "\improper Upper Deck starboard Hallway"
+	name = "\improper Upper Deck Starboard Hallway"
 	icon_state = "starboard"
 
 /area/almayer/stair_clone

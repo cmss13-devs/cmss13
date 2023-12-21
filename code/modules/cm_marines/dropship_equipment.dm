@@ -300,6 +300,10 @@
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
 
+/obj/structure/dropship_equipment/mg_holder/Destroy()
+	QDEL_NULL(deployed_mg)
+	. = ..()
+
 /obj/structure/dropship_equipment/mg_holder/get_examine_text(mob/user)
 	. = ..()
 	if(!deployed_mg)

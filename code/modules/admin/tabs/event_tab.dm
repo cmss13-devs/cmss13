@@ -598,7 +598,7 @@
 		return FALSE
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.processor_apollo.inoperable())
+	if(!ares_can_apollo())
 		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt != "Yes")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))

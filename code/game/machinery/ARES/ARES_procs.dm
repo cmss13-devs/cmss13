@@ -103,12 +103,20 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return TRUE
 	return FALSE //CPU not found or is broken
 
-/proc/log_ares_apollo(speaker, message)
-	if(!ares_can_log())
+/proc/ares_can_apollo()
+	if(!istype(GLOB.ares_link) || !istype(GLOB.ares_datacore))
 		return FALSE
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!link.processor_apollo || link.processor_apollo.inoperable())
 		return FALSE
+	return TRUE
+
+/proc/log_ares_apollo(speaker, message)
+	if(!ares_can_log())
+		return FALSE
+	if(!ares_can_apollo()){
+		return FALSE
+	}
 	if(!speaker)
 		speaker = "Unknown"
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore

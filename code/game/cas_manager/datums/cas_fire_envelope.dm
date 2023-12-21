@@ -67,61 +67,61 @@
 	mission_error = null
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT && stat < FIRE_MISSION_STATE_COOLDOWN)
 		mission_error = "Fire Mission is under way already."
-		return 0
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(!missions[mission_id])
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 	var/datum/cas_fire_mission/mission = missions[mission_id]
 	if(!mission)
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 
 	var/datum/cas_fire_mission_record/fmr = mission.record_for_weapon(weapon_id)
 	if(!fmr)
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(!fmr.offsets || isnull(fmr.offsets[offset_step]))
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 	var/old_offset = fmr.offsets[offset_step]
 	if(offset == null)
 		offset = "-"
 	fmr.offsets[offset_step] = offset
 	var/check_result = mission.check(linked_console)
 	if(check_result == FIRE_MISSION_CODE_ERROR)
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(check_result == FIRE_MISSION_ALL_GOOD)
-		return 1
+		return FIRE_MISSION_ALL_GOOD
 	if(check_result == FIRE_MISSION_WEAPON_OUT_OF_AMMO)
-		return 1
+		return FIRE_MISSION_ALL_GOOD
 
 	mission_error = mission.error_message(check_result)
 	if(skip_checks)
-		return 0
+		return FIRE_MISSION_ALL_GOOD
 
 	//we have mission error. Fill the thing and restore previous state
 	fmr.offsets[offset_step] = old_offset
 
-	return 0
+	return FIRE_MISSION_ALL_GOOD
 
 /datum/cas_fire_envelope/proc/execute_firemission(datum/cas_signal/signal, target_turf,dir, mission_id)
 	if(stat != FIRE_MISSION_STATE_IDLE)
 		mission_error = "Fire Mission is under way already."
-		return 0
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(!missions[mission_id])
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(dir!=NORTH && dir!=SOUTH && dir!=WEST && dir!=EAST)
 		mission_error = "Incorrect direction."
-		return 0
+		return FIRE_MISSION_BAD_DIRECTION
 	mission_error = null
 	var/datum/cas_fire_mission/mission = missions[mission_id]
 	var/check_result = mission.check(linked_console)
 	if(check_result == FIRE_MISSION_CODE_ERROR)
-		return -1
+		return FIRE_MISSION_CODE_ERROR
 
 	if(check_result != FIRE_MISSION_ALL_GOOD)
 		mission_error = mission.error_message(check_result)
-		return 0
+		return FIRE_MISSION_CODE_ERROR
 
 	//actual firemission code
 	execute_firemission_unsafe(signal, target_turf, dir, mission)
-	return 1
+	return FIRE_MISSION_ALL_GOOD
 
 /datum/cas_fire_envelope/proc/firemission_status_message()
 	switch(stat)
@@ -321,13 +321,13 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_mission(mission_id, weapon_id, offset_step, offset)
 	var/result = firemission_envelope.update_mission(mission_id, weapon_id, offset_step, offset)
-	if(result<1)
+	if(result != FIRE_MISSION_ALL_GOOD)
 		return firemission_envelope.mission_error
 	return "OK"
 
 // Used in the simulation room for firemission testing.
 /obj/structure/machinery/computer/dropship_weapons/proc/execute_firemission(obj/location, offset, dir, mission_id)
 	var/result = firemission_envelope.execute_firemission(get_turf(location), offset, dir, mission_id)
-	if(result<1)
+	if(result != FIRE_MISSION_ALL_GOOD)
 		return firemission_envelope.mission_error
 	return "OK"

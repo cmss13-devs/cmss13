@@ -701,7 +701,7 @@
 		return FALSE
 
 	var/result = firemission_envelope.update_mission(fm_tag, weapon_id, offset_id, offset_value)
-	if(result != null && result != 0)
+	if(result != FIRE_MISSION_ALL_GOOD)
 		playsound(src, 'sound/machines/terminal_error.ogg', 5, 1)
 	return TRUE
 
@@ -750,7 +750,7 @@
 		source.z
 	)
 	var/result = firemission_envelope.execute_firemission(recorded_loc, target, dir, fmId)
-	if(result < 1)
+	if(result != FIRE_MISSION_ALL_GOOD)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 	return TRUE
 

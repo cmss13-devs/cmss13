@@ -299,6 +299,8 @@
 		hivenumber = xeno.hivenumber
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
 	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
+	GLOB.hive_datum[hivenumber].modify_evilution(10)
+	addtimer(CALLBACK(GLOB.hive_datum[hivenumber], TYPE_PROC_REF(/datum/hive_status, modify_evilution), -10) 3 MINUTES)
 	GLOB.hive_datum[hivenumber].abandon_on_hijack()
 
 	// Notify the yautja too so they stop the hunt

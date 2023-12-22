@@ -1232,11 +1232,6 @@
 		if(target_hive.allies[name]) //autobreak alliance on betrayal
 			target_hive.change_stance(name, FALSE)
 
-
-/datum/hive_status/proc/override_evilution(evil, override)
-	if(SSxevolution)
-		SSxevolution.override_power(hivenumber, evil, override)
-
 /datum/hive_status/corrupted/change_stance(faction, should_ally)
 	. = ..()
 	if(allies[faction])
@@ -1288,6 +1283,10 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("You sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	defectors.Cut()
+
+/datum/hive_status/proc/override_evilution(evil, override)
+	if(SSxevolution)
+		SSxevolution.override_power(hivenumber, evil, override)
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

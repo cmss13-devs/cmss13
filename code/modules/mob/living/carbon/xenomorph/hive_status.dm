@@ -70,6 +70,8 @@
 	/// Set to false if you want to prevent getting burrowed larva from latejoin marines
 	var/latejoin_burrowed = TRUE
 
+	var/see_humans_on_tacmap = FALSE
+
 	var/list/hive_inherant_traits
 
 	// Cultist Info

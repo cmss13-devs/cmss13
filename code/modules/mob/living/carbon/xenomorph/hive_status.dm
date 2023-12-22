@@ -1233,7 +1233,7 @@
 			target_hive.change_stance(name, FALSE)
 
 
-/datum/hive_status/proc/modify_evilution(var/evil = 0)
+/datum/hive_status/proc/modify_evilution(evil = 0)
 	SSxevolution.boost_power[hivenumber] = SSxevolution.get_evolution_boost_power(hivenumber) += evil
 
 /datum/hive_status/corrupted/change_stance(faction, should_ally)

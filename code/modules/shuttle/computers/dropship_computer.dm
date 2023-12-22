@@ -302,6 +302,9 @@
 	hive.abandon_on_hijack()
 	var/original_evilution = hive.evolution_bonus
 	hive.override_evilution(10, TRUE)
+	if(hive.living_xeno_queen)
+		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_xeno_action_by_type(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
+		ovi_ability.reduce_cooldown(5 MINUTES)
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), 3 MINUTES)
 
 	// Notify the yautja too so they stop the hunt

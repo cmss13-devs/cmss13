@@ -1,4 +1,0 @@
-author: "InsaneRed"
-delete-after: True
-changes:
-  - code_imp: "Converts xenomorph cooldowns into SECONDS"

@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fix Xmas helmets getting overriden by map camouflage."

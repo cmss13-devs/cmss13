@@ -22,7 +22,7 @@
 /mob/living/silicon/robot/proc/clamp_values()
 
 // set_effect(min(stunned, 30), STUN)
-	set_effect(min(knocked_out, 30), PARALYZE)
+//	set_effect(min(knocked_out, 30), PARALYZE)
 // set_effect(min(knocked_down, 20), WEAKEN)
 	sleeping = 0
 	apply_damage(0, BRUTE)

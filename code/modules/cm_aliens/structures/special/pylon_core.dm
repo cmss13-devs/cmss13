@@ -190,7 +190,7 @@
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
-	var/list/hive_xenos = linked_hive.totalXenos
+	var/list/hive_xenos = linked_hive.totalXenos.Copy()
 
 	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
 		if(!xeno.counts_for_slots)
@@ -417,7 +417,6 @@
 			linked_hive.hardcore = TRUE
 			linked_hive.allow_queen_evolve = FALSE
 			linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 0
-			linked_hive.hive_structures_limit[XENO_STRUCTURE_POOL] = 0
 			xeno_announcement("\The [linked_hive.name] has lost their hive core!", "everything", HIGHER_FORCE_ANNOUNCE)
 
 		if(linked_hive.hijack_burrowed_surge)

@@ -340,3 +340,94 @@
   - maptweak: Numerous Fixes for new brig
   cuberound:
   - balance: DS doorgun can shoot over cades
+2023-12-18:
+  Huffie56:
+  - bugfix: added landing zone camera on trijent.
+  - bugfix: fixed landing zone camera on all map in rotation.
+  sleepynecrons:
+  - imageadd: marine snow uniforms and armors given a new look
+2023-12-19:
+  Drathek:
+  - balance: Added the possibility of surgery steps failing based on tool and surface
+      suitability compensated by surgery skill.
+  Huffie56:
+  - bugfix: fix a nightmare insert that had a wall and a door on same tile.
+  NateDross:
+  - bugfix: Requisitions elevator lighting fix
+  NessiePendragon:
+  - rscadd: Added new sprites for Warrior.
+  PurpleCIoud:
+  - imageadd: added chocolate bar new sprite
+  - imagedel: deleted old chocolate bar sprite
+  SabreML:
+  - rscadd: Updated the 'help' message for xeno special structure construction.
+  - qol: Added a 'remaining' counter when constructing special structures to let players
+      know how many can still be built.
+  - qol: Added a 'Ghost' button for dead xenomorphs.
+  realforest2001:
+  - rscadd: Added a proc for comparing the registered name of an ID, to the real name
+      of a mob. Also checks registered_ref if one exists.
+  - rscadd: Evacuation can no longer be cancelled without passing above check.
+  - rscadd: People forced into escape-pod stasis bays against their wishes can now
+      eject themselves.
+  - bugfix: Xenos can no longer force humans into escape-pod stasis bays.
+  - bugfix: Escape-pod stasis bays no longer accept corpses.
+  stalkerino:
+  - balance: fixes the balance of the game by making hair gradient trait free
+2023-12-20:
+  Birdtalon, Fira:
+  - bugfix: Fixes hive UI crash upon pylon giving new larva.
+  Contrabang:
+  - bugfix: Matches now do burn damage instead of brute, when you accidently burn
+      your own hand.
+  InsaneRed:
+  - spellcheck: Converted more "YOU" to "WE"  for xenomorphs.
+  LTNTS:
+  - qol: makes suspect nardo gray
+  fira:
+  - rscadd: Added Buckled, Handcuffed and Legcuffed screen alerts
+  - code_imp: Ported /tg/ status effects backend, modified with timers to let effects
+      end at appropriate time
+  - code_imp: Stun, Knockdown and Knockout now use the new effects backend
+  - balance: Due to backend change, all KO/KD/Stuns may behave differently timing
+      wise. This is of course subject to adjustments.
+  - balance: Endurance is now set at 8% effect duration reduction per level above
+      1. However it now compounds with species bonus. Feel free to adjust.
+  - balance: Knockdowns are not inherently incapacitating anymore and many sources
+      of it have been updated to also stun to make up for it.
+  - bugfix: KO/KD/Stuns do not artificially and randomly ''stack'' due to incorrect
+      timer offset calculation anymore.
+  - bugfix: Stuns now correctly apply Stun reduction values instead of Knockdown reductions.
+  - bugfix: Crawling can now be interrupted by a normal move, if you are fit enough
+      to do so.
+  realforest2001:
+  - maptweak: Various doors around the Almayer will now close their opposites for
+      better security.
+2023-12-21:
+  Birdtalon:
+  - bugfix: Lurker can tail jab over ledges and window frames.
+  Drathek:
+  - imageadd: Update weeded warrior sprites to be compatible with knight strain sprite
+2023-12-22:
+  Ben10083:
+  - rscdel: ' Working Joes can no longer drink'
+  Cthulhu80:
+  - ui: tacmap ui tweaks
+  Doubleumc:
+  - bugfix: Fixed security tuner not dispalying direction to room's APC
+  - refactor: Refactored code handling angles
+  InsaneRed:
+  - code_imp: Converts xenomorph cooldowns into SECONDS
+  SabreML:
+  - bugfix: Fixed being able to remove multiple stacks of fire by spamming resist.
+  Steelpoint:
+  - rscadd: Factions are now properly separated in the observe menu as a ghost.
+  cuberound:
+  - bugfix: bad DS doorgun placement
+  fira:
+  - bugfix: Fix Xmas helmets getting overriden by map camouflage.
+  realforest2001:
+  - bugfix: Hijack should no longer end the round immediately.
+  - rscadd: Ghosts can now toggle hearing listening devices or not. This is dependant
+      on hearing radios and will not function to allow hearing devices without also
+      hearing radios.

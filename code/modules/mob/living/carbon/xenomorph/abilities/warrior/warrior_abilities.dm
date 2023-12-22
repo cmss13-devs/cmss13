@@ -10,7 +10,7 @@
 
 	// Configurables
 	var/fling_distance = 4
-	var/stun_power = 0
+	var/stun_power = 0.5
 	var/weaken_power = 0.5
 	var/slowdown = 2
 

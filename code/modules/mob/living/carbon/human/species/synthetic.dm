@@ -76,6 +76,7 @@
 	name = SYNTH_COLONY
 	name_plural = "Colonial Synthetics"
 	uses_ethnicity = TRUE
+	brute_mod = 0.5
 	burn_mod = 0.8
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 

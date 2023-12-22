@@ -111,7 +111,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 /datum/bioscan_data/proc/ares_can_bioscan()
 	var/datum/ares_link/link = GLOB.ares_link
-	if(!istype(link))
+	if(!istype(link) || !ares_is_active())
 		return FALSE
 	if(link.processor_bioscan && !link.processor_bioscan.inoperable())
 		return TRUE

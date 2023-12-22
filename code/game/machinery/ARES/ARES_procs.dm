@@ -77,6 +77,13 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 
 // ------ ARES Logging Procs ------ //
+/proc/ares_is_active(){
+	for(var/mob/living/silicon/decoy/ship_ai/ai in GLOB.ai_mob_list)
+		if(ai.stat == DEAD)
+			return FALSE //ARES dead, most other systems also die with it
+	return TRUE
+}
+
 /proc/ares_apollo_talk(broadcast_message)
 	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 	for(var/mob/living/silicon/decoy/ship_ai/ai in GLOB.ai_mob_list)
@@ -89,14 +96,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /proc/ares_can_interface()
 	var/obj/structure/machinery/ares/processor/interface/processor = GLOB.ares_link.processor_interface
-	if(!istype(GLOB.ares_link))
+	if(!istype(GLOB.ares_link) || !ares_is_active())
 		return FALSE
 	if(processor && !processor.inoperable())
 		return TRUE
 	return FALSE //interface processor not found or is broken
 
 /proc/ares_can_log()
-	if(!istype(GLOB.ares_link) || !istype(GLOB.ares_datacore))
+	if(!istype(GLOB.ares_link) || !istype(GLOB.ares_datacore) || !ares_is_active())
 		return FALSE
 	var/obj/structure/machinery/ares/cpu/central_processor = GLOB.ares_link.central_processor
 	if(central_processor && !central_processor.inoperable())
@@ -104,7 +111,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	return FALSE //CPU not found or is broken
 
 /proc/ares_can_apollo()
-	if(!istype(GLOB.ares_link) || !istype(GLOB.ares_datacore))
+	if(!istype(GLOB.ares_link) || !istype(GLOB.ares_datacore) || !ares_is_active())
 		return FALSE
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!link.processor_apollo || link.processor_apollo.inoperable())
@@ -112,11 +119,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	return TRUE
 
 /proc/log_ares_apollo(speaker, message)
-	if(!ares_can_log())
+	if(!ares_can_log() || !ares_can_apollo())
 		return FALSE
-	if(!ares_can_apollo()){
-		return FALSE
-	}
 	if(!speaker)
 		speaker = "Unknown"
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore

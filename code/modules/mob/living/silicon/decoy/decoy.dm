@@ -49,19 +49,11 @@
 		return FALSE
 
 	//ARES sends out last messages
-	ares_final_words();
+	ares_final_words()
 	icon_state = "hydra-off"
 	var/datum/cause_data/cause_data = create_cause_data("rapid unscheduled disassembly", src, src)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, 0, 8, 12, TRUE, FALSE, 0, cause_data), 2 SECONDS)
 	return ..()
-
-/proc/ares_final_words(){
-	//APOLLO
-	ares_apollo_talk("APOLLO sub-system shutting down. STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED")
-
-	//GENERAL CREW
-	shipwide_ai_announcement("A Problem has been detected and the [MAIN_AI_SYSTEM] system has been shutdown. \nTechnical Information: \n\n*** STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED\n\nPossible caused by: Rapid Unscheduled Disassembly\nContact an AI Service Technician for further assistance.", title = ":(", ares_logging = null)
-}
 
 /mob/living/silicon/decoy/say(message) //General communication across the ship.
 	if(stat || !message)

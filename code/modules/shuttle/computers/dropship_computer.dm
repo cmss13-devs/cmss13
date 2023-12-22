@@ -264,7 +264,6 @@
 		return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user, force = FALSE)
-
 	// select crash location
 	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
@@ -300,9 +299,10 @@
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
 	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	hive.modify_evilution(10)
-	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, modify_evilution), -10), 3 MINUTES)
 	hive.abandon_on_hijack()
+	var/original_evilution = hive.evolution_bonus
+	hive.override_evilution(10, TRUE)
+	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), 3 MINUTES)
 
 	// Notify the yautja too so they stop the hunt
 	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")

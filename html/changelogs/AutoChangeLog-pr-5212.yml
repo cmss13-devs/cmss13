@@ -1,0 +1,5 @@
+author: "Doubleumc"
+delete-after: True
+changes:
+  - bugfix: "Fixed security tuner not dispalying direction to room's APC"
+  - refactor: "Refactored code handling angles"

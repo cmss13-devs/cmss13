@@ -179,9 +179,9 @@
 	activated = TRUE
 	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
-/// Looped proc via timer to give larva after time
 #define ENDGAME_LARVA_CAP_MULTIPLIER 0.4
 #define LARVA_ADDITION_MULTIPLIER 0.10
+/// Looped proc via timer to give larva after time
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
 	if(!activated)
 		return
@@ -207,8 +207,14 @@
 		if(!is_ground_level(turf?.z))
 			groundside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	if(real_total_xeno_count > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER))
+		if(!linked_hive.hit_larva_pylon_limit)
+			linked_hive.hit_larva_pylon_limit = TRUE
+			xeno_announcement(SPAN_XENOANNOUNCE("Our numbers are huge! We will not get more unless we lose numbers or talls get more."), hivenumber, XENO_GENERAL_ANNOUNCE)
 		return
 
+	if(linked_hive.hit_larva_pylon_limit)
+		linked_hive.hit_larva_pylon_limit = FALSE
+		xeno_announcement(SPAN_XENOANNOUNCE("We need numbers! Pylons will provide larvae again."), hivenumber, XENO_GENERAL_ANNOUNCE)
 	linked_hive.partial_larva += real_total_xeno_count * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()

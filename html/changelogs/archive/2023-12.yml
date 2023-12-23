@@ -403,3 +403,40 @@
   realforest2001:
   - maptweak: Various doors around the Almayer will now close their opposites for
       better security.
+2023-12-21:
+  Birdtalon:
+  - bugfix: Lurker can tail jab over ledges and window frames.
+  Drathek:
+  - imageadd: Update weeded warrior sprites to be compatible with knight strain sprite
+2023-12-22:
+  Ben10083:
+  - rscdel: ' Working Joes can no longer drink'
+  Cthulhu80:
+  - ui: tacmap ui tweaks
+  Doubleumc:
+  - bugfix: Fixed security tuner not dispalying direction to room's APC
+  - refactor: Refactored code handling angles
+  InsaneRed:
+  - code_imp: Converts xenomorph cooldowns into SECONDS
+  SabreML:
+  - bugfix: Fixed being able to remove multiple stacks of fire by spamming resist.
+  Steelpoint:
+  - rscadd: Factions are now properly separated in the observe menu as a ghost.
+  cuberound:
+  - bugfix: bad DS doorgun placement
+  fira:
+  - bugfix: Fix Xmas helmets getting overriden by map camouflage.
+  realforest2001:
+  - bugfix: Hijack should no longer end the round immediately.
+  - rscadd: Ghosts can now toggle hearing listening devices or not. This is dependant
+      on hearing radios and will not function to allow hearing devices without also
+      hearing radios.
+2023-12-23:
+  BadAtThisGame302:
+  - balance: rebalanced goon skillset to include construction 1
+  - spellcheck: fixed Liason area typos to Liaison
+  - spellcheck: fixed the ICC Liason to ICC Liaison typo
+  fira:
+  - bugfix: Fixed X-mas barricade wiring not applying properly.
+  private-tristan:
+  - balance: xenos can now acid all window frames.

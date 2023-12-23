@@ -420,7 +420,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 // ----- Interstellar Commerce Commission Survivor
 
 // Used in Trijent Dam and New Varadero.
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
@@ -431,11 +431,11 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 	survivor_variant = CORPORATE_SURVIVOR
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/New()
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_CIVIL_LIAISON)
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 

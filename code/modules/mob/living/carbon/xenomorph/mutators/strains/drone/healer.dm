@@ -293,7 +293,7 @@
 	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
 	if(!istype(behavior_delegate))
 		return
-	if (behavior_delegate.transferred_amount < behavior_delegate.required_transferred_amount)
+	if(behavior_delegate.transferred_amount < behavior_delegate.required_transferred_amount)
 		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you."))
 	else
 		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you, but new life will be granted for your hard work for the hive."))

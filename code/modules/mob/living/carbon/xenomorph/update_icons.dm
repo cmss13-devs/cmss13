@@ -193,9 +193,6 @@
 
 /mob/living/carbon/xenomorph/proc/update_inv_resource()
 	remove_overlay(X_RESOURCE_LAYER)
-	if(crystal_stored)
-		overlays_standing[X_RESOURCE_LAYER] = image("icon" = icon, "icon_state" = "[caste_type]_resources", "layer" =-X_RESOURCE_LAYER)
-		apply_overlay(X_RESOURCE_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)

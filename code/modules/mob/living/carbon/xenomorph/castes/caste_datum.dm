@@ -16,8 +16,6 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 
-	var/crystal_max = 0
-
 	var/max_health = XENO_UNIVERSAL_HPMULT * 100
 	///Are they allowed to evolve (and have their evolution progress group)
 	var/evolution_allowed = 1

@@ -914,6 +914,7 @@
 #include "code\game\machinery\kitchen\smartfridge.dm"
 #include "code\game\machinery\medical_pod\autodoc.dm"
 #include "code\game\machinery\medical_pod\bodyscanner.dm"
+#include "code\game\machinery\medical_pod\bone_gel_refill.dm"
 #include "code\game\machinery\medical_pod\medical_pod.dm"
 #include "code\game\machinery\medical_pod\sleeper.dm"
 #include "code\game\machinery\pipe\construction.dm"

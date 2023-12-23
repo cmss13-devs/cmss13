@@ -38556,6 +38556,12 @@
 	icon_state = "bluefull"
 	},
 /area/almayer/living/briefing)
+"gXU" = (
+/obj/structure/machinery/gel_refiller,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "gXY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -112425,7 +112431,7 @@ vhX
 gDW
 rlZ
 rlZ
-pnC
+gXU
 dBH
 bky
 ryt

@@ -41,6 +41,24 @@
 	success_sound = 'sound/handling/bandage.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
+//Use materials to repair bones, same as /datum/surgery_step/mend_encased
+/datum/surgery_step/mend_bones/attempt_step(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
+	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
+		var/obj/item/tool/surgery/bonegel/gel = tool
+		if(!gel.use_gel())
+			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))
+			return FALSE
+
+	else //Otherwise, use metal
+		var/obj/item/stack/sheet/metal/metal = user.get_inactive_hand()
+		if(!istype(metal))
+			to_chat(user, SPAN_BOLDWARNING("You need metal in your offhand to repair [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			return FALSE
+		if(!metal.use(2))
+			to_chat(user, SPAN_BOLDWARNING("You need more metal to repair [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			return FALSE
+	return ..()
+
 /datum/surgery_step/mend_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
 		if(tool_type == /obj/item/tool/surgery/bonegel)

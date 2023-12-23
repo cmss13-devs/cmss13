@@ -237,7 +237,7 @@
 		return
 
 	if(target == xeno)
-		to_chat(xeno, "You can't heal yourself!")
+		to_chat(xeno, "We can't heal ourself!")
 		return
 
 	if(isfacehugger(target) || islesserdrone(target))
@@ -245,6 +245,10 @@
 		return
 
 	if(!xeno.check_state())
+		return
+
+	if(!can_not_harm(target)) //so we can heal only allies
+		to_chat(xeno, SPAN_WARNING("[target] is an enemy of our hive!"))
 		return
 
 	if(target.stat == DEAD)
@@ -256,11 +260,11 @@
 		return
 
 	if(!isturf(xeno.loc))
-		to_chat(xeno, SPAN_WARNING("You cannot transfer health from here!"))
+		to_chat(xeno, SPAN_WARNING("We cannot transfer health from here!"))
 		return
 
 	if(get_dist(xeno, target) > max_range)
-		to_chat(xeno, SPAN_WARNING("You need to be closer to [target]."))
+		to_chat(xeno, SPAN_WARNING("We need to be closer to [target]."))
 		return
 
 	xeno.say(";MY LIFE FOR THE QUEEN!!!")
@@ -294,7 +298,7 @@
 	if(!istype(behavior_delegate))
 		return
 	if(behavior_delegate.transferred_amount < behavior_delegate.required_transferred_amount)
-		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you."))
+		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill us."))
 	else
-		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you, but new life will be granted for your hard work for the hive."))
+		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill us, but new life will be granted for our hard work for the hive."))
 

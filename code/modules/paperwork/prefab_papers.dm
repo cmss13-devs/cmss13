@@ -27,8 +27,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 			continue
 		available_documents += docname
 	return
-
-
+/* HEY FOREST LOOK AT THIS TO MAKE THE IMAGES WORK
+https://discord.com/channels/539888393836953604/539914145705885697/1187204942478446662
+*/
 /obj/structure/filingcabinet/documentation/attack_hand(mob/user as mob)
 	var/choice = tgui_alert(user, "Do you wish to open the cabinet, or retrieve a document template?", "Action", list("Open", "Document"), 20 SECONDS)
 	switch(choice)
@@ -110,7 +111,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_title = "WY439 - Affidavit of Intent to Preserve"
 	doc_file_ref = "preserve_intent"
 
-/obj/item/paper/prefab/liaison/preserve_intent
+/obj/item/paper/prefab/liaison/liability
 	document_title = "WY440 - Affidavit of Liability"
 	doc_file_ref = "liability"
 

@@ -1,0 +1,5 @@
+author: "Cthulhu80"
+delete-after: True
+changes:
+  - rscadd: "human mobs now scream whenever they get lunged at by a warrior."
+  - soundadd: "added a new scream sound and put it into the existing scream list."

@@ -301,7 +301,7 @@
 		deployed_mg.deployment_system = src
 
 /obj/structure/dropship_equipment/mg_holder/Destroy()
-	qdel(deployed_mg)
+	QDEL_NULL(deployed_mg)
 	. = ..()
 
 /obj/structure/dropship_equipment/mg_holder/get_examine_text(mob/user)

@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - rscdel: "Removed the green overlay from camera consoles."

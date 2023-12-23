@@ -247,7 +247,7 @@
 	if(!xeno.check_state())
 		return
 
-	if(!can_not_harm(target)) //so we can heal only allies
+	if(!xeno.can_not_harm(target)) //so we can heal only allies
 		to_chat(xeno, SPAN_WARNING("[target] is an enemy of our hive!"))
 		return
 

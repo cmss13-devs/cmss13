@@ -431,3 +431,12 @@
   - rscadd: Ghosts can now toggle hearing listening devices or not. This is dependant
       on hearing radios and will not function to allow hearing devices without also
       hearing radios.
+2023-12-23:
+  BadAtThisGame302:
+  - balance: rebalanced goon skillset to include construction 1
+  - spellcheck: fixed Liason area typos to Liaison
+  - spellcheck: fixed the ICC Liason to ICC Liaison typo
+  fira:
+  - bugfix: Fixed X-mas barricade wiring not applying properly.
+  private-tristan:
+  - balance: xenos can now acid all window frames.

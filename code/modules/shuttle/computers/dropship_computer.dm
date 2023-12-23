@@ -9,6 +9,10 @@
 	needs_power = FALSE
 	var/override_being_removed = FALSE
 
+	// DS alarm when a queen attempts a hijack
+	COOLDOWN_DECLARE(hijack_alarm)
+	var/hijack_alarm_cooldown = 3 MINUTES
+
 	// Admin disabled
 	var/disabled = FALSE
 
@@ -169,7 +173,8 @@
 	if(dropship_control_lost)
 		remove_door_lock()
 		to_chat(user, SPAN_NOTICE("You succesfully removed the lockout!"))
-		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		playsound(src, 'sound/AI/ai_female_autopilot_deactivated.ogg', 100, FALSE, 30, VOLUME_SFX, 0, 0, 7)
+		playsound(src, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)
 		tgui_interact(user)
@@ -231,19 +236,26 @@
 
 	// door controls being overriden
 	if(!dropship_control_lost)
-		dropship.control_doors("unlock", "all", TRUE)
-		dropship_control_lost = TRUE
-		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-		if(GLOB.almayer_orbital_cannon)
-			GLOB.almayer_orbital_cannon.is_disabled = TRUE
-			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
-		if(!GLOB.resin_lz_allowed)
-			set_lz_resin_allowed(TRUE)
+		play_hijack_alarm()
+		INVOKE_ASYNC(usr, TYPE_PROC_REF(/mob, emote), "roar")
+		if(do_after(usr, 11 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			playsound(src, 'sound/AI/ai_female_access_granted.ogg', 15)
+			dropship.control_doors("unlock", "all", TRUE)
+			dropship_control_lost = TRUE
+			door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+			if(GLOB.almayer_orbital_cannon)
+				GLOB.almayer_orbital_cannon.is_disabled = TRUE
+				addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
+			if(!GLOB.resin_lz_allowed)
+				set_lz_resin_allowed(TRUE)
 
-		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
-		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
-		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
-		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
+			to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
+			xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
+			message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
+			notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
+		else:
+			playsound(src, 'sound/AI/ai_female_access_denied.ogg', 15)
+
 		return
 
 	if(dropship_control_lost)
@@ -268,6 +280,7 @@
 	// select crash location
 	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
+	playsound(src, pick('sound/AI/ai_female_autopilot_activated.ogg','sound/AI/ai_female_launch.ogg'), 10)
 	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", GLOB.almayer_ship_sections , timeout = 10 SECONDS)
 	if(!result)
 		return
@@ -512,6 +525,13 @@
 	shuttle.alarm_sound_loop.stop()
 	shuttle.playing_launch_announcement_alarm = FALSE
 	return
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/play_hijack_alarm()
+	if(!COOLDOWN_FINISHED(src, hijack_alarm))
+		return
+
+	COOLDOWN_START(src, hijack_alarm, hijack_alarm_cooldown)
+	playsound(src, 'sound/AI/ai_female_xeno_alarm.ogg', 100, FALSE, 30, VOLUME_SFX, 0, 0, 7)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1
 	icon = 'icons/obj/structures/machinery/computer.dmi'

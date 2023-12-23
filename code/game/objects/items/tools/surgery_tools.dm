@@ -199,24 +199,22 @@
 	desc = "A container for bone gel that often needs to be refilled from a specialized machine."
 	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
 	icon_state = "bone-gel"
-	force = 0
-	throwforce = 1
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
 	///percent of gel remaining in container
 	var/remaining_gel = 100
-	///percent of gel used per surgery step
-	var/gel_cost_per_use = 5
-	///Time it takes per (gel_cost_per_use * 2)% of gel refilled
+	///If gel is used when doing bone surgery
+	var/limited_gel = TRUE
+	///Time it takes per 10% of gel refilled
 	var/time_per_refill = 2.5 SECONDS
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()
-	if(gel_cost_per_use) //Only show how much gel is left if it actually uses bone gel
+	if(limited_gel) //Only show how much gel is left if it actually uses bone gel
 		. += "A counter on the side reads \"[remaining_gel]% gel remaining\"."
 
 /obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
-	if(!gel_cost_per_use)
+	if(!limited_gel)
 		to_chat(user, SPAN_NOTICE(" [refilling_obj] refuses to fill [src]."))
 		return
 	if(remaining_gel >= 100)
@@ -227,23 +225,23 @@
 		if(!do_after(user, time_per_refill, INTERRUPT_ALL, BUSY_ICON_MEDICAL, refilling_obj))
 			continue
 		playsound(refilling_obj, "sound/machines/ping.ogg", 10)
-		remaining_gel = clamp(remaining_gel + (gel_cost_per_use * 2), 0, 100)
+		remaining_gel = clamp(remaining_gel + 10, 0, 100)
 		to_chat(user, SPAN_NOTICE("[refilling_obj] chimes, and displays \"[remaining_gel]% filled\"."))
 
 	to_chat(user, SPAN_NOTICE("You remove [src] from [refilling_obj]."))
 
 
-/obj/item/tool/surgery/bonegel/proc/use_gel()
-	if(remaining_gel < gel_cost_per_use)
+/obj/item/tool/surgery/bonegel/proc/use_gel(gel_cost)
+	if(remaining_gel < gel_cost)
 		return FALSE
-	remaining_gel -= gel_cost_per_use
+	remaining_gel -= gel_cost
 	return TRUE
 
 /obj/item/tool/surgery/bonegel/predatorbonegel
 	name = "gel gun"
 	desc = "Inside is a liquid that is similar in effect to bone gel, but requires much smaller quantities, allowing near infinite use from a single capsule."
 	icon_state = "predator_bone-gel"
-	gel_cost_per_use = 0
+	limited_gel = FALSE
 
 /*
  * Fix-o-Vein

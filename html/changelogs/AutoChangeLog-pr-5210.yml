@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - rscadd: "Allowed Xenomorphs to turn off the dropship's launch alarm by hitting the nav computer."

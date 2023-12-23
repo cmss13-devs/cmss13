@@ -119,7 +119,7 @@
 	fake_zlevel = 1 // upperdeck
 	flags_area = AREA_NOTUNNEL
 
-/area/almayer/command/corporateliason
+/area/almayer/command/corporateliaison
 	name = "\improper Corporate Liaison Office"
 	icon_state = "corporatespace"
 	fake_zlevel = 1 // upperdeck

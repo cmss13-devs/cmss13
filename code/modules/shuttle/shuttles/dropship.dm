@@ -284,6 +284,7 @@
 			affected_mob.apply_effect(3, WEAKEN)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_LANDED)
 
 /datum/map_template/shuttle/alamo
 	name = "Alamo"

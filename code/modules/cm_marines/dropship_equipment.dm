@@ -343,9 +343,10 @@
 			if(ship_base.base_category == DROPSHIP_WEAPON)
 				switch(dir)
 					if(NORTH)
-						if( istype(get_step(src, WEST), /turf/open) )
+						var/step_contents = get_step(src, EAST).contents
+						if(locate(/obj/structure) in step_contents)
 							deployed_mg.pixel_x = 5
-						else if ( istype(get_step(src, EAST), /turf/open) )
+						else
 							deployed_mg.pixel_x = -5
 					if(EAST)
 						deployed_mg.pixel_y = 9
@@ -372,12 +373,11 @@
 		if(ship_base.base_category == DROPSHIP_WEAPON)
 			switch(dir)
 				if(NORTH)
-					if( istype(get_step(src, WEST), /turf/open) )
+					var/step_contents = get_step(src, EAST).contents
+					if(locate(/obj/structure) in step_contents)
 						deployed_mg.forceMove(get_step(src, WEST))
-					else if ( istype(get_step(src, EAST), /turf/open) )
-						deployed_mg.forceMove(get_step(src, EAST))
 					else
-						deployed_mg.forceMove(get_step(src, NORTH))
+						deployed_mg.forceMove(get_step(src, EAST))
 				if(EAST)
 					deployed_mg.forceMove(get_step(src, SOUTH))
 				if(WEST)

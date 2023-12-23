@@ -58,6 +58,10 @@
 	icon_xeno = 'icons/mob/xenos/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/boiler.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Boiler_1","Boiler_2","Boiler_3")
+	weed_food_states_flipped = list("Boiler_1","Boiler_2","Boiler_3")
+
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 
 	base_actions = list(

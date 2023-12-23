@@ -209,12 +209,12 @@
 	if(real_total_xeno_count > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER))
 		if(!linked_hive.hit_larva_pylon_limit)
 			linked_hive.hit_larva_pylon_limit = TRUE
-			xeno_announcement(SPAN_XENOANNOUNCE("Our numbers are huge! We will not get more unless we lose numbers or talls get more."), hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Our numbers are huge! We will not get more unless we lose numbers or talls get more."), linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 		return
 
 	if(linked_hive.hit_larva_pylon_limit)
 		linked_hive.hit_larva_pylon_limit = FALSE
-		xeno_announcement(SPAN_XENOANNOUNCE("We need numbers! Pylons will provide larvae again."), hivenumber, XENO_GENERAL_ANNOUNCE)
+		xeno_announcement(SPAN_XENOANNOUNCE("We need numbers! Pylons will provide larvae again."), linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	linked_hive.partial_larva += real_total_xeno_count * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()

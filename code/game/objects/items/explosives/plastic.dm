@@ -359,8 +359,8 @@
 /obj/item/explosive/plastic/breaching_charge/rubber
 	name = "X17 riot charge"
 	desc = "An explosive device used to break into areas while protecting the user from the blast. Unlike the standard breaching charge, the X17 deploys a cone spray of rubber pellets to incapacitate rather than kill."
-	icon_state = "satchel-charge"
-	overlay_image = "satchel-active"
+	icon_state = "riot-charge"
+	overlay_image = "riot-active"
 	shrapnel_volume = 20
 	shrapnel_type = /datum/ammo/bullet/shrapnel/rubber
 

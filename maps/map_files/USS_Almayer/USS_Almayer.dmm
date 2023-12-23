@@ -19428,11 +19428,9 @@
 	},
 /area/almayer/squads/req)
 "bEt" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/sign/safety/commline_connection{
-	pixel_y = 32
+/obj/structure/noticeboard{
+	pixel_x = -10;
+	pixel_y = 31
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -43397,6 +43395,10 @@
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 4
 	},
+/obj/item/tool/stamp/approved{
+	pixel_y = -11;
+	pixel_x = -3
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "iVo" = (
@@ -60739,8 +60741,8 @@
 "pWA" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/structure/sign/safety/storage{
-	pixel_x = -17
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 8;

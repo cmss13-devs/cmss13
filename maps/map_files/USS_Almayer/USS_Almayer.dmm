@@ -37298,6 +37298,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/regular,
 /obj/item/clipboard,
+/obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -50166,6 +50167,7 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/toolbox,
 /obj/item/clipboard,
+/obj/item/tool/pen,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green"

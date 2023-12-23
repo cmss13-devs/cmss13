@@ -45,6 +45,8 @@
 	cam_plane_masters = null
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
+	if(current)
+		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
 
 /datum/component/camera_manager/proc/add_plane(atom/movable/screen/plane_master/instance)
 	instance.assigned_map = map_name
@@ -97,6 +99,8 @@
 	UnregisterSignal(parent, COMSIG_CAMERA_CLEAR)
 
 /datum/component/camera_manager/proc/clear_camera()
+	if(current)
+		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
 	current_area = null
 	current = null
 	target_x = null
@@ -113,7 +117,7 @@
 	current = target
 	target_width = w
 	target_height = h
-	RegisterSignal(current, COMSIG_PARENT_QDELETING, PROC_REF(show_camera_static), override = TRUE)
+	RegisterSignal(current, COMSIG_PARENT_QDELETING, PROC_REF(show_camera_static))
 	update_target_camera()
 
 /datum/component/camera_manager/proc/set_camera_rect(source, x, y, z, w, h)

@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - balance: "New healer drone ability — sacrifice. Healer drone can instantly transfer 75% of its current health, but for the great cost of the healer’s own life."

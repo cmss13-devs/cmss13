@@ -939,12 +939,11 @@
 
 // Get amount of real xenos, don't count lessers/huggers
 /datum/hive_status/proc/get_real_total_xeno_count()
-	var/list/hive_xenos = totalXenos.Copy()
-
-	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
-		if(!xeno.counts_for_slots)
-			hive_xenos -= xeno
-	return length(hive_xenos)
+	var/count = 0
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(xeno.counts_for_slots)
+			count++
+	return count
 
 // Checks if we hit larva limit
 /datum/hive_status/proc/check_if_hit_larva_from_pylon_limit()

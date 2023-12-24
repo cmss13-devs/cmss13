@@ -57,6 +57,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/set_eye_blur_type,
 ))
 
+/client/proc/reduce_minute_count()
+	topiclimiter[MINUTE_COUNT] -= 1
+
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return

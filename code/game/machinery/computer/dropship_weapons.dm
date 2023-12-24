@@ -393,6 +393,9 @@
 				if(LT.target_id == target_id  && LT.valid_signal())
 					cas_sig = LT
 					break
+			// we don't want rapid offset changes to trigger admin warnings
+			// and block the user from accessing TGUI
+			user.client.topiclimiter[MINUTE_COUNT] -= 1
 			if(!cas_sig)
 				return TRUE
 

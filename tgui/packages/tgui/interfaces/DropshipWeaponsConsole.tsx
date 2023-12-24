@@ -1,4 +1,4 @@
-import { useBackend, useSharedState } from '../backend';
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { Box, Divider, Flex, Stack } from '../components';
 import { CasSim } from './CasSim';
@@ -67,11 +67,6 @@ const yLookup = (index: number) => [150, 20, 20, 150][index] + yOffset;
 const OutlineColor = '#00e94e';
 const OutlineWidth = '2';
 
-type EquipmentPanelStates = undefined | string;
-
-const useEquipmentState = (context) =>
-  useSharedState<EquipmentPanelStates>(context, 'equipmentState', undefined);
-
 const DrawShipOutline = () => {
   const drawLine = (pos0, pos1) => (
     <line
@@ -122,10 +117,10 @@ const DrawWeapon = (props: { weapon: DropshipEquipment }, context) => {
   );
 };
 
-const WeaponStatsPanel = (
-  props: { slot: number; weapon?: DropshipEquipment },
-  context
-) => {
+const WeaponStatsPanel = (props: {
+  slot: number;
+  weapon?: DropshipEquipment;
+}) => {
   if (props.weapon === undefined) {
     return <EmptyWeaponStatsPanel slot={props.slot} />;
   }
@@ -157,10 +152,9 @@ const EmptyWeaponStatsPanel = (props: { slot: number }) => {
   );
 };
 
-const DropshipWeaponsPanel = (
-  props: { equipment: Array<DropshipEquipment> },
-  context
-) => {
+const DropshipWeaponsPanel = (props: {
+  equipment: Array<DropshipEquipment>;
+}) => {
   const weapons = props.equipment.filter((x) => x.is_weapon === 1);
   const support = props.equipment.filter((x) => x.is_weapon === 0);
   return (

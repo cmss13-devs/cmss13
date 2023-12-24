@@ -6,10 +6,10 @@ import { mfdState, useFiremissionXOffsetValue, useFiremissionYOffsetValue, useLa
 import { CasFiremission, EquipmentContext, FiremissionContext, TargetContext } from './types';
 
 const directionLookup = new Map<string, number>();
-directionLookup['N-S'] = 2;
-directionLookup['S-N'] = 1;
-directionLookup['E-W'] = 8;
-directionLookup['W-E'] = 4;
+directionLookup['SOUTH'] = 2;
+directionLookup['NORTH'] = 1;
+directionLookup['WEST'] = 8;
+directionLookup['EAST'] = 4;
 
 const useStrikeMode = (context) => {
   const [data, set] = useSharedState<string | undefined>(
@@ -127,7 +127,7 @@ const TargetLines = (props: { panelId: string }, context) => {
 };
 
 const leftButtonGenerator = (context, panelId: string) => {
-  const { data, act } = useBackend<
+  const { data } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
   >(context);
   const { leftButtonMode, setLeftButtonMode } = useTargetSubmenu(
@@ -197,30 +197,30 @@ const leftButtonGenerator = (context, panelId: string) => {
     return [
       { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
       {
-        children: 'N-S',
+        children: 'SOUTH',
         onClick: () => {
-          setStrikeDirection('N-S');
+          setStrikeDirection('SOUTH');
           setLeftButtonMode(undefined);
         },
       },
       {
-        children: 'S-N',
+        children: 'NORTH',
         onClick: () => {
-          setStrikeDirection('S-N');
+          setStrikeDirection('NORTH');
           setLeftButtonMode(undefined);
         },
       },
       {
-        children: 'W-E',
+        children: 'EAST',
         onClick: () => {
-          setStrikeDirection('W-E');
+          setStrikeDirection('EAST');
           setLeftButtonMode(undefined);
         },
       },
       {
-        children: 'E-W',
+        children: 'WEST',
         onClick: () => {
-          setStrikeDirection('E-W');
+          setStrikeDirection('WEST');
           setLeftButtonMode(undefined);
         },
       },

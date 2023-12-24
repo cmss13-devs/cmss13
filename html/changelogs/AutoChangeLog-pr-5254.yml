@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - bugfix: "removed an extra light in bravo cryo room(to do just saw it)"
+  - maptweak: "added more areas (stern_point_defense, Lower Deck Stern Hull, Upper Deck port Hallway Upper Deck starboard Hallway)"

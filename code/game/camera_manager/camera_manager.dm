@@ -57,6 +57,7 @@
 	cam_plane_masters["[instance.plane]"] = instance
 
 /datum/component/camera_manager/proc/register(source, mob/user)
+	SIGNAL_HANDLER
 	var/client/user_client = user.client
 	if(!user_client)
 		return
@@ -66,6 +67,7 @@
 		user_client.register_map_obj(cam_plane_masters[plane_id])
 
 /datum/component/camera_manager/proc/unregister(source, mob/user)
+	SIGNAL_HANDLER
 	var/client/user_client = user.client
 	if(!user_client)
 		return
@@ -99,6 +101,7 @@
 	UnregisterSignal(parent, COMSIG_CAMERA_CLEAR)
 
 /datum/component/camera_manager/proc/clear_camera()
+	SIGNAL_HANDLER
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
 	current_area = null
@@ -111,6 +114,7 @@
 	show_camera_static()
 
 /datum/component/camera_manager/proc/set_camera(source, atom/target, w, h)
+	SIGNAL_HANDLER
 	render_mode = RENDER_MODE_TARGET
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
@@ -121,6 +125,7 @@
 	update_target_camera()
 
 /datum/component/camera_manager/proc/set_camera_rect(source, x, y, z, w, h)
+	SIGNAL_HANDLER
 	render_mode = RENDER_MODE_AREA
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
@@ -132,12 +137,14 @@
 	update_area_camera()
 
 /datum/component/camera_manager/proc/enable_nvg(source, power, matrixcol)
+	SIGNAL_HANDLER
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.add_filter("nvg", 1, color_matrix_filter(color_matrix_from_string(matrixcol)))
 	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
 
 /datum/component/camera_manager/proc/disable_nvg()
+	SIGNAL_HANDLER
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.remove_filter("nvg")

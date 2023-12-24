@@ -90,7 +90,6 @@
 	update_inv_r_hand()
 	update_inv_l_hand()
 	update_inv_back()
-	update_inv_resource()
 	update_icons()
 
 /* CRUTCH ZONE - Update icons when relevant status happen - Ideally do this properly and for everything, then kill update_icons() someday */
@@ -190,9 +189,6 @@
 	backpack_icon_holder.layer = -X_BACK_LAYER
 	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		backpack_icon_holder.layer = -X_BACK_FRONT_LAYER
-
-/mob/living/carbon/xenomorph/proc/update_inv_resource()
-	remove_overlay(X_RESOURCE_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)

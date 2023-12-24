@@ -2,7 +2,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 60
+	xeno_cooldown = 6 SECONDS
 	plasma_cost = 20
 
 	// Config options
@@ -70,7 +70,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crippling_strike
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 20
 
 	var/buff_duration = 50

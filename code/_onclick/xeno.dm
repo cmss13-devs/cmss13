@@ -73,10 +73,10 @@
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 10, 1) //Quiet to limit spam/nuisance.
 				if(firepatted)
 					src.visible_message(SPAN_DANGER("\The [src] pats at the fire!"), \
-					SPAN_DANGER("You pat the fire!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+					SPAN_DANGER("We pat the fire!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				else
 					src.visible_message(SPAN_DANGER("\The [src] swipes at \the [target]!"), \
-					SPAN_DANGER("You swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+					SPAN_DANGER("We swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return TRUE
 
 /mob/living/carbon/xenomorph/RangedAttack(atom/A)

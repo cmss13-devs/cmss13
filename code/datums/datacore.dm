@@ -32,12 +32,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		)
 		departments += marines_by_squad
 		var/list/manifest_out = list()
-		for(var/datum/data/record/t in GLOB.data_core.general)
-			if(t.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
+		for(var/datum/data/record/record_entry in GLOB.data_core.general)
+			if(record_entry.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
 				continue
-			var/name = t.fields["name"]
-			var/rank = t.fields["rank"]
-			var/squad = t.fields["squad"]
+			var/name = record_entry.fields["name"]
+			var/rank = record_entry.fields["rank"]
+			var/squad = record_entry.fields["squad"]
 			if(isnull(name) || isnull(rank))
 				continue
 			var/has_department = FALSE
@@ -85,14 +85,14 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/dept_flags = NO_FLAGS //Is there anybody in the department?.
 	var/list/squad_sublists = GLOB.ROLES_SQUAD_ALL.Copy() //Are there any marines in the squad?
 
-	for(var/datum/data/record/t in GLOB.data_core.general)
-		if(t.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
+	for(var/datum/data/record/record_entry in GLOB.data_core.general)
+		if(record_entry.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
 			continue
 
-		var/name = t.fields["name"]
-		var/rank = t.fields["rank"]
-		var/real_rank = t.fields["real_rank"]
-		var/squad_name = t.fields["squad"]
+		var/name = record_entry.fields["name"]
+		var/rank = record_entry.fields["rank"]
+		var/real_rank = record_entry.fields["real_rank"]
+		var/squad_name = record_entry.fields["squad"]
 		if(isnull(name) || isnull(rank) || isnull(real_rank))
 			continue
 
@@ -104,7 +104,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 					break
 			isactive[name] = active ? "Active" : "Inactive"
 		else
-			isactive[name] = t.fields["p_stat"]
+			isactive[name] = record_entry.fields["p_stat"]
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
 
 		if(real_rank in GLOB.ROLES_CIC)
@@ -216,14 +216,14 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/datum/data/record/foundrecord
 
 	var/use_name = isnull(ref)
-	for(var/datum/data/record/t in GLOB.data_core.general)
+	for(var/datum/data/record/record_entry in GLOB.data_core.general)
 		if(use_name)
-			if(t.fields["name"] == name)
-				foundrecord = t
+			if(record_entry.fields["name"] == name)
+				foundrecord = record_entry
 				break
 		else
-			if(t.fields["ref"] == ref)
-				foundrecord = t
+			if(record_entry.fields["ref"] == ref)
+				foundrecord = record_entry
 				break
 
 	if(foundrecord)
@@ -239,102 +239,106 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		return TRUE
 	return FALSE
 
-/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H)
+/datum/datacore/proc/manifest_inject(mob/living/carbon/human/target)
 	var/assignment
-	if(H.job)
-		assignment = H.job
+	if(target.job)
+		assignment = target.job
 	else
 		assignment = "Unassigned"
 
-	var/id = add_zero(num2hex(H.gid), 6) //this was the best they could come up with? A large random number? *sigh*
+	var/id = add_zero(num2hex(target.gid), 6) //this was the best they could come up with? A large random number? *sigh*
 	//var/icon/front = new(get_id_photo(H), dir = SOUTH)
 	//var/icon/side = new(get_id_photo(H), dir = WEST)
 
 	//General Record
-	var/datum/data/record/G = new()
-	G.fields["id"] = id
-	G.fields["name"] = H.real_name
-	G.fields["real_rank"] = H.job
-	G.fields["rank"] = assignment
-	G.fields["squad"] = H.assigned_squad ? H.assigned_squad.name : null
-	G.fields["age"] = H.age
-	G.fields["p_stat"] = "Active"
-	G.fields["m_stat"] = "Stable"
-	G.fields["sex"] = H.gender
-	G.fields["species"] = H.get_species()
-	G.fields["origin"] = H.origin
-	G.fields["faction"] = H.personal_faction
-	G.fields["mob_faction"] = H.faction
-	G.fields["religion"] = H.religion
-	G.fields["ref"] = WEAKREF(H)
-	//G.fields["photo_front"] = front
-	//G.fields["photo_side"] = side
+	var/datum/data/record/record_general = new()
+	record_general.fields["id"] = id
+	record_general.fields["name"] = target.real_name
+	record_general.name = target.real_name
+	record_general.fields["real_rank"] = target.job
+	record_general.fields["rank"] = assignment
+	record_general.fields["squad"] = target.assigned_squad ? target.assigned_squad.name : null
+	record_general.fields["age"] = target.age
+	record_general.fields["p_stat"] = "Active"
+	record_general.fields["m_stat"] = "Stable"
+	record_general.fields["sex"] = target.gender
+	record_general.fields["species"] = target.get_species()
+	record_general.fields["origin"] = target.origin
+	record_general.fields["faction"] = target.personal_faction
+	record_general.fields["mob_faction"] = target.faction
+	record_general.fields["religion"] = target.religion
+	record_general.fields["ref"] = WEAKREF(target)
+	//record_general.fields["photo_front"] = front
+	//record_general.fields["photo_side"] = side
 
-	if(H.gen_record && !jobban_isbanned(H, "Records"))
-		G.fields["notes"] = H.gen_record
+	if(target.gen_record && !jobban_isbanned(target, "Records"))
+		record_general.fields["notes"] = target.gen_record
 	else
-		G.fields["notes"] = "No notes found."
-	general += G
+		record_general.fields["notes"] = "No notes found."
+	general += record_general
 
 	//Medical Record
-	var/datum/data/record/M = new()
-	M.fields["id"] = id
-	M.fields["name"] = H.real_name
-	M.fields["b_type"] = H.blood_type
-	M.fields["mi_dis"] = "None"
-	M.fields["mi_dis_d"] = "No minor disabilities have been declared."
-	M.fields["ma_dis"] = "None"
-	M.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
-	M.fields["alg"] = "None"
-	M.fields["alg_d"] = "No allergies have been detected in this patient."
-	M.fields["cdi"] = "None"
-	M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
-	M.fields["last_scan_time"] = null
-	M.fields["last_scan_result"] = "No scan data on record" // body scanner results
-	M.fields["autodoc_data"] = list()
-	M.fields["autodoc_manual"] = list()
-	M.fields["ref"] = WEAKREF(H)
+	var/datum/data/record/record_medical = new()
+	record_medical.fields["id"] = id
+	record_medical.fields["name"] = target.real_name
+	record_medical.name = target.name
+	record_medical.fields["b_type"] = target.blood_type
+	record_medical.fields["mi_dis"] = "None"
+	record_medical.fields["mi_dis_d"] = "No minor disabilities have been declared."
+	record_medical.fields["ma_dis"] = "None"
+	record_medical.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
+	record_medical.fields["alg"] = "None"
+	record_medical.fields["alg_d"] = "No allergies have been detected in this patient."
+	record_medical.fields["cdi"] = "None"
+	record_medical.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
+	record_medical.fields["last_scan_time"] = null
+	record_medical.fields["last_scan_result"] = "No scan data on record" // body scanner results
+	record_medical.fields["autodoc_data"] = list()
+	record_medical.fields["autodoc_manual"] = list()
+	record_medical.fields["ref"] = WEAKREF(target)
 
-	if(H.med_record && !jobban_isbanned(H, "Records"))
-		M.fields["notes"] = H.med_record
+	if(target.med_record && !jobban_isbanned(target, "Records"))
+		record_medical.fields["notes"] = target.med_record
 	else
-		M.fields["notes"] = "No notes found."
-	medical += M
+		record_medical.fields["notes"] = "No notes found."
+	medical += record_medical
 
 	//Security Record
-	var/datum/data/record/S = new()
-	S.fields["id"] = id
-	S.fields["name"] = H.real_name
-	S.fields["criminal"] = "None"
-	S.fields["incident"] = ""
-	S.fields["ref"] = WEAKREF(H)
+	var/datum/data/record/record_security = new()
+	record_security.fields["id"] = id
+	record_security.fields["name"] = target.real_name
+	record_security.name = target.real_name
+	record_security.fields["criminal"] = "None"
+	record_security.fields["incident"] = ""
+	record_security.fields["ref"] = WEAKREF(target)
 
-	if(H.sec_record && !jobban_isbanned(H, "Records"))
-		var/new_comment = list("entry" = H.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
-		S.fields["comments"] = list("1" = new_comment)
-		S.fields["notes"] = H.sec_record
-	security += S
+	if(target.sec_record && !jobban_isbanned(target, "Records"))
+		var/new_comment = list("entry" = target.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
+		record_security.fields["comments"] = list("1" = new_comment)
+		record_security.fields["notes"] = target.sec_record
+	security += record_security
 
 
 	//Locked Record
-	var/datum/data/record/L = new()
-	L.fields["id"] = md5("[H.real_name][H.job]")
-	L.fields["name"] = H.real_name
-	L.fields["rank"] = H.job
-	L.fields["age"] = H.age
-	L.fields["sex"] = H.gender
-	L.fields["b_type"] = H.b_type
-	L.fields["species"] = H.get_species()
-	L.fields["origin"] = H.origin
-	L.fields["faction"] = H.personal_faction
-	L.fields["religion"] = H.religion
-	L.fields["ref"] = WEAKREF(H)
+	var/datum/data/record/record_locked = new()
+	record_locked.fields["id"] = md5("[target.real_name][target.job]")
+	record_locked.fields["name"] = target.real_name
+	record_locked.name = target.real_name
+	record_locked.fields["rank"] = target.job
+	record_locked.fields["age"] = target.age
+	record_locked.fields["sex"] = target.gender
+	record_locked.fields["b_type"] = target.b_type
+	record_locked.fields["species"] = target.get_species()
+	record_locked.fields["origin"] = target.origin
+	record_locked.fields["faction"] = target.personal_faction
+	record_locked.fields["religion"] = target.religion
+	record_locked.fields["ref"] = WEAKREF(target)
 
-	if(H.exploit_record && !jobban_isbanned(H, "Records"))
-		L.fields["exploit_record"] = H.exploit_record
+	if(target.exploit_record && !jobban_isbanned(target, "Records"))
+		record_locked.fields["exploit_record"] = target.exploit_record
 	else
-		L.fields["exploit_record"] = "No additional information acquired."
-	locked += L
+		record_locked.fields["exploit_record"] = "No additional information acquired."
+	locked += record_locked
 
 
 /proc/get_id_photo(mob/living/carbon/human/H)

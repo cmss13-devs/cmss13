@@ -80,7 +80,7 @@
 	/// actual job
 	var/rank = null
 	/// Marine's paygrade
-	var/paygrade = "ME1"
+	var/paygrade = PAY_SHORT_CIV
 	/// For medics and engineers to 'claim' a locker
 	var/claimedgear = 1
 
@@ -144,6 +144,12 @@
 	to_chat(usr, "[icon2html(src, usr)] [name]: The current assignment on the card is [assignment]")
 	to_chat(usr, "The blood type on the card is [blood_type].")
 
+/obj/item/card/id/proc/check_biometrics(mob/living/carbon/human/target)
+	if(registered_ref && (registered_ref != WEAKREF(target)))
+		return FALSE
+	if(target.real_name != registered_name)
+		return FALSE
+	return TRUE
 
 /obj/item/card/id/data
 	name = "identification holo-badge"

@@ -64,7 +64,7 @@
 			power = MATRIX.power
 
 		else
-			to_chat(user, SPAN_WARNING("matrix is not complete!"))
+			to_chat(user, SPAN_WARNING("Matrix is not complete!"))
 
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]

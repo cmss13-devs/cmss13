@@ -9,35 +9,33 @@
 #define KILL_MENDOZA -1
 
 GLOBAL_LIST_EMPTY_TYPED(asrs_empty_space_tiles_list, /turf/open/floor/almayer/empty)
+GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(supply_packs_types, /datum/supply_packs, name)
+GLOBAL_REFERENCE_LIST_INDEXED_SORTED(supply_packs_datums, /datum/supply_packs, type)
 
 GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /area/supply
 	ceiling = CEILING_METAL
 
-/area/supply/station //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
+/area/supply/station
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	base_lighting_alpha = 255
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
 
-/area/supply/dock //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
+/area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	base_lighting_alpha = 255
 	requires_power = 0
 
-/area/supply/station_vehicle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
+/area/supply/station_vehicle
 	name = "Vehicle ASRS"
 	icon_state = "shuttle3"
-	base_lighting_alpha = 255
 	requires_power = 0
 
-/area/supply/dock_vehicle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
+/area/supply/dock_vehicle
 	name = "Vehicle ASRS"
 	icon_state = "shuttle3"
-	base_lighting_alpha = 255
 	requires_power = 0
 
 //SUPPLY PACKS MOVED TO /code/defines/obj/supplypacks.dm
@@ -367,10 +365,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /datum/controller/supply
 	var/processing = 1
-	var/processing_interval = 300
+	var/processing_interval = 30 SECONDS
 	var/iteration = 0
-	//supply points
-	var/points = 120
+	/// Current supply points
+	var/points = 0
+	/// Multiplier to the amount of points awarded based on marine scale
+	var/points_scale = 120
 	var/points_per_process = 1.5
 	var/points_per_slip = 1
 	var/points_per_crate = 2
@@ -389,15 +389,18 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	/// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
 	var/mendoza_status = TRUE
 
-	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
+	/// How many processing intervals do we get random crates for each pool. Currently only [ASRS_POOL_MAIN] gets scaled amount of crates.
+	var/list/base_random_crate_intervals = list(ASRS_POOL_MAIN = 10, ASRS_POOL_FOOD = 60)
+	/// How many partial crates are stored in ASRS per pool to smooth amount given out
+	var/list/random_crates_carry = list()
+	/// Pools mapped to list of random ASRS packs that belong to it
+	var/list/asrs_supply_packs_by_pool
 
 	var/crate_iteration = 0
 	//control
 	var/ordernum
 	var/list/shoppinglist = list()
 	var/list/requestlist = list()
-	var/list/supply_packs = list()
-	var/list/random_supply_packs = list()
 	//shuttle movement
 	var/datum/shuttle/ferry/supply/shuttle
 
@@ -436,72 +439,91 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/tank_points = 0
 
 /datum/controller/supply/New()
+	. = ..()
 	ordernum = rand(1,9000)
 	LAZYINITLIST(black_market_sold_items)
+	asrs_supply_packs_by_pool = list()
+	for(var/subtype in subtypesof(/datum/supply_packs_asrs))
+		var/datum/supply_packs_asrs/initial_datum = subtype
+		var/pool = initial(initial_datum.pool)
+		if(!pool)
+			continue
+		LAZYADD(asrs_supply_packs_by_pool[pool], new subtype())
+	random_crates_carry = list()
+	for(var/pool in base_random_crate_intervals)
+		random_crates_carry[pool] = 0
+
+/datum/controller/supply/proc/start_processing()
+	START_PROCESSING(SSslowobj, src)
 
 //Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
-/datum/controller/supply/process()
-	for(var/typepath in subtypesof(/datum/supply_packs))
-		var/datum/supply_packs/supply_pack = new typepath()
-		if(supply_pack.group == "ASRS")
-			random_supply_packs += supply_pack
-		else
-			supply_packs[supply_pack.name] = supply_pack
-	spawn(0)
-		set background = 1
-		while(1)
-			if(processing)
-				iteration++
-				points += points_per_process
-				if(iteration >= 20 && iteration % base_random_crate_interval == 0 && GLOB.supply_controller.shoppinglist.len <= 20)
-					add_random_crates()
-					crate_iteration++
-			sleep(processing_interval)
+/datum/controller/supply/process(delta_time)
+	iteration++
+	points += points_per_process
+	if(iteration < 20)
+		return
+	for(var/pool in base_random_crate_intervals)
+		var/interval = base_random_crate_intervals[pool]
+		if(interval && iteration % interval == 0 && shoppinglist.len <= 20)
+			add_random_crates(pool)
+		crate_iteration++
 
 //This adds function adds the amount of crates that calculate_crate_amount returns
-/datum/controller/supply/proc/add_random_crates()
-	for(var/I=0, I<calculate_crate_amount(), I++)
-		add_random_crate()
+/datum/controller/supply/proc/add_random_crates(pool)
+	for(var/crate_count in 1 to calculate_crate_amount(pool))
+		add_random_crate(pool)
 
 //Here we calculate the amount of crates to spawn.
-//Marines get one crate for each the amount of marines on the surface devided by the amount of marines per crate.
+//Marines get one crate for each the amount of XENOS on the surface devided by the amount of marines per crate.
 //They always get the mincrates amount.
-/datum/controller/supply/proc/calculate_crate_amount()
+/datum/controller/supply/proc/calculate_crate_amount(pool)
+	if(pool != ASRS_POOL_MAIN)
+		return 1 // Pool scaling coming in a future update if needed, for now tweak base_random_crate_intervals instead
 
-	// Sqrt(NUM_XENOS/4)
-	var/crate_amount = Floor(max(0, sqrt(SSticker.mode.count_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))/3)))
+	var/ground_xenos_amount = SSticker.mode.count_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	var/crate_amount = max(0, sqrt(ground_xenos_amount/ASRS_XENO_CRATES_DIVIDER))
 
-	if(crate_iteration <= 5)
+	if(crate_iteration <= 5 && crate_amount < 4)
 		crate_amount = 4
 
-	return crate_amount
+	var/unit_crate_amount = round(crate_amount)
+	var/carry = crate_amount - unit_crate_amount
+	random_crates_carry[pool] += carry
+	var/total_carry = random_crates_carry[pool]
+
+	if(total_carry >= 1)
+		var/additional_crates = round(total_carry)
+		random_crates_carry[pool] -= additional_crates
+		unit_crate_amount += additional_crates
+
+	return unit_crate_amount
 
 //Here we pick what crate type to send to the marines.
 //This is a weighted pick based upon their cost.
 //Their cost will go up if the crate is picked
-/datum/controller/supply/proc/add_random_crate()
-	var/datum/supply_packs/C = GLOB.supply_controller.pick_weighted_crate(random_supply_packs)
-	if(C == null)
+/datum/controller/supply/proc/add_random_crate(pool)
+	if(!asrs_supply_packs_by_pool[pool])
 		return
-	C.cost = round(C.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight
+	var/datum/supply_packs_asrs/supply_info = pick_weighted_crate(asrs_supply_packs_by_pool[pool])
+	if(!GLOB.supply_packs_datums[supply_info.reference_package])
+		return
+
+	supply_info.cost = round(supply_info.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight
 	//We have to create a supply order to make the system spawn it. Here we transform a crate into an order.
 	var/datum/supply_order/supply_order = new /datum/supply_order()
-	supply_order.ordernum = GLOB.supply_controller.ordernum
-	supply_order.object = C
+	supply_order.ordernum = ordernum++
+	supply_order.object = GLOB.supply_packs_datums[supply_info.reference_package]
 	supply_order.orderedby = "ASRS"
 	supply_order.approvedby = "ASRS"
 	//We add the order to the shopping list
-	GLOB.supply_controller.shoppinglist += supply_order
+	shoppinglist += supply_order
 
 //Here we weigh the crate based upon it's cost
-/datum/controller/supply/proc/pick_weighted_crate(list/cratelist)
-	var/weighted_crate_list[]
-	for(var/datum/supply_packs/crate in cratelist)
-		var/crate_to_add[0]
+/datum/controller/supply/proc/pick_weighted_crate(list/datum/supply_packs_asrs/cratelist)
+	var/list/datum/supply_packs_asrs/weighted_crate_list = list()
+	for(var/datum/supply_packs_asrs/crate in cratelist)
 		var/weight = (round(10000/crate.cost))
-		if(iteration > crate.iteration_needed)
-			crate_to_add[crate] = weight
-			weighted_crate_list += crate_to_add
+		weighted_crate_list[crate] = weight
 	return pickweight(weighted_crate_list)
 
 //To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
@@ -590,8 +612,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(order.object.contraband == TRUE && prob(5))
 		// Mendoza loaded the wrong order in. What a dunce!
 			var/list/contraband_list
-			for(var/supply_name in GLOB.supply_controller.supply_packs)
-				var/datum/supply_packs/supply_pack = GLOB.supply_controller.supply_packs[supply_name]
+			for(var/supply_type in GLOB.supply_packs_datums)
+				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 				if(supply_pack.contraband == FALSE)
 					continue
 				LAZYADD(contraband_list, supply_pack)
@@ -745,10 +767,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
-			for(var/supply_name in GLOB.supply_controller.supply_packs )
-				var/datum/supply_packs/N = GLOB.supply_controller.supply_packs[supply_name]
-				if(N.contraband || N.group != last_viewed_group || !N.buyable) continue //Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
+			for(var/supply_type in GLOB.supply_packs_datums)
+				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
+				if(supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable)
+					continue //Have to send the type instead of a reference to
+				temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
@@ -757,8 +780,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			return
 
 		//Find the correct supply_pack datum
-		var/datum/supply_packs/supply_pack = GLOB.supply_controller.supply_packs[href_list["doorder"]]
-		if(!istype(supply_pack)) return
+		var/supply_pack_type = GLOB.supply_packs_types[href_list["doorder"]]
+		if(!supply_pack_type)
+			return
+		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_pack_type]
 
 		if(supply_pack.contraband || !supply_pack.buyable)
 			return
@@ -944,11 +969,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 				temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 				temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
-				for(var/supply_name in GLOB.supply_controller.supply_packs )
-					var/datum/supply_packs/supply_pack = GLOB.supply_controller.supply_packs[supply_name]
+				for(var/supply_type in GLOB.supply_packs_datums)
+					var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 					if(!is_buyable(supply_pack))
 						continue
-					temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
+					temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
@@ -957,7 +982,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			return
 
 		//Find the correct supply_pack datum
-		var/datum/supply_packs/supply_pack = GLOB.supply_controller.supply_packs[href_list["doorder"]]
+		var/supply_pack_type = GLOB.supply_packs_types[href_list["doorder"]]
+		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_pack_type]
 
 		if(!istype(supply_pack))
 			return
@@ -1123,11 +1149,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	temp = "<b>W-Y Dollars: $[GLOB.supply_controller.black_market_points]</b><BR>"
 	temp += "<A href='?src=\ref[src];order=Black Market'>Back to black market categories</A><HR><BR><BR>"
 	temp += "<b>Purchase from: [last_viewed_group]</b><BR><BR>"
-	for(var/supply_name in GLOB.supply_controller.supply_packs )
-		var/datum/supply_packs/supply_pack = GLOB.supply_controller.supply_packs[supply_name]
+	for(var/supply_type in GLOB.supply_packs_datums)
+		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 		if(!is_buyable(supply_pack))
 			continue
-		temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.dollar_cost)]<BR>"
+		temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[round(supply_pack.dollar_cost)]<BR>"
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_mendoza_dialogue()
 

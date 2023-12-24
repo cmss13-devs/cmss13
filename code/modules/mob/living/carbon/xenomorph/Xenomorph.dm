@@ -252,12 +252,8 @@
 	var/pounce_distance = 0
 
 	// Life reduction variables.
-	var/life_stun_reduction = -1.5
-	var/life_knockdown_reduction = -1.5
-	var/life_knockout_reduction = -1.5
 	var/life_daze_reduction = -1.5
 	var/life_slow_reduction = -1.5
-
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -968,7 +964,7 @@
 		caste.aura_strength = 0
 	if(aura_strength == 0 && current_aura)
 		current_aura = null
-		to_chat(src, SPAN_XENOWARNING("You lose your pheromones."))
+		to_chat(src, SPAN_XENOWARNING("We lose our pheromones."))
 
 	// Also recalculate received pheros now
 	for(var/capped_aura in received_phero_caps)
@@ -1012,25 +1008,24 @@
 		return
 
 	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
-		SPAN_NOTICE("You extinguish yourself."), null, 5)
+		SPAN_NOTICE("We extinguish ourselves."), null, 5)
 
 /mob/living/carbon/xenomorph/resist_restraints()
+	if(!legcuffed)
+		return
 	var/breakouttime = legcuffed.breakouttime
 
-	next_move = world.time + 100
-	last_special = world.time + 10
+	next_move = world.time + 10 SECONDS
+	last_special = world.time + 1 SECONDS
 
 	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
-	to_chat(src, SPAN_WARNING("You attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and you need to stand still)"))
-	for(var/mob/O in viewers(src))
-		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
-	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
+		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
+	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)
-		return // time leniency for lag which also might make this whole thing pointless but the server
-	for(var/mob/O in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink
-		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
-	to_chat(src, SPAN_NOTICE(" You successfully remove [legcuffed]."))
+		return
+	visible_message(SPAN_DANGER("<b>[src] manages to remove [legcuffed]!</b>"), SPAN_NOTICE("We successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob()
@@ -1088,23 +1083,18 @@
 	var/move_dir = get_dir(src, loc)
 	for(var/atom/movable/atom in get_turf(current_structure))
 		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
-			to_chat(src, SPAN_WARNING("[atom] prevents you from squeezing under [current_structure]!"))
+			to_chat(src, SPAN_WARNING("[atom] prevents us from squeezing under [current_structure]!"))
 			return FALSE
 	// Is it an airlock?
 	if(istype(current_structure, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
 		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. You can't squeeze underneath!"))
+			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. We can't squeeze underneath!"))
 			return FALSE
 	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath [current_structure]."), max_distance = 5)
+	SPAN_WARNING("We squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE
-
-/mob/living/carbon/xenomorph/knocked_down_callback()
-	. = ..()
-	if(!resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
-		update_wounds()
 
 ///Generate a new unused nicknumber for the current hive, if hive doesn't exist return 0
 /mob/living/carbon/xenomorph/proc/generate_and_set_nicknumber()

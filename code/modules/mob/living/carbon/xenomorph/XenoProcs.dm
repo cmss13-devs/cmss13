@@ -151,14 +151,14 @@
 /mob/living/carbon/xenomorph/proc/check_state(permissive = FALSE)
 	if(!permissive)
 		if(is_mob_incapacitated() || body_position == LYING_DOWN || buckled || evolving || !isturf(loc))
-			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
-			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 	else
 		if(is_mob_incapacitated() || buckled || evolving)
-			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 
 	return TRUE
@@ -166,12 +166,12 @@
 //Checks your plasma levels and gives a handy message.
 /mob/living/carbon/xenomorph/proc/check_plasma(value)
 	if(stat)
-		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+		to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 		return FALSE
 
 	if(value)
 		if(plasma_stored < value)
-			to_chat(src, SPAN_WARNING("You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored."))
+			to_chat(src, SPAN_WARNING("We do not have enough plasma to do this. We require [value] plasma but have only [plasma_stored] stored."))
 			return FALSE
 	return TRUE
 
@@ -283,37 +283,41 @@
 			var/mob/living/carbon/human/H = M
 			if(H.check_shields(15, "the pounce")) //Human shield block.
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
-					SPAN_XENODANGER("You slam into [H]!"), null, 5)
-				apply_effect(1, WEAKEN)
+					SPAN_XENODANGER("We slam into [H]!"), null, 5)
+				KnockDown(1)
+				Stun(1)
 				throwing = FALSE //Reset throwing manually.
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
 			if(isyautja(H))
 				if(H.check_shields(0, "the pounce", 1))
-					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
+					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks our pouncing form with the combistick!"), null, 5)
 					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					playsound(H, "bonk", 75, FALSE)
 					return
 				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
 					visible_message(SPAN_DANGER("[H] body slams [src]!"),
-						SPAN_XENODANGER("[H] body slams you!"), null, 5)
-					apply_effect(3, WEAKEN)
+						SPAN_XENODANGER("[H] body slams us!"), null, 5)
+					KnockDown(3)
+					Stun(3)
 					throwing = FALSE
 					return
 			if(iscolonysynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
-					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
-				apply_effect(1.5, WEAKEN)
+					SPAN_XENODANGER("[H] throws us down after withstanding the pounce!"), null, 5)
+				KnockDown(1.5)
+				Stun(1.5)
 				throwing = FALSE
 				return
 
 
-	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
+	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("We [pounceAction.ability_name] onto [M]!"), null, 5)
 
 	if (pounceAction.knockdown)
-		M.apply_effect(pounceAction.knockdown_duration, WEAKEN)
+		M.KnockDown(pounceAction.knockdown_duration)
+		M.Stun(pounceAction.knockdown_duration) // To replicate legacy behavior. Otherwise M39 Armbrace users for example can still shoot
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)
@@ -398,13 +402,13 @@
 			victim.forceMove(get_true_turf(loc))
 
 			visible_message(SPAN_XENOWARNING("[src] hurls out the contents of their stomach!"), \
-			SPAN_XENOWARNING("You hurl out the contents of your stomach!"), null, 5)
+			SPAN_XENOWARNING("We hurl out the contents of our stomach!"), null, 5)
 			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
 
 			if (stuns)
 				victim.adjust_effect(2, STUN)
 	else
-		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
+		to_chat(src, SPAN_WARNING("There's nothing in our belly that needs regurgitating."))
 
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE)
 	var/has_obstacle
@@ -412,12 +416,12 @@
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
 			var/obj/effect/build_blocker/bb = O
 			if(!silent)
-				to_chat(src, SPAN_WARNING("This is too close to a [bb.linked_structure]!"))
+				to_chat(src, SPAN_WARNING("This is too close to \a [bb.linked_structure]!"))
 			return
 		if(check_doors)
 			if(istype(O, /obj/structure/machinery/door))
 				if(!silent)
-					to_chat(src, SPAN_WARNING("\The [O] is blocking the resin! There's not enough space to build that here."))
+					to_chat(src, SPAN_WARNING("[O] is blocking the resin! There's not enough space to build that here."))
 				return
 		if(istype(O, /obj/item/clothing/mask/facehugger))
 			if(!silent)
@@ -503,11 +507,11 @@
 	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""
-		to_chat(src, SPAN_XENOWARNING("Your pheromones wane. The Queen is no longer granting you her pheromones."))
+		to_chat(src, SPAN_XENOWARNING("Our pheromones wane. The Queen is no longer granting us her pheromones."))
 	else
 		leader_aura_strength = Q.aura_strength
 		leader_current_aura = Q.current_aura
-		to_chat(src, SPAN_XENOWARNING("Your pheromones have changed. The Queen has new plans for the Hive."))
+		to_chat(src, SPAN_XENOWARNING("Our pheromones have changed. The Queen has new plans for the Hive."))
 	hud_set_pheromone()
 
 /mob/living/carbon/xenomorph/proc/nocrit(wowave)
@@ -595,7 +599,7 @@
 		burn_amount *= 0.5
 
 	apply_damage(burn_amount, BURN)
-	to_chat(src, SPAN_DANGER("Your flesh, it melts!"))
+	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))
 	updatehealth()
 	return TRUE
 
@@ -621,8 +625,8 @@
 		return
 	target.xenos_tracking |= src
 	tracked_marker = target
-	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
-	to_chat(src, SPAN_INFO("shift click the compass to watch the mark, alt click to stop tracking"))
+	to_chat(src, SPAN_XENONOTICE("We start tracking the [target.mark_meaning.name] resin mark."))
+	to_chat(src, SPAN_INFO("Shift click the compass to watch the mark, alt click to stop tracking"))
 
 /mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	if(QDELETED(src))
@@ -639,7 +643,7 @@
 			if(destroyed)
 				to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
 			else
-				to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+				to_chat(src, SPAN_XENONOTICE("We stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
 		tracked_marker.xenos_tracking -= src
 
 	tracked_marker = null
@@ -712,3 +716,32 @@
 
 /mob/living/carbon/xenomorph/lying_angle_on_lying_down(new_lying_angle)
 	return // Do not rotate xenos around on the floor, their sprite is already top-down'ish
+
+/**
+ * Helper procedure for throwing other carbon based mobs around
+ * Pretty much a wrapper to [/atom/movable/proc/throw_atom] with extra handling
+ *
+ * * target - the target carbon mob that will be thrown
+ * * direction - the direction the target will be thrown toward, or if null, infered from relative position with target
+ * * distance - the total distance the throw will be made for
+ * * speed - throw_atom relative speed of the throw, check [SPEED_AVERAGE] for details
+ * * shake_camera - whether to shake the thrown mob camera on throw
+ * * immobilize - if TRUE the mob will be immobilized during the throw, ensuring it doesn't move and break it
+ */
+/mob/living/carbon/xenomorph/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+	if(!direction)
+		direction = get_dir(src, target)
+	var/turf/target_destination = get_ranged_target_turf(target, direction, distance)
+
+	var/list/end_throw_callbacks
+	if(immobilize)
+		end_throw_callbacks = list(CALLBACK(src, PROC_REF(throw_carbon_end), target))
+		ADD_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
+
+	target.throw_atom(target_destination, distance, speed, src, spin = TRUE, end_throw_callbacks = end_throw_callbacks)
+	if(shake_camera)
+		shake_camera(target, 10, 1)
+
+/// Handler callback to reset immobilization status after a successful [/mob/living/carbon/xenomorph/proc/throw_carbon]
+/mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
+	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)

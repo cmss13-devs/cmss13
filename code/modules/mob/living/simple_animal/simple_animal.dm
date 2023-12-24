@@ -93,10 +93,6 @@
 	if(health > maxHealth)
 		health = maxHealth
 
-	handle_stunned()
-	handle_knocked_down(TRUE)
-	handle_knocked_out(TRUE)
-
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
 		if(isturf(src.loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
@@ -285,7 +281,7 @@
 					MED.use(1)
 					for(var/mob/M as anything in viewers(src, null))
 						if ((M.client && !( M.blinded )))
-							M.show_message(SPAN_NOTICE("[user] applies the [MED] on [src]"), SHOW_MESSAGE_VISIBLE)
+							M.show_message(SPAN_NOTICE("[user] applies [MED] on [src]"), SHOW_MESSAGE_VISIBLE)
 					return
 		else
 			to_chat(user, SPAN_NOTICE(" this [src] is dead, medical items won't bring it back to life."))

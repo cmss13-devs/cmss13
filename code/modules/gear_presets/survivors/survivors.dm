@@ -5,7 +5,7 @@
 
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH)
-	paygrade = "C"
+	paygrade = PAY_SHORT_CIV
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_SURVIVOR)
@@ -50,6 +50,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 						/datum/equipment_preset/survivor/miner,
 						/datum/equipment_preset/survivor/colonial_marshal,
 						/datum/equipment_preset/survivor/engineer,
+						/datum/equipment_preset/survivor/security
 
 */
 
@@ -195,7 +196,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 /datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
-	paygrade = "GS-9"
+	paygrade = PAY_SHORT_CMBD
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
@@ -256,99 +257,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	add_survivor_weapon_civilian(new_human)
 
 	..()
-/*
-Everything bellow is a parent used as a base for one or multiple maps.
-*/
 
-// ----- Interstellar Human Rights Survivor
-
-// it's used as a base for soro map.
-/datum/equipment_preset/survivor/interstellar_human_rights_observer
-	name = "Survivor - Interstellar Human Rights Observer"
-	assignment = "Interstellar Human Rights Observer(Colony)"
-	skills = /datum/skills/civilian/survivor
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
-
-/datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	add_random_cl_survivor_loot(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
-	add_survivor_weapon_civilian(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
-
-	..()
-
-
-// ----- CL Survivor
-//used as a base for shiva and solaris spawn.
-
-/datum/equipment_preset/survivor/corporate
-	name = "Survivor - Corporate Liaison"
-	assignment = "Corporate Liaison"
-	skills = /datum/skills/civilian/survivor
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = "WYC2"
-	idtype = /obj/item/card/id/silver/clearance_badge/cl
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_WY_GENERAL,
-		ACCESS_WY_COLONIAL,
-		ACCESS_WY_EXEC,
-	)
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-
-	survivor_variant = CORPORATE_SURVIVOR
-
-/datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	add_random_cl_survivor_loot(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(new_human), WEAR_FEET)
-	add_survivor_weapon_civilian(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
-
-	..()
-
-/datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/new_human)
-	if(new_human.client)
-		var/playtime = get_job_playtime(new_human.client, JOB_CORPORATE_LIAISON)
-		if(new_human.client.prefs.playtime_perks)
-			if(playtime > JOB_PLAYTIME_TIER_4)
-				return "WYC5"
-			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return "WYC4"
-			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return "WYC3"
-			else
-				return paygrade
-	return paygrade
-
-// ----- Security Survivor
-/*
-
-present in xenomorph.dm file
-
-GLOBAL_LIST_INIT(survivor_types, list()
-		/datum/equipment_preset/survivor/scientist,
-		/datum/equipment_preset/survivor/doctor,
-		/datum/equipment_preset/survivor/security,
-		/datum/equipment_preset/survivor/engineer
-	)
-
-and is used as a base for all of the maps.
-
-*/
+// 8 -- Security Survivor
 
 /datum/equipment_preset/survivor/security
 	name = "Survivor - Security"
@@ -377,9 +287,64 @@ and is used as a base for all of the maps.
 	add_survivor_weapon_security(new_human)
 	..()
 
+/*
+Everything bellow is a parent used as a base for one or multiple maps.
+*/
+
+// ----- CL Survivor
+
+// Used in Solaris Ridge and LV-624.
+
+/datum/equipment_preset/survivor/corporate
+	name = "Survivor - Corporate Liaison"
+	assignment = "Corporate Liaison"
+	skills = /datum/skills/civilian/survivor
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	paygrade = PAY_SHORT_WYC2
+	idtype = /obj/item/card/id/silver/clearance_badge/cl
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_EXEC,
+	)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+
+	survivor_variant = CORPORATE_SURVIVOR
+
+/datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(new_human), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
+	add_random_cl_survivor_loot(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	add_survivor_weapon_civilian(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
+
+	..()
+
+/datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/new_human)
+	if(new_human.client)
+		var/playtime = get_job_playtime(new_human.client, JOB_CORPORATE_LIAISON)
+		if(new_human.client.prefs.playtime_perks)
+			if(playtime > JOB_PLAYTIME_TIER_4)
+				return PAY_SHORT_WYC5
+			else if(playtime > JOB_PLAYTIME_TIER_3)
+				return PAY_SHORT_WYC4
+			else if(playtime > JOB_PLAYTIME_TIER_2)
+				return PAY_SHORT_WYC3
+			else
+				return paygrade
+	return paygrade
+
 // ---- Trucker Survivor
 
-// it's used as a base for kutjevo lv nv solaris and trijent maps.
+// Used in Kutjevo Refinery, LV-624, New Varadero, Solaris Ridge and Trijent Dam.
+
 /datum/equipment_preset/survivor/trucker
 	name = "Survivor - Trucker"
 	assignment = "Trucker"
@@ -403,25 +368,75 @@ and is used as a base for all of the maps.
 
 	..()
 
-// ----- CL Survivor
+// -- Flight Control Operator
 
-//this is used as a base for corsat and nv
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason
+// Used in Solaris Ridge.
+
+/datum/equipment_preset/survivor/flight_control_operator
+	name = "Survivor - Flight Control Operator"
+	assignment = "Flight Control Operator"
+	skills = /datum/skills/civilian/survivor/trucker
+	idtype = /obj/item/card/id/data
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT)
+
+/datum/equipment_preset/survivor/flight_control_operator/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/lawyer/bluesuit(new_human), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/windbreaker/windbreaker_brown(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headset(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	add_survivor_weapon_civilian(new_human)
+
+	..()
+
+// ----- Interstellar Human Rights Survivor
+
+// Used in Sorokyne Strata and Fiorina Science Annex.
+/datum/equipment_preset/survivor/interstellar_human_rights_observer
+	name = "Survivor - Interstellar Human Rights Observer"
+	assignment = "Interstellar Human Rights Observer(Colony)"
+	skills = /datum/skills/civilian/survivor
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
+
+/datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(new_human), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	add_random_cl_survivor_loot(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
+	add_survivor_weapon_civilian(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
+
+	..()
+
+
+// ----- Interstellar Commerce Commission Survivor
+
+// Used in Trijent Dam and New Varadero.
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	idtype = /obj/item/card/id/silver/cl
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_ICCL
 	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CORPORATE_SURVIVOR
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/New()
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_CIVIL_LIAISON)
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 
@@ -429,7 +444,7 @@ and is used as a base for all of the maps.
 		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)

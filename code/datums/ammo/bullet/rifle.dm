@@ -175,7 +175,8 @@
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.apply_effect(0.5, WEAKEN)
+		target.KnockDown(0.5) // purely for visual effect, noone actually cares
+		target.Stun(0.5)
 		target.apply_effect(2, SUPERSLOW)
 		target.apply_effect(5, SLOW)
 	else

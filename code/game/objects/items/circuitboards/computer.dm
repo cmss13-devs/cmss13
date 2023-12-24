@@ -287,14 +287,12 @@
 
 /obj/item/circuitboard/computer/rdconsole/attackby(obj/item/I as obj, mob/user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
-		user.visible_message(SPAN_NOTICE("\the [user] adjusts the jumper on the [src]'s access protocol pins."), SPAN_NOTICE("You adjust the jumper on the access protocol pins."))
+		user.visible_message(SPAN_NOTICE("[user] adjusts the jumper on [src]'s access protocol pins."), SPAN_NOTICE("You adjust the jumper on the access protocol pins."))
 		if(src.build_path == /obj/structure/machinery/computer/rdconsole/core)
 			src.name = "Circuit Board (RD Console - Robotics)"
 			src.build_path = /obj/structure/machinery/computer/rdconsole/robotics
-			to_chat(user, SPAN_NOTICE(" Access protocols set to robotics."))
+			to_chat(user, SPAN_NOTICE("Access protocols set to robotics."))
 		else
 			src.name = "Circuit Board (RD Console)"
 			src.build_path = /obj/structure/machinery/computer/rdconsole/core
-			to_chat(user, SPAN_NOTICE(" Access protocols set to default."))
-
-
+			to_chat(user, SPAN_NOTICE("Access protocols set to default."))

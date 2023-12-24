@@ -95,6 +95,9 @@
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
 
+///from rejuv
+#define COMSIG_LIVING_POST_FULLY_HEAL "living_post_fully_heal"
+
 ///from /mob/living/emote(): ()
 #define COMSIG_MOB_EMOTE "mob_emote"
 

@@ -134,7 +134,7 @@
 			if(istype(W, /obj/item/storage/box/m94))
 				var/obj/item/storage/box/m94/flare_pack = W
 				if(flare_pack.contents.len < flare_pack.max_storage_space)
-					to_chat(user, SPAN_WARNING("\The [W] is not full."))
+					to_chat(user, SPAN_WARNING("[W] is not full."))
 					return
 				var/flare_type
 				if(istype(W, /obj/item/storage/box/m94/signal))
@@ -143,28 +143,28 @@
 					flare_type = /obj/item/device/flashlight/flare
 				for(var/obj/item/device/flashlight/flare/F in flare_pack.contents)
 					if(F.fuel < 1)
-						to_chat(user, SPAN_WARNING("Some flares in \the [F] are used."))
+						to_chat(user, SPAN_WARNING("Some flares in [F] are used."))
 						return
 					if(F.type != flare_type)
-						to_chat(user, SPAN_WARNING("Some flares in \the [W] are not of the correct type."))
+						to_chat(user, SPAN_WARNING("Some flares in [W] are not of the correct type."))
 						return
 			else if(istype(W, /obj/item/storage/box/MRE))
 				var/obj/item/storage/box/MRE/mre_pack = W
 				if(mre_pack.isopened)
-					to_chat(user, SPAN_WARNING("\The [W] was already opened and isn't suitable for storing in \the [src]."))
+					to_chat(user, SPAN_WARNING("[W] was already opened and isn't suitable for storing in [src]."))
 					return
 			else if(istype(W, /obj/item/cell/high))
 				var/obj/item/cell/high/cell = W
 				if(cell.charge != cell.maxcharge)
-					to_chat(user, SPAN_WARNING("\The [W] needs to be fully charged before it can be stored in \the [src]."))
+					to_chat(user, SPAN_WARNING("[W] needs to be fully charged before it can be stored in [src]."))
 					return
 			if(item_box.contents.len < item_box.num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				item_box.contents += W
-				to_chat(user, SPAN_NOTICE("You put a [W] in to \the [src]"))
+				to_chat(user, SPAN_NOTICE("You put \a [W] into [src]"))
 				update_icon()
 			else
-				to_chat(user, SPAN_WARNING("\The [src] is full."))
+				to_chat(user, SPAN_WARNING("[src] is full."))
 		else
 			to_chat(user, SPAN_WARNING("You don't want to mix different magazines in one box."))
 	else
@@ -175,10 +175,10 @@
 				return
 			if(O.default_ammo == AM.default_ammo)
 				if(O.current_rounds <= 0)
-					to_chat(user, SPAN_WARNING("\The [O] is empty."))
+					to_chat(user, SPAN_WARNING("[O] is empty."))
 					return
 				if(AM.current_rounds >= AM.max_rounds)
-					to_chat(user, SPAN_WARNING("\The [src] is full."))
+					to_chat(user, SPAN_WARNING("[src] is full."))
 					return
 				else
 					if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
@@ -187,7 +187,7 @@
 					var/S = min(O.current_rounds, AM.max_rounds - AM.current_rounds)
 					AM.current_rounds += S
 					O.current_rounds -= S
-					to_chat(user, SPAN_NOTICE("You transfer shells from [O] into \the [src]"))
+					to_chat(user, SPAN_NOTICE("You transfer shells from [O] into [src]"))
 					update_icon()
 					O.update_icon()
 			else

@@ -294,7 +294,7 @@
 	if(victim.chestburst || loc != victim)
 		return
 	victim.chestburst = TRUE
-	to_chat(src, SPAN_DANGER("You start bursting out of [victim]'s chest!"))
+	to_chat(src, SPAN_DANGER("We start bursting out of [victim]'s chest!"))
 	if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		victim.apply_effect(20, DAZE)
 	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
@@ -352,7 +352,7 @@
 			qdel(larva_embryo)
 
 		if(!victim.first_xeno)
-			to_chat(larva_embryo, SPAN_XENOHIGHDANGER("The Queen's will overwhelms your instincts..."))
+			to_chat(larva_embryo, SPAN_XENOHIGHDANGER("The Queen's will overwhelms our instincts..."))
 			to_chat(larva_embryo, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
 			log_attack("[key_name(victim)] chestbursted in [get_area_name(larva_embryo)] at X[victim.x], Y[victim.y], Z[victim.z]. The larva was [key_name(larva_embryo)].") //this is so that admins are not spammed with los logs
 

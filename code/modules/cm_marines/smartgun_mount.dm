@@ -1,12 +1,6 @@
 //////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.
 
-//Adds a coin for engi vendors
-/obj/item/coin/marine/engineer
-	name = "marine engineer support token"
-	desc = "Insert this into an engineer vendor in order to access a support weapon."
-	icon_state = "coin_platinum"
-
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
 	name = "M56D drum magazine (10x28mm Caseless)"
@@ -704,7 +698,7 @@
 	if(!istype(in_chamber, /obj/projectile))
 		return
 
-	var/angle = get_angle(T, U)
+	var/angle = Get_Angle(T, U)
 
 	if((dir == NORTH) && (angle > 180) && (abs(360 - angle) > shoot_degree)) // If north and shooting to the left, we do some extra math
 		return
@@ -800,7 +794,7 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	if(!ishuman(usr))
+	if(!ishuman(usr) || usr.stat)
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
@@ -1086,6 +1080,19 @@
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	zoom = 1
+	ammo = /datum/ammo/bullet/machinegun/doorgun
+
+/obj/structure/machinery/m56d_hmg/mg_turret/update_health(amount) //Negative values restores health.
+	health -= amount
+	if(health <= 0)
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		qdel(src)
+		return
+
+	if(health > health_max)
+		health = health_max
+	update_damage_state()
+	update_icon()
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"

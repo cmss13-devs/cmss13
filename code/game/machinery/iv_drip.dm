@@ -101,7 +101,7 @@
 			for(var/datum/reagent/chem in beaker.reagents.reagent_list)
 				reagentnames += ";[chem.name]"
 
-			log_admin("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
+			log_admin("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
 
 			to_chat(user, "You attach \the [container] to \the [src].")
 			update_beam()

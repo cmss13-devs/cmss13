@@ -602,6 +602,14 @@
 	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"]."))
 	prefs.save_preferences()
 
+/client/proc/toggle_ghost_spyradio()
+	set name = "Toggle GhostSpyRadio"
+	set category = "Preferences.Ghost"
+	set desc = "Toggle between hearing listening devices or not."
+	prefs.toggles_chat ^= CHAT_LISTENINGBUG
+	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_LISTENINGBUG) ? "now" : "no longer"] hear listening devices as a ghost."))
+	prefs.save_preferences()
+
 /client/proc/toggle_ghost_hud()
 	set name = "Toggle Ghost HUDs"
 	set category = "Preferences.Ghost"
@@ -757,6 +765,7 @@ GLOBAL_LIST_INIT(ghost_prefs_verbs, list(
 	/client/proc/toggle_ghost_ears,
 	/client/proc/toggle_ghost_sight,
 	/client/proc/toggle_ghost_radio,
+	/client/proc/toggle_ghost_spyradio,
 	/client/proc/toggle_ghost_hivemind,
 	/client/proc/deadchat,
 	/client/proc/toggle_ghost_hud,

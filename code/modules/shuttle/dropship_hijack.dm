@@ -212,7 +212,7 @@
 			turfs += get_area_turfs(/area/almayer/squads/req)
 		if("Lower deck Aftship")
 			turfs += get_area_turfs(/area/almayer/living/cryo_cells)
-			turfs += get_area_turfs(/area/almayer/engineering/engineering_workshop)
+			turfs += get_area_turfs(/area/almayer/engineering/lower/workshop)
 		else
 			CRASH("Crash site [ship_section] unknown.")
 	return pick(turfs)

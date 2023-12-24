@@ -122,9 +122,9 @@
 	if(assoc_hive.get_structure_count(XENO_STRUCTURE_PYLON) < 1)
 		pylon_status = ""
 	else if(assoc_hive.hit_larva_pylon_limit)
-		pylon_status = "We are not getting more larvae from pylons as we have huge numbers."
+		pylon_status = "The hive's power has surpassed what the pylons can provide."
 	else
-		pylon_status = "Pylons giving us more larvae!"
+		pylon_status = "Pylons are strengthening our numbers!"
 	if(send_update)
 		SStgui.update_uis(src)
 

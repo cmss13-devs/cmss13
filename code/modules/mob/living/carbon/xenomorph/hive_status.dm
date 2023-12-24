@@ -937,6 +937,32 @@
 
 	return TRUE
 
+// Get amount of real xenos, don't count lessers/huggers
+/datum/hive_status/proc/get_real_total_xeno_count()
+	var/list/hive_xenos = totalXenos.Copy()
+
+	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
+		if(!xeno.counts_for_slots)
+			hive_xenos -= xeno
+	return length(hive_xenos)
+
+#define ENDGAME_LARVA_CAP_MULTIPLIER 0.5
+// Checks if we hit larva limit
+/datum/hive_status/proc/check_if_hit_larva_from_pylon_limit()
+	var/groundside_humans_weighted_count = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
+		if(!job)
+			continue
+		var/turf/turf = get_turf(current_human)
+		if(!is_ground_level(turf?.z))
+			groundside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
+	hit_larva_pylon_limit = (get_real_total_xeno_count() + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER)
+	hive_ui.update_pylon_status()
+#undef ENDGAME_LARVA_CAP_MULTIPLIER
+
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
 /datum/hive_status/proc/increase_larva_after_burst()
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)

@@ -113,6 +113,7 @@ const GeneralInformation = (props, context) => {
     total_xenos,
     burrowed_larva,
     evilution_level,
+    pylon_status,
   } = data;
 
   return (
@@ -136,6 +137,11 @@ const GeneralInformation = (props, context) => {
       <Flex.Item>
         <i>Evilution: {evilution_level}</i>
       </Flex.Item>
+      {pylon_status && (
+        <Flex.Item>
+          <i>{pylon_status}</i>
+        </Flex.Item>
+      )}
     </Flex>
   );
 };

@@ -20,7 +20,7 @@
 	/// A list of items that have an overlay added to the recharger when the item is inserted
 	/// Formatted like so: list(/type/path = "overlay_name")
 	var/list/custom_overlay_items = list()
-	/// How much power (later multiplied by CELLRATE, which is 0.006) to recharge by per tick, should the parent not have an active_power_usage
+	/// How much power to recharge by per tick, should the parent not have an active_power_usage
 	var/charge_amount = 750
 	/// If not empty, the parent has unique overlays dependent on how charged the inserted item is.
 	/// Formatted like so: list("icon_state_name" = charge_upper_bound)

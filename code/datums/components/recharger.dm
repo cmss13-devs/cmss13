@@ -81,8 +81,8 @@
 
 	if(custom_item_overlay)
 		var/obj/structure/machinery/machine_parent = parent
-		machine_parent.overlays -= charge_overlay
-		QDEL_NULL(charge_overlay)
+		machine_parent.overlays -= custom_item_overlay
+		QDEL_NULL(custom_item_overlay)
 
 	return ..()
 
@@ -106,8 +106,8 @@
 		to_chat(user, SPAN_WARNING("There's already something recharging inside [parent]."))
 		return COMPONENT_NO_AFTERATTACK
 
-	var/obj/obj_parent = parent
-	if(!unanchored_use && !obj_parent.anchored)
+	var/obj/structure/machinery/machine_parent = parent
+	if(!unanchored_use && !machine_parent.anchored)
 		to_chat(user, SPAN_WARNING("You can't put anything inside [parent] while it's unanchored!"))
 		return COMPONENT_NO_AFTERATTACK
 
@@ -148,7 +148,7 @@
 	recharging = FALSE
 	var/obj/obj_parent = parent
 	obj_parent.overlays -= charge_overlay
-	machine_parent.overlays -= custom_item_overlay
+	obj_parent.overlays -= custom_item_overlay
 
 /datum/component/recharger/proc/on_examine(datum/source, mob/examiner, list/examine_text)
 	examine_text += "There's \a [inserted_item ? "[inserted_item.name]" : "nothing"] in the charger."

@@ -36,7 +36,7 @@
 	charge_examine_range = 1,
 	cell_insert = FALSE,
 	cell_insert_default_cell = /obj/item/cell,
-	examine_string = "A small gauge in the corner reads \"Power: %CHARGE%\".",
+	examine_string = "",
 	initial_charge = -1,
 	)
 
@@ -57,7 +57,7 @@
 	src.cell_insert = cell_insert
 	if(cell_insert)
 		inserted_cell = new cell_insert_default_cell(parent)
-	src.examine_string = examine_string
+	src.examine_string = examine_string || src.examine_string
 
 /datum/component/cell/Destroy(force, silent)
 	QDEL_NULL(inserted_cell)

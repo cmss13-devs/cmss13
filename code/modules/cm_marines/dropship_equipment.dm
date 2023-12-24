@@ -326,6 +326,10 @@
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
 
+/obj/structure/dropship_equipment/mg_holder/Destroy()
+	QDEL_NULL(deployed_mg)
+	. = ..()
+
 /obj/structure/dropship_equipment/mg_holder/ui_data(mob/user)
 	. = list()
 	var/is_deployed = deployed_mg.loc == src
@@ -379,9 +383,10 @@
 			if(ship_base.base_category == DROPSHIP_WEAPON)
 				switch(dir)
 					if(NORTH)
-						if( istype(get_step(src, WEST), /turf/open) )
+						var/step_contents = get_step(src, EAST).contents
+						if(locate(/obj/structure) in step_contents)
 							deployed_mg.pixel_x = 5
-						else if ( istype(get_step(src, EAST), /turf/open) )
+						else
 							deployed_mg.pixel_x = -5
 					if(EAST)
 						deployed_mg.pixel_y = 9
@@ -399,7 +404,7 @@
 			deployed_mg.forceMove(src)
 			deployed_mg.setDir(dir)
 		else
-			icon_state = "mg_system_destroyed"
+			icon_state = "sentry_system_destroyed"
 
 /obj/structure/dropship_equipment/mg_holder/proc/deploy_mg(mob/user)
 	if(deployed_mg)
@@ -408,12 +413,11 @@
 		if(ship_base.base_category == DROPSHIP_WEAPON)
 			switch(dir)
 				if(NORTH)
-					if( istype(get_step(src, WEST), /turf/open) )
+					var/step_contents = get_step(src, EAST).contents
+					if(locate(/obj/structure) in step_contents)
 						deployed_mg.forceMove(get_step(src, WEST))
-					else if ( istype(get_step(src, EAST), /turf/open) )
-						deployed_mg.forceMove(get_step(src, EAST))
 					else
-						deployed_mg.forceMove(get_step(src, NORTH))
+						deployed_mg.forceMove(get_step(src, EAST))
 				if(EAST)
 					deployed_mg.forceMove(get_step(src, SOUTH))
 				if(WEST)

@@ -14,15 +14,14 @@
 	var/brainloss = 0 //'Retardation' damage caused by someone hitting you in the head with a bible or being infected with brainrot.
 	var/halloss = 0 //Hallucination damage. 'Fake' damage obtained through hallucinating or the holodeck. Sleeping should cause it to wear off.
 
-	// please don't use these
-	VAR_PROTECTED/knocked_out = 0
-	VAR_PROTECTED/knocked_down = 0
-	VAR_PROTECTED/stunned = 0
+	// please don't use these directly, use the procs
 	var/dazed = 0
 	var/slowed = 0 // X_SLOW_AMOUNT
 	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/sleeping = 0
 
+	///a list of all status effects the mob has
+	var/list/status_effects
 	/// Cooldown for manually toggling resting to avoid spamming
 	COOLDOWN_DECLARE(rest_cooldown)
 

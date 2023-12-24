@@ -175,7 +175,7 @@
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
-			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 				return
 
 			if(xenoSrc.stat == DEAD)
@@ -188,7 +188,7 @@
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
-			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 				return
 
 			if(xenoSrc.stat == DEAD)
@@ -201,7 +201,7 @@
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
-			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 				return
 
 			if(xenoSrc.stat == DEAD)

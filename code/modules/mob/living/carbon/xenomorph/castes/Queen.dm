@@ -394,7 +394,7 @@
 /mob/living/carbon/xenomorph/queen/Initialize()
 	. = ..()
 	SStracking.set_leader("hive_[hivenumber]", src)
-	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
+	if(!should_block_game_interaction(src))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 		notify_ghosts(header = "New Queen", message = "A new Queen has risen.", source = src, action = NOTIFY_ORBIT)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)

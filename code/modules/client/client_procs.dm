@@ -58,6 +58,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 ))
 
 /client/proc/reduce_minute_count()
+	if (!topiclimiter)
+		topiclimiter = new(LIMITER_SIZE)
 	if(topiclimiter[MINUTE_COUNT] > 0)
 		topiclimiter[MINUTE_COUNT] -= 1
 

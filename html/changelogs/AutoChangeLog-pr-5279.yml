@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - spellcheck: "Made the `xenoboldnotice` span class bold rather than italic."

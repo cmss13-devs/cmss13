@@ -5928,14 +5928,14 @@
 /area/bigredv2/caves/lambda/breakroom)
 "aqZ" = (
 /obj/structure/noticeboard{
-	dir = 1;
-	pixel_y = 30;
 	desc = "A board for pinning important items upon.";
-	name = "trophy board"
+	dir = 1;
+	name = "trophy board";
+	pixel_y = 30
 	},
 /obj/item/XenoBio/Chitin{
-	pixel_y = 27;
-	anchored = 1
+	anchored = 1;
+	pixel_y = 27
 	},
 /turf/open/floor{
 	dir = 1;
@@ -28882,6 +28882,12 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"dNH" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/caves)
 "dOu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -31189,6 +31195,12 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"igi" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/caves)
 "igM" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 6
@@ -33834,6 +33846,13 @@
 	icon_state = "mars_dirt_5"
 	},
 /area/bigredv2/caves/mining)
+"mWI" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/bigredv2/outside/lz1_north_cas)
 "mXw" = (
 /obj/item/storage/toolbox/mechanical,
 /turf/open/mars_cave{
@@ -34913,6 +34932,12 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"oOt" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/bigredv2/caves)
 "oQz" = (
 /obj/structure/machinery/light/double{
 	dir = 1
@@ -35676,8 +35701,9 @@
 /area/bigredv2/outside/nw/ceiling)
 "qez" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/caves_north)
 "qeK" = (
@@ -37621,8 +37647,9 @@
 /area/bigredv2/caves/lambda/research)
 "tlj" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_15"
+/turf/open/floor{
+	dir = 9;
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "tlP" = (
@@ -37902,12 +37929,6 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/caves_research)
-"tFM" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/caves_north)
 "tFO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -38959,8 +38980,9 @@
 /area/bigredv2/caves/mining)
 "vwP" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7"
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "vxQ" = (
@@ -38984,8 +39006,9 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "vAy" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_9"
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/caves_north)
 "vBy" = (
@@ -39417,6 +39440,13 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/outside/engineering)
+"wpP" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/lz1_north_cas)
 "wpT" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/mars,
@@ -54177,7 +54207,7 @@ aao
 aao
 aao
 aao
-rgp
+vwP
 acp
 adh
 adh
@@ -54394,7 +54424,7 @@ aao
 aao
 pXu
 iyY
-xbV
+vwP
 acp
 adi
 adz
@@ -54611,7 +54641,7 @@ aao
 iyY
 xBS
 wXg
-uzv
+vwP
 acp
 adj
 adA
@@ -54828,7 +54858,7 @@ mDN
 wXg
 pMv
 wXg
-pow
+vwP
 acp
 adk
 adk
@@ -55045,7 +55075,7 @@ mDN
 wXg
 wXg
 wXg
-wcs
+vwP
 acp
 aaX
 adB
@@ -55260,9 +55290,9 @@ pXu
 pXu
 xBS
 wXg
-pow
-pow
-pow
+tlj
+wpP
+mWI
 acp
 acp
 acp
@@ -55475,9 +55505,9 @@ pXu
 iyY
 pXu
 tlj
-pow
-wcs
-pow
+wpP
+wpP
+mWI
 acp
 acp
 acp
@@ -55908,7 +55938,7 @@ xBS
 wXg
 pMv
 wXg
-mGq
+vwP
 acp
 acy
 acC
@@ -56125,7 +56155,7 @@ wXg
 geC
 wXg
 wXg
-mGq
+vwP
 acq
 acy
 acC
@@ -56993,7 +57023,7 @@ aad
 aad
 aad
 aad
-xbV
+vwP
 acq
 acz
 acD
@@ -57210,7 +57240,7 @@ aao
 aad
 aad
 alJ
-tFM
+vAy
 acp
 acy
 acC
@@ -57427,7 +57457,7 @@ aao
 aad
 abU
 alJ
-tFM
+vAy
 acq
 acy
 acC
@@ -57644,7 +57674,7 @@ aao
 abr
 aad
 alJ
-tFM
+vAy
 acp
 acy
 acC
@@ -58079,10 +58109,10 @@ akX
 hKM
 aad
 qez
-aao
-aao
-aao
-aao
+dNH
+dNH
+dNH
+oOt
 acp
 acp
 acp
@@ -58299,9 +58329,9 @@ aad
 aao
 aao
 aao
-aao
-aao
-aao
+igi
+dNH
+oOt
 acp
 acp
 acp
@@ -58518,9 +58548,9 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
+igi
+dNH
+dNH
 alF
 buB
 acp

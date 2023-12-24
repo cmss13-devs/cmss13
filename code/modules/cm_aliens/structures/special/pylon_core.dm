@@ -178,11 +178,12 @@
 
 	activated = TRUE
 	linked_hive.check_if_hit_larva_from_pylon_limit()
-	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
+	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME|TIMER_NO_HASH_WAIT)
 
-#define LARVA_ADDITION_MULTIPLIER 0.10
 /// Looped proc via timer to give larva after time
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
+	xeno_announcement(SPAN_XENOANNOUNCE("Test"), linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+
 	if(!activated)
 		return
 
@@ -195,7 +196,6 @@
 	linked_hive.partial_larva += (linked_hive.get_real_total_xeno_count() + linked_hive.stored_larva) * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
-#undef LARVA_ADDITION_MULTIPLIER
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

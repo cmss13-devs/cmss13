@@ -946,7 +946,6 @@
 			hive_xenos -= xeno
 	return length(hive_xenos)
 
-#define ENDGAME_LARVA_CAP_MULTIPLIER 0.5
 // Checks if we hit larva limit
 /datum/hive_status/proc/check_if_hit_larva_from_pylon_limit()
 	var/groundside_humans_weighted_count = 0
@@ -962,7 +961,6 @@
 	hit_larva_pylon_limit = (get_real_total_xeno_count() + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER)
 	hive_ui.update_pylon_status()
 	return hit_larva_pylon_limit
-#undef ENDGAME_LARVA_CAP_MULTIPLIER
 
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
 /datum/hive_status/proc/increase_larva_after_burst()

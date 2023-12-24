@@ -163,11 +163,13 @@
 
 	///Used for cryo specs who already have "foxtrot" appended to their ID assignments
 	var/squad_assignment_update = TRUE
+	var/free_skill = FALSE
 
 //this one is delivered via ASRS as a reward for DEFCON/techwebs/whatever else we will have
 /obj/item/spec_kit/rifleman
 	squad_assignment_update = FALSE
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
+	free_skill = TRUE
 
 /obj/item/spec_kit/rifleman/jobless
 	allowed_roles_list = list()
@@ -231,16 +233,17 @@
 	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", GLOB.available_specialist_kit_boxes)
 	if(!selection || QDELETED(src))
 		return FALSE
-	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
-		return
+	if(!free_skill)
+		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+			to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
+			return FALSE
 	if(!GLOB.available_specialist_kit_boxes[selection] || GLOB.available_specialist_kit_boxes[selection] <= 0)
 		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
 		return FALSE
 	var/obj/item/card/id/ID = user.wear_id
 	if(!istype(ID) || ID.registered_ref != WEAKREF(user))
 		to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("ID card")] or [SPAN_INFO("dog tags")] to select a specialization!"))
-		return
+		return FALSE
 	var/turf/T = get_turf(loc)
 	var/obj/item/storage/box/spec/spec_box
 	var/specialist_assignment

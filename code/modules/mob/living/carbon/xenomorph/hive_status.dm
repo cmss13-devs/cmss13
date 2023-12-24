@@ -961,6 +961,7 @@
 			groundside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	hit_larva_pylon_limit = (get_real_total_xeno_count() + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER)
 	hive_ui.update_pylon_status()
+	return hit_larva_pylon_limit
 #undef ENDGAME_LARVA_CAP_MULTIPLIER
 
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst

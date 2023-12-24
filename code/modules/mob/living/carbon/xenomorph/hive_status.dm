@@ -69,7 +69,7 @@
 	var/hardcore = FALSE
 	/// Set to false if you want to prevent getting burrowed larva from latejoin marines
 	var/latejoin_burrowed = TRUE
-	/// If hit limit of larva from pylons, to prevent the message spamming
+	/// If hit limit of larva from pylons
 	var/hit_larva_pylon_limit = FALSE
 
 	var/list/hive_inherant_traits

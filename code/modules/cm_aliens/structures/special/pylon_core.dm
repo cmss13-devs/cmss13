@@ -178,12 +178,10 @@
 
 	activated = TRUE
 	linked_hive.check_if_hit_larva_from_pylon_limit()
-	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
 /// Looped proc via timer to give larva after time
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
-	xeno_announcement(SPAN_XENOANNOUNCE("Test"), linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
-
 	if(!activated)
 		return
 

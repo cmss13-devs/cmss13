@@ -68,3 +68,12 @@
 
 //from /datum/authority/branch/role/proc/equip_role()
 #define COMSIG_POST_SPAWN_UPDATE "post_spawn_update"
+
+#define COMSIG_CAMERA_MAPNAME_ASSIGNED "camera_manager_mapname_assigned"
+#define COMSIG_CAMERA_REGISTER_UI "camera_manager_register_ui"
+#define COMSIG_CAMERA_UNREGISTER_UI "camera_manager_unregister_ui"
+#define COMSIG_CAMERA_SET_NVG "camera_manager_set_nvg"
+#define COMSIG_CAMERA_CLEAR_NVG "camera_manager_clear_nvg"
+#define COMSIG_CAMERA_SET_TARGET "camera_manager_set_target"
+#define COMSIG_CAMERA_SET_AREA "camera_manager_set_area"
+#define COMSIG_CAMERA_CLEAR "camera_manager_clear_target"

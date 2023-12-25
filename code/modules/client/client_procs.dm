@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1548" = "bug breaking the \"alpha\" functionality in the game, allowing clients to be able to see things/mobs they should not be able to see.",
 	))
 
-#define LIMITER_SIZE 5
+#define LIMITER_SIZE 12
 #define CURRENT_SECOND 1
 #define SECOND_COUNT 2
 #define CURRENT_MINUTE 3
@@ -56,6 +56,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
 ))
+
+/client/proc/reduce_minute_count()
+	if (!topiclimiter)
+		topiclimiter = new(LIMITER_SIZE)
+	if(topiclimiter[MINUTE_COUNT] > 0)
+		topiclimiter[MINUTE_COUNT] -= 1
 
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null

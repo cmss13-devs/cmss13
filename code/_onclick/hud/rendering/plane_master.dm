@@ -149,6 +149,14 @@
 	remove_filter("AO")
 	add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
+/atom/movable/screen/plane_master/nvg_plane
+	name = "NVG plane"
+	plane = NVG_PLANE
+	render_relay_plane = RENDER_PLANE_GAME
+	blend_mode_override = BLEND_MULTIPLY
+	//icon = 'icons/mob/hud/screen1.dmi'
+	//icon_state = "noise"
+
 /atom/movable/screen/plane_master/fullscreen
 	name = "fullscreen alert plane"
 	plane = FULLSCREEN_PLANE

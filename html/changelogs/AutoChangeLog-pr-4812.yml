@@ -1,0 +1,9 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - ui: "tgui dropship weapons console"
+  - refactor: "added MFD panel"
+  - refactor: "creates datum component to manage camera code"
+  - qol: "CAS weapons operator can see camera in UI"
+  - rscadd: "CAS can offset in X and Y coordinates"
+  - refactor: "CAS can offset in different direction to attack vector"

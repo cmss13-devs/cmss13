@@ -320,23 +320,19 @@
 	multiple_handful_name = TRUE
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/light/breaching/spread
 
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_4
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
-	damage = 20
-	max_range = 5
-	damage_falloff = DAMAGE_FALLOFF_TIER_6
-	effective_range_max = EFFECTIVE_RANGE_MAX_TIER_1
-
-	penetration = ARMOR_PENETRATION_TIER_6
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	damage = 55
+	max_range = 6
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_1
 
 /datum/ammo/bullet/shotgun/light/breaching/spread
 	name = "additional light breaching fragments"
 	bonus_projectiles_amount = 0
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	scatter = SCATTER_AMOUNT_TIER_2
-	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_3
 	damage = 10
 
 //Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.

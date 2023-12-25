@@ -89,7 +89,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 
 /obj/item/ammo_magazine/shotgun/light/breaching
 	name = "box of breaching shells"
-	desc = "A box filled with armor-piercing breaching shotgun shells. 16 Gauge."
+	desc = "A box filled with breaching shotgun shells. 16 Gauge."
 	icon_state = "breaching"
 	item_state = "breaching"
 	max_rounds = 30 //6 handfuls of 6 shells, 12 rounds in a XM51 mag

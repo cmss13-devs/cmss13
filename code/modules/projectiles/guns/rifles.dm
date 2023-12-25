@@ -1873,7 +1873,7 @@
 
 /obj/item/weapon/gun/rifle/xm51
 	name = "\improper XM51 breaching scattergun"
-	desc = "An experimental shotgun model going through testing trials in the USCM. Based on the original civilian and CMB version, the XM51 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge armor-piercing breaching rounds, which are effective at breaching doors and walls, though their efficacy against soft targets is questionable."
+	desc = "An experimental shotgun model going through testing trials in the USCM. Based on the original civilian and CMB version, the XM51 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge breaching rounds. Effective at breaching walls, doors and people."
 	icon_state = "xm51"
 	item_state = "xm51"
 	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'
@@ -1915,8 +1915,8 @@
 	set_fire_delay(FIRE_DELAY_TIER_4*2)
 	set_burst_amount(0)
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
-	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_8
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -1928,9 +1928,9 @@
 
 /obj/item/weapon/gun/rifle/xm51/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 15.5, GLOB.damage_boost_turfs), //800, 4 taps regular walls, 8 taps reinforced walls, 2 taps resin walls with some leeway
-		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 25, GLOB.damage_boost_breaching), //1250, enough to 1 tap airlocks
-		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 8, GLOB.damage_boost_pylons) //400, 4.5 shots to take out a pylon
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 10, GLOB.damage_boost_turfs), //850, 4 taps regular walls, 8 taps reinforced walls, 2 taps resin walls with some leeway
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 15, GLOB.damage_boost_breaching), //1275, enough to 1 tap airlocks
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 6, GLOB.damage_boost_pylons) //510, 4 shots to take out a pylon
 	))
 
 /obj/item/weapon/gun/rifle/xm51/unique_action(mob/user)

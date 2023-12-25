@@ -1214,6 +1214,10 @@
 		"1" = list(
 			"icon_x" = 9,
 			"icon_y" = -2))
+	item_state_slots = list(
+		WEAR_J_STORE = "m4a3_holster",
+		WEAR_WAIST = "xm51_holster"
+		)
 
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"

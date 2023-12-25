@@ -1908,7 +1908,7 @@
 	COOLDOWN_DECLARE(allow_pump)
 
 /obj/item/weapon/gun/rifle/xm51/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 21, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 20, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)
 
 /obj/item/weapon/gun/rifle/xm51/set_gun_config_values()
 	..()

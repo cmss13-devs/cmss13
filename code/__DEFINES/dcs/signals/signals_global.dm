@@ -70,3 +70,4 @@
 #define COMSIG_GLOB_GENERATOR_SET_OVERLOADING "!generator_set_overloading"
 
 #define COMSIG_GLOB_HIJACK_IMPACTED "!hijack_impacted"
+#define COMSIG_GLOB_HIJACK_LANDED "!hijack_landed"

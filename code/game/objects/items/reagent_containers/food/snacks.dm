@@ -42,7 +42,7 @@
 	..()
 
 	if (world.time <= user.next_move)
-		return
+		return FALSE
 	attack(user, user, "head")//zone does not matter
 	user.next_move += attack_speed
 
@@ -51,24 +51,24 @@
 		to_chat(user, SPAN_DANGER("None of [src] left, oh no!"))
 		M.drop_inv_item_on_ground(src) //so icons update :[
 		qdel(src)
-		return 0
+		return FALSE
 
 	if(package)
 		to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
-		return 0
+		return FALSE
 
 	if(istype(M, /mob/living/carbon))
 		var/mob/living/carbon/C = M
 		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
 		if(fullness > NUTRITION_HIGH && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
-			return
+			return FALSE
 		if(issynth(C))
 			fullness = 200 //Synths never get full
 
 		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
 			to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to eat!"))
-			return
+			return FALSE
 
 		if(fullness > NUTRITION_HIGH)
 			C.overeat_cooldown = world.time + OVEREAT_TIME
@@ -120,9 +120,9 @@
 					reagents.trans_to_ingest(M, reagents.total_volume)
 				bitecount++
 				On_Consume(M)
-			return 1
+			return TRUE
 
-	return 0
+	return FALSE
 
 /obj/item/reagent_container/food/snacks/afterattack(obj/target, mob/user, proximity)
 	return ..()

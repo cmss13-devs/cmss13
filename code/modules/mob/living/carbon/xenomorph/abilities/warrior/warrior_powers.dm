@@ -37,6 +37,8 @@
 
 	if (xeno.Adjacent(carbon))
 		xeno.start_pulling(carbon,1)
+		if(ishuman(carbon))
+			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
 	else
 		xeno.visible_message(SPAN_XENOWARNING("[xeno]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
 
@@ -77,9 +79,9 @@
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] effortlessly flings [carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))
 	playsound(carbon,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	if(stun_power)
-		carbon.apply_effect(get_xeno_stun_duration(carbon, stun_power), STUN)
+		carbon.Stun(get_xeno_stun_duration(carbon, stun_power))
 	if(weaken_power)
-		carbon.apply_effect(weaken_power, WEAKEN)
+		carbon.KnockDown(get_xeno_stun_duration(carbon, weaken_power))
 	if(slowdown)
 		if(carbon.slowed < slowdown)
 			carbon.apply_effect(slowdown, SLOW)

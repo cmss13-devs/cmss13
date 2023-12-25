@@ -58,6 +58,10 @@
 	icon_xeno = 'icons/mob/xenos/sentinel.dmi'
 	icon_xenonid = 'icons/mob/xenonids/sentinel.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
+	weed_food_states = list("Drone_1","Drone_2","Drone_3")
+	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
+
 /datum/behavior_delegate/sentinel_base
 	name = "Base Sentinel Behavior Delegate"
 
@@ -99,5 +103,6 @@
 #undef NEURO_TOUCH_DELAY
 
 /datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
-	human_target.apply_effect(2, WEAKEN)
+	human_target.KnockDown(2)
+	human_target.Stun(2)
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))

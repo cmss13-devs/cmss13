@@ -45,7 +45,7 @@
 /datum/surgery_step/mend_bones/attempt_step(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
 		var/obj/item/tool/surgery/bonegel/gel = tool
-		if(gel.limited_gel && !gel.use_gel(5))
+		if(!gel.use_gel(5))
 			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))
 			return FALSE
 

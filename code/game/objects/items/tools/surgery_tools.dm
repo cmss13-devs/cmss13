@@ -204,17 +204,17 @@
 	///percent of gel remaining in container
 	var/remaining_gel = 100
 	///If gel is used when doing bone surgery
-	var/limited_gel = TRUE
+	var/unlimited_gel = FALSE
 	///Time it takes per 10% of gel refilled
 	var/time_per_refill = 2.5 SECONDS
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()
-	if(limited_gel) //Only show how much gel is left if it actually uses bone gel
+	if(!unlimited_gel) //Only show how much gel is left if it actually uses bone gel
 		. += "A counter on the side reads \"[remaining_gel]% gel remaining\"."
 
 /obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
-	if(!limited_gel)
+	if(unlimited_gel)
 		to_chat(user, SPAN_NOTICE(" [refilling_obj] refuses to fill [src]."))
 		return
 	if(remaining_gel >= 100)
@@ -230,8 +230,10 @@
 
 	to_chat(user, SPAN_NOTICE("You remove [src] from [refilling_obj]."))
 
-
 /obj/item/tool/surgery/bonegel/proc/use_gel(gel_cost)
+	if(unlimited_gel)
+		return TRUE
+
 	if(remaining_gel < gel_cost)
 		return FALSE
 	remaining_gel -= gel_cost
@@ -241,7 +243,7 @@
 	name = "gel gun"
 	desc = "Inside is a liquid that is similar in effect to bone gel, but requires much smaller quantities, allowing near infinite use from a single capsule."
 	icon_state = "predator_bone-gel"
-	limited_gel = FALSE
+	unlimited_gel = TRUE
 
 /*
  * Fix-o-Vein

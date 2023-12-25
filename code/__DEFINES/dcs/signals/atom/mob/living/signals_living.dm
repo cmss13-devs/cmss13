@@ -42,3 +42,6 @@
 #define COMSIG_LIVING_SET_BUCKLED "living_set_buckled"
 ///from base of mob/living/set_body_position()
 #define COMSIG_LIVING_SET_BODY_POSITION  "living_set_body_position"
+
+/// from base of /mob/living/apply_status_effect(): (datum/status_effect/new_effect)
+#define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"

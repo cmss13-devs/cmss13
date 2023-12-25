@@ -59,10 +59,10 @@
 
 	RegisterSignal(tutorial_dummy, COMSIG_LIVING_APPLY_EFFECT, PROC_REF(on_shove_down))
 
-/datum/tutorial/ss13/intents/proc/on_shove_down(datum/source, effect, effect_type, effect_flags)
+/datum/tutorial/ss13/intents/proc/on_shove_down(datum/source, datum/status_effect/new_effect)
 	SIGNAL_HANDLER
 
-	if(effect_type != WEAKEN)
+	if(!istype(new_effect, /datum/status_effect/incapacitating/knockdown))
 		return
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/dummy/tutorial, tutorial_dummy)

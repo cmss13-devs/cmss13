@@ -11,6 +11,7 @@
         "/datum/equipment_preset/survivor/engineer/solaris",
         "/datum/equipment_preset/survivor/trucker/solaris",
         "/datum/equipment_preset/survivor/security/solaris",
+        "/datum/equipment_preset/survivor/uscm/solaris",
         "/datum/equipment_preset/survivor/colonial_marshal/solaris",
         "/datum/equipment_preset/survivor/corporate/solaris",
         "/datum/equipment_preset/survivor/flight_control_operator",

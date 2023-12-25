@@ -966,7 +966,7 @@
 		sure that we don't have to do any extra calculations.
 		*/
 		playsound(src, drawSound, 7, TRUE)
-		var/image/gun_underlay
+		var/image/gun_underlay = image(icon, current_gun.base_gun_icon)
 		if(gun_has_gamemode_skin)
 			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 				if("snow")
@@ -975,8 +975,6 @@
 					gun_underlay = image(icon, "d_" + current_gun.base_gun_icon)
 				if("classic")
 					gun_underlay = image(icon, "c_" + current_gun.base_gun_icon)
-		else
-			gun_underlay = image(icon, current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
 		gun_underlay.color = current_gun.color
@@ -1199,11 +1197,11 @@
 
 /obj/item/storage/belt/gun/xm51
 	name = "\improper M276 pattern XM51 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, along with two pouches for spare magazines or shells."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, along with four pouches for spare magazines or shells."
 	icon_state = "xm51_holster"
 	has_gamemode_skin = TRUE
 	gun_has_gamemode_skin = TRUE
-	storage_slots = 3
+	storage_slots = 5
 	max_w_class = 5
 	can_hold = list(
 		/obj/item/weapon/gun/rifle/xm51,

@@ -41,7 +41,7 @@
 		list("M2C Heavy Machine Gun", round(scale * 2), /obj/item/storage/box/guncase/m2c, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Unit", round(scale * 2), /obj/item/storage/box/guncase/flamer, VENDOR_ITEM_REGULAR),
 		list("M79 Grenade Launcher", round(scale * 3), /obj/item/storage/box/guncase/m79, VENDOR_ITEM_REGULAR),
-		list("XM51 Breaching Scattergun", round(scale * 2.5), /obj/item/storage/box/guncase/xm51, VENDOR_ITEM_REGULAR),
+		list("XM51 Breaching Scattergun", round(scale * 3), /obj/item/storage/box/guncase/xm51, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
 		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/high_explosive/m15, VENDOR_ITEM_REGULAR),

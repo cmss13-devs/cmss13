@@ -1873,7 +1873,7 @@
 
 /obj/item/weapon/gun/rifle/xm51
 	name = "\improper XM51 breaching scattergun"
-	desc = "An experimental shotgun model going through testing trials in the USCM. Based on the original civilian and CMB version, the XM51 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge breaching rounds. Effective at breaching walls, doors and people."
+	desc = "An experimental shotgun model going through testing trials in the USCM. Based on the original civilian and CMB version, the XM51 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge breaching rounds which are effective at breaching walls and doors. Users are advised not to employ the weapon against soft or armored targets due to low performance of the shells."
 	icon_state = "xm51"
 	item_state = "xm51"
 	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'

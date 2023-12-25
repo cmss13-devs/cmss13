@@ -1,0 +1,5 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "The Executive Officer now has a personal weapons vendor. It includes the ability to acquire a full suite of combat and support gear, giving the XO more agency in customizing their loadout."
+  - rscadd: "Adds a new set of belts to the Executive Officer's uniform vendor."

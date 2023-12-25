@@ -378,12 +378,13 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	skills = /datum/skills/civilian/survivor/trucker
 	idtype = /obj/item/card/id/data
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS)
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT)
 
-/datum/equipment_preset/survivor/engineer/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/flight_control_operator/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/lawyer/bluesuit(new_human), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/windbreaker/windbreaker_brown(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headset(new_human), WEAR_HEAD)
@@ -420,7 +421,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 // ----- Interstellar Commerce Commission Survivor
 
 // Used in Trijent Dam and New Varadero.
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
@@ -431,11 +432,11 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 	survivor_variant = CORPORATE_SURVIVOR
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/New()
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_CIVIL_LIAISON)
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 

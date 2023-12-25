@@ -322,6 +322,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	base_bed_icon = "stretcher"
 	accepts_bodybag = TRUE
 	var/stretcher_activated
+	var/view_range = 5
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
 
@@ -351,6 +352,14 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	set src in oview(1)
 
 	toggle_medevac_beacon(usr)
+
+// Used to pretend to be a camera
+/obj/structure/bed/medevac_stretcher/proc/can_use()
+	return TRUE
+
+// Used to pretend to be a camera
+/obj/structure/bed/medevac_stretcher/proc/isXRay()
+	return FALSE
 
 /obj/structure/bed/medevac_stretcher/proc/toggle_medevac_beacon(mob/user)
 	if(!ishuman(user))

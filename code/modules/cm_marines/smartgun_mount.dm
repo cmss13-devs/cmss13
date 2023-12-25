@@ -713,7 +713,7 @@
 	if(!istype(in_chamber, /obj/projectile))
 		return
 
-	var/angle = get_angle(T, U)
+	var/angle = Get_Angle(T, U)
 
 	if((dir == NORTH) && (angle > 180) && (abs(360 - angle) > shoot_degree)) // If north and shooting to the left, we do some extra math
 		return
@@ -1096,6 +1096,18 @@
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	zoom = 1
 	ammo = /datum/ammo/bullet/machinegun/doorgun
+
+/obj/structure/machinery/m56d_hmg/mg_turret/update_health(amount) //Negative values restores health.
+	health -= amount
+	if(health <= 0)
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		qdel(src)
+		return
+
+	if(health > health_max)
+		health = health_max
+	update_damage_state()
+	update_icon()
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"

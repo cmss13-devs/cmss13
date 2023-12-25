@@ -51,6 +51,7 @@
 	helmet.icon_override = 'icons/mob/humans/onmob/head_0.dmi'
 	helmet.flags_inv_hide = HIDEEARS|HIDEALLHAIR
 	helmet.flags_marine_helmet = NO_FLAGS
+	helmet.flags_atom |= NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	if(prob(50))
 		helmet.icon_state = "santa_hat_red"
 	else
@@ -65,7 +66,7 @@
 /datum/decorator/christmas/barricade/decorate(obj/structure/barricade/barricade)
 	if(!istype(barricade))
 		return
-	barricade.icon = 'icons/obj/structures/barricades_christmas.dmi'
+	barricade.wire_icon = 'icons/obj/structures/barricades_christmas.dmi'
 	barricade.update_icon()
 
 

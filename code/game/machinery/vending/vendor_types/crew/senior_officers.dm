@@ -270,7 +270,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 //------------ EXECUTIVE OFFFICER ---------------
 
 //------------WEAPON VENDOR---------------
-GLOBAL_LIST_INIT(cm_vending_gear_executive_officer, list(
+GLOBAL_LIST_INIT(cm_vending_gear_xo, list(
 		list("CAPTAIN'S PRIMARY (CHOOSE 1)", 0, null, null, null),
 		list("M41A MK1 Pulse Rifle", 0, /obj/item/storage/box/guncase/m41aMK1AP, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
 		list("MK221 Tactical Shotgun", 0, /obj/effect/essentials_set/xo/shotgunpreset, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
@@ -326,7 +326,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_executive_officer, list(
 	use_snowflake_points = TRUE
 
 /obj/structure/machinery/cm_vending/gear/executive_officer/get_listed_products(mob/user)
-	return GLOB.cm_vending_gear_executive_officer
+	return GLOB.cm_vending_gear_xo
 
 //------------UNIFORM/GEAR VENDOR---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(

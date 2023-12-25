@@ -42,8 +42,10 @@
 	flags_equip_slot = SLOT_BACK
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_gun_e"
-	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
-	var/has_mount = FALSE // Indicates whether the M56D will come with its folding mount already attached
+	///How many rounds are in the weapon. This is useful if we break down our guns.
+	var/rounds = 0
+	///Indicates whether the M56D will come with its folding mount already attached
+	var/has_mount = FALSE 
 	///The distance this has to be away from other m56d_hmg and m56d_post to be placed.
 	var/defense_check_range = 5
 

@@ -19,7 +19,7 @@
 	var/datum/cas_signal/recorded_loc = null
 
 	var/obj/effect/firemission_guidance/guidance
-
+	var/atom/tracked_object
 
 /datum/cas_fire_envelope/New()
 	..()
@@ -151,7 +151,10 @@
 	recorded_loc = marker
 	return TRUE
 
-/datum/cas_fire_envelope/proc/change_current_loc(location)
+/datum/cas_fire_envelope/proc/change_current_loc(location, atom/object)
+	if(object)
+		if(tracked_object)
+			UnregisterSignal(tracked_object, COMSIG_PARENT_QDELETING)
 	if(!location && guidance)
 		for(var/mob/M in guidance.users)
 			if(istype(M) && M.client)
@@ -162,6 +165,19 @@
 		guidance = new /obj/effect/firemission_guidance()
 	guidance.forceMove(location)
 	guidance.updateCameras(linked_console)
+	if(object)
+		tracked_object = object
+		RegisterSignal(tracked_object, COMSIG_PARENT_QDELETING, PROC_REF(on_tracked_object_del))
+
+/datum/cas_fire_envelope/proc/untrack_object()
+	if(tracked_object)
+		UnregisterSignal(tracked_object, COMSIG_PARENT_QDELETING)
+		tracked_object = null
+
+/datum/cas_fire_envelope/proc/on_tracked_object_del(atom/target)
+	SIGNAL_HANDLER
+	tracked_object = null
+	change_current_loc()
 
 /datum/cas_fire_envelope/proc/user_is_guided(user)
 	return guidance && (user in guidance.users)

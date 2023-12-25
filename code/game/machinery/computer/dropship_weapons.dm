@@ -33,6 +33,8 @@
 	var/camera_width = 11
 	var/camera_height = 11
 	var/camera_map_name
+	///Tracks equipment with a camera that is deployed and we are viewing
+	var/obj/structure/dropship_equipment/camera_area_equipment = null
 
 	var/registered = FALSE
 
@@ -305,12 +307,14 @@
 				var/mount_point = equipment.ship_base.attach_id
 				if(mount_point != equipment_tag)
 					continue
-				if (istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
+				if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
 					var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
 					var/obj/structure/machinery/defenses/sentry/defense = sentry.deployed_turret
-					if (defense.has_camera)
+					if(defense.has_camera)
 						defense.set_range()
 						var/datum/shape/rectangle/current_bb = defense.range_bounds
+						camera_area_equipment = sentry
+						// TODO: Determine why the width/height only properly updates if the camera was previously looking at nothing (or if view closed and returned to)
 						SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, current_bb.center_x, current_bb.center_y, defense.loc.z, current_bb.width, current_bb.height)
 				return TRUE
 
@@ -331,6 +335,7 @@
 					if(medevac.linked_stretcher)
 						SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, medevac.linked_stretcher, 5, 5)
 				return TRUE
+
 		if("fulton-target")
 			var/equipment_tag = params["equipment_id"]
 			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
@@ -342,6 +347,7 @@
 					var/target_ref = params["ref"]
 					fulton.automate_interact(user, target_ref)
 				return TRUE
+
 		if("fire-weapon")
 			var/weapon_tag = params["eqp_tag"]
 			var/obj/structure/dropship_equipment/weapon/DEW = get_weapon(weapon_tag)
@@ -354,14 +360,19 @@
 				return FALSE
 
 			selected_equipment = DEW
-			ui_open_fire(user, shuttle, camera_target_id)
+			if(ui_open_fire(user, shuttle, camera_target_id))
+				if(firemission_envelope)
+					firemission_envelope.untrack_object()
 			return TRUE
+
 		if("deploy-equipment")
 			var/equipment_tag = params["equipment_id"]
 			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
 				var/mount_point = equipment.ship_base.attach_id
 				if(mount_point != equipment_tag)
 					continue
+				if(camera_area_equipment == equipment)
+					set_camera_target(null)
 				equipment.equipment_interact(user)
 				return TRUE
 
@@ -410,12 +421,14 @@
 				current.y + dy,
 				current.z)
 
-			firemission_envelope.change_current_loc(new_target)
-
+			camera_area_equipment = null
+			firemission_envelope.change_current_loc(new_target, cas_sig)
 			return TRUE
+
 		if("nvg-enable")
 			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
 			return TRUE
+
 		if("nvg-disable")
 			SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR_NVG)
 			return TRUE
@@ -467,6 +480,10 @@
 
 
 /obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(target_ref)
+	camera_area_equipment = null
+	if(firemission_envelope)
+		firemission_envelope.untrack_object()
+
 	var/datum/cas_signal/target = get_cas_signal(target_ref)
 	camera_target_id = target_ref
 	if(!target)

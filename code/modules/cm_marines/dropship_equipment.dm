@@ -332,11 +332,11 @@
 
 /obj/structure/dropship_equipment/mg_holder/ui_data(mob/user)
 	. = list()
-	var/is_deployed = deployed_mg.loc == src
+	var/is_deployed = deployed_mg.loc != src
 	.["name"] = name
 	.["selection_state"] = list()
 	.["health"] = health
-	.["health_max"] = 100
+	.["health_max"] = initial(health)
 	.["rounds"] = deployed_mg.rounds
 	.["max_rounds"] = deployed_mg.rounds_max
 	.["deployed"] = is_deployed
@@ -486,8 +486,6 @@
 	point_cost = 0
 
 
-#define LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS 12
-
 /obj/structure/dropship_equipment/electronics/spotlights
 	name = "\improper AN/LEN-15 Spotlight"
 	shorthand = "Spotlight"
@@ -502,7 +500,7 @@
 	if(spotlights_cooldown > world.time)
 		to_chat(user, SPAN_WARNING("[src] is busy."))
 		return //prevents spamming deployment/undeployment
-	if(luminosity != brightness)
+	if(!light_on)
 		set_light(brightness)
 		icon_state = "spotlights_on"
 		to_chat(user, SPAN_NOTICE("You turn on [src]."))
@@ -515,13 +513,13 @@
 /obj/structure/dropship_equipment/electronics/spotlights/update_equipment()
 	..()
 	if(ship_base)
-		if(luminosity != brightness)
+		if(!light_on)
 			icon_state = "spotlights_off"
 		else
 			icon_state = "spotlights_on"
 	else
 		icon_state = "spotlights"
-		if(luminosity)
+		if(light_on)
 			set_light(0)
 
 /obj/structure/dropship_equipment/electronics/spotlights/on_launch()
@@ -530,7 +528,13 @@
 /obj/structure/dropship_equipment/electronics/spotlights/on_arrival()
 	set_light(brightness)
 
-#undef LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS
+/obj/structure/dropship_equipment/electronics/spotlights/ui_data(mob/user)
+	. = list()
+	var/is_deployed = light_on
+	.["name"] = name
+	.["health"] = health
+	.["health_max"] = initial(health)
+	.["deployed"] = is_deployed
 
 
 

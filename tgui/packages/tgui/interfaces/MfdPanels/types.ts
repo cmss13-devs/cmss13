@@ -66,7 +66,7 @@ export type SentrySpec = {
   kills: number;
   iff_status: string[];
   camera_available: number;
-  deployed: number;
+  deployed: 0 | 1;
 };
 
 export type SpotlightSpec = {

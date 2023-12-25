@@ -67,11 +67,7 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
     const firemission =
       data.firemission_data.length > x ? data.firemission_data[x] : undefined;
     return {
-      children: firemission ? (
-        <div>
-          FM {x + 1} <br /> {firemission?.name}
-        </div>
-      ) : undefined,
+      children: firemission ? <div>FM {x + 1}</div> : undefined,
       onClick: () => setSelectedFm(firemission?.name),
     };
   };
@@ -111,7 +107,7 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
           }
           : {},
         {
-          children: <Icon name="arrow-up" />,
+          children: fmOffset > 0 ? <Icon name="arrow-up" /> : undefined,
           onClick: () => {
             if (fmOffset >= 1) {
               setFmOffset(fmOffset - 1);
@@ -128,9 +124,12 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
         {},
         {},
         {
-          children: <Icon name="arrow-down" />,
+          children:
+            fmOffset + 10 < data.firemission_data?.length ? (
+              <Icon name="arrow-down" />
+            ) : undefined,
           onClick: () => {
-            if (fmOffset + 8 < data.firemission_data.length) {
+            if (fmOffset + 10 < data.firemission_data?.length) {
               setFmOffset(fmOffset + 1);
             }
           },
@@ -212,7 +211,10 @@ const ViewFiremissionMfdPanel = (
       bottomButtons={[
         {
           children: 'EXIT',
-          onClick: () => setPanelState(''),
+          onClick: () => {
+            setSelectedFm(undefined);
+            setPanelState('');
+          },
         },
       ]}
       rightButtons={editFm === true ? rightButtons : []}>

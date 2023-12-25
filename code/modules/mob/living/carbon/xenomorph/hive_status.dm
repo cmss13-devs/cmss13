@@ -79,9 +79,7 @@
 	var/list/hive_structures_limit = list(
 		XENO_STRUCTURE_CORE = 1,
 		XENO_STRUCTURE_CLUSTER = 8,
-		XENO_STRUCTURE_POOL = 1,
 		XENO_STRUCTURE_EGGMORPH = 6,
-		XENO_STRUCTURE_EVOPOD = 2,
 		XENO_STRUCTURE_RECOVERY = 6,
 		XENO_STRUCTURE_PYLON = 2,
 	)
@@ -627,14 +625,12 @@
 /datum/hive_status/proc/can_build_structure(structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])
 		return FALSE
-	var/total_count = 0
-	if(hive_structures[structure_name])
-		total_count += hive_structures[structure_name].len
-	if(hive_constructions[structure_name])
-		total_count += hive_constructions[structure_name].len
-	if(total_count >= hive_structures_limit[structure_name])
+	if(get_structure_count(structure_name) >= hive_structures_limit[structure_name])
 		return FALSE
 	return TRUE
+
+/datum/hive_status/proc/get_structure_count(structure_name)
+	return length(hive_structures[structure_name]) + length(hive_constructions[structure_name])
 
 /datum/hive_status/proc/has_structure(structure_name)
 	if(!structure_name)
@@ -1107,7 +1103,6 @@
 /datum/hive_status/corrupted/tamed/New()
 	. = ..()
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
-	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
 
 /datum/hive_status/corrupted/tamed/proc/make_leader(mob/living/carbon/human/H)
 	if(!istype(H))
@@ -1168,7 +1163,6 @@
 /datum/hive_status/corrupted/renegade/New()
 	. = ..()
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
-	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
 	for(var/faction in FACTION_LIST_HUMANOID) //renegades allied to all humanoids, but it mostly affects structures. Their ability to attack humanoids and other xenos (including of the same hive) depends on iff settings
 		allies[faction] = TRUE
 
@@ -1351,6 +1345,3 @@
 	name = "Attack"
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
-
-
-

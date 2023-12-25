@@ -252,12 +252,8 @@
 	var/pounce_distance = 0
 
 	// Life reduction variables.
-	var/life_stun_reduction = -1.5
-	var/life_knockdown_reduction = -1.5
-	var/life_knockout_reduction = -1.5
 	var/life_daze_reduction = -1.5
 	var/life_slow_reduction = -1.5
-
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -1015,22 +1011,21 @@
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
 
 /mob/living/carbon/xenomorph/resist_restraints()
+	if(!legcuffed)
+		return
 	var/breakouttime = legcuffed.breakouttime
 
-	next_move = world.time + 100
-	last_special = world.time + 10
+	next_move = world.time + 10 SECONDS
+	last_special = world.time + 1 SECONDS
 
 	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
-	to_chat(src, SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and we must stand still)"))
-	for(var/mob/O in viewers(src))
-		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
-	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
+		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
+	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)
-		return // time leniency for lag which also might make this whole thing pointless but the server
-	for(var/mob/O in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink
-		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
-	to_chat(src, SPAN_NOTICE(" We successfully remove [legcuffed]."))
+		return
+	visible_message(SPAN_DANGER("<b>[src] manages to remove [legcuffed]!</b>"), SPAN_NOTICE("We successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob()
@@ -1100,11 +1095,6 @@
 	SPAN_WARNING("We squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE
-
-/mob/living/carbon/xenomorph/knocked_down_callback()
-	. = ..()
-	if(!resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
-		update_wounds()
 
 ///Generate a new unused nicknumber for the current hive, if hive doesn't exist return 0
 /mob/living/carbon/xenomorph/proc/generate_and_set_nicknumber()

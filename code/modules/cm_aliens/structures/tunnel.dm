@@ -147,7 +147,7 @@
 			//No teleporting!
 			return FALSE
 
-		to_chat(X, SPAN_XENONOTICE("You begin moving to your destination."))
+		to_chat(X, SPAN_XENONOTICE("We begin moving to our destination."))
 
 		var/tunnel_time = TUNNEL_MOVEMENT_XENO_DELAY
 
@@ -165,11 +165,11 @@
 			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 			return FALSE
 		if(!T.loc)
-			to_chat(X, SPAN_WARNING("The tunnel has collapsed before you reached its exit!"))
+			to_chat(X, SPAN_WARNING("The tunnel has collapsed before we reached its exit!"))
 			return FALSE
 
 		X.forceMove(T)
-		to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
+		to_chat(X, SPAN_XENONOTICE("We have reached our destination."))
 		return TRUE
 
 /obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/xenomorph/X)
@@ -177,7 +177,7 @@
 	if(X in contents)
 		X.forceMove(loc)
 		visible_message(SPAN_XENONOTICE("\The [X] pops out of the tunnel!"), \
-		SPAN_XENONOTICE("You pop out through the other side!"))
+		SPAN_XENONOTICE("We pop out through the other side!"))
 		return TRUE
 
 //Used for controling tunnel exiting and returning
@@ -200,15 +200,15 @@
 
 	if(!isfriendly(M))
 		if(M.mob_size < MOB_SIZE_BIG)
-			to_chat(M, SPAN_XENOWARNING("You aren't large enough to collapse this tunnel!"))
+			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION
 
 		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),\
-		SPAN_XENONOTICE("You begin to fill [src] with dirt using your massive claws."), max_distance = 3)
+		SPAN_XENONOTICE("We begin to fill [src] with dirt using our massive claws."), max_distance = 3)
 		xeno_attack_delay(M)
 
 		if(!do_after(M, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL_OUT_OF_RANGE, max_dist = 1))
-			to_chat(M, SPAN_XENOWARNING("You decide not to cave the tunnel in."))
+			to_chat(M, SPAN_XENOWARNING("We decide not to cave the tunnel in."))
 			return XENO_NO_DELAY_ACTION
 
 		src.visible_message(SPAN_XENODANGER("[src] caves in!"), max_distance = 3)
@@ -217,7 +217,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(M.anchored)
-		to_chat(M, SPAN_XENOWARNING("You can't climb through a tunnel while immobile."))
+		to_chat(M, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
 
 	if(!hive.tunnels.len)
@@ -237,14 +237,14 @@
 
 	if(M.mob_size >= MOB_SIZE_BIG)
 		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into \the [src]."), \
-		SPAN_XENONOTICE("You begin heaving your monstrous bulk into \the [src]</b>."))
+		SPAN_XENONOTICE("We begin heaving our monstrous bulk into \the [src]</b>."))
 	else
 		M.visible_message(SPAN_XENONOTICE("\The [M] begins crawling down into \the [src]."), \
-		SPAN_XENONOTICE("You begin crawling down into \the [src]</b>."))
+		SPAN_XENONOTICE("We begin crawling down into \the [src]</b>."))
 
 	xeno_attack_delay(M)
 	if(!do_after(M, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_WARNING("Your crawling was interrupted!"))
+		to_chat(M, SPAN_WARNING("Our crawling was interrupted!"))
 		return XENO_NO_DELAY_ACTION
 
 	if(hive.tunnels.len) //Make sure other tunnels exist
@@ -252,7 +252,7 @@
 		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 		pick_tunnel(M)
 	else
-		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so you return back up."))
+		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so we return back up."))
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/tunnel/maint_tunnel

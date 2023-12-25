@@ -173,7 +173,7 @@
 	if(mobility_flags & MOBILITY_MOVE)
 		if(on_fire)
 			resist_fire()
-		if(is_type_in_list(/datum/effects/acid, effects_list))
+		if(locate(/datum/effects/acid) in effects_list)
 			resist_acid()
 		if(last_special <= world.time)
 			resist_restraints()

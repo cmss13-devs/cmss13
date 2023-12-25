@@ -124,7 +124,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 		var/input = "Bioscan failed. \n\nInvestigation into Bioscan subsystem recommended."
 		log_ares_bioscan(name, input, forced)
-		if(ares_can_interface() || (!ares_can_interface() && forced))
+		if(ares_can_interface() || forced))
 			marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
 		return
 	//Adjust the randomness there so everyone gets the same thing

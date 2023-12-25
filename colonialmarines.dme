@@ -1613,6 +1613,7 @@
 #include "code\modules\cm_preds\smartdisc.dm"
 #include "code\modules\cm_preds\thrall_items.dm"
 #include "code\modules\cm_preds\thrall_procs.dm"
+#include "code\modules\cm_preds\yaut_actions.dm"
 #include "code\modules\cm_preds\yaut_bracers.dm"
 #include "code\modules\cm_preds\yaut_hudprocs.dm"
 #include "code\modules\cm_preds\yaut_items.dm"

@@ -1,0 +1,6 @@
+author: "BadAtThisGame302"
+delete-after: True
+changes:
+  - rscadd: "Added a windbreaker to the Flight Control Operator surv."
+  - rscadd: "Added W-Y Flight Control access to the Flight Control Operator surv."
+  - bugfix: "fixed the Flight Control Operator path."

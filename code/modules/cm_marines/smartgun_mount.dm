@@ -315,7 +315,7 @@
 
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
-		for(var/obj/structure/machinery/machine in urange(MG.defense_check_range, loc,1))
+		for(var/obj/structure/machinery/machine in urange(MG.defense_check_range, loc, TRUE))
 			if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
 				to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
 				return

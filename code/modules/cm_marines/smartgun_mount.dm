@@ -1082,6 +1082,18 @@
 	zoom = 1
 	ammo = /datum/ammo/bullet/machinegun/doorgun
 
+/obj/structure/machinery/m56d_hmg/mg_turret/update_health(amount) //Negative values restores health.
+	health -= amount
+	if(health <= 0)
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		qdel(src)
+		return
+
+	if(health > health_max)
+		health = health_max
+	update_damage_state()
+	update_icon()
+
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"
 	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."

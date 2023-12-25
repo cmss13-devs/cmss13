@@ -431,3 +431,40 @@
   - rscadd: Ghosts can now toggle hearing listening devices or not. This is dependant
       on hearing radios and will not function to allow hearing devices without also
       hearing radios.
+2023-12-23:
+  BadAtThisGame302:
+  - balance: rebalanced goon skillset to include construction 1
+  - spellcheck: fixed Liason area typos to Liaison
+  - spellcheck: fixed the ICC Liason to ICC Liaison typo
+  fira:
+  - bugfix: Fixed X-mas barricade wiring not applying properly.
+  private-tristan:
+  - balance: xenos can now acid all window frames.
+2023-12-24:
+  BadAtThisGame302:
+  - rscadd: Added a windbreaker to the Flight Control Operator surv.
+  - rscadd: Added W-Y Flight Control access to the Flight Control Operator surv.
+  - bugfix: fixed the Flight Control Operator path.
+  Cthulhu80:
+  - rscadd: human mobs now scream whenever they get lunged at by a warrior.
+  - soundadd: added a new scream sound and put it into the existing scream list.
+  Drathek:
+  - bugfix: Fix crusher charge and tumble abilities going over unwired cades
+  Huffie56:
+  - bugfix: removed an extra light in bravo cryo room(to do just saw it)
+  - maptweak: added more areas (stern_point_defense, Lower Deck Stern Hull, Upper
+      Deck port Hallway Upper Deck starboard Hallway)
+  SabreML:
+  - rscdel: Removed the green overlay from camera consoles.
+  - rscadd: Allowed Xenomorphs to turn off the dropship's launch alarm by hitting
+      the nav computer.
+  - spellcheck: Made the `xenoboldnotice` span class bold rather than italic.
+  cuberound:
+  - bugfix: DS doorgun no longer drops the gun when destroyed
+  ihatethisengine:
+  - balance: "New healer drone ability \u2014 sacrifice. Healer drone can instantly\
+      \ transfer 75% of its current health, but for the great cost of the healer\u2019\
+      s own life."
+2023-12-25:
+  InsaneRed:
+  - balance: Tweaks down the buffed root of vanguard down to 1.8 from 2.5

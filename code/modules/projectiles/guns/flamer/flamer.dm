@@ -621,7 +621,7 @@
 		burn_damage = 0
 
 	if(!burn_damage)
-		to_chat(M, SPAN_DANGER("We step over the flames."))
+		to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
 		return
 
 	M.last_damage_data = weapon_cause_data

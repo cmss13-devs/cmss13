@@ -166,15 +166,15 @@
 
 /datum/teleport/instant/science/teleportChecks()
 	if(istype(teleatom, /obj/item/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
-		teleatom.visible_message(SPAN_DANGER("<B>The [teleatom] bounces off of the portal!</B>"))
+		teleatom.visible_message(SPAN_DANGER("<B>[teleatom] bounces off of the portal!</B>"))
 		return 0
 
 	if(length(teleatom.search_contents_for(/obj/item/disk/nuclear)))
 		if(istype(teleatom, /mob/living))
 			var/mob/living/MM = teleatom
-			MM.visible_message(SPAN_DANGER("<B>The [MM] bounces off of the portal!</B>"),SPAN_DANGER("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
+			MM.visible_message(SPAN_DANGER("<B>[MM] bounces off of the portal!</B>"),SPAN_DANGER("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
 		else
-			teleatom.visible_message(SPAN_DANGER("<B>The [teleatom] bounces off of the portal!</B>"))
+			teleatom.visible_message(SPAN_DANGER("<B>[teleatom] bounces off of the portal!</B>"))
 		return 0
 
 	if(is_admin_level(destination.z))

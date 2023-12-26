@@ -63,9 +63,10 @@
 /datum/behavior_delegate/carrier_eggsac/on_life()
 	if(length(eggs_sustained) > egg_sustain_cap)
 		var/obj/effect/alien/egg/carrier_egg/my_egg = eggs_sustained[1]
-		remove_egg_owner(my_egg)
-		my_egg.start_unstoppable_decay()
-		to_chat(bound_xeno, SPAN_XENOWARNING("You can only sustain [egg_sustain_cap] eggs off hive weeds! Your oldest placed egg is decaying rapidly."))
+		if(my_egg)
+			remove_egg_owner(my_egg)
+			my_egg.start_unstoppable_decay()
+			to_chat(bound_xeno, SPAN_XENOWARNING("You can only sustain [egg_sustain_cap] eggs off hive weeds! Your oldest placed egg is decaying rapidly."))
 
 	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
 		//Get the distance from us to our sustained egg
@@ -101,7 +102,7 @@
 	plasma_use_per_tick = 15
 
 	action_start_message = "You start forming eggs."
-	action_end_message = "You don't have enough plasma to support forming eggs."
+	action_end_message = "We don't have enough plasma to support forming eggs."
 	var/egg_generation_progress = 0
 
 	ability_primacy = XENO_PRIMARY_ACTION_3

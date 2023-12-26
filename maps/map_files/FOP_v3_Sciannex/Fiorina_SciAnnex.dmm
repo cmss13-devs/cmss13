@@ -6510,7 +6510,7 @@
 /area/fiorina/station/disco)
 "dYp" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
+	name = "LZ1: Hangar Landing Zone"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -73029,7 +73029,7 @@ nZB
 nZB
 iTt
 wQN
-wSm
+xnU
 wSm
 wSm
 wSm
@@ -73047,7 +73047,7 @@ wSm
 wSm
 wSm
 wSm
-wSm
+xnU
 wQN
 eAM
 wSm
@@ -73242,7 +73242,6 @@ nZB
 gBe
 wSm
 wSm
-xnU
 wSm
 wSm
 wSm
@@ -73258,7 +73257,8 @@ wSm
 wSm
 wSm
 wSm
-xnU
+wSm
+wSm
 wSm
 wSm
 eSF
@@ -74938,7 +74938,6 @@ nZB
 gBe
 wSm
 wSm
-xnU
 wSm
 wSm
 wSm
@@ -74954,7 +74953,8 @@ wSm
 wSm
 wSm
 wSm
-xnU
+wSm
+wSm
 wSm
 wSm
 eSF
@@ -75149,7 +75149,7 @@ nZB
 nZB
 bne
 wQN
-wSm
+xnU
 wSm
 wSm
 wSm
@@ -75167,7 +75167,7 @@ wSm
 wSm
 wSm
 wSm
-wSm
+xnU
 wQN
 xrH
 wSm
@@ -88846,7 +88846,7 @@ qaL
 nGZ
 uNs
 iOa
-xeO
+cCx
 xeO
 xeO
 xeO
@@ -88864,7 +88864,7 @@ xeO
 xeO
 xeO
 xeO
-xeO
+cCx
 iOa
 eLB
 uYi
@@ -89059,7 +89059,6 @@ pYD
 ehy
 xeO
 xeO
-cCx
 xeO
 xeO
 xeO
@@ -89075,7 +89074,8 @@ xeO
 xeO
 xeO
 xeO
-cCx
+xeO
+xeO
 xeO
 xeO
 oGR
@@ -90755,7 +90755,6 @@ pqY
 ehy
 doA
 xeO
-cCx
 xeO
 xeO
 xeO
@@ -90771,7 +90770,8 @@ xeO
 xeO
 xeO
 xeO
-cCx
+xeO
+xeO
 xeO
 xeO
 kIh
@@ -90966,7 +90966,7 @@ qaL
 nGZ
 aTe
 iOa
-xeO
+cCx
 xeO
 xeO
 xeO
@@ -90984,7 +90984,7 @@ xeO
 xeO
 xeO
 xeO
-xeO
+cCx
 iOa
 rrD
 uYi

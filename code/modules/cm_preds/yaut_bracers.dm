@@ -928,7 +928,7 @@
 	addtimer(VARSET_CALLBACK(src, disc_timer, FALSE), 10 SECONDS)
 
 	for(var/mob/living/simple_animal/hostile/smartdisc/S in range(7))
-		to_chat(caller, SPAN_WARNING("The [S] skips back towards you!"))
+		to_chat(caller, SPAN_WARNING("[S] skips back towards you!"))
 		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(S.loc)
 		qdel(S)
 
@@ -1148,7 +1148,7 @@
 		return TRUE
 
 	var/mob/living/carbon/human/victim = held_mob.grabbed_thing
-	var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
+	var/obj/item/clothing/gloves/yautja/bracer = victim.gloves
 	if(isspeciesyautja(victim) && !(victim.stat == DEAD))
 		to_chat(user, SPAN_WARNING("You cannot unlock the bracer of a living hunter!"))
 		return FALSE

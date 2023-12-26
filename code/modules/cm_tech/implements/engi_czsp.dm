@@ -35,7 +35,7 @@
 		return
 
 	if((user.get_active_hand()) != src)
-		to_chat(user, SPAN_WARNING("You must be holding the [src] to upgrade \the [D]!"))
+		to_chat(user, SPAN_WARNING("You must be holding [src] to upgrade [D]!"))
 		return
 
 	var/type_to_change_to = D.upgrade_string_to_type(chosen_upgrade)

@@ -5862,7 +5862,7 @@
 /area/lv624/ground/river/west_river)
 "aBo" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Robotics Landing Zone"
+	name = "LZ2: Robotics Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -8590,7 +8590,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aLz" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Nexus Landing Zone"
+	name = "LZ1: Nexus Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -12485,7 +12485,7 @@
 "bnz" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Corporate Liason"
+	name = "\improper Corporate Liaison"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -20011,7 +20011,7 @@
 "pQn" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	locked = 1;
-	name = "\improper Corporate Liason"
+	name = "\improper Corporate Liaison"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -31401,7 +31401,7 @@ aZP
 aOB
 oOB
 aRg
-aRg
+aCi
 aRg
 aRg
 aRg
@@ -31419,7 +31419,7 @@ aRg
 aRg
 aRg
 aRg
-aRg
+aCi
 aRg
 odw
 aRg
@@ -31631,7 +31631,6 @@ aTv
 aRg
 aRg
 aRg
-aCi
 aRg
 aRg
 aRg
@@ -31646,7 +31645,8 @@ aRg
 aRg
 aRg
 aRg
-aCi
+aRg
+aRg
 aKO
 aRg
 aEw
@@ -33455,7 +33455,7 @@ aTv
 aRg
 aRg
 aRg
-aCi
+aRg
 aRg
 aRg
 aRg
@@ -33470,7 +33470,7 @@ aRg
 aRg
 aRg
 aRg
-aCi
+aRg
 aRg
 aRg
 aEw
@@ -33681,7 +33681,7 @@ aZP
 aOB
 kvE
 aRg
-aRg
+aCi
 aRg
 aRg
 aRg
@@ -33699,7 +33699,7 @@ aRg
 aRg
 aRg
 aRg
-aRg
+aCi
 aRg
 byK
 aRg
@@ -58084,8 +58084,8 @@ aGz
 aGz
 aDJ
 ank
-ank
 ano
+ank
 ank
 ank
 ank
@@ -60364,8 +60364,8 @@ btF
 aDi
 aDL
 ank
-ank
 ano
+ank
 ank
 ank
 ank

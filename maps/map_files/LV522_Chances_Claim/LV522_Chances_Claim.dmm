@@ -1030,7 +1030,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "aDE" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Southeast Landing Zone"
+	name = "LZ2: Southeast Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/shuttle/drop2/lv522)
@@ -6324,7 +6324,7 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "dbi" = (
-/obj/item/clothing/suit/storage/marine/leader,
+/obj/item/clothing/suit/storage/marine/medium/leader,
 /obj/item/clothing/head/helmet/marine/leader{
 	pixel_x = 9;
 	pixel_y = 14
@@ -7115,7 +7115,7 @@
 /area/lv522/indoors/a_block/dorms)
 "dos" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Southwest Landing Zone"
+	name = "LZ1: Southwest Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/shuttle/drop1/lv522)
@@ -28075,7 +28075,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/clothing/suit/storage/marine/rto,
+/obj/item/clothing/suit/storage/marine/medium/rto,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -54589,7 +54589,7 @@
 	},
 /area/lv522/indoors/a_block/corpo/glass)
 "uQi" = (
-/obj/item/clothing/suit/storage/marine/smooth,
+/obj/item/clothing/suit/storage/marine/medium/smooth,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -62142,7 +62142,7 @@
 /area/lv522/indoors/c_block/casino)
 "xHz" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Corporate Liason Office "
+	name = "\improper Corporate Liaison Office "
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"

@@ -86,10 +86,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/medical)
-"ade" = (
-/obj/structure/machinery/camera/autoname/lz_camera,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "adw" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/cargo)
@@ -788,7 +784,7 @@
 /area/varadero/exterior/pool)
 "aAX" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2 - Palm Airfield"
+	name = "LZ2: Palm Airfield"
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -12292,14 +12288,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/varadero/interior/comms1)
-"ias" = (
-/obj/structure/machinery/camera/autoname/lz_camera,
-/obj/structure/machinery/landinglight/ds1/spoke{
-	pixel_y = -5;
-	pixel_x = 13
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/lz2_near)
 "iat" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -18127,6 +18115,14 @@
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/carpet,
 /area/varadero/interior/administration)
+"lIW" = (
+/obj/structure/machinery/landinglight/ds1/spoke{
+	pixel_y = -5;
+	pixel_x = 13
+	},
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "lJo" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -23224,7 +23220,7 @@
 /area/varadero/interior/security)
 "oXw" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1 - Pontoon Dock"
+	name = "LZ1: Pontoon Dock"
 	},
 /turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz1_near)
@@ -28324,6 +28320,14 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
+"sbP" = (
+/obj/structure/machinery/landinglight/ds1/spoke{
+	pixel_y = -5;
+	pixel_x = -13
+	},
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "sbX" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -36538,14 +36542,6 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/technical_storage)
-"xpL" = (
-/obj/structure/machinery/camera/autoname/lz_camera,
-/obj/structure/machinery/landinglight/ds1/spoke{
-	pixel_y = -5;
-	pixel_x = -13
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/lz2_near)
 "xpP" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/comms1)
@@ -49964,8 +49960,7 @@ wMw
 pbp
 sHV
 bZU
-bZU
-bZU
+rtm
 bZU
 bZU
 bZU
@@ -49983,6 +49978,7 @@ bZU
 bZU
 bZU
 bZU
+rtm
 bZU
 xsH
 mrC
@@ -50148,7 +50144,7 @@ irk
 bZU
 bZU
 bZU
-rtm
+bZU
 bZU
 bZU
 bZU
@@ -50163,7 +50159,7 @@ bZU
 bZU
 bZU
 qOh
-rtm
+bZU
 bZU
 bZU
 bwP
@@ -51604,7 +51600,7 @@ irk
 bZU
 bZU
 bZU
-rtm
+bZU
 bZU
 bZU
 bZU
@@ -51619,7 +51615,7 @@ qOh
 bZU
 bZU
 bZU
-rtm
+bZU
 bZU
 bZU
 bwP
@@ -51784,8 +51780,7 @@ wMw
 pbp
 cYZ
 bZU
-bZU
-bZU
+rtm
 bZU
 bZU
 bZU
@@ -51803,6 +51798,7 @@ bZU
 bZU
 bZU
 bZU
+rtm
 bZU
 miF
 mrC
@@ -63426,25 +63422,25 @@ wlB
 lTg
 lTg
 lTg
-lTg
+emP
 pXT
 lTg
 lTg
 wlB
 wlB
 wlB
-lTg
 lTg
 lTg
 emP
 lTg
+lTg
 wlB
 wlB
 wlB
 wlB
 wlB
 lTg
-pXT
+lIW
 pXT
 rhu
 wlB
@@ -63610,7 +63606,7 @@ eia
 lTg
 lTg
 lTg
-ade
+wlB
 wlB
 wlB
 wlB
@@ -63625,7 +63621,7 @@ wlB
 wlB
 wlB
 nFX
-ias
+pXT
 lTg
 wlB
 lTg
@@ -65066,7 +65062,7 @@ lTg
 lTg
 lTg
 lTg
-ade
+wlB
 wlB
 wlB
 wlB
@@ -65081,7 +65077,7 @@ nFX
 wlB
 wlB
 wlB
-xpL
+uHD
 lTg
 wlB
 lTg
@@ -65246,25 +65242,25 @@ lTg
 lTg
 wlB
 lTg
-lTg
+emP
 uHD
 lTg
 lTg
 wlB
 wlB
 wlB
-lTg
 lTg
 lTg
 emP
 lTg
+lTg
 wlB
 wlB
 wlB
 wlB
 wlB
 lTg
-uHD
+sbP
 uHD
 lTg
 lTg

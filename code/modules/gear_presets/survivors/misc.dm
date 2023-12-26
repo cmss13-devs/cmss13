@@ -1,13 +1,13 @@
 
 
 /*
-everything bellow isn't used or out of place.
+Everything below isn't used or out of place.
 
 */
 
 
-// ----- Prisioner Survivors
-// after double check prisoner isn't being used anywhere.
+// ----- Prisoner Survivors
+// Used in Fiorina Science Annex.
 /datum/equipment_preset/survivor/prisoner
 	name = "Survivor - Prisoner"
 	assignment = "Prisoner"
@@ -29,7 +29,7 @@ everything bellow isn't used or out of place.
 	add_survivor_weapon_civilian(new_human)
 	..()
 
-// after double check gangleader isn't being used anywhere.
+// Used in Fiorina Science Annex.
 /datum/equipment_preset/survivor/gangleader
 	name = "Survivor - Gang Leader"
 	assignment = "Gang Leader"
@@ -51,7 +51,7 @@ everything bellow isn't used or out of place.
 
 // ----- Civilian Survivor
 
-// after double check civilian isn't being used anywhere.
+// Used in LV-624, Solaris Ridge, Trijent Dam, Fiorina Science Annex and Kutjevo Refinery.
 /datum/equipment_preset/survivor/civilian
 	name = "Survivor - Civilian"
 	assignment = "Civilian"
@@ -122,7 +122,7 @@ everything bellow isn't used or out of place.
 
 // ----- Roughneck Survivor
 
-// after double check roughneck isn't being used anywhere.
+// Used in Trijent Dam.
 /datum/equipment_preset/survivor/roughneck
 	name = "Survivor - Roughneck"
 	assignment = "Roughneck"
@@ -147,7 +147,7 @@ everything bellow isn't used or out of place.
 
 // ----- Bum Survivor
 
-// after double check beachbum isn't being used anywhere.
+// Used in New Varadero.
 /datum/equipment_preset/survivor/beachbum
 	name = "Survivor - Beach Bum"
 	assignment = "Beach Bum"
@@ -173,12 +173,12 @@ everything bellow isn't used or out of place.
 
 // ----- WY Survivors
 
-// after double check goon isn't being used anywhere.
+// Used in LV-624.
 /datum/equipment_preset/survivor/goon
 	name = "Survivor - Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
-	paygrade = "WEY-GOON"
+	paygrade = PAY_SHORT_CPO
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -252,12 +252,12 @@ everything bellow isn't used or out of place.
 
 	..()
 
-// after double check /new_varadero/commander isn't being used anywhere.
+// New Varadero CO Survivor.
 /datum/equipment_preset/survivor/new_varadero/commander
 	name = "Survivor - USASF Commander"
 	assignment = "USASF Commander"
 	skills = /datum/skills/commander
-	paygrade = "NO5"
+	paygrade = PAY_SHORT_NO5
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "USASF CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

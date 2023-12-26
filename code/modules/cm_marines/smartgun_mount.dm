@@ -703,6 +703,9 @@
 	if((dir == NORTH) && (angle > 180) && (abs(360 - angle) > shoot_degree)) // If north and shooting to the left, we do some extra math
 		return
 
+	if((dir == NORTH) && (angle < 180) && (angle > shoot_degree))
+		return
+
 	else if((dir != NORTH) && (abs(angle - dir2angle(dir)) > shoot_degree))
 		return
 

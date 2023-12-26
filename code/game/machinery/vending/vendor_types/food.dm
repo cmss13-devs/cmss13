@@ -38,8 +38,8 @@
 	unslashable = FALSE
 	wrenchable = TRUE
 
-/obj/structure/machinery/cm_vending/sorted/boozeomat/get_listed_products(mob/user)
-	return list(
+/obj/structure/machinery/cm_vending/sorted/boozeomat/populate_product_list(scale)
+	listed_products = list(
 		list("ALCOHOL", -1, null, null),
 		list("Ale", 6, /obj/item/reagent_container/food/drinks/cans/ale, VENDOR_ITEM_REGULAR),
 		list("Beer", 6, /obj/item/reagent_container/food/drinks/cans/beer, VENDOR_ITEM_REGULAR),
@@ -97,8 +97,8 @@
 	unslashable = FALSE
 	wrenchable = TRUE
 
-/obj/structure/machinery/cm_vending/sorted/boozeomat/chess/get_listed_products(mob/user)
-	return list(
+/obj/structure/machinery/cm_vending/sorted/boozeomat/chess/populate_product_list(scale)
+	listed_products = list(
 		list("White Pieces", -1, null, null),
 		list("Pawn", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn, VENDOR_ITEM_REGULAR),
 		list("Bishop", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_bishop, VENDOR_ITEM_REGULAR),

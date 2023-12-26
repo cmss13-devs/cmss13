@@ -77,3 +77,4 @@
 #define COMSIG_CAMERA_SET_TARGET "camera_manager_set_target"
 #define COMSIG_CAMERA_SET_AREA "camera_manager_set_area"
 #define COMSIG_CAMERA_CLEAR "camera_manager_clear_target"
+#define COMSIG_CAMERA_REFRESH "camera_manager_refresh"

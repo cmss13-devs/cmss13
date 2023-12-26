@@ -686,11 +686,14 @@ CULT
 	if(!action_cooldown_check())
 		return FALSE
 	var/datum/hive_status/mutated/weave/nexus = GLOB.hive_datum[XENO_HIVE_WEAVE]
-	if(!istype(nexus))
-		to_chat(owner, SPAN_WARNING("Error: Weave Hive not found. Ping forest2001."))
-		return FALSE
 	var/mob/living/carbon/human/cultist = owner
-	if (cultist.blood_volume < BLOOD_VOLUME_SAFE)
+	if(!istype(nexus))
+		to_chat(cultist, SPAN_WARNING("Error: Weave Hive not found. Ping forest2001."))
+		return FALSE
+	if(nexus.weave_energy >= nexus.weave_energy_max)
+		to_chat(cultist, SPAN_XENOWARNING("The Weave is strong enough here already, it does not require replenishment."))
+		return FALSE
+	if(cultist.blood_volume < BLOOD_VOLUME_SAFE)
 		to_chat(cultist, SPAN_XENOWARNING("You do not have enough blood to do this safely! The Weave will not risk harming you."))
 		return FALSE
 

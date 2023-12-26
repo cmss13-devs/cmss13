@@ -1093,6 +1093,7 @@
 
 	var/bioscan_time = 0
 	var/weave_energy = 1000
+	var/weave_energy_max = 5000
 
 /datum/hive_status/mutated/weave/proc/can_use_energy(cost)
 	if((weave_energy - cost) < 0)

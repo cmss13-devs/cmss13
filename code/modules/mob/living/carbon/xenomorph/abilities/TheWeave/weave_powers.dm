@@ -14,6 +14,10 @@
 		to_chat(self, SPAN_XENOWARNING("You cannot reach The Weave!"))
 		return FALSE
 
+	if(nexus.weave_energy >= nexus.weave_energy_max)
+		to_chat(self, SPAN_XENOWARNING("The Weave is strong enough here already, it does not require replenishment."))
+		return FALSE
+
 	self.visible_message(SPAN_XENONOTICE("[self] begins to focus their energy!"), SPAN_XENONOTICE("You start to focus your energies!"))
 	if (do_after(self, 10 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY))
 		if (!check_and_use_plasma_owner())

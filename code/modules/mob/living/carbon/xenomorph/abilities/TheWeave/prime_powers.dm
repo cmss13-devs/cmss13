@@ -79,7 +79,7 @@
 
 		var/list/target_list = list()
 		for(var/mob/living/carbon/possible_target in view(5, self))
-			if(possible_target == self || !possible_target.client || !istype(possible_target))
+			if(possible_target == self || !istype(possible_target) || possible_target.stat == DEAD)
 				continue
 			target_list += possible_target
 		for(var/mob/living/carbon/target in target_list)

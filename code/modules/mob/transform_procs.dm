@@ -277,13 +277,16 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
 
 	var/truecause = "Unknown Means"
+	var/traitsource = TRAIT_SOURCE_ADMIN
 	switch(cause)
 		if(CAUSE_ADMIN)
 			truecause = "Divine Intervention"
 		if(CAUSE_ESSENCE)
 			truecause = "Essence Exposure"
+			traitsource = TRAIT_SOURCE_ABILITY("WeaveExposure")
 		if(CAUSE_WEAVER)
 			truecause = "The Prime Weaver"
+			traitsource = TRAIT_SOURCE_ABILITY("WeaveBlessing")
 
 	if(!istype(hive))
 		message_admins("[truecause] attempted to make [key_name(src)] a Weave cultist, but The Weave doesn't exist!")
@@ -303,7 +306,7 @@
 	to_chat(src, SPAN_XENODANGER("Worship The Weave and listen to the Prime Weaver for orders. You are bound to peace and fanatic neutrality, however, you may defend yourself and The Weave if there is no alternative.<hr>"))
 
 	xeno_message("[src] has been claimed by The Weave!", 2, XENO_HIVE_WEAVE)
-	ADD_TRAIT(src, TRAIT_WEAVE_SENSITIVE, TRAIT_SOURCE_ADMIN)
+	ADD_TRAIT(src, TRAIT_WEAVE_SENSITIVE, traitsource)
 
 	allow_gun_usage = FALSE
 	setBrainLoss(0)

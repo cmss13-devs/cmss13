@@ -161,7 +161,7 @@
 	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
-	point_cost = 500
+	point_cost = 200
 	shorthand = "Sentry"
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
@@ -701,7 +701,7 @@
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
 	SA.source_mob = user
-	SA.detonate_on(impact)
+	SA.detonate_on(impact, src)
 
 /obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, mob/user = usr)
 	set waitfor = 0
@@ -727,7 +727,7 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact)
+	SA.detonate_on(impact, src)
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
@@ -818,7 +818,7 @@
 	firing_delay = 10 //1 seconds
 	bound_height = 32
 	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
-	point_cost = 400
+	point_cost = 200
 	shorthand = "LCH"
 
 /obj/structure/dropship_equipment/weapon/launch_bay/update_equipment()
@@ -1432,4 +1432,4 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact)
+	SA.detonate_on(impact, src)

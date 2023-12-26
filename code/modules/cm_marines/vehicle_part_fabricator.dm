@@ -31,7 +31,7 @@
 /obj/structure/machinery/part_fabricator/dropship/ui_data(mob/user)
 	return list(
 		"points" = get_point_store(),
-		"omnisentrygun_price" =omnisentry_price
+		"omnisentrygun_price" = omnisentry_price
 	)
 
 /obj/structure/machinery/part_fabricator/power_change()

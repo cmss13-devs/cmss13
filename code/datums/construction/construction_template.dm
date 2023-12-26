@@ -46,7 +46,7 @@
 	if(plasma_stored >= plasma_required)
 		to_chat(xeno, SPAN_WARNING("\The [name] does not require plasma."))
 		return
-	to_chat(xeno, SPAN_NOTICE("You begin adding \the plasma to \the [name]."))
+	to_chat(xeno, SPAN_NOTICE("We begin adding \the plasma to \the [name]."))
 	xeno_attack_delay(xeno)
 	if(!do_after(xeno, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return

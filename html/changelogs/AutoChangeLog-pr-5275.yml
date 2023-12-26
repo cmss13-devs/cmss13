@@ -1,8 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - rscadd: "If ARES is destroyed, systems such as bioscan also shut down, this will be expanded in the future"
-  - rscadd: "ARES plays an announcement when destroyed"
-  - code_imp: "Procs to check for APOLLO processor and if ARES is alive added"
-  - refactor: "ARES subsystems modified to utilize new procs"
-  - admin: "Prompt to force a Marine Bioscan only shows when ARES is unable to perform the bioscan."

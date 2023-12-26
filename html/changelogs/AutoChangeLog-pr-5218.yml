@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - code_imp: "Made the Tech Tree subsystem initialise faster."

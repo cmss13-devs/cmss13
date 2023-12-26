@@ -61,7 +61,7 @@
 		return
 	visible_message(SPAN_NOTICE("[src] starts printing something."))
 	spend_point_store(cost)
-	if(part_type==/obj/structure/ship_ammo/sentry)
+	if(istype(part_type,/obj/structure/ship_ammo/sentry))
 		omnisentry_price +=omnisentry_price_scale
 	icon_state = "drone_fab_active"
 	busy = TRUE

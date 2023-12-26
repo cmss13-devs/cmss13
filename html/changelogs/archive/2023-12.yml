@@ -465,3 +465,6 @@
   - balance: "New healer drone ability \u2014 sacrifice. Healer drone can instantly\
       \ transfer 75% of its current health, but for the great cost of the healer\u2019\
       s own life."
+2023-12-25:
+  InsaneRed:
+  - balance: Tweaks down the buffed root of vanguard down to 1.8 from 2.5

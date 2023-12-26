@@ -70,7 +70,7 @@ CIVILIAN
 
 /datum/skills/civilian/survivor/goon
 	name = "Survivor Goon"
-	skills = list(
+	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,

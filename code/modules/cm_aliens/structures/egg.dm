@@ -49,7 +49,7 @@
 	if(status == EGG_BURST || status == EGG_DESTROYED)
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."), \
-		SPAN_XENONOTICE("You clear the hatched egg."))
+		SPAN_XENONOTICE("We clear the hatched egg."))
 		playsound(src.loc, "alien_resin_break", 25)
 		qdel(src)
 		return XENO_NONCOMBAT_ACTION
@@ -57,7 +57,7 @@
 	if(M.hivenumber != hivenumber)
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]"),
-			SPAN_XENOWARNING("You crush \the [src]"))
+			SPAN_XENOWARNING("We crush \the [src]"))
 		Burst(TRUE)
 		return XENO_ATTACK_ACTION
 
@@ -70,9 +70,9 @@
 			return XENO_NO_DELAY_ACTION
 		if(EGG_GROWN)
 			if(islarva(M))
-				to_chat(M, SPAN_XENOWARNING("You nudge the egg, but nothing happens."))
+				to_chat(M, SPAN_XENOWARNING("We nudge the egg, but nothing happens."))
 				return
-			to_chat(M, SPAN_XENONOTICE("You retrieve the child."))
+			to_chat(M, SPAN_XENONOTICE("We retrieve the child."))
 			Burst(FALSE)
 	return XENO_NONCOMBAT_ACTION
 
@@ -186,7 +186,7 @@
 			if(EGG_BURST)
 				if(user)
 					visible_message(SPAN_XENOWARNING("[user] slides [F] back into [src]."), \
-						SPAN_XENONOTICE("You place the child back in to [src]."))
+						SPAN_XENONOTICE("We place the child back in to [src]."))
 					user.temp_drop_inv_item(F)
 				else
 					visible_message(SPAN_XENOWARNING("[F] crawls back into [src]!")) //Not sure how, but let's roll with it for now.

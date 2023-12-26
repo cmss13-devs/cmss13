@@ -65,7 +65,6 @@
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/projectile/P)
 	var/turf/T = get_turf(M)
 	M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-	M.apply_effect(2, WEAKEN)
 	M.apply_effect(2, PARALYZE)
 	if(ishuman_strict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(300, P.dir, P.weapon_cause_data, 100)
@@ -84,7 +83,6 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-		M.apply_effect(4, WEAKEN)
 		M.apply_effect(4, PARALYZE)
 		hit_something = 1
 		continue

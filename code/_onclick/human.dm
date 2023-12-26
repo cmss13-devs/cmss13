@@ -86,6 +86,7 @@
 	return HANDLE_CLICK_PASS_THRU
 
 /atom/proc/attack_hand(mob/user)
+	// When hooking things to this signal, keep in mind not every attack_hand override calls parent up to here.
 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user)
 	return
 

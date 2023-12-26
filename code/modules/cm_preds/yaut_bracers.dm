@@ -1148,7 +1148,7 @@
 		return TRUE
 
 	var/mob/living/carbon/human/victim = held_mob.grabbed_thing
-	var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
+	var/obj/item/clothing/gloves/yautja/bracer = victim.gloves
 	if(isspeciesyautja(victim) && !(victim.stat == DEAD))
 		to_chat(user, SPAN_WARNING("You cannot unlock the bracer of a living hunter!"))
 		return FALSE

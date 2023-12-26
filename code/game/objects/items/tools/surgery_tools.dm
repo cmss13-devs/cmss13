@@ -215,7 +215,7 @@
 
 /obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
 	if(unlimited_gel)
-		to_chat(user, SPAN_NOTICE(" [refilling_obj] refuses to fill [src]."))
+		to_chat(user, SPAN_NOTICE("[refilling_obj] refuses to fill [src]."))
 		return
 	if(remaining_gel >= 100)
 		to_chat(user, SPAN_NOTICE("[src] cannot be filled with any more bone gel."))
@@ -223,7 +223,7 @@
 
 	while(remaining_gel < 100)
 		if(!do_after(user, time_per_refill, INTERRUPT_ALL, BUSY_ICON_MEDICAL, refilling_obj))
-			continue
+			break
 		playsound(refilling_obj, "sound/machines/ping.ogg", 10)
 		remaining_gel = clamp(remaining_gel + 10, 0, 100)
 		to_chat(user, SPAN_NOTICE("[refilling_obj] chimes, and displays \"[remaining_gel]% filled\"."))

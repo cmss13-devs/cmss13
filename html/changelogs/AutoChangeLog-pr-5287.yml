@@ -1,0 +1,6 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - rscdel: "Removed old crystal code from xenos"
+  - code_imp: "Renames still used vars from crystal to plasma"
+  - code_imp: "Removes crystal define in place of plasma string"

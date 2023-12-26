@@ -90,7 +90,6 @@
 	update_inv_r_hand()
 	update_inv_l_hand()
 	update_inv_back()
-	update_inv_resource()
 	update_icons()
 
 /* CRUTCH ZONE - Update icons when relevant status happen - Ideally do this properly and for everything, then kill update_icons() someday */
@@ -99,19 +98,32 @@
 	. = ..()
 	if(. != new_value)
 		update_icons() // Snowflake handler for xeno resting icons
+		update_wounds()
 
 /mob/living/carbon/xenomorph/on_floored_start()
 	. = ..()
 	update_icons()
+	update_wounds()
 /mob/living/carbon/xenomorph/on_floored_end()
 	. = ..()
 	update_icons()
+	update_wounds()
 /mob/living/carbon/xenomorph/on_incapacitated_trait_gain()
 	. = ..()
 	update_icons()
+	update_wounds()
 /mob/living/carbon/xenomorph/on_incapacitated_trait_loss()
 	. = ..()
 	update_icons()
+	update_wounds()
+/mob/living/carbon/xenomorph/on_knockedout_trait_gain()
+	. = ..()
+	update_icons()
+	update_wounds()
+/mob/living/carbon/xenomorph/on_knockedout_trait_loss()
+	. = ..()
+	update_icons()
+	update_wounds()
 
 /* ^^^^^^^^^^^^^^ End Icon updates */
 
@@ -177,12 +189,6 @@
 	backpack_icon_holder.layer = -X_BACK_LAYER
 	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		backpack_icon_holder.layer = -X_BACK_FRONT_LAYER
-
-/mob/living/carbon/xenomorph/proc/update_inv_resource()
-	remove_overlay(X_RESOURCE_LAYER)
-	if(crystal_stored)
-		overlays_standing[X_RESOURCE_LAYER] = image("icon" = icon, "icon_state" = "[caste_type]_resources", "layer" =-X_RESOURCE_LAYER)
-		apply_overlay(X_RESOURCE_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)

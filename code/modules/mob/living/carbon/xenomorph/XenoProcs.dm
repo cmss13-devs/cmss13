@@ -151,14 +151,14 @@
 /mob/living/carbon/xenomorph/proc/check_state(permissive = FALSE)
 	if(!permissive)
 		if(is_mob_incapacitated() || body_position == LYING_DOWN || buckled || evolving || !isturf(loc))
-			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
-			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 	else
 		if(is_mob_incapacitated() || buckled || evolving)
-			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 
 	return TRUE
@@ -166,12 +166,12 @@
 //Checks your plasma levels and gives a handy message.
 /mob/living/carbon/xenomorph/proc/check_plasma(value)
 	if(stat)
-		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+		to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 		return FALSE
 
 	if(value)
 		if(plasma_stored < value)
-			to_chat(src, SPAN_WARNING("You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored."))
+			to_chat(src, SPAN_WARNING("We do not have enough plasma to do this. We require [value] plasma but have only [plasma_stored] stored."))
 			return FALSE
 	return TRUE
 
@@ -283,37 +283,41 @@
 			var/mob/living/carbon/human/H = M
 			if(H.check_shields(15, "the pounce")) //Human shield block.
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
-					SPAN_XENODANGER("You slam into [H]!"), null, 5)
-				apply_effect(1, WEAKEN)
+					SPAN_XENODANGER("We slam into [H]!"), null, 5)
+				KnockDown(1)
+				Stun(1)
 				throwing = FALSE //Reset throwing manually.
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
 			if(isyautja(H))
 				if(H.check_shields(0, "the pounce", 1))
-					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
+					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks our pouncing form with the combistick!"), null, 5)
 					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					playsound(H, "bonk", 75, FALSE)
 					return
 				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
 					visible_message(SPAN_DANGER("[H] body slams [src]!"),
-						SPAN_XENODANGER("[H] body slams you!"), null, 5)
-					apply_effect(3, WEAKEN)
+						SPAN_XENODANGER("[H] body slams us!"), null, 5)
+					KnockDown(3)
+					Stun(3)
 					throwing = FALSE
 					return
 			if(iscolonysynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
-					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
-				apply_effect(1.5, WEAKEN)
+					SPAN_XENODANGER("[H] throws us down after withstanding the pounce!"), null, 5)
+				KnockDown(1.5)
+				Stun(1.5)
 				throwing = FALSE
 				return
 
 
-	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
+	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("We [pounceAction.ability_name] onto [M]!"), null, 5)
 
 	if (pounceAction.knockdown)
-		M.apply_effect(pounceAction.knockdown_duration, WEAKEN)
+		M.KnockDown(pounceAction.knockdown_duration)
+		M.Stun(pounceAction.knockdown_duration) // To replicate legacy behavior. Otherwise M39 Armbrace users for example can still shoot
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)
@@ -398,13 +402,13 @@
 			victim.forceMove(get_true_turf(loc))
 
 			visible_message(SPAN_XENOWARNING("[src] hurls out the contents of their stomach!"), \
-			SPAN_XENOWARNING("You hurl out the contents of your stomach!"), null, 5)
+			SPAN_XENOWARNING("We hurl out the contents of our stomach!"), null, 5)
 			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
 
 			if (stuns)
 				victim.adjust_effect(2, STUN)
 	else
-		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
+		to_chat(src, SPAN_WARNING("There's nothing in our belly that needs regurgitating."))
 
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE)
 	var/has_obstacle
@@ -503,11 +507,11 @@
 	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""
-		to_chat(src, SPAN_XENOWARNING("Your pheromones wane. The Queen is no longer granting you her pheromones."))
+		to_chat(src, SPAN_XENOWARNING("Our pheromones wane. The Queen is no longer granting us her pheromones."))
 	else
 		leader_aura_strength = Q.aura_strength
 		leader_current_aura = Q.current_aura
-		to_chat(src, SPAN_XENOWARNING("Your pheromones have changed. The Queen has new plans for the Hive."))
+		to_chat(src, SPAN_XENOWARNING("Our pheromones have changed. The Queen has new plans for the Hive."))
 	hud_set_pheromone()
 
 /mob/living/carbon/xenomorph/proc/nocrit(wowave)
@@ -595,7 +599,7 @@
 		burn_amount *= 0.5
 
 	apply_damage(burn_amount, BURN)
-	to_chat(src, SPAN_DANGER("Your flesh, it melts!"))
+	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))
 	updatehealth()
 	return TRUE
 
@@ -621,7 +625,7 @@
 		return
 	target.xenos_tracking |= src
 	tracked_marker = target
-	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
+	to_chat(src, SPAN_XENONOTICE("We start tracking the [target.mark_meaning.name] resin mark."))
 	to_chat(src, SPAN_INFO("Shift click the compass to watch the mark, alt click to stop tracking"))
 
 /mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
@@ -639,7 +643,7 @@
 			if(destroyed)
 				to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
 			else
-				to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+				to_chat(src, SPAN_XENONOTICE("We stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
 		tracked_marker.xenos_tracking -= src
 
 	tracked_marker = null

@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - bugfix: "Fixed the death message from GAU-21 and Laser Cannon strikes saying that the player was killed by the ammo crate."

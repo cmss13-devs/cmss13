@@ -6,6 +6,8 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	climbable = TRUE
 	layer = ABOVE_OBJ_LAYER //so they always appear above attach points when installed
+	var/shorthand
+
 	var/list/equip_categories //on what kind of base this can be installed.
 	var/obj/effect/attach_point/ship_base //the ship base the equipment is currently installed on.
 	var/uses_ammo = FALSE //whether it uses ammo
@@ -22,7 +24,7 @@
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
 	if(linked_shuttle)
-		linked_shuttle.equipments -= src
+		SEND_SIGNAL(linked_shuttle, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, src)
 		linked_shuttle = null
 	if(ship_base)
 		ship_base.installed_equipment = null
@@ -122,7 +124,7 @@
 		ship_base.installed_equipment = null
 		ship_base = null
 		if(linked_shuttle)
-			linked_shuttle.equipments -= src
+			SEND_SIGNAL(linked_shuttle, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, src)
 			linked_shuttle = null
 			if(linked_console && linked_console.selected_equipment == src)
 				linked_console.selected_equipment = null
@@ -159,7 +161,8 @@
 	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
-	point_cost = 500
+	point_cost = 200
+	shorthand = "Sentry"
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 	combat_equipment = FALSE
@@ -175,6 +178,28 @@
 	. = ..()
 	if(!deployed_turret)
 		. += "Its turret is missing."
+
+/obj/structure/dropship_equipment/sentry_holder/ui_data(mob/user)
+	var/obj/structure/machinery/defenses/defense = deployed_turret
+	. = list()
+	var/is_deployed = deployed_turret.loc != src
+	.["name"] = defense.name
+	.["area"] = get_area(defense)
+	.["active"] = defense.turned_on
+	.["nickname"] = defense.nickname
+	.["camera_available"] = defense.has_camera && is_deployed
+	.["selection_state"] = list()
+	.["kills"] = defense.kills
+	.["iff_status"] = defense.faction_group
+	.["health"] = defense.health
+	.["health_max"] = defense.health_max
+	.["deployed"] = is_deployed
+
+	if(istype(defense, /obj/structure/machinery/defenses/sentry))
+		var/obj/structure/machinery/defenses/sentry/sentrygun = defense
+		.["rounds"] = sentrygun.ammo.current_rounds
+		.["max_rounds"] = sentrygun.ammo.max_rounds
+		.["engaged"] = length(sentrygun.targets)
 
 /obj/structure/dropship_equipment/sentry_holder/on_launch()
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
@@ -290,6 +315,7 @@
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
 	point_cost = 50
+	shorthand = "MG"
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 	combat_equipment = FALSE
@@ -299,6 +325,21 @@
 	if(!deployed_mg)
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
+
+/obj/structure/dropship_equipment/mg_holder/Destroy()
+	QDEL_NULL(deployed_mg)
+	. = ..()
+
+/obj/structure/dropship_equipment/mg_holder/ui_data(mob/user)
+	. = list()
+	var/is_deployed = deployed_mg.loc == src
+	.["name"] = name
+	.["selection_state"] = list()
+	.["health"] = health
+	.["health_max"] = 100
+	.["rounds"] = deployed_mg.rounds
+	.["max_rounds"] = deployed_mg.rounds_max
+	.["deployed"] = is_deployed
 
 /obj/structure/dropship_equipment/mg_holder/get_examine_text(mob/user)
 	. = ..()
@@ -330,6 +371,9 @@
 
 	..()
 
+/obj/structure/dropship_equipment/mg_holder/equipment_interact(mob/user)
+	attack_hand(user)
+
 /obj/structure/dropship_equipment/mg_holder/update_equipment()
 	if(ship_base)
 		setDir(ship_base.dir)
@@ -339,9 +383,10 @@
 			if(ship_base.base_category == DROPSHIP_WEAPON)
 				switch(dir)
 					if(NORTH)
-						if( istype(get_step(src, WEST), /turf/open) )
+						var/step_contents = get_step(src, EAST).contents
+						if(locate(/obj/structure) in step_contents)
 							deployed_mg.pixel_x = 5
-						else if ( istype(get_step(src, EAST), /turf/open) )
+						else
 							deployed_mg.pixel_x = -5
 					if(EAST)
 						deployed_mg.pixel_y = 9
@@ -359,7 +404,7 @@
 			deployed_mg.forceMove(src)
 			deployed_mg.setDir(dir)
 		else
-			icon_state = "mg_system_destroyed"
+			icon_state = "sentry_system_destroyed"
 
 /obj/structure/dropship_equipment/mg_holder/proc/deploy_mg(mob/user)
 	if(deployed_mg)
@@ -368,12 +413,11 @@
 		if(ship_base.base_category == DROPSHIP_WEAPON)
 			switch(dir)
 				if(NORTH)
-					if( istype(get_step(src, WEST), /turf/open) )
+					var/step_contents = get_step(src, EAST).contents
+					if(locate(/obj/structure) in step_contents)
 						deployed_mg.forceMove(get_step(src, WEST))
-					else if ( istype(get_step(src, EAST), /turf/open) )
-						deployed_mg.forceMove(get_step(src, EAST))
 					else
-						deployed_mg.forceMove(get_step(src, NORTH))
+						deployed_mg.forceMove(get_step(src, EAST))
 				if(EAST)
 					deployed_mg.forceMove(get_step(src, SOUTH))
 				if(WEST)
@@ -446,6 +490,7 @@
 
 /obj/structure/dropship_equipment/electronics/spotlights
 	name = "\improper AN/LEN-15 Spotlight"
+	shorthand = "Spotlight"
 	icon_state = "spotlights"
 	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
@@ -496,6 +541,7 @@
 
 /obj/structure/dropship_equipment/electronics/targeting_system
 	name = "\improper AN/AAQ-178 Weapon Targeting System"
+	shorthand = "Targeting"
 	icon_state = "targeting_system"
 	desc = "A targeting system for dropships. It improves firing accuracy on laser targets. Fits on electronics attach points. You need a powerloader to lift this."
 	point_cost = 800
@@ -508,7 +554,8 @@
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
 	name = "\improper AN/AVD-60 LZ detector"
-	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone."
+	shorthand = "LZ Detector"
+	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
 	icon_state = "lz_detector"
 	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
@@ -654,7 +701,7 @@
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
 	SA.source_mob = user
-	SA.detonate_on(impact)
+	SA.detonate_on(impact, src)
 
 /obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, mob/user = usr)
 	set waitfor = 0
@@ -680,7 +727,7 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact)
+	SA.detonate_on(impact, src)
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
@@ -690,6 +737,7 @@
 	point_cost = 400
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
+	shorthand = "GAU"
 
 /obj/structure/dropship_equipment/weapon/heavygun/update_icon()
 	if(ammo_equipped)
@@ -706,6 +754,7 @@
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
 	point_cost = 600
+	shorthand = "MSL"
 
 /obj/structure/dropship_equipment/weapon/rocket_pod/deplete_ammo()
 	ammo_equipped = null //nothing left to empty after firing
@@ -727,6 +776,7 @@
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 10 //1 seconds
 	point_cost = 600
+	shorthand = "RKT"
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod/update_icon()
 	if(ammo_equipped && ammo_equipped.ammo_count)
@@ -750,6 +800,7 @@
 	point_cost = 500
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
+	shorthand = "LZR"
 
 /obj/structure/dropship_equipment/weapon/laser_beam_gun/update_icon()
 	if(ammo_equipped && ammo_equipped.ammo_count)
@@ -767,7 +818,8 @@
 	firing_delay = 10 //1 seconds
 	bound_height = 32
 	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
-	point_cost = 400
+	point_cost = 200
+	shorthand = "LCH"
 
 /obj/structure/dropship_equipment/weapon/launch_bay/update_equipment()
 	if(ship_base)
@@ -781,6 +833,7 @@
 
 /obj/structure/dropship_equipment/medevac_system
 	name = "\improper RMU-4M Medevac System"
+	shorthand = "Medevac"
 	desc = "A winch system to lift injured marines on medical stretchers onto the dropship. Acquire lift target through the dropship equipment console."
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "medevac_system"
@@ -806,24 +859,8 @@
 			linked_stretcher = null
 		icon_state = "medevac_system"
 
-
-/obj/structure/dropship_equipment/medevac_system/equipment_interact(mob/user)
-	if(!linked_shuttle)
-		return
-
-	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
-		return
-
-	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
-		return
-
-	if(world.time < medevac_cooldown)
-		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
-		return
-
-	var/list/possible_stretchers = list()
+/obj/structure/dropship_equipment/medevac_system/proc/get_targets()
+	. = list()
 	for(var/obj/structure/bed/medevac_stretcher/MS in GLOB.activated_medevac_stretchers)
 		var/area/AR = get_area(MS)
 		var/evaccee_name
@@ -850,20 +887,32 @@
 		if (evaccee_triagecard_color && evaccee_triagecard_color == "none")
 			evaccee_triagecard_color = null
 
-		possible_stretchers["[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])"] = MS
+		.["[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])"] = MS
+
+/obj/structure/dropship_equipment/medevac_system/proc/can_medevac(mob/user)
+	if(!linked_shuttle)
+		return FALSE
+
+	if(linked_shuttle.mode != SHUTTLE_CALL)
+		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		return FALSE
+
+	if(busy_winch)
+		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		return FALSE
+
+	if(world.time < medevac_cooldown)
+		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		return FALSE
+
+	var/list/possible_stretchers = get_targets()
 
 	if(!possible_stretchers.len)
 		to_chat(user, SPAN_WARNING("No active medevac stretcher detected."))
-		return
+		return FALSE
+	return TRUE
 
-	var/stretcher_choice = tgui_input_list(usr, "Which emitting stretcher would you like to link with?", "Available stretchers", possible_stretchers)
-	if(!stretcher_choice)
-		return
-
-	var/obj/structure/bed/medevac_stretcher/selected_stretcher = possible_stretchers[stretcher_choice]
-	if(!selected_stretcher)
-		return
-
+/obj/structure/dropship_equipment/medevac_system/proc/position_dropship(mob/user, obj/structure/bed/medevac_stretcher/selected_stretcher)
 	if(!ship_base) //system was uninstalled midway
 		return
 
@@ -913,6 +962,31 @@
 	linked_stretcher.linked_medevac = src
 	linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship overhead."))
 
+/obj/structure/dropship_equipment/medevac_system/proc/automate_interact(mob/user, stretcher_choice)
+	if(!can_medevac(user))
+		return
+
+	var/list/possible_stretchers = get_targets()
+
+	var/obj/structure/bed/medevac_stretcher/selected_stretcher = possible_stretchers[stretcher_choice]
+	if(!selected_stretcher)
+		return
+	position_dropship(user, selected_stretcher)
+
+/obj/structure/dropship_equipment/medevac_system/equipment_interact(mob/user)
+	if(!can_medevac(user))
+		return
+
+	var/list/possible_stretchers = get_targets()
+
+	var/stretcher_choice = tgui_input_list(usr, "Which emitting stretcher would you like to link with?", "Available stretchers", possible_stretchers)
+	if(!stretcher_choice)
+		return
+
+	var/obj/structure/bed/medevac_stretcher/selected_stretcher = possible_stretchers[stretcher_choice]
+	if(!selected_stretcher)
+		return
+	position_dropship(user, selected_stretcher)
 
 
 //on arrival we break any link
@@ -957,6 +1031,35 @@
 		return
 
 	activate_winch(user)
+
+/obj/structure/dropship_equipment/medevac_system/ui_data(mob/user)
+	var/list/stretchers = get_targets()
+
+	. = list()
+	for(var/stretcher_ref in stretchers)
+		var/obj/structure/bed/medevac_stretcher/stretcher = stretchers[stretcher_ref]
+
+		var/area/AR = get_area(stretcher)
+		var/list/target_data = list()
+		target_data["area"] = AR
+		target_data["ref"] = stretcher_ref
+
+		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
+		if(occupant)
+			target_data["occupant"] = occupant.name
+			target_data["time_of_death"] = occupant.tod
+			target_data["damage"] = list(
+				"hp" = occupant.health,
+				"brute" = occupant.bruteloss,
+				"oxy" = occupant.oxyloss,
+				"tox" = occupant.toxloss,
+				"fire" = occupant.fireloss
+			)
+			if(ishuman(occupant))
+				target_data["damage"]["undefib"] = occupant.undefibbable
+				target_data["triage_card"] = occupant.holo_card_color
+
+		. += list(target_data)
 
 /obj/structure/dropship_equipment/medevac_system/proc/activate_winch(mob/user)
 	set waitfor = 0
@@ -1013,6 +1116,7 @@
 
 /obj/structure/dropship_equipment/fulton_system
 	name = "\improper RMU-19 Fulton Recovery System"
+	shorthand = "Fulton"
 	desc = "A winch system to collect any fulton recovery balloons in high altitude. Make sure you turn it on!"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "fulton_system"
@@ -1029,7 +1133,26 @@
 		icon_state = "fulton_system"
 
 
-/obj/structure/dropship_equipment/fulton_system/equipment_interact(mob/user)
+/obj/structure/dropship_equipment/fulton_system/proc/automate_interact(mob/user, fulton_choice)
+	if(!can_fulton(user))
+		return
+
+	var/list/possible_fultons = get_targets()
+
+	var/obj/item/stack/fulton/fult = possible_fultons[fulton_choice]
+	if(!fulton_choice)
+		return
+
+	if(!ship_base) //system was uninstalled midway
+		return
+
+	if(is_ground_level(fult.z)) //in case the fulton popped during our input()
+		return
+
+	if(!fult.attached_atom)
+		to_chat(user, SPAN_WARNING("This balloon stretcher is empty."))
+		return
+
 	if(!linked_shuttle)
 		return
 
@@ -1045,14 +1168,50 @@
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
 		return
 
-	var/list/possible_fultons = list()
+	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected balloon's beacon."))
+
+	activate_winch(user, fult)
+
+
+/obj/structure/dropship_equipment/fulton_system/proc/can_fulton(mob/user)
+	if(!linked_shuttle)
+		return FALSE
+
+	if(linked_shuttle.mode != SHUTTLE_CALL)
+		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		return FALSE
+
+	if(busy_winch)
+		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		return FALSE
+
+	if(world.time < fulton_cooldown)
+		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		return FALSE
+	return TRUE
+
+/obj/structure/dropship_equipment/fulton_system/ui_data(mob/user)
+	var/list/targets = get_targets()
+	. = list()
+	for(var/i in targets)
+		. += list(i)
+
+
+/obj/structure/dropship_equipment/fulton_system/proc/get_targets()
+	. = list()
 	for(var/obj/item/stack/fulton/F in GLOB.deployed_fultons)
 		var/recovery_object
 		if(F.attached_atom)
 			recovery_object = F.attached_atom.name
 		else
 			recovery_object = "Empty"
-		possible_fultons["[recovery_object]"] = F
+		.["[recovery_object]"] = F
+
+/obj/structure/dropship_equipment/fulton_system/equipment_interact(mob/user)
+	if(!can_fulton(user))
+		return
+
+	var/list/possible_fultons = get_targets()
 
 	if(!possible_fultons.len)
 		to_chat(user, SPAN_WARNING("No active balloons detected."))
@@ -1130,6 +1289,7 @@
 // Rappel deployment system
 /obj/structure/dropship_equipment/rappel_system
 	name = "\improper HPU-1 Rappel Deployment System"
+	shorthand = "Rappel"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
 	point_cost = 50
@@ -1272,4 +1432,4 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact)
+	SA.detonate_on(impact, src)

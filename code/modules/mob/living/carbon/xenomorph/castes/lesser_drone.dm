@@ -7,7 +7,6 @@
 	max_health = XENO_HEALTH_LESSER_DRONE
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_3
-	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_LOW
@@ -79,6 +78,10 @@
 
 	icon_xeno = 'icons/mob/xenos/lesser_drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/lesser_drone.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
+	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
+	weed_food_states_flipped = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
 
 /mob/living/carbon/xenomorph/lesser_drone/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)

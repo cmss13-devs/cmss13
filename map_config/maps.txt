@@ -39,7 +39,6 @@ endmap
 
 map ice_colony_v1
 	minplayers 130
-	disabled
 endmap
 
 map ice_colony_v2

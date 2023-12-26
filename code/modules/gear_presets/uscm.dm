@@ -624,6 +624,13 @@
 	name = "USCM Cryo Squad Combat Technician (Equipped)"
 	auto_squad_name = SQUAD_MARINE_CRYO
 
+/datum/equipment_preset/uscm/engineer_equipped/inspection //Used by /datum/emergency_call/inspection_hc
+	name = "USCM Inspection - Combat Technician (Equipped)"
+	role_comm_title = "InspTech"
+
+/datum/equipment_preset/uscm/engineer_equipped/inspection/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(new_human), WEAR_L_EAR)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/medic_equipped

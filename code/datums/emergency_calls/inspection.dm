@@ -4,6 +4,7 @@
 	mob_max = 2
 	mob_min = 1
 	probability = 0
+	time_required_for_job = 20 HOURS
 
 /datum/emergency_call/inspection_provost/New()
 	..()
@@ -65,17 +66,17 @@
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_SO), time_required_for_job))
 		leader = H
-		arm_equipment(H, /datum/equipment_preset/uscm_ship/so, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm_ship/so/inspection, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Inspector sent by the USCM High Command!"))
 		to_chat(H, SPAN_ROLE_BODY("An inspection is scheduled for the [MAIN_SHIP_NAME] during their current assignment. High Command may have other directives for you that they will relay via radio."))
 		to_chat(H, SPAN_ROLE_BODY("Tour the ship, monitor the organization, effectiveness and SOP compliance of its respective departments, interview its crew and find any issues. Relay the results of your inspection to both the Officer in Command of the ship and USCM High Command."))
-		to_chat(H, SPAN_WARNING("Remember, your inspection may not interrupt regular operation of the ship and you do not have privileges to make Marine Law enforcement related calls. Ahelp if you have any questions of you wish to offer the role to someone else."))
+		to_chat(H, SPAN_WARNING("Remember, your inspection may not interrupt regular operation of the ship and you do not have privileges to make Marine Law enforcement related calls. Ahelp if you have any questions or you wish to offer the role to someone else."))
 	else
-		arm_equipment(H, /datum/equipment_preset/uscm/engineer_equipped, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/engineer_equipped/inspection, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are part of an inspection team sent by the USCM High Command!"))
 		to_chat(H, SPAN_ROLE_BODY("An inspection is scheduled for the [MAIN_SHIP_NAME] during their current assignment. You serve both as security detail to the officer performing the inspection and their assistant should they need your expertise."))
 		to_chat(H, SPAN_ROLE_BODY("Follow the inspector as they perform their duties on the ship. Feel free to offer your insight if you feel like you have any and help then as they request it. Remember, while you do not answer directly to the officers on the ship, you still need to respect their position."))
-		to_chat(H, SPAN_WARNING("Remember, you may not interrupt regular operation and are expected to follow orders of the Inspector at all times. Ahelp if you have any questions of you wish to offer the role to someone else."))
+		to_chat(H, SPAN_WARNING("Remember, you may not interrupt regular operation and are expected to follow orders of the Inspector at all times. Ahelp if you have any questions or you wish to offer the role to someone else."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 //UAAC-TIS
@@ -108,7 +109,7 @@
 	else
 		arm_equipment(H, /datum/equipment_preset/uscm_event/provost/enforcer, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Enforcer of the USCM Provost Office!"))
-		to_chat(H, SPAN_ROLE_BODY("You have been assigned as an escort for an UAAC-TIS Officer being dispatched to the [MAIN_SHIP_NAME]. Technically, the TIS has no direct authority over you, however you have been ordered to follow the instructions of the TIS Officer."))
+		to_chat(H, SPAN_ROLE_BODY("You have been assigned as an escort for a UAAC-TIS Officer being dispatched to the [MAIN_SHIP_NAME]. Technically, the TIS has no direct authority over you, however you have been ordered to follow the instructions of the TIS Officer."))
 		to_chat(H, SPAN_ROLE_BODY("You are not expected to enforce ML on the ship and are generally expected to follow the instruction of the Officer you are protecting. Remember that should they start acting in a way that you believe puts the USCM in danger, you are not obligated to follow their orders and should report this to the Provost at once."))
 		to_chat(H, SPAN_WARNING("This role requires familiarity with Marine Law and Standard Operating Procedure. Ahelp if you have any questions or wish to surrender the character to someone else."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

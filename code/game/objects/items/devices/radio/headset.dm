@@ -1015,6 +1015,9 @@
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
 	volume = RADIO_VOLUME_CRITICAL
 
+/obj/item/device/radio/headset/almayer/highcom/senior
+	initial_keys = list(/obj/item/device/encryptionkey/highcom/dual)
+
 /obj/item/device/radio/headset/almayer/provost
 	name = "USCM Provost headset"
 	desc = "Issued to members of the USCM Provost Office and their immediate subordinates."

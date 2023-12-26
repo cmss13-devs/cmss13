@@ -123,7 +123,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ay" = (
-/obj/structure/closet/emcloset,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -141,6 +140,8 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aC" = (
@@ -153,7 +154,9 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Cargo Offices"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/cargo)
 "aE" = (
 /obj/structure/window/framed/solaris,
@@ -298,7 +301,9 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Cargo Bay Security"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/cargo)
 "aX" = (
 /turf/open/floor{
@@ -307,25 +312,24 @@
 	},
 /area/bigredv2/outside/cargo)
 "aY" = (
-/obj/structure/cargo_container/wy/left,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
+	icon_state = "loadingarea"
 	},
 /area/bigredv2/outside/cargo)
 "aZ" = (
-/obj/structure/cargo_container/wy/mid,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/obj/structure/surface/table,
+/obj/effect/spawner/random/bomb_supply,
+/turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ba" = (
-/obj/structure/cargo_container/wy/right,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
+/obj/structure/surface/table,
+/obj/item/stack/sheet/glass{
+	amount = 30
 	},
+/turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bb" = (
 /obj/effect/decal/cleanable/dirt,
@@ -369,12 +373,8 @@
 	},
 /area/bigredv2/outside/cargo)
 "bh" = (
-/obj/structure/closet/crate/trashcart,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bj" = (
 /obj/structure/largecrate,
@@ -402,8 +402,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/light,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/cargo)
 "bs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -430,17 +431,15 @@
 	dir = 1;
 	name = "\improper Cargo Bay"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/cargo)
 "bz" = (
-/obj/effect/landmark/corpsespawner/security,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bA" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -475,14 +474,14 @@
 "bI" = (
 /obj/item/reagent_container/spray/cleaner,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "floor4"
+	},
 /area/bigredv2/outside/cargo)
 "bJ" = (
-/obj/structure/largecrate,
-/obj/structure/machinery/light{
-	dir = 1
+/turf/open/floor{
+	icon_state = "floor4"
 	},
-/turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bK" = (
 /turf/open/floor{
@@ -514,12 +513,14 @@
 /area/bigredv2/outside/cargo)
 "bP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bQ" = (
-/obj/structure/closet/crate/trashcart,
-/obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bR" = (
@@ -528,7 +529,9 @@
 	dir = 1;
 	name = "\improper Cargo Bay Quartermaster"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/cargo)
 "bS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -612,7 +615,9 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Cargo Bay Quartermaster"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/cargo)
 "cf" = (
 /obj/structure/bed/chair/office/dark,
@@ -726,15 +731,44 @@
 	name = "\improper Engineering Complex"
 	},
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "delivery"
 	},
 /area/bigredv2/outside/engineering)
 "cx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "delivery"
 	},
 /area/bigredv2/outside/engineering)
+"zL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "floor4"
+	},
+/area/bigredv2/outside/cargo)
+"AS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "floor4"
+	},
+/area/bigredv2/outside/cargo)
+"Gu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"KO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
 
 (1,1,1) = {"
 aa
@@ -747,7 +781,7 @@ aE
 ai
 ai
 ai
-ax
+bq
 by
 ai
 ai
@@ -761,13 +795,13 @@ ai
 ab
 al
 ab
-aB
+ai
 av
 av
 av
-av
-av
-av
+ai
+aZ
+bA
 ax
 av
 bH
@@ -782,16 +816,16 @@ ai
 av
 av
 av
-aC
+aY
 aF
 aO
 av
-aY
-bf
-av
-ax
-av
-av
+ak
+ba
+bJ
+zL
+bJ
+bJ
 av
 ai
 av
@@ -807,9 +841,9 @@ ad
 aG
 aP
 av
-aZ
-bg
-am
+ak
+bh
+bJ
 aI
 bb
 bI
@@ -828,12 +862,12 @@ aC
 aH
 aQ
 av
-ba
-bh
+ai
 av
-ax
-av
-af
+bJ
+zL
+bJ
+AS
 bP
 ak
 cb
@@ -849,13 +883,13 @@ am
 aI
 ad
 ad
-bb
+bR
 ad
-ad
+bQ
 bp
 bz
-af
-af
+KO
+Gu
 ak
 cb
 av
@@ -870,13 +904,13 @@ aC
 aJ
 aR
 aX
-aP
-aX
-av
-bq
 ai
-bJ
-bQ
+ai
+ai
+bq
+by
+ai
+ai
 ai
 cc
 av
@@ -895,8 +929,8 @@ af
 av
 av
 ax
+af
 bA
-av
 ae
 ai
 ak
@@ -926,7 +960,7 @@ aA
 cv
 "}
 (10,1,1) = {"
-av
+ap
 av
 aw
 ad
@@ -947,7 +981,7 @@ cl
 cw
 "}
 (11,1,1) = {"
-av
+ap
 av
 ax
 ao
@@ -969,7 +1003,7 @@ cx
 "}
 (12,1,1) = {"
 ah
-ap
+av
 ay
 av
 av
@@ -1076,11 +1110,11 @@ cv
 av
 at
 af
-av
+ab
 af
 ar
 av
-av
+ab
 av
 af
 bs

@@ -345,10 +345,6 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
   const { fmXOffsetValue } = useFiremissionXOffsetValue(context);
   const { fmYOffsetValue } = useFiremissionYOffsetValue(context);
 
-  const lazes = range(0, 5).map((x) =>
-    x > data.targets_data.length ? undefined : data.targets_data[x]
-  );
-
   const strikeConfigLabel =
     strikeMode === 'weapon'
       ? data.equipment_data.find((x) => x.mount_point === weaponSelected)?.name
@@ -512,8 +508,9 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
               <Stack.Item className="TargetText">
                 <h3>
                   Target selected:{' '}
-                  {lazes.find((x) => x?.target_tag === selectedTarget)
-                    ?.target_name ?? 'NONE'}
+                  {data.targets_data.find(
+                    (x) => x?.target_tag === selectedTarget
+                  )?.target_name ?? 'NONE'}
                 </h3>
               </Stack.Item>
               <Stack.Item>

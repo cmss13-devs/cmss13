@@ -35,10 +35,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	tutorial_mob = null // We don't delete it because the turf reservation will typically clean it up
 
-	for(var/path in tracking_atoms)
-		QDEL_NULL(tracking_atoms[path])
-
-	tracking_atoms.Cut()
+	QDEL_LIST_ASSOC_VAL(tracking_atoms)
 
 	return ..()
 

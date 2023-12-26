@@ -109,7 +109,7 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
         {
           children: fmOffset > 0 ? <Icon name="arrow-up" /> : undefined,
           onClick: () => {
-            if (fmOffset >= 1) {
+            if (fmOffset > 0) {
               setFmOffset(fmOffset - 1);
             }
           },

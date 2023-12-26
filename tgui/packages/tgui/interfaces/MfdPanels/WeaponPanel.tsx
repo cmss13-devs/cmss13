@@ -15,29 +15,6 @@ interface EquipmentContext {
   targets_data: Array<LazeTarget>;
 }
 
-const getLazeButtonProps = (context) => {
-  const { act, data } = useBackend<EquipmentContext>(context);
-  const lazes = range(0, 5).map((x) =>
-    x > data.targets_data.length ? undefined : data.targets_data[x]
-  );
-  const get_laze = (index: number) => {
-    const laze = lazes.find((_, i) => i === index);
-    if (laze === undefined) {
-      return {
-        children: '',
-        onClick: () => act('set-camera', { equipment_id: null }),
-      };
-    }
-    return {
-      children: laze?.target_name.split(' ')[0] ?? 'NONE',
-      onClick: laze
-        ? () => act('set-camera', { 'equipment_id': laze.target_tag })
-        : undefined,
-    };
-  };
-  return [get_laze(0), get_laze(1), get_laze(2), get_laze(3), get_laze(4)];
-};
-
 const WeaponPanel = (
   props: { panelId: string; equipment: DropshipEquipment },
   context
@@ -197,10 +174,7 @@ export const WeaponMfdPanel = (props: MfdProps, context) => {
         },
       ]}
       topButtons={[
-        {
-          children: 'EQUIP',
-          onClick: () => setPanelState('equipment'),
-        },
+        { children: 'EQUIP', onClick: () => setPanelState('equipment') },
         {},
         {},
         {},

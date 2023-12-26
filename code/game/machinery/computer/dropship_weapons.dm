@@ -355,7 +355,6 @@
 				return FALSE
 
 			var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
-
 			if(!sig)
 				return FALSE
 

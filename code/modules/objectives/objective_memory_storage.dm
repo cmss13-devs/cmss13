@@ -77,26 +77,26 @@
 
 /datum/objective_memory_storage/proc/synchronize_objectives()
 	clean_objectives()
-	if(!intel_system || !intel_system.oms)
+	if(!GLOB.intel_system || !GLOB.intel_system.oms)
 		return
-	intel_system.oms.clean_objectives()
+	GLOB.intel_system.oms.clean_objectives()
 
-	for(var/datum/cm_objective/O in intel_system.oms.folders)
+	for(var/datum/cm_objective/O in GLOB.intel_system.oms.folders)
 		addToListNoDupe(folders, O)
-	for(var/datum/cm_objective/O in intel_system.oms.progress_reports)
+	for(var/datum/cm_objective/O in GLOB.intel_system.oms.progress_reports)
 		addToListNoDupe(progress_reports, O)
-	for(var/datum/cm_objective/O in intel_system.oms.technical_manuals)
+	for(var/datum/cm_objective/O in GLOB.intel_system.oms.technical_manuals)
 		addToListNoDupe(technical_manuals, O)
-	for(var/datum/cm_objective/O in intel_system.oms.terminals)
+	for(var/datum/cm_objective/O in GLOB.intel_system.oms.terminals)
 		addToListNoDupe(terminals, O)
-	for(var/datum/cm_objective/O in intel_system.oms.disks)
+	for(var/datum/cm_objective/O in GLOB.intel_system.oms.disks)
 		addToListNoDupe(disks, O)
-	for(var/datum/cm_objective/O in intel_system.oms.retrieve_items)
+	for(var/datum/cm_objective/O in GLOB.intel_system.oms.retrieve_items)
 		addToListNoDupe(retrieve_items, O)
-	for(var/datum/cm_objective/O in intel_system.oms.other)
+	for(var/datum/cm_objective/O in GLOB.intel_system.oms.other)
 		addToListNoDupe(other, O)
 
-var/global/datum/intel_system/intel_system = new()
+GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 
 /datum/intel_system
 	var/datum/objective_memory_storage/oms = new()
@@ -127,7 +127,7 @@ var/global/datum/intel_system/intel_system = new()
 	if(!powered())
 		to_chat(user, SPAN_WARNING("This computer has no power!"))
 		return FALSE
-	if(!intel_system)
+	if(!GLOB.intel_system)
 		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
 		return FALSE
 	if(user.action_busy)
@@ -197,9 +197,9 @@ var/global/datum/intel_system/intel_system = new()
 	return TRUE
 
 /obj/structure/machinery/computer/intel/proc/transfer_intel(mob/living/user, datum/cm_objective/O)
-	if(!intel_system || !intel_system.oms)
+	if(!GLOB.intel_system || !GLOB.intel_system.oms)
 		return 0
-	if(intel_system.oms.has_objective(O))
+	if(GLOB.intel_system.oms.has_objective(O))
 		return 0
 	if(user.action_busy)
 		return 0
@@ -215,7 +215,7 @@ var/global/datum/intel_system/intel_system = new()
 		return -1
 
 	to_chat(user, SPAN_NOTICE("...something about \"[clue]\"..."))
-	intel_system.store_single_objective(O)
+	GLOB.intel_system.store_single_objective(O)
 	return 1
 
 // --------------------------------------------
@@ -236,7 +236,7 @@ var/global/datum/intel_system/intel_system = new()
 	if(!powered())
 		to_chat(user, SPAN_WARNING("This computer has no power!"))
 		return FALSE
-	if(!intel_system)
+	if(!GLOB.intel_system)
 		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
 		return FALSE
 	if(user.action_busy)

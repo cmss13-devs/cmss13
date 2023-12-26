@@ -12,7 +12,7 @@
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!istype(X))
 		return FALSE
-	if(X.is_mob_incapacitated() || X.buckled || X.burrow)
+	if(X.is_mob_incapacitated() || X.buckled || HAS_TRAIT(X, TRAIT_ABILITY_BURROWED))
 		return FALSE
 	else
 		return TRUE
@@ -27,7 +27,7 @@
 		isQueen = TRUE
 
 	if(!X.hive.living_xeno_queen && !X.hive.allow_no_queen_actions)
-		to_chat(X, SPAN_WARNING("There is no Queen. You are alone."))
+		to_chat(X, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
 	// We are already overwatching something
@@ -73,7 +73,8 @@
 		UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 
 		if(oldXeno)
-			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
+			to_chat(src, SPAN_XENOWARNING("We stop watching [oldXeno]."))
+			UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
 			if(!QDELETED(oldXeno))
 				oldXeno.hud_set_queen_overwatch()
 	else
@@ -81,22 +82,22 @@
 			return
 
 		if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
-			to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+			to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 			return
 
 		if(targetXeno == src)
-			to_chat(src, SPAN_XENOWARNING("You can't watch yourself!"))
+			to_chat(src, SPAN_XENOWARNING("We can't watch ourselves!"))
 			return
 
 		if(targetXeno.interference)
-			to_chat(src, SPAN_XENOWARNING("Your target's psychic connection is cut off!"))
+			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
 			return
 
 		if(observed_xeno && targetXeno && observed_xeno == targetXeno)
 			if(istype(targetXeno, /obj/effect/alien/resin/marker))
-				to_chat(src, SPAN_XENOWARNING("You are already watching that mark!"))
+				to_chat(src, SPAN_XENOWARNING("We are already watching that mark!"))
 				return
-			to_chat(src, SPAN_XENOWARNING("You are already watching that sister!"))
+			to_chat(src, SPAN_XENOWARNING("We are already watching that sister!"))
 			return
 
 		if(caste_type != XENO_CASTE_QUEEN && is_zoomed)
@@ -109,19 +110,25 @@
 			SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH_XENO, oldXeno)
 			oldXeno.hud_set_queen_overwatch()
 			UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
+			UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
 
 		observed_xeno = targetXeno
 
 		observed_xeno.hud_set_queen_overwatch()
 		SEND_SIGNAL(src, COMSIG_XENO_OVERWATCH_XENO, observed_xeno)
 		RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(overwatch_handle_mob_move_or_look))
+		RegisterSignal(observed_xeno, COMSIG_PARENT_QDELETING, PROC_REF(overwatch_handle_deletion))
 
 	src.reset_view()
+
+/mob/living/carbon/xenomorph/proc/overwatch_handle_deletion(mob/living/carbon/xenomorph/deleted, forced)
+	SIGNAL_HANDLER
+	overwatch(deleted, TRUE)
 
 // Called from xeno Life()
 // Makes sure that Xeno overwatch is reset when the overwatched Xeno dies.
 /mob/living/carbon/xenomorph/proc/handle_overwatch()
-	if (observed_xeno && (observed_xeno == DEAD || QDELETED(observed_xeno)))
+	if (observed_xeno && (observed_xeno.stat == DEAD || QDELETED(observed_xeno)))
 		overwatch(null, TRUE)
 
 /mob/living/carbon/xenomorph/proc/overwatch_handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
@@ -192,7 +199,7 @@
 			to_chat(src, SPAN_XENONOTICE("That resin mark no longer exists."))
 			return
 		else
-			to_chat(src, SPAN_XENONOTICE("You psychically observe the [target.mark_meaning.name] resin mark in [get_area_name(target)]."))
+			to_chat(src, SPAN_XENONOTICE("We psychically observe the [target.mark_meaning.name] resin mark in [get_area_name(target)]."))
 			overwatch(target)
 	if(href_list["track"])
 		var/input2 = href_list["target"]

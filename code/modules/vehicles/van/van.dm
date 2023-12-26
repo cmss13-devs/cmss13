@@ -41,7 +41,7 @@
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
 
-	luminosity = 8
+	vehicle_light_range = 8
 
 	move_max_momentum = 3
 
@@ -92,13 +92,13 @@
 	if(mover in mobs_under) //can't collide with the thing you're buckled to
 		return NO_BLOCKED_MOVEMENT
 
-	if(ismob(mover))
-		var/mob/M = mover
+	if(isliving(mover))
+		var/mob/living/M = mover
 		if(M.mob_flags & SQUEEZE_UNDER_VEHICLES)
 			add_under_van(M)
 			return NO_BLOCKED_MOVEMENT
 
-		if(M.lying)
+		if(M.body_position == LYING_DOWN)
 			return NO_BLOCKED_MOVEMENT
 
 		if(M.mob_size >= MOB_SIZE_IMMOBILE && next_push < world.time)
@@ -218,7 +218,7 @@
 /obj/vehicle/multitile/van/proc/reset_overdrive()
 	misc_multipliers["move"] += overdrive_speed_mult
 
-/obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/projectile/P)
 	if(src == P.original) //clicking on the van itself will hit it.
 		var/hitchance = P.get_effective_accuracy()
 		if(prob(hitchance))

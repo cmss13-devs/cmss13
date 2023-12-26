@@ -9,7 +9,7 @@
 	max_heavies = 1
 	max_medics = 1
 
-	arrival_message = "Intercepted Transmission: 'We're here to kick ass and kill Yautja. Mainly kill Yautja."
+	arrival_message = "'We're here to kick ass and kill Yautja. Mainly kill Yautja."
 	objectives = "Hunt down and kill all Yautja without mercy. Retrieve the gear and leave."
 	probability = 0
 
@@ -44,6 +44,6 @@
 	mob_min = 8
 	max_heavies = 2
 	max_medics = 2
-	arrival_message = "Intercepted Transmission: 'We're here to kick ass and kill Yautja. Mainly kill Yautja."
+	arrival_message = "'We're here to kick ass and kill Yautja. Mainly kill Yautja."
 	objectives = "Hunt down and kill all Yautja without mercy. Retrieve the gear and leave."
 	probability = 0

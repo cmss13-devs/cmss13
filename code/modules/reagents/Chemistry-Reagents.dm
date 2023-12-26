@@ -267,50 +267,52 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	if(chemclass && !(flags & REAGENT_NO_GENERATION))
 		switch(chemclass)
 			if(CHEM_CLASS_BASIC)
-				chemical_gen_classes_list["C1"] += id
+				GLOB.chemical_gen_classes_list["C1"] += id
 			if(CHEM_CLASS_COMMON)
-				chemical_gen_classes_list["C2"] += id
+				GLOB.chemical_gen_classes_list["C2"] += id
 			if(CHEM_CLASS_UNCOMMON)
-				chemical_gen_classes_list["C3"] += id
+				GLOB.chemical_gen_classes_list["C3"] += id
 			if(CHEM_CLASS_RARE)
-				chemical_gen_classes_list["C4"] += id
+				GLOB.chemical_gen_classes_list["C4"] += id
 			if(CHEM_CLASS_SPECIAL)
-				chemical_gen_classes_list["C5"] += id
-				chemical_data.add_chemical_objective(src)
+				GLOB.chemical_gen_classes_list["C5"] += id
+				GLOB.chemical_data.add_chemical_objective(src)
 			if(CHEM_CLASS_ULTRA)
-				chemical_gen_classes_list["C6"] += id
-				chemical_data.add_chemical_objective(src)
-		chemical_gen_classes_list["C"] += id
+				GLOB.chemical_gen_classes_list["C6"] += id
+				GLOB.chemical_data.add_chemical_objective(src)
+		GLOB.chemical_gen_classes_list["C"] += id
 	if(gen_tier)
 		switch(gen_tier)
 			if(1)
-				chemical_gen_classes_list["T1"] += id
+				GLOB.chemical_gen_classes_list["T1"] += id
 			if(2)
-				chemical_gen_classes_list["T2"] += id
+				GLOB.chemical_gen_classes_list["T2"] += id
 			if(3)
-				chemical_gen_classes_list["T3"] += id
+				GLOB.chemical_gen_classes_list["T3"] += id
 			if(4)
-				chemical_gen_classes_list["T4"] += id
+				GLOB.chemical_gen_classes_list["T4"] += id
 			if(5)
-				chemical_gen_classes_list["T5"] += id
+				GLOB.chemical_gen_classes_list["T5"] += id
 
 
 /datum/reagent/proc/properties_to_datums()
-	if(chemical_properties_list)
-		var/new_properties = list()
-		for(var/P in properties)
-			if(istype(P, /datum/chem_property))
-				new_properties += P
-				continue
-			var/datum/chem_property/D = chemical_properties_list[P]
-			if(D)
-				D = new D.type()
-				D.level = properties[P]
-				D.holder = src
-				new_properties += D
-		return new_properties
-	else
-		return properties
+#ifdef UNIT_TESTS
+	if(!GLOB.chemical_properties_list)
+		CRASH("Chemistry reagents are not set up!")
+#endif
+
+	var/new_properties = list()
+	for(var/prop in properties)
+		if(istype(prop, /datum/chem_property))
+			new_properties += prop
+			continue
+		var/datum/chem_property/chem = GLOB.chemical_properties_list[prop]
+		if(chem)
+			chem = new chem.type()
+			chem.level = properties[prop]
+			chem.holder = src
+			new_properties += chem
+	return new_properties
 
 /datum/reagent/proc/properties_to_assoc()
 	var/new_properties = list()

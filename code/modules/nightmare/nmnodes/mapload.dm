@@ -67,7 +67,9 @@
 		weights  += w
 		sum   += w
 	var/roll = rand(1, sum)
+#if !defined(UNIT_TESTS)
 	sum = 0
+#endif // Remove the possibility of chance for testing
 	for(var/i in 1 to length(filelist))
 		sum += weights[i]
 		if(sum >= roll && matcher.Find(filelist[i]))
@@ -97,9 +99,11 @@
 	for(var/filename in dircontents)
 		if(!matcher.Find(filename))
 			continue
+#if !defined(UNIT_TESTS)
 		var/fprob = Clamp(text2num(matcher.group[1]) / 100, 0, 1)
 		if(fprob < rand())
 			continue
+#endif // Remove the possibility of chance for testing
 		var/landmark = matcher.group[3]
 		var/keep = (matcher.group[2] == "+")
 		var/datum/nmtask/mapload/task = new("[name] @ [landmark]", "[dir_path][matcher.match]", landmark, keep)

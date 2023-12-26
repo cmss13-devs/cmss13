@@ -1,4 +1,4 @@
-/var/create_object_html = null
+/datum/admins/var/static/create_object_html = null
 
 /datum/admins/proc/create_object(mob/user)
 	if (!create_object_html)
@@ -8,7 +8,7 @@
 		create_object_html = replacetext(create_object_html, "null /* object types */", "\"[objectjs]\"")
 		create_object_html = replacetext(create_object_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_object_html, "/* ref src */", "\ref[src]"), "Create Object", "create_object", "size=425x475")
+	show_browser(user, replacetext(create_object_html, "/* ref src */", "\ref[src]"), "Create Object", "create_object", "size=450x525")
 
 
 /datum/admins/proc/quick_create_object(mob/user)
@@ -46,4 +46,4 @@
 		quick_create_object_html = replacetext(quick_create_object_html, "null /* object types */", "\"[objectjs]\"")
 		quick_create_object_html = replacetext(quick_create_object_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(quick_create_object_html, "/* ref src */", "\ref[src]"), "Quick Create Object", "quick_create_object", "size=425x475")
+	show_browser(user, replacetext(quick_create_object_html, "/* ref src */", "\ref[src]"), "Quick Create Object", "quick_create_object", "size=450x525")

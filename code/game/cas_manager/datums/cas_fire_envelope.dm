@@ -1,7 +1,6 @@
 /datum/cas_fire_envelope
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console
 	var/list/datum/cas_fire_mission/missions
-	var/max_mission_len = 5
 	var/fire_length
 	var/grace_period //how much time you have after initiating fire mission and before you can't change firemissions
 	var/flyto_period //how much time it takes from sound alarm start to first hit. CAS is vulnerable here
@@ -30,35 +29,36 @@
 	linked_console = null
 	return ..()
 
+/datum/cas_fire_envelope/ui_data(mob/user)
+	. = list()
+	.["missions"] = list()
+	for(var/datum/cas_fire_mission/mission in missions)
+		.["missions"] += list(mission.ui_data(user))
+
+
 /datum/cas_fire_envelope/proc/get_total_duration()
 	return grace_period+flyto_period+flyoff_period
 
-/datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
-	if(!missions || !linked_console || missions.len>max_mission_len || !fire_length)
-		return null
+/datum/cas_fire_envelope/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons)
+	for(var/datum/cas_fire_mission/mission in missions)
+		mission.update_weapons(weapons, fire_length)
 
+/datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
+	if(!missions || !linked_console || !fire_length)
+		return null
 	var/list/obj/structure/dropship_equipment/weapons = list()
-	for(var/X in linked_console.shuttle_equipments)
-		var/obj/structure/dropship_equipment/E = X
-		if(E.is_weapon)
-			weapons += E
+	var/shuttle_tag = linked_console.shuttle_tag
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+		if(equipment.is_weapon)
+			weapons += equipment
 
 	var/datum/cas_fire_mission/fm = new()
-
-	if(weapons.len==0)
-		return null //why bother?
-
 	for(var/obj/structure/dropship_equipment/weapon/wp in weapons)
-		var/datum/cas_fire_mission_record/record = new()
-		record.weapon = wp
-		record.offsets = new /list(fire_length)
-		for(var/idx = 1; idx<=fire_length; idx++)
-			record.offsets[idx] = "-"
-		fm.records += record
+		fm.build_new_record(wp, fire_length)
 
 	fm.name = firemission_name
 	fm.mission_length = length
-
 	missions += fm
 	return fm
 
@@ -67,71 +67,61 @@
 	mission_error = null
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT && stat < FIRE_MISSION_STATE_COOLDOWN)
 		mission_error = "Fire Mission is under way already."
-		return 0
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(!missions[mission_id])
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 	var/datum/cas_fire_mission/mission = missions[mission_id]
 	if(!mission)
-		return -1
-	if(!mission.records[weapon_id])
-		return -1
-	var/datum/cas_fire_mission_record/fmr = mission.records[weapon_id]
+		return FIRE_MISSION_NOT_EXECUTABLE
+
+	var/datum/cas_fire_mission_record/fmr = mission.record_for_weapon(weapon_id)
+	if(!fmr)
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(!fmr.offsets || isnull(fmr.offsets[offset_step]))
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 	var/old_offset = fmr.offsets[offset_step]
+	if(offset == null)
+		offset = "-"
 	fmr.offsets[offset_step] = offset
 	var/check_result = mission.check(linked_console)
 	if(check_result == FIRE_MISSION_CODE_ERROR)
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(check_result == FIRE_MISSION_ALL_GOOD)
-		return 1
+		return FIRE_MISSION_ALL_GOOD
 	if(check_result == FIRE_MISSION_WEAPON_OUT_OF_AMMO)
-		return 1
+		return FIRE_MISSION_ALL_GOOD
 
 	mission_error = mission.error_message(check_result)
 	if(skip_checks)
-		return 0
+		return FIRE_MISSION_ALL_GOOD
 
 	//we have mission error. Fill the thing and restore previous state
 	fmr.offsets[offset_step] = old_offset
 
-	return 0
+	return FIRE_MISSION_ALL_GOOD
 
-/datum/cas_fire_envelope/proc/execute_firemission(datum/cas_signal/target_turf, offset, dir, mission_id)
-	if(!istype(target_turf))
-		mission_error = "No target."
-		return 0
+/datum/cas_fire_envelope/proc/execute_firemission(datum/cas_signal/signal, target_turf,dir, mission_id)
 	if(stat != FIRE_MISSION_STATE_IDLE)
 		mission_error = "Fire Mission is under way already."
-		return 0
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(!missions[mission_id])
-		return -1
-	if(offset<0)
-		mission_error = "Can't have negative offsets."
-		return 0
-	if(offset>max_offset)
-		mission_error = "[max_offset] is the maximum possible offset."
-		return 0
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(dir!=NORTH && dir!=SOUTH && dir!=WEST && dir!=EAST)
 		mission_error = "Incorrect direction."
-		return 0
+		return FIRE_MISSION_BAD_DIRECTION
 	mission_error = null
 	var/datum/cas_fire_mission/mission = missions[mission_id]
 	var/check_result = mission.check(linked_console)
 	if(check_result == FIRE_MISSION_CODE_ERROR)
-		return -1
+		return FIRE_MISSION_CODE_ERROR
 
 	if(check_result != FIRE_MISSION_ALL_GOOD)
 		mission_error = mission.error_message(check_result)
-		return 0
+		return FIRE_MISSION_CODE_ERROR
 
-	if(target_turf && target_turf.signal_loc)
-		var/turf/TT = get_turf(target_turf.signal_loc)
-		if(TT && TT.z)
-			msg_admin_niche("[key_name(usr)] launching Fire Mission '[mission.name]' onto [target_turf.name] at ([TT.x],[TT.y],[TT.z]) [ADMIN_JMP(TT)]")
 	//actual firemission code
-	execute_firemission_unsafe(target_turf, offset, dir, mission)
-	return 1
+	execute_firemission_unsafe(signal, target_turf, dir, mission)
+	return FIRE_MISSION_ALL_GOOD
 
 /datum/cas_fire_envelope/proc/firemission_status_message()
 	switch(stat)
@@ -171,6 +161,7 @@
 	if(!guidance)
 		guidance = new /obj/effect/firemission_guidance()
 	guidance.forceMove(location)
+	guidance.updateCameras(linked_console)
 
 /datum/cas_fire_envelope/proc/user_is_guided(user)
 	return guidance && (user in guidance.users)
@@ -185,8 +176,7 @@
 		apply_upgrade(user)
 		if(!(user in guidance.users))
 			guidance.users += user
-			RegisterSignal(usr, COMSIG_MOB_RESISTED, PROC_REF(exit_cam_resist))
-
+			RegisterSignal(user, COMSIG_MOB_RESISTED, PROC_REF(exit_cam_resist))
 
 /datum/cas_fire_envelope/proc/apply_upgrade(user)
 	var/mob/M = user
@@ -197,8 +187,6 @@
 		M.overlay_fullscreen("matrix", /atom/movable/screen/fullscreen/flash/noise/nvg)
 		M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		M.sync_lighting_plane_alpha()
-	else if (linked_console.upgraded == MATRIX_WIDE)
-		M.client?.change_view(linked_console.power + 5, M)
 
 
 /datum/cas_fire_envelope/proc/remove_upgrades(user)
@@ -224,6 +212,8 @@
 			M.reset_view()
 			remove_upgrades(user)
 		guidance.users -= user
+		UnregisterSignal(user, COMSIG_MOB_RESISTED)
+	guidance.clearCameras(linked_console)
 
 /datum/cas_fire_envelope/proc/exit_cam_resist(mob/user)
 	SIGNAL_HANDLER
@@ -234,54 +224,36 @@
 /datum/cas_fire_envelope/proc/check_firemission_loc(datum/cas_signal/target_turf)
 	return TRUE //redefined in child class
 
-/datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/target_turf, offset, dir, datum/cas_fire_mission/mission)
-	var/sx = 0
-	var/sy = 0
-
-	recorded_dir = dir
-	recorded_offset = offset
-
+/**
+ * Execute firemission.
+ */
+/datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
 	stat = FIRE_MISSION_STATE_IN_TRANSIT
+	to_chat(usr, SPAN_ALERT("Firemission underway!"))
 	sleep(grace_period)
 	stat = FIRE_MISSION_STATE_ON_TARGET
-	switch(recorded_dir)
-		if(NORTH) //default direction
-			sx = 0
-			sy = 1
-		if(SOUTH)
-			sx = 0
-			sy = -1
-		if(EAST)
-			sx = 1
-			sy = 0
-		if(WEST)
-			sx = -1
-			sy = 0
 	if(!target_turf)
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target Lost."
 		return
-	var/turf/tt_turf = get_turf(target_turf.signal_loc)
-	if(!tt_turf || !check_firemission_loc(target_turf))
+	if(!target_turf || !check_firemission_loc(signal))
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
 		return
-	var/turf/shootloc = locate(tt_turf.x + sx*recorded_offset, tt_turf.y + sy*recorded_offset,tt_turf.z)
-	if(!shootloc || !istype(shootloc))
-		stat = FIRE_MISSION_STATE_IDLE
-		mission_error = "Target is off bounds."
-		return
-	change_current_loc(shootloc)
-	playsound(shootloc, soundeffect, 70, TRUE, 50)
+	change_current_loc(target_turf)
+	playsound(target_turf, soundeffect, 70, TRUE, 50)
 	sleep(flyto_period)
 	stat = FIRE_MISSION_STATE_FIRING
-	mission.execute_firemission(linked_console, shootloc, recorded_dir, fire_length, step_delay, src)
+	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
 	sleep(flyoff_period)
 	stat = FIRE_MISSION_STATE_COOLDOWN
 	sleep(cooldown_period)
 	stat = FIRE_MISSION_STATE_IDLE
 
+/**
+ * Change attack vector for firemission
+ */
 /datum/cas_fire_envelope/proc/change_direction(new_dir)
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT)
 		mission_error = "Fire Mission is under way already."
@@ -349,13 +321,13 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_mission(mission_id, weapon_id, offset_step, offset)
 	var/result = firemission_envelope.update_mission(mission_id, weapon_id, offset_step, offset)
-	if(result<1)
+	if(result != FIRE_MISSION_ALL_GOOD)
 		return firemission_envelope.mission_error
 	return "OK"
 
 // Used in the simulation room for firemission testing.
 /obj/structure/machinery/computer/dropship_weapons/proc/execute_firemission(obj/location, offset, dir, mission_id)
 	var/result = firemission_envelope.execute_firemission(get_turf(location), offset, dir, mission_id)
-	if(result<1)
+	if(result != FIRE_MISSION_ALL_GOOD)
 		return firemission_envelope.mission_error
 	return "OK"

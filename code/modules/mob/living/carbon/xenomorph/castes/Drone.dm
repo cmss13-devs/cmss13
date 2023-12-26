@@ -7,7 +7,6 @@
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_10
-	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_MEDIUM
@@ -63,6 +62,7 @@
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
+		/datum/action/xeno_action/onclick/tacmap,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -73,3 +73,7 @@
 
 	icon_xeno = 'icons/mob/xenos/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/drone.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
+	weed_food_states = list("Drone_1","Drone_2","Drone_3")
+	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")

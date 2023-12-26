@@ -8,6 +8,7 @@
 	density = FALSE
 	anchored = TRUE
 	can_buckle = TRUE
+	buckle_lying = 0
 	var/open = 0 //if the lid is up
 	var/cistern = 0 //if the cistern bit is open
 	var/w_items = 0 //the combined w_class of all the items in the cistern
@@ -121,7 +122,7 @@
 	cistern_overlay.icon_state = "cistern[cistern]"
 
 /obj/structure/toilet/attackby(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
 		to_chat(user, SPAN_NOTICE("You start to [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]."))
 		playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -150,7 +151,7 @@
 							GM.apply_damage(5, OXY)
 					swirlie = null
 				else
-					user.visible_message(SPAN_DANGER("[user] slams [GM.name] into the [src]!"), SPAN_NOTICE("You slam [GM.name] into the [src]!"))
+					user.visible_message(SPAN_DANGER("[user] slams [GM.name] into [src]!"), SPAN_NOTICE("You slam [GM.name] into [src]!"))
 					GM.apply_damage(8, BRUTE)
 			else
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))
@@ -188,7 +189,7 @@
 				if(!GM.loc == get_turf(src))
 					to_chat(user, SPAN_NOTICE("[GM.name] needs to be on the urinal."))
 					return
-				user.visible_message(SPAN_DANGER("[user] slams [GM.name] into the [src]!"), SPAN_NOTICE("You slam [GM.name] into the [src]!"))
+				user.visible_message(SPAN_DANGER("[user] slams [GM.name] into [src]!"), SPAN_NOTICE("You slam [GM.name] into [src]!"))
 				GM.apply_damage(8, BRUTE)
 			else
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))

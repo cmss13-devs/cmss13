@@ -143,8 +143,11 @@
 	assets = list(
 		"wylogo.png" = 'html/images/wylogo.png',
 		"uscmlogo.png" = 'html/images/uscmlogo.png',
+		"upplogo.png" = 'html/images/upplogo.png',
+		"cmblogo.png" = 'html/images/cmblogo.png',
 		"faxwylogo.png" = 'html/images/faxwylogo.png',
 		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
+		"colonialspacegruntsEZ.png" = 'html/images/colonialspacegruntsEZ.png',
 	)
 
 /datum/asset/spritesheet/chat
@@ -204,10 +207,10 @@
 
 /datum/asset/spritesheet/playtime_rank/register()
 	var/icon_file = 'icons/mob/hud/hud.dmi'
-	var/tier1_state = "hudxenoupgrade1"
-	var/tier2_state = "hudxenoupgrade2"
-	var/tier3_state = "hudxenoupgrade3"
-	var/tier4_state = "hudxenoupgrade4"
+	var/tier1_state = "hudxenoupgrade2"
+	var/tier2_state = "hudxenoupgrade3"
+	var/tier3_state = "hudxenoupgrade4"
+	var/tier4_state = "hudxenoupgrade5"
 
 	var/icon/tier1_icon = icon(icon_file, tier1_state, SOUTH)
 	var/icon/tier2_icon = icon(icon_file, tier2_state, SOUTH)
@@ -271,7 +274,6 @@
 
 /datum/asset/spritesheet/ranks/register()
 	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
-	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
 
 	var/list/icon_data = list(
 		list("Mar", null),
@@ -284,10 +286,8 @@
 		list("SL", "hudsquad_leader"),
 	)
 
-	var/i
-	for(i = 1; i < length(squads); i++)
-		var/squad = squads[i]
-		var/color = squad_colors[i]
+	for(var/datum/squad/marine/squad in GLOB.RoleAuthority.squads)
+		var/color = squad.equipment_color
 		for(var/iref in icon_data)
 			var/list/iconref = iref
 			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
@@ -315,14 +315,16 @@
 			log_debug("not atom! [item]")
 			continue
 
-		if (sprites[icon_file])
+		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
+
+		if(sprites[imgid])
 			continue
 
 		if(icon_state in icon_states(icon_file))
 			I = icon(icon_file, icon_state, SOUTH)
 			var/c = initial(item.color)
 			if (!isnull(c) && c != "#FFFFFF")
-				I.Blend(initial(c), ICON_MULTIPLY)
+				I.Blend(c, ICON_MULTIPLY)
 		else
 			if (ispath(k, /obj/effect/essentials_set))
 				var/obj/effect/essentials_set/es_set = new k()
@@ -339,7 +341,6 @@
 				item = new k()
 				I = icon(item.icon, item.icon_state, SOUTH)
 				qdel(item)
-		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
 
 		Insert(imgid, I)
 	return ..()

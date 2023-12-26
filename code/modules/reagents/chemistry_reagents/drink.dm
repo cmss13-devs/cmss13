@@ -85,13 +85,13 @@
 
 /datum/reagent/drink/carrotjuice/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.ReduceEyeBlur(1)
 	M.ReduceEyeBlind(1)
-	if(!data) data = 1
+	if(!data)
+		data = 1
 	switch(data)
-		if(1 to 20)
-			//nothing
 		if(21 to INFINITY)
 			if(prob(data-10))
 				M.disabilities &= ~NEARSIGHTED
@@ -555,7 +555,7 @@
 /datum/reagent/neurotoxin/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	if(!.) return
-	M.knocked_down = max(M.knocked_down, 3)
+	M.KnockDown(5)
 	if(!data) data = 1
 	data++
 	M.dizziness +=6

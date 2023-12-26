@@ -70,6 +70,7 @@
 
 
 /datum/player_action/cryo_human/act(client/user, mob/target, list/params)
+	var/datum/job/job = GET_MAPPED_ROLE(target.job)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(H.assigned_squad)
@@ -90,15 +91,16 @@
 						if(SKILL_SPEC_SNIPER)
 							set_name = "Sniper Set"
 
-					if(set_name && !available_specialist_sets.Find(set_name))
-						available_specialist_sets += set_name
+					if(set_name && !GLOB.available_specialist_sets.Find(set_name))
+						GLOB.available_specialist_sets += set_name
 			S.forget_marine_in_squad(H)
 		message_admins("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
 
-	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+	//Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+	SSticker.mode.latejoin_update(job, -1)
 
 	//Handle job slot/tater cleanup.
-	RoleAuthority.free_role(RoleAuthority.roles_for_mode[target.job], TRUE)
+	GLOB.RoleAuthority.free_role(GLOB.RoleAuthority.roles_for_mode[target.job], TRUE)
 
 	//Delete them from datacore.
 	var/target_ref = WEAKREF(target)
@@ -180,11 +182,15 @@
 	permissions_required = R_SPAWN
 
 /datum/player_action/strip_equipment/act(client/user, mob/target, list/params)
-	for (var/obj/item/I in target)
+	for (var/obj/item/current_item in target)
+		if(istype(current_item, /obj/item/card/id))
+			continue
+
 		if(params["drop_items"])
-			target.drop_inv_item_to_loc(I, target.loc, FALSE, TRUE)
-		else
-			qdel(I)
+			target.drop_inv_item_to_loc(current_item, target.loc, FALSE, TRUE)
+			continue
+
+		qdel(current_item)
 
 	message_admins("[key_name_admin(user)] stripped [target] of their items.")
 	return TRUE
@@ -196,7 +202,7 @@
 
 /datum/player_action/set_squad/act(client/user, mob/living/carbon/human/target, list/params)
 	var/list/squads = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
+	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 		squads[S.name] = S
 
 	var/selected_squad = tgui_input_list(user, "Select a squad.", "Squad Selection", squads)

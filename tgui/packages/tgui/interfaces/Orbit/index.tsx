@@ -1,6 +1,6 @@
 import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
-import { capitalizeFirst } from 'common/string';
+import { capitalizeFirst, multiline } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
 import { Box, Button, Collapsible, ColorBox, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
@@ -29,18 +29,21 @@ export const Orbit = (props, context) => {
 /** Controls filtering out the list of observables via search */
 const ObservableSearch = (props, context) => {
   const { act, data } = useBackend<OrbitData>(context);
-  const {
-    auto_observe,
-    humans = [],
-    marines = [],
-    survivors = [],
-    xenos = [],
-  } = data;
+  const { humans = [], marines = [], survivors = [], xenos = [] } = data;
+
+  let auto_observe = data.auto_observe;
+
+  const [autoObserve, setAutoObserve] = useLocalState<boolean>(
+    context,
+    'autoObserve',
+    auto_observe ? true : false
+  );
   const [searchQuery, setSearchQuery] = useLocalState<string>(
     context,
     'searchQuery',
     ''
   );
+
   /** Gets a list of Observables, then filters the most relevant to orbit */
   const orbitMostRelevant = (searchQuery: string) => {
     /** Returns the most orbited observable that matches the search. */
@@ -56,6 +59,7 @@ const ObservableSearch = (props, context) => {
     if (mostRelevant !== undefined) {
       act('orbit', {
         ref: mostRelevant.ref,
+        auto_observe: autoObserve,
       });
     }
   };
@@ -77,6 +81,16 @@ const ObservableSearch = (props, context) => {
           />
         </Stack.Item>
         <Stack.Divider />
+        <Stack.Item>
+          <Button
+            color={autoObserve ? 'good' : 'transparent'}
+            icon={autoObserve ? 'toggle-on' : 'toggle-off'}
+            onClick={() => act('toggle_auto_observe')}
+            tooltip={multiline`Toggle Auto-Observe. When active, you'll
+            see the UI / full inventory of whoever you're orbiting. Neat!`}
+            tooltipPosition="bottom-start"
+          />
+        </Stack.Item>
         <Stack.Item>
           <Button
             color="transparent"
@@ -104,6 +118,15 @@ const ObservableContent = (props, context) => {
     survivors = [],
     xenos = [],
     ert_members = [],
+    upp = [],
+    clf = [],
+    wy = [],
+    twe = [],
+    freelancer = [],
+    mercenary = [],
+    contractor = [],
+    dutch = [],
+    marshal = [],
     synthetics = [],
     predators = [],
     animals = [],
@@ -130,6 +153,43 @@ const ObservableContent = (props, context) => {
         color="light-grey"
         section={synthetics}
         title="Synthetics"
+      />
+      <ObservableSection
+        color="green"
+        section={upp}
+        title="Union of Progressive Peoples"
+      />
+      <ObservableSection
+        color="teal"
+        section={clf}
+        title="Colonial Liberation Front"
+      />
+      <ObservableSection color="white" section={wy} title="Weyland Yutani" />
+      <ObservableSection
+        color="red"
+        section={twe}
+        title="Royal Marines Commando"
+      />
+      <ObservableSection
+        color="orange"
+        section={freelancer}
+        title="Freelancers"
+      />
+      <ObservableSection
+        color="label"
+        section={mercenary}
+        title="Mercenaries"
+      />
+      <ObservableSection
+        color="light-grey"
+        section={contractor}
+        title="Military Contractors"
+      />
+      <ObservableSection color="good" section={dutch} title="Dutchs Dozen" />
+      <ObservableSection
+        color="dark-blue"
+        section={marshal}
+        title="Colonial Marshal Bureau"
       />
       <ObservableSection color="green" section={predators} title="Predators" />
       <ObservableSection color="olive" section={escaped} title="Escaped" />
@@ -199,6 +259,10 @@ const ObservableItem = (
   const { health, icon, full_name, nickname, orbiters, ref, background_color } =
     item;
 
+  const [autoObserve] = useLocalState<boolean>(context, 'autoObserve', false);
+
+  const displayHealth = typeof health === 'number';
+
   return (
     <Button
       color={'transparent'}
@@ -209,9 +273,9 @@ const ObservableItem = (
         'color': color ? 'white' : 'grey',
       }}
       onClick={() => act('orbit', { ref: ref })}
-      tooltip={!!health && <ObservableTooltip item={item} />}
+      tooltip={displayHealth && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">
-      {!!health && (
+      {displayHealth && (
         <ColorBox
           color={getHealthColor(health)}
           style={{ 'margin-right': '0.5em' }}
@@ -234,7 +298,9 @@ const ObservableTooltip = (props: { item: Observable }) => {
   const {
     item: { caste, health, job, full_name, icon, background_color },
   } = props;
-  const displayHealth = !!health && health >= 0 ? `${health}%` : 'Critical';
+
+  const displayHealth = typeof health === 'number';
+  const healthText = !!health && health >= 0 ? `${health}%` : 'Critical';
 
   return (
     <LabeledList>
@@ -257,8 +323,8 @@ const ObservableTooltip = (props: { item: Observable }) => {
           {job}
         </LabeledList.Item>
       )}
-      {!!health && (
-        <LabeledList.Item label="Health">{displayHealth}</LabeledList.Item>
+      {displayHealth && (
+        <LabeledList.Item label="Health">{healthText}</LabeledList.Item>
       )}
     </LabeledList>
   );

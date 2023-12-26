@@ -12,7 +12,6 @@
 	max_health = XENO_HEALTH_QUEEN
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_10
-	crystal_max = XENO_CRYSTAL_MEDIUM
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
@@ -48,6 +47,8 @@
 
 	minimap_icon = "xenoqueen"
 
+	royal_caste = TRUE
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		var/datum/hive_status/hive
@@ -66,6 +67,7 @@
 /mob/hologram/queen
 	name = "Queen Eye"
 	action_icon_state = "queen_exit"
+	motion_sensed = TRUE
 
 	color = "#a800a8"
 
@@ -261,20 +263,21 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
 	hive_pos = XENO_QUEEN
-	crystal_max = XENO_CRYSTAL_MEDIUM
-	crystal_stored = XENO_CRYSTAL_MEDIUM
 	small_explosives_stun = FALSE
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
 	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Queen_1","Queen_2","Queen_3")
+	weed_food_states_flipped = list("Queen_1","Queen_2","Queen_3")
+
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/queen_ability_cooldown = 0
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg') //the noise the Queen makes when she screeches. Done this way for VV purposes.
-	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
 	var/queen_ovipositor_icon
 	var/queen_standing_icon
 
@@ -286,7 +289,7 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
+		/datum/action/xeno_action/activable/place_construction/not_primary, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
@@ -319,7 +322,7 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
+		/datum/action/xeno_action/activable/place_construction/not_primary, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
@@ -387,8 +390,10 @@
 
 /mob/living/carbon/xenomorph/queen/Initialize()
 	. = ..()
+	SStracking.set_leader("hive_[hivenumber]", src)
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
+		notify_ghosts(header = "New Queen", message = "A new Queen has risen.", source = src, action = NOTIFY_ORBIT)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 	set_resin_build_order(GLOB.resin_build_order_drone)
 	for(var/datum/action/xeno_action/action in actions)
@@ -406,24 +411,33 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 
-/mob/living/carbon/xenomorph/queen/handle_name(datum/hive_status/in_hive)
-	var/name_prefix = in_hive.prefix
+/mob/living/carbon/xenomorph/queen/generate_name()
+	if(!nicknumber)
+		generate_and_set_nicknumber()
+	var/name_prefix = hive.prefix
 	if(HAS_TRAIT(src, TRAIT_NO_PREFIX))
 		name_prefix = ""
 	if(queen_aged)
 		age_xeno()
 		switch(age)
-			if(XENO_NORMAL) name = "[name_prefix]Queen"  //Young
-			if(XENO_MATURE) name = "[name_prefix]Elder Queen"  //Mature
-			if(XENO_ELDER) name = "[name_prefix]Elder Empress"  //Elite
-			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
-			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
+			if(XENO_YOUNG)
+				name = "[name_prefix]Young Queen" //Young
+			if(XENO_NORMAL)
+				name = "[name_prefix]Queen"  //Regular
+			if(XENO_MATURE)
+				name = "[name_prefix]Elder Queen"  //Mature
+			if(XENO_ELDER)
+				name = "[name_prefix]Elder Empress"  //Elite
+			if(XENO_ANCIENT)
+				name = "[name_prefix]Ancient Empress" //Ancient
+			if(XENO_PRIME)
+				name = "[name_prefix]Prime Empress" //Primordial
 	else
 		age = XENO_NORMAL
 		if(client)
 			hud_update()
 
-		name = "[name_prefix]Young Queen"
+		name = "[name_prefix]Immature Queen"
 
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
@@ -431,10 +445,15 @@
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = in_hive.color
+	color = hive.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
+
+/mob/living/carbon/xenomorph/queen/set_hive_and_update(new_hivenumber)
+	if(!..())
+		return FALSE
+	update_living_queens()
 
 /mob/living/carbon/xenomorph/queen/proc/make_combat_effective()
 	queen_aged = TRUE
@@ -590,7 +609,7 @@
 	if(word_ability)
 		word_ability.apply_cooldown()
 
-	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in your head...")
+	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in our head...")
 
 	log_and_message_admins("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")
@@ -772,17 +791,31 @@
 		return TRUE
 
 /mob/living/carbon/xenomorph/queen/death(cause, gibbed)
-	if(hive.living_xeno_queen == src)
+	if(src == hive?.living_xeno_queen)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
-		hive.banished_ckeys   = list() // Reset the banished ckey list
+
+		// Reset the banished ckey list
+		if(length(hive.banished_ckeys))
+			for(var/mob/living/carbon/xenomorph/target_xeno in hive.totalXenos)
+				if(!target_xeno.ckey)
+					continue
+				for(var/mob_name in hive.banished_ckeys)
+					if(target_xeno.ckey == hive.banished_ckeys[mob_name])
+						target_xeno.banished = FALSE
+						target_xeno.hud_update_banished()
+						target_xeno.lock_evolve = FALSE
+			hive.banished_ckeys = list()
+
 	icon = queen_standing_icon
 	return ..()
-
 
 /mob/living/carbon/xenomorph/queen/proc/mount_ovipositor()
 	if(ovipositor)
 		return //sanity check
 	ovipositor = TRUE
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, OVIPOSITOR_TRAIT)
+	set_body_position(STANDING_UP)
+	set_resting(FALSE)
 
 	set_resin_build_order(GLOB.resin_build_order_ovipositor) // This needs to occur before we update the abilities so we can update the choose resin icon
 	for(var/datum/action/xeno_action/action in actions)
@@ -797,7 +830,7 @@
 		// These already have their placement locked in:
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/place_construction/queen_macro,
+		/datum/action/xeno_action/activable/place_construction/not_primary,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,
@@ -832,9 +865,9 @@
 	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
 	extra_build_dist = IGNORE_BUILD_DISTANCE
+	egg_planting_range = 3
 	anchored = TRUE
 	resting = FALSE
-	update_canmove()
 	update_icons()
 	bubble_icon_x_offset = 32
 	bubble_icon_y_offset = 32
@@ -862,6 +895,7 @@
 	if(!ovipositor)
 		return
 	ovipositor = FALSE
+	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, OVIPOSITOR_TRAIT)
 	update_icons()
 	bubble_icon_x_offset = initial(bubble_icon_x_offset)
 	bubble_icon_y_offset = initial(bubble_icon_y_offset)
@@ -883,13 +917,13 @@
 
 	egg_amount = 0
 	extra_build_dist = initial(extra_build_dist)
+	egg_planting_range = initial(egg_planting_range)
 	for(var/datum/action/xeno_action/action in actions)
 		if(istype(action, /datum/action/xeno_action/onclick/grow_ovipositor))
 			var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = action
 			ovi_ability.apply_cooldown()
 			break
 	anchored = FALSE
-	update_canmove()
 
 	for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 		L.handle_xeno_leader_pheromones()
@@ -898,14 +932,6 @@
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)
 
 	SEND_SIGNAL(src, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, instant_dismount)
-
-/mob/living/carbon/xenomorph/queen/update_canmove()
-	. = ..()
-	if(ovipositor)
-		lying = FALSE
-		density = TRUE
-		canmove = FALSE
-		return canmove
 
 /mob/living/carbon/xenomorph/queen/handle_special_state()
 	if(ovipositor)
@@ -916,11 +942,6 @@
 	. = ..()
 	if(ovipositor)
 		return "Queen_ovipositor_[severity]" // I don't actually have it, but maybe one day.
-
-/mob/living/carbon/xenomorph/queen/proc/in_egg_plant_range(turf/T)
-	if(!ovipositor)
-		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
-	return get_dist(src, T) <= egg_planting_range
 
 /mob/living/carbon/xenomorph/queen/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
@@ -940,3 +961,7 @@
 
 	// Switch icon back and then let normal icon behavior happen
 	Queen.icon = Queen.queen_standing_icon
+
+/mob/living/carbon/xenomorph/queen/alter_ghost(mob/dead/observer/ghost)
+	ghost.icon = queen_standing_icon
+	return ..()

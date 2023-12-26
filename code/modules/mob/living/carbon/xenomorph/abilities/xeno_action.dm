@@ -63,15 +63,15 @@
 	if(!owner)
 		return
 	var/mob/living/carbon/xenomorph/X = owner
-	if (ability_name && round_statistics)
-		round_statistics.track_ability_usage(ability_name)
+	if (ability_name && GLOB.round_statistics)
+		GLOB.round_statistics.track_ability_usage(ability_name)
 		X.track_ability_usage(ability_name, X.caste_type)
 
 /datum/action/xeno_action/can_use_action()
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
+	if(X && !X.is_mob_incapacitated() && !X.dazed && X.body_position == STANDING_UP && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
 /datum/action/xeno_action/give_to(mob/living/L)
@@ -131,6 +131,9 @@
 	// TODO: make hidden a part of can_use_action
 	if(!hidden && can_use_action() && use_ability(arglist(args)))
 		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
+		return TRUE
+
+	return FALSE
 
 // For actions that do something on each life tick
 /datum/action/xeno_action/proc/life_tick()
@@ -155,6 +158,8 @@
 	if(xeno.selected_ability == src)
 		if(xeno.deselect_timer > world.time)
 			return // We clicked the same ability in a very short time
+		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
+			return
 		to_chat(xeno, "You will no longer use [ability_name] with \
 			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		button.icon_state = "template"
@@ -338,11 +343,11 @@
 		if(cooldown_message)
 			to_chat(owner, SPAN_XENODANGER("[cooldown_message]"))
 		else
-			to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
+			to_chat(owner, SPAN_XENODANGER("We feel our strength return! We can use [name] again!"))
 
 /datum/action/xeno_action/proc/start_charging_ability()
 	charge_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_charging_ability)), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
-	to_chat(owner, SPAN_XENOWARNING("You start charging up your <b>[name]</b>!"))
+	to_chat(owner, SPAN_XENOWARNING("We start charging up our <b>[name]</b>!"))
 
 /datum/action/xeno_action/proc/finish_charging_ability()
 	charge_timer_id = TIMER_ID_NULL

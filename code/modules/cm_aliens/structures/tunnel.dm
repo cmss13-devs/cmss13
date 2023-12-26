@@ -2,6 +2,8 @@
  * Tunnels
  */
 
+#define TUNNEL_COLLAPSING_TIME (60 SECONDS)
+
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
@@ -27,7 +29,7 @@
 /obj/structure/tunnel/Initialize(mapload, h_number)
 	. = ..()
 	var/turf/L = get_turf(src)
-	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
+	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
 
 	if(h_number && GLOB.hive_datum[h_number])
 		hivenumber = h_number
@@ -46,7 +48,7 @@
 	if(resin_trap)
 		qdel(resin_trap)
 
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "xenotunnel")
+	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
 
 /obj/structure/tunnel/Destroy()
 	if(hive)
@@ -74,7 +76,7 @@
 		visible_message(SPAN_DANGER("[src] suddenly collapses!"))
 		qdel(src)
 
-/obj/structure/tunnel/bullet_act(obj/item/projectile/Proj)
+/obj/structure/tunnel/bullet_act(obj/projectile/Proj)
 	return FALSE
 
 /obj/structure/tunnel/ex_act(severity)
@@ -83,6 +85,25 @@
 
 /obj/structure/tunnel/attackby(obj/item/W as obj, mob/user as mob)
 	if(!isxeno(user))
+		if(istype(W, /obj/item/tool/shovel))
+			var/obj/item/tool/shovel/destroying_shovel = W
+
+			if(destroying_shovel.folded)
+				return
+
+			playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
+
+			user.visible_message(SPAN_NOTICE("[user] starts to collapse [src]!"), SPAN_NOTICE("You start collapsing [src]!"))
+
+			if(user.action_busy || !do_after(user, TUNNEL_COLLAPSING_TIME * ((100 - destroying_shovel.shovelspeed) * 0.01), INTERRUPT_ALL, BUSY_ICON_BUILD))
+				return
+
+			playsound(loc, 'sound/effects/tunnel_collapse.ogg', 50)
+
+			visible_message(SPAN_NOTICE("[src] collapses in on itself."))
+
+			qdel(src)
+
 		return ..()
 	return attack_alien(user)
 
@@ -106,7 +127,7 @@
 
 /obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/xenomorph/X)
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
-	if(!istype(X) || X.stat || X.lying || !isfriendly(X) || !hive)
+	if(!istype(X) || X.is_mob_incapacitated(TRUE) || !isfriendly(X) || !hive)
 		return FALSE
 	if(X in contents)
 		var/list/tunnels = list()
@@ -126,7 +147,7 @@
 			//No teleporting!
 			return FALSE
 
-		to_chat(X, SPAN_XENONOTICE("You begin moving to your destination."))
+		to_chat(X, SPAN_XENONOTICE("We begin moving to our destination."))
 
 		var/tunnel_time = TUNNEL_MOVEMENT_XENO_DELAY
 
@@ -144,11 +165,11 @@
 			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 			return FALSE
 		if(!T.loc)
-			to_chat(X, SPAN_WARNING("The tunnel has collapsed before you reached its exit!"))
+			to_chat(X, SPAN_WARNING("The tunnel has collapsed before we reached its exit!"))
 			return FALSE
 
 		X.forceMove(T)
-		to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
+		to_chat(X, SPAN_XENONOTICE("We have reached our destination."))
 		return TRUE
 
 /obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/xenomorph/X)
@@ -156,7 +177,7 @@
 	if(X in contents)
 		X.forceMove(loc)
 		visible_message(SPAN_XENONOTICE("\The [X] pops out of the tunnel!"), \
-		SPAN_XENONOTICE("You pop out through the other side!"))
+		SPAN_XENONOTICE("We pop out through the other side!"))
 		return TRUE
 
 //Used for controling tunnel exiting and returning
@@ -174,20 +195,20 @@
 	. = attack_alien(M)
 
 /obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!istype(M) || M.stat || M.lying)
+	if(!istype(M) || M.is_mob_incapacitated(TRUE))
 		return XENO_NO_DELAY_ACTION
 
 	if(!isfriendly(M))
 		if(M.mob_size < MOB_SIZE_BIG)
-			to_chat(M, SPAN_XENOWARNING("You aren't large enough to collapse this tunnel!"))
+			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION
 
 		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),\
-		SPAN_XENONOTICE("You begin to fill [src] with dirt using your massive claws."), max_distance = 3)
+		SPAN_XENONOTICE("We begin to fill [src] with dirt using our massive claws."), max_distance = 3)
 		xeno_attack_delay(M)
 
 		if(!do_after(M, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL_OUT_OF_RANGE, max_dist = 1))
-			to_chat(M, SPAN_XENOWARNING("You decide not to cave the tunnel in."))
+			to_chat(M, SPAN_XENOWARNING("We decide not to cave the tunnel in."))
 			return XENO_NO_DELAY_ACTION
 
 		src.visible_message(SPAN_XENODANGER("[src] caves in!"), max_distance = 3)
@@ -196,7 +217,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(M.anchored)
-		to_chat(M, SPAN_XENOWARNING("You can't climb through a tunnel while immobile."))
+		to_chat(M, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
 
 	if(!hive.tunnels.len)
@@ -216,14 +237,14 @@
 
 	if(M.mob_size >= MOB_SIZE_BIG)
 		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into \the [src]."), \
-		SPAN_XENONOTICE("You begin heaving your monstrous bulk into \the [src]</b>."))
+		SPAN_XENONOTICE("We begin heaving our monstrous bulk into \the [src]</b>."))
 	else
 		M.visible_message(SPAN_XENONOTICE("\The [M] begins crawling down into \the [src]."), \
-		SPAN_XENONOTICE("You begin crawling down into \the [src]</b>."))
+		SPAN_XENONOTICE("We begin crawling down into \the [src]</b>."))
 
 	xeno_attack_delay(M)
 	if(!do_after(M, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_WARNING("Your crawling was interrupted!"))
+		to_chat(M, SPAN_WARNING("Our crawling was interrupted!"))
 		return XENO_NO_DELAY_ACTION
 
 	if(hive.tunnels.len) //Make sure other tunnels exist
@@ -231,5 +252,14 @@
 		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 		pick_tunnel(M)
 	else
-		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so you return back up."))
+		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so we return back up."))
 	return XENO_NO_DELAY_ACTION
+
+/obj/structure/tunnel/maint_tunnel
+	name = "\improper Maintenance Hatch"
+	desc = "An entrance to a maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "hatchclosed"
+
+/obj/structure/tunnel/maint_tunnel/no_xeno_desc
+	desc = "An entrance to a maintenance tunnel. Pieces of debris keep you from getting a closer look."

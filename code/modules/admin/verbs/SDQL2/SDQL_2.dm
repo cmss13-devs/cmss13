@@ -203,6 +203,9 @@
 		message_admins(SPAN_DANGER("ERROR: Non-admin [key_name(usr)] attempted to execute a SDQL query!"))
 		log_admin("non-admin attempted to execute a SDQL query!")
 		return FALSE
+	var/prompt = tgui_alert(usr, "Run SDQL2 Query?", "SDQL2", list("Yes", "Cancel"))
+	if (prompt != "Yes")
+		return
 	var/list/results = world.SDQL2_query(query_text, key_name_admin(usr), "[key_name(usr)]")
 	if(length(results) == 3)
 		for(var/I in 1 to 3)
@@ -342,7 +345,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 /datum/sdql2_query/New(list/tree, SU = FALSE, admin_interact = TRUE, _options = SDQL2_OPTIONS_DEFAULT, finished_qdel = FALSE)
 	if(IsAdminAdvancedProcCall() || !LAZYLEN(tree))
 		qdel(src)
-		return
+		return PROC_BLOCKED
 	LAZYADD(GLOB.sdql2_queries, src)
 	superuser = SU
 	allow_admin_interact = admin_interact
@@ -599,7 +602,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			var/text = "[key_name(usr)] attempted to grab world with a procedure call to a SDQL datum."
 			message_admins(text)
 			log_admin(text)
-			return
+			return PROC_BLOCKED
 	if("world" in tree)
 		return world
 	return SDQL_expression(world, tree)

@@ -21,16 +21,16 @@
 #define between(low, middle, high) (max(min(middle, high), low))
 
 //Offuscate x for coord system
-#define obfuscate_x(x) (x + obfs_x)
+#define obfuscate_x(x) (x + GLOB.obfs_x)
 
 //Offuscate y for coord system
-#define obfuscate_y(y) (y + obfs_y)
+#define obfuscate_y(y) (y + GLOB.obfs_y)
 
 //Deoffuscate x for coord system
-#define deobfuscate_x(x) (x - obfs_x)
+#define deobfuscate_x(x) (x - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
-#define deobfuscate_y(y) (y - obfs_y)
+#define deobfuscate_y(y) (y - GLOB.obfs_y)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 
@@ -99,38 +99,29 @@
 		var/atom/movable/big_subject = subject
 		. += (big_subject.bound_height  - world.icon_size) / 2
 
-/proc/Get_Angle(atom/start,atom/end, tile_bound = FALSE)//For beams.
-	if(!start || !end) return 0
-	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
-	var/dx
-	var/dy
-	if(tile_bound)
-		dy=end.y-start.y
-		dx=end.x-start.x
-	else
-		dy = get_pixel_position_y(end) - get_pixel_position_y(start)
-		dx = get_pixel_position_x(end) - get_pixel_position_x(start)
-	if(!dy)
-		return (dx>=0)?90:270
-	.=arctan(dx/dy)
-	if(dy<0)
-		.+=180
-	else if(dx<0)
-		.+=360
+/// Calculate the angle between two atoms. Uses north-clockwise convention: NORTH = 0, EAST = 90, etc.
+/proc/Get_Angle(atom/start, atom/end)//For beams.
+	if(!start || !end)
+		return 0
+	if(!start.z)
+		start = get_turf(start)
+		if(!start)
+			return 0 //Atoms are not on turfs.
+	if(!end.z)
+		end = get_turf(end)
+		if(!end)
+			return 0 //Atoms are not on turfs.
+	var/dy = get_pixel_position_y(end) - get_pixel_position_y(start)
+	var/dx = get_pixel_position_x(end) - get_pixel_position_x(start)
+	return delta_to_angle(dx, dy)
 
-/proc/Get_Compass_Dir(atom/start,atom/end)//get_dir() only considers an object to be north/south/east/west if there is zero deviation. This uses rounding instead.
-	if(!start || !end) return 0
-	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
-	var/dy=end.y-start.y
-	var/dx=end.x-start.x
-	if(!dy)
-		return (dx>=0)?4:8
-	var/angle=arctan(dx/dy)
-	if(dy<0)
-		angle+=180
-	else if(dx<0)
-		angle+=360
+/// Calculate the angle produced by a pair of x and y deltas. Uses north-clockwise convention: NORTH = 0, EAST = 90, etc.
+/proc/delta_to_angle(dx, dy)
+	. = arctan(dy, dx) //y-then-x results in north-clockwise convention: https://en.wikipedia.org/wiki/Atan2#East-counterclockwise,_north-clockwise_and_south-clockwise_conventions,_etc.
+	if(. < 0)
+		. += 360
 
+/proc/angle_to_dir(angle)
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
 		if (22.5 to 67.5)
 			return NORTHEAST
@@ -151,6 +142,8 @@
 		else
 			return NORTH
 
+/proc/Get_Compass_Dir(atom/start, atom/end)//get_dir() only considers an object to be north/south/east/west if there is zero deviation. This uses rounding instead.
+	return angle_to_dir(Get_Angle(get_turf(start), get_turf(end)))
 
 // Among other things, used by flamethrower and boiler spray to calculate if flame/spray can pass through.
 // Returns an atom for specific effects (primarily flames and acid spray) that damage things upon contact
@@ -281,9 +274,10 @@
 		//update the datacore records! This is goig to be a bit costly.
 		var/mob_ref = WEAKREF(src)
 		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
-			for(var/datum/data/record/R in L)
-				if(R.fields["ref"] == mob_ref)
-					R.fields["name"] = newname
+			for(var/datum/data/record/record_entry in L)
+				if(record_entry.fields["ref"] == mob_ref)
+					record_entry.fields["name"] = newname
+					record_entry.name = newname
 					break
 
 		//update our pda and id if we have them on our person
@@ -894,7 +888,7 @@
 	if(ismob(source))
 		var/mob/M = source
 		has_nightvision = M.see_in_dark >= 12
-	if(!has_nightvision && target_turf.lighting_lumcount == 0)
+	if(!has_nightvision && target_turf.get_lumcount() == 0)
 		return FALSE
 
 	while(current != target_turf)
@@ -916,110 +910,110 @@
 	return FALSE
 
 
-var/global/image/busy_indicator_clock
-var/global/image/busy_indicator_medical
-var/global/image/busy_indicator_build
-var/global/image/busy_indicator_friendly
-var/global/image/busy_indicator_hostile
-var/global/image/emote_indicator_highfive
-var/global/image/emote_indicator_fistbump
-var/global/image/emote_indicator_headbutt
-var/global/image/emote_indicator_tailswipe
-var/global/image/emote_indicator_rock_paper_scissors
-var/global/image/emote_indicator_rock
-var/global/image/emote_indicator_paper
-var/global/image/emote_indicator_scissors
-var/global/image/action_red_power_up
-var/global/image/action_green_power_up
-var/global/image/action_blue_power_up
-var/global/image/action_purple_power_up
+GLOBAL_DATUM(busy_indicator_clock, /image)
+GLOBAL_DATUM(busy_indicator_medical, /image)
+GLOBAL_DATUM(busy_indicator_build, /image)
+GLOBAL_DATUM(busy_indicator_friendly, /image)
+GLOBAL_DATUM(busy_indicator_hostile, /image)
+GLOBAL_DATUM(emote_indicator_highfive, /image)
+GLOBAL_DATUM(emote_indicator_fistbump, /image)
+GLOBAL_DATUM(emote_indicator_headbutt, /image)
+GLOBAL_DATUM(emote_indicator_tailswipe, /image)
+GLOBAL_DATUM(emote_indicator_rock_paper_scissors, /image)
+GLOBAL_DATUM(emote_indicator_rock, /image)
+GLOBAL_DATUM(emote_indicator_paper, /image)
+GLOBAL_DATUM(emote_indicator_scissors, /image)
+GLOBAL_DATUM(action_red_power_up, /image)
+GLOBAL_DATUM(action_green_power_up, /image)
+GLOBAL_DATUM(action_blue_power_up, /image)
+GLOBAL_DATUM(action_purple_power_up, /image)
 
 /proc/get_busy_icon(busy_type)
 	if(busy_type == BUSY_ICON_GENERIC)
-		if(!busy_indicator_clock)
-			busy_indicator_clock = image('icons/mob/mob.dmi', null, "busy_generic", "pixel_y" = 22)
-			busy_indicator_clock.layer = FLY_LAYER
-		return busy_indicator_clock
+		if(!GLOB.busy_indicator_clock)
+			GLOB.busy_indicator_clock = image('icons/mob/mob.dmi', null, "busy_generic", "pixel_y" = 22)
+			GLOB.busy_indicator_clock.layer = FLY_LAYER
+		return GLOB.busy_indicator_clock
 	else if(busy_type == BUSY_ICON_MEDICAL)
-		if(!busy_indicator_medical)
-			busy_indicator_medical = image('icons/mob/mob.dmi', null, "busy_medical", "pixel_y" = 0) //This shows directly on top of the mob, no offset!
-			busy_indicator_medical.layer = FLY_LAYER
-		return busy_indicator_medical
+		if(!GLOB.busy_indicator_medical)
+			GLOB.busy_indicator_medical = image('icons/mob/mob.dmi', null, "busy_medical", "pixel_y" = 0) //This shows directly on top of the mob, no offset!
+			GLOB.busy_indicator_medical.layer = FLY_LAYER
+		return GLOB.busy_indicator_medical
 	else if(busy_type == BUSY_ICON_BUILD)
-		if(!busy_indicator_build)
-			busy_indicator_build = image('icons/mob/mob.dmi', null, "busy_build", "pixel_y" = 22)
-			busy_indicator_build.layer = FLY_LAYER
-		return busy_indicator_build
+		if(!GLOB.busy_indicator_build)
+			GLOB.busy_indicator_build = image('icons/mob/mob.dmi', null, "busy_build", "pixel_y" = 22)
+			GLOB.busy_indicator_build.layer = FLY_LAYER
+		return GLOB.busy_indicator_build
 	else if(busy_type == BUSY_ICON_FRIENDLY)
-		if(!busy_indicator_friendly)
-			busy_indicator_friendly = image('icons/mob/mob.dmi', null, "busy_friendly", "pixel_y" = 22)
-			busy_indicator_friendly.layer = FLY_LAYER
-		return busy_indicator_friendly
+		if(!GLOB.busy_indicator_friendly)
+			GLOB.busy_indicator_friendly = image('icons/mob/mob.dmi', null, "busy_friendly", "pixel_y" = 22)
+			GLOB.busy_indicator_friendly.layer = FLY_LAYER
+		return GLOB.busy_indicator_friendly
 	else if(busy_type == BUSY_ICON_HOSTILE)
-		if(!busy_indicator_hostile)
-			busy_indicator_hostile = image('icons/mob/mob.dmi', null, "busy_hostile", "pixel_y" = 22)
-			busy_indicator_hostile.layer = FLY_LAYER
-		return busy_indicator_hostile
+		if(!GLOB.busy_indicator_hostile)
+			GLOB.busy_indicator_hostile = image('icons/mob/mob.dmi', null, "busy_hostile", "pixel_y" = 22)
+			GLOB.busy_indicator_hostile.layer = FLY_LAYER
+		return GLOB.busy_indicator_hostile
 	else if(busy_type == EMOTE_ICON_HIGHFIVE)
-		if(!emote_indicator_highfive)
-			emote_indicator_highfive = image('icons/mob/mob.dmi', null, "emote_highfive", "pixel_y" = 22)
-			emote_indicator_highfive.layer = FLY_LAYER
-		return emote_indicator_highfive
+		if(!GLOB.emote_indicator_highfive)
+			GLOB.emote_indicator_highfive = image('icons/mob/mob.dmi', null, "emote_highfive", "pixel_y" = 22)
+			GLOB.emote_indicator_highfive.layer = FLY_LAYER
+		return GLOB.emote_indicator_highfive
 	else if(busy_type == EMOTE_ICON_FISTBUMP)
-		if(!emote_indicator_fistbump)
-			emote_indicator_fistbump = image('icons/mob/mob.dmi', null, "emote_fistbump", "pixel_y" = 22)
-			emote_indicator_fistbump.layer = FLY_LAYER
-		return emote_indicator_fistbump
+		if(!GLOB.emote_indicator_fistbump)
+			GLOB.emote_indicator_fistbump = image('icons/mob/mob.dmi', null, "emote_fistbump", "pixel_y" = 22)
+			GLOB.emote_indicator_fistbump.layer = FLY_LAYER
+		return GLOB.emote_indicator_fistbump
 	else if(busy_type == EMOTE_ICON_ROCK_PAPER_SCISSORS)
-		if(!emote_indicator_rock_paper_scissors)
-			emote_indicator_rock_paper_scissors = image('icons/mob/mob.dmi', null, "emote_rps", "pixel_y" = 22)
-			emote_indicator_rock_paper_scissors.layer = FLY_LAYER
-		return emote_indicator_rock_paper_scissors
+		if(!GLOB.emote_indicator_rock_paper_scissors)
+			GLOB.emote_indicator_rock_paper_scissors = image('icons/mob/mob.dmi', null, "emote_rps", "pixel_y" = 22)
+			GLOB.emote_indicator_rock_paper_scissors.layer = FLY_LAYER
+		return GLOB.emote_indicator_rock_paper_scissors
 	else if(busy_type == EMOTE_ICON_ROCK)
-		if(!emote_indicator_rock)
-			emote_indicator_rock = image('icons/mob/mob.dmi', null, "emote_rock", "pixel_y" = 22)
-			emote_indicator_rock.layer = FLY_LAYER
-		return emote_indicator_rock
+		if(!GLOB.emote_indicator_rock)
+			GLOB.emote_indicator_rock = image('icons/mob/mob.dmi', null, "emote_rock", "pixel_y" = 22)
+			GLOB.emote_indicator_rock.layer = FLY_LAYER
+		return GLOB.emote_indicator_rock
 	else if(busy_type == EMOTE_ICON_PAPER)
-		if(!emote_indicator_paper)
-			emote_indicator_paper = image('icons/mob/mob.dmi', null, "emote_paper", "pixel_y" = 22)
-			emote_indicator_paper.layer = FLY_LAYER
-		return emote_indicator_paper
+		if(!GLOB.emote_indicator_paper)
+			GLOB.emote_indicator_paper = image('icons/mob/mob.dmi', null, "emote_paper", "pixel_y" = 22)
+			GLOB.emote_indicator_paper.layer = FLY_LAYER
+		return GLOB.emote_indicator_paper
 	else if(busy_type == EMOTE_ICON_SCISSORS)
-		if(!emote_indicator_scissors)
-			emote_indicator_scissors = image('icons/mob/mob.dmi', null, "emote_scissors", "pixel_y" = 22)
-			emote_indicator_scissors.layer = FLY_LAYER
-		return emote_indicator_scissors
+		if(!GLOB.emote_indicator_scissors)
+			GLOB.emote_indicator_scissors = image('icons/mob/mob.dmi', null, "emote_scissors", "pixel_y" = 22)
+			GLOB.emote_indicator_scissors.layer = FLY_LAYER
+		return GLOB.emote_indicator_scissors
 	else if(busy_type == EMOTE_ICON_HEADBUTT)
-		if(!emote_indicator_headbutt)
-			emote_indicator_headbutt = image('icons/mob/mob.dmi', null, "emote_headbutt", "pixel_y" = 22)
-			emote_indicator_headbutt.layer = FLY_LAYER
-		return emote_indicator_headbutt
+		if(!GLOB.emote_indicator_headbutt)
+			GLOB.emote_indicator_headbutt = image('icons/mob/mob.dmi', null, "emote_headbutt", "pixel_y" = 22)
+			GLOB.emote_indicator_headbutt.layer = FLY_LAYER
+		return GLOB.emote_indicator_headbutt
 	else if(busy_type == EMOTE_ICON_TAILSWIPE)
-		if(!emote_indicator_tailswipe)
-			emote_indicator_tailswipe = image('icons/mob/mob.dmi', null, "emote_tailswipe", "pixel_y" = 22)
-			emote_indicator_tailswipe.layer = FLY_LAYER
-		return emote_indicator_tailswipe
+		if(!GLOB.emote_indicator_tailswipe)
+			GLOB.emote_indicator_tailswipe = image('icons/mob/mob.dmi', null, "emote_tailswipe", "pixel_y" = 22)
+			GLOB.emote_indicator_tailswipe.layer = FLY_LAYER
+		return GLOB.emote_indicator_tailswipe
 	else if(busy_type == ACTION_RED_POWER_UP)
-		if(!action_red_power_up)
-			action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
-			action_red_power_up.layer = FLY_LAYER
-		return action_red_power_up
+		if(!GLOB.action_red_power_up)
+			GLOB.action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
+			GLOB.action_red_power_up.layer = FLY_LAYER
+		return GLOB.action_red_power_up
 	else if(busy_type == ACTION_GREEN_POWER_UP)
-		if(!action_green_power_up)
-			action_green_power_up = image('icons/effects/effects.dmi', null, "vitality", "pixel_x" = 16)
-			action_green_power_up.layer = FLY_LAYER
-		return action_green_power_up
+		if(!GLOB.action_green_power_up)
+			GLOB.action_green_power_up = image('icons/effects/effects.dmi', null, "vitality", "pixel_x" = 16)
+			GLOB.action_green_power_up.layer = FLY_LAYER
+		return GLOB.action_green_power_up
 	else if(busy_type == ACTION_BLUE_POWER_UP)
-		if(!action_blue_power_up)
-			action_blue_power_up = image('icons/effects/effects.dmi', null, "shock", "pixel_x" = 16)
-			action_blue_power_up.layer = FLY_LAYER
-		return action_blue_power_up
+		if(!GLOB.action_blue_power_up)
+			GLOB.action_blue_power_up = image('icons/effects/effects.dmi', null, "shock", "pixel_x" = 16)
+			GLOB.action_blue_power_up.layer = FLY_LAYER
+		return GLOB.action_blue_power_up
 	else if(busy_type == ACTION_PURPLE_POWER_UP)
-		if(!action_purple_power_up)
-			action_purple_power_up = image('icons/effects/effects.dmi', null, "pain", "pixel_x" = 16)
-			action_purple_power_up.layer = FLY_LAYER
-		return action_purple_power_up
+		if(!GLOB.action_purple_power_up)
+			GLOB.action_purple_power_up = image('icons/effects/effects.dmi', null, "pain", "pixel_x" = 16)
+			GLOB.action_purple_power_up.layer = FLY_LAYER
+		return GLOB.action_purple_power_up
 
 
 /*
@@ -1089,7 +1083,7 @@ var/global/image/action_purple_power_up
 		target_orig_turf = get_turf(target)
 	var/obj/user_holding = busy_user.get_active_hand()
 	var/obj/target_holding
-	var/cur_user_lying = busy_user.lying
+	var/cur_user_lying = busy_user.body_position
 	var/cur_target_lying
 	var/expected_total_time = delayfraction*numticks
 	var/time_remaining = expected_total_time
@@ -1097,7 +1091,7 @@ var/global/image/action_purple_power_up
 	if(has_target && istype(T))
 		cur_target_zone_sel = T.zone_selected
 		target_holding = T.get_active_hand()
-		cur_target_lying = T.lying
+		cur_target_lying = T.body_position
 
 	. = TRUE
 	for(var/i in 1 to numticks)
@@ -1121,13 +1115,13 @@ var/global/image/action_purple_power_up
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_KNOCKED_DOWN && busy_user.knocked_down || \
-			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down)
+		if(user_flags & INTERRUPT_KNOCKED_DOWN && HAS_TRAIT(busy_user, TRAIT_FLOORED) || \
+			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && HAS_TRAIT(T, TRAIT_FLOORED))
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_STUNNED && busy_user.stunned || \
-			target_is_mob && (target_flags & INTERRUPT_STUNNED && T.stunned)
+		if(user_flags & INTERRUPT_STUNNED && HAS_TRAIT(busy_user, TRAIT_INCAPACITATED)|| \
+			target_is_mob && (target_flags & INTERRUPT_STUNNED && HAS_TRAIT(T, TRAIT_INCAPACITATED))
 		)
 			. = FALSE
 			break
@@ -1139,7 +1133,7 @@ var/global/image/action_purple_power_up
 			break
 		if(user_flags & INTERRUPT_NEEDHAND)
 			if(user_holding)
-				if(!user_holding.loc || busy_user.get_active_hand() != user_holding) //no longer holding the required item
+				if(!user_holding.loc || busy_user.get_active_hand() != user_holding) //no longer holding the required item in active hand
 					. = FALSE
 					break
 			else if(busy_user.get_active_hand()) //something in active hand when we need it to stay empty
@@ -1153,6 +1147,11 @@ var/global/image/action_purple_power_up
 			else if(T.get_active_hand())
 				. = FALSE
 				break
+		if(user_flags & INTERRUPT_NO_NEEDHAND)
+			if(user_holding)
+				if(!user_holding.loc || (busy_user.l_hand != user_holding && busy_user.r_hand != user_holding)) //no longer holding the required item in either hand
+					. = FALSE
+					break
 		if(user_flags & INTERRUPT_RESIST && busy_user.resisting || \
 			target_is_mob && (target_flags & INTERRUPT_RESIST && T.resisting)
 		)
@@ -1196,8 +1195,8 @@ var/global/image/action_purple_power_up
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CHANGED_LYING && busy_user.lying != cur_user_lying || \
-			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.lying != cur_target_lying)
+		if(user_flags & INTERRUPT_CHANGED_LYING && busy_user.body_position != cur_user_lying || \
+			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.body_position != cur_target_lying)
 		)
 			. = FALSE
 			break
@@ -1222,12 +1221,11 @@ var/global/image/action_purple_power_up
 	if(A.vars.Find(lowertext(varname))) return 1
 	else return 0
 
-//Returns: all the non-lighting areas in the world, sorted.
+//Returns: all the areas in the world, sorted.
 /proc/return_sorted_areas()
 	var/list/area/AL = list()
 	for(var/area/A in GLOB.sorted_areas)
-		if(!A.lighting_subarea)
-			AL += A
+		AL += A
 	return AL
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
@@ -1247,13 +1245,8 @@ var/global/image/action_purple_power_up
 	var/area/A = GLOB.areas_by_type[areatype]
 
 	// Fix it up with /area/var/related due to lighting shenanigans
-	var/list/area/LA
-	if(!length(A.related))
-		LA = list(A)
-	else LA = A.related
-	for(var/area/Ai in LA)
-		for(var/turf/T in Ai)
-			turfs += T
+	for(var/turf/T in A)
+		turfs += T
 
 	return turfs
 
@@ -1377,7 +1370,7 @@ var/global/image/action_purple_power_up
 
 // if(AR.lighting_use_dynamic) //TODO: rewrite this code so it's not messed by lighting ~Carn
 // X.opacity = !X.opacity
-// X.SetOpacity(!X.opacity)
+// X.set_opacity(!X.opacity)
 
 					toupdate += X
 
@@ -1466,7 +1459,7 @@ var/global/image/action_purple_power_up
 /*
 Checks if that loc and dir has a item on the wall
 */
-var/list/WALLITEMS = list(
+GLOBAL_LIST_INIT(WALLITEMS, list(
 	/obj/structure/machinery/power/apc,
 	/obj/structure/machinery/alarm,
 	/obj/item/device/radio/intercom,
@@ -1487,10 +1480,11 @@ var/list/WALLITEMS = list(
 	/obj/structure/mirror,
 	/obj/structure/closet/fireaxecabinet,
 	/obj/structure/machinery/computer/cameras/telescreen/entertainment,
-	)
+	))
+
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)
-		for(var/item in WALLITEMS)
+		for(var/item in GLOB.WALLITEMS)
 			if(istype(O, item))
 				//Direction works sometimes
 				if(O.dir == dir)
@@ -1514,7 +1508,7 @@ var/list/WALLITEMS = list(
 
 	//Some stuff is placed directly on the wallturf (signs)
 	for(var/obj/O in get_step(loc, dir))
-		for(var/item in WALLITEMS)
+		for(var/item in GLOB.WALLITEMS)
 			if(istype(O, item))
 				if(O.pixel_x == 0 && O.pixel_y == 0)
 					return 1
@@ -1651,7 +1645,7 @@ var/list/WALLITEMS = list(
 	var/turf/Turf = get_turf(explosive)
 	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
+		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))) && (GLOB.security_level < SEC_LEVEL_RED) && !crash_occured)
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE
@@ -1761,6 +1755,85 @@ var/list/WALLITEMS = list(
 		if(location == src)
 			return TRUE
 
+GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
+
+/// Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
+/proc/dview(range = world.view, center, invis_flags = 0)
+	if(!center)
+		return
+
+	GLOB.dview_mob.loc = center
+
+	GLOB.dview_mob.see_invisible = invis_flags
+
+	. = view(range, GLOB.dview_mob)
+	GLOB.dview_mob.loc = null
+
+/mob/dview
+	name = "INTERNAL DVIEW MOB"
+	invisibility = 101
+	density = FALSE
+	see_in_dark = 1e6
+	var/ready_to_die = FALSE
+
+/mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
+	SHOULD_CALL_PARENT(FALSE)
+	if(flags_atom & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags_atom |= INITIALIZED
+	return INITIALIZE_HINT_NORMAL
+
+/mob/dview/Destroy(force = FALSE)
+	if(!ready_to_die)
+		stack_trace("ALRIGHT WHICH FUCKER TRIED TO DELETE *MY* DVIEW?")
+
+		if (!force)
+			return QDEL_HINT_LETMELIVE
+
+		log_world("EVACUATE THE SHITCODE IS TRYING TO STEAL MUH JOBS")
+		GLOB.dview_mob = new
+	return ..()
+
+
+#define FOR_DVIEW(type, range, center, invis_flags) \
+	GLOB.dview_mob.loc = center;           \
+	GLOB.dview_mob.see_invisible = invis_flags; \
+	for(type in view(range, GLOB.dview_mob))
+
+#define FOR_DVIEW_END GLOB.dview_mob.loc = null
+
+/proc/get_turf_pixel(atom/AM)
+	if(!istype(AM))
+		return
+
+	//Find AM's matrix so we can use it's X/Y pixel shifts
+	var/matrix/M = matrix(AM.transform)
+
+	var/pixel_x_offset = AM.pixel_x + M.get_x_shift()
+	var/pixel_y_offset = AM.pixel_y + M.get_y_shift()
+
+	//Irregular objects
+	var/icon/AMicon = icon(AM.icon, AM.icon_state)
+	var/AMiconheight = AMicon.Height()
+	var/AMiconwidth = AMicon.Width()
+	if(AMiconheight != world.icon_size || AMiconwidth != world.icon_size)
+		pixel_x_offset += ((AMiconwidth/world.icon_size)-1)*(world.icon_size*0.5)
+		pixel_y_offset += ((AMiconheight/world.icon_size)-1)*(world.icon_size*0.5)
+
+	//DY and DX
+	var/rough_x = round(round(pixel_x_offset,world.icon_size)/world.icon_size)
+	var/rough_y = round(round(pixel_y_offset,world.icon_size)/world.icon_size)
+
+	//Find coordinates
+	var/turf/T = get_turf(AM) //use AM's turfs, as it's coords are the same as AM's AND AM's coords are lost if it is inside another atom
+	if(!T)
+		return null
+	var/final_x = T.x + rough_x
+	var/final_y = T.y + rough_y
+
+	if(final_x || final_y)
+		return locate(final_x, final_y, T.z)
+
 //used to check if a mob can examine an object
 /atom/proc/can_examine(mob/user)
 	if(!user.client)
@@ -1781,14 +1854,30 @@ var/list/WALLITEMS = list(
 		user.face_atom(src)
 	return TRUE
 
+#define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##target, ##var_name, ##var_value)
+//dupe code because dm can't handle 3 level deep macros
 #define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##datum, NAMEOF(##datum, ##var), ##var_value)
+/// Same as VARSET_CALLBACK, but uses a weakref to the datum.
+/// Use this if the timer is exceptionally long.
+#define VARSET_WEAK_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), WEAKREF(##datum), NAMEOF(##datum, ##var), ##var_value)
 
 /proc/___callbackvarset(list_or_datum, var_name, var_value)
 	if(length(list_or_datum))
 		list_or_datum[var_name] = var_value
 		return
-	var/datum/D = list_or_datum
-	D.vars[var_name] = var_value
+
+	var/datum/datum = list_or_datum
+
+	if (isweakref(datum))
+		var/datum/weakref/datum_weakref = datum
+		datum = datum_weakref.resolve()
+		if (isnull(datum))
+			return
+
+	if(IsAdminAdvancedProcCall())
+		datum.vv_edit_var(var_name, var_value) //same result generally, unless badmemes
+	else
+		datum.vars[var_name] = var_value
 
 //don't question just accept
 /proc/pass(...)
@@ -1972,3 +2061,30 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		if(stop_type && istype(turf_to_check, stop_type))
 			break
 	return turf_to_check
+
+/// Given a direction, return the direction and the +-45 degree directions next to it
+/proc/get_related_directions(direction = NORTH)
+	switch(direction)
+		if(NORTH)
+			return list(NORTH, NORTHEAST, NORTHWEST)
+
+		if(EAST)
+			return list(EAST, NORTHEAST, SOUTHEAST)
+
+		if(SOUTH)
+			return list(SOUTH, SOUTHEAST, SOUTHWEST)
+
+		if(WEST)
+			return list(WEST, NORTHWEST, SOUTHWEST)
+
+		if(NORTHEAST)
+			return list(NORTHEAST, NORTH, EAST)
+
+		if(SOUTHEAST)
+			return list(SOUTHEAST, EAST, SOUTH)
+
+		if(SOUTHWEST)
+			return list(SOUTHWEST, SOUTH, WEST)
+
+		if(NORTHWEST)
+			return list(NORTHWEST, NORTH, WEST)

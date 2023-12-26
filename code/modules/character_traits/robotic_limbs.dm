@@ -20,7 +20,7 @@
 /datum/character_trait/robo_limb/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
 	var/string_paygrade = preset.load_rank(target)
 	var/datum/paygrade/paygrade_datum = GLOB.paygrades[string_paygrade]
-	if(paygrade_datum.ranking < minimum_ranking)
+	if(paygrade_datum?.ranking < minimum_ranking)
 		to_chat(target, SPAN_WARNING("You aren't a high enough rank to be eligible to have a prosthetic [robo_limb_name]!"))
 		return
 	var/obj/limb/limb = target.get_limb(code_limb)

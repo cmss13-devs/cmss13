@@ -56,6 +56,8 @@
 		A.r_node = src
 
 /obj/structure/resource_node/Destroy()
+	if(controlled_area && controlled_area.r_node == src)
+		controlled_area.r_node = null
 	controlled_area = null
 	return ..()
 
@@ -83,7 +85,7 @@
 	health = Clamp(health - damage, 0, max_health)
 	healthcheck()
 
-/obj/structure/resource_node/bullet_act(obj/item/projectile/P)
+/obj/structure/resource_node/bullet_act(obj/projectile/P)
 	take_damage(P.damage)
 
 /obj/structure/resource_node/ex_act(severity, direction)

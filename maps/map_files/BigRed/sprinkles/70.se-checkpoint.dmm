@@ -5,18 +5,14 @@
 	pixel_y = 28;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "aN" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "bp" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -24,16 +20,12 @@
 	locked = 0;
 	name = "\improper Checkpoint Office"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "bx" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/motiondetector,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "cO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -53,9 +45,7 @@
 "el" = (
 /obj/structure/surface/table/almayer,
 /obj/item/handcuffs,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "ge" = (
 /obj/structure/closet/secure_closet/marshal,
@@ -68,7 +58,7 @@
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "delivery"
 	},
 /area/bigred/ground/security)
 "ie" = (
@@ -81,8 +71,8 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Solaris Ridge";
-	phone_id = "Filtration Checkpoint";
-	phone_color = "red"
+	phone_color = "red";
+	phone_id = "Filtration Checkpoint"
 	},
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
@@ -133,9 +123,7 @@
 "pV" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "qg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -146,17 +134,13 @@
 "qy" = (
 /obj/item/device/radio,
 /obj/structure/surface/table/almayer,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "rD" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "rF" = (
 /obj/structure/machinery/deployable/barrier,
@@ -169,15 +153,12 @@
 	name = "Filtration Lockdown"
 	},
 /turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "delivery"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "uk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "uF" = (
 /obj/structure/surface/table/almayer,
@@ -190,21 +171,17 @@
 	name = "\improper Checkpoint Office"
 	},
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "delivery"
 	},
 /area/bigred/ground/security)
 "vH" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "vO" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/small_stack,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "wi" = (
 /obj/effect/decal/cleanable/dirt,
@@ -220,9 +197,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "xr" = (
 /obj/structure/surface/rack,
@@ -231,9 +206,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "zE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -250,9 +223,7 @@
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "AY" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "AZ" = (
 /turf/open/floor{
@@ -309,18 +280,14 @@
 "KO" = (
 /obj/item/trash/sosjerky,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "LX" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "Mq" = (
 /obj/structure/surface/table/almayer,
@@ -335,9 +302,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/vending/security,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "OD" = (
 /turf/open/floor{
@@ -355,9 +320,7 @@
 "Pf" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "PS" = (
 /turf/open/mars,
@@ -370,8 +333,7 @@
 	name = "Filtration Lockdown"
 	},
 /turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "delivery"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "Qo" = (
@@ -384,9 +346,7 @@
 	},
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "SF" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -413,9 +373,7 @@
 /area/bigred/ground/security)
 "VI" = (
 /obj/structure/largecrate,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "Wa" = (
 /turf/open/floor{
@@ -432,9 +390,7 @@
 "Yo" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 "YZ" = (
 /obj/structure/surface/table/almayer,
@@ -456,9 +412,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor,
 /area/bigred/ground/security)
 
 (1,1,1) = {"
@@ -522,7 +476,7 @@ uk
 AY
 uk
 uk
-xa
+AY
 hz
 "}
 (5,1,1) = {"

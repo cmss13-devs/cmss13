@@ -10,7 +10,6 @@
 	var/on = 1
 	var/area/area = null
 	var/otherarea = null
-	// luminosity = 1
 
 /obj/structure/machinery/light_switch/Initialize()
 	. = ..()
@@ -43,15 +42,14 @@
 /obj/structure/machinery/light_switch/attack_hand(mob/user)
 	on = !on
 
-	for(var/area/A in area.master.related)
-		A.lightswitch = on
-		A.updateicon()
+	area.lightswitch = on
+	area.updateicon()
 
-		for(var/obj/structure/machinery/light_switch/L in A)
-			L.on = on
-			L.updateicon()
+	for(var/obj/structure/machinery/light_switch/L in area)
+		L.on = on
+		L.updateicon()
 
-	area.master.power_change()
+	area.power_change()
 
 /obj/structure/machinery/light_switch/power_change()
 
@@ -64,8 +62,7 @@
 		updateicon()
 
 /obj/structure/machinery/light_switch/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	power_change()
-	..(severity)

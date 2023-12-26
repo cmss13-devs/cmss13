@@ -58,6 +58,7 @@
 
 	reagents.clear_reagents()
 
+	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 	to_chat(usr, SPAN_NOTICE("You empty out [src]"))
 	update_icon()
 
@@ -71,22 +72,21 @@
 			G.update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/afterattack(obj/target, mob/user , flag) //refuel at fueltanks when we run out of ammo.
-	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack))
-		return ..()
 	if(get_dist(user,target) > 1)
 		return ..()
+	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack))
+		return ..()
 
-	var/obj/O = target
-	if(!O.reagents || O.reagents.reagent_list.len < 1)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+	if(!target.reagents || target.reagents.reagent_list.len < 1)
+		to_chat(user, SPAN_WARNING("[target] is empty!"))
 		return
 
 	if(!reagents)
 		create_reagents(max_rounds)
 
-	var/datum/reagent/to_add = O.reagents.reagent_list[1]
+	var/datum/reagent/to_add = target.reagents.reagent_list[1]
 
-	if(!istype(to_add) || (length(reagents.reagent_list) && flamer_chem != to_add.id) || length(O.reagents.reagent_list) > 1)
+	if(!istype(to_add) || (length(reagents.reagent_list) && flamer_chem != to_add.id) || length(target.reagents.reagent_list) > 1)
 		to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 		return
 
@@ -96,10 +96,11 @@
 
 	var/fuel_amt_to_remove = Clamp(to_add.volume, 0, max_rounds - reagents.get_reagent_amount(to_add.id))
 	if(!fuel_amt_to_remove)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		if(!max_rounds)
+			to_chat(user, SPAN_WARNING("[target] is empty!"))
 		return
 
-	O.reagents.remove_reagent(to_add.id, fuel_amt_to_remove)
+	target.reagents.remove_reagent(to_add.id, fuel_amt_to_remove)
 	reagents.add_reagent(to_add.id, fuel_amt_to_remove)
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 	caliber = to_add.name

@@ -163,7 +163,7 @@
 /mob/living/simple_animal/hostile/smartdisc/Collided(atom/movable/AM)
 	return
 
-/mob/living/simple_animal/hostile/smartdisc/bullet_act(obj/item/projectile/Proj)
+/mob/living/simple_animal/hostile/smartdisc/bullet_act(obj/projectile/Proj)
 	if(prob(60 - Proj.damage))
 		return 0
 
@@ -235,14 +235,6 @@
 		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
 		qdel(src)
 		return
-
-	for(var/mob/living/carbon/C in range(6))
-		if(C.target_locked)
-			var/image/I = C.target_locked
-			if(I.icon_state == "locked-y" && !isyautja(C) && C.stat != DEAD)
-				stance = HOSTILE_STANCE_ATTACK
-				target_mob = C
-				break
 
 	if(!stat)
 		switch(stance)

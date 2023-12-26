@@ -3,7 +3,6 @@ import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, Section, Box, Input, Dropdown } from '../components';
 import { Window } from '../layouts';
 import { globalEvents } from '../events.js';
-import { createLogger } from '../logging';
 
 const KEY_MODS = {
   'SHIFT': true,
@@ -33,10 +32,6 @@ export const KeyBinds = (props, context) => {
     searchTerm.length || selectedTab === 'ALL'
       ? getAllKeybinds(glob_keybinds)
       : glob_keybinds[selectedTab];
-
-  const logger = createLogger('waa');
-
-  logger.warn(keybinds_to_use);
 
   const filteredKeybinds = keybinds_to_use.filter((val) =>
     val.full_name.toLowerCase().match(searchTerm)
@@ -255,7 +250,7 @@ export class ButtonKeybind extends Component {
 
     let pressedKey = e.key.toUpperCase();
 
-    this.finishTimerStart(200);
+    this.finishTimerStart(600);
 
     // Prevents repeating
     if (keysDown[pressedKey] && e.type === 'keydown') {
@@ -284,6 +279,8 @@ export class ButtonKeybind extends Component {
     });
     this.finishTimerStart(2000);
     globalEvents.on('keydown', this.preventPassthrough);
+    globalEvents.on('key', this.preventPassthrough);
+    globalEvents.on('keyup', this.preventPassthrough);
   }
 
   doBlur() {
@@ -292,6 +289,8 @@ export class ButtonKeybind extends Component {
       keysDown: {},
     });
     globalEvents.off('keydown', this.preventPassthrough);
+    globalEvents.off('key', this.preventPassthrough);
+    globalEvents.off('keyup', this.preventPassthrough);
   }
 
   render() {

@@ -7,9 +7,11 @@ on:
     types: [ready_for_review, opened, synchronize, reopened]
 jobs:
   triage:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: eps1lon/actions-label-merge-conflict@v2.1.0
         with:
           dirtyLabel: 'Merge Conflict'
+          commentOnDirty: "This pull request has conflicts, please resolve those before we can evaluate the pull request."
+          commentOnClean: "Conflicts have been resolved. A maintainer will review the pull request shortly."
           repoToken: ${{ secrets.BOT_TOKEN_CM || secrets.GITHUB_TOKEN }}

@@ -49,26 +49,6 @@
 /// Scales with clan size
 #define CLAN_LIMIT_SIZE 2
 
-var/global/list/datum/rank/clan_ranks = list(
-	CLAN_RANK_UNBLOODED = new /datum/rank/unblooded(),
-	CLAN_RANK_YOUNG = new /datum/rank/young(),
-	CLAN_RANK_BLOODED = new /datum/rank/blooded(),
-	CLAN_RANK_ELITE = new /datum/rank/elite(),
-	CLAN_RANK_ELDER = new /datum/rank/elder(),
-	CLAN_RANK_LEADER = new /datum/rank/leader(),
-	CLAN_RANK_ADMIN = new /datum/rank/ancient()
-)
-
-var/global/list/clan_ranks_ordered = list(
-	CLAN_RANK_UNBLOODED = CLAN_RANK_UNBLOODED_INT,
-	CLAN_RANK_YOUNG = CLAN_RANK_YOUNG_INT,
-	CLAN_RANK_BLOODED = CLAN_RANK_BLOODED_INT,
-	CLAN_RANK_ELITE = CLAN_RANK_ELITE_INT,
-	CLAN_RANK_ELDER = CLAN_RANK_ELDER_INT,
-	CLAN_RANK_LEADER = CLAN_RANK_LEADER_INT,
-	CLAN_RANK_ADMIN = CLAN_RANK_ADMIN_INT
-)
-
 #define CLAN_HREF "clan_href"
 #define CLAN_TARGET_HREF "clan_target_href"
 

@@ -17,3 +17,11 @@
 #define APPEARANCE_UI_IGNORE_ALPHA (RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|RESET_ALPHA|PIXEL_SCALE)
 /// Used for HUD objects
 #define APPEARANCE_UI (RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|PIXEL_SCALE)
+
+// Notification action types
+#define NOTIFY_JUMP "jump"
+#define NOTIFY_ATTACK "attack"
+#define NOTIFY_ORBIT "orbit"
+#define NOTIFY_JOIN_XENO "join_xeno"
+#define NOTIFY_XENO_TACMAP "xeno_tacmap"
+#define NOTIFY_USCM_TACMAP "uscm_tacmap"

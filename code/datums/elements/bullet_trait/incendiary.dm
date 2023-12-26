@@ -8,12 +8,12 @@
 
 /datum/element/bullet_trait_incendiary/Attach(datum/target, reagent = /datum/reagent/napalm/ut, stacks = 20)
 	. = ..()
-	if(!istype(target, /obj/item/projectile))
+	if(!istype(target, /obj/projectile))
 		return ELEMENT_INCOMPATIBLE
 
 	if(ispath(reagent))
 		var/datum/reagent/R = reagent
-		burn_reagent = chemical_reagents_list[initial(R.id)]
+		burn_reagent = GLOB.chemical_reagents_list[initial(R.id)]
 	else
 		burn_reagent = reagent
 	burn_stacks = stacks

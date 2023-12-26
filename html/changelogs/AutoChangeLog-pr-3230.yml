@@ -1,6 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - code_imp: "Regroup all the code of the vendors that are in squads prep into the same file squad_prep."
-  - code_imp: "use the general uniform to hold the common items that are vended in it and all the squad prep vendors."
-  - code_imp: "move the training weapon vendor into the file of requisition.dm"

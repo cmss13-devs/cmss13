@@ -7,8 +7,8 @@
 		drop_inv_item_on_ground(W)
 	regenerate_icons()
 	monkeyizing = 1
-	canmove = 0
-	stunned = 1
+	anchored = TRUE
+	ADD_TRAIT(src, TRAIT_INCAPACITATED, "Terminal Monkeyziation")
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
@@ -68,7 +68,7 @@
 	for(var/obj/item/W in src)
 		drop_inv_item_on_ground(W)
 	monkeyizing = 1
-	canmove = 0
+	ADD_TRAIT(src, TRAIT_INCAPACITATED, "Terminal Monkeyziation")
 	icon = null
 	invisibility = 101
 	return ..()
@@ -85,7 +85,7 @@
 		drop_inv_item_on_ground(W)
 	regenerate_icons()
 	monkeyizing = 1
-	canmove = 0
+	ADD_TRAIT(src, TRAIT_INCAPACITATED, "Terminal Monkeyziation")
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
@@ -108,7 +108,7 @@
 			O.mind.original = O
 	else
 		O.key = key
-		if(O.client) O.client.change_view(world_view_size)
+		if(O.client) O.client.change_view(GLOB.world_view_size)
 
 	O.forceMove(loc)
 	O.job = "Cyborg"
@@ -131,7 +131,7 @@
 		drop_inv_item_on_ground(W)
 	regenerate_icons()
 	monkeyizing = 1
-	canmove = 0
+	ADD_TRAIT(src, TRAIT_INCAPACITATED, "Terminal Monkeyziation")
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
@@ -180,31 +180,9 @@
 
 	new_xeno.a_intent = INTENT_HARM
 	new_xeno.key = key
-	if(new_xeno.client) new_xeno.client.change_view(world_view_size)
+	if(new_xeno.client) new_xeno.client.change_view(GLOB.world_view_size)
 
 	to_chat(new_xeno, "<B>You are now an alien.</B>")
-	qdel(src)
-	return
-
-/mob/living/carbon/human/proc/corgize()
-	if (monkeyizing)
-		return
-	for(var/obj/item/W in src)
-		drop_inv_item_on_ground(W)
-	regenerate_icons()
-	monkeyizing = 1
-	canmove = 0
-	icon = null
-	invisibility = 101
-	for(var/t in limbs) //this really should not be necessary
-		qdel(t)
-
-	var/mob/living/simple_animal/corgi/new_corgi = new /mob/living/simple_animal/corgi (loc)
-	new_corgi.a_intent = INTENT_HARM
-	new_corgi.key = key
-	if(new_corgi.client) new_corgi.client.change_view(world_view_size)
-
-	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
 	qdel(src)
 	return
 
@@ -224,7 +202,7 @@
 
 	regenerate_icons()
 	monkeyizing = 1
-	canmove = 0
+	ADD_TRAIT(src, TRAIT_INCAPACITATED, "Terminal Monkeyziation")
 	icon = null
 	invisibility = 101
 
@@ -234,7 +212,7 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	if(new_mob.client) new_mob.client.change_view(world_view_size)
+	if(new_mob.client) new_mob.client.change_view(GLOB.world_view_size)
 	new_mob.a_intent = INTENT_HARM
 
 
@@ -254,7 +232,7 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	if(new_mob.client) new_mob.client.change_view(world_view_size)
+	if(new_mob.client) new_mob.client.change_view(GLOB.world_view_size)
 	new_mob.a_intent = INTENT_HARM
 	to_chat(new_mob, "You feel more... animalistic")
 

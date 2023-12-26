@@ -29,7 +29,7 @@
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
 /datum/game_mode/colonialmarines/get_roles_list()
-	return ROLES_DISTRESS_SIGNAL
+	return GLOB.ROLES_DISTRESS_SIGNAL
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
@@ -118,8 +118,6 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_BASIC_RT])
 		flags_round_type |= MODE_BASIC_RT
 
-	round_time_lobby = world.time
-
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 
@@ -128,7 +126,7 @@
 #define MONKEYS_TO_TOTAL_RATIO 1/32
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
-	if(!players_preassigned)
+	if(!GLOB.players_preassigned)
 		return
 
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
@@ -136,22 +134,22 @@
 	if(!length(monkey_types))
 		return
 
-	var/amount_to_spawn = round(players_preassigned * MONKEYS_TO_TOTAL_RATIO)
+	var/amount_to_spawn = round(GLOB.players_preassigned * MONKEYS_TO_TOTAL_RATIO)
 
 	for(var/i in 0 to min(amount_to_spawn, length(GLOB.monkey_spawns)))
 		var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
 		var/monkey_to_spawn = pick(monkey_types)
 		new monkey_to_spawn(T)
 
-/datum/game_mode/colonialmarines/proc/ares_online()
-	var/name = "ARES Online"
-	var/input = "ARES. Online. Good morning, marines."
-	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
-
 /datum/game_mode/colonialmarines/proc/map_announcement()
 	if(SSmapping.configs[GROUND_MAP].announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+
+/datum/game_mode/colonialmarines/proc/ares_conclude()
+	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
+	ai_silent_announcement("Saving operational report to archive.", ".V")
+	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -166,9 +164,10 @@
 
 	if(is_in_endgame)
 		check_hijack_explosions()
+		check_ground_humans()
 
 	if(next_research_allocation < world.time)
-		chemical_data.update_credits(chemical_data.research_allocation_amount)
+		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval
 
 	if(!round_finished)
@@ -206,7 +205,7 @@
 							to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
 						addtimer(CALLBACK(src, PROC_REF(open_podlocks), "map_lockdown"), 300)
 
-			if(round_should_check_for_win)
+			if(GLOB.round_should_check_for_win)
 				check_win()
 			round_checkwin = 0
 
@@ -243,6 +242,35 @@
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
 
+#define GROUNDSIDE_XENO_MULTIPLIER 1.0
+
+///Checks for humans groundside after hijack, spawns forsaken if requirements met
+/datum/game_mode/colonialmarines/proc/check_ground_humans()
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIJACK_GROUND_CHECK))
+		return
+
+	var/groundside_humans = 0
+	var/groundside_xenos = 0
+
+	for(var/mob/current_mob in GLOB.player_list)
+		if(!is_ground_level(current_mob.z) || !current_mob.client || current_mob.stat == DEAD)
+			continue
+
+		if(ishuman_strict(current_mob))
+			groundside_humans++
+			continue
+
+		if(isxeno(current_mob))
+			groundside_xenos++
+			continue
+
+	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
+		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", TRUE, FALSE)
+
+	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
+
+#undef GROUNDSIDE_XENO_MULTIPLIER
+
 /**
  * Makes the mainship shake, along with playing a klaxon sound effect.
  */
@@ -269,28 +297,25 @@
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
-	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
 
 	if(force_end_at && world.time > force_end_at)
 		round_finished = MODE_INFESTATION_X_MINOR
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
-		round_finished = MODE_GENERIC_DRAW_NUKE //Nuke went off, ending the round.
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
-		round_finished = MODE_INFESTATION_M_MINOR //Nuke went off, ending the round.
-	if(EvacuationAuthority.dest_status < NUKE_EXPLOSION_IN_PROGRESS) //If the nuke ISN'T in progress. We do not want to end the round before it detonates.
-		if(!num_humans && num_xenos) //No humans remain alive.
-			round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
-		else if(num_humans && !num_xenos)
-			if(SSticker.mode && SSticker.mode.is_in_endgame)
-				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
-			else
-				SSticker.roundend_check_paused = TRUE
-				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
-				addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
-		else if(!num_humans && !num_xenos)
-			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
+
+	if(!num_humans && num_xenos) //No humans remain alive.
+		round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
+	else if(num_humans && !num_xenos)
+		if(SSticker.mode && SSticker.mode.is_in_endgame)
+			round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
+		else
+			SSticker.roundend_check_paused = TRUE
+			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+			ares_conclude()
+			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
+	else if(!num_humans && !num_xenos)
+		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
 /datum/game_mode/colonialmarines/check_queen_status(hivenumber)
 	set waitfor = 0
@@ -318,6 +343,8 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
+#define MAJORITY 0.5 // What percent do we consider a 'majority?'
+
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
 	var/musical_track
@@ -326,40 +353,53 @@
 		if(MODE_INFESTATION_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories++
-				round_statistics.current_map.total_xeno_majors++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_xeno_victories++
+				GLOB.round_statistics.current_map.total_xeno_majors++
 		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories++
-				round_statistics.current_map.total_marine_majors++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_marine_victories++
+				GLOB.round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
-			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
+			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
+				var/headcount = count_per_faction()
+				var/living = headcount["total_headcount"]
+				if ((headcount["WY_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+				else if ((headcount["marine_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
+			else
+				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			end_icon = "xeno_minor"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
-			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_draws++
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.round_result = round_finished
-		round_statistics.end_round_player_population = GLOB.clients.len
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.round_result = round_finished
+		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
 
-		round_statistics.log_round_statistics()
+		GLOB.round_statistics.log_round_statistics()
 
 	calculate_end_statistics()
 	show_end_statistics(end_icon)
@@ -400,11 +440,11 @@
 	)
 
 	//organize our jobs in a readable and standard way
-	for(var/job in ROLES_MARINES)
+	for(var/job in GLOB.ROLES_MARINES)
 		counted_humans["Squad Marines"][job] = 0
-	for(var/job in ROLES_USCM - ROLES_MARINES)
+	for(var/job in GLOB.ROLES_USCM - GLOB.ROLES_MARINES)
 		counted_humans["Auxiliary Marines"][job] = 0
-	for(var/job in ROLES_SPECIAL)
+	for(var/job in GLOB.ROLES_SPECIAL)
 		counted_humans["Non-Standard Humans"][job] = 0
 
 	var/list/counted_xenos = list()
@@ -423,7 +463,7 @@
 		if(player_client.mob && player_client.mob.stat != DEAD)
 			if(ishuman(player_client.mob))
 				if(player_client.mob.faction == FACTION_MARINE)
-					if(player_client.mob.job in (ROLES_MARINES))
+					if(player_client.mob.job in (GLOB.ROLES_MARINES))
 						counted_humans["Squad Marines"][player_client.mob.job]++
 					else
 						counted_humans["Auxiliary Marines"][player_client.mob.job]++
@@ -545,3 +585,4 @@
 
 #undef HIJACK_EXPLOSION_COUNT
 #undef MARINE_MAJOR_ROUND_END_DELAY
+#undef MAJORITY

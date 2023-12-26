@@ -325,6 +325,9 @@
 	is_resin_allowed = FALSE
 	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
+/area/bigredv2/outside/nw/ceiling
+	ceiling = CEILING_GLASS
+
 /area/bigredv2/outside/c
 	name = "\improper Central Colony Grounds"
 	icon_state = "purple"
@@ -485,7 +488,7 @@
 /area/bigredv2/outside/space_port
 	name = "\improper Space Port"
 	icon_state = "green"
-	ceiling = CEILING_NONE
+	ceiling = CEILING_GLASS
 	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
 
@@ -651,6 +654,7 @@
 	minimap_color = MINIMAP_AREA_LZ
 	icon_state = "tcomsatcham"
 	requires_power = FALSE
+	is_resin_allowed = FALSE
 
 /area/bigredv2/landing/console
 	name = "\improper LZ1 'Telecomms'"

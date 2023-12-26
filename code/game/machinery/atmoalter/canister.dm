@@ -90,7 +90,7 @@ update_flag
 		density = FALSE
 		update_icon()
 
-/obj/structure/machinery/portable_atmospherics/canister/bullet_act(obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/canister/bullet_act(obj/projectile/Proj)
 	if(Proj.ammo.damage)
 		update_health(round(Proj.ammo.damage / 2))
 	..()
@@ -98,12 +98,12 @@ update_flag
 
 /obj/structure/machinery/portable_atmospherics/canister/attackby(obj/item/W as obj, mob/user as mob)
 	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer))
-		visible_message(SPAN_DANGER("[user] hits the [src] with a [W]!"))
+		visible_message(SPAN_DANGER("[user] hits [src] with [W]!"))
 		update_health(W.force)
 		src.add_fingerprint(user)
 	..()
 
-	nanomanager.update_uis(src) // Update all NanoUIs attached to src
+	SSnano.nanomanager.update_uis(src) // Update all NanoUIs attached to src
 
 /obj/structure/machinery/portable_atmospherics/canister/attack_remote(mob/user as mob)
 	return src.attack_hand(user)

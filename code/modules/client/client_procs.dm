@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1548" = "bug breaking the \"alpha\" functionality in the game, allowing clients to be able to see things/mobs they should not be able to see.",
 	))
 
-#define LIMITER_SIZE 5
+#define LIMITER_SIZE 12
 #define CURRENT_SECOND 1
 #define SECOND_COUNT 2
 #define CURRENT_MINUTE 3
@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_middle_mouse_click,
+	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
 	/client/proc/toggle_middle_mouse_swap_hands,
@@ -55,6 +56,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
 ))
+
+/client/proc/reduce_minute_count()
+	if (!topiclimiter)
+		topiclimiter = new(LIMITER_SIZE)
+	if(topiclimiter[MINUTE_COUNT] > 0)
+		topiclimiter[MINUTE_COUNT] -= 1
 
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null
@@ -144,15 +151,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(!receiver_client)
 			to_chat(src, SPAN_WARNING("The person you were attempting to PM has gone offline!"))
 			return
-		if(unansweredAhelps[receiver_client.computer_id]) unansweredAhelps.Remove(receiver_client.computer_id)
 		cmd_admin_pm(receiver_client, null)
 		return
-
 	else if(href_list["FaxView"])
 
 		var/datum/fax/info = locate(href_list["FaxView"])
 
-		if(!istype(info))	
+		if(!istype(info))
 			return
 
 		if(info.photo_list)
@@ -163,6 +168,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
+
+	else if(href_list["tacmaps_panel"])
+		GLOB.tacmap_admin_panel.tgui_interact(mob)
+
+	else if(href_list["MapView"])
+		if(isxeno(mob))
+			return
+		GLOB.uscm_tacmap_status.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -286,11 +299,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!(connection in list("seeker", "web"))) //Invalid connection type.
 		return null
 
-	if(IsGuestKey(key))
-		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
-		qdel(src)
-		return
-
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
@@ -314,33 +322,28 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!CONFIG_GET(flag/no_localhost_rank))
 		var/static/list/localhost_addresses = list("127.0.0.1", "::1")
 		if(isnull(address) || (address in localhost_addresses))
-			var/datum/admins/admin = new("!localhost!", R_EVERYTHING, ckey)
+			var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
 			admin.associate(src)
-			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
+			GLOB.RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
 	//Admin Authorisation
-	admin_holder = admin_datums[ckey]
+	admin_holder = GLOB.admin_datums[ckey]
 	if(admin_holder)
 		admin_holder.associate(src)
 	notify_login()
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
-	prefs = preferences_datums[ckey]
+	prefs = GLOB.preferences_datums[ckey]
 	if(QDELETED(prefs) || !istype(prefs))
 		prefs = new /datum/preferences(src)
-		preferences_datums[ckey] = prefs
+		GLOB.preferences_datums[ckey] = prefs
 	prefs.client_reconnected(src)
 	prefs.last_ip = address //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
-	xeno_prefix = prefs.xeno_prefix
-	xeno_postfix = prefs.xeno_postfix
-	xeno_name_ban = prefs.xeno_name_ban
-	if(!xeno_prefix || xeno_name_ban)
-		xeno_prefix = "XX"
-	if(!xeno_postfix || xeno_name_ban)
-		xeno_postfix = ""
+
+	load_xeno_name()
 
 	human_name_ban = prefs.human_name_ban
 
@@ -354,7 +357,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 
-	view = world_view_size
+	view = GLOB.world_view_size
 	. = ..() //calls mob.Login()
 
 	if(SSinput.initialized)
@@ -408,10 +411,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			CEI = GLOB.custom_event_info_list[mob.faction]
 			CEI.show_player_event_info(src)
 
-	if( (world.address == address || !address) && !host )
-		host = key
-		world.update_status()
-
 	connection_time = world.time
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
 
@@ -434,15 +433,18 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	for(var/line in lines)
 		if(src.ckey == line)
-			src.donator = 1
+			src.donator = TRUE
 			add_verb(src, /client/proc/set_ooc_color_self)
 
 	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
 	// set_night_skin()
 
+	if(!tooltips && prefs.tooltips)
+		tooltips = new(src)
+
 	load_player_data()
 
-	view = world_view_size
+	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
 
@@ -451,6 +453,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//////////////
 /client/Del()
 	if(!gc_destroyed)
+		gc_destroyed = world.time
+		if (!QDELING(src))
+			stack_trace("Client does not purport to be QDELING, this is going to cause bugs in other places!")
+
 		SEND_SIGNAL(src, COMSIG_PARENT_QDELETING, TRUE)
 		Destroy()
 	return ..()
@@ -469,7 +475,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.clients -= src
 	SSping.currentrun -= src
 
-	unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")
 	if(CLIENT_IS_STAFF(src))
 		message_admins("Admin logout: [key_name(src)]")
@@ -531,17 +536,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /proc/setup_player_entity(ckey)
 	if(!ckey)
 		return
-	if(player_entities["[ckey]"])
-		return player_entities["[ckey]"]
+	if(GLOB.player_entities["[ckey]"])
+		return GLOB.player_entities["[ckey]"]
 	var/datum/entity/player_entity/P = new()
 	P.ckey = ckey
 	P.name = ckey
-	player_entities["[ckey]"] = P
+	GLOB.player_entities["[ckey]"] = P
 	// P.setup_save(ckey)
 	return P
 
 /proc/save_player_entities()
-	for(var/key_ref in player_entities)
+	for(var/key_ref in GLOB.player_entities)
 		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
@@ -612,7 +617,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 */
 /client/proc/init_verbs()
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("init_verbs")
+		return PROC_BLOCKED
 	var/list/verblist = list()
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)
@@ -709,17 +715,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
-				if(MOD_CHANNEL)
-					if(admin_holder?.check_for_rights(R_MOD))
-						if(prefs.tgui_say)
-							var/msay = tgui_say_create_open_command(MOD_CHANNEL)
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[msay]")
-						else
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=msay")
-					else
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 				if(ADMIN_CHANNEL)
-					if(admin_holder?.check_for_rights(R_ADMIN))
+					if(admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
 							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")
@@ -736,7 +733,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
-				if("Whisper")
+				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
 /client/proc/toggle_fullscreen(new_value)
@@ -758,7 +755,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return FALSE
 
 	var/mob/dead/observer/observer = mob
-	observer.ManualFollow(target)
+	observer.do_observe(target)
 
 /client/proc/check_timelock(list/roles, hours)
 	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
@@ -788,10 +785,66 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			if (!screen_object.clear_with_screen)
 				continue
 
-		screen -= object
+		remove_from_screen(object)
 
 ///opens the particle editor UI for the in_atom object for this client
 /client/proc/open_particle_editor(atom/movable/in_atom)
 	if(admin_holder)
 		admin_holder.particle_test = new /datum/particle_editor(in_atom)
 		admin_holder.particle_test.tgui_interact(mob)
+
+/client/proc/load_xeno_name()
+	xeno_prefix = prefs.xeno_prefix
+	xeno_postfix = prefs.xeno_postfix
+	xeno_name_ban = prefs.xeno_name_ban
+	if(!xeno_prefix || xeno_name_ban)
+		xeno_prefix = "XX"
+	if(!xeno_postfix || xeno_name_ban)
+		xeno_postfix = ""
+
+/// playtime for all castes
+/client/proc/get_total_xeno_playtime(skip_cache = FALSE)
+	if(cached_xeno_playtime && !skip_cache)
+		return cached_xeno_playtime
+
+	var/total_xeno_playtime = 0
+
+	for(var/caste in GLOB.RoleAuthority.castes_by_name)
+		total_xeno_playtime += get_job_playtime(src, caste)
+
+	total_xeno_playtime += get_job_playtime(src, JOB_XENOMORPH)
+
+	if(player_entity)
+		var/past_xeno_playtime = player_entity.get_playtime(STATISTIC_XENO)
+		if(past_xeno_playtime)
+			total_xeno_playtime += past_xeno_playtime
+
+
+	cached_xeno_playtime = total_xeno_playtime
+
+	return total_xeno_playtime
+
+/// playtime for drone and drone evolution castes
+/client/proc/get_total_drone_playtime()
+	var/total_drone_playtime = 0
+
+	var/list/drone_evo_castes = list(XENO_CASTE_DRONE, XENO_CASTE_CARRIER, XENO_CASTE_BURROWER, XENO_CASTE_HIVELORD, XENO_CASTE_QUEEN)
+
+	for(var/caste in GLOB.RoleAuthority.castes_by_name)
+		if(!(caste in drone_evo_castes))
+			continue
+		total_drone_playtime += get_job_playtime(src, caste)
+
+	return total_drone_playtime
+
+/// playtime for t3 castes and queen
+/client/proc/get_total_t3_playtime()
+	var/total_t3_playtime = 0
+	var/datum/caste_datum/caste
+	for(var/caste_name in GLOB.RoleAuthority.castes_by_name)
+		caste = GLOB.RoleAuthority.castes_by_name[caste_name]
+		if(caste.tier < 3)
+			continue
+		total_t3_playtime += get_job_playtime(src, caste_name)
+
+	return total_t3_playtime

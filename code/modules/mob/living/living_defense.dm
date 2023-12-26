@@ -22,10 +22,10 @@
 	return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
+	. = ..()
 	var/list/L = src.get_contents()
 	for(var/obj/O in L)
 		O.emp_act(severity)
-	..()
 
 //this proc handles being hit by a thrown atom
 /mob/living/hitby(atom/movable/AM)
@@ -73,13 +73,13 @@
 				M.track_friendly_fire(initial(O.name))
 		var/client/assailant = M.client
 		if(assailant)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
 				if(src.loc)
-					msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 				else
-					msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
+					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
 	if(last_damage_source)
 		last_damage_data = create_cause_data(last_damage_source, M)
 
@@ -148,7 +148,6 @@
 		on_fire = FALSE
 		fire_stacks = 0
 		update_fire()
-		SetLuminosity(0)
 		return TRUE
 	return FALSE
 

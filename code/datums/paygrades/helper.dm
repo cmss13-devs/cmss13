@@ -24,6 +24,13 @@
 			return "[paygrade]"
 		return P.name
 
+/proc/get_paygrade_id_by_name(paygrade_name)
+	var/datum/paygrade/paygrade
+	for(var/paygrade_id in GLOB.paygrades)
+		paygrade = GLOB.paygrades[paygrade_id]
+		if(paygrade.name == paygrade_name)
+			return paygrade_id
+
 /proc/get_rank_pins(paygrade)
 	if(!paygrade) return null
 

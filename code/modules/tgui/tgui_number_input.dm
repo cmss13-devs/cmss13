@@ -31,7 +31,7 @@
 		qdel(number_input)
 
 ///A clone of tgui_input_number that defaults to accepting negative inputs too.
-/proc/tgui_input_real_number(mob/user, message, title = "Number Input", default = 0, max_value = 16777216, min_value = -16777216, timeout = 0, integer_only = FALSE)
+/proc/tgui_input_real_number(mob/user, message, title = "Number Input", default = 0, max_value = SHORT_REAL_LIMIT, min_value = -SHORT_REAL_LIMIT, timeout = 0, integer_only = FALSE)
 	return tgui_input_number(user, message, title, default, max_value, min_value, timeout, integer_only)
 /**
  * Creates an asynchronous TGUI number input window with an associated callback.

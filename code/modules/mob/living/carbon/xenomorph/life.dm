@@ -10,7 +10,8 @@
 
 	..()
 
-	if(is_zoomed && (stat || lying))
+	// replace this by signals or trait signals
+	if(is_zoomed && (stat || body_position == LYING_DOWN))
 		zoom_out()
 
 	if(stat != DEAD) //Stop if dead. Performance boost
@@ -23,7 +24,6 @@
 		handle_regular_status_updates()
 		handle_stomach_contents()
 		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
-		update_canmove()
 		update_icons()
 		handle_luminosity()
 		handle_blood()
@@ -42,19 +42,26 @@
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	var/ovipositor_check = (hive.allow_no_queen_evo || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
 	if(caste && caste.evolution_allowed && (ovipositor_check || caste?.evolve_without_queen))
 		if(evolution_stored >= evolution_threshold)
 			if(!got_evolution_message)
 				evolve_message()
 				got_evolution_message = TRUE
+
 			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
 				evolution_stored += progress_amount
+				return
+
+			if(evolution_stored > evolution_threshold + progress_amount)
+				evolution_stored -= progress_amount
+				return
+
 		else
 			evolution_stored += progress_amount
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -180,9 +187,8 @@
 		ear_damage = 0
 		SetEyeBlind(0)
 
-		if(knocked_out) //If they're down, make sure they are actually down.
+		if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT)) //If they're down, make sure they are actually down.
 			blinded = TRUE
-			set_stat(UNCONSCIOUS)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
@@ -194,7 +200,8 @@
 			blinded = TRUE
 			set_stat(UNCONSCIOUS)
 		else
-			blinded = FALSE
+			if(!interference)//If their connection to hivemind is affected, their vision should be too.
+				blinded = FALSE
 			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
 				if(resting)
@@ -217,7 +224,7 @@
 		for(var/atom/movable/M in stomach_contents)
 			if(ishuman(M))
 				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
-					to_chat(src, SPAN_WARNING("You're about to regurgitate [M]..."))
+					to_chat(src, SPAN_WARNING("We're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
@@ -225,7 +232,7 @@
 
 			M.acid_damage++
 			if(M.acid_damage > 300)
-				to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in your gut with a gurgle."))
+				to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in our gut with a gurgle."))
 				stomach_contents.Remove(M)
 				qdel(M)
 
@@ -327,11 +334,6 @@ Make sure their actual health updates immediately.*/
 	if(!T || !istype(T))
 		return
 
-	var/is_runner_hiding
-
-	if(isrunner(src) && layer != initial(layer))
-		is_runner_hiding = 1
-
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
 			if(!hive) return // can't heal if you have no hive, sorry bud
@@ -339,7 +341,7 @@ Make sure their actual health updates immediately.*/
 			if(recovery_aura)
 				plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
 			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
-				if(lying || resting)
+				if(body_position == LYING_DOWN || resting)
 					if(health < 0) //Unconscious
 						heal_wounds(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
@@ -362,9 +364,8 @@ Make sure their actual health updates immediately.*/
 			if(armor_integrity > armor_integrity_max)
 				armor_integrity = armor_integrity_max
 
-		else //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
-			if(prob(50) && !is_runner_hiding && !current_aura)
-				plasma_stored += 0.1 * plasma_max / 100
+		else if(prob(50) && !current_aura) //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
+			plasma_stored += 0.1 * plasma_max / 100
 
 
 		for(var/datum/action/xeno_action/action in src.actions)
@@ -379,7 +380,7 @@ Make sure their actual health updates immediately.*/
 		plasma_stored = 0
 		if(current_aura)
 			current_aura = null
-			to_chat(src, SPAN_WARNING("You have run out of pheromones and stopped emitting pheromones."))
+			to_chat(src, SPAN_WARNING("We have run out of plasma and stopped emitting pheromones."))
 
 	for(var/X in actions)
 		var/datum/action/A = X
@@ -397,7 +398,7 @@ Make sure their actual health updates immediately.*/
 		return
 
 	var/atom/tracking_atom
-	switch(QL.track_state)
+	switch(QL.track_state[1])
 		if(TRACKER_QUEEN)
 			if(!hive || !hive.living_xeno_queen)
 				QL.icon_state = "trackoff"
@@ -408,8 +409,13 @@ Make sure their actual health updates immediately.*/
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.hive_location
-		else
-			var/leader_tracker = text2num(QL.track_state)
+		if(TRACKER_LEADER)
+			if(!QL.track_state[2])
+				QL.icon_state = "trackoff"
+				return
+
+			var/leader_tracker = QL.track_state[2]
+
 			if(!hive || !hive.xeno_leader_list)
 				QL.icon_state = "trackoff"
 				return
@@ -420,6 +426,23 @@ Make sure their actual health updates immediately.*/
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.xeno_leader_list[leader_tracker]
+		if(TRACKER_TUNNEL)
+			if(!QL.track_state[2])
+				QL.icon_state = "trackoff"
+				return
+
+			var/tunnel_tracker = QL.track_state[2]
+
+			if(!hive || !hive.tunnels)
+				QL.icon_state = "trackoff"
+				return
+			if(tunnel_tracker > hive.tunnels.len)
+				QL.icon_state = "trackoff"
+				return
+			if(!hive.tunnels[tunnel_tracker])
+				QL.icon_state = "trackoff"
+				return
+			tracking_atom = hive.tunnels[tunnel_tracker]
 
 	if(!tracking_atom)
 		QL.icon_state = "trackoff"
@@ -431,7 +454,7 @@ Make sure their actual health updates immediately.*/
 		var/area/A = get_area(loc)
 		var/area/QA = get_area(tracking_atom.loc)
 		if(A.fake_zlevel == QA.fake_zlevel)
-			QL.setDir(get_dir(src, tracking_atom))
+			QL.setDir(Get_Compass_Dir(src, tracking_atom))
 			QL.icon_state = "trackon"
 		else
 			QL.icon_state = "trackondirect"
@@ -460,7 +483,7 @@ Make sure their actual health updates immediately.*/
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "all_direction")
 		return
 	else if(A.fake_zlevel == MA.fake_zlevel) //normal tracking
-		ML.setDir(get_dir(src, tracked_marker_turf))
+		ML.setDir(Get_Compass_Dir(src, tracked_marker_turf))
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "direction")
@@ -493,27 +516,24 @@ Make sure their actual health updates immediately.*/
 			else if(world.time > next_grace_time && stat == CONSCIOUS)
 				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
 				if(grace_time)
-					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 					addtimer(CALLBACK(src, PROC_REF(handle_crit)), grace_time)
 				else
 					handle_crit()
 				next_grace_time = world.time + grace_time
+		blinded = stat == UNCONSCIOUS // Xenos do not go blind from other sources - still, replace that by a status_effect or trait when able
 	if(!gibbing)
 		med_hud_set_health()
 
 /mob/living/carbon/xenomorph/proc/handle_crit()
-	if(stat == DEAD || gibbing)
-		return
+	if(stat <= CONSCIOUS && !gibbing)
+		set_stat(UNCONSCIOUS)
 
-	sound_environment_override = SOUND_ENVIRONMENT_NONE
-	set_stat(UNCONSCIOUS)
-	blinded = TRUE
-	see_in_dark = 5
-	if(layer != initial(layer)) //Unhide
-		layer = initial(layer)
-	recalculate_move_delay = TRUE
-	if(!lying)
-		update_canmove()
+/mob/living/carbon/xenomorph/set_stat(new_stat)
+	. = ..()
+	// Temporarily force triggering HUD updates so they apply immediately rather than on Life tick.
+	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
+	if(stat != .)
+		handle_regular_hud_updates()
 
 /mob/living/carbon/xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0
@@ -521,14 +541,21 @@ Make sure their actual health updates immediately.*/
 		new_luminosity += caste.caste_luminosity
 	if(on_fire)
 		new_luminosity += min(fire_stacks, 5)
-	SetLuminosity(new_luminosity) // light up xenos
+	set_light_range(new_luminosity) // light up xenos
+	if(new_luminosity)
+		set_light_on(TRUE)
+	else
+		set_light_on(FALSE)
 
-/mob/living/carbon/xenomorph/handle_stunned()
-	if(stunned)
-		adjust_effect(life_stun_reduction, STUN, EFFECT_FLAG_LIFE)
-		stun_callback_check()
-
-	return stunned
+/mob/living/carbon/xenomorph/GetStunDuration(amount)
+	amount *= 2 / 3
+	return ..()
+/mob/living/carbon/xenomorph/GetKnockDownDuration(amount)
+	amount *= 2 / 3
+	return ..()
+/mob/living/carbon/xenomorph/GetKnockOutDuration(amount)
+	amount *= 2 / 3
+	return ..()
 
 /mob/living/carbon/xenomorph/proc/handle_interference()
 	if(interference)
@@ -554,18 +581,6 @@ Make sure their actual health updates immediately.*/
 		adjust_effect(life_slow_reduction, SUPERSLOW, EFFECT_FLAG_LIFE)
 	return superslowed
 
-/mob/living/carbon/xenomorph/handle_knocked_down()
-	if(knocked_down)
-		adjust_effect(life_knockdown_reduction, WEAKEN, EFFECT_FLAG_LIFE)
-		knocked_down_callback_check()
-	return knocked_down
-
-/mob/living/carbon/xenomorph/handle_knocked_out()
-	if(knocked_out)
-		adjust_effect(life_knockout_reduction, PARALYZE, EFFECT_FLAG_LIFE)
-		knocked_out_callback_check()
-	return knocked_out
-
 //Returns TRUE if xeno is on weeds
 //Returns TRUE if xeno is off weeds AND doesn't need weeds for healing AND is not on Almayer UNLESS Queen is also on Almayer (aka - no solo Lurker Almayer hero)
 /mob/living/carbon/xenomorph/proc/check_weeds_for_healing()
@@ -580,24 +595,3 @@ Make sure their actual health updates immediately.*/
 	if(hive && hive.living_xeno_queen && !is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z))
 		return FALSE //We are on the ship, but the Queen isn't
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!
-
-
-#define XENO_TIMER_TO_EFFECT_CONVERSION (0.075) // (1.5/20) //once per 2 seconds, with 1.5 effect per that once
-
-// This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
-// this is the best place to do it, tho name might be a bit misleading I guess
-/mob/living/carbon/xenomorph/stun_clock_adjustment()
-	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
-	if(stunned > shift_left)
-		stunned += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
-
-/mob/living/carbon/xenomorph/knockdown_clock_adjustment()
-	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
-	if(knocked_down > shift_left)
-		knocked_down += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
-
-/mob/living/carbon/xenomorph/knockout_clock_adjustment()
-	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
-	if(knocked_out > shift_left)
-		knocked_out += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
-

@@ -166,13 +166,10 @@ export const getAvailableChannels = (
     return availableChannels;
   }
 
-  if (roles.includes('Mod')) {
-    availableChannels.push('MSAY');
-  }
   if (roles.includes('Mentor')) {
     availableChannels.push('Mentor');
   }
-  if (roles.includes('Admin')) {
+  if (roles.includes('Mod')) {
     availableChannels.push('ASAY');
   }
 

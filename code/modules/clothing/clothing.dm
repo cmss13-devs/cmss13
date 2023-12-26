@@ -48,6 +48,11 @@
 		return
 	..()
 
+/obj/item/clothing/hear_talk(mob/M, msg)
+	for(var/obj/item/clothing/accessory/attached in accessories)
+		attached.hear_talk(M, msg)
+	..()
+
 /obj/item/clothing/proc/get_armor(armortype)
 	var/armor_total = 0
 	var/armor_count = 0
@@ -130,12 +135,12 @@
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()
 
-	LAZYADD(objects_of_interest, src)
+	LAZYADD(GLOB.objects_of_interest, src)
 
 /obj/item/clothing/ears/earmuffs/Destroy()
 	. = ..()
 
-	LAZYREMOVE(objects_of_interest, src)
+	LAZYREMOVE(GLOB.objects_of_interest, src)
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -217,6 +222,7 @@
 		M.update_inv_gloves()
 
 /obj/item/clothing/gloves/emp_act(severity)
+	. = ..()
 	if(cell)
 		//why is this not part of the powercell code?
 		cell.charge -= 1000 / severity
@@ -224,7 +230,6 @@
 			cell.charge = 0
 		if(cell.reliability != 100 && prob(50/severity))
 			cell.reliability -= 10 / severity
-	..()
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
 /obj/item/clothing/gloves/proc/Touch(atom/A, proximity)
@@ -335,10 +340,44 @@
 	var/list/items_allowed
 	var/shoes_blood_amt = 0
 
+///Checks if you can put the item inside of the shoes
+/obj/item/clothing/shoes/proc/attempt_insert_item(mob/user, obj/item/attacking_item, insert_after = FALSE)
+	if(!items_allowed)
+		return
+	if(stored_item)
+		return
+	var/allowed = FALSE
+	for(var/allowed_item in items_allowed)
+		if(istype(attacking_item, allowed_item))
+			allowed = TRUE
+			break
+	if(!allowed)
+		return
+	if(!insert_after)
+		return TRUE
+	insert_item(user, attacking_item)
+
+///Puts the item inside of the shoe
+/obj/item/clothing/shoes/proc/insert_item(mob/user, obj/item/attacking_item)
+	stored_item = attacking_item
+	user.drop_inv_item_to_loc(attacking_item, src)
+	to_chat(user, SPAN_NOTICE("You slide [attacking_item] into [src]."))
+	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+	update_icon()
+
+///Removes the item from the shoes
+/obj/item/clothing/shoes/proc/remove_item(mob/user)
+	if(!user.put_in_active_hand(stored_item))
+		return
+	to_chat(user, SPAN_NOTICE("You slide [stored_item] out of [src]."))
+	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+	stored_item = null
+	update_icon()
+
 /obj/item/clothing/shoes/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_shoes()
+	if(ismob(loc))
+		var/mob/user = loc
+		user.update_inv_shoes()
 
 /obj/item/clothing/shoes/Destroy()
 	if(stored_item)
@@ -346,29 +385,23 @@
 		stored_item = null
 	. = ..()
 
-/obj/item/clothing/shoes/attack_hand(mob/living/M)
-	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
-		if(M.put_in_active_hand(stored_item))
-			to_chat(M, SPAN_NOTICE("You slide [stored_item] out of [src]."))
-			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-			stored_item = 0
-			update_icon()
-			desc = initial(desc)
-		return
-	..()
+/obj/item/clothing/shoes/get_examine_text(mob/user)
+	. = ..()
+	if(stored_item)
+		. += "\nIt is storing \a [stored_item]."
 
-/obj/item/clothing/shoes/attackby(obj/item/I, mob/living/M)
-	if(items_allowed && items_allowed.len)
-		for (var/i in items_allowed)
-			if(istype(I, i))
-				if(stored_item) return
-				stored_item = I
-				M.drop_inv_item_to_loc(I, src)
-				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
-				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-				update_icon()
-				desc = initial(desc) + "\nIt is storing \a [stored_item]."
-				break
+/obj/item/clothing/shoes/attack_hand(mob/living/user)
+	if(!stored_item) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
+		return ..()
+	if(user.is_mob_incapacitated())
+		return ..()
+	if(loc != user)
+		return ..()
+	remove_item(user)
+
+/obj/item/clothing/shoes/attackby(obj/item/attacking_item, mob/living/user)
+	. = ..()
+	user.equip_to_slot_if_possible(attacking_item, WEAR_IN_SHOES)
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
 	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?

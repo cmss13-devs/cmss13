@@ -30,7 +30,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/proc/update_from_seed()// Fill the object up with the appropriate reagents.
 	if(!isnull(plantname))
-		var/datum/seed/S = seed_types[plantname]
+		var/datum/seed/S = GLOB.seed_types[plantname]
 		if(!S)
 			return
 		name = S.seed_name //Copies the name from the seed, important for renamed plants
@@ -189,26 +189,16 @@
 /obj/item/reagent_container/food/snacks/grown/glowberries
 	name = "bunch of glow-berries"
 	desc = "Nutritious!"
-	var/light_on = 1
 	var/brightness_on = 2 //luminosity when on
 	filling_color = "#D3FF9E"
 	icon_state = "glowberrypile"
 	plantname = "glowberries"
 
-/obj/item/reagent_container/food/snacks/grown/glowberries/Destroy()
-	if(istype(loc,/mob))
-		loc.SetLuminosity(0, FALSE, src)
+/obj/item/reagent_container/food/snacks/grown/glowberries/Initialize()
 	. = ..()
 
-/obj/item/reagent_container/food/snacks/grown/glowberries/pickup(mob/user)
-	. = ..()
-	src.SetLuminosity(0)
-	user.SetLuminosity(round((potency/5),1), FALSE, src)
-
-/obj/item/reagent_container/food/snacks/grown/glowberries/dropped(mob/user)
-	user.SetLuminosity(0, FALSE, src)
-	src.SetLuminosity(round(potency/5,1))
-	..()
+	set_light_range(brightness_on)
+	set_light_on(TRUE)
 
 /obj/item/reagent_container/food/snacks/grown/cocoapod
 	name = "cocoa pod"
@@ -567,22 +557,6 @@
 	qdel(src)
 
 	to_chat(user, SPAN_NOTICE("You plant the glowshroom."))
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/Destroy()
-	if(istype(loc,/mob))
-		loc.SetLuminosity(0, FALSE, src)
-	. = ..()
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
-	. = ..()
-	SetLuminosity(0)
-	user.SetLuminosity(round((potency/10),1), FALSE, src)
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
-	user.SetLuminosity(0, FALSE, src)
-	SetLuminosity(round(potency/10,1))
-	..()
-
 
 // *************************************
 // Complex Grown Object Defines -

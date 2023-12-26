@@ -21,7 +21,13 @@ Basics, the most important.
 
 /datum/config_entry/string/wikiurl
 
+/datum/config_entry/string/wikiarticleurl
+
 /datum/config_entry/string/forumurl
+
+/datum/config_entry/string/staffreport
+
+/datum/config_entry/string/playerreport
 
 /datum/config_entry/string/rulesurl
 
@@ -30,6 +36,8 @@ Basics, the most important.
 /datum/config_entry/string/discordurl
 
 /datum/config_entry/string/banappeals
+
+/datum/config_entry/string/endofroundblurb
 
 /datum/config_entry/string/dburl
 
@@ -263,11 +271,7 @@ Voting
 
 // Gamemode to auto-switch to at the start of the round
 /datum/config_entry/string/gamemode_default
-	config_entry_value = "extended"
-
-// Rounds needed for gamemode vote
-/datum/config_entry/number/gamemode_rounds_needed
-	config_entry_value = 5
+	config_entry_value = "Extended"
 
 /datum/config_entry/number/rounds_until_hard_restart
 	config_entry_value = -1 // -1 is disabled by default, 0 is every round, x is after so many rounds
@@ -529,6 +533,25 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/round_results_webhook_url
 
+/// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
+/datum/config_entry/string/influxdb_host
+/// InfluxDB v2 Bucket to send staistics to
+/datum/config_entry/string/influxdb_bucket
+/// InfluxDB v2 Organization to access buckets of
+/datum/config_entry/string/influxdb_org
+/// InfluxDB v2 API Token to access the organization and bucket
+/datum/config_entry/string/influxdb_token
+
+/// How often to snapshot general game statistics to influxdb driver
+/datum/config_entry/number/influxdb_stats_period
+	config_entry_value = 30
+/// How often to snapshot MC statistics
+/datum/config_entry/number/influxdb_mcstats_period
+	config_entry_value = 60
+/// How often to send queued influxdb statistics
+/datum/config_entry/number/influxdb_send_period
+	config_entry_value = 10
+
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
 
@@ -602,3 +625,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/instance_name
 	config_entry_value = "game"
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/guest_ban
+
+/datum/config_entry/flag/auto_profile

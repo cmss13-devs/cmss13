@@ -73,7 +73,7 @@
 	. = ..()
 	if(.) //successful turf change
 		var/turf/T
-		for(var/i in cardinal)
+		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
 
 			//nearby glowshrooms updated
@@ -88,7 +88,7 @@
 			if(istype(found_object, /obj/structure/sign/poster))
 				var/obj/structure/sign/poster/found_poster = found_object
 				found_poster.roll_and_drop(src)
-			if(istype(found_object, /obj/effect/alien/weeds))
+			if(istype(found_object, /obj/effect/alien/weeds/weedwall))
 				qdel(found_object)
 
 		var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
@@ -98,11 +98,15 @@
 					qdel(found_nest) //nests are built on walls, no walls, no nest
 
 /turf/closed/wall/MouseDrop_T(mob/current_mob, mob/user)
+	if(!ismob(current_mob))
+		return
+
 	if(acided_hole)
 		if(current_mob == user && isxeno(user))
 			acided_hole.use_wall_hole(user)
 			return
-	if(isxeno(user))
+
+	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(current_mob, src)
 	..()
@@ -165,6 +169,9 @@
 
 		if (acided_hole)
 			. += SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid.")
+
+	if(flags_turf & TURF_ORGANIC)
+		return // Skip the part below. 'Organic' walls aren't deconstructable with tools.
 
 	switch(d_state)
 		if(WALL_STATE_WELD)
@@ -399,7 +406,7 @@
 
 	if(istype(attacking_item, /obj/item/prop/torch_frame))
 		to_chat(user, SPAN_NOTICE("You place the torch down on the wall."))
-		new /obj/structure/prop/brazier/torch/frame(src)
+		new /obj/structure/prop/brazier/frame/full/torch(src)
 		qdel(attacking_item)
 
 	if(hull)

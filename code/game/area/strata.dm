@@ -18,25 +18,20 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/shuttle/drop1/strata //Not in Sulaco.DM because holy shit we need to sort things.
 	name = "Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
-	lighting_use_dynamic = 0 //No bad
+	base_lighting_alpha = 255
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/shuttle/drop2/strata
 	name = "Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
-	lighting_use_dynamic = 0
+	base_lighting_alpha = 255
 	minimap_color = MINIMAP_AREA_LZ
-
-
-/*A WHOLE BUNCH OF PARENT ENTITIES
-fake_zlevel = 1 or 2. 1 is 'above' 2 is 'below', however ladders are flipped and think that 1 is below, and 2 is above.
-But, players don't actually care where they are so long as the ladders look correct going up and down. They shouldn't notice.
-However, this might break the tacmap. This entire system might be replaced by Slywater's fake-Z smooth transition anyway.*/
+	is_resin_allowed = FALSE
 
 /area/strata/ag
 	name = "Above Ground Area"
 	icon_state = "ag"
-	fake_zlevel = 1 //'Above' ground fake Z
 
 /area/strata/ag/exterior
 	name = "Exterior Above Ground Area"
@@ -57,6 +52,10 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	temperature = T20C //Nice and room temp
 	ceiling = CEILING_METAL
 
+/area/strata/ag/interior/mountain
+	name = "Outside mountain"
+	icon_state = "ag_e"
+
 /area/strata/ag/interior/restricted
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
@@ -67,7 +66,6 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ug
 	name = "Under Ground Area"
 	icon_state = "ug"
-	fake_zlevel = 2 //'Underground', because numbers are fun
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/strata/ug/interior
@@ -96,6 +94,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/strata/ag/exterior/landingzone_2
 	name = "Landing Zone 2 Pad - Ice Fields"
@@ -104,6 +103,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/strata/ag/interior/nearlz1
 	name = "Landing Zone 1 - Mining Aerodrome"
@@ -117,6 +117,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	icon_state = "nearlz2"
 	weather_enabled = TRUE //This LZ is outside, but consider disabling if it destroys the meta.
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/strata/ag/exterior/landingzone_valley
 	name = "Landing Zone Valley"

@@ -88,9 +88,8 @@
 			break
 
 	human_to_transform.statistic_exempt = TRUE
-	human_to_transform.buckled = start_nest
+	human_to_transform.set_buckled(start_nest)
 	human_to_transform.setDir(start_nest.dir)
-	human_to_transform.update_canmove()
 	start_nest.buckled_mob = human_to_transform
 	start_nest.afterbuckle(human_to_transform)
 

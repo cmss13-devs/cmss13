@@ -34,7 +34,7 @@
 	switch(alert("Are you sure you want to EORG ban [target.ckey]?", , "Yes", "No"))
 		if("Yes")
 			mins = 180
-			reason = "EORG"
+			reason = "EORG - Generating combat logs with, or otherwise griefing, friendly/allied players."
 		if("No")
 			return
 

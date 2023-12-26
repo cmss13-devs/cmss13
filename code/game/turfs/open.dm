@@ -24,7 +24,7 @@
 	add_cleanable_overlays()
 
 	var/list/turf/open/auto_turf/auto_turf_dirs = list()
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		var/turf/open/auto_turf/T = get_step(src, direction)
 		if(!istype(T))
 			continue
@@ -36,7 +36,7 @@
 
 	var/list/handled_dirs = list()
 	var/list/unhandled_dirs = list()
-	for(var/direction in diagonals)
+	for(var/direction in GLOB.diagonals)
 		var/x_dir = direction & (direction-1)
 		var/y_dir = direction - x_dir
 
@@ -90,7 +90,7 @@
 				if(!T.icon_state_before_scorching)
 					T.icon_state_before_scorching = T.icon_state
 				var/direction_from_neighbor_towards_src = get_dir(T, src)
-				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[turf_edgeinfo_cache[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_neighbor_towards_src)]]", direction_from_neighbor_towards_src)
+				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[GLOB.turf_edgeinfo_cache[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_neighbor_towards_src)]]", direction_from_neighbor_towards_src)
 				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
@@ -185,6 +185,7 @@
 	name = "cave"
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_cave_1"
+	is_groundmap_turf = TRUE
 
 
 /turf/open/mars_cave/Initialize(mapload, ...)
@@ -283,6 +284,7 @@
 	name = "ground dirt"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
+	is_groundmap_turf = TRUE
 
 /turf/open/gm/attackby(obj/item/I, mob/user)
 
@@ -290,7 +292,7 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L]  at this position!")
+			to_chat(user, "There's already \a [L] at this position!")
 			return
 
 		to_chat(user, "Now planting \the [L].")
@@ -304,7 +306,7 @@
 		L.forceMove(src)
 		L.pixel_x += rand(-5,5)
 		L.pixel_y += rand(-5,5)
-		L.SetLuminosity(2)
+		L.set_light(2)
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 	return
 
@@ -331,19 +333,53 @@
 	baseturfs = /turf/open/gm/grass
 	scorchable = "grass1"
 
+/turf/open/gm/grass/grass1
+	icon_state = "grass1"
+
+/turf/open/gm/grass/grass2
+	icon_state = "grass2"
+
+/turf/open/gm/grass/grassbeach
+	icon_state = "grassbeach"
+
+/turf/open/gm/grass/grassbeach/north
+
+/turf/open/gm/grass/grassbeach/south
+	dir = 1
+
+/turf/open/gm/grass/grassbeach/west
+	dir = 4
+
+/turf/open/gm/grass/grassbeach/east
+	dir = 8
+
+/turf/open/gm/grass/gbcorner
+	icon_state = "gbcorner"
+
+/turf/open/gm/grass/gbcorner/north_west
+
+/turf/open/gm/grass/gbcorner/south_east
+	dir = 1
+
+/turf/open/gm/grass/gbcorner/south_west
+	dir = 4
+
+/turf/open/gm/grass/gbcorner/north_east
+	dir = 8
+
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()
 
-	if(!locate(icon_state) in turf_edgeinfo_cache)
+	if(!locate(icon_state) in GLOB.turf_edgeinfo_cache)
 		switch(icon_state)
 			if("grass1")
-				turf_edgeinfo_cache["grass1"] = GLOB.edgeinfo_full
+				GLOB.turf_edgeinfo_cache["grass1"] = GLOB.edgeinfo_full
 			if("grass2")
-				turf_edgeinfo_cache["grass2"] = GLOB.edgeinfo_full
+				GLOB.turf_edgeinfo_cache["grass2"] = GLOB.edgeinfo_full
 			if("grassbeach")
-				turf_edgeinfo_cache["grassbeach"] = GLOB.edgeinfo_edge
+				GLOB.turf_edgeinfo_cache["grassbeach"] = GLOB.edgeinfo_edge
 			if("gbcorner")
-				turf_edgeinfo_cache["gbcorner"] = GLOB.edgeinfo_corner
+				GLOB.turf_edgeinfo_cache["gbcorner"] = GLOB.edgeinfo_corner
 
 /turf/open/gm/dirt2
 	name = "dirt"
@@ -357,17 +393,56 @@
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = "grass1"
 
+/turf/open/gm/dirtgrassborder/north
+
+/turf/open/gm/dirtgrassborder/south
+	dir = 1
+
+/turf/open/gm/dirtgrassborder/west
+	dir = 4
+
+/turf/open/gm/dirtgrassborder/east
+	dir = 8
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner
+	icon_state = "grassdirt_corner"
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east
+	dir = 1
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east
+	dir = 4
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west
+	dir = 8
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2
+	icon_state = "grassdirt_corner2"
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east
+	dir = 1
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east
+	dir = 4
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west
+	dir = 8
+
 /turf/open/gm/dirtgrassborder/Initialize(mapload, ...)
 	. = ..()
 
-	if(!locate(icon_state) in turf_edgeinfo_cache)
+	if(!locate(icon_state) in GLOB.turf_edgeinfo_cache)
 		switch(icon_state)
 			if("grassdirt_edge")
-				turf_edgeinfo_cache["grassdirt_edge"] = GLOB.edgeinfo_edge
+				GLOB.turf_edgeinfo_cache["grassdirt_edge"] = GLOB.edgeinfo_edge
 			if("grassdirt_corner")
-				turf_edgeinfo_cache["grassdirt_corner"] = GLOB.edgeinfo_corner
+				GLOB.turf_edgeinfo_cache["grassdirt_corner"] = GLOB.edgeinfo_corner
 			if("grassdirt_corner2")
-				turf_edgeinfo_cache["grassdirt_corner2"] = GLOB.edgeinfo_corner2
+				GLOB.turf_edgeinfo_cache["grassdirt_corner2"] = GLOB.edgeinfo_corner2
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"
@@ -442,9 +517,9 @@
 			if(H.gloves && rand(0,100) < 60)
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
 					var/obj/item/clothing/gloves/yautja/hunter/Y = H.gloves
-					if(Y && istype(Y) && Y.cloaked)
+					if(Y && istype(Y) && HAS_TRAIT(H, TRAIT_CLOAKED))
 						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
-						Y.decloak(H, TRUE)
+						Y.decloak(H, TRUE, DECLOAK_SUBMERGED)
 
 		else if(isxeno(C))
 			river_slowdown -= 0.7
@@ -527,6 +602,44 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 
+/turf/open/gm/coast/north
+
+/turf/open/gm/coast/south
+	dir = 1
+
+/turf/open/gm/coast/west
+	dir = 4
+
+/turf/open/gm/coast/east
+	dir = 8
+
+/turf/open/gm/coast/beachcorner
+	icon_state = "beachcorner"
+
+/turf/open/gm/coast/beachcorner/north_west
+
+/turf/open/gm/coast/beachcorner/north_east
+	dir = 1
+
+/turf/open/gm/coast/beachcorner/south_east
+	dir = 4
+
+/turf/open/gm/coast/beachcorner/south_west
+	dir = 8
+
+/turf/open/gm/coast/beachcorner2
+	icon_state = "beachcorner2"
+
+/turf/open/gm/coast/beachcorner2/north_west
+
+/turf/open/gm/coast/beachcorner2/north_east
+	dir = 1
+
+/turf/open/gm/coast/beachcorner2/south_west
+	dir = 4
+
+/turf/open/gm/coast/beachcorner2/south_east
+	dir = 8
 
 /turf/open/gm/riverdeep
 	name = "river"
@@ -535,6 +648,7 @@
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
+	is_groundmap_turf = FALSE // Not real ground
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
@@ -613,6 +727,7 @@
 	allow_construction = FALSE
 	var/bushes_spawn = 1
 	var/plants_spawn = 1
+	is_groundmap_turf = TRUE
 	name = "wet grass"
 	desc = "Thick, long, wet grass."
 	icon = 'icons/turf/floors/jungle.dmi'
@@ -672,7 +787,7 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L]  at this position!")
+			to_chat(user, "There's already \a [L] at this position!")
 			return
 
 		to_chat(user, "Now planting \the [L].")
@@ -686,7 +801,7 @@
 		L.forceMove(src)
 		L.pixel_x += rand(-5,5)
 		L.pixel_y += rand(-5,5)
-		L.SetLuminosity(2)
+		L.set_light(2)
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 	return
 

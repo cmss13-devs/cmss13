@@ -37,8 +37,11 @@
 	if(istype(target, /obj/effect/alien/resin/special/eggmorph))
 		return //We tried storing the hugger from the egg, no need to try to plant it (we know the turf is occupied!)
 	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
 		var/turf/T = get_turf(target)
-		plant_egg(user, T, proximity)
+		if(get_dist(xeno, T) <= xeno.egg_planting_range)
+			proximity = TRUE
+		plant_egg(xeno, T, proximity)
 	if(proximity && ishuman(user))
 		var/turf/T = get_turf(target)
 		plant_egg_human(user, T)
@@ -81,16 +84,33 @@
 	if(!user.check_plasma(30))
 		return
 
-	var/obj/effect/alien/weeds/hive_weeds = null
-	for(var/obj/effect/alien/weeds/W in T)
-		if(W.weed_strength >= WEED_LEVEL_HIVE && W.linked_hive.hivenumber == hivenumber)
-			hive_weeds = W
+	var/obj/effect/alien/weeds/hive_weeds
+	var/obj/effect/alien/weeds/any_weeds
+	for(var/obj/effect/alien/weeds/weed in T)
+		if(weed.weed_strength >= WEED_LEVEL_HIVE && weed.linked_hive.hivenumber == hivenumber)
+			hive_weeds = weed
 			break
+		if(weed.weed_strength >= WEED_LEVEL_WEAK && weed.linked_hive.hivenumber == hivenumber) //check for ANY weeds
+			any_weeds = weed
 
-	if(!hive_weeds)
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	if(!any_weeds && !hive_weeds) //you need at least some weeds to plant on.
+		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
+		return
+
+	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC)
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
+
+	if(istype(get_area(T), /area/vehicle))
+		to_chat(user, SPAN_XENOWARNING("[src] cannot be planted inside a vehicle."))
+		return
+
+	for(var/obj/object in T.contents)
+		var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg
+		if(object.layer > initial(xeno_egg.layer))
+			to_chat(user, SPAN_XENOWARNING("[src] cannot be planted below objects that would obscure it."))
+			return
 
 	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
 
@@ -106,10 +126,17 @@
 	if(!user.check_plasma(30))
 		return
 
-	for(var/obj/effect/alien/weeds/W in T)
-		if(W.weed_strength >= WEED_LEVEL_HIVE)
+	for(var/obj/effect/alien/weeds/weed in T)
+		if(weed.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
 			user.use_plasma(30)
-			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
+			var/obj/effect/alien/egg/newegg
+			if(weed.weed_strength >= WEED_LEVEL_HIVE)
+				newegg = new /obj/effect/alien/egg(T, hivenumber)
+			else if(weed.weed_strength >= WEED_LEVEL_STANDARD)
+				newegg = new /obj/effect/alien/egg/carrier_egg(T,hivenumber, user)
+			else
+				to_chat(user, SPAN_XENOWARNING("[src] can't be planted on these weeds."))
+				return
 
 			newegg.flags_embryo = flags_embryo
 

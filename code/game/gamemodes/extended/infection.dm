@@ -15,7 +15,7 @@
 	to_world("<B>Don't ahelp asking for specific details, you won't get them.</B>")
 
 /datum/game_mode/infection/get_roles_list()
-	return ROLES_USCM
+	return GLOB.ROLES_USCM
 
 /datum/game_mode/infection/pre_setup()
 	return ..()
@@ -25,9 +25,18 @@
 	initialize_post_marine_gear_list()
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
-	spawn(50)
-		marine_announcement("We've lost contact with the Weyland-Yutani's research facility, [name]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+
+	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	return ..()
+
+/datum/game_mode/infection/proc/map_announcement()
+	if(SSmapping.configs[GROUND_MAP].infection_announce_text)
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].infection_announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+	else if(SSmapping.configs[GROUND_MAP].announce_text) //if we missed a infection text for above, or just don't need a special one, we just use default announcement
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 /datum/game_mode/infection/proc/initialize_post_survivor_list()
 	if(synth_survivor)
@@ -35,7 +44,6 @@
 	for(var/datum/mind/survivor in survivors)
 		if(transform_survivor(survivor) == 1)
 			survivors -= survivor
-	tell_survivor_story()
 
 /datum/game_mode/infection/can_start()
 	initialize_starting_survivor_list()
@@ -53,7 +61,7 @@
 			possible_synth_survivors -= A
 			continue
 
-		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
+		if(GLOB.RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
 			if(A in possible_survivors)
 				continue //they are already applying to be a survivor
 			else
@@ -87,7 +95,7 @@
 				possible_survivors -= new_survivor //either we drafted a survivor, or we're skipping over someone, either or - remove them
 
 /datum/game_mode/infection/check_win()
-	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+	var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/zed = living_player_list[2]
 
@@ -112,11 +120,11 @@
 	var/musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 	world << musical_track
 
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = GLOB.clients.len
-		round_statistics.log_round_statistics()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
+		GLOB.round_statistics.log_round_statistics()
 
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()

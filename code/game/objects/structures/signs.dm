@@ -17,6 +17,7 @@
 		S.desc = desc
 		S.icon_state = icon_state
 		S.sign_state = icon_state
+		S.icon = icon
 		deconstruct(FALSE)
 	else ..()
 
@@ -45,6 +46,7 @@
 		S.name = name
 		S.desc = desc
 		S.icon_state = sign_state
+		S.icon = icon
 		to_chat(user, "You fasten \the [S] with your [tool].")
 		qdel(src)
 	else ..()
@@ -70,7 +72,7 @@
 
 /obj/structure/sign/kiddieplaque
 	name = "AI developers plaque"
-	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. The child appears to be retarded. Beneath the image, someone has scratched the word \"PACKETS\""
+	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. Beneath the image, someone has scratched the word \"PACKETS\""
 	icon_state = "kiddieplaque"
 
 /obj/structure/sign/arcturianstopsign
@@ -568,7 +570,7 @@
 
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
-	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cyrosleep underwear is non-permissible.\n 3. The Requsitions Officer has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
+	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cryosleep underwear is non-permissible.\n 3. The Quartermaster has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
 	icon_state = "roplaque"
 
 /obj/structure/sign/prop1

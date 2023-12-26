@@ -42,6 +42,7 @@
 	prime() //We don't care about how strong the explosion was.
 
 /obj/item/explosive/mine/emp_act()
+	. = ..()
 	prime() //Same here. Don't care about the effect strength.
 
 
@@ -122,7 +123,7 @@
 				if(prob(75))
 					triggered = TRUE
 					if(tripwire)
-						var/direction = reverse_dir[src.dir]
+						var/direction = GLOB.reverse_dir[src.dir]
 						var/step_direction = get_step(src, direction)
 						tripwire.forceMove(step_direction)
 					prime()
@@ -198,6 +199,8 @@
 		return
 	if(L.get_target_lock(iff_signal) || isrobot(L))
 		return
+	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
+		return
 	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."), \
 	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."), \
 	SPAN_DANGER("You hear a click."))
@@ -238,7 +241,7 @@
 	//We move the tripwire randomly in either of the four cardinal directions
 	triggered = TRUE
 	if(tripwire)
-		var/direction = pick(cardinal)
+		var/direction = pick(GLOB.cardinals)
 		var/step_direction = get_step(src, direction)
 		tripwire.forceMove(step_direction)
 	prime()
@@ -306,7 +309,7 @@
 	map_deployed = TRUE
 
 /obj/item/explosive/mine/custom
-	name = "Custom mine"
+	name = "custom mine"
 	desc = "A custom chemical mine built from an M20 casing."
 	icon_state = "m20_custom"
 	customizable = TRUE

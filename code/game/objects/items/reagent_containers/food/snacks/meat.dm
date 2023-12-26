@@ -24,9 +24,19 @@
 	else
 		..()
 
-/obj/item/reagent_container/food/snacks/meat/syntiflesh
+/obj/item/reagent_container/food/snacks/meat/synthmeat
 	name = "synthetic meat"
 	desc = "A synthetic slab of flesh."
+
+/obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh //meat made from synthetics. Slightly toxic
+	name = "synthetic flesh"
+	desc = "A slab of artificial, inorganic 'flesh' that resembles human meat. Probably came from a synth."
+	icon_state = "synthmeat"
+	filling_color = "#ffffff"
+
+/obj/item/reagent_container/food/snacks/meat/synthmeat/synthetic/Initialize()
+	. = ..()
+	reagents.add_reagent("pacid", 1.5)
 
 /obj/item/reagent_container/food/snacks/meat/human
 	name = "human meat"

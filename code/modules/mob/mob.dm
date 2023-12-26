@@ -3,6 +3,7 @@
 	GLOB.dead_mob_list -= src
 	GLOB.alive_mob_list -= src
 	GLOB.player_list -= src
+	GLOB.freed_mob_list -= src
 
 	ghostize(FALSE)
 
@@ -21,6 +22,7 @@
 	QDEL_NULL_LIST(viruses)
 	resistances?.Cut()
 	QDEL_LIST_ASSOC_VAL(implants)
+	qdel(hud_used) // The hud will null it
 
 	. = ..()
 
@@ -52,8 +54,8 @@
 	if(!faction_group)
 		faction_group = list(faction)
 
-	last_mob_gid++
-	gid = last_mob_gid
+	GLOB.last_mob_gid++
+	gid = GLOB.last_mob_gid
 
 	GLOB.mob_list += src
 	if(stat == DEAD)
@@ -146,10 +148,14 @@
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
 		var/msg = message
-		if(self_message && M==src)
+		if(self_message && M == src)
 			msg = self_message
 			if(flags & CHAT_TYPE_TARGETS_ME)
 				flags = CHAT_TYPE_BEING_HIT
+
+		else if((M != src) && HAS_TRAIT(src, TRAIT_CLOAKED))
+			continue
+
 		M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)
 		CHECK_TICK
 
@@ -181,10 +187,14 @@
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
 /atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
+	if(HAS_TRAIT(src, TRAIT_CLOAKED))
+		return FALSE
 	var/view_dist = 7
-	if(max_distance) view_dist = max_distance
+	if(max_distance)
+		view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
 		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
+	return TRUE
 
 // Show a message to all mobs in earshot of this atom
 // Use for objects performing only audible actions
@@ -256,6 +266,9 @@
 	if(!istype(W))
 		return FALSE
 
+	if(SEND_SIGNAL(src, COMSIG_MOB_ATTEMPTING_EQUIP, W, slot) & COMPONENT_MOB_CANCEL_ATTEMPT_EQUIP)
+		return FALSE
+
 	if(!W.mob_can_equip(src, slot, disable_warning))
 		if(del_on_fail)
 			qdel(W)
@@ -322,7 +335,6 @@
 		if (exterior_lighting)
 			exterior_lighting.alpha = min(GLOB.minimum_exterior_lighting_alpha, lighting_alpha)
 
-
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful
 /mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
@@ -354,6 +366,9 @@
 		SEND_SIGNAL(client, COMSIG_CLIENT_RESET_VIEW, A)
 	return
 
+/mob/proc/reset_observer_view_on_deletion(atom/deleted, force)
+	SIGNAL_HANDLER
+	reset_view(null)
 
 /mob/proc/show_inv(mob/user)
 	user.set_interaction(src)
@@ -439,7 +454,7 @@
 	if(!Adjacent(usr)) return
 	if(!ishuman(M) && !ismonkey(M)) return
 	if(!ishuman(src) && !ismonkey(src)) return
-	if(M.lying || M.is_mob_incapacitated())
+	if(M.is_mob_incapacitated())
 		return
 	if(M.pulling == src && (M.a_intent & INTENT_GRAB) && M.grab_level == GRAB_AGGRESSIVE)
 		return
@@ -497,6 +512,7 @@
 		return FALSE
 
 	return do_pull(AM, lunge, no_msg)
+
 
 /mob/living/vv_get_header()
 	. = ..()
@@ -577,20 +593,13 @@
 adds a dizziness amount to a mob
 use this rather than directly changing var/dizziness
 since this ensures that the dizzy_process proc is started
-currently only humans get dizzy
+currently only mob/living/carbon/human get dizzy
 
 value of dizziness ranges from 0 to 1000
 below 100 is not dizzy
 */
 /mob/proc/make_dizzy(amount)
-	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
-		return
-
-	dizziness = min(1000, dizziness + amount) // store what will be new value
-													// clamped to max 1000
-	if(dizziness > 100 && !is_dizzy)
-		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
-
+	return
 
 /*
 dizzy process - wiggles the client's pixel offset over time
@@ -601,16 +610,22 @@ note dizziness decrements automatically in the mob's Life() proc.
 	is_dizzy = 1
 	while(dizziness > 100)
 		if(client)
-			var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
-			client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)
-			client.pixel_y = amplitude * cos(0.008 * dizziness * world.time)
-
+			if(buckled || resting)
+				client.pixel_x = 0
+				client.pixel_y = 0
+			else
+				var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
+				client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)
+				client.pixel_y = amplitude * cos(0.008 * dizziness * world.time)
+				if(prob(1))
+					to_chat(src, "The dizziness is becoming unbearable! It should pass faster if you lie down.")
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_dizzy = 0
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0
+		to_chat(src, "The dizziness has passed, you're starting to feel better.")
 
 // jitteriness - copy+paste of dizziness
 
@@ -678,61 +693,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // facing verbs
 /mob/proc/canface()
-	if(!canmove) return 0
 	if(client.moving) return 0
 	if(stat==2) return 0
 	if(anchored) return 0
 	if(monkeyizing) return 0
 	if(is_mob_restrained()) return 0
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED)) // We allow rotation if simply floored
+		return FALSE
 	return 1
-
-//Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
-/mob/proc/update_canmove()
-	var/laid_down = (stat || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
-
-	if(laid_down)
-		lying = TRUE
-		flags_atom &= ~DIRLOCK
-	else
-		lying = FALSE
-	if(buckled)
-		if(buckled.buckle_lying)
-			lying = TRUE
-			flags_atom &= ~DIRLOCK
-		else
-			lying = FALSE
-
-	canmove = !(stunned || frozen)
-	if(!can_crawl && lying)
-		canmove = FALSE
-
-	if(lying_prev != lying)
-		if(lying)
-			density = FALSE
-			add_temp_pass_flags(PASS_MOB_THRU)
-			drop_l_hand()
-			drop_r_hand()
-			SEND_SIGNAL(src, COMSIG_MOB_KNOCKED_DOWN)
-		else
-			density = TRUE
-			SEND_SIGNAL(src, COMSIG_MOB_GETTING_UP)
-			remove_temp_pass_flags(PASS_MOB_THRU)
-		update_transform()
-
-	if(lying)
-		//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
-		if(pulledby && pulledby.grab_level == GRAB_CARRY)
-			layer = ABOVE_MOB_LAYER
-		else if (stat == DEAD)
-			layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
-		else if(layer == initial(layer)) //to avoid things like hiding larvas.
-			layer = LYING_LIVING_MOB_LAYER
-	else if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
-		layer = initial(layer)
-
-	SEND_SIGNAL(src, COMSIG_MOB_POST_UPDATE_CANMOVE, canmove, laid_down, lying)
-
-	return canmove
 
 /mob/proc/face_dir(ndir, specific_dir)
 	if(!canface()) return 0
@@ -767,22 +735,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/get_species()
 	return ""
-
-/// Sets freeze if possible and wasn't already set, returning success
-/mob/proc/freeze()
-	if(frozen)
-		return FALSE
-	frozen = TRUE
-	update_canmove()
-	return TRUE
-
-/// Attempts to unfreeze mob, returning success
-/mob/proc/unfreeze()
-	if(!frozen)
-		return FALSE
-	frozen = FALSE
-	update_canmove()
-	return TRUE
 
 /mob/proc/flash_weak_pain()
 	overlay_fullscreen("pain", /atom/movable/screen/fullscreen/pain, 1)
@@ -835,7 +787,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			return FALSE
 		to_chat(src, SPAN_WARNING("You attempt to get a good grip on [selection] in your body."))
 	else
-		if(get_active_hand())
+		if(usr.get_active_hand())
 			to_chat(usr, SPAN_WARNING("You need an empty hand for this!"))
 			return FALSE
 		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
@@ -881,10 +833,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	selection.forceMove(get_turf(src))
 	return TRUE
 
+///Can this mob resist (default FALSE)
+/mob/proc/can_resist()
+	return FALSE
+
 /mob/living/proc/handle_statuses()
-	handle_stunned()
-	handle_knocked_down()
-	handle_knocked_out()
 	handle_stuttering()
 	handle_silent()
 	handle_drugged()
@@ -892,11 +845,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_dazed()
 	handle_slowed()
 	handle_superslowed()
-
-/mob/living/proc/handle_stunned()
-	if(stunned)
-		adjust_effect(-1, STUN)
-	return stunned
 
 /mob/living/proc/handle_dazed()
 	if(dazed)
@@ -912,19 +860,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(superslowed)
 		adjust_effect(-1, SUPERSLOW)
 	return superslowed
-
-
-/mob/living/proc/handle_knocked_down(bypass_client_check = FALSE)
-	if(knocked_down && (bypass_client_check || client))
-		knocked_down = max(knocked_down-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
-		knocked_down_callback_check()
-	return knocked_down
-
-/mob/living/proc/handle_knocked_out(bypass_client_check = FALSE)
-	if(knocked_out && (bypass_client_check || client))
-		knocked_out = max(knocked_out-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
-		knocked_out_callback_check()
-	return knocked_out
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -1115,5 +1050,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/set_stat(new_stat)
 	if(new_stat == stat)
 		return
-	. = stat //old stat
+	. = stat
 	stat = new_stat
+	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, new_stat, .)
+
+/mob/proc/update_stat()
+	return

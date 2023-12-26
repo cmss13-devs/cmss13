@@ -41,6 +41,11 @@
 	/// If FALSE, this will not be cleared when calling /client/clear_screen()
 	var/clear_with_screen = TRUE
 
+/atom/movable/screen/Destroy()
+	master = null
+	hud = null // Not currently ever used
+	return ..()
+
 /**
  * A screen object, which acts as a container for turfs and other things
  * you want to show on the map, which you usually attach to "vis_contents".
@@ -103,7 +108,7 @@
 	if(!screen_map.Find(screen_obj))
 		screen_map += screen_obj
 	if(!screen.Find(screen_obj))
-		screen += screen_obj
+		add_to_screen(screen_obj)
 
 /**
  * Clears the map of registered screen objects.

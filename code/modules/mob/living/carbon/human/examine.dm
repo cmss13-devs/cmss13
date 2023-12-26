@@ -5,6 +5,10 @@
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
+	var/mob/dead/observer/observer
+	if(isobserver(user))
+		observer = user
+
 	if(isxeno(user))
 		var/msg = "<span class='info'>This is "
 
@@ -435,7 +439,7 @@
 	for(var/implant in get_visible_implants())
 		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
 
-	if(hasHUD(user,"security"))
+	if(hasHUD(user,"security") || (observer && observer.HUD_toggled["Security HUD"]))
 		var/perpref
 
 
@@ -450,9 +454,17 @@
 						if(R.fields["id"] == E.fields["id"])
 							criminal = R.fields["criminal"]
 
-			msg += "<span class = 'deptradio'>Criminal status:</span> <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
-			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
+			msg += "<span class = 'deptradio'>Criminal status:</span>"
+			if(!observer)
+				msg += "<a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
+			else
+				msg += "\[[criminal]\]\n"
 
+			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>"
+			if(!observer)
+				msg += " <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
+			else
+				msg += "\n"
 	if(hasHUD(user,"medical"))
 		var/cardcolor = holo_card_color
 		if(!cardcolor) cardcolor = "none"
@@ -512,25 +524,30 @@
 
 
 //Helper procedure. Called by /mob/living/carbon/human/get_examine_text() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
-/proc/hasHUD(mob/M, hudtype)
-	if(istype(M, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if (issynth(H))
+/proc/hasHUD(mob/passed_mob, hudtype)
+	if(istype(passed_mob, /mob/living/carbon/human))
+		var/mob/living/carbon/human/passed_human = passed_mob
+		if (issynth(passed_human))
 			return 1
 		switch(hudtype)
 			if("security")
-				//only MPs can use the security HUD glasses's functionalities
-				if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED))
-					return istype(H.glasses, /obj/item/clothing/glasses/hud/security) || istype(H.glasses, /obj/item/clothing/glasses/sunglasses/sechud)
+				if(skillcheck(passed_human, SKILL_POLICE, SKILL_POLICE_SKILLED))
+					var/datum/mob_hud/sec_hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
+					if(locate(passed_mob) in sec_hud.hudusers)
+						return TRUE
 			if("medical")
-				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-					return istype(H.glasses, /obj/item/clothing/glasses/hud/health)
+				if(skillcheck(passed_human, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+					var/datum/mob_hud/med_hud = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
+					if(locate(passed_mob) in med_hud.hudusers)
+						return TRUE
 			if("squadleader")
-				return H.mind && H.assigned_squad && H.assigned_squad.squad_leader == H && H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+				var/datum/mob_hud/faction_hud = GLOB.huds[MOB_HUD_FACTION_USCM]
+				if(passed_human.mind && passed_human.assigned_squad && passed_human.assigned_squad.squad_leader == passed_human && locate(passed_mob) in faction_hud.hudusers)
+					return TRUE
 			else
 				return 0
-	else if(isrobot(M))
-		var/mob/living/silicon/robot/R = M
+	else if(isrobot(passed_mob))
+		var/mob/living/silicon/robot/R = passed_mob
 		switch(hudtype)
 			if("security")
 				return istype(R.module_state_1, /obj/item/robot/sight/hud/sec) || istype(R.module_state_2, /obj/item/robot/sight/hud/sec) || istype(R.module_state_3, /obj/item/robot/sight/hud/sec)

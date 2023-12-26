@@ -27,7 +27,7 @@
 #define ITEM_UNCATCHABLE (1<<9)
 /// Used for nonstandard marine clothing to ignore 'specialty' var.
 #define NO_NAME_OVERRIDE (1<<10)
-/// Used for armors or uniforms that don't have a snow icon state.
+/// Used for armors or uniforms that don't have a snow/desert/etc icon state set via select_gamemode_skin (not all item types currently perform this test though).
 #define NO_SNOW_TYPE (1<<11)
 
 #define INVULNERABLE (1<<12)
@@ -42,6 +42,8 @@
 #define ATOM_DECORATED (1<<16)
 /// Whether or not the object uses hearing
 #define USES_HEARING (1<<17)
+/// Should we use the initial icon for display? Mostly used by overlay only objects
+#define HTML_USE_INITAL_ICON (1<<18)
 
 //==========================================================================================
 
@@ -78,11 +80,8 @@
 #define CAN_DIG_SHRAPNEL (1<<11)
 /// whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 #define ANIMATED_SURGICAL_TOOL (1<<12)
-/// The item goes on top of tables, instead of into them with the overlay system
-#define NOTABLEMERGE (1<<13)
 /// Has heat source but isn't 'on fire' and thus can be stored
-#define IGNITING_ITEM (1<<14)
-
+#define IGNITING_ITEM (1<<13)
 //==========================================================================================
 
 
@@ -234,6 +233,8 @@
 #define SLOT_LEGS (1<<13)
 #define SLOT_ACCESSORY (1<<14)
 #define SLOT_SUIT_STORE (1<<15) //this allows items to be stored in the suit slot regardless of suit
+/// Anything with this flag cannot be worn in suit storage, period.
+#define SLOT_BLOCK_SUIT_STORE (1<<16)
 //=================================================
 
 //slots
@@ -492,7 +493,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define UNIFORM_VEND_DRESS_EXTRA "dress extra"
 
 
-var/global/list/uniform_categories = list(
+GLOBAL_LIST_INIT(uniform_categories, list(
 	"UTILITY" = list(UNIFORM_VEND_UTILITY_UNIFORM, UNIFORM_VEND_UTILITY_JACKET, UNIFORM_VEND_UTILITY_HEAD, UNIFORM_VEND_UTILITY_GLOVES, UNIFORM_VEND_UTILITY_SHOES),
 	"UTILITY EXTRAS" = list(UNIFORM_VEND_UTILITY_EXTRA),
 	"SERVICE" = list(UNIFORM_VEND_SERVICE_UNIFORM, UNIFORM_VEND_SERVICE_JACKET, UNIFORM_VEND_SERVICE_GLOVES, UNIFORM_VEND_SERVICE_SHOES),
@@ -501,7 +502,7 @@ var/global/list/uniform_categories = list(
 	"DRESS" = list(UNIFORM_VEND_DRESS_UNIFORM, UNIFORM_VEND_DRESS_JACKET, UNIFORM_VEND_DRESS_GLOVES, UNIFORM_VEND_DRESS_SHOES),
 	"DRESS HEADWEAR" = list(UNIFORM_VEND_DRESS_HEAD),
 	"DRESS EXTRAS" = list(UNIFORM_VEND_DRESS_EXTRA)
-)
+))
 //=================================================
 
 
@@ -548,3 +549,8 @@ var/global/list/uniform_categories = list(
 #define PHONE_MARINE "Marine"
 #define PHONE_UPP_SOLDIER "Soldier"
 #define PHONE_IO "IO"
+
+#define PHONE_DND_FORCED 2
+#define PHONE_DND_ON 1
+#define PHONE_DND_OFF 0
+#define PHONE_DND_FORBIDDEN -1

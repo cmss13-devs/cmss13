@@ -29,9 +29,14 @@
 	research_objective_interface = new()
 
 /datum/mind/Destroy()
+	QDEL_NULL(initial_account)
 	QDEL_NULL(objective_memory)
 	QDEL_NULL(objective_interface)
 	QDEL_NULL(research_objective_interface)
+	current = null
+	original = null
+	ghost_mob = null
+	player_entity = null
 	return ..()
 
 /datum/mind/proc/transfer_to(mob/living/new_character, force = FALSE)
@@ -39,9 +44,11 @@
 		msg_admin_niche("[key]/[ckey] has tried to transfer to deleted [new_character].")
 		return
 
+	SEND_SIGNAL(current.client, COMSIG_CLIENT_MIND_TRANSFER, new_character)
+
 	if(current)
 		current.mind = null //remove ourself from our old body's mind variable
-		nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
+		SSnano.nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
 
 	if(key)
 		if(new_character.key != key)
@@ -61,7 +68,7 @@
 		SSround_recording.recorder.update_key(new_character)
 		if(new_character.client)
 			new_character.client.init_verbs()
-			new_character.client.change_view(world_view_size) //reset view range to default.
+			new_character.client.change_view(GLOB.world_view_size) //reset view range to default.
 			new_character.client.pixel_x = 0
 			new_character.client.pixel_y = 0
 			if(usr && usr.open_uis)
@@ -70,6 +77,8 @@
 						ui.close()
 						continue
 			player_entity = setup_player_entity(ckey)
+
+	SEND_SIGNAL(new_character, COMSIG_MOB_NEW_MIND, current.client)
 
 	new_character.refresh_huds(current) //inherit the HUDs from the old body
 	new_character.aghosted = FALSE //reset aghost and away timer

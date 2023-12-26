@@ -26,7 +26,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
-		/obj/item/reagent_container/hypospray/autoinjector/emergency,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 
@@ -133,8 +132,8 @@
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(scale)
 	listed_products = list(
 		list("FIELD SUPPLIES", -1, null, null),
-		list("Advanced Burn Kit", round(scale * 7), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
-		list("Advanced Trauma Kit", round(scale * 7), /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Burn Kit", round(scale * 7), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
+		list("Trauma Kit", round(scale * 7), /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", round(scale * 7), /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Roll of Gauze", round(scale * 7), /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Splints", round(scale * 7), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
@@ -227,7 +226,8 @@
 /obj/structure/machinery/cm_vending/sorted/medical/antag
 	name = "\improper Medical Equipment Vendor"
 	desc = "A vending machine dispensing various pieces of medical equipment."
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed
@@ -267,12 +267,13 @@
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag
 	name = "\improper Basic Medical Supplies Vendor"
 	desc = "A vending machine dispensing basic medical supplies."
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood
 	name = "\improper MM Blood Dispenser"
-	desc = "Marine Med brand Blood Pack Dispensary"
+	desc = "The Marine Med Brand Blood Pack Dispensary is the premier, top-of-the-line blood dispenser of 2105! Get yours today!" //Don't update this year, the joke is it's old.
 	icon_state = "blood"
 	wrenchable = TRUE
 	hackable = TRUE
@@ -298,7 +299,8 @@
 	return
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/antag
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med
@@ -365,8 +367,8 @@
 		list("Health Analyzer", 8, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
 
 		list("FIELD SUPPLIES", -1, null, null),
-		list("Advanced Burn Kit", 8, /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
-		list("Advanced Trauma Kit", 8, /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Burn Kit", 8, /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
+		list("Trauma Kit", 8, /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 8, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Roll of Gauze", 8, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Splints", 8, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)

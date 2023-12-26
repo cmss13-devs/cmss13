@@ -30,10 +30,16 @@
 	icon_state = "southwest"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
+/area/lv624/ground/jungle/south_west_jungle/ceiling
+	ceiling = CEILING_GLASS
+
 /area/lv624/ground/jungle/west_jungle
 	name ="\improper Western Jungle"
 	icon_state = "west"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+
+/area/lv624/ground/jungle/west_jungle/ceiling
+	ceiling = CEILING_GLASS
 
 /area/lv624/ground/jungle/east_jungle
 	name ="\improper Eastern Jungle"
@@ -82,10 +88,16 @@
 	icon_state = "west"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
+/area/lv624/ground/barrens/west_barrens/ceiling
+	ceiling = CEILING_GLASS
+
 /area/lv624/ground/barrens/east_barrens
 	name = "\improper Eastern Barrens"
 	icon_state = "east"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lv624/ground/barrens/east_barrens/ceiling
+	ceiling = CEILING_GLASS
 
 /area/lv624/ground/barrens/containers
 	name = "\improper Containers"
@@ -96,6 +108,9 @@
 	name = "\improper North Eastern Barrens"
 	icon_state = "northeast"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lv624/ground/barrens/north_east_barrens/ceiling
+	ceiling = CEILING_GLASS
 
 /area/lv624/ground/barrens/south_west_barrens
 	name = "\improper South Western Barrens"
@@ -367,10 +382,12 @@
 /area/lv624/lazarus/engineering
 	name = "\improper Engineering"
 	icon_state = "engine_smes"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv624/lazarus/comms
 	name = "\improper Communications Relay"
 	icon_state = "tcomsatcham"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv624/lazarus/secure_storage
 	name = "\improper Secure Storage"
@@ -385,6 +402,7 @@
 /area/lv624/lazarus/research
 	name = "\improper Research Lab"
 	icon_state = "toxlab"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/lv624/lazarus/fitness
 	name = "\improper Fitness Room"

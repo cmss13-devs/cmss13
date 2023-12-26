@@ -230,6 +230,7 @@
 	name = "wall"
 	icon_state = "wall1"
 	icon = 'icons/turf/shuttle.dmi'
+	layer = ABOVE_TURF_LAYER
 
 /turf/closed/shuttle/is_weedable()
 	return FULLY_WEEDABLE
@@ -256,6 +257,14 @@
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship2/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/twe_dropship
+	name = "\improper UD4-UK"
+	icon = 'icons/turf/twedropship.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/twe_dropship/transparent
 	opacity = FALSE
 
 /turf/closed/shuttle/dropship2/tornado

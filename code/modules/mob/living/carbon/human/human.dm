@@ -62,16 +62,9 @@
 	QDEL_NULL_LIST(embedded_items)
 	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
 	QDEL_NULL_LIST(limbs)
-	remove_from_all_mob_huds()
+	if(hud_used)
+		QDEL_NULL(hud_used)
 	. = ..()
-
-	species = null
-	limbs_to_process = null
-	brute_mod_override = null
-	burn_mod_override = null
-	assigned_squad = null
-	selected_ability = null
-	remembered_dropped_objects = null
 
 	overlays_standing = null
 
@@ -98,7 +91,6 @@
 	selected_ability = null
 	remembered_dropped_objects = null
 
-
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
 
@@ -114,7 +106,7 @@
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
 
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode))
-		. += "Operation Name: [round_statistics.round_name]"
+		. += "Operation Name: [GLOB.round_statistics.round_name]"
 
 	if(assigned_squad)
 		if(assigned_squad.overwatch_officer)
@@ -123,7 +115,9 @@
 			. += "Primary Objective: [html_decode(assigned_squad.primary_objective)]"
 		if(assigned_squad.secondary_objective)
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
-
+	if(faction == FACTION_MARINE)
+		. += ""
+		. += "<a href='?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)
 		. += "Active Order: MOVE"
 	if(protection_aura)
@@ -131,17 +125,19 @@
 	if(marksman_aura)
 		. += "Active Order: FOCUS"
 
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+	if(SShijack)
+		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
-			. += "Evacuation: [eta_status]"
+			. += "Evacuation Goals: [eta_status]"
+		if(SShijack.sd_unlocked)
+			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 	if(HAS_TRAIT(src, TRAIT_WEAVE_SENSITIVE))
 		var/datum/hive_status/mutated/weave/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
 		. += "Weave Energy: [hive.weave_energy]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
-	if(lying)
+	if(body_position == LYING_DOWN)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 
@@ -180,6 +176,7 @@
 	var/obj/item/item1 = get_active_hand()
 	var/obj/item/item2 = get_inactive_hand()
 	apply_effect(round(knockdown_minus_armor), WEAKEN)
+	apply_effect(round(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
 	var/knockout_value = damage * 0.1
 	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
 	apply_effect(round(knockout_minus_armor), PARALYZE)
@@ -521,8 +518,11 @@
 					if(U == w_uniform)
 						U.remove_accessory(usr, A)
 				else
+					if(HAS_TRAIT(src, TRAIT_UNSTRIPPABLE) && !is_mob_incapacitated()) //Can't strip the unstrippable!
+						to_chat(usr, SPAN_DANGER("[src] has an unbreakable grip on their equipment!"))
+						return
 					visible_message(SPAN_DANGER("<B>[usr] is trying to take off \a [A] from [src]'s [U]!</B>"), null, null, 5)
-					if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+					if(do_after(usr, get_strip_delay(usr, src), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 						if(U == w_uniform)
 							U.remove_accessory(usr, A)
 
@@ -541,7 +541,7 @@
 			else
 				var/oldsens = U.has_sensor
 				visible_message(SPAN_DANGER("<B>[usr] is trying to modify [src]'s sensors!</B>"), null, null, 4)
-				if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+				if(do_after(usr, get_strip_delay(usr, src), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 					if(U == w_uniform)
 						if(U.has_sensor >= UNIFORM_FORCED_SENSORS)
 							to_chat(usr, "The controls are locked.")
@@ -619,7 +619,7 @@
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["secrecord"])
-		if(hasHUD(usr,"security"))
+		if(hasHUD(usr,"security") || isobserver(usr))
 			var/perpref = null
 			var/read = 0
 
@@ -631,7 +631,7 @@
 				if(E.fields["ref"] == perpref)
 					for(var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
-							if(hasHUD(usr,"security"))
+							if(hasHUD(usr,"security") || isobserver(usr))
 								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
 								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
@@ -640,7 +640,7 @@
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-	if(href_list["secrecordComment"] && hasHUD(usr,"security"))
+	if(href_list["secrecordComment"] && (hasHUD(usr,"security") || isobserver(usr)))
 		var/perpref = null
 		if(wear_id)
 			var/obj/item/card/id/ID = wear_id.GetID()
@@ -669,7 +669,8 @@
 							continue
 						comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
 					to_chat(usr, comment_markup)
-					to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
+					if(!isobserver(usr))
+						to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
 
 		if(!read)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
@@ -691,7 +692,7 @@
 					var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)), 1, MAX_MESSAGE_LEN)
 					if(!(t1) || usr.stat || usr.is_mob_restrained())
 						return
-					var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+					var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 					var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
 					if(istype(usr,/mob/living/carbon/human))
 						var/mob/living/carbon/human/U = usr
@@ -820,10 +821,10 @@
 										counter++
 									if(istype(usr,/mob/living/carbon/human))
 										var/mob/living/carbon/human/U = usr
-										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
 									if(istype(usr,/mob/living/silicon/robot))
 										var/mob/living/silicon/robot/U = usr
-										R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+										R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
 
 	if(href_list["medholocard"])
 		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
@@ -1056,7 +1057,7 @@
 
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
-	if((stat == DEAD) || lying || buckled) // Shouldnt be needed, but better safe than sorry
+	if((stat == DEAD) || body_position || buckled) // Shouldnt be needed, but better safe than sorry
 		return
 
 	for(var/obj/item/W in embedded_items)
@@ -1101,9 +1102,9 @@
 		for(var/datum/effects/bleeding/internal/internal_bleed in effects_list)
 			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name]\n"
 
-	if(knocked_out && stat != DEAD)
+	if(stat == UNCONSCIOUS)
 		msg += "They seem to be unconscious\n"
-	if(stat == DEAD)
+	else if(stat == DEAD)
 		if(src.check_tod() && is_revivable())
 			msg += "They're not breathing"
 		else
@@ -1334,7 +1335,7 @@
 			else if(C.z != src.z || get_dist(src,C) < 1)
 				hud_used.locate_leader.icon_state = "trackondirect_lz"
 			else
-				hud_used.locate_leader.setDir(get_dir(src,C))
+				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
 				hud_used.locate_leader.icon_state = "trackon_lz"
 			return
 		if(TRACKER_FTL)
@@ -1349,13 +1350,13 @@
 			H = GLOB.marine_leaders[JOB_XO]
 			tracking_suffix = "_xo"
 		if(TRACKER_CL)
-			var/datum/job/civilian/liaison/liaison_job = RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
+			var/datum/job/civilian/liaison/liaison_job = GLOB.RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
 			if(liaison_job?.active_liaison)
 				H = liaison_job.active_liaison
 			tracking_suffix = "_cl"
 		else
 			if(tracker_setting in squad_leader_trackers)
-				var/datum/squad/S = RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
+				var/datum/squad/S = GLOB.RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
 				H = S.squad_leader
 				tracking_suffix = tracker_setting
 
@@ -1364,11 +1365,11 @@
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
 	else
-		hud_used.locate_leader.setDir(get_dir(src,H))
+		hud_used.locate_leader.setDir(Get_Compass_Dir(src,H))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
 
 /mob/living/carbon/proc/locate_nearest_nuke()
-	if(!bomb_set) return
+	if(!GLOB.bomb_set) return
 	var/obj/structure/machinery/nuclearbomb/N
 	for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 		if(!istype(N) || N.z != src.z )
@@ -1382,7 +1383,7 @@
 	if(get_dist(src,N) < 1)
 		hud_used.locate_nuke.icon_state = "nuke_trackondirect"
 	else
-		hud_used.locate_nuke.setDir(get_dir(src,N))
+		hud_used.locate_nuke.setDir(Get_Compass_Dir(src,N))
 		hud_used.locate_nuke.icon_state = "nuke_trackon"
 
 
@@ -1397,10 +1398,14 @@
 	sight &= ~BLIND // Never have blind on by default
 
 	lighting_alpha = default_lighting_alpha
-	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_BLACKNESS)
 	see_in_dark = species.darksight
+	sight |= species.flags_sight
 	if(glasses)
 		process_glasses(glasses)
+
+	if(!(sight & SEE_TURFS) && !(sight & SEE_MOBS) && !(sight & SEE_OBJS))
+		sight |= SEE_BLACKNESS
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
 	sync_lighting_plane_alpha()
@@ -1734,3 +1739,16 @@
 			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
 			return
 	. = ..()
+
+/mob/living/carbon/human/equip_to_slot_if_possible(obj/item/equipping_item, slot, ignore_delay = 1, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, permanent = 0)
+
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_ATTEMPTING_EQUIP, equipping_item, slot) & COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP)
+		return FALSE
+
+	. = ..()
+
+/mob/living/carbon/human/make_dizzy(amount)
+	dizziness = min(500, dizziness + amount) // store what will be new value
+													// clamped to max 500
+	if(dizziness > 100 && !is_dizzy)
+		INVOKE_ASYNC(src, PROC_REF(dizzy_process))

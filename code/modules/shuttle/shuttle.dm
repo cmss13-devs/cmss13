@@ -180,18 +180,20 @@
 	if(P)
 		return P.id
 
-/obj/docking_port/proc/is_in_shuttle_bounds(atom/A)
-	var/turf/T = get_turf(A)
-	if(T.z != z)
+/obj/docking_port/proc/is_in_shuttle_bounds(atom/target)
+	if(!target)
+		return FALSE
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf || target_turf.z != z)
 		return FALSE
 	var/list/bounds = return_coords()
 	var/x0 = bounds[1]
 	var/y0 = bounds[2]
 	var/x1 = bounds[3]
 	var/y1 = bounds[4]
-	if(!ISINRANGE(T.x, min(x0, x1), max(x0, x1)))
+	if(!ISINRANGE(target_turf.x, min(x0, x1), max(x0, x1)))
 		return FALSE
-	if(!ISINRANGE(T.y, min(y0, y1), max(y0, y1)))
+	if(!ISINRANGE(target_turf.y, min(y0, y1), max(y0, y1)))
 		return FALSE
 	return TRUE
 
@@ -266,9 +268,7 @@
 		if(!roundstart_template)
 			CRASH("json_key:[json_key] value \[[sid]\] resulted in a null shuttle template for [src]")
 	else if(roundstart_template) // passed a PATH
-		var/sid = "[initial(roundstart_template.shuttle_id)]"
-
-		roundstart_template = SSmapping.shuttle_templates[sid]
+		roundstart_template = SSmapping.all_shuttle_templates[roundstart_template]
 		if(!roundstart_template)
 			CRASH("Invalid path ([roundstart_template]) passed to docking port.")
 
@@ -343,6 +343,9 @@
 	var/rechargeTime = 0 //time spent after arrival before being able to launch again
 	var/prearrivalTime = 0 //delay after call time finishes for sound effects, explosions, etc.
 
+	var/playing_launch_announcement_alarm = FALSE // FALSE = off ; TRUE = on
+	var/datum/looping_sound/looping_launch_announcement_alarm/alarm_sound_loop
+
 	var/landing_sound = 'sound/effects/engine_landing.ogg'
 	var/ignition_sound = 'sound/effects/engine_startup.ogg'
 	/// Default shuttle audio ambience while flying
@@ -383,6 +386,7 @@
 
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
+		QDEL_NULL(alarm_sound_loop)
 		SSshuttle.mobile -= src
 		destination = null
 		previous = null
@@ -410,6 +414,14 @@
 	initial_engines = count_engines()
 	current_engines = initial_engines
 
+	//Launch Announcement Alarm variables setup
+	alarm_sound_loop = new(src)
+	alarm_sound_loop.mid_length = 20
+	alarm_sound_loop.extra_range = 30
+	alarm_sound_loop.volume = 100
+	alarm_sound_loop.is_sound_projecting = TRUE
+	alarm_sound_loop.falloff_distance = 7
+
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#0f0")
 	#endif
@@ -431,7 +443,7 @@
 // Called after the shuttle is loaded from template
 /obj/docking_port/mobile/proc/linkup(datum/map_template/shuttle/template, obj/docking_port/stationary/dock)
 	var/list/static/shuttle_id = list()
-	var/idnum = ++shuttle_id[template]
+	var/idnum = ++shuttle_id[id]
 	if(idnum > 1)
 		if(id == initial(id))
 			id = "[id][idnum]"
@@ -626,15 +638,15 @@
 
 /obj/docking_port/mobile/proc/intoTheSunset()
 	// Loop over mobs
-	for(var/t in return_turfs())
-		var/turf/T = t
-		for(var/mob/living/L in T.GetAllContents())
+	for(var/turf/turf as anything in return_turfs())
+		for(var/mob/living/mob in turf.GetAllContents())
 			// Ghostize them and put them in nullspace stasis (for stat & possession checks)
-			//L.notransform = TRUE
-			var/mob/dead/observer/O = L.ghostize(FALSE)
-			if(O)
-				O.timeofdeath = world.time
-			L.moveToNullspace()
+			//mob.notransform = TRUE
+			var/mob/dead/observer/obs = mob.ghostize(FALSE)
+			if(obs)
+				obs.timeofdeath = world.time
+				obs.client?.player_details.larva_queue_time = max(obs.client.player_details.larva_queue_time, world.time)
+			mob.moveToNullspace()
 
 	// Now that mobs are stowed, delete the shuttle
 	jumpToNullSpace()
@@ -644,7 +656,7 @@
 		return FALSE
 	var/list/turfs = ripple_area(S1)
 	for(var/t in turfs)
-		ripples += new /obj/effect/abstract/ripple(t, animate_time)
+		ripples += new /obj/effect/abstract/ripple/shadow(t, animate_time)
 	return TRUE
 
 /obj/docking_port/mobile/proc/remove_ripples()
@@ -727,7 +739,7 @@
 
 /obj/docking_port/mobile/proc/check_effects()
 	if(!ripples.len)
-		if((mode == SHUTTLE_CALL) || (mode == SHUTTLE_RECALL))
+		if((mode == SHUTTLE_PREARRIVAL))
 			var/tl = timeLeft(1)
 			if(tl <= SHUTTLE_RIPPLE_TIME)
 				create_ripples(destination, tl)

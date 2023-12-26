@@ -133,3 +133,10 @@
 	/// Flags that determine the potential of a mob to perform certain actions. Do not change this directly.
 	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
 
+	/// icon for weed_food states
+	var/weed_food_icon = 'icons/mob/xenos/weeds.dmi'
+	/// icon_states for weed_food (needs to be the same length as weed_food_states_flipped)
+	var/list/weed_food_states = list("human_1","human_2","human_3","human_4","human_5")
+	/// flipped icon_states for weed_food (needs to be the same length as weed_food_states)
+	var/list/weed_food_states_flipped = list("human_1_f","human_2_f","human_3_f","human_4_f","human_5_f")
+

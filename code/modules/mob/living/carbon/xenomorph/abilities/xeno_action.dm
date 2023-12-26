@@ -343,11 +343,11 @@
 		if(cooldown_message)
 			to_chat(owner, SPAN_XENODANGER("[cooldown_message]"))
 		else
-			to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
+			to_chat(owner, SPAN_XENODANGER("We feel our strength return! We can use [name] again!"))
 
 /datum/action/xeno_action/proc/start_charging_ability()
 	charge_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_charging_ability)), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
-	to_chat(owner, SPAN_XENOWARNING("You start charging up your <b>[name]</b>!"))
+	to_chat(owner, SPAN_XENOWARNING("We start charging up our <b>[name]</b>!"))
 
 /datum/action/xeno_action/proc/finish_charging_ability()
 	charge_timer_id = TIMER_ID_NULL

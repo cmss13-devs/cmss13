@@ -99,7 +99,7 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
-				REDIS_PUBLISH("byond.round", "type" = "round-complete")
+				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name)
 				flash_clients()
 				addtimer(CALLBACK(
 					SSvote,
@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(ticker)
 	if(GLOB.round_statistics)
 		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [GLOB.round_statistics.round_name]</B>")))
 
-	GLOB.supply_controller.process() //Start the supply shuttle regenerating points -- TLE
+	GLOB.supply_controller.start_processing()
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i
@@ -477,7 +477,6 @@ SUBSYSTEM_DEF(ticker)
 	SIGNAL_HANDLER
 
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
-
 
 /datum/controller/subsystem/ticker/proc/hijack_ocurred()
 	if(mode)

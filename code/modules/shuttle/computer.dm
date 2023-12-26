@@ -321,7 +321,10 @@
 						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
 						shipwide_ai_announcement("Launch command received. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat doors will close in 10 seconds.")
 						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
+						lifeboat.alarm_sound_loop.start()
+						lifeboat.playing_launch_announcement_alarm = TRUE
 						return
+
 					if ("Emergency Launch")
 						launch_initiated = TRUE
 						to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
@@ -340,14 +343,23 @@
 		if(lifeboat.status == LIFEBOAT_LOCKED)
 			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
 			return XENO_NO_DELAY_ACTION
+		if(lifeboat.mode == SHUTTLE_CALL)
+			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+			return XENO_NO_DELAY_ACTION
 
 		xeno_attack_delay(xeno)
 		if(do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(lifeboat.status != LIFEBOAT_LOCKED)
-				lifeboat.status = LIFEBOAT_LOCKED
-				lifeboat.available = FALSE
-				lifeboat.set_mode(SHUTTLE_IDLE)
-				xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
+			if(lifeboat.status == LIFEBOAT_LOCKED)
+				return XENO_NO_DELAY_ACTION
+			if(lifeboat.mode == SHUTTLE_CALL)
+				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+				return XENO_NO_DELAY_ACTION
+			lifeboat.status = LIFEBOAT_LOCKED
+			lifeboat.available = FALSE
+			lifeboat.set_mode(SHUTTLE_IDLE)
+			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+			lifeboat_dock.open_dock()
+			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()

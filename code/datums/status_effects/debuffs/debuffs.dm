@@ -98,10 +98,6 @@
 	REMOVE_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
 	return ..()
 
-// /datum/status_effect/incapacitating/unconscious/tick(seconds_between_ticks)
-//	if(owner.getStaminaLoss())
-//		owner.adjustStaminaLoss(-0.3) //reduce stamina loss by 0.3 per tick, 6 per 2 seconds
-
 /atom/movable/screen/alert/status_effect/unconscious
 	name = "Unconscious"
 	desc = "You've been knocked out."

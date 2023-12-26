@@ -234,3 +234,31 @@
 
 	desiredstate = !desiredstate
 
+/obj/structure/machinery/door_control/cl
+	req_access_txt = "200"
+// seperating quarter and office because we might want to allow more access to the office than quarter in the future.
+/obj/structure/machinery/door_control/cl/office
+/obj/structure/machinery/door_control/cl/office/door
+	name = "Office Door Shutter"
+	id = "cl_office_door"
+/obj/structure/machinery/door_control/cl/office/window
+	name = "Office Windows Shutters"
+	id = "cl_office_windows"
+/obj/structure/machinery/door_control/cl/office/divider
+	name = "Room Divider"
+	id = "RoomDivider"
+//special button that unlock the cl lock on is evac pod door bypassing general lockdown.
+/obj/structure/machinery/door_control/cl/office/evac
+	name = "Evac Pod Door Control"
+	id = "cl_evac"
+	normaldoorcontrol = 1
+/obj/structure/machinery/door_control/cl/quarter
+/obj/structure/machinery/door_control/cl/quarter/officedoor
+	name = "Quarter Door Shutter"
+	id = "cl_quarter_door"
+/obj/structure/machinery/door_control/cl/quarter/backdoor
+	name = "Maintenance Door Shutter"
+	id = "cl_quarter_maintenance"
+/obj/structure/machinery/door_control/cl/quarter/windows
+	name = "Quarter Windows Shutters"
+	id = "cl_quarter_windows"

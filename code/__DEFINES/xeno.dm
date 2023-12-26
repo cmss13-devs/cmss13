@@ -250,11 +250,6 @@
 #define XENO_PLASMA_TIER_8 800 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_TIER_10 1000 * XENO_UNIVERSAL_PLASMAMULT
 
-// Resource stockpile bands
-#define XENO_CRYSTAL_LOW 50
-#define XENO_CRYSTAL_MEDIUM 100
-#define XENO_CRYSTAL_HIGH 150
-
 // Plasma gain bands
 #define XENO_PLASMA_GAIN_TIER_1 1
 #define XENO_PLASMA_GAIN_TIER_2 1.5
@@ -580,9 +575,7 @@
 #define XENO_STRUCTURE_CORE  "hive core"
 #define XENO_STRUCTURE_CLUSTER   "hive cluster"
 #define XENO_STRUCTURE_PYLON "hive pylon"
-#define XENO_STRUCTURE_POOL  "spawn pool"
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
-#define XENO_STRUCTURE_EVOPOD    "evolution pod"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_NEST  "thick resin nest"
 

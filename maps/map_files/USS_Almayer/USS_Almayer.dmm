@@ -36945,6 +36945,11 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
+/obj/item/reagent_container/spray/cleaner{
+	layer = 3.04;
+	pixel_x = 5;
+	pixel_y = 22
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "hlw" = (
@@ -40942,12 +40947,13 @@
 	layer = 3.2;
 	pixel_y = 4
 	},
-/obj/structure/machinery/computer/secure_data{
-	dir = 4;
-	pixel_y = 23
-	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/computer/secure_data{
+	dir = 4;
+	pixel_y = 23;
+	layer = 2.99
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -41604,15 +41610,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/clothing/mask/cigarette/pipe{
-	layer = 2.8;
-	pixel_y = -7
-	},
-/obj/item/reagent_container/spray/cleaner{
-	layer = 3.04;
-	pixel_x = -4;
-	pixel_y = 7
-	},
 /obj/structure/machinery/door_control/brbutton{
 	id = "Brig Lockdown Shutters";
 	name = "Brig Lockdown";
@@ -41630,6 +41627,9 @@
 	name = "ARES Emergency Lockdown Override";
 	pixel_x = 8;
 	pixel_y = 26
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 4
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -52835,14 +52835,13 @@
 /area/almayer/hallways/upper/starboard)
 "nkX" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 4;
-	layer = 2.8;
-	pixel_y = 5
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 4;
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -53757,6 +53756,10 @@
 /obj/item/storage/box/drinkingglasses{
 	pixel_x = -1;
 	pixel_y = 2
+	},
+/obj/item/clothing/mask/cigarette/pipe{
+	layer = 2.8;
+	pixel_x = 14
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -63389,9 +63392,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
-"rna" = (
-/turf/closed/wall/almayer/white,
-/area/almayer/command/airoom)
 "rnF" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;

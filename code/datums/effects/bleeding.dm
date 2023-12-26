@@ -22,6 +22,8 @@
 /datum/effects/bleeding/Destroy()
 	if(limb)
 		SEND_SIGNAL(limb, COMSIG_LIMB_STOP_BLEEDING, TRUE, FALSE)
+		limb.bleeding_effects_list -= src
+		limb = null
 	return ..()
 
 /datum/effects/bleeding/validate_atom(atom/A)
@@ -52,13 +54,6 @@
 	if(damage)
 		duration += damage * (blood_duration_multiplier / BLOOD_ADD_PENALTY)
 		blood_loss += damage / (blood_loss_divider * BLOOD_ADD_PENALTY) //Make the first hit count, adding on bleeding has a penalty
-
-/datum/effects/bleeding/Destroy()
-	if(limb)
-		limb.bleeding_effects_list -= src
-		limb = null
-	return ..()
-
 
 /datum/effects/bleeding/external
 	var/buffer_blood_loss = 0

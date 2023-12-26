@@ -29,15 +29,13 @@
 		to_chat(self, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
 		return FALSE
 
-	human.frozen = 1
-	human.update_canmove()
+	ADD_TRAIT(human, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("weave_blessing"))
 	human.update_xeno_hostile_hud()
 
 	apply_cooldown()
 
-	self.frozen = 1
+	ADD_TRAIT(self, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("weave_blessing"))
 	self.anchored = TRUE
-	self.update_canmove()
 
 	if (do_after(self, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		if(nexus.use_energy(plasma_cost))
@@ -49,11 +47,10 @@
 		else
 			to_chat(self, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
 
-	self.frozen = 0
+	REMOVE_TRAIT(self, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("weave_blessing"))
 	self.anchored = FALSE
-	self.update_canmove()
 
-	unroot_human(human)
+	unroot_human(human, TRAIT_SOURCE_ABILITY("weave_blessing"))
 
 	. = ..()
 	return TRUE

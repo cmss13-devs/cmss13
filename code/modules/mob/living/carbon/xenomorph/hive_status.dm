@@ -1082,6 +1082,31 @@
 	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 	latejoin_burrowed = FALSE
 
+/datum/hive_status/mutated/weave
+	name = "The Weave Nexus"
+	hivenumber = XENO_HIVE_WEAVE
+	prefix = "Weave "
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	ignore_slots = TRUE
+	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR, TRAIT_NO_PREFIX, TRAIT_WEAVE_SENSITIVE)
+
+	var/bioscan_time = 0
+	var/weave_energy = 1000
+
+/datum/hive_status/mutated/weave/proc/can_use_energy(cost)
+	if((weave_energy - cost) < 0)
+		return FALSE
+	else
+		return TRUE
+
+/datum/hive_status/mutated/weave/proc/use_energy(cost)
+	if((weave_energy - cost) < 0)
+		return FALSE
+
+	weave_energy -= cost
+	return TRUE
+
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"
 	reporting_id = "tamed"

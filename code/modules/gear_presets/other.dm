@@ -969,7 +969,7 @@
 
 /datum/equipment_preset/other/weave_cultist/New()
 	. = ..()
-	access = get_all_civilian_accesses()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/other/weave_cultist/load_race(mob/living/carbon/human/H, hivenumber = XENO_HIVE_WEAVE)
 	. = ..()
@@ -1010,7 +1010,7 @@
 	var/list/huds_to_add = list(MOB_HUD_XENO_INFECTION, MOB_HUD_XENO_STATUS)
 
 	for(var/hud_to_add in huds_to_add)
-		var/datum/mob_hud/hud = huds[hud_to_add]
+		var/datum/mob_hud/hud = GLOB.huds[hud_to_add]
 		hud.add_hud_to(H)
 
 	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult/weave)

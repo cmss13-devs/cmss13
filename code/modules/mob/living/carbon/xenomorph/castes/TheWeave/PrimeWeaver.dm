@@ -88,22 +88,15 @@
 	sight |= SEE_THRU//Changes what counts as Line-of-Sight, allowing Psychic speech through walls, but not hearing replies.
 	resin_build_order = GLOB.resin_build_order_hivelord
 
-/mob/living/carbon/xenomorph/prime_weaver/update_canmove()
-	. = ..()
-	if(burrow)
-		density = FALSE
-		canmove = FALSE
-		return canmove
-
 /mob/living/carbon/xenomorph/prime_weaver/update_icons()
 	if (stat == DEAD)
 		icon_state = "Prime Weaver Dead"
-	else if (lying)
-		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(body_position == LYING_DOWN)
+		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 			icon_state = "Prime Weaver Sleeping"
 		else
 			icon_state = "Prime Weaver Knocked Down"
-	else if (burrow)
+	else if (HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		icon_state = "Prime Weaver Burrowed"
 	else
 		icon_state = "Prime Weaver Running"

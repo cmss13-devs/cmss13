@@ -857,8 +857,6 @@
 
 /mob/living/carbon/xenomorph/get_projectile_hit_chance(obj/projectile/P)
 	. = ..()
-	if(burrow)
-		return 0
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\

@@ -181,6 +181,7 @@
 #define TRAIT_NO_HIVE_DELAY "t_no_hive_delay"
 /// If the Hive uses it's colors on the mobs. Does not occur naturally, excepting the Mutated hive.
 #define TRAIT_NO_COLOR "t_no_color"
+/// If the Hive uses a hive prefix (Emulates the default hive).
 #define TRAIT_NO_PREFIX "t_no_prefix"
 
 // MISC MOB TRAITS

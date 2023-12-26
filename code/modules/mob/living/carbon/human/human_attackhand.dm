@@ -161,7 +161,9 @@
 			disarm_chance += 5 * defender_skill_level
 
 			if(disarm_chance <= 25)
-				apply_effect(2 + max((attacker_skill_level - defender_skill_level), 0), WEAKEN)
+				var/strength = 2 + max((attacker_skill_level - defender_skill_level), 0)
+				KnockDown(strength)
+				Stun(strength)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				var/shove_text = attacker_skill_level > 1 ? "tackled" : pick("pushed", "shoved")
 				visible_message(SPAN_DANGER("<B>[attacking_mob] has [shove_text] [src]!</B>"), null, null, 5)
@@ -205,15 +207,14 @@
 	if (w_uniform)
 		w_uniform.add_fingerprint(M)
 
-
-	if(body_position == LYING_DOWN || sleeping)
+	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)
 		if(client)
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
 			set_resting(FALSE)
 		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
 			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
-	else if(stunned)
+	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
 		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"), \
 			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)
 	else

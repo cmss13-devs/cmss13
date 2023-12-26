@@ -23,7 +23,7 @@ interface TacMapProps {
   mapRef: string;
   currentMenu: string;
   lastUpdateTime: any;
-  nextCanvasTime: any;
+  canvasCooldownDuration: any;
   canvasCooldown: any;
   exportedTacMapImage: any;
   tacmapReady: number;
@@ -31,7 +31,7 @@ interface TacMapProps {
 
 const PAGES = [
   {
-    title: 'tacmap',
+    title: 'Live Tacmap',
     canOpen: (data) => {
       return 1;
     },
@@ -42,7 +42,7 @@ const PAGES = [
     },
   },
   {
-    title: 'old canvas',
+    title: 'Map View',
     canOpen: (data) => {
       return 1;
     },
@@ -53,7 +53,7 @@ const PAGES = [
     },
   },
   {
-    title: 'new canvas',
+    title: 'Canvas',
     canOpen: (data) => {
       return data.tacmapReady;
     },
@@ -192,7 +192,7 @@ const OldMapPanel = (props, context) => {
 const DrawMapPanel = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
 
-  const timeLeftPct = data.canvasCooldown / data.nextCanvasTime;
+  const timeLeftPct = data.canvasCooldown / data.canvasCooldownDuration;
   const canUpdate = data.canvasCooldown <= 0 && !data.updatedCanvas;
 
   const handleTacMapExport = (image: any) => {

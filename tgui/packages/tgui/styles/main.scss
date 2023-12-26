@@ -47,10 +47,13 @@
 // Interfaces
 @include meta.load-css('./interfaces/Changelog.scss');
 @include meta.load-css('./interfaces/ListInput.scss');
+@include meta.load-css('./interfaces/CasSim.scss');
 @include meta.load-css('./interfaces/AlertModal.scss');
 @include meta.load-css('./interfaces/VoteMenu.scss');
+@include meta.load-css('./interfaces/CrtPanel.scss');
 @include meta.load-css('./interfaces/ChooseResin.scss');
 @include meta.load-css('./interfaces/CameraConsole.scss');
+@include meta.load-css('./interfaces/DropshipWeapons.scss');
 @include meta.load-css('./interfaces/ElevatorControl.scss');
 @include meta.load-css('./interfaces/ExperimentConfigure.scss');
 @include meta.load-css('./interfaces/MarkMenu.scss');
@@ -64,6 +67,7 @@
 @include meta.load-css('./interfaces/Roulette.scss');
 @include meta.load-css('./interfaces/Safe.scss');
 @include meta.load-css('./interfaces/SentryUi.scss');
+@include meta.load-css('./interfaces/SidePanel.scss');
 @include meta.load-css('./interfaces/SmartFridge.scss');
 @include meta.load-css('./interfaces/SquadInfo.scss');
 @include meta.load-css('./interfaces/TachyonArray.scss');
@@ -71,6 +75,7 @@
 @include meta.load-css('./interfaces/TechNode.scss');
 @include meta.load-css('./interfaces/Vending.scss');
 @include meta.load-css('./interfaces/VendingSorted.scss');
+@include meta.load-css('./interfaces/common/Dpad.scss');
 @include meta.load-css('./interfaces/common/ElectricalPanel.scss');
 @include meta.load-css('./interfaces/TacticalMap.scss');
 
@@ -78,6 +83,7 @@
 @include meta.load-css('./layouts/Layout.scss');
 @include meta.load-css('./layouts/NtosHeader.scss');
 @include meta.load-css('./layouts/NtosWindow.scss');
+@include meta.load-css('./layouts/SplitWindow.scss');
 @include meta.load-css('./layouts/TitleBar.scss');
 @include meta.load-css('./layouts/Window.scss');
 

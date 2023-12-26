@@ -115,7 +115,7 @@
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [target_xeno]."), \
-	SPAN_XENODANGER("[user_xeno] makes you regress into your previous form."))
+	SPAN_XENODANGER("[user_xeno] makes us regress into your previous form."))
 
 	if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
 		user_xeno.hive.living_xeno_queen.overwatch(new_xeno)

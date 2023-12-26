@@ -25,7 +25,8 @@
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.apply_effect(0.5, WEAKEN)
+		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
+		target.Stun(0.5)
 		target.apply_effect(1, SUPERSLOW)
 		target.apply_effect(3, SLOW)
 	else
@@ -249,7 +250,8 @@
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.apply_effect(0.5, WEAKEN)
+		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
+		target.Stun(0.5)
 		target.apply_effect(2, SUPERSLOW)
 		target.apply_effect(5, SLOW)
 	else
@@ -338,7 +340,8 @@
 		return
 
 	shake_camera(M, 3, 4)
-	M.apply_effect(2, WEAKEN)
+	M.KnockDown(2) // If you ask me the KD should be left out, but players like their visual cues
+	M.Stun(2)
 	M.apply_effect(4, SLOW)
 	if(iscarbonsizexeno(M))
 		to_chat(M, SPAN_XENODANGER("The impact knocks you off your feet!"))
@@ -351,7 +354,8 @@
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.apply_effect(0.5, WEAKEN)
+		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
+		target.Stun(0.5)
 		target.apply_effect(2, SUPERSLOW)
 		target.apply_effect(5, SLOW)
 	else

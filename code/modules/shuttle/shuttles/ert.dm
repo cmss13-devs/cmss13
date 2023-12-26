@@ -61,14 +61,13 @@
 				INVOKE_ASYNC(src, PROC_REF(lockdown_door_launch), door)
 
 /obj/docking_port/mobile/emergency_response/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
-	for(var/mob/blocking_mob in air.loc) // Bump all mobs outta the way for outside airlocks of shuttles
-		if(isliving(blocking_mob))
-			to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
-			blocking_mob.apply_effect(4, WEAKEN)
-			for(var/turf/target_turf in orange(1, air)) // Forcemove to a non shuttle turf
-				if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
-					blocking_mob.forceMove(target_turf)
-					break
+	for(var/mob/living/blocking_mob in air.loc) // Bump all mobs outta the way for outside airlocks of shuttles
+		to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
+		blocking_mob.KnockDown(4)
+		for(var/turf/target_turf in orange(1, air)) // Forcemove to a non shuttle turf
+			if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
+				blocking_mob.forceMove(target_turf)
+				break
 	lockdown_door(air)
 
 /obj/docking_port/mobile/emergency_response/proc/lockdown_door(obj/structure/machinery/door/airlock/air)

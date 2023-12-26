@@ -23,6 +23,10 @@
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 		return FALSE
 
+	if(HAS_TRAIT(M, TRAIT_CANNOT_EAT))
+		to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to drink!"))
+		return FALSE
+
 	if(M == user)
 		to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))
 		if(reagents.total_volume)

@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Added a new span class that combines bold and big."
+  - code_imp: "Tweaked the way prayer sends notifications to be more efficient."
+  - admin: "Moved the prayer notification sound to a toggle preference, combined with ARES Interface notifications."

@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - bugfix: "Fixed the Queen Eye still showing as \"Immature\" after the Queen ages."

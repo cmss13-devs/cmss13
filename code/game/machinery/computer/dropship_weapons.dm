@@ -396,13 +396,8 @@
 			var/x_offset_value = params["x_offset_value"]
 			var/y_offset_value = params["y_offset_value"]
 
-			var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
-			var/datum/cas_signal/cas_sig
-			for(var/X in cas_group.cas_signals)
-				var/datum/cas_signal/LT = X
-				if(LT.target_id == target_id  && LT.valid_signal())
-					cas_sig = LT
-					break
+			camera_target_id = target_id
+			var/datum/cas_signal/cas_sig = get_cas_signal(camera_target_id, valid_only = TRUE)
 			// we don't want rapid offset changes to trigger admin warnings
 			// and block the user from accessing TGUI
 			// we change the minute_count
@@ -461,22 +456,22 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
-		if(istype(equipment, /obj/structure/dropship_equipment/weapon))
-			//is weapon
-			if(selected_equipment == equipment)
-				return equipment
+	var/obj/structure/dropship_equipment/equipment = dropship.equipments[eqp_tag]
+	if(istype(equipment, /obj/structure/dropship_equipment/weapon))
+		//is weapon
+		return equipment
 	return
 
-/obj/structure/machinery/computer/dropship_weapons/proc/get_cas_signal(target_ref)
+/obj/structure/machinery/computer/dropship_weapons/proc/get_cas_signal(target_ref, valid_only = FALSE)
 	if(!target_ref)
 		return
 
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	for(var/datum/cas_signal/sig in cas_group.cas_signals)
 		if(sig.target_id == target_ref)
+			if(valid_only && !sig.valid_signal())
+				continue
 			return sig
-
 
 /obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(target_ref)
 	camera_area_equipment = null

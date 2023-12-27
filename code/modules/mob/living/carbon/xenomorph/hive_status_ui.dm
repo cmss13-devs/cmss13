@@ -120,6 +120,10 @@
 
 /datum/hive_status_ui/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
+	// If the Queen died is otherwise missing.
+	if(!assoc_hive.living_xeno_queen)
+		return UI_CLOSE
+
 	if(isobserver(user))
 		return UI_INTERACTIVE
 

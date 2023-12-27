@@ -527,20 +527,18 @@
 /proc/hasHUD(mob/passed_mob, hudtype)
 	if(istype(passed_mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/passed_human = passed_mob
-		if(iszombie(passed_mob))
-			return FALSE
 		if (issynth(passed_human))
 			return TRUE
 		switch(hudtype)
 			if("security")
 				if(skillcheck(passed_human, SKILL_POLICE, SKILL_POLICE_SKILLED))
 					var/datum/mob_hud/sec_hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-					if(locate(passed_mob) in sec_hud.hudusers)
+					if(sec_hud.hudusers[passed_human])
 						return TRUE
 			if("medical")
 				if(skillcheck(passed_human, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 					var/datum/mob_hud/med_hud = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
-					if(locate(passed_mob) in med_hud.hudusers)
+					if(med_hud.hudusers[passed_human])
 						return TRUE
 			if("squadleader")
 				var/datum/mob_hud/faction_hud = GLOB.huds[MOB_HUD_FACTION_USCM]

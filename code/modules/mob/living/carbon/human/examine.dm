@@ -527,8 +527,10 @@
 /proc/hasHUD(mob/passed_mob, hudtype)
 	if(istype(passed_mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/passed_human = passed_mob
+		if(iszombie(passed_mob))
+			return FALSE
 		if (issynth(passed_human))
-			return 1
+			return TRUE
 		switch(hudtype)
 			if("security")
 				if(skillcheck(passed_human, SKILL_POLICE, SKILL_POLICE_SKILLED))
@@ -545,7 +547,7 @@
 				if(passed_human.mind && passed_human.assigned_squad && passed_human.assigned_squad.squad_leader == passed_human && locate(passed_mob) in faction_hud.hudusers)
 					return TRUE
 			else
-				return 0
+				return FALSE
 	else if(isrobot(passed_mob))
 		var/mob/living/silicon/robot/R = passed_mob
 		switch(hudtype)
@@ -554,6 +556,6 @@
 			if("medical")
 				return istype(R.module_state_1, /obj/item/robot/sight/hud/med) || istype(R.module_state_2, /obj/item/robot/sight/hud/med) || istype(R.module_state_3, /obj/item/robot/sight/hud/med)
 			else
-				return 0
+				return FALSE
 	else
-		return 0
+		return FALSE

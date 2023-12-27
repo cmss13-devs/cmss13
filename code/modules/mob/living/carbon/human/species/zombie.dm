@@ -59,10 +59,10 @@
 	zombie.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws(zombie), WEAR_L_HAND, TRUE)
 	zombie.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes(zombie), WEAR_EYES, TRUE)
 
-	var/datum/disease/black_goo/D = locate() in zombie.viruses
-	if(!D)
-		D = zombie.AddDisease(new /datum/disease/black_goo())
-	D.stage = 5
+	var/datum/disease/black_goo/zombie_infection = locate() in zombie.viruses
+	if(!zombie_infection)
+		zombie_infection = zombie.AddDisease(new /datum/disease/black_goo())
+	zombie_infection.stage = 5 // shouldn't this be 3?
 
 	var/datum/mob_hud/Hu = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 	Hu.add_hud_to(zombie, zombie)

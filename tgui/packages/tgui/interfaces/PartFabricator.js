@@ -37,8 +37,6 @@ const GeneralPanel = (props, context) => {
                       tooltipPosition="left"
                       onClick={() =>
                         act('produce', {
-                          path: Equipment.path,
-                          cost: Equipment.cost,
                           index: Equipment.index,
                           is_ammo: Equipment.is_ammo,
                         })
@@ -59,18 +57,15 @@ const GeneralPanel = (props, context) => {
                   label={Ammo.name}
                   className="underline"
                   buttons={
-                    Ammo.path === '/obj/structure/ship_ammo/sentry' ? (
+                    Ammo.name === 'A/C-49-P Air Deployable Sentry' ? (
                       <Button
                         content={'Fabricate  (' + omnisentrygun_price + ')'}
                         icon="wrench"
                         tooltip={Ammo.desc}
                         tooltipPosition="left"
-                        path={Ammo.path}
                         cost={omnisentrygun_price}
                         onClick={() =>
                           act('produce', {
-                            path: Ammo.path,
-                            cost: omnisentrygun_price,
                             index: Ammo.index,
                             is_ammo: Ammo.is_ammo,
                           })
@@ -84,8 +79,6 @@ const GeneralPanel = (props, context) => {
                         tooltipPosition="left"
                         onClick={() =>
                           act('produce', {
-                            path: Ammo.path,
-                            cost: Ammo.cost,
                             index: Ammo.index,
                             is_ammo: Ammo.is_ammo,
                           })

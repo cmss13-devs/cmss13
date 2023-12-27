@@ -107,4 +107,3 @@
 	addtimer(CALLBACK(src, PROC_REF(sim_turf_garbage_collection)), 30 SECONDS, TIMER_STOPPABLE)
 
 #undef GRID_CLEARING_SIZE
-#undef DETONATION_COOLDOWN_TIME

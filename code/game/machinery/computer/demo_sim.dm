@@ -59,7 +59,7 @@
 
 	data["worldtime"] = world.time
 	data["nextdetonationtime"] = simulation.detonation_cooldown
-	data["detonation_cooldown"] = simulation.detonation_cooldown_time
+	data["detonation_cooldown"] = DETONATION_COOLDOWN_TIME
 
 	return data
 

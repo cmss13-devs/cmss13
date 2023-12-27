@@ -241,7 +241,7 @@
 	.["dummy_mode"] = simulation.dummy_mode
 	.["worldtime"] = world.time
 	.["nextdetonationtime"] = simulation.detonation_cooldown
-	.["detonation_cooldown"] = simulation.detonation_cooldown_time
+	.["detonation_cooldown"] = DETONATION_COOLDOWN_TIME
 
 /obj/structure/machinery/computer/dropship_weapons/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

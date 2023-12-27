@@ -152,8 +152,7 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
-	if(simulation.looking_at_simulation)
-		simulation.stop_watching(user)
+	simulation.stop_watching(user)
 
 /obj/structure/machinery/computer/dropship_weapons/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -239,7 +238,6 @@
 		.["firemission_selected_laser"] = firemission_envelope.recorded_loc ? firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
 
 	.["configuration"] = configuration
-	.["looking"] = simulation.looking_at_simulation
 	.["dummy_mode"] = simulation.dummy_mode
 	.["worldtime"] = world.time
 	.["nextdetonationtime"] = simulation.detonation_cooldown

@@ -1197,11 +1197,11 @@
 
 /obj/item/storage/belt/gun/xm51
 	name = "\improper M276 pattern XM51 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, along with four pouches for spare magazines or shells."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
 	icon_state = "xm51_holster"
 	has_gamemode_skin = TRUE
 	gun_has_gamemode_skin = TRUE
-	storage_slots = 5
+	storage_slots = 8
 	max_w_class = 5
 	can_hold = list(
 		/obj/item/weapon/gun/rifle/xm51,
@@ -1210,12 +1210,38 @@
 	)
 	holster_slots = list(
 		"1" = list(
-			"icon_x" = 9,
-			"icon_y" = -2))
+			"icon_x" = 10,
+			"icon_y" = -1))
 	item_state_slots = list(
 		WEAR_J_STORE = "m4a3_holster",
 		WEAR_WAIST = "xm51_holster"
 		)
+
+	var/magazines = 0 //Count how many magazines are inside the belt so we can only fit a max of 2.
+
+/obj/item/storage/belt/gun/xm51/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/ammo_magazine/shotgun/light/breaching))
+		var/obj/item/ammo_magazine/shotgun/light/breaching/ammo_box = item
+		dump_ammo_to(ammo_box, user, ammo_box.transfer_handful_amount)
+	else
+		return ..()
+
+/obj/item/storage/belt/gun/xm51/can_be_inserted(obj/item/item, mob/user, stop_messages = FALSE)
+	. = ..()
+	if(magazines == 2 && istype(item, /obj/item/ammo_magazine/rifle/xm51))
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
+		return FALSE
+
+/obj/item/storage/belt/gun/xm51/_item_insertion(obj/item/item, prevent_warning = 0, mob/user)
+	. = ..()
+	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
+		magazines++
+
+/obj/item/storage/belt/gun/xm51/_item_removal(obj/item/item, prevent_warning = 0, mob/user)
+	. = ..()
+	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
+		magazines--
 
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"

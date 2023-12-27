@@ -280,6 +280,7 @@
 
 	// mobs that get knocked down should not be able to buckle themselves.
 	if(M == user && HAS_TRAIT(user, TRAIT_IMMOBILIZED))
+		to_chat(user, SPAN_WARNING("You are unable to do this in your current state."))
 		return
 
 	if(density)

@@ -84,7 +84,6 @@
 
 	if(action == "produce")
 		var/cost = 0
-		var/exploiting = TRUE
 		var/is_ammo = params["is_ammo"]
 		var/index = params["index"]
 		var/list/produce_list

@@ -62,7 +62,8 @@
 	visible_message(SPAN_NOTICE("[src] starts printing something."))
 	spend_point_store(cost)
 	if(ispath(part_type,/obj/structure/ship_ammo/sentry))
-		omnisentry_price +=omnisentry_price_scale
+		cost = omnisentry_price
+		omnisentry_price += omnisentry_price_scale
 	icon_state = "drone_fab_active"
 	busy = TRUE
 	addtimer(CALLBACK(src, PROC_REF(do_build_part), part_type), 10 SECONDS)
@@ -213,7 +214,7 @@
 		else
 			recycle_points = sold_eqipment.point_cost
 			if(sold_eqipment==/obj/structure/ship_ammo/sentry)
-				recycle_points -= omnisentry_price_scale
+				recycle_points = omnisentry_price - omnisentry_price_scale
 
 	if(!recycle_points)
 		to_chat(user, SPAN_WARNING("\The [powerloader_clamp_used.loaded] can't be recycled!"))
@@ -226,7 +227,7 @@
 		to_chat(user, SPAN_NOTICE("You stop recycling \the [thing_to_recycle]."))
 		return
 	if(istype(powerloader_clamp_used.loaded, /obj/structure/ship_ammo/sentry))
-		omnisentry_price -=omnisentry_price_scale
+		omnisentry_price -= omnisentry_price_scale
 	for(var/obj/thing as anything in powerloader_clamp_used.loaded)
 		thing.forceMove(loc) // no sentries popping out when we qdel please
 		qdel(thing)

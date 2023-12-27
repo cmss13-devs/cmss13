@@ -259,7 +259,7 @@
 	switch(action)
 		if("button_push")
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
-			return TRUE
+			return FALSE
 
 		if("select_equipment")
 			var/base_tag = params["equipment_id"]

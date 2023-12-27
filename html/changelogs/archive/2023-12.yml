@@ -496,3 +496,28 @@
   - refactor: CAS can offset in different direction to attack vector
   realforest2001:
   - bugfix: Yautja bracer lock can now properly unlock thrall bracers.
+2023-12-27:
+  Birdtalon:
+  - rscdel: Removed old crystal code from xenos
+  - code_imp: Renames still used vars from crystal to plasma
+  - code_imp: Removes crystal define in place of plasma string
+  Drathek:
+  - bugfix: Fix xeno wounds layering over weeds when merged with the weeds
+  InsaneRed:
+  - spellcheck: More WE/YOU fixes for xenomorph side.
+  - bugfix: Spitter's charge spit abiltiy now properly adds and removes the 5 armor
+      like its supposed to initially.
+  SabreML:
+  - bugfix: Fixed the Queen Eye still showing as "Immature" after the Queen ages.
+  - bugfix: Fixed carriers being unable to reduce their 'reserved facehuggers' number.
+  - bugfix: Fixed being able to vend infinite alcohol.
+  - bugfix: Fixed the death message from GAU-21 and Laser Cannon strikes saying that
+      the player was killed by the ammo crate.
+  cuberound:
+  - balance: launchbay price 400 -> 200
+  - balance: DS installed sentrygun price lowered to 200
+  realforest2001:
+  - code_imp: Added a new span class that combines bold and big.
+  - code_imp: Tweaked the way prayer sends notifications to be more efficient.
+  - admin: Moved the prayer notification sound to a toggle preference, combined with
+      ARES Interface notifications.

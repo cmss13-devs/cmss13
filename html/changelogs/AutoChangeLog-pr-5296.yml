@@ -1,4 +1,0 @@
-author: "InsaneRed"
-delete-after: True
-changes:
-  - bugfix: "Spitter's charge spit abiltiy now properly adds and removes the 5 armor like its supposed to initially."

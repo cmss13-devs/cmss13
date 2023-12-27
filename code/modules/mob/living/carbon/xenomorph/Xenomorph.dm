@@ -114,10 +114,6 @@
 	var/crit_grace_time = 1 SECONDS
 	var/next_grace_time = 0
 
-	//Amount of construction resources stored internally
-	var/crystal_stored = 0
-	var/crystal_max = 0
-
 	var/evasion = 0   // RNG "Armor"
 
 	// Armor
@@ -847,7 +843,6 @@
 /mob/living/carbon/xenomorph/proc/recalculate_stats()
 	recalculate_health()
 	recalculate_plasma()
-	recalculate_stockpile()
 	recalculate_speed()
 	recalculate_armor()
 	recalculate_damage()
@@ -886,11 +881,6 @@
 	plasma_stored = round(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
-
-/mob/living/carbon/xenomorph/proc/recalculate_stockpile()
-	crystal_max = caste.crystal_max
-	if(crystal_stored > crystal_max)
-		crystal_stored = crystal_max
 
 /mob/living/carbon/xenomorph/proc/recalculate_speed()
 	recalculate_move_delay = TRUE

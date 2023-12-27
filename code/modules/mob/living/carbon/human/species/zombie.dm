@@ -70,6 +70,7 @@
 	return ..()
 
 
+
 /datum/species/zombie/post_species_loss(mob/living/carbon/human/zombie)
 	..()
 	remove_from_revive(zombie)

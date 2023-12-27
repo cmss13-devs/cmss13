@@ -84,7 +84,7 @@
 		to_chat(user, SPAN_WARNING("GPU damaged! Unable to start simulation."))
 		return
 
-	COOLDOWN_START(src, detonation_cooldown, DETONATION_COOLDOWN_TIME)
+	COOLDOWN_START(src, detonation_cooldown, detonation_cooldown_time)
 
 	var/spawn_path = target_types[dummy_mode]
 	for(var/spawn_loc in GLOB.simulator_targets)

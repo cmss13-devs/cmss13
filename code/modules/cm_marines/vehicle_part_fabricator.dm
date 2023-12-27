@@ -148,6 +148,7 @@
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/dropship_equipment_data = build_type
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(dropship_equipment_data.combat_equipment))
+			index = index + 1
 			continue
 		var/build_name = initial(dropship_equipment_data.name)
 		var/build_description = initial(dropship_equipment_data.desc)
@@ -168,6 +169,7 @@
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/ship_ammo_data = build_type
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(ship_ammo_data.combat_equipment))
+			index = index + 1
 			continue
 		var/build_name = initial(ship_ammo_data.name)
 		var/build_description = initial(ship_ammo_data.desc)

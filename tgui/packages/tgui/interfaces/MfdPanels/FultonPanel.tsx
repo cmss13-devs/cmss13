@@ -70,6 +70,9 @@ export const FultonMfdPanel = (props: MfdProps, context) => {
           },
         },
       ]}
+      topButtons={[
+        { children: 'EQUIP', onClick: () => setPanelState('equipment') },
+      ]}
       bottomButtons={[
         {
           children: 'EXIT',

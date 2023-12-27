@@ -102,6 +102,7 @@
 		COMSIG_XENO_STOP_OVERWATCH,
 		COMSIG_XENO_STOP_OVERWATCH_XENO
 	), PROC_REF(stop_watching))
+	RegisterSignal(Q, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 	// Default color
@@ -156,6 +157,10 @@
 	is_watching = null
 	X.reset_view()
 	return
+
+/mob/hologram/queen/proc/on_name_changed(mob/parent, old_name, new_name)
+	SIGNAL_HANDLER
+	name = "[initial(src.name)] ([new_name])"
 
 /mob/hologram/queen/proc/turf_weed_only(mob/self, turf/crossing_turf)
 	SIGNAL_HANDLER

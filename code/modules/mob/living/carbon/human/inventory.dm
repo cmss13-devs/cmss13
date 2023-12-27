@@ -495,7 +495,8 @@
 	/// Multiplier for how quickly the user can strip things.
 	var/user_speed = user.get_skill_duration_multiplier(SKILL_CQC)
 	/// The total skill level of CQC & Police
-	var/target_skills = (target.skills.get_skill_level(SKILL_CQC) + target.skills.get_skill_level(SKILL_POLICE))
+	var/target_skills = 0
+	target_skills += (target.skills?.get_skill_level(SKILL_CQC) + target.skills?.get_skill_level(SKILL_POLICE))
 
 	/// Delay then gets + 0.5s per skill level, so long as not dead or cuffed.
 	if(!(target.stat || target.handcuffed))

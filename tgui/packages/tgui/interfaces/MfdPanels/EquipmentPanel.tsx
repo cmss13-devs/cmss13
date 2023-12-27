@@ -314,16 +314,6 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
-      topButtons={[
-        {},
-        {},
-        {
-          children: 'F-MISS',
-          onClick: () => setPanelState('firemission'),
-        },
-        {},
-        {},
-      ]}
       leftButtons={[
         weap2 ? generateButton(weap2) : {},
         weap1 ? generateButton(weap1) : {},

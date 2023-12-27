@@ -93,7 +93,6 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
       topButtons={[
         {},
         {},
-        {},
         fmName
           ? {
             children: 'SAVE',
@@ -106,6 +105,7 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
             },
           }
           : {},
+        {},
         {
           children: fmOffset > 0 ? <Icon name="arrow-up" /> : undefined,
           onClick: () => {

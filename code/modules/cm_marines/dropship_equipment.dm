@@ -891,7 +891,8 @@
 		if (evaccee_triagecard_color && evaccee_triagecard_color == "none")
 			evaccee_triagecard_color = null
 
-		.["[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])"] = MS
+		var/key_name = strip_improper("[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])")
+		.[key_name] = MS
 
 /obj/structure/dropship_equipment/medevac_system/proc/can_medevac(mob/user)
 	if(!linked_shuttle)
@@ -911,7 +912,7 @@
 
 	var/list/possible_stretchers = get_targets()
 
-	if(!possible_stretchers.len)
+	if(!length(possible_stretchers))
 		to_chat(user, SPAN_WARNING("No active medevac stretcher detected."))
 		return FALSE
 	return TRUE

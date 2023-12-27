@@ -278,6 +278,10 @@
 	if (iszombie(user))
 		return
 
+	// mobs that get knocked down should not be able to buckle themselves.
+	if(M == user && HAS_TRAIT(user, TRAIT_IMMOBILIZED))
+		return
+
 	if(density)
 		density = FALSE
 		if(!step(M, get_dir(M, src)) && loc != M.loc)

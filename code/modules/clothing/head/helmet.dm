@@ -764,8 +764,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Has red cross painted on its front."
 	icon_state = "med_helmet"
 	specialty = "M10 pattern medic"
-	built_in_visors = list(new /obj/item/device/helmet_visor)
-	inserted_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
 
 /obj/item/clothing/head/helmet/marine/covert
@@ -932,8 +931,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "helmet"
 	item_state = "helmet"
 	specialty = "M10 pattern officer"
-	built_in_visors = list(new /obj/item/device/helmet_visor)
-	inserted_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Cap"

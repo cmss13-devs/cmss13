@@ -34672,6 +34672,10 @@
 	phone_id = "Medical Lower";
 	pixel_x = 16
 	},
+/obj/item/device/helmet_visor/medical/advanced,
+/obj/item/device/helmet_visor/medical/advanced,
+/obj/item/device/helmet_visor/medical/advanced,
+/obj/item/device/helmet_visor/medical/advanced,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},

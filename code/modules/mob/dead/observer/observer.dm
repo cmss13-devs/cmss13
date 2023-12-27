@@ -1213,6 +1213,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	. += ""
 
+	if(timeofdeath)
+		. += "Time Since Death: [duration2text_sec(world.time - timeofdeath)]"
+
 	if(SSticker.mode?.force_end_at)
 		var/time_left = SSticker.mode.force_end_at - world.time
 		if(time_left >= 0)

@@ -1,10 +1,10 @@
 #define GRID_CLEARING_SIZE 16
-#define DETONATION_COOLDOWN_TIME 2 MINUTES
 
 /datum/simulator
 
 	// Necessary to prevent multiple users from simulating at the same time.
 	var/static/detonation_cooldown = 0
+	var/static/detonation_cooldown_time = 2 MINUTES
 	var/static/sim_reboot_state = TRUE
 
 	var/dummy_mode = CLF_MODE

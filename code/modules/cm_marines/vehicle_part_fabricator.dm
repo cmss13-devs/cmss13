@@ -89,18 +89,19 @@
 		var/is_ammo = params["is_ammo"]
 		var/index = params["index"]
 		var/list/produce_list
+		var/temp //I had some issues with the stuff from list not assigning properly, plant to remove and do it all in one line if possible
 
 		if(is_ammo == 0)
 			produce_list = typesof(/obj/structure/dropship_equipment)
-			index = produce_list[index]
-			var/obj/structure/dropship_equipment/produce = index
+			temp = produce_list[index]
+			var/obj/structure/dropship_equipment/produce = temp
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, usr)
 			return
 		else
 			produce_list = typesof(/obj/structure/ship_ammo)
-			index = produce_list[index]
-			var/obj/structure/ship_ammo/produce = index
+			temp = produce_list[index]
+			var/obj/structure/ship_ammo/produce = temp
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, usr)
 			return

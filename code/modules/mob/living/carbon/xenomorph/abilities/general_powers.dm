@@ -638,7 +638,7 @@
 		if(!choice)
 			return
 		if(choice == "help")
-			var/message = "Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
+			var/message = "Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of plasma to construct the following:<br>"
 			for(var/structure_name in X.hive.hive_structure_types)
 				var/datum/construction_template/xenomorph/structure_type = X.hive.hive_structure_types[structure_name]
 				message += "<b>[capitalize_first_letters(structure_name)]</b> - [initial(structure_type.description)]<br>"

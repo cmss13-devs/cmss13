@@ -77,6 +77,9 @@
 ///from base of /mob/Logout(): ()
 #define COMSIG_MOB_LOGOUT "mob_logout"
 
+/// From /mob/proc/change_real_name(): (old_name, new_name)
+#define COMSIG_MOB_REAL_NAME_CHANGED "mob_real_name_changed"
+
 //from /mob/proc/on_deafness_gain()
 #define COMSIG_MOB_DEAFENED "mob_deafened"
 //from /mob/proc/on_deafness_loss()

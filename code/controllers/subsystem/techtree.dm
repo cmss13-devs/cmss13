@@ -34,17 +34,6 @@ SUBSYSTEM_DEF(techtree)
 		var/datum/space_level/zpos = SSmapping.add_new_zlevel(tree.name, list(ZTRAIT_TECHTREE))
 		tree.zlevel = zpos
 
-		var/zlevel = zpos.z_value
-		var/turf/z_min = locate(1, 1, zlevel)
-		var/turf/z_max = locate(world.maxx, world.maxy, zlevel)
-
-
-
-		for(var/t in block(z_min, z_max))
-			var/turf/Tu = t
-			Tu.ChangeTurf(/turf/closed/void, list(/turf/closed/void))
-			new /area/techtree(Tu)
-
 		for(var/tier in tree.tree_tiers)
 			tree.unlocked_techs += tier
 			tree.all_techs += tier

@@ -56,13 +56,14 @@
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
 	set waitfor = 0
 	if(stat & NOPOWER) return
+	if(ispath(part_type,/obj/structure/ship_ammo/sentry))
+		cost = omnisentry_price
 	if(get_point_store() < cost)
 		to_chat(user, SPAN_WARNING("You don't have enough points to build that."))
 		return
 	visible_message(SPAN_NOTICE("[src] starts printing something."))
 	spend_point_store(cost)
 	if(ispath(part_type,/obj/structure/ship_ammo/sentry))
-		cost = omnisentry_price
 		omnisentry_price += omnisentry_price_scale
 	icon_state = "drone_fab_active"
 	busy = TRUE

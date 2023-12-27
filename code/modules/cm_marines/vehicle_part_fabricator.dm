@@ -83,24 +83,29 @@
 		return
 
 	if(action == "produce")
-		var/produce = text2path(params["path"])
-		var/cost = text2num(params["cost"])
+		var/cost = 0
 		var/exploiting = TRUE
+		var/is_ammo = params["is_ammo"]
+		var/index = params["index"]
+		var/list/produce_list
+		var/test
 
-		if (valid_parts && ispath(produce, valid_parts))
-			exploiting = FALSE
-		else if (valid_ammo && ispath(produce, valid_ammo))
-			exploiting = FALSE
-
-		if (cost < 0)
-			exploiting = TRUE
-
-		if (exploiting)
-			log_admin("Bad topic: [usr] may be trying to HREF exploit [src] with [produce], [cost]")
+		if(is_ammo == 0)
+			produce_list = typesof(/obj/structure/dropship_equipment)
+			test = produce_list[index]
+			var/obj/structure/dropship_equipment/produce = test
+			cost = initial(produce.point_cost)
+			build_part(produce, cost, usr)
+			return
+		else
+			produce_list = typesof(/obj/structure/ship_ammo)
+			test = produce_list[index]
+			var/obj/structure/ship_ammo/produce = test
+			cost = initial(produce.point_cost)
+			build_part(produce, cost, usr)
 			return
 
-		build_part(produce, cost, usr)
-		return
+
 	else
 		log_admin("Bad topic: [usr] may be trying to HREF exploit [src]")
 		return
@@ -140,6 +145,8 @@
 /obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
 	var/list/static_data = list()
 	static_data["Equipment"] = list()
+	var/is_ammo = 0
+	var/test = 1
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/dropship_equipment_data = build_type
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(dropship_equipment_data.combat_equipment))
@@ -152,10 +159,15 @@
 				"name" = capitalize_first_letters(build_name),
 				"desc" = build_description,
 				"path" = build_type,
-				"cost" = build_cost
+				"cost" = build_cost,
+				"index" = test,
+				"is_ammo" = is_ammo
 			))
+		test = test + 1
 
 	static_data["Ammo"] = list()
+	is_ammo = 1
+	test = 1
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/ship_ammo_data = build_type
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(ship_ammo_data.combat_equipment))
@@ -168,8 +180,11 @@
 				"name" = capitalize_first_letters(build_name),
 				"desc" = build_description,
 				"path" = build_type,
-				"cost" = build_cost
+				"cost" = build_cost,
+				"index" = test,
+				"is_ammo" = is_ammo
 			))
+		test = test + 1
 
 	return static_data
 

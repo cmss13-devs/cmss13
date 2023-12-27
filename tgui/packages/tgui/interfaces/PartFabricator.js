@@ -39,6 +39,8 @@ const GeneralPanel = (props, context) => {
                         act('produce', {
                           path: Equipment.path,
                           cost: Equipment.cost,
+                          index: Equipment.index,
+                          is_ammo: Equipment.is_ammo,
                         })
                       }
                     />
@@ -69,6 +71,8 @@ const GeneralPanel = (props, context) => {
                           act('produce', {
                             path: Ammo.path,
                             cost: omnisentrygun_price,
+                            index: Ammo.index,
+                            is_ammo: Ammo.is_ammo,
                           })
                         }
                       />
@@ -82,6 +86,8 @@ const GeneralPanel = (props, context) => {
                           act('produce', {
                             path: Ammo.path,
                             cost: Ammo.cost,
+                            index: Ammo.index,
+                            is_ammo: Ammo.is_ammo,
                           })
                         }
                       />

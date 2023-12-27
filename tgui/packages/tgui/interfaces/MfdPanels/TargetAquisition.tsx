@@ -197,7 +197,7 @@ const leftButtonGenerator = (context, panelId: string) => {
           return {
             children: x.shorthand,
             onClick: () => {
-              setWeaponSelected(x.mount_point);
+              setWeaponSelected(x.eqp_tag);
               setLeftButtonMode(undefined);
             },
           };
@@ -347,7 +347,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
 
   const strikeConfigLabel =
     strikeMode === 'weapon'
-      ? data.equipment_data.find((x) => x.mount_point === weaponSelected)?.name
+      ? data.equipment_data.find((x) => x.eqp_tag === weaponSelected)?.name
       : firemissionSelected !== undefined
         ? data.firemission_data.find(
           (x) => x.mission_tag === firemissionSelected.mission_tag
@@ -359,7 +359,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
     strikeDirection !== undefined &&
     ((strikeMode === 'weapon' &&
       weaponSelected !== undefined &&
-      data.equipment_data.find((x) => x.mount_point === weaponSelected)) ||
+      data.equipment_data.find((x) => x.eqp_tag === weaponSelected)) ||
       (strikeMode === 'firemission' && firemissionSelected !== undefined));
 
   const targets = range(targetOffset, targetOffset + 5).map((x) =>

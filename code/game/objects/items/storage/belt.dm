@@ -1233,12 +1233,12 @@
 			to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
 		return FALSE
 
-/obj/item/storage/belt/gun/xm51/_item_insertion(obj/item/item, prevent_warning = 0, mob/user)
+/obj/item/storage/belt/gun/xm51/handle_item_insertion(obj/item/item, prevent_warning = 0, mob/user)
 	. = ..()
 	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
 		magazines++
 
-/obj/item/storage/belt/gun/xm51/_item_removal(obj/item/item, prevent_warning = 0, mob/user)
+/obj/item/storage/belt/gun/xm51/remove_from_storage(obj/item/item, prevent_warning = 0, mob/user)
 	. = ..()
 	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
 		magazines--

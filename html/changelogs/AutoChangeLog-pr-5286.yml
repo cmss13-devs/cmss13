@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed carriers being unable to reduce their 'reserved facehuggers' number."

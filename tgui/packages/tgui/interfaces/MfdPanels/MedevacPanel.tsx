@@ -165,7 +165,7 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
               </Stack.Item>
               {all_targets.map((x) => (
                 <>
-                  <Stack.Item key={x.occupant} width="100%">
+                  <Stack.Item key={x.occupant} width="100%" minHeight="32px">
                     <MedevacOccupant data={x} />
                   </Stack.Item>
                   <Divider />

@@ -92,21 +92,26 @@
 		var/temp //I had some issues with the stuff from list not assigning properly, plant to remove and do it all in one line if possible
 
 		if(is_ammo == 0)
-			produce_list = typesof(/obj/structure/dropship_equipment)
-			temp = produce_list[index]
-			var/obj/structure/dropship_equipment/produce = temp
+			var/obj/structure/dropship_equipment/produce = (typesof(/obj/structure/dropship_equipment))[index]
+			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(produce.combat_equipment))
+				log_admin("Bad topic: [usr] may be trying to HREF exploit [src] to bypass no combat cas")
+				return
+			cost = initial(produce.point_cost)
+			build_part(produce, cost, usr)
+			return
 
 		else
 			produce_list = typesof(/obj/structure/ship_ammo)
 			temp = produce_list[index]
 			var/obj/structure/ship_ammo/produce = temp
-
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(produce.combat_equipment))
-			log_admin("Bad topic: [usr] may be trying to HREF exploit [src] to bypass no combat cas")
+			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(produce.combat_equipment))
+				log_admin("Bad topic: [usr] may be trying to HREF exploit [src] to bypass no combat cas")
+				return
+			cost = initial(produce.point_cost)
+			build_part(produce, cost, usr)
 			return
-		cost = initial(produce.point_cost)
-		build_part(produce, cost, usr)
-		return
+
+
 
 
 	else

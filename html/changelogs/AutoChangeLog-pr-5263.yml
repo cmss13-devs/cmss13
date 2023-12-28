@@ -1,5 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed inserting/removing an item from shoes sometimes acting weirdly."
-  - refactor: "Refactored shoe item storage."

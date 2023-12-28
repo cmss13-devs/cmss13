@@ -521,3 +521,13 @@
   - code_imp: Tweaked the way prayer sends notifications to be more efficient.
   - admin: Moved the prayer notification sound to a toggle preference, combined with
       ARES Interface notifications.
+2023-12-28:
+  InsaneRed:
+  - bugfix: Synths are no longer immune to lunges / dragging while in 'critical state'
+      since they dont go into crit.
+  SabreML:
+  - bugfix: Fixed inserting/removing an item from shoes sometimes acting weirdly.
+  - refactor: Refactored shoe item storage.
+  fira:
+  - bugfix: Fixed XRF Scanner bricking if people were adding and removing vials at
+      same time.

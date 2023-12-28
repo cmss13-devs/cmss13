@@ -496,6 +496,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "rto_backpack"
 	item_state = "rto_backpack"
 	has_gamemode_skin = FALSE
+	worn_accessible = FALSE
 	actions_types = list(/datum/action/item_action/rto_pack/use_phone)
 
 	flags_item = ITEM_OVERRIDE_NORTHFACE

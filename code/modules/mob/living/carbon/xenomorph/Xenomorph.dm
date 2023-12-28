@@ -432,6 +432,9 @@
 	if(mob_size < MOB_SIZE_BIG)
 		mob_flags |= SQUEEZE_UNDER_VEHICLES
 
+	GLOB.living_xeno_list += src
+	GLOB.xeno_mob_list += src
+
 	// More setup stuff for names, abilities etc
 	update_icon_source()
 	generate_name()
@@ -452,9 +455,6 @@
 
 	//Begin SStracking
 	SStracking.start_tracking("hive_[src.hivenumber]", src)
-
-	GLOB.living_xeno_list += src
-	GLOB.xeno_mob_list += src
 
 	//WO GAMEMODE
 	if(SSticker?.mode?.hardcore)

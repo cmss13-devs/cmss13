@@ -433,6 +433,10 @@
 				useless_slots++
 				continue
 
+		if(!(X in GLOB.living_xeno_list))
+			useless_slots++
+			continue
+
 		// Insert without doing list merging
 		xenos[index++] = list(
 			"nicknumber" = X.nicknumber,

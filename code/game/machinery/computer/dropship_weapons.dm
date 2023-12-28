@@ -64,17 +64,20 @@
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
 		return
-	if(!allowed(user))
 
+	if(!allowed(user))
+		// TODO: Restore cas simulator
+		to_chat(user, SPAN_WARNING("Weapons modification access denied."))
+		return TRUE
 		// everyone can access the simulator, requested feature.
-		to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
+		/*to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
 
 		if(!selected_firemission)
 			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation"))
-			return
+			return TRUE
 
 		tgui_interact(user)
-		return 1
+		return FALSE*/
 
 	user.set_interaction(src)
 	ui_interact(user)
@@ -102,7 +105,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	if (!istype(dropship))
+	if(!istype(dropship))
 		return
 
 	var/screen_mode = 0
@@ -131,11 +134,6 @@
 		if(screen_mode != 3 || !selected_firemission || dropship.mode != SHUTTLE_CALL)
 			update_location(user, null)
 
-	ui_data(user)
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
-	user.client.register_map_obj(tacmap.map_holder.map)
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/dropship_weapons/tgui_interact(mob/user, datum/tgui/ui)
@@ -143,10 +141,15 @@
 		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 		RegisterSignal(dropship, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(equipment_update))
 		RegisterSignal(dropship, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(equipment_update))
-		registered=TRUE
+		registered = TRUE
+
+	if(!tacmap.map_holder)
+		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
+		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
+		user.client.register_map_obj(tacmap.map_holder.map)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()

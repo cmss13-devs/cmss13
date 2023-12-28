@@ -408,3 +408,126 @@
   - bugfix: Lurker can tail jab over ledges and window frames.
   Drathek:
   - imageadd: Update weeded warrior sprites to be compatible with knight strain sprite
+2023-12-22:
+  Ben10083:
+  - rscdel: ' Working Joes can no longer drink'
+  Cthulhu80:
+  - ui: tacmap ui tweaks
+  Doubleumc:
+  - bugfix: Fixed security tuner not dispalying direction to room's APC
+  - refactor: Refactored code handling angles
+  InsaneRed:
+  - code_imp: Converts xenomorph cooldowns into SECONDS
+  SabreML:
+  - bugfix: Fixed being able to remove multiple stacks of fire by spamming resist.
+  Steelpoint:
+  - rscadd: Factions are now properly separated in the observe menu as a ghost.
+  cuberound:
+  - bugfix: bad DS doorgun placement
+  fira:
+  - bugfix: Fix Xmas helmets getting overriden by map camouflage.
+  realforest2001:
+  - bugfix: Hijack should no longer end the round immediately.
+  - rscadd: Ghosts can now toggle hearing listening devices or not. This is dependant
+      on hearing radios and will not function to allow hearing devices without also
+      hearing radios.
+2023-12-23:
+  BadAtThisGame302:
+  - balance: rebalanced goon skillset to include construction 1
+  - spellcheck: fixed Liason area typos to Liaison
+  - spellcheck: fixed the ICC Liason to ICC Liaison typo
+  fira:
+  - bugfix: Fixed X-mas barricade wiring not applying properly.
+  private-tristan:
+  - balance: xenos can now acid all window frames.
+2023-12-24:
+  BadAtThisGame302:
+  - rscadd: Added a windbreaker to the Flight Control Operator surv.
+  - rscadd: Added W-Y Flight Control access to the Flight Control Operator surv.
+  - bugfix: fixed the Flight Control Operator path.
+  Cthulhu80:
+  - rscadd: human mobs now scream whenever they get lunged at by a warrior.
+  - soundadd: added a new scream sound and put it into the existing scream list.
+  Drathek:
+  - bugfix: Fix crusher charge and tumble abilities going over unwired cades
+  Huffie56:
+  - bugfix: removed an extra light in bravo cryo room(to do just saw it)
+  - maptweak: added more areas (stern_point_defense, Lower Deck Stern Hull, Upper
+      Deck port Hallway Upper Deck starboard Hallway)
+  SabreML:
+  - rscdel: Removed the green overlay from camera consoles.
+  - rscadd: Allowed Xenomorphs to turn off the dropship's launch alarm by hitting
+      the nav computer.
+  - spellcheck: Made the `xenoboldnotice` span class bold rather than italic.
+  cuberound:
+  - bugfix: DS doorgun no longer drops the gun when destroyed
+  ihatethisengine:
+  - balance: "New healer drone ability \u2014 sacrifice. Healer drone can instantly\
+      \ transfer 75% of its current health, but for the great cost of the healer\u2019\
+      s own life."
+2023-12-25:
+  InsaneRed:
+  - balance: Tweaks down the buffed root of vanguard down to 1.8 from 2.5
+2023-12-26:
+  Ben10083:
+  - rscadd: If ARES is destroyed, systems such as bioscan also shut down, this will
+      be expanded in the future
+  - rscadd: ARES plays an announcement when destroyed
+  - code_imp: Procs to check for APOLLO processor and if ARES is alive added
+  - refactor: ARES subsystems modified to utilize new procs
+  - admin: Prompt to force a Marine Bioscan only shows when ARES is unable to perform
+      the bioscan.
+  Drathek:
+  - bugfix: Fix queen death not fully readmitting any banished xenos
+  - bugfix: Fixed resisting acid
+  SabreML:
+  - code_imp: Made the Tech Tree subsystem initialise faster.
+  Steelpoint:
+  - rscadd: The Executive Officer now has a personal weapons vendor. It includes the
+      ability to acquire a full suite of combat and support gear, giving the XO more
+      agency in customizing their loadout.
+  - rscadd: Adds a new set of belts to the Executive Officer's uniform vendor.
+  mullenpaul:
+  - ui: tgui dropship weapons console
+  - refactor: added MFD panel
+  - refactor: creates datum component to manage camera code
+  - qol: CAS weapons operator can see camera in UI
+  - rscadd: CAS can offset in X and Y coordinates
+  - refactor: CAS can offset in different direction to attack vector
+  realforest2001:
+  - bugfix: Yautja bracer lock can now properly unlock thrall bracers.
+2023-12-27:
+  Birdtalon:
+  - rscdel: Removed old crystal code from xenos
+  - code_imp: Renames still used vars from crystal to plasma
+  - code_imp: Removes crystal define in place of plasma string
+  Drathek:
+  - bugfix: Fix xeno wounds layering over weeds when merged with the weeds
+  InsaneRed:
+  - spellcheck: More WE/YOU fixes for xenomorph side.
+  - bugfix: Spitter's charge spit abiltiy now properly adds and removes the 5 armor
+      like its supposed to initially.
+  SabreML:
+  - bugfix: Fixed the Queen Eye still showing as "Immature" after the Queen ages.
+  - bugfix: Fixed carriers being unable to reduce their 'reserved facehuggers' number.
+  - bugfix: Fixed being able to vend infinite alcohol.
+  - bugfix: Fixed the death message from GAU-21 and Laser Cannon strikes saying that
+      the player was killed by the ammo crate.
+  cuberound:
+  - balance: launchbay price 400 -> 200
+  - balance: DS installed sentrygun price lowered to 200
+  realforest2001:
+  - code_imp: Added a new span class that combines bold and big.
+  - code_imp: Tweaked the way prayer sends notifications to be more efficient.
+  - admin: Moved the prayer notification sound to a toggle preference, combined with
+      ARES Interface notifications.
+2023-12-28:
+  InsaneRed:
+  - bugfix: Synths are no longer immune to lunges / dragging while in 'critical state'
+      since they dont go into crit.
+  SabreML:
+  - bugfix: Fixed inserting/removing an item from shoes sometimes acting weirdly.
+  - refactor: Refactored shoe item storage.
+  fira:
+  - bugfix: Fixed XRF Scanner bricking if people were adding and removing vials at
+      same time.

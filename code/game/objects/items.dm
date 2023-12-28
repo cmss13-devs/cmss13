@@ -708,7 +708,7 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_IN_SHOES)
 				if(human.shoes && istype(human.shoes, /obj/item/clothing/shoes))
 					var/obj/item/clothing/shoes/shoes = human.shoes
-					if(shoes.attempt_insert_item(human, src))
+					if(shoes.can_be_inserted(src))
 						return TRUE
 				return FALSE
 			if(WEAR_IN_SCABBARD)

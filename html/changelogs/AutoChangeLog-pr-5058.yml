@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "Factions are now properly separated in the observe menu as a ghost."

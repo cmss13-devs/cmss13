@@ -230,6 +230,7 @@
 ///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 #define LIGHTING_PLANE 100
 #define EXTERIOR_LIGHTING_PLANE 101
+#define NVG_PLANE 110
 
 ///Popup Chat Messages
 #define RUNECHAT_PLANE 501

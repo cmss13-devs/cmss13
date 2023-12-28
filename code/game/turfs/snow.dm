@@ -16,7 +16,7 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L]  at this position!")
+			to_chat(user, "There's already \a [L] at this position!")
 			return
 
 		to_chat(user, "Now planting \the [L].")
@@ -77,7 +77,7 @@
 	if(update_full)
 		var/turf/open/T
 		if(!skip_sides)
-			for(var/dirn in alldirs)
+			for(var/dirn in GLOB.alldirs)
 				var/turf/open/snow/D = get_step(src,dirn)
 				if(istype(D))
 					//Update turfs that are near us, but only once
@@ -85,7 +85,7 @@
 
 		overlays.Cut()
 
-		for(var/dirn in alldirs)
+		for(var/dirn in GLOB.alldirs)
 			T = get_step(src, dirn)
 			if(istype(T))
 				if(bleed_layer > T.bleed_layer && T.bleed_layer < 1)
@@ -148,6 +148,3 @@
 /turf/open/snow/layer3
 	icon_state = "snow_3"
 	bleed_layer = 3
-
-
-

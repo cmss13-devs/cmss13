@@ -1,12 +1,6 @@
 //////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.
 
-//Adds a coin for engi vendors
-/obj/item/coin/marine/engineer
-	name = "marine engineer support token"
-	desc = "Insert this into an engineer vendor in order to access a support weapon."
-	icon_state = "coin_platinum"
-
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
 	name = "M56D drum magazine (10x28mm Caseless)"
@@ -51,9 +45,8 @@
 	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
 	var/has_mount = FALSE // Indicates whether the M56D will come with its folding mount already attached
 
-/obj/item/device/m56d_gun/New()
-	..()
-
+/obj/item/device/m56d_gun/Initialize(mapload, ...)
+	. = ..()
 	update_icon()
 
 /obj/item/device/m56d_gun/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
@@ -475,8 +468,6 @@
 	var/autofire_slow_mult = 1
 	/// If the gun is currently burst firing
 	VAR_PROTECTED/burst_firing = FALSE
-	/// If the gun is currently auto firing
-	VAR_PROTECTED/auto_firing = FALSE
 	/// If the gun should display its ammo count
 	var/display_ammo = TRUE
 	/// How many degrees in each direction the gun should be able to fire
@@ -514,13 +505,15 @@
 	ammo = GLOB.ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	update_icon()
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing)))
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)), CALLBACK(src, PROC_REF(display_ammo)))
 
-/obj/structure/machinery/m56d_hmg/Destroy() //Make sure we pick up our trash.
-	if(operator)
-		operator.unset_interaction()
+/obj/structure/machinery/m56d_hmg/Destroy(force) //Make sure we pick up our trash.
+	operator?.unset_interaction()
+	operator = null
+	QDEL_NULL(in_chamber)
 	STOP_PROCESSING(SSobj, src)
-	. = ..()
+	ammo = null
+	return ..()
 
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
 	. = ..()
@@ -705,7 +698,7 @@
 	if(!istype(in_chamber, /obj/projectile))
 		return
 
-	var/angle = get_angle(T, U)
+	var/angle = Get_Angle(T, U)
 
 	if((dir == NORTH) && (angle > 180) && (abs(360 - angle) > shoot_degree)) // If north and shooting to the left, we do some extra math
 		return
@@ -751,6 +744,8 @@
 	update_icon() //final safeguard.
 
 /obj/structure/machinery/m56d_hmg/proc/try_fire()
+	if(!operator)
+		return
 	if(!rounds)
 		to_chat(operator, SPAN_WARNING("<b>*click*</b>"))
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
@@ -799,7 +794,7 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	if(!ishuman(usr))
+	if(!ishuman(usr) || usr.stat)
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
@@ -830,7 +825,7 @@
 						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 						return
 					else
-						user.freeze()
+						ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 						user.set_interaction(src)
 						give_action(user, /datum/action/human_action/mg_exit)
 
@@ -838,7 +833,7 @@
 			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
-	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_MOB_KNOCKED_DOWN), PROC_REF(exit_interaction))
+	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))
 	flags_atom |= RELAY_CLICK
 	user.status_flags |= IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))
@@ -853,11 +848,12 @@
 	update_pixels(user)
 	operator = user
 
-/obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
+/obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/living/user)
 	flags_atom &= ~RELAY_CLICK
+	SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
-	user.unfreeze()
+	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 	user.reset_view(null)
 	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal
@@ -873,7 +869,7 @@
 		COMSIG_MOB_MG_EXIT,
 		COMSIG_MOB_RESISTED,
 		COMSIG_MOB_DEATH,
-		COMSIG_MOB_KNOCKED_DOWN,
+		COMSIG_LIVING_SET_BODY_POSITION,
 	))
 
 
@@ -908,13 +904,13 @@
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
-			user.client.change_view(world_view_size)
+			user.client.change_view(GLOB.world_view_size)
 			user.client.pixel_x = 0
 			user.client.pixel_y = 0
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
 
-/obj/structure/machinery/m56d_hmg/check_eye(mob/user)
-	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
+/obj/structure/machinery/m56d_hmg/check_eye(mob/living/user)
+	if(user.body_position != STANDING_UP || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/clicked(mob/user, list/mods)
@@ -947,7 +943,6 @@
 /// Clean up the target, shots fired, and other things related to when you stop firing
 /obj/structure/machinery/m56d_hmg/proc/reset_fire()
 	set_target(null)
-	set_auto_firing(FALSE)
 	shots_fired = 0
 
 ///Set the target and take care of hard delete
@@ -959,10 +954,6 @@
 	target = object
 	if(target)
 		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
-
-/// Setter for auto_firing
-/obj/structure/machinery/m56d_hmg/proc/set_auto_firing(auto = FALSE)
-	auto_firing = auto
 
 /// Print how much ammo is left to chat
 /obj/structure/machinery/m56d_hmg/proc/display_ammo()
@@ -1089,6 +1080,19 @@
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	zoom = 1
+	ammo = /datum/ammo/bullet/machinegun/doorgun
+
+/obj/structure/machinery/m56d_hmg/mg_turret/update_health(amount) //Negative values restores health.
+	health -= amount
+	if(health <= 0)
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		qdel(src)
+		return
+
+	if(health > health_max)
+		health = health_max
+	update_damage_state()
+	update_icon()
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"

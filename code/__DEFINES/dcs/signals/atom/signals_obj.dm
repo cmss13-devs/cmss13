@@ -29,3 +29,7 @@
 
 /// from /obj/proc/afterbuckle()
 #define COSMIG_OBJ_AFTER_BUCKLE "signal_obj_after_buckle"
+
+#define COMSIG_DROPSHIP_ADD_EQUIPMENT "dropship_add_equipment"
+#define COMSIG_DROPSHIP_REMOVE_EQUIPMENT "dropship_remove_equipment"
+#define COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED "structure_crate_squad_launched"

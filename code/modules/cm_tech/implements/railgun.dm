@@ -88,13 +88,13 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	RegisterSignal(eye, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_and_set_zlevel))
 	RegisterSignal(eye, COMSIG_PARENT_QDELETING, PROC_REF(remove_current_operator))
 
-/obj/structure/machinery/computer/railgun/proc/check_and_set_zlevel(mob/hologram/railgun/H, turf/NewLoc, direction)
+/obj/structure/machinery/computer/railgun/proc/check_and_set_zlevel(mob/hologram/railgun/hologram, turf/NewLoc, direction)
 	SIGNAL_HANDLER
 	if(!start_location)
 		start_location = GLOB.railgun_eye_location.get_turf_from_coord()
 
-	if(!NewLoc || (NewLoc.z != target_z && H.z != target_z))
-		H.loc = start_location
+	if(!NewLoc || (NewLoc.z != target_z && hologram.z != target_z))
+		hologram.forceMove(start_location)
 		return COMPONENT_OVERRIDE_MOVE
 
 /obj/structure/machinery/computer/railgun/proc/can_fire(mob/living/carbon/human/H, turf/T)

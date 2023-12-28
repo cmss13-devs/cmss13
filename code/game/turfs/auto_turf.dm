@@ -53,7 +53,7 @@
 		return
 
 	bleed_layer = max(0, new_layer)
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		var/turf/open/T = get_step(src, direction)
 		if(istype(T))
 			T.update_icon()
@@ -169,7 +169,7 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L]  at this position!")
+			to_chat(user, "There's already \a [L] at this position!")
 			return
 
 		to_chat(user, "Now planting \the [L].")

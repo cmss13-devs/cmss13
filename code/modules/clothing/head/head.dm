@@ -114,6 +114,12 @@
 				if(SQUAD_MARINE_5)
 					icon_state = "beret_echo"
 					desc = "Tightly Woven, as it should be."
+				if(SQUAD_MARINE_CRYO)
+					icon_state = "beret_foxtrot"
+					desc = "Looks and feels starched, cold to the touch."
+				if(SQUAD_MARINE_INTEL)
+					icon_state = "beret_intel"
+					desc = "Looks more intellegent than the person wearing it."
 		else
 			icon_state = "beret"
 			desc = initial(desc)
@@ -308,8 +314,8 @@
 
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
 	var/image/return_image = ..()
-	if(!slot == WEAR_HEAD)
-		return
+	if(slot != WEAR_HEAD)
+		return return_image
 
 	if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
 		for(var/obj/garb_object in pockets.contents)

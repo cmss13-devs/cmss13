@@ -5,14 +5,14 @@
 		if(istype(O,/obj/item/explosive/plastic))
 			var/obj/item/explosive/plastic/E = O
 			if(E.plant_target && !E.plant_target.Adjacent(src))
-				to_chat(src, SPAN_WARNING("You can't reach [O]."))
+				to_chat(src, SPAN_WARNING("We can't reach [O]."))
 				return
 		else
 			to_chat(src, SPAN_WARNING("[O] is too far away."))
 			return
 
-	if(!isturf(loc) || burrow)
-		to_chat(src, SPAN_WARNING("You can't melt [O] from here!"))
+	if(!isturf(loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		to_chat(src, SPAN_WARNING("We can't melt [O] from here!"))
 		return
 
 	face_atom(O)
@@ -31,15 +31,10 @@
 	if(isobj(O))
 		I = O
 
-		if(istype(I, /obj/structure/window_frame))
-			var/obj/structure/window_frame/WF = I
-			if(WF.reinforced && acid_type != /obj/effect/xenomorph/acid/strong)
-				to_chat(src, SPAN_WARNING("This [O.name] is too tough to be melted by your weak acid."))
-				return
 
 		wait_time = I.get_applying_acid_time()
 		if(wait_time == -1)
-			to_chat(src, SPAN_WARNING("You cannot dissolve \the [I]."))
+			to_chat(src, SPAN_WARNING("We cannot dissolve \the [I]."))
 			return
 
 	//TURF CHECK
@@ -54,13 +49,13 @@
 		var/dissolvability = T.can_be_dissolved()
 		switch(dissolvability)
 			if(0)
-				to_chat(src, SPAN_WARNING("You cannot dissolve [T]."))
+				to_chat(src, SPAN_WARNING("We cannot dissolve [T]."))
 				return
 			if(1)
 				wait_time = 50
 			if(2)
 				if(acid_type != /obj/effect/xenomorph/acid/strong)
-					to_chat(src, SPAN_WARNING("This [T.name] is too tough to be melted by your weak acid."))
+					to_chat(src, SPAN_WARNING("This [T.name] is too tough to be melted by our weak acid."))
 					return
 				wait_time = 100
 			else
@@ -69,7 +64,7 @@
 			var/turf/closed/wall/W = T
 
 			// Direction from wall to the mob generating acid on the wall turf
-			var/ambiguous_dir_msg = SPAN_XENOWARNING("You are unsure which direction to melt through [W]. Face it directly and try again.")
+			var/ambiguous_dir_msg = SPAN_XENOWARNING("We are unsure which direction to melt through [W]. Face it directly and try again.")
 			var/dir_to = get_dir(src, W)
 			switch(dir_to)
 				if(WEST, EAST, NORTH, SOUTH)
@@ -94,9 +89,9 @@
 						return
 
 			var/acided_hole_type = W.acided_hole_dir & (EAST|WEST) ? "a hole horizontally" : "a hole vertically"
-			to_chat(src, SPAN_XENOWARNING("You begin generating enough acid to melt [acided_hole_type] through [W]."))
+			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt [acided_hole_type] through [W]."))
 		else
-			to_chat(src, SPAN_XENOWARNING("You begin generating enough acid to melt through [T]."))
+			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt through [T]."))
 	else
 		to_chat(src, SPAN_WARNING("You cannot dissolve [O]."))
 		return
@@ -123,7 +118,7 @@
 		if(istype(O,/obj/item/explosive/plastic))
 			var/obj/item/explosive/plastic/E = O
 			if(E.plant_target && !E.plant_target.Adjacent(src))
-				to_chat(src, SPAN_WARNING("You can't reach [O]."))
+				to_chat(src, SPAN_WARNING("We can't reach [O]."))
 				return
 		else
 			to_chat(src, SPAN_WARNING("[O] is too far away."))
@@ -135,9 +130,9 @@
 
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
-		R.take_damage_type((1 / A.acid_strength) * 40, "acid", src)
+		R.take_damage_type(40 / A.acid_delay, "acid", src)
 		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
-			SPAN_XENOWARNING("You vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
+			SPAN_XENOWARNING("We vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 		QDEL_IN(A, 20)
 		return
@@ -157,37 +152,19 @@
 		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [O] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 		attack_log += text("\[[time_stamp()]\] <font color='green'>Spat acid on [O]</font>")
 	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), \
-	SPAN_XENOWARNING("You vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
+	SPAN_XENOWARNING("We vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
-/proc/unroot_human(mob/living/carbon/H)
+/proc/unroot_human(mob/living/carbon/H, trait_source)
 	if (!isxeno_human(H))
 		return
 
-	H.frozen = 0
-	H.update_canmove()
+	REMOVE_TRAIT(H, TRAIT_IMMOBILIZED, trait_source)
 
 	if(ishuman(H))
 		var/mob/living/carbon/human/T = H
 		T.update_xeno_hostile_hud()
-	to_chat(H, SPAN_XENOHIGHDANGER("You can move again!"))
-
-/proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/xenomorph/X, direction, distance, shake_camera = TRUE)
-	if (!istype(H) || !istype(X) ||  !direction || !distance)
-		return
-
-	var/turf/T = get_turf(H)
-	var/turf/temp = get_turf(H)
-	for (var/x in 0 to distance)
-		temp = get_step(T, direction)
-		if (!temp)
-			break
-		T = temp
-
-	H.throw_atom(T, distance, SPEED_VERY_FAST, X, TRUE)
-	if(!shake_camera)
-		return
-	shake_camera(H, 10, 1)
+	to_chat(H, SPAN_XENOHIGHDANGER("We can move again!"))
 
 /mob/living/carbon/xenomorph/proc/zoom_in()
 	if(stat || resting)
@@ -220,7 +197,7 @@
 /mob/living/carbon/xenomorph/proc/zoom_out()
 	if(!client)
 		return
-	client.change_view(world_view_size)
+	client.change_view(GLOB.world_view_size)
 	client.pixel_x = 0
 	client.pixel_y = 0
 	is_zoomed = 0
@@ -332,8 +309,8 @@
 	if(!check_can_transfer_plasma(target, max_range))
 		return
 
-	to_chat(src, SPAN_NOTICE("You start focusing your plasma towards [target]."))
-	to_chat(target, SPAN_NOTICE("You feel that [src] starts transferring some of their plasma to you."))
+	to_chat(src, SPAN_NOTICE("We start focusing our plasma towards [target]."))
+	to_chat(target, SPAN_NOTICE("We feel that [src] starts transferring some of their plasma to us."))
 	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
@@ -344,8 +321,8 @@
 		amount = plasma_stored //Just use all of it
 	use_plasma(amount)
 	target.gain_plasma(amount)
-	to_chat(target, SPAN_XENOWARNING("[src] has transfered [amount] plasma to you. You now have [target.plasma_stored]."))
-	to_chat(src, SPAN_XENOWARNING("You have transferred [amount] plasma to [target]. You now have [plasma_stored]."))
+	to_chat(target, SPAN_XENOWARNING("[src] has transfered [amount] plasma to us. We now have [target.plasma_stored]."))
+	to_chat(src, SPAN_XENOWARNING("We have transferred [amount] plasma to [target]. We now have [plasma_stored]."))
 	playsound(src, "alien_drool", 25)
 
 /mob/living/carbon/xenomorph/proc/check_can_transfer_plasma(mob/living/carbon/xenomorph/target, max_range)
@@ -357,19 +334,19 @@
 		return FALSE
 
 	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
+		to_chat(src, SPAN_WARNING("We can't transfer plasma from here!"))
 		return FALSE
 
 	if(get_dist(src, target) > max_range)
-		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
+		to_chat(src, SPAN_WARNING("We need to be closer to [target]."))
 		return FALSE
 
 	if(HAS_TRAIT(target, TRAIT_ABILITY_OVIPOSITOR))
-		to_chat(src, SPAN_WARNING("You can't transfer plasma to a queen mounted on her ovipositor."))
+		to_chat(src, SPAN_WARNING("We can't transfer plasma to a queen mounted on her ovipositor."))
 		return FALSE
 
 	if(HAS_TRAIT(target, TRAIT_ABILITY_NO_PLASMA_TRANSFER))
-		to_chat(src, SPAN_WARNING("You can't transfer plasma to \the [target]."))
+		to_chat(src, SPAN_WARNING("We can't transfer plasma to \the [target]."))
 		return FALSE
 
 	if(target.plasma_max == XENO_NO_PLASMA)
@@ -377,7 +354,7 @@
 		return FALSE
 
 	if(target == src)
-		to_chat(src, SPAN_WARNING("You can't transfer plasma to yourself!"))
+		to_chat(src, SPAN_WARNING("We can't transfer plasma to ourself!"))
 		return FALSE
 
 	return TRUE

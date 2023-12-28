@@ -121,10 +121,10 @@
 	var/t //text to show in the window
 	var/u //unban button href arg
 	var/dat = "<table>"
-	for(r in jobban_keylist)
-		L = jobban_keylist[r]
+	for(r in GLOB.jobban_keylist)
+		L = GLOB.jobban_keylist[r]
 		for(c in L)
-			i = jobban_keylist[r][c] //These are already strings, as you're iterating through them. Anyway, establish jobban.
+			i = GLOB.jobban_keylist[r][c] //These are already strings, as you're iterating through them. Anyway, establish jobban.
 			t = "[c] - [r] ## [i]"
 			u = "[c] - [r]"
 			dat += "<tr><td>[t] (<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];removejobban=[u]'>unban</A>)</td></tr>"
@@ -138,8 +138,6 @@
 	var/dat = {"
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
 		"}
-	if(master_mode == "secret")
-		dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];f_secret=1'>(Force Secret Mode)</A><br>"
 
 	dat += {"
 		<BR>
@@ -261,7 +259,7 @@
 		if("Remove")
 			if(!GLOB.trait_name_map)
 				GLOB.trait_name_map = generate_trait_name_map()
-			for(var/trait in D.status_traits)
+			for(var/trait in D._status_traits)
 				var/name = GLOB.trait_name_map[trait] || trait
 				available_traits[name] = trait
 
@@ -282,7 +280,7 @@
 				if("All")
 					source = null
 				if("Specific")
-					source = input("Source to be removed","Trait Remove/Add") as null|anything in sort_list(D.status_traits[chosen_trait])
+					source = input("Source to be removed","Trait Remove/Add") as null|anything in sort_list(D._status_traits[chosen_trait])
 					if(!source)
 						return
 			REMOVE_TRAIT(D,chosen_trait,source)

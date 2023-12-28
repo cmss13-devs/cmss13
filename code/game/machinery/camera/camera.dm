@@ -35,6 +35,9 @@
 
 	var/colony_camera_mapload = TRUE
 
+	/// If this camera should have innate EMP-proofing
+	var/emp_proof = FALSE
+
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
 	WireColorToFlag = randomCameraWires()
@@ -61,7 +64,14 @@
 
 /obj/structure/machinery/camera/update_icon()
 	. = ..()
-	if(icon_state == "autocam_editor")
+	// If the camera has been EMPed.
+	if(stat & EMPED)
+		icon_state = "cameraemp"
+	// If the camera isn't EMPed, but is disabled.
+	else if(!status)
+		icon_state = "camera1"
+	// Otherwise, just give it the normal animated `icon_state`.
+	else
 		icon_state = "camera"
 
 /obj/structure/machinery/camera/set_pixel_location()
@@ -72,25 +82,28 @@
 		if(WEST) pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
-	if(!isEmpProof())
-		if(prob(100/severity))
-			icon_state = "[initial(icon_state)]emp"
-			var/list/previous_network = network
-			network = list()
-			cameranet.removeCamera(src)
-			stat |= EMPED
-			set_light(0)
-			triggerCameraAlarm()
-			spawn(900)
-				network = previous_network
-				icon_state = initial(icon_state)
-				stat &= ~EMPED
-				cancelCameraAlarm()
-				if(can_use())
-					cameranet.addCamera(src)
-			kick_viewers()
-			..()
+	. = ..()
+	// If the camera is EMP proof, or it passed the RNG check.
+	if(isEmpProof() || !prob(100 / severity))
+		return
 
+	var/list/previous_network = network
+	network = list()
+	GLOB.cameranet.removeCamera(src)
+	stat |= EMPED
+	update_icon()
+	set_light(0)
+	triggerCameraAlarm()
+	kick_viewers()
+	addtimer(CALLBACK(src, PROC_REF(undo_emp), previous_network), 90 SECONDS)
+
+/obj/structure/machinery/camera/proc/undo_emp(previous_network)
+	network = previous_network
+	stat &= ~EMPED
+	update_icon()
+	cancelCameraAlarm()
+	if(can_use())
+		GLOB.cameranet.addCamera(src)
 
 /obj/structure/machinery/camera/ex_act(severity)
 	if(src.invuln)
@@ -101,7 +114,7 @@
 
 /obj/structure/machinery/camera/proc/setViewRange(num = 7)
 	src.view_range = num
-	cameranet.updateVisibility(src, 0)
+	GLOB.cameranet.updateVisibility(src, 0)
 
 /obj/structure/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
 
@@ -186,10 +199,7 @@
 			visible_message(SPAN_WARNING("[user] has reactivated [src]!"))
 		else
 			visible_message(SPAN_WARNING("[user] has deactivated [src]!"))
-	if(status)
-		icon_state = "camera"
-	else
-		icon_state = "camera1"
+	update_icon()
 	// now disconnect anyone using the camera
 	//Apparently, this will disconnect anyone even if the camera was re-activated.
 	//I guess that doesn't matter since they can't use it anyway?

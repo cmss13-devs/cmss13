@@ -1,3 +1,10 @@
+/mob/living/can_resist()
+	if(next_move > world.time)
+		return FALSE
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
+		return FALSE
+	return TRUE
+
 /mob/living/verb/resist()
 	set name = "Resist"
 	set category = "IC"
@@ -13,7 +20,7 @@
 
 	if(isxeno(src))
 		var/mob/living/carbon/xenomorph/xeno = src
-		if(xeno.burrow)
+		if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
 			to_chat(src, SPAN_WARNING("You can't resist in your current state."))
 			return
 
@@ -114,9 +121,9 @@
 		//okay, so the closet is either welded or locked... resist!!!
 		next_move = world.time + 100
 		last_special = world.time + 100
-		to_chat(src, SPAN_DANGER("You lean on the back of \the [C] and start pushing the door open. (this will take about [breakout_time] minutes)"))
+		to_chat(src, SPAN_DANGER("You lean on the back of [C] and start pushing the door open. (this will take about [breakout_time] minutes)"))
 		for(var/mob/O in viewers(loc))
-			O.show_message(SPAN_DANGER("<B>The [loc] begins to shake violently!</B>"), SHOW_MESSAGE_VISIBLE)
+			O.show_message(SPAN_DANGER("<B>[loc] begins to shake violently!</B>"), SHOW_MESSAGE_VISIBLE)
 
 		if(!do_after(src, (breakout_time*1 MINUTES), INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST))
 			return
@@ -163,24 +170,15 @@
 			return
 
 	//breaking out of handcuffs & putting out fires
-	if(canmove && !knocked_down)
+	if(mobility_flags & MOBILITY_MOVE)
 		if(on_fire)
 			resist_fire()
-
-		var/on_acid = FALSE
-		for(var/datum/effects/acid/A in effects_list)
-			on_acid = TRUE
-			break
-		if(on_acid)
+		if(locate(/datum/effects/acid) in effects_list)
 			resist_acid()
+		if(last_special <= world.time)
+			resist_restraints()
 
 	SEND_SIGNAL(src, COMSIG_MOB_RESISTED)
-
-	if(!iscarbon(src))
-		return
-	var/mob/living/carbon/C = src
-	if((C.handcuffed || C.legcuffed) && C.canmove && (C.last_special <= world.time))
-		resist_restraints()
 
 /mob/living/proc/resist_buckle()
 	buckled.manual_unbuckle(src)

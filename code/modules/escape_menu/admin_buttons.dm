@@ -46,7 +46,7 @@
 		new /atom/movable/screen/escape_menu/home_button(
 			null,
 			src,
-			"Medal Panel",
+			"Medals Panel",
 			/* offset = */ 5,
 			CALLBACK(src, PROC_REF(home_medal)),
 		)
@@ -56,8 +56,18 @@
 		new /atom/movable/screen/escape_menu/home_button(
 			null,
 			src,
-			"Teleport Panel",
+			"Tacmaps Panel",
 			/* offset = */ 6,
+			CALLBACK(src, PROC_REF(home_tacmaps)),
+		)
+	)
+
+	page_holder.give_screen_object(
+		new /atom/movable/screen/escape_menu/home_button(
+			null,
+			src,
+			"Teleport Panel",
+			/* offset = */ 7,
 			CALLBACK(src, PROC_REF(home_teleport)),
 		)
 	)
@@ -67,7 +77,7 @@
 			null,
 			src,
 			"Inview Panel",
-			/* offset = */ 7,
+			/* offset = */ 8,
 			CALLBACK(src, PROC_REF(home_inview)),
 		)
 	)
@@ -77,7 +87,7 @@
 			null,
 			src,
 			"Unban Panel",
-			/* offset = */ 8,
+			/* offset = */ 9,
 			CALLBACK(src, PROC_REF(home_unban)),
 		)
 	)
@@ -87,7 +97,7 @@
 			null,
 			src,
 			"Shuttle Manipulator",
-			/* offset = */ 9,
+			/* offset = */ 10,
 			CALLBACK(src, PROC_REF(home_shuttle)),
 		)
 	)
@@ -116,6 +126,12 @@
 		return
 
 	GLOB.medals_panel.tgui_interact(client?.mob)
+
+/datum/escape_menu/proc/home_tacmaps()
+	if(!client?.admin_holder.check_for_rights(R_ADMIN|R_MOD))
+		return
+
+	GLOB.tacmap_admin_panel.tgui_interact(client?.mob)
 
 /datum/escape_menu/proc/home_teleport()
 	if(!client?.admin_holder.check_for_rights(R_MOD))

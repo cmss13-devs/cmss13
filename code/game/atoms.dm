@@ -33,8 +33,11 @@
 
 	var/list/filter_data //For handling persistent filters
 
-	// Base transform matrix
-	var/matrix/base_transform = null
+	/// Base transform matrix, edited by admin tooling and such
+	var/matrix/base_transform
+	/// Last transform used before being compound with base_transform
+	/// This allows us to re-create transform if only base_transform changes
+	var/matrix/raw_transform
 
 	///Chemistry.
 	var/datum/reagents/reagents = null
@@ -116,7 +119,14 @@ directive is properly returned.
 
 //===========================================================================
 
-
+// TODO make all atoms use set_density, do not rely on it at present
+///Setter for the `density` variable to append behavior related to its changing.
+/atom/proc/set_density(new_value)
+	SHOULD_CALL_PARENT(TRUE)
+	if(density == new_value)
+		return
+	. = density
+	density = new_value
 
 //atmos procs
 
@@ -141,15 +151,27 @@ directive is properly returned.
 	if(loc)
 		return loc.return_gas()
 
-// Updates the atom's transform
-/atom/proc/apply_transform(matrix/M)
-	if(!base_transform)
-		transform = M
-		return
+/// Updates the atom's transform compounding it with [/atom/var/base_transform]
+/atom/proc/apply_transform(matrix/new_transform, time = 0, easing = (EASE_IN|EASE_OUT))
+	var/matrix/base_copy
+	if(base_transform)
+		base_copy = matrix(base_transform)
+	else
+		base_copy = matrix()
+	raw_transform = matrix(new_transform) // Keep a copy to replay if needed
 
-	var/matrix/base_copy = matrix(base_transform)
 	// Compose the base and applied transform in that order
-	transform = base_copy.Multiply(M)
+	var/matrix/complete = base_copy.Multiply(raw_transform)
+
+	if(!time)
+		transform = complete
+		return
+	animate(src, transform = complete, time = time, easing = easing, flags = ANIMATION_PARALLEL)
+
+/// Upates the base_transform which will be compounded with other transforms
+/atom/proc/update_base_transform(matrix/new_transform, time = 0)
+	base_transform = matrix(new_transform)
+	apply_transform(raw_transform, time)
 
 /atom/proc/on_reagent_change()
 	return
@@ -183,7 +205,9 @@ directive is properly returned.
 	return
 
 /atom/proc/emp_act(severity)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+
+	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))
@@ -223,8 +247,8 @@ directive is properly returned.
 	if(!examine_strings)
 		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
 		return
-	to_chat(user, examine_block(examine_strings.Join("\n")))
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
+	to_chat(user, examine_block(examine_strings.Join("\n")))
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()
@@ -363,11 +387,11 @@ Parameters are passed from New.
 		var/turf/opaque_turf = loc
 		opaque_turf.directional_opacity = ALL_CARDINALS // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
 
-	pass_flags = pass_flags_cache[type]
+	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()
 		initialize_pass_flags(pass_flags)
-		pass_flags_cache[type] = pass_flags
+		GLOB.pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
 	Decorate(mapload)
@@ -394,7 +418,7 @@ Parameters are passed from New.
 	T.appearance = src.appearance
 	T.setDir(src.dir)
 
-	clones_t.Add(src)
+	GLOB.clones_t.Add(src)
 	src.clone = T
 
 // EFFECTS
@@ -699,10 +723,9 @@ Parameters are passed from New.
 		usr.client.cmd_admin_emp(src)
 
 	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
-		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate"))
+		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate", "Reflect X Axis", "Reflect Y Axis"))
 		if(!result)
 			return
-		var/matrix/M = transform
 		if(!result)
 			return
 		switch(result)
@@ -711,19 +734,37 @@ Parameters are passed from New.
 				var/y = tgui_input_real_number(usr, "Choose y mod","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
-				transform = M.Scale(x,y)
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Scale(x,y))
 			if("Translate")
 				var/x = tgui_input_real_number(usr, "Choose x mod (negative = left, positive = right)","Transform Mod")
 				var/y = tgui_input_real_number(usr, "Choose y mod (negative = down, positive = up)","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
-				transform = M.Translate(x,y)
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Translate(x,y))
 			if("Rotate")
 				var/angle = tgui_input_real_number(usr, "Choose angle to rotate","Transform Mod")
 				if(isnull(angle))
 					return
-				transform = M.Turn(angle)
-
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Turn(angle))
+			if("Reflect X Axis")
+				var/matrix/current = matrix(base_transform)
+				var/matrix/reflector = matrix()
+				reflector.a = -1
+				reflector.d = 0
+				reflector.b = 0
+				reflector.e = 1
+				update_base_transform(current * reflector)
+			if("Reflect Y Axis")
+				var/matrix/current = matrix(base_transform)
+				var/matrix/reflector = matrix()
+				reflector.a = 1
+				reflector.d = 0
+				reflector.b = 0
+				reflector.e = -1
+				update_base_transform(current * reflector)
 		SEND_SIGNAL(src, COMSIG_ATOM_VV_MODIFY_TRANSFORM)
 
 	if(href_list[VV_HK_AUTO_RENAME] && check_rights(R_VAREDIT))

@@ -85,11 +85,11 @@
 		PF.flags_can_pass_all = PASS_ALL
 
 /mob/hologram/falcon/add_to_all_mob_huds()
-	var/datum/mob_hud/hud = huds[MOB_HUD_HUNTER]
+	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_HUNTER]
 	hud.add_to_hud(src)
 
 /mob/hologram/falcon/remove_from_all_mob_huds()
-	var/datum/mob_hud/hud = huds[MOB_HUD_HUNTER]
+	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_HUNTER]
 	hud.remove_from_hud(src)
 
 /mob/hologram/falcon/med_hud_set_status()
@@ -119,6 +119,7 @@
 	qdel(src)
 
 /mob/hologram/falcon/emp_act()
+	. = ..()
 	new /obj/item/trash/falcon_drone/emp(loc)
 	QDEL_NULL(parent_drone)
 	qdel(src)

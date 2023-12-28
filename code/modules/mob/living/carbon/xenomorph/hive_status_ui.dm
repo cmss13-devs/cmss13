@@ -120,7 +120,6 @@
 
 /datum/hive_status_ui/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
-
 	if(isobserver(user))
 		return UI_INTERACTIVE
 

@@ -731,8 +731,6 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	if(issynth(L) && L.health < 0) // no pulling critted or dead synths
-		return FALSE
 	if(L.buckled)
 		return FALSE //to stop xeno from pulling marines on roller beds.
 	if(!L.is_xeno_grabbable())

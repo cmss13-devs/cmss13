@@ -10,8 +10,6 @@
 	icon_state = "drone_fab_idle"
 	var/busy = FALSE
 	var/generate_points = TRUE
-	var/valid_parts = null
-	var/valid_ammo = null
 	var/omnisentry_price_scale = 100
 	var/omnisentry_price = 300
 
@@ -75,7 +73,7 @@
 	new part_type(get_step(src, SOUTHEAST))
 	icon_state = "drone_fab_idle"
 
-/obj/structure/machinery/part_fabricator/ui_act(action, params)
+/obj/structure/machinery/part_fabricator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -83,6 +81,8 @@
 	if(busy)
 		to_chat(usr, SPAN_WARNING("The [name] is busy. Please wait for completion of previous operation."))
 		return
+
+	var/mob/user = ui.user
 
 	if(action == "produce")
 		var/cost = 0
@@ -92,23 +92,23 @@
 		if(is_ammo == 0)
 			var/obj/structure/dropship_equipment/produce = (typesof(/obj/structure/dropship_equipment))[index]
 			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
-				log_admin("Bad topic: [usr] may be trying to HREF exploit [src] to bypass no combat cas")
+				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
-			build_part(produce, cost, usr)
+			build_part(produce, cost, user)
 			return
 
 		else
 			var/obj/structure/ship_ammo/produce = (typesof(/obj/structure/ship_ammo))[index]
 			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
-				log_admin("Bad topic: [usr] may be trying to HREF exploit [src] to bypass no combat cas")
+				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
-			build_part(produce, cost, usr)
+			build_part(produce, cost, user)
 			return
 
 	else
-		log_admin("Bad topic: [usr] may be trying to HREF exploit [src]")
+		log_admin("Bad topic: [user] may be trying to HREF exploit [src]")
 		return
 
 /obj/structure/machinery/part_fabricator/attack_hand(mob/user)
@@ -127,8 +127,6 @@
 	name = "dropship part fabricator"
 	desc = "A large automated 3D printer for producing dropship parts. You can recycle parts or ammo in it, and get 80% of your points back, by clicking it while holding them in a powerloader claw."
 	req_access = list(ACCESS_MARINE_DROPSHIP)
-	valid_parts = /obj/structure/dropship_equipment
-	valid_ammo = /obj/structure/ship_ammo
 
 	unslashable = TRUE
 	unacidable = TRUE
@@ -249,8 +247,6 @@
 	desc = "A large automated 3D printer for producing vehicle parts."
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	generate_points = FALSE
-	valid_parts = /obj/item/hardpoint
-	valid_ammo = /obj/item/ammo_magazine/hardpoint
 
 	unacidable = TRUE
 	indestructible = TRUE

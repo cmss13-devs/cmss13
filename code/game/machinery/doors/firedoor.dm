@@ -29,7 +29,7 @@
 	var/pdiff = 0
 	var/nextstate = null
 	var/net_id
-	var/list/areas_added
+	var/area/sealed_area
 	var/list/users_to_open = new
 	var/next_process_time = 0
 
@@ -52,12 +52,10 @@
 	ASSERT(istype(A))
 
 	A.all_doors.Add(src)
-	areas_added = list(A)
-
+	sealed_area = A
 
 /obj/structure/machinery/door/firedoor/Destroy()
-	for(var/area/A in areas_added)
-		A.all_doors.Remove(src)
+	sealed_area.all_doors.Remove(src)
 	return ..()
 
 
@@ -120,9 +118,8 @@
 		return
 
 	var/alarmed = lockdown
-	for(var/area/A in areas_added) //Checks if there are fire alarms in any areas associated with that firedoor
-		if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
-			alarmed = 1
+	if(sealed_area.flags_alarm_state & ALARM_WARNING_FIRE || sealed_area.air_doors_activated)
+		alarmed = 1
 	if(tgui_alert(user,\
 	"Would you like to [density ? "open" : "close"] this [src.name]?[ alarmed && density ? "\nNote that by doing so, you acknowledge any damages from opening this\n[src.name] as being your own fault, and you will be held accountable under the law." : ""]",\
 	"\The [src]", list("Yes", "No")) != "Yes")
@@ -155,9 +152,8 @@
 	if(needs_to_close)
 		spawn(50)
 			alarmed = 0
-			for(var/area/A in areas_added) //Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
-				if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
-					alarmed = 1
+			if(sealed_area.flags_alarm_state & ALARM_WARNING_FIRE || sealed_area.air_doors_activated)
+				alarmed = 1
 			if(alarmed)
 				nextstate = CLOSED
 				close()

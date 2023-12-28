@@ -164,6 +164,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	for(var/unscrambled_message_key in replaced_scrambled_strings)
 		message = replacetext(message, unscrambled_message_key, replaced_scrambled_strings[unscrambled_message_key])
 
+
 	return message
 
 /proc/slur(phrase)

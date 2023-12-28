@@ -55,7 +55,8 @@
 	sealed_area = A
 
 /obj/structure/machinery/door/firedoor/Destroy()
-	sealed_area.all_doors.Remove(src)
+	if(sealed_area)
+		sealed_area.all_doors.Remove(src)
 	return ..()
 
 

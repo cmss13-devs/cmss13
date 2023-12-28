@@ -88,12 +88,10 @@
 		var/cost = 0
 		var/is_ammo = params["is_ammo"]
 		var/index = params["index"]
-		var/list/produce_list
-		var/temp //I had some issues with the stuff from list not assigning properly, plant to remove and do it all in one line if possible
 
 		if(is_ammo == 0)
 			var/obj/structure/dropship_equipment/produce = (typesof(/obj/structure/dropship_equipment))[index]
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(produce.combat_equipment))
+			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
 				log_admin("Bad topic: [usr] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
@@ -101,18 +99,13 @@
 			return
 
 		else
-			produce_list = typesof(/obj/structure/ship_ammo)
-			temp = produce_list[index]
-			var/obj/structure/ship_ammo/produce = temp
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(produce.combat_equipment))
+			var/obj/structure/ship_ammo/produce = (typesof(/obj/structure/ship_ammo))[index]
+			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
 				log_admin("Bad topic: [usr] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, usr)
 			return
-
-
-
 
 	else
 		log_admin("Bad topic: [usr] may be trying to HREF exploit [src]")
@@ -157,7 +150,7 @@
 	var/index = 1
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/dropship_equipment_data = build_type
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(dropship_equipment_data.combat_equipment))
+		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && dropship_equipment_data.combat_equipment)
 			index = index + 1
 			continue
 		var/build_name = initial(dropship_equipment_data.name)
@@ -178,7 +171,7 @@
 	index = 1
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/ship_ammo_data = build_type
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(ship_ammo_data.combat_equipment))
+		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && ship_ammo_data.combat_equipment)
 			index = index + 1
 			continue
 		var/build_name = initial(ship_ammo_data.name)

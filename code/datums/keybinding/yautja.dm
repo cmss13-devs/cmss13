@@ -368,30 +368,12 @@
 	full_name = "Toggle mask zoom"
 	keybind_signal = COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM
 
-/datum/keybinding/yautja/mask/toggle_zoom/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/clothing/mask/gas/yautja/mask = H.wear_mask
-	mask.toggle_zoom()
-	return TRUE
-
 /datum/keybinding/yautja/mask/togglesight
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "togglesight"
 	full_name = "Toggle mask visors"
 	keybind_signal = COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT
-
-/datum/keybinding/yautja/mask/togglesight/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/clothing/mask/gas/yautja/mask = H.wear_mask
-	mask.togglesight()
-	return TRUE
 
 // teleporter
 

@@ -32,10 +32,10 @@
 	yautja = mob
 
 	if(require_bracers)
-		if(istype(yautja.get_held_item(), /obj/item/clothing/gloves/yautja/hunter))
-			bracers = yautja.get_held_item()
 		if(istype(yautja.gloves, /obj/item/clothing/gloves/yautja/hunter))
 			bracers = yautja.gloves
+		else if(istype(yautja.get_held_item(), /obj/item/clothing/gloves/yautja/hunter))
+			bracers = yautja.get_held_item()
 		if(!bracers)
 			to_chat(yautja, SPAN_WARNING("You don't have bracers."))
 			remove_action(yautja, src)

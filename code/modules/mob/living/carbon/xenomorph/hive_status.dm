@@ -422,32 +422,27 @@
 // The idea is that we sort this list, and use it as a "key" for all the other information (especially the nicknumber)
 // in the hive status UI. That way we can minimize the amount of sorts performed by only calling this when xenos are created/disposed
 /datum/hive_status/proc/get_xeno_keys()
-	var/list/xenos[totalXenos.len]
+	var/list/xenos = list()
 
-	var/index = 1
-	var/useless_slots = 0
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
 		if(is_admin_level(X.z))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
-				useless_slots++
 				continue
 
 		if(!(X in GLOB.living_xeno_list))
-			useless_slots++
 			continue
 
-		// Insert without doing list merging
-		xenos[index++] = list(
+		// This looks weird, but in DM adding List A to List B actually adds each item in List B to List A, not List B itself.
+		// Having a nested list like this sort of tricks it into adding the list instead.
+		// In this case this results in an array of different 'xeno' dictionaries, rather than just a dictionary.
+		xenos += list(list(
 			"nicknumber" = X.nicknumber,
 			"tier" = X.tier, // This one is only important for sorting
 			"is_leader" = (IS_XENO_LEADER(X)),
 			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
 			"caste_type" = X.caste_type
-		)
-
-	// Clear nulls from the xenos list
-	xenos.len -= useless_slots
+		))
 
 	// Make it all nice and fancy by sorting the list before returning it
 	var/list/sorted_keys = sort_xeno_keys(xenos)

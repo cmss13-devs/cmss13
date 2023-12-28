@@ -95,16 +95,18 @@
 			produce_list = typesof(/obj/structure/dropship_equipment)
 			temp = produce_list[index]
 			var/obj/structure/dropship_equipment/produce = temp
-			cost = initial(produce.point_cost)
-			build_part(produce, cost, usr)
-			return
+
 		else
 			produce_list = typesof(/obj/structure/ship_ammo)
 			temp = produce_list[index]
 			var/obj/structure/ship_ammo/produce = temp
-			cost = initial(produce.point_cost)
-			build_part(produce, cost, usr)
+
+		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(produce.combat_equipment))
+			log_admin("Bad topic: [usr] may be trying to HREF exploit [src] to bypass no combat cas")
 			return
+		cost = initial(produce.point_cost)
+		build_part(produce, cost, usr)
+		return
 
 
 	else
@@ -164,7 +166,7 @@
 				"index" = index,
 				"is_ammo" = is_ammo
 			))
-		index = index + 1
+		index += 1
 
 	static_data["Ammo"] = list()
 	is_ammo = 1
@@ -185,7 +187,7 @@
 				"index" = index,
 				"is_ammo" = is_ammo
 			))
-		index = index + 1
+		index += 1
 
 	return static_data
 

@@ -206,7 +206,7 @@
 
 	// Can only have one queen.
 	if(isqueen(X))
-		if(!living_xeno_queen && !is_admin_level(X.z)) // Don't consider xenos in admin level
+		if(!living_xeno_queen && !should_block_game_interaction(X)) // Don't consider xenos in admin level
 			set_living_xeno_queen(X)
 
 	X.hivenumber = hivenumber
@@ -218,7 +218,7 @@
 		X.hud_update()
 
 	var/area/A = get_area(X)
-	if(!is_admin_level(X.z) || (A.flags_atom & AREA_ALLOW_XENO_JOIN))
+	if(!should_block_game_interaction(X) || (A.flags_atom & AREA_ALLOW_XENO_JOIN))
 		totalXenos += X
 		if(X.tier == 2)
 			tier_2_xenos += X
@@ -241,7 +241,7 @@
 	if(living_xeno_queen == xeno)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null
 		for(var/mob/living/carbon/xenomorph/queen/queen in totalXenos)
-			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+			if(!should_block_game_interaction(queen) && queen != src && !QDELETED(queen))
 				next_queen = queen
 				break
 
@@ -264,7 +264,7 @@
 		tier_3_xenos -= xeno
 
 	// Only handle free slots if the xeno is not in tdome
-	if(!is_admin_level(xeno.z))
+	if(!should_block_game_interaction(xeno))
 		var/selected_caste = GLOB.xeno_datum_list[xeno.caste_type]?.type
 		if(used_slots[selected_caste])
 			used_slots[selected_caste]--
@@ -408,7 +408,7 @@
 
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
 		//don't show xenos in the thunderdome when admins test stuff.
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
@@ -427,7 +427,7 @@
 	var/index = 1
 	var/useless_slots = 0
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				useless_slots++
@@ -509,7 +509,7 @@
 	var/list/xenos = list()
 
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
@@ -540,7 +540,7 @@
 	var/list/xenos = list()
 
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue

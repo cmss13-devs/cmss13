@@ -32,7 +32,7 @@
 
 /obj/item/toy/deck/Destroy(force)
 	. = ..()
-	cards = null
+	QDEL_NULL_LIST(cards)
 
 /obj/item/toy/deck/get_examine_text(mob/user)
 	. = ..()
@@ -79,6 +79,7 @@
 		var/obj/item/toy/handcard/H = O
 		for(var/datum/playing_card/P as anything in H.cards)
 			cards += P
+			H.cards -= P
 		update_icon()
 		qdel(O)
 		user.visible_message(SPAN_NOTICE("<b>[user]</b> places their cards on the bottom of \the [src]."), SPAN_NOTICE("You place your cards on the bottom of the deck."))
@@ -324,7 +325,7 @@
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
 	var/cards_length = length(cards)
 	if(cards_length >= 200)
-		to_chat(usr, SPAN_WARNING("Hand is too big to sort. Remove some cards."))
+		to_chat(usr, SPAN_WARNING("Your hand is too big to sort. Remove some cards."))
 		return
 	for(var/i = 1 to cards_length)
 		for(var/k = 2 to cards_length)
@@ -342,6 +343,7 @@
 		var/cards_length = length(H.cards)
 		for(var/datum/playing_card/P in H.cards)
 			cards += P
+			H.cards -= P
 		qdel(O)
 		if(pile_state)
 			if(concealed)

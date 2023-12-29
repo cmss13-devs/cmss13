@@ -170,9 +170,10 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			parsing_message = TRUE
 		if(message[character_index] == "<")
 			parsing_message = FALSE
-			var/scrambled_string = stars(current_string_to_scramble)
-			output_message += scrambled_string
-			current_string_to_scramble = null
+			if(length(current_string_to_scramble))
+				var/scrambled_string = stars(current_string_to_scramble)
+				output_message += scrambled_string
+				current_string_to_scramble = null
 
 		if(parsing_message)
 			current_string_to_scramble += message[character_index]

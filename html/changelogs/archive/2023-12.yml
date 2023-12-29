@@ -531,3 +531,7 @@
   fira:
   - bugfix: Fixed XRF Scanner bricking if people were adding and removing vials at
       same time.
+2023-12-29:
+  sleepynecrons:
+  - imageadd: new sprites for predalien, predlarva and weeded corpse
+  - imageadd: added predalien wound overlays

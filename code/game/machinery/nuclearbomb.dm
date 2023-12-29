@@ -396,8 +396,15 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	playsound(src, 'sound/machines/Alarm.ogg', 75, 0, 30)
 	world << pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		var/turf/current_turf = get_turf(current_mob)
+		if(current_turf?.z == z && current_mob.stat != DEAD)
+			shake_camera(current_mob, 110, 4)
+
+	sleep(10 SECONDS)
+
 	var/list/mob/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
-	var/list/mob/dead_mobs = list() //Everyone who only needs to see the cinematic.
+	var/list/mob/dead_mobs = list() //Everyone that needs embryos cleared
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/turf/current_turf = get_turf(current_mob)
 		if(current_turf?.z == z)
@@ -405,7 +412,6 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				dead_mobs |= current_mob
 				continue
 			alive_mobs |= current_mob
-			shake_camera(current_mob, 110, 4)
 
 	for(var/mob/current_mob in alive_mobs)
 		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
@@ -418,7 +424,6 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		for(var/obj/item/alien_embryo/embryo in current_mob)
 			qdel(embryo)
 
-	sleep(10 SECONDS)
 	cell_explosion(loc, 500, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)))
 	qdel(src)
 	return TRUE

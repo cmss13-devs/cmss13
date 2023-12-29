@@ -278,7 +278,7 @@
 
 /obj/item/toy/handcard/Destroy(force)
 	. = ..()
-	cards = null
+	QDEL_NULL_LIST(cards)
 
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"

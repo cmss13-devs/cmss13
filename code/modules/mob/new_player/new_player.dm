@@ -395,7 +395,7 @@
 
 	new_character.lastarea = get_area(loc)
 
-	setup_human(new_character, src)
+	setup_human(new_character, src, is_late_join)
 
 	new_character.client?.change_view(GLOB.world_view_size)
 

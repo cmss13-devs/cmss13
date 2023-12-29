@@ -39,12 +39,26 @@
 
 		hive.tunnels += src
 
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+		hive.tunnels += src
+
 	if(!hive)
 		hive = GLOB.hive_datum[hivenumber]
 
 		hive.tunnels += src
 
-	var/obj/effect/alien/resin/trap/resin_trap = locate() in L
+/obj/structure/tunnel/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+	set_hive_status(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in loc
 	if(resin_trap)
 		qdel(resin_trap)
 

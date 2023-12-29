@@ -26,7 +26,7 @@
 	if(ring_cooldown > world.time)
 		return FALSE
 	if(!ring_bell(user))
-		to_chat(user, "<span class='notice'>[src] is silent. Some idiot broke it.</span>")
+		to_chat(user, SPAN_NOTICE("[src] is silent. Some idiot broke it."))
 		return FALSE
 	ring_cooldown = world.time + ring_cooldown_length
 	return TRUE
@@ -45,9 +45,9 @@
 	//Repair the desk bell if its broken and we're using a screwdriver.
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(broken_ringer)
-			visible_message("<span class='notice'>[user] begins repairing [src]...</span>", "<span class='notice'>You begin repairing [src]...</span>")
+			visible_message(SPAN_NOTICE("[user] begins repairing [src]..."), SPAN_NOTICE("You begin repairing [src]..."))
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				user.visible_message("<span class='notice'>[user] repairs [src].</span>", "<span class='notice'>You repair [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] repairs [src]"), SPAN_NOTICE("You repair [src]."))
 				playsound(user, 'sound/items/Screwdriver.ogg', 50, vary = TRUE)
 				broken_ringer = FALSE
 				times_rang = 0
@@ -61,9 +61,9 @@
 	//Wrenching down and unwrenching.
 	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 		if(user.a_intent == INTENT_HARM)
-			visible_message("<span class='notice'>[user] begins taking apart [src]...</span>", "<span class='notice'>You begin taking apart [src]...</span>")
+			visible_message(SPAN_NOTICE("[user] begins taking apart [src]..."), SPAN_NOTICE("You begin taking apart [src]..."))
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				visible_message("<span class='notice'>[user] takes apart [src].</span>", "<span class='notice'>You take apart [src].</span>")
+				visible_message(SPAN_NOTICE("[user] takes apart [src]."), SPAN_NOTICE("You take apart [src]."))
 				playsound(user, 'sound/items/deconstruct.ogg', 50, vary = TRUE)
 				new /obj/item/stack/sheet/metal(get_turf(src))
 				qdel(src)
@@ -72,6 +72,7 @@
 			user.visible_message("[user] begins [anchored ? "un" : ""]securing [src]...", "You begin [anchored ? "un" : ""]securing [src]...")
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return FALSE
+			user.visible_message("[user] [anchored ? "un" : ""]secures [src].", "You [anchored ? "un" : ""]secure [src]")
 			anchored = !anchored
 			return TRUE
 
@@ -79,7 +80,7 @@
 /// Check if the clapper breaks, and if it does, break it chance to break is 1% for every 100 rings of the bell.
 /obj/item/desk_bell/proc/check_clapper(mob/living/user)
 	if(prob(times_rang / 100) && ring_cooldown_length)
-		to_chat(user, "<span class='notice'>You hear [src]'s clapper fall off of its hinge. Nice job, you broke it.</span>")
+		to_chat(user, SPAN_NOTICE("You hear [src]'s clapper fall off of its hinge. Nice job, you broke it."))
 		broken_ringer = TRUE
 
 /// Ring the bell.

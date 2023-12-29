@@ -148,7 +148,6 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	// output string after parse
 	var/output_message = ""
-
 	for(var/character_index in 1 to length(message))
 
 		// Apparent edge case safety.
@@ -168,6 +167,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 				continue
 		if(message[character_index] == ">")
 			parsing_message = TRUE
+			output_message += message[character_index]
+			continue
 		if(message[character_index] == "<")
 			parsing_message = FALSE
 			if(length(current_string_to_scramble))

@@ -1445,7 +1445,7 @@
 
 /mob/living/carbon/human/verb/remove_your_splints()
 	set name = "Remove Your Splints"
-	set category = "Object"
+	set category = "IC"
 
 	remove_splints()
 

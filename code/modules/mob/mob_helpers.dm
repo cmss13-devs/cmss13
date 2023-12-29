@@ -158,13 +158,11 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 					in_single_quote = FALSE
 				else
 					in_single_quote = TRUE
-				continue
 			if(message[character_index] == "\"")
 				if(in_double_quote)
 					in_double_quote = FALSE
 				else
 					in_double_quote = TRUE
-				continue
 			if(in_single_quote || in_double_quote)
 				output_message += message[character_index]
 				continue

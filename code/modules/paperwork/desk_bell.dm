@@ -79,7 +79,7 @@
 
 /// Check if the clapper breaks, and if it does, break it chance to break is 1% for every 100 rings of the bell.
 /obj/item/desk_bell/proc/check_clapper(mob/living/user)
-	if(prob(times_rang / 100) && ring_cooldown_length)
+	if(prob(times_rang / 100))
 		to_chat(user, SPAN_NOTICE("You hear [src]'s clapper fall off of its hinge. Nice job, you broke it."))
 		broken_ringer = TRUE
 

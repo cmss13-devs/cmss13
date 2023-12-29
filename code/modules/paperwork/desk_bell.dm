@@ -48,7 +48,7 @@
 			visible_message(SPAN_NOTICE("[user] begins repairing [src]..."), SPAN_NOTICE("You begin repairing [src]..."))
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]"), SPAN_NOTICE("You repair [src]."))
-				playsound(user, 'sound/items/Screwdriver.ogg', 50, vary = TRUE)
+				playsound(user, 'sound/items/Screwdriver.ogg', 50)
 				broken_ringer = FALSE
 				times_rang = 0
 				return TRUE
@@ -64,7 +64,7 @@
 			visible_message(SPAN_NOTICE("[user] begins taking apart [src]..."), SPAN_NOTICE("You begin taking apart [src]..."))
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				visible_message(SPAN_NOTICE("[user] takes apart [src]."), SPAN_NOTICE("You take apart [src]."))
-				playsound(user, 'sound/items/deconstruct.ogg', 50, vary = TRUE)
+				playsound(user, 'sound/items/deconstruct.ogg', 50)
 				new /obj/item/stack/sheet/metal(get_turf(src))
 				qdel(src)
 				return TRUE

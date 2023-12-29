@@ -500,13 +500,13 @@
 	QDEL_IN(src, ttl)
 
 /obj/effect/xenomorph/xeno_telegraph/red
-	color = COLOUR_DARK_RED
+	color = COLOR_DARK_RED
 
 /obj/effect/xenomorph/xeno_telegraph/brown
-	color = COLOUR_BROWN
+	color = COLOR_BROWN
 
 /obj/effect/xenomorph/xeno_telegraph/green
-	color = COLOUR_GREEN
+	color = COLOR_GREEN
 
 /// This has a brown icon state and does not have a color overlay by default.
 /obj/effect/xenomorph/xeno_telegraph/abduct_hook

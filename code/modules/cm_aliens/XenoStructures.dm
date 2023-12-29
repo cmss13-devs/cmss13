@@ -160,7 +160,6 @@
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
 	. = ..()
 	var/mob/living/carbon/human/H = AM
-	// Wait doesn't this stack slows if you get dragged over it? What's going on here?
 	if(istype(H) && !H.ally_of_hivenumber(hivenumber))
 		H.next_move_slowdown = max(H.next_move_slowdown, slow_amt)
 		return .

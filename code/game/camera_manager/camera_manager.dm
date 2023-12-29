@@ -30,9 +30,11 @@
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
+	cam_screen.appearance_flags |= TILE_BOUND
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
+	cam_background.appearance_flags |= TILE_BOUND
 
 	cam_plane_masters = list()
 	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
@@ -53,6 +55,7 @@
 
 /datum/component/camera_manager/proc/add_plane(atom/movable/screen/plane_master/instance)
 	instance.assigned_map = map_name
+	instance.appearance_flags |= TILE_BOUND
 	instance.del_on_map_removal = FALSE
 	if(instance.blend_mode_override)
 		instance.blend_mode = instance.blend_mode_override

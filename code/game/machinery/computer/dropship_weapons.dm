@@ -317,7 +317,6 @@
 						defense.set_range()
 						var/datum/shape/rectangle/current_bb = defense.range_bounds
 						camera_area_equipment = sentry
-						// TODO: Determine why the width/height only properly updates if the camera was previously looking at nothing (or if view closed and returned to)
 						SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, current_bb.center_x, current_bb.center_y, defense.loc.z, current_bb.width, current_bb.height)
 				return TRUE
 

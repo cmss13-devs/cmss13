@@ -446,33 +446,10 @@
 //ATTACK WITH BOTH HANDS COMBO
 
 /obj/structure/machinery/m56d_hmg/auto/attack_hand(mob/living/user)
-	..()
+	if(..())
+		return TRUE
 
-	var/turf/user_turf = get_turf(user)
-	for(var/opp_dir in reverse_nearby_direction(src.dir))
-		if(get_step(src, opp_dir) == user_turf)
-			if(operator) //If there is already a operator then they're manning it.
-				if(operator.interactee == null)
-					operator = null //this shouldn't happen, but just in case
-				else
-					to_chat(user, "Someone's already controlling it.")
-					return
-			if(!(user.alpha > 60))
-				to_chat(user, SPAN_WARNING("You aren't going to be setting up while cloaked."))
-				return
-			else
-				if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
-					to_chat(user, "You're already manning something!")
-					return
-
-			if(user.get_active_hand() == null && user.get_inactive_hand() == null)
-				ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
-				user.set_interaction(src)
-				give_action(user, /datum/action/human_action/mg_exit)
-			else
-				to_chat(usr, SPAN_NOTICE("Your hands are too busy holding things to grab the handles!"))
-		else
-			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
+	try_mount_gun(user)
 
 // DISASSEMBLY
 

@@ -797,43 +797,65 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	if(!ishuman(usr) || usr.stat)
+	// If the gun sprite wasn't dragged onto the user, or the user isn't adjacent.
+	if(over_object != usr || !in_range(src, usr))
 		return
-	var/mob/living/carbon/human/user = usr //this is us
+	// If the user is already manning the gun.
+	if(operator == usr)
+		// Exit the gun.
+		usr.unset_interaction()
+	else
+		// Try to man the gun
+		try_mount_gun(usr)
 
-	var/user_turf = get_turf(user)
+/obj/structure/machinery/m56d_hmg/proc/try_mount_gun(mob/living/carbon/human/user)
+	// If the user isn't a human.
+	if(!istype(user))
+		return
 
-	for(var/opp_dir in reverse_nearby_direction(src.dir))
-		if(get_step(src, opp_dir) == user_turf) //Players must be behind, or left or right of that back tile
-			src.add_fingerprint(usr)
-			if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves
-				if(user.interactee == src)
-					user.unset_interaction()
-					user.visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[user] lets go of \the [src].")]", SPAN_NOTICE("You let go of \the [src]."))
-					return
-				if(operator) //If there is already a operator then they're manning it.
-					if(operator.interactee == null)
-						operator = null //this shouldn't happen, but just in case
-					else
-						to_chat(user, "Someone's already controlling it.")
-						return
-				else
-					if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
-						to_chat(user, "You're already manning something!")
-						return
-					if(user.get_active_hand() != null)
-						to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
+	// If the user isn't actually allowed to use guns.
+	if(!user.allow_gun_usage)
+		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+		return
 
-					if(!user.allow_gun_usage)
-						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
-						return
-					else
-						ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
-						user.set_interaction(src)
-						give_action(user, /datum/action/human_action/mg_exit)
+	// If the user is invisible.
+	if(user.alpha <= 60)
+		to_chat(user, SPAN_WARNING("You can't use [src] while cloaked!"))
+		return
 
+	// Make sure we're not manning two guns at once, tentacle arms.
+	if(user.interactee)
+		to_chat(user, SPAN_WARNING("You're already manning something!"))
+		return
+
+	// Check the directions opposite of where the gun is facing.
+	var/found_user = FALSE
+	var/turf/user_turf = get_turf(user)
+	for(var/opposite_dir in reverse_nearby_direction(src.dir))
+		if(get_step(src, opposite_dir) == user_turf)
+			found_user = TRUE
+			break
+	// If the user isn't standing behind the gun.
+	if(!found_user)
+		to_chat(user, SPAN_WARNING("You are too far from the handles to man [src]!"))
+		return
+
+	// If there's already someone manning it.
+	if(operator)
+		// This shouldn't happen, but just in case.
+		if(operator.interactee == null)
+			operator = null
 		else
-			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
+			to_chat(user, SPAN_WARNING("Someone's already controlling [src]!"))
+			return
+
+	// If both hands aren't empty.
+	if(user.get_active_hand() || user.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("You need both hands free to grab the handles!"))
+		return
+
+	// Man the gun!
+	user.set_interaction(src)
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
 	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))

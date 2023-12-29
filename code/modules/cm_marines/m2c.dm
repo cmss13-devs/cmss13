@@ -515,7 +515,6 @@
 	..()
 	ADD_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(disable_interaction))
-	RegisterSignal(user, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(body_position_changed))
 
 // DISMOUNT THE MG
 
@@ -599,12 +598,6 @@
 	SIGNAL_HANDLER
 
 	if(user.body_position != STANDING_UP || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
-		user.unset_interaction()
-
-/obj/structure/machinery/m56d_hmg/auto/proc/body_position_changed(mob/living/user, body_position, old_body_position)
-	SIGNAL_HANDLER
-
-	if(body_position != STANDING_UP)
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/auto/proc/handle_rotating_gun(mob/user)

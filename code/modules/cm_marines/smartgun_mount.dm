@@ -858,44 +858,52 @@
 	user.set_interaction(src)
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
-	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))
-	flags_atom |= RELAY_CLICK
+	ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
+	give_action(user, /datum/action/human_action/mg_exit)
+	user.forceMove(src.loc)
+	user.setDir(dir)
+	user.reset_view(src)
 	user.status_flags |= IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))
+	user.visible_message(SPAN_NOTICE("[user] mans [src]."), SPAN_NOTICE("You man [src], locked and loaded!"))
+	user_old_x = user.pixel_x
+	user_old_y = user.pixel_y
+	update_pixels(user)
+
+	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
 	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
 	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
-	user.forceMove(src.loc)
-	user.setDir(dir)
-	user_old_x = user.pixel_x
-	user_old_y = user.pixel_y
-	user.reset_view(src)
-	update_pixels(user)
-	operator = user
 
-/obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/living/user)
-	flags_atom &= ~RELAY_CLICK
-	SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
-	user.status_flags &= ~IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
+	operator = user
+	flags_atom |= RELAY_CLICK
+
+/obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
 	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
-	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
-	user.reset_view(null)
-	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal
+	remove_action(user, /datum/action/human_action/mg_exit)
 	user.Move(get_step(src, reverse_direction(src.dir)))
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
+	user.reset_view(null)
+	user.status_flags &= ~IMMOBILE_ACTION
+	user.visible_message(SPAN_NOTICE("[user] lets go of [src]."), SPAN_NOTICE("You let go of [src], letting the gun rest."))
 	user_old_x = 0 //reset our x
 	user_old_y = 0 //reset our y
 	update_pixels(user, FALSE)
-	if(operator == user) //We have no operator now
-		operator = null
-	remove_action(user, /datum/action/human_action/mg_exit)
+	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal
+
+	SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
 	UnregisterSignal(user, list(
 		COMSIG_MOB_MG_EXIT,
 		COMSIG_MOB_RESISTED,
 		COMSIG_MOB_DEATH,
 		COMSIG_LIVING_SET_BODY_POSITION,
+		COMSIG_MOB_MOUSEUP,
+		COMSIG_MOB_MOUSEDOWN,
+		COMSIG_MOB_MOUSEDRAG,
 	))
+
+	if(operator == user) //We have no operator now
+		operator = null
+	flags_atom &= ~RELAY_CLICK
 
 
 /obj/structure/machinery/m56d_hmg/proc/update_pixels(mob/user, mounting = TRUE)

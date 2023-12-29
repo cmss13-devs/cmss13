@@ -847,8 +847,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	set name = "Show/Hide Actions"
 	set category = "IC"
 
-	if(!ismob(usr))
-		return
 	var/mob/user = usr
 
 	var/list/actions_list = list()

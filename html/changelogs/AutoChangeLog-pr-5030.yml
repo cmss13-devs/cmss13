@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - rscadd: "Added a tutorial system for various roles (and just general information), find it in the lobby screen."

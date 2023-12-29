@@ -137,14 +137,14 @@
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
 	to_chat(user, SPAN_NOTICE("You deploy [M]."))
-	if((rounds > 0) && !user.get_inactive_hand())
-		user.set_interaction(M)
-		give_action(user, /datum/action/human_action/mg_exit)
 	M.rounds = rounds
 	M.overheat_value = overheat_value
 	M.health = health
 	M.update_icon()
 	qdel(src)
+
+	if(M.rounds > 0)
+		M.try_mount_gun(user)
 
 /obj/item/device/m2c_gun/attackby(obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))

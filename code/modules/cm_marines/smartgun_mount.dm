@@ -835,8 +835,8 @@
 		if(get_step(src, opposite_dir) == user_turf)
 			found_user = TRUE
 			break
-	// If the user isn't standing behind the gun.
-	if(!found_user)
+	// If the user isn't standing behind or on top of the gun.
+	if(!found_user && user_turf != get_turf(src))
 		to_chat(user, SPAN_WARNING("You are too far from the handles to man [src]!"))
 		return
 

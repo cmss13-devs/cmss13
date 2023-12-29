@@ -20030,6 +20030,11 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/reinforced/almayer_blend/north,
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = -8;
+	anchored = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -20415,6 +20420,11 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/reinforced/almayer_blend,
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = 10;
+	anchored = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -42054,8 +42064,11 @@
 /obj/structure/machinery/door/window/eastleft{
 	req_access_txt = "8"
 	},
-/obj/item/book/manual/medical_diagnostics_manual,
-/obj/item/device/megaphone,
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = 10;
+	anchored = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -69247,6 +69260,8 @@
 	dir = 8;
 	pixel_x = 17
 	},
+/obj/item/device/megaphone,
+/obj/item/book/manual/medical_diagnostics_manual,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},

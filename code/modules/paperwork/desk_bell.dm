@@ -5,15 +5,17 @@
 	desc = "The cornerstone of any customer service job. You feel an unending urge to ring it. It looks like it can be wrenched or screwdrivered."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "desk_bell"
-	/// The amount of times this bell has been rang, used to check the chance it breaks
+	w_class = SIZE_SMALL
+	embeddable = FALSE
+	/// The amount of times this bell has been rang, used to check the chance it breaks.
 	var/times_rang = 0
 	/// Is this bell broken?
 	var/broken_ringer = FALSE
 	/// Holds the time that the bell can next be rang.
 	var/ring_cooldown = 0
 	/// The length of the cooldown. Setting it to 0 will skip all cooldowns alltogether.
-	var/ring_cooldown_length = 0.5 SECONDS // This is here to protect against tinnitus.
-	/// The sound the bell makes
+	var/ring_cooldown_length = 1 SECONDS // This is here to protect against tinnitus.
+	/// The sound the bell makes.
 	var/ring_sound = 'sound/misc/desk_bell.ogg'
 
 /obj/item/desk_bell/attack_hand(mob/living/user)
@@ -39,9 +41,8 @@
 	if(over_object == mob)
 		mob.put_in_hands(src)
 
-	add_fingerprint(mob)
-
 /obj/item/desk_bell/attackby(obj/item/item, mob/user)
+	//Repair the desk bell if its broken and we're using a screwdriver.
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(broken_ringer)
 			visible_message("<span class='notice'>[user] begins repairing [src]...</span>", "<span class='notice'>You begin repairing [src]...</span>")
@@ -53,10 +54,11 @@
 				return TRUE
 			return FALSE
 
-	// Return at this point so we don't anchor, unanchor or
-	if(isstorage(loc))
+	//Return at this point if we're not on a turf so we don't anchor or unanchor inside our bag/hands or inventory.
+	if(!isturf(loc))
 		return
 
+	//Wrenching down and unwrenching.
 	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 		if(user.a_intent == INTENT_HARM)
 			visible_message("<span class='notice'>[user] begins taking apart [src]...</span>", "<span class='notice'>You begin taking apart [src]...</span>")
@@ -74,13 +76,13 @@
 			return TRUE
 
 
-/// Check if the clapper breaks, and if it does, break it chance to break is 1% for every 100 rings of the bell
+/// Check if the clapper breaks, and if it does, break it chance to break is 1% for every 100 rings of the bell.
 /obj/item/desk_bell/proc/check_clapper(mob/living/user)
 	if(prob(times_rang / 100) && ring_cooldown_length)
 		to_chat(user, "<span class='notice'>You hear [src]'s clapper fall off of its hinge. Nice job, you broke it.</span>")
 		broken_ringer = TRUE
 
-/// Ring the bell
+/// Ring the bell.
 /obj/item/desk_bell/proc/ring_bell(mob/living/user)
 	if(broken_ringer)
 		return FALSE

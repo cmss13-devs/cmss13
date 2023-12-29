@@ -131,41 +131,56 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		index++
 	return output_message
 
-// proc that parses an html input string and scrambles the non-html string contents
+// proc that parses an html input string and scrambles the non-html string contents.
 /proc/stars_decode_html(message)
 	if(!length(message))
 		return
 
-	// todo: sanitize string more to remove unnencessary <>.
-	// list of parsed strings that have been scrambled, used to then reinsert the scrambled strings in to the message
-	var/list/replaced_scrambled_strings = list()
-
-	// boolean value to know if the current indexed element needs to be added to the scrambled message.
+	// boolean value to know if the current indexed element needs to be scrambled.
 	var/parsing_message = FALSE
 
-	// the current string value that needs to be scrambled.
+	// boolean values to know if we are currently inside a double or single quotation.
+	var/in_single_quote = FALSE
+	var/in_double_quote = FALSE
+
+	// string that will be scrambled
 	var/current_string_to_scramble = ""
 
+	// output string after parse
+	var/output_message = ""
+
 	for(var/character_index in 1 to length(message))
+
+		// Apparent edge case safety.
+		if(!parsing_message)
+			if(message[character_index] == "'")
+				if(in_single_quote)
+					in_single_quote = FALSE
+				else
+					in_single_quote = TRUE
+				continue
+			if(message[character_index] == "\"")
+				if(in_double_quote)
+					in_double_quote = FALSE
+				else
+					in_double_quote = TRUE
+				continue
+			if(in_single_quote || in_double_quote)
+				output_message += message[character_index]
+				continue
 		if(message[character_index] == ">")
 			parsing_message = TRUE
-			continue
 		if(message[character_index] == "<")
 			parsing_message = FALSE
-			if(!length(current_string_to_scramble))
-				continue
 			var/scrambled_string = stars(current_string_to_scramble)
-			replaced_scrambled_strings[current_string_to_scramble] += scrambled_string
+			output_message += scrambled_string
 			current_string_to_scramble = null
-			continue
+
 		if(parsing_message)
 			current_string_to_scramble += message[character_index]
-
-	for(var/unscrambled_message_key in replaced_scrambled_strings)
-		message = replacetext(message, unscrambled_message_key, replaced_scrambled_strings[unscrambled_message_key])
-
-
-	return message
+		else
+			output_message += message[character_index]
+	return output_message
 
 /proc/slur(phrase)
 	phrase = html_decode(phrase)

@@ -15,6 +15,7 @@ export const DemoSim = (_props, context) => {
 
   const canDetonate = timeLeft < 0 && data.configuration && data.looking;
 
+
   return (
     <Window width={550} height={300}>
       <Window.Content scrollable>

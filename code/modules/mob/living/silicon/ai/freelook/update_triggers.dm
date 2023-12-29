@@ -1,5 +1,3 @@
-#define BORG_CAMERA_BUFFER 5
-
 //UPDATE TRIGGERS, when the chunk (and the surrounding chunks) should update.
 
 // TURFS
@@ -66,10 +64,9 @@
 		if(src.camera && src.camera.network.len)
 			if(!updating)
 				updating = 1
-				spawn(BORG_CAMERA_BUFFER)
-					if(oldLoc != src.loc)
-						GLOB.cameranet.updatePortableCamera(src.camera)
-					updating = 0
+				if(oldLoc != src.loc)
+					GLOB.cameranet.updatePortableCamera(src.camera)
+				updating = 0
 
 /mob/living/carbon/human/var/updating = 0
 
@@ -83,10 +80,9 @@
 			if (updating)
 				continue
 			updating = TRUE
-			spawn(BORG_CAMERA_BUFFER)
-				if (oldLoc != loc)
-					GLOB.cameranet.updatePortableCamera(H.camera)
-				updating = FALSE
+			if (oldLoc != loc)
+				GLOB.cameranet.updatePortableCamera(H.camera)
+			updating = FALSE
 
 // CAMERA
 
@@ -114,4 +110,3 @@
 		GLOB.cameranet.removeCamera(src)
 	. = ..()
 
-//#undef BORG_CAMERA_BUFFER

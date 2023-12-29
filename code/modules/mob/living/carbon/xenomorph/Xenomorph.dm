@@ -476,7 +476,7 @@
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	// Only handle free slots if the xeno is not in tdome
-	if(hive && !is_admin_level(z))
+	if(hive && !should_block_game_interaction(src))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		hive.used_slots[selected_caste]++
 
@@ -731,8 +731,6 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	if(issynth(L) && L.health < 0) // no pulling critted or dead synths
-		return FALSE
 	if(L.buckled)
 		return FALSE //to stop xeno from pulling marines on roller beds.
 	if(!L.is_xeno_grabbable())
@@ -1042,7 +1040,7 @@
 
 /mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	. = ..()
-	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !is_admin_level(z))
+	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()

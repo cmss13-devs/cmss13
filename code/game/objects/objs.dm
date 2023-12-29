@@ -278,6 +278,11 @@
 	if (iszombie(user))
 		return
 
+	// mobs that become immobilized should not be able to buckle themselves.
+	if(M == user && HAS_TRAIT(user, TRAIT_IMMOBILIZED))
+		to_chat(user, SPAN_WARNING("You are unable to do this in your current state."))
+		return
+
 	if(density)
 		density = FALSE
 		if(!step(M, get_dir(M, src)) && loc != M.loc)

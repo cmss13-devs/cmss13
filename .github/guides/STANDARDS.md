@@ -89,7 +89,7 @@ var/path_type = "/obj/item/baseball_bat"
 ```
 
 ## Documenting logic
-Sometimes you might want to comment on logic in your proc, however, most of the time this isn't waranted outside of autodoc
+Sometimes you might want to comment on logic in your proc, however, most of the time this isn't warranted outside of autodoc
 There really isn't a need to comment on every line of code that's written, if the code is following
 proper standards, such as using defines and good naming conventions, it's usually not going to add much to the quality of the code
 But generally, if you're going to comment on some code it's best to comment on things that are not totally obvious

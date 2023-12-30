@@ -131,7 +131,15 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		index++
 	return output_message
 
-// proc that parses an html input string and scrambles the non-html string contents.
+/**
+ * Summary: proc that parses an html input string and scrambles the non-html string contents.
+ *
+ * Arguments:
+ * * arg1 - message, an html string value to be parsed and modified.
+ *
+ * Return:
+ * returns the parsed and modified html output with the text content being partially scrambled with asteriks
+ */
 /proc/stars_decode_html(message)
 	if(!length(message))
 		return
@@ -150,7 +158,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	var/output_message = ""
 	for(var/character_index in 1 to length(message))
 
-		// Apparent edge case safety.
+		// Apparent edge case safety, prevents characters inside of a tag from being considered if < or >
 		if(!parsing_message)
 			if(message[character_index] == "'")
 				if(in_single_quote)
@@ -165,6 +173,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			if(in_single_quote || in_double_quote)
 				output_message += message[character_index]
 				continue
+
 		if(message[character_index] == ">")
 			parsing_message = TRUE
 			output_message += message[character_index]

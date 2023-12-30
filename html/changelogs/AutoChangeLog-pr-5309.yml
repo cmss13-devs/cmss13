@@ -1,0 +1,4 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - refactor: "sentry laptop now uses camera manager component"

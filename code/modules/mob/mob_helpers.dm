@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  * Summary: proc that parses an html input string and scrambles the non-html string contents.
  *
  * Arguments:
- * * arg1 - message, an html string value to be parsed and modified.
+ * * message - an html string value to be parsed and modified.
  *
  * Return:
  * returns the parsed and modified html output with the text content being partially scrambled with asteriks

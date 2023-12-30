@@ -149,6 +149,7 @@
 	// Turn off the console
 	if(length(concurrent_users) == 0 && is_living)
 		current = null
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 		last_camera_turf = null
 		if(use_power)
 			update_use_power(USE_POWER_IDLE)

@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - bugfix: "Runtime with milk and possibly other reagent's on_mob_life()"

@@ -200,7 +200,7 @@
 	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
 	last_camera_turf = get_turf(cam_location)
 
-	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
+	var/list/visible_things = current.isXRay() ? range("[target_width]x[target_height]", cam_location) : view("[target_width]x[target_height]", cam_location)
 	render_objects(visible_things)
 
 /datum/component/camera_manager/proc/update_area_camera()

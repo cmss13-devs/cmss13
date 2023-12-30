@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed the CAS laser cannon only setting fire to a single tile, rather a 7x7 range."

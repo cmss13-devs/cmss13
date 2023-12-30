@@ -116,7 +116,7 @@ Good comment, using defines and proper naming conventions
 if(infected_human.stat == DEAD)
 	infection_rate = FAST_INFECTION_RATE
 
-// infection rate should be reduced mobs that are alive
+// infection rate should be reduced for mobs that are alive
 if(infected_human.stat != DEAD)
 	infection_rate = SLOW_INFECTION_RATE
 ```

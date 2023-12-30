@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	var/output_message = ""
 	for(var/character_index in 1 to length(message))
 
-		// Apparent edge case safety, prevents characters inside of a tag from being considered if < or >
+		// Apparent edge case safety, we only want to check the < and > on the edges of the tag.
 		if(!parsing_message)
 			if(message[character_index] == "'")
 				if(in_single_quote)

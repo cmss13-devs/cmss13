@@ -87,7 +87,7 @@
 	RegisterSignal(parent, COMSIG_CAMERA_SET_AREA, PROC_REF(set_camera_rect))
 	RegisterSignal(parent, COMSIG_CAMERA_SET_TARGET, PROC_REF(set_camera))
 	RegisterSignal(parent, COMSIG_CAMERA_CLEAR, PROC_REF(clear_camera))
-	RegisterSignal(parent, COMSIG_CAMERA_REFRESH, PROC_REF(refresh_area_camera))
+	RegisterSignal(parent, COMSIG_CAMERA_REFRESH, PROC_REF(refresh_camera))
 
 /datum/component/camera_manager/UnregisterFromParent()
 	. = ..()

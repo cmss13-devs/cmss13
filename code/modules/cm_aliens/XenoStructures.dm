@@ -160,13 +160,12 @@
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
 	. = ..()
 	var/mob/living/carbon/human/H = AM
-	// Wait doesn't this stack slows if you get dragged over it? What's going on here?
 	if(istype(H) && !H.ally_of_hivenumber(hivenumber))
-		H.next_move_slowdown = H.next_move_slowdown + slow_amt
+		H.next_move_slowdown = max(H.next_move_slowdown, slow_amt)
 		return .
 	var/mob/living/carbon/xenomorph/X = AM
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
-		X.next_move_slowdown = X.next_move_slowdown + slow_amt
+		X.next_move_slowdown = max(X.next_move_slowdown, slow_amt)
 		return .
 
 /obj/effect/alien/resin/sticky/proc/forsaken_handling()

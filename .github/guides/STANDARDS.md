@@ -95,7 +95,7 @@ proper standards, such as using defines and good naming conventions, it's usuall
 But generally, if you're going to comment on some code it's best to comment on things that are not totally obvious
 And more importantly comment on why something is happening rather than what is happening.
 
-Here is a follwing example:
+Here is a following example:
 
 Bad comment
 ```

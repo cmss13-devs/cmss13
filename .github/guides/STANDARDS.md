@@ -12,6 +12,7 @@ As with the style guide, you are expected to follow these specifications in orde
 		- [User Interfaces](#user-interfaces)
 		- [Dont override type safety checks](#dont-override-type-safety-checks)
 		- [Do not use text/string based type paths](#do-not-use-textstring-based-type-paths)
+		- [how to properly use comments](#documenting-logic)
 		- [Other Notes](#other-notes)
 	- [Structural](#structural)
 		- [No duplicated code (Don't repeat yourself)](#no-duplicated-code-dont-repeat-yourself)
@@ -86,6 +87,42 @@ var/path_type = /obj/item/baseball_bat
 //Bad
 var/path_type = "/obj/item/baseball_bat"
 ```
+
+## Documenting logic
+Sometimes you might want to comment on logic in your proc, however, most of the time this isn't waranted outside of autodoc
+There really isn't a need to comment on every line of code that's written, if the code is following
+proper standards, such as using defines and good naming conventions,nit's usually not going to add much to the quality of the code
+But generally, if you're going to comment on some code it's best to comment on things that are not totally obvious
+And more importantly comment on why something is happening rather than what is happening.
+
+Here is a follwing example:
+
+Bad comment
+```
+// check if mob is dead
+if(H.stat == DEAD)
+	infection_rate = 4
+
+// check if mob isn't dead
+if(H.stat != DEAD)
+	infection_rate = 1
+```
+
+Good comment, using defines and proper naming conventions
+```
+#define FAST_INFECTION_RATE 4
+#define SLOW_INFECTION_RATE 1
+// infection rate should be increased for dead mobs
+if(infected_human.stat == DEAD)
+	infection_rate = FAST_INFECTION_RATE
+
+// infection rate should be reduced mobs that are alive
+if(infected_human.stat != DEAD)
+	infection_rate = SLOW_INFECTION_RATE
+```
+
+notice how for both the comment probably wasn't necessary as it's clear what's happening either way
+but it's a bit more clear in the second example because of the defines and naming conventions
 
 ### Other Notes
 

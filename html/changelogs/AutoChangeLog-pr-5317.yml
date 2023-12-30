@@ -1,4 +1,0 @@
-author: "Cthulhu80"
-delete-after: True
-changes:
-  - bugfix: "fixes immobilized mobs being able to buckle themselves"

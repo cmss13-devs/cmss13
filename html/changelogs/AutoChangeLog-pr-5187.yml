@@ -1,0 +1,7 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - qol: "creating a new section called engineering supplies for the rifleman and the team leader."
+  - balance: "added standard binocular to the rifleman vendor at a cost of 5."
+  - balance: "added Range Finder and Laser Designator binoculars to Team leader at a cost of 10 and 20."
+  - balance: "added ES-11 Mobile Fuel Canister and ME3 hand welder to Team leader and rifleman for 5 each."

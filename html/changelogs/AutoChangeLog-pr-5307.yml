@@ -1,4 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - refactor: "tgui js components now jsx"

@@ -1,0 +1,4 @@
+author: "Cthulhu80"
+delete-after: True
+changes:
+  - bugfix: "Fixes evac pods launching with more than the occupant limit"

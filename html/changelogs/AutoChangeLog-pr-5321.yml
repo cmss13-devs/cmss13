@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed the pyro spec's fuel pack sometimes giving weird failure messages when trying to switch fuel."

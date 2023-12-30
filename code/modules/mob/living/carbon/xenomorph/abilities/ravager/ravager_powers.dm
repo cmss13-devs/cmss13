@@ -132,16 +132,8 @@
 	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 
 	var/facing = get_dir(xeno, human)
-	var/turf/turf = xeno.loc
-	var/turf/temp = xeno.loc
 
-	for(var/step in 0 to behavior.fling_distance-1)
-		temp = get_step(turf, facing)
-		if (!temp)
-			break
-		turf = temp
-
-	human.throw_atom(turf, behavior.fling_distance, SPEED_VERY_FAST, xeno, TRUE)
+	xeno.throw_carbon(human, facing, behavior.fling_distance, SPEED_VERY_FAST, shake_camera = FALSE, immobilize = TRUE)
 
 /datum/action/xeno_action/activable/scissor_cut/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/ravager_user = owner

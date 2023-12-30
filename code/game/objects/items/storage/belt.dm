@@ -1214,10 +1214,6 @@
 		"1" = list(
 			"icon_x" = 10,
 			"icon_y" = -1))
-	item_state_slots = list(
-		WEAR_J_STORE = "m4a3_holster",
-		WEAR_WAIST = "xm51_holster"
-		)
 
 	//Keep a track of how many magazines are inside the belt.
 	var/magazines = 0

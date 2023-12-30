@@ -115,8 +115,11 @@
 	target_height = null
 	show_camera_static()
 
-/datum/component/camera_manager/proc/refresh_area_camera()
+/datum/component/camera_manager/proc/refresh_camera()
 	SIGNAL_HANDLER
+	if(render_mode == RENDER_MODE_AREA)
+		update_area_camera()
+		return
 	update_target_camera()
 
 /datum/component/camera_manager/proc/set_camera(source, atom/target, w, h)

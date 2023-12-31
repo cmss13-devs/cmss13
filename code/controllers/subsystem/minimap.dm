@@ -690,8 +690,7 @@ SUBSYSTEM_DEF(minimaps)
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 
 	if(is_xeno && xeno.hive.see_humans_on_tacmap)
-		allowed_flags = MINIMAP_FLAG_ALL
-		faction = FACTION_NEUTRAL
+		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_PMC|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
 		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
 
 	new_current_map = get_unannounced_tacmap_data_png(faction)

@@ -1,0 +1,4 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - bugfix: "properly sorted team lead position in squad info page"

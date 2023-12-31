@@ -1,0 +1,4 @@
+author: "Cthulhu80"
+delete-after: True
+changes:
+  - bugfix: "Fixes photos not being viewable from any distance as an observer"

@@ -78,7 +78,7 @@
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
-			read_paper(user, TRUE)
+			read_paper(user,scramble = TRUE)
 		else
 			read_paper(user)
 	else

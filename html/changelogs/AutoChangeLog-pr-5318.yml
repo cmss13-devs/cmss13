@@ -1,0 +1,4 @@
+author: "Cthulhu80"
+delete-after: True
+changes:
+  - bugfix: "fixes users getting stuck inside of the simulator"

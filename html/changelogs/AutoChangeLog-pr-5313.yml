@@ -1,0 +1,6 @@
+author: "Cthulhu80"
+delete-after: True
+changes:
+  - bugfix: "fixes the associated examine text being displayed for different hud types even when removed."
+  - balance: "slightly increases zombie infection rate in dead mobs"
+  - refactor: "refactored some zombie code."

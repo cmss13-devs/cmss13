@@ -151,44 +151,49 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	var/in_single_quote = FALSE
 	var/in_double_quote = FALSE
 
+	// string of what tag we're currently in
+	var/current_tag = ""
+	var/escaped_tag = FALSE
+
 	// string that will be scrambled
 	var/current_string_to_scramble = ""
 
 	// output string after parse
 	var/output_message = ""
 	for(var/character_index in 1 to length(message))
+		var/current_char = message[character_index]
 
 		// Apparent edge case safety, we only want to check the < and > on the edges of the tag.
 		if(!parsing_message)
-			if(message[character_index] == "'")
-				if(in_single_quote)
-					in_single_quote = FALSE
-				else
-					in_single_quote = TRUE
-			if(message[character_index] == "\"")
-				if(in_double_quote)
-					in_double_quote = FALSE
-				else
-					in_double_quote = TRUE
+			if(current_char == "'")
+				in_single_quote = !in_single_quote
+			if(current_char == "\"")
+				in_double_quote = !in_double_quote
 			if(in_single_quote || in_double_quote)
-				output_message += message[character_index]
+				output_message += current_char
 				continue
 
-		if(message[character_index] == ">")
+		if(current_char == ">")
 			parsing_message = TRUE
-			output_message += message[character_index]
+			output_message += current_char
+			if(current_tag == "<style" || findtext(current_tag, "<style ") == 1) // findtext because HTML doesn't care about anything after whitespace
+				escaped_tag = TRUE
+			else if(escaped_tag && (current_tag == "</style" || findtext(current_tag, "</style ") == 1)) // 1 for findtext because we only care about the start of the string matching
+				escaped_tag = FALSE
 			continue
-		if(message[character_index] == "<")
+		if(current_char == "<")
 			parsing_message = FALSE
+			current_tag = ""
 			if(length(current_string_to_scramble))
 				var/scrambled_string = stars(current_string_to_scramble)
 				output_message += scrambled_string
-				current_string_to_scramble = null
+				current_string_to_scramble = ""
 
-		if(parsing_message)
-			current_string_to_scramble += message[character_index]
+		if(parsing_message && !escaped_tag)
+			current_string_to_scramble += current_char
 		else
-			output_message += message[character_index]
+			output_message += current_char
+			current_tag += current_char
 	return output_message
 
 /proc/slur(phrase)

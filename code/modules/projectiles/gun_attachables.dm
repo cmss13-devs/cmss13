@@ -1586,7 +1586,7 @@ Defined in conflicts.dm of the #defines folder.
 	scoper.clear_fullscreen("vulture")
 	scoper.client.remove_from_screen(scope_element)
 	scoper.see_in_dark -= darkness_view
-	scoper.lighting_alpha = 127
+	scoper.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	scoper.sync_lighting_plane_alpha()
 	QDEL_NULL(scope_element)
 	recalculate_scope_pos()

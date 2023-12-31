@@ -130,7 +130,7 @@
 	SSround_recording.recorder.stop_tracking(target_xeno)
 	SSround_recording.recorder.track_player(new_xeno)
 	qdel(target_xeno)
-	return ..()
+	return
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -423,7 +423,7 @@
 	user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
 
 	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
-	return ..()
+	return
 
 /datum/action/xeno_action/onclick/banish/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)
@@ -480,7 +480,7 @@
 		target_xeno.lock_evolve = FALSE
 
 	user_xeno.hive.banished_ckeys.Remove(banished_name)
-	return ..()
+	return
 
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"

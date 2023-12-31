@@ -285,7 +285,7 @@
 
 			xenos += X
 
-		if (offer_as_ert)
+		if(offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned xenos")
 			em_call.name = name
@@ -293,19 +293,17 @@
 			em_call.players_to_offer = xenos
 			em_call.owner = owner
 
-			var/launch_broadcast = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
-			if(launch_broadcast == "Yes")
-				launch_broadcast = TRUE
-			else
-				launch_broadcast = FALSE
+			var/quiet_launch = TRUE
+			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+			if(ql_prompt == "Yes")
+				quiet_launch = FALSE
 
-			var/announce_receipt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
-			if(announce_receipt == "Yes")
+			var/announce_receipt = FALSE
+			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+			if(ar_prompt == "Yes")
 				announce_receipt = TRUE
-			else
-				announce_receipt = FALSE
 
-			em_call.activate(launch_broadcast, announce_receipt)
+			log_debug("ERT DEBUG (CUSTOM SET): [quiet_launch] - [announce_receipt]")
+			em_call.activate(quiet_launch, announce_receipt)
 
 		message_admins("[key_name_admin(usr)] created [xenos_to_spawn] xenos as [xeno_caste] at [get_area(initial_spot)]")
-

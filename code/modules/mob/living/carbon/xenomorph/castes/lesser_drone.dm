@@ -83,6 +83,15 @@
 	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
 	weed_food_states_flipped = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
 
+/mob/living/carbon/xenomorph/lesser_drone/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	AddComponent(\
+		/datum/component/temporary_mute,\
+		"We aren't old enough to vocalize anything yet.",\
+		"We feel old enough to be able to vocalize and speak to the hivemind.",\
+		3 MINUTES,\
+	)
+
 /mob/living/carbon/xenomorph/lesser_drone/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)
 		return

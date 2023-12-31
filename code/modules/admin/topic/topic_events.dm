@@ -205,6 +205,7 @@
 			em_call.mob_max = humans.len
 			em_call.players_to_offer = humans
 			em_call.owner = owner
+
 			var/quiet_launch = TRUE
 			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
 			if(ql_prompt == "Yes")
@@ -214,6 +215,7 @@
 			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
 			if(ar_prompt == "Yes")
 				announce_receipt = TRUE
+
 			log_debug("ERT DEBUG (CUSTOM SET): [quiet_launch] - [announce_receipt]")
 			em_call.activate(quiet_launch, announce_receipt)
 

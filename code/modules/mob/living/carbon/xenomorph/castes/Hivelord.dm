@@ -8,7 +8,6 @@
 	max_health = XENO_HEALTH_TIER_7
 	plasma_gain = XENO_PLASMA_GAIN_TIER_10
 	plasma_max = XENO_PLASMA_TIER_10
-	crystal_max = XENO_CRYSTAL_HIGH
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE

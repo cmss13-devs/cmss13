@@ -46,6 +46,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/totalPlayers = 0 //used for pregame stats on statpanel
 	var/totalPlayersReady = 0 //used for pregame stats on statpanel
+	var/tutorial_disabled = FALSE //zonenote
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
@@ -477,7 +478,6 @@ SUBSYSTEM_DEF(ticker)
 	SIGNAL_HANDLER
 
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
-
 
 /datum/controller/subsystem/ticker/proc/hijack_ocurred()
 	if(mode)

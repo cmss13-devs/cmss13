@@ -1,16 +1,82 @@
 /obj/effect/firemission_guidance
 	invisibility = 101
-	var/list/users
+	var/list/mob/users
+	var/camera_width = 11
+	var/camera_height = 11
+	var/view_range = 7
 
 /obj/effect/firemission_guidance/New()
 	..()
 	users = list()
+
+/obj/effect/firemission_guidance/Destroy(force)
+	. = ..()
+	users = null
+
+/obj/effect/firemission_guidance/proc/can_use()
+	return TRUE
+
+/obj/effect/firemission_guidance/proc/isXRay()
+	return FALSE
+
+/obj/effect/firemission_guidance/proc/updateCameras(atom/target)
+	SEND_SIGNAL(target, COMSIG_CAMERA_SET_TARGET, src, camera_width, camera_height)
+
+/obj/effect/firemission_guidance/proc/clearCameras(atom/target)
+	SEND_SIGNAL(target, COMSIG_CAMERA_CLEAR)
 
 /datum/cas_fire_mission
 	var/mission_length = 3 //can be 3,4,6 or 12
 	var/list/datum/cas_fire_mission_record/records = list()
 	var/obj/structure/dropship_equipment/weapon/error_weapon
 	var/name = "Unnamed Firemission"
+
+/datum/cas_fire_mission/ui_data(mob/user)
+	. = list()
+	.["name"] = sanitize(copytext(name, 1, MAX_MESSAGE_LEN))
+	.["records"] = list()
+	for(var/datum/cas_fire_mission_record/record as anything in records)
+		.["records"] += list(record.ui_data(user))
+
+/datum/cas_fire_mission/proc/build_new_record(obj/structure/dropship_equipment/weapon/weap, fire_length)
+	var/datum/cas_fire_mission_record/record = new()
+	record.weapon = weap
+	record.offsets = new /list(fire_length)
+	for(var/idx = 1; idx<=fire_length; idx++)
+		record.offsets[idx] = "-"
+	records += record
+
+/datum/cas_fire_mission/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons, fire_length)
+	var/list/datum/cas_fire_mission_record/bad_records = list()
+	var/list/obj/structure/dropship_equipment/weapon/missing_weapons = list()
+	for(var/datum/cas_fire_mission_record/record in records)
+		// if weapon appears in weapons list but not in record
+		// > add empty record for new weapon
+		var/found = FALSE
+		for(var/obj/structure/dropship_equipment/weapon/weap in weapons)
+			if(record.weapon == weap)
+				found=TRUE
+				break
+		if(!found)
+			bad_records.Add(record)
+	for(var/obj/structure/dropship_equipment/weapon/weap in weapons)
+		var/found = FALSE
+		for(var/datum/cas_fire_mission_record/record in records)
+			if(record.weapon == weap)
+				found=TRUE
+				break
+		if(!found)
+			missing_weapons.Add(weap)
+	for(var/datum/cas_fire_mission_record/record in bad_records)
+		records -= record
+	for(var/obj/structure/dropship_equipment/weapon/weap in missing_weapons)
+		build_new_record(weap, fire_length)
+
+/datum/cas_fire_mission/proc/record_for_weapon(weapon_id)
+	for(var/datum/cas_fire_mission_record/record as anything in records)
+		if(record.weapon.ship_base.attach_id == weapon_id)
+			return record
+	return null
 
 /datum/cas_fire_mission/proc/check(obj/structure/machinery/computer/dropship_weapons/linked_console)
 	error_weapon = null
@@ -165,7 +231,7 @@
 	var/step = 1
 	for(step = 1; step<=steps; step++)
 		if(step > next_step)
-			current_turf = get_step(current_turf,direction)
+			current_turf = get_step(current_turf, direction)
 			next_step += tally_step
 			if(envelope)
 				envelope.change_current_loc(current_turf)

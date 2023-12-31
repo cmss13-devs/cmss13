@@ -306,7 +306,7 @@
 	var/target = get_step(get_step(Xeno, target_dir), target_dir)
 	var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
 	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
-	Xeno.throw_atom(target, target_dist, SPEED_FAST, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
+	Xeno.throw_atom(target, target_dist, SPEED_FAST, launch_type = LOW_LAUNCH, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
 
 	apply_cooldown()
 	return ..()

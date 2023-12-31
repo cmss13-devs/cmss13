@@ -211,21 +211,31 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(!is_ground_level(z))
-		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
-		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-		return
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 
+	// If the attacking xeno isn't the queen.
 	if(xeno.hive_pos != XENO_QUEEN)
-		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
-		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-		return
+		// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
+		if(dropship.playing_launch_announcement_alarm)
+			stop_playing_launch_announcement_alarm()
+			xeno.animation_attack_on(src)
+			to_chat(xeno, SPAN_XENONOTICE("We slash at [src], silencing its squawking!"))
+			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
+		else
+			to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
+			playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
+
+	if(!is_ground_level(z))
+		// "you" rather than "we" for this one since non-queen castes will have returned above.
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
 
 	if(is_remote)
 		groundside_alien_action(xeno)
 		return
 
-	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 	if(dropship.is_hijacked)
 		return
 
@@ -239,6 +249,7 @@
 			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
 		if(!GLOB.resin_lz_allowed)
 			set_lz_resin_allowed(TRUE)
+		stop_playing_launch_announcement_alarm()
 
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
@@ -285,9 +296,6 @@
 
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
-
-	dropship.alarm_sound_loop.stop()
-	dropship.playing_launch_announcement_alarm = FALSE
 
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
@@ -417,7 +425,7 @@
 			update_equipment(is_optimised, FALSE)
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, get_sfx("terminal_button"), 5, 1)
 			for(var/destination in local_data["destinations"])
 				if(destination["id"] == dock_id)
 					found = TRUE

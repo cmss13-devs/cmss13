@@ -350,7 +350,7 @@ Additional game mode variables.
 		if(cur_xeno.aghosted)
 			continue //aghosted xenos don't count
 		var/area/area = get_area(cur_xeno)
-		if(is_admin_level(cur_xeno.z) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
+		if(should_block_game_interaction(cur_xeno) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
 			continue //xenos on admin z level don't count
 		if(!istype(cur_xeno))
 			continue
@@ -734,8 +734,6 @@ Additional game mode variables.
 	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
 	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
-	// Xeno ressource collection
-	//new_queen.crystal_stored = XENO_STARTING_CRYSTAL
 	new_queen.update_icons()
 
 //===================================================\\

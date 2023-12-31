@@ -40,8 +40,6 @@
 		instance.del_on_map_removal = FALSE
 		if(instance.blend_mode_override)
 			instance.blend_mode = instance.blend_mode_override
-		if(istype(instance, /atom/movable/screen/plane_master/lighting))
-			instance.add_filter("awooga", 1, color_matrix_filter(color_matrix_from_string("#90ee90")))
 		instance.screen_loc = "[map_name]:CENTER"
 		cam_plane_masters += instance
 
@@ -71,7 +69,7 @@
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/cameras/attack_hand(mob/user)
-	if(!admin_console && is_admin_level(z))
+	if(!admin_console && should_block_game_interaction(src))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
 		return
 	if(inoperable())

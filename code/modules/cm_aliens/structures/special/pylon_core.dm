@@ -172,7 +172,7 @@
 			continue
 
 		if(checked_hive == linked_hive)
-			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relay at [get_area(src)].\n\nWe will now grow more of our number from this pylon. Hold it!"), hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relay at [get_area(src)].\n\nWe will now grow our numbers from this pylon. Hold it!"), hivenumber, XENO_GENERAL_ANNOUNCE)
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area(src)].[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
 

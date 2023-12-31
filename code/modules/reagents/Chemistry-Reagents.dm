@@ -152,6 +152,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	handle_processing(M, mods, delta_time)
 	holder.remove_reagent(id, custom_metabolism * delta_time)
 
+	if(!holder)
+		return FALSE
+
 	return TRUE
 
 //Pre-processing

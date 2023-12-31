@@ -1,0 +1,4 @@
+author: "Cthulhu80"
+delete-after: True
+changes:
+  - bugfix: "Fixes mobs being able to understand other languages while in crit."

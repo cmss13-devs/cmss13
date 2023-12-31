@@ -1,4 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - bugfix: "Fixes runtime calling post_attack() on a mob which has already been qdeleted via gibbing."

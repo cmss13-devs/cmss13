@@ -1,5 +1,5 @@
 // devolve a xeno - lots of old, vaguely shitty code here
-/datum/action/xeno_action/onclick/deevolve/use_ability(atom/Atom)
+/datum/action/xeno_action/proc/Devolve()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(!user_xeno.check_state())
 		return
@@ -353,7 +353,18 @@
 	user_xeno.hive.stored_larva--
 	return ..()
 
-/datum/action/xeno_action/onclick/banish/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/ManageHive/use_ability(atom/Atom)
+	var/mob/living/carbon/xenomorph/queen/queenbanish = owner
+
+
+
+	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish", "Re-Admit", "De-evolve"), theme="hive_status")
+	switch(choice)
+		if("Banish") banish(target)
+		if("Re-Admit") Readmit(target)
+		if("De-evolve") Devolve(target)
+
+/datum/action/xeno_action/proc/banish()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(!user_xeno.check_state())
 		return
@@ -410,7 +421,6 @@
 	target_xeno.hud_update_banished()
 	target_xeno.lock_evolve = TRUE
 	user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
-	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
 
 	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
 	return ..()
@@ -421,7 +431,7 @@
 
 // Readmission = un-banish
 
-/datum/action/xeno_action/onclick/readmit/use_ability(atom/Atom)
+/datum/action/xeno_action/proc/Readmit()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(!user_xeno.check_state())
 		return

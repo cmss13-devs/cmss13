@@ -164,7 +164,7 @@
 		list("Bedroll", round(scale * 20), /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),
 
 		list("OPTICS", -1, null, null, null),
-		list("Night Vision Optic (Standard Issue Variant)", round(scale * 0), /obj/item/device/helmet_visor/night_vision, VENDOR_ITEM_REGULAR),
+		list("Night Vision Optic (Standard Issue Variant)", 0, /obj/item/device/helmet_visor/night_vision, VENDOR_ITEM_REGULAR),
 		list("Advanced Medical Optic (CORPSMAN ONLY)", round(scale * 4), /obj/item/device/helmet_visor/medical/advanced, VENDOR_ITEM_REGULAR),
 		list("Squad Optic", round(scale * 15), /obj/item/device/helmet_visor, VENDOR_ITEM_REGULAR),
 

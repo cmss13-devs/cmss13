@@ -1,4 +1,0 @@
-author: "InsaneRed"
-delete-after: True
-changes:
-  - bugfix: "Synths are no longer immune to lunges / dragging while in 'critical state' since they dont go into crit."

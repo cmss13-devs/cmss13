@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed XRF Scanner bricking if people were adding and removing vials at same time."

@@ -31,7 +31,6 @@
 	if(isobj(O))
 		I = O
 
-
 		wait_time = I.get_applying_acid_time()
 		if(wait_time == -1)
 			to_chat(src, SPAN_WARNING("We cannot dissolve \the [I]."))

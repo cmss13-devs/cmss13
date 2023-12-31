@@ -1,0 +1,5 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed Nuke failing to detonate under specific circumstances. It may involve a little rodent."
+  - bugfix: "Nuke explosion will now kill mobs on its actual explosion rather than at the start of the cinematic sequence."

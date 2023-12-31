@@ -221,7 +221,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(!hive.tunnels.len)
-		to_chat(M, SPAN_WARNING("\The [src] doesn't seem to lead anywhere."))
+		to_chat(M, SPAN_WARNING("[src] doesn't seem to lead anywhere."))
 		return XENO_NO_DELAY_ACTION
 
 	if(contents.len > 2)
@@ -236,11 +236,11 @@
 		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
 
 	if(M.mob_size >= MOB_SIZE_BIG)
-		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into \the [src]."), \
-		SPAN_XENONOTICE("We begin heaving our monstrous bulk into \the [src]</b>."))
+		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into [src]."),
+			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
 	else
-		M.visible_message(SPAN_XENONOTICE("\The [M] begins crawling down into \the [src]."), \
-		SPAN_XENONOTICE("We begin crawling down into \the [src]</b>."))
+		M.visible_message(SPAN_XENONOTICE("[M] begins crawling down into [src]."),
+			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>)."))
 
 	xeno_attack_delay(M)
 	if(!do_after(M, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
@@ -252,7 +252,7 @@
 		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 		pick_tunnel(M)
 	else
-		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so we return back up."))
+		to_chat(M, SPAN_WARNING("[src] ended unexpectedly, so we return back up."))
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/tunnel/maint_tunnel

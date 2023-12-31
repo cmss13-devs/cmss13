@@ -102,7 +102,7 @@
 	plasma_use_per_tick = 15
 
 	action_start_message = "You start forming eggs."
-	action_end_message = "You don't have enough plasma to support forming eggs."
+	action_end_message = "We don't have enough plasma to support forming eggs."
 	var/egg_generation_progress = 0
 
 	ability_primacy = XENO_PRIMARY_ACTION_3

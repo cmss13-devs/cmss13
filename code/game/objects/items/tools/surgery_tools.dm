@@ -207,6 +207,8 @@
 	var/unlimited_gel = FALSE
 	///Time it takes per 10% of gel refilled
 	var/time_per_refill = 2.5 SECONDS
+	///if the bone gel is actively being refilled
+	var/refilling = FALSE
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()
@@ -221,13 +223,19 @@
 		to_chat(user, SPAN_NOTICE("[src] cannot be filled with any more bone gel."))
 		return
 
+	if(refilling)
+		to_chat(user, SPAN_NOTICE("You are already refilling [src] from [refilling_obj]."))
+		return
+	refilling = TRUE
+
 	while(remaining_gel < 100)
 		if(!do_after(user, time_per_refill, INTERRUPT_ALL, BUSY_ICON_MEDICAL, refilling_obj))
 			break
-		playsound(refilling_obj, "sound/machines/ping.ogg", 10)
 		remaining_gel = clamp(remaining_gel + 10, 0, 100)
 		to_chat(user, SPAN_NOTICE("[refilling_obj] chimes, and displays \"[remaining_gel]% filled\"."))
 
+	refilling = FALSE
+	playsound(refilling_obj, "sound/machines/ping.ogg", 10)
 	to_chat(user, SPAN_NOTICE("You remove [src] from [refilling_obj]."))
 
 /obj/item/tool/surgery/bonegel/proc/use_gel(gel_cost)

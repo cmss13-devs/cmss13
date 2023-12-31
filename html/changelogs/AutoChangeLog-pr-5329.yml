@@ -1,0 +1,4 @@
+author: "Cthulhu80"
+delete-after: True
+changes:
+  - bugfix: "fixes xenos being able to view raw html on paper."

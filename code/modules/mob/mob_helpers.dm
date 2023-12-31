@@ -176,9 +176,9 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		if(current_char == ">")
 			parsing_message = TRUE
 			output_message += current_char
-			if(current_tag == "<style" || findtext(current_tag, "<style ") == 1) // findtext because HTML doesn't care about anything after whitespace
+			if(findtext(current_tag, "<style") == 1) // findtext because HTML doesn't care about anything after whitespace
 				escaped_tag = TRUE
-			else if(escaped_tag && (current_tag == "</style" || findtext(current_tag, "</style ") == 1)) // 1 for findtext because we only care about the start of the string matching
+			else if(escaped_tag && findtext(current_tag, "</style") == 1) // 1 for findtext because we only care about the start of the string matching
 				escaped_tag = FALSE
 			continue
 		if(current_char == "<")

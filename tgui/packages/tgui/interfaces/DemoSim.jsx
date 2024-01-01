@@ -13,7 +13,7 @@ export const DemoSim = (_props, context) => {
   const timeLeft = data.nextdetonationtime - data.worldtime;
   const timeLeftPct = timeLeft / data.detonation_cooldown;
 
-  const canDetonate = timeLeft < 0 && data.configuration && data.looking;
+  const canDetonate = timeLeft < 0 && data.configuration && simulationView;
 
   return (
     <Window width={550} height={300}>

@@ -216,7 +216,6 @@
 			if(ar_prompt == "Yes")
 				announce_receipt = TRUE
 
-			log_debug("ERT DEBUG (CUSTOM SET): [quiet_launch] - [announce_receipt]")
 			em_call.activate(quiet_launch, announce_receipt)
 
 		message_admins("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
@@ -305,7 +304,6 @@
 			if(ar_prompt == "Yes")
 				announce_receipt = TRUE
 
-			log_debug("ERT DEBUG (CUSTOM SET): [quiet_launch] - [announce_receipt]")
 			em_call.activate(quiet_launch, announce_receipt)
 
 		message_admins("[key_name_admin(usr)] created [xenos_to_spawn] xenos as [xeno_caste] at [get_area(initial_spot)]")

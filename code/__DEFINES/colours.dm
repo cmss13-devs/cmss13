@@ -212,3 +212,17 @@
 #define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, border=4, color="#04080FAA")
 /// Icon filter that creates gaussian blur
 #define GAUSSIAN_BLUR(filter_size) filter(type="blur", size=filter_size)
+
+/* TEMPORARY COMMENT UNTIL WE CAN SAFELY REMOVE THE CL_ MARK WITHOUT CAUSING ANY ISSUES.
+
+For part one i don't want to touch files not currently link to colours.dm seem safer and easier
+
+starting to list all the files and their defines that may cause conflicts bellow
+
+File that are already defining  COLORS that are in colours.dm and will enter into conflict..?
+	_math.dm (COLOR_RED,COLOR_RED,COLOR_RED,COLOR_CYAN,COLOR_PINK,COLOR_YELLOW,COLOR_ORANGE,COLOR_WHITE,COLOR_BLACK,)
+
+their is also a bunch of scater place where colours are define shouldn't we have every color being define here
+maybe seperated into section if needed?
+
+*/

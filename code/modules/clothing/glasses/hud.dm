@@ -10,17 +10,13 @@
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
 	deactive_state = "degoggles"
+	prescription = TRUE
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/view_publications)
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_MEDIC
-
-/obj/item/clothing/glasses/hud/health/prescription
-	name = "\improper Prescription HealthMate HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. Contains prescription lenses."
-	prescription = TRUE
 
 /datum/action/item_action/view_publications/New(Target)
 	..()
@@ -107,6 +103,7 @@
 	desc = "A much older heads-up display that displays the last known biometric data from suit sensors of any given individual."
 	icon_state = "sensorhud"
 	deactive_state = "sensorhud_d"
+	prescription = TRUE
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
@@ -114,25 +111,16 @@
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_DEFAULT
 
-/obj/item/clothing/glasses/hud/sensor/prescription
-	name = "\improper Prescription SensorMate HUD"
-	desc = "A much older heads-up display that displays the last known biometric data from suit sensors of any given individual. Contains prescription lenses."
-	prescription = TRUE
-
 /obj/item/clothing/glasses/hud/security
 	name = "\improper PatrolMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
 	deactive_state = "degoggles"
+	prescription = TRUE
 	toggleable = TRUE
 	flags_armor_protection = 0
 	hud_type = MOB_HUD_SECURITY_ADVANCED
 	actions_types = list(/datum/action/item_action/toggle)
-
-/obj/item/clothing/glasses/hud/security/prescription
-	name = "\improper Prescription PatrolMate HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
-	prescription = TRUE
 
 /obj/item/clothing/glasses/hud/security/jensenshades
 	name = "augmented shades"

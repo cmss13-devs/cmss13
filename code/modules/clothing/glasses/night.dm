@@ -33,6 +33,7 @@
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m4ra_goggles"
 	deactive_state = "m4ra_goggles_0"
+	prescription = TRUE
 	vision_flags = SEE_TURFS
 	hud_type = MOB_HUD_MEDICAL_BASIC
 	toggleable = TRUE
@@ -47,6 +48,7 @@
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m4_goggles"
 	deactive_state = "m4_goggles_0"
+	prescription = TRUE
 	vision_flags = SEE_TURFS
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	toggleable = TRUE
@@ -60,6 +62,7 @@
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m42_goggles"
 	deactive_state = "m42_goggles_0"
+	prescription = TRUE
 	vision_flags = SEE_TURFS
 	toggleable = TRUE
 	fullscreen_vision = null
@@ -76,6 +79,7 @@
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS|SEE_MOBS
+	prescription = TRUE
 
 /obj/item/clothing/glasses/night/m42_night_goggles/upp
 	name = "\improper Type 9 commando goggles"
@@ -83,6 +87,7 @@
 	desc = "A headset and night vision goggles system used by UPP forces. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon_state = "upp_goggles"
 	deactive_state = "upp_goggles_0"
+	prescription = TRUE
 	req_skill = null
 	req_skill_level = null
 
@@ -93,6 +98,7 @@
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
+	prescription = TRUE
 	toggleable = TRUE
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/m56_goggles/far_sight)
 	vision_flags = SEE_TURFS

@@ -1,5 +1,5 @@
 // devolve a xeno - lots of old, vaguely shitty code here
-/datum/action/xeno_action/proc/Devolve()
+/datum/action/xeno_action/onclick/manage_hive/proc/Devolve()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(!user_xeno.check_state())
 		return
@@ -361,15 +361,15 @@
 	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish", "Re-Admit", "De-evolve", "Reward Jelly"), theme="hive_status")
 	switch(choice)
 		if("Banish")
-			banish(target)
+			banish()
 		if("Re-Admit")
-			Readmit(target)
+			Readmit()
 		if("De-evolve")
-			Devolve(target)
+			Devolve()
 		if("Reward Jelly")
 			give_jelly_award(queenbanish.hive)
 
-/datum/action/xeno_action/proc/banish()
+/datum/action/xeno_action/onclick/manage_hive/proc/banish()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(!user_xeno.check_state())
 		return
@@ -437,7 +437,7 @@
 
 // Readmission = un-banish
 
-/datum/action/xeno_action/proc/Readmit()
+/datum/action/xeno_action/onclick/manage_hive/proc/Readmit()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(!user_xeno.check_state())
 		return

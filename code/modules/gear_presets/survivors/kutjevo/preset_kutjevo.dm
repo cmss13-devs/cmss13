@@ -42,9 +42,7 @@
 
 /datum/equipment_preset/survivor/doctor/kutjevo/load_gear(mob/living/carbon/human/new_human)
 	if(new_human.disabilities & NEARSIGHTED)
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 	add_random_kutjevo_survivor_uniform(new_human)
 	add_random_kutjevo_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)

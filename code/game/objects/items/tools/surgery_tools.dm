@@ -206,14 +206,21 @@
 	///If gel is used when doing bone surgery
 	var/unlimited_gel = FALSE
 	///Time it takes per 10% of gel refilled
-	var/time_per_refill = 2.5 SECONDS
+	var/time_per_refill = 1 SECONDS
 	///if the bone gel is actively being refilled
 	var/refilling = FALSE
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()
-	if(!unlimited_gel) //Only show how much gel is left if it actually uses bone gel
-		. += "A counter on the side reads \"[remaining_gel]% gel remaining\"."
+	if(unlimited_gel) //Only show how much gel is left if it actually uses bone gel
+		return
+	. += "A volume reader on the side tells you there is still [remaining_gel]% of [src] is remaining."
+	. += "[src] can be refilled from a osteomimetic lattice fabricator."
+
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
+		return
+	. += SPAN_NOTICE("You would need to use 5% of the bone gel to repair a fracture.")
+	. += SPAN_NOTICE("You would need to use 5% of the bone gel to mend bones.")
 
 /obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
 	if(unlimited_gel)
@@ -229,7 +236,7 @@
 	refilling = TRUE
 
 	while(remaining_gel < 100)
-		if(!do_after(user, time_per_refill, INTERRUPT_ALL, BUSY_ICON_MEDICAL, refilling_obj))
+		if(!do_after(user, time_per_refill, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, refilling_obj))
 			break
 		remaining_gel = clamp(remaining_gel + 10, 0, 100)
 		to_chat(user, SPAN_NOTICE("[refilling_obj] chimes, and displays \"[remaining_gel]% filled\"."))

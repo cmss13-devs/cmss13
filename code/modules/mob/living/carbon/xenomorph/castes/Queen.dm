@@ -305,9 +305,8 @@
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
 		/datum/action/xeno_action/onclick/grow_ovipositor,
-		/datum/action/xeno_action/onclick/queen_award,
 		/datum/action/xeno_action/activable/info_marker/queen,
-		/datum/action/xeno_action/onclick/ManageHive,
+		/datum/action/xeno_action/onclick/manage_hive,
 	)
 
 	inherent_verbs = list(
@@ -337,8 +336,7 @@
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
 		/datum/action/xeno_action/onclick/grow_ovipositor,
-		/datum/action/xeno_action/onclick/ManageHive,
-		/datum/action/xeno_action/onclick/queen_award,
+		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
@@ -838,8 +836,7 @@
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
-		/datum/action/xeno_action/onclick/ManageHive,
-		/datum/action/xeno_action/onclick/queen_award,
+		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		// Screech is typically new for this list, but its possible they never ovi and it then is forced here:
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech

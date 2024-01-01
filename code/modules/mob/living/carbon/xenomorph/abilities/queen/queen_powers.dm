@@ -353,18 +353,23 @@
 	user_xeno.hive.stored_larva--
 	return ..()
 
-/datum/action/xeno_action/onclick/ManageHive/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/queenbanish = owner
 
 
 
-	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish", "Re-Admit", "De-evolve"), theme="hive_status")
+	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish", "Re-Admit", "De-evolve", "Reward Jelly"), theme="hive_status")
 	switch(choice)
-		if("Banish") banish(target)
-		if("Re-Admit") Readmit(target)
-		if("De-evolve") Devolve(target)
+		if("Banish")
+			banish(target)
+		if("Re-Admit")
+			Readmit(target)
+		if("De-evolve")
+			Devolve(target)
+		if("Reward Jelly")
+			give_jelly_award(queenbanish.hive)
 
-/datum/action/xeno_action/proc/banish()
+/datum/action/manage_hive/proc/banish()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(!user_xeno.check_state())
 		return
@@ -421,11 +426,12 @@
 	target_xeno.hud_update_banished()
 	target_xeno.lock_evolve = TRUE
 	user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
+	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
 
 	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
 	return
 
-/datum/action/xeno_action/onclick/banish/proc/remove_banish(datum/hive_status/hive, name)
+/datum/action/xeno_action/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)
 
 

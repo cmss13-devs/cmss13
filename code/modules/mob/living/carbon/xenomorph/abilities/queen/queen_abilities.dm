@@ -64,7 +64,7 @@
 	plasma_cost = 100
 
 
-/datum/action/xeno_action/onclick/ManageHive
+/datum/action/xeno_action/onclick/manage_hive
 	name = "Manage The Hive"
 	action_icon_state = "xeno_readmit"
 

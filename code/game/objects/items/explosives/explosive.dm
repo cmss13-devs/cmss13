@@ -150,7 +150,7 @@
 			return
 		else
 			if(W.reagents.total_volume)
-				if(W.reagents.maximum_volume + current_container_volume > max_container_volume)
+				if((W.reagents.maximum_volume + current_container_volume) > max_container_volume)
 					to_chat(user, SPAN_DANGER("\the [W] is too large for [name]."))
 					return
 				if(user.temp_drop_inv_item(W))

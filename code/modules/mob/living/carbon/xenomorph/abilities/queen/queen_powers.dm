@@ -369,7 +369,7 @@
 		if("Reward Jelly")
 			give_jelly_award(queenbanish.hive)
 
-/datum/action/manage_hive/proc/banish()
+/datum/action/xeno_action/proc/banish()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(!user_xeno.check_state())
 		return

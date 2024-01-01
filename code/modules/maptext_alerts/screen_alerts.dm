@@ -242,6 +242,10 @@
 	if(!QDELETED(src))
 		openToolTip(usr, src, params, title = name, content = desc, theme = alerttooltipstyle)
 
+/atom/movable/screen/alert/MouseExited(location, control, params)
+	. = ..()
+	closeToolTip(usr)
+
 /atom/movable/screen/alert/notify_action
 	name = "Notification"
 	desc = "A new notification. You can enter it."

@@ -7,14 +7,10 @@
 	icon_state = "meson"
 	item_state = "glasses"
 	deactive_state = "degoggles"
+	prescription = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 	toggleable = TRUE
 	fullscreen_vision = /atom/movable/screen/fullscreen/meson
-
-/obj/item/clothing/glasses/meson/prescription
-	name = "prescription optical meson scanner"
-	desc = "Used for shield the user's eyes from harmful electromagnetic emissions, can also be used as safety googles. Contains prescription lenses."
-	prescription = TRUE
 
 /obj/item/clothing/glasses/meson/refurbished
 	name = "refurbished meson scanner"

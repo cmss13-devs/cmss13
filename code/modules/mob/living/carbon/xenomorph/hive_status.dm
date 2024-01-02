@@ -206,7 +206,7 @@
 
 	// Can only have one queen.
 	if(isqueen(X))
-		if(!living_xeno_queen && !is_admin_level(X.z)) // Don't consider xenos in admin level
+		if(!living_xeno_queen && !should_block_game_interaction(X)) // Don't consider xenos in admin level
 			set_living_xeno_queen(X)
 
 	X.hivenumber = hivenumber
@@ -218,7 +218,7 @@
 		X.hud_update()
 
 	var/area/A = get_area(X)
-	if(!is_admin_level(X.z) || (A.flags_atom & AREA_ALLOW_XENO_JOIN))
+	if(!should_block_game_interaction(X) || (A.flags_atom & AREA_ALLOW_XENO_JOIN))
 		totalXenos += X
 		if(X.tier == 2)
 			tier_2_xenos += X
@@ -241,7 +241,7 @@
 	if(living_xeno_queen == xeno)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null
 		for(var/mob/living/carbon/xenomorph/queen/queen in totalXenos)
-			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+			if(!should_block_game_interaction(queen) && queen != src && !QDELETED(queen))
 				next_queen = queen
 				break
 
@@ -264,7 +264,7 @@
 		tier_3_xenos -= xeno
 
 	// Only handle free slots if the xeno is not in tdome
-	if(!is_admin_level(xeno.z))
+	if(!should_block_game_interaction(xeno))
 		var/selected_caste = GLOB.xeno_datum_list[xeno.caste_type]?.type
 		if(used_slots[selected_caste])
 			used_slots[selected_caste]--
@@ -408,7 +408,7 @@
 
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
 		//don't show xenos in the thunderdome when admins test stuff.
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
@@ -422,28 +422,27 @@
 // The idea is that we sort this list, and use it as a "key" for all the other information (especially the nicknumber)
 // in the hive status UI. That way we can minimize the amount of sorts performed by only calling this when xenos are created/disposed
 /datum/hive_status/proc/get_xeno_keys()
-	var/list/xenos[totalXenos.len]
+	var/list/xenos = list()
 
-	var/index = 1
-	var/useless_slots = 0
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
-				useless_slots++
 				continue
 
-		// Insert without doing list merging
-		xenos[index++] = list(
+		if(!(X in GLOB.living_xeno_list))
+			continue
+
+		// This looks weird, but in DM adding List A to List B actually adds each item in List B to List A, not List B itself.
+		// Having a nested list like this sort of tricks it into adding the list instead.
+		// In this case this results in an array of different 'xeno' dictionaries, rather than just a dictionary.
+		xenos += list(list(
 			"nicknumber" = X.nicknumber,
 			"tier" = X.tier, // This one is only important for sorting
 			"is_leader" = (IS_XENO_LEADER(X)),
 			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
 			"caste_type" = X.caste_type
-		)
-
-	// Clear nulls from the xenos list
-	xenos.len -= useless_slots
+		))
 
 	// Make it all nice and fancy by sorting the list before returning it
 	var/list/sorted_keys = sort_xeno_keys(xenos)
@@ -509,7 +508,7 @@
 	var/list/xenos = list()
 
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
@@ -540,7 +539,7 @@
 	var/list/xenos = list()
 
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue

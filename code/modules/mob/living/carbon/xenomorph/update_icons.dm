@@ -301,7 +301,6 @@
 		return
 
 	var/health_threshold
-	wound_icon_holder.layer = layer + 0.01
 	health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
@@ -316,10 +315,9 @@
 		else
 			wound_icon_holder.icon_state = handle_special_wound_states(health_threshold)
 
-
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
 /atom/movable/vis_obj
-	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR|VIS_INHERIT_LAYER|VIS_INHERIT_PLANE
 	appearance_flags = RESET_COLOR
 
 /atom/movable/vis_obj/xeno_wounds

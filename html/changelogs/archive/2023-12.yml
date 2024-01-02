@@ -496,3 +496,96 @@
   - refactor: CAS can offset in different direction to attack vector
   realforest2001:
   - bugfix: Yautja bracer lock can now properly unlock thrall bracers.
+2023-12-27:
+  Birdtalon:
+  - rscdel: Removed old crystal code from xenos
+  - code_imp: Renames still used vars from crystal to plasma
+  - code_imp: Removes crystal define in place of plasma string
+  Drathek:
+  - bugfix: Fix xeno wounds layering over weeds when merged with the weeds
+  InsaneRed:
+  - spellcheck: More WE/YOU fixes for xenomorph side.
+  - bugfix: Spitter's charge spit abiltiy now properly adds and removes the 5 armor
+      like its supposed to initially.
+  SabreML:
+  - bugfix: Fixed the Queen Eye still showing as "Immature" after the Queen ages.
+  - bugfix: Fixed carriers being unable to reduce their 'reserved facehuggers' number.
+  - bugfix: Fixed being able to vend infinite alcohol.
+  - bugfix: Fixed the death message from GAU-21 and Laser Cannon strikes saying that
+      the player was killed by the ammo crate.
+  cuberound:
+  - balance: launchbay price 400 -> 200
+  - balance: DS installed sentrygun price lowered to 200
+  realforest2001:
+  - code_imp: Added a new span class that combines bold and big.
+  - code_imp: Tweaked the way prayer sends notifications to be more efficient.
+  - admin: Moved the prayer notification sound to a toggle preference, combined with
+      ARES Interface notifications.
+2023-12-28:
+  InsaneRed:
+  - bugfix: Synths are no longer immune to lunges / dragging while in 'critical state'
+      since they dont go into crit.
+  SabreML:
+  - bugfix: Fixed inserting/removing an item from shoes sometimes acting weirdly.
+  - refactor: Refactored shoe item storage.
+  fira:
+  - bugfix: Fixed XRF Scanner bricking if people were adding and removing vials at
+      same time.
+2023-12-29:
+  sleepynecrons:
+  - imageadd: new sprites for predalien, predlarva and weeded corpse
+  - imageadd: added predalien wound overlays
+2023-12-30:
+  Birdtalon:
+  - bugfix: Runtime in inventory.dm
+  Cthulhu80:
+  - bugfix: fixes immobilized mobs being able to buckle themselves
+  InsaneRed:
+  - qol: '"View Playtime" is now under the "Records" section under OOC'
+  - qol: '"Remove Your Splints" is now under the "IC" section.'
+  SabreML:
+  - bugfix: Fixed the CAS laser cannon only setting fire to a single tile, rather
+      a 7x7 range.
+  - qol: Made the designation of a tunnel display in chat when a player enters it.
+  - bugfix: Fixed the pyro spec's fuel pack sometimes giving weird failure messages
+      when trying to switch fuel.
+  Zonespace27:
+  - rscadd: Added a tutorial system for various roles (and just general information),
+      find it in the lobby screen.
+  cuberound:
+  - bugfix: m56d can not longer shoot backwards when facing north
+  mullenpaul:
+  - refactor: tgui js components now jsx
+2023-12-31:
+  AnonHault:
+  - spellcheck: fixed a typo
+  BeagleGaming1:
+  - qol: Adds the ability to hide your action buttons
+  Birdtalon:
+  - bugfix: Fixes a runtime on decapping one's self.
+  - bugfix: Runtime with milk and possibly other reagent's on_mob_life()
+  - bugfix: Fixes runtime calling post_attack() on a mob which has already been qdeleted
+      via gibbing.
+  - code_imp: Refactors some code to new throw_carbon proc
+  Cthulhu80:
+  - bugfix: Fixes movement delay stacking on weeds
+  - bugfix: Fixes evac pods launching with more than the occupant limit
+  Huffie56:
+  - qol: creating a new section called engineering supplies for the rifleman and the
+      team leader.
+  - balance: added standard binocular to the rifleman vendor at a cost of 5.
+  - balance: added Range Finder and Laser Designator binoculars to Team leader at
+      a cost of 10 and 20.
+  - balance: added ES-11 Mobile Fuel Canister and ME3 hand welder to Team leader and
+      rifleman for 5 each.
+  InsaneRed:
+  - balance: Properly tweaks predator stun resist back to what it should have been.
+  SabreML:
+  - bugfix: Fixed the Hive Status window showing an error message when the Queen dies.
+  - qol: Added a 'Time Since Death' counter to the status tab for ghosts.
+  blackdragonTOW:
+  - rscadd: Max CL Headset radio keys from 3 to 5.  (+2 increase)
+  cuberound:
+  - balance: gives trucker engineer level construction skill
+  mullenpaul:
+  - refactor: sentry laptop now uses camera manager component

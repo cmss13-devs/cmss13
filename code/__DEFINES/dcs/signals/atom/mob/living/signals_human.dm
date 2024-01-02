@@ -67,3 +67,6 @@
 #define COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS "human_surgery_apply_modifiers"
 /// From /mob/living/carbon/human/proc/get_flags_cold_protection()
 #define COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS "human_cold_protection_apply_modifiers"
+
+/// From /obj/item/proc/dig_out_shrapnel() : ()
+#define COMSIG_HUMAN_SHRAPNEL_REMOVED "human_shrapnel_removed"

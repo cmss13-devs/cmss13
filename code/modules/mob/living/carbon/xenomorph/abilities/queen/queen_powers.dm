@@ -353,7 +353,7 @@
 		target_xeno.evolution_stored += evo_points_per_larva
 
 	user_xeno.hive.stored_larva--
-	return ..()
+	return
 
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/queenbanish = owner

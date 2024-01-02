@@ -160,7 +160,7 @@
 /obj/item/alien_embryo/proc/become_larva()
 	// We do not allow chest bursts on the Centcomm Z-level, to prevent
 	// stranded players from admin experiments and other issues
-	if(!affected_mob || is_admin_level(affected_mob.z))
+	if(!affected_mob || should_block_game_interaction(affected_mob))
 		return
 
 	stage = 6 // Increase the stage value to prevent this proc getting repeated

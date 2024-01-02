@@ -508,3 +508,7 @@
 /// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
 /obj/effect/landmark/unit_test_top_right
 	name = "unit test zone top right"
+
+/// Marks the bottom left of the tutorial zone.
+/obj/effect/landmark/tutorial_bottom_left
+	name = "tutorial bottom left"

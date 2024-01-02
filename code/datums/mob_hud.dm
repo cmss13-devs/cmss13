@@ -33,10 +33,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/proc/remove_hud_from(mob/user, source)
 	if(length(hudusers[user]) && (source in hudusers[user]))
 		hudusers[user] -= source
-
 	if(length(hudusers[user]))
 		return FALSE
-
 	for(var/mob/target in hudmobs)
 		remove_from_single_hud(user, target)
 

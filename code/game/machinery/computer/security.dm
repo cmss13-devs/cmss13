@@ -95,7 +95,7 @@
 							if("Released")
 								background = "'background-color:#2981b3;'"
 							if("Suspect")
-								background = "'background-color:#008743;'"
+								background = "'background-color:#686A6C;'"
 							if("NJP")
 								background = "'background-color:#faa20a;'"
 							if("None")

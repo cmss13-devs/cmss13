@@ -110,13 +110,13 @@
 		mob.apply_effect(3, WEAKEN)
 		mob.apply_effect(3, PARALYZE)
 		hit_something = 1
-		continue
+		break
 	if(!hit_something)
 		for(var/obj/object in turf)
 			if(object.density)
-				object.ex_act(250, projectile.dir, projectile.weapon_cause_data, 100)
+				object.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 				hit_something = 1
-				continue
+				break
 	if(!hit_something)
 		turf.ex_act(150, projectile.dir, projectile.weapon_cause_data)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)

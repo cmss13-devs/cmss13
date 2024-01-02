@@ -667,9 +667,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/list/packages
 
 
-/obj/item/paper/manifest/read_paper(mob/user)
+/obj/item/paper/manifest/read_paper(mob/user, scramble = FALSE)
+	var/paper_info = info
+	if(scramble)
+		paper_info = stars_decode_html(info)
 	// Tossing ref in widow id as this allows us to read multiple manifests at same time
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
 	onclose(user, "manifest\ref[src]")
 
 /obj/item/paper/manifest/proc/generate_contents()
@@ -1442,7 +1445,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(!is_admin_level(SSshuttle.vehicle_elevator.z))
+	if(!should_block_game_interaction(SSshuttle.vehicle_elevator))
 		to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up. Ask someone to send it away."))
 		return
 

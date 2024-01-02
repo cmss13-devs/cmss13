@@ -58,16 +58,24 @@
 		if(longest_tier < tier_length)
 			longest_tier = tier_length
 
-	// Clear out the area
-	for(var/t in block(locate(1, 1, zlevel.z_value), locate(longest_tier * 2 + 1, length(all_techs) * 3 + 1, zlevel.z_value)))
+	// Clear out and create the area
+	// (The `+ 2` on both of these is 1 for a buffer tile, and 1 for the outer `/turf/closed/void`.)
+	var/area_max_x = longest_tier * 2 + 2
+	var/area_max_y = length(all_techs) * 3 + 2
+	for(var/t in block(locate(1, 1, zlevel.z_value), locate(area_max_x, area_max_y, zlevel.z_value)))
 		var/turf/pos = t
 		for(var/A in pos)
 			qdel(A)
 
-		pos.ChangeTurf(/turf/open/blank)
-		pos.color = "#000000"
+		if(pos.x == area_max_x || pos.y == area_max_y)
+			// The turfs around the edge are closed.
+			pos.ChangeTurf(/turf/closed/void)
+		else
+			pos.ChangeTurf(/turf/open/blank)
+			pos.color = "#000000"
+		new /area/techtree(pos)
 
-
+	// Create the tech nodes
 	var/y_offset = 1
 	for(var/tier in all_techs)
 		var/tier_length = length(all_techs[tier])

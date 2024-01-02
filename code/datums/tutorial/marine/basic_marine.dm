@@ -143,7 +143,7 @@
 	update_objective("Shoot at the Xenomorph until it dies.")
 	var/mob/living/carbon/xenomorph/drone/tutorial/xeno_dummy = new(loc_from_corner(4, 5))
 	add_to_tracking_atoms(xeno_dummy)
-	add_highlight(xeno_dummy, CL_COLOR_VIVID_RED)
+	add_highlight(xeno_dummy, COLOR_VIVID_RED)
 	RegisterSignal(xeno_dummy, COMSIG_MOB_DEATH, PROC_REF(on_xeno_death))
 	RegisterSignal(tutorial_mob, COMSIG_MOB_GUN_EMPTY, PROC_REF(on_magazine_empty)) // I'd like to prevent unwilling softlocks as much as I can
 

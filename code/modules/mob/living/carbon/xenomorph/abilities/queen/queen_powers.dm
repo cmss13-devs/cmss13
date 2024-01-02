@@ -363,7 +363,7 @@
 		if("Banish")
 			banish()
 		if("Re-Admit")
-			Readmit()
+			readmit()
 		if("De-evolve")
 			Devolve()
 		if("Reward Jelly")

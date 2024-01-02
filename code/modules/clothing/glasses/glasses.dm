@@ -87,34 +87,35 @@
 		if(istype(A, /datum/action/item_action/toggle))
 			A.update_button_icon()
 
-	/obj/item/clothing/glasses/proc/try_make_offhand_prescription(mob/user)
-    if(!prescription)
-        return FALSE
-    if(QDELETED(src))
-        return FALSE
+/obj/item/clothing/glasses/proc/try_make_offhand_prescription(mob/user)
+	if(!prescription)
+		return FALSE
+	if(QDELETED(src))
+		return FALSE
 
-    var/obj/item/clothing/glasses/offhand = user.get_inactive_hand()
-    if(istype(offhand) && !offhand.prescription)
-        if(tgui_alert(user, "Do you wish to take out the prescription lenses and put them in [offhand]?", "Insert Prescription Lenses", list("Yes", "No")) == "Yes")
-            offhand.prescription = TRUE
-            offhand.AddElement(/datum/element/poor_eyesight_correction)
-            offhand.desc += " Fitted with prescription lenses."
-            qdel(src)
-            return TRUE
+	var/obj/item/clothing/glasses/offhand = user.get_inactive_hand()
+	if(istype(offhand) && !offhand.prescription)
+		if(tgui_alert(user, "Do you wish to take out the prescription lenses and put them in [offhand]?", "Insert Prescription Lenses", list("Yes", "No")) == "Yes")
+			offhand.prescription = TRUE
+			offhand.AddElement(/datum/element/poor_eyesight_correction)
+			offhand.desc += " Fitted with prescription lenses."
+			user.visible_message(SPAN_DANGER("[user] takes the lenses out of [src] and puts them in [offhand]."), SPAN_NOTICE("You take the lenses out of [src] and put them in [offhand]."))
+			qdel(src)
+			return TRUE
 
-    return FALSE
+	return FALSE
 
 /obj/item/clothing/glasses/sunglasses/prescription/attack_self(mob/user)
-    if(try_make_offhand_prescription(user))
-        return
+	if(try_make_offhand_prescription(user))
+		return
 
-    return ..()
+	return ..()
 
 /obj/item/clothing/glasses/regular/attack_self(mob/user)
-    if(try_make_offhand_prescription(user))
-        return
+	if(try_make_offhand_prescription(user))
+		return
 
-    return ..()
+	return ..()
 
 /obj/item/clothing/glasses/equipped(mob/user, slot)
 	if(active && slot == WEAR_EYES)
@@ -254,7 +255,7 @@
 	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses. These ones actually have a proper prescribed lens."
 	icon_state = "mBCG"
 	item_state = "mBCG"
-	prescription = 1
+	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/m42_goggles

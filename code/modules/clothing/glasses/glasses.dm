@@ -87,6 +87,35 @@
 		if(istype(A, /datum/action/item_action/toggle))
 			A.update_button_icon()
 
+	/obj/item/clothing/glasses/proc/try_make_offhand_prescription(mob/user)
+    if(!prescription)
+        return FALSE
+    if(QDELETED(src))
+        return FALSE
+
+    var/obj/item/clothing/glasses/offhand = user.get_inactive_hand()
+    if(istype(offhand) && !offhand.prescription)
+        if(tgui_alert(user, "Do you wish to take out the prescription lenses and put them in [offhand]?", "Insert Prescription Lenses", list("Yes", "No")) == "Yes")
+            offhand.prescription = TRUE
+            offhand.AddElement(/datum/element/poor_eyesight_correction)
+            offhand.desc += " Fitted with prescription lenses."
+            qdel(src)
+            return TRUE
+
+    return FALSE
+
+/obj/item/clothing/glasses/sunglasses/prescription/attack_self(mob/user)
+    if(try_make_offhand_prescription(user))
+        return
+
+    return ..()
+
+/obj/item/clothing/glasses/regular/attack_self(mob/user)
+    if(try_make_offhand_prescription(user))
+        return
+
+    return ..()
+
 /obj/item/clothing/glasses/equipped(mob/user, slot)
 	if(active && slot == WEAR_EYES)
 		if(!can_use_active_effect(user))

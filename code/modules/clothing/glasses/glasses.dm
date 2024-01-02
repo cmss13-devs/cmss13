@@ -94,6 +94,8 @@
 	var/obj/item/clothing/glasses/offhand = user.get_inactive_hand()
 	if(istype(offhand) && !offhand.prescription)
 		if(tgui_alert(user, "Do you wish to take out the prescription lenses and put them in [offhand]?", "Insert Prescription Lenses", list("Yes", "No")) == "Yes")
+			if(QDELETED(src) || offhand != user.get_inactive_hand())
+				return FALSE
 			offhand.prescription = TRUE
 			offhand.AddElement(/datum/element/poor_eyesight_correction)
 			offhand.desc += " Fitted with prescription lenses."

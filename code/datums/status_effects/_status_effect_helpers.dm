@@ -40,6 +40,7 @@
 
 	// Create the status effect with our mob + our arguments
 	var/datum/status_effect/new_instance = new new_effect(arguments)
+	SEND_SIGNAL(src, COMSIG_LIVING_APPLY_EFFECT, new_instance)
 	if(!QDELETED(new_instance))
 		return new_instance
 

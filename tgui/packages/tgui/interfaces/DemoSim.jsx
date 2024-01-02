@@ -1,9 +1,14 @@
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Button, Section, ProgressBar, NoticeBox, Box, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const CasSim = (_props, context) => {
+export const DemoSim = (_props, context) => {
   const { act, data } = useBackend(context);
+  const [simulationView, setSimulationView] = useLocalState(
+    context,
+    'simulation_view',
+    false
+  );
 
   const timeLeft = data.nextdetonationtime - data.worldtime;
   const timeLeftPct = timeLeft / data.detonation_cooldown;
@@ -16,11 +21,11 @@ export const CasSim = (_props, context) => {
         <Section title="Configuration status">
           {(!!data.configuration && (
             <NoticeBox info fontSize="15px">
-              Configuration : Executing {data.configuration}!
+              Configuration : detonating {data.configuration}!
             </NoticeBox>
           )) || (
             <NoticeBox danger fontSize="15px">
-              No firemission configuration loaded!
+              No explosive configuration loaded!
             </NoticeBox>
           )}
           <NoticeBox info fontSize="15px">
@@ -42,17 +47,20 @@ export const CasSim = (_props, context) => {
             </ProgressBar>
           )}
         </Section>
-        <Section title="Cas Simulation Controls">
+        <Section title="Detonation controls">
           <Stack>
             <Stack.Item grow>
-              {(!data.looking && (
+              {(!simulationView && (
                 <Button
                   fontSize="16px"
                   fluid={1}
                   icon="eye"
                   color="good"
                   content="Enter simulation"
-                  onClick={() => act('start_watching')}
+                  onClick={() => {
+                    act('start_watching');
+                    setSimulationView(true);
+                  }}
                 />
               )) || (
                 <Button
@@ -61,7 +69,10 @@ export const CasSim = (_props, context) => {
                   icon="eye-slash"
                   color="good"
                   content="Exit simulation"
-                  onClick={() => act('stop_watching')}
+                  onClick={() => {
+                    act('stop_watching');
+                    setSimulationView(false);
+                  }}
                 />
               )}
             </Stack.Item>
@@ -84,8 +95,8 @@ export const CasSim = (_props, context) => {
                 fluid={1}
                 icon="sign-in-alt"
                 color="good"
-                content="Switch firemission"
-                onClick={() => act('switch_firemission')}
+                content="Eject explosive"
+                onClick={() => act('eject')}
               />
             </Stack.Item>
             <Stack.Item grow>
@@ -95,13 +106,12 @@ export const CasSim = (_props, context) => {
                 fluid={1}
                 icon="bomb"
                 color="good"
-                content="Execute firemission?"
+                content="Detonate explosive"
                 confirmContent="Confirm?"
-                onClick={() => act('execute_simulated_firemission')}
+                onClick={() => act('detonate')}
               />
             </Stack.Item>
           </Stack>
-          <Stack />
         </Section>
       </Window.Content>
     </Window>

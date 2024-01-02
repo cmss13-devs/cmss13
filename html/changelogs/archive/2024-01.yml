@@ -1,0 +1,34 @@
+2024-01-01:
+  Cthulhu80:
+  - bugfix: fixes the associated examine text being displayed for different hud types
+      even when removed.
+  - balance: slightly increases zombie infection rate in dead mobs
+  - refactor: refactored some zombie code.
+  - bugfix: Fixes mobs being able to understand other languages while in crit.
+  - bugfix: fixes users getting stuck inside of the simulator
+  - bugfix: fixes xenos being able to view raw html on paper.
+  - bugfix: Fixes photos not being viewable from any distance as an observer
+  - bugfix: Fixes permanent lighting buff after using the vulture sniper rifle.
+  Drathek:
+  - bugfix: Fix handling of sentry_computer deletion
+  InsaneRed:
+  - spellcheck: Changed hit alerts to We instead of You on the xeno side.
+  Private Tristan:
+  - bugfix: Eggs are properly converted to Forsaken hive on evac
+  fira:
+  - bugfix: Fixed Nuke failing to detonate under specific circumstances. It may involve
+      a little rodent.
+  - bugfix: Nuke explosion will now kill mobs on its actual explosion rather than
+      at the start of the cinematic sequence.
+  mullenpaul:
+  - bugfix: properly sorted team lead position in squad info page
+2024-01-02:
+  Cthulhu80:
+  - bugfix: Fixes voting message not formatting correctly.
+  SabreML:
+  - bugfix: Fixed screen alert tooltips ('Buckled' indicator and stuff) getting stuck
+      open.
+  Zonespace27:
+  - rscadd: The Three-World Empire will now occasionally respond to distress beacons.
+  cuberound:
+  - balance: m56d can not be placed within five tiles of another one

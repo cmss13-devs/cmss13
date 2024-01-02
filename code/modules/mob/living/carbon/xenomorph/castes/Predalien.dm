@@ -58,8 +58,8 @@
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/predalien,
 		/datum/action/xeno_action/onclick/predalien_roar,
-		/datum/action/xeno_action/onclick/smash,
-		/datum/action/xeno_action/activable/devastate,
+		/datum/action/xeno_action/activable/feralfrenzy,
+		/datum/action/xeno_action/onclick/toggle_gut_targetting,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 

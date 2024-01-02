@@ -133,17 +133,13 @@
 	icon_state = "purple"
 	item_state = "glasses"
 	deactive_state = "purple_off"
+	prescription = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 	toggleable = TRUE
 	flags_inventory = COVEREYES
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
-
-/obj/item/clothing/glasses/science/prescription
-	name = "prescription reagent scanner HUD goggles"
-	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy. Contains prescription lenses."
-	prescription = TRUE
 
 /obj/item/clothing/glasses/science/get_examine_text(mob/user)
 	. = ..()
@@ -178,6 +174,7 @@
 	desc = "With these you can see objects... just like you can with your un-aided eyes. Say why were these ever made again?"
 	icon_state = "material"
 	item_state = "glasses"
+	prescription = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 	toggleable = TRUE
 
@@ -603,13 +600,9 @@
 	name = "Security HUD-Glasses"
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
 	icon_state = "sunhud"
+	prescription = TRUE
 	eye_protection = EYE_PROTECTION_FLASH
 	hud_type = MOB_HUD_SECURITY_ADVANCED
-
-/obj/item/clothing/glasses/sunglasses/sechud/prescription
-	name = "Prescription Security HUD-Glasses"
-	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze. Contains prescription lenses."
-	prescription = TRUE
 
 /obj/item/clothing/glasses/sunglasses/sechud/eyepiece
 	name = "Security HUD Sight"

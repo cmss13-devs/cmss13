@@ -136,7 +136,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 0
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 
 	// Config
 	var/shard_cost = 75
@@ -150,7 +150,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
-	xeno_cooldown = 300
+	xeno_cooldown = 30 SECONDS
 
 	// Config values
 	var/shard_cost = 50

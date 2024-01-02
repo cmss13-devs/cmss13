@@ -4,7 +4,7 @@
 /mob/living/silicon/ai/proc/InvalidTurf(turf/T as turf)
 	if(!T)
 		return 1
-	if(is_admin_level(T.z))
+	if(should_block_game_interaction(T))
 		return 1
 	if(T.z > 6)
 		return 1

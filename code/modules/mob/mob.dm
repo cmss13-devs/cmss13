@@ -463,6 +463,7 @@
 
 /mob/proc/swap_hand()
 	hand = !hand
+	SEND_SIGNAL(src, COMSIG_MOB_SWAPPED_HAND)
 
 //attempt to pull/grab something. Returns true upon success.
 /mob/proc/start_pulling(atom/movable/AM, lunge, no_msg)
@@ -833,10 +834,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	selection.forceMove(get_turf(src))
 	return TRUE
 
+///Can this mob resist (default FALSE)
+/mob/proc/can_resist()
+	return FALSE
+
 /mob/living/proc/handle_statuses()
-	handle_stunned()
-	handle_knocked_down()
-	handle_knocked_out()
 	handle_stuttering()
 	handle_silent()
 	handle_drugged()
@@ -844,11 +846,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_dazed()
 	handle_slowed()
 	handle_superslowed()
-
-/mob/living/proc/handle_stunned()
-	if(stunned)
-		adjust_effect(-1, STUN)
-	return stunned
 
 /mob/living/proc/handle_dazed()
 	if(dazed)
@@ -864,19 +861,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(superslowed)
 		adjust_effect(-1, SUPERSLOW)
 	return superslowed
-
-
-/mob/living/proc/handle_knocked_down(bypass_client_check = FALSE)
-	if(knocked_down && (bypass_client_check || client))
-		knocked_down = max(knocked_down-1,0)
-		knocked_down_callback_check()
-	return knocked_down
-
-/mob/living/proc/handle_knocked_out(bypass_client_check = FALSE)
-	if(knocked_out && (bypass_client_check || client))
-		knocked_out = max(knocked_out-1,0)
-		knocked_out_callback_check()
-	return knocked_out
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -1006,6 +990,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /// Adds this list to the output to the stat browser
 /mob/proc/get_status_tab_items()
 	. = list()
+	SEND_SIGNAL(src, COMSIG_MOB_GET_STATUS_TAB_ITEMS, .)
 
 /mob/proc/get_role_name()
 	return
@@ -1073,3 +1058,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/update_stat()
 	return
+
+/// Send src back to the lobby as a `/mob/new_player()`
+/mob/proc/send_to_lobby()
+	var/mob/new_player/new_player = new
+
+	if(!mind)
+		mind_initialize()
+
+	mind.transfer_to(new_player)
+
+	qdel(src)

@@ -9,7 +9,6 @@
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_6
-	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
@@ -79,6 +78,10 @@
 
 	icon_xeno = 'icons/mob/xenos/burrower.dmi'
 	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")
+	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
 
 /mob/living/carbon/xenomorph/burrower/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()

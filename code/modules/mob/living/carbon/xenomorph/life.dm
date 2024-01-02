@@ -61,7 +61,7 @@
 			evolution_stored += progress_amount
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -224,7 +224,7 @@
 		for(var/atom/movable/M in stomach_contents)
 			if(ishuman(M))
 				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
-					to_chat(src, SPAN_WARNING("You're about to regurgitate [M]..."))
+					to_chat(src, SPAN_WARNING("We're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
@@ -232,7 +232,7 @@
 
 			M.acid_damage++
 			if(M.acid_damage > 300)
-				to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in your gut with a gurgle."))
+				to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in our gut with a gurgle."))
 				stomach_contents.Remove(M)
 				qdel(M)
 
@@ -380,7 +380,7 @@ Make sure their actual health updates immediately.*/
 		plasma_stored = 0
 		if(current_aura)
 			current_aura = null
-			to_chat(src, SPAN_WARNING("You have run out of pheromones and stopped emitting pheromones."))
+			to_chat(src, SPAN_WARNING("We have run out of plasma and stopped emitting pheromones."))
 
 	for(var/X in actions)
 		var/datum/action/A = X
@@ -516,25 +516,24 @@ Make sure their actual health updates immediately.*/
 			else if(world.time > next_grace_time && stat == CONSCIOUS)
 				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
 				if(grace_time)
-					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 					addtimer(CALLBACK(src, PROC_REF(handle_crit)), grace_time)
 				else
 					handle_crit()
 				next_grace_time = world.time + grace_time
+		blinded = stat == UNCONSCIOUS // Xenos do not go blind from other sources - still, replace that by a status_effect or trait when able
 	if(!gibbing)
 		med_hud_set_health()
 
 /mob/living/carbon/xenomorph/proc/handle_crit()
-	if(stat == DEAD || gibbing)
-		return
+	if(stat <= CONSCIOUS && !gibbing)
+		set_stat(UNCONSCIOUS)
 
-	sound_environment_override = SOUND_ENVIRONMENT_NONE
-	set_stat(UNCONSCIOUS)
-	blinded = TRUE
-	see_in_dark = 5
-	if(layer != initial(layer)) //Unhide
-		layer = initial(layer)
-	recalculate_move_delay = TRUE
+/mob/living/carbon/xenomorph/set_stat(new_stat)
+	. = ..()
+	// Temporarily force triggering HUD updates so they apply immediately rather than on Life tick.
+	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
+	if(stat != .)
+		handle_regular_hud_updates()
 
 /mob/living/carbon/xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0
@@ -548,12 +547,15 @@ Make sure their actual health updates immediately.*/
 	else
 		set_light_on(FALSE)
 
-/mob/living/carbon/xenomorph/handle_stunned()
-	if(stunned)
-		adjust_effect(life_stun_reduction, STUN, EFFECT_FLAG_LIFE)
-		stun_callback_check()
-
-	return stunned
+/mob/living/carbon/xenomorph/GetStunDuration(amount)
+	amount *= 2 / 3
+	return ..()
+/mob/living/carbon/xenomorph/GetKnockDownDuration(amount)
+	amount *= 2 / 3
+	return ..()
+/mob/living/carbon/xenomorph/GetKnockOutDuration(amount)
+	amount *= 2 / 3
+	return ..()
 
 /mob/living/carbon/xenomorph/proc/handle_interference()
 	if(interference)
@@ -579,16 +581,6 @@ Make sure their actual health updates immediately.*/
 		adjust_effect(life_slow_reduction, SUPERSLOW, EFFECT_FLAG_LIFE)
 	return superslowed
 
-/mob/living/carbon/xenomorph/handle_knocked_down()
-	if(HAS_TRAIT(src, TRAIT_FLOORED))
-		adjust_effect(life_knockdown_reduction, WEAKEN, EFFECT_FLAG_LIFE)
-		knocked_down_callback_check()
-
-/mob/living/carbon/xenomorph/handle_knocked_out()
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
-		adjust_effect(life_knockout_reduction, PARALYZE, EFFECT_FLAG_LIFE)
-		knocked_out_callback_check()
-
 //Returns TRUE if xeno is on weeds
 //Returns TRUE if xeno is off weeds AND doesn't need weeds for healing AND is not on Almayer UNLESS Queen is also on Almayer (aka - no solo Lurker Almayer hero)
 /mob/living/carbon/xenomorph/proc/check_weeds_for_healing()
@@ -603,24 +595,3 @@ Make sure their actual health updates immediately.*/
 	if(hive && hive.living_xeno_queen && !is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z))
 		return FALSE //We are on the ship, but the Queen isn't
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!
-
-
-#define XENO_TIMER_TO_EFFECT_CONVERSION (0.075) // (1.5/20) //once per 2 seconds, with 1.5 effect per that once
-
-// This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
-// this is the best place to do it, tho name might be a bit misleading I guess
-/mob/living/carbon/xenomorph/stun_clock_adjustment()
-	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
-	if(stunned > shift_left)
-		stunned += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
-
-/mob/living/carbon/xenomorph/knockdown_clock_adjustment()
-	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
-	if(knocked_down > shift_left)
-		knocked_down += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
-
-/mob/living/carbon/xenomorph/knockout_clock_adjustment()
-	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
-	if(knocked_out > shift_left)
-		knocked_out += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
-

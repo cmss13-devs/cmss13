@@ -22,3 +22,13 @@
       at the start of the cinematic sequence.
   mullenpaul:
   - bugfix: properly sorted team lead position in squad info page
+2024-01-02:
+  Cthulhu80:
+  - bugfix: Fixes voting message not formatting correctly.
+  SabreML:
+  - bugfix: Fixed screen alert tooltips ('Buckled' indicator and stuff) getting stuck
+      open.
+  Zonespace27:
+  - rscadd: The Three-World Empire will now occasionally respond to distress beacons.
+  cuberound:
+  - balance: m56d can not be placed within five tiles of another one

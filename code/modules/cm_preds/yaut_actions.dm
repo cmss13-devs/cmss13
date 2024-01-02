@@ -38,13 +38,11 @@
 			bracers = yautja.get_held_item()
 		if(!bracers)
 			to_chat(yautja, SPAN_WARNING("You don't have bracers."))
-			remove_action(yautja, src)
 			return FALSE
 
 	if(require_mask)
 		if(!istype(yautja.wear_mask, /obj/item/clothing/mask/gas/yautja))
 			to_chat(yautja, SPAN_WARNING("You don't have a clan mask."))
-			remove_action(yautja, src)
 			return FALSE
 		mask = yautja.wear_mask
 
@@ -66,7 +64,7 @@
 
 	button.icon_state = initial(button_icon_state)
 	if(active)
-		button.icon_state = "[initial(button_icon_state)]_on"
+		button.icon_state += "_on"
 
 /datum/action/predator_action/mark_for_hunt
 	name = "Mark for Hunt"
@@ -131,26 +129,29 @@
 	if(enabled)
 		new_icon_state += "_on"
 
+	button.overlays.Cut()
 	var/image/new_overlays
 	new_overlays = image(icon_file, button, new_icon_state)
 
 	button.overlays += new_overlays
 
-//Actions that require wearing bracers
-/datum/action/predator_action/bracer
-	require_bracers = TRUE
-
-/datum/action/predator_action/bracer/control_falcon_drone
+/datum/action/predator_action/mask/control_falcon_drone
 	name = "Control Falcon Drone"
 	action_icon_state = "falcon_drone"
 	listen_signal = COMSIG_KB_YAUTJA_CONTROL_FALCON
 	active = PREDATOR_ACTION_ON_CLICK
+	require_bracers = TRUE
 	///The falcon drone that will be sent when the action is pressed
 	var/obj/item/falcon_drone/linked_falcon_drone
 
-/datum/action/predator_action/bracer/control_falcon_drone/action_activate()
+/datum/action/predator_action/mask/control_falcon_drone/action_activate()
 	. = ..()
 	linked_falcon_drone.control_falcon_drone(yautja, bracers)
+
+
+//Actions that require wearing bracers
+/datum/action/predator_action/bracer
+	require_bracers = TRUE
 
 /datum/action/predator_action/bracer/wristblade
 	name = "Toggle Wristblades"
@@ -169,7 +170,7 @@
 
 /datum/action/predator_action/bracer/combistick/action_activate()
 	. = ..()
-	yautja.call_combi_internal(yautja, FALSE)
+	yautja.call_combi_internal(yautja, forced = FALSE)
 
 /datum/action/predator_action/bracer/smartdisc
 	name = "Recall nearby smart-discs"
@@ -260,16 +261,17 @@
 	COOLDOWN_DECLARE(panel_emote_cooldown)
 
 /datum/yautja_emote_panel/New()
-	if(!length(yautja_emotes))
-		var/list/emotes_to_add = list()
-		for(var/datum/emote/living/carbon/human/yautja/emote as anything in subtypesof(/datum/emote/living/carbon/human/yautja))
-			if(!initial(emote.key) || initial(emote.no_panel))
-				continue
+	if(length(yautja_emotes))
+		return
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/yautja/emote as anything in subtypesof(/datum/emote/living/carbon/human/yautja))
+		if(!initial(emote.key) || initial(emote.no_panel))
+			continue
 
-			if(!(initial(emote.category) in yautja_categories))
-				yautja_categories += initial(emote.category)
-			emotes_to_add += emote
-		yautja_emotes = emotes_to_add
+		if(!(initial(emote.category) in yautja_categories))
+			yautja_categories += initial(emote.category)
+		emotes_to_add += emote
+	yautja_emotes = emotes_to_add
 
 /datum/yautja_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -323,5 +325,5 @@
 				return FALSE
 
 			COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)
-			usr.emote(initial(path.key))
+			ui.user.emote(initial(path.key))
 			return TRUE

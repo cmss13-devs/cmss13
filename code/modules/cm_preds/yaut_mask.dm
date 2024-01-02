@@ -98,8 +98,8 @@
 		if(istype(visor, /obj/item/clothing/glasses/night/yautja))//To change if any new vision modes are made
 			human_holder.temp_drop_inv_item(visor)
 			qdel(visor)
-			human_holder.update_inv_glasses()
 			human_holder.update_sight()
+			add_vision(human_holder)
 
 /obj/item/clothing/mask/gas/yautja/proc/drain_power(mob/living/carbon/human/human_holder, drain_amount)
 	var/obj/item/clothing/gloves/yautja/bracer = human_holder.gloves

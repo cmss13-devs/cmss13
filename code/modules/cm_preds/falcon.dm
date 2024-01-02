@@ -40,13 +40,13 @@
 	if(!(slot == WEAR_L_EAR || slot == WEAR_R_EAR))
 		return
 	add_verb(user, /obj/item/falcon_drone/proc/can_control_falcon_drone)
-	var/datum/action/predator_action/bracer/control_falcon_drone/falcon_action = give_action(user, /datum/action/predator_action/bracer/control_falcon_drone)
+	var/datum/action/predator_action/mask/control_falcon_drone/falcon_action = give_action(user, /datum/action/predator_action/mask/control_falcon_drone)
 	falcon_action.linked_falcon_drone = src
 
 /obj/item/falcon_drone/dropped(mob/user)
 	. = ..()
 	remove_verb(user, /obj/item/falcon_drone/proc/can_control_falcon_drone)
-	remove_action(user, /datum/action/predator_action/bracer/control_falcon_drone)
+	remove_action(user, /datum/action/predator_action/mask/control_falcon_drone)
 
 /obj/item/falcon_drone/attack_self(mob/user)
 	..()

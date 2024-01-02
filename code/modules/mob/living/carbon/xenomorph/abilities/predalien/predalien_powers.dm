@@ -42,7 +42,7 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/feralfrenzy/use_ability(atom/affected_atom)
+/datum/action/xeno_action/activable/feralfrenzy/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check() || xeno.action_busy)
 		return

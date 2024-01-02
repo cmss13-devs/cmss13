@@ -1,9 +1,14 @@
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Button, Section, ProgressBar, NoticeBox, Box, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const DemoSim = (_props, context) => {
   const { act, data } = useBackend(context);
+  const [simulationView, setSimulationView] = useLocalState(
+    context,
+    'simulation_view',
+    false
+  );
 
   const timeLeft = data.nextdetonationtime - data.worldtime;
   const timeLeftPct = timeLeft / data.detonation_cooldown;
@@ -45,14 +50,17 @@ export const DemoSim = (_props, context) => {
         <Section title="Detonation controls">
           <Stack>
             <Stack.Item grow>
-              {(!data.looking && (
+              {(!simulationView && (
                 <Button
                   fontSize="16px"
                   fluid={1}
                   icon="eye"
                   color="good"
                   content="Enter simulation"
-                  onClick={() => act('start_watching')}
+                  onClick={() => {
+                    act('start_watching');
+                    setSimulationView(true);
+                  }}
                 />
               )) || (
                 <Button
@@ -61,7 +69,10 @@ export const DemoSim = (_props, context) => {
                   icon="eye-slash"
                   color="good"
                   content="Exit simulation"
-                  onClick={() => act('stop_watching')}
+                  onClick={() => {
+                    act('stop_watching');
+                    setSimulationView(false);
+                  }}
                 />
               )}
             </Stack.Item>

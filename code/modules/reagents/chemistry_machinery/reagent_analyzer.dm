@@ -29,6 +29,9 @@
 			updateUsrDialog()
 			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
+			if(!sample)
+				to_chat(user, SPAN_WARNING("Someone else removed the sample. Make up your mind!"))
+				return
 			processing = TRUE
 			if(sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
 				icon_state = "reagent_analyzer_error"

@@ -58,7 +58,7 @@
 				if(hive.living_xeno_queen.hivenumber == hive.hivenumber)
 					continue
 			for(var/mob/living/carbon/xenomorph/queen/Q in GLOB.living_xeno_list)
-				if(Q.hivenumber == hive.hivenumber && !is_admin_level(Q.z))
+				if(Q.hivenumber == hive.hivenumber && !should_block_game_interaction(Q))
 					hive.living_xeno_queen = Q
 					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hive.hivenumber)
 					continue outer_loop
@@ -102,6 +102,7 @@
 		COMSIG_XENO_STOP_OVERWATCH,
 		COMSIG_XENO_STOP_OVERWATCH_XENO
 	), PROC_REF(stop_watching))
+	RegisterSignal(Q, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 	// Default color
@@ -156,6 +157,10 @@
 	is_watching = null
 	X.reset_view()
 	return
+
+/mob/hologram/queen/proc/on_name_changed(mob/parent, old_name, new_name)
+	SIGNAL_HANDLER
+	name = "[initial(src.name)] ([new_name])"
 
 /mob/hologram/queen/proc/turf_weed_only(mob/self, turf/crossing_turf)
 	SIGNAL_HANDLER
@@ -391,7 +396,7 @@
 /mob/living/carbon/xenomorph/queen/Initialize()
 	. = ..()
 	SStracking.set_leader("hive_[hivenumber]", src)
-	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
+	if(!should_block_game_interaction(src))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 		notify_ghosts(header = "New Queen", message = "A new Queen has risen.", source = src, action = NOTIFY_ORBIT)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
@@ -497,7 +502,7 @@
 	if(hive && hive.living_xeno_queen == src)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null
 		for(var/mob/living/carbon/xenomorph/queen/queen in hive.totalXenos)
-			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+			if(!should_block_game_interaction(queen) && queen != src && !QDELETED(queen))
 				next_queen = queen
 				break
 		hive.set_living_xeno_queen(next_queen) // either null or a queen

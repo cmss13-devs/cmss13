@@ -2088,3 +2088,15 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 
 		if(NORTHWEST)
 			return list(NORTHWEST, NORTH, WEST)
+
+/// Returns TRUE if the target is somewhere that the game should not interact with if possible
+/// In this case, admin Zs and tutorial areas
+/proc/should_block_game_interaction(atom/target)
+	if(is_admin_level(target.z))
+		return TRUE
+
+	var/area/target_area = get_area(target)
+	if(target_area?.block_game_interaction)
+		return TRUE
+
+	return FALSE

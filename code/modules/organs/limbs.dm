@@ -547,6 +547,7 @@ This function completely restores a damaged organ to perfect condition.
 
 
 /obj/limb/proc/remove_all_bleeding(external = FALSE, internal = FALSE)
+	SEND_SIGNAL(src, COMSIG_LIMB_STOP_BLEEDING, external, internal)
 	if(external)
 		for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
 			qdel(B)
@@ -954,7 +955,13 @@ This function completely restores a damaged organ to perfect condition.
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
 		release_restraints()
 
-		if(vital) owner.death(cause)
+		if(vital)
+			var/mob/caused_mob
+			if(istype(cause, /mob))
+				caused_mob = cause
+			if(!istype(cause, /datum/cause_data))
+				cause = create_cause_data("lost vital limb", caused_mob)
+			owner.death(cause)
 
 /*
 			HELPERS

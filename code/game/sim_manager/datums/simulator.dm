@@ -1,17 +1,20 @@
+#define GRID_CLEARING_SIZE 16
+
 /datum/simulator
 
 	// Necessary to prevent multiple users from simulating at the same time.
 	var/static/detonation_cooldown = 0
+	var/static/detonation_cooldown_time = 2 MINUTES
 	var/static/sim_reboot_state = TRUE
 
-	var/looking_at_simulation = FALSE
-	var/detonation_cooldown_time = 2 MINUTES
 	var/dummy_mode = CLF_MODE
 	var/obj/structure/machinery/camera/simulation/sim_camera
-	var/grid_clearing_size = 16
 
 	// garbage collection,
 	var/static/list/delete_targets = list()
+
+	// list of users currently inside the simulator
+	var/static/list/users_in_sim = list()
 
 	/*
 	unarmoured humans are unnencessary clutter as they tend to explode easily
@@ -29,7 +32,7 @@
 
 /datum/simulator/proc/start_watching(mob/living/user)
 
-	if(looking_at_simulation)
+	if(user in users_in_sim)
 		to_chat(user, SPAN_WARNING("You are already looking at the simulation."))
 		return
 	if(!sim_camera)
@@ -41,13 +44,15 @@
 		to_chat(user, SPAN_WARNING("You're too busy looking at something else."))
 		return
 	user.reset_view(sim_camera)
-	looking_at_simulation = TRUE
+	users_in_sim += user
 
 /datum/simulator/proc/stop_watching(mob/living/user)
+	if(!(user in users_in_sim))
+		return
 	user.unset_interaction()
 	user.reset_view(null)
 	user.cameraFollow = null
-	looking_at_simulation = FALSE
+	users_in_sim -= user
 
 /datum/simulator/proc/sim_turf_garbage_collection()
 
@@ -67,8 +72,8 @@
 	y:2 | x: 1 2 3 4 ... 16
 	y:1 | x: 1 2 3 4 ... 16
 	*/
-	for (var/y_pos in 1 to grid_clearing_size)// outer y
-		for (var/x_pos in 1 to grid_clearing_size) // inner x
+	for (var/y_pos in 1 to GRID_CLEARING_SIZE)// outer y
+		for (var/x_pos in 1 to GRID_CLEARING_SIZE) // inner x
 			var/turf/current_grid = locate(sim_grid_start_pos.x + x_pos,sim_grid_start_pos.y + y_pos,sim_grid_start_pos.z)
 
 			current_grid.empty(/turf/open/floor/engine)
@@ -101,3 +106,4 @@
 
 	addtimer(CALLBACK(src, PROC_REF(sim_turf_garbage_collection)), 30 SECONDS, TIMER_STOPPABLE)
 
+#undef GRID_CLEARING_SIZE

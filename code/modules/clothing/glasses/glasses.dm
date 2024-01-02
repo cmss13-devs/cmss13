@@ -90,8 +90,6 @@
 /obj/item/clothing/glasses/proc/try_make_offhand_prescription(mob/user)
 	if(!prescription)
 		return FALSE
-	if(QDELETED(src))
-		return FALSE
 
 	var/obj/item/clothing/glasses/offhand = user.get_inactive_hand()
 	if(istype(offhand) && !offhand.prescription)

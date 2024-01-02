@@ -2,8 +2,16 @@ import { useBackend, useLocalState } from '../backend';
 import { Button, Section, ProgressBar, NoticeBox, Box, Stack } from '../components';
 import { Window } from '../layouts';
 
+interface DemoSimData {
+  configuration: any;
+  dummy_mode: string;
+  worldtime: number;
+  nextdetonationtime: number;
+  detonation_cooldown: number;
+}
+
 export const DemoSim = (_props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<DemoSimData>(context);
   const [simulationView, setSimulationView] = useLocalState(
     context,
     'simulation_view',

@@ -3,7 +3,6 @@ import { Box, Button, Section, ProgressBar, NoticeBox, Stack } from '../componen
 
 interface CasSimData {
   configuration: any;
-  looking: 0 | 1;
   dummy_mode: string;
   worldtime: number;
   nextdetonationtime: number;

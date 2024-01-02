@@ -131,47 +131,52 @@
 /// Overridable handler to adjust the numerical value of status effects. Expand as needed
 /mob/living/proc/GetDazeDuration(amount)
 	return amount * GLOBAL_STATUS_MULTIPLIER
+
 /mob/living/proc/IsDaze() //If we're stunned
 	return has_status_effect(/datum/status_effect/incapacitating/dazed)
-/mob/living/proc/AmountDAze() //How many deciseconds remains
-	var/datum/status_effect/incapacitating/dazed/S = IsDaze()
-	if(S)
-		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
+
+/mob/living/proc/AmountDaze() //How many deciseconds remains
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(dazed)
+		return dazed.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
 	return 0
+
 /mob/living/proc/Daze(amount)
 	if(!(status_flags & CANDAZE))
 		return
 	amount = GetDazeDuration(amount)
-	var/datum/status_effect/incapacitating/dazed/S = IsDaze()
-	if(S)
-		S.update_duration(amount, increment = TRUE)
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(dazed)
+		dazed.update_duration(amount, increment = TRUE)
 	else if(amount > 0)
-		S = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
-	return S
+		dazed = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
+	return dazed
+
 /mob/living/proc/SetDaze(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(!(status_flags & CANDAZE))
 		return
 	amount = GetDazeDuration(amount)
-	var/datum/status_effect/incapacitating/dazed/S = IsDaze()
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
 	if(amount <= 0)
-		if(S)
-			qdel(S)
+		if(dazed)
+			qdel(dazed)
 	else
-		if(S)
-			S.update_duration(amount)
+		if(dazed)
+			dazed.update_duration(amount)
 		else
-			S = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
-	return S
+			dazed = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
+	return dazed
+
 /mob/living/proc/AdjustDaze(amount, ignore_canstun = FALSE) //Adds to remaining duration
 	if(!(status_flags & CANDAZE))
 		return
 	amount = GetStunDuration(amount)
-	var/datum/status_effect/incapacitating/dazed/S = IsDaze()
-	if(S)
-		S.adjust_duration(amount)
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(dazed)
+		dazed.adjust_duration(amount)
 	else if(amount > 0)
-		S = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
-	return S
+		dazed = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
+	return dazed
 
 /mob/living/proc/Slow(amount)
 	if(status_flags & CANSLOW)

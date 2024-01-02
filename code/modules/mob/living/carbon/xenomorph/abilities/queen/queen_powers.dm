@@ -292,8 +292,9 @@
 	to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
 	return ..()
 
-/datum/action/xeno_action/onclick/give_evo_points/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/manage_hive/proc/give_evo_points()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+
 	if(!user_xeno.check_state())
 		return
 
@@ -308,7 +309,8 @@
 
 	if(!choice)
 		return
-
+	var/evo_points_per_larva = 250
+	var/required_larva = 3
 	var/mob/living/carbon/xenomorph/target_xeno
 
 	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)
@@ -358,7 +360,7 @@
 
 
 
-	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish", "Re-Admit", "De-evolve", "Reward Jelly"), theme="hive_status")
+	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish", "Re-Admit", "De-evolve", "Reward Jelly", "Exchange larva for evolution",), theme="hive_status")
 	switch(choice)
 		if("Banish")
 			banish()
@@ -368,6 +370,8 @@
 			de_evolve_other()
 		if("Reward Jelly")
 			give_jelly_award(queenbanish.hive)
+		if("Exchange larva for evolution")
+			give_evo_points()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/banish()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner

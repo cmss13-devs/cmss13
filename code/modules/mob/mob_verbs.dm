@@ -32,7 +32,7 @@
 	return
 
 /mob/verb/view_stats()
-	set category = "OOC"
+	set category = "OOC.Records"
 	set name = "View Playtimes"
 	set desc = "View your playtimes."
 	if(!SSentity_manager.ready)

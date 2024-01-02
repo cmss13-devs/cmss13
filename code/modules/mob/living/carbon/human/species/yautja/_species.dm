@@ -53,8 +53,8 @@
 		/mob/living/carbon/human/proc/mark_panel,
 	)
 
-	knock_down_reduction = 4
-	stun_reduction = 4
+	knock_down_reduction = 1.5
+	stun_reduction = 1.5
 	weed_slowdown_mult = 0 // no slowdown!
 
 	icobase = 'icons/mob/humans/species/r_predator.dmi'

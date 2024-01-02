@@ -12485,7 +12485,7 @@
 "bnz" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Corporate Liason"
+	name = "\improper Corporate Liaison"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -20011,7 +20011,7 @@
 "pQn" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	locked = 1;
-	name = "\improper Corporate Liason"
+	name = "\improper Corporate Liaison"
 	},
 /turf/open/floor{
 	icon_state = "white"

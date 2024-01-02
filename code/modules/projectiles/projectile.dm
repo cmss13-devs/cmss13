@@ -246,20 +246,9 @@
 	vis_source_pixel_x = process_start_pixel_x
 	vis_source_pixel_y = process_start_pixel_y
 
-	angle = 0 // Stolen from Get_Angle() basically
 	var/dx = p_x + aim_turf.x * 32 - source_turf.x * 32 // todo account for firer offsets
 	var/dy = p_y + aim_turf.y * 32 - source_turf.y * 32
-	if(!dy)
-		if(dx >= 0)
-			angle = 90
-		else
-			angle = 280
-	else
-		angle = arctan(dx/dy)
-		if(dy < 0)
-			angle += 180
-		else if(dx < 0)
-			angle += 360
+	angle = delta_to_angle(dx, dy)
 
 /obj/projectile/process(delta_time)
 	. = PROC_RETURN_SLEEP
@@ -301,7 +290,7 @@
 
 	//Change the bullet angle to its visual path
 
-	var/vis_angle = get_pixel_angle(x = pixel_x_target - pixel_x_source, y = pixel_y_target - pixel_y_source) //naming vars because the proc takes y then x and that's WEIRD
+	var/vis_angle = delta_to_angle(pixel_x_target - pixel_x_source, pixel_y_target - pixel_y_source)
 	var/matrix/rotate = matrix()
 	rotate.Turn(vis_angle)
 	apply_transform(rotate)
@@ -1238,8 +1227,9 @@
 		return
 	if(COOLDOWN_FINISHED(src, shot_cooldown))
 		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
-			SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+			SPAN_HIGHDANGER("[isxeno(src) ? "We" : "You"] are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
+
 
 	last_damage_data = P.weapon_cause_data
 	if(P.firer && ismob(P.firer))

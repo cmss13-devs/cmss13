@@ -325,22 +325,22 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/proc/heat_engine_room()
 	engine_room_heated = TRUE
-	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/engine_core]
+	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
 	engine_room.firealert()
 	engine_room.temperature = T90C
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/area/mob_area = get_area(current_mob)
-		if(istype(mob_area, /area/almayer/engineering/engine_core))
+		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("You feel the heat of the room increase as the fusion engines whirr louder."))
 
 /datum/controller/subsystem/hijack/proc/superheat_engine_room()
 	engine_room_superheated = TRUE
-	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/engine_core]
+	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
 	engine_room.firealert()
 	engine_room.temperature = T120C //slowly deals burn at this temp
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/area/mob_area = get_area(current_mob)
-		if(istype(mob_area, /area/almayer/engineering/engine_core))
+		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("The room feels incredibly hot, you can't take much more of this!"))
 
 /datum/controller/subsystem/hijack/proc/announce_sd_halfway()

@@ -31053,7 +31053,7 @@
 	},
 /area/fiorina/station/park)
 "sRv" = (
-/obj/item/clothing/shoes/marine/upp_knife,
+/obj/item/clothing/shoes/marine/upp/knife,
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "sRE" = (

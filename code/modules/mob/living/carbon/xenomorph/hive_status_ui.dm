@@ -123,6 +123,10 @@
 	if(isobserver(user))
 		return UI_INTERACTIVE
 
+	// If the Queen died or is otherwise missing.
+	if(!assoc_hive.living_xeno_queen)
+		return UI_CLOSE
+
 /datum/hive_status_ui/ui_data(mob/user)
 	. = list()
 	.["total_xenos"] = total_xenos
@@ -131,7 +135,9 @@
 	.["xeno_keys"] = xeno_keys
 	.["xeno_info"] = xeno_info
 	.["xeno_vitals"] = xeno_vitals
-	.["queen_location"] = get_area_name(assoc_hive.living_xeno_queen)
+	.["queen_location"] = null
+	if(assoc_hive.living_xeno_queen)
+		.["queen_location"] = get_area_name(assoc_hive.living_xeno_queen)
 	.["hive_location"] = hive_location
 	.["burrowed_larva"] = burrowed_larva
 	.["evilution_level"] = evilution_level
@@ -175,7 +181,7 @@
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
-			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 				return
 
 			if(xenoSrc.stat == DEAD)
@@ -188,7 +194,7 @@
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
-			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 				return
 
 			if(xenoSrc.stat == DEAD)
@@ -201,7 +207,7 @@
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
-			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 				return
 
 			if(xenoSrc.stat == DEAD)

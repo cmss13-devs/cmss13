@@ -587,7 +587,7 @@
 /obj/item/clothing/head/helmet/marine/fluff/santahat //CKEY=tophatpenguin
 	name = "Santa's hat"
 	desc = "Ho ho ho. Merrry X-mas!"
-	icon_state = "santahat"
+	icon_state = "santa_hat_red"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 

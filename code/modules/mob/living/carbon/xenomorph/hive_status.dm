@@ -45,7 +45,6 @@
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
-	var/crystal_stored = 0 //How much stockpiled material is stored for the hive to use.
 
 	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1
@@ -79,9 +78,7 @@
 	var/list/hive_structures_limit = list(
 		XENO_STRUCTURE_CORE = 1,
 		XENO_STRUCTURE_CLUSTER = 8,
-		XENO_STRUCTURE_POOL = 1,
 		XENO_STRUCTURE_EGGMORPH = 6,
-		XENO_STRUCTURE_EVOPOD = 2,
 		XENO_STRUCTURE_RECOVERY = 6,
 		XENO_STRUCTURE_PYLON = 2,
 	)
@@ -209,7 +206,7 @@
 
 	// Can only have one queen.
 	if(isqueen(X))
-		if(!living_xeno_queen && !is_admin_level(X.z)) // Don't consider xenos in admin level
+		if(!living_xeno_queen && !should_block_game_interaction(X)) // Don't consider xenos in admin level
 			set_living_xeno_queen(X)
 
 	X.hivenumber = hivenumber
@@ -221,7 +218,7 @@
 		X.hud_update()
 
 	var/area/A = get_area(X)
-	if(!is_admin_level(X.z) || (A.flags_atom & AREA_ALLOW_XENO_JOIN))
+	if(!should_block_game_interaction(X) || (A.flags_atom & AREA_ALLOW_XENO_JOIN))
 		totalXenos += X
 		if(X.tier == 2)
 			tier_2_xenos += X
@@ -244,7 +241,7 @@
 	if(living_xeno_queen == xeno)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null
 		for(var/mob/living/carbon/xenomorph/queen/queen in totalXenos)
-			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+			if(!should_block_game_interaction(queen) && queen != src && !QDELETED(queen))
 				next_queen = queen
 				break
 
@@ -267,7 +264,7 @@
 		tier_3_xenos -= xeno
 
 	// Only handle free slots if the xeno is not in tdome
-	if(!is_admin_level(xeno.z))
+	if(!should_block_game_interaction(xeno))
 		var/selected_caste = GLOB.xeno_datum_list[xeno.caste_type]?.type
 		if(used_slots[selected_caste])
 			used_slots[selected_caste]--
@@ -411,7 +408,7 @@
 
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
 		//don't show xenos in the thunderdome when admins test stuff.
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
@@ -425,28 +422,27 @@
 // The idea is that we sort this list, and use it as a "key" for all the other information (especially the nicknumber)
 // in the hive status UI. That way we can minimize the amount of sorts performed by only calling this when xenos are created/disposed
 /datum/hive_status/proc/get_xeno_keys()
-	var/list/xenos[totalXenos.len]
+	var/list/xenos = list()
 
-	var/index = 1
-	var/useless_slots = 0
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
-				useless_slots++
 				continue
 
-		// Insert without doing list merging
-		xenos[index++] = list(
+		if(!(X in GLOB.living_xeno_list))
+			continue
+
+		// This looks weird, but in DM adding List A to List B actually adds each item in List B to List A, not List B itself.
+		// Having a nested list like this sort of tricks it into adding the list instead.
+		// In this case this results in an array of different 'xeno' dictionaries, rather than just a dictionary.
+		xenos += list(list(
 			"nicknumber" = X.nicknumber,
 			"tier" = X.tier, // This one is only important for sorting
 			"is_leader" = (IS_XENO_LEADER(X)),
 			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
 			"caste_type" = X.caste_type
-		)
-
-	// Clear nulls from the xenos list
-	xenos.len -= useless_slots
+		))
 
 	// Make it all nice and fancy by sorting the list before returning it
 	var/list/sorted_keys = sort_xeno_keys(xenos)
@@ -512,7 +508,7 @@
 	var/list/xenos = list()
 
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
@@ -543,7 +539,7 @@
 	var/list/xenos = list()
 
 	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(is_admin_level(X.z))
+		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
@@ -627,14 +623,12 @@
 /datum/hive_status/proc/can_build_structure(structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])
 		return FALSE
-	var/total_count = 0
-	if(hive_structures[structure_name])
-		total_count += hive_structures[structure_name].len
-	if(hive_constructions[structure_name])
-		total_count += hive_constructions[structure_name].len
-	if(total_count >= hive_structures_limit[structure_name])
+	if(get_structure_count(structure_name) >= hive_structures_limit[structure_name])
 		return FALSE
 	return TRUE
+
+/datum/hive_status/proc/get_structure_count(structure_name)
+	return length(hive_structures[structure_name]) + length(hive_constructions[structure_name])
 
 /datum/hive_status/proc/has_structure(structure_name)
 	if(!structure_name)
@@ -1107,7 +1101,6 @@
 /datum/hive_status/corrupted/tamed/New()
 	. = ..()
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
-	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
 
 /datum/hive_status/corrupted/tamed/proc/make_leader(mob/living/carbon/human/H)
 	if(!istype(H))
@@ -1168,7 +1161,6 @@
 /datum/hive_status/corrupted/renegade/New()
 	. = ..()
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
-	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
 	for(var/faction in FACTION_LIST_HUMANOID) //renegades allied to all humanoids, but it mostly affects structures. Their ability to attack humanoids and other xenos (including of the same hive) depends on iff settings
 		allies[faction] = TRUE
 
@@ -1231,10 +1223,10 @@
 		if(!target_hive.living_xeno_queen && !target_hive.allow_no_queen_actions)
 			return
 		if(allies[faction])
-			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] [living_xeno_queen ? "Queen " : ""]set up an alliance with us!"), 3, target_hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("We sense that [name] [living_xeno_queen ? "Queen " : ""]set up an alliance with us!"), 3, target_hive.hivenumber)
 			return
 
-		xeno_message(SPAN_XENOANNOUNCE("You sense that [name] [living_xeno_queen ? "Queen " : ""]broke the alliance with us!"), 3, target_hive.hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("We sense that [name] [living_xeno_queen ? "Queen " : ""]broke the alliance with us!"), 3, target_hive.hivenumber)
 		if(target_hive.allies[name]) //autobreak alliance on betrayal
 			target_hive.change_stance(name, FALSE)
 
@@ -1261,14 +1253,14 @@
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
 	if(tgui_alert(xeno, "Your Queen has broken the alliance with the [faction]. The device inside your carapace begins to suppress your connection with the Hive. Do you remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
 		if(!xeno.iff_tag)
-			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and your service to the Queen continues."))
+			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and our service to the Queen continues."))
 			return
 		defectors += xeno
 		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
 		to_chat(xeno, SPAN_XENOANNOUNCE("You lost the connection with your Hive. Now you have no Queen, only your masters."))
-		to_chat(xeno, SPAN_NOTICE("Your instincts have changed, you seem compelled to protect [english_list(xeno.iff_tag.faction_groups, "no one")]."))
+		to_chat(xeno, SPAN_NOTICE("Our instincts have changed, we seem compelled to protect [english_list(xeno.iff_tag.faction_groups, "no one")]."))
 		return
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the Hive!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the Hive!"))
 	xeno.adjustBruteLoss(50)
 	xeno.iff_tag.forceMove(get_turf(xeno))
 	xeno.iff_tag = null
@@ -1351,6 +1343,3 @@
 	name = "Attack"
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
-
-
-

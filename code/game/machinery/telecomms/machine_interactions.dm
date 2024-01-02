@@ -177,7 +177,7 @@
 	if(src.listening_level == TELECOMM_GROUND_Z) // equals the station
 		src.listening_level = position.z
 		return 1
-	else if(is_admin_level(position.z))
+	else if(should_block_game_interaction(position))
 		src.listening_level = TELECOMM_GROUND_Z
 		return 1
 	return 0
@@ -229,7 +229,7 @@
 
 /obj/structure/machinery/telecomms/relay/Options_Menu()
 	var/dat = ""
-	if(is_admin_level(z))
+	if(should_block_game_interaction(src))
 		dat += "<br>Signal Locked to Station: <A href='?src=\ref[src];change_listening=1'>[listening_level == TELECOMM_GROUND_Z ? "TRUE" : "FALSE"]</a>"
 	dat += "<br>Broadcasting: <A href='?src=\ref[src];broadcast=1'>[broadcasting ? "YES" : "NO"]</a>"
 	dat += "<br>Receiving: <A href='?src=\ref[src];receive=1'>[receiving ? "YES" : "NO"]</a>"

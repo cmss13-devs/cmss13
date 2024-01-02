@@ -60,7 +60,7 @@
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
 		if(shuttle.id == ship_tag)
 			SE.linked_shuttle = shuttle
-			shuttle.equipments += SE
+			SEND_SIGNAL(shuttle, COMSIG_DROPSHIP_ADD_EQUIPMENT, SE)
 			break
 
 	SE.update_equipment()

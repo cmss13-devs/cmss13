@@ -42,8 +42,12 @@
 	flags_equip_slot = SLOT_BACK
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_gun_e"
-	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
-	var/has_mount = FALSE // Indicates whether the M56D will come with its folding mount already attached
+	///How many rounds are in the weapon. This is useful if we break down our guns.
+	var/rounds = 0
+	///Indicates whether the M56D will come with its folding mount already attached
+	var/has_mount = FALSE 
+	///The distance this has to be away from other m56d_hmg and m56d_post to be placed.
+	var/defense_check_range = 5
 
 /obj/item/device/m56d_gun/Initialize(mapload, ...)
 	. = ..()
@@ -84,7 +88,10 @@
 
 /obj/item/device/m56d_gun/attack_self(mob/user)
 	..()
-
+	for(var/obj/structure/machinery/machine in urange(defense_check_range, loc))
+		if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
+			to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
+			return
 	if(!ishuman(user))
 		return
 	if(!has_mount)
@@ -125,6 +132,10 @@
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
+	for(var/obj/structure/machinery/machine in urange(defense_check_range, loc))
+		if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
+			to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
+			return
 
 	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
 	M.setDir(user.dir) // Make sure we face the right direction
@@ -307,6 +318,10 @@
 
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
+		for(var/obj/structure/machinery/machine in urange(MG.defense_check_range, loc, TRUE))
+			if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
+				to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
+				return
 		if(!anchored)
 			to_chat(user, SPAN_WARNING("[src] must be anchored! Use a screwdriver!"))
 			return
@@ -698,9 +713,12 @@
 	if(!istype(in_chamber, /obj/projectile))
 		return
 
-	var/angle = get_angle(T, U)
+	var/angle = Get_Angle(T, U)
 
 	if((dir == NORTH) && (angle > 180) && (abs(360 - angle) > shoot_degree)) // If north and shooting to the left, we do some extra math
+		return
+
+	if((dir == NORTH) && (angle < 180) && (angle > shoot_degree))
 		return
 
 	else if((dir != NORTH) && (abs(angle - dir2angle(dir)) > shoot_degree))
@@ -794,7 +812,7 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	if(!ishuman(usr))
+	if(!ishuman(usr) || usr.stat)
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
@@ -1080,6 +1098,19 @@
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	zoom = 1
+	ammo = /datum/ammo/bullet/machinegun/doorgun
+
+/obj/structure/machinery/m56d_hmg/mg_turret/update_health(amount) //Negative values restores health.
+	health -= amount
+	if(health <= 0)
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		qdel(src)
+		return
+
+	if(health > health_max)
+		health = health_max
+	update_damage_state()
+	update_icon()
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"

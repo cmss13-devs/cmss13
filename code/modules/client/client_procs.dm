@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1548" = "bug breaking the \"alpha\" functionality in the game, allowing clients to be able to see things/mobs they should not be able to see.",
 	))
 
-#define LIMITER_SIZE 5
+#define LIMITER_SIZE 12
 #define CURRENT_SECOND 1
 #define SECOND_COUNT 2
 #define CURRENT_MINUTE 3
@@ -56,6 +56,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
 ))
+
+/client/proc/reduce_minute_count()
+	if (!topiclimiter)
+		topiclimiter = new(LIMITER_SIZE)
+	if(topiclimiter[MINUTE_COUNT] > 0)
+		topiclimiter[MINUTE_COUNT] -= 1
 
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null
@@ -842,3 +848,32 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		total_t3_playtime += get_job_playtime(src, caste_name)
 
 	return total_t3_playtime
+
+/client/verb/action_hide_menu()
+	set name = "Show/Hide Actions"
+	set category = "IC"
+
+	var/mob/user = usr
+
+	var/list/actions_list = list()
+	for(var/datum/action/action as anything in user.actions)
+		var/action_name = action.name
+		if(action.player_hidden)
+			action_name += " (Hidden)"
+		actions_list[action_name] += action
+
+	if(!LAZYLEN(actions_list))
+		to_chat(user, SPAN_WARNING("You have no actions available."))
+		return
+
+	var/selected_action_name = tgui_input_list(user, "Show or hide selected action", "Show/Hide Actions", actions_list, 30 SECONDS)
+	if(!selected_action_name)
+		to_chat(user, SPAN_WARNING("You did not select an action."))
+		return
+
+	var/datum/action/selected_action = actions_list[selected_action_name]
+	selected_action.player_hidden = !selected_action.player_hidden
+	user.update_action_buttons()
+
+	if(!selected_action.player_hidden && selected_action.hidden) //Inform the player that even if they are unhiding it, itll still not be visible
+		to_chat(user, SPAN_NOTICE("[selected_action] is forcefully hidden, bypassing player unhiding."))

@@ -87,6 +87,10 @@
 		ADD_TRAIT(victim, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 
 /obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/living/victim)
+	if(SEND_SIGNAL(victim, COMSIG_MOB_AGGRESSIVELY_GRABBED, user) & COMSIG_MOB_AGGRESIVE_GRAB_CANCEL)
+		to_chat(user, SPAN_WARNING("You can't grab [victim] aggressively!"))
+		return
+
 	user.grab_level = GRAB_AGGRESSIVE
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively!"), null, null, 5)
@@ -126,10 +130,10 @@
 						to_chat(src, "You start to devour [pulled] but realize \he is already dead.")
 						return */
 		if(user.action_busy)
-			to_chat(xeno, SPAN_WARNING("You are already busy with something."))
+			to_chat(xeno, SPAN_WARNING("We are already busy with something."))
 			return
 		xeno.visible_message(SPAN_DANGER("[xeno] starts to devour [pulled]!"), \
-		SPAN_DANGER("You start to devour [pulled]!"), null, 5)
+		SPAN_DANGER("We start to devour [pulled]!"), null, 5)
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
 			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to devour you!")))
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -141,7 +145,7 @@
 					return FALSE
 
 				xeno.visible_message(SPAN_WARNING("[xeno] devours [pulled]!"), \
-					SPAN_WARNING("You devour [pulled]!"), null, 5)
+					SPAN_WARNING("We devour [pulled]!"), null, 5)
 
 				if(ishuman(pulled))
 					var/mob/living/carbon/human/pulled_human = pulled
@@ -153,5 +157,5 @@
 				pulled.forceMove(xeno)
 				return TRUE
 		if(!(pulled in xeno.stomach_contents))
-			to_chat(xeno, SPAN_WARNING("You stop devouring \the [pulled]. \He probably tasted gross anyways."))
+			to_chat(xeno, SPAN_WARNING("We stop devouring [pulled]. They probably tasted gross anyways."))
 		return 0

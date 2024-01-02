@@ -1,5 +1,5 @@
 // devolve a xeno - lots of old, vaguely shitty code here
-/datum/action/xeno_action/onclick/manage_hive/proc/Devolve()
+/datum/action/xeno_action/onclick/manage_hive/proc/de_evolve_other()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(!user_xeno.check_state())
 		return

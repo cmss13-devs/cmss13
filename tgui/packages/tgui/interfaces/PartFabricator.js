@@ -1,4 +1,4 @@
-import { useBackend } from '../backend'; 
+import { useBackend } from '../backend';
 import { Section, Button, LabeledList, Flex } from '../components';
 import { Window } from '../layouts';
 
@@ -59,7 +59,7 @@ const GeneralPanel = (props, context) => {
                   buttons={
                     Ammo.name === 'A/C-49-P Air Deployable Sentry' ? (
                       <Button
-                        content={'Fabricate  (' + omnisentrygun_price + ')'}
+                        content={'Fabricate  (' + omnisentrygun_price +  ')'}
                         icon="wrench"
                         tooltip={Ammo.desc}
                         tooltipPosition="left"

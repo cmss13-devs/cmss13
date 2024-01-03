@@ -570,7 +570,12 @@
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
-		return
+		return FALSE
+
+	if(!ares_is_active())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		return FALSE
+
 	var/input = input(usr, "This is a standard message from the ship's AI. It uses Almayer General channel and won't be heard by humans without access to Almayer General channel (headset or intercom). Check with online staff before you send this. Do not use html.", "What?", "") as message|null
 	if(!input)
 		return FALSE
@@ -579,7 +584,7 @@
 		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt == "No")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
-			return
+			return FALSE
 
 	ai_announcement(input)
 	message_admins("[key_name_admin(src)] has created an AI comms report")
@@ -592,13 +597,17 @@
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
-		return
+		return FALSE
+
+	if(!ares_is_active())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		return FALSE
+
 	var/input = tgui_input_text(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "")
 	if(!input)
 		return FALSE
 
-	var/datum/ares_link/link = GLOB.ares_link
-	if(link.processor_apollo.inoperable())
+	if(!ares_can_apollo())
 		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt != "Yes")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
@@ -1007,10 +1016,11 @@
 			if("Xeno")
 				GLOB.bioscan_data.qm_bioscan(variance)
 			if("Marine")
-				var/force_check = tgui_alert(usr, "Do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
 				var/force_status = FALSE
-				if(force_check == "Yes")
-					force_status = TRUE
+				if(!ares_can_interface()) //proc checks if ARES is dead or if ARES cannot do announcements
+					var/force_check = tgui_alert(usr, "ARES is currently unable to properly display and/or perform the Bioscan, do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
+					if(force_check == "Yes")
+						force_status = TRUE
 				GLOB.bioscan_data.ares_bioscan(force_status, variance)
 			if("Yautja")
 				GLOB.bioscan_data.yautja_bioscan()

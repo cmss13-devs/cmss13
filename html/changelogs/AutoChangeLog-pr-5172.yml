@@ -1,5 +1,0 @@
-author: "BadAtThisGame302"
-delete-after: True
-changes:
-  - bugfix: "fixed Engie not showing up an Engie Area on tacmap on LV-624"
-  - bugfix: "Fixed Research not showing up as a Research Area on tacmap on LV-624"

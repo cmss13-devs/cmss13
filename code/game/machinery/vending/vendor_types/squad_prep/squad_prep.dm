@@ -53,6 +53,34 @@
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
 	)
 
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial
+	name = "\improper ColMarTech Automated Weapons Rack"
+	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons."
+	icon_state = "guns"
+	req_access = list(ACCESS_TUTORIAL_LOCKED)
+	req_one_access = list()
+	hackable = FALSE
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial/populate_product_list(scale)
+	listed_products = list(
+		list("PRIMARY FIREARMS", -1, null, null),
+		list("M41A Pulse Rifle MK2", 1, /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_RECOMMENDED),
+
+		list("PRIMARY AMMUNITION", -1, null, null),
+		list("M41A Magazine (10x24mm)", 1, /obj/item/ammo_magazine/rifle, VENDOR_ITEM_RECOMMENDED),
+	)
+
+/// Called if the tutorial mob somehow uses an entire magazine without the xeno dying
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial/proc/load_ammo()
+	listed_products = list(
+		list("PRIMARY FIREARMS", -1, null, null),
+		list("M41A Pulse Rifle MK2", 0, /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_RECOMMENDED),
+
+		list("PRIMARY AMMUNITION", -1, null, null),
+		list("M41A Magazine (10x24mm)", 99, /obj/item/ammo_magazine/rifle, VENDOR_ITEM_RECOMMENDED),
+	)
+
 //------------SQUAD PREP UNIFORM VENDOR---------------
 
 
@@ -88,12 +116,12 @@
 		list("Shoulder Holster", 0.75, /obj/item/clothing/accessory/storage/holster, VENDOR_ITEM_REGULAR),
 
 		list("ARMOR", -1, null, null),
-		list("M3 Pattern Carrier Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/carrier, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Padded Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/padded, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Padless Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/padless, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Ridged Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Skull Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Smooth Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/smooth, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Carrier Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/medium/carrier, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padded Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/medium/padded, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padless Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/medium/padless, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Ridged Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/medium/padless_lines, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Skull Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/medium/skull, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Smooth Marine Armor", round(scale * 15), /obj/item/clothing/suit/storage/marine/medium/smooth, VENDOR_ITEM_REGULAR),
 		list("M3-EOD Pattern Heavy Armor", round(scale * 10), /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", round(scale * 10), /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 

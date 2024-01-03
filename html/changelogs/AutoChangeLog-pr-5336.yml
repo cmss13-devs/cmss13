@@ -1,0 +1,8 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - bugfix: "Fixed non-combat synthetics being able to fire the M2C."
+  - bugfix: "Fixed scouts being able to use the M56D or M2C before their cloak's gun cooldown had ended."
+  - bugfix: "Fixed the M56D and M2C saying that the user is too far away to man it, even when they successfully man it."
+  - bugfix: "Fixed a runtime which was caused whenever someone manned an M56D or M2C."
+  - refactor: "Refactored some M56D and M2C manning/unmanning code."

@@ -573,22 +573,22 @@
 	success_sound = 'sound/handling/bandage.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
-//Use materials to repair bones, same as /datum/surgery_step/mend_bones
+//Use materials to mend bones, same as /datum/surgery_step/mend_bones
 /datum/surgery_step/mend_encased/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	. = ..()
 	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
 		var/obj/item/tool/surgery/bonegel/gel = tool
-		if(!gel.use_gel(5))
+		if(!gel.use_gel(gel.mend_bones_fix_cost))
 			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))
 			return FALSE
 
-	else //Otherwise, use metal
-		var/obj/item/stack/sheet/metal/metal = user.get_inactive_hand()
-		if(!istype(metal))
-			to_chat(user, SPAN_BOLDWARNING("You need metal in your offhand to repair [target]'s [surgery.affected_limb.display_name] with [tool]."))
+	else //Otherwise, use metal rods
+		var/obj/item/stack/rods/rods = user.get_inactive_hand()
+		if(!istype(rods))
+			to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
 			return FALSE
-		if(!metal.use(2))
-			to_chat(user, SPAN_BOLDWARNING("You need more metal to repair [target]'s [surgery.affected_limb.display_name] with [tool]."))
+		if(!rods.use(2))
+			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
 			return FALSE
 
 /datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -644,6 +644,10 @@
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s [surgery.affected_limb.encased].")
 
+	if(tool_type != /obj/item/tool/surgery/bonegel)
+		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.encased] fall loose from their [surgery.affected_limb]."))
+		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
+		rods.add(1) //Return 2 rods on failure
 
 /*Proof of concept. Functions but does nothing useful.
 If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointless processing to have live without any surgeries for it to use.*/

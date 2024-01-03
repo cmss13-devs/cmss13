@@ -210,6 +210,11 @@
 	///if the bone gel is actively being refilled
 	var/refilling = FALSE
 
+	///How much bone gel is needed to fix a fracture
+	var/fracture_fix_cost = 5
+	///How much bone gel is needed to mend bones
+	var/mend_bones_fix_cost = 5
+
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()
 	if(unlimited_gel) //Only show how much gel is left if it actually uses bone gel
@@ -217,10 +222,10 @@
 	. += "A volume reader on the side tells you there is still [remaining_gel]% of [src] is remaining."
 	. += "[src] can be refilled from a osteomimetic lattice fabricator."
 
-	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR)) //Know how much you will be using if you can use it
 		return
-	. += SPAN_NOTICE("You would need to use 5% of the bone gel to repair a fracture.")
-	. += SPAN_NOTICE("You would need to use 5% of the bone gel to mend bones.")
+	. += SPAN_NOTICE("You would need to use [fracture_fix_cost]% of the bone gel to repair a fracture.")
+	. += SPAN_NOTICE("You would need to use [mend_bones_fix_cost]% of the bone gel to mend bones.")
 
 /obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
 	if(unlimited_gel)
@@ -253,6 +258,9 @@
 		return FALSE
 	remaining_gel -= gel_cost
 	return TRUE
+
+/obj/item/tool/surgery/bonegel/empty
+	remaining_gel = 0
 
 /obj/item/tool/surgery/bonegel/predatorbonegel
 	name = "gel gun"

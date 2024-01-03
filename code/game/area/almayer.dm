@@ -450,10 +450,10 @@
 /area/almayer/mnt/hull/lower/stern
 	name = "\improper Lower Deck Stern Hull"
 
-/area/almayer/mnt/hull/lower/port_bow
+/area/almayer/mnt/hull/lower/p_bow
 	name = "\improper Lower Deck Starboard-Bow Hull"
 
-/area/almayer/mnt/hull/lower/starboard_bow
+/area/almayer/mnt/hull/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Hull"
 
 /area/almayer/mnt/hull/lower/l_f_s

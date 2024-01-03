@@ -1,15 +1,16 @@
 //ALMAYER AREAS--------------------------------------//
 // Fore = West  | Aft = East //
 // Port = South | Starboard = North //
+// Bow = Western|Stern = Eastern //(those are the front and back small sections)
 /area/almayer
 	icon = 'icons/turf/area_almayer.dmi'
-	//ambience = list('sound/ambience/shipambience.ogg')
+	/// ambience = list('sound/ambience/shipambience.ogg')
 	icon_state = "almayer"
 	ceiling = CEILING_METAL
 	powernet_name = "almayer"
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	soundscape_interval = 30
-	//soundscape_playlist = list('sound/effects/xylophone1.ogg', 'sound/effects/xylophone2.ogg', 'sound/effects/xylophone3.ogg')
+	/// soundscape_playlist = list('sound/effects/xylophone1.ogg', 'sound/effects/xylophone2.ogg', 'sound/effects/xylophone3.ogg')
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 
@@ -414,59 +415,88 @@
 	icon_state = "stairs_upperdeck"
 	fake_zlevel = 1 // upperdeck
 
-// hull areas.
+// adding a new parent type for areas on almayer called maintenance short will be mnt
+// hull will be children of mnt.
+// maintenance are area that aren't habitable quarter less light more cold, linking pipes etc more dust etc...
+
+/area/almayer/mnt
+
+//lower maintenance areas
+
+/area/almayer/mnt/lower
+	name = "\improper Lower Deck Maintenance"
+	icon_state = "lowerhull"//tempory until i get a proper one.
+	fake_zlevel = 2 // lowerdeck
+
+//generals naming for now not going to place this
+/area/almayer/mnt/lower/port
+	name = "\improper Lower Deck Port Maintenance"
+
+/area/almayer/mnt/lower/starboard
+	name = "\improper Lower Deck Starboard Maintenance"
+
+// hull areas. way colder but you shouldn't take damage by standing in it with no protection
+
+/area/almayer/mnt/hull
+	temperature = T0C
 
 // lower deck hull areas
 
-/area/almayer/hull/lower_hull
+/area/almayer/mnt/hull/lower
 	name = "\improper Lower Deck Hull"
 	icon_state = "lowerhull"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/hull/lower_hull/stern
+/area/almayer/mnt/hull/lower/stern
 	name = "\improper Lower Deck Stern Hull"
 
-/area/almayer/hull/lower_hull/l_f_s
+/area/almayer/mnt/hull/lower/port_bow
+	name = "\improper Lower Deck Starboard-Bow Hull"
+
+/area/almayer/mnt/hull/lower/starboard_bow
+	name = "\improper Lower Deck Starboard-Bow Hull"
+
+/area/almayer/mnt/hull/lower/l_f_s
 	name = "\improper Lower Deck Starboard-Fore Hull"
 
-/area/almayer/hull/lower_hull/l_m_s
+/area/almayer/mnt/hull/lower/l_m_s
 	name = "\improper Lower Deck Starboard-Midship Hull"
 
-/area/almayer/hull/lower_hull/l_a_s
+/area/almayer/mnt/hull/lower/l_a_s
 	name = "\improper Lower Deck Starboard Hull"
 
-/area/almayer/hull/lower_hull/l_f_p
+/area/almayer/mnt/hull/lower/l_f_p
 	name = "\improper Lower Deck Port-Fore Hull"
 
-/area/almayer/hull/lower_hull/l_m_p
+/area/almayer/mnt/hull/lower/l_m_p
 	name = "\improper Lower Deck Port-Midship Hull"
 
-/area/almayer/hull/lower_hull/l_a_p
+/area/almayer/mnt/hull/lower/l_a_p
 	name = "\improper Lower Deck Port-Aft Hull"
 
 // upper deck hull areas
 
-/area/almayer/hull/upper_hull
+/area/almayer/mnt/hull/upper
 	name = "\improper Upper Deck Hull"
 	icon_state = "upperhull"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/hull/upper_hull/u_f_s
+/area/almayer/mnt/hull/upper/u_f_s
 	name = "\improper Upper Deck Fore-Starboard Hull"
 
-/area/almayer/hull/upper_hull/u_m_s
+/area/almayer/mnt/hull/upper/u_m_s
 	name = "\improper Upper Deck Starboard-Midship Hull"
 
-/area/almayer/hull/upper_hull/u_a_s
+/area/almayer/mnt/hull/upper/u_a_s
 	name = "\improper Upper Deck Starboard-Aft Hull"
 
-/area/almayer/hull/upper_hull/u_f_p
+/area/almayer/mnt/hull/upper/u_f_p
 	name = "\improper Upper Deck Port-Fore Hull"
 
-/area/almayer/hull/upper_hull/u_m_p
+/area/almayer/mnt/hull/upper/u_m_p
 	name = "\improper Upper Deck Port-Midship Hull"
 
-/area/almayer/hull/upper_hull/u_a_p
+/area/almayer/mnt/hull/upper/u_a_p
 	name = "\improper Upper Deck Port-Aft Hull"
 
 /area/almayer/living/cryo_cells

@@ -55,7 +55,7 @@
 		if(!istype(rods))
 			to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to repair [target]'s [surgery.affected_limb.display_name] with [tool]."))
 			return FALSE
-		if(!rods.use(2))
+		if(!rods.use(2)) //Refunded on failure
 			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
 			return FALSE
 
@@ -140,7 +140,8 @@
 	if(tool_type != /obj/item/tool/surgery/bonegel)
 		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
 		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
-		rods.add(1) //Return 2 rods on failure
+		rods.amount = 2 //Refund 2 rods on failure
+		rods.update_icon()
 
 	return FALSE
 

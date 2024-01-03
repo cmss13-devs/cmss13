@@ -587,7 +587,7 @@
 		if(!istype(rods))
 			to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
 			return FALSE
-		if(!rods.use(2))
+		if(!rods.use(2)) //Refunded on failure
 			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
 			return FALSE
 
@@ -645,9 +645,10 @@
 	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s [surgery.affected_limb.encased].")
 
 	if(tool_type != /obj/item/tool/surgery/bonegel)
-		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.encased] fall loose from their [surgery.affected_limb]."))
+		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
 		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
-		rods.add(1) //Return 2 rods on failure
+		rods.amount = 2 //Refund 2 rods on failure
+		rods.update_icon()
 
 /*Proof of concept. Functions but does nothing useful.
 If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointless processing to have live without any surgeries for it to use.*/

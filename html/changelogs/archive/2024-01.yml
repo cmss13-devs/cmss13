@@ -32,3 +32,17 @@
   - rscadd: The Three-World Empire will now occasionally respond to distress beacons.
   cuberound:
   - balance: m56d can not be placed within five tiles of another one
+2024-01-03:
+  SabreML:
+  - bugfix: Fixed custom xeno ERTs sending a distress beacon announcement when it
+      shouldn't.
+  Steelpoint:
+  - mapadd: Shivas Snowball is back in rotation.
+  - maptweak: The south east landing zone on Shivas has been relocated to the south
+      west, the dig site in the south west has been similarly relocated.
+  - maptweak: Comms towers on Shivas have been placed in more consistent locations
+      near each other, instead of some of them being on the opposite sides of the
+      map from each other.
+  poltava, ihatethisengine:
+  - rscadd: added intel chestrig
+  - imageadd: added sprites for intel chestrig

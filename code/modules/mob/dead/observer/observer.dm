@@ -1235,8 +1235,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			. += ""
 
 	if(timeofdeath)
-		. += "Time Since Death: [duration2text_sec(world.time - timeofdeath)]"
+		var/time_since_death = debug_var
+		var/format = (time_since_death >= 1 HOURS ? "hh:mm:ss" : "mm:ss")
 
+		. += "Time Since Death: [gameTimestamp(format, time_since_death)]"
+
+/mob/dead/observer/var/debug_var
+/mob/dead/observer/verb/debug_thing()
+	set category = "Ghost"
+	set name = "debug thing"
+
+	debug_var += 10 MINUTES
 
 /proc/message_ghosts(message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)

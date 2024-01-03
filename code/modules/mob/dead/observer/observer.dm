@@ -1238,7 +1238,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/time_since_death = world.time - timeofdeath
 		var/format = (time_since_death >= 1 HOURS ? "hh:mm:ss" : "mm:ss")
 
-		. += "Time Since Death: [gameTimestamp(format, time_since_death)]"
+		. += "Time Since Death: [time2text(time_since_death, format)]"
 
 
 /proc/message_ghosts(message)

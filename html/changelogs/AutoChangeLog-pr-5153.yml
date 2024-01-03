@@ -1,0 +1,8 @@
+author: "fira"
+delete-after: True
+changes:
+  - code_imp: "Refactored Daze to use new Status backend"
+  - bugfix: "Dazed screen effect now applies immediately"
+  - bugfix: "Stuttering now starts properly when dazed"
+  - rscdel: "Removed unused disabilities code"
+  - rscdel: "Removed an old, goofy and unused decade old horse mask"

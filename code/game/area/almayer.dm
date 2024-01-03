@@ -428,17 +428,17 @@
 	icon_state = "lowerhull"//tempory until i get a proper one.
 	fake_zlevel = 2 // lowerdeck
 
-//generals naming for now not going to place this
-/area/almayer/mnt/lower/port
-	name = "\improper Lower Deck Port Maintenance"
+/area/almayer/mnt/lower/constr
+	name = "\improper Lower Deck Constr Site"
 
-/area/almayer/mnt/lower/starboard
-	name = "\improper Lower Deck Starboard Maintenance"
+/area/almayer/mnt/lower/s_bow
+	name = "\improper Lower Deck Starboard-Bow Maintenance"
+
+//generals naming for now not going to place this
 
 // hull areas. way colder but you shouldn't take damage by standing in it with no protection
 
 /area/almayer/mnt/hull
-	temperature = T0C
 
 // lower deck hull areas
 
@@ -451,7 +451,7 @@
 	name = "\improper Lower Deck Stern Hull"
 
 /area/almayer/mnt/hull/lower/p_bow
-	name = "\improper Lower Deck Starboard-Bow Hull"
+	name = "\improper Lower Deck Port-Bow Hull"
 
 /area/almayer/mnt/hull/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Hull"
@@ -463,7 +463,7 @@
 	name = "\improper Lower Deck Starboard-Midship Hull"
 
 /area/almayer/mnt/hull/lower/l_a_s
-	name = "\improper Lower Deck Starboard Hull"
+	name = "\improper Lower Deck Starboard-Aft Hull"
 
 /area/almayer/mnt/hull/lower/l_f_p
 	name = "\improper Lower Deck Port-Fore Hull"

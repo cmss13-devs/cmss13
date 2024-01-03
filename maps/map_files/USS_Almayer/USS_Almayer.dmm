@@ -12177,12 +12177,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/stern_hallway)
 "aYm" = (
-/obj/structure/sign/safety/med_life_support{
-	pixel_x = 15;
-	pixel_y = 32
+/obj/structure/largecrate/supply/medicine/medivend{
+	pixel_x = 3
 	},
-/obj/structure/sign/safety/hazard{
-	pixel_y = 32
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 3;
+	pixel_y = 11;
+	density = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -12510,6 +12511,13 @@
 /obj/item/storage/firstaid/adv/empty,
 /obj/item/storage/firstaid/adv/empty,
 /obj/item/storage/firstaid/adv/empty,
+/obj/structure/sign/safety/med_life_support{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
 	},
@@ -17837,8 +17845,21 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "bFb" = (
-/obj/structure/foamed_metal,
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/spiderling_remains{
+	pixel_x = 18;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/ash{
+	pixel_x = 11;
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner"
+	},
 /area/almayer/medical/lower_medical_medbay)
 "bFj" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -29573,6 +29594,56 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_umbilical)
+"erU" = (
+/obj/structure/surface/rack{
+	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover. One of the shelf legs is damaged, resulting in the rack being propped up by what appears to be circuit boards."
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	status = 3;
+	icon_state = "bulb-burned"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/prop{
+	icon = 'icons/obj/items/bloodpack.dmi';
+	icon_state = "bloodpack";
+	name = "blood bag";
+	desc = "A blood bag with a hole in it. The rats must have gotten to it first."
+	},
+/obj/item/prop{
+	icon = 'icons/obj/items/bloodpack.dmi';
+	icon_state = "bloodpack";
+	name = "blood bag";
+	desc = "A blood bag with a hole in it. The rats must have gotten to it first."
+	},
+/obj/item/prop{
+	icon = 'icons/obj/items/bloodpack.dmi';
+	icon_state = "bloodpack";
+	name = "blood bag";
+	desc = "A blood bag with a hole in it. The rats must have gotten to it first."
+	},
+/obj/item/prop{
+	icon = 'icons/obj/items/circuitboards.dmi';
+	icon_state = "id_mod";
+	name = "circuit board";
+	desc = "The words \"Cloning Pod\" are scrawled onto it.";
+	layer = 2.78;
+	pixel_y = 10;
+	pixel_x = 8
+	},
+/obj/item/prop{
+	icon = 'icons/obj/items/circuitboards.dmi';
+	icon_state = "id_mod";
+	name = "circuit board";
+	desc = "The words \"Cloning Scanner\" are scrawled onto it.";
+	layer = 2.79;
+	pixel_y = 7;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "esi" = (
 /obj/structure/sign/safety/stairs{
 	pixel_x = 15;
@@ -31951,6 +32022,38 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/starboard_point_defense)
+"frC" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/pill/happy{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/prop/helmetgarb/prescription_bottle{
+	pixel_x = 9
+	},
+/obj/item/tool/surgery/bonegel/empty{
+	pixel_y = 15;
+	pixel_x = 4
+	},
+/obj/item/tool/surgery/bonegel/empty{
+	pixel_y = 13;
+	pixel_x = -8
+	},
+/obj/item/tool/surgery/bonegel/empty{
+	pixel_y = 19;
+	pixel_x = -5;
+	layer = 3.01
+	},
+/obj/item/storage/box/gloves{
+	layer = 3.2;
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "frF" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
@@ -43544,6 +43647,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/chief_mp_office)
+"jQm" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	name = "Medical Storage"
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "jQt" = (
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8
@@ -44805,6 +44917,30 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
+"kpu" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/cleanable/cobweb{
+	dir = 8;
+	plane = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "kpQ" = (
 /obj/structure/machinery/door_control{
 	id = "engidorm";
@@ -110636,9 +110772,9 @@ aLG
 aZi
 aLG
 kan
+frC
 bFb
-bFb
-kan
+jQm
 aYm
 rlZ
 buu
@@ -110839,8 +110975,8 @@ aLG
 aZi
 aLG
 kan
-bFb
-bFb
+erU
+kpu
 kan
 aZM
 soK

@@ -30,16 +30,7 @@
 	classic_keys = list("Unbound")
 	name = "pred_buy"
 	full_name = "Claim equipment"
-	keybind_signal = COMSIG_KB_YAUTJA_BUTCHER
-
-/datum/keybinding/yautja/pred_buy/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
-		return
-	H.pred_buy()
+	keybind_signal = COMSIG_KB_YAUTJA_PRED_BUY
 
 /datum/keybinding/yautja/mark_panel
 	hotkey_keys = list("Unbound")
@@ -48,46 +39,12 @@
 	full_name = "Mark panel"
 	keybind_signal = COMSIG_KB_YAUTJA_MARK_PANEL
 
-/datum/keybinding/yautja/mark_panel/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
-		return
-	H.mark_panel()
-
 /datum/keybinding/yautja/mark_for_hunt
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "mark_for_hunt"
-	full_name = "Mark for hunt"
-	keybind_signal = COMSIG_KB_YAUTJA_MARK_FOR_HUNT
-
-/datum/keybinding/yautja/mark_for_hunt/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
-		return
-	H.mark_for_hunt()
-
-/datum/keybinding/yautja/remove_from_hunt
-	hotkey_keys = list("Unbound")
-	classic_keys = list("Unbound")
-	name = "remove_from_hunt"
-	full_name = "Remove from hunt"
-	keybind_signal = COMSIG_KB_YAUTJA_REMOVE_FROM_HUNT
-
-/datum/keybinding/yautja/remove_from_hunt/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
-		return
-	H.remove_from_hunt()
+	full_name = "Toggle mark for hunt"
+	keybind_signal = COMSIG_KB_YAUTJA_TOGGLE_MARK_FOR_HUNT
 
 // BRACER SPECIFIC \\
 
@@ -168,22 +125,6 @@
 	full_name = "Toggle wristblades"
 	keybind_signal = COMSIG_KB_YAUTJA_WRISTBLADES
 
-/datum/keybinding/yautja/bracer_hunter/wristblades/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
-	if(istype(gloves))
-		gloves.wristblades()
-		return TRUE
-
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
-	if(istype(held))
-		held.wristblades()
-		return TRUE
-
 /datum/keybinding/yautja/bracer_hunter/track_gear
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
@@ -214,44 +155,12 @@
 	full_name = "Toggle cloak"
 	keybind_signal = COMSIG_KB_YAUTJA_CLOAKER
 
-/datum/keybinding/yautja/bracer_hunter/cloaker/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
-	if(istype(gloves))
-		gloves.cloaker()
-		return TRUE
-
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
-	if(istype(held))
-		held.cloaker()
-		return TRUE
-
 /datum/keybinding/yautja/bracer_hunter/caster
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "caster"
 	full_name = "Toggle plasma caster"
 	keybind_signal = COMSIG_KB_YAUTJA_CASTER
-
-/datum/keybinding/yautja/bracer_hunter/caster/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
-	if(istype(gloves))
-		gloves.caster()
-		return TRUE
-
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
-	if(istype(held))
-		held.caster()
-		return TRUE
 
 /datum/keybinding/yautja/bracer_hunter/change_explosion_type
 	hotkey_keys = list("Unbound")
@@ -283,22 +192,6 @@
 	full_name = "Self-destruct"
 	keybind_signal = COMSIG_KB_YAUTJA_ACTIVATE_SUICIDE
 
-/datum/keybinding/yautja/bracer_hunter/activate_suicide/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
-	if(istype(gloves))
-		gloves.activate_suicide()
-		return TRUE
-
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
-	if(istype(held))
-		held.activate_suicide()
-		return TRUE
-
 /datum/keybinding/yautja/bracer_hunter/injectors
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
@@ -306,21 +199,6 @@
 	full_name = "Create Stabilising Crystal"
 	keybind_signal = COMSIG_KB_YAUTJA_INJECTORS
 
-/datum/keybinding/yautja/bracer_hunter/injectors/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
-	if(istype(gloves))
-		gloves.injectors()
-		return TRUE
-
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
-	if(istype(held))
-		held.injectors()
-		return TRUE
 /datum/keybinding/yautja/bracer_hunter/healing_capsule
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
@@ -328,44 +206,12 @@
 	full_name = "Create Healing Capsule"
 	keybind_signal = COMSIG_KB_YAUTJA_CAPSULE
 
-/datum/keybinding/yautja/bracer_hunter/healing_capsule/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
-	if(istype(gloves))
-		gloves.healing_capsule()
-		return TRUE
-
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
-	if(istype(held))
-		held.healing_capsule()
-		return TRUE
-
 /datum/keybinding/yautja/bracer_hunter/call_disc
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "call_disc"
 	full_name = "Call smart-disc"
 	keybind_signal = COMSIG_KB_YAUTJA_CALL_DISC
-
-/datum/keybinding/yautja/bracer_hunter/call_disc/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
-	if(istype(gloves))
-		gloves.call_disc()
-		return TRUE
-
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
-	if(istype(held))
-		held.call_disc()
-		return TRUE
 
 /datum/keybinding/yautja/bracer_hunter/remove_tracked_item
 	hotkey_keys = list("Unbound")
@@ -420,44 +266,12 @@
 	full_name = "Yank combi-stick"
 	keybind_signal = COMSIG_KB_YAUTJA_CALL_COMBI
 
-/datum/keybinding/yautja/bracer_hunter/call_combi/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
-	if(istype(gloves))
-		gloves.call_combi()
-		return TRUE
-
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
-	if(istype(held))
-		held.call_combi()
-		return TRUE
-
 /datum/keybinding/yautja/bracer_hunter/translate
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "translate"
 	full_name = "Translator"
 	keybind_signal = COMSIG_KB_YAUTJA_TRANSLATE
-
-/datum/keybinding/yautja/bracer_hunter/translate/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
-	if(istype(gloves))
-		gloves.translate()
-		return TRUE
-
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
-	if(istype(held))
-		held.translate()
-		return TRUE
 
 /datum/keybinding/yautja/bracer_hunter/bracername
 	hotkey_keys = list("Unbound")
@@ -528,6 +342,13 @@
 		held.link_bracer()
 		return TRUE
 
+/datum/keybinding/yautja/bracer_hunter/control_falcon_drone
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "control_falcon"
+	full_name = "Control falcon drone"
+	keybind_signal = COMSIG_KB_YAUTJA_CONTROL_FALCON
+
 // Misc stuff - mask, teleporter \\
 
 // mask
@@ -545,32 +366,14 @@
 	classic_keys = list("Unbound")
 	name = "toggle_zoom"
 	full_name = "Toggle mask zoom"
-	keybind_signal = COMSIG_KB_YAUTJA_LINK_BRACER
-
-/datum/keybinding/yautja/mask/toggle_zoom/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/clothing/mask/gas/yautja/mask = H.wear_mask
-	mask.toggle_zoom()
-	return TRUE
+	keybind_signal = COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM
 
 /datum/keybinding/yautja/mask/togglesight
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "togglesight"
 	full_name = "Toggle mask visors"
-	keybind_signal = COMSIG_KB_YAUTJA_LINK_BRACER
-
-/datum/keybinding/yautja/mask/togglesight/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/clothing/mask/gas/yautja/mask = H.wear_mask
-	mask.togglesight()
-	return TRUE
+	keybind_signal = COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT
 
 // teleporter
 

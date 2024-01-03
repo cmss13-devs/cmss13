@@ -25382,17 +25382,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/courtroom)
-"bBU" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/desert_dam/building/security/southern_hallway)
 "bBV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -76387,7 +76376,7 @@ bsS
 bvy
 bsS
 bsS
-bBU
+bsS
 bFr
 aQH
 bIX

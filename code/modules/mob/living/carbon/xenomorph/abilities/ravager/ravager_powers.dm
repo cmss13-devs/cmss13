@@ -340,7 +340,7 @@
 
 	// Negative stat effects
 	if (debilitate)
-		carbon.dazed += daze_amount
+		carbon.AdjustDaze(daze_amount)
 
 	apply_cooldown()
 	return ..()

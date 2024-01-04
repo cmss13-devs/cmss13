@@ -180,7 +180,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_atom = CAN_BE_SYRINGED
 	attack_verb = list("burnt", "singed")
 	blood_overlay_type = ""
-	light_color = LIGHT_COLOUR_ORANGE
+	light_color = LIGHT_COLOR_ORANGE
 	/// Note - these are in masks.dmi not in cigarette.dmi
 	var/icon_on = "cigon"
 	var/icon_off = "cigoff"
@@ -685,7 +685,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "lighter_g"
 	item_state = "lighter_g"
-	light_color = LIGHT_COLOUR_LAVA
+	light_color = LIGHT_COLOR_LAVA
 	var/icon_on = "lighter_g_on"
 	var/icon_off = "lighter_g"
 	var/clr = "g"

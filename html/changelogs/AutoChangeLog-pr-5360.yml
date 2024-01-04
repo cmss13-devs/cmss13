@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - ui: "Separated xeno hivemind chat messages into their own toggleable category, separate from 'Radio'."

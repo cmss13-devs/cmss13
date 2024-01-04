@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - bugfix: "Made the 'Time Since Death' counter show hours if it passes 1 hour, rather than wrapping the minutes back to 0."

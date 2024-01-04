@@ -434,9 +434,7 @@
 /area/almayer/mnt/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Maintenance"
 
-//generals naming for now not going to place this
-
-// hull areas. way colder but you shouldn't take damage by standing in it with no protection
+// hull areas
 
 /area/almayer/mnt/hull
 

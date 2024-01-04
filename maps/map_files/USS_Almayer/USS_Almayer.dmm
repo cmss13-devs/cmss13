@@ -9794,7 +9794,7 @@
 /area/almayer/hallways/upper/starboard)
 "aLd" = (
 /turf/closed/wall/almayer,
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "aLf" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_s)
@@ -16340,7 +16340,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "bvT" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -17371,7 +17371,7 @@
 "bCH" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "bCM" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer{
@@ -18341,7 +18341,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "bHp" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 2
@@ -19261,7 +19261,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "bLT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -21883,10 +21883,13 @@
 	},
 /area/almayer/command/computerlab)
 "cbo" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "cbr" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -27290,6 +27293,11 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/briefing)
+"dyf" = (
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/maint/lower/cryo_cells)
 "dyj" = (
 /obj/structure/closet/secure_closet/commander,
 /obj/item/clothing/suit/storage/marine/light/vest,
@@ -35929,7 +35937,7 @@
 /area/almayer/hallways/hangar)
 "gRn" = (
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "gRP" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -49393,7 +49401,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "lXO" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -60484,7 +60492,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "qih" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -72413,7 +72421,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "uIv" = (
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -76458,7 +76466,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "vZU" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/power/apc/almayer{
@@ -78570,7 +78578,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "wNt" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -79401,7 +79409,7 @@
 	pixel_x = 36
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower)
+/area/almayer/maint/lower/cryo_cells)
 "xfh" = (
 /obj/structure/largecrate/supply/floodlights,
 /turf/open/floor/almayer{
@@ -127283,9 +127291,9 @@ bdl
 bdl
 bdl
 bdl
-cbo
+dyf
 gRn
-cbo
+dyf
 cbo
 gRn
 bdl

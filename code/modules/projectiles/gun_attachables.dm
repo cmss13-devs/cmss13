@@ -3369,6 +3369,8 @@ Defined in conflicts.dm of the #defines folder.
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 					G.add_firemode(GUN_FIREMODE_AUTOMATIC)
+					//Automatically switch us to full auto.
+					G.do_toggle_firemode(user, null, GUN_FIREMODE_AUTOMATIC)
 
 				if(heavy_bipod)
 					user.anchored = TRUE

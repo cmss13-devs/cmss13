@@ -4,13 +4,13 @@
 // Bow = Western|Stern = Eastern //(those are the front and back small sections)
 /area/almayer
 	icon = 'icons/turf/area_almayer.dmi'
-	/// ambience = list('sound/ambience/shipambience.ogg')
+	// ambience = list('sound/ambience/shipambience.ogg')
 	icon_state = "almayer"
 	ceiling = CEILING_METAL
 	powernet_name = "almayer"
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	soundscape_interval = 30
-	/// soundscape_playlist = list('sound/effects/xylophone1.ogg', 'sound/effects/xylophone2.ogg', 'sound/effects/xylophone3.ogg')
+	// soundscape_playlist = list('sound/effects/xylophone1.ogg', 'sound/effects/xylophone2.ogg', 'sound/effects/xylophone3.ogg')
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 
@@ -415,86 +415,84 @@
 	icon_state = "stairs_upperdeck"
 	fake_zlevel = 1 // upperdeck
 
-// adding a new parent type for areas on almayer called maintenance short will be mnt
-// hull will be children of mnt.
-// maintenance are area that aren't habitable quarter less light more cold, linking pipes etc more dust etc...
+// maintenance areas
 
-/area/almayer/mnt
+/area/almayer/maint
 
 //lower maintenance areas
 
-/area/almayer/mnt/lower
+/area/almayer/maint/lower
 	name = "\improper Lower Deck Maintenance"
 	icon_state = "lowerhull"//tempory until i get a proper one.
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/mnt/lower/constr
+/area/almayer/maint/lower/constr
 	name = "\improper Lower Deck Constr Site"
 
-/area/almayer/mnt/lower/s_bow
+/area/almayer/maint/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Maintenance"
 
 // hull areas
 
-/area/almayer/mnt/hull
+/area/almayer/maint/hull
 
 // lower deck hull areas
 
-/area/almayer/mnt/hull/lower
+/area/almayer/maint/hull/lower
 	name = "\improper Lower Deck Hull"
 	icon_state = "lowerhull"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/mnt/hull/lower/stern
+/area/almayer/maint/hull/lower/stern
 	name = "\improper Lower Deck Stern Hull"
 
-/area/almayer/mnt/hull/lower/p_bow
+/area/almayer/maint/hull/lower/p_bow
 	name = "\improper Lower Deck Port-Bow Hull"
 
-/area/almayer/mnt/hull/lower/s_bow
+/area/almayer/maint/hull/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Hull"
 
-/area/almayer/mnt/hull/lower/l_f_s
+/area/almayer/maint/hull/lower/l_f_s
 	name = "\improper Lower Deck Starboard-Fore Hull"
 
-/area/almayer/mnt/hull/lower/l_m_s
+/area/almayer/maint/hull/lower/l_m_s
 	name = "\improper Lower Deck Starboard-Midship Hull"
 
-/area/almayer/mnt/hull/lower/l_a_s
+/area/almayer/maint/hull/lower/l_a_s
 	name = "\improper Lower Deck Starboard-Aft Hull"
 
-/area/almayer/mnt/hull/lower/l_f_p
+/area/almayer/maint/hull/lower/l_f_p
 	name = "\improper Lower Deck Port-Fore Hull"
 
-/area/almayer/mnt/hull/lower/l_m_p
+/area/almayer/maint/hull/lower/l_m_p
 	name = "\improper Lower Deck Port-Midship Hull"
 
-/area/almayer/mnt/hull/lower/l_a_p
+/area/almayer/maint/hull/lower/l_a_p
 	name = "\improper Lower Deck Port-Aft Hull"
 
 // upper deck hull areas
 
-/area/almayer/mnt/hull/upper
+/area/almayer/maint/hull/upper
 	name = "\improper Upper Deck Hull"
 	icon_state = "upperhull"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/mnt/hull/upper/u_f_s
+/area/almayer/maint/hull/upper/u_f_s
 	name = "\improper Upper Deck Fore-Starboard Hull"
 
-/area/almayer/mnt/hull/upper/u_m_s
+/area/almayer/maint/hull/upper/u_m_s
 	name = "\improper Upper Deck Starboard-Midship Hull"
 
-/area/almayer/mnt/hull/upper/u_a_s
+/area/almayer/maint/hull/upper/u_a_s
 	name = "\improper Upper Deck Starboard-Aft Hull"
 
-/area/almayer/mnt/hull/upper/u_f_p
+/area/almayer/maint/hull/upper/u_f_p
 	name = "\improper Upper Deck Port-Fore Hull"
 
-/area/almayer/mnt/hull/upper/u_m_p
+/area/almayer/maint/hull/upper/u_m_p
 	name = "\improper Upper Deck Port-Midship Hull"
 
-/area/almayer/mnt/hull/upper/u_a_p
+/area/almayer/maint/hull/upper/u_a_p
 	name = "\improper Upper Deck Port-Aft Hull"
 
 /area/almayer/living/cryo_cells

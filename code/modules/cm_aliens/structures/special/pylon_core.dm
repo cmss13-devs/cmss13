@@ -188,7 +188,7 @@
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
-	if(!linked_hive.check_if_hit_larva_from_pylon_limit())
+	if(linked_hive.check_if_hit_larva_from_pylon_limit())
 		return
 
 	linked_hive.partial_larva += (linked_hive.get_real_total_xeno_count() + linked_hive.stored_larva) * LARVA_ADDITION_MULTIPLIER

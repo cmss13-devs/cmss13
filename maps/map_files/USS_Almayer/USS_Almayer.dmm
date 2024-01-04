@@ -29626,7 +29626,7 @@
 	icon = 'icons/obj/items/circuitboards.dmi';
 	icon_state = "id_mod";
 	name = "circuit board";
-	desc = "The words \"Cloning Pod\" are scrawled onto it.";
+	desc = "The words \"Cloning Pod\" are scrawled onto it. It appears to be heavily damaged.";
 	layer = 2.78;
 	pixel_y = 10;
 	pixel_x = 8
@@ -29635,7 +29635,7 @@
 	icon = 'icons/obj/items/circuitboards.dmi';
 	icon_state = "id_mod";
 	name = "circuit board";
-	desc = "The words \"Cloning Scanner\" are scrawled onto it.";
+	desc = "The words \"Cloning Scanner\" are scrawled onto it. It appears to be heavily damaged.";
 	layer = 2.79;
 	pixel_y = 7;
 	pixel_x = 8

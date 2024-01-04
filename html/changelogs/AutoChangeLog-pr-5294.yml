@@ -1,9 +1,0 @@
-author: "BeagleGaming1, Mr.Crowford"
-delete-after: True
-changes:
-  - rscadd: "Added Yautja action buttons"
-  - qol: "Added a keybind to control falcon drones"
-  - qol: "Thwei crystals and healing capsules say how much time until off cooldown"
-  - code_imp: "Yautja keybinds now redirect to action buttons"
-  - code_imp: "Changed thwei crystals and healing capsules to cooldowns instead of timers"
-  - code_imp: "Miscellaneous Yautja-related code cleanup"

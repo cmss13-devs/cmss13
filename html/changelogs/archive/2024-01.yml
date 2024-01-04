@@ -46,3 +46,26 @@
   poltava, ihatethisengine:
   - rscadd: added intel chestrig
   - imageadd: added sprites for intel chestrig
+2024-01-04:
+  BeagleGaming1, Mr.Crowford:
+  - rscadd: Added Yautja action buttons
+  - qol: Added a keybind to control falcon drones
+  - qol: Thwei crystals and healing capsules say how much time until off cooldown
+  - code_imp: Yautja keybinds now redirect to action buttons
+  - code_imp: Changed thwei crystals and healing capsules to cooldowns instead of
+      timers
+  - code_imp: Miscellaneous Yautja-related code cleanup
+  SabreML:
+  - bugfix: Fixed non-combat synthetics being able to fire the M2C.
+  - bugfix: Fixed scouts being able to use the M56D or M2C before their cloak's gun
+      cooldown had ended.
+  - bugfix: Fixed the M56D and M2C saying that the user is too far away to man it,
+      even when they successfully man it.
+  - bugfix: Fixed a runtime which was caused whenever someone manned an M56D or M2C.
+  - refactor: Refactored some M56D and M2C manning/unmanning code.
+  fira:
+  - code_imp: Refactored Daze to use new Status backend
+  - bugfix: Dazed screen effect now applies immediately
+  - bugfix: Stuttering now starts properly when dazed
+  - rscdel: Removed unused disabilities code
+  - rscdel: Removed an old, goofy and unused decade old horse mask

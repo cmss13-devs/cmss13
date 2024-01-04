@@ -1,6 +1,7 @@
 // devolve a xeno - lots of old, vaguely shitty code here
 /datum/action/xeno_action/onclick/manage_hive/proc/de_evolve_other()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	plasma_cost = 500
 	if(!user_xeno.check_state())
 		return
 	if(!user_xeno.observed_xeno)
@@ -294,6 +295,7 @@
 
 /datum/action/xeno_action/onclick/manage_hive/proc/give_evo_points()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	plasma_cost = 100
 
 	if(!user_xeno.check_state())
 		return
@@ -355,26 +357,38 @@
 	user_xeno.hive.stored_larva--
 	return
 
+
+
+/datum/action/xeno_action/onclick/manage_hive/proc/give_jelly_reward()
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	plasma_cost = 500
+	if(!xeno.check_state())
+		return
+	if(!xeno.check_plasma(plasma_cost))
+		return
+	if(give_jelly_award(xeno.hive))
+		xeno.use_plasma(plasma_cost)
+		return
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/queenbanish = owner
 
-
-
-	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish", "Re-Admit", "De-evolve", "Reward Jelly", "Exchange larva for evolution",), theme="hive_status")
+	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)",), theme="hive_status")
 	switch(choice)
-		if("Banish")
+		if("Banish (500)")
 			banish()
-		if("Re-Admit")
+		if("Re-Admit (100)")
 			readmit()
-		if("De-evolve")
+		if("De-evolve (500)")
 			de_evolve_other()
-		if("Reward Jelly")
-			give_jelly_award(queenbanish.hive)
-		if("Exchange larva for evolution")
+		if("Reward Jelly (500)")
+			give_jelly_reward(queenbanish.hive)
+		if("Exchange larva for evolution (100)")
 			give_evo_points()
+
 
 /datum/action/xeno_action/onclick/manage_hive/proc/banish()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	plasma_cost = 500
 	if(!user_xeno.check_state())
 		return
 
@@ -443,6 +457,7 @@
 
 /datum/action/xeno_action/onclick/manage_hive/proc/readmit()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	plasma_cost = 100
 	if(!user_xeno.check_state())
 		return
 

@@ -432,6 +432,9 @@
 /area/almayer/maint/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Maintenance"
 
+/area/almayer/maint/lower/cryo_cells
+	name = "\improper Lower Deck Cryo Cells Maintenance"
+
 // hull areas
 
 /area/almayer/maint/hull

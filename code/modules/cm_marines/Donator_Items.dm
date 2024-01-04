@@ -17,7 +17,7 @@
 	flags_inv_hide = HIDEEARS
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	flags_marine_helmet = NO_FLAGS
+	flags_marine_helmet = HELMET_GARB_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_squad_markings()
 	set src in usr

@@ -418,7 +418,7 @@
 	if(!istype(id_card))
 		return
 	if(!(id_card.rank in list(JOB_SO, JOB_XO, JOB_SQUAD_LEADER)))
-		to_chat(wearer, SPAN_WARNING("Only Staff Officers, Executive Officers and Squad Leader are permitted to give medal recommendations!"))
+		to_chat(wearer, SPAN_WARNING("Only Staff Officers, Executive Officers and Squad Leaders are permitted to give medal recommendations!"))
 		return
 	if(add_medal_recommendation(usr))
 		to_chat(usr, SPAN_NOTICE("Recommendation successfully submitted."))

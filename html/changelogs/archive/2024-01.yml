@@ -69,3 +69,14 @@
   - bugfix: Stuttering now starts properly when dazed
   - rscdel: Removed unused disabilities code
   - rscdel: Removed an old, goofy and unused decade old horse mask
+2024-01-05:
+  Birdtalon:
+  - bugfix: Fixed exploit in praetorian hook caused by an oversight.
+  Huffie56:
+  - refactor: for the file coulours.dm and other files change define in it from COULOUR
+      to COLOR
+  SabreML:
+  - bugfix: Made the 'Time Since Death' counter show hours if it passes 1 hour, rather
+      than wrapping the minutes back to 0.
+  - ui: Separated xeno hivemind chat messages into their own toggleable category,
+      separate from 'Radio'.

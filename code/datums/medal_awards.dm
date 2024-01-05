@@ -161,13 +161,12 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 	return TRUE
 
-/proc/give_medal_award_prefilled(medal_location, mob/giving_mob, _recipient_name, _recipient_rank, _recipient_ckey, reason, _medal_type)
+/proc/give_medal_award_prefilled(medal_location, mob/giving_mob, chosen_recipient, recipient_rank, recipient_ckey, reason, _medal_type)
 	var/list/recipient_ranks = list()
 	for(var/datum/data/record/record in GLOB.data_core.general)
 		var/recipient_name = record.fields["name"]
 		recipient_ranks[recipient_name] = record.fields["rank"]
 
-	var/chosen_recipient = _recipient_name
 	if(!chosen_recipient)
 		return FALSE
 
@@ -182,9 +181,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 		return FALSE
 
 	// Get mob information
-	var/recipient_rank = _recipient_rank
 	var/posthumous = TRUE
-	var/recipient_ckey = _recipient_ckey
 	var/mob/recipient_mob
 	var/found_other = FALSE
 

@@ -952,3 +952,21 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(new_human), WEAR_R_STORE)
 
 //*****************************************************************************************************/
+
+
+/datum/equipment_preset/tutorial
+	name = "Tutorial"
+	faction = FACTION_MARINE
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction_group = FACTION_LIST_MARINE
+	languages = list(LANGUAGE_ENGLISH)
+	idtype = /obj/item/card/id
+	/// If the player should start out underfed
+	var/underfed = TRUE
+
+/datum/equipment_preset/tutorial/load_status(mob/living/carbon/human/new_human)
+	if(underfed)
+		new_human.nutrition = NUTRITION_LOW
+
+/datum/equipment_preset/tutorial/fed
+	underfed = FALSE

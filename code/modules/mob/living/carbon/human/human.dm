@@ -1445,7 +1445,7 @@
 
 /mob/living/carbon/human/verb/remove_your_splints()
 	set name = "Remove Your Splints"
-	set category = "Object"
+	set category = "IC"
 
 	remove_splints()
 
@@ -1748,3 +1748,28 @@
 													// clamped to max 500
 	if(dizziness > 100 && !is_dizzy)
 		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
+
+/proc/setup_human(mob/living/carbon/human/target, mob/new_player/new_player, is_late_join = FALSE)
+	new_player.spawning = TRUE
+	new_player.close_spawn_windows()
+	new_player.client.prefs.copy_all_to(target, new_player.job, is_late_join)
+
+	if(new_player.client.prefs.be_random_body)
+		var/datum/preferences/rand_prefs = new()
+		rand_prefs.randomize_appearance(target)
+
+	target.job = new_player.job
+	target.name = new_player.real_name
+	target.voice = new_player.real_name
+
+	if(new_player.mind)
+		new_player.mind_initialize()
+		new_player.mind.transfer_to(target, TRUE)
+		new_player.mind.setup_human_stats()
+
+	target.sec_hud_set_ID()
+	target.hud_set_squad()
+
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))

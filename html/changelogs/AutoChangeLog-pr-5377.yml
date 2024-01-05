@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - bugfix: "Trijent security southern hallway and engineering east tunnel no longer have 2 APCs"

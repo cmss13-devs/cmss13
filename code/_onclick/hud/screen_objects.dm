@@ -30,6 +30,10 @@
 /atom/movable/screen/inventory
 	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
 
+/atom/movable/screen/inventory/Initialize(mapload, ...)
+	. = ..()
+
+	RegisterSignal(src, COMSIG_ATOM_DROPPED_ON, PROC_REF(handle_dropped_on))
 
 /atom/movable/screen/close
 	name = "close"
@@ -325,6 +329,22 @@
 				return 1
 	return 0
 
+/atom/movable/screen/inventory/proc/handle_dropped_on(atom/dropped_on, atom/dropping, client/user)
+	SIGNAL_HANDLER
+
+	if(slot_id != WEAR_L_HAND && slot_id != WEAR_R_HAND)
+		return
+
+	if(!isstorage(dropping.loc))
+		return
+
+	if(!user.mob.Adjacent(dropping))
+		return
+
+	var/obj/item/storage/store = dropping.loc
+	store.remove_from_storage(dropping, get_turf(user.mob))
+	user.mob.put_in_active_hand(dropping)
+
 /atom/movable/screen/throw_catch
 	name = "throw/catch"
 	icon = 'icons/mob/hud/human_midnight.dmi'
@@ -503,19 +523,19 @@
 		if(user.observed_xeno == user.tracked_marker)
 			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
 		else
-			to_chat(user, SPAN_XENONOTICE("You psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
+			to_chat(user, SPAN_XENONOTICE("We psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
 			user.overwatch(user.tracked_marker) //this is so scuffed, sorry if this causes errors
 		return
 	if(mods["alt"] && user.tracked_marker)
 		user.stop_tracking_resin_mark()
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Without a queen your psychic link is broken!"))
+		to_chat(user, SPAN_WARNING("Without a queen our psychic link is broken!"))
 		return FALSE
-	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.hive.mark_ui.update_all_data()
 	user.hive.mark_ui.open_mark_menu(user)
@@ -531,10 +551,10 @@
 		return FALSE
 	if(mods["shift"])
 		var/area/current_area = get_area(user)
-		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
+		to_chat(user, SPAN_NOTICE("We are currently at: <b>[current_area.name]</b>."))
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
 	if(mods["alt"])
 		var/list/options = list()
@@ -561,9 +581,9 @@
 			track_state = options[selected]
 		return
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Your hive doesn't have a living queen!"))
+		to_chat(user, SPAN_WARNING("Our hive doesn't have a living queen!"))
 		return FALSE
-	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.overwatch(user.hive.living_xeno_queen)
 

@@ -53,6 +53,15 @@
 	var/list/survivors = list()
 	var/list/xenos = list()
 	var/list/ert_members = list()
+	var/list/upp = list()
+	var/list/clf = list()
+	var/list/wy = list()
+	var/list/twe = list()
+	var/list/freelancer = list()
+	var/list/contractor = list()
+	var/list/mercenary = list()
+	var/list/dutch = list()
+	var/list/marshal = list()
 	var/list/synthetics = list()
 	var/list/predators = list()
 	var/list/animals = list()
@@ -65,7 +74,7 @@
 
 	var/is_admin = FALSE
 	if(user && user.client)
-		is_admin = check_other_rights(user.client, R_ADMIN, FALSE)
+		is_admin = check_client_rights(user.client, R_ADMIN, FALSE)
 	var/list/pois = getpois(skip_mindless = !is_admin, specify_dead_role = FALSE)
 	for(var/name in pois)
 		var/list/serialized = list()
@@ -132,12 +141,30 @@
 
 				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
 					escaped += list(serialized)
+				else if(human.faction in FACTION_LIST_WY)
+					wy += list(serialized)
 				else if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
 				else if(isyautja(human))
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT)
 					ert_members += list(serialized)
+				else if(human.faction in FACTION_LIST_UPP)
+					upp += list(serialized)
+				else if(human.faction in FACTION_LIST_CLF)
+					clf += list(serialized)
+				else if(human.faction in FACTION_LIST_TWE)
+					twe += list(serialized)
+				else if(human.faction in FACTION_LIST_FREELANCER)
+					freelancer += list(serialized)
+				else if(human.faction in FACTION_LIST_CONTRACTOR)
+					contractor += list(serialized)
+				else if(human.faction in FACTION_LIST_MERCENARY)
+					mercenary += list(serialized)
+				else if(human.faction in FACTION_LIST_MARSHAL)
+					marshal += list(serialized)
+				else if(human.faction in FACTION_LIST_DUTCH)
+					dutch += list(serialized)
 				else if(human.faction in FACTION_LIST_MARINE)
 					marines += list(serialized)
 				else if(issurvivorjob(human.job))
@@ -156,6 +183,15 @@
 	data["survivors"] = survivors
 	data["xenos"] = xenos
 	data["ert_members"] = ert_members
+	data["upp"] = upp
+	data["clf"] = clf
+	data["wy"] = wy
+	data["twe"] = twe
+	data["freelancer"] = freelancer
+	data["contractor"] = contractor
+	data["mercenary"] = mercenary
+	data["dutch"] = dutch
+	data["marshal"] = marshal
 	data["synthetics"] = synthetics
 	data["predators"] = predators
 	data["animals"] = animals

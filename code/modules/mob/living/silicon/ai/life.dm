@@ -34,9 +34,6 @@
 			// Gain Power
 			apply_damage(-1, OXY)
 
-		// Handle EMP-stun
-		handle_stunned()
-
 		//stage = 1
 		//if (isRemoteControlling(src)) // Are we not sure what we are?
 		var/blind = 0

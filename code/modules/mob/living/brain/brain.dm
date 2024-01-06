@@ -41,15 +41,6 @@
 		return 1
 	return ..()
 
-
-/mob/living/brain/update_canmove()
-	canmove = FALSE
-	return canmove
-
-
-
-
-
 /mob/living/brain/update_sight()
 	if (stat == DEAD)
 		sight |= SEE_TURFS
@@ -76,5 +67,5 @@
 	set desc = "Relinquish your sentience and visit the land of the past."
 
 	if(mind && mind.player_entity)
-		mind.player_entity.update_panel_data(round_statistics)
+		mind.player_entity.update_panel_data(GLOB.round_statistics)
 	ghostize(TRUE)

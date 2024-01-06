@@ -106,7 +106,7 @@
 			bcell.update_icon()
 			bcell.forceMove(get_turf(src.loc))
 			bcell = null
-			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
+			to_chat(user, SPAN_NOTICE("You remove the cell from [src]."))
 			status = 0
 			update_icon()
 			return
@@ -183,10 +183,10 @@
 
 		// Logging
 		if(user == L)
-			user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned themselves with the [src] in [get_area(user)]"
+			user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned themselves with [src] in [get_area(user)]"
 		else
-			msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			var/logentry = "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned <b>[key_name(L)]</b> with the [src] in [get_area(user)]"
+			msg_admin_attack("[key_name(user)] stunned [key_name(L)] with [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			var/logentry = "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned <b>[key_name(L)]</b> with [src] in [get_area(user)]"
 			L.attack_log += logentry
 			user.attack_log += logentry
 
@@ -197,9 +197,9 @@
 	return TRUE
 
 /obj/item/weapon/baton/emp_act(severity)
+	. = ..()
 	if(bcell)
 		bcell.emp_act(severity) //let's not duplicate code everywhere if we don't have to please.
-	..()
 
 //secborg stun baton module
 /obj/item/weapon/baton/robot/attack_self(mob/user)

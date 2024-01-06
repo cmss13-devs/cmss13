@@ -30,6 +30,7 @@
 	network = list(CAMERA_NET_LASER_TARGETS)
 	unslashable = TRUE
 	unacidable = TRUE
+	emp_proof = TRUE
 
 /obj/structure/machinery/camera/laser_cam/Initialize(mapload, laser_name)
 	. = ..()
@@ -37,8 +38,6 @@
 		var/area/A = get_area(src)
 		c_tag = "[laser_name] ([A.name])"
 
-/obj/structure/machinery/camera/laser_cam/emp_act(severity)
-	return //immune to EMPs, just in case
 
 /obj/structure/machinery/camera/laser_cam/ex_act()
 	return
@@ -79,7 +78,7 @@
 	number = 1
 	var/area/A = get_area(src)
 	if(A)
-		for(var/obj/structure/machinery/camera/autoname/C in machines)
+		for(var/obj/structure/machinery/camera/autoname/C in GLOB.machines)
 			if(C == src) continue
 			var/area/CA = get_area(C)
 			if(CA.type == A.type)
@@ -125,9 +124,7 @@
 	invisibility = 101 //fuck you init()
 
 	colony_camera_mapload = FALSE
-
-/obj/structure/machinery/camera/autoname/lz_camera/emp_act(severity)
-	return //immune to EMPs, just in case
+	emp_proof = TRUE
 
 /obj/structure/machinery/camera/autoname/lz_camera/ex_act()
 	return
@@ -137,7 +134,7 @@
 
 /obj/structure/machinery/camera/proc/isEmpProof()
 	var/O = locate(/obj/item/stack/sheet/mineral/osmium) in assembly.upgrades
-	return O
+	return O || emp_proof
 
 /obj/structure/machinery/camera/proc/isXRay()
 	var/obj/item/stock_parts/scanning_module/O = locate(/obj/item/stock_parts/scanning_module) in assembly.upgrades

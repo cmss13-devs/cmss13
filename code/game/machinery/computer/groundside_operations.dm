@@ -25,7 +25,11 @@
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
-	tacmap = new(src, minimap_type)
+	if(announcement_faction == FACTION_MARINE)
+		tacmap = new /datum/tacmap/drawing(src, minimap_type)
+	else
+		tacmap = new(src, minimap_type) // Non-drawing version
+
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/Destroy()
@@ -55,7 +59,7 @@
 	dat += "<BR><A HREF='?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
 	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
-	var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
+	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 	if(!echo_squad.active && faction == FACTION_MARINE)
 		dat += "<BR><A href='?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
 		dat += "<BR><hr>"
@@ -247,7 +251,7 @@
 
 		if("pick_squad")
 			var/list/squad_list = list()
-			for(var/datum/squad/S in RoleAuthority.squads)
+			for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 				if(S.active && S.faction == faction)
 					squad_list += S.name
 
@@ -276,7 +280,7 @@
 					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					usr.reset_view(null)
-				else if(usr.client.view != world_view_size)
+				else if(usr.client.view != GLOB.world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					if(cam)
@@ -290,7 +294,7 @@
 			if(!reason)
 				return
 			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
-			var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
+			var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 			if(!echo_squad)
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
 				return

@@ -1,6 +1,6 @@
-var/list/robot_verbs_default = list(
+GLOBAL_LIST_INIT(robot_verbs_default, list(
 	/mob/living/silicon/robot/proc/sensor_mode
-)
+))
 
 #define CYBORG_POWER_USAGE_MULTIPLIER 2.5 // Multiplier for amount of power cyborgs use.
 
@@ -840,7 +840,7 @@ var/list/robot_verbs_default = list(
 						cleaned_item.clean_blood()
 					else if(istype(A, /mob/living/carbon/human))
 						var/mob/living/carbon/human/cleaned_human = A
-						if(cleaned_human.lying)
+						if(cleaned_human.body_position == LYING_DOWN)
 							if(cleaned_human.head)
 								cleaned_human.head.clean_blood()
 								cleaned_human.update_inv_head(0)
@@ -866,12 +866,12 @@ var/list/robot_verbs_default = list(
 		src.connected_ai = null
 	lawupdate = 0
 	lockcharge = 0
-	canmove = 1
+	//canmove = 1  // Yes this will probably break something, whatevver it is
 	scrambledcodes = 1
 	//Disconnect it's camera so it's not so easily tracked.
 	if(src.camera)
 		src.camera.network = list()
-		cameranet.removeCamera(src.camera)
+		GLOB.cameranet.removeCamera(src.camera)
 
 
 /mob/living/silicon/robot/proc/ResetSecurityCodes()
@@ -933,10 +933,10 @@ var/list/robot_verbs_default = list(
 	toggle_sensor_mode()
 
 /mob/living/silicon/robot/proc/add_robot_verbs()
-	add_verb(src, robot_verbs_default)
+	add_verb(src, GLOB.robot_verbs_default)
 
 /mob/living/silicon/robot/proc/remove_robot_verbs()
-	remove_verb(src, robot_verbs_default)
+	remove_verb(src, GLOB.robot_verbs_default)
 
 // Uses power from cyborg's cell. Returns 1 on success or 0 on failure.
 // Properly converts using CELLRATE now! Amount is in Joules.

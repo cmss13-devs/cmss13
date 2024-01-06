@@ -71,7 +71,7 @@
 	storage_slots = 5
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
-
+	can_hold = list(/obj/item/tool/candle)
 
 /obj/item/storage/fancy/candle_box/fill_preset_inventory()
 	for(var/i=1; i <= storage_slots; i++)
@@ -302,7 +302,7 @@
 		if(istype(W) && !W.heat_source && !W.burnt)
 			if(prob(burn_chance))
 				to_chat(user, SPAN_WARNING("\The [W] lights, but you burn your hand in the process! Ouch!"))
-				user.apply_damage(3, BRUTE, pick("r_hand", "l_hand"))
+				user.apply_damage(3, BURN, pick("r_hand", "l_hand"))
 				if((user.pain.feels_pain) && prob(25))
 					user.emote("scream")
 				W.light_match()

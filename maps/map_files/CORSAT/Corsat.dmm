@@ -13345,16 +13345,6 @@
 	icon_state = "plate"
 	},
 /area/corsat/sigma/airlock/control)
-"aLr" = (
-/obj/structure/surface/rack,
-/obj/item/tool/weldpack,
-/obj/item/tool/weldingtool,
-/obj/item/clothing/head/welding,
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "yellow"
-	},
-/area/corsat/gamma/engineering)
 "aLs" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -31253,16 +31243,6 @@
 	icon_state = "yellow"
 	},
 /area/corsat/omega/maint)
-"bLH" = (
-/obj/structure/surface/rack,
-/obj/item/tool/weldpack,
-/obj/item/tool/weldingtool,
-/obj/item/clothing/head/welding,
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "yellow"
-	},
-/area/corsat/omega/maint)
 "bLI" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "Custodial Closet";
@@ -31960,16 +31940,6 @@
 	icon_state = "yellowcorner"
 	},
 /area/corsat/gamma/engineering)
-"bNV" = (
-/obj/structure/surface/rack,
-/obj/item/tool/weldpack,
-/obj/item/tool/weldingtool,
-/obj/item/clothing/head/welding,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/south/engineering)
 "bNW" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/corsat{
@@ -37475,8 +37445,7 @@
 /area/corsat/gamma/biodome/virology)
 "drp" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	dwidth = 1;
-	name = "Gamma Landing Zone"
+	name = "LZ1: Gamma Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
@@ -37936,14 +37905,6 @@
 	icon_state = "whitebluefull"
 	},
 /area/corsat/gamma/residential/showers)
-"dGy" = (
-/obj/structure/surface/rack,
-/obj/item/toy/farwadoll,
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/corsat/omega/hangar/security)
 "dHa" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/corsat{
@@ -38077,6 +38038,16 @@
 	icon_state = "officesquares"
 	},
 /area/corsat/gamma/administration)
+"dNs" = (
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack,
+/obj/item/tool/weldingtool,
+/obj/item/clothing/head/welding,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "yellow"
+	},
+/area/corsat/omega/maint)
 "dNC" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -38251,8 +38222,7 @@
 /area/corsat/omega/complex)
 "dUj" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	dwidth = 1;
-	name = "Sigma Landing Zone"
+	name = "LZ2: Sigma Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
@@ -45748,6 +45718,14 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/gamma/biodome/complex)
+"jpn" = (
+/obj/structure/surface/rack,
+/obj/item/toy/plush/farwa,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/corsat/omega/hangar/security)
 "jpB" = (
 /turf/open/floor/corsat{
 	dir = 4;
@@ -59316,6 +59294,16 @@
 	icon_state = "red"
 	},
 /area/corsat/sigma/hangar/checkpoint)
+"tCi" = (
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack,
+/obj/item/tool/weldingtool,
+/obj/item/clothing/head/welding,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "yellow"
+	},
+/area/corsat/gamma/engineering)
 "tCn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -60207,6 +60195,16 @@
 	icon_state = "red"
 	},
 /area/corsat/sigma/hangar/monorail/control)
+"ukQ" = (
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack,
+/obj/item/tool/weldingtool,
+/obj/item/clothing/head/welding,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/corsat{
+	icon_state = "yellow"
+	},
+/area/corsat/sigma/south/engineering)
 "ukV" = (
 /obj/structure/window_frame/corsat,
 /turf/open/floor/plating,
@@ -80399,7 +80397,7 @@ bEp
 aZb
 pyL
 aiB
-dGy
+jpn
 lWG
 lWG
 lWG
@@ -83306,7 +83304,7 @@ azE
 agQ
 qKN
 kyQ
-bLH
+dNs
 bOK
 mAt
 bLO
@@ -96177,7 +96175,7 @@ roh
 mJy
 aRd
 aqi
-aLr
+tCi
 nxZ
 bQs
 aqi
@@ -106604,7 +106602,7 @@ xhd
 auH
 bxL
 aCr
-bNV
+ukQ
 aEw
 aEw
 aEw

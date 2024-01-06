@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(interior)
 			continue
 		if(x >= bounds[1].x && x <= bounds[2].x && y >= bounds[1].y && y <= bounds[2].y)
 			return current_interior
-	return FALSE
+	return
 
 /// Checks if an atom is in an interior
 /datum/controller/subsystem/interior/proc/in_interior(loc)
@@ -51,10 +51,16 @@ SUBSYSTEM_DEF(interior)
 	if(!isturf(loc))
 		loc = get_turf(loc)
 
-	var/datum/turf_reservation/interior/reservation = SSmapping.used_turfs[loc]
+	var/datum/weakref/reservation_weakref = SSmapping.used_turfs[loc]
+
+	if(!reservation_weakref)
+		return
+
+	var/datum/turf_reservation/interior/reservation = reservation_weakref.resolve()
 
 	if(!istype(reservation))
 		return FALSE
+
 	return TRUE
 
 #undef INTERIOR_BORDER_SIZE

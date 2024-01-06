@@ -4,6 +4,7 @@
 	icon_state = "secure_locked_basic"
 	icon_opened = "secure_open_basic"
 	icon_closed = "secure_locked_basic"
+	crate_customizing_types = null
 	var/icon_locked = "secure_locked_basic"
 	var/icon_unlocked = "secure_unlocked_basic"
 	var/sparks = "securecratesparks"
@@ -52,7 +53,7 @@
 	set category = "Object"
 	set name = "Toggle Lock"
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
+	if(usr.is_mob_incapacitated()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
 		return
 
 	if(ishuman(usr))
@@ -86,6 +87,7 @@
 	..()
 
 /obj/structure/closet/crate/secure/emp_act(severity)
+	. = ..()
 	for(var/obj/O in src)
 		O.emp_act(severity)
 	if(!broken && !opened  && prob(50/severity))
@@ -105,7 +107,6 @@
 		else
 			src.req_access = list()
 			src.req_access += pick(get_access(ACCESS_LIST_MARINE_MAIN))
-	..()
 
 
 //------------------------------------

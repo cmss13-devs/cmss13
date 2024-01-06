@@ -76,7 +76,7 @@
 	var/turf/target_turf = xeno.loc
 
 	if(!istype(target_turf))
-		to_chat(xeno, SPAN_WARNING("You cannot plant a fruit without a weed garden."))
+		to_chat(xeno, SPAN_WARNING("We cannot plant a fruit without a weed garden."))
 		return
 
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
@@ -85,7 +85,7 @@
 		return
 
 	if(target_weeds.hivenumber != xeno.hivenumber)
-		to_chat(xeno, SPAN_WARNING("These weeds do not belong to your hive; they reject your fruit."))
+		to_chat(xeno, SPAN_WARNING("These weeds do not belong to our hive; they reject our fruit."))
 		return
 
 	if(locate(/obj/effect/alien/resin/trap) in range(1, target_turf))
@@ -98,13 +98,13 @@
 
 	if (check_and_use_plasma_owner())
 		if(length(xeno.current_fruits) >= xeno.max_placeable)
-			to_chat(xeno, SPAN_XENOWARNING("You cannot sustain another fruit, one will wither away to allow this one to live!"))
+			to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another fruit, one will wither away to allow this one to live!"))
 			var/obj/effect/alien/resin/fruit/old_fruit = xeno.current_fruits[1]
 			xeno.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)
 
 		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] secretes fluids and shape it into a fruit!"), \
-		SPAN_XENONOTICE("You secrete a portion of your vital fluids and shape them into a fruit!"), null, 5)
+		SPAN_XENONOTICE("We secrete a portion of our vital fluids and shape them into a fruit!"), null, 5)
 
 		var/obj/effect/alien/resin/fruit/fruit = new xeno.selected_fruit(target_weeds.loc, target_weeds, xeno)
 		if(!fruit)
@@ -209,7 +209,7 @@
 				return
 
 			var/obj/effect/alien/resin/fruit/fruit = selected_type
-			to_chat(xeno, SPAN_NOTICE("You will now build <b>[initial(fruit.name)]\s</b> when secreting resin."))
+			to_chat(xeno, SPAN_NOTICE("We will now build <b>[initial(fruit.name)]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
 			xeno.update_icons()
 			button.overlays.Cut()
@@ -252,7 +252,7 @@
 
 	if(ismob(target_atom)) // to prevent using thermal vision to bypass clickcatcher
 		if(!can_see(xeno, target_atom, max_range))
-			to_chat(xeno, SPAN_XENODANGER("You cannot see that location!"))
+			to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
 			return
 	else
 		if(get_dist(xeno, target_atom) > max_range)
@@ -287,9 +287,9 @@
 		if(!buff_already_present)
 			new /datum/effects/xeno_structure_reinforcement(structure_to_buff, xeno, ttl = 15 SECONDS)
 			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), \
-			SPAN_XENONOTICE("You surge the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), null, 5)
+			SPAN_XENONOTICE("We surge the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), null, 5)
 		else
-			to_chat(xeno, SPAN_XENONOTICE("You haplessly try to surge resin around [structure_to_buff], but it's already reinforced. It'll take a moment for you to recover."))
+			to_chat(xeno, SPAN_XENONOTICE("We haplessly try to surge resin around [structure_to_buff], but it's already reinforced. It'll take a moment for us to recover."))
 			xeno_cooldown = xeno_cooldown * 0.5
 
 	else if(F && F.hivenumber == xeno.hivenumber)
@@ -297,12 +297,12 @@
 			to_chat(xeno, SPAN_XENONOTICE("The [F] is already mature. The [src.name] does nothing."))
 			xeno_cooldown = xeno_cooldown * 0.5
 		else
-			to_chat(xeno, SPAN_XENONOTICE("You surge the resin around the [F], speeding its growth somewhat!"))
+			to_chat(xeno, SPAN_XENONOTICE("We surge the resin around the [F], speeding its growth somewhat!"))
 			F.reduce_timer(5 SECONDS)
 
 	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"), \
-		SPAN_XENONOTICE("You surge the resin, creating an unstable wall!"), null, 5)
+		SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
 		target_turf.PlaceOnTop(/turf/closed/wall/resin/weak)
 		var/turf/closed/wall/resin/weak_wall = target_turf
 		weak_wall.hivenumber = xeno.hivenumber
@@ -317,7 +317,7 @@
 			return
 		channel_in_progress = FALSE
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges deep resin, creating an unstable sticky resin patch!"), \
-		SPAN_XENONOTICE("You surge the deep resin, creating an unstable sticky resin patch!"), null, 5)
+		SPAN_XENONOTICE("We surge the deep resin, creating an unstable sticky resin patch!"), null, 5)
 		for (var/turf/targetTurf in orange(1, target_turf))
 			if(!locate(/obj/effect/alien/resin/sticky) in targetTurf)
 				new /obj/effect/alien/resin/sticky/thin/weak(targetTurf, xeno.hivenumber)
@@ -379,8 +379,8 @@
 
 	if(bound_xeno.stat == DEAD)
 		fruit_sac_overlay_icon.icon_state = "Gardener Drone Dead"
-	else if(bound_xeno.lying)
-		if((bound_xeno.resting || bound_xeno.sleeping) && (!bound_xeno.knocked_down && !bound_xeno.knocked_out && bound_xeno.health > 0))
+	else if(bound_xeno.body_position == LYING_DOWN)
+		if(!HAS_TRAIT(bound_xeno, TRAIT_INCAPACITATED) && !HAS_TRAIT(bound_xeno, TRAIT_FLOORED))
 			fruit_sac_overlay_icon.icon_state = "Gardener Drone Sleeping"
 		else
 			fruit_sac_overlay_icon.icon_state = "Gardener Drone Knocked Down"

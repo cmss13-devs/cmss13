@@ -44,7 +44,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	//If you don't specify a bodypart, it checks ALL your bodyparts for protection, and averages out the values
 	for(var/X in limbs)
 		var/obj/limb/E = X
-		var/weight = organ_rel_size[E.name]
+		var/weight = GLOB.organ_rel_size[E.name]
 		armorval += getarmor_organ(E, type) * weight
 		total += weight
 	return (armorval/max(total, 1))
@@ -155,6 +155,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	return FALSE
 
 /mob/living/carbon/human/emp_act(severity)
+	. = ..()
 	for(var/obj/O in src)
 		if(!O)
 			continue
@@ -167,7 +168,6 @@ Contains most of the procs that are called when a mob is attacked by something
 			if(I.robotic == FALSE)
 				continue
 			I.emp_act(severity)
-	..()
 
 
 //Returns 1 if the attack hit, 0 if it missed.
@@ -335,10 +335,10 @@ Contains most of the procs that are called when a mob is attacked by something
 			if (M.faction == faction)
 				M.track_friendly_fire(initial(O.name))
 		if (assailant)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
-				msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+				msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	if(last_damage_source)
 		last_damage_data = create_cause_data(last_damage_source, last_damage_mob)
@@ -377,16 +377,6 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/list/overlap = compare_group & access_to_check
 	return length(overlap)
-
-/mob/living/carbon/human/freeze()
-	. = ..()
-	if(.)
-		update_xeno_hostile_hud()
-
-/mob/living/carbon/human/unfreeze()
-	. = ..()
-	if(.)
-		update_xeno_hostile_hud()
 
 /mob/living/carbon/human/get_target_lock(access_to_check)
 	if(isnull(access_to_check))

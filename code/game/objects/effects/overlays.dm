@@ -176,17 +176,17 @@
 	user = _user
 	if(squad_name)
 		name = "[squad_name] laser"
-	if(user && user.faction && cas_groups[user.faction])
+	if(user && user.faction && GLOB.cas_groups[user.faction])
 		signal = new(src)
 		signal.name = name
 		signal.target_id = tracking_id
 		signal.linked_cam = new(loc, name)
-		cas_groups[user.faction].add_signal(signal)
+		GLOB.cas_groups[user.faction].add_signal(signal)
 
 
 /obj/effect/overlay/temp/laser_target/Destroy()
 	if(signal)
-		cas_groups[user.faction].remove_signal(signal)
+		GLOB.cas_groups[user.faction].remove_signal(signal)
 		if(signal.linked_cam)
 			qdel(signal.linked_cam)
 			signal.linked_cam = null
@@ -225,7 +225,7 @@
 	effect_duration = 10
 
 /obj/effect/overlay/temp/emp_sparks/New(loc)
-	setDir(pick(cardinal))
+	setDir(pick(GLOB.cardinals))
 	..()
 
 /obj/effect/overlay/temp/emp_pulse

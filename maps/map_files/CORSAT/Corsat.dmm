@@ -4698,7 +4698,7 @@
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/almayer/research/containment/floor2,
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "anM" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "Security Office";
@@ -4731,7 +4731,7 @@
 "anP" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/research/containment/floor2,
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "anQ" = (
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -4739,10 +4739,10 @@
 /area/corsat/omega/containment)
 "anR" = (
 /turf/open/floor/almayer/research/containment/corner1,
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "anS" = (
 /turf/open/floor/almayer/research/containment/corner4,
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "anT" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/omega/airlocknorth/id)
@@ -4909,10 +4909,10 @@
 /area/corsat/sigma/cargo)
 "aos" = (
 /turf/open/floor/almayer/research/containment/corner2,
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aot" = (
 /turf/open/floor/almayer/research/containment/corner3,
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aou" = (
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -7243,7 +7243,7 @@
 "avT" = (
 /obj/structure/window/framed/corsat/cell/research,
 /turf/open/floor/plating,
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "avU" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "Morgue";
@@ -9434,17 +9434,17 @@
 /turf/open/floor/almayer/research/containment/corner_var1{
 	icon_state = "containment_corner_variant_2"
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aBk" = (
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aBl" = (
 /turf/open/floor/almayer/research/containment/corner_var1{
 	dir = 4
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aBm" = (
 /obj/item/clothing/mask/gas,
 /obj/structure/surface/rack,
@@ -9456,22 +9456,22 @@
 /turf/open/floor/almayer/research/containment/entrance{
 	dir = 8
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aBo" = (
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aBq" = (
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 4
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aBr" = (
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 1
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aBs" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -18966,7 +18966,7 @@
 /turf/open/floor/almayer/research/containment/entrance{
 	dir = 8
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aZR" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -18974,7 +18974,7 @@
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "aZS" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -26877,7 +26877,7 @@
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "bxP" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "Robotics Storage";
@@ -26920,7 +26920,7 @@
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "bxT" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -26983,7 +26983,7 @@
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "bxZ" = (
 /obj/structure/closet/crate,
 /obj/item/robot_parts/robot_component/actuator,
@@ -27471,7 +27471,7 @@
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "bzo" = (
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 2;
@@ -43589,7 +43589,7 @@
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "hHL" = (
 /obj/item/alien_embryo{
 	color = "#00ff80";
@@ -43598,7 +43598,7 @@
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "hHM" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
@@ -47071,7 +47071,7 @@
 /turf/open/floor/almayer/research/containment/entrance{
 	dir = 8
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "kvm" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/corsat{
@@ -48947,7 +48947,7 @@
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "lPh" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -52282,7 +52282,7 @@
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/almayer/research/containment/floor2,
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "ome" = (
 /obj/structure/machinery/power/apc/high{
 	dir = 4;
@@ -52889,7 +52889,7 @@
 "oLg" = (
 /obj/effect/alien/weeds/node,
 /turf/open/floor/almayer/research/containment/floor2,
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "oLA" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -60187,7 +60187,7 @@
 /turf/open/floor/almayer/research/containment/corner_var1{
 	dir = 4
 	},
-/area/corsat/inaccessible)
+/area/corsat/omega/containment)
 "ukz" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/corsat{
@@ -71529,15 +71529,15 @@ fdf
 agQ
 azf
 anG
-qIU
-qIU
-qIU
-qIU
-qIU
-qIU
-qIU
-qIU
-qIU
+atF
+atF
+atF
+atF
+atF
+atF
+atF
+atF
+atF
 rWY
 aoC
 aoC
@@ -71774,15 +71774,15 @@ azk
 azk
 azE
 anG
-qIU
+atF
 aBj
 kuW
 aBq
-qIU
+atF
 aBj
 aZQ
 aBq
-qIU
+atF
 aEl
 aEn
 aoC
@@ -72019,15 +72019,15 @@ sSZ
 agQ
 azf
 aWy
-qIU
+atF
 hHL
 oLg
 aBk
-qIU
+atF
 aBk
 anL
 aBk
-qIU
+atF
 aoE
 bkZ
 bBL
@@ -72264,15 +72264,15 @@ xUj
 agQ
 azf
 anG
-qIU
+atF
 aBl
 aBo
 anR
-qIU
+atF
 aBl
 aBo
 aos
-qIU
+atF
 bUo
 bCv
 bCv
@@ -72509,15 +72509,15 @@ fdf
 agQ
 azf
 anG
-qIU
+atF
 avT
 bxO
 avT
-qIU
+atF
 avT
 bxY
 avT
-qIU
+atF
 byJ
 bCv
 bCv
@@ -73734,15 +73734,15 @@ xUj
 agQ
 azf
 anG
-qIU
+atF
 avT
 bxS
 avT
-qIU
+atF
 avT
 bzn
 avT
-qIU
+atF
 auG
 bzs
 auG
@@ -73979,15 +73979,15 @@ fdf
 agQ
 bhQ
 anG
-qIU
+atF
 aBj
 aBn
 anS
-qIU
+atF
 aBj
 aBn
 aot
-qIU
+atF
 byN
 bCv
 qwM
@@ -74224,15 +74224,15 @@ azk
 azk
 azE
 aWy
-qIU
+atF
 aBk
 anP
 hHA
-qIU
+atF
 aBk
 anL
 aBk
-qIU
+atF
 bbZ
 xvG
 bCv
@@ -74469,15 +74469,15 @@ agQ
 agQ
 azf
 anG
-qIU
+atF
 ukf
 aZR
 aBr
-qIU
+atF
 aBl
 aZR
 aBr
-qIU
+atF
 byS
 bCv
 bzT
@@ -74714,15 +74714,15 @@ epc
 agQ
 azf
 fnd
-qIU
-qIU
-qIU
-qIU
-qIU
-qIU
-qIU
-qIU
-qIU
+atF
+atF
+atF
+atF
+atF
+atF
+atF
+atF
+atF
 byN
 bCv
 bAm
@@ -74959,7 +74959,7 @@ iOe
 agQ
 azf
 anG
-qIU
+atF
 aBj
 aBn
 aBq
@@ -75204,7 +75204,7 @@ iOe
 bhk
 azf
 anG
-qIU
+atF
 aBk
 olY
 aBk
@@ -75449,7 +75449,7 @@ qeE
 agQ
 azf
 anG
-qIU
+atF
 aBl
 aZR
 aBr
@@ -75694,11 +75694,11 @@ iOe
 agQ
 azf
 anG
-qIU
-qIU
-qIU
-qIU
-qIU
+atF
+atF
+atF
+atF
+atF
 aoE
 kGP
 bCv

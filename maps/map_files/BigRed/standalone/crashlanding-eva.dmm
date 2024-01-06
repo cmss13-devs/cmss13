@@ -698,7 +698,7 @@
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
-/area/bigredv2/outside/general_offices)
+/area/bigredv2/outside/ne)
 "cO" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -861,18 +861,12 @@
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
-/area/bigredv2/outside/general_offices)
+/area/bigredv2/outside/ne)
 "du" = (
 /turf/open/floor/plating{
-	icon_state = "wood-broken"
+	icon_state = "panelscorched"
 	},
-/area/bigredv2/outside/general_offices)
-"dv" = (
-/obj/structure/surface/table,
-/turf/open/floor/plating{
-	icon_state = "wood-broken5"
-	},
-/area/bigredv2/outside/general_offices)
+/area/bigredv2/outside/ne)
 "dx" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/bar)
@@ -926,28 +920,6 @@
 	dir = 8;
 	icon_state = "platingdmg3"
 	},
-/area/bigredv2/outside/general_offices)
-"dF" = (
-/obj/structure/bed,
-/turf/open/floor/plating{
-	icon_state = "wood-broken6"
-	},
-/area/bigredv2/outside/general_offices)
-"dG" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/bigredv2/outside/ne)
-"dQ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
 /area/bigredv2/outside/ne)
 "dS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -977,30 +949,6 @@
 "dV" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
-	},
-/area/bigredv2/outside/ne)
-"dW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood{
-	dir = 1;
-	icon_state = "gib6"
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/bigredv2/outside/ne)
-"dX" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/bigredv2/outside/ne)
-"ea" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/ne)
 "eb" = (
@@ -1036,23 +984,9 @@
 "eg" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/plating{
-	icon_state = "wood-broken2"
+	icon_state = "panelscorched"
 	},
 /area/bigredv2/outside/general_offices)
-"eh" = (
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/hydroponics)
-"ej" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/outside/ne)
-"el" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/outside/ne)
 "em" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating{
@@ -1065,27 +999,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/outside/hydroponics)
-"eo" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
-/area/bigredv2/outside/hydroponics)
-"ep" = (
-/obj/structure/window/framed/solaris,
-/turf/open/floor/plating,
-/area/bigredv2/outside/hydroponics)
-"ey" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_8"
-	},
-/area/bigredv2/outside/ne)
-"ez" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	icon_state = "mars_dirt_3"
-	},
-/area/bigredv2/outside/ne)
 "eA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -1109,27 +1022,9 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/outside/hydroponics)
-"eD" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/bigredv2/outside/hydroponics)
-"eE" = (
-/turf/open/floor,
-/area/bigredv2/outside/hydroponics)
 "eF" = (
 /turf/template_noop,
 /area/template_noop)
-"eG" = (
-/obj/item/shard,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/bigredv2/outside/hydroponics)
-"eH" = (
-/obj/structure/window_frame/solaris,
-/obj/item/shard,
-/turf/open/floor/plating,
-/area/bigredv2/outside/hydroponics)
 "eI" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating{
@@ -1177,12 +1072,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/outside/hydroponics)
-"eU" = (
-/obj/effect/spawner/gibspawner/human,
-/turf/open/floor/plating{
-	icon_state = "wood-broken6"
-	},
-/area/bigredv2/outside/general_offices)
 "oB" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -1587,10 +1476,10 @@ aB
 aB
 aB
 aB
-dQ
-ea
-ej
-ey
+eF
+eF
+eF
+eF
 "}
 (13,1,1) = {"
 eF
@@ -1620,8 +1509,8 @@ dC
 bU
 dS
 eN
-el
-ez
+eF
+eF
 "}
 (14,1,1) = {"
 eF
@@ -1739,8 +1628,8 @@ cJ
 aW
 aO
 aO
-aW
-aW
+du
+du
 cN
 dV
 ec
@@ -1773,7 +1662,7 @@ dk
 dt
 dE
 dt
-dW
+eF
 ee
 en
 ec
@@ -1801,10 +1690,10 @@ cK
 bl
 bl
 eg
-du
-dD
-cY
-dX
+eF
+eF
+eF
+eF
 eO
 ec
 eC
@@ -1832,13 +1721,13 @@ cL
 aW
 aO
 eK
-dr
-eU
-aW
-dX
+eF
+eF
+eF
+eF
 ef
 ec
-eD
+eF
 "}
 (21,1,1) = {"
 eF
@@ -1862,14 +1751,14 @@ bD
 bl
 bO
 aW
-bU
-dc
-eJ
-bU
-dX
-eG
-eo
-eD
+aW
+eF
+eF
+eF
+eF
+eF
+eF
+eF
 "}
 (22,1,1) = {"
 eF
@@ -1893,14 +1782,14 @@ eJ
 bl
 aW
 aO
-dj
-dq
-dr
-aB
-dG
-eH
-eo
-eE
+bU
+eF
+eF
+eF
+eF
+eF
+eF
+eF
 "}
 (23,1,1) = {"
 eF
@@ -1925,13 +1814,13 @@ cM
 cM
 df
 aB
-dv
-dF
-aB
-dG
-eh
-ep
-ep
+eF
+eF
+eF
+eF
+eF
+eF
+eF
 "}
 (24,1,1) = {"
 eF
@@ -1956,9 +1845,9 @@ cj
 aK
 cP
 aB
-aB
-aB
-aB
+eF
+eF
+eF
 eF
 eF
 eF

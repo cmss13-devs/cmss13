@@ -1,0 +1,7 @@
+author: "BadAtThisGame302"
+delete-after: True
+changes:
+  - qol: "Spruced up the CLs office by adding a new plant, changing the stuck posters to be random every round"
+  - bugfix: "Fixed the ATM Machine in the CLs office having Weyland-Yutani Automatic Teller Machine and not Wey-Yu. Same thing, useless mapedit."
+  - bugfix: "Fixes the PROUDLY REMEMBER IO! Posters in the CLs office (Again)"
+  - bugfix: "Puts the 29th Poster which was a pinup into the pinup posters and not the music ones."

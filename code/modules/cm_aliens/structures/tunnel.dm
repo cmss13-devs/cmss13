@@ -39,22 +39,22 @@
 
 		hive.tunnels += src
 
-	if(hivenumber == XENO_HIVE_NORMAL)
-		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
-
-		hive.tunnels += src
-
 	if(!hive)
 		hive = GLOB.hive_datum[hivenumber]
 
 		hive.tunnels += src
 
+		if(hivenumber == XENO_HIVE_NORMAL)
+			RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
 /obj/structure/tunnel/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
+		hive.tunnels -= src
 		hivenumber = XENO_HIVE_FORSAKEN
 		set_hive_data(src, XENO_HIVE_FORSAKEN)
-		set_hive_status(src, XENO_HIVE_FORSAKEN)
+		hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
+		hive.tunnels += src
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 

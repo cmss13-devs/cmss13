@@ -50,10 +50,6 @@
 		focused_atom.color = hive.color
 	focused_atom.name = "[lowertext(hive.prefix)][focused_atom.name]"
 
-// need this to set hive var for burrower tunnels
-/proc/set_hive_status(atom/focused_atom, hivenumber)
-	var/datum/hive/hive = glob.hive_datum[hivenumber]
-
 /proc/get_xeno_stun_duration(mob/stun_mob, duration)
 	if(iscarbonsizexeno(stun_mob))
 		return duration * XVX_STUN_LENGTHMULT

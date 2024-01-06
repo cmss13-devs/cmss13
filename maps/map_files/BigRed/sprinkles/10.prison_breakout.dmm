@@ -561,9 +561,13 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "bD" = (
-/obj/structure/bed/chair,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
 /turf/open/floor{
-	icon_state = "darkish"
+	dir = 1;
+	icon_state = "red"
 	},
 /area/bigredv2/outside/marshal_office)
 "bE" = (
@@ -631,12 +635,10 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "bO" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "darkish"
+/turf/open/mars{
+	icon_state = "mars_dirt_13"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/bigredv2/outside/n)
 "bP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -715,30 +717,38 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor{
-	icon_state = "darkish"
+	dir = 8;
+	icon_state = "red"
 	},
 /area/bigredv2/outside/marshal_office)
 "bZ" = (
-/obj/structure/surface/table,
-/obj/item/device/taperecorder,
+/obj/effect/landmark/static_comms/net_one,
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "bcircuit"
 	},
 /area/bigredv2/outside/marshal_office)
 "ca" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	pixel_y = -1
+	},
 /turf/open/floor{
-	icon_state = "darkish"
+	dir = 9;
+	icon_state = "red"
 	},
 /area/bigredv2/outside/marshal_office)
 "cb" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Marshal Office Interrogation"
-	},
 /turf/open/floor{
-	icon_state = "darkish"
+	dir = 9;
+	icon_state = "asteroidwarning"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/bigredv2/outside/n)
 "cc" = (
 /obj/structure/surface/table,
 /obj/item/clothing/mask/gas,
@@ -781,27 +791,26 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "cj" = (
-/obj/structure/bed/chair{
-	dir = 1
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
 	},
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "red"
 	},
 /area/bigredv2/outside/marshal_office)
 "ck" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_x = -1;
+	pixel_y = 1
 	},
 /turf/open/floor{
-	icon_state = "darkish"
+	dir = 6;
+	icon_state = "red"
 	},
 /area/bigredv2/outside/marshal_office)
 "cl" = (
-/obj/structure/machinery/door_control{
-	id = "Marshal Offices";
-	name = "Storm Shutters";
-	pixel_x = -32
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/effect/decal/cleanable/blood,
@@ -838,18 +847,12 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
 "cq" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Evidence Room"
-	},
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 1;
+	icon_state = "asteroidwarning"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/bigredv2/outside/n)
 "cr" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/item/ammo_casing/shell,
 /turf/open/floor{
 	dir = 8;
@@ -1153,6 +1156,20 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"do" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_10"
+	},
+/area/bigredv2/outside/n)
+"fh" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Evidence Room"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/marshal_office)
 "fD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1162,6 +1179,11 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"gu" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/n)
 "gJ" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/effect/landmark/objective_landmark/close,
@@ -1169,11 +1191,29 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
+"if" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/n)
 "ix" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshal_office)
+"jq" = (
+/obj/structure/machinery/camera/autoname,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "red"
 	},
 /area/bigredv2/outside/marshal_office)
 "qm" = (
@@ -1183,6 +1223,34 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
+"rC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/bigredv2/outside/marshal_office)
+"rL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/bigredv2/outside/marshal_office)
+"wL" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "bcircuit"
+	},
+/area/bigredv2/outside/marshal_office)
 "zX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
@@ -1190,6 +1258,45 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
+"MM" = (
+/obj/structure/window/framed/solaris/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Marshal Offices";
+	name = "\improper Marshal Offices Shutters"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/medical)
+"No" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/bigredv2/outside/marshal_office)
+"NW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "Marshal Offices";
+	name = "Storm Shutters";
+	pixel_y = 24
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshal_office)
+"RJ" = (
+/obj/effect/landmark/lv624/xeno_tunnel,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/bigredv2/outside/n)
 
 (1,1,1) = {"
 aa
@@ -1231,7 +1338,7 @@ by
 cZ
 cZ
 cZ
-cq
+at
 cA
 bi
 bG
@@ -1254,8 +1361,8 @@ ah
 bA
 cZ
 cZ
-ci
-at
+cZ
+fh
 cA
 cO
 cU
@@ -1278,7 +1385,7 @@ ah
 bB
 bN
 bX
-by
+wL
 at
 cA
 cP
@@ -1304,7 +1411,7 @@ at
 at
 at
 at
-cA
+NW
 bk
 ah
 ah
@@ -1324,10 +1431,10 @@ bb
 bk
 ah
 ca
-ca
+No
 bY
-ca
-at
+rL
+cZ
 cA
 bk
 bG
@@ -1348,10 +1455,10 @@ bb
 bl
 ah
 bD
-bO
+by
 bZ
 cj
-at
+cZ
 cB
 bk
 cV
@@ -1371,11 +1478,11 @@ aR
 bc
 bk
 ah
-ca
-ca
-ca
-ca
-at
+bD
+by
+by
+cj
+cZ
 cC
 cQ
 bL
@@ -1395,11 +1502,11 @@ aR
 bc
 bm
 ah
-ca
-ca
-ca
+jq
+rC
+rC
 ck
-at
+cZ
 cC
 bi
 ah
@@ -1419,11 +1526,11 @@ aR
 bb
 bh
 ah
-at
-at
-cb
-at
-at
+cZ
+cZ
+cZ
+cZ
+cZ
 cC
 bi
 bG
@@ -1506,8 +1613,8 @@ dj
 (14,1,1) = {"
 ai
 ai
-aj
-aj
+if
+RJ
 ah
 aB
 aL
@@ -1528,10 +1635,10 @@ de
 dj
 "}
 (15,1,1) = {"
-ai
-ai
 aj
 aj
+aj
+cq
 ah
 aC
 cZ
@@ -1552,10 +1659,10 @@ ci
 dj
 "}
 (16,1,1) = {"
-ai
-ai
 aj
 aj
+aj
+cq
 ah
 aD
 cZ
@@ -1576,10 +1683,10 @@ df
 dj
 "}
 (17,1,1) = {"
-ai
 aj
 aj
-aj
+bO
+cq
 ah
 aD
 aN
@@ -1602,8 +1709,8 @@ dj
 (18,1,1) = {"
 aj
 aj
-aj
-aj
+do
+ai
 ah
 aE
 zX
@@ -1621,13 +1728,13 @@ bk
 cW
 db
 dg
-dj
+MM
 "}
 (19,1,1) = {"
 aj
-aj
-aj
-aj
+bO
+gu
+ai
 ah
 aF
 aN
@@ -1645,13 +1752,13 @@ bk
 bG
 dc
 dh
-dj
+MM
 "}
 (20,1,1) = {"
-aj
-aj
-aj
-aj
+bO
+gu
+ai
+ai
 ah
 aG
 aN
@@ -1672,10 +1779,10 @@ bG
 dj
 "}
 (21,1,1) = {"
-aj
-aj
-aj
-aj
+cb
+ai
+ai
+ai
 ah
 aH
 cZ
@@ -1696,7 +1803,7 @@ dd
 dk
 "}
 (22,1,1) = {"
-aj
+cq
 ah
 ah
 ah

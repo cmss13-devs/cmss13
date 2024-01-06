@@ -20306,22 +20306,25 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/office_complex)
 "bfg" = (
-/obj/structure/pipes/vents/pump{
-	dir = 4
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 1;
+	name = "\improper General Store Maintenance"
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "delivery"
 	},
-/area/bigredv2/outside/office_complex)
+/area/bigredv2/outside/cargo)
 "bfh" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -20526,8 +20529,8 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bfK" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -54512,7 +54515,7 @@ aWB
 aoH
 aXH
 aXH
-asK
+bfg
 aZu
 aZO
 aZO
@@ -60328,7 +60331,7 @@ ahj
 any
 aoh
 aoU
-acp
+acq
 aqM
 aqL
 aqL
@@ -60545,7 +60548,7 @@ ahj
 aer
 aoi
 aoV
-acp
+acq
 aqM
 aqL
 aqL
@@ -66884,7 +66887,7 @@ asH
 aYZ
 aZE
 bac
-bbt
+aYY
 bbt
 bac
 bac
@@ -67109,7 +67112,7 @@ aJI
 bac
 bem
 asv
-bfg
+bgd
 bfL
 bgc
 bgc

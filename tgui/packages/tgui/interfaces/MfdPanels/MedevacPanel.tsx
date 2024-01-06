@@ -48,6 +48,7 @@ const MedevacOccupant = (props: { data: MedevacTargets }) => (
 );
 
 export const MedevacMfdPanel = (props: MfdProps, context) => {
+  const { data, act } = useBackend<MedevacContext>(context);
   const [medevacOffset, setMedevacOffset] = useLocalState(
     context,
     `${props.panelStateId}_medevacoffset`,
@@ -55,8 +56,6 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
   );
   const { setPanelState } = mfdState(context, props.panelStateId);
   const { equipmentState } = useEquipmentState(context, props.panelStateId);
-
-  const { data, act } = useBackend<MedevacContext>(context);
 
   const result = data.equipment_data.find(
     (x) => x.mount_point === equipmentState
@@ -85,6 +84,7 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
   const all_targets = range(medevacOffset, medevacOffset + 8)
     .map((x) => data.medevac_targets[x])
     .filter((x) => x !== undefined);
+
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -93,7 +93,7 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
         {
           children: <Icon name="arrow-up" />,
           onClick: () => {
-            if (medevacOffset >= 1) {
+            if (medevacOffset > 0) {
               setMedevacOffset(medevacOffset - 1);
             }
           },
@@ -109,10 +109,7 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
         },
       ]}
       topButtons={[
-        {
-          children: 'EQUIP',
-          onClick: () => setPanelState('equipment'),
-        },
+        { children: 'EQUIP', onClick: () => setPanelState('equipment') },
       ]}
       bottomButtons={[
         {
@@ -168,7 +165,7 @@ export const MedevacMfdPanel = (props: MfdProps, context) => {
               </Stack.Item>
               {all_targets.map((x) => (
                 <>
-                  <Stack.Item key={x.occupant} width="100%">
+                  <Stack.Item key={x.occupant} width="100%" minHeight="32px">
                     <MedevacOccupant data={x} />
                   </Stack.Item>
                   <Divider />

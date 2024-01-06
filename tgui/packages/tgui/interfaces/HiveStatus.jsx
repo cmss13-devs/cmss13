@@ -113,14 +113,21 @@ const GeneralInformation = (props, context) => {
     total_xenos,
     burrowed_larva,
     evilution_level,
+    pylon_status,
   } = data;
 
   return (
     <Flex direction="column" align="center">
-      <Flex.Item textAlign="center">
-        <h3 className="whiteTitle">The Queen is in:</h3>
-        <h1 className="whiteTitle">{queen_location}</h1>
-      </Flex.Item>
+      {queen_location === null ? (
+        <Flex.Item textAlign="center">
+          <h3 className="whiteTitle">The Hive has no Queen!</h3>
+        </Flex.Item>
+      ) : (
+        <Flex.Item textAlign="center">
+          <h3 className="whiteTitle">The Queen is in:</h3>
+          <h1 className="whiteTitle">{queen_location}</h1>
+        </Flex.Item>
+      )}
       {!!hive_location && (
         <Flex.Item textAlign="center" mt={2}>
           <h3 className="whiteTitle">The Hive location is:</h3>
@@ -136,6 +143,11 @@ const GeneralInformation = (props, context) => {
       <Flex.Item>
         <i>Evilution: {evilution_level}</i>
       </Flex.Item>
+      {pylon_status && (
+        <Flex.Item>
+          <i>{pylon_status}</i>
+        </Flex.Item>
+      )}
     </Flex>
   );
 };

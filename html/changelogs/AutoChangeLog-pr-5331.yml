@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - refactor: "Refactored the overlay_lighting component to better handle objects deleting"
+  - bugfix: "Fix putting lights in bags somereason keeping the light on"

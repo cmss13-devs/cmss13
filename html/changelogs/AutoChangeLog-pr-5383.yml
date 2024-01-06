@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - bugfix: "Fixed observing a monkey/farwa/stok/etc. locking the camera onto it."

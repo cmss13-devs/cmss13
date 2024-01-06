@@ -202,18 +202,21 @@
 
 /mob/living/hear_say(message, verb, datum/language/language, alt_name, italics, mob/speaker, sound/speech_sound, sound_vol)
 	if(client && mind && stat == UNCONSCIOUS)
-		hear_sleep(src, message, src == speaker, Adjacent(speaker))
+		hear_sleep(speaker, message, src == speaker, Adjacent(speaker), language)
 		return
 	return ..()
 
 /mob/living/hear_radio(message, verb, datum/language/language, part_a, part_b, mob/speaker, hard_to_hear, vname, command, no_paygrade)
 	if(client && mind && stat == UNCONSCIOUS)
-		hear_sleep(src, message, FALSE, FALSE)
+		hear_sleep(speaker, message, FALSE, FALSE, language)
 		return
 	return ..()
 
-/mob/living/proc/hear_sleep(mob/speaker = null, message, hearing_self = FALSE, proximity_flag = FALSE)
+/mob/living/proc/hear_sleep(mob/speaker = null, message, hearing_self = FALSE, proximity_flag = FALSE, datum/language/language = null)
 	var/heard = ""
+	var/clear_char_probability = 90
+	if(!say_understands(speaker, language))
+		clear_char_probability = 25
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(speaker == src)
@@ -226,7 +229,7 @@
 		heard = SPAN_LOCALSAY("You mutter something about... [stars(message, clear_char_probability = 99)]")
 
 	else if(!sleeping && proximity_flag)
-		heard = SPAN_LOCALSAY("You hear someone near you say something... [stars(message, clear_char_probability = 90)]")
+		heard = SPAN_LOCALSAY("You hear someone near you say something... [stars(message, clear_char_probability)]")
 
 	else if(prob(15))
 

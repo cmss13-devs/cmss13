@@ -58,9 +58,8 @@
 	SStgui.close_uis(src)
 	QDEL_NULL(current)
 	QDEL_NULL(cam_screen)
-	qdel(cam_screen)
 	QDEL_NULL(cam_background)
-	qdel(cam_background)
+	QDEL_NULL_LIST(cam_plane_masters)
 	last_camera_turf = null
 	concurrent_users = null
 	return ..()
@@ -69,7 +68,7 @@
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/cameras/attack_hand(mob/user)
-	if(!admin_console && is_admin_level(z))
+	if(!admin_console && should_block_game_interaction(src))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
 		return
 	if(inoperable())

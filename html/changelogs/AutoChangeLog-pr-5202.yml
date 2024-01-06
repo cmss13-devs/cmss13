@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - rscadd: "SLs, SOs and XOs can now recommend people for medals! Do this by right-clicking your headset, or using the new button in the object panel of the Status Panel!"

@@ -647,7 +647,7 @@
 		return
 	H.chem_effect_flags |= CHEM_EFFECT_RESIST_NEURO
 	to_chat(M, SPAN_NOTICE("Your skull feels incredibly thick."))
-	M.dazed = 0
+	M.SetDaze(0)
 
 /datum/chem_property/positive/neuroshielding/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))

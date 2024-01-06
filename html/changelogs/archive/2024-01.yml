@@ -80,3 +80,7 @@
       than wrapping the minutes back to 0.
   - ui: Separated xeno hivemind chat messages into their own toggleable category,
       separate from 'Radio'.
+2024-01-06:
+  private-tristan:
+  - bugfix: Trijent security southern hallway and engineering east tunnel no longer
+      have 2 APCs

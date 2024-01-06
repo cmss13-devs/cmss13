@@ -28,6 +28,8 @@
 	var/mob_min = 3
 	var/dispatch_message = "An encrypted signal has been received from a nearby vessel. Stand by." //Msg to display when starting
 	var/arrival_message = "" //Msg to display about when the shuttle arrives
+	var/chance_hidden = 20
+	var/static_message = "**STATIC** %$#&!- *!%^#$$ ^%%$# +_!@* &*%$## **STATIC** &%$#^*! @!*%$# ^%&$#@ *%&$#^ **STATIC** --SIGNAL LOST" //Msg to display when distress beacon is hidden
 	var/objectives //Txt of objectives to display to joined. Todo: make this into objective notes
 	var/objective_info //For additional info in the objectives txt
 	var/probability = 0
@@ -305,7 +307,10 @@
 
 	candidates = list()
 	if(arrival_message && announce_incoming)
-		marine_announcement(arrival_message, "Intercepted Transmission:")
+		if(prob(chance_hidden))
+			marine_announcement(static_message, "Intercepted Transmission:")
+		else
+			marine_announcement(arrival_message, "Intercepted Transmission:")
 
 /datum/emergency_call/proc/add_candidate(mob/M)
 	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))

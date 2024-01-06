@@ -183,6 +183,9 @@
 /// For how long the buff lasts
 #define XENO_HIJACK_EVILUTION_TIME (3 MINUTES)
 
+/// If this is marine to xeno ratio during hijack, xenos see marines on tacmap
+#define HIJACK_RATIO_FOR_TACMAP 0.8
+
 /// Xenos need to have their number to marines ratio lower than this to get larvae from pylons
 #define ENDGAME_LARVA_CAP_MULTIPLIER 0.5
 

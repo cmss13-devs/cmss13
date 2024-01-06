@@ -3,8 +3,8 @@
 	name = "Professor DUMMY tablet"
 	desc = "A Professor DUMMY Control Tablet."
 	suffix = "\[3\]"
-	icon_state = "Cotablet"
-	item_state = "Cotablet"
+	icon_state = "dummytablet"
+	item_state = "dummytablet"
 
 	var/mob/living/carbon/human/linked_dummy
 

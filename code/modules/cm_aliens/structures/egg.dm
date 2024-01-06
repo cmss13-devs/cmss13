@@ -22,8 +22,6 @@
 	create_egg_triggers()
 	if (hive)
 		hivenumber = hive
-	if(hivenumber == XENO_HIVE_NORMAL)
-		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))

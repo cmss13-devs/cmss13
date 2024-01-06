@@ -1,0 +1,8 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - ui: "Polished various aspects of the new dropship weapons UI"
+  - bugfix: "Fixed CAS direct firing"
+  - bugfix: "Fixed Medevac buttons not moving the dropship (still currently requires manual winch)"
+  - bugfix: "Fixed camera_manager resizing the view incorrectly because of overlay_lighting"
+  - refactor: "Ported some hard delete fixes for maps."

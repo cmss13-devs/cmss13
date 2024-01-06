@@ -90,7 +90,6 @@
 	update_inv_r_hand()
 	update_inv_l_hand()
 	update_inv_back()
-	update_inv_resource()
 	update_icons()
 
 /* CRUTCH ZONE - Update icons when relevant status happen - Ideally do this properly and for everything, then kill update_icons() someday */
@@ -99,19 +98,32 @@
 	. = ..()
 	if(. != new_value)
 		update_icons() // Snowflake handler for xeno resting icons
+		update_wounds()
 
 /mob/living/carbon/xenomorph/on_floored_start()
 	. = ..()
 	update_icons()
+	update_wounds()
 /mob/living/carbon/xenomorph/on_floored_end()
 	. = ..()
 	update_icons()
+	update_wounds()
 /mob/living/carbon/xenomorph/on_incapacitated_trait_gain()
 	. = ..()
 	update_icons()
+	update_wounds()
 /mob/living/carbon/xenomorph/on_incapacitated_trait_loss()
 	. = ..()
 	update_icons()
+	update_wounds()
+/mob/living/carbon/xenomorph/on_knockedout_trait_gain()
+	. = ..()
+	update_icons()
+	update_wounds()
+/mob/living/carbon/xenomorph/on_knockedout_trait_loss()
+	. = ..()
+	update_icons()
+	update_wounds()
 
 /* ^^^^^^^^^^^^^^ End Icon updates */
 
@@ -177,12 +189,6 @@
 	backpack_icon_holder.layer = -X_BACK_LAYER
 	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		backpack_icon_holder.layer = -X_BACK_FRONT_LAYER
-
-/mob/living/carbon/xenomorph/proc/update_inv_resource()
-	remove_overlay(X_RESOURCE_LAYER)
-	if(crystal_stored)
-		overlays_standing[X_RESOURCE_LAYER] = image("icon" = icon, "icon_state" = "[caste_type]_resources", "layer" =-X_RESOURCE_LAYER)
-		apply_overlay(X_RESOURCE_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)
@@ -295,7 +301,6 @@
 		return
 
 	var/health_threshold
-	wound_icon_holder.layer = layer + 0.01
 	health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
@@ -310,10 +315,9 @@
 		else
 			wound_icon_holder.icon_state = handle_special_wound_states(health_threshold)
 
-
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
 /atom/movable/vis_obj
-	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR|VIS_INHERIT_LAYER|VIS_INHERIT_PLANE
 	appearance_flags = RESET_COLOR
 
 /atom/movable/vis_obj/xeno_wounds

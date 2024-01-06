@@ -59,13 +59,10 @@
 		return
 
 	ADD_TRAIT(target, TRAIT_LISPING, ROUNDSTART_TRAIT)
-	target.speech_problem_flag = TRUE
-
 	..()
 
 /datum/character_trait/biology/lisp/unapply_trait(mob/living/carbon/human/target)
 	REMOVE_TRAIT(target, TRAIT_LISPING, ROUNDSTART_TRAIT)
-	target.speech_problem_flag = FALSE
 	..()
 
 /datum/character_trait/biology/bad_leg

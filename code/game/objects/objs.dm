@@ -236,6 +236,7 @@
 /obj/proc/unbuckle()
 	SIGNAL_HANDLER
 	if(buckled_mob && buckled_mob.buckled == src)
+		buckled_mob.clear_alert(ALERT_BUCKLED)
 		buckled_mob.set_buckled(null)
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 
@@ -277,6 +278,11 @@
 	if (iszombie(user))
 		return
 
+	// mobs that become immobilized should not be able to buckle themselves.
+	if(M == user && HAS_TRAIT(user, TRAIT_IMMOBILIZED))
+		to_chat(user, SPAN_WARNING("You are unable to do this in your current state."))
+		return
+
 	if(density)
 		density = FALSE
 		if(!step(M, get_dir(M, src)) && loc != M.loc)
@@ -302,6 +308,7 @@
 /obj/proc/do_buckle(mob/living/target, mob/user)
 	send_buckling_message(target, user)
 	if (src && src.loc)
+		target.throw_alert(ALERT_BUCKLED, /atom/movable/screen/alert/buckled)
 		target.set_buckled(src)
 		target.forceMove(src.loc)
 		target.setDir(dir)

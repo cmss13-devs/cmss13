@@ -16,7 +16,7 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
-	if(dazed > 0)
+	if(HAS_TRAIT(src, TRAIT_DAZED))
 		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
 		return
 

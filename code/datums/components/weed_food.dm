@@ -6,15 +6,19 @@
 	desc = "Weird black weeds in the shape of a body..."
 	gender = PLURAL
 	vis_flags = VIS_INHERIT_DIR|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/mob/xenos/weeds.dmi'
-	var/static/list/icon_states = list("human_1","human_2","human_3","human_4","human_5")
-	var/static/list/icon_states_flipped = list("human_1_f","human_2_f","human_3_f","human_4_f","human_5_f")
+	var/list/icon_states
+	var/list/icon_states_flipped
 	var/icon_state_idx = 0
 	var/timer_id = null
 	var/flipped = FALSE
 
-/atom/movable/vis_obj/weed_food/Initialize(mapload, is_flipped, ...)
+/atom/movable/vis_obj/weed_food/Initialize(mapload, is_flipped, weeds_icon, states, states_flipped, ...)
 	flipped = is_flipped
+	icon = weeds_icon
+	icon_states = states
+	icon_states_flipped = states_flipped
 	timer_id = addtimer(CALLBACK(src, PROC_REF(on_animation_timer)), WEED_FOOD_STATE_DELAY, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_LOOP|TIMER_DELETE_ME)
 	on_animation_timer()
 	return ..()
@@ -22,6 +26,7 @@
 /// Timer callback for changing the icon_state
 /atom/movable/vis_obj/weed_food/proc/on_animation_timer()
 	icon_state_idx++
+	// Assumption: Length of icon_states is the same as icon_states_flipped
 	if(icon_state_idx > length(icon_states))
 		deltimer(timer_id)
 		timer_id = null
@@ -50,6 +55,8 @@
 	var/turf/parent_turf
 	/// The obj that our parent is buckled to and we have registered a signal
 	var/obj/parent_buckle
+	/// A nest our parent is buckled to and we have registered a signal
+	var/obj/structure/bed/nest/parent_nest
 	/// The weeds that we are merging/merged with
 	var/obj/effect/alien/weeds/absorbing_weeds
 	/// The overlay image when merged
@@ -57,10 +64,9 @@
 
 /datum/component/weed_food/Initialize(...)
 	parent_mob = parent
-	//if(!istype(parent_mob))
-		//return COMPONENT_INCOMPATIBLE
-	if(!istype(parent_mob, /mob/living/carbon/human))
-		return COMPONENT_INCOMPATIBLE // TODO: At the moment we only support humans
+	// At the moment we only support humans and xenos
+	if(!istype(parent_mob, /mob/living/carbon/human) && !istype(parent_mob, /mob/living/carbon/xenomorph))
+		return COMPONENT_INCOMPATIBLE
 
 	parent_turf = get_turf(parent_mob)
 	if(parent_turf != parent_mob.loc)
@@ -78,6 +84,7 @@
 	QDEL_NULL(weed_appearance)
 	parent_mob = null
 	parent_turf = null
+	parent_buckle = null
 
 /datum/component/weed_food/RegisterWithParent()
 	RegisterSignal(parent_mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
@@ -100,6 +107,8 @@
 		UnregisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH)
 	if(parent_buckle)
 		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+	if(parent_nest)
+		UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
 
 /// SIGNAL_HANDLER for COMSIG_MOVABLE_MOVED
 /datum/component/weed_food/proc/on_move()
@@ -159,6 +168,15 @@
 	if(merged)
 		unmerge_with_weeds()
 		return
+
+/// SIGNAL_HANDLER for COMSIG_PARENT_QDELETING of nest
+/datum/component/weed_food/proc/on_nest_deletion()
+	SIGNAL_HANDLER
+
+	if(merged)
+		parent_mob.plane = FLOOR_PLANE
+	UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
+	parent_nest = null
 
 /**
  * Try to start the process to turn into weeds
@@ -243,6 +261,10 @@
 			parent_buckle = parent_mob.buckled
 			RegisterSignal(parent_mob.buckled, COSMIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
 			return FALSE
+		else
+			parent_nest = parent_mob.buckled
+			RegisterSignal(parent_nest, COMSIG_PARENT_QDELETING, PROC_REF(on_nest_deletion))
+
 	if(parent_buckle)
 		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
 		parent_buckle = null
@@ -263,16 +285,16 @@
 	ADD_TRAIT(parent_mob, TRAIT_MERGED_WITH_WEEDS, XENO_WEED_TRAIT)
 	parent_mob.anchored = TRUE
 	parent_mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	parent_mob.plane = FLOOR_PLANE
+	if(!parent_nest)
+		parent_mob.plane = FLOOR_PLANE
 	parent_mob.remove_from_all_mob_huds()
 
 	if(!weed_appearance) // Make a new sprite if we aren't re-merging
 		var/is_flipped = parent_mob.transform.b == -1 // Technically we should check if d is 1 too, but corpses can only be rotated 90 or 270 (1/-1 or -1/1)
 		if(parent_mob.dir & WEST)
 			is_flipped = !is_flipped // The direction reversed the effect of the flip!
-		weed_appearance = new(null, is_flipped)
+		weed_appearance = new(null, is_flipped, parent_mob.weed_food_icon, parent_mob.weed_food_states, parent_mob.weed_food_states_flipped)
 	weed_appearance.color = absorbing_weeds.color
-	// TODO: For non-humans change the icon_state or something here
 	parent_mob.vis_contents += weed_appearance
 
 	return TRUE
@@ -288,6 +310,10 @@
 	if(absorbing_weeds)
 		UnregisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING)
 	absorbing_weeds = null
+
+	if(parent_nest)
+		UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
+	parent_nest = null
 
 	REMOVE_TRAIT(parent_mob, TRAIT_MERGED_WITH_WEEDS, XENO_WEED_TRAIT)
 	parent_mob.anchored = FALSE

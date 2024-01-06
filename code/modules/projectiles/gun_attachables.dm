@@ -342,6 +342,10 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
+/obj/item/attachable/bayonet/van_bandolier
+	name = "\improper Fairbairn-Sykes fighting knife"
+	desc = "This isn't for dressing game or performing camp chores. It's almost certainly not an original. Almost."
+
 /obj/item/attachable/bayonet/co2/update_icon()
 	icon_state = "co2_knife[filled ? "-f" : ""]"
 	attach_icon = "co2_bayonet[filled ? "-f" : ""]_a"
@@ -1582,7 +1586,7 @@ Defined in conflicts.dm of the #defines folder.
 	scoper.clear_fullscreen("vulture")
 	scoper.client.remove_from_screen(scope_element)
 	scoper.see_in_dark -= darkness_view
-	scoper.lighting_alpha = 127
+	scoper.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	scoper.sync_lighting_plane_alpha()
 	QDEL_NULL(scope_element)
 	recalculate_scope_pos()

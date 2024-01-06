@@ -182,10 +182,12 @@
 			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
 
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
-		//We are now going to move
-		moving = TRUE
-		mob.move_intentionally = TRUE
+		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL // We pre-set this now for the crawling case. If crawling do_after fails, next_movement would be set after the attempt end instead of now.
+
+		//Try to crawl first
 		if(living_mob && living_mob.body_position == LYING_DOWN)
+			if(mob.crawling)
+				return // Already doing it.
 			//check for them not being a limbless blob (only humans have limbs)
 			if(ishuman(mob))
 				var/mob/living/carbon/human/human = mob
@@ -194,19 +196,17 @@
 					if(!(human.get_limb(zone)))
 						extremities.Remove(zone)
 				if(extremities.len < 4)
-					next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
-					mob.move_intentionally = FALSE
-					moving = FALSE
 					return
 			//now crawl
 			mob.crawling = TRUE
 			if(!do_after(mob, 1 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, NO_BUSY_ICON))
 				mob.crawling = FALSE
-				next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
-				mob.move_intentionally = FALSE
-				moving = FALSE
 				return
+			if(!mob.crawling)
+				return // Crawling interrupted by a "real" move. Do nothing. In theory INTERRUPT_MOVED|INTERRUPT_CHANGED_LYING catches this in do_after.
 		mob.crawling = FALSE
+		mob.move_intentionally = TRUE
+		moving = TRUE
 		if(mob.confused)
 			mob.Move(get_step(mob, pick(GLOB.cardinals)))
 		else

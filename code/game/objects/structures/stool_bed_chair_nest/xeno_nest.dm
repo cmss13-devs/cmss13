@@ -98,7 +98,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon = user
 		if(HIVE_ALLIED_TO_HIVE(carbon.hivenumber, hivenumber))
-			to_chat(user, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
+			to_chat(user, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 	if(buckled_mob)
 		if(iswelder(W))
@@ -151,12 +151,12 @@
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/X = user
 		if(!X.hive.unnesting_allowed && !isxeno_builder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
-			to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
+			to_chat(X, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 	else if(iscarbon(user))
 		var/mob/living/carbon/H = user
 		if(HIVE_ALLIED_TO_HIVE(H.hivenumber, hivenumber))
-			to_chat(H, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
+			to_chat(H, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 
 	if(ishuman(buckled_mob) && isxeno(user))
@@ -165,7 +165,7 @@
 			to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
 			return
 		if(H.stat != DEAD)
-			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(user, "[H] is still alive and kicking! Are we sure we want to remove them from the nest?", "Confirmation", "Yes", "No") != "Yes")
 				return
 			if(!buckled_mob || !user.Adjacent(H) || user.is_mob_incapacitated(FALSE))
 				return
@@ -195,7 +195,7 @@
 		return
 
 	if(isxeno(mob))
-		to_chat(user, SPAN_WARNING("You can't buckle your sisters."))
+		to_chat(user, SPAN_WARNING("We can't buckle our sisters."))
 		return
 
 	if(buckled_mob)
@@ -207,7 +207,7 @@
 		return
 
 	if(!isxeno(user) || issynth(mob))
-		to_chat(user, SPAN_WARNING("Gross! You're not touching that stuff."))
+		to_chat(user, SPAN_WARNING("Gross! We're not touching that stuff."))
 		return
 
 	if(isyautja(mob) && !force_nest)
@@ -321,7 +321,7 @@
 	if(M.a_intent == INTENT_HARM && !buckled_mob) //can't slash nest with an occupant.
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_DANGER("\The [M] claws at \the [src]!"), \
-		SPAN_DANGER("You claw at \the [src]."))
+		SPAN_DANGER("We claw at \the [src]."))
 		playsound(loc, "alien_resin_break", 25)
 		health -= (M.melee_damage_upper + 25) //Beef up the damage a bit
 		healthcheck()

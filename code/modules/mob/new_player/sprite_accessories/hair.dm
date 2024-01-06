@@ -755,3 +755,8 @@
 /datum/sprite_accessory/hair/taper
 	name = "Taper"
 	icon_state = "hair_taper"
+
+/datum/sprite_accessory/hair/gentlebraid
+	name = "Gentle Braid"
+	icon_state = "hair_braid3"
+	gender = FEMALE

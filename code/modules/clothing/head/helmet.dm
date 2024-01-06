@@ -234,7 +234,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/reagent_container/food/drinks/flask = "helmet_flask",
 	/obj/item/reagent_container/food/drinks/flask/marine = "helmet_flask",
 	/obj/item/reagent_container/food/snacks/eat_bar = "helmet_snack_eat",
-	/obj/item/reagent_container/food/snacks/packaged_burrito = "helmet_snack_burrito",
 	/obj/item/reagent_container/food/snacks/mushroompizzaslice = "pizza", // Fuck whoever put these under different paths for some REASON
 	/obj/item/reagent_container/food/snacks/vegetablepizzaslice = "pizza",
 	/obj/item/reagent_container/food/snacks/meatpizzaslice = "pizza",

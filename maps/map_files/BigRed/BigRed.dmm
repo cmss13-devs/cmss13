@@ -31575,7 +31575,10 @@
 	},
 /area/bigredv2/outside/lambda_cave_cas)
 "iyd" = (
-/obj/structure/machinery/computer/general_air_control,
+/obj/structure/machinery/computer/general_air_control{
+	dir = 8;
+	pixel_y = 6
+	},
 /obj/structure/surface/table,
 /turf/open/floor{
 	dir = 4;

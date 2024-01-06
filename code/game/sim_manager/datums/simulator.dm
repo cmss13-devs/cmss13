@@ -1,5 +1,3 @@
-#define GRID_CLEARING_SIZE 16
-
 /datum/simulator
 
 	// Necessary to prevent multiple users from simulating at the same time.
@@ -16,11 +14,8 @@
 	// list of users currently inside the simulator
 	var/static/list/users_in_sim = list()
 
-	/*
-	unarmoured humans are unnencessary clutter as they tend to explode easily
-	and litter the sim room with body parts, best left out.
-	*/
 	var/static/list/target_types = list(
+		HUMAN_MODE = /mob/living/carbon/human,
 		UPP_MODE = /mob/living/carbon/human,
 		CLF_MODE = /mob/living/carbon/human,
 		RUNNER_MODE = /mob/living/carbon/xenomorph/runner,
@@ -56,27 +51,15 @@
 
 /datum/simulator/proc/sim_turf_garbage_collection()
 
-	// initial grid needs an offset to the bottom left so it can get the most coverage within the users pov.
-	var/turf/sim_grid_start_pos = locate(sim_camera.x - 9,sim_camera.y - 9,1)
-	if(!sim_grid_start_pos)
+	var/area/sim_grid_area = get_area(sim_camera)
+	if(!sim_grid_area)
 		sim_reboot_state = FALSE
 		return
 
 	QDEL_LIST(delete_targets)
 
-	// 16x16 grid, clears from left to right like so
-	// the user's pov should be near the center of the grid.
-	/*
-	y:16| x: 1 2 3 4 ... 16
-	... | ...
-	y:2 | x: 1 2 3 4 ... 16
-	y:1 | x: 1 2 3 4 ... 16
-	*/
-	for (var/y_pos in 1 to GRID_CLEARING_SIZE)// outer y
-		for (var/x_pos in 1 to GRID_CLEARING_SIZE) // inner x
-			var/turf/current_grid = locate(sim_grid_start_pos.x + x_pos,sim_grid_start_pos.y + y_pos,sim_grid_start_pos.z)
-
-			current_grid.empty(/turf/open/floor/engine)
+	for(var/turf/open/floor/engine/engine_floor in sim_grid_area)
+		engine_floor.empty(/turf/open/floor/engine)
 
 /datum/simulator/proc/spawn_mobs(mob/living/user)
 

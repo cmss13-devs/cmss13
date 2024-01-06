@@ -44,6 +44,10 @@
 
 		hive.tunnels += src
 
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in L
+	if(resin_trap)
+		qdel(resin_trap)
+
 		if(hivenumber == XENO_HIVE_NORMAL)
 			RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
@@ -57,10 +61,6 @@
 		hive.tunnels += src
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
-
-	var/obj/effect/alien/resin/trap/resin_trap = locate() in loc
-	if(resin_trap)
-		qdel(resin_trap)
 
 	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
 
